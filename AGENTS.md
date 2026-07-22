@@ -194,7 +194,10 @@ critical-path work during travel.
 ### Phase 2: published cosmic-chronometer calculation - early to mid-August
 
 - Reproduce a differential-age `H(z)` result from published age measurements.
-- Treat uncertainty propagation, shared data, and covariance explicitly.
+- Treat uncertainty propagation, shared data, and covariance explicitly. See
+  `external/CCcovariance/` (Moresco's reference covariance implementation,
+  added as a git submodule) for the statistical/systematic decomposition and
+  example notebooks.
 - Separate table-level reproduction from reconstruction using underlying
   individual-galaxy data.
 
