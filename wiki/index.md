@@ -14,7 +14,7 @@ require JavaScript or external diagram assets.
 - `guides/reading-order.html` — Gives an ordered path through the active Ceridwen workflow.
 - `guides/python-patterns.html` — Python and JAX patterns used here.
 - `guides/vast-ai-gpu-workflow.html` — Explains Vast A100 selection, the tested Croatia host, setup, and saved results.
-- `guides/modal-gpu-workflow.html` — Explains Modal inputs, fixed remote paths, A100 batch validation, and saved results.
+- `guides/modal-gpu-workflow.html` — Explains Modal inputs, spectrum modes, A100 execution, and saved results.
 
 ## Codebase
 
@@ -29,7 +29,7 @@ require JavaScript or external diagram assets.
 
 ## Notebooks
 
-- `notebooks/notebook-map.html` — Explains notebook roles, execution profiles, sampler settings, and saved outputs.
+- `notebooks/notebook-map.html` — Explains notebook roles, compact spectrum modes, sampler settings, and saved outputs.
 
 ## Sources
 

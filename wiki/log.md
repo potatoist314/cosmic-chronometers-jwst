@@ -99,3 +99,8 @@
 
 - Pages: all reader pages, `assets/wiki.css`, `index.md`, `AGENTS.md`
 - Change: Replaced text diagrams and added responsive schematics for the Ceridwen learning path.
+
+## [2026-08-25] codebase | Compact spectral likelihood modes
+
+- Pages: `notebooks/notebook-map.html`, `codebase/data-pipeline.html`, `codebase/ceridwen-likelihood-sampling.html`, `guides/modal-gpu-workflow.html`, `index.md`
+- Change: Documented compact full-spectrum and LEGA-C feature-band fits with Modal controls.

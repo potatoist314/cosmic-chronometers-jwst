@@ -30,6 +30,14 @@ external algorithm then explores these values.</p>
 </ul>
 <figcaption id="likelihood-input-caption">All four arrays align with the same observation coordinates.</figcaption>
 </figure>
+<p>The compiled kernel calculates aligned arrays before it applies the
+boolean mask. A false mask value removes a datum from the final sum. It
+does not shorten the arrays.</p>
+<p>The spectra-only notebook therefore compacts the observation before
+model construction. Full mode has 3,523 likelihood pixels. Feature
+mode has 1,924. Each compact array also has two masked endpoints that
+preserve the native smoothing boundaries.</p>
+<p class="source-locator"><code>notebooks/ceridwen_test_spectra.ipynb</code> · “Build the native-resolution spectrum” · <code>compact_indices</code> and <code>compact_likelihood_mask</code></p>
 <p>An optional <code>DiagonalNoiseModel</code> modifies the variance. It
 can add model-scaled fractional calibration error. It can also add
 data-scaled fractional error or additive jitter

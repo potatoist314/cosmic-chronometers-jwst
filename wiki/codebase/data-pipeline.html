@@ -88,6 +88,13 @@ notebook converts air wavelengths to vacuum wavelengths. It also
 converts <code>F_lambda</code> to <code>F_nu</code> before it creates a
 Ceridwen <code>Spectrum</code>. See the headings “Load the same high-S/N
 test galaxy” and “Build the native-resolution spectrum.”</p>
+<p>The spectra-only notebook first removes invalid pixels, nebular-line
+regions, and the telluric region. Full mode retains 3,523 likelihood
+pixels. Feature mode retains 1,924 pixels from complete LEGA-C feature
+bandpasses. Overlapping windows form one union, so a pixel occurs once.
+The compact <code>Spectrum</code> also contains two masked endpoint
+pixels. These pixels preserve the native smoothing boundaries.</p>
+<p class="source-locator"><code>notebooks/ceridwen_test_spectra.ipynb</code> · “Build the native-resolution spectrum” · <code>LEGAC_FEATURE_BANDS_AIR</code>, <code>fit_pixel_mask</code>, and <code>compact_indices</code></p>
 </section>
 <section id="photometry" class="level2">
 <h2>Photometry</h2>

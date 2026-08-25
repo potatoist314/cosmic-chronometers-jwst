@@ -46,6 +46,7 @@ NOTEBOOKS = {
     "joint": "ceridwen_integrated_photometry_spectra.ipynb",
 }
 PROFILES = {"quick", "full"}
+SPECTRUM_MODES = {"full", "features"}
 
 
 def _ignore_python_cache(path: Path) -> bool:
@@ -194,13 +195,15 @@ def _run_id(mode: str) -> str:
     return f"{mode}-{timestamp}"
 
 
-def _profile_environment(profile: str) -> dict[str, str]:
+def _profile_environment(profile: str, spectrum_mode: str) -> dict[str, str]:
     _validate_choice(profile, PROFILES, "profile")
+    _validate_choice(spectrum_mode, SPECTRUM_MODES, "spectrum mode")
     return {
         "CERIDWEN_GRID_DIR": str(REMOTE_GRID_PATH.parent),
         "CERIDWEN_NOTEBOOK_QUICK": "1" if profile == "quick" else "0",
         "CERIDWEN_PROJECT_ROOT": str(REMOTE_NOTEBOOK_ROOT.parent),
         "CERIDWEN_RESULTS_ROOT": str(REMOTE_NOTEBOOK_ROOT),
+        "CERIDWEN_SPECTRUM_MODE": spectrum_mode,
     }
 
 
@@ -258,16 +261,19 @@ def _validate_inputs() -> str:
     scaledown_window=2,
     timeout=86400,
 )
-def _execute_notebook(notebook: str, profile: str) -> str:
+def _execute_notebook(notebook: str, profile: str, spectrum_mode: str) -> str:
     import nbformat
     from nbclient import NotebookClient
 
     notebook = _validate_choice(notebook, NOTEBOOKS, "notebook")
     _validate_choice(profile, PROFILES, "profile")
+    _validate_choice(spectrum_mode, SPECTRUM_MODES, "spectrum mode")
+    if notebook != "spectra" and spectrum_mode != "full":
+        raise ValueError("features mode is available only for the spectra notebook")
     _validate_input_paths(REMOTE_DATA_ROOT / "raw", REMOTE_GRID_PATH)
     print(_verify_gpu())
 
-    os.environ.update(_profile_environment(profile))
+    os.environ.update(_profile_environment(profile, spectrum_mode))
     source_name = NOTEBOOKS[notebook]
     source_path = REMOTE_NOTEBOOK_ROOT / source_name
     output_path = REMOTE_NOTEBOOK_ROOT / source_name.replace(
@@ -307,14 +313,18 @@ def upload() -> None:
 def batch(
     notebook: str = "spectra",
     profile: str = "quick",
+    spectrum_mode: str = "full",
     gpu: str = DEFAULT_GPU,
 ) -> None:
     """Execute one notebook from start to finish on one Modal GPU."""
     _validate_choice(notebook, NOTEBOOKS, "notebook")
     _validate_choice(profile, PROFILES, "profile")
+    _validate_choice(spectrum_mode, SPECTRUM_MODES, "spectrum mode")
+    if notebook != "spectra" and spectrum_mode != "full":
+        raise ValueError("features mode is available only for the spectra notebook")
     print(_validate_inputs.remote())
 
-    run_id = _run_id("batch")
+    run_id = _run_id(f"batch-{spectrum_mode}")
     run_results = results_volume.with_mount_options(sub_path=run_id)
     output_name = _execute_notebook.with_options(
         gpu=gpu,
@@ -322,7 +332,7 @@ def batch(
             REMOTE_DATA_ROOT: read_only_inputs,
             REMOTE_NOTEBOOK_ROOT: run_results,
         },
-    ).remote(notebook, profile)
+    ).remote(notebook, profile, spectrum_mode)
     print(f"Completed Modal run {run_id!r}: {output_name}")
     print(
         "Download with: uvx modal volume get "
@@ -345,16 +355,18 @@ def _jupyter_is_ready(base_url: str, token: str) -> bool:
 @app.local_entrypoint(name="jupyter")
 def jupyter(
     profile: str = "quick",
+    spectrum_mode: str = "full",
     gpu: str = DEFAULT_GPU,
     hours: float = 1.0,
 ) -> None:
     """Start an attached JupyterLab Sandbox on one Modal GPU."""
     _validate_choice(profile, PROFILES, "profile")
+    _validate_choice(spectrum_mode, SPECTRUM_MODES, "spectrum mode")
     if not 0 < hours <= 24:
         raise ValueError("hours must be greater than 0 and not greater than 24")
     print(_validate_inputs.remote())
 
-    run_id = _run_id("jupyter")
+    run_id = _run_id(f"jupyter-{spectrum_mode}")
     run_results = results_volume.with_mount_options(sub_path=run_id)
     token = secrets.token_urlsafe(24)
     token_secret = modal.Secret.from_dict({"JUPYTER_TOKEN": token})
@@ -385,7 +397,7 @@ def jupyter(
             command,
             app=app,
             image=image,
-            env=_profile_environment(profile),
+            env=_profile_environment(profile, spectrum_mode),
             secrets=[token_secret],
             gpu=gpu,
             cpu=4,

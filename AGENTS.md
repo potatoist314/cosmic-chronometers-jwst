@@ -1,6 +1,15 @@
 
  The user's contribution will be focused on overall research direction and methodology, yours is implementation.
 
+## Local resources
+
+- Start at `wiki/index.md` for the maintained codebase map.
+- Ceridwen papers and developer notes are in `ceridwen/`.
+- LEGA-C release documentation and spectra are in `data/raw/legac_dr2/`.
+- `papers/README.md` maps the local research papers.
+- Ceridwen fetches the published alpha-enhanced grid through `fetch_grid()`.
+- PDFs and raw data can be ignored by Git. Use `find` when `rg --files` misses them.
+
 ## Answering style
 
 - **2–3 lines.** Answer the question asked, nothing adjacent to it.

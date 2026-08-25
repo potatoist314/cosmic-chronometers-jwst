@@ -50,6 +50,23 @@ converts wavelength and flux, creates a <code>Spectrum</code>, and adds
 calibration noise. It then runs BlackJAX nested sampling. Its full
 profile uses 500 live points, 100 deletions, and 60 inner steps. It uses
 <code>logZ_tol=-5</code>.</p>
+<p><code>CERIDWEN_SPECTRUM_MODE</code> selects <code>full</code> or
+<code>features</code>. Full mode fits 3,523 pixels. Feature mode fits
+1,924 pixels from the LEGA-C DR2 feature definitions and their local
+continuum bands. The notebook fits native flux pixels. It does not fit
+the catalogue index values. Hβ is absent because the nebular-emission
+mask removes its central band.</p>
+<p>Both modes compact the spectrum before Ceridwen builds the model.
+They retain two masked endpoint pixels. These endpoints preserve the
+same smoothing boundaries as the native 6,166-pixel spectrum.</p>
+<p class="source-locator"><code>notebooks/ceridwen_test_spectra.ipynb</code> · “Build the native-resolution spectrum” · <code>fit_pixel_mask</code> and <code>compact_indices</code></p>
+<pre class="python"><code>fit_pixel_mask = native_fit_mask.copy()
+if SPECTRUM_MODE == "features":
+    fit_pixel_mask &amp;= feature_pixel_mask
+
+compact_indices = np.unique(
+    np.concatenate((np.flatnonzero(fit_pixel_mask), projection_anchor_indices))
+)</code></pre>
 <p><code>ceridwen_integrated_photometry_spectra.ipynb</code> combines
 both observation types in one <code>SedModel</code> and one
 <code>MultiObservationLikelihood</code>. It uses the same published
