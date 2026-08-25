@@ -44,3 +44,8 @@
 
 - Pages: `guides/vast-ai-gpu-workflow.html`
 - Change: Documented shared CPU/GPU kernel resolution and bounded CPU trials.
+
+## [2026-08-25] codebase | Ceridwen nested-sampling notebooks
+
+- Pages: `notebooks/notebook-map.html`, `codebase/ceridwen-likelihood-sampling.html`, `index.md`
+- Change: Replaced active notebook NUTS paths with weighted BlackJAX nested sampling.

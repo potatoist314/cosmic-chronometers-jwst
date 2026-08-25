@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="codebase">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-24">
+  <meta name="wiki-updated" content="2026-08-25">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -26,7 +26,7 @@ asks an external algorithm to explore them.</p>
 can add model-scaled fractional calibration, data-scaled fractional
 error, or additive jitter
 (<code>ceridwen/ceridwen/likelihood/noise_model.py:210-280</code>). The
-calculation is at lines 283-365. Notebook 07 uses
+calculation is at lines 283-365. Both active fitting notebooks use
 <code>log_f_calib</code> for model-scaled spectral calibration
 uncertainty.</p>
 <p class="source-locator"><code>ceridwen/ceridwen/likelihood/noise_model.py:324-350</code></p>
@@ -158,13 +158,39 @@ return adapter.run(loglike_fn, logprior_fn, model.theta_init, rng_key)</code></p
 <p>The unconstrained transformation prevents hard uniform boundaries
 from acting as geometric walls for Hamiltonian trajectories.</p>
 </section>
+<section id="nested-sampling-path" class="level2">
+<h2>Nested-sampling path</h2>
+<p><code>BlackJAXNestedSamplerAdapter</code> requires a proper prior for
+every free parameter. It draws the initial live ensemble directly from
+those priors (<code>sampler/nested.py:156-190</code>), then runs the
+BlackJAX nested slice sampler over separate likelihood and prior
+functions.</p>
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/nested.py:341-355</code></p>
+<pre class="python"><code>rng_key, prior_key = jax.random.split(rng_key)
+particles = self._sample_prior(theta_init, prior_key)
+
+nested_sampler = blackjax.nss(
+    logprior_fn      = logprior_fn,
+    loglikelihood_fn = loglike_fn,
+    num_delete       = num_delete,
+    num_inner_steps  = num_inner_steps,
+)
+init_fn = jax.jit(nested_sampler.init)
+step_fn = jax.jit(nested_sampler.step)</code></pre>
+<p>Completed dead points receive evidence and importance weights through
+<code>anesthetic</code> (<code>sampler/nested.py:502-529</code>). Those
+weights must be normalized or resampled before posterior percentiles,
+predictive draws, or derived SFHs.</p>
+</section>
 <section id="result" class="level2">
 <h2>Result</h2>
 <p><code>SamplingResult</code> stores named posterior samples, log
 likelihoods, evidence when available, diagnostics, timing, and
 backend-specific raw output (<code>sampler/runner.py:69-128</code>).
-NUTS returns equal-weight posterior samples and no Bayesian evidence;
-nested sampling can populate evidence fields.</p>
+NUTS returns equal-weight posterior samples and no Bayesian evidence.
+Nested sampling returns weighted dead points plus evidence and its
+uncertainty; the active notebooks convert those points to deterministic
+equal-weight posterior draws before downstream summaries.</p>
 </section>
 <section id="high-level-fitsed" class="level2">
 <h2>High-level <code>fitSED</code></h2>

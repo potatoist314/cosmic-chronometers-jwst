@@ -20,7 +20,7 @@ Human entry point: `index.html` (updated 2026-08-24)
 - `codebase/ceridwen-architecture.html` — Packages and end-to-end call graph.
 - `codebase/ceridwen-ssp-csp.html` — SSP grids, SFH weights, and spectra.
 - `codebase/ceridwen-observations-model.html` — Data projections and parameters.
-- `codebase/ceridwen-likelihood-sampling.html` — Posterior construction and NUTS.
+- `codebase/ceridwen-likelihood-sampling.html` — Likelihoods, NUTS, and nested sampling.
 - `codebase/tests-as-documentation.html` — Tests exposing important contracts.
 
 ## Notebooks

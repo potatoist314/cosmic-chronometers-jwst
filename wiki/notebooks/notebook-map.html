@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="notebook">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-24">
+  <meta name="wiki-updated" content="2026-08-25">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -29,12 +29,12 @@ inputs, and kernel still match.</p>
 loads the local high-resolution Kroupa grid
 <code>ceridwen/amist_c3k_hr_krou_afe.h5</code>, performs wavelength/flux
 conversion, constructs <code>Spectrum</code>, adds calibration noise,
-and runs NUTS.</p>
+and runs BlackJAX nested sampling.</p>
 <p><code>ceridwen_integrated_photometry_spectra.ipynb</code> combines
 both observation types into one <code>SedModel</code> and one
 <code>MultiObservationLikelihood</code>. It also uses the local
 high-resolution Kroupa grid and anchors spectrum normalization to
-photometry before the joint posterior.</p>
+photometry before a shared nested-sampling posterior.</p>
 </section>
 <section id="practice" class="level2">
 <h2>Practice</h2>
@@ -53,7 +53,14 @@ Python 3.14 kernel.</li>
 <section id="notebook-code-in-context" class="level2">
 <h2>Examples</h2>
 <p class="source-locator"><code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> · “Joint posterior” · code cell 18</p>
-<pre class="python"><code>joint_likelihood = MultiObservationLikelihood(
+<pre class="python"><code>joint_adapter = BlackJAXNestedSamplerAdapter(
+    priors=joint_model.priors,
+    num_live=joint_settings["num_live"],
+    num_inner_steps=joint_settings["num_inner_steps"],
+    num_delete=joint_settings["num_delete"],
+    logZ_tol=joint_settings["logZ_tol"],
+)
+joint_likelihood = MultiObservationLikelihood(
     keys=(phot_obs.name, spectrum_obs.name),
     likelihoods=(
         DiagonalGaussianLikelihood(),
@@ -66,7 +73,7 @@ joint_result = run_sampler(
     joint_adapter,
     jax.random.PRNGKey(SEED),
 )</code></pre>
-<p>The notebook assembles existing objects: two observation keys, two likelihoods, one model, and one sampler adapter. The inference algorithm itself lives in modules.</p>
+<p>The adapter draws live points from every model prior. The notebook then normalizes the returned importance weights before posterior summaries.</p>
 </section>
 </section>
 </main>
