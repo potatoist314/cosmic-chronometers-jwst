@@ -109,3 +109,8 @@
 
 - Pages: `notebooks/notebook-map.html`, `codebase/data-pipeline.html`, `codebase/ceridwen-likelihood-sampling.html`, `guides/modal-gpu-workflow.html`, `index.md`
 - Change: Documented compact full-spectrum and LEGA-C feature-band fits with Modal controls.
+
+## [2026-08-25] codebase | Complete Ceridwen fit outputs
+
+- Pages: `notebooks/notebook-map.html`, `guides/modal-gpu-workflow.html`, `index.md`
+- Change: Documented detached Modal runs, persistent timing, posterior predictions, and star-formation histories.

@@ -288,12 +288,29 @@ def _execute_notebook(notebook: str, profile: str, spectrum_mode: str) -> str:
         kernel_name="python3",
         resources={"metadata": {"path": str(REMOTE_NOTEBOOK_ROOT)}},
     )
+    execution_started_at = datetime.now(UTC)
+    execution_start_time = time.perf_counter()
+    execution_status = "completed"
     try:
         client.execute()
     except Exception as exc:
+        execution_status = "failed"
         raise RuntimeError(f"Notebook execution failed: {exc}") from None
     finally:
+        execution_completed_at = datetime.now(UTC)
+        execution_timing = {
+            "notebook": notebook,
+            "profile": profile,
+            "spectrum_mode": spectrum_mode,
+            "status": execution_status,
+            "started_at_utc": execution_started_at.isoformat(),
+            "completed_at_utc": execution_completed_at.isoformat(),
+            "wall_time_s": time.perf_counter() - execution_start_time,
+        }
         nbformat.write(document, output_path)
+        (REMOTE_NOTEBOOK_ROOT / "modal_execution_timing.json").write_text(
+            json.dumps(execution_timing, indent=2) + "\n"
+        )
         results_volume.commit()
     return output_path.name
 
@@ -326,6 +343,7 @@ def batch(
 
     run_id = _run_id(f"batch-{spectrum_mode}")
     run_results = results_volume.with_mount_options(sub_path=run_id)
+    print(f"Starting Modal run {run_id!r}")
     output_name = _execute_notebook.with_options(
         gpu=gpu,
         volumes={
