@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="codebase">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-24">
+  <meta name="wiki-updated" content="2026-08-25">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -16,74 +16,81 @@
 <main class="page-shell" id="main-content">
 <section id="project-map" class="level1">
 <h1>Project Map</h1>
-<p>The repository studies stellar ages and cosmic chronometers. It is a
-research workspace organized around notebooks, not an application with
-one command-line entry point (<code>README.md:1-16</code>).</p>
+<p>The repository studies stellar ages and cosmic chronometers.
+Notebooks organize the research workspace. The repository does not
+provide one command-line entry point
+(<code>README.md:1-16</code>).</p>
 <section id="repository-boundaries" class="level2">
 <h2>Repository boundaries</h2>
 <ul>
-<li><code>src/</code>: reusable project-owned numerical helpers.</li>
-<li><code>scripts/</code>: downloads and reproducible data
-transformations.</li>
-<li><code>notebooks/</code>: analyses, experiments, and
-presentation.</li>
-<li><code>data/raw/</code>: immutable downloaded inputs.</li>
-<li><code>data/processed/</code>: reproducible derived tables.</li>
-<li><code>papers/</code>: immutable literature sources.</li>
-<li><code>ceridwen/</code>: SED-fitting Git submodule, not project-owned
-source.</li>
-<li><code>external/CCcovariance/</code>: covariance reference
+<li>The <code>src/</code> directory contains reusable project-owned
+calculations.</li>
+<li>The <code>scripts/</code> directory downloads and transforms data
+reproducibly.</li>
+<li>The <code>notebooks/</code> directory contains analyses,
+experiments, and presentations.</li>
+<li>The <code>data/raw/</code> directory contains immutable downloaded
+inputs.</li>
+<li>The <code>data/processed/</code> directory contains reproducible
+derived tables.</li>
+<li>The <code>papers/</code> directory contains immutable literature
+sources.</li>
+<li>The <code>ceridwen/</code> directory is an external SED-fitting Git
 submodule.</li>
-<li><code>external/fsps/</code>: stellar-population synthesis submodule
-and data tree.</li>
-<li><code>wiki/</code>: generated code-reading documentation.</li>
+<li>The <code>external/CCcovariance/</code> directory is a covariance
+reference submodule.</li>
+<li>The <code>external/fsps/</code> directory contains the FSPS submodule
+and its data.</li>
+<li>The <code>wiki/</code> directory contains generated code-reading
+documentation.</li>
 </ul>
-<p>The three submodule paths and remotes are declared in
-<code>.gitmodules:1-9</code>.</p>
+<p><code>.gitmodules:1-9</code> declares the three submodule paths and
+remotes.</p>
 </section>
 <section id="entry-points" class="level2">
 <h2>Entry points</h2>
-<p>There is no single scientific <code>main()</code> function.
-<code>main.py:1-6</code> is the project scaffold and only prints a
-greeting. Scientific execution begins in a notebook or one of these
+<p>The repository has no single scientific <code>main()</code>
+function. <code>main.py:1-6</code> is a scaffold that prints a greeting.
+Scientific execution starts in a notebook or one of these
 functions:</p>
 <ul>
-<li><code>scripts/build_borghi2022_legac_dr2_subset.py:176</code>, table
-build.</li>
-<li><code>scripts/download_legac_dr2_spectra.py:113</code>, spectrum
-download.</li>
-<li><code>scripts/download_cosmos2015_legac_dr2_photometry.py:116</code>,
-photometry match.</li>
-<li><code>ceridwen/ceridwen/fit.py:67</code>, high-level Ceridwen
-fit.</li>
-<li><code>ceridwen/ceridwen/sampler/runner.py:275</code>, sampler
-dispatch.</li>
+<li><code>scripts/build_borghi2022_legac_dr2_subset.py:176</code> builds
+the joined table.</li>
+<li><code>scripts/download_legac_dr2_spectra.py:113</code> downloads the
+spectra.</li>
+<li><code>scripts/download_cosmos2015_legac_dr2_photometry.py:116</code>
+matches the photometry.</li>
+<li><code>ceridwen/ceridwen/fit.py:67</code> starts a high-level
+Ceridwen fit.</li>
+<li><code>ceridwen/ceridwen/sampler/runner.py:275</code> selects and
+runs a sampler.</li>
 </ul>
 </section>
 <section id="environments" class="level2">
 <h2>Environments</h2>
-<p>The root project requires Python 3.14 and contains Astropy, emcee,
-milespy, Prospector, and FSPS dependencies
-(<code>pyproject.toml:1-33</code>). Ceridwen is an independent package
-requiring Python 3.11 or newer and JAX/BlackJAX
-(<code>ceridwen/pyproject.toml:5-82</code>). Separate environments
-prevent dependency constraints from being forced together.</p>
+<p>The root project requires Python 3.14. Its dependencies include
+Astropy, emcee, milespy, Prospector, and FSPS
+(<code>pyproject.toml:1-33</code>). Ceridwen is an independent package.
+It requires Python 3.11 or newer, JAX, and BlackJAX
+(<code>ceridwen/pyproject.toml:5-82</code>). Separate environments keep
+the dependency constraints apart.</p>
 </section>
 <section id="ownership-matters" class="level2">
 <h2>Ownership</h2>
-<p>Code ownership:</p>
+<p>These rules describe code ownership:</p>
 <ul>
-<li>A notebook cell is project orchestration and may be
-exploratory.</li>
-<li><code>src/</code> is reusable project behavior.</li>
-<li><code>ceridwen/ceridwen/</code> is third-party package
-implementation.</li>
-<li><code>external/</code> is reference or upstream implementation.</li>
+<li>A notebook cell controls project tasks and can contain exploratory
+work.</li>
+<li>The <code>src/</code> directory contains reusable project
+behavior.</li>
+<li>The <code>ceridwen/ceridwen/</code> directory contains external
+package code.</li>
+<li>The <code>external/</code> directory contains reference or upstream
+code.</li>
 </ul>
-<p>The inspected Ceridwen checkout is submodule commit
-<code>e0252a3</code>. Its working tree contains local changes, so this
-wiki documents the live checkout rather than only the upstream
-commit.</p>
+<p>The inspected Ceridwen checkout is upstream release
+<code>v0.2.2</code> at commit <code>034381f</code>. The project records
+that exact submodule commit.</p>
 </section>
 <section id="read-the-scaffold" class="level2">
 <h2><code>main.py</code></h2>
@@ -94,7 +101,9 @@ commit.</p>
 
 if __name__ == "__main__":
     main()</code></pre>
-<p>The guard calls <code>main()</code> only when this file is executed directly. Because <code>main()</code> only prints a greeting, this is packaging scaffold—not the scientific entry point.</p>
+<p>The guard calls <code>main()</code> only when Python runs this file
+directly. <code>main()</code> only prints a greeting. Therefore, this
+file is a package scaffold, not a scientific entry point.</p>
 </section>
 </section>
 </main>

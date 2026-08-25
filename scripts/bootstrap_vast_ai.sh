@@ -7,9 +7,8 @@ ENV_DIR="${PROJECT_ROOT}/.venv-ceridwen-gpu"
 PYTHON_BIN="${ENV_DIR}/bin/python"
 JAX_VERSION="0.10.2"
 TFP_NIGHTLY_VERSION="0.26.0.dev20260810"
+SEDPY_JAX_COMMIT="0291d58bd86fc0e401b2cdd8beae25d994d1ba0e"
 MINIMUM_GPU_MEMORY_MIB=12000
-GRID_RELATIVE_PATH="ceridwen/amist_c3k_hr_krou_afe.h5"
-GRID_SHA256="7a51fda352d8c2455ba58a8333e3e438b9e46043341d2b28f9ff963ac7b30833"
 
 # Use the CUDA libraries installed with JAX, not Vast's system CUDA libraries.
 unset LD_LIBRARY_PATH
@@ -38,13 +37,6 @@ if [[ ! -f "${PROJECT_ROOT}/ceridwen/pyproject.toml" ]]; then
     git -C "${PROJECT_ROOT}" submodule update --init --recursive
 fi
 
-NEBULAR_MODULE="ceridwen/neb/NebularGridModel_fsps_match.py"
-if [[ ! -f "${PROJECT_ROOT}/ceridwen/${NEBULAR_MODULE}" ]]; then
-    git -C "${PROJECT_ROOT}/ceridwen" restore \
-        --source=394f80cd734fa6c863455126a3fb2508d1ae39f8 \
-        --worktree -- "${NEBULAR_MODULE}"
-fi
-
 if command -v uv >/dev/null 2>&1; then
     UV_BIN="$(command -v uv)"
 else
@@ -68,6 +60,8 @@ fi
     "specutils>=2.2,<3"
 "${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
     "tfp-nightly==${TFP_NIGHTLY_VERSION}"
+"${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
+    "sedpy-jax @ git+https://github.com/Espe13/sedpy_jax.git@${SEDPY_JAX_COMMIT}"
 "${UV_BIN}" pip check --python "${PYTHON_BIN}"
 
 JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "${PYTHON_BIN}" - <<'PY'
@@ -88,6 +82,17 @@ PY
     JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "${PYTHON_BIN}" -m ceridwen.check
 )
 
+"${PYTHON_BIN}" - <<'PY'
+import numpy as np
+from sedpy_jax.smoothing import make_lsf_smoother
+
+wave = np.linspace(4000.0, 5000.0, 128)
+sigma = np.full(wave.shape, 2.0)
+inres = np.full(wave.shape, 1.0)
+make_lsf_smoother(wave, sigma, wave[::2], inres=inres)
+print("sedpy_jax wavelength-dependent input resolution verified")
+PY
+
 "${PYTHON_BIN}" -m ipykernel install --user \
     --name ceridwen \
     --display-name "Ceridwen (Vast.ai GPU)"
@@ -95,15 +100,17 @@ KERNEL_JSON="$(
     "${PYTHON_BIN}" -c \
         'from jupyter_core.paths import jupyter_data_dir; from pathlib import Path; print(Path(jupyter_data_dir()) / "kernels" / "ceridwen" / "kernel.json")'
 )"
-"${PYTHON_BIN}" - "${KERNEL_JSON}" <<'PY'
+"${PYTHON_BIN}" - "${KERNEL_JSON}" "${PROJECT_ROOT}" <<'PY'
 import json
 import sys
 from pathlib import Path
 
 path = Path(sys.argv[1])
+project_root = Path(sys.argv[2])
 kernel = json.loads(path.read_text())
 kernel["env"] = {
     **kernel.get("env", {}),
+    "CERIDWEN_RESULTS_ROOT": str(project_root / "results"),
     "JAX_ENABLE_X64": "1",
     "JAX_PLATFORMS": "cuda",
     "LD_LIBRARY_PATH": "",
@@ -113,11 +120,10 @@ PY
 
 CATALOG_PATH="${PROJECT_ROOT}/data/raw/legac_dr2/legaCdr2.fits.gz"
 PHOTOMETRY_PATH="${PROJECT_ROOT}/data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits"
-GRID_PATH="${PROJECT_ROOT}/${GRID_RELATIVE_PATH}"
 SPECTRA_DIR="${PROJECT_ROOT}/data/raw/legac_dr2/sp"
 
 missing=0
-for path in "${CATALOG_PATH}" "${PHOTOMETRY_PATH}" "${GRID_PATH}"; do
+for path in "${CATALOG_PATH}" "${PHOTOMETRY_PATH}"; do
     if [[ ! -f "${path}" ]]; then
         echo "Missing required data: ${path#"${PROJECT_ROOT}/"}" >&2
         missing=1
@@ -134,35 +140,31 @@ if [[ "${SPECTRA_COUNT}" != "1988" ]]; then
 fi
 
 if (( missing != 0 )); then
-    echo "Upload data/raw and ${GRID_RELATIVE_PATH}, then rerun this script." >&2
+    echo "Upload data/raw, then rerun this script." >&2
     exit 1
 fi
 
-ACTUAL_GRID_SHA256="$(sha256sum "${GRID_PATH}" | cut -d ' ' -f 1)"
-if [[ "${ACTUAL_GRID_SHA256}" != "${GRID_SHA256}" ]]; then
-    echo "High-resolution SSP grid checksum mismatch." >&2
-    exit 1
-fi
-
-"${PYTHON_BIN}" - "${CATALOG_PATH}" "${PHOTOMETRY_PATH}" "${GRID_PATH}" <<'PY'
+"${PYTHON_BIN}" - "${CATALOG_PATH}" "${PHOTOMETRY_PATH}" <<'PY'
 import sys
 
-import h5py
 from astropy.table import Table
+from ceridwen.ssps import SSPDataAfe, fetch_grid
 
-catalog_path, photometry_path, grid_path = sys.argv[1:]
+catalog_path, photometry_path = sys.argv[1:]
 catalog = Table.read(catalog_path)
 photometry = Table.read(photometry_path)
-with h5py.File(grid_path, "r") as grid:
-    grid_shape = grid["ssp_flux"].shape
+grid_path = fetch_grid("amist_c3k_hr_krou_afe")
+ssp = SSPDataAfe.load(grid_path)
 
 if len(catalog) != 1988:
     raise SystemExit(f"Expected 1988 catalogue rows, found {len(catalog)}")
 if len(photometry) != 1982:
     raise SystemExit(f"Expected 1982 photometry rows, found {len(photometry)}")
-if grid_shape != (5, 13, 107, 10992):
-    raise SystemExit(f"Unexpected SSP grid shape: {grid_shape}")
-print("LEGA-C catalogue, photometry, spectra, and HR SSP grid verified")
+if ssp.ssp_flux.shape != (5, 13, 107, 10992):
+    raise SystemExit(f"Unexpected SSP grid shape: {ssp.ssp_flux.shape}")
+if ssp.schema_version != "2.1":
+    raise SystemExit(f"Unexpected SSP grid schema: {ssp.schema_version}")
+print(f"LEGA-C inputs and schema-2.1 HR SSP grid verified: {grid_path}")
 PY
 
 echo "Select the 'Ceridwen (Vast.ai GPU)' kernel in JupyterLab."

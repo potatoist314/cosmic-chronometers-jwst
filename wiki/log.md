@@ -59,3 +59,33 @@
 
 - Pages: `notebooks/notebook-map.html`, `index.md`
 - Change: Set the production joint fit to 300 live points, 25 deletions, and 40 inner steps.
+
+## [2026-08-25] codebase | Modal GPU workflow
+
+- Pages: `guides/modal-gpu-workflow.html`, `index.html`, `index.md`
+- Change: Added persistent inputs, batch execution, and interactive Jupyter Sandbox controls.
+
+## [2026-08-25] codebase | Modal GPU quick-run validation
+
+- Pages: `guides/modal-gpu-workflow.html`, `index.md`
+- Change: Fixed Modal Volume workspace paths, disabled JAX preallocation, and recorded the successful A100 quick batch.
+
+## [2026-08-25] codebase | Ceridwen v0.2.2 workflow
+
+- Pages: Ceridwen codebase pages, notebook map, Vast.ai guide, Modal guide
+- Change: Documented the published schema-2.1 grid, pinned per-pixel resolution support, upstream sampler settings, checkpoints, and reloadable HDF5 results.
+
+## [2026-08-25] format | STE rewrite
+
+- Pages: all reader pages, `index.md`, `AGENTS.md`
+- Change: Rewrote the wiki in controlled, plain English while preserving facts, qualifiers, code excerpts, and source locators.
+
+## [2026-08-25] codebase | Modal v0.2.2 GPU validation
+
+- Pages: `guides/modal-gpu-workflow.html`
+- Change: Set an explicit remote project root and validated the published schema-2.1 grid in an A100 quick run.
+
+## [2026-08-25] codebase | Vast A100 recommendation
+
+- Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
+- Change: Replaced the RTX recommendation with an A100 40 GB and recorded the tested Croatia host.

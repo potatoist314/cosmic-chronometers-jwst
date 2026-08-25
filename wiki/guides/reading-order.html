@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="guide">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-24">
+  <meta name="wiki-updated" content="2026-08-25">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -17,54 +17,61 @@
 <section id="reading-order" class="level1">
 <h1>Reading Order</h1>
 <section id="stage-1-learn-the-repository" class="level2">
-<h2>Stage 1: learn the repository</h2>
-<p>Read <a href="../codebase/project-map.html">Project map</a>:</p>
+<h2>Stage 1: Learn the repository</h2>
+<p>Read <a href="../codebase/project-map.html">Project map</a>. Keep
+these boundaries in mind:</p>
 <ul>
-<li><code>main.py</code> is scaffold, not a scientific entry point.</li>
-<li>Project code and submodules have separate ownership.</li>
-<li>The root project and Ceridwen use separate environments.</li>
+<li><code>main.py</code> is a scaffold. It is not a scientific entry
+point.</li>
+<li>The project owns its code but does not own submodule code.</li>
+<li>The root project and Ceridwen use separate Python environments.</li>
 </ul>
 </section>
 <section id="stage-2-read-small-project-functions" class="level2">
-<h2>Stage 2: read small project functions</h2>
-<p>Read <code>src/mocks.py</code> in this order:</p>
+<h2>Stage 2: Read small project functions</h2>
+<p>Read <code>src/mocks.py</code> in this sequence:</p>
 <ol type="1">
-<li><code>MockSample</code> at lines 15-23: identify stored state.</li>
-<li><code>true_ages</code> at lines 26-33: follow units through
-Astropy.</li>
-<li><code>draw_redshifts</code> at lines 36-38: identify
-randomness.</li>
-<li><code>make_mock</code> at lines 41-108: trace <code>z</code> into
-<code>age_obs</code>.</li>
+<li>Inspect the stored state in <code>MockSample</code> at lines
+15-23.</li>
+<li>Trace the Astropy units through <code>true_ages</code> at lines
+26-33.</li>
+<li>Identify the random operations in <code>draw_redshifts</code> at
+lines 36-38.</li>
+<li>Trace <code>z</code> into <code>age_obs</code> in
+<code>make_mock</code> at lines 41-108.</li>
 </ol>
 <p>Then read <a href="../codebase/project-modules.html">Project modules</a> and
 <a href="../guides/python-patterns.html">Python patterns</a>.</p>
 </section>
 <section id="stage-3-follow-a-data-product" class="level2">
-<h2>Stage 3: follow a data product</h2>
-<p>Read <a href="../codebase/data-pipeline.html">Data pipeline</a>, then trace one Borghi object:</p>
+<h2>Stage 3: Trace a data product</h2>
+<p>Read <a href="../codebase/data-pipeline.html">Data pipeline</a>.
+Then trace one Borghi object through these forms:</p>
 <ol type="1">
-<li>Raw Borghi row.</li>
-<li>Matching LEGA-C rows.</li>
-<li>Joined processed row.</li>
-<li>Notebook selection.</li>
-<li>Lick-index arrays or spectrum construction.</li>
+<li>Start with the raw Borghi row.</li>
+<li>Find the matching LEGA-C rows.</li>
+<li>Find the joined processed rows.</li>
+<li>Inspect the notebook selection.</li>
+<li>Inspect the Lick-index arrays or spectrum construction.</li>
 </ol>
-<p>Each step changes representation, not the underlying galaxy.</p>
+<p>Each step changes the data representation. The galaxy stays the
+same.</p>
 </section>
 <section id="stage-4-read-notebooks-as-orchestration" class="level2">
-<h2>Stage 4: read notebooks as orchestration</h2>
-<p>Read <a href="../notebooks/notebook-map.html">Notebook map</a>. Start with:</p>
+<h2>Stage 4: Read notebook orchestration</h2>
+<p>Read <a href="../notebooks/notebook-map.html">Notebook map</a>.
+Then read these notebooks:</p>
 <ol type="1">
-<li><code>ceridwen_test_spectra.ipynb</code> for spectral
+<li>Read <code>ceridwen_test_spectra.ipynb</code> for spectral
 projection.</li>
-<li><code>ceridwen_integrated_photometry_spectra.ipynb</code> for
-composition.</li>
+<li>Read <code>ceridwen_integrated_photometry_spectra.ipynb</code> for
+model composition.</li>
 </ol>
-<p>Notebooks assemble; modules implement.</p>
+<p>Notebooks assemble the analysis. Modules implement the reusable
+calculations.</p>
 </section>
 <section id="stage-5-trace-one-ceridwen-prediction" class="level2">
-<h2>Stage 5: trace one Ceridwen prediction</h2>
+<h2>Stage 5: Trace one Ceridwen prediction</h2>
 <p>Read these pages in order:</p>
 <ol type="1">
 <li><a href="../codebase/ceridwen-architecture.html">Ceridwen architecture</a></li>
@@ -73,8 +80,8 @@ composition.</li>
 <li><a href="../codebase/ceridwen-likelihood-sampling.html">Likelihood and sampling</a></li>
 <li><a href="../codebase/tests-as-documentation.html">Tests as documentation</a></li>
 </ol>
-<p>Trace this concrete call without entering unrelated physics
-components:</p>
+<p>Trace this call path. Do not inspect unrelated physics
+components.</p>
 <pre class="text"><code>run_sampler
   -&gt; model.predict(theta)
   -&gt; SedModel.apply_transforms(theta)

@@ -24,7 +24,9 @@
     <header>
       <p class="eyebrow">Operational guide</p>
       <h1>Run Ceridwen fits on a Vast.ai GPU.</h1>
-      <p class="lede">Notebook 07 fits spectra; notebook 08 fits spectra and photometry. Use local CPU trials and Vast.ai GPU fits.</p>
+      <p class="lede">The spectrum notebook fits spectra. The joint
+      notebook fits spectra and photometry. Use local CPUs for trials.
+      Use Vast.ai GPUs for full fits.</p>
     </header>
 
     <nav id="TOC" aria-label="On this page">
@@ -44,10 +46,16 @@
       <ul>
         <li>Use a Linux image with Jupyter, SSH, and CUDA 12.</li>
         <li>Require at least 12 GB GPU memory and 30 GB disk.</li>
-        <li>Prefer a 24 GB RTX 3090 or 4090 for headroom.</li>
+        <li>Prefer an A100 40 GB.</li>
       </ul>
-      <p>The bootstrap exits if Linux, NVIDIA visibility, or the 12 GB memory floor is missing. It never silently falls back to CPU.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:22-34</code></p>
+      <p>Vast host <code>148498</code> in Croatia provided a tested-good
+      A100 SXM4 40 GB allocation. Instance <code>48652928</code> completed
+      the quick and full fits on 25 August 2026. This result applies to that
+      allocation only.</p>
+      <p>The bootstrap stops if Linux, NVIDIA access, or 12 GB of GPU
+      memory is unavailable. It never uses the CPU as an unreported
+      substitute.</p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:21-34</code></p>
       <pre><code>if ! command -v nvidia-smi &gt;/dev/null 2&gt;&amp;1; then
     echo "nvidia-smi is unavailable; launch a Vast.ai NVIDIA GPU instance." &gt;&amp;2
     exit 1
@@ -61,7 +69,9 @@ fi</code></pre>
 
     <section id="clone">
       <h2>Clone the project</h2>
-      <p>Open the instance terminal and clone into its persistent workspace. Submodules are required because Ceridwen lives inside this repository.</p>
+      <p>Open the instance terminal. Clone the project into the
+      persistent workspace. Include the submodules because Ceridwen is
+      a submodule of this repository.</p>
       <pre><code>cd /workspace
 git clone --recurse-submodules \
   https://github.com/potatoist314/cosmic-chronometers-jwst.git
@@ -70,31 +80,39 @@ cd cosmic-chronometers-jwst</code></pre>
 
     <section id="data">
       <h2>Transfer private data</h2>
-      <p>Run these commands locally, replacing <code>&lt;INSTANCE_ID&gt;</code>. Git does not contain the LEGA-C spectra, matched photometry, or high-resolution SSP grid.</p>
+      <p>Run this command on the local computer. Replace
+      <code>&lt;INSTANCE_ID&gt;</code> with the instance identifier. Git does
+      not contain the LEGA-C spectra or matched photometry.</p>
       <pre><code>vastai copy "local:$PWD/data/raw" \
-  "C.&lt;INSTANCE_ID&gt;:/workspace/cosmic-chronometers-jwst/data/"
-
-vastai copy "local:$PWD/ceridwen/amist_c3k_hr_krou_afe.h5" \
-  "C.&lt;INSTANCE_ID&gt;:/workspace/cosmic-chronometers-jwst/ceridwen/"</code></pre>
+  "C.&lt;INSTANCE_ID&gt;:/workspace/cosmic-chronometers-jwst/data/"</code></pre>
       <p>The required remote paths are:</p>
       <ul>
         <li><code>data/raw/legac_dr2/legaCdr2.fits.gz</code></li>
         <li><code>data/raw/legac_dr2/sp/</code></li>
         <li><code>data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits</code></li>
-        <li><code>ceridwen/amist_c3k_hr_krou_afe.h5</code></li>
       </ul>
+      <p>The bootstrap uses the Ceridwen registry to download the
+      published high-resolution SSP grid. The registry fixes the
+      expected checksum.</p>
     </section>
 
     <section id="bootstrap">
       <h2>Bootstrap and verify</h2>
-      <p>Run the maintained setup script from the remote project root:</p>
+      <p>Run the maintained setup script from the remote project
+      root:</p>
       <pre><code>bash scripts/bootstrap_vast_ai.sh</code></pre>
-      <p>The script removes Vast's system CUDA library path. JAX then uses the compatible CUDA libraries installed in its Python environment.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:14-15</code></p>
+      <p>The script removes the Vast system CUDA library path. JAX then
+      uses the compatible CUDA libraries from its Python
+      environment.</p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:13-14</code></p>
       <pre><code># Use the CUDA libraries installed with JAX, not Vast's system CUDA libraries.
 unset LD_LIBRARY_PATH</code></pre>
-      <p>It creates an isolated Python 3.11 environment, installs CUDA JAX and Ceridwen, verifies GPU float64 execution, runs Ceridwen's check, and registers the notebook kernel.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:73-93</code></p>
+      <p>The script creates an isolated Python 3.11 environment. It
+      installs CUDA JAX and Ceridwen. It pins the sedpy_jax commit that
+      accepts the grid's wavelength-dependent resolution array. It
+      checks GPU float64 execution, runs the Ceridwen check, and
+      registers the notebook kernel.</p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:52-98</code></p>
       <pre><code>JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "${PYTHON_BIN}" - &lt;&lt;'PY'
 import jax
 import jax.numpy as jnp
@@ -108,7 +126,10 @@ PY
 "${PYTHON_BIN}" -m ipykernel install --user \
     --name ceridwen \
     --display-name "Ceridwen (Vast.ai GPU)"</code></pre>
-      <p>The same script verifies 1,988 spectra, catalogue and photometry row counts, the SSP-grid shape, and its checksum before allowing the fit.</p>
+      <p>The script checks 1,988 spectra. It also checks the catalogue
+      and photometry row counts. It fetches the published schema-2.1
+      grid and loads it in strict mode. It checks shape
+      <code>(5, 13, 107, 10992)</code>.</p>
     </section>
 
     <section id="run">
@@ -119,34 +140,50 @@ PY
         <li>Run <code>notebooks/ceridwen_test_spectra.ipynb</code> for spectra only.</li>
         <li>Run <code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> for the combined fit.</li>
       </ol>
-      <p>Local CPU and remote GPU kernels share the identifier <code>ceridwen</code>. Their visible names identify the active machine and backend.</p>
-      <p>The kernel forces CUDA and float64 for every notebook session. It also blocks the system CUDA path from replacing JAX's installed libraries.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:98-111</code></p>
+      <p>The local CPU kernel and remote GPU kernel share the
+      <code>ceridwen</code> identifier. Their visible names identify the
+      active computer and backend.</p>
+      <p>The remote kernel requires CUDA and float64 for every notebook
+      session. It also prevents the system CUDA path from replacing the
+      installed JAX libraries.</p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:111-118</code></p>
       <pre><code>kernel["env"] = {
     **kernel.get("env", {}),
     "JAX_ENABLE_X64": "1",
     "JAX_PLATFORMS": "cuda",
     "LD_LIBRARY_PATH": "",
+    "CERIDWEN_RESULTS_ROOT": "/workspace/cosmic-chronometers-jwst/results",
 }</code></pre>
     </section>
 
     <section id="finish">
       <h2>Preserve results and finish</h2>
       <ol>
-        <li>Download the executed notebooks, sampler state, and final plots.</li>
-        <li>Check locally that every expected output opens correctly.</li>
-        <li>Stop or destroy the paid instance after the files are safe.</li>
+        <li>Download the executed notebook, the HDF5 result,
+        checkpoints, and final plots.</li>
+        <li>Open every expected output on the local computer.</li>
+        <li>Stop or destroy the paid instance after you secure the
+        files.</li>
       </ol>
-      <p>Do not treat the rented machine as the permanent copy of a scientific result.</p>
+      <p>Do not use the rented computer as the permanent copy of a
+      scientific result.</p>
     </section>
 
     <section id="evidence">
       <h2>Evidence</h2>
       <ul>
-        <li><code>README.md:18-49</code> — instance, clone, transfer, bootstrap, and kernel workflow.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:8-15</code> — pinned requirements and CUDA-library isolation.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:114-165</code> — scientific-data integrity checks.</li>
-        <li><code>.gitignore:23-24</code> — LEGA-C spectra remain outside Git.</li>
+        <li><code>README.md:18-49</code> describes the instance, clone,
+        transfer, bootstrap, and kernel workflow.</li>
+        <li><code>scripts/bootstrap_vast_ai.sh:8-14</code> fixes the
+        requirements and isolates the CUDA libraries.</li>
+        <li><code>scripts/bootstrap_vast_ai.sh:52-94</code> installs and
+        checks wavelength-dependent resolution support.</li>
+        <li><code>scripts/bootstrap_vast_ai.sh:96-119</code> configures
+        the kernel and results root.</li>
+        <li><code>scripts/bootstrap_vast_ai.sh:121-168</code> checks the
+        raw data and published grid.</li>
+        <li><code>.gitignore:23-24</code> keeps the LEGA-C spectra out of
+        Git.</li>
       </ul>
     </section>
   </main>

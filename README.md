@@ -18,8 +18,10 @@ massive quiescent galaxies.
 ## Ceridwen on Vast.ai
 
 Use a Linux Jupyter+SSH instance with a CUDA 12-compatible image, at least
-12 GB GPU memory, and at least 30 GB disk. A 24 GB RTX 3090 or 4090 leaves
-comfortable memory headroom for notebooks 07 and 08.
+12 GB GPU memory, and at least 30 GB disk. Prefer an A100 40 GB for the
+Ceridwen notebooks. Vast host `148498` in Croatia provided a tested-good
+A100 SXM4 40 GB allocation; instance `48652928` completed the quick and full
+fits on 25 August 2026.
 
 Clone the repository into Vast's workspace:
 
@@ -30,13 +32,11 @@ git clone --recurse-submodules \
 cd cosmic-chronometers-jwst
 ```
 
-From the local project directory, upload the untracked scientific data:
+From the local project directory, upload the untracked LEGA-C data:
 
 ```bash
 vastai copy "local:$PWD/data/raw" \
   "C.<INSTANCE_ID>:/workspace/cosmic-chronometers-jwst/data/"
-vastai copy "local:$PWD/ceridwen/amist_c3k_hr_krou_afe.h5" \
-  "C.<INSTANCE_ID>:/workspace/cosmic-chronometers-jwst/ceridwen/"
 ```
 
 Then configure and verify the remote GPU environment:
@@ -45,7 +45,9 @@ Then configure and verify the remote GPU environment:
 bash scripts/bootstrap_vast_ai.sh
 ```
 
-Open `ceridwen_test_spectra.ipynb` or
-`ceridwen_integrated_photometry_spectra.ipynb` and select
+The script downloads and verifies Ceridwen's published schema-2.1
+high-resolution SSP grid. Open `notebooks/ceridwen_test_spectra.ipynb` or
+`notebooks/ceridwen_integrated_photometry_spectra.ipynb` and select
 `Ceridwen (Vast.ai GPU)`. The kernel requires CUDA and enables JAX float64, so
-a broken GPU setup cannot silently use CPU.
+a broken GPU setup cannot silently use CPU. Each run writes checkpoints and a
+reloadable HDF5 posterior under `results/`.

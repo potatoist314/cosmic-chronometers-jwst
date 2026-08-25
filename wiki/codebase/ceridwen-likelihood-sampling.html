@@ -16,18 +16,18 @@
 <main class="page-shell" id="main-content">
 <section id="ceridwen-likelihood-and-sampling" class="level1">
 <h1>Ceridwen: Likelihood and Sampling</h1>
-<p>This layer converts predictions into posterior density values and
-asks an external algorithm to explore them.</p>
+<p>This layer converts predictions into posterior density values. An
+external algorithm then explores these values.</p>
 <section id="per-observation-likelihood" class="level2">
 <h2>Per-observation likelihood</h2>
 <p>A diagonal Gaussian compares four aligned arrays:</p>
 <pre class="text"><code>data y, prediction mu, uncertainty sigma, boolean mask</code></pre>
 <p>An optional <code>DiagonalNoiseModel</code> modifies the variance. It
-can add model-scaled fractional calibration, data-scaled fractional
-error, or additive jitter
-(<code>ceridwen/ceridwen/likelihood/noise_model.py:210-280</code>). The
-calculation is at lines 283-365. Both active fitting notebooks use
-<code>log_f_calib</code> for model-scaled spectral calibration
+can add model-scaled fractional calibration error. It can also add
+data-scaled fractional error or additive jitter
+(<code>ceridwen/ceridwen/likelihood/noise_model.py:210-280</code>).
+Lines 283-365 contain the calculation. Both active fitting notebooks
+use <code>log_f_calib</code> for model-scaled spectral calibration
 uncertainty.</p>
 <p class="source-locator"><code>ceridwen/ceridwen/likelihood/noise_model.py:324-350</code></p>
 <pre class="python"><code># Start with observational variance.
@@ -57,22 +57,24 @@ if self.use_data_fractional:
 if self.use_jitter:
     jitter = jnp.exp(params["log_jitter"])
     var = var + jitter ** 2</code></pre>
-<p>Every enabled term adds a squared uncertainty to <code>var</code>. The distinction is what anchors it: model prediction, observed data, or an absolute jitter.</p>
+<p>Each enabled term adds a squared uncertainty to <code>var</code>. A
+model prediction, observed data, or absolute jitter can set the term's
+scale.</p>
 </section>
 <section id="multiple-observations" class="level2">
 <h2>Multiple observations</h2>
 <p><code>MultiObservationLikelihood</code> stores matching tuples of
 observation keys and likelihood objects
-(<code>likelihood/likelihood.py:793-837</code>). Its call loops over
-those static pairs and sums log-likelihoods
+(<code>likelihood/likelihood.py:793-837</code>). Its call loops through
+these static pairs and sums their log-likelihoods
 (<code>lines 840-872</code>).</p>
 <p>For the joint notebook:</p>
 <pre class="text"><code>photometry likelihood --+
                         +--&gt; total log likelihood
 spectrum likelihood ----+</code></pre>
-<p>Different modalities retain different units because residuals are
-divided by uncertainties in the same units before their scalar
-log-likelihoods are added.</p>
+<p>Different observation types can retain different units. Each
+residual is divided by an uncertainty with the same units. The code
+then adds the scalar log-likelihoods.</p>
 <p class="source-locator"><code>ceridwen/ceridwen/likelihood/likelihood.py:866-872</code></p>
 <pre class="python"><code>lnl_total = jnp.zeros(())
 aux: dict[str, LikelihoodOutput] = {}
@@ -81,30 +83,31 @@ for key, lhood in zip(self.keys, self.likelihoods):
     lnl_total    = lnl_total + lnl_i
     aux[key]     = aux_i
 return lnl_total, aux</code></pre>
-<p>The same key selects data, prediction, uncertainty, and mask. Each modality returns one scalar contribution, and those scalars are summed.</p>
+<p>The same key selects the data, prediction, uncertainty, and mask.
+Each observation type returns one scalar contribution. The function
+sums these contributions.</p>
 </section>
 <section id="prior" class="level2">
 <h2>Prior</h2>
-<p><code>SedModel.ln_prior</code> loops over registered priors and sums
-<code>prior.logpdf</code> for each free parameter
-(<code>model/model.py:408-447</code>). Parameters absent from the prior
-dictionary contribute zero, so the model configuration must make that
-choice intentional.</p>
+<p><code>SedModel.ln_prior</code> loops through the registered priors. It
+sums <code>prior.logpdf</code> for each free parameter
+(<code>model/model.py:408-447</code>). A parameter that is absent from
+the prior dictionary contributes zero. The model configuration must
+select this behavior intentionally.</p>
 </section>
 <section id="sampler-boundary" class="level2">
 <h2>Sampler boundary</h2>
-<p><code>run_sampler</code> extracts static observation arrays, then
-builds two JIT functions:</p>
+<p><code>run_sampler</code> extracts static observation arrays. It then
+creates two JIT functions:</p>
 <ul>
-<li><code>loglike_fn(theta)</code>: predict and sum data
+<li><code>loglike_fn(theta)</code> predicts the data and sums the data
 likelihoods.</li>
-<li><code>logprior_fn(theta)</code>: call
+<li><code>logprior_fn(theta)</code> calls
 <code>model.ln_prior</code>.</li>
 </ul>
-<p>It delegates both plus <code>model.theta_init</code> to a
+<p>It sends both functions and <code>model.theta_init</code> to a
 <code>SamplerAdapter</code> (<code>sampler/runner.py:275-366</code>).
-Keeping the functions separate supports both MCMC and nested
-sampling.</p>
+Separate functions support both MCMC and nested sampling.</p>
 <p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:335-366</code></p>
 <pre class="python"><code># ── Static data extracted once, before trace ──────────────────────────
 _obs_dict    = model.obs_dict
@@ -138,34 +141,41 @@ def logprior_fn(theta: dict[str, Array]) -&gt; Array:
 
 # ── Delegate ──────────────────────────────────────────────────────────
 return adapter.run(loglike_fn, logprior_fn, model.theta_init, rng_key)</code></pre>
-<p>Data are captured once outside the compiled closures. The adapter receives two functions plus an initial parameter tree; it does not need to know Ceridwen’s observation classes.</p>
+<p>The code captures the data once outside the compiled closures. The
+adapter receives two functions and an initial parameter tree. It does
+not require the Ceridwen observation classes.</p>
 </section>
 <section id="nuts-path" class="level2">
 <h2>NUTS path</h2>
-<p><code>BlackJAXNUTSAdapter</code>:</p>
+<p><code>BlackJAXNUTSAdapter</code> performs these steps:</p>
 <ol type="1">
-<li>Flattens the parameter dictionary
+<li>It flattens the parameter dictionary
 (<code>sampler/nuts.py:308-324</code>).</li>
-<li>Maps bounded parameters to unconstrained coordinates.</li>
-<li>Adds the transformation Jacobian to the posterior
+<li>It maps bounded parameters to unconstrained coordinates.</li>
+<li>It adds the transformation Jacobian to the posterior
 (<code>lines 395-422</code>).</li>
-<li>Adapts step size and mass matrix during warmup
+<li>It adapts the step size and mass matrix during warmup
 (<code>lines 426-468</code>).</li>
-<li>Runs compiled NUTS chains (<code>lines 470-530</code> onward).</li>
-<li>Reconstructs named posterior arrays in
+<li>It runs compiled NUTS chains from line 470.</li>
+<li>It reconstructs named posterior arrays in
 <code>SamplingResult</code>.</li>
 </ol>
 <p>The unconstrained transformation prevents hard uniform boundaries
-from acting as geometric walls for Hamiltonian trajectories.</p>
+from becoming geometric walls for Hamiltonian trajectories.</p>
 </section>
 <section id="nested-sampling-path" class="level2">
 <h2>Nested-sampling path</h2>
 <p><code>BlackJAXNestedSamplerAdapter</code> requires a proper prior for
 every free parameter. It draws the initial live ensemble directly from
-those priors (<code>sampler/nested.py:156-190</code>), then runs the
-BlackJAX nested slice sampler over separate likelihood and prior
+these priors (<code>sampler/nested.py:156-190</code>). It then runs the
+BlackJAX nested slice sampler with separate likelihood and prior
 functions.</p>
-<p class="source-locator"><code>ceridwen/ceridwen/sampler/nested.py:341-355</code></p>
+<p>The defaults use 500 live points and five inner steps for each
+dimension. Each iteration deletes one-fifth of the live points. The
+default <code>logZ_tol</code> is <code>-5</code>
+(<code>sampler/nested.py:144-172</code> and
+<code>350-359</code>).</p>
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/nested.py:370-384</code></p>
 <pre class="python"><code>rng_key, prior_key = jax.random.split(rng_key)
 particles = self._sample_prior(theta_init, prior_key)
 
@@ -177,27 +187,40 @@ nested_sampler = blackjax.nss(
 )
 init_fn = jax.jit(nested_sampler.init)
 step_fn = jax.jit(nested_sampler.step)</code></pre>
-<p>Completed dead points receive evidence and importance weights through
-<code>anesthetic</code> (<code>sampler/nested.py:502-529</code>). Those
-weights must be normalized or resampled before posterior percentiles,
-predictive draws, or derived SFHs.</p>
+<p><code>anesthetic</code> calculates evidence and importance weights
+for the completed dead points
+(<code>sampler/nested.py:502-529</code>). Normalize or resample these
+weights before you calculate posterior percentiles, predictive draws,
+or derived SFHs.</p>
+</section>
+<section id="checkpoints" class="level2">
+<h2>Checkpoints</h2>
+<p>The nested adapter can write an atomic partial posterior every 20
+minutes. Each checkpoint contains finalized positions, likelihoods,
+birth likelihoods, evidence, and the number of dead points
+(<code>sampler/nested.py:226-315</code>, <code>438-501</code>).</p>
 </section>
 <section id="result" class="level2">
 <h2>Result</h2>
 <p><code>SamplingResult</code> stores named posterior samples, log
-likelihoods, evidence when available, diagnostics, timing, and
+likelihoods, available evidence, diagnostics, timings, and
 backend-specific raw output (<code>sampler/runner.py:69-128</code>).
-NUTS returns equal-weight posterior samples and no Bayesian evidence.
-Nested sampling returns weighted dead points plus evidence and its
-uncertainty; the active notebooks convert those points to deterministic
-equal-weight posterior draws before downstream summaries.</p>
+NUTS returns equal-weight posterior samples without Bayesian evidence.
+Nested sampling returns weighted dead points, evidence, and evidence
+uncertainty. The active notebooks convert these points to deterministic
+equal-weight posterior draws before they calculate later
+summaries.</p>
+<p>The active notebooks write the final result with
+<code>write_result_h5</code>. They load it again with
+<code>load_result_h5</code>. They then check the parameter names and
+likelihood shape (<code>fit.py:369-621</code>).</p>
 </section>
 <section id="high-level-fitsed" class="level2">
 <h2>High-level <code>fitSED</code></h2>
-<p><code>fitSED</code> constructs default diagonal likelihoods, builds
-an adapter, calls <code>run_sampler</code>, and writes HDF5 plus a text
-log (<code>fit.py:148-282</code>). The project notebooks currently use
-the lower-level route to customize likelihoods.</p>
+<p><code>fitSED</code> creates default diagonal likelihoods and a
+sampler adapter. It calls <code>run_sampler</code>. It then writes HDF5
+and a text log (<code>fit.py:148-282</code>). The project notebooks use
+the lower-level route because they customize the likelihoods.</p>
 </section>
 </section>
 </main>

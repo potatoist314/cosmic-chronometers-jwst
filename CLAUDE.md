@@ -7,6 +7,8 @@ Treat these instructions as active until the user explicitly changes them.
 ## Answering style
 
 - **2–3 lines.** Answer the question asked, nothing adjacent to it.
+- Use plain-text equations in scientific and mathematical chat messages. Do not use rendered LaTeX.
+- Use the `asd-ste100` skill whenever you explain a technical detail.
 - **The user sets research direction.** Implement requested work directly.
 - Flag a major error in research direction, or something genuinely missed. Nothing else.
 - No filler, no recaps, no restating the plan, no unrequested tables or summaries.
@@ -27,6 +29,7 @@ Treat these instructions as active until the user explicitly changes them.
   saying what an otherwise unclear line of code does. No fluff, or restating results or numbers.
 - Use LaTeX for mathematical symbols and parameter names in figures.
 - Run full Ceridwen fits on Vast.ai CUDA GPUs; use local quick tests only.
+- Always use the BlackJAX NSS nested sampler for Ceridwen fits, never NUTS.
 - Keep raw data immutable. Produce processed data through documented scripts or
   functions.
 - Put one-time download and bookkeeping utilities in `scripts/`, not notebooks.

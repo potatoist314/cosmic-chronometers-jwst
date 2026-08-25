@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="codebase">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-24">
+  <meta name="wiki-updated" content="2026-08-25">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -17,34 +17,39 @@
 <section id="ceridwen-ssp-grids-to-composite-spectra" class="level1">
 <h1>Ceridwen: SSP Grids to Composite Spectra</h1>
 <p>This layer converts precomputed single-age spectra into one composite
-galaxy spectrum. Read “grid” as stored numerical values and “basis” as
-the algorithm that weights and combines them.</p>
+galaxy spectrum. A grid stores numerical values. A basis is the
+algorithm that weights and combines these values.</p>
 <section id="ssp-containers" class="level2">
 <h2>SSP containers</h2>
-<p><code>SSPData</code> stores four arrays:</p>
+<p><code>SSPData</code> stores five numerical arrays:</p>
 <ul>
-<li><code>ssp_lgmet</code>: <code>(n_met,)</code>, <code>log10</code>
-absolute metallicity.</li>
-<li><code>ssp_lg_age_gyr</code>: <code>(n_age,)</code>,
-<code>log10(age/Gyr)</code>.</li>
-<li><code>ssp_wave</code>: <code>(n_wave,)</code>, Angstrom.</li>
-<li><code>ssp_flux</code>: <code>(n_met, n_age, n_wave)</code>,
+<li><code>ssp_lgmet</code> has shape <code>(n_met,)</code> and stores
+<code>log10</code> absolute metallicity.</li>
+<li><code>ssp_lg_age_gyr</code> has shape <code>(n_age,)</code> and
+stores <code>log10(age/Gyr)</code>.</li>
+<li><code>ssp_wave</code> has shape <code>(n_wave,)</code> and uses
+Angstrom.</li>
+<li><code>ssp_flux</code> has shape
+<code>(n_met, n_age, n_wave)</code> and uses
 <code>L_sun/Hz/M_sun</code>.</li>
+<li><code>ssp_resolution</code> has shape <code>(n_wave,)</code>. It
+stores the library Gaussian velocity width in km/s.</li>
 </ul>
-<p>The contract and shape check are at
-<code>ceridwen/ceridwen/ssps/ssp_data.py:206-279</code>. HDF5 loading is
-at lines 402-443; FSPS grid generation is at lines 448-534.</p>
+<p><code>ceridwen/ceridwen/ssps/ssp_data.py:227-326</code> defines the
+contract and shape check. Lines 508-566 load HDF5 files. FSPS grid
+generation starts at line 568.</p>
 <p><code>SSPDataAfe</code> adds a leading composition axis:</p>
 <ul>
-<li><code>ssp_afe</code>: <code>(n_afe,)</code>, <code>[alpha/Fe]</code>
-dex.</li>
-<li><code>ssp_flux</code>:
+<li><code>ssp_afe</code> has shape <code>(n_afe,)</code> and stores
+<code>[alpha/Fe]</code> in dex.</li>
+<li><code>ssp_flux</code> has shape
 <code>(n_afe, n_met, n_age, n_wave)</code>.</li>
 </ul>
-<p>Its exact contract is at <code>ssp_data_afe.py:70-130</code>. A
-legacy three-dimensional grid is promoted to one solar-alpha plane
-during loading (<code>lines 234-280</code>).</p>
-<p class="source-locator"><code>ceridwen/ceridwen/ssps/ssp_data.py:269-279</code></p>
+<p><code>ssp_data_afe.py:83-176</code> defines this contract. The strict
+loader requires a four-dimensional schema-2.x grid. It rejects legacy
+files that do not record resolution provenance
+(<code>lines 341-408</code>).</p>
+<p class="source-locator"><code>ceridwen/ceridwen/ssps/ssp_data.py:297-326</code></p>
 <pre class="python"><code>def __post_init__(self):
     """Validate grid consistency."""
     if self.ssp_flux.shape != (self.ssp_lgmet.size,
@@ -56,44 +61,56 @@ during loading (<code>lines 234-280</code>).</p>
             f"{self.ssp_wave.size}) but got {self.ssp_flux.shape}.  "
             f"Grid dimensions must be consistent (n_met, n_ages, n_wave)."
         )</code></pre>
-<p>The tuple on the right defines the axis contract. The flux cube must align exactly with the metallicity, age, and wavelength coordinate arrays.</p>
+<p>The tuple on the right defines the axis contract. The flux cube must
+align exactly with the metallicity, age, and wavelength coordinate
+arrays.</p>
 </section>
 <section id="available-grids" class="level2">
 <h2>Available grids</h2>
-<p><code>grid_fetch.py:53-103</code> registers:</p>
+<p><code>grid_fetch.py:57-153</code> registers these grids:</p>
 <ul>
-<li>MIST+MILES, Chabrier, solar-scaled.</li>
-<li>BPASS binary SSPs, Chabrier.</li>
-<li>aMIST+C3K low-resolution, Chabrier, five alpha planes.</li>
-<li>aMIST+C3K null control, currently unpublished.</li>
+<li>The MIST+MILES grid uses a Chabrier IMF and solar
+abundances.</li>
+<li>The BPASS grid contains binary SSPs and uses a Chabrier IMF.</li>
+<li>The low-resolution aMIST+C3K grid uses a Chabrier IMF and five
+alpha planes.</li>
+<li>The high-resolution aMIST+C3K grid uses a Kroupa IMF and five alpha
+planes.</li>
+<li>The aMIST+C3K null-control grid is currently unpublished.</li>
 </ul>
-<p><code>fetch_grid</code> caches by name, verifies SHA-256, downloads
-to a temporary file, then moves it atomically
-(<code>grid_fetch.py:125-194</code>).</p>
+<p><code>fetch_grid</code> caches each grid by name and checks its
+SHA-256 value. It downloads the grid to a temporary file. It then moves
+the file atomically (<code>grid_fetch.py:157-227</code>). The active
+notebooks request <code>amist_c3k_hr_krou_afe</code>. Its published
+schema-2.1 file has shape <code>(5, 13, 107, 10992)</code>.</p>
 </section>
 <section id="csp-construction" class="level2">
 <h2>CSP construction</h2>
-<p><code>CSPBasis</code> consumes a three-dimensional
-<code>SSPData</code>; <code>CSPBasis_afe</code> requires a
-four-dimensional <code>SSPDataAfe</code>. The alpha basis checks the
-leading axis and rejects an incompatible grid at
-<code>csp/csp_afe.py:318-353</code>.</p>
+<p><code>CSPBasis</code> uses a three-dimensional <code>SSPData</code>
+object. <code>CSPBasis_afe</code> requires a four-dimensional
+<code>SSPDataAfe</code> object. The alpha basis checks the leading axis
+and rejects an incompatible grid at
+<code>csp/csp_afe.py:367-404</code>.</p>
 <p>A CSP construction establishes static structure:</p>
 <ul>
-<li>increasing lookback-time nodes, today to oldest;</li>
-<li>an SFH value per node or bin;</li>
-<li>constant <code>Z</code> or time-varying <code>zh</code>;</li>
-<li>enabled dust, nebular, IGM, and smoothing components.</li>
+<li>The lookback-time nodes increase from today to the oldest
+time.</li>
+<li>Each node or bin has one SFH value.</li>
+<li>The metallicity is either constant <code>Z</code> or time-varying
+<code>zh</code>.</li>
+<li>The construction selects the dust, nebular, IGM, and smoothing
+components.</li>
 </ul>
-<p><code>CSPBasis.initialize_model_structure</code> validates this
-contract at <code>csp/csp.py:522-710</code>. <code>Z</code> and
-<code>zh</code> are both <code>log10</code> absolute metallicity, not
-<code>[Z/H]</code> and not <code>log10(Z/Z_sun)</code>
-(<code>csp/csp.py:1774-1802</code>).</p>
+<p><code>CSPBasis.initialize_model_structure</code> checks this contract
+at <code>csp/csp.py:544-732</code>. Both <code>Z</code> and
+<code>zh</code> store <code>log10</code> absolute metallicity. They do
+not store <code>[Z/H]</code> or <code>log10(Z/Z_sun)</code>
+(<code>csp/csp.py:1817-1842</code>).</p>
 </section>
 <section id="from-sfh-parameters-to-weights" class="level2">
 <h2>From SFH parameters to weights</h2>
-<p>The notebooks sample consecutive SFR log-ratios. The transform:</p>
+<p>The notebooks sample consecutive SFR log-ratios. The transform uses
+this sequence:</p>
 <pre class="text"><code>logsfr_ratios
       |
       v
@@ -101,12 +118,12 @@ cumulative log SFR -&gt; linear SFR -&gt; unit-mass normalization
       |
       v
 theta[&quot;sfh&quot;]</code></pre>
-<p><code>logsfr_ratios_to_sfh</code> implements this at
+<p><code>logsfr_ratios_to_sfh</code> implements this sequence at
 <code>ceridwen/ceridwen/model/transforms.py:79-169</code>. The CSP
-weight kernel then integrates that SFH over SSP age cells and
-interpolates metallicity (<code>csp/csp.py:1774-1946</code>). Thin
-wrappers select constant/time-varying metallicity and linear/step SFH
-behavior (<code>lines 1948-1981</code>).</p>
+weight kernel integrates the SFH over the SSP age cells. It also
+interpolates metallicity (<code>csp/csp.py:1817-2015</code>). Small
+wrappers select constant or time-varying metallicity. They also select
+linear or step SFH behavior (<code>lines 2017-2050</code>).</p>
 <p class="source-locator"><code>ceridwen/ceridwen/model/transforms.py:142-167</code></p>
 <pre class="python"><code>ratios  = jnp.asarray(logsfr_ratios, dtype=float)            # (n-1,)
 # Anchor log10(SFR[0]) = 0, then cumulate the negative ratios
@@ -134,16 +151,19 @@ if sfh_times_yr is not None:
 else:
     # Discrete fallback: sum(sfh) = 1.
     sfh = sfr / jnp.sum(sfr)</code></pre>
-<p>The first five lines reconstruct relative SFR values. The branch then normalizes either a time integral or a discrete sum, so the later <code>logmass</code> parameter controls total amplitude.</p>
+<p>The first five lines reconstruct relative SFR values. The branch then
+normalizes a time integral or a discrete sum. Therefore, the later
+<code>logmass</code> parameter controls the total amplitude.</p>
 </section>
 <section id="alpha-interpolation" class="level2">
 <h2>Alpha interpolation</h2>
-<p><code>CSPBasis_afe._afe_coords</code> finds the bracketing alpha
-planes and interpolation weight (<code>csp/csp_afe.py:823-846</code>).
-<code>_flux_at_afe</code> reads only those two planes and linearly
-interpolates them (<code>lines 848-878</code>). A one-plane grid
-compiles this operation away.</p>
-<p class="source-locator"><code>ceridwen/ceridwen/csp/csp_afe.py:870-878</code></p>
+<p><code>CSPBasis_afe._afe_coords</code> finds the two adjacent alpha
+planes and the interpolation weight
+(<code>csp/csp_afe.py:841-864</code>). <code>_flux_at_afe</code> reads
+only these two planes and interpolates them linearly
+(<code>lines 866-896</code>). A one-plane grid removes this operation
+during compilation.</p>
+<p class="source-locator"><code>ceridwen/ceridwen/csp/csp_afe.py:888-896</code></p>
 <pre class="python"><code>if self._n_afe == 1:
     return self.flux[0]
 if "afe" not in theta:
@@ -153,19 +173,25 @@ f_lo = jnp.take(self.flux, k - 1, axis=0)
 f_hi = jnp.take(self.flux, k,     axis=0)
 w32  = w.astype(jnp.float32)
 return (jnp.float32(1.0) - w32) * f_lo + w32 * f_hi</code></pre>
-<p>The two early returns handle static special cases. The general path gathers only the lower and upper alpha planes, then linearly blends them with <code>w</code>.</p>
+<p>The two early returns handle static special cases. The general path
+selects only the lower and upper alpha planes. It then combines them
+linearly with <code>w</code>.</p>
 </section>
 <section id="spectrum-and-prediction" class="level2">
 <h2>Spectrum and prediction</h2>
 <p>The weight calculation produces coefficients over metallicity and
-age. Those coefficients combine the SSP flux cube into a rest-frame
-spectrum; enabled physics modifies it. <code>predict</code> then applies
-mass, distance/redshift, and IGM scaling before projecting it into
-observation space (<code>csp/csp.py:1110-1174</code>,
-<code>1219-1338</code>).</p>
-<p><code>CSPBasis_afe</code> has no nebular model. It returns a zero
-line component and rejects line observations
-(<code>csp/csp_afe.py:1096-1177</code>).</p>
+age. These coefficients combine the SSP flux cube into a rest-frame
+spectrum. The enabled physics components modify this spectrum.
+<code>predict</code> then applies mass, distance, redshift, and IGM
+scaling. Finally, it projects the spectrum into observation space
+(<code>csp/csp.py:1139-1203</code>, <code>1303-1429</code>).</p>
+<p>During model setup, the CSP sends the grid
+<code>ssp_resolution</code> curve to each <code>Spectrum</code>. The
+observation subtracts that library width in quadrature. It then applies
+the requested instrumental and LOSVD broadening.</p>
+<p><code>CSPBasis_afe</code> does not contain a nebular model. It returns
+a zero line component and rejects line observations
+(<code>csp/csp_afe.py:1114-1195</code>).</p>
 </section>
 </section>
 </main>

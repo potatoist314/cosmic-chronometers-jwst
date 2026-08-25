@@ -18,30 +18,40 @@
 <h1>Notebook Map</h1>
 <section id="how-to-interpret-this-directory" class="level2">
 <h2>Scope</h2>
-<p>Active root notebooks are the project’s scientific entry points.
-Practice notebooks live separately under <code>notebooks/practice/</code>.
-Saved outputs are evidence only when cell source, execution order,
-inputs, and kernel still match.</p>
+<p>The active root notebooks are the project’s scientific entry points.
+The <code>notebooks/practice/</code> directory contains the practice
+notebooks. Saved outputs are evidence only when the cell source,
+execution order, inputs, and kernel still match.</p>
 </section>
 <section id="ceridwen-learning-sequence" class="level2">
 <h2>Ceridwen notebooks</h2>
 <p><code>ceridwen_test_spectra.ipynb</code> fits one LEGA-C spectrum. It
-loads the local high-resolution Kroupa grid
-<code>ceridwen/amist_c3k_hr_krou_afe.h5</code>, performs wavelength/flux
-conversion, constructs <code>Spectrum</code>, adds calibration noise,
-and runs BlackJAX nested sampling.</p>
+fetches the published high-resolution Kroupa grid with schema 2.1. It
+converts wavelength and flux, creates a <code>Spectrum</code>, and adds
+calibration noise. It then runs BlackJAX nested sampling. Its full
+profile uses 500 live points, 100 deletions, and 60 inner steps. It uses
+<code>logZ_tol=-5</code>.</p>
 <p><code>ceridwen_integrated_photometry_spectra.ipynb</code> combines
-both observation types into one <code>SedModel</code> and one
-<code>MultiObservationLikelihood</code>. It also uses the local
-high-resolution Kroupa grid and anchors spectrum normalization to
-photometry before a shared nested-sampling posterior. Its production
-GPU profile uses 300 live points, 25 deletions per iteration, and 40
-inner slice-sampling steps.</p>
+both observation types in one <code>SedModel</code> and one
+<code>MultiObservationLikelihood</code>. It uses the same published
+grid. It anchors the spectrum normalization to photometry before it
+calculates a shared nested-sampling posterior. Its full profile uses
+300 live points, 60 deletions, and 40 inner steps. It uses
+<code>logZ_tol=-5</code>.</p>
+<p>Both notebooks supply the observed FWHM resolving power with
+<code>res_convention="fwhm"</code>. Ceridwen reads the SSP resolution
+curve from the grid. It calculates the additional smoothing
+automatically.</p>
+<p>Both notebooks configure nested-sampling checkpoints every 20
+minutes. Each completed run also writes a rescue snapshot and a final
+reloadable <code>ceridwen_result.h5</code> file. A UTC-stamped results
+directory contains these files.</p>
 </section>
 <section id="practice" class="level2">
 <h2>Practice</h2>
-<p><code>notebooks/practice/fits-viewer.ipynb</code> contains one
-FITS-table inspection cell and is a viewer, not an analysis pipeline.</p>
+<p><code>notebooks/practice/fits-viewer.ipynb</code> contains one cell
+that inspects a FITS table. It is a viewer, not an analysis
+pipeline.</p>
 </section>
 <section id="kernels" class="level2">
 <h2>Kernels</h2>
@@ -61,6 +71,8 @@ Python 3.14 kernel.</li>
     num_inner_steps=joint_settings["num_inner_steps"],
     num_delete=joint_settings["num_delete"],
     logZ_tol=joint_settings["logZ_tol"],
+    checkpoint_interval_s=1200.0,
+    checkpoint_dir=str(RESULT_DIR),
 )
 joint_likelihood = MultiObservationLikelihood(
     keys=(phot_obs.name, spectrum_obs.name),
@@ -74,8 +86,13 @@ joint_result = run_sampler(
     joint_likelihood,
     joint_adapter,
     jax.random.PRNGKey(SEED),
-)</code></pre>
-<p>The adapter draws live points from every model prior. The notebook then normalizes the returned importance weights before posterior summaries.</p>
+)
+result_path = RESULT_DIR / "ceridwen_result.h5"
+write_result_h5(result_path, joint_model, joint_result)
+joint_result = load_result_h5(result_path)</code></pre>
+<p>The adapter draws live points from every model prior. The notebook
+then normalizes the returned importance weights before it calculates
+posterior summaries.</p>
 </section>
 </section>
 </main>

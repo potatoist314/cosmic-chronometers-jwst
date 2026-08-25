@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/wiki.css" />
   <meta name="wiki-type" content="synthesis">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-24">
+  <meta name="wiki-updated" content="2026-08-25">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -17,10 +17,10 @@
 <section id="astro-research-overview" class="level1">
 <h1>Overview</h1>
 <p>This repository develops age-based cosmology analyses for massive
-quiescent galaxies. Its primary interface is a sequence of notebooks;
-reusable numerical logic lives in <code>src/</code>, data preparation
-lives in <code>scripts/</code>, and Ceridwen is a separate SED-fitting
-submodule.</p>
+quiescent galaxies. Notebooks provide the main interface. The
+<code>src/</code> directory contains reusable calculations. The
+<code>scripts/</code> directory prepares data. Ceridwen is a separate
+SED-fitting submodule.</p>
 <section id="mental-model" class="level2">
 <h2>Project flow</h2>
 <pre class="text"><code>papers + raw catalogues
@@ -36,12 +36,13 @@ submodule.</p>
                             |                 |
                             v                 v
                      src/lick_inference   ceridwen/</code></pre>
-<p>The project has two related but distinct inference paths:</p>
+<p>The project has two related inference paths:</p>
 <ul>
-<li>Cosmic-chronometer notebooks turn galaxy ages into cosmological
-constraints.</li>
-<li>Stellar-population notebooks infer those ages from indices, spectra,
-or photometry using MILES, Prospector/FSPS, or Ceridwen.</li>
+<li>Cosmic-chronometer notebooks use galaxy ages to constrain
+cosmology.</li>
+<li>Stellar-population notebooks infer ages from indices, spectra, or
+photometry.</li>
+<li>These notebooks use MILES, Prospector with FSPS, or Ceridwen.</li>
 </ul>
 </section>
 <section id="ceridwen-mental-model" class="level2">
@@ -51,16 +52,16 @@ or photometry using MILES, Prospector/FSPS, or Ceridwen.</li>
                                                         v
                                       likelihood -&gt; sampler -&gt; SamplingResult</code></pre>
 <ul>
-<li>The SSP grid supplies precomputed spectra over age and
-composition.</li>
-<li>The CSP combines them according to an SFH and metallicity
+<li>The SSP grid supplies spectra for a range of ages and
+compositions.</li>
+<li>The CSP combines the spectra with an SFH and a metallicity
 history.</li>
-<li>Observations project one model spectrum into measured data
+<li>Each observation projects one model spectrum into measured data
 space.</li>
 <li><code>SedModel</code> manages parameters, transforms, priors, and
 predictions.</li>
-<li>The likelihood compares predictions with data; an adapter runs the
-sampler.</li>
+<li>The likelihood compares each prediction with the data.</li>
+<li>An adapter runs the sampler.</li>
 </ul>
 </section>
 <section id="read-a-real-entry-point" class="level2">
@@ -69,15 +70,17 @@ sampler.</li>
 <pre class="python"><code>from .ssps import SSPData
 from .csp import CSPBasis
 from .model import SedModel</code></pre>
-<p><code>SSPData</code>, <code>CSPBasis</code>, and <code>SedModel</code>
-are package-level exports in forward-model order.</p>
+<p>The package exports <code>SSPData</code>, <code>CSPBasis</code>, and
+<code>SedModel</code> in forward-model order.</p>
 </section>
 <section id="start-here" class="level2">
 <h2>Reading order</h2>
-<p>Read <a href="guides/reading-order.html">Reading order</a>, then <a href="codebase/project-map.html">Project map</a>. For the
-current Ceridwen work, continue through
-<a href="codebase/ceridwen-architecture.html">Ceridwen architecture</a> in linked order. Use
-<a href="guides/python-patterns.html">Python patterns</a> whenever a Python pattern is unfamiliar.</p>
+<p>First, read <a href="guides/reading-order.html">Reading order</a>.
+Then read <a href="codebase/project-map.html">Project map</a>. For the
+current Ceridwen work, continue with
+<a href="codebase/ceridwen-architecture.html">Ceridwen architecture</a>.
+Consult <a href="guides/python-patterns.html">Python patterns</a> when
+you find an unfamiliar Python pattern.</p>
 </section>
 </section>
 </main>

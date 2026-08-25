@@ -6,6 +6,8 @@
 - **2–3 lines.** Answer the question asked, nothing adjacent to it.
 - **Explanations should be in the tone of a casual conversation, not your default writing style**
 - **The goal of explanations is to build a coherent mental model**
+- Use plain-text equations in scientific and mathematical chat messages. Do not use rendered LaTeX.
+- Use the `asd-ste100` skill whenever you explain a technical detail.
 - **The user sets research direction.** Implement requested work directly.
 - Flag a major error in research direction, or something genuinely missed. Nothing else.
 - Do not argue. State a disagreement once, briefly; if the user restates, proceed.
@@ -19,12 +21,14 @@
 
 ## Repository and reproducibility conventions
 
+- Immediately commit and push completed, conflict-free work to the current branch; do not wait for a separate push request.
 - Use notebooks as the primary files for explanation,
   exploration, and presentation.
 - Notebook markdown cells are terse bullet points, roughly ten words each,
   saying what an otherwise unclear line of code does. No fluff, or restating results or numbers.
 - Use LaTeX for mathematical symbols and parameter names in figures.
 - Run full Ceridwen fits on Vast.ai CUDA GPUs; use local quick tests only.
+- Always use the BlackJAX NSS nested sampler for Ceridwen fits, never NUTS.
 - Keep raw data immutable. Produce processed data through documented scripts or
   functions.
 - Put one-time download and bookkeeping utilities in `scripts/`, not notebooks.

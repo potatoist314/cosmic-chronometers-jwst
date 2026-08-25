@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="codebase">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-24">
+  <meta name="wiki-updated" content="2026-08-25">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -17,36 +17,38 @@
 <section id="ceridwen-architecture" class="level1">
 <h1>Ceridwen Architecture</h1>
 <p>Ceridwen is a JAX-native stellar-population forward model and
-Bayesian fitting package. Its package root exposes <code>SSPData</code>,
-<code>CSPBasis</code>, <code>SedModel</code>, and <code>fitSED</code>
-(<code>ceridwen/ceridwen/__init__.py:30-44</code>).</p>
+Bayesian fitting package. The package root exports <code>SSPData</code>,
+<code>CSPBasis</code>, <code>SedModel</code>, configurable cosmology,
+and <code>fitSED</code>
+(<code>ceridwen/ceridwen/__init__.py:31-89</code>).</p>
 <section id="package-map" class="level2">
 <h2>Package map</h2>
 <ul>
-<li><code>ssps/</code>: load, generate, validate, and fetch SSP
-grids.</li>
-<li><code>csp/</code>: combine SSP spectra into a galaxy spectrum.</li>
-<li><code>dust/</code>, <code>neb/</code>, <code>igm.py</code>: optional
-physical components.</li>
-<li><code>observation/</code>: measured data and model-to-data
-projections.</li>
-<li><code>model/</code>: parameter bookkeeping, transforms, priors,
-prediction.</li>
-<li><code>likelihood/</code>: noise models and data-model
-comparison.</li>
-<li><code>sampler/</code>: priors, adapters, NUTS, nested sampling, and
-VI.</li>
-<li><code>cosmology.py</code>: differentiable distances, ages, and flux
-factors.</li>
-<li><code>fit.py</code>: high-level orchestration and result
-serialization.</li>
+<li>The <code>ssps/</code> package loads, generates, checks, and fetches
+SSP grids.</li>
+<li>The <code>csp/</code> package combines SSP spectra into a galaxy
+spectrum.</li>
+<li>The <code>dust/</code>, <code>neb/</code>, and <code>igm.py</code>
+modules provide optional physical components.</li>
+<li>The <code>observation/</code> package stores measured data and
+projects models into data space.</li>
+<li>The <code>model/</code> package manages parameters, transforms,
+priors, and predictions.</li>
+<li>The <code>likelihood/</code> package defines noise models and
+compares data with models.</li>
+<li>The <code>sampler/</code> package defines priors, adapters, NUTS,
+nested sampling, and VI.</li>
+<li><code>cosmology.py</code> calculates differentiable distances,
+ages, and flux factors.</li>
+<li><code>fit.py</code> controls high-level fits and saves results.</li>
 </ul>
-<p>Package <code>__init__.py</code> files show the intended public
-surface. Start there before opening implementation modules.</p>
+<p>The package <code>__init__.py</code> files show the intended public
+interface. Read these files before you inspect the implementation
+modules.</p>
 </section>
 <section id="end-to-end-call-graph" class="level2">
 <h2>End-to-end call graph</h2>
-<pre class="text"><code>SSPDataAfe.load(path)
+<pre class="text"><code>fetch_grid(name) -&gt; SSPDataAfe.load(path)
         |
         v
 CSPBasis_afe(ssp, theta=..., physics switches...)
@@ -72,37 +74,42 @@ Observation(...) ---- setup_for_model(csp.wave)
                      sampler adapter
                            |
                            v
-                    SamplingResult</code></pre>
+                    SamplingResult
+                           |
+                  checkpoints + HDF5</code></pre>
 </section>
 <section id="two-user-facing-fit-paths" class="level2">
 <h2>Fit paths</h2>
-<p><code>fitSED</code> is the high-level route. It builds default
-diagonal likelihoods, selects a sampler adapter, runs it, writes HDF5,
-and logs configuration and timings
+<p><code>fitSED</code> provides the high-level route. It creates default
+diagonal likelihoods and selects a sampler adapter. It runs the
+sampler, writes HDF5, and logs the configuration and timings
 (<code>ceridwen/ceridwen/fit.py:67-282</code>).</p>
-<p><code>run_sampler</code> is the lower-level route. The notebooks use
-it because they build custom <code>MultiObservationLikelihood</code> and
-<code>DiagonalNoiseModel</code> objects directly
+<p><code>run_sampler</code> provides the lower-level route. The notebooks
+use this route to create custom <code>MultiObservationLikelihood</code>
+and <code>DiagonalNoiseModel</code> objects
 (<code>ceridwen/ceridwen/sampler/runner.py:275-366</code>).</p>
 </section>
 <section id="static-versus-sampled-state" class="level2">
 <h2>Static versus sampled state</h2>
-<p>Static at model construction:</p>
+<p>These values stay static after model construction:</p>
 <ul>
-<li>SSP grid axes and flux cube.</li>
-<li>SFH grid length and observation types.</li>
-<li>Filter curves, pixel wavelengths, and projection matrices.</li>
-<li>Enabled physics components and likelihood structure.</li>
+<li>The SSP grid axes and flux cube stay static.</li>
+<li>The SFH grid length and observation types stay static.</li>
+<li>The filter curves, pixel wavelengths, and projection matrices stay
+static.</li>
+<li>The enabled physics components and likelihood structure stay
+static.</li>
 </ul>
-<p>Changed at each sampler step:</p>
+<p>These values change at each sampler step:</p>
 <ul>
-<li>Free parameter arrays in <code>theta</code>.</li>
-<li>Derived parameters computed by transforms.</li>
-<li>Spectrum, projected predictions, likelihood, and prior values.</li>
+<li>The free parameter arrays in <code>theta</code> change.</li>
+<li>The transforms calculate new derived parameter values.</li>
+<li>The spectrum, projected predictions, likelihood, and prior values
+change.</li>
 </ul>
-<p>Static structure lets JAX compile one numerical graph. Changing
-shapes, observation types, or dict keys usually requires a new
-trace.</p>
+<p>The static structure lets JAX compile one numerical graph. A change
+to shapes, observation types, or dictionary keys usually requires a
+new trace.</p>
 </section>
 <section id="code-walkthrough" class="level2">
 <h2>Examples</h2>
@@ -110,16 +117,20 @@ trace.</p>
 <pre class="python"><code>from .ssps import SSPData
 from .csp import CSPBasis
 from .model import SedModel</code></pre>
-<p>The package root exposes the three construction layers. Start with these names, then follow each relative import to its defining module.</p>
-<p class="source-locator"><code>ceridwen/ceridwen/model/model.py:287-292</code></p>
+<p>The package root exports the three construction layers. Start with
+these names. Then follow each relative import to the module that
+defines the name.</p>
+<p class="source-locator"><code>ceridwen/ceridwen/model/model.py:337-342</code></p>
 <pre class="python"><code>if not self.transforms:
     return free_theta
 model_theta = dict(free_theta)
 for derived_param, fn in self.transforms.items():
     model_theta[derived_param] = fn(free_theta)
 return model_theta</code></pre>
-<p>Transforms add derived values to a copy. Free sampler parameters stay present, while keys such as <code>sfh</code> are calculated before the CSP sees the dictionary.</p>
-<p class="source-locator"><code>ceridwen/ceridwen/model/model.py:345-351</code></p>
+<p>Each transform adds a derived value to a copy. The free sampler
+parameters remain in the copy. The transform calculates keys such as
+<code>sfh</code> before the CSP receives the dictionary.</p>
+<p class="source-locator"><code>ceridwen/ceridwen/model/model.py:395-401</code></p>
 <pre class="python"><code>if self._zred_fixed is not None and "zred" not in model_theta:
     if model_theta is theta:          # apply_transforms may not copy
         model_theta = dict(model_theta)
@@ -127,7 +138,9 @@ return model_theta</code></pre>
 # Mass scaling is handled inside csp.predict() — the spectrum is
 # scaled once before projection, rather than per-observation.
 return self.csp.predict(model_theta, self.observations)</code></pre>
-<p>This is the architectural handoff: <code>SedModel</code> completes parameter bookkeeping, then delegates all physical prediction and observation projection to the CSP.</p>
+<p><code>SedModel</code> first completes the parameter bookkeeping. It
+then sends the physical prediction and observation projection to the
+CSP.</p>
 </section>
 </section>
 </main>
