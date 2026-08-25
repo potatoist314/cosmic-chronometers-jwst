@@ -57,16 +57,28 @@
       <p>The bootstrap stops if Linux, NVIDIA access, or 12 GB of GPU
       memory is unavailable. It never uses the CPU as an unreported
       substitute.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:21-34</code></p>
+      <div class="source-example">
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:21-34 · GPU preflight</code></p>
       <pre><code>if ! command -v nvidia-smi &gt;/dev/null 2&gt;&amp;1; then
     echo "nvidia-smi is unavailable; launch a Vast.ai NVIDIA GPU instance." &gt;&amp;2
     exit 1
 fi
 
+GPU_MEMORY_MIB="$(
+    nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits \
+        | head -n 1 \
+        | tr -d ' '
+)"
 if (( GPU_MEMORY_MIB &lt; MINIMUM_GPU_MEMORY_MIB )); then
     echo "GPU has ${GPU_MEMORY_MIB} MiB; notebook 07 requires at least 12000 MiB." &gt;&amp;2
     exit 1
 fi</code></pre>
+      <p><strong>Documented contract:</strong> The README requires CUDA 12,
+      at least 12 GB of GPU memory, and at least 30 GB of disk
+      (<code>README.md:25-27</code>).</p>
+      <p><strong>Why it matters:</strong> The preflight stops before setup
+      when the instance cannot run a Ceridwen GPU fit.</p>
+      </div>
     </section>
 
     <section id="clone">
@@ -148,14 +160,22 @@ PY
       <p>The remote kernel requires CUDA and float64 for every notebook
       session. It also prevents the system CUDA path from replacing the
       installed JAX libraries.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:111-118</code></p>
+      <div class="source-example">
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:111-118 · kernel environment</code></p>
       <pre><code>kernel["env"] = {
     **kernel.get("env", {}),
+    "CERIDWEN_RESULTS_ROOT": str(project_root / "results"),
     "JAX_ENABLE_X64": "1",
     "JAX_PLATFORMS": "cuda",
     "LD_LIBRARY_PATH": "",
-    "CERIDWEN_RESULTS_ROOT": "/workspace/cosmic-chronometers-jwst/results",
-}</code></pre>
+}
+path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
+      <p><strong>Documented contract:</strong> The README requires the
+      Ceridwen GPU kernel to use CUDA, float64, and the project results path
+      (<code>README.md:53-58</code>).</p>
+      <p><strong>Why it matters:</strong> Every notebook session inherits
+      the verified backend and writes results outside the notebook directory.</p>
+      </div>
     </section>
 
     <section id="finish">

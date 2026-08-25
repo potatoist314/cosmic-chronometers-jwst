@@ -127,7 +127,8 @@ aligned. It masks nonfinite flux and nonpositive uncertainty
 </section>
 <section id="code-walkthrough" class="level2">
 <h2>Examples</h2>
-<p class="source-locator"><code>scripts/build_borghi2022_legac_dr2_subset.py:194-213</code></p>
+<div class="source-example">
+<p class="source-locator"><code>scripts/build_borghi2022_legac_dr2_subset.py:194-213 · main</code></p>
 <pre class="python"><code>rows_by_id: dict[int, list[int]] = defaultdict(list)
 for index, object_id in enumerate(dr2["OBJECT"]):
     rows_by_id[int(object_id)].append(index)
@@ -148,9 +149,15 @@ for borghi in borghi_rows:
     match_indices = sorted(
         rows_by_id[object_id], key=lambda i: str(dr2["SPECT_ID"][i])
     )</code></pre>
-<p><code>rows_by_id</code> maps one galaxy ID to a list of rows. This
+<p><strong>Documented contract:</strong> The module docstring defines this
+script as the Borghi Table 4 to LEGA-C DR2 join
+(<code>scripts/build_borghi2022_legac_dr2_subset.py:2</code>).</p>
+<p><strong>Why it matters:</strong> <code>rows_by_id</code> maps one
+galaxy ID to a list of rows. This
 type choice preserves repeat spectra during the join.</p>
-<p class="source-locator"><code>scripts/download_cosmos2015_legac_dr2_photometry.py:87-97</code></p>
+</div>
+<div class="source-example">
+<p class="source-locator"><code>scripts/download_cosmos2015_legac_dr2_photometry.py:87-97 · download_cosmos2015</code></p>
 <pre class="python"><code>order = np.lexsort(
     (
         np.asarray(candidates["MATCH_SEP_ARCSEC"]),
@@ -162,9 +169,14 @@ _, nearest = np.unique(
     np.asarray(candidates["LEGAC_INDEX"]), return_index=True
 )
 matched_batches.append(candidates[np.sort(nearest)])</code></pre>
-<p>The sort groups candidates by LEGA-C row and then by separation.
+<p><strong>Documented contract:</strong> The function docstring requires
+the nearest COSMOS2015 match within one arcsecond
+(<code>scripts/download_cosmos2015_legac_dr2_photometry.py:62</code>).</p>
+<p><strong>Why it matters:</strong> The sort groups candidates by LEGA-C
+row and then by separation.
 Therefore, <code>np.unique(..., return_index=True)</code> selects the
 nearest candidate in each group.</p>
+</div>
 </section>
 </section>
 </main>

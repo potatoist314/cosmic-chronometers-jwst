@@ -50,7 +50,8 @@ integrand for SciPy quadrature
 <p>The module ends at line 20. It imports <code>quad</code> but does not
 implement the full age integral. This module is a partial learning
 module, not a complete cosmology API.</p>
-<p class="source-locator"><code>src/cosmology.py:5-16</code></p>
+<div class="source-example">
+<p class="source-locator"><code>src/cosmology.py:5-16 · E, H, age_integrand</code></p>
 <pre class="python"><code>def E(z, omega_m):
     ''' Dimensionless hubble parameter, E(z) = H(z) / H (0) '''
     ''' Radiation neglible, curvature negligible, only matter and dark energy'''
@@ -63,9 +64,14 @@ def H(z, H0: u.Quantity[u.km/u.s/u.Mpc], omega_m):
 
 def age_integrand(z, omega_m):
     return 1/((1+z)*E(z, omega_m))</code></pre>
-<p><code>H</code> calls <code>E</code> for the dimensionless calculation.
+<p><strong>Documented contract:</strong> The inline documentation defines
+<code>E</code> as <code>H(z) / H(0)</code>. The decorator requires
+Astropy units for <code>H0</code> (<code>src/cosmology.py:5-12</code>).</p>
+<p><strong>Why it matters:</strong> <code>H</code> calls <code>E</code>
+for the dimensionless calculation.
 <code>age_integrand</code> also calls <code>E</code>. These calls show the
 module dependency direction.</p>
+</div>
 </section>
 <section id="srcmockspy" class="level2">
 <h2>Retained <code>src/mocks.py</code></h2>
@@ -93,7 +99,8 @@ noise, and seed (<code>lines 41-108</code>).</li>
 </ul>
 <p>All four sample arrays have shape <code>(n,)</code>. Ages and age
 uncertainties use Gyr. The redshift <code>z</code> is dimensionless.</p>
-<p class="source-locator"><code>src/mocks.py:86-97</code></p>
+<div class="source-example">
+<p class="source-locator"><code>src/mocks.py:86-97 · make_mock</code></p>
 <pre class="python"><code>rng = np.random.default_rng(seed)
 
 z = draw_redshifts(n, z_min, z_max, rng)
@@ -106,9 +113,13 @@ if intrinsic_scatter:
 systematic = age_offset + bias_per_unit_z * (z - z_min)
 noise = rng.normal(0.0, age_err, n)
 age_obs = age + systematic + noise</code></pre>
-<p>The cosmology creates <code>age</code>. Physical scatter modifies this
+<p><strong>Documented contract:</strong> The docstring defines every mock
+input and returns a <code>MockSample</code> (<code>src/mocks.py:54-84</code>).</p>
+<p><strong>Why it matters:</strong> The cosmology creates
+<code>age</code>. Physical scatter modifies this
 value. The systematic term and measurement noise then create the
 reported <code>age_obs</code>.</p>
+</div>
 </section>
 <p>Other inactive method modules remain in <code>src/</code> for
 reproducibility. This page does not include them in the current

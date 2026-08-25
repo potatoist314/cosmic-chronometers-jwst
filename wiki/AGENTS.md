@@ -89,6 +89,32 @@ Code pages must show short and exact source snippets. Include a file and line
 locator for each snippet. Explain each snippet in plain language. Use only
 sections that improve understanding.
 
+### Source-backed teaching blocks
+
+Technical pages must contain one or two source-backed teaching blocks. This
+rule applies to codebase pages, notebook pages, Python guides, and GPU workflow
+guides. Operational command examples do not count toward this limit.
+
+Each teaching block must contain these parts in this order:
+
+```html
+<div class="source-example">
+  <p class="source-locator"><code>path/to/file.py:10-20 · symbol_name</code></p>
+  <pre class="python"><code>exact source excerpt</code></pre>
+  <p><strong>Documented contract:</strong> Cited docstring, test, README, or script behavior.</p>
+  <p><strong>Why it matters:</strong> Plain explanation for the active Ceridwen path.</p>
+</div>
+```
+
+- Copy a contiguous source excerpt without edits or ellipses.
+- Use 5-20 lines unless a longer contract cannot be divided safely.
+- Name the class, function, test, notebook heading, or script entry point.
+- Cite the nearest public docstring first. Use a test when no useful docstring
+  exists. Use a maintained README or script help for operational workflows.
+- Keep the documented contract separate from the wiki explanation.
+- Label an uncited inference as `Project synthesis`.
+- Recheck every excerpt and locator against the live source before completion.
+
 ## Autonomous codebase workflow
 
 1. Read `index.md`, `overview.html`, and the relevant existing pages.

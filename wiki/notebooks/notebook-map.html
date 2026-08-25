@@ -59,14 +59,21 @@ mask removes its central band.</p>
 <p>Both modes compact the spectrum before Ceridwen builds the model.
 They retain two masked endpoint pixels. These endpoints preserve the
 same smoothing boundaries as the native 6,166-pixel spectrum.</p>
+<div class="source-example">
 <p class="source-locator"><code>notebooks/ceridwen_test_spectra.ipynb</code> · “Build the native-resolution spectrum” · <code>fit_pixel_mask</code> and <code>compact_indices</code></p>
 <pre class="python"><code>fit_pixel_mask = native_fit_mask.copy()
 if SPECTRUM_MODE == "features":
     fit_pixel_mask &amp;= feature_pixel_mask
 
+projection_anchor_indices = np.array([0, len(wave_vacuum) - 1])
 compact_indices = np.unique(
     np.concatenate((np.flatnonzero(fit_pixel_mask), projection_anchor_indices))
 )</code></pre>
+<p><strong>Documented contract:</strong> The notebook markdown requires
+compact arrays and two endpoint pixels for identical smoothing boundaries.</p>
+<p><strong>Why it matters:</strong> Full and feature modes use the same
+projection boundary while they select different likelihood pixels.</p>
+</div>
 <p><code>ceridwen_integrated_photometry_spectra.ipynb</code> combines
 both observation types in one <code>SedModel</code> and one
 <code>MultiObservationLikelihood</code>. It uses the same published
@@ -100,17 +107,9 @@ Python 3.14 kernel.</li>
 </section>
 <section id="notebook-code-in-context" class="level2">
 <h2>Examples</h2>
-<p class="source-locator"><code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> · “Joint posterior” · code cell 18</p>
-<pre class="python"><code>joint_adapter = BlackJAXNestedSamplerAdapter(
-    priors=joint_model.priors,
-    num_live=joint_settings["num_live"],
-    num_inner_steps=joint_settings["num_inner_steps"],
-    num_delete=joint_settings["num_delete"],
-    logZ_tol=joint_settings["logZ_tol"],
-    checkpoint_interval_s=1200.0,
-    checkpoint_dir=str(RESULT_DIR),
-)
-joint_likelihood = MultiObservationLikelihood(
+<div class="source-example">
+<p class="source-locator"><code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> · “Joint posterior” · <code>joint_likelihood</code> through <code>saved_result</code></p>
+<pre class="python"><code>joint_likelihood = MultiObservationLikelihood(
     keys=(phot_obs.name, spectrum_obs.name),
     likelihoods=(
         DiagonalGaussianLikelihood(),
@@ -125,10 +124,14 @@ joint_result = run_sampler(
 )
 result_path = RESULT_DIR / "ceridwen_result.h5"
 write_result_h5(result_path, joint_model, joint_result)
-joint_result = load_result_h5(result_path)</code></pre>
-<p>The adapter draws live points from every model prior. The notebook
-then normalizes the returned importance weights before it calculates
-posterior summaries.</p>
+saved_result = load_result_h5(result_path)
+assert saved_result.param_names == joint_result.param_names
+assert saved_result.log_likelihoods.shape == joint_result.log_likelihoods.shape</code></pre>
+<p><strong>Documented contract:</strong> The notebook markdown requires
+independent likelihoods, prior draws, checkpoints, and a saved posterior.</p>
+<p><strong>Why it matters:</strong> One sampler call combines both
+observation types. The reload checks preserve parameter and likelihood shapes.</p>
+</div>
 </section>
 </section>
 </main>

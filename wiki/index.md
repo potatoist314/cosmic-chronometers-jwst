@@ -5,6 +5,9 @@ Human entry point: `index.html` (updated 2026-08-25)
 Reader pages use responsive HTML, CSS, and inline SVG schematics. They do not
 require JavaScript or external diagram assets.
 
+Technical pages contain one or two source-backed teaching blocks. Each block
+pairs an exact code excerpt with source documentation and a plain explanation.
+
 ## Synthesis
 
 - `overview.html` — Explains the Ceridwen-first codebase flow and reading path.

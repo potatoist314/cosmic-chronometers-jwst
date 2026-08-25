@@ -127,17 +127,24 @@ from .model import SedModel</code></pre>
 <p>The package root exports the three construction layers. Start with
 these names. Then follow each relative import to the module that
 defines the name.</p>
-<p class="source-locator"><code>ceridwen/ceridwen/model/model.py:337-342</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/model/model.py:337-342 · SedModel.apply_transforms</code></p>
 <pre class="python"><code>if not self.transforms:
     return free_theta
 model_theta = dict(free_theta)
 for derived_param, fn in self.transforms.items():
     model_theta[derived_param] = fn(free_theta)
 return model_theta</code></pre>
-<p>Each transform adds a derived value to a copy. The free sampler
+<p><strong>Documented contract:</strong> The method docstring says the
+result keeps free parameters and adds every derived value
+(<code>ceridwen/ceridwen/model/model.py:313-336</code>).</p>
+<p><strong>Why it matters:</strong> Each transform adds a derived value
+to a copy. The free sampler
 parameters remain in the copy. The transform calculates keys such as
 <code>sfh</code> before the CSP receives the dictionary.</p>
-<p class="source-locator"><code>ceridwen/ceridwen/model/model.py:395-401</code></p>
+</div>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/model/model.py:395-401 · SedModel.predict</code></p>
 <pre class="python"><code>if self._zred_fixed is not None and "zred" not in model_theta:
     if model_theta is theta:          # apply_transforms may not copy
         model_theta = dict(model_theta)
@@ -145,9 +152,14 @@ parameters remain in the copy. The transform calculates keys such as
 # Mass scaling is handled inside csp.predict() — the spectrum is
 # scaled once before projection, rather than per-observation.
 return self.csp.predict(model_theta, self.observations)</code></pre>
-<p><code>SedModel</code> first completes the parameter bookkeeping. It
+<p><strong>Documented contract:</strong> The method docstring returns one
+prediction array for each observation name
+(<code>ceridwen/ceridwen/model/model.py:348-383</code>).</p>
+<p><strong>Why it matters:</strong> <code>SedModel</code> first completes
+the parameter bookkeeping. It
 then sends the physical prediction and observation projection to the
 CSP.</p>
+</div>
 </section>
 </section>
 </main>

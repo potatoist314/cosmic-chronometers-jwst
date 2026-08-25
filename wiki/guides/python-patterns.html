@@ -42,7 +42,8 @@ implementing the algorithm that produced them.</p>
 </ul>
 <p>The field names define the object’s data contract. Search for class
 construction to find the producing algorithm.</p>
-<p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:69-76</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:69-76 · SamplingResult</code></p>
 <pre class="python"><code>@dataclass
 class SamplingResult:
     """
@@ -51,8 +52,13 @@ class SamplingResult:
     All fields are backend-agnostic.  The sampler-specific raw output
     (e.g. a BlackJAX ``dead`` pytree) is preserved in ``raw`` for
     downstream processing.</code></pre>
-<p>All Ceridwen samplers return this container. Lines 118-128 define the
+<p><strong>Documented contract:</strong> The class docstring defines
+backend-independent samples, evidence, weights, diagnostics, and raw output
+(<code>ceridwen/ceridwen/sampler/runner.py:69-116</code>).</p>
+<p><strong>Why it matters:</strong> All Ceridwen samplers return this
+container. Lines 118-128 define the
 posterior, evidence, diagnostics, timing, and raw-output fields.</p>
+</div>
 </section>
 <section id="closure" class="level2">
 <h2>Closure</h2>
@@ -177,7 +183,8 @@ sampling.</li>
 <li><code>theta</code> arrays remain differentiable inside prediction:
 <code>ceridwen/ceridwen/model/model.py:348-401</code>.</li>
 </ul>
-<p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:348-358</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:348-358 · run_sampler.loglike_fn</code></p>
 <pre class="python"><code># ── Log-likelihood: sum over observations, no prior ───────────────────
 @jax.jit
 def loglike_fn(theta: dict[str, Array]) -&gt; Array:
@@ -189,10 +196,15 @@ def loglike_fn(theta: dict[str, Array]) -&gt; Array:
         lnl_k, _ = lhood(y_k, mu_k, sig_k, mask_k, params=theta)
         lnl = lnl + lnl_k
     return lnl</code></pre>
-<p><code>theta</code> contains traced numerical data. The code creates
+<p><strong>Documented contract:</strong> The parent docstring says this
+compiled function sums observation likelihoods without a prior term
+(<code>ceridwen/ceridwen/sampler/runner.py:275-310</code>).</p>
+<p><strong>Why it matters:</strong> <code>theta</code> contains traced
+numerical data. The code creates
 <code>_keys</code> and <code>_likelihoods</code> outside this function.
 JAX therefore sees a fixed loop structure. A different observation
 list usually requires new compilation.</p>
+</div>
 </section>
 </section>
 </main>

@@ -132,7 +132,8 @@ observation before model projection.</p>
       physical Volume path cannot change data resolution. It locates the
       published grid through <code>CERIDWEN_GRID_DIR</code>. It writes
       checkpoints and the final HDF5 result to the results Volume.</p>
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:284-298</code></p>
+      <div class="source-example">
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:285-297 · _execute_notebook</code></p>
       <pre><code>client = NotebookClient(
     document,
     timeout=None,
@@ -146,6 +147,12 @@ except Exception as exc:
 finally:
     nbformat.write(document, output_path)
     results_volume.commit()</code></pre>
+      <p><strong>Documented contract:</strong> The batch entry point
+      documents complete notebook execution on one Modal GPU
+      (<code>scripts/modal_ceridwen.py:312-319</code>).</p>
+      <p><strong>Why it matters:</strong> The <code>finally</code> block
+      saves the executed notebook and commits results after success or error.</p>
+      </div>
     </section>
 
     <section id="quick-validation">
@@ -199,13 +206,20 @@ volumes={
 },
 encrypted_ports=[JUPYTER_PORT],
 workdir=REMOTE_NOTEBOOK_ROOT.as_posix(),</code></pre>
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:427-432</code></p>
+      <div class="source-example">
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:427-432 · jupyter</code></p>
       <pre><code>try:
     sandbox.wait()
 except KeyboardInterrupt:
     print("Stopping the Modal Sandbox")
 finally:
     sandbox.terminate(wait=True)</code></pre>
+      <p><strong>Documented contract:</strong> The entry-point docstring
+      defines an attached JupyterLab Sandbox on one Modal GPU
+      (<code>scripts/modal_ceridwen.py:355-362</code>).</p>
+      <p><strong>Why it matters:</strong> Both normal interruption and errors
+      reach <code>terminate</code>, which releases the paid GPU container.</p>
+      </div>
     </section>
 
     <section id="results">

@@ -107,16 +107,22 @@ that exact submodule commit.</p>
 </section>
 <section id="read-the-scaffold" class="level2">
 <h2><code>main.py</code></h2>
-<p class="source-locator"><code>main.py:1-6</code></p>
+<div class="source-example">
+<p class="source-locator"><code>main.py:1-6 · main</code></p>
 <pre class="python"><code>def main():
     print("Hello from astro-project!")
 
 
 if __name__ == "__main__":
     main()</code></pre>
-<p>The guard calls <code>main()</code> only when Python runs this file
+<p><strong>Documented contract:</strong> The project README names the
+Ceridwen notebooks as the active scientific entry points
+(<code>README.md:1-21</code>).</p>
+<p><strong>Why it matters:</strong> The guard calls <code>main()</code>
+only when Python runs this file
 directly. <code>main()</code> only prints a greeting. Therefore, this
 file is a package scaffold, not a scientific entry point.</p>
+</div>
 </section>
 </section>
 </main>

@@ -108,7 +108,8 @@ time-order conventions do not change the physics silently.</p>
 </section>
 <section id="read-two-tests-literally" class="level2">
 <h2>Examples</h2>
-<p class="source-locator"><code>ceridwen/tests/test_csp_construction.py:48-61</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/tests/test_csp_construction.py:48-61 · test_shortcut_matches_full_theta_structure</code></p>
 <pre class="python"><code>def test_shortcut_matches_full_theta_structure(ssp):
     lb = jnp.linspace(0.0, 12.0, 6)
     via_theta = CSPBasis(
@@ -123,10 +124,16 @@ time-order conventions do not change the physics silently.</p>
     assert via_shortcut.zh_is_scalar is True          # zh_const -&gt; 'Z' mode
     # Neutral initial Z must lie inside the grid: no clamp messages.
     assert via_shortcut.check_param_ranges(warn=False) == []</code></pre>
-<p>Two construction routes receive equivalent inputs. Each assertion
+<p><strong>Documented contract:</strong> The test requires both
+construction routes to produce the same time grid and parameter modes
+(<code>ceridwen/tests/test_csp_construction.py:48-61</code>).</p>
+<p><strong>Why it matters:</strong> Two construction routes receive
+equivalent inputs. Each assertion
 checks one part of that equivalence. These parts are the grid, node
 count, SFH representation, metallicity mode, and range validity.</p>
-<p class="source-locator"><code>ceridwen/tests/test_observation_predictive.py:35-47</code></p>
+</div>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/tests/test_observation_predictive.py:35-47 · test_fluxless_spectrum_setup_and_predict</code></p>
 <pre class="python"><code>def test_fluxless_spectrum_setup_and_predict():
     wave_obs = np.linspace(4000.0, 8000.0, 50)
     spec = Spectrum(wavelength=wave_obs, name="predictive")
@@ -140,8 +147,13 @@ count, SFH representation, metallicity mode, and range validity.</p>
     pred = spec.predict(jnp.ones(wave_model.size), wave_model)
     assert pred.shape == (wave_obs.size,)
     np.testing.assert_allclose(np.asarray(pred), 1.0, rtol=1e-6)</code></pre>
-<p>The constant spectrum is a limiting case with a known answer. The
+<p><strong>Documented contract:</strong> The test requires a fluxless
+Spectrum to project a constant model without changing its value
+(<code>ceridwen/tests/test_observation_predictive.py:35-47</code>).</p>
+<p><strong>Why it matters:</strong> The constant spectrum is a limiting
+case with a known answer. The
 test checks the output shape and the numerical invariant.</p>
+</div>
 </section>
 </section>
 </main>

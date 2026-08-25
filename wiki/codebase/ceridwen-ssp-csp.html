@@ -58,7 +58,8 @@ files that do not record resolution provenance
 </ol>
 <figcaption id="ssp-axes-caption"><code>SSPDataAfe.ssp_flux</code> follows this four-axis order.</figcaption>
 </figure>
-<p class="source-locator"><code>ceridwen/ceridwen/ssps/ssp_data.py:297-326</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/ssps/ssp_data.py:297-307 · SSPData.__post_init__</code></p>
 <pre class="python"><code>def __post_init__(self):
     """Validate grid consistency."""
     if self.ssp_flux.shape != (self.ssp_lgmet.size,
@@ -70,9 +71,14 @@ files that do not record resolution provenance
             f"{self.ssp_wave.size}) but got {self.ssp_flux.shape}.  "
             f"Grid dimensions must be consistent (n_met, n_ages, n_wave)."
         )</code></pre>
-<p>The tuple on the right defines the axis contract. The flux cube must
+<p><strong>Documented contract:</strong> The class docstring defines the
+metallicity, age, wavelength, and flux-array shapes
+(<code>ceridwen/ceridwen/ssps/ssp_data.py:227-261</code>).</p>
+<p><strong>Why it matters:</strong> The tuple on the right defines the
+axis contract. The flux cube must
 align exactly with the metallicity, age, and wavelength coordinate
 arrays.</p>
+</div>
 </section>
 <section id="available-grids" class="level2">
 <h2>Available grids</h2>
@@ -182,7 +188,8 @@ during compilation.</p>
 </ol>
 <figcaption id="alpha-interpolation-caption">Only two neighbouring alpha planes enter each interpolation.</figcaption>
 </figure>
-<p class="source-locator"><code>ceridwen/ceridwen/csp/csp_afe.py:888-896</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/csp/csp_afe.py:888-896 · CSPBasis_afe._flux_at_afe</code></p>
 <pre class="python"><code>if self._n_afe == 1:
     return self.flux[0]
 if "afe" not in theta:
@@ -192,9 +199,14 @@ f_lo = jnp.take(self.flux, k - 1, axis=0)
 f_hi = jnp.take(self.flux, k,     axis=0)
 w32  = w.astype(jnp.float32)
 return (jnp.float32(1.0) - w32) * f_lo + w32 * f_hi</code></pre>
-<p>The two early returns handle static special cases. The general path
+<p><strong>Documented contract:</strong> The method docstring specifies a
+two-plane linear interpolation and two static fallback paths
+(<code>ceridwen/ceridwen/csp/csp_afe.py:866-887</code>).</p>
+<p><strong>Why it matters:</strong> The two early returns handle static
+special cases. The general path
 selects only the lower and upper alpha planes. It then combines them
 linearly with <code>w</code>.</p>
+</div>
 </section>
 <section id="spectrum-and-prediction" class="level2">
 <h2>Spectrum and prediction</h2>

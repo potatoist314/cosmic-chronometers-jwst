@@ -102,7 +102,8 @@ these static pairs and sums their log-likelihoods
 <p>Different observation types can retain different units. Each
 residual is divided by an uncertainty with the same units. The code
 then adds the scalar log-likelihoods.</p>
-<p class="source-locator"><code>ceridwen/ceridwen/likelihood/likelihood.py:866-872</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/likelihood/likelihood.py:866-872 · MultiObservationLikelihood.__call__</code></p>
 <pre class="python"><code>lnl_total = jnp.zeros(())
 aux: dict[str, LikelihoodOutput] = {}
 for key, lhood in zip(self.keys, self.likelihoods):
@@ -110,9 +111,14 @@ for key, lhood in zip(self.keys, self.likelihoods):
     lnl_total    = lnl_total + lnl_i
     aux[key]     = aux_i
 return lnl_total, aux</code></pre>
-<p>The same key selects the data, prediction, uncertainty, and mask.
+<p><strong>Documented contract:</strong> The method docstring returns the
+sum and a diagnostic object for each observation
+(<code>ceridwen/ceridwen/likelihood/likelihood.py:848-865</code>).</p>
+<p><strong>Why it matters:</strong> The same key selects the data,
+prediction, uncertainty, and mask.
 Each observation type returns one scalar contribution. The function
 sums these contributions.</p>
+</div>
 </section>
 <section id="prior" class="level2">
 <h2>Prior</h2>
@@ -214,10 +220,14 @@ default <code>logZ_tol</code> is <code>-5</code>
 </ol>
 <figcaption id="nss-lifecycle-caption">BlackJAX NSS turns prior draws into weighted posterior samples and evidence.</figcaption>
 </figure>
-<p class="source-locator"><code>ceridwen/ceridwen/sampler/nested.py:370-384</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/nested.py:369-382 · BlackJAXNestedSamplerAdapter.run</code></p>
 <pre class="python"><code>rng_key, prior_key = jax.random.split(rng_key)
 particles = self._sample_prior(theta_init, prior_key)
 
+# ── Build NSS kernel ──────────────────────────────────────────────
+# loglike_fn / logprior_fn operate on a SINGLE particle (un-batched).
+# The NSS step_fn vmaps internally over the live-point ensemble.
 nested_sampler = blackjax.nss(
     logprior_fn      = logprior_fn,
     loglikelihood_fn = loglike_fn,
@@ -226,11 +236,16 @@ nested_sampler = blackjax.nss(
 )
 init_fn = jax.jit(nested_sampler.init)
 step_fn = jax.jit(nested_sampler.step)</code></pre>
-<p><code>anesthetic</code> calculates evidence and importance weights
+<p><strong>Documented contract:</strong> The adapter docstring requires a
+proper prior for every free parameter and defines live-point sampling
+(<code>ceridwen/ceridwen/sampler/nested.py:88-142</code>).</p>
+<p><strong>Why it matters:</strong> <code>anesthetic</code> calculates
+evidence and importance weights
 for the completed dead points
 (<code>sampler/nested.py:502-529</code>). Normalize or resample these
 weights before you calculate posterior percentiles, predictive draws,
 or derived SFHs.</p>
+</div>
 </section>
 <section id="checkpoints" class="level2">
 <h2>Checkpoints</h2>

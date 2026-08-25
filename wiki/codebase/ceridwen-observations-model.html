@@ -52,7 +52,8 @@ automatically (<code>lines 189-233</code>).</p>
 <p>Forward prediction can use an observation without flux values. The
 observation must contain known filters or a known wavelength grid
 (<code>base.py:194-202</code>).</p>
-<p class="source-locator"><code>ceridwen/ceridwen/observation/base.py:204-216</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/observation/base.py:204-216 · Observation.rectify</code></p>
 <pre class="python"><code>assert self.flux.ndim == 1,        "flux must be 1-D"
 assert self.uncertainty is not None, "uncertainty is required when flux is provided"
 assert self.uncertainty.ndim == 1, "uncertainty must be 1-D"
@@ -66,9 +67,14 @@ if self.wavelength is not None:
 
 self._automask()
 assert self.ndof &gt; 0, "no valid unmasked data points after masking"</code></pre>
-<p>The assertions define the data contract. The input arrays must be
+<p><strong>Documented contract:</strong> The base-class docstring defines
+flux, one-sigma uncertainty, and a mask where <code>True</code> includes
+the datum (<code>ceridwen/ceridwen/observation/base.py:25-46</code>).</p>
+<p><strong>Why it matters:</strong> The assertions define the data
+contract. The input arrays must be
 one-dimensional and aligned. Automatic masking must leave at least one
 usable datum.</p>
+</div>
 </section>
 <section id="projection-contract" class="level2">
 <h2>Projection contract</h2>
@@ -117,7 +123,8 @@ instrumental resolution is a FWHM value. With
 curve. It applies only the additional width required in quadrature
 (<code>lines 291-366</code>). The project GPU workflows pin sedpy_jax
 commit <code>0291d58</code>, which accepts that per-pixel array.</p>
-<p class="source-locator"><code>ceridwen/ceridwen/observation/spectrum.py:736-750</code></p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/observation/spectrum.py:736-750 · Spectrum.predict</code></p>
 <pre class="python"><code>if self.fit_sigma_smooth:
     if sigma_smooth is None:
         # Fall back to the constructor default; lets a caller
@@ -133,8 +140,13 @@ commit <code>0291d58</code>, which accepts that per-pixel array.</p>
     sv = jnp.asarray(sigma_smooth).reshape(())
     return self._predict_fn(spectrum, sv)
 return self._predict_fn(spectrum)</code></pre>
-<p>Both branches call the closure that setup prepared. Only the fitted
+<p><strong>Documented contract:</strong> The method docstring requires
+prior setup and returns model <code>F_nu</code> on the observed pixels
+(<code>ceridwen/ceridwen/observation/spectrum.py:686-725</code>).</p>
+<p><strong>Why it matters:</strong> Both branches call the closure that
+setup prepared. Only the fitted
 velocity branch supplies a traced smoothing parameter.</p>
+</div>
 </section>
 <section id="lines" class="level3">
 <h3>Lines</h3>
