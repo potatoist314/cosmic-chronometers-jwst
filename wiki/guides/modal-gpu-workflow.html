@@ -134,6 +134,9 @@ observation before model projection.</p>
   scripts/modal_ceridwen.py::batch \
   --notebook spectra --profile full \
   --spectrum-mode features</code></pre>
+      <p>The batch entry point creates a spawned Modal function call and
+      then waits for its result. The spawned GPU call remains independent
+      if the local entry point is canceled.</p>
       <p>The notebook reads raw inputs from the mounted data Volume. It
       receives <code>CERIDWEN_PROJECT_ROOT=/workspace</code> so the
       physical Volume path cannot change data resolution. It locates the
@@ -141,7 +144,7 @@ observation before model projection.</p>
       checkpoints, both HDF5 output files, and execution timing to the
       results Volume.</p>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:299-314 · _execute_notebook</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:300-315 · _execute_notebook</code></p>
       <pre><code>finally:
     execution_completed_at = datetime.now(UTC)
     execution_timing = {
@@ -160,7 +163,8 @@ observation before model projection.</p>
     results_volume.commit()</code></pre>
       <p><strong>Documented contract:</strong> The batch entry point
       documents complete notebook execution on one Modal GPU
-      (<code>scripts/modal_ceridwen.py:329-336</code>).</p>
+      (<code>scripts/modal_ceridwen.py:330-337</code>). It creates the
+      detached function call at <code>scripts/modal_ceridwen.py:345-356</code>.</p>
       <p><strong>Why it matters:</strong> The <code>finally</code> block
       commits outputs and timing after success or error. The persistent
       Volume outlives the GPU container.</p>
@@ -207,7 +211,7 @@ observation before model projection.</p>
       <p>The one-hour limit terminates the Sandbox if the local stop
       path does not run. Use <code>--hours</code> to select a limit of up
       to 24 hours.</p>
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:420-430</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:422-432</code></p>
       <pre><code>gpu=gpu,
 cpu=4,
 memory=16384,
@@ -219,7 +223,7 @@ volumes={
 encrypted_ports=[JUPYTER_PORT],
 workdir=REMOTE_NOTEBOOK_ROOT.as_posix(),</code></pre>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:445-450 · jupyter</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:447-452 · jupyter</code></p>
       <pre><code>try:
     sandbox.wait()
 except KeyboardInterrupt:
@@ -228,7 +232,7 @@ finally:
     sandbox.terminate(wait=True)</code></pre>
       <p><strong>Documented contract:</strong> The entry-point docstring
       defines an attached JupyterLab Sandbox on one Modal GPU
-      (<code>scripts/modal_ceridwen.py:373-380</code>).</p>
+      (<code>scripts/modal_ceridwen.py:375-382</code>).</p>
       <p><strong>Why it matters:</strong> Both normal interruption and errors
       reach <code>terminate</code>, which releases the paid GPU container.</p>
       </div>
@@ -258,9 +262,9 @@ finally:
         catalogues, photometry, spectra, grid shape, and checksum.</li>
         <li><code>scripts/modal_ceridwen.py:223-253</code> fetches and
         checks the published grid on Modal.</li>
-        <li><code>scripts/modal_ceridwen.py:264-358</code> runs the
+        <li><code>scripts/modal_ceridwen.py:264-361</code> runs the
         bounded batch job and saves the notebook output.</li>
-        <li><code>scripts/modal_ceridwen.py:361-454</code> controls the
+        <li><code>scripts/modal_ceridwen.py:364-456</code> controls the
         Jupyter Sandbox, tunnel, timeout, and termination.</li>
         <li><code>astro-ceridwen-results/batch-20260825T151156339684Z/ceridwen_test_spectra.executed.ipynb</code>
         contains the quick-run output on Modal.</li>

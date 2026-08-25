@@ -17,7 +17,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 - `guides/reading-order.html` — Gives an ordered path through the active Ceridwen workflow.
 - `guides/python-patterns.html` — Python and JAX patterns used here.
 - `guides/vast-ai-gpu-workflow.html` — Explains Vast A100 selection, the tested Croatia host, setup, and saved results.
-- `guides/modal-gpu-workflow.html` — Explains Modal inputs, detached A100 runs, spectrum modes, and persistent outputs.
+- `guides/modal-gpu-workflow.html` — Explains Modal inputs, spawned detached A100 runs, spectrum modes, and persistent outputs.
 
 ## Codebase
 

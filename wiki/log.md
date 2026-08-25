@@ -114,3 +114,8 @@
 
 - Pages: `notebooks/notebook-map.html`, `guides/modal-gpu-workflow.html`, `index.md`
 - Change: Documented detached Modal runs, persistent timing, posterior predictions, and star-formation histories.
+
+## [2026-08-25] codebase | Detached Modal function calls
+
+- Pages: `guides/modal-gpu-workflow.html`, `index.md`
+- Change: Made batch notebook execution independent of local-entrypoint cancellation and recorded interrupted timing states.

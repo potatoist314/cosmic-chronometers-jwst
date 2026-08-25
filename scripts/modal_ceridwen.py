@@ -290,9 +290,10 @@ def _execute_notebook(notebook: str, profile: str, spectrum_mode: str) -> str:
     )
     execution_started_at = datetime.now(UTC)
     execution_start_time = time.perf_counter()
-    execution_status = "completed"
+    execution_status = "interrupted"
     try:
         client.execute()
+        execution_status = "completed"
     except Exception as exc:
         execution_status = "failed"
         raise RuntimeError(f"Notebook execution failed: {exc}") from None
@@ -344,13 +345,15 @@ def batch(
     run_id = _run_id(f"batch-{spectrum_mode}")
     run_results = results_volume.with_mount_options(sub_path=run_id)
     print(f"Starting Modal run {run_id!r}")
-    output_name = _execute_notebook.with_options(
+    function_call = _execute_notebook.with_options(
         gpu=gpu,
         volumes={
             REMOTE_DATA_ROOT: read_only_inputs,
             REMOTE_NOTEBOOK_ROOT: run_results,
         },
-    ).remote(notebook, profile, spectrum_mode)
+    ).spawn(notebook, profile, spectrum_mode)
+    print(f"Modal function call {function_call.object_id!r}")
+    output_name = function_call.get()
     print(f"Completed Modal run {run_id!r}: {output_name}")
     print(
         "Download with: uvx modal volume get "
