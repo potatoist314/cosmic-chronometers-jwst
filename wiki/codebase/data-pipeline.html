@@ -17,22 +17,27 @@
 <section id="data-pipeline" class="level1">
 <h1>Data Pipeline</h1>
 <section id="mental-model" class="level2">
-<h2>Flow</h2>
-<pre class="text"><code>Borghi Table 4              LEGA-C DR2 catalogue
-ages, [Z/H], [alpha/Fe]     z, sigma*, Lick indices, filenames
-          \                  /
-           \---- object ID --/
-                    |
-                    v
-       processed joined spectrum rows
-          /                       \
-         v                         v
-  Lick-index inference       individual FITS spectra
-                                  |
-COSMOS2015 photometry -------------+
-                                  |
-                                  v
-                    photometric / spectral observations</code></pre>
+<h2>Active Ceridwen flow</h2>
+<figure class="diagram" aria-labelledby="data-flow-caption">
+<ul class="diagram-branches" style="--diagram-columns: 3">
+<li class="diagram-node"><strong>LEGA-C DR2</strong><small>Selected and converted spectrum</small></li>
+<li class="diagram-node"><strong>COSMOS2015</strong><small>Matched photometry</small></li>
+<li class="diagram-node"><strong>Ceridwen SSP grid</strong><small>Published population spectra</small></li>
+</ul>
+<svg class="diagram-connector is-branch" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-labelledby="data-merge-title data-merge-desc">
+<title id="data-merge-title">Data inputs converge</title>
+<desc id="data-merge-desc">The selected spectrum, matched photometry, and SSP grid enter one Ceridwen fit.</desc>
+<defs><marker id="data-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+<path d="M50 0 V14 L150 30 M150 0 V30 M250 0 V14 L150 30 V38" marker-end="url(#data-arrow)" />
+</svg>
+<ol class="diagram-sequence" style="--diagram-columns: 3">
+<li><strong>Observation objects</strong><small>Spectrum and Photometry</small></li>
+<li><strong>SedModel</strong><small>Shared prediction</small></li>
+<li><strong>BlackJAX NSS</strong><small>Sampled posterior</small></li>
+</ol>
+<p class="diagram-note">Borghi Table 4 supplies a separate reference comparison.</p>
+<figcaption id="data-flow-caption">Three source products enter the active fit through documented conversions.</figcaption>
+</figure>
 </section>
 <section id="raw-catalogues" class="level2">
 <h2>Raw catalogues</h2>
@@ -40,11 +45,13 @@ COSMOS2015 photometry -------------+
 contains 140 unique galaxies. It includes published ages,
 <code>[Z/H]</code>, <code>[alpha/Fe]</code>, coordinates, and errors. It
 does not include redshift, velocity dispersion, or indices
-(<code>data/raw/borghi2022/README.md</code>).</p>
+(<code>data/raw/borghi2022/README.md</code>). The active workflow uses
+these values for reference comparisons.</p>
 <p><code>data/raw/legac_dr2/legaCdr2.fits.gz</code> contains 1,988
-spectrum rows. It supplies redshifts, velocity dispersions, Lick
-indices, flags, coordinates, and spectrum filenames. Repeat
-observations make some object IDs nonunique
+spectrum rows. It supplies redshifts, velocity dispersions, flags,
+coordinates, and spectrum filenames. It also retains measurements for
+earlier inactive methods. Repeat observations make some object IDs
+nonunique
 (<code>data/raw/legac_dr2/README.md</code>).</p>
 <p><code>data/raw/cosmos2015/</code> contains positional matches for
 NUVrJ selection and broadband fluxes. Each catalogue row matches a
@@ -52,7 +59,7 @@ LEGA-C spectrum row. Therefore, an object can occur more than once
 (<code>data/raw/cosmos2015/README.md</code>).</p>
 </section>
 <section id="joined-borghi-and-lega-c-tables" class="level2">
-<h2>Joined Borghi and LEGA-C tables</h2>
+<h2>Selection and comparison tables</h2>
 <p>The builder parses and checks exactly 140 Borghi IDs
 (<code>scripts/build_borghi2022_legac_dr2_subset.py:109-122</code>). It
 indexes every LEGA-C row by <code>OBJECT</code>

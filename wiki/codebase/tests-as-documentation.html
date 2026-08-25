@@ -22,6 +22,15 @@ can make tests easier to read than long implementation files.</p>
 <p>The root Astro project currently has no project-owned
 <code>tests/</code> directory. Ceridwen contains focused unit tests,
 misuse tests, regression tests, and grid-dependent tests.</p>
+<figure class="diagram" aria-labelledby="test-contract-caption">
+<ul class="diagram-branches" style="--diagram-columns: 4">
+<li class="diagram-node"><strong>Construction tests</strong><small>Shapes and parameter modes</small></li>
+<li class="diagram-node"><strong>Projection tests</strong><small>Units and limiting cases</small></li>
+<li class="diagram-node"><strong>Sampler tests</strong><small>Checkpoints and output</small></li>
+<li class="diagram-node"><strong>Regression tests</strong><small>Preserved physical behavior</small></li>
+</ul>
+<figcaption id="test-contract-caption">Each test family records a different Ceridwen contract.</figcaption>
+</figure>
 <section id="recommended-reading-path" class="level2">
 <h2>Test map</h2>
 <section id="constructing-a-csp" class="level3">

@@ -4,6 +4,13 @@ This directory contains an LLM-maintained guide to the Astro project codebase.
 Codex maintains the guide so the user can learn to read the code. The user
 selects the research direction and scientific methodology.
 
+## Current scope
+
+- Make Ceridwen the primary path in navigation, explanations, and examples.
+- Treat Prospector, MilesPy, and Lick-index work as inactive history.
+- Keep historical facts only when they explain retained code or data.
+- Do not present an inactive method as a current analysis option.
+
 ## Boundaries
 
 - During wiki-only work, treat project code, notebooks, `papers/`, `data/raw/`,
@@ -43,6 +50,21 @@ remain in Markdown. Store shared presentation rules in `assets/wiki.css`.
 - Do not use prompts such as “Read it.”
 - Use literal navigation labels. Prefer short lists to cards and callouts.
 - Add a reading exercise only when the user requests one.
+
+### Diagram conventions
+
+- Use a diagram when it makes a flow, branch, hierarchy, or comparison easier
+  to understand than prose.
+- Use semantic HTML and shared classes from `assets/wiki.css` for sequences,
+  lanes, and labelled nodes.
+- Use inline SVG only for connectors that HTML and CSS cannot show clearly.
+- Keep all diagram labels in HTML so they reflow at narrow widths.
+- Give every diagram a short caption. Give meaningful SVG elements a
+  `<title>` and `<desc>`.
+- Pair colour with text, position, or line style. Do not use colour alone.
+- Use links only when a diagram is part of navigation.
+- Do not use Mermaid, JavaScript, external assets, or generated plot images.
+- Check diagrams at 360, 736, and 1024 pixels. Check dark mode and print.
 
 Each generated HTML page must include:
 

@@ -43,19 +43,36 @@
 
     <section id="model">
       <h2>Mental model</h2>
-      <pre><code>local terminal ---- Modal request ----&gt; Sandbox container
-                                             |
-                         +-------------------+-------------------+
-                         |                   |                   |
-                    A100 GPU          mounted Volumes      JupyterLab
-                                                                 |
-                                                           browser GUI</code></pre>
+      <figure class="diagram" aria-labelledby="modal-topology-caption">
+        <div class="diagram-node"><strong>Local terminal</strong><small>Sends one Modal request</small></div>
+        <svg class="diagram-connector" viewBox="0 0 20 40" preserveAspectRatio="none" aria-hidden="true"><path d="M10 0 V38" /></svg>
+        <div class="diagram-node is-primary"><strong>Sandbox container</strong><small>Python, JAX, and Ceridwen</small></div>
+        <svg class="diagram-connector is-branch" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-labelledby="modal-branch-title modal-branch-desc">
+          <title id="modal-branch-title">Sandbox resources</title>
+          <desc id="modal-branch-desc">The Sandbox connects the A100 GPU, mounted Volumes, and optional JupyterLab.</desc>
+          <defs><marker id="modal-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+          <path d="M150 0 V12 M150 12 H50 V38 M150 12 V38 M150 12 H250 V38" marker-end="url(#modal-arrow)" />
+        </svg>
+        <ul class="diagram-branches" style="--diagram-columns: 3">
+          <li class="diagram-node"><strong>A100 GPU</strong><small>Numerical execution</small></li>
+          <li class="diagram-node"><strong>Mounted Volumes</strong><small>Inputs and results</small></li>
+          <li class="diagram-node"><strong>JupyterLab</strong><small>Optional browser interface</small></li>
+        </ul>
+        <figcaption id="modal-topology-caption">The browser shows JupyterLab, but Python and JAX run inside the Sandbox.</figcaption>
+      </figure>
       <p>A Sandbox is one active container. JupyterLab is one program in
       that container. The browser displays JupyterLab. Python and JAX
       run in the container.</p>
       <p>Batch mode starts the same container type without Jupyter. It
       runs every notebook cell and saves the executed notebook. Modal
       then releases the GPU.</p>
+      <figure class="diagram" aria-labelledby="modal-mode-caption">
+        <dl class="diagram-lanes">
+          <div class="diagram-lane is-primary"><dt>Batch mode</dt><dd>Run all cells, save the notebook, commit results, and release the GPU.</dd></div>
+          <div class="diagram-lane"><dt>Jupyter mode</dt><dd>Keep the Sandbox active until Jupyter or the local command stops.</dd></div>
+        </dl>
+        <figcaption id="modal-mode-caption">Both modes use the same image, GPU, and mounted Volumes.</figcaption>
+      </figure>
     </section>
 
     <section id="setup">

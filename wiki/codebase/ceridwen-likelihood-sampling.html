@@ -21,7 +21,15 @@ external algorithm then explores these values.</p>
 <section id="per-observation-likelihood" class="level2">
 <h2>Per-observation likelihood</h2>
 <p>A diagonal Gaussian compares four aligned arrays:</p>
-<pre class="text"><code>data y, prediction mu, uncertainty sigma, boolean mask</code></pre>
+<figure class="diagram" aria-labelledby="likelihood-input-caption">
+<ul class="diagram-branches" style="--diagram-columns: 4">
+<li class="diagram-node"><strong>Data</strong><small><code>y</code></small></li>
+<li class="diagram-node"><strong>Prediction</strong><small><code>mu</code></small></li>
+<li class="diagram-node"><strong>Uncertainty</strong><small><code>sigma</code></small></li>
+<li class="diagram-node"><strong>Mask</strong><small>Boolean selection</small></li>
+</ul>
+<figcaption id="likelihood-input-caption">All four arrays align with the same observation coordinates.</figcaption>
+</figure>
 <p>An optional <code>DiagonalNoiseModel</code> modifies the variance. It
 can add model-scaled fractional calibration error. It can also add
 data-scaled fractional error or additive jitter
@@ -69,9 +77,20 @@ observation keys and likelihood objects
 these static pairs and sums their log-likelihoods
 (<code>lines 840-872</code>).</p>
 <p>For the joint notebook:</p>
-<pre class="text"><code>photometry likelihood --+
-                        +--&gt; total log likelihood
-spectrum likelihood ----+</code></pre>
+<figure class="diagram" aria-labelledby="multi-likelihood-caption">
+<ul class="diagram-branches" style="--diagram-columns: 2">
+<li class="diagram-node"><strong>Photometry likelihood</strong><small>One scalar</small></li>
+<li class="diagram-node"><strong>Spectrum likelihood</strong><small>One scalar</small></li>
+</ul>
+<svg class="diagram-connector is-branch" viewBox="0 0 200 40" preserveAspectRatio="none" role="img" aria-labelledby="likelihood-merge-title likelihood-merge-desc">
+<title id="likelihood-merge-title">Observation likelihoods converge</title>
+<desc id="likelihood-merge-desc">The photometry and spectrum log-likelihood values sum into one scalar.</desc>
+<defs><marker id="likelihood-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+<path d="M50 0 V14 L100 30 M150 0 V14 L100 30 V38" marker-end="url(#likelihood-arrow)" />
+</svg>
+<div class="diagram-node is-primary"><strong>Total log likelihood</strong><small>Sum of observation contributions</small></div>
+<figcaption id="multi-likelihood-caption">Each observation keeps its own units before scalar likelihood values are added.</figcaption>
+</figure>
 <p>Different observation types can retain different units. Each
 residual is divided by an uncertainty with the same units. The code
 then adds the scalar log-likelihoods.</p>
@@ -146,7 +165,9 @@ adapter receives two functions and an initial parameter tree. It does
 not require the Ceridwen observation classes.</p>
 </section>
 <section id="nuts-path" class="level2">
-<h2>NUTS path</h2>
+<h2>Inactive NUTS implementation</h2>
+<p>The package includes this adapter, but the project does not use it.
+All current Ceridwen fits use BlackJAX nested sampling.</p>
 <p><code>BlackJAXNUTSAdapter</code> performs these steps:</p>
 <ol type="1">
 <li>It flattens the parameter dictionary
@@ -175,6 +196,16 @@ dimension. Each iteration deletes one-fifth of the live points. The
 default <code>logZ_tol</code> is <code>-5</code>
 (<code>sampler/nested.py:144-172</code> and
 <code>350-359</code>).</p>
+<figure class="diagram" aria-labelledby="nss-lifecycle-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 5">
+<li><strong>Draw from priors</strong><small>Initial live points</small></li>
+<li><strong>Evaluate likelihood</strong><small>Score every point</small></li>
+<li><strong>Replace points</strong><small>Apply likelihood constraint</small></li>
+<li><strong>Accumulate dead points</strong><small>Evidence and weights</small></li>
+<li><strong>Build SamplingResult</strong><small>Posterior output</small></li>
+</ol>
+<figcaption id="nss-lifecycle-caption">BlackJAX NSS turns prior draws into weighted posterior samples and evidence.</figcaption>
+</figure>
 <p class="source-locator"><code>ceridwen/ceridwen/sampler/nested.py:370-384</code></p>
 <pre class="python"><code>rng_key, prior_key = jax.random.split(rng_key)
 particles = self._sample_prior(theta_init, prior_key)
@@ -205,7 +236,7 @@ birth likelihoods, evidence, and the number of dead points
 <p><code>SamplingResult</code> stores named posterior samples, log
 likelihoods, available evidence, diagnostics, timings, and
 backend-specific raw output (<code>sampler/runner.py:69-128</code>).
-NUTS returns equal-weight posterior samples without Bayesian evidence.
+The inactive NUTS adapter returns equal-weight samples without Bayesian evidence.
 Nested sampling returns weighted dead points, evidence, and evidence
 uncertainty. The active notebooks convert these points to deterministic
 equal-weight posterior draws before they calculate later

@@ -21,6 +21,21 @@ connects these data containers to the CSP forward model. It also
 selects the sampled parameters.</p>
 <section id="observation-contract" class="level2">
 <h2>Observation contract</h2>
+<figure class="diagram" aria-labelledby="observation-types-caption">
+<div class="diagram-node is-primary"><strong>Observation</strong><small>Flux, uncertainty, mask, and name</small></div>
+<svg class="diagram-connector is-branch" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-labelledby="observation-branch-title observation-branch-desc">
+<title id="observation-branch-title">Observation subclasses</title>
+<desc id="observation-branch-desc">The base observation contract branches into Photometry, Spectrum, and Lines.</desc>
+<defs><marker id="observation-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+<path d="M150 0 V12 M150 12 H50 V38 M150 12 V38 M150 12 H250 V38" marker-end="url(#observation-arrow)" />
+</svg>
+<ul class="diagram-branches" style="--diagram-columns: 3">
+<li class="diagram-node"><strong>Photometry</strong><small>Filters</small></li>
+<li class="diagram-node"><strong>Spectrum</strong><small>Observed pixels</small></li>
+<li class="diagram-node"><strong>Lines</strong><small>Line fluxes</small></li>
+</ul>
+<figcaption id="observation-types-caption">Each subclass projects the same model spectrum into a different measured space.</figcaption>
+</figure>
 <p>Every <code>Observation</code> stores:</p>
 <ul>
 <li><code>flux</code> contains one-dimensional measured values.</li>
@@ -63,6 +78,15 @@ projection at each model evaluation (<code>base.py:270-319</code>).
 <code>SedModel.__init__</code> prepares every observation
 automatically. It also supplies the SSP library resolution curve
 (<code>model/model.py:219-240</code>).</p>
+<figure class="diagram" aria-labelledby="projection-contract-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 4">
+<li><strong>Model wavelength grid</strong><small>Static input</small></li>
+<li><strong><code>setup_for_model</code></strong><small>Prepare matrices or closure</small></li>
+<li><strong><code>predict</code></strong><small>Project each spectrum</small></li>
+<li><strong>Measured-space values</strong><small>Match observation length</small></li>
+</ol>
+<figcaption id="projection-contract-caption">Setup prepares fixed work before repeated numerical predictions.</figcaption>
+</figure>
 <section id="photometry" class="level3">
 <h3>Photometry</h3>
 <p><code>Photometry</code> stores AB maggies. One maggie is 3631 Jy
@@ -146,10 +170,15 @@ to derived parameters.</li>
 <li><code>observations</code> contains the projection targets.</li>
 </ul>
 <p>The active notebooks use this parameter structure:</p>
-<pre class="text"><code>free: logsfr_ratios, Z, afe, logmass, diffuse_tau_kc
-                         |
-                         +-- transform --&gt; sfh
-fixed/derived: diffuse_dust_index, sometimes lookback_time</code></pre>
+<figure class="diagram" aria-labelledby="parameter-flow-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 4">
+<li><strong>Free parameters</strong><small>SFR ratios, Z, afe, mass, and dust</small></li>
+<li><strong>Transforms</strong><small>Derive SFH values</small></li>
+<li><strong>Model parameters</strong><small>Add fixed or derived values</small></li>
+<li><strong>CSP prediction</strong><small>Use one named dictionary</small></li>
+</ol>
+<figcaption id="parameter-flow-caption">SedModel converts sampled values into the complete CSP parameter dictionary.</figcaption>
+</figure>
 </section>
 <section id="one-prediction" class="level2">
 <h2>One prediction</h2>

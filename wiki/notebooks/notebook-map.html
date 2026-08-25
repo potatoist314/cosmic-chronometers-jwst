@@ -18,13 +18,32 @@
 <h1>Notebook Map</h1>
 <section id="how-to-interpret-this-directory" class="level2">
 <h2>Scope</h2>
-<p>The active root notebooks are the project’s scientific entry points.
-The <code>notebooks/practice/</code> directory contains the practice
+<p>The two Ceridwen notebooks are the current scientific entry points.
+Older inference branches are inactive. The
+<code>notebooks/practice/</code> directory contains the practice
 notebooks. Saved outputs are evidence only when the cell source,
 execution order, inputs, and kernel still match.</p>
 </section>
 <section id="ceridwen-learning-sequence" class="level2">
 <h2>Ceridwen notebooks</h2>
+<figure class="diagram" aria-labelledby="notebook-flow-caption">
+<ul class="diagram-branches" style="--diagram-columns: 2">
+<li class="diagram-node"><strong>Spectral notebook</strong><small>One Spectrum observation</small></li>
+<li class="diagram-node"><strong>Joint notebook</strong><small>Photometry and Spectrum observations</small></li>
+</ul>
+<svg class="diagram-connector is-branch" viewBox="0 0 200 40" preserveAspectRatio="none" role="img" aria-labelledby="notebook-merge-title notebook-merge-desc">
+<title id="notebook-merge-title">Notebook paths converge</title>
+<desc id="notebook-merge-desc">Both active notebooks configure the same Ceridwen model and nested sampler.</desc>
+<defs><marker id="notebook-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+<path d="M50 0 V14 L100 30 M150 0 V14 L100 30 V38" marker-end="url(#notebook-arrow)" />
+</svg>
+<ol class="diagram-sequence" style="--diagram-columns: 3">
+<li><strong>SedModel</strong><small>Shared forward model</small></li>
+<li><strong>BlackJAX NSS</strong><small>Checkpointed fit</small></li>
+<li><strong>HDF5 result</strong><small>Reloadable posterior</small></li>
+</ol>
+<figcaption id="notebook-flow-caption">The notebooks differ in observations but use the same inference path.</figcaption>
+</figure>
 <p><code>ceridwen_test_spectra.ipynb</code> fits one LEGA-C spectrum. It
 fetches the published high-resolution Kroupa grid with schema 2.1. It
 converts wavelength and flux, creates a <code>Spectrum</code>, and adds

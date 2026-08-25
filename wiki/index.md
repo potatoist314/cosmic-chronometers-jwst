@@ -2,13 +2,16 @@
 
 Human entry point: `index.html` (updated 2026-08-25)
 
+Reader pages use responsive HTML, CSS, and inline SVG schematics. They do not
+require JavaScript or external diagram assets.
+
 ## Synthesis
 
-- `overview.html` — Explains the current codebase flow and reading path.
+- `overview.html` — Explains the Ceridwen-first codebase flow and reading path.
 
 ## Learning guides
 
-- `guides/reading-order.html` — Gives an ordered path from small functions to full fits.
+- `guides/reading-order.html` — Gives an ordered path through the active Ceridwen workflow.
 - `guides/python-patterns.html` — Python and JAX patterns used here.
 - `guides/vast-ai-gpu-workflow.html` — Explains Vast A100 selection, the tested Croatia host, setup, and saved results.
 - `guides/modal-gpu-workflow.html` — Explains Modal inputs, fixed remote paths, A100 batch validation, and saved results.
@@ -16,8 +19,8 @@ Human entry point: `index.html` (updated 2026-08-25)
 ## Codebase
 
 - `codebase/project-map.html` — Explains repository boundaries, entry points, and environments.
-- `codebase/project-modules.html` — Explains project-owned reusable modules and scripts.
-- `codebase/data-pipeline.html` — Traces raw catalogues into processed observations.
+- `codebase/project-modules.html` — Explains active support scripts and retained legacy modules.
+- `codebase/data-pipeline.html` — Traces LEGA-C data into Ceridwen observations.
 - `codebase/ceridwen-architecture.html` — Explains the packages and complete call graph.
 - `codebase/ceridwen-ssp-csp.html` — Explains SSP grids, SFH weights, and spectra.
 - `codebase/ceridwen-observations-model.html` — Explains data projections and parameters.
@@ -38,7 +41,7 @@ The wiki does not contain literature source pages. The current pages document li
 
 ## Methods
 
-The codebase pages explain each method beside its implementation.
+The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Datasets
 

@@ -30,15 +30,17 @@
     </header>
 
     <nav id="TOC" aria-label="On this page">
-      <ul>
-        <li><a href="#instance">Choose an instance</a></li>
-        <li><a href="#clone">Clone the project</a></li>
-        <li><a href="#data">Transfer private data</a></li>
-        <li><a href="#bootstrap">Bootstrap and verify</a></li>
-        <li><a href="#run">Run the notebooks</a></li>
-        <li><a href="#finish">Preserve results and finish</a></li>
-        <li><a href="#evidence">Evidence</a></li>
-      </ul>
+      <figure class="diagram" aria-labelledby="vast-route-caption">
+        <ol class="diagram-sequence" style="--diagram-columns: 6">
+          <li><a href="#instance">Choose GPU</a><small>CUDA instance</small></li>
+          <li><a href="#clone">Clone</a><small>Include submodules</small></li>
+          <li><a href="#data">Transfer data</a><small>Private inputs</small></li>
+          <li><a href="#bootstrap">Bootstrap</a><small>Verify CUDA</small></li>
+          <li><a href="#run">Run fit</a><small>BlackJAX NSS</small></li>
+          <li><a href="#finish">Save and stop</a><small>Secure output</small></li>
+        </ol>
+        <figcaption id="vast-route-caption">A safe Vast.ai run starts with verified hardware and ends after local result checks.</figcaption>
+      </figure>
     </nav>
 
     <section id="instance">

@@ -23,6 +23,14 @@ and <code>fitSED</code>
 (<code>ceridwen/ceridwen/__init__.py:31-89</code>).</p>
 <section id="package-map" class="level2">
 <h2>Package map</h2>
+<figure class="diagram" aria-labelledby="package-map-caption">
+<dl class="diagram-lanes" style="--diagram-columns: 3">
+<div class="diagram-lane"><dt>Physical model</dt><dd><code>ssps/</code>, <code>csp/</code>, dust, nebular, IGM, and cosmology.</dd></div>
+<div class="diagram-lane"><dt>Measured space</dt><dd><code>observation/</code> stores data and projects model spectra.</dd></div>
+<div class="diagram-lane is-primary"><dt>Inference</dt><dd><code>model/</code>, <code>likelihood/</code>, <code>sampler/</code>, and <code>fit.py</code>.</dd></div>
+</dl>
+<figcaption id="package-map-caption">Three package layers connect physical spectra to sampled results.</figcaption>
+</figure>
 <ul>
 <li>The <code>ssps/</code> package loads, generates, checks, and fetches
 SSP grids.</li>
@@ -36,8 +44,8 @@ projects models into data space.</li>
 priors, and predictions.</li>
 <li>The <code>likelihood/</code> package defines noise models and
 compares data with models.</li>
-<li>The <code>sampler/</code> package defines priors, adapters, NUTS,
-nested sampling, and VI.</li>
+<li>The <code>sampler/</code> package defines priors and adapters. The
+active project path uses BlackJAX nested sampling.</li>
 <li><code>cosmology.py</code> calculates differentiable distances,
 ages, and flux factors.</li>
 <li><code>fit.py</code> controls high-level fits and saves results.</li>
@@ -48,35 +56,27 @@ modules.</p>
 </section>
 <section id="end-to-end-call-graph" class="level2">
 <h2>End-to-end call graph</h2>
-<pre class="text"><code>fetch_grid(name) -&gt; SSPDataAfe.load(path)
-        |
-        v
-CSPBasis_afe(ssp, theta=..., physics switches...)
-        |
-        +---- static SSP arrays and SFH structure
-        |
-Observation(...) ---- setup_for_model(csp.wave)
-        \                 /
-         \               /
-          SedModel(csp, observations, priors, transforms)
-                         |
-                         v
-                  run_sampler(...)
-                    /          \
-          model.predict      model.ln_prior
-                 |                 |
-                 v                 |
-       CSP spectrum + projection   |
-                 |                 |
-                 +---- likelihood -+
-                           |
-                           v
-                     sampler adapter
-                           |
-                           v
-                    SamplingResult
-                           |
-                  checkpoints + HDF5</code></pre>
+<figure class="diagram" aria-labelledby="call-graph-caption">
+<ul class="diagram-branches" style="--diagram-columns: 3">
+<li class="diagram-node"><strong>SSPData and CSPBasis</strong><small>Grid and physical model</small></li>
+<li class="diagram-node"><strong>Observations</strong><small>Prepared data projections</small></li>
+<li class="diagram-node"><strong>Priors and transforms</strong><small>Parameter definition</small></li>
+</ul>
+<svg class="diagram-connector is-branch" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-labelledby="architecture-merge-title architecture-merge-desc">
+<title id="architecture-merge-title">Model components converge</title>
+<desc id="architecture-merge-desc">The CSP, observations, priors, and transforms form one SedModel.</desc>
+<defs><marker id="architecture-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+<path d="M50 0 V14 L150 30 M150 0 V30 M250 0 V14 L150 30 V38" marker-end="url(#architecture-arrow)" />
+</svg>
+<ol class="diagram-sequence" style="--diagram-columns: 5">
+<li><strong>SedModel</strong><small>Named parameters</small></li>
+<li><strong>Prediction</strong><small>CSP and projections</small></li>
+<li><strong>Likelihood and prior</strong><small>Two scalar functions</small></li>
+<li><strong>BlackJAX NSS</strong><small>Adapter run</small></li>
+<li><strong>Saved result</strong><small>Checkpoints and HDF5</small></li>
+</ol>
+<figcaption id="call-graph-caption">Static components form a model before nested sampling evaluates changing parameters.</figcaption>
+</figure>
 </section>
 <section id="two-user-facing-fit-paths" class="level2">
 <h2>Fit paths</h2>
@@ -91,6 +91,13 @@ and <code>DiagonalNoiseModel</code> objects
 </section>
 <section id="static-versus-sampled-state" class="level2">
 <h2>Static versus sampled state</h2>
+<figure class="diagram" aria-labelledby="state-boundary-caption">
+<dl class="diagram-lanes">
+<div class="diagram-lane"><dt>Static structure</dt><dd>Grid axes, observation types, projection matrices, physics switches, and likelihood layout.</dd></div>
+<div class="diagram-lane is-primary"><dt>Sampled state</dt><dd>Free parameters, derived parameters, predictions, likelihood values, and prior values.</dd></div>
+</dl>
+<figcaption id="state-boundary-caption">JAX compiles the fixed structure and evaluates new sampled values.</figcaption>
+</figure>
 <p>These values stay static after model construction:</p>
 <ul>
 <li>The SSP grid axes and flux cube stay static.</li>

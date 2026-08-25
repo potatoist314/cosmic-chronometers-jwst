@@ -49,6 +49,15 @@ generation starts at line 568.</p>
 loader requires a four-dimensional schema-2.x grid. It rejects legacy
 files that do not record resolution provenance
 (<code>lines 341-408</code>).</p>
+<figure class="diagram" aria-labelledby="ssp-axes-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 4">
+<li><strong>Alpha abundance</strong><small><code>n_afe</code></small></li>
+<li><strong>Metallicity</strong><small><code>n_met</code></small></li>
+<li><strong>Age</strong><small><code>n_age</code></small></li>
+<li><strong>Wavelength</strong><small><code>n_wave</code></small></li>
+</ol>
+<figcaption id="ssp-axes-caption"><code>SSPDataAfe.ssp_flux</code> follows this four-axis order.</figcaption>
+</figure>
 <p class="source-locator"><code>ceridwen/ceridwen/ssps/ssp_data.py:297-326</code></p>
 <pre class="python"><code>def __post_init__(self):
     """Validate grid consistency."""
@@ -111,13 +120,15 @@ not store <code>[Z/H]</code> or <code>log10(Z/Z_sun)</code>
 <h2>From SFH parameters to weights</h2>
 <p>The notebooks sample consecutive SFR log-ratios. The transform uses
 this sequence:</p>
-<pre class="text"><code>logsfr_ratios
-      |
-      v
-cumulative log SFR -&gt; linear SFR -&gt; unit-mass normalization
-      |
-      v
-theta[&quot;sfh&quot;]</code></pre>
+<figure class="diagram" aria-labelledby="sfh-transform-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 4">
+<li><strong><code>logsfr_ratios</code></strong><small>Sampled ratios</small></li>
+<li><strong>Cumulative log SFR</strong><small>Anchor the first node</small></li>
+<li><strong>Linear SFR</strong><small>Apply <code>10 ** log_sfr</code></small></li>
+<li><strong>Unit-mass SFH</strong><small>Store as <code>theta["sfh"]</code></small></li>
+</ol>
+<figcaption id="sfh-transform-caption">The transform converts sampled ratios into normalized SFH weights.</figcaption>
+</figure>
 <p><code>logsfr_ratios_to_sfh</code> implements this sequence at
 <code>ceridwen/ceridwen/model/transforms.py:79-169</code>. The CSP
 weight kernel integrates the SFH over the SSP age cells. It also
@@ -163,6 +174,14 @@ planes and the interpolation weight
 only these two planes and interpolates them linearly
 (<code>lines 866-896</code>). A one-plane grid removes this operation
 during compilation.</p>
+<figure class="diagram" aria-labelledby="alpha-interpolation-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 3">
+<li><strong>Adjacent alpha planes</strong><small>Lower and upper spectra</small></li>
+<li><strong>Linear weight</strong><small><code>w</code> from sampled <code>afe</code></small></li>
+<li><strong>Interpolated grid</strong><small>One spectrum cube</small></li>
+</ol>
+<figcaption id="alpha-interpolation-caption">Only two neighbouring alpha planes enter each interpolation.</figcaption>
+</figure>
 <p class="source-locator"><code>ceridwen/ceridwen/csp/csp_afe.py:888-896</code></p>
 <pre class="python"><code>if self._n_afe == 1:
     return self.flux[0]

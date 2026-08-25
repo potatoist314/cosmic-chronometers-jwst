@@ -6,7 +6,7 @@
   <meta name="wiki-type" content="index">
   <meta name="wiki-status" content="current">
   <meta name="wiki-updated" content="2026-08-25">
-  <title>Astro Research Wiki</title>
+  <title>Ceridwen Project Wiki</title>
   <link rel="stylesheet" href="assets/wiki.css">
 </head>
 <body>
@@ -20,8 +20,19 @@
     </div>
   </header>
   <main class="page-shell" id="main-content">
-    <h1>Astro project wiki</h1>
-    <p>This wiki explains the code paths, data flow, and notebook roles.</p>
+    <h1>Ceridwen project wiki</h1>
+    <p>This wiki explains the active Ceridwen code, data, notebooks, and GPU workflows.</p>
+
+    <figure class="diagram" aria-labelledby="wiki-route-caption">
+      <ol class="diagram-sequence" style="--diagram-columns: 5">
+        <li><a href="overview.html">Overview</a><small>Research scope</small></li>
+        <li><a href="codebase/data-pipeline.html">Data</a><small>Measured inputs</small></li>
+        <li><a href="codebase/ceridwen-architecture.html">Model</a><small>Forward prediction</small></li>
+        <li><a href="codebase/ceridwen-likelihood-sampling.html">Sampling</a><small>Posterior search</small></li>
+        <li><a href="guides/vast-ai-gpu-workflow.html">GPU</a><small>Full fit</small></li>
+      </ol>
+      <figcaption id="wiki-route-caption">The shortest route from project scope to a full Ceridwen fit.</figcaption>
+    </figure>
 
     <section aria-labelledby="start-heading">
       <h2 class="section-heading" id="start-heading">Start</h2>
@@ -33,7 +44,7 @@
     </section>
 
     <section aria-labelledby="project-heading">
-      <h2 class="section-heading" id="project-heading">Project structure</h2>
+      <h2 class="section-heading" id="project-heading">Supporting project structure</h2>
       <ul>
         <li><a href="codebase/project-map.html">Project map</a></li>
         <li><a href="codebase/project-modules.html">Project modules</a></li>

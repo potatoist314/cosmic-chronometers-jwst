@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Project Modules</title>
+  <title>Project Support Modules</title>
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="codebase">
   <meta name="wiki-status" content="current">
@@ -15,15 +15,26 @@
 <header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
 <main class="page-shell" id="main-content">
 <section id="project-modules" class="level1">
-<h1>Project Modules</h1>
+<h1>Project Support Modules</h1>
+<p>The active notebooks call Ceridwen for stellar-population inference.
+Project-owned scripts prepare the data. The <code>src/</code> modules
+remain from earlier project stages and are not current fit entry
+points.</p>
 <section id="mental-model" class="level2">
-<h2>Flow</h2>
-<pre class="text"><code>scripts/       create or download durable data products
-src/           exposes reusable calculations
-notebooks/     assemble those pieces into analyses</code></pre>
+<h2>Current flow</h2>
+<figure class="diagram" aria-labelledby="module-flow-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 4">
+<li><strong><code>scripts/</code></strong><small>Prepare observations</small></li>
+<li><strong><code>notebooks/</code></strong><small>Configure fits</small></li>
+<li><strong><code>ceridwen/</code></strong><small>Predict and sample</small></li>
+<li><strong><code>results/</code></strong><small>Store checkpoints and HDF5</small></li>
+</ol>
+<p class="diagram-note"><code>src/</code> retains support code from earlier project stages.</p>
+<figcaption id="module-flow-caption">Project scripts and notebooks drive the active Ceridwen fit.</figcaption>
+</figure>
 </section>
 <section id="srccosmologypy" class="level2">
-<h2><code>src/cosmology.py</code></h2>
+<h2>Retained <code>src/cosmology.py</code></h2>
 <p>This early module contains small cosmology functions. No active
 notebook currently imports it.</p>
 <ul>
@@ -57,18 +68,19 @@ def age_integrand(z, omega_m):
 module dependency direction.</p>
 </section>
 <section id="srcmockspy" class="level2">
-<h2><code>src/mocks.py</code></h2>
-<p>This module generates controlled age-redshift samples.</p>
-<pre class="text"><code>draw_redshifts
-      |
-      v
-true_ages ----&gt; intrinsic scatter
-                    |
-                    v
-         systematic bias + measurement noise
-                    |
-                    v
-                MockSample</code></pre>
+<h2>Retained <code>src/mocks.py</code></h2>
+<p>This inactive module generates controlled age-redshift samples for
+earlier cosmic-chronometer work.</p>
+<figure class="diagram" aria-labelledby="mock-flow-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 5">
+<li><strong>Draw redshifts</strong></li>
+<li><strong>Calculate true ages</strong></li>
+<li><strong>Add intrinsic scatter</strong></li>
+<li><strong>Add bias and noise</strong></li>
+<li><strong>Build MockSample</strong></li>
+</ol>
+<figcaption id="mock-flow-caption">Retained workflow from the inactive cosmic-chronometer mock module.</figcaption>
+</figure>
 <ul>
 <li><code>MockSample</code> defines four arrays and one truth dictionary
 (<code>lines 15-23</code>).</li>
@@ -98,56 +110,11 @@ age_obs = age + systematic + noise</code></pre>
 value. The systematic term and measurement noise then create the
 reported <code>age_obs</code>.</p>
 </section>
-<section id="srclick_inferencepy" class="level2">
-<h2><code>src/lick_inference.py</code></h2>
-<p>This module moves the expensive per-galaxy MCMC out of notebook 02.
-Worker processes can then run the calculation safely.</p>
-<pre class="text"><code>index grid + observed indices
-          |
-          v
-RegularGridInterpolator(age, [Z/H], [alpha/Fe], sigma)
-          |
-          v
-vectorized log_prob(theta)
-          |
-          v
-emcee chain -&gt; percentiles + autocorrelation time</code></pre>
-<ul>
-<li><code>log_prob_factory</code> creates a bounded and vectorized
-likelihood closure (<code>src/lick_inference.py:11-24</code>).</li>
-<li><code>fit_galaxy_arrays</code> checks measurements and creates the
-four-dimensional interpolator. It broadens to the effective sigma and
-runs emcee. It then summarizes age, <code>[Z/H]</code>, and
-<code>[alpha/Fe]</code> (<code>lines 27-105</code>).</li>
-<li><code>initialize_fit_worker</code> stores read-only grid arrays once
-for each process (<code>lines 108-133</code>).</li>
-<li><code>fit_galaxy_task</code> converts one serializable task into a
-completed, skipped, or failed record (<code>lines 136-166</code>).</li>
-</ul>
-<p>The worker-global <code>_WORKER_STATE</code> stores the large model
-grid once. Each task contains only one galaxy’s arrays and
-metadata.</p>
-<p class="source-locator"><code>src/lick_inference.py:11-24</code></p>
-<pre class="python"><code>def log_prob_factory(interp, obs, err, sigma, lo, hi):
-    """Return the vectorized Borghi et al. (2022a) Equation 7 likelihood."""
-
-    def log_prob(theta):
-        theta = np.atleast_2d(theta)
-        inside = np.all((theta &gt;= lo) &amp; (theta &lt;= hi), axis=1)
-        out = np.full(len(theta), -np.inf)
-        if inside.any():
-            points = np.column_stack([theta[inside], np.full(inside.sum(), sigma)])
-            chi2 = np.sum(((obs - interp(points)) / err) ** 2, axis=1)
-            out[inside] = -0.5 * chi2
-        return out
-
-    return log_prob</code></pre>
-<p>The function checks the bounds before interpolation. Invalid walkers
-keep <code>-np.inf</code>. Valid walkers receive a Gaussian
-<code>-chi2/2</code> score.</p>
-</section>
+<p>Other inactive method modules remain in <code>src/</code> for
+reproducibility. This page does not include them in the current
+workflow.</p>
 <section id="data-scripts" class="level2">
-<h2>Data scripts</h2>
+<h2>Active data scripts</h2>
 <p><code>build_borghi2022_legac_dr2_subset.py</code> is the main data
 transformation script. Its <code>main</code> function reads both
 catalogues and checks the required columns. It matches object IDs and

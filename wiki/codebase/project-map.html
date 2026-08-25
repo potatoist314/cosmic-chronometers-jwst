@@ -16,27 +16,35 @@
 <main class="page-shell" id="main-content">
 <section id="project-map" class="level1">
 <h1>Project Map</h1>
-<p>The repository studies stellar ages and cosmic chronometers.
-Notebooks organize the research workspace. The repository does not
-provide one command-line entry point
-(<code>README.md:1-16</code>).</p>
+<p>The repository now focuses on Ceridwen stellar-population fits. The
+longer-term goal is cosmic-chronometer work with massive quiescent
+galaxies. Active notebooks provide the scientific entry points
+(<code>README.md:1-21</code>).</p>
+<figure class="diagram" aria-labelledby="repository-map-caption">
+<dl class="diagram-lanes" style="--diagram-columns: 3">
+<div class="diagram-lane is-primary"><dt>Active fit path</dt><dd><code>scripts/</code> prepares data. <code>notebooks/</code> configures Ceridwen. <code>results/</code> stores output.</dd></div>
+<div class="diagram-lane"><dt>Project evidence</dt><dd><code>data/</code> stores inputs. <code>papers/</code> stores literature. <code>wiki/</code> explains the code.</dd></div>
+<div class="diagram-lane"><dt>Retained or upstream</dt><dd><code>src/</code> retains earlier support code. <code>external/</code> and <code>ceridwen/</code> are submodule checkouts.</dd></div>
+</dl>
+<figcaption id="repository-map-caption">The active fit crosses project-owned orchestration and the Ceridwen package.</figcaption>
+</figure>
 <section id="repository-boundaries" class="level2">
 <h2>Repository boundaries</h2>
 <ul>
-<li>The <code>src/</code> directory contains reusable project-owned
-calculations.</li>
+<li>The <code>ceridwen/</code> directory contains the primary model and
+inference implementation.</li>
+<li>The <code>src/</code> directory retains project-owned support code
+from earlier stages.</li>
 <li>The <code>scripts/</code> directory downloads and transforms data
 reproducibly.</li>
-<li>The <code>notebooks/</code> directory contains analyses,
-experiments, and presentations.</li>
+<li>The <code>notebooks/</code> directory contains the active Ceridwen
+analyses and practice material.</li>
 <li>The <code>data/raw/</code> directory contains immutable downloaded
 inputs.</li>
 <li>The <code>data/processed/</code> directory contains reproducible
 derived tables.</li>
 <li>The <code>papers/</code> directory contains immutable literature
 sources.</li>
-<li>The <code>ceridwen/</code> directory is an external SED-fitting Git
-submodule.</li>
 <li>The <code>external/CCcovariance/</code> directory is a covariance
 reference submodule.</li>
 <li>The <code>external/fsps/</code> directory contains the FSPS submodule
@@ -68,23 +76,28 @@ runs a sampler.</li>
 </section>
 <section id="environments" class="level2">
 <h2>Environments</h2>
-<p>The root project requires Python 3.14. Its dependencies include
-Astropy, emcee, milespy, Prospector, and FSPS
-(<code>pyproject.toml:1-33</code>). Ceridwen is an independent package.
-It requires Python 3.11 or newer, JAX, and BlackJAX
-(<code>ceridwen/pyproject.toml:5-82</code>). Separate environments keep
-the dependency constraints apart.</p>
+<p>The root project requires Python 3.14. It retains dependencies for
+earlier project stages (<code>pyproject.toml:1-33</code>). Ceridwen is
+an independent package. It requires Python 3.11 or newer, JAX, and
+BlackJAX (<code>ceridwen/pyproject.toml:5-82</code>). The active fits use
+the Ceridwen environment.</p>
+<figure class="diagram" aria-labelledby="environment-caption">
+<dl class="diagram-lanes">
+<div class="diagram-lane"><dt>Root environment</dt><dd>Python 3.14 and retained project dependencies.</dd></div>
+<div class="diagram-lane is-primary"><dt>Ceridwen environment</dt><dd>Python 3.11 or newer, JAX, and BlackJAX.</dd></div>
+</dl>
+<figcaption id="environment-caption">The active notebooks run inside the Ceridwen environment.</figcaption>
+</figure>
 </section>
 <section id="ownership-matters" class="level2">
 <h2>Ownership</h2>
 <p>These rules describe code ownership:</p>
 <ul>
-<li>A notebook cell controls project tasks and can contain exploratory
-work.</li>
-<li>The <code>src/</code> directory contains reusable project
-behavior.</li>
-<li>The <code>ceridwen/ceridwen/</code> directory contains external
-package code.</li>
+<li>An active notebook configures a Ceridwen fit.</li>
+<li>The <code>src/</code> directory contains retained project support
+code.</li>
+<li>The <code>ceridwen/ceridwen/</code> directory contains the external
+package code used by current fits.</li>
 <li>The <code>external/</code> directory contains reference or upstream
 code.</li>
 </ul>

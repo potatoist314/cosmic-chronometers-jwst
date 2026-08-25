@@ -22,65 +22,52 @@
 Then find its <code>return</code> statements. After that, inspect the
 intermediate lines.</p>
 <ul>
-<li><code>src/mocks.py:26-33</code>, <code>true_ages(...)</code> returns
-stellar ages.</li>
-<li><code>src/mocks.py:41-108</code>, <code>make_mock(...)</code>
-returns a <code>MockSample</code>.</li>
+<li><code>ceridwen/ceridwen/model/model.py:313-342</code>,
+<code>apply_transforms(theta)</code> returns a parameter dictionary.</li>
 <li><code>ceridwen/ceridwen/model/model.py:348-401</code>,
 <code>predict(theta)</code> returns a dict.</li>
+<li><code>ceridwen/ceridwen/sampler/runner.py:275-366</code>,
+<code>run_sampler(...)</code> returns a <code>SamplingResult</code>.</li>
 </ul>
-<p>These functions do not change the file system.</p>
+<p>These return values follow the active Ceridwen prediction and
+sampling path.</p>
 </section>
 <section id="dataclass" class="level2">
 <h2>Dataclass</h2>
 <p>A dataclass defines a data record. It can store results without
 implementing the algorithm that produced them.</p>
 <ul>
-<li><code>src/mocks.py:15-23</code>: <code>MockSample</code> stores one
-simulated catalogue.</li>
 <li><code>ceridwen/ceridwen/sampler/runner.py:69-128</code>:
 <code>SamplingResult</code> stores output.</li>
 </ul>
 <p>The field names define the object’s data contract. Search for class
 construction to find the producing algorithm.</p>
-<p class="source-locator"><code>src/mocks.py:15-23</code></p>
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:69-76</code></p>
 <pre class="python"><code>@dataclass
-class MockSample:
-    """One realisation. `age_obs` is what an observer would report."""
+class SamplingResult:
+    """
+    Universal container for the output of any Ceridwen sampling run.
 
-    z: np.ndarray
-    age_true: np.ndarray      # Gyr, cosmology + intrinsic scatter, no measurement error
-    age_obs: np.ndarray       # Gyr, after systematics and noise
-    age_err: np.ndarray       # Gyr, the reported 1-sigma uncertainty
-    truth: dict               # the input parameters, for recovery tests</code></pre>
-<p>This class has no methods. It defines five fields. Another function
-produces the values.</p>
+    All fields are backend-agnostic.  The sampler-specific raw output
+    (e.g. a BlackJAX ``dead`` pytree) is preserved in ``raw`` for
+    downstream processing.</code></pre>
+<p>All Ceridwen samplers return this container. Lines 118-128 define the
+posterior, evidence, diagnostics, timing, and raw-output fields.</p>
 </section>
 <section id="closure" class="level2">
 <h2>Closure</h2>
 <p>A closure is an inner function that retains variables from its outer
-function. <code>log_prob_factory</code> returns the
-<code>log_prob</code> closure. The closure retains <code>interp</code>,
-<code>obs</code>, <code>err</code>, <code>sigma</code>, <code>lo</code>,
-and <code>hi</code> (<code>src/lick_inference.py:11-24</code>).</p>
-<p class="source-locator"><code>src/lick_inference.py:11-24</code></p>
-<pre class="python"><code>def log_prob_factory(interp, obs, err, sigma, lo, hi):
-    """Return the vectorized Borghi et al. (2022a) Equation 7 likelihood."""
-
-    def log_prob(theta):
-        theta = np.atleast_2d(theta)
-        inside = np.all((theta &gt;= lo) &amp; (theta &lt;= hi), axis=1)
-        out = np.full(len(theta), -np.inf)
-        if inside.any():
-            points = np.column_stack([theta[inside], np.full(inside.sum(), sigma)])
-            chi2 = np.sum(((obs - interp(points)) / err) ** 2, axis=1)
-            out[inside] = -0.5 * chi2
-        return out
-
-    return log_prob</code></pre>
-<p>The outer function receives the fixed galaxy data once. The inner
-function receives only each proposed <code>theta</code>. Python retains
-the six outer names in the closure.</p>
+function. <code>Spectrum.setup_for_model</code> stores a projection
+closure in <code>_predict_fn</code>
+(<code>ceridwen/ceridwen/observation/spectrum.py:663-667</code>).</p>
+<p class="source-locator"><code>ceridwen/ceridwen/observation/spectrum.py:663-667</code></p>
+<pre class="python"><code>_L = _apply_losvd
+self._predict_fn = (
+    lambda spec, _A=_apply_instr, _L=_L:
+        _A(_L(spec[_idx]))
+)</code></pre>
+<p>The lambda retains the prepared smoothing operation and pixel
+selection. Later predictions supply only the model spectrum.</p>
 </section>
 <section id="class-and-inheritance" class="level2">
 <h2>Class and inheritance</h2>
@@ -98,6 +85,21 @@ implements its own projection:</p>
 </ul>
 <p>Compare the same method in the parent class and each child
 class.</p>
+<figure class="diagram" aria-labelledby="inheritance-caption">
+<div class="diagram-node is-primary"><strong>Observation</strong><small>Storage, uncertainty, and masking</small></div>
+<svg class="diagram-connector is-branch" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-labelledby="inheritance-title inheritance-desc">
+<title id="inheritance-title">Observation inheritance</title>
+<desc id="inheritance-desc">The Observation base class branches into Photometry, Spectrum, and Lines.</desc>
+<defs><marker id="inheritance-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+<path d="M150 0 V12 M150 12 H50 V38 M150 12 V38 M150 12 H250 V38" marker-end="url(#inheritance-arrow)" />
+</svg>
+<ul class="diagram-branches" style="--diagram-columns: 3">
+<li class="diagram-node"><strong>Photometry</strong><small>Filter projection</small></li>
+<li class="diagram-node"><strong>Spectrum</strong><small>Resolution and pixels</small></li>
+<li class="diagram-node"><strong>Lines</strong><small>Line measurements</small></li>
+</ul>
+<figcaption id="inheritance-caption">Each observation type shares one contract and defines its own projection.</figcaption>
+</figure>
 </section>
 <section id="composition" class="level2">
 <h2>Composition</h2>
@@ -110,8 +112,9 @@ this design to combine different observation types.</p>
 <section id="adapter" class="level2">
 <h2>Adapter</h2>
 <p>An adapter gives different external libraries a common interface.
-<code>SamplerAdapter.run(...)</code> defines the protocol. The NUTS and
-nested-sampling classes implement this protocol
+<code>SamplerAdapter.run(...)</code> defines the protocol. The sampler
+classes implement this protocol. The active project path uses the
+nested-sampling class
 (<code>ceridwen/ceridwen/sampler/runner.py:215-268</code>).</p>
 <p><code>run_sampler</code> uses the protocol. It does not use the
 internal BlackJAX API (<code>runner.py:275-366</code>).</p>
@@ -130,12 +133,8 @@ callable.</p>
 </ul>
 <p>Read the decorator before you read the function. The decorator
 changes execution.</p>
-<p class="source-locator"><code>src/cosmology.py:10-12</code></p>
-<pre class="python"><code>@u.quantity_input #@ calls a decorator, quantity_input is the astropy function
-def H(z, H0: u.Quantity[u.km/u.s/u.Mpc], omega_m):
-    return E(z, omega_m) * H0</code></pre>
-<p><code>@u.quantity_input</code> checks the annotated units before the
-function body runs.</p>
+<p>The JAX example below shows how <code>@jax.jit</code> changes a
+likelihood function.</p>
 </section>
 <section id="module-exports" class="level2">
 <h2>Module exports</h2>
@@ -147,6 +146,20 @@ module that defines each name.</p>
 <section id="jax-static-versus-traced-values" class="level2">
 <h2>JAX static versus traced values</h2>
 <p>This distinction explains much of the Ceridwen structure:</p>
+<figure class="diagram" aria-labelledby="jax-boundary-caption">
+<ul class="diagram-branches" style="--diagram-columns: 2">
+<li class="diagram-node"><strong>Static Python values</strong><small>Shapes, keys, and observation types</small></li>
+<li class="diagram-node"><strong>Traced JAX arrays</strong><small>Sampled numerical parameters</small></li>
+</ul>
+<svg class="diagram-connector is-branch" viewBox="0 0 200 40" preserveAspectRatio="none" role="img" aria-labelledby="jax-merge-title jax-merge-desc">
+<title id="jax-merge-title">JAX compilation boundary</title>
+<desc id="jax-merge-desc">Static structure and traced arrays enter one compiled likelihood.</desc>
+<defs><marker id="jax-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+<path d="M50 0 V14 L100 30 M150 0 V14 L100 30 V38" marker-end="url(#jax-arrow)" />
+</svg>
+<div class="diagram-node is-primary"><strong>JIT-compiled likelihood</strong><small>Fixed structure, changing numerical values</small></div>
+<figcaption id="jax-boundary-caption">Python fixes the computation shape before JAX evaluates sampled values.</figcaption>
+</figure>
 <ul>
 <li>Static Python values define shapes, object types, and observation
 lists.</li>

@@ -89,3 +89,13 @@
 
 - Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
 - Change: Replaced the RTX recommendation with an A100 40 GB and recorded the tested Croatia host.
+
+## [2026-08-25] scope | Ceridwen primary focus
+
+- Pages: `index.html`, `overview.html`, `guides/reading-order.html`, `guides/python-patterns.html`, `codebase/project-map.html`, `codebase/project-modules.html`, `codebase/data-pipeline.html`, `notebooks/notebook-map.html`, `index.md`, `AGENTS.md`
+- Change: Made Ceridwen the primary workflow and marked earlier inference branches as inactive history.
+
+## [2026-08-25] format | Native workflow diagrams
+
+- Pages: all reader pages, `assets/wiki.css`, `index.md`, `AGENTS.md`
+- Change: Replaced text diagrams and added responsive schematics for the Ceridwen learning path.

@@ -98,7 +98,8 @@ p,
 ul,
 ol,
 pre,
-table {
+table,
+figure {
   margin-block: 0.8rem;
 }
 
@@ -163,6 +164,175 @@ td {
   vertical-align: top;
 }
 
+/* Native wiki diagrams. Labels stay in HTML so they reflow at narrow widths. */
+.diagram {
+  margin-block: 1.25rem 1.5rem;
+  break-inside: avoid;
+}
+
+.diagram figcaption {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.diagram-sequence,
+.diagram-lanes,
+.diagram-branches {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.diagram-sequence {
+  display: grid;
+  grid-template-columns: repeat(var(--diagram-columns, 4), minmax(0, 1fr));
+  gap: 1.6rem;
+  counter-reset: diagram-step;
+}
+
+.diagram-sequence > li {
+  position: relative;
+  min-width: 0;
+  padding: 0.75rem;
+  border-block: 1px solid var(--line);
+  background: var(--code);
+  counter-increment: diagram-step;
+}
+
+.diagram-sequence > li::before {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--muted);
+  content: counter(diagram-step, decimal-leading-zero);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.diagram-sequence > li:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 0.45rem);
+  color: var(--muted);
+  content: "→";
+  transform: translateY(-50%);
+}
+
+.diagram-sequence a {
+  display: block;
+  color: inherit;
+  font-weight: 500;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+.diagram-sequence strong,
+.diagram-node strong,
+.diagram-lane > dt {
+  display: block;
+  font-weight: 500;
+}
+
+.diagram-sequence small,
+.diagram-node small {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.diagram-lanes {
+  display: grid;
+  grid-template-columns: repeat(var(--diagram-columns, 2), minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.diagram-lane {
+  margin: 0;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--line);
+}
+
+.diagram-lane.is-primary {
+  border-left-color: var(--accent);
+}
+
+.diagram-lane > dt {
+  margin-bottom: 0.35rem;
+}
+
+.diagram-lane > dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.diagram-branches {
+  display: grid;
+  grid-template-columns: repeat(var(--diagram-columns, 3), minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.diagram-node {
+  min-width: 0;
+  padding: 0.7rem 0.8rem;
+  border-block: 1px solid var(--line);
+  background: var(--code);
+  text-align: center;
+}
+
+.diagram-node.is-primary {
+  border-color: var(--accent);
+}
+
+.diagram-connector {
+  display: block;
+  width: 100%;
+  height: 2.5rem;
+  color: var(--muted);
+}
+
+.diagram-connector line,
+.diagram-connector path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.diagram-connector marker path {
+  fill: currentColor;
+  stroke: none;
+}
+
+.diagram-note {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 42rem) {
+  .diagram-sequence,
+  .diagram-lanes,
+  .diagram-branches {
+    grid-template-columns: 1fr;
+  }
+
+  .diagram-sequence > li:not(:last-child)::after {
+    top: calc(100% + 0.05rem);
+    left: 50%;
+    content: "↓";
+    transform: translateX(-50%);
+  }
+
+  .diagram-connector {
+    height: 1.5rem;
+  }
+
+  .diagram-connector.is-branch {
+    display: none;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --ink: #e6edf3;
@@ -182,5 +352,10 @@ td {
   .page-shell {
     width: 100%;
     padding: 0;
+  }
+
+  .diagram-sequence > li,
+  .diagram-node {
+    background: transparent;
   }
 }
