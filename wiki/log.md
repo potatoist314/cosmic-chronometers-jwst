@@ -49,3 +49,8 @@
 
 - Pages: `notebooks/notebook-map.html`, `codebase/ceridwen-likelihood-sampling.html`, `index.md`
 - Change: Replaced active notebook NUTS paths with weighted BlackJAX nested sampling.
+
+## [2026-08-25] codebase | Integrated-fit sampler settings
+
+- Pages: `notebooks/notebook-map.html`, `index.md`
+- Change: Set the production joint fit to 300 live points, 25 deletions, and 40 inner steps.

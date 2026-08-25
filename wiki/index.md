@@ -25,7 +25,7 @@ Human entry point: `index.html` (updated 2026-08-24)
 
 ## Notebooks
 
-- `notebooks/notebook-map.html` — Roles, dependencies, and recommended order.
+- `notebooks/notebook-map.html` — Roles, dependencies, execution profiles, and recommended order.
 
 ## Sources
 

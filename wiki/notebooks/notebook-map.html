@@ -34,7 +34,9 @@ and runs BlackJAX nested sampling.</p>
 both observation types into one <code>SedModel</code> and one
 <code>MultiObservationLikelihood</code>. It also uses the local
 high-resolution Kroupa grid and anchors spectrum normalization to
-photometry before a shared nested-sampling posterior.</p>
+photometry before a shared nested-sampling posterior. Its production
+GPU profile uses 300 live points, 25 deletions per iteration, and 40
+inner slice-sampling steps.</p>
 </section>
 <section id="practice" class="level2">
 <h2>Practice</h2>
