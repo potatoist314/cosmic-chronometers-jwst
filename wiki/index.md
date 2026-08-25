@@ -10,7 +10,7 @@ Human entry point: `index.html` (updated 2026-08-24)
 
 - `guides/reading-order.html` — Ordered path from small functions to full fits.
 - `guides/python-patterns.html` — Python and JAX patterns used here.
-- `guides/vast-ai-gpu-workflow.html` — Cloud-GPU setup and Ceridwen execution.
+- `guides/vast-ai-gpu-workflow.html` — Cloud-GPU setup, CUDA isolation, and Ceridwen execution.
 
 ## Codebase
 

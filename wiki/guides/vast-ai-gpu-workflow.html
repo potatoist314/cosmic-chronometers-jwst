@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="guide">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-24">
+  <meta name="wiki-updated" content="2026-08-25">
   <title>Vast.ai GPU Workflow</title>
   <link rel="stylesheet" href="../assets/wiki.css">
 </head>
@@ -47,7 +47,7 @@
         <li>Prefer a 24 GB RTX 3090 or 4090 for headroom.</li>
       </ul>
       <p>The bootstrap exits if Linux, NVIDIA visibility, or the 12 GB memory floor is missing. It never silently falls back to CPU.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:14-32</code></p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:22-34</code></p>
       <pre><code>if ! command -v nvidia-smi &gt;/dev/null 2&gt;&amp;1; then
     echo "nvidia-smi is unavailable; launch a Vast.ai NVIDIA GPU instance." &gt;&amp;2
     exit 1
@@ -89,8 +89,12 @@ vastai copy "local:$PWD/ceridwen/amist_c3k_hr_krou_afe.h5" \
       <h2>Bootstrap and verify</h2>
       <p>Run the maintained setup script from the remote project root:</p>
       <pre><code>bash scripts/bootstrap_vast_ai.sh</code></pre>
+      <p>The script removes Vast's system CUDA library path. JAX then uses the compatible CUDA libraries installed in its Python environment.</p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:14-15</code></p>
+      <pre><code># Use the CUDA libraries installed with JAX, not Vast's system CUDA libraries.
+unset LD_LIBRARY_PATH</code></pre>
       <p>It creates an isolated Python 3.11 environment, installs CUDA JAX and Ceridwen, verifies GPU float64 execution, runs Ceridwen's check, and registers the notebook kernel.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:70-90</code></p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:73-93</code></p>
       <pre><code>JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "${PYTHON_BIN}" - &lt;&lt;'PY'
 import jax
 import jax.numpy as jnp
@@ -116,12 +120,13 @@ PY
         <li>Run <code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> for the combined fit.</li>
       </ol>
       <p>Local CPU and remote GPU kernels share the identifier <code>ceridwen</code>. Their visible names identify the active machine and backend.</p>
-      <p>The kernel forces <code>JAX_PLATFORMS=cuda</code> and <code>JAX_ENABLE_X64=1</code> for every notebook session.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:95-108</code></p>
+      <p>The kernel forces CUDA and float64 for every notebook session. It also blocks the system CUDA path from replacing JAX's installed libraries.</p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:98-111</code></p>
       <pre><code>kernel["env"] = {
     **kernel.get("env", {}),
     "JAX_ENABLE_X64": "1",
     "JAX_PLATFORMS": "cuda",
+    "LD_LIBRARY_PATH": "",
 }</code></pre>
     </section>
 
@@ -139,12 +144,12 @@ PY
       <h2>Evidence</h2>
       <ul>
         <li><code>README.md:18-49</code> — instance, clone, transfer, bootstrap, and kernel workflow.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:8-12</code> — pinned JAX, TFP, memory, and grid requirements.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:110-162</code> — scientific-data integrity checks.</li>
+        <li><code>scripts/bootstrap_vast_ai.sh:8-15</code> — pinned requirements and CUDA-library isolation.</li>
+        <li><code>scripts/bootstrap_vast_ai.sh:114-165</code> — scientific-data integrity checks.</li>
         <li><code>.gitignore:23-24</code> — LEGA-C spectra remain outside Git.</li>
       </ul>
     </section>
   </main>
-  <footer class="site-footer">Generated from the live Astro project · Updated 24 August 2026</footer>
+  <footer class="site-footer">Generated from the live Astro project · Updated 25 August 2026</footer>
 </body>
 </html>

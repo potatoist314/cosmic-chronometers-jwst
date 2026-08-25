@@ -50,6 +50,11 @@
 - Pages: `notebooks/notebook-map.html`, `codebase/ceridwen-likelihood-sampling.html`, `index.md`
 - Change: Replaced active notebook NUTS paths with weighted BlackJAX nested sampling.
 
+## [2026-08-25] codebase | Vast.ai CUDA library isolation
+
+- Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
+- Change: Documented JAX isolation from Vast's inherited system CUDA library path.
+
 ## [2026-08-25] codebase | Integrated-fit sampler settings
 
 - Pages: `notebooks/notebook-map.html`, `index.md`

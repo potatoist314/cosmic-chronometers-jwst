@@ -11,6 +11,9 @@ MINIMUM_GPU_MEMORY_MIB=12000
 GRID_RELATIVE_PATH="ceridwen/amist_c3k_hr_krou_afe.h5"
 GRID_SHA256="7a51fda352d8c2455ba58a8333e3e438b9e46043341d2b28f9ff963ac7b30833"
 
+# Use the CUDA libraries installed with JAX, not Vast's system CUDA libraries.
+unset LD_LIBRARY_PATH
+
 if [[ "$(uname -s)" != "Linux" ]]; then
     echo "This bootstrap is for Linux Vast.ai instances." >&2
     exit 1
@@ -103,6 +106,7 @@ kernel["env"] = {
     **kernel.get("env", {}),
     "JAX_ENABLE_X64": "1",
     "JAX_PLATFORMS": "cuda",
+    "LD_LIBRARY_PATH": "",
 }
 path.write_text(json.dumps(kernel, indent=2) + "\n")
 PY
