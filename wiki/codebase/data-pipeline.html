@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Data Pipeline</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="dataset">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="data-pipeline" class="level1">
+<h1>Data Pipeline</h1>
+<section id="mental-model" class="level2">
+<h2>Flow</h2>
+<pre class="text"><code>Borghi Table 4              LEGA-C DR2 catalogue
+ages, [Z/H], [alpha/Fe]     z, sigma*, Lick indices, filenames
+          \                  /
+           \---- object ID --/
+                    |
+                    v
+       processed joined spectrum rows
+          /                       \
+         v                         v
+  Lick-index inference       individual FITS spectra
+                                  |
+COSMOS2015 photometry -------------+
+                                  |
+                                  v
+                    photometric / spectral observations</code></pre>
+</section>
+<section id="raw-catalogues" class="level2">
+<h2>Raw catalogues</h2>
+<p><code>data/raw/borghi2022/vizier_J-ApJ-927-164_table4.tsv</code>
+contains 140 unique galaxies with published ages, <code>[Z/H]</code>,
+<code>[alpha/Fe]</code>, coordinates, and errors. It lacks redshift,
+velocity dispersion, and indices
+(<code>data/raw/borghi2022/README.md</code>).</p>
+<p><code>data/raw/legac_dr2/legaCdr2.fits.gz</code> contains 1,988
+spectrum rows. It supplies redshifts, velocity dispersions, Lick
+indices, flags, coordinates, and a spectrum filename. Repeat
+observations mean object ID is not unique
+(<code>data/raw/legac_dr2/README.md</code>).</p>
+<p><code>data/raw/cosmos2015/</code> contains positional matches used
+for NUVrJ selection and broadband fluxes. Catalogue rows are matched to
+LEGA-C spectrum rows, so repeat objects can occur
+(<code>data/raw/cosmos2015/README.md</code>).</p>
+</section>
+<section id="joined-borghi-and-lega-c-tables" class="level2">
+<h2>Joined Borghi and LEGA-C tables</h2>
+<p>The builder parses and validates exactly 140 Borghi IDs
+(<code>scripts/build_borghi2022_legac_dr2_subset.py:109-122</code>). It
+indexes every LEGA-C row by <code>OBJECT</code>
+(<code>lines 194-204</code>), retains all matching spectrum rows, and
+confirms every coordinate match lies within 0.1 arcsec
+(<code>lines 209-264</code>).</p>
+<p>The result contains 143 spectrum rows for 140 galaxies. Two
+repeat-spectrum objects cross the strict 215 km/s boundary and are
+explicitly marked ambiguous in the object audit
+(<code>data/processed/borghi2022_legac_dr2/README.md</code>).</p>
+</section>
+<section id="spectrum-files" class="level2">
+<h2>Spectrum files</h2>
+<p>Each LEGA-C FITS file stores one binary-table row whose cells hold
+arrays:</p>
+<ul>
+<li><code>WAVE</code>: observed-frame air wavelength in Angstrom.</li>
+<li><code>FLUX</code>, <code>ERR</code>:
+<code>10^-19 erg s^-1 cm^-2 Angstrom^-1</code>.</li>
+<li><code>QUAL</code>: nonzero bad-pixel flag.</li>
+</ul>
+<p>The downloader checks exactly these columns and the single-row
+structure (<code>scripts/download_legac_dr2_spectra.py:64-79</code>).
+Notebook 07 converts air to vacuum wavelengths and <code>F_lambda</code>
+to <code>F_nu</code> before creating a Ceridwen <code>Spectrum</code>
+under headings “Load the same high-S/N test galaxy” and “Build the
+native-resolution spectrum.”</p>
+</section>
+<section id="photometry" class="level2">
+<h2>Photometry</h2>
+<p>The photometry downloader queries within one arcsecond, computes
+separations, sorts by LEGA-C index and separation, and retains the
+nearest candidate
+(<code>scripts/download_cosmos2015_legac_dr2_photometry.py:61-99</code>).
+The selected aperture fluxes are microJy (<code>lines 110-113</code>).
+Notebook 06 converts microJy to AB maggies and adds a five-percent
+uncertainty floor under “Build the twelve-band photometric
+observation.”</p>
+</section>
+<section id="data-contracts-entering-ceridwen" class="level2">
+<h2>Data contracts entering Ceridwen</h2>
+<ul>
+<li><code>Photometry.flux</code>: one-dimensional AB maggies.</li>
+<li><code>Photometry.uncertainty</code>: same shape and units.</li>
+<li><code>Spectrum.wavelength</code>: observed-frame vacuum
+Angstrom.</li>
+<li><code>Spectrum.flux</code>: observed <code>F_nu</code> compatible
+with model prediction.</li>
+<li><code>Spectrum.mask</code>: <code>True</code> where a pixel
+participates in the likelihood.</li>
+</ul>
+<p>The base observation validates one-dimensional aligned arrays and
+masks non-finite flux or non-positive uncertainty
+(<code>ceridwen/ceridwen/observation/base.py:171-213</code>).</p>
+</section>
+<section id="code-walkthrough" class="level2">
+<h2>Examples</h2>
+<p class="source-locator"><code>scripts/build_borghi2022_legac_dr2_subset.py:194-213</code></p>
+<pre class="python"><code>rows_by_id: dict[int, list[int]] = defaultdict(list)
+for index, object_id in enumerate(dr2["OBJECT"]):
+    rows_by_id[int(object_id)].append(index)
+
+missing_ids = [
+    int(row["[MMS2013]"].strip())
+    for row in borghi_rows
+    if not rows_by_id[int(row["[MMS2013]"].strip())]
+]
+if missing_ids:
+    raise ValueError(f"Borghi IDs missing from LEGA-C DR2: {missing_ids}")
+
+output_rows: list[dict[str, str | int]] = []
+separations: list[float] = []
+
+for borghi in borghi_rows:
+    object_id = int(borghi["[MMS2013]"].strip())
+    match_indices = sorted(
+        rows_by_id[object_id], key=lambda i: str(dr2["SPECT_ID"][i])
+    )</code></pre>
+<p><code>rows_by_id</code> maps one galaxy ID to a list, not one row. That single type choice explains how repeat spectra survive the join.</p>
+<p class="source-locator"><code>scripts/download_cosmos2015_legac_dr2_photometry.py:87-97</code></p>
+<pre class="python"><code>order = np.lexsort(
+    (
+        np.asarray(candidates["MATCH_SEP_ARCSEC"]),
+        np.asarray(candidates["LEGAC_INDEX"]),
+    )
+)
+candidates = candidates[order]
+_, nearest = np.unique(
+    np.asarray(candidates["LEGAC_INDEX"]), return_index=True
+)
+matched_batches.append(candidates[np.sort(nearest)])</code></pre>
+<p>Sorting groups candidates by LEGA-C row and then by separation. <code>np.unique(..., return_index=True)</code> therefore selects the nearest candidate in each group.</p>
+</section>
+</section>
+</main>
+</body>
+</html>

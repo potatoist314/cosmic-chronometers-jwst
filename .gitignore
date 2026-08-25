@@ -8,12 +8,20 @@ wheels/
 
 # Virtual environments
 .venv
+.venv-ceridwen-gpu/
 
 # macOS
 .DS_Store
 
 # Scratch / working files
 tmp/
+.trash/
 
 # Copyrighted reference papers (kept locally, not published)
 *.pdf
+
+# LEGA-C DR2 1D spectra, ~205 MB (scripts/download_legac_dr2_spectra.py restores them)
+data/raw/legac_dr2/sp/
+
+# Downloaded and matched COSMOS2015 catalogues
+data/raw/cosmos2015/*.fits

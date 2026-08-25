@@ -1,35 +1,51 @@
-## Data
+# Stellar Ages and Cosmic Chronometers with JWST
 
-- `data/raw/borghi2022/` — the 140-object machine-readable Table 4 of stellar
-  population properties from Borghi et al. (2022), downloaded from VizieR.
-  The directory README records the paper and dataset DOIs, retrieval details,
-  checksum, and the fact that redshifts are not included in this table.
-- `data/raw/legac_dr2/` — the complete 1,988-spectrum LEGA-C DR2 FITS
-  catalogue, its VizieR ReadMe, and ESO's release documentation.
-- `data/processed/borghi2022_legac_dr2/` — the reproducible match of the 140
-  Borghi objects to DR2 redshifts, stellar velocity dispersions, public
-  Lick/IDS indices, uncertainties, and quality flags, plus the paper's strict
-  low/high velocity-dispersion split at 215 km/s and an object-level audit of
-  repeat spectra that cross the threshold.
+Research code and notes for testing age-based cosmological measurements with
+massive quiescent galaxies.
 
-Rebuild the matched table with:
+## Repository layout
 
-```text
-.venv/bin/python scripts/build_borghi2022_legac_dr2_subset.py
+- `src/` — reusable scientific code.
+- `notebooks/` — exploratory analyses and reproductions.
+- `scripts/` — reproducible data-processing utilities.
+- `data/` — raw and processed research data.
+- `papers/` — local reference literature.
+- `external/` — external reference implementations.
+- `session_plans/` — dated work plans, plus a rough project roadmap. The
+  roadmap is a working draft rather than a committed schedule: its stages are
+  placeholders until explicitly agreed.
+
+## Ceridwen on Vast.ai
+
+Use a Linux Jupyter+SSH instance with a CUDA 12-compatible image, at least
+12 GB GPU memory, and at least 30 GB disk. A 24 GB RTX 3090 or 4090 leaves
+comfortable memory headroom for notebooks 07 and 08.
+
+Clone the repository into Vast's workspace:
+
+```bash
+cd /workspace
+git clone --recurse-submodules \
+  https://github.com/potatoist314/cosmic-chronometers-jwst.git
+cd cosmic-chronometers-jwst
 ```
 
-## External resources
+From the local project directory, upload the untracked scientific data:
 
-- `external/CCcovariance/` (git submodule, https://gitlab.com/mmoresco/CCcovariance) —
-  Moresco's reference implementation for estimating the cosmic chronometer
-  statistical + systematic covariance matrix (metallicity, residual young
-  component, SFH/IMF/stellar library/SPS model terms), with example notebooks
-  and the underlying `H(z)` data tables. Relevant to Phase 2 (published
-  cosmic-chronometer reproduction) and to treating covariance explicitly per
-  `AGENTS.md`.
+```bash
+vastai copy "local:$PWD/data/raw" \
+  "C.<INSTANCE_ID>:/workspace/cosmic-chronometers-jwst/data/"
+vastai copy "local:$PWD/ceridwen/amist_c3k_hr_krou_afe.h5" \
+  "C.<INSTANCE_ID>:/workspace/cosmic-chronometers-jwst/ceridwen/"
+```
 
-  After cloning this repository, initialize it with:
+Then configure and verify the remote GPU environment:
 
-  ```
-  git submodule update --init --recursive
-  ```
+```bash
+bash scripts/bootstrap_vast_ai.sh
+```
+
+Open `ceridwen_test_spectra.ipynb` or
+`ceridwen_integrated_photometry_spectra.ipynb` and select
+`Ceridwen (Vast.ai GPU)`. The kernel requires CUDA and enables JAX float64, so
+a broken GPU setup cannot silently use CPU.

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Project Modules</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="codebase">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="project-modules" class="level1">
+<h1>Project Modules</h1>
+<section id="mental-model" class="level2">
+<h2>Flow</h2>
+<pre class="text"><code>scripts/       create or download durable data products
+src/           exposes reusable calculations
+notebooks/     assemble those pieces into analyses</code></pre>
+</section>
+<section id="srccosmologypy" class="level2">
+<h2><code>src/cosmology.py</code></h2>
+<p>This is a small early cosmology helper. No active notebook currently
+imports it.</p>
+<ul>
+<li><code>E(z, omega_m)</code> computes the flat matter-plus-dark-energy
+expansion factor (<code>src/cosmology.py:5-8</code>).</li>
+<li><code>H(z, H0, omega_m)</code> multiplies it by an Astropy quantity
+carrying units (<code>src/cosmology.py:10-12</code>).</li>
+<li><code>age_integrand(z, omega_m)</code> supplies the dimensionless
+integrand used by SciPy quadrature
+(<code>src/cosmology.py:15-16</code>).</li>
+</ul>
+<p>The module ends at line 20 and imports <code>quad</code> without
+wrapping the full age integral. Treat it as a partial learning module,
+not a complete cosmology API.</p>
+<p class="source-locator"><code>src/cosmology.py:5-16</code></p>
+<pre class="python"><code>def E(z, omega_m):
+    ''' Dimensionless hubble parameter, E(z) = H(z) / H (0) '''
+    ''' Radiation neglible, curvature negligible, only matter and dark energy'''
+    return np.sqrt(omega_m * (1+z)**3 + (1 - omega_m))
+
+@u.quantity_input #@ calls a decorator, quantity_input is the astropy function
+def H(z, H0: u.Quantity[u.km/u.s/u.Mpc], omega_m):
+    return E(z, omega_m) * H0
+
+
+def age_integrand(z, omega_m):
+    return 1/((1+z)*E(z, omega_m))</code></pre>
+<p><code>H</code> delegates the dimensionless calculation to <code>E</code>. <code>age_integrand</code> reuses <code>E</code> again; these calls reveal the module’s dependency direction.</p>
+</section>
+<section id="srcmockspy" class="level2">
+<h2><code>src/mocks.py</code></h2>
+<p>This module generates controlled age-redshift samples.</p>
+<pre class="text"><code>draw_redshifts
+      |
+      v
+true_ages ----&gt; intrinsic scatter
+                    |
+                    v
+         systematic bias + measurement noise
+                    |
+                    v
+                MockSample</code></pre>
+<ul>
+<li><code>MockSample</code> defines four arrays and a truth dictionary
+(<code>lines 15-23</code>).</li>
+<li><code>true_ages</code> subtracts formation cosmic time from
+observation cosmic time (<code>lines 26-33</code>).</li>
+<li><code>draw_redshifts</code> uses a passed random generator
+(<code>lines 36-38</code>).</li>
+<li><code>make_mock</code> controls scatter, constant offset, redshift
+bias, noise, and seed (<code>lines 41-108</code>).</li>
+</ul>
+<p>Shapes: all four sample arrays have shape <code>(n,)</code>. Ages and
+their uncertainties are Gyr; <code>z</code> is dimensionless.</p>
+<p class="source-locator"><code>src/mocks.py:86-97</code></p>
+<pre class="python"><code>rng = np.random.default_rng(seed)
+
+z = draw_redshifts(n, z_min, z_max, rng)
+age = true_ages(z, H0, omega_m, z_form)
+
+# intrinsic scatter is part of the population, not of the measurement
+if intrinsic_scatter:
+    age = age + rng.normal(0.0, intrinsic_scatter, n)
+
+systematic = age_offset + bias_per_unit_z * (z - z_min)
+noise = rng.normal(0.0, age_err, n)
+age_obs = age + systematic + noise</code></pre>
+<p>Follow the names downward: cosmology creates <code>age</code>, physical scatter modifies it, then systematic and measurement noise create the reported <code>age_obs</code>.</p>
+</section>
+<section id="srclick_inferencepy" class="level2">
+<h2><code>src/lick_inference.py</code></h2>
+<p>This module extracts the expensive per-galaxy MCMC from notebook 02
+so it can run safely in worker processes.</p>
+<pre class="text"><code>index grid + observed indices
+          |
+          v
+RegularGridInterpolator(age, [Z/H], [alpha/Fe], sigma)
+          |
+          v
+vectorized log_prob(theta)
+          |
+          v
+emcee chain -&gt; percentiles + autocorrelation time</code></pre>
+<ul>
+<li><code>log_prob_factory</code> creates a bounded vectorized
+likelihood closure (<code>src/lick_inference.py:11-24</code>).</li>
+<li><code>fit_galaxy_arrays</code> validates measurements, constructs
+the four-dimensional interpolator, broadens to effective sigma, runs
+emcee, and summarizes age, <code>[Z/H]</code>, and
+<code>[alpha/Fe]</code> (<code>lines 27-105</code>).</li>
+<li><code>initialize_fit_worker</code> stores read-only grid arrays once
+per process (<code>lines 108-133</code>).</li>
+<li><code>fit_galaxy_task</code> turns one serializable task into a
+completed, skipped, or failed record (<code>lines 136-166</code>).</li>
+</ul>
+<p>The worker-global <code>_WORKER_STATE</code> avoids repeatedly
+sending the large model grid with every task. The task itself contains
+only one galaxy’s arrays and metadata.</p>
+<p class="source-locator"><code>src/lick_inference.py:11-24</code></p>
+<pre class="python"><code>def log_prob_factory(interp, obs, err, sigma, lo, hi):
+    """Return the vectorized Borghi et al. (2022a) Equation 7 likelihood."""
+
+    def log_prob(theta):
+        theta = np.atleast_2d(theta)
+        inside = np.all((theta &gt;= lo) &amp; (theta &lt;= hi), axis=1)
+        out = np.full(len(theta), -np.inf)
+        if inside.any():
+            points = np.column_stack([theta[inside], np.full(inside.sum(), sigma)])
+            chi2 = np.sum(((obs - interp(points)) / err) ** 2, axis=1)
+            out[inside] = -0.5 * chi2
+        return out
+
+    return log_prob</code></pre>
+<p>Bounds are checked before interpolation. Invalid walkers keep <code>-np.inf</code>; valid walkers receive a Gaussian <code>-chi2/2</code> score.</p>
+</section>
+<section id="data-scripts" class="level2">
+<h2>Data scripts</h2>
+<p><code>build_borghi2022_legac_dr2_subset.py</code> is the central
+transformation script. Its <code>main</code> reads both catalogues,
+validates required columns, matches by object ID, checks coordinate
+separation, retains repeat spectra, applies the strict 215 km/s split,
+and writes joined and audit tables (<code>lines 176-358</code>).</p>
+<p><code>download_legac_dr2_spectra.py</code> is a resumable downloader.
+It validates the catalogue filename set (<code>lines 47-61</code>),
+validates each FITS structure (<code>lines 64-79</code>), downloads
+through a <code>.part</code> file and atomically renames it
+(<code>lines 82-110</code>), then verifies the complete set
+(<code>lines 113-146</code>).</p>
+<p><code>download_cosmos2015_legac_dr2_photometry.py</code> queries
+VizieR in batches, keeps the nearest match per LEGA-C row, adds object
+identifiers and match separation, and writes a FITS table
+(<code>lines 61-125</code>).</p>
+</section>
+</section>
+</main>
+</body>
+</html>

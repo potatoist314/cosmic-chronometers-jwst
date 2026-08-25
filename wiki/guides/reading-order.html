@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Reading Order</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="guide">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="reading-order" class="level1">
+<h1>Reading Order</h1>
+<section id="stage-1-learn-the-repository" class="level2">
+<h2>Stage 1: learn the repository</h2>
+<p>Read <a href="../codebase/project-map.html">Project map</a>:</p>
+<ul>
+<li><code>main.py</code> is scaffold, not a scientific entry point.</li>
+<li>Project code and submodules have separate ownership.</li>
+<li>The root project and Ceridwen use separate environments.</li>
+</ul>
+</section>
+<section id="stage-2-read-small-project-functions" class="level2">
+<h2>Stage 2: read small project functions</h2>
+<p>Read <code>src/mocks.py</code> in this order:</p>
+<ol type="1">
+<li><code>MockSample</code> at lines 15-23: identify stored state.</li>
+<li><code>true_ages</code> at lines 26-33: follow units through
+Astropy.</li>
+<li><code>draw_redshifts</code> at lines 36-38: identify
+randomness.</li>
+<li><code>make_mock</code> at lines 41-108: trace <code>z</code> into
+<code>age_obs</code>.</li>
+</ol>
+<p>Then read <a href="../codebase/project-modules.html">Project modules</a> and
+<a href="../guides/python-patterns.html">Python patterns</a>.</p>
+</section>
+<section id="stage-3-follow-a-data-product" class="level2">
+<h2>Stage 3: follow a data product</h2>
+<p>Read <a href="../codebase/data-pipeline.html">Data pipeline</a>, then trace one Borghi object:</p>
+<ol type="1">
+<li>Raw Borghi row.</li>
+<li>Matching LEGA-C rows.</li>
+<li>Joined processed row.</li>
+<li>Notebook selection.</li>
+<li>Lick-index arrays or spectrum construction.</li>
+</ol>
+<p>Each step changes representation, not the underlying galaxy.</p>
+</section>
+<section id="stage-4-read-notebooks-as-orchestration" class="level2">
+<h2>Stage 4: read notebooks as orchestration</h2>
+<p>Read <a href="../notebooks/notebook-map.html">Notebook map</a>. Start with:</p>
+<ol type="1">
+<li><code>ceridwen_test_spectra.ipynb</code> for spectral
+projection.</li>
+<li><code>ceridwen_integrated_photometry_spectra.ipynb</code> for
+composition.</li>
+</ol>
+<p>Notebooks assemble; modules implement.</p>
+</section>
+<section id="stage-5-trace-one-ceridwen-prediction" class="level2">
+<h2>Stage 5: trace one Ceridwen prediction</h2>
+<p>Read these pages in order:</p>
+<ol type="1">
+<li><a href="../codebase/ceridwen-architecture.html">Ceridwen architecture</a></li>
+<li><a href="../codebase/ceridwen-ssp-csp.html">SSP grids to CSPs</a></li>
+<li><a href="../codebase/ceridwen-observations-model.html">Observations and SedModel</a></li>
+<li><a href="../codebase/ceridwen-likelihood-sampling.html">Likelihood and sampling</a></li>
+<li><a href="../codebase/tests-as-documentation.html">Tests as documentation</a></li>
+</ol>
+<p>Trace this concrete call without entering unrelated physics
+components:</p>
+<pre class="text"><code>run_sampler
+  -&gt; model.predict(theta)
+  -&gt; SedModel.apply_transforms(theta)
+  -&gt; CSPBasis_afe.predict(model_theta, observations)
+  -&gt; Photometry.predict or Spectrum.predict
+  -&gt; likelihood(data, prediction, uncertainty, mask)</code></pre>
+</section>
+</section>
+</main>
+</body>
+</html>

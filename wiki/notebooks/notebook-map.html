@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Notebook Map</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="notebook">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="notebook-map" class="level1">
+<h1>Notebook Map</h1>
+<section id="how-to-interpret-this-directory" class="level2">
+<h2>Scope</h2>
+<p>Active root notebooks are the project’s scientific entry points.
+Practice notebooks live separately under <code>notebooks/practice/</code>.
+Saved outputs are evidence only when cell source, execution order,
+inputs, and kernel still match.</p>
+</section>
+<section id="ceridwen-learning-sequence" class="level2">
+<h2>Ceridwen notebooks</h2>
+<p><code>ceridwen_test_spectra.ipynb</code> fits one LEGA-C spectrum. It
+loads the local high-resolution Kroupa grid
+<code>ceridwen/amist_c3k_hr_krou_afe.h5</code>, performs wavelength/flux
+conversion, constructs <code>Spectrum</code>, adds calibration noise,
+and runs NUTS.</p>
+<p><code>ceridwen_integrated_photometry_spectra.ipynb</code> combines
+both observation types into one <code>SedModel</code> and one
+<code>MultiObservationLikelihood</code>. It also uses the local
+high-resolution Kroupa grid and anchors spectrum normalization to
+photometry before the joint posterior.</p>
+</section>
+<section id="practice" class="level2">
+<h2>Practice</h2>
+<p><code>notebooks/practice/fits-viewer.ipynb</code> contains one
+FITS-table inspection cell and is a viewer, not an analysis pipeline.</p>
+</section>
+<section id="kernels" class="level2">
+<h2>Kernels</h2>
+<ul>
+<li><code>notebooks/practice/fits-viewer.ipynb</code> records the root
+Python 3.14 kernel.</li>
+<li>The two Ceridwen notebooks record Python 3.11 kernels.</li>
+</ul>
+<p>Kernel choice is part of each notebook’s executable contract.</p>
+</section>
+<section id="notebook-code-in-context" class="level2">
+<h2>Examples</h2>
+<p class="source-locator"><code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> · “Joint posterior” · code cell 18</p>
+<pre class="python"><code>joint_likelihood = MultiObservationLikelihood(
+    keys=(phot_obs.name, spectrum_obs.name),
+    likelihoods=(
+        DiagonalGaussianLikelihood(),
+        DiagonalGaussianLikelihood(noise_model=DiagonalNoiseModel(use_fractional=True)),
+    ),
+)
+joint_result = run_sampler(
+    joint_model,
+    joint_likelihood,
+    joint_adapter,
+    jax.random.PRNGKey(SEED),
+)</code></pre>
+<p>The notebook assembles existing objects: two observation keys, two likelihoods, one model, and one sampler adapter. The inference algorithm itself lives in modules.</p>
+</section>
+</section>
+</main>
+</body>
+</html>

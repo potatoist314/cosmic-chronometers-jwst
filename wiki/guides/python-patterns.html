@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Python Patterns Used Here</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="guide">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="python-patterns-used-here" class="level1">
+<h1>Python Patterns</h1>
+<section id="function" class="level2">
+<h2>Function</h2>
+<p>A function names a transformation from inputs to outputs. Read its
+signature, then find its <code>return</code> statements before studying
+intermediate lines.</p>
+<ul>
+<li><code>src/mocks.py:26-33</code>, <code>true_ages(...)</code> returns
+stellar ages.</li>
+<li><code>src/mocks.py:41-108</code>, <code>make_mock(...)</code>
+returns a <code>MockSample</code>.</li>
+<li><code>ceridwen/ceridwen/model/model.py:298-351</code>,
+<code>predict(theta)</code> returns a dict.</li>
+</ul>
+<p>Question: which of those functions has a filesystem side effect?
+None.</p>
+</section>
+<section id="dataclass" class="level2">
+<h2>Dataclass</h2>
+<p>A dataclass declares a data record. It stores results without
+necessarily owning the algorithm that produced them.</p>
+<ul>
+<li><code>src/mocks.py:15-23</code>: <code>MockSample</code> stores one
+simulated catalogue.</li>
+<li><code>ceridwen/ceridwen/sampler/runner.py:69-128</code>:
+<code>SamplingResult</code> stores output.</li>
+</ul>
+<p>Read field names as the object’s data contract. Then search where the
+class is constructed to find the producing algorithm.</p>
+<p class="source-locator"><code>src/mocks.py:15-23</code></p>
+<pre class="python"><code>@dataclass
+class MockSample:
+    """One realisation. `age_obs` is what an observer would report."""
+
+    z: np.ndarray
+    age_true: np.ndarray      # Gyr, cosmology + intrinsic scatter, no measurement error
+    age_obs: np.ndarray       # Gyr, after systematics and noise
+    age_err: np.ndarray       # Gyr, the reported 1-sigma uncertainty
+    truth: dict               # the input parameters, for recovery tests</code></pre>
+<p>There are no methods here. The class names five fields and their meaning; the producing function is elsewhere.</p>
+</section>
+<section id="closure" class="level2">
+<h2>Closure</h2>
+<p>A closure is an inner function that remembers variables from its
+enclosing function. <code>log_prob_factory</code> returns
+<code>log_prob</code>, which remembers <code>interp</code>,
+<code>obs</code>, <code>err</code>, <code>sigma</code>, <code>lo</code>,
+and <code>hi</code> without receiving them again
+(<code>src/lick_inference.py:11-24</code>).</p>
+<p class="source-locator"><code>src/lick_inference.py:11-24</code></p>
+<pre class="python"><code>def log_prob_factory(interp, obs, err, sigma, lo, hi):
+    """Return the vectorized Borghi et al. (2022a) Equation 7 likelihood."""
+
+    def log_prob(theta):
+        theta = np.atleast_2d(theta)
+        inside = np.all((theta &gt;= lo) &amp; (theta &lt;= hi), axis=1)
+        out = np.full(len(theta), -np.inf)
+        if inside.any():
+            points = np.column_stack([theta[inside], np.full(inside.sum(), sigma)])
+            chi2 = np.sum(((obs - interp(points)) / err) ** 2, axis=1)
+            out[inside] = -0.5 * chi2
+        return out
+
+    return log_prob</code></pre>
+<p>The outer function receives fixed galaxy data once. The inner function receives only each proposed <code>theta</code>; Python retains the six outer names in the closure.</p>
+<p>Question: when <code>emcee</code> calls <code>log_prob(theta)</code>,
+where does <code>obs</code> come from?</p>
+</section>
+<section id="class-and-inheritance" class="level2">
+<h2>Class and inheritance</h2>
+<p>Inheritance expresses “is a specialized kind of.”
+<code>Photometry</code>, <code>Spectrum</code>, and <code>Lines</code>
+inherit storage and masking from <code>Observation</code>, then replace
+projection behavior:</p>
+<ul>
+<li>Base contract:
+<code>ceridwen/ceridwen/observation/base.py:25-89</code>.</li>
+<li>Abstract-style <code>predict</code>:
+<code>base.py:273-301</code>.</li>
+<li>Photometry implementation: <code>photometry.py:245-267</code>.</li>
+<li>Spectrum implementation: <code>spectrum.py:493-557</code>.</li>
+</ul>
+<p>When reading inheritance, compare the same method name across parent
+and child.</p>
+</section>
+<section id="composition" class="level2">
+<h2>Composition</h2>
+<p>Composition means one object contains collaborating objects.
+<code>SedModel</code> owns a CSP, observations, priors, and transforms
+rather than inheriting their code
+(<code>ceridwen/ceridwen/model/model.py:141-167</code>). This is
+Ceridwen’s central design.</p>
+<p>Question: why can the same <code>SedModel</code> contain photometry
+and a spectrum?</p>
+</section>
+<section id="adapter" class="level2">
+<h2>Adapter</h2>
+<p>An adapter gives different external libraries one common interface.
+<code>SamplerAdapter.run(...)</code> defines the protocol, while NUTS
+and nested-sampling classes implement it
+(<code>ceridwen/ceridwen/sampler/runner.py:215-268</code>).</p>
+<p>The caller <code>run_sampler</code> depends on the protocol, not
+BlackJAX’s internal API (<code>runner.py:275-366</code>).</p>
+</section>
+<section id="decorator" class="level2">
+<h2>Decorator</h2>
+<p>A decorator changes how a function runs while preserving its callable
+form.</p>
+<ul>
+<li><code>@jax.jit</code> compiles a numerical function:
+<code>runner.py:349-363</code>.</li>
+<li><code>@classmethod</code> passes the class as <code>cls</code>:
+<code>ssp_data.py:402-450</code>.</li>
+<li><code>@property</code> exposes a method like an attribute:
+<code>base.py:216-234</code>.</li>
+</ul>
+<p>Read the decorator before the function because it changes
+execution.</p>
+<p class="source-locator"><code>src/cosmology.py:10-12</code></p>
+<pre class="python"><code>@u.quantity_input #@ calls a decorator, quantity_input is the astropy function
+def H(z, H0: u.Quantity[u.km/u.s/u.Mpc], omega_m):
+    return E(z, omega_m) * H0</code></pre>
+<p><code>@u.quantity_input</code> validates the annotated units before the three-line function body runs.</p>
+</section>
+<section id="module-exports" class="level2">
+<h2>Module exports</h2>
+<p>An <code>__init__.py</code> defines convenient public names. For
+example, <code>ceridwen/ceridwen/ssps/__init__.py:7-18</code> exports
+grid containers and fetching helpers. Start there, then open the
+defining module.</p>
+</section>
+<section id="jax-static-versus-traced-values" class="level2">
+<h2>JAX static versus traced values</h2>
+<p>This distinction explains much of Ceridwen’s structure:</p>
+<ul>
+<li>Static Python values define shapes, object types, and observation
+lists.</li>
+<li>Traced JAX arrays contain parameter values changing during
+sampling.</li>
+<li>Static branches are resolved once during compilation.</li>
+<li>Python cannot branch on the numerical value of a traced array.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Observation setup precomputes matrices before JIT:
+<code>ceridwen/ceridwen/model/model.py:197-211</code>.</li>
+<li>The observation loop becomes compiled operations:
+<code>ceridwen/ceridwen/csp/csp_afe.py:1096-1116</code>.</li>
+<li><code>theta</code> arrays remain differentiable inside prediction:
+<code>ceridwen/ceridwen/model/model.py:298-351</code>.</li>
+</ul>
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:348-358</code></p>
+<pre class="python"><code># ── Log-likelihood: sum over observations, no prior ───────────────────
+@jax.jit
+def loglike_fn(theta: dict[str, Array]) -&gt; Array:
+    predictions = model.predict(theta)
+    lnl = jnp.zeros(())
+    for key, lhood in zip(_keys, _likelihoods):
+        y_k, sig_k, mask_k = _static_data[key]
+        mu_k    = predictions[key]
+        lnl_k, _ = lhood(y_k, mu_k, sig_k, mask_k, params=theta)
+        lnl = lnl + lnl_k
+    return lnl</code></pre>
+<p><code>theta</code> is traced numerical data. The tuples <code>_keys</code> and <code>_likelihoods</code> were built outside this function, so JAX sees a fixed loop structure.</p>
+<p>Question: why would changing the observation list force compilation
+again?</p>
+</section>
+</section>
+</main>
+</body>
+</html>

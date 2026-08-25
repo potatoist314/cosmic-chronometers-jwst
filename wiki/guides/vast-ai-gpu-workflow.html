@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="wiki-type" content="guide">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+  <title>Vast.ai GPU Workflow</title>
+  <link rel="stylesheet" href="../assets/wiki.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="../index.html">
+        <span class="site-mark">AR</span>
+        <span>Astro Research Wiki</span>
+      </a>
+      <span class="site-context">Ceridwen cloud-GPU operations</span>
+    </div>
+  </header>
+  <main class="page-shell" id="main-content">
+    <header>
+      <p class="eyebrow">Operational guide</p>
+      <h1>Run Ceridwen fits on a Vast.ai GPU.</h1>
+      <p class="lede">Notebook 07 fits spectra; notebook 08 fits spectra and photometry. Use local CPU trials and Vast.ai GPU fits.</p>
+    </header>
+
+    <nav id="TOC" aria-label="On this page">
+      <ul>
+        <li><a href="#instance">Choose an instance</a></li>
+        <li><a href="#clone">Clone the project</a></li>
+        <li><a href="#data">Transfer private data</a></li>
+        <li><a href="#bootstrap">Bootstrap and verify</a></li>
+        <li><a href="#run">Run the notebooks</a></li>
+        <li><a href="#finish">Preserve results and finish</a></li>
+        <li><a href="#evidence">Evidence</a></li>
+      </ul>
+    </nav>
+
+    <section id="instance">
+      <h2>Choose an instance</h2>
+      <ul>
+        <li>Use a Linux image with Jupyter, SSH, and CUDA 12.</li>
+        <li>Require at least 12 GB GPU memory and 30 GB disk.</li>
+        <li>Prefer a 24 GB RTX 3090 or 4090 for headroom.</li>
+      </ul>
+      <p>The bootstrap exits if Linux, NVIDIA visibility, or the 12 GB memory floor is missing. It never silently falls back to CPU.</p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:14-32</code></p>
+      <pre><code>if ! command -v nvidia-smi &gt;/dev/null 2&gt;&amp;1; then
+    echo "nvidia-smi is unavailable; launch a Vast.ai NVIDIA GPU instance." &gt;&amp;2
+    exit 1
+fi
+
+if (( GPU_MEMORY_MIB &lt; MINIMUM_GPU_MEMORY_MIB )); then
+    echo "GPU has ${GPU_MEMORY_MIB} MiB; notebook 07 requires at least 12000 MiB." &gt;&amp;2
+    exit 1
+fi</code></pre>
+    </section>
+
+    <section id="clone">
+      <h2>Clone the project</h2>
+      <p>Open the instance terminal and clone into its persistent workspace. Submodules are required because Ceridwen lives inside this repository.</p>
+      <pre><code>cd /workspace
+git clone --recurse-submodules \
+  https://github.com/potatoist314/cosmic-chronometers-jwst.git
+cd cosmic-chronometers-jwst</code></pre>
+    </section>
+
+    <section id="data">
+      <h2>Transfer private data</h2>
+      <p>Run these commands locally, replacing <code>&lt;INSTANCE_ID&gt;</code>. Git does not contain the LEGA-C spectra, matched photometry, or high-resolution SSP grid.</p>
+      <pre><code>vastai copy "local:$PWD/data/raw" \
+  "C.&lt;INSTANCE_ID&gt;:/workspace/cosmic-chronometers-jwst/data/"
+
+vastai copy "local:$PWD/ceridwen/amist_c3k_hr_krou_afe.h5" \
+  "C.&lt;INSTANCE_ID&gt;:/workspace/cosmic-chronometers-jwst/ceridwen/"</code></pre>
+      <p>The required remote paths are:</p>
+      <ul>
+        <li><code>data/raw/legac_dr2/legaCdr2.fits.gz</code></li>
+        <li><code>data/raw/legac_dr2/sp/</code></li>
+        <li><code>data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits</code></li>
+        <li><code>ceridwen/amist_c3k_hr_krou_afe.h5</code></li>
+      </ul>
+    </section>
+
+    <section id="bootstrap">
+      <h2>Bootstrap and verify</h2>
+      <p>Run the maintained setup script from the remote project root:</p>
+      <pre><code>bash scripts/bootstrap_vast_ai.sh</code></pre>
+      <p>It creates an isolated Python 3.11 environment, installs CUDA JAX and Ceridwen, verifies GPU float64 execution, runs Ceridwen's check, and registers the notebook kernel.</p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:70-90</code></p>
+      <pre><code>JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "${PYTHON_BIN}" - &lt;&lt;'PY'
+import jax
+import jax.numpy as jnp
+
+devices = jax.devices()
+if not devices or any(device.platform != "gpu" for device in devices):
+    raise SystemExit(f"Expected CUDA GPU devices, found {devices}")
+value = jnp.ones(1, dtype=jnp.float64).block_until_ready()
+PY
+
+"${PYTHON_BIN}" -m ipykernel install --user \
+    --name ceridwen \
+    --display-name "Ceridwen (Vast.ai GPU)"</code></pre>
+      <p>The same script verifies 1,988 spectra, catalogue and photometry row counts, the SSP-grid shape, and its checksum before allowing the fit.</p>
+    </section>
+
+    <section id="run">
+      <h2>Run the notebooks</h2>
+      <ol>
+        <li>Open JupyterLab on the Vast.ai instance.</li>
+        <li>Select <code>Ceridwen (Vast.ai GPU)</code> as the kernel.</li>
+        <li>Run <code>notebooks/ceridwen_test_spectra.ipynb</code> for spectra only.</li>
+        <li>Run <code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> for the combined fit.</li>
+      </ol>
+      <p>Local CPU and remote GPU kernels share the identifier <code>ceridwen</code>. Their visible names identify the active machine and backend.</p>
+      <p>The kernel forces <code>JAX_PLATFORMS=cuda</code> and <code>JAX_ENABLE_X64=1</code> for every notebook session.</p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:95-108</code></p>
+      <pre><code>kernel["env"] = {
+    **kernel.get("env", {}),
+    "JAX_ENABLE_X64": "1",
+    "JAX_PLATFORMS": "cuda",
+}</code></pre>
+    </section>
+
+    <section id="finish">
+      <h2>Preserve results and finish</h2>
+      <ol>
+        <li>Download the executed notebooks, sampler state, and final plots.</li>
+        <li>Check locally that every expected output opens correctly.</li>
+        <li>Stop or destroy the paid instance after the files are safe.</li>
+      </ol>
+      <p>Do not treat the rented machine as the permanent copy of a scientific result.</p>
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence</h2>
+      <ul>
+        <li><code>README.md:18-49</code> — instance, clone, transfer, bootstrap, and kernel workflow.</li>
+        <li><code>scripts/bootstrap_vast_ai.sh:8-12</code> — pinned JAX, TFP, memory, and grid requirements.</li>
+        <li><code>scripts/bootstrap_vast_ai.sh:110-162</code> — scientific-data integrity checks.</li>
+        <li><code>.gitignore:23-24</code> — LEGA-C spectra remain outside Git.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="site-footer">Generated from the live Astro project · Updated 24 August 2026</footer>
+</body>
+</html>

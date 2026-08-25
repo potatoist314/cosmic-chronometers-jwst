@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Ceridwen: Observations and SedModel</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="codebase">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="ceridwen-observations-and-sedmodel" class="level1">
+<h1>Ceridwen: Observations and SedModel</h1>
+<p>Observations define measured data space. <code>SedModel</code>
+connects those data containers to the CSP forward model and decides
+which parameters are sampled.</p>
+<section id="observation-contract" class="level2">
+<h2>Observation contract</h2>
+<p>Every <code>Observation</code> stores:</p>
+<ul>
+<li><code>flux</code>: one-dimensional measured values.</li>
+<li><code>uncertainty</code>: one-dimensional one-sigma errors.</li>
+<li><code>mask</code>: boolean, <code>True</code> means included.</li>
+<li><code>name</code>: unique key used in prediction dictionaries.</li>
+</ul>
+<p>Construction and conversion to JAX arrays occur at
+<code>ceridwen/ceridwen/observation/base.py:59-89</code>.
+<code>rectify</code> checks shapes and automatically masks invalid
+values (<code>lines 171-213</code>).</p>
+<p>A fluxless observation is allowed for forward prediction, provided
+its filters or wavelength grid are known
+(<code>base.py:176-184</code>).</p>
+<p class="source-locator"><code>ceridwen/ceridwen/observation/base.py:186-198</code></p>
+<pre class="python"><code>assert self.flux.ndim == 1,        "flux must be 1-D"
+assert self.uncertainty is not None, "uncertainty is required when flux is provided"
+assert self.uncertainty.ndim == 1, "uncertainty must be 1-D"
+assert len(self.flux) == len(self.uncertainty), \
+    "flux and uncertainty lengths differ"
+
+if self.wavelength is not None:
+    assert self.wavelength.ndim == 1, "wavelength must be 1-D"
+    assert len(self.wavelength) == len(self.flux), \
+        f"wavelength length ({len(self.wavelength)}) ≠ flux length ({len(self.flux)})"
+
+self._automask()
+assert self.ndof &gt; 0, "no valid unmasked data points after masking"</code></pre>
+<p>Read the assertions as a data contract: aligned one-dimensional arrays enter, automatic masking runs, and at least one usable datum must remain.</p>
+</section>
+<section id="projection-contract" class="level2">
+<h2>Projection contract</h2>
+<p><code>setup_for_model(wave_model)</code> performs static work before
+JIT. <code>predict</code> performs only the numerical projection used at
+each model evaluation (<code>base.py:249-301</code>).
+<code>SedModel.__init__</code> calls setup automatically for every
+observation (<code>model/model.py:197-211</code>).</p>
+<section id="photometry" class="level3">
+<h3>Photometry</h3>
+<p><code>Photometry</code> stores AB maggies, where one maggie is 3631
+Jy (<code>observation/photometry.py:19-46</code>). It converts model
+<code>F_nu</code> to <code>F_lambda</code> and integrates filter
+transmission (<code>lines 117-151</code>). Its prediction has one value
+per filter.</p>
+<p class="source-locator"><code>ceridwen/ceridwen/observation/photometry.py:264-266</code></p>
+<pre class="python"><code>if getattr(self, "_has_precomputed_T", False):
+    return self._T @ spectrum
+return self.get_maggies(wave_model, spectrum)</code></pre>
+<p>The fast path is one matrix-vector multiply. The fallback performs the same filter projection without a precomputed matrix.</p>
+</section>
+<section id="spectrum" class="level3">
+<h3>Spectrum</h3>
+<p><code>Spectrum.setup_for_model</code> maps the model wavelength grid
+onto observed pixels. With no smoothing it builds a dense interpolation
+matrix <code>_H</code>; with smoothing it builds a JAX-compatible
+closure for LOSVD and instrumental response
+(<code>observation/spectrum.py:243-491</code>). <code>predict</code>
+calls that prepared closure and returns one model value per observed
+pixel (<code>lines 493-557</code>).</p>
+<p class="source-locator"><code>ceridwen/ceridwen/observation/spectrum.py:543-557</code></p>
+<pre class="python"><code>if self.fit_sigma_smooth:
+    if sigma_smooth is None:
+        # Fall back to the constructor default; lets a caller
+        # invoke ``predict(spec, wave)`` for warmup / debugging
+        # even when the closure is the runtime-sigma variant.
+        sigma_smooth = self.sigma_losvd
+    # Pass sigma through without forcing a dtype -- JAX's
+    # dtype-promotion rules with jax_enable_x64=True will
+    # promote to float64 to match the cached smoother grids,
+    # giving the same precision the static fast path achieved.
+    # Forcing float32 here would round-trip-degrade the smoother
+    # output even when the user is fitting in double precision.
+    sv = jnp.asarray(sigma_smooth).reshape(())
+    return self._predict_fn(spectrum, sv)
+return self._predict_fn(spectrum)</code></pre>
+<p>Both branches call the closure prepared during setup. Only the fitted-velocity branch passes a traced smoothing parameter.</p>
+</section>
+<section id="lines" class="level3">
+<h3>Lines</h3>
+<p><code>Lines</code> represents continuum-subtracted emission-line
+fluxes. The solar-scaled <code>CSPBasis</code> can predict them from
+nebular grids; <code>CSPBasis_afe</code> cannot because it has no
+nebular component.</p>
+</section>
+</section>
+<section id="sedmodel-parameter-bookkeeping" class="level2">
+<h2>SedModel parameter bookkeeping</h2>
+<p><code>SedModel.__init__</code> starts from
+<code>csp.theta_init</code>, then removes parameters that will be
+derived by transforms and adds replacement free parameters
+(<code>model/model.py:141-195</code>). It owns:</p>
+<ul>
+<li><code>theta_init</code>: starting arrays for free parameters.</li>
+<li><code>param_names</code>: ordered free-parameter names.</li>
+<li><code>priors</code>: probability distributions on free
+parameters.</li>
+<li><code>transforms</code>: free-to-derived calculations.</li>
+<li><code>observations</code>: projection targets.</li>
+</ul>
+<p>Example from notebooks 06-08:</p>
+<pre class="text"><code>free: logsfr_ratios, Z, afe, logmass, diffuse_tau_kc
+                         |
+                         +-- transform --&gt; sfh
+fixed/derived: diffuse_dust_index, sometimes lookback_time</code></pre>
+</section>
+<section id="one-prediction" class="level2">
+<h2>One prediction</h2>
+<p><code>SedModel.predict(theta)</code>:</p>
+<ol type="1">
+<li>Applies every transform (<code>model/model.py:263-292</code>).</li>
+<li>Injects fixed redshift when it is not sampled
+(<code>lines 334-348</code>).</li>
+<li>Calls <code>csp.predict(model_theta, observations)</code>
+(<code>line 351</code>).</li>
+<li>Receives a dict keyed by unique observation names.</li>
+</ol>
+<p><code>predict_jit</code> caches compilation for one parameter-tree
+structure; <code>predict_vmap</code> adds a leading sample dimension for
+posterior predictions (<code>model/model.py:357-402</code>).</p>
+<p class="source-locator"><code>ceridwen/ceridwen/model/model.py:345-351</code></p>
+<pre class="python"><code>if self._zred_fixed is not None and "zred" not in model_theta:
+    if model_theta is theta:          # apply_transforms may not copy
+        model_theta = dict(model_theta)
+    model_theta["zred"] = self._zred_fixed
+# Mass scaling is handled inside csp.predict() — the spectrum is
+# scaled once before projection, rather than per-observation.
+return self.csp.predict(model_theta, self.observations)</code></pre>
+<p>A fixed redshift is inserted only when the sampled dictionary lacks one. The final line returns a dictionary whose keys are observation names.</p>
+</section>
+<section id="shapes-and-units" class="level2">
+<h2>Shapes and units</h2>
+<ul>
+<li>Scalar free parameters are usually stored as shape <code>(1,)</code>
+arrays.</li>
+<li><code>logsfr_ratios</code> has shape
+<code>(n_sfh_bins - 1,)</code>.</li>
+<li>A prediction dict value matches its observation length.</li>
+<li><code>logmass</code> is <code>log10</code> formed stellar mass in
+solar masses.</li>
+<li><code>Z</code> is <code>log10</code> absolute metallicity.</li>
+<li><code>afe</code> is <code>[alpha/Fe]</code> dex.</li>
+<li><code>zred</code> is dimensionless.</li>
+</ul>
+</section>
+</section>
+</main>
+</body>
+</html>

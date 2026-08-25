@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tests as Documentation</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="codebase">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="tests-as-documentation" class="level1">
+<h1>Tests as Documentation</h1>
+<p>Tests show which behavior maintainers consider contractual. They are
+often a faster introduction than long implementation files because
+inputs and expected outputs appear together.</p>
+<p>The root Astro project currently has no project-owned
+<code>tests/</code> directory. Ceridwen has focused unit, misuse,
+regression, and grid-dependent tests.</p>
+<section id="recommended-reading-path" class="level2">
+<h2>Test map</h2>
+<section id="constructing-a-csp" class="level3">
+<h3>Constructing a CSP</h3>
+<p>Read <code>ceridwen/tests/test_csp_construction.py</code> beside
+<code>ceridwen/ceridwen/csp/csp.py:522-710</code>.</p>
+<p>It demonstrates:</p>
+<ul>
+<li>the <code>lookback_time=</code> shortcut;</li>
+<li>node-based versus per-bin SFH shapes;</li>
+<li>constant versus time-varying metallicity;</li>
+<li>errors for missing structure or one-node grids.</li>
+</ul>
+</section>
+<section id="predictive-observations" class="level3">
+<h3>Predictive observations</h3>
+<p>Read <code>ceridwen/tests/test_observation_predictive.py</code>
+beside <code>observation/base.py:171-184</code> and
+<code>observation/spectrum.py:243-308</code>.</p>
+<p>It proves a fluxless spectrum can preserve its wavelength grid,
+prepare a projection, and generate model values.</p>
+</section>
+<section id="ssp-provenance" class="level3">
+<h3>SSP provenance</h3>
+<p>Read <code>ceridwen/tests/test_ssp_provenance.py</code> beside
+<code>ssps/ssp_data.py</code>.</p>
+<p>It covers HDF5 metadata round trips, legacy grids, prohibited FSPS
+parameters, and automatic isochrone propagation into the CSP.</p>
+</section>
+<section id="redshift-dependent-ages" class="level3">
+<h3>Redshift-dependent ages</h3>
+<p>Read <code>ceridwen/tests/test_zred_age_tracking.py</code> beside
+<code>csp/csp.py:1748-1772</code>.</p>
+<p>Its tests check that the oldest SFH bin tracks universe age, the
+spectrum changes, gradients flow through redshift, and the
+fixed-redshift path remains unchanged.</p>
+</section>
+<section id="observation-projection-and-noise" class="level3">
+<h3>Observation projection and noise</h3>
+<ul>
+<li><code>test_spectrum_fixes.py</code>: LSF input resolution,
+calibration, line masking.</li>
+<li><code>test_lines_static.py</code>: static line-projection matrix and
+JIT behavior.</li>
+<li><code>test_line_projection_continuum.py</code>: continuum-subtracted
+nebular lines.</li>
+<li><code>test_upper_limit_likelihood.py</code>: detections versus upper
+limits and gradients.</li>
+<li><code>test_losvd_no_lyman_spike.py</code>: FFT smoothing boundary
+regression.</li>
+</ul>
+</section>
+<section id="physical-invariants-and-misuse" class="level3">
+<h3>Physical invariants and misuse</h3>
+<p><code>ceridwen/tests/regression/test_misuse.py</code> checks shared
+units across SSP weight calculations, finite zero-SFR behavior,
+emission-line scaling semantics, and unknown parameter keys.
+<code>tests/csp/test_lookback_flip_invariant.py</code> checks that
+time-order conventions do not silently change the physics.</p>
+</section>
+</section>
+<section id="read-two-tests-literally" class="level2">
+<h2>Examples</h2>
+<p class="source-locator"><code>ceridwen/tests/test_csp_construction.py:48-61</code></p>
+<pre class="python"><code>def test_shortcut_matches_full_theta_structure(ssp):
+    lb = jnp.linspace(0.0, 12.0, 6)
+    via_theta = CSPBasis(
+        ssp, theta={"lookback_time": lb, "sfh": jnp.ones(6),
+                    "Z": jnp.array([-1.85])}, **KW)
+    via_shortcut = CSPBasis(ssp, lookback_time=lb, **KW)
+
+    np.testing.assert_allclose(np.asarray(via_shortcut.sfh_times),
+                               np.asarray(via_theta.sfh_times))
+    assert via_shortcut.n_time == via_theta.n_time == 6
+    assert via_shortcut.sfh_per_bin is False
+    assert via_shortcut.zh_is_scalar is True          # zh_const -&gt; 'Z' mode
+    # Neutral initial Z must lie inside the grid: no clamp messages.
+    assert via_shortcut.check_param_ranges(warn=False) == []</code></pre>
+<p>Two construction routes receive equivalent inputs. Every assertion names one part of “equivalent”: grid, node count, SFH representation, metallicity mode, and range validity.</p>
+<p class="source-locator"><code>ceridwen/tests/test_observation_predictive.py:35-47</code></p>
+<pre class="python"><code>def test_fluxless_spectrum_setup_and_predict():
+    wave_obs = np.linspace(4000.0, 8000.0, 50)
+    spec = Spectrum(wavelength=wave_obs, name="predictive")
+
+    wave_model = np.linspace(1000.0, 20000.0, 500)   # rest frame
+    zred = 0.1
+    spec.setup_for_model(wave_model, zred=zred)
+
+    # A flat unit model spectrum must project to ~1 on every pixel
+    # (pure linear interpolation of a constant).
+    pred = spec.predict(jnp.ones(wave_model.size), wave_model)
+    assert pred.shape == (wave_obs.size,)
+    np.testing.assert_allclose(np.asarray(pred), 1.0, rtol=1e-6)</code></pre>
+<p>The constant spectrum is a limiting case with a known answer. The test checks both the output shape and the numerical invariant.</p>
+</section>
+</section>
+</main>
+</body>
+</html>

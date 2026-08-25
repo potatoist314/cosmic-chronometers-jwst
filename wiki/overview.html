@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Astro Research Overview</title>
+  <link rel="stylesheet" href="assets/wiki.css" />
+  <meta name="wiki-type" content="synthesis">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="astro-research-overview" class="level1">
+<h1>Overview</h1>
+<p>This repository develops age-based cosmology analyses for massive
+quiescent galaxies. Its primary interface is a sequence of notebooks;
+reusable numerical logic lives in <code>src/</code>, data preparation
+lives in <code>scripts/</code>, and Ceridwen is a separate SED-fitting
+submodule.</p>
+<section id="mental-model" class="level2">
+<h2>Project flow</h2>
+<pre class="text"><code>papers + raw catalogues
+          |
+          v
+       scripts/  ----------&gt;  data/processed/
+          |                         |
+          +-------------------------+
+                                    v
+                              notebooks/
+                              /    |    \
+                         milespy Prospector Ceridwen
+                            |                 |
+                            v                 v
+                     src/lick_inference   ceridwen/</code></pre>
+<p>The project has two related but distinct inference paths:</p>
+<ul>
+<li>Cosmic-chronometer notebooks turn galaxy ages into cosmological
+constraints.</li>
+<li>Stellar-population notebooks infer those ages from indices, spectra,
+or photometry using MILES, Prospector/FSPS, or Ceridwen.</li>
+</ul>
+</section>
+<section id="ceridwen-mental-model" class="level2">
+<h2>Ceridwen flow</h2>
+<pre class="text"><code>SSPData(Afe) -&gt; CSPBasis(_afe) -&gt; Observation objects -&gt; SedModel
+                                                        |
+                                                        v
+                                      likelihood -&gt; sampler -&gt; SamplingResult</code></pre>
+<ul>
+<li>The SSP grid supplies precomputed spectra over age and
+composition.</li>
+<li>The CSP combines them according to an SFH and metallicity
+history.</li>
+<li>Observations project one model spectrum into measured data
+space.</li>
+<li><code>SedModel</code> manages parameters, transforms, priors, and
+predictions.</li>
+<li>The likelihood compares predictions with data; an adapter runs the
+sampler.</li>
+</ul>
+</section>
+<section id="read-a-real-entry-point" class="level2">
+<h2>Ceridwen exports</h2>
+<p class="source-locator"><code>ceridwen/ceridwen/__init__.py:40-42</code></p>
+<pre class="python"><code>from .ssps import SSPData
+from .csp import CSPBasis
+from .model import SedModel</code></pre>
+<p><code>SSPData</code>, <code>CSPBasis</code>, and <code>SedModel</code>
+are package-level exports in forward-model order.</p>
+</section>
+<section id="start-here" class="level2">
+<h2>Reading order</h2>
+<p>Read <a href="guides/reading-order.html">Reading order</a>, then <a href="codebase/project-map.html">Project map</a>. For the
+current Ceridwen work, continue through
+<a href="codebase/ceridwen-architecture.html">Ceridwen architecture</a> in linked order. Use
+<a href="guides/python-patterns.html">Python patterns</a> whenever a Python pattern is unfamiliar.</p>
+</section>
+</section>
+</main>
+</body>
+</html>

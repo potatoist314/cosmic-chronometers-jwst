@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Ceridwen: Likelihood and Sampling</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="codebase">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-24">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="ceridwen-likelihood-and-sampling" class="level1">
+<h1>Ceridwen: Likelihood and Sampling</h1>
+<p>This layer converts predictions into posterior density values and
+asks an external algorithm to explore them.</p>
+<section id="per-observation-likelihood" class="level2">
+<h2>Per-observation likelihood</h2>
+<p>A diagonal Gaussian compares four aligned arrays:</p>
+<pre class="text"><code>data y, prediction mu, uncertainty sigma, boolean mask</code></pre>
+<p>An optional <code>DiagonalNoiseModel</code> modifies the variance. It
+can add model-scaled fractional calibration, data-scaled fractional
+error, or additive jitter
+(<code>ceridwen/ceridwen/likelihood/noise_model.py:210-280</code>). The
+calculation is at lines 283-365. Notebook 07 uses
+<code>log_f_calib</code> for model-scaled spectral calibration
+uncertainty.</p>
+<p class="source-locator"><code>ceridwen/ceridwen/likelihood/noise_model.py:324-350</code></p>
+<pre class="python"><code># Start with observational variance.
+var: Array = sigma_obs ** 2
+
+# Model-anchored fractional calibration error: sigma = f_calib * |mu|.
+# Gradient flows through mu -&gt; var -&gt; inv_var -&gt; lnl cleanly.
+if self.use_fractional:
+    f_calib = jnp.exp(params["log_f_calib"])
+    var = var + (f_calib * jnp.abs(mu)) ** 2
+
+# Data-anchored fractional systematic floor: sigma = f_data * |y|.
+# Scales with the *observed* flux, so the variance does not depend on
+# theta (no Eddington-type bias).  The natural form for pure zero-point
+# uncertainties.  Requires the observed data to be passed explicitly.
+if self.use_data_fractional:
+    if data is None:
+        raise ValueError(
+            "DiagonalNoiseModel(use_data_fractional=True) requires the "
+            "observed data array; call compute(..., data=y)."
+        )
+    f_data = jnp.exp(params["log_f_data"])
+    var = var + (f_data * jnp.abs(data)) ** 2
+
+# Additive noise floor (jitter).
+# Parameterised as log_jitter so sampling is unconstrained.
+if self.use_jitter:
+    jitter = jnp.exp(params["log_jitter"])
+    var = var + jitter ** 2</code></pre>
+<p>Every enabled term adds a squared uncertainty to <code>var</code>. The distinction is what anchors it: model prediction, observed data, or an absolute jitter.</p>
+</section>
+<section id="multiple-observations" class="level2">
+<h2>Multiple observations</h2>
+<p><code>MultiObservationLikelihood</code> stores matching tuples of
+observation keys and likelihood objects
+(<code>likelihood/likelihood.py:793-837</code>). Its call loops over
+those static pairs and sums log-likelihoods
+(<code>lines 840-872</code>).</p>
+<p>For the joint notebook:</p>
+<pre class="text"><code>photometry likelihood --+
+                        +--&gt; total log likelihood
+spectrum likelihood ----+</code></pre>
+<p>Different modalities retain different units because residuals are
+divided by uncertainties in the same units before their scalar
+log-likelihoods are added.</p>
+<p class="source-locator"><code>ceridwen/ceridwen/likelihood/likelihood.py:866-872</code></p>
+<pre class="python"><code>lnl_total = jnp.zeros(())
+aux: dict[str, LikelihoodOutput] = {}
+for key, lhood in zip(self.keys, self.likelihoods):
+    lnl_i, aux_i = lhood(y[key], mu[key], sigma_obs[key], mask[key], params)
+    lnl_total    = lnl_total + lnl_i
+    aux[key]     = aux_i
+return lnl_total, aux</code></pre>
+<p>The same key selects data, prediction, uncertainty, and mask. Each modality returns one scalar contribution, and those scalars are summed.</p>
+</section>
+<section id="prior" class="level2">
+<h2>Prior</h2>
+<p><code>SedModel.ln_prior</code> loops over registered priors and sums
+<code>prior.logpdf</code> for each free parameter
+(<code>model/model.py:408-447</code>). Parameters absent from the prior
+dictionary contribute zero, so the model configuration must make that
+choice intentional.</p>
+</section>
+<section id="sampler-boundary" class="level2">
+<h2>Sampler boundary</h2>
+<p><code>run_sampler</code> extracts static observation arrays, then
+builds two JIT functions:</p>
+<ul>
+<li><code>loglike_fn(theta)</code>: predict and sum data
+likelihoods.</li>
+<li><code>logprior_fn(theta)</code>: call
+<code>model.ln_prior</code>.</li>
+</ul>
+<p>It delegates both plus <code>model.theta_init</code> to a
+<code>SamplerAdapter</code> (<code>sampler/runner.py:275-366</code>).
+Keeping the functions separate supports both MCMC and nested
+sampling.</p>
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:335-366</code></p>
+<pre class="python"><code># ── Static data extracted once, before trace ──────────────────────────
+_obs_dict    = model.obs_dict
+_keys        = tuple(likelihood.keys)
+_likelihoods = tuple(likelihood.likelihoods)
+_static_data = {
+    key: (
+        _obs_dict[key].flux,
+        _obs_dict[key].uncertainty,
+        _obs_dict[key].mask,
+    )
+    for key in _keys
+}
+
+# ── Log-likelihood: sum over observations, no prior ───────────────────
+@jax.jit
+def loglike_fn(theta: dict[str, Array]) -&gt; Array:
+    predictions = model.predict(theta)
+    lnl = jnp.zeros(())
+    for key, lhood in zip(_keys, _likelihoods):
+        y_k, sig_k, mask_k = _static_data[key]
+        mu_k    = predictions[key]
+        lnl_k, _ = lhood(y_k, mu_k, sig_k, mask_k, params=theta)
+        lnl = lnl + lnl_k
+    return lnl
+
+# ── Log-prior ─────────────────────────────────────────────────────────
+@jax.jit
+def logprior_fn(theta: dict[str, Array]) -&gt; Array:
+    return model.ln_prior(theta)
+
+# ── Delegate ──────────────────────────────────────────────────────────
+return adapter.run(loglike_fn, logprior_fn, model.theta_init, rng_key)</code></pre>
+<p>Data are captured once outside the compiled closures. The adapter receives two functions plus an initial parameter tree; it does not need to know Ceridwen’s observation classes.</p>
+</section>
+<section id="nuts-path" class="level2">
+<h2>NUTS path</h2>
+<p><code>BlackJAXNUTSAdapter</code>:</p>
+<ol type="1">
+<li>Flattens the parameter dictionary
+(<code>sampler/nuts.py:308-324</code>).</li>
+<li>Maps bounded parameters to unconstrained coordinates.</li>
+<li>Adds the transformation Jacobian to the posterior
+(<code>lines 395-422</code>).</li>
+<li>Adapts step size and mass matrix during warmup
+(<code>lines 426-468</code>).</li>
+<li>Runs compiled NUTS chains (<code>lines 470-530</code> onward).</li>
+<li>Reconstructs named posterior arrays in
+<code>SamplingResult</code>.</li>
+</ol>
+<p>The unconstrained transformation prevents hard uniform boundaries
+from acting as geometric walls for Hamiltonian trajectories.</p>
+</section>
+<section id="result" class="level2">
+<h2>Result</h2>
+<p><code>SamplingResult</code> stores named posterior samples, log
+likelihoods, evidence when available, diagnostics, timing, and
+backend-specific raw output (<code>sampler/runner.py:69-128</code>).
+NUTS returns equal-weight posterior samples and no Bayesian evidence;
+nested sampling can populate evidence fields.</p>
+</section>
+<section id="high-level-fitsed" class="level2">
+<h2>High-level <code>fitSED</code></h2>
+<p><code>fitSED</code> constructs default diagonal likelihoods, builds
+an adapter, calls <code>run_sampler</code>, and writes HDF5 plus a text
+log (<code>fit.py:148-282</code>). The project notebooks currently use
+the lower-level route to customize likelihoods.</p>
+</section>
+</section>
+</main>
+</body>
+</html>
