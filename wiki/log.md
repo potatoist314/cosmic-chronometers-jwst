@@ -179,3 +179,8 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`, `AGENTS.md`
 - Change: Added the Ceridwen grid schema to each benchmark row and future benchmark rules.
+
+## [2026-08-26] query | Concise memory benchmark
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`
+- Change: Restored retained timings and reduced the V100 memory section without removing measurements.

@@ -95,15 +95,61 @@
       </p>
     </section>
 
-    <section id="memory-verification">
-      <h2>V100 memory verification</h2>
+    <section id="other-measurements">
+      <h2>Other measurements</h2>
       <table>
         <thead>
           <tr>
-            <th scope="col">Fresh process</th>
+            <th scope="col">Test</th>
+            <th scope="col">GPU</th>
+            <th scope="col">Ceridwen schema</th>
+            <th scope="col">Timed iterations / calls</th>
+            <th scope="col">Calls/s</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Complete integrated fit</th>
+            <td>A100 SXM4</td>
+            <td>2.0</td>
+            <td>488 / 488,000</td>
+            <td>118.6</td>
+          </tr>
+          <tr>
+            <th scope="row">Smoke test</th>
+            <td>A100 40 GB</td>
+            <td>2.1</td>
+            <td>7 / 112</td>
+            <td>approximately 112</td>
+          </tr>
+          <tr>
+            <th scope="row">Complete feature-spectrum fit</th>
+            <td>A100 40 GB</td>
+            <td>2.1</td>
+            <td>190 / 1,140,000</td>
+            <td>105.8</td>
+          </tr>
+          <tr>
+            <th scope="row">Full-spectrum checkpoint</th>
+            <td>A100 40 GB</td>
+            <td>2.1</td>
+            <td>145 / 870,000</td>
+            <td>102.5</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The timed values exclude the first JIT compilation step.</p>
+    </section>
+
+    <section id="memory-verification">
+      <h2>V100 memory</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Test</th>
             <th scope="col">Ceridwen schema</th>
             <th scope="col">JAX peak</th>
-            <th scope="col">JAX live at iteration 25</th>
+            <th scope="col">JAX live</th>
             <th scope="col">JAX pool</th>
             <th scope="col">NVML high-water mark</th>
           </tr>
@@ -128,18 +174,12 @@
         </tbody>
       </table>
       <ul>
-        <li>Both runs used the matched V100 workload, seed 20260812, and 25 NSS iterations.</li>
-        <li><code>XLA_PYTHON_CLIENT_PREALLOCATE=false</code> was set before JAX import.</li>
+        <li>Both tests used seed 20260812 and 25 NSS iterations.</li>
+        <li>Both tests disabled JAX preallocation before JAX import.</li>
         <li>JAX peaks differed by 4,864 bytes, less than 0.001%.</li>
-        <li><strong>Project synthesis:</strong> The 583.3 MiB largest JAX allocation matches the float64 SSP grid.</li>
         <li>NVML sampled process memory every 100 ms and includes CUDA runtime overhead.</li>
-        <li><strong>Project synthesis:</strong> The 25.9 GiB initial NVML value measured the default reserved allocation, not live JAX buffers.</li>
       </ul>
-      <p>
-        Evidence:
-        <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code>
-        contains both run logs, 100 ms NVML traces, and JAX profiles.
-      </p>
+      <p>Logs and profiles: <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code></p>
     </section>
   </main>
   <footer class="site-footer">Updated 26 August 2026</footer>
