@@ -52,4 +52,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Analyses
 
-- `analyses/ceridwen-a100-benchmarks.html` — Compares completed, smoke, and interrupted Vast.ai and Modal A100 runs.
+- `analyses/ceridwen-a100-benchmarks.html` — Lists A100 hardware, sampler settings, and run throughput.

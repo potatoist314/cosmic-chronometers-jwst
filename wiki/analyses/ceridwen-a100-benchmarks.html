@@ -22,204 +22,145 @@
   <main class="page-shell" id="main-content">
     <header>
       <p class="eyebrow">Measured runs · 25 August 2026</p>
-      <h1>What the A100 runs actually measured.</h1>
-      <p class="lede">Vast.ai completed the joint spectrum-and-photometry
-      fit in 69 minutes. Modal completed a different, feature-spectrum fit
-      in 181 minutes. The times do not compare the providers directly.</p>
+      <h1>Ceridwen A100 benchmarks</h1>
     </header>
 
-    <nav id="TOC" aria-label="On this page">
-      <ul>
-        <li><a href="#completed">Completed fits</a></li>
-        <li><a href="#work">Work per iteration</a></li>
-        <li><a href="#other-runs">Other measured runs</a></li>
-        <li><a href="#interpretation">Interpretation</a></li>
-        <li><a href="#evidence">Evidence</a></li>
-      </ul>
-    </nav>
-
-    <section id="completed">
-      <h2>Completed fits</h2>
-      <figure class="diagram" aria-labelledby="completed-caption">
-        <dl class="diagram-lanes">
-          <div class="diagram-lane is-primary">
-            <dt>Vast.ai · 68 min 58 s</dt>
-            <dd>Joint fit: 11 photometric bands and 3,523 native spectral pixels.</dd>
-          </div>
-          <div class="diagram-lane">
-            <dt>Modal · 3 h 0 min 58 s</dt>
-            <dd>Spectrum-only fit: 1,924 pixels in selected feature regions.</dd>
-          </div>
-        </dl>
-        <figcaption id="completed-caption">Sampler wall time excludes setup and later notebook cells.</figcaption>
-      </figure>
-
+    <section id="hardware">
+      <h2>GPU figures</h2>
       <table>
         <thead>
           <tr>
-            <th scope="col">Measurement</th>
-            <th scope="col">Vast.ai</th>
-            <th scope="col">Modal</th>
+            <th scope="col">Provider</th>
+            <th scope="col">GPU</th>
+            <th scope="col">Peak FP64</th>
+            <th scope="col">VRAM used</th>
+            <th scope="col">Peak memory bandwidth</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">GPU</th>
+            <th scope="row">Vast.ai</th>
             <td>A100 SXM4 40 GB</td>
-            <td>A100 40 GB; form factor unrecorded</td>
+            <td>9.7 TFLOP/s</td>
+            <td>Not recorded</td>
+            <td>1,555 GB/s</td>
           </tr>
           <tr>
-            <th scope="row">Likelihood data</th>
-            <td>11 bands + 3,523 spectrum pixels</td>
-            <td>1,924 feature-spectrum pixels</td>
-          </tr>
-          <tr>
-            <th scope="row">SSP grid</th>
-            <td>Schema 2.0, C3K HR, R = 6,000</td>
-            <td>Schema 2.1</td>
-          </tr>
-          <tr>
-            <th scope="row">Sampler</th>
-            <td>300 live; 40 inner; 25 delete; log Z tolerance −3</td>
-            <td>500 live; 60 inner; 100 delete; log Z tolerance −5</td>
-          </tr>
-          <tr>
-            <th scope="row">Iterations</th>
-            <td>489</td>
-            <td>191</td>
-          </tr>
-          <tr>
-            <th scope="row">Likelihood calls</th>
-            <td>489,000</td>
-            <td>1,146,000</td>
-          </tr>
-          <tr>
-            <th scope="row">Observed throughput</th>
-            <td>118.2 calls/s</td>
-            <td>105.5 calls/s</td>
-          </tr>
-          <tr>
-            <th scope="row">Posterior ESS</th>
-            <td>2,961.1</td>
-            <td>3,416.4</td>
-          </tr>
-          <tr>
-            <th scope="row">Saved result</th>
-            <td>Executed notebook; posterior HDF5 was not retained</td>
-            <td>Executed notebook, posterior HDF5, and derived HDF5</td>
+            <th scope="row">Modal</th>
+            <td>A100 40 GB (form factor not recorded)</td>
+            <td>9.7 TFLOP/s</td>
+            <td>Not recorded</td>
+            <td>1,555 GB/s</td>
           </tr>
         </tbody>
       </table>
-      <p>Modal's complete outer notebook wall time was 3 h 2 min 28 s.
-      At the recorded Vast price of $0.670/hour, the 4,138.2-second
-      sampler cost about $0.77.</p>
+      <p>FP64 and memory bandwidth are peak hardware values. The runs did
+      not measure FP64 throughput or memory bandwidth.</p>
     </section>
 
-    <section id="work">
-      <h2>Why one iteration has a different cost</h2>
-      <p>One outer iteration removes several live points. Each replacement
-      uses several inner slice-sampling steps. Their product gives the
-      recorded likelihood-call count per outer iteration.</p>
-      <figure class="diagram" aria-labelledby="iteration-caption">
-        <dl class="diagram-lanes">
-          <div class="diagram-lane is-primary">
-            <dt>Vast.ai: 25 × 40 = 1,000 calls</dt>
-            <dd>Average outer iteration: 8.463 seconds.</dd>
-          </div>
-          <div class="diagram-lane">
-            <dt>Modal: 100 × 60 = 6,000 calls</dt>
-            <dd>Average outer iteration: 56.846 seconds.</dd>
-          </div>
-        </dl>
-        <figcaption id="iteration-caption">A Modal outer iteration performed six times as many likelihood calls.</figcaption>
-      </figure>
-      <p>Iteration time alone therefore exaggerates the difference. Calls
-      per second is a better normalization, but the likelihoods still use
-      different data and grid schemas.</p>
-    </section>
-
-    <section id="other-runs">
-      <h2>Smoke and interrupted runs</h2>
+    <section id="sampler-runs">
+      <h2>Sampler figures</h2>
       <table>
         <thead>
           <tr>
             <th scope="col">Run</th>
-            <th scope="col">Progress</th>
-            <th scope="col">Time</th>
-            <th scope="col">Meaning</th>
+            <th scope="col">Status</th>
+            <th scope="col">Live</th>
+            <th scope="col">Inner</th>
+            <th scope="col">Delete</th>
+            <th scope="col">log Z tol</th>
+            <th scope="col">Iterations</th>
+            <th scope="col">Likelihood calls</th>
+            <th scope="col">Calls/s</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Vast.ai quick notebook</td>
+            <th scope="row">Vast joint fit</th>
             <td>Complete</td>
-            <td>142 s end-to-end</td>
-            <td>Compatibility check; no retained output artifact</td>
+            <td>300</td>
+            <td>40</td>
+            <td>25</td>
+            <td>−3</td>
+            <td>489</td>
+            <td>489,000</td>
+            <td>118.2</td>
           </tr>
           <tr>
-            <td>Modal smoke fit</td>
-            <td>8 iterations; 128 calls</td>
-            <td>11.6 s sampler</td>
-            <td>JIT-dominated plumbing test; ESS 1.0</td>
+            <th scope="row">Vast smoke test</th>
+            <td>Smoke</td>
+            <td>16</td>
+            <td>2</td>
+            <td>8</td>
+            <td>10,000</td>
+            <td>Not recorded</td>
+            <td>Not recorded</td>
+            <td>Not recorded</td>
           </tr>
           <tr>
-            <td>Modal feature fit</td>
-            <td>5 iterations; 30,000 calls</td>
-            <td>about 287 s sampler</td>
-            <td>Stopped without a checkpoint or posterior</td>
+            <th scope="row">Modal smoke test</th>
+            <td>Smoke</td>
+            <td>16</td>
+            <td>2</td>
+            <td>8</td>
+            <td>10,000</td>
+            <td>8</td>
+            <td>128</td>
+            <td>11.0</td>
           </tr>
           <tr>
-            <td>Modal full-spectrum fit</td>
-            <td>5 iterations; 30,000 calls</td>
-            <td>about 291 s sampler</td>
-            <td>Stopped without a checkpoint or posterior</td>
+            <th scope="row">Modal feature fit</th>
+            <td>Stopped</td>
+            <td>500</td>
+            <td>60</td>
+            <td>100</td>
+            <td>−5</td>
+            <td>5</td>
+            <td>30,000</td>
+            <td>104.4</td>
           </tr>
           <tr>
-            <td>Modal full-spectrum checkpoint</td>
-            <td>146 iterations; 876,000 calls</td>
-            <td>about 2 h 22 min 52 s sampler</td>
-            <td>Not converged; Δlog Z = 18.786; checkpoint retained</td>
+            <th scope="row">Modal full-spectrum fit</th>
+            <td>Stopped</td>
+            <td>500</td>
+            <td>60</td>
+            <td>100</td>
+            <td>−5</td>
+            <td>5</td>
+            <td>30,000</td>
+            <td>103.0</td>
+          </tr>
+          <tr>
+            <th scope="row">Modal full-spectrum checkpoint</th>
+            <td>Checkpoint</td>
+            <td>500</td>
+            <td>60</td>
+            <td>100</td>
+            <td>−5</td>
+            <td>146</td>
+            <td>876,000</td>
+            <td>102.2</td>
+          </tr>
+          <tr>
+            <th scope="row">Modal feature fit</th>
+            <td>Complete</td>
+            <td>500</td>
+            <td>60</td>
+            <td>100</td>
+            <td>−5</td>
+            <td>191</td>
+            <td>1,146,000</td>
+            <td>105.5</td>
           </tr>
         </tbody>
       </table>
-      <p>The two five-iteration wrappers reported <code>completed</code>,
-      but the samplers stopped without convergence or final results. This
-      page classifies the scientific runs as incomplete.</p>
-    </section>
-
-    <section id="interpretation">
-      <h2>What these numbers can answer</h2>
       <ul>
-        <li>Both providers ran Ceridwen with CUDA and JAX float64.</li>
-        <li>The retained full runs sustained about 100–120 likelihood calls/s.</li>
-        <li>The Vast allocation completed the joint configuration successfully.</li>
-        <li>The Modal checkpoint preserved useful state after an interrupted run.</li>
+        <li>Calls/s is derived from the recorded sampler time.</li>
+        <li>The Modal smoke-test rate includes JIT compilation.</li>
+        <li>The Vast smoke-test notebook completed in 142 seconds.</li>
       </ul>
-      <p><strong>Project synthesis:</strong> These runs cannot identify a
-      provider winner or isolate FP32 throughput, FP64 throughput, VRAM
-      capacity, or memory bandwidth. That requires the same likelihood,
-      grid, sampler settings, and profiler on each GPU.</p>
-    </section>
-
-    <section id="evidence">
-      <h2>Evidence</h2>
-      <ul>
-        <li><code>benchmarks/ceridwen/README.md</code> contains the compact
-        benchmark record and derivation notes.</li>
-        <li><code>results/ceridwen_vast_a100_integrated_fit_notebook_only_2026-08-25/ceridwen_integrated_photometry_spectra.ipynb</code>,
-        <code>run_sampler</code> output, records the completed Vast fit.</li>
-        <li><code>results/ceridwen_modal_a100_feature_spectrum_complete_2026-08-25/ceridwen_test_spectra.executed.ipynb</code>,
-        <code>run_sampler</code> output, records the completed Modal fit.</li>
-        <li>The Modal result directories contain each
-        <code>modal_execution_timing.json</code> and interrupted notebook.</li>
-        <li>Modal smoke run <code>batch-20260825T151156339684Z</code> records
-        the 11.6-second compatibility test.</li>
-      </ul>
-      <p>See the <a href="../guides/vast-ai-gpu-workflow.html">Vast.ai GPU workflow</a>
-      and <a href="../guides/modal-gpu-workflow.html">Modal GPU workflow</a>
-      for setup and result-preservation procedures.</p>
     </section>
   </main>
-  <footer class="site-footer">Generated from retained Ceridwen run outputs · Updated 26 August 2026</footer>
+  <footer class="site-footer">Updated 26 August 2026</footer>
 </body>
 </html>

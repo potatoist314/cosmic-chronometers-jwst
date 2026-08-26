@@ -124,3 +124,8 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.html`, `index.md`
 - Change: Converted the Vast.ai and Modal A100 timings into a readable comparison with workload and completion-status caveats.
+
+## [2026-08-26] query | Concise A100 benchmark table
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.md`
+- Change: Replaced the benchmark analysis with hardware and sampler figures for all retained runs.
