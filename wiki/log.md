@@ -209,3 +209,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.html`, `index.md`, `guides/modal-gpu-workflow.html`
 - Change: Renamed the A100 benchmark page, grouped every GPU type into one hardware, run, and memory table, and added sourced RTX 3090, RTX 4090, and H100 specifications.
+
+## [2026-08-26] query | Measurement-only GPU benchmark page
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `AGENTS.md`, `index.md`
+- Change: Removed the GPU hardware section, added an FP32 peak column and a calls/s against FP32 peak chart, and reduced the memory and kernel-trace results to short notes.
