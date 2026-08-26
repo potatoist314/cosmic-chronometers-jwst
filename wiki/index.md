@@ -1,6 +1,6 @@
 # Agent Wiki Index
 
-Human entry point: `index.html` (updated 2026-08-25)
+Human entry point: `index.html` (updated 2026-08-26)
 
 Reader pages use responsive HTML, CSS, and inline SVG schematics. They do not
 require JavaScript or external diagram assets.
@@ -52,4 +52,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Analyses
 
-The wiki does not contain analysis pages.
+- `analyses/ceridwen-a100-benchmarks.html` — Compares completed, smoke, and interrupted Vast.ai and Modal A100 runs.

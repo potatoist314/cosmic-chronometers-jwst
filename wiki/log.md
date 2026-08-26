@@ -119,3 +119,8 @@
 
 - Pages: `guides/modal-gpu-workflow.html`, `index.md`
 - Change: Made batch notebook execution independent of local-entrypoint cancellation and recorded interrupted timing states.
+
+## [2026-08-26] query | Ceridwen A100 benchmark runs
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.html`, `index.md`
+- Change: Converted the Vast.ai and Modal A100 timings into a readable comparison with workload and completion-status caveats.
