@@ -22,8 +22,44 @@
   <main class="page-shell" id="main-content">
     <header>
       <h1>Ceridwen GPU benchmark</h1>
-      <p>This page compares five GPU types on Ceridwen likelihood work.</p>
+      <p>This page compares eight GPU types on Ceridwen likelihood work.</p>
     </header>
+
+    <section id="hardware">
+      <h2>GPU hardware</h2>
+      <p>These are dense peak rates. The table excludes sparsity rates.</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">GPU</th>
+            <th scope="col">CUDA FP32 peak</th>
+            <th scope="col">CUDA FP64 peak</th>
+            <th scope="col">TF32 tensor peak</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">V100 SXM2</th><td>15.7 TFLOP/s</td><td>7.8 TFLOP/s</td><td>Not supported</td></tr>
+          <tr><th scope="row">GeForce RTX 3060</th><td>13.0 TFLOP/s</td><td>0.20 TFLOP/s</td><td>13.0 TFLOP/s</td></tr>
+          <tr><th scope="row">GeForce RTX 3080 Ti</th><td>34.1 TFLOP/s</td><td>0.53 TFLOP/s</td><td>34.1 TFLOP/s</td></tr>
+          <tr><th scope="row">GeForce RTX 3090</th><td>35.6 TFLOP/s</td><td>0.56 TFLOP/s</td><td>35.6 TFLOP/s</td></tr>
+          <tr><th scope="row">A100 SXM4</th><td>19.5 TFLOP/s</td><td>9.7 TFLOP/s</td><td>156 TFLOP/s</td></tr>
+          <tr><th scope="row">GeForce RTX 4070 Super</th><td>35.5 TFLOP/s</td><td>0.55 TFLOP/s</td><td>35.5 TFLOP/s</td></tr>
+          <tr><th scope="row">GeForce RTX 4090</th><td>82.6 TFLOP/s</td><td>1.29 TFLOP/s</td><td>82.6 TFLOP/s</td></tr>
+          <tr><th scope="row">H100 SXM</th><td>67 TFLOP/s</td><td>34 TFLOP/s</td><td>494 TFLOP/s</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Project synthesis:</strong> Each GeForce FP64 peak is one sixty-fourth of its FP32 peak.</p>
+      <p>Hardware evidence:
+        <a href="https://www.nvidia.com/en-gb/geforce/graphics-cards/30-series/rtx-3060-3060ti/">NVIDIA RTX 3060 specifications</a>,
+        <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3080-3080ti/">NVIDIA RTX 3080 Ti specifications</a>,
+        <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4070-family/">NVIDIA RTX 4070 Super specifications</a>,
+        <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/geforce/ampere/pdf/NVIDIA-ampere-GA102-GPU-Architecture-Whitepaper-V1.pdf">NVIDIA Ampere GA102 white paper</a>,
+        <a href="https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf">NVIDIA Ada white paper</a>,
+        <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">NVIDIA A100 white paper</a>,
+        <a href="https://images.nvidia.com/content/technologies/volta/pdf/tesla-volta-v100-datasheet-letter-fnl-web.pdf">NVIDIA V100 data sheet</a>, and
+        <a href="https://www.nvidia.com/en-us/data-center/h100/">NVIDIA H100 specifications</a>.
+      </p>
+    </section>
 
     <section id="runs">
       <h2>Measured runs</h2>
@@ -66,17 +102,6 @@
             <td>$0.0453</td>
           </tr>
           <tr>
-            <th scope="row">GeForce RTX 3090</th>
-            <td>35.6 TFLOP/s</td>
-            <td>Vast</td>
-            <td>Joint fit benchmark</td>
-            <td>2.1</td>
-            <td>5 / 5,000</td>
-            <td>80.3</td>
-            <td>$0.1444/h</td>
-            <td>$0.0500</td>
-          </tr>
-          <tr>
             <th scope="row">A100 SXM4</th>
             <td>156 TFLOP/s</td>
             <td>Modal</td>
@@ -95,17 +120,6 @@
             <td>2.0</td>
             <td>1 / 1,000</td>
             <td>126.6</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row">V100 SXM2</th>
-            <td>Not supported</td>
-            <td>Vast</td>
-            <td>Matched full-spectrum step</td>
-            <td>2.0</td>
-            <td>1 / 1,000</td>
-            <td>42.9</td>
             <td></td>
             <td></td>
           </tr>
@@ -153,9 +167,32 @@
             <td></td>
             <td></td>
           </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3090</th>
+            <td>35.6 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>80.3</td>
+            <td>$0.1444/h</td>
+            <td>$0.0500</td>
+          </tr>
+          <tr>
+            <th scope="row">V100 SXM2</th>
+            <td>Not supported</td>
+            <td>Vast</td>
+            <td>Matched full-spectrum step</td>
+            <td>2.0</td>
+            <td>1 / 1,000</td>
+            <td>42.9</td>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
       <ul>
+        <li>The rows group by GPU model. Each group starts with its fastest run.</li>
         <li>Every row excludes the first JIT compilation step.</li>
         <li>Only rows with the same test and the same schema compare directly.</li>
         <li>Each joint fit benchmark row used 11 photometric bands and 3,523 spectral pixels.</li>

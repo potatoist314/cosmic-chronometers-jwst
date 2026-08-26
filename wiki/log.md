@@ -219,3 +219,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `AGENTS.md`
 - Change: Replaced the single chart with eight panels for CUDA FP32, CUDA FP64, and the tensor precisions, removed the speed-and-cost list, and reduced the source excerpt to the sampler settings.
+
+## [2026-08-26] query | Grouped benchmark rows by GPU
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`
+- Change: Grouped the measured-run rows by GPU model, fastest group first, and noted the new order.
