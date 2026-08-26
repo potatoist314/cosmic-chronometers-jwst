@@ -235,6 +235,11 @@
 - Pages: `AGENTS.md`, `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Removed prediction and workflow bookkeeping from the benchmark page and made measured reader-facing results the wiki rule.
 
+## [2026-08-26] codebase | Four-GPU Vast fit launcher
+
+- Pages: `guides/vast-ai-gpu-workflow.html`, `notebooks/notebook-map.html`, `index.md`
+- Change: Documented one independent joint Ceridwen fit per GPU, isolated outputs, and partial-checkpoint recovery.
+
 ## [2026-08-26] query | Log-log GPU benchmark charts
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`

@@ -26,7 +26,8 @@
       <h1>Run Ceridwen fits on a Vast.ai GPU.</h1>
       <p class="lede">The spectrum notebook fits spectra. The joint
       notebook fits spectra and photometry. Use local CPUs for trials.
-      Use Vast.ai GPUs for fixed benchmarks and full fits.</p>
+      Use Vast.ai GPUs for fixed benchmarks and full fits. One Vast
+      instance can run one independent fit on each visible GPU.</p>
     </header>
 
     <nav id="TOC" aria-label="On this page">
@@ -36,7 +37,7 @@
           <li><a href="#clone">Clone</a><small>Include submodules</small></li>
           <li><a href="#data">Transfer data</a><small>Private inputs</small></li>
           <li><a href="#bootstrap">Bootstrap</a><small>Verify CUDA</small></li>
-          <li><a href="#benchmark">Benchmark or fit</a><small>BlackJAX NSS</small></li>
+          <li><a href="#run">Run fits</a><small>one or four GPUs</small></li>
           <li><a href="#finish">Save and stop</a><small>Secure output</small></li>
         </ol>
         <figcaption id="vast-route-caption">A safe Vast.ai run starts with verified hardware and ends after local result checks.</figcaption>
@@ -48,6 +49,7 @@
       <ul>
         <li>Use a Linux image with Jupyter, SSH, and CUDA 12.</li>
         <li>Require at least 12 GB GPU memory and 30 GB disk.</li>
+        <li>Check storage, upload, and download rates before renting.</li>
         <li>Prefer an A100 40 GB.</li>
       </ul>
       <p>Vast host <code>148498</code> in Croatia provided a tested-good
@@ -126,7 +128,7 @@ unset LD_LIBRARY_PATH</code></pre>
       accepts the grid's wavelength-dependent resolution array. It
       checks GPU float64 execution, runs the Ceridwen check, and
       registers the notebook kernel.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:52-98</code></p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:52-99</code></p>
       <pre><code>JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "${PYTHON_BIN}" - &lt;&lt;'PY'
 import jax
 import jax.numpy as jnp
@@ -181,8 +183,45 @@ PY
       <p>The remote kernel requires CUDA and float64 for every notebook
       session. It also prevents the system CUDA path from replacing the
       installed JAX libraries.</p>
+      <h3>Run four joint fits</h3>
+      <p>A four-GPU Vast instance is one container with one shared
+      filesystem and four CUDA devices. The launcher starts four notebook
+      kernels. Each kernel receives one physical device through
+      <code>CUDA_VISIBLE_DEVICES</code>, so its Ceridwen process cannot use
+      the other three GPUs.</p>
+      <table>
+        <thead>
+          <tr><th>Physical GPU</th><th>LEGA-C target</th><th>Random seed</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0</td><td>M1_210210</td><td>20260812</td></tr>
+          <tr><td>1</td><td>M12_181945</td><td>20260813</td></tr>
+          <tr><td>2</td><td>M2_133501</td><td>20260814</td></tr>
+          <tr><td>3</td><td>M14_38648</td><td>20260815</td></tr>
+        </tbody>
+      </table>
+      <p>Run a four-GPU smoke test first:</p>
+      <pre><code>.venv-ceridwen-gpu/bin/python \
+  scripts/run_ceridwen_vast_multi_gpu.py \
+  --profile quick \
+  --output-root /tmp/ceridwen-smoke</code></pre>
+      <p>Start the full run inside <code>tmux</code> so an SSH disconnect
+      does not close the launcher:</p>
+      <pre><code>tmux new -s ceridwen-four</code></pre>
+      <pre><code>.venv-ceridwen-gpu/bin/python \
+  scripts/run_ceridwen_vast_multi_gpu.py \
+  --profile full</code></pre>
+      <p>The default targets are the four highest signal-to-noise passive
+      galaxies that satisfy the notebook's 4000 Angstrom coverage check.
+      Pass four values to <code>--targets</code> to replace them.</p>
+      <p>Each target writes a separate HDF5 result, executed notebook,
+      checkpoint set, and log. One failed target does not cancel the other
+      three. The parent directory remains labelled <code>incomplete</code>
+      unless all four results finish.</p>
+      <p>A periodic BlackJAX NSS checkpoint is a usable partial posterior.
+      It cannot resume the sampler from the same point.</p>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:111-118 · kernel environment</code></p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:111-119 · kernel environment</code></p>
       <pre><code>kernel["env"] = {
     **kernel.get("env", {}),
     "CERIDWEN_RESULTS_ROOT": str(project_root / "results"),
@@ -202,8 +241,9 @@ path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
     <section id="finish">
       <h2>Preserve results and finish</h2>
       <ol>
-        <li>Download all fit outputs or the complete benchmark directory.</li>
-        <li>Open every expected output on the local computer.</li>
+        <li>Download the complete four-galaxy result directory.</li>
+        <li>Load all four HDF5 files on the local computer.</li>
+        <li>Open the four executed notebooks and run manifest.</li>
         <li>Stop or destroy the paid instance after you secure the
         files.</li>
       </ol>
@@ -220,10 +260,14 @@ path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
         requirements and isolates the CUDA libraries.</li>
         <li><code>scripts/bootstrap_vast_ai.sh:52-94</code> installs and
         checks wavelength-dependent resolution support.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:96-119</code> configures
+        <li><code>scripts/bootstrap_vast_ai.sh:97-119</code> configures
         the kernel and results root.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:121-168</code> checks the
+        <li><code>scripts/bootstrap_vast_ai.sh:122-168</code> checks the
         raw data and published grid.</li>
+        <li><code>scripts/run_ceridwen_vast_multi_gpu.py:93-158</code>
+        pins one target process to each physical GPU.</li>
+        <li><code>scripts/run_ceridwen_vast_multi_gpu.py:188-265</code>
+        retains isolated outputs and completes the run manifest.</li>
         <li><code>scripts/benchmark_ceridwen_vast.py:23-38</code> fixes the
         workload and sampler sizes.</li>
         <li><code>scripts/benchmark_ceridwen_vast.py:583-634</code> excludes

@@ -56,6 +56,7 @@ fi
     "astroquery>=0.4.11,<0.5" \
     "ipykernel>=7.3,<8" \
     "jupyterlab>=4.6,<5" \
+    "nbclient>=0.10,<0.11" \
     "pandas>=3,<4" \
     "specutils>=2.2,<3"
 "${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
