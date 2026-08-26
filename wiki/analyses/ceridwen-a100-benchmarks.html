@@ -148,10 +148,10 @@
           <tr>
             <th scope="col">Test</th>
             <th scope="col">Ceridwen schema</th>
-            <th scope="col">JAX peak</th>
-            <th scope="col">JAX live</th>
-            <th scope="col">JAX pool</th>
-            <th scope="col">NVML high-water mark</th>
+            <th scope="col">Calculation peak</th>
+            <th scope="col">In use after iteration 25</th>
+            <th scope="col">Reserved for reuse</th>
+            <th scope="col">Whole process peak</th>
           </tr>
         </thead>
         <tbody>
@@ -173,13 +173,10 @@
           </tr>
         </tbody>
       </table>
-      <ul>
-        <li>Both tests used seed 20260812 and 25 NSS iterations.</li>
-        <li>Both tests disabled JAX preallocation before JAX import.</li>
-        <li>JAX peaks differed by 4,864 bytes, less than 0.001%.</li>
-        <li>NVML sampled process memory every 100 ms and includes CUDA runtime overhead.</li>
-      </ul>
-      <p>Logs and profiles: <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code></p>
+      <p>JAX runs Ceridwen calculations on the GPU. It reported the calculation peak, memory in use, and memory reserved for reuse.</p>
+      <p>NVML is NVIDIA's GPU monitor. It reported the whole process peak, including JAX and NVIDIA support software.</p>
+      <p>JAX did not reserve most GPU memory at startup. The two calculation peaks matched within 0.001%.</p>
+      <p>Logs: <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code></p>
     </section>
   </main>
   <footer class="site-footer">Updated 26 August 2026</footer>

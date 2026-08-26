@@ -184,3 +184,8 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`
 - Change: Restored retained timings and reduced the V100 memory section without removing measurements.
+
+## [2026-08-26] query | Plain memory terms
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`
+- Change: Replaced tool labels with plain memory terms and defined each measurement source.
