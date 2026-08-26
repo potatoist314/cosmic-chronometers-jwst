@@ -234,3 +234,8 @@
 
 - Pages: `AGENTS.md`, `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Removed prediction and workflow bookkeeping from the benchmark page and made measured reader-facing results the wiki rule.
+
+## [2026-08-26] query | Log-log GPU benchmark charts
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`
+- Change: Rebuilt the six speed panels on log axes with a none band, cased dot marks, and collision-free labels.
