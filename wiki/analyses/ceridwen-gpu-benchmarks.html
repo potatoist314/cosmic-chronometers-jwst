@@ -32,7 +32,7 @@
         <thead>
           <tr>
             <th scope="col">GPU</th>
-            <th scope="col">GPU FP32 peak</th>
+            <th scope="col">GPU tensor-core FP32 peak</th>
             <th scope="col">Provider</th>
             <th scope="col">Test</th>
             <th scope="col">Ceridwen schema</th>
@@ -45,7 +45,7 @@
         <tbody>
           <tr>
             <th scope="row">H100 SXM</th>
-            <td>67 TFLOP/s</td>
+            <td>494 TFLOP/s</td>
             <td>Vast</td>
             <td>Joint fit benchmark</td>
             <td>2.1</td>
@@ -78,7 +78,7 @@
           </tr>
           <tr>
             <th scope="row">A100 SXM4</th>
-            <td>19.5 TFLOP/s</td>
+            <td>156 TFLOP/s</td>
             <td>Modal</td>
             <td>Kernel trace</td>
             <td>2.1</td>
@@ -89,7 +89,7 @@
           </tr>
           <tr>
             <th scope="row">A100 SXM4</th>
-            <td>19.5 TFLOP/s</td>
+            <td>156 TFLOP/s</td>
             <td>Vast</td>
             <td>Matched full-spectrum step</td>
             <td>2.0</td>
@@ -100,7 +100,7 @@
           </tr>
           <tr>
             <th scope="row">V100 SXM2</th>
-            <td>15.7 TFLOP/s</td>
+            <td>Not supported</td>
             <td>Vast</td>
             <td>Matched full-spectrum step</td>
             <td>2.0</td>
@@ -111,7 +111,7 @@
           </tr>
           <tr>
             <th scope="row">A100 SXM4</th>
-            <td>19.5 TFLOP/s</td>
+            <td>156 TFLOP/s</td>
             <td>Vast</td>
             <td>Complete integrated fit</td>
             <td>2.0</td>
@@ -122,7 +122,7 @@
           </tr>
           <tr>
             <th scope="row">A100 40 GB</th>
-            <td>19.5 TFLOP/s</td>
+            <td>156 TFLOP/s</td>
             <td>Modal</td>
             <td>Smoke test</td>
             <td>2.1</td>
@@ -133,7 +133,7 @@
           </tr>
           <tr>
             <th scope="row">A100 40 GB</th>
-            <td>19.5 TFLOP/s</td>
+            <td>156 TFLOP/s</td>
             <td>Modal</td>
             <td>Complete feature-spectrum fit</td>
             <td>2.1</td>
@@ -144,7 +144,7 @@
           </tr>
           <tr>
             <th scope="row">A100 40 GB</th>
-            <td>19.5 TFLOP/s</td>
+            <td>156 TFLOP/s</td>
             <td>Modal</td>
             <td>Full-spectrum checkpoint fit</td>
             <td>2.1</td>
@@ -167,110 +167,132 @@
       <p>The three joint fit benchmark files record one comparison fingerprint:<br>
       <code>661b6db32dabbdc340b049de8ecfe2cc871473a3203a4bf61994821e17104212</code></p>
 
-      <figure class="diagram" aria-labelledby="speed-chart-caption">
-        <svg viewBox="0 0 560 380" style="width:100%;height:auto" role="img" aria-labelledby="speed-chart-title speed-chart-desc">
-          <title id="speed-chart-title">Ceridwen speed against GPU FP32 peak</title>
-          <desc id="speed-chart-desc">A scatter plot of measured likelihood calls per second against the published FP32 peak of five GPU types. The A100 reaches 126.6 calls per second at 19.5 TFLOP/s. The RTX 3090 reaches 80.3 calls per second at 35.6 TFLOP/s. The H100 reaches 431.3 calls per second at 67 TFLOP/s. The RTX 4090 reaches 187.0 calls per second at 82.6 TFLOP/s. The V100 reaches 42.9 calls per second at 15.7 TFLOP/s.</desc>
-
-          <g stroke="currentColor" stroke-opacity="0.25" stroke-width="1">
-            <line x1="62" y1="259.1" x2="542" y2="259.1" />
-            <line x1="62" y1="190.2" x2="542" y2="190.2" />
-            <line x1="62" y1="121.3" x2="542" y2="121.3" />
-            <line x1="62" y1="52.4" x2="542" y2="52.4" />
-          </g>
-
-          <g stroke="currentColor" stroke-width="1.5" fill="none">
-            <path d="M62 18 V328 H542" />
-          </g>
-
-          <g stroke="currentColor" stroke-width="1.5">
-            <line x1="62" y1="328" x2="62" y2="333" />
-            <line x1="168.7" y1="328" x2="168.7" y2="333" />
-            <line x1="275.3" y1="328" x2="275.3" y2="333" />
-            <line x1="382" y1="328" x2="382" y2="333" />
-            <line x1="488.7" y1="328" x2="488.7" y2="333" />
-            <line x1="57" y1="328" x2="62" y2="328" />
-            <line x1="57" y1="259.1" x2="62" y2="259.1" />
-            <line x1="57" y1="190.2" x2="62" y2="190.2" />
-            <line x1="57" y1="121.3" x2="62" y2="121.3" />
-            <line x1="57" y1="52.4" x2="62" y2="52.4" />
-          </g>
-
-          <g fill="currentColor" font-size="13" text-anchor="middle">
-            <text x="62" y="348">0</text>
-            <text x="168.7" y="348">20</text>
-            <text x="275.3" y="348">40</text>
-            <text x="382" y="348">60</text>
-            <text x="488.7" y="348">80</text>
-            <text x="302" y="372">GPU FP32 peak (TFLOP/s)</text>
-          </g>
-
-          <g fill="currentColor" font-size="13" text-anchor="end">
-            <text x="52" y="332">0</text>
-            <text x="52" y="263">100</text>
-            <text x="52" y="194">200</text>
-            <text x="52" y="125">300</text>
-            <text x="52" y="56">400</text>
-          </g>
-
-          <text x="16" y="173" fill="currentColor" font-size="13" text-anchor="middle" transform="rotate(-90 16 173)">Likelihood calls per second</text>
-
-          <g fill="currentColor">
-            <circle cx="251.9" cy="272.7" r="5" />
-            <circle cx="419.3" cy="30.9" r="5" />
-            <circle cx="502.5" cy="199.2" r="5" />
-          </g>
-
-          <g fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="141.7" y="294.4" width="8" height="8" />
-            <rect x="162" y="236.8" width="8" height="8" />
-          </g>
-
-          <g fill="currentColor" font-size="13">
-            <text x="156" y="303">V100 SXM2</text>
-            <text x="176" y="245">A100 SXM4</text>
-            <text x="262" y="277">RTX 3090</text>
-            <text x="429" y="36">H100 SXM</text>
-            <text x="493" y="204" text-anchor="end">RTX 4090</text>
-          </g>
-        </svg>
-        <figcaption id="speed-chart-caption">FP32 peak does not predict Ceridwen speed. The A100 beat the RTX 3090 with half of its FP32 peak. The H100 beat the RTX 4090 with a lower FP32 peak.</figcaption>
-      </figure>
+      <h3>Speed against published peak throughput</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem 1.25rem">
+        <figure class="diagram">
+          <svg viewBox="0 0 330 200" style="width:100%;height:auto" role="img" aria-labelledby="panel1-title panel1-desc">
+            <title id="panel1-title">Calls per second against CUDA FP32 peak</title>
+            <desc id="panel1-desc">V100 SXM2: 15.7 TFLOP/s, 42.9 calls per second. GeForce RTX 3090: 35.6 TFLOP/s, 80.3 calls per second. A100 SXM4: 19.5 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 82.6 TFLOP/s, 187.0 calls per second. H100 SXM: 67 TFLOP/s, 431.3 calls per second.</desc>
+            <g stroke="currentColor" stroke-opacity="0.25"><line x1="40.0" y1="94.2" x2="306.0" y2="94.2" /><line x1="40.0" y1="28.4" x2="306.0" y2="28.4" /></g>
+            <path d="M40.0 12.0 V160.0 H306.0" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <g stroke="currentColor" stroke-width="1.2"><line x1="40.0" y1="160.0" x2="40.0" y2="164.0" /><line x1="173.0" y1="160.0" x2="173.0" y2="164.0" /><line x1="306.0" y1="160.0" x2="306.0" y2="164.0" /><line x1="36.0" y1="160.0" x2="40.0" y2="160.0" /><line x1="36.0" y1="94.2" x2="40.0" y2="94.2" /><line x1="36.0" y1="28.4" x2="40.0" y2="28.4" /></g>
+            <g fill="currentColor" font-size="12" text-anchor="middle"><text x="40.0" y="180.0">0</text><text x="173.0" y="180.0">50</text><text x="306.0" y="180.0">100</text></g>
+            <g fill="currentColor" font-size="12" text-anchor="end"><text x="33.0" y="164.0">0</text><text x="33.0" y="98.2">200</text><text x="33.0" y="32.4">400</text></g>
+            <g fill="currentColor" stroke="currentColor" stroke-width="1.6"><rect fill="none" x="78.3" y="142.4" width="7" height="7" /><circle cx="134.7" cy="133.6" r="4" /><path fill="none" d="M91.9 113.9 L96.1 121.6 L87.7 121.6 Z" /><path d="M259.7 93.7 L263.9 98.5 L259.7 103.3 L255.5 98.5 Z" /><path fill="none" d="M213.4 18.2 H223.0 M218.2 13.4 V23.0" /></g>
+          </svg>
+          <figcaption>CUDA FP32 peak (TFLOP/s)</figcaption>
+        </figure>
+        <figure class="diagram">
+          <svg viewBox="0 0 330 200" style="width:100%;height:auto" role="img" aria-labelledby="panel2-title panel2-desc">
+            <title id="panel2-title">Calls per second against CUDA FP64 peak</title>
+            <desc id="panel2-desc">V100 SXM2: 7.8 TFLOP/s, 42.9 calls per second. GeForce RTX 3090: 0.56 TFLOP/s, 80.3 calls per second. A100 SXM4: 9.7 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 1.29 TFLOP/s, 187.0 calls per second. H100 SXM: 34 TFLOP/s, 431.3 calls per second.</desc>
+            <g stroke="currentColor" stroke-opacity="0.25"><line x1="40.0" y1="94.2" x2="306.0" y2="94.2" /><line x1="40.0" y1="28.4" x2="306.0" y2="28.4" /></g>
+            <path d="M40.0 12.0 V160.0 H306.0" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <g stroke="currentColor" stroke-width="1.2"><line x1="40.0" y1="160.0" x2="40.0" y2="164.0" /><line x1="173.0" y1="160.0" x2="173.0" y2="164.0" /><line x1="306.0" y1="160.0" x2="306.0" y2="164.0" /><line x1="36.0" y1="160.0" x2="40.0" y2="160.0" /><line x1="36.0" y1="94.2" x2="40.0" y2="94.2" /><line x1="36.0" y1="28.4" x2="40.0" y2="28.4" /></g>
+            <g fill="currentColor" font-size="12" text-anchor="middle"><text x="40.0" y="180.0">0</text><text x="173.0" y="180.0">20</text><text x="306.0" y="180.0">40</text></g>
+            <g fill="currentColor" font-size="12" text-anchor="end"><text x="33.0" y="164.0">0</text><text x="33.0" y="98.2">200</text><text x="33.0" y="32.4">400</text></g>
+            <g fill="currentColor" stroke="currentColor" stroke-width="1.6"><rect fill="none" x="88.4" y="142.4" width="7" height="7" /><circle cx="43.7" cy="133.6" r="4" /><path fill="none" d="M104.5 113.9 L108.7 121.6 L100.3 121.6 Z" /><path d="M48.6 93.7 L52.8 98.5 L48.6 103.3 L44.4 98.5 Z" /><path fill="none" d="M261.3 18.2 H270.9 M266.1 13.4 V23.0" /></g>
+          </svg>
+          <figcaption>CUDA FP64 peak (TFLOP/s)</figcaption>
+        </figure>
+        <figure class="diagram">
+          <svg viewBox="0 0 330 200" style="width:100%;height:auto" role="img" aria-labelledby="panel3-title panel3-desc">
+            <title id="panel3-title">Calls per second against FP64 tensor peak</title>
+            <desc id="panel3-desc">V100 SXM2: no hardware path, 42.9 calls per second. GeForce RTX 3090: no hardware path, 80.3 calls per second. A100 SXM4: 19.5 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: no hardware path, 187.0 calls per second. H100 SXM: 67 TFLOP/s, 431.3 calls per second.</desc>
+            <g stroke="currentColor" stroke-opacity="0.25"><line x1="40.0" y1="94.2" x2="306.0" y2="94.2" /><line x1="40.0" y1="28.4" x2="306.0" y2="28.4" /></g>
+            <path d="M40.0 12.0 V160.0 H306.0" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <g stroke="currentColor" stroke-width="1.2"><line x1="40.0" y1="160.0" x2="40.0" y2="164.0" /><line x1="173.0" y1="160.0" x2="173.0" y2="164.0" /><line x1="306.0" y1="160.0" x2="306.0" y2="164.0" /><line x1="36.0" y1="160.0" x2="40.0" y2="160.0" /><line x1="36.0" y1="94.2" x2="40.0" y2="94.2" /><line x1="36.0" y1="28.4" x2="40.0" y2="28.4" /></g>
+            <g fill="currentColor" font-size="12" text-anchor="middle"><text x="40.0" y="180.0">0</text><text x="173.0" y="180.0">40</text><text x="306.0" y="180.0">80</text></g>
+            <g fill="currentColor" font-size="12" text-anchor="end"><text x="33.0" y="164.0">0</text><text x="33.0" y="98.2">200</text><text x="33.0" y="32.4">400</text></g>
+            <g fill="currentColor" stroke="currentColor" stroke-width="1.6"><rect fill="none" x="36.5" y="142.4" width="7" height="7" /><circle cx="40.0" cy="133.6" r="4" /><path fill="none" d="M104.8 113.9 L109.0 121.6 L100.6 121.6 Z" /><path d="M40.0 93.7 L44.2 98.5 L40.0 103.3 L35.8 98.5 Z" /><path fill="none" d="M258.0 18.2 H267.6 M262.8 13.4 V23.0" /></g>
+          </svg>
+          <figcaption>FP64 tensor peak (TFLOP/s)</figcaption>
+        </figure>
+        <figure class="diagram">
+          <svg viewBox="0 0 330 200" style="width:100%;height:auto" role="img" aria-labelledby="panel4-title panel4-desc">
+            <title id="panel4-title">Calls per second against TF32 tensor peak</title>
+            <desc id="panel4-desc">V100 SXM2: no hardware path, 42.9 calls per second. GeForce RTX 3090: 35.6 TFLOP/s, 80.3 calls per second. A100 SXM4: 156 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 82.6 TFLOP/s, 187.0 calls per second. H100 SXM: 494 TFLOP/s, 431.3 calls per second.</desc>
+            <g stroke="currentColor" stroke-opacity="0.25"><line x1="40.0" y1="94.2" x2="306.0" y2="94.2" /><line x1="40.0" y1="28.4" x2="306.0" y2="28.4" /></g>
+            <path d="M40.0 12.0 V160.0 H306.0" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <g stroke="currentColor" stroke-width="1.2"><line x1="40.0" y1="160.0" x2="40.0" y2="164.0" /><line x1="173.0" y1="160.0" x2="173.0" y2="164.0" /><line x1="306.0" y1="160.0" x2="306.0" y2="164.0" /><line x1="36.0" y1="160.0" x2="40.0" y2="160.0" /><line x1="36.0" y1="94.2" x2="40.0" y2="94.2" /><line x1="36.0" y1="28.4" x2="40.0" y2="28.4" /></g>
+            <g fill="currentColor" font-size="12" text-anchor="middle"><text x="40.0" y="180.0">0</text><text x="173.0" y="180.0">250</text><text x="306.0" y="180.0">500</text></g>
+            <g fill="currentColor" font-size="12" text-anchor="end"><text x="33.0" y="164.0">0</text><text x="33.0" y="98.2">200</text><text x="33.0" y="32.4">400</text></g>
+            <g fill="currentColor" stroke="currentColor" stroke-width="1.6"><rect fill="none" x="36.5" y="142.4" width="7" height="7" /><circle cx="58.9" cy="133.6" r="4" /><path fill="none" d="M123.0 113.9 L127.2 121.6 L118.8 121.6 Z" /><path d="M83.9 93.7 L88.1 98.5 L83.9 103.3 L79.7 98.5 Z" /><path fill="none" d="M298.0 18.2 H307.6 M302.8 13.4 V23.0" /></g>
+          </svg>
+          <figcaption>TF32 tensor peak (TFLOP/s)</figcaption>
+        </figure>
+        <figure class="diagram">
+          <svg viewBox="0 0 330 200" style="width:100%;height:auto" role="img" aria-labelledby="panel5-title panel5-desc">
+            <title id="panel5-title">Calls per second against FP16 tensor peak</title>
+            <desc id="panel5-desc">V100 SXM2: 125 TFLOP/s, 42.9 calls per second. GeForce RTX 3090: 71 TFLOP/s, 80.3 calls per second. A100 SXM4: 312 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 165.2 TFLOP/s, 187.0 calls per second. H100 SXM: 989 TFLOP/s, 431.3 calls per second.</desc>
+            <g stroke="currentColor" stroke-opacity="0.25"><line x1="40.0" y1="94.2" x2="306.0" y2="94.2" /><line x1="40.0" y1="28.4" x2="306.0" y2="28.4" /></g>
+            <path d="M40.0 12.0 V160.0 H306.0" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <g stroke="currentColor" stroke-width="1.2"><line x1="40.0" y1="160.0" x2="40.0" y2="164.0" /><line x1="173.0" y1="160.0" x2="173.0" y2="164.0" /><line x1="306.0" y1="160.0" x2="306.0" y2="164.0" /><line x1="36.0" y1="160.0" x2="40.0" y2="160.0" /><line x1="36.0" y1="94.2" x2="40.0" y2="94.2" /><line x1="36.0" y1="28.4" x2="40.0" y2="28.4" /></g>
+            <g fill="currentColor" font-size="12" text-anchor="middle"><text x="40.0" y="180.0">0</text><text x="173.0" y="180.0">500</text><text x="306.0" y="180.0">1,000</text></g>
+            <g fill="currentColor" font-size="12" text-anchor="end"><text x="33.0" y="164.0">0</text><text x="33.0" y="98.2">200</text><text x="33.0" y="32.4">400</text></g>
+            <g fill="currentColor" stroke="currentColor" stroke-width="1.6"><rect fill="none" x="69.7" y="142.4" width="7" height="7" /><circle cx="58.9" cy="133.6" r="4" /><path fill="none" d="M123.0 113.9 L127.2 121.6 L118.8 121.6 Z" /><path d="M83.9 93.7 L88.1 98.5 L83.9 103.3 L79.7 98.5 Z" /><path fill="none" d="M298.3 18.2 H307.9 M303.1 13.4 V23.0" /></g>
+          </svg>
+          <figcaption>FP16 tensor peak (TFLOP/s)</figcaption>
+        </figure>
+        <figure class="diagram">
+          <svg viewBox="0 0 330 200" style="width:100%;height:auto" role="img" aria-labelledby="panel6-title panel6-desc">
+            <title id="panel6-title">Calls per second against BF16 tensor peak</title>
+            <desc id="panel6-desc">V100 SXM2: no hardware path, 42.9 calls per second. GeForce RTX 3090: 71 TFLOP/s, 80.3 calls per second. A100 SXM4: 312 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 165.2 TFLOP/s, 187.0 calls per second. H100 SXM: 989 TFLOP/s, 431.3 calls per second.</desc>
+            <g stroke="currentColor" stroke-opacity="0.25"><line x1="40.0" y1="94.2" x2="306.0" y2="94.2" /><line x1="40.0" y1="28.4" x2="306.0" y2="28.4" /></g>
+            <path d="M40.0 12.0 V160.0 H306.0" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <g stroke="currentColor" stroke-width="1.2"><line x1="40.0" y1="160.0" x2="40.0" y2="164.0" /><line x1="173.0" y1="160.0" x2="173.0" y2="164.0" /><line x1="306.0" y1="160.0" x2="306.0" y2="164.0" /><line x1="36.0" y1="160.0" x2="40.0" y2="160.0" /><line x1="36.0" y1="94.2" x2="40.0" y2="94.2" /><line x1="36.0" y1="28.4" x2="40.0" y2="28.4" /></g>
+            <g fill="currentColor" font-size="12" text-anchor="middle"><text x="40.0" y="180.0">0</text><text x="173.0" y="180.0">500</text><text x="306.0" y="180.0">1,000</text></g>
+            <g fill="currentColor" font-size="12" text-anchor="end"><text x="33.0" y="164.0">0</text><text x="33.0" y="98.2">200</text><text x="33.0" y="32.4">400</text></g>
+            <g fill="currentColor" stroke="currentColor" stroke-width="1.6"><rect fill="none" x="36.5" y="142.4" width="7" height="7" /><circle cx="58.9" cy="133.6" r="4" /><path fill="none" d="M123.0 113.9 L127.2 121.6 L118.8 121.6 Z" /><path d="M83.9 93.7 L88.1 98.5 L83.9 103.3 L79.7 98.5 Z" /><path fill="none" d="M298.3 18.2 H307.9 M303.1 13.4 V23.0" /></g>
+          </svg>
+          <figcaption>BF16 tensor peak (TFLOP/s)</figcaption>
+        </figure>
+        <figure class="diagram">
+          <svg viewBox="0 0 330 200" style="width:100%;height:auto" role="img" aria-labelledby="panel7-title panel7-desc">
+            <title id="panel7-title">Calls per second against FP8 tensor peak</title>
+            <desc id="panel7-desc">V100 SXM2: no hardware path, 42.9 calls per second. GeForce RTX 3090: no hardware path, 80.3 calls per second. A100 SXM4: no hardware path, 126.6 calls per second. GeForce RTX 4090: 330.3 TFLOP/s, 187.0 calls per second. H100 SXM: 1979 TFLOP/s, 431.3 calls per second.</desc>
+            <g stroke="currentColor" stroke-opacity="0.25"><line x1="40.0" y1="94.2" x2="306.0" y2="94.2" /><line x1="40.0" y1="28.4" x2="306.0" y2="28.4" /></g>
+            <path d="M40.0 12.0 V160.0 H306.0" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <g stroke="currentColor" stroke-width="1.2"><line x1="40.0" y1="160.0" x2="40.0" y2="164.0" /><line x1="173.0" y1="160.0" x2="173.0" y2="164.0" /><line x1="306.0" y1="160.0" x2="306.0" y2="164.0" /><line x1="36.0" y1="160.0" x2="40.0" y2="160.0" /><line x1="36.0" y1="94.2" x2="40.0" y2="94.2" /><line x1="36.0" y1="28.4" x2="40.0" y2="28.4" /></g>
+            <g fill="currentColor" font-size="12" text-anchor="middle"><text x="40.0" y="180.0">0</text><text x="173.0" y="180.0">1,000</text><text x="306.0" y="180.0">2,000</text></g>
+            <g fill="currentColor" font-size="12" text-anchor="end"><text x="33.0" y="164.0">0</text><text x="33.0" y="98.2">200</text><text x="33.0" y="32.4">400</text></g>
+            <g fill="currentColor" stroke="currentColor" stroke-width="1.6"><rect fill="none" x="36.5" y="142.4" width="7" height="7" /><circle cx="40.0" cy="133.6" r="4" /><path fill="none" d="M40.0 113.9 L44.2 121.6 L35.8 121.6 Z" /><path d="M83.9 93.7 L88.1 98.5 L83.9 103.3 L79.7 98.5 Z" /><path fill="none" d="M298.4 18.2 H308.0 M303.2 13.4 V23.0" /></g>
+          </svg>
+          <figcaption>FP8 tensor peak (TFLOP/s)</figcaption>
+        </figure>
+        <figure class="diagram">
+          <svg viewBox="0 0 330 200" style="width:100%;height:auto" role="img" aria-labelledby="panel8-title panel8-desc">
+            <title id="panel8-title">Calls per second against INT8 tensor peak</title>
+            <desc id="panel8-desc">V100 SXM2: no hardware path, 42.9 calls per second. GeForce RTX 3090: 284 TOPS, 80.3 calls per second. A100 SXM4: 624 TOPS, 126.6 calls per second. GeForce RTX 4090: 660.6 TOPS, 187.0 calls per second. H100 SXM: 1979 TOPS, 431.3 calls per second.</desc>
+            <g stroke="currentColor" stroke-opacity="0.25"><line x1="40.0" y1="94.2" x2="306.0" y2="94.2" /><line x1="40.0" y1="28.4" x2="306.0" y2="28.4" /></g>
+            <path d="M40.0 12.0 V160.0 H306.0" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <g stroke="currentColor" stroke-width="1.2"><line x1="40.0" y1="160.0" x2="40.0" y2="164.0" /><line x1="173.0" y1="160.0" x2="173.0" y2="164.0" /><line x1="306.0" y1="160.0" x2="306.0" y2="164.0" /><line x1="36.0" y1="160.0" x2="40.0" y2="160.0" /><line x1="36.0" y1="94.2" x2="40.0" y2="94.2" /><line x1="36.0" y1="28.4" x2="40.0" y2="28.4" /></g>
+            <g fill="currentColor" font-size="12" text-anchor="middle"><text x="40.0" y="180.0">0</text><text x="173.0" y="180.0">1,000</text><text x="306.0" y="180.0">2,000</text></g>
+            <g fill="currentColor" font-size="12" text-anchor="end"><text x="33.0" y="164.0">0</text><text x="33.0" y="98.2">200</text><text x="33.0" y="32.4">400</text></g>
+            <g fill="currentColor" stroke="currentColor" stroke-width="1.6"><rect fill="none" x="36.5" y="142.4" width="7" height="7" /><circle cx="77.8" cy="133.6" r="4" /><path fill="none" d="M123.0 113.9 L127.2 121.6 L118.8 121.6 Z" /><path d="M127.9 93.7 L132.1 98.5 L127.9 103.3 L123.7 98.5 Z" /><path fill="none" d="M298.4 18.2 H308.0 M303.2 13.4 V23.0" /></g>
+          </svg>
+          <figcaption>INT8 tensor peak (TOPS)</figcaption>
+        </figure>
+      </div>
       <ul>
-        <li>A filled circle marks the joint fit benchmark, schema 2.1.</li>
-        <li>An open square marks the matched full-spectrum step, schema 2.0.</li>
-        <li>The other A100 fits measured 102.5 calls/s to 127.5 calls/s.</li>
+        <li>Every panel shows likelihood calls per second on the y axis.</li>
+        <li>The mark shape shows the GPU: open square V100 SXM2, filled circle RTX 3090, open triangle A100 SXM4, filled diamond RTX 4090, plus sign H100 SXM.</li>
+        <li>Each GPU keeps the same height in every panel, because the measured speed does not change.</li>
+        <li>A GPU with no hardware path for a precision plots at zero.</li>
+        <li>These values use dense operations. Sparsity values are excluded.</li>
+        <li>The FP16, BF16, and FP8 values use FP32 accumulate.</li>
+        <li>The INT8 panel uses TOPS. The other panels use TFLOP/s.</li>
+        <li>The <a href="#kernel-trace">kernel trace</a> measured 0.047% of the GPU time in matrix multiplication.</li>
       </ul>
 
-      <h3>Speed and cost</h3>
-      <ul>
-        <li>The RTX 4090 was 2.33 times faster than the RTX 3090.</li>
-        <li>The H100 was 5.37 times faster than the RTX 3090.</li>
-        <li>The H100 was 2.31 times faster than the RTX 4090.</li>
-        <li>The A100 was 2.95 times faster than the V100.</li>
-        <li>The RTX 4090 offer had the lowest cost per call.</li>
-        <li>The cost result applies only to these three Vast offers.</li>
-      </ul>
-
-      <div class="source-example">
-        <p class="source-locator"><code>scripts/benchmark_ceridwen_vast.py:23-36 · fixed benchmark contract</code></p>
-        <pre class="python"><code>WORKLOAD_ID = "m1_210210_joint_full_v1"
-TARGET_ID = "M1_210210"
-GRID_ID = "amist_c3k_hr_krou_afe"
-GRID_SCHEMA = "2.1"
-GRID_SHAPE = (5, 13, 107, 10992)
-EXPECTED_PHOTOMETRY_BANDS = 11
-EXPECTED_SPECTRAL_PIXELS = 3523
-SEED = 20260812
+      <p class="source-locator"><code>scripts/benchmark_ceridwen_vast.py:30-36 · sampler settings</code></p>
+      <pre class="python"><code>SEED = 20260812
 NUM_LIVE = 300
 NUM_INNER_STEPS = 40
 NUM_DELETE = 25
 REFERENCE_LOGZ_TOL = -3.0
 WARMUP_STEPS = 1
 TIMED_STEPS = 5</code></pre>
-        <p><strong>Documented contract:</strong> The script fixes the model inputs, sampler settings, and timing length.</p>
-        <p><strong>Why it matters:</strong> A GPU change is the main planned difference between the joint fit benchmark rows.</p>
-      </div>
 
       <p>Evidence: <code>results/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv</code>, the three <code>results/ceridwen_vast_*_joint_full_benchmark_complete_2026-08-26/</code> directories, and <code>results/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/profile.json</code></p>
     </section>

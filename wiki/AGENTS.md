@@ -54,7 +54,7 @@ remain in Markdown. Store shared presentation rules in `assets/wiki.css`.
   fields such as `not measured` or `not recorded`.
 - When a benchmark includes JIT compilation, calculate throughput from later
   iterations only.
-- Include published peak FP32 throughput for every GPU comparison.
+- Include the published dense tensor-core FP32 (TF32) peak for every GPU comparison.
 - Include the Ceridwen grid schema in every benchmark row.
 
 ### Diagram conventions
@@ -120,6 +120,8 @@ Each teaching block must contain these parts in this order:
 - Keep the documented contract separate from the wiki explanation.
 - Label an uncited inference as `Project synthesis`.
 - Recheck every excerpt and locator against the live source before completion.
+- An analysis page may carry a bare source excerpt with a locator and no
+  contract paragraphs.
 
 ## Autonomous codebase workflow
 

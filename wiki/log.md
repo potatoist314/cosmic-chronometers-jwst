@@ -214,3 +214,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `AGENTS.md`, `index.md`
 - Change: Removed the GPU hardware section, added an FP32 peak column and a calls/s against FP32 peak chart, and reduced the memory and kernel-trace results to short notes.
+
+## [2026-08-26] query | Precision charts on the GPU benchmark page
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `AGENTS.md`
+- Change: Replaced the single chart with eight panels for CUDA FP32, CUDA FP64, and the tensor precisions, removed the speed-and-cost list, and reduced the source excerpt to the sampler settings.
