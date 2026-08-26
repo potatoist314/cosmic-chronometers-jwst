@@ -129,3 +129,8 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.md`
 - Change: Replaced the benchmark analysis with hardware and sampler figures for all retained runs.
+
+## [2026-08-26] query | Omit unrecorded wiki metrics
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`, `AGENTS.md`
+- Change: Removed unrecorded metrics and excluded JIT compilation from throughput figures.

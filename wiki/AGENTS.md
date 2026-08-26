@@ -50,6 +50,10 @@ remain in Markdown. Store shared presentation rules in `assets/wiki.css`.
 - Do not use prompts such as “Read it.”
 - Use literal navigation labels. Prefer short lists to cards and callouts.
 - Add a reading exercise only when the user requests one.
+- Omit a measurement when the source did not record it. Do not add placeholder
+  fields such as `not measured` or `not recorded`.
+- When a benchmark includes JIT compilation, calculate throughput from later
+  iterations only.
 
 ### Diagram conventions
 

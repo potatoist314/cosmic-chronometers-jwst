@@ -32,30 +32,19 @@
           <tr>
             <th scope="col">Provider</th>
             <th scope="col">GPU</th>
-            <th scope="col">Peak FP64</th>
-            <th scope="col">VRAM used</th>
-            <th scope="col">Peak memory bandwidth</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">Vast.ai</th>
             <td>A100 SXM4 40 GB</td>
-            <td>9.7 TFLOP/s</td>
-            <td>Not recorded</td>
-            <td>1,555 GB/s</td>
           </tr>
           <tr>
             <th scope="row">Modal</th>
-            <td>A100 40 GB (form factor not recorded)</td>
-            <td>9.7 TFLOP/s</td>
-            <td>Not recorded</td>
-            <td>1,555 GB/s</td>
+            <td>A100 40 GB</td>
           </tr>
         </tbody>
       </table>
-      <p>FP64 and memory bandwidth are peak hardware values. The runs did
-      not measure FP64 throughput or memory bandwidth.</p>
     </section>
 
     <section id="sampler-runs">
@@ -84,18 +73,7 @@
             <td>−3</td>
             <td>489</td>
             <td>489,000</td>
-            <td>118.2</td>
-          </tr>
-          <tr>
-            <th scope="row">Vast smoke test</th>
-            <td>Smoke</td>
-            <td>16</td>
-            <td>2</td>
-            <td>8</td>
-            <td>10,000</td>
-            <td>Not recorded</td>
-            <td>Not recorded</td>
-            <td>Not recorded</td>
+            <td>118.6</td>
           </tr>
           <tr>
             <th scope="row">Modal smoke test</th>
@@ -106,7 +84,7 @@
             <td>10,000</td>
             <td>8</td>
             <td>128</td>
-            <td>11.0</td>
+            <td>≈112</td>
           </tr>
           <tr>
             <th scope="row">Modal feature fit</th>
@@ -117,7 +95,7 @@
             <td>−5</td>
             <td>5</td>
             <td>30,000</td>
-            <td>104.4</td>
+            <td>109.1</td>
           </tr>
           <tr>
             <th scope="row">Modal full-spectrum fit</th>
@@ -128,7 +106,7 @@
             <td>−5</td>
             <td>5</td>
             <td>30,000</td>
-            <td>103.0</td>
+            <td>107.5</td>
           </tr>
           <tr>
             <th scope="row">Modal full-spectrum checkpoint</th>
@@ -139,7 +117,7 @@
             <td>−5</td>
             <td>146</td>
             <td>876,000</td>
-            <td>102.2</td>
+            <td>102.5</td>
           </tr>
           <tr>
             <th scope="row">Modal feature fit</th>
@@ -150,14 +128,14 @@
             <td>−5</td>
             <td>191</td>
             <td>1,146,000</td>
-            <td>105.5</td>
+            <td>105.8</td>
           </tr>
         </tbody>
       </table>
+      <p><strong>Vast smoke test:</strong> 16 live points, 2 inner steps,
+      8 deletions, and log Z tolerance 10,000. Notebook time: 142 seconds.</p>
       <ul>
-        <li>Calls/s is derived from the recorded sampler time.</li>
-        <li>The Modal smoke-test rate includes JIT compilation.</li>
-        <li>The Vast smoke-test notebook completed in 142 seconds.</li>
+        <li>Calls/s uses iterations 2 onward. It excludes the first compiled iteration.</li>
       </ul>
     </section>
   </main>
