@@ -25,6 +25,44 @@
       <h1>Ceridwen GPU benchmark</h1>
     </header>
 
+    <section id="contract">
+      <h2>Fixed short workload</h2>
+      <p>The maintained Vast runner uses the joint M1_210210 likelihood.
+      It fixes the data, grid, model, seed, sampler sizes, and timed call
+      count. It rejects summaries with different comparison fingerprints.</p>
+      <div class="source-example">
+        <p class="source-locator"><code>scripts/benchmark_ceridwen_vast.py:23-38 · benchmark contract</code></p>
+        <pre class="python"><code>WORKLOAD_ID = "m1_210210_joint_full_v1"
+TARGET_ID = "M1_210210"
+GRID_ID = "amist_c3k_hr_krou_afe"
+GRID_SCHEMA = "2.1"
+GRID_SHAPE = (5, 13, 107, 10992)
+EXPECTED_PHOTOMETRY_BANDS = 11
+EXPECTED_SPECTRAL_PIXELS = 3523
+SEED = 20260812
+NUM_LIVE = 300
+NUM_INNER_STEPS = 40
+NUM_DELETE = 25
+REFERENCE_LOGZ_TOL = -3.0
+WARMUP_STEPS = 1
+TIMED_STEPS = 5
+CALLS_PER_STEP = NUM_INNER_STEPS * NUM_DELETE
+RESULT_SCHEMA_VERSION = 1</code></pre>
+        <p><strong>Documented contract:</strong> The focused test fixes 11
+        photometric bands, 3,523 spectral pixels, five timed steps, and
+        1,000 calls per step
+        (<code>tests/test_benchmark_ceridwen_vast.py:22-27</code>).</p>
+        <p><strong>Why it matters:</strong> Every GPU performs the same
+        5,000 post-JIT likelihood calls.</p>
+      </div>
+      <ul>
+        <li>The first NSS step compiles the kernel and is not measured.</li>
+        <li>The short run measures speed and memory, not convergence.</li>
+        <li>It does not produce posterior parameter estimates.</li>
+        <li>The log Z tolerance records the reference fit configuration.</li>
+      </ul>
+    </section>
+
     <section id="comparison">
       <h2>Performance comparison</h2>
       <table>
@@ -114,6 +152,7 @@
         <li>Sampler values are live / inner / delete / log Z tolerance.</li>
         <li>Calls/s and timed counts exclude the first JIT-compiled iteration.</li>
         <li>The matched A100 and V100 rows use the same model and iteration.</li>
+        <li>The matched rows predate the five-step fingerprinted runner.</li>
         <li>V100 JAX peak use: 1.484 GiB; NVML device use: 25.9 GiB.</li>
       </ul>
     </section>

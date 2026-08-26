@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="guide">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-25">
+  <meta name="wiki-updated" content="2026-08-26">
   <title>Vast.ai GPU Workflow</title>
   <link rel="stylesheet" href="../assets/wiki.css">
 </head>
@@ -26,7 +26,7 @@
       <h1>Run Ceridwen fits on a Vast.ai GPU.</h1>
       <p class="lede">The spectrum notebook fits spectra. The joint
       notebook fits spectra and photometry. Use local CPUs for trials.
-      Use Vast.ai GPUs for full fits.</p>
+      Use Vast.ai GPUs for fixed benchmarks and full fits.</p>
     </header>
 
     <nav id="TOC" aria-label="On this page">
@@ -36,7 +36,7 @@
           <li><a href="#clone">Clone</a><small>Include submodules</small></li>
           <li><a href="#data">Transfer data</a><small>Private inputs</small></li>
           <li><a href="#bootstrap">Bootstrap</a><small>Verify CUDA</small></li>
-          <li><a href="#run">Run fit</a><small>BlackJAX NSS</small></li>
+          <li><a href="#benchmark">Benchmark or fit</a><small>BlackJAX NSS</small></li>
           <li><a href="#finish">Save and stop</a><small>Secure output</small></li>
         </ol>
         <figcaption id="vast-route-caption">A safe Vast.ai run starts with verified hardware and ends after local result checks.</figcaption>
@@ -146,6 +146,27 @@ PY
       <code>(5, 13, 107, 10992)</code>.</p>
     </section>
 
+    <section id="benchmark">
+      <h2>Run the fixed benchmark</h2>
+      <p>Run the benchmark after the bootstrap finishes. Replace the
+      example Vast price, host, and instance values:</p>
+      <pre><code>.venv-ceridwen-gpu/bin/python \
+  scripts/benchmark_ceridwen_vast.py run \
+  --price-usd-per-hour 0.670 \
+  --vast-host 148498 \
+  --vast-instance 48652928</code></pre>
+      <p>The workload uses M1_210210, 11 photometric bands, and 3,523
+      spectral pixels. It compiles one warm-up step. It then times five
+      steps with 1,000 likelihood calls each.</p>
+      <p>The runner saves JSON, CSV, and text results. It records input
+      checksums, code versions, GPU metadata, memory use, throughput, and
+      cost. The short run measures performance. It does not estimate a
+      posterior.</p>
+      <p>Copy each result directory to the local project before you stop
+      the instance. The summary command rejects files with different
+      comparison fingerprints.</p>
+    </section>
+
     <section id="run">
       <h2>Run the notebooks</h2>
       <ol>
@@ -181,8 +202,7 @@ path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
     <section id="finish">
       <h2>Preserve results and finish</h2>
       <ol>
-        <li>Download the executed notebook, the HDF5 result,
-        checkpoints, and final plots.</li>
+        <li>Download all fit outputs or the complete benchmark directory.</li>
         <li>Open every expected output on the local computer.</li>
         <li>Stop or destroy the paid instance after you secure the
         files.</li>
@@ -204,11 +224,15 @@ path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
         the kernel and results root.</li>
         <li><code>scripts/bootstrap_vast_ai.sh:121-168</code> checks the
         raw data and published grid.</li>
+        <li><code>scripts/benchmark_ceridwen_vast.py:23-38</code> fixes the
+        workload and sampler sizes.</li>
+        <li><code>scripts/benchmark_ceridwen_vast.py:583-634</code> excludes
+        one warm-up step and measures five later steps.</li>
         <li><code>.gitignore:23-24</code> keeps the LEGA-C spectra out of
         Git.</li>
       </ul>
     </section>
   </main>
-  <footer class="site-footer">Generated from the live Astro project · Updated 25 August 2026</footer>
+  <footer class="site-footer">Generated from the live Astro project · Updated 26 August 2026</footer>
 </body>
 </html>

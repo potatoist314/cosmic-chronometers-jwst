@@ -1,7 +1,43 @@
-# Ceridwen A100 benchmarks
+# Ceridwen GPU benchmarks
 
 Measured runs from 25 August 2026. Times are not directly comparable unless
 the likelihood data and sampler settings match.
+
+## Reproducible short benchmark
+
+Run the maintained benchmark after `bash scripts/bootstrap_vast_ai.sh`. Replace
+the example price, host, and instance values with the current Vast offer:
+
+```bash
+.venv-ceridwen-gpu/bin/python \
+  scripts/benchmark_ceridwen_vast.py run \
+  --price-usd-per-hour 0.670 \
+  --vast-host 148498 \
+  --vast-instance 48652928
+```
+
+The fixed workload is `m1_210210_joint_full_v1`: 11 photometric bands,
+3,523 fitted spectral pixels, the published schema-2.1 high-resolution grid,
+and BlackJAX NSS with 300 live points, 40 inner steps, and 25 deletions. The
+runner excludes one compiled warm-up step. It then measures five steps, or
+5,000 likelihood calls.
+
+Each result directory contains `benchmark.json`, `benchmark.csv`, and
+`benchmark.log`. The JSON includes input checksums, code and software versions,
+GPU metadata, memory use, raw step times, throughput, and cost per 100,000
+likelihood calls. The short run measures hardware performance. It does not
+produce a converged posterior or scientific parameter estimates.
+
+Rank copied result files with:
+
+```bash
+.venv-ceridwen-gpu/bin/python \
+  scripts/benchmark_ceridwen_vast.py summarize \
+  results/ceridwen_vast_*_benchmark_complete_*/benchmark.json
+```
+
+The summary command stops when workload, input, code, or software fingerprints
+differ. Use only one fingerprint in a comparison table.
 
 ## Completed runs
 

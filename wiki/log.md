@@ -149,3 +149,8 @@
 
 - Pages: `.github/workflows/pages.yml`
 - Change: Published reader-facing wiki files through GitHub Pages.
+
+## [2026-08-26] codebase | Reproducible Vast GPU benchmark
+
+- Pages: `guides/vast-ai-gpu-workflow.html`, `analyses/ceridwen-a100-benchmarks.html`, `index.md`
+- Change: Documented the fixed 5,000-call benchmark, fingerprints, outputs, and comparison command.
