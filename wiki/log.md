@@ -169,3 +169,13 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`, `AGENTS.md`
 - Change: Added peak FP32 throughput and made it a required GPU comparison field.
+
+## [2026-08-26] query | Relevant GPU compute paths
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.md`
+- Change: Added FP32 and FP64 core counts, tensor paths, L2 cache, and dense hardware peaks.
+
+## [2026-08-26] query | Benchmark schema fields
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`, `AGENTS.md`
+- Change: Added the Ceridwen grid schema to each benchmark row and future benchmark rules.

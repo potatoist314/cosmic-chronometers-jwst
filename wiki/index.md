@@ -52,4 +52,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Analyses
 
-- `analyses/ceridwen-a100-benchmarks.html` — Compares retained GPU timings and verifies V100 JAX memory against NVML traces.
+- `analyses/ceridwen-a100-benchmarks.html` — Compares CUDA and tensor paths, measured timings, and verified V100 memory.

@@ -30,9 +30,16 @@
         <thead>
           <tr>
             <th scope="col">GPU</th>
-            <th scope="col">Peak FP32</th>
-            <th scope="col">Peak FP64</th>
-            <th scope="col">Peak bandwidth</th>
+            <th scope="col">Ceridwen schema</th>
+            <th scope="col">FP32 cores</th>
+            <th scope="col">FP64 cores</th>
+            <th scope="col">Tensor cores</th>
+            <th scope="col">FP32 peak</th>
+            <th scope="col">TF32 tensor peak</th>
+            <th scope="col">FP64 peak</th>
+            <th scope="col">FP64 tensor peak</th>
+            <th scope="col">L2 cache</th>
+            <th scope="col">Memory bandwidth</th>
             <th scope="col">VRAM</th>
             <th scope="col">Calls/s</th>
           </tr>
@@ -40,16 +47,30 @@
         <tbody>
           <tr>
             <th scope="row">A100 SXM4</th>
+            <td>2.0</td>
+            <td>6,912</td>
+            <td>3,456</td>
+            <td>432, third generation</td>
             <td>19.5 TFLOP/s</td>
+            <td>156 TFLOP/s</td>
             <td>9.7 TFLOP/s</td>
+            <td>19.5 TFLOP/s</td>
+            <td>40 MB</td>
             <td>1,555 GB/s</td>
             <td>40 GB</td>
             <td>126.6</td>
           </tr>
           <tr>
             <th scope="row">V100 SXM2</th>
+            <td>2.0</td>
+            <td>5,120</td>
+            <td>2,560</td>
+            <td>640, first generation</td>
             <td>15.7 TFLOP/s</td>
+            <td>Not supported</td>
             <td>7.8 TFLOP/s</td>
+            <td>Not supported</td>
+            <td>6 MB</td>
             <td>900 GB/s</td>
             <td>32 GB</td>
             <td>42.9</td>
@@ -60,7 +81,18 @@
         <li>Both GPUs used the same model, data, seed, and sampler.</li>
         <li>Each timed step made 1,000 likelihood calls.</li>
         <li>The test excluded the first JIT compilation step.</li>
+        <li>Tensor peaks use dense operations. Sparse A100 peaks are excluded.</li>
+        <li>V100 tensor cores support FP16 inputs, not TF32 or FP64 inputs.</li>
+        <li>Current Ceridwen uses FP32 and FP64 data, not FP16 data.</li>
+        <li>Core counts are not equivalent across tensor-core generations.</li>
+        <li>Hardware peaks do not prove that XLA selected a tensor-core kernel.</li>
       </ul>
+      <p>
+        Hardware evidence:
+        <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">NVIDIA A100 architecture white paper, Table 4</a>
+        and
+        <a href="https://images.nvidia.com/content/technologies/volta/pdf/tesla-volta-v100-datasheet-letter-fnl-web.pdf">NVIDIA Tesla V100 data sheet, specifications table</a>.
+      </p>
     </section>
 
     <section id="memory-verification">
@@ -69,6 +101,7 @@
         <thead>
           <tr>
             <th scope="col">Fresh process</th>
+            <th scope="col">Ceridwen schema</th>
             <th scope="col">JAX peak</th>
             <th scope="col">JAX live at iteration 25</th>
             <th scope="col">JAX pool</th>
@@ -78,6 +111,7 @@
         <tbody>
           <tr>
             <th scope="row">Run 1</th>
+            <td>2.0</td>
             <td>1.425680 GiB</td>
             <td>1.110252 GiB</td>
             <td>2.005859 GiB</td>
@@ -85,6 +119,7 @@
           </tr>
           <tr>
             <th scope="row">Run 2</th>
+            <td>2.0</td>
             <td>1.425684 GiB</td>
             <td>1.110248 GiB</td>
             <td>2.005859 GiB</td>

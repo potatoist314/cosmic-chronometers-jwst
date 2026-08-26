@@ -55,6 +55,7 @@ remain in Markdown. Store shared presentation rules in `assets/wiki.css`.
 - When a benchmark includes JIT compilation, calculate throughput from later
   iterations only.
 - Include published peak FP32 and FP64 throughput for every GPU comparison.
+- Include the Ceridwen grid schema in every benchmark row.
 
 ### Diagram conventions
 
