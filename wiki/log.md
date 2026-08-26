@@ -244,3 +244,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`
 - Change: Rebuilt the six speed panels on log axes with a none band, cased dot marks, and collision-free labels.
+
+## [2026-08-26] query | GPU benchmark cost column
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`
+- Change: Moved the cost column to one million calls and added marked price estimates for the Vast A100 and V100 runs.
