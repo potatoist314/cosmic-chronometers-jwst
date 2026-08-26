@@ -168,6 +168,28 @@
             <td></td>
           </tr>
           <tr>
+            <th scope="row">GeForce RTX 4070 Super</th>
+            <td>35.5 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>89.7</td>
+            <td>$0.1018/h</td>
+            <td>$0.0315</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3080 Ti</th>
+            <td>34.1 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>82.5</td>
+            <td>$0.1348/h</td>
+            <td>$0.0454</td>
+          </tr>
+          <tr>
             <th scope="row">GeForce RTX 3090</th>
             <td>35.6 TFLOP/s</td>
             <td>Vast</td>
@@ -189,6 +211,17 @@
             <td></td>
             <td></td>
           </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3060</th>
+            <td>13.0 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>34.0</td>
+            <td>$0.0596/h</td>
+            <td>$0.0487</td>
+          </tr>
         </tbody>
       </table>
       <ul>
@@ -196,15 +229,42 @@
         <li>Every row excludes the first JIT compilation step.</li>
         <li>Only rows with the same test and the same schema compare directly.</li>
         <li>Each joint fit benchmark row used 11 photometric bands and 3,523 spectral pixels.</li>
-        <li>The three joint fit benchmark runs took 11.592 s, 26.735 s, and 62.277 s.</li>
+        <li>The six joint fit benchmark runs took 11.592 s, 26.735 s, 55.753 s, 60.607 s, 62.277 s, and 147.161 s.</li>
         <li>The two matched full-spectrum steps used the same model, data, seed, and sampler.</li>
         <li>An empty price cell means that the record holds no offer price.</li>
         <li>Three Modal records name the A100 without a form factor.</li>
       </ul>
-      <p>The three joint fit benchmark files record one comparison fingerprint:<br>
+      <p>The six joint fit benchmark files record one comparison fingerprint:<br>
       <code>661b6db32dabbdc340b049de8ecfe2cc871473a3203a4bf61994821e17104212</code></p>
 
-      <h3>Speed against published peak throughput</h3>
+      <h3 id="prediction">Predicted and measured speed</h3>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">GPU</th>
+            <th scope="col">Predicted calls/s</th>
+            <th scope="col">Measured calls/s</th>
+            <th scope="col">Difference</th>
+            <th scope="col">Vast price</th>
+            <th scope="col">Input / output price</th>
+            <th scope="col">Measured cost per 100,000 calls</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">GeForce RTX 3060</th><td>29</td><td>34.0</td><td>+17.2%</td><td>$0.0596/h</td><td>$0.00521 / $0.00521 per GB</td><td>$0.0487</td></tr>
+          <tr><th scope="row">GeForce RTX 3080 Ti</th><td>77</td><td>82.5</td><td>+7.1%</td><td>$0.1348/h</td><td>$0.00260 / $0.00391 per GB</td><td>$0.0454</td></tr>
+          <tr><th scope="row">GeForce RTX 4070 Super</th><td>81</td><td>89.7</td><td>+10.7%</td><td>$0.1018/h</td><td>$0.00260 / $0.00391 per GB</td><td>$0.0315</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>The user-provided table supplied the predicted rates.</li>
+        <li>Every measured rate was higher than its prediction.</li>
+        <li>The mean absolute percentage error was 11.7%.</li>
+        <li>Both cost rankings were RTX 4070 Super, RTX 3080 Ti, then RTX 3060.</li>
+        <li>Input is data received by the instance. Output is data sent.</li>
+      </ul>
+
+      <h3>Five-GPU hardware-peak subset</h3>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem 1.25rem">
         <figure class="diagram">
           <svg viewBox="0 0 330 200" style="width:100%;height:auto" role="img" aria-labelledby="panel1-title panel1-desc">
@@ -330,21 +390,26 @@
         <li>The <a href="#kernel-trace">kernel trace</a> measured 0.047% of the GPU time in matrix multiplication.</li>
       </ul>
 
-      <p class="source-locator"><code>scripts/benchmark_ceridwen_vast.py:30-36 · sampler settings</code></p>
-      <pre class="python"><code>SEED = 20260812
+      <div class="source-example">
+        <p class="source-locator"><code>scripts/benchmark_ceridwen_vast.py:30-36 · sampler settings</code></p>
+        <pre class="python"><code>SEED = 20260812
 NUM_LIVE = 300
 NUM_INNER_STEPS = 40
 NUM_DELETE = 25
 REFERENCE_LOGZ_TOL = -3.0
 WARMUP_STEPS = 1
 TIMED_STEPS = 5</code></pre>
+        <p><strong>Documented contract:</strong> Every new GPU used these sampler and timing settings.</p>
+        <p><strong>Why it matters:</strong> The fixed settings make the measured rates directly comparable.</p>
+      </div>
 
-      <p>Evidence: <code>results/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv</code>, the three <code>results/ceridwen_vast_*_joint_full_benchmark_complete_2026-08-26/</code> directories, and <code>results/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/profile.json</code></p>
+      <p>Evidence: <code>results/ceridwen_vast_six_gpu_joint_full_benchmark_summary_2026-08-26.csv</code>, <code>results/ceridwen_vast_predicted_vs_measured_gpu_benchmark_summary_2026-08-26.csv</code>, the six <code>results/ceridwen_vast_*_joint_full_benchmark_complete_2026-08-26/</code> directories, and <code>results/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/profile.json</code></p>
     </section>
 
     <section id="memory">
       <h2>GPU memory</h2>
-      <p>Every GPU type used a similar amount of memory. The Ceridwen calculation peak stayed between 1,460 MiB and 1,610 MiB on all five GPU types.</p>
+      <p>Every GPU type used a similar amount of memory. The Ceridwen calculation peak stayed between 1,460 MiB and 1,610 MiB on all eight GPU types.</p>
+      <p>The RTX 3060, RTX 3080 Ti, and RTX 4070 Super each used a 1,519 MiB calculation peak. The recorded whole-process peaks were 9,260 MiB on the RTX 3080 Ti and 9,164 MiB on the RTX 4070 Super.</p>
       <p>Evidence: <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code> and the benchmark records above</p>
     </section>
 

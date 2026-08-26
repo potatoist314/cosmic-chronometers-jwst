@@ -224,3 +224,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`
 - Change: Grouped the measured-run rows by GPU model, fastest group first, and noted the new order.
+
+## [2026-08-26] query | Predicted and measured Vast GPU rates
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
+- Change: Added RTX 3060, RTX 3080 Ti, and RTX 4070 Super speed, cost, transfer-price, prediction, and memory results.
