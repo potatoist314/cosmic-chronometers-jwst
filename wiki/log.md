@@ -154,3 +154,13 @@
 
 - Pages: `guides/vast-ai-gpu-workflow.html`, `analyses/ceridwen-a100-benchmarks.html`, `index.md`
 - Change: Documented the fixed 5,000-call benchmark, fingerprints, outputs, and comparison command.
+
+## [2026-08-26] query | V100 allocator memory verification
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.md`
+- Change: Recorded two fresh-process JAX peaks, 100 ms NVML traces, and allocator-profile evidence.
+
+## [2026-08-26] query | Concise GPU comparison
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`
+- Change: Reduced the benchmark introduction to one matched hardware and throughput table.

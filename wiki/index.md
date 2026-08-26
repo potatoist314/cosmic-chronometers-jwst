@@ -52,4 +52,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Analyses
 
-- `analyses/ceridwen-a100-benchmarks.html` — Defines the fixed Vast benchmark and compares retained GPU measurements.
+- `analyses/ceridwen-a100-benchmarks.html` — Compares retained GPU timings and verifies V100 JAX memory against NVML traces.

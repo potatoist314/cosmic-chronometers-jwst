@@ -21,140 +21,87 @@
   </header>
   <main class="page-shell" id="main-content">
     <header>
-      <p class="eyebrow">Post-JIT measurements · 25–26 August 2026</p>
       <h1>Ceridwen GPU benchmark</h1>
     </header>
 
-    <section id="contract">
-      <h2>Fixed short workload</h2>
-      <p>The maintained Vast runner uses the joint M1_210210 likelihood.
-      It fixes the data, grid, model, seed, sampler sizes, and timed call
-      count. It rejects summaries with different comparison fingerprints.</p>
-      <div class="source-example">
-        <p class="source-locator"><code>scripts/benchmark_ceridwen_vast.py:23-38 · benchmark contract</code></p>
-        <pre class="python"><code>WORKLOAD_ID = "m1_210210_joint_full_v1"
-TARGET_ID = "M1_210210"
-GRID_ID = "amist_c3k_hr_krou_afe"
-GRID_SCHEMA = "2.1"
-GRID_SHAPE = (5, 13, 107, 10992)
-EXPECTED_PHOTOMETRY_BANDS = 11
-EXPECTED_SPECTRAL_PIXELS = 3523
-SEED = 20260812
-NUM_LIVE = 300
-NUM_INNER_STEPS = 40
-NUM_DELETE = 25
-REFERENCE_LOGZ_TOL = -3.0
-WARMUP_STEPS = 1
-TIMED_STEPS = 5
-CALLS_PER_STEP = NUM_INNER_STEPS * NUM_DELETE
-RESULT_SCHEMA_VERSION = 1</code></pre>
-        <p><strong>Documented contract:</strong> The focused test fixes 11
-        photometric bands, 3,523 spectral pixels, five timed steps, and
-        1,000 calls per step
-        (<code>tests/test_benchmark_ceridwen_vast.py:22-27</code>).</p>
-        <p><strong>Why it matters:</strong> Every GPU performs the same
-        5,000 post-JIT likelihood calls.</p>
-      </div>
-      <ul>
-        <li>The first NSS step compiles the kernel and is not measured.</li>
-        <li>The short run measures speed and memory, not convergence.</li>
-        <li>It does not produce posterior parameter estimates.</li>
-        <li>The log Z tolerance records the reference fit configuration.</li>
-      </ul>
-    </section>
-
     <section id="comparison">
-      <h2>Performance comparison</h2>
+      <h2>Matched result</h2>
       <table>
         <thead>
           <tr>
             <th scope="col">GPU</th>
-            <th scope="col">Provider</th>
-            <th scope="col">Workload</th>
             <th scope="col">Peak FP64</th>
             <th scope="col">Peak bandwidth</th>
             <th scope="col">VRAM</th>
-            <th scope="col">Sampler</th>
-            <th scope="col">Timed iterations / calls</th>
             <th scope="col">Calls/s</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">A100 SXM4</th>
-            <td>Vast.ai</td>
-            <td>Matched full-spectrum iteration</td>
             <td>9.7 TFLOP/s</td>
             <td>1,555 GB/s</td>
             <td>40 GB</td>
-            <td>300 / 40 / 25 / −3</td>
-            <td>1 / 1,000</td>
             <td>126.6</td>
           </tr>
           <tr>
             <th scope="row">V100 SXM2</th>
-            <td>Vast.ai</td>
-            <td>Matched full-spectrum iteration</td>
             <td>7.8 TFLOP/s</td>
             <td>900 GB/s</td>
             <td>32 GB</td>
-            <td>300 / 40 / 25 / −3</td>
-            <td>1 / 1,000</td>
             <td>42.9</td>
-          </tr>
-          <tr>
-            <th scope="row">A100 SXM4</th>
-            <td>Vast.ai</td>
-            <td>Complete integrated fit</td>
-            <td>9.7 TFLOP/s</td>
-            <td>1,555 GB/s</td>
-            <td>40 GB</td>
-            <td>300 / 40 / 25 / −3</td>
-            <td>488 / 488,000</td>
-            <td>118.6</td>
-          </tr>
-          <tr>
-            <th scope="row">A100 40 GB</th>
-            <td>Modal</td>
-            <td>Smoke test</td>
-            <td>9.7 TFLOP/s</td>
-            <td>1,555 GB/s</td>
-            <td>40 GB</td>
-            <td>16 / 2 / 8 / 10,000</td>
-            <td>7 / 112</td>
-            <td>≈112</td>
-          </tr>
-          <tr>
-            <th scope="row">A100 40 GB</th>
-            <td>Modal</td>
-            <td>Complete feature-spectrum fit</td>
-            <td>9.7 TFLOP/s</td>
-            <td>1,555 GB/s</td>
-            <td>40 GB</td>
-            <td>500 / 60 / 100 / −5</td>
-            <td>190 / 1,140,000</td>
-            <td>105.8</td>
-          </tr>
-          <tr>
-            <th scope="row">A100 40 GB</th>
-            <td>Modal</td>
-            <td>Full-spectrum checkpoint</td>
-            <td>9.7 TFLOP/s</td>
-            <td>1,555 GB/s</td>
-            <td>40 GB</td>
-            <td>500 / 60 / 100 / −5</td>
-            <td>145 / 870,000</td>
-            <td>102.5</td>
           </tr>
         </tbody>
       </table>
       <ul>
-        <li>Sampler values are live / inner / delete / log Z tolerance.</li>
-        <li>Calls/s and timed counts exclude the first JIT-compiled iteration.</li>
-        <li>The matched A100 and V100 rows use the same model and iteration.</li>
-        <li>The matched rows predate the five-step fingerprinted runner.</li>
-        <li>V100 JAX peak use: 1.484 GiB; NVML device use: 25.9 GiB.</li>
+        <li>Both GPUs used the same model, data, seed, and sampler.</li>
+        <li>Each timed step made 1,000 likelihood calls.</li>
+        <li>The test excluded the first JIT compilation step.</li>
       </ul>
+    </section>
+
+    <section id="memory-verification">
+      <h2>V100 memory verification</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Fresh process</th>
+            <th scope="col">JAX peak</th>
+            <th scope="col">JAX live at iteration 25</th>
+            <th scope="col">JAX pool</th>
+            <th scope="col">NVML high-water mark</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Run 1</th>
+            <td>1.425680 GiB</td>
+            <td>1.110252 GiB</td>
+            <td>2.005859 GiB</td>
+            <td>4.091797 GiB</td>
+          </tr>
+          <tr>
+            <th scope="row">Run 2</th>
+            <td>1.425684 GiB</td>
+            <td>1.110248 GiB</td>
+            <td>2.005859 GiB</td>
+            <td>4.091797 GiB</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>Both runs used the matched V100 workload, seed 20260812, and 25 NSS iterations.</li>
+        <li><code>XLA_PYTHON_CLIENT_PREALLOCATE=false</code> was set before JAX import.</li>
+        <li>JAX peaks differed by 4,864 bytes, less than 0.001%.</li>
+        <li><strong>Project synthesis:</strong> The 583.3 MiB largest JAX allocation matches the float64 SSP grid.</li>
+        <li>NVML sampled process memory every 100 ms and includes CUDA runtime overhead.</li>
+        <li><strong>Project synthesis:</strong> The 25.9 GiB initial NVML value measured the default reserved allocation, not live JAX buffers.</li>
+      </ul>
+      <p>
+        Evidence:
+        <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code>
+        contains both run logs, 100 ms NVML traces, and JAX profiles.
+      </p>
     </section>
   </main>
   <footer class="site-footer">Updated 26 August 2026</footer>
