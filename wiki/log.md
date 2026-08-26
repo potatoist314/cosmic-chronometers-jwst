@@ -144,3 +144,8 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`
 - Change: Combined GPU specifications and post-JIT throughput in one workload-labelled table.
+
+## [2026-08-26] codebase | Public wiki deployment
+
+- Pages: `.github/workflows/pages.yml`
+- Change: Published reader-facing wiki files through GitHub Pages.
