@@ -17,7 +17,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 - `guides/reading-order.html` — Gives an ordered path through the active Ceridwen workflow.
 - `guides/python-patterns.html` — Python and JAX patterns used here.
 - `guides/vast-ai-gpu-workflow.html` — Explains Vast A100 selection, the tested Croatia host, setup, and saved results.
-- `guides/modal-gpu-workflow.html` — Explains Modal inputs, spawned detached A100 runs, spectrum modes, and persistent outputs.
+- `guides/modal-gpu-workflow.html` — Explains Modal inputs, detached A100 runs, bounded kernel traces, and persistent outputs.
 
 ## Codebase
 
@@ -32,7 +32,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 
 ## Notebooks
 
-- `notebooks/notebook-map.html` — Explains notebook roles, compact spectrum modes, sampler settings, and machine-readable outputs.
+- `notebooks/notebook-map.html` — Explains fitting notebooks, compact spectrum modes, saved HDF5 outputs, and the posterior-report notebook.
 
 ## Sources
 
@@ -52,4 +52,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Analyses
 
-- `analyses/ceridwen-a100-benchmarks.html` — Compares CUDA and tensor paths, measured timings, and verified V100 memory.
+- `analyses/ceridwen-a100-benchmarks.html` — Compares matched RTX 3090, RTX 4090, H100, A100, and V100 results.

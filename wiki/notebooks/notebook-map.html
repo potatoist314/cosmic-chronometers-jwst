@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="notebook">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-25">
+  <meta name="wiki-updated" content="2026-08-26">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -18,7 +18,8 @@
 <h1>Notebook Map</h1>
 <section id="how-to-interpret-this-directory" class="level2">
 <h2>Scope</h2>
-<p>The two Ceridwen notebooks are the current scientific entry points.
+<p>Two Ceridwen notebooks are the current fitting entry points. One
+post-processing notebook presents a completed feature-spectrum result.
 Older inference branches are inactive. The
 <code>notebooks/practice/</code> directory contains the practice
 notebooks. Saved outputs are evidence only when the cell source,
@@ -37,10 +38,11 @@ execution order, inputs, and kernel still match.</p>
 <defs><marker id="notebook-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
 <path d="M50 0 V14 L100 30 M150 0 V14 L100 30 V38" marker-end="url(#notebook-arrow)" />
 </svg>
-<ol class="diagram-sequence" style="--diagram-columns: 3">
+<ol class="diagram-sequence" style="--diagram-columns: 4">
 <li><strong>SedModel</strong><small>Shared forward model</small></li>
 <li><strong>BlackJAX NSS</strong><small>Checkpointed fit</small></li>
 <li><strong>HDF5 result</strong><small>Reloadable posterior</small></li>
+<li><strong>Posterior report</strong><small>Tables and corner plots</small></li>
 </ol>
 <figcaption id="notebook-flow-caption">The notebooks differ in observations but use the same inference path.</figcaption>
 </figure>
@@ -93,6 +95,13 @@ directory contains these files.</p>
 <code>ceridwen_derived_outputs.h5</code>. It contains normalized and
 equal-weight posterior samples, compact and native-grid predictions,
 star-formation histories, summary values, and diagnostics.</p>
+<p><code>ceridwen_feature_spectrum_posterior_report.ipynb</code> reads
+the completed feature-spectrum HDF5 files without rerunning Ceridwen.
+It presents run metadata, 13 one-dimensional marginals, a physical
+corner plot, an age-SFH corner plot, and the SFH beside its age
+posterior. The fit samples seven log-SFR ratios. The report uses the
+400 stored, index-aligned SFH draws to show mass-weighted age as a
+derived posterior quantity.</p>
 </section>
 <section id="practice" class="level2">
 <h2>Practice</h2>
@@ -106,6 +115,7 @@ pipeline.</p>
 <li><code>notebooks/practice/fits-viewer.ipynb</code> records the root
 Python 3.14 kernel.</li>
 <li>The two Ceridwen notebooks record Python 3.11 kernels.</li>
+<li>The posterior report records the project Python 3.14 kernel.</li>
 </ul>
 <p>Kernel choice is part of each notebook’s executable contract.</p>
 </section>

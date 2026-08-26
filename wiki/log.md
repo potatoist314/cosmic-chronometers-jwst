@@ -120,6 +120,11 @@
 - Pages: `guides/modal-gpu-workflow.html`, `index.md`
 - Change: Made batch notebook execution independent of local-entrypoint cancellation and recorded interrupted timing states.
 
+## [2026-08-26] codebase | Feature-spectrum posterior report
+
+- Pages: `notebooks/notebook-map.html`, `index.md`
+- Change: Documented HDF5 posterior tables, parameter marginals, corner plots, and derived mass-weighted age.
+
 ## [2026-08-26] query | Ceridwen A100 benchmark runs
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.html`, `index.md`
@@ -189,3 +194,13 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`
 - Change: Replaced tool labels with plain memory terms and defined each measurement source.
+
+## [2026-08-26] codebase | Modal A100 kernel trace
+
+- Pages: `guides/modal-gpu-workflow.html`, `analyses/ceridwen-a100-benchmarks.html`, `index.md`
+- Change: Documented the fixed post-JIT trace, saved XProf files, and reduction-dominated GPU timing.
+
+## [2026-08-26] query | Matched Vast GPU benchmark
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.md`
+- Change: Added matched RTX 3090, RTX 4090, and H100 speed, cost, and memory results.

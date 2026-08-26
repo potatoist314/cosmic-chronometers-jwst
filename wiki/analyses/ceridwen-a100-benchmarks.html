@@ -24,8 +24,107 @@
       <h1>Ceridwen GPU benchmark</h1>
     </header>
 
+    <section id="vast-3090-4090-h100">
+      <h2>Matched Vast benchmark</h2>
+      <p>This is a short throughput benchmark. It is not a complete posterior fit.</p>
+      <p>Each GPU used grid schema 2.1, 11 photometric bands, and 3,523 spectral pixels.</p>
+      <p>Each row contains five post-JIT steps. These steps made 5,000 likelihood calls.</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">GPU</th>
+            <th scope="col">Ceridwen schema</th>
+            <th scope="col">FP32 peak</th>
+            <th scope="col">FP64 peak</th>
+            <th scope="col">Timed calls</th>
+            <th scope="col">Time</th>
+            <th scope="col">Calls/s</th>
+            <th scope="col">Vast price</th>
+            <th scope="col">Cost per 100,000 calls</th>
+            <th scope="col">Calculation peak</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">GeForce RTX 3090</th>
+            <td>2.1</td>
+            <td>35.6 TFLOP/s</td>
+            <td>0.56 TFLOP/s</td>
+            <td>5,000</td>
+            <td>62.277 s</td>
+            <td>80.3</td>
+            <td>$0.1444/h</td>
+            <td>$0.0500</td>
+            <td>1,519 MiB</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4090</th>
+            <td>2.1</td>
+            <td>82.6 TFLOP/s</td>
+            <td>1.29 TFLOP/s</td>
+            <td>5,000</td>
+            <td>26.735 s</td>
+            <td>187.0</td>
+            <td>$0.3052/h</td>
+            <td>$0.0453</td>
+            <td>1,519 MiB</td>
+          </tr>
+          <tr>
+            <th scope="row">H100 SXM, 80 GB HBM3</th>
+            <td>2.1</td>
+            <td>67 TFLOP/s</td>
+            <td>34 TFLOP/s</td>
+            <td>5,000</td>
+            <td>11.592 s</td>
+            <td>431.3</td>
+            <td>$1.7422/h</td>
+            <td>$0.1122</td>
+            <td>1,519 MiB</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>The RTX 4090 was 2.33 times faster than the RTX 3090.</li>
+        <li>The H100 was 5.37 times faster than the RTX 3090.</li>
+        <li>The H100 was 2.31 times faster than the RTX 4090.</li>
+        <li>The RTX 4090 offer had the lowest cost per call.</li>
+        <li>The cost result applies only to these three Vast offers.</li>
+      </ul>
+      <p>All three files record comparison fingerprint <code>661b6db32dabbdc340b049de8ecfe2cc871473a3203a4bf61994821e17104212</code>.</p>
+
+      <div class="source-example">
+        <p class="source-locator"><code>scripts/benchmark_ceridwen_vast.py:23-36 · fixed benchmark contract</code></p>
+        <pre class="python"><code>WORKLOAD_ID = "m1_210210_joint_full_v1"
+TARGET_ID = "M1_210210"
+GRID_ID = "amist_c3k_hr_krou_afe"
+GRID_SCHEMA = "2.1"
+GRID_SHAPE = (5, 13, 107, 10992)
+EXPECTED_PHOTOMETRY_BANDS = 11
+EXPECTED_SPECTRAL_PIXELS = 3523
+SEED = 20260812
+NUM_LIVE = 300
+NUM_INNER_STEPS = 40
+NUM_DELETE = 25
+REFERENCE_LOGZ_TOL = -3.0
+WARMUP_STEPS = 1
+TIMED_STEPS = 5</code></pre>
+        <p><strong>Documented contract:</strong> The script fixes the model inputs, sampler settings, and timing length.</p>
+        <p><strong>Why it matters:</strong> A GPU change is the main planned difference between rows.</p>
+      </div>
+
+      <p>
+        Hardware evidence:
+        <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/geforce/ampere/pdf/NVIDIA-ampere-GA102-GPU-Architecture-Whitepaper-V1.pdf">NVIDIA Ampere GA102 white paper, pages 10 and 44</a>,
+        <a href="https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf">NVIDIA Ada white paper, pages 7 and 30</a>,
+        and
+        <a href="https://www.nvidia.com/en-eu/data-center/h100/">NVIDIA H100 product specifications</a>.
+        NVIDIA specifies a 1:64 FP64-to-FP32 rate for the RTX architectures.
+      </p>
+      <p>Evidence: <code>results/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv</code></p>
+    </section>
+
     <section id="comparison">
-      <h2>Matched result</h2>
+      <h2>Earlier A100 and V100 result</h2>
       <table>
         <thead>
           <tr>
@@ -116,6 +215,13 @@
             <td>118.6</td>
           </tr>
           <tr>
+            <th scope="row">Modal kernel trace</th>
+            <td>A100 SXM4</td>
+            <td>2.1</td>
+            <td>1 / 1,000</td>
+            <td>127.5</td>
+          </tr>
+          <tr>
             <th scope="row">Smoke test</th>
             <td>A100 40 GB</td>
             <td>2.1</td>
@@ -139,6 +245,49 @@
         </tbody>
       </table>
       <p>The timed values exclude the first JIT compilation step.</p>
+    </section>
+
+    <section id="kernel-trace">
+      <h2>Modal A100 kernel trace</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Measurement</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Post-JIT NSS step</th>
+            <td>7.843 s for 1,000 likelihood calls</td>
+          </tr>
+          <tr>
+            <th scope="row">GPU stream active</th>
+            <td>94.9%</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>input_reduce_fusion_5</code></th>
+            <td>6.984 s across 564 launches; 93.8% of GPU event time</td>
+          </tr>
+          <tr>
+            <th scope="row">Device-to-device copies</th>
+            <td>2.0% of GPU event time</td>
+          </tr>
+          <tr>
+            <th scope="row">FFT kernels</th>
+            <td>1.0% of GPU event time</td>
+          </tr>
+          <tr>
+            <th scope="row">GEMM and dot kernels</th>
+            <td>3.507 ms; 0.047% of GPU event time</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The trace used the matched benchmark model, data, seed, and NSS settings. One warm-up step completed before tracing.</p>
+      <p>The GPU stayed active, but one XLA reduction fusion dominated its work. Host launch gaps and matrix multiplication were small.</p>
+      <p><strong>Project synthesis:</strong> The main bottleneck is the large fused reduction, not GEMM throughput. FP64 tensor cores are unlikely to explain the 2.95-fold A100 advantage.</p>
+      <p>The timeline has no hardware instruction counters. It does not prove whether any kernel issued tensor-core instructions.</p>
+      <p>Evidence: <code>results/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/</code></p>
     </section>
 
     <section id="memory-verification">

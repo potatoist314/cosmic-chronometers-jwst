@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="guide">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-25">
+  <meta name="wiki-updated" content="2026-08-26">
   <title>Modal GPU Workflow</title>
   <link rel="stylesheet" href="../assets/wiki.css">
 </head>
@@ -25,7 +25,7 @@
       <p class="eyebrow">Operational guide</p>
       <h1>Run Ceridwen in a Modal container.</h1>
       <p class="lede">Use batch mode for automatic execution. Use
-      Jupyter mode for interactive cells and kernel controls.</p>
+      trace mode for GPU timing. Use Jupyter mode for interactive cells.</p>
     </header>
 
     <nav id="TOC" aria-label="On this page">
@@ -35,6 +35,7 @@
         <li><a href="#upload">Upload inputs</a></li>
         <li><a href="#batch">Run a batch job</a></li>
         <li><a href="#quick-validation">Validated quick run</a></li>
+        <li><a href="#trace">Trace one sampler step</a></li>
         <li><a href="#jupyter">Use interactive Jupyter</a></li>
         <li><a href="#results">Keep results</a></li>
         <li><a href="#evidence">Evidence</a></li>
@@ -84,7 +85,7 @@
       Ceridwen source and the two active notebooks. It pins the
       sedpy_jax commit that accepts wavelength-dependent input
       resolution. By default, it requests one <code>A100-40GB</code>.</p>
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:56-98</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:60-62</code></p>
       <pre><code>image = (
     modal.Image.debian_slim(python_version="3.11")
     .apt_install("git")</code></pre>
@@ -102,7 +103,7 @@
       checksum.</p>
       <p>The batch and Jupyter containers mount the input Volume as
       read-only. The notebooks cannot change the raw data.</p>
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:301-309</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:357-362</code></p>
       <pre><code>with input_volume.batch_upload(force=True) as batch:
     batch.put_directory(raw_root, "/raw")
 _fetch_grid.remote()
@@ -144,7 +145,7 @@ observation before model projection.</p>
       checkpoints, both HDF5 output files, and execution timing to the
       results Volume.</p>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:300-315 · _execute_notebook</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:309-324 · _execute_notebook</code></p>
       <pre><code>finally:
     execution_completed_at = datetime.now(UTC)
     execution_timing = {
@@ -163,8 +164,8 @@ observation before model projection.</p>
     results_volume.commit()</code></pre>
       <p><strong>Documented contract:</strong> The batch entry point
       documents complete notebook execution on one Modal GPU
-      (<code>scripts/modal_ceridwen.py:330-337</code>). It creates the
-      detached function call at <code>scripts/modal_ceridwen.py:345-356</code>.</p>
+      (<code>scripts/modal_ceridwen.py:365-372</code>). It creates the
+      detached function call at <code>scripts/modal_ceridwen.py:380-389</code>.</p>
       <p><strong>Why it matters:</strong> The <code>finally</code> block
       commits outputs and timing after success or error. The persistent
       Volume outlives the GPU container.</p>
@@ -183,6 +184,26 @@ observation before model projection.</p>
       path. Its posterior-weight ESS was 1.0. Therefore, this run is not
       a scientific fit.</p>
       <p class="source-locator"><code>astro-ceridwen-results/batch-20260825T151156339684Z/ceridwen_test_spectra.executed.ipynb</code></p>
+    </section>
+
+    <section id="trace">
+      <h2>Trace one sampler step</h2>
+      <p>Run one fixed A100-40GB trace:</p>
+      <pre><code>uvx --from modal==1.5.4 modal run \
+  scripts/modal_ceridwen.py::trace</code></pre>
+      <p>The trace uses the matched M1_210210 workload. It initializes
+      300 live points and completes one warm-up step. It then records one
+      BlackJAX NSS step with 1,000 likelihood calls.</p>
+      <p>JAX writes a compressed timeline and an XProf database to the
+      results Volume. The command prints the download and rename commands.</p>
+      <p>Open a downloaded trace locally:</p>
+      <pre><code>uvx --from xprof xprof \
+  --logdir results/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/xprof</code></pre>
+      <p>The 26 August trace measured 127.5 calls/s. One reduction fusion
+      used 93.8% of GPU event time. See the
+      <a href="../analyses/ceridwen-a100-benchmarks.html#kernel-trace">kernel results</a>.</p>
+      <p class="source-locator"><code>scripts/benchmark_ceridwen_vast.py:647-680 · run_traced_step</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:328-351 · _execute_trace</code></p>
     </section>
 
     <section id="jupyter">
@@ -211,7 +232,7 @@ observation before model projection.</p>
       <p>The one-hour limit terminates the Sandbox if the local stop
       path does not run. Use <code>--hours</code> to select a limit of up
       to 24 hours.</p>
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:422-432</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:490-499</code></p>
       <pre><code>gpu=gpu,
 cpu=4,
 memory=16384,
@@ -223,7 +244,7 @@ volumes={
 encrypted_ports=[JUPYTER_PORT],
 workdir=REMOTE_NOTEBOOK_ROOT.as_posix(),</code></pre>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:447-452 · jupyter</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:515-520 · jupyter</code></p>
       <pre><code>try:
     sandbox.wait()
 except KeyboardInterrupt:
@@ -232,7 +253,7 @@ finally:
     sandbox.terminate(wait=True)</code></pre>
       <p><strong>Documented contract:</strong> The entry-point docstring
       defines an attached JupyterLab Sandbox on one Modal GPU
-      (<code>scripts/modal_ceridwen.py:375-382</code>).</p>
+      (<code>scripts/modal_ceridwen.py:443-450</code>).</p>
       <p><strong>Why it matters:</strong> Both normal interruption and errors
       reach <code>terminate</code>, which releases the paid GPU container.</p>
       </div>
@@ -256,21 +277,23 @@ finally:
     <section id="evidence">
       <h2>Evidence</h2>
       <ul>
-        <li><code>scripts/modal_ceridwen.py:19-49</code> defines the
+        <li><code>scripts/modal_ceridwen.py:21-53</code> defines the
         Volume names, default GPU, versions, and notebook choices.</li>
-        <li><code>scripts/modal_ceridwen.py:136-183</code> checks the
+        <li><code>scripts/modal_ceridwen.py:137-192</code> checks the
         catalogues, photometry, spectra, grid shape, and checksum.</li>
-        <li><code>scripts/modal_ceridwen.py:223-253</code> fetches and
+        <li><code>scripts/modal_ceridwen.py:232-262</code> fetches and
         checks the published grid on Modal.</li>
-        <li><code>scripts/modal_ceridwen.py:264-361</code> runs the
+        <li><code>scripts/modal_ceridwen.py:265-325</code> runs the
         bounded batch job and saves the notebook output.</li>
-        <li><code>scripts/modal_ceridwen.py:364-456</code> controls the
+        <li><code>scripts/modal_ceridwen.py:328-428</code> runs and saves
+        the fixed A100 trace.</li>
+        <li><code>scripts/modal_ceridwen.py:431-524</code> controls the
         Jupyter Sandbox, tunnel, timeout, and termination.</li>
         <li><code>astro-ceridwen-results/batch-20260825T151156339684Z/ceridwen_test_spectra.executed.ipynb</code>
         contains the quick-run output on Modal.</li>
       </ul>
     </section>
   </main>
-  <footer class="site-footer">Generated from the live Astro project · Updated 25 August 2026</footer>
+  <footer class="site-footer">Generated from the live Astro project · Updated 26 August 2026</footer>
 </body>
 </html>
