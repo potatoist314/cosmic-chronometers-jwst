@@ -229,3 +229,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Added RTX 3060, RTX 3080 Ti, and RTX 4070 Super speed, cost, transfer-price, prediction, and memory results.
+
+## [2026-08-26] query | Reader-facing benchmark results
+
+- Pages: `AGENTS.md`, `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
+- Change: Removed prediction and workflow bookkeeping from the benchmark page and made measured reader-facing results the wiki rule.

@@ -57,6 +57,18 @@ remain in Markdown. Store shared presentation rules in `assets/wiki.css`.
 - Include the published dense tensor-core FP32 (TF32) peak for every GPU comparison.
 - Include the Ceridwen grid schema in every benchmark row.
 
+### Reader-facing benchmark pages
+
+- Write benchmark pages for a reader who wants the result and its meaning.
+- Show measured performance, cost, memory, comparison conditions, and useful interpretation.
+- Do not show planning estimates, predicted-versus-measured checks, comparison
+  fingerprints, commit hashes, runner hashes, instance IDs, transfer prices,
+  commands, agent workflow, or status history unless the user asks for them.
+- Keep reproducibility bookkeeping in scripts and machine-readable result files.
+- Do not include source-code excerpts on benchmark result pages. Put code teaching
+  in codebase pages or guides.
+- Keep evidence to one short data-source note when it helps the reader.
+
 ### Diagram conventions
 
 - Use a diagram when it makes a flow, branch, hierarchy, or comparison easier
