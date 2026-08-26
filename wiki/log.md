@@ -134,3 +134,13 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`, `AGENTS.md`
 - Change: Removed unrecorded metrics and excluded JIT compilation from throughput figures.
+
+## [2026-08-26] query | Matched V100 benchmark checkpoint
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.html`, `index.md`
+- Change: Recorded matched A100–V100 throughput, JAX peak memory, and the bounded bottleneck inference.
+
+## [2026-08-26] query | Hardware-first GPU benchmark table
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`
+- Change: Combined GPU specifications and post-JIT throughput in one workload-labelled table.
