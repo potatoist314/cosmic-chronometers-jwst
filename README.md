@@ -18,10 +18,9 @@ massive quiescent galaxies.
 ## Ceridwen on Vast.ai
 
 Use a Linux Jupyter+SSH instance with a CUDA 12-compatible image, at least
-12 GB GPU memory, and at least 30 GB disk. Prefer an A100 40 GB for the
-Ceridwen notebooks. Vast host `148498` in Croatia provided a tested-good
-A100 SXM4 40 GB allocation; instance `48652928` completed the quick and full
-fits on 25 August 2026.
+12 GB GPU memory, and at least 30 GB disk. Prefer a consumer RTX card when
+minimizing fit cost. Compare current Vast prices with the measured likelihood
+calls per second because listing prices vary.
 
 Clone the repository into Vast's workspace:
 
