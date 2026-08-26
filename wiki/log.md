@@ -204,3 +204,8 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`, `index.md`
 - Change: Added matched RTX 3090, RTX 4090, and H100 speed, cost, and memory results.
+
+## [2026-08-26] query | Merged GPU benchmark page
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.html`, `index.md`, `guides/modal-gpu-workflow.html`
+- Change: Renamed the A100 benchmark page, grouped every GPU type into one hardware, run, and memory table, and added sourced RTX 3090, RTX 4090, and H100 specifications.

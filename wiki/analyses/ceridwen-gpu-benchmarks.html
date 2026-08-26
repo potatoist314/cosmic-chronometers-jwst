@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="wiki-type" content="analysis">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-26">
+  <title>Ceridwen GPU Benchmarks</title>
+  <link rel="stylesheet" href="../assets/wiki.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="../index.html">
+        <span class="site-mark">AR</span>
+        <span>Astro Research Wiki</span>
+      </a>
+    </div>
+  </header>
+  <main class="page-shell" id="main-content">
+    <header>
+      <h1>Ceridwen GPU benchmark</h1>
+      <p>This page compares five GPU types on Ceridwen likelihood work.</p>
+      <p>Each table holds every GPU type. The tables divide by measurement type.</p>
+    </header>
+
+    <nav aria-label="On this page">
+      <ul>
+        <li><a href="#hardware">GPU hardware</a></li>
+        <li><a href="#runs">Measured runs</a></li>
+        <li><a href="#memory">GPU memory</a></li>
+        <li><a href="#kernel-trace">Modal A100 kernel trace</a></li>
+      </ul>
+    </nav>
+
+    <section id="hardware">
+      <h2>GPU hardware</h2>
+      <p>The rows follow the architecture order: Volta, Ampere, Ada, Hopper.</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">GPU</th>
+            <th scope="col">FP32 cores</th>
+            <th scope="col">FP64 cores</th>
+            <th scope="col">Tensor cores</th>
+            <th scope="col">FP32 peak</th>
+            <th scope="col">TF32 tensor peak</th>
+            <th scope="col">FP64 peak</th>
+            <th scope="col">L2 cache</th>
+            <th scope="col">Memory bandwidth</th>
+            <th scope="col">GPU memory</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">V100 SXM2</th>
+            <td>5,120</td>
+            <td>2,560</td>
+            <td>640, first generation</td>
+            <td>15.7 TFLOP/s</td>
+            <td>Not supported</td>
+            <td>7.8 TFLOP/s</td>
+            <td>6 MB</td>
+            <td>900 GB/s</td>
+            <td>32 GB</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3090</th>
+            <td>10,496</td>
+            <td>164</td>
+            <td>328, third generation</td>
+            <td>35.6 TFLOP/s</td>
+            <td>35.6 TFLOP/s</td>
+            <td>0.56 TFLOP/s</td>
+            <td>6 MB</td>
+            <td>936 GB/s</td>
+            <td>24 GB</td>
+          </tr>
+          <tr>
+            <th scope="row">A100 SXM4</th>
+            <td>6,912</td>
+            <td>3,456</td>
+            <td>432, third generation</td>
+            <td>19.5 TFLOP/s</td>
+            <td>156 TFLOP/s</td>
+            <td>9.7 TFLOP/s</td>
+            <td>40 MB</td>
+            <td>1,555 GB/s</td>
+            <td>40 GB</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4090</th>
+            <td>16,384</td>
+            <td>256</td>
+            <td>512, fourth generation</td>
+            <td>82.6 TFLOP/s</td>
+            <td>82.6 TFLOP/s</td>
+            <td>1.29 TFLOP/s</td>
+            <td>72 MB</td>
+            <td>1,008 GB/s</td>
+            <td>24 GB</td>
+          </tr>
+          <tr>
+            <th scope="row">H100 SXM</th>
+            <td>16,896</td>
+            <td>8,448</td>
+            <td>528, fourth generation</td>
+            <td>67 TFLOP/s</td>
+            <td>494 TFLOP/s</td>
+            <td>34 TFLOP/s</td>
+            <td>50 MB</td>
+            <td>3,350 GB/s</td>
+            <td>80 GB</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>Tensor peaks use dense operations. This page excludes sparsity peaks.</li>
+        <li>Each RTX card holds two FP64 units per SM. The RTX 3090 has 82 SMs. The RTX 4090 has 128 SMs.</li>
+        <li>Each RTX card runs FP64 at 1/64 of its FP32 rate.</li>
+        <li>The A100 and the H100 add an FP64 tensor path. The A100 path reaches 19.5 TFLOP/s. The H100 path reaches 67 TFLOP/s.</li>
+        <li>The V100 and the RTX cards have no FP64 tensor path.</li>
+        <li>The V100 tensor cores accept FP16 inputs. They do not accept TF32 or FP64 inputs.</li>
+        <li>Ceridwen uses FP32 and FP64 data. Ceridwen does not use FP16 data.</li>
+        <li>Core counts do not compare across tensor-core generations.</li>
+        <li>A hardware peak does not prove that XLA selected a tensor-core kernel.</li>
+      </ul>
+      <p><strong>Project synthesis:</strong> This page calculates two values. It calculates the RTX FP64 core counts from the two-per-SM rate and the SM count. It calculates the H100 dense TF32 peak as one half of the published sparsity peak.</p>
+      <p>
+        Hardware evidence:
+        <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/geforce/ampere/pdf/NVIDIA-ampere-GA102-GPU-Architecture-Whitepaper-V1.pdf">NVIDIA Ampere GA102 white paper</a>,
+        Table 9 on pages 44 and 45, and the FP64 note on page 10.
+        <a href="https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf">NVIDIA Ada white paper</a>,
+        Table 2 on pages 29 to 31, and the FP64 note on page 7.
+        <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">NVIDIA A100 architecture white paper</a>,
+        Table 4.
+        <a href="https://images.nvidia.com/content/technologies/volta/pdf/tesla-volta-v100-datasheet-letter-fnl-web.pdf">NVIDIA Tesla V100 data sheet</a>,
+        specifications table.
+        <a href="https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c">NVIDIA H100 architecture white paper</a>,
+        Table 3 on page 39, for the H100 core counts and L2 cache.
+      </p>
+      <p>That H100 white paper marks its throughput values as preliminary. The shipping <a href="https://www.nvidia.com/en-us/data-center/h100/">NVIDIA H100 product specifications</a> give the H100 peaks, bandwidth, and memory size.</p>
+    </section>
+
+    <section id="runs">
+      <h2>Measured runs</h2>
+      <p>One row shows one measured run. A short benchmark is not a complete posterior fit.</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">GPU</th>
+            <th scope="col">Provider</th>
+            <th scope="col">Test</th>
+            <th scope="col">Ceridwen schema</th>
+            <th scope="col">Timed steps / calls</th>
+            <th scope="col">Calls/s</th>
+            <th scope="col">Vast price</th>
+            <th scope="col">Cost per 100,000 calls</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">H100 SXM</th>
+            <td>Vast</td>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>431.3</td>
+            <td>$1.7422/h</td>
+            <td>$0.1122</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4090</th>
+            <td>Vast</td>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>187.0</td>
+            <td>$0.3052/h</td>
+            <td>$0.0453</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3090</th>
+            <td>Vast</td>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>80.3</td>
+            <td>$0.1444/h</td>
+            <td>$0.0500</td>
+          </tr>
+          <tr>
+            <th scope="row">A100 SXM4</th>
+            <td>Modal</td>
+            <td>Kernel trace</td>
+            <td>2.1</td>
+            <td>1 / 1,000</td>
+            <td>127.5</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">A100 SXM4</th>
+            <td>Vast</td>
+            <td>Matched full-spectrum step</td>
+            <td>2.0</td>
+            <td>1 / 1,000</td>
+            <td>126.6</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">V100 SXM2</th>
+            <td>Vast</td>
+            <td>Matched full-spectrum step</td>
+            <td>2.0</td>
+            <td>1 / 1,000</td>
+            <td>42.9</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">A100 SXM4</th>
+            <td>Vast</td>
+            <td>Complete integrated fit</td>
+            <td>2.0</td>
+            <td>488 / 488,000</td>
+            <td>118.6</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">A100 40 GB</th>
+            <td>Modal</td>
+            <td>Smoke test</td>
+            <td>2.1</td>
+            <td>7 / 112</td>
+            <td>approximately 112</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">A100 40 GB</th>
+            <td>Modal</td>
+            <td>Complete feature-spectrum fit</td>
+            <td>2.1</td>
+            <td>190 / 1,140,000</td>
+            <td>105.8</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">A100 40 GB</th>
+            <td>Modal</td>
+            <td>Full-spectrum checkpoint fit</td>
+            <td>2.1</td>
+            <td>145 / 870,000</td>
+            <td>102.5</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>Every row excludes the first JIT compilation step.</li>
+        <li>Only rows with the same test and the same schema compare directly.</li>
+        <li>Each joint fit benchmark row used 11 photometric bands and 3,523 spectral pixels.</li>
+        <li>The three joint fit benchmark runs took 11.592 s, 26.735 s, and 62.277 s.</li>
+        <li>The two matched full-spectrum steps used the same model, data, seed, and sampler.</li>
+        <li>An empty price cell means that the record holds no offer price.</li>
+        <li>Three Modal records name the A100 without a form factor.</li>
+      </ul>
+      <p>The three joint fit benchmark files record one comparison fingerprint:<br>
+      <code>661b6db32dabbdc340b049de8ecfe2cc871473a3203a4bf61994821e17104212</code></p>
+
+      <h3>Speed and cost</h3>
+      <ul>
+        <li>The RTX 4090 was 2.33 times faster than the RTX 3090.</li>
+        <li>The H100 was 5.37 times faster than the RTX 3090.</li>
+        <li>The H100 was 2.31 times faster than the RTX 4090.</li>
+        <li>The A100 was 2.95 times faster than the V100.</li>
+        <li>The RTX 4090 offer had the lowest cost per call.</li>
+        <li>The cost result applies only to these three Vast offers.</li>
+      </ul>
+
+      <div class="source-example">
+        <p class="source-locator"><code>scripts/benchmark_ceridwen_vast.py:23-36 · fixed benchmark contract</code></p>
+        <pre class="python"><code>WORKLOAD_ID = "m1_210210_joint_full_v1"
+TARGET_ID = "M1_210210"
+GRID_ID = "amist_c3k_hr_krou_afe"
+GRID_SCHEMA = "2.1"
+GRID_SHAPE = (5, 13, 107, 10992)
+EXPECTED_PHOTOMETRY_BANDS = 11
+EXPECTED_SPECTRAL_PIXELS = 3523
+SEED = 20260812
+NUM_LIVE = 300
+NUM_INNER_STEPS = 40
+NUM_DELETE = 25
+REFERENCE_LOGZ_TOL = -3.0
+WARMUP_STEPS = 1
+TIMED_STEPS = 5</code></pre>
+        <p><strong>Documented contract:</strong> The script fixes the model inputs, sampler settings, and timing length.</p>
+        <p><strong>Why it matters:</strong> A GPU change is the main planned difference between the joint fit benchmark rows.</p>
+      </div>
+
+      <p>Evidence: <code>results/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv</code>, the three <code>results/ceridwen_vast_*_joint_full_benchmark_complete_2026-08-26/</code> directories, and <code>results/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/profile.json</code></p>
+    </section>
+
+    <section id="memory">
+      <h2>GPU memory</h2>
+      <p>Every value uses MiB. 1,024 MiB make 1 GiB.</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">GPU</th>
+            <th scope="col">Test</th>
+            <th scope="col">Ceridwen schema</th>
+            <th scope="col">Calculation peak</th>
+            <th scope="col">In use</th>
+            <th scope="col">Reserved for reuse</th>
+            <th scope="col">Whole process peak</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">GeForce RTX 3090</th>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>1,519.2</td>
+            <td></td>
+            <td></td>
+            <td>18,426</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4090</th>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>1,519.5</td>
+            <td></td>
+            <td></td>
+            <td>18,524</td>
+          </tr>
+          <tr>
+            <th scope="row">H100 SXM</th>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>1,519.5</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">A100 SXM4</th>
+            <td>Kernel trace</td>
+            <td>2.1</td>
+            <td>1,610.3</td>
+            <td>1,136.4</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">V100 SXM2</th>
+            <td>Memory check, run 1</td>
+            <td>2.0</td>
+            <td>1,459.9</td>
+            <td>1,136.9</td>
+            <td>2,053.9</td>
+            <td>4,190.0</td>
+          </tr>
+          <tr>
+            <th scope="row">V100 SXM2</th>
+            <td>Memory check, run 2</td>
+            <td>2.0</td>
+            <td>1,459.9</td>
+            <td>1,136.9</td>
+            <td>2,053.9</td>
+            <td>4,190.0</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>JAX runs Ceridwen calculations on the GPU. JAX reported the calculation peak, the memory in use, and the memory reserved for reuse.</li>
+        <li>NVML is the NVIDIA GPU monitor. NVML reported the whole process peak. That value includes JAX and the NVIDIA support software.</li>
+        <li>The V100 rows report the memory in use after step 25. The A100 row reports the memory in use at the end of the trace.</li>
+        <li>JAX did not reserve most GPU memory at start.</li>
+        <li>The two V100 calculation peaks differ by less than 0.001%.</li>
+        <li>An empty cell means that the record holds no such value.</li>
+      </ul>
+      <p>Evidence: <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code> and the joint fit benchmark records above</p>
+    </section>
+
+    <section id="kernel-trace">
+      <h2>Modal A100 kernel trace</h2>
+      <p>The trace used the joint fit benchmark model, data, seed, and sampler settings. One warm-up step ran before the trace.</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Measurement</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Post-JIT NSS step</th>
+            <td>7.843 s for 1,000 likelihood calls</td>
+          </tr>
+          <tr>
+            <th scope="row">GPU stream active</th>
+            <td>94.9%</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>input_reduce_fusion_5</code></th>
+            <td>6.984 s across 564 launches, or 93.8% of GPU event time</td>
+          </tr>
+          <tr>
+            <th scope="row">Device-to-device copies</th>
+            <td>2.0% of GPU event time</td>
+          </tr>
+          <tr>
+            <th scope="row">FFT kernels</th>
+            <td>1.0% of GPU event time</td>
+          </tr>
+          <tr>
+            <th scope="row">GEMM and dot kernels</th>
+            <td>3.507 ms, or 0.047% of GPU event time</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The GPU stayed active. One XLA reduction fusion used most of the GPU time. Host launch gaps and matrix multiplication used little GPU time.</p>
+      <p><strong>Project synthesis:</strong> The large fused reduction limits the speed. GEMM throughput does not limit the speed. FP64 tensor cores are unlikely to explain the 2.95-fold A100 advantage over the V100.</p>
+      <p>The timeline holds no hardware instruction counters. It does not show whether a kernel issued tensor-core instructions.</p>
+      <p>Evidence: <code>results/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/</code></p>
+    </section>
+  </main>
+  <footer class="site-footer">Updated 26 August 2026</footer>
+</body>
+</html>

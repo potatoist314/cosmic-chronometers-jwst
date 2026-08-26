@@ -52,4 +52,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Analyses
 
-- `analyses/ceridwen-a100-benchmarks.html` — Compares matched RTX 3090, RTX 4090, H100, A100, and V100 results.
+- `analyses/ceridwen-gpu-benchmarks.html` — Compares V100, RTX 3090, A100, RTX 4090, and H100 hardware, runs, and memory.
