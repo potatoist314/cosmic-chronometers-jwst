@@ -164,3 +164,8 @@
 
 - Pages: `analyses/ceridwen-a100-benchmarks.html`
 - Change: Reduced the benchmark introduction to one matched hardware and throughput table.
+
+## [2026-08-26] query | FP32 GPU comparison
+
+- Pages: `analyses/ceridwen-a100-benchmarks.html`, `AGENTS.md`
+- Change: Added peak FP32 throughput and made it a required GPU comparison field.
