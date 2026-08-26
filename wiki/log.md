@@ -249,3 +249,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`
 - Change: Moved the cost column to one million calls and added marked price estimates for the Vast A100 and V100 runs.
+
+## [2026-08-26] codebase | Four-GPU production sampler profile
+
+- Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
+- Change: Recorded the 300-live-point BlackJAX NSS profile with 40 slice steps, 25 deletions, and `logZ_tol=-3`.
