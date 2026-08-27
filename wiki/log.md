@@ -259,3 +259,8 @@
 
 - Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
 - Change: Documented on-demand JAX allocation, 8 GB benchmark support, and schema-v1 comparison compatibility.
+
+## [2026-08-27] codebase | Joint posterior corner plots
+
+- Pages: `notebooks/notebook-map.html`, `index.md`
+- Change: Documented aligned posterior rows and both stable corner-plot filenames.
