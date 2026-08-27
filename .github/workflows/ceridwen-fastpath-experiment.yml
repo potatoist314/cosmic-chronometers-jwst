@@ -22,34 +22,6 @@ permissions:
   contents: read
 
 jobs:
-  credential-probe:
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-    env:
-      VAST_API_KEY: ${{ secrets.VAST_API_KEY }}
-      VASTAI_API_KEY: ${{ secrets.VASTAI_API_KEY }}
-      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
-      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
-    steps:
-      - name: Report credential availability without revealing values
-        shell: bash
-        run: |
-          if [[ -n "$VAST_API_KEY" ]]; then
-            echo "VAST_API_KEY=present"
-          else
-            echo "VAST_API_KEY=absent"
-          fi
-          if [[ -n "$VASTAI_API_KEY" ]]; then
-            echo "VASTAI_API_KEY=present"
-          else
-            echo "VASTAI_API_KEY=absent"
-          fi
-          if [[ -n "$MODAL_TOKEN_ID" && -n "$MODAL_TOKEN_SECRET" ]]; then
-            echo "MODAL_CREDENTIALS=present"
-          else
-            echo "MODAL_CREDENTIALS=absent"
-          fi
-
   cpu-validation:
     runs-on: ubuntu-latest
     timeout-minutes: 15
