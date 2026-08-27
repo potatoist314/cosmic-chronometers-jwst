@@ -5,10 +5,11 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 ENV_DIR="${PROJECT_ROOT}/.venv-ceridwen-gpu"
 PYTHON_BIN="${ENV_DIR}/bin/python"
+PYTHON_VERSION="3.11.16"
 JAX_VERSION="0.10.2"
 TFP_NIGHTLY_VERSION="0.26.0.dev20260810"
 SEDPY_JAX_COMMIT="0291d58bd86fc0e401b2cdd8beae25d994d1ba0e"
-MINIMUM_GPU_MEMORY_MIB=12000
+MINIMUM_GPU_MEMORY_MIB="${CERIDWEN_MIN_GPU_MEMORY_MIB:-12000}"
 
 # Use the CUDA libraries installed with JAX, not Vast's system CUDA libraries.
 unset LD_LIBRARY_PATH
@@ -29,7 +30,7 @@ GPU_MEMORY_MIB="$(
         | tr -d ' '
 )"
 if (( GPU_MEMORY_MIB < MINIMUM_GPU_MEMORY_MIB )); then
-    echo "GPU has ${GPU_MEMORY_MIB} MiB; notebook 07 requires at least 12000 MiB." >&2
+    echo "GPU has ${GPU_MEMORY_MIB} MiB; this run requires at least ${MINIMUM_GPU_MEMORY_MIB} MiB." >&2
     exit 1
 fi
 
@@ -44,9 +45,9 @@ else
     UV_BIN="$(python3 -m site --user-base)/bin/uv"
 fi
 
-"${UV_BIN}" python install 3.11
+"${UV_BIN}" python install "${PYTHON_VERSION}"
 if [[ ! -x "${PYTHON_BIN}" ]]; then
-    "${UV_BIN}" venv "${ENV_DIR}" --python 3.11
+    "${UV_BIN}" venv "${ENV_DIR}" --python "${PYTHON_VERSION}"
 fi
 
 "${UV_BIN}" pip install --python "${PYTHON_BIN}" \
