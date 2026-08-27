@@ -203,6 +203,8 @@ def _validate_csp(csp: Any, mode: str) -> None:
 
 def install_sfh_basis_fastpath(csp: Any, mode: str) -> FastpathState:
     """Replace one compatible CSP instance's source-spectrum implementation."""
+    if hasattr(csp, "_experimental_sfh_basis_fastpath"):
+        raise ValueError("a Ceridwen fast path is already installed on this CSP")
     _validate_csp(csp, mode)
     original_get_spectrum = csp.get_spectrum
     step_operator = None
