@@ -35,7 +35,7 @@
   <main class="page-shell" id="main-content">
     <header>
       <h1>Ceridwen GPU benchmark</h1>
-      <p>This page compares nine GPU types on Ceridwen likelihood work.</p>
+      <p>This page compares thirteen GPU types on Ceridwen likelihood work.</p>
     </header>
 
     <section id="runs">
@@ -70,6 +70,17 @@
             <td>$1.122</td>
           </tr>
           <tr>
+            <th scope="row">GeForce RTX 5080</th>
+            <td>56.3 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>253.1</td>
+            <td>$0.1608/h</td>
+            <td>$0.177</td>
+          </tr>
+          <tr>
             <th scope="row">GeForce RTX 4090</th>
             <td>82.6 TFLOP/s</td>
             <td>Vast</td>
@@ -79,6 +90,17 @@
             <td>187.0</td>
             <td>$0.3052/h</td>
             <td>$0.453</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5070</th>
+            <td>30.8 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>180.6</td>
+            <td>$0.1206/h</td>
+            <td>$0.185</td>
           </tr>
           <tr>
             <th scope="row">A100 SXM4</th>
@@ -145,6 +167,28 @@
             <td>102.5</td>
             <td></td>
             <td></td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5070 Ti</th>
+            <td>43.9 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool, 250 W host</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>116.8</td>
+            <td>$0.1147/h</td>
+            <td>$0.273</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5060 Ti</th>
+            <td>23.7 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>111.6</td>
+            <td>$0.0814/h</td>
+            <td>$0.203</td>
           </tr>
           <tr>
             <th scope="row">GeForce RTX 4070 Super</th>
@@ -323,8 +367,9 @@
 
     <section id="memory">
       <h2>GPU memory</h2>
-      <p>Every GPU type used a similar amount of memory. The Ceridwen calculation peak stayed between 1,460 MiB and 1,610 MiB on all nine GPU types.</p>
+      <p>Every GPU type used a similar amount of memory. The Ceridwen calculation peak stayed between 1,460 MiB and 1,610 MiB on all thirteen GPU types.</p>
       <p>The RTX 3060, RTX 3080 Ti, and RTX 4070 Super each used a 1,519 MiB calculation peak. The recorded whole-process peaks were 9,260 MiB on the RTX 3080 Ti and 9,164 MiB on the RTX 4070 Super.</p>
+      <p>The 50% RTX 5070, RTX 5070 Ti, and RTX 5080 runs each used a 1,519 MiB calculation peak. Whole-process memory was 6,180 MiB, 8,278 MiB, and 8,304 MiB.</p>
       <p>The 8 GB RTX 3070 completed with both allocators. The 50% pool used 4,152 MiB process memory; on-demand allocation used 2,344 MiB.</p>
       <p>Evidence: <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code> and the benchmark records above</p>
     </section>

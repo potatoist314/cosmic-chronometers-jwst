@@ -274,3 +274,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Added matched RTX 3070 results for on-demand and 50% pooled JAX allocation.
+
+## [2026-08-27] query | Blackwell RTX 50-series benchmarks
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
+- Change: Added measured RTX 5060 Ti, RTX 5070, RTX 5070 Ti, and RTX 5080 speed, cost, and memory results.
