@@ -14,7 +14,7 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY_URL = "https://github.com/potatoist314/cosmic-chronometers-jwst.git"
@@ -54,6 +54,20 @@ SSH_TIMEOUT_SECONDS = 600
 SSH_POLL_SECONDS = 15
 BOOTSTRAP_TIMEOUT_SECONDS = 3600
 BENCHMARK_TIMEOUT_SECONDS = 3600
+
+MAX_ADDITIONAL_SPEND_USD = 10.0
+PREFERRED_BENCHMARK_GPU = "RTX 5060"
+STALL_RETRY_AFTER_SECONDS = 5 * 60
+MAX_STALL_RETRIES = 1
+REQUIRED_ENVIRONMENT_METADATA = (
+    "benchmark_commit",
+    "cuda_version",
+    "gpu_name",
+    "instance_id",
+    "jax_version",
+    "jaxlib_version",
+    "python_version",
+)
 
 # Already measured with this workload; the sweep covers everything else.
 BENCHMARKED_GPU_NAMES = (
@@ -95,6 +109,67 @@ class RunRecord:
 
     def as_dict(self) -> dict[str, Any]:
         return {key: value for key, value in vars(self).items()}
+
+
+@dataclass(frozen=True)
+class OfferSelection:
+    """Describe one suitable offer and its complete projected added cost."""
+
+    offer_id: int
+    gpu_name: str
+    projected_total_additional_cost_usd: float
+    offer: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class BenchmarkPlan:
+    """Bind one three-path benchmark plan to one exact Vast instance."""
+
+    instance_id: int
+    offer_id: int
+    gpu_name: str
+    projected_total_additional_cost_usd: float
+    benchmark_paths: tuple[str, str, str]
+    required_artifacts: tuple[str, ...]
+    spend_cap_usd: float = MAX_ADDITIONAL_SPEND_USD
+
+    @property
+    def projected_spend_by_instance(self) -> dict[int, float]:
+        return {self.instance_id: self.projected_total_additional_cost_usd}
+
+
+@dataclass(frozen=True)
+class BenchmarkObservation:
+    """Record progress evidence for one path on one instance and GPU."""
+
+    benchmark_path: str
+    instance_id: int
+    gpu_name: str
+    gpu_utilization_percent: float
+    result_markers: tuple[int, ...]
+    completed: bool
+
+
+@dataclass(frozen=True)
+class CopyManifestEntry:
+    """Record source and copied SHA-256 values for one result artifact."""
+
+    path: str
+    source_sha256: str
+    copied_sha256: str
+
+
+@dataclass(frozen=True)
+class BenchmarkLifecycle:
+    """Hold mocked lifecycle evidence used to approve benchmark success."""
+
+    observations: tuple[BenchmarkObservation, ...]
+    actual_spend_by_instance: dict[int, float]
+    copy_manifest: tuple[CopyManifestEntry, ...]
+    environment_metadata: dict[str, str]
+    retries_used: int
+    terminated_instance_id: int | None
+    termination_confirmed: bool
 
 
 def _vastai(arguments: list[str], timeout: float = 180.0) -> str:
@@ -148,6 +223,207 @@ def offer_satisfies_constraints(offer: dict[str, Any]) -> bool:
         and int(offer.get("compute_cap", 0)) >= MINIMUM_COMPUTE_CAPABILITY
         and int(offer.get("direct_port_count", 0)) >= MINIMUM_DIRECT_PORTS
     )
+
+
+def select_benchmark_offer(
+    offers: list[dict[str, Any]],
+    *,
+    projected_runtime_hours: float,
+    projected_fixed_cost_usd: float = 0.0,
+    spend_cap_usd: float = MAX_ADDITIONAL_SPEND_USD,
+) -> OfferSelection:
+    """Choose one under-cap offer, preferring a suitable RTX 5060."""
+    if projected_runtime_hours <= 0:
+        raise SweepError("projected runtime must be positive")
+    if projected_fixed_cost_usd < 0:
+        raise SweepError("projected fixed cost cannot be negative")
+    if not 0 < spend_cap_usd <= MAX_ADDITIONAL_SPEND_USD:
+        raise SweepError("the benchmark spend cap must be between USD 0 and USD 10")
+
+    candidates: list[OfferSelection] = []
+    for candidate in offers:
+        if not offer_satisfies_constraints(candidate):
+            continue
+        projected_cost = (
+            float(candidate["dph_total"]) * projected_runtime_hours
+            + projected_fixed_cost_usd
+        )
+        if projected_cost <= spend_cap_usd:
+            candidates.append(
+                OfferSelection(
+                    offer_id=int(candidate["id"]),
+                    gpu_name=str(candidate["gpu_name"]),
+                    projected_total_additional_cost_usd=projected_cost,
+                    offer=dict(candidate),
+                )
+            )
+
+    if not candidates:
+        raise SweepError("no suitable benchmark offer fits the USD 10 spend cap")
+    preferred = [
+        candidate
+        for candidate in candidates
+        if candidate.gpu_name == PREFERRED_BENCHMARK_GPU
+    ]
+    pool = preferred or candidates
+    return min(
+        pool,
+        key=lambda candidate: (
+            candidate.projected_total_additional_cost_usd,
+            candidate.offer_id,
+        ),
+    )
+
+
+def build_benchmark_plan(
+    selection: OfferSelection,
+    *,
+    instance_id: int,
+    benchmark_paths: tuple[str, str, str],
+    required_artifacts: tuple[str, ...],
+    spend_cap_usd: float = MAX_ADDITIONAL_SPEND_USD,
+) -> BenchmarkPlan:
+    """Bind the selected offer and all required evidence to one instance."""
+    if instance_id <= 0:
+        raise SweepError("instance ID must be positive")
+    if not 0 < spend_cap_usd <= MAX_ADDITIONAL_SPEND_USD:
+        raise SweepError("the benchmark spend cap must be between USD 0 and USD 10")
+    if selection.projected_total_additional_cost_usd > spend_cap_usd:
+        raise SweepError("projected benchmark spend exceeds the spend cap")
+    if (
+        len(set(benchmark_paths)) != 3
+        or benchmark_paths[0] != "baseline"
+    ):
+        raise SweepError("the plan must contain baseline and two distinct fast paths")
+    if not required_artifacts or len(set(required_artifacts)) != len(
+        required_artifacts
+    ):
+        raise SweepError("required artifacts must be a non-empty unique list")
+    return BenchmarkPlan(
+        instance_id=instance_id,
+        offer_id=selection.offer_id,
+        gpu_name=selection.gpu_name,
+        projected_total_additional_cost_usd=(
+            selection.projected_total_additional_cost_usd
+        ),
+        benchmark_paths=benchmark_paths,
+        required_artifacts=required_artifacts,
+        spend_cap_usd=spend_cap_usd,
+    )
+
+
+def stalled_benchmark_action(
+    *,
+    planned_instance_id: int,
+    observed_instance_id: int,
+    stalled_seconds: float,
+    retries_used: int,
+) -> Literal["wait", "retry", "abort"]:
+    """Allow one retry after five stalled minutes on the planned instance."""
+    if observed_instance_id != planned_instance_id:
+        raise SweepError("lifecycle record belongs to an unrelated instance ID")
+    if stalled_seconds < 0 or retries_used < 0:
+        raise SweepError("stall duration and retry count cannot be negative")
+    if stalled_seconds < STALL_RETRY_AFTER_SECONDS:
+        return "wait"
+    if retries_used < MAX_STALL_RETRIES:
+        return "retry"
+    return "abort"
+
+
+def spend_by_instance(
+    plan: BenchmarkPlan,
+    lifecycle: BenchmarkLifecycle,
+) -> dict[int, dict[str, float]]:
+    """Return projected and actual spend keyed by the exact planned instance."""
+    if set(lifecycle.actual_spend_by_instance) != {plan.instance_id}:
+        raise SweepError("spend record contains an unrelated instance ID")
+    actual_spend = float(lifecycle.actual_spend_by_instance[plan.instance_id])
+    if actual_spend < 0:
+        raise SweepError("actual spend cannot be negative")
+    return {
+        plan.instance_id: {
+            "projected_usd": plan.projected_total_additional_cost_usd,
+            "actual_usd": actual_spend,
+        }
+    }
+
+
+def _is_sha256(value: str) -> bool:
+    return len(value) == 64 and all(
+        character in "0123456789abcdef" for character in value
+    )
+
+
+def validate_benchmark_success(
+    plan: BenchmarkPlan,
+    lifecycle: BenchmarkLifecycle,
+) -> None:
+    """Require complete same-instance evidence before declaring success."""
+    spend = spend_by_instance(plan, lifecycle)[plan.instance_id]
+    if spend["projected_usd"] > plan.spend_cap_usd:
+        raise SweepError("projected benchmark spend exceeds the spend cap")
+    if spend["actual_usd"] > plan.spend_cap_usd:
+        raise SweepError("actual benchmark spend exceeds the spend cap")
+    if not 0 <= lifecycle.retries_used <= MAX_STALL_RETRIES:
+        raise SweepError("the lifecycle used more than one retry")
+
+    completed_by_path: dict[str, list[BenchmarkObservation]] = {
+        path: [] for path in plan.benchmark_paths
+    }
+    for observation in lifecycle.observations:
+        if observation.instance_id != plan.instance_id:
+            raise SweepError("benchmark record contains an unrelated instance ID")
+        if observation.gpu_name != plan.gpu_name:
+            raise SweepError("baseline and fast paths did not use the same GPU")
+        if observation.benchmark_path not in completed_by_path:
+            raise SweepError("benchmark record contains an unplanned path")
+        if observation.completed:
+            completed_by_path[observation.benchmark_path].append(observation)
+
+    for path, observations in completed_by_path.items():
+        if len(observations) != 1:
+            raise SweepError(f"benchmark path {path!r} lacks one completed record")
+        observation = observations[0]
+        if observation.gpu_utilization_percent <= 0:
+            raise SweepError(f"benchmark path {path!r} has no GPU-use evidence")
+        if (
+            len(observation.result_markers) < 2
+            or observation.result_markers[-1] <= observation.result_markers[0]
+        ):
+            raise SweepError(f"benchmark path {path!r} has no advancing results")
+
+    manifest_by_path: dict[str, CopyManifestEntry] = {}
+    for entry in lifecycle.copy_manifest:
+        if entry.path in manifest_by_path:
+            raise SweepError(f"copy manifest repeats {entry.path!r}")
+        manifest_by_path[entry.path] = entry
+        if not _is_sha256(entry.source_sha256) or not _is_sha256(
+            entry.copied_sha256
+        ):
+            raise SweepError(f"copy manifest has an invalid hash for {entry.path!r}")
+        if entry.source_sha256 != entry.copied_sha256:
+            raise SweepError(f"copied artifact failed integrity check: {entry.path}")
+    missing_artifacts = set(plan.required_artifacts) - manifest_by_path.keys()
+    if missing_artifacts:
+        raise SweepError(f"copy manifest is incomplete: {sorted(missing_artifacts)}")
+
+    missing_metadata = [
+        key
+        for key in REQUIRED_ENVIRONMENT_METADATA
+        if not lifecycle.environment_metadata.get(key)
+    ]
+    if missing_metadata:
+        raise SweepError(f"environment metadata is incomplete: {missing_metadata}")
+    if lifecycle.environment_metadata["gpu_name"] != plan.gpu_name:
+        raise SweepError("environment metadata names a different GPU")
+    if lifecycle.environment_metadata["instance_id"] != str(plan.instance_id):
+        raise SweepError("environment metadata names an unrelated instance ID")
+    if (
+        lifecycle.terminated_instance_id != plan.instance_id
+        or not lifecycle.termination_confirmed
+    ):
+        raise SweepError("exact-instance termination is not confirmed")
 
 
 def market_rate_usd_per_hour(offers: list[dict[str, Any]]) -> float:
