@@ -5,16 +5,16 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
 from pathlib import Path
 from typing import Any
 
+if __package__:
+    from . import benchmark_ceridwen_vast as benchmark
+else:
+    import benchmark_ceridwen_vast as benchmark
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from scripts import benchmark_ceridwen_vast as benchmark
-
+EXPERIMENT_ID = "ceridwen_sfh_basis_fastpath_v1"
 IMPLEMENTATIONS = (
     "baseline",
     "corners",
@@ -93,47 +93,69 @@ def _compare_predictions(
     }
 
 
+def _base_implementation(mode: str) -> dict[str, Any]:
+    fastpath_path = Path(__file__).with_name("ceridwen_sfh_basis_fastpath.py")
+    return {
+        "experiment_id": EXPERIMENT_ID,
+        "mode": mode,
+        "harness_sha256": benchmark._sha256(Path(__file__).resolve()),
+        "fastpath_source_sha256": benchmark._sha256(fastpath_path),
+        "basis_shape": None,
+        "basis_bytes": 0,
+        "source_verification": None,
+        "prediction_verification": None,
+    }
+
+
 def _install_and_verify(workload: Any, mode: str) -> dict[str, Any]:
     """Install one implementation and prove it matches the dense model."""
+    implementation = _base_implementation(mode)
     if mode == "baseline":
-        return {
-            "mode": mode,
-            "basis_shape": None,
-            "basis_bytes": 0,
-            "source_verification": None,
-            "prediction_verification": None,
-        }
+        return implementation
 
     import jax
 
-    from scripts.ceridwen_sfh_basis_fastpath import (
-        install_sfh_basis_fastpath,
-        verify_sfh_basis_fastpath,
-    )
+    if __package__:
+        from .ceridwen_sfh_basis_fastpath import (
+            install_sfh_basis_fastpath,
+            verify_sfh_basis_fastpath,
+        )
+    else:
+        from ceridwen_sfh_basis_fastpath import (
+            install_sfh_basis_fastpath,
+            verify_sfh_basis_fastpath,
+        )
 
     model = workload.model
     free_thetas = _verification_free_thetas(model)
-    references = [jax.block_until_ready(model.predict(theta)) for theta in free_thetas]
+    references = [
+        jax.block_until_ready(model.predict(theta)) for theta in free_thetas
+    ]
 
     state = install_sfh_basis_fastpath(model.csp, mode)
     model_thetas = [model.apply_transforms(theta) for theta in free_thetas]
     source_verification = verify_sfh_basis_fastpath(model.csp, model_thetas)
-    candidates = [jax.block_until_ready(model.predict(theta)) for theta in free_thetas]
+    candidates = [
+        jax.block_until_ready(model.predict(theta)) for theta in free_thetas
+    ]
     prediction_verification = _compare_predictions(references, candidates)
 
-    return {
-        "mode": mode,
-        "basis_shape": state.basis_shape,
-        "basis_bytes": state.basis_bytes,
-        "source_verification": source_verification,
-        "prediction_verification": prediction_verification,
-    }
+    implementation.update(
+        {
+            "basis_shape": state.basis_shape,
+            "basis_bytes": state.basis_bytes,
+            "source_verification": source_verification,
+            "prediction_verification": prediction_verification,
+        }
+    )
+    return implementation
 
 
 def _implementation_from_record(record: dict[str, Any]) -> dict[str, Any]:
     return record.get("runtime", {}).get(
         "ceridwen_fastpath",
         {
+            "experiment_id": EXPERIMENT_ID,
             "mode": "baseline",
             "basis_shape": None,
             "basis_bytes": 0,
