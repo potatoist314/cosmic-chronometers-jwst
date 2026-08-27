@@ -20,16 +20,15 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY_URL = "https://github.com/potatoist314/cosmic-chronometers-jwst.git"
 REMOTE_ROOT = "/workspace/cosmic-chronometers-jwst"
 
-# The six published rows share this fingerprint. A run that reports a different
-# one cannot be summarized with them, so the sweep pins every input that feeds
-# it: the benchmark script blob, the ceridwen submodule, and the environment.
+# Schema-v1 published rows normalize to this schema-v2 comparison fingerprint.
+# Script and allocator changes remain provenance, not workload identity.
 REFERENCE_FINGERPRINT = (
-    "661b6db32dabbdc340b049de8ecfe2cc871473a3203a4bf61994821e17104212"
+    "26b63c693d339d9093e68b311df48719ee5697555522b13bf8e85dc0521735cc"
 )
 BENCHMARK_SCRIPT = "scripts/benchmark_ceridwen_vast.py"
-BENCHMARK_SCRIPT_COMMIT = "9e6cd5f"
+BENCHMARK_SCRIPT_COMMIT = "30f3fc0"
 BENCHMARK_SCRIPT_SHA256 = (
-    "48d4d573919ab5f8557e2de72b78425ef93c1bfecea77373cdf3da1e6163a119"
+    "1fb69b1c89ec54afb82383d75991c8b801f7afa99a756bbb75c98b20e400fd75"
 )
 
 DEFAULT_IMAGE = "vastai/pytorch:cuda-12.8.1-auto"

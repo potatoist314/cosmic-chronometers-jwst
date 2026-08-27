@@ -27,10 +27,10 @@ def offer(**overrides) -> dict:
 
 def test_reference_fingerprint_matches_published_runs() -> None:
     assert sweep.REFERENCE_FINGERPRINT == (
-        "661b6db32dabbdc340b049de8ecfe2cc871473a3203a4bf61994821e17104212"
+        "26b63c693d339d9093e68b311df48719ee5697555522b13bf8e85dc0521735cc"
     )
     assert sweep.BENCHMARK_SCRIPT_SHA256 == (
-        "48d4d573919ab5f8557e2de72b78425ef93c1bfecea77373cdf3da1e6163a119"
+        "1fb69b1c89ec54afb82383d75991c8b801f7afa99a756bbb75c98b20e400fd75"
     )
 
 
@@ -61,6 +61,10 @@ def test_inet_cost_boundary_is_inclusive() -> None:
     assert sweep.offer_satisfies_constraints(
         offer(internet_down_cost_per_tb=5.0, internet_up_cost_per_tb=5.0)
     )
+
+
+def test_eight_gib_gpu_is_eligible() -> None:
+    assert sweep.offer_satisfies_constraints(offer(gpu_ram=8192))
 
 
 def test_market_rate_uses_every_listed_offer() -> None:

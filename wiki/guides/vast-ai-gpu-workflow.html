@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="guide">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-26">
+  <meta name="wiki-updated" content="2026-08-27">
   <title>Vast.ai GPU Workflow</title>
   <link rel="stylesheet" href="../assets/wiki.css">
 </head>
@@ -160,10 +160,18 @@ PY
       <p>The workload uses M1_210210, 11 photometric bands, and 3,523
       spectral pixels. It compiles one warm-up step. It then times five
       steps with 1,000 likelihood calls each.</p>
+      <p>The runner disables JAX's 75% memory reservation before it
+      imports JAX. The Vast sweep therefore accepts 8 GB GPUs for this
+      benchmark.</p>
       <p>The runner saves JSON, CSV, and text results. It records input
       checksums, code versions, GPU metadata, memory use, throughput, and
       cost. The short run measures performance. It does not estimate a
       posterior.</p>
+      <p>The comparison fingerprint includes the workload, inputs,
+      Ceridwen version, and software versions. Allocator settings and the
+      script checksum remain provenance fields. They do not split
+      otherwise equal runs. The summary command also accepts verified
+      schema-v1 results.</p>
       <p>Copy each result directory to the local project before you stop
       the instance. The summary command rejects files with different
       comparison fingerprints.</p>
@@ -270,15 +278,19 @@ path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
         pins one target process to each physical GPU.</li>
         <li><code>scripts/run_ceridwen_vast_multi_gpu.py:188-265</code>
         retains isolated outputs and completes the run manifest.</li>
-        <li><code>scripts/benchmark_ceridwen_vast.py:23-38</code> fixes the
+        <li><code>scripts/benchmark_ceridwen_vast.py:23-39</code> fixes the
         workload and sampler sizes.</li>
-        <li><code>scripts/benchmark_ceridwen_vast.py:583-634</code> excludes
+        <li><code>scripts/benchmark_ceridwen_vast.py:662-713</code> excludes
         one warm-up step and measures five later steps.</li>
+        <li><code>scripts/benchmark_ceridwen_vast.py:770-775</code> disables
+        JAX preallocation before JAX initializes CUDA.</li>
+        <li><code>scripts/benchmark_ceridwen_vast.py:154-216</code> defines
+        schema-v2 and legacy comparison fingerprints.</li>
         <li><code>.gitignore:23-24</code> keeps the LEGA-C spectra out of
         Git.</li>
       </ul>
     </section>
   </main>
-  <footer class="site-footer">Generated from the live Astro project · Updated 26 August 2026</footer>
+  <footer class="site-footer">Generated from the live Astro project · Updated 27 August 2026</footer>
 </body>
 </html>

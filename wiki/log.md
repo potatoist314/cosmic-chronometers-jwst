@@ -254,3 +254,8 @@
 
 - Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
 - Change: Recorded the 300-live-point BlackJAX NSS profile with 40 slice steps, 25 deletions, and `logZ_tol=-3`.
+
+## [2026-08-27] codebase | Eight-GB Vast benchmark
+
+- Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
+- Change: Documented on-demand JAX allocation, 8 GB benchmark support, and schema-v1 comparison compatibility.
