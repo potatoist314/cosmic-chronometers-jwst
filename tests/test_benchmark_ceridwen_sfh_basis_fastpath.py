@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-from types import MethodType
 from typing import Any
 
 import jax
 import jax.numpy as jnp
 import numpy as np
 import pytest
+from jax import lax
 
-from scripts import benchmark_ceridwen_sfh_basis_fastpath as fastpath
+from scripts import ceridwen_sfh_basis_fastpath as fastpath
 
 
 class FakeCSP:
@@ -26,34 +26,33 @@ class FakeCSP:
         self.sfh_times = jnp.array([0.0, 1.0, 3.0, 6.0])
         self._ssp_voronoi_lo = jnp.array([0.0, 0.7, 1.8, 3.4, 5.0])
         self._ssp_voronoi_hi = jnp.array([0.7, 1.8, 3.4, 5.0, 8.0])
+        self._n_afe = self.afe_grid.size
+        self._afe_solar_idx = 1
+        self._n_z = self.zmet.size
+        self.n_time = self.sfh_times.size
         self.sfh_per_bin = False
-        self.theta_init = {
-            "sfh": jnp.ones(4),
-            "Z": jnp.array([-0.7]),
-            "afe": jnp.array([0.0]),
-            "tau": jnp.array([0.1]),
-        }
         self.zh_const = True
         self.sfh_interp = "step"
         self.track_zred_age = False
-        self.get_spectrum = MethodType(
-            FakeCSP.get_spectrum_dattn_nodem_noneb,
-            self,
-        )
+        self._losvd_kernel_fft = None
+        self.diff_dust = object()
 
     def calculate_ssp_weights(self, theta: dict[str, jax.Array]) -> jax.Array:
         sfh = jnp.clip(theta["sfh"], 1e-30, None)
         sfh_mid = 0.5 * (sfh[:-1] + sfh[1:])
-        age_weights = sfh_mid @ fastpath._build_bin_to_age_operator(self)
-        z_upper, z_fraction = fastpath._bracket(self.zmet, theta["Z"])
+        operator = fastpath.build_step_sfh_operator(
+            self.sfh_times,
+            self._ssp_voronoi_lo,
+            self._ssp_voronoi_hi,
+        )
+        age_weights = sfh_mid @ operator
+        z_indices, z_weights = fastpath._metallicity_coordinates(self, theta)
         weights = jnp.zeros(
-            (self.zmet.size, age_weights.size),
+            (self._n_z, age_weights.size),
             dtype=jnp.float32,
         )
-        weights = weights.at[z_upper - 1].add(
-            (1.0 - z_fraction) * age_weights
-        )
-        return weights.at[z_upper].add(z_fraction * age_weights)
+        weights = weights.at[z_indices[0]].add(z_weights[0] * age_weights)
+        return weights.at[z_indices[1]].add(z_weights[1] * age_weights)
 
     def attenuate_dust(
         self,
@@ -64,13 +63,12 @@ class FakeCSP:
         return jnp.zeros((1, wave.size)), diffuse
 
     def _flux_at_afe(self, theta: dict[str, jax.Array]) -> jax.Array:
-        upper, fraction = fastpath._bracket(self.afe_grid, theta["afe"])
-        return (
-            (1.0 - fraction) * self.flux[upper - 1]
-            + fraction * self.flux[upper]
-        )
+        indices, weights = fastpath._alpha_coordinates(self, theta)
+        return weights[0] * self.flux[indices[0]] + weights[1] * self.flux[
+            indices[1]
+        ]
 
-    def get_spectrum_dattn_nodem_noneb(
+    def get_spectrum(
         self,
         theta: dict[str, jax.Array],
         *,
@@ -79,7 +77,12 @@ class FakeCSP:
         del include_lines
         flux = self._flux_at_afe(theta)
         weights = self.calculate_ssp_weights(theta).astype(jnp.float32)
-        spectrum = jnp.einsum("za,zaw->w", weights, flux)
+        spectrum = jnp.einsum(
+            "za,zaw->w",
+            weights,
+            flux,
+            precision=lax.Precision.HIGHEST,
+        )
         _, diffuse = self.attenuate_dust(self.wave, theta)
         return spectrum * jnp.exp(-diffuse.astype(jnp.float32))
 
@@ -110,39 +113,48 @@ def assert_tree_close(expected: Any, actual: Any) -> None:
         )
 
 
-@pytest.mark.parametrize("mode", ["four-corner", "sfh-basis"])
+@pytest.mark.parametrize("mode", fastpath.FASTPATH_MODES)
 def test_fastpath_matches_dense_spectrum_and_gradient(mode: str) -> None:
     csp = FakeCSP()
     parameters = theta()
-    original = csp.get_spectrum
     baseline = jax.jit(csp.get_spectrum)(parameters)
     baseline_gradient = jax.grad(
         lambda values: jnp.sum(csp.get_spectrum(values))
     )(parameters)
 
-    handle = fastpath.install_fastpath(csp, mode)
+    state = fastpath.install_sfh_basis_fastpath(csp, mode)
     actual = jax.jit(csp.get_spectrum)(parameters)
     actual_gradient = jax.grad(
         lambda values: jnp.sum(csp.get_spectrum(values))
     )(parameters)
-    fastpath.restore_fastpath(csp, handle)
 
     assert_tree_close(baseline, actual)
     assert_tree_close(baseline_gradient, actual_gradient)
-    assert csp.get_spectrum == original
+    verification = fastpath.verify_sfh_basis_fastpath(csp, [parameters])
+    assert verification["max_relative_error"] < 2e-5
+    assert state.original_get_spectrum is not csp.get_spectrum
 
 
 def test_sfh_basis_removes_the_age_axis() -> None:
     csp = FakeCSP()
-    handle = fastpath.install_fastpath(csp, "sfh-basis")
+    state = fastpath.install_sfh_basis_fastpath(csp, "sfh-basis-sparse")
 
-    assert handle.basis_shape == (3, 4, 3, 7)
-    assert handle.basis_nbytes == 3 * 4 * 3 * 7 * 4
+    assert state.basis_shape == (3, 4, 3, 7)
+    assert state.basis_bytes == 3 * 4 * 3 * 7 * 4
 
 
 def test_age_dependent_dust_is_rejected() -> None:
     csp = FakeCSP()
     csp.dust_attn = object()
 
-    with pytest.raises(fastpath.FastPathError, match="age-dependent dust"):
-        fastpath.install_fastpath(csp, "four-corner")
+    with pytest.raises(ValueError, match="age-dependent dust"):
+        fastpath.install_sfh_basis_fastpath(csp, "corners")
+
+
+def test_runtime_lookback_grid_is_rejected() -> None:
+    csp = FakeCSP()
+    fastpath.install_sfh_basis_fastpath(csp, "sfh-basis-sparse")
+    parameters = {**theta(), "lookback_time": jnp.array([0.0, 1.0, 3.0, 6.0])}
+
+    with pytest.raises(ValueError, match="runtime lookback grid"):
+        csp.get_spectrum(parameters)
