@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Benchmark experimental low-rank Ceridwen source-spectrum fast paths."""
 
 from __future__ import annotations
