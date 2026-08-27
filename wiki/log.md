@@ -264,3 +264,8 @@
 
 - Pages: `notebooks/notebook-map.html`, `index.md`
 - Change: Documented aligned posterior rows and both stable corner-plot filenames.
+
+## [2026-08-27] codebase | Compact Vast benchmark image
+
+- Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
+- Change: Set the CUDA 12.6.3 base image as the default for current and future Vast benchmarks.

@@ -26,6 +26,7 @@ def offer(**overrides) -> dict:
 
 
 def test_reference_fingerprint_matches_published_runs() -> None:
+    assert sweep.DEFAULT_IMAGE == "vastai/base-image:cuda-12.6.3-auto"
     assert sweep.REFERENCE_FINGERPRINT == (
         "26b63c693d339d9093e68b311df48719ee5697555522b13bf8e85dc0521735cc"
     )

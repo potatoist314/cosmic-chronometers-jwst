@@ -31,7 +31,8 @@ BENCHMARK_SCRIPT_SHA256 = (
     "6d8cf1bb1e78ce6a721618655443edcd7832bf286d0b9227f85553ba0463afcb"
 )
 
-DEFAULT_IMAGE = "vastai/pytorch:cuda-12.8.1-auto"
+# The bootstrap installs CUDA JAX, so avoid pulling an unused PyTorch stack.
+DEFAULT_IMAGE = "vastai/base-image:cuda-12.6.3-auto"
 DEFAULT_DISK_GB = 40
 DEFAULT_BATCH_SIZE = 3
 DEFAULT_ATTEMPTS = 2

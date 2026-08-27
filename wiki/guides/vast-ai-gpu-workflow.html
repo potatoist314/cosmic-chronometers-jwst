@@ -47,7 +47,9 @@
     <section id="instance">
       <h2>Choose an instance</h2>
       <ul>
-        <li>Use a Linux image with Jupyter, SSH, and CUDA 12.</li>
+        <li>Use a Linux image with Jupyter, SSH, and CUDA 12. Prefer
+        <code>vastai/base-image:cuda-12.6.3-auto</code>. It avoids the unused
+        PyTorch stack. The bootstrap installs CUDA JAX.</li>
         <li>Require at least 12 GB GPU memory and 30 GB disk.</li>
         <li>Check storage, upload, and download rates before renting.</li>
         <li>Prefer an A100 40 GB.</li>

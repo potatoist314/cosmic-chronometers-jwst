@@ -18,7 +18,9 @@ massive quiescent galaxies.
 ## Ceridwen on Vast.ai
 
 Use a Linux Jupyter+SSH instance with a CUDA 12-compatible image, at least
-12 GB GPU memory, and at least 30 GB disk. Prefer a consumer RTX card when
+12 GB GPU memory, and at least 30 GB disk. Prefer
+`vastai/base-image:cuda-12.6.3-auto`: it avoids the unused PyTorch stack, and
+the bootstrap installs its own CUDA JAX. Prefer a consumer RTX card when
 minimizing fit cost. Compare current Vast prices with the measured likelihood
 calls per second because listing prices vary.
 
