@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-27T21:34:57Z",
+  "package": "Revalidate and preserve local evidence",
+  "task_identity": {
+    "worker": "local-validation-evi-g3",
+    "recovery_task_is_new_and_independent": true,
+    "failed_task": "task_MbLICghfNTM0ABnk",
+    "failed_task_steered": false,
+    "network_or_external_service_accessed": false,
+    "vast_action_performed": false
+  },
+  "scope": {
+    "writer_branch": "chatgpt-codex-bridge/worker/astro/gYnS22H3R2/local-validation-evi-g3",
+    "writer_start_commit": "75c0dfb74cadeb61e704529f93b8d53b653ff876",
+    "target_branch": "experiment/ceridwen-sfh-basis-fastpath",
+    "target_tip_inspected": "d604ca4f589e4d78b57336286f38797bf147095b",
+    "main_checkout_modified": false,
+    "merge_or_landing_to_main_performed": false,
+    "implementation_or_checkpoint_edited": false
+  },
+  "checkpoint_integrity": {
+    "immutable_source": "/tmp/ceridwen_sfh_fastpath_smoke.json",
+    "preserved_copy": "ceridwen_sfh_fastpath_smoke.json",
+    "required_sha256": "53e85e9772127a3b196a1d344893aea714b5b61fd96e95f19acf261f61bba4fc",
+    "source_sha256": "53e85e9772127a3b196a1d344893aea714b5b61fd96e95f19acf261f61bba4fc",
+    "copy_sha256": "53e85e9772127a3b196a1d344893aea714b5b61fd96e95f19acf261f61bba4fc",
+    "source_bytes": 13267,
+    "copy_bytes": 13267,
+    "byte_comparison_exit_code": 0,
+    "verified": true
+  },
+  "recovered_commits": {
+    "requested": {
+      "core_parent": "119cb6b36c2bd80a45865311c2aa1a14ab3c4f8a",
+      "ceridwen": "431477e263d53e3f5217a91651abe59d07702b93",
+      "vast_safeguards": "965ca39e7f23112ef1816a304dec43fa4aab6ba2",
+      "benchmark_harness": "c7ca29b7738197962b1e4ecf853dd06709a3cb0a"
+    },
+    "target_branch_cherry_picks": {
+      "core_parent": "c343184e542f2d8df9b43348606dcb1b9061f948",
+      "vast_safeguards": "62ec59ab6c92bfe0cc31ad77d5d73f26aea05b37",
+      "benchmark_harness": "d604ca4f589e4d78b57336286f38797bf147095b"
+    },
+    "stable_patch_ids": {
+      "core_parent": "caaa9696935da04eab98c72a73c61c84486b0baf",
+      "vast_safeguards": "b8dedb22e08919832b2d6051ae3ebefc96c621b6",
+      "benchmark_harness": "c0dc9c2b1e5aae46b86e75a23f0be5159cf41d3f"
+    },
+    "patch_equivalence_verified": true,
+    "target_submodule_gitlink": "431477e263d53e3f5217a91651abe59d07702b93",
+    "nested_commit_object_available_in_isolated_worktree": false
+  },
+  "equivalence_revalidation": {
+    "status": "passed",
+    "method": "The recovery harness parsed the preserved checkpoint and asserted its commit, implementation order, comparison fingerprint, point labels, and recorded deltas.",
+    "implementations": [
+      "baseline",
+      "variant_a",
+      "variant_b"
+    ],
+    "seed": 20260827,
+    "points_per_fast_variant": [
+      "initial",
+      "lower_edges",
+      "upper_edges",
+      "random_0"
+    ],
+    "tolerances": {
+      "prediction_rtol": 0.00005,
+      "prediction_atol": 1e-12,
+      "log_likelihood_rtol": 0.0001,
+      "log_likelihood_atol": 0.00001,
+      "justification": "The float32 basis precontraction changes the reduction order."
+    },
+    "variant_a_maxima": {
+      "prediction_absolute": 1.8189894035458565e-12,
+      "prediction_relative": 2.2081381700900238e-7,
+      "log_likelihood_absolute": 22.71234440803528,
+      "log_likelihood_relative": 2.918439581502251e-7
+    },
+    "variant_b_maxima": {
+      "prediction_absolute": 3.637978807091713e-12,
+      "prediction_relative": 2.2081381700900238e-7,
+      "log_likelihood_absolute": 92.19968605041504,
+      "log_likelihood_relative": 3.2281766627231943e-7
+    },
+    "comparisons_checked": 8,
+    "normalized_fingerprint": "93a6b83d5612b2fca06e216c3a41d5191eb7ef0937b3453fb7d99a280efd529f"
+  },
+  "stablehlo_evidence": {
+    "status": "preserved_and_revalidated",
+    "forbidden_full_ssp_expansion_shape": [
+      13,
+      107,
+      10992
+    ],
+    "baseline": {
+      "basis_shape": [
+        5,
+        13,
+        107,
+        10992
+      ],
+      "forbidden_expansion_occurrences": 15,
+      "omits_forbidden_expansion": false,
+      "stablehlo_sha256": "1f2bf118e3fbf86c3dd7f379ee9da23e61ae2e5981120f0b444b0f8951f83e8b"
+    },
+    "variant_a": {
+      "basis_shape": [
+        5,
+        13,
+        8,
+        10992
+      ],
+      "forbidden_expansion_occurrences": 0,
+      "forbidden_expansion_lines": [],
+      "omits_forbidden_expansion": true,
+      "stablehlo_sha256": "4576b302d5b42f6b8e6d092c8f160bcb2f09b121593a4d13400b3e0c73414ef6"
+    },
+    "variant_b": {
+      "basis_shape": [
+        520,
+        10992
+      ],
+      "forbidden_expansion_occurrences": 0,
+      "forbidden_expansion_lines": [],
+      "omits_forbidden_expansion": true,
+      "stablehlo_sha256": "4315756485dd35a2b542b490a3fc092680088feea3f45c4dfb93575e5747ef97"
+    },
+    "live_relowering_in_recovery_environment": {
+      "performed": false,
+      "reason": "The isolated worktree has no JAX installation and does not contain the nested Ceridwen commit object. Network access was prohibited."
+    }
+  },
+  "local_benchmark": {
+    "status": "preserved_and_revalidated",
+    "live_rerun_supported": false,
+    "live_rerun_blocker": "The isolated worktree has no JAX installation and does not contain the nested Ceridwen commit object.",
+    "configuration": {
+      "target": "M1_210210",
+      "ssp_grid_id": "amist_c3k_hr_krou_afe",
+      "ssp_grid_schema": "2.1",
+      "ssp_grid_shape": [
+        5,
+        13,
+        107,
+        10992
+      ],
+      "random_points": 1,
+      "warmup_calls": 1,
+      "timed_calls": 2
+    },
+    "recorded_environment": {
+      "python": "3.11.13",
+      "jax": "0.10.2",
+      "jaxlib": "0.10.2",
+      "ceridwen": "0.2.0",
+      "jax_enable_x64": true,
+      "backend": "cpu",
+      "device_kind": "cpu"
+    },
+    "results": {
+      "baseline": {
+        "call_seconds": [
+          0.00626270892098546,
+          0.006458917050622404
+        ],
+        "calls_per_second": 157.21260823605425,
+        "speedup_over_baseline": 1.0
+      },
+      "variant_a": {
+        "call_seconds": [
+          0.0014520420227199793,
+          0.0014649160439148545
+        ],
+        "calls_per_second": 685.6457838310004,
+        "speedup_over_baseline": 4.361264605453942
+      },
+      "variant_b": {
+        "call_seconds": [
+          0.002071125083602965,
+          0.0019214580534026027
+        ],
+        "calls_per_second": 500.928830125751,
+        "speedup_over_baseline": 3.1863146076274487
+      }
+    },
+    "input_sha256": {
+      "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+      "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+      "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+      "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+    }
+  },
+  "tests": {
+    "temporary_snapshot": "experiment/ceridwen-sfh-basis-fastpath at d604ca4f589e4d78b57336286f38797bf147095b",
+    "cache_policy": "Python bytecode and pytest cache generation were disabled. The snapshot was exported under /tmp.",
+    "focused": {
+      "command": "python3 -m pytest -p no:cacheprovider tests/test_benchmark_ceridwen_sfh_basis_fastpath.py -k 'not install_implementation and not deterministic_prior_points and not edge_points'",
+      "result": "8 passed, 3 deselected",
+      "deselection_reason": "Three tests require JAX, which is not installed in the isolated recovery environment."
+    },
+    "regression": {
+      "command": "python3 -m pytest -p no:cacheprovider tests/test_benchmark_ceridwen_vast.py -k 'not fixed_step_runner_uses_pinned_blackjax_layout' tests/test_sweep_ceridwen_vast_gpus.py",
+      "result": "60 passed, 1 deselected",
+      "deselection_reason": "The deselected BlackJAX layout test requires JAX."
+    },
+    "ruff": {
+      "version": "0.16.4",
+      "offline": true,
+      "command": "ruff check scripts/benchmark_ceridwen_sfh_basis_fastpath.py tests/test_benchmark_ceridwen_sfh_basis_fastpath.py scripts/sweep_ceridwen_vast_gpus.py tests/test_sweep_ceridwen_vast_gpus.py",
+      "result": "failed_pre_existing",
+      "diagnostics": [
+        "EXE001 scripts/benchmark_ceridwen_sfh_basis_fastpath.py:1:1: shebang is present but the tracked file mode is not executable",
+        "EXE001 scripts/sweep_ceridwen_vast_gpus.py:1:1: shebang is present but the tracked file mode is not executable",
+        "ISC004 scripts/sweep_ceridwen_vast_gpus.py:587:17: unparenthesized implicit string concatenation in collection"
+      ],
+      "scope_reason_not_fixed": "The diagnostics exist in the recovered commits. This package can only write the recovery artifact directory."
+    }
+  },
+  "local_spend_and_instance_evidence": {
+    "supplied_baseline_credit_usd": 13.23849408113999,
+    "supplied_hard_floor_usd": 3.23849408113999,
+    "maximum_additional_spend_usd": 10.0,
+    "recovery_task_additional_spend_usd": 0.0,
+    "supplied_credit_values_independently_verified": false,
+    "old_and_recovery_task_combined_spend_verified": false,
+    "inspection": {
+      "spend_ledgers_found_for_old_or_recovery_task": false,
+      "saved_general_sweep_manifest": "results/ceridwen_vast_gpu_sweep_manifest_2026-08-27.json",
+      "saved_general_sweep_manifest_sha256": "4543ddeb147e5949bef16b99e95847b3914a1c925b424fc67bf3b678301cbf3e",
+      "saved_general_sweep_estimated_spend_usd": 1.802836530053147,
+      "saved_general_sweep_attributable_to_old_or_recovery_task": false,
+      "saved_rtx_5060_result": "results/ceridwen_vast_geforce_rtx_5060_host_166946_joint_full_benchmark_complete_2026-08-27/benchmark.json",
+      "saved_rtx_5060_result_sha256": "1eb077379130e4130176c37a5424af468c12d1194092e14cfe072689d8cde8c0",
+      "saved_rtx_5060_instance_id": 48925329,
+      "saved_rtx_5060_calls_per_second": 107.00555691105087,
+      "saved_rtx_5060_is_recovery_instance": false
+    }
+  },
+  "external_action_blockers": [
+    {
+      "acceptance_item": "final Vast credit",
+      "status": "blocked",
+      "reason": "No final-credit record exists in the inspected local evidence. Account access was prohibited."
+    },
+    {
+      "acceptance_item": "old-task plus recovery-task spend",
+      "status": "blocked",
+      "reason": "No local ledger attributes spend to the failed task and this recovery task."
+    },
+    {
+      "acceptance_item": "recovery GPU selection or rental",
+      "status": "blocked",
+      "reason": "Vast queries and rental actions were prohibited."
+    },
+    {
+      "acceptance_item": "nonzero GPU utilization",
+      "status": "blocked",
+      "reason": "No saved evidence records GPU utilization for a recovery instance."
+    },
+    {
+      "acceptance_item": "advancing recovery benchmark output",
+      "status": "blocked",
+      "reason": "No saved evidence records advancing output for a recovery instance."
+    },
+    {
+      "acceptance_item": "local copy and integrity check of recovery GPU results",
+      "status": "blocked",
+      "reason": "No recovery GPU run or result exists."
+    },
+    {
+      "acceptance_item": "exact recovery-instance termination",
+      "status": "blocked",
+      "reason": "No recovery instance was rented, and no saved termination confirmation exists."
+    }
+  ],
+  "progress": [
+    {
+      "step": "checksum immutable source before all other inspection",
+      "status": "passed"
+    },
+    {
+      "step": "copy checkpoint and compare source and copy",
+      "status": "passed"
+    },
+    {
+      "step": "inspect implementation, harness, target branch, and commit provenance without edits",
+      "status": "passed_with_nested_object_blocker"
+    },
+    {
+      "step": "revalidate checkpoint equivalence and StableHLO summaries",
+      "status": "passed"
+    },
+    {
+      "step": "run supported focused and regression tests",
+      "status": "passed_with_jax_deselections"
+    },
+    {
+      "step": "run Ruff on recovered files",
+      "status": "failed_pre_existing"
+    },
+    {
+      "step": "inspect local spend and instance evidence without external actions",
+      "status": "completed_with_external_action_blockers"
+    }
+  ]
+}
