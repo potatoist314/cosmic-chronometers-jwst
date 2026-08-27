@@ -125,6 +125,19 @@ def theta_points() -> list[dict[str, Any]]:
     ]
 
 
+def assert_tree_close(reference: Any, candidate: Any) -> None:
+    reference_leaves, reference_tree = jax.tree.flatten(reference)
+    candidate_leaves, candidate_tree = jax.tree.flatten(candidate)
+    assert reference_tree == candidate_tree
+    for expected, actual in zip(reference_leaves, candidate_leaves, strict=True):
+        np.testing.assert_allclose(
+            np.asarray(actual),
+            np.asarray(expected),
+            rtol=5e-5,
+            atol=1e-5,
+        )
+
+
 def test_step_operator_reproduces_dense_age_weights() -> None:
     csp = FakeCSP()
     theta = theta_points()[0]
@@ -146,15 +159,23 @@ def test_step_operator_reproduces_dense_age_weights() -> None:
 
 
 @pytest.mark.parametrize("mode", FASTPATH_MODES)
-def test_fastpath_matches_dense_source_spectrum(mode: str) -> None:
+def test_fastpath_matches_dense_source_spectrum_and_gradient(mode: str) -> None:
     csp = FakeCSP()
     points = theta_points()
     baseline_spectra = [np.asarray(csp.get_spectrum(theta)) for theta in points]
+    gradient_theta = points[0]
+    baseline_gradient = jax.grad(
+        lambda values: jnp.sum(csp.get_spectrum(values))
+    )(gradient_theta)
 
     state = install_sfh_basis_fastpath(csp, mode)
     verification = verify_sfh_basis_fastpath(csp, points)
+    candidate_gradient = jax.grad(
+        lambda values: jnp.sum(csp.get_spectrum(values))
+    )(gradient_theta)
 
     assert verification["max_relative_error"] < 5e-5
+    assert_tree_close(baseline_gradient, candidate_gradient)
     for reference, theta in zip(baseline_spectra, points, strict=True):
         np.testing.assert_allclose(
             np.asarray(csp.get_spectrum(theta)),
@@ -196,9 +217,24 @@ def test_runtime_lookback_grid_is_rejected() -> None:
         csp.get_spectrum(theta)
 
 
-def test_incompatible_csp_is_rejected() -> None:
+@pytest.mark.parametrize(
+    ("attribute", "value", "message"),
+    (
+        ("track_zred_age", True, "fixed lookback"),
+        ("sfh_interp", "linear", "sfh_interp='step'"),
+        ("zh_const", False, "zh_const=True"),
+        ("_losvd_kernel_fft", True, "LOSVD smoothing off"),
+        ("dust_attn", object(), "age-dependent dust"),
+        ("dust_emi", object(), "dust emission"),
+    ),
+)
+def test_incompatible_csp_is_rejected(
+    attribute: str,
+    value: Any,
+    message: str,
+) -> None:
     csp = FakeCSP()
-    csp.track_zred_age = True
+    setattr(csp, attribute, value)
 
-    with pytest.raises(ValueError, match="fixed lookback"):
+    with pytest.raises(ValueError, match=message):
         install_sfh_basis_fastpath(csp, "sfh-basis-sparse")
