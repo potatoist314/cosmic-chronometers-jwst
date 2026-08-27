@@ -30,7 +30,7 @@ def test_reference_fingerprint_matches_published_runs() -> None:
         "26b63c693d339d9093e68b311df48719ee5697555522b13bf8e85dc0521735cc"
     )
     assert sweep.BENCHMARK_SCRIPT_SHA256 == (
-        "1fb69b1c89ec54afb82383d75991c8b801f7afa99a756bbb75c98b20e400fd75"
+        "6d8cf1bb1e78ce6a721618655443edcd7832bf286d0b9227f85553ba0463afcb"
     )
 
 
