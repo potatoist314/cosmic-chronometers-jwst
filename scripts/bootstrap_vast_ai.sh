@@ -55,9 +55,11 @@ fi
     "jaxlib==${JAX_VERSION}" \
     "${PROJECT_ROOT}/ceridwen" \
     "astroquery>=0.4.11,<0.5" \
+    "corner>=2.3,<3" \
     "ipykernel>=7.3,<8" \
     "jupyterlab>=4.6,<5" \
     "nbclient>=0.10,<0.11" \
+    "nbconvert>=7.17,<8" \
     "pandas>=3,<4" \
     "specutils>=2.2,<3"
 "${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \

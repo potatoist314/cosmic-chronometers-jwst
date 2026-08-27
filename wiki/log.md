@@ -279,3 +279,13 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Added measured RTX 5060 Ti, RTX 5070, RTX 5070 Ti, and RTX 5080 speed, cost, and memory results.
+
+## [2026-08-27] query | RTX 5090 complete-fit benchmark
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
+- Change: Added the complete RTX 5090 fit rate, actual cost, sampler settings, and observed sampling memory.
+
+## [2026-08-27] query | Additional Blackwell GPU benchmarks
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
+- Change: Added B200, RTX 5060, and RTX PRO 4000, 4500, 5000, and 6000 speed, cost, and memory results.

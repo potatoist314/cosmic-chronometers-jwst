@@ -35,7 +35,7 @@
   <main class="page-shell" id="main-content">
     <header>
       <h1>Ceridwen GPU benchmark</h1>
-      <p>This page compares thirteen GPU types on Ceridwen likelihood work.</p>
+      <p>This page compares twenty GPU types on Ceridwen likelihood work.</p>
     </header>
 
     <section id="runs">
@@ -59,6 +59,28 @@
         </thead>
         <tbody>
           <tr>
+            <th scope="row">B200</th>
+            <td>1,125 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>743.9</td>
+            <td>$5.3138/h</td>
+            <td>$1.984</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX PRO 6000 Blackwell Server Edition</th>
+            <td>234 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>444.9</td>
+            <td>$1.3327/h</td>
+            <td>$0.832</td>
+          </tr>
+          <tr>
             <th scope="row">H100 SXM</th>
             <td>494 TFLOP/s</td>
             <td>Vast</td>
@@ -70,6 +92,39 @@
             <td>$1.122</td>
           </tr>
           <tr>
+            <th scope="row">RTX PRO 6000 Blackwell Max-Q Workstation Edition</th>
+            <td>219.5 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>409.3</td>
+            <td>$1.2290/h</td>
+            <td>$0.834</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5090</th>
+            <td>104.8 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Complete integrated fit</td>
+            <td>2.1</td>
+            <td>514 / 514,000</td>
+            <td>393.1</td>
+            <td>$0.4139/h</td>
+            <td>$0.292</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX PRO 5000 Blackwell</th>
+            <td>65 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>364.6</td>
+            <td>$0.5619/h</td>
+            <td>$0.428</td>
+          </tr>
+          <tr>
             <th scope="row">GeForce RTX 5080</th>
             <td>56.3 TFLOP/s</td>
             <td>Vast</td>
@@ -79,6 +134,17 @@
             <td>253.1</td>
             <td>$0.1608/h</td>
             <td>$0.177</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX PRO 4500 Blackwell</th>
+            <td>51 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>247.4</td>
+            <td>$0.3081/h</td>
+            <td>$0.346</td>
           </tr>
           <tr>
             <th scope="row">GeForce RTX 4090</th>
@@ -101,6 +167,17 @@
             <td>180.6</td>
             <td>$0.1206/h</td>
             <td>$0.185</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX PRO 4000 Blackwell</th>
+            <td>37 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>168.8</td>
+            <td>$0.2023/h</td>
+            <td>$0.333</td>
           </tr>
           <tr>
             <th scope="row">A100 SXM4</th>
@@ -191,6 +268,17 @@
             <td>$0.203</td>
           </tr>
           <tr>
+            <th scope="row">GeForce RTX 5060</th>
+            <td>19.2 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>107.0</td>
+            <td>$0.1028/h</td>
+            <td>$0.267</td>
+          </tr>
+          <tr>
             <th scope="row">GeForce RTX 4070 Super</th>
             <td>35.5 TFLOP/s</td>
             <td>Vast</td>
@@ -269,6 +357,15 @@
           </tr>
         </tbody>
       </table>
+
+      <h3>New Blackwell sweep</h3>
+      <p>The B200 reached 743.9 calls/s, 1.72 times the H100 rate. The RTX PRO 6000 Server and Max-Q editions reached 444.9 and 409.3 calls/s.</p>
+      <p>The RTX PRO 5000, 4500, 4000, and GeForce RTX 5060 reached 364.6, 247.4, 168.8, and 107.0 calls/s. Their costs were $0.428, $0.346, $0.333, and $0.267 per million calls.</p>
+      <p>The published B200 row uses JAX CUDA 13 and cuBLAS 13.6.1.10. A CUDA 12 diagnostic was excluded after XLA warned of possible silent corruption on B200.</p>
+
+      <h3>RTX 5090 complete fit</h3>
+      <p>The production nested-sampler run converged after 514 iterations and 514,000 likelihood calls. Sampling took 1,307.5 s, or 393.1 calls/s. The complete notebook took 1,386.1 s.</p>
+      <p>The actual Vast rate was $0.4139/h. Sampling cost $0.150, equivalent to $0.292 per million likelihood calls. The run used schema 2.1, 300 live points, 40 inner steps, 25 deletions, and <code>logZ_tol=-3</code>.</p>
 
       <h3>Speed against published peak throughput</h3>
       <p>Both axes use a log scale. The vertical axis shows likelihood calls per second.</p>
@@ -367,11 +464,13 @@
 
     <section id="memory">
       <h2>GPU memory</h2>
-      <p>Every GPU type used a similar amount of memory. The Ceridwen calculation peak stayed between 1,460 MiB and 1,610 MiB on all thirteen GPU types.</p>
+      <p>The fixed-step benchmark calculation peak stayed between 1,460 MiB and 1,610 MiB on nineteen GPU types.</p>
       <p>The RTX 3060, RTX 3080 Ti, and RTX 4070 Super each used a 1,519 MiB calculation peak. The recorded whole-process peaks were 9,260 MiB on the RTX 3080 Ti and 9,164 MiB on the RTX 4070 Super.</p>
       <p>The 50% RTX 5070, RTX 5070 Ti, and RTX 5080 runs each used a 1,519 MiB calculation peak. Whole-process memory was 6,180 MiB, 8,278 MiB, and 8,304 MiB.</p>
+      <p>The seven new Blackwell runs each used about 1,519 MiB at the JAX calculation peak. Whole-process memory was 92,146 MiB on B200; 49,312 and 49,308 MiB on the RTX PRO 6000 editions; 24,668, 16,452, and 12,370 MiB on the RTX PRO 5000, 4500, and 4000; and 4,102 MiB on the RTX 5060.</p>
       <p>The 8 GB RTX 3070 completed with both allocators. The 50% pool used 4,152 MiB process memory; on-demand allocation used 2,344 MiB.</p>
-      <p>Evidence: <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code> and the benchmark records above</p>
+      <p>An RTX 5090 sampling snapshot showed 4,520 MiB process memory. This value is not a measured peak.</p>
+      <p>Evidence: <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code>, <code>results/ceridwen_vast_geforce_rtx_5090_integrated_fit_complete_2026-08-27/</code>, and the benchmark records above</p>
     </section>
 
     <section id="kernel-trace">

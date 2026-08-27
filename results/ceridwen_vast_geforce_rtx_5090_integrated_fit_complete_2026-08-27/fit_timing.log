@@ -1,0 +1,7 @@
+device: NVIDIA GeForce RTX 5090
+sampler profile: num_live=300, num_inner_steps=40, num_delete=25, logZ_tol=-3
+Converged logZ=230637.314 in 1307.5 s with 514,000 likelihood calls
+blackjax.nss n_samples=13150 lnZ=230637.429 +/- 0.443 n_like=514000 wall=1307.5 s
+throughput: 393.117 likelihood calls/s
+actual Vast total rate: $0.413889/h
+cost per 1,000,000 likelihood calls: $0.292456

@@ -52,4 +52,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Analyses
 
-- `analyses/ceridwen-gpu-benchmarks.html` — Compares measured speed, cost, memory, and hardware behaviour across thirteen GPU types.
+- `analyses/ceridwen-gpu-benchmarks.html` — Compares measured speed, cost, memory, and hardware behaviour across twenty GPU types.

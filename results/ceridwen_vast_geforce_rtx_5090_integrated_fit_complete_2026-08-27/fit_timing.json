@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-08-27T16:49:11.010937Z",
+  "completed_at_utc": "2026-08-27T17:12:17.155779Z",
+  "workload": {
+    "id": "m1_210210_integrated_fit_v1",
+    "target": "M1_210210",
+    "redshift": 0.65420001745224,
+    "photometric_bands_total": 12,
+    "photometric_bands_fitted": 11,
+    "spectral_pixels": 3523,
+    "ssp_grid_id": "amist_c3k_hr_krou_afe",
+    "ssp_grid_schema": "2.1",
+    "ssp_grid_shape": [
+      5,
+      13,
+      107,
+      10992
+    ],
+    "seed": 20260812,
+    "num_live": 300,
+    "num_inner_steps": 40,
+    "num_delete": 25,
+    "logZ_tol": -3.0
+  },
+  "git": {
+    "project_commit": "432b113dad9b67c882dc0d328158c4cee250d088",
+    "ceridwen_commit": "034381f41fac57df62ef4b0f7e0a6705dfa67e21"
+  },
+  "runtime": {
+    "python": "3.11.16",
+    "platform": "Linux-5.15.0-151-generic-x86_64-with-glibc2.39",
+    "jax": "0.10.2",
+    "jaxlib": "0.10.2",
+    "blackjax": "1.6.dev98+gf73e12956",
+    "ceridwen": "0.2.0",
+    "jax_backend": "gpu",
+    "jax_enable_x64": true,
+    "jax_device_kind": "NVIDIA GeForce RTX 5090",
+    "gpu_memory_total_mib": 32607,
+    "driver_version": "570.158.01",
+    "power_limit_w": 575.0
+  },
+  "vast": {
+    "host": "132677",
+    "instance": "48913313",
+    "gpu_price_usd_per_hour": 0.4,
+    "storage_price_usd_per_hour": 0.013888888888888888,
+    "total_price_usd_per_hour": 0.41388888888888886
+  },
+  "timings": {
+    "notebook_seconds": 1386.144842,
+    "sampler_seconds": 1307.5,
+    "sampler_iterations": 514,
+    "likelihood_calls": 514000,
+    "likelihood_calls_per_second": 393.1166347992352,
+    "sampler_cost_usd": 0.1503221450617284,
+    "notebook_cost_usd": 0.1593638745817901,
+    "cost_per_million_likelihood_calls_usd": 0.2924555351395494
+  },
+  "memory": {
+    "nvidia_process_memory_observed_mib": 4520,
+    "measurement": "sampling snapshot, not a peak"
+  },
+  "posterior": {
+    "samples": 13150,
+    "log_evidence": 230637.429,
+    "log_evidence_uncertainty": 0.443
+  },
+  "outputs_sha256": {
+    "ceridwen_integrated_photometry_spectra_executed.ipynb": "7b5dc73a105679057e6ea1c3d003173793fdbd50b2dded0f227cf29c676d9459",
+    "ceridwen_result.h5": "7be2950d5dc5f3ecc2eb71ee129e964d0be2d17ca609d056c3808aa7515a877b",
+    "corner_physical.png": "1eb13d5983a80047d424a5620cafc0b2672f90a2104e3c6106dcd0fefb4f5c7f",
+    "corner_age_mass_fractions.png": "e692c43a99f391c46f78906dbe224ead09991bfdabd8ad1322cce888bbc8011e"
+  }
+}
