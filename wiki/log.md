@@ -254,3 +254,8 @@
 
 - Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
 - Change: Recorded the 300-live-point BlackJAX NSS profile with 40 slice steps, 25 deletions, and `logZ_tol=-3`.
+
+## [2026-08-27] codebase | Joint posterior corner plots
+
+- Pages: `notebooks/notebook-map.html`, `index.md`
+- Change: Documented aligned posterior rows and both stable corner-plot filenames.

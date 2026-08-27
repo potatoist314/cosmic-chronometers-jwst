@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="notebook">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-26">
+  <meta name="wiki-updated" content="2026-08-27">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -87,6 +87,15 @@ calculates a shared nested-sampling posterior. Its full profile uses
 <code>CERIDWEN_RESULT_DIR</code>, and <code>CERIDWEN_RANDOM_SEED</code>.
 The defaults retain the original M1_210210 run. The Vast multi-GPU launcher
 sets distinct values for four independent notebook kernels.</p>
+<p>The joint notebook selects at most 400 deterministic posterior rows.
+It uses those same rows for direct parameters, mass-weighted age, and
+formed-mass fractions. It checks finite values, equal row counts,
+non-negative mass fractions, and unit row sums before plotting.</p>
+<p><code>corner_physical.png</code> shows mass, metallicity, alpha
+enhancement, diffuse dust, calibration floor, and mass-weighted age.
+<code>corner_age_mass_fractions.png</code> shows mass-weighted age with
+each formed-mass fraction. Both files are written to the run result
+directory.</p>
 <p>Both notebooks supply the observed FWHM resolving power with
 <code>res_convention="fwhm"</code>. Ceridwen reads the SSP resolution
 curve from the grid. It calculates the additional smoothing
