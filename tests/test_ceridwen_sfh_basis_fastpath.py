@@ -178,7 +178,12 @@ def test_runtime_hlo_does_not_capture_the_107_age_flux_cube(mode: str) -> None:
 
     stablehlo = jax.jit(csp.get_spectrum).lower(theta_points()[0]).as_text()
 
-    assert "tensor<5x13x7x64xf32>" in stablehlo
+    expected_basis = (
+        "tensor<5x13x7x64xf32>"
+        if mode == "sfh-basis-sparse"
+        else "tensor<455x64xf32>"
+    )
+    assert expected_basis in stablehlo
     assert "tensor<5x13x107x64xf32>" not in stablehlo
 
 
