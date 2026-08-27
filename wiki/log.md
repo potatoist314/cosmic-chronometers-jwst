@@ -269,3 +269,8 @@
 
 - Pages: `guides/vast-ai-gpu-workflow.html`, `index.md`
 - Change: Set the CUDA 12.6.3 base image as the default for current and future Vast benchmarks.
+
+## [2026-08-27] query | Eight-GB allocator benchmark
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
+- Change: Added matched RTX 3070 results for on-demand and 50% pooled JAX allocation.
