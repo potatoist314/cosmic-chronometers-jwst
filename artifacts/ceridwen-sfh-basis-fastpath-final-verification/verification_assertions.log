@@ -1,0 +1,13 @@
+status=passed
+required_smoke_sha256=346d9eea45d7f485d8d72bc578807bda7b2aeaf966c767d935076d432e539977
+ceridwen_commit=80ca35dd1f3adcca716efd82b9d91240c8e76c9e
+max_prediction_relative_delta=2.2081381700900238e-07
+max_log_likelihood_relative_delta=3.2281766627231943e-07
+stablehlo_forbidden_expansion_counts=[15, 0, 0]
+stablehlo_sha256=['1f2bf118e3fbf86c3dd7f379ee9da23e61ae2e5981120f0b444b0f8951f83e8b', '4576b302d5b42f6b8e6d092c8f160bcb2f09b121593a4d13400b3e0c73414ef6', '4315756485dd35a2b542b490a3fc092680088feea3f45c4dfb93575e5747ef97']
+preserved_cpu_calls_per_second=[220.78812894155755, 618.5087519474804, 531.3318275105612]
+preserved_cpu_calls_per_second_rounded=[221, 619, 531]
+live_cpu_calls_per_second=[170.07224763689842, 686.3613599423037, 537.5743111869909]
+input_sha256={'catalog': '1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613', 'photometry': '3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34', 'spectrum': '8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c', 'ssp_grid': 'f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16'}
+live_equivalence_matches_preserved=true
+live_stablehlo_matches_preserved=true

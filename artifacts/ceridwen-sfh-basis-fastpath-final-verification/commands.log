@@ -1,0 +1,159 @@
+Ceridwen SFH-basis fast-path final verification command record
+Generated at 2026-08-27T21:55:46Z
+
+1. Parent branch and tree verification
+
+Command:
+git rev-parse experiment/ceridwen-sfh-basis-fastpath
+git rev-parse experiment/ceridwen-sfh-basis-fastpath^{tree}
+git ls-tree 1e0b7e9 ceridwen
+
+Outcome:
+experiment/ceridwen-sfh-basis-fastpath = 1e0b7e95eb72ef315d9ef4f53bbfdc3cf13b70e3
+tree = 2364505d49bb53488576d4d2c220312ad7b94143
+ceridwen gitlink = 80ca35dd1f3adcca716efd82b9d91240c8e76c9e
+
+2. Task worker branch placement
+
+Command:
+git switch -C chatgpt-codex-bridge/worker/astro/aITNOSz5Sd/local-integrated-ver-g1 1e0b7e95eb72ef315d9ef4f53bbfdc3cf13b70e3
+
+Outcome:
+Worker branch reset to the exact immutable parent.
+
+3. Local Ceridwen checkout
+
+Commands:
+git submodule update --init --no-fetch -- ceridwen
+git submodule update --no-fetch --force -- ceridwen
+
+Outcome:
+Both commands failed with "unable to read tree" in the isolated submodule Git directory.
+The second command was the only retry.
+
+Completeness check for existing local objects:
+git --git-dir='/Users/liuhao/Downloads/Astro project/.git/modules/ceridwen' ls-tree -r 80ca35dd1f3adcca716efd82b9d91240c8e76c9e | awk '{print $3}' | git --git-dir='/Users/liuhao/Downloads/Astro project/.git/modules/ceridwen' cat-file --batch-check='%(objectname) %(objecttype) %(objectsize)' | awk '$2 == "missing" {missing++} END {print "missing_objects=" (missing+0), "checked_objects=" NR; exit missing != 0}'
+
+Outcome:
+missing_objects=0 checked_objects=144
+
+Checkout command:
+GIT_ALTERNATE_OBJECT_DIRECTORIES='/Users/liuhao/Downloads/Astro project/.git/modules/ceridwen/objects' git -C ceridwen checkout --detach 80ca35dd1f3adcca716efd82b9d91240c8e76c9e
+
+Outcome:
+HEAD is now at 80ca35d perf: complete SFH basis fast path fallback
+
+4. Source artifact verification and copy
+
+Commands:
+shasum -a 256 /tmp/ceridwen_sfh_fastpath_smoke_80ca35d.json
+cp -p /tmp/ceridwen_sfh_fastpath_smoke_80ca35d.json artifacts/ceridwen-sfh-basis-fastpath-final-verification/ceridwen_sfh_fastpath_smoke_80ca35d.json
+cmp /tmp/ceridwen_sfh_fastpath_smoke_80ca35d.json artifacts/ceridwen-sfh-basis-fastpath-final-verification/ceridwen_sfh_fastpath_smoke_80ca35d.json
+shasum -a 256 /tmp/ceridwen_sfh_fastpath_smoke_80ca35d.json artifacts/ceridwen-sfh-basis-fastpath-final-verification/ceridwen_sfh_fastpath_smoke_80ca35d.json
+
+Outcome:
+The source hash matched 346d9eea45d7f485d8d72bc578807bda7b2aeaf966c767d935076d432e539977 before the copy.
+The byte comparison passed. Both files have the required hash and 13,270 bytes.
+
+5. Harness-readiness tests
+
+Command:
+PYTHONDONTWRITEBYTECODE=1 JAX_PLATFORMS=cpu '/Users/liuhao/Downloads/Astro project/ceridwen/venv/bin/python' -m pytest -p no:cacheprovider tests/test_benchmark_ceridwen_sfh_basis_fastpath.py
+
+Outcome:
+11 passed in 1.29s
+
+6. Parent regression tests
+
+Command:
+PYTHONDONTWRITEBYTECODE=1 JAX_PLATFORMS=cpu '/Users/liuhao/Downloads/Astro project/ceridwen/venv/bin/python' -m pytest -p no:cacheprovider tests/test_benchmark_ceridwen_vast.py tests/test_sweep_ceridwen_vast_gpus.py
+
+Outcome:
+61 passed in 1.52s
+
+7. Ceridwen focused regression tests
+
+Command from the ceridwen directory:
+PYTHONDONTWRITEBYTECODE=1 JAX_PLATFORMS=cpu '/Users/liuhao/Downloads/Astro project/ceridwen/venv/bin/python' -m pytest -p no:cacheprovider tests/csp/test_sfh_basis_fastpath.py
+
+Outcome:
+19 passed in 6.38s
+
+8. Parent Ruff check
+
+Command:
+RUFF_CACHE_DIR=/tmp/ceridwen-sfh-fastpath-final-ruff '/Users/liuhao/Downloads/Astro project/.venv/bin/ruff' check scripts/benchmark_ceridwen_sfh_basis_fastpath.py tests/test_benchmark_ceridwen_sfh_basis_fastpath.py scripts/benchmark_ceridwen_vast.py tests/test_benchmark_ceridwen_vast.py scripts/sweep_ceridwen_vast_gpus.py tests/test_sweep_ceridwen_vast_gpus.py
+
+Outcome:
+All checks passed!
+
+9. Ceridwen Ruff check
+
+Command from the ceridwen directory:
+RUFF_CACHE_DIR=/tmp/ceridwen-sfh-fastpath-final-ruff-nested '/Users/liuhao/Downloads/Astro project/.venv/bin/ruff' check ceridwen/csp/csp_afe.py tests/csp/test_sfh_basis_fastpath.py
+
+Outcome:
+All checks passed!
+
+10. Initial direct harness invocation
+
+Command:
+PYTHONDONTWRITEBYTECODE=1 JAX_PLATFORMS=cpu CERIDWEN_GRID_DIR=/Users/liuhao/.ceridwen/grids '/Users/liuhao/Downloads/Astro project/ceridwen/venv/bin/python' scripts/benchmark_ceridwen_sfh_basis_fastpath.py --project-root '/Users/liuhao/Downloads/Astro project' --ceridwen-root ceridwen --expected-ceridwen-commit 80ca35dd1f3adcca716efd82b9d91240c8e76c9e --smoke --output artifacts/ceridwen-sfh-basis-fastpath-final-verification/live_smoke.json
+
+Outcome:
+Failed before harness import with ModuleNotFoundError: No module named 'scripts'.
+The failure is in harness_initial_invocation_failure.log.
+
+11. Successful numerical-equivalence and StableHLO harness
+
+Command:
+PYTHONDONTWRITEBYTECODE=1 JAX_PLATFORMS=cpu CERIDWEN_GRID_DIR=/Users/liuhao/.ceridwen/grids '/Users/liuhao/Downloads/Astro project/ceridwen/venv/bin/python' -m scripts.benchmark_ceridwen_sfh_basis_fastpath --project-root '/Users/liuhao/Downloads/Astro project' --ceridwen-root ceridwen --expected-ceridwen-commit 80ca35dd1f3adcca716efd82b9d91240c8e76c9e --smoke --output artifacts/ceridwen-sfh-basis-fastpath-final-verification/live_smoke.json
+
+Outcome:
+Passed. The output is live_smoke.json.
+The live numerical maxima match the supplied artifact.
+The StableHLO counts are 15, 0, and 0.
+The live StableHLO hashes match the supplied artifact.
+
+12. Artifact assertion check
+
+Command:
+PYTHONDONTWRITEBYTECODE=1 python3 - [inline assertions against the two JSON files]
+
+The inline assertions checked these fields:
+- required source-copy SHA-256;
+- exact Ceridwen commit;
+- exact four input hashes;
+- prediction and log-likelihood maxima;
+- StableHLO counts and hashes;
+- preserved rounded CPU rates.
+
+Outcome:
+Passed. Full values are in verification_assertions.log.
+
+13. Evidence commit checks
+
+Commands to run after evidence generation:
+git diff --check
+git status --short --branch --ignore-submodules=all
+git diff --cached --name-only
+git commit -m 'artifacts: verify Ceridwen SFH fast path'
+git rev-parse HEAD
+git merge-base --is-ancestor 1e0b7e95eb72ef315d9ef4f53bbfdc3cf13b70e3 HEAD
+
+Outcome:
+Recorded after the commit in the final task response.
+
+14. Hash manifest
+
+The first manifest used repository-relative paths.
+The check ran from the bundle directory and could not resolve those paths.
+The task regenerated the manifest with bundle-relative paths.
+
+Commands from the evidence-bundle directory:
+find . -maxdepth 1 -type f ! -name SHA256SUMS -print | LC_ALL=C sort | xargs shasum -a 256 > SHA256SUMS
+shasum -a 256 -c SHA256SUMS
+
+Outcome:
+All 13 listed evidence files passed the SHA-256 check.
+SHA256SUMS does not list itself.
