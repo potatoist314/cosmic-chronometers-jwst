@@ -19,6 +19,7 @@ def result(workload_id: str, calls_per_second: float, cost: float) -> dict:
         "ceridwen": "test",
         "jax_enable_x64": True,
         "xla_preallocate_env": "false",
+        "xla_memory_fraction_env": None,
     }
     ceridwen_commit = "ceridwen-commit"
     record = {
@@ -51,17 +52,19 @@ def test_fixed_workload_contract() -> None:
     assert benchmark.RESULT_SCHEMA_VERSION == 2
 
 
-def test_cuda_environment_disables_jax_preallocation(monkeypatch) -> None:
+def test_cuda_environment_reduces_jax_preallocation(monkeypatch) -> None:
     monkeypatch.setenv("JAX_PLATFORMS", "cpu")
     monkeypatch.setenv("JAX_ENABLE_X64", "0")
-    monkeypatch.setenv("XLA_PYTHON_CLIENT_PREALLOCATE", "true")
+    monkeypatch.setenv("XLA_PYTHON_CLIENT_PREALLOCATE", "false")
+    monkeypatch.setenv("XLA_CLIENT_MEM_FRACTION", "0.75")
     monkeypatch.setenv("LD_LIBRARY_PATH", "/system/cuda")
 
     benchmark._configure_cuda_environment()
 
     assert benchmark.os.environ["JAX_PLATFORMS"] == "cuda"
     assert benchmark.os.environ["JAX_ENABLE_X64"] == "1"
-    assert benchmark.os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] == "false"
+    assert "XLA_PYTHON_CLIENT_PREALLOCATE" not in benchmark.os.environ
+    assert benchmark.os.environ["XLA_CLIENT_MEM_FRACTION"] == "0.50"
     assert "LD_LIBRARY_PATH" not in benchmark.os.environ
 
 
@@ -121,6 +124,7 @@ def test_allocator_and_script_changes_remain_comparable() -> None:
     first = result("same", calls_per_second=100.0, cost=0.1)
     second = result("same", calls_per_second=110.0, cost=0.09)
     second["runtime"]["xla_preallocate_env"] = None
+    second["runtime"]["xla_memory_fraction_env"] = "0.50"
     second["benchmark_script_sha256"] = "different-script-sha"
 
     assert benchmark._normalized_comparison_fingerprint(first) == (

@@ -35,6 +35,7 @@ REFERENCE_LOGZ_TOL = -3.0
 WARMUP_STEPS = 1
 TIMED_STEPS = 5
 CALLS_PER_STEP = NUM_INNER_STEPS * NUM_DELETE
+JAX_MEMORY_FRACTION = "0.50"
 LEGACY_RESULT_SCHEMA_VERSION = 1
 RESULT_SCHEMA_VERSION = 2
 
@@ -730,6 +731,7 @@ def _runtime_metadata(jax: Any, device: Any) -> dict[str, Any]:
         "jax_enable_x64": bool(jax.config.jax_enable_x64),
         "jax_platforms_env": os.environ.get("JAX_PLATFORMS"),
         "xla_preallocate_env": os.environ.get("XLA_PYTHON_CLIENT_PREALLOCATE"),
+        "xla_memory_fraction_env": os.environ.get("XLA_CLIENT_MEM_FRACTION"),
         "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES"),
         "jax_device": str(device),
         "jax_device_kind": getattr(device, "device_kind", str(device)),
@@ -771,7 +773,8 @@ def _configure_cuda_environment() -> None:
     """Configure CUDA before JAX creates its GPU client."""
     os.environ["JAX_PLATFORMS"] = "cuda"
     os.environ["JAX_ENABLE_X64"] = "1"
-    os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "false"
+    os.environ.pop("XLA_PYTHON_CLIENT_PREALLOCATE", None)
+    os.environ["XLA_CLIENT_MEM_FRACTION"] = JAX_MEMORY_FRACTION
     os.environ.pop("LD_LIBRARY_PATH", None)
 
 
