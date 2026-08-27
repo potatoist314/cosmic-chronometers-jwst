@@ -35,7 +35,21 @@ REFERENCE_LOGZ_TOL = -3.0
 WARMUP_STEPS = 1
 TIMED_STEPS = 5
 CALLS_PER_STEP = NUM_INNER_STEPS * NUM_DELETE
-RESULT_SCHEMA_VERSION = 1
+LEGACY_RESULT_SCHEMA_VERSION = 1
+RESULT_SCHEMA_VERSION = 2
+
+COMPARISON_SOFTWARE_FIELDS = (
+    "python",
+    "jax",
+    "jaxlib",
+    "blackjax",
+    "ceridwen",
+    "jax_enable_x64",
+)
+LEGACY_COMPARISON_SOFTWARE_FIELDS = (
+    *COMPARISON_SOFTWARE_FIELDS,
+    "xla_preallocate_env",
+)
 
 FILTER_NAMES = [
     "cfht_megacam_us_9301",
@@ -135,6 +149,71 @@ def _sha256(path: Path) -> str:
 def _fingerprint(payload: dict[str, Any]) -> str:
     encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
     return hashlib.sha256(encoded).hexdigest()
+
+
+def _comparison_payload(
+    workload: dict[str, Any],
+    input_sha256: dict[str, str],
+    ceridwen_commit: str | None,
+    runtime: dict[str, Any],
+) -> dict[str, Any]:
+    """Return the scientific and software contract used for comparisons."""
+    return {
+        "workload": workload,
+        "input_sha256": input_sha256,
+        "ceridwen_commit": ceridwen_commit,
+        "software": {name: runtime[name] for name in COMPARISON_SOFTWARE_FIELDS},
+    }
+
+
+def _comparison_fingerprint(
+    workload: dict[str, Any],
+    input_sha256: dict[str, str],
+    ceridwen_commit: str | None,
+    runtime: dict[str, Any],
+) -> str:
+    return _fingerprint(
+        _comparison_payload(workload, input_sha256, ceridwen_commit, runtime)
+    )
+
+
+def _legacy_comparison_fingerprint(record: dict[str, Any]) -> str:
+    runtime = record["runtime"]
+    return _fingerprint(
+        {
+            "workload": record["workload"],
+            "input_sha256": record["input_sha256"],
+            "benchmark_script_sha256": record["benchmark_script_sha256"],
+            "ceridwen_commit": record["git"]["ceridwen_commit"],
+            "software": {
+                name: runtime[name] for name in LEGACY_COMPARISON_SOFTWARE_FIELDS
+            },
+        }
+    )
+
+
+def _normalized_comparison_fingerprint(record: dict[str, Any]) -> str:
+    schema_version = record.get("schema_version")
+    stored_fingerprint = record.get("comparison_fingerprint")
+    if schema_version == LEGACY_RESULT_SCHEMA_VERSION:
+        expected_fingerprint = _legacy_comparison_fingerprint(record)
+    elif schema_version == RESULT_SCHEMA_VERSION:
+        expected_fingerprint = _comparison_fingerprint(
+            record["workload"],
+            record["input_sha256"],
+            record["git"]["ceridwen_commit"],
+            record["runtime"],
+        )
+    else:
+        raise BenchmarkError("a benchmark result uses an unsupported schema")
+    if stored_fingerprint != expected_fingerprint:
+        raise BenchmarkError("a benchmark result has an invalid comparison fingerprint")
+    return _comparison_fingerprint(
+        record["workload"],
+        record["input_sha256"],
+        record["git"]["ceridwen_commit"],
+        record["runtime"],
+    )
 
 
 def _slug(value: str) -> str:
@@ -688,6 +767,14 @@ def _flat_result_row(result: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _configure_cuda_environment() -> None:
+    """Configure CUDA before JAX creates its GPU client."""
+    os.environ["JAX_PLATFORMS"] = "cuda"
+    os.environ["JAX_ENABLE_X64"] = "1"
+    os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] = "false"
+    os.environ.pop("LD_LIBRARY_PATH", None)
+
+
 def _write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     if not rows:
         raise BenchmarkError("no benchmark rows to write")
@@ -698,9 +785,7 @@ def _write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 
 def command_run(args: argparse.Namespace) -> int:
-    os.environ["JAX_PLATFORMS"] = "cuda"
-    os.environ["JAX_ENABLE_X64"] = "1"
-    os.environ.pop("LD_LIBRARY_PATH", None)
+    _configure_cuda_environment()
 
     import jax
 
@@ -751,31 +836,18 @@ def command_run(args: argparse.Namespace) -> int:
         "timed_steps": TIMED_STEPS,
         "likelihood_calls_per_step": CALLS_PER_STEP,
     }
-    comparison_payload = {
-        "workload": contract,
-        "input_sha256": input_sha256,
-        "benchmark_script_sha256": benchmark_script_sha256,
-        "ceridwen_commit": git["ceridwen_commit"],
-        "software": {
-            name: runtime[name]
-            for name in (
-                "python",
-                "jax",
-                "jaxlib",
-                "blackjax",
-                "ceridwen",
-                "jax_enable_x64",
-                "xla_preallocate_env",
-            )
-        },
-    }
     completed_at = datetime.now(UTC)
     result = {
         "schema_version": RESULT_SCHEMA_VERSION,
         "started_at_utc": started_at.isoformat(),
         "completed_at_utc": completed_at.isoformat(),
         "workload": contract,
-        "comparison_fingerprint": _fingerprint(comparison_payload),
+        "comparison_fingerprint": _comparison_fingerprint(
+            contract,
+            input_sha256,
+            git["ceridwen_commit"],
+            runtime,
+        ),
         "benchmark_script_sha256": benchmark_script_sha256,
         "input_sha256": input_sha256,
         "input_paths": {
@@ -848,11 +920,7 @@ def _result_json_paths(inputs: list[Path]) -> list[Path]:
 
 
 def validate_comparable(records: list[dict[str, Any]]) -> None:
-    if any(record.get("schema_version") != RESULT_SCHEMA_VERSION for record in records):
-        raise BenchmarkError("a benchmark result uses an unsupported schema")
-    fingerprints = {record.get("comparison_fingerprint") for record in records}
-    if None in fingerprints:
-        raise BenchmarkError("a benchmark result has no comparison fingerprint")
+    fingerprints = {_normalized_comparison_fingerprint(record) for record in records}
     if len(fingerprints) != 1:
         raise BenchmarkError("benchmark results use different workloads or inputs")
 

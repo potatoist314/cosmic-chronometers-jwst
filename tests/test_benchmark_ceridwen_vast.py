@@ -8,15 +8,38 @@ import pytest
 from scripts import benchmark_ceridwen_vast as benchmark
 
 
-def result(fingerprint: str, calls_per_second: float, cost: float) -> dict:
-    return {
+def result(workload_id: str, calls_per_second: float, cost: float) -> dict:
+    workload = {"id": workload_id}
+    input_sha256 = {"mock": "input-sha"}
+    runtime = {
+        "python": "3.11",
+        "jax": "0.10.2",
+        "jaxlib": "0.10.2",
+        "blackjax": "test",
+        "ceridwen": "test",
+        "jax_enable_x64": True,
+        "xla_preallocate_env": "false",
+    }
+    ceridwen_commit = "ceridwen-commit"
+    record = {
         "schema_version": benchmark.RESULT_SCHEMA_VERSION,
-        "comparison_fingerprint": fingerprint,
+        "benchmark_script_sha256": "script-sha",
+        "workload": workload,
+        "input_sha256": input_sha256,
+        "runtime": runtime,
+        "git": {"ceridwen_commit": ceridwen_commit},
         "timings": {
             "likelihood_calls_per_second": calls_per_second,
             "cost_per_100k_likelihood_calls_usd": cost,
         },
     }
+    record["comparison_fingerprint"] = benchmark._comparison_fingerprint(
+        workload,
+        input_sha256,
+        ceridwen_commit,
+        runtime,
+    )
+    return record
 
 
 def test_fixed_workload_contract() -> None:
@@ -25,6 +48,21 @@ def test_fixed_workload_contract() -> None:
     assert benchmark.EXPECTED_SPECTRAL_PIXELS == 3523
     assert benchmark.TIMED_STEPS == 5
     assert benchmark.CALLS_PER_STEP == 1000
+    assert benchmark.RESULT_SCHEMA_VERSION == 2
+
+
+def test_cuda_environment_disables_jax_preallocation(monkeypatch) -> None:
+    monkeypatch.setenv("JAX_PLATFORMS", "cpu")
+    monkeypatch.setenv("JAX_ENABLE_X64", "0")
+    monkeypatch.setenv("XLA_PYTHON_CLIENT_PREALLOCATE", "true")
+    monkeypatch.setenv("LD_LIBRARY_PATH", "/system/cuda")
+
+    benchmark._configure_cuda_environment()
+
+    assert benchmark.os.environ["JAX_PLATFORMS"] == "cuda"
+    assert benchmark.os.environ["JAX_ENABLE_X64"] == "1"
+    assert benchmark.os.environ["XLA_PYTHON_CLIENT_PREALLOCATE"] == "false"
+    assert "LD_LIBRARY_PATH" not in benchmark.os.environ
 
 
 def test_metrics_use_all_timed_steps() -> None:
@@ -77,6 +115,36 @@ def test_rank_records_rejects_mismatched_fingerprints() -> None:
                 result("second", calls_per_second=100.0, cost=0.1),
             ]
         )
+
+
+def test_allocator_and_script_changes_remain_comparable() -> None:
+    first = result("same", calls_per_second=100.0, cost=0.1)
+    second = result("same", calls_per_second=110.0, cost=0.09)
+    second["runtime"]["xla_preallocate_env"] = None
+    second["benchmark_script_sha256"] = "different-script-sha"
+
+    assert benchmark._normalized_comparison_fingerprint(first) == (
+        benchmark._normalized_comparison_fingerprint(second)
+    )
+
+
+def test_legacy_and_current_results_remain_comparable() -> None:
+    current = result("same", calls_per_second=110.0, cost=0.09)
+    legacy = json.loads(json.dumps(result("same", calls_per_second=100.0, cost=0.1)))
+    legacy["schema_version"] = benchmark.LEGACY_RESULT_SCHEMA_VERSION
+    legacy["runtime"]["xla_preallocate_env"] = None
+    legacy["comparison_fingerprint"] = benchmark._legacy_comparison_fingerprint(legacy)
+
+    assert benchmark.rank_records([legacy, current]) == [current, legacy]
+
+
+def test_invalid_legacy_fingerprint_is_rejected() -> None:
+    legacy = result("same", calls_per_second=100.0, cost=0.1)
+    legacy["schema_version"] = benchmark.LEGACY_RESULT_SCHEMA_VERSION
+    legacy["comparison_fingerprint"] = "invalid"
+
+    with pytest.raises(benchmark.BenchmarkError, match="invalid comparison"):
+        benchmark.rank_records([legacy])
 
 
 def test_flat_result_row_keeps_comparison_metrics() -> None:
