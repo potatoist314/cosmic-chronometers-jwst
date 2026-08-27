@@ -1,0 +1,574 @@
+{
+  "schema_version": 1,
+  "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+  "seed": 20260827,
+  "implementations": [
+    {
+      "implementation": "baseline",
+      "fingerprint": {
+        "implementation": "baseline",
+        "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+        "seed": 20260827,
+        "workload": {
+          "target": "M1_210210",
+          "redshift": 0.65420001745224,
+          "velocity_dispersion_km_s": 259.5,
+          "photometric_bands": 11,
+          "spectral_pixels": 3523,
+          "ssp_grid_id": "amist_c3k_hr_krou_afe",
+          "ssp_grid_schema": "2.1",
+          "ssp_grid_shape": [
+            5,
+            13,
+            107,
+            10992
+          ],
+          "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+          "input_sha256": {
+            "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+            "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+            "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+            "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+          },
+          "random_points": 4,
+          "warmup_calls": 1,
+          "timed_calls": 10
+        },
+        "runtime": {
+          "python": "3.11.16",
+          "jax": "0.10.2",
+          "jaxlib": "0.10.2",
+          "ceridwen": "0.2.0",
+          "jax_enable_x64": true,
+          "backend": "gpu",
+          "device_kind": "NVIDIA GeForce RTX 5060"
+        }
+      },
+      "normalized_fingerprint": "fb2d0a6a966147eaf49cf0f49d89552819d58917f09676e56cb481fbe342e5ff",
+      "basis_shape": [
+        5,
+        13,
+        107,
+        10992
+      ],
+      "stablehlo": {
+        "dialect": "stablehlo",
+        "forbidden_expansion_shape": [
+          13,
+          107,
+          10992
+        ],
+        "forbidden_expansion_occurrences": 15,
+        "forbidden_expansion_lines": [
+          "%cst_3 = stablehlo.constant dense<\"0xC3E76512BEA36F12733080129AED8A1227D496128FCAA3121ED2B112F3F3C0128D5ED1121529E312B36AF61226A10513E2E8101393191D1307492A133B8E381348FB47136BA95813D1AE6A13D8237E13FB96891388F69413103DA1138B7AAE1353C6BC13B53",
+          "%107 = call @_take(%cst_3, %106) : (tensor<5x13x107x10992xf32>, tensor<i32>) -> tensor<13x107x10992xf32>",
+          "%108 = call @_take(%cst_3, %90) : (tensor<5x13x107x10992xf32>, tensor<i32>) -> tensor<13x107x10992xf32>",
+          "%111 = stablehlo.broadcast_in_dim %110, dims = [] : (tensor<f32>) -> tensor<13x107x10992xf32>",
+          "%112 = stablehlo.multiply %111, %107 : tensor<13x107x10992xf32>",
+          "%113 = stablehlo.broadcast_in_dim %109, dims = [] : (tensor<f32>) -> tensor<13x107x10992xf32>",
+          "%114 = stablehlo.multiply %113, %108 : tensor<13x107x10992xf32>",
+          "%115 = stablehlo.add %112, %114 : tensor<13x107x10992xf32>"
+        ],
+        "omits_forbidden_expansion": false,
+        "stablehlo_sha256": "6633de53667db0beb4748b8984e75bed36417e6610a8220e85d361352e21e12a"
+      },
+      "timings": {
+        "call_seconds": [
+          0.0026691965758800507,
+          0.002641238272190094,
+          0.0024958783760666847,
+          0.0024601081386208534,
+          0.002558711916208267,
+          0.002533387392759323,
+          0.002488994039595127,
+          0.0025868648663163185,
+          0.0024408912286162376,
+          0.0024985484778881073
+        ],
+        "calls": 10,
+        "total_seconds": 0.025373819284141064,
+        "calls_per_second": 394.10700801554606,
+        "median_step_seconds": 0.002515967935323715,
+        "iqr_step_seconds": 8.911150507628918e-05
+      },
+      "memory": {
+        "bytes_in_use_mib": 552.650146484375,
+        "peak_bytes_in_use_mib": 1460.489501953125,
+        "bytes_limit_mib": 5780.0
+      }
+    },
+    {
+      "implementation": "variant_a",
+      "fingerprint": {
+        "implementation": "variant_a",
+        "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+        "seed": 20260827,
+        "workload": {
+          "target": "M1_210210",
+          "redshift": 0.65420001745224,
+          "velocity_dispersion_km_s": 259.5,
+          "photometric_bands": 11,
+          "spectral_pixels": 3523,
+          "ssp_grid_id": "amist_c3k_hr_krou_afe",
+          "ssp_grid_schema": "2.1",
+          "ssp_grid_shape": [
+            5,
+            13,
+            107,
+            10992
+          ],
+          "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+          "input_sha256": {
+            "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+            "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+            "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+            "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+          },
+          "random_points": 4,
+          "warmup_calls": 1,
+          "timed_calls": 10
+        },
+        "runtime": {
+          "python": "3.11.16",
+          "jax": "0.10.2",
+          "jaxlib": "0.10.2",
+          "ceridwen": "0.2.0",
+          "jax_enable_x64": true,
+          "backend": "gpu",
+          "device_kind": "NVIDIA GeForce RTX 5060"
+        }
+      },
+      "normalized_fingerprint": "fb2d0a6a966147eaf49cf0f49d89552819d58917f09676e56cb481fbe342e5ff",
+      "basis_shape": [
+        5,
+        13,
+        8,
+        10992
+      ],
+      "stablehlo": {
+        "dialect": "stablehlo",
+        "forbidden_expansion_shape": [
+          13,
+          107,
+          10992
+        ],
+        "forbidden_expansion_occurrences": 0,
+        "forbidden_expansion_lines": [],
+        "omits_forbidden_expansion": true,
+        "stablehlo_sha256": "b33b41e13d8f7cec9749c48d8c1157de5058da867bd1d59fdfb4d85277bc18c3"
+      },
+      "timings": {
+        "call_seconds": [
+          0.001507120206952095,
+          0.001436229795217514,
+          0.0014404235407710075,
+          0.001391473226249218,
+          0.0014685457572340965,
+          0.00137279462069273,
+          0.0013830410316586494,
+          0.0013823285698890686,
+          0.0014083562418818474,
+          0.0013752421364188194
+        ],
+        "calls": 10,
+        "total_seconds": 0.014165555126965046,
+        "calls_per_second": 705.9377419642635,
+        "median_step_seconds": 0.0013999147340655327,
+        "iqr_step_seconds": 5.686841905117035e-05
+      },
+      "memory": {
+        "bytes_in_use_mib": 906.03173828125,
+        "peak_bytes_in_use_mib": 2046.091064453125,
+        "bytes_limit_mib": 5780.0
+      }
+    },
+    {
+      "implementation": "variant_b",
+      "fingerprint": {
+        "implementation": "variant_b",
+        "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+        "seed": 20260827,
+        "workload": {
+          "target": "M1_210210",
+          "redshift": 0.65420001745224,
+          "velocity_dispersion_km_s": 259.5,
+          "photometric_bands": 11,
+          "spectral_pixels": 3523,
+          "ssp_grid_id": "amist_c3k_hr_krou_afe",
+          "ssp_grid_schema": "2.1",
+          "ssp_grid_shape": [
+            5,
+            13,
+            107,
+            10992
+          ],
+          "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+          "input_sha256": {
+            "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+            "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+            "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+            "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+          },
+          "random_points": 4,
+          "warmup_calls": 1,
+          "timed_calls": 10
+        },
+        "runtime": {
+          "python": "3.11.16",
+          "jax": "0.10.2",
+          "jaxlib": "0.10.2",
+          "ceridwen": "0.2.0",
+          "jax_enable_x64": true,
+          "backend": "gpu",
+          "device_kind": "NVIDIA GeForce RTX 5060"
+        }
+      },
+      "normalized_fingerprint": "fb2d0a6a966147eaf49cf0f49d89552819d58917f09676e56cb481fbe342e5ff",
+      "basis_shape": [
+        520,
+        10992
+      ],
+      "stablehlo": {
+        "dialect": "stablehlo",
+        "forbidden_expansion_shape": [
+          13,
+          107,
+          10992
+        ],
+        "forbidden_expansion_occurrences": 0,
+        "forbidden_expansion_lines": [],
+        "omits_forbidden_expansion": true,
+        "stablehlo_sha256": "8385d900b8462174971bb661932694d28ead4f5b8191ca84824eeadbf032f040"
+      },
+      "timings": {
+        "call_seconds": [
+          0.0015395916998386383,
+          0.0013603772968053818,
+          0.0014307713136076927,
+          0.0014240257441997528,
+          0.0013988912105560303,
+          0.0013859737664461136,
+          0.001361980102956295,
+          0.0014017540961503983,
+          0.0014256630092859268,
+          0.001463920809328556
+        ],
+        "calls": 10,
+        "total_seconds": 0.014192949049174786,
+        "calls_per_second": 704.5752059950801,
+        "median_step_seconds": 0.0014128899201750755,
+        "iqr_step_seconds": 4.0291110053658485e-05
+      },
+      "memory": {
+        "bytes_in_use_mib": 927.89599609375,
+        "peak_bytes_in_use_mib": 2406.773193359375,
+        "bytes_limit_mib": 5780.0
+      }
+    }
+  ],
+  "workload": {
+    "target": "M1_210210",
+    "redshift": 0.65420001745224,
+    "velocity_dispersion_km_s": 259.5,
+    "photometric_bands": 11,
+    "spectral_pixels": 3523,
+    "ssp_grid_id": "amist_c3k_hr_krou_afe",
+    "ssp_grid_schema": "2.1",
+    "ssp_grid_shape": [
+      5,
+      13,
+      107,
+      10992
+    ],
+    "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+    "input_sha256": {
+      "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+      "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+      "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+      "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+    },
+    "random_points": 4,
+    "warmup_calls": 1,
+    "timed_calls": 10
+  },
+  "equivalence": [
+    {
+      "label": "initial",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.7763568394002505e-15,
+          "max_relative": 1.906642381754864e-07
+        },
+        "spectrum": {
+          "max_absolute": 3.126237288455886e-35,
+          "max_relative": 3.126237288455886e-23
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.024196157639380544,
+        "relative": 2.58712370728976e-07
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "label": "lower_edges",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.734723475976807e-18,
+          "max_relative": 2.2081381700900238e-07
+        },
+        "spectrum": {
+          "max_absolute": 2.067637893255273e-38,
+          "max_relative": 2.0676378932552729e-26
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.0005731293931603432,
+        "relative": 9.184136995073474e-11
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "label": "upper_edges",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 7.105427357601002e-15,
+          "max_relative": 8.034715648363999e-08
+        },
+        "spectrum": {
+          "max_absolute": 1.0026879086656408e-32,
+          "max_relative": 1.0026879086656407e-20
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 12.057555913925171,
+        "relative": 6.77514103932491e-09
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "label": "random_0",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.4210854715202004e-14,
+          "max_relative": 1.5216797066841536e-07
+        },
+        "spectrum": {
+          "max_absolute": 3.385320092575844e-34,
+          "max_relative": 3.385320092575844e-22
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.09702758211642504,
+        "relative": 1.1947717903344112e-08
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "label": "random_1",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 8.881784197001252e-16,
+          "max_relative": 9.440079651312772e-08
+        },
+        "spectrum": {
+          "max_absolute": 3.523089573938397e-35,
+          "max_relative": 3.523089573938397e-23
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.10006373072974384,
+        "relative": 9.133635034288662e-08
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "label": "random_2",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.8189894035458565e-12,
+          "max_relative": 1.087380141484573e-07
+        },
+        "spectrum": {
+          "max_absolute": 5.768418397304319e-32,
+          "max_relative": 5.768418397304319e-20
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 187085.90966796875,
+        "relative": 1.2533235648575865e-07
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "label": "random_3",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 2.7755575615628914e-17,
+          "max_relative": 1.042132069528634e-07
+        },
+        "spectrum": {
+          "max_absolute": 3.0830161733577456e-37,
+          "max_relative": 3.0830161733577455e-25
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.0010473225265741348,
+        "relative": 1.7108961587118134e-10
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "label": "initial",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.7763568394002505e-15,
+          "max_relative": 1.906642381754864e-07
+        },
+        "spectrum": {
+          "max_absolute": 2.8030014397957726e-35,
+          "max_relative": 2.803001439795773e-23
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.027153360351803713,
+        "relative": 2.9033164416319976e-07
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    },
+    {
+      "label": "lower_edges",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 8.673617379884035e-19,
+          "max_relative": 1.1040690850450119e-07
+        },
+        "spectrum": {
+          "max_absolute": 2.6744458719446635e-38,
+          "max_relative": 2.674445871944664e-26
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.0005590645596385002,
+        "relative": 8.958754455948721e-11
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    },
+    {
+      "label": "upper_edges",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 2.2737367544323206e-13,
+          "max_relative": 1.1331867000308193e-07
+        },
+        "spectrum": {
+          "max_absolute": 1.8506476839132398e-32,
+          "max_relative": 1.85064768391324e-20
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 133.03113198280334,
+        "relative": 7.475019715758732e-08
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    },
+    {
+      "label": "random_0",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.4210854715202004e-14,
+          "max_relative": 9.899419239900453e-08
+        },
+        "spectrum": {
+          "max_absolute": 2.2827394164099146e-34,
+          "max_relative": 2.2827394164099147e-22
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.04639498610049486,
+        "relative": 5.712954955356433e-09
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    },
+    {
+      "label": "random_1",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 8.881784197001252e-16,
+          "max_relative": 1.2310140107274492e-07
+        },
+        "spectrum": {
+          "max_absolute": 4.082093543941219e-35,
+          "max_relative": 4.082093543941219e-23
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.19020742760039866,
+        "relative": 1.736178745128997e-07
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    },
+    {
+      "label": "random_2",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 3.637978807091713e-12,
+          "max_relative": 2.076774592296715e-07
+        },
+        "spectrum": {
+          "max_absolute": 4.8297847622731806e-32,
+          "max_relative": 4.829784762273181e-20
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 57888.22216796875,
+        "relative": 3.878040473469628e-08
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    },
+    {
+      "label": "random_3",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 2.7755575615628914e-17,
+          "max_relative": 1.042132069528634e-07
+        },
+        "spectrum": {
+          "max_absolute": 2.1674813950022104e-37,
+          "max_relative": 2.1674813950022103e-25
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 0.0003308085724711418,
+        "relative": 5.404057504245347e-11
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    }
+  ],
+  "tolerances": {
+    "prediction_rtol": 5e-05,
+    "prediction_atol": 1e-12,
+    "log_likelihood_rtol": 0.0001,
+    "log_likelihood_atol": 1e-05,
+    "reason": "float32 precontraction changes reduction order"
+  },
+  "diagnostic": {
+    "purpose": "identify comparisons that fail the unchanged harness tolerances",
+    "comparison_count": 14,
+    "failed_comparison_count": 0
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "instance_id": 48943195,
+  "offer_id": 39597214,
+  "gpu_name": "NVIDIA GeForce RTX 5060",
+  "gpu_ram_mib": 8151,
+  "driver_version": "580.126.09",
+  "parent_commit": "1e0b7e95eb72ef315d9ef4f53bbfdc3cf13b70e3",
+  "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+  "random_points": 4,
+  "edge_points": 3,
+  "comparisons_per_fast_variant": 7,
+  "default_matmul_precision": {
+    "status": "failed_equivalence",
+    "failed_comparisons": 8,
+    "total_comparisons": 14,
+    "max_prediction_relative_delta": 0.00023974171199370176,
+    "max_log_likelihood_relative_delta": 0.0002933022008004284,
+    "calls_per_second": {
+      "baseline": 653.7860292883759,
+      "variant_a": 654.6674925345998,
+      "variant_b": 620.7777463459978
+    }
+  },
+  "highest_matmul_precision": {
+    "setting": "JAX_DEFAULT_MATMUL_PRECISION=highest",
+    "status": "passed",
+    "failed_comparisons": 0,
+    "total_comparisons": 14,
+    "max_prediction_relative_delta": 2.2081381700900238e-7,
+    "max_log_likelihood_relative_delta": 2.9033164416319976e-7,
+    "stablehlo_forbidden_expansion_occurrences": {
+      "baseline": 15,
+      "variant_a": 0,
+      "variant_b": 0
+    },
+    "calls_per_second": {
+      "baseline": 394.10700801554606,
+      "variant_a": 705.9377419642635,
+      "variant_b": 704.5752059950801
+    },
+    "speedup_vs_baseline": {
+      "variant_a": 1.791233669045583,
+      "variant_b": 1.7877763949005627
+    },
+    "peak_jax_memory_mib": {
+      "baseline": 1460.489501953125,
+      "variant_a": 2046.091064453125,
+      "variant_b": 2406.773193359375
+    }
+  },
+  "recommendation": "Use RTX 5060 with JAX_DEFAULT_MATMUL_PRECISION=highest for these fast paths. Do not use the default GPU matmul precision for scientific runs.",
+  "pre_termination_credit_usd": 13.158869041639992,
+  "incremental_spend_before_termination_usd": 0.079625039499998,
+  "final_credit_usd": 13.157161281339993,
+  "final_incremental_spend_usd": 0.08133279979999664,
+  "termination_confirmed": true,
+  "final_instances": [],
+  "remote_artifact_manifest": "remote_sha256.txt"
+}

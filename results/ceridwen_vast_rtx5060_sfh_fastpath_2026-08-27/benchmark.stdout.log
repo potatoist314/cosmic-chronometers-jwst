@@ -1,0 +1,39 @@
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/cosmic-chronometers-jwst/scripts/benchmark_ceridwen_sfh_basis_fastpath.py", line 493, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/benchmark_ceridwen_sfh_basis_fastpath.py", line 483, in main
+    result = run(args)
+             ^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/benchmark_ceridwen_sfh_basis_fastpath.py", line 432, in run
+    equivalence.extend(
+  File "/workspace/cosmic-chronometers-jwst/scripts/benchmark_ceridwen_sfh_basis_fastpath.py", line 433, in <genexpr>
+    compare_evaluations(reference, candidate)
+  File "/workspace/cosmic-chronometers-jwst/scripts/benchmark_ceridwen_sfh_basis_fastpath.py", line 272, in compare_evaluations
+    np.testing.assert_allclose(
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/numpy/testing/_private/utils.py", line 1768, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/numpy/testing/_private/utils.py", line 983, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=0.0001, atol=1e-05
+
+Mismatched elements: 1 / 1 (100%)
+Max absolute difference among violations: 27.42801684
+Max relative difference among violations: 0.00029327
+ ACTUAL: array(-93497.891366)
+ DESIRED: array(-93525.319383)

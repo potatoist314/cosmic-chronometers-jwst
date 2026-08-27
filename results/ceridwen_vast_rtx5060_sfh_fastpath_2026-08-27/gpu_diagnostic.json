@@ -1,0 +1,598 @@
+{
+  "schema_version": 1,
+  "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+  "seed": 20260827,
+  "implementations": [
+    {
+      "implementation": "baseline",
+      "fingerprint": {
+        "implementation": "baseline",
+        "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+        "seed": 20260827,
+        "workload": {
+          "target": "M1_210210",
+          "redshift": 0.65420001745224,
+          "velocity_dispersion_km_s": 259.5,
+          "photometric_bands": 11,
+          "spectral_pixels": 3523,
+          "ssp_grid_id": "amist_c3k_hr_krou_afe",
+          "ssp_grid_schema": "2.1",
+          "ssp_grid_shape": [
+            5,
+            13,
+            107,
+            10992
+          ],
+          "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+          "input_sha256": {
+            "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+            "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+            "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+            "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+          },
+          "random_points": 4,
+          "warmup_calls": 1,
+          "timed_calls": 10
+        },
+        "runtime": {
+          "python": "3.11.16",
+          "jax": "0.10.2",
+          "jaxlib": "0.10.2",
+          "ceridwen": "0.2.0",
+          "jax_enable_x64": true,
+          "backend": "gpu",
+          "device_kind": "NVIDIA GeForce RTX 5060"
+        }
+      },
+      "normalized_fingerprint": "fb2d0a6a966147eaf49cf0f49d89552819d58917f09676e56cb481fbe342e5ff",
+      "basis_shape": [
+        5,
+        13,
+        107,
+        10992
+      ],
+      "stablehlo": {
+        "dialect": "stablehlo",
+        "forbidden_expansion_shape": [
+          13,
+          107,
+          10992
+        ],
+        "forbidden_expansion_occurrences": 15,
+        "forbidden_expansion_lines": [
+          "%cst_3 = stablehlo.constant dense<\"0xC3E76512BEA36F12733080129AED8A1227D496128FCAA3121ED2B112F3F3C0128D5ED1121529E312B36AF61226A10513E2E8101393191D1307492A133B8E381348FB47136BA95813D1AE6A13D8237E13FB96891388F69413103DA1138B7AAE1353C6BC13B53",
+          "%107 = call @_take(%cst_3, %106) : (tensor<5x13x107x10992xf32>, tensor<i32>) -> tensor<13x107x10992xf32>",
+          "%108 = call @_take(%cst_3, %90) : (tensor<5x13x107x10992xf32>, tensor<i32>) -> tensor<13x107x10992xf32>",
+          "%111 = stablehlo.broadcast_in_dim %110, dims = [] : (tensor<f32>) -> tensor<13x107x10992xf32>",
+          "%112 = stablehlo.multiply %111, %107 : tensor<13x107x10992xf32>",
+          "%113 = stablehlo.broadcast_in_dim %109, dims = [] : (tensor<f32>) -> tensor<13x107x10992xf32>",
+          "%114 = stablehlo.multiply %113, %108 : tensor<13x107x10992xf32>",
+          "%115 = stablehlo.add %112, %114 : tensor<13x107x10992xf32>"
+        ],
+        "omits_forbidden_expansion": false,
+        "stablehlo_sha256": "6df07a66ef1e7c277f1908df5f6def07cb1824da87951ae682222aa889d25c78"
+      },
+      "timings": {
+        "call_seconds": [
+          0.0016501415520906448,
+          0.0015391027554869652,
+          0.0015545524656772614,
+          0.0015108343213796616,
+          0.0014932546764612198,
+          0.0015432797372341156,
+          0.0015243124216794968,
+          0.0015037087723612785,
+          0.0014863479882478714,
+          0.001489989459514618
+        ],
+        "calls": 10,
+        "total_seconds": 0.015295524150133133,
+        "calls_per_second": 653.7860292883759,
+        "median_step_seconds": 0.0015175733715295792,
+        "iqr_step_seconds": 4.636729136109352e-05
+      },
+      "memory": {
+        "bytes_in_use_mib": 552.643798828125,
+        "peak_bytes_in_use_mib": 1460.489990234375,
+        "bytes_limit_mib": 5780.0
+      }
+    },
+    {
+      "implementation": "variant_a",
+      "fingerprint": {
+        "implementation": "variant_a",
+        "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+        "seed": 20260827,
+        "workload": {
+          "target": "M1_210210",
+          "redshift": 0.65420001745224,
+          "velocity_dispersion_km_s": 259.5,
+          "photometric_bands": 11,
+          "spectral_pixels": 3523,
+          "ssp_grid_id": "amist_c3k_hr_krou_afe",
+          "ssp_grid_schema": "2.1",
+          "ssp_grid_shape": [
+            5,
+            13,
+            107,
+            10992
+          ],
+          "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+          "input_sha256": {
+            "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+            "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+            "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+            "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+          },
+          "random_points": 4,
+          "warmup_calls": 1,
+          "timed_calls": 10
+        },
+        "runtime": {
+          "python": "3.11.16",
+          "jax": "0.10.2",
+          "jaxlib": "0.10.2",
+          "ceridwen": "0.2.0",
+          "jax_enable_x64": true,
+          "backend": "gpu",
+          "device_kind": "NVIDIA GeForce RTX 5060"
+        }
+      },
+      "normalized_fingerprint": "fb2d0a6a966147eaf49cf0f49d89552819d58917f09676e56cb481fbe342e5ff",
+      "basis_shape": [
+        5,
+        13,
+        8,
+        10992
+      ],
+      "stablehlo": {
+        "dialect": "stablehlo",
+        "forbidden_expansion_shape": [
+          13,
+          107,
+          10992
+        ],
+        "forbidden_expansion_occurrences": 0,
+        "forbidden_expansion_lines": [],
+        "omits_forbidden_expansion": true,
+        "stablehlo_sha256": "2e33b962914e3c9f1deed014ec41a230729a416e0b25ac1bcd330521456a1d1a"
+      },
+      "timings": {
+        "call_seconds": [
+          0.0016174018383026123,
+          0.0015432368963956833,
+          0.0015468131750822067,
+          0.0015109675005078316,
+          0.0014875847846269608,
+          0.0015181591734290123,
+          0.0015205387026071548,
+          0.0014621065929532051,
+          0.0015256823971867561,
+          0.0015424387529492378
+        ],
+        "calls": 10,
+        "total_seconds": 0.01527492981404066,
+        "calls_per_second": 654.6674925345998,
+        "median_step_seconds": 0.0015231105498969555,
+        "iqr_step_seconds": 3.0271941795945168e-05
+      },
+      "memory": {
+        "bytes_in_use_mib": 906.05126953125,
+        "peak_bytes_in_use_mib": 2046.07275390625,
+        "bytes_limit_mib": 5780.0
+      }
+    },
+    {
+      "implementation": "variant_b",
+      "fingerprint": {
+        "implementation": "variant_b",
+        "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+        "seed": 20260827,
+        "workload": {
+          "target": "M1_210210",
+          "redshift": 0.65420001745224,
+          "velocity_dispersion_km_s": 259.5,
+          "photometric_bands": 11,
+          "spectral_pixels": 3523,
+          "ssp_grid_id": "amist_c3k_hr_krou_afe",
+          "ssp_grid_schema": "2.1",
+          "ssp_grid_shape": [
+            5,
+            13,
+            107,
+            10992
+          ],
+          "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+          "input_sha256": {
+            "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+            "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+            "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+            "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+          },
+          "random_points": 4,
+          "warmup_calls": 1,
+          "timed_calls": 10
+        },
+        "runtime": {
+          "python": "3.11.16",
+          "jax": "0.10.2",
+          "jaxlib": "0.10.2",
+          "ceridwen": "0.2.0",
+          "jax_enable_x64": true,
+          "backend": "gpu",
+          "device_kind": "NVIDIA GeForce RTX 5060"
+        }
+      },
+      "normalized_fingerprint": "fb2d0a6a966147eaf49cf0f49d89552819d58917f09676e56cb481fbe342e5ff",
+      "basis_shape": [
+        520,
+        10992
+      ],
+      "stablehlo": {
+        "dialect": "stablehlo",
+        "forbidden_expansion_shape": [
+          13,
+          107,
+          10992
+        ],
+        "forbidden_expansion_occurrences": 0,
+        "forbidden_expansion_lines": [],
+        "omits_forbidden_expansion": true,
+        "stablehlo_sha256": "26634740b00fdc5136e56789f38b2e14f546ce8f2eeb6b03d9bf25c56b2b2f7a"
+      },
+      "timings": {
+        "call_seconds": [
+          0.0017393138259649277,
+          0.0015719002112746239,
+          0.0015575382858514786,
+          0.0015618139877915382,
+          0.0016184458509087563,
+          0.001643775962293148,
+          0.0016352012753486633,
+          0.0016747452318668365,
+          0.0015468718484044075,
+          0.001559218391776085
+        ],
+        "calls": 10,
+        "total_seconds": 0.016108824871480465,
+        "calls_per_second": 620.7777463459978,
+        "median_step_seconds": 0.00159517303109169,
+        "iqr_step_seconds": 8.176499977707863e-05
+      },
+      "memory": {
+        "bytes_in_use_mib": 927.928955078125,
+        "peak_bytes_in_use_mib": 2406.793212890625,
+        "bytes_limit_mib": 5780.0
+      }
+    }
+  ],
+  "workload": {
+    "target": "M1_210210",
+    "redshift": 0.65420001745224,
+    "velocity_dispersion_km_s": 259.5,
+    "photometric_bands": 11,
+    "spectral_pixels": 3523,
+    "ssp_grid_id": "amist_c3k_hr_krou_afe",
+    "ssp_grid_schema": "2.1",
+    "ssp_grid_shape": [
+      5,
+      13,
+      107,
+      10992
+    ],
+    "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+    "input_sha256": {
+      "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+      "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+      "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+      "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+    },
+    "random_points": 4,
+    "warmup_calls": 1,
+    "timed_calls": 10
+  },
+  "equivalence": [
+    {
+      "implementation": "variant_a",
+      "label": "initial",
+      "comparison_failed": true,
+      "assertion": "\nNot equal to tolerance rtol=0.0001, atol=1e-05\n\nMismatched elements: 1 / 1 (100%)\nMax absolute difference among violations: 27.42972343\nMax relative difference among violations: 0.00029329\n ACTUAL: array(-93497.891741)\n DESIRED: array(-93525.321465)",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 2.948752353404416e-13,
+          "max_relative": 7.032030407572165e-05
+        },
+        "spectrum": {
+          "max_absolute": 1.2388990055821278e-32,
+          "max_relative": 1.2388990055821278e-20
+        }
+      },
+      "reference_log_likelihood": -93525.32146492558,
+      "candidate_log_likelihood": -93497.89174149866,
+      "log_likelihood_delta": {
+        "absolute": 27.429723426917917,
+        "relative": 0.0002932865987229434
+      }
+    },
+    {
+      "label": "lower_edges",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 2.040034807748725e-15,
+          "max_relative": 0.00023974171199370176
+        },
+        "spectrum": {
+          "max_absolute": 5.995917284450317e-35,
+          "max_relative": 5.995917284450318e-23
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 2.1747919423505664,
+        "relative": 3.4850048475426154e-07
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "implementation": "variant_a",
+      "label": "upper_edges",
+      "comparison_failed": true,
+      "assertion": "\nNot equal to tolerance rtol=5e-05, atol=1e-12\n\nMismatched elements: 8 / 12 (66.7%)\nFirst 5 mismatches are at indices:\n [1]: 8.842864929192729e-08 (ACTUAL), 8.843408494385585e-08 (DESIRED)\n [2]: 3.924660063603369e-07 (ACTUAL), 3.9249036376531876e-07 (DESIRED)\n [3]: 1.0031790225184523e-06 (ACTUAL), 1.003248939923651e-06 (DESIRED)\n [4]: 2.6774446268973406e-06 (ACTUAL), 2.6776492632052395e-06 (DESIRED)\n [5]: 4.553024155029561e-06 (ACTUAL), 4.553374765237095e-06 (DESIRED)\nMax absolute difference among violations: 1.549779e-09\nMax relative difference among violations: 7.9141726e-05\n ACTUAL: array([1.431351e-08, 8.842865e-08, 3.924660e-07, 1.003179e-06,\n       2.677445e-06, 4.553024e-06, 6.233903e-06, 1.143921e-05,\n       2.753146e-05, 5.119389e-05, 6.364527e-05, 4.097235e-05],\n      dtype=float32)\n DESIRED: array([1.431445e-08, 8.843408e-08, 3.924904e-07, 1.003249e-06,\n       2.677649e-06, 4.553375e-06, 6.234396e-06, 1.144010e-05,\n       2.753301e-05, 5.119613e-05, 6.364747e-05, 4.097336e-05],\n      dtype=float32)",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 2.240994945168495e-09,
+          "max_relative": 7.914172601886094e-05
+        },
+        "spectrum": {
+          "max_absolute": 1.8351583950033266e-29,
+          "max_relative": 1.8351583950033266e-17
+        }
+      },
+      "reference_log_likelihood": -1779676001.420424,
+      "candidate_log_likelihood": -1779526864.7736883,
+      "log_likelihood_delta": {
+        "absolute": 149136.64673566818,
+        "relative": 8.379988639316192e-05
+      }
+    },
+    {
+      "label": "random_0",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 8.355982572538778e-12,
+          "max_relative": 6.986257358221337e-05
+        },
+        "spectrum": {
+          "max_absolute": 8.326684883096868e-32,
+          "max_relative": 8.326684883096868e-20
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 15.300825613550842,
+        "relative": 1.8841028925116447e-06
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "implementation": "variant_a",
+      "label": "random_1",
+      "comparison_failed": true,
+      "assertion": "\nNot equal to tolerance rtol=0.0001, atol=1e-05\n\nMismatched elements: 1 / 1 (100%)\nMax absolute difference among violations: 168.82185167\nMax relative difference among violations: 0.0001541\n ACTUAL: array(-1095383.28149)\n DESIRED: array(-1095552.103342)",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 5.213607323639735e-13,
+          "max_relative": 7.083397940732539e-05
+        },
+        "spectrum": {
+          "max_absolute": 2.5247259573195686e-32,
+          "max_relative": 2.5247259573195686e-20
+        }
+      },
+      "reference_log_likelihood": -1095552.1033421375,
+      "candidate_log_likelihood": -1095383.2814904677,
+      "log_likelihood_delta": {
+        "absolute": 168.8218516698107,
+        "relative": 0.00015409751042857353
+      }
+    },
+    {
+      "implementation": "variant_a",
+      "label": "random_2",
+      "comparison_failed": true,
+      "assertion": "\nNot equal to tolerance rtol=5e-05, atol=1e-12\n\nMismatched elements: 7 / 12 (58.3%)\nFirst 5 mismatches are at indices:\n [0]: 1.4522198398481123e-05 (ACTUAL), 1.4523154277412686e-05 (DESIRED)\n [1]: 1.3980708899907768e-05 (ACTUAL), 1.3981626580061857e-05 (DESIRED)\n [2]: 1.2755872376146726e-05 (ACTUAL), 1.2756678188452497e-05 (DESIRED)\n [3]: 1.4349039702210575e-05 (ACTUAL), 1.435005742678186e-05 (DESIRED)\n [4]: 1.6617632354609668e-05 (ACTUAL), 1.6618785593891516e-05 (DESIRED)\nMax absolute difference among violations: 1.1532393e-09\nMax relative difference among violations: 7.092129e-05\n ACTUAL: array([1.452220e-05, 1.398071e-05, 1.275587e-05, 1.434904e-05,\n       1.661763e-05, 1.660263e-05, 1.672726e-05, 1.751670e-05,\n       2.034289e-05, 2.286916e-05, 1.958127e-05, 1.216889e-05],\n      dtype=float32)\n DESIRED: array([1.452315e-05, 1.398163e-05, 1.275668e-05, 1.435006e-05,\n       1.661879e-05, 1.660370e-05, 1.672818e-05, 1.751745e-05,\n       2.034337e-05, 2.286937e-05, 1.958104e-05, 1.216877e-05],\n      dtype=float32)",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.153239281848073e-09,
+          "max_relative": 7.092129089869559e-05
+        },
+        "spectrum": {
+          "max_absolute": 5.15118480192697e-29,
+          "max_relative": 5.1511848019269704e-17
+        }
+      },
+      "reference_log_likelihood": -1492718360316.0537,
+      "candidate_log_likelihood": -1492522126880.7742,
+      "log_likelihood_delta": {
+        "absolute": 196233435.27954102,
+        "relative": 0.0001314604552984747
+      }
+    },
+    {
+      "label": "random_3",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.304512053934559e-14,
+          "max_relative": 7.2054288466461e-05
+        },
+        "spectrum": {
+          "max_absolute": 2.8219787821859e-34,
+          "max_relative": 2.8219787821859e-22
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 8.883223602548242,
+        "relative": 1.4511549931321074e-06
+      },
+      "implementation": "variant_a",
+      "comparison_failed": false
+    },
+    {
+      "implementation": "variant_b",
+      "label": "initial",
+      "comparison_failed": true,
+      "assertion": "\nNot equal to tolerance rtol=0.0001, atol=1e-05\n\nMismatched elements: 1 / 1 (100%)\nMax absolute difference among violations: 27.43118262\nMax relative difference among violations: 0.0002933\n ACTUAL: array(-93497.890282)\n DESIRED: array(-93525.321465)",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 2.948752353404416e-13,
+          "max_relative": 7.025867671472952e-05
+        },
+        "spectrum": {
+          "max_absolute": 1.2394772276229253e-32,
+          "max_relative": 1.2394772276229253e-20
+        }
+      },
+      "reference_log_likelihood": -93525.32146492558,
+      "candidate_log_likelihood": -93497.89028230935,
+      "log_likelihood_delta": {
+        "absolute": 27.431182616230217,
+        "relative": 0.0002933022008004284
+      }
+    },
+    {
+      "label": "lower_edges",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 2.040034807748725e-15,
+          "max_relative": 0.00023974171199370176
+        },
+        "spectrum": {
+          "max_absolute": 5.996431094349957e-35,
+          "max_relative": 5.996431094349957e-23
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 2.174807181581855,
+        "relative": 3.485029267715359e-07
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    },
+    {
+      "implementation": "variant_b",
+      "label": "upper_edges",
+      "comparison_failed": true,
+      "assertion": "\nNot equal to tolerance rtol=5e-05, atol=1e-12\n\nMismatched elements: 8 / 12 (66.7%)\nFirst 5 mismatches are at indices:\n [1]: 8.842864929192729e-08 (ACTUAL), 8.843408494385585e-08 (DESIRED)\n [2]: 3.924660063603369e-07 (ACTUAL), 3.9249036376531876e-07 (DESIRED)\n [3]: 1.0031789088316145e-06 (ACTUAL), 1.003248939923651e-06 (DESIRED)\n [4]: 2.6774446268973406e-06 (ACTUAL), 2.6776492632052395e-06 (DESIRED)\n [5]: 4.553024155029561e-06 (ACTUAL), 4.553374765237095e-06 (DESIRED)\nMax absolute difference among violations: 1.553417e-09\nMax relative difference among violations: 7.9141726e-05\n ACTUAL: array([1.431351e-08, 8.842865e-08, 3.924660e-07, 1.003179e-06,\n       2.677445e-06, 4.553024e-06, 6.233903e-06, 1.143921e-05,\n       2.753145e-05, 5.119389e-05, 6.364527e-05, 4.097235e-05],\n      dtype=float32)\n DESIRED: array([1.431445e-08, 8.843408e-08, 3.924904e-07, 1.003249e-06,\n       2.677649e-06, 4.553375e-06, 6.234396e-06, 1.144010e-05,\n       2.753301e-05, 5.119613e-05, 6.364747e-05, 4.097336e-05],\n      dtype=float32)",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 2.240994945168495e-09,
+          "max_relative": 7.914172601886094e-05
+        },
+        "spectrum": {
+          "max_absolute": 1.8355153207350696e-29,
+          "max_relative": 1.8355153207350695e-17
+        }
+      },
+      "reference_log_likelihood": -1779676001.420424,
+      "candidate_log_likelihood": -1779526798.773987,
+      "log_likelihood_delta": {
+        "absolute": 149202.6464369297,
+        "relative": 8.38369716273331e-05
+      }
+    },
+    {
+      "label": "random_0",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 8.355982572538778e-12,
+          "max_relative": 6.986257358221337e-05
+        },
+        "spectrum": {
+          "max_absolute": 8.319942205744099e-32,
+          "max_relative": 8.3199422057441e-20
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 15.348111791536212,
+        "relative": 1.8899255864608623e-06
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    },
+    {
+      "implementation": "variant_b",
+      "label": "random_1",
+      "comparison_failed": true,
+      "assertion": "\nNot equal to tolerance rtol=0.0001, atol=1e-05\n\nMismatched elements: 1 / 1 (100%)\nMax absolute difference among violations: 168.7046831\nMax relative difference among violations: 0.00015399\n ACTUAL: array(-1095383.398659)\n DESIRED: array(-1095552.103342)",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 5.209166431541234e-13,
+          "max_relative": 7.077364716678858e-05
+        },
+        "spectrum": {
+          "max_absolute": 2.523846614924262e-32,
+          "max_relative": 2.523846614924262e-20
+        }
+      },
+      "reference_log_likelihood": -1095552.1033421375,
+      "candidate_log_likelihood": -1095383.39865904,
+      "log_likelihood_delta": {
+        "absolute": 168.70468309754506,
+        "relative": 0.0001539905610905108
+      }
+    },
+    {
+      "implementation": "variant_b",
+      "label": "random_2",
+      "comparison_failed": true,
+      "assertion": "\nNot equal to tolerance rtol=5e-05, atol=1e-12\n\nMismatched elements: 7 / 12 (58.3%)\nFirst 5 mismatches are at indices:\n [0]: 1.4522198398481123e-05 (ACTUAL), 1.4523154277412686e-05 (DESIRED)\n [1]: 1.3980708899907768e-05 (ACTUAL), 1.3981626580061857e-05 (DESIRED)\n [2]: 1.2755872376146726e-05 (ACTUAL), 1.2756678188452497e-05 (DESIRED)\n [3]: 1.4349039702210575e-05 (ACTUAL), 1.435005742678186e-05 (DESIRED)\n [4]: 1.6617632354609668e-05 (ACTUAL), 1.6618785593891516e-05 (DESIRED)\nMax absolute difference among violations: 1.1532393e-09\nMax relative difference among violations: 7.092129e-05\n ACTUAL: array([1.452220e-05, 1.398071e-05, 1.275587e-05, 1.434904e-05,\n       1.661763e-05, 1.660263e-05, 1.672726e-05, 1.751670e-05,\n       2.034289e-05, 2.286916e-05, 1.958127e-05, 1.216889e-05],\n      dtype=float32)\n DESIRED: array([1.452315e-05, 1.398163e-05, 1.275668e-05, 1.435006e-05,\n       1.661879e-05, 1.660370e-05, 1.672818e-05, 1.751745e-05,\n       2.034337e-05, 2.286937e-05, 1.958104e-05, 1.216877e-05],\n      dtype=float32)",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.153239281848073e-09,
+          "max_relative": 7.092129089869559e-05
+        },
+        "spectrum": {
+          "max_absolute": 5.153812711264343e-29,
+          "max_relative": 5.1538127112643435e-17
+        }
+      },
+      "reference_log_likelihood": -1492718360316.0537,
+      "candidate_log_likelihood": -1492522126085.7317,
+      "log_likelihood_delta": {
+        "absolute": 196234230.32202148,
+        "relative": 0.0001314609879123298
+      }
+    },
+    {
+      "label": "random_3",
+      "prediction_deltas": {
+        "photometry": {
+          "max_absolute": 1.304512053934559e-14,
+          "max_relative": 7.217559323180467e-05
+        },
+        "spectrum": {
+          "max_absolute": 2.8236885979329992e-34,
+          "max_relative": 2.8236885979329994e-22
+        }
+      },
+      "log_likelihood_delta": {
+        "absolute": 8.884698406793177,
+        "relative": 1.4513959157565606e-06
+      },
+      "implementation": "variant_b",
+      "comparison_failed": false
+    }
+  ],
+  "tolerances": {
+    "prediction_rtol": 5e-05,
+    "prediction_atol": 1e-12,
+    "log_likelihood_rtol": 0.0001,
+    "log_likelihood_atol": 1e-05,
+    "reason": "float32 precontraction changes reduction order"
+  },
+  "diagnostic": {
+    "purpose": "identify comparisons that fail the unchanged harness tolerances",
+    "comparison_count": 14,
+    "failed_comparison_count": 8
+  }
+}
