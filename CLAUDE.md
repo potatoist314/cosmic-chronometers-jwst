@@ -25,6 +25,7 @@ Treat these instructions as active until the user explicitly changes them.
 
 - Use notebooks as the primary files for explanation,
   exploration, and presentation.
+- Every new result directory must include an executed `.ipynb` with saved cell outputs and embedded figures.
 - Notebook markdown cells are terse bullet points, roughly ten words each,
   saying what an otherwise unclear line of code does. No fluff, or restating results or numbers.
 - Use LaTeX for mathematical symbols and parameter names in figures.

@@ -33,6 +33,7 @@
 - Immediately commit and push completed, conflict-free work to the current branch; do not wait for a separate push request.
 - Use notebooks as the primary files for explanation,
   exploration, and presentation.
+- Every new result directory must include an executed `.ipynb` with saved cell outputs and embedded figures.
 - Notebook markdown cells are terse bullet points, roughly ten words each,
   saying what an otherwise unclear line of code does. No fluff, or restating results or numbers.
 - Use LaTeX for mathematical symbols and parameter names in figures.
@@ -40,6 +41,7 @@
 - Always use the BlackJAX NSS nested sampler for Ceridwen fits, never NUTS.
 - Keep raw data immutable. Produce processed data through documented scripts or
   functions.
+- Do not use hashes or checksums to verify file transfers.
 - Put one-time download and bookkeeping utilities in `scripts/`, not notebooks.
 - Use fixed and recorded random seeds for reference mock analyses.
 - Add tests for equations, units, limiting cases, and numerical benchmarks.
