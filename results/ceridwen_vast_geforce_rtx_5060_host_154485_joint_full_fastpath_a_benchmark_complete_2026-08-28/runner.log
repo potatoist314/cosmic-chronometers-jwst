@@ -1,0 +1,16 @@
+device: NVIDIA GeForce RTX 5060
+workload: m1_210210_joint_full_v1
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+validated workload: 11 bands, 3523 spectral pixels
+timed step 1/5: 1.132 s
+timed step 2/5: 1.207 s
+timed step 3/5: 1.223 s
+timed step 4/5: 1.190 s
+timed step 5/5: 1.228 s
+timed wall: 5.980 s
+throughput: 836.108 calls/s
+cost per 100000 calls: $0.002830
+saved: /workspace/astro-fastpath-nss/results/ceridwen_vast_geforce_rtx_5060_host_154485_joint_full_fastpath_a_benchmark_complete_2026-08-28

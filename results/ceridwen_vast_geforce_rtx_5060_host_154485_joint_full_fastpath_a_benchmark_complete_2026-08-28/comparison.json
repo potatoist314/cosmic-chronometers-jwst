@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "scope": "fixed_step_nss_throughput_not_converged_fit",
+  "gpu_name": "NVIDIA GeForce RTX 5060",
+  "comparison_fingerprint": "240e76b750df55060f7da8b30620b97b7d8e80eecbbf65b60e9800e51cbe263f",
+  "jax_default_matmul_precision": "highest",
+  "sampler": {
+    "num_live": 300,
+    "num_inner_steps": 40,
+    "num_delete": 25,
+    "warmup_steps": 1,
+    "timed_steps": 5,
+    "likelihood_calls_per_step": 1000,
+    "timed_likelihood_calls_per_implementation": 5000
+  },
+  "baseline": {
+    "sfh_basis_fastpath": "baseline",
+    "basis_shape": [5, 13, 107, 10992],
+    "likelihood_calls_per_second": 108.72119216010213,
+    "cost_per_100k_likelihood_calls_usd": 0.02176443338248526,
+    "jax_peak_memory_mib": 1519.239013671875,
+    "nvidia_process_memory_mib": 4102.0
+  },
+  "fastpath_a": {
+    "sfh_basis_fastpath": "A",
+    "basis_shape": [5, 13, 8, 10992],
+    "likelihood_calls_per_second": 836.1080508938416,
+    "cost_per_100k_likelihood_calls_usd": 0.002830082955789357,
+    "jax_peak_memory_mib": 1519.239013671875,
+    "nvidia_process_memory_mib": 4104.0
+  },
+  "speedup": 7.690387074330404,
+  "throughput_gain_percent": 669.0387074330405,
+  "cost_reduction_percent": 86.99675334499246,
+  "numerical_equivalence_gate": {
+    "status": "passed_before_nss_benchmark",
+    "comparisons_passed": 14,
+    "comparisons_total": 14,
+    "evidence": "../ceridwen_vast_rtx5060_sfh_fastpath_2026-08-27/summary.json"
+  },
+  "conclusion": "Fast path A increased fixed-step NSS throughput by 7.69 times under the matched RTX 5060 benchmark contract."
+}

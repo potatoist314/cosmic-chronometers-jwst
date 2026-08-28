@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="analysis">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-27">
+  <meta name="wiki-updated" content="2026-08-28">
   <title>Ceridwen GPU Benchmarks</title>
   <link rel="stylesheet" href="../assets/wiki.css">
   <style>
@@ -58,6 +58,17 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <th scope="row">GeForce RTX 5060</th>
+            <td>19.2 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Matched fixed-step NSS, SFH fast path A</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>836.1</td>
+            <td>$0.0852/h</td>
+            <td>$0.028</td>
+          </tr>
           <tr>
             <th scope="row">B200</th>
             <td>1,125 TFLOP/s</td>
@@ -271,6 +282,17 @@
             <th scope="row">GeForce RTX 5060</th>
             <td>19.2 TFLOP/s</td>
             <td>Vast</td>
+            <td>Matched fixed-step NSS, baseline</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>108.7</td>
+            <td>$0.0852/h</td>
+            <td>$0.218</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5060</th>
+            <td>19.2 TFLOP/s</td>
+            <td>Vast</td>
             <td>Joint fit benchmark, 50% pool</td>
             <td>2.1</td>
             <td>5 / 5,000</td>
@@ -362,6 +384,12 @@
       <p>The B200 reached 743.9 calls/s, 1.72 times the H100 rate. The RTX PRO 6000 Server and Max-Q editions reached 444.9 and 409.3 calls/s.</p>
       <p>The RTX PRO 5000, 4500, 4000, and GeForce RTX 5060 reached 364.6, 247.4, 168.8, and 107.0 calls/s. Their costs were $0.428, $0.346, $0.333, and $0.267 per million calls.</p>
       <p>The published B200 row uses JAX CUDA 13 and cuBLAS 13.6.1.10. A CUDA 12 diagnostic was excluded after XLA warned of possible silent corruption on B200.</p>
+
+      <h3>RTX 5060 SFH-basis fast path</h3>
+      <p>This matched BlackJAX NSS test measured the complete fixed sampler step. It did not run the sampler to convergence or estimate a posterior.</p>
+      <p>The baseline reached 108.7 calls/s. Fast path A reached 836.1 calls/s. This is a 7.69 times speed increase. The measured cost fell from $0.218 to $0.028 per million calls.</p>
+      <p>Both runs used schema 2.1, the same inputs, 64-bit values, highest matrix-multiplication precision, 300 live points, 40 inner steps, and 25 deletions. Fast path A reduced the SFH-basis array from <code>(5, 13, 107, 10992)</code> to <code>(5, 13, 8, 10992)</code>. It passed all 14 numerical comparisons before the NSS test.</p>
+      <p>Data source: <code>results/ceridwen_vast_geforce_rtx_5060_host_154485_joint_full_baseline_benchmark_complete_2026-08-28/</code> and <code>results/ceridwen_vast_geforce_rtx_5060_host_154485_joint_full_fastpath_a_benchmark_complete_2026-08-28/</code></p>
 
       <h3>RTX 5090 complete fit</h3>
       <p>The production nested-sampler run converged after 514 iterations and 514,000 likelihood calls. Sampling took 1,307.5 s, or 393.1 calls/s. The complete notebook took 1,386.1 s.</p>
@@ -468,6 +496,7 @@
       <p>The RTX 3060, RTX 3080 Ti, and RTX 4070 Super each used a 1,519 MiB calculation peak. The recorded whole-process peaks were 9,260 MiB on the RTX 3080 Ti and 9,164 MiB on the RTX 4070 Super.</p>
       <p>The 50% RTX 5070, RTX 5070 Ti, and RTX 5080 runs each used a 1,519 MiB calculation peak. Whole-process memory was 6,180 MiB, 8,278 MiB, and 8,304 MiB.</p>
       <p>The seven new Blackwell runs each used about 1,519 MiB at the JAX calculation peak. Whole-process memory was 92,146 MiB on B200; 49,312 and 49,308 MiB on the RTX PRO 6000 editions; 24,668, 16,452, and 12,370 MiB on the RTX PRO 5000, 4500, and 4000; and 4,102 MiB on the RTX 5060.</p>
+      <p>The matched RTX 5060 SFH test also used a 1,519 MiB JAX calculation peak. Whole-process memory was 4,102 MiB for the baseline and 4,104 MiB for fast path A.</p>
       <p>The 8 GB RTX 3070 completed with both allocators. The 50% pool used 4,152 MiB process memory; on-demand allocation used 2,344 MiB.</p>
       <p>An RTX 5090 sampling snapshot showed 4,520 MiB process memory. This value is not a measured peak.</p>
       <p>Evidence: <code>results/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code>, <code>results/ceridwen_vast_geforce_rtx_5090_integrated_fit_complete_2026-08-27/</code>, and the benchmark records above</p>
@@ -480,7 +509,7 @@
       <p>Evidence: <code>results/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/</code></p>
     </section>
   </main>
-  <footer class="site-footer">Updated 27 August 2026</footer>
+  <footer class="site-footer">Updated 28 August 2026</footer>
   <script>
     (function () {
       var table = document.getElementById("runs-table");

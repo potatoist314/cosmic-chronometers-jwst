@@ -16,7 +16,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 
 - `guides/reading-order.html` — Gives an ordered path through the active Ceridwen workflow.
 - `guides/python-patterns.html` — Python and JAX patterns used here.
-- `guides/vast-ai-gpu-workflow.html` — Explains compact-image Vast setup, 8 GB benchmarks, production sampling, and saved results.
+- `guides/vast-ai-gpu-workflow.html` — Explains compact-image Vast setup, SFH-basis benchmark choices, production sampling, and saved results.
 - `guides/modal-gpu-workflow.html` — Explains Modal inputs, detached A100 runs, bounded kernel traces, and persistent outputs.
 
 ## Codebase
@@ -52,4 +52,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Analyses
 
-- `analyses/ceridwen-gpu-benchmarks.html` — Compares measured speed, cost, memory, and hardware behaviour across twenty GPU types.
+- `analyses/ceridwen-gpu-benchmarks.html` — Compares measured speed, cost, memory, hardware behaviour, and the RTX 5060 SFH fast path across twenty GPU types.

@@ -289,3 +289,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Added B200, RTX 5060, and RTX PRO 4000, 4500, 5000, and 6000 speed, cost, and memory results.
+
+## [2026-08-28] codebase | RTX 5060 NSS SFH fast path benchmark
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `guides/vast-ai-gpu-workflow.html`, `index.md`
+- Change: Added the matched baseline and fast-path A speed, cost, memory, precision, and benchmark-scope results.

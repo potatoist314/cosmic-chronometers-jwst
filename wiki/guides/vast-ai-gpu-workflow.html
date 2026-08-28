@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="guide">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-27">
+  <meta name="wiki-updated" content="2026-08-28">
   <title>Vast.ai GPU Workflow</title>
   <link rel="stylesheet" href="../assets/wiki.css">
 </head>
@@ -50,9 +50,10 @@
         <li>Use a Linux image with Jupyter, SSH, and CUDA 12. Prefer
         <code>vastai/base-image:cuda-12.6.3-auto</code>. It avoids the unused
         PyTorch stack. The bootstrap installs CUDA JAX.</li>
-        <li>Require at least 12 GB GPU memory and 30 GB disk.</li>
+        <li>Require at least 12 GB GPU memory and 30 GB disk for a full fit.</li>
         <li>Check storage, upload, and download rates before renting.</li>
-        <li>Prefer an A100 40 GB.</li>
+        <li>Prefer a verified RTX 5060 for the fixed benchmark. Prefer an
+        A100 40 GB for a full fit.</li>
       </ul>
       <p>Vast host <code>148498</code> in Croatia provided a tested-good
       A100 SXM4 40 GB allocation. Instance <code>48652928</code> completed
@@ -62,7 +63,7 @@
       memory is unavailable. It never uses the CPU as an unreported
       substitute.</p>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:21-34 · GPU preflight</code></p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:22-35 · GPU preflight</code></p>
       <pre><code>if ! command -v nvidia-smi &gt;/dev/null 2&gt;&amp;1; then
     echo "nvidia-smi is unavailable; launch a Vast.ai NVIDIA GPU instance." &gt;&amp;2
     exit 1
@@ -74,7 +75,7 @@ GPU_MEMORY_MIB="$(
         | tr -d ' '
 )"
 if (( GPU_MEMORY_MIB &lt; MINIMUM_GPU_MEMORY_MIB )); then
-    echo "GPU has ${GPU_MEMORY_MIB} MiB; notebook 07 requires at least 12000 MiB." &gt;&amp;2
+    echo "GPU has ${GPU_MEMORY_MIB} MiB; this run requires at least ${MINIMUM_GPU_MEMORY_MIB} MiB." &gt;&amp;2
     exit 1
 fi</code></pre>
       <p><strong>Documented contract:</strong> The README requires CUDA 12,
@@ -122,7 +123,7 @@ cd cosmic-chronometers-jwst</code></pre>
       <p>The script removes the Vast system CUDA library path. JAX then
       uses the compatible CUDA libraries from its Python
       environment.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:13-14</code></p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:14-15</code></p>
       <pre><code># Use the CUDA libraries installed with JAX, not Vast's system CUDA libraries.
 unset LD_LIBRARY_PATH</code></pre>
       <p>The script creates an isolated Python 3.11 environment. It
@@ -130,7 +131,7 @@ unset LD_LIBRARY_PATH</code></pre>
       accepts the grid's wavelength-dependent resolution array. It
       checks GPU float64 execution, runs the Ceridwen check, and
       registers the notebook kernel.</p>
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:52-99</code></p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:71-82</code></p>
       <pre><code>JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "${PYTHON_BIN}" - &lt;&lt;'PY'
 import jax
 import jax.numpy as jnp
@@ -139,15 +140,18 @@ devices = jax.devices()
 if not devices or any(device.platform != "gpu" for device in devices):
     raise SystemExit(f"Expected CUDA GPU devices, found {devices}")
 value = jnp.ones(1, dtype=jnp.float64).block_until_ready()
-PY
-
-"${PYTHON_BIN}" -m ipykernel install --user \
-    --name ceridwen \
-    --display-name "Ceridwen (Vast.ai GPU)"</code></pre>
+if value.dtype != jnp.float64:
+    raise SystemExit(f"JAX float64 is disabled: {value.dtype}")
+print(f"JAX {jax.__version__}: {devices}; float64 verified")
+PY</code></pre>
       <p>The script checks 1,988 spectra. It also checks the catalogue
       and photometry row counts. It fetches the published schema-2.1
       grid and loads it in strict mode. It checks shape
       <code>(5, 13, 107, 10992)</code>.</p>
+      <p>For the fixed benchmark on an 8 GB GPU, use this lower preflight
+      limit:</p>
+      <pre><code>CERIDWEN_MIN_GPU_MEMORY_MIB=8000 bash scripts/bootstrap_vast_ai.sh</code></pre>
+      <p>Keep the default 12 GB limit for notebook fits.</p>
     </section>
 
     <section id="benchmark">
@@ -156,12 +160,17 @@ PY
       example Vast price, host, and instance values:</p>
       <pre><code>.venv-ceridwen-gpu/bin/python \
   scripts/benchmark_ceridwen_vast.py run \
+  --sfh-basis-fastpath baseline \
   --price-usd-per-hour 0.670 \
   --vast-host 148498 \
   --vast-instance 48652928</code></pre>
       <p>The workload uses M1_210210, 11 photometric bands, and 3,523
       spectral pixels. It compiles one warm-up step. It then times five
       steps with 1,000 likelihood calls each.</p>
+      <p>The default uses the original SFH basis. Replace
+      <code>baseline</code> with <code>A</code> to select fast path A before
+      JAX traces the model. The runner uses highest matrix-multiplication
+      precision for both choices.</p>
       <p>The runner disables JAX's 75% memory reservation before it
       imports JAX. The Vast sweep therefore accepts 8 GB GPUs for this
       benchmark.</p>
@@ -233,7 +242,7 @@ PY
       <p>A periodic BlackJAX NSS checkpoint is a usable partial posterior.
       It cannot resume the sampler from the same point.</p>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:111-119 · kernel environment</code></p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:115-122 · kernel environment</code></p>
       <pre><code>kernel["env"] = {
     **kernel.get("env", {}),
     "CERIDWEN_RESULTS_ROOT": str(project_root / "results"),
@@ -268,31 +277,33 @@ path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
       <ul>
         <li><code>README.md:18-49</code> describes the instance, clone,
         transfer, bootstrap, and kernel workflow.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:8-14</code> fixes the
+        <li><code>scripts/bootstrap_vast_ai.sh:8-15</code> fixes the
         requirements and isolates the CUDA libraries.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:52-94</code> installs and
+        <li><code>scripts/bootstrap_vast_ai.sh:53-98</code> installs and
         checks wavelength-dependent resolution support.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:97-119</code> configures
+        <li><code>scripts/bootstrap_vast_ai.sh:100-122</code> configures
         the kernel and results root.</li>
-        <li><code>scripts/bootstrap_vast_ai.sh:122-168</code> checks the
+        <li><code>scripts/bootstrap_vast_ai.sh:125-172</code> checks the
         raw data and published grid.</li>
         <li><code>scripts/run_ceridwen_vast_multi_gpu.py:93-158</code>
         pins one target process to each physical GPU.</li>
         <li><code>scripts/run_ceridwen_vast_multi_gpu.py:188-265</code>
         retains isolated outputs and completes the run manifest.</li>
-        <li><code>scripts/benchmark_ceridwen_vast.py:23-39</code> fixes the
-        workload and sampler sizes.</li>
-        <li><code>scripts/benchmark_ceridwen_vast.py:662-713</code> excludes
+        <li><code>scripts/benchmark_ceridwen_vast.py:23-40</code> fixes the
+        workload, sampler sizes, precision, and SFH-basis choices.</li>
+        <li><code>scripts/benchmark_ceridwen_vast.py:607-632</code> selects
+        the SFH-basis implementation before JAX traces the model.</li>
+        <li><code>scripts/benchmark_ceridwen_vast.py:706-757</code> excludes
         one warm-up step and measures five later steps.</li>
-        <li><code>scripts/benchmark_ceridwen_vast.py:770-775</code> disables
-        JAX preallocation before JAX initializes CUDA.</li>
-        <li><code>scripts/benchmark_ceridwen_vast.py:154-216</code> defines
+        <li><code>scripts/benchmark_ceridwen_vast.py:821-828</code> sets
+        precision and disables JAX preallocation before CUDA starts.</li>
+        <li><code>scripts/benchmark_ceridwen_vast.py:157-219</code> defines
         schema-v2 and legacy comparison fingerprints.</li>
         <li><code>.gitignore:23-24</code> keeps the LEGA-C spectra out of
         Git.</li>
       </ul>
     </section>
   </main>
-  <footer class="site-footer">Generated from the live Astro project · Updated 27 August 2026</footer>
+  <footer class="site-footer">Generated from the live Astro project · Updated 28 August 2026</footer>
 </body>
 </html>
