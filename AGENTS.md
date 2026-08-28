@@ -37,6 +37,7 @@
   saying what an otherwise unclear line of code does. No fluff, or restating results or numbers.
 - Use LaTeX for mathematical symbols and parameter names in figures.
 - Run full Ceridwen fits on Vast.ai CUDA GPUs; use local quick tests only.
+- Skip compile-heavy smoke tests when the full fit is similarly cheap; start and monitor the full fit.
 - Always use the BlackJAX NSS nested sampler for Ceridwen fits, never NUTS.
 - Keep raw data immutable. Produce processed data through documented scripts or
   functions.
