@@ -11,6 +11,7 @@ the example price, host, and instance values with the current Vast offer:
 ```bash
 .venv-ceridwen-gpu/bin/python \
   scripts/benchmark_ceridwen_vast.py run \
+  --output-root benchmarks/ceridwen/runs \
   --price-usd-per-hour 0.670 \
   --vast-host 148498 \
   --vast-instance 48652928
@@ -22,18 +23,20 @@ and BlackJAX NSS with 300 live points, 40 inner steps, and 25 deletions. The
 runner excludes one compiled warm-up step. It then measures five steps, or
 5,000 likelihood calls.
 
-Each result directory contains `benchmark.json`, `benchmark.csv`, and
-`benchmark.log`. The JSON includes input checksums, code and software versions,
-GPU metadata, memory use, raw step times, throughput, and cost per 100,000
-likelihood calls. The short run measures hardware performance. It does not
-produce a converged posterior or scientific parameter estimates.
+Store these pure benchmark runs under `benchmarks/ceridwen/runs/`, never under
+`results/`. Each benchmark run directory contains `benchmark.json`,
+`benchmark.csv`, and `benchmark.log`. The JSON includes input checksums, code
+and software versions, GPU metadata, memory use, raw step times, throughput,
+and cost per 100,000 likelihood calls. The short run measures hardware
+performance. It does not produce a converged posterior or scientific parameter
+estimates.
 
-Rank copied result files with:
+Rank copied benchmark files with:
 
 ```bash
 .venv-ceridwen-gpu/bin/python \
   scripts/benchmark_ceridwen_vast.py summarize \
-  results/ceridwen_vast_*_benchmark_complete_*/benchmark.json
+  benchmarks/ceridwen/runs/ceridwen_vast_*_benchmark_complete_*/benchmark.json
 ```
 
 The summary command stops when workload, input, code, or software fingerprints
@@ -78,6 +81,9 @@ times; incomplete-run call counts use
   about $0.77. This is dated price context, not a persistent provider price.
 
 ## Provenance
+
+These paths record historical runs created before the current placement rule.
+Do not use the incomplete-run paths as placement examples.
 
 - Vast completed fit:
   `results/ceridwen_vast_a100_integrated_fit_notebook_only_2026-08-25/ceridwen_integrated_photometry_spectra.ipynb`
