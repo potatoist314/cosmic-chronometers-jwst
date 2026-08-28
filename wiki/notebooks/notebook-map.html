@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="notebook">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-27">
+  <meta name="wiki-updated" content="2026-08-28">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -96,6 +96,11 @@ enhancement, diffuse dust, calibration floor, and mass-weighted age.
 <code>corner_age_mass_fractions.png</code> shows mass-weighted age with
 each formed-mass fraction. Both files are written to the run result
 directory.</p>
+<p>The paired RTX 5060 result keeps separate executed reports in its
+<code>baseline/</code> and <code>fastpath_a/</code> directories. Each
+report loads its matching HDF5 posterior and contains the complete fit,
+residual, corner, and SFH output set. The reports do not overlay the two
+implementations.</p>
 <p>Both notebooks supply the observed FWHM resolving power with
 <code>res_convention="fwhm"</code>. Ceridwen reads the SSP resolution
 curve from the grid. It calculates the additional smoothing

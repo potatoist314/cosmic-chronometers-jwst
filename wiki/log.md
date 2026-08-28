@@ -300,6 +300,11 @@
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Added paired converged speeds and recorded the failed posterior and evidence equivalence gate.
 
+## [2026-08-28] codebase | Separate paired-fit notebooks
+
+- Pages: `notebooks/notebook-map.html`, `index.md`
+- Change: Documented independent executed baseline and fast-path reports with complete saved plots.
+
 ## [2026-08-28] codebase | Interactive active-codebase map
 
 - Pages: `codebase/active-codebase-map.html`, `index.html`, `index.md`, `AGENTS.md`

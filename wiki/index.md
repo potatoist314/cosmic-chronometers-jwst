@@ -33,7 +33,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 
 ## Notebooks
 
-- `notebooks/notebook-map.html` — Explains fitting notebooks, saved outputs, aligned posterior rows, and two joint corner plots.
+- `notebooks/notebook-map.html` — Explains fitting notebooks, saved outputs, aligned posterior rows, and separate baseline and fast-path reports.
 
 ## Sources
 
