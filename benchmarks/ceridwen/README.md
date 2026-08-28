@@ -82,17 +82,17 @@ times; incomplete-run call counts use
 
 ## Provenance
 
-These paths record historical runs created before the current placement rule.
-Do not use the incomplete-run paths as placement examples.
+Converged scientific fits remain under `results/`. Incomplete and diagnostic
+artifacts remain available under `benchmarks/ceridwen/runs/`.
 
 - Vast completed fit:
   `results/ceridwen_vast_a100_integrated_fit_notebook_only_2026-08-25/ceridwen_integrated_photometry_spectra.ipynb`
 - Modal completed feature fit:
   `results/ceridwen_modal_a100_feature_spectrum_complete_2026-08-25/`
 - Modal incomplete and checkpoint runs:
-  `results/ceridwen_modal_a100_feature_spectrum_incomplete_2026-08-25/`,
-  `results/ceridwen_modal_a100_full_spectrum_incomplete_2026-08-25/`, and
-  `results/ceridwen_modal_a100_full_spectrum_checkpoint_2026-08-25/`
+  `benchmarks/ceridwen/runs/ceridwen_modal_a100_feature_spectrum_incomplete_2026-08-25/`,
+  `benchmarks/ceridwen/runs/ceridwen_modal_a100_full_spectrum_incomplete_2026-08-25/`,
+  and `benchmarks/ceridwen/runs/ceridwen_modal_a100_full_spectrum_checkpoint_2026-08-25/`
 - Modal smoke run: `batch-20260825T151156339684Z`
 - Vast allocation: host `148498`, instance `48652928`, Croatia. JAX detected
   CUDA and verified float64 on the A100 SXM4 40 GB.

@@ -309,3 +309,8 @@
 
 - Pages: `codebase/active-codebase-map.html`, `index.html`, `index.md`, `AGENTS.md`
 - Change: Added a validated Archify map of the active Ceridwen project and allowed self-contained JavaScript for interactive diagrams.
+
+## [2026-08-28] codebase | Benchmark artifact relocation
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `guides/modal-gpu-workflow.html`, `index.md`
+- Change: Updated benchmark evidence paths after moving non-scientific runs out of `results/`.
