@@ -98,20 +98,50 @@ benchmark_instance_count() {
 }
 
 claude_usage_limit_detected() {
-  local snapshot
-  snapshot="$(herdr agent read "$target_agent" --source visible 2>/dev/null)" || return 1
+  local snapshot="${1:-}"
+  if [[ -z "$snapshot" ]]; then
+    snapshot="$(herdr agent read "$target_agent" --source visible 2>/dev/null)" || return 1
+  fi
   print -r -- "$snapshot" \
     | tr '\n' ' ' \
     | grep -Eiq \
       "you.?ve hit your (session |usage |weekly )?limit|usage limit (reached|exceeded)|maximum usage reached|/upgrade to increase[[:space:]]+your usage limit"
 }
 
-activate_limit_latch() {
-  local reason="$1"
-  if [[ ! -e "$limit_latch" ]]; then
-    print $(( $(date +%s) + reset_wait_seconds )) > "$limit_latch"
-    print "$(utc_now) LIMIT: $reason"
+claude_usage_reset_epoch() {
+  local snapshot="$1" now="${2:-$(date +%s)}" flattened clock today parsed
+  flattened="$(print -r -- "$snapshot" | tr '\n' ' ')"
+  clock="$(print -r -- "$flattened" \
+    | sed -nE 's/.*resets[[:space:]]+([0-9]{1,2}:[0-9]{2}(am|pm)).*/\1/p' \
+    | head -1)"
+  [[ -n "$clock" ]] || return 1
+
+  today="$(date -r "$now" +'%Y-%m-%d')" || return 1
+  parsed="$(date -j -f '%Y-%m-%d %I:%M%p' "$today $clock" +'%s' 2>/dev/null)" \
+    || return 1
+  if (( parsed <= now )); then
+    (( parsed += 86400 ))
   fi
+  if (( parsed - now > reset_wait_seconds + 600 )); then
+    return 1
+  fi
+
+  print $(( parsed + 120 ))
+}
+
+activate_limit_latch() {
+  local reason="$1" deadline="${2:-}" current=""
+  if [[ "$deadline" != <-> ]]; then
+    deadline=$(( $(date +%s) + reset_wait_seconds ))
+  fi
+  if [[ -e "$limit_latch" ]]; then
+    current="$(<"$limit_latch")"
+  fi
+  if [[ "$current" == <-> ]] && (( current <= deadline )); then
+    return 0
+  fi
+  print "$deadline" > "$limit_latch"
+  print "$(utc_now) LIMIT: $reason"
 }
 
 expire_limit_latch_if_due() {
@@ -152,12 +182,14 @@ destroy_benchmark_instances() {
 }
 
 usage_limit_guard_once() {
-  local instance_count instance_status target_state
+  local instance_count instance_status target_state snapshot reset_epoch
 
   expire_limit_latch_if_due
 
-  if claude_usage_limit_detected; then
-    activate_limit_latch "Claude reached a usage limit."
+  snapshot="$(herdr agent read "$target_agent" --source visible 2>/dev/null)" || snapshot=""
+  if claude_usage_limit_detected "$snapshot"; then
+    reset_epoch="$(claude_usage_reset_epoch "$snapshot")" || reset_epoch=""
+    activate_limit_latch "Claude reached a usage limit." "$reset_epoch"
   fi
 
   instance_count="$(benchmark_instance_count)"
@@ -196,6 +228,7 @@ usage_limit_guard() {
 
 controller_step() {
   local owner_state instance_count instance_status target_state prompt_file prompt_status
+  local snapshot reset_epoch
 
   if [[ -e "$complete_file" ]]; then
     print "$(utc_now) COMPLETE: Claude finished the benchmark queue."
@@ -274,7 +307,9 @@ controller_step() {
   fi
 
   if claude_usage_limit_detected; then
-    activate_limit_latch "Claude reached a usage limit after a prompt."
+    snapshot="$(herdr agent read "$target_agent" --source visible 2>/dev/null)" || snapshot=""
+    reset_epoch="$(claude_usage_reset_epoch "$snapshot")" || reset_epoch=""
+    activate_limit_latch "Claude reached a usage limit after a prompt." "$reset_epoch"
     return 0
   fi
 

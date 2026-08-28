@@ -108,6 +108,29 @@ def test_normal_idle_message_is_not_a_limit(
     assert result.returncode != 0
 
 
+def test_displayed_reset_time_sets_a_shorter_deadline(
+    fake_commands: tuple[dict[str, str], Path],
+) -> None:
+    environment, _ = fake_commands
+    result = _source_and_run(
+        "reset_wait_seconds=18600; "
+        "claude_usage_reset_epoch "
+        "\"You've hit your session limit · resets 8:10am (Europe/London)\" "
+        "\"$(date -j -f '%Y-%m-%d %H:%M' '2026-08-28 07:50' +%s)\"",
+        environment,
+    )
+
+    assert result.returncode == 0, result.stderr
+    reset_epoch = int(result.stdout.strip())
+    now_epoch = int(
+        subprocess.check_output(
+            ["date", "-j", "-f", "%Y-%m-%d %H:%M", "2026-08-28 07:50", "+%s"],
+            text=True,
+        ).strip()
+    )
+    assert reset_epoch - now_epoch == 22 * 60
+
+
 def test_vast_failure_is_not_mistaken_for_zero_instances(
     fake_commands: tuple[dict[str, str], Path],
 ) -> None:
