@@ -117,7 +117,6 @@ kernel["env"] = {
     "CERIDWEN_RESULTS_ROOT": str(project_root / "results"),
     "JAX_ENABLE_X64": "1",
     "JAX_PLATFORMS": "cuda",
-    "LD_LIBRARY_PATH": "",
 }
 path.write_text(json.dumps(kernel, indent=2) + "\n")
 PY
