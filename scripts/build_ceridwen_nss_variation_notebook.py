@@ -38,10 +38,14 @@ def build_notebook(output_path: Path) -> None:
         _code(
             '''import json
 import os
+import sys
 from itertools import pairwise
 from pathlib import Path
 
 os.environ["JAX_ENABLE_X64"] = "1"
+PROJECT_ROOT = Path(os.environ.get("CERIDWEN_PROJECT_ROOT", Path.cwd())).resolve()
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import corner
 import jax
@@ -55,7 +59,6 @@ from scripts import benchmark_ceridwen_vast as benchmark
 from scripts import verify_ceridwen_sfh_fastpath_posterior as verification
 
 jax.config.update("jax_enable_x64", True)
-PROJECT_ROOT = Path(os.environ.get("CERIDWEN_PROJECT_ROOT", Path.cwd()))
 VARIATION_ROOT = Path(os.environ["CERIDWEN_VARIATION_ROOT"])
 COMPARISON_DIR = VARIATION_ROOT / "comparison"
 COMPARISON_DIR.mkdir(parents=True, exist_ok=True)

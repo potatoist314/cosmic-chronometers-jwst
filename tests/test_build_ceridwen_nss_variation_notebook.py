@@ -18,6 +18,7 @@ def test_builds_complete_variation_notebook(tmp_path):
     assert "mass_weighted_age_gyr" in source
     assert "posterior_predictive_spectra.png" in source
     assert "combined_physical_corner.png" in source
+    assert source.index("sys.path.insert") < source.index("from scripts import")
     assert "run_sampler(" not in source
     assert all(
         cell.get("cell_type") != "code"

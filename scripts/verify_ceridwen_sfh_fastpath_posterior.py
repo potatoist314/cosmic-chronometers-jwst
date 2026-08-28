@@ -166,6 +166,22 @@ def _science_contract(workload: Any) -> dict[str, Any]:
     }
 
 
+def science_contracts_match(left: Any, right: Any) -> bool:
+    """Compare contract structure exactly and float values at machine precision."""
+    if isinstance(left, dict) and isinstance(right, dict):
+        return left.keys() == right.keys() and all(
+            science_contracts_match(left[key], right[key]) for key in left
+        )
+    if isinstance(left, list) and isinstance(right, list):
+        return len(left) == len(right) and all(
+            science_contracts_match(left_item, right_item)
+            for left_item, right_item in zip(left, right, strict=True)
+        )
+    if isinstance(left, float) and isinstance(right, float):
+        return math.isclose(left, right, rel_tol=1e-12, abs_tol=1e-12)
+    return left == right
+
+
 def command_run(args: argparse.Namespace) -> int:
     output_dir = args.output_dir.resolve()
     if output_dir.exists():
@@ -282,7 +298,10 @@ def _load_run(path: Path, expected_implementation: str) -> tuple[Any, dict[str, 
 def command_compare(args: argparse.Namespace) -> int:
     baseline, baseline_manifest = _load_run(args.baseline_dir.resolve(), "baseline")
     fastpath, fastpath_manifest = _load_run(args.fastpath_dir.resolve(), "A")
-    if baseline_manifest["science_contract"] != fastpath_manifest["science_contract"]:
+    if not science_contracts_match(
+        baseline_manifest["science_contract"],
+        fastpath_manifest["science_contract"],
+    ):
         raise VerificationError("the converged run contracts do not match")
     if baseline.param_names != fastpath.param_names:
         raise VerificationError("the converged runs returned different parameters")
@@ -444,7 +463,10 @@ def compare_runs(
     """Compare two converged weighted posteriors with one science contract."""
     left_result, left_manifest = left
     right_result, right_manifest = right
-    if left_manifest["science_contract"] != right_manifest["science_contract"]:
+    if not science_contracts_match(
+        left_manifest["science_contract"],
+        right_manifest["science_contract"],
+    ):
         raise VerificationError("the converged run contracts do not match")
 
     left_weights = normalized_weights(left_result.log_weights)

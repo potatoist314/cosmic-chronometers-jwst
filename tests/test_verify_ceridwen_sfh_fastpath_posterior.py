@@ -59,6 +59,35 @@ def test_full_settings_match_the_requested_converged_contract() -> None:
     assert verification.MIN_WEIGHT_ESS == 200.0
 
 
+def test_science_contract_allows_machine_scale_float_noise() -> None:
+    baseline = {
+        "lookback_time_gyr": [0.0, 7.566207988673306],
+        "sampler": {"name": "blackjax.nss", "num_live": 300},
+    }
+    repeated = {
+        "lookback_time_gyr": [0.0, 7.566207988673308],
+        "sampler": {"name": "blackjax.nss", "num_live": 300},
+    }
+
+    assert verification.science_contracts_match(baseline, repeated)
+
+
+def test_science_contract_rejects_material_or_structural_drift() -> None:
+    baseline = {
+        "lookback_time_gyr": [0.0, 7.5],
+        "sampler": {"name": "blackjax.nss", "num_live": 300},
+    }
+
+    assert not verification.science_contracts_match(
+        baseline,
+        {**baseline, "lookback_time_gyr": [0.0, 7.6]},
+    )
+    assert not verification.science_contracts_match(
+        baseline,
+        {"lookback_time_gyr": [0.0, 7.5]},
+    )
+
+
 def test_empirical_envelope_marks_values_against_default_maximum() -> None:
     def pair(value: float) -> dict[str, object]:
         metrics = {
