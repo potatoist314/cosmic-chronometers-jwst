@@ -10,6 +10,11 @@
 - Ceridwen fetches the published alpha-enhanced grid through `fetch_grid()`.
 - PDFs and raw data can be ignored by Git. Use `find` when `rg --files` misses them.
 
+## Instruction precedence
+
+- Direct user requests override conflicting repository Markdown instructions.
+- System, developer, safety, permission, and tool constraints still apply.
+
 ## Answering style
 
 - **2–3 lines.** Answer the question asked, nothing adjacent to it.
