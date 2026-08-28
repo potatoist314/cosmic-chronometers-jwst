@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="guide">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-26">
+  <meta name="wiki-updated" content="2026-08-28">
   <title>Modal GPU Workflow</title>
   <link rel="stylesheet" href="../assets/wiki.css">
 </head>
@@ -121,6 +121,9 @@ print(_validate_inputs.remote())</code></pre>
 <p>Use <code>--notebook joint</code> for the integrated fit. Use
 <code>--profile full</code> only for a production BlackJAX
 nested-sampling run.</p>
+<p>For the joint notebook, select native pixels with
+<code>--fit-mode full_spectrum</code>. Select published absorption
+indices with <code>--fit-mode stellar_indices</code>.</p>
 <p>For the spectra notebook, use <code>--spectrum-mode full</code> to fit
 all 3,523 valid pixels. Use <code>--spectrum-mode features</code> to fit
 1,924 pixels from the LEGA-C feature bandpasses. Both modes compact the
@@ -145,13 +148,14 @@ observation before model projection.</p>
       checkpoints, both HDF5 output files, and execution timing to the
       results Volume.</p>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/modal_ceridwen.py:309-324 · _execute_notebook</code></p>
+      <p class="source-locator"><code>scripts/modal_ceridwen.py:315-331 · _execute_notebook</code></p>
       <pre><code>finally:
     execution_completed_at = datetime.now(UTC)
     execution_timing = {
         "notebook": notebook,
         "profile": profile,
         "spectrum_mode": spectrum_mode,
+        "fit_mode": fit_mode,
         "status": execution_status,
         "started_at_utc": execution_started_at.isoformat(),
         "completed_at_utc": execution_completed_at.isoformat(),
@@ -164,8 +168,8 @@ observation before model projection.</p>
     results_volume.commit()</code></pre>
       <p><strong>Documented contract:</strong> The batch entry point
       documents complete notebook execution on one Modal GPU
-      (<code>scripts/modal_ceridwen.py:365-372</code>). It creates the
-      detached function call at <code>scripts/modal_ceridwen.py:380-389</code>.</p>
+      (<code>scripts/modal_ceridwen.py:346-354</code>). It creates the
+      detached function call at <code>scripts/modal_ceridwen.py:365-375</code>.</p>
       <p><strong>Why it matters:</strong> The <code>finally</code> block
       commits outputs and timing after success or error. The persistent
       Volume outlives the GPU container.</p>
@@ -211,12 +215,16 @@ observation before model projection.</p>
       <p>Start a Jupyter Sandbox with a one-hour limit:</p>
       <pre><code>uvx --from modal==1.5.4 modal run \
   scripts/modal_ceridwen.py::jupyter \
-  --spectrum-mode full</code></pre>
+  --spectrum-mode full \
+  --fit-mode stellar_indices</code></pre>
       <p>The terminal prints a private JupyterLab link. Keep the local
       command active while you use Jupyter.</p>
       <p>Restart the Sandbox with <code>--spectrum-mode features</code> to
       run the compact feature fit. The adapter passes the choice through
       <code>CERIDWEN_SPECTRUM_MODE</code>.</p>
+      <p>Use <code>--fit-mode full_spectrum</code> or
+      <code>stellar_indices</code> for the integrated notebook. The
+      adapter passes this choice through <code>CERIDWEN_FIT_MODE</code>.</p>
       <ul>
         <li><strong>Interrupt</strong> stops the current cell. The
         kernel, variables, Sandbox, GPU, and billing remain active.</li>

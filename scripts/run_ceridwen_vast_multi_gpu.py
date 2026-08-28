@@ -97,12 +97,14 @@ def _worker_environment(
     seed: int,
     result_dir: Path,
     profile: str,
+    fit_mode: str,
 ) -> dict[str, str]:
     return {
         **os.environ,
         "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
         "CUDA_VISIBLE_DEVICES": str(gpu_index),
         "CERIDWEN_EXPECT_SINGLE_GPU": "1",
+        "CERIDWEN_FIT_MODE": fit_mode,
         "CERIDWEN_NOTEBOOK_QUICK": "1" if profile == "quick" else "0",
         "CERIDWEN_PROJECT_ROOT": str(PROJECT_ROOT),
         "CERIDWEN_RANDOM_SEED": str(seed),
@@ -119,6 +121,7 @@ def _launch_workers(
     targets: list[str],
     gpus: list[dict[str, str | int]],
     profile: str,
+    fit_mode: str,
     run_root: Path,
     base_seed: int,
 ) -> list[Worker]:
@@ -139,6 +142,7 @@ def _launch_workers(
                 seed=seed,
                 result_dir=result_dir,
                 profile=profile,
+                fit_mode=fit_mode,
             ),
             stdout=log_handle,
             stderr=subprocess.STDOUT,
@@ -199,7 +203,7 @@ def _run(args: argparse.Namespace) -> int:
 
     gpu_names = {str(gpu["name"]) for gpu in gpus}
     hardware = _slug(gpu_names.pop()) if len(gpu_names) == 1 else "mixed_gpu"
-    analysis = "joint_full" if args.profile == "full" else "joint_quick"
+    analysis = f"joint_{args.fit_mode}_{args.profile}"
     date = datetime.now(UTC).date().isoformat()
     incomplete_name = (
         f"ceridwen_vast_4x_{hardware}_four_galaxy_{analysis}_incomplete_{date}"
@@ -214,6 +218,7 @@ def _run(args: argparse.Namespace) -> int:
         "schema_version": 1,
         "status": "running",
         "profile": args.profile,
+        "fit_mode": args.fit_mode,
         "notebook": str(NOTEBOOK_PATH.relative_to(PROJECT_ROOT)),
         "started_at_utc": _utc_now(),
         "workers": [],
@@ -224,6 +229,7 @@ def _run(args: argparse.Namespace) -> int:
         targets=targets,
         gpus=gpus,
         profile=args.profile,
+        fit_mode=args.fit_mode,
         run_root=run_root,
         base_seed=args.base_seed,
     )
@@ -309,6 +315,12 @@ def _parser() -> argparse.ArgumentParser:
         choices=("quick", "full"),
         default="full",
         help="Use quick smoke-test or full GPU sampler settings.",
+    )
+    parser.add_argument(
+        "--fit-mode",
+        choices=("full_spectrum", "stellar_indices"),
+        default="full_spectrum",
+        help="Fit native spectral pixels or published stellar indices.",
     )
     parser.add_argument(
         "--base-seed",

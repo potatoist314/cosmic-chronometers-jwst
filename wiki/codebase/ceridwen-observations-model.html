@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="codebase">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-25">
+  <meta name="wiki-updated" content="2026-08-28">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -25,14 +25,18 @@ selects the sampled parameters.</p>
 <div class="diagram-node is-primary"><strong>Observation</strong><small>Flux, uncertainty, mask, and name</small></div>
 <svg class="diagram-connector is-branch" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-labelledby="observation-branch-title observation-branch-desc">
 <title id="observation-branch-title">Observation subclasses</title>
-<desc id="observation-branch-desc">The base observation contract branches into Photometry, Spectrum, and Lines.</desc>
+<desc id="observation-branch-desc">The base observation contract branches into Photometry, Spectrum, Lines, and StellarIndices.</desc>
 <defs><marker id="observation-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
-<path d="M150 0 V12 M150 12 H50 V38 M150 12 V38 M150 12 H250 V38" marker-end="url(#observation-arrow)" />
+<path d="M150 0 V12 H37 V38" marker-end="url(#observation-arrow)" />
+<path d="M150 12 H112 V38" marker-end="url(#observation-arrow)" />
+<path d="M150 12 H188 V38" marker-end="url(#observation-arrow)" />
+<path d="M150 12 H263 V38" marker-end="url(#observation-arrow)" />
 </svg>
-<ul class="diagram-branches" style="--diagram-columns: 3">
+<ul class="diagram-branches" style="--diagram-columns: 4">
 <li class="diagram-node"><strong>Photometry</strong><small>Filters</small></li>
 <li class="diagram-node"><strong>Spectrum</strong><small>Observed pixels</small></li>
 <li class="diagram-node"><strong>Lines</strong><small>Line fluxes</small></li>
+<li class="diagram-node"><strong>StellarIndices</strong><small>Absorption features</small></li>
 </ul>
 <figcaption id="observation-types-caption">Each subclass projects the same model spectrum into a different measured space.</figcaption>
 </figure>
@@ -155,6 +159,20 @@ fluxes. The solar-scaled <code>CSPBasis</code> can predict these fluxes
 from nebular grids. <code>CSPBasis_afe</code> cannot predict them because
 it has no nebular component.</p>
 </section>
+<section id="stellar-indices" class="level3">
+<h3>Stellar indices</h3>
+<p><code>StellarIndices</code> represents integrated stellar absorption
+indices and continuum breaks. It is separate from <code>Lines</code>,
+which represents nebular emission fluxes. The LEGA-C definition set
+contains 13 Lick indices and <code>Dn4000</code>.</p>
+<p>The class converts the standard rest-air bandpasses to vacuum. Its
+internal <code>Spectrum</code> projector applies the SSP-library,
+instrumental, and fixed stellar-velocity broadening. Equivalent widths
+and CN magnitudes use <code>F_lambda</code>. <code>Dn4000</code> is the
+red-to-blue <code>F_nu</code> ratio
+(<code>ceridwen/ceridwen/observation/stellar_indices.py:115-123</code> and
+<code>209-317</code>).</p>
+</section>
 </section>
 <section id="spectrum-scaling" class="level2">
 <h2>Spectrum scaling</h2>
@@ -162,7 +180,8 @@ it has no nebular component.</p>
 spectrum before it evaluates the likelihood
 (<code>csp/csp.py:1357-1429</code> and
 <code>csp/csp_afe.py:1291-1363</code>). The project notebooks disable
-this scale because they use a fixed i-band aperture anchor.</p>
+this scale. Full-spectrum mode uses a fixed i-band aperture transfer.
+Stellar-index mode is scale invariant and uses no aperture transfer.</p>
 </section>
 <section id="sedmodel-parameter-bookkeeping" class="level2">
 <h2>SedModel parameter bookkeeping</h2>

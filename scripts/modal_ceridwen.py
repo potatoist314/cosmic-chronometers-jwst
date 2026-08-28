@@ -47,6 +47,7 @@ NOTEBOOKS = {
 }
 PROFILES = {"quick", "full"}
 SPECTRUM_MODES = {"full", "features"}
+FIT_MODES = {"full_spectrum", "stellar_indices"}
 
 
 def _ignore_python_cache(path: Path) -> bool:
@@ -195,11 +196,17 @@ def _run_id(mode: str) -> str:
     return f"{mode}-{timestamp}"
 
 
-def _profile_environment(profile: str, spectrum_mode: str) -> dict[str, str]:
+def _profile_environment(
+    profile: str,
+    spectrum_mode: str,
+    fit_mode: str,
+) -> dict[str, str]:
     _validate_choice(profile, PROFILES, "profile")
     _validate_choice(spectrum_mode, SPECTRUM_MODES, "spectrum mode")
+    _validate_choice(fit_mode, FIT_MODES, "fit mode")
     return {
         "CERIDWEN_GRID_DIR": str(REMOTE_GRID_PATH.parent),
+        "CERIDWEN_FIT_MODE": fit_mode,
         "CERIDWEN_NOTEBOOK_QUICK": "1" if profile == "quick" else "0",
         "CERIDWEN_PROJECT_ROOT": str(REMOTE_NOTEBOOK_ROOT.parent),
         "CERIDWEN_RESULTS_ROOT": str(REMOTE_NOTEBOOK_ROOT),
@@ -261,19 +268,27 @@ def _validate_inputs() -> str:
     scaledown_window=2,
     timeout=86400,
 )
-def _execute_notebook(notebook: str, profile: str, spectrum_mode: str) -> str:
+def _execute_notebook(
+    notebook: str,
+    profile: str,
+    spectrum_mode: str,
+    fit_mode: str,
+) -> str:
     import nbformat
     from nbclient import NotebookClient
 
     notebook = _validate_choice(notebook, NOTEBOOKS, "notebook")
     _validate_choice(profile, PROFILES, "profile")
     _validate_choice(spectrum_mode, SPECTRUM_MODES, "spectrum mode")
+    _validate_choice(fit_mode, FIT_MODES, "fit mode")
     if notebook != "spectra" and spectrum_mode != "full":
         raise ValueError("features mode is available only for the spectra notebook")
+    if notebook != "joint" and fit_mode != "full_spectrum":
+        raise ValueError("stellar_indices mode is available only for the joint notebook")
     _validate_input_paths(REMOTE_DATA_ROOT / "raw", REMOTE_GRID_PATH)
     print(_verify_gpu())
 
-    os.environ.update(_profile_environment(profile, spectrum_mode))
+    os.environ.update(_profile_environment(profile, spectrum_mode, fit_mode))
     source_name = NOTEBOOKS[notebook]
     source_path = REMOTE_NOTEBOOK_ROOT / source_name
     output_path = REMOTE_NOTEBOOK_ROOT / source_name.replace(
@@ -303,6 +318,7 @@ def _execute_notebook(notebook: str, profile: str, spectrum_mode: str) -> str:
             "notebook": notebook,
             "profile": profile,
             "spectrum_mode": spectrum_mode,
+            "fit_mode": fit_mode,
             "status": execution_status,
             "started_at_utc": execution_started_at.isoformat(),
             "completed_at_utc": execution_completed_at.isoformat(),
@@ -332,17 +348,22 @@ def batch(
     notebook: str = "spectra",
     profile: str = "quick",
     spectrum_mode: str = "full",
+    fit_mode: str = "full_spectrum",
     gpu: str = DEFAULT_GPU,
 ) -> None:
     """Execute one notebook from start to finish on one Modal GPU."""
     _validate_choice(notebook, NOTEBOOKS, "notebook")
     _validate_choice(profile, PROFILES, "profile")
     _validate_choice(spectrum_mode, SPECTRUM_MODES, "spectrum mode")
+    _validate_choice(fit_mode, FIT_MODES, "fit mode")
     if notebook != "spectra" and spectrum_mode != "full":
         raise ValueError("features mode is available only for the spectra notebook")
+    if notebook != "joint" and fit_mode != "full_spectrum":
+        raise ValueError("stellar_indices mode is available only for the joint notebook")
     print(_validate_inputs.remote())
 
-    run_id = _run_id(f"batch-{spectrum_mode}")
+    analysis_mode = fit_mode if notebook == "joint" else spectrum_mode
+    run_id = _run_id(f"batch-{analysis_mode}")
     run_results = results_volume.with_mount_options(sub_path=run_id)
     print(f"Starting Modal run {run_id!r}")
     function_call = _execute_notebook.with_options(
@@ -351,7 +372,7 @@ def batch(
             REMOTE_DATA_ROOT: read_only_inputs,
             REMOTE_NOTEBOOK_ROOT: run_results,
         },
-    ).spawn(notebook, profile, spectrum_mode)
+    ).spawn(notebook, profile, spectrum_mode, fit_mode)
     print(f"Modal function call {function_call.object_id!r}")
     output_name = function_call.get()
     print(f"Completed Modal run {run_id!r}: {output_name}")
@@ -377,17 +398,19 @@ def _jupyter_is_ready(base_url: str, token: str) -> bool:
 def jupyter(
     profile: str = "quick",
     spectrum_mode: str = "full",
+    fit_mode: str = "full_spectrum",
     gpu: str = DEFAULT_GPU,
     hours: float = 1.0,
 ) -> None:
     """Start an attached JupyterLab Sandbox on one Modal GPU."""
     _validate_choice(profile, PROFILES, "profile")
     _validate_choice(spectrum_mode, SPECTRUM_MODES, "spectrum mode")
+    _validate_choice(fit_mode, FIT_MODES, "fit mode")
     if not 0 < hours <= 24:
         raise ValueError("hours must be greater than 0 and not greater than 24")
     print(_validate_inputs.remote())
 
-    run_id = _run_id(f"jupyter-{spectrum_mode}")
+    run_id = _run_id(f"jupyter-{spectrum_mode}-{fit_mode}")
     run_results = results_volume.with_mount_options(sub_path=run_id)
     token = secrets.token_urlsafe(24)
     token_secret = modal.Secret.from_dict({"JUPYTER_TOKEN": token})
@@ -418,7 +441,7 @@ def jupyter(
             command,
             app=app,
             image=image,
-            env=_profile_environment(profile, spectrum_mode),
+            env=_profile_environment(profile, spectrum_mode, fit_mode),
             secrets=[token_secret],
             gpu=gpu,
             cpu=4,

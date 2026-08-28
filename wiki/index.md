@@ -16,24 +16,24 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 
 - `guides/reading-order.html` — Gives an ordered path through the active Ceridwen workflow.
 - `guides/python-patterns.html` — Python and JAX patterns used here.
-- `guides/vast-ai-gpu-workflow.html` — Explains compact-image Vast setup, 8 GB benchmarks, production sampling, and saved results.
-- `guides/modal-gpu-workflow.html` — Explains Modal inputs, detached A100 runs, bounded kernel traces, and benchmark storage.
+- `guides/vast-ai-gpu-workflow.html` — Explains Vast setup, selectable spectroscopy modes, multi-GPU production sampling, and saved results.
+- `guides/modal-gpu-workflow.html` — Explains Modal inputs, selectable spectroscopy modes, detached runs, Jupyter, and benchmark storage.
 
 ## Codebase
 
 - `codebase/active-codebase-map.html` — Interactively maps the active data, notebook, Ceridwen, sampling, GPU, test, and result paths.
 - `codebase/project-map.html` — Explains repository boundaries, entry points, and environments.
 - `codebase/project-modules.html` — Explains active support scripts and retained legacy modules.
-- `codebase/data-pipeline.html` — Traces LEGA-C data into Ceridwen observations.
+- `codebase/data-pipeline.html` — Traces LEGA-C spectra or published stellar indices and COSMOS2015 photometry into Ceridwen.
 - `codebase/ceridwen-architecture.html` — Explains the packages and complete call graph.
 - `codebase/ceridwen-ssp-csp.html` — Explains SSP grids, SFH weights, and spectra.
-- `codebase/ceridwen-observations-model.html` — Explains data projections and parameters.
+- `codebase/ceridwen-observations-model.html` — Explains photometry, spectra, emission lines, stellar indices, and model parameters.
 - `codebase/ceridwen-likelihood-sampling.html` — Explains likelihoods, samplers, checkpoints, and HDF5 results.
 - `codebase/tests-as-documentation.html` — Explains tests that define important contracts.
 
 ## Notebooks
 
-- `notebooks/notebook-map.html` — Explains fitting notebooks, saved outputs, aligned posterior rows, smoothed density plots, and separate baseline and fast-path reports.
+- `notebooks/notebook-map.html` — Explains fitting notebooks, native-spectrum and stellar-index modes, saved outputs, and posterior reports.
 
 ## Sources
 

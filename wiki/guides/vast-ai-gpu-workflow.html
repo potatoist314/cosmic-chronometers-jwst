@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="guide">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-27">
+  <meta name="wiki-updated" content="2026-08-28">
   <title>Vast.ai GPU Workflow</title>
   <link rel="stylesheet" href="../assets/wiki.css">
 </head>
@@ -25,7 +25,7 @@
       <p class="eyebrow">Operational guide</p>
       <h1>Run Ceridwen fits on a Vast.ai GPU.</h1>
       <p class="lede">The spectrum notebook fits spectra. The joint
-      notebook fits spectra and photometry. Use local CPUs for trials.
+      notebook fits photometry with native spectra or stellar indices. Use local CPUs for trials.
       Use Vast.ai GPUs for fixed benchmarks and full fits. One Vast
       instance can run one independent fit on each visible GPU.</p>
     </header>
@@ -185,7 +185,7 @@ PY
         <li>Open JupyterLab on the Vast.ai instance.</li>
         <li>Select <code>Ceridwen (Vast.ai GPU)</code> as the kernel.</li>
         <li>Run <code>notebooks/ceridwen_test_spectra.ipynb</code> for spectra only.</li>
-        <li>Run <code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> for the combined fit.</li>
+        <li>Run <code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> for the selectable combined fit.</li>
       </ol>
       <p>The local CPU kernel and remote GPU kernel share the
       <code>ceridwen</code> identifier. Their visible names identify the
@@ -214,15 +214,20 @@ PY
       <pre><code>.venv-ceridwen-gpu/bin/python \
   scripts/run_ceridwen_vast_multi_gpu.py \
   --profile quick \
+  --fit-mode stellar_indices \
   --output-root /tmp/ceridwen-smoke</code></pre>
       <p>Start the full run inside <code>tmux</code> so an SSH disconnect
       does not close the launcher:</p>
       <pre><code>tmux new -s ceridwen-four</code></pre>
       <pre><code>.venv-ceridwen-gpu/bin/python \
   scripts/run_ceridwen_vast_multi_gpu.py \
-  --profile full</code></pre>
+  --profile full \
+  --fit-mode full_spectrum</code></pre>
       <p>The full profile uses 300 live points, 40 slice steps, 25
       deletions per contraction, and <code>logZ_tol=-3</code>.</p>
+      <p><code>--fit-mode</code> accepts <code>full_spectrum</code> or
+      <code>stellar_indices</code>. Every worker in one four-GPU launch
+      uses the selected mode.</p>
       <p>The default targets are the four highest signal-to-noise passive
       galaxies that satisfy the notebook's 4000 Angstrom coverage check.
       Pass four values to <code>--targets</code> to replace them.</p>

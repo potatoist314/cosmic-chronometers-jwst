@@ -77,16 +77,23 @@ compact arrays and two endpoint pixels for identical smoothing boundaries.</p>
 projection boundary while they select different likelihood pixels.</p>
 </div>
 <p><code>ceridwen_integrated_photometry_spectra.ipynb</code> combines
-both observation types in one <code>SedModel</code> and one
-<code>MultiObservationLikelihood</code>. It uses the same published
-grid. It anchors the spectrum normalization to photometry before it
-calculates a shared nested-sampling posterior. Its full profile uses
-300 live points, 60 deletions, and 40 inner steps. It uses
-<code>logZ_tol=-5</code>.</p>
+photometry with one selectable stellar-spectroscopy observation in one
+<code>SedModel</code> and one <code>MultiObservationLikelihood</code>.
+<code>CERIDWEN_FIT_MODE=full_spectrum</code> fits 3,523 native pixels
+and 11 photometric bands. <code>stellar_indices</code> fits up to 14
+published absorption indices and all 12 photometric bands.</p>
+<p>Full-spectrum mode retains the fixed i+ aperture transfer and sampled
+fractional calibration floor. Stellar-index mode uses neither because
+integrated indices are scale invariant. It uses catalogue diagonal
+uncertainties because no index covariance matrix is available.</p>
+<p>Both modes use the published high-resolution grid. The production
+profile uses 300 live points, 25 deletions, 40 inner steps, and
+<code>logZ_tol=-3</code>.</p>
 <p>The joint notebook reads <code>CERIDWEN_TARGET_ID</code>,
 <code>CERIDWEN_RESULT_DIR</code>, and <code>CERIDWEN_RANDOM_SEED</code>.
 The defaults retain the original M1_210210 run. The Vast multi-GPU launcher
-sets distinct values for four independent notebook kernels.</p>
+sets distinct targets, seeds, and fit modes for four independent notebook
+kernels.</p>
 <p>The joint notebook selects at most 400 deterministic posterior rows.
 It uses those same rows for direct parameters, mass-weighted age, and
 formed-mass fractions. It checks finite values, equal row counts,
@@ -95,7 +102,9 @@ non-negative mass fractions, and unit row sums before plotting.</p>
 enhancement, diffuse dust, calibration floor, and mass-weighted age.
 <code>corner_age_mass_fractions.png</code> shows mass-weighted age with
 each formed-mass fraction. Both files are written to the run result
-directory.</p>
+directory. Index mode also stores observed indices, posterior
+predictions, uncertainties, masks, units, and pulls in
+<code>ceridwen_derived_outputs.h5</code>.</p>
 <p>All current corner plots use 40-bin blue density maps with Gaussian
 smoothing. Darker blue marks higher relative posterior density. Existing
 quantiles and contour probability levels remain unchanged. Saved result
@@ -144,13 +153,17 @@ Python 3.14 kernel.</li>
 <section id="notebook-code-in-context" class="level2">
 <h2>Examples</h2>
 <div class="source-example">
-<p class="source-locator"><code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> · “Joint posterior” · <code>joint_likelihood</code> through <code>saved_result</code></p>
-<pre class="python"><code>joint_likelihood = MultiObservationLikelihood(
-    keys=(phot_obs.name, spectrum_obs.name),
-    likelihoods=(
-        DiagonalGaussianLikelihood(),
-        DiagonalGaussianLikelihood(noise_model=DiagonalNoiseModel(use_fractional=True)),
-    ),
+<p class="source-locator"><code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code> · “Joint posterior” · <code>spectroscopic_likelihood</code> through <code>write_result_h5</code></p>
+<pre class="python"><code>spectroscopic_likelihood = (
+    DiagonalGaussianLikelihood(
+        noise_model=DiagonalNoiseModel(use_fractional=True)
+    )
+    if FIT_MODE == "full_spectrum"
+    else DiagonalGaussianLikelihood()
+)
+joint_likelihood = MultiObservationLikelihood(
+    keys=(phot_obs.name, spectroscopic_obs.name),
+    likelihoods=(DiagonalGaussianLikelihood(), spectroscopic_likelihood),
 )
 joint_result = run_sampler(
     joint_model,
@@ -159,12 +172,10 @@ joint_result = run_sampler(
     jax.random.PRNGKey(SEED),
 )
 result_path = RESULT_DIR / "ceridwen_result.h5"
-write_result_h5(result_path, joint_model, joint_result)
-saved_result = load_result_h5(result_path)
-assert saved_result.param_names == joint_result.param_names
-assert saved_result.log_likelihoods.shape == joint_result.log_likelihoods.shape</code></pre>
+write_result_h5(result_path, joint_model, joint_result)</code></pre>
 <p><strong>Documented contract:</strong> The notebook markdown requires
-independent likelihoods, prior draws, checkpoints, and a saved posterior.</p>
+independent photometric and spectroscopic likelihoods, checkpoints, and
+a saved posterior.</p>
 <p><strong>Why it matters:</strong> One sampler call combines both
 observation types. The reload checks preserve parameter and likelihood shapes.</p>
 </div>

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="dataset">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-25">
+  <meta name="wiki-updated" content="2026-08-28">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -20,18 +20,18 @@
 <h2>Active Ceridwen flow</h2>
 <figure class="diagram" aria-labelledby="data-flow-caption">
 <ul class="diagram-branches" style="--diagram-columns: 3">
-<li class="diagram-node"><strong>LEGA-C DR2</strong><small>Selected and converted spectrum</small></li>
+<li class="diagram-node"><strong>LEGA-C DR2</strong><small>Spectrum or published stellar indices</small></li>
 <li class="diagram-node"><strong>COSMOS2015</strong><small>Matched photometry</small></li>
 <li class="diagram-node"><strong>Ceridwen SSP grid</strong><small>Published population spectra</small></li>
 </ul>
 <svg class="diagram-connector is-branch" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-labelledby="data-merge-title data-merge-desc">
 <title id="data-merge-title">Data inputs converge</title>
-<desc id="data-merge-desc">The selected spectrum, matched photometry, and SSP grid enter one Ceridwen fit.</desc>
+<desc id="data-merge-desc">The selected spectrum or stellar indices, matched photometry, and SSP grid enter one Ceridwen fit.</desc>
 <defs><marker id="data-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
 <path d="M50 0 V14 L150 30 M150 0 V30 M250 0 V14 L150 30 V38" marker-end="url(#data-arrow)" />
 </svg>
 <ol class="diagram-sequence" style="--diagram-columns: 3">
-<li><strong>Observation objects</strong><small>Spectrum and Photometry</small></li>
+<li><strong>Observation objects</strong><small>Spectrum or StellarIndices, plus Photometry</small></li>
 <li><strong>SedModel</strong><small>Shared prediction</small></li>
 <li><strong>BlackJAX NSS</strong><small>Sampled posterior</small></li>
 </ol>
@@ -49,8 +49,7 @@ does not include redshift, velocity dispersion, or indices
 these values for reference comparisons.</p>
 <p><code>data/raw/legac_dr2/legaCdr2.fits.gz</code> contains 1,988
 spectrum rows. It supplies redshifts, velocity dispersions, flags,
-coordinates, and spectrum filenames. It also retains measurements for
-earlier inactive methods. Repeat observations make some object IDs
+coordinates, spectrum filenames, and published stellar indices. Repeat observations make some object IDs
 nonunique
 (<code>data/raw/legac_dr2/README.md</code>).</p>
 <p><code>data/raw/cosmos2015/</code> contains positional matches for
@@ -96,6 +95,18 @@ The compact <code>Spectrum</code> also contains two masked endpoint
 pixels. These pixels preserve the native smoothing boundaries.</p>
 <p class="source-locator"><code>notebooks/ceridwen_test_spectra.ipynb</code> · “Build the native-resolution spectrum” · <code>LEGAC_FEATURE_BANDS_AIR</code>, <code>fit_pixel_mask</code>, and <code>compact_indices</code></p>
 </section>
+<section id="stellar-index-catalogue" class="level2">
+<h2>Published stellar indices</h2>
+<p>The integrated notebook can use 13 LEGA-C Lick measurements and
+<code>Dn4000</code> instead of native spectral pixels. It reads the
+catalogue values and one-sigma errors. Invalid or missing rows are
+masked. The four configured targets retain 14, 10, 14, and 13 indices,
+respectively.</p>
+<p>These catalogue values are emission corrected. The likelihood uses
+their published diagonal uncertainties because the catalogue does not
+provide an index covariance matrix. This assumption ignores correlations
+between indices that share continuum bands.</p>
+</section>
 <section id="photometry" class="level2">
 <h2>Photometry</h2>
 <p>The photometry downloader queries within one arcsecond and calculates
@@ -104,8 +115,9 @@ It retains the nearest candidate
 (<code>scripts/download_cosmos2015_legac_dr2_photometry.py:61-99</code>).
 The selected aperture fluxes use microJy
 (<code>lines 110-113</code>). The joint notebook converts microJy to AB
-maggies. It also adds a five-percent uncertainty floor. See “Build the
-twelve-band photometric observation.”</p>
+maggies. It also adds a five-percent uncertainty floor. Full-spectrum
+mode reserves i+ for aperture scaling and fits 11 bands. Stellar-index
+mode needs no aperture scale and fits all 12 bands.</p>
 </section>
 <section id="data-contracts-entering-ceridwen" class="level2">
 <h2>Data contracts entering Ceridwen</h2>
@@ -120,6 +132,10 @@ wavelengths in Angstrom.</li>
 is compatible with the model prediction.</li>
 <li><code>Spectrum.mask</code> is <code>True</code> for each pixel that
 contributes to the likelihood.</li>
+<li><code>StellarIndices.flux</code> contains equivalent widths,
+magnitudes, and <code>Dn4000</code> in one aligned vector.</li>
+<li><code>StellarIndices.mask</code> includes only finite catalogue
+measurements with positive uncertainty.</li>
 </ul>
 <p>The base observation checks that the arrays are one-dimensional and
 aligned. It masks nonfinite flux and nonpositive uncertainty
