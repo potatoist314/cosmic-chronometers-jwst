@@ -289,3 +289,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Added B200, RTX 5060, and RTX PRO 4000, 4500, 5000, and 6000 speed, cost, and memory results.
+
+## [2026-08-28] query | Ampere and Ada GPU sweep
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
+- Change: Added seventeen measured runs, marked earlier comparison fingerprints, and retained all prior benchmark rows.

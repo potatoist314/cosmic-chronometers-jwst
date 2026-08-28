@@ -35,9 +35,12 @@ BENCHMARK_SCRIPT_SHA256 = (
 DEFAULT_IMAGE = "vastai/base-image:cuda-12.6.3-auto"
 DEFAULT_DISK_GB = 40
 DEFAULT_BATCH_SIZE = 3
-DEFAULT_ATTEMPTS = 2
+DEFAULT_ATTEMPTS = 3
 DESTROY_ATTEMPTS = 3
+VASTAI_JSON_ATTEMPTS = 3
 BENCHMARK_GPU_MEMORY_MIB = 6000
+SSH_KEY_PATH = Path.home() / ".ssh/id_ed25519"
+EXPECTED_SPECTRUM_FILES = 1988
 
 MAX_INET_COST_USD_PER_TB = 5.0
 MARKET_RATE_MULTIPLE = 1.3
@@ -49,7 +52,10 @@ MINIMUM_COMPUTE_CAPABILITY = 700
 MINIMUM_DIRECT_PORTS = 2
 
 ESTIMATED_HOURS_PER_RUN = 0.35
-RUNNING_TIMEOUT_SECONDS = 900
+# Every observed successful boot finished within 5 minutes; every stalled
+# host never booted at all and burned the whole window. Fail fast so the
+# runner can try another offer inside the 30-minute attempt cap.
+RUNNING_TIMEOUT_SECONDS = 600
 SSH_TIMEOUT_SECONDS = 600
 SSH_POLL_SECONDS = 15
 BOOTSTRAP_TIMEOUT_SECONDS = 3600
@@ -57,13 +63,43 @@ BENCHMARK_TIMEOUT_SECONDS = 3600
 
 # Already measured with this workload; the sweep covers everything else.
 BENCHMARKED_GPU_NAMES = (
+    "A10",
+    "A100 PCIE",
     "A100 SXM4",
+    "B200",
+    "CMP 170HX",
     "H100 SXM",
+    "L4",
+    "RTX 3050",
     "RTX 3060",
+    "RTX 3060 Ti",
+    "RTX 3070",
+    "RTX 3070 Ti",
+    "RTX 3080",
     "RTX 3080 Ti",
     "RTX 3090",
+    "RTX 3090 Ti",
+    "RTX 4060 Ti",
+    "RTX 4070 Ti",
+    "RTX 4070S Ti",
     "RTX 4070S",
+    "RTX 4080",
     "RTX 4090",
+    "RTX 5000Ada",
+    "RTX 5060",
+    "RTX 5060 Ti",
+    "RTX 5070",
+    "RTX 5070 Ti",
+    "RTX 5080",
+    "RTX 5090",
+    "RTX 6000Ada",
+    "RTX A4000",
+    "RTX A6000",
+    "RTX PRO 4000",
+    "RTX PRO 4500",
+    "RTX PRO 5000",
+    "RTX PRO 6000 S",
+    "RTX PRO 6000 WS",
     "Tesla V100",
 )
 
@@ -113,14 +149,18 @@ def _vastai(arguments: list[str], timeout: float = 180.0) -> str:
 
 
 def _vastai_json(arguments: list[str], timeout: float = 180.0) -> Any:
-    output = _vastai([*arguments, "--raw"], timeout=timeout)
-    start = min(
-        (index for index in (output.find("["), output.find("{")) if index >= 0),
-        default=-1,
-    )
-    if start < 0:
-        raise SweepError(f"vastai returned no JSON: {output.strip()[:200]}")
-    return json.loads(output[start:])
+    """Run a vastai command and parse its JSON, retrying an empty response."""
+    for attempt in range(VASTAI_JSON_ATTEMPTS):
+        output = _vastai([*arguments, "--raw"], timeout=timeout)
+        start = min(
+            (index for index in (output.find("["), output.find("{")) if index >= 0),
+            default=-1,
+        )
+        if start >= 0:
+            return json.loads(output[start:])
+        if attempt + 1 < VASTAI_JSON_ATTEMPTS:
+            time.sleep(SSH_POLL_SECONDS)
+    raise SweepError(f"vastai returned no JSON: {output.strip()[:200]}")
 
 
 def search_offers(extra_query: str = "") -> list[dict[str, Any]]:
@@ -202,8 +242,7 @@ def split_batches(
     if batch_size < 1:
         raise SweepError("batch size must be at least one")
     return [
-        names[start : start + batch_size]
-        for start in range(0, len(names), batch_size)
+        names[start : start + batch_size] for start in range(0, len(names), batch_size)
     ]
 
 
@@ -213,6 +252,41 @@ def estimate_batch_cost_usd(
 ) -> float:
     """Estimate what one batch of offers costs to rent for the benchmark."""
     return sum(float(offer["dph_total"]) * hours for offer in offers)
+
+
+def _ssh_options(port: str) -> list[str]:
+    """Offer only the Vast-registered key, so sshd cannot exhaust its tries."""
+    return [
+        "-p",
+        port,
+        "-i",
+        str(SSH_KEY_PATH),
+        "-o",
+        "IdentitiesOnly=yes",
+        "-o",
+        "StrictHostKeyChecking=accept-new",
+        "-o",
+        "UserKnownHostsFile=/dev/null",
+        "-o",
+        "LogLevel=ERROR",
+        "-o",
+        "ConnectTimeout=20",
+        # Bootstrap runs for minutes without output; keep the channel alive.
+        "-o",
+        "ServerAliveInterval=30",
+        "-o",
+        "ServerAliveCountMax=20",
+    ]
+
+
+def _attach_ssh_key(instance_id: int) -> None:
+    """Install the account key on the instance.
+
+    A freshly created instance does not reliably carry the account key, so
+    ``vastai ssh-url`` can resolve while every login is refused.
+    """
+    public_key = SSH_KEY_PATH.with_suffix(".pub").read_text().strip()
+    _vastai(["attach", "ssh", str(instance_id), public_key])
 
 
 def _ssh_target(instance_id: int) -> tuple[str, str]:
@@ -233,21 +307,7 @@ def _ssh(
 ) -> subprocess.CompletedProcess[str]:
     target, port = _ssh_target(instance_id)
     result = subprocess.run(
-        [
-            "ssh",
-            "-p",
-            port,
-            "-o",
-            "StrictHostKeyChecking=accept-new",
-            "-o",
-            "UserKnownHostsFile=/dev/null",
-            "-o",
-            "LogLevel=ERROR",
-            "-o",
-            "ConnectTimeout=20",
-            target,
-            command,
-        ],
+        ["ssh", *_ssh_options(port), target, command],
         check=False,
         capture_output=True,
         text=True,
@@ -301,6 +361,8 @@ def _prepare_checkout(instance_id: int, log: Any) -> None:
         " && ".join(
             [
                 "set -eu",
+                "command -v rsync >/dev/null 2>&1 || "
+                "(apt-get update -qq && apt-get install -y -qq rsync)",
                 "mkdir -p /workspace",
                 "cd /workspace",
                 f"rm -rf {shlex.quote(REMOTE_ROOT)}",
@@ -316,27 +378,97 @@ def _prepare_checkout(instance_id: int, log: Any) -> None:
     )
 
 
-def _upload_inputs(instance_id: int, log: Any) -> None:
-    log("uploading data/raw")
-    _vastai(
-        [
-            "copy",
-            f"local:{PROJECT_ROOT / 'data/raw'}",
-            f"C.{instance_id}:{REMOTE_ROOT}/data/",
-        ],
-        timeout=1800.0,
+def _rsync(
+    port: str,
+    source: str,
+    destination: str,
+    timeout: float,
+    mirror: bool = False,
+) -> None:
+    shell = " ".join(shlex.quote(part) for part in ["ssh", *_ssh_options(port)])
+    command = ["rsync", "-a", "-e", shell]
+    if mirror:
+        command.append("--delete")
+    result = subprocess.run(
+        [*command, source, destination],
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=timeout,
     )
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout).strip().splitlines()
+        raise SweepError("rsync failed: " + ("\n".join(detail[-10:]) or "unknown"))
+
+
+def _upload_inputs(instance_id: int, log: Any) -> None:
+    """Copy the LEGA-C inputs over ssh and prove they arrived.
+
+    ``vastai copy`` reports success for a transfer that moves nothing, so the
+    bootstrap used to fail its own data check instead. rsync over the ssh
+    channel transfers, and the count below is the proof.
+    """
+    log("uploading data/raw")
+    target, port = _ssh_target(instance_id)
+    _rsync(
+        port,
+        f"{PROJECT_ROOT / 'data/raw'}/",
+        f"{target}:{REMOTE_ROOT}/data/raw/",
+        timeout=3600.0,
+        mirror=True,
+    )
+    counted = _ssh(
+        instance_id,
+        f"find {shlex.quote(REMOTE_ROOT)}/data/raw/legac_dr2/sp -maxdepth 1 "
+        "-type f -name 'legac_M*_v2.0.fits' | wc -l",
+        timeout=180.0,
+    ).stdout.strip()
+    if int(counted) != EXPECTED_SPECTRUM_FILES:
+        raise SweepError(
+            f"uploaded {counted} spectra, expected {EXPECTED_SPECTRUM_FILES}"
+        )
+    log(f"uploaded {counted} spectra")
 
 
 def _bootstrap(instance_id: int, log: Any) -> None:
     log("bootstrapping the CUDA environment")
-    _ssh(
+    result = _ssh(
         instance_id,
         f"cd {shlex.quote(REMOTE_ROOT)} && "
         f"CERIDWEN_MIN_GPU_MEMORY_MIB={BENCHMARK_GPU_MEMORY_MIB} "
         "bash scripts/bootstrap_vast_ai.sh",
         timeout=BOOTSTRAP_TIMEOUT_SECONDS,
     )
+    for line in result.stdout.strip().splitlines()[-4:]:
+        log(f"bootstrap: {line}")
+
+
+def _verify_cuda_backend(instance_id: int, log: Any) -> None:
+    """Prove the benchmark interpreter sees a GPU before the benchmark runs.
+
+    The bootstrap checks CUDA in its own shell. Checking again here, through
+    the same command form the benchmark uses, catches an environment that
+    passed the bootstrap and still cannot reach the GPU.
+    """
+    probe = (
+        "import jax;"
+        "print('devices', jax.devices());"
+        "print('backend', jax.default_backend())"
+    )
+    result = _ssh(
+        instance_id,
+        f"cd {shlex.quote(REMOTE_ROOT)} && "
+        "JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 LD_LIBRARY_PATH= "
+        f".venv-ceridwen-gpu/bin/python -c {shlex.quote(probe)} 2>&1 | tail -4; "
+        "df -h /workspace | tail -1",
+        timeout=600.0,
+        check=False,
+    )
+    output = result.stdout.strip()
+    for line in output.splitlines():
+        log(f"probe: {line}")
+    if "backend gpu" not in output:
+        raise SweepError(f"the benchmark interpreter has no GPU backend: {output}")
 
 
 def _run_benchmark(
@@ -345,23 +477,26 @@ def _run_benchmark(
     log: Any,
 ) -> dict[str, Any]:
     log("running the fixed benchmark")
-    _ssh(
+    completed = _ssh(
         instance_id,
         f"cd {shlex.quote(REMOTE_ROOT)} && "
+        "LD_LIBRARY_PATH= JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "
         f".venv-ceridwen-gpu/bin/python {BENCHMARK_SCRIPT} run "
         f"--price-usd-per-hour {float(offer['dph_total'])!r} "
         f"--vast-host {int(offer['host_id'])} "
         f"--vast-instance {instance_id}",
         timeout=BENCHMARK_TIMEOUT_SECONDS,
     )
-    listing = _ssh(
-        instance_id,
-        f"ls -1 {shlex.quote(REMOTE_ROOT)}/results",
-        timeout=120.0,
-    ).stdout.split()
-    if len(listing) != 1:
-        raise SweepError(f"expected one result directory, found {listing}")
-    name = listing[0]
+    # The clone already carries committed result directories, so read the path
+    # the runner reports instead of guessing which entry is new.
+    saved = [
+        line.split("saved:", 1)[1].strip()
+        for line in completed.stdout.splitlines()
+        if line.startswith("saved:")
+    ]
+    if len(saved) != 1:
+        raise SweepError(f"the runner reported {len(saved)} saved directories")
+    name = Path(saved[0]).name
     record = json.loads(
         _ssh(
             instance_id,
@@ -379,12 +514,11 @@ def _download_result(instance_id: int, name: str, log: Any) -> None:
     destination = results_root / name
     if destination.exists():
         raise SweepError(f"result directory already exists: {destination}")
-    _vastai(
-        [
-            "copy",
-            f"C.{instance_id}:{REMOTE_ROOT}/results/{name}",
-            f"local:{results_root}",
-        ],
+    target, port = _ssh_target(instance_id)
+    _rsync(
+        port,
+        f"{target}:{REMOTE_ROOT}/results/{name}",
+        f"{results_root}/",
         timeout=1800.0,
     )
     if not (destination / "benchmark.json").is_file():
@@ -448,10 +582,12 @@ def _measure_offer(
     log(f"rented instance {instance_id} at ${float(offer['dph_total']):.4f}/h")
     try:
         _wait_for_running(instance_id, log)
+        _attach_ssh_key(instance_id)
         _wait_for_ssh(instance_id, log)
         _prepare_checkout(instance_id, log)
         _upload_inputs(instance_id, log)
         _bootstrap(instance_id, log)
+        _verify_cuda_backend(instance_id, log)
         record = _run_benchmark(instance_id, offer, log)
         _download_result(instance_id, record["result_directory"], log)
     finally:
@@ -469,7 +605,8 @@ def measure_gpu(
     """Benchmark one GPU model, retrying with the next-best offer on failure."""
 
     def log(message: str) -> None:
-        print(f"[{gpu_name}] {message}", flush=True)
+        stamp = datetime.now(UTC).strftime("%H:%M:%S")
+        print(f"{stamp} [{gpu_name}] {message}", flush=True)
 
     run = RunRecord(gpu_name=gpu_name)
     ranked = rank_offers_for_gpu(offers, gpu_name)
@@ -677,7 +814,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--attempts",
         type=int,
         default=DEFAULT_ATTEMPTS,
-        help="Offers to try per GPU model before giving up. Default: 2.",
+        help=f"Offers to try per GPU model before giving up. Default: {DEFAULT_ATTEMPTS}.",
     )
     run_parser.set_defaults(function=command_run)
     return parser

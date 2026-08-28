@@ -1,0 +1,111 @@
+{
+  "schema_version": 2,
+  "started_at_utc": "2026-08-27T16:39:36.028694+00:00",
+  "completed_at_utc": "2026-08-27T16:43:38.465278+00:00",
+  "workload": {
+    "id": "m1_210210_joint_full_v1",
+    "target": "M1_210210",
+    "redshift": 0.65420001745224,
+    "velocity_dispersion_km_s": 259.5,
+    "photometric_bands": 11,
+    "spectral_pixels": 3523,
+    "ssp_grid_id": "amist_c3k_hr_krou_afe",
+    "ssp_grid_schema": "2.1",
+    "ssp_grid_shape": [
+      5,
+      13,
+      107,
+      10992
+    ],
+    "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+    "seed": 20260812,
+    "num_live": 300,
+    "num_inner_steps": 40,
+    "num_delete": 25,
+    "reference_logZ_tol": -3.0,
+    "warmup_steps": 1,
+    "timed_steps": 5,
+    "likelihood_calls_per_step": 1000
+  },
+  "comparison_fingerprint": "26b63c693d339d9093e68b311df48719ee5697555522b13bf8e85dc0521735cc",
+  "benchmark_script_sha256": "6d8cf1bb1e78ce6a721618655443edcd7832bf286d0b9227f85553ba0463afcb",
+  "input_sha256": {
+    "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+    "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+    "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+    "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+  },
+  "input_paths": {
+    "catalog": "/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/legaCdr2.fits.gz",
+    "photometry": "/workspace/cosmic-chronometers-jwst/data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
+    "spectrum": "/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/sp/legac_M1_210210_v2.0.fits",
+    "ssp_grid": "/root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5"
+  },
+  "git": {
+    "project_commit": "c30b42dae0dece039e48702ade42a14056f84121",
+    "project_tracked_changes": "",
+    "ceridwen_commit": "034381f41fac57df62ef4b0f7e0a6705dfa67e21",
+    "ceridwen_tracked_changes": ""
+  },
+  "runtime": {
+    "python": "3.11.16",
+    "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+    "jax": "0.10.2",
+    "jaxlib": "0.10.2",
+    "blackjax": "1.6.dev98+gf73e12956",
+    "ceridwen": "0.2.0",
+    "jax_backend": "gpu",
+    "jax_enable_x64": true,
+    "jax_platforms_env": "cuda",
+    "xla_preallocate_env": null,
+    "xla_memory_fraction_env": "0.50",
+    "cuda_visible_devices": null,
+    "jax_device": "cuda:0",
+    "jax_device_kind": "NVIDIA GeForce RTX 5080",
+    "nvidia_smi_gpus": [
+      {
+        "index": "0",
+        "name": "NVIDIA GeForce RTX 5080",
+        "uuid": "GPU-1594ecce-68b6-f205-7b84-4ceae59ac254",
+        "memory_total_mib": "16303",
+        "driver_version": "595.71.05",
+        "power_limit_w": "360.00"
+      }
+    ]
+  },
+  "memory": {
+    "jax": {
+      "bytes_in_use_mib": 618.831787109375,
+      "peak_bytes_in_use_mib": 1519.23974609375,
+      "bytes_limit_mib": 7910.0
+    },
+    "nvidia_process_memory_mib": 8304.0
+  },
+  "vast": {
+    "host": "588377",
+    "instance": "48915836",
+    "price_usd_per_hour": 0.16083333333333333
+  },
+  "timings": {
+    "setup_seconds": 184.76858232170343,
+    "initialization_seconds": 12.249524418730289,
+    "warmup_step_seconds": [
+      23.348027197178453
+    ],
+    "iteration_seconds": [
+      3.704162776004523,
+      3.976514175068587,
+      4.105189746711403,
+      3.8937582499347627,
+      4.077028478030115
+    ],
+    "timed_steps": 5,
+    "likelihood_calls_per_step": 1000,
+    "timed_likelihood_calls": 5000,
+    "total_timed_seconds": 19.75665342574939,
+    "median_step_seconds": 3.976514175068587,
+    "iqr_step_seconds": 0.18327022809535265,
+    "likelihood_calls_per_second": 253.07929902153177,
+    "cost_per_100k_likelihood_calls_usd": 0.01765293569985941
+  }
+}

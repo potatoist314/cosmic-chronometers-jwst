@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+from types import SimpleNamespace
+
 import pytest
 
 from scripts import sweep_ceridwen_vast_gpus as sweep
@@ -30,6 +34,83 @@ def test_reference_fingerprint_matches_published_runs() -> None:
     assert sweep.REFERENCE_FINGERPRINT == (
         "26b63c693d339d9093e68b311df48719ee5697555522b13bf8e85dc0521735cc"
     )
+
+
+def test_vastai_json_retries_an_empty_response(monkeypatch: pytest.MonkeyPatch) -> None:
+    responses = iter(["", '{"success": true}'])
+    calls = []
+    monkeypatch.setattr(
+        sweep,
+        "_vastai",
+        lambda arguments, timeout: calls.append((arguments, timeout))
+        or next(responses),
+    )
+    monkeypatch.setattr(sweep.time, "sleep", lambda _seconds: None)
+
+    assert sweep._vastai_json(["show", "instances"]) == {"success": True}
+    assert len(calls) == 2
+
+
+def test_ssh_options_offer_only_the_registered_key(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    private_key = tmp_path / "benchmark-key"
+    monkeypatch.setattr(sweep, "SSH_KEY_PATH", private_key)
+
+    options = sweep._ssh_options("22022")
+
+    assert options[:4] == ["-p", "22022", "-i", str(private_key)]
+    assert "IdentitiesOnly=yes" in options
+    assert "ServerAliveInterval=30" in options
+
+
+def test_run_benchmark_reads_the_reported_result_directory(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    result_name = "ceridwen_vast_test_complete_2026-08-28"
+    responses = iter(
+        [
+            SimpleNamespace(stdout=f"setup complete\nsaved: results/{result_name}\n"),
+            SimpleNamespace(stdout=json.dumps({"timings": {"timed_steps": 5}})),
+        ]
+    )
+    commands = []
+
+    def fake_ssh(instance_id, command, **_kwargs):
+        commands.append((instance_id, command))
+        return next(responses)
+
+    monkeypatch.setattr(sweep, "_ssh", fake_ssh)
+
+    record = sweep._run_benchmark(
+        123,
+        {"dph_total": 0.1, "host_id": 456},
+        lambda _message: None,
+    )
+
+    assert record["result_directory"] == result_name
+    assert all("ls -1" not in command for _, command in commands)
+
+
+def test_upload_inputs_verifies_the_complete_spectrum_set(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    copied = []
+    monkeypatch.setattr(sweep, "_ssh_target", lambda _instance_id: ("root@test", "22"))
+    monkeypatch.setattr(
+        sweep,
+        "_rsync",
+        lambda *args, **kwargs: copied.append((args, kwargs)),
+    )
+    monkeypatch.setattr(
+        sweep,
+        "_ssh",
+        lambda *_args, **_kwargs: SimpleNamespace(stdout="1988\n"),
+    )
+
+    sweep._upload_inputs(123, lambda _message: None)
+
+    assert copied[0][1]["mirror"] is True
     assert sweep.BENCHMARK_SCRIPT_SHA256 == (
         "6d8cf1bb1e78ce6a721618655443edcd7832bf286d0b9227f85553ba0463afcb"
     )
@@ -129,6 +210,24 @@ def test_queue_skips_measured_models_and_sorts_by_price() -> None:
     queue = sweep.untested_gpu_queue(offers, benchmarked=("RTX 4090",))
 
     assert [name for name, _ in queue] == ["RTX 5070 Ti", "RTX 5080"]
+
+
+@pytest.mark.parametrize(
+    "gpu_name",
+    [
+        "A10",
+        "A100 PCIE",
+        "CMP 170HX",
+        "L4",
+        "RTX 3050",
+        "RTX 3080",
+        "RTX 4070S Ti",
+        "RTX 4080",
+        "RTX A6000",
+    ],
+)
+def test_default_queue_skips_newly_published_models(gpu_name: str) -> None:
+    assert sweep.untested_gpu_queue([offer(gpu_name=gpu_name)]) == []
 
 
 def test_queue_omits_a_model_with_no_usable_offer() -> None:

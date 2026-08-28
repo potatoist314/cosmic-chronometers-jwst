@@ -1,0 +1,110 @@
+{
+  "schema_version": 2,
+  "started_at_utc": "2026-08-27T16:17:10.513040+00:00",
+  "completed_at_utc": "2026-08-27T16:20:50.554622+00:00",
+  "workload": {
+    "id": "m1_210210_joint_full_v1",
+    "target": "M1_210210",
+    "redshift": 0.65420001745224,
+    "velocity_dispersion_km_s": 259.5,
+    "photometric_bands": 11,
+    "spectral_pixels": 3523,
+    "ssp_grid_id": "amist_c3k_hr_krou_afe",
+    "ssp_grid_schema": "2.1",
+    "ssp_grid_shape": [
+      5,
+      13,
+      107,
+      10992
+    ],
+    "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+    "seed": 20260812,
+    "num_live": 300,
+    "num_inner_steps": 40,
+    "num_delete": 25,
+    "reference_logZ_tol": -3.0,
+    "warmup_steps": 1,
+    "timed_steps": 5,
+    "likelihood_calls_per_step": 1000
+  },
+  "comparison_fingerprint": "26b63c693d339d9093e68b311df48719ee5697555522b13bf8e85dc0521735cc",
+  "benchmark_script_sha256": "1fb69b1c89ec54afb82383d75991c8b801f7afa99a756bbb75c98b20e400fd75",
+  "input_sha256": {
+    "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+    "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+    "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+    "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+  },
+  "input_paths": {
+    "catalog": "/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/legaCdr2.fits.gz",
+    "photometry": "/workspace/cosmic-chronometers-jwst/data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
+    "spectrum": "/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/sp/legac_M1_210210_v2.0.fits",
+    "ssp_grid": "/root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5"
+  },
+  "git": {
+    "project_commit": "432b113dad9b67c882dc0d328158c4cee250d088",
+    "project_tracked_changes": "M  scripts/benchmark_ceridwen_vast.py",
+    "ceridwen_commit": "034381f41fac57df62ef4b0f7e0a6705dfa67e21",
+    "ceridwen_tracked_changes": ""
+  },
+  "runtime": {
+    "python": "3.11.16",
+    "platform": "Linux-5.15.0-190-generic-x86_64-with-glibc2.39",
+    "jax": "0.10.2",
+    "jaxlib": "0.10.2",
+    "blackjax": "1.6.dev98+gf73e12956",
+    "ceridwen": "0.2.0",
+    "jax_backend": "gpu",
+    "jax_enable_x64": true,
+    "jax_platforms_env": "cuda",
+    "xla_preallocate_env": "false",
+    "cuda_visible_devices": null,
+    "jax_device": "cuda:0",
+    "jax_device_kind": "NVIDIA GeForce RTX 3070",
+    "nvidia_smi_gpus": [
+      {
+        "index": "0",
+        "name": "NVIDIA GeForce RTX 3070",
+        "uuid": "GPU-bfedbc23-6f38-b128-dd49-f5719ce335a6",
+        "memory_total_mib": "8192",
+        "driver_version": "580.173.02",
+        "power_limit_w": "150.00"
+      }
+    ]
+  },
+  "memory": {
+    "jax": {
+      "bytes_in_use_mib": 552.33447265625,
+      "peak_bytes_in_use_mib": 1459.962646484375,
+      "bytes_limit_mib": 5882.0
+    },
+    "nvidia_process_memory_mib": 2344.0
+  },
+  "vast": {
+    "host": "540322",
+    "instance": "48913767",
+    "price_usd_per_hour": 0.061388888888888896
+  },
+  "timings": {
+    "setup_seconds": 107.35646319400985,
+    "initialization_seconds": 7.998824883950874,
+    "warmup_step_seconds": [
+      26.666534279007465
+    ],
+    "iteration_seconds": [
+      14.223309888970107,
+      15.327106037992053,
+      15.87490398902446,
+      15.093896919046529,
+      16.036539589986205
+    ],
+    "timed_steps": 5,
+    "likelihood_calls_per_step": 1000,
+    "timed_likelihood_calls": 5000,
+    "total_timed_seconds": 76.55575642501935,
+    "median_step_seconds": 15.327106037992053,
+    "iqr_step_seconds": 0.7810070699779317,
+    "likelihood_calls_per_second": 65.31187507626714,
+    "cost_per_100k_likelihood_calls_usd": 0.026109293472113083
+  }
+}
