@@ -57,12 +57,14 @@ def test_cuda_environment_reduces_jax_preallocation(monkeypatch) -> None:
     monkeypatch.setenv("JAX_ENABLE_X64", "0")
     monkeypatch.setenv("XLA_PYTHON_CLIENT_PREALLOCATE", "false")
     monkeypatch.setenv("XLA_CLIENT_MEM_FRACTION", "0.75")
+    monkeypatch.setenv("JAX_DEFAULT_MATMUL_PRECISION", "default")
     monkeypatch.setenv("LD_LIBRARY_PATH", "/system/cuda")
 
     benchmark._configure_cuda_environment()
 
     assert benchmark.os.environ["JAX_PLATFORMS"] == "cuda"
     assert benchmark.os.environ["JAX_ENABLE_X64"] == "1"
+    assert benchmark.os.environ["JAX_DEFAULT_MATMUL_PRECISION"] == "highest"
     assert "XLA_PYTHON_CLIENT_PREALLOCATE" not in benchmark.os.environ
     assert benchmark.os.environ["XLA_CLIENT_MEM_FRACTION"] == "0.50"
     assert "LD_LIBRARY_PATH" not in benchmark.os.environ
@@ -99,8 +101,51 @@ def test_result_directory_name_is_human_readable() -> None:
 
     assert name == (
         "ceridwen_vast_a100_sxm4_40gb_host_148498_"
-        "joint_full_benchmark_complete_2026-08-26"
+        "joint_full_baseline_benchmark_complete_2026-08-26"
     )
+
+    fast_name = benchmark.result_directory_name(
+        "NVIDIA GeForce RTX 5060",
+        "154485",
+        "2026-08-28",
+        "A",
+    )
+    assert fast_name == (
+        "ceridwen_vast_geforce_rtx_5060_host_154485_"
+        "joint_full_fastpath_a_benchmark_complete_2026-08-28"
+    )
+
+
+def test_select_sfh_basis_implementation_requires_requested_path() -> None:
+    class CSP:
+        flux = SimpleNamespace(shape=(5, 13, 107, 10992))
+        _sfh_basis = SimpleNamespace(shape=(5, 13, 8, 10992))
+        _sfh_basis_flat = SimpleNamespace(shape=(520, 10992))
+        sfh_basis_fastpath = None
+
+        def select_sfh_basis_fastpath(self, selector):
+            self.sfh_basis_fastpath = selector
+
+    workload = SimpleNamespace(model=SimpleNamespace(csp=CSP()))
+    selected = benchmark.select_sfh_basis_implementation(workload, "A")
+
+    assert selected == {
+        "sfh_basis_fastpath": "A",
+        "basis_shape": [5, 13, 8, 10992],
+    }
+
+
+def test_select_sfh_basis_implementation_rejects_fallback() -> None:
+    class CSP:
+        sfh_basis_fastpath = None
+
+        def select_sfh_basis_fastpath(self, selector):
+            del selector
+
+    workload = SimpleNamespace(model=SimpleNamespace(csp=CSP()))
+
+    with pytest.raises(benchmark.BenchmarkError, match="did not activate"):
+        benchmark.select_sfh_basis_implementation(workload, "A")
 
 
 def test_rank_records_uses_cost() -> None:

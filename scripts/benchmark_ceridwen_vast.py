@@ -36,6 +36,8 @@ WARMUP_STEPS = 1
 TIMED_STEPS = 5
 CALLS_PER_STEP = NUM_INNER_STEPS * NUM_DELETE
 JAX_MEMORY_FRACTION = "0.50"
+JAX_MATMUL_PRECISION = "highest"
+SFH_BASIS_IMPLEMENTATIONS = ("baseline", "A", "B")
 LEGACY_RESULT_SCHEMA_VERSION = 1
 RESULT_SCHEMA_VERSION = 2
 
@@ -222,10 +224,23 @@ def _slug(value: str) -> str:
     return cleaned or "unknown_gpu"
 
 
-def result_directory_name(gpu_name: str, vast_host: str | None, date: str) -> str:
+def result_directory_name(
+    gpu_name: str,
+    vast_host: str | None,
+    date: str,
+    implementation: str = "baseline",
+) -> str:
     hardware = _slug(gpu_name.removeprefix("NVIDIA "))
     host = f"_host_{_slug(vast_host)}" if vast_host else ""
-    return f"ceridwen_vast_{hardware}{host}_joint_full_benchmark_complete_{date}"
+    variant = (
+        "baseline"
+        if implementation == "baseline"
+        else f"fastpath_{implementation.lower()}"
+    )
+    return (
+        f"ceridwen_vast_{hardware}{host}_joint_full_{variant}_"
+        f"benchmark_complete_{date}"
+    )
 
 
 def calculate_metrics(
@@ -589,6 +604,34 @@ def _make_log_functions(model: Any, likelihood: Any) -> tuple[Any, Any]:
     return loglike_fn, logprior_fn
 
 
+def select_sfh_basis_implementation(
+    workload: BuiltWorkload,
+    implementation: str,
+) -> dict[str, Any]:
+    """Select one SFH-basis implementation before JAX traces the model."""
+    if implementation not in SFH_BASIS_IMPLEMENTATIONS:
+        raise BenchmarkError(f"unknown SFH-basis implementation: {implementation}")
+    csp = workload.model.csp
+    if not hasattr(csp, "select_sfh_basis_fastpath"):
+        raise BenchmarkError("the pinned Ceridwen source has no SFH-basis selector")
+    selector = None if implementation == "baseline" else implementation
+    csp.select_sfh_basis_fastpath(selector)
+    if csp.sfh_basis_fastpath != selector:
+        raise BenchmarkError(
+            f"SFH-basis fast path {implementation} did not activate"
+        )
+    if selector is None:
+        basis_shape = list(csp.flux.shape)
+    elif selector == "A":
+        basis_shape = list(csp._sfh_basis.shape)
+    else:
+        basis_shape = list(csp._sfh_basis_flat.shape)
+    return {
+        "sfh_basis_fastpath": implementation,
+        "basis_shape": basis_shape,
+    }
+
+
 def _sample_prior(model: Any, rng_key: Any) -> dict[str, Any]:
     import jax
 
@@ -729,6 +772,9 @@ def _runtime_metadata(jax: Any, device: Any) -> dict[str, Any]:
         "ceridwen": getattr(ceridwen, "__version__", None),
         "jax_backend": jax.default_backend(),
         "jax_enable_x64": bool(jax.config.jax_enable_x64),
+        "jax_default_matmul_precision_env": os.environ.get(
+            "JAX_DEFAULT_MATMUL_PRECISION"
+        ),
         "jax_platforms_env": os.environ.get("JAX_PLATFORMS"),
         "xla_preallocate_env": os.environ.get("XLA_PYTHON_CLIENT_PREALLOCATE"),
         "xla_memory_fraction_env": os.environ.get("XLA_CLIENT_MEM_FRACTION"),
@@ -746,6 +792,9 @@ def _flat_result_row(result: dict[str, Any]) -> dict[str, Any]:
     git = result["git"]
     return {
         "schema_version": result["schema_version"],
+        "sfh_basis_fastpath": result.get("implementation", {}).get(
+            "sfh_basis_fastpath", "baseline"
+        ),
         "workload_id": result["workload"]["id"],
         "comparison_fingerprint": result["comparison_fingerprint"],
         "started_at_utc": result["started_at_utc"],
@@ -773,6 +822,7 @@ def _configure_cuda_environment() -> None:
     """Configure CUDA before JAX creates its GPU client."""
     os.environ["JAX_PLATFORMS"] = "cuda"
     os.environ["JAX_ENABLE_X64"] = "1"
+    os.environ["JAX_DEFAULT_MATMUL_PRECISION"] = JAX_MATMUL_PRECISION
     os.environ.pop("XLA_PYTHON_CLIENT_PREALLOCATE", None)
     os.environ["XLA_CLIENT_MEM_FRACTION"] = JAX_MEMORY_FRACTION
     os.environ.pop("LD_LIBRARY_PATH", None)
@@ -804,6 +854,10 @@ def command_run(args: argparse.Namespace) -> int:
     started_at = datetime.now(UTC)
     setup_start = time.perf_counter()
     workload = build_joint_workload(project_root)
+    implementation = select_sfh_basis_implementation(
+        workload,
+        args.sfh_basis_fastpath,
+    )
     input_sha256 = {name: _sha256(path) for name, path in workload.input_paths.items()}
     git = _git_metadata(project_root)
     setup_seconds = time.perf_counter() - setup_start
@@ -838,6 +892,7 @@ def command_run(args: argparse.Namespace) -> int:
         "warmup_steps": WARMUP_STEPS,
         "timed_steps": TIMED_STEPS,
         "likelihood_calls_per_step": CALLS_PER_STEP,
+        "jax_default_matmul_precision": JAX_MATMUL_PRECISION,
     }
     completed_at = datetime.now(UTC)
     result = {
@@ -845,6 +900,7 @@ def command_run(args: argparse.Namespace) -> int:
         "started_at_utc": started_at.isoformat(),
         "completed_at_utc": completed_at.isoformat(),
         "workload": contract,
+        "implementation": implementation,
         "comparison_fingerprint": _comparison_fingerprint(
             contract,
             input_sha256,
@@ -874,6 +930,7 @@ def command_run(args: argparse.Namespace) -> int:
         runtime["jax_device_kind"],
         args.vast_host,
         started_at.date().isoformat(),
+        args.sfh_basis_fastpath,
     )
     result_dir = args.output_root.resolve() / result_name
     if result_dir.exists():
@@ -886,6 +943,7 @@ def command_run(args: argparse.Namespace) -> int:
     _write_csv(csv_path, [_flat_result_row(result)])
     log_lines = [
         f"workload: {WORKLOAD_ID}",
+        f"SFH-basis implementation: {args.sfh_basis_fastpath}",
         f"device: {runtime['jax_device_kind']}",
         f"timed likelihood calls: {timings['timed_likelihood_calls']}",
         f"timed wall: {timings['total_timed_seconds']:.3f} s",
@@ -897,9 +955,9 @@ def command_run(args: argparse.Namespace) -> int:
         f"comparison fingerprint: {result['comparison_fingerprint']}",
     ]
     log_path.write_text("\n".join(log_lines) + "\n", encoding="utf-8")
-    print(log_lines[3])
     print(log_lines[4])
     print(log_lines[5])
+    print(log_lines[6])
     print(f"saved: {result_dir}")
     return 0
 
@@ -975,6 +1033,12 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         default=Path(__file__).resolve().parents[1] / "results",
         help="Parent directory for results. Default: PROJECT_ROOT/results.",
+    )
+    run_parser.add_argument(
+        "--sfh-basis-fastpath",
+        choices=SFH_BASIS_IMPLEMENTATIONS,
+        default="baseline",
+        help="SFH-basis implementation. Default: baseline.",
     )
     run_parser.add_argument(
         "--price-usd-per-hour",
