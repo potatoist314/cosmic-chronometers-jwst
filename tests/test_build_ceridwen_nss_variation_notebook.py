@@ -13,6 +13,7 @@ def test_builds_complete_variation_notebook(tmp_path):
     )
 
     assert "default-default: 6 pairs" in source
+    assert notebook["metadata"]["kernelspec"]["name"] == "ceridwen"
     assert "matched fast-default: 4 pairs" in source
     assert "mass_weighted_age_gyr" in source
     assert "posterior_predictive_spectra.png" in source

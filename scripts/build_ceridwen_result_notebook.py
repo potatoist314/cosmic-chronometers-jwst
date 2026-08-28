@@ -177,6 +177,12 @@ def build_notebook(source_path: Path, output_path: Path) -> None:
             cell["execution_count"] = None
             cell["outputs"] = []
 
+    notebook.setdefault("metadata", {})["kernelspec"] = {
+        "display_name": "Ceridwen (Vast.ai GPU)",
+        "language": "python",
+        "name": "ceridwen",
+    }
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(notebook, indent=1) + "\n", encoding="utf-8")
 

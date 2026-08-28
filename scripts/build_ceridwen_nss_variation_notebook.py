@@ -420,9 +420,9 @@ print("Host IDs are recorded for provenance. This analysis follows the requested
         "cells": cells,
         "metadata": {
             "kernelspec": {
-                "display_name": "Python 3",
+                "display_name": "Ceridwen (Vast.ai GPU)",
                 "language": "python",
-                "name": "python3",
+                "name": "ceridwen",
             },
             "language_info": {"name": "python", "version": "3.11"},
         },

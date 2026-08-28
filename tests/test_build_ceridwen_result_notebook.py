@@ -19,6 +19,7 @@ def test_builds_report_only_notebook_with_saved_figures(tmp_path):
     )
 
     assert "run_sampler(" not in source
+    assert notebook["metadata"]["kernelspec"]["name"] == "ceridwen"
     assert "loaded converged result" in source
     assert "CERIDWEN_SFH_BASIS_FASTPATH" in source
     for filename in (
