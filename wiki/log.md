@@ -294,3 +294,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Added seventeen measured runs, marked earlier comparison fingerprints, and retained all prior benchmark rows.
+
+## [2026-08-28] query | RTX 5060 fast-basis convergence test
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
+- Change: Added paired converged speeds and recorded the failed posterior and evidence equivalence gate.

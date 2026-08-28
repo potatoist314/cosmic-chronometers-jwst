@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "started_at_utc": "2026-08-28T08:07:13.795777+00:00",
+  "completed_at_utc": "2026-08-28T09:45:43.596808+00:00",
+  "implementation": {
+    "sfh_basis_fastpath": "baseline",
+    "basis_shape": [
+      5,
+      13,
+      107,
+      10992
+    ]
+  },
+  "contract": {
+    "workload": {
+      "target": "M1_210210",
+      "redshift": 0.65420001745224,
+      "velocity_dispersion_km_s": 259.5,
+      "photometric_bands": 11,
+      "spectral_pixels": 3523,
+      "ssp_grid_id": "amist_c3k_hr_krou_afe",
+      "ssp_grid_schema": "2.1",
+      "ssp_grid_shape": [
+        5,
+        13,
+        107,
+        10992
+      ],
+      "ssp_grid_pixel_resolving_power": 5999.5000138798505
+    },
+    "input_sha256": {
+      "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+      "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+      "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+      "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+    },
+    "seed": 20260812,
+    "sampler": {
+      "name": "blackjax.nss",
+      "num_live": 300,
+      "num_inner_steps": 40,
+      "num_delete": 25,
+      "logZ_tol": -3.0
+    },
+    "precision": "highest",
+    "project_commit": "039c59d0e7933e8a2d12f5ceea10ba9eb2efa919",
+    "ceridwen_commit": "80ca35dd1f3adcca716efd82b9d91240c8e76c9e",
+    "software": {
+      "python": "3.11.16",
+      "jax": "0.10.2",
+      "jaxlib": "0.10.2",
+      "blackjax": "1.6.dev98+gf73e12956",
+      "ceridwen": "0.2.0",
+      "device": "NVIDIA GeForce RTX 5060",
+      "jax_enable_x64": true
+    }
+  },
+  "contract_fingerprint": "394859ee272e8005847e0ba6997b96465c7ab895d4835716913bfc4be48b513f",
+  "result": {
+    "path": "ceridwen_result.h5",
+    "sha256": "32015b19660f527f3dafb432d1bfb72c872aeb8b0c0692e448d426a803757102",
+    "param_names": [
+      "Z",
+      "afe",
+      "diffuse_tau_kc",
+      "logsfr_ratios",
+      "logmass",
+      "log_f_calib"
+    ],
+    "log_evidence": 230631.60121190595,
+    "log_evidence_err": 0.3705319411145633,
+    "n_likelihood_calls": 566000,
+    "wall_time_s": 5611.742140383925,
+    "n_samples": 14450,
+    "posterior_weight_ess": 2106.5589285740457
+  }
+}
