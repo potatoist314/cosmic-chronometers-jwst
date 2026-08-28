@@ -18,7 +18,6 @@ Treat these instructions as active until the user explicitly changes them.
   file named and stop. Keep the repo clean. Do not add speculative defensive guards to code; rely on documented data contracts unless an observed failure or test justifies the check.
   - **Prefer established or existing libraries for standard operations. Avoid recreating functions that already exist.
   E.g. ** `milespy`,`astropy`, `scipy`, `specutils`, `spectres` and the other installed packages already implement many standard operations. Confirm their behavior before replacing them with hand-written code.
-  `All written or modified Python code and notebooks must pass the project’s configured Ruff checks before completion; fix every diagnostic rather than suppressing it.`
 
 
 ## Repository and reproducibility conventions
