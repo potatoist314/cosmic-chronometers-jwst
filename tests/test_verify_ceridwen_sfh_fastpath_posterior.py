@@ -51,9 +51,35 @@ def test_materially_shifted_components_fail() -> None:
 
 
 def test_full_settings_match_the_requested_converged_contract() -> None:
-    assert verification.SEED == 20260812
+    assert verification.DEFAULT_SEED == 20260812
     assert verification.NUM_LIVE == 300
     assert verification.NUM_INNER_STEPS == 40
     assert verification.NUM_DELETE == 25
     assert verification.LOGZ_TOL == -3.0
     assert verification.MIN_WEIGHT_ESS == 200.0
+
+
+def test_empirical_envelope_marks_values_against_default_maximum() -> None:
+    def pair(value: float) -> dict[str, object]:
+        metrics = {
+            "mean_shift_pooled_sd": value,
+            "median_shift_pooled_sd": value,
+            "max_quantile_shift_central_width": value,
+            "wasserstein_pooled_sd": value,
+        }
+        return {
+            "evidence": {
+                "absolute_log_evidence_difference": value,
+                "difference_sigma": value,
+            },
+            "parameters": [{"parameter": "age", **metrics}],
+        }
+
+    envelope = verification._empirical_envelope(
+        [pair(0.1), pair(0.3)],
+        [pair(0.2), pair(0.4)],
+    )
+
+    age = envelope["parameters"]["age"]["wasserstein_pooled_sd"]
+    assert age["default_median"] == pytest.approx(0.2)
+    assert age["fast_inside_default_max"] == [True, False]

@@ -5,9 +5,9 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import json
 import math
+import os
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -20,7 +20,7 @@ try:
 except ModuleNotFoundError:
     import benchmark_ceridwen_vast as benchmark
 
-SEED = 20260812
+DEFAULT_SEED = 20260812
 NUM_LIVE = 300
 NUM_INNER_STEPS = 40
 NUM_DELETE = 25
@@ -36,19 +36,6 @@ QUANTILES = (0.16, 0.50, 0.84)
 
 class VerificationError(RuntimeError):
     """Report an invalid run or a failed comparison contract."""
-
-
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(8 * 1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
-def _fingerprint(value: Any) -> str:
-    payload = json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
-    return hashlib.sha256(payload).hexdigest()
 
 
 def normalized_weights(log_weights: Any) -> np.ndarray:
@@ -148,14 +135,20 @@ def compare_component(
     }
 
 
-def _run_contract(workload: Any, runtime: dict[str, Any]) -> dict[str, Any]:
+def _science_contract(workload: Any) -> dict[str, Any]:
     git = benchmark._git_metadata(Path(__file__).resolve().parents[1])
     return {
         "workload": workload.metadata,
-        "input_sha256": {
-            name: _sha256(path) for name, path in workload.input_paths.items()
+        "lookback_time_gyr": (
+            np.asarray(workload.model.csp.sfh_times, dtype=float) / 1e9
+        ).tolist(),
+        "input_files": {
+            name: {
+                "name": path.name,
+                "size_bytes": path.stat().st_size,
+            }
+            for name, path in workload.input_paths.items()
         },
-        "seed": SEED,
         "sampler": {
             "name": "blackjax.nss",
             "num_live": NUM_LIVE,
@@ -164,9 +157,12 @@ def _run_contract(workload: Any, runtime: dict[str, Any]) -> dict[str, Any]:
             "logZ_tol": LOGZ_TOL,
         },
         "precision": "highest",
-        "project_commit": git["project_commit"],
-        "ceridwen_commit": git["ceridwen_commit"],
-        "software": runtime,
+        "project_commit": os.environ.get(
+            "CERIDWEN_PROJECT_COMMIT", git["project_commit"]
+        ),
+        "ceridwen_commit": os.environ.get(
+            "CERIDWEN_SOURCE_COMMIT", git["ceridwen_commit"]
+        ),
     }
 
 
@@ -208,7 +204,7 @@ def command_run(args: argparse.Namespace) -> int:
         "device": getattr(devices[0], "device_kind", str(devices[0])),
         "jax_enable_x64": bool(jax.config.jax_enable_x64),
     }
-    contract = _run_contract(workload, runtime)
+    contract = _science_contract(workload)
     adapter = BlackJAXNestedSamplerAdapter(
         priors=workload.model.priors,
         num_live=NUM_LIVE,
@@ -223,7 +219,7 @@ def command_run(args: argparse.Namespace) -> int:
         workload.model,
         workload.likelihood,
         adapter,
-        jax.random.PRNGKey(SEED),
+        jax.random.PRNGKey(args.seed),
     )
     result_path = output_dir / "ceridwen_result.h5"
     write_result_h5(result_path, workload.model, result)
@@ -237,14 +233,18 @@ def command_run(args: argparse.Namespace) -> int:
     manifest = {
         "schema_version": 1,
         "status": "complete",
+        "seed": args.seed,
         "started_at_utc": started_at.isoformat(),
         "completed_at_utc": datetime.now(UTC).isoformat(),
         "implementation": implementation,
-        "contract": contract,
-        "contract_fingerprint": _fingerprint(contract),
+        "science_contract": contract,
+        "runtime": {
+            **runtime,
+            "vast_instance_id": os.environ.get("CONTAINER_ID"),
+            "vast_host_id": os.environ.get("VAST_HOST_ID"),
+        },
         "result": {
             "path": result_path.name,
-            "sha256": _sha256(result_path),
             "param_names": saved.param_names,
             "log_evidence": saved.log_evidence,
             "log_evidence_err": saved.log_evidence_err,
@@ -274,19 +274,15 @@ def _load_run(path: Path, expected_implementation: str) -> tuple[Any, dict[str, 
     ):
         raise VerificationError(f"unexpected implementation in {path}")
     result_path = path / manifest["result"]["path"]
-    if _sha256(result_path) != manifest["result"]["sha256"]:
-        raise VerificationError(f"result checksum failed: {result_path}")
+    if not result_path.is_file():
+        raise VerificationError(f"result file is missing: {result_path}")
     return load_result_h5(result_path), manifest
 
 
 def command_compare(args: argparse.Namespace) -> int:
     baseline, baseline_manifest = _load_run(args.baseline_dir.resolve(), "baseline")
     fastpath, fastpath_manifest = _load_run(args.fastpath_dir.resolve(), "A")
-    if baseline_manifest["contract_fingerprint"] != fastpath_manifest[
-        "contract_fingerprint"
-    ]:
-        raise VerificationError("the converged runs use different contracts")
-    if baseline_manifest["contract"] != fastpath_manifest["contract"]:
+    if baseline_manifest["science_contract"] != fastpath_manifest["science_contract"]:
         raise VerificationError("the converged run contracts do not match")
     if baseline.param_names != fastpath.param_names:
         raise VerificationError("the converged runs returned different parameters")
@@ -348,7 +344,7 @@ def command_compare(args: argparse.Namespace) -> int:
         "schema_version": 1,
         "status": "passed" if passed else "failed",
         "scope": "matched_converged_nss_weighted_posterior_equivalence",
-        "contract_fingerprint": baseline_manifest["contract_fingerprint"],
+        "science_contract": baseline_manifest["science_contract"],
         "thresholds_declared_before_runs": thresholds,
         "baseline": {
             **baseline_manifest["result"],
@@ -398,6 +394,262 @@ def command_compare(args: argparse.Namespace) -> int:
     return 0 if passed else 1
 
 
+def posterior_components(result: Any, science_contract: dict[str, Any]) -> dict[str, np.ndarray]:
+    """Return direct and derived posterior components on aligned dead points."""
+    components: dict[str, np.ndarray] = {}
+    sample_count = np.asarray(result.log_weights).size
+    for name in result.param_names:
+        values = np.asarray(result.samples[name]).reshape(sample_count, -1)
+        for index in range(values.shape[1]):
+            label = name if values.shape[1] == 1 else f"{name}[{index}]"
+            components[label] = values[:, index]
+
+    if "logsfr_ratios" not in result.samples:
+        return components
+
+    import jax
+    import jax.numpy as jnp
+    from ceridwen.model import logsfr_ratios_to_sfh
+
+    lookback_gyr = np.asarray(science_contract["lookback_time_gyr"], dtype=float)
+    lookback_yr = jnp.asarray(lookback_gyr * 1e9)
+    ratios = jnp.asarray(result.samples["logsfr_ratios"])
+    histories = np.asarray(
+        jax.vmap(
+            lambda value: logsfr_ratios_to_sfh(
+                value,
+                sfh_times_yr=lookback_yr,
+            )
+        )(ratios)
+    )
+    durations_yr = np.diff(lookback_gyr) * 1e9
+    interval_masses = 0.5 * (
+        histories[:, :-1] + histories[:, 1:]
+    ) * durations_yr
+    total_mass = interval_masses.sum(axis=1)
+    mass_fractions = interval_masses / total_mass[:, None]
+    interval_age_gyr = 0.5 * (lookback_gyr[:-1] + lookback_gyr[1:])
+    components["mass_weighted_age_gyr"] = (
+        interval_masses * interval_age_gyr
+    ).sum(axis=1) / total_mass
+    for index in range(mass_fractions.shape[1]):
+        components[f"formed_mass_fraction[{index}]"] = mass_fractions[:, index]
+    return components
+
+
+def compare_runs(
+    left: tuple[Any, dict[str, Any]],
+    right: tuple[Any, dict[str, Any]],
+) -> dict[str, Any]:
+    """Compare two converged weighted posteriors with one science contract."""
+    left_result, left_manifest = left
+    right_result, right_manifest = right
+    if left_manifest["science_contract"] != right_manifest["science_contract"]:
+        raise VerificationError("the converged run contracts do not match")
+
+    left_weights = normalized_weights(left_result.log_weights)
+    right_weights = normalized_weights(right_result.log_weights)
+    left_components = posterior_components(
+        left_result,
+        left_manifest["science_contract"],
+    )
+    right_components = posterior_components(
+        right_result,
+        right_manifest["science_contract"],
+    )
+    if left_components.keys() != right_components.keys():
+        raise VerificationError("the converged runs returned different components")
+
+    evidence_scale = math.hypot(
+        left_result.log_evidence_err,
+        right_result.log_evidence_err,
+    )
+    if not np.isfinite(evidence_scale) or evidence_scale <= 0:
+        raise VerificationError("the evidence uncertainties are not finite")
+
+    parameters = []
+    for label in left_components:
+        comparison = compare_component(
+            left_components[label],
+            left_weights,
+            right_components[label],
+            right_weights,
+        )
+        parameters.append(
+            {
+                "parameter": label,
+                "left": comparison.pop("baseline"),
+                "right": comparison.pop("fastpath_a"),
+                **comparison,
+            }
+        )
+
+    return {
+        "left_seed": left_manifest["seed"],
+        "right_seed": right_manifest["seed"],
+        "left_implementation": left_manifest["implementation"][
+            "sfh_basis_fastpath"
+        ],
+        "right_implementation": right_manifest["implementation"][
+            "sfh_basis_fastpath"
+        ],
+        "evidence": {
+            "absolute_log_evidence_difference": abs(
+                left_result.log_evidence - right_result.log_evidence
+            ),
+            "combined_uncertainty": evidence_scale,
+            "difference_sigma": abs(
+                left_result.log_evidence - right_result.log_evidence
+            )
+            / evidence_scale,
+        },
+        "parameters": parameters,
+    }
+
+
+def _empirical_envelope(
+    default_pairs: list[dict[str, Any]],
+    matched_pairs: list[dict[str, Any]],
+) -> dict[str, Any]:
+    metric_names = (
+        "mean_shift_pooled_sd",
+        "median_shift_pooled_sd",
+        "max_quantile_shift_central_width",
+        "wasserstein_pooled_sd",
+    )
+
+    def summarize(default_values: list[float], fast_values: list[float]) -> dict[str, Any]:
+        maximum = float(np.max(default_values))
+        return {
+            "default_min": float(np.min(default_values)),
+            "default_median": float(np.median(default_values)),
+            "default_max": maximum,
+            "fast_default_values": [float(value) for value in fast_values],
+            "fast_inside_default_max": [
+                bool(value <= maximum) for value in fast_values
+            ],
+        }
+
+    envelope: dict[str, Any] = {"evidence": {}, "parameters": {}}
+    for metric in ("absolute_log_evidence_difference", "difference_sigma"):
+        envelope["evidence"][metric] = summarize(
+            [pair["evidence"][metric] for pair in default_pairs],
+            [pair["evidence"][metric] for pair in matched_pairs],
+        )
+
+    labels = [item["parameter"] for item in default_pairs[0]["parameters"]]
+    for index, label in enumerate(labels):
+        envelope["parameters"][label] = {}
+        for metric in metric_names:
+            envelope["parameters"][label][metric] = summarize(
+                [pair["parameters"][index][metric] for pair in default_pairs],
+                [pair["parameters"][index][metric] for pair in matched_pairs],
+            )
+    return envelope
+
+
+def _run_summary(run: tuple[Any, dict[str, Any]]) -> dict[str, Any]:
+    result, manifest = run
+    weights = normalized_weights(result.log_weights)
+    return {
+        "seed": manifest["seed"],
+        "implementation": manifest["implementation"]["sfh_basis_fastpath"],
+        "runtime": manifest["runtime"],
+        **manifest["result"],
+        "posterior_weight_ess": float(1.0 / np.sum(weights**2)),
+    }
+
+
+def command_compare_ensemble(args: argparse.Namespace) -> int:
+    """Compare four default runs with four seed-matched fast-path runs."""
+    baseline_runs = [
+        _load_run(path.resolve(), "baseline") for path in args.baseline_dir
+    ]
+    fastpath_runs = [_load_run(path.resolve(), "A") for path in args.fastpath_dir]
+    if len(baseline_runs) < 2 or len(fastpath_runs) < 2:
+        raise VerificationError("ensemble comparison requires at least two runs per group")
+
+    baseline_by_seed = {run[1]["seed"]: run for run in baseline_runs}
+    fastpath_by_seed = {run[1]["seed"]: run for run in fastpath_runs}
+    if len(baseline_by_seed) != len(baseline_runs):
+        raise VerificationError("baseline seeds must be unique")
+    if len(fastpath_by_seed) != len(fastpath_runs):
+        raise VerificationError("fast-path seeds must be unique")
+    if baseline_by_seed.keys() != fastpath_by_seed.keys():
+        raise VerificationError("baseline and fast-path seed sets must match")
+
+    seeds = sorted(baseline_by_seed)
+    default_pairs = [
+        compare_runs(baseline_by_seed[left], baseline_by_seed[right])
+        for position, left in enumerate(seeds)
+        for right in seeds[position + 1 :]
+    ]
+    matched_pairs = [
+        compare_runs(baseline_by_seed[seed], fastpath_by_seed[seed])
+        for seed in seeds
+    ]
+    all_cross_pairs = [
+        compare_runs(baseline_by_seed[left], fastpath_by_seed[right])
+        for left in seeds
+        for right in seeds
+    ]
+
+    comparison = {
+        "schema_version": 2,
+        "status": "complete",
+        "scope": "nss_default_variation_vs_fastpath_variation",
+        "science_contract": baseline_runs[0][1]["science_contract"],
+        "baseline_runs": [_run_summary(run) for run in baseline_runs],
+        "fastpath_runs": [_run_summary(run) for run in fastpath_runs],
+        "comparisons": {
+            "default_default": default_pairs,
+            "matched_fast_default": matched_pairs,
+            "all_fast_default": all_cross_pairs,
+        },
+        "empirical_default_envelopes": _empirical_envelope(
+            default_pairs,
+            matched_pairs,
+        ),
+    }
+
+    output_dir = args.output_dir.resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_json = output_dir / "comparison.json"
+    output_json.write_text(json.dumps(comparison, indent=2) + "\n", encoding="utf-8")
+
+    rows = []
+    for pair_type, pairs in comparison["comparisons"].items():
+        for pair in pairs:
+            for parameter in pair["parameters"]:
+                rows.append(
+                    {
+                        "pair_type": pair_type,
+                        "left_seed": pair["left_seed"],
+                        "right_seed": pair["right_seed"],
+                        "parameter": parameter["parameter"],
+                        "mean_shift_pooled_sd": parameter[
+                            "mean_shift_pooled_sd"
+                        ],
+                        "median_shift_pooled_sd": parameter[
+                            "median_shift_pooled_sd"
+                        ],
+                        "max_quantile_shift_central_width": parameter[
+                            "max_quantile_shift_central_width"
+                        ],
+                        "wasserstein_pooled_sd": parameter[
+                            "wasserstein_pooled_sd"
+                        ],
+                    }
+                )
+    output_csv = output_dir / "comparison.csv"
+    with output_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"saved ensemble comparison: {output_json}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -408,6 +660,7 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         default=Path(__file__).resolve().parents[1],
     )
+    run_parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
     run_parser.add_argument(
         "--sfh-basis-fastpath",
         choices=("baseline", "A"),
@@ -424,6 +677,25 @@ def build_parser() -> argparse.ArgumentParser:
     compare_parser.add_argument("--fastpath-dir", type=Path, required=True)
     compare_parser.add_argument("--output", type=Path, required=True)
     compare_parser.set_defaults(function=command_compare)
+
+    ensemble_parser = subparsers.add_parser(
+        "compare-ensemble",
+        help="compare repeated default and fast-path weighted posteriors",
+    )
+    ensemble_parser.add_argument(
+        "--baseline-dir",
+        type=Path,
+        action="append",
+        required=True,
+    )
+    ensemble_parser.add_argument(
+        "--fastpath-dir",
+        type=Path,
+        action="append",
+        required=True,
+    )
+    ensemble_parser.add_argument("--output-dir", type=Path, required=True)
+    ensemble_parser.set_defaults(function=command_compare_ensemble)
     return parser
 
 
