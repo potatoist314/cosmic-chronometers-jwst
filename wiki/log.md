@@ -319,3 +319,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`
 - Change: Updated the RTX 5090 evidence path after shortening result directory names.
+
+## [2026-08-28] codebase | Smoothed posterior density plots
+
+- Pages: `notebooks/notebook-map.html`, `index.md`
+- Change: Documented the shared blue density style and HDF5-only result plot regeneration.

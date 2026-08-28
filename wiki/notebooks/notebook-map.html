@@ -96,6 +96,10 @@ enhancement, diffuse dust, calibration floor, and mass-weighted age.
 <code>corner_age_mass_fractions.png</code> shows mass-weighted age with
 each formed-mass fraction. Both files are written to the run result
 directory.</p>
+<p>All current corner plots use 40-bin blue density maps with Gaussian
+smoothing. Darker blue marks higher relative posterior density. Existing
+quantiles and contour probability levels remain unchanged. Saved result
+plots are rebuilt from their HDF5 posteriors without rerunning a fit.</p>
 <p>The paired RTX 5060 result keeps separate executed reports in its
 <code>baseline/</code> and <code>fastpath_a/</code> directories. Each
 report loads its matching HDF5 posterior and contains the complete fit,
