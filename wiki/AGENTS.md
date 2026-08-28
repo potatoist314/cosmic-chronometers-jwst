@@ -81,7 +81,11 @@ remain in Markdown. Store shared presentation rules in `assets/wiki.css`.
   `<title>` and `<desc>`.
 - Pair colour with text, position, or line style. Do not use colour alone.
 - Use links only when a diagram is part of navigation.
-- Do not use Mermaid, JavaScript, external assets, or generated plot images.
+- Do not use Mermaid, external scripts, external assets, or generated plot images.
+- Self-contained JavaScript is allowed when it materially improves a
+  user-requested interactive diagram.
+- A validated Archify viewer may use its own self-contained HTML, CSS, inline
+  SVG, and JavaScript instead of the normal wiki page shell and teaching blocks.
 - Check diagrams at 360, 736, and 1024 pixels. Check dark mode and print.
 
 Each generated HTML page must include:

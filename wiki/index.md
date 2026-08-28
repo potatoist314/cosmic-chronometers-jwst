@@ -2,8 +2,8 @@
 
 Human entry point: `index.html` (updated 2026-08-28)
 
-Reader pages use responsive HTML, CSS, and inline SVG schematics. They do not
-require JavaScript or external diagram assets.
+Reader pages use responsive HTML, CSS, and inline SVG schematics. The Archify
+map uses self-contained JavaScript; no page loads external diagram assets.
 
 Technical pages contain one or two source-backed teaching blocks. Each block
 pairs an exact code excerpt with source documentation and a plain explanation.
@@ -21,6 +21,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 
 ## Codebase
 
+- `codebase/active-codebase-map.html` — Interactively maps the active data, notebook, Ceridwen, sampling, GPU, test, and result paths.
 - `codebase/project-map.html` — Explains repository boundaries, entry points, and environments.
 - `codebase/project-modules.html` — Explains active support scripts and retained legacy modules.
 - `codebase/data-pipeline.html` — Traces LEGA-C data into Ceridwen observations.
