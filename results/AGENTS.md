@@ -9,13 +9,14 @@
 - Keep generated reader-facing plot files beside the executed notebook.
 - HDF5 posteriors, timing metadata, and logs may accompany these readable outputs.
 - Name every top-level result directory for a human reader.
-- Use `ceridwen_<environment>_<hardware>_<analysis>_complete_<YYYY-MM-DD>` only
-  after convergence.
+- Use a short `<hardware>-<analysis>` name. Add a date only when two results
+  would otherwise have the same name.
 - Do not use `batch-*`, opaque timestamps, or raw run IDs as directory names.
-- Keep exact timestamps and run IDs inside timing JSON or HDF5 metadata.
+- Keep provider, completion state, exact timestamps, and run IDs inside timing
+  JSON or HDF5 metadata.
 - Name nested directories by contents, such as `posterior_outputs`.
 - Before renaming results, update path references and verify expected files exist.
 
 Example:
 
-- `ceridwen_modal_a100_feature_spectrum_complete_2026-08-25`
+- `a100-feature-spectrum`

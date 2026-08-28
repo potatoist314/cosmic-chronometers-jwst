@@ -314,3 +314,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `guides/modal-gpu-workflow.html`, `index.md`
 - Change: Updated benchmark evidence paths after moving non-scientific runs out of `results/`.
+
+## [2026-08-28] codebase | Readable result directory names
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`
+- Change: Updated the RTX 5090 evidence path after shortening result directory names.

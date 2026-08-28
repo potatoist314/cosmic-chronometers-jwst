@@ -86,9 +86,9 @@ Converged scientific fits remain under `results/`. Incomplete and diagnostic
 artifacts remain available under `benchmarks/ceridwen/runs/`.
 
 - Vast completed fit:
-  `results/ceridwen_vast_a100_integrated_fit_notebook_only_2026-08-25/ceridwen_integrated_photometry_spectra.ipynb`
+  `results/a100-integrated-fit-notebook/ceridwen_integrated_photometry_spectra.ipynb`
 - Modal completed feature fit:
-  `results/ceridwen_modal_a100_feature_spectrum_complete_2026-08-25/`
+  `results/a100-feature-spectrum/`
 - Modal incomplete and checkpoint runs:
   `benchmarks/ceridwen/runs/ceridwen_modal_a100_feature_spectrum_incomplete_2026-08-25/`,
   `benchmarks/ceridwen/runs/ceridwen_modal_a100_full_spectrum_incomplete_2026-08-25/`,
