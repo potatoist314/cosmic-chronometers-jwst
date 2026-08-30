@@ -66,6 +66,36 @@ def test_control_process_keeps_validation_off_gpu(monkeypatch, tmp_path):
     assert os.environ["JAX_PLATFORMS"] == "cpu"
 
 
+def test_monitor_pulls_only_promised_per_target_files(monkeypatch, tmp_path):
+    endpoint = runner._monitor_endpoint("49277679:ssh8.vast.ai:37678:1")
+    manifest = {
+        "targets": [{"object_id": 233129, "spect_id": "M10_233129"}],
+        "results": {"M10_233129": {"status": "complete"}},
+    }
+    validations = 0
+    commands = []
+
+    def validate(*_args):
+        nonlocal validations
+        validations += 1
+        if validations == 1:
+            raise FileNotFoundError
+
+    monkeypatch.setattr(runner, "_validate_result", validate)
+    monkeypatch.setattr(
+        runner, "_rsync_command", lambda _endpoint, *args: commands.append(args)
+    )
+
+    assert runner._pull_completed(endpoint, manifest, tmp_path) == {"M10_233129"}
+    result_pull = commands[1]
+    assert "--include=execution.log" in result_pull
+    assert "--include=ceridwen_result.h5" in result_pull
+    assert "--include=ceridwen_derived_outputs.h5" in result_pull
+    assert "--include=M10_233129_executed.ipynb" in result_pull
+    assert "--exclude=*" in result_pull
+    assert not any(".png" in argument or ".pkl" in argument for argument in result_pull)
+
+
 def test_notebook_uses_production_model_and_sampler_contract():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])

@@ -214,6 +214,10 @@ PY
       retries a failed target once with the same seed.</p>
       <p>A periodic BlackJAX NSS checkpoint is a usable partial posterior.
       It cannot resume the sampler from the same point.</p>
+      <p>The local <code>--monitor</code> mode polls both shard manifests,
+      downloads only completed four-file target products, validates them on
+      the local computer, enforces the recorded credit cap, and destroys both
+      production instances only after all 187 results pass.</p>
       <div class="source-example">
       <p class="source-locator"><code>scripts/run_ceridwen_vast_multi_gpu.py:108-126 · build_target_manifest</code></p>
       <pre><code>selected = (
@@ -245,7 +249,8 @@ for index, row in enumerate(selected.itertuples(index=False)):
     <section id="finish">
       <h2>Preserve results and finish</h2>
       <ol>
-        <li>Download each completed target directory with <code>rsync -aP</code>.</li>
+        <li>Download each completed four-file target result with
+        <code>rsync -aP</code>.</li>
         <li>Load both HDF5 files on the local computer.</li>
         <li>Open the executed notebook and check its embedded figures.</li>
         <li>Stop or destroy the paid instance after you secure the

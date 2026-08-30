@@ -7,6 +7,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -24,6 +25,7 @@ DEFAULT_BASE_SEED = 20260830
 DEFAULT_MINIMUM_GPU_MEMORY_MIB = int(
     os.environ.get("CERIDWEN_MIN_GPU_MEMORY_MIB", "8000")
 )
+REMOTE_RESULT_ROOT = "/workspace/cosmic-chronometers-jwst/results/rtx-5060-dr2-quiescent-full-spectrum"
 
 
 def _utc_now() -> str:
@@ -287,6 +289,148 @@ def _worker(output_notebook: Path) -> int:
     return 0
 
 
+def _monitor_endpoint(value: str) -> dict:
+    instance_id, host, port, shard_index = value.split(":", maxsplit=3)
+    return {
+        "instance_id": int(instance_id),
+        "host": host,
+        "port": int(port),
+        "shard_index": int(shard_index),
+    }
+
+
+def _remote_manifest(endpoint: dict) -> dict:
+    path = f"{REMOTE_RESULT_ROOT}/shard_{endpoint['shard_index']}_manifest.json"
+    result = subprocess.run(
+        [
+            "ssh",
+            "-p",
+            str(endpoint["port"]),
+            f"root@{endpoint['host']}",
+            "cat",
+            path,
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return json.loads(result.stdout)
+
+
+def _rsync_command(endpoint: dict, *arguments: str) -> None:
+    subprocess.run(
+        ["rsync", "-aP", "-e", f"ssh -p {endpoint['port']}", *arguments],
+        check=True,
+    )
+
+
+def _pull_completed(endpoint: dict, manifest: dict, output_root: Path) -> set[str]:
+    output_root.mkdir(parents=True, exist_ok=True)
+    remote = f"root@{endpoint['host']}"
+    _rsync_command(
+        endpoint,
+        f"{remote}:{REMOTE_RESULT_ROOT}/targets.json",
+        f"{remote}:{REMOTE_RESULT_ROOT}/shard_{endpoint['shard_index']}_manifest.json",
+        f"{output_root}/",
+    )
+
+    completed = set()
+    targets = {target["spect_id"]: target for target in manifest["targets"]}
+    for spect_id, result in manifest["results"].items():
+        if result.get("status") != "complete":
+            continue
+        target = targets[spect_id]
+        result_dir = output_root / f"{target['object_id']}-{spect_id}"
+        try:
+            _validate_result(result_dir, spect_id)
+        except (FileNotFoundError, KeyError, OSError, RuntimeError, ValueError):
+            result_dir.mkdir(parents=True, exist_ok=True)
+            remote_dir = f"{remote}:{REMOTE_RESULT_ROOT}/{target['object_id']}-{spect_id}/"
+            _rsync_command(
+                endpoint,
+                "--include=execution.log",
+                "--include=ceridwen_result.h5",
+                "--include=ceridwen_derived_outputs.h5",
+                f"--include={spect_id}_executed.ipynb",
+                "--exclude=*",
+                remote_dir,
+                f"{result_dir}/",
+            )
+            _validate_result(result_dir, spect_id)
+        completed.add(spect_id)
+    return completed
+
+
+def _vast_credit() -> float:
+    result = subprocess.run(
+        ["vastai", "show", "user", "--raw"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    start = result.stdout.find("{")
+    if start < 0:
+        raise RuntimeError("Vast user response did not contain JSON")
+    return float(json.loads(result.stdout[start:])["credit"])
+
+
+def _set_instances(endpoints: list[dict], action: str) -> None:
+    for endpoint in endpoints:
+        subprocess.run(
+            ["vastai", action, "instance", str(endpoint["instance_id"])],
+            check=True,
+        )
+
+
+def _monitor(args: argparse.Namespace) -> int:
+    os.environ["JAX_PLATFORMS"] = "cpu"
+    endpoints = [_monitor_endpoint(value) for value in args.monitor_instance]
+    if {endpoint["shard_index"] for endpoint in endpoints} != {0, 1}:
+        raise ValueError("--monitor-instance must specify shards 0 and 1")
+    if args.credit_baseline is None:
+        raise ValueError("--credit-baseline is required with --monitor")
+
+    while True:
+        manifests = []
+        completed = set()
+        try:
+            for endpoint in endpoints:
+                manifest = _remote_manifest(endpoint)
+                manifests.append(manifest)
+                completed.update(
+                    _pull_completed(endpoint, manifest, args.output_root)
+                )
+            credit = _vast_credit()
+            spend = args.credit_baseline - credit
+            print(
+                f"[{_utc_now()}] locally validated {len(completed)}/187; "
+                f"Vast spend ${spend:.3f}/${args.spend_cap:.2f}",
+                flush=True,
+            )
+
+            if spend >= args.spend_cap:
+                _set_instances(endpoints, "stop")
+                raise RuntimeError("Stopped both instances at the Vast spend cap")
+            if any(manifest.get("status") == "incomplete" for manifest in manifests):
+                _set_instances(endpoints, "stop")
+                raise RuntimeError("Stopped both instances after an incomplete shard")
+            if all(manifest.get("status") == "complete" for manifest in manifests):
+                if len(completed) != 187:
+                    _set_instances(endpoints, "stop")
+                    raise RuntimeError(
+                        f"Both shards completed but only {len(completed)} local results validate"
+                    )
+                _set_instances(endpoints, "destroy")
+                print("All 187 local results validated; destroyed both instances", flush=True)
+                return 0
+        except RuntimeError:
+            _set_instances(endpoints, "stop")
+            raise
+        except (json.JSONDecodeError, OSError, subprocess.CalledProcessError) as exc:
+            print(f"[{_utc_now()}] monitor retry: {exc}", flush=True)
+        time.sleep(args.poll_seconds)
+
+
 def _run(args: argparse.Namespace) -> int:
     # Result validation imports JAX in this long-lived control process. Keep it
     # on CPU so it cannot reserve VRAM needed by the notebook kernel.
@@ -393,6 +537,11 @@ def _parser() -> argparse.ArgumentParser:
         default=DEFAULT_MINIMUM_GPU_MEMORY_MIB,
     )
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
+    parser.add_argument("--monitor", action="store_true")
+    parser.add_argument("--monitor-instance", action="append", default=[])
+    parser.add_argument("--credit-baseline", type=float)
+    parser.add_argument("--spend-cap", type=float, default=20.0)
+    parser.add_argument("--poll-seconds", type=float, default=300.0)
     return parser
 
 
@@ -400,6 +549,8 @@ def main() -> int:
     args = _parser().parse_args()
     if args.worker_output is not None:
         return _worker(args.worker_output)
+    if args.monitor:
+        return _monitor(args)
     return _run(args)
 
 
