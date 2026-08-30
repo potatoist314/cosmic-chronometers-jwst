@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="guide">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-28">
+  <meta name="wiki-updated" content="2026-08-30">
   <title>Vast.ai GPU Workflow</title>
   <link rel="stylesheet" href="../assets/wiki.css">
 </head>
@@ -25,9 +25,9 @@
       <p class="eyebrow">Operational guide</p>
       <h1>Run Ceridwen fits on a Vast.ai GPU.</h1>
       <p class="lede">The spectrum notebook fits spectra. The joint
-      notebook fits photometry with native spectra or stellar indices. Use local CPUs for trials.
-      Use Vast.ai GPUs for fixed benchmarks and full fits. One Vast
-      instance can run one independent fit on each visible GPU.</p>
+      notebook fits photometry with native spectra or stellar indices. Use local CPUs for checks.
+      Use Vast.ai GPUs for full fits. The DR2 production run assigns one
+      deterministic target shard to each one-GPU instance.</p>
     </header>
 
     <nav id="TOC" aria-label="On this page">
@@ -37,7 +37,7 @@
           <li><a href="#clone">Clone</a><small>Include submodules</small></li>
           <li><a href="#data">Transfer data</a><small>Private inputs</small></li>
           <li><a href="#bootstrap">Bootstrap</a><small>Verify CUDA</small></li>
-          <li><a href="#run">Run fits</a><small>one or four GPUs</small></li>
+          <li><a href="#run">Run fits</a><small>two shards</small></li>
           <li><a href="#finish">Save and stop</a><small>Secure output</small></li>
         </ol>
         <figcaption id="vast-route-caption">A safe Vast.ai run starts with verified hardware and ends after local result checks.</figcaption>
@@ -50,19 +50,20 @@
         <li>Use a Linux image with Jupyter, SSH, and CUDA 12. Prefer
         <code>vastai/base-image:cuda-12.6.3-auto</code>. It avoids the unused
         PyTorch stack. The bootstrap installs CUDA JAX.</li>
-        <li>Require at least 12 GB GPU memory and 30 GB disk.</li>
-        <li>Check storage, upload, and download rates before renting.</li>
-        <li>Prefer an A100 40 GB.</li>
+        <li>Require at least 8 GB GPU memory and 12 GB disk.</li>
+        <li>Require host reliability above 99.5 per cent.</li>
+        <li>Reject upload or download prices above $0.01 per GB.</li>
+        <li>Use the cheapest qualifying RTX 5060 offer.</li>
       </ul>
       <p>Vast host <code>148498</code> in Croatia provided a tested-good
       A100 SXM4 40 GB allocation. Instance <code>48652928</code> completed
       the quick and full fits on 25 August 2026. This result applies to that
       allocation only.</p>
-      <p>The bootstrap stops if Linux, NVIDIA access, or 12 GB of GPU
+      <p>The bootstrap stops if Linux, NVIDIA access, or 8 GB of GPU
       memory is unavailable. It never uses the CPU as an unreported
       substitute.</p>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:21-34 · GPU preflight</code></p>
+      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:22-34 · GPU preflight</code></p>
       <pre><code>if ! command -v nvidia-smi &gt;/dev/null 2&gt;&amp;1; then
     echo "nvidia-smi is unavailable; launch a Vast.ai NVIDIA GPU instance." &gt;&amp;2
     exit 1
@@ -74,12 +75,11 @@ GPU_MEMORY_MIB="$(
         | tr -d ' '
 )"
 if (( GPU_MEMORY_MIB &lt; MINIMUM_GPU_MEMORY_MIB )); then
-    echo "GPU has ${GPU_MEMORY_MIB} MiB; notebook 07 requires at least 12000 MiB." &gt;&amp;2
+    echo "GPU has ${GPU_MEMORY_MIB} MiB; this run requires at least ${MINIMUM_GPU_MEMORY_MIB} MiB." &gt;&amp;2
     exit 1
 fi</code></pre>
-      <p><strong>Documented contract:</strong> The README requires CUDA 12,
-      at least 12 GB of GPU memory, and at least 30 GB of disk
-      (<code>README.md:25-27</code>).</p>
+      <p><strong>Documented contract:</strong> The script sets the default
+      minimum to 8,000 MiB at <code>scripts/bootstrap_vast_ai.sh:12</code>.</p>
       <p><strong>Why it matters:</strong> The preflight stops before setup
       when the instance cannot run a Ceridwen GPU fit.</p>
       </div>
@@ -193,74 +193,61 @@ PY
       <p>The remote kernel requires CUDA and float64 for every notebook
       session. It also prevents the system CUDA path from replacing the
       installed JAX libraries.</p>
-      <h3>Run four joint fits</h3>
-      <p>A four-GPU Vast instance is one container with one shared
-      filesystem and four CUDA devices. The launcher starts four notebook
-      kernels. Each kernel receives one physical device through
-      <code>CUDA_VISIBLE_DEVICES</code>, so its Ceridwen process cannot use
-      the other three GPUs.</p>
-      <table>
-        <thead>
-          <tr><th>Physical GPU</th><th>LEGA-C target</th><th>Random seed</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>0</td><td>M1_210210</td><td>20260812</td></tr>
-          <tr><td>1</td><td>M12_181945</td><td>20260813</td></tr>
-          <tr><td>2</td><td>M2_133501</td><td>20260814</td></tr>
-          <tr><td>3</td><td>M14_38648</td><td>20260815</td></tr>
-        </tbody>
-      </table>
-      <p>Run a four-GPU smoke test first:</p>
-      <pre><code>.venv-ceridwen-gpu/bin/python \
-  scripts/run_ceridwen_vast_multi_gpu.py \
-  --profile quick \
-  --fit-mode stellar_indices \
-  --output-root /tmp/ceridwen-smoke</code></pre>
-      <p>Start the full run inside <code>tmux</code> so an SSH disconnect
-      does not close the launcher:</p>
-      <pre><code>tmux new -s ceridwen-four</code></pre>
-      <pre><code>.venv-ceridwen-gpu/bin/python \
-  scripts/run_ceridwen_vast_multi_gpu.py \
-  --profile full \
-  --fit-mode full_spectrum</code></pre>
-      <p>The full profile uses 300 live points, 40 slice steps, 25
-      deletions per contraction, and <code>logZ_tol=-3</code>.</p>
-      <p><code>--fit-mode</code> accepts <code>full_spectrum</code> or
-      <code>stellar_indices</code>. Every worker in one four-GPU launch
-      uses the selected mode.</p>
-      <p>The default targets are the four highest signal-to-noise passive
-      galaxies that satisfy the notebook's 4000 Angstrom coverage check.
-      Pass four values to <code>--targets</code> to replace them.</p>
-      <p>Each target writes a separate HDF5 result, executed notebook,
-      checkpoint set, and log. One failed target does not cancel the other
-      three. The parent directory remains labelled <code>incomplete</code>
-      unless all four results finish.</p>
+      <h3>Run the two DR2 shards</h3>
+      <p>The runner selects 194 eligible spectra. It keeps the highest-S/N
+      spectrum for each repeated object. This produces 187 targets. It sorts
+      targets by decreasing S/N and alternates them between two shards.</p>
+      <p>Generate one shared manifest before the remote launch:</p>
+      <pre><code>.venv-ceridwen-gpu/bin/python scripts/run_ceridwen_vast_multi_gpu.py --write-targets-file /workspace/ceridwen-dr2-targets.json</code></pre>
+      <p>Run M1_210210 first with the complete production settings:</p>
+      <pre><code>.venv-ceridwen-gpu/bin/python scripts/run_ceridwen_vast_multi_gpu.py --targets-file /workspace/ceridwen-dr2-targets.json --shard-index 0 --only-target M1_210210</code></pre>
+      <p>After that result passes validation, run shard zero on the first
+      instance and shard one on the second instance. The runner skips a valid
+      completed target:</p>
+      <pre><code>.venv-ceridwen-gpu/bin/python scripts/run_ceridwen_vast_multi_gpu.py --targets-file /workspace/ceridwen-dr2-targets.json --shard-index 0</code></pre>
+      <p>The other instance uses <code>--shard-index 1</code>. The full profile
+      uses 500 live points, 65 slice steps, 100 deletions, and
+      <code>logZ_tol=-5</code>. Seed <code>20260830 + manifest_index</code>
+      identifies each target.</p>
+      <p>Each target writes one executed notebook, two HDF5 files, and one
+      execution log. Figures remain embedded in the notebook. The runner
+      retries a failed target once with the same seed.</p>
       <p>A periodic BlackJAX NSS checkpoint is a usable partial posterior.
       It cannot resume the sampler from the same point.</p>
       <div class="source-example">
-      <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:111-119 · kernel environment</code></p>
-      <pre><code>kernel["env"] = {
-    **kernel.get("env", {}),
-    "CERIDWEN_RESULTS_ROOT": str(project_root / "results"),
-    "JAX_ENABLE_X64": "1",
-    "JAX_PLATFORMS": "cuda",
-    "LD_LIBRARY_PATH": "",
-}
-path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
-      <p><strong>Documented contract:</strong> The README requires the
-      Ceridwen GPU kernel to use CUDA, float64, and the project results path
-      (<code>README.md:53-58</code>).</p>
-      <p><strong>Why it matters:</strong> Every notebook session inherits
-      the verified backend and writes results outside the notebook directory.</p>
+      <p class="source-locator"><code>scripts/run_ceridwen_vast_multi_gpu.py:108-126 · build_target_manifest</code></p>
+      <pre><code>selected = (
+    usable.sort_values(["SN", "SPECT_ID"], ascending=[False, True])
+    .drop_duplicates("OBJECT", keep="first")
+    .sort_values(["SN", "SPECT_ID"], ascending=[False, True])
+)
+if len(selected) != 187:
+    raise RuntimeError(f"Expected 187 unique objects, found {len(selected)}")
+
+targets = []
+for index, row in enumerate(selected.itertuples(index=False)):
+    targets.append(
+        {
+            "manifest_index": index,
+            "object_id": int(row.OBJECT),
+            "spect_id": str(row.SPECT_ID),
+            "sn": float(row.SN),
+            "shard_index": index % num_shards,
+            "seed": base_seed + index,
+        }</code></pre>
+      <p><strong>Documented contract:</strong> The function docstring selects
+      one highest-S/N spectrum for each eligible object.</p>
+      <p><strong>Why it matters:</strong> Repeat spectra cannot make one galaxy
+      contribute more than one production fit.</p>
       </div>
     </section>
 
     <section id="finish">
       <h2>Preserve results and finish</h2>
       <ol>
-        <li>Download the complete four-galaxy result directory.</li>
-        <li>Load all four HDF5 files on the local computer.</li>
-        <li>Open the four executed notebooks and run manifest.</li>
+        <li>Download each completed target directory with <code>rsync -aP</code>.</li>
+        <li>Load both HDF5 files on the local computer.</li>
+        <li>Open the executed notebook and check its embedded figures.</li>
         <li>Stop or destroy the paid instance after you secure the
         files.</li>
       </ol>
@@ -281,10 +268,10 @@ path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
         the kernel and results root.</li>
         <li><code>scripts/bootstrap_vast_ai.sh:122-168</code> checks the
         raw data and published grid.</li>
-        <li><code>scripts/run_ceridwen_vast_multi_gpu.py:93-158</code>
-        pins one target process to each physical GPU.</li>
-        <li><code>scripts/run_ceridwen_vast_multi_gpu.py:188-265</code>
-        retains isolated outputs and completes the run manifest.</li>
+        <li><code>scripts/run_ceridwen_vast_multi_gpu.py:37-137</code>
+        selects and shards the 187 unique objects.</li>
+        <li><code>scripts/run_ceridwen_vast_multi_gpu.py:290-370</code>
+        runs targets sequentially and records completion.</li>
         <li><code>scripts/benchmark_ceridwen_vast.py:23-39</code> fixes the
         workload and sampler sizes.</li>
         <li><code>scripts/benchmark_ceridwen_vast.py:662-713</code> excludes
@@ -298,6 +285,6 @@ path.write_text(json.dumps(kernel, indent=2) + "\n")</code></pre>
       </ul>
     </section>
   </main>
-  <footer class="site-footer">Generated from the live Astro project · Updated 27 August 2026</footer>
+  <footer class="site-footer">Generated from the live Astro project · Updated 30 August 2026</footer>
 </body>
 </html>

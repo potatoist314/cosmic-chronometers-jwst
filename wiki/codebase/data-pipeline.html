@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="dataset">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-28">
+  <meta name="wiki-updated" content="2026-08-30">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -59,6 +59,11 @@ LEGA-C spectrum row. Therefore, an object can occur more than once
 </section>
 <section id="joined-borghi-and-lega-c-tables" class="level2">
 <h2>Selection and comparison tables</h2>
+<p>The production selection contains 194 eligible spectrum rows. Seven
+objects have a repeated eligible spectrum. The runner keeps the highest-S/N
+row for each <code>OBJECT</code>, which leaves 187 galaxy fits. Observed
+4000-A coverage is recorded but does not remove a target
+(<code>scripts/run_ceridwen_vast_multi_gpu.py:79-137</code>).</p>
 <p>The builder parses and checks exactly 140 Borghi IDs
 (<code>scripts/build_borghi2022_legac_dr2_subset.py:109-122</code>). It
 indexes every LEGA-C row by <code>OBJECT</code>
@@ -115,9 +120,9 @@ It retains the nearest candidate
 (<code>scripts/download_cosmos2015_legac_dr2_photometry.py:61-99</code>).
 The selected aperture fluxes use microJy
 (<code>lines 110-113</code>). The joint notebook converts microJy to AB
-maggies. It also adds a five-percent uncertainty floor. Full-spectrum
-mode reserves i+ for aperture scaling and fits 11 bands. Stellar-index
-mode needs no aperture scale and fits all 12 bands.</p>
+maggies. It also adds a five-percent uncertainty floor. Both spectroscopy
+modes fit all 12 bands. Full-spectrum mode fits a separate
+<code>spectrum_scaling</code> parameter for the measured slit spectrum.</p>
 </section>
 <section id="data-contracts-entering-ceridwen" class="level2">
 <h2>Data contracts entering Ceridwen</h2>

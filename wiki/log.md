@@ -329,3 +329,8 @@
 
 - Pages: `codebase/ceridwen-observations-model.html`, `codebase/data-pipeline.html`, `notebooks/notebook-map.html`, `guides/modal-gpu-workflow.html`, `guides/vast-ai-gpu-workflow.html`, `index.md`
 - Change: Documented the separate stellar-index observation, selectable integrated-fit likelihoods, outputs, and cloud controls.
+
+## [2026-08-30] codebase | DR2 quiescent production run
+
+- Pages: `guides/vast-ai-gpu-workflow.html`, `codebase/data-pipeline.html`, `codebase/ceridwen-ssp-csp.html`, `notebooks/notebook-map.html`, `index.md`
+- Change: Documented 187 unique targets, automatic SFH contraction, strict NSS settings, fitted spectrum scaling, embedded figures, and two RTX 5060 shards.

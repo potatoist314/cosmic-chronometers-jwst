@@ -1,6 +1,6 @@
 # Agent Wiki Index
 
-Human entry point: `index.html` (updated 2026-08-28)
+Human entry point: `index.html` (updated 2026-08-30)
 
 Reader pages use responsive HTML, CSS, and inline SVG schematics. The Archify
 map uses self-contained JavaScript; no page loads external diagram assets.
@@ -16,7 +16,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 
 - `guides/reading-order.html` — Gives an ordered path through the active Ceridwen workflow.
 - `guides/python-patterns.html` — Python and JAX patterns used here.
-- `guides/vast-ai-gpu-workflow.html` — Explains Vast setup, selectable spectroscopy modes, multi-GPU production sampling, and saved results.
+- `guides/vast-ai-gpu-workflow.html` — Explains reliable RTX 5060 selection, deterministic DR2 shards, production sampling, and result transfer.
 - `guides/modal-gpu-workflow.html` — Explains Modal inputs, selectable spectroscopy modes, detached runs, Jupyter, and benchmark storage.
 
 ## Codebase
@@ -26,14 +26,14 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 - `codebase/project-modules.html` — Explains active support scripts and retained legacy modules.
 - `codebase/data-pipeline.html` — Traces LEGA-C spectra or published stellar indices and COSMOS2015 photometry into Ceridwen.
 - `codebase/ceridwen-architecture.html` — Explains the packages and complete call graph.
-- `codebase/ceridwen-ssp-csp.html` — Explains SSP grids, SFH weights, and spectra.
+- `codebase/ceridwen-ssp-csp.html` — Explains SSP grids, SFH weights, automatic fixed-grid contraction, and spectra.
 - `codebase/ceridwen-observations-model.html` — Explains photometry, spectra, emission lines, stellar indices, and model parameters.
 - `codebase/ceridwen-likelihood-sampling.html` — Explains likelihoods, samplers, checkpoints, and HDF5 results.
 - `codebase/tests-as-documentation.html` — Explains tests that define important contracts.
 
 ## Notebooks
 
-- `notebooks/notebook-map.html` — Explains fitting notebooks, native-spectrum and stellar-index modes, saved outputs, and posterior reports.
+- `notebooks/notebook-map.html` — Explains fitting modes, 12-band normalization, embedded outputs, and posterior reports.
 
 ## Sources
 

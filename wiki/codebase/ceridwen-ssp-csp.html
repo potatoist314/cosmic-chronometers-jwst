@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="codebase">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-25">
+  <meta name="wiki-updated" content="2026-08-30">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -188,24 +188,35 @@ during compilation.</p>
 </ol>
 <figcaption id="alpha-interpolation-caption">Only two neighbouring alpha planes enter each interpolation.</figcaption>
 </figure>
+<p>The production eight-node model precontracts the age axis once. The
+forward pass then interpolates alpha, metallicity, and SFH nodes without
+forming the full age cube. Matching models use this path automatically.</p>
 <div class="source-example">
-<p class="source-locator"><code>ceridwen/ceridwen/csp/csp_afe.py:888-896 · CSPBasis_afe._flux_at_afe</code></p>
-<pre class="python"><code>if self._n_afe == 1:
-    return self.flux[0]
-if "afe" not in theta:
-    return self.flux[self._afe_solar_idx]
-k, w = self._afe_coords(theta)
-f_lo = jnp.take(self.flux, k - 1, axis=0)
-f_hi = jnp.take(self.flux, k,     axis=0)
-w32  = w.astype(jnp.float32)
-return (jnp.float32(1.0) - w32) * f_lo + w32 * f_hi</code></pre>
-<p><strong>Documented contract:</strong> The method docstring specifies a
-two-plane linear interpolation and two static fallback paths
-(<code>ceridwen/ceridwen/csp/csp_afe.py:866-887</code>).</p>
-<p><strong>Why it matters:</strong> The two early returns handle static
-special cases. The general path
-selects only the lower and upper alpha planes. It then combines them
-linearly with <code>w</code>.</p>
+<p class="source-locator"><code>ceridwen/ceridwen/csp/csp_afe.py:527-545 · CSPBasis_afe._configure_sfh_basis_fastpath</code></p>
+<pre class="python"><code>if (self._n_afe, self._n_z, self._n_age) != (5, 13, 107):
+    return self
+elif self.n_time != 8 or self.sfh_per_bin:
+    return self
+elif not self.zh_const or self.sfh_interp != "step":
+    return self
+elif self.track_zred_age:
+    return self
+elif self._has_age_dependent_dust or self._has_dust_emission:
+    return self
+
+self._sfh_node_to_age = self._make_sfh_node_to_age_operator()
+self._sfh_basis = jnp.einsum(
+    "na,pzaw-&gt;pznw",
+    self._sfh_node_to_age,
+    self.flux,
+)
+self.sfh_basis_fastpath = True
+return self</code></pre>
+<p><strong>Documented contract:</strong> The method docstring enables the
+fixed-grid basis when the model contract matches.</p>
+<p><strong>Why it matters:</strong> The production model uses the compact
+five-by-thirteen-by-eight basis. Other model structures retain the general
+calculation.</p>
 </div>
 </section>
 <section id="spectrum-and-prediction" class="level2">

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="notebook">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-28">
+  <meta name="wiki-updated" content="2026-08-30">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -79,36 +79,33 @@ projection boundary while they select different likelihood pixels.</p>
 <p><code>ceridwen_integrated_photometry_spectra.ipynb</code> combines
 photometry with one selectable stellar-spectroscopy observation in one
 <code>SedModel</code> and one <code>MultiObservationLikelihood</code>.
-<code>CERIDWEN_FIT_MODE=full_spectrum</code> fits 3,523 native pixels
-and 11 photometric bands. <code>stellar_indices</code> fits up to 14
+<code>CERIDWEN_FIT_MODE=full_spectrum</code> fits more than 3,000 native pixels
+and all 12 photometric bands. <code>stellar_indices</code> fits up to 14
 published absorption indices and all 12 photometric bands.</p>
-<p>Full-spectrum mode retains the fixed i+ aperture transfer and sampled
-fractional calibration floor. Stellar-index mode uses neither because
-integrated indices are scale invariant. It uses catalogue diagonal
-uncertainties because no index covariance matrix is available.</p>
+<p>Full-spectrum mode fits <code>spectrum_scaling</code> for the slit
+normalization. Photometry anchors the total flux. The spectral likelihood
+also samples its fractional calibration floor. Stellar-index mode remains
+scale invariant and uses catalogue diagonal uncertainties.</p>
 <p>Both modes use the published high-resolution grid. The production
-profile uses 300 live points, 25 deletions, 40 inner steps, and
-<code>logZ_tol=-3</code>.</p>
+profile uses 500 live points, 100 deletions, 65 inner steps, and
+<code>logZ_tol=-5</code>.</p>
 <p>The joint notebook reads <code>CERIDWEN_TARGET_ID</code>,
 <code>CERIDWEN_RESULT_DIR</code>, and <code>CERIDWEN_RANDOM_SEED</code>.
 The defaults retain the original M1_210210 run. The Vast multi-GPU launcher
-sets distinct targets, seeds, and fit modes for four independent notebook
-kernels.</p>
+sets one fixed target and seed for each sequential one-GPU worker.</p>
 <p>The joint notebook selects at most 400 deterministic posterior rows.
 It uses those same rows for direct parameters, mass-weighted age, and
 formed-mass fractions. It checks finite values, equal row counts,
 non-negative mass fractions, and unit row sums before plotting.</p>
-<p><code>corner_physical.png</code> shows mass, metallicity, alpha
-enhancement, diffuse dust, calibration floor, and mass-weighted age.
-<code>corner_age_mass_fractions.png</code> shows mass-weighted age with
-each formed-mass fraction. Both files are written to the run result
-directory. Index mode also stores observed indices, posterior
+<p>The physical corner output shows mass, metallicity, alpha enhancement,
+diffuse dust, calibration floor, spectrum scaling, and mass-weighted age.
+The second corner output shows age with each formed-mass fraction. Both
+figures remain embedded in the executed notebook. Index mode also stores observed indices, posterior
 predictions, uncertainties, masks, units, and pulls in
 <code>ceridwen_derived_outputs.h5</code>.</p>
 <p>All current corner plots use 40-bin blue density maps with Gaussian
 smoothing. Darker blue marks higher relative posterior density. Existing
-quantiles and contour probability levels remain unchanged. Saved result
-plots are rebuilt from their HDF5 posteriors without rerunning a fit.</p>
+quantiles and contour probability levels remain unchanged.</p>
 <p>The paired RTX 5060 result keeps separate executed reports in its
 <code>baseline/</code> and <code>fastpath_a/</code> directories. Each
 report loads its matching HDF5 posterior and contains the complete fit,
@@ -122,6 +119,9 @@ automatically.</p>
 minutes. Each completed run also writes a rescue snapshot and a final
 reloadable <code>ceridwen_result.h5</code> file. A UTC-stamped results
 directory contains these files.</p>
+<p>The DR2 production notebook also writes analysis-ready summary, SFH,
+photometry, spectrum, and diagnostics groups to
+<code>ceridwen_derived_outputs.h5</code>.</p>
 <p>The spectra notebook also writes
 <code>ceridwen_derived_outputs.h5</code>. It contains normalized and
 equal-weight posterior samples, compact and native-grid predictions,

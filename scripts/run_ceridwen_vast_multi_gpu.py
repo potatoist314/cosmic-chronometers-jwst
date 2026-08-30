@@ -1,283 +1,272 @@
-"""Run four independent Ceridwen notebook fits on four visible Vast GPUs."""
+"""Run a deterministic Ceridwen DR2 target shard on one Vast GPU."""
 
 from __future__ import annotations
 
 import argparse
-import csv
 import json
 import os
-import re
 import subprocess
 import sys
-import time
-from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import TextIO
 
-DEFAULT_TARGETS = (
-    "M1_210210",
-    "M12_181945",
-    "M2_133501",
-    "M14_38648",
-)
-MINIMUM_GPU_MEMORY_MIB = 12_000
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOK_PATH = PROJECT_ROOT / "notebooks/ceridwen_integrated_photometry_spectra.ipynb"
-
-
-@dataclass
-class Worker:
-    """One target fit and its assigned physical GPU process."""
-
-    target: str
-    gpu: dict[str, str | int]
-    seed: int
-    result_dir: Path
-    log_handle: TextIO
-    process: subprocess.Popen[str]
+CATALOG_PATH = PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz"
+PHOTOMETRY_PATH = (
+    PROJECT_ROOT
+    / "data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits"
+)
+DEFAULT_OUTPUT_ROOT = (
+    PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
+)
+DEFAULT_BASE_SEED = 20260830
+DEFAULT_MINIMUM_GPU_MEMORY_MIB = int(
+    os.environ.get("CERIDWEN_MIN_GPU_MEMORY_MIB", "8000")
+)
 
 
 def _utc_now() -> str:
     return datetime.now(UTC).isoformat()
 
 
-def _slug(value: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
+def _decode(value):
+    return value.decode() if isinstance(value, bytes) else value
 
 
-def _visible_gpus() -> list[dict[str, str | int]]:
+def build_target_manifest(*, num_shards: int, base_seed: int) -> dict:
+    """Select one highest-S/N spectrum for each eligible DR2 object."""
+    from astropy.table import Table
+
+    legac = Table.read(CATALOG_PATH).to_pandas()
+    for column in ("SPECT_ID", "Filename"):
+        legac[column] = legac[column].map(_decode)
+    phot = Table.read(PHOTOMETRY_PATH).to_pandas().set_index("LEGAC_INDEX")
+    phot_columns = [
+        "Area",
+        "Sat",
+        "Cfl",
+        "Flag",
+        "NUVMag",
+        "RMag",
+        "JMag",
+        "Fuap3",
+        "e_Fuap3",
+        "FBap3",
+        "e_FBap3",
+        "FVap3",
+        "e_FVap3",
+        "Frap3",
+        "e_Frap3",
+        "Fipap3",
+        "e_Fipap3",
+        "Fzppap3",
+        "e_Fzppap3",
+        "FYap3",
+        "e_FYap3",
+        "FJap3",
+        "e_FJap3",
+        "FHap3",
+        "e_FHap3",
+        "FKsap3",
+        "e_FKsap3",
+        "F3.6um",
+        "e_F3.6um",
+        "F4.5um",
+        "e_F4.5um",
+    ]
+    parent = legac.join(phot[phot_columns], how="inner")
+    quality = (
+        (parent["f_use"] == 1)
+        & (parent["f_ppxf"] == 0)
+        & (parent["f_z"] == 0)
+        & (parent["f_int"] == 0)
+        & (parent["SN"] > 0)
+        & (parent["z"] >= 0.6)
+        & (parent["z"] < 1.0)
+    )
+    valid_rest = (parent[["NUVMag", "RMag", "JMag"]] > -40).all(axis=1)
+    parent = parent[quality & valid_rest].copy()
+    nuv_r = parent["NUVMag"] - parent["RMag"]
+    r_j = parent["RMag"] - parent["JMag"]
+    passive = parent[(nuv_r > 3 * r_j + 1) & (nuv_r > 3.1)]
+    oii_ew = passive["OII_3727_EW"]
+    weak_oii = passive[(oii_ew > -5) | oii_ew.isna()]
+    oii_sig = (weak_oii["OII_3727_EW"] / weak_oii["OII_3727_EW_err"]).abs()
+    oiii_sig = (weak_oii["OIII_5007_EW"] / weak_oii["OIII_5007_EW_err"]).abs()
+    bona_fide = weak_oii[~((oii_sig >= 3) | (oiii_sig >= 3))]
+    clean = (
+        (bona_fide["Area"] == 0)
+        & (bona_fide["Sat"] == 0)
+        & (bona_fide["Cfl"] == 1)
+        & (bona_fide["Flag"] == 0)
+    )
+    usable = bona_fide[clean].copy()
+    if len(usable) != 194:
+        raise RuntimeError(f"Expected 194 eligible spectra, found {len(usable)}")
+
+    selected = (
+        usable.sort_values(["SN", "SPECT_ID"], ascending=[False, True])
+        .drop_duplicates("OBJECT", keep="first")
+        .sort_values(["SN", "SPECT_ID"], ascending=[False, True])
+    )
+    if len(selected) != 187:
+        raise RuntimeError(f"Expected 187 unique objects, found {len(selected)}")
+
+    targets = []
+    for index, row in enumerate(selected.itertuples(index=False)):
+        targets.append(
+            {
+                "manifest_index": index,
+                "object_id": int(row.OBJECT),
+                "spect_id": str(row.SPECT_ID),
+                "sn": float(row.SN),
+                "shard_index": index % num_shards,
+                "seed": base_seed + index,
+            }
+        )
+    return {
+        "schema_version": 1,
+        "sample": "LEGA-C DR2 quiescent, clean 12-band photometry",
+        "selection": "highest-S/N eligible spectrum per OBJECT",
+        "num_shards": num_shards,
+        "base_seed": base_seed,
+        "eligible_spectra": 194,
+        "unique_objects": 187,
+        "targets": targets,
+    }
+
+
+def _write_json(path: Path, value: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(path)
+
+
+def _load_target_manifest(path: Path | None, *, num_shards: int, base_seed: int):
+    if path is None:
+        return build_target_manifest(num_shards=num_shards, base_seed=base_seed)
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    if manifest.get("unique_objects") != 187 or len(manifest.get("targets", [])) != 187:
+        raise ValueError("The target manifest must contain 187 unique objects")
+    if manifest.get("num_shards") != num_shards:
+        raise ValueError("The target manifest num_shards does not match --num-shards")
+    return manifest
+
+
+def _visible_gpu(minimum_memory_mib: int) -> dict:
     command = [
         "nvidia-smi",
         "--query-gpu=index,uuid,name,memory.total",
         "--format=csv,noheader,nounits",
     ]
     try:
-        output = subprocess.run(
+        rows = subprocess.run(
             command,
             check=True,
             capture_output=True,
             text=True,
-        ).stdout
+        ).stdout.splitlines()
     except (FileNotFoundError, subprocess.CalledProcessError) as exc:
-        raise RuntimeError("nvidia-smi could not list the Vast GPUs") from exc
-
-    gpus = []
-    for row in csv.reader(output.splitlines(), skipinitialspace=True):
-        index, uuid, name, memory_mib = (value.strip() for value in row)
-        gpus.append(
-            {
-                "index": int(index),
-                "uuid": uuid,
-                "name": name,
-                "memory_mib": int(memory_mib),
-            }
+        raise RuntimeError("nvidia-smi could not list the Vast GPU") from exc
+    if len(rows) != 1:
+        raise RuntimeError(f"Expected one visible GPU, found {len(rows)}")
+    index, uuid, name, memory = [part.strip() for part in rows[0].split(",")]
+    gpu = {
+        "index": int(index),
+        "uuid": uuid,
+        "name": name,
+        "memory_mib": int(memory),
+    }
+    if gpu["memory_mib"] < minimum_memory_mib:
+        raise RuntimeError(
+            f"GPU has {gpu['memory_mib']} MiB. Required: {minimum_memory_mib} MiB"
         )
-    gpus.sort(key=lambda gpu: int(gpu["index"]))
-    return gpus
+    return gpu
 
 
-def _write_manifest(path: Path, manifest: dict[str, object]) -> None:
-    path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-
-
-def _worker_command(output_notebook: Path) -> list[str]:
-    return [
-        sys.executable,
-        str(Path(__file__).resolve()),
-        "--worker-output",
-        str(output_notebook),
-    ]
-
-
-def _worker_environment(
-    *,
-    target: str,
-    gpu_index: int,
-    seed: int,
-    result_dir: Path,
-    profile: str,
-    fit_mode: str,
-) -> dict[str, str]:
+def _worker_environment(target: dict, result_dir: Path) -> dict[str, str]:
     return {
         **os.environ,
         "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
-        "CUDA_VISIBLE_DEVICES": str(gpu_index),
+        "CUDA_VISIBLE_DEVICES": "0",
         "CERIDWEN_EXPECT_SINGLE_GPU": "1",
-        "CERIDWEN_FIT_MODE": fit_mode,
-        "CERIDWEN_NOTEBOOK_QUICK": "1" if profile == "quick" else "0",
+        "CERIDWEN_FIT_MODE": "full_spectrum",
+        "CERIDWEN_NOTEBOOK_QUICK": "0",
         "CERIDWEN_PROJECT_ROOT": str(PROJECT_ROOT),
-        "CERIDWEN_RANDOM_SEED": str(seed),
+        "CERIDWEN_RANDOM_SEED": str(target["seed"]),
         "CERIDWEN_RESULT_DIR": str(result_dir),
-        "CERIDWEN_TARGET_ID": target,
+        "CERIDWEN_TARGET_ID": str(target["spect_id"]),
+        "CERIDWEN_OBJECT_ID": str(target["object_id"]),
+        "CERIDWEN_MANIFEST_INDEX": str(target["manifest_index"]),
         "JAX_ENABLE_X64": "1",
         "JAX_PLATFORMS": "cuda",
         "LD_LIBRARY_PATH": "",
     }
 
 
-def _launch_workers(
-    *,
-    targets: list[str],
-    gpus: list[dict[str, str | int]],
-    profile: str,
-    fit_mode: str,
-    run_root: Path,
-    base_seed: int,
-) -> list[Worker]:
-    workers = []
-    for offset, (target, gpu) in enumerate(zip(targets, gpus, strict=True)):
-        gpu_index = int(gpu["index"])
-        seed = base_seed + offset
-        result_dir = run_root / f"gpu_{gpu_index}_{target.lower()}"
-        result_dir.mkdir()
-        output_notebook = result_dir / f"{target.lower()}_executed.ipynb"
-        log_handle = (result_dir / "execution.log").open("w", encoding="utf-8")
-        process = subprocess.Popen(
-            _worker_command(output_notebook),
+def _validate_result(result_dir: Path, spect_id: str) -> None:
+    import h5py
+    import nbformat
+    import numpy as np
+    from ceridwen.fit import load_result_h5
+
+    result_path = result_dir / "ceridwen_result.h5"
+    derived_path = result_dir / "ceridwen_derived_outputs.h5"
+    notebook_path = result_dir / f"{spect_id}_executed.ipynb"
+    loaded = load_result_h5(result_path)
+    if len(loaded.param_names) != 7:
+        raise RuntimeError(f"Expected seven parameter groups, found {loaded.param_names}")
+    if not np.isfinite(np.asarray(loaded.log_weights)).all():
+        raise RuntimeError("Posterior log weights contain non-finite values")
+    if not np.isfinite([loaded.log_evidence, loaded.log_evidence_err]).all():
+        raise RuntimeError("Nested-sampling evidence is not finite")
+    with h5py.File(derived_path, "r") as derived:
+        required = {"summary", "sfh", "photometry", "spectrum", "diagnostics"}
+        missing = required.difference(derived.keys())
+        if missing:
+            raise RuntimeError(f"Missing derived-output groups: {sorted(missing)}")
+        if not bool(derived["diagnostics"].attrs["passed"]):
+            raise RuntimeError("Posterior diagnostics did not pass")
+    notebook = nbformat.read(notebook_path, as_version=4)
+    images = sum(
+        "image/png" in output.get("data", {})
+        for cell in notebook.cells
+        for output in cell.get("outputs", [])
+    )
+    if images < 5:
+        raise RuntimeError(f"Expected at least five embedded figures, found {images}")
+
+
+def _execute_target(target: dict, result_dir: Path) -> int:
+    notebook_path = result_dir / f"{target['spect_id']}_executed.ipynb"
+    command = [
+        sys.executable,
+        str(Path(__file__).resolve()),
+        "--worker-output",
+        str(notebook_path),
+    ]
+    result_dir.mkdir(parents=True, exist_ok=True)
+    log_path = result_dir / "execution.log"
+    with log_path.open("a", encoding="utf-8") as log:
+        log.write(f"\n[{_utc_now()}] starting fixed-seed attempt\n")
+        log.flush()
+        return subprocess.run(
+            command,
             cwd=PROJECT_ROOT,
-            env=_worker_environment(
-                target=target,
-                gpu_index=gpu_index,
-                seed=seed,
-                result_dir=result_dir,
-                profile=profile,
-                fit_mode=fit_mode,
-            ),
-            stdout=log_handle,
+            env=_worker_environment(target, result_dir),
+            stdout=log,
             stderr=subprocess.STDOUT,
             text=True,
-        )
-        workers.append(
-            Worker(
-                target=target,
-                gpu=gpu,
-                seed=seed,
-                result_dir=result_dir,
-                log_handle=log_handle,
-                process=process,
-            )
-        )
-        print(f"GPU {gpu_index}: started {target} as PID {process.pid}")
-    return workers
+        ).returncode
 
 
-def _worker_records(workers: list[Worker]) -> list[dict[str, object]]:
-    records = []
-    for worker in workers:
-        return_code = worker.process.poll()
-        records.append(
-            {
-                "target": worker.target,
-                "physical_gpu_index": worker.gpu["index"],
-                "gpu_uuid": worker.gpu["uuid"],
-                "gpu_name": worker.gpu["name"],
-                "gpu_memory_mib": worker.gpu["memory_mib"],
-                "seed": worker.seed,
-                "pid": worker.process.pid,
-                "status": (
-                    "running"
-                    if return_code is None
-                    else "complete"
-                    if return_code == 0
-                    else "failed"
-                ),
-                "return_code": return_code,
-                "result_directory": worker.result_dir.name,
-            }
-        )
-    return records
-
-
-def _run(args: argparse.Namespace) -> int:
-    targets = list(args.targets)
-    if len(set(targets)) != len(targets):
-        raise ValueError("Each GPU requires a distinct galaxy target")
-
-    gpus = _visible_gpus()
-    if len(gpus) != 4:
-        raise RuntimeError(f"Expected four visible GPUs, found {len(gpus)}")
-    small_gpus = [gpu for gpu in gpus if int(gpu["memory_mib"]) < MINIMUM_GPU_MEMORY_MIB]
-    if small_gpus:
-        raise RuntimeError("Every visible GPU must provide at least 12000 MiB")
-
-    gpu_names = {str(gpu["name"]) for gpu in gpus}
-    hardware = _slug(gpu_names.pop()) if len(gpu_names) == 1 else "mixed_gpu"
-    analysis = f"joint_{args.fit_mode}_{args.profile}"
-    date = datetime.now(UTC).date().isoformat()
-    incomplete_name = (
-        f"ceridwen_vast_4x_{hardware}_four_galaxy_{analysis}_incomplete_{date}"
-    )
-    run_root = args.output_root.resolve() / incomplete_name
-    if run_root.exists():
-        raise FileExistsError(f"Result directory already exists: {run_root}")
-    run_root.mkdir(parents=True)
-
-    manifest_path = run_root / "run_manifest.json"
-    manifest: dict[str, object] = {
-        "schema_version": 1,
-        "status": "running",
-        "profile": args.profile,
-        "fit_mode": args.fit_mode,
-        "notebook": str(NOTEBOOK_PATH.relative_to(PROJECT_ROOT)),
-        "started_at_utc": _utc_now(),
-        "workers": [],
-    }
-    _write_manifest(manifest_path, manifest)
-
-    workers = _launch_workers(
-        targets=targets,
-        gpus=gpus,
-        profile=args.profile,
-        fit_mode=args.fit_mode,
-        run_root=run_root,
-        base_seed=args.base_seed,
-    )
-    try:
-        while any(worker.process.poll() is None for worker in workers):
-            manifest["workers"] = _worker_records(workers)
-            _write_manifest(manifest_path, manifest)
-            time.sleep(5)
-    finally:
-        for worker in workers:
-            worker.log_handle.close()
-
-    failed_targets = []
-    for worker in workers:
-        result_path = worker.result_dir / "ceridwen_result.h5"
-        executed_notebook = worker.result_dir / f"{worker.target.lower()}_executed.ipynb"
-        if worker.process.returncode != 0 or not result_path.is_file():
-            failed_targets.append(worker.target)
-        if not executed_notebook.is_file():
-            failed_targets.append(worker.target)
-
-    manifest["completed_at_utc"] = _utc_now()
-    manifest["workers"] = _worker_records(workers)
-    if failed_targets:
-        manifest["status"] = "incomplete"
-        manifest["failed_targets"] = sorted(set(failed_targets))
-        _write_manifest(manifest_path, manifest)
-        print(f"Incomplete targets: {', '.join(sorted(set(failed_targets)))}")
-        print(f"Results retained in {run_root}")
-        return 1
-
-    manifest["status"] = "complete"
-    _write_manifest(manifest_path, manifest)
-    complete_root = run_root.with_name(run_root.name.replace("_incomplete_", "_complete_"))
-    if complete_root.exists():
-        raise FileExistsError(f"Completed result directory already exists: {complete_root}")
-    run_root.rename(complete_root)
-    print(f"All four fits completed: {complete_root}")
-    return 0
-
-
-def _worker(args: argparse.Namespace) -> int:
+def _worker(output_notebook: Path) -> int:
     import nbformat
     from nbclient import NotebookClient
 
     class StreamingNotebookClient(NotebookClient):
-        """Copy live notebook stream output into the worker log."""
-
         def process_message(self, msg, cell, cell_index):
             if msg["msg_type"] == "stream":
                 print(msg["content"]["text"], end="", flush=True)
@@ -293,55 +282,124 @@ def _worker(args: argparse.Namespace) -> int:
     try:
         client.execute()
     finally:
-        args.output_notebook.parent.mkdir(parents=True, exist_ok=True)
-        nbformat.write(document, args.output_notebook)
+        output_notebook.parent.mkdir(parents=True, exist_ok=True)
+        nbformat.write(document, output_notebook)
     return 0
+
+
+def _run(args: argparse.Namespace) -> int:
+    # Result validation imports JAX in this long-lived control process. Keep it
+    # on CPU so it cannot reserve VRAM needed by the notebook kernel.
+    os.environ["JAX_PLATFORMS"] = "cpu"
+    manifest = _load_target_manifest(
+        args.targets_file,
+        num_shards=args.num_shards,
+        base_seed=args.base_seed,
+    )
+    if args.write_targets_file is not None:
+        _write_json(args.write_targets_file, manifest)
+        print(f"Wrote {args.write_targets_file}")
+        return 0
+
+    if not 0 <= args.shard_index < args.num_shards:
+        raise ValueError("--shard-index must be between zero and num_shards minus one")
+    gpu = _visible_gpu(args.minimum_gpu_memory_mib)
+    targets = [
+        target
+        for target in manifest["targets"]
+        if target["shard_index"] == args.shard_index
+    ]
+    if args.only_target is not None:
+        targets = [target for target in targets if target["spect_id"] == args.only_target]
+        if len(targets) != 1:
+            raise ValueError(f"Target {args.only_target} is not in shard {args.shard_index}")
+
+    args.output_root.mkdir(parents=True, exist_ok=True)
+    run_manifest_path = args.output_root / f"shard_{args.shard_index}_manifest.json"
+    run_manifest = {
+        "schema_version": 1,
+        "status": "running",
+        "started_at_utc": _utc_now(),
+        "shard_index": args.shard_index,
+        "num_shards": args.num_shards,
+        "gpu": gpu,
+        "vast_instance_id": os.environ.get("VAST_INSTANCE_ID"),
+        "project_commit": os.environ.get("CERIDWEN_PROJECT_COMMIT"),
+        "ceridwen_commit": os.environ.get("CERIDWEN_SOURCE_COMMIT"),
+        "targets": targets,
+        "results": {},
+    }
+    _write_json(run_manifest_path, run_manifest)
+
+    failed = []
+    for target in targets:
+        key = str(target["spect_id"])
+        result_dir = args.output_root / f"{target['object_id']}-{key}"
+        try:
+            _validate_result(result_dir, key)
+            run_manifest["results"][key] = {"status": "complete", "attempts": 0}
+            _write_json(run_manifest_path, run_manifest)
+            continue
+        except (FileNotFoundError, KeyError, OSError, RuntimeError, ValueError):
+            pass
+
+        completed = False
+        for attempt in range(1, args.max_attempts + 1):
+            return_code = _execute_target(target, result_dir)
+            try:
+                if return_code != 0:
+                    raise RuntimeError(f"Notebook returned {return_code}")
+                _validate_result(result_dir, key)
+                completed = True
+                run_manifest["results"][key] = {
+                    "status": "complete",
+                    "attempts": attempt,
+                    "completed_at_utc": _utc_now(),
+                }
+                break
+            except (FileNotFoundError, KeyError, OSError, RuntimeError, ValueError) as exc:
+                run_manifest["results"][key] = {
+                    "status": "failed",
+                    "attempts": attempt,
+                    "error": str(exc),
+                }
+                _write_json(run_manifest_path, run_manifest)
+        if not completed:
+            failed.append(key)
+        _write_json(run_manifest_path, run_manifest)
+
+    run_manifest["completed_at_utc"] = _utc_now()
+    run_manifest["status"] = "incomplete" if failed else "complete"
+    run_manifest["failed_targets"] = failed
+    _write_json(run_manifest_path, run_manifest)
+    return 1 if failed else 0
 
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Run one joint Ceridwen fit on each of four visible Vast GPUs."
+        description="Run one deterministic Ceridwen DR2 shard on one Vast GPU."
     )
     parser.add_argument("--worker-output", type=Path, help=argparse.SUPPRESS)
+    parser.add_argument("--targets-file", type=Path)
+    parser.add_argument("--write-targets-file", type=Path)
+    parser.add_argument("--shard-index", type=int, default=0)
+    parser.add_argument("--num-shards", type=int, default=2)
+    parser.add_argument("--base-seed", type=int, default=DEFAULT_BASE_SEED)
+    parser.add_argument("--only-target")
+    parser.add_argument("--max-attempts", type=int, default=2)
     parser.add_argument(
-        "--targets",
-        nargs=4,
-        default=DEFAULT_TARGETS,
-        metavar=("GPU0", "GPU1", "GPU2", "GPU3"),
-        help="Four distinct LEGA-C SPECT_ID values, in physical GPU order.",
-    )
-    parser.add_argument(
-        "--profile",
-        choices=("quick", "full"),
-        default="full",
-        help="Use quick smoke-test or full GPU sampler settings.",
-    )
-    parser.add_argument(
-        "--fit-mode",
-        choices=("full_spectrum", "stellar_indices"),
-        default="full_spectrum",
-        help="Fit native spectral pixels or published stellar indices.",
-    )
-    parser.add_argument(
-        "--base-seed",
+        "--minimum-gpu-memory-mib",
         type=int,
-        default=20260812,
-        help="First deterministic seed; later GPUs increment it by one.",
+        default=DEFAULT_MINIMUM_GPU_MEMORY_MIB,
     )
-    parser.add_argument(
-        "--output-root",
-        type=Path,
-        default=PROJECT_ROOT / "results",
-        help="Parent directory for the human-readable run directory.",
-    )
+    parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     return parser
 
 
 def main() -> int:
     args = _parser().parse_args()
     if args.worker_output is not None:
-        args.output_notebook = args.worker_output
-        return _worker(args)
+        return _worker(args.worker_output)
     return _run(args)
 
 
