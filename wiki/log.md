@@ -339,3 +339,8 @@
 
 - Pages: `overview.html`, `notebooks/notebook-map.html`, `index.md`
 - Change: Documented the Borghi-style binning, posterior bootstrap, unstable negative result, saved aggregate result, and cosmology-dependence boundary.
+
+## [2026-09-01] analysis | Ceridwen chronometer audit
+
+- Pages: `overview.html`, `notebooks/notebook-map.html`, `index.md`
+- Change: Added controlled Borghi cohorts, unbinned slopes, formation-time drift, selection sensitivity, influence, and fit diagnostics.

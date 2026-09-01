@@ -33,7 +33,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 
 ## Notebooks
 
-- `notebooks/notebook-map.html` — Explains fitting modes, embedded outputs, posterior reports, and the Ceridwen differential-age analysis.
+- `notebooks/notebook-map.html` — Explains fitting modes, embedded outputs, posterior reports, and the controlled Ceridwen differential-age audit.
 
 ## Sources
 

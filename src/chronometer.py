@@ -62,3 +62,54 @@ def inverse_variance_combine(
     return float(np.sum(weights * values) / np.sum(weights)), float(
         np.sqrt(1.0 / np.sum(weights))
     )
+
+
+def fit_common_age_slope(
+    redshift: np.ndarray,
+    age_gyr: np.ndarray,
+    groups: np.ndarray,
+) -> tuple[float, float]:
+    """Fit one age-redshift slope with a separate intercept per group.
+
+    The returned uncertainty is the ordinary least-squares standard error.
+    """
+    redshift = np.asarray(redshift, dtype=float)
+    age_gyr = np.asarray(age_gyr, dtype=float)
+    groups = np.asarray(groups)
+    if redshift.ndim != 1 or age_gyr.shape != redshift.shape:
+        raise ValueError("redshift and age_gyr must be matching one-dimensional arrays")
+    if groups.shape != redshift.shape:
+        raise ValueError("groups must match redshift")
+    if np.any(~np.isfinite(redshift)) or np.any(~np.isfinite(age_gyr)):
+        raise ValueError("redshift and age_gyr must be finite")
+
+    _, group_codes = np.unique(groups, return_inverse=True)
+    intercepts = np.eye(group_codes.max() + 1)[group_codes]
+    design = np.column_stack((redshift, intercepts))
+    if len(redshift) <= design.shape[1]:
+        raise ValueError("the fit needs more rows than fitted coefficients")
+    if np.linalg.matrix_rank(design) < design.shape[1]:
+        raise ValueError("the slope and group intercepts are not identifiable")
+
+    coefficients, _, _, _ = np.linalg.lstsq(design, age_gyr, rcond=None)
+    residual = age_gyr - design @ coefficients
+    residual_variance = np.sum(residual**2) / (len(redshift) - design.shape[1])
+    covariance = residual_variance * np.linalg.inv(design.T @ design)
+    return float(coefficients[0]), float(np.sqrt(covariance[0, 0]))
+
+
+def hubble_from_age_slope(
+    z_eff: float,
+    age_slope_gyr_per_redshift: float,
+) -> float:
+    """Return H(z) for a fitted differential-age slope dt/dz."""
+    if not np.isfinite(z_eff) or z_eff <= -1:
+        raise ValueError("z_eff must be finite and exceed -1")
+    if not np.isfinite(age_slope_gyr_per_redshift):
+        raise ValueError("the age slope must be finite")
+    if age_slope_gyr_per_redshift == 0:
+        raise ValueError("the age slope must be non-zero")
+    return float(
+        -GYR_INV_TO_KM_S_MPC
+        / ((1.0 + z_eff) * age_slope_gyr_per_redshift)
+    )

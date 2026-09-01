@@ -139,8 +139,9 @@ differential-age construction: two velocity-dispersion groups, four fixed
 redshift bins, alternate-bin age differences, and inverse-variance
 combination. It propagates the stored Ceridwen age draws with 10,000 fixed-seed
 galaxy bootstrap samples. Each realization draws one age per unique galaxy
-before it resamples galaxies. Its tables and figures stay embedded; the numerical
-tables and bootstrap draws are also stored in
+before it resamples galaxies. It also fits an unbinned common slope with a
+separate intercept for each dispersion group. Its tables and seven figures stay
+embedded; the numerical tables and bootstrap draws are also stored in
 <code>ceridwen_cosmic_chronometer_summary.h5</code>.</p>
 <p>The aggregate notebook labels its result as exploratory. Its age is the
 mass-weighted SFH lookback age, not the Lick SSP-equivalent age. The production
@@ -151,9 +152,16 @@ cosmology-independent chronometer measurement.</p>
 The fixed-bin combination gives <code>H(z=0.741)=-63.6 +/- 17.8</code>
 km/s/Mpc. The posterior-plus-bootstrap median is -77.4 km/s/Mpc with a
 68-percent interval from -196.3 to -39.9 km/s/Mpc; 14.6 percent of draws are
-positive. Analysis variants have a 221.2 km/s/Mpc standard deviation. These
-age slopes therefore do not support a positive Ceridwen chronometer
-measurement.</p>
+positive. The public Borghi reconstruction gives <code>97.5 +/- 31.3</code>
+km/s/Mpc, close to the published central value but not its exact bin membership
+or uncertainty. The exact 68-galaxy overlap gives <code>86.3 +/- 38.0</code>
+with Borghi ages and <code>228.5 +/- 43.6</code> with Ceridwen ages.</p>
+<p>The overlap age residual has a 7.32 Gyr-per-redshift slope. The Planck-based
+formation-time diagnostic also decreases with redshift. The unbinned Ceridwen
+slope is only 1.2 standard errors below zero, while binning, S/N cuts, and the
+dispersion split can change the result's sign or scale. These checks identify
+age-definition drift, population drift, and estimator instability. They do not
+support a stable positive Ceridwen chronometer measurement.</p>
 </section>
 <section id="practice" class="level2">
 <h2>Practice</h2>
@@ -199,6 +207,29 @@ independent photometric and spectroscopic likelihoods, checkpoints, and
 a saved posterior.</p>
 <p><strong>Why it matters:</strong> One sampler call combines both
 observation types. The reload checks preserve parameter and likelihood shapes.</p>
+</div>
+<div class="source-example">
+<p class="source-locator"><code>src/chronometer.py:101-115</code> · <code>hubble_from_age_slope</code></p>
+<pre class="python"><code>def hubble_from_age_slope(
+    z_eff: float,
+    age_slope_gyr_per_redshift: float,
+) -&gt; float:
+    """Return H(z) for a fitted differential-age slope dt/dz."""
+    if not np.isfinite(z_eff) or z_eff &lt;= -1:
+        raise ValueError("z_eff must be finite and exceed -1")
+    if not np.isfinite(age_slope_gyr_per_redshift):
+        raise ValueError("the age slope must be finite")
+    if age_slope_gyr_per_redshift == 0:
+        raise ValueError("the age slope must be non-zero")
+    return float(
+        -GYR_INV_TO_KM_S_MPC
+        / ((1.0 + z_eff) * age_slope_gyr_per_redshift)
+    )</code></pre>
+<p><strong>Documented contract:</strong> <code>tests/test_chronometer.py</code>
+checks the conversion, sign, zero-slope limit, and group-intercept invariance.</p>
+<p><strong>Why it matters:</strong> A slope near zero maps to a broad,
+non-Gaussian H(z) distribution. The notebook therefore reports quantiles and
+the positive fraction.</p>
 </div>
 </section>
 </section>
