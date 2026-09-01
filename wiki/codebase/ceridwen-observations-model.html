@@ -139,8 +139,16 @@ the M1_210210 joint workload (11 bands, 3523 spectral pixels, grid schema
 <tr><td>Bytes per <code>Spectrum.predict</code></td><td>7,252,468</td><td>909,856</td></tr>
 <tr><td>Transcendental operations per call</td><td>20,482</td><td>0</td></tr>
 <tr><td>Mean width error, Gaussian line of known width</td><td>0.898%</td><td>0.603%</td></tr>
+<tr><td>RTX 5060 throughput, likelihood calls per second</td><td>915</td><td>3825</td></tr>
+<tr><td>RTX 5060 median step</td><td>1.101 s</td><td>0.263 s</td></tr>
+<tr><td>Resident JAX memory during sampling</td><td>619 MiB</td><td>316 MiB</td></tr>
 </tbody>
 </table>
+<p>The GPU measurement is an A/B on one RTX 5060, so it carries no host-to-host
+variation. Grid schema 2.1. The RTX 5060 has a published dense tensor-core FP32
+(TF32) peak of 47 TFLOP/s. Peak memory is unchanged at 1589 MiB, because the
+peak is set by a transient inside the sampler step rather than by the resident
+arrays.</p>
 <p>The combined form is both cheaper and closer to the analytic width,
 because it interpolates once rather than twice. The resampling grid is
 also floored at the input grid size: sizing it from the kernel width alone

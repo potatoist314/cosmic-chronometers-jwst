@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "mode": "reused_instance",
+  "vast_instance": 49272124,
+  "vast_host": 154485,
+  "gpu_name": "RTX 5060",
+  "price_usd_per_hour": 0.07222222222222222,
+  "started_at_utc": "2026-09-01T10:51:02.336006+00:00",
+  "ceridwen_baseline": "afe37fe",
+  "ceridwen_patched": "a38982a (local only)",
+  "baseline": {
+    "schema_version": 2,
+    "started_at_utc": "2026-09-01T10:41:17.356727+00:00",
+    "completed_at_utc": "2026-09-01T10:45:05.182230+00:00",
+    "workload": {
+      "id": "m1_210210_joint_full_v1",
+      "target": "M1_210210",
+      "redshift": 0.65420001745224,
+      "velocity_dispersion_km_s": 259.5,
+      "photometric_bands": 11,
+      "spectral_pixels": 3523,
+      "ssp_grid_id": "amist_c3k_hr_krou_afe",
+      "ssp_grid_schema": "2.1",
+      "ssp_grid_shape": [
+        5,
+        13,
+        107,
+        10992
+      ],
+      "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+      "seed": 20260812,
+      "num_live": 300,
+      "num_inner_steps": 40,
+      "num_delete": 25,
+      "reference_logZ_tol": -3.0,
+      "warmup_steps": 1,
+      "timed_steps": 5,
+      "likelihood_calls_per_step": 1000
+    },
+    "comparison_fingerprint": "451e3cc0b2b09243f1b1d2979f1d4dc842700d65b3f4921ffcc8c5a85c9a1c63",
+    "benchmark_script_sha256": "6d8cf1bb1e78ce6a721618655443edcd7832bf286d0b9227f85553ba0463afcb",
+    "input_sha256": {
+      "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+      "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+      "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+      "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+    },
+    "input_paths": {
+      "catalog": "/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/legaCdr2.fits.gz",
+      "photometry": "/workspace/cosmic-chronometers-jwst/data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
+      "spectrum": "/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/sp/legac_M1_210210_v2.0.fits",
+      "ssp_grid": "/root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5"
+    },
+    "git": {
+      "project_commit": null,
+      "project_tracked_changes": "",
+      "ceridwen_commit": null,
+      "ceridwen_tracked_changes": ""
+    },
+    "runtime": {
+      "python": "3.11.16",
+      "platform": "Linux-6.8.0-107-generic-x86_64-with-glibc2.39",
+      "jax": "0.10.2",
+      "jaxlib": "0.10.2",
+      "blackjax": "1.6.dev98+gf73e12956",
+      "ceridwen": "0.2.3",
+      "jax_backend": "gpu",
+      "jax_enable_x64": true,
+      "jax_platforms_env": "cuda",
+      "xla_preallocate_env": null,
+      "xla_memory_fraction_env": "0.50",
+      "cuda_visible_devices": null,
+      "jax_device": "cuda:0",
+      "jax_device_kind": "NVIDIA GeForce RTX 5060",
+      "nvidia_smi_gpus": [
+        {
+          "index": "0",
+          "name": "NVIDIA GeForce RTX 5060",
+          "uuid": "GPU-c6add4f9-479a-baaa-5ee1-d7c9eb5b0b64",
+          "memory_total_mib": "8151",
+          "driver_version": "580.126.09",
+          "power_limit_w": "145.00"
+        }
+      ]
+    },
+    "memory": {
+      "jax": {
+        "bytes_in_use_mib": 618.836669921875,
+        "peak_bytes_in_use_mib": 1589.17138671875,
+        "bytes_limit_mib": 3854.0
+      },
+      "nvidia_process_memory_mib": 4104.0
+    },
+    "vast": {
+      "host": "154485",
+      "instance": "49272124",
+      "price_usd_per_hour": 0.07222222222222222
+    },
+    "timings": {
+      "setup_seconds": 194.60048621427268,
+      "initialization_seconds": 8.97393383923918,
+      "warmup_step_seconds": [
+        16.546578655019403
+      ],
+      "iteration_seconds": [
+        1.0164496982470155,
+        1.0853367848321795,
+        1.1525427242740989,
+        1.101064182817936,
+        1.11077028978616
+      ],
+      "timed_steps": 5,
+      "likelihood_calls_per_step": 1000,
+      "timed_likelihood_calls": 5000,
+      "total_timed_seconds": 5.46616367995739,
+      "median_step_seconds": 1.101064182817936,
+      "iqr_step_seconds": 0.025433504953980446,
+      "likelihood_calls_per_second": 914.7183093571351,
+      "cost_per_100k_likelihood_calls_usd": 0.0021932138222051254
+    },
+    "result_directory": "ceridwen_vast_geforce_rtx_5060_host_154485_joint_full_benchmark_complete_2026-09-01__baseline"
+  },
+  "baseline_reused": true,
+  "patched": {
+    "schema_version": 2,
+    "started_at_utc": "2026-09-01T10:52:02.390658+00:00",
+    "completed_at_utc": "2026-09-01T10:55:48.987830+00:00",
+    "workload": {
+      "id": "m1_210210_joint_full_v1",
+      "target": "M1_210210",
+      "redshift": 0.65420001745224,
+      "velocity_dispersion_km_s": 259.5,
+      "photometric_bands": 11,
+      "spectral_pixels": 3523,
+      "ssp_grid_id": "amist_c3k_hr_krou_afe",
+      "ssp_grid_schema": "2.1",
+      "ssp_grid_shape": [
+        5,
+        13,
+        107,
+        10992
+      ],
+      "ssp_grid_pixel_resolving_power": 5999.5000138798505,
+      "seed": 20260812,
+      "num_live": 300,
+      "num_inner_steps": 40,
+      "num_delete": 25,
+      "reference_logZ_tol": -3.0,
+      "warmup_steps": 1,
+      "timed_steps": 5,
+      "likelihood_calls_per_step": 1000
+    },
+    "comparison_fingerprint": "451e3cc0b2b09243f1b1d2979f1d4dc842700d65b3f4921ffcc8c5a85c9a1c63",
+    "benchmark_script_sha256": "6d8cf1bb1e78ce6a721618655443edcd7832bf286d0b9227f85553ba0463afcb",
+    "input_sha256": {
+      "catalog": "1dbc262c9c22ba9513ca5c49598d6536d34a928d42b231772e2689d30edc9613",
+      "photometry": "3a6ff6e287fd54d8c9b2fbba2a824ef0c4fa370a83faabeffa46d959cfe04c34",
+      "spectrum": "8172e7c3c44262ffe4ee4bffea1f1c6f38ed2aaef2f1a06d42ae7b7473d1357c",
+      "ssp_grid": "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
+    },
+    "input_paths": {
+      "catalog": "/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/legaCdr2.fits.gz",
+      "photometry": "/workspace/cosmic-chronometers-jwst/data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
+      "spectrum": "/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/sp/legac_M1_210210_v2.0.fits",
+      "ssp_grid": "/root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5"
+    },
+    "git": {
+      "project_commit": null,
+      "project_tracked_changes": "",
+      "ceridwen_commit": null,
+      "ceridwen_tracked_changes": ""
+    },
+    "runtime": {
+      "python": "3.11.16",
+      "platform": "Linux-6.8.0-107-generic-x86_64-with-glibc2.39",
+      "jax": "0.10.2",
+      "jaxlib": "0.10.2",
+      "blackjax": "1.6.dev98+gf73e12956",
+      "ceridwen": "0.2.3",
+      "jax_backend": "gpu",
+      "jax_enable_x64": true,
+      "jax_platforms_env": "cuda",
+      "xla_preallocate_env": null,
+      "xla_memory_fraction_env": "0.50",
+      "cuda_visible_devices": null,
+      "jax_device": "cuda:0",
+      "jax_device_kind": "NVIDIA GeForce RTX 5060",
+      "nvidia_smi_gpus": [
+        {
+          "index": "0",
+          "name": "NVIDIA GeForce RTX 5060",
+          "uuid": "GPU-c6add4f9-479a-baaa-5ee1-d7c9eb5b0b64",
+          "memory_total_mib": "8151",
+          "driver_version": "580.126.09",
+          "power_limit_w": "145.00"
+        }
+      ]
+    },
+    "memory": {
+      "jax": {
+        "bytes_in_use_mib": 618.836669921875,
+        "peak_bytes_in_use_mib": 1589.17138671875,
+        "bytes_limit_mib": 3854.0
+      },
+      "nvidia_process_memory_mib": 4104.0
+    },
+    "vast": {
+      "host": "154485",
+      "instance": "49272124",
+      "price_usd_per_hour": 0.07222222222222222
+    },
+    "timings": {
+      "setup_seconds": 192.7847788883373,
+      "initialization_seconds": 9.13843754120171,
+      "warmup_step_seconds": [
+        17.07984729576856
+      ],
+      "iteration_seconds": [
+        1.0171266561374068,
+        1.0945174926891923,
+        1.1241769744083285,
+        1.062254342250526,
+        1.117831907235086
+      ],
+      "timed_steps": 5,
+      "likelihood_calls_per_step": 1000,
+      "timed_likelihood_calls": 5000,
+      "total_timed_seconds": 5.41590737272054,
+      "median_step_seconds": 1.0945174926891923,
+      "iqr_step_seconds": 0.05557756498456001,
+      "likelihood_calls_per_second": 923.206335688932,
+      "cost_per_100k_likelihood_calls_usd": 0.002173049254486636
+    },
+    "result_directory": "ceridwen_vast_geforce_rtx_5060_host_154485_joint_full_benchmark_complete_2026-09-01__patched"
+  },
+  "speedup": 1.009279388249878,
+  "baseline_calls_per_second": 914.7183093571351,
+  "patched_calls_per_second": 923.206335688932,
+  "peak_mib_baseline": 1589.17138671875,
+  "peak_mib_patched": 1589.17138671875,
+  "elapsed_seconds": 310.6716527938843,
+  "cost_usd": 0.006232610318395827
+}

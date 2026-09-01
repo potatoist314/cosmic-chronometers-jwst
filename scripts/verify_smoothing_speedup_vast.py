@@ -208,3 +208,11 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+# TODO(next GPU run): prefer restarting a stopped instance over renting a new one.
+# `vastai show instances` lists stopped RTX 5060s that retain their bootstrapped
+# CUDA venv on disk, which is the slowest step here (~10 min). Reusing one needs
+# `vastai start instance <id>`, skipping _bootstrap, and replacing the `rm -rf`
+# in _prepare_checkout with a fetch, since their disk has little free space.
+# Stopped instances also hold capacity on their host, which is why fresh rentals
+# from that host fail.
