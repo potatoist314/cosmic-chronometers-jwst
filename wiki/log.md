@@ -334,3 +334,8 @@
 
 - Pages: `guides/vast-ai-gpu-workflow.html`, `codebase/data-pipeline.html`, `codebase/ceridwen-ssp-csp.html`, `notebooks/notebook-map.html`, `index.md`
 - Change: Documented 187 unique targets, automatic SFH contraction, strict NSS settings, fitted spectrum scaling, embedded figures, two RTX 5060 shards, and local cap-aware result validation and cleanup.
+
+## [2026-09-01] analysis | Ceridwen differential ages
+
+- Pages: `overview.html`, `notebooks/notebook-map.html`, `index.md`
+- Change: Documented the Borghi-style binning, posterior bootstrap, unstable negative result, saved aggregate result, and cosmology-dependence boundary.

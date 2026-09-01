@@ -1,6 +1,6 @@
 # Agent Wiki Index
 
-Human entry point: `index.html` (updated 2026-08-30)
+Human entry point: `index.html` (updated 2026-09-01)
 
 Reader pages use responsive HTML, CSS, and inline SVG schematics. The Archify
 map uses self-contained JavaScript; no page loads external diagram assets.
@@ -10,7 +10,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 
 ## Synthesis
 
-- `overview.html` — Explains the Ceridwen-first codebase flow and reading path.
+- `overview.html` — Explains the Ceridwen-first flow, chronometer boundary, and reading path.
 
 ## Learning guides
 
@@ -33,7 +33,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 
 ## Notebooks
 
-- `notebooks/notebook-map.html` — Explains fitting modes, 12-band normalization, embedded outputs, and posterior reports.
+- `notebooks/notebook-map.html` — Explains fitting modes, embedded outputs, posterior reports, and the Ceridwen differential-age analysis.
 
 ## Sources
 

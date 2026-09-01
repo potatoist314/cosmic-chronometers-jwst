@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="notebook">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-30">
+  <meta name="wiki-updated" content="2026-09-01">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -133,6 +133,27 @@ corner plot, an age-SFH corner plot, and the SFH beside its age
 posterior. The fit samples seven log-SFR ratios. The report uses the
 400 stored, index-aligned SFH draws to show mass-weighted age as a
 derived posterior quantity.</p>
+<p><code>results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb</code>
+loads the 187 validated production summaries. It follows the Borghi
+differential-age construction: two velocity-dispersion groups, four fixed
+redshift bins, alternate-bin age differences, and inverse-variance
+combination. It propagates the stored Ceridwen age draws with 10,000 fixed-seed
+galaxy bootstrap samples. Each realization draws one age per unique galaxy
+before it resamples galaxies. Its tables and figures stay embedded; the numerical
+tables and bootstrap draws are also stored in
+<code>ceridwen_cosmic_chronometer_summary.h5</code>.</p>
+<p>The aggregate notebook labels its result as exploratory. Its age is the
+mass-weighted SFH lookback age, not the Lick SSP-equivalent age. The production
+fit also sets the oldest SFH node from <code>age_gyr(z)</code> under the
+Planck-2018 defaults, so the derived quantity is not a
+cosmology-independent chronometer measurement.</p>
+<p>The executed notebook uses 164 galaxies inside the Borghi redshift range.
+The fixed-bin combination gives <code>H(z=0.741)=-63.6 +/- 17.8</code>
+km/s/Mpc. The posterior-plus-bootstrap median is -77.4 km/s/Mpc with a
+68-percent interval from -196.3 to -39.9 km/s/Mpc; 14.6 percent of draws are
+positive. Analysis variants have a 221.2 km/s/Mpc standard deviation. These
+age slopes therefore do not support a positive Ceridwen chronometer
+measurement.</p>
 </section>
 <section id="practice" class="level2">
 <h2>Practice</h2>
