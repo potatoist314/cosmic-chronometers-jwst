@@ -27,7 +27,7 @@ pairs an exact code excerpt with source documentation and a plain explanation.
 - `codebase/data-pipeline.html` — Traces LEGA-C spectra or published stellar indices and COSMOS2015 photometry into Ceridwen.
 - `codebase/ceridwen-architecture.html` — Explains the packages and complete call graph.
 - `codebase/ceridwen-ssp-csp.html` — Explains SSP grids, SFH weights, automatic fixed-grid contraction, and spectra.
-- `codebase/ceridwen-observations-model.html` — Explains photometry, spectra, emission lines, stellar indices, and model parameters.
+- `codebase/ceridwen-observations-model.html` — Explains observation containers, filter projection, the collapsed static smoothing chain, and prediction contracts.
 - `codebase/ceridwen-likelihood-sampling.html` — Explains likelihoods, samplers, checkpoints, and HDF5 results.
 - `codebase/tests-as-documentation.html` — Explains tests that define important contracts.
 

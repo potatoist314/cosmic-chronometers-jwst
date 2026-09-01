@@ -344,3 +344,8 @@
 
 - Pages: `overview.html`, `notebooks/notebook-map.html`, `index.md`
 - Change: Added controlled Borghi cohorts, unbinned slopes, formation-time drift, selection sensitivity, influence, and fit diagnostics.
+
+## [2026-09-01] codebase | Static smoothing collapsed into one convolution
+
+- Pages: `codebase/ceridwen-observations-model.html`, `index.md`
+- Change: Documented the quadrature-combined LOSVD and instrumental convolution, the baked interpolation indices and Fourier taper, the input-floored resampling grid, lazy `_H`, and the measured cost and width-accuracy comparison.

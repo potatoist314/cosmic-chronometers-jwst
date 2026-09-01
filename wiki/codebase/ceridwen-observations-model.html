@@ -115,12 +115,37 @@ matrix.</p>
 <section id="spectrum" class="level3">
 <h3>Spectrum</h3>
 <p><code>Spectrum.setup_for_model</code> maps the model wavelength grid
-to observed pixels. Without smoothing, it creates the dense
-interpolation matrix <code>_H</code>. With smoothing, it creates a
-JAX-compatible closure for LOSVD and instrumental response
-(<code>observation/spectrum.py:368-684</code>). <code>predict</code>
-calls the prepared closure. It returns one model value for each
-observed pixel (<code>lines 686-750</code>).</p>
+to observed pixels. It records the factors for the dense interpolation
+matrix <code>_H</code> and builds that matrix on first access, because only
+the no-smoothing path reads it. With smoothing, it creates a
+JAX-compatible closure for LOSVD and instrumental response.
+<code>predict</code> calls the prepared closure. It returns one model value
+for each observed pixel.</p>
+<p>When every width is known at setup, the two broadening stages become
+one. Gaussians add in quadrature, so a LOSVD followed by an instrumental
+LSF is a single Gaussian of width
+<code>sqrt(losvd^2 + instrument^2 - library^2)</code> at each wavelength.
+<code>observation/_smoothing.py</code> builds that one convolution and bakes
+its interpolation indices and its Fourier taper at setup, so no call
+recomputes them. The chained form remains for
+<code>fit_sigma_smooth=True</code>, where the width is a traced value.</p>
+<table>
+<caption>One combined convolution against the two chained ones, measured on
+the M1_210210 joint workload (11 bands, 3523 spectral pixels, grid schema
+2.1).</caption>
+<thead><tr><th>Quantity</th><th>Chained</th><th>Combined</th></tr></thead>
+<tbody>
+<tr><td>Resampling grid points</td><td>4096 and 16384</td><td>4096</td></tr>
+<tr><td>Bytes per <code>Spectrum.predict</code></td><td>7,252,468</td><td>909,856</td></tr>
+<tr><td>Transcendental operations per call</td><td>20,482</td><td>0</td></tr>
+<tr><td>Mean width error, Gaussian line of known width</td><td>0.898%</td><td>0.603%</td></tr>
+</tbody>
+</table>
+<p>The combined form is both cheaper and closer to the analytic width,
+because it interpolates once rather than twice. The resampling grid is
+also floored at the input grid size: sizing it from the kernel width alone
+let a wide kernel undersample the model spectrum. Photometry predictions
+are unchanged.</p>
 <p><code>res_convention="fwhm"</code> means that the supplied
 instrumental resolution is a FWHM value. With
 <code>inres="auto"</code>, Ceridwen uses the schema-2.1 grid resolution
