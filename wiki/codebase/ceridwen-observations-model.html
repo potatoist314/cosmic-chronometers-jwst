@@ -167,8 +167,12 @@ are unchanged.</p>
 instrumental resolution is a FWHM value. With
 <code>inres="auto"</code>, Ceridwen uses the schema-2.1 grid resolution
 curve. It applies only the additional width required in quadrature
-(<code>lines 291-366</code>). The project GPU workflows pin sedpy_jax
-commit <code>0291d58</code>, which accepts that per-pixel array.</p>
+(<code>lines 291-366</code>). The project GPU workflows install sedpy_jax
+from the <code>external/sedpy_jax</code> submodule: upstream commit
+<code>0291d58</code>, which accepts that per-pixel array, plus one commit
+that builds filters in NumPy instead of JAX. Filter construction happens
+once per fit, at setup, and that change cut per-fit setup from about
+150 s to about 27 s on a rented GPU.</p>
 <div class="source-example">
 <p class="source-locator"><code>ceridwen/ceridwen/observation/spectrum.py:736-750 · Spectrum.predict</code></p>
 <pre class="python"><code>if self.fit_sigma_smooth:

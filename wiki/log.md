@@ -364,3 +364,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `codebase/ceridwen-likelihood-sampling.html`
 - Change: Recorded the same-boot RTX 5060 Ti comparison (kernel-count reductions verified bit-identical but GPU-neutral; banded smoother rejected), the 66 percent boot-to-boot variance caveat, linear scaling to three concurrent fits per GPU, and the NumPy sedpy filter construction cutting per-fit setup to about 27 s.
+
+## [2026-09-01] codebase | Speed-up defaults for every run
+
+- Pages: `guides/vast-ai-gpu-workflow.html`, `guides/modal-gpu-workflow.html`, `codebase/ceridwen-observations-model.html`, `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
+- Change: Recorded the sedpy_jax fork as the `external/sedpy_jax` submodule that the bootstrap and Modal image install from the tree, the `fits_per_gpu` manifest field, and the same-boot RTX 4060 Ti measurement in which three concurrent production fits gave no aggregate gain over one, so the shard runner keeps one fit per GPU by default.

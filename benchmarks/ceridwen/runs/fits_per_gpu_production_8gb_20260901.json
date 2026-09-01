@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-09-01",
+  "mode": "reused_instance_same_boot",
+  "vast_instance": 49582981,
+  "gpu_name": "RTX 4060 Ti",
+  "host_cpu": {
+    "cpu_name": "Core i9-14900KF",
+    "cpu_cores_effective": 32,
+    "cpu_ram_mib": 31917
+  },
+  "price_usd_per_hour": 0.11777777777777779,
+  "ceridwen_commit": "fdcd75d",
+  "sedpy_jax_commit": "754a118",
+  "workload": "scripts/run_ceridwen_vast_multi_gpu.py production DR2 fits (full notebook path, CERIDWEN_FIT_MODE=full_spectrum, seeds 20260830 + manifest_index) on one boot of an 8 GB card; --fits-per-gpu 1 on target index 0, then --fits-per-gpu 3 on indices 0, 63, 126. Target 0 is the same computation in both levels.",
+  "note": "Whole-GPU memory from nvidia-smi sampled every 5 s. Per-fit walls are measured from the shard start (setup, JIT, sampling, post-processing).",
+  "conclusion": "No aggregate gain from concurrent production fits on this card: target M5_172669 sampled 1,183,000 calls in 187 s alone (6,315 calls/s) and in 588 s with two other fits running (2,010 calls/s); the three concurrent fits summed to 6,134 calls/s. Every fit completed and validated; peak whole-GPU memory 7,552 of 8,188 MiB. The production sampler batches 100 lanes per step (num_delete=100) against the benchmark's 25, which is the likely reason one production fit already keeps the GPU busy. --fits-per-gpu therefore defaults to 1.",
+  "levels": {
+    "N1": {
+      "fits_per_gpu": 1,
+      "num_shards": 187,
+      "shard_index": 0,
+      "status": "complete",
+      "gpu": {
+        "index": 0,
+        "uuid": "GPU-423b673e-f2b2-8f2e-6da7-c77c37df7ea4",
+        "name": "NVIDIA GeForce RTX 4060 Ti",
+        "memory_mib": 8188
+      },
+      "shard_wall_seconds": 248.72484183311462,
+      "peak_gpu_memory_used_mib_nvidia_smi": "6192",
+      "fits": {
+        "M5_172669": {
+          "manifest_index": 0,
+          "seed": 20260830,
+          "status": "complete",
+          "attempts": 1,
+          "error": null,
+          "wall_seconds_from_shard_start": 208.930324,
+          "sampler_wall_seconds": 187.33421869762242,
+          "likelihood_calls": 1183000,
+          "sampler_calls_per_second": 6314.916774011743,
+          "oom_mentions_in_log": 0
+        }
+      }
+    },
+    "N3": {
+      "fits_per_gpu": 3,
+      "num_shards": 63,
+      "shard_index": 0,
+      "status": "complete",
+      "gpu": {
+        "index": 0,
+        "uuid": "GPU-423b673e-f2b2-8f2e-6da7-c77c37df7ea4",
+        "name": "NVIDIA GeForce RTX 4060 Ti",
+        "memory_mib": 8188
+      },
+      "shard_wall_seconds": 700.3913998603821,
+      "peak_gpu_memory_used_mib_nvidia_smi": "7552",
+      "fits": {
+        "M5_172669": {
+          "manifest_index": 0,
+          "seed": 20260830,
+          "status": "complete",
+          "attempts": 1,
+          "error": null,
+          "wall_seconds_from_shard_start": 621.789818,
+          "sampler_wall_seconds": 588.4649235866964,
+          "likelihood_calls": 1183000,
+          "sampler_calls_per_second": 2010.3152330467033,
+          "oom_mentions_in_log": 0
+        },
+        "M9_232005": {
+          "manifest_index": 63,
+          "seed": 20260893,
+          "status": "complete",
+          "attempts": 1,
+          "error": null,
+          "wall_seconds_from_shard_start": 642.297664,
+          "sampler_wall_seconds": 616.6677002925426,
+          "likelihood_calls": 1202500,
+          "sampler_calls_per_second": 1949.9967315128438,
+          "oom_mentions_in_log": 0
+        },
+        "M11_214430": {
+          "manifest_index": 126,
+          "seed": 20260956,
+          "status": "complete",
+          "attempts": 1,
+          "error": null,
+          "wall_seconds_from_shard_start": 669.480539,
+          "sampler_wall_seconds": 645.9073017351329,
+          "likelihood_calls": 1404000,
+          "sampler_calls_per_second": 2173.6865278165533,
+          "oom_mentions_in_log": 0
+        }
+      }
+    }
+  },
+  "elapsed_seconds": 1033.8470652103424,
+  "cost_usd": 0.033823391639597626
+}

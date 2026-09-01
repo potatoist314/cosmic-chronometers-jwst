@@ -124,3 +124,68 @@ def test_notebook_embeds_figures_and_writes_analysis_ready_hdf5():
         assert f'create_group("{group}")' in source
     assert "plt.show()" in source
     assert "np.where(spectrum_mask, spectrum_flux, np.nan)" in source
+
+
+def test_shard_runs_one_fit_per_gpu_by_default():
+    args = runner._parser().parse_args(["--shard-index", "0"])
+
+    assert args.fits_per_gpu == runner.DEFAULT_FITS_PER_GPU
+    assert runner.DEFAULT_FITS_PER_GPU == 1
+
+
+def test_worker_memory_fraction_splits_the_device():
+    assert runner._memory_fraction(1) is None
+    assert runner._memory_fraction(2) == pytest.approx(0.42)
+    assert runner._memory_fraction(3) == pytest.approx(0.28)
+
+    target = {"seed": 1, "spect_id": "M1_1", "object_id": 1, "manifest_index": 0}
+    env = runner._worker_environment(target, Path("/tmp/x"), runner._memory_fraction(3))
+    assert env["XLA_CLIENT_MEM_FRACTION"] == "0.28"
+    assert "XLA_CLIENT_MEM_FRACTION" not in runner._worker_environment(
+        target, Path("/tmp/x"), runner._memory_fraction(1)
+    )
+
+
+def test_concurrent_shard_records_fits_per_gpu_and_every_target(monkeypatch, tmp_path):
+    executed = []
+
+    def execute(target, result_dir, mem_fraction=None):
+        executed.append((target["spect_id"], mem_fraction))
+        return 0
+
+    validations = {}
+
+    def validate(result_dir, spect_id):
+        validations[spect_id] = validations.get(spect_id, 0) + 1
+        if validations[spect_id] == 1:
+            raise FileNotFoundError
+
+    monkeypatch.setattr(runner, "_visible_gpu", lambda _minimum: {"memory_mib": 8188})
+    monkeypatch.setattr(runner, "_execute_target", execute)
+    monkeypatch.setattr(runner, "_validate_result", validate)
+    args = runner._parser().parse_args(
+        [
+            "--num-shards",
+            "63",
+            "--shard-index",
+            "0",
+            "--fits-per-gpu",
+            "3",
+            "--output-root",
+            str(tmp_path),
+        ]
+    )
+
+    assert runner._run(args) == 0
+
+    manifest = json.loads((tmp_path / "shard_0_manifest.json").read_text())
+    assert manifest["status"] == "complete"
+    assert manifest["fits_per_gpu"] == 3
+    assert sorted(spect_id for spect_id, _ in executed) == sorted(
+        target["spect_id"] for target in manifest["targets"]
+    )
+    assert len(executed) == 3
+    assert {fraction for _, fraction in executed} == {0.28}
+    assert all(
+        result["status"] == "complete" for result in manifest["results"].values()
+    )

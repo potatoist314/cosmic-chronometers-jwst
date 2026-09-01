@@ -8,7 +8,7 @@ PYTHON_BIN="${ENV_DIR}/bin/python"
 PYTHON_VERSION="3.11.16"
 JAX_VERSION="0.10.2"
 TFP_NIGHTLY_VERSION="0.26.0.dev20260810"
-SEDPY_JAX_COMMIT="754a1188a319a73187eb3f04e0755192728de8d0"
+SEDPY_JAX_DIR="${PROJECT_ROOT}/external/sedpy_jax"
 MINIMUM_GPU_MEMORY_MIB="${CERIDWEN_MIN_GPU_MEMORY_MIB:-8000}"
 
 # Use the CUDA libraries installed with JAX, not Vast's system CUDA libraries.
@@ -34,8 +34,8 @@ if (( GPU_MEMORY_MIB < MINIMUM_GPU_MEMORY_MIB )); then
     exit 1
 fi
 
-if [[ ! -f "${PROJECT_ROOT}/ceridwen/pyproject.toml" ]]; then
-    git -C "${PROJECT_ROOT}" submodule update --init --recursive
+if [[ ! -f "${PROJECT_ROOT}/ceridwen/pyproject.toml" || ! -f "${SEDPY_JAX_DIR}/setup.py" ]]; then
+    git -C "${PROJECT_ROOT}" submodule update --init ceridwen external/sedpy_jax
 fi
 
 if command -v uv >/dev/null 2>&1; then
@@ -66,8 +66,11 @@ fi
     "specutils>=2.2,<3"
 "${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
     "tfp-nightly==${TFP_NIGHTLY_VERSION}"
+# The sedpy_jax fork builds filters in NumPy (per-fit setup ~150 s -> ~27 s).
+# It is a submodule installed from the tree, like ceridwen, so the bootstrap
+# never fetches it from GitHub.
 "${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
-    "sedpy-jax @ git+https://github.com/potatoist314/sedpy_jax.git@${SEDPY_JAX_COMMIT}"
+    "${SEDPY_JAX_DIR}"
 "${UV_BIN}" pip check --python "${PYTHON_BIN}"
 
 # The installed package, not the source tree, is what a fit imports. Stop here

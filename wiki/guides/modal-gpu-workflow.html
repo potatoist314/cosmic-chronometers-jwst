@@ -82,9 +82,10 @@
       directory:</p>
       <pre><code>uvx --from modal==1.5.4 modal setup</code></pre>
       <p>The adapter uses Python 3.11 and CUDA JAX. It includes the local
-      Ceridwen source and the two active notebooks. It pins the
-      sedpy_jax commit that accepts wavelength-dependent input
-      resolution. By default, it requests one <code>A100-40GB</code>.</p>
+      Ceridwen source, the two active notebooks, and the sedpy_jax fork
+      from the <code>external/sedpy_jax</code> submodule, which accepts
+      wavelength-dependent input resolution and builds filters in NumPy.
+      By default, it requests one <code>A100-40GB</code>.</p>
       <p class="source-locator"><code>scripts/modal_ceridwen.py:60-62</code></p>
       <pre><code>image = (
     modal.Image.debian_slim(python_version="3.11")

@@ -126,10 +126,15 @@ cd cosmic-chronometers-jwst</code></pre>
       <pre><code># Use the CUDA libraries installed with JAX, not Vast's system CUDA libraries.
 unset LD_LIBRARY_PATH</code></pre>
       <p>The script creates an isolated Python 3.11 environment. It
-      installs CUDA JAX and Ceridwen. It pins the sedpy_jax commit that
-      accepts the grid's wavelength-dependent resolution array. It
-      checks GPU float64 execution, runs the Ceridwen check, and
-      registers the notebook kernel.</p>
+      installs CUDA JAX, Ceridwen from the <code>ceridwen</code>
+      submodule, and sedpy_jax from the <code>external/sedpy_jax</code>
+      submodule. That sedpy_jax fork accepts the grid's
+      wavelength-dependent resolution array and builds filters in NumPy,
+      which keeps per-fit setup near 27 s. Both submodules install from
+      the tree, so the bootstrap never fetches them from GitHub; a driver
+      that provisions an instance copies both directories with the
+      scripts. The script checks GPU float64 execution, runs the
+      Ceridwen check, and registers the notebook kernel.</p>
       <p class="source-locator"><code>scripts/bootstrap_vast_ai.sh:52-99</code></p>
       <pre><code>JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "${PYTHON_BIN}" - &lt;&lt;'PY'
 import jax
@@ -209,6 +214,15 @@ PY
       uses 500 live points, 65 slice steps, 100 deletions, and
       <code>logZ_tol=-5</code>. Seed <code>20260830 + manifest_index</code>
       identifies each target.</p>
+      <p>A shard runs one target at a time by default.
+      <code>--fits-per-gpu N</code> runs N targets at once, each worker with
+      <code>XLA_CLIENT_MEM_FRACTION = 0.85/N</code>, and the shard manifest
+      records <code>fits_per_gpu</code>. Concurrent fits share the GPU by
+      time-slicing. With the production sampler settings one fit already
+      keeps the GPU busy: on an 8 GB RTX 4060 Ti, three concurrent
+      production fits each ran 3.1 times slower than the same fit alone,
+      for no aggregate gain. Leave the default unless a same-boot
+      measurement with production settings shows headroom.</p>
       <p>Each target writes one executed notebook, two HDF5 files, and one
       execution log. Figures remain embedded in the notebook. The runner
       retries a failed target once with the same seed.</p>
@@ -275,8 +289,9 @@ for index, row in enumerate(selected.itertuples(index=False)):
         raw data and published grid.</li>
         <li><code>scripts/run_ceridwen_vast_multi_gpu.py:37-137</code>
         selects and shards the 187 unique objects.</li>
-        <li><code>scripts/run_ceridwen_vast_multi_gpu.py:290-370</code>
-        runs targets sequentially and records completion.</li>
+        <li><code>scripts/run_ceridwen_vast_multi_gpu.py:457-561</code>
+        runs up to <code>fits_per_gpu</code> targets at once and records
+        completion.</li>
         <li><code>scripts/benchmark_ceridwen_vast.py:23-39</code> fixes the
         workload and sampler sizes.</li>
         <li><code>scripts/benchmark_ceridwen_vast.py:662-713</code> excludes
@@ -290,6 +305,6 @@ for index, row in enumerate(selected.itertuples(index=False)):
       </ul>
     </section>
   </main>
-  <footer class="site-footer">Generated from the live Astro project · Updated 30 August 2026</footer>
+  <footer class="site-footer">Generated from the live Astro project · Updated 1 September 2026</footer>
 </body>
 </html>

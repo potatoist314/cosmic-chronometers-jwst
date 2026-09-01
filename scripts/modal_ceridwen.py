@@ -23,10 +23,6 @@ DEFAULT_GPU = "A100-40GB"
 
 JAX_VERSION = "0.10.2"
 TFP_NIGHTLY_VERSION = "0.26.0.dev20260810"
-SEDPY_JAX_SPEC = (
-    "sedpy-jax @ git+https://github.com/Espe13/sedpy_jax.git@"
-    "0291d58bd86fc0e401b2cdd8beae25d994d1ba0e"
-)
 GRID_NAME = "amist_c3k_hr_krou_afe.h5"
 GRID_SHA256 = "f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16"
 EXPECTED_SPECTRA = 1988
@@ -78,6 +74,14 @@ image = (
         "/opt/ceridwen/LICENSE",
         copy=True,
     )
+    # The sedpy_jax fork (NumPy filter construction) ships with the project as
+    # a submodule; install it from the tree like ceridwen.
+    .add_local_dir(
+        PROJECT_ROOT / "external" / "sedpy_jax",
+        "/opt/sedpy_jax",
+        copy=True,
+        ignore=_ignore_python_cache,
+    )
     .uv_pip_install(
         f"jax[cuda12]=={JAX_VERSION}",
         f"jaxlib=={JAX_VERSION}",
@@ -94,7 +98,7 @@ image = (
         extra_options="--reinstall --no-deps",
     )
     .uv_pip_install(
-        SEDPY_JAX_SPEC,
+        "/opt/sedpy_jax",
         extra_options="--reinstall --no-deps",
     )
     .env(

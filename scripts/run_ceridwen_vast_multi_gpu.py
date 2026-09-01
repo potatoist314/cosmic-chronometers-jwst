@@ -24,6 +24,12 @@ DEFAULT_OUTPUT_ROOT = (
     PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
 )
 DEFAULT_BASE_SEED = 20260830
+# Concurrent fits share the GPU by time-slicing. With the production sampler
+# settings (100 lanes per step) one fit already keeps the GPU busy: three
+# concurrent production fits on an RTX 4060 Ti ran 3.1x slower each, for no
+# aggregate gain (benchmarks/ceridwen/README.md). The linear scaling seen with
+# the 25-lane benchmark workload does not transfer, so the default stays 1.
+DEFAULT_FITS_PER_GPU = 1
 DEFAULT_MINIMUM_GPU_MEMORY_MIB = int(
     os.environ.get("CERIDWEN_MIN_GPU_MEMORY_MIB", "8000")
 )
@@ -188,6 +194,13 @@ def _visible_gpu(minimum_memory_mib: int) -> dict:
             f"GPU has {gpu['memory_mib']} MiB. Required: {minimum_memory_mib} MiB"
         )
     return gpu
+
+
+def _memory_fraction(fits_per_gpu: int) -> float | None:
+    """Device-memory share for each concurrent worker; JAX's default for one."""
+    if fits_per_gpu <= 1:
+        return None
+    return round(0.85 / fits_per_gpu, 2)
 
 
 def _worker_environment(
@@ -472,12 +485,14 @@ def _run(args: argparse.Namespace) -> int:
 
     args.output_root.mkdir(parents=True, exist_ok=True)
     run_manifest_path = args.output_root / f"shard_{args.shard_index}_manifest.json"
+    fits_per_gpu = max(1, args.fits_per_gpu)
     run_manifest = {
         "schema_version": 1,
         "status": "running",
         "started_at_utc": _utc_now(),
         "shard_index": args.shard_index,
         "num_shards": args.num_shards,
+        "fits_per_gpu": fits_per_gpu,
         "gpu": gpu,
         "vast_instance_id": os.environ.get("VAST_INSTANCE_ID"),
         "project_commit": os.environ.get("CERIDWEN_PROJECT_COMMIT"),
@@ -488,11 +503,9 @@ def _run(args: argparse.Namespace) -> int:
     _write_json(run_manifest_path, run_manifest)
 
     failed = []
-    # One likelihood fit leaves the GPU mostly idle (concurrency scaled
-    # linearly to three fits on an RTX 5060 Ti), so a shard may run several
-    # targets at once. Validation and manifest writes stay serialised.
-    fits_per_gpu = max(1, args.fits_per_gpu)
-    mem_fraction = round(0.85 / fits_per_gpu, 2) if fits_per_gpu > 1 else None
+    # Concurrent workers each get a share of device memory. Validation and
+    # manifest writes stay serialised.
+    mem_fraction = _memory_fraction(fits_per_gpu)
     bookkeeping = threading.Lock()
 
     def _process_target(target: dict) -> None:
@@ -570,11 +583,10 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--fits-per-gpu",
         type=int,
-        default=1,
+        default=DEFAULT_FITS_PER_GPU,
         help=(
-            "Concurrent fits on this GPU. Aggregate throughput scaled"
-            " linearly to 3 on a 16 GB RTX 5060 Ti; each worker gets"
-            " XLA_CLIENT_MEM_FRACTION = 0.85/N."
+            "Concurrent fits on this GPU; each worker gets"
+            " XLA_CLIENT_MEM_FRACTION = 0.85/N. Default: %(default)s."
         ),
     )
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)

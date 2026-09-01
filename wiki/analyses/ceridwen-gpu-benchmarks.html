@@ -599,7 +599,11 @@
       <h3>RTX 5060 Ti same-boot state comparison and concurrency</h3>
       <p>One RTX 5060 Ti (published dense TF32 peak 24 TFLOP/s) ran three ceridwen states back to back in one boot: the combined-smoother baseline reached 5,548 likelihood calls per second; adding the hoisted flux factor, the compare-all searchsorted lowering, and fewer per-iteration host reads gave 5,570; a banded direct-space smoother gave 5,566. The three agree within run noise: after the smoothing collapse, kernel-count reductions no longer move the step time, which the smoothing gather and the float64 pixel likelihood dominate. The banded smoother was not adopted.</p>
       <p>Boot-to-boot variance on shared hosts reached 66 percent for identical code on this instance. Only same-boot numbers are comparable.</p>
-      <p>Independent concurrent fits on the same GPU scale linearly: one fit 5,531, two fits 10,857, three fits 16,457 aggregate calls per second. One fit leaves the GPU mostly idle, so a production shard can run several targets at once (<code>--fits-per-gpu</code> in the shard runner). Grid schema 2.1.</p>
+      <p>Independent concurrent runs of the fixed benchmark on the same GPU scale linearly: one run 5,531, two runs 10,857, three runs 16,457 aggregate calls per second. Grid schema 2.1.</p>
+
+      <h3>RTX 4060 Ti concurrent production fits</h3>
+      <p>One 8 GB RTX 4060 Ti (published dense TF32 peak 22 TFLOP/s, 32 effective host cores) ran production DR2 fits through the shard runner in one boot: target M5_172669 alone, then targets M5_172669, M9_232005, and M11_214430 with <code>--fits-per-gpu 3</code>. Alone, M5_172669 sampled 1,183,000 likelihood calls in 187 s, or 6,315 calls per second. With two other fits running it took 588 s, or 2,010 calls per second; the three concurrent fits summed to 6,134 calls per second. All three fits completed and validated. Whole-GPU memory peaked at 7,552 MiB of 8,188 MiB. Grid schema 2.1; 500 live points, 65 inner steps, 100 deletions.</p>
+      <p>Concurrent processes share a GPU by time-slicing, so the linear scaling of the 25-lane benchmark does not transfer to production fits, which batch 100 lanes per step and keep the GPU busy on their own. The shard runner therefore runs one fit per GPU by default.</p>
 
       <h3>Speed against published peak throughput</h3>
       <p>Both axes use a log scale. The vertical axis shows likelihood calls per second.</p>

@@ -77,23 +77,44 @@ step is bound by the smoothing gather and the float64 pixel likelihood. The
 banded smoother matched the FFT chain in float64 and float32 forms and was not
 adopted.
 
-Concurrent independent fits on the same GPU scale linearly:
+Concurrent independent runs of this benchmark on the same GPU scale linearly:
 
-| Fits per GPU | Aggregate calls/s |
+| Benchmark runs per GPU | Aggregate calls/s |
 | ---: | ---: |
 | 1 | 5,531 |
 | 2 | 10,857 |
 | 3 | 16,457 |
 
-`scripts/run_ceridwen_vast_multi_gpu.py --fits-per-gpu N` runs a shard with N
-concurrent targets (each worker gets `XLA_CLIENT_MEM_FRACTION = 0.85/N`).
-The linear-scaling measurement used a 16 GB card. On 8 GB cards use
-`--fits-per-gpu 2`: the float64 SSP cube no longer occupies the device
-(ceridwen `fdcd75d`, about 611 MB saved per fit), but three concurrent
-production fits on 8 GB are unverified.
 Setup per fit also fell from ~150 s to ~27 s on the rental after the sedpy
-filter-construction path moved to NumPy.
+filter-construction path moved to NumPy. That sedpy_jax fork is the
+`external/sedpy_jax` submodule; the bootstrap and the Modal image install it
+from the tree.
 Record: `benchmarks/ceridwen/runs/likelihood_kernel_ab_and_concurrency_20260901.json`.
+
+## Concurrent production fits on 8 GB (1 September 2026)
+
+The linear scaling above does not transfer to production fits. One RTX 4060 Ti
+(8 GB, 32 effective host cores) ran the DR2 shard runner in one boot: target
+M5_172669 alone, then M5_172669, M9_232005, and M11_214430 with
+`--fits-per-gpu 3` (each worker `XLA_CLIENT_MEM_FRACTION = 0.28`). Production
+settings: 500 live points, 65 inner steps, 100 deletions, seeds
+`20260830 + manifest_index`.
+
+| Level | Target | Likelihood calls | Sampler wall | Calls/s |
+| --- | --- | ---: | ---: | ---: |
+| 1 fit | M5_172669 | 1,183,000 | 187 s | 6,315 |
+| 3 fits | M5_172669 | 1,183,000 | 588 s | 2,010 |
+| 3 fits | M9_232005 | 1,202,500 | 617 s | 1,950 |
+| 3 fits | M11_214430 | 1,404,000 | 646 s | 2,174 |
+
+The three concurrent fits sum to 6,134 calls/s, the same as one fit alone. All
+fits completed and validated; whole-GPU memory peaked at 7,552 of 8,188 MiB.
+Processes share a GPU by time-slicing, and a production step batches 100 lanes
+(`num_delete`) against the benchmark's 25, so one production fit already keeps
+the GPU busy. `scripts/run_ceridwen_vast_multi_gpu.py` therefore defaults to
+`--fits-per-gpu 1`; the shard manifest records `fits_per_gpu`. Cost of the
+measurement: $0.034.
+Record: `benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260901.json`.
 
 ## Completed runs
 
