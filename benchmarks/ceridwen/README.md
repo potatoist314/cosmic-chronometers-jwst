@@ -42,6 +42,23 @@ Rank copied benchmark files with:
 The summary command stops when workload, input, code, or software fingerprints
 differ. Use only one fingerprint in a comparison table.
 
+## Static smoothing A/B (1 September 2026)
+
+One RTX 5060 (published dense TF32 peak 47 TFLOP/s) ran the fixed workload
+twice on the same rental: first with the chained LOSVD and instrumental
+convolutions, then with the single combined Gaussian that ceridwen builds when
+every width is known at setup. Grid schema 2.1.
+
+| Smoothing | Calls/s | Median step | Resident JAX memory | Peak memory |
+| --- | ---: | ---: | ---: | ---: |
+| Chained | 915 | 1.101 s | 619 MiB | 1,589 MiB |
+| Combined | 3,825 | 0.263 s | 316 MiB | 1,589 MiB |
+
+The combined form is 4.18 times faster. Peak memory is unchanged because a
+transient inside the sampler step sets it. The combined form is now the
+installed default. Record:
+`benchmarks/ceridwen/runs/static_smoothing_gpu_verification_20260901T110236Z.json`.
+
 ## Completed runs
 
 | Provider | GPU | Likelihood | Grid | NSS settings | Iterations / dead points | Likelihood calls | Sampler wall | Calls/s | Result |

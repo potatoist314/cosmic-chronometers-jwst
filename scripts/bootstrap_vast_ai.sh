@@ -50,7 +50,9 @@ if [[ ! -x "${PYTHON_BIN}" ]]; then
     "${UV_BIN}" venv "${ENV_DIR}" --python "${PYTHON_VERSION}"
 fi
 
-"${UV_BIN}" pip install --python "${PYTHON_BIN}" \
+# uv rebuilds a path install only when its metadata files change, so a changed
+# module inside the tree would keep the stale wheel. Reinstall ceridwen always.
+"${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall-package ceridwen \
     "jax[cuda12]==${JAX_VERSION}" \
     "jaxlib==${JAX_VERSION}" \
     "${PROJECT_ROOT}/ceridwen" \
@@ -67,6 +69,14 @@ fi
 "${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
     "sedpy-jax @ git+https://github.com/Espe13/sedpy_jax.git@${SEDPY_JAX_COMMIT}"
 "${UV_BIN}" pip check --python "${PYTHON_BIN}"
+
+# The installed package, not the source tree, is what a fit imports. Stop here
+# if it lacks the combined static smoother (ceridwen a38982a and later).
+JAX_PLATFORMS=cpu "${PYTHON_BIN}" - <<'PY'
+from ceridwen.observation._smoothing import make_static_smoother  # noqa: F401
+
+print("ceridwen: combined static smoother installed")
+PY
 
 JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "${PYTHON_BIN}" - <<'PY'
 import jax

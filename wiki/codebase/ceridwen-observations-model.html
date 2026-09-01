@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="codebase">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-28">
+  <meta name="wiki-updated" content="2026-09-01">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -129,6 +129,15 @@ LSF is a single Gaussian of width
 its interpolation indices and its Fourier taper at setup, so no call
 recomputes them. The chained form remains for
 <code>fit_sigma_smooth=True</code>, where the width is a traced value.</p>
+<p>No flag or environment variable selects the combined form. The installed
+ceridwen package decides. The superproject records the ceridwen commit that
+contains <code>_smoothing.py</code>, and <code>.gitmodules</code> points at the
+project copy <code>potatoist314/ceridwen</code>, because the upstream repository
+does not carry these commits. <code>scripts/bootstrap_vast_ai.sh</code>
+reinstalls ceridwen from the tree on every run and stops when
+<code>ceridwen.observation._smoothing</code> does not import. That check exists
+because a non-editable install ignores files copied into the source tree after
+bootstrap.</p>
 <table>
 <caption>One combined convolution against the two chained ones, measured on
 the M1_210210 joint workload (11 bands, 3523 spectral pixels, grid schema

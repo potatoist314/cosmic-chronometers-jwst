@@ -349,3 +349,8 @@
 
 - Pages: `codebase/ceridwen-observations-model.html`, `index.md`
 - Change: Documented the quadrature-combined LOSVD and instrumental convolution, the baked interpolation indices and Fourier taper, the input-floored resampling grid, lazy `_H`, and the measured cost and width-accuracy comparison.
+
+## [2026-09-01] codebase | Combined static smoother made the installed default
+
+- Pages: `codebase/ceridwen-observations-model.html`
+- Change: Recorded that the superproject pins the ceridwen commit with `_smoothing.py`, that `.gitmodules` points at the project copy of ceridwen, and that the bootstrap reinstalls ceridwen and checks the import.
