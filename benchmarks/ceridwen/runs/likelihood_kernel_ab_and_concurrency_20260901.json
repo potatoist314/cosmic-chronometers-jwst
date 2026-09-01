@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-09-01",
+  "mode": "reused_instance_same_boot",
+  "vast_instance": 49573489,
+  "gpu_name": "RTX 5060 Ti",
+  "price_usd_per_hour": 0.08844444444444445,
+  "note": "Two same-boot sessions on one RTX 5060 Ti. Session 1: three ceridwen states back to back (a38982a; +flux-factor hoist +compare_all searchsorted +sampler syncs = 5826e8f; +banded direct-space smoother). Session 2: concurrency scaling with the committed state, then the float32-weight banded variant. Boot-to-boot variance on shared hosts reached 66% for identical code, so only same-boot numbers are comparable.",
+  "conclusions": {
+    "kernel_reductions_gpu_effect": "none measurable at vmap(25)",
+    "banded_smoother": "equal to the FFT chain in f64 and f32; not adopted",
+    "concurrency": "aggregate throughput scales linearly to 3 fits/GPU"
+  },
+  "session1_states": {
+    "a38982a": {
+      "setup_seconds": 25.898416069801897,
+      "initialization_seconds": 8.741558694746345,
+      "warmup_step_seconds": [
+        11.195694046095014
+      ],
+      "iteration_seconds": [
+        0.1699142470024526,
+        0.18206253089010715,
+        0.18624322395771742,
+        0.1777177480980754,
+        0.18526027398183942
+      ],
+      "timed_steps": 5,
+      "likelihood_calls_per_step": 1000,
+      "timed_likelihood_calls": 5000,
+      "total_timed_seconds": 0.901198023930192,
+      "median_step_seconds": 0.18206253089010715,
+      "iqr_step_seconds": 0.0075425258837640285,
+      "likelihood_calls_per_second": 5548.170177065665,
+      "cost_per_100k_likelihood_calls_usd": 0.0004425883628634943
+    },
+    "committed": {
+      "setup_seconds": 26.98545969510451,
+      "initialization_seconds": 20.760553082916886,
+      "warmup_step_seconds": [
+        16.127406478393823
+      ],
+      "iteration_seconds": [
+        0.16964476509019732,
+        0.18056418979540467,
+        0.18563112523406744,
+        0.1768087181262672,
+        0.1849506078287959
+      ],
+      "timed_steps": 5,
+      "likelihood_calls_per_step": 1000,
+      "timed_likelihood_calls": 5000,
+      "total_timed_seconds": 0.8975994060747325,
+      "median_step_seconds": 0.18056418979540467,
+      "iqr_step_seconds": 0.008141889702528715,
+      "likelihood_calls_per_second": 5570.413668014068,
+      "cost_per_100k_likelihood_calls_usd": 0.00044082104165003535
+    },
+    "banded": {
+      "setup_seconds": 27.547867523040622,
+      "initialization_seconds": 14.626114385202527,
+      "warmup_step_seconds": [
+        18.821476900950074
+      ],
+      "iteration_seconds": [
+        0.16945559810847044,
+        0.18098285607993603,
+        0.18508394993841648,
+        0.178155236877501,
+        0.1845761020667851
+      ],
+      "timed_steps": 5,
+      "likelihood_calls_per_step": 1000,
+      "timed_likelihood_calls": 5000,
+      "total_timed_seconds": 0.8982537430711091,
+      "median_step_seconds": 0.18098285607993603,
+      "iqr_step_seconds": 0.006420865189284086,
+      "likelihood_calls_per_second": 5566.355875017135,
+      "cost_per_100k_likelihood_calls_usd": 0.00044114239381936693
+    }
+  },
+  "session2": {
+    "single": {
+      "setup_seconds": 27.869430711027235,
+      "initialization_seconds": 8.303999579977244,
+      "warmup_step_seconds": [
+        10.74174092290923
+      ],
+      "iteration_seconds": [
+        0.17089901911094785,
+        0.1822192780673504,
+        0.18702414399012923,
+        0.17816303204745054,
+        0.18566788313910365
+      ],
+      "timed_steps": 5,
+      "likelihood_calls_per_step": 1000,
+      "timed_likelihood_calls": 5000,
+      "total_timed_seconds": 0.9039733563549817,
+      "median_step_seconds": 0.1822192780673504,
+      "iqr_step_seconds": 0.007504851091653109,
+      "likelihood_calls_per_second": 5531.136470837032,
+      "cost_per_100k_likelihood_calls_usd": 0.00044395135945433543
+    },
+    "conc2": [
+      {
+        "setup_seconds": 25.701354667078704,
+        "initialization_seconds": 8.58370187645778,
+        "warmup_step_seconds": [
+          11.107624280732125
+        ],
+        "iteration_seconds": [
+          0.17682215524837375,
+          0.18929766537621617,
+          0.1950968182645738,
+          0.18378065060824156,
+          0.19246439496055245
+        ],
+        "timed_steps": 5,
+        "likelihood_calls_per_step": 1000,
+        "timed_likelihood_calls": 5000,
+        "total_timed_seconds": 0.9374616844579577,
+        "median_step_seconds": 0.18929766537621617,
+        "iqr_step_seconds": 0.008683744352310896,
+        "likelihood_calls_per_second": 5333.551315103625,
+        "cost_per_100k_likelihood_calls_usd": 0.00046039784947824147
+      },
+      {
+        "setup_seconds": 28.052848423365504,
+        "initialization_seconds": 8.70007236301899,
+        "warmup_step_seconds": [
+          11.23326713219285
+        ],
+        "iteration_seconds": [
+          0.17055047722533345,
+          0.18224458070471883,
+          0.18714133417233825,
+          0.1787874628789723,
+          0.1865072501823306
+        ],
+        "timed_steps": 5,
+        "likelihood_calls_per_step": 1000,
+        "timed_likelihood_calls": 5000,
+        "total_timed_seconds": 0.9052311051636934,
+        "median_step_seconds": 0.18224458070471883,
+        "iqr_step_seconds": 0.007719787303358316,
+        "likelihood_calls_per_second": 5523.4513832750445,
+        "cost_per_100k_likelihood_calls_usd": 0.0004445690538692806
+      }
+    ],
+    "conc3": [
+      {
+        "setup_seconds": 25.297840763349086,
+        "initialization_seconds": 8.603780093602836,
+        "warmup_step_seconds": [
+          10.991137111093849
+        ],
+        "iteration_seconds": [
+          0.17087185429409146,
+          0.18259264808148146,
+          0.18691467307507992,
+          0.17784735513851047,
+          0.18631351180374622
+        ],
+        "timed_steps": 5,
+        "likelihood_calls_per_step": 1000,
+        "timed_likelihood_calls": 5000,
+        "total_timed_seconds": 0.9045400423929095,
+        "median_step_seconds": 0.18259264808148146,
+        "iqr_step_seconds": 0.008466156665235758,
+        "likelihood_calls_per_second": 5527.6712645830285,
+        "cost_per_100k_likelihood_calls_usd": 0.0004442296652640734
+      },
+      {
+        "setup_seconds": 25.45142076909542,
+        "initialization_seconds": 9.32101907581091,
+        "warmup_step_seconds": [
+          11.852469068020582
+        ],
+        "iteration_seconds": [
+          0.17236296739429235,
+          0.18435753835365176,
+          0.1887365342117846,
+          0.18036727095022798,
+          0.18852711003273726
+        ],
+        "timed_steps": 5,
+        "likelihood_calls_per_step": 1000,
+        "timed_likelihood_calls": 5000,
+        "total_timed_seconds": 0.914351420942694,
+        "median_step_seconds": 0.18435753835365176,
+        "iqr_step_seconds": 0.00815983908250928,
+        "likelihood_calls_per_second": 5468.357007467668,
+        "cost_per_100k_likelihood_calls_usd": 0.0004490481422851898
+      },
+      {
+        "setup_seconds": 26.619215292390436,
+        "initialization_seconds": 8.841687025967985,
+        "warmup_step_seconds": [
+          11.693275130353868
+        ],
+        "iteration_seconds": [
+          0.17316059581935406,
+          0.18565812520682812,
+          0.1890528448857367,
+          0.18072588089853525,
+          0.18694775504991412
+        ],
+        "timed_steps": 5,
+        "likelihood_calls_per_step": 1000,
+        "timed_likelihood_calls": 5000,
+        "total_timed_seconds": 0.9155452018603683,
+        "median_step_seconds": 0.18565812520682812,
+        "iqr_step_seconds": 0.00622187415137887,
+        "likelihood_calls_per_second": 5461.226807633427,
+        "cost_per_100k_likelihood_calls_usd": 0.000449634421358092
+      }
+    ],
+    "banded_f32": {
+      "setup_seconds": 27.829107344616205,
+      "initialization_seconds": 18.45846366416663,
+      "warmup_step_seconds": [
+        15.77008339902386
+      ],
+      "iteration_seconds": [
+        0.16922031296417117,
+        0.18089054804295301,
+        0.1850033039227128,
+        0.17654746817424893,
+        0.18383408105000854
+      ],
+      "timed_steps": 5,
+      "likelihood_calls_per_step": 1000,
+      "timed_likelihood_calls": 5000,
+      "total_timed_seconds": 0.8954957141540945,
+      "median_step_seconds": 0.18089054804295301,
+      "iqr_step_seconds": 0.007286612875759602,
+      "likelihood_calls_per_second": 5583.499642679042,
+      "cost_per_100k_likelihood_calls_usd": 0.00043978789517345535
+    }
+  },
+  "cost_usd_total": 0.022
+}

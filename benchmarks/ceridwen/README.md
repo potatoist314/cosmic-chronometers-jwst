@@ -59,6 +59,38 @@ transient inside the sampler step sets it. The combined form is now the
 installed default. Record:
 `benchmarks/ceridwen/runs/static_smoothing_gpu_verification_20260901T110236Z.json`.
 
+## Likelihood micro-optimisations and concurrency (1 September 2026)
+
+One RTX 5060 Ti ran the fixed workload for three ceridwen states in one boot,
+then a concurrency test. Boot-to-boot variance on shared Vast hosts reached
+66% for identical code, so only same-boot numbers are comparable.
+
+| State | Calls/s |
+| --- | ---: |
+| `a38982a` (combined smoother) | 5,548 |
+| + flux-factor hoist, compare-all searchsorted, fewer host syncs | 5,570 |
+| + banded direct-space smoother | 5,566 |
+
+The kernel-count reductions (42 -> 19 fusions per call, verified bit-identical
+on 64 fixed prior draws) do not move GPU throughput at 25 vmapped lanes; the
+step is bound by the smoothing gather and the float64 pixel likelihood. The
+banded smoother matched the FFT chain in float64 and float32 forms and was not
+adopted.
+
+Concurrent independent fits on the same GPU scale linearly:
+
+| Fits per GPU | Aggregate calls/s |
+| ---: | ---: |
+| 1 | 5,531 |
+| 2 | 10,857 |
+| 3 | 16,457 |
+
+`scripts/run_ceridwen_vast_multi_gpu.py --fits-per-gpu N` runs a shard with N
+concurrent targets (each worker gets `XLA_CLIENT_MEM_FRACTION = 0.85/N`).
+Setup per fit also fell from ~150 s to ~27 s on the rental after the sedpy
+filter-construction path moved to NumPy.
+Record: `benchmarks/ceridwen/runs/likelihood_kernel_ab_and_concurrency_20260901.json`.
+
 ## Completed runs
 
 | Provider | GPU | Likelihood | Grid | NSS settings | Iterations / dead points | Likelihood calls | Sampler wall | Calls/s | Result |

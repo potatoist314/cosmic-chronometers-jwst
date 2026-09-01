@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/wiki.css" />
   <meta name="wiki-type" content="codebase">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-25">
+  <meta name="wiki-updated" content="2026-09-01">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -210,6 +210,11 @@ dimension. Each iteration deletes one-fifth of the live points. The
 default <code>logZ_tol</code> is <code>-5</code>
 (<code>sampler/nested.py:144-172</code> and
 <code>350-359</code>).</p>
+<p>The run loop reads <code>logZ</code> and <code>logZ_live</code> from the
+device once per iteration and reuses the two floats for the stop
+condition, the verbose line, the progress bar, and the checkpoint tag.
+Each read is a blocking device transfer, and earlier revisions performed
+up to seven of them per iteration.</p>
 <figure class="diagram" aria-labelledby="nss-lifecycle-caption">
 <ol class="diagram-sequence" style="--diagram-columns: 5">
 <li><strong>Draw from priors</strong><small>Initial live points</small></li>

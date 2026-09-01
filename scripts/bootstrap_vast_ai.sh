@@ -8,7 +8,7 @@ PYTHON_BIN="${ENV_DIR}/bin/python"
 PYTHON_VERSION="3.11.16"
 JAX_VERSION="0.10.2"
 TFP_NIGHTLY_VERSION="0.26.0.dev20260810"
-SEDPY_JAX_COMMIT="0291d58bd86fc0e401b2cdd8beae25d994d1ba0e"
+SEDPY_JAX_COMMIT="754a1188a319a73187eb3f04e0755192728de8d0"
 MINIMUM_GPU_MEMORY_MIB="${CERIDWEN_MIN_GPU_MEMORY_MIB:-8000}"
 
 # Use the CUDA libraries installed with JAX, not Vast's system CUDA libraries.
@@ -67,7 +67,7 @@ fi
 "${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
     "tfp-nightly==${TFP_NIGHTLY_VERSION}"
 "${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
-    "sedpy-jax @ git+https://github.com/Espe13/sedpy_jax.git@${SEDPY_JAX_COMMIT}"
+    "sedpy-jax @ git+https://github.com/potatoist314/sedpy_jax.git@${SEDPY_JAX_COMMIT}"
 "${UV_BIN}" pip check --python "${PYTHON_BIN}"
 
 # The installed package, not the source tree, is what a fit imports. Stop here

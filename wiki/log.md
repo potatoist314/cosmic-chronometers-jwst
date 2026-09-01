@@ -359,3 +359,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`
 - Change: Removed the equivalence-gate caveat and the "keep the baseline basis" synthesis. Seed-to-seed scatter of the baseline exceeds the gate thresholds, so the fixed-grid basis is accepted as the default. Removed the gate script and the variation-notebook builder.
+
+## [2026-09-01] analysis | Likelihood kernel A/B and per-GPU concurrency
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `codebase/ceridwen-likelihood-sampling.html`
+- Change: Recorded the same-boot RTX 5060 Ti comparison (kernel-count reductions verified bit-identical but GPU-neutral; banded smoother rejected), the 66 percent boot-to-boot variance caveat, linear scaling to three concurrent fits per GPU, and the NumPy sedpy filter construction cutting per-fit setup to about 27 s.

@@ -7,7 +7,9 @@ import json
 import os
 import subprocess
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -188,9 +190,17 @@ def _visible_gpu(minimum_memory_mib: int) -> dict:
     return gpu
 
 
-def _worker_environment(target: dict, result_dir: Path) -> dict[str, str]:
+def _worker_environment(
+    target: dict, result_dir: Path, mem_fraction: float | None = None
+) -> dict[str, str]:
+    memory_env = (
+        {"XLA_CLIENT_MEM_FRACTION": f"{mem_fraction:.2f}"}
+        if mem_fraction is not None
+        else {}
+    )
     return {
         **os.environ,
+        **memory_env,
         "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
         "CUDA_VISIBLE_DEVICES": "0",
         "CERIDWEN_EXPECT_SINGLE_GPU": "1",
@@ -241,7 +251,9 @@ def _validate_result(result_dir: Path, spect_id: str) -> None:
         raise RuntimeError(f"Expected at least five embedded figures, found {images}")
 
 
-def _execute_target(target: dict, result_dir: Path) -> int:
+def _execute_target(
+    target: dict, result_dir: Path, mem_fraction: float | None = None
+) -> int:
     notebook_path = result_dir / f"{target['spect_id']}_executed.ipynb"
     command = [
         sys.executable,
@@ -257,7 +269,7 @@ def _execute_target(target: dict, result_dir: Path) -> int:
         return subprocess.run(
             command,
             cwd=PROJECT_ROOT,
-            env=_worker_environment(target, result_dir),
+            env=_worker_environment(target, result_dir, mem_fraction),
             stdout=log,
             stderr=subprocess.STDOUT,
             text=True,
@@ -476,41 +488,60 @@ def _run(args: argparse.Namespace) -> int:
     _write_json(run_manifest_path, run_manifest)
 
     failed = []
-    for target in targets:
+    # One likelihood fit leaves the GPU mostly idle (concurrency scaled
+    # linearly to three fits on an RTX 5060 Ti), so a shard may run several
+    # targets at once. Validation and manifest writes stay serialised.
+    fits_per_gpu = max(1, args.fits_per_gpu)
+    mem_fraction = round(0.85 / fits_per_gpu, 2) if fits_per_gpu > 1 else None
+    bookkeeping = threading.Lock()
+
+    def _process_target(target: dict) -> None:
         key = str(target["spect_id"])
         result_dir = args.output_root / f"{target['object_id']}-{key}"
-        try:
-            _validate_result(result_dir, key)
-            run_manifest["results"][key] = {"status": "complete", "attempts": 0}
-            _write_json(run_manifest_path, run_manifest)
-            continue
-        except (FileNotFoundError, KeyError, OSError, RuntimeError, ValueError):
-            pass
+        with bookkeeping:
+            try:
+                _validate_result(result_dir, key)
+                run_manifest["results"][key] = {"status": "complete", "attempts": 0}
+                _write_json(run_manifest_path, run_manifest)
+                return
+            except (FileNotFoundError, KeyError, OSError, RuntimeError, ValueError):
+                pass
 
         completed = False
         for attempt in range(1, args.max_attempts + 1):
-            return_code = _execute_target(target, result_dir)
-            try:
-                if return_code != 0:
-                    raise RuntimeError(f"Notebook returned {return_code}")
-                _validate_result(result_dir, key)
-                completed = True
-                run_manifest["results"][key] = {
-                    "status": "complete",
-                    "attempts": attempt,
-                    "completed_at_utc": _utc_now(),
-                }
-                break
-            except (FileNotFoundError, KeyError, OSError, RuntimeError, ValueError) as exc:
-                run_manifest["results"][key] = {
-                    "status": "failed",
-                    "attempts": attempt,
-                    "error": str(exc),
-                }
+            return_code = _execute_target(target, result_dir, mem_fraction)
+            with bookkeeping:
+                try:
+                    if return_code != 0:
+                        raise RuntimeError(f"Notebook returned {return_code}")
+                    _validate_result(result_dir, key)
+                    completed = True
+                    run_manifest["results"][key] = {
+                        "status": "complete",
+                        "attempts": attempt,
+                        "completed_at_utc": _utc_now(),
+                    }
+                except (FileNotFoundError, KeyError, OSError, RuntimeError,
+                        ValueError) as exc:
+                    run_manifest["results"][key] = {
+                        "status": "failed",
+                        "attempts": attempt,
+                        "error": str(exc),
+                    }
                 _write_json(run_manifest_path, run_manifest)
-        if not completed:
-            failed.append(key)
-        _write_json(run_manifest_path, run_manifest)
+            if completed:
+                break
+        with bookkeeping:
+            if not completed:
+                failed.append(key)
+            _write_json(run_manifest_path, run_manifest)
+
+    if fits_per_gpu == 1:
+        for target in targets:
+            _process_target(target)
+    else:
+        with ThreadPoolExecutor(max_workers=fits_per_gpu) as pool:
+            list(pool.map(_process_target, targets))
 
     run_manifest["completed_at_utc"] = _utc_now()
     run_manifest["status"] = "incomplete" if failed else "complete"
@@ -535,6 +566,16 @@ def _parser() -> argparse.ArgumentParser:
         "--minimum-gpu-memory-mib",
         type=int,
         default=DEFAULT_MINIMUM_GPU_MEMORY_MIB,
+    )
+    parser.add_argument(
+        "--fits-per-gpu",
+        type=int,
+        default=1,
+        help=(
+            "Concurrent fits on this GPU. Aggregate throughput scaled"
+            " linearly to 3 on a 16 GB RTX 5060 Ti; each worker gets"
+            " XLA_CLIENT_MEM_FRACTION = 0.85/N."
+        ),
     )
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--monitor", action="store_true")

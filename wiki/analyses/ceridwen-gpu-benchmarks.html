@@ -596,6 +596,11 @@
       <p>The paired runs used one galaxy, one seed, and the same nested-sampler settings. Fast basis A reached 547.6 calls/s; the baseline reached 100.9 calls/s. The measured sampler speedup was 5.67 times.</p>
       <p>The posterior differences between the two bases are not larger than the differences between two baseline runs with different seeds (RTX 5090 seed-variation runs, one galaxy). The fixed-grid basis is the default in Ceridwen for the published grid.</p>
 
+      <h3>RTX 5060 Ti same-boot state comparison and concurrency</h3>
+      <p>One RTX 5060 Ti (published dense TF32 peak 24 TFLOP/s) ran three ceridwen states back to back in one boot: the combined-smoother baseline reached 5,548 likelihood calls per second; adding the hoisted flux factor, the compare-all searchsorted lowering, and fewer per-iteration host reads gave 5,570; a banded direct-space smoother gave 5,566. The three agree within run noise: after the smoothing collapse, kernel-count reductions no longer move the step time, which the smoothing gather and the float64 pixel likelihood dominate. The banded smoother was not adopted.</p>
+      <p>Boot-to-boot variance on shared hosts reached 66 percent for identical code on this instance. Only same-boot numbers are comparable.</p>
+      <p>Independent concurrent fits on the same GPU scale linearly: one fit 5,531, two fits 10,857, three fits 16,457 aggregate calls per second. One fit leaves the GPU mostly idle, so a production shard can run several targets at once (<code>--fits-per-gpu</code> in the shard runner). Grid schema 2.1.</p>
+
       <h3>Speed against published peak throughput</h3>
       <p>Both axes use a log scale. The vertical axis shows likelihood calls per second.</p>
       <figure class="diagram">
