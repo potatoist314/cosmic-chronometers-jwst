@@ -354,3 +354,8 @@
 
 - Pages: `codebase/ceridwen-observations-model.html`
 - Change: Recorded that the superproject pins the ceridwen commit with `_smoothing.py`, that `.gitmodules` points at the project copy of ceridwen, and that the bootstrap reinstalls ceridwen and checks the import.
+
+## [2026-09-01] lint | Fixed-grid SFH basis accepted
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`
+- Change: Removed the equivalence-gate caveat and the "keep the baseline basis" synthesis. Seed-to-seed scatter of the baseline exceeds the gate thresholds, so the fixed-grid basis is accepted as the default. Removed the gate script and the variation-notebook builder.

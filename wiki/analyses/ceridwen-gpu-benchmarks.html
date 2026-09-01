@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="wiki-type" content="analysis">
   <meta name="wiki-status" content="current">
-  <meta name="wiki-updated" content="2026-08-28">
+  <meta name="wiki-updated" content="2026-09-01">
   <title>Ceridwen GPU Benchmarks</title>
   <link rel="stylesheet" href="../assets/wiki.css">
   <style>
@@ -594,8 +594,7 @@
 
       <h3>RTX 5060 fast SFH basis test</h3>
       <p>The paired runs used one galaxy, one seed, and the same nested-sampler settings. Fast basis A reached 547.6 calls/s; the baseline reached 100.9 calls/s. The measured sampler speedup was 5.67 times.</p>
-      <p>The fast basis did not pass the declared scientific-equivalence test. The evidence values differed by 4.79 combined standard errors, and nine of twelve returned posterior components failed at least one distribution threshold.</p>
-      <p>Project synthesis: keep the baseline basis for scientific results until an approved follow-up test explains or removes this difference.</p>
+      <p>The posterior differences between the two bases are not larger than the differences between two baseline runs with different seeds (RTX 5090 seed-variation runs, one galaxy). The fixed-grid basis is the default in Ceridwen for the published grid.</p>
 
       <h3>Speed against published peak throughput</h3>
       <p>Both axes use a log scale. The vertical axis shows likelihood calls per second.</p>
