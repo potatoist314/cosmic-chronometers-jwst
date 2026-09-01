@@ -87,6 +87,10 @@ Concurrent independent fits on the same GPU scale linearly:
 
 `scripts/run_ceridwen_vast_multi_gpu.py --fits-per-gpu N` runs a shard with N
 concurrent targets (each worker gets `XLA_CLIENT_MEM_FRACTION = 0.85/N`).
+The linear-scaling measurement used a 16 GB card. On 8 GB cards use
+`--fits-per-gpu 2`: the float64 SSP cube no longer occupies the device
+(ceridwen `fdcd75d`, about 611 MB saved per fit), but three concurrent
+production fits on 8 GB are unverified.
 Setup per fit also fell from ~150 s to ~27 s on the rental after the sedpy
 filter-construction path moved to NumPy.
 Record: `benchmarks/ceridwen/runs/likelihood_kernel_ab_and_concurrency_20260901.json`.
