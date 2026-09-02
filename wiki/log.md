@@ -374,3 +374,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `guides/vast-ai-gpu-workflow.html`
 - Change: Recorded the same-boot RTX 3070 measurement of one, two, and three concurrent production fits (0.96 to 0.97 of one fit in aggregate, default stays one fit per GPU), the 0.8 to 1.0 GiB JAX working set against the 75 percent preallocated pool, the 0.14 fraction and preallocation-off levels at full speed, the 0.10 fraction autotuning failure, and the one-iteration sampler shift that a smaller pool causes.
+
+## [2026-09-02] analysis | Blackwell concurrency on 8, 12, and 16 GB
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `guides/vast-ai-gpu-workflow.html`, `index.md`
+- Change: Recorded the same-boot RTX 5060, RTX 5070, and RTX 5060 Ti 16 GB measurements of one, two, and three concurrent production fits (0.99 to 1.03 of one fit in aggregate, default stays one fit per GPU), the 1,005 MiB JAX working set per fit against the whole-GPU peaks, the identical 1,157,000-call M5_172669 fit across all Blackwell levels, and the single-fit cost per card.

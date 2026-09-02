@@ -148,6 +148,66 @@ against 232730.98 ± 0.26). Memory therefore never limits concurrency on 8 GB;
 time-slicing does. Cost of the measurement: $0.16.
 Record: `benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260902.json`.
 
+## Blackwell concurrency on 8, 12, and 16 GB (2 September 2026)
+
+Three Blackwell cards each ran one, two, and three concurrent production
+fits in one boot with the DR2 shard runner
+(`scripts/run_ceridwen_vast_multi_gpu.py`: 500 live points, 65 inner steps,
+100 deletions, logZ_tol -5, full_spectrum, seeds 20260830 + manifest_index,
+one runner process per fit, `XLA_CLIENT_MEM_FRACTION = 0.85/N` for N > 1 and
+the default preallocation for N = 1). The single fit is M5_172669, which
+stopped at 1,157,000 likelihood calls on every card and level; two fits add
+M4_108989 and three fits run M5_172669 with M9_232005 and M11_214430, so the
+aggregate sums calls per second over targets whose cost per call differs.
+Hosts: RTX 5060 8 GB in the United Kingdom (host 166946, 24 EPYC cores,
+$0.1028/h), RTX 5070 12 GB in South Korea (host 454863, 12 Ryzen cores,
+$0.1192/h), RTX 5060 Ti 16 GB in Vietnam (host 81456, 28 Xeon cores,
+$0.0881/h). Prices are the offer `dph_total` at rental; the level cost is that
+price times the wall from launching the level to the last fit's exit.
+
+| Card | Fits | Sampler wall per fit | Aggregate calls/s | Relative to 1 fit | GPU peak | Level cost |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| RTX 5060 8 GB | 1 | 222.2 s | 5,207 | 1.00 | 6,162 MiB | $0.0081 |
+| RTX 5060 8 GB | 2 | 446.8, 474.8 s | 5,341 | 1.03 | 7,240 MiB | $0.0160 |
+| RTX 5060 8 GB | 3 | 661.4, 698.5, 723.6 s | 5,357 | 1.03 | 7,617 MiB | $0.0232 |
+| RTX 5070 12 GB | 1 | 154.2 s | 7,503 | 1.00 | 9,394 MiB | $0.0070 |
+| RTX 5070 12 GB | 2 | 319.5, 340.6 s | 7,476 | 1.00 | 10,885 MiB | $0.0137 |
+| RTX 5070 12 GB | 3 | 477.6, 504.1, 521.0 s | 7,415 | 0.99 | 11,313 MiB | $0.0193 |
+| RTX 5060 Ti 16 GB | 1 | 198.8 s | 5,820 | 1.00 | 12,316 MiB | $0.0067 |
+| RTX 5060 Ti 16 GB | 2 | 399.0, 415.3 s | 5,967 | 1.02 | 14,145 MiB | $0.0124 |
+| RTX 5060 Ti 16 GB | 3 | 589.7, 623.8, 647.6 s | 5,998 | 1.03 | 14,542 MiB | $0.0182 |
+
+Single fit of M5_172669 per card, costed on the sampler wall alone and on the
+whole level including setup:
+
+| Card | Price | Sampler wall | Calls/s | Cost per fit, sampler | Cost per fit, level | JAX peak in use |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| RTX 5060 8 GB | $0.1028/h | 222.2 s | 5,207 | $0.0063 | $0.0081 | 1,005 MiB |
+| RTX 5070 12 GB | $0.1192/h | 154.2 s | 7,503 | $0.0051 | $0.0070 | 1,005 MiB |
+| RTX 5060 Ti 16 GB | $0.0881/h | 198.8 s | 5,820 | $0.0049 | $0.0067 | 1,005 MiB |
+
+On every card two or three concurrent fits sum to 0.99 to 1.03 of one fit,
+and M5_172669 itself runs 2.0 to 2.1 times slower beside one other fit and
+3.0 to 3.1 times slower beside two, so the default stays `--fits-per-gpu 1`
+on Blackwell as on Ampere and Ada. The 2 to 3 percent gains on the RTX 5060
+and RTX 5060 Ti arrive with the changed target mix and are not headroom.
+Mean nvidia-smi utilization rises from 68 to 74 percent at one fit to 86 to
+88 percent at three without a matching gain, so the idle fraction at one fit
+is not free capacity. Memory never limits: the JAX peak in use is 1,005 MiB
+per fit on all three cards, the one-fit peaks are the 75 percent default
+preallocation, and three fits leave 534 MiB free on the 8 GB card.
+M5_172669 stops at 1,157,000 calls with ln Z 232732.02 (± 0.19 to 0.37) on
+every Blackwell card and level, against 1,189,500 calls and 232730.98 ± 0.26
+on the RTX 3070, so within a card every ratio compares identical work. For a
+single fit the RTX 5070 is fastest, and at these hosts' prices the RTX 5060 Ti
+is cheapest per fit with the RTX 5070 within 5 percent; that ordering follows
+the hourly price, which varies by host, more than the speed. Cost of the
+measurement: $0.335 over 3.3 billable hours, plus $0.006 for a first RTX 5060
+Ti instance whose SSH never answered.
+Records: `benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json`,
+`benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json`,
+`benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json`.
+
 ## Completed runs
 
 | Provider | GPU | Likelihood | Grid | NSS settings | Iterations / dead points | Likelihood calls | Sampler wall | Calls/s | Result |

@@ -53,4 +53,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 
 ## Analyses
 
-- `analyses/ceridwen-gpu-benchmarks.html` — Compares speed, cost, memory, and hardware behaviour across forty-six measured GPU runs stored under `benchmarks/`.
+- `analyses/ceridwen-gpu-benchmarks.html` — Compares speed, cost, memory, and hardware behaviour across forty-nine measured GPU runs stored under `benchmarks/`.

@@ -221,9 +221,11 @@ PY
       time-slicing. With the production sampler settings one fit already
       keeps the GPU busy: on an 8 GB RTX 4060 Ti three concurrent
       production fits each ran 3.1 times slower than the same fit alone,
-      and on an 8 GB RTX 3070 two and three concurrent fits summed to 0.96
-      to 0.97 of the single-fit throughput. Leave the default unless a
-      same-boot measurement with production settings shows headroom.</p>
+      on an 8 GB RTX 3070 two and three concurrent fits summed to 0.96
+      to 0.97 of the single-fit throughput, and on Blackwell (RTX 5060 8 GB,
+      RTX 5070 12 GB, RTX 5060 Ti 16 GB) they summed to 0.99 to 1.03 with
+      no memory pressure. Leave the default unless a same-boot measurement
+      with production settings shows headroom.</p>
       <p>GPU memory does not set this limit. One production fit holds 0.8
       to 1.0 GiB of JAX device memory; the default JAX preallocation
       reserves 75 percent of the card, which is what <code>nvidia-smi</code>
