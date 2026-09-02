@@ -248,7 +248,7 @@ def command_run(args) -> int:
     outcomes = [dict(target=t) for t in targets]
     threads = []
     for k, target_name in enumerate(targets):
-        run_args = argparse.Namespace(**vars(args), target=target_name)
+        run_args = argparse.Namespace(**{k: v for k, v in vars(args).items() if k != "target"}, target=target_name)
         threads.append(threading.Thread(target=run_instance, args=(offers[k], run_args, outcomes[k])))
     for thread in threads:
         thread.start()
