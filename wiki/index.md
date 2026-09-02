@@ -54,3 +54,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 ## Analyses
 
 - `analyses/ceridwen-gpu-benchmarks.html` — Compares speed, cost, memory, and hardware behaviour across forty-nine measured GPU runs stored under `benchmarks/`.
+- `analyses/absorption-line-mask.html` — Draft. Tests whether fitting only absorption-feature pixels (dropped or down-weighted continuum) improves Ceridwen accuracy on mocks with continuum-calibration tilts and on three DR2 targets.

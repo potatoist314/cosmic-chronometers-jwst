@@ -278,8 +278,182 @@ def main(argv=None):
     s = sub.add_parser("snr")
     s.add_argument("--target", action="append", default=[])
     s.set_defaults(func=_cmd_snr)
+    f = sub.add_parser("fisher")
+    f.add_argument("--target", default="M5_172669")
+    f.add_argument("--truth", required=True)
+    f.add_argument("--window-kms", type=float, default=1000.0)
+    f.add_argument("--out", required=True)
+    f.set_defaults(func=_cmd_fisher)
     args = parser.parse_args(argv)
     return args.func(args)
+
+
+
+
+# ---------------------------------------------------------------------------
+# Fisher-information forecast: per-parameter weight of spectrum vs photometry
+# ---------------------------------------------------------------------------
+
+LOOKBACK_TEMPLATE_GYR = [0.0, 0.03, 0.1, 0.3, 1.0, 3.0, 5.0]
+FIXED_DUST_INDEX = -0.7
+
+
+def build_notebook_model(target: dict):
+    """The joint model of the notebook (full_spectrum mode) for one target."""
+    import jax.numpy as jnp
+    from ceridwen.cosmology import age_gyr
+    from ceridwen.csp import CSPBasis_afe
+    from ceridwen.model import SedModel, logsfr_ratios_to_sfh
+    from ceridwen.observation import Photometry, Spectrum
+    from ceridwen.sampler.priors import ClippedNormal, Uniform
+    from ceridwen.ssps import SSPDataAfe, fetch_grid
+
+    ssp = SSPDataAfe.load(fetch_grid("amist_c3k_hr_krou_afe"))
+    z = target["z"]
+    lookback = np.array([*LOOKBACK_TEMPLATE_GYR, float(age_gyr(z))])
+    phot_obs = Photometry(
+        filters=FILTER_NAMES, flux=target["phot_flux"],
+        uncertainty=target["phot_uncertainty"], mask=np.ones(len(FILTER_NAMES), bool),
+        name="photometry",
+    )
+    spec_obs = Spectrum(
+        wavelength=target["wave_vac"], flux=target["flux"], uncertainty=target["uncertainty"],
+        mask=target["mask"], resolution=target["resolution_fwhm"], smoothtype="R",
+        res_convention="fwhm", sigma_losvd=target["sigma_star"], name="spectrum",
+    )
+    z_bounds = (float(ssp.ssp_lgmet.min()) + 1e-4, float(ssp.ssp_lgmet.max()) - 1e-4)
+    afe_bounds = (float(ssp.ssp_afe.min()), float(ssp.ssp_afe.max()))
+    csp = CSPBasis_afe(
+        ssp,
+        theta={
+            "lookback_time": jnp.asarray(lookback), "sfh": jnp.ones(len(lookback)),
+            "Z": jnp.array([-1.85]), "afe": jnp.array([0.2]),
+            "diffuse_tau_kc": jnp.array([0.2]), "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX]),
+        },
+        zh_const=True, sfh_interp="step", add_dust=False, add_diffuse_dust=True,
+        add_dust_emission=False, add_igm=False, sigma_losvd_kms=0.0,
+        track_zred_age=False, verbose=False,
+    )
+    sfh_times = np.asarray(csp.sfh_times)
+    transforms = {
+        "sfh": lambda free: logsfr_ratios_to_sfh(free["logsfr_ratios"], sfh_times_yr=sfh_times),
+        "diffuse_dust_index": lambda free: jnp.array([FIXED_DUST_INDEX]),
+    }
+    priors = {
+        "logsfr_ratios": Uniform(low=-3.0, high=3.0),
+        "Z": Uniform(low=z_bounds[0], high=z_bounds[1]),
+        "afe": Uniform(low=afe_bounds[0], high=afe_bounds[1]),
+        "logmass": Uniform(low=8.0, high=13.0),
+        "diffuse_tau_kc": Uniform(low=0.0, high=2.0),
+        "log_f_calib": Uniform(low=np.log(0.01), high=np.log(0.10)),
+        "spectrum_scaling": ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0),
+    }
+    initial = {
+        "logsfr_ratios": jnp.zeros(len(lookback) - 1), "logmass": jnp.array([11.0]),
+        "log_f_calib": jnp.array([np.log(0.03)]), "spectrum_scaling": jnp.array([1.0]),
+    }
+    model = SedModel(csp, observations=[phot_obs, spec_obs], priors=priors,
+                     transforms=transforms, free_param_init=initial, zred=z)
+    return model, phot_obs, spec_obs
+
+
+PRIOR_VARIANCE = {
+    # Gaussian curvature standing in for each notebook prior: range^2 / 12 for
+    # the uniform priors, sigma^2 for the clipped normal on spectrum_scaling.
+    "logsfr_ratios": 36.0 / 12.0, "logmass": 25.0 / 12.0, "diffuse_tau_kc": 4.0 / 12.0,
+    "log_f_calib": (np.log(10.0)) ** 2 / 12.0, "spectrum_scaling": 0.3 ** 2,
+}
+
+
+def fisher_forecast(target: dict, truth: dict, feature_mask, downweight: float) -> dict:
+    """Laplace forecast of marginal posterior widths from spectrum and photometry.
+
+    Jacobians of the notebook model at the truth give F = J^T Sigma^-1 J per
+    data set, with the notebook noise model (photometry: catalogue sigma with the
+    5% floor; spectrum: sigma_eff^2 = sigma^2 + (f_calib mu)^2 at the truth
+    f_calib).  The prior enters as a diagonal curvature (``PRIOR_VARIANCE``;
+    the grid-range uniforms for Z and afe) so that every inverse exists.
+    Returned per free parameter: the diagonal information from each data set
+    and pixel mode, the spectrum's share of it, and the forecast marginal sigma
+    of photometry-only, spectrum-only, and joint fits per pixel mode.
+    """
+    import jax
+    import jax.numpy as jnp
+    from jax.flatten_util import ravel_pytree
+
+    model, phot_obs, spec_obs = build_notebook_model(target)
+    theta = {k: jnp.asarray(truth[k], dtype=float) for k in model.theta_init}
+    flat, unravel = ravel_pytree(theta)
+    probe = unravel(jnp.arange(len(flat), dtype=float))
+    names = [None] * len(flat)
+    prior_var = np.zeros(len(flat))
+    for key, block in probe.items():
+        values = np.asarray(block).ravel()
+        low, high = model.priors[key].low, model.priors[key].high
+        var = PRIOR_VARIANCE.get(key, (float(np.ravel(high)[0]) - float(np.ravel(low)[0])) ** 2 / 12.0)
+        for k, index in enumerate(values.astype(int)):
+            names[index] = key if values.size == 1 else f"{key}[{k}]"
+            prior_var[index] = var
+
+    def predict(x):
+        out = model.predict(unravel(x))
+        return out["photometry"], out["spectrum"]
+
+    mu_p, mu_s = (np.asarray(v) for v in predict(flat))
+    j_p, j_s = (np.asarray(v) for v in jax.jacfwd(predict)(flat))
+    f_calib = float(np.exp(np.ravel(truth["log_f_calib"])[0]))
+    sigma_p = np.asarray(phot_obs.uncertainty)
+    mask = np.asarray(spec_obs.mask)
+    sigma_s = np.sqrt(np.asarray(spec_obs.uncertainty) ** 2 + (f_calib * np.abs(mu_s)) ** 2)
+
+    def fisher(j, sigma, m):
+        jm = j[m] / sigma[m, None]
+        return jm.T @ jm
+
+    def marginal_sigma(f):
+        cov = np.linalg.inv(f + np.diag(1.0 / prior_var))
+        return np.sqrt(np.clip(np.diag(cov), 0, None)).tolist()
+
+    f_phot = fisher(j_p, sigma_p, np.ones(len(sigma_p), bool))
+    configs = {
+        "all": (mask, np.ones_like(sigma_s)),
+        "features": (mask & feature_mask, np.ones_like(sigma_s)),
+        "features_downweight": (mask, np.where(feature_mask, 1.0, downweight)),
+    }
+    out = {"parameters": names, "f_calib": f_calib, "downweight": downweight,
+           "prior_sigma": np.sqrt(prior_var).tolist(),
+           "n_pix": {k: int(m.sum()) for k, (m, _) in configs.items()},
+           "diag_information": {"photometry": np.diag(f_phot).tolist()},
+           "spectrum_share": {}, "marginal_sigma_joint": {}, "marginal_sigma_spectrum_only": {},
+           "marginal_sigma_photometry_only": marginal_sigma(f_phot)}
+    for key, (m, w) in configs.items():
+        f_spec = fisher(j_s, sigma_s * w, m)
+        d_spec = np.diag(f_spec)
+        out["diag_information"][key] = d_spec.tolist()
+        out["spectrum_share"][key] = (d_spec / (d_spec + np.diag(f_phot) + 1e-300)).tolist()
+        out["marginal_sigma_joint"][key] = marginal_sigma(f_spec + f_phot)
+        out["marginal_sigma_spectrum_only"][key] = marginal_sigma(f_spec)
+    return out
+
+
+def _cmd_fisher(args):
+    from ceridwen.observation.absorption_features import absorption_feature_mask
+
+    target = load_target(args.target)
+    truth = json.loads(Path(args.truth).read_text())
+    feature_mask = absorption_feature_mask(target["wave_vac"], zred=target["z"], window_kms=args.window_kms)
+    budget = weight_budget(target, feature_mask=feature_mask)
+    forecast = fisher_forecast(target, truth, feature_mask, budget["balance_downweight"])
+    forecast["spect_id"] = args.target
+    Path(args.out).write_text(json.dumps(forecast, indent=1))
+    names = forecast["parameters"]
+    d, s, share = forecast["diag_information"], forecast["marginal_sigma_joint"], forecast["spectrum_share"]
+    print(f"n_pix {forecast['n_pix']}  f_calib {forecast['f_calib']:.3f}  downweight {forecast['downweight']:.1f}")
+    print(f"{'parameter':<18} {'I_phot':>9} {'I_spec all':>10} {'I_spec feat':>11} {'share all':>9} {'share feat':>10} {'share dw':>8} | {'sig phot':>8} {'sig spec':>8} {'joint all':>9} {'joint feat':>10} {'joint dw':>8} {'prior':>7}")
+    for i, name in enumerate(names):
+        print(f"{name:<18} {d['photometry'][i]:>9.2e} {d['all'][i]:>10.2e} {d['features'][i]:>11.2e} {share['all'][i]:>9.3f} {share['features'][i]:>10.3f} {share['features_downweight'][i]:>8.3f} | "
+              f"{forecast['marginal_sigma_photometry_only'][i]:>8.3g} {forecast['marginal_sigma_spectrum_only']['all'][i]:>8.3g} "
+              f"{s['all'][i]:>9.3g} {s['features'][i]:>10.3g} {s['features_downweight'][i]:>8.3g} {forecast['prior_sigma'][i]:>7.3g}")
 
 
 if __name__ == "__main__":

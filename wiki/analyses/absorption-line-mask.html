@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="wiki-type" content="analysis">
+  <meta name="wiki-status" content="draft">
+  <meta name="wiki-updated" content="2026-09-02">
+  <title>Absorption-Line Pixel Mask</title>
+  <link rel="stylesheet" href="../assets/wiki.css">
+  <style>
+    figure img { max-width: 100%; height: auto; }
+    .num { text-align: right; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="../index.html">
+        <span class="site-mark">AR</span>
+        <span>Astro Research Wiki</span>
+      </a>
+    </div>
+  </header>
+  <main class="page-shell" id="main-content">
+    <header>
+      <h1>Absorption-line pixel mask</h1>
+      <p>Draft. Does fitting only the absorption-feature pixels of a LEGA-C spectrum, so that the photometry carries more weight, improve the accuracy of a Ceridwen fit?</p>
+    </header>
+
+    <section id="answer">
+      <h2>Answer</h2>
+      <!-- ANSWER -->
+    </section>
+
+    <section id="weights">
+      <h2>How the current likelihood weighs spectrum against photometry</h2>
+      <p>The joint log-likelihood is the plain sum of one diagonal Gaussian per data set (<code>ceridwen/ceridwen/likelihood/likelihood.py:840-875</code>, <code>MultiObservationLikelihood.__call__</code>). No term rebalances the two. Photometry uses the catalogue error with a 5 percent floor in quadrature (<code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code>, heading "Photometric observation", <code>PHOTOMETRY_FLOOR</code>). The spectrum uses <code>DiagonalNoiseModel(use_fractional=True)</code>, so its per-pixel variance is <code>sigma^2 + (f_calib * mu)^2</code> with <code>log_f_calib</code> a fitted parameter, uniform between 1 and 10 percent (<code>ceridwen/ceridwen/likelihood/noise_model.py:283-369</code>). A free scalar <code>spectrum_scaling</code> multiplies the model spectrum only (<code>ceridwen/ceridwen/csp/csp.py:1351-1362</code>), so the spectrum constrains shape and the photometry alone fixes the absolute flux.</p>
+      <p>For a diagonal Gaussian the information on a pure amplitude is the sum of (S/N)<sup>2</sup>. That sum, over the fitted pixels against the twelve bands, is the weight ratio for anything that moves the flux level:</p>
+      <table>
+        <caption>Weight budget of the current likelihood. Feature pixels are those inside the absorption windows defined below. The balance factor is the sigma inflation of the continuum pixels that equalises the continuum and photometry budgets.</caption>
+        <thead><tr><th>Target</th><th class="num">z</th><th class="num">Fitted pixels</th><th class="num">Median pixel S/N</th><th class="num">Photometry sum (S/N)<sup>2</sup></th><th class="num">Spectrum / photometry, raw</th><th class="num">Spectrum / photometry, f<sub>calib</sub> = 3%</th><th class="num">Feature pixels</th><th class="num">Balance factor</th></tr></thead>
+        <tbody>
+          <tr><td>M5_172669</td><td class="num">0.604</td><td class="num">3,602</td><td class="num">106</td><td class="num">4,654</td><td class="num">8,090</td><td class="num">756</td><td class="num">1,389 (39%)</td><td class="num">71</td></tr>
+          <tr><td>M9_232005</td><td class="num">0.611</td><td class="num">3,494</td><td class="num">29</td><td class="num">3,961</td><td class="num">757</td><td class="num">390</td><td class="num">1,521 (44%)</td><td class="num">21</td></tr>
+          <tr><td>M11_214430</td><td class="num">0.891</td><td class="num">3,810</td><td class="num">15</td><td class="num">3,776</td><td class="num">308</td><td class="num">220</td><td class="num">1,088 (29%)</td><td class="num">14</td></tr>
+        </tbody>
+      </table>
+      <p>Twelve bands at S/N 20 cannot compete with thousands of pixels at S/N 15 to 100 by count. Keeping only the feature pixels removes 56 to 71 percent of the pixels and leaves the ratio between 80 and 3,000. The mask therefore cannot rebalance the two data sets; what it does is remove the continuum shape from the spectrum, which is the information a multiplicative calibration error corrupts.</p>
+      <!-- FISHER -->
+      <p>Source: <code>scripts/absorption_mask_analysis.py budget --features</code> and <code>fisher</code>; catalogue S/N percentiles of the 187-object passive sample are 8, 13, 22, 31 and 39 at the 10th to 90th percentile, so M5_172669 is the best case and M11_214430 is typical.</p>
+    </section>
+
+    <section id="mask">
+      <h2>The mask</h2>
+      <p><code>Spectrum.select_absorption_features</code> (<code>ceridwen/ceridwen/observation/spectrum.py</code>) builds an observed-frame pixel mask from a rest-frame, in-air feature catalogue (<code>ceridwen/ceridwen/observation/absorption_features.py</code>), converts it to vacuum with the same <code>air2vac</code> the stellar-index code uses, and redshifts it by 1 + z. Lick feature bandpasses are used where they exist; other features are line centres with a ±<code>window_kms</code> window (1000 km/s here, ±13 Å at Ca K).</p>
+      <ul>
+        <li>Balmer: H10, H9, H8 (centres), HdA 4083.5–4122.3, HgA 4319.8–4363.5, Hβ 4847.9–4876.6, Hα (centre).</li>
+        <li>Calcium: Ca K 3933.7 and Ca H 3968.5 (centres), Ca4227, Ca4455, and the near-infrared triplet (centres).</li>
+        <li>Molecular and carbon: CN 4142.1–4177.1, G band 4281.4–4316.4, C<sub>2</sub> 4634.0–4720.3.</li>
+        <li>Iron: Fe4383, Fe4531, Fe5015, Fe5270, Fe5335, Fe5406, Fe5709, Fe5782 (Lick bandpasses).</li>
+        <li>Mg b 5160.1–5192.6, Na D 5876.9–5909.4, TiO1 5936.6–5994.1, TiO2 6189.6–6272.1.</li>
+      </ul>
+      <p>Two modes: <code>drop</code> removes every other pixel from the likelihood (<code>mask &amp;= in_feature</code>); <code>downweight</code> keeps every pixel but multiplies the continuum <code>uncertainty</code> by a factor. Both are edits to the observation arrays that the jitted log-posterior reads once at build time, so the compiled likelihood is unchanged. In the notebook the modes are <code>CERIDWEN_SPECTRUM_PIXELS=all|features|features_downweight</code>; the factor <code>CERIDWEN_FEATURE_DOWNWEIGHT</code> is a number or <code>balance</code> (the table above). The fitted <code>f_calib</code> term still adds in quadrature to the inflated sigma.</p>
+      <div class="source-example">
+        <p class="source-locator"><code>ceridwen/ceridwen/observation/spectrum.py · Spectrum.select_absorption_features</code></p>
+        <pre class="python"><code>        if mode == "drop":
+            new_mask = np.asarray(self.mask) &amp; in_feature
+            if not new_mask.any():
+                raise ValueError(
+                    "select_absorption_features: no fitted pixels fall inside "
+                    "an absorption-feature window at this redshift"
+                )
+            self.mask = jnp.asarray(new_mask)
+        else:
+            factor = np.where(in_feature, 1.0, float(downweight))
+            self.uncertainty = self.uncertainty * jnp.asarray(factor)</code></pre>
+      </div>
+      <figure>
+        <img src="absorption-mask/feature_windows_M5_172669.png" alt="Observed-frame spectrum of M5_172669 with the pixels inside absorption-feature windows highlighted">
+        <figcaption>Pixels of M5_172669 kept by the feature mask (orange) against every fitted pixel (grey).</figcaption>
+      </figure>
+      <p>Tests: <code>ceridwen/tests/test_absorption_features.py</code> (vacuum and redshift of the windows, mask membership, drop and down-weight arithmetic including the chi-squared scaling, error paths).</p>
+    </section>
+
+    <section id="design">
+      <h2>Experiment</h2>
+      <p>Every fit is the production notebook run through the DR2 shard-runner worker (<code>scripts/absorption_mask_grid.py</code>): BlackJAX NSS with 500 live points, 65 inner steps, 100 deletions, logZ tolerance −5, the schema-2.1 C3K alpha-enhanced grid, seven-bin step SFH, constant metallicity, [α/Fe], diffuse dust with fixed slope, fixed redshift and dispersion, fitted <code>log_f_calib</code> and <code>spectrum_scaling</code>. One comparison group is one target or one mock realisation fitted in all three pixel modes on the same GPU boot.</p>
+      <ul>
+        <li>Mocks: the truth is the weighted posterior median of the stored full-spectrum fit of M5_172669 (<code>results/absorption-mask/truth_M5_172669.json</code>). The mock keeps the real pixel grid, per-pixel errors, masks and filters; the spectrum is the model prediction times a linear continuum tilt from 1 − ε to 1 + ε across the fitted range plus Gaussian noise; the photometry is the prediction plus Gaussian noise. ε ∈ {0, 0.03, 0.06}; per-pixel errors × {1, 4} (S/N ≈ 106 and 26); two noise realisations each; 36 fits.</li>
+        <li>Real targets: M5_172669, M9_232005, M11_214430 in the three modes; 9 fits.</li>
+        <li>Hardware: five Vast.ai Blackwell instances (RTX 5060, RTX 5070), one fit per GPU, comparison groups never split across boots.</li>
+      </ul>
+      <!-- RUNS -->
+    </section>
+
+    <section id="results-mocks">
+      <h2>Mock recovery</h2>
+      <!-- MOCKS -->
+    </section>
+
+    <section id="results-real">
+      <h2>Real targets</h2>
+      <!-- REAL -->
+    </section>
+
+    <section id="interpretation">
+      <h2>Interpretation and recommendation</h2>
+      <!-- INTERPRETATION -->
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence</h2>
+      <ul>
+        <li>Code: branch <code>absorption-mask</code> in the project and in the ceridwen submodule; <code>scripts/absorption_mask_analysis.py</code>, <code>scripts/absorption_mask_grid.py</code>, <code>scripts/absorption_mask_vast.py</code>, <code>scripts/absorption_mask_report.py</code>.</li>
+        <li>Results: <code>results/absorption-mask/&lt;cell&gt;/</code> (executed notebook, <code>ceridwen_result.h5</code>, <code>ceridwen_derived_outputs.h5</code>), <code>summary.csv</code>, <code>summary.json</code>, <code>fisher_M5_172669.json</code>, run records <code>vast_run_*.json</code>.</li>
+        <li>Figures: <code>wiki/analyses/absorption-mask/</code>.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

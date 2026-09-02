@@ -379,3 +379,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `guides/vast-ai-gpu-workflow.html`, `index.md`
 - Change: Recorded the same-boot RTX 5060, RTX 5070, and RTX 5060 Ti 16 GB measurements of one, two, and three concurrent production fits (0.99 to 1.03 of one fit in aggregate, default stays one fit per GPU), the 1,005 MiB JAX working set per fit against the whole-GPU peaks, the identical 1,157,000-call M5_172669 fit across all Blackwell levels, and the single-fit cost per card.
+
+## [2026-09-02] analysis | Absorption-line pixel mask (draft)
+
+- Pages: `analyses/absorption-line-mask.html`, `index.md`
+- Change: Opened a draft analysis of feature-only and continuum-down-weighted spectral likelihoods: the S/N-squared weight budget of the current joint likelihood for three DR2 targets, a Fisher forecast per parameter, the feature catalogue and modes added to ceridwen on branch `absorption-mask`, and the mock and real-target experiment design. Result sections are filled once the Vast runs finish.

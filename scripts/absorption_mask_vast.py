@@ -22,6 +22,7 @@ import argparse
 import importlib.util
 import json
 import shlex
+import subprocess
 import sys
 import threading
 import time
@@ -77,6 +78,18 @@ def _describe(offer: dict) -> str:
             f"rel {offer.get('reliability2', 0):.3f}")
 
 
+SUBMODULE_TREES = {
+    # The ceridwen and sedpy_jax forks are private, so the box cannot clone
+    # them; their committed working trees are rsynced from this machine
+    # instead (the bootstrap skips its submodule update when the trees exist).
+    "ceridwen": ["--exclude=.git", "--exclude=venv", "--exclude=.venv", "--exclude=*.h5",
+                 "--exclude=*.pdf", "--exclude=*.png", "--exclude=.ruff_cache",
+                 "--exclude=__pycache__", "--exclude=*.egg-info", "--exclude=docs"],
+    "external/sedpy_jax": ["--exclude=.git", "--exclude=build", "--exclude=__pycache__",
+                           "--exclude=*.egg-info"],
+}
+
+
 def _checkout(instance_id: int, branch: str, log) -> None:
     log(f"cloning branch {branch}")
     sweep._ssh(
@@ -87,12 +100,30 @@ def _checkout(instance_id: int, branch: str, log) -> None:
             "mkdir -p /workspace && cd /workspace",
             f"rm -rf {shlex.quote(sweep.REMOTE_ROOT)}",
             f"git clone --quiet --branch {shlex.quote(branch)} {sweep.REPOSITORY_URL} {shlex.quote(sweep.REMOTE_ROOT)}",
-            f"cd {shlex.quote(sweep.REMOTE_ROOT)}",
-            "git submodule update --init --quiet ceridwen external/sedpy_jax",
-            "git rev-parse --short HEAD && git -C ceridwen rev-parse --short HEAD",
+            f"cd {shlex.quote(sweep.REMOTE_ROOT)} && git rev-parse --short HEAD",
         ]),
         timeout=900.0,
     )
+    target, port = sweep._ssh_target(instance_id)
+    for tree, excludes in SUBMODULE_TREES.items():
+        log(f"uploading {tree} working tree")
+        shell = " ".join(shlex.quote(part) for part in ["ssh", *sweep._ssh_options(port)])
+        result = subprocess.run(
+            ["rsync", "-a", "-e", shell, *excludes,
+             f"{PROJECT_ROOT / tree}/", f"{target}:{sweep.REMOTE_ROOT}/{tree}/"],
+            check=False, capture_output=True, text=True, timeout=900.0,
+        )
+        if result.returncode != 0:
+            raise sweep.SweepError(f"rsync of {tree} failed: {(result.stderr or result.stdout)[-500:]}")
+    commits = {
+        tree: subprocess.run(["git", "-C", str(PROJECT_ROOT / tree), "rev-parse", "--short", "HEAD"],
+                             capture_output=True, text=True, check=False).stdout.strip()
+        for tree in SUBMODULE_TREES
+    }
+    sweep._ssh(instance_id,
+               f"test -f {sweep.REMOTE_ROOT}/ceridwen/pyproject.toml && "
+               f"test -f {sweep.REMOTE_ROOT}/external/sedpy_jax/setup.py", timeout=60.0)
+    log(f"submodule trees uploaded: {commits}")
 
 
 def _launch(instance_id: int, shard: str, log) -> None:
