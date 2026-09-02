@@ -1,0 +1,192 @@
+[
+ {
+  "name": "M4_108989_photonly_cosmos_total",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--fit",
+   "photometry",
+   "--photometry",
+   "cosmos_total"
+  ]
+ },
+ {
+  "name": "M4_108989_photonly_ap3",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--fit",
+   "photometry"
+  ]
+ },
+ {
+  "name": "M4_108989_cosmos_total_baseline",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total"
+  ]
+ },
+ {
+  "name": "M4_108989_cosmos_total_poly3",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total",
+   "--poly-order",
+   "3"
+  ]
+ },
+ {
+  "name": "M4_108989_uvista_total_baseline",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "uvista_total"
+  ]
+ },
+ {
+  "name": "M4_108989_uvista_total_poly3",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "uvista_total",
+   "--poly-order",
+   "3"
+  ]
+ },
+ {
+  "name": "M4_108989_speconly",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--fit",
+   "spectrum"
+  ]
+ },
+ {
+  "name": "M4_108989_ap3_floor05_baseline",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--phot-floor",
+   "0.05"
+  ]
+ },
+ {
+  "name": "M4_108989_ap3_floor05_poly3",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--phot-floor",
+   "0.05",
+   "--poly-order",
+   "3"
+  ]
+ },
+ {
+  "name": "M4_108989_ap3_floor02_baseline",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--phot-floor",
+   "0.02"
+  ]
+ },
+ {
+  "name": "M4_108989_ap3_floor02_poly3",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--phot-floor",
+   "0.02",
+   "--poly-order",
+   "3"
+  ]
+ },
+ {
+  "name": "M4_108989_ap3_floor15_baseline",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--phot-floor",
+   "0.15"
+  ]
+ },
+ {
+  "name": "M4_108989_ap3_floor15_poly3",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--phot-floor",
+   "0.15",
+   "--poly-order",
+   "3"
+  ]
+ },
+ {
+  "name": "M4_108989_ap3_freeindex",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--free-dust-index"
+  ]
+ },
+ {
+  "name": "M4_108989_ap3_calzetti",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--dust-law",
+   "calzetti"
+  ]
+ },
+ {
+  "name": "M4_108989_cosmos_total_poly1_dustprior",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total",
+   "--poly-order",
+   "1"
+  ],
+  "dust_prior_from": "M4_108989_photonly_cosmos_total"
+ }
+]

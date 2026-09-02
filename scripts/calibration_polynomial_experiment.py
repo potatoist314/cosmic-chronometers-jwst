@@ -24,6 +24,21 @@ adds the switches of the calibration-polynomial experiment:
 ``--line-windows W``
     Keep only pixels within ``W`` rest-frame angstrom of standard optical
     absorption lines (interaction with the absorption-mask experiment).
+``--photometry {cosmos_ap3,cosmos_total,uvista_total}`` / ``--phot-floor F``
+    Which photometric SED anchors the fit and its fractional error floor.
+    ``cosmos_ap3`` is the production input (COSMOS2015 3" aperture fluxes,
+    total IRAC fluxes, no offsets).  ``cosmos_total`` applies the Laigle et
+    al. (2016) recipe: the per-object aperture-to-total offset, Galactic
+    extinction and the per-band systematic offsets of their Table 3.
+    ``uvista_total`` is the Muzzin et al. (2013) SED that LEGA-C DR2 used to
+    flux-calibrate the spectrum, scaled to total by ``FKstot / FKs``.
+``--fit {both,spectrum,photometry}``
+    Which observations enter the likelihood.  The model always predicts both,
+    so a spectrum-only fit still records its predicted photometry.
+``--dust-law NAME`` / ``--free-dust-index`` / ``--dust-prior MEAN SIGMA``
+    Diffuse attenuation law (``sedpy_jax`` name), a sampled Kriek & Conroy
+    slope instead of the fixed −0.7, or a clipped-normal prior on the
+    attenuation amplitude (e.g. from a photometry-only fit).
 
 Outputs ``<out>/ceridwen_result.h5``, ``<out>/summary.json`` (scalars) and
 ``<out>/vectors.npz`` (spectrum, model, and polynomial quantiles).
@@ -64,6 +79,7 @@ from ceridwen.sampler import run_sampler
 from ceridwen.sampler.nested import BlackJAXNestedSamplerAdapter
 from ceridwen.sampler.priors import ClippedNormal, Uniform
 from ceridwen.ssps import SSPDataAfe, fetch_grid
+from sedpy_jax.attenuation_dust import ATTENUATION_LAWS
 
 jax.config.update("jax_enable_x64", True)
 
@@ -83,6 +99,19 @@ PHOT_COLUMNS = ["Area", "Sat", "Cfl", "Deep", "Flag", "E(B-V)", "NUVMag",
                                   for c in pair]]
 UJY_TO_MAGGIES = 1e-6 / 3631.0
 PHOTOMETRY_FLOOR = 0.05
+# Laigle et al. (2016) Table 3 in FILTER_NAMES order: systematic offset sf
+# [mag] ("to be subtracted from the apparent magnitudes") and the factor F
+# that multiplies E(B-V) for Galactic extinction.
+COSMOS2015_SF = np.array([0.010, 0.146, -0.117, -0.012, 0.020, -0.084,
+                          0.001, 0.017, 0.055, -0.001, -0.025, -0.005])
+COSMOS2015_EXTINCTION = np.array([4.660, 4.020, 3.117, 2.660, 1.991, 1.461,
+                                  1.211, 0.871, 0.563, 0.364, 0.162, 0.111])
+# Muzzin et al. (2013) columns in FILTER_NAMES order; 2.1" aperture fluxes
+# that the catalogue scales to total with FKstot / FKs.
+ULTRAVISTA_COLUMNS = ["Fu", "FB", "FV", "Frp", "Fip", "Fzp", "FY", "FJ", "FH",
+                      "FKs", "Fch1", "Fch2"]
+PHOTOMETRY_SOURCES = ("cosmos_ap3", "cosmos_total", "uvista_total")
+DUST_INDEX_PRIOR = (-1.0, 0.4)
 DR2_FLUX_UNIT = 1e-19 * u.erg / u.s / u.cm**2 / u.AA
 SPECTRUM_CALIBRATION_INIT = 0.03
 REST_EMISSION_LINES = [3726.0, 3728.8, 4861.3, 4958.9, 5006.8]
@@ -154,7 +183,35 @@ def flam_to_fnu_cgs(values, wavelength):
         equivalencies=u.spectral_density(wavelength * u.AA))
 
 
-def build_observations(project_root: Path, target_id: str, line_windows: float | None):
+def load_photometry(project_root: Path, galaxy, source: str):
+    """Flux and error in maggies for one LEGA-C row (``galaxy.name`` is the
+    row number in ``legaCdr2.fits.gz``) from one of ``PHOTOMETRY_SOURCES``."""
+    flux = galaxy[FLUX_COLUMNS].to_numpy(dtype=float) * UJY_TO_MAGGIES
+    err = galaxy[ERROR_COLUMNS].to_numpy(dtype=float) * UJY_TO_MAGGIES
+    if source == "cosmos_ap3":
+        return flux, err
+    if source == "cosmos_total":
+        table = Table.read(project_root / "data/raw/cosmos2015/"
+                           "cosmos2015_legac_dr2_apertures_1arcsec.fits")
+        row = table[np.asarray(table["LEGAC_INDEX"]) == int(galaxy.name)][0]
+        aperture_only = np.array([1.0] * 10 + [0.0, 0.0])
+        correction = (float(row["Offset"]) * aperture_only
+                      - float(row["E(B-V)"]) * COSMOS2015_EXTINCTION - COSMOS2015_SF)
+        scale = 10.0 ** (-0.4 * correction)
+        return flux * scale, err * scale
+    if source == "uvista_total":
+        table = Table.read(project_root / "data/raw/ultravista/"
+                           "ultravista_legac_dr2_1arcsec.fits")
+        row = table[np.asarray(table["LEGAC_INDEX"]) == int(galaxy.name)][0]
+        scale = float(row["FKstot"]) / float(row["FKs"])
+        flux = np.array([float(row[c]) for c in ULTRAVISTA_COLUMNS]) * scale * UJY_TO_MAGGIES
+        err = np.array([float(row[f"e_{c}"]) for c in ULTRAVISTA_COLUMNS]) * scale * UJY_TO_MAGGIES
+        return flux, err
+    raise ValueError(f"unknown photometry source {source!r}")
+
+
+def build_observations(project_root: Path, target_id: str, line_windows: float | None,
+                       photometry: str = "cosmos_ap3", floor: float = PHOTOMETRY_FLOOR):
     selected = select_passive(project_root)
     rows = selected[selected["SPECT_ID"] == target_id]
     if len(rows) != 1:
@@ -163,9 +220,8 @@ def build_observations(project_root: Path, target_id: str, line_windows: float |
     zred = float(galaxy["z"])
     sigma_star = float(galaxy["SIGMA_STARS_PRIME"])
 
-    flux = galaxy[FLUX_COLUMNS].to_numpy(dtype=float) * UJY_TO_MAGGIES
-    err = galaxy[ERROR_COLUMNS].to_numpy(dtype=float) * UJY_TO_MAGGIES
-    unc = np.hypot(err, PHOTOMETRY_FLOOR * np.abs(flux))
+    flux, err = load_photometry(project_root, galaxy, photometry)
+    unc = np.hypot(err, floor * np.abs(flux))
     mask = np.isfinite(flux) & np.isfinite(unc) & (flux > 0)
     assert mask.all()
     phot_obs = Photometry(filters=FILTER_NAMES, flux=flux, uncertainty=unc,
@@ -197,24 +253,40 @@ def build_observations(project_root: Path, target_id: str, line_windows: float |
     assert spec_obs.ndof > (300 if line_windows is not None else 3000)
     meta = dict(target=target_id, object_id=int(galaxy["OBJECT"]), zred=zred,
                 sigma_star=sigma_star, sn_catalogue=float(galaxy["SN"]),
-                resolution=resolution, n_pix_fitted=int(spec_obs.ndof))
+                resolution=resolution, n_pix_fitted=int(spec_obs.ndof),
+                photometry=photometry, phot_floor=floor,
+                phot_flux_maggies=flux.tolist(), phot_unc_maggies=unc.tolist())
     return phot_obs, spec_obs, spec_kwargs, meta
 
 
 # ---------------------------------------------------------------------------
 # Model (verbatim priors and transforms of the integrated notebook)
 # ---------------------------------------------------------------------------
-def build_model(ssp, phot_obs, spec_obs, zred, use_spectrum_scaling: bool):
+def dust_parameters(dust_law: str):
+    """``(amplitude, shape)`` theta names of a ``sedpy_jax`` law; the first
+    listed parameter of every law is its optical depth at 5500 A."""
+    names = [f"diffuse_{p}" for p in ATTENUATION_LAWS[dust_law]["params"]]
+    return names[0], names[1:]
+
+
+def build_model(ssp, phot_obs, spec_obs, zred, use_spectrum_scaling: bool,
+                fit_spectrum: bool = True, dust_law: str = "kriek_conroy",
+                free_dust_index: bool = False, dust_prior=None):
     universe_age = float(age_gyr(zred))
     lookback = np.array([0.0, 0.03, 0.1, 0.3, 1.0, 3.0, 5.0, universe_age])
     z_bounds = (float(ssp.ssp_lgmet.min()) + 1e-4, float(ssp.ssp_lgmet.max()) - 1e-4)
     afe_bounds = (float(ssp.ssp_afe.min()), float(ssp.ssp_afe.max()))
+    amplitude, shape_params = dust_parameters(dust_law)
+    defaults = {f"diffuse_{k}": float(v)
+                for k, v in ATTENUATION_LAWS[dust_law]["defaults"].items()}
+    if dust_law == "kriek_conroy":
+        defaults["diffuse_dust_index"] = FIXED_DUST_INDEX
+    theta = {"lookback_time": jnp.asarray(lookback), "sfh": jnp.ones(len(lookback)),
+             "Z": jnp.array([-1.85]), "afe": jnp.array([0.2]),
+             amplitude: jnp.array([0.2])}
+    theta.update({name: jnp.array([defaults[name]]) for name in shape_params})
     csp = CSPBasis_afe(
-        ssp,
-        theta={"lookback_time": jnp.asarray(lookback), "sfh": jnp.ones(len(lookback)),
-               "Z": jnp.array([-1.85]), "afe": jnp.array([0.2]),
-               "diffuse_tau_kc": jnp.array([0.2]),
-               "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX])},
+        ssp, theta=theta, diffuse_law=dust_law,
         zh_const=True, sfh_interp="step", add_dust=False, add_diffuse_dust=True,
         add_dust_emission=False, add_igm=False, sigma_losvd_kms=0.0,
         track_zred_age=False, verbose=False,
@@ -222,22 +294,29 @@ def build_model(ssp, phot_obs, spec_obs, zred, use_spectrum_scaling: bool):
     sfh_times = np.asarray(csp.sfh_times)
     transforms = {
         "sfh": lambda free: logsfr_ratios_to_sfh(free["logsfr_ratios"], sfh_times_yr=sfh_times),
-        "diffuse_dust_index": lambda free: jnp.array([FIXED_DUST_INDEX]),
     }
     priors = {
         "logsfr_ratios": Uniform(low=-3.0, high=3.0),
         "Z": Uniform(low=z_bounds[0], high=z_bounds[1]),
         "afe": Uniform(low=afe_bounds[0], high=afe_bounds[1]),
         "logmass": Uniform(low=8.0, high=13.0),
-        "diffuse_tau_kc": Uniform(low=0.0, high=2.0),
-        "log_f_calib": Uniform(low=np.log(0.01), high=np.log(0.10)),
+        amplitude: (Uniform(low=0.0, high=2.0) if dust_prior is None else
+                    ClippedNormal(mean=dust_prior[0], sigma=dust_prior[1], low=0.0, high=2.0)),
     }
+    for name in shape_params:
+        if free_dust_index and name == "diffuse_dust_index":
+            priors[name] = Uniform(low=DUST_INDEX_PRIOR[0], high=DUST_INDEX_PRIOR[1])
+        else:
+            value = defaults[name]
+            transforms[name] = (lambda free, v=value: jnp.array([v]))
     initial = {
         "logsfr_ratios": jnp.zeros(len(lookback) - 1),
         "logmass": jnp.array([11.0]),
-        "log_f_calib": jnp.array([np.log(SPECTRUM_CALIBRATION_INIT)]),
     }
-    if use_spectrum_scaling:
+    if fit_spectrum:
+        priors["log_f_calib"] = Uniform(low=np.log(0.01), high=np.log(0.10))
+        initial["log_f_calib"] = jnp.array([np.log(SPECTRUM_CALIBRATION_INIT)])
+    if use_spectrum_scaling and fit_spectrum:
         priors["spectrum_scaling"] = ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)
         initial["spectrum_scaling"] = jnp.array([1.0])
     model = SedModel(csp, observations=[phot_obs, spec_obs], priors=priors,
@@ -300,39 +379,52 @@ def mass_weighted_age(logsfr_ratios, lookback):
     return (masses * ages).sum(axis=1) / masses.sum(axis=1)
 
 
-def summarise(result, model, lookback, spec_obs, calibration, draws, seed):
+def summarise(result, model, lookback, spec_obs, phot_obs, calibration, draws, seed):
     weights = softmax(np.asarray(result.log_weights))
     rng = np.random.default_rng(seed + 1)
     idx = rng.choice(weights.size, size=draws, replace=True, p=weights)
     posterior = {k: np.asarray(v)[idx] for k, v in result.samples.items()}
     scalars = {}
-    for name in ("logmass", "Z", "afe", "diffuse_tau_kc", "log_f_calib", "spectrum_scaling"):
-        if name in posterior:
+    for name in posterior:
+        if name != "logsfr_ratios":
             scalars[name] = quantiles(posterior[name].reshape(draws))
-    scalars["f_calib_percent"] = quantiles(100.0 * np.exp(posterior["log_f_calib"].reshape(draws)))
+    if "log_f_calib" in posterior:
+        scalars["f_calib_percent"] = quantiles(100.0 * np.exp(posterior["log_f_calib"].reshape(draws)))
     age = mass_weighted_age(posterior["logsfr_ratios"], lookback)
     scalars["mass_weighted_age_gyr"] = quantiles(age)
     ratios = posterior["logsfr_ratios"].reshape(draws, -1)
     scalars["logsfr_ratios"] = [quantiles(ratios[:, j]) for j in range(ratios.shape[1])]
 
-    # Posterior-predictive spectrum and calibration polynomial on 200 draws.
+    # Posterior-predictive spectrum, photometry and calibration polynomial on 200 draws.
     n_pp = min(200, draws)
-    mu_draws, poly_draws, coeff_draws = [], [], []
+    mu_draws, poly_draws, coeff_draws, phot_draws = [], [], [], []
     y = np.asarray(spec_obs.flux); sigma = np.asarray(spec_obs.uncertainty)
     mask = np.asarray(spec_obs.mask)
     for i in range(n_pp):
         theta = {k: jnp.asarray(v[i]).reshape(-1) for k, v in posterior.items()}
-        mu = np.asarray(model.predict_jit(theta)["spectrum"])
+        prediction = model.predict_jit(theta)
+        mu = np.asarray(prediction["spectrum"])
         mu_draws.append(mu)
+        phot_draws.append(np.asarray(prediction["photometry"]))
         if calibration is not None:
             coeffs = calibration.solve(y, mu, sigma, mask)
             coeff_draws.append(np.asarray(coeffs))
             poly_draws.append(np.asarray(calibration.polynomial(coeffs)))
     mu_draws = np.asarray(mu_draws)
+    phot_draws = np.asarray(phot_draws)
+    phot_flux = np.asarray(phot_obs.flux); phot_unc = np.asarray(phot_obs.uncertainty)
+    phot_q50 = np.percentile(phot_draws, 50, axis=0)
+    chi = (phot_flux - phot_q50) / phot_unc
+    scalars["phot_chi_q50"] = [round(float(c), 2) for c in chi]
+    scalars["phot_chi2_q50"] = float(np.sum(chi**2))
+    scalars["phot_data_over_model_q50"] = [round(float(r), 4) for r in phot_flux / phot_q50]
     vectors = dict(wavelength=np.asarray(spec_obs.wavelength), flux=y, uncertainty=sigma,
                    mask=mask, model_q16=np.percentile(mu_draws, 16, axis=0),
                    model_q50=np.percentile(mu_draws, 50, axis=0),
-                   model_q84=np.percentile(mu_draws, 84, axis=0))
+                   model_q84=np.percentile(mu_draws, 84, axis=0),
+                   phot_flux=phot_flux, phot_unc=phot_unc,
+                   phot_q16=np.percentile(phot_draws, 16, axis=0), phot_q50=phot_q50,
+                   phot_q84=np.percentile(phot_draws, 84, axis=0))
     if calibration is not None:
         poly_draws = np.asarray(poly_draws)
         vectors.update(poly_q16=np.percentile(poly_draws, 16, axis=0),
@@ -366,13 +458,22 @@ def main(argv=None) -> int:
     parser.add_argument("--no-spectrum-scaling", action="store_true")
     parser.add_argument("--line-windows", type=float, default=None,
                         help="rest-frame half-width in angstrom around absorption lines")
+    parser.add_argument("--photometry", choices=PHOTOMETRY_SOURCES, default="cosmos_ap3")
+    parser.add_argument("--phot-floor", type=float, default=PHOTOMETRY_FLOOR,
+                        help="fractional error floor added in quadrature to every band")
+    parser.add_argument("--fit", choices=("both", "spectrum", "photometry"), default="both")
+    parser.add_argument("--dust-law", default="kriek_conroy", choices=sorted(ATTENUATION_LAWS))
+    parser.add_argument("--free-dust-index", action="store_true",
+                        help="sample the Kriek & Conroy slope instead of fixing it")
+    parser.add_argument("--dust-prior", type=float, nargs=2, metavar=("MEAN", "SIGMA"),
+                        default=None, help="clipped-normal prior on the attenuation amplitude")
     parser.add_argument("--draws", type=int, default=2000)
     args = parser.parse_args(argv)
 
     started = time.time()
     args.out.mkdir(parents=True, exist_ok=True)
     phot_obs, spec_obs, spec_kwargs, meta = build_observations(
-        args.project_root, args.target, args.line_windows)
+        args.project_root, args.target, args.line_windows, args.photometry, args.phot_floor)
     ssp = SSPDataAfe.load(fetch_grid("amist_c3k_hr_krou_afe", quiet=True))
     zred = meta["zred"]
     use_scaling = not args.no_spectrum_scaling
@@ -388,31 +489,38 @@ def main(argv=None) -> int:
         phot_obs, spec_obs, distortion, _ = make_mock(
             generator, truth, phot_obs, spec_kwargs, spec_obs,
             args.tilt, args.curvature, args.seed)
-    model, lookback = build_model(ssp, phot_obs, spec_obs, zred, use_scaling)
+    fit_spectrum = args.fit != "photometry"
+    model, lookback = build_model(
+        ssp, phot_obs, spec_obs, zred, use_scaling, fit_spectrum=fit_spectrum,
+        dust_law=args.dust_law, free_dust_index=args.free_dust_index,
+        dust_prior=args.dust_prior)
 
     calibration = None
     if args.poly_order > 0 or args.fit_constant:
         calibration = PolynomialCalibration.from_spectrum(
             spec_obs, order=args.poly_order, fit_constant=args.fit_constant,
             prior_sigma=args.prior_sigma)
+    modalities = {
+        phot_obs.name: DiagonalGaussianLikelihood(),
+        spec_obs.name: DiagonalGaussianLikelihood(
+            noise_model=DiagonalNoiseModel(use_fractional=True), calibration=calibration),
+    }
+    fitted = {"both": (phot_obs.name, spec_obs.name), "spectrum": (spec_obs.name,),
+              "photometry": (phot_obs.name,)}[args.fit]
     likelihood = MultiObservationLikelihood(
-        keys=(phot_obs.name, spec_obs.name),
-        likelihoods=(DiagonalGaussianLikelihood(),
-                     DiagonalGaussianLikelihood(
-                         noise_model=DiagonalNoiseModel(use_fractional=True),
-                         calibration=calibration)),
-    )
+        keys=fitted, likelihoods=tuple(modalities[key] for key in fitted))
     settings = SAMPLER_PROFILES[args.profile]
     adapter = BlackJAXNestedSamplerAdapter(
         priors=model.priors, checkpoint_interval_s=1200.0,
         checkpoint_dir=str(args.out), verbose=True, **settings)
     print(f"{meta['target']} z={zred:.4f} pixels={meta['n_pix_fitted']} "
-          f"calibration={calibration!r} spectrum_scaling={use_scaling} "
+          f"photometry={args.photometry} floor={args.phot_floor} fit={args.fit} "
+          f"dust={args.dust_law} calibration={calibration!r} spectrum_scaling={use_scaling} "
           f"profile={args.profile} devices={jax.devices()}", flush=True)
     result = run_sampler(model, likelihood, adapter, jax.random.PRNGKey(args.seed))
     write_result_h5(args.out / "ceridwen_result.h5", model, result)
 
-    scalars, vectors, weights = summarise(result, model, lookback, spec_obs,
+    scalars, vectors, weights = summarise(result, model, lookback, spec_obs, phot_obs,
                                           calibration, args.draws, args.seed)
     if distortion is not None:
         vectors["distortion_true"] = distortion
@@ -423,6 +531,9 @@ def main(argv=None) -> int:
                     poly_order=args.poly_order, fit_constant=args.fit_constant,
                     prior_sigma=args.prior_sigma, spectrum_scaling=use_scaling,
                     line_windows=args.line_windows, sampler=settings,
+                    photometry=args.photometry, phot_floor=args.phot_floor, fit=args.fit,
+                    dust_law=args.dust_law, free_dust_index=args.free_dust_index,
+                    dust_prior=args.dust_prior,
                     truth_from=None if args.truth_from is None else str(args.truth_from)),
         meta=meta,
         truth=None if truth is None else {k: v.tolist() for k, v in truth.items()},

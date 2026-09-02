@@ -28,3 +28,14 @@ its photometric passive sample. The gap is unexplained; candidates are the
 `NUV-R` dust-corrected column rather than the raw magnitude difference, the
 quality flags Paper I applies before the color cut, and the fact that these rows
 are per spectrum rather than per galaxy.
+
+## `cosmos2015_legac_dr2_apertures_1arcsec.fits`
+
+Same cross-match, 1982 rows, downloaded on 2026-09-02 with
+`uv run python scripts/download_legac_dr2_aperture_photometry.py`. Columns: the
+2" and 3" aperture fluxes and errors of u, B, V, r, i+, z++, Y, J, H, Ks (uJy),
+the total IRAC 3.6 and 4.5 um fluxes, the per-object aperture-to-total
+magnitude offset `Offset` (`MAG_AUTO - MAG_APER3`, negative), `E(B-V)`, the
+Ks AUTO magnitude and the quality flags. Laigle et al. (2016) Table 3 gives the
+per-band systematic offsets and extinction factors that complete the total
+magnitude; `scripts/calibration_polynomial_experiment.py` carries them.
