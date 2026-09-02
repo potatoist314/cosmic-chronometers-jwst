@@ -8,7 +8,9 @@ The photometric SED that LEGA-C DR2 used to flux-calibrate every spectrum
 - Source catalogue: Muzzin et al. (2013), ApJS 206, 8, VizieR `J/ApJS/206/8/catalog`.
 - Nearest match within one arcsecond of `RAJ2000`/`DECJ2000`; `MATCH_SEP_ARCSEC`
   records the separation. `Seq` equals the LEGA-C `OBJECT` id.
-- Flux columns are the catalogue's 2.1" aperture fluxes on PSF-matched images,
+- Flux columns (u, B, V, r+, i+, z+, Y, J, H, Ks, IRAC 1-2 and the intermediate
+  bands IA679, IB709, IA738, IA767, IB827) are the catalogue's 2.1" aperture
+  fluxes on PSF-matched images,
   converted to microjansky (the catalogue zero point is 25 AB). Total flux in
   any band is `flux * FKstot / FKs`, as the catalogue ReadMe prescribes.
 - Downloaded on 2026-09-02 with

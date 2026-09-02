@@ -6,7 +6,8 @@ number in ``legaCdr2.fits.gz``), nearest match within one arcsecond:
 
 ``data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits``
     Laigle et al. (2016): 2" and 3" aperture fluxes of the ten optical/NIR
-    bands, the per-object aperture-to-total magnitude offset ``Offset``,
+    bands and of the five intermediate bands inside the LEGA-C wavelength
+    range, the per-object aperture-to-total magnitude offset ``Offset``,
     ``E(B-V)``, the Ks AUTO magnitude and the total IRAC fluxes.
 ``data/raw/ultravista/ultravista_legac_dr2_1arcsec.fits``
     Muzzin et al. (2013): the total fluxes (zero point 25 AB) of the SED that
@@ -24,7 +25,9 @@ from astroquery.vizier import Vizier
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 LEGAC_PATH = PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz"
-COSMOS_BANDS = ["Fu", "FB", "FV", "Fr", "Fip", "Fzpp", "FY", "FJ", "FH", "FKs"]
+COSMOS_BANDS = ["Fu", "FB", "FV", "Fr", "Fip", "Fzpp", "FY", "FJ", "FH", "FKs",
+                # intermediate bands inside the LEGA-C wavelength range
+                "FIA679", "FIB709", "FIA738", "FIA767", "FIB827"]
 CATALOGUES = {
     "J/ApJS/224/24/cosmos2015": (
         PROJECT_ROOT / "data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits",
@@ -38,7 +41,9 @@ CATALOGUES = {
         ["_q", "RAJ2000", "DEJ2000", "Seq", "FKstot", "e_FKstot", "FKs", "e_FKs",
          "FH", "e_FH", "FJ", "e_FJ", "FY", "e_FY", "Fch2", "e_Fch2", "Fch1", "e_Fch1",
          "Fzp", "e_Fzp", "Fip", "e_Fip", "Frp", "e_Frp", "FV", "e_FV", "FB", "e_FB",
-         "Fu", "e_Fu", "Kflag", "S/G", "KKron", "apcor", "Star", "Cont", "USE"],
+         "Fu", "e_Fu", "FIA679", "e_FIA679", "FIB709", "e_FIB709", "FIA738", "e_FIA738",
+         "FIA767", "e_FIA767", "FIB827", "e_FIB827",
+         "Kflag", "S/G", "KKron", "apcor", "Star", "Cont", "USE"],
     ),
 }
 

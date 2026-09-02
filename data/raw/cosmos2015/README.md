@@ -33,7 +33,8 @@ are per spectrum rather than per galaxy.
 
 Same cross-match, 1982 rows, downloaded on 2026-09-02 with
 `uv run python scripts/download_legac_dr2_aperture_photometry.py`. Columns: the
-2" and 3" aperture fluxes and errors of u, B, V, r, i+, z++, Y, J, H, Ks (uJy),
+2" and 3" aperture fluxes and errors of u, B, V, r, i+, z++, Y, J, H, Ks and of
+IA679, IB709, IA738, IA767, IB827 (uJy),
 the total IRAC 3.6 and 4.5 um fluxes, the per-object aperture-to-total
 magnitude offset `Offset` (`MAG_AUTO - MAG_APER3`, negative), `E(B-V)`, the
 Ks AUTO magnitude and the quality flags. Laigle et al. (2016) Table 3 gives the
