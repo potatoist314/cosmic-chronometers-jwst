@@ -209,7 +209,10 @@ def run_instance(offer: dict | None, shard: str, args, outcome: dict, instance_i
         else:
             outcome["instance_id"] = instance_id
             log(f"attached to prepared instance {instance_id}")
-        _launch(instance_id, shard, log)
+        if _runner_alive(instance_id):
+            log("a runner is already active on the box; not launching another")
+        else:
+            _launch(instance_id, shard, log)
         expected = _expected_cells(shard)
         deadline = time.monotonic() + RUN_TIMEOUT_SECONDS
         last_pull = time.monotonic()
@@ -220,10 +223,11 @@ def run_instance(offer: dict | None, shard: str, args, outcome: dict, instance_i
             failed = [n for n in expected if manifest.get(n, {}).get("status") == "failed"]
             running = [n for n in expected if manifest.get(n, {}).get("status") == "running"]
             log(f"{len(done)}/{len(expected)} done, {len(failed)} failed, running: {running}")
-            if len(done) + len(failed) == len(expected) and not running:
-                break
+            # Stale "failed" entries from a seeded manifest are re-run, so the
+            # manifest alone cannot say the shard is over: wait for the runner.
             if not _runner_alive(instance_id):
-                log("runner process is gone before the shard finished")
+                log("runner process has exited" if len(done) == len(expected)
+                    else "runner process is gone before every cell is done")
                 break
             if time.monotonic() - last_pull > 900:
                 _pull(instance_id, log)
