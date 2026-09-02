@@ -1,0 +1,198 @@
+[
+ {
+  "name": "mock_tilt0.03_snr1.00_seed2_all",
+  "group": "mock_tilt0.03_snr1.00_seed2",
+  "mode": "all",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260910,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "2013",
+   "CERIDWEN_MOCK_TILT": "0.0300",
+   "CERIDWEN_MOCK_SNR_SCALE": "1.0000",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "all"
+  }
+ },
+ {
+  "name": "mock_tilt0.03_snr1.00_seed2_features",
+  "group": "mock_tilt0.03_snr1.00_seed2",
+  "mode": "features",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260910,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "2013",
+   "CERIDWEN_MOCK_TILT": "0.0300",
+   "CERIDWEN_MOCK_SNR_SCALE": "1.0000",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "features"
+  }
+ },
+ {
+  "name": "mock_tilt0.03_snr0.25_seed1_all",
+  "group": "mock_tilt0.03_snr0.25_seed1",
+  "mode": "all",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260911,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "1005",
+   "CERIDWEN_MOCK_TILT": "0.0300",
+   "CERIDWEN_MOCK_SNR_SCALE": "0.2500",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "all"
+  }
+ },
+ {
+  "name": "mock_tilt0.03_snr0.25_seed1_features",
+  "group": "mock_tilt0.03_snr0.25_seed1",
+  "mode": "features",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260911,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "1005",
+   "CERIDWEN_MOCK_TILT": "0.0300",
+   "CERIDWEN_MOCK_SNR_SCALE": "0.2500",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "features"
+  }
+ },
+ {
+  "name": "mock_tilt0.03_snr0.25_seed1_features_downweight",
+  "group": "mock_tilt0.03_snr0.25_seed1",
+  "mode": "features_downweight",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260911,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "1005",
+   "CERIDWEN_MOCK_TILT": "0.0300",
+   "CERIDWEN_MOCK_SNR_SCALE": "0.2500",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "features_downweight",
+   "CERIDWEN_FEATURE_DOWNWEIGHT": "balance"
+  }
+ },
+ {
+  "name": "mock_tilt0.03_snr0.25_seed2_features_downweight",
+  "group": "mock_tilt0.03_snr0.25_seed2",
+  "mode": "features_downweight",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260912,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "2005",
+   "CERIDWEN_MOCK_TILT": "0.0300",
+   "CERIDWEN_MOCK_SNR_SCALE": "0.2500",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "features_downweight",
+   "CERIDWEN_FEATURE_DOWNWEIGHT": "balance"
+  }
+ },
+ {
+  "name": "mock_tilt0.06_snr1.00_seed1_all",
+  "group": "mock_tilt0.06_snr1.00_seed1",
+  "mode": "all",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260913,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "1016",
+   "CERIDWEN_MOCK_TILT": "0.0600",
+   "CERIDWEN_MOCK_SNR_SCALE": "1.0000",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "all"
+  }
+ },
+ {
+  "name": "mock_tilt0.06_snr1.00_seed1_features",
+  "group": "mock_tilt0.06_snr1.00_seed1",
+  "mode": "features",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260913,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "1016",
+   "CERIDWEN_MOCK_TILT": "0.0600",
+   "CERIDWEN_MOCK_SNR_SCALE": "1.0000",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "features"
+  }
+ },
+ {
+  "name": "mock_tilt0.06_snr1.00_seed1_features_downweight",
+  "group": "mock_tilt0.06_snr1.00_seed1",
+  "mode": "features_downweight",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260913,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "1016",
+   "CERIDWEN_MOCK_TILT": "0.0600",
+   "CERIDWEN_MOCK_SNR_SCALE": "1.0000",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "features_downweight",
+   "CERIDWEN_FEATURE_DOWNWEIGHT": "balance"
+  }
+ },
+ {
+  "name": "mock_tilt0.06_snr0.25_seed2_all",
+  "group": "mock_tilt0.06_snr0.25_seed2",
+  "mode": "all",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260916,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "2008",
+   "CERIDWEN_MOCK_TILT": "0.0600",
+   "CERIDWEN_MOCK_SNR_SCALE": "0.2500",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "all"
+  }
+ },
+ {
+  "name": "mock_tilt0.06_snr0.25_seed2_features",
+  "group": "mock_tilt0.06_snr0.25_seed2",
+  "mode": "features",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260916,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "2008",
+   "CERIDWEN_MOCK_TILT": "0.0600",
+   "CERIDWEN_MOCK_SNR_SCALE": "0.2500",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "features"
+  }
+ },
+ {
+  "name": "mock_tilt0.06_snr0.25_seed2_features_downweight",
+  "group": "mock_tilt0.06_snr0.25_seed2",
+  "mode": "features_downweight",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260916,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_SEED": "2008",
+   "CERIDWEN_MOCK_TILT": "0.0600",
+   "CERIDWEN_MOCK_SNR_SCALE": "0.2500",
+   "CERIDWEN_FEATURE_WINDOW_KMS": "1000.0",
+   "CERIDWEN_SPECTRUM_PIXELS": "features_downweight",
+   "CERIDWEN_FEATURE_DOWNWEIGHT": "balance"
+  }
+ }
+]

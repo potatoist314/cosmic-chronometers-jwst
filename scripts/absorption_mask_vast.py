@@ -129,7 +129,7 @@ def _checkout(instance_id: int, branch: str, log) -> None:
 RUNNER_PATTERN = "^.venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py"
 
 
-def _launch(instance_id: int, shard: str, log) -> None:
+def _launch(instance_id: int, shard: str, log, grid_name: str = "grid.json") -> None:
     # A top-level `cmd &` in the ssh command keeps the session open until the
     # runner exits (measured: 40 s timeout); `setsid -f` double-forks the
     # runner into its own session and returns at once.
@@ -137,7 +137,7 @@ def _launch(instance_id: int, shard: str, log) -> None:
     command = (
         f"cd {shlex.quote(remote)} && mkdir -p {RESULTS} && "
         f"setsid -f .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run "
-        f"--grid {RESULTS}/grid.json --shard {shard} --gpu --output-root {RESULTS} "
+        f"--grid {RESULTS}/{grid_name} --shard {shard} --gpu --output-root {RESULTS} "
         f"> {RESULTS}/shard_{shard.replace('/', 'of')}.log 2>&1 < /dev/null; "
         f"sleep 2; pgrep -f {shlex.quote(RUNNER_PATTERN)} >/dev/null && echo launched"
     )
@@ -171,12 +171,12 @@ def _pull(instance_id: int, log) -> None:
     sweep._rsync(port, f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/", f"{local}/", timeout=1800.0)
 
 
-def _expected_cells(shard: str) -> list[str]:
+def _expected_cells(shard: str, grid_name: str = "grid.json") -> list[str]:
     grid_module_path = PROJECT_ROOT / "scripts/absorption_mask_grid.py"
     spec = importlib.util.spec_from_file_location("grid", grid_module_path)
     grid = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(grid)
-    cells = json.loads((PROJECT_ROOT / RESULTS / "grid.json").read_text())
+    cells = json.loads((PROJECT_ROOT / RESULTS / grid_name).read_text())
     return [cell["name"] for cell in grid.shard_groups(cells, shard)]
 
 
@@ -187,12 +187,16 @@ def _prepare(instance_id: int, args, log) -> None:
     _checkout(instance_id, args.branch, log)
     sweep._upload_inputs(instance_id, log)
     target, port = sweep._ssh_target(instance_id)
-    sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/grid.json",
-                 f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/grid.json", timeout=120.0)
+    grid_name = getattr(args, "grid_name", "grid.json")
+    sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/{grid_name}",
+                 f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/{grid_name}", timeout=120.0)
     sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/truth_M5_172669.json",
                  f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/truth_M5_172669.json", timeout=120.0)
-    # Seed the box with cells already completed elsewhere so the runner skips them.
-    sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/", f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/", timeout=900.0)
+    if getattr(args, "seed_results", True):
+        # Seed the box with cells already completed elsewhere so the runner
+        # skips them.  Pulls then carry the seeded copies back, so seed only
+        # when every local cell directory is final.
+        sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/", f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/", timeout=900.0)
     sweep._bootstrap(instance_id, log)
     sweep._verify_cuda_backend(instance_id, log)
 
@@ -212,8 +216,8 @@ def run_instance(offer: dict | None, shard: str, args, outcome: dict, instance_i
         if _runner_alive(instance_id):
             log("a runner is already active on the box; not launching another")
         else:
-            _launch(instance_id, shard, log)
-        expected = _expected_cells(shard)
+            _launch(instance_id, shard, log, getattr(args, "grid_name", "grid.json"))
+        expected = _expected_cells(shard, getattr(args, "grid_name", "grid.json"))
         deadline = time.monotonic() + RUN_TIMEOUT_SECONDS
         last_pull = time.monotonic()
         while time.monotonic() < deadline:
@@ -325,6 +329,8 @@ def main(argv=None) -> int:
     run.add_argument("--instances", type=int, default=3)
     run.add_argument("--branch", default="absorption-mask")
     run.add_argument("--only-shard", action="append", help="k/n shard to run (repeatable); default: all n shards")
+    run.add_argument("--grid-name", default="grid.json", help="grid file inside results/absorption-mask")
+    run.add_argument("--no-seed", dest="seed_results", action="store_false", help="do not upload local results to the box")
     run.add_argument("--exclude-host", action="append", default=[], help="Vast host id to avoid")
     run.add_argument("--image", default=sweep.DEFAULT_IMAGE)
     run.add_argument("--disk", type=int, default=sweep.DEFAULT_DISK_GB)
