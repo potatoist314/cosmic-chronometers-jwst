@@ -130,14 +130,15 @@ RUNNER_PATTERN = "^.venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py
 
 
 def _launch(instance_id: int, shard: str, log) -> None:
-    # stdin must be closed and the process detached, or ssh keeps the session
-    # open until the runner exits and the call times out.
+    # A top-level `cmd &` in the ssh command keeps the session open until the
+    # runner exits (measured: 40 s timeout); `setsid -f` double-forks the
+    # runner into its own session and returns at once.
     remote = sweep.REMOTE_ROOT
     command = (
         f"cd {shlex.quote(remote)} && mkdir -p {RESULTS} && "
-        f"nohup setsid .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run "
+        f"setsid -f .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run "
         f"--grid {RESULTS}/grid.json --shard {shard} --gpu --output-root {RESULTS} "
-        f"> {RESULTS}/shard_{shard.replace('/', 'of')}.log 2>&1 < /dev/null & disown; "
+        f"> {RESULTS}/shard_{shard.replace('/', 'of')}.log 2>&1 < /dev/null; "
         f"sleep 2; pgrep -f {shlex.quote(RUNNER_PATTERN)} >/dev/null && echo launched"
     )
     result = sweep._ssh(instance_id, command, timeout=60.0)
@@ -179,25 +180,33 @@ def _expected_cells(shard: str) -> list[str]:
     return [cell["name"] for cell in grid.shard_groups(cells, shard)]
 
 
-def run_instance(offer: dict, shard: str, args, outcome: dict) -> None:
+def _prepare(instance_id: int, args, log) -> None:
+    sweep._wait_for_running(instance_id, log)
+    sweep._attach_ssh_key(instance_id)
+    sweep._wait_for_ssh(instance_id, log)
+    _checkout(instance_id, args.branch, log)
+    sweep._upload_inputs(instance_id, log)
+    target, port = sweep._ssh_target(instance_id)
+    sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/grid.json",
+                 f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/grid.json", timeout=120.0)
+    sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/truth_M5_172669.json",
+                 f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/truth_M5_172669.json", timeout=120.0)
+    sweep._bootstrap(instance_id, log)
+    sweep._verify_cuda_backend(instance_id, log)
+
+
+def run_instance(offer: dict | None, shard: str, args, outcome: dict, instance_id: int | None = None) -> None:
+    """Rent (or attach to) one box, run one shard on it, pull, destroy."""
     log = _log(f"shard {shard}")
-    instance_id = None
     try:
-        instance_id = sweep._create_instance(offer, args)
-        outcome["instance_id"] = instance_id
-        log(f"rented instance {instance_id}: {_describe(offer)}")
-        sweep._wait_for_running(instance_id, log)
-        sweep._attach_ssh_key(instance_id)
-        sweep._wait_for_ssh(instance_id, log)
-        _checkout(instance_id, args.branch, log)
-        sweep._upload_inputs(instance_id, log)
-        target, port = sweep._ssh_target(instance_id)
-        sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/grid.json",
-                     f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/grid.json", timeout=120.0)
-        sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/truth_M5_172669.json",
-                     f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/truth_M5_172669.json", timeout=120.0)
-        sweep._bootstrap(instance_id, log)
-        sweep._verify_cuda_backend(instance_id, log)
+        if instance_id is None:
+            instance_id = sweep._create_instance(offer, args)
+            outcome["instance_id"] = instance_id
+            log(f"rented instance {instance_id}: {_describe(offer)}")
+            _prepare(instance_id, args, log)
+        else:
+            outcome["instance_id"] = instance_id
+            log(f"attached to prepared instance {instance_id}")
         _launch(instance_id, shard, log)
         expected = _expected_cells(shard)
         deadline = time.monotonic() + RUN_TIMEOUT_SECONDS
@@ -280,6 +289,14 @@ def command_run(args) -> int:
     return 1 if leftover or any(o.get("error") for o in outcomes) else 0
 
 
+def command_attach(args) -> int:
+    """Run one shard on an instance that is already bootstrapped."""
+    outcome = {"shard": args.shard}
+    run_instance(None, args.shard, args, outcome, instance_id=args.instance)
+    print(json.dumps({k: v for k, v in outcome.items() if k != "manifest"}, indent=1))
+    return 1 if outcome.get("error") else 0
+
+
 def command_pull(args) -> int:
     _pull(args.instance, _log("pull"))
     return 0
@@ -305,12 +322,16 @@ def main(argv=None) -> int:
     run.add_argument("--exclude-host", action="append", default=[], help="Vast host id to avoid")
     run.add_argument("--image", default=sweep.DEFAULT_IMAGE)
     run.add_argument("--disk", type=int, default=sweep.DEFAULT_DISK_GB)
+    attach = sub.add_parser("attach")
+    attach.add_argument("--instance", type=int, required=True)
+    attach.add_argument("--shard", required=True, help="k/n")
+    attach.add_argument("--branch", default="absorption-mask")
     pull = sub.add_parser("pull")
     pull.add_argument("--instance", type=int, required=True)
     sub.add_parser("destroy-all")
     args = parser.parse_args(argv)
-    return {"plan": command_plan, "run": command_run, "pull": command_pull,
-            "destroy-all": command_destroy_all}[args.command](args)
+    return {"plan": command_plan, "run": command_run, "attach": command_attach,
+            "pull": command_pull, "destroy-all": command_destroy_all}[args.command](args)
 
 
 if __name__ == "__main__":
