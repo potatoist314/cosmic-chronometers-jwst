@@ -78,7 +78,85 @@
     <section id="experiment">
       <h2>Experiment</h2>
       <p><code>scripts/calibration_polynomial_experiment.py</code> reproduces the integrated notebook's <code>full_spectrum</code> joint fit (selection, observations, priors, transforms, 500 live points, 65 inner steps, 100 deletions, <code>logZ_tol</code> −5) and adds the switches. Mocks use M5_172669's pixel grid, uncertainties, masks, and filters; the truth is the weighted posterior median of the stored full-spectrum fit; the distortion <code>1 + (T/2) x + C T<sub>2</sub>(x)</code> multiplies the spectrum only; one noise realisation with seed 20260902 is shared by every mock arm. All arms ran on one RTX 5060 Ti 16 GB in one boot.</p>
-      <!-- RESULTS -->
+      <h3>Arms</h3>
+      <p>Twenty fits: eleven mocks of M5_172669, two follow-up mocks, and seven fits of the two DR2 targets. <code>baseline</code> is the production configuration; <code>polyN</code> adds the profiled order-N polynomial with the constant fixed and <code>spectrum_scaling</code> kept; <code>const_noscale</code> lets the polynomial carry the normalisation and drops <code>spectrum_scaling</code>; <code>prior2</code> adds a 2 percent Gaussian prior on every coefficient; <code>lines15</code> fits only ±15 Å rest-frame windows around ten absorption lines.</p>
+<h3>Mock arms</h3>
+<p>Truth: log M⋆ = 11.110, log Z = -1.723, [α/Fe] = 0.136, τ<sub>dust</sub> = 0.011, t<sub>MW</sub> [Gyr] = 1.657. Each cell is the pull (median − truth) / half width, then the half width relative to <code>notilt_baseline</code> in brackets. Pulls beyond ±1 are outside the 16–84 range.</p>
+<div style="overflow-x:auto"><table class="results"><thead><tr><th>arm</th><th>pixels</th><th>log M⋆</th><th>log Z</th><th>[α/Fe]</th><th>τ<sub>dust</sub></th><th>t<sub>MW</sub> [Gyr]</th><th>spectrum_scaling</th><th>f<sub>calib</sub> [%]</th><th>P range</th><th>Δ ln Z</th><th>calls</th></tr></thead><tbody>
+<tr><td>notilt_baseline</td><td>3602</td><td>+1.58 [1.00]</td><td>+0.64 [1.00]</td><td>+0.29 [1.00]</td><td>+0.13 [1.00]</td><td>+0.34 [1.00]</td><td>1.213 ± 0.019</td><td>1.00 ± 0.00</td><td>—</td><td>+0.0</td><td>1,384,500</td></tr>
+<tr><td>notilt_poly3</td><td>3602</td><td>+1.36 [1.20]</td><td>+1.09 [1.13]</td><td>-0.19 [1.03]</td><td>-0.22 [2.31]</td><td>+0.29 [1.17]</td><td>1.214 ± 0.018</td><td>1.00 ± 0.00</td><td>0.999–1.001</td><td>+5.1</td><td>1,274,000</td></tr>
+<tr><td>tilt4_baseline</td><td>3602</td><td>+4.06 [1.26]</td><td>+0.42 [1.05]</td><td>+0.65 [0.98]</td><td>+18.47 [1.10]</td><td>+0.53 [1.88]</td><td>1.243 ± 0.022</td><td>1.00 ± 0.00</td><td>—</td><td>-9.4</td><td>1,378,000</td></tr>
+<tr><td>tilt4_lines15_baseline</td><td>453</td><td>+2.46 [3.20]</td><td>-0.76 [3.59]</td><td>-0.14 [2.54]</td><td>+11.47 [1.93]</td><td>+0.64 [12.65]</td><td>1.241 ± 0.015</td><td>1.01 ± 0.01</td><td>—</td><td>-206571.3</td><td>1,274,000</td></tr>
+<tr><td>tilt4_lines15_poly3</td><td>453</td><td>+1.00 [1.63]</td><td>-0.91 [3.35]</td><td>+0.08 [3.25]</td><td>+0.50 [3.39]</td><td>+0.43 [3.17]</td><td>1.215 ± 0.018</td><td>1.01 ± 0.01</td><td>0.984–1.023</td><td>-206554.2</td><td>1,098,500</td></tr>
+<tr><td>tilt4_poly1</td><td>3602</td><td>+1.25 [1.08]</td><td>+0.64 [0.92]</td><td>+0.34 [0.97]</td><td>-0.29 [2.44]</td><td>+0.32 [1.23]</td><td>1.216 ± 0.016</td><td>1.00 ± 0.00</td><td>0.979–1.021</td><td>+4.0</td><td>1,306,500</td></tr>
+<tr><td>tilt4_poly3</td><td>3602</td><td>+1.42 [1.18]</td><td>+1.16 [1.05]</td><td>-0.06 [0.91]</td><td>-0.10 [2.47]</td><td>+0.30 [0.97]</td><td>1.213 ± 0.019</td><td>1.00 ± 0.00</td><td>0.981–1.019</td><td>+6.8</td><td>1,248,000</td></tr>
+<tr><td>tilt4_poly3_const_noscale</td><td>3602</td><td>+1.30 [1.27]</td><td>+1.20 [1.12]</td><td>-0.10 [1.02]</td><td>-0.07 [2.62]</td><td>+0.31 [1.08]</td><td>—</td><td>1.00 ± 0.00</td><td>1.194–1.237</td><td>+13.4</td><td>1,059,500</td></tr>
+<tr><td>tilt4_poly3_prior2</td><td>3602</td><td>+1.41 [1.26]</td><td>+1.24 [1.14]</td><td>-0.16 [1.02]</td><td>-0.03 [2.80]</td><td>+0.22 [0.88]</td><td>1.211 ± 0.017</td><td>1.00 ± 0.00</td><td>0.982–1.018</td><td>+4.3</td><td>1,306,500</td></tr>
+<tr><td>tilt4_poly5</td><td>3602</td><td>+1.43 [1.28]</td><td>+1.26 [1.17]</td><td>-0.17 [1.07]</td><td>+0.04 [2.94]</td><td>+0.31 [1.13]</td><td>1.211 ± 0.018</td><td>1.00 ± 0.00</td><td>0.982–1.019</td><td>+6.5</td><td>1,254,500</td></tr>
+<tr><td>tilt4curv2_baseline</td><td>3602</td><td>+6.09 [4.31]</td><td>-5.93 [1.44]</td><td>+4.93 [1.24]</td><td>+23.18 [2.37]</td><td>+6.31 [14.15]</td><td>1.491 ± 0.031</td><td>1.00 ± 0.00</td><td>—</td><td>-645.7</td><td>2,528,500</td></tr>
+<tr><td>tilt4curv2_poly3</td><td>3602</td><td>+1.47 [1.18]</td><td>+1.11 [1.20]</td><td>-0.17 [0.97]</td><td>+0.02 [2.76]</td><td>+0.37 [1.20]</td><td>1.213 ± 0.017</td><td>1.00 ± 0.00</td><td>0.977–1.040</td><td>+10.9</td><td>1,300,000</td></tr>
+</tbody></table></div>
+<h3>M4_108989 (z = 0.828, 3735 fitted pixels, catalogue S/N 21)</h3>
+<p>Median ± half of the 16–84 range. Δ ln Z is relative to the baseline arm.</p>
+<div style="overflow-x:auto"><table class="results"><thead><tr><th>arm</th><th>log M⋆</th><th>log Z</th><th>[α/Fe]</th><th>τ<sub>dust</sub></th><th>t<sub>MW</sub> [Gyr]</th><th>spectrum_scaling</th><th>f<sub>calib</sub> [%]</th><th>P range</th><th>Δ ln Z</th><th>calls</th><th>wall [s]</th></tr></thead><tbody>
+<tr><td>baseline</td><td>11.641 ± 0.013</td><td>-1.816 ± 0.019</td><td>-0.106 ± 0.010</td><td>0.333 ± 0.014</td><td>4.650 ± 0.095</td><td>1.489 ± 0.028</td><td>4.62 ± 0.12</td><td>—</td><td>+0.0 ± 0.3</td><td>1,300,000</td><td>221</td></tr>
+<tr><td>poly3</td><td>11.591 ± 0.013</td><td>-1.402 ± 0.029</td><td>-0.167 ± 0.012</td><td>0.577 ± 0.021</td><td>3.022 ± 0.064</td><td>1.823 ± 0.046</td><td>4.23 ± 0.11</td><td>0.869–1.146</td><td>+207.2 ± 0.4</td><td>1,313,000</td><td>345</td></tr>
+<tr><td>poly3_const_noscale</td><td>11.592 ± 0.012</td><td>-1.390 ± 0.028</td><td>-0.166 ± 0.013</td><td>0.586 ± 0.021</td><td>3.015 ± 0.046</td><td>—</td><td>4.22 ± 0.10</td><td>1.601–2.077</td><td>+211.5 ± 0.4</td><td>1,066,000</td><td>313</td></tr>
+</tbody></table></div>
+<h3>M5_172669 (z = 0.604, 3602 fitted pixels, catalogue S/N 105)</h3>
+<p>Median ± half of the 16–84 range. Δ ln Z is relative to the baseline arm.</p>
+<div style="overflow-x:auto"><table class="results"><thead><tr><th>arm</th><th>log M⋆</th><th>log Z</th><th>[α/Fe]</th><th>τ<sub>dust</sub></th><th>t<sub>MW</sub> [Gyr]</th><th>spectrum_scaling</th><th>f<sub>calib</sub> [%]</th><th>P range</th><th>Δ ln Z</th><th>calls</th><th>wall [s]</th></tr></thead><tbody>
+<tr><td>baseline</td><td>11.109 ± 0.007</td><td>-1.722 ± 0.011</td><td>0.135 ± 0.015</td><td>0.012 ± 0.004</td><td>1.664 ± 0.024</td><td>1.237 ± 0.018</td><td>2.89 ± 0.04</td><td>—</td><td>+0.0 ± 0.4</td><td>1,183,000</td><td>205</td></tr>
+<tr><td>poly1</td><td>11.282 ± 0.013</td><td>-1.659 ± 0.029</td><td>0.040 ± 0.019</td><td>0.476 ± 0.034</td><td>2.342 ± 0.152</td><td>1.474 ± 0.033</td><td>2.84 ± 0.04</td><td>0.885–1.115</td><td>+114.3 ± 0.4</td><td>1,384,500</td><td>276</td></tr>
+<tr><td>poly3</td><td>11.255 ± 0.014</td><td>-1.579 ± 0.023</td><td>-0.014 ± 0.023</td><td>0.521 ± 0.026</td><td>1.837 ± 0.200</td><td>1.506 ± 0.029</td><td>2.82 ± 0.04</td><td>0.870–1.150</td><td>+128.3 ± 0.4</td><td>1,228,500</td><td>351</td></tr>
+<tr><td>poly3_const_noscale</td><td>11.260 ± 0.018</td><td>-1.587 ± 0.031</td><td>-0.018 ± 0.023</td><td>0.537 ± 0.029</td><td>1.948 ± 0.214</td><td>—</td><td>2.80 ± 0.04</td><td>1.327–1.762</td><td>+132.5 ± 0.4</td><td>1,046,500</td><td>306</td></tr>
+<tr><td>poly3_prior2</td><td>11.260 ± 0.026</td><td>-1.651 ± 0.032</td><td>0.037 ± 0.026</td><td>0.451 ± 0.031</td><td>1.966 ± 0.336</td><td>1.447 ± 0.036</td><td>2.79 ± 0.03</td><td>0.884–1.131</td><td>+103.6 ± 0.4</td><td>1,293,500</td><td>386</td></tr>
+</tbody></table></div>
+
+      <h3>Reading the mock table</h3>
+      <ul>
+        <li>Without a distortion the production setup recovers the truth (every pull within ±1.6). Adding an order-3 polynomial to undistorted data costs nothing in accuracy (<code>P</code> stays within 0.999–1.001) but widens the dust posterior by 2.3× and mass by 1.2×: the polynomial and diffuse dust both bend the continuum smoothly, so the spectrum loses most of its dust leverage and the photometry has to carry it.</li>
+        <li>A 4 percent end-to-end tilt is absorbed by the production setup with the wrong parameters: τ<sub>dust</sub> moves from 0.011 to 0.083 (18 half widths), mass by +0.036 dex (4 half widths), <code>spectrum_scaling</code> by +0.03; log Z, [α/Fe] and the age stay within one half width. ln Z drops by 9.</li>
+        <li>Orders 1, 3 and 5 all remove that bias (pulls within ±1.4, the recovered <code>P</code> overlays the injected line) with the same dust-width penalty; order 5 pays a little more width everywhere. Letting the polynomial carry the normalisation (<code>fit_constant</code>, no <code>spectrum_scaling</code>) gives the same parameters with one fewer sampled dimension and a recovered <code>P</code> of 1.19–1.24, the injected 1.238 scale times the tilt.</li>
+        <li>A 4 percent tilt plus 2 percent curvature breaks the production setup: every parameter is off by 5 to 23 half widths, the age width grows 14×, <code>spectrum_scaling</code> runs to 1.49 and ln Z drops by 646. The order-3 polynomial recovers the truth exactly as in the pure-tilt case.</li>
+        <li>Interaction with the absorption-line-mask experiment: with only ±15 Å rest-frame windows around ten standard lines (453 pixels, a simplified <code>drop</code> mode of branch <code>absorption-mask</code>), the tilt still biases dust by 11 half widths, because each window carries a local continuum slope. The polynomial removes it. The windows alone widen every posterior 2.5 to 13× (the age 13×); with the polynomial the age width is 3× the full-spectrum value. The two remedies are complementary, not alternatives, and the downweighted mode of that branch was not run here.</li>
+        <li>Cost: 0.28 ms per likelihood call with the order-3 polynomial against 0.18 ms without on the RTX 5060 Ti (the <code>(n_pix × k)</code> products are not negligible next to this small model), so a production fit takes 5.5 rather than 4 minutes.</li>
+      </ul>
+      <h3>Reading the DR2 targets</h3>
+      <ul>
+        <li>On both real spectra the free polynomial is not a few-percent correction. Its median runs from 1.15 at 6600 Å to 0.87 at 9000 Å on M5_172669 and from 1.10 to 0.87 on M4_108989, the same monotonic shape in the observed frame (correlation 0.97, rms difference 2.6 percent; in the rest frame the curves separate by 11 percent), which points at the instrument or the aperture rather than at rest-frame physics. Both DR2 spectra are also fainter than the photometry by a factor 1.24 to 1.49 (<code>spectrum_scaling</code>).</li>
+        <li>The stellar-population parameters follow: M5_172669 moves from τ<sub>dust</sub> = 0.012 to 0.52, +0.15 dex in mass, +0.14 in log Z, −0.15 in [α/Fe], and its age widens 8× (1.66 ± 0.02 to 1.84 ± 0.20 Gyr); M4_108989 moves from 4.65 ± 0.10 to 3.02 ± 0.06 Gyr in mass-weighted age, +0.4 in log Z and +0.24 in τ<sub>dust</sub>. ln Z rises by 128 and 207.</li>
+        <li>Where the gain comes from: at the maximum-likelihood sample of the production fit the twelve photometric bands give χ² = 166 (M5) and 138 (M4), with u and B 3–6σ low and the two IRAC bands 7σ high, while the spectrum reaches χ²/pixel = 1.06 only through the 3–5 percent <code>log_f_calib</code> inflation (8.7 and 2.4 with the raw errors). With the polynomial the M5 photometry improves to χ² = 92 and the M4 spectrum to 2.25 raw. The photometry that is supposed to anchor the SED is therefore itself in tension with the model family before any polynomial enters, and a free polynomial hands the continuum shape entirely to that anchor.</li>
+        <li>Project synthesis: the polynomial behaves as designed (the mocks prove it), but on these data it exposes a 25 percent observed-frame mismatch between the LEGA-C continuum and the model fitted to COSMOS photometry. Whether that mismatch is the spectra's flux calibration (slit losses vary with wavelength and seeing), the aperture colour gradient between the 1″ slit and the 3″ photometry, or the model family (no dust emission, fixed dust slope, one stellar library) is not decided by this experiment. Until it is, an unconstrained polynomial trades one systematic (a tilted continuum forcing τ<sub>dust</sub> to zero) for another (dust, age and metallicity floating along a degeneracy that only the photometry closes).</li>
+      </ul>
+      <h3>Follow-up arms on M5_172669</h3>
+      <ul>
+        <li>A Gaussian prior of 2 percent per coefficient (<code>prior_sigma = 0.02</code>) does not restrain the polynomial: <code>P</code> still spans 0.88–1.13, ln Z is 104 above the baseline (25 below the free polynomial), τ<sub>dust</sub> = 0.45, age 1.97 ± 0.34 Gyr. With 3,602 pixels the likelihood overwhelms any few-percent prior.</li>
+        <li>An order-1 polynomial (a pure tilt) gives the same picture: <code>P</code> 0.89–1.12, ln Z +114, τ<sub>dust</sub> = 0.48, age 2.34 ± 0.15 Gyr. The mismatch is a tilt, not a wiggle.</li>
+        <li>On the mock, the same 2 percent prior changes nothing (pulls within ±1.4, <code>P</code> 0.98–1.02), so the prior is harmless where the calibration error really is a few percent.</li>
+      </ul>
+      <figure class="plot">
+        <img src="calibration-polynomial-mock-bias.png" alt="Two panels: pulls of five parameters against the injected truth for every mock arm, and posterior half widths relative to the untilted baseline.">
+        <figcaption>Mock arms: pull (median minus truth over half width) and posterior half width relative to the untilted baseline.</figcaption>
+      </figure>
+      <figure class="plot">
+        <img src="calibration-polynomial-real-posteriors.png" alt="Posterior medians and 16 to 84 percent ranges of the key parameters for M4_108989 and M5_172669 under each arm.">
+        <figcaption>DR2 targets: medians and 16–84 percent ranges per arm.</figcaption>
+      </figure>
+      <figure class="plot">
+        <img src="calibration-polynomial-vectors.png" alt="Posterior bands of the profiled polynomial for every polynomial arm, with the injected distortion overlaid on mocks.">
+        <figcaption>The profiled polynomial per arm; dashed red is the injected distortion on mocks.</figcaption>
+      </figure>
+    </section>
+
+    <section id="decisions">
+      <h2>Open decisions</h2>
+      <ul>
+        <li><strong>What the polynomial may absorb.</strong> A free polynomial (any order) absorbs a 25 percent observed-frame tilt on both DR2 targets and moves dust, age and metallicity by many half widths; a few-percent prior cannot stop it. Either the LEGA-C continuum shape is trusted (keep the production setup, accept the mock-measured bias of 0.07 in τ<sub>dust</sub> and 0.04 dex in mass per 4 percent of true tilt) or it is not (polynomial on, ages move by up to 1.6 Gyr on M4_108989). The origin of the 25 percent mismatch should be settled first; a comparison of the LEGA-C DR2 flux calibration and slit-loss corrections against the 3″ COSMOS aperture, and a fit with the photometric floor relaxed, are the two cheapest tests.</li>
+        <li><strong>Order.</strong> On mocks orders 1, 3 and 5 are equivalent in accuracy; order 3 costs a 2.5× wider dust posterior and order 5 a little more. Order 1 is enough for a tilt; order 3 is the Prospector default and also covers curvature.</li>
+        <li><strong>Replace or complement <code>spectrum_scaling</code>.</strong> Both work identically on mocks and real data. Keeping <code>spectrum_scaling</code> and fixing the constant term (Prospector convention) retains a sampled, prior-controlled normalisation; letting the polynomial carry it removes one sampled dimension.</li>
+      </ul>
+      <p>Records: <code>results/calibration-polynomial-2026-09-02/</code> (one directory per arm with <code>ceridwen_result.h5</code>, <code>summary.json</code>, <code>vectors.npz</code>; <code>analysis.ipynb</code> executed with corner plots and SFH histories; <code>residual_diagnostics.json</code>). Code: branch <code>calibration-polynomial</code> in the <code>ceridwen</code> submodule and in this repository (<code>scripts/calibration_polynomial_experiment.py</code>).</p>
     </section>
   </main>
 </body>
