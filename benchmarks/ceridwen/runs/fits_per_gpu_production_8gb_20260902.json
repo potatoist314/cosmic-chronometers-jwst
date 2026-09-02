@@ -1,0 +1,317 @@
+{
+ "schema_version": 2,
+ "date_utc": "2026-09-02",
+ "mode": "fresh_instance_same_boot",
+ "vast_instance": 49625922,
+ "gpu_name": "RTX 3070",
+ "gpu_line_nvidia_smi": "NVIDIA GeForce RTX 3070, 8192 MiB, 595.71.05",
+ "price_usd_per_hour": 0.07379629629629629,
+ "ceridwen_commit": "fdcd75d",
+ "sedpy_jax_commit": "754a118",
+ "superproject_commit": "ab83ac6",
+ "workload": "scripts/run_ceridwen_vast_multi_gpu.py --only-target M5_172669 --num-shards 1 --shard-index 0 --fits-per-gpu 1, one runner process per concurrent slot, production notebook settings (num_live 500, num_inner_steps 65, num_delete 100, logZ_tol -5), seed 20260830, all on one boot of one instance.",
+ "note": "Whole-GPU memory and per-process memory from nvidia-smi sampled every 2 s. JAX peak_bytes_in_use / bytes_limit / pool_bytes from jax.devices()[0].memory_stats() printed by a diagnostic cell appended to the notebook after post-processing. calls_match_boot_reference compares each fit's likelihood-call count with the N=1 default fit of this boot (1,189,500). Every fit with a 1,098 MiB pool or with preallocation off stopped at 1,183,000 calls, one 100-deletion x 65-step outer iteration earlier, and the 1 September RTX 4060 Ti record also stopped at 1,183,000: the pool size changes the XLA autotuner's kernel choices, which shifts the float64 sampler path by one outer iteration. ln Z agrees within one sigma (232730.870 +/- 0.383 against 232730.981 +/- 0.259). Sampler walls of 267 to 270 s at every N=1 level show the same speed.",
+ "derived_fractions": {
+  "frac_below": 0.1,
+  "frac_low": 0.14,
+  "n1_peak_mib": 973.4
+ },
+ "prior_record_reference_calls": 1183000,
+ "boot_reference_calls": 1189500,
+ "levels": {
+  "N1_default": {
+   "fits_per_gpu": 1,
+   "xla_client_mem_fraction": null,
+   "xla_python_client_preallocate_false": false,
+   "level_wall_seconds": 301.1,
+   "peak_gpu_memory_used_mib_nvidia_smi": 6263,
+   "per_process_peak_mib_nvidia_smi": {
+    "795262": 6238
+   },
+   "aggregate_sampler_calls_per_second": 4413.729128014842,
+   "fits": [
+    {
+     "slot": 0,
+     "status": "complete",
+     "sampler_wall_seconds": 269.5,
+     "likelihood_calls": 1189500,
+     "calls_match_boot_reference": true,
+     "sampler_calls_per_second": 4413.729128014842,
+     "lnZ": [
+      232730.87,
+      0.383
+     ],
+     "jax_peak_bytes_in_use_mib": 973.4,
+     "jax_bytes_limit_mib": 5880.0,
+     "jax_pool_bytes_mib": 5880.0,
+     "error_lines": []
+    }
+   ]
+  },
+  "N1_frac0.14": {
+   "fits_per_gpu": 1,
+   "xla_client_mem_fraction": 0.14,
+   "xla_python_client_preallocate_false": false,
+   "level_wall_seconds": 368.3,
+   "peak_gpu_memory_used_mib_nvidia_smi": 1481,
+   "per_process_peak_mib_nvidia_smi": {
+    "835539": 1456
+   },
+   "aggregate_sampler_calls_per_second": 4427.395209580838,
+   "fits": [
+    {
+     "slot": 0,
+     "status": "complete",
+     "sampler_wall_seconds": 267.2,
+     "likelihood_calls": 1183000,
+     "calls_match_boot_reference": false,
+     "sampler_calls_per_second": 4427.395209580838,
+     "lnZ": [
+      232730.981,
+      0.259
+     ],
+     "jax_peak_bytes_in_use_mib": 826.4,
+     "jax_bytes_limit_mib": 1098.0,
+     "jax_pool_bytes_mib": 1098.0,
+     "error_lines": []
+    }
+   ]
+  },
+  "N1_frac0.1_expect_oom": {
+   "fits_per_gpu": 1,
+   "xla_client_mem_fraction": 0.1,
+   "xla_python_client_preallocate_false": false,
+   "level_wall_seconds": 28.0,
+   "peak_gpu_memory_used_mib_nvidia_smi": 977,
+   "per_process_peak_mib_nvidia_smi": {
+    "843541": 952
+   },
+   "aggregate_sampler_calls_per_second": null,
+   "fits": [
+    {
+     "slot": 0,
+     "status": "failed",
+     "sampler_wall_seconds": null,
+     "likelihood_calls": null,
+     "calls_match_boot_reference": null,
+     "sampler_calls_per_second": null,
+     "lnZ": null,
+     "jax_peak_bytes_in_use_mib": null,
+     "jax_bytes_limit_mib": null,
+     "jax_pool_bytes_mib": null,
+     "error_lines": [
+      "    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)",
+      "nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:",
+      "JaxRuntimeError                           Traceback (most recent call last)",
+      "    358 except _jax.JaxRuntimeError as e:",
+      "JaxRuntimeError: INTERNAL: Autotuning failed for HLO: %gemm_fusion_dot = f32[5,13,8,10992]{3,2,1,0} fusion(%operands_1_.1, %operands_0_.1), kind=kCustom, calls=%gemm_fusion_dot_computation, metadata={op_name=\"jit(_einsum)/dot_general\" stack_frame_id=19}, backend_config={\"operation_queue_id\":\"0\",\"fusion_backend_config\":{\"kind\":\"__triton_gemm\"},\"force_earliest_schedule\":false,\"reification_cost\":[],\"device_type\":\"DEVICE_TYPE_INVALID\"}. Failed to profile configs: Out of memory while trying to allocate 307.63MiB."
+     ]
+    }
+   ]
+  },
+  "N1_prealloc_false": {
+   "fits_per_gpu": 1,
+   "xla_client_mem_fraction": null,
+   "xla_python_client_preallocate_false": true,
+   "level_wall_seconds": 300.1,
+   "peak_gpu_memory_used_mib_nvidia_smi": 2469,
+   "per_process_peak_mib_nvidia_smi": {
+    "866030": 2444
+   },
+   "aggregate_sampler_calls_per_second": 4424.083769633508,
+   "fits": [
+    {
+     "slot": 0,
+     "status": "complete",
+     "sampler_wall_seconds": 267.4,
+     "likelihood_calls": 1183000,
+     "calls_match_boot_reference": false,
+     "sampler_calls_per_second": 4424.083769633508,
+     "lnZ": [
+      232730.981,
+      0.214
+     ],
+     "jax_peak_bytes_in_use_mib": 989.4,
+     "jax_bytes_limit_mib": 5880.0,
+     "jax_pool_bytes_mib": 2086.0,
+     "error_lines": []
+    }
+   ]
+  },
+  "N2_frac0.42": {
+   "fits_per_gpu": 2,
+   "xla_client_mem_fraction": 0.42,
+   "xla_python_client_preallocate_false": false,
+   "level_wall_seconds": 612.0,
+   "peak_gpu_memory_used_mib_nvidia_smi": 7337,
+   "per_process_peak_mib_nvidia_smi": {
+    "802038": 3652,
+    "802304": 3652
+   },
+   "aggregate_sampler_calls_per_second": 4234.228933142107,
+   "fits": [
+    {
+     "slot": 0,
+     "status": "complete",
+     "sampler_wall_seconds": 562.3,
+     "likelihood_calls": 1189500,
+     "calls_match_boot_reference": true,
+     "sampler_calls_per_second": 2115.4188155788725,
+     "lnZ": [
+      232730.87,
+      0.203
+     ],
+     "jax_peak_bytes_in_use_mib": 973.4,
+     "jax_bytes_limit_mib": 3294.0,
+     "jax_pool_bytes_mib": 3294.0,
+     "error_lines": []
+    },
+    {
+     "slot": 1,
+     "status": "complete",
+     "sampler_wall_seconds": 561.4,
+     "likelihood_calls": 1189500,
+     "calls_match_boot_reference": true,
+     "sampler_calls_per_second": 2118.810117563235,
+     "lnZ": [
+      232730.87,
+      0.241
+     ],
+     "jax_peak_bytes_in_use_mib": 973.4,
+     "jax_bytes_limit_mib": 3294.0,
+     "jax_pool_bytes_mib": 3294.0,
+     "error_lines": []
+    }
+   ]
+  },
+  "N3_frac0.14": {
+   "fits_per_gpu": 3,
+   "xla_client_mem_fraction": 0.14,
+   "xla_python_client_preallocate_false": false,
+   "level_wall_seconds": 957.1,
+   "peak_gpu_memory_used_mib_nvidia_smi": 4406,
+   "per_process_peak_mib_nvidia_smi": {
+    "844870": 1456,
+    "845144": 1456,
+    "845516": 1456
+   },
+   "aggregate_sampler_calls_per_second": 4237.980891990382,
+   "fits": [
+    {
+     "slot": 0,
+     "status": "complete",
+     "sampler_wall_seconds": 834.6,
+     "likelihood_calls": 1183000,
+     "calls_match_boot_reference": false,
+     "sampler_calls_per_second": 1417.4454828660437,
+     "lnZ": [
+      232730.981,
+      0.249
+     ],
+     "jax_peak_bytes_in_use_mib": 826.4,
+     "jax_bytes_limit_mib": 1098.0,
+     "jax_pool_bytes_mib": 1098.0,
+     "error_lines": []
+    },
+    {
+     "slot": 1,
+     "status": "complete",
+     "sampler_wall_seconds": 840.2,
+     "likelihood_calls": 1183000,
+     "calls_match_boot_reference": false,
+     "sampler_calls_per_second": 1407.998095691502,
+     "lnZ": [
+      232730.981,
+      0.261
+     ],
+     "jax_peak_bytes_in_use_mib": 826.4,
+     "jax_bytes_limit_mib": 1098.0,
+     "jax_pool_bytes_mib": 1098.0,
+     "error_lines": []
+    },
+    {
+     "slot": 2,
+     "status": "complete",
+     "sampler_wall_seconds": 837.5,
+     "likelihood_calls": 1183000,
+     "calls_match_boot_reference": false,
+     "sampler_calls_per_second": 1412.5373134328358,
+     "lnZ": [
+      232730.981,
+      0.189
+     ],
+     "jax_peak_bytes_in_use_mib": 826.4,
+     "jax_bytes_limit_mib": 1098.0,
+     "jax_pool_bytes_mib": 1098.0,
+     "error_lines": []
+    }
+   ]
+  },
+  "N3_frac0.28": {
+   "fits_per_gpu": 3,
+   "xla_client_mem_fraction": 0.28,
+   "xla_python_client_preallocate_false": false,
+   "level_wall_seconds": 888.4,
+   "peak_gpu_memory_used_mib_nvidia_smi": 7700,
+   "per_process_peak_mib_nvidia_smi": {
+    "815670": 2554,
+    "815929": 2554,
+    "816319": 2554
+   },
+   "aggregate_sampler_calls_per_second": 4270.985355099034,
+   "fits": [
+    {
+     "slot": 0,
+     "status": "complete",
+     "sampler_wall_seconds": 831.8,
+     "likelihood_calls": 1189500,
+     "calls_match_boot_reference": true,
+     "sampler_calls_per_second": 1430.0312575138255,
+     "lnZ": [
+      232730.87,
+      0.135
+     ],
+     "jax_peak_bytes_in_use_mib": 973.4,
+     "jax_bytes_limit_mib": 2196.0,
+     "jax_pool_bytes_mib": 2196.0,
+     "error_lines": []
+    },
+    {
+     "slot": 1,
+     "status": "complete",
+     "sampler_wall_seconds": 835.3,
+     "likelihood_calls": 1189500,
+     "calls_match_boot_reference": true,
+     "sampler_calls_per_second": 1424.0392673291035,
+     "lnZ": [
+      232730.87,
+      0.16
+     ],
+     "jax_peak_bytes_in_use_mib": 973.4,
+     "jax_bytes_limit_mib": 2196.0,
+     "jax_pool_bytes_mib": 2196.0,
+     "error_lines": []
+    },
+    {
+     "slot": 2,
+     "status": "complete",
+     "sampler_wall_seconds": 839.5,
+     "likelihood_calls": 1189500,
+     "calls_match_boot_reference": true,
+     "sampler_calls_per_second": 1416.9148302561048,
+     "lnZ": [
+      232730.87,
+      0.241
+     ],
+     "jax_peak_bytes_in_use_mib": 973.4,
+     "jax_bytes_limit_mib": 2196.0,
+     "jax_pool_bytes_mib": 2196.0,
+     "error_lines": []
+    }
+   ]
+  }
+ },
+ "conclusion": "On one 8 GB RTX 3070 boot, two and three concurrent production fits summed to 0.96 to 0.97 of the single-fit sampler throughput because processes time-slice the GPU, so DEFAULT_FITS_PER_GPU stays 1. The JAX working set of one production fit is 0.8 to 1.0 GiB (peak_bytes_in_use) while the default 75 percent preallocation reserves 5,880 MiB. XLA_CLIENT_MEM_FRACTION=0.14 (1,098 MiB pool) ran at full speed inside 1,481 MiB of GPU memory; 0.10 (819 MiB pool) failed at compile time in Triton GEMM autotuning; XLA_PYTHON_CLIENT_PREALLOCATE=false ran at full speed inside 2,469 MiB. A smaller pool changes the autotuned kernel choices, which shifts the run by one outer sampler iteration (1,183,000 against 1,189,500 likelihood calls) with ln Z agreeing within one sigma. Three fits at 0.14 fit in 4,406 MiB and were no faster than three fits at 0.28. Lower allocation makes N=2 and N=3 fit with room to spare but does not make them worthwhile; GPU memory was never the constraint.",
+ "cost_usd": 0.157,
+ "elapsed_seconds": 6572
+}

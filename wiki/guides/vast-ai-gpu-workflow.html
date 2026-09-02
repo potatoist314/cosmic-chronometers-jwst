@@ -219,10 +219,21 @@ PY
       <code>XLA_CLIENT_MEM_FRACTION = 0.85/N</code>, and the shard manifest
       records <code>fits_per_gpu</code>. Concurrent fits share the GPU by
       time-slicing. With the production sampler settings one fit already
-      keeps the GPU busy: on an 8 GB RTX 4060 Ti, three concurrent
+      keeps the GPU busy: on an 8 GB RTX 4060 Ti three concurrent
       production fits each ran 3.1 times slower than the same fit alone,
-      for no aggregate gain. Leave the default unless a same-boot
-      measurement with production settings shows headroom.</p>
+      and on an 8 GB RTX 3070 two and three concurrent fits summed to 0.96
+      to 0.97 of the single-fit throughput. Leave the default unless a
+      same-boot measurement with production settings shows headroom.</p>
+      <p>GPU memory does not set this limit. One production fit holds 0.8
+      to 1.0 GiB of JAX device memory; the default JAX preallocation
+      reserves 75 percent of the card, which is what <code>nvidia-smi</code>
+      reports. <code>XLA_CLIENT_MEM_FRACTION=0.14</code> (a 1,098 MiB pool
+      on 8 GB) and <code>XLA_PYTHON_CLIENT_PREALLOCATE=false</code> both run
+      a production fit at full speed; a 0.10 fraction fails in GEMM
+      autotuning at compile time. A smaller pool changes the autotuned
+      kernels and can shift a fit by one outer sampler iteration with the
+      same ln Z within one sigma, so keep the allocator setting fixed inside
+      one comparison.</p>
       <p>Each target writes one executed notebook, two HDF5 files, and one
       execution log. Figures remain embedded in the notebook. The runner
       retries a failed target once with the same seed.</p>

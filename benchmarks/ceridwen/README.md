@@ -116,6 +116,38 @@ the GPU busy. `scripts/run_ceridwen_vast_multi_gpu.py` therefore defaults to
 measurement: $0.034.
 Record: `benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260901.json`.
 
+## Concurrency and allocator levels on 8 GB (2 September 2026)
+
+One RTX 3070 (8 GB) repeated the same production fit of M5_172669 in one boot
+at seven levels: one, two, and three concurrent fits with the runner's default
+`XLA_CLIENT_MEM_FRACTION = 0.85/N`, then one fit with smaller pools and with
+preallocation off. Each level used one runner process per fit. The RTX 3070 is
+slower than the RTX 4060 Ti above, so only ratios within this table transfer.
+
+| Level | Pool per fit | Sampler wall per fit | Calls per fit | Aggregate calls/s | GPU peak |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 1 fit, default | 5,880 MiB | 269.5 s | 1,189,500 | 4,414 | 6,263 MiB |
+| 2 fits, 0.42 | 3,294 MiB | 562.3, 561.4 s | 1,189,500 | 4,234 | 7,337 MiB |
+| 3 fits, 0.28 | 2,196 MiB | 831.8, 835.3, 839.5 s | 1,189,500 | 4,271 | 7,700 MiB |
+| 1 fit, 0.14 | 1,098 MiB | 267.2 s | 1,183,000 | 4,427 | 1,481 MiB |
+| 1 fit, 0.10 | 819 MiB | failed at compile | | | 977 MiB |
+| 3 fits, 0.14 | 1,098 MiB | 834.6, 840.2, 837.5 s | 1,183,000 | 4,238 | 4,406 MiB |
+| 1 fit, preallocate off | on demand | 267.4 s | 1,183,000 | 4,424 | 2,469 MiB |
+
+Two or three concurrent fits sum to 0.96 to 0.97 of one fit, so the default
+stays `--fits-per-gpu 1`. The JAX working set of one production fit
+(`peak_bytes_in_use`) is 826 to 989 MiB; the default preallocation reserves
+75 percent of the card. A 1,098 MiB pool runs at full speed, an 819 MiB pool
+fails in Triton GEMM autotuning before sampling starts, and
+`XLA_PYTHON_CLIENT_PREALLOCATE=false` runs at full speed in 2.4 GB. Every fit
+with the 1,098 MiB pool or with preallocation off stopped at 1,183,000 calls,
+one outer iteration before the default fit, as did the RTX 4060 Ti fit above:
+the pool size changes the autotuned kernels and shifts the float64 sampler
+path by one iteration, with ln Z agreeing within one sigma (232730.87 ± 0.38
+against 232730.98 ± 0.26). Memory therefore never limits concurrency on 8 GB;
+time-slicing does. Cost of the measurement: $0.16.
+Record: `benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260902.json`.
+
 ## Completed runs
 
 | Provider | GPU | Likelihood | Grid | NSS settings | Iterations / dead points | Likelihood calls | Sampler wall | Calls/s | Result |

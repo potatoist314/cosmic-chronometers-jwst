@@ -369,3 +369,8 @@
 
 - Pages: `guides/vast-ai-gpu-workflow.html`, `guides/modal-gpu-workflow.html`, `codebase/ceridwen-observations-model.html`, `analyses/ceridwen-gpu-benchmarks.html`, `index.md`
 - Change: Recorded the sedpy_jax fork as the `external/sedpy_jax` submodule that the bootstrap and Modal image install from the tree, the `fits_per_gpu` manifest field, and the same-boot RTX 4060 Ti measurement in which three concurrent production fits gave no aggregate gain over one, so the shard runner keeps one fit per GPU by default.
+
+## [2026-09-02] analysis | N=2 concurrency and JAX allocator levels on 8 GB
+
+- Pages: `analyses/ceridwen-gpu-benchmarks.html`, `guides/vast-ai-gpu-workflow.html`
+- Change: Recorded the same-boot RTX 3070 measurement of one, two, and three concurrent production fits (0.96 to 0.97 of one fit in aggregate, default stays one fit per GPU), the 0.8 to 1.0 GiB JAX working set against the 75 percent preallocated pool, the 0.14 fraction and preallocation-off levels at full speed, the 0.10 fraction autotuning failure, and the one-iteration sampler shift that a smaller pool causes.
