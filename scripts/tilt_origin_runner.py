@@ -35,7 +35,7 @@ def main() -> int:
     args = parser.parse_args()
     arms = json.loads(args.arms.read_text())
     script = Path(__file__).resolve().parent / "calibration_polynomial_experiment.py"
-    log = args.out_root / "progress.log"
+    log = args.out_root / f"progress{args.arms.stem.replace('arms', '')}.log"
     args.out_root.mkdir(parents=True, exist_ok=True)
 
     def note(message: str) -> None:
@@ -63,7 +63,7 @@ def main() -> int:
             code = subprocess.run(command, stdout=handle, stderr=subprocess.STDOUT).returncode
         note(f"end {arm['name']} rc={code} wall={time.time() - started:.0f}s")
         failures += code != 0
-    (args.out_root / "ALL_DONE").write_text(f"failures={failures}\n")
+    (args.out_root / f"ALL_DONE{args.arms.stem.replace('arms', '')}").write_text(f"failures={failures}\n")
     return 1 if failures else 0
 
 

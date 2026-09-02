@@ -60,7 +60,23 @@ def _log(prefix: str):
     return log
 
 
-def arms(target: str) -> list[dict]:
+def followup_arms(target: str) -> list[dict]:
+    """Which bands drive the joint-fit tilt: the corrected photometry with the
+    IRAC bands, then also the u band, left out; the full-band pair is repeated
+    so the comparison shares one boot."""
+    base = ["--target", target, "--profile", "gpu-full", "--photometry", "cosmos_total"]
+    rows = []
+    for tag, drop in (("allbands", []), ("noirac", ["ch1", "ch2"]), ("noirac_nou", ["ch1", "ch2", "u"])):
+        extra = ["--drop-bands", *drop] if drop else []
+        rows.append(dict(name=f"{target}_total_{tag}_baseline", args=base + extra))
+        rows.append(dict(name=f"{target}_total_{tag}_poly3", args=base + extra + ["--poly-order", "3"]))
+    rows.append(dict(name=f"{target}_total_noirac_speconly", args=base + ["--drop-bands", "ch1", "ch2", "--fit", "spectrum"]))
+    return rows
+
+
+def arms(target: str, arm_set: str = "main") -> list[dict]:
+    if arm_set == "followup":
+        return followup_arms(target)
     base = ["--target", target, "--profile", "gpu-full"]
     rows = [
         # photometry-only first: fast, and the dust-prior arm reads it
@@ -149,19 +165,19 @@ def _prepare(instance_id: int, args, log) -> None:
     if int(counted.splitlines()[0]) != sweep.EXPECTED_SPECTRUM_FILES:
         raise sweep.SweepError("spectra upload incomplete")
     sweep._ssh(instance_id, f"mkdir -p {shlex.quote(remote)}/{RESULTS}", timeout=60.0)
-    sweep._rsync(port, str(PROJECT_ROOT / RESULTS / f"arms_{args.target}.json"),
-                 f"{target}:{remote}/{RESULTS}/arms_{args.target}.json", timeout=120.0)
+    sweep._rsync(port, str(PROJECT_ROOT / RESULTS / f"arms_{args.target}{args.suffix}.json"),
+                 f"{target}:{remote}/{RESULTS}/arms_{args.target}{args.suffix}.json", timeout=120.0)
     sweep._bootstrap(instance_id, log)
     sweep._verify_cuda_backend(instance_id, log)
 
 
-def _launch(instance_id: int, target_name: str, log) -> None:
+def _launch(instance_id: int, target_name: str, log, suffix: str = "") -> None:
     remote = sweep.REMOTE_ROOT
     command = (
         f"cd {shlex.quote(remote)} && "
         f"JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 LD_LIBRARY_PATH= setsid -f .venv-ceridwen-gpu/bin/python "
-        f"scripts/tilt_origin_runner.py --arms {RESULTS}/arms_{target_name}.json --out-root {RESULTS} "
-        f"--project-root {shlex.quote(remote)} > {RESULTS}/runner_{target_name}.log 2>&1 < /dev/null; "
+        f"scripts/tilt_origin_runner.py --arms {RESULTS}/arms_{target_name}{suffix}.json --out-root {RESULTS} "
+        f"--project-root {shlex.quote(remote)} > {RESULTS}/runner_{target_name}{suffix}.log 2>&1 < /dev/null; "
         f"sleep 2; pgrep -f {shlex.quote(RUNNER_PATTERN)} >/dev/null && echo launched"
     )
     result = sweep._ssh(instance_id, command, timeout=60.0)
@@ -176,9 +192,9 @@ def _runner_alive(instance_id: int) -> bool:
     return "yes" in probe.stdout
 
 
-def _progress(instance_id: int) -> str:
-    result = sweep._ssh(instance_id, f"tail -n 2 {sweep.REMOTE_ROOT}/{RESULTS}/progress.log 2>/dev/null; "
-                        f"test -f {sweep.REMOTE_ROOT}/{RESULTS}/ALL_DONE && echo ALL_DONE", timeout=60.0, check=False)
+def _progress(instance_id: int, suffix: str = "") -> str:
+    result = sweep._ssh(instance_id, f"tail -n 2 {sweep.REMOTE_ROOT}/{RESULTS}/progress{suffix}.log 2>/dev/null; "
+                        f"test -f {sweep.REMOTE_ROOT}/{RESULTS}/ALL_DONE{suffix} && echo ALL_DONE", timeout=60.0, check=False)
     return result.stdout.strip().replace("\n", " | ")
 
 
@@ -198,12 +214,12 @@ def run_instance(offer: dict, args, outcome: dict) -> None:
         outcome["instance_id"] = instance_id
         log(f"rented instance {instance_id}: {_describe(offer)}")
         _prepare(instance_id, args, log)
-        _launch(instance_id, args.target, log)
+        _launch(instance_id, args.target, log, args.suffix)
         deadline = time.monotonic() + RUN_TIMEOUT_SECONDS
         last_pull = time.monotonic()
         while time.monotonic() < deadline:
             time.sleep(POLL_SECONDS)
-            status = _progress(instance_id)
+            status = _progress(instance_id, args.suffix)
             log(status or "no progress yet")
             if "ALL_DONE" in status or not _runner_alive(instance_id):
                 break
@@ -211,7 +227,7 @@ def run_instance(offer: dict, args, outcome: dict) -> None:
                 _pull(instance_id, log)
                 last_pull = time.monotonic()
         _pull(instance_id, log)
-        outcome["progress"] = _progress(instance_id)
+        outcome["progress"] = _progress(instance_id, args.suffix)
     except Exception as error:  # noqa: BLE001 - always destroy, then report
         outcome["error"] = f"{type(error).__name__}: {error}"
         log(f"failed: {outcome['error']}")
@@ -229,9 +245,9 @@ def command_plan(args) -> int:
     out = PROJECT_ROOT / RESULTS
     out.mkdir(parents=True, exist_ok=True)
     for target in TARGETS:
-        rows = arms(target)
-        (out / f"arms_{target}.json").write_text(json.dumps(rows, indent=1) + "\n")
-        print(f"{target}: {len(rows)} arms -> {out / f'arms_{target}.json'}")
+        rows = arms(target, args.arm_set)
+        (out / f"arms_{target}{args.suffix}.json").write_text(json.dumps(rows, indent=1) + "\n")
+        print(f"{target}: {len(rows)} arms -> {out / f'arms_{target}{args.suffix}.json'}")
     for offer in blackwell_offers()[:6]:
         print(_describe(offer))
     return 0
@@ -283,8 +299,11 @@ def command_destroy_all(args) -> int:
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    sub.add_parser("plan")
+    plan = sub.add_parser("plan")
     run = sub.add_parser("run")
+    for sp in (plan, run):
+        sp.add_argument("--arm-set", choices=("main", "followup"), default="main")
+        sp.add_argument("--suffix", default="", help="arm-list file suffix, e.g. _followup")
     run.add_argument("--target", action="append", choices=TARGETS, help="default: both targets")
     run.add_argument("--image", default=sweep.DEFAULT_IMAGE)
     run.add_argument("--disk", type=int, default=sweep.DEFAULT_DISK_GB)

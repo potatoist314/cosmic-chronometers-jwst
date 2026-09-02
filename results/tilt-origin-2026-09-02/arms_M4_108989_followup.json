@@ -1,0 +1,104 @@
+[
+ {
+  "name": "M4_108989_total_allbands_baseline",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total"
+  ]
+ },
+ {
+  "name": "M4_108989_total_allbands_poly3",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total",
+   "--poly-order",
+   "3"
+  ]
+ },
+ {
+  "name": "M4_108989_total_noirac_baseline",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total",
+   "--drop-bands",
+   "ch1",
+   "ch2"
+  ]
+ },
+ {
+  "name": "M4_108989_total_noirac_poly3",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total",
+   "--drop-bands",
+   "ch1",
+   "ch2",
+   "--poly-order",
+   "3"
+  ]
+ },
+ {
+  "name": "M4_108989_total_noirac_nou_baseline",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total",
+   "--drop-bands",
+   "ch1",
+   "ch2",
+   "u"
+  ]
+ },
+ {
+  "name": "M4_108989_total_noirac_nou_poly3",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total",
+   "--drop-bands",
+   "ch1",
+   "ch2",
+   "u",
+   "--poly-order",
+   "3"
+  ]
+ },
+ {
+  "name": "M4_108989_total_noirac_speconly",
+  "args": [
+   "--target",
+   "M4_108989",
+   "--profile",
+   "gpu-full",
+   "--photometry",
+   "cosmos_total",
+   "--drop-bands",
+   "ch1",
+   "ch2",
+   "--fit",
+   "spectrum"
+  ]
+ }
+]

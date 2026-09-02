@@ -35,6 +35,9 @@ adds the switches of the calibration-polynomial experiment:
 ``--fit {both,spectrum,photometry}``
     Which observations enter the likelihood.  The model always predicts both,
     so a spectrum-only fit still records its predicted photometry.
+``--drop-bands NAME [NAME ...]``
+    Leave these bands (short names ``u B V r i z Y J H Ks ch1 ch2``) out of the
+    photometry altogether.
 ``--dust-law NAME`` / ``--free-dust-index`` / ``--dust-prior MEAN SIGMA``
     Diffuse attenuation law (``sedpy_jax`` name), a sampled Kriek & Conroy
     slope instead of the fixed −0.7, or a clipped-normal prior on the
@@ -111,6 +114,7 @@ COSMOS2015_EXTINCTION = np.array([4.660, 4.020, 3.117, 2.660, 1.991, 1.461,
 ULTRAVISTA_COLUMNS = ["Fu", "FB", "FV", "Frp", "Fip", "Fzp", "FY", "FJ", "FH",
                       "FKs", "Fch1", "Fch2"]
 PHOTOMETRY_SOURCES = ("cosmos_ap3", "cosmos_total", "uvista_total")
+BAND_NAMES = ["u", "B", "V", "r", "i", "z", "Y", "J", "H", "Ks", "ch1", "ch2"]
 DUST_INDEX_PRIOR = (-1.0, 0.4)
 DR2_FLUX_UNIT = 1e-19 * u.erg / u.s / u.cm**2 / u.AA
 SPECTRUM_CALIBRATION_INIT = 0.03
@@ -211,7 +215,8 @@ def load_photometry(project_root: Path, galaxy, source: str):
 
 
 def build_observations(project_root: Path, target_id: str, line_windows: float | None,
-                       photometry: str = "cosmos_ap3", floor: float = PHOTOMETRY_FLOOR):
+                       photometry: str = "cosmos_ap3", floor: float = PHOTOMETRY_FLOOR,
+                       drop_bands: tuple[str, ...] = ()):
     selected = select_passive(project_root)
     rows = selected[selected["SPECT_ID"] == target_id]
     if len(rows) != 1:
@@ -221,10 +226,14 @@ def build_observations(project_root: Path, target_id: str, line_windows: float |
     sigma_star = float(galaxy["SIGMA_STARS_PRIME"])
 
     flux, err = load_photometry(project_root, galaxy, photometry)
+    keep = np.array([name not in drop_bands for name in BAND_NAMES])
+    bands = [name for name in BAND_NAMES if name not in drop_bands]
+    filters = [f for f, k in zip(FILTER_NAMES, keep) if k]
+    flux, err = flux[keep], err[keep]
     unc = np.hypot(err, floor * np.abs(flux))
     mask = np.isfinite(flux) & np.isfinite(unc) & (flux > 0)
     assert mask.all()
-    phot_obs = Photometry(filters=FILTER_NAMES, flux=flux, uncertainty=unc,
+    phot_obs = Photometry(filters=filters, flux=flux, uncertainty=unc,
                           mask=mask, name="photometry")
 
     wave_air, flux_dr2, error_dr2, good, resolution = load_spectrum(
@@ -254,7 +263,7 @@ def build_observations(project_root: Path, target_id: str, line_windows: float |
     meta = dict(target=target_id, object_id=int(galaxy["OBJECT"]), zred=zred,
                 sigma_star=sigma_star, sn_catalogue=float(galaxy["SN"]),
                 resolution=resolution, n_pix_fitted=int(spec_obs.ndof),
-                photometry=photometry, phot_floor=floor,
+                photometry=photometry, phot_floor=floor, bands=bands,
                 phot_flux_maggies=flux.tolist(), phot_unc_maggies=unc.tolist())
     return phot_obs, spec_obs, spec_kwargs, meta
 
@@ -356,7 +365,7 @@ def make_mock(model, truth, phot_obs, spec_kwargs, spec_obs, tilt, curvature, se
     phot_flux = mu_phot + rng.normal(0.0, phot_unc)
     mock_spec = Spectrum(**{**spec_kwargs, "flux": np.where(mask, spec_flux, 0.0),
                             "mask": mask})
-    mock_phot = Photometry(filters=FILTER_NAMES, flux=phot_flux, uncertainty=phot_unc,
+    mock_phot = Photometry(filters=list(phot_obs.filters), flux=phot_flux, uncertainty=phot_unc,
                            mask=np.asarray(phot_obs.mask), name="photometry")
     return mock_phot, mock_spec, distortion, mu_spec
 
@@ -462,6 +471,8 @@ def main(argv=None) -> int:
     parser.add_argument("--phot-floor", type=float, default=PHOTOMETRY_FLOOR,
                         help="fractional error floor added in quadrature to every band")
     parser.add_argument("--fit", choices=("both", "spectrum", "photometry"), default="both")
+    parser.add_argument("--drop-bands", nargs="+", default=(), choices=BAND_NAMES, metavar="BAND",
+                        help="bands left out of the photometry")
     parser.add_argument("--dust-law", default="kriek_conroy", choices=sorted(ATTENUATION_LAWS))
     parser.add_argument("--free-dust-index", action="store_true",
                         help="sample the Kriek & Conroy slope instead of fixing it")
@@ -473,7 +484,8 @@ def main(argv=None) -> int:
     started = time.time()
     args.out.mkdir(parents=True, exist_ok=True)
     phot_obs, spec_obs, spec_kwargs, meta = build_observations(
-        args.project_root, args.target, args.line_windows, args.photometry, args.phot_floor)
+        args.project_root, args.target, args.line_windows, args.photometry, args.phot_floor,
+        tuple(args.drop_bands))
     ssp = SSPDataAfe.load(fetch_grid("amist_c3k_hr_krou_afe", quiet=True))
     zred = meta["zred"]
     use_scaling = not args.no_spectrum_scaling
@@ -532,6 +544,7 @@ def main(argv=None) -> int:
                     prior_sigma=args.prior_sigma, spectrum_scaling=use_scaling,
                     line_windows=args.line_windows, sampler=settings,
                     photometry=args.photometry, phot_floor=args.phot_floor, fit=args.fit,
+                    drop_bands=list(args.drop_bands),
                     dust_law=args.dust_law, free_dust_index=args.free_dust_index,
                     dust_prior=args.dust_prior,
                     truth_from=None if args.truth_from is None else str(args.truth_from)),
