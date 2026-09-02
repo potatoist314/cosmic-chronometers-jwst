@@ -26,6 +26,11 @@ import time
 from datetime import UTC, datetime
 from pathlib import Path
 
+# The runner validates results in-process through ceridwen, which imports
+# JAX; keep that on the CPU so the runner never holds a GPU pool between
+# cells (the DR2 shard runner does the same in its parent process).
+os.environ["JAX_PLATFORMS"] = "cpu"
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RUNNER_PATH = PROJECT_ROOT / "scripts/run_ceridwen_vast_multi_gpu.py"
 DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "results/absorption-mask"
@@ -139,6 +144,7 @@ def _cell_environment(cell: dict, result_dir: Path, quick: bool, gpu: bool) -> d
     }
     if gpu:
         env["CERIDWEN_EXPECT_SINGLE_GPU"] = "1"
+        env.pop("JAX_PLATFORMS", None)
     truth = env.get("CERIDWEN_MOCK_TRUTH")
     if truth and not Path(truth).is_absolute():
         env["CERIDWEN_MOCK_TRUTH"] = str(PROJECT_ROOT / truth)

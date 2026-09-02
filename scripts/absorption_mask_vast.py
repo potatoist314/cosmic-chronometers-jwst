@@ -191,6 +191,8 @@ def _prepare(instance_id: int, args, log) -> None:
                  f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/grid.json", timeout=120.0)
     sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/truth_M5_172669.json",
                  f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/truth_M5_172669.json", timeout=120.0)
+    # Seed the box with cells already completed elsewhere so the runner skips them.
+    sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/", f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/", timeout=900.0)
     sweep._bootstrap(instance_id, log)
     sweep._verify_cuda_backend(instance_id, log)
 
