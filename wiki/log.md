@@ -379,3 +379,8 @@
 
 - Pages: `analyses/ceridwen-gpu-benchmarks.html`, `guides/vast-ai-gpu-workflow.html`, `index.md`
 - Change: Recorded the same-boot RTX 5060, RTX 5070, and RTX 5060 Ti 16 GB measurements of one, two, and three concurrent production fits (0.99 to 1.03 of one fit in aggregate, default stays one fit per GPU), the 1,005 MiB JAX working set per fit against the whole-GPU peaks, the identical 1,157,000-call M5_172669 fit across all Blackwell levels, and the single-fit cost per card.
+
+## [2026-09-02] analysis | Calibration polynomial in the spectrum likelihood
+
+- Pages: `analyses/ceridwen-calibration-polynomial.html`, `index.md`
+- Change: Added a draft analysis page explaining Prospector's spectrophotometric calibration vector, recording that `Spectrum.fit_polynomial_calibration` was never on the sampled path, documenting the profiled Chebyshev `PolynomialCalibration` on branch `calibration-polynomial`, and reporting the mock and DR2 fits with and without it.

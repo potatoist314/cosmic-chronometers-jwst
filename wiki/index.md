@@ -54,3 +54,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 ## Analyses
 
 - `analyses/ceridwen-gpu-benchmarks.html` — Compares speed, cost, memory, and hardware behaviour across forty-nine measured GPU runs stored under `benchmarks/`.
+- `analyses/ceridwen-calibration-polynomial.html` — Draft. Explains the spectrophotometric calibration polynomial, audits the sampled likelihood, and measures the profiled Chebyshev calibration on mocks and two DR2 targets.

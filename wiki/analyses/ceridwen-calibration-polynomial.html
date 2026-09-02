@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="wiki-type" content="analysis">
+  <meta name="wiki-status" content="draft">
+  <meta name="wiki-updated" content="2026-09-02">
+  <title>Ceridwen Calibration Polynomial</title>
+  <link rel="stylesheet" href="../assets/wiki.css">
+  <style>
+    figure.plot { margin: 1.2rem 0; }
+    figure.plot img { max-width: 100%; height: auto; border: 1px solid var(--muted, #888); }
+    table.results { border-collapse: collapse; font-size: 0.9rem; }
+    table.results th, table.results td { padding: 0.25rem 0.55rem; border-bottom: 1px solid var(--muted, #888); text-align: right; }
+    table.results th:first-child, table.results td:first-child { text-align: left; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="../index.html">
+        <span class="site-mark">AR</span>
+        <span>Astro Research Wiki</span>
+      </a>
+    </div>
+  </header>
+  <main class="page-shell" id="main-content">
+    <header>
+      <h1>Ceridwen calibration polynomial</h1>
+      <p>Draft. What a spectrophotometric calibration polynomial does, whether Ceridwen had one on the sampled path, the profiled Chebyshev implementation on branch <code>calibration-polynomial</code>, and its measured effect on mocks and two LEGA-C DR2 targets.</p>
+    </header>
+
+    <section id="what">
+      <h2>What the polynomial does</h2>
+      <p>A slit or fibre spectrum carries a smooth, wavelength-dependent flux-calibration error of a few percent: flux-standard and response errors, slit losses that change with seeing and wavelength, differential atmospheric refraction, and extraction or sky-subtraction residuals. Broadband photometry from imaging does not share these errors. In a joint fit the spectrum contributes thousands of pixels, so an uncorrected 2 to 4 percent tilt dominates the likelihood and pulls the stellar-population parameters.</p>
+      <p>Prospector's answer is a multiplicative <em>spectrophotometric calibration vector</em>: the model spectrum is multiplied by <code>spec_norm × (1 + Σ<sub>m≥1</sub> a<sub>m</sub> T<sub>m</sub>(x))</code>, a low-order Chebyshev polynomial in a wavelength coordinate <code>x ∈ [−1, 1]</code>. The photometry sets the absolute SED shape and normalisation; the polynomial absorbs the spectrum's smooth calibration error, and the spectrum keeps only its line and narrow-continuum information. The coefficients <code>a<sub>m</sub></code> are not sampled: because the model is linear in them, Prospector solves the weighted least-squares problem at every likelihood call (<code>polyopt</code> in <code>PolySedModel.spec_calibration</code>) and plugs the solution in (a profile likelihood). <code>spec_norm</code> is the scalar normalisation, sampled or fixed.</p>
+      <figure class="plot">
+        <img src="calibration-polynomial-explainer.png" alt="Top: a mock LEGA-C spectrum with a 4 percent tilt and 2 percent curvature next to the true model spectrum and the photometry. Bottom: data divided by model, the injected distortion, the recovered order-3 Chebyshev polynomial, and the flat scalar alternative.">
+        <figcaption>Mock of M5_172669 at z = 0.604 with a 4 percent end-to-end tilt and 2 percent curvature multiplied into the spectrum only. Bottom: the data-to-model ratio, the injected distortion, the profiled order-3 polynomial (recovered to 0.05 percent), and the best scalar, which a <code>spectrum_scaling</code>-only model would use.</figcaption>
+      </figure>
+      <p>Liu Hao's reading, "this calibrates the spectroscopy/photometry mismatch", is right with one refinement: the polynomial calibrates the <em>spectrum onto the photometry</em>, never the reverse, and it removes only the smooth part of the mismatch. Absorption-line depths and widths are untouched because the polynomial cannot bend on the scale of a line. A pure scalar (<code>spec_norm</code>, Ceridwen's <code>spectrum_scaling</code>) removes the mean offset only; a tilt or curvature remains and is fitted by the stellar-population and dust parameters instead.</p>
+    </section>
+
+    <section id="audit">
+      <h2>Ceridwen before this branch</h2>
+      <ul>
+        <li><code>Spectrum.fit_polynomial_calibration</code> (<code>ceridwen/observation/spectrum.py:1014-1078</code> on <code>main</code>) solved the same weighted least-squares Chebyshev fit in NumPy, but nothing in the package called it. Notebooks call it after a fit to draw a calibrated median model. It was dead code with respect to the likelihood.</li>
+        <li>The sampled path is <code>MultiObservationLikelihood.make_lnprobfn</code> (<code>ceridwen/likelihood/likelihood.py:875-932</code>) → <code>SedModel.predict</code> (<code>ceridwen/model/model.py:369</code>) → <code>CSPBasis._project_observations</code> (<code>ceridwen/csp/csp.py:1300-1418</code>) → <code>DiagonalNoiseModel.compute</code> (<code>ceridwen/likelihood/noise_model.py:283-368</code>) → <code>lnlike_diag_gaussian</code> (<code>likelihood.py:175-264</code>). No polynomial anywhere on it.</li>
+        <li><code>spectrum_scaling</code> is Prospector's <code>spec_norm</code>: a sampled scalar multiplied into the <code>Spectrum</code> prediction only (<code>csp.py:1361-1362</code> and <code>1410-1416</code>). The DR2 notebook gives it a <code>ClippedNormal(1, 0.3)</code> prior and adds <code>log_f_calib</code>, a model-anchored fractional noise term of 1 to 10 percent that inflates the spectrum errors instead of correcting the shape.</li>
+        <li><code>Spectrum.log_likelihood</code>, the static <code>calibration=</code> vector, <code>noise_floor</code>, and <code>sky</code> (<code>spectrum.py:875-1013</code>) are not on the sampled path either; they serve GP and custom pipelines.</li>
+      </ul>
+    </section>
+
+    <section id="implementation">
+      <h2>Implementation on the branch</h2>
+      <p><code>ceridwen/likelihood/calibration.py</code> adds <code>PolynomialCalibration</code>: a static Chebyshev basis built once from the pixel grid (the unmasked range maps to <code>x ∈ [−1, 1]</code>), a pure-JAX weighted least-squares solve on the normal equations at every call, an optional Gaussian prior on the coefficients (a ridge term plus its log-density), and a choice of whether the constant term is part of the basis. <code>DiagonalGaussianLikelihood(calibration=...)</code> replaces the model spectrum by <code>P(x) × μ</code> before the noise model and the Gaussian kernel, in both <code>__call__</code> and the jitted factory. Absent, every existing fit is unchanged. The weights are the observational uncertainties, as in Prospector, so the solution is a deterministic function of θ and never feeds back through the model-anchored <code>log_f_calib</code> term.</p>
+      <div class="source-example">
+        <p class="source-locator"><code>ceridwen/likelihood/calibration.py · PolynomialCalibration.solve</code></p>
+        <pre class="python"><code>        safe_sigma = jnp.where(mask, jnp.asarray(sigma), 1.0)
+        # Whitened, masked design matrix and residual: rows outside the mask
+        # are exactly zero, so they drop out of the normal equations.
+        weight = jnp.where(mask, mu / safe_sigma, 0.0)          # (n_pix,)
+        design = self.basis * weight[:, None]                    # (n_pix, k)
+        target = jnp.where(mask, (y - mu) / safe_sigma, 0.0)     # (n_pix,)
+        normal = design.T @ design                               # (k, k)
+        rhs = design.T @ target                                  # (k,)
+        if self.prior_sigma is not None:
+            normal = normal + jnp.eye(self.n_coeff) / self.prior_sigma ** 2
+        return jnp.linalg.solve(normal, rhs)</code></pre>
+        <p><strong>Documented contract:</strong> "Weighted least-squares coefficients <code>a</code> of <code>y ~= mu (1 + basis @ a)</code>. Pure JAX (jit/grad safe). Masked pixels carry zero weight. With a <code>prior_sigma</code> the normal equations get the ridge term <code>I / prior_sigma**2</code>."</p>
+        <p><strong>Why it matters:</strong> the solve is a <code>(k × k)</code> system with <code>k ≤ 5</code>, so the polynomial costs one small matrix solve per likelihood call on top of the SED model, and no extra sampled dimensions.</p>
+      </div>
+      <p>Tests in <code>tests/test_polynomial_calibration.py</code>: exact recovery of an injected polynomial without noise, recovery to better than 1 percent at S/N 20, masked pixels excluded, the constant absorbed only with <code>fit_constant</code>, the prior shrinking the coefficients and adding the right penalty, the profile likelihood on tilted data matching the untilted likelihood, jit and gradient through <code>make_lnprobfn</code>, and recovery of a tilt through the alpha-enhanced forward model on the DR2 grid. <code>Spectrum.fit_polynomial_calibration</code> now calls the same kernel, so the post-hoc plot and the in-likelihood profile cannot disagree.</p>
+    </section>
+
+    <section id="experiment">
+      <h2>Experiment</h2>
+      <p><code>scripts/calibration_polynomial_experiment.py</code> reproduces the integrated notebook's <code>full_spectrum</code> joint fit (selection, observations, priors, transforms, 500 live points, 65 inner steps, 100 deletions, <code>logZ_tol</code> −5) and adds the switches. Mocks use M5_172669's pixel grid, uncertainties, masks, and filters; the truth is the weighted posterior median of the stored full-spectrum fit; the distortion <code>1 + (T/2) x + C T<sub>2</sub>(x)</code> multiplies the spectrum only; one noise realisation with seed 20260902 is shared by every mock arm. All arms ran on one RTX 5060 Ti 16 GB in one boot.</p>
+      <!-- RESULTS -->
+    </section>
+  </main>
+</body>
+</html>
