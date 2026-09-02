@@ -354,7 +354,8 @@ def build_notebook_model(target: dict):
     }
     model = SedModel(csp, observations=[phot_obs, spec_obs], priors=priors,
                      transforms=transforms, free_param_init=initial, zred=z)
-    return model, phot_obs, spec_obs
+    bounds = {"Z": z_bounds, "afe": afe_bounds}
+    return model, phot_obs, spec_obs, bounds
 
 
 PRIOR_VARIANCE = {
@@ -381,7 +382,7 @@ def fisher_forecast(target: dict, truth: dict, feature_mask, downweight: float) 
     import jax.numpy as jnp
     from jax.flatten_util import ravel_pytree
 
-    model, phot_obs, spec_obs = build_notebook_model(target)
+    model, phot_obs, spec_obs, bounds = build_notebook_model(target)
     theta = {k: jnp.asarray(truth[k], dtype=float) for k in model.theta_init}
     flat, unravel = ravel_pytree(theta)
     probe = unravel(jnp.arange(len(flat), dtype=float))
@@ -389,8 +390,7 @@ def fisher_forecast(target: dict, truth: dict, feature_mask, downweight: float) 
     prior_var = np.zeros(len(flat))
     for key, block in probe.items():
         values = np.asarray(block).ravel()
-        low, high = model.priors[key].low, model.priors[key].high
-        var = PRIOR_VARIANCE.get(key, (float(np.ravel(high)[0]) - float(np.ravel(low)[0])) ** 2 / 12.0)
+        var = PRIOR_VARIANCE.get(key) or (bounds[key][1] - bounds[key][0]) ** 2 / 12.0
         for k, index in enumerate(values.astype(int)):
             names[index] = key if values.size == 1 else f"{key}[{k}]"
             prior_var[index] = var

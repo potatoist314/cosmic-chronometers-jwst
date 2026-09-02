@@ -126,15 +126,23 @@ def _checkout(instance_id: int, branch: str, log) -> None:
     log(f"submodule trees uploaded: {commits}")
 
 
+RUNNER_PATTERN = "^.venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py"
+
+
 def _launch(instance_id: int, shard: str, log) -> None:
+    # stdin must be closed and the process detached, or ssh keeps the session
+    # open until the runner exits and the call times out.
     remote = sweep.REMOTE_ROOT
     command = (
         f"cd {shlex.quote(remote)} && mkdir -p {RESULTS} && "
-        f"nohup .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run "
+        f"nohup setsid .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run "
         f"--grid {RESULTS}/grid.json --shard {shard} --gpu --output-root {RESULTS} "
-        f"> {RESULTS}/shard_{shard.replace('/', 'of')}.log 2>&1 &"
+        f"> {RESULTS}/shard_{shard.replace('/', 'of')}.log 2>&1 < /dev/null & disown; "
+        f"sleep 2; pgrep -f {shlex.quote(RUNNER_PATTERN)} >/dev/null && echo launched"
     )
-    sweep._ssh(instance_id, command, timeout=60.0)
+    result = sweep._ssh(instance_id, command, timeout=60.0)
+    if "launched" not in result.stdout:
+        raise sweep.SweepError(f"runner did not start for shard {shard}")
     log(f"launched shard {shard}")
 
 
@@ -149,7 +157,7 @@ def _remote_manifest(instance_id: int, shard: str) -> dict:
 
 
 def _runner_alive(instance_id: int) -> bool:
-    probe = sweep._ssh(instance_id, "pgrep -f absorption_mask_grid.py >/dev/null && echo yes || echo no",
+    probe = sweep._ssh(instance_id, f"pgrep -f {shlex.quote(RUNNER_PATTERN)} >/dev/null && echo yes || echo no",
                        timeout=60.0, check=False)
     return "yes" in probe.stdout
 
@@ -232,23 +240,27 @@ def command_plan(args) -> int:
 
 
 def command_run(args) -> int:
-    offers = blackwell_offers()
-    if len(offers) < args.instances:
-        print(f"only {len(offers)} suitable offers", file=sys.stderr)
+    shards = args.only_shard or [f"{k}/{args.instances}" for k in range(args.instances)]
+    busy_hosts = {int(i.get("host_id") or 0) for i in sweep._vastai_json(["show", "instances"])}
+    excluded = busy_hosts | {int(h) for h in args.exclude_host}
+    offers = [o for o in blackwell_offers() if int(o.get("host_id") or 0) not in excluded]
+    if len(offers) < len(shards):
+        print(f"only {len(offers)} suitable offers for {len(shards)} shards", file=sys.stderr)
         return 1
     credit_before = sweep._vastai_json(["show", "user"]).get("credit", 0.0)
-    chosen = offers[: args.instances]
-    outcomes = [dict(shard=f"{k}/{args.instances}") for k in range(args.instances)]
+    chosen = offers[: len(shards)]
+    outcomes = [dict(shard=shard) for shard in shards]
     threads = [
-        threading.Thread(target=run_instance, args=(offer, f"{k}/{args.instances}", args, outcomes[k]))
-        for k, offer in enumerate(chosen)
+        threading.Thread(target=run_instance, args=(offer, shard, args, outcomes[k]))
+        for k, (offer, shard) in enumerate(zip(chosen, shards))
     ]
     for thread in threads:
         thread.start()
         time.sleep(5)
     for thread in threads:
         thread.join()
-    leftover = sweep._vastai_json(["show", "instances"])
+    mine = {o.get("instance_id") for o in outcomes}
+    leftover = [i for i in sweep._vastai_json(["show", "instances"]) if int(i["id"]) in mine]
     credit_after = sweep._vastai_json(["show", "user"]).get("credit", 0.0)
     record = {
         "finished": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -289,6 +301,8 @@ def main(argv=None) -> int:
     run = sub.add_parser("run")
     run.add_argument("--instances", type=int, default=3)
     run.add_argument("--branch", default="absorption-mask")
+    run.add_argument("--only-shard", action="append", help="k/n shard to run (repeatable); default: all n shards")
+    run.add_argument("--exclude-host", action="append", default=[], help="Vast host id to avoid")
     run.add_argument("--image", default=sweep.DEFAULT_IMAGE)
     run.add_argument("--disk", type=int, default=sweep.DEFAULT_DISK_GB)
     pull = sub.add_parser("pull")
