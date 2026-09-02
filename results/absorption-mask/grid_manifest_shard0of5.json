@@ -1,0 +1,98 @@
+{
+ "mock_tilt0.00_snr0.25_seed1_all": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T18:47:35+00:00",
+  "group": "mock_tilt0.00_snr0.25_seed1",
+  "mode": "all",
+  "target": "M5_172669",
+  "wall_s": 388.7,
+  "finished": "2026-09-02T18:54:07+00:00",
+  "error": null
+ },
+ "mock_tilt0.00_snr0.25_seed1_features": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T18:59:16+00:00",
+  "group": "mock_tilt0.00_snr0.25_seed1",
+  "mode": "features",
+  "target": "M5_172669",
+  "wall_s": 227.4,
+  "finished": "2026-09-02T19:03:06+00:00",
+  "error": null
+ },
+ "mock_tilt0.00_snr0.25_seed1_features_downweight": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T19:11:50+00:00",
+  "group": "mock_tilt0.00_snr0.25_seed1",
+  "mode": "features_downweight",
+  "target": "M5_172669",
+  "wall_s": 226.5,
+  "finished": "2026-09-02T19:15:39+00:00",
+  "error": null
+ },
+ "mock_tilt0.03_snr0.25_seed2_all": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T19:15:39+00:00",
+  "group": "mock_tilt0.03_snr0.25_seed2",
+  "mode": "all",
+  "target": "M5_172669",
+  "wall_s": 259.9,
+  "finished": "2026-09-02T19:19:58+00:00",
+  "error": null
+ },
+ "mock_tilt0.03_snr0.25_seed2_features": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T19:19:58+00:00",
+  "group": "mock_tilt0.03_snr0.25_seed2",
+  "mode": "features",
+  "target": "M5_172669",
+  "wall_s": 238.7,
+  "finished": "2026-09-02T19:23:57+00:00",
+  "error": null
+ },
+ "mock_tilt0.03_snr0.25_seed2_features_downweight": {
+  "status": "running",
+  "attempt": 1,
+  "started": "2026-09-02T19:23:57+00:00",
+  "group": "mock_tilt0.03_snr0.25_seed2",
+  "mode": "features_downweight",
+  "target": "M5_172669"
+ },
+ "mock_tilt0.06_snr1.00_seed1_all": {
+  "status": "failed",
+  "attempt": 2,
+  "started": "2026-09-02T19:07:43+00:00",
+  "group": "mock_tilt0.06_snr1.00_seed1",
+  "mode": "all",
+  "target": "M5_172669",
+  "wall_s": 30.2,
+  "finished": "2026-09-02T19:08:14+00:00",
+  "error": "worker exit 1"
+ },
+ "mock_tilt0.06_snr1.00_seed1_features": {
+  "status": "failed",
+  "attempt": 2,
+  "started": "2026-09-02T19:08:44+00:00",
+  "group": "mock_tilt0.06_snr1.00_seed1",
+  "mode": "features",
+  "target": "M5_172669",
+  "wall_s": 30.8,
+  "finished": "2026-09-02T19:09:14+00:00",
+  "error": "worker exit 1"
+ },
+ "mock_tilt0.06_snr1.00_seed1_features_downweight": {
+  "status": "failed",
+  "attempt": 2,
+  "started": "2026-09-02T19:09:45+00:00",
+  "group": "mock_tilt0.06_snr1.00_seed1",
+  "mode": "features_downweight",
+  "target": "M5_172669",
+  "wall_s": 31.2,
+  "finished": "2026-09-02T19:10:17+00:00",
+  "error": "worker exit 1"
+ }
+}

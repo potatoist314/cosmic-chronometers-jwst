@@ -1,0 +1,124 @@
+{
+ "finished": "2026-09-02T20:03:13+00:00",
+ "branch": "absorption-mask",
+ "offers": [
+  {
+   "id": 49068011,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.1213888888888889,
+   "geolocation": "Texas, US",
+   "host_id": 555054
+  }
+ ],
+ "outcomes": [
+  {
+   "shard": "4/5",
+   "instance_id": 49679425,
+   "manifest": {
+    "real_M9_232005_all": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T18:40:00+00:00",
+     "group": "real_M9_232005",
+     "mode": "all",
+     "target": "M9_232005",
+     "wall_s": 186.3,
+     "finished": "2026-09-02T18:43:09+00:00",
+     "error": null
+    },
+    "real_M9_232005_features": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T18:48:19+00:00",
+     "group": "real_M9_232005",
+     "mode": "features",
+     "target": "M9_232005",
+     "wall_s": 322.0,
+     "finished": "2026-09-02T18:53:43+00:00",
+     "error": null
+    },
+    "real_M9_232005_features_downweight": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T18:59:57+00:00",
+     "group": "real_M9_232005",
+     "mode": "features_downweight",
+     "target": "M9_232005",
+     "wall_s": 190.7,
+     "finished": "2026-09-02T19:03:10+00:00",
+     "error": null
+    },
+    "mock_tilt0.03_snr0.25_seed1_all": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T19:21:30+00:00",
+     "group": "mock_tilt0.03_snr0.25_seed1",
+     "mode": "all",
+     "target": "M5_172669",
+     "wall_s": 249.9,
+     "finished": "2026-09-02T19:25:45+00:00",
+     "error": null
+    },
+    "mock_tilt0.03_snr0.25_seed1_features": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T19:47:13+00:00",
+     "group": "mock_tilt0.03_snr0.25_seed1",
+     "mode": "features",
+     "target": "M5_172669",
+     "wall_s": 170.1,
+     "finished": "2026-09-02T19:50:05+00:00",
+     "error": null
+    },
+    "mock_tilt0.03_snr0.25_seed1_features_downweight": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T19:50:05+00:00",
+     "group": "mock_tilt0.03_snr0.25_seed1",
+     "mode": "features_downweight",
+     "target": "M5_172669",
+     "wall_s": 171.7,
+     "finished": "2026-09-02T19:52:57+00:00",
+     "error": null
+    },
+    "mock_tilt0.06_snr0.25_seed2_all": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T19:52:57+00:00",
+     "group": "mock_tilt0.06_snr0.25_seed2",
+     "mode": "all",
+     "target": "M5_172669",
+     "wall_s": 185.1,
+     "finished": "2026-09-02T19:56:02+00:00",
+     "error": null
+    },
+    "mock_tilt0.06_snr0.25_seed2_features": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T19:56:02+00:00",
+     "group": "mock_tilt0.06_snr0.25_seed2",
+     "mode": "features",
+     "target": "M5_172669",
+     "wall_s": 175.8,
+     "finished": "2026-09-02T19:58:58+00:00",
+     "error": null
+    },
+    "mock_tilt0.06_snr0.25_seed2_features_downweight": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T19:58:58+00:00",
+     "group": "mock_tilt0.06_snr0.25_seed2",
+     "mode": "features_downweight",
+     "target": "M5_172669",
+     "wall_s": 177.8,
+     "finished": "2026-09-02T20:01:56+00:00",
+     "error": null
+    }
+   }
+  }
+ ],
+ "credit_before": 18.223400917829895,
+ "credit_after": 17.9833055888299,
+ "spent_usd": 0.2401,
+ "instances_left": []
+}

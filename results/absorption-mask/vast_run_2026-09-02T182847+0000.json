@@ -1,0 +1,72 @@
+{
+ "finished": "2026-09-02T18:28:47+00:00",
+ "branch": "absorption-mask",
+ "offers": [
+  {
+   "id": 47272736,
+   "gpu_name": "RTX 5060",
+   "dph_total": 0.0772962962962963,
+   "geolocation": "United Kingdom, GB",
+   "host_id": 574526
+  },
+  {
+   "id": 43665007,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.1023148148148148,
+   "geolocation": "Indiana, US",
+   "host_id": 332635
+  },
+  {
+   "id": 48986828,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.11918518518518517,
+   "geolocation": "South Korea, KR",
+   "host_id": 454863
+  },
+  {
+   "id": 49068011,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.1213888888888889,
+   "geolocation": "Texas, US",
+   "host_id": 555054
+  },
+  {
+   "id": 48609915,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.12416666666666668,
+   "geolocation": "Saskatchewan, CA",
+   "host_id": 78532
+  }
+ ],
+ "outcomes": [
+  {
+   "shard": "0/5",
+   "instance_id": 49672338,
+   "error": "TimeoutExpired: Command '['ssh', '-p', '24239', '-i', '/Users/liuhao/.ssh/id_ed25519', '-o', 'IdentitiesOnly=yes', '-o', 'StrictHostKeyChecking=accept-new', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'LogLevel=ERROR', '-o', 'ConnectTimeout=20', '-o', 'ServerAliveInterval=30', '-o', 'ServerAliveCountMax=20', 'root@84.18.245.171', \"cd /workspace/cosmic-chronometers-jwst && mkdir -p results/absorption-mask && nohup setsid .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run --grid results/absorption-mask/grid.json --shard 0/5 --gpu --output-root results/absorption-mask > results/absorption-mask/shard_0of5.log 2>&1 < /dev/null & disown; sleep 2; pgrep -f '^.venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py' >/dev/null && echo launched\"]' timed out after 60.0 seconds"
+  },
+  {
+   "shard": "1/5",
+   "instance_id": 49672361,
+   "error": "TimeoutExpired: Command '['ssh', '-p', '5023', '-i', '/Users/liuhao/.ssh/id_ed25519', '-o', 'IdentitiesOnly=yes', '-o', 'StrictHostKeyChecking=accept-new', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'LogLevel=ERROR', '-o', 'ConnectTimeout=20', '-o', 'ServerAliveInterval=30', '-o', 'ServerAliveCountMax=20', 'root@74.137.32.214', \"cd /workspace/cosmic-chronometers-jwst && mkdir -p results/absorption-mask && nohup setsid .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run --grid results/absorption-mask/grid.json --shard 1/5 --gpu --output-root results/absorption-mask > results/absorption-mask/shard_1of5.log 2>&1 < /dev/null & disown; sleep 2; pgrep -f '^.venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py' >/dev/null && echo launched\"]' timed out after 60.0 seconds"
+  },
+  {
+   "shard": "2/5",
+   "instance_id": 49672377,
+   "error": "TimeoutExpired: Command '['ssh', '-p', '10050', '-i', '/Users/liuhao/.ssh/id_ed25519', '-o', 'IdentitiesOnly=yes', '-o', 'StrictHostKeyChecking=accept-new', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'LogLevel=ERROR', '-o', 'ConnectTimeout=20', '-o', 'ServerAliveInterval=30', '-o', 'ServerAliveCountMax=20', 'root@112.160.244.119', \"cd /workspace/cosmic-chronometers-jwst && mkdir -p results/absorption-mask && nohup setsid .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run --grid results/absorption-mask/grid.json --shard 2/5 --gpu --output-root results/absorption-mask > results/absorption-mask/shard_2of5.log 2>&1 < /dev/null & disown; sleep 2; pgrep -f '^.venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py' >/dev/null && echo launched\"]' timed out after 60.0 seconds"
+  },
+  {
+   "shard": "3/5",
+   "instance_id": 49672381,
+   "error": "TimeoutExpired: Command '['ssh', '-p', '16619', '-i', '/Users/liuhao/.ssh/id_ed25519', '-o', 'IdentitiesOnly=yes', '-o', 'StrictHostKeyChecking=accept-new', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'LogLevel=ERROR', '-o', 'ConnectTimeout=20', '-o', 'ServerAliveInterval=30', '-o', 'ServerAliveCountMax=20', 'root@47.160.211.234', \"cd /workspace/cosmic-chronometers-jwst && mkdir -p results/absorption-mask && nohup setsid .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run --grid results/absorption-mask/grid.json --shard 3/5 --gpu --output-root results/absorption-mask > results/absorption-mask/shard_3of5.log 2>&1 < /dev/null & disown; sleep 2; pgrep -f '^.venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py' >/dev/null && echo launched\"]' timed out after 60.0 seconds"
+  },
+  {
+   "shard": "4/5",
+   "instance_id": 49672386,
+   "error": "TimeoutExpired: Command '['ssh', '-p', '42833', '-i', '/Users/liuhao/.ssh/id_ed25519', '-o', 'IdentitiesOnly=yes', '-o', 'StrictHostKeyChecking=accept-new', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'LogLevel=ERROR', '-o', 'ConnectTimeout=20', '-o', 'ServerAliveInterval=30', '-o', 'ServerAliveCountMax=20', 'root@45.42.128.201', \"cd /workspace/cosmic-chronometers-jwst && mkdir -p results/absorption-mask && nohup setsid .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run --grid results/absorption-mask/grid.json --shard 4/5 --gpu --output-root results/absorption-mask > results/absorption-mask/shard_4of5.log 2>&1 < /dev/null & disown; sleep 2; pgrep -f '^.venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py' >/dev/null && echo launched\"]' timed out after 60.0 seconds"
+  }
+ ],
+ "credit_before": 19.66207377482989,
+ "credit_after": 19.290816367829898,
+ "spent_usd": 0.3713,
+ "instances_left": []
+}

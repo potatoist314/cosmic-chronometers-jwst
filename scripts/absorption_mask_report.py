@@ -290,7 +290,8 @@ def plot_mock_width(records: list[dict], figure_dir: Path) -> Path | None:
     ax.set_xticklabels([LABELS[p] for p in params])
     ax.set_ylabel("posterior half-width / full-spectrum half-width")
     ax.set_title("Cost in constraining power (median over all mock cells)")
-    ax.legend(frameon=False)
+    ax.set_ylim(0.0, ax.get_ylim()[1] * 1.18)
+    ax.legend(frameon=False, loc="upper left", ncol=2)
     fig.tight_layout()
     path = figure_dir / "mock_width_ratio.png"
     fig.savefig(path, bbox_inches="tight")
@@ -307,8 +308,8 @@ def plot_real(records: list[dict], figure_dir: Path) -> Path | None:
     targets = sorted({r["target"] for r in reals})
     params = ["logmass", "mwa_gyr", "Z", "afe", "diffuse_tau_kc", "spectrum_scaling"]
     _style()
-    fig, axes = plt.subplots(1, len(params), figsize=(2.3 * len(params), 3.2), squeeze=False)
-    for ax, name in zip(axes[0], params):
+    fig, axes = plt.subplots(2, 3, figsize=(8.4, 6.2), squeeze=False)
+    for ax, name in zip(axes.ravel(), params):
         for ti, target in enumerate(targets):
             for mi, mode in enumerate(MODES):
                 rows = [r for r in reals if r["target"] == target and r["mode"] == mode]

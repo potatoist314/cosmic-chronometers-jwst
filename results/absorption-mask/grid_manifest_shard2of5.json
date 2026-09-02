@@ -1,0 +1,84 @@
+{
+ "real_M11_214430_all": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T18:42:47+00:00",
+  "group": "real_M11_214430",
+  "mode": "all",
+  "target": "M11_214430",
+  "wall_s": 284.9,
+  "finished": "2026-09-02T18:47:37+00:00",
+  "error": null
+ },
+ "real_M11_214430_features": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T18:47:53+00:00",
+  "group": "real_M11_214430",
+  "mode": "features",
+  "target": "M11_214430",
+  "wall_s": 421.3,
+  "finished": "2026-09-02T18:55:02+00:00",
+  "error": null
+ },
+ "real_M11_214430_features_downweight": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T18:59:35+00:00",
+  "group": "real_M11_214430",
+  "mode": "features_downweight",
+  "target": "M11_214430",
+  "wall_s": 258.7,
+  "finished": "2026-09-02T19:04:01+00:00",
+  "error": null
+ },
+ "mock_tilt0.00_snr1.00_seed1_all": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T19:12:06+00:00",
+  "group": "mock_tilt0.00_snr1.00_seed1",
+  "mode": "all",
+  "target": "M5_172669",
+  "wall_s": 285.7,
+  "finished": "2026-09-02T19:16:57+00:00",
+  "error": null
+ },
+ "mock_tilt0.00_snr1.00_seed1_features": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T19:16:57+00:00",
+  "group": "mock_tilt0.00_snr1.00_seed1",
+  "mode": "features",
+  "target": "M5_172669",
+  "wall_s": 260.6,
+  "finished": "2026-09-02T19:21:18+00:00",
+  "error": null
+ },
+ "mock_tilt0.00_snr1.00_seed1_features_downweight": {
+  "status": "done",
+  "attempt": 1,
+  "started": "2026-09-02T19:21:18+00:00",
+  "group": "mock_tilt0.00_snr1.00_seed1",
+  "mode": "features_downweight",
+  "target": "M5_172669",
+  "wall_s": 276.7,
+  "finished": "2026-09-02T19:25:55+00:00",
+  "error": null
+ },
+ "mock_tilt0.03_snr1.00_seed2_all": {
+  "status": "running",
+  "attempt": 1,
+  "started": "2026-09-02T19:25:55+00:00",
+  "group": "mock_tilt0.03_snr1.00_seed2",
+  "mode": "all",
+  "target": "M5_172669"
+ },
+ "mock_tilt0.03_snr1.00_seed2_features": {
+  "status": "running",
+  "attempt": 2,
+  "started": "2026-09-02T19:11:19+00:00",
+  "group": "mock_tilt0.03_snr1.00_seed2",
+  "mode": "features",
+  "target": "M5_172669"
+ }
+}

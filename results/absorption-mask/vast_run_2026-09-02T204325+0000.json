@@ -1,0 +1,183 @@
+{
+ "finished": "2026-09-02T20:43:25+00:00",
+ "branch": "absorption-mask",
+ "offers": [
+  {
+   "id": 47272736,
+   "gpu_name": "RTX 5060",
+   "dph_total": 0.0772962962962963,
+   "geolocation": "United Kingdom, GB",
+   "host_id": 574526
+  },
+  {
+   "id": 43665007,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.1023148148148148,
+   "geolocation": "Indiana, US",
+   "host_id": 332635
+  },
+  {
+   "id": 44455690,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.1131111111111111,
+   "geolocation": "Missouri, US",
+   "host_id": 228377
+  }
+ ],
+ "outcomes": [
+  {
+   "shard": "0/3",
+   "instance_id": 49681824,
+   "manifest": {
+    "mock_tilt0.03_snr0.25_seed1_all": {
+     "status": "done",
+     "attempt": 2,
+     "started": "2026-09-02T20:16:56+00:00",
+     "group": "mock_tilt0.03_snr0.25_seed1",
+     "mode": "all",
+     "target": "M5_172669",
+     "wall_s": 261.5,
+     "finished": "2026-09-02T20:21:20+00:00",
+     "error": null
+    },
+    "mock_tilt0.03_snr0.25_seed1_features": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:21:20+00:00",
+     "group": "mock_tilt0.03_snr0.25_seed1",
+     "mode": "features",
+     "target": "M5_172669",
+     "wall_s": 236.8,
+     "finished": "2026-09-02T20:25:17+00:00",
+     "error": null
+    },
+    "mock_tilt0.03_snr0.25_seed1_features_downweight": {
+     "status": "failed",
+     "attempt": 2,
+     "started": "2026-09-02T20:26:40+00:00",
+     "group": "mock_tilt0.03_snr0.25_seed1",
+     "mode": "features_downweight",
+     "target": "M5_172669",
+     "wall_s": 85.6,
+     "finished": "2026-09-02T20:28:05+00:00",
+     "error": "worker exit 1"
+    },
+    "mock_tilt0.06_snr0.25_seed2_all": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:28:05+00:00",
+     "group": "mock_tilt0.06_snr0.25_seed2",
+     "mode": "all",
+     "target": "M5_172669",
+     "wall_s": 258.8,
+     "finished": "2026-09-02T20:32:24+00:00",
+     "error": null
+    },
+    "mock_tilt0.06_snr0.25_seed2_features": {
+     "status": "done",
+     "attempt": 2,
+     "started": "2026-09-02T20:33:32+00:00",
+     "group": "mock_tilt0.06_snr0.25_seed2",
+     "mode": "features",
+     "target": "M5_172669",
+     "wall_s": 245.4,
+     "finished": "2026-09-02T20:37:37+00:00",
+     "error": null
+    },
+    "mock_tilt0.06_snr0.25_seed2_features_downweight": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:37:37+00:00",
+     "group": "mock_tilt0.06_snr0.25_seed2",
+     "mode": "features_downweight",
+     "target": "M5_172669",
+     "wall_s": 251.4,
+     "finished": "2026-09-02T20:41:49+00:00",
+     "error": null
+    }
+   }
+  },
+  {
+   "shard": "1/3",
+   "instance_id": 49681833,
+   "manifest": {
+    "mock_tilt0.03_snr0.25_seed2_features_downweight": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:16:14+00:00",
+     "group": "mock_tilt0.03_snr0.25_seed2",
+     "mode": "features_downweight",
+     "target": "M5_172669",
+     "wall_s": 182.2,
+     "finished": "2026-09-02T20:19:19+00:00",
+     "error": null
+    },
+    "mock_tilt0.06_snr1.00_seed1_all": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:19:19+00:00",
+     "group": "mock_tilt0.06_snr1.00_seed1",
+     "mode": "all",
+     "target": "M5_172669",
+     "wall_s": 247.5,
+     "finished": "2026-09-02T20:23:26+00:00",
+     "error": null
+    },
+    "mock_tilt0.06_snr1.00_seed1_features": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:23:26+00:00",
+     "group": "mock_tilt0.06_snr1.00_seed1",
+     "mode": "features",
+     "target": "M5_172669",
+     "wall_s": 230.3,
+     "finished": "2026-09-02T20:27:17+00:00",
+     "error": null
+    },
+    "mock_tilt0.06_snr1.00_seed1_features_downweight": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:27:17+00:00",
+     "group": "mock_tilt0.06_snr1.00_seed1",
+     "mode": "features_downweight",
+     "target": "M5_172669",
+     "wall_s": 226.8,
+     "finished": "2026-09-02T20:31:03+00:00",
+     "error": null
+    }
+   }
+  },
+  {
+   "shard": "2/3",
+   "instance_id": 49681848,
+   "manifest": {
+    "mock_tilt0.03_snr1.00_seed2_all": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:20:48+00:00",
+     "group": "mock_tilt0.03_snr1.00_seed2",
+     "mode": "all",
+     "target": "M5_172669",
+     "wall_s": 306.9,
+     "finished": "2026-09-02T20:26:01+00:00",
+     "error": null
+    },
+    "mock_tilt0.03_snr1.00_seed2_features": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:26:01+00:00",
+     "group": "mock_tilt0.03_snr1.00_seed2",
+     "mode": "features",
+     "target": "M5_172669",
+     "wall_s": 285.7,
+     "finished": "2026-09-02T20:30:47+00:00",
+     "error": null
+    }
+   }
+  }
+ ],
+ "credit_before": 17.916269172829907,
+ "credit_after": 17.637287622829902,
+ "spent_usd": 0.279,
+ "instances_left": []
+}

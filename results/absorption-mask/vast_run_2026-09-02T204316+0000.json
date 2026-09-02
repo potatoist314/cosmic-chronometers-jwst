@@ -1,0 +1,36 @@
+{
+ "finished": "2026-09-02T20:43:16+00:00",
+ "branch": "absorption-mask",
+ "offers": [
+  {
+   "id": 43665007,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.1023148148148148,
+   "geolocation": "Indiana, US",
+   "host_id": 332635
+  }
+ ],
+ "outcomes": [
+  {
+   "shard": "0/1",
+   "instance_id": 49683630,
+   "manifest": {
+    "mock_tilt0.03_snr0.25_seed1_features_downweight": {
+     "status": "done",
+     "attempt": 1,
+     "started": "2026-09-02T20:39:54+00:00",
+     "group": "mock_tilt0.03_snr0.25_seed1",
+     "mode": "features_downweight",
+     "target": "M5_172669",
+     "wall_s": 186.4,
+     "finished": "2026-09-02T20:43:02+00:00",
+     "error": null
+    }
+   }
+  }
+ ],
+ "credit_before": 17.711432601829905,
+ "credit_after": 17.637287622829902,
+ "spent_usd": 0.0741,
+ "instances_left": []
+}
