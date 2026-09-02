@@ -1,0 +1,272 @@
+#!/usr/bin/env python3
+"""Rent Blackwell GPUs on Vast.ai and run the absorption-mask grid on them.
+
+Each instance clones one branch of this repository, receives ``data/raw`` by
+rsync, bootstraps the CUDA environment, and runs one shard of the grid
+(``scripts/absorption_mask_grid.py run --shard k/n``) so every comparison
+group stays on one boot.  Results are pulled back into
+``results/absorption-mask/`` and every instance is destroyed at the end,
+also on failure.
+
+Sub-commands::
+
+    plan     [--instances N]                 show the offers that would be rented
+    run      --instances N --branch NAME     rent, run, pull, destroy
+    pull     --instance ID                   pull results from a running instance
+    destroy-all                              destroy every instance on the account
+"""
+
+from __future__ import annotations
+
+import argparse
+import importlib.util
+import json
+import shlex
+import sys
+import threading
+import time
+from datetime import UTC, datetime
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SWEEP_PATH = PROJECT_ROOT / "scripts/sweep_ceridwen_vast_gpus.py"
+RESULTS = "results/absorption-mask"
+BLACKWELL = ["RTX_5060", "RTX_5060Ti", "RTX_5070", "RTX_5070Ti", "RTX_5080"]
+POLL_SECONDS = 90
+RUN_TIMEOUT_SECONDS = 4 * 3600
+
+
+def _load_sweep():
+    spec = importlib.util.spec_from_file_location("vast_sweep", SWEEP_PATH)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+sweep = _load_sweep()
+
+
+def _log(prefix: str):
+    def log(message: str) -> None:
+        stamp = datetime.now(UTC).strftime("%H:%M:%S")
+        print(f"[{stamp}] {prefix}: {message}", flush=True)
+    return log
+
+
+def blackwell_offers(minimum_gpu_ram_mib: int = 8000) -> list[dict]:
+    query = (
+        f"gpu_name in [{','.join(BLACKWELL)}] verified=true rentable=true num_gpus=1 "
+        "inet_down>200 disk_space>=40 reliability>0.98"
+    )
+    offers = sweep._vastai_json(["search", "offers", query, "-o", "dph"])
+    # gpu_ram and cuda_max_good are not query fields; filter on the returned rows.
+    offers = [
+        o for o in offers
+        if (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
+        and float(o.get("gpu_ram") or 0) >= minimum_gpu_ram_mib
+        and float(o.get("cuda_max_good") or 0) >= 12.6
+    ]
+    offers.sort(key=lambda o: o["dph_total"])
+    return offers
+
+
+def _describe(offer: dict) -> str:
+    return (f"offer {offer['id']} {offer['gpu_name']} ${offer['dph_total']:.4f}/h "
+            f"{offer.get('geolocation')} host {offer.get('host_id')} "
+            f"rel {offer.get('reliability2', 0):.3f}")
+
+
+def _checkout(instance_id: int, branch: str, log) -> None:
+    log(f"cloning branch {branch}")
+    sweep._ssh(
+        instance_id,
+        " && ".join([
+            "set -eu",
+            "command -v rsync >/dev/null 2>&1 || (apt-get update -qq && apt-get install -y -qq rsync)",
+            "mkdir -p /workspace && cd /workspace",
+            f"rm -rf {shlex.quote(sweep.REMOTE_ROOT)}",
+            f"git clone --quiet --branch {shlex.quote(branch)} {sweep.REPOSITORY_URL} {shlex.quote(sweep.REMOTE_ROOT)}",
+            f"cd {shlex.quote(sweep.REMOTE_ROOT)}",
+            "git submodule update --init --quiet ceridwen external/sedpy_jax",
+            "git rev-parse --short HEAD && git -C ceridwen rev-parse --short HEAD",
+        ]),
+        timeout=900.0,
+    )
+
+
+def _launch(instance_id: int, shard: str, log) -> None:
+    remote = sweep.REMOTE_ROOT
+    command = (
+        f"cd {shlex.quote(remote)} && mkdir -p {RESULTS} && "
+        f"nohup .venv-ceridwen-gpu/bin/python scripts/absorption_mask_grid.py run "
+        f"--grid {RESULTS}/grid.json --shard {shard} --gpu --output-root {RESULTS} "
+        f"> {RESULTS}/shard_{shard.replace('/', 'of')}.log 2>&1 &"
+    )
+    sweep._ssh(instance_id, command, timeout=60.0)
+    log(f"launched shard {shard}")
+
+
+def _remote_manifest(instance_id: int, shard: str) -> dict:
+    path = f"{sweep.REMOTE_ROOT}/{RESULTS}/grid_manifest_shard{shard.replace('/', 'of')}.json"
+    result = sweep._ssh(instance_id, f"cat {shlex.quote(path)} 2>/dev/null || echo '{{}}'",
+                        timeout=60.0, check=False)
+    try:
+        return json.loads(result.stdout or "{}")
+    except json.JSONDecodeError:
+        return {}
+
+
+def _runner_alive(instance_id: int) -> bool:
+    probe = sweep._ssh(instance_id, "pgrep -f absorption_mask_grid.py >/dev/null && echo yes || echo no",
+                       timeout=60.0, check=False)
+    return "yes" in probe.stdout
+
+
+def _pull(instance_id: int, log) -> None:
+    target, port = sweep._ssh_target(instance_id)
+    local = PROJECT_ROOT / RESULTS
+    local.mkdir(parents=True, exist_ok=True)
+    log("pulling results")
+    sweep._rsync(port, f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/", f"{local}/", timeout=1800.0)
+
+
+def _expected_cells(shard: str) -> list[str]:
+    grid_module_path = PROJECT_ROOT / "scripts/absorption_mask_grid.py"
+    spec = importlib.util.spec_from_file_location("grid", grid_module_path)
+    grid = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(grid)
+    cells = json.loads((PROJECT_ROOT / RESULTS / "grid.json").read_text())
+    return [cell["name"] for cell in grid.shard_groups(cells, shard)]
+
+
+def run_instance(offer: dict, shard: str, args, outcome: dict) -> None:
+    log = _log(f"shard {shard}")
+    instance_id = None
+    try:
+        instance_id = sweep._create_instance(offer, args)
+        outcome["instance_id"] = instance_id
+        log(f"rented instance {instance_id}: {_describe(offer)}")
+        sweep._wait_for_running(instance_id, log)
+        sweep._attach_ssh_key(instance_id)
+        sweep._wait_for_ssh(instance_id, log)
+        _checkout(instance_id, args.branch, log)
+        sweep._upload_inputs(instance_id, log)
+        target, port = sweep._ssh_target(instance_id)
+        sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/grid.json",
+                     f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/grid.json", timeout=120.0)
+        sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/truth_M5_172669.json",
+                     f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/truth_M5_172669.json", timeout=120.0)
+        sweep._bootstrap(instance_id, log)
+        sweep._verify_cuda_backend(instance_id, log)
+        _launch(instance_id, shard, log)
+        expected = _expected_cells(shard)
+        deadline = time.monotonic() + RUN_TIMEOUT_SECONDS
+        last_pull = time.monotonic()
+        while time.monotonic() < deadline:
+            time.sleep(POLL_SECONDS)
+            manifest = _remote_manifest(instance_id, shard)
+            done = [n for n in expected if manifest.get(n, {}).get("status") == "done"]
+            failed = [n for n in expected if manifest.get(n, {}).get("status") == "failed"]
+            running = [n for n in expected if manifest.get(n, {}).get("status") == "running"]
+            log(f"{len(done)}/{len(expected)} done, {len(failed)} failed, running: {running}")
+            if len(done) + len(failed) == len(expected) and not running:
+                break
+            if not _runner_alive(instance_id):
+                log("runner process is gone before the shard finished")
+                break
+            if time.monotonic() - last_pull > 900:
+                _pull(instance_id, log)
+                last_pull = time.monotonic()
+        _pull(instance_id, log)
+        outcome["manifest"] = _remote_manifest(instance_id, shard)
+    except Exception as error:  # noqa: BLE001 - always destroy, then report
+        outcome["error"] = f"{type(error).__name__}: {error}"
+        log(f"failed: {outcome['error']}")
+        if instance_id is not None:
+            try:
+                _pull(instance_id, log)
+            except Exception as pull_error:  # noqa: BLE001
+                log(f"pull failed: {pull_error}")
+    finally:
+        if instance_id is not None:
+            sweep._destroy(instance_id, log)
+
+
+def command_plan(args) -> int:
+    offers = blackwell_offers()
+    for offer in offers[: args.instances]:
+        print(_describe(offer))
+    return 0
+
+
+def command_run(args) -> int:
+    offers = blackwell_offers()
+    if len(offers) < args.instances:
+        print(f"only {len(offers)} suitable offers", file=sys.stderr)
+        return 1
+    credit_before = sweep._vastai_json(["show", "user"]).get("credit", 0.0)
+    chosen = offers[: args.instances]
+    outcomes = [dict(shard=f"{k}/{args.instances}") for k in range(args.instances)]
+    threads = [
+        threading.Thread(target=run_instance, args=(offer, f"{k}/{args.instances}", args, outcomes[k]))
+        for k, offer in enumerate(chosen)
+    ]
+    for thread in threads:
+        thread.start()
+        time.sleep(5)
+    for thread in threads:
+        thread.join()
+    leftover = sweep._vastai_json(["show", "instances"])
+    credit_after = sweep._vastai_json(["show", "user"]).get("credit", 0.0)
+    record = {
+        "finished": datetime.now(UTC).isoformat(timespec="seconds"),
+        "branch": args.branch,
+        "offers": [{k: o.get(k) for k in ("id", "gpu_name", "dph_total", "geolocation", "host_id")} for o in chosen],
+        "outcomes": outcomes,
+        "credit_before": credit_before,
+        "credit_after": credit_after,
+        "spent_usd": round(credit_before - credit_after, 4),
+        "instances_left": [int(i["id"]) for i in leftover],
+    }
+    out = PROJECT_ROOT / RESULTS / f"vast_run_{record['finished'].replace(':', '')}.json"
+    out.write_text(json.dumps(record, indent=1))
+    print(json.dumps({k: record[k] for k in ("spent_usd", "instances_left")}, indent=1))
+    for outcome in outcomes:
+        print(outcome["shard"], outcome.get("instance_id"), outcome.get("error") or "ok")
+    return 1 if leftover or any(o.get("error") for o in outcomes) else 0
+
+
+def command_pull(args) -> int:
+    _pull(args.instance, _log("pull"))
+    return 0
+
+
+def command_destroy_all(args) -> int:
+    log = _log("destroy")
+    for instance in sweep._vastai_json(["show", "instances"]):
+        sweep._destroy(int(instance["id"]), log)
+    print("instances left:", [int(i["id"]) for i in sweep._vastai_json(["show", "instances"])])
+    return 0
+
+
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    sub = parser.add_subparsers(dest="command", required=True)
+    plan = sub.add_parser("plan")
+    plan.add_argument("--instances", type=int, default=3)
+    run = sub.add_parser("run")
+    run.add_argument("--instances", type=int, default=3)
+    run.add_argument("--branch", default="absorption-mask")
+    run.add_argument("--image", default=sweep.DEFAULT_IMAGE)
+    run.add_argument("--disk", type=int, default=sweep.DEFAULT_DISK_GB)
+    pull = sub.add_parser("pull")
+    pull.add_argument("--instance", type=int, required=True)
+    sub.add_parser("destroy-all")
+    args = parser.parse_args(argv)
+    return {"plan": command_plan, "run": command_run, "pull": command_pull,
+            "destroy-all": command_destroy_all}[args.command](args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
