@@ -105,8 +105,27 @@ def _load_runner():
     return module
 
 
+def _wait_for_idle_kernels(timeout_s: float = 120.0) -> float:
+    """Block until no notebook kernel from a previous cell is alive.
+
+    nbclient shuts the kernel down asynchronously; the next cell's kernel would
+    otherwise try to preallocate its JAX pool while the old one still holds
+    its own and fail with CUDA_ERROR_OUT_OF_MEMORY.
+    """
+    started = time.monotonic()
+    while time.monotonic() - started < timeout_s:
+        probe = subprocess.run(["pgrep", "-f", "ipykernel_launcher"], capture_output=True, text=True)
+        if probe.returncode != 0:
+            return time.monotonic() - started
+        time.sleep(2.0)
+    return time.monotonic() - started
+
+
 def _cell_environment(cell: dict, result_dir: Path, quick: bool, gpu: bool) -> dict:
     env = {
+        # One fit needs about 1 GB of JAX working set; a 40 percent pool leaves
+        # room for a kernel that is still shutting down.
+        "XLA_PYTHON_CLIENT_MEM_FRACTION": "0.40",
         **os.environ,
         "CERIDWEN_FIT_MODE": "full_spectrum",
         "CERIDWEN_NOTEBOOK_QUICK": "1" if quick else "0",
@@ -160,6 +179,9 @@ def run(args) -> int:
             }
             _write_json(manifest_path, manifest)
             result_dir.mkdir(parents=True, exist_ok=True)
+            waited = _wait_for_idle_kernels()
+            if waited > 2.0:
+                print(f"waited {waited:.0f} s for the previous kernel to exit", flush=True)
             notebook = result_dir / f"{cell['target']}_executed.ipynb"
             log_path = result_dir / "execution.log"
             with log_path.open("a", encoding="utf-8") as log:
