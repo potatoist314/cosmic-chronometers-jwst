@@ -389,3 +389,8 @@
 
 - Pages: `analyses/absorption-line-mask.html`
 - Change: Filled the draft with the 45-fit grid (36 mocks with 0, 3 and 6 percent continuum tilts at two S/N scales; M5_172669, M9_232005 and M11_214430 in three pixel modes). Feature-only and continuum-down-weighted likelihoods carry the same tilt-induced bias as the full spectrum and are 1.1 to 1.6 times wider; on the real targets they move the posteriors by up to 22 sigma. Recommended default: off. Result figures under `analyses/absorption-mask/`. Page stays a draft pending Liu Hao's decision on the default, line list and window.
+
+## [2026-09-03] analysis | DR2 quiescent sample figure set (layout B)
+
+- Pages: `analyses/dr2-quiescent-sample.html`, `index.md`
+- Change: Published the final 187-galaxy figure set in the chosen layout B (single age–redshift panel with Ceridwen−Borghi residual strip): headline, three formation-timescale plots, 1D distributions, and fit-quality panel, all rendered from `results/dr2-quiescent-summary.csv` into `analyses/dr2-quiescent-sample/` (PNG + PDF). Superseded embedded chronometer figures backed up under `analyses/_old/`.

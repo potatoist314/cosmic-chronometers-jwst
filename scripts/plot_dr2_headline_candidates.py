@@ -26,7 +26,7 @@ BORGHI_PATH = PROJECT_ROOT / (
     "data/processed/borghi2022_legac_dr2/"
     "borghi2022_legac_dr2_spectrum_matches copy.tsv"
 )
-OUT_DIR = Path.home() / ".claude/scripts/hermes-bridge/reports/ceridwen-plots"
+OUT_DIR = PROJECT_ROOT / "wiki/analyses/dr2-quiescent-sample"
 
 # Okabe-Ito colour-blind-safe palette.
 BLUE, ORANGE, GREEN, GREY = "#0072B2", "#E69F00", "#009E73", "#999999"
@@ -177,8 +177,8 @@ def layout_b_single_with_residual(galaxies: pd.DataFrame, overlap: pd.DataFrame)
     axes[1].set_ylabel("Ceridwen $-$ Borghi+22 [Gyr]")
     style_axes(axes)
     fig.tight_layout()
-    fig.savefig(OUT_DIR / "candidate-B-single-with-residual.pdf")
-    fig.savefig(OUT_DIR / "candidate-B-single-with-residual.png")
+    fig.savefig(OUT_DIR / "headline-age-redshift.pdf")
+    fig.savefig(OUT_DIR / "headline-age-redshift.png")
     plt.close(fig)
 
 
@@ -219,10 +219,9 @@ def main() -> None:
     galaxies, overlap = load()
     galaxies, overlap = add_bands(galaxies), add_bands(overlap)
     print(f"sample N={len(galaxies)}, Borghi overlap N={len(overlap)}")
-    layout_a_split_panels(galaxies, overlap)
+    # Layout B chosen; A/C kept as superseded candidate code, not rendered.
     layout_b_single_with_residual(galaxies, overlap)
-    layout_c_mass_tinted_shifts(galaxies, overlap)
-    print("wrote candidates A/B/C (PDF + PNG) to", OUT_DIR)
+    print("wrote final headline (PDF + PNG) to", OUT_DIR)
 
 
 if __name__ == "__main__":

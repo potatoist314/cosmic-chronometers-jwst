@@ -24,7 +24,7 @@ from matplotlib import rcParams
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
-OUT_DIR = Path.home() / ".claude/scripts/hermes-bridge/reports/ceridwen-plots"
+OUT_DIR = PROJECT_ROOT / "wiki/analyses/dr2-quiescent-sample"
 
 BLUE, ORANGE = "#0072B2", "#E69F00"
 N_RUN = 10  # equal-count running-median bins
