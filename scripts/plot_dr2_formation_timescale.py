@@ -73,6 +73,10 @@ def running_median(x: np.ndarray, y: np.ndarray) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+CONVENTION = ("tX: lookback younger than which X% of the mass formed; "
+              "dt = t80-t20 is the 20th-to-80th mass-assembly interval.")
+
+
 def panel(axis, x, y, yerr, run, xlabel, xlim=None):
     axis.errorbar(x, y, yerr=yerr, fmt="o", ms=3, alpha=0.3, color=BLUE,
                   ecolor=BLUE, elinewidth=0.6)
@@ -103,7 +107,8 @@ def main() -> None:
     panel(axes[2], zobs, y, yerr, running_median(zobs, y),
           "Observed redshift $z_{\\rm obs}$")
     fig.suptitle(f"Ceridwen DR2 quiescent formation timescale (N={n})", fontsize=10)
-    fig.tight_layout(rect=(0, 0, 1, 0.88))
+    fig.text(0.5, 0.005, CONVENTION, ha="center", fontsize=7, color="#555555")
+    fig.tight_layout(rect=(0, 0.04, 1, 0.88))
     fig.savefig(OUT_DIR / "dt-vs-formation-epoch.pdf")
     fig.savefig(OUT_DIR / "dt-vs-formation-epoch.png")
     plt.close(fig)
@@ -117,7 +122,9 @@ def main() -> None:
         panel(axis, x, y, yerr, running_median(x, y), xlabel)
         axis.set_title(f"Ceridwen DR2 quiescent formation timescale (N={n})",
                        fontsize=10)
-        fig.tight_layout()
+        fig.text(0.5, 0.005, CONVENTION, ha="center", fontsize=7,
+                 color="#555555")
+        fig.tight_layout(rect=(0, 0.05, 1, 0.92))
         fig.savefig(OUT_DIR / f"{stem}.pdf")
         fig.savefig(OUT_DIR / f"{stem}.png")
         plt.close(fig)
