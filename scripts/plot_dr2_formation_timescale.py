@@ -73,7 +73,7 @@ def running_median(x: np.ndarray, y: np.ndarray) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-CONVENTION = ("tX: lookback younger than which X% of the mass formed; "
+CONVENTION = ("tX: lookback younger than which X% of the mass formed.\n"
               "dt = t80-t20 is the 20th-to-80th mass-assembly interval.")
 
 
