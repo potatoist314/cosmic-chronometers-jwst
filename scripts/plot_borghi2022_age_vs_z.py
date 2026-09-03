@@ -68,6 +68,8 @@ def binned(frame: pd.DataFrame, value: str) -> pd.DataFrame:
                 "group": group,
                 "zbin": str(zbin),
                 "z": float(members["z"].mean()),
+                "zlo": float(zbin.left),
+                "zhi": float(zbin.right),
                 "dz": float((zbin.right - zbin.left) / 2),
                 "median": median,
                 "err": float(1.4826 * np.median(np.abs(values - median))
@@ -85,6 +87,8 @@ def main() -> None:
     full = (borghi.sort_values("dr2_sn_per_pixel")
             .drop_duplicates("mms2013_id", keep="last"))
     full = full[full["borghi_age_gyr"].notna()].copy()
+    # Borghi points are re-binned here from catalogue ages using LEGA-C DR2
+    # sigma* (69 low / 71 high split), not digitized from their Figure 9.
     full["z"] = full["dr2_z_spec"]
     full["sigma_star_kms"] = full["dr2_sigma_stars_prime_km_s"]
     print(f"full deduplicated Borghi catalogue N={len(full)}")
@@ -125,11 +129,15 @@ def main() -> None:
 
     for group, color in [("low", BLUE), ("high", ORANGE)]:
         b = ours[ours["group"] == group]
-        axes[1].errorbar(b["z"], b["median"], xerr=b["dz"], yerr=b["err"],
+        axes[1].errorbar(b["z"], b["median"],
+                         xerr=[b["z"] - b["zlo"], b["zhi"] - b["z"]],
+                         yerr=b["err"],
                          fmt="s", ms=5, color=color, ecolor="black",
                          elinewidth=1, capsize=3, label=f"Ceridwen {group}")
         t = theirs[theirs["group"] == group]
-        axes[1].errorbar(t["z"], t["median"], xerr=t["dz"], yerr=t["err"],
+        axes[1].errorbar(t["z"], t["median"],
+                         xerr=[t["z"] - t["zlo"], t["zhi"] - t["z"]],
+                         yerr=t["err"],
                          fmt="D", ms=5, mfc="none", mec=GREY, ecolor=GREY,
                          elinewidth=1, capsize=3, label=f"Borghi+22 {group}")
     axes[1].plot(zz, age_universe, color="black", lw=1)
