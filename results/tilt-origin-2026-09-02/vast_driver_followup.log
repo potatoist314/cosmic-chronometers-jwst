@@ -1,0 +1,143 @@
+[23:28:44] M5_172669: rented instance 49695686: offer 47092639 RTX 5060 $0.0747/h Vietnam, VN host 173122 rel 0.997
+[23:28:44] M5_172669: waiting for instance 49695686: status=None
+[23:28:49] M4_108989: rented instance 49695690: offer 46719693 RTX 5070 $0.1209/h New York, US host 388199 rel 0.983
+[23:28:50] M4_108989: waiting for instance 49695690: status=None
+[23:29:00] M5_172669: waiting for instance 49695686: status=loading
+[23:29:06] M4_108989: waiting for instance 49695690: status=loading
+[23:29:16] M5_172669: waiting for instance 49695686: status=loading
+[23:29:21] M4_108989: waiting for instance 49695690: status=loading
+[23:29:32] M5_172669: waiting for instance 49695686: status=loading
+[23:29:37] M4_108989: waiting for instance 49695690: status=loading
+[23:29:48] M5_172669: waiting for instance 49695686: status=loading
+[23:29:53] M4_108989: waiting for instance 49695690: status=loading
+[23:30:05] M5_172669: waiting for instance 49695686: status=loading
+[23:30:10] M4_108989: waiting for instance 49695690: status=loading
+[23:30:21] M5_172669: waiting for instance 49695686: status=loading
+[23:30:26] M4_108989: waiting for instance 49695690: status=loading
+[23:30:37] M5_172669: waiting for instance 49695686: status=loading
+[23:30:42] M4_108989: waiting for instance 49695690: status=loading
+[23:30:53] M5_172669: waiting for instance 49695686: status=loading
+[23:30:58] M4_108989: waiting for instance 49695690: status=loading
+[23:31:10] M5_172669: waiting for instance 49695686: status=loading
+[23:31:14] M4_108989: waiting for instance 49695690: status=loading
+[23:31:26] M5_172669: waiting for instance 49695686: status=loading
+[23:31:30] M4_108989: waiting for instance 49695690: status=loading
+[23:31:42] M5_172669: waiting for instance 49695686: status=loading
+[23:31:46] M4_108989: waiting for instance 49695690: status=loading
+[23:31:58] M5_172669: waiting for instance 49695686: status=loading
+[23:32:02] M4_108989: waiting for instance 49695690: status=loading
+[23:32:14] M5_172669: waiting for instance 49695686: status=loading
+[23:32:18] M4_108989: waiting for instance 49695690: status=loading
+[23:32:30] M5_172669: waiting for instance 49695686: status=loading
+[23:32:34] M4_108989: waiting for instance 49695690: status=loading
+[23:32:46] M5_172669: waiting for instance 49695686: status=loading
+[23:32:50] M4_108989: waiting for instance 49695690: status=loading
+[23:33:02] M5_172669: waiting for instance 49695686: status=loading
+[23:33:06] M4_108989: waiting for instance 49695690: status=loading
+[23:33:22] M4_108989: waiting for instance 49695690: status=loading
+[23:33:24] M5_172669: cloning branch calibration-polynomial
+[23:33:38] M4_108989: waiting for instance 49695690: status=loading
+[23:33:43] M5_172669: uploading ceridwen and sedpy_jax working trees
+[23:33:54] M4_108989: waiting for instance 49695690: status=loading
+[23:34:00] M5_172669: uploading data/raw
+[23:34:10] M4_108989: waiting for instance 49695690: status=loading
+[23:34:26] M4_108989: waiting for instance 49695690: status=loading
+[23:34:42] M4_108989: waiting for instance 49695690: status=loading
+[23:34:44] M5_172669: uploaded: 1988 | /workspace/cosmic-chronometers-jwst/data/raw/cosmos2015: | README.md | cosmos2015_legac_dr2_apertures_1arcsec.fits | cosmos2015_legac_dr2_photometry_1arcsec.fits |  | /workspace/cosmic-chronometers-jwst/data/raw/ultravista: | README.md | ultravista_legac_dr2_1arcsec.fits
+[23:34:54] M5_172669: bootstrapping the CUDA environment
+[23:34:58] M4_108989: waiting for instance 49695690: status=loading
+[23:35:14] M4_108989: waiting for instance 49695690: status=loading
+[23:35:30] M4_108989: waiting for instance 49695690: status=loading
+[23:35:46] M4_108989: waiting for instance 49695690: status=loading
+[23:36:04] M4_108989: waiting for instance 49695690: status=loading
+[23:36:20] M4_108989: waiting for instance 49695690: status=loading
+[23:36:36] M4_108989: waiting for instance 49695690: status=loading
+[23:36:52] M4_108989: waiting for instance 49695690: status=loading
+[23:37:08] M4_108989: waiting for instance 49695690: status=loading
+[23:37:24] M4_108989: waiting for instance 49695690: status=loading
+[23:37:40] M4_108989: waiting for instance 49695690: status=loading
+[23:37:56] M4_108989: waiting for instance 49695690: status=loading
+[23:38:13] M4_108989: waiting for instance 49695690: status=loading
+[23:38:29] M4_108989: waiting for instance 49695690: status=loading
+[23:38:45] M4_108989: waiting for instance 49695690: status=loading
+[23:39:00] M4_108989: failed: SweepError: instance did not reach the running status in time
+[23:39:01] M4_108989: pulling results
+[23:39:01] M4_108989: pull failed: rsync failed: ssh: connect to host ssh5.vast.ai port 15690: Connection refused
+rsync(41911): error: unexpected end of file
+[23:39:04] M4_108989: destroyed instance 49695690
+[23:39:50] M5_172669: bootstrap: sedpy_jax wavelength-dependent input resolution verified
+[23:39:50] M5_172669: bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+[23:39:50] M5_172669: bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5
+[23:39:50] M5_172669: bootstrap: Select the 'Ceridwen (Vast.ai GPU)' kernel in JupyterLab.
+[23:39:56] M5_172669: probe: devices [CudaDevice(id=0)]
+[23:39:56] M5_172669: probe: backend gpu
+[23:39:56] M5_172669: probe: overlay          40G  6.9G   34G  18% /
+[23:40:03] M5_172669: launched runner
+[23:41:37] M5_172669: no progress yet
+[23:43:16] M5_172669: no progress yet
+[23:44:54] M5_172669: no progress yet
+[23:46:32] M5_172669: no progress yet
+[23:48:11] M5_172669: no progress yet
+[23:49:49] M5_172669: no progress yet
+[23:51:28] M5_172669: no progress yet
+[23:53:05] M5_172669: no progress yet
+[23:54:44] M5_172669: no progress yet
+[23:56:23] M5_172669: no progress yet
+[23:56:27] M5_172669: pulling results
+[23:58:10] M5_172669: no progress yet
+[23:59:49] M5_172669: no progress yet
+[00:01:27] M5_172669: no progress yet
+[00:03:05] M5_172669: no progress yet
+[00:04:43] M5_172669: no progress yet
+[00:06:21] M5_172669: no progress yet
+[00:07:59] M5_172669: no progress yet
+[00:09:37] M5_172669: no progress yet
+[00:11:15] M5_172669: no progress yet
+[00:12:53] M5_172669: no progress yet
+[00:12:58] M5_172669: pulling results
+[00:14:41] M5_172669: no progress yet
+[00:16:20] M5_172669: no progress yet
+[00:17:59] M5_172669: no progress yet
+[00:19:37] M5_172669: no progress yet
+[00:21:16] M5_172669: no progress yet
+[00:22:55] M5_172669: no progress yet
+[00:24:33] M5_172669: no progress yet
+[00:26:11] M5_172669: no progress yet
+[00:27:50] M5_172669: no progress yet
+[00:29:27] M5_172669: no progress yet
+[00:29:32] M5_172669: pulling results
+[00:31:18] M5_172669: no progress yet
+[00:32:56] M5_172669: no progress yet
+[00:34:35] M5_172669: no progress yet
+[00:36:14] M5_172669: no progress yet
+[00:37:52] M5_172669: no progress yet
+[00:39:30] M5_172669: no progress yet
+[00:41:09] M5_172669: no progress yet
+[00:42:47] M5_172669: no progress yet
+[00:44:25] M5_172669: no progress yet
+[00:46:04] M5_172669: no progress yet
+[00:46:08] M5_172669: pulling results
+[00:47:53] M5_172669: no progress yet
+[00:49:31] M5_172669: no progress yet
+[00:51:10] M5_172669: no progress yet
+[00:52:48] M5_172669: no progress yet
+[00:54:26] M5_172669: no progress yet
+[00:56:04] M5_172669: no progress yet
+[00:57:42] M5_172669: no progress yet
+[00:59:21] M5_172669: no progress yet
+[01:00:59] M5_172669: no progress yet
+[01:02:37] M5_172669: no progress yet
+[01:02:42] M5_172669: pulling results
+[01:04:33] M5_172669: no progress yet
+[01:06:11] M5_172669: no progress yet
+[01:07:49] M5_172669: no progress yet
+[01:09:28] M5_172669: no progress yet
+[01:11:07] M5_172669: no progress yet
+[01:12:45] M5_172669: no progress yet
+[01:14:25] M5_172669: no progress yet
+[01:16:03] M5_172669: no progress yet
+[01:17:41] M5_172669: no progress yet
+[01:19:20] M5_172669: no progress yet
+[01:19:24] M5_172669: pulling results
+[01:21:04] M5_172669: no progress yet
+[01:22:42] M5_172669: no progress yet

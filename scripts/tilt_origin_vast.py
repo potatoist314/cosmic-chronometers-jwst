@@ -39,7 +39,9 @@ TARGETS = ("M5_172669", "M4_108989")
 BLACKWELL = ["RTX_5060", "RTX_5060Ti", "RTX_5070", "RTX_5070Ti", "RTX_5080", "RTX_5090"]
 POLL_SECONDS = 90
 RUN_TIMEOUT_SECONDS = 4 * 3600
-RUNNER_PATTERN = "scripts/tilt_origin_runner.py"
+# Anchored: an unanchored pattern also matches the ssh shell that runs pgrep,
+# so the driver would never see the runner exit.
+RUNNER_PATTERN = "^.venv-ceridwen-gpu/bin/python scripts/tilt_origin_runner.py"
 
 
 def _load_sweep():
@@ -192,9 +194,12 @@ def _runner_alive(instance_id: int) -> bool:
     return "yes" in probe.stdout
 
 
-def _progress(instance_id: int, suffix: str = "") -> str:
-    result = sweep._ssh(instance_id, f"tail -n 2 {sweep.REMOTE_ROOT}/{RESULTS}/progress{suffix}.log 2>/dev/null; "
-                        f"test -f {sweep.REMOTE_ROOT}/{RESULTS}/ALL_DONE{suffix} && echo ALL_DONE", timeout=60.0, check=False)
+def _progress(instance_id: int, target_name: str, suffix: str = "") -> str:
+    # The runner names its files after the arms file: progress_<target><suffix>.log
+    # and ALL_DONE_<target><suffix> (the main run's files have no suffix at all).
+    stem = f"_{target_name}{suffix}" if suffix else ""
+    result = sweep._ssh(instance_id, f"tail -n 2 {sweep.REMOTE_ROOT}/{RESULTS}/progress{stem}.log 2>/dev/null; "
+                        f"test -f {sweep.REMOTE_ROOT}/{RESULTS}/ALL_DONE{stem} && echo ALL_DONE", timeout=60.0, check=False)
     return result.stdout.strip().replace("\n", " | ")
 
 
@@ -219,7 +224,7 @@ def run_instance(offer: dict, args, outcome: dict) -> None:
         last_pull = time.monotonic()
         while time.monotonic() < deadline:
             time.sleep(POLL_SECONDS)
-            status = _progress(instance_id, args.suffix)
+            status = _progress(instance_id, args.target, args.suffix)
             log(status or "no progress yet")
             if "ALL_DONE" in status or not _runner_alive(instance_id):
                 break
@@ -227,7 +232,7 @@ def run_instance(offer: dict, args, outcome: dict) -> None:
                 _pull(instance_id, log)
                 last_pull = time.monotonic()
         _pull(instance_id, log)
-        outcome["progress"] = _progress(instance_id, args.suffix)
+        outcome["progress"] = _progress(instance_id, args.target, args.suffix)
     except Exception as error:  # noqa: BLE001 - always destroy, then report
         outcome["error"] = f"{type(error).__name__}: {error}"
         log(f"failed: {outcome['error']}")
@@ -256,7 +261,8 @@ def command_plan(args) -> int:
 def command_run(args) -> int:
     targets = args.target or list(TARGETS)
     busy_hosts = {int(i.get("host_id") or 0) for i in sweep._vastai_json(["show", "instances"])}
-    offers = [o for o in blackwell_offers() if int(o.get("host_id") or 0) not in busy_hosts]
+    excluded = busy_hosts | {int(h) for h in args.exclude_host}
+    offers = [o for o in blackwell_offers() if int(o.get("host_id") or 0) not in excluded]
     if len(offers) < len(targets):
         print(f"only {len(offers)} suitable offers for {len(targets)} targets", file=sys.stderr)
         return 1
@@ -305,6 +311,7 @@ def main(argv=None) -> int:
         sp.add_argument("--arm-set", choices=("main", "followup"), default="main")
         sp.add_argument("--suffix", default="", help="arm-list file suffix, e.g. _followup")
     run.add_argument("--target", action="append", choices=TARGETS, help="default: both targets")
+    run.add_argument("--exclude-host", action="append", default=[], help="Vast host id to avoid")
     run.add_argument("--image", default=sweep.DEFAULT_IMAGE)
     run.add_argument("--disk", type=int, default=sweep.DEFAULT_DISK_GB)
     sub.add_parser("destroy-all")

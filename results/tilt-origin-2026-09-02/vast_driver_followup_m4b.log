@@ -1,0 +1,25 @@
+[23:41:53] M4_108989: rented instance 49696414: offer 48911685 RTX 5070 $0.1341/h Nevada, US host 356741 rel 0.988
+[23:41:54] M4_108989: waiting for instance 49696414: status=None
+[23:42:10] M4_108989: waiting for instance 49696414: status=loading
+[23:42:26] M4_108989: waiting for instance 49696414: status=loading
+[23:42:42] M4_108989: waiting for instance 49696414: status=loading
+[23:42:58] M4_108989: waiting for instance 49696414: status=loading
+[23:43:14] M4_108989: waiting for instance 49696414: status=loading
+[23:43:30] M4_108989: waiting for instance 49696414: status=loading
+[23:43:46] M4_108989: waiting for instance 49696414: status=loading
+[23:44:02] M4_108989: waiting for instance 49696414: status=loading
+[23:44:19] M4_108989: waiting for instance 49696414: status=loading
+[23:44:35] M4_108989: waiting for instance 49696414: status=loading
+[23:44:51] M4_108989: waiting for instance 49696414: status=loading
+[23:45:07] M4_108989: waiting for instance 49696414: status=loading
+[23:45:27] M4_108989: cloning branch calibration-polynomial
+[23:45:30] M4_108989: failed: SweepError: root@24.196.244.156: Permission denied (publickey).
+[23:45:30] M4_108989: pulling results
+[23:45:33] M4_108989: pull failed: rsync failed: rsync: [sender] change_dir "/workspace/cosmic-chronometers-jwst/results/tilt-origin-2026-09-02" failed: No such file or directory (2)
+rsync(46450): warning: receiver has empty file list: exiting
+[23:45:35] M4_108989: destroyed instance 49696414
+{
+ "spent_usd": 0.0273,
+ "instances_left": []
+}
+M4_108989 49696414 SweepError: root@24.196.244.156: Permission denied (publickey).

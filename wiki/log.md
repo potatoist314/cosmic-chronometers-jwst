@@ -384,3 +384,8 @@
 
 - Pages: `analyses/ceridwen-calibration-polynomial.html`, `index.md`
 - Change: Added a draft analysis page explaining Prospector's spectrophotometric calibration vector, recording that `Spectrum.fit_polynomial_calibration` was never on the sampled path, documenting the profiled Chebyshev `PolynomialCalibration` on branch `calibration-polynomial`, and reporting the mock and DR2 fits with and without it.
+
+## [2026-09-03] analysis | Origin of the LEGA-C spectrum versus photometry tilt
+
+- Pages: `analyses/ceridwen-calibration-polynomial.html`, `index.md`
+- Change: Added the follow-up that settles where the 25 percent tilt comes from: quoted the DR2 release description and the three LEGA-C papers (spectra flux-calibrated by a 5th-order polynomial onto FAST templates of the UltraVISTA total SED, colour gradients uncorrected, no published throughput trend), compared each spectrum with four photometric SEDs in the five intermediate bands inside its range, and reported 46 further fits (error floor 0.02 to 0.15, COSMOS2015 3-arcsecond versus Laigle total versus UltraVISTA photometry, photometry-only, spectrum-only, free dust slope, Calzetti, photometric dust prior, bands left out). Hypotheses (a) calibration and (b) aperture gradient are excluded; the production photometry mixed 3-arcsecond apertures with total IRAC fluxes and skipped the offsets, which explains the whole tilt of the 4.6 Gyr galaxy and the normalisation of both; the 1.7 Gyr galaxy's residual tilt is the dust–polynomial degeneracy driven by a 0.3 mag optical–NIR mismatch of the model family at its line-based solution. Recommended default: corrected total photometry, all twelve bands, order-3 polynomial with `spectrum_scaling` kept.

@@ -1,0 +1,36 @@
+{
+ "finished": "2026-09-03T00:08:54+00:00",
+ "branch": "calibration-polynomial",
+ "offers": [
+  {
+   "id": 43665007,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.1023148148148148,
+   "geolocation": "Indiana, US",
+   "host_id": 332635
+  },
+  {
+   "id": 48986828,
+   "gpu_name": "RTX 5070",
+   "dph_total": 0.11918518518518517,
+   "geolocation": "South Korea, KR",
+   "host_id": 454863
+  }
+ ],
+ "outcomes": [
+  {
+   "target": "M5_172669",
+   "instance_id": 49693756,
+   "progress": "2026-09-03T00:02:54+00:00 start M5_172669_cosmos_total_poly1_dustprior | 2026-09-03T00:06:37+00:00 end M5_172669_cosmos_total_poly1_dustprior rc=0 wall=223s | ALL_DONE"
+  },
+  {
+   "target": "M4_108989",
+   "instance_id": 49693763,
+   "progress": "2026-09-03T00:03:53+00:00 start M4_108989_cosmos_total_poly1_dustprior | 2026-09-03T00:07:14+00:00 end M4_108989_cosmos_total_poly1_dustprior rc=0 wall=201s | ALL_DONE"
+  }
+ ],
+ "credit_before": 17.56530839582991,
+ "credit_after": 17.150962918829933,
+ "spent_usd": 0.4143,
+ "instances_left": []
+}

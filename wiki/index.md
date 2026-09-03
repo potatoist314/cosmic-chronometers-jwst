@@ -54,4 +54,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 ## Analyses
 
 - `analyses/ceridwen-gpu-benchmarks.html` — Compares speed, cost, memory, and hardware behaviour across forty-nine measured GPU runs stored under `benchmarks/`.
-- `analyses/ceridwen-calibration-polynomial.html` — Draft. Explains the spectrophotometric calibration polynomial, audits the sampled likelihood, and measures the profiled Chebyshev calibration on mocks and two DR2 targets.
+- `analyses/ceridwen-calibration-polynomial.html` — Draft. Explains the spectrophotometric calibration polynomial, audits the sampled likelihood, measures the profiled Chebyshev calibration on mocks and two DR2 targets, and traces the 25 percent LEGA-C-versus-photometry tilt to the photometry assembly (aperture and offsets) and, for the 1.7 Gyr galaxy, to the model family's optical–NIR colour; recommends corrected total photometry with the order-3 polynomial.

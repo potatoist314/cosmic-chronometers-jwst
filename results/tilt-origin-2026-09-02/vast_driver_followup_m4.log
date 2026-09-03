@@ -1,0 +1,14 @@
+[23:40:25] M4_108989: rented instance 49696331: offer 48609915 RTX 5070 $0.1242/h Saskatchewan, CA host 78532 rel 0.997
+[23:40:26] M4_108989: waiting for instance 49696331: status=None
+[23:40:42] M4_108989: waiting for instance 49696331: status=loading
+[23:41:02] M4_108989: cloning branch calibration-polynomial
+[23:41:04] M4_108989: failed: SweepError: root@45.42.128.201: Permission denied (publickey).
+[23:41:04] M4_108989: pulling results
+[23:41:06] M4_108989: pull failed: rsync failed: rsync: [sender] change_dir "/workspace/cosmic-chronometers-jwst/results/tilt-origin-2026-09-02" failed: No such file or directory (2)
+rsync(43809): warning: receiver has empty file list: exiting
+[23:41:08] M4_108989: destroyed instance 49696331
+{
+ "spent_usd": 0.0034,
+ "instances_left": []
+}
+M4_108989 49696331 SweepError: root@45.42.128.201: Permission denied (publickey).
