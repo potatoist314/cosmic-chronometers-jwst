@@ -37,7 +37,7 @@ OUT_DIR = PROJECT_ROOT / "results/figures"
 COSMO = FlatLambdaCDM(H0=70, Om0=0.3)
 SIGMA_SPLIT = 215.0
 Z_EDGES = np.array([0.6, 0.675, 0.75, 0.825, 0.9])
-Z_FORM_TRACKS = (1.0, 1.5, 2.0, 3.0)
+Z_FORM_TRACKS = (1.0, 1.5, 2.5, 5.0)
 
 BLUE, ORANGE, GREY = "#0072B2", "#E69F00", "#999999"
 
@@ -66,7 +66,8 @@ def binned(frame: pd.DataFrame, value: str) -> pd.DataFrame:
         rows.append(
             {
                 "group": group,
-                "z": float((zbin.left + zbin.right) / 2),
+                "zbin": str(zbin),
+                "z": float(members["z"].mean()),
                 "dz": float((zbin.right - zbin.left) / 2),
                 "median": median,
                 "err": float(1.4826 * np.median(np.abs(values - median))
@@ -81,16 +82,17 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     galaxies = pd.read_csv(SUMMARY_PATH)
     borghi = pd.read_csv(BORGHI_PATH, sep="\t", comment="#")
-    best = borghi.sort_values("dr2_sn_per_pixel").drop_duplicates(
-        "mms2013_id", keep="last")
-    overlap = galaxies.merge(best[["mms2013_id", "borghi_age_gyr"]],
-                             left_on="object_id", right_on="mms2013_id",
-                             how="inner")
+    full = (borghi.sort_values("dr2_sn_per_pixel")
+            .drop_duplicates("mms2013_id", keep="last"))
+    full = full[full["borghi_age_gyr"].notna()].copy()
+    full["z"] = full["dr2_z_spec"]
+    full["sigma_star_kms"] = full["dr2_sigma_stars_prime_km_s"]
+    print(f"full deduplicated Borghi catalogue N={len(full)}")
+    groups = np.where(full["sigma_star_kms"] > SIGMA_SPLIT, "high", "low")
+    print({group: int((groups == group).sum()) for group in ("low", "high")})
 
-    ours = binned(galaxies.assign(sigma_star_kms=galaxies["sigma_star_kms"]),
-                  "age_q50")
-    theirs = binned(overlap.assign(sigma_star_kms=overlap["sigma_star_kms"]),
-                    "borghi_age_gyr")
+    ours = binned(galaxies, "age_q50")
+    theirs = binned(full, "borghi_age_gyr")
 
     zz = np.linspace(0.55, 1.0, 400)
     age_universe = COSMO.age(zz).value
@@ -100,8 +102,10 @@ def main() -> None:
                          linewidth=0)
     for zform in Z_FORM_TRACKS:
         track = age_universe - COSMO.age(zform).value
-        axes[0].plot(zz, np.where(track > 0, track, np.nan), color="black",
-                     lw=0.8, ls=":", alpha=0.7)
+        positive = np.where(track > 0, track, np.nan)
+        axes[0].plot(zz, positive, color="black", lw=0.8, ls=":", alpha=0.7)
+        axes[0].text(0.9, float(np.interp(0.9, zz, positive)), f"{zform:g}",
+                     fontsize=7, va="center", ha="left", alpha=0.8)
     for group, color in [("low", BLUE), ("high", ORANGE)]:
         members = galaxies[
             (np.where(galaxies["sigma_star_kms"] > SIGMA_SPLIT, "high", "low")
@@ -140,10 +144,11 @@ def main() -> None:
     fig.savefig(OUT_DIR / "borghi2022-age-vs-z.png")
     plt.close(fig)
 
-    comp = ours.merge(theirs, on=["group", "z"], suffixes=("_cer", "_bor"))
+    comp = ours.merge(theirs, on=["group", "zbin"],
+                      suffixes=("_cer", "_bor"))
     comp["delta"] = comp["median_cer"] - comp["median_bor"]
-    print(comp[["group", "z", "n_cer", "median_cer", "n_bor", "median_bor",
-                "delta"]].to_string(index=False))
+    print(comp[["group", "zbin", "n_cer", "median_cer", "n_bor",
+                "median_bor", "delta"]].to_string(index=False))
     print(f"mean Ceridwen-Borghi binned offset: {comp['delta'].mean():.2f} Gyr")
     print("wrote", OUT_DIR / "borghi2022-age-vs-z.{pdf,png}")
 
