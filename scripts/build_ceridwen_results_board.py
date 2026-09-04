@@ -78,6 +78,7 @@ def build_board_html(manifest: dict) -> str:
   <meta name="wiki-status" content="current">
   <meta name="wiki-updated" content="2026-09-04">
   <title>Ceridwen Results Board</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../assets/wiki.css">
   <style>
     :root {{
@@ -671,6 +672,8 @@ def build_board_html(manifest: dict) -> str:
         <h3>Payload-preserving interactive viewer</h3>
         <p>The viewer uses the byte-identical accepted checkpoint payload. Its controls, legend, spectrum, residual, and axis labels fit desktop and phone viewports. It displays Effective Sample Size (ESS, independent posterior samples) and Bayesian log-evidence (logZ, marginal likelihood). It also presents the converged rescue posterior (nested sampling solution after sampler convergence).</p>
       </div>
+
+      <p>The shaded band shows the 16th to 84th percentile range of noiseless model spectra across 128 deterministic equal-weight draws. It represents parameter uncertainty, not measurement noise.</p>
 
       <p><a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">Open the hosted checkpoint viewer</a>. The underlying nested sampling implementation and test modules remain available in the codebase:</p>
       <ul>
