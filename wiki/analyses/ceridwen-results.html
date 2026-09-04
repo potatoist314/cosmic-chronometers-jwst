@@ -72,8 +72,8 @@
     .callout-alert {
       border-left-color: #d1242f;
     }
-    .callout-success {
-      border-left-color: #1a7f37;
+    .callout-info {
+      border-left-color: #0969da;
     }
     .callout h3 {
       margin: 0 0 0.5rem;
@@ -213,7 +213,7 @@
   <main class="page-shell" id="main-content">
     <header>
       <h1>Ceridwen common results board</h1>
-      <p>Authoritative map of all completed Ceridwen stellar population inference results, figures, data tables, benchmarks, and interactive models. Every mapped output resolves directly to disk, with live push provenance and pending researcher decisions.</p>
+      <p>Authoritative map of all completed Ceridwen stellar population inference results, figures, data tables, benchmarks, and models. Every mapped output resolves directly to disk, with live push provenance and pending researcher decisions.</p>
     </header>
 
     <div class="callout callout-alert">
@@ -232,7 +232,7 @@
       <a href="#formation-timescales">Formation Timescales</a>
       <a href="#fit-quality">Fit Quality</a>
       <a href="#performance">Performance &amp; Production</a>
-      <a href="#checkpoint-anim">Checkpoint Animation</a>
+      <a href="#checkpoint-anim">Checkpoint Animation (Optional)</a>
       <a href="#related-runs">Related Runs</a>
       <a href="#manifest-index">Complete Artifact Catalog (79)</a>
     </nav>
@@ -330,13 +330,13 @@
             </tr>
             <tr>
               <td><strong>Interactive Checkpoint Evolution</strong></td>
-              <td>Responsive viewer stepping through prior predictive, partial checkpoints, and converged rescue with credible bands and residuals.</td>
+              <td>Optional visual enhancement; steps through prior predictive, dead points, and rescue. Kept as pending placeholder.</td>
               <td>
-                <a href="../../results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/ceridwen-checkpoint-spectrum-evolution.html">Interactive HTML</a> · 
-                <a href="../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots">CDP Evidence</a>
+                <span style="color: var(--muted); font-weight: 500;">Pending Tier-H Replacement</span> · 
+                <a href="../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots">Screenshots Dir</a>
               </td>
-              <td><span class="badge badge-pushed">Pushed</span> <code>3a0eb6b</code></td>
-              <td>None (mobile &amp; desktop verified).</td>
+              <td><span class="badge badge-local">Pending / Optional</span></td>
+              <td>Optional enhancement only; do not block science delivery.</td>
             </tr>
           </tbody>
         </table>
@@ -756,32 +756,28 @@
       </div>
     </section>
 
-    <!-- SECTION 9: INTERACTIVE CHECKPOINT ANIMATION -->
+    <!-- SECTION 9: INTERACTIVE CHECKPOINT ANIMATION (OPTIONAL PLACEHOLDER) -->
     <section id="checkpoint-anim">
-      <h2>Interactive checkpoint spectrum evolution (Delivered)</h2>
-      <p>Interactive standalone viewer: <a href="../../results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/ceridwen-checkpoint-spectrum-evolution.html" target="_blank" rel="noopener"><strong>ceridwen-checkpoint-spectrum-evolution.html</strong></a> (delivered and verified responsive at 390&times;844 on iPhone/iPad). Screen verification captures: <a href="../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots">screenshots directory</a>. Generation script: <a href="../../scripts/plot_ceridwen_checkpoint_evolution.py">plot_ceridwen_checkpoint_evolution.py</a>. Test suites: <a href="../../tests/test_plot_ceridwen_checkpoint_evolution.py">test_plot_ceridwen_checkpoint_evolution.py</a>, <a href="../../ceridwen/tests/test_checkpoint_spectrum.py">test_checkpoint_spectrum.py</a>, <a href="../../ceridwen/tests/test_ns_checkpoint.py">test_ns_checkpoint.py</a>. Model modules: <a href="../../ceridwen/ceridwen/plotting/checkpoint.py">ceridwen/plotting/checkpoint.py</a>, <a href="../../ceridwen/ceridwen/sampler/nested.py">ceridwen/sampler/nested.py</a>.</p>
-      
-      <div class="plot-card" style="margin-top: 1rem;">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-            <h3 style="margin: 0; font-size: 1.1rem;">Interactive Spectrum Playback &amp; Checkpoint Rescue</h3>
-            <span class="badge badge-pushed">Pushed</span>
-          </div>
-          <p style="font-size: 0.92rem; line-height: 1.5; margin-bottom: 1rem;">
-            Displays the evolution of nested sampler convergence for galaxy <code>210210</code>: from prior predictive spectrum through intermediate nested sampling dead points, culminating in the converged posterior prediction. Includes full 16&ndash;84% credible envelope, residual strips, and live parameter telemetry.
-          </p>
-          <div style="text-align: center; padding: 1.5rem; background: var(--code); border: 1px dashed var(--line); border-radius: 6px;">
-            <p style="margin-bottom: 0.75rem; font-weight: 500;">Launch interactive visualization:</p>
-            <a href="../../results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/ceridwen-checkpoint-spectrum-evolution.html" target="_blank" rel="noopener" style="display: inline-block; padding: 0.6rem 1.25rem; background: var(--accent); color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600;">Open Interactive Checkpoint Viewer &rarr;</a>
-          </div>
-        </div>
+      <h2>Interactive checkpoint spectrum evolution (Optional enhancement)</h2>
+      <div class="callout callout-info">
+        <h3>Optional visual presentation &mdash; Pending Tier-H repair</h3>
+        <p>Per research guidance, the interactive checkpoint playback is an optional exploratory visualization and is not required for scientific results delivery. The prior mobile packaging failed review, and a separate tier-H replacement parent is preparing a payload-identical, host-root-safe artifact. The production results board omits the unverified viewer to prevent claiming unapproved assets while keeping all independent science live.</p>
       </div>
+
+      <p>The underlying nested sampling implementation and test modules remain fully available in the codebase:</p>
+      <ul>
+        <li>Generator script: <a href="../../scripts/plot_ceridwen_checkpoint_evolution.py">scripts/plot_ceridwen_checkpoint_evolution.py</a></li>
+        <li>Verification captures: <a href="../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots">reports/ceridwen-checkpoint-animation/screenshots/</a></li>
+        <li>Test suites: <a href="../../tests/test_plot_ceridwen_checkpoint_evolution.py">test_plot_ceridwen_checkpoint_evolution.py</a>, <a href="../../ceridwen/tests/test_checkpoint_spectrum.py">test_checkpoint_spectrum.py</a>, <a href="../../ceridwen/tests/test_ns_checkpoint.py">test_ns_checkpoint.py</a></li>
+        <li>Core sampler modules: <a href="../../ceridwen/ceridwen/plotting/checkpoint.py">ceridwen/plotting/checkpoint.py</a>, <a href="../../ceridwen/ceridwen/sampler/nested.py">ceridwen/sampler/nested.py</a></li>
+        <li>Four-galaxy fit directory: <a href="../../results/rtx-4070-super-four-galaxy-fits">results/rtx-4070-super-four-galaxy-fits/</a></li>
+      </ul>
     </section>
 
     <!-- SECTION 10: RELATED FIT RUNS (DIRECTORY-LEVEL) -->
     <section id="related-runs">
       <h2>Related fit runs and exploratory suites</h2>
-      <p>Exploratory and benchmark fit runs too large to inline; accessible at directory level:</p>
+      <p>Exploratory and benchmark fit runs accessible at directory level:</p>
       <ul>
         <li><a href="../../results/refit-static-smoothing">results/refit-static-smoothing/</a> &mdash; Per-target refits utilizing the static smoother <span class="badge badge-local">Local / Unpushed</span>.</li>
         <li><a href="../../results/rtx-5060-sfh-fastpath-comparison">results/rtx-5060-sfh-fastpath-comparison/</a> &mdash; Baseline vs fastpath_a SFH basis comparison <span class="badge badge-mixed">Partial</span>.</li>
@@ -1456,9 +1452,9 @@
               <td><strong>Interactive checkpoint spectrum evolution</strong></td>
               <td>interactive-html</td>
               <td><code>text/html</code></td>
-              <td><a href="../../results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/ceridwen-checkpoint-spectrum-evolution.html">../../results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/ceridwen-checkpoint-spectrum-evolution.html</a></td>
-              <td><span class="badge badge-pushed">Pushed</span></td>
-              <td style="font-size: 0.82rem;">&mdash;</td>
+              <td><code>../../results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/ceridwen-checkpoint-spectrum-evolution.html</code> <em>(pending tier-H)</em></td>
+              <td><span class="badge badge-local">Pending Replacement</span></td>
+              <td style="font-size: 0.82rem;">Optional visualization; pending tier-H replacement parent.</td>
             </tr>
             <tr>
               <td><code>checkpoint-screenshots-dir</code></td>

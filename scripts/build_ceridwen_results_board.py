@@ -3,6 +3,7 @@
 
 Reads /Users/liuhao/.claude/scripts/hermes-bridge/reports/ceridwen-board-repair/manifest.json
 and generates /Users/liuhao/Downloads/Astro project/wiki/analyses/ceridwen-results.html.
+Omits unverified animation claims, presenting it as an optional pending enhancement.
 """
 
 from __future__ import annotations
@@ -16,7 +17,9 @@ BOARD_PATH = Path("/Users/liuhao/Downloads/Astro project/wiki/analyses/ceridwen-
 WIKI_BASE = Path("/Users/liuhao/Downloads/Astro project/wiki/analyses")
 
 
-def format_badge(pushed: bool | str | None) -> str:
+def format_badge(pushed: bool | str | None, label: str | None = None) -> str:
+    if label:
+        return f'<span class="badge badge-local">{html.escape(label)}</span>'
     if pushed is True:
         return '<span class="badge badge-pushed">Pushed</span>'
     if pushed == "partial":
@@ -28,11 +31,8 @@ def format_badge(pushed: bool | str | None) -> str:
 
 def build_board_html(manifest: dict) -> str:
     items_by_id = {item["id"]: item for item in manifest["items"]}
-    
-    # Verify all expected items exist
     assert len(items_by_id) == len(manifest["items"]), "Duplicate item IDs"
 
-    # Helper to create a plot card
     def plot_card(png_id: str, pdf_id: str | None = None, script_id: str | None = None) -> str:
         png_item = items_by_id[png_id]
         png_src = html.escape(png_item["wiki_relative_path"])
@@ -141,8 +141,8 @@ def build_board_html(manifest: dict) -> str:
     .callout-alert {{
       border-left-color: #d1242f;
     }}
-    .callout-success {{
-      border-left-color: #1a7f37;
+    .callout-info {{
+      border-left-color: #0969da;
     }}
     .callout h3 {{
       margin: 0 0 0.5rem;
@@ -282,7 +282,7 @@ def build_board_html(manifest: dict) -> str:
   <main class="page-shell" id="main-content">
     <header>
       <h1>Ceridwen common results board</h1>
-      <p>Authoritative map of all completed Ceridwen stellar population inference results, figures, data tables, benchmarks, and interactive models. Every mapped output resolves directly to disk, with live push provenance and pending researcher decisions.</p>
+      <p>Authoritative map of all completed Ceridwen stellar population inference results, figures, data tables, benchmarks, and models. Every mapped output resolves directly to disk, with live push provenance and pending researcher decisions.</p>
     </header>
 
     <div class="callout callout-alert">
@@ -301,7 +301,7 @@ def build_board_html(manifest: dict) -> str:
       <a href="#formation-timescales">Formation Timescales</a>
       <a href="#fit-quality">Fit Quality</a>
       <a href="#performance">Performance &amp; Production</a>
-      <a href="#checkpoint-anim">Checkpoint Animation</a>
+      <a href="#checkpoint-anim">Checkpoint Animation (Optional)</a>
       <a href="#related-runs">Related Runs</a>
       <a href="#manifest-index">Complete Artifact Catalog (79)</a>
     </nav>
@@ -399,13 +399,13 @@ def build_board_html(manifest: dict) -> str:
             </tr>
             <tr>
               <td><strong>Interactive Checkpoint Evolution</strong></td>
-              <td>Responsive viewer stepping through prior predictive, partial checkpoints, and converged rescue with credible bands and residuals.</td>
+              <td>Optional visual enhancement; steps through prior predictive, dead points, and rescue. Kept as pending placeholder.</td>
               <td>
-                <a href="{items_by_id['checkpoint-interactive-html']['wiki_relative_path']}">Interactive HTML</a> · 
-                <a href="{items_by_id['checkpoint-screenshots-dir']['wiki_relative_path']}">CDP Evidence</a>
+                <span style="color: var(--muted); font-weight: 500;">Pending Tier-H Replacement</span> · 
+                <a href="{items_by_id['checkpoint-screenshots-dir']['wiki_relative_path']}">Screenshots Dir</a>
               </td>
-              <td>{format_badge(True)} <code>3a0eb6b</code></td>
-              <td>None (mobile &amp; desktop verified).</td>
+              <td>{format_badge(False, "Pending / Optional")}</td>
+              <td>Optional enhancement only; do not block science delivery.</td>
             </tr>
           </tbody>
         </table>
@@ -578,32 +578,28 @@ def build_board_html(manifest: dict) -> str:
       </div>
     </section>
 
-    <!-- SECTION 9: INTERACTIVE CHECKPOINT ANIMATION -->
+    <!-- SECTION 9: INTERACTIVE CHECKPOINT ANIMATION (OPTIONAL PLACEHOLDER) -->
     <section id="checkpoint-anim">
-      <h2>Interactive checkpoint spectrum evolution (Delivered)</h2>
-      <p>Interactive standalone viewer: <a href="{items_by_id['checkpoint-interactive-html']['wiki_relative_path']}" target="_blank" rel="noopener"><strong>ceridwen-checkpoint-spectrum-evolution.html</strong></a> (delivered and verified responsive at 390&times;844 on iPhone/iPad). Screen verification captures: <a href="{items_by_id['checkpoint-screenshots-dir']['wiki_relative_path']}">screenshots directory</a>. Generation script: <a href="{items_by_id['checkpoint-generator-script']['wiki_relative_path']}">plot_ceridwen_checkpoint_evolution.py</a>. Test suites: <a href="{items_by_id['checkpoint-generator-test']['wiki_relative_path']}">test_plot_ceridwen_checkpoint_evolution.py</a>, <a href="{items_by_id['checkpoint-spectrum-test']['wiki_relative_path']}">test_checkpoint_spectrum.py</a>, <a href="{items_by_id['checkpoint-serialization-test']['wiki_relative_path']}">test_ns_checkpoint.py</a>. Model modules: <a href="{items_by_id['checkpoint-prediction-module']['wiki_relative_path']}">ceridwen/plotting/checkpoint.py</a>, <a href="{items_by_id['checkpoint-sampler-module']['wiki_relative_path']}">ceridwen/sampler/nested.py</a>.</p>
-      
-      <div class="plot-card" style="margin-top: 1rem;">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-            <h3 style="margin: 0; font-size: 1.1rem;">Interactive Spectrum Playback &amp; Checkpoint Rescue</h3>
-            {format_badge(items_by_id['checkpoint-interactive-html']['pushed'])}
-          </div>
-          <p style="font-size: 0.92rem; line-height: 1.5; margin-bottom: 1rem;">
-            Displays the evolution of nested sampler convergence for galaxy <code>210210</code>: from prior predictive spectrum through intermediate nested sampling dead points, culminating in the converged posterior prediction. Includes full 16&ndash;84% credible envelope, residual strips, and live parameter telemetry.
-          </p>
-          <div style="text-align: center; padding: 1.5rem; background: var(--code); border: 1px dashed var(--line); border-radius: 6px;">
-            <p style="margin-bottom: 0.75rem; font-weight: 500;">Launch interactive visualization:</p>
-            <a href="{items_by_id['checkpoint-interactive-html']['wiki_relative_path']}" target="_blank" rel="noopener" style="display: inline-block; padding: 0.6rem 1.25rem; background: var(--accent); color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600;">Open Interactive Checkpoint Viewer &rarr;</a>
-          </div>
-        </div>
+      <h2>Interactive checkpoint spectrum evolution (Optional enhancement)</h2>
+      <div class="callout callout-info">
+        <h3>Optional visual presentation &mdash; Pending Tier-H repair</h3>
+        <p>Per research guidance, the interactive checkpoint playback is an optional exploratory visualization and is not required for scientific results delivery. The prior mobile packaging failed review, and a separate tier-H replacement parent is preparing a payload-identical, host-root-safe artifact. The production results board omits the unverified viewer to prevent claiming unapproved assets while keeping all independent science live.</p>
       </div>
+
+      <p>The underlying nested sampling implementation and test modules remain fully available in the codebase:</p>
+      <ul>
+        <li>Generator script: <a href="{items_by_id['checkpoint-generator-script']['wiki_relative_path']}">scripts/plot_ceridwen_checkpoint_evolution.py</a></li>
+        <li>Verification captures: <a href="{items_by_id['checkpoint-screenshots-dir']['wiki_relative_path']}">reports/ceridwen-checkpoint-animation/screenshots/</a></li>
+        <li>Test suites: <a href="{items_by_id['checkpoint-generator-test']['wiki_relative_path']}">test_plot_ceridwen_checkpoint_evolution.py</a>, <a href="{items_by_id['checkpoint-spectrum-test']['wiki_relative_path']}">test_checkpoint_spectrum.py</a>, <a href="{items_by_id['checkpoint-serialization-test']['wiki_relative_path']}">test_ns_checkpoint.py</a></li>
+        <li>Core sampler modules: <a href="{items_by_id['checkpoint-prediction-module']['wiki_relative_path']}">ceridwen/plotting/checkpoint.py</a>, <a href="{items_by_id['checkpoint-sampler-module']['wiki_relative_path']}">ceridwen/sampler/nested.py</a></li>
+        <li>Four-galaxy fit directory: <a href="{items_by_id['rtx4070-four-fit-dir']['wiki_relative_path']}">results/rtx-4070-super-four-galaxy-fits/</a></li>
+      </ul>
     </section>
 
     <!-- SECTION 10: RELATED FIT RUNS (DIRECTORY-LEVEL) -->
     <section id="related-runs">
       <h2>Related fit runs and exploratory suites</h2>
-      <p>Exploratory and benchmark fit runs too large to inline; accessible at directory level:</p>
+      <p>Exploratory and benchmark fit runs accessible at directory level:</p>
       <ul>
         <li><a href="{items_by_id['static-smoothing-refits-dir']['wiki_relative_path']}">results/refit-static-smoothing/</a> &mdash; Per-target refits utilizing the static smoother {format_badge(items_by_id['static-smoothing-refits-dir']['pushed'])}.</li>
         <li><a href="{items_by_id['sfh-fastpath-comparison-dir']['wiki_relative_path']}">results/rtx-5060-sfh-fastpath-comparison/</a> &mdash; Baseline vs fastpath_a SFH basis comparison {format_badge(items_by_id['sfh-fastpath-comparison-dir']['pushed'])}.</li>
@@ -643,14 +639,21 @@ def build_board_html(manifest: dict) -> str:
         rel = html.escape(item["wiki_relative_path"])
         pushed_badge = format_badge(item["pushed"])
         dec = html.escape("; ".join(item["pending_decisions"])) if item["pending_decisions"] else "&mdash;"
-        
+
+        # For the checkpoint interactive html specifically: note pending replacement
+        link_display = f'<a href="{rel}">{rel}</a>'
+        if iid == "checkpoint-interactive-html":
+            pushed_badge = format_badge(False, "Pending Replacement")
+            dec = "Optional visualization; pending tier-H replacement parent."
+            link_display = f'<code>{rel}</code> <em>(pending tier-H)</em>'
+
         doc += f'''
             <tr>
               <td><code>{iid}</code></td>
               <td><strong>{title}</strong></td>
               <td>{cat}</td>
               <td><code>{mt}</code></td>
-              <td><a href="{rel}">{rel}</a></td>
+              <td>{link_display}</td>
               <td>{pushed_badge}</td>
               <td style="font-size: 0.82rem;">{dec}</td>
             </tr>'''

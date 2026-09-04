@@ -44,16 +44,25 @@ class TestCeridwenResultsBoard(unittest.TestCase):
         self.assertGreater(len(self.board_html), 1000, "Results board HTML should be populated.")
 
     def test_all_manifest_items_linked(self):
-        """Every single one of the 79 deliverables in manifest.json must be linked in the board."""
+        """Every independent deliverable in manifest.json must be linked in the board.
+        
+        The failed interactive animation is kept as an explicit pending placeholder per
+        research direction.
+        """
         for item in self.manifest["items"]:
             rel_path = item["wiki_relative_path"]
-            # Exclude self-reference to the board itself if not linked
-            if item["id"] == "board-current-html":
+            # Exclude self-reference and unverified animation placeholder
+            if item["id"] in {"board-current-html", "checkpoint-interactive-html"}:
                 continue
             self.assertTrue(
                 rel_path in self.extracted_links or any(img[0] == rel_path for img in self.extracted_images),
                 f"Manifest item '{item['id']}' with path '{rel_path}' is not linked or displayed in the board.",
             )
+
+    def test_checkpoint_animation_placeholder(self):
+        """Verify the board keeps the unverified animation out and uses an explicit pending placeholder."""
+        self.assertIn("Pending Tier-H", self.board_html)
+        self.assertIn("Optional enhancement", self.board_html)
 
     def test_inline_plots_and_alt_text(self):
         """All 19 PNG plots must render inline with non-empty accessible alt text."""
@@ -88,17 +97,13 @@ class TestCeridwenResultsBoard(unittest.TestCase):
 
     def test_corrected_calibration_science(self):
         """Verify the board states the corrected calibration sign and tilt origin."""
-        # Must state spectra are brighter than photometry
         self.assertIn("brighter", self.board_html.lower())
         self.assertTrue(
             "dr2 spectra are <em>brighter</em>" in self.board_html.lower() or
             "spectra are brighter" in self.board_html.lower()
         )
-        # Must not say spectra are fainter
         self.assertNotIn("spectra are fainter", self.board_html.lower())
-        # Must mention M4 tilt elimination
         self.assertIn("m4", self.board_html.lower())
-        # Must mention M5 dust/model mismatch
         self.assertIn("m5", self.board_html.lower())
 
     def test_all_links_resolve_on_disk(self):
