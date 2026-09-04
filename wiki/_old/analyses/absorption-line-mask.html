@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="wiki-type" content="analysis">
+  <meta name="wiki-status" content="draft">
+  <meta name="wiki-updated" content="2026-09-02">
+  <title>Astro Wiki · Absorption-Line Pixel Mask</title>
+  <link rel="stylesheet" href="../assets/wiki.css">
+  <style>
+    figure img { max-width: 100%; height: auto; }
+    .num { text-align: right; }
+  </style>
+  <!-- site-name-block: name, icons and manifest, so a bookmark saves under "Astro Wiki" -->
+  <meta name="application-name" content="Astro Wiki">
+  <meta name="apple-mobile-web-app-title" content="Astro Wiki">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/icons/icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="../index.html">
+        <span class="site-mark">AR</span>
+        <span>Astro Research Wiki</span>
+      </a>
+    </div>
+  </header>
+  <main class="page-shell" id="main-content">
+    <header>
+      <h1>Absorption-line pixel mask</h1>
+      <p>Draft. Does fitting only the absorption-feature pixels of a LEGA-C spectrum, so that the photometry carries more weight, improve the accuracy of a Ceridwen fit?</p>
+    </header>
+
+    <section id="answer">
+      <h2>Answer</h2>
+            <p><strong>No.</strong> Fitting only the absorption-feature pixels, or keeping every pixel and inflating the continuum errors until the continuum carries no more weight than the photometry, does not make the recovered mass, age, metallicity or dust more accurate. It costs precision and, on real spectra, moves the answers by many sigma.</p>
+      <ul>
+        <li><strong>Weight.</strong> The spectrum outweighs the twelve bands by a factor of 220 to 760 in summed (S/N)<sup>2</sup> once the fitted 3 percent calibration floor is included, and the photometry's share of the Fisher information stays below one percent with or without the mask. No pixel selection makes the photometry matter.</li>
+        <li><strong>Mocks.</strong> A 3 percent linear continuum tilt biases t<sub>MW</sub> by +0.16 Gyr (full spectrum), +0.12 Gyr (features only) and +0.16 Gyr (down-weighted) at the native S/N; log M<sub>&#8902;</sub> by +0.051, +0.049 and +0.050 dex; &tau;<sub>dust</sub> by +0.11, +0.10 and +0.10. The masked modes are as biased as the full fit, and their posteriors are 0.9 to 1.6 times as wide (medians per parameter and S/N scale; single realisations range from 0.5 to 2.4).</li>
+        <li><strong>Real targets.</strong> On M5_172669, M9_232005 and M11_214430 the masked posteriors sit up to 22 full-spectrum sigma away from the full-spectrum ones (M9 age 3.0 &rarr; 4.3 Gyr, M5 log Z -1.72 &rarr; -1.97, [&alpha;/Fe] 0.13 &rarr; 0.36). The continuum and the features do not agree under the current model, and the mock test cannot say which side is right.</li>
+        <li><strong>Cost.</strong> The masked fits take 90% (features only) and 87% (down-weighted) of the full-spectrum sampler wall time, a saving too small to buy back the lost precision.</li>
+        <li><strong>Recommendation.</strong> Keep the option off by default (<code>CERIDWEN_SPECTRUM_PIXELS=all</code>). Use <code>features</code> as a diagnostic: a many-sigma shift flags a spectrum whose continuum shape the model cannot reproduce. Tilt-shaped calibration errors need a multiplicative calibration polynomial or continuum-normalised indices, not a pixel mask.</li>
+      </ul>
+    </section>
+
+    <section id="weights">
+      <h2>How the current likelihood weighs spectrum against photometry</h2>
+      <p>The joint log-likelihood is the plain sum of one diagonal Gaussian per data set (<code>ceridwen/ceridwen/likelihood/likelihood.py:840-875</code>, <code>MultiObservationLikelihood.__call__</code>). No term rebalances the two. Photometry uses the catalogue error with a 5 percent floor in quadrature (<code>notebooks/ceridwen_integrated_photometry_spectra.ipynb</code>, heading "Photometric observation", <code>PHOTOMETRY_FLOOR</code>). The spectrum uses <code>DiagonalNoiseModel(use_fractional=True)</code>, so its per-pixel variance is <code>sigma^2 + (f_calib * mu)^2</code> with <code>log_f_calib</code> a fitted parameter, uniform between 1 and 10 percent (<code>ceridwen/ceridwen/likelihood/noise_model.py:283-369</code>). A free scalar <code>spectrum_scaling</code> multiplies the model spectrum only (<code>ceridwen/ceridwen/csp/csp.py:1351-1362</code>), so the spectrum constrains shape and the photometry alone fixes the absolute flux.</p>
+      <p>For a diagonal Gaussian the information on a pure amplitude is the sum of (S/N)<sup>2</sup>. That sum, over the fitted pixels against the twelve bands, is the weight ratio for anything that moves the flux level:</p>
+      <table>
+        <caption>Weight budget of the current likelihood. Feature pixels are those inside the absorption windows defined below. The balance factor is the sigma inflation of the continuum pixels that equalises the continuum and photometry budgets.</caption>
+        <thead><tr><th>Target</th><th class="num">z</th><th class="num">Fitted pixels</th><th class="num">Median pixel S/N</th><th class="num">Photometry sum (S/N)<sup>2</sup></th><th class="num">Spectrum / photometry, raw</th><th class="num">Spectrum / photometry, f<sub>calib</sub> = 3%</th><th class="num">Feature pixels</th><th class="num">Balance factor</th></tr></thead>
+        <tbody>
+          <tr><td>M5_172669</td><td class="num">0.604</td><td class="num">3,602</td><td class="num">106</td><td class="num">4,654</td><td class="num">8,090</td><td class="num">756</td><td class="num">1,389 (39%)</td><td class="num">71</td></tr>
+          <tr><td>M9_232005</td><td class="num">0.611</td><td class="num">3,494</td><td class="num">29</td><td class="num">3,961</td><td class="num">757</td><td class="num">390</td><td class="num">1,521 (44%)</td><td class="num">21</td></tr>
+          <tr><td>M11_214430</td><td class="num">0.891</td><td class="num">3,810</td><td class="num">15</td><td class="num">3,776</td><td class="num">308</td><td class="num">220</td><td class="num">1,088 (29%)</td><td class="num">14</td></tr>
+        </tbody>
+      </table>
+      <p>Twelve bands at S/N 20 cannot compete with thousands of pixels at S/N 15 to 100 by count. Keeping only the feature pixels removes 56 to 71 percent of the pixels and leaves the ratio between 80 and 3,000. The mask therefore cannot rebalance the two data sets; what it does is remove the continuum shape from the spectrum, which is the information a multiplicative calibration error corrupts.</p>
+      <p>A sum of (S/N)<sup>2</sup> only measures amplitude information. The Fisher matrix of the notebook model at the mock truth (Jacobians of the predicted photometry and spectrum, the notebook noise model with f<sub>calib</sub> = 2.9 percent, and the prior curvature added as a diagonal) splits the information per parameter and forecasts the marginal posterior width of a photometry-only, spectrum-only, and joint fit in every pixel mode. For M5_172669:</p>
+      <table>
+        <caption>Fisher forecast for M5_172669 at the mock truth. "Spectrum share" is the spectrum's fraction of the diagonal information; widths are 1-sigma Laplace forecasts. The down-weighted mode (factor 71) is indistinguishable from features-only to three digits because a factor 71 leaves the continuum 1/5000 of its weight. <code>results/absorption-mask/fisher_M5_172669.json</code>.</caption>
+        <thead><tr><th>Parameter</th><th class="num">Spectrum share, full</th><th class="num">Spectrum share, features</th><th class="num">Width, photometry only</th><th class="num">Width, spectrum only</th><th class="num">Width, joint full</th><th class="num">Width, joint features</th><th class="num">Prior width</th></tr></thead>
+        <tbody>
+          <tr><td>log Z</td><td class="num">0.997</td><td class="num">0.992</td><td class="num">0.25</td><td class="num">0.015</td><td class="num">0.015</td><td class="num">0.023</td><td class="num">0.87</td></tr>
+          <tr><td>[α/Fe]</td><td class="num">0.998</td><td class="num">0.994</td><td class="num">0.17</td><td class="num">0.016</td><td class="num">0.015</td><td class="num">0.021</td><td class="num">0.23</td></tr>
+          <tr><td>τ<sub>dust</sub></td><td class="num">0.997</td><td class="num">0.993</td><td class="num">0.099</td><td class="num">0.0057</td><td class="num">0.0056</td><td class="num">0.0080</td><td class="num">0.58</td></tr>
+          <tr><td>log M<sub>⋆</sub></td><td class="num">0.999</td><td class="num">0.997</td><td class="num">0.012</td><td class="num">0.105</td><td class="num">0.0071</td><td class="num">0.0077</td><td class="num">1.44</td></tr>
+          <tr><td>spectrum scaling</td><td class="num">1.000</td><td class="num">1.000</td><td class="num">0.30</td><td class="num">0.30</td><td class="num">0.019</td><td class="num">0.019</td><td class="num">0.30</td></tr>
+        </tbody>
+      </table>
+      <p>Two readings. First, the photometry's share of the raw information is below one percent for every parameter, and the feature mask leaves it below one percent, so no pixel selection makes the twelve bands "carry weight" by count. Second, the photometry matters through degeneracy breaking, not weight: a spectrum with a free scaling cannot fix the stellar mass (spectrum-only width 0.105 dex against 0.012 dex from photometry alone), so the mass is photometric in every mode, and the scaling is only determined once both are present. For metallicity, [α/Fe] and dust the spectrum sets the width, and the feature mask costs a factor 1.3 to 1.5 in forecast width. The SFH ratios are prior- and degeneracy-dominated in this linear forecast and are omitted from the table. Project synthesis: the only way the mask can improve accuracy is by removing continuum-shape information that a calibration error has corrupted; the mocks below test that.</p>
+      <p>Source: <code>scripts/absorption_mask_analysis.py budget --features</code> and <code>fisher</code>; catalogue S/N percentiles of the 187-object passive sample are 8, 13, 22, 31 and 39 at the 10th to 90th percentile, so M5_172669 is the best case and M11_214430 is typical.</p>
+    </section>
+
+    <section id="mask">
+      <h2>The mask</h2>
+      <p><code>Spectrum.select_absorption_features</code> (<code>ceridwen/ceridwen/observation/spectrum.py</code>) builds an observed-frame pixel mask from a rest-frame, in-air feature catalogue (<code>ceridwen/ceridwen/observation/absorption_features.py</code>), converts it to vacuum with the same <code>air2vac</code> the stellar-index code uses, and redshifts it by 1 + z. Lick feature bandpasses are used where they exist; other features are line centres with a ±<code>window_kms</code> window (1000 km/s here, ±13 Å at Ca K).</p>
+      <ul>
+        <li>Balmer: H10, H9, H8 (centres), HdA 4083.5–4122.3, HgA 4319.8–4363.5, Hβ 4847.9–4876.6, Hα (centre).</li>
+        <li>Calcium: Ca K 3933.7 and Ca H 3968.5 (centres), Ca4227, Ca4455, and the near-infrared triplet (centres).</li>
+        <li>Molecular and carbon: CN 4142.1–4177.1, G band 4281.4–4316.4, C<sub>2</sub> 4634.0–4720.3.</li>
+        <li>Iron: Fe4383, Fe4531, Fe5015, Fe5270, Fe5335, Fe5406, Fe5709, Fe5782 (Lick bandpasses).</li>
+        <li>Mg b 5160.1–5192.6, Na D 5876.9–5909.4, TiO1 5936.6–5994.1, TiO2 6189.6–6272.1.</li>
+      </ul>
+      <p>Two modes: <code>drop</code> removes every other pixel from the likelihood (<code>mask &amp;= in_feature</code>); <code>downweight</code> keeps every pixel but multiplies the continuum <code>uncertainty</code> by a factor. Both are edits to the observation arrays that the jitted log-posterior reads once at build time, so the compiled likelihood is unchanged. In the notebook the modes are <code>CERIDWEN_SPECTRUM_PIXELS=all|features|features_downweight</code>; the factor <code>CERIDWEN_FEATURE_DOWNWEIGHT</code> is a number or <code>balance</code> (the table above). The fitted <code>f_calib</code> term still adds in quadrature to the inflated sigma.</p>
+      <div class="source-example">
+        <p class="source-locator"><code>ceridwen/ceridwen/observation/spectrum.py · Spectrum.select_absorption_features</code></p>
+        <pre class="python"><code>        if mode == "drop":
+            new_mask = np.asarray(self.mask) &amp; in_feature
+            if not new_mask.any():
+                raise ValueError(
+                    "select_absorption_features: no fitted pixels fall inside "
+                    "an absorption-feature window at this redshift"
+                )
+            self.mask = jnp.asarray(new_mask)
+        else:
+            factor = np.where(in_feature, 1.0, float(downweight))
+            self.uncertainty = self.uncertainty * jnp.asarray(factor)</code></pre>
+      </div>
+      <figure>
+        <img src="absorption-mask/feature_windows_M5_172669.png" alt="Observed-frame spectrum of M5_172669 with the pixels inside absorption-feature windows highlighted">
+        <figcaption>Pixels of M5_172669 kept by the feature mask (orange) against every fitted pixel (grey).</figcaption>
+      </figure>
+      <p>Tests: <code>ceridwen/tests/test_absorption_features.py</code> (vacuum and redshift of the windows, mask membership, drop and down-weight arithmetic including the chi-squared scaling, error paths).</p>
+    </section>
+
+    <section id="design">
+      <h2>Experiment</h2>
+      <p>Every fit is the production notebook run through the DR2 shard-runner worker (<code>scripts/absorption_mask_grid.py</code>): BlackJAX NSS with 500 live points, 65 inner steps, 100 deletions, logZ tolerance −5, the schema-2.1 C3K alpha-enhanced grid, seven-bin step SFH, constant metallicity, [α/Fe], diffuse dust with fixed slope, fixed redshift and dispersion, fitted <code>log_f_calib</code> and <code>spectrum_scaling</code>. One comparison group is one target or one mock realisation fitted in all three pixel modes on the same GPU boot.</p>
+      <ul>
+        <li>Mocks: the truth is the weighted posterior median of the stored full-spectrum fit of M5_172669 (<code>results/absorption-mask/truth_M5_172669.json</code>). The mock keeps the real pixel grid, per-pixel errors, masks and filters; the spectrum is the model prediction times a linear continuum tilt from 1 − ε to 1 + ε across the fitted range plus Gaussian noise; the photometry is the prediction plus Gaussian noise. ε ∈ {0, 0.03, 0.06}; per-pixel errors × {1, 4} (S/N ≈ 106 and 26); two noise realisations each; 36 fits.</li>
+        <li>Real targets: M5_172669, M9_232005, M11_214430 in the three modes; 9 fits.</li>
+        <li>Hardware: five Vast.ai Blackwell instances (RTX 5060, RTX 5070), one fit per GPU, comparison groups never split across boots.</li>
+      </ul>
+            <p>All 45 fits passed the DR2 diagnostics (45/45 finite evidence and ESS &ge; 200; lowest ESS 2970). Median sampler wall time: 214 s full spectrum, 193 s features only, 186 s down-weighted. Total Vast.ai spend for the job, including failed launches and the notebook re-run, was $2.24. One mock cell (tilt 0.03, S/N 0.25, seed 1, down-weighted) needed two extra single-cell re-runs: its first executed notebook was truncated by a GPU out-of-memory error after the fit, and the second attempt died in a CUDA illegal-address fault; the third attempt is the one recorded.</p>
+      <details>
+        <summary>Every fit: pixels, ESS, likelihood calls, wall time, evidence, reduced chi-squared</summary>
+<table>
+<thead><tr><th>cell</th><th>mode</th><th>pixels</th><th>ESS</th><th>calls</th><th>sampler wall [s]</th><th>ln Z</th><th>spec chi2/pixel</th><th>phot chi2/band</th></tr></thead>
+<tbody>
+<tr><td>mock_tilt0.00_snr0.25_seed1_all</td><td>all</td><td>3602</td><td>3085</td><td>1,072,500</td><td>232</td><td>231918.0 ± 0.19</td><td>0.91</td><td>1.12</td></tr>
+<tr><td>mock_tilt0.00_snr0.25_seed1_features</td><td>features</td><td>1389</td><td>3064</td><td>1,020,500</td><td>193</td><td>89702.3 ± 0.23</td><td>0.90</td><td>1.15</td></tr>
+<tr><td>mock_tilt0.00_snr0.25_seed1_features_downweight</td><td>features_downweight</td><td>3602</td><td>3139</td><td>1,014,000</td><td>193</td><td>226595.4 ± 0.25</td><td>0.35</td><td>1.14</td></tr>
+<tr><td>mock_tilt0.00_snr0.25_seed2_all</td><td>all</td><td>3602</td><td>3038</td><td>1,105,000</td><td>150</td><td>231920.0 ± 0.31</td><td>0.91</td><td>0.57</td></tr>
+<tr><td>mock_tilt0.00_snr0.25_seed2_features</td><td>features</td><td>1389</td><td>2970</td><td>1,020,500</td><td>186</td><td>89693.6 ± 0.23</td><td>0.92</td><td>0.62</td></tr>
+<tr><td>mock_tilt0.00_snr0.25_seed2_features_downweight</td><td>features_downweight</td><td>3602</td><td>3105</td><td>1,040,000</td><td>139</td><td>226583.8 ± 0.22</td><td>0.36</td><td>0.61</td></tr>
+<tr><td>mock_tilt0.00_snr1.00_seed1_all</td><td>all</td><td>3602</td><td>3176</td><td>1,365,000</td><td>217</td><td>236513.8 ± 0.40</td><td>0.50</td><td>1.00</td></tr>
+<tr><td>mock_tilt0.00_snr1.00_seed1_features</td><td>features</td><td>1389</td><td>3157</td><td>1,261,000</td><td>195</td><td>91449.3 ± 0.20</td><td>0.53</td><td>1.03</td></tr>
+<tr><td>mock_tilt0.00_snr1.00_seed1_features_downweight</td><td>features_downweight</td><td>3602</td><td>3097</td><td>1,306,500</td><td>208</td><td>228314.3 ± 0.28</td><td>0.20</td><td>1.02</td></tr>
+<tr><td>mock_tilt0.00_snr1.00_seed2_all</td><td>all</td><td>3602</td><td>3220</td><td>1,378,000</td><td>184</td><td>236464.7 ± 0.31</td><td>0.52</td><td>1.29</td></tr>
+<tr><td>mock_tilt0.00_snr1.00_seed2_features</td><td>features</td><td>1389</td><td>3254</td><td>1,241,500</td><td>166</td><td>91451.9 ± 0.31</td><td>0.52</td><td>1.26</td></tr>
+<tr><td>mock_tilt0.00_snr1.00_seed2_features_downweight</td><td>features_downweight</td><td>3602</td><td>3190</td><td>1,306,500</td><td>176</td><td>228418.7 ± 0.32</td><td>0.20</td><td>1.24</td></tr>
+<tr><td>mock_tilt0.03_snr0.25_seed1_all</td><td>all</td><td>3602</td><td>3099</td><td>1,118,000</td><td>227</td><td>231882.3 ± 0.20</td><td>0.93</td><td>2.03</td></tr>
+<tr><td>mock_tilt0.03_snr0.25_seed1_features</td><td>features</td><td>1389</td><td>3459</td><td>1,046,500</td><td>204</td><td>89672.5 ± 0.17</td><td>0.94</td><td>1.87</td></tr>
+<tr><td>mock_tilt0.03_snr0.25_seed1_features_downweight</td><td>features_downweight</td><td>3602</td><td>3388</td><td>1,066,000</td><td>148</td><td>226546.4 ± 0.24</td><td>0.36</td><td>1.84</td></tr>
+<tr><td>mock_tilt0.03_snr0.25_seed2_all</td><td>all</td><td>3602</td><td>3331</td><td>1,144,000</td><td>227</td><td>231815.0 ± 0.41</td><td>0.96</td><td>2.04</td></tr>
+<tr><td>mock_tilt0.03_snr0.25_seed2_features</td><td>features</td><td>1389</td><td>3346</td><td>1,066,000</td><td>206</td><td>89657.2 ± 0.31</td><td>0.95</td><td>1.42</td></tr>
+<tr><td>mock_tilt0.03_snr0.25_seed2_features_downweight</td><td>features_downweight</td><td>3602</td><td>3539</td><td>1,066,000</td><td>148</td><td>226582.0 ± 0.21</td><td>0.37</td><td>1.47</td></tr>
+<tr><td>mock_tilt0.03_snr1.00_seed1_all</td><td>all</td><td>3602</td><td>3488</td><td>1,417,000</td><td>199</td><td>236461.4 ± 0.31</td><td>0.52</td><td>2.84</td></tr>
+<tr><td>mock_tilt0.03_snr1.00_seed1_features</td><td>features</td><td>1389</td><td>3532</td><td>1,339,000</td><td>186</td><td>91461.1 ± 0.29</td><td>0.50</td><td>2.76</td></tr>
+<tr><td>mock_tilt0.03_snr1.00_seed1_features_downweight</td><td>features_downweight</td><td>3602</td><td>3583</td><td>1,339,000</td><td>186</td><td>228377.9 ± 0.23</td><td>0.19</td><td>2.72</td></tr>
+<tr><td>mock_tilt0.03_snr1.00_seed2_all</td><td>all</td><td>3602</td><td>3578</td><td>1,423,500</td><td>234</td><td>236510.4 ± 0.35</td><td>0.50</td><td>1.04</td></tr>
+<tr><td>mock_tilt0.03_snr1.00_seed2_features</td><td>features</td><td>1389</td><td>3486</td><td>1,287,000</td><td>216</td><td>91465.2 ± 0.23</td><td>0.51</td><td>1.00</td></tr>
+<tr><td>mock_tilt0.03_snr1.00_seed2_features_downweight</td><td>features_downweight</td><td>3602</td><td>3389</td><td>1,319,500</td><td>217</td><td>228374.1 ± 0.28</td><td>0.20</td><td>0.98</td></tr>
+<tr><td>mock_tilt0.06_snr0.25_seed1_all</td><td>all</td><td>3602</td><td>3886</td><td>1,202,500</td><td>171</td><td>231856.5 ± 0.22</td><td>0.92</td><td>7.49</td></tr>
+<tr><td>mock_tilt0.06_snr0.25_seed1_features</td><td>features</td><td>1389</td><td>3915</td><td>1,144,000</td><td>158</td><td>89660.2 ± 0.13</td><td>0.91</td><td>6.30</td></tr>
+<tr><td>mock_tilt0.06_snr0.25_seed1_features_downweight</td><td>features_downweight</td><td>3602</td><td>3515</td><td>1,118,000</td><td>158</td><td>226524.6 ± 0.30</td><td>0.35</td><td>6.27</td></tr>
+<tr><td>mock_tilt0.06_snr0.25_seed2_all</td><td>all</td><td>3602</td><td>3298</td><td>1,150,500</td><td>225</td><td>231834.2 ± 0.18</td><td>0.94</td><td>4.89</td></tr>
+<tr><td>mock_tilt0.06_snr0.25_seed2_features</td><td>features</td><td>1389</td><td>3628</td><td>1,085,500</td><td>211</td><td>89656.2 ± 0.35</td><td>0.94</td><td>3.92</td></tr>
+<tr><td>mock_tilt0.06_snr0.25_seed2_features_downweight</td><td>features_downweight</td><td>3602</td><td>3524</td><td>1,098,500</td><td>218</td><td>226530.8 ± 0.30</td><td>0.36</td><td>3.96</td></tr>
+<tr><td>mock_tilt0.06_snr1.00_seed1_all</td><td>all</td><td>3602</td><td>3380</td><td>1,508,000</td><td>214</td><td>236415.4 ± 0.33</td><td>0.53</td><td>7.67</td></tr>
+<tr><td>mock_tilt0.06_snr1.00_seed1_features</td><td>features</td><td>1389</td><td>3828</td><td>1,345,500</td><td>196</td><td>91406.8 ± 0.30</td><td>0.54</td><td>7.54</td></tr>
+<tr><td>mock_tilt0.06_snr1.00_seed1_features_downweight</td><td>features_downweight</td><td>3602</td><td>3390</td><td>1,358,500</td><td>193</td><td>228312.4 ± 0.28</td><td>0.21</td><td>7.55</td></tr>
+<tr><td>mock_tilt0.06_snr1.00_seed2_all</td><td>all</td><td>3602</td><td>3597</td><td>1,449,500</td><td>205</td><td>236426.7 ± 0.36</td><td>0.53</td><td>5.32</td></tr>
+<tr><td>mock_tilt0.06_snr1.00_seed2_features</td><td>features</td><td>1389</td><td>3315</td><td>1,319,500</td><td>189</td><td>91439.8 ± 0.42</td><td>0.52</td><td>5.09</td></tr>
+<tr><td>mock_tilt0.06_snr1.00_seed2_features_downweight</td><td>features_downweight</td><td>3602</td><td>3453</td><td>1,384,500</td><td>196</td><td>228292.4 ± 0.19</td><td>0.20</td><td>5.31</td></tr>
+<tr><td>real_M11_214430_all</td><td>all</td><td>3810</td><td>4010</td><td>1,384,500</td><td>216</td><td>251147.9 ± 0.27</td><td>1.17</td><td>17.44</td></tr>
+<tr><td>real_M11_214430_features</td><td>features</td><td>1088</td><td>3339</td><td>1,189,500</td><td>234</td><td>71696.5 ± 0.20</td><td>1.06</td><td>7.87</td></tr>
+<tr><td>real_M11_214430_features_downweight</td><td>features_downweight</td><td>3810</td><td>3578</td><td>1,202,500</td><td>189</td><td>246488.0 ± 0.15</td><td>0.32</td><td>7.96</td></tr>
+<tr><td>real_M5_172669_all</td><td>all</td><td>3602</td><td>3070</td><td>1,176,500</td><td>157</td><td>232731.2 ± 0.33</td><td>1.06</td><td>14.12</td></tr>
+<tr><td>real_M5_172669_features</td><td>features</td><td>1389</td><td>3254</td><td>1,170,000</td><td>156</td><td>90430.5 ± 0.32</td><td>1.03</td><td>12.22</td></tr>
+<tr><td>real_M5_172669_features_downweight</td><td>features_downweight</td><td>3602</td><td>3208</td><td>1,209,000</td><td>161</td><td>227369.5 ± 0.36</td><td>0.40</td><td>12.33</td></tr>
+<tr><td>real_M9_232005_all</td><td>all</td><td>3494</td><td>3497</td><td>1,202,500</td><td>160</td><td>230695.7 ± 0.26</td><td>1.11</td><td>7.34</td></tr>
+<tr><td>real_M9_232005_features</td><td>features</td><td>1521</td><td>3811</td><td>1,170,000</td><td>175</td><td>100541.2 ± 0.25</td><td>1.13</td><td>6.98</td></tr>
+<tr><td>real_M9_232005_features_downweight</td><td>features_downweight</td><td>3494</td><td>3636</td><td>1,170,000</td><td>165</td><td>226195.2 ± 0.29</td><td>0.50</td><td>7.01</td></tr>
+</tbody>
+</table>
+
+      </details>
+    </section>
+
+    <section id="results-mocks">
+      <h2>Mock recovery</h2>
+            <p>Truth: the weighted posterior median of the stored full-spectrum fit of M5_172669. Each cell is two noise realisations; bias is the mean of (posterior median &minus; truth), the width column is the 16&ndash;84 half-width relative to the full-spectrum fit of the same cell, and coverage counts the realisations of that S/N scale (three tilts, two seeds) whose 16&ndash;84 interval contains the truth.</p>
+<h4>Pixel S/N scale 1</h4>
+<table>
+<thead><tr><th>parameter</th><th>mode</th><th>bias, &epsilon;=0.00</th><th>bias, &epsilon;=0.03</th><th>bias, &epsilon;=0.06</th><th>width / full, median (range)</th><th>68% coverage</th></tr></thead>
+<tbody>
+<tr><td>log M<sub>&#8902;</sub></td><td>full spectrum</td><td>+0.005</td><td>+0.051</td><td>+0.077</td><td>1.00 (1.00&ndash;1.00)</td><td>1/6</td></tr>
+<tr><td>log M<sub>&#8902;</sub></td><td>features only</td><td>+0.004</td><td>+0.049</td><td>+0.078</td><td>1.23 (0.92&ndash;2.15)</td><td>0/6</td></tr>
+<tr><td>log M<sub>&#8902;</sub></td><td>continuum down-weighted</td><td>+0.006</td><td>+0.050</td><td>+0.074</td><td>1.18 (1.08&ndash;1.73)</td><td>1/6</td></tr>
+<tr><td>t<sub>MW</sub> [Gyr]</td><td>full spectrum</td><td>+0.01</td><td>+0.16</td><td>+0.13</td><td>1.00 (1.00&ndash;1.00)</td><td>2/6</td></tr>
+<tr><td>t<sub>MW</sub> [Gyr]</td><td>features only</td><td>+0.01</td><td>+0.12</td><td>+0.14</td><td>1.11 (0.92&ndash;2.44)</td><td>2/6</td></tr>
+<tr><td>t<sub>MW</sub> [Gyr]</td><td>continuum down-weighted</td><td>+0.01</td><td>+0.16</td><td>+0.07</td><td>1.17 (0.80&ndash;1.84)</td><td>2/6</td></tr>
+<tr><td>log Z</td><td>full spectrum</td><td>-0.003</td><td>-0.012</td><td>+0.004</td><td>1.00 (1.00&ndash;1.00)</td><td>5/6</td></tr>
+<tr><td>log Z</td><td>features only</td><td>-0.007</td><td>+0.001</td><td>+0.009</td><td>1.48 (0.86&ndash;1.93)</td><td>4/6</td></tr>
+<tr><td>log Z</td><td>continuum down-weighted</td><td>-0.007</td><td>-0.001</td><td>+0.009</td><td>1.46 (0.79&ndash;1.71)</td><td>3/6</td></tr>
+<tr><td>[&alpha;/Fe]</td><td>full spectrum</td><td>+0.006</td><td>+0.004</td><td>-0.006</td><td>1.00 (1.00&ndash;1.00)</td><td>3/6</td></tr>
+<tr><td>[&alpha;/Fe]</td><td>features only</td><td>+0.013</td><td>-0.006</td><td>-0.015</td><td>1.35 (0.87&ndash;1.83)</td><td>3/6</td></tr>
+<tr><td>[&alpha;/Fe]</td><td>continuum down-weighted</td><td>+0.012</td><td>-0.006</td><td>-0.009</td><td>1.39 (0.84&ndash;1.51)</td><td>3/6</td></tr>
+<tr><td>&tau;<sub>dust</sub></td><td>full spectrum</td><td>-0.001</td><td>+0.106</td><td>+0.212</td><td>1.00 (1.00&ndash;1.00)</td><td>2/6</td></tr>
+<tr><td>&tau;<sub>dust</sub></td><td>features only</td><td>+0.000</td><td>+0.099</td><td>+0.199</td><td>1.60 (1.12&ndash;2.05)</td><td>2/6</td></tr>
+<tr><td>&tau;<sub>dust</sub></td><td>continuum down-weighted</td><td>+0.001</td><td>+0.098</td><td>+0.201</td><td>1.39 (0.78&ndash;1.93)</td><td>2/6</td></tr>
+</tbody>
+</table>
+<h4>Pixel S/N scale 0.25</h4>
+<table>
+<thead><tr><th>parameter</th><th>mode</th><th>bias, &epsilon;=0.00</th><th>bias, &epsilon;=0.03</th><th>bias, &epsilon;=0.06</th><th>width / full, median (range)</th><th>68% coverage</th></tr></thead>
+<tbody>
+<tr><td>log M<sub>&#8902;</sub></td><td>full spectrum</td><td>+0.005</td><td>+0.048</td><td>+0.078</td><td>1.00 (1.00&ndash;1.00)</td><td>2/6</td></tr>
+<tr><td>log M<sub>&#8902;</sub></td><td>features only</td><td>+0.008</td><td>+0.040</td><td>+0.079</td><td>1.01 (0.48&ndash;1.40)</td><td>1/6</td></tr>
+<tr><td>log M<sub>&#8902;</sub></td><td>continuum down-weighted</td><td>+0.008</td><td>+0.044</td><td>+0.077</td><td>1.20 (0.64&ndash;1.58)</td><td>1/6</td></tr>
+<tr><td>t<sub>MW</sub> [Gyr]</td><td>full spectrum</td><td>+0.04</td><td>+0.22</td><td>+0.25</td><td>1.00 (1.00&ndash;1.00)</td><td>0/6</td></tr>
+<tr><td>t<sub>MW</sub> [Gyr]</td><td>features only</td><td>+0.04</td><td>+0.16</td><td>+0.35</td><td>0.87 (0.72&ndash;1.54)</td><td>1/6</td></tr>
+<tr><td>t<sub>MW</sub> [Gyr]</td><td>continuum down-weighted</td><td>+0.04</td><td>+0.20</td><td>+0.35</td><td>1.10 (0.75&ndash;2.09)</td><td>1/6</td></tr>
+<tr><td>log Z</td><td>full spectrum</td><td>-0.013</td><td>-0.018</td><td>-0.011</td><td>1.00 (1.00&ndash;1.00)</td><td>4/6</td></tr>
+<tr><td>log Z</td><td>features only</td><td>-0.038</td><td>-0.004</td><td>-0.003</td><td>1.60 (1.35&ndash;1.89)</td><td>5/6</td></tr>
+<tr><td>log Z</td><td>continuum down-weighted</td><td>-0.036</td><td>-0.011</td><td>-0.000</td><td>1.55 (1.07&ndash;1.97)</td><td>5/6</td></tr>
+<tr><td>[&alpha;/Fe]</td><td>full spectrum</td><td>+0.029</td><td>-0.014</td><td>-0.048</td><td>1.00 (1.00&ndash;1.00)</td><td>3/6</td></tr>
+<tr><td>[&alpha;/Fe]</td><td>features only</td><td>+0.060</td><td>-0.035</td><td>-0.079</td><td>1.35 (1.28&ndash;1.61)</td><td>1/6</td></tr>
+<tr><td>[&alpha;/Fe]</td><td>continuum down-weighted</td><td>+0.059</td><td>-0.036</td><td>-0.077</td><td>1.44 (1.32&ndash;1.58)</td><td>1/6</td></tr>
+<tr><td>&tau;<sub>dust</sub></td><td>full spectrum</td><td>-0.002</td><td>+0.097</td><td>+0.198</td><td>1.00 (1.00&ndash;1.00)</td><td>2/6</td></tr>
+<tr><td>&tau;<sub>dust</sub></td><td>features only</td><td>+0.004</td><td>+0.080</td><td>+0.165</td><td>1.56 (1.25&ndash;1.96)</td><td>2/6</td></tr>
+<tr><td>&tau;<sub>dust</sub></td><td>continuum down-weighted</td><td>+0.004</td><td>+0.080</td><td>+0.164</td><td>1.55 (1.15&ndash;1.81)</td><td>2/6</td></tr>
+</tbody>
+</table>
+
+      <figure>
+        <img src="absorption-mask/mock_bias_vs_tilt.png" alt="Posterior median and 16-84 interval minus the truth for five parameters against the continuum tilt amplitude, in three pixel modes and two S/N scales">
+        <figcaption>Posterior median and 16&ndash;84 interval relative to the truth against the tilt amplitude &epsilon;, for the native pixel S/N (left) and the noise inflated four times (right). Blue: full spectrum; orange: features only; green: continuum down-weighted. Two realisations per cell, offset for legibility.</figcaption>
+      </figure>
+      <figure>
+        <img src="absorption-mask/mock_width_ratio.png" alt="Ratio of the masked-mode posterior half-width to the full-spectrum half-width for each parameter and mock cell">
+        <figcaption>Posterior half-width of the masked modes relative to the full-spectrum fit of the same mock.</figcaption>
+      </figure>
+      <details>
+        <summary>Full mock tables: bias, width, RMS z and coverage per parameter, tilt, S/N scale and mode</summary>
+<p>Bias is posterior median minus truth, averaged over realisations; width is the 16-84 half-width; z is bias/width (RMS over realisations); cov68 is the fraction of realisations whose 16-84 interval contains the truth.</p>
+<h4>log M*</h4>
+<table>
+<thead><tr><th>tilt</th><th>S/N scale</th><th>mode</th><th>n</th><th>bias</th><th>width</th><th>width / full</th><th>RMS z</th><th>cov68</th></tr></thead>
+<tbody>
+<tr><td>0.00</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.005</td><td>0.008</td><td>1.00</td><td>0.68</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>features only</td><td>2</td><td>0.008</td><td>0.010</td><td>1.19</td><td>0.84</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.008</td><td>0.010</td><td>1.19</td><td>0.88</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.005</td><td>0.007</td><td>1.00</td><td>1.65</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>features only</td><td>2</td><td>0.004</td><td>0.007</td><td>0.99</td><td>1.77</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.006</td><td>0.008</td><td>1.19</td><td>1.53</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.048</td><td>0.020</td><td>1.00</td><td>2.71</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>features only</td><td>2</td><td>0.040</td><td>0.014</td><td>0.68</td><td>3.04</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.044</td><td>0.019</td><td>0.95</td><td>2.40</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.051</td><td>0.009</td><td>1.00</td><td>5.65</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>features only</td><td>2</td><td>0.049</td><td>0.013</td><td>1.40</td><td>3.87</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.050</td><td>0.010</td><td>1.10</td><td>4.94</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.078</td><td>0.020</td><td>1.00</td><td>4.31</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>features only</td><td>2</td><td>0.079</td><td>0.022</td><td>1.10</td><td>3.68</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.077</td><td>0.023</td><td>1.19</td><td>3.29</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.077</td><td>0.008</td><td>1.00</td><td>10.23</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>features only</td><td>2</td><td>0.078</td><td>0.013</td><td>1.74</td><td>6.21</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.074</td><td>0.011</td><td>1.47</td><td>6.92</td><td>0.00</td></tr>
+</tbody>
+</table>
+<h4>t_MW [Gyr]</h4>
+<table>
+<thead><tr><th>tilt</th><th>S/N scale</th><th>mode</th><th>n</th><th>bias</th><th>width</th><th>width / full</th><th>RMS z</th><th>cov68</th></tr></thead>
+<tbody>
+<tr><td>0.00</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.037</td><td>0.071</td><td>1.00</td><td>0.52</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>features only</td><td>2</td><td>0.043</td><td>0.083</td><td>1.17</td><td>0.49</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.042</td><td>0.081</td><td>1.14</td><td>0.48</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.015</td><td>0.033</td><td>1.00</td><td>0.45</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>features only</td><td>2</td><td>0.013</td><td>0.034</td><td>1.03</td><td>0.39</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.014</td><td>0.046</td><td>1.38</td><td>0.36</td><td>1.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.220</td><td>0.265</td><td>1.00</td><td>0.86</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>features only</td><td>2</td><td>0.160</td><td>0.200</td><td>0.75</td><td>0.84</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.201</td><td>0.263</td><td>0.99</td><td>0.93</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.163</td><td>0.111</td><td>1.00</td><td>1.47</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>features only</td><td>2</td><td>0.123</td><td>0.132</td><td>1.19</td><td>0.93</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.156</td><td>0.126</td><td>1.14</td><td>1.18</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.254</td><td>0.264</td><td>1.00</td><td>0.99</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>features only</td><td>2</td><td>0.354</td><td>0.290</td><td>1.10</td><td>1.19</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.345</td><td>0.362</td><td>1.37</td><td>0.97</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.128</td><td>0.098</td><td>1.00</td><td>1.30</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>features only</td><td>2</td><td>0.136</td><td>0.179</td><td>1.83</td><td>0.77</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.068</td><td>0.125</td><td>1.27</td><td>0.66</td><td>0.00</td></tr>
+</tbody>
+</table>
+<h4>log Z</h4>
+<table>
+<thead><tr><th>tilt</th><th>S/N scale</th><th>mode</th><th>n</th><th>bias</th><th>width</th><th>width / full</th><th>RMS z</th><th>cov68</th></tr></thead>
+<tbody>
+<tr><td>0.00</td><td>0.25</td><td>full spectrum</td><td>2</td><td>-0.013</td><td>0.019</td><td>1.00</td><td>0.87</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>features only</td><td>2</td><td>-0.038</td><td>0.030</td><td>1.59</td><td>1.35</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>-0.036</td><td>0.029</td><td>1.55</td><td>1.37</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>full spectrum</td><td>2</td><td>-0.003</td><td>0.007</td><td>1.00</td><td>0.69</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>features only</td><td>2</td><td>-0.007</td><td>0.011</td><td>1.55</td><td>0.88</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>-0.007</td><td>0.011</td><td>1.54</td><td>0.91</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>full spectrum</td><td>2</td><td>-0.018</td><td>0.025</td><td>1.00</td><td>0.77</td><td>1.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>features only</td><td>2</td><td>-0.004</td><td>0.042</td><td>1.67</td><td>0.32</td><td>1.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>-0.011</td><td>0.042</td><td>1.65</td><td>0.45</td><td>1.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>full spectrum</td><td>2</td><td>-0.012</td><td>0.008</td><td>1.00</td><td>1.81</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>features only</td><td>2</td><td>0.001</td><td>0.013</td><td>1.63</td><td>1.03</td><td>1.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>-0.001</td><td>0.012</td><td>1.52</td><td>1.14</td><td>0.50</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>full spectrum</td><td>2</td><td>-0.011</td><td>0.028</td><td>1.00</td><td>1.13</td><td>0.50</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>features only</td><td>2</td><td>-0.003</td><td>0.045</td><td>1.58</td><td>0.78</td><td>1.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>-0.000</td><td>0.037</td><td>1.32</td><td>0.80</td><td>1.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.004</td><td>0.012</td><td>1.00</td><td>0.57</td><td>1.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>features only</td><td>2</td><td>0.009</td><td>0.013</td><td>1.13</td><td>1.26</td><td>0.50</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.009</td><td>0.013</td><td>1.09</td><td>1.48</td><td>0.50</td></tr>
+</tbody>
+</table>
+<h4>[α/Fe]</h4>
+<table>
+<thead><tr><th>tilt</th><th>S/N scale</th><th>mode</th><th>n</th><th>bias</th><th>width</th><th>width / full</th><th>RMS z</th><th>cov68</th></tr></thead>
+<tbody>
+<tr><td>0.00</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.029</td><td>0.020</td><td>1.00</td><td>1.56</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>features only</td><td>2</td><td>0.060</td><td>0.027</td><td>1.35</td><td>2.29</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.059</td><td>0.028</td><td>1.40</td><td>2.14</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.006</td><td>0.007</td><td>1.00</td><td>0.94</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>features only</td><td>2</td><td>0.013</td><td>0.010</td><td>1.43</td><td>1.26</td><td>0.50</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.012</td><td>0.010</td><td>1.41</td><td>1.19</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>full spectrum</td><td>2</td><td>-0.014</td><td>0.022</td><td>1.00</td><td>0.71</td><td>1.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>features only</td><td>2</td><td>-0.035</td><td>0.033</td><td>1.48</td><td>1.14</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>-0.036</td><td>0.032</td><td>1.46</td><td>1.20</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.004</td><td>0.007</td><td>1.00</td><td>1.28</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>features only</td><td>2</td><td>-0.006</td><td>0.011</td><td>1.56</td><td>0.90</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>-0.006</td><td>0.011</td><td>1.46</td><td>0.84</td><td>0.50</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>full spectrum</td><td>2</td><td>-0.048</td><td>0.023</td><td>1.00</td><td>2.10</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>features only</td><td>2</td><td>-0.079</td><td>0.030</td><td>1.29</td><td>2.67</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>-0.077</td><td>0.033</td><td>1.44</td><td>2.38</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>full spectrum</td><td>2</td><td>-0.006</td><td>0.010</td><td>1.00</td><td>0.90</td><td>0.50</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>features only</td><td>2</td><td>-0.015</td><td>0.010</td><td>1.01</td><td>1.96</td><td>0.50</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>-0.009</td><td>0.010</td><td>1.08</td><td>1.57</td><td>0.50</td></tr>
+</tbody>
+</table>
+<h4>τ_dust</h4>
+<table>
+<thead><tr><th>tilt</th><th>S/N scale</th><th>mode</th><th>n</th><th>bias</th><th>width</th><th>width / full</th><th>RMS z</th><th>cov68</th></tr></thead>
+<tbody>
+<tr><td>0.00</td><td>0.25</td><td>full spectrum</td><td>2</td><td>-0.002</td><td>0.006</td><td>1.00</td><td>0.43</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>features only</td><td>2</td><td>0.004</td><td>0.009</td><td>1.47</td><td>0.56</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.004</td><td>0.009</td><td>1.51</td><td>0.47</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>full spectrum</td><td>2</td><td>-0.001</td><td>0.003</td><td>1.00</td><td>0.55</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>features only</td><td>2</td><td>0.000</td><td>0.004</td><td>1.52</td><td>0.17</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.001</td><td>0.004</td><td>1.39</td><td>0.24</td><td>1.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.097</td><td>0.010</td><td>1.00</td><td>9.64</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>features only</td><td>2</td><td>0.080</td><td>0.018</td><td>1.79</td><td>4.48</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.080</td><td>0.017</td><td>1.69</td><td>4.74</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.106</td><td>0.004</td><td>1.00</td><td>28.88</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>features only</td><td>2</td><td>0.099</td><td>0.007</td><td>1.88</td><td>14.53</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.098</td><td>0.007</td><td>1.89</td><td>14.12</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.198</td><td>0.013</td><td>1.00</td><td>16.73</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>features only</td><td>2</td><td>0.165</td><td>0.018</td><td>1.41</td><td>9.28</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.164</td><td>0.017</td><td>1.36</td><td>9.38</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.212</td><td>0.005</td><td>1.00</td><td>44.25</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>features only</td><td>2</td><td>0.199</td><td>0.007</td><td>1.32</td><td>30.03</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.201</td><td>0.005</td><td>1.00</td><td>40.52</td><td>0.00</td></tr>
+</tbody>
+</table>
+<h4>s_spec</h4>
+<table>
+<thead><tr><th>tilt</th><th>S/N scale</th><th>mode</th><th>n</th><th>bias</th><th>width</th><th>width / full</th><th>RMS z</th><th>cov68</th></tr></thead>
+<tbody>
+<tr><td>0.00</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.008</td><td>0.019</td><td>1.00</td><td>0.46</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>features only</td><td>2</td><td>0.014</td><td>0.019</td><td>1.04</td><td>0.72</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.012</td><td>0.019</td><td>1.03</td><td>0.65</td><td>1.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>full spectrum</td><td>2</td><td>-0.004</td><td>0.018</td><td>1.00</td><td>1.66</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>features only</td><td>2</td><td>-0.003</td><td>0.018</td><td>1.01</td><td>1.67</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>-0.006</td><td>0.018</td><td>1.00</td><td>1.68</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.043</td><td>0.021</td><td>1.00</td><td>2.11</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>features only</td><td>2</td><td>0.024</td><td>0.021</td><td>0.99</td><td>1.29</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.029</td><td>0.023</td><td>1.09</td><td>1.33</td><td>0.50</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.032</td><td>0.019</td><td>1.00</td><td>1.72</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>features only</td><td>2</td><td>0.029</td><td>0.022</td><td>1.11</td><td>1.37</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.029</td><td>0.020</td><td>1.03</td><td>1.55</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>full spectrum</td><td>2</td><td>0.099</td><td>0.022</td><td>1.00</td><td>4.45</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>features only</td><td>2</td><td>0.078</td><td>0.023</td><td>1.05</td><td>3.34</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>0.082</td><td>0.024</td><td>1.09</td><td>3.46</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>full spectrum</td><td>2</td><td>0.099</td><td>0.023</td><td>1.00</td><td>4.40</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>features only</td><td>2</td><td>0.088</td><td>0.020</td><td>0.90</td><td>4.41</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>0.088</td><td>0.020</td><td>0.88</td><td>4.42</td><td>0.00</td></tr>
+</tbody>
+</table>
+<h4>f_calib [%]</h4>
+<table>
+<thead><tr><th>tilt</th><th>S/N scale</th><th>mode</th><th>n</th><th>bias</th><th>width</th><th>width / full</th><th>RMS z</th><th>cov68</th></tr></thead>
+<tbody>
+<tr><td>0.00</td><td>0.25</td><td>full spectrum</td><td>2</td><td>-1.867</td><td>0.033</td><td>1.00</td><td>58.17</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>features only</td><td>2</td><td>-1.829</td><td>0.071</td><td>2.16</td><td>26.08</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>-1.828</td><td>0.078</td><td>2.37</td><td>23.71</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>full spectrum</td><td>2</td><td>-1.896</td><td>0.001</td><td>1.00</td><td>2071.08</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>features only</td><td>2</td><td>-1.894</td><td>0.003</td><td>2.76</td><td>749.91</td><td>0.00</td></tr>
+<tr><td>0.00</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>-1.895</td><td>0.002</td><td>2.34</td><td>885.67</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>full spectrum</td><td>2</td><td>-1.849</td><td>0.043</td><td>1.00</td><td>51.71</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>features only</td><td>2</td><td>-1.786</td><td>0.107</td><td>2.48</td><td>17.19</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>-1.795</td><td>0.097</td><td>2.26</td><td>19.54</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>full spectrum</td><td>2</td><td>-1.896</td><td>0.001</td><td>1.00</td><td>2625.67</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>features only</td><td>2</td><td>-1.895</td><td>0.003</td><td>3.69</td><td>709.60</td><td>0.00</td></tr>
+<tr><td>0.03</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>-1.894</td><td>0.003</td><td>4.11</td><td>644.87</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>full spectrum</td><td>2</td><td>-1.856</td><td>0.047</td><td>1.00</td><td>40.11</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>features only</td><td>2</td><td>-1.794</td><td>0.100</td><td>2.11</td><td>17.94</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>0.25</td><td>continuum down-weighted</td><td>2</td><td>-1.794</td><td>0.082</td><td>1.74</td><td>22.72</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>full spectrum</td><td>2</td><td>-1.896</td><td>0.001</td><td>1.00</td><td>1961.09</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>features only</td><td>2</td><td>-1.894</td><td>0.003</td><td>2.69</td><td>741.84</td><td>0.00</td></tr>
+<tr><td>0.06</td><td>1.00</td><td>continuum down-weighted</td><td>2</td><td>-1.894</td><td>0.002</td><td>2.37</td><td>825.94</td><td>0.00</td></tr>
+</tbody>
+</table>
+
+      </details>
+    </section>
+
+    <section id="results-real">
+      <h2>Real targets</h2>
+            <p>Shift of the masked-mode posterior median from the full-spectrum median, in units of the full-spectrum 16&ndash;84 half-width. Feature pixels kept by the 1000 km/s windows: M11_214430: 1088 of 3810 pixels (29%); M5_172669: 1389 of 3602 pixels (39%); M9_232005: 1521 of 3494 pixels (44%).</p>
+<table>
+<thead><tr><th>parameter</th><th>M11_214430<br>features only</th><th>M11_214430<br>continuum down-weighted</th><th>M5_172669<br>features only</th><th>M5_172669<br>continuum down-weighted</th><th>M9_232005<br>features only</th><th>M9_232005<br>continuum down-weighted</th></tr></thead>
+<tbody>
+<tr><td>log M<sub>&#8902;</sub></td><td>+0.038 (+1.8&sigma;)</td><td>+0.019 (+0.9&sigma;)</td><td>+0.009 (+1.3&sigma;)</td><td>+0.010 (+1.4&sigma;)</td><td>+0.084 (+7.4&sigma;)</td><td>+0.108 (+9.4&sigma;)</td></tr>
+<tr><td>t<sub>MW</sub> [Gyr]</td><td>+0.60 (+3.0&sigma;)</td><td>+0.30 (+1.5&sigma;)</td><td>+0.03 (+1.4&sigma;)</td><td>+0.04 (+1.4&sigma;)</td><td>+1.27 (+13.6&sigma;)</td><td>+1.59 (+17.0&sigma;)</td></tr>
+<tr><td>log Z</td><td>-0.179 (-5.6&sigma;)</td><td>-0.168 (-5.3&sigma;)</td><td>-0.249 (-21.7&sigma;)</td><td>-0.250 (-21.8&sigma;)</td><td>-0.082 (-4.9&sigma;)</td><td>-0.107 (-6.4&sigma;)</td></tr>
+<tr><td>[&alpha;/Fe]</td><td>-0.041 (-2.9&sigma;)</td><td>-0.040 (-2.8&sigma;)</td><td>+0.225 (+15.0&sigma;)</td><td>+0.224 (+14.9&sigma;)</td><td>+0.025 (+2.3&sigma;)</td><td>+0.028 (+2.6&sigma;)</td></tr>
+<tr><td>&tau;<sub>dust</sub></td><td>-0.110 (-6.9&sigma;)</td><td>-0.109 (-6.9&sigma;)</td><td>+0.044 (+9.5&sigma;)</td><td>+0.043 (+9.5&sigma;)</td><td>+0.013 (+1.4&sigma;)</td><td>+0.010 (+1.1&sigma;)</td></tr>
+</tbody>
+</table>
+
+      <figure>
+        <img src="absorption-mask/real_targets_posteriors.png" alt="Posterior medians with 16-84 intervals for three real targets in the three pixel modes">
+        <figcaption>Posterior medians with 16&ndash;84 intervals for the three DR2 targets in each pixel mode.</figcaption>
+      </figure>
+      <p>Photometry reduced chi-squared per band, full spectrum &rarr; masked modes: M11_214430: 17.44 &rarr; 7.87 (features), 7.96 (down-weighted); M5_172669: 14.12 &rarr; 12.22 (features), 12.33 (down-weighted); M9_232005: 7.34 &rarr; 6.98 (features), 7.01 (down-weighted). The masked fits do not fit the photometry better; they fit a different spectrum model to the same photometry.</p>
+      <details>
+        <summary>Full real-target tables per parameter</summary>
+<p>Shift is (median - full-spectrum median) / full-spectrum half-width.</p>
+<h4>log M*</h4>
+<table>
+<thead><tr><th>target</th><th>mode</th><th>pixels</th><th>median</th><th>16-84</th><th>shift</th><th>ESS</th><th>calls</th></tr></thead>
+<tbody>
+<tr><td>M11_214430</td><td>full spectrum</td><td>3810</td><td>11.496</td><td>[11.473, 11.514]</td><td>0.00</td><td>4010</td><td>1,384,500</td></tr>
+<tr><td>M11_214430</td><td>features only</td><td>1088</td><td>11.533</td><td>[11.514, 11.551]</td><td>1.85</td><td>3339</td><td>1,189,500</td></tr>
+<tr><td>M11_214430</td><td>continuum down-weighted</td><td>3810</td><td>11.514</td><td>[11.491, 11.536]</td><td>0.92</td><td>3578</td><td>1,202,500</td></tr>
+<tr><td>M5_172669</td><td>full spectrum</td><td>3602</td><td>11.110</td><td>[11.103, 11.117]</td><td>0.00</td><td>3070</td><td>1,176,500</td></tr>
+<tr><td>M5_172669</td><td>features only</td><td>1389</td><td>11.119</td><td>[11.111, 11.127]</td><td>1.33</td><td>3254</td><td>1,170,000</td></tr>
+<tr><td>M5_172669</td><td>continuum down-weighted</td><td>3602</td><td>11.119</td><td>[11.112, 11.128]</td><td>1.39</td><td>3208</td><td>1,209,000</td></tr>
+<tr><td>M9_232005</td><td>full spectrum</td><td>3494</td><td>10.851</td><td>[10.841, 10.864]</td><td>0.00</td><td>3497</td><td>1,202,500</td></tr>
+<tr><td>M9_232005</td><td>features only</td><td>1521</td><td>10.935</td><td>[10.902, 10.962]</td><td>7.37</td><td>3811</td><td>1,170,000</td></tr>
+<tr><td>M9_232005</td><td>continuum down-weighted</td><td>3494</td><td>10.958</td><td>[10.936, 10.980]</td><td>9.41</td><td>3636</td><td>1,170,000</td></tr>
+</tbody>
+</table>
+<h4>t_MW [Gyr]</h4>
+<table>
+<thead><tr><th>target</th><th>mode</th><th>pixels</th><th>median</th><th>16-84</th><th>shift</th><th>ESS</th><th>calls</th></tr></thead>
+<tbody>
+<tr><td>M11_214430</td><td>full spectrum</td><td>3810</td><td>3.829</td><td>[3.600, 3.995]</td><td>0.00</td><td>4010</td><td>1,384,500</td></tr>
+<tr><td>M11_214430</td><td>features only</td><td>1088</td><td>4.427</td><td>[4.156, 4.680]</td><td>3.03</td><td>3339</td><td>1,189,500</td></tr>
+<tr><td>M11_214430</td><td>continuum down-weighted</td><td>3810</td><td>4.131</td><td>[3.927, 4.368]</td><td>1.53</td><td>3578</td><td>1,202,500</td></tr>
+<tr><td>M5_172669</td><td>full spectrum</td><td>3602</td><td>1.666</td><td>[1.654, 1.703]</td><td>0.00</td><td>3070</td><td>1,176,500</td></tr>
+<tr><td>M5_172669</td><td>features only</td><td>1389</td><td>1.700</td><td>[1.659, 1.763]</td><td>1.38</td><td>3254</td><td>1,170,000</td></tr>
+<tr><td>M5_172669</td><td>continuum down-weighted</td><td>3602</td><td>1.702</td><td>[1.660, 1.775]</td><td>1.45</td><td>3208</td><td>1,209,000</td></tr>
+<tr><td>M9_232005</td><td>full spectrum</td><td>3494</td><td>3.019</td><td>[2.982, 3.170]</td><td>0.00</td><td>3497</td><td>1,202,500</td></tr>
+<tr><td>M9_232005</td><td>features only</td><td>1521</td><td>4.293</td><td>[3.871, 4.569]</td><td>13.59</td><td>3811</td><td>1,170,000</td></tr>
+<tr><td>M9_232005</td><td>continuum down-weighted</td><td>3494</td><td>4.613</td><td>[4.239, 4.988]</td><td>17.00</td><td>3636</td><td>1,170,000</td></tr>
+</tbody>
+</table>
+<h4>log Z</h4>
+<table>
+<thead><tr><th>target</th><th>mode</th><th>pixels</th><th>median</th><th>16-84</th><th>shift</th><th>ESS</th><th>calls</th></tr></thead>
+<tbody>
+<tr><td>M11_214430</td><td>full spectrum</td><td>3810</td><td>-1.645</td><td>[-1.675, -1.611]</td><td>0.00</td><td>4010</td><td>1,384,500</td></tr>
+<tr><td>M11_214430</td><td>features only</td><td>1088</td><td>-1.824</td><td>[-1.851, -1.797]</td><td>-5.64</td><td>3339</td><td>1,189,500</td></tr>
+<tr><td>M11_214430</td><td>continuum down-weighted</td><td>3810</td><td>-1.813</td><td>[-1.844, -1.781]</td><td>-5.30</td><td>3578</td><td>1,202,500</td></tr>
+<tr><td>M5_172669</td><td>full spectrum</td><td>3602</td><td>-1.723</td><td>[-1.733, -1.710]</td><td>0.00</td><td>3070</td><td>1,176,500</td></tr>
+<tr><td>M5_172669</td><td>features only</td><td>1389</td><td>-1.972</td><td>[-1.985, -1.954]</td><td>-21.74</td><td>3254</td><td>1,170,000</td></tr>
+<tr><td>M5_172669</td><td>continuum down-weighted</td><td>3602</td><td>-1.973</td><td>[-1.985, -1.955]</td><td>-21.80</td><td>3208</td><td>1,209,000</td></tr>
+<tr><td>M9_232005</td><td>full spectrum</td><td>3494</td><td>-1.670</td><td>[-1.687, -1.654]</td><td>0.00</td><td>3497</td><td>1,202,500</td></tr>
+<tr><td>M9_232005</td><td>features only</td><td>1521</td><td>-1.753</td><td>[-1.789, -1.698]</td><td>-4.91</td><td>3811</td><td>1,170,000</td></tr>
+<tr><td>M9_232005</td><td>continuum down-weighted</td><td>3494</td><td>-1.777</td><td>[-1.793, -1.749]</td><td>-6.37</td><td>3636</td><td>1,170,000</td></tr>
+</tbody>
+</table>
+<h4>[α/Fe]</h4>
+<table>
+<thead><tr><th>target</th><th>mode</th><th>pixels</th><th>median</th><th>16-84</th><th>shift</th><th>ESS</th><th>calls</th></tr></thead>
+<tbody>
+<tr><td>M11_214430</td><td>full spectrum</td><td>3810</td><td>-0.155</td><td>[-0.168, -0.140]</td><td>0.00</td><td>4010</td><td>1,384,500</td></tr>
+<tr><td>M11_214430</td><td>features only</td><td>1088</td><td>-0.196</td><td>[-0.199, -0.190]</td><td>-2.91</td><td>3339</td><td>1,189,500</td></tr>
+<tr><td>M11_214430</td><td>continuum down-weighted</td><td>3810</td><td>-0.195</td><td>[-0.199, -0.189]</td><td>-2.84</td><td>3578</td><td>1,202,500</td></tr>
+<tr><td>M5_172669</td><td>full spectrum</td><td>3602</td><td>0.134</td><td>[0.120, 0.150]</td><td>0.00</td><td>3070</td><td>1,176,500</td></tr>
+<tr><td>M5_172669</td><td>features only</td><td>1389</td><td>0.359</td><td>[0.342, 0.375]</td><td>15.02</td><td>3254</td><td>1,170,000</td></tr>
+<tr><td>M5_172669</td><td>continuum down-weighted</td><td>3602</td><td>0.358</td><td>[0.342, 0.374]</td><td>14.94</td><td>3208</td><td>1,209,000</td></tr>
+<tr><td>M9_232005</td><td>full spectrum</td><td>3494</td><td>0.097</td><td>[0.086, 0.108]</td><td>0.00</td><td>3497</td><td>1,202,500</td></tr>
+<tr><td>M9_232005</td><td>features only</td><td>1521</td><td>0.122</td><td>[0.098, 0.137]</td><td>2.28</td><td>3811</td><td>1,170,000</td></tr>
+<tr><td>M9_232005</td><td>continuum down-weighted</td><td>3494</td><td>0.125</td><td>[0.106, 0.140]</td><td>2.58</td><td>3636</td><td>1,170,000</td></tr>
+</tbody>
+</table>
+<h4>τ_dust</h4>
+<table>
+<thead><tr><th>target</th><th>mode</th><th>pixels</th><th>median</th><th>16-84</th><th>shift</th><th>ESS</th><th>calls</th></tr></thead>
+<tbody>
+<tr><td>M11_214430</td><td>full spectrum</td><td>3810</td><td>0.602</td><td>[0.586, 0.617]</td><td>0.00</td><td>4010</td><td>1,384,500</td></tr>
+<tr><td>M11_214430</td><td>features only</td><td>1088</td><td>0.492</td><td>[0.464, 0.522]</td><td>-6.94</td><td>3339</td><td>1,189,500</td></tr>
+<tr><td>M11_214430</td><td>continuum down-weighted</td><td>3810</td><td>0.493</td><td>[0.464, 0.523]</td><td>-6.87</td><td>3578</td><td>1,202,500</td></tr>
+<tr><td>M5_172669</td><td>full spectrum</td><td>3602</td><td>0.011</td><td>[0.007, 0.016]</td><td>0.00</td><td>3070</td><td>1,176,500</td></tr>
+<tr><td>M5_172669</td><td>features only</td><td>1389</td><td>0.055</td><td>[0.049, 0.061]</td><td>9.52</td><td>3254</td><td>1,170,000</td></tr>
+<tr><td>M5_172669</td><td>continuum down-weighted</td><td>3602</td><td>0.055</td><td>[0.049, 0.061]</td><td>9.47</td><td>3208</td><td>1,209,000</td></tr>
+<tr><td>M9_232005</td><td>full spectrum</td><td>3494</td><td>0.164</td><td>[0.154, 0.173]</td><td>0.00</td><td>3497</td><td>1,202,500</td></tr>
+<tr><td>M9_232005</td><td>features only</td><td>1521</td><td>0.177</td><td>[0.160, 0.191]</td><td>1.36</td><td>3811</td><td>1,170,000</td></tr>
+<tr><td>M9_232005</td><td>continuum down-weighted</td><td>3494</td><td>0.174</td><td>[0.163, 0.184]</td><td>1.06</td><td>3636</td><td>1,170,000</td></tr>
+</tbody>
+</table>
+<h4>s_spec</h4>
+<table>
+<thead><tr><th>target</th><th>mode</th><th>pixels</th><th>median</th><th>16-84</th><th>shift</th><th>ESS</th><th>calls</th></tr></thead>
+<tbody>
+<tr><td>M11_214430</td><td>full spectrum</td><td>3810</td><td>1.650</td><td>[1.615, 1.684]</td><td>0.00</td><td>4010</td><td>1,384,500</td></tr>
+<tr><td>M11_214430</td><td>features only</td><td>1088</td><td>1.436</td><td>[1.391, 1.477]</td><td>-6.21</td><td>3339</td><td>1,189,500</td></tr>
+<tr><td>M11_214430</td><td>continuum down-weighted</td><td>3810</td><td>1.441</td><td>[1.395, 1.484]</td><td>-6.09</td><td>3578</td><td>1,202,500</td></tr>
+<tr><td>M5_172669</td><td>full spectrum</td><td>3602</td><td>1.237</td><td>[1.219, 1.256]</td><td>0.00</td><td>3070</td><td>1,176,500</td></tr>
+<tr><td>M5_172669</td><td>features only</td><td>1389</td><td>1.261</td><td>[1.242, 1.280]</td><td>1.29</td><td>3254</td><td>1,170,000</td></tr>
+<tr><td>M5_172669</td><td>continuum down-weighted</td><td>3602</td><td>1.261</td><td>[1.242, 1.280]</td><td>1.30</td><td>3208</td><td>1,209,000</td></tr>
+<tr><td>M9_232005</td><td>full spectrum</td><td>3494</td><td>1.051</td><td>[1.032, 1.068]</td><td>0.00</td><td>3497</td><td>1,202,500</td></tr>
+<tr><td>M9_232005</td><td>features only</td><td>1521</td><td>1.059</td><td>[1.041, 1.078]</td><td>0.41</td><td>3811</td><td>1,170,000</td></tr>
+<tr><td>M9_232005</td><td>continuum down-weighted</td><td>3494</td><td>1.059</td><td>[1.037, 1.078]</td><td>0.41</td><td>3636</td><td>1,170,000</td></tr>
+</tbody>
+</table>
+<h4>f_calib [%]</h4>
+<table>
+<thead><tr><th>target</th><th>mode</th><th>pixels</th><th>median</th><th>16-84</th><th>shift</th><th>ESS</th><th>calls</th></tr></thead>
+<tbody>
+<tr><td>M11_214430</td><td>full spectrum</td><td>3810</td><td>5.193</td><td>[5.045, 5.345]</td><td>0.00</td><td>4010</td><td>1,384,500</td></tr>
+<tr><td>M11_214430</td><td>features only</td><td>1088</td><td>4.061</td><td>[3.812, 4.280]</td><td>-7.53</td><td>3339</td><td>1,189,500</td></tr>
+<tr><td>M11_214430</td><td>continuum down-weighted</td><td>3810</td><td>3.934</td><td>[3.758, 4.150]</td><td>-8.38</td><td>3578</td><td>1,202,500</td></tr>
+<tr><td>M5_172669</td><td>full spectrum</td><td>3602</td><td>2.894</td><td>[2.855, 2.937]</td><td>0.00</td><td>3070</td><td>1,176,500</td></tr>
+<tr><td>M5_172669</td><td>features only</td><td>1389</td><td>1.992</td><td>[1.947, 2.044]</td><td>-22.02</td><td>3254</td><td>1,170,000</td></tr>
+<tr><td>M5_172669</td><td>continuum down-weighted</td><td>3602</td><td>1.990</td><td>[1.940, 2.043]</td><td>-22.08</td><td>3208</td><td>1,209,000</td></tr>
+<tr><td>M9_232005</td><td>full spectrum</td><td>3494</td><td>2.847</td><td>[2.758, 2.942]</td><td>0.00</td><td>3497</td><td>1,202,500</td></tr>
+<tr><td>M9_232005</td><td>features only</td><td>1521</td><td>3.208</td><td>[3.098, 3.353]</td><td>3.92</td><td>3811</td><td>1,170,000</td></tr>
+<tr><td>M9_232005</td><td>continuum down-weighted</td><td>3494</td><td>3.202</td><td>[3.089, 3.312]</td><td>3.85</td><td>3636</td><td>1,170,000</td></tr>
+</tbody>
+</table>
+
+      </details>
+    </section>
+
+    <section id="interpretation">
+      <h2>Interpretation and recommendation</h2>
+            <p><em>Project synthesis.</em></p>
+      <ol>
+        <li><strong>Why the mask does not remove a tilt.</strong> Each absorption window keeps its local continuum level, and the windows span the fitted range from H10 to TiO. The run of window levels traces the tilt as well as the full continuum does, only with fewer pixels, so the tilt still enters as a colour term. The model absorbs it the same way in every mode: &tau;<sub>dust</sub> rises by +0.10 to +0.11 per 3 percent of tilt and by +0.20 to +0.21 per 6 percent, and the age and mass move with it. Removing the tilt needs a multiplicative calibration polynomial fitted with the model, or windows normalised by their own pseudo-continuum (index fitting), not fewer pixels.</li>
+        <li><strong>Why the photometry cannot take over.</strong> The balance factor of 14 to 71 equalises the continuum pixels with the twelve bands, but the feature pixels keep their full weight and carry the same slope information, so the photometry's Fisher share stays below one percent. Only a calibration model that decouples the spectral shape from the stellar-population shape gives the bands a say.</li>
+        <li><strong>What the real-target shifts mean.</strong> The masked posteriors are 0.9 to 1.6 times as wide as the full-spectrum ones in the mocks (medians per parameter and S/N scale) but move by up to 22 sigma on real spectra, so the full-spectrum posteriors are precise about a model the continuum and the lines do not share. Candidates are the relative flux calibration of LEGA-C beyond a linear tilt, and template systematics (the C3K continuum against its line strengths). This test cannot rank them; a fit with a free low-order calibration vector can.</li>
+        <li><strong>Coverage.</strong> With no tilt the 68 percent intervals cover the truth in 10/16 (full), 7/16 (features) and 8/16 (down-weighted) parameter-realisations; with a tilt it collapses to 10/32, 10/32 and 9/32 over the four tilted cells. The posteriors are too narrow to absorb a few-percent calibration error whichever pixels are used.</li>
+        <li><strong>Recommendation.</strong> Default off. Keep <code>features</code> and <code>features_downweight</code> as diagnostics behind <code>CERIDWEN_SPECTRUM_PIXELS</code>. The line list is the Lick set plus the Balmer, Ca H&amp;K and Ca triplet centres; 1000 km/s windows keep 29 to 44 percent of the pixels. Neither the list nor the window changes the conclusion, because the failure is in what the windows still contain, not in which windows are chosen.</li>
+      </ol>
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence</h2>
+      <ul>
+        <li>Code: branch <code>absorption-mask</code> in the project and in the ceridwen submodule; <code>scripts/absorption_mask_analysis.py</code>, <code>scripts/absorption_mask_grid.py</code>, <code>scripts/absorption_mask_vast.py</code>, <code>scripts/absorption_mask_report.py</code>.</li>
+        <li>Results: <code>results/absorption-mask/&lt;cell&gt;/</code> (executed notebook, <code>ceridwen_result.h5</code>, <code>ceridwen_derived_outputs.h5</code>), <code>summary.csv</code>, <code>summary.json</code>, <code>fisher_M5_172669.json</code>, run records <code>vast_run_*.json</code>.</li>
+        <li>Figures: <code>wiki/analyses/absorption-mask/</code>.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Astro Wiki · Python Patterns Used Here</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="guide">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-25">
+  <!-- site-name-block: name, icons and manifest, so a bookmark saves under "Astro Wiki" -->
+  <meta name="application-name" content="Astro Wiki" />
+  <meta name="apple-mobile-web-app-title" content="Astro Wiki" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="manifest" href="../manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/icons/icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="python-patterns-used-here" class="level1">
+<h1>Python Patterns</h1>
+<section id="function" class="level2">
+<h2>Function</h2>
+<p>A function converts inputs into outputs. First, read its signature.
+Then find its <code>return</code> statements. After that, inspect the
+intermediate lines.</p>
+<ul>
+<li><code>ceridwen/ceridwen/model/model.py:313-342</code>,
+<code>apply_transforms(theta)</code> returns a parameter dictionary.</li>
+<li><code>ceridwen/ceridwen/model/model.py:348-401</code>,
+<code>predict(theta)</code> returns a dict.</li>
+<li><code>ceridwen/ceridwen/sampler/runner.py:275-366</code>,
+<code>run_sampler(...)</code> returns a <code>SamplingResult</code>.</li>
+</ul>
+<p>These return values follow the active Ceridwen prediction and
+sampling path.</p>
+</section>
+<section id="dataclass" class="level2">
+<h2>Dataclass</h2>
+<p>A dataclass defines a data record. It can store results without
+implementing the algorithm that produced them.</p>
+<ul>
+<li><code>ceridwen/ceridwen/sampler/runner.py:69-128</code>:
+<code>SamplingResult</code> stores output.</li>
+</ul>
+<p>The field names define the object’s data contract. Search for class
+construction to find the producing algorithm.</p>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:69-76 · SamplingResult</code></p>
+<pre class="python"><code>@dataclass
+class SamplingResult:
+    """
+    Universal container for the output of any Ceridwen sampling run.
+
+    All fields are backend-agnostic.  The sampler-specific raw output
+    (e.g. a BlackJAX ``dead`` pytree) is preserved in ``raw`` for
+    downstream processing.</code></pre>
+<p><strong>Documented contract:</strong> The class docstring defines
+backend-independent samples, evidence, weights, diagnostics, and raw output
+(<code>ceridwen/ceridwen/sampler/runner.py:69-116</code>).</p>
+<p><strong>Why it matters:</strong> All Ceridwen samplers return this
+container. Lines 118-128 define the
+posterior, evidence, diagnostics, timing, and raw-output fields.</p>
+</div>
+</section>
+<section id="closure" class="level2">
+<h2>Closure</h2>
+<p>A closure is an inner function that retains variables from its outer
+function. <code>Spectrum.setup_for_model</code> stores a projection
+closure in <code>_predict_fn</code>
+(<code>ceridwen/ceridwen/observation/spectrum.py:663-667</code>).</p>
+<p class="source-locator"><code>ceridwen/ceridwen/observation/spectrum.py:663-667</code></p>
+<pre class="python"><code>_L = _apply_losvd
+self._predict_fn = (
+    lambda spec, _A=_apply_instr, _L=_L:
+        _A(_L(spec[_idx]))
+)</code></pre>
+<p>The lambda retains the prepared smoothing operation and pixel
+selection. Later predictions supply only the model spectrum.</p>
+</section>
+<section id="class-and-inheritance" class="level2">
+<h2>Class and inheritance</h2>
+<p>Inheritance defines a specialized form of another class.
+<code>Photometry</code>, <code>Spectrum</code>, and <code>Lines</code>
+inherit storage and masking from <code>Observation</code>. Each class
+implements its own projection:</p>
+<ul>
+<li>Base contract:
+<code>ceridwen/ceridwen/observation/base.py:25-89</code>.</li>
+<li>Abstract-style <code>predict</code>:
+<code>base.py:291-319</code>.</li>
+<li>Photometry implementation: <code>photometry.py:245-267</code>.</li>
+<li>Spectrum implementation: <code>spectrum.py:686-750</code>.</li>
+</ul>
+<p>Compare the same method in the parent class and each child
+class.</p>
+<figure class="diagram" aria-labelledby="inheritance-caption">
+<div class="diagram-node is-primary"><strong>Observation</strong><small>Storage, uncertainty, and masking</small></div>
+<svg class="diagram-connector is-branch" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-labelledby="inheritance-title inheritance-desc">
+<title id="inheritance-title">Observation inheritance</title>
+<desc id="inheritance-desc">The Observation base class branches into Photometry, Spectrum, and Lines.</desc>
+<defs><marker id="inheritance-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+<path d="M150 0 V12 M150 12 H50 V38 M150 12 V38 M150 12 H250 V38" marker-end="url(#inheritance-arrow)" />
+</svg>
+<ul class="diagram-branches" style="--diagram-columns: 3">
+<li class="diagram-node"><strong>Photometry</strong><small>Filter projection</small></li>
+<li class="diagram-node"><strong>Spectrum</strong><small>Resolution and pixels</small></li>
+<li class="diagram-node"><strong>Lines</strong><small>Line measurements</small></li>
+</ul>
+<figcaption id="inheritance-caption">Each observation type shares one contract and defines its own projection.</figcaption>
+</figure>
+</section>
+<section id="composition" class="level2">
+<h2>Composition</h2>
+<p>Composition means that one object contains other objects.
+<code>SedModel</code> contains a CSP, observations, priors, and
+transforms. It does not inherit their code
+(<code>ceridwen/ceridwen/model/model.py:141-167</code>). Ceridwen uses
+this design to combine different observation types.</p>
+</section>
+<section id="adapter" class="level2">
+<h2>Adapter</h2>
+<p>An adapter gives different external libraries a common interface.
+<code>SamplerAdapter.run(...)</code> defines the protocol. The sampler
+classes implement this protocol. The active project path uses the
+nested-sampling class
+(<code>ceridwen/ceridwen/sampler/runner.py:215-268</code>).</p>
+<p><code>run_sampler</code> uses the protocol. It does not use the
+internal BlackJAX API (<code>runner.py:275-366</code>).</p>
+</section>
+<section id="decorator" class="level2">
+<h2>Decorator</h2>
+<p>A decorator changes function execution but keeps the function
+callable.</p>
+<ul>
+<li><code>@jax.jit</code> compiles a numerical function:
+<code>runner.py:349-363</code>.</li>
+<li><code>@classmethod</code> passes the class as <code>cls</code>:
+<code>ssp_data.py:508-566</code>.</li>
+<li><code>@property</code> exposes a method like an attribute:
+<code>base.py:234-259</code>.</li>
+</ul>
+<p>Read the decorator before you read the function. The decorator
+changes execution.</p>
+<p>The JAX example below shows how <code>@jax.jit</code> changes a
+likelihood function.</p>
+</section>
+<section id="module-exports" class="level2">
+<h2>Module exports</h2>
+<p>An <code>__init__.py</code> file defines public names. For example,
+<code>ceridwen/ceridwen/ssps/__init__.py:7-18</code> exports grid
+containers and fetch helpers. Start with that file. Then open the
+module that defines each name.</p>
+</section>
+<section id="jax-static-versus-traced-values" class="level2">
+<h2>JAX static versus traced values</h2>
+<p>This distinction explains much of the Ceridwen structure:</p>
+<figure class="diagram" aria-labelledby="jax-boundary-caption">
+<ul class="diagram-branches" style="--diagram-columns: 2">
+<li class="diagram-node"><strong>Static Python values</strong><small>Shapes, keys, and observation types</small></li>
+<li class="diagram-node"><strong>Traced JAX arrays</strong><small>Sampled numerical parameters</small></li>
+</ul>
+<svg class="diagram-connector is-branch" viewBox="0 0 200 40" preserveAspectRatio="none" role="img" aria-labelledby="jax-merge-title jax-merge-desc">
+<title id="jax-merge-title">JAX compilation boundary</title>
+<desc id="jax-merge-desc">Static structure and traced arrays enter one compiled likelihood.</desc>
+<defs><marker id="jax-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" /></marker></defs>
+<path d="M50 0 V14 L100 30 M150 0 V14 L100 30 V38" marker-end="url(#jax-arrow)" />
+</svg>
+<div class="diagram-node is-primary"><strong>JIT-compiled likelihood</strong><small>Fixed structure, changing numerical values</small></div>
+<figcaption id="jax-boundary-caption">Python fixes the computation shape before JAX evaluates sampled values.</figcaption>
+</figure>
+<ul>
+<li>Static Python values define shapes, object types, and observation
+lists.</li>
+<li>Traced JAX arrays contain parameter values that change during
+sampling.</li>
+<li>JAX resolves static branches once during compilation.</li>
+<li>Python cannot use a traced numerical value to select a branch.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Observation setup precomputes matrices before JIT:
+<code>ceridwen/ceridwen/model/model.py:219-240</code>.</li>
+<li>The observation loop becomes compiled operations:
+<code>ceridwen/ceridwen/csp/csp_afe.py:1114-1134</code>.</li>
+<li><code>theta</code> arrays remain differentiable inside prediction:
+<code>ceridwen/ceridwen/model/model.py:348-401</code>.</li>
+</ul>
+<div class="source-example">
+<p class="source-locator"><code>ceridwen/ceridwen/sampler/runner.py:348-358 · run_sampler.loglike_fn</code></p>
+<pre class="python"><code># ── Log-likelihood: sum over observations, no prior ───────────────────
+@jax.jit
+def loglike_fn(theta: dict[str, Array]) -&gt; Array:
+    predictions = model.predict(theta)
+    lnl = jnp.zeros(())
+    for key, lhood in zip(_keys, _likelihoods):
+        y_k, sig_k, mask_k = _static_data[key]
+        mu_k    = predictions[key]
+        lnl_k, _ = lhood(y_k, mu_k, sig_k, mask_k, params=theta)
+        lnl = lnl + lnl_k
+    return lnl</code></pre>
+<p><strong>Documented contract:</strong> The parent docstring says this
+compiled function sums observation likelihoods without a prior term
+(<code>ceridwen/ceridwen/sampler/runner.py:275-310</code>).</p>
+<p><strong>Why it matters:</strong> <code>theta</code> contains traced
+numerical data. The code creates
+<code>_keys</code> and <code>_likelihoods</code> outside this function.
+JAX therefore sees a fixed loop structure. A different observation
+list usually requires new compilation.</p>
+</div>
+</section>
+</section>
+</main>
+</body>
+</html>

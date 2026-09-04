@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="wiki-type" content="analysis">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-09-01">
+  <title>Astro Wiki · Ceridwen GPU Benchmarks</title>
+  <link rel="stylesheet" href="../assets/wiki.css">
+  <style>
+    #runs-table thead th { cursor: pointer; user-select: none; }
+    #runs-table thead th:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+    #runs-table .sort-mark { color: var(--muted); }
+    .chart .grid line { stroke: currentColor; stroke-opacity: 0.22; }
+    .chart .axis path,
+    .chart .tick line { stroke: currentColor; stroke-width: 1.2; fill: none; }
+    .chart .tick-text,
+    .chart .label { fill: currentColor; font-size: 12px; }
+    .chart .lead path { stroke: currentColor; stroke-opacity: 0.5; fill: none; }
+    .chart .mk-case { stroke: var(--paper); stroke-width: 4.5; fill: var(--paper); }
+    .chart .mk { stroke: currentColor; stroke-width: 1.7; fill: none; }
+    .sweep-bars .bar { fill: var(--accent); fill-opacity: 0.72; }
+  </style>
+  <!-- site-name-block: name, icons and manifest, so a bookmark saves under "Astro Wiki" -->
+  <meta name="application-name" content="Astro Wiki">
+  <meta name="apple-mobile-web-app-title" content="Astro Wiki">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/icons/icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="../index.html">
+        <span class="site-mark">AR</span>
+        <span>Astro Research Wiki</span>
+      </a>
+    </div>
+  </header>
+  <main class="page-shell" id="main-content">
+    <header>
+      <h1>Ceridwen GPU benchmark</h1>
+      <p>This page compares forty-six measured GPU runs on Ceridwen likelihood work.</p>
+    </header>
+
+    <section id="runs">
+      <h2>Measured runs</h2>
+      <p>One row shows one measured run. A short benchmark is not a complete posterior fit.</p>
+      <p>Select a column heading to sort the table. Select it again to reverse the order.</p>
+      <p>A price with the ≈ sign is the lowest Vast offer on 26 August 2026. That run did not record its own price.</p>
+      <table id="runs-table">
+        <thead>
+          <tr>
+            <th scope="col" tabindex="0" role="columnheader" aria-sort="none" data-type="text">GPU<span class="sort-mark" aria-hidden="true"></span></th>
+            <th scope="col" tabindex="0" role="columnheader" aria-sort="none" data-type="number">Published dense TF32 peak<span class="sort-mark" aria-hidden="true"></span></th>
+            <th scope="col" tabindex="0" role="columnheader" aria-sort="none" data-type="text">Provider<span class="sort-mark" aria-hidden="true"></span></th>
+            <th scope="col" tabindex="0" role="columnheader" aria-sort="none" data-type="text">Test<span class="sort-mark" aria-hidden="true"></span></th>
+            <th scope="col" tabindex="0" role="columnheader" aria-sort="none" data-type="number">Ceridwen schema<span class="sort-mark" aria-hidden="true"></span></th>
+            <th scope="col" tabindex="0" role="columnheader" aria-sort="none" data-type="number" data-pick="last">Timed steps / calls<span class="sort-mark" aria-hidden="true"></span></th>
+            <th scope="col" tabindex="0" role="columnheader" aria-sort="none" data-type="number">Calls/s<span class="sort-mark" aria-hidden="true"></span></th>
+            <th scope="col" tabindex="0" role="columnheader" aria-sort="none" data-type="number">Vast price<span class="sort-mark" aria-hidden="true"></span></th>
+            <th scope="col" tabindex="0" role="columnheader" aria-sort="none" data-type="number">Cost per 1,000,000 calls<span class="sort-mark" aria-hidden="true"></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">GeForce RTX 5060</th>
+            <td>19.2 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Converged fit, fast SFH basis A</td>
+            <td>2.1</td>
+            <td>542 / 542,000</td>
+            <td>547.6</td>
+            <td>$0.0844/h</td>
+            <td>$0.043</td>
+          </tr>
+          <tr>
+            <th scope="row">B200</th>
+            <td>1,125 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>743.9</td>
+            <td>$5.3138/h</td>
+            <td>$1.984</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX PRO 6000 Blackwell Server Edition</th>
+            <td>234 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>444.9</td>
+            <td>$1.3327/h</td>
+            <td>$0.832</td>
+          </tr>
+          <tr>
+            <th scope="row">H100 SXM</th>
+            <td>494 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, earlier fingerprint</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>431.3</td>
+            <td>$1.7422/h</td>
+            <td>$1.122</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX PRO 6000 Blackwell Max-Q Workstation Edition</th>
+            <td>219.5 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>409.3</td>
+            <td>$1.2290/h</td>
+            <td>$0.834</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5090</th>
+            <td>104.8 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Complete integrated fit</td>
+            <td>2.1</td>
+            <td>514 / 514,000</td>
+            <td>393.1</td>
+            <td>$0.4139/h</td>
+            <td>$0.292</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX PRO 5000 Blackwell</th>
+            <td>65 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>364.6</td>
+            <td>$0.5619/h</td>
+            <td>$0.428</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5080</th>
+            <td>56.3 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>253.1</td>
+            <td>$0.1608/h</td>
+            <td>$0.177</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX PRO 4500 Blackwell</th>
+            <td>51 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>247.4</td>
+            <td>$0.3081/h</td>
+            <td>$0.346</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4090</th>
+            <td>82.6 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, earlier fingerprint</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>187.0</td>
+            <td>$0.3052/h</td>
+            <td>$0.453</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX 6000 Ada Generation</th>
+            <td>91.1 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>196.0</td>
+            <td>$0.6013/h</td>
+            <td>$0.852</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5070</th>
+            <td>30.8 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>180.6</td>
+            <td>$0.1206/h</td>
+            <td>$0.185</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX PRO 4000 Blackwell</th>
+            <td>37 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>168.8</td>
+            <td>$0.2023/h</td>
+            <td>$0.333</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX 5000 Ada Generation</th>
+            <td>65.3 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>139.2</td>
+            <td>$0.4281/h</td>
+            <td>$0.854</td>
+          </tr>
+          <tr>
+            <th scope="row">A100 SXM4</th>
+            <td>156 TFLOP/s</td>
+            <td>Modal</td>
+            <td>Kernel trace</td>
+            <td>2.1</td>
+            <td>1 / 1,000</td>
+            <td>127.5</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">A100 SXM4</th>
+            <td>156 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Matched full-spectrum step</td>
+            <td>2.0</td>
+            <td>1 / 1,000</td>
+            <td>126.6</td>
+            <td>≈$0.5361/h</td>
+            <td>≈$1.176</td>
+          </tr>
+          <tr>
+            <th scope="row">A100 PCIe 40 GB</th>
+            <td>156 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool, 250 W host</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>124.4</td>
+            <td>$0.8009/h</td>
+            <td>$1.789</td>
+          </tr>
+          <tr>
+            <th scope="row">A100 SXM4</th>
+            <td>156 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Complete integrated fit</td>
+            <td>2.0</td>
+            <td>488 / 488,000</td>
+            <td>118.6</td>
+            <td>≈$0.5361/h</td>
+            <td>≈$1.256</td>
+          </tr>
+          <tr>
+            <th scope="row">A100 40 GB</th>
+            <td>156 TFLOP/s</td>
+            <td>Modal</td>
+            <td>Smoke test</td>
+            <td>2.1</td>
+            <td>7 / 112</td>
+            <td>approximately 112</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4080</th>
+            <td>49 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool, 270 W host</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>125.1</td>
+            <td>$0.1881/h</td>
+            <td>$0.417</td>
+          </tr>
+          <tr>
+            <th scope="row">A100 40 GB</th>
+            <td>156 TFLOP/s</td>
+            <td>Modal</td>
+            <td>Complete feature-spectrum fit</td>
+            <td>2.1</td>
+            <td>190 / 1,140,000</td>
+            <td>105.8</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">A100 40 GB</th>
+            <td>156 TFLOP/s</td>
+            <td>Modal</td>
+            <td>Full-spectrum checkpoint fit</td>
+            <td>2.1</td>
+            <td>145 / 870,000</td>
+            <td>102.5</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5070 Ti</th>
+            <td>43.9 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool, 250 W host</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>116.8</td>
+            <td>$0.1147/h</td>
+            <td>$0.273</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5060 Ti</th>
+            <td>23.7 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, earlier fingerprint</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>111.6</td>
+            <td>$0.0814/h</td>
+            <td>$0.203</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4070 Ti SUPER</th>
+            <td>44 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool, 256 W host</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>107.0</td>
+            <td>$0.1347/h</td>
+            <td>$0.350</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5060</th>
+            <td>19.2 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>107.0</td>
+            <td>$0.1028/h</td>
+            <td>$0.267</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 5060</th>
+            <td>19.2 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Converged fit, baseline SFH basis</td>
+            <td>2.1</td>
+            <td>566 / 566,000</td>
+            <td>100.9</td>
+            <td>$0.0844/h</td>
+            <td>$0.233</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4070 Super</th>
+            <td>35.5 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, earlier fingerprint</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>89.7</td>
+            <td>$0.1018/h</td>
+            <td>$0.315</td>
+          </tr>
+          <tr>
+            <th scope="row">CMP 170HX</th>
+            <td>Not published</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>93.4</td>
+            <td>$0.4014/h</td>
+            <td>$1.194</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4070 Ti</th>
+            <td>40 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>89.2</td>
+            <td>$0.0890/h</td>
+            <td>$0.277</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3090 Ti</th>
+            <td>40.0 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>85.0</td>
+            <td>$0.2281/h</td>
+            <td>$0.745</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX A6000</th>
+            <td>38.7 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>74.0</td>
+            <td>$0.4457/h</td>
+            <td>$1.673</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3080 Ti</th>
+            <td>34.1 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, earlier fingerprint</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>82.5</td>
+            <td>$0.1348/h</td>
+            <td>$0.454</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3080</th>
+            <td>29.8 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool, 220 W host</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>69.3</td>
+            <td>$0.0738/h</td>
+            <td>$0.296</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3070 Ti</th>
+            <td>21.7 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>68.6</td>
+            <td>$0.1281/h</td>
+            <td>$0.519</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3070</th>
+            <td>20.3 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>65.5</td>
+            <td>$0.0614/h</td>
+            <td>$0.260</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3070</th>
+            <td>20.3 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, on demand</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>65.3</td>
+            <td>$0.0614/h</td>
+            <td>$0.261</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3090</th>
+            <td>35.6 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, earlier fingerprint</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>80.3</td>
+            <td>$0.1444/h</td>
+            <td>$0.500</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 4060 Ti</th>
+            <td>22 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>55.3</td>
+            <td>$0.0934/h</td>
+            <td>$0.469</td>
+          </tr>
+          <tr>
+            <th scope="row">RTX A4000</th>
+            <td>19.2 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>54.3</td>
+            <td>$0.1214/h</td>
+            <td>$0.621</td>
+          </tr>
+          <tr>
+            <th scope="row">A10</th>
+            <td>62.5 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>54.1</td>
+            <td>$0.2417/h</td>
+            <td>$1.242</td>
+          </tr>
+          <tr>
+            <th scope="row">L4</th>
+            <td>60 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>53.5</td>
+            <td>$0.3347/h</td>
+            <td>$1.739</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3060 Ti</th>
+            <td>16.2 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>53.4</td>
+            <td>$0.0807/h</td>
+            <td>$0.420</td>
+          </tr>
+          <tr>
+            <th scope="row">V100 SXM2</th>
+            <td>Not supported</td>
+            <td>Vast</td>
+            <td>Matched full-spectrum step</td>
+            <td>2.0</td>
+            <td>1 / 1,000</td>
+            <td>42.9</td>
+            <td>≈$0.1090/h</td>
+            <td>≈$0.706</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3060</th>
+            <td>13.0 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, earlier fingerprint</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>34.0</td>
+            <td>$0.0596/h</td>
+            <td>$0.487</td>
+          </tr>
+          <tr>
+            <th scope="row">GeForce RTX 3050</th>
+            <td>9.1 TFLOP/s</td>
+            <td>Vast</td>
+            <td>Joint fit benchmark, 50% pool</td>
+            <td>2.1</td>
+            <td>5 / 5,000</td>
+            <td>21.5</td>
+            <td>$0.1420/h</td>
+            <td>$1.839</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Fixed-workload sweep</h3>
+      <p>Twenty-nine runs share the current comparison fingerprint. Seventeen new Ampere and Ada runs completed in the final sweep.</p>
+      <p>The RTX 6000 Ada and RTX 5000 Ada reached 196.0 and 139.2 calls/s. The RTX 4070 Ti cost $0.277 per million calls, the lowest cost among the new runs.</p>
+      <p>Rows marked <q>earlier fingerprint</q> remain as measured records. Do not treat them as part of the current controlled sweep.</p>
+      <figure class="diagram">
+        <svg class="chart sweep-bars" viewBox="0 0 700 545" style="width:100%;height:auto" role="img" aria-labelledby="sweep-title sweep-desc">
+          <title id="sweep-title">Likelihood speed for the seventeen added benchmark runs</title>
+          <desc id="sweep-desc">RTX 6000 Ada was fastest at 196.0 calls per second. RTX 3050 was slowest at 21.5 calls per second. The other fifteen results lie between these rates.</desc>
+          <g class="grid"><line x1="202" y1="18" x2="202" y2="510" /><line x1="314" y1="18" x2="314" y2="510" /><line x1="426" y1="18" x2="426" y2="510" /><line x1="538" y1="18" x2="538" y2="510" /><line x1="650" y1="18" x2="650" y2="510" /></g>
+          <g class="axis"><path d="M202 18 V510 H650" /></g>
+          <g class="bar"><rect x="202" y="29" width="439" height="14" /><rect x="202" y="57" width="312" height="14" /><rect x="202" y="85" width="280" height="14" /><rect x="202" y="113" width="279" height="14" /><rect x="202" y="141" width="240" height="14" /><rect x="202" y="169" width="209" height="14" /><rect x="202" y="197" width="200" height="14" /><rect x="202" y="225" width="190" height="14" /><rect x="202" y="253" width="166" height="14" /><rect x="202" y="281" width="155" height="14" /><rect x="202" y="309" width="154" height="14" /><rect x="202" y="337" width="124" height="14" /><rect x="202" y="365" width="122" height="14" /><rect x="202" y="393" width="121" height="14" /><rect x="202" y="421" width="120" height="14" /><rect x="202" y="449" width="120" height="14" /><rect x="202" y="477" width="48" height="14" /></g>
+          <g class="label" text-anchor="end"><text x="194" y="41">RTX 6000 Ada</text><text x="194" y="69">RTX 5000 Ada</text><text x="194" y="97">RTX 4080</text><text x="194" y="125">A100 PCIe</text><text x="194" y="153">RTX 4070 Ti SUPER</text><text x="194" y="181">CMP 170HX</text><text x="194" y="209">RTX 4070 Ti</text><text x="194" y="237">RTX 3090 Ti</text><text x="194" y="265">RTX A6000</text><text x="194" y="293">RTX 3080</text><text x="194" y="321">RTX 3070 Ti</text><text x="194" y="349">RTX 4060 Ti</text><text x="194" y="377">RTX A4000</text><text x="194" y="405">A10</text><text x="194" y="433">L4</text><text x="194" y="461">RTX 3060 Ti</text><text x="194" y="489">RTX 3050</text></g>
+          <g class="label"><text x="647" y="41">196.0</text><text x="520" y="69">139.2</text><text x="488" y="97">125.1</text><text x="487" y="125">124.4</text><text x="448" y="153">107.0</text><text x="417" y="181">93.4</text><text x="408" y="209">89.2</text><text x="398" y="237">85.0</text><text x="374" y="265">74.0</text><text x="363" y="293">69.3</text><text x="362" y="321">68.6</text><text x="332" y="349">55.3</text><text x="330" y="377">54.3</text><text x="329" y="405">54.1</text><text x="328" y="433">53.5</text><text x="328" y="461">53.4</text><text x="256" y="489">21.5</text></g>
+          <g class="tick-text" text-anchor="middle"><text x="202" y="532">0</text><text x="314" y="532">50</text><text x="426" y="532">100</text><text x="538" y="532">150</text><text x="650" y="532">200</text></g>
+        </svg>
+        <figcaption>Likelihood calls per second for the seventeen added runs</figcaption>
+      </figure>
+      <p>The table uses dense TF32 rates without sparsity. NVIDIA publishes the relevant values in the <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/compare/">GeForce comparison</a>, <a href="https://www.nvidia.com/en-us/data-center/products/a10-gpu/">A10 specifications</a>, <a href="https://www.nvidia.com/en-us/data-center/l4/">L4 specifications</a>, and workstation GPU data sheets. NVIDIA does not publish a TF32 rate for CMP 170HX.</p>
+      <p>The B200 row uses JAX CUDA 13 and cuBLAS 13.6.1.10. A CUDA 12 diagnostic was excluded after XLA warned of possible silent corruption on B200.</p>
+
+      <h3>RTX 5090 complete fit</h3>
+      <p>The production nested-sampler run converged after 514 iterations and 514,000 likelihood calls. Sampling took 1,307.5 s, or 393.1 calls/s. The complete notebook took 1,386.1 s.</p>
+      <p>The actual Vast rate was $0.4139/h. Sampling cost $0.150, equivalent to $0.292 per million likelihood calls. The run used schema 2.1, 300 live points, 40 inner steps, 25 deletions, and <code>logZ_tol=-3</code>.</p>
+
+      <h3>RTX 5060 fast SFH basis test</h3>
+      <p>The paired runs used one galaxy, one seed, and the same nested-sampler settings. Fast basis A reached 547.6 calls/s; the baseline reached 100.9 calls/s. The measured sampler speedup was 5.67 times.</p>
+      <p>The posterior differences between the two bases are not larger than the differences between two baseline runs with different seeds (RTX 5090 seed-variation runs, one galaxy). The fixed-grid basis is the default in Ceridwen for the published grid.</p>
+
+      <h3>RTX 5060 Ti same-boot state comparison and concurrency</h3>
+      <p>One RTX 5060 Ti (published dense TF32 peak 24 TFLOP/s) ran three ceridwen states back to back in one boot: the combined-smoother baseline reached 5,548 likelihood calls per second; adding the hoisted flux factor, the compare-all searchsorted lowering, and fewer per-iteration host reads gave 5,570; a banded direct-space smoother gave 5,566. The three agree within run noise: after the smoothing collapse, kernel-count reductions no longer move the step time, which the smoothing gather and the float64 pixel likelihood dominate. The banded smoother was not adopted.</p>
+      <p>Boot-to-boot variance on shared hosts reached 66 percent for identical code on this instance. Only same-boot numbers are comparable.</p>
+      <p>Independent concurrent runs of the fixed benchmark on the same GPU scale linearly: one run 5,531, two runs 10,857, three runs 16,457 aggregate calls per second. Grid schema 2.1.</p>
+
+      <h3>RTX 4060 Ti concurrent production fits</h3>
+      <p>One 8 GB RTX 4060 Ti (published dense TF32 peak 22 TFLOP/s, 32 effective host cores) ran production DR2 fits through the shard runner in one boot: target M5_172669 alone, then targets M5_172669, M9_232005, and M11_214430 with <code>--fits-per-gpu 3</code>. Alone, M5_172669 sampled 1,183,000 likelihood calls in 187 s, or 6,315 calls per second. With two other fits running it took 588 s, or 2,010 calls per second; the three concurrent fits summed to 6,134 calls per second. All three fits completed and validated. Whole-GPU memory peaked at 7,552 MiB of 8,188 MiB. Grid schema 2.1; 500 live points, 65 inner steps, 100 deletions.</p>
+      <p>Concurrent processes share a GPU by time-slicing, so the linear scaling of the 25-lane benchmark does not transfer to production fits, which batch 100 lanes per step and keep the GPU busy on their own. The shard runner therefore runs one fit per GPU by default.</p>
+
+      <h3>RTX 3070 concurrency and allocator levels</h3>
+      <p>One 8 GB RTX 3070 (published dense TF32 peak 20 TFLOP/s) repeated the production fit of M5_172669 in one boot at seven levels. One fit with the default allocator sampled 1,189,500 likelihood calls in 269.5 s, or 4,414 calls per second, inside a 5,880 MiB preallocated pool while its JAX peak in use was 973 MiB. Two fits with <code>XLA_CLIENT_MEM_FRACTION=0.42</code> took 562 s each and summed to 4,234 calls per second; three fits at 0.28 took 832 to 840 s each and summed to 4,271. Whole-GPU memory peaked at 7,337 and 7,700 MiB. Concurrency therefore returns 0.96 to 0.97 of one fit, and the default stays one fit per GPU.</p>
+      <p>Smaller pools do not change speed. One fit at 0.14 (a 1,098 MiB pool) sampled in 267.2 s with a 1,481 MiB whole-GPU footprint; three fits at 0.14 took 835 to 840 s each inside 4,406 MiB; one fit with <code>XLA_PYTHON_CLIENT_PREALLOCATE=false</code> sampled in 267.4 s inside 2,469 MiB. A 0.10 fraction (819 MiB) failed before sampling with <code>Autotuning failed for HLO: gemm_fusion_dot</code>. Every fit with the 1,098 MiB pool or with preallocation off stopped at 1,183,000 calls, one outer iteration before the default fit, and the RTX 4060 Ti fit above stopped at the same count: the pool size changes the XLA autotuner's kernel choices, which shifts the float64 sampler path by one iteration; ln Z was 232730.870 ± 0.383 against 232730.981 ± 0.259. Grid schema 2.1; cost $0.16.</p>
+      <p>Evidence: <code>benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260902.json</code></p>
+
+      <h3>Blackwell concurrency on the RTX 5060, RTX 5070, and RTX 5060 Ti</h3>
+      <p>Three Blackwell cards each repeated one, two, and three concurrent production fits in one boot with the DR2 shard runner (<code>XLA_CLIENT_MEM_FRACTION = 0.85/N</code> for N &gt; 1, one runner process per fit). One fit of M5_172669 sampled 1,157,000 likelihood calls on every card: 222.2 s or 5,207 calls per second on the 8 GB RTX 5060 (published dense TF32 peak 19 TFLOP/s), 154.2 s or 7,503 on the 12 GB RTX 5070 (31 TFLOP/s), and 198.8 s or 5,820 on the 16 GB RTX 5060 Ti (24 TFLOP/s), which is 274, 242, and 242 calls per second per TFLOP against 221 on the RTX 3070. Two fits (M5_172669 with M4_108989) summed to 5,341, 7,476, and 5,967 calls per second and three fits (with M9_232005 and M11_214430) to 5,357, 7,415, and 5,998, or 0.99 to 1.03 of one fit; M5_172669 itself ran 2.0 to 2.1 times slower beside one other fit and 3.0 to 3.1 times slower beside two. The default stays one fit per GPU on Blackwell.</p>
+      <p>Memory never limits the choice. The JAX peak in use is 1,005 MiB per fit on all three cards; the one-fit whole-GPU peaks of 6,162, 9,394, and 12,316 MiB are the default 75 percent preallocation, and three fits peaked at 7,617, 11,313, and 14,542 MiB. Mean nvidia-smi utilization rose from 68 to 74 percent at one fit to 86 to 88 percent at three without a throughput gain. M5_172669 stopped at 1,157,000 calls with ln Z 232732.02 (&plusmn; 0.19 to 0.37) on every Blackwell card and level, against 1,189,500 calls and 232730.98 &plusmn; 0.26 on the RTX 3070. At the rented hosts' prices ($0.1028, $0.1192, and $0.0881 per hour) one fit's sampler time cost $0.0063, $0.0051, and $0.0049. Grid schema 2.1; cost $0.335.</p>
+      <p>Evidence: <code>benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json</code>, <code>benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json</code>, <code>benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json</code></p>
+
+      <h3>Speed against published peak throughput</h3>
+      <p>Both axes use a log scale. The vertical axis shows likelihood calls per second.</p>
+      <figure class="diagram">
+        <svg class="chart" viewBox="0 0 700 340" style="width:100%;height:auto" role="img" aria-labelledby="panel1-title panel1-desc">
+          <title id="panel1-title">Calls per second against CUDA FP32 peak</title>
+          <desc id="panel1-desc">GeForce RTX 3060: 13 TFLOP/s, 34.0 calls per second. V100 SXM2: 15.7 TFLOP/s, 42.9 calls per second. GeForce RTX 3090: 35.6 TFLOP/s, 80.3 calls per second. GeForce RTX 3080 Ti: 34.1 TFLOP/s, 82.5 calls per second. GeForce RTX 4070 Super: 35.5 TFLOP/s, 89.7 calls per second. A100 SXM4: 19.5 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 82.6 TFLOP/s, 187.0 calls per second. H100 SXM: 67 TFLOP/s, 431.3 calls per second.</desc>
+          <g class="grid"><line x1="58.0" y1="249.9" x2="676.0" y2="249.9" /><line x1="58.0" y1="181.9" x2="676.0" y2="181.9" /><line x1="58.0" y1="113.9" x2="676.0" y2="113.9" /></g>
+          <g class="axis"><path d="M58.0 24.0 V300.0 H676.0" /></g>
+          <g class="tick"><line x1="58.0" y1="300.0" x2="58.0" y2="305.0" /><line x1="244.0" y1="300.0" x2="244.0" y2="305.0" /><line x1="490.0" y1="300.0" x2="490.0" y2="305.0" /><line x1="676.0" y1="300.0" x2="676.0" y2="305.0" /><line x1="53.0" y1="300.0" x2="58.0" y2="300.0" /><line x1="53.0" y1="249.9" x2="58.0" y2="249.9" /><line x1="53.0" y1="181.9" x2="58.0" y2="181.9" /><line x1="53.0" y1="113.9" x2="58.0" y2="113.9" /><line x1="53.0" y1="24.0" x2="58.0" y2="24.0" /></g>
+          <g class="tick-text" text-anchor="middle"><text x="58.0" y="322.0">10</text><text x="244.0" y="322.0">20</text><text x="490.0" y="322.0">50</text><text x="676.0" y="322.0">100</text></g>
+          <g class="tick-text" text-anchor="end"><text x="49.0" y="304.0">30</text><text x="49.0" y="253.9">50</text><text x="49.0" y="185.9">100</text><text x="49.0" y="117.9">200</text><text x="49.0" y="28.0">500</text></g>
+          <g class="lead"><path d="M401.3 208.2 L404.3 213.9" /></g>
+          <circle class="mk-case" cx="128.4" cy="287.7" r="3" /><circle class="mk" cx="128.4" cy="287.7" r="3" /><circle class="mk-case" cx="179.1" cy="264.9" r="3" /><circle class="mk" cx="179.1" cy="264.9" r="3" /><circle class="mk-case" cx="398.8" cy="203.4" r="3" /><circle class="mk" cx="398.8" cy="203.4" r="3" /><circle class="mk-case" cx="387.2" cy="200.8" r="3" /><circle class="mk" cx="387.2" cy="200.8" r="3" /><circle class="mk-case" cx="398.0" cy="192.6" r="3" /><circle class="mk" cx="398.0" cy="192.6" r="3" /><circle class="mk-case" cx="237.2" cy="158.7" r="3" /><circle class="mk" cx="237.2" cy="158.7" r="3" /><circle class="mk-case" cx="624.7" cy="120.5" r="3" /><circle class="mk" cx="624.7" cy="120.5" r="3" /><circle class="mk-case" cx="568.5" cy="38.5" r="3" /><circle class="mk" cx="568.5" cy="38.5" r="3" />
+          <g class="label"><text x="136.4" y="291.7">RTX 3060</text><text x="187.1" y="268.9">V100</text><text x="406.8" y="217.4">RTX 3090</text><text x="379.2" y="204.8" text-anchor="end">RTX 3080 Ti</text><text x="406.0" y="196.6">RTX 4070 Super</text><text x="245.2" y="162.7">A100</text><text x="632.7" y="124.5">RTX 4090</text><text x="576.5" y="42.5">H100</text></g>
+        </svg>
+        <figcaption>CUDA FP32 peak (TFLOP/s, log scale)</figcaption>
+      </figure>
+      <figure class="diagram">
+        <svg class="chart" viewBox="0 0 700 340" style="width:100%;height:auto" role="img" aria-labelledby="panel2-title panel2-desc">
+          <title id="panel2-title">Calls per second against CUDA FP64 peak</title>
+          <desc id="panel2-desc">GeForce RTX 3060: 0.2 TFLOP/s, 34.0 calls per second. V100 SXM2: 7.8 TFLOP/s, 42.9 calls per second. GeForce RTX 3090: 0.56 TFLOP/s, 80.3 calls per second. GeForce RTX 3080 Ti: 0.53 TFLOP/s, 82.5 calls per second. GeForce RTX 4070 Super: 0.55 TFLOP/s, 89.7 calls per second. A100 SXM4: 9.7 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 1.29 TFLOP/s, 187.0 calls per second. H100 SXM: 34 TFLOP/s, 431.3 calls per second.</desc>
+          <g class="grid"><line x1="58.0" y1="249.9" x2="676.0" y2="249.9" /><line x1="58.0" y1="181.9" x2="676.0" y2="181.9" /><line x1="58.0" y1="113.9" x2="676.0" y2="113.9" /></g>
+          <g class="axis"><path d="M58.0 24.0 V300.0 H676.0" /></g>
+          <g class="tick"><line x1="58.0" y1="300.0" x2="58.0" y2="305.0" /><line x1="264.0" y1="300.0" x2="264.0" y2="305.0" /><line x1="470.0" y1="300.0" x2="470.0" y2="305.0" /><line x1="676.0" y1="300.0" x2="676.0" y2="305.0" /><line x1="53.0" y1="300.0" x2="58.0" y2="300.0" /><line x1="53.0" y1="249.9" x2="58.0" y2="249.9" /><line x1="53.0" y1="181.9" x2="58.0" y2="181.9" /><line x1="53.0" y1="113.9" x2="58.0" y2="113.9" /><line x1="53.0" y1="24.0" x2="58.0" y2="24.0" /></g>
+          <g class="tick-text" text-anchor="middle"><text x="58.0" y="322.0">0.1</text><text x="264.0" y="322.0">1</text><text x="470.0" y="322.0">10</text><text x="676.0" y="322.0">100</text></g>
+          <g class="tick-text" text-anchor="end"><text x="49.0" y="304.0">30</text><text x="49.0" y="253.9">50</text><text x="49.0" y="185.9">100</text><text x="49.0" y="117.9">200</text><text x="49.0" y="28.0">500</text></g>
+          <g class="lead"><path d="M213.2 187.9 L216.0 183.1" /></g>
+          <circle class="mk-case" cx="120.0" cy="287.7" r="3" /><circle class="mk" cx="120.0" cy="287.7" r="3" /><circle class="mk-case" cx="447.8" cy="264.9" r="3" /><circle class="mk" cx="447.8" cy="264.9" r="3" /><circle class="mk-case" cx="212.1" cy="203.4" r="3" /><circle class="mk" cx="212.1" cy="203.4" r="3" /><circle class="mk-case" cx="207.2" cy="200.8" r="3" /><circle class="mk" cx="207.2" cy="200.8" r="3" /><circle class="mk-case" cx="210.5" cy="192.6" r="3" /><circle class="mk" cx="210.5" cy="192.6" r="3" /><circle class="mk-case" cx="467.3" cy="158.7" r="3" /><circle class="mk" cx="467.3" cy="158.7" r="3" /><circle class="mk-case" cx="286.8" cy="120.5" r="3" /><circle class="mk" cx="286.8" cy="120.5" r="3" /><circle class="mk-case" cx="579.5" cy="38.5" r="3" /><circle class="mk" cx="579.5" cy="38.5" r="3" />
+          <g class="label"><text x="128.0" y="291.7">RTX 3060</text><text x="455.8" y="268.9">V100</text><text x="220.1" y="207.4">RTX 3090</text><text x="199.2" y="204.8" text-anchor="end">RTX 3080 Ti</text><text x="218.5" y="186.6">RTX 4070 Super</text><text x="475.3" y="162.7">A100</text><text x="294.8" y="124.5">RTX 4090</text><text x="587.5" y="42.5">H100</text></g>
+        </svg>
+        <figcaption>CUDA FP64 peak (TFLOP/s, log scale)</figcaption>
+      </figure>
+      <figure class="diagram">
+        <svg class="chart" viewBox="0 0 700 340" style="width:100%;height:auto" role="img" aria-labelledby="panel3-title panel3-desc">
+          <title id="panel3-title">Calls per second against FP64 tensor peak</title>
+          <desc id="panel3-desc">GeForce RTX 3060: no hardware path, 34.0 calls per second. V100 SXM2: no hardware path, 42.9 calls per second. GeForce RTX 3090: no hardware path, 80.3 calls per second. GeForce RTX 3080 Ti: no hardware path, 82.5 calls per second. GeForce RTX 4070 Super: no hardware path, 89.7 calls per second. A100 SXM4: 19.5 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: no hardware path, 187.0 calls per second. H100 SXM: 67 TFLOP/s, 431.3 calls per second.</desc>
+          <g class="grid"><line x1="58.0" y1="249.9" x2="152.0" y2="249.9" /><line x1="166.0" y1="249.9" x2="676.0" y2="249.9" /><line x1="58.0" y1="181.9" x2="152.0" y2="181.9" /><line x1="166.0" y1="181.9" x2="676.0" y2="181.9" /><line x1="58.0" y1="113.9" x2="152.0" y2="113.9" /><line x1="166.0" y1="113.9" x2="676.0" y2="113.9" /></g>
+          <g class="axis"><path d="M58.0 24.0 V300.0 M58.0 300.0 H152.0 M166.0 300.0 H676.0" /><path d="M154.0 305.0 L158.0 295.0 M160.0 305.0 L164.0 295.0" /></g>
+          <g class="tick"><line x1="103.0" y1="300.0" x2="103.0" y2="305.0" /><line x1="170.0" y1="300.0" x2="170.0" y2="305.0" /><line x1="322.3" y1="300.0" x2="322.3" y2="305.0" /><line x1="523.7" y1="300.0" x2="523.7" y2="305.0" /><line x1="676.0" y1="300.0" x2="676.0" y2="305.0" /><line x1="53.0" y1="300.0" x2="58.0" y2="300.0" /><line x1="53.0" y1="249.9" x2="58.0" y2="249.9" /><line x1="53.0" y1="181.9" x2="58.0" y2="181.9" /><line x1="53.0" y1="113.9" x2="58.0" y2="113.9" /><line x1="53.0" y1="24.0" x2="58.0" y2="24.0" /></g>
+          <g class="tick-text" text-anchor="middle"><text x="103.0" y="322.0">none</text><text x="170.0" y="322.0">10</text><text x="322.3" y="322.0">20</text><text x="523.7" y="322.0">50</text><text x="676.0" y="322.0">100</text></g>
+          <g class="tick-text" text-anchor="end"><text x="49.0" y="304.0">30</text><text x="49.0" y="253.9">50</text><text x="49.0" y="185.9">100</text><text x="49.0" y="117.9">200</text><text x="49.0" y="28.0">500</text></g>
+          <g class="lead"><path d="M89.5 204.9 L101.5 219.3" /><path d="M105.7 187.9 L108.5 183.1" /></g>
+          <circle class="mk-case" cx="103.0" cy="287.7" r="3" /><circle class="mk" cx="103.0" cy="287.7" r="3" /><circle class="mk-case" cx="103.0" cy="264.9" r="3" /><circle class="mk" cx="103.0" cy="264.9" r="3" /><circle class="mk-case" cx="120.0" cy="203.4" r="3" /><circle class="mk" cx="120.0" cy="203.4" r="3" /><circle class="mk-case" cx="86.0" cy="200.8" r="3" /><circle class="mk" cx="86.0" cy="200.8" r="3" /><circle class="mk-case" cx="103.0" cy="192.6" r="3" /><circle class="mk" cx="103.0" cy="192.6" r="3" /><circle class="mk-case" cx="316.8" cy="158.7" r="3" /><circle class="mk" cx="316.8" cy="158.7" r="3" /><circle class="mk-case" cx="103.0" cy="120.5" r="3" /><circle class="mk" cx="103.0" cy="120.5" r="3" /><circle class="mk-case" cx="588.0" cy="38.5" r="3" /><circle class="mk" cx="588.0" cy="38.5" r="3" />
+          <g class="label"><text x="111.0" y="291.7">RTX 3060</text><text x="111.0" y="268.9">V100</text><text x="128.0" y="207.4">RTX 3090</text><text x="104.0" y="222.8">RTX 3080 Ti</text><text x="111.0" y="186.6">RTX 4070 Super</text><text x="324.8" y="162.7">A100</text><text x="111.0" y="124.5">RTX 4090</text><text x="596.0" y="42.5">H100</text></g>
+        </svg>
+        <figcaption>FP64 tensor peak (TFLOP/s, log scale)</figcaption>
+      </figure>
+      <figure class="diagram">
+        <svg class="chart" viewBox="0 0 700 340" style="width:100%;height:auto" role="img" aria-labelledby="panel4-title panel4-desc">
+          <title id="panel4-title">Calls per second against TF32 tensor peak</title>
+          <desc id="panel4-desc">GeForce RTX 3060: 13 TFLOP/s, 34.0 calls per second. V100 SXM2: no hardware path, 42.9 calls per second. GeForce RTX 3090: 35.6 TFLOP/s, 80.3 calls per second. GeForce RTX 3080 Ti: 34.1 TFLOP/s, 82.5 calls per second. GeForce RTX 4070 Super: 35.5 TFLOP/s, 89.7 calls per second. A100 SXM4: 156 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 82.6 TFLOP/s, 187.0 calls per second. H100 SXM: 494 TFLOP/s, 431.3 calls per second.</desc>
+          <g class="grid"><line x1="58.0" y1="249.9" x2="152.0" y2="249.9" /><line x1="166.0" y1="249.9" x2="676.0" y2="249.9" /><line x1="58.0" y1="181.9" x2="152.0" y2="181.9" /><line x1="166.0" y1="181.9" x2="676.0" y2="181.9" /><line x1="58.0" y1="113.9" x2="152.0" y2="113.9" /><line x1="166.0" y1="113.9" x2="676.0" y2="113.9" /></g>
+          <g class="axis"><path d="M58.0 24.0 V300.0 M58.0 300.0 H152.0 M166.0 300.0 H676.0" /><path d="M154.0 305.0 L158.0 295.0 M160.0 305.0 L164.0 295.0" /></g>
+          <g class="tick"><line x1="103.0" y1="300.0" x2="103.0" y2="305.0" /><line x1="170.0" y1="300.0" x2="170.0" y2="305.0" /><line x1="290.7" y1="300.0" x2="290.7" y2="305.0" /><line x1="423.0" y1="300.0" x2="423.0" y2="305.0" /><line x1="543.7" y1="300.0" x2="543.7" y2="305.0" /><line x1="676.0" y1="300.0" x2="676.0" y2="305.0" /><line x1="53.0" y1="300.0" x2="58.0" y2="300.0" /><line x1="53.0" y1="249.9" x2="58.0" y2="249.9" /><line x1="53.0" y1="181.9" x2="58.0" y2="181.9" /><line x1="53.0" y1="113.9" x2="58.0" y2="113.9" /><line x1="53.0" y1="24.0" x2="58.0" y2="24.0" /></g>
+          <g class="tick-text" text-anchor="middle"><text x="103.0" y="322.0">none</text><text x="170.0" y="322.0">10</text><text x="290.7" y="322.0">30</text><text x="423.0" y="322.0">100</text><text x="543.7" y="322.0">300</text><text x="676.0" y="322.0">1,000</text></g>
+          <g class="tick-text" text-anchor="end"><text x="49.0" y="304.0">30</text><text x="49.0" y="253.9">50</text><text x="49.0" y="185.9">100</text><text x="49.0" y="117.9">200</text><text x="49.0" y="28.0">500</text></g>
+          <g class="lead"><path d="M312.0 208.2 L315.0 213.9" /></g>
+          <circle class="mk-case" cx="198.8" cy="287.7" r="3" /><circle class="mk" cx="198.8" cy="287.7" r="3" /><circle class="mk-case" cx="103.0" cy="264.9" r="3" /><circle class="mk" cx="103.0" cy="264.9" r="3" /><circle class="mk-case" cx="309.5" cy="203.4" r="3" /><circle class="mk" cx="309.5" cy="203.4" r="3" /><circle class="mk-case" cx="304.8" cy="200.8" r="3" /><circle class="mk" cx="304.8" cy="200.8" r="3" /><circle class="mk-case" cx="309.2" cy="192.6" r="3" /><circle class="mk" cx="309.2" cy="192.6" r="3" /><circle class="mk-case" cx="471.9" cy="158.7" r="3" /><circle class="mk" cx="471.9" cy="158.7" r="3" /><circle class="mk-case" cx="402.0" cy="120.5" r="3" /><circle class="mk" cx="402.0" cy="120.5" r="3" /><circle class="mk-case" cx="598.5" cy="38.5" r="3" /><circle class="mk" cx="598.5" cy="38.5" r="3" />
+          <g class="label"><text x="206.8" y="291.7">RTX 3060</text><text x="111.0" y="268.9">V100</text><text x="317.5" y="217.4">RTX 3090</text><text x="296.8" y="204.8" text-anchor="end">RTX 3080 Ti</text><text x="317.2" y="196.6">RTX 4070 Super</text><text x="479.9" y="162.7">A100</text><text x="410.0" y="124.5">RTX 4090</text><text x="606.5" y="42.5">H100</text></g>
+        </svg>
+        <figcaption>TF32 tensor peak (TFLOP/s, log scale)</figcaption>
+      </figure>
+      <figure class="diagram">
+        <svg class="chart" viewBox="0 0 700 340" style="width:100%;height:auto" role="img" aria-labelledby="panel5-title panel5-desc">
+          <title id="panel5-title">Calls per second against FP16 tensor peak</title>
+          <desc id="panel5-desc">GeForce RTX 3060: 26 TFLOP/s, 34.0 calls per second. V100 SXM2: 125 TFLOP/s, 42.9 calls per second. GeForce RTX 3090: 71 TFLOP/s, 80.3 calls per second. GeForce RTX 3080 Ti: 68.2 TFLOP/s, 82.5 calls per second. GeForce RTX 4070 Super: 71 TFLOP/s, 89.7 calls per second. A100 SXM4: 312 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 165.2 TFLOP/s, 187.0 calls per second. H100 SXM: 989 TFLOP/s, 431.3 calls per second.</desc>
+          <g class="grid"><line x1="58.0" y1="249.9" x2="676.0" y2="249.9" /><line x1="58.0" y1="181.9" x2="676.0" y2="181.9" /><line x1="58.0" y1="113.9" x2="676.0" y2="113.9" /></g>
+          <g class="axis"><path d="M58.0 24.0 V300.0 H676.0" /></g>
+          <g class="tick"><line x1="58.0" y1="300.0" x2="58.0" y2="305.0" /><line x1="205.4" y1="300.0" x2="205.4" y2="305.0" /><line x1="367.0" y1="300.0" x2="367.0" y2="305.0" /><line x1="514.4" y1="300.0" x2="514.4" y2="305.0" /><line x1="676.0" y1="300.0" x2="676.0" y2="305.0" /><line x1="53.0" y1="300.0" x2="58.0" y2="300.0" /><line x1="53.0" y1="249.9" x2="58.0" y2="249.9" /><line x1="53.0" y1="181.9" x2="58.0" y2="181.9" /><line x1="53.0" y1="113.9" x2="58.0" y2="113.9" /><line x1="53.0" y1="24.0" x2="58.0" y2="24.0" /></g>
+          <g class="tick-text" text-anchor="middle"><text x="58.0" y="322.0">10</text><text x="205.4" y="322.0">30</text><text x="367.0" y="322.0">100</text><text x="514.4" y="322.0">300</text><text x="676.0" y="322.0">1,000</text></g>
+          <g class="tick-text" text-anchor="end"><text x="49.0" y="304.0">30</text><text x="49.0" y="253.9">50</text><text x="49.0" y="185.9">100</text><text x="49.0" y="117.9">200</text><text x="49.0" y="28.0">500</text></g>
+          <g class="lead"><path d="M323.5 208.2 L326.5 213.9" /></g>
+          <circle class="mk-case" cx="186.2" cy="287.7" r="3" /><circle class="mk" cx="186.2" cy="287.7" r="3" /><circle class="mk-case" cx="396.9" cy="264.9" r="3" /><circle class="mk" cx="396.9" cy="264.9" r="3" /><circle class="mk-case" cx="321.0" cy="203.4" r="3" /><circle class="mk" cx="321.0" cy="203.4" r="3" /><circle class="mk-case" cx="315.6" cy="200.8" r="3" /><circle class="mk" cx="315.6" cy="200.8" r="3" /><circle class="mk-case" cx="321.0" cy="192.6" r="3" /><circle class="mk" cx="321.0" cy="192.6" r="3" /><circle class="mk-case" cx="519.7" cy="158.7" r="3" /><circle class="mk" cx="519.7" cy="158.7" r="3" /><circle class="mk-case" cx="434.4" cy="120.5" r="3" /><circle class="mk" cx="434.4" cy="120.5" r="3" /><circle class="mk-case" cx="674.5" cy="38.5" r="3" /><circle class="mk" cx="674.5" cy="38.5" r="3" />
+          <g class="label"><text x="194.2" y="291.7">RTX 3060</text><text x="404.9" y="268.9">V100</text><text x="329.0" y="217.4">RTX 3090</text><text x="307.6" y="204.8" text-anchor="end">RTX 3080 Ti</text><text x="329.0" y="196.6">RTX 4070 Super</text><text x="527.7" y="162.7">A100</text><text x="442.4" y="124.5">RTX 4090</text><text x="666.5" y="42.5" text-anchor="end">H100</text></g>
+        </svg>
+        <figcaption>FP16 tensor peak (TFLOP/s, log scale)</figcaption>
+      </figure>
+      <figure class="diagram">
+        <svg class="chart" viewBox="0 0 700 340" style="width:100%;height:auto" role="img" aria-labelledby="panel6-title panel6-desc">
+          <title id="panel6-title">Calls per second against BF16 tensor peak</title>
+          <desc id="panel6-desc">GeForce RTX 3060: 26 TFLOP/s, 34.0 calls per second. V100 SXM2: no hardware path, 42.9 calls per second. GeForce RTX 3090: 71 TFLOP/s, 80.3 calls per second. GeForce RTX 3080 Ti: 68.2 TFLOP/s, 82.5 calls per second. GeForce RTX 4070 Super: 71 TFLOP/s, 89.7 calls per second. A100 SXM4: 312 TFLOP/s, 126.6 calls per second. GeForce RTX 4090: 165.2 TFLOP/s, 187.0 calls per second. H100 SXM: 989 TFLOP/s, 431.3 calls per second.</desc>
+          <g class="grid"><line x1="58.0" y1="249.9" x2="152.0" y2="249.9" /><line x1="166.0" y1="249.9" x2="676.0" y2="249.9" /><line x1="58.0" y1="181.9" x2="152.0" y2="181.9" /><line x1="166.0" y1="181.9" x2="676.0" y2="181.9" /><line x1="58.0" y1="113.9" x2="152.0" y2="113.9" /><line x1="166.0" y1="113.9" x2="676.0" y2="113.9" /></g>
+          <g class="axis"><path d="M58.0 24.0 V300.0 M58.0 300.0 H152.0 M166.0 300.0 H676.0" /><path d="M154.0 305.0 L158.0 295.0 M160.0 305.0 L164.0 295.0" /></g>
+          <g class="tick"><line x1="103.0" y1="300.0" x2="103.0" y2="305.0" /><line x1="170.0" y1="300.0" x2="170.0" y2="305.0" /><line x1="290.7" y1="300.0" x2="290.7" y2="305.0" /><line x1="423.0" y1="300.0" x2="423.0" y2="305.0" /><line x1="543.7" y1="300.0" x2="543.7" y2="305.0" /><line x1="676.0" y1="300.0" x2="676.0" y2="305.0" /><line x1="53.0" y1="300.0" x2="58.0" y2="300.0" /><line x1="53.0" y1="249.9" x2="58.0" y2="249.9" /><line x1="53.0" y1="181.9" x2="58.0" y2="181.9" /><line x1="53.0" y1="113.9" x2="58.0" y2="113.9" /><line x1="53.0" y1="24.0" x2="58.0" y2="24.0" /></g>
+          <g class="tick-text" text-anchor="middle"><text x="103.0" y="322.0">none</text><text x="170.0" y="322.0">10</text><text x="290.7" y="322.0">30</text><text x="423.0" y="322.0">100</text><text x="543.7" y="322.0">300</text><text x="676.0" y="322.0">1,000</text></g>
+          <g class="tick-text" text-anchor="end"><text x="49.0" y="304.0">30</text><text x="49.0" y="253.9">50</text><text x="49.0" y="185.9">100</text><text x="49.0" y="117.9">200</text><text x="49.0" y="28.0">500</text></g>
+          <g class="lead"><path d="M387.9 208.2 L390.9 213.9" /></g>
+          <circle class="mk-case" cx="275.0" cy="287.7" r="3" /><circle class="mk" cx="275.0" cy="287.7" r="3" /><circle class="mk-case" cx="103.0" cy="264.9" r="3" /><circle class="mk" cx="103.0" cy="264.9" r="3" /><circle class="mk-case" cx="385.4" cy="203.4" r="3" /><circle class="mk" cx="385.4" cy="203.4" r="3" /><circle class="mk-case" cx="380.9" cy="200.8" r="3" /><circle class="mk" cx="380.9" cy="200.8" r="3" /><circle class="mk-case" cx="385.4" cy="192.6" r="3" /><circle class="mk" cx="385.4" cy="192.6" r="3" /><circle class="mk-case" cx="548.0" cy="158.7" r="3" /><circle class="mk" cx="548.0" cy="158.7" r="3" /><circle class="mk-case" cx="478.2" cy="120.5" r="3" /><circle class="mk" cx="478.2" cy="120.5" r="3" /><circle class="mk-case" cx="674.8" cy="38.5" r="3" /><circle class="mk" cx="674.8" cy="38.5" r="3" />
+          <g class="label"><text x="283.0" y="291.7">RTX 3060</text><text x="111.0" y="268.9">V100</text><text x="393.4" y="217.4">RTX 3090</text><text x="372.9" y="204.8" text-anchor="end">RTX 3080 Ti</text><text x="393.4" y="196.6">RTX 4070 Super</text><text x="556.0" y="162.7">A100</text><text x="486.2" y="124.5">RTX 4090</text><text x="666.8" y="42.5" text-anchor="end">H100</text></g>
+        </svg>
+        <figcaption>BF16 tensor peak (TFLOP/s, log scale)</figcaption>
+      </figure>
+
+    </section>
+
+    <section id="memory">
+      <h2>GPU memory</h2>
+      <p>The fixed-step benchmark calculation peak stayed between 1,460 MiB and 1,610 MiB across the retained sweep.</p>
+      <p>The RTX 3060, RTX 3080 Ti, and RTX 4070 Super each used a 1,519 MiB calculation peak. The recorded whole-process peaks were 9,260 MiB on the RTX 3080 Ti and 9,164 MiB on the RTX 4070 Super.</p>
+      <p>The 50% RTX 5070, RTX 5070 Ti, and RTX 5080 runs each used a 1,519 MiB calculation peak. Whole-process memory was 6,180 MiB, 8,278 MiB, and 8,304 MiB.</p>
+      <p>The seven new Blackwell runs each used about 1,519 MiB at the JAX calculation peak. Whole-process memory was 92,146 MiB on B200; 49,312 and 49,308 MiB on the RTX PRO 6000 editions; 24,668, 16,452, and 12,370 MiB on the RTX PRO 5000, 4500, and 4000; and 4,102 MiB on the RTX 5060.</p>
+      <p>The 8 GB RTX 3070 completed with both allocators. The 50% pool used 4,152 MiB process memory; on-demand allocation used 2,344 MiB.</p>
+      <p>A production fit on the 8 GB RTX 3070 holds 826 to 989 MiB at the JAX peak. The default preallocation shows 6,238 MiB per process in <code>nvidia-smi</code>; a 0.14 fraction shows 1,456 MiB and on-demand allocation 2,444 MiB, all at the same sampler speed.</p>
+      <p>The new recorded whole-process peaks were 32,884 MiB on CMP 170HX; 8,172 to 8,288 MiB on the RTX 4060 Ti, RTX 4070 Ti SUPER, and RTX 4080; and 6,212 MiB on the RTX 4070 Ti.</p>
+      <p>An RTX 5090 sampling snapshot showed 4,520 MiB process memory. This value is not a measured peak.</p>
+      <p>Evidence: <code>benchmarks/ceridwen/runs/ceridwen_vast_v100_memory_verification_complete_2026-08-26/</code>, <code>results/rtx-5090-integrated-fit/</code>, and the benchmark records above</p>
+    </section>
+
+    <section id="kernel-trace">
+      <h2>Modal A100 kernel trace</h2>
+      <p>One kernel used 93.8% of the GPU event time. It ran 564 times inside one 7.843 s step. The GPU stream stayed active for 94.9% of that step. Matrix multiplication kernels used 0.047% of the GPU event time.</p>
+      <p>This pattern is consistent with the weighted sum over the SSP grid.</p>
+      <p>Evidence: <code>benchmarks/ceridwen/runs/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/</code></p>
+    </section>
+  </main>
+  <footer class="site-footer">Updated 28 August 2026</footer>
+  <script>
+    (function () {
+      var table = document.getElementById("runs-table");
+      if (!table) { return; }
+      var body = table.tBodies[0];
+      var heads = Array.prototype.slice.call(table.tHead.rows[0].cells);
+
+      function numberIn(text, pick) {
+        var found = text.replace(/,/g, "").match(/-?\d+(?:\.\d+)?/g);
+        if (!found) { return null; }
+        return parseFloat(pick === "last" ? found[found.length - 1] : found[0]);
+      }
+
+      function sortBy(index) {
+        var head = heads[index];
+        var up = head.getAttribute("aria-sort") !== "ascending";
+        var numeric = head.getAttribute("data-type") === "number";
+        var pick = head.getAttribute("data-pick");
+        var rows = Array.prototype.slice.call(body.rows);
+        rows.sort(function (a, b) {
+          var one = a.cells[index].textContent.trim();
+          var two = b.cells[index].textContent.trim();
+          if (one === "" && two === "") { return 0; }
+          if (one === "") { return 1; }
+          if (two === "") { return -1; }
+          var order;
+          if (numeric) {
+            var first = numberIn(one, pick);
+            var second = numberIn(two, pick);
+            if (first === null && second === null) { order = one.localeCompare(two); }
+            else if (first === null) { return 1; }
+            else if (second === null) { return -1; }
+            else { order = first - second; }
+          } else {
+            order = one.localeCompare(two);
+          }
+          return up ? order : -order;
+        });
+        rows.forEach(function (row) { body.appendChild(row); });
+        heads.forEach(function (other) {
+          other.setAttribute("aria-sort", "none");
+          other.querySelector(".sort-mark").textContent = "";
+        });
+        head.setAttribute("aria-sort", up ? "ascending" : "descending");
+        head.querySelector(".sort-mark").textContent = up ? " \u25b2" : " \u25bc";
+      }
+
+      heads.forEach(function (head, index) {
+        head.addEventListener("click", function () { sortBy(index); });
+        head.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            sortBy(index);
+          }
+        });
+      });
+    }());
+  </script>
+</body>
+</html>

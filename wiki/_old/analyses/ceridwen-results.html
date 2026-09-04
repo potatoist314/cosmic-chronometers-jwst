@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="wiki-type" content="analysis">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-09-04">
+  <title>Astro Wiki · Ceridwen Results Board</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/wiki.css">
+  <style>
+    :root {
+      --badge-pushed-bg: #dafbe1;
+      --badge-pushed-fg: #1a7f37;
+      --badge-pushed-bd: #aceebb;
+      --badge-mixed-bg: #ddf4ff;
+      --badge-mixed-fg: #0969da;
+      --badge-mixed-bd: #54aeff66;
+      --badge-local-bg: #fff8c5;
+      --badge-local-fg: #9a6700;
+      --badge-local-bd: #d4a72c66;
+      --badge-none-bg: #f6f8fa;
+      --badge-none-fg: #656d76;
+      --badge-none-bd: #d0d7de;
+      --card-bg: var(--paper);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --badge-pushed-bg: #0d281e;
+        --badge-pushed-fg: #3fb950;
+        --badge-pushed-bd: #238636;
+        --badge-mixed-bg: #0c2d6b;
+        --badge-mixed-fg: #58a6ff;
+        --badge-mixed-bd: #1f6feb;
+        --badge-local-bg: #342800;
+        --badge-local-fg: #d29922;
+        --badge-local-bd: #9e6a03;
+        --badge-none-bg: #161b22;
+        --badge-none-fg: #8b949e;
+        --badge-none-bd: #30363d;
+        --card-bg: #0d1117;
+      }
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    body, p, li, code, a, td, th, figcaption {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .site-header {
+      width: 100%;
+      max-width: 100%;
+      border-bottom: 1px solid var(--line);
+      box-sizing: border-box;
+    }
+    .site-header-inner,
+    .page-shell {
+      width: min(var(--measure), calc(100% - 2rem));
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-inline: auto;
+    }
+    .board-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0 2rem;
+      padding: 0.75rem 1rem;
+      background: var(--code);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-size: 0.88rem;
+    }
+    .board-nav-title {
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+    .board-nav-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .board-nav-list li {
+      margin: 0;
+      padding: 0;
+    }
+    .board-nav a {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .board-nav a:hover {
+      background: var(--line);
+      text-decoration: underline;
+    }
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: var(--code);
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1.5rem 0;
+    }
+    .callout-alert {
+      border-left-color: #d1242f;
+    }
+    .callout-info {
+      border-left-color: #0969da;
+    }
+    .callout h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+    }
+    .callout p {
+      margin: 0 0 0.5rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .badge-pushed { background: var(--badge-pushed-bg); color: var(--badge-pushed-fg); border: 1px solid var(--badge-pushed-bd); }
+    .badge-mixed { background: var(--badge-mixed-bg); color: var(--badge-mixed-fg); border: 1px solid var(--badge-mixed-bd); }
+    .badge-local { background: var(--badge-local-bg); color: var(--badge-local-fg); border: 1px solid var(--badge-local-bd); }
+    .badge-none { background: var(--badge-none-bg); color: var(--badge-none-fg); border: 1px solid var(--badge-none-bd); }
+    .plot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .plot-card {
+      margin: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .plot-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .plot-card figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .plot-card figcaption strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+    .plot-card figcaption p {
+      margin: 0;
+      color: var(--ink);
+    }
+    .plot-links {
+      margin-top: 0.75rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      max-width: 100%;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.25rem 0 2rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+    th, td {
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      background: var(--code);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .action-box {
+      background: var(--code);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 1.25rem 0;
+    }
+    .action-box ul {
+      margin: 0.5rem 0 0;
+      padding-left: 1.25rem;
+    }
+    .action-box li {
+      margin-bottom: 0.35rem;
+    }
+    .glossary-list dt {
+      font-weight: 600;
+      margin-top: 0.65rem;
+    }
+    .glossary-list dt:first-child {
+      margin-top: 0;
+    }
+    .glossary-list dd {
+      margin-left: 0;
+      margin-bottom: 0.45rem;
+      color: var(--ink);
+    }
+    @media (max-width: 600px) {
+      .plot-grid {
+        grid-template-columns: 1fr;
+      }
+      .site-header-inner, .page-shell {
+        width: calc(100% - 1.25rem);
+      }
+      .board-nav {
+        font-size: 0.82rem;
+        gap: 0.35rem;
+      }
+    }
+  </style>
+  <!-- site-name-block: name, icons and manifest, so a bookmark saves under "Astro Wiki" -->
+  <meta name="application-name" content="Astro Wiki">
+  <meta name="apple-mobile-web-app-title" content="Astro Wiki">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/icons/icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="../index.html">
+        <span class="site-mark">AR</span>
+        <span>Astro Research Wiki</span>
+      </a>
+      <span style="font-size: 0.85rem; color: var(--muted);">Ceridwen Results Board</span>
+    </div>
+  </header>
+
+  <main class="page-shell" id="main-content">
+    <header>
+      <h1>Ceridwen common results board</h1>
+      <p>Authoritative map of completed Ceridwen stellar population inference results, figures, data tables, benchmarks, and models. Every mapped output resolves directly to disk, with live Git synchronization status and pending researcher decisions.</p>
+    </header>
+
+    <div class="callout callout-alert">
+      <h3>Corrected Calibration Science (Authoritative Audit)</h3>
+      <p><strong>Flux ratio sign.</strong> DR2 spectra are <em>brighter</em> than production COSMOS2015 3-arcsecond aperture photometry. In-band spectrum-to-photometry ratios range from 1.26 to 1.48 outside IA679. Production fits sample scale factors of 1.24 and 1.49.</p>
+      <p><strong>Tilt origin.</strong> Corrected photometry drives scale factors to 0.99 and 0.92. This correction removes both scale offset and M4's polynomial tilt. Residual M4 tilt shifts from &minus;20% to +0.4%. M5 retains a &minus;20% tilt from dust-polynomial degeneracy caused by a 0.3-mag optical-to-NIR model mismatch.</p>
+    </div>
+
+    <nav class="board-nav" aria-label="Results Board Navigation">
+      <span class="board-nav-title"><strong>Sections:</strong></span>
+      <ul class="board-nav-list">
+        <li><a href="#summary-status">Status at a Glance</a></li>
+        <li><a href="#glossary">Scientific Glossary</a></li>
+        <li><a href="#dr2-sample">187-Galaxy DR2 Results</a></li>
+        <li><a href="#borghi-age-z">Borghi Age vs Redshift</a></li>
+        <li><a href="#absorption-mask">Absorption Mask</a></li>
+        <li><a href="#calibration-tilt">Calibration &amp; Tilt Origin</a></li>
+        <li><a href="#formation-timescales">Formation Timescales</a></li>
+        <li><a href="#fit-quality">Fit Quality</a></li>
+        <li><a href="#performance">Performance &amp; Production</a></li>
+        <li><a href="#checkpoint-anim">Checkpoint Animation</a></li>
+        <li><a href="#related-runs">Related Runs</a></li>
+        <li><a href="#manifest-index">Complete Artifact Catalog (79)</a></li>
+      </ul>
+    </nav>
+
+    <!-- SECTION 1: STATUS AT A GLANCE -->
+    <section id="summary-status">
+      <h2>Status at a glance</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Core analysis domains, validated findings, push status, and pending scientific decisions (Checked 2026-09-04).</caption>
+          <thead>
+            <tr>
+              <th>Analysis Domain</th>
+              <th>Key Scientific Finding</th>
+              <th>Primary Deliverables</th>
+              <th>Git synchronization status (upstream tracking)</th>
+              <th>Decisions for Liu Hao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>187-Galaxy DR2 Sample</strong></td>
+              <td>Median mass-weighted age 3.02 Gyr. Median assembly interval &Delta;t = 2.46 Gyr. Zero fit failures among 187 galaxies.</td>
+              <td>
+                <a href="dr2-quiescent-sample.html">Analysis Page</a> · 
+                <a href="../../results/dr2-quiescent-summary.csv">Summary CSV</a> · 
+                <a href="../../results/rtx-5060-dr2-quiescent-full-spectrum">Results Dir</a>
+              </td>
+              <td><span class="badge badge-pushed">Pushed</span> <code>4c3ad00</code></td>
+              <td>None (production complete).</td>
+            </tr>
+            <tr>
+              <td><strong>Borghi+2022 Age vs z</strong></td>
+              <td>Ceridwen medians stay flat near 3.0 Gyr, averaging +0.26 Gyr above re-binned N=140 Borghi catalogue. Velocity dispersion split shows a weak gradient.</td>
+              <td>
+                <a href="../../results/figures/borghi2022-age-vs-z.png">Figure PNG</a> · 
+                <a href="../../results/figures/borghi2022-age-vs-z.pdf">Vector PDF</a> · 
+                <a href="../../data/processed/borghi2022_legac_dr2/borghi2022_legac_dr2_spectrum_matches copy.tsv">Source Table</a>
+              </td>
+              <td><span class="badge badge-pushed">Pushed</span> <code>98d9c4b</code></td>
+              <td>None (catalogue matches finalized).</td>
+            </tr>
+            <tr>
+              <td><strong>Absorption-Line Mask</strong></td>
+              <td>Masked and feature modes keep tilt bias and widen posteriors 1.0&ndash;1.6&times;. Shifts real targets up to 22&sigma;. Recommended default is OFF.</td>
+              <td>
+                <a href="absorption-line-mask.html">Analysis Page</a> · 
+                <a href="../../results/absorption-mask/summary.csv">Summary CSV</a> · 
+                <a href="../../results/absorption-mask">Grid Results</a>
+              </td>
+              <td><span class="badge badge-pushed">Pushed</span> <code>7dae142</code></td>
+              <td>Choose whether to keep default OFF, including line list and feature window.</td>
+            </tr>
+            <tr>
+              <td><strong>Calibration &amp; Tilt Origin</strong></td>
+              <td>Spectra are brighter than 3" photometry by 1.26&ndash;1.48. Corrected photometry eliminates M4 tilt (+0.4%). M5 retains &minus;20% dust-model tilt.</td>
+              <td>
+                <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/ceridwen-calibration-polynomial.html">Worktree Page</a> · 
+                <a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/arms.csv">Arms CSV</a> · 
+                <a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02">Tilt Results</a>
+              </td>
+              <td><span class="badge badge-pushed">Pushed</span> <code>85c1e4a</code></td>
+              <td>1. Choose whether to accept corrected photometry and order-3 poly for 187 galaxies.<br>2. Choose whether to investigate young-galaxy 0.3-mag optical-to-NIR mismatch first.<br>3. Choose whether to merge branch <code>calibration-polynomial</code>.</td>
+            </tr>
+            <tr>
+              <td><strong>Formation Timescales</strong></td>
+              <td>Median &Delta;t is 2.46 Gyr. Flat across formation epoch. Spearman correlation with mass and [&alpha;/Fe] is 0.00 in 7-bin SFH.</td>
+              <td>
+                <a href="dr2-quiescent-sample/dt-vs-formation-epoch.png">Epoch PNG</a> · 
+                <a href="dr2-quiescent-sample/dt-vs-mass.png">Mass PNG</a> · 
+                <a href="dr2-quiescent-sample/dt-vs-alpha.png">Alpha PNG</a>
+              </td>
+              <td><span class="badge badge-pushed">Pushed</span> <code>4c3ad00</code></td>
+              <td>None.</td>
+            </tr>
+            <tr>
+              <td><strong>Fit Quality Diagnostics</strong></td>
+              <td>All 187 fits succeeded. Worst joint reduced &chi;&sup2;/&nu; values are 2.69 (139662), 2.55 (253688), and 2.34 (101089).</td>
+              <td>
+                <a href="dr2-quiescent-sample/fit-quality.png">Quality PNG</a> · 
+                <a href="dr2-quiescent-sample/fit-quality.pdf">Quality PDF</a>
+              </td>
+              <td><span class="badge badge-pushed">Pushed</span> <code>4c3ad00</code></td>
+              <td>None.</td>
+            </tr>
+            <tr>
+              <td><strong>GPU &amp; Production Benchmarks</strong></td>
+              <td>One fit per GPU default. Concurrent runs offer no throughput gain on tested 8-GB and Blackwell GPUs. Fixed-grid SFH default.</td>
+              <td>
+                <a href="ceridwen-gpu-benchmarks.html">Benchmark Page</a> · 
+                <a href="../../benchmarks/ceridwen/runs">Runs Dir</a>
+              </td>
+              <td><span class="badge badge-pushed">Pushed</span> <code>d5cfe51</code></td>
+              <td>None.</td>
+            </tr>
+            <tr>
+              <td><strong>Interactive Checkpoint Evolution</strong></td>
+              <td>Interactive view of the accepted prior predictive, last retained checkpoint, and converged rescue posterior (nested sampling solution after sampler convergence).</td>
+              <td>
+                <a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">Open interactive viewer</a> · 
+                <a href="../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots">Screenshots Dir</a>
+              </td>
+              <td><span class="badge badge-pushed">Verified local host</span></td>
+              <td>Delivered hosted artifact. Verified responsive viewports.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION: SCIENTIFIC GLOSSARY -->
+    <section id="glossary">
+      <h2>Scientific terms and definitions</h2>
+      <div class="action-box">
+        <dl class="glossary-list">
+          <dt><strong>Mass-weighted age:</strong></dt>
+          <dd>The mean stellar age weighted by the stellar mass formed in each lookback time interval.</dd>
+          <dt><strong>Posterior:</strong></dt>
+          <dd>The probability distribution of stellar population parameters given the observed spectra, photometry, and priors.</dd>
+          <dt><strong>Credible interval:</strong></dt>
+          <dd>The parameter range containing a stated posterior probability fraction between designated percentiles.</dd>
+          <dt><strong>NMAD (Normalized Median Absolute Deviation):</strong></dt>
+          <dd>A scatter estimator defined as 1.4826 times the median absolute deviation from the sample median.</dd>
+          <dt><strong>Delta-t (&Delta;t):</strong></dt>
+          <dd>The stellar mass assembly interval t20 &minus; t80 during which the middle 60% of galaxy stellar mass formed.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- SECTION 2: 187-GALAXY DR2 RESULTS -->
+    <section id="dr2-sample">
+      <h2>187-galaxy DR2 quiescent sample (final set)</h2>
+      <p>Analysis page: <a href="dr2-quiescent-sample.html">analyses/dr2-quiescent-sample.html</a>. Master catalogue table: <a href="../../results/dr2-quiescent-summary.csv">results/dr2-quiescent-summary.csv</a> (187 galaxies, 49 columns including t20, t50, t80, &Delta;t). Production run directory: <a href="../../results/rtx-5060-dr2-quiescent-full-spectrum">results/rtx-5060-dr2-quiescent-full-spectrum/</a> (187 individual target folders). Exploratory chronometer notebook: <a href="../../results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb">ceridwen_cosmic_chronometer.ipynb</a> and summary data: <a href="../../results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer_summary.h5">ceridwen_cosmic_chronometer_summary.h5</a>. Builders: <a href="../../scripts/build_dr2_quiescent_summary.py">build_dr2_quiescent_summary.py</a>, <a href="../../scripts/plot_dr2_headline_candidates.py">plot_dr2_headline_candidates.py</a>.</p>
+      
+      <div class="plot-grid">
+        
+        <figure class="plot-card" id="dr2-headline-png">
+          <a href="dr2-quiescent-sample/headline-age-redshift.png" target="_blank" rel="noopener">
+            <img src="dr2-quiescent-sample/headline-age-redshift.png" alt="DR2 age-redshift headline PNG. Ceridwen infers median mass-weighted age near 3.0 Gyr across 187 galaxies. Points carry 16th to 84th percentile bars. Squares show NMAD binned medians. The residual strip compares the 68-galaxy overlap sample against Borghi+2022 catalogue ages. Caveat: the coarse 7-bin star formation history basis limits temporal resolution." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>DR2 age-redshift headline PNG.</strong>
+            Ceridwen infers median mass-weighted age near 3.0 Gyr across 187 galaxies. Points carry 16th to 84th percentile bars. Squares show NMAD binned medians. The residual strip compares the 68-galaxy overlap sample against Borghi+2022 catalogue ages. Caveat: the coarse 7-bin star formation history basis limits temporal resolution.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="dr2-quiescent-sample/headline-age-redshift.png" target="_blank" rel="noopener">PNG</a> · <a href="dr2-quiescent-sample/headline-age-redshift.pdf" download>PDF Vector</a> · <a href="../../scripts/plot_dr2_headline_candidates.py">Script</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="dr2-distributions-png">
+          <a href="dr2-quiescent-sample/distributions-1d.png" target="_blank" rel="noopener">
+            <img src="dr2-quiescent-sample/distributions-1d.png" alt="DR2 parameter distributions PNG. Parameter distributions show median redshift 0.73 and median mass-weighted age 3.02 Gyr across 187 galaxies. Each histogram marks the sample median with an orange line and labels the median and the galaxy count. The panels compare eight physical quantities across the same 187 galaxies. The spread of each histogram shows the sample range. Caveat: fits assume a fixed-grid star formation history." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>DR2 parameter distributions PNG.</strong>
+            Parameter distributions show median redshift 0.73 and median mass-weighted age 3.02 Gyr across 187 galaxies. Each histogram marks the sample median with an orange line and labels the median and the galaxy count. The panels compare eight physical quantities across the same 187 galaxies. The spread of each histogram shows the sample range. Caveat: fits assume a fixed-grid star formation history.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="dr2-quiescent-sample/distributions-1d.png" target="_blank" rel="noopener">PNG</a> · <a href="dr2-quiescent-sample/distributions-1d.pdf" download>PDF Vector</a></span>
+          </div>
+        </figure>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--muted);"><strong>Scientific caveat.</strong> The coarse 7-bin SFH basis limits fine temporal resolution. Mass-weighted ages reflect non-parametric composite populations. These values do not directly match Borghi SSP-equivalent Lick ages.</p>
+    </section>
+
+    <!-- SECTION 3: BORGHI AGE VERSUS REDSHIFT -->
+    <section id="borghi-age-z">
+      <h2>Borghi+2022 age versus redshift comparison</h2>
+      <p>Standalone figure: <a href="../../results/figures/borghi2022-age-vs-z.png">results/figures/borghi2022-age-vs-z.png</a> (and <a href="../../results/figures/borghi2022-age-vs-z.pdf">PDF</a>). Source data table: <a href="../../data/processed/borghi2022_legac_dr2/borghi2022_legac_dr2_spectrum_matches copy.tsv">borghi2022_legac_dr2_spectrum_matches copy.tsv</a>. Generation script: <a href="../../scripts/plot_borghi2022_age_vs_z.py">scripts/plot_borghi2022_age_vs_z.py</a>.</p>
+      
+      <div class="plot-grid">
+        
+        <figure class="plot-card" id="borghi-age-redshift-png">
+          <a href="../../results/figures/borghi2022-age-vs-z.png" target="_blank" rel="noopener">
+            <img src="../../results/figures/borghi2022-age-vs-z.png" alt="Borghi-style median age versus redshift PNG. Median mass-weighted age stays near 3.0 Gyr across redshift for 187 galaxies. Ceridwen medians average +0.26 Gyr above the re-binned N=140 Borghi+2022 reference sample. Points carry 16th to 84th percentile bars on the left and NMAD errors on the right. The grey band marks ages older than the Universe, not an uncertainty range. The velocity dispersion comparison shows a weak gradient. Caveat: non-parametric star formation history ages differ systematically from single stellar population Lick ages." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Borghi-style median age versus redshift PNG.</strong>
+            Median mass-weighted age stays near 3.0 Gyr across redshift for 187 galaxies. Ceridwen medians average +0.26 Gyr above the re-binned N=140 Borghi+2022 reference sample. Points carry 16th to 84th percentile bars on the left and NMAD errors on the right. The grey band marks ages older than the Universe, not an uncertainty range. The velocity dispersion comparison shows a weak gradient. Caveat: non-parametric star formation history ages differ systematically from single stellar population Lick ages.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="../../results/figures/borghi2022-age-vs-z.png" target="_blank" rel="noopener">PNG</a> · <a href="../../results/figures/borghi2022-age-vs-z.pdf" download>PDF Vector</a> · <a href="../../scripts/plot_borghi2022_age_vs_z.py">Script</a></span>
+          </div>
+        </figure>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--muted);"><strong>Finding.</strong> Ceridwen mass-weighted ages stay flat near 3.0 Gyr from z=0.6 to z=0.9. They average +0.26 Gyr above re-binned Borghi values. The velocity dispersion split (&sigma; &lt; 215 km/s versus &sigma; &ge; 215 km/s) shows a smaller difference than the gradient in Borghi+2022.</p>
+    </section>
+
+    <!-- SECTION 4: ABSORPTION-LINE MASK -->
+    <section id="absorption-mask">
+      <h2>Absorption-line mask experiment</h2>
+      <p>Draft analysis page: <a href="absorption-line-mask.html">analyses/absorption-line-mask.html</a>. Results summary: <a href="../../results/absorption-mask/summary.csv">results/absorption-mask/summary.csv</a> and <a href="../../results/absorption-mask/summary.json">summary.json</a>. Target Fisher analysis: <a href="../../results/absorption-mask/fisher_M5_172669.json">fisher_M5_172669.json</a>. 45-fit execution directory: <a href="../../results/absorption-mask">results/absorption-mask/</a>. Analysis scripts: <a href="../../scripts/absorption_mask_analysis.py">absorption_mask_analysis.py</a>, <a href="../../scripts/absorption_mask_report.py">absorption_mask_report.py</a>.</p>
+      
+      <div class="plot-grid">
+        
+        <figure class="plot-card" id="absorption-feature-windows-png">
+          <a href="absorption-mask/feature_windows_M5_172669.png" target="_blank" rel="noopener">
+            <img src="absorption-mask/feature_windows_M5_172669.png" alt="Absorption feature windows PNG. The spectrum plot shows observed-frame flux for target galaxy M5_172669. The orange line traces kept feature pixels inside plus-or-minus 1000 km/s line windows against the grey full fitted spectrum. The mask keeps 1389 of 3602 fitted pixels and excludes 2213 (61.4 percent). No error bars appear because the plot shows flux values only. Caveat: feature-only fits discard continuum shape." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Absorption feature windows PNG.</strong>
+            The spectrum plot shows observed-frame flux for target galaxy M5_172669. The orange line traces kept feature pixels inside plus-or-minus 1000 km/s line windows against the grey full fitted spectrum. The mask keeps 1389 of 3602 fitted pixels and excludes 2213 (61.4 percent). No error bars appear because the plot shows flux values only. Caveat: feature-only fits discard continuum shape.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="absorption-mask/feature_windows_M5_172669.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="absorption-real-posteriors-png">
+          <a href="absorption-mask/real_targets_posteriors.png" target="_blank" rel="noopener">
+            <img src="absorption-mask/real_targets_posteriors.png" alt="Absorption-mask real-target posteriors PNG. Posterior medians compare six stellar parameters across three real DR2 galaxy targets. Masked pixel modes shift parameter medians by up to 22 full-spectrum sigma relative to baseline posteriors. Bars show the 16th to 84th percentile range for each sample object. Caveat: feature-only modes discard continuum flux shape and increase parameter bias." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Absorption-mask real-target posteriors PNG.</strong>
+            Posterior medians compare six stellar parameters across three real DR2 galaxy targets. Masked pixel modes shift parameter medians by up to 22 full-spectrum sigma relative to baseline posteriors. Bars show the 16th to 84th percentile range for each sample object. Caveat: feature-only modes discard continuum flux shape and increase parameter bias.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="absorption-mask/real_targets_posteriors.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="absorption-mock-bias-png">
+          <a href="absorption-mask/mock_bias_vs_tilt.png" target="_blank" rel="noopener">
+            <img src="absorption-mask/mock_bias_vs_tilt.png" alt="Absorption-mask mock bias PNG. Mock tests evaluate recovered stellar population parameter bias. The sample holds 12 synthetic configurations in three pixel modes. The panels compare feature-only and down-weighted continuum modes against true input age and mass values. Error bars indicate the 16th to 84th percentile posterior uncertainty range. Masked modes fail to remove continuum tilt bias. Caveat: synthetic mocks assume idealized Gaussian noise without sky-subtraction artifacts." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Absorption-mask mock bias PNG.</strong>
+            Mock tests evaluate recovered stellar population parameter bias. The sample holds 12 synthetic configurations in three pixel modes. The panels compare feature-only and down-weighted continuum modes against true input age and mass values. Error bars indicate the 16th to 84th percentile posterior uncertainty range. Masked modes fail to remove continuum tilt bias. Caveat: synthetic mocks assume idealized Gaussian noise without sky-subtraction artifacts.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="absorption-mask/mock_bias_vs_tilt.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="absorption-mock-width-png">
+          <a href="absorption-mask/mock_width_ratio.png" target="_blank" rel="noopener">
+            <img src="absorption-mask/mock_width_ratio.png" alt="Absorption-mask posterior-width PNG. The figure compares posterior uncertainty width values. The sample holds 12 synthetic configurations in three pixel modes. Masked and feature-only modes give 1.0 to 1.6 times the full-spectrum width for mass, age, metallicity, alpha enhancement, and dust. Ratios compare each mode against the baseline fit. Bars carry the median ratio as a label. Caveat: increased posterior scatter degrades chronological parameter precision." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Absorption-mask posterior-width PNG.</strong>
+            The figure compares posterior uncertainty width values. The sample holds 12 synthetic configurations in three pixel modes. Masked and feature-only modes give 1.0 to 1.6 times the full-spectrum width for mass, age, metallicity, alpha enhancement, and dust. Ratios compare each mode against the baseline fit. Bars carry the median ratio as a label. Caveat: increased posterior scatter degrades chronological parameter precision.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="absorption-mask/mock_width_ratio.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+      </div>
+      
+      <div class="action-box">
+        <strong>Recommendation and open decisions:</strong>
+        <ul>
+          <li><strong>Recommendation.</strong> Keep mask <strong>OFF</strong> by default for production fits. Feature-only and down-weighted modes retain continuum tilt bias. They widen posteriors by 1.0&ndash;1.6&times; and perturb real galaxy posteriors by up to 22 full-spectrum &sigma;.</li>
+          <li><strong>Decisions for Liu Hao.</strong> Choose whether to keep mask off as production default. Choose whether to retain or revise the specific absorption line list and window widths.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 5: CALIBRATION POLYNOMIAL AND TILT ORIGIN -->
+    <section id="calibration-tilt">
+      <h2>Calibration polynomial and tilt origin</h2>
+      <p>Worktree analysis page (pushed on branch <code>origin/calibration-polynomial</code> at commit <code>85c1e4a</code>): <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/ceridwen-calibration-polynomial.html">ceridwen-calibration-polynomial.html</a>. Analysis notebook: <a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/analysis.ipynb">tilt-origin-2026-09-02/analysis.ipynb</a>. Quantitative summaries: <a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/arms.csv">arms.csv</a> and <a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/ibands.csv">ibands.csv</a>. Completed tilt run directory: <a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02">results/tilt-origin-2026-09-02/</a>. Superseded local snapshot: <a href="../../results/calibration-polynomial-2026-09-02">results/calibration-polynomial-2026-09-02/</a>. Experiment scripts: <a href="../../tmp/worktrees/astro-calibration-polynomial/scripts/calibration_polynomial_experiment.py">calibration_polynomial_experiment.py</a>, <a href="../../tmp/worktrees/astro-calibration-polynomial/scripts/download_legac_dr2_aperture_photometry.py">download_legac_dr2_aperture_photometry.py</a>, <a href="../../tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_runner.py">tilt_origin_runner.py</a>, <a href="../../tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_vast.py">tilt_origin_vast.py</a>.</p>
+
+      <div class="plot-grid">
+        
+        <figure class="plot-card" id="calibration-explainer-png">
+          <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-explainer.png" target="_blank" rel="noopener">
+            <img src="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-explainer.png" alt="Calibration-polynomial explainer PNG. Diagram shows how a multiplicative polynomial maps spectrum flux calibration onto broadband photometry. The top panel compares mock, true, and calibrated spectra against true and mock photometry points with error bars. The mock mimics one LEGA-C galaxy observation with a 4 percent tilt plus 2 percent curvature at z = 0.604. The bottom panel compares the data-to-model ratio against the injected distortion, the recovered order-3 polynomial, and a scalar-only model. Caveat: the polynomial removes only the smooth mismatch part." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Calibration-polynomial explainer PNG.</strong>
+            Diagram shows how a multiplicative polynomial maps spectrum flux calibration onto broadband photometry. The top panel compares mock, true, and calibrated spectra against true and mock photometry points with error bars. The mock mimics one LEGA-C galaxy observation with a 4 percent tilt plus 2 percent curvature at z = 0.604. The bottom panel compares the data-to-model ratio against the injected distortion, the recovered order-3 polynomial, and a scalar-only model. Caveat: the polynomial removes only the smooth mismatch part.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-explainer.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="calibration-mock-bias-png">
+          <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-mock-bias.png" target="_blank" rel="noopener">
+            <img src="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-mock-bias.png" alt="Calibration-polynomial mock bias PNG. Mock tests compare pull and posterior half-width across 12 fit variants with order-1, order-3, and order-5 polynomials. The sample covers tilted and untilted cases for mass, metallicity, alpha enhancement, dust, and mass-weighted age. The left panel compares median-minus-truth pull against zero. The right panel compares half-width against the untilted baseline. Polynomial arms remove the injected tilt bias. Each point is one arm value, so no error bars appear. Caveat: mocks test only smooth injected distortions." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Calibration-polynomial mock bias PNG.</strong>
+            Mock tests compare pull and posterior half-width across 12 fit variants with order-1, order-3, and order-5 polynomials. The sample covers tilted and untilted cases for mass, metallicity, alpha enhancement, dust, and mass-weighted age. The left panel compares median-minus-truth pull against zero. The right panel compares half-width against the untilted baseline. Polynomial arms remove the injected tilt bias. Each point is one arm value, so no error bars appear. Caveat: mocks test only smooth injected distortions.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-mock-bias.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="calibration-vectors-png">
+          <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-vectors.png" target="_blank" rel="noopener">
+            <img src="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-vectors.png" alt="Calibration-polynomial vectors PNG. The plot displays recovered calibration polynomial flux curves versus wavelength for mock and real galaxy arms. Each mock panel compares the recovered profiled band against the dashed injected distortion. Shaded envelopes show 68% credible interval uncertainty ranges for each sample arm. Real panels show the recovered band only. Caveat: noisy blue pixels widen the band where the fit has less signal." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Calibration-polynomial vectors PNG.</strong>
+            The plot displays recovered calibration polynomial flux curves versus wavelength for mock and real galaxy arms. Each mock panel compares the recovered profiled band against the dashed injected distortion. Shaded envelopes show 68% credible interval uncertainty ranges for each sample arm. Real panels show the recovered band only. Caveat: noisy blue pixels widen the band where the fit has less signal.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-vectors.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="calibration-real-posteriors-png">
+          <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-real-posteriors.png" target="_blank" rel="noopener">
+            <img src="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-real-posteriors.png" alt="Calibration-polynomial real-target posteriors PNG. Posterior medians compare seven stellar and calibration parameters for sample galaxies M4_108989 and M5_172669. Points compare baseline and polynomial arms, with bars showing the 16th to 84th percentile range. M4 mass-weighted age moves from 4.65 Gyr at baseline to 3.02 Gyr with the order-3 polynomial. The spread across arms shows sensitivity to the calibration model choice. Caveat: free polynomials broaden dust posteriors because dust and tilt share one degree of freedom." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Calibration-polynomial real-target posteriors PNG.</strong>
+            Posterior medians compare seven stellar and calibration parameters for sample galaxies M4_108989 and M5_172669. Points compare baseline and polynomial arms, with bars showing the 16th to 84th percentile range. M4 mass-weighted age moves from 4.65 Gyr at baseline to 3.02 Gyr with the order-3 polynomial. The spread across arms shows sensitivity to the calibration model choice. Caveat: free polynomials broaden dust posteriors because dust and tilt share one degree of freedom.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-real-posteriors.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="tilt-origin-ibands-png">
+          <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-ibands.png" target="_blank" rel="noopener">
+            <img src="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-ibands.png" alt="Tilt-origin in-band flux ratios PNG. In-band flux ratios compare LEGA-C DR2 spectrum flux against photometric measurements for sample galaxies M4 and M5. Ratios indicate spectra are brighter than production 3-arcsecond aperture fluxes by 1.26 to 1.48. Ratios stay near flat against corrected aperture photometry and UltraVISTA total fluxes. Lines connect five bands with no error bars. Caveat: IA679 falls outside the 1.26 to 1.48 range." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Tilt-origin in-band flux ratios PNG.</strong>
+            In-band flux ratios compare LEGA-C DR2 spectrum flux against photometric measurements for sample galaxies M4 and M5. Ratios indicate spectra are brighter than production 3-arcsecond aperture fluxes by 1.26 to 1.48. Ratios stay near flat against corrected aperture photometry and UltraVISTA total fluxes. Lines connect five bands with no error bars. Caveat: IA679 falls outside the 1.26 to 1.48 range.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-ibands.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="tilt-origin-photometry-png">
+          <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-photometry.png" target="_blank" rel="noopener">
+            <img src="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-photometry.png" alt="Tilt-origin photometric residuals PNG. Residual plots compare photometric flux values against synthetic model photometry across the fitted bands for sample galaxies M4 and M5. Corrected photometry removes M4 calibration tilt. Target M5 retains a 0.3-mag optical-to-NIR model discrepancy. Error bars mark photometric measurement uncertainty ranges. Caveat: stellar population models cannot fit both optical lines and NIR photometry simultaneously for young target M5." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Tilt-origin photometric residuals PNG.</strong>
+            Residual plots compare photometric flux values against synthetic model photometry across the fitted bands for sample galaxies M4 and M5. Corrected photometry removes M4 calibration tilt. Target M5 retains a 0.3-mag optical-to-NIR model discrepancy. Error bars mark photometric measurement uncertainty ranges. Caveat: stellar population models cannot fit both optical lines and NIR photometry simultaneously for young target M5.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-photometry.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="tilt-origin-vectors-png">
+          <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-vectors.png" target="_blank" rel="noopener">
+            <img src="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-vectors.png" alt="Tilt-origin polynomial vectors PNG. Vector panels track recovered calibration polynomial flux curves versus wavelength for sample galaxies M4 and M5. Curves compare uncorrected and corrected photometry runs against the flat baseline. Shaded bands show 68% credible interval uncertainty ranges. Target M5 variants retain a minus-16 to minus-24 percent tilt. Only the corrected-photometry M4 curves stay flat near tilt +0 percent. The other M4 variants retain minus-11 to minus-20 percent tilts. Caveat: dust attenuation degenerates with calibration curves." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Tilt-origin polynomial vectors PNG.</strong>
+            Vector panels track recovered calibration polynomial flux curves versus wavelength for sample galaxies M4 and M5. Curves compare uncorrected and corrected photometry runs against the flat baseline. Shaded bands show 68% credible interval uncertainty ranges. Target M5 variants retain a minus-16 to minus-24 percent tilt. Only the corrected-photometry M4 curves stay flat near tilt +0 percent. The other M4 variants retain minus-11 to minus-20 percent tilts. Caveat: dust attenuation degenerates with calibration curves.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-vectors.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="tilt-origin-posteriors-png">
+          <a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-posteriors.png" target="_blank" rel="noopener">
+            <img src="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-posteriors.png" alt="Tilt-origin posterior comparison PNG. Dot plots show posterior age and stellar mass values for sample galaxies M4 and M5 across all 23 calibration variants each. The panels compare arms with production aperture photometry against arms with corrected aperture photometry. Bars show the 16th to 84th percentile range per arm. No contours appear. Caveat: young galaxy M5 retains strong parameter shifts due to optical-to-NIR model tension." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Tilt-origin posterior comparison PNG.</strong>
+            Dot plots show posterior age and stellar mass values for sample galaxies M4 and M5 across all 23 calibration variants each. The panels compare arms with production aperture photometry against arms with corrected aperture photometry. Bars show the 16th to 84th percentile range per arm. No contours appear. Caveat: young galaxy M5 retains strong parameter shifts due to optical-to-NIR model tension.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-posteriors.png" target="_blank" rel="noopener">PNG</a></span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="action-box">
+        <strong>Decisions waiting on Liu Hao:</strong>
+        <ul>
+          <li><strong>Choose whether to accept corrected photometry for production.</strong> Corrected aperture photometry with an order-3 polynomial and 12 bands eliminates M4's &minus;20% tilt (residual +0.4%). It also normalizes scale offsets.</li>
+          <li><strong>Choose whether to investigate young-galaxy (M5) optical-to-NIR mismatch first.</strong> A 0.3-mag optical-NIR model tension with dust degeneracy drives M5's residual tilt (&minus;16% to &minus;24%).</li>
+          <li><strong>Choose whether to merge branch <code>calibration-polynomial</code>.</strong> The branch <code>85c1e4a</code> remains pushed and tested. Merge the branch after Liu Hao approves the strategy for 187 galaxies.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION 6: FORMATION TIMESCALES -->
+    <section id="formation-timescales">
+      <h2>Formation timescales (&Delta;t)</h2>
+      <p>Analysis script: <a href="../../scripts/plot_dr2_formation_timescale.py">scripts/plot_dr2_formation_timescale.py</a>. The mass assembly interval &Delta;t equals t20 &minus; t80. This value measures the lookback time interval during which the middle 60% of stellar mass formed.</p>
+
+      <div class="plot-grid">
+        
+        <figure class="plot-card" id="dr2-timescale-epoch-png">
+          <a href="dr2-quiescent-sample/dt-vs-formation-epoch.png" target="_blank" rel="noopener">
+            <img src="dr2-quiescent-sample/dt-vs-formation-epoch.png" alt="Formation timescale versus epoch PNG. Median stellar mass assembly interval Delta-t is 2.46 Gyr for the sample of 187 galaxies. Points carry 16th to 84th percentile bars and compare individual galaxy values against formation epoch and observed redshift. The orange band shows the running 16th to 84th percentile spread. The trend stays flat across redshift. Caveat: the 7-bin model resolution limits precise epoch reconstruction." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Formation timescale versus epoch PNG.</strong>
+            Median stellar mass assembly interval Delta-t is 2.46 Gyr for the sample of 187 galaxies. Points carry 16th to 84th percentile bars and compare individual galaxy values against formation epoch and observed redshift. The orange band shows the running 16th to 84th percentile spread. The trend stays flat across redshift. Caveat: the 7-bin model resolution limits precise epoch reconstruction.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="dr2-quiescent-sample/dt-vs-formation-epoch.png" target="_blank" rel="noopener">PNG</a> · <a href="dr2-quiescent-sample/dt-vs-formation-epoch.pdf" download>PDF Vector</a> · <a href="../../scripts/plot_dr2_formation_timescale.py">Script</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="dr2-timescale-mass-png">
+          <a href="dr2-quiescent-sample/dt-vs-mass.png" target="_blank" rel="noopener">
+            <img src="dr2-quiescent-sample/dt-vs-mass.png" alt="Formation timescale versus mass PNG. The plot tracks mass assembly interval Delta-t against stellar mass for 187 galaxies. The Spearman rank correlation between mass and assembly time is 0.00. Points carry 16th to 84th percentile error bars. The orange band shows the running spread and compares low-mass and high-mass objects. Caveat: bin coarseness may hide subtle mass-dependent trends." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Formation timescale versus mass PNG.</strong>
+            The plot tracks mass assembly interval Delta-t against stellar mass for 187 galaxies. The Spearman rank correlation between mass and assembly time is 0.00. Points carry 16th to 84th percentile error bars. The orange band shows the running spread and compares low-mass and high-mass objects. Caveat: bin coarseness may hide subtle mass-dependent trends.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="dr2-quiescent-sample/dt-vs-mass.png" target="_blank" rel="noopener">PNG</a> · <a href="dr2-quiescent-sample/dt-vs-mass.pdf" download>PDF Vector</a> · <a href="../../scripts/plot_dr2_formation_timescale.py">Script</a></span>
+          </div>
+        </figure>
+        
+        <figure class="plot-card" id="dr2-timescale-alpha-png">
+          <a href="dr2-quiescent-sample/dt-vs-alpha.png" target="_blank" rel="noopener">
+            <img src="dr2-quiescent-sample/dt-vs-alpha.png" alt="Formation timescale versus alpha enhancement PNG. The plot examines mass assembly interval Delta-t versus alpha enhancement for 187 galaxies. The Spearman rank correlation between alpha enhancement and assembly time is 0.00. Points carry 16th to 84th percentile error bars. The orange band shows the running spread and compares alpha-enhanced and solar-abundance objects. Caveat: the model assumes a single alpha enhancement value per galaxy." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>Formation timescale versus alpha enhancement PNG.</strong>
+            The plot examines mass assembly interval Delta-t versus alpha enhancement for 187 galaxies. The Spearman rank correlation between alpha enhancement and assembly time is 0.00. Points carry 16th to 84th percentile error bars. The orange band shows the running spread and compares alpha-enhanced and solar-abundance objects. Caveat: the model assumes a single alpha enhancement value per galaxy.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="dr2-quiescent-sample/dt-vs-alpha.png" target="_blank" rel="noopener">PNG</a> · <a href="dr2-quiescent-sample/dt-vs-alpha.pdf" download>PDF Vector</a> · <a href="../../scripts/plot_dr2_formation_timescale.py">Script</a></span>
+          </div>
+        </figure>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--muted);"><strong>Finding.</strong> Median &Delta;t is 2.46 Gyr across the sample. There is no significant correlation between &Delta;t and stellar mass (Spearman 0.00) or [&alpha;/Fe] (Spearman 0.00). The coarse 7-bin SFH basis constrains timescale resolution.</p>
+    </section>
+
+    <!-- SECTION 7: FIT QUALITY -->
+    <section id="fit-quality">
+      <h2>Fit quality diagnostics</h2>
+      <p>Diagnostic plotting script: <a href="../../scripts/plot_dr2_distributions_quality.py">scripts/plot_dr2_distributions_quality.py</a>. Covers likelihood calls, Bayesian log-evidence (logZ, marginal likelihood), Effective Sample Size (ESS, independent posterior samples), and joint reduced &chi;&sup2;/&nu; across all 187 galaxies.</p>
+
+      <div class="plot-grid">
+        
+        <figure class="plot-card" id="dr2-fit-quality-png">
+          <a href="dr2-quiescent-sample/fit-quality.png" target="_blank" rel="noopener">
+            <img src="dr2-quiescent-sample/fit-quality.png" alt="DR2 fit-quality diagnostics PNG. Fit diagnostics show zero failures across all 187 galaxies in the sample. Histograms show likelihood calls, log-evidence, and joint reduced chi-squared values across objects. Each panel shows one value per galaxy, so no error bars appear. The dashed line marks a chi-squared of 1. The scatter panel compares photometry and spectrum values and labels the five worst objects. Worst joint reduced chi-squared value is 2.69. Caveat: the worst objects reach 2.69, so some spectra still miss the model." loading="lazy">
+          </a>
+          <figcaption>
+            <strong>DR2 fit-quality diagnostics PNG.</strong>
+            Fit diagnostics show zero failures across all 187 galaxies in the sample. Histograms show likelihood calls, log-evidence, and joint reduced chi-squared values across objects. Each panel shows one value per galaxy, so no error bars appear. The dashed line marks a chi-squared of 1. The scatter panel compares photometry and spectrum values and labels the five worst objects. Worst joint reduced chi-squared value is 2.69. Caveat: the worst objects reach 2.69, so some spectra still miss the model.
+          </figcaption>
+          <div class="plot-links">
+            <span><span class="badge badge-pushed">Pushed</span></span>
+            <span><a href="dr2-quiescent-sample/fit-quality.png" target="_blank" rel="noopener">PNG</a> · <a href="dr2-quiescent-sample/fit-quality.pdf" download>PDF Vector</a> · <a href="../../scripts/plot_dr2_distributions_quality.py">Script</a></span>
+          </div>
+        </figure>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--muted);"><strong>Finding.</strong> Zero sampling failures (187/187 completed). The worst joint &chi;&sup2;/&nu; values are 2.69 (galaxy 139662), 2.55 (galaxy 253688), and 2.34 (galaxy 101089).</p>
+    </section>
+
+    <!-- SECTION 8: PERFORMANCE AND PRODUCTION -->
+    <section id="performance">
+      <h2>Performance and production benchmarks</h2>
+      <p>Benchmark guide page: <a href="ceridwen-gpu-benchmarks.html">analyses/ceridwen-gpu-benchmarks.html</a>. Comprehensive run archive: <a href="../../benchmarks/ceridwen/runs">benchmarks/ceridwen/runs/</a>.</p>
+      
+      <div class="table-wrap">
+        <table>
+          <caption>Validated GPU throughput, cost benchmarks, and production recommendations across architectures.</caption>
+          <thead>
+            <tr>
+              <th>Report / Specification</th>
+              <th>Artifact Link</th>
+              <th>Format</th>
+              <th>Status</th>
+              <th>Key Performance Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vast.ai Multi-GPU Sweep Manifest</td>
+              <td><a href="../../benchmarks/ceridwen/runs/ceridwen_vast_gpu_sweep_manifest_2026-08-27.json">ceridwen_vast_gpu_sweep_manifest_2026-08-27.json</a></td>
+              <td>JSON</td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td>49 benchmark executions documenting scaling.</td>
+            </tr>
+            <tr>
+              <td>Predicted vs Measured Summary</td>
+              <td><a href="../../benchmarks/ceridwen/runs/ceridwen_vast_predicted_vs_measured_gpu_benchmark_summary_2026-08-26.csv">ceridwen_vast_predicted_vs_measured_gpu_benchmark_summary_2026-08-26.csv</a></td>
+              <td>CSV</td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td>Empirical timing model across cloud hosts.</td>
+            </tr>
+            <tr>
+              <td>3090 / 4090 / H100 Full Summary</td>
+              <td><a href="../../benchmarks/ceridwen/runs/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv">ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv</a></td>
+              <td>CSV</td>
+              <td><span class="badge badge-local">Local / Unpushed</span></td>
+              <td>High-end card comparisons and memory ceilings.</td>
+            </tr>
+            <tr>
+              <td>Production 8GB GPU Sizing</td>
+              <td><a href="../../benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260902.json">fits_per_gpu_production_8gb_20260902.json</a></td>
+              <td>JSON</td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td>One fit per GPU default to avoid out-of-memory crashes.</td>
+            </tr>
+            <tr>
+              <td>Blackwell RTX 5060 8GB</td>
+              <td><a href="../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json">fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json</a></td>
+              <td>JSON</td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td>Primary production card. Fast and cost-effective.</td>
+            </tr>
+            <tr>
+              <td>Blackwell RTX 5060 Ti 16GB</td>
+              <td><a href="../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json">fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json</a></td>
+              <td>JSON</td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td>Large memory headroom for high-resolution grids.</td>
+            </tr>
+            <tr>
+              <td>Blackwell RTX 5070 12GB</td>
+              <td><a href="../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json">fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json</a></td>
+              <td>JSON</td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td>Highest per-card throughput in Blackwell series.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 9: INTERACTIVE CHECKPOINT ANIMATION -->
+    <section id="checkpoint-anim">
+      <h2>Interactive checkpoint spectrum evolution</h2>
+      <div class="callout callout-info">
+        <h3>Payload-preserving interactive viewer</h3>
+        <p>The viewer uses the byte-identical accepted checkpoint payload. Its controls, legend, spectrum, residual, and axis labels fit desktop and phone viewports. It displays Effective Sample Size (ESS, independent posterior samples) and Bayesian log-evidence (logZ, marginal likelihood). It also presents the converged rescue posterior (nested sampling solution after sampler convergence).</p>
+      </div>
+
+      <p>The shaded band shows the 16th to 84th percentile range of noiseless model spectra across 128 deterministic equal-weight draws. It represents parameter uncertainty, not measurement noise.</p>
+
+      <p><a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">Open the hosted checkpoint viewer</a>. The underlying nested sampling implementation and test modules remain available in the codebase:</p>
+      <ul>
+        <li>Generator script: <a href="../../scripts/plot_ceridwen_checkpoint_evolution.py">scripts/plot_ceridwen_checkpoint_evolution.py</a></li>
+        <li>Verification captures: <a href="../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots">reports/ceridwen-checkpoint-animation/screenshots/</a></li>
+        <li>Test suites: <a href="../../tests/test_plot_ceridwen_checkpoint_evolution.py">test_plot_ceridwen_checkpoint_evolution.py</a>, <a href="../../ceridwen/tests/test_checkpoint_spectrum.py">test_checkpoint_spectrum.py</a>, <a href="../../ceridwen/tests/test_ns_checkpoint.py">test_ns_checkpoint.py</a></li>
+        <li>Core sampler modules: <a href="../../ceridwen/ceridwen/plotting/checkpoint.py">ceridwen/plotting/checkpoint.py</a>, <a href="../../ceridwen/ceridwen/sampler/nested.py">ceridwen/sampler/nested.py</a></li>
+        <li>Four-galaxy fit directory: <a href="../../results/rtx-4070-super-four-galaxy-fits">results/rtx-4070-super-four-galaxy-fits/</a></li>
+      </ul>
+    </section>
+
+    <!-- SECTION 10: RELATED FIT RUNS (DIRECTORY-LEVEL) -->
+    <section id="related-runs">
+      <h2>Related fit runs and exploratory suites</h2>
+      <p>Exploratory and benchmark fit runs accessible at directory level:</p>
+      <ul>
+        <li><a href="../../results/refit-static-smoothing">results/refit-static-smoothing/</a> &mdash; Per-target refits using the static smoother <span class="badge badge-local">Local / Unpushed</span>.</li>
+        <li><a href="../../results/rtx-5060-sfh-fastpath-comparison">results/rtx-5060-sfh-fastpath-comparison/</a> &mdash; Baseline versus fastpath_a SFH basis comparison <span class="badge badge-mixed">Partial</span>.</li>
+        <li><a href="../../results/rtx-5090-nss-default-variation-vs-fastpath-a">results/rtx-5090-nss-default-variation-vs-fastpath-a/</a> &mdash; BlackJAX NSS sampler configuration variations <span class="badge badge-local">Local / Unpushed</span>.</li>
+        <li><a href="../../results/rtx-5090-integrated-fit">results/rtx-5090-integrated-fit/</a> &mdash; Executed single integrated photometry+spectra fit <span class="badge badge-pushed">Pushed</span>.</li>
+        <li><a href="../../results/rtx-4070-super-four-galaxy-fits">results/rtx-4070-super-four-galaxy-fits/</a> &mdash; Four-galaxy GPU validation run and checkpoint host <span class="badge badge-pushed">Pushed</span>.</li>
+        <li><a href="../../results/a100-feature-spectrum">results/a100-feature-spectrum/</a> &mdash; A100 feature spectrum test outputs <span class="badge badge-pushed">Pushed</span>.</li>
+        <li><a href="../../results/a100-integrated-fit-notebook">results/a100-integrated-fit-notebook/</a> &mdash; A100 integrated fit execution notebook <span class="badge badge-pushed">Pushed</span>.</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 11: COMPLETE ARTIFACT CATALOG (79 ITEMS) -->
+    <section id="manifest-index">
+      <h2>Complete artifact catalog (79 validated items)</h2>
+      <p>Complete manifest of all 79 deliverables audited and validated against the live filesystem. All paths resolve directly relative to this wiki page.</p>
+      
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title / Deliverable</th>
+              <th>Category</th>
+              <th>Media Type</th>
+              <th>Wiki-Relative Link</th>
+              <th>Git synchronization status (upstream tracking)</th>
+              <th>Decisions / Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>board-current-html</code></td>
+              <td><strong>Current Ceridwen results board</strong></td>
+              <td>board</td>
+              <td><code>text/html</code></td>
+              <td><a href="ceridwen-results.html">ceridwen-results.html</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-analysis-page</code></td>
+              <td><strong>DR2 quiescent sample analysis</strong></td>
+              <td>analysis-page</td>
+              <td><code>text/html</code></td>
+              <td><a href="dr2-quiescent-sample.html">dr2-quiescent-sample.html</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-headline-png</code></td>
+              <td><strong>DR2 age-redshift headline PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="dr2-quiescent-sample/headline-age-redshift.png">dr2-quiescent-sample/headline-age-redshift.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-headline-pdf</code></td>
+              <td><strong>DR2 age-redshift headline PDF</strong></td>
+              <td>final-figure</td>
+              <td><code>application/pdf</code></td>
+              <td><a href="dr2-quiescent-sample/headline-age-redshift.pdf">dr2-quiescent-sample/headline-age-redshift.pdf</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-distributions-png</code></td>
+              <td><strong>DR2 parameter distributions PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="dr2-quiescent-sample/distributions-1d.png">dr2-quiescent-sample/distributions-1d.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-distributions-pdf</code></td>
+              <td><strong>DR2 parameter distributions PDF</strong></td>
+              <td>final-figure</td>
+              <td><code>application/pdf</code></td>
+              <td><a href="dr2-quiescent-sample/distributions-1d.pdf">dr2-quiescent-sample/distributions-1d.pdf</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-fit-quality-png</code></td>
+              <td><strong>DR2 fit-quality diagnostics PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="dr2-quiescent-sample/fit-quality.png">dr2-quiescent-sample/fit-quality.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-fit-quality-pdf</code></td>
+              <td><strong>DR2 fit-quality diagnostics PDF</strong></td>
+              <td>final-figure</td>
+              <td><code>application/pdf</code></td>
+              <td><a href="dr2-quiescent-sample/fit-quality.pdf">dr2-quiescent-sample/fit-quality.pdf</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-timescale-epoch-png</code></td>
+              <td><strong>Formation timescale versus epoch PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="dr2-quiescent-sample/dt-vs-formation-epoch.png">dr2-quiescent-sample/dt-vs-formation-epoch.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-timescale-epoch-pdf</code></td>
+              <td><strong>Formation timescale versus epoch PDF</strong></td>
+              <td>final-figure</td>
+              <td><code>application/pdf</code></td>
+              <td><a href="dr2-quiescent-sample/dt-vs-formation-epoch.pdf">dr2-quiescent-sample/dt-vs-formation-epoch.pdf</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-timescale-mass-png</code></td>
+              <td><strong>Formation timescale versus mass PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="dr2-quiescent-sample/dt-vs-mass.png">dr2-quiescent-sample/dt-vs-mass.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-timescale-mass-pdf</code></td>
+              <td><strong>Formation timescale versus mass PDF</strong></td>
+              <td>final-figure</td>
+              <td><code>application/pdf</code></td>
+              <td><a href="dr2-quiescent-sample/dt-vs-mass.pdf">dr2-quiescent-sample/dt-vs-mass.pdf</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-timescale-alpha-png</code></td>
+              <td><strong>Formation timescale versus alpha enhancement PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="dr2-quiescent-sample/dt-vs-alpha.png">dr2-quiescent-sample/dt-vs-alpha.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-timescale-alpha-pdf</code></td>
+              <td><strong>Formation timescale versus alpha enhancement PDF</strong></td>
+              <td>final-figure</td>
+              <td><code>application/pdf</code></td>
+              <td><a href="dr2-quiescent-sample/dt-vs-alpha.pdf">dr2-quiescent-sample/dt-vs-alpha.pdf</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-summary-csv</code></td>
+              <td><strong>DR2 187-galaxy summary table</strong></td>
+              <td>data-summary</td>
+              <td><code>text/csv</code></td>
+              <td><a href="../../results/dr2-quiescent-summary.csv">../../results/dr2-quiescent-summary.csv</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-production-results-dir</code></td>
+              <td><strong>DR2 187-galaxy production result directory</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/rtx-5060-dr2-quiescent-full-spectrum">../../results/rtx-5060-dr2-quiescent-full-spectrum</a></td>
+              <td><span class="badge badge-mixed">Partial</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>chronometer-notebook</code></td>
+              <td><strong>Ceridwen cosmic-chronometer notebook</strong></td>
+              <td>notebook</td>
+              <td><code>application/x-ipynb+json</code></td>
+              <td><a href="../../results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb">../../results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>chronometer-summary-h5</code></td>
+              <td><strong>Ceridwen chronometer summary data</strong></td>
+              <td>data-summary</td>
+              <td><code>application/x-hdf5</code></td>
+              <td><a href="../../results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer_summary.h5">../../results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer_summary.h5</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-summary-builder</code></td>
+              <td><strong>DR2 summary-table builder</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../scripts/build_dr2_quiescent_summary.py">../../scripts/build_dr2_quiescent_summary.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-headline-script</code></td>
+              <td><strong>DR2 headline plotting script</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../scripts/plot_dr2_headline_candidates.py">../../scripts/plot_dr2_headline_candidates.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-distribution-quality-script</code></td>
+              <td><strong>DR2 distribution and quality plotting script</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../scripts/plot_dr2_distributions_quality.py">../../scripts/plot_dr2_distributions_quality.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>dr2-timescale-script</code></td>
+              <td><strong>DR2 formation-timescale plotting script</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../scripts/plot_dr2_formation_timescale.py">../../scripts/plot_dr2_formation_timescale.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>borghi-age-redshift-png</code></td>
+              <td><strong>Borghi-style median age versus redshift PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="../../results/figures/borghi2022-age-vs-z.png">../../results/figures/borghi2022-age-vs-z.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>borghi-age-redshift-pdf</code></td>
+              <td><strong>Borghi-style median age versus redshift PDF</strong></td>
+              <td>final-figure</td>
+              <td><code>application/pdf</code></td>
+              <td><a href="../../results/figures/borghi2022-age-vs-z.pdf">../../results/figures/borghi2022-age-vs-z.pdf</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>borghi-source-table</code></td>
+              <td><strong>Borghi DR2 matched age table</strong></td>
+              <td>source-data</td>
+              <td><code>text/tab-separated-values</code></td>
+              <td><a href="../../data/processed/borghi2022_legac_dr2/borghi2022_legac_dr2_spectrum_matches copy.tsv">../../data/processed/borghi2022_legac_dr2/borghi2022_legac_dr2_spectrum_matches copy.tsv</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>borghi-plot-script</code></td>
+              <td><strong>Borghi age-redshift plotting script</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../scripts/plot_borghi2022_age_vs_z.py">../../scripts/plot_borghi2022_age_vs_z.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>absorption-analysis-page</code></td>
+              <td><strong>Absorption-line mask analysis</strong></td>
+              <td>analysis-page</td>
+              <td><code>text/html</code></td>
+              <td><a href="absorption-line-mask.html">absorption-line-mask.html</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Keep mask default off? · Change the line list? · Change the feature window?</td>
+            </tr>
+            <tr>
+              <td><code>absorption-feature-windows-png</code></td>
+              <td><strong>Absorption feature windows PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="absorption-mask/feature_windows_M5_172669.png">absorption-mask/feature_windows_M5_172669.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Change the line list? · Change the feature window?</td>
+            </tr>
+            <tr>
+              <td><code>absorption-mock-bias-png</code></td>
+              <td><strong>Absorption-mask mock bias PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="absorption-mask/mock_bias_vs_tilt.png">absorption-mask/mock_bias_vs_tilt.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Keep mask default off?</td>
+            </tr>
+            <tr>
+              <td><code>absorption-mock-width-png</code></td>
+              <td><strong>Absorption-mask posterior-width PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="absorption-mask/mock_width_ratio.png">absorption-mask/mock_width_ratio.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Keep mask default off?</td>
+            </tr>
+            <tr>
+              <td><code>absorption-real-posteriors-png</code></td>
+              <td><strong>Absorption-mask real-target posteriors PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="absorption-mask/real_targets_posteriors.png">absorption-mask/real_targets_posteriors.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Keep mask default off?</td>
+            </tr>
+            <tr>
+              <td><code>absorption-summary-csv</code></td>
+              <td><strong>Absorption-mask numerical summary CSV</strong></td>
+              <td>data-summary</td>
+              <td><code>text/csv</code></td>
+              <td><a href="../../results/absorption-mask/summary.csv">../../results/absorption-mask/summary.csv</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Keep mask default off?</td>
+            </tr>
+            <tr>
+              <td><code>absorption-summary-json</code></td>
+              <td><strong>Absorption-mask numerical summary JSON</strong></td>
+              <td>data-summary</td>
+              <td><code>application/json</code></td>
+              <td><a href="../../results/absorption-mask/summary.json">../../results/absorption-mask/summary.json</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Keep mask default off?</td>
+            </tr>
+            <tr>
+              <td><code>absorption-fisher-json</code></td>
+              <td><strong>Absorption-mask Fisher analysis JSON</strong></td>
+              <td>data-summary</td>
+              <td><code>application/json</code></td>
+              <td><a href="../../results/absorption-mask/fisher_M5_172669.json">../../results/absorption-mask/fisher_M5_172669.json</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>absorption-results-dir</code></td>
+              <td><strong>Absorption-mask 45-fit result directory</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/absorption-mask">../../results/absorption-mask</a></td>
+              <td><span class="badge badge-mixed">Partial</span></td>
+              <td style="font-size: 0.82rem;">Keep mask default off?</td>
+            </tr>
+            <tr>
+              <td><code>absorption-analysis-script</code></td>
+              <td><strong>Absorption-mask analysis script</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../scripts/absorption_mask_analysis.py">../../scripts/absorption_mask_analysis.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>absorption-report-script</code></td>
+              <td><strong>Absorption-mask report generator</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../scripts/absorption_mask_report.py">../../scripts/absorption_mask_report.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>calibration-analysis-page</code></td>
+              <td><strong>Calibration-polynomial and tilt-origin analysis</strong></td>
+              <td>analysis-page</td>
+              <td><code>text/html</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/ceridwen-calibration-polynomial.html">../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/ceridwen-calibration-polynomial.html</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Accept corrected photometry plus order-3 polynomial and all 12 bands for the 187-galaxy sample? · Investigate the young-galaxy 0.3-mag optical-to-NIR mismatch first? · Merge calibration-polynomial?</td>
+            </tr>
+            <tr>
+              <td><code>calibration-explainer-png</code></td>
+              <td><strong>Calibration-polynomial explainer PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-explainer.png">../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-explainer.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>calibration-mock-bias-png</code></td>
+              <td><strong>Calibration-polynomial mock bias PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-mock-bias.png">../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-mock-bias.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>calibration-real-posteriors-png</code></td>
+              <td><strong>Calibration-polynomial real-target posteriors PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-real-posteriors.png">../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-real-posteriors.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>calibration-vectors-png</code></td>
+              <td><strong>Calibration-polynomial vectors PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-vectors.png">../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-vectors.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-ibands-png</code></td>
+              <td><strong>Tilt-origin in-band flux ratios PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-ibands.png">../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-ibands.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Accept corrected photometry for production?</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-photometry-png</code></td>
+              <td><strong>Tilt-origin photometric residuals PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-photometry.png">../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-photometry.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Investigate the young-galaxy mismatch first?</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-posteriors-png</code></td>
+              <td><strong>Tilt-origin posterior comparison PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-posteriors.png">../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-posteriors.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Accept the recommended default?</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-vectors-png</code></td>
+              <td><strong>Tilt-origin polynomial vectors PNG</strong></td>
+              <td>final-figure</td>
+              <td><code>image/png</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-vectors.png">../../tmp/worktrees/astro-calibration-polynomial/wiki/analyses/calibration-polynomial-tilt-origin-vectors.png</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">Investigate the young-galaxy mismatch first?</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-results-dir</code></td>
+              <td><strong>Tilt-origin fit records</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02">../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02</a></td>
+              <td><span class="badge badge-mixed">Partial</span></td>
+              <td style="font-size: 0.82rem;">Choose durable storage before deleting the worktree.</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-analysis-notebook</code></td>
+              <td><strong>Tilt-origin executed analysis notebook</strong></td>
+              <td>notebook</td>
+              <td><code>application/x-ipynb+json</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/analysis.ipynb">../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/analysis.ipynb</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-arms-csv</code></td>
+              <td><strong>Tilt-origin fit-arm summary CSV</strong></td>
+              <td>data-summary</td>
+              <td><code>text/csv</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/arms.csv">../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/arms.csv</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-ibands-csv</code></td>
+              <td><strong>Tilt-origin in-band flux-ratio CSV</strong></td>
+              <td>data-summary</td>
+              <td><code>text/csv</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/ibands.csv">../../tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/ibands.csv</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>calibration-experiment-script</code></td>
+              <td><strong>Calibration-polynomial experiment script</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/scripts/calibration_polynomial_experiment.py">../../tmp/worktrees/astro-calibration-polynomial/scripts/calibration_polynomial_experiment.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>calibration-photometry-download-script</code></td>
+              <td><strong>LEGA-C aperture-photometry download script</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/scripts/download_legac_dr2_aperture_photometry.py">../../tmp/worktrees/astro-calibration-polynomial/scripts/download_legac_dr2_aperture_photometry.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-runner-script</code></td>
+              <td><strong>Tilt-origin runner script</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_runner.py">../../tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_runner.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>tilt-origin-vast-script</code></td>
+              <td><strong>Tilt-origin Vast launcher</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_vast.py">../../tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_vast.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>calibration-local-superseded-dir</code></td>
+              <td><strong>Superseded local calibration-polynomial snapshots</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/calibration-polynomial-2026-09-02">../../results/calibration-polynomial-2026-09-02</a></td>
+              <td><span class="badge badge-local">Local / Unpushed</span></td>
+              <td style="font-size: 0.82rem;">Retain or remove after durable storage of the completed tilt-origin results?</td>
+            </tr>
+            <tr>
+              <td><code>gpu-benchmark-page</code></td>
+              <td><strong>Ceridwen GPU and production benchmark analysis</strong></td>
+              <td>analysis-page</td>
+              <td><code>text/html</code></td>
+              <td><a href="ceridwen-gpu-benchmarks.html">ceridwen-gpu-benchmarks.html</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>gpu-benchmark-runs-dir</code></td>
+              <td><strong>Ceridwen benchmark records directory</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../benchmarks/ceridwen/runs">../../benchmarks/ceridwen/runs</a></td>
+              <td><span class="badge badge-mixed">Partial</span></td>
+              <td style="font-size: 0.82rem;">Commit selected newer verification records or leave them local?</td>
+            </tr>
+            <tr>
+              <td><code>gpu-sweep-manifest-json</code></td>
+              <td><strong>Vast GPU sweep manifest</strong></td>
+              <td>benchmark-report</td>
+              <td><code>application/json</code></td>
+              <td><a href="../../benchmarks/ceridwen/runs/ceridwen_vast_gpu_sweep_manifest_2026-08-27.json">../../benchmarks/ceridwen/runs/ceridwen_vast_gpu_sweep_manifest_2026-08-27.json</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>gpu-predicted-measured-csv</code></td>
+              <td><strong>Predicted versus measured GPU benchmark summary</strong></td>
+              <td>benchmark-report</td>
+              <td><code>text/csv</code></td>
+              <td><a href="../../benchmarks/ceridwen/runs/ceridwen_vast_predicted_vs_measured_gpu_benchmark_summary_2026-08-26.csv">../../benchmarks/ceridwen/runs/ceridwen_vast_predicted_vs_measured_gpu_benchmark_summary_2026-08-26.csv</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>gpu-three-card-summary-csv</code></td>
+              <td><strong>RTX 3090, RTX 4090, and H100 benchmark summary</strong></td>
+              <td>benchmark-report</td>
+              <td><code>text/csv</code></td>
+              <td><a href="../../benchmarks/ceridwen/runs/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv">../../benchmarks/ceridwen/runs/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv</a></td>
+              <td><span class="badge badge-local">Local / Unpushed</span></td>
+              <td style="font-size: 0.82rem;">Commit or leave local?</td>
+            </tr>
+            <tr>
+              <td><code>gpu-production-8gb-json</code></td>
+              <td><strong>8-GB production concurrency report</strong></td>
+              <td>benchmark-report</td>
+              <td><code>application/json</code></td>
+              <td><a href="../../benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260902.json">../../benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260902.json</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>gpu-production-5060-json</code></td>
+              <td><strong>RTX 5060 production concurrency report</strong></td>
+              <td>benchmark-report</td>
+              <td><code>application/json</code></td>
+              <td><a href="../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json">../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>gpu-production-5060ti-json</code></td>
+              <td><strong>RTX 5060 Ti production concurrency report</strong></td>
+              <td>benchmark-report</td>
+              <td><code>application/json</code></td>
+              <td><a href="../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json">../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>gpu-production-5070-json</code></td>
+              <td><strong>RTX 5070 production concurrency report</strong></td>
+              <td>benchmark-report</td>
+              <td><code>application/json</code></td>
+              <td><a href="../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json">../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>static-smoothing-refits-dir</code></td>
+              <td><strong>Static-smoothing refit results</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/refit-static-smoothing">../../results/refit-static-smoothing</a></td>
+              <td><span class="badge badge-local">Local / Unpushed</span></td>
+              <td style="font-size: 0.82rem;">Commit selected refits or leave local?</td>
+            </tr>
+            <tr>
+              <td><code>sfh-fastpath-comparison-dir</code></td>
+              <td><strong>RTX 5060 SFH fast-path comparison</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/rtx-5060-sfh-fastpath-comparison">../../results/rtx-5060-sfh-fastpath-comparison</a></td>
+              <td><span class="badge badge-mixed">Partial</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>nss-default-variation-dir</code></td>
+              <td><strong>RTX 5090 NSS default-variation comparison</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/rtx-5090-nss-default-variation-vs-fastpath-a">../../results/rtx-5090-nss-default-variation-vs-fastpath-a</a></td>
+              <td><span class="badge badge-local">Local / Unpushed</span></td>
+              <td style="font-size: 0.82rem;">Promote selected comparison outputs?</td>
+            </tr>
+            <tr>
+              <td><code>rtx5090-integrated-fit-dir</code></td>
+              <td><strong>RTX 5090 integrated fit result</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/rtx-5090-integrated-fit">../../results/rtx-5090-integrated-fit</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>rtx4070-four-fit-dir</code></td>
+              <td><strong>RTX 4070 Super four-galaxy fits</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/rtx-4070-super-four-galaxy-fits">../../results/rtx-4070-super-four-galaxy-fits</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>a100-feature-spectrum-dir</code></td>
+              <td><strong>A100 feature-spectrum result</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/a100-feature-spectrum">../../results/a100-feature-spectrum</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>a100-integrated-notebook-dir</code></td>
+              <td><strong>A100 integrated-fit notebook result</strong></td>
+              <td>result-directory</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../results/a100-integrated-fit-notebook">../../results/a100-integrated-fit-notebook</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>checkpoint-interactive-html</code></td>
+              <td><strong>Interactive checkpoint spectrum evolution</strong></td>
+              <td>interactive-html</td>
+              <td><code>text/html</code></td>
+              <td><a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html</a></td>
+              <td><span class="badge badge-pushed">Verified local host</span></td>
+              <td style="font-size: 0.82rem;">Delivered hosted artifact. Verified responsive viewports.</td>
+            </tr>
+            <tr>
+              <td><code>checkpoint-screenshots-dir</code></td>
+              <td><strong>Interactive checkpoint browser screenshots</strong></td>
+              <td>validation-evidence</td>
+              <td><code>inode/directory</code></td>
+              <td><a href="../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots">../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots</a></td>
+              <td><span class="badge badge-none">External</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>checkpoint-generator-script</code></td>
+              <td><strong>Checkpoint spectrum animation generator</strong></td>
+              <td>analysis-script</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../scripts/plot_ceridwen_checkpoint_evolution.py">../../scripts/plot_ceridwen_checkpoint_evolution.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>checkpoint-generator-test</code></td>
+              <td><strong>Checkpoint viewer output tests</strong></td>
+              <td>validation-test</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../tests/test_plot_ceridwen_checkpoint_evolution.py">../../tests/test_plot_ceridwen_checkpoint_evolution.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>checkpoint-prediction-module</code></td>
+              <td><strong>Ceridwen checkpoint prediction module</strong></td>
+              <td>implementation</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../ceridwen/ceridwen/plotting/checkpoint.py">../../ceridwen/ceridwen/plotting/checkpoint.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>checkpoint-sampler-module</code></td>
+              <td><strong>Ceridwen nested-sampler checkpoint serialization</strong></td>
+              <td>implementation</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../ceridwen/ceridwen/sampler/nested.py">../../ceridwen/ceridwen/sampler/nested.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>checkpoint-spectrum-test</code></td>
+              <td><strong>Checkpoint spectrum correctness tests</strong></td>
+              <td>validation-test</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../ceridwen/tests/test_checkpoint_spectrum.py">../../ceridwen/tests/test_checkpoint_spectrum.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+            <tr>
+              <td><code>checkpoint-serialization-test</code></td>
+              <td><strong>Nested-sampler checkpoint compatibility tests</strong></td>
+              <td>validation-test</td>
+              <td><code>text/x-python</code></td>
+              <td><a href="../../ceridwen/tests/test_ns_checkpoint.py">../../ceridwen/tests/test_ns_checkpoint.py</a></td>
+              <td><span class="badge badge-pushed">Pushed</span></td>
+              <td style="font-size: 0.82rem;">&mdash;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Astro Wiki · Project Support Modules</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="codebase">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-25">
+  <!-- site-name-block: name, icons and manifest, so a bookmark saves under "Astro Wiki" -->
+  <meta name="application-name" content="Astro Wiki" />
+  <meta name="apple-mobile-web-app-title" content="Astro Wiki" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="manifest" href="../manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/icons/icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="project-modules" class="level1">
+<h1>Project Support Modules</h1>
+<p>The active notebooks call Ceridwen for stellar-population inference.
+Project-owned scripts prepare the data. The <code>src/</code> modules
+remain from earlier project stages and are not current fit entry
+points.</p>
+<section id="mental-model" class="level2">
+<h2>Current flow</h2>
+<figure class="diagram" aria-labelledby="module-flow-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 4">
+<li><strong><code>scripts/</code></strong><small>Prepare observations</small></li>
+<li><strong><code>notebooks/</code></strong><small>Configure fits</small></li>
+<li><strong><code>ceridwen/</code></strong><small>Predict and sample</small></li>
+<li><strong><code>results/</code></strong><small>Store checkpoints and HDF5</small></li>
+</ol>
+<p class="diagram-note"><code>src/</code> retains support code from earlier project stages.</p>
+<figcaption id="module-flow-caption">Project scripts and notebooks drive the active Ceridwen fit.</figcaption>
+</figure>
+</section>
+<section id="srccosmologypy" class="level2">
+<h2>Retained <code>src/cosmology.py</code></h2>
+<p>This early module contains small cosmology functions. No active
+notebook currently imports it.</p>
+<ul>
+<li><code>E(z, omega_m)</code> calculates the flat
+matter-plus-dark-energy expansion factor
+(<code>src/cosmology.py:5-8</code>).</li>
+<li><code>H(z, H0, omega_m)</code> multiplies this factor by an Astropy
+quantity with units (<code>src/cosmology.py:10-12</code>).</li>
+<li><code>age_integrand(z, omega_m)</code> returns the dimensionless
+integrand for SciPy quadrature
+(<code>src/cosmology.py:15-16</code>).</li>
+</ul>
+<p>The module ends at line 20. It imports <code>quad</code> but does not
+implement the full age integral. This module is a partial learning
+module, not a complete cosmology API.</p>
+<div class="source-example">
+<p class="source-locator"><code>src/cosmology.py:5-16 · E, H, age_integrand</code></p>
+<pre class="python"><code>def E(z, omega_m):
+    ''' Dimensionless hubble parameter, E(z) = H(z) / H (0) '''
+    ''' Radiation neglible, curvature negligible, only matter and dark energy'''
+    return np.sqrt(omega_m * (1+z)**3 + (1 - omega_m))
+
+@u.quantity_input #@ calls a decorator, quantity_input is the astropy function
+def H(z, H0: u.Quantity[u.km/u.s/u.Mpc], omega_m):
+    return E(z, omega_m) * H0
+
+
+def age_integrand(z, omega_m):
+    return 1/((1+z)*E(z, omega_m))</code></pre>
+<p><strong>Documented contract:</strong> The inline documentation defines
+<code>E</code> as <code>H(z) / H(0)</code>. The decorator requires
+Astropy units for <code>H0</code> (<code>src/cosmology.py:5-12</code>).</p>
+<p><strong>Why it matters:</strong> <code>H</code> calls <code>E</code>
+for the dimensionless calculation.
+<code>age_integrand</code> also calls <code>E</code>. These calls show the
+module dependency direction.</p>
+</div>
+</section>
+<section id="srcmockspy" class="level2">
+<h2>Retained <code>src/mocks.py</code></h2>
+<p>This inactive module generates controlled age-redshift samples for
+earlier cosmic-chronometer work.</p>
+<figure class="diagram" aria-labelledby="mock-flow-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 5">
+<li><strong>Draw redshifts</strong></li>
+<li><strong>Calculate true ages</strong></li>
+<li><strong>Add intrinsic scatter</strong></li>
+<li><strong>Add bias and noise</strong></li>
+<li><strong>Build MockSample</strong></li>
+</ol>
+<figcaption id="mock-flow-caption">Retained workflow from the inactive cosmic-chronometer mock module.</figcaption>
+</figure>
+<ul>
+<li><code>MockSample</code> defines four arrays and one truth dictionary
+(<code>lines 15-23</code>).</li>
+<li><code>true_ages</code> subtracts formation time from observation
+time (<code>lines 26-33</code>).</li>
+<li><code>draw_redshifts</code> uses the supplied random generator
+(<code>lines 36-38</code>).</li>
+<li><code>make_mock</code> controls the scatter, offset, redshift bias,
+noise, and seed (<code>lines 41-108</code>).</li>
+</ul>
+<p>All four sample arrays have shape <code>(n,)</code>. Ages and age
+uncertainties use Gyr. The redshift <code>z</code> is dimensionless.</p>
+<div class="source-example">
+<p class="source-locator"><code>src/mocks.py:86-97 · make_mock</code></p>
+<pre class="python"><code>rng = np.random.default_rng(seed)
+
+z = draw_redshifts(n, z_min, z_max, rng)
+age = true_ages(z, H0, omega_m, z_form)
+
+# intrinsic scatter is part of the population, not of the measurement
+if intrinsic_scatter:
+    age = age + rng.normal(0.0, intrinsic_scatter, n)
+
+systematic = age_offset + bias_per_unit_z * (z - z_min)
+noise = rng.normal(0.0, age_err, n)
+age_obs = age + systematic + noise</code></pre>
+<p><strong>Documented contract:</strong> The docstring defines every mock
+input and returns a <code>MockSample</code> (<code>src/mocks.py:54-84</code>).</p>
+<p><strong>Why it matters:</strong> The cosmology creates
+<code>age</code>. Physical scatter modifies this
+value. The systematic term and measurement noise then create the
+reported <code>age_obs</code>.</p>
+</div>
+</section>
+<p>Other inactive method modules remain in <code>src/</code> for
+reproducibility. This page does not include them in the current
+workflow.</p>
+<section id="data-scripts" class="level2">
+<h2>Active data scripts</h2>
+<p><code>build_borghi2022_legac_dr2_subset.py</code> is the main data
+transformation script. Its <code>main</code> function reads both
+catalogues and checks the required columns. It matches object IDs and
+checks coordinate separations. It retains repeat spectra and applies
+the strict 215 km/s split. Finally, it writes the joined and audit
+tables (<code>lines 176-358</code>).</p>
+<p><code>download_legac_dr2_spectra.py</code> can continue an incomplete
+download. It checks the catalogue filenames
+(<code>lines 47-61</code>) and each FITS structure
+(<code>lines 64-79</code>). It downloads each file with a
+<code>.part</code> suffix and then renames the complete file atomically
+(<code>lines 82-110</code>). Finally, it checks the complete file set
+(<code>lines 113-146</code>).</p>
+<p><code>download_cosmos2015_legac_dr2_photometry.py</code> queries
+VizieR in batches. It keeps the nearest match for each LEGA-C row. It
+adds object identifiers and match separations. Finally, it writes a
+FITS table (<code>lines 61-125</code>).</p>
+</section>
+</section>
+</main>
+</body>
+</html>

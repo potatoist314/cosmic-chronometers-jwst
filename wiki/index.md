@@ -1,59 +1,48 @@
-# Agent Wiki Index
+# Agent Note Index
 
-Human entry point: `index.html` (updated 2026-09-01)
+Human entry point: `public/index.html`, served at `/wiki/`.
 
-Reader pages use responsive HTML, CSS, and inline SVG schematics. The Archify
-map uses self-contained JavaScript; no page loads external diagram assets.
-
-Technical pages contain one or two source-backed teaching blocks. Each block
-pairs an exact code excerpt with source documentation and a plain explanation.
-
-## Synthesis
-
-- `overview.html` — Explains the Ceridwen-first flow, chronometer boundary, and reading path.
-
-## Learning guides
-
-- `guides/reading-order.html` — Gives an ordered path through the active Ceridwen workflow.
-- `guides/python-patterns.html` — Python and JAX patterns used here.
-- `guides/vast-ai-gpu-workflow.html` — Explains reliable RTX 5060 selection, deterministic DR2 shards, production sampling, and result transfer.
-- `guides/modal-gpu-workflow.html` — Explains Modal inputs, selectable spectroscopy modes, detached runs, Jupyter, and benchmark storage.
-
-## Codebase
-
-- `codebase/active-codebase-map.html` — Interactively maps the active data, notebook, Ceridwen, sampling, GPU, test, and result paths.
-- `codebase/project-map.html` — Explains repository boundaries, entry points, and environments.
-- `codebase/project-modules.html` — Explains active support scripts and retained legacy modules.
-- `codebase/data-pipeline.html` — Traces LEGA-C spectra or published stellar indices and COSMOS2015 photometry into Ceridwen.
-- `codebase/ceridwen-architecture.html` — Explains the packages and complete call graph.
-- `codebase/ceridwen-ssp-csp.html` — Explains SSP grids, SFH weights, automatic fixed-grid contraction, and spectra.
-- `codebase/ceridwen-observations-model.html` — Explains observation containers, filter projection, the collapsed static smoothing chain, and prediction contracts.
-- `codebase/ceridwen-likelihood-sampling.html` — Explains likelihoods, samplers, checkpoints, and HDF5 results.
-- `codebase/tests-as-documentation.html` — Explains tests that define important contracts.
-
-## Notebooks
-
-- `notebooks/notebook-map.html` — Explains fitting modes, embedded outputs, posterior reports, and the controlled Ceridwen differential-age audit.
-
-## Sources
-
-The wiki does not contain literature source pages. The current pages document live code.
-
-## Concepts
-
-`guides/python-patterns.html` currently explains the code concepts.
-
-## Methods
-
-The codebase pages explain the Ceridwen methods beside their implementations.
-
-## Datasets
-
-`codebase/data-pipeline.html` explains the datasets.
+Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 
 ## Analyses
 
-- `analyses/ceridwen-gpu-benchmarks.html` — Compares speed, cost, memory, and hardware behaviour across forty-nine measured GPU runs stored under `benchmarks/`.
-- `analyses/absorption-line-mask.html` — Draft. Tests whether fitting only absorption-feature pixels (dropped or down-weighted continuum) improves Ceridwen accuracy on mocks with continuum-calibration tilts and on three DR2 targets.
-- `analyses/dr2-quiescent-sample.html` — Paper-quality figure set for the 187-galaxy DR2 quiescent run: age–redshift headline, formation timescales, distributions, fit quality.
-- `analyses/ceridwen-results.html` — Results board: every Ceridwen output, including the hosted interactive checkpoint animation, with push state and open decisions.
+- `notes/ceridwen-results.md` — Ceridwen common results board (2026-09-04 · t_44b5da5c)
+- `notes/stacked-chi2-and-median-pull.md` — Stacked χ² and median pull (2026-09-04 · t_ee8ca17a)
+- `notes/dr2-quiescent-sample.md` — DR2 quiescent sample (2026-09-03 · t_d0d3a321)
+- `notes/absorption-line-mask.md` — Absorption-line pixel mask (2026-09-02 · t_8f62974f)
+
+## Guides
+
+- `notes/overview.md` — Ceridwen project overview (2026-09-01 · old: _old/overview.html)
+- `notes/vast-ai-gpu-workflow.md` — Vast.ai GPU workflow (2026-08-30 · t_2fc31190)
+- `notes/modal-gpu-workflow.md` — Modal GPU workflow (2026-08-28 · old: _old/guides/modal-gpu-workflow.html)
+- `notes/python-patterns.md` — Python patterns (2026-08-25 · old: _old/guides/python-patterns.html)
+- `notes/reading-order.md` — Reading order (2026-08-25 · old: _old/guides/reading-order.html)
+
+## Notebooks
+
+- `notes/ceridwen-checkpoint-spectrum-evolution.md` — Ceridwen checkpoint spectrum evolution (2026-09-04 · t_ed2b739d)
+- `notes/notebook-map.md` — Notebook map (2026-09-01 · old: _old/notebooks/notebook-map.html)
+
+## Codebase
+
+- `notes/active-codebase-map.md` — Active Ceridwen codebase map (2026-09-01 · old: _old/codebase/active-codebase-map.html)
+- `notes/ceridwen-likelihood-sampling.md` — Ceridwen: likelihood and sampling (2026-09-01 · old: _old/codebase/ceridwen-likelihood-sampling.html)
+- `notes/ceridwen-observations-model.md` — Ceridwen: observations and SedModel (2026-09-01 · old: _old/codebase/ceridwen-observations-model.html)
+- `notes/ceridwen-ssp-csp.md` — Ceridwen: SSP grids to composite spectra (2026-08-30 · old: _old/codebase/ceridwen-ssp-csp.html)
+- `notes/data-pipeline.md` — Data pipeline (2026-08-30 · old: _old/codebase/data-pipeline.html)
+- `notes/ceridwen-architecture.md` — Ceridwen architecture (2026-08-25 · old: _old/codebase/ceridwen-architecture.html)
+- `notes/project-map.md` — Project map (2026-08-25 · old: _old/codebase/project-map.html)
+- `notes/project-modules.md` — Project support modules (2026-08-25 · old: _old/codebase/project-modules.html)
+- `notes/tests-as-documentation.md` — Tests as documentation (2026-08-25 · old: _old/codebase/tests-as-documentation.html)
+
+## Paper drafts
+
+- `notes/papers-cosmic-chronometers.md` — Papers: cosmic chronometers (2026-08-25 · source: papers/README.md)
+- `notes/papers-spectral-fitting.md` — Papers: stellar-population fitting (2026-08-25 · source: papers/spectral fitting/README.md)
+
+## Archive
+
+- `notes/wiki-log.md` — Wiki log (2026-09-04 · status: obsolete · obsolete)
+- `notes/ceridwen-gpu-benchmarks.md` — Ceridwen GPU benchmarks (2026-09-01 · t_d89d040c · obsolete)
+- `notes/chronometer-notebook-figures.md` — Chronometer notebook figures (2026-08-20 · status: obsolete · obsolete)

@@ -1,4 +1,12 @@
-# Wiki Log
+---
+title: Wiki log
+date: 2026-09-04
+section: Archive
+tags: [log]
+job: 
+status: obsolete
+source: wiki/log.md
+---
 
 ## [2026-08-20] setup | Wiki initialized
 

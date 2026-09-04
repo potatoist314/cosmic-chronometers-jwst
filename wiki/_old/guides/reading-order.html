@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Astro Wiki · Reading Order</title>
+  <link rel="stylesheet" href="../assets/wiki.css" />
+  <meta name="wiki-type" content="guide">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-08-25">
+  <!-- site-name-block: name, icons and manifest, so a bookmark saves under "Astro Wiki" -->
+  <meta name="application-name" content="Astro Wiki" />
+  <meta name="apple-mobile-web-app-title" content="Astro Wiki" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="manifest" href="../manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/icons/icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="site-header-inner"><a class="site-brand" href="../index.html"><span class="site-mark">AR</span><span>Astro Research Wiki</span></a></div></header>
+<main class="page-shell" id="main-content">
+<section id="reading-order" class="level1">
+<h1>Reading Order</h1>
+<figure class="diagram" aria-labelledby="reading-route-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 5">
+<li><a href="#stage-1-learn-the-repository">Repository</a><small>Boundaries</small></li>
+<li><a href="#stage-2-read-small-project-functions">Data</a><small>Representations</small></li>
+<li><a href="#stage-3-follow-a-data-product">Notebooks</a><small>Configuration</small></li>
+<li><a href="#stage-4-read-notebooks-as-orchestration">Prediction</a><small>Forward model</small></li>
+<li><a href="#stage-5-trace-one-ceridwen-prediction">Sampling</a><small>Saved result</small></li>
+</ol>
+<figcaption id="reading-route-caption">Each stage adds one part of the active fit.</figcaption>
+</figure>
+<section id="stage-1-learn-the-repository" class="level2">
+<h2>Stage 1: Learn the repository</h2>
+<p>Read <a href="../codebase/project-map.html">Project map</a>. Keep
+these boundaries in mind:</p>
+<ul>
+<li>Ceridwen is the primary model and inference path.</li>
+<li><code>main.py</code> is a scaffold. It is not a scientific entry
+point.</li>
+<li>The project owns its code but does not own submodule code.</li>
+<li>The root project and Ceridwen use separate Python environments.</li>
+</ul>
+</section>
+<section id="stage-2-read-small-project-functions" class="level2">
+<h2>Stage 2: Trace the input data</h2>
+<p>Read <a href="../codebase/data-pipeline.html">Data pipeline</a>.
+Then trace one LEGA-C object through these forms:</p>
+<ol type="1">
+<li>Find the selected row in the LEGA-C catalogue.</li>
+<li>Open the matching LEGA-C spectrum.</li>
+<li>Find the matched COSMOS2015 photometry.</li>
+<li>Trace the wavelength and flux conversions.</li>
+<li>Inspect the Ceridwen <code>Spectrum</code> and
+<code>Photometry</code> objects.</li>
+</ol>
+<p>Each step changes the data representation. The galaxy stays the
+same.</p>
+</section>
+<section id="stage-3-follow-a-data-product" class="level2">
+<h2>Stage 3: Read the active notebooks</h2>
+<p>Read <a href="../notebooks/notebook-map.html">Notebook map</a>.
+Then read these notebooks:</p>
+<ol type="1">
+<li>Read <code>ceridwen_test_spectra.ipynb</code> for the spectral
+fit.</li>
+<li>Read <code>ceridwen_integrated_photometry_spectra.ipynb</code> for
+the joint fit.</li>
+</ol>
+<p>The notebooks configure the data, model, likelihood, sampler, and
+saved result.</p>
+</section>
+<section id="stage-4-read-notebooks-as-orchestration" class="level2">
+<h2>Stage 4: Trace one Ceridwen prediction</h2>
+<p>Read these pages in order:</p>
+<ol type="1">
+<li><a href="../codebase/ceridwen-architecture.html">Ceridwen architecture</a></li>
+<li><a href="../codebase/ceridwen-ssp-csp.html">SSP grids to CSPs</a></li>
+<li><a href="../codebase/ceridwen-observations-model.html">Observations and SedModel</a></li>
+</ol>
+<figure class="diagram" aria-labelledby="prediction-trace-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 4">
+<li><strong><code>model.predict(theta)</code></strong></li>
+<li><strong>Apply transforms</strong><small>Build named parameters</small></li>
+<li><strong>CSP prediction</strong><small>Create model spectrum</small></li>
+<li><strong>Observation projection</strong><small>Match measured spaces</small></li>
+</ol>
+<figcaption id="prediction-trace-caption">One sampled parameter point becomes one prediction for each observation.</figcaption>
+</figure>
+</section>
+<section id="stage-5-trace-one-ceridwen-prediction" class="level2">
+<h2>Stage 5: Trace nested sampling and results</h2>
+<p>Read these pages after you understand one prediction:</p>
+<ol type="1">
+<li><a href="../codebase/ceridwen-likelihood-sampling.html">Likelihood and sampling</a></li>
+<li><a href="../codebase/tests-as-documentation.html">Tests as documentation</a></li>
+<li><a href="../guides/vast-ai-gpu-workflow.html">Vast.ai GPU workflow</a></li>
+<li><a href="../guides/modal-gpu-workflow.html">Modal GPU workflow</a></li>
+</ol>
+<figure class="diagram" aria-labelledby="sampling-trace-caption">
+<ol class="diagram-sequence" style="--diagram-columns: 5">
+<li><strong><code>run_sampler</code></strong></li>
+<li><strong>Prediction and likelihood</strong></li>
+<li><strong>BlackJAX NSS adapter</strong></li>
+<li><strong>SamplingResult</strong></li>
+<li><strong>Checkpoint and HDF5</strong></li>
+</ol>
+<figcaption id="sampling-trace-caption">The sampler evaluates the model and returns restartable, saved output.</figcaption>
+</figure>
+<p>Use <a href="../guides/python-patterns.html">Python patterns</a> when
+you find an unfamiliar implementation pattern.</p>
+</section>
+</section>
+</main>
+</body>
+</html>

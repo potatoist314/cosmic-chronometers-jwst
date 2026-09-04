@@ -24,23 +24,51 @@ selects the research direction and scientific methodology.
 
 ## Structure
 
-- `index.html` is the entry point for human readers.
-- `index.md` is the compact agent catalog for all reader pages.
-- `overview.html` contains the current synthesis across sources.
+- `notes/` holds the source of truth: one Markdown note for each entry.
+- `build.py` renders `notes/` into `public/`. It is standard library only.
+- `public/` is generated output. Never edit it by hand.
+- `tests/run_tests.py` fails the build when the generator writes prose.
+- `_old/` keeps every pre-notebook HTML page. Do not delete it without asking.
+- `assets/fonts/` holds the self-hosted faces. The site loads no CDN.
+- `analyses/<slug>/` holds the plots. `build.py` copies them to `public/figures/`.
+- `index.md` is the compact agent catalog of notes.
 - `log.md` is an append-only record of wiki operations.
-- `guides/` contains ordered learning paths and code-reading paths.
-- `codebase/` explains the architecture, modules, tests, and execution flows.
-- `notebooks/` explains notebook roles and their relationships to modules.
-- `sources/` contains one evidence page for each ingested source.
-- `concepts/` contains scientific ideas that use more than one source.
-- `methods/` contains models, measurements, and analysis procedures.
-- `datasets/` contains provenance, selection, columns, and limitations.
-- `analyses/` contains comparisons and derived arguments that the user requested.
 
-Create a category directory only when you create its first page. Use short,
-lowercase, hyphenated `.html` filenames for human-facing pages. Use normal
-relative HTML links. Agent-only schema, catalog, log, and memory files can
-remain in Markdown. Store shared presentation rules in `assets/wiki.css`.
+Each note starts with YAML frontmatter:
+
+```yaml
+---
+title: Stacked chi-squared and median pull
+date: 2026-09-04
+section: Analyses
+tags: [dr2-quiescent-sample, ceridwen]
+job: t_ee8ca17a
+status: obsolete   # optional
+---
+```
+
+- `section` must be one of Analyses, Guides, Notebooks, Codebase, Paper drafts, Archive.
+- `job` is the Hermes card whose worker produced the note. Leave it empty when
+  no card produced it. It drives the per-note question box, so never guess it.
+- `status: obsolete` marks a note that stays readable but no longer applies.
+
+### The one rule that overrides the rest
+
+A note shows only Liu Hao's own content: title, date, figures, numbers,
+commands, and his text. Write no summary, no dek, no caption of your own, no
+"related" list, and no explanation. `tests/run_tests.py` fails the build when a
+text node outside a note body is longer than four words, or ends a sentence.
+
+Run `python3 wiki/tests/run_tests.py` after every change. Run
+`python3 wiki/tests/run_tests.py --plant` to see the audit catch one planted
+sentence.
+
+### Question box
+
+Each note that records a resumable `job` shows a question box. The question
+goes to `bridge.py ask`, which resumes that exact worker session read-only. The
+answer is appended to the note under `## Thread`. A note whose session cannot
+be resumed shows nothing at all. Do not add a fallback worker or a notice.
 
 ## Page conventions
 
