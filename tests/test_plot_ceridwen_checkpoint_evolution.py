@@ -65,6 +65,9 @@ def test_render_html_has_controls_metadata_and_static_fallback():
 
     assert '<button id="play"' in document
     assert '<input id="frame" type="range"' in document
+    assert "min-height:44px" in document
+    assert "grid-template-columns:repeat(2,minmax(0,1fr))" in document
+    assert "orientationchange" in document
     assert "Likelihood calls" in document
     assert "Weighted ESS" in document
     assert "Calibration floor" in document
@@ -75,3 +78,4 @@ def test_render_html_has_controls_metadata_and_static_fallback():
     assert "axis rescales for each state" in document
     assert "https://" not in document
     assert "NaN" not in document
+

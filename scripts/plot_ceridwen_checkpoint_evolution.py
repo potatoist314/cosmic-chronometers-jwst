@@ -350,18 +350,19 @@ p {{ margin:.45rem 0; }}
 .note {{ max-width:90ch; color:var(--muted); }}
 .controls {{ display:flex; flex-wrap:wrap; align-items:center; gap:.75rem; margin:1.1rem 0 .7rem; }}
 button,select,input {{ font:inherit; }}
-button {{ min-height:42px; padding:.45rem .8rem; border:1px solid var(--line); border-radius:.35rem; color:var(--ink); background:var(--paper); cursor:pointer; }}
+button {{ min-height:44px; min-width:64px; padding:.5rem 1rem; border:1px solid var(--line); border-radius:.35rem; color:var(--ink); background:var(--paper); cursor:pointer; }}
 button:focus-visible,input:focus-visible {{ outline:3px solid var(--focus); outline-offset:2px; }}
 label {{ display:flex; flex:1 1 20rem; align-items:center; gap:.65rem; }}
-input[type=range] {{ width:100%; min-height:42px; }}
+input[type=range] {{ width:100%; min-height:44px; cursor:pointer; }}
 .frame-status {{ min-height:1.5rem; font-weight:600; }}
 .metadata {{ display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:.65rem; margin:.7rem 0 1rem; }}
 .metric {{ min-width:0; border-top:2px solid var(--line); padding-top:.35rem; }}
 .metric span {{ display:block; color:var(--muted); font-size:.78rem; }}
 .metric strong {{ display:block; overflow-wrap:anywhere; font-variant-numeric:tabular-nums; font-size:.95rem; }}
-.legend {{ display:flex; flex-wrap:wrap; gap:1rem; margin:.35rem 0; color:var(--muted); font-size:.88rem; }}
-.key::before {{ display:inline-block; width:1.8rem; height:.22rem; margin-right:.35rem; vertical-align:middle; content:""; background:var(--key); }}
-.key.band::before {{ height:.7rem; }}
+.legend {{ display:flex; flex-wrap:wrap; gap:0.5rem 1.25rem; margin:.5rem 0; color:var(--muted); font-size:.88rem; }}
+.key {{ display:inline-flex; align-items:center; }}
+.key::before {{ display:inline-block; width:1.5rem; height:.22rem; margin-right:.4rem; flex-shrink:0; vertical-align:middle; content:""; background:var(--key); }}
+.key.band::before {{ height:.65rem; }}
 .chart {{ width:100%; min-height:310px; display:block; }}
 .residual {{ min-height:180px; }}
 .plot-frame {{ fill:none; stroke:var(--line); }}
@@ -378,6 +379,12 @@ code {{ font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em
 .static-fallback {{ margin-top:1rem; }}
 .static-fallback svg {{ width:100%; height:auto; }}
 @media (max-width:760px) {{ .metadata {{ grid-template-columns:repeat(3,minmax(0,1fr)); }} main {{ width:min(100% - 1rem,1180px); padding-top:.8rem; }} }}
+@media (max-width:480px) {{
+  .legend {{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.45rem .6rem; font-size:.82rem; }}
+  .key {{ display:flex; align-items:center; min-width:0; line-height:1.25; }}
+  .key::before {{ width:1.2rem; height:.2rem; margin-right:.35rem; flex-shrink:0; }}
+  .key.band::before {{ height:.55rem; }}
+}}
 @media (max-width:430px) {{ .metadata {{ grid-template-columns:repeat(2,minmax(0,1fr)); }} .controls {{ align-items:stretch; }} label {{ flex-basis:100%; }} }}
 @media (prefers-reduced-motion:reduce) {{ * {{ scroll-behavior:auto!important; }} }}
 </style>
@@ -428,14 +435,14 @@ code {{ font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em
   function extent(arrays){{let lo=Infinity,hi=-Infinity;for(const arr of arrays)for(const v of arr)if(finite(v)){{lo=Math.min(lo,v);hi=Math.max(hi,v);}}const pad=(hi-lo||1)*.05;return [lo-pad,hi+pad];}}
   function path(values,xScale,yScale){{let d='',open=false;for(let i=0;i<values.length;i++){{const v=values[i];if(!finite(v)||!finite(shared.wavelength[i])){{open=false;continue;}}d+=(open?'L':'M')+xScale(shared.wavelength[i]).toFixed(2)+','+yScale(v).toFixed(2);open=true;}}return d;}}
   function band(lower,upper,xScale,yScale){{const runs=[];let run=[];for(let i=0;i<lower.length;i++){{if(finite(lower[i])&&finite(upper[i])&&finite(shared.wavelength[i]))run.push(i);else if(run.length){{runs.push(run);run=[];}}}}if(run.length)runs.push(run);return runs.map(indices=>{{const forward=indices.map((i,j)=>(j?'L':'M')+xScale(shared.wavelength[i]).toFixed(2)+','+yScale(upper[i]).toFixed(2)).join('');const reverse=[...indices].reverse().map(i=>'L'+xScale(shared.wavelength[i]).toFixed(2)+','+yScale(lower[i]).toFixed(2)).join('');return forward+reverse+'Z';}}).join('');}}
-  function axes(svg,width,height,domain,yDomain,xLabel,yLabel){{const m={{l:72,r:18,t:12,b:48}},iw=width-m.l-m.r,ih=height-m.t-m.b;const xs=x=>m.l+(x-domain[0])/(domain[1]-domain[0])*iw,ys=y=>m.t+(yDomain[1]-y)/(yDomain[1]-yDomain[0])*ih;svg.append(el('rect',{{x:m.l,y:m.t,width:iw,height:ih,class:'plot-frame'}}));const ticks=width<480?4:6;for(let i=0;i<ticks;i++){{const tx=domain[0]+i*(domain[1]-domain[0])/(ticks-1),x=xs(tx);svg.append(el('line',{{x1:x,y1:m.t,x2:x,y2:m.t+ih,class:'grid'}}));svg.append(el('text',{{x,y:height-26,'text-anchor':'middle',class:'axis'}},Math.round(tx).toLocaleString()));}}for(let i=0;i<5;i++){{const ty=yDomain[0]+i*(yDomain[1]-yDomain[0])/4,y=ys(ty);svg.append(el('line',{{x1:m.l,y1:y,x2:m.l+iw,y2:y,class:'grid'}}));svg.append(el('text',{{x:m.l-8,y:y+4,'text-anchor':'end',class:'axis'}},ty.toExponential(1)));}}svg.append(el('text',{{x:m.l+iw/2,y:height-5,'text-anchor':'middle',class:'axis'}},xLabel));const yl=el('text',{{x:15,y:m.t+ih/2,'text-anchor':'middle',class:'axis',transform:`rotate(-90 15 ${{m.t+ih/2}})`}},yLabel);svg.append(yl);return {{xs,ys,m,iw,ih}};}}
+  function axes(svg,width,height,domain,yDomain,xLabel,yLabel){{const isNarrow=width<480;const m={{l:72,r:isNarrow?32:24,t:12,b:48}},iw=width-m.l-m.r,ih=height-m.t-m.b;const xs=x=>m.l+(x-domain[0])/(domain[1]-domain[0])*iw,ys=y=>m.t+(yDomain[1]-y)/(yDomain[1]-yDomain[0])*ih;svg.append(el('rect',{{x:m.l,y:m.t,width:iw,height:ih,class:'plot-frame'}}));const ticks=isNarrow?4:6;for(let i=0;i<ticks;i++){{const tx=domain[0]+i*(domain[1]-domain[0])/(ticks-1),x=xs(tx);svg.append(el('line',{{x1:x,y1:m.t,x2:x,y2:m.t+ih,class:'grid'}}));svg.append(el('text',{{x,y:height-26,'text-anchor':'middle',class:'axis'}},Math.round(tx).toLocaleString()));}}for(let i=0;i<5;i++){{const ty=yDomain[0]+i*(yDomain[1]-yDomain[0])/4,y=ys(ty);svg.append(el('line',{{x1:m.l,y1:y,x2:m.l+iw,y2:y,class:'grid'}}));svg.append(el('text',{{x:m.l-8,y:y+4,'text-anchor':'end',class:'axis'}},ty.toExponential(1)));}}svg.append(el('text',{{x:m.l+iw/2,y:height-5,'text-anchor':'middle',class:'axis'}},xLabel));const yl=el('text',{{x:15,y:m.t+ih/2,'text-anchor':'middle',class:'axis',transform:`rotate(-90 15 ${{m.t+ih/2}})`}},yLabel);svg.append(yl);return {{xs,ys,m,iw,ih}};}}
   function draw(){{const index=Number(slider.value),frame=frames[index];document.getElementById('frame-status').textContent=`${{index+1}} / ${{frames.length}} — ${{frame.label}}`;document.getElementById('kind').textContent=frame.kind;document.getElementById('iteration').textContent=fmt(frame.iteration);document.getElementById('calls').textContent=fmt(frame.likelihood_calls);document.getElementById('samples').textContent=`${{fmt(frame.discarded)}} / ${{fmt(frame.live)}}`;document.getElementById('ess').textContent=fmt(frame.ess,1);document.getElementById('floor').textContent=`${{fmt(100*frame.calibration_fraction,2)}}%`;document.getElementById('logz').textContent=`${{fmt(frame.logZ,3)}} / ${{fmt(frame.delta_logZ,3)}}`;
     const width=Math.max(320,document.getElementById('spectrum').clientWidth),height=410,xDomain=extent([shared.wavelength]),yDomain=extent([shared.observed,frame.model_q16,frame.model_q84]);const svg=document.getElementById('spectrum');svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${{width}} ${{height}}`);const a=axes(svg,width,height,xDomain,yDomain,'Observed wavelength [Å]','Fν [cgs]');svg.append(el('path',{{d:band(frame.model_q16,frame.model_q84,a.xs,a.ys),class:'band-shape'}}));svg.append(el('path',{{d:path(shared.observed,a.xs,a.ys),class:'observed'}}));svg.append(el('path',{{d:path(frame.model_q50,a.xs,a.ys),class:'model'}}));
     const residual=shared.observed.map((v,i)=>finite(v)&&finite(frame.model_q50[i])&&finite(frame.residual_uncertainty[i])?(v-frame.model_q50[i])/frame.residual_uncertainty[i]:null);const abs=residual.filter(finite).map(Math.abs).sort((a,b)=>a-b),q=abs[Math.floor(.99*Math.max(0,abs.length-1))]||3,rmax=Math.max(3,q*1.1);const rsvg=document.getElementById('residual'),rh=220;rsvg.replaceChildren();rsvg.setAttribute('viewBox',`0 0 ${{width}} ${{rh}}`);const ra=axes(rsvg,width,rh,xDomain,[-rmax,rmax],'Observed wavelength [Å]','(observed − model) / σeff');rsvg.append(el('line',{{x1:ra.m.l,y1:ra.ys(0),x2:ra.m.l+ra.iw,y2:ra.ys(0),class:'zero'}}));rsvg.append(el('path',{{d:path(residual,ra.xs,ra.ys),class:'residual-line'}}));
   }}
   function stop(){{if(timer)clearInterval(timer);timer=null;play.textContent='Play';play.setAttribute('aria-pressed','false');document.getElementById('frame-status').setAttribute('aria-live','polite');}}
   play.addEventListener('click',()=>{{if(timer){{stop();return;}}play.textContent='Pause';play.setAttribute('aria-pressed','true');document.getElementById('frame-status').setAttribute('aria-live','off');timer=setInterval(()=>{{if(Number(slider.value)>=frames.length-1){{stop();return;}}slider.value=String(Number(slider.value)+1);draw();}},1400);}});
-  slider.addEventListener('input',()=>{{stop();draw();}});new ResizeObserver(draw).observe(document.querySelector('main'));draw();
+  slider.addEventListener('input',()=>{{stop();draw();}});new ResizeObserver(draw).observe(document.querySelector('main'));window.addEventListener('resize',draw);window.addEventListener('orientationchange',draw);draw();
 }})();
 </script>
 </body>
