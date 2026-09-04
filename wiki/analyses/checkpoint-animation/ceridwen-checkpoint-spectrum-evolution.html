@@ -87,9 +87,9 @@ code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em;
     <div class="metric"><span>Iteration</span><strong id="iteration"></strong></div>
     <div class="metric"><span>Likelihood calls</span><strong id="calls"></strong></div>
     <div class="metric"><span>Discarded / live</span><strong id="samples"></strong></div>
-    <div class="metric"><span>Weighted ESS</span><strong id="ess"></strong></div>
+    <div class="metric"><span>Effective Sample Size (ESS, independent posterior samples)</span><strong id="ess"></strong></div>
     <div class="metric"><span>Calibration floor</span><strong id="floor"></strong></div>
-    <div class="metric"><span>logZ / remaining</span><strong id="logz"></strong></div>
+    <div class="metric"><span>Bayesian log-evidence (logZ, marginal likelihood) / remaining</span><strong id="logz"></strong></div>
   </div>
   <div class="legend" aria-label="Legend">
     <span class="key" style="--key:var(--obs)">Observed spectrum</span>
@@ -101,7 +101,7 @@ code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em;
   <svg id="residual" class="chart residual" role="img" aria-label="Observed minus model residual in effective standard deviations"></svg>
   </div>
   <section class="provenance">
-  <p class="note">The fixed observed spectrum comes from the saved fit. It is compared with model spectra from a prior sample, the last retained partial checkpoint, and the converged rescue posterior. Legacy runs overwrote earlier periodic checkpoints, so this page does not invent those missing states.</p>
+  <p class="note">The fixed observed spectrum comes from the saved fit. Model spectra show a prior sample, the last partial checkpoint, and the converged rescue posterior (nested sampling solution after sampler convergence). Legacy runs overwrote earlier periodic checkpoints. This page does not invent missing states.</p>
   <p class="note">The band is the 16th–84th percentile of noiseless model spectra from 128 deterministic equal-weight draws. It shows parameter uncertainty, not measurement noise. Nested-sampling bands can widen or narrow between checkpoints.</p>
   <p class="note">The spectrum axis rescales for each state because the prior range is much wider. Compare the labelled flux values and residuals, not the apparent band height between states.</p>
   <p class="note">Residuals use the saved measurement uncertainty plus the state’s median sampled fractional calibration floor in quadrature.</p>

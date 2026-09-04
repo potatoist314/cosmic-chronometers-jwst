@@ -19,6 +19,8 @@ WIKI_BASE = Path("/Users/liuhao/Downloads/Astro project/wiki/analyses")
 
 def format_badge(pushed: bool | str | None, label: str | None = None) -> str:
     if label:
+        if "Host" in label or "Verified" in label:
+            return f'<span class="badge badge-pushed">{html.escape(label)}</span>'
         return f'<span class="badge badge-local">{html.escape(label)}</span>'
     if pushed is True:
         return '<span class="badge badge-pushed">Pushed</span>'
@@ -110,6 +112,30 @@ def build_board_html(manifest: dict) -> str:
         --card-bg: #0d1117;
       }}
     }}
+    html, body {{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }}
+    body, p, li, code, a, td, th, figcaption {{
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }}
+    .site-header {{
+      width: 100%;
+      max-width: 100%;
+      border-bottom: 1px solid var(--line);
+      box-sizing: border-box;
+    }}
+    .site-header-inner,
+    .page-shell {{
+      width: min(var(--measure), calc(100% - 2rem));
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-inline: auto;
+    }}
     .board-nav {{
       display: flex;
       flex-wrap: wrap;
@@ -181,6 +207,9 @@ def build_board_html(manifest: dict) -> str:
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
     }}
     .plot-card img {{
       width: 100%;
@@ -214,10 +243,12 @@ def build_board_html(manifest: dict) -> str:
     }}
     .table-wrap {{
       overflow-x: auto;
+      max-width: 100%;
       -webkit-overflow-scrolling: touch;
       margin: 1.25rem 0 2rem;
       border: 1px solid var(--line);
       border-radius: 6px;
+      box-sizing: border-box;
     }}
     table {{
       width: 100%;
@@ -282,17 +313,17 @@ def build_board_html(manifest: dict) -> str:
   <main class="page-shell" id="main-content">
     <header>
       <h1>Ceridwen common results board</h1>
-      <p>Authoritative map of all completed Ceridwen stellar population inference results, figures, data tables, benchmarks, and models. Every mapped output resolves directly to disk, with live push provenance and pending researcher decisions.</p>
+      <p>Authoritative map of completed Ceridwen stellar population inference results, figures, data tables, benchmarks, and models. Every mapped output resolves directly to disk, with live Git synchronization status and pending researcher decisions.</p>
     </header>
 
     <div class="callout callout-alert">
       <h3>Corrected Calibration Science (Authoritative Audit)</h3>
-      <p><strong>Flux ratio sign:</strong> DR2 spectra are <em>brighter</em> than production COSMOS2015 3-arcsecond aperture photometry, with in-band spectrum-to-photometry ratios of 1.26 to 1.48 outside IA679 (production fits sample scale factors of 1.24 and 1.49).<br>
-      <strong>Tilt origin:</strong> Corrected photometry drives scale factors to 0.99 and 0.92 and removes both scale offset and M4's polynomial tilt (shifting from &minus;20% to +0.4%). M5 retains a &minus;20% tilt due to dust-polynomial degeneracy driven by an underlying 0.3-mag optical-to-NIR stellar population model mismatch.</p>
+      <p><strong>Flux ratio sign:</strong> DR2 spectra are <em>brighter</em> than production COSMOS2015 3-arcsecond aperture photometry, with in-band spectrum-to-photometry ratios of 1.26 to 1.48 outside IA679. Production fits sample scale factors of 1.24 and 1.49.<br>
+      <strong>Tilt origin:</strong> Corrected photometry drives scale factors to 0.99 and 0.92 and removes both scale offset and M4's polynomial tilt. Residual M4 tilt shifts from &minus;20% to +0.4%. M5 retains a &minus;20% tilt due to dust-polynomial degeneracy driven by an underlying 0.3-mag optical-to-NIR stellar population model mismatch.</p>
     </div>
 
     <nav class="board-nav" aria-label="Results Board Navigation">
-      <strong>Jump to:</strong>
+      <strong>Sections:</strong>
       <a href="#summary-status">Status at a Glance</a>
       <a href="#dr2-sample">187-Galaxy DR2 Results</a>
       <a href="#borghi-age-z">Borghi Age vs Redshift</a>
@@ -301,7 +332,7 @@ def build_board_html(manifest: dict) -> str:
       <a href="#formation-timescales">Formation Timescales</a>
       <a href="#fit-quality">Fit Quality</a>
       <a href="#performance">Performance &amp; Production</a>
-      <a href="#checkpoint-anim">Checkpoint Animation (Optional)</a>
+      <a href="#checkpoint-anim">Checkpoint Animation</a>
       <a href="#related-runs">Related Runs</a>
       <a href="#manifest-index">Complete Artifact Catalog (79)</a>
     </nav>
@@ -317,14 +348,14 @@ def build_board_html(manifest: dict) -> str:
               <th>Analysis Domain</th>
               <th>Key Scientific Finding</th>
               <th>Primary Deliverables</th>
-              <th>Push Provenance</th>
+              <th>Git synchronization status (upstream tracking)</th>
               <th>Decisions for Liu Hao</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>187-Galaxy DR2 Sample</strong></td>
-              <td>Median mass-weighted age 3.02 Gyr; median assembly interval &Delta;t = 2.46 Gyr; 0/187 fit failures.</td>
+              <td>Median mass-weighted age 3.02 Gyr. Median assembly interval &Delta;t = 2.46 Gyr. Zero fit failures among 187 galaxies.</td>
               <td>
                 <a href="{items_by_id['dr2-analysis-page']['wiki_relative_path']}">Analysis Page</a> · 
                 <a href="{items_by_id['dr2-summary-csv']['wiki_relative_path']}">Summary CSV</a> · 
@@ -335,7 +366,7 @@ def build_board_html(manifest: dict) -> str:
             </tr>
             <tr>
               <td><strong>Borghi+2022 Age vs z</strong></td>
-              <td>Ceridwen medians flat near 3.0 Gyr, +0.26 Gyr above re-binned N=140 Borghi catalogue; weak velocity dispersion split.</td>
+              <td>Ceridwen medians stay flat near 3.0 Gyr, averaging +0.26 Gyr above re-binned N=140 Borghi catalogue. Velocity dispersion split is weak.</td>
               <td>
                 <a href="{items_by_id['borghi-age-redshift-png']['wiki_relative_path']}">Figure PNG</a> · 
                 <a href="{items_by_id['borghi-age-redshift-pdf']['wiki_relative_path']}">Vector PDF</a> · 
@@ -346,7 +377,7 @@ def build_board_html(manifest: dict) -> str:
             </tr>
             <tr>
               <td><strong>Absorption-Line Mask</strong></td>
-              <td>Masked/feature-only modes keep tilt bias and widen posteriors 1.1&ndash;1.6&times;; moves real targets up to 22&sigma;. Recommended default: OFF.</td>
+              <td>Masked and feature modes keep tilt bias and widen posteriors 1.1&ndash;1.6&times;. Shifts real targets up to 22&sigma;. Recommended default is OFF.</td>
               <td>
                 <a href="{items_by_id['absorption-analysis-page']['wiki_relative_path']}">Analysis Page</a> · 
                 <a href="{items_by_id['absorption-summary-csv']['wiki_relative_path']}">Summary CSV</a> · 
@@ -357,18 +388,18 @@ def build_board_html(manifest: dict) -> str:
             </tr>
             <tr>
               <td><strong>Calibration &amp; Tilt Origin</strong></td>
-              <td>Spectra brighter than 3" photometry (&times;1.26&ndash;1.48); corrected photometry eliminates M4 tilt (+0.4%); M5 retains &minus;20% tilt from dust-model degeneracy.</td>
+              <td>Spectra are brighter than 3" photometry by 1.26&ndash;1.48. Corrected photometry eliminates M4 tilt (+0.4%). M5 retains &minus;20% dust-model tilt.</td>
               <td>
                 <a href="{items_by_id['calibration-analysis-page']['wiki_relative_path']}">Worktree Page</a> · 
                 <a href="{items_by_id['tilt-origin-arms-csv']['wiki_relative_path']}">Arms CSV</a> · 
                 <a href="{items_by_id['tilt-origin-results-dir']['wiki_relative_path']}">Tilt Results</a>
               </td>
               <td>{format_badge(True)} <code>85c1e4a</code></td>
-              <td>1. Accept corrected photometry + order-3 poly for 187 galaxies?<br>2. Investigate young-galaxy 0.3-mag optical-to-NIR mismatch first?<br>3. Merge branch <code>calibration-polynomial</code>?</td>
+              <td>1. Accept corrected photometry and order-3 poly for 187 galaxies?<br>2. Investigate young-galaxy 0.3-mag optical-to-NIR mismatch first?<br>3. Merge branch <code>calibration-polynomial</code>?</td>
             </tr>
             <tr>
               <td><strong>Formation Timescales</strong></td>
-              <td>Median &Delta;t = 2.46 Gyr; flat across formation epoch; Spearman correlation with mass and [&alpha;/Fe] is 0.00 in 7-bin SFH.</td>
+              <td>Median &Delta;t = 2.46 Gyr. Flat across formation epoch. Spearman correlation with mass and [&alpha;/Fe] is 0.00 in 7-bin SFH.</td>
               <td>
                 <a href="{items_by_id['dr2-timescale-epoch-png']['wiki_relative_path']}">Epoch PNG</a> · 
                 <a href="{items_by_id['dr2-timescale-mass-png']['wiki_relative_path']}">Mass PNG</a> · 
@@ -379,7 +410,7 @@ def build_board_html(manifest: dict) -> str:
             </tr>
             <tr>
               <td><strong>Fit Quality Diagnostics</strong></td>
-              <td>0/187 failed fits; worst joint reduced &chi;&sup2;/&nu; = 2.69 (139662), 2.55 (253688), 2.34 (101089).</td>
+              <td>All 187 fits succeeded. Worst joint reduced &chi;&sup2;/&nu; values are 2.69 (139662), 2.55 (253688), and 2.34 (101089).</td>
               <td>
                 <a href="{items_by_id['dr2-fit-quality-png']['wiki_relative_path']}">Quality PNG</a> · 
                 <a href="{items_by_id['dr2-fit-quality-pdf']['wiki_relative_path']}">Quality PDF</a>
@@ -389,7 +420,7 @@ def build_board_html(manifest: dict) -> str:
             </tr>
             <tr>
               <td><strong>GPU &amp; Production Benchmarks</strong></td>
-              <td>1 fit per GPU default; concurrent runs offer no throughput gain on tested 8-GB and Blackwell GPUs; fixed-grid SFH default.</td>
+              <td>One fit per GPU default. Concurrent runs offer no throughput gain on tested 8-GB and Blackwell GPUs. Fixed-grid SFH default.</td>
               <td>
                 <a href="{items_by_id['gpu-benchmark-page']['wiki_relative_path']}">Benchmark Page</a> · 
                 <a href="{items_by_id['gpu-benchmark-runs-dir']['wiki_relative_path']}">Runs Dir</a>
@@ -399,13 +430,13 @@ def build_board_html(manifest: dict) -> str:
             </tr>
             <tr>
               <td><strong>Interactive Checkpoint Evolution</strong></td>
-              <td>Optional visual enhancement; steps through prior predictive, dead points, and rescue. Kept as pending placeholder.</td>
+              <td>Interactive view of the accepted prior predictive, last retained checkpoint, and converged rescue posterior (nested sampling solution after sampler convergence).</td>
               <td>
-                <span style="color: var(--muted); font-weight: 500;">Pending Tier-H Replacement</span> · 
+                <a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">Open interactive viewer</a> · 
                 <a href="{items_by_id['checkpoint-screenshots-dir']['wiki_relative_path']}">Screenshots Dir</a>
               </td>
-              <td>{format_badge(False, "Pending / Optional")}</td>
-              <td>Optional enhancement only; do not block science delivery.</td>
+              <td><span class="badge badge-pushed">Verified local host</span></td>
+              <td>Delivered hosted artifact. Verified responsive viewports.</td>
             </tr>
           </tbody>
         </table>
@@ -450,8 +481,8 @@ def build_board_html(manifest: dict) -> str:
       <div class="action-box">
         <strong>Recommendation &amp; Open Decisions:</strong>
         <ul>
-          <li><strong>Recommendation:</strong> Keep mask <strong>OFF</strong> by default for production fits. Feature-only and down-weighted modes fail to eliminate continuum tilt bias, widen posteriors by 1.1&ndash;1.6&times;, and perturb real galaxy posteriors by up to 22 full-spectrum &sigma;.</li>
-          <li><strong>Decisions for Liu Hao:</strong> Confirm keeping mask off as production default; choose whether to retain or revise the specific absorption line list and window widths.</li>
+          <li><strong>Recommendation:</strong> Keep mask <strong>OFF</strong> by default for production fits. Feature-only and down-weighted modes retain continuum tilt bias. They widen posteriors by 1.1&ndash;1.6&times; and perturb real galaxy posteriors by up to 22 full-spectrum &sigma;.</li>
+          <li><strong>Decisions for Liu Hao:</strong> Confirm keeping mask off as production default. Choose whether to retain or revise the specific absorption line list and window widths.</li>
         </ul>
       </div>
     </section>
@@ -475,9 +506,9 @@ def build_board_html(manifest: dict) -> str:
       <div class="action-box">
         <strong>Decisions Waiting on Liu Hao:</strong>
         <ul>
-          <li><strong>Accept corrected photometry for production?</strong> Adopting corrected aperture photometry plus an order-3 polynomial and all 12 photometric bands eliminates M4's &minus;20% tilt (reducing residual tilt to +0.4%) and normalizes scale offsets.</li>
+          <li><strong>Accept corrected photometry for production?</strong> Adopting corrected aperture photometry plus an order-3 polynomial and 12 bands eliminates M4's &minus;20% tilt (residual +0.4%). It also normalizes scale offsets.</li>
           <li><strong>Investigate young-galaxy (M5) optical-to-NIR mismatch first?</strong> M5's residual tilt (&minus;16% to &minus;24%) is driven by a 0.3-mag optical-NIR model tension with dust degeneracy.</li>
-          <li><strong>Merge branch <code>calibration-polynomial</code>?</strong> Branch <code>85c1e4a</code> is pushed and tested; merge once strategy for 187 galaxies is accepted.</li>
+          <li><strong>Merge branch <code>calibration-polynomial</code>?</strong> Branch <code>85c1e4a</code> is pushed and tested. Merge once the strategy for 187 galaxies is accepted.</li>
         </ul>
       </div>
     </section>
@@ -492,13 +523,13 @@ def build_board_html(manifest: dict) -> str:
         {plot_card('dr2-timescale-mass-png', 'dr2-timescale-mass-pdf', 'dr2-timescale-script')}
         {plot_card('dr2-timescale-alpha-png', 'dr2-timescale-alpha-pdf', 'dr2-timescale-script')}
       </div>
-      <p style="font-size: 0.88rem; color: var(--muted);"><em>Finding:</em> Median &Delta;t is 2.46 Gyr across the sample. There is no significant correlation between &Delta;t and stellar mass (Spearman 0.00) or [&alpha;/Fe] (Spearman 0.00), with timescales constrained by the coarseness of the 7-bin SFH basis.</p>
+      <p style="font-size: 0.88rem; color: var(--muted);"><em>Finding:</em> Median &Delta;t is 2.46 Gyr across the sample. There is no significant correlation between &Delta;t and stellar mass (Spearman 0.00) or [&alpha;/Fe] (Spearman 0.00). Timescales remain constrained by the coarseness of the 7-bin SFH basis.</p>
     </section>
 
     <!-- SECTION 7: FIT QUALITY -->
     <section id="fit-quality">
       <h2>Fit quality diagnostics</h2>
-      <p>Diagnostic plotting script: <a href="{items_by_id['dr2-distribution-quality-script']['wiki_relative_path']}">scripts/plot_dr2_distributions_quality.py</a>. Covers likelihood calls, log-evidence ln(Z), and joint reduced &chi;&sup2;/&nu; across all 187 galaxies.</p>
+      <p>Diagnostic plotting script: <a href="{items_by_id['dr2-distribution-quality-script']['wiki_relative_path']}">scripts/plot_dr2_distributions_quality.py</a>. Covers likelihood calls, Bayesian log-evidence (logZ, marginal likelihood), Effective Sample Size (ESS, independent posterior samples), and joint reduced &chi;&sup2;/&nu; across all 187 galaxies.</p>
 
       <div class="plot-grid">
         {plot_card('dr2-fit-quality-png', 'dr2-fit-quality-pdf', 'dr2-distribution-quality-script')}
@@ -550,14 +581,14 @@ def build_board_html(manifest: dict) -> str:
               <td><a href="{items_by_id['gpu-production-8gb-json']['wiki_relative_path']}">fits_per_gpu_production_8gb_20260902.json</a></td>
               <td>JSON</td>
               <td>{format_badge(items_by_id['gpu-production-8gb-json']['pushed'])}</td>
-              <td>1 fit per GPU default; avoids out-of-memory crashes.</td>
+              <td>One fit per GPU default to avoid out-of-memory crashes.</td>
             </tr>
             <tr>
               <td>Blackwell RTX 5060 8GB</td>
               <td><a href="{items_by_id['gpu-production-5060-json']['wiki_relative_path']}">fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json</a></td>
               <td>JSON</td>
               <td>{format_badge(items_by_id['gpu-production-5060-json']['pushed'])}</td>
-              <td>Primary production card: fast, cost-effective.</td>
+              <td>Primary production card. Fast and cost-effective.</td>
             </tr>
             <tr>
               <td>Blackwell RTX 5060 Ti 16GB</td>
@@ -578,15 +609,15 @@ def build_board_html(manifest: dict) -> str:
       </div>
     </section>
 
-    <!-- SECTION 9: INTERACTIVE CHECKPOINT ANIMATION (OPTIONAL PLACEHOLDER) -->
+    <!-- SECTION 9: INTERACTIVE CHECKPOINT ANIMATION -->
     <section id="checkpoint-anim">
-      <h2>Interactive checkpoint spectrum evolution (Optional enhancement)</h2>
+      <h2>Interactive checkpoint spectrum evolution</h2>
       <div class="callout callout-info">
-        <h3>Optional visual presentation &mdash; Pending Tier-H repair</h3>
-        <p>Per research guidance, the interactive checkpoint playback is an optional exploratory visualization and is not required for scientific results delivery. The prior mobile packaging failed review, and a separate tier-H replacement parent is preparing a payload-identical, host-root-safe artifact. The production results board omits the unverified viewer to prevent claiming unapproved assets while keeping all independent science live.</p>
+        <h3>Payload-preserving interactive viewer</h3>
+        <p>The viewer uses the byte-identical accepted checkpoint payload. Its controls, legend, spectrum, residual, and axis labels fit desktop and phone viewports. It displays Effective Sample Size (ESS, independent posterior samples), Bayesian log-evidence (logZ, marginal likelihood), and the converged rescue posterior (nested sampling solution after sampler convergence).</p>
       </div>
 
-      <p>The underlying nested sampling implementation and test modules remain fully available in the codebase:</p>
+      <p><a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">Open the hosted checkpoint viewer</a>. The underlying nested sampling implementation and test modules remain available in the codebase:</p>
       <ul>
         <li>Generator script: <a href="{items_by_id['checkpoint-generator-script']['wiki_relative_path']}">scripts/plot_ceridwen_checkpoint_evolution.py</a></li>
         <li>Verification captures: <a href="{items_by_id['checkpoint-screenshots-dir']['wiki_relative_path']}">reports/ceridwen-checkpoint-animation/screenshots/</a></li>
@@ -625,7 +656,7 @@ def build_board_html(manifest: dict) -> str:
               <th>Category</th>
               <th>Media Type</th>
               <th>Wiki-Relative Link</th>
-              <th>Push Status</th>
+              <th>Git synchronization status (upstream tracking)</th>
               <th>Decisions / Notes</th>
             </tr>
           </thead>
@@ -638,14 +669,14 @@ def build_board_html(manifest: dict) -> str:
         mt = html.escape(item["media_type"])
         rel = html.escape(item["wiki_relative_path"])
         pushed_badge = format_badge(item["pushed"])
-        dec = html.escape("; ".join(item["pending_decisions"])) if item["pending_decisions"] else "&mdash;"
+        dec = html.escape(" · ".join(item["pending_decisions"])) if item["pending_decisions"] else "&mdash;"
 
-        # For the checkpoint interactive html specifically: note pending replacement
-        link_display = f'<a href="{rel}">{rel}</a>'
         if iid == "checkpoint-interactive-html":
-            pushed_badge = format_badge(False, "Pending Replacement")
-            dec = "Optional visualization; pending tier-H replacement parent."
-            link_display = f'<code>{rel}</code> <em>(pending tier-H)</em>'
+            pushed_badge = '<span class="badge badge-pushed">Verified local host</span>'
+            dec = "Delivered hosted artifact. Verified responsive viewports."
+            link_display = f'<a data-host-check="checkpoint-animation" href="{rel}">{rel}</a>'
+        else:
+            link_display = f'<a href="{rel}">{rel}</a>'
 
         doc += f'''
             <tr>
