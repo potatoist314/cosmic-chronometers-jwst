@@ -120,6 +120,8 @@ def test_render_html_has_controls_metadata_and_static_fallback():
     assert "min-height:44px" in document
     assert "grid-template-columns:repeat(2,minmax(0,1fr))" in document
     assert "orientationchange" in document
+    assert "compactResidual&&window.innerHeight<=500" in document
+    assert "const yTicks=compact?3:5" in document
     assert "Likelihood calls" in document
     assert "Weighted ESS" in document
     assert "Calibration floor" in document
