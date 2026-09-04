@@ -404,3 +404,8 @@
 
 - Pages: `analyses/ceridwen-results.html`
 - Change: Inlined the omitted dt-mass/dt-alpha, all four absorption-mask, and all five calibration plots; added a directory-level related-fit-runs section and a PDF/CSV/notebook/script artifact list; split the calibration row into pushed tilt-origin branch verdict (`85c1e4a`) vs untracked local dir; stated the board's own unpushed state. GitHub search confirms plain-HTML/no-framework dashboards are the common pattern, matching this wiki's existing shell.
+
+## [2026-09-04] analysis | Ceridwen common results board repair & Tailscale hosting
+
+- Pages: `analyses/ceridwen-results.html`, `scripts/serve_wiki.py`, `tests/test_ceridwen_results_board.py`
+- Change: Rebuilt the Ceridwen results board from the validated 79-item audit manifest; corrected calibration science (DR2 spectra are brighter than production photometry; corrected photometry eliminates M4 tilt; M5 retains dust-degeneracy tilt from 0.3-mag optical-NIR model mismatch); inlined all 19 PNG plots with accessible fallback text; linked all 79 deliverables (PDFs, CSVs, notebooks, scripts, directories); launched persistent loopback launchd service (`com.liuhao.astro-wiki`) on port 8765 exposed via Tailscale Serve over HTTPS tailnet URL (`https://liu-haos-macbook-pro.tail5c940d.ts.net/wiki/analyses/ceridwen-results.html`).
