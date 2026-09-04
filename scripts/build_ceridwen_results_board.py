@@ -414,7 +414,7 @@ def build_board_html(manifest: dict) -> str:
             </tr>
             <tr>
               <td><strong>Absorption-Line Mask</strong></td>
-              <td>Masked and feature modes keep tilt bias and widen posteriors 1.1&ndash;1.6&times;. Shifts real targets up to 22&sigma;. Recommended default is OFF.</td>
+              <td>Masked and feature modes keep tilt bias and widen posteriors 1.0&ndash;1.6&times;. Shifts real targets up to 22&sigma;. Recommended default is OFF.</td>
               <td>
                 <a href="{items_by_id['absorption-analysis-page']['wiki_relative_path']}">Analysis Page</a> · 
                 <a href="{items_by_id['absorption-summary-csv']['wiki_relative_path']}">Summary CSV</a> · 
@@ -537,8 +537,8 @@ def build_board_html(manifest: dict) -> str:
       <div class="action-box">
         <strong>Recommendation and open decisions:</strong>
         <ul>
-          <li><strong>Recommendation.</strong> Keep mask <strong>OFF</strong> by default for production fits. Feature-only and down-weighted modes retain continuum tilt bias. They widen posteriors by 1.1&ndash;1.6&times; and perturb real galaxy posteriors by up to 22 full-spectrum &sigma;.</li>
-          <li><strong>Decisions for Liu Hao.</strong> Confirm keeping mask off as production default. Choose whether to retain or revise the specific absorption line list and window widths.</li>
+          <li><strong>Recommendation.</strong> Keep mask <strong>OFF</strong> by default for production fits. Feature-only and down-weighted modes retain continuum tilt bias. They widen posteriors by 1.0&ndash;1.6&times; and perturb real galaxy posteriors by up to 22 full-spectrum &sigma;.</li>
+          <li><strong>Decisions for Liu Hao.</strong> Choose whether to keep mask off as production default. Choose whether to retain or revise the specific absorption line list and window widths.</li>
         </ul>
       </div>
     </section>

@@ -205,8 +205,10 @@ class TestCeridwenResultsBoard(unittest.TestCase):
         'Error bars display the 16th to 84th percentile credible interval',
         'Error bars show 1-sigma measurement uncertainty',
         'Corner contours', 'across 25 synthetic', 'by 1.1 to 1.6 times',
+        '1.1&ndash;1.6&times;',
         'passes all tests on origin', 'successful convergence',
-        'sky line residuals',
+        'sky line residuals', 'Confirm keeping mask off',
+        'Confirm default OFF',
     ]
 
     def test_protected_facts_preserved(self):
