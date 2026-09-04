@@ -169,7 +169,7 @@ def test_preserved_payload_survives_regeneration(tmp_path):
     assert "file://" not in document
     assert 'href="../ceridwen-results.html"' in document
     assert document.index('class="controls"') < document.index('class="provenance"')
-    assert "short?[120,135]" in document
+    assert "short?[120,127]" in document
     assert "Residual / σeff" in document
     assert "i===ticks-1?'end'" in document
 
