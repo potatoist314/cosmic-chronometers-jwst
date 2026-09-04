@@ -187,7 +187,7 @@ class TestCeridwenResultsBoard(unittest.TestCase):
         'checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html',
         'tilt-origin-2026-09-02/arms.csv',
         '&minus;20%', '&minus;16% to &minus;24%',
-        '22 full-spectrum sigma',
+        '22 full-spectrum sigma', 'minus-11 to minus-20 percent',
     ]
     # Exact false claims reported by review; the test must fail if any return.
     KNOWN_DEFECTS_ABSENT = [
@@ -208,7 +208,8 @@ class TestCeridwenResultsBoard(unittest.TestCase):
         '1.1&ndash;1.6&times;',
         'passes all tests on origin', 'successful convergence',
         'sky line residuals', 'Confirm keeping mask off',
-        'Confirm default OFF',
+        'Confirm default OFF', 'while M4 curves remain flat',
+        'give 0.9 to 1.6 times',
     ]
 
     def test_protected_facts_preserved(self):
