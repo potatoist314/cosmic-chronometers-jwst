@@ -121,6 +121,7 @@ def test_render_html_has_controls_metadata_and_static_fallback():
     assert "grid-template-columns:repeat(2,minmax(0,1fr))" in document
     assert "orientationchange" in document
     assert "compactResidual&&window.innerHeight<=500" in document
+    assert "Residual / σeff" in document
     assert "const yTicks=compact?3:5" in document
     assert "Likelihood calls" in document
     assert "Weighted ESS" in document
@@ -168,7 +169,8 @@ def test_preserved_payload_survives_regeneration(tmp_path):
     assert "file://" not in document
     assert 'href="../ceridwen-results.html"' in document
     assert document.index('class="controls"') < document.index('class="provenance"')
-    assert "short?[145,85]" in document
+    assert "short?[120,135]" in document
+    assert "Residual / σeff" in document
     assert "i===ticks-1?'end'" in document
 
 
