@@ -11,15 +11,43 @@ one checkpoint filename.  New schema-2 runs retain compact frame files.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import os
 import pickle
+import re
 from pathlib import Path
 
 import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PAYLOAD_PATTERN = re.compile(
+    r'<script id="checkpoint-data" type="application/json">(.*?)</script>', re.S
+)
+SCIENTIFIC_SHARED_KEYS = (
+    "wavelength",
+    "observed",
+    "uncertainty",
+    "target",
+    "n_draws",
+)
+SCIENTIFIC_FRAME_KEYS = (
+    "label",
+    "kind",
+    "iteration",
+    "likelihood_calls",
+    "discarded",
+    "live",
+    "ess",
+    "logZ",
+    "delta_logZ",
+    "residual_uncertainty",
+    "calibration_fraction",
+    "model_q16",
+    "model_q50",
+    "model_q84",
+)
 
 
 def load_checkpoint_metadata(path: Path) -> dict:
@@ -244,6 +272,35 @@ def _jsonable(value):
     return value
 
 
+def load_embedded_payload(path: Path) -> tuple[str, dict]:
+    """Load the exact embedded payload text from a generated viewer."""
+    match = PAYLOAD_PATTERN.search(path.read_text())
+    if match is None:
+        raise ValueError(f"no checkpoint payload in {path}")
+    payload = match.group(1)
+    return payload, json.loads(payload)
+
+
+def scientific_payload_sha256(payload: dict) -> str:
+    """Hash checkpoint science independently from layout-only metadata."""
+    scientific = {
+        "shared": {
+            key: payload["shared"][key] for key in SCIENTIFIC_SHARED_KEYS
+        },
+        "frames": [
+            {key: frame[key] for key in SCIENTIFIC_FRAME_KEYS}
+            for frame in payload["frames"]
+        ],
+    }
+    canonical = json.dumps(
+        scientific,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    ).encode()
+    return hashlib.sha256(canonical).hexdigest()
+
+
 def _file_url(path: str) -> str:
     return Path(path).resolve().as_uri()
 
@@ -315,29 +372,50 @@ def render_html(
     *,
     title: str,
     command: str,
+    payload_json: str | None = None,
+    hosted: bool = False,
 ) -> str:
     """Render the self-contained checkpoint viewer."""
-    payload = json.dumps(
-        _jsonable({"shared": shared, "frames": frames}),
-        separators=(",", ":"),
-        allow_nan=False,
-    ).replace("</", "<\\/")
+    payload = payload_json
+    if payload is None:
+        payload = json.dumps(
+            _jsonable({"shared": shared, "frames": frames}),
+            separators=(",", ":"),
+            allow_nan=False,
+        ).replace("</", "<\\/")
     fallback = _fallback_svg(shared, frames[-1])
-    source_links = " ".join(
-        f'<a href="{html.escape(_file_url(shared[key]))}">{label}</a>'
-        for key, label in (
-            ("source_run", "run directory"),
-            ("source_data", "DR2 spectrum"),
-            ("source_checkpoint", "saved checkpoint"),
-            ("source_rescue", "converged rescue"),
-            ("source_result", "saved fit"),
-        )
+    source_items = (
+        ("source_run", "run directory"),
+        ("source_data", "DR2 spectrum"),
+        ("source_checkpoint", "saved checkpoint"),
+        ("source_rescue", "converged rescue"),
+        ("source_result", "saved fit"),
     )
+    if hosted:
+        source_links = " ".join(
+            f'<span id="{key.replace("_", "-")}">'
+            f'<a href="#{key.replace("_", "-")}">{label}</a>: '
+            f'<code>{html.escape(shared[key])}</code></span>'
+            for key, label in source_items
+        )
+        navigation = '<a href="../ceridwen-results.html">Ceridwen results board</a>'
+    else:
+        source_links = " ".join(
+            f'<a href="{html.escape(_file_url(shared[key]))}">{label}</a>'
+            for key, label in source_items
+        )
+        navigation = ""
+    wiki_metadata = ""
+    if hosted:
+        wiki_metadata = """\n<meta name="wiki-type" content="analysis">
+<meta name="wiki-status" content="current">
+<meta name="wiki-updated" content="2026-09-04">"""
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">{wiki_metadata}
+<link rel="icon" href="data:,">
 <title>{html.escape(title)}</title>
 <style>
 :root {{ color-scheme: light dark; --paper:#fff; --ink:#17202a; --muted:#59636e; --line:#b8c0c8; --grid:#d9dee3; --obs:#3f4850; --model:#0969da; --band:#0969da33; --res:#bc4c00; --focus:#8250df; }}
@@ -348,6 +426,7 @@ main {{ width:min(1180px,calc(100% - 2rem)); margin:auto; padding:1.5rem 0 2.5re
 h1 {{ margin:0 0 .35rem; font-size:clamp(1.45rem,4vw,2rem); line-height:1.2; }}
 p {{ margin:.45rem 0; }}
 .note {{ max-width:90ch; color:var(--muted); }}
+.viewer {{ display:grid; gap:.4rem; }}
 .controls {{ display:flex; flex-wrap:wrap; align-items:center; gap:.75rem; margin:1.1rem 0 .7rem; }}
 button,select,input {{ font:inherit; }}
 button {{ min-height:44px; min-width:64px; padding:.5rem 1rem; border:1px solid var(--line); border-radius:.35rem; color:var(--ink); background:var(--paper); cursor:pointer; }}
@@ -355,6 +434,7 @@ button:focus-visible,input:focus-visible {{ outline:3px solid var(--focus); outl
 label {{ display:flex; flex:1 1 20rem; align-items:center; gap:.65rem; }}
 input[type=range] {{ width:100%; min-height:44px; cursor:pointer; }}
 .frame-status {{ min-height:1.5rem; font-weight:600; }}
+.mobile-progress {{ display:none; color:var(--muted); font-size:.78rem; font-variant-numeric:tabular-nums; }}
 .metadata {{ display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:.65rem; margin:.7rem 0 1rem; }}
 .metric {{ min-width:0; border-top:2px solid var(--line); padding-top:.35rem; }}
 .metric span {{ display:block; color:var(--muted); font-size:.78rem; }}
@@ -363,8 +443,7 @@ input[type=range] {{ width:100%; min-height:44px; cursor:pointer; }}
 .key {{ display:inline-flex; align-items:center; }}
 .key::before {{ display:inline-block; width:1.5rem; height:.22rem; margin-right:.4rem; flex-shrink:0; vertical-align:middle; content:""; background:var(--key); }}
 .key.band::before {{ height:.65rem; }}
-.chart {{ width:100%; min-height:310px; display:block; }}
-.residual {{ min-height:180px; }}
+.chart {{ width:100%; min-height:0; display:block; }}
 .plot-frame {{ fill:none; stroke:var(--line); }}
 .grid {{ stroke:var(--grid); stroke-width:1; }}
 .axis {{ fill:var(--muted); font-size:12px; }}
@@ -378,29 +457,40 @@ input[type=range] {{ width:100%; min-height:44px; cursor:pointer; }}
 code {{ font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em; }}
 .static-fallback {{ margin-top:1rem; }}
 .static-fallback svg {{ width:100%; height:auto; }}
+.provenance {{ margin-top:1rem; }}
+.sources span {{ display:block; }}
 @media (max-width:760px) {{ .metadata {{ grid-template-columns:repeat(3,minmax(0,1fr)); }} main {{ width:min(100% - 1rem,1180px); padding-top:.8rem; }} }}
 @media (max-width:480px) {{
+  .metadata {{ display:none; }}
+  .mobile-progress {{ display:block; }}
   .legend {{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.45rem .6rem; font-size:.82rem; }}
   .key {{ display:flex; align-items:center; min-width:0; line-height:1.25; }}
   .key::before {{ width:1.2rem; height:.2rem; margin-right:.35rem; flex-shrink:0; }}
   .key.band::before {{ height:.55rem; }}
 }}
 @media (max-width:430px) {{ .metadata {{ grid-template-columns:repeat(2,minmax(0,1fr)); }} .controls {{ align-items:stretch; }} label {{ flex-basis:100%; }} }}
+@media (max-height:500px) {{
+  main {{ width:calc(100% - 1rem); padding:.25rem 0 1rem; }}
+  h1 {{ display:none; }}
+  .controls {{ display:grid; grid-template-columns:auto 1fr; gap:.35rem; margin:0; }}
+  .controls label {{ min-width:0; }}
+  .metadata {{ display:none; }}
+  .mobile-progress {{ display:block; white-space:nowrap; font-size:.72rem; }}
+  .legend {{ margin:0; gap:.25rem 1rem; font-size:.78rem; }}
+}}
 @media (prefers-reduced-motion:reduce) {{ * {{ scroll-behavior:auto!important; }} }}
 </style>
 </head>
 <body>
 <main>
   <h1>{html.escape(title)}</h1>
-  <p class="note">The fixed observed spectrum comes from the saved fit. It is compared with model spectra from a prior sample, the last retained partial checkpoint, and the converged rescue posterior. Legacy runs overwrote earlier periodic checkpoints, so this page does not invent those missing states.</p>
-  <p class="note">The band is the 16th–84th percentile of noiseless model spectra from {int(shared['n_draws'])} deterministic equal-weight draws. It shows parameter uncertainty, not measurement noise. Nested-sampling bands can widen or narrow between checkpoints.</p>
-  <p class="note">The spectrum axis rescales for each state because the prior range is much wider. Compare the labelled flux values and residuals, not the apparent band height between states.</p>
-  <p class="note">Residuals use the saved measurement uncertainty plus the state’s median sampled fractional calibration floor in quadrature.</p>
+  <div class="viewer">
   <div class="controls">
     <button id="play" type="button" aria-pressed="false">Play</button>
     <label for="frame">Inference state <input id="frame" type="range" min="0" max="{len(frames)-1}" step="1" value="0"></label>
   </div>
   <div id="frame-status" class="frame-status" aria-live="polite"></div>
+  <div id="mobile-progress" class="mobile-progress"></div>
   <div class="metadata" aria-label="Inference progress">
     <div class="metric"><span>State</span><strong id="kind"></strong></div>
     <div class="metric"><span>Iteration</span><strong id="iteration"></strong></div>
@@ -418,9 +508,17 @@ code {{ font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em
   </div>
   <svg id="spectrum" class="chart" role="img" aria-label="Observed and model spectrum with credible interval"></svg>
   <svg id="residual" class="chart residual" role="img" aria-label="Observed minus model residual in effective standard deviations"></svg>
+  </div>
+  <section class="provenance">
+  <p class="note">The fixed observed spectrum comes from the saved fit. It is compared with model spectra from a prior sample, the last retained partial checkpoint, and the converged rescue posterior. Legacy runs overwrote earlier periodic checkpoints, so this page does not invent those missing states.</p>
+  <p class="note">The band is the 16th–84th percentile of noiseless model spectra from {int(shared['n_draws'])} deterministic equal-weight draws. It shows parameter uncertainty, not measurement noise. Nested-sampling bands can widen or narrow between checkpoints.</p>
+  <p class="note">The spectrum axis rescales for each state because the prior range is much wider. Compare the labelled flux values and residuals, not the apparent band height between states.</p>
+  <p class="note">Residuals use the saved measurement uncertainty plus the state’s median sampled fractional calibration floor in quadrature.</p>
   <noscript><section class="static-fallback"><h2>Static final checkpoint</h2>{fallback}<p>Interactive controls require JavaScript. The final spectrum remains available above as a static SVG.</p></section></noscript>
   <p class="sources">Sources: {source_links}</p>
   <p class="reproduce">Reproduce: <code>{html.escape(command)}</code></p>
+  <p class="sources">{navigation}</p>
+  </section>
 </main>
 <script id="checkpoint-data" type="application/json">{payload}</script>
 <script>
@@ -435,10 +533,11 @@ code {{ font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em
   function extent(arrays){{let lo=Infinity,hi=-Infinity;for(const arr of arrays)for(const v of arr)if(finite(v)){{lo=Math.min(lo,v);hi=Math.max(hi,v);}}const pad=(hi-lo||1)*.05;return [lo-pad,hi+pad];}}
   function path(values,xScale,yScale){{let d='',open=false;for(let i=0;i<values.length;i++){{const v=values[i];if(!finite(v)||!finite(shared.wavelength[i])){{open=false;continue;}}d+=(open?'L':'M')+xScale(shared.wavelength[i]).toFixed(2)+','+yScale(v).toFixed(2);open=true;}}return d;}}
   function band(lower,upper,xScale,yScale){{const runs=[];let run=[];for(let i=0;i<lower.length;i++){{if(finite(lower[i])&&finite(upper[i])&&finite(shared.wavelength[i]))run.push(i);else if(run.length){{runs.push(run);run=[];}}}}if(run.length)runs.push(run);return runs.map(indices=>{{const forward=indices.map((i,j)=>(j?'L':'M')+xScale(shared.wavelength[i]).toFixed(2)+','+yScale(upper[i]).toFixed(2)).join('');const reverse=[...indices].reverse().map(i=>'L'+xScale(shared.wavelength[i]).toFixed(2)+','+yScale(lower[i]).toFixed(2)).join('');return forward+reverse+'Z';}}).join('');}}
-  function axes(svg,width,height,domain,yDomain,xLabel,yLabel){{const isNarrow=width<480;const m={{l:72,r:isNarrow?32:24,t:12,b:48}},iw=width-m.l-m.r,ih=height-m.t-m.b;const xs=x=>m.l+(x-domain[0])/(domain[1]-domain[0])*iw,ys=y=>m.t+(yDomain[1]-y)/(yDomain[1]-yDomain[0])*ih;svg.append(el('rect',{{x:m.l,y:m.t,width:iw,height:ih,class:'plot-frame'}}));const ticks=isNarrow?4:6;for(let i=0;i<ticks;i++){{const tx=domain[0]+i*(domain[1]-domain[0])/(ticks-1),x=xs(tx);svg.append(el('line',{{x1:x,y1:m.t,x2:x,y2:m.t+ih,class:'grid'}}));svg.append(el('text',{{x,y:height-26,'text-anchor':'middle',class:'axis'}},Math.round(tx).toLocaleString()));}}for(let i=0;i<5;i++){{const ty=yDomain[0]+i*(yDomain[1]-yDomain[0])/4,y=ys(ty);svg.append(el('line',{{x1:m.l,y1:y,x2:m.l+iw,y2:y,class:'grid'}}));svg.append(el('text',{{x:m.l-8,y:y+4,'text-anchor':'end',class:'axis'}},ty.toExponential(1)));}}svg.append(el('text',{{x:m.l+iw/2,y:height-5,'text-anchor':'middle',class:'axis'}},xLabel));const yl=el('text',{{x:15,y:m.t+ih/2,'text-anchor':'middle',class:'axis',transform:`rotate(-90 15 ${{m.t+ih/2}})`}},yLabel);svg.append(yl);return {{xs,ys,m,iw,ih}};}}
-  function draw(){{const index=Number(slider.value),frame=frames[index];document.getElementById('frame-status').textContent=`${{index+1}} / ${{frames.length}} — ${{frame.label}}`;document.getElementById('kind').textContent=frame.kind;document.getElementById('iteration').textContent=fmt(frame.iteration);document.getElementById('calls').textContent=fmt(frame.likelihood_calls);document.getElementById('samples').textContent=`${{fmt(frame.discarded)}} / ${{fmt(frame.live)}}`;document.getElementById('ess').textContent=fmt(frame.ess,1);document.getElementById('floor').textContent=`${{fmt(100*frame.calibration_fraction,2)}}%`;document.getElementById('logz').textContent=`${{fmt(frame.logZ,3)}} / ${{fmt(frame.delta_logZ,3)}}`;
-    const width=Math.max(320,document.getElementById('spectrum').clientWidth),height=410,xDomain=extent([shared.wavelength]),yDomain=extent([shared.observed,frame.model_q16,frame.model_q84]);const svg=document.getElementById('spectrum');svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${{width}} ${{height}}`);const a=axes(svg,width,height,xDomain,yDomain,'Observed wavelength [Å]','Fν [cgs]');svg.append(el('path',{{d:band(frame.model_q16,frame.model_q84,a.xs,a.ys),class:'band-shape'}}));svg.append(el('path',{{d:path(shared.observed,a.xs,a.ys),class:'observed'}}));svg.append(el('path',{{d:path(frame.model_q50,a.xs,a.ys),class:'model'}}));
-    const residual=shared.observed.map((v,i)=>finite(v)&&finite(frame.model_q50[i])&&finite(frame.residual_uncertainty[i])?(v-frame.model_q50[i])/frame.residual_uncertainty[i]:null);const abs=residual.filter(finite).map(Math.abs).sort((a,b)=>a-b),q=abs[Math.floor(.99*Math.max(0,abs.length-1))]||3,rmax=Math.max(3,q*1.1);const rsvg=document.getElementById('residual'),rh=220;rsvg.replaceChildren();rsvg.setAttribute('viewBox',`0 0 ${{width}} ${{rh}}`);const ra=axes(rsvg,width,rh,xDomain,[-rmax,rmax],'Observed wavelength [Å]','(observed − model) / σeff');rsvg.append(el('line',{{x1:ra.m.l,y1:ra.ys(0),x2:ra.m.l+ra.iw,y2:ra.ys(0),class:'zero'}}));rsvg.append(el('path',{{d:path(residual,ra.xs,ra.ys),class:'residual-line'}}));
+  function axes(svg,width,height,domain,yDomain,xLabel,yLabel){{const isNarrow=width<480;const m={{l:72,r:24,t:8,b:42}},iw=width-m.l-m.r,ih=height-m.t-m.b;const xs=x=>m.l+(x-domain[0])/(domain[1]-domain[0])*iw,ys=y=>m.t+(yDomain[1]-y)/(yDomain[1]-yDomain[0])*ih;svg.append(el('rect',{{x:m.l,y:m.t,width:iw,height:ih,class:'plot-frame'}}));const ticks=isNarrow?4:6;for(let i=0;i<ticks;i++){{const tx=domain[0]+i*(domain[1]-domain[0])/(ticks-1),x=xs(tx),anchor=i===0?'start':i===ticks-1?'end':'middle';svg.append(el('line',{{x1:x,y1:m.t,x2:x,y2:m.t+ih,class:'grid'}}));svg.append(el('text',{{x,y:height-22,'text-anchor':anchor,class:'axis'}},Math.round(tx).toLocaleString()));}}for(let i=0;i<5;i++){{const ty=yDomain[0]+i*(yDomain[1]-yDomain[0])/4,y=ys(ty);svg.append(el('line',{{x1:m.l,y1:y,x2:m.l+iw,y2:y,class:'grid'}}));svg.append(el('text',{{x:m.l-8,y:y+4,'text-anchor':'end',class:'axis'}},ty.toExponential(1)));}}svg.append(el('text',{{x:m.l+iw/2,y:height-4,'text-anchor':'middle',class:'axis'}},xLabel));const yl=el('text',{{x:14,y:m.t+ih/2,'text-anchor':'middle',class:'axis',transform:`rotate(-90 14 ${{m.t+ih/2}})`}},yLabel);svg.append(yl);return {{xs,ys,m,iw,ih}};}}
+  function plotHeights(width){{const short=window.innerHeight<=500;return short?[145,85]:width<480?[240,125]:[410,220];}}
+  function draw(){{const index=Number(slider.value),frame=frames[index],status=`${{index+1}} / ${{frames.length}} — ${{frame.label}}`;document.getElementById('frame-status').textContent=status;document.getElementById('kind').textContent=frame.kind;document.getElementById('iteration').textContent=fmt(frame.iteration);document.getElementById('calls').textContent=fmt(frame.likelihood_calls);document.getElementById('samples').textContent=`${{fmt(frame.discarded)}} / ${{fmt(frame.live)}}`;document.getElementById('ess').textContent=fmt(frame.ess,1);document.getElementById('floor').textContent=`${{fmt(100*frame.calibration_fraction,2)}}%`;document.getElementById('logz').textContent=`${{fmt(frame.logZ,3)}} / ${{fmt(frame.delta_logZ,3)}}`;document.getElementById('mobile-progress').textContent=`Iter ${{fmt(frame.iteration)}} · calls ${{fmt(frame.likelihood_calls)}} · dead/live ${{fmt(frame.discarded)}}/${{fmt(frame.live)}} · ESS ${{fmt(frame.ess,1)}} · logZ ${{fmt(frame.logZ,3)}}`;
+    const width=Math.max(320,document.getElementById('spectrum').clientWidth),[height,rh]=plotHeights(width),xDomain=extent([shared.wavelength]),yDomain=extent([shared.observed,frame.model_q16,frame.model_q84]);const svg=document.getElementById('spectrum');svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${{width}} ${{height}}`);svg.style.height=`${{height}}px`;const a=axes(svg,width,height,xDomain,yDomain,'Observed wavelength [Å]','Fν [cgs]');svg.append(el('path',{{d:band(frame.model_q16,frame.model_q84,a.xs,a.ys),class:'band-shape'}}));svg.append(el('path',{{d:path(shared.observed,a.xs,a.ys),class:'observed'}}));svg.append(el('path',{{d:path(frame.model_q50,a.xs,a.ys),class:'model'}}));
+    const residual=shared.observed.map((v,i)=>finite(v)&&finite(frame.model_q50[i])&&finite(frame.residual_uncertainty[i])?(v-frame.model_q50[i])/frame.residual_uncertainty[i]:null);const abs=residual.filter(finite).map(Math.abs).sort((a,b)=>a-b),q=abs[Math.floor(.99*Math.max(0,abs.length-1))]||3,rmax=Math.max(3,q*1.1);const rsvg=document.getElementById('residual');rsvg.replaceChildren();rsvg.setAttribute('viewBox',`0 0 ${{width}} ${{rh}}`);rsvg.style.height=`${{rh}}px`;const ra=axes(rsvg,width,rh,xDomain,[-rmax,rmax],'Observed wavelength [Å]','(observed − model) / σeff');rsvg.append(el('line',{{x1:ra.m.l,y1:ra.ys(0),x2:ra.m.l+ra.iw,y2:ra.ys(0),class:'zero'}}));rsvg.append(el('path',{{d:path(residual,ra.xs,ra.ys),class:'residual-line'}}));
   }}
   function stop(){{if(timer)clearInterval(timer);timer=null;play.textContent='Play';play.setAttribute('aria-pressed','false');document.getElementById('frame-status').setAttribute('aria-live','polite');}}
   play.addEventListener('click',()=>{{if(timer){{stop();return;}}play.textContent='Pause';play.setAttribute('aria-pressed','true');document.getElementById('frame-status').setAttribute('aria-live','off');timer=setInterval(()=>{{if(Number(slider.value)>=frames.length-1){{stop();return;}}slider.value=String(Number(slider.value)+1);draw();}},1400);}});
@@ -460,26 +559,48 @@ def main(argv=None) -> int:
     parser.add_argument("--num-inner-steps", type=int, default=40)
     parser.add_argument("--draws", type=int, default=128)
     parser.add_argument("--seed", type=int, default=20260904)
+    parser.add_argument("--preserve-payload-from", type=Path)
+    parser.add_argument("--hosted", action="store_true")
     args = parser.parse_args(argv)
-    shared, frames = build_legacy_dr2_frames(
-        args.legacy_dr2_run,
-        args.target,
-        num_live=args.num_live,
-        num_delete=args.num_delete,
-        num_inner_steps=args.num_inner_steps,
-        count=args.draws,
-        seed=args.seed,
-    )
-    command = (
-        "python scripts/plot_ceridwen_checkpoint_evolution.py "
-        f"--legacy-dr2-run {args.legacy_dr2_run} --target {args.target} "
-        f"--output {args.output}"
+    payload_json = None
+    if args.preserve_payload_from:
+        payload_json, payload = load_embedded_payload(args.preserve_payload_from)
+        shared, frames = payload["shared"], payload["frames"]
+        if shared["target"] != args.target:
+            raise ValueError("preserved payload target does not match --target")
+    else:
+        shared, frames = build_legacy_dr2_frames(
+            args.legacy_dr2_run,
+            args.target,
+            num_live=args.num_live,
+            num_delete=args.num_delete,
+            num_inner_steps=args.num_inner_steps,
+            count=args.draws,
+            seed=args.seed,
+        )
+    command = " ".join(
+        part
+        for part in (
+            "python scripts/plot_ceridwen_checkpoint_evolution.py",
+            f"--legacy-dr2-run {args.legacy_dr2_run}",
+            f"--target {args.target}",
+            (
+                f"--preserve-payload-from {args.preserve_payload_from}"
+                if args.preserve_payload_from
+                else ""
+            ),
+            f"--output {args.output}",
+            "--hosted" if args.hosted else "",
+        )
+        if part
     )
     document = render_html(
         shared,
         frames,
         title=f"Ceridwen checkpoint spectrum evolution — {args.target}",
         command=command,
+        payload_json=payload_json,
+        hosted=args.hosted,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.output.with_suffix(args.output.suffix + ".tmp")

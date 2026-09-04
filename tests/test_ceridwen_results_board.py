@@ -59,10 +59,12 @@ class TestCeridwenResultsBoard(unittest.TestCase):
                 f"Manifest item '{item['id']}' with path '{rel_path}' is not linked or displayed in the board.",
             )
 
-    def test_checkpoint_animation_placeholder(self):
-        """Verify the board keeps the unverified animation out and uses an explicit pending placeholder."""
-        self.assertIn("Pending Tier-H", self.board_html)
-        self.assertIn("Optional enhancement", self.board_html)
+    def test_checkpoint_animation_hosted_artifact(self):
+        """Verify the board links the repaired animation inside the wiki host root."""
+        href = "checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html"
+        self.assertIn(href, self.extracted_links)
+        self.assertTrue((WIKI_BASE / href).is_file())
+        self.assertNotIn("Pending Tier-H", self.board_html)
 
     def test_inline_plots_and_alt_text(self):
         """All 19 PNG plots must render inline with non-empty accessible alt text."""

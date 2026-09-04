@@ -330,13 +330,12 @@
             </tr>
             <tr>
               <td><strong>Interactive Checkpoint Evolution</strong></td>
-              <td>Optional visual enhancement; steps through prior predictive, dead points, and rescue. Kept as pending placeholder.</td>
+              <td>Interactive view of the accepted prior predictive, last retained checkpoint, and converged rescue payload.</td>
               <td>
-                <span style="color: var(--muted); font-weight: 500;">Pending Tier-H Replacement</span> · 
-                <a href="../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots">Screenshots Dir</a>
+                <a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">Open interactive viewer</a>
               </td>
-              <td><span class="badge badge-local">Pending / Optional</span></td>
-              <td>Optional enhancement only; do not block science delivery.</td>
+              <td><span class="badge badge-pushed">Host-ready</span></td>
+              <td>None.</td>
             </tr>
           </tbody>
         </table>
@@ -756,18 +755,17 @@
       </div>
     </section>
 
-    <!-- SECTION 9: INTERACTIVE CHECKPOINT ANIMATION (OPTIONAL PLACEHOLDER) -->
+    <!-- SECTION 9: INTERACTIVE CHECKPOINT ANIMATION -->
     <section id="checkpoint-anim">
-      <h2>Interactive checkpoint spectrum evolution (Optional enhancement)</h2>
+      <h2>Interactive checkpoint spectrum evolution</h2>
       <div class="callout callout-info">
-        <h3>Optional visual presentation &mdash; Pending Tier-H repair</h3>
-        <p>Per research guidance, the interactive checkpoint playback is an optional exploratory visualization and is not required for scientific results delivery. The prior mobile packaging failed review, and a separate tier-H replacement parent is preparing a payload-identical, host-root-safe artifact. The production results board omits the unverified viewer to prevent claiming unapproved assets while keeping all independent science live.</p>
+        <h3>Payload-preserving interactive viewer</h3>
+        <p>The viewer uses the byte-identical accepted checkpoint payload. Its controls, legend, spectrum, residual, and axis labels fit the desktop, portrait-phone, and rotated landscape viewports.</p>
       </div>
 
-      <p>The underlying nested sampling implementation and test modules remain fully available in the codebase:</p>
+      <p><a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">Open the hosted checkpoint viewer</a>. The underlying nested sampling implementation and test modules remain available in the codebase:</p>
       <ul>
         <li>Generator script: <a href="../../scripts/plot_ceridwen_checkpoint_evolution.py">scripts/plot_ceridwen_checkpoint_evolution.py</a></li>
-        <li>Verification captures: <a href="../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots">reports/ceridwen-checkpoint-animation/screenshots/</a></li>
         <li>Test suites: <a href="../../tests/test_plot_ceridwen_checkpoint_evolution.py">test_plot_ceridwen_checkpoint_evolution.py</a>, <a href="../../ceridwen/tests/test_checkpoint_spectrum.py">test_checkpoint_spectrum.py</a>, <a href="../../ceridwen/tests/test_ns_checkpoint.py">test_ns_checkpoint.py</a></li>
         <li>Core sampler modules: <a href="../../ceridwen/ceridwen/plotting/checkpoint.py">ceridwen/plotting/checkpoint.py</a>, <a href="../../ceridwen/ceridwen/sampler/nested.py">ceridwen/sampler/nested.py</a></li>
         <li>Four-galaxy fit directory: <a href="../../results/rtx-4070-super-four-galaxy-fits">results/rtx-4070-super-four-galaxy-fits/</a></li>
@@ -1452,9 +1450,9 @@
               <td><strong>Interactive checkpoint spectrum evolution</strong></td>
               <td>interactive-html</td>
               <td><code>text/html</code></td>
-              <td><code>../../results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/ceridwen-checkpoint-spectrum-evolution.html</code> <em>(pending tier-H)</em></td>
-              <td><span class="badge badge-local">Pending Replacement</span></td>
-              <td style="font-size: 0.82rem;">Optional visualization; pending tier-H replacement parent.</td>
+              <td><a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html</a></td>
+              <td><span class="badge badge-pushed">Host-ready</span></td>
+              <td style="font-size: 0.82rem;">Self-contained wiki artifact with accepted payload.</td>
             </tr>
             <tr>
               <td><code>checkpoint-screenshots-dir</code></td>

@@ -405,6 +405,11 @@
 - Pages: `analyses/ceridwen-results.html`
 - Change: Inlined the omitted dt-mass/dt-alpha, all four absorption-mask, and all five calibration plots; added a directory-level related-fit-runs section and a PDF/CSV/notebook/script artifact list; split the calibration row into pushed tilt-origin branch verdict (`85c1e4a`) vs untracked local dir; stated the board's own unpushed state. GitHub search confirms plain-HTML/no-framework dashboards are the common pattern, matching this wiki's existing shell.
 
+## [2026-09-04] analysis | Hostable checkpoint animation
+
+- Pages: `analyses/ceridwen-results.html`, `analyses/checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html`, `index.md`
+- Change: Added the self-contained viewer inside the published wiki root, preserved its accepted scientific payload, and fitted its controls, legend, axes, and plots into portrait and landscape mobile viewports.
+
 ## [2026-09-04] analysis | Ceridwen common results board repair & Tailscale hosting
 
 - Pages: `analyses/ceridwen-results.html`, `scripts/serve_wiki.py`, `tests/test_ceridwen_results_board.py`
