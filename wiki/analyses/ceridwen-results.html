@@ -33,14 +33,15 @@
     <section id="status">
       <h2>Status at a glance</h2>
       <table class="status">
-        <caption>Result, artifact, push state, and open decision per analysis. Checked 2026-09-04 on branch <code>absorption-mask</code>.</caption>
+        <caption>Result, artifact, push state, and open decision per analysis. Checked 2026-09-04. This board page itself is a local commit on branch <code>absorption-mask</code>, not pushed; see handoff for the hash.</caption>
         <thead><tr><th>Analysis</th><th>Result</th><th>Artifact</th><th>Pushed?</th><th>Open decision</th></tr></thead>
         <tbody>
           <tr><td>DR2 sample figures</td><td>187-galaxy set in layout B; ages flat near 3 Gyr</td><td><code>wiki/analyses/dr2-quiescent-sample/</code></td><td class="num">yes (<code>4c3ad00</code>)</td><td>none</td></tr>
-          <tr><td>Borghi+2022 comparison</td><td>+0.26 Gyr mean; weak σ split vs theirs</td><td><code>results/figures/borghi2022-age-vs-z.pdf</code></td><td class="num">no (<code>84745ce</code> local)</td><td>none</td></tr>
+          <tr><td>Borghi+2022 comparison</td><td>+0.26 Gyr mean; weak σ split vs theirs</td><td><code>results/figures/borghi2022-age-vs-z.pdf</code></td><td class="num">no (local commits)</td><td>none</td></tr>
           <tr><td>DR2 summary table</td><td>187 rows incl. t20/t50/t80, Δt</td><td><code>results/dr2-quiescent-summary.csv</code></td><td class="num">yes</td><td>none</td></tr>
           <tr><td>Absorption mask</td><td>Mask off recommended; shifts up to 22σ</td><td><code>analyses/absorption-line-mask.html</code></td><td class="num">yes</td><td>default, line list, window</td></tr>
-          <tr><td>Calibration polynomial</td><td>Mocks + 2 targets, no verdict recorded</td><td><code>results/calibration-polynomial-2026-09-02/</code></td><td class="num">no (untracked)</td><td>adopt poly3? commit?</td></tr>
+          <tr><td>Tilt origin (branch)</td><td>25% tilt is observed-frame (instrument/aperture); spectra ×1.24–1.49 fainter than photometry; DR2 default recommended</td><td>branch <code>origin/calibration-polynomial</code>: <code>results/tilt-origin-2026-09-02/</code>, <code>wiki/analyses/ceridwen-calibration-polynomial.html</code></td><td class="num">yes (<code>85c1e4a</code>)</td><td>merge to main?</td></tr>
+          <tr><td>Cal-poly local dir</td><td>Mock/poly arm snapshots (see branch page for verdict)</td><td><code>results/calibration-polynomial-2026-09-02/</code></td><td class="num">no (untracked here)</td><td>commit? superseded?</td></tr>
           <tr><td>GPU benchmarks</td><td>1 fit/GPU default; costs per card</td><td><code>analyses/ceridwen-gpu-benchmarks.html</code></td><td class="num">yes</td><td>none</td></tr>
           <tr><td>Chronometer notebook</td><td>Exploratory; no stable positive H</td><td><code>results/rtx-5060-dr2-quiescent-full-spectrum/</code></td><td class="num">n/a (results dir)</td><td>none</td></tr>
         </tbody>
@@ -66,6 +67,14 @@
         <img src="dr2-quiescent-sample/dt-vs-formation-epoch.png" alt="Formation timescale against formation epoch">
         <figcaption>Formation timescale Δt (tX: lookback younger than which X% formed): flat ≈2.5 Gyr, resolution-limited by the 7-bin SFH.</figcaption>
       </figure>
+      <figure>
+        <img src="dr2-quiescent-sample/dt-vs-mass.png" alt="Formation timescale against stellar mass">
+        <figcaption>Δt against stellar mass: no trend (Spearman 0.00).</figcaption>
+      </figure>
+      <figure>
+        <img src="dr2-quiescent-sample/dt-vs-alpha.png" alt="Formation timescale against alpha enhancement">
+        <figcaption>Δt against [α/Fe]: no trend (Spearman 0.00).</figcaption>
+      </figure>
       <p class="source-locator"><code>scripts/plot_dr2_headline_candidates.py</code> · <code>scripts/plot_dr2_distributions_quality.py</code> · <code>scripts/plot_dr2_formation_timescale.py</code></p>
     </section>
 
@@ -85,11 +94,23 @@
         <img src="absorption-mask/real_targets_posteriors.png" alt="Posteriors for three real targets in three pixel modes">
         <figcaption>Three DR2 targets in three pixel modes: posteriors move by up to 22σ on real spectra.</figcaption>
       </figure>
+      <figure>
+        <img src="absorption-mask/mock_bias_vs_tilt.png" alt="Mock posterior bias against continuum tilt">
+        <figcaption>36 mocks: masked modes carry the same tilt-induced bias as the full spectrum.</figcaption>
+      </figure>
+      <figure>
+        <img src="absorption-mask/mock_width_ratio.png" alt="Masked to full posterior width ratio">
+        <figcaption>Masked posteriors are 1.1–1.6× wider than full-spectrum ones.</figcaption>
+      </figure>
+      <figure>
+        <img src="absorption-mask/feature_windows_M5_172669.png" alt="Absorption feature windows on one spectrum">
+        <figcaption>Feature windows on M5_172669: 29–44% of pixels kept.</figcaption>
+      </figure>
     </section>
 
     <section id="calibration">
       <h2>Calibration polynomial / tilt origin</h2>
-      <p>Notebook: <code>results/calibration-polynomial-2026-09-02/analysis.ipynb</code>. Table: <code>results/calibration-polynomial-2026-09-02/arms.csv</code>. Order-3 Chebyshev calibration inside the spectrum likelihood, tested on mocks with injected tilts and on M5_172669 / M4_108989; no verdict recorded and the directory is uncommitted.</p>
+      <p>Verdict (pushed, branch <code>origin/calibration-polynomial</code> <code>85c1e4a</code>): the 25% tilt is observed-frame — instrument or aperture, not rest-frame physics — and both DR2 spectra are fainter than the photometry by ×1.24–1.49; that branch recommends the DR2 default. Page: <code>wiki/analyses/ceridwen-calibration-polynomial.html</code> (on that branch). Local snapshots: notebook <code>results/calibration-polynomial-2026-09-02/analysis.ipynb</code>, table <code>results/calibration-polynomial-2026-09-02/arms.csv</code> (untracked here).</p>
       <figure>
         <img src="../../results/calibration-polynomial-2026-09-02/mock-bias-width.png" alt="Mock bias and width for polynomial arms">
         <figcaption>Mock arms: pull against truth and width ratio vs the untilted baseline.</figcaption>
@@ -98,6 +119,33 @@
         <img src="../../results/calibration-polynomial-2026-09-02/polynomial-vectors.png" alt="Posterior calibration polynomial bands">
         <figcaption>Posterior P(λ) bands per arm; dashed red is the injected distortion on mocks.</figcaption>
       </figure>
+      <figure>
+        <img src="../../results/calibration-polynomial-2026-09-02/corner-M5_172669.png" alt="Corner plot for M5_172669 calibration arms">
+        <figcaption>Corner plot, M5_172669 arms.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../results/calibration-polynomial-2026-09-02/corner-M4_108989.png" alt="Corner plot for M4_108989 calibration arms">
+        <figcaption>Corner plot, M4_108989 arms.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../results/calibration-polynomial-2026-09-02/corner-mock_tilt4.png" alt="Corner plot for the tilted mock">
+        <figcaption>Corner plot, tilted mock arm.</figcaption>
+      </figure>
+    </section>
+
+    <section id="fit-runs">
+      <h2>Related fit runs (directory level)</h2>
+      <p>Per-target fits too numerous to inline; linked at directory level:</p>
+      <ul>
+        <li><code>results/rtx-5060-dr2-quiescent-full-spectrum/</code> — 187 production fits + chronometer notebook.</li>
+        <li><code>results/refit-static-smoothing/</code> — per-target refits with the static smoother.</li>
+        <li><code>results/rtx-5060-sfh-fastpath-comparison/</code> — baseline vs fastpath_a SFH basis (<code>comparison.csv</code>, <code>comparison.json</code>).</li>
+        <li><code>results/rtx-5090-nss-default-variation-vs-fastpath-a/</code> — sampler variation runs.</li>
+        <li><code>results/rtx-5090-integrated-fit/</code> — single integrated photometry+spectra fit.</li>
+        <li><code>results/rtx-4070-super-four-galaxy-fits/</code> — four-galaxy GPU run (<code>run_manifest.json</code>).</li>
+        <li><code>results/a100-feature-spectrum/</code>, <code>results/a100-integrated-fit-notebook/</code> — A100 test notebooks.</li>
+        <li><code>results/absorption-mask/</code> — 45-fit mask grid behind the absorption page.</li>
+      </ul>
     </section>
 
     <section id="benchmarks">
@@ -106,10 +154,13 @@
     </section>
 
     <section id="evidence">
-      <h2>Evidence</h2>
+      <h2>Artifacts</h2>
       <ul>
-        <li>Board source: this page; figure scripts under <code>scripts/plot_*.py</code>; loader <code>scripts/build_dr2_quiescent_summary.py</code>.</li>
-        <li>Superseded figures: <code>wiki/analyses/_old/</code>. Bridge review copies: hermes <code>reports/ceridwen-plots/</code> (candidates, audit).</li>
+        <li>PDFs: <a href="dr2-quiescent-sample/headline-age-redshift.pdf">headline</a>, <a href="dr2-quiescent-sample/distributions-1d.pdf">distributions</a>, <a href="dr2-quiescent-sample/fit-quality.pdf">quality</a>, <a href="dr2-quiescent-sample/dt-vs-formation-epoch.pdf">dt-epoch</a>, <a href="dr2-quiescent-sample/dt-vs-mass.pdf">dt-mass</a>, <a href="dr2-quiescent-sample/dt-vs-alpha.pdf">dt-alpha</a>, <a href="../../results/figures/borghi2022-age-vs-z.pdf">borghi comparison</a>.</li>
+        <li>CSVs: <a href="../../results/dr2-quiescent-summary.csv">dr2-quiescent-summary.csv</a>, <a href="../../results/calibration-polynomial-2026-09-02/arms.csv">calibration arms.csv</a>, <a href="../../results/rtx-5060-sfh-fastpath-comparison/comparison.csv">fastpath comparison.csv</a>.</li>
+        <li>Notebooks: <a href="../../results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb">chronometer</a>, <a href="../../results/calibration-polynomial-2026-09-02/analysis.ipynb">calibration analysis</a>, <a href="../../results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb">integrated fit</a>.</li>
+        <li>Scripts: <code>scripts/build_dr2_quiescent_summary.py</code>, <code>scripts/plot_dr2_headline_candidates.py</code>, <code>scripts/plot_dr2_distributions_quality.py</code>, <code>scripts/plot_dr2_formation_timescale.py</code>, <code>scripts/plot_borghi2022_age_vs_z.py</code>, <code>scripts/absorption_mask_report.py</code>.</li>
+        <li>Reports: hermes <code>reports/ceridwen-plots/</code> (candidates A/B/C, audit, Borghi PDF/PNG). Superseded figures: <code>wiki/analyses/_old/</code>.</li>
       </ul>
     </section>
   </main>

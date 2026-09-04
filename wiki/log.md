@@ -399,3 +399,8 @@
 
 - Pages: `analyses/ceridwen-results.html`, `index.html`, `index.md`
 - Change: New single landing page for every Ceridwen analysis output (DR2 final set, Borghi comparison, summary CSV, absorption mask, calibration polynomial, GPU benchmarks, chronometer notebook) with inline figures, artifact links, a push-state/open-decision table, and a Results entry in the index route and sections.
+
+## [2026-09-04] analysis | Results board repair: full audit, true push states
+
+- Pages: `analyses/ceridwen-results.html`
+- Change: Inlined the omitted dt-mass/dt-alpha, all four absorption-mask, and all five calibration plots; added a directory-level related-fit-runs section and a PDF/CSV/notebook/script artifact list; split the calibration row into pushed tilt-origin branch verdict (`85c1e4a`) vs untracked local dir; stated the board's own unpushed state. GitHub search confirms plain-HTML/no-framework dashboards are the common pattern, matching this wiki's existing shell.
