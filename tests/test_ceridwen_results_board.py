@@ -163,25 +163,82 @@ class TestCeridwenResultsBoard(unittest.TestCase):
         findings, _ = html_text_lint.lint_html(self.board_html)
         self.assertEqual(len(findings), 0, f"Expected 0 text lint issues, found {len(findings)}: {findings}")
 
-    def test_facts_and_numbers_preserved(self):
-        """Verify all numbers, galaxy IDs, commits, and links from Git HEAD are preserved."""
-        import subprocess
-        res = subprocess.run(['git', 'show', 'HEAD:wiki/analyses/ceridwen-results.html'], capture_output=True, text=True, check=True)
-        orig_html = res.stdout
-        orig_numbers = set(re.findall(r'\d+(?:\.\d+)?%?', orig_html))
-        new_numbers = set(re.findall(r'\d+(?:\.\d+)?%?', self.board_html))
-        missing_numbers = orig_numbers - new_numbers
-        self.assertEqual(len(missing_numbers), 0, f"Numbers in original but missing from new: {missing_numbers}")
+    # Stable authoritative baseline for science-meaning preservation.
+    # This explicit manifest replaces any comparison against a moving Git
+    # HEAD. Every pattern below must match the regenerated board at least
+    # once, and every listed defect string must be absent. Change this list
+    # only together with a matching science audit of the source artifacts.
+    PROTECTED_NUMBER_PATTERNS = [
+        r'\b187\b', r'\b0\.73\b', r'\b3\.02\b', r'\b2\.46\b',
+        r'\b2\.69\b', r'\+0\.26\b', r'\b140\b', r'\b68\b',
+        r'\b1\.26\b', r'\b1\.48\b', r'\+0\.4%', r'\b0\.00\b', r'\b1\.0 to 1\.6\b',
+        r'\b61\.4 percent\b', r'\b1389\b', r'\b3602\b', r'\b2213\b',
+        r'\b12 synthetic configurations\b',
+        r'\b12 fit variants\b', r'\b23 calibration variants\b',
+        r'\b4\.65 Gyr\b', r'\b0\.3-mag\b', r'\b1000 km/s\b',
+    ]
+    PROTECTED_PHRASES = [
+        'Gyr', 'km/s', 'mag', 'Caveat:', 'median', 'credible',
+        'percentile', 'uncertainty', 'error bars', 'NMAD',
+        '68-galaxy', '7-bin', 'Choose whether',
+        'remains pushed and tested', 'PDF Vector',
+        'dr2-quiescent-sample/distributions-1d.png',
+        'absorption-mask/feature_windows_M5_172669.png',
+        'checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html',
+        'tilt-origin-2026-09-02/arms.csv',
+        '&minus;20%', '&minus;16% to &minus;24%',
+        '22 full-spectrum sigma',
+    ]
+    # Exact false claims reported by review; the test must fail if any return.
+    KNOWN_DEFECTS_ABSENT = [
+        'exclude 88%', '88% of valid spectral pixels',
+        'effective sample size compared across objects',
+        'Error bars mark the 16th to 84th percentile uncertainty interval',
+        'Histograms show the 16th to 84th percentile credible range',
+        'against model prior bounds',
+        'Error contours define the 68% and 95%',
+        'Ellipses mark 68%', 'eight calibration variants',
+        'up to 0.4 Gyr', 'across 12 bands', '30 angstrom',
+        'Error vectors show measurement flux uncertainty',
+        'Shaded regions show the 16th to 84th percentile',
+        'Shaded bands represent photometric uncertainty errors',
+        'Error bars display the 16th to 84th percentile credible interval',
+        'Error bars show 1-sigma measurement uncertainty',
+        'Corner contours', 'across 25 synthetic', 'by 1.1 to 1.6 times',
+        'passes all tests on origin', 'successful convergence',
+        'sky line residuals',
+    ]
 
-        orig_ids = set(re.findall(r'(?:M[1-9]|M1[0-5]|IA679|\d{5,6})', orig_html))
-        new_ids = set(re.findall(r'(?:M[1-9]|M1[0-5]|IA679|\d{5,6})', self.board_html))
-        missing_ids = orig_ids - new_ids
-        self.assertEqual(len(missing_ids), 0, f"Galaxy IDs in original but missing from new: {missing_ids}")
-
-        orig_commits = set(re.findall(r'[0-9a-f]{7,40}', orig_html))
-        new_commits = set(re.findall(r'[0-9a-f]{7,40}', self.board_html))
-        missing_commits = orig_commits - new_commits
-        self.assertEqual(len(missing_commits), 0, f"Commits in original but missing from new: {missing_commits}")
+    def test_protected_facts_preserved(self):
+        """Every protected number, unit, sign, qualifier, uncertainty term,
+        decision modality marker, artifact path, and required link must be
+        present, and every known reviewer-reported defect must be absent."""
+        for pattern in self.PROTECTED_NUMBER_PATTERNS:
+            with self.subTest(pattern=pattern):
+                found = re.findall(pattern, self.board_html)
+                self.assertGreater(
+                    len(found), 0,
+                    f"Protected pattern {pattern!r} matches nothing in the board.")
+        for phrase in self.PROTECTED_PHRASES:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, self.board_html,
+                              f"Protected phrase {phrase!r} missing from the board.")
+        self.assertGreaterEqual(
+            self.board_html.count('Caveat:'), 19,
+            "Every plot caption must keep its Caveat qualifier.")
+        self.assertGreaterEqual(
+            self.board_html.count('Choose whether'), 6,
+            "Neutral decision modality must be kept.")
+        for defect in self.KNOWN_DEFECTS_ABSENT:
+            with self.subTest(defect=defect):
+                self.assertNotIn(
+                    defect, self.board_html,
+                    f"Reviewer-reported defect is present: {defect!r}.")
+        animation = (WIKI_BASE / "checkpoint-animation"
+                     / "ceridwen-checkpoint-spectrum-evolution.html").read_text(
+                         encoding="utf-8")
+        self.assertIn('The viewer compares it with', animation)
+        self.assertNotIn('It is compared with', animation)
 
     def test_local_server_health(self):
         """Verify local loopback HTTP server returns 200 for wiki pages."""

@@ -421,7 +421,7 @@ def build_board_html(manifest: dict) -> str:
                 <a href="{items_by_id['absorption-results-dir']['wiki_relative_path']}">Grid Results</a>
               </td>
               <td>{format_badge(True)} <code>7dae142</code></td>
-              <td>Confirm default OFF, line list, and feature window.</td>
+              <td>Choose whether to keep default OFF, including line list and feature window.</td>
             </tr>
             <tr>
               <td><strong>Calibration &amp; Tilt Origin</strong></td>
@@ -432,7 +432,7 @@ def build_board_html(manifest: dict) -> str:
                 <a href="{items_by_id['tilt-origin-results-dir']['wiki_relative_path']}">Tilt Results</a>
               </td>
               <td>{format_badge(True)} <code>85c1e4a</code></td>
-              <td>1. Accept corrected photometry and order-3 poly for 187 galaxies.<br>2. Investigate young-galaxy 0.3-mag optical-to-NIR mismatch first.<br>3. Merge branch <code>calibration-polynomial</code>.</td>
+              <td>1. Choose whether to accept corrected photometry and order-3 poly for 187 galaxies.<br>2. Choose whether to investigate young-galaxy 0.3-mag optical-to-NIR mismatch first.<br>3. Choose whether to merge branch <code>calibration-polynomial</code>.</td>
             </tr>
             <tr>
               <td><strong>Formation Timescales</strong></td>
@@ -562,9 +562,9 @@ def build_board_html(manifest: dict) -> str:
       <div class="action-box">
         <strong>Decisions waiting on Liu Hao:</strong>
         <ul>
-          <li><strong>Accept corrected photometry for production.</strong> Corrected aperture photometry with an order-3 polynomial and 12 bands eliminates M4's &minus;20% tilt (residual +0.4%). It also normalizes scale offsets.</li>
-          <li><strong>Investigate young-galaxy (M5) optical-to-NIR mismatch first.</strong> A 0.3-mag optical-NIR model tension with dust degeneracy drives M5's residual tilt (&minus;16% to &minus;24%).</li>
-          <li><strong>Merge branch <code>calibration-polynomial</code>.</strong> The branch <code>85c1e4a</code> passes all tests on origin. Merge the branch after Liu Hao approves the strategy for 187 galaxies.</li>
+          <li><strong>Choose whether to accept corrected photometry for production.</strong> Corrected aperture photometry with an order-3 polynomial and 12 bands eliminates M4's &minus;20% tilt (residual +0.4%). It also normalizes scale offsets.</li>
+          <li><strong>Choose whether to investigate young-galaxy (M5) optical-to-NIR mismatch first.</strong> A 0.3-mag optical-NIR model tension with dust degeneracy drives M5's residual tilt (&minus;16% to &minus;24%).</li>
+          <li><strong>Choose whether to merge branch <code>calibration-polynomial</code>.</strong> The branch <code>85c1e4a</code> remains pushed and tested. Merge the branch after Liu Hao approves the strategy for 187 galaxies.</li>
         </ul>
       </div>
     </section>
