@@ -59,7 +59,7 @@ def note_job(note_path: Path) -> str:
     head = note_path.read_text(encoding="utf-8").split("---", 2)
     if len(head) < 3:
         return ""
-    m = re.search(r"^job:\s*(\S+)\s*$", head[1], re.M)
+    m = re.search(r"^job:[^\S\n]*(\S+)[^\S\n]*$", head[1], re.M)
     return m.group(1) if m else ""
 
 
