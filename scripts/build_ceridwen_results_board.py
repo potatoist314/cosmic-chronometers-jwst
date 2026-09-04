@@ -52,7 +52,7 @@ def build_board_html(manifest: dict) -> str:
             s_item = items_by_id[script_id]
             script_link = f' · <a href="{html.escape(s_item["wiki_relative_path"])}">Script</a>'
 
-        alt_text = html.escape(f"{png_item['title']}: {png_item['conclusion']}")
+        alt_text = html.escape(f"{png_item['title']}. {png_item['conclusion']}")
 
         return f'''
         <figure class="plot-card" id="{html.escape(png_id)}">
@@ -60,8 +60,8 @@ def build_board_html(manifest: dict) -> str:
             <img src="{png_src}" alt="{alt_text}" loading="lazy">
           </a>
           <figcaption>
-            <strong>{title}</strong>
-            <p>{caption}</p>
+            <strong>{title}.</strong>
+            {caption}
           </figcaption>
           <div class="plot-links">
             <span>{badge}</span>
@@ -139,6 +139,7 @@ def build_board_html(manifest: dict) -> str:
     .board-nav {{
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 0.5rem;
       margin: 1.5rem 0 2rem;
       padding: 0.75rem 1rem;
@@ -147,7 +148,24 @@ def build_board_html(manifest: dict) -> str:
       border-radius: 6px;
       font-size: 0.88rem;
     }}
+    .board-nav-title {{
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }}
+    .board-nav-list {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }}
+    .board-nav-list li {{
+      margin: 0;
+      padding: 0;
+    }}
     .board-nav a {{
+      display: inline-block;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
       text-decoration: none;
@@ -175,9 +193,12 @@ def build_board_html(manifest: dict) -> str:
       font-size: 1rem;
     }}
     .callout p {{
-      margin: 0;
+      margin: 0 0 0.5rem;
       font-size: 0.92rem;
       line-height: 1.5;
+    }}
+    .callout p:last-child {{
+      margin-bottom: 0;
     }}
     .badge {{
       display: inline-block;
@@ -284,6 +305,18 @@ def build_board_html(manifest: dict) -> str:
     .action-box li {{
       margin-bottom: 0.35rem;
     }}
+    .glossary-list dt {{
+      font-weight: 600;
+      margin-top: 0.65rem;
+    }}
+    .glossary-list dt:first-child {{
+      margin-top: 0;
+    }}
+    .glossary-list dd {{
+      margin-left: 0;
+      margin-bottom: 0.45rem;
+      color: var(--ink);
+    }}
     @media (max-width: 600px) {{
       .plot-grid {{
         grid-template-columns: 1fr;
@@ -318,23 +351,26 @@ def build_board_html(manifest: dict) -> str:
 
     <div class="callout callout-alert">
       <h3>Corrected Calibration Science (Authoritative Audit)</h3>
-      <p><strong>Flux ratio sign:</strong> DR2 spectra are <em>brighter</em> than production COSMOS2015 3-arcsecond aperture photometry, with in-band spectrum-to-photometry ratios of 1.26 to 1.48 outside IA679. Production fits sample scale factors of 1.24 and 1.49.<br>
-      <strong>Tilt origin:</strong> Corrected photometry drives scale factors to 0.99 and 0.92 and removes both scale offset and M4's polynomial tilt. Residual M4 tilt shifts from &minus;20% to +0.4%. M5 retains a &minus;20% tilt due to dust-polynomial degeneracy driven by an underlying 0.3-mag optical-to-NIR stellar population model mismatch.</p>
+      <p><strong>Flux ratio sign.</strong> DR2 spectra are <em>brighter</em> than production COSMOS2015 3-arcsecond aperture photometry. In-band spectrum-to-photometry ratios range from 1.26 to 1.48 outside IA679. Production fits sample scale factors of 1.24 and 1.49.</p>
+      <p><strong>Tilt origin.</strong> Corrected photometry drives scale factors to 0.99 and 0.92. This correction removes both scale offset and M4's polynomial tilt. Residual M4 tilt shifts from &minus;20% to +0.4%. M5 retains a &minus;20% tilt from dust-polynomial degeneracy caused by a 0.3-mag optical-to-NIR model mismatch.</p>
     </div>
 
     <nav class="board-nav" aria-label="Results Board Navigation">
-      <strong>Sections:</strong>
-      <a href="#summary-status">Status at a Glance</a>
-      <a href="#dr2-sample">187-Galaxy DR2 Results</a>
-      <a href="#borghi-age-z">Borghi Age vs Redshift</a>
-      <a href="#absorption-mask">Absorption Mask</a>
-      <a href="#calibration-tilt">Calibration &amp; Tilt Origin</a>
-      <a href="#formation-timescales">Formation Timescales</a>
-      <a href="#fit-quality">Fit Quality</a>
-      <a href="#performance">Performance &amp; Production</a>
-      <a href="#checkpoint-anim">Checkpoint Animation</a>
-      <a href="#related-runs">Related Runs</a>
-      <a href="#manifest-index">Complete Artifact Catalog (79)</a>
+      <span class="board-nav-title"><strong>Sections:</strong></span>
+      <ul class="board-nav-list">
+        <li><a href="#summary-status">Status at a Glance</a></li>
+        <li><a href="#glossary">Scientific Glossary</a></li>
+        <li><a href="#dr2-sample">187-Galaxy DR2 Results</a></li>
+        <li><a href="#borghi-age-z">Borghi Age vs Redshift</a></li>
+        <li><a href="#absorption-mask">Absorption Mask</a></li>
+        <li><a href="#calibration-tilt">Calibration &amp; Tilt Origin</a></li>
+        <li><a href="#formation-timescales">Formation Timescales</a></li>
+        <li><a href="#fit-quality">Fit Quality</a></li>
+        <li><a href="#performance">Performance &amp; Production</a></li>
+        <li><a href="#checkpoint-anim">Checkpoint Animation</a></li>
+        <li><a href="#related-runs">Related Runs</a></li>
+        <li><a href="#manifest-index">Complete Artifact Catalog (79)</a></li>
+      </ul>
     </nav>
 
     <!-- SECTION 1: STATUS AT A GLANCE -->
@@ -366,7 +402,7 @@ def build_board_html(manifest: dict) -> str:
             </tr>
             <tr>
               <td><strong>Borghi+2022 Age vs z</strong></td>
-              <td>Ceridwen medians stay flat near 3.0 Gyr, averaging +0.26 Gyr above re-binned N=140 Borghi catalogue. Velocity dispersion split is weak.</td>
+              <td>Ceridwen medians stay flat near 3.0 Gyr, averaging +0.26 Gyr above re-binned N=140 Borghi catalogue. Velocity dispersion split shows a weak gradient.</td>
               <td>
                 <a href="{items_by_id['borghi-age-redshift-png']['wiki_relative_path']}">Figure PNG</a> · 
                 <a href="{items_by_id['borghi-age-redshift-pdf']['wiki_relative_path']}">Vector PDF</a> · 
@@ -395,11 +431,11 @@ def build_board_html(manifest: dict) -> str:
                 <a href="{items_by_id['tilt-origin-results-dir']['wiki_relative_path']}">Tilt Results</a>
               </td>
               <td>{format_badge(True)} <code>85c1e4a</code></td>
-              <td>1. Accept corrected photometry and order-3 poly for 187 galaxies?<br>2. Investigate young-galaxy 0.3-mag optical-to-NIR mismatch first?<br>3. Merge branch <code>calibration-polynomial</code>?</td>
+              <td>1. Accept corrected photometry and order-3 poly for 187 galaxies.<br>2. Investigate young-galaxy 0.3-mag optical-to-NIR mismatch first.<br>3. Merge branch <code>calibration-polynomial</code>.</td>
             </tr>
             <tr>
               <td><strong>Formation Timescales</strong></td>
-              <td>Median &Delta;t = 2.46 Gyr. Flat across formation epoch. Spearman correlation with mass and [&alpha;/Fe] is 0.00 in 7-bin SFH.</td>
+              <td>Median &Delta;t is 2.46 Gyr. Flat across formation epoch. Spearman correlation with mass and [&alpha;/Fe] is 0.00 in 7-bin SFH.</td>
               <td>
                 <a href="{items_by_id['dr2-timescale-epoch-png']['wiki_relative_path']}">Epoch PNG</a> · 
                 <a href="{items_by_id['dr2-timescale-mass-png']['wiki_relative_path']}">Mass PNG</a> · 
@@ -443,6 +479,25 @@ def build_board_html(manifest: dict) -> str:
       </div>
     </section>
 
+    <!-- SECTION: SCIENTIFIC GLOSSARY -->
+    <section id="glossary">
+      <h2>Scientific terms and definitions</h2>
+      <div class="action-box">
+        <dl class="glossary-list">
+          <dt><strong>Mass-weighted age:</strong></dt>
+          <dd>The mean stellar age weighted by the stellar mass formed in each lookback time interval.</dd>
+          <dt><strong>Posterior:</strong></dt>
+          <dd>The probability distribution of stellar population parameters given the observed spectra, photometry, and priors.</dd>
+          <dt><strong>Credible interval:</strong></dt>
+          <dd>The parameter range containing a stated posterior probability fraction between designated percentiles.</dd>
+          <dt><strong>NMAD (Normalized Median Absolute Deviation):</strong></dt>
+          <dd>A scatter estimator defined as 1.4826 times the median absolute deviation from the sample median.</dd>
+          <dt><strong>Delta-t (&Delta;t):</strong></dt>
+          <dd>The stellar mass assembly interval t20 &minus; t80 during which the middle 60% of galaxy stellar mass formed.</dd>
+        </dl>
+      </div>
+    </section>
+
     <!-- SECTION 2: 187-GALAXY DR2 RESULTS -->
     <section id="dr2-sample">
       <h2>187-galaxy DR2 quiescent sample (final set)</h2>
@@ -452,7 +507,7 @@ def build_board_html(manifest: dict) -> str:
         {plot_card('dr2-headline-png', 'dr2-headline-pdf', 'dr2-headline-script')}
         {plot_card('dr2-distributions-png', 'dr2-distributions-pdf')}
       </div>
-      <p style="font-size: 0.88rem; color: var(--muted);"><em>Scientific caveat:</em> The 7-bin SFH basis limits fine temporal resolution. Mass-weighted ages reflect non-parametric composite populations and are not direct analogs of Borghi SSP-equivalent Lick ages.</p>
+      <p style="font-size: 0.88rem; color: var(--muted);"><strong>Scientific caveat.</strong> The coarse 7-bin SFH basis limits fine temporal resolution. Mass-weighted ages reflect non-parametric composite populations. These values do not directly match Borghi SSP-equivalent Lick ages.</p>
     </section>
 
     <!-- SECTION 3: BORGHI AGE VERSUS REDSHIFT -->
@@ -463,7 +518,7 @@ def build_board_html(manifest: dict) -> str:
       <div class="plot-grid">
         {plot_card('borghi-age-redshift-png', 'borghi-age-redshift-pdf', 'borghi-plot-script')}
       </div>
-      <p style="font-size: 0.88rem; color: var(--muted);"><em>Finding:</em> Ceridwen mass-weighted ages stay flat near 3.0 Gyr from z=0.6 to z=0.9, averaging +0.26 Gyr above re-binned Borghi values. The velocity dispersion split (&sigma; &lt; 215 km/s vs &sigma; &ge; 215 km/s) is weak compared to Borghi's reported gradient.</p>
+      <p style="font-size: 0.88rem; color: var(--muted);"><strong>Finding.</strong> Ceridwen mass-weighted ages stay flat near 3.0 Gyr from z=0.6 to z=0.9. They average +0.26 Gyr above re-binned Borghi values. The velocity dispersion split (&sigma; &lt; 215 km/s versus &sigma; &ge; 215 km/s) shows a smaller difference than the gradient in Borghi+2022.</p>
     </section>
 
     <!-- SECTION 4: ABSORPTION-LINE MASK -->
@@ -479,10 +534,10 @@ def build_board_html(manifest: dict) -> str:
       </div>
       
       <div class="action-box">
-        <strong>Recommendation &amp; Open Decisions:</strong>
+        <strong>Recommendation and open decisions:</strong>
         <ul>
-          <li><strong>Recommendation:</strong> Keep mask <strong>OFF</strong> by default for production fits. Feature-only and down-weighted modes retain continuum tilt bias. They widen posteriors by 1.1&ndash;1.6&times; and perturb real galaxy posteriors by up to 22 full-spectrum &sigma;.</li>
-          <li><strong>Decisions for Liu Hao:</strong> Confirm keeping mask off as production default. Choose whether to retain or revise the specific absorption line list and window widths.</li>
+          <li><strong>Recommendation.</strong> Keep mask <strong>OFF</strong> by default for production fits. Feature-only and down-weighted modes retain continuum tilt bias. They widen posteriors by 1.1&ndash;1.6&times; and perturb real galaxy posteriors by up to 22 full-spectrum &sigma;.</li>
+          <li><strong>Decisions for Liu Hao.</strong> Confirm keeping mask off as production default. Choose whether to retain or revise the specific absorption line list and window widths.</li>
         </ul>
       </div>
     </section>
@@ -504,11 +559,11 @@ def build_board_html(manifest: dict) -> str:
       </div>
 
       <div class="action-box">
-        <strong>Decisions Waiting on Liu Hao:</strong>
+        <strong>Decisions waiting on Liu Hao:</strong>
         <ul>
-          <li><strong>Accept corrected photometry for production?</strong> Adopting corrected aperture photometry plus an order-3 polynomial and 12 bands eliminates M4's &minus;20% tilt (residual +0.4%). It also normalizes scale offsets.</li>
-          <li><strong>Investigate young-galaxy (M5) optical-to-NIR mismatch first?</strong> M5's residual tilt (&minus;16% to &minus;24%) is driven by a 0.3-mag optical-NIR model tension with dust degeneracy.</li>
-          <li><strong>Merge branch <code>calibration-polynomial</code>?</strong> Branch <code>85c1e4a</code> is pushed and tested. Merge once the strategy for 187 galaxies is accepted.</li>
+          <li><strong>Accept corrected photometry for production.</strong> Corrected aperture photometry with an order-3 polynomial and 12 bands eliminates M4's &minus;20% tilt (residual +0.4%). It also normalizes scale offsets.</li>
+          <li><strong>Investigate young-galaxy (M5) optical-to-NIR mismatch first.</strong> A 0.3-mag optical-NIR model tension with dust degeneracy drives M5's residual tilt (&minus;16% to &minus;24%).</li>
+          <li><strong>Merge branch <code>calibration-polynomial</code>.</strong> The branch <code>85c1e4a</code> passes all tests on origin. Merge the branch after Liu Hao approves the strategy for 187 galaxies.</li>
         </ul>
       </div>
     </section>
@@ -516,14 +571,14 @@ def build_board_html(manifest: dict) -> str:
     <!-- SECTION 6: FORMATION TIMESCALES -->
     <section id="formation-timescales">
       <h2>Formation timescales (&Delta;t)</h2>
-      <p>Analysis script: <a href="{items_by_id['dr2-timescale-script']['wiki_relative_path']}">scripts/plot_dr2_formation_timescale.py</a>. Mass assembly interval &Delta;t is defined as t20 &minus; t80 (the lookback time interval during which the middle 60% of stellar mass was formed).</p>
+      <p>Analysis script: <a href="{items_by_id['dr2-timescale-script']['wiki_relative_path']}">scripts/plot_dr2_formation_timescale.py</a>. The mass assembly interval &Delta;t equals t20 &minus; t80. This value measures the lookback time interval during which the middle 60% of stellar mass formed.</p>
 
       <div class="plot-grid">
         {plot_card('dr2-timescale-epoch-png', 'dr2-timescale-epoch-pdf', 'dr2-timescale-script')}
         {plot_card('dr2-timescale-mass-png', 'dr2-timescale-mass-pdf', 'dr2-timescale-script')}
         {plot_card('dr2-timescale-alpha-png', 'dr2-timescale-alpha-pdf', 'dr2-timescale-script')}
       </div>
-      <p style="font-size: 0.88rem; color: var(--muted);"><em>Finding:</em> Median &Delta;t is 2.46 Gyr across the sample. There is no significant correlation between &Delta;t and stellar mass (Spearman 0.00) or [&alpha;/Fe] (Spearman 0.00). Timescales remain constrained by the coarseness of the 7-bin SFH basis.</p>
+      <p style="font-size: 0.88rem; color: var(--muted);"><strong>Finding.</strong> Median &Delta;t is 2.46 Gyr across the sample. There is no significant correlation between &Delta;t and stellar mass (Spearman 0.00) or [&alpha;/Fe] (Spearman 0.00). The coarse 7-bin SFH basis constrains timescale resolution.</p>
     </section>
 
     <!-- SECTION 7: FIT QUALITY -->
@@ -534,7 +589,7 @@ def build_board_html(manifest: dict) -> str:
       <div class="plot-grid">
         {plot_card('dr2-fit-quality-png', 'dr2-fit-quality-pdf', 'dr2-distribution-quality-script')}
       </div>
-      <p style="font-size: 0.88rem; color: var(--muted);"><em>Finding:</em> Zero sampling failures (187/187 completed). The worst joint &chi;&sup2;/&nu; values are 2.69 (galaxy 139662), 2.55 (galaxy 253688), and 2.34 (galaxy 101089).</p>
+      <p style="font-size: 0.88rem; color: var(--muted);"><strong>Finding.</strong> Zero sampling failures (187/187 completed). The worst joint &chi;&sup2;/&nu; values are 2.69 (galaxy 139662), 2.55 (galaxy 253688), and 2.34 (galaxy 101089).</p>
     </section>
 
     <!-- SECTION 8: PERFORMANCE AND PRODUCTION -->
@@ -614,7 +669,7 @@ def build_board_html(manifest: dict) -> str:
       <h2>Interactive checkpoint spectrum evolution</h2>
       <div class="callout callout-info">
         <h3>Payload-preserving interactive viewer</h3>
-        <p>The viewer uses the byte-identical accepted checkpoint payload. Its controls, legend, spectrum, residual, and axis labels fit desktop and phone viewports. It displays Effective Sample Size (ESS, independent posterior samples), Bayesian log-evidence (logZ, marginal likelihood), and the converged rescue posterior (nested sampling solution after sampler convergence).</p>
+        <p>The viewer uses the byte-identical accepted checkpoint payload. Its controls, legend, spectrum, residual, and axis labels fit desktop and phone viewports. It displays Effective Sample Size (ESS, independent posterior samples) and Bayesian log-evidence (logZ, marginal likelihood). It also presents the converged rescue posterior (nested sampling solution after sampler convergence).</p>
       </div>
 
       <p><a data-host-check="checkpoint-animation" href="checkpoint-animation/ceridwen-checkpoint-spectrum-evolution.html">Open the hosted checkpoint viewer</a>. The underlying nested sampling implementation and test modules remain available in the codebase:</p>
@@ -632,8 +687,8 @@ def build_board_html(manifest: dict) -> str:
       <h2>Related fit runs and exploratory suites</h2>
       <p>Exploratory and benchmark fit runs accessible at directory level:</p>
       <ul>
-        <li><a href="{items_by_id['static-smoothing-refits-dir']['wiki_relative_path']}">results/refit-static-smoothing/</a> &mdash; Per-target refits utilizing the static smoother {format_badge(items_by_id['static-smoothing-refits-dir']['pushed'])}.</li>
-        <li><a href="{items_by_id['sfh-fastpath-comparison-dir']['wiki_relative_path']}">results/rtx-5060-sfh-fastpath-comparison/</a> &mdash; Baseline vs fastpath_a SFH basis comparison {format_badge(items_by_id['sfh-fastpath-comparison-dir']['pushed'])}.</li>
+        <li><a href="{items_by_id['static-smoothing-refits-dir']['wiki_relative_path']}">results/refit-static-smoothing/</a> &mdash; Per-target refits using the static smoother {format_badge(items_by_id['static-smoothing-refits-dir']['pushed'])}.</li>
+        <li><a href="{items_by_id['sfh-fastpath-comparison-dir']['wiki_relative_path']}">results/rtx-5060-sfh-fastpath-comparison/</a> &mdash; Baseline versus fastpath_a SFH basis comparison {format_badge(items_by_id['sfh-fastpath-comparison-dir']['pushed'])}.</li>
         <li><a href="{items_by_id['nss-default-variation-dir']['wiki_relative_path']}">results/rtx-5090-nss-default-variation-vs-fastpath-a/</a> &mdash; BlackJAX NSS sampler configuration variations {format_badge(items_by_id['nss-default-variation-dir']['pushed'])}.</li>
         <li><a href="{items_by_id['rtx5090-integrated-fit-dir']['wiki_relative_path']}">results/rtx-5090-integrated-fit/</a> &mdash; Executed single integrated photometry+spectra fit {format_badge(items_by_id['rtx5090-integrated-fit-dir']['pushed'])}.</li>
         <li><a href="{items_by_id['rtx4070-four-fit-dir']['wiki_relative_path']}">results/rtx-4070-super-four-galaxy-fits/</a> &mdash; Four-galaxy GPU validation run and checkpoint host {format_badge(items_by_id['rtx4070-four-fit-dir']['pushed'])}.</li>
@@ -702,7 +757,7 @@ def build_board_html(manifest: dict) -> str:
 
 
 def main() -> None:
-    manifest_data = json.loads(MANIFEST_PATH.read_text())
+    manifest_data = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     html_content = build_board_html(manifest_data)
     BOARD_PATH.write_text(html_content, encoding="utf-8")
     print(f"Wrote Ceridwen results board to {BOARD_PATH} ({len(html_content)} bytes)")

@@ -152,6 +152,37 @@ class TestCeridwenResultsBoard(unittest.TestCase):
             resolved = (WIKI_BASE / link).resolve()
             self.assertTrue(resolved.exists(), f"Relative link '{link}' does not exist on disk (resolved to {resolved}).")
 
+
+    def test_html_text_lint_passes(self):
+        """Verify the board HTML passes the structural HTML visible-text lint with zero issues."""
+        import sys
+        bridge_dir = Path('/Users/liuhao/.claude/scripts/hermes-bridge')
+        if str(bridge_dir) not in sys.path:
+            sys.path.insert(0, str(bridge_dir))
+        import html_text_lint
+        findings, _ = html_text_lint.lint_html(self.board_html)
+        self.assertEqual(len(findings), 0, f"Expected 0 text lint issues, found {len(findings)}: {findings}")
+
+    def test_facts_and_numbers_preserved(self):
+        """Verify all numbers, galaxy IDs, commits, and links from Git HEAD are preserved."""
+        import subprocess
+        res = subprocess.run(['git', 'show', 'HEAD:wiki/analyses/ceridwen-results.html'], capture_output=True, text=True, check=True)
+        orig_html = res.stdout
+        orig_numbers = set(re.findall(r'\d+(?:\.\d+)?%?', orig_html))
+        new_numbers = set(re.findall(r'\d+(?:\.\d+)?%?', self.board_html))
+        missing_numbers = orig_numbers - new_numbers
+        self.assertEqual(len(missing_numbers), 0, f"Numbers in original but missing from new: {missing_numbers}")
+
+        orig_ids = set(re.findall(r'(?:M[1-9]|M1[0-5]|IA679|\d{5,6})', orig_html))
+        new_ids = set(re.findall(r'(?:M[1-9]|M1[0-5]|IA679|\d{5,6})', self.board_html))
+        missing_ids = orig_ids - new_ids
+        self.assertEqual(len(missing_ids), 0, f"Galaxy IDs in original but missing from new: {missing_ids}")
+
+        orig_commits = set(re.findall(r'[0-9a-f]{7,40}', orig_html))
+        new_commits = set(re.findall(r'[0-9a-f]{7,40}', self.board_html))
+        missing_commits = orig_commits - new_commits
+        self.assertEqual(len(missing_commits), 0, f"Commits in original but missing from new: {missing_commits}")
+
     def test_local_server_health(self):
         """Verify local loopback HTTP server returns 200 for wiki pages."""
         try:
