@@ -394,3 +394,8 @@
 
 - Pages: `analyses/dr2-quiescent-sample.html`, `index.md`
 - Change: Published the final 187-galaxy figure set in the chosen layout B (single age–redshift panel with Ceridwen−Borghi residual strip): headline, three formation-timescale plots, 1D distributions, and fit-quality panel, all rendered from `results/dr2-quiescent-summary.csv` into `analyses/dr2-quiescent-sample/` (PNG + PDF). Superseded embedded chronometer figures backed up under `analyses/_old/`.
+
+## [2026-09-04] analysis | Ceridwen results board
+
+- Pages: `analyses/ceridwen-results.html`, `index.html`, `index.md`
+- Change: New single landing page for every Ceridwen analysis output (DR2 final set, Borghi comparison, summary CSV, absorption mask, calibration polynomial, GPU benchmarks, chronometer notebook) with inline figures, artifact links, a push-state/open-decision table, and a Results entry in the index route and sections.

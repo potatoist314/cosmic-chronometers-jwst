@@ -56,3 +56,4 @@ The codebase pages explain the Ceridwen methods beside their implementations.
 - `analyses/ceridwen-gpu-benchmarks.html` — Compares speed, cost, memory, and hardware behaviour across forty-nine measured GPU runs stored under `benchmarks/`.
 - `analyses/absorption-line-mask.html` — Draft. Tests whether fitting only absorption-feature pixels (dropped or down-weighted continuum) improves Ceridwen accuracy on mocks with continuum-calibration tilts and on three DR2 targets.
 - `analyses/dr2-quiescent-sample.html` — Paper-quality figure set for the 187-galaxy DR2 quiescent run: age–redshift headline, formation timescales, distributions, fit quality.
+- `analyses/ceridwen-results.html` — Results board: every Ceridwen output with artifact links, push state, and open decisions.

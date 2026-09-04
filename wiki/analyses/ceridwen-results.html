@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="wiki-type" content="analysis">
+  <meta name="wiki-status" content="current">
+  <meta name="wiki-updated" content="2026-09-04">
+  <title>Ceridwen Results Board</title>
+  <link rel="stylesheet" href="../assets/wiki.css">
+  <style>
+    figure img { max-width: 100%; height: auto; }
+    .num { text-align: right; }
+    table.status td:first-child { white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="../index.html">
+        <span class="site-mark">AR</span>
+        <span>Astro Research Wiki</span>
+      </a>
+    </div>
+  </header>
+  <main class="page-shell" id="main-content">
+    <header>
+      <h1>Ceridwen results board</h1>
+      <p>Every Ceridwen analysis output in one place: what it says, where the artifact lives, whether it is pushed, and what Liu Hao still has to decide. Raw fit directories and HDF5 files are linked at directory level, never copied.</p>
+    </header>
+
+    <section id="status">
+      <h2>Status at a glance</h2>
+      <table class="status">
+        <caption>Result, artifact, push state, and open decision per analysis. Checked 2026-09-04 on branch <code>absorption-mask</code>.</caption>
+        <thead><tr><th>Analysis</th><th>Result</th><th>Artifact</th><th>Pushed?</th><th>Open decision</th></tr></thead>
+        <tbody>
+          <tr><td>DR2 sample figures</td><td>187-galaxy set in layout B; ages flat near 3 Gyr</td><td><code>wiki/analyses/dr2-quiescent-sample/</code></td><td class="num">yes (<code>4c3ad00</code>)</td><td>none</td></tr>
+          <tr><td>Borghi+2022 comparison</td><td>+0.26 Gyr mean; weak σ split vs theirs</td><td><code>results/figures/borghi2022-age-vs-z.pdf</code></td><td class="num">no (<code>84745ce</code> local)</td><td>none</td></tr>
+          <tr><td>DR2 summary table</td><td>187 rows incl. t20/t50/t80, Δt</td><td><code>results/dr2-quiescent-summary.csv</code></td><td class="num">yes</td><td>none</td></tr>
+          <tr><td>Absorption mask</td><td>Mask off recommended; shifts up to 22σ</td><td><code>analyses/absorption-line-mask.html</code></td><td class="num">yes</td><td>default, line list, window</td></tr>
+          <tr><td>Calibration polynomial</td><td>Mocks + 2 targets, no verdict recorded</td><td><code>results/calibration-polynomial-2026-09-02/</code></td><td class="num">no (untracked)</td><td>adopt poly3? commit?</td></tr>
+          <tr><td>GPU benchmarks</td><td>1 fit/GPU default; costs per card</td><td><code>analyses/ceridwen-gpu-benchmarks.html</code></td><td class="num">yes</td><td>none</td></tr>
+          <tr><td>Chronometer notebook</td><td>Exploratory; no stable positive H</td><td><code>results/rtx-5060-dr2-quiescent-full-spectrum/</code></td><td class="num">n/a (results dir)</td><td>none</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="dr2">
+      <h2>DR2 quiescent sample (final set)</h2>
+      <p>Full page: <a href="dr2-quiescent-sample.html">analyses/dr2-quiescent-sample.html</a>. Table: <a href="../../results/dr2-quiescent-summary.csv">results/dr2-quiescent-summary.csv</a>. Fits: <a href="../../results/rtx-5060-dr2-quiescent-full-spectrum/">results/rtx-5060-dr2-quiescent-full-spectrum/</a> (187 folders).</p>
+      <figure>
+        <img src="dr2-quiescent-sample/headline-age-redshift.png" alt="Mass-weighted age against redshift with binned medians and Ceridwen-minus-Borghi residuals">
+        <figcaption>Headline (layout B): ages with 16–84 intervals, binned medians per σ group, residual strip for the 68-galaxy Borghi overlap.</figcaption>
+      </figure>
+      <figure>
+        <img src="dr2-quiescent-sample/distributions-1d.png" alt="Parameter distributions of the 187-galaxy sample">
+        <figcaption>Distributions (N=187 each): medians z 0.73, log M⋆ 11.11, age 3.02 Gyr, [α/Fe] 0.05.</figcaption>
+      </figure>
+      <figure>
+        <img src="dr2-quiescent-sample/fit-quality.png" alt="Fit quality: calls, evidence, chi-squared">
+        <figcaption>Fit quality: 0/187 failed; worst joint χ²/ν 2.69 (139662), 2.55 (253688), 2.34 (101089).</figcaption>
+      </figure>
+      <figure>
+        <img src="dr2-quiescent-sample/dt-vs-formation-epoch.png" alt="Formation timescale against formation epoch">
+        <figcaption>Formation timescale Δt (tX: lookback younger than which X% formed): flat ≈2.5 Gyr, resolution-limited by the 7-bin SFH.</figcaption>
+      </figure>
+      <p class="source-locator"><code>scripts/plot_dr2_headline_candidates.py</code> · <code>scripts/plot_dr2_distributions_quality.py</code> · <code>scripts/plot_dr2_formation_timescale.py</code></p>
+    </section>
+
+    <section id="borghi">
+      <h2>Borghi+2022 comparison</h2>
+      <p>Figure: <a href="../../results/figures/borghi2022-age-vs-z.pdf">results/figures/borghi2022-age-vs-z.pdf</a> (PNG beside it). Script: <code>scripts/plot_borghi2022_age_vs_z.py</code>.</p>
+      <figure>
+        <img src="../../results/figures/borghi2022-age-vs-z.png" alt="Borghi-style binned median ages with tabulated Borghi overlay">
+        <figcaption>Borghi bins (Δz=0.075, σ split 215) at mean bin redshift; open diamonds re-bin the tabulated N=140 catalogue (69/71 split). Ours flat near 3.0 Gyr vs their decline; mean +0.26 Gyr.</figcaption>
+      </figure>
+    </section>
+
+    <section id="absorption">
+      <h2>Absorption-line mask (draft)</h2>
+      <p>Full page: <a href="absorption-line-mask.html">analyses/absorption-line-mask.html</a>. Verdict so far: feature-only and down-weighted likelihoods keep the tilt bias and widen posteriors 1.1–1.6×; recommended default off. Liu Hao still to decide the default, line list, and window.</p>
+      <figure>
+        <img src="absorption-mask/real_targets_posteriors.png" alt="Posteriors for three real targets in three pixel modes">
+        <figcaption>Three DR2 targets in three pixel modes: posteriors move by up to 22σ on real spectra.</figcaption>
+      </figure>
+    </section>
+
+    <section id="calibration">
+      <h2>Calibration polynomial / tilt origin</h2>
+      <p>Notebook: <code>results/calibration-polynomial-2026-09-02/analysis.ipynb</code>. Table: <code>results/calibration-polynomial-2026-09-02/arms.csv</code>. Order-3 Chebyshev calibration inside the spectrum likelihood, tested on mocks with injected tilts and on M5_172669 / M4_108989; no verdict recorded and the directory is uncommitted.</p>
+      <figure>
+        <img src="../../results/calibration-polynomial-2026-09-02/mock-bias-width.png" alt="Mock bias and width for polynomial arms">
+        <figcaption>Mock arms: pull against truth and width ratio vs the untilted baseline.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../results/calibration-polynomial-2026-09-02/polynomial-vectors.png" alt="Posterior calibration polynomial bands">
+        <figcaption>Posterior P(λ) bands per arm; dashed red is the injected distortion on mocks.</figcaption>
+      </figure>
+    </section>
+
+    <section id="benchmarks">
+      <h2>GPU and production benchmarks</h2>
+      <p>Full page: <a href="ceridwen-gpu-benchmarks.html">analyses/ceridwen-gpu-benchmarks.html</a>. One fit per GPU default; per-card costs and the fixed-grid SFH basis decision live there. Production fits: <a href="../../results/rtx-5060-dr2-quiescent-full-spectrum/">results/rtx-5060-dr2-quiescent-full-spectrum/</a>.</p>
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence</h2>
+      <ul>
+        <li>Board source: this page; figure scripts under <code>scripts/plot_*.py</code>; loader <code>scripts/build_dr2_quiescent_summary.py</code>.</li>
+        <li>Superseded figures: <code>wiki/analyses/_old/</code>. Bridge review copies: hermes <code>reports/ceridwen-plots/</code> (candidates, audit).</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
