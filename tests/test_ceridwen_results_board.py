@@ -243,6 +243,132 @@ class TestCeridwenResultsBoard(unittest.TestCase):
         self.assertIn('The viewer compares it with', animation)
         self.assertNotIn('It is compared with', animation)
 
+    # Location-bound fact baseline: every token below is tied to the
+    # figure or section that must carry it, so a meaning change inside one
+    # caption cannot hide behind the same token elsewhere on the page.
+    FIGURE_FACTS_REQUIRED = {
+        "borghi-age-redshift-png": ["+0.26 Gyr above", "N=140",
+                                   "16th to 84th percentile bars"],
+        "dr2-headline-png": ["68-galaxy overlap", "NMAD binned medians"],
+        "dr2-distributions-png": ["median redshift 0.73", "3.02 Gyr"],
+        "dr2-fit-quality-png": ["2.69", "five worst objects"],
+        "dr2-timescale-epoch-png": ["2.46 Gyr"],
+        "absorption-feature-windows-png": ["1389 of 3602", "61.4 percent"],
+        "absorption-mock-width-png": ["1.0 to 1.6 times"],
+        "absorption-real-posteriors-png": ["22 full-spectrum sigma"],
+        "tilt-origin-ibands-png": ["1.26 to 1.48"],
+        "tilt-origin-vectors-png": ["minus-16 to minus-24",
+                                   "minus-11 to minus-20"],
+        "tilt-origin-photometry-png": ["0.3-mag"],
+        "calibration-real-posteriors-png": ["4.65 Gyr", "3.02 Gyr"],
+    }
+    FIGURE_FACTS_FORBIDDEN = {
+        "borghi-age-redshift-png": ["-0.26 Gyr above"],
+        "absorption-feature-windows-png": ["88%", "30 angstrom"],
+        "absorption-mock-width-png": ["0.9 to 1.6", "1.1 to 1.6"],
+        "tilt-origin-vectors-png": ["while M4 curves remain flat"],
+        "tilt-origin-ibands-png": ["1-sigma measurement uncertainty"],
+        "calibration-real-posteriors-png": ["up to 0.4 Gyr", "68% and 95%"],
+    }
+    SECTION_FACTS_REQUIRED = {
+        "absorption-mask": ["Choose whether to keep mask off as production default"],
+        "calibration-tilt": ["Choose whether to accept corrected photometry for production",
+                             "remains pushed and tested"],
+    }
+    # Mutation probes, one per class: (name, old, new). Each must produce at
+    # least one violation, proving the check binds meaning to location.
+    FACT_MUTATIONS = [
+        ("sign flip", "+0.26 Gyr above", "-0.26 Gyr above"),
+        ("quantity change", "median redshift 0.73", "median redshift 0.74"),
+        ("unit change", "2.46 Gyr for the sample", "2.46 Myr for the sample"),
+        ("qualifier dropped",
+         "Caveat: the 7-bin model resolution limits precise epoch reconstruction.", ""),
+        ("uncertainty change",
+         "16th to 84th percentile bars on the left",
+         "10th to 90th percentile bars on the left"),
+        ("decision modality",
+         "Choose whether to keep mask off as production default",
+         "Keep mask off as production default"),
+        ("artifact path",
+         "absorption-mask/feature_windows_M5_172669.png",
+         "absorption-mask/missing.png"),
+        ("required link", ">PDF Vector<", ">Vector<"),
+    ]
+
+    @staticmethod
+    def _figure_block(html, fig_id):
+        match = re.search(
+            r'<figure class="plot-card" id="%s">.*?</figure>' % re.escape(fig_id),
+            html, re.DOTALL)
+        return match.group(0) if match else ""
+
+    @staticmethod
+    def _section_block(html, section_id):
+        match = re.search(
+            r'<section id="%s">.*?</section>' % re.escape(section_id),
+            html, re.DOTALL)
+        return match.group(0) if match else ""
+
+    @classmethod
+    def _fact_violations(cls, html, manifest_by_id):
+        violations = []
+        for fig_id, required in cls.FIGURE_FACTS_REQUIRED.items():
+            conclusion = manifest_by_id.get(fig_id, {}).get("conclusion", "")
+            block = cls._figure_block(html, fig_id)
+            if not block:
+                violations.append(f"figure {fig_id} missing from board")
+                continue
+            for text in required:
+                if text not in conclusion:
+                    violations.append(f"{fig_id} manifest lacks {text!r}")
+                if text not in block:
+                    violations.append(f"{fig_id} board lacks {text!r}")
+            for text in cls.FIGURE_FACTS_FORBIDDEN.get(fig_id, []):
+                if text in conclusion:
+                    violations.append(f"{fig_id} manifest keeps defect {text!r}")
+                if text in block:
+                    violations.append(f"{fig_id} board keeps defect {text!r}")
+            if "Caveat:" not in block:
+                violations.append(f"{fig_id} board lacks its Caveat qualifier")
+        for section_id, required in cls.SECTION_FACTS_REQUIRED.items():
+            block = cls._section_block(html, section_id)
+            for text in required:
+                if text not in block:
+                    violations.append(f"{section_id} section lacks {text!r}")
+        parser = LinkAndImageExtractor()
+        parser.feed(html)
+        linked = set(parser.links) | {src for src, _ in parser.images}
+        for item in manifest_by_id.values():
+            if item.get("id") == "board-current-html":
+                continue
+            rel = item.get("wiki_relative_path", "")
+            if rel not in linked:
+                violations.append(f"manifest path not linked: {rel!r}")
+        if "PDF Vector" not in html:
+            violations.append("required 'PDF Vector' link text missing")
+        return violations
+
+    def test_figure_facts_bound_to_ids(self):
+        """Required and forbidden facts must hold at their figure, section,
+        manifest, and link locations; every plot card keeps its qualifier."""
+        manifest_by_id = {item["id"]: item for item in self.manifest["items"]}
+        violations = self._fact_violations(self.board_html, manifest_by_id)
+        self.assertEqual(violations, [], f"Fact violations: {violations[:8]}")
+
+    def test_fact_mutations_detected(self):
+        """Each mutation class (sign, quantity, unit, qualifier,
+        uncertainty, modality, path, link) must produce a violation."""
+        manifest_by_id = {item["id"]: item for item in self.manifest["items"]}
+        self.assertEqual(self._fact_violations(self.board_html, manifest_by_id), [])
+        for name, old, new in self.FACT_MUTATIONS:
+            with self.subTest(mutation=name):
+                self.assertIn(old, self.board_html, f"probe anchor gone: {old!r}")
+                mutated = self.board_html.replace(old, new)
+                violations = self._fact_violations(mutated, manifest_by_id)
+                self.assertGreater(len(violations), 0,
+                                   f"mutation undetected: {name}")
+
+
     def test_local_server_health(self):
         """Verify local loopback HTTP server returns 200 for wiki pages."""
         try:
