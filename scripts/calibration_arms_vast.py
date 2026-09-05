@@ -66,7 +66,9 @@ MOCK_ARMS = {
 POLL_SECONDS = 120
 PULL_SECONDS = 900
 RUN_TIMEOUT_SECONDS = 12 * 3600
-RUNNER_PATTERN = "scripts/calibration_arms_vast.py remote"
+# Anchored so the ssh shell that runs pgrep (whose command line quotes the
+# pattern) cannot match itself; only the python runner does.
+RUNNER_PATTERN = "^[^ ]*python scripts/calibration_arms_vast.py remote"
 
 
 def _load(name: str, filename: str):
