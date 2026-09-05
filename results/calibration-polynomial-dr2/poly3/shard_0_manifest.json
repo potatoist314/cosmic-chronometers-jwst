@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "started_at_utc": "2026-09-05T03:30:35.595361+00:00",
+  "shard_index": 0,
+  "num_shards": 1,
+  "fits_per_gpu": 1,
+  "gpu": {
+    "index": 0,
+    "uuid": "GPU-954504f5-1daf-cd5a-7ccd-0e463b4658e0",
+    "name": "NVIDIA GeForce RTX 5060",
+    "memory_mib": 8151
+  },
+  "vast_instance_id": null,
+  "project_commit": null,
+  "ceridwen_commit": null,
+  "targets": [
+    {
+      "manifest_index": 140,
+      "object_id": 173928,
+      "spect_id": "M5_173928",
+      "sn": 13.300000190734863,
+      "shard_index": 0,
+      "seed": 20260970
+    }
+  ],
+  "results": {
+    "M5_173928": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-05T03:37:45.751843+00:00"
+    }
+  },
+  "completed_at_utc": "2026-09-05T03:37:45.752615+00:00",
+  "failed_targets": []
+}

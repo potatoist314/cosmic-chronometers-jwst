@@ -6,6 +6,7 @@ Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 
 ## Analyses
 
+- `notes/calibration-polynomial-dr2.md` — Calibration polynomial in the DR2 pipeline (2026-09-05 · t_ab2b8a0b)
 - `notes/per-galaxy-fit-diagnostics.md` — Per-galaxy fit diagnostics (2026-09-05 · t_8a78968d)
 - `notes/per-galaxy-diagnostics-gallery.md` — Per-galaxy fit diagnostics, gallery (2026-09-05 · t_8a78968d)
 - `notes/ceridwen-results.md` — Ceridwen common results board (2026-09-04 · t_44b5da5c)

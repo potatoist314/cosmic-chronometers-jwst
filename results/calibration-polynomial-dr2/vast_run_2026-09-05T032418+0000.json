@@ -1,0 +1,196 @@
+{
+ "started": "2026-09-05T01:25:40+00:00",
+ "branch": "absorption-mask",
+ "cells": [
+  "mock_tilt4_baseline/M5_172669",
+  "mock_tilt4_poly3/M5_172669",
+  "baseline/M12_98104",
+  "poly3/M12_98104",
+  "poly3_total/M12_98104",
+  "baseline/M5_173928",
+  "poly3/M5_173928",
+  "poly3_total/M5_173928",
+  "baseline/M12_185653",
+  "poly3/M12_185653",
+  "poly3_total/M12_185653",
+  "baseline/M4_108989",
+  "poly3/M4_108989",
+  "poly3_total/M4_108989",
+  "baseline/M1_206545",
+  "poly3/M1_206545",
+  "poly3_total/M1_206545",
+  "baseline/M5_172669",
+  "poly3/M5_172669",
+  "poly3_total/M5_172669"
+ ],
+ "credit_before": 16.95380958502991,
+ "instance_id": 49915205,
+ "spend_so_far_usd": 0.2176,
+ "manifest": {
+  "mock_tilt4_baseline/M5_172669": {
+   "status": "done",
+   "started": "2026-09-05T01:25:42.770557+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 318.5,
+   "finished": "2026-09-05T01:31:01.300172+00:00"
+  },
+  "mock_tilt4_poly3/M5_172669": {
+   "status": "done",
+   "started": "2026-09-05T01:12:16.577893+00:00",
+   "returncode": 0,
+   "wall_s": 443.9,
+   "finished": "2026-09-05T01:19:40.527334+00:00"
+  },
+  "baseline/M12_98104": {
+   "status": "done",
+   "started": "2026-09-05T01:31:01.300682+00:00",
+   "returncode": 0,
+   "attempts": 2,
+   "wall_s": 327.7,
+   "finished": "2026-09-05T01:36:29.036686+00:00"
+  },
+  "poly3/M12_98104": {
+   "status": "done",
+   "started": "2026-09-05T01:36:29.037147+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 373.1,
+   "finished": "2026-09-05T01:42:42.126729+00:00"
+  },
+  "poly3_total/M12_98104": {
+   "status": "done",
+   "started": "2026-09-05T01:42:42.127202+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 353.4,
+   "finished": "2026-09-05T01:48:35.572338+00:00"
+  },
+  "baseline/M5_173928": {
+   "status": "done",
+   "started": "2026-09-05T01:48:35.572769+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 326.8,
+   "finished": "2026-09-05T01:54:02.401552+00:00"
+  },
+  "poly3/M5_173928": {
+   "status": "failed",
+   "started": "2026-09-05T01:54:02.402023+00:00",
+   "returncode": 1,
+   "attempts": 2,
+   "wall_s": 160.5,
+   "finished": "2026-09-05T01:56:42.921747+00:00"
+  },
+  "poly3_total/M5_173928": {
+   "status": "done",
+   "started": "2026-09-05T01:56:42.922222+00:00",
+   "returncode": 0,
+   "attempts": 2,
+   "wall_s": 598.6,
+   "finished": "2026-09-05T02:06:41.545459+00:00"
+  },
+  "baseline/M12_185653": {
+   "status": "done",
+   "started": "2026-09-05T02:06:41.545922+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 228.2,
+   "finished": "2026-09-05T02:10:29.764451+00:00"
+  },
+  "poly3/M12_185653": {
+   "status": "done",
+   "started": "2026-09-05T02:10:29.764960+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 348.0,
+   "finished": "2026-09-05T02:16:17.787046+00:00"
+  },
+  "poly3_total/M12_185653": {
+   "status": "done",
+   "started": "2026-09-05T02:16:17.787482+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 351.3,
+   "finished": "2026-09-05T02:22:09.108474+00:00"
+  },
+  "baseline/M4_108989": {
+   "status": "done",
+   "started": "2026-09-05T02:22:09.108953+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 271.2,
+   "finished": "2026-09-05T02:26:40.345501+00:00"
+  },
+  "poly3/M4_108989": {
+   "status": "done",
+   "started": "2026-09-05T02:26:40.346126+00:00",
+   "returncode": 0,
+   "attempts": 2,
+   "wall_s": 647.1,
+   "finished": "2026-09-05T02:37:27.412045+00:00"
+  },
+  "poly3_total/M4_108989": {
+   "status": "done",
+   "started": "2026-09-05T02:37:27.412548+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 399.3,
+   "finished": "2026-09-05T02:44:06.667245+00:00"
+  },
+  "baseline/M1_206545": {
+   "status": "done",
+   "started": "2026-09-05T02:44:06.667769+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 256.8,
+   "finished": "2026-09-05T02:48:23.440089+00:00"
+  },
+  "poly3/M1_206545": {
+   "status": "done",
+   "started": "2026-09-05T02:48:23.441303+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 453.3,
+   "finished": "2026-09-05T02:55:56.739615+00:00"
+  },
+  "poly3_total/M1_206545": {
+   "status": "done",
+   "started": "2026-09-05T02:55:56.740145+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 416.1,
+   "finished": "2026-09-05T03:02:52.847028+00:00"
+  },
+  "baseline/M5_172669": {
+   "status": "done",
+   "started": "2026-09-05T03:02:52.847510+00:00",
+   "returncode": 0,
+   "attempts": 2,
+   "wall_s": 337.9,
+   "finished": "2026-09-05T03:08:30.703616+00:00"
+  },
+  "poly3/M5_172669": {
+   "status": "done",
+   "started": "2026-09-05T03:08:30.704134+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 478.0,
+   "finished": "2026-09-05T03:16:28.693186+00:00"
+  },
+  "poly3_total/M5_172669": {
+   "status": "done",
+   "started": "2026-09-05T03:16:28.693689+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 449.0,
+   "finished": "2026-09-05T03:23:57.687536+00:00"
+  }
+ },
+ "credit_after": 16.73532258412994,
+ "spent_usd": 0.2185,
+ "finished": "2026-09-05T03:24:18+00:00",
+ "instances_left": [
+  49915205
+ ]
+}

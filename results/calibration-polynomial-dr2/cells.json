@@ -1,0 +1,228 @@
+[
+ {
+  "name": "mock_tilt4_baseline/M5_172669",
+  "arm": "mock_tilt4_baseline",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260830,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_TILT": "0.04",
+   "CERIDWEN_MOCK_SEED": "1",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3",
+   "CERIDWEN_CALIBRATION_ORDER": "0"
+  }
+ },
+ {
+  "name": "mock_tilt4_poly3/M5_172669",
+  "arm": "mock_tilt4_poly3",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260830,
+  "env": {
+   "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
+   "CERIDWEN_MOCK_TILT": "0.04",
+   "CERIDWEN_MOCK_SEED": "1",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3",
+   "CERIDWEN_CALIBRATION_ORDER": "3"
+  }
+ },
+ {
+  "name": "baseline/M12_98104",
+  "arm": "baseline",
+  "target": "M12_98104",
+  "object_id": 98104,
+  "seed": 20261007,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "0",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3/M12_98104",
+  "arm": "poly3",
+  "target": "M12_98104",
+  "object_id": 98104,
+  "seed": 20261007,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3_total/M12_98104",
+  "arm": "poly3_total",
+  "target": "M12_98104",
+  "object_id": 98104,
+  "seed": 20261007,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total"
+  }
+ },
+ {
+  "name": "baseline/M5_173928",
+  "arm": "baseline",
+  "target": "M5_173928",
+  "object_id": 173928,
+  "seed": 20260970,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "0",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3/M5_173928",
+  "arm": "poly3",
+  "target": "M5_173928",
+  "object_id": 173928,
+  "seed": 20260970,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3_total/M5_173928",
+  "arm": "poly3_total",
+  "target": "M5_173928",
+  "object_id": 173928,
+  "seed": 20260970,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total"
+  }
+ },
+ {
+  "name": "baseline/M12_185653",
+  "arm": "baseline",
+  "target": "M12_185653",
+  "object_id": 185653,
+  "seed": 20260923,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "0",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3/M12_185653",
+  "arm": "poly3",
+  "target": "M12_185653",
+  "object_id": 185653,
+  "seed": 20260923,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3_total/M12_185653",
+  "arm": "poly3_total",
+  "target": "M12_185653",
+  "object_id": 185653,
+  "seed": 20260923,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total"
+  }
+ },
+ {
+  "name": "baseline/M4_108989",
+  "arm": "baseline",
+  "target": "M4_108989",
+  "object_id": 108989,
+  "seed": 20260924,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "0",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3/M4_108989",
+  "arm": "poly3",
+  "target": "M4_108989",
+  "object_id": 108989,
+  "seed": 20260924,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3_total/M4_108989",
+  "arm": "poly3_total",
+  "target": "M4_108989",
+  "object_id": 108989,
+  "seed": 20260924,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total"
+  }
+ },
+ {
+  "name": "baseline/M1_206545",
+  "arm": "baseline",
+  "target": "M1_206545",
+  "object_id": 206545,
+  "seed": 20260877,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "0",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3/M1_206545",
+  "arm": "poly3",
+  "target": "M1_206545",
+  "object_id": 206545,
+  "seed": 20260877,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3_total/M1_206545",
+  "arm": "poly3_total",
+  "target": "M1_206545",
+  "object_id": 206545,
+  "seed": 20260877,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total"
+  }
+ },
+ {
+  "name": "baseline/M5_172669",
+  "arm": "baseline",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260830,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "0",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3/M5_172669",
+  "arm": "poly3",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260830,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_ap3"
+  }
+ },
+ {
+  "name": "poly3_total/M5_172669",
+  "arm": "poly3_total",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260830,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total"
+  }
+ }
+]

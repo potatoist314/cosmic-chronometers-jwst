@@ -426,3 +426,13 @@
 
 - Pages: `notes/per-galaxy-fit-diagnostics.md`, `notes/per-galaxy-diagnostics-gallery.md`, `analyses/per-galaxy-diagnostics/`, `index.md`
 - Change: Added per-galaxy photometric chi-squared, spectral chi-squared and t10-t90 figures for all 187 DR2 fits (`scripts/per_galaxy_diagnostics.py`, executed `notebooks/ceridwen_per_galaxy_diagnostics.ipynb`), with the model parameter block generated from the model object, checks of the stored chi-squared against the sampler's masks and sigma, sample-wide flags, and the RTX 5060 verification run.
+
+
+## [2026-09-05] analysis | Calibration polynomial in the DR2 pipeline
+
+- Pages: `notes/calibration-polynomial-dr2.md`, `analyses/calibration-polynomial-dr2/`
+- Change: Added the marginalised Chebyshev calibration polynomial to the
+  Ceridwen spectrum likelihood and to the integrated notebook
+  (`CERIDWEN_CALIBRATION_ORDER`, `CERIDWEN_PHOTOMETRY`), with the physical
+  explanation, the six-galaxy before/after comparison on one RTX 5060, the
+  tilted-mock check and the sibling-card χ² acceptance figures.
