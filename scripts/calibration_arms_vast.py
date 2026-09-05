@@ -64,6 +64,13 @@ MOCK_ARMS = {
     "mock_tilt4_poly3": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "3"},
 }
 POLL_SECONDS = 120
+# A cell is one fresh notebook process; the RTX 5060 boxes occasionally kill a
+# kernel or raise an XLA runtime error mid-run, so a failed cell runs once more.
+CELL_ATTEMPTS = 2
+# XLA command buffers (CUDA graphs) are where the observed
+# "Not enough arguments for relocation" runtime error lives; the fits run
+# without them (a few percent slower).
+REMOTE_XLA_FLAGS = "--xla_gpu_enable_command_buffer="
 PULL_SECONDS = 900
 RUN_TIMEOUT_SECONDS = 12 * 3600
 # Anchored so the ssh shell that runs pgrep (whose command line quotes the
@@ -146,11 +153,15 @@ def command_remote(args) -> int:
         ]
         started = time.monotonic()
         log(f"{name}: start {cell['env']}")
-        completed = subprocess.run(command, cwd=PROJECT_ROOT, env=env)
+        for attempt in range(1, CELL_ATTEMPTS + 1):
+            completed = subprocess.run(command, cwd=PROJECT_ROOT, env=env)
+            if completed.returncode == 0:
+                break
+            log(f"{name}: attempt {attempt} returned {completed.returncode}")
         wall = time.monotonic() - started
         manifest[name].update(
             status="done" if completed.returncode == 0 else "failed",
-            returncode=completed.returncode, wall_s=round(wall, 1),
+            returncode=completed.returncode, attempts=attempt, wall_s=round(wall, 1),
             finished=datetime.now(UTC).isoformat(),
         )
         write()
@@ -223,7 +234,8 @@ def _launch(sweep, instance_id: int, log) -> None:
     remote = sweep.REMOTE_ROOT
     command = (
         f"cd {shlex.quote(remote)} && mkdir -p {RESULTS} && "
-        f"setsid -f .venv-ceridwen-gpu/bin/python scripts/calibration_arms_vast.py remote "
+        f"setsid -f env XLA_FLAGS={shlex.quote(REMOTE_XLA_FLAGS)} "
+        f".venv-ceridwen-gpu/bin/python scripts/calibration_arms_vast.py remote "
         f"--cells {RESULTS}/cells.json > {RESULTS}/arms.log 2>&1 < /dev/null; "
         f"sleep 2; pgrep -f {shlex.quote(RUNNER_PATTERN)} >/dev/null && echo launched"
     )
