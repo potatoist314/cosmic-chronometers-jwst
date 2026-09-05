@@ -567,7 +567,9 @@ def model_parameter_block(model, ssp, likelihood, settings: dict, seed: int) -> 
         )
     # --- fixed and derived
     lines.append("Fixed and derived quantities")
-    lines.append(f"  redshift: fixed at z = {model.zred:.6f} (SedModel.zred); SFH age grid tracks z: {bool(csp.track_zred_age)}")
+    redshift_state = ("sampled as zred" if "zred" in model.param_names
+                      else f"fixed at z = {model.zred:.6f} (SedModel.zred)")
+    lines.append(f"  redshift: {redshift_state}; SFH age grid tracks z: {bool(csp.track_zred_age)}")
     for derived, fn in model.transforms.items():
         if derived == "sfh":
             continue

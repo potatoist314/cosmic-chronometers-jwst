@@ -15,9 +15,15 @@ Arms::
     mock_tilt4_baseline / mock_tilt4_poly3
                   M5_172669 mock (stored truth, 4 percent end-to-end tilt on the
                   spectrum only), without and with the polynomial
+    zsig          poly3_total plus a free redshift (CERIDWEN_FREE_ZRED_KMS=100,
+                  Gaussian prior of 100 km/s on the catalogue z) and a free LOSVD
+                  (CERIDWEN_FREE_SIGMA_FRAC=0.2, 20 percent prior on DR2 sigma*)
 
 Results land in ``results/calibration-polynomial-dr2/<arm>/<object>-<target>/``
-with the same files as the production run.  The instance is destroyed at the
+(``CERIDWEN_ARMS_RESULTS`` overrides the directory, on this machine and on
+the box) with the same files as the production run.  ``--ceridwen-tree PATH``
+uploads that ceridwen checkout instead of the submodule tree, so a fork branch
+can be run before the submodule is pinned to it.  The instance is destroyed at the
 end, also on failure, and the spend is recorded in
 ``results/calibration-polynomial-dr2/vast_run_<timestamp>.json``.
 
@@ -43,7 +49,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-RESULTS = "results/calibration-polynomial-dr2"
+RESULTS = os.environ.get("CERIDWEN_ARMS_RESULTS", "results/calibration-polynomial-dr2")
 DEFAULT_TARGETS = [
     # spect_id: spans catalogue S/N 6.6-105 and z 0.60-0.98 of the DR2 quiescent sample
     "M12_98104", "M5_173928", "M12_185653", "M4_108989", "M1_206545", "M5_172669",
@@ -52,6 +58,8 @@ ARMS = {
     "baseline": {"CERIDWEN_CALIBRATION_ORDER": "0", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
     "poly3": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
     "poly3_total": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total"},
+    "zsig": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total",
+             "CERIDWEN_FREE_ZRED_KMS": "100", "CERIDWEN_FREE_SIGMA_FRAC": "0.2"},
 }
 MOCK_ENV = {
     "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
@@ -234,7 +242,8 @@ def _launch(sweep, instance_id: int, log) -> None:
     remote = sweep.REMOTE_ROOT
     command = (
         f"cd {shlex.quote(remote)} && mkdir -p {RESULTS} && "
-        f"setsid -f env XLA_FLAGS={shlex.quote(REMOTE_XLA_FLAGS)} "
+        f"setsid -f env CERIDWEN_ARMS_RESULTS={shlex.quote(RESULTS)} "
+        f"XLA_FLAGS={shlex.quote(REMOTE_XLA_FLAGS)} "
         f".venv-ceridwen-gpu/bin/python scripts/calibration_arms_vast.py remote "
         f"--cells {RESULTS}/cells.json > {RESULTS}/arms.log 2>&1 < /dev/null; "
         f"sleep 2; pgrep -f {shlex.quote(RUNNER_PATTERN)} >/dev/null && echo launched"
@@ -251,8 +260,19 @@ def _prepare(sweep, instance_id: int, args, cells: list[dict], log) -> None:
     sweep._attach_ssh_key(instance_id)
     sweep._wait_for_ssh(instance_id, log)
     absorption._checkout(instance_id, args.branch, log)      # clone + submodule trees
-    sweep._upload_inputs(instance_id, log)
     target, port = sweep._ssh_target(instance_id)
+    if args.ceridwen_tree:
+        tree = Path(args.ceridwen_tree).resolve()
+        log(f"uploading ceridwen tree {tree} ({_tree_sha(tree)})")
+        shell = " ".join(shlex.quote(part) for part in ["ssh", *sweep._ssh_options(port)])
+        result = subprocess.run(
+            ["rsync", "-a", "-e", shell, *absorption.SUBMODULE_TREES["ceridwen"],
+             f"{tree}/", f"{target}:{sweep.REMOTE_ROOT}/ceridwen/"],
+            check=False, capture_output=True, text=True, timeout=900.0,
+        )
+        if result.returncode != 0:
+            raise sweep.SweepError(f"rsync of {tree} failed: {(result.stderr or result.stdout)[-500:]}")
+    sweep._upload_inputs(instance_id, log)
     local_cells = PROJECT_ROOT / RESULTS / "cells.json"
     local_cells.parent.mkdir(parents=True, exist_ok=True)
     local_cells.write_text(json.dumps(cells, indent=1))
@@ -261,6 +281,18 @@ def _prepare(sweep, instance_id: int, args, cells: list[dict], log) -> None:
                  timeout=120.0)
     sweep._bootstrap(instance_id, log)
     sweep._verify_cuda_backend(instance_id, log)
+
+
+def _tree_sha(tree: Path) -> str:
+    return subprocess.run(["git", "-C", str(tree), "rev-parse", "--short", "HEAD"],
+                          capture_output=True, text=True, check=False).stdout.strip()
+
+
+def _ceridwen_tree_record(args) -> dict:
+    if not args.ceridwen_tree:
+        return {}
+    tree = Path(args.ceridwen_tree).resolve()
+    return {"ceridwen_tree": str(tree), "ceridwen_tree_sha": _tree_sha(tree)}
 
 
 def _credit(sweep) -> float:
@@ -361,6 +393,7 @@ def command_run(args) -> int:
         "offer": {k: offer.get(k) for k in ("id", "gpu_name", "dph_total", "geolocation", "host_id")},
         "cells": [c["name"] for c in cells],
         "credit_before": _credit(sweep),
+        **_ceridwen_tree_record(args),
     }
     run_instance(sweep, offer, args, cells, record)
     return _finish(sweep, record, args)
@@ -370,7 +403,8 @@ def command_attach(args) -> int:
     sweep = _sweep()
     cells = build_cells(args.targets, args.arms, not args.no_mocks)
     record = {"started": datetime.now(UTC).isoformat(timespec="seconds"), "branch": args.branch,
-              "cells": [c["name"] for c in cells], "credit_before": _credit(sweep)}
+              "cells": [c["name"] for c in cells], "credit_before": _credit(sweep),
+              **_ceridwen_tree_record(args)}
     run_instance(sweep, None, args, cells, record, instance_id=args.instance)
     return _finish(sweep, record, args)
 
@@ -390,6 +424,8 @@ def main(argv=None) -> int:
         p.add_argument("--arms", nargs="+", default=list(ARMS), choices=list(ARMS))
         p.add_argument("--no-mocks", action="store_true")
         p.add_argument("--branch", default="absorption-mask")
+        p.add_argument("--ceridwen-tree", default=None, metavar="PATH",
+                       help="upload this ceridwen checkout over the box's ceridwen/ after the clone")
         p.add_argument("--image", default="vastai/base-image:cuda-12.6.3-auto")
         p.add_argument("--disk", type=int, default=40)
         p.add_argument("--spend-cap", type=float, default=1.0, help="USD; stop and destroy beyond it")
