@@ -454,3 +454,9 @@
   figures after Liu Hao's decision that the photometry carries the continuum.
   The photometric χ² per galaxy is the continuum metric. `acceptance.csv` is
   now `before-after.csv`.
+
+## [2026-09-06] codebase | Spectral interpolation
+
+- Pages: `notes/ceridwen-observations-model.md`, `index.md`
+- Change: Replaced the obsolete dense-interpolation description with the exact weighted-gather code and refreshed source locations.
+- Evidence: `results/rtx-5060-observation-speedups/comparison.ipynb`; 11.26–11.48 times faster unsmoothed interpolation on RTX 5060, no useful joint-fit gain.

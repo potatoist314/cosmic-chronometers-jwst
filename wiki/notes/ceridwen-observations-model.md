@@ -1,6 +1,6 @@
 ---
 title: Ceridwen: observations and SedModel
-date: 2026-09-01
+date: 2026-09-06
 section: Codebase
 tags: [ceridwen]
 job: 
@@ -82,7 +82,16 @@ The fast path uses one matrix-vector multiplication. The alternative path perfor
 
 #### Spectrum
 
-`Spectrum.setup_for_model` maps the model wavelength grid to observed pixels. It records the factors for the dense interpolation matrix `_H` and builds that matrix on first access, because only the no-smoothing path reads it. With smoothing, it creates a JAX-compatible closure for LOSVD and instrumental response. `predict` calls the prepared closure. It returns one model value for each observed pixel.
+`ceridwen/ceridwen/observation/spectrum.py:477-482 · Spectrum.setup_for_model`
+
+```python
+        if not has_instr and not has_losvd:
+            # Preserve the dense matrix's independently rounded coefficients.
+            lo, hi = jnp.asarray(j_lo), jnp.asarray(j_hi)
+            w_lo = jnp.asarray((1.0 - alpha).astype(np.float32))
+            w_hi = jnp.asarray(alpha.astype(np.float32))
+            self._predict_fn = lambda spec: w_lo * spec[lo] + w_hi * spec[hi]
+```
 
 When every width is known at setup, the two broadening stages become one. Gaussians add in quadrature, so a LOSVD followed by an instrumental LSF is a single Gaussian of width `sqrt(losvd^2 + instrument^2 - library^2)` at each wavelength. `observation/_smoothing.py` builds that one convolution and bakes its interpolation indices and its Fourier taper at setup, so no call recomputes them. The chained form remains for `fit_sigma_smooth=True`, where the width is a traced value.
 
@@ -106,7 +115,7 @@ The combined form is both cheaper and closer to the analytic width, because it i
 
 `res_convention="fwhm"` means that the supplied instrumental resolution is a FWHM value. With `inres="auto"`, Ceridwen uses the schema-2.1 grid resolution curve. It applies only the additional width required in quadrature (`lines 291-366`). The project GPU workflows install sedpy_jax from the `external/sedpy_jax` submodule: upstream commit `0291d58`, which accepts that per-pixel array, plus one commit that builds filters in NumPy instead of JAX. Filter construction happens once per fit, at setup, and that change cut per-fit setup from about 150 s to about 27 s on a rented GPU.
 
-`ceridwen/ceridwen/observation/spectrum.py:736-750 · Spectrum.predict`
+`ceridwen/ceridwen/observation/spectrum.py:790-804 · Spectrum.predict`
 
 ```
 if self.fit_sigma_smooth:
@@ -126,7 +135,7 @@ if self.fit_sigma_smooth:
 return self._predict_fn(spectrum)`
 ```
 
-**Documented contract:** The method docstring requires prior setup and returns model `F_nu` on the observed pixels (`ceridwen/ceridwen/observation/spectrum.py:686-725`).
+**Documented contract:** The method docstring requires prior setup and returns model `F_nu` on the observed pixels (`ceridwen/ceridwen/observation/spectrum.py:740-778`).
 
 **Why it matters:** Both branches call the closure that setup prepared. Only the fitted velocity branch supplies a traced smoothing parameter.
 
