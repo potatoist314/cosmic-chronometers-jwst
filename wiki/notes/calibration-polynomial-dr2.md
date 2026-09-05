@@ -37,57 +37,20 @@ Photometry anchor
 
 <figure>
 <img src="figures/calibration-polynomial-dr2/calibration-explainer.png" alt="Explainer: fitted polynomial on M12_185653, calibration vector with band, dust tilt against an order-1 polynomial, shortest bend against line widths">
-<figcaption>The photometry anchors the whole wavelength range, the spectrum covers one window inside it, and P bends on 800 angstrom scales, not on lines.</figcaption>
+<figcaption>What P absorbs and must not.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/calibration-polynomial-dr2/polynomial-vectors.png" alt="P of lambda and s times P of lambda with 16 to 84 percent bands for the six galaxies and the two polynomial arms">
-<figcaption>P and s·P for six galaxies: within 4 percent where the photometry fits, and 15 to 30 percent where it does not.</figcaption>
+<figcaption>P and s·P, six galaxies.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/calibration-polynomial-dr2/parameters-before-after.png" alt="Mass, t50, SFR, dust and mass-weighted age for the three arms of each galaxy">
-<figcaption>Mass, t50, recent star-formation rate, dust and age for the three arms: the masses rise 0.16 to 0.39 dex with total photometry.</figcaption>
+<figcaption>Mass, t50, dust, age, three arms.</figcaption>
 </figure>
 
-<figure>
-<img src="figures/calibration-polynomial-dr2/mock-tilt.png" alt="Mock with a 4 percent tilt: injected and recovered calibration vector, and the parameter pulls without and with the polynomial">
-<figcaption>A 4 percent tilt injected on the spectrum alone: dust lands 32 sigma from the truth without P and 0.7 sigma with it.</figcaption>
-</figure>
-
-<figure>
-<img src="figures/calibration-polynomial-dr2/chi2-M12_98104.png" alt="M12_98104: pull per fitted pixel and cumulative chi-squared for the three arms">
-<figcaption>Three arms of M12_98104, pull and cumulative chi-squared: every difference sits inside the run-to-run scatter.</figcaption>
-</figure>
-
-<figure>
-<img src="figures/calibration-polynomial-dr2/chi2-M5_173928.png" alt="M5_173928: pull per fitted pixel and cumulative chi-squared for the three arms">
-<figcaption>Three arms of M5_173928, pull and cumulative chi-squared: photometric chi-squared 143 to 48, and P is a 7 to 10 percent bowl.</figcaption>
-</figure>
-
-<figure>
-<img src="figures/calibration-polynomial-dr2/chi2-M4_108989.png" alt="M4_108989: pull per fitted pixel and cumulative chi-squared for the three arms">
-<figcaption>Three arms of M4_108989, pull and cumulative chi-squared: photometric chi-squared 139 to 13 and t50 back at 4.6 Gyr.</figcaption>
-</figure>
-
-<figure>
-<img src="figures/calibration-polynomial-dr2/chi2-M12_185653.png" alt="M12_185653: pull per fitted pixel and cumulative chi-squared for the three arms">
-<figcaption>Three arms of M12_185653, pull and cumulative chi-squared: photometric chi-squared 37 to 11 and P within 4 percent.</figcaption>
-</figure>
-
-<figure>
-<img src="figures/calibration-polynomial-dr2/chi2-M1_206545.png" alt="M1_206545: pull per fitted pixel and cumulative chi-squared for the three arms">
-<figcaption>Three arms of M1_206545, pull and cumulative chi-squared: raw chi-squared down 4191, but P is a 15 percent hump.</figcaption>
-</figure>
-
-<figure>
-<img src="figures/calibration-polynomial-dr2/chi2-M5_172669.png" alt="M5_172669: pull per fitted pixel and cumulative chi-squared for the three arms">
-<figcaption>Three arms of M5_172669, pull and cumulative chi-squared: P is a 28 percent tilt and dust goes from 0.01 to 0.6.</figcaption>
-</figure>
-
-## What the polynomial absorbs
-
-A slit loses more light at one end of the range than the other. The polynomial removes that smooth loss. It must not remove the tilt that dust and stellar age make. Only the photometry tells them apart.
+A slit loses more light at one end than the other. P removes that. It must not remove the dust and age tilt. Only the photometry separates them.
 
 ```
 d_i = s · P(x_i) · mu_i(theta) + n_i,   n_i ~ N(0, sigma_eff,i^2)

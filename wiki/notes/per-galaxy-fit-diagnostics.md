@@ -32,33 +32,21 @@ Spectrum calibration
 Photometry anchor
 : cosmos_ap3, the 12 COSMOS2015 3 arcsecond aperture fluxes with total IRAC and no offsets. The model photometry never carries the spectrum scale or a calibration polynomial.
 
-## Sample
-
-<figure>
-<img src="figures/per-galaxy-diagnostics/photometry-summary.png" alt="Median photometric pull per band over all galaxies, mean chi-squared contribution per band, and the histogram of photometric chi-squared per band">
-<figcaption>Median pull per band over 187 galaxies, the mean chi-squared per band, and its spread: the two IRAC bands carry half of it.</figcaption>
-</figure>
-
-<figure>
-<img src="figures/per-galaxy-diagnostics/sf-timescale-summary.png" alt="Galaxies sorted by t50 with t10 to t90 bands, t_X against redshift, and histograms of t10, t50 and t90">
-<figcaption>Formation times t10 to t90 for 187 galaxies, sorted by t50 and against redshift: sample medians 4.64, 3.02 and 1.39 Gyr.</figcaption>
-</figure>
-
 ## Example: M1_210210
 
 <figure>
 <img src="figures/per-galaxy-diagnostics/M1_210210-photometric_chi2.png" alt="M1_210210: per-band pull and chi-squared contribution against wavelength">
-<figcaption>Pull of the 12 fitted fluxes of galaxy M1_210210 against the model: 116.2 over 12 bands with a 5 percent error floor.</figcaption>
+<figcaption>Pull and chi-squared per band, 116.2 over 12 bands.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/per-galaxy-diagnostics/M1_210210-spectral_chi2.png" alt="M1_210210: per-pixel pull, binned mean pull squared and cumulative chi-squared against wavelength with masked windows and outliers marked">
-<figcaption>Pull of 3523 fitted spectrum pixels of galaxy M1_210210 against the model: 1.11 per pixel at a 4.62 percent error floor.</figcaption>
+<figcaption>Pull per fitted pixel, 1.11 per pixel over 3523.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/per-galaxy-diagnostics/M1_210210-sf_timescales.png" alt="M1_210210: fraction of final mass formed earlier than each lookback time with t10 to t90 and their posterior intervals">
-<figcaption>Mass formed in galaxy M1_210210 against lookback time: t10 6.99, t50 4.68, t90 1.50 Gyr, only a 16-84 percent range.</figcaption>
+<figcaption>Mass formed before each lookback time, t50 4.68 Gyr.</figcaption>
 </figure>
 
 <details>
