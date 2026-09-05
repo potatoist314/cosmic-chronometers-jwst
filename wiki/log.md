@@ -436,3 +436,13 @@
   (`CERIDWEN_CALIBRATION_ORDER`, `CERIDWEN_PHOTOMETRY`), with the physical
   explanation, the six-galaxy before/after comparison on one RTX 5060, the
   tilted-mock check and the sibling-card χ² acceptance figures.
+
+## [2026-09-06] format | Calibration and per-galaxy notes cut to figures
+
+- Pages: `notes/calibration-polynomial-dr2.md`, `notes/per-galaxy-fit-diagnostics.md`,
+  `notes/per-galaxy-diagnostics-gallery.md`, `_old/`, `scripts/per_galaxy_diagnostics.py`
+- Change: Replaced the three prose notes with a `Model settings` block generated
+  from the result files, the figures with one sentence under each, and a
+  collapsed `Details` block for tables, run records and commands. The gallery
+  now carries one labelled section per galaxy with its three figures in a fixed
+  order. Originals kept in `_old/`.

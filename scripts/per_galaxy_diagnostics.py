@@ -1121,9 +1121,111 @@ def run(run_dir: Path, out_csv: Path, summary_dir: Path, targets: list[str] | No
     return table
 
 
+def _prior_phrase(raw: str) -> str:
+    """The prior string stored in ``ceridwen_result.h5`` as a short phrase."""
+    raw = raw.strip()
+    if not raw.startswith("{"):
+        return re.sub(r"\.0\b", "", raw)
+    payload = json.loads(raw)
+    kind = payload.pop("type")
+    payload.pop("name", None)
+    if kind in ("Uniform", "TopHat"):
+        return f"Uniform({float(payload['low']):.4g}, {float(payload['high']):.4g})"
+    return kind + "(" + ", ".join(f"{k}={float(v):.4g}" for k, v in payload.items()) + ")"
+
+
+def _grid_facts(target_dir: Path) -> dict:
+    """Library, IMF, dust and emission switches out of the stored parameter block."""
+    text = (target_dir / FIGURE_SUBDIR / "model_parameters.txt").read_text(encoding="utf-8")
+    patterns = {
+        "library": r"library: ([^;]+);",
+        "isochrones": r"isochrones: ([^;]+);",
+        "imf": r"IMF: imf_type=\d+ \((.+?)\); schema",
+        "afe_nodes": r"\[alpha/Fe\] \[([^\]]+)\]",
+        "met_nodes": r"log10 Z (\d+) nodes",
+        "age_nodes": r"log10\(age/Gyr\) (\d+) nodes",
+        "dust_law": r"diffuse attenuation: law '([^']+)'",
+        "birth_cloud": r"birth-cloud \(age-dependent\) dust: (\w+)",
+        "dust_emission": r"dust emission: (\w+)",
+        "nebular": r"nebular emission: (\w+)",
+        "igm": r"IGM absorption: (\w+)",
+    }
+    facts = {}
+    for key, pattern in patterns.items():
+        match = re.search(pattern, text)
+        if match is None:
+            raise ValueError(f"{key} missing from {target_dir / FIGURE_SUBDIR / 'model_parameters.txt'}")
+        facts[key] = match.group(1)
+    return facts
+
+
+def model_settings_block(target_dir: Path, redshift_line: str) -> list[str]:
+    """The ``Model settings`` definition list, read from one fit's result files."""
+    target_dir = Path(target_dir)
+    facts = _grid_facts(target_dir)
+    with h5py.File(target_dir / "ceridwen_result.h5", "r") as f:
+        model = f["model"]
+        priors = {k: _prior_phrase(_text(v)) for k, v in model["priors"].attrs.items()}
+        sizes = {k: int(np.size(model["theta_init"][k])) for k in model["theta_init"]}
+        order = int(model.attrs.get("calibration_order", 0))
+        prior_sigma = float(model.attrs.get("calibration_prior_sigma", float("nan")))
+        anchor = _text(model.attrs["photometry_source"]) if "photometry_source" in model.attrs \
+            else "cosmos_ap3"
+        n_band = len(json.loads(_text(f["obs/photometry"].attrs["filternames"])))
+    with h5py.File(target_dir / "ceridwen_derived_outputs.h5", "r") as d:
+        edges = np.asarray(d["sfh/lookback_time_gyr"], dtype=float)
+    free = ". ".join(
+        f"{name} {priors[name]}" + (f", {sizes[name]} values" if sizes[name] > 1 else "")
+        for name in sorted(priors))
+    calibration = (f"Chebyshev order {order}, one polynomial multiplying the model spectrum, "
+                   f"coefficient priors Normal(0, {prior_sigma:.2g}), integrated out at every "
+                   "likelihood call") if order else "No polynomial, order 0"
+    anchor_text = {
+        "cosmos_ap3": f"cosmos_ap3, the {n_band} COSMOS2015 3 arcsecond aperture fluxes with total "
+                      "IRAC and no offsets",
+        "cosmos_total": f"cosmos_total, the {n_band} COSMOS2015 bands with the Laigle et al. (2016) "
+                        "aperture-to-total offset, Galactic extinction and the Table 3 zero points",
+    }.get(anchor, anchor)
+    return [
+        "## Model settings",
+        "",
+        "Stellar grid",
+        f": {facts['library']}, {facts['isochrones']} isochrones, {facts['imf']} IMF. "
+        f"Axes [alpha/Fe] {facts['afe_nodes']}, log10 Z {facts['met_nodes']} nodes, "
+        f"log10(age/Gyr) {facts['age_nodes']} nodes.",
+        "",
+        "Star-formation history",
+        f": Constant star-formation rate in each of {len(edges) - 1} lookback bins. Edges "
+        f"{', '.join(f'{e:.4g}' for e in edges[:-1])} Gyr, then the universe age at the galaxy "
+        "redshift. Metallicity constant in time.",
+        "",
+        "Free parameters and priors",
+        f": {sum(sizes.values())} free values. {free}.",
+        "",
+        "Fixed",
+        f": {redshift_line} Dust index of the attenuation curve at -0.7. Stellar velocity "
+        "dispersion at the catalogue value.",
+        "",
+        "Dust, nebular emission and IGM",
+        f": {facts['dust_law']} attenuation on the diffuse component. Birth-cloud dust "
+        f"{facts['birth_cloud'].lower()}. Dust emission {facts['dust_emission'].lower()}. Nebular "
+        f"emission {facts['nebular']}. IGM absorption {facts['igm']}.",
+        "",
+        "Spectrum calibration",
+        f": {calibration}. A free fractional noise floor f_calib between 1 and 10 percent of the "
+        "model flux. A free multiplicative scale spectrum_scaling.",
+        "",
+        "Photometry anchor",
+        f": {anchor_text}. The model photometry never carries the spectrum scale or a calibration "
+        "polynomial.",
+        "",
+    ]
+
+
 def write_gallery_note(table: pd.DataFrame, out_path: Path, run_dir: Path, job: str, date: str) -> None:
-    """One wiki note with the three figures of every galaxy, served from the run folder."""
+    """One wiki note: the shared model settings, then the three figures of every galaxy."""
     run_rel = run_dir.resolve().relative_to(PROJECT_ROOT).as_posix()
+    table = table.sort_values("target")
     lines = [
         "---",
         "title: Per-galaxy fit diagnostics, gallery",
@@ -1133,64 +1235,62 @@ def write_gallery_note(table: pd.DataFrame, out_path: Path, run_dir: Path, job: 
         f"job: {job}",
         "---",
         "",
-        f"{len(table)} galaxies. Method, checks and flags: [Per-galaxy fit diagnostics](../per-galaxy-fit-diagnostics/).",
+        f"{len(table)} galaxies. Method and checks: "
+        "[Per-galaxy fit diagnostics](../per-galaxy-fit-diagnostics/).",
         "",
     ]
-    for row in table.sort_values("target").itertuples(index=False):
+    first = run_dir / str(table.iloc[0]["target"])
+    lines += model_settings_block(
+        first,
+        f"Redshift at each galaxy's catalogue value, {table['z'].min():.3f} to {table['z'].max():.3f} "
+        "across the sample.")
+    lines += ["## Galaxies", ""]
+    for row in table.itertuples(index=False):
         base = f"/wiki/f/{run_rel}/{row.target}/{FIGURE_SUBDIR}"
-        flag_items = row.flags.split("; ") if isinstance(row.flags, str) and row.flags else []
-        n_out = int(row.n_outlier_pixels)
-        lines += [
-            f"### {row.target}",
-            "",
-            "| z | S/N | photometry χ²/N | spectrum χ²/N | f_calib | t50 [Gyr] | model |",
-            "| --- | --- | --- | --- | --- | --- | --- |",
-            f"| {row.z:.4f} | {row.catalogue_sn:.1f} | {row.phot_redchi2_stored:.2f} | {row.spec_redchi2_stored:.3f} | "
-            f"{row.f_calib_median_pct:.2f}% | {row.t50_q50:.2f} | [parameters]({base}/model_parameters.txt) |",
-            "",
-        ]
-        if not flag_items:
-            lines += ["Flags: none.", ""]
-        else:
-            lines += ["Flags:", ""] + [f"- {item}" for item in flag_items] + [""]
-        captions = {
+        sentences = {
             "photometric_chi2": (
-                f"Pull and chi-squared contribution for the 12 COSMOS2015 bands of galaxy {row.spect_id}. "
-                "Pull equals observed minus model over sigma. Uncertainty: sigma includes the 5 percent flux floor. "
-                "Comparison: filled points use the posterior-median model. Open squares use the best sample with the fit's own sigma. "
-                f"Total chi-squared {row.phot_chi2_stored:.1f} over 12 bands gives {row.phot_redchi2_stored:.2f} per band. "
-                "Caveat: the spectrum dominates the joint fit, so the fit does not constrain the bands on their own."
-            ),
+                f"Pull of only the {int(row.n_phot)} fitted bands of galaxy {row.spect_id} against the "
+                f"model, {row.phot_redchi2_stored:.2f} per band at a 5 percent flux error floor."),
             "spectral_chi2": (
-                f"Pull per fitted pixel of the LEGA-C spectrum of galaxy {row.spect_id}. "
-                "Below it: mean pull squared in 25 Å bins and the cumulative chi-squared fraction against wavelength. "
-                f"Uncertainty: sigma includes the fitted calibration floor of {row.f_calib_median_pct:.2f} percent of the model flux. "
-                "Comparison: the stored pull versus the pull at the best sample. "
-                "Shaded bands mark masked pixels. Red points mark pixels with pull beyond 4 sigma. "
-                f"Total chi-squared {row.spec_chi2_stored:.1f} over {int(row.n_spec)} pixels, {n_out} outlier pixels. "
-                "Caveat: the fitted floor absorbs model mismatch, so chi-squared near 1 does not prove a good model."
-            ),
+                f"Pull of only {int(row.n_spec)} fitted spectrum pixels of galaxy {row.spect_id} "
+                f"against the model, {row.spec_redchi2_stored:.3f} per pixel at a "
+                f"{row.f_calib_median_pct:.2f} percent error floor."),
             "sf_timescales": (
-                f"Fraction of the final stellar mass of galaxy {row.spect_id} formed earlier than each lookback time. "
-                "The line is the posterior median. The band is the 16-84 percent range over 400 draws. "
-                "Comparison: points mark t10 to t90 with 16-84 percent (thick) and 2.5-97.5 percent (thin) intervals versus the universe age. "
-                f"t50 is {row.t50_q50:.2f} Gyr with a 16-84 percent range of {row.t50_q16:.2f} to {row.t50_q84:.2f} Gyr. "
-                "Caveat: the 7-bin star-formation history model quantises these times to the bin edges."
-            ),
+                f"Mass formed in galaxy {row.spect_id} against lookback time: t10 {row.t10_q50:.2f}, "
+                f"t20 {row.t20_q50:.2f}, t50 {row.t50_q50:.2f} Gyr, only a 16-84 percent range."),
         }
         alts = {
             "photometric_chi2": "photometric pull and chi-squared contribution per band",
             "spectral_chi2": "spectral pull, binned mean pull squared, cumulative chi-squared",
             "sf_timescales": "cumulative mass formed against lookback time with t10 to t90",
         }
+        lines += [row.target, f": z {row.z:.4f} · S/N {row.catalogue_sn:.1f}", ""]
         for name in ("photometric_chi2", "spectral_chi2", "sf_timescales"):
             lines += [
                 "<figure>",
                 f'<img loading="lazy" src="{base}/{name}.png" alt="{row.spect_id}: {alts[name]}">',
-                f"<figcaption><code>{name}.png</code> {captions[name]}</figcaption>",
+                f"<figcaption>{sentences[name]}</figcaption>",
                 "</figure>",
                 "",
             ]
+    lines += [
+        "<details>",
+        "<summary>Details</summary>",
+        "",
+        f"Per-galaxy numbers, {len(table.columns)} columns, one row per galaxy: "
+        "`results/per-galaxy-diagnostics.csv`.",
+        "",
+        f"Each galaxy's own settings, redshift and seed: `{run_rel}/<target>/{FIGURE_SUBDIR}/"
+        "model_parameters.txt`.",
+        "",
+        "```",
+        "ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py run",
+        "ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py gallery",
+        "```",
+        "",
+        "</details>",
+        "",
+    ]
     out_path.write_text("\n".join(lines), encoding="utf-8")
 
 

@@ -6,124 +6,99 @@ tags: [calibration, ceridwen, dr2-quiescent-sample]
 job: t_ab2b8a0b
 ---
 
-Draft. Does a Chebyshev calibration polynomial in the spectrum likelihood make the joint LEGA-C plus COSMOS2015 fits better calibrated? What does it absorb, and what must it leave alone?
+## Model settings
 
-### Answer
+Run
+: Six DR2 galaxies, three arms and two mocks on one RTX 5060, `results/calibration-polynomial-dr2/`.
 
-The pipeline now multiplies the model spectrum by an order-3 Chebyshev polynomial P(λ) = 1 + Σ a_n T_n(x). It integrates the coefficients out analytically. The photometry never sees P. On six DR2 galaxies the spectral χ² at fixed weights never got worse with the polynomial on. Where the photometric anchor fits (total fluxes, χ² 10 to 50 for 12 bands), the polynomial stays within a few percent. The parameters move within reason. Where the anchor does not fit (M1_206545 and M5_172669, photometric χ² above 60), the polynomial grows to 15 to 30 percent. It absorbs the model mismatch. The default is now order 3 with total photometry.
+Arms
+: baseline is order 0 with cosmos_ap3. poly3 is order 3 with cosmos_ap3. poly3_total is order 3 with cosmos_total. Production now runs poly3_total.
 
-### What the polynomial is for
+Stellar grid
+: C3K v2.3 high-res (c3k_hr, vt=10 km/s), MIST v2.5 (aMIST, alpha-variable) isochrones, Kroupa (2001) IMF. Axes [alpha/Fe] 5 nodes, log10 Z 13 nodes, log10(age/Gyr) 107 nodes.
 
-A joint fit compares two data sets that measure different things.
+Star-formation history
+: Constant star-formation rate in each of 7 lookback bins. Edges 0, 0.03, 0.1, 0.3, 1, 3, 5 Gyr, then the universe age at the galaxy redshift. Metallicity constant in time.
 
-- The twelve photometric bands (u to IRAC 4.5 µm) measure the total light of the galaxy over a factor of ten in wavelength. Their absolute calibration is good to a few percent per band. They fix the stellar mass and the broadband shape of the SED.
-- The LEGA-C spectrum has about 3600 fitted pixels between 6300 and 8900 Å in the observed frame. At z = 0.6 to 0.8 that is 3900 to 5500 Å in the rest frame. The pixels carry the absorption-line strengths and widths, the 4000 Å break and the fine continuum shape. By summed (S/N)² the spectrum outweighs the photometry by a factor of 200 to 800 (absorption-line-mask note).
+Free parameters and priors
+: 13 free values. Z Uniform(-4.233, -1.233). afe Uniform(-0.2, 0.6). diffuse_tau_kc Uniform(0, 2). log_f_calib Uniform(-4.605, -2.303). logmass Uniform(8, 13). logsfr_ratios Uniform(-3, 3), 7 values. spectrum_scaling ClippedNormal(mean=1, sigma=0.3, low=0.2, high=3).
 
-The smooth shape of the spectrum is the part that is not trustworthy at the percent level. Four instrumental effects change it.
+Fixed
+: Redshift at each galaxy's catalogue value, 0.604 to 0.981 across the six. Dust index of the attenuation curve at -0.7. Stellar velocity dispersion at the catalogue value.
 
-1. Slit losses. A 1" slit on a galaxy of similar size loses 10 to 40 percent of the light (LEGA-C DR2 release notes). Seeing shrinks with wavelength, so the loss depends on wavelength.
-2. Differential atmospheric refraction. The atmosphere displaces the blue image of a target against the red image. A slit aligned at one wavelength loses more light at the other end of the spectrum.
-3. Flux-calibration errors. The response curve, the extinction curve and the standard star all leave smooth residual errors. LEGA-C DR2 did not use standard stars at all. The team scaled each spectrum onto a FAST template of the UltraVISTA photometry with a fifth-order polynomial (Straatman et al. 2018, §2.3.2).
-4. Aperture against total light. The slit sees part of the galaxy. The photometry sees all of it. A radial colour gradient makes the ratio depend on wavelength.
+Dust, nebular emission and IGM
+: kriek_conroy attenuation on the diffuse component. Birth-cloud dust false. Dust emission false. Nebular emission none. IGM absorption none.
 
-Every one of these is a smooth multiplicative function of wavelength. None of them changes an absorption line. That is what the polynomial models: a smooth multiplicative correction with a handful of coefficients.
+Spectrum calibration
+: Chebyshev order 3, one polynomial multiplying the model spectrum, coefficient priors Normal(0, 0.1), integrated out at every likelihood call. A free fractional noise floor f_calib between 1 and 10 percent of the model flux. A free multiplicative scale spectrum_scaling.
 
-### What it must not absorb
+Photometry anchor
+: cosmos_total, the 12 COSMOS2015 bands with the Laigle et al. (2016) aperture-to-total offset, Galactic extinction and the Table 3 zero points. The model photometry never carries the spectrum scale or the polynomial.
 
-Dust attenuation and stellar age also change the continuum smoothly. A change of 0.2 in the optical depth of the Kriek and Conroy curve tilts the LEGA-C window by about 15 percent. An order-1 polynomial can copy that tilt exactly (explainer figure, bottom left). Age moves the 4000 Å break and the slope of the continuum. Metallicity changes the line blanketing over a few hundred Å. On the spectrum alone, the polynomial and the dust are one degree of freedom. This degeneracy is not a defect of the polynomial. It is the design point: the spectrum gives up its continuum slope and keeps its lines.
-
-Three things stop the polynomial from eating the physics.
-
-- The photometry. The polynomial multiplies the spectrum prediction only. The fit compares the model photometry with the twelve bands without it. A dust or age change that tilts the model spectrum also changes the broadband colours from u to Ks. The catalogue measures those colours to about 5 percent. When the polynomial tries to absorb a physical tilt, the photometric χ² pays for it. The mock below shows this. We injected a 4 percent tilt in the spectrum only. The polynomial recovers it. The parameters stay on the truth, because the photometry did not move.
-- The order. An order-n Chebyshev polynomial has n − 1 turning points over the fitted range. The shortest structure it can follow spans about (range / n). For order 3 over 2500 Å that is 800 Å in the observed frame, 500 Å in the rest frame. Absorption lines are 10 to 30 Å wide and the 4000 Å break is 100 to 200 Å wide. The polynomial cannot bend on those scales (explainer figure, bottom right).
-- The prior. Each shape coefficient a_n has a Gaussian prior with width 0.1. That says: a correction of more than about 10 percent per term is unlikely. In a full-spectrum fit the 3600 pixels pin the coefficients to 0.3 to 1.4 percent and the prior is irrelevant. It matters only in fits with few pixels (the features-only mask). The prior does not stop the polynomial from following a real dust tilt. Only the photometry does.
-
-The anchor therefore decides what the polynomial means. The production 3" aperture fluxes carry no aperture-to-total offset, no Galactic extinction and no Table 3 zero points. That anchor carries its own tilt and sits 25 to 50 percent too faint. The polynomial then follows it into the wrong dust and age (tilt-origin experiment of 2026-09-02). The `poly3_total` arm below uses the Laigle et al. (2016) total SED for that reason.
-
-### Equations
-
-Data model for pixel i of the spectrum, with s the sampled `spectrum_scaling` and μ_i(θ) the model spectrum:
-
-    d_i = s · P(x_i) · μ_i(θ) + n_i,    n_i ~ N(0, σ_eff,i²),    σ_eff,i² = σ_i² + (f · s · μ_i)²
-
-    P(x) = 1 + Σ_{n=1}^{N} a_n T_n(x),    x = (λ − λ_mid) / λ_half in [−1, 1] over the fitted pixels
-
-The photometry uses μ(θ) without P. The coefficients a enter linearly. With the Gaussian prior a ~ N(0, Σ_p) they integrate out in closed form. Write D_in = T_n(x_i) · s · μ_i / σ_eff,i for the whitened design matrix. Write t_i = (d_i − s μ_i) / σ_eff,i for the whitened residual. Then:
-
-    N = Dᵀ D + Σ_p⁻¹,    â = N⁻¹ Dᵀ t
-
-    ln L(θ) = ln N(d | s P(â) μ, σ_eff) − ½ âᵀ Σ_p⁻¹ â + ½ ln|Σ_p⁻¹| − ½ ln|N|
-
-The first two terms are the profile likelihood that Prospector's `polyopt` uses. The last two are the Occam factor of the marginalisation. The whole thing costs one 3 × 3 solve and one 3 × 3 log-determinant per likelihood call. It adds no sampled dimension. Given θ, the coefficients have the posterior N(â, N⁻¹). The band on P(λ) in the figures therefore combines the spread of â over the posterior of θ with one draw from N⁻¹ per sample.
-
-### Implementation
-
-`ceridwen/ceridwen/likelihood/calibration.py` holds `PolynomialCalibration`. It builds the basis once from the pixel grid. `calibrate` solves â and returns P(â) · μ and the two extra terms.
-
-`ceridwen/ceridwen/likelihood/calibration.py · PolynomialCalibration.calibrate`
-
-```
-        normal = self.normal_matrix(mu, safe_sigma, mask)
-        design = self.design(mu, safe_sigma, mask)
-        target = jnp.where(mask, (jnp.asarray(y) - mu) / safe_sigma, 0.0)
-        coeffs = jnp.linalg.solve(normal, design.T @ target)
-        return (self.polynomial(coeffs) * mu, coeffs,
-                self.log_marginal_terms(coeffs, normal))
-```
-
-`DiagonalGaussianLikelihood(calibration=...)` evaluates the noise model once at the uncalibrated model. It solves the polynomial with that σ_eff and hands P · μ to the Gaussian kernel. So â maximises exactly the kernel that the likelihood evaluates, and the marginal above is exact for it. Without `calibration=` every existing fit stays unchanged.
-
-The production notebook `notebooks/ceridwen_integrated_photometry_spectra.ipynb` reads three switches.
-
-- `CERIDWEN_CALIBRATION_ORDER` (default 3): Chebyshev order. 0 switches the polynomial off.
-- `CERIDWEN_CALIBRATION_PRIOR` (default 0.1): prior width per coefficient.
-- `CERIDWEN_PHOTOMETRY` (default `cosmos_total`): `cosmos_ap3` uses the 3" aperture fluxes with total IRAC and no offsets. `cosmos_total` applies the Laigle et al. (2016) aperture-to-total offset, the Galactic extinction and the Table 3 zero points. `scripts/download_legac_dr2_aperture_photometry.py` fetches the aperture table.
-
-The result file records `calibration_order`, `calibration_prior_sigma`, `calibration_marginalized` and `photometry_source`. The derived-output file gains a `calibration` group. It holds the Chebyshev coordinate `x`, 200 coefficient draws, the matching `spectrum_scaling` draws, and the 16, 50 and 84 percent quantiles of P(λ) on the pixel grid. The notebook plots P(λ) and s · P(λ) with their bands. It computes the posterior-predictive spectrum, the pulls and the stored spectral χ² against P · μ.
-
-`ceridwen/tests/test_polynomial_calibration.py` holds 20 tests.
-
-- Exact recovery of an injected polynomial, and masked pixels left out.
-- Recovery to better than 1 percent at S/N 20.
-- The marginal against a brute-force integral over two coefficients, and the flat-prior integral.
-- The profile contract, per-coefficient priors and σ_eff weighting.
-- The covariance, the posterior draws, jit and gradient.
-- Recovery of a tilt through the alpha-enhanced forward model.
-
-### Defaults
-
-- Order 3. Orders 1, 3 and 5 all remove a pure tilt on mocks (2026-09-02 experiment). Order 1 cannot follow curvature. Order 5 pays extra posterior width for nothing. LEGA-C's own calibration used a fifth-order polynomial, so the residual is low order. The shortest bend of order 3 is 800 Å, above every spectral feature the model must keep.
-- Constant term in `spectrum_scaling`, not in the polynomial (Prospector convention). This keeps the sampled parameter set identical to production, so every downstream reader of the result files still works. The BAGPIPES convention puts the constant inside the polynomial and drops the scaling. It gives the same posteriors with one fewer dimension.
-- Prior width 0.1 per coefficient. Wide enough for any calibration error the release notes describe, and irrelevant in a full-spectrum fit.
-- Marginalised, not profiled. The Occam term is exact and costs one log-determinant. Over the posterior of a joint fit it varies by 0.1 to 0.4 nats, so the profile would give the same answer here. The marginal is the statement of the model.
-
-### Experiment
-
-`scripts/calibration_arms_vast.py` runs the production notebook through the DR2 shard runner on one Vast.ai RTX 5060 (instance 49915205, $0.093 per hour). Every cell uses the production sampler settings (500 live points, 65 inner steps, 100 deletions, logZ tolerance −5) and the production seed of its target.
-
-- `baseline`: production (3" photometry, `spectrum_scaling`, `log_f_calib`).
-- `poly3`: baseline plus the order-3 polynomial.
-- `poly3_total`: `poly3` anchored to the Laigle et al. (2016) total SED.
-- Six galaxies that span the sample. Catalogue S/N 6.6 (M12_98104), 13 (M5_173928), 22 (M12_185653), 21 (M4_108989), 31 (M1_206545) and 105 (M5_172669). Redshift 0.60 to 0.98.
-- Two mocks of M5_172669 with a 4 percent end-to-end tilt on the spectrum only, without and with the polynomial. The mock truth equals the posterior median of the stored full-spectrum fit.
-
-20 cells, 26 attempts. Six attempts failed with XLA runtime errors on this host and the driver retried them. About 5 minutes per fit. The instance cost $0.23. The driver destroyed it at 03:38 UTC on 2026-09-05. Records: `results/calibration-polynomial-dr2/vast_run_*.json`. Executed notebook: `results/calibration-polynomial-dr2/analysis.ipynb`.
-
-### Figures
-
+<figure>
 <img src="figures/calibration-polynomial-dr2/calibration-explainer.png" alt="Explainer: fitted polynomial on M12_185653, calibration vector with band, dust tilt against an order-1 polynomial, shortest bend against line widths">
+<figcaption>The photometry anchors the whole wavelength range, the spectrum covers one window inside it, and P bends on 800 angstrom scales, not on lines.</figcaption>
+</figure>
 
-The explainer: what the polynomial absorbs (top), the dust tilt it can copy (bottom left) and the scales it cannot bend on (bottom right).
-
-<img src="figures/calibration-polynomial-dr2/mock-tilt.png" alt="Mock with a 4 percent tilt: injected and recovered calibration vector, and the parameter pulls without and with the polynomial">
-
+<figure>
 <img src="figures/calibration-polynomial-dr2/polynomial-vectors.png" alt="P of lambda and s times P of lambda with 16 to 84 percent bands for the six galaxies and the two polynomial arms">
+<figcaption>P and s·P for six galaxies: within 4 percent where the photometry fits, and 15 to 30 percent where it does not.</figcaption>
+</figure>
 
+<figure>
 <img src="figures/calibration-polynomial-dr2/parameters-before-after.png" alt="Mass, t50, SFR, dust and mass-weighted age for the three arms of each galaxy">
+<figcaption>Mass, t50, recent star-formation rate, dust and age for the three arms: the masses rise 0.16 to 0.39 dex with total photometry.</figcaption>
+</figure>
 
-The per-galaxy pulls and cumulative χ² are `chi2-<galaxy>.png`. The sibling card's spectral χ² figure for every fit is `sibling-chi2-<arm>-<galaxy>.png` in `wiki/analyses/calibration-polynomial-dr2/`.
+<figure>
+<img src="figures/calibration-polynomial-dr2/mock-tilt.png" alt="Mock with a 4 percent tilt: injected and recovered calibration vector, and the parameter pulls without and with the polynomial">
+<figcaption>A 4 percent tilt injected on the spectrum alone: dust lands 32 sigma from the truth without P and 0.7 sigma with it.</figcaption>
+</figure>
 
-### Spectra and photometry
+<figure>
+<img src="figures/calibration-polynomial-dr2/chi2-M12_98104.png" alt="M12_98104: pull per fitted pixel and cumulative chi-squared for the three arms">
+<figcaption>Three arms of M12_98104, pull and cumulative chi-squared: every difference sits inside the run-to-run scatter.</figcaption>
+</figure>
+
+<figure>
+<img src="figures/calibration-polynomial-dr2/chi2-M5_173928.png" alt="M5_173928: pull per fitted pixel and cumulative chi-squared for the three arms">
+<figcaption>Three arms of M5_173928, pull and cumulative chi-squared: photometric chi-squared 143 to 48, and P is a 7 to 10 percent bowl.</figcaption>
+</figure>
+
+<figure>
+<img src="figures/calibration-polynomial-dr2/chi2-M4_108989.png" alt="M4_108989: pull per fitted pixel and cumulative chi-squared for the three arms">
+<figcaption>Three arms of M4_108989, pull and cumulative chi-squared: photometric chi-squared 139 to 13 and t50 back at 4.6 Gyr.</figcaption>
+</figure>
+
+<figure>
+<img src="figures/calibration-polynomial-dr2/chi2-M12_185653.png" alt="M12_185653: pull per fitted pixel and cumulative chi-squared for the three arms">
+<figcaption>Three arms of M12_185653, pull and cumulative chi-squared: photometric chi-squared 37 to 11 and P within 4 percent.</figcaption>
+</figure>
+
+<figure>
+<img src="figures/calibration-polynomial-dr2/chi2-M1_206545.png" alt="M1_206545: pull per fitted pixel and cumulative chi-squared for the three arms">
+<figcaption>Three arms of M1_206545, pull and cumulative chi-squared: raw chi-squared down 4191, but P is a 15 percent hump.</figcaption>
+</figure>
+
+<figure>
+<img src="figures/calibration-polynomial-dr2/chi2-M5_172669.png" alt="M5_172669: pull per fitted pixel and cumulative chi-squared for the three arms">
+<figcaption>Three arms of M5_172669, pull and cumulative chi-squared: P is a 28 percent tilt and dust goes from 0.01 to 0.6.</figcaption>
+</figure>
+
+## What the polynomial absorbs
+
+A slit loses more light at one end of the range than the other. The polynomial removes that smooth loss. It must not remove the tilt that dust and stellar age make. Only the photometry tells them apart.
+
+```
+d_i = s · P(x_i) · mu_i(theta) + n_i,   n_i ~ N(0, sigma_eff,i^2)
+sigma_eff,i^2 = sigma_i^2 + (f · s · mu_i)^2
+P(x) = 1 + sum_{n=1..3} a_n T_n(x),   x = (lambda - lambda_mid) / lambda_half in [-1, 1]
+```
+
+<details>
+<summary>Details</summary>
+
+Full record, acceptance discussion and the pipeline change: `reports/astro-calibration-2026-09-06.md`.
 
 Raw χ² uses the pipeline σ. Stored χ² uses σ_eff² = σ² + (f_calib · model)² over the fitted pixels. `s` is `spectrum_scaling`. P tilt is P(λ_max) − P(λ_min) at the posterior median. Δ ln Z is against the baseline arm of the same galaxy.
 
@@ -148,8 +123,6 @@ Raw χ² uses the pipeline σ. Stored χ² uses σ_eff² = σ² + (f_calib · mo
 |  | 0.604 | 105 | poly3 | 28981 | 4161 / 3602 | 130.8 | 2.7 | 1.608 | -28.2 | +288.5 |
 |  | 0.604 | 105 | poly3_total | 29012 | 4156 / 3602 | 100.1 | 2.7 | 1.305 | -25.1 | +281.7 |
 
-### Derived parameters
-
 Median ± half the 16-84 range. t50 is the lookback time at which half the mass had formed. SFR is the youngest SFH bin (0 to 30 Myr) times the median mass. The prior dominates it for quiescent galaxies.
 
 | galaxy | arm | log M⋆ | t50 [Gyr] | log SFR (0-30 Myr) | τ_dust | t_MW [Gyr] |
@@ -173,9 +146,7 @@ Median ± half the 16-84 range. t50 is the lookback time at which half the mass 
 |  | poly3 | 11.276 ± 0.012 | 1.75 ± 0.07 | 1.76 ± 0.06 | 0.655 ± 0.021 | 1.88 ± 0.17 |
 |  | poly3_total | 11.329 ± 0.011 | 1.77 ± 0.07 | 1.76 ± 0.05 | 0.577 ± 0.019 | 1.85 ± 0.10 |
 
-### Before and after
-
-Every delta is the polynomial arm minus the baseline arm of the same galaxy. "repeat scatter" = the production fit of 2026-08-31 (same seed) minus this baseline. "Δ χ² (baseline σ_eff)" scores both fits with the baseline f_calib, so the weights are equal.
+Every delta is the polynomial arm minus the baseline arm of the same galaxy. "repeat scatter" is the production fit of 2026-08-31 at the same seed minus this baseline. "Δ χ² (baseline σ_eff)" scores both fits with the baseline f_calib, so the weights are equal.
 
 | galaxy | arm | Δ raw χ² | Δ χ² (σ_eff) | Δ χ² (baseline σ_eff) | repeat scatter | Δ phot χ² | Δ log M⋆ | Δ t50 [Gyr] | Δ τ_dust | Δ t_MW [Gyr] |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -192,41 +163,27 @@ Every delta is the polynomial arm minus the baseline arm of the same galaxy. "re
 | M5_172669 | poly3 | -2265 | +337.3 | -193.2 | +2.1 | -40.1 | +0.167 | +0.10 | +0.642 | +0.22 |
 |  | poly3_total | -2234 | +331.8 | -191.2 | +2.1 | -70.8 | +0.220 | +0.11 | +0.565 | +0.18 |
 
-### Mocks
-
-Truth: M5_172669 (log M⋆ = 11.110, τ_dust = 0.011, t_MW = 1.66 Gyr). A 4 percent linear tilt on the spectrum only, production noise, seed 1. Pulls from the truth without the polynomial: log M⋆ +5.4σ, τ_dust +32σ. With it: +1.4σ and +0.7σ.
+Mock truth: M5_172669, log M⋆ 11.110, τ_dust 0.011, t_MW 1.66 Gyr. A 4 percent linear tilt on the spectrum only, production noise, seed 1.
 
 | mock arm | log M⋆ | τ_dust | s | t_MW [Gyr] | raw χ² | phot χ² | ln Z |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | mock_tilt4_baseline | 11.167 ± 0.011 | 0.151 ± 0.004 | 1.289 ± 0.020 | 1.77 ± 0.11 | 3625 | 22.5 | 236487.5 |
 | mock_tilt4_poly3 | 11.126 ± 0.012 | 0.023 ± 0.016 | 1.232 ± 0.019 | 1.72 ± 0.10 | 3590 | 4.0 | 236493.6 |
 
-### Acceptance
+Acceptance, the spectral χ² of no galaxy must get worse:
 
-The brief: the spectral χ² must not get worse for any galaxy, judged with the sibling card's per-galaxy figures. Those figures plot the stored χ², whose weights include the fitted noise fraction f_calib: σ_eff² = σ² + (f_calib · model)². A fit that lowers f_calib shrinks its own σ_eff, so its stored χ² can rise while its residuals fall. The acceptance table therefore carries three numbers per fit.
+- Raw χ², the same weights for every arm: never worse. `poly3` −12 to −4191. `poly3_total` −9 to −4111.
+- χ² at the baseline σ_eff: `poly3` never worse. `poly3_total` worse for M12_98104 by 3.7 against a run-to-run scatter of 1.0.
+- Stored χ², each fit's own σ_eff: worse for M5_172669 by 337 and M5_173928 by 100, because f_calib fell.
 
-- Raw χ² (pipeline σ, the same weights for every arm): never worse. `poly3` −12 to −4191, `poly3_total` −9 to −4111.
-- χ² at the baseline σ_eff (both fits scored with the baseline f_calib): `poly3` never worse (−2 to −1317). `poly3_total` worse for M12_98104 by +3.7 against a run-to-run scatter of 1.0, better for the other five (−5 to −1302).
-- Stored χ² (each fit's own σ_eff): `poly3` is worse for M5_172669 (+337, f_calib 2.9 → 2.7 percent). It is worse for M5_173928 (+100, 9.2 → 8.9 percent). `poly3_total` also worse for M12_98104 (+4). All three rises come from the smaller σ_eff, not from larger residuals: the same fits are better by 27 to 193 at the baseline weights.
+Implementation: `PolynomialCalibration` in `ceridwen/ceridwen/likelihood/calibration.py`, 20 tests in `ceridwen/tests/test_polynomial_calibration.py`. Switches in `notebooks/ceridwen_integrated_photometry_spectra.ipynb`: `CERIDWEN_CALIBRATION_ORDER` (3), `CERIDWEN_CALIBRATION_PRIOR` (0.1), `CERIDWEN_PHOTOMETRY` (`cosmos_total`). The derived-output file gains a `calibration` group with the coefficient draws and the P quantiles.
 
-Verdict: the polynomial on its own passes for all six galaxies at fixed weights. With the anchor changed as well, M12_98104 is 4 units worse at the baseline weights, out of 5914. It is the noisiest spectrum in the set. `sibling-chi2-<arm>-<galaxy>.png` holds the sibling card's spectral χ² figure for every one of the 18 fits (`scripts/per_galaxy_diagnostics.py`, stored χ²), and shows the two M5 rises. `analysis.ipynb` prints the three lists.
-
-Run-to-run scatter: my baseline differs from the stored production fit of the same galaxy and seed by 1 to 24 in stored χ². M4_108989 is the largest. The rest are 5 or less.
-
-### Where it helped and where it did not
-
-- Mock (M5_172669 truth, 4 percent tilt): helped. The tilt goes into P (a_1 = 0.035 ± 0.006 for 0.04 injected, the rest into s). Dust returns to the truth (0.023 ± 0.016 for 0.011, against 0.151 ± 0.004 without the polynomial). The photometric χ² drops from 22.5 to 4.0 and ln Z rises by 6. The recovered s · P differs from the injected vector by at most 1.0 percent.
-- M4_108989 (S/N 21): helped, but only with total photometry. On aperture photometry the polynomial reaches −25 percent and dust doubles. t50 drops from 4.6 to 3.1 Gyr and the photometric χ² gets worse (139 → 153). With total photometry the polynomial is −7 percent, t50 returns to 4.6 Gyr, the photometric χ² is 13 and the stored spectral χ² falls by 227. The anchor decides what the polynomial means.
-- M12_185653 (S/N 22): helped. Photometric χ² 37 → 11 with total photometry, stored spectral χ² −48 to −56, polynomial within ±4 percent. t50 moves from 3.0 to 4.5 to 5.1 Gyr with an error bar ten times wider than before.
-- M5_173928 (S/N 13): mixed. Photometric χ² 143 → 48 and raw spectral χ² −569 with total photometry. But the polynomial is a 7 to 10 percent bowl. t50 moves from 2.9 to 4.5 to 5.5 Gyr. The baseline needed s = 2.29: the 3" fluxes sit a factor 2.3 below the spectrum. Its stored χ² rises by 82 to 100 because f_calib fell. At the baseline weights the same fits are better by 5 to 27.
-- M1_206545 (S/N 31): did not help where it matters. The raw spectral χ² falls by 4191 (3.7 to 2.5 per pixel). But P is a 15 percent hump centred near the rest-frame 4000 Å break. The photometric χ² stays at 65 to 102 for 12 bands. Mass moves by 0.3 to 0.4 dex, dust by 0.3 to 0.4 and t50 by 2.1 Gyr. The formal errors are 0.01. The polynomial and the dust share the continuum, and the photometry does not settle the split. Trust neither arm until the photometric residuals are understood.
-- M5_172669 (S/N 105): did not help. P is a −28 percent tilt. τ_dust goes from 0.01 to 0.6. The youngest SFH bin goes from quiescent to about 60 M⊙ per year. The photometric χ² stays at 100 to 131. The polynomial absorbs the known optical-NIR model mismatch of this young galaxy (results board, 2026-09-04), not a calibration error.
-- M12_98104 (S/N 6.6): no change on aperture photometry. Every delta is within the run-to-run scatter. The t50 error bar widens from 0.05 to 0.6 Gyr. f_calib sits at the 10 percent prior ceiling in all three arms, so the fractional noise floor, not the polynomial, carries the residual mismatch.
-
-### Commands
+Run: Vast.ai RTX 5060 instance 49915205 at $0.093 per hour, 20 cells, 26 attempts, $0.23, destroyed. Records in `results/calibration-polynomial-dr2/vast_run_*.json`, executed notebook `analysis.ipynb`. The sibling card's spectral χ² figure for each of the 18 fits is `sibling-chi2-<arm>-<galaxy>.png`.
 
 ```
 ceridwen/.venv/bin/python scripts/calibration_arms_vast.py plan
 ceridwen/.venv/bin/python scripts/calibration_arms_vast.py run --spend-cap 1.0
 JAX_PLATFORMS=cpu ceridwen/.venv/bin/python -m pytest ceridwen/tests/test_polynomial_calibration.py -q
 ```
+
+</details>
