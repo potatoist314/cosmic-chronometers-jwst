@@ -166,7 +166,33 @@ Sample medians: t10 4.64, t20 4.23, t50 3.02, t80 1.80, t90 1.39 Gyr. Median 16-
 
 ## GPU verification
 
-GPU_VERIFICATION_PLACEHOLDER
+Instance
+: Vast.ai 49915972, `NVIDIA GeForce RTX 5060, 8151 MiB, 580.82.09` (`gpu.txt`), host 166946 (UK), offer $0.1028/h, $0.1222/h with the 40 GB disk
+
+Spend
+: 0.427 h. $0.052 at the instance rate, $0.044 at the offer rate (`spend_estimate_usd`). Account credit fell $0.090, which includes a concurrent job's instance in the same window. Cap $2
+
+Destroyed
+: yes, verified absent after the destroy call (`vast_run_20260905T011450Z.json`)
+
+Refits
+: M1_210210 and M2_139662 with the production settings and seeds, both exit 0, both pass `_validate_result`
+
+Files
+: `results/rtx-5060-per-galaxy-diagnostics-verification/` with the executed notebooks, both HDF5 files, `gpu_lnl_check.log`, `refit_vs_production.csv`, `diagnostics/` figures
+
+Refit against the August production fit:
+
+| Galaxy | ln Z production | ln Z refit | wall production | wall refit | age production | age refit | largest median shift |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| M2_139662 | 222329.41 ± 0.25 | 222330.47 ± 0.25 | 1119 s | 252 s | 5.21 Gyr | 5.10 Gyr (−0.6σ) | 0.4σ (logmass) |
+| M1_210210 | 229449.03 ± 0.19 | 229441.28 ± 0.38 | 1196 s | 291 s | 4.50 Gyr | 4.94 Gyr (+7σ) | 3.6σ (logmass, +0.028 dex) |
+
+GPU log-likelihood check (`gpu_lnl_check.log`). The rebuilt model on the GPU reproduces the stored ln L(theta_ML) of the fresh fits. Differences: −0.002 (M1_210210) and +0.001 (M2_139662). On the CPU the same check gives −0.06 and −0.02. For the August production fits the GPU gives −4.56 (M1_210210) and +0.01 (M2_139662). The CPU gives the same: −4.63 and −0.003. The offset therefore comes from neither device precision nor sigma nor masks. It comes from a change of the Ceridwen forward model between the August production code and the current tree. The project's own re-projection of the 187 stored medians recorded Δχ² mean +3.3 and rms 6.2 for that change (`benchmarks/ceridwen/runs/dr2_stored_fit_revalidation_2026-09-01.json`). The four times shorter wall time is the same code change.
+
+Flag: for the high-S/N galaxy M1_210210 the current model moves the mass-weighted age by 0.44 Gyr, seven posterior sigma. The production errors (±0.06 Gyr) do not include this implementation systematic. The lower-S/N galaxy M2_139662 reproduces within one sigma.
+
+The block the notebook stored from the live model equals the rebuilt block line for line, order-insensitive, for both refits.
 
 ## Commands
 

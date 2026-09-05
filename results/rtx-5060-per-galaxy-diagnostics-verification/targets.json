@@ -1,0 +1,1507 @@
+{
+  "schema_version": 1,
+  "sample": "LEGA-C DR2 quiescent, clean 12-band photometry",
+  "selection": "highest-S/N eligible spectrum per OBJECT",
+  "num_shards": 2,
+  "base_seed": 20260830,
+  "eligible_spectra": 194,
+  "unique_objects": 187,
+  "targets": [
+    {
+      "manifest_index": 0,
+      "object_id": 172669,
+      "spect_id": "M5_172669",
+      "sn": 105.0,
+      "shard_index": 0,
+      "seed": 20260830
+    },
+    {
+      "manifest_index": 1,
+      "object_id": 233129,
+      "spect_id": "M10_233129",
+      "sn": 75.5,
+      "shard_index": 1,
+      "seed": 20260831
+    },
+    {
+      "manifest_index": 2,
+      "object_id": 210210,
+      "spect_id": "M1_210210",
+      "sn": 62.20000076293945,
+      "shard_index": 0,
+      "seed": 20260832
+    },
+    {
+      "manifest_index": 3,
+      "object_id": 181945,
+      "spect_id": "M12_181945",
+      "sn": 61.79999923706055,
+      "shard_index": 1,
+      "seed": 20260833
+    },
+    {
+      "manifest_index": 4,
+      "object_id": 133501,
+      "spect_id": "M2_133501",
+      "sn": 57.70000076293945,
+      "shard_index": 0,
+      "seed": 20260834
+    },
+    {
+      "manifest_index": 5,
+      "object_id": 38648,
+      "spect_id": "M14_38648",
+      "sn": 52.70000076293945,
+      "shard_index": 1,
+      "seed": 20260835
+    },
+    {
+      "manifest_index": 6,
+      "object_id": 226316,
+      "spect_id": "M9_226316",
+      "sn": 51.5,
+      "shard_index": 0,
+      "seed": 20260836
+    },
+    {
+      "manifest_index": 7,
+      "object_id": 233169,
+      "spect_id": "M9_233169",
+      "sn": 51.400001525878906,
+      "shard_index": 1,
+      "seed": 20260837
+    },
+    {
+      "manifest_index": 8,
+      "object_id": 134391,
+      "spect_id": "M2_134391",
+      "sn": 44.599998474121094,
+      "shard_index": 0,
+      "seed": 20260838
+    },
+    {
+      "manifest_index": 9,
+      "object_id": 130052,
+      "spect_id": "M1_130052",
+      "sn": 44.29999923706055,
+      "shard_index": 1,
+      "seed": 20260839
+    },
+    {
+      "manifest_index": 10,
+      "object_id": 160400,
+      "spect_id": "M8_160400",
+      "sn": 44.29999923706055,
+      "shard_index": 0,
+      "seed": 20260840
+    },
+    {
+      "manifest_index": 11,
+      "object_id": 245252,
+      "spect_id": "M11_245252",
+      "sn": 44.20000076293945,
+      "shard_index": 1,
+      "seed": 20260841
+    },
+    {
+      "manifest_index": 12,
+      "object_id": 205742,
+      "spect_id": "M1_205742",
+      "sn": 42.79999923706055,
+      "shard_index": 0,
+      "seed": 20260842
+    },
+    {
+      "manifest_index": 13,
+      "object_id": 213772,
+      "spect_id": "M10_213772",
+      "sn": 40.900001525878906,
+      "shard_index": 1,
+      "seed": 20260843
+    },
+    {
+      "manifest_index": 14,
+      "object_id": 150848,
+      "spect_id": "M8_150848",
+      "sn": 40.900001525878906,
+      "shard_index": 0,
+      "seed": 20260844
+    },
+    {
+      "manifest_index": 15,
+      "object_id": 161346,
+      "spect_id": "M8_161346",
+      "sn": 40.5,
+      "shard_index": 1,
+      "seed": 20260845
+    },
+    {
+      "manifest_index": 16,
+      "object_id": 162149,
+      "spect_id": "M8_162149",
+      "sn": 40.5,
+      "shard_index": 0,
+      "seed": 20260846
+    },
+    {
+      "manifest_index": 17,
+      "object_id": 231276,
+      "spect_id": "M9_231276",
+      "sn": 40.099998474121094,
+      "shard_index": 1,
+      "seed": 20260847
+    },
+    {
+      "manifest_index": 18,
+      "object_id": 113852,
+      "spect_id": "M7_113852",
+      "sn": 39.5,
+      "shard_index": 0,
+      "seed": 20260848
+    },
+    {
+      "manifest_index": 19,
+      "object_id": 213004,
+      "spect_id": "M11_213004",
+      "sn": 39.400001525878906,
+      "shard_index": 1,
+      "seed": 20260849
+    },
+    {
+      "manifest_index": 20,
+      "object_id": 105474,
+      "spect_id": "M4_105474",
+      "sn": 37.29999923706055,
+      "shard_index": 0,
+      "seed": 20260850
+    },
+    {
+      "manifest_index": 21,
+      "object_id": 228215,
+      "spect_id": "M10_228215",
+      "sn": 36.79999923706055,
+      "shard_index": 1,
+      "seed": 20260851
+    },
+    {
+      "manifest_index": 22,
+      "object_id": 218207,
+      "spect_id": "M11_218207",
+      "sn": 36.79999923706055,
+      "shard_index": 0,
+      "seed": 20260852
+    },
+    {
+      "manifest_index": 23,
+      "object_id": 216730,
+      "spect_id": "M10_216730",
+      "sn": 36.70000076293945,
+      "shard_index": 1,
+      "seed": 20260853
+    },
+    {
+      "manifest_index": 24,
+      "object_id": 232627,
+      "spect_id": "M13_232627",
+      "sn": 36.400001525878906,
+      "shard_index": 0,
+      "seed": 20260854
+    },
+    {
+      "manifest_index": 25,
+      "object_id": 228380,
+      "spect_id": "M10_228380",
+      "sn": 36.099998474121094,
+      "shard_index": 1,
+      "seed": 20260855
+    },
+    {
+      "manifest_index": 26,
+      "object_id": 117400,
+      "spect_id": "M4_117400",
+      "sn": 36.099998474121094,
+      "shard_index": 0,
+      "seed": 20260856
+    },
+    {
+      "manifest_index": 27,
+      "object_id": 257455,
+      "spect_id": "M11_257455",
+      "sn": 36.0,
+      "shard_index": 1,
+      "seed": 20260857
+    },
+    {
+      "manifest_index": 28,
+      "object_id": 250391,
+      "spect_id": "M11_250391",
+      "sn": 35.79999923706055,
+      "shard_index": 0,
+      "seed": 20260858
+    },
+    {
+      "manifest_index": 29,
+      "object_id": 215585,
+      "spect_id": "M11_215585",
+      "sn": 35.599998474121094,
+      "shard_index": 1,
+      "seed": 20260859
+    },
+    {
+      "manifest_index": 30,
+      "object_id": 119474,
+      "spect_id": "M3_119474",
+      "sn": 35.400001525878906,
+      "shard_index": 0,
+      "seed": 20260860
+    },
+    {
+      "manifest_index": 31,
+      "object_id": 206669,
+      "spect_id": "M2_206669",
+      "sn": 35.20000076293945,
+      "shard_index": 1,
+      "seed": 20260861
+    },
+    {
+      "manifest_index": 32,
+      "object_id": 211157,
+      "spect_id": "M1_211157",
+      "sn": 35.099998474121094,
+      "shard_index": 0,
+      "seed": 20260862
+    },
+    {
+      "manifest_index": 33,
+      "object_id": 102456,
+      "spect_id": "M12_102456",
+      "sn": 34.900001525878906,
+      "shard_index": 1,
+      "seed": 20260863
+    },
+    {
+      "manifest_index": 34,
+      "object_id": 91529,
+      "spect_id": "M12_91529",
+      "sn": 34.79999923706055,
+      "shard_index": 0,
+      "seed": 20260864
+    },
+    {
+      "manifest_index": 35,
+      "object_id": 238314,
+      "spect_id": "M5_238314",
+      "sn": 34.599998474121094,
+      "shard_index": 1,
+      "seed": 20260865
+    },
+    {
+      "manifest_index": 36,
+      "object_id": 77632,
+      "spect_id": "M15_77632",
+      "sn": 34.5,
+      "shard_index": 0,
+      "seed": 20260866
+    },
+    {
+      "manifest_index": 37,
+      "object_id": 124231,
+      "spect_id": "M4_124231",
+      "sn": 34.5,
+      "shard_index": 1,
+      "seed": 20260867
+    },
+    {
+      "manifest_index": 38,
+      "object_id": 221163,
+      "spect_id": "M11_221163",
+      "sn": 34.20000076293945,
+      "shard_index": 0,
+      "seed": 20260868
+    },
+    {
+      "manifest_index": 39,
+      "object_id": 206858,
+      "spect_id": "M1_206858",
+      "sn": 33.400001525878906,
+      "shard_index": 1,
+      "seed": 20260869
+    },
+    {
+      "manifest_index": 40,
+      "object_id": 205715,
+      "spect_id": "M5_205715",
+      "sn": 33.20000076293945,
+      "shard_index": 0,
+      "seed": 20260870
+    },
+    {
+      "manifest_index": 41,
+      "object_id": 148698,
+      "spect_id": "M8_148698",
+      "sn": 33.0,
+      "shard_index": 1,
+      "seed": 20260871
+    },
+    {
+      "manifest_index": 42,
+      "object_id": 229551,
+      "spect_id": "M11_229551",
+      "sn": 32.79999923706055,
+      "shard_index": 0,
+      "seed": 20260872
+    },
+    {
+      "manifest_index": 43,
+      "object_id": 111390,
+      "spect_id": "M3_111390",
+      "sn": 32.400001525878906,
+      "shard_index": 1,
+      "seed": 20260873
+    },
+    {
+      "manifest_index": 44,
+      "object_id": 236994,
+      "spect_id": "M5_236994",
+      "sn": 31.799999237060547,
+      "shard_index": 0,
+      "seed": 20260874
+    },
+    {
+      "manifest_index": 45,
+      "object_id": 236682,
+      "spect_id": "M5_236682",
+      "sn": 31.600000381469727,
+      "shard_index": 1,
+      "seed": 20260875
+    },
+    {
+      "manifest_index": 46,
+      "object_id": 124875,
+      "spect_id": "M7_124875",
+      "sn": 31.5,
+      "shard_index": 0,
+      "seed": 20260876
+    },
+    {
+      "manifest_index": 47,
+      "object_id": 206545,
+      "spect_id": "M1_206545",
+      "sn": 31.399999618530273,
+      "shard_index": 1,
+      "seed": 20260877
+    },
+    {
+      "manifest_index": 48,
+      "object_id": 232962,
+      "spect_id": "M11_232962",
+      "sn": 30.799999237060547,
+      "shard_index": 0,
+      "seed": 20260878
+    },
+    {
+      "manifest_index": 49,
+      "object_id": 77745,
+      "spect_id": "M15_77745",
+      "sn": 30.700000762939453,
+      "shard_index": 1,
+      "seed": 20260879
+    },
+    {
+      "manifest_index": 50,
+      "object_id": 218701,
+      "spect_id": "M9_218701",
+      "sn": 30.700000762939453,
+      "shard_index": 0,
+      "seed": 20260880
+    },
+    {
+      "manifest_index": 51,
+      "object_id": 248217,
+      "spect_id": "M13_248217",
+      "sn": 30.600000381469727,
+      "shard_index": 1,
+      "seed": 20260881
+    },
+    {
+      "manifest_index": 52,
+      "object_id": 94494,
+      "spect_id": "M2_94494",
+      "sn": 30.600000381469727,
+      "shard_index": 0,
+      "seed": 20260882
+    },
+    {
+      "manifest_index": 53,
+      "object_id": 206501,
+      "spect_id": "M1_206501",
+      "sn": 30.5,
+      "shard_index": 1,
+      "seed": 20260883
+    },
+    {
+      "manifest_index": 54,
+      "object_id": 147539,
+      "spect_id": "M8_147539",
+      "sn": 30.5,
+      "shard_index": 0,
+      "seed": 20260884
+    },
+    {
+      "manifest_index": 55,
+      "object_id": 184916,
+      "spect_id": "M12_184916",
+      "sn": 30.399999618530273,
+      "shard_index": 1,
+      "seed": 20260885
+    },
+    {
+      "manifest_index": 56,
+      "object_id": 147849,
+      "spect_id": "M7_147849",
+      "sn": 29.799999237060547,
+      "shard_index": 0,
+      "seed": 20260886
+    },
+    {
+      "manifest_index": 57,
+      "object_id": 227516,
+      "spect_id": "M10_227516",
+      "sn": 29.200000762939453,
+      "shard_index": 1,
+      "seed": 20260887
+    },
+    {
+      "manifest_index": 58,
+      "object_id": 211347,
+      "spect_id": "M5_211347",
+      "sn": 29.200000762939453,
+      "shard_index": 0,
+      "seed": 20260888
+    },
+    {
+      "manifest_index": 59,
+      "object_id": 226721,
+      "spect_id": "M11_226721",
+      "sn": 29.0,
+      "shard_index": 1,
+      "seed": 20260889
+    },
+    {
+      "manifest_index": 60,
+      "object_id": 244738,
+      "spect_id": "M11_244738",
+      "sn": 29.0,
+      "shard_index": 0,
+      "seed": 20260890
+    },
+    {
+      "manifest_index": 61,
+      "object_id": 120308,
+      "spect_id": "M3_120308",
+      "sn": 29.0,
+      "shard_index": 1,
+      "seed": 20260891
+    },
+    {
+      "manifest_index": 62,
+      "object_id": 241189,
+      "spect_id": "M5_241189",
+      "sn": 29.0,
+      "shard_index": 0,
+      "seed": 20260892
+    },
+    {
+      "manifest_index": 63,
+      "object_id": 232005,
+      "spect_id": "M9_232005",
+      "sn": 29.0,
+      "shard_index": 1,
+      "seed": 20260893
+    },
+    {
+      "manifest_index": 64,
+      "object_id": 225441,
+      "spect_id": "M10_225441",
+      "sn": 28.899999618530273,
+      "shard_index": 0,
+      "seed": 20260894
+    },
+    {
+      "manifest_index": 65,
+      "object_id": 211767,
+      "spect_id": "M5_211767",
+      "sn": 28.5,
+      "shard_index": 1,
+      "seed": 20260895
+    },
+    {
+      "manifest_index": 66,
+      "object_id": 139423,
+      "spect_id": "M1_139423",
+      "sn": 28.100000381469727,
+      "shard_index": 0,
+      "seed": 20260896
+    },
+    {
+      "manifest_index": 67,
+      "object_id": 125213,
+      "spect_id": "M4_125213",
+      "sn": 27.899999618530273,
+      "shard_index": 1,
+      "seed": 20260897
+    },
+    {
+      "manifest_index": 68,
+      "object_id": 31835,
+      "spect_id": "M14_31835",
+      "sn": 27.399999618530273,
+      "shard_index": 0,
+      "seed": 20260898
+    },
+    {
+      "manifest_index": 69,
+      "object_id": 213587,
+      "spect_id": "M9_213587",
+      "sn": 27.100000381469727,
+      "shard_index": 1,
+      "seed": 20260899
+    },
+    {
+      "manifest_index": 70,
+      "object_id": 246149,
+      "spect_id": "M13_246149",
+      "sn": 26.600000381469727,
+      "shard_index": 0,
+      "seed": 20260900
+    },
+    {
+      "manifest_index": 71,
+      "object_id": 231544,
+      "spect_id": "M10_231544",
+      "sn": 26.100000381469727,
+      "shard_index": 1,
+      "seed": 20260901
+    },
+    {
+      "manifest_index": 72,
+      "object_id": 128311,
+      "spect_id": "M5_128311",
+      "sn": 26.0,
+      "shard_index": 0,
+      "seed": 20260902
+    },
+    {
+      "manifest_index": 73,
+      "object_id": 122242,
+      "spect_id": "M7_122242",
+      "sn": 26.0,
+      "shard_index": 1,
+      "seed": 20260903
+    },
+    {
+      "manifest_index": 74,
+      "object_id": 134021,
+      "spect_id": "M2_134021",
+      "sn": 25.799999237060547,
+      "shard_index": 0,
+      "seed": 20260904
+    },
+    {
+      "manifest_index": 75,
+      "object_id": 119802,
+      "spect_id": "M3_119802",
+      "sn": 25.399999618530273,
+      "shard_index": 1,
+      "seed": 20260905
+    },
+    {
+      "manifest_index": 76,
+      "object_id": 208364,
+      "spect_id": "M2_208364",
+      "sn": 25.100000381469727,
+      "shard_index": 0,
+      "seed": 20260906
+    },
+    {
+      "manifest_index": 77,
+      "object_id": 165871,
+      "spect_id": "M5_165871",
+      "sn": 25.0,
+      "shard_index": 1,
+      "seed": 20260907
+    },
+    {
+      "manifest_index": 78,
+      "object_id": 237437,
+      "spect_id": "M6_237437",
+      "sn": 25.0,
+      "shard_index": 0,
+      "seed": 20260908
+    },
+    {
+      "manifest_index": 79,
+      "object_id": 244239,
+      "spect_id": "M13_244239",
+      "sn": 24.5,
+      "shard_index": 1,
+      "seed": 20260909
+    },
+    {
+      "manifest_index": 80,
+      "object_id": 238580,
+      "spect_id": "M5_238580",
+      "sn": 24.299999237060547,
+      "shard_index": 0,
+      "seed": 20260910
+    },
+    {
+      "manifest_index": 81,
+      "object_id": 109713,
+      "spect_id": "M3_109713",
+      "sn": 24.200000762939453,
+      "shard_index": 1,
+      "seed": 20260911
+    },
+    {
+      "manifest_index": 82,
+      "object_id": 117694,
+      "spect_id": "M3_117694",
+      "sn": 24.200000762939453,
+      "shard_index": 0,
+      "seed": 20260912
+    },
+    {
+      "manifest_index": 83,
+      "object_id": 197591,
+      "spect_id": "M10_197591",
+      "sn": 23.899999618530273,
+      "shard_index": 1,
+      "seed": 20260913
+    },
+    {
+      "manifest_index": 84,
+      "object_id": 109352,
+      "spect_id": "M3_109352",
+      "sn": 23.899999618530273,
+      "shard_index": 0,
+      "seed": 20260914
+    },
+    {
+      "manifest_index": 85,
+      "object_id": 107362,
+      "spect_id": "M3_107362",
+      "sn": 23.700000762939453,
+      "shard_index": 1,
+      "seed": 20260915
+    },
+    {
+      "manifest_index": 86,
+      "object_id": 37723,
+      "spect_id": "M14_37723",
+      "sn": 22.899999618530273,
+      "shard_index": 0,
+      "seed": 20260916
+    },
+    {
+      "manifest_index": 87,
+      "object_id": 230747,
+      "spect_id": "M13_230747",
+      "sn": 22.600000381469727,
+      "shard_index": 1,
+      "seed": 20260917
+    },
+    {
+      "manifest_index": 88,
+      "object_id": 88032,
+      "spect_id": "M15_88032",
+      "sn": 22.600000381469727,
+      "shard_index": 0,
+      "seed": 20260918
+    },
+    {
+      "manifest_index": 89,
+      "object_id": 229883,
+      "spect_id": "M9_229883",
+      "sn": 22.600000381469727,
+      "shard_index": 1,
+      "seed": 20260919
+    },
+    {
+      "manifest_index": 90,
+      "object_id": 243871,
+      "spect_id": "M13_243871",
+      "sn": 22.299999237060547,
+      "shard_index": 0,
+      "seed": 20260920
+    },
+    {
+      "manifest_index": 91,
+      "object_id": 180774,
+      "spect_id": "M12_180774",
+      "sn": 22.200000762939453,
+      "shard_index": 1,
+      "seed": 20260921
+    },
+    {
+      "manifest_index": 92,
+      "object_id": 230983,
+      "spect_id": "M10_230983",
+      "sn": 21.700000762939453,
+      "shard_index": 0,
+      "seed": 20260922
+    },
+    {
+      "manifest_index": 93,
+      "object_id": 185653,
+      "spect_id": "M12_185653",
+      "sn": 21.5,
+      "shard_index": 1,
+      "seed": 20260923
+    },
+    {
+      "manifest_index": 94,
+      "object_id": 108989,
+      "spect_id": "M4_108989",
+      "sn": 21.299999237060547,
+      "shard_index": 0,
+      "seed": 20260924
+    },
+    {
+      "manifest_index": 95,
+      "object_id": 27068,
+      "spect_id": "M14_27068",
+      "sn": 21.200000762939453,
+      "shard_index": 1,
+      "seed": 20260925
+    },
+    {
+      "manifest_index": 96,
+      "object_id": 216899,
+      "spect_id": "M11_216899",
+      "sn": 21.100000381469727,
+      "shard_index": 0,
+      "seed": 20260926
+    },
+    {
+      "manifest_index": 97,
+      "object_id": 37023,
+      "spect_id": "M14_37023",
+      "sn": 21.0,
+      "shard_index": 1,
+      "seed": 20260927
+    },
+    {
+      "manifest_index": 98,
+      "object_id": 107643,
+      "spect_id": "M4_107643",
+      "sn": 21.0,
+      "shard_index": 0,
+      "seed": 20260928
+    },
+    {
+      "manifest_index": 99,
+      "object_id": 123161,
+      "spect_id": "M4_123161",
+      "sn": 21.0,
+      "shard_index": 1,
+      "seed": 20260929
+    },
+    {
+      "manifest_index": 100,
+      "object_id": 147270,
+      "spect_id": "M7_147270",
+      "sn": 20.799999237060547,
+      "shard_index": 0,
+      "seed": 20260930
+    },
+    {
+      "manifest_index": 101,
+      "object_id": 225431,
+      "spect_id": "M9_225431",
+      "sn": 19.899999618530273,
+      "shard_index": 1,
+      "seed": 20260931
+    },
+    {
+      "manifest_index": 102,
+      "object_id": 248829,
+      "spect_id": "M11_248829",
+      "sn": 19.700000762939453,
+      "shard_index": 0,
+      "seed": 20260932
+    },
+    {
+      "manifest_index": 103,
+      "object_id": 212391,
+      "spect_id": "M9_212391",
+      "sn": 19.600000381469727,
+      "shard_index": 1,
+      "seed": 20260933
+    },
+    {
+      "manifest_index": 104,
+      "object_id": 227672,
+      "spect_id": "M10_227672",
+      "sn": 19.299999237060547,
+      "shard_index": 0,
+      "seed": 20260934
+    },
+    {
+      "manifest_index": 105,
+      "object_id": 237641,
+      "spect_id": "M6_237641",
+      "sn": 19.299999237060547,
+      "shard_index": 1,
+      "seed": 20260935
+    },
+    {
+      "manifest_index": 106,
+      "object_id": 146213,
+      "spect_id": "M7_146213",
+      "sn": 19.200000762939453,
+      "shard_index": 0,
+      "seed": 20260936
+    },
+    {
+      "manifest_index": 107,
+      "object_id": 214296,
+      "spect_id": "M11_214296",
+      "sn": 19.100000381469727,
+      "shard_index": 1,
+      "seed": 20260937
+    },
+    {
+      "manifest_index": 108,
+      "object_id": 233902,
+      "spect_id": "M6_233902",
+      "sn": 19.100000381469727,
+      "shard_index": 0,
+      "seed": 20260938
+    },
+    {
+      "manifest_index": 109,
+      "object_id": 120372,
+      "spect_id": "M7_120372",
+      "sn": 19.100000381469727,
+      "shard_index": 1,
+      "seed": 20260939
+    },
+    {
+      "manifest_index": 110,
+      "object_id": 227630,
+      "spect_id": "M9_227630",
+      "sn": 19.100000381469727,
+      "shard_index": 0,
+      "seed": 20260940
+    },
+    {
+      "manifest_index": 111,
+      "object_id": 163989,
+      "spect_id": "M8_163989",
+      "sn": 19.0,
+      "shard_index": 1,
+      "seed": 20260941
+    },
+    {
+      "manifest_index": 112,
+      "object_id": 214899,
+      "spect_id": "M9_214899",
+      "sn": 18.799999237060547,
+      "shard_index": 0,
+      "seed": 20260942
+    },
+    {
+      "manifest_index": 113,
+      "object_id": 129596,
+      "spect_id": "M2_129596",
+      "sn": 18.600000381469727,
+      "shard_index": 1,
+      "seed": 20260943
+    },
+    {
+      "manifest_index": 114,
+      "object_id": 117010,
+      "spect_id": "M3_117010",
+      "sn": 18.299999237060547,
+      "shard_index": 0,
+      "seed": 20260944
+    },
+    {
+      "manifest_index": 115,
+      "object_id": 130005,
+      "spect_id": "M2_130005",
+      "sn": 18.200000762939453,
+      "shard_index": 1,
+      "seed": 20260945
+    },
+    {
+      "manifest_index": 116,
+      "object_id": 208622,
+      "spect_id": "M1_208622",
+      "sn": 17.899999618530273,
+      "shard_index": 0,
+      "seed": 20260946
+    },
+    {
+      "manifest_index": 117,
+      "object_id": 107370,
+      "spect_id": "M4_107370",
+      "sn": 17.799999237060547,
+      "shard_index": 1,
+      "seed": 20260947
+    },
+    {
+      "manifest_index": 118,
+      "object_id": 215519,
+      "spect_id": "M10_215519",
+      "sn": 17.700000762939453,
+      "shard_index": 0,
+      "seed": 20260948
+    },
+    {
+      "manifest_index": 119,
+      "object_id": 139662,
+      "spect_id": "M2_139662",
+      "sn": 17.299999237060547,
+      "shard_index": 1,
+      "seed": 20260949
+    },
+    {
+      "manifest_index": 120,
+      "object_id": 145276,
+      "spect_id": "M8_145276",
+      "sn": 17.200000762939453,
+      "shard_index": 0,
+      "seed": 20260950
+    },
+    {
+      "manifest_index": 121,
+      "object_id": 245621,
+      "spect_id": "M11_245621",
+      "sn": 17.0,
+      "shard_index": 1,
+      "seed": 20260951
+    },
+    {
+      "manifest_index": 122,
+      "object_id": 182890,
+      "spect_id": "M12_182890",
+      "sn": 16.799999237060547,
+      "shard_index": 0,
+      "seed": 20260952
+    },
+    {
+      "manifest_index": 123,
+      "object_id": 92132,
+      "spect_id": "M12_92132",
+      "sn": 16.100000381469727,
+      "shard_index": 1,
+      "seed": 20260953
+    },
+    {
+      "manifest_index": 124,
+      "object_id": 152125,
+      "spect_id": "M7_152125",
+      "sn": 16.0,
+      "shard_index": 0,
+      "seed": 20260954
+    },
+    {
+      "manifest_index": 125,
+      "object_id": 240899,
+      "spect_id": "M6_240899",
+      "sn": 15.600000381469727,
+      "shard_index": 1,
+      "seed": 20260955
+    },
+    {
+      "manifest_index": 126,
+      "object_id": 214430,
+      "spect_id": "M11_214430",
+      "sn": 15.199999809265137,
+      "shard_index": 0,
+      "seed": 20260956
+    },
+    {
+      "manifest_index": 127,
+      "object_id": 126578,
+      "spect_id": "M1_126578",
+      "sn": 15.100000381469727,
+      "shard_index": 1,
+      "seed": 20260957
+    },
+    {
+      "manifest_index": 128,
+      "object_id": 120540,
+      "spect_id": "M3_120540",
+      "sn": 15.100000381469727,
+      "shard_index": 0,
+      "seed": 20260958
+    },
+    {
+      "manifest_index": 129,
+      "object_id": 37219,
+      "spect_id": "M14_37219",
+      "sn": 15.0,
+      "shard_index": 1,
+      "seed": 20260959
+    },
+    {
+      "manifest_index": 130,
+      "object_id": 84337,
+      "spect_id": "M4_84337",
+      "sn": 14.899999618530273,
+      "shard_index": 0,
+      "seed": 20260960
+    },
+    {
+      "manifest_index": 131,
+      "object_id": 259737,
+      "spect_id": "M13_259737",
+      "sn": 14.699999809265137,
+      "shard_index": 1,
+      "seed": 20260961
+    },
+    {
+      "manifest_index": 132,
+      "object_id": 228717,
+      "spect_id": "M10_228717",
+      "sn": 14.300000190734863,
+      "shard_index": 0,
+      "seed": 20260962
+    },
+    {
+      "manifest_index": 133,
+      "object_id": 103366,
+      "spect_id": "M14_103366",
+      "sn": 14.300000190734863,
+      "shard_index": 1,
+      "seed": 20260963
+    },
+    {
+      "manifest_index": 134,
+      "object_id": 205765,
+      "spect_id": "M5_205765",
+      "sn": 14.300000190734863,
+      "shard_index": 0,
+      "seed": 20260964
+    },
+    {
+      "manifest_index": 135,
+      "object_id": 122025,
+      "spect_id": "M7_122025",
+      "sn": 14.0,
+      "shard_index": 1,
+      "seed": 20260965
+    },
+    {
+      "manifest_index": 136,
+      "object_id": 210940,
+      "spect_id": "M2_210940",
+      "sn": 13.699999809265137,
+      "shard_index": 0,
+      "seed": 20260966
+    },
+    {
+      "manifest_index": 137,
+      "object_id": 120488,
+      "spect_id": "M7_120488",
+      "sn": 13.600000381469727,
+      "shard_index": 1,
+      "seed": 20260967
+    },
+    {
+      "manifest_index": 138,
+      "object_id": 254350,
+      "spect_id": "M13_254350",
+      "sn": 13.5,
+      "shard_index": 0,
+      "seed": 20260968
+    },
+    {
+      "manifest_index": 139,
+      "object_id": 245864,
+      "spect_id": "M11_245864",
+      "sn": 13.300000190734863,
+      "shard_index": 1,
+      "seed": 20260969
+    },
+    {
+      "manifest_index": 140,
+      "object_id": 173928,
+      "spect_id": "M5_173928",
+      "sn": 13.300000190734863,
+      "shard_index": 0,
+      "seed": 20260970
+    },
+    {
+      "manifest_index": 141,
+      "object_id": 93943,
+      "spect_id": "M2_93943",
+      "sn": 13.100000381469727,
+      "shard_index": 1,
+      "seed": 20260971
+    },
+    {
+      "manifest_index": 142,
+      "object_id": 109843,
+      "spect_id": "M3_109843",
+      "sn": 12.899999618530273,
+      "shard_index": 0,
+      "seed": 20260972
+    },
+    {
+      "manifest_index": 143,
+      "object_id": 217020,
+      "spect_id": "M10_217020",
+      "sn": 12.800000190734863,
+      "shard_index": 1,
+      "seed": 20260973
+    },
+    {
+      "manifest_index": 144,
+      "object_id": 162587,
+      "spect_id": "M7_162587",
+      "sn": 12.600000381469727,
+      "shard_index": 0,
+      "seed": 20260974
+    },
+    {
+      "manifest_index": 145,
+      "object_id": 161113,
+      "spect_id": "M8_161113",
+      "sn": 12.600000381469727,
+      "shard_index": 1,
+      "seed": 20260975
+    },
+    {
+      "manifest_index": 146,
+      "object_id": 232890,
+      "spect_id": "M9_232890",
+      "sn": 12.600000381469727,
+      "shard_index": 0,
+      "seed": 20260976
+    },
+    {
+      "manifest_index": 147,
+      "object_id": 38771,
+      "spect_id": "M14_38771",
+      "sn": 12.300000190734863,
+      "shard_index": 1,
+      "seed": 20260977
+    },
+    {
+      "manifest_index": 148,
+      "object_id": 206771,
+      "spect_id": "M5_206771",
+      "sn": 12.300000190734863,
+      "shard_index": 0,
+      "seed": 20260978
+    },
+    {
+      "manifest_index": 149,
+      "object_id": 225678,
+      "spect_id": "M9_225678",
+      "sn": 12.300000190734863,
+      "shard_index": 1,
+      "seed": 20260979
+    },
+    {
+      "manifest_index": 150,
+      "object_id": 143127,
+      "spect_id": "M7_143127",
+      "sn": 12.199999809265137,
+      "shard_index": 0,
+      "seed": 20260980
+    },
+    {
+      "manifest_index": 151,
+      "object_id": 212718,
+      "spect_id": "M11_212718",
+      "sn": 11.5,
+      "shard_index": 1,
+      "seed": 20260981
+    },
+    {
+      "manifest_index": 152,
+      "object_id": 133240,
+      "spect_id": "M1_133240",
+      "sn": 11.399999618530273,
+      "shard_index": 0,
+      "seed": 20260982
+    },
+    {
+      "manifest_index": 153,
+      "object_id": 101830,
+      "spect_id": "M12_101830",
+      "sn": 11.300000190734863,
+      "shard_index": 1,
+      "seed": 20260983
+    },
+    {
+      "manifest_index": 154,
+      "object_id": 181421,
+      "spect_id": "M12_181421",
+      "sn": 11.300000190734863,
+      "shard_index": 0,
+      "seed": 20260984
+    },
+    {
+      "manifest_index": 155,
+      "object_id": 156118,
+      "spect_id": "M8_156118",
+      "sn": 11.0,
+      "shard_index": 1,
+      "seed": 20260985
+    },
+    {
+      "manifest_index": 156,
+      "object_id": 231554,
+      "spect_id": "M13_231554",
+      "sn": 10.899999618530273,
+      "shard_index": 0,
+      "seed": 20260986
+    },
+    {
+      "manifest_index": 157,
+      "object_id": 126153,
+      "spect_id": "M1_126153",
+      "sn": 10.300000190734863,
+      "shard_index": 1,
+      "seed": 20260987
+    },
+    {
+      "manifest_index": 158,
+      "object_id": 89153,
+      "spect_id": "M15_89153",
+      "sn": 9.800000190734863,
+      "shard_index": 0,
+      "seed": 20260988
+    },
+    {
+      "manifest_index": 159,
+      "object_id": 120758,
+      "spect_id": "M7_120758",
+      "sn": 9.800000190734863,
+      "shard_index": 1,
+      "seed": 20260989
+    },
+    {
+      "manifest_index": 160,
+      "object_id": 38646,
+      "spect_id": "M14_38646",
+      "sn": 9.699999809265137,
+      "shard_index": 0,
+      "seed": 20260990
+    },
+    {
+      "manifest_index": 161,
+      "object_id": 102968,
+      "spect_id": "M14_102968",
+      "sn": 9.5,
+      "shard_index": 1,
+      "seed": 20260991
+    },
+    {
+      "manifest_index": 162,
+      "object_id": 245763,
+      "spect_id": "M13_245763",
+      "sn": 9.399999618530273,
+      "shard_index": 0,
+      "seed": 20260992
+    },
+    {
+      "manifest_index": 163,
+      "object_id": 255047,
+      "spect_id": "M13_255047",
+      "sn": 9.399999618530273,
+      "shard_index": 1,
+      "seed": 20260993
+    },
+    {
+      "manifest_index": 164,
+      "object_id": 201233,
+      "spect_id": "M10_201233",
+      "sn": 9.300000190734863,
+      "shard_index": 0,
+      "seed": 20260994
+    },
+    {
+      "manifest_index": 165,
+      "object_id": 101089,
+      "spect_id": "M12_101089",
+      "sn": 8.300000190734863,
+      "shard_index": 1,
+      "seed": 20260995
+    },
+    {
+      "manifest_index": 166,
+      "object_id": 258753,
+      "spect_id": "M13_258753",
+      "sn": 8.100000381469727,
+      "shard_index": 0,
+      "seed": 20260996
+    },
+    {
+      "manifest_index": 167,
+      "object_id": 167056,
+      "spect_id": "M5_167056",
+      "sn": 8.100000381469727,
+      "shard_index": 1,
+      "seed": 20260997
+    },
+    {
+      "manifest_index": 168,
+      "object_id": 36550,
+      "spect_id": "M14_36550",
+      "sn": 8.0,
+      "shard_index": 0,
+      "seed": 20260998
+    },
+    {
+      "manifest_index": 169,
+      "object_id": 87207,
+      "spect_id": "M15_87207",
+      "sn": 7.5,
+      "shard_index": 1,
+      "seed": 20260999
+    },
+    {
+      "manifest_index": 170,
+      "object_id": 166634,
+      "spect_id": "M6_166634",
+      "sn": 7.300000190734863,
+      "shard_index": 0,
+      "seed": 20261000
+    },
+    {
+      "manifest_index": 171,
+      "object_id": 121482,
+      "spect_id": "M7_121482",
+      "sn": 7.300000190734863,
+      "shard_index": 1,
+      "seed": 20261001
+    },
+    {
+      "manifest_index": 172,
+      "object_id": 189698,
+      "spect_id": "M10_189698",
+      "sn": 7.199999809265137,
+      "shard_index": 0,
+      "seed": 20261002
+    },
+    {
+      "manifest_index": 173,
+      "object_id": 89072,
+      "spect_id": "M15_89072",
+      "sn": 7.099999904632568,
+      "shard_index": 1,
+      "seed": 20261003
+    },
+    {
+      "manifest_index": 174,
+      "object_id": 97310,
+      "spect_id": "M2_97310",
+      "sn": 6.900000095367432,
+      "shard_index": 0,
+      "seed": 20261004
+    },
+    {
+      "manifest_index": 175,
+      "object_id": 191718,
+      "spect_id": "M10_191718",
+      "sn": 6.800000190734863,
+      "shard_index": 1,
+      "seed": 20261005
+    },
+    {
+      "manifest_index": 176,
+      "object_id": 39865,
+      "spect_id": "M14_39865",
+      "sn": 6.800000190734863,
+      "shard_index": 0,
+      "seed": 20261006
+    },
+    {
+      "manifest_index": 177,
+      "object_id": 98104,
+      "spect_id": "M12_98104",
+      "sn": 6.599999904632568,
+      "shard_index": 1,
+      "seed": 20261007
+    },
+    {
+      "manifest_index": 178,
+      "object_id": 37843,
+      "spect_id": "M14_37843",
+      "sn": 6.5,
+      "shard_index": 0,
+      "seed": 20261008
+    },
+    {
+      "manifest_index": 179,
+      "object_id": 112534,
+      "spect_id": "M4_112534",
+      "sn": 6.400000095367432,
+      "shard_index": 1,
+      "seed": 20261009
+    },
+    {
+      "manifest_index": 180,
+      "object_id": 127946,
+      "spect_id": "M5_127946",
+      "sn": 5.900000095367432,
+      "shard_index": 0,
+      "seed": 20261010
+    },
+    {
+      "manifest_index": 181,
+      "object_id": 119809,
+      "spect_id": "M3_119809",
+      "sn": 5.699999809265137,
+      "shard_index": 1,
+      "seed": 20261011
+    },
+    {
+      "manifest_index": 182,
+      "object_id": 185631,
+      "spect_id": "M12_185631",
+      "sn": 4.900000095367432,
+      "shard_index": 0,
+      "seed": 20261012
+    },
+    {
+      "manifest_index": 183,
+      "object_id": 253688,
+      "spect_id": "M13_253688",
+      "sn": 4.800000190734863,
+      "shard_index": 1,
+      "seed": 20261013
+    },
+    {
+      "manifest_index": 184,
+      "object_id": 244680,
+      "spect_id": "M13_244680",
+      "sn": 4.400000095367432,
+      "shard_index": 0,
+      "seed": 20261014
+    },
+    {
+      "manifest_index": 185,
+      "object_id": 217564,
+      "spect_id": "M11_217564",
+      "sn": 3.700000047683716,
+      "shard_index": 1,
+      "seed": 20261015
+    },
+    {
+      "manifest_index": 186,
+      "object_id": 104877,
+      "spect_id": "M14_104877",
+      "sn": 3.5999999046325684,
+      "shard_index": 0,
+      "seed": 20261016
+    }
+  ]
+}

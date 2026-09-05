@@ -1041,7 +1041,11 @@ def analyse_galaxy(galaxy: GalaxyResult, ssp, figure_dir: Path | None, with_like
         row["ml_ndof_match"] = bool(like_ml["photometry"]["ndof"] == phot_stored["n"] and like_ml["spectrum"]["ndof"] == spec_stored["n"])
         block = model_parameter_block(model, ssp, likelihood, galaxy.settings, galaxy.seed)
         stamp = model_stamp(model, ssp, likelihood, galaxy.settings, galaxy.seed)
-        row["block_matches_stored"] = (galaxy.stored_block.strip() == block.strip()) if galaxy.stored_block else None
+        # Order-insensitive: an older notebook wrote the parameter lines in model order.
+        row["block_matches_stored"] = (
+            sorted(galaxy.stored_block.strip().splitlines()) == sorted(block.strip().splitlines())
+            if galaxy.stored_block else None
+        )
     # --- flags
     flags = []
     if row["phot_redchi2_stored"] > PHOT_REDCHI2_FLAG:

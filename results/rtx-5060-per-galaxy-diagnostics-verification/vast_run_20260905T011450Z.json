@@ -1,0 +1,40 @@
+{
+ "started": "2026-09-05T01:14:50+00:00",
+ "branch": "absorption-mask",
+ "targets": [
+  [
+   "M1_210210",
+   0
+  ],
+  [
+   "M2_139662",
+   1
+  ]
+ ],
+ "spend_cap_usd": 2.0,
+ "credit_before": 16.990535930029914,
+ "instance_id": 49915972,
+ "offer": {
+  "id": 48742494,
+  "gpu_name": "RTX 5060",
+  "dph_total": 0.10277777777777777,
+  "geolocation": "United Kingdom, GB",
+  "host_id": 166946,
+  "reliability2": 0.997309,
+  "cuda_max_good": 13.0
+ },
+ "events": [
+  {
+   "launched": "2026-09-05T01:27:10+00:00",
+   "setup_hours": 0.204
+  }
+ ],
+ "rented_at": "2026-09-05T01:14:54+00:00",
+ "finished": "2026-09-05T01:40:31+00:00",
+ "billed_hours_estimate": 0.427,
+ "spend_estimate_usd": 0.0439,
+ "credit_after": 16.900191317029922,
+ "instance_destroyed": true,
+ "error": null,
+ "credit_spent_usd": 0.0903
+}
