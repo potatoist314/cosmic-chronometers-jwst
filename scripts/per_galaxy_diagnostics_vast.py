@@ -220,6 +220,12 @@ def command_run(args) -> int:
         save(instance_id=instance_id, rented_at=datetime.now(UTC).isoformat(timespec="seconds"))
         _log(f"rented instance {instance_id}: {absorption._describe(offer)}")
         sweep._wait_for_running(instance_id, _log)
+        # The instance bills GPU plus disk; the offer price is the GPU alone.
+        billed = sweep._instance_state(instance_id).get("dph_total")
+        if billed:
+            offer = {**offer, "dph_total": float(billed)}
+            save(instance_dph_total=float(billed))
+            _log(f"instance hourly rate incl. disk: ${float(billed):.4f}/h")
         sweep._attach_ssh_key(instance_id)
         sweep._wait_for_ssh(instance_id, _log)
         absorption._checkout(instance_id, args.branch, _log)

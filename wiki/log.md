@@ -421,3 +421,8 @@
 - Change: Converted every HTML page to a Markdown note, added a stdlib
   generator with search and RSS, and added a per-note question box that resumes
   the worker session recorded on the note.
+
+## [2026-09-05] analysis | Per-galaxy chi-squared and star-formation-timescale diagnostics
+
+- Pages: `notes/per-galaxy-fit-diagnostics.md`, `notes/per-galaxy-diagnostics-gallery.md`, `analyses/per-galaxy-diagnostics/`, `index.md`
+- Change: Added per-galaxy photometric chi-squared, spectral chi-squared and t10-t90 figures for all 187 DR2 fits (`scripts/per_galaxy_diagnostics.py`, executed `notebooks/ceridwen_per_galaxy_diagnostics.ipynb`), with the model parameter block generated from the model object, checks of the stored chi-squared against the sampler's masks and sigma, sample-wide flags, and the RTX 5060 verification run.

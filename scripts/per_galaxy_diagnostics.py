@@ -558,7 +558,7 @@ def model_parameter_block(model, ssp, likelihood, settings: dict, seed: int) -> 
     ]
     # --- free parameters and priors
     lines.append("Free parameters and priors")
-    for name in model.param_names:
+    for name in sorted(model.param_names):   # sorted: a stored block must equal a rebuilt one
         init = model.theta_init[name]
         prior = model.priors.get(name)
         lines.append(
@@ -640,7 +640,7 @@ def model_stamp(model, ssp, likelihood, settings: dict, seed: int) -> str:
     nodes = np.asarray(csp.sfh_times, dtype=float) / 1e9
     diff = getattr(csp, "diff_dust", None)
     law = diff.law_names_resolved[0] if diff is not None else "none"
-    priors = "; ".join(f"{k} {describe_prior(v)}" for k, v in model.priors.items())
+    priors = "; ".join(f"{k} {describe_prior(model.priors[k])}" for k in sorted(model.priors))
     fixed = []
     for derived, fn in model.transforms.items():
         if derived != "sfh":
@@ -1117,9 +1117,88 @@ def run(run_dir: Path, out_csv: Path, summary_dir: Path, targets: list[str] | No
     return table
 
 
+def write_gallery_note(table: pd.DataFrame, out_path: Path, run_dir: Path, job: str, date: str) -> None:
+    """One wiki note with the three figures of every galaxy, served from the run folder."""
+    run_rel = run_dir.resolve().relative_to(PROJECT_ROOT).as_posix()
+    lines = [
+        "---",
+        "title: Per-galaxy fit diagnostics, gallery",
+        f"date: {date}",
+        "section: Analyses",
+        "tags: [dr2-quiescent-sample, ceridwen, diagnostics]",
+        f"job: {job}",
+        "---",
+        "",
+        f"{len(table)} galaxies. Method, checks and flags: [Per-galaxy fit diagnostics](../per-galaxy-fit-diagnostics/).",
+        "",
+    ]
+    for row in table.sort_values("target").itertuples(index=False):
+        base = f"/wiki/f/{run_rel}/{row.target}/{FIGURE_SUBDIR}"
+        flag_items = row.flags.split("; ") if isinstance(row.flags, str) and row.flags else []
+        n_out = int(row.n_outlier_pixels)
+        lines += [
+            f"### {row.target}",
+            "",
+            "| z | S/N | photometry χ²/N | spectrum χ²/N | f_calib | t50 [Gyr] | model |",
+            "| --- | --- | --- | --- | --- | --- | --- |",
+            f"| {row.z:.4f} | {row.catalogue_sn:.1f} | {row.phot_redchi2_stored:.2f} | {row.spec_redchi2_stored:.3f} | "
+            f"{row.f_calib_median_pct:.2f}% | {row.t50_q50:.2f} | [parameters]({base}/model_parameters.txt) |",
+            "",
+        ]
+        if not flag_items:
+            lines += ["Flags: none.", ""]
+        else:
+            lines += ["Flags:", ""] + [f"- {item}" for item in flag_items] + [""]
+        captions = {
+            "photometric_chi2": (
+                f"Pull and chi-squared contribution for the 12 COSMOS2015 bands of galaxy {row.spect_id}. "
+                "Pull equals observed minus model over sigma. Uncertainty: sigma includes the 5 percent flux floor. "
+                "Comparison: filled points use the posterior-median model. Open squares use the best sample with the fit's own sigma. "
+                f"Total chi-squared {row.phot_chi2_stored:.1f} over 12 bands gives {row.phot_redchi2_stored:.2f} per band. "
+                "Caveat: the spectrum dominates the joint fit, so the fit does not constrain the bands on their own."
+            ),
+            "spectral_chi2": (
+                f"Pull per fitted pixel of the LEGA-C spectrum of galaxy {row.spect_id}. "
+                "Below it: mean pull squared in 25 Å bins and the cumulative chi-squared fraction against wavelength. "
+                f"Uncertainty: sigma includes the fitted calibration floor of {row.f_calib_median_pct:.2f} percent of the model flux. "
+                "Comparison: the stored pull versus the pull at the best sample. "
+                "Shaded bands mark masked pixels. Red points mark pixels with pull beyond 4 sigma. "
+                f"Total chi-squared {row.spec_chi2_stored:.1f} over {int(row.n_spec)} pixels, {n_out} outlier pixels. "
+                "Caveat: the fitted floor absorbs model mismatch, so chi-squared near 1 does not prove a good model."
+            ),
+            "sf_timescales": (
+                f"Fraction of the final stellar mass of galaxy {row.spect_id} formed earlier than each lookback time. "
+                "The line is the posterior median. The band is the 16-84 percent range over 400 draws. "
+                "Comparison: points mark t10 to t90 with 16-84 percent (thick) and 2.5-97.5 percent (thin) intervals versus the universe age. "
+                f"t50 is {row.t50_q50:.2f} Gyr with a 16-84 percent range of {row.t50_q16:.2f} to {row.t50_q84:.2f} Gyr. "
+                "Caveat: the 7-bin star-formation history model quantises these times to the bin edges."
+            ),
+        }
+        alts = {
+            "photometric_chi2": "photometric pull and chi-squared contribution per band",
+            "spectral_chi2": "spectral pull, binned mean pull squared, cumulative chi-squared",
+            "sf_timescales": "cumulative mass formed against lookback time with t10 to t90",
+        }
+        for name in ("photometric_chi2", "spectral_chi2", "sf_timescales"):
+            lines += [
+                "<figure>",
+                f'<img loading="lazy" src="{base}/{name}.png" alt="{row.spect_id}: {alts[name]}">',
+                f"<figcaption><code>{name}.png</code> {captions[name]}</figcaption>",
+                "</figure>",
+                "",
+            ]
+    out_path.write_text("\n".join(lines), encoding="utf-8")
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = parser.add_subparsers(dest="command", required=True)
+    g = sub.add_parser("gallery")
+    g.add_argument("--csv", type=Path, default=DEFAULT_OUT_CSV)
+    g.add_argument("--run-dir", type=Path, default=DEFAULT_RUN_DIR)
+    g.add_argument("--out", type=Path, default=PROJECT_ROOT / "wiki/notes/per-galaxy-diagnostics-gallery.md")
+    g.add_argument("--job", default="t_8a78968d")
+    g.add_argument("--date", default=time.strftime("%Y-%m-%d"))
     r = sub.add_parser("run")
     r.add_argument("--run-dir", type=Path, default=DEFAULT_RUN_DIR)
     r.add_argument("--out-csv", type=Path, default=DEFAULT_OUT_CSV)
@@ -1131,6 +1210,10 @@ def main(argv=None) -> int:
     b = sub.add_parser("block")
     b.add_argument("target_dir", type=Path)
     args = parser.parse_args(argv)
+    if args.command == "gallery":
+        write_gallery_note(pd.read_csv(args.csv), args.out, args.run_dir, args.job, args.date)
+        print(f"wrote {args.out}")
+        return 0
     if args.command == "run":
         run(args.run_dir, args.out_csv, args.summary_dir, args.target, not args.no_likelihood)
         return 0

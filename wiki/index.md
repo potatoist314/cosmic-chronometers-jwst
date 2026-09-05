@@ -6,6 +6,8 @@ Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 
 ## Analyses
 
+- `notes/per-galaxy-fit-diagnostics.md` — Per-galaxy fit diagnostics (2026-09-05 · t_8a78968d)
+- `notes/per-galaxy-diagnostics-gallery.md` — Per-galaxy fit diagnostics, gallery (2026-09-05 · t_8a78968d)
 - `notes/ceridwen-results.md` — Ceridwen common results board (2026-09-04 · t_44b5da5c)
 - `notes/stacked-chi2-and-median-pull.md` — Stacked χ² and median pull (2026-09-04 · t_ee8ca17a)
 - `notes/dr2-quiescent-sample.md` — DR2 quiescent sample (2026-09-03 · t_d0d3a321)
