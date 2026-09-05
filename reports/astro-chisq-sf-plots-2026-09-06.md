@@ -121,7 +121,7 @@ Flag: for the high-S/N galaxy M1_210210 the current model moves the mass-weighte
 ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py run          # all 187 galaxies, ~5 min CPU
 ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py check results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210
 ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py gallery
-ceridwen/.venv/bin/python -m pytest tests/test_per_galaxy_diagnostics.py -q   # 13 passed
+ceridwen/.venv/bin/python -m pytest tests/test_per_galaxy_diagnostics.py -q   # 10 passed
 python3 wiki/build.py && python3 wiki/tests/run_tests.py                       # all tests passed
 ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics_vast.py run --target M1_210210 --target M2_139662 --spend-cap-usd 2
 ```
