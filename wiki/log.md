@@ -446,3 +446,11 @@
   collapsed `Details` block for tables, run records and commands. The gallery
   now carries one labelled section per galaxy with its three figures in a fixed
   order. Originals kept in `_old/`.
+
+## [2026-09-06] edit | Calibration note: acceptance test removed
+
+- Pages: `notes/calibration-polynomial-dr2.md`, `analyses/calibration-polynomial-dr2/`
+- Change: Dropped the spectral-χ² acceptance test and the sibling-card χ²
+  figures after Liu Hao's decision that the photometry carries the continuum.
+  The photometric χ² per galaxy is the continuum metric. `acceptance.csv` is
+  now `before-after.csv`.

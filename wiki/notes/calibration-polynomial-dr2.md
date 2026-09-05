@@ -4,6 +4,7 @@ date: 2026-09-05
 section: Analyses
 tags: [calibration, ceridwen, dr2-quiescent-sample]
 job: t_ab2b8a0b
+figures: [calibration-explainer.png, parameters-before-after.png, polynomial-vectors.png]
 ---
 
 ## Model settings
@@ -61,7 +62,7 @@ P(x) = 1 + sum_{n=1..3} a_n T_n(x),   x = (lambda - lambda_mid) / lambda_half in
 <details>
 <summary>Details</summary>
 
-Full record, acceptance discussion and the pipeline change: `reports/astro-calibration-2026-09-06.md`.
+Full record and the pipeline change: `reports/astro-calibration-2026-09-06.md`.
 
 Raw χ² uses the pipeline σ. Stored χ² uses σ_eff² = σ² + (f_calib · model)² over the fitted pixels. `s` is `spectrum_scaling`. P tilt is P(λ_max) − P(λ_min) at the posterior median. Δ ln Z is against the baseline arm of the same galaxy.
 
@@ -133,15 +134,21 @@ Mock truth: M5_172669, log M⋆ 11.110, τ_dust 0.011, t_MW 1.66 Gyr. A 4 percen
 | mock_tilt4_baseline | 11.167 ± 0.011 | 0.151 ± 0.004 | 1.289 ± 0.020 | 1.77 ± 0.11 | 3625 | 22.5 | 236487.5 |
 | mock_tilt4_poly3 | 11.126 ± 0.012 | 0.023 ± 0.016 | 1.232 ± 0.019 | 1.72 ± 0.10 | 3590 | 4.0 | 236493.6 |
 
-Acceptance, the spectral χ² of no galaxy must get worse:
+Photometric χ² over the 12 bands, the metric for the continuum. Decision 2026-09-06: the photometry carries the continuum, the polynomial prior stays loose.
 
-- Raw χ², the same weights for every arm: never worse. `poly3` −12 to −4191. `poly3_total` −9 to −4111.
-- χ² at the baseline σ_eff: `poly3` never worse. `poly3_total` worse for M12_98104 by 3.7 against a run-to-run scatter of 1.0.
-- Stored χ², each fit's own σ_eff: worse for M5_172669 by 337 and M5_173928 by 100, because f_calib fell.
+| galaxy | baseline (ap3) | poly3 (ap3) | poly3_total |
+| --- | --- | --- | --- |
+| M12_185653 | 36.6 | 39.2 | 11.1 |
+| M12_98104 | 49.5 | 44.8 | 10.1 |
+| M1_206545 | 133.2 | 101.9 | 64.6 |
+| M4_108989 | 139.1 | 152.6 | 12.8 |
+| M5_172669 | 170.9 | 130.8 | 100.1 |
+| M5_173928 | 143.3 | 88.7 | 48.2 |
+| mock tilt4 | 22.5 | 4.0 | — |
 
 Implementation: `PolynomialCalibration` in `ceridwen/ceridwen/likelihood/calibration.py`, 20 tests in `ceridwen/tests/test_polynomial_calibration.py`. Switches in `notebooks/ceridwen_integrated_photometry_spectra.ipynb`: `CERIDWEN_CALIBRATION_ORDER` (3), `CERIDWEN_CALIBRATION_PRIOR` (0.1), `CERIDWEN_PHOTOMETRY` (`cosmos_total`). The derived-output file gains a `calibration` group with the coefficient draws and the P quantiles.
 
-Run: Vast.ai RTX 5060 instance 49915205 at $0.093 per hour, 20 cells, 26 attempts, $0.23, destroyed. Records in `results/calibration-polynomial-dr2/vast_run_*.json`, executed notebook `analysis.ipynb`. The sibling card's spectral χ² figure for each of the 18 fits is `sibling-chi2-<arm>-<galaxy>.png`.
+Run: Vast.ai RTX 5060 instance 49915205 at $0.093 per hour, 20 cells, 26 attempts, $0.23, destroyed. Records in `results/calibration-polynomial-dr2/vast_run_*.json`, executed notebook `analysis.ipynb`.
 
 ```
 ceridwen/.venv/bin/python scripts/calibration_arms_vast.py plan
@@ -150,3 +157,9 @@ JAX_PLATFORMS=cpu ceridwen/.venv/bin/python -m pytest ceridwen/tests/test_polyno
 ```
 
 </details>
+
+## Thread
+
+**Q** 2026-09-05 · poly3 vs poly3total?
+
+**A** Both arms fit the same order-3 Chebyshev calibration polynomial on the spectrum. The only difference is which photometry anchors the absolute scale: poly3 uses the 3-arcsec aperture COSMOS fluxes (cosmos_ap3, same as the baseline), poly3_total uses the Laigle+16 total fluxes (cosmos_total). So poly3 isolates "what does the polynomial alone do", and poly3_total adds "what happens when the anchor is the whole galaxy instead of the slit-sized aperture". That anchor swap is what moved the masses up by 0.16 to 0.39 dex and is why the notebook default is now cosmos_total.
