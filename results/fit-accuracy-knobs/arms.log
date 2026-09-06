@@ -1,0 +1,88 @@
+[14:16:44] remote: mock_tilt4_sfh_cont/M5_172669: start seed=20260830 {'CERIDWEN_MOCK_TRUTH': 'results/absorption-mask/truth_M5_172669.json', 'CERIDWEN_MOCK_TILT': '0.04', 'CERIDWEN_MOCK_SEED': '1', 'CERIDWEN_PHOTOMETRY': 'cosmos_ap3', 'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_SFH_PRIOR': 'student'}
+[14:24:50] remote: mock_tilt4_sfh_cont/M5_172669: done in 8.1 min
+[14:24:50] remote: floor20/M12_98104: start seed=20261007 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FCALIB_MAX': '0.20'}
+[14:30:04] remote: floor20/M12_98104: done in 5.2 min
+[14:30:04] remote: dust_free/M12_98104: start seed=20261007 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FREE_DUST_INDEX': '1'}
+[14:37:15] remote: dust_free/M12_98104: attempt 1 returned 1
+[14:44:25] remote: dust_free/M12_98104: attempt 2 returned 1
+[14:44:25] remote: dust_free/M12_98104: failed in 14.4 min
+[14:44:25] remote: no_irac/M12_98104: start seed=20261007 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_PHOT_DROP': 'spitzer_irac_ch1,spitzer_irac_ch2'}
+[14:49:44] remote: no_irac/M12_98104: done in 5.3 min
+[14:49:44] remote: mask_cn/M12_98104: start seed=20261007 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_MASK_REST_WINDOWS': '4142:4177,4634:4720'}
+[14:55:17] remote: mask_cn/M12_98104: done in 5.5 min
+[14:55:17] remote: sfh_cont/M12_98104: start seed=20261007 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_SFH_PRIOR': 'student'}
+[15:00:42] remote: sfh_cont/M12_98104: done in 5.4 min
+[15:00:42] remote: emis_wide/M12_98104: start seed=20261007 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_EMISSION_LINES': '3726.0,3728.8,3869.0,3970.1,4101.7,4340.5,4861.3,4958.9,5006.8'}
+[15:06:06] remote: emis_wide/M12_98104: done in 5.4 min
+[15:06:06] remote: floor20/M5_173928: start seed=20260970 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FCALIB_MAX': '0.20'}
+[15:12:18] remote: floor20/M5_173928: done in 6.2 min
+[15:12:18] remote: dust_free/M5_173928: start seed=20260970 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FREE_DUST_INDEX': '1'}
+[15:21:31] remote: dust_free/M5_173928: done in 9.2 min
+[15:21:31] remote: no_irac/M5_173928: start seed=20260970 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_PHOT_DROP': 'spitzer_irac_ch1,spitzer_irac_ch2'}
+[15:27:58] remote: no_irac/M5_173928: done in 6.4 min
+[15:27:58] remote: mask_cn/M5_173928: start seed=20260970 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_MASK_REST_WINDOWS': '4142:4177,4634:4720'}
+[15:34:20] remote: mask_cn/M5_173928: done in 6.4 min
+[15:34:20] remote: sfh_cont/M5_173928: start seed=20260970 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_SFH_PRIOR': 'student'}
+[15:40:55] remote: sfh_cont/M5_173928: done in 6.6 min
+[15:40:55] remote: emis_wide/M5_173928: start seed=20260970 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_EMISSION_LINES': '3726.0,3728.8,3869.0,3970.1,4101.7,4340.5,4861.3,4958.9,5006.8'}
+[15:46:51] remote: emis_wide/M5_173928: done in 5.9 min
+[15:46:51] remote: floor20/M12_185653: start seed=20260923 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FCALIB_MAX': '0.20'}
+[15:52:32] remote: floor20/M12_185653: done in 5.7 min
+[15:52:32] remote: dust_free/M12_185653: start seed=20260923 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FREE_DUST_INDEX': '1'}
+[15:59:57] remote: dust_free/M12_185653: done in 7.4 min
+[15:59:57] remote: no_irac/M12_185653: start seed=20260923 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_PHOT_DROP': 'spitzer_irac_ch1,spitzer_irac_ch2'}
+[16:05:17] remote: no_irac/M12_185653: done in 5.3 min
+[16:05:17] remote: mask_cn/M12_185653: start seed=20260923 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_MASK_REST_WINDOWS': '4142:4177,4634:4720'}
+[16:10:51] remote: mask_cn/M12_185653: done in 5.6 min
+[16:10:51] remote: sfh_cont/M12_185653: start seed=20260923 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_SFH_PRIOR': 'student'}
+[16:16:20] remote: sfh_cont/M12_185653: done in 5.5 min
+[16:16:20] remote: emis_wide/M12_185653: start seed=20260923 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_EMISSION_LINES': '3726.0,3728.8,3869.0,3970.1,4101.7,4340.5,4861.3,4958.9,5006.8'}
+[16:21:52] remote: emis_wide/M12_185653: done in 5.5 min
+[16:21:52] remote: seed_rep1/M4_108989: start seed=20261924 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total'}
+[16:28:00] remote: seed_rep1/M4_108989: done in 6.1 min
+[16:28:00] remote: seed_rep2/M4_108989: start seed=20262924 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total'}
+[16:34:16] remote: seed_rep2/M4_108989: done in 6.3 min
+[16:34:16] remote: seed_rep3/M4_108989: start seed=20263924 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total'}
+[16:40:33] remote: seed_rep3/M4_108989: done in 6.3 min
+[16:40:33] remote: floor20/M4_108989: start seed=20260924 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FCALIB_MAX': '0.20'}
+[16:46:55] remote: floor20/M4_108989: done in 6.4 min
+[16:46:55] remote: dust_free/M4_108989: start seed=20260924 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FREE_DUST_INDEX': '1'}
+[16:55:13] remote: dust_free/M4_108989: done in 8.3 min
+[16:55:13] remote: no_irac/M4_108989: start seed=20260924 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_PHOT_DROP': 'spitzer_irac_ch1,spitzer_irac_ch2'}
+[17:01:21] remote: no_irac/M4_108989: done in 6.1 min
+[17:01:21] remote: mask_cn/M4_108989: start seed=20260924 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_MASK_REST_WINDOWS': '4142:4177,4634:4720'}
+[17:07:14] remote: mask_cn/M4_108989: done in 5.9 min
+[17:07:14] remote: sfh_cont/M4_108989: start seed=20260924 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_SFH_PRIOR': 'student'}
+[17:13:42] remote: sfh_cont/M4_108989: done in 6.5 min
+[17:13:42] remote: emis_wide/M4_108989: start seed=20260924 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_EMISSION_LINES': '3726.0,3728.8,3869.0,3970.1,4101.7,4340.5,4861.3,4958.9,5006.8'}
+[17:19:38] remote: emis_wide/M4_108989: done in 5.9 min
+[17:19:38] remote: floor20/M1_206545: start seed=20260877 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FCALIB_MAX': '0.20'}
+[17:25:59] remote: floor20/M1_206545: done in 6.3 min
+[17:25:59] remote: dust_free/M1_206545: start seed=20260877 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FREE_DUST_INDEX': '1'}
+[17:35:33] remote: dust_free/M1_206545: done in 9.6 min
+[17:35:33] remote: no_irac/M1_206545: start seed=20260877 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_PHOT_DROP': 'spitzer_irac_ch1,spitzer_irac_ch2'}
+[17:41:50] remote: no_irac/M1_206545: done in 6.3 min
+[17:41:50] remote: mask_cn/M1_206545: start seed=20260877 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_MASK_REST_WINDOWS': '4142:4177,4634:4720'}
+[17:48:05] remote: mask_cn/M1_206545: done in 6.3 min
+[17:48:05] remote: sfh_cont/M1_206545: start seed=20260877 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_SFH_PRIOR': 'student'}
+[17:55:15] remote: sfh_cont/M1_206545: done in 7.2 min
+[17:55:15] remote: emis_wide/M1_206545: start seed=20260877 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_EMISSION_LINES': '3726.0,3728.8,3869.0,3970.1,4101.7,4340.5,4861.3,4958.9,5006.8'}
+[18:01:40] remote: emis_wide/M1_206545: done in 6.4 min
+[18:01:40] remote: seed_rep1/M5_172669: start seed=20261830 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total'}
+[18:08:52] remote: seed_rep1/M5_172669: done in 7.2 min
+[18:08:52] remote: seed_rep2/M5_172669: start seed=20262830 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total'}
+[18:15:46] remote: seed_rep2/M5_172669: done in 6.9 min
+[18:15:46] remote: seed_rep3/M5_172669: start seed=20263830 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total'}
+[18:22:50] remote: seed_rep3/M5_172669: done in 7.1 min
+[18:22:50] remote: floor20/M5_172669: start seed=20260830 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FCALIB_MAX': '0.20'}
+[18:30:00] remote: floor20/M5_172669: done in 7.2 min
+[18:30:00] remote: dust_free/M5_172669: start seed=20260830 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_FREE_DUST_INDEX': '1'}
+[18:40:08] remote: dust_free/M5_172669: done in 10.1 min
+[18:40:08] remote: no_irac/M5_172669: start seed=20260830 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_PHOT_DROP': 'spitzer_irac_ch1,spitzer_irac_ch2'}
+[18:47:13] remote: no_irac/M5_172669: done in 7.1 min
+[18:47:13] remote: mask_cn/M5_172669: start seed=20260830 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_MASK_REST_WINDOWS': '4142:4177,4634:4720'}
+[18:54:07] remote: mask_cn/M5_172669: done in 6.9 min
+[18:54:07] remote: sfh_cont/M5_172669: start seed=20260830 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_SFH_PRIOR': 'student'}
+[19:01:16] remote: sfh_cont/M5_172669: done in 7.2 min
+[19:01:16] remote: emis_wide/M5_172669: start seed=20260830 {'CERIDWEN_CALIBRATION_ORDER': '3', 'CERIDWEN_PHOTOMETRY': 'cosmos_total', 'CERIDWEN_EMISSION_LINES': '3726.0,3728.8,3869.0,3970.1,4101.7,4340.5,4861.3,4958.9,5006.8'}
+[19:08:04] remote: emis_wide/M5_172669: done in 6.8 min

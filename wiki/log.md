@@ -505,3 +505,9 @@
 
 - Pages: `notes/fit-accuracy-knobs.md`
 - Change: `notebooks/ceridwen_integrated_photometry_spectra.ipynb` defaults `CERIDWEN_SFH_PRIOR` to `student` (StudentT 0, 0.3, df 2 on logsfr_ratios). `scripts/calibration_arms_vast.py` pins `uniform` on the `poly3_total` reference so the stored fits stay reproducible. Tests cover both.
+
+## [2026-09-06] analysis | Fit-accuracy knobs, stage 1 results
+
+- Pages: `notes/fit-accuracy-knobs.md`, `analyses/fit-accuracy-knobs/`
+- Change: 43 RTX 5060 fits landed ($0.665, 3.99 GPU-hours). Seed floor from six repeats: age 1.20, log Z 0.49, [alpha/Fe] 0.96, tau_dust 0.32, log M 0.49 half-widths, with the seed-to-seed ln Z spread reaching 2.0. `dust_free` adopted: the Kriek and Conroy index refuses the fixed -0.7, photometric chi2 and ln Z improve in every galaxy. `no_irac` exposed a second solution branch on M5_173928 (age 4.50 to 3.01 Gyr, log Z -2.23 to -1.49) held apart by two IRAC bands. `floor20`, `mask_cn` and `emis_wide` rejected. `sfh_cont` costs 0.7-6.8 in ln Z and widens the age error bars three to six times on the galaxies whose uniform-prior ages were implausibly tight.
+- Evidence: `results/fit-accuracy-knobs/analysis.ipynb`, `verdict.csv`, `before-after.csv`, `sfh-prior-compare.csv`, `arms.csv`.
