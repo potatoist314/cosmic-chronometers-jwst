@@ -75,3 +75,12 @@ def test_reference_arm_pins_the_uniform_sfh_prior_after_the_default_flip(arms):
     for name in ("poly3_total", "seed_rep1", "floor20", "no_irac", "dust_free", "mask_cn"):
         assert arms.ARMS[name]["CERIDWEN_SFH_PRIOR"] == "uniform"
     assert arms.ARMS["sfh_cont"]["CERIDWEN_SFH_PRIOR"] == "student"
+
+
+def test_reference_arm_pins_the_fixed_dust_index_after_the_default_flip(arms):
+    # Production default freed the Kriek and Conroy index (Uniform -1.0, 0.4) on
+    # 2026-09-06; the stored poly3_total / seed_rep fits fixed it at -0.7, so the
+    # reference arm must say so explicitly to stay reproducible.
+    for name in ("poly3_total", "seed_rep1", "floor20", "no_irac", "sfh_cont", "mask_cn"):
+        assert arms.ARMS[name]["CERIDWEN_FREE_DUST_INDEX"] == "0"
+    assert arms.ARMS["dust_free"]["CERIDWEN_FREE_DUST_INDEX"] == "1"

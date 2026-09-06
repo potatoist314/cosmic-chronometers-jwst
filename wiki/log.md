@@ -506,6 +506,11 @@
 - Pages: `notes/fit-accuracy-knobs.md`
 - Change: `notebooks/ceridwen_integrated_photometry_spectra.ipynb` defaults `CERIDWEN_SFH_PRIOR` to `student` (StudentT 0, 0.3, df 2 on logsfr_ratios). `scripts/calibration_arms_vast.py` pins `uniform` on the `poly3_total` reference so the stored fits stay reproducible. Tests cover both.
 
+## [2026-09-06] decision | Free dust index is the production default
+
+- Pages: `notes/fit-accuracy-knobs.md`
+- Change: `notebooks/ceridwen_integrated_photometry_spectra.ipynb` defaults `CERIDWEN_FREE_DUST_INDEX` to `1`, so the Kriek and Conroy index is sampled with Uniform(-1.0, 0.4), Ceridwen's documented default. The fixed -0.7 was an undocumented LLM choice. `scripts/calibration_arms_vast.py` pins the fixed index on the `poly3_total` reference. Tests cover both.
+
 ## [2026-09-06] analysis | Fit-accuracy knobs, stage 1 results
 
 - Pages: `notes/fit-accuracy-knobs.md`, `analyses/fit-accuracy-knobs/`

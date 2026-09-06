@@ -94,6 +94,9 @@ Scoring
 Default flipped
 : Liu Hao's call on 2026-09-06, before the stage-1 fits finished: the StudentT(0, 0.3, df 2) continuity prior is now the production default in the notebook (`CERIDWEN_SFH_PRIOR` unset means `student`). The `poly3_total` reference arm and its seed repeats pin `uniform`, so the stored fits stay reproducible. The results section shows how the SFH differs per galaxy under the two priors.
 
+Default flipped again
+: Liu Hao's call on 2026-09-06, after the stage-1 results: the Kriek and Conroy dust index is free with Uniform(-1.0, 0.4), Ceridwen's own documented default (`CERIDWEN_FREE_DUST_INDEX` unset means `1`). The fixed -0.7 was a project-local choice made by an LLM, not by Liu Hao, and the stage-1 posteriors reject it. The `poly3_total` reference arm pins the fixed index so the stored fits stay reproducible. No stored fit has both flips yet.
+
 Verdict rule
 : Written before the fits ran. An arm goes into production only if it beats the seed floor on a physics parameter or improves Lick or Borghi agreement. Chi2 alone is not enough, f_calib can always buy chi2.
 
@@ -149,6 +152,9 @@ Physics
 
 Cost
 : `dust_free` cells average 7.6 minutes against 5.8 for the reference, the slowest arm in the run.
+
+Adopted
+: Production default since 2026-09-06 (see "Default flipped again" above). The three galaxies that rail at -1.0 say the prior edge, not the data, sets their slope, so a wider lower bound is a candidate stage-2 arm.
 
 ### no_irac
 

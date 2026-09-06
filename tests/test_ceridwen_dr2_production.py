@@ -206,3 +206,10 @@ def test_notebook_defaults_to_the_continuity_sfh_prior():
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
     assert 'SFH_PRIOR = os.environ.get("CERIDWEN_SFH_PRIOR", "student")' in source
     assert 'StudentT(mean=0.0, scale=0.3, df=2.0)' in source
+
+
+def test_notebook_defaults_to_a_free_dust_index():
+    notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
+    source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
+    assert 'FREE_DUST_INDEX = os.environ.get("CERIDWEN_FREE_DUST_INDEX", "1") == "1"' in source
+    assert "DUST_INDEX_BOUNDS = (-1.0, 0.4)" in source
