@@ -285,8 +285,9 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
 
     Returns ``(model, likelihood, csp)``. Priors, initial values, redshift,
     observations and the calibration polynomial (order and prior width) come
-    from the stored files; the CSP switches, fixed dust index and smoothing
-    convention come from the module constants (not persisted).
+    from the stored files; the CSP switches and smoothing convention come from
+    the module constants (not persisted). The dust index is fixed at
+    ``FIXED_DUST_INDEX`` unless the fit sampled it.
     ``extra_observations`` are appended to the model (predicted, not fitted),
     e.g. a ``StellarIndices`` set measured on the same broadened spectrum.
     """
@@ -332,10 +333,9 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     def sfh_from_ratios(free_theta):
         return logsfr_ratios_to_sfh(free_theta["logsfr_ratios"], sfh_times_yr=np.asarray(csp.sfh_times))
 
-    transforms = {
-        "sfh": sfh_from_ratios,
-        "diffuse_dust_index": lambda free_theta: jnp.array([FIXED_DUST_INDEX]),
-    }
+    transforms = {"sfh": sfh_from_ratios}
+    if "diffuse_dust_index" not in galaxy.theta_init:
+        transforms["diffuse_dust_index"] = lambda free_theta: jnp.array([FIXED_DUST_INDEX])
     init = {k: jnp.asarray(v) for k, v in galaxy.theta_init.items()}
     model = SedModel(csp, observations=[phot_obs, spec_obs, *extra_observations], priors=priors,
                      transforms=transforms, free_param_init=init, zred=galaxy.z)

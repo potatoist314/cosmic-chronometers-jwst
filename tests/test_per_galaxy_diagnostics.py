@@ -125,5 +125,30 @@ class RebuildCalibratedModel(unittest.TestCase):
         self.assertEqual(terms["spectrum"]["ndof"], int(galaxy.spec["mask"].sum()))
 
 
+class RebuildFreeDustModel(unittest.TestCase):
+    """A fit with a sampled dust index rebuilds with that index free, not transformed."""
+
+    FOLDER = Path(__import__("os").environ.get(
+        "PGD_FREE_DUST_FOLDER",
+        PROJECT_ROOT / "results/fit-accuracy-knobs/dust_free/108989-M4_108989"))
+
+    def test_free_dust_index_reproduces_stored_lnl(self):
+        if not (self.FOLDER / "ceridwen_result.h5").exists():
+            self.skipTest("dust_free fit not present")
+        import os
+        os.environ.setdefault("JAX_PLATFORMS", "cpu")
+        galaxy = pgd.load_galaxy(self.FOLDER)
+        self.assertIn("diffuse_dust_index", galaxy.theta_init)
+        try:
+            ssp = pgd.load_ssp()
+        except Exception as error:
+            self.skipTest(f"grid unavailable: {error}")
+        model, likelihood, _ = pgd.rebuild_model(galaxy, ssp)
+        self.assertNotIn("diffuse_dust_index", model.transforms)
+        index = pgd.max_likelihood_index(galaxy)
+        terms = pgd.likelihood_terms(model, likelihood, pgd.theta_at(galaxy, index))
+        self.assertAlmostEqual(terms["lnl"] / galaxy.log_likelihoods[index], 1.0, places=5)
+
+
 if __name__ == "__main__":
     unittest.main()
