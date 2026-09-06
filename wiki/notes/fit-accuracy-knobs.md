@@ -91,6 +91,9 @@ Pixel guard
 Scoring
 : Delta raw spectral chi2 at f = 0.03. Delta photometric chi2. Delta ln Z, counted only when |Delta| > 1 (NSS error 0.2-0.35). Shift of t_MW, log Z, [alpha/Fe], tau_dust and log M in units of the poly3_total posterior half-width, against the seed_rep scatter. Lick residuals and Borghi+22 agreement. Null check on the new nuisance posterior (dust index away from -0.7, f_calib below 0.10).
 
+Default flipped
+: Liu Hao's call on 2026-09-06, before the stage-1 fits finished: the StudentT(0, 0.3, df 2) continuity prior is now the production default in the notebook (`CERIDWEN_SFH_PRIOR` unset means `student`). The `poly3_total` reference arm and its seed repeats pin `uniform`, so the stored fits stay reproducible. The results section shows how the SFH differs per galaxy under the two priors.
+
 Verdict rule
 : Written before the fits ran. An arm goes into production only if it beats the seed floor on a physics parameter or improves Lick or Borghi agreement. Chi2 alone is not enough, f_calib can always buy chi2.
 

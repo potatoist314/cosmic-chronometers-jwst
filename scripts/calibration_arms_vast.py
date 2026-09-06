@@ -24,6 +24,7 @@ Fit-accuracy arms (2026-09-06), each poly3_total plus one switch::
     no_irac       CERIDWEN_PHOT_DROP=IRAC ch1,ch2   drop the two Spitzer bands
     dust_free     CERIDWEN_FREE_DUST_INDEX=1        Kriek & Conroy slope Uniform(-1.0, 0.4)
     sfh_cont      CERIDWEN_SFH_PRIOR=student        StudentT(0, 0.3, df=2) on logsfr_ratios
+                  (the production default since 2026-09-06; poly3_total pins uniform)
     mask_cn       CERIDWEN_MASK_REST_WINDOWS=...    mask CN1/CN2 and C4668 (rest Angstrom)
     mock_tilt4_sfh_cont
                   the tilt-4 mock with the polynomial and the StudentT prior
@@ -63,7 +64,10 @@ DEFAULT_TARGETS = [
     # spect_id: spans catalogue S/N 6.6-105 and z 0.60-0.98 of the DR2 quiescent sample
     "M12_98104", "M5_173928", "M12_185653", "M4_108989", "M1_206545", "M5_172669",
 ]
-POLY3_TOTAL = {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total"}
+# Production default flipped to the StudentT continuity prior on 2026-09-06;
+# the reference arm pins the uniform prior the stored poly3_total fits used.
+POLY3_TOTAL = {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total",
+               "CERIDWEN_SFH_PRIOR": "uniform"}
 ARMS = {
     "baseline": {"CERIDWEN_CALIBRATION_ORDER": "0", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
     "poly3": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},

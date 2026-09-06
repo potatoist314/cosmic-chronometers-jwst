@@ -500,3 +500,8 @@
 
 - Pages: `notes/fit-accuracy-knobs.md`, `index.md`
 - Change: Stage 0 diagnostics on the six poly3_total fits (chi2 map at fixed f_calib, prior rails, Lick and Borghi+22 residuals). Six env switches in `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, seven stage-1 arms plus seed repeats in `scripts/calibration_arms_vast.py`, verdict rule recorded before the fits.
+
+## [2026-09-06] decision | Continuity SFH prior is the production default
+
+- Pages: `notes/fit-accuracy-knobs.md`
+- Change: `notebooks/ceridwen_integrated_photometry_spectra.ipynb` defaults `CERIDWEN_SFH_PRIOR` to `student` (StudentT 0, 0.3, df 2 on logsfr_ratios). `scripts/calibration_arms_vast.py` pins `uniform` on the `poly3_total` reference so the stored fits stay reproducible. Tests cover both.

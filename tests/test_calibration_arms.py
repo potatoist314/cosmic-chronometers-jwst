@@ -30,7 +30,8 @@ def test_stage1_arms_differ_from_poly3_total_by_one_switch(arms):
     for name in STAGE1:
         extra = {k: v for k, v in arms.ARMS[name].items() if arms.ARMS["poly3_total"].get(k) != v}
         assert len(extra) == 1, (name, extra)
-        assert all(arms.ARMS[name][k] == v for k, v in arms.ARMS["poly3_total"].items())
+        # An arm may override a reference key (sfh_cont flips the prior) but never drops one.
+        assert set(arms.ARMS["poly3_total"]) <= set(arms.ARMS[name])
 
 
 def test_seed_repeats_only_run_on_two_targets_with_new_seeds(arms):
@@ -65,3 +66,12 @@ def test_mock_arms_are_selected_by_name(arms):
     assert [c["arm"] for c in cells] == ["mock_tilt4_sfh_cont"]
     assert cells[0]["env"]["CERIDWEN_SFH_PRIOR"] == "student"
     assert cells[0]["env"]["CERIDWEN_CALIBRATION_ORDER"] == "3"
+
+
+def test_reference_arm_pins_the_uniform_sfh_prior_after_the_default_flip(arms):
+    # Production default became the StudentT continuity prior on 2026-09-06; the
+    # stored poly3_total / seed_rep fits were made with the uniform prior, so the
+    # reference arm must say so explicitly to stay reproducible.
+    for name in ("poly3_total", "seed_rep1", "floor20", "no_irac", "dust_free", "mask_cn"):
+        assert arms.ARMS[name]["CERIDWEN_SFH_PRIOR"] == "uniform"
+    assert arms.ARMS["sfh_cont"]["CERIDWEN_SFH_PRIOR"] == "student"

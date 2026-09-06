@@ -199,3 +199,10 @@ def test_validator_counts_only_physical_parameter_groups():
         "Z", "afe", "diffuse_tau_kc", "log_f_calib", "logmass", "logsfr_ratios",
         "spectrum_scaling",
     ]
+
+
+def test_notebook_defaults_to_the_continuity_sfh_prior():
+    notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
+    source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
+    assert 'SFH_PRIOR = os.environ.get("CERIDWEN_SFH_PRIOR", "student")' in source
+    assert 'StudentT(mean=0.0, scale=0.3, df=2.0)' in source
