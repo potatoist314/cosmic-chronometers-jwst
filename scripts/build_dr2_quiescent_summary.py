@@ -1,16 +1,20 @@
 """Build a tidy one-row-per-galaxy summary of the DR2 quiescent run.
 
-Reads every target in
-``results/rtx-5060-dr2-quiescent-full-spectrum/targets.json`` directly from
-its ``ceridwen_derived_outputs.h5`` / ``ceridwen_result.h5`` pair and writes
-``results/dr2-quiescent-summary.csv``. Every sample-level plot is then
-reproducible from that single CSV.
+Reads every target in ``<result root>/targets.json`` directly from its
+``ceridwen_derived_outputs.h5`` / ``ceridwen_result.h5`` pair and writes one
+CSV. Every sample-level plot is then reproducible from that single CSV.
 
-Usage (CPU only): ``.venv/bin/python scripts/build_dr2_quiescent_summary.py``
+Usage (CPU only)::
+
+    .venv/bin/python scripts/build_dr2_quiescent_summary.py
+    .venv/bin/python scripts/build_dr2_quiescent_summary.py \
+        --result-root results/dr2-quiescent-new-defaults \
+        --out-path results/dr2-quiescent-new-defaults-summary.csv
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
@@ -19,8 +23,8 @@ import numpy as np
 import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-RESULT_ROOT = PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
-OUT_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
+DEFAULT_RESULT_ROOT = PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
+DEFAULT_OUT_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
 
 SUMMARY_PARAMS = {
     "logmass": "logmass",
@@ -63,9 +67,9 @@ def _str(value) -> str:
     return value.decode() if isinstance(value, bytes) else str(value)
 
 
-def load_target(target: dict) -> dict:
+def load_target(target: dict, result_root: Path) -> dict:
     """Summarise one target folder into a flat dict."""
-    folder = RESULT_ROOT / f"{target['object_id']}-{target['spect_id']}"
+    folder = result_root / f"{target['object_id']}-{target['spect_id']}"
     row: dict = {
         "target": f"{target['object_id']}-{target['spect_id']}",
         "object_id": target["object_id"],
@@ -121,13 +125,22 @@ def load_target(target: dict) -> dict:
     return row
 
 
+def _parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--result-root", type=Path, default=DEFAULT_RESULT_ROOT)
+    parser.add_argument("--out-path", type=Path, default=DEFAULT_OUT_PATH)
+    return parser
+
+
 def main() -> None:
-    manifest = json.loads((RESULT_ROOT / "targets.json").read_text())
-    rows = [load_target(target) for target in manifest["targets"]]
+    args = _parser().parse_args()
+    manifest = json.loads((args.result_root / "targets.json").read_text())
+    rows = [load_target(target, args.result_root) for target in manifest["targets"]]
     frame = pd.DataFrame(rows).sort_values("object_id").reset_index(drop=True)
     frame["joint_chi2_per_ndof"] = frame["joint_chi2"] / frame["joint_ndof"]
-    frame.to_csv(OUT_PATH, index=False)
-    print(f"wrote {OUT_PATH} with {len(frame)} rows")
+    args.out_path.parent.mkdir(parents=True, exist_ok=True)
+    frame.to_csv(args.out_path, index=False)
+    print(f"wrote {args.out_path} with {len(frame)} rows")
     print(f"passed diagnostics: {int(frame['passed'].sum())}/{len(frame)}")
 
 

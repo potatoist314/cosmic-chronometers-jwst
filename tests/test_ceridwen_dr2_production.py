@@ -86,7 +86,9 @@ def test_monitor_pulls_only_promised_per_target_files(monkeypatch, tmp_path):
         runner, "_rsync_command", lambda _endpoint, *args: commands.append(args)
     )
 
-    assert runner._pull_completed(endpoint, manifest, tmp_path) == {"M10_233129"}
+    assert runner._pull_completed(
+        endpoint, manifest, tmp_path, runner.DEFAULT_REMOTE_RESULT_ROOT
+    ) == {"M10_233129"}
     result_pull = commands[1]
     assert "--include=execution.log" in result_pull
     assert "--include=ceridwen_result.h5" in result_pull
@@ -223,3 +225,76 @@ def test_notebook_defaults_to_the_uniform_tau_prior():
     assert "ClippedNormal(mean=0.3, sigma=1.0, low=0.0, high=4.0)" in source
     assert 'attrs["tau_prior"] = TAU_PRIOR' in source
     assert 'attrs["dust_index_bounds"]' in source
+
+
+def test_result_roots_default_to_the_first_production_run(monkeypatch):
+    monkeypatch.delenv("CERIDWEN_OUTPUT_ROOT", raising=False)
+    monkeypatch.delenv("CERIDWEN_REMOTE_RESULT_ROOT", raising=False)
+    args = runner._parser().parse_args([])
+
+    assert args.output_root == PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
+    assert args.remote_result_root == (
+        "/workspace/cosmic-chronometers-jwst/results/rtx-5060-dr2-quiescent-full-spectrum"
+    )
+
+
+def test_result_roots_follow_the_environment_and_then_the_flags(monkeypatch, tmp_path):
+    monkeypatch.setenv("CERIDWEN_OUTPUT_ROOT", str(tmp_path / "env-root"))
+    monkeypatch.setenv("CERIDWEN_REMOTE_RESULT_ROOT", "/workspace/x/results/env-root")
+    from_env = runner._parser().parse_args([])
+
+    assert from_env.output_root == tmp_path / "env-root"
+    assert from_env.remote_result_root == "/workspace/x/results/env-root"
+
+    from_flags = runner._parser().parse_args(
+        ["--output-root", str(tmp_path / "flag-root"),
+         "--remote-result-root", "/workspace/x/results/flag-root"]
+    )
+    assert from_flags.output_root == tmp_path / "flag-root"
+    assert from_flags.remote_result_root == "/workspace/x/results/flag-root"
+
+
+def test_monitor_reads_and_pulls_from_the_given_remote_root(monkeypatch, tmp_path):
+    endpoint = runner._monitor_endpoint("49277679:ssh8.vast.ai:37678:1")
+    manifest = {
+        "targets": [{"object_id": 233129, "spect_id": "M10_233129"}],
+        "results": {"M10_233129": {"status": "complete"}},
+    }
+    remote_root = "/workspace/cosmic-chronometers-jwst/results/dr2-quiescent-new-defaults"
+    commands = []
+    ssh_commands = []
+
+    def fake_ssh(command, **_kwargs):
+        ssh_commands.append(command)
+        return type("Completed", (), {"stdout": "{}"})()
+
+    monkeypatch.setattr(runner, "_validate_result", lambda *_args: None)
+    monkeypatch.setattr(
+        runner, "_rsync_command", lambda _endpoint, *args: commands.append(args)
+    )
+    monkeypatch.setattr(runner.subprocess, "run", fake_ssh)
+
+    runner._remote_manifest(endpoint, remote_root)
+    assert f"{remote_root}/shard_1_manifest.json" in ssh_commands[0]
+
+    runner._pull_completed(endpoint, manifest, tmp_path, remote_root)
+    assert all(
+        "rtx-5060-dr2-quiescent-full-spectrum" not in argument
+        for argument in commands[0]
+    )
+    assert f"root@ssh8.vast.ai:{remote_root}/targets.json" in commands[0]
+
+
+def test_summary_script_takes_a_result_root_and_an_output_path():
+    from scripts import build_dr2_quiescent_summary as summary
+
+    defaults = summary._parser().parse_args([])
+    assert defaults.result_root == PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
+    assert defaults.out_path == PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
+
+    chosen = summary._parser().parse_args(
+        ["--result-root", "results/dr2-quiescent-new-defaults",
+         "--out-path", "results/dr2-quiescent-new-defaults-summary.csv"]
+    )
+    assert chosen.result_root == Path("results/dr2-quiescent-new-defaults")
+    assert chosen.out_path == Path("results/dr2-quiescent-new-defaults-summary.csv")

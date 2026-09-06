@@ -33,7 +33,9 @@ DEFAULT_FITS_PER_GPU = 1
 DEFAULT_MINIMUM_GPU_MEMORY_MIB = int(
     os.environ.get("CERIDWEN_MIN_GPU_MEMORY_MIB", "8000")
 )
-REMOTE_RESULT_ROOT = "/workspace/cosmic-chronometers-jwst/results/rtx-5060-dr2-quiescent-full-spectrum"
+DEFAULT_REMOTE_RESULT_ROOT = (
+    "/workspace/cosmic-chronometers-jwst/results/rtx-5060-dr2-quiescent-full-spectrum"
+)
 
 
 def _utc_now() -> str:
@@ -334,8 +336,8 @@ def _monitor_endpoint(value: str) -> dict:
     }
 
 
-def _remote_manifest(endpoint: dict) -> dict:
-    path = f"{REMOTE_RESULT_ROOT}/shard_{endpoint['shard_index']}_manifest.json"
+def _remote_manifest(endpoint: dict, remote_root: str) -> dict:
+    path = f"{remote_root}/shard_{endpoint['shard_index']}_manifest.json"
     result = subprocess.run(
         [
             "ssh",
@@ -359,13 +361,15 @@ def _rsync_command(endpoint: dict, *arguments: str) -> None:
     )
 
 
-def _pull_completed(endpoint: dict, manifest: dict, output_root: Path) -> set[str]:
+def _pull_completed(
+    endpoint: dict, manifest: dict, output_root: Path, remote_root: str
+) -> set[str]:
     output_root.mkdir(parents=True, exist_ok=True)
     remote = f"root@{endpoint['host']}"
     _rsync_command(
         endpoint,
-        f"{remote}:{REMOTE_RESULT_ROOT}/targets.json",
-        f"{remote}:{REMOTE_RESULT_ROOT}/shard_{endpoint['shard_index']}_manifest.json",
+        f"{remote}:{remote_root}/targets.json",
+        f"{remote}:{remote_root}/shard_{endpoint['shard_index']}_manifest.json",
         f"{output_root}/",
     )
 
@@ -380,7 +384,7 @@ def _pull_completed(endpoint: dict, manifest: dict, output_root: Path) -> set[st
             _validate_result(result_dir, spect_id)
         except (FileNotFoundError, KeyError, OSError, RuntimeError, ValueError):
             result_dir.mkdir(parents=True, exist_ok=True)
-            remote_dir = f"{remote}:{REMOTE_RESULT_ROOT}/{target['object_id']}-{spect_id}/"
+            remote_dir = f"{remote}:{remote_root}/{target['object_id']}-{spect_id}/"
             _rsync_command(
                 endpoint,
                 "--include=execution.log",
@@ -430,10 +434,15 @@ def _monitor(args: argparse.Namespace) -> int:
         completed = set()
         try:
             for endpoint in endpoints:
-                manifest = _remote_manifest(endpoint)
+                manifest = _remote_manifest(endpoint, args.remote_result_root)
                 manifests.append(manifest)
                 completed.update(
-                    _pull_completed(endpoint, manifest, args.output_root)
+                    _pull_completed(
+                        endpoint,
+                        manifest,
+                        args.output_root,
+                        args.remote_result_root,
+                    )
                 )
             credit = _vast_credit()
             spend = args.credit_baseline - credit
@@ -599,7 +608,21 @@ def _parser() -> argparse.ArgumentParser:
             " XLA_CLIENT_MEM_FRACTION = 0.85/N. Default: %(default)s."
         ),
     )
-    parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
+    parser.add_argument(
+        "--output-root",
+        type=Path,
+        default=Path(os.environ.get("CERIDWEN_OUTPUT_ROOT", DEFAULT_OUTPUT_ROOT)),
+    )
+    parser.add_argument(
+        "--remote-result-root",
+        default=os.environ.get(
+            "CERIDWEN_REMOTE_RESULT_ROOT", DEFAULT_REMOTE_RESULT_ROOT
+        ),
+        help=(
+            "Result root on the Vast box that --monitor reads and pulls."
+            " Default: %(default)s."
+        ),
+    )
     parser.add_argument("--monitor", action="store_true")
     parser.add_argument("--monitor-instance", action="append", default=[])
     parser.add_argument("--credit-baseline", type=float)
