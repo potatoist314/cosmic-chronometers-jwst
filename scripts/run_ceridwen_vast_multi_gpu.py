@@ -241,8 +241,10 @@ def _validate_result(result_dir: Path, spect_id: str) -> None:
     derived_path = result_dir / "ceridwen_derived_outputs.h5"
     notebook_path = result_dir / f"{spect_id}_executed.ipynb"
     loaded = load_result_h5(result_path)
-    if len(loaded.param_names) != 7:
-        raise RuntimeError(f"Expected seven parameter groups, found {loaded.param_names}")
+    # A free redshift or LOSVD adds a group on top of the seven physical ones.
+    physical = [name for name in loaded.param_names if name not in ("zred", "sigma_smooth")]
+    if len(physical) != 7:
+        raise RuntimeError(f"Expected seven physical parameter groups, found {loaded.param_names}")
     if not np.isfinite(np.asarray(loaded.log_weights)).all():
         raise RuntimeError("Posterior log weights contain non-finite values")
     if not np.isfinite([loaded.log_evidence, loaded.log_evidence_err]).all():
