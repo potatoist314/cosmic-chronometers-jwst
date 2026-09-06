@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rent one Vast.ai RTX 5060 and run the calibration-polynomial arms on it.
+"""Rent one Vast.ai RTX 5060 and run the single-fit accuracy arms on it.
 
 Every cell executes the production notebook
 (``notebooks/ceridwen_integrated_photometry_spectra.ipynb``) through
@@ -7,16 +7,28 @@ Every cell executes the production notebook
 sampler settings and the production seed of the target, so the arms of one
 galaxy differ only in the environment switches below.
 
-Arms::
+Calibration arms (2026-09-03)::
 
-    baseline      CERIDWEN_CALIBRATION_ORDER=0  CERIDWEN_PHOTOMETRY=cosmos_ap3    production
+    baseline      CERIDWEN_CALIBRATION_ORDER=0  CERIDWEN_PHOTOMETRY=cosmos_ap3    former production
     poly3         CERIDWEN_CALIBRATION_ORDER=3  CERIDWEN_PHOTOMETRY=cosmos_ap3    polynomial only
-    poly3_total   CERIDWEN_CALIBRATION_ORDER=3  CERIDWEN_PHOTOMETRY=cosmos_total  polynomial + Laigle+16 total SED
+    poly3_total   CERIDWEN_CALIBRATION_ORDER=3  CERIDWEN_PHOTOMETRY=cosmos_total  production
     mock_tilt4_baseline / mock_tilt4_poly3
                   M5_172669 mock (stored truth, 4 percent end-to-end tilt on the
                   spectrum only), without and with the polynomial
 
-Results land in ``results/calibration-polynomial-dr2/<arm>/<object>-<target>/``
+Fit-accuracy arms (2026-09-06), each poly3_total plus one switch::
+
+    seed_rep1..3  --base-seed shifted; M4_108989 and M5_172669 only (scatter floor)
+    floor20       CERIDWEN_FCALIB_MAX=0.20          f_calib ceiling 10 -> 20 percent
+    emis_wide     CERIDWEN_EMISSION_LINES=...       also mask [NeIII], H-epsilon, H-delta, H-gamma
+    no_irac       CERIDWEN_PHOT_DROP=IRAC ch1,ch2   drop the two Spitzer bands
+    dust_free     CERIDWEN_FREE_DUST_INDEX=1        Kriek & Conroy slope Uniform(-1.0, 0.4)
+    sfh_cont      CERIDWEN_SFH_PRIOR=student        StudentT(0, 0.3, df=2) on logsfr_ratios
+    mask_cn       CERIDWEN_MASK_REST_WINDOWS=...    mask CN1/CN2 and C4668 (rest Angstrom)
+    mock_tilt4_sfh_cont
+                  the tilt-4 mock with the polynomial and the StudentT prior
+
+Results land in ``$CERIDWEN_ARMS_RESULTS/<arm>/<object>-<target>/``
 (``CERIDWEN_ARMS_RESULTS`` overrides the directory, on this machine and on
 the box) with the same files as the production run.  ``--ceridwen-tree PATH``
 uploads that ceridwen checkout instead of the submodule tree, so a fork branch
@@ -51,11 +63,27 @@ DEFAULT_TARGETS = [
     # spect_id: spans catalogue S/N 6.6-105 and z 0.60-0.98 of the DR2 quiescent sample
     "M12_98104", "M5_173928", "M12_185653", "M4_108989", "M1_206545", "M5_172669",
 ]
+POLY3_TOTAL = {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total"}
 ARMS = {
     "baseline": {"CERIDWEN_CALIBRATION_ORDER": "0", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
     "poly3": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
-    "poly3_total": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total"},
+    "poly3_total": POLY3_TOTAL,
+    "seed_rep1": POLY3_TOTAL,
+    "seed_rep2": POLY3_TOTAL,
+    "seed_rep3": POLY3_TOTAL,
+    "floor20": {**POLY3_TOTAL, "CERIDWEN_FCALIB_MAX": "0.20"},
+    "emis_wide": {**POLY3_TOTAL, "CERIDWEN_EMISSION_LINES":
+                  "3726.0,3728.8,3869.0,3970.1,4101.7,4340.5,4861.3,4958.9,5006.8"},
+    "no_irac": {**POLY3_TOTAL, "CERIDWEN_PHOT_DROP": "spitzer_irac_ch1,spitzer_irac_ch2"},
+    "dust_free": {**POLY3_TOTAL, "CERIDWEN_FREE_DUST_INDEX": "1"},
+    "sfh_cont": {**POLY3_TOTAL, "CERIDWEN_SFH_PRIOR": "student"},
+    "mask_cn": {**POLY3_TOTAL, "CERIDWEN_MASK_REST_WINDOWS": "4142:4177,4634:4720"},
 }
+DEFAULT_BASE_SEED = 20260830          # == run_ceridwen_vast_multi_gpu.DEFAULT_BASE_SEED
+# Independent NSS repeats of the production model: same data, shifted seed.
+SEED_REP_BASE = {"seed_rep1": DEFAULT_BASE_SEED + 1000, "seed_rep2": DEFAULT_BASE_SEED + 2000,
+                 "seed_rep3": DEFAULT_BASE_SEED + 3000}
+SEED_REP_TARGETS = ["M4_108989", "M5_172669"]
 MOCK_ENV = {
     "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
     "CERIDWEN_MOCK_TILT": "0.04",
@@ -65,6 +93,8 @@ MOCK_ENV = {
 MOCK_ARMS = {
     "mock_tilt4_baseline": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "0"},
     "mock_tilt4_poly3": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "3"},
+    "mock_tilt4_sfh_cont": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "3",
+                            "CERIDWEN_SFH_PRIOR": "student"},
 }
 POLL_SECONDS = 120
 # A cell is one fresh notebook process; the RTX 5060 boxes occasionally kill a
@@ -99,26 +129,44 @@ def _log(prefix: str):
 # ---------------------------------------------------------------------------
 # Cells
 # ---------------------------------------------------------------------------
-def build_cells(targets: list[str], arms: list[str], mocks: bool) -> list[dict]:
+def build_cells(targets: list[str], arms: list[str], mocks: list[str]) -> list[dict]:
     multi = _load("multi_gpu", "run_ceridwen_vast_multi_gpu.py")
-    manifest = multi.build_target_manifest(num_shards=1, base_seed=multi.DEFAULT_BASE_SEED)
+    assert multi.DEFAULT_BASE_SEED == DEFAULT_BASE_SEED
+    manifest = multi.build_target_manifest(num_shards=1, base_seed=DEFAULT_BASE_SEED)
     by_id = {t["spect_id"]: t for t in manifest["targets"]}
     missing = [t for t in targets if t not in by_id]
     if missing:
         raise SystemExit(f"targets not in the DR2 quiescent manifest: {missing}")
+    seeds = {arm: {t["spect_id"]: t["seed"]
+                   for t in multi.build_target_manifest(num_shards=1, base_seed=base)["targets"]}
+             for arm, base in SEED_REP_BASE.items()}
     cells = []
-    if mocks:
-        for arm, env in MOCK_ARMS.items():
-            target = by_id["M5_172669"]
-            cells.append(dict(name=f"{arm}/M5_172669", arm=arm, target="M5_172669",
-                              object_id=target["object_id"], seed=target["seed"], env=env))
+    for arm in mocks:
+        target = by_id["M5_172669"]
+        cells.append(dict(name=f"{arm}/M5_172669", arm=arm, target="M5_172669",
+                          object_id=target["object_id"], seed=target["seed"], env=MOCK_ARMS[arm]))
     for spect_id in targets:                     # arms interleaved per galaxy
         target = by_id[spect_id]
         for arm in arms:
-            cells.append(dict(name=f"{arm}/{spect_id}", arm=arm, target=spect_id,
-                              object_id=target["object_id"], seed=target["seed"],
-                              env=ARMS[arm]))
+            cell = dict(name=f"{arm}/{spect_id}", arm=arm, target=spect_id,
+                        object_id=target["object_id"], seed=target["seed"], env=ARMS[arm])
+            if arm in SEED_REP_BASE:
+                if spect_id not in SEED_REP_TARGETS:
+                    continue
+                cell.update(seed=seeds[arm][spect_id], base_seed=SEED_REP_BASE[arm])
+            cells.append(cell)
     return cells
+
+
+def runner_command(cell: dict, output_root: Path) -> list[str]:
+    command = [
+        sys.executable, str(PROJECT_ROOT / "scripts/run_ceridwen_vast_multi_gpu.py"),
+        "--num-shards", "1", "--shard-index", "0", "--only-target", cell["target"],
+        "--output-root", str(output_root), "--max-attempts", "1",
+    ]
+    if cell.get("base_seed") is not None:
+        command += ["--base-seed", str(cell["base_seed"])]
+    return command
 
 
 # ---------------------------------------------------------------------------
@@ -149,13 +197,9 @@ def command_remote(args) -> int:
         env = {**os.environ, **cell["env"]}
         if "CERIDWEN_MOCK_TRUTH" in env:
             env["CERIDWEN_MOCK_TRUTH"] = str(PROJECT_ROOT / env["CERIDWEN_MOCK_TRUTH"])
-        command = [
-            sys.executable, str(PROJECT_ROOT / "scripts/run_ceridwen_vast_multi_gpu.py"),
-            "--num-shards", "1", "--shard-index", "0", "--only-target", cell["target"],
-            "--output-root", str(root / cell["arm"]), "--max-attempts", "1",
-        ]
+        command = runner_command(cell, root / cell["arm"])
         started = time.monotonic()
-        log(f"{name}: start {cell['env']}")
+        log(f"{name}: start seed={cell['seed']} {cell['env']}")
         for attempt in range(1, CELL_ATTEMPTS + 1):
             completed = subprocess.run(command, cwd=PROJECT_ROOT, env=env)
             if completed.returncode == 0:
@@ -368,7 +412,7 @@ def command_plan(args) -> int:
     sweep = _sweep()
     for offer in offers_rtx_5060(sweep, set())[:5]:
         print(_describe(offer))
-    for cell in build_cells(args.targets, args.arms, not args.no_mocks):
+    for cell in build_cells(args.targets, args.arms, args.mock_arms):
         print(cell["name"], cell["seed"], cell["env"])
     return 0
 
@@ -380,7 +424,7 @@ def command_run(args) -> int:
     if not offers:
         print("no suitable RTX 5060 offer", file=sys.stderr)
         return 1
-    cells = build_cells(args.targets, args.arms, not args.no_mocks)
+    cells = build_cells(args.targets, args.arms, args.mock_arms)
     offer = offers[0]
     record = {
         "started": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -396,7 +440,7 @@ def command_run(args) -> int:
 
 def command_attach(args) -> int:
     sweep = _sweep()
-    cells = build_cells(args.targets, args.arms, not args.no_mocks)
+    cells = build_cells(args.targets, args.arms, args.mock_arms)
     record = {"started": datetime.now(UTC).isoformat(timespec="seconds"), "branch": args.branch,
               "cells": [c["name"] for c in cells], "credit_before": _credit(sweep),
               **_ceridwen_tree_record(args)}
@@ -417,7 +461,8 @@ def main(argv=None) -> int:
     def common(p):
         p.add_argument("--targets", nargs="+", default=DEFAULT_TARGETS, metavar="SPECT_ID")
         p.add_argument("--arms", nargs="+", default=list(ARMS), choices=list(ARMS))
-        p.add_argument("--no-mocks", action="store_true")
+        p.add_argument("--mock-arms", nargs="*", default=list(MOCK_ARMS), choices=list(MOCK_ARMS),
+                       metavar="ARM", help="mock cells to run; give no names to skip the mocks")
         p.add_argument("--branch", default="absorption-mask")
         p.add_argument("--ceridwen-tree", default=None, metavar="PATH",
                        help="upload this ceridwen checkout over the box's ceridwen/ after the clone")

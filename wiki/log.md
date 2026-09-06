@@ -495,3 +495,8 @@
 - Evidence: `ceridwen/ceridwen/likelihood/calibration.py`,
   `ceridwen/ceridwen/sampler/nested.py`,
   `results/rtx-5060-production-speedup/comparison.ipynb`.
+
+## [2026-09-06] analysis | Fit-accuracy knobs, stage 0 and stage 1 setup
+
+- Pages: `notes/fit-accuracy-knobs.md`, `index.md`
+- Change: Stage 0 diagnostics on the six poly3_total fits (chi2 map at fixed f_calib, prior rails, Lick and Borghi+22 residuals). Six env switches in `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, seven stage-1 arms plus seed repeats in `scripts/calibration_arms_vast.py`, verdict rule recorded before the fits.

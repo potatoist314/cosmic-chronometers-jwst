@@ -178,7 +178,8 @@ def load_galaxy(folder: Path) -> GalaxyResult:
         transform_names = json.loads(_text(model.attrs["transforms"])) if "transforms" in model.attrs else []
         stored_block = _text(model.attrs["parameter_block"]) if "parameter_block" in model.attrs else None
         extra = {k: (_text(model.attrs[k]) if isinstance(model.attrs[k], (bytes, str)) else model.attrs[k])
-                 for k in ("calibration_order", "photometry_source", "spectrum_pixels", "sfh_basis_fastpath")
+                 for k in ("calibration_order", "calibration_prior_sigma", "photometry_source",
+                           "spectrum_pixels", "sfh_basis_fastpath")
                  if k in model.attrs}
         pg, sg = f["obs/photometry"], f["obs/spectrum"]
         phot = {
@@ -279,12 +280,15 @@ def load_ssp():
     return SSPDataAfe.load(fetch_grid(GRID_NAME))
 
 
-def rebuild_model(galaxy: GalaxyResult, ssp):
+def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     """Rebuild the fitting notebook's ``SedModel`` and joint likelihood.
 
-    Returns ``(model, likelihood, csp)``. Priors, initial values, redshift and
-    observations come from the stored files; the CSP switches, fixed dust index
-    and smoothing convention come from the module constants (not persisted).
+    Returns ``(model, likelihood, csp)``. Priors, initial values, redshift,
+    observations and the calibration polynomial (order and prior width) come
+    from the stored files; the CSP switches, fixed dust index and smoothing
+    convention come from the module constants (not persisted).
+    ``extra_observations`` are appended to the model (predicted, not fitted),
+    e.g. a ``StellarIndices`` set measured on the same broadened spectrum.
     """
     import jax.numpy as jnp
     from ceridwen.csp import CSPBasis_afe
@@ -292,15 +296,12 @@ def rebuild_model(galaxy: GalaxyResult, ssp):
         DiagonalGaussianLikelihood,
         DiagonalNoiseModel,
         MultiObservationLikelihood,
+        PolynomialCalibration,
     )
     from ceridwen.model import SedModel, logsfr_ratios_to_sfh
     from ceridwen.observation import Photometry, Spectrum
 
-    if int(galaxy.extra.get("calibration_order", 0) or 0) > 0:
-        raise NotImplementedError(
-            f"{galaxy.target}: the fit used a calibration polynomial (order "
-            f"{galaxy.extra['calibration_order']}); this rebuild only covers spectrum_scaling."
-        )
+    calibration_order = int(galaxy.extra.get("calibration_order", 0) or 0)
     priors = {k: parse_prior(v) for k, v in galaxy.prior_text.items()}
     phot_obs = Photometry(
         filters=galaxy.phot["filters"], flux=galaxy.phot["flux"],
@@ -336,13 +337,20 @@ def rebuild_model(galaxy: GalaxyResult, ssp):
         "diffuse_dust_index": lambda free_theta: jnp.array([FIXED_DUST_INDEX]),
     }
     init = {k: jnp.asarray(v) for k, v in galaxy.theta_init.items()}
-    model = SedModel(csp, observations=[phot_obs, spec_obs], priors=priors,
+    model = SedModel(csp, observations=[phot_obs, spec_obs, *extra_observations], priors=priors,
                      transforms=transforms, free_param_init=init, zred=galaxy.z)
+    calibration = None
+    if calibration_order > 0:
+        calibration = PolynomialCalibration.from_spectrum(
+            spec_obs, order=calibration_order, fit_constant=False,
+            prior_sigma=float(galaxy.extra["calibration_prior_sigma"]), marginalize=True,
+        )
     likelihood = MultiObservationLikelihood(
         keys=("photometry", "spectrum"),
         likelihoods=(
             DiagonalGaussianLikelihood(),
-            DiagonalGaussianLikelihood(noise_model=DiagonalNoiseModel(use_fractional=True)),
+            DiagonalGaussianLikelihood(noise_model=DiagonalNoiseModel(use_fractional=True),
+                                       calibration=calibration),
         ),
     )
     return model, likelihood, csp

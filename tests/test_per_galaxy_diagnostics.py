@@ -101,5 +101,29 @@ class ImfNames(unittest.TestCase):
         self.assertEqual(pgd.IMF_NAMES[2], "Kroupa (2001)")
 
 
+class RebuildCalibratedModel(unittest.TestCase):
+    """The rebuilt likelihood of a calibration-polynomial fit reproduces the stored ln L."""
+
+    FOLDER = PROJECT_ROOT / "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989"
+
+    def test_max_likelihood_theta_reproduces_stored_lnl(self):
+        if not (self.FOLDER / "ceridwen_result.h5").exists():
+            self.skipTest("poly3_total fit not present")
+        import os
+        os.environ.setdefault("JAX_PLATFORMS", "cpu")
+        galaxy = pgd.load_galaxy(self.FOLDER)
+        try:
+            ssp = pgd.load_ssp()
+        except Exception as error:  # grid not fetched on this machine
+            self.skipTest(f"grid unavailable: {error}")
+        model, likelihood, _ = pgd.rebuild_model(galaxy, ssp)
+        index = pgd.max_likelihood_index(galaxy)
+        terms = pgd.likelihood_terms(model, likelihood, pgd.theta_at(galaxy, index))
+        # The stored value comes from the GPU fit; float32 photometry and a
+        # 3735-pixel Gaussian sum agree to a few 1e-4 in ln L ~ 2.4e5.
+        self.assertAlmostEqual(terms["lnl"] / galaxy.log_likelihoods[index], 1.0, places=5)
+        self.assertEqual(terms["spectrum"]["ndof"], int(galaxy.spec["mask"].sum()))
+
+
 if __name__ == "__main__":
     unittest.main()
