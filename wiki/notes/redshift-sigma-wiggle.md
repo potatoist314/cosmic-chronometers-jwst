@@ -10,7 +10,7 @@ figures: [nuisance-posteriors.png, nuisance-degeneracies.png, parameters-fixed-v
 ## Model settings
 
 Run
-: Four DR2 galaxies, one arm `zsig` against the production arm `poly3_total`, one RTX 5060 per attempt, `results/redshift-sigma-wiggle/`.
+: Four DR2 galaxies, one arm `zsig` (removed from `scripts/calibration_arms_vast.py` on 2026-09-06, fits kept as a record) against the production arm `poly3_total`, one RTX 5060 per attempt, `results/redshift-sigma-wiggle/`.
 
 Arm
 : `zsig` is `poly3_total` plus two nuisance parameters. Everything else is the production setting: Chebyshev order 3, cosmos_total photometry, 7 SFH bins, BlackJAX NSS.

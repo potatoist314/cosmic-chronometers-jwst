@@ -471,3 +471,12 @@
   20 km/s of z_cat on all four. sigma_smooth off DR2 by 2.9 to 3.9 sigma on
   two galaxies and pinned at the 1.5 sigma_cat bound on M5_173928. Physical
   parameters stable. Delta ln Z +4 to +73. Wall time 3 to 4 times poly3_total.
+
+## [2026-09-06] edit | zsig arm removed
+
+- Pages: `notes/redshift-sigma-wiggle.md`
+- Change: The `zsig` arm is gone from `scripts/calibration_arms_vast.py`. Production
+  keeps z and sigma_star fixed at the DR2 values. The four fits stay in
+  `results/redshift-sigma-wiggle/` as a record.
+- Evidence: sigma_smooth absorbs template mismatch, not kinematics. Delta v
+  within 20 km/s moved no physical parameter by more than 1.3 sigma.

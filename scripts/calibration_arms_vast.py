@@ -15,9 +15,6 @@ Arms::
     mock_tilt4_baseline / mock_tilt4_poly3
                   M5_172669 mock (stored truth, 4 percent end-to-end tilt on the
                   spectrum only), without and with the polynomial
-    zsig          poly3_total plus a free redshift (CERIDWEN_FREE_ZRED_KMS=100,
-                  Gaussian prior of 100 km/s on the catalogue z) and a free LOSVD
-                  (CERIDWEN_FREE_SIGMA_FRAC=0.2, 20 percent prior on DR2 sigma*)
 
 Results land in ``results/calibration-polynomial-dr2/<arm>/<object>-<target>/``
 (``CERIDWEN_ARMS_RESULTS`` overrides the directory, on this machine and on
@@ -58,8 +55,6 @@ ARMS = {
     "baseline": {"CERIDWEN_CALIBRATION_ORDER": "0", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
     "poly3": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
     "poly3_total": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total"},
-    "zsig": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total",
-             "CERIDWEN_FREE_ZRED_KMS": "100", "CERIDWEN_FREE_SIGMA_FRAC": "0.2"},
 }
 MOCK_ENV = {
     "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
