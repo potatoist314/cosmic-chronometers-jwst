@@ -231,6 +231,15 @@ def _worker_environment(
     }
 
 
+# Switches that sample one extra nuisance group on top of the seven physical
+# ones: free redshift, free LOSVD, free attenuation-curve slope (dust_free arm).
+NUISANCE_PARAMS = ("zred", "sigma_smooth", "diffuse_dust_index")
+
+
+def physical_parameter_names(param_names) -> list[str]:
+    return [name for name in param_names if name not in NUISANCE_PARAMS]
+
+
 def _validate_result(result_dir: Path, spect_id: str) -> None:
     import h5py
     import nbformat
@@ -241,8 +250,7 @@ def _validate_result(result_dir: Path, spect_id: str) -> None:
     derived_path = result_dir / "ceridwen_derived_outputs.h5"
     notebook_path = result_dir / f"{spect_id}_executed.ipynb"
     loaded = load_result_h5(result_path)
-    # A free redshift or LOSVD adds a group on top of the seven physical ones.
-    physical = [name for name in loaded.param_names if name not in ("zred", "sigma_smooth")]
+    physical = physical_parameter_names(loaded.param_names)
     if len(physical) != 7:
         raise RuntimeError(f"Expected seven physical parameter groups, found {loaded.param_names}")
     if not np.isfinite(np.asarray(loaded.log_weights)).all():

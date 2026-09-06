@@ -189,3 +189,13 @@ def test_concurrent_shard_records_fits_per_gpu_and_every_target(monkeypatch, tmp
     assert all(
         result["status"] == "complete" for result in manifest["results"].values()
     )
+
+
+def test_validator_counts_only_physical_parameter_groups():
+    # dust_free samples the attenuation slope; free-z / free-sigma add zred / sigma_smooth.
+    sampled = ["Z", "afe", "diffuse_dust_index", "diffuse_tau_kc", "log_f_calib",
+               "logmass", "logsfr_ratios", "sigma_smooth", "spectrum_scaling", "zred"]
+    assert runner.physical_parameter_names(sampled) == [
+        "Z", "afe", "diffuse_tau_kc", "log_f_calib", "logmass", "logsfr_ratios",
+        "spectrum_scaling",
+    ]
