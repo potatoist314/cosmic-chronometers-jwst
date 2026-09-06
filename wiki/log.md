@@ -460,3 +460,14 @@
 - Pages: `notes/ceridwen-observations-model.md`, `index.md`
 - Change: Replaced the obsolete dense-interpolation description with the exact weighted-gather code and refreshed source locations.
 - Evidence: `results/rtx-5060-observation-speedups/comparison.ipynb`; 11.26–11.48 times faster unsmoothed interpolation on RTX 5060, no useful joint-fit gain.
+
+## [2026-09-06] analysis | Free redshift and velocity dispersion
+
+- Pages: `notes/redshift-sigma-wiggle.md`, `analyses/redshift-sigma-wiggle/`, `index.md`
+- Change: New note. Arm `zsig` frees zred (prior 100 km/s) and sigma_smooth
+  (prior 20 percent of DR2 sigma, bounds 0.5 to 1.5) on top of poly3_total for
+  four DR2 galaxies.
+- Evidence: `results/redshift-sigma-wiggle/analysis.ipynb`. Delta v within
+  20 km/s of z_cat on all four. sigma_smooth off DR2 by 2.9 to 3.9 sigma on
+  two galaxies and pinned at the 1.5 sigma_cat bound on M5_173928. Physical
+  parameters stable. Delta ln Z +4 to +73. Wall time 3 to 4 times poly3_total.

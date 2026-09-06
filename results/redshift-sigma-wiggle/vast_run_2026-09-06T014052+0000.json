@@ -1,0 +1,44 @@
+{
+ "started": "2026-09-06T01:05:46+00:00",
+ "branch": "absorption-mask",
+ "cells": [
+  "zsig/M1_206545",
+  "zsig/M5_172669",
+  "zsig/M5_173928"
+ ],
+ "credit_before": 16.104853708729976,
+ "ceridwen_tree": "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/d25f61dd-c1f3-4356-aa40-907ae4dddf1a/scratchpad/ceridwen-freez",
+ "ceridwen_tree_sha": "354f5e9",
+ "instance_id": 50012613,
+ "spend_so_far_usd": 0.0711,
+ "manifest": {
+  "zsig/M1_206545": {
+   "status": "done",
+   "started": "2026-09-06T00:24:18.923443+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 1421.4,
+   "finished": "2026-09-06T00:48:00.309929+00:00"
+  },
+  "zsig/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T00:48:00.310554+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 1581.2,
+   "finished": "2026-09-06T01:14:21.550723+00:00"
+  },
+  "zsig/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T01:14:21.551558+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 1482.1,
+   "finished": "2026-09-06T01:39:03.605912+00:00"
+  }
+ },
+ "credit_after": 16.033753478729977,
+ "spent_usd": 0.0711,
+ "finished": "2026-09-06T01:40:52+00:00",
+ "instances_left": []
+}

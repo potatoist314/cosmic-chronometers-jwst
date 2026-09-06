@@ -1,0 +1,41 @@
+[
+ {
+  "name": "zsig/M1_206545",
+  "arm": "zsig",
+  "target": "M1_206545",
+  "object_id": 206545,
+  "seed": 20260877,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total",
+   "CERIDWEN_FREE_ZRED_KMS": "100",
+   "CERIDWEN_FREE_SIGMA_FRAC": "0.2"
+  }
+ },
+ {
+  "name": "zsig/M5_172669",
+  "arm": "zsig",
+  "target": "M5_172669",
+  "object_id": 172669,
+  "seed": 20260830,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total",
+   "CERIDWEN_FREE_ZRED_KMS": "100",
+   "CERIDWEN_FREE_SIGMA_FRAC": "0.2"
+  }
+ },
+ {
+  "name": "zsig/M5_173928",
+  "arm": "zsig",
+  "target": "M5_173928",
+  "object_id": 173928,
+  "seed": 20260970,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "3",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total",
+   "CERIDWEN_FREE_ZRED_KMS": "100",
+   "CERIDWEN_FREE_SIGMA_FRAC": "0.2"
+  }
+ }
+]
