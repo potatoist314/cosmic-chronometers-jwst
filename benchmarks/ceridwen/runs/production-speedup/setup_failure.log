@@ -1,0 +1,449 @@
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+target: M1_210210
+fit mode: full_spectrum
+random seed: 20260906
+JAX devices: [CudaDevice(id=0)]
+result directory: /workspace/cosmic-chronometers-jwst/results/rtx-5060-production-speedup/M1_210210-20260906-baseline
+spectrum pixels: all
+photometry source: cosmos_total
+free redshift: fixed
+free sigma*: fixed
+calibration polynomial: Chebyshev order 3, prior sigma 0.1, marginalised
+SIMPLE  =                    T /Written by IDL:  Wed Jun 13 14:42:40 2018       BITPIX  =                    8 /                                                NAXIS   =                    0 /                                                EXTEND  =                    T /File contains extensions                        DATE    = '2018-06-13'         /                                                ORIGIN  = 'ESO     '           /European Southern Observatory                   TELESCOP= 'ESO-VLT-U3'         /ESO <TEL>                                       INSTRUME= 'VIMOS   '           /Instrument used                                 DISPELEM= 'HR_red  '           /                                                SPECSYS = 'TOPOCENT'           /                                                OBJECT  = 'M1_210210'          /                                                EXT_OBJ =                    T /                                                RA      =           150.148117 /UltraVISTA catalog R.A.                         DEC     =             2.517844 /UltraVISTA catalog Dec.                         EQUINOX =                 2000 /Standard FK5                                    RADECSYS= 'FK5     '           /                                                EXPTIME =              76799.7 /Total integration time per pixel (s)            TEXPTIME=              76799.7 /Total integration time in spectrum (s)          MJD-OBS =       57039.29724000 /                                                MJD-END =       57044.36441678 /                                                PROG_ID = '194.A-2005(B)'      /                                                OBID1   =              1163746 /Observation block ID                            OBID2   =              1163760 /Observation block ID                            OBID3   =              1163762 /Observation block ID                            OBID4   =              1163764 /Observation block ID                            OBID5   =              1163766 /Observation block ID                            OBID6   =              1163768 /Observation block ID                            OBID7   =              1163770 /Observation block ID                            OBID8   =              1163772 /Observation block ID                            OBID9   =              1163774 /Observation block ID                            OBID10  =              1163776 /Observation block ID                            OBID11  =              1163778 /Observation block ID                            OBID12  =              1163780 /Observation block ID                            OBID13  =              1163782 /Observation block ID                            OBID14  =              1163784 /Observation block ID                            OBID15  =              1163786 /Observation block ID                            M_EPOCH =                    T /                                                PROV1   = 'VIMOS.2015-01-17T07:08:01.534.fits' /                                PROV2   = 'VIMOS.2015-01-17T07:28:56.350.fits' /                                PROV3   = 'VIMOS.2015-01-17T07:49:52.333.fits' /                                PROV4   = 'VIMOS.2015-01-17T08:10:47.347.fits' /                                PROV5   = 'VIMOS.2015-01-18T04:03:48.110.fits' /                                PROV6   = 'VIMOS.2015-01-18T04:24:43.107.fits' /                                PROV7   = 'VIMOS.2015-01-18T04:45:38.102.fits' /                                PROV8   = 'VIMOS.2015-01-18T05:06:33.097.fits' /                                PROV9   = 'VIMOS.2015-01-18T05:46:47.348.fits' /                                PROV10  = 'VIMOS.2015-01-18T06:07:44.095.fits' /                                PROV11  = 'VIMOS.2015-01-18T06:28:39.140.fits' /                                PROV12  = 'VIMOS.2015-01-18T06:49:34.094.fits' /                                PROV13  = 'VIMOS.2015-01-18T07:22:50.164.fits' /                                PROV14  = 'VIMOS.2015-01-18T07:43:45.150.fits' /                                PROV15  = 'VIMOS.2015-01-18T08:04:40.777.fits' /                                PROV16  = 'VIMOS.2015-01-18T08:25:36.101.fits' /                                PROV17  = 'VIMOS.2015-01-19T03:48:11.074.fits' /                                PROV18  = 'VIMOS.2015-01-19T04:09:05.971.fits' /                                PROV19  = 'VIMOS.2015-01-19T04:30:00.966.fits' /                                PROV20  = 'VIMOS.2015-01-19T04:50:55.961.fits' /                                PROV21  = 'VIMOS.2015-01-19T05:29:06.425.fits' /                                PROV22  = 'VIMOS.2015-01-19T05:50:01.970.fits' /                                PROV23  = 'VIMOS.2015-01-19T06:10:56.975.fits' /                                PROV24  = 'VIMOS.2015-01-19T06:31:51.967.fits' /                                PROV25  = 'VIMOS.2015-01-19T07:12:45.500.fits' /                                PROV26  = 'VIMOS.2015-01-19T07:33:40.973.fits' /                                PROV27  = 'VIMOS.2015-01-19T07:54:35.978.fits' /                                PROV28  = 'VIMOS.2015-01-19T08:15:32.903.fits' /                                PROV29  = 'VIMOS.2015-01-19T08:36:27.968.fits' /                                PROV30  = 'VIMOS.2015-01-20T03:28:03.835.fits' /                                PROV31  = 'VIMOS.2015-01-20T03:48:58.930.fits' /                                PROV32  = 'VIMOS.2015-01-20T04:09:53.923.fits' /                                PROV33  = 'VIMOS.2015-01-20T04:30:48.932.fits' /                                PROV34  = 'VIMOS.2015-01-20T06:11:51.828.fits' /                                PROV35  = 'VIMOS.2015-01-20T06:32:47.014.fits' /                                PROV36  = 'VIMOS.2015-01-20T06:53:41.937.fits' /                                PROV37  = 'VIMOS.2015-01-20T07:14:37.601.fits' /                                PROV38  = 'VIMOS.2015-01-20T07:56:20.769.fits' /                                PROV39  = 'VIMOS.2015-01-20T08:21:44.043.fits' /                                PROV40  = 'VIMOS.2015-01-21T03:06:28.768.fits' /                                PROV41  = 'VIMOS.2015-01-21T03:27:23.854.fits' /                                PROV42  = 'VIMOS.2015-01-21T03:48:20.850.fits' /                                PROV43  = 'VIMOS.2015-01-21T04:09:15.832.fits' /                                PROV44  = 'VIMOS.2015-01-21T05:11:56.905.fits' /                                PROV45  = 'VIMOS.2015-01-21T05:32:51.841.fits' /                                PROV46  = 'VIMOS.2015-01-21T05:53:46.835.fits' /                                PROV47  = 'VIMOS.2015-01-21T06:14:41.838.fits' /                                PROV48  = 'VIMOS.2015-01-21T06:52:07.926.fits' /                                PROV49  = 'VIMOS.2015-01-21T07:13:02.841.fits' /                                PROV50  = 'VIMOS.2015-01-21T07:33:57.826.fits' /                                PROV51  = 'VIMOS.2015-01-21T07:54:52.821.fits' /                                PROV52  = 'VIMOS.2015-01-21T08:31:17.935.fits' /                                PROV53  = 'VIMOS.2015-01-22T03:58:03.408.fits' /                                PROV54  = 'VIMOS.2015-01-22T04:18:58.654.fits' /                                PROV55  = 'VIMOS.2015-01-22T04:39:53.650.fits' /                                PROV56  = 'VIMOS.2015-01-22T05:20:09.380.fits' /                                PROV57  = 'VIMOS.2015-01-22T05:41:03.647.fits' /                                PROV58  = 'VIMOS.2015-01-22T06:01:58.642.fits' /                                PROV59  = 'VIMOS.2015-01-22T06:22:53.687.fits' /                                PROV60  = 'VIMOS.2015-01-22T07:01:04.733.fits' /                                PROV61  = 'VIMOS.2015-01-22T07:21:59.759.fits' /                                PROV62  = 'VIMOS.2015-01-22T07:42:54.987.fits' /                                PROV63  = 'VIMOS.2015-01-22T08:03:49.652.fits' /                                PROV64  = 'VIMOS.2015-01-22T08:24:45.650.fits' /                                PRODCATG= 'SCIENCE.SPECTRUM'   /                                                PROCSOFT= 'Reflex 2.8, vimos 3.1.7' /                                           OBSTECH = 'MOS,NODDING'        /                                                FLUXCAL = 'ABSOLUTE'           /                                                CONTNORM=                    F /                                                WAVELMIN=              618.610 /                                                WAVELMAX=              890.050 /                                                SPEC_BIN=            0.0600000 /                                                TOT_FLUX=                    F /                                                FLUXERR =                  10.                                                  REFERENC= '2016ApJS..223...29V' /                                               SNR     =        62.2000000000 /                                                SPEC_RES=                 2500 /                                                NCOMBINE=                   64 /                                                DATASUM = '0       '           / data unit checksum updated 2018-06-13T13:04:33 CHECKSUM= 'UWUHaUUFVUUFaUUF'   / HDU checksum updated 2018-06-13T13:04:33       TUTYP3  = 'Spectrum.Data.FluxAxis.Accuracy.StatError'                           TUTYP4  = 'Spectrum.Data.FluxAxis.Quality'                                      END
+M1_210210  z=0.6542
+catalogue S/N=62.2
+observed 4000-A coverage=True
+fixed sigma*=259.5 km/s
+instrument FWHM resolving power=2500
+good spectral coverage: 6190-8633 angstrom
+aperture-to-total offset: -0.343 mag
+Photometry (photometry)
+  n_filters     : 12
+  ndof          : 12
+  wave_eff range: 3813 – 44781 Å
+  filters       : cfht_megacam_us_9301, subaru_suprimecam_B, subaru_suprimecam_V, subaru_suprimecam_rp, subaru_suprimecam_ip … (+7 more)
+  masked filters: 0 / 12
+
+  #    filter                           λ_eff [Å]      flux [mag]             σ      S/N   mask   UL
+  --------------------------------------------------------------------------------------------------
+  0    cfht_megacam_us_9301                3813.2      1.4826e-10    1.5481e-11     9.58   True    -
+  1    subaru_suprimecam_B                 4427.2      3.8797e-10    2.3839e-11    16.27   True    -
+  2    subaru_suprimecam_V                 5454.9      1.6106e-09    8.8094e-11    18.28   True    -
+  3    subaru_suprimecam_rp                6249.0      3.5489e-09    1.8257e-10    19.44   True    -
+  4    subaru_suprimecam_ip                7645.9      9.8023e-09    4.9326e-10    19.87   True    -
+  5    subaru_suprimecam_zp                9010.8      1.5351e-08    7.6810e-10    19.99   True    -
+  6    vista_vircam_Y                     10204.7      1.8944e-08    9.4768e-10    19.99   True    -
+  7    vista_vircam_J                     12504.9      2.6482e-08    1.3249e-09    19.99   True    -
+  8    vista_vircam_H                     16388.5      3.7862e-08    1.8943e-09    19.99   True    -
+  9    vista_vircam_Ks                    21452.8      4.7727e-08    2.3871e-09    19.99   True    -
+  10   spitzer_irac_ch1                   35378.5      4.0293e-08    2.0227e-09    19.92   True    -
+  11   spitzer_irac_ch2                   44780.5      2.7723e-08    1.3893e-09    19.95   True    -
+Traceback (most recent call last):
+  File "/workspace/cosmic-chronometers-jwst/scripts/validate_ceridwen_speedups.py", line 393, in <module>
+    main()
+  File "/workspace/cosmic-chronometers-jwst/scripts/validate_ceridwen_speedups.py", line 217, in main
+    worker(parser.parse_args())
+  File "/workspace/cosmic-chronometers-jwst/scripts/validate_ceridwen_speedups.py", line 205, in worker
+    try:client.execute()
+        ^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/.uv/python_install/cpython-3.11.16-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+DR2_FLUX_UNIT = 1e-19 * u.erg / u.s / u.cm**2 / u.AA
+SPECTRUM_CALIBRATION_INIT = 0.03
+REST_EMISSION_LINES = [3726.0, 3728.8, 4861.3, 4958.9, 5006.8]
+
+
+def flam_to_fnu_cgs(values, wavelength):
+    f_lambda = values * DR2_FLUX_UNIT
+    return f_lambda.to_value(
+        u.erg / u.s / u.cm**2 / u.Hz,
+        equivalencies=u.spectral_density(wavelength * u.AA),
+    )
+
+
+if FIT_MODE == "full_spectrum":
+    wave_vacuum = air_to_vac(wave_air * u.AA).to_value(u.AA)
+    native_flux = flam_to_fnu_cgs(flux_dr2, wave_vacuum)
+    native_uncertainty = flam_to_fnu_cgs(error_dr2, wave_vacuum)
+
+    telluric_vacuum = air_to_vac(np.array([7590.0, 7660.0]) * u.AA).to_value(u.AA)
+    native_valid = (
+        good_pixel
+        & np.isfinite(native_flux)
+        & np.isfinite(native_uncertainty)
+        & (native_uncertainty > 0)
+    )
+    spectrum_wave = wave_vacuum
+    spectrum_flux = np.nan_to_num(native_flux, nan=0.0)
+    spectrum_uncertainty = np.where(
+        native_valid, native_uncertainty, 1.0
+    )
+    spectrum_obs = Spectrum(
+        wavelength=spectrum_wave,
+        flux=spectrum_flux,
+        uncertainty=spectrum_uncertainty,
+        mask=native_valid,
+        resolution=instrument_fwhm_resolution,
+        smoothtype="R",
+        res_convention="fwhm",
+        sigma_losvd=sigma_star,
+        fit_sigma_smooth=FREE_SIGMA_FRAC > 0,
+        free_z=FREE_ZRED_KMS > 0,
+        name="spectrum",
+    )
+    spectrum_obs.mask_lines(
+        REST_EMISSION_LINES,
+        dv=1500.0,
+        zred=z_catalog,
+    )
+    spectrum_obs.mask_wavelength_range(*telluric_vacuum)
+    spectrum_mask = np.asarray(spectrum_obs.mask)
+
+    assert spectrum_obs.ndof > 3000
+
+    spectrum_obs.display()
+    print("joint photometric bands: 12")
+    print("spectrum normalization: fitted by spectrum_scaling")
+    print(f"native good pixels: {good_pixel.sum()}")
+    print(f"fitted native pixels: {spectrum_obs.ndof}")
+    print("library resolution: schema-2.1 automatic curve")
+
+    spectrum_plot_flux = np.where(spectrum_mask, spectrum_flux, np.nan)
+    spectrum_plot_uncertainty = np.where(
+        spectrum_mask, spectrum_uncertainty, np.nan
+    )
+
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+    axes[0].errorbar(
+        filter_wave_eff,
+        phot_flux,
+        xerr=filter_wave_xerr,
+        yerr=phot_uncertainty,
+        fmt="o",
+        color="tab:blue",
+    )
+    axes[0].set(
+        xscale="log",
+        yscale="log",
+        xlabel="observed wavelength [angstrom]",
+        ylabel="maggies",
+    )
+    axes[0].set_title(PHOTOMETRY_LABEL)
+    axes[1].errorbar(
+        spectrum_wave,
+        spectrum_plot_flux,
+        yerr=spectrum_plot_uncertainty,
+        fmt="-",
+        lw=0.5,
+        color="tab:purple",
+    )
+    axes[1].set(
+        xlabel="observed vacuum wavelength [angstrom]",
+        ylabel="F_nu [cgs]",
+    )
+    axes[1].set_title("Measured LEGA-C spectrum")
+    mark_filter_ranges(axes[0])
+    mark_spectral_range(axes[0], show_label=True)
+    axes[0].legend(frameon=False, fontsize=8)
+    mark_filter_ranges(axes[1])
+    plt.tight_layout()
+    plt.show()
+    spectroscopic_obs = spectrum_obs
+else:
+    INDEX_COLUMNS = [
+        "LICK_CN1",
+        "LICK_CN2",
+        "LICK_CA4227",
+        "LICK_G4300",
+        "LICK_FE4383",
+        "LICK_CA4455",
+        "LICK_FE4531",
+        "LICK_C4668",
+        "LICK_HB",
+        "LICK_HD_A",
+        "LICK_HG_A",
+        "LICK_HD_F",
+        "LICK_HG_F",
+        "LICK_D4000_N",
+    ]
+    EXPECTED_VALID_INDEX_COUNTS = {
+        "M1_210210": 14,
+        "M12_181945": 10,
+        "M2_133501": 14,
+        "M14_38648": 13,
+    }
+    index_values = galaxy[INDEX_COLUMNS].to_numpy(dtype=float)
+    index_uncertainties = galaxy[
+        [f"{column}_err" for column in INDEX_COLUMNS]
+    ].to_numpy(dtype=float)
+    index_mask = (
+        np.isfinite(index_values)
+        & np.isfinite(index_uncertainties)
+        & (index_uncertainties > 0)
+    )
+    stellar_indices_obs = StellarIndices(
+        definitions=LEGAC_DR2_STELLAR_INDEX_DEFINITIONS,
+        values=index_values,
+        uncertainty=index_uncertainties,
+        mask=index_mask,
+        resolution=instrument_fwhm_resolution,
+        smoothtype="R",
+        res_convention="fwhm",
+        sigma_losvd=sigma_star,
+        name="stellar_indices",
+    )
+    expected_count = EXPECTED_VALID_INDEX_COUNTS.get(TARGET_ID)
+    if expected_count is not None:
+        assert stellar_indices_obs.ndof == expected_count
+    spectroscopic_obs = stellar_indices_obs
+
+    stellar_indices_obs.display()
+    print(f"valid published stellar indices: {stellar_indices_obs.ndof}")
+    print("photometric bands fitted: 12")
+    print("index covariance unavailable: using catalogue diagonal uncertainties")
+    print("library resolution: schema-2.1 automatic curve")
+
+------------------
+
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[6], line 31
+     27     spectrum_flux = np.nan_to_num(native_flux, nan=0.0)
+     28     spectrum_uncertainty = np.where(
+     29         native_valid, native_uncertainty, 1.0
+     30     )
+---> 31     spectrum_obs = Spectrum(
+     32         wavelength=spectrum_wave,
+     33         flux=spectrum_flux,
+     34         uncertainty=spectrum_uncertainty,
+
+File /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/observation/spectrum.py:282, in Spectrum.__init__(self, wavelength, flux, uncertainty, mask, noise, name, resolution, calibration, logify_spectrum, smoothtype, res_convention, inres, sky, noise_floor, sigma_losvd, fit_sigma_smooth, **kwargs)
+    278     sigma_losvd = 200.0
+    279 self.sigma_losvd     = (None if sigma_losvd is None
+    280                         else float(sigma_losvd))
+--> 282 super().__init__(
+    283     flux        = flux,
+    284     uncertainty = uncertainty,
+    285     mask        = mask,
+    286     noise       = noise,
+    287     name        = name,
+    288     **kwargs,
+    289 )
+
+File /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/observation/base.py:80, in Observation.__init__(self, flux, uncertainty, mask, noise, name, **kwargs)
+     72     hints = {"res_type": "smoothtype", "restype": "smoothtype",
+     73              "sigma_v": "sigma_losvd", "lsf": "resolution",
+     74              "convention": "res_convention",
+     75              "resolution_convention": "res_convention",
+     76              "res_units": "res_convention",
+     77              "fwhm": "res_convention"}
+     78     hint = "; ".join(f"did you mean {hints[k]!r} instead of {k!r}?"
+     79                      for k in kwargs if k in hints)
+---> 80     raise TypeError(
+     81         f"{type(self).__name__}: unknown keyword argument(s) "
+     82         f"{sorted(kwargs)}.{' ' + hint if hint else ''}"
+     83     )
+     85 self.flux        = None if flux        is None else jnp.asarray(flux,        dtype=float)
+     86 self.uncertainty = None if uncertainty is None else jnp.asarray(uncertainty, dtype=float)
+
+TypeError: Spectrum: unknown keyword argument(s) ['free_z'].
+
+
+M5 baseline setup: missing script import path, corrected before sampling
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+target: M5_172669
+fit mode: full_spectrum
+random seed: 20260906
+JAX devices: [CudaDevice(id=0)]
+result directory: /workspace/cosmic-chronometers-jwst/results/rtx-5060-production-speedup/M5_172669-20260906-baseline
+spectrum pixels: all
+photometry source: cosmos_total
+free redshift: fixed
+free sigma*: fixed
+calibration polynomial: Chebyshev order 3, prior sigma 0.1, marginalised
+Traceback (most recent call last):
+  File "/workspace/cosmic-chronometers-jwst/scripts/validate_ceridwen_speedups.py", line 565, in <module>
+    main()
+  File "/workspace/cosmic-chronometers-jwst/scripts/validate_ceridwen_speedups.py", line 384, in main
+    worker(parser.parse_args())
+  File "/workspace/cosmic-chronometers-jwst/scripts/validate_ceridwen_speedups.py", line 350, in worker
+    try:client.execute()
+        ^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/.uv/python_install/cpython-3.11.16-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import os
+import sys
+from datetime import UTC, datetime
+from itertools import pairwise
+from pathlib import Path
+
+os.environ["JAX_ENABLE_X64"] = "1"
+
+import astropy.units as u
+from astropy.constants import c as C_LIGHT
+import corner
+import h5py
+import jax
+import jax.numpy as jnp
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from astropy.io import fits
+from astropy.table import Table
+from ceridwen.cosmology import age_gyr, flux_factor_maggies
+from ceridwen.csp import CSPBasis_afe
+from ceridwen.fit import load_result_h5, write_result_h5
+from ceridwen.likelihood import (
+    DiagonalGaussianLikelihood,
+    DiagonalNoiseModel,
+    MultiObservationLikelihood,
+    PolynomialCalibration,
+)
+from ceridwen.model import SedModel, logsfr_ratios_to_sfh
+from ceridwen.observation import (
+    LEGAC_DR2_STELLAR_INDEX_DEFINITIONS,
+    Photometry,
+    Spectrum,
+    StellarIndices,
+)
+from ceridwen.sampler import run_sampler
+from ceridwen.observation.absorption_features import absorption_feature_mask
+from ceridwen.sampler.nested import BlackJAXNestedSamplerAdapter
+from ceridwen.sampler.priors import ClippedNormal, Uniform
+from ceridwen.ssps import SSPDataAfe, fetch_grid
+from scipy.special import softmax
+from scipy.stats import entropy
+from specutils.utils.wcs_utils import air_to_vac
+
+jax.config.update("jax_enable_x64", True)
+JAX_DEVICES = jax.devices()
+GPU_AVAILABLE = any(device.platform == "gpu" for device in JAX_DEVICES) # true if any gpu is available
+EXPECT_SINGLE_GPU = os.environ.get("CERIDWEN_EXPECT_SINGLE_GPU") == "1"
+if EXPECT_SINGLE_GPU and (
+    len(JAX_DEVICES) != 1 or JAX_DEVICES[0].platform != "gpu"
+):
+    raise RuntimeError(f"Expected one pinned GPU, found {JAX_DEVICES}")
+
+FIT_MODES = {"full_spectrum", "stellar_indices"}
+FIT_MODE = os.environ.get("CERIDWEN_FIT_MODE", "full_spectrum")
+if FIT_MODE not in FIT_MODES:
+    raise ValueError(f"CERIDWEN_FIT_MODE must be one of {sorted(FIT_MODES)}")
+TARGET_ID = os.environ.get("CERIDWEN_TARGET_ID", "M1_210210")
+OBJECT_ID = int(os.environ.get("CERIDWEN_OBJECT_ID", TARGET_ID.split("_")[-1]))
+MANIFEST_INDEX = int(os.environ.get("CERIDWEN_MANIFEST_INDEX", "0"))
+SEED = int(os.environ.get("CERIDWEN_RANDOM_SEED", "20260812"))
+QUICK_TEST = os.environ.get("CERIDWEN_NOTEBOOK_QUICK") == "1" # checks env variable to decide on fast vs full run
+SPECTRUM_PIXEL_MODES = {"all", "features", "features_downweight"}
+SPECTRUM_PIXELS = os.environ.get("CERIDWEN_SPECTRUM_PIXELS", "all")
+if SPECTRUM_PIXELS not in SPECTRUM_PIXEL_MODES:
+    raise ValueError(
+        f"CERIDWEN_SPECTRUM_PIXELS must be one of {sorted(SPECTRUM_PIXEL_MODES)}"
+    )
+FEATURE_WINDOW_KMS = float(os.environ.get("CERIDWEN_FEATURE_WINDOW_KMS", "1000"))
+FEATURE_DOWNWEIGHT = os.environ.get("CERIDWEN_FEATURE_DOWNWEIGHT", "balance")
+MOCK_TRUTH_PATH = os.environ.get("CERIDWEN_MOCK_TRUTH")
+MOCK_SEED = int(os.environ.get("CERIDWEN_MOCK_SEED", "0"))
+MOCK_TILT = float(os.environ.get("CERIDWEN_MOCK_TILT", "0"))
+MOCK_SNR_SCALE = float(os.environ.get("CERIDWEN_MOCK_SNR_SCALE", "1"))
+# Chebyshev calibration polynomial of the model spectrum: order 0 switches it off.
+CALIBRATION_ORDER = int(os.environ.get("CERIDWEN_CALIBRATION_ORDER", "3"))
+CALIBRATION_PRIOR_SIGMA = float(os.environ.get("CERIDWEN_CALIBRATION_PRIOR", "0.1"))
+# Free redshift and free LOSVD: 0 keeps both fixed at the catalogue values.
+FREE_ZRED_KMS = float(os.environ.get("CERIDWEN_FREE_ZRED_KMS", "0"))
+FREE_SIGMA_FRAC = float(os.environ.get("CERIDWEN_FREE_SIGMA_FRAC", "0"))
+assert FREE_ZRED_KMS >= 0.0 and FREE_SIGMA_FRAC >= 0.0
+assert (FREE_ZRED_KMS == 0.0 and FREE_SIGMA_FRAC == 0.0) or FIT_MODE == "full_spectrum"
+C_KMS = float(C_LIGHT.to_value(u.km / u.s))
+PHOTOMETRY_SOURCES = {"cosmos_ap3", "cosmos_total"}
+PHOTOMETRY_SOURCE = os.environ.get("CERIDWEN_PHOTOMETRY", "cosmos_total")
+if PHOTOMETRY_SOURCE not in PHOTOMETRY_SOURCES:
+    raise ValueError(f"CERIDWEN_PHOTOMETRY must be one of {sorted(PHOTOMETRY_SOURCES)}")
+if CALIBRATION_ORDER < 0:
+    raise ValueError("CERIDWEN_CALIBRATION_ORDER must be >= 0")
+if FIT_MODE != "full_spectrum" and (SPECTRUM_PIXELS != "all" or MOCK_TRUTH_PATH):
+    raise ValueError("pixel selection and mock data need CERIDWEN_FIT_MODE=full_spectrum")
+RUN_PROFILE = "quick" if QUICK_TEST else ("gpu-full" if GPU_AVAILABLE else "cpu-trial")
+DEFAULT_PROJECT_ROOT = Path.cwd().parent if Path.cwd().name == "notebooks" else Path.cwd()
+PROJECT_ROOT = Path(os.environ.get("CERIDWEN_PROJECT_ROOT", DEFAULT_PROJECT_ROOT))
+RESULTS_ROOT = Path(os.environ.get("CERIDWEN_RESULTS_ROOT", PROJECT_ROOT / "results"))
+RUN_ID = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
+DEFAULT_RESULT_DIR = RESULTS_ROOT / (
+    f"ceridwen_integrated_{FIT_MODE}_{RUN_PROFILE}_{RUN_ID}"
+)
+RESULT_DIR = Path(os.environ.get("CERIDWEN_RESULT_DIR", DEFAULT_RESULT_DIR))
+RESULT_DIR.mkdir(parents=True, exist_ok=True)
+print(f"target: {TARGET_ID}")
+print(f"fit mode: {FIT_MODE}")
+print(f"random seed: {SEED}")
+print(f"JAX devices: {JAX_DEVICES}")
+print(f"result directory: {RESULT_DIR}")
+print(f"spectrum pixels: {SPECTRUM_PIXELS}")
+print(f"photometry source: {PHOTOMETRY_SOURCE}")
+print(f"free redshift: {'fixed' if FREE_ZRED_KMS == 0 else f'prior sigma {FREE_ZRED_KMS:.0f} km/s'}")
+print(f"free sigma*: {'fixed' if FREE_SIGMA_FRAC == 0 else f'prior sigma {100 * FREE_SIGMA_FRAC:.0f}%'}")
+print(
+    "calibration polynomial: "
+    + (f"Chebyshev order {CALIBRATION_ORDER}, prior sigma {CALIBRATION_PRIOR_SIGMA}, marginalised"
+       if CALIBRATION_ORDER > 0 else "off (spectrum_scaling only)")
+)
+if SPECTRUM_PIXELS != "all":
+    print(f"feature window: {FEATURE_WINDOW_KMS:.0f} km/s; downweight: {FEATURE_DOWNWEIGHT}")
+if MOCK_TRUTH_PATH:
+    print(f"mock truth: {MOCK_TRUTH_PATH} seed={MOCK_SEED} tilt={MOCK_TILT} snr_scale={MOCK_SNR_SCALE}")
+
+from validate_ceridwen_speedups import calibration_normal_dot
+from ceridwen.likelihood import PolynomialCalibration
+PolynomialCalibration.normal_matrix=calibration_normal_dot
+
+------------------
+
+----- stdout -----
+target: M5_172669
+fit mode: full_spectrum
+random seed: 20260906
+JAX devices: [CudaDevice(id=0)]
+result directory: /workspace/cosmic-chronometers-jwst/results/rtx-5060-production-speedup/M5_172669-20260906-baseline
+spectrum pixels: all
+photometry source: cosmos_total
+free redshift: fixed
+free sigma*: fixed
+calibration polynomial: Chebyshev order 3, prior sigma 0.1, marginalised
+------------------
+
+---------------------------------------------------------------------------
+ModuleNotFoundError                       Traceback (most recent call last)
+Cell In[1], line 121
+    117     print(f"feature window: {FEATURE_WINDOW_KMS:.0f} km/s; downweight: {FEATURE_DOWNWEIGHT}")
+    118 if MOCK_TRUTH_PATH:
+    119     print(f"mock truth: {MOCK_TRUTH_PATH} seed={MOCK_SEED} tilt={MOCK_TILT} snr_scale={MOCK_SNR_SCALE}")
+    120
+--> 121 from validate_ceridwen_speedups import calibration_normal_dot
+    122 from ceridwen.likelihood import PolynomialCalibration
+    123 PolynomialCalibration.normal_matrix=calibration_normal_dot
+
+ModuleNotFoundError: No module named 'validate_ceridwen_speedups'

@@ -31,7 +31,7 @@ Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 ## Codebase
 
 - `notes/active-codebase-map.md` — Active Ceridwen codebase map (2026-09-01 · old: _old/codebase/active-codebase-map.html)
-- `notes/ceridwen-likelihood-sampling.md` — Ceridwen: likelihood and sampling (2026-09-01 · old: _old/codebase/ceridwen-likelihood-sampling.html)
+- `notes/ceridwen-likelihood-sampling.md` — Ceridwen: likelihood and sampling (2026-09-06 · old: _old/codebase/ceridwen-likelihood-sampling.html)
 - `notes/ceridwen-observations-model.md` — Ceridwen: observations and SedModel (2026-09-06 · old: _old/codebase/ceridwen-observations-model.html)
 - `notes/ceridwen-ssp-csp.md` — Ceridwen: SSP grids to composite spectra (2026-08-30 · old: _old/codebase/ceridwen-ssp-csp.html)
 - `notes/data-pipeline.md` — Data pipeline (2026-08-30 · old: _old/codebase/data-pipeline.html)

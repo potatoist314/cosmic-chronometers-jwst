@@ -1,0 +1,868 @@
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+target: M1_210210
+fit mode: full_spectrum
+random seed: 20260906
+JAX devices: [CudaDevice(id=0)]
+result directory: /workspace/cosmic-chronometers-jwst/results/rtx-5060-production-speedup/M1_210210-20260906-reduce
+spectrum pixels: all
+photometry source: cosmos_total
+free redshift: fixed
+free sigma*: fixed
+calibration polynomial: Chebyshev order 3, prior sigma 0.1, marginalised
+SIMPLE  =                    T /Written by IDL:  Wed Jun 13 14:42:40 2018       BITPIX  =                    8 /                                                NAXIS   =                    0 /                                                EXTEND  =                    T /File contains extensions                        DATE    = '2018-06-13'         /                                                ORIGIN  = 'ESO     '           /European Southern Observatory                   TELESCOP= 'ESO-VLT-U3'         /ESO <TEL>                                       INSTRUME= 'VIMOS   '           /Instrument used                                 DISPELEM= 'HR_red  '           /                                                SPECSYS = 'TOPOCENT'           /                                                OBJECT  = 'M1_210210'          /                                                EXT_OBJ =                    T /                                                RA      =           150.148117 /UltraVISTA catalog R.A.                         DEC     =             2.517844 /UltraVISTA catalog Dec.                         EQUINOX =                 2000 /Standard FK5                                    RADECSYS= 'FK5     '           /                                                EXPTIME =              76799.7 /Total integration time per pixel (s)            TEXPTIME=              76799.7 /Total integration time in spectrum (s)          MJD-OBS =       57039.29724000 /                                                MJD-END =       57044.36441678 /                                                PROG_ID = '194.A-2005(B)'      /                                                OBID1   =              1163746 /Observation block ID                            OBID2   =              1163760 /Observation block ID                            OBID3   =              1163762 /Observation block ID                            OBID4   =              1163764 /Observation block ID                            OBID5   =              1163766 /Observation block ID                            OBID6   =              1163768 /Observation block ID                            OBID7   =              1163770 /Observation block ID                            OBID8   =              1163772 /Observation block ID                            OBID9   =              1163774 /Observation block ID                            OBID10  =              1163776 /Observation block ID                            OBID11  =              1163778 /Observation block ID                            OBID12  =              1163780 /Observation block ID                            OBID13  =              1163782 /Observation block ID                            OBID14  =              1163784 /Observation block ID                            OBID15  =              1163786 /Observation block ID                            M_EPOCH =                    T /                                                PROV1   = 'VIMOS.2015-01-17T07:08:01.534.fits' /                                PROV2   = 'VIMOS.2015-01-17T07:28:56.350.fits' /                                PROV3   = 'VIMOS.2015-01-17T07:49:52.333.fits' /                                PROV4   = 'VIMOS.2015-01-17T08:10:47.347.fits' /                                PROV5   = 'VIMOS.2015-01-18T04:03:48.110.fits' /                                PROV6   = 'VIMOS.2015-01-18T04:24:43.107.fits' /                                PROV7   = 'VIMOS.2015-01-18T04:45:38.102.fits' /                                PROV8   = 'VIMOS.2015-01-18T05:06:33.097.fits' /                                PROV9   = 'VIMOS.2015-01-18T05:46:47.348.fits' /                                PROV10  = 'VIMOS.2015-01-18T06:07:44.095.fits' /                                PROV11  = 'VIMOS.2015-01-18T06:28:39.140.fits' /                                PROV12  = 'VIMOS.2015-01-18T06:49:34.094.fits' /                                PROV13  = 'VIMOS.2015-01-18T07:22:50.164.fits' /                                PROV14  = 'VIMOS.2015-01-18T07:43:45.150.fits' /                                PROV15  = 'VIMOS.2015-01-18T08:04:40.777.fits' /                                PROV16  = 'VIMOS.2015-01-18T08:25:36.101.fits' /                                PROV17  = 'VIMOS.2015-01-19T03:48:11.074.fits' /                                PROV18  = 'VIMOS.2015-01-19T04:09:05.971.fits' /                                PROV19  = 'VIMOS.2015-01-19T04:30:00.966.fits' /                                PROV20  = 'VIMOS.2015-01-19T04:50:55.961.fits' /                                PROV21  = 'VIMOS.2015-01-19T05:29:06.425.fits' /                                PROV22  = 'VIMOS.2015-01-19T05:50:01.970.fits' /                                PROV23  = 'VIMOS.2015-01-19T06:10:56.975.fits' /                                PROV24  = 'VIMOS.2015-01-19T06:31:51.967.fits' /                                PROV25  = 'VIMOS.2015-01-19T07:12:45.500.fits' /                                PROV26  = 'VIMOS.2015-01-19T07:33:40.973.fits' /                                PROV27  = 'VIMOS.2015-01-19T07:54:35.978.fits' /                                PROV28  = 'VIMOS.2015-01-19T08:15:32.903.fits' /                                PROV29  = 'VIMOS.2015-01-19T08:36:27.968.fits' /                                PROV30  = 'VIMOS.2015-01-20T03:28:03.835.fits' /                                PROV31  = 'VIMOS.2015-01-20T03:48:58.930.fits' /                                PROV32  = 'VIMOS.2015-01-20T04:09:53.923.fits' /                                PROV33  = 'VIMOS.2015-01-20T04:30:48.932.fits' /                                PROV34  = 'VIMOS.2015-01-20T06:11:51.828.fits' /                                PROV35  = 'VIMOS.2015-01-20T06:32:47.014.fits' /                                PROV36  = 'VIMOS.2015-01-20T06:53:41.937.fits' /                                PROV37  = 'VIMOS.2015-01-20T07:14:37.601.fits' /                                PROV38  = 'VIMOS.2015-01-20T07:56:20.769.fits' /                                PROV39  = 'VIMOS.2015-01-20T08:21:44.043.fits' /                                PROV40  = 'VIMOS.2015-01-21T03:06:28.768.fits' /                                PROV41  = 'VIMOS.2015-01-21T03:27:23.854.fits' /                                PROV42  = 'VIMOS.2015-01-21T03:48:20.850.fits' /                                PROV43  = 'VIMOS.2015-01-21T04:09:15.832.fits' /                                PROV44  = 'VIMOS.2015-01-21T05:11:56.905.fits' /                                PROV45  = 'VIMOS.2015-01-21T05:32:51.841.fits' /                                PROV46  = 'VIMOS.2015-01-21T05:53:46.835.fits' /                                PROV47  = 'VIMOS.2015-01-21T06:14:41.838.fits' /                                PROV48  = 'VIMOS.2015-01-21T06:52:07.926.fits' /                                PROV49  = 'VIMOS.2015-01-21T07:13:02.841.fits' /                                PROV50  = 'VIMOS.2015-01-21T07:33:57.826.fits' /                                PROV51  = 'VIMOS.2015-01-21T07:54:52.821.fits' /                                PROV52  = 'VIMOS.2015-01-21T08:31:17.935.fits' /                                PROV53  = 'VIMOS.2015-01-22T03:58:03.408.fits' /                                PROV54  = 'VIMOS.2015-01-22T04:18:58.654.fits' /                                PROV55  = 'VIMOS.2015-01-22T04:39:53.650.fits' /                                PROV56  = 'VIMOS.2015-01-22T05:20:09.380.fits' /                                PROV57  = 'VIMOS.2015-01-22T05:41:03.647.fits' /                                PROV58  = 'VIMOS.2015-01-22T06:01:58.642.fits' /                                PROV59  = 'VIMOS.2015-01-22T06:22:53.687.fits' /                                PROV60  = 'VIMOS.2015-01-22T07:01:04.733.fits' /                                PROV61  = 'VIMOS.2015-01-22T07:21:59.759.fits' /                                PROV62  = 'VIMOS.2015-01-22T07:42:54.987.fits' /                                PROV63  = 'VIMOS.2015-01-22T08:03:49.652.fits' /                                PROV64  = 'VIMOS.2015-01-22T08:24:45.650.fits' /                                PRODCATG= 'SCIENCE.SPECTRUM'   /                                                PROCSOFT= 'Reflex 2.8, vimos 3.1.7' /                                           OBSTECH = 'MOS,NODDING'        /                                                FLUXCAL = 'ABSOLUTE'           /                                                CONTNORM=                    F /                                                WAVELMIN=              618.610 /                                                WAVELMAX=              890.050 /                                                SPEC_BIN=            0.0600000 /                                                TOT_FLUX=                    F /                                                FLUXERR =                  10.                                                  REFERENC= '2016ApJS..223...29V' /                                               SNR     =        62.2000000000 /                                                SPEC_RES=                 2500 /                                                NCOMBINE=                   64 /                                                DATASUM = '0       '           / data unit checksum updated 2018-06-13T13:04:33 CHECKSUM= 'UWUHaUUFVUUFaUUF'   / HDU checksum updated 2018-06-13T13:04:33       TUTYP3  = 'Spectrum.Data.FluxAxis.Accuracy.StatError'                           TUTYP4  = 'Spectrum.Data.FluxAxis.Quality'                                      END
+M1_210210  z=0.6542
+catalogue S/N=62.2
+observed 4000-A coverage=True
+fixed sigma*=259.5 km/s
+instrument FWHM resolving power=2500
+good spectral coverage: 6190-8633 angstrom
+aperture-to-total offset: -0.343 mag
+Photometry (photometry)
+  n_filters     : 12
+  ndof          : 12
+  wave_eff range: 3813 – 44781 Å
+  filters       : cfht_megacam_us_9301, subaru_suprimecam_B, subaru_suprimecam_V, subaru_suprimecam_rp, subaru_suprimecam_ip … (+7 more)
+  masked filters: 0 / 12
+
+  #    filter                           λ_eff [Å]      flux [mag]             σ      S/N   mask   UL
+  --------------------------------------------------------------------------------------------------
+  0    cfht_megacam_us_9301                3813.2      1.4826e-10    1.5481e-11     9.58   True    -
+  1    subaru_suprimecam_B                 4427.2      3.8797e-10    2.3839e-11    16.27   True    -
+  2    subaru_suprimecam_V                 5454.9      1.6106e-09    8.8094e-11    18.28   True    -
+  3    subaru_suprimecam_rp                6249.0      3.5489e-09    1.8257e-10    19.44   True    -
+  4    subaru_suprimecam_ip                7645.9      9.8023e-09    4.9326e-10    19.87   True    -
+  5    subaru_suprimecam_zp                9010.8      1.5351e-08    7.6810e-10    19.99   True    -
+  6    vista_vircam_Y                     10204.7      1.8944e-08    9.4768e-10    19.99   True    -
+  7    vista_vircam_J                     12504.9      2.6482e-08    1.3249e-09    19.99   True    -
+  8    vista_vircam_H                     16388.5      3.7862e-08    1.8943e-09    19.99   True    -
+  9    vista_vircam_Ks                    21452.8      4.7727e-08    2.3871e-09    19.99   True    -
+  10   spitzer_irac_ch1                   35378.5      4.0293e-08    2.0227e-09    19.92   True    -
+  11   spitzer_irac_ch2                   44780.5      2.7723e-08    1.3893e-09    19.95   True    -
+findfont: Failed to find font weight semibold, now using 700.
+Spectrum (spectrum)
+  ndata         : 6166
+  ndof          : 3523
+  wavelength    : 5801.9 – 9501.9 Å
+  resolution    : 2500.0 (fwhm convention)
+  smoothtype    : R
+  sigma_losvd   : 259.5 km/s
+  logify        : False
+  calibration   : none
+  sky           : none
+  noise_floor   : 0.0000
+  noise model   : none
+  masked pixels : 2643 / 6166
+
+  i              λ [Å]            flux               σ   mask
+  -----------------------------------------------------------
+  0            5801.91      0.0000e+00      1.0000e+00  False
+  1            5802.51      0.0000e+00      1.0000e+00  False
+  2            5803.11      0.0000e+00      1.0000e+00  False
+  3            5803.71      0.0000e+00      1.0000e+00  False
+  4            5804.31      0.0000e+00      1.0000e+00  False
+  5            5804.91      0.0000e+00      1.0000e+00  False
+  6            5805.51      0.0000e+00      1.0000e+00  False
+  7            5806.11      0.0000e+00      1.0000e+00  False
+  8            5806.71      0.0000e+00      1.0000e+00  False
+  9            5807.31      0.0000e+00      1.0000e+00  False
+  10           5807.91      0.0000e+00      1.0000e+00  False
+  11           5808.51      0.0000e+00      1.0000e+00  False
+  12           5809.11      0.0000e+00      1.0000e+00  False
+  13           5809.71      0.0000e+00      1.0000e+00  False
+  14           5810.31      0.0000e+00      1.0000e+00  False
+  15           5810.91      0.0000e+00      1.0000e+00  False
+  16           5811.51      0.0000e+00      1.0000e+00  False
+  17           5812.11      0.0000e+00      1.0000e+00  False
+  18           5812.71      0.0000e+00      1.0000e+00  False
+  19           5813.31      0.0000e+00      1.0000e+00  False
+  20           5813.91      0.0000e+00      1.0000e+00  False
+  21           5814.51      0.0000e+00      1.0000e+00  False
+  22           5815.11      0.0000e+00      1.0000e+00  False
+  23           5815.71      0.0000e+00      1.0000e+00  False
+  24           5816.31      0.0000e+00      1.0000e+00  False
+  25           5816.91      0.0000e+00      1.0000e+00  False
+  26           5817.51      0.0000e+00      1.0000e+00  False
+  27           5818.11      0.0000e+00      1.0000e+00  False
+  28           5818.71      0.0000e+00      1.0000e+00  False
+  29           5819.31      0.0000e+00      1.0000e+00  False
+  30           5819.91      0.0000e+00      1.0000e+00  False
+  31           5820.51      0.0000e+00      1.0000e+00  False
+  32           5821.11      0.0000e+00      1.0000e+00  False
+  33           5821.71      0.0000e+00      1.0000e+00  False
+  34           5822.31      0.0000e+00      1.0000e+00  False
+  35           5822.91      0.0000e+00      1.0000e+00  False
+  36           5823.51      0.0000e+00      1.0000e+00  False
+  37           5824.11      0.0000e+00      1.0000e+00  False
+  38           5824.71      0.0000e+00      1.0000e+00  False
+  39           5825.31      0.0000e+00      1.0000e+00  False
+  ...
+  6126         9478.50      0.0000e+00      1.0000e+00  False
+  6127         9479.10      0.0000e+00      1.0000e+00  False
+  6128         9479.70      0.0000e+00      1.0000e+00  False
+  6129         9480.30      0.0000e+00      1.0000e+00  False
+  6130         9480.90      0.0000e+00      1.0000e+00  False
+  6131         9481.50      0.0000e+00      1.0000e+00  False
+  6132         9482.10      0.0000e+00      1.0000e+00  False
+  6133         9482.70      0.0000e+00      1.0000e+00  False
+  6134         9483.30      0.0000e+00      1.0000e+00  False
+  6135         9483.90      0.0000e+00      1.0000e+00  False
+  6136         9484.50      0.0000e+00      1.0000e+00  False
+  6137         9485.10      0.0000e+00      1.0000e+00  False
+  6138         9485.70      0.0000e+00      1.0000e+00  False
+  6139         9486.30      0.0000e+00      1.0000e+00  False
+  6140         9486.90      0.0000e+00      1.0000e+00  False
+  6141         9487.50      0.0000e+00      1.0000e+00  False
+  6142         9488.10      0.0000e+00      1.0000e+00  False
+  6143         9488.70      0.0000e+00      1.0000e+00  False
+  6144         9489.30      0.0000e+00      1.0000e+00  False
+  6145         9489.90      0.0000e+00      1.0000e+00  False
+  6146         9490.50      0.0000e+00      1.0000e+00  False
+  6147         9491.10      0.0000e+00      1.0000e+00  False
+  6148         9491.70      0.0000e+00      1.0000e+00  False
+  6149         9492.30      0.0000e+00      1.0000e+00  False
+  6150         9492.90      0.0000e+00      1.0000e+00  False
+  6151         9493.50      0.0000e+00      1.0000e+00  False
+  6152         9494.10      0.0000e+00      1.0000e+00  False
+  6153         9494.70      0.0000e+00      1.0000e+00  False
+  6154         9495.30      0.0000e+00      1.0000e+00  False
+  6155         9495.90      0.0000e+00      1.0000e+00  False
+  6156         9496.50      0.0000e+00      1.0000e+00  False
+  6157         9497.10      0.0000e+00      1.0000e+00  False
+  6158         9497.70      0.0000e+00      1.0000e+00  False
+  6159         9498.30      0.0000e+00      1.0000e+00  False
+  6160         9498.90      0.0000e+00      1.0000e+00  False
+  6161         9499.51      0.0000e+00      1.0000e+00  False
+  6162         9500.11      0.0000e+00      1.0000e+00  False
+  6163         9500.71      0.0000e+00      1.0000e+00  False
+  6164         9501.31      0.0000e+00      1.0000e+00  False
+  6165         9501.91      0.0000e+00      1.0000e+00  False
+  -----------------------------------------------------------
+  [stats over 3523/6166 unmasked, finite pixels]  flux min/med/max = 4.955e-29 / 2.767e-28 / 5.189e-28  mean |S/N| = 57.78
+joint photometric bands: 12
+spectrum normalization: fitted by spectrum_scaling
+native good pixels: 4053
+fitted native pixels: 3523
+library resolution: schema-2.1 automatic curve
+SSPDataAfe
+------------------------------------------------------------------
+provenance
+  isochrones (isoc_type)   : MIST v2.5 (aMIST, alpha-variable)
+  spectral library         : C3K v2.3 high-res (c3k_hr, vt=10 km/s)
+  IMF (imf_type)           : 2
+  FSPS version             : —
+  schema version           : 2.1
+  recorded wave_min/max    : 100.0 / 99595854.863
+  build kwargs             : {'source_fits': 'ssp_final_mistv2.5_c3kv2.3vt10allfal_250722.fits', 'provider': 'M. J. Park (2025-07-22)', 'zsun_reference': 0.0185, 'feh_to_logZ': 'log10 Z = [Fe/H] + log10(Zsun)', 'imf_name': 'Kroupa'}
+grids
+  [alpha/Fe]               :    5 pts   [-0.2  0.   0.2  0.4  0.6]
+  metallicity  log10 Z     :   13 pts   [-4.233, -1.233]  (absolute TOTAL Z, NOT Z/Zsun, NOT [Fe/H])
+  age          log10(Gyr)  :  107 pts   [-4.000, +1.300]  = [0.0001, 20] Gyr
+  wavelength   Angstrom    : 10992 pts   [100.0, 99595854.9]
+  flux (n_afe,n_met,n_age,n_wave): (5, 13, 107, 10992)  [L_sun Hz^-1 M_sun^-1]  float64  583.3 MB
+  library resolution       : sigma_v [23.2, 2546.3] km/s over [100, 99595855] AA (100% of pixels; NaN elsewhere)
+  resolution source        : grid 2-pixel sampling floor derived from ssp_wave (sigma_v = 0.8493 c dlambda/lambda)
+catalogue-redshift universe age: 7.566 Gyr
+median grid pixel resolving power: R=6000
+SFH nodes: [0.         0.03       0.1        0.3        1.         3.
+ 5.         7.56620799]
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+joint redshift fixed at 0.6542
+spectrum sigma* fixed at 259.5 km/s
+initial logmass: 11.232
+initial median spectrum/model ratio: 0.690
+sampler settings: {'num_live': 500, 'num_inner_steps': 65, 'num_delete': 100, 'logZ_tol': -5.0}
+spectroscopic likelihood: DiagonalGaussianLikelihood(noise_model=DiagonalNoiseModel(use_jitter=False, use_fractional=True, use_data_fractional=False), calibration=PolynomialCalibration(order=3, fit_constant=False, prior_sigma=(0.1, 0.1, 0.1), marginalize=True, n_pix=6166))
+MODEL PARAMETERS (generated from the SedModel object)
+Stellar population grid
+  library: C3K v2.3 high-res (c3k_hr, vt=10 km/s); isochrones: MIST v2.5 (aMIST, alpha-variable); IMF: imf_type=2 (Kroupa (2001)); schema 2.1
+  grid axes: [alpha/Fe] [-0.2, 0, 0.2, 0.4, 0.6]; log10 Z 13 nodes [-4.233, -1.233] (absolute Z); log10(age/Gyr) 107 nodes; wavelength 10992 pts [100, 99595855] A
+Star-formation history
+  form: piecewise-constant SFR ('step' interpolation) on 7 lookback bins; metallicity history: constant Z
+  bin edges (lookback, Gyr): [0, 0.03, 0.1, 0.3, 1, 3, 5, 7.566]  (last edge = universe age at z)
+  free parameters: logsfr_ratios[7] = log10(SFR_i / SFR_i+1), transform 'sfh_from_ratios' -> unit-mass SFH (integral 1 Msun); logmass scales the total formed mass
+Free parameters and priors
+  Z: shape (1,); prior Uniform(-4.233, -1.233); init [-1.85]
+  afe: shape (1,); prior Uniform(-0.2, 0.6); init [0.2]
+  diffuse_tau_kc: shape (1,); prior Uniform(0, 2); init [0.2]
+  log_f_calib: shape (1,); prior Uniform(-4.605, -2.303); init [-3.507]
+  logmass: shape (1,); prior Uniform(8, 13); init [11.23]
+  logsfr_ratios: shape (7,); prior Uniform(-3, 3); init [0, 0, 0, 0, 0, 0, 0]
+  spectrum_scaling: shape (1,); prior ClippedNormal(mean=1, sigma=0.3, low=0.2, high=3); init [1]
+Fixed and derived quantities
+  redshift: fixed at z = 0.654200 (SedModel.zred); SFH age grid tracks z: False
+  diffuse_dust_index: fixed by transform '<lambda>' = [-0.7]
+Dust, nebular emission, IGM
+  diffuse attenuation: law 'kriek_conroy', parameters ['diffuse_tau_kc', 'diffuse_dust_index']; birth-cloud (age-dependent) dust: False; dust emission: False
+  nebular emission: none (spectrum model 'get_spectrum_dattn_nodem_noneb')
+  IGM absorption: none
+  cosmology: Cosmology(H0=67.66, Om0=0.30966, Tcmb0=2.7255, Neff=3.046, m_nu_ev_sum=0.06)
+Observations and calibration
+  photometry: Photometry, 12 bands, 12 fitted; filters ['cfht_megacam_us_9301', 'subaru_suprimecam_B', 'subaru_suprimecam_V', 'subaru_suprimecam_rp', 'subaru_suprimecam_ip', 'subaru_suprimecam_zp', 'vista_vircam_Y', 'vista_vircam_J', 'vista_vircam_H', 'vista_vircam_Ks', 'spitzer_irac_ch1', 'spitzer_irac_ch2']
+  spectrum: Spectrum, 3523 of 6166 native pixels fitted, 6199-8635 A observed; instrument R = 2500 (R, fwhm); fixed stellar sigma_losvd = 259.5 km/s; CSP-level LOSVD 0.0 km/s
+  likelihood[photometry]: DiagonalGaussianLikelihood with DiagonalNoiseModel: var = sigma_obs^2 (no extra terms)
+  likelihood[spectrum]: DiagonalGaussianLikelihood with DiagonalNoiseModel: var = sigma_obs^2 + model-scaled fractional floor f_calib*|mu| (log_f_calib free in [1%, 10%])
+  likelihood[spectrum] calibration polynomial: PolynomialCalibration(order=3, fit_constant=False, prior_sigma=(0.1, 0.1, 0.1), marginalize=True, n_pix=6166)
+  spectrum normalisation: free multiplicative spectrum_scaling, prior ClippedNormal(mean=1, sigma=0.3, low=0.2, high=3)
+Sampler
+  blackjax.nss: num_live 500, num_inner_steps 65, num_delete 100, logZ_tol -5.0; random seed 20260906
+BlackJAX NSS  |  n_dims=13  num_live=500  num_inner_steps=65  num_delete=100
+  [timing] Calling init_fn (JIT compile + eval) ...
+  [timing] init_fn done    (1.9 s)  logZ=-inf  logZ_live=229096.3126
+  (state type: AdaptiveNSState)
+  [checkpoint] every 1200 s -> /workspace/cosmic-chronometers-jwst/results/rtx-5060-production-speedup/M1_210210-20260906-reduce
+
+NS  logZ=-inf: 0 dead [00:00, ? dead/s]  [step_fn] Compiling the step kernel (one-time JIT) + running the first iteration. This compile can be slow on CPU (seconds to many minutes depending on model size and hardware); subsequent steps are fast.
+  [iter    1]     6.0 s  logZ=-6042322.955  ΔlogZ=6271419.045  dead=100
+
+NS  logZ=-inf: 100 dead [00:06, 16.46 dead/s]
+NS  logZ=-6042322.95  ΔlogZ=6271419.04: : 100 dead [00:06, 16.46 dead/s]  [iter    2]     2.2 s  logZ=-3966203.447  ΔlogZ=4195299.314  dead=200
+
+NS  logZ=-6042322.95  ΔlogZ=6271419.04: : 200 dead [00:08, 26.39 dead/s]
+NS  logZ=-3966203.45  ΔlogZ=4195299.31: : 200 dead [00:08, 26.39 dead/s]  [iter    3]     2.1 s  logZ=-2860869.874  ΔlogZ=3089965.518  dead=300
+
+NS  logZ=-3966203.45  ΔlogZ=4195299.31: : 300 dead [00:10, 33.02 dead/s]
+NS  logZ=-2860869.87  ΔlogZ=3089965.52: : 300 dead [00:10, 33.02 dead/s]  [iter    4]     2.1 s  logZ=-2147276.578  ΔlogZ=2376372.000  dead=400
+
+NS  logZ=-2860869.87  ΔlogZ=3089965.52: : 400 dead [00:12, 37.44 dead/s]
+NS  logZ=-2147276.58  ΔlogZ=2376372.00: : 400 dead [00:12, 37.44 dead/s]  [iter    5]     2.0 s  logZ=-1619559.849  ΔlogZ=1848655.047  dead=500
+
+NS  logZ=-2147276.58  ΔlogZ=2376372.00: : 500 dead [00:14, 40.99 dead/s]
+NS  logZ=-1619559.85  ΔlogZ=1848655.05: : 500 dead [00:14, 40.99 dead/s]  [iter    6]     2.1 s  logZ=-1015951.825  ΔlogZ=1245046.800  dead=600
+
+NS  logZ=-1619559.85  ΔlogZ=1848655.05: : 600 dead [00:16, 42.98 dead/s]
+NS  logZ=-1015951.82  ΔlogZ=1245046.80: : 600 dead [00:16, 42.98 dead/s]  [iter    7]     2.1 s  logZ=-544526.754  ΔlogZ=773621.506  dead=700
+
+NS  logZ=-1015951.82  ΔlogZ=1245046.80: : 700 dead [00:18, 44.10 dead/s]
+NS  logZ=-544526.75  ΔlogZ=773621.51: : 700 dead [00:18, 44.10 dead/s]    [iter    8]     2.1 s  logZ=-242194.659  ΔlogZ=471289.188  dead=800
+
+NS  logZ=-544526.75  ΔlogZ=773621.51: : 800 dead [00:20, 44.99 dead/s]
+NS  logZ=-242194.66  ΔlogZ=471289.19: : 800 dead [00:20, 44.99 dead/s]  [iter    9]     2.1 s  logZ=-94548.132  ΔlogZ=324050.170  dead=900
+
+NS  logZ=-242194.66  ΔlogZ=471289.19: : 900 dead [00:22, 45.96 dead/s]
+NS  logZ=-94548.13  ΔlogZ=324050.17: : 900 dead [00:22, 45.96 dead/s]   [iter   10]     2.2 s  logZ=+22171.426  ΔlogZ=207330.389  dead=1000
+
+NS  logZ=-94548.13  ΔlogZ=324050.17: : 1000 dead [00:25, 45.94 dead/s]
+NS  logZ=22171.43  ΔlogZ=207330.39: : 1000 dead [00:25, 45.94 dead/s]   [iter   11]     2.1 s  logZ=+85101.176  ΔlogZ=144400.416  dead=1100
+
+NS  logZ=22171.43  ΔlogZ=207330.39: : 1100 dead [00:27, 46.53 dead/s]
+NS  logZ=85101.18  ΔlogZ=144400.42: : 1100 dead [00:27, 46.53 dead/s]  [iter   12]     2.1 s  logZ=+133302.571  ΔlogZ=96198.798  dead=1200
+
+NS  logZ=85101.18  ΔlogZ=144400.42: : 1200 dead [00:29, 47.13 dead/s]
+NS  logZ=133302.57  ΔlogZ=96198.80: : 1200 dead [00:29, 47.13 dead/s]  [iter   13]     2.1 s  logZ=+162461.342  ΔlogZ=67039.804  dead=1300
+
+NS  logZ=133302.57  ΔlogZ=96198.80: : 1300 dead [00:31, 47.35 dead/s]
+NS  logZ=162461.34  ΔlogZ=67039.80: : 1300 dead [00:31, 47.35 dead/s]  [iter   14]     2.0 s  logZ=+183280.977  ΔlogZ=46219.946  dead=1400
+
+NS  logZ=162461.34  ΔlogZ=67039.80: : 1400 dead [00:33, 47.88 dead/s]
+NS  logZ=183280.98  ΔlogZ=46219.95: : 1400 dead [00:33, 47.88 dead/s]  [iter   15]     2.1 s  logZ=+194923.278  ΔlogZ=34577.423  dead=1500
+
+NS  logZ=183280.98  ΔlogZ=46219.95: : 1500 dead [00:35, 48.11 dead/s]
+NS  logZ=194923.28  ΔlogZ=34577.42: : 1500 dead [00:35, 48.11 dead/s]  [iter   16]     2.0 s  logZ=+204156.029  ΔlogZ=25344.449  dead=1600
+
+NS  logZ=194923.28  ΔlogZ=34577.42: : 1600 dead [00:37, 48.37 dead/s]
+NS  logZ=204156.03  ΔlogZ=25344.45: : 1600 dead [00:37, 48.37 dead/s]  [iter   17]     2.0 s  logZ=+210096.416  ΔlogZ=19403.838  dead=1700
+
+NS  logZ=204156.03  ΔlogZ=25344.45: : 1700 dead [00:39, 48.59 dead/s]
+NS  logZ=210096.42  ΔlogZ=19403.84: : 1700 dead [00:39, 48.59 dead/s]  [iter   18]     2.1 s  logZ=+214243.934  ΔlogZ=15256.097  dead=1800
+
+NS  logZ=210096.42  ΔlogZ=19403.84: : 1800 dead [00:41, 48.34 dead/s]
+NS  logZ=214243.93  ΔlogZ=15256.10: : 1800 dead [00:41, 48.34 dead/s]  [iter   19]     2.0 s  logZ=+217166.043  ΔlogZ=12333.765  dead=1900
+
+NS  logZ=214243.93  ΔlogZ=15256.10: : 1900 dead [00:43, 48.59 dead/s]
+NS  logZ=217166.04  ΔlogZ=12333.77: : 1900 dead [00:43, 48.59 dead/s]  [iter   20]     2.0 s  logZ=+219310.053  ΔlogZ=10189.533  dead=2000
+
+NS  logZ=217166.04  ΔlogZ=12333.77: : 2000 dead [00:45, 48.96 dead/s]
+NS  logZ=219310.05  ΔlogZ=10189.53: : 2000 dead [00:45, 48.96 dead/s]  [iter   21]     2.1 s  logZ=+221572.396  ΔlogZ=7926.967  dead=2100
+
+NS  logZ=219310.05  ΔlogZ=10189.53: : 2100 dead [00:47, 48.84 dead/s]
+NS  logZ=221572.40  ΔlogZ=7926.97: : 2100 dead [00:47, 48.84 dead/s]   [iter   22]     2.1 s  logZ=+222946.665  ΔlogZ=6552.475  dead=2200
+
+NS  logZ=221572.40  ΔlogZ=7926.97: : 2200 dead [00:49, 48.76 dead/s]
+NS  logZ=222946.67  ΔlogZ=6552.47: : 2200 dead [00:49, 48.76 dead/s]  [iter   23]     2.1 s  logZ=+223960.758  ΔlogZ=5538.159  dead=2300
+
+NS  logZ=222946.67  ΔlogZ=6552.47: : 2300 dead [00:51, 48.74 dead/s]
+NS  logZ=223960.76  ΔlogZ=5538.16: : 2300 dead [00:51, 48.74 dead/s]  [iter   24]     2.1 s  logZ=+224755.516  ΔlogZ=4743.178  dead=2400
+
+NS  logZ=223960.76  ΔlogZ=5538.16: : 2400 dead [00:54, 48.12 dead/s]
+NS  logZ=224755.52  ΔlogZ=4743.18: : 2400 dead [00:54, 48.12 dead/s]  [iter   25]     2.1 s  logZ=+225394.033  ΔlogZ=4104.438  dead=2500
+
+NS  logZ=224755.52  ΔlogZ=4743.18: : 2500 dead [00:56, 48.06 dead/s]
+NS  logZ=225394.03  ΔlogZ=4104.44: : 2500 dead [00:56, 48.06 dead/s]  [iter   26]     2.1 s  logZ=+225834.706  ΔlogZ=3663.542  dead=2600
+
+NS  logZ=225394.03  ΔlogZ=4104.44: : 2600 dead [00:58, 47.73 dead/s]
+NS  logZ=225834.71  ΔlogZ=3663.54: : 2600 dead [00:58, 47.73 dead/s]  [iter   27]     2.0 s  logZ=+226238.859  ΔlogZ=3407.600  dead=2700
+
+NS  logZ=225834.71  ΔlogZ=3663.54: : 2700 dead [01:00, 48.15 dead/s]
+NS  logZ=226238.86  ΔlogZ=3407.60: : 2700 dead [01:00, 48.15 dead/s]  [iter   28]     2.2 s  logZ=+226579.092  ΔlogZ=3067.143  dead=2800
+
+NS  logZ=226238.86  ΔlogZ=3407.60: : 2800 dead [01:02, 47.48 dead/s]
+NS  logZ=226579.09  ΔlogZ=3067.14: : 2800 dead [01:02, 47.48 dead/s]  [iter   29]     2.1 s  logZ=+226815.301  ΔlogZ=2830.713  dead=2900
+
+NS  logZ=226579.09  ΔlogZ=3067.14: : 2900 dead [01:04, 47.43 dead/s]
+NS  logZ=226815.30  ΔlogZ=2830.71: : 2900 dead [01:04, 47.43 dead/s]  [iter   30]     2.2 s  logZ=+227062.494  ΔlogZ=2583.297  dead=3000
+
+NS  logZ=226815.30  ΔlogZ=2830.71: : 3000 dead [01:06, 47.07 dead/s]
+NS  logZ=227062.49  ΔlogZ=2583.30: : 3000 dead [01:06, 47.07 dead/s]  [iter   31]     2.1 s  logZ=+227261.655  ΔlogZ=2677.768  dead=3100
+
+NS  logZ=227062.49  ΔlogZ=2583.30: : 3100 dead [01:08, 47.24 dead/s]
+NS  logZ=227261.65  ΔlogZ=2677.77: : 3100 dead [01:08, 47.24 dead/s]  [iter   32]     2.1 s  logZ=+227439.992  ΔlogZ=2499.207  dead=3200
+
+NS  logZ=227261.65  ΔlogZ=2677.77: : 3200 dead [01:10, 47.36 dead/s]
+NS  logZ=227439.99  ΔlogZ=2499.21: : 3200 dead [01:10, 47.36 dead/s]  [iter   33]     2.1 s  logZ=+227626.910  ΔlogZ=2312.067  dead=3300
+
+NS  logZ=227439.99  ΔlogZ=2499.21: : 3300 dead [01:13, 47.11 dead/s]
+NS  logZ=227626.91  ΔlogZ=2312.07: : 3300 dead [01:13, 47.11 dead/s]  [iter   34]     2.1 s  logZ=+227803.236  ΔlogZ=2135.518  dead=3400
+
+NS  logZ=227626.91  ΔlogZ=2312.07: : 3400 dead [01:15, 47.40 dead/s]
+NS  logZ=227803.24  ΔlogZ=2135.52: : 3400 dead [01:15, 47.40 dead/s]  [iter   35]     2.1 s  logZ=+227940.178  ΔlogZ=1998.353  dead=3500
+
+NS  logZ=227803.24  ΔlogZ=2135.52: : 3500 dead [01:17, 47.21 dead/s]
+NS  logZ=227940.18  ΔlogZ=1998.35: : 3500 dead [01:17, 47.21 dead/s]  [iter   36]     2.2 s  logZ=+228115.882  ΔlogZ=2140.256  dead=3600
+
+NS  logZ=227940.18  ΔlogZ=1998.35: : 3600 dead [01:19, 46.59 dead/s]
+NS  logZ=228115.88  ΔlogZ=2140.26: : 3600 dead [01:19, 46.59 dead/s]  [iter   37]     2.1 s  logZ=+228263.967  ΔlogZ=1991.949  dead=3700
+
+NS  logZ=228115.88  ΔlogZ=2140.26: : 3700 dead [01:21, 47.04 dead/s]
+NS  logZ=228263.97  ΔlogZ=1991.95: : 3700 dead [01:21, 47.04 dead/s]  [iter   38]     2.1 s  logZ=+228413.723  ΔlogZ=1841.970  dead=3800
+
+NS  logZ=228263.97  ΔlogZ=1991.95: : 3800 dead [01:23, 47.44 dead/s]
+NS  logZ=228413.72  ΔlogZ=1841.97: : 3800 dead [01:23, 47.44 dead/s]  [iter   39]     2.0 s  logZ=+228558.951  ΔlogZ=1696.519  dead=3900
+
+NS  logZ=228413.72  ΔlogZ=1841.97: : 3900 dead [01:25, 48.01 dead/s]
+NS  logZ=228558.95  ΔlogZ=1696.52: : 3900 dead [01:25, 48.01 dead/s]  [iter   40]     2.1 s  logZ=+228671.948  ΔlogZ=1728.292  dead=4000
+
+NS  logZ=228558.95  ΔlogZ=1696.52: : 4000 dead [01:27, 47.66 dead/s]
+NS  logZ=228671.95  ΔlogZ=1728.29: : 4000 dead [01:27, 47.66 dead/s]  [iter   41]     2.1 s  logZ=+228767.252  ΔlogZ=1632.765  dead=4100
+
+NS  logZ=228671.95  ΔlogZ=1728.29: : 4100 dead [01:29, 47.69 dead/s]
+NS  logZ=228767.25  ΔlogZ=1632.76: : 4100 dead [01:29, 47.69 dead/s]  [iter   42]     2.0 s  logZ=+228866.070  ΔlogZ=1533.723  dead=4200
+
+NS  logZ=228767.25  ΔlogZ=1632.76: : 4200 dead [01:31, 48.22 dead/s]
+NS  logZ=228866.07  ΔlogZ=1533.72: : 4200 dead [01:31, 48.22 dead/s]  [iter   43]     2.0 s  logZ=+228967.360  ΔlogZ=1432.211  dead=4300
+
+NS  logZ=228866.07  ΔlogZ=1533.72: : 4300 dead [01:33, 48.59 dead/s]
+NS  logZ=228967.36  ΔlogZ=1432.21: : 4300 dead [01:33, 48.59 dead/s]  [iter   44]     2.1 s  logZ=+229065.332  ΔlogZ=1334.016  dead=4400
+
+NS  logZ=228967.36  ΔlogZ=1432.21: : 4400 dead [01:35, 48.58 dead/s]
+NS  logZ=229065.33  ΔlogZ=1334.02: : 4400 dead [01:35, 48.58 dead/s]  [iter   45]     2.0 s  logZ=+229151.733  ΔlogZ=1247.392  dead=4500
+
+NS  logZ=229065.33  ΔlogZ=1334.02: : 4500 dead [01:38, 48.81 dead/s]
+NS  logZ=229151.73  ΔlogZ=1247.39: : 4500 dead [01:38, 48.81 dead/s]  [iter   46]     2.1 s  logZ=+229237.631  ΔlogZ=1161.271  dead=4600
+
+NS  logZ=229151.73  ΔlogZ=1247.39: : 4600 dead [01:40, 48.32 dead/s]
+NS  logZ=229237.63  ΔlogZ=1161.27: : 4600 dead [01:40, 48.32 dead/s]  [iter   47]     2.0 s  logZ=+229326.467  ΔlogZ=1072.212  dead=4700
+
+NS  logZ=229237.63  ΔlogZ=1161.27: : 4700 dead [01:42, 48.50 dead/s]
+NS  logZ=229326.47  ΔlogZ=1072.21: : 4700 dead [01:42, 48.50 dead/s]  [iter   48]     2.2 s  logZ=+229395.606  ΔlogZ=1002.850  dead=4800
+
+NS  logZ=229326.47  ΔlogZ=1072.21: : 4800 dead [01:44, 47.70 dead/s]
+NS  logZ=229395.61  ΔlogZ=1002.85: : 4800 dead [01:44, 47.70 dead/s]  [iter   49]     2.1 s  logZ=+229465.375  ΔlogZ=932.859  dead=4900
+
+NS  logZ=229395.61  ΔlogZ=1002.85: : 4900 dead [01:46, 47.47 dead/s]
+NS  logZ=229465.37  ΔlogZ=932.86: : 4900 dead [01:46, 47.47 dead/s]   [iter   50]     2.0 s  logZ=+229520.311  ΔlogZ=877.700  dead=5000
+
+NS  logZ=229465.37  ΔlogZ=932.86: : 5000 dead [01:48, 48.19 dead/s]
+NS  logZ=229520.31  ΔlogZ=877.70: : 5000 dead [01:48, 48.19 dead/s]  [iter   51]     2.1 s  logZ=+229585.717  ΔlogZ=812.071  dead=5100
+
+NS  logZ=229520.31  ΔlogZ=877.70: : 5100 dead [01:50, 48.26 dead/s]
+NS  logZ=229585.72  ΔlogZ=812.07: : 5100 dead [01:50, 48.26 dead/s]  [iter   52]     2.0 s  logZ=+229646.983  ΔlogZ=750.581  dead=5200
+
+NS  logZ=229585.72  ΔlogZ=812.07: : 5200 dead [01:52, 48.55 dead/s]
+NS  logZ=229646.98  ΔlogZ=750.58: : 5200 dead [01:52, 48.55 dead/s]  [iter   53]     2.1 s  logZ=+229696.935  ΔlogZ=700.407  dead=5300
+
+NS  logZ=229646.98  ΔlogZ=750.58: : 5300 dead [01:54, 48.35 dead/s]
+NS  logZ=229696.93  ΔlogZ=700.41: : 5300 dead [01:54, 48.35 dead/s]  [iter   54]     2.0 s  logZ=+229745.920  ΔlogZ=651.199  dead=5400
+
+NS  logZ=229696.93  ΔlogZ=700.41: : 5400 dead [01:56, 48.54 dead/s]
+NS  logZ=229745.92  ΔlogZ=651.20: : 5400 dead [01:56, 48.54 dead/s]  [iter   55]     2.1 s  logZ=+229787.296  ΔlogZ=609.600  dead=5500
+
+NS  logZ=229745.92  ΔlogZ=651.20: : 5500 dead [01:58, 47.92 dead/s]
+NS  logZ=229787.30  ΔlogZ=609.60: : 5500 dead [01:58, 47.92 dead/s]  [iter   56]     2.1 s  logZ=+229824.586  ΔlogZ=572.087  dead=5600
+
+NS  logZ=229787.30  ΔlogZ=609.60: : 5600 dead [02:00, 47.89 dead/s]
+NS  logZ=229824.59  ΔlogZ=572.09: : 5600 dead [02:00, 47.89 dead/s]  [iter   57]     2.2 s  logZ=+229862.246  ΔlogZ=553.727  dead=5700
+
+NS  logZ=229824.59  ΔlogZ=572.09: : 5700 dead [02:03, 47.42 dead/s]
+NS  logZ=229862.25  ΔlogZ=553.73: : 5700 dead [02:03, 47.42 dead/s]  [iter   58]     2.0 s  logZ=+229896.138  ΔlogZ=519.612  dead=5800
+
+NS  logZ=229862.25  ΔlogZ=553.73: : 5800 dead [02:05, 47.81 dead/s]
+NS  logZ=229896.14  ΔlogZ=519.61: : 5800 dead [02:05, 47.81 dead/s]  [iter   59]     2.1 s  logZ=+229928.034  ΔlogZ=487.493  dead=5900
+
+NS  logZ=229896.14  ΔlogZ=519.61: : 5900 dead [02:07, 47.69 dead/s]
+NS  logZ=229928.03  ΔlogZ=487.49: : 5900 dead [02:07, 47.69 dead/s]  [iter   60]     2.1 s  logZ=+229957.334  ΔlogZ=457.970  dead=6000
+
+NS  logZ=229928.03  ΔlogZ=487.49: : 6000 dead [02:09, 47.81 dead/s]
+NS  logZ=229957.33  ΔlogZ=457.97: : 6000 dead [02:09, 47.81 dead/s]  [iter   61]     2.1 s  logZ=+229987.686  ΔlogZ=491.059  dead=6100
+
+NS  logZ=229957.33  ΔlogZ=457.97: : 6100 dead [02:11, 47.42 dead/s]
+NS  logZ=229987.69  ΔlogZ=491.06: : 6100 dead [02:11, 47.42 dead/s]  [iter   62]     2.1 s  logZ=+230015.494  ΔlogZ=463.028  dead=6200
+
+NS  logZ=229987.69  ΔlogZ=491.06: : 6200 dead [02:13, 47.67 dead/s]
+NS  logZ=230015.49  ΔlogZ=463.03: : 6200 dead [02:13, 47.67 dead/s]  [iter   63]     2.1 s  logZ=+230039.039  ΔlogZ=439.260  dead=6300
+
+NS  logZ=230015.49  ΔlogZ=463.03: : 6300 dead [02:15, 47.73 dead/s]
+NS  logZ=230039.04  ΔlogZ=439.26: : 6300 dead [02:15, 47.73 dead/s]  [iter   64]     2.1 s  logZ=+230062.245  ΔlogZ=415.831  dead=6400
+
+NS  logZ=230039.04  ΔlogZ=439.26: : 6400 dead [02:17, 47.60 dead/s]
+NS  logZ=230062.24  ΔlogZ=415.83: : 6400 dead [02:17, 47.60 dead/s]  [iter   65]     2.2 s  logZ=+230085.727  ΔlogZ=392.126  dead=6500
+
+NS  logZ=230062.24  ΔlogZ=415.83: : 6500 dead [02:19, 47.23 dead/s]
+NS  logZ=230085.73  ΔlogZ=392.13: : 6500 dead [02:19, 47.23 dead/s]  [iter   66]     2.2 s  logZ=+230111.241  ΔlogZ=452.468  dead=6600
+
+NS  logZ=230085.73  ΔlogZ=392.13: : 6600 dead [02:22, 46.81 dead/s]
+NS  logZ=230111.24  ΔlogZ=452.47: : 6600 dead [02:22, 46.81 dead/s]  [iter   67]     2.1 s  logZ=+230129.600  ΔlogZ=433.885  dead=6700
+
+NS  logZ=230111.24  ΔlogZ=452.47: : 6700 dead [02:24, 46.74 dead/s]
+NS  logZ=230129.60  ΔlogZ=433.89: : 6700 dead [02:24, 46.74 dead/s]  [iter   68]     2.2 s  logZ=+230146.666  ΔlogZ=416.597  dead=6800
+
+NS  logZ=230129.60  ΔlogZ=433.89: : 6800 dead [02:26, 46.44 dead/s]
+NS  logZ=230146.67  ΔlogZ=416.60: : 6800 dead [02:26, 46.44 dead/s]  [iter   69]     2.2 s  logZ=+230166.160  ΔlogZ=396.880  dead=6900
+
+NS  logZ=230146.67  ΔlogZ=416.60: : 6900 dead [02:28, 46.32 dead/s]
+NS  logZ=230166.16  ΔlogZ=396.88: : 6900 dead [02:28, 46.32 dead/s]  [iter   70]     2.2 s  logZ=+230184.628  ΔlogZ=378.189  dead=7000
+
+NS  logZ=230166.16  ΔlogZ=396.88: : 7000 dead [02:30, 46.29 dead/s]
+NS  logZ=230184.63  ΔlogZ=378.19: : 7000 dead [02:30, 46.29 dead/s]  [iter   71]     2.2 s  logZ=+230203.207  ΔlogZ=359.387  dead=7100
+
+NS  logZ=230184.63  ΔlogZ=378.19: : 7100 dead [02:32, 46.08 dead/s]
+NS  logZ=230203.21  ΔlogZ=359.39: : 7100 dead [02:32, 46.08 dead/s]  [iter   72]     2.2 s  logZ=+230218.351  ΔlogZ=344.020  dead=7200
+
+NS  logZ=230203.21  ΔlogZ=359.39: : 7200 dead [02:35, 46.02 dead/s]
+NS  logZ=230218.35  ΔlogZ=344.02: : 7200 dead [02:35, 46.02 dead/s]  [iter   73]     2.1 s  logZ=+230232.007  ΔlogZ=330.141  dead=7300
+
+NS  logZ=230218.35  ΔlogZ=344.02: : 7300 dead [02:37, 46.18 dead/s]
+NS  logZ=230232.01  ΔlogZ=330.14: : 7300 dead [02:37, 46.18 dead/s]  [iter   74]     2.2 s  logZ=+230246.971  ΔlogZ=314.954  dead=7400
+
+NS  logZ=230232.01  ΔlogZ=330.14: : 7400 dead [02:39, 46.00 dead/s]
+NS  logZ=230246.97  ΔlogZ=314.95: : 7400 dead [02:39, 46.00 dead/s]  [iter   75]     2.3 s  logZ=+230260.491  ΔlogZ=301.212  dead=7500
+
+NS  logZ=230246.97  ΔlogZ=314.95: : 7500 dead [02:41, 45.41 dead/s]
+NS  logZ=230260.49  ΔlogZ=301.21: : 7500 dead [02:41, 45.41 dead/s]  [iter   76]     2.2 s  logZ=+230274.272  ΔlogZ=287.207  dead=7600
+
+NS  logZ=230260.49  ΔlogZ=301.21: : 7600 dead [02:43, 45.44 dead/s]
+NS  logZ=230274.27  ΔlogZ=287.21: : 7600 dead [02:43, 45.44 dead/s]  [iter   77]     2.2 s  logZ=+230287.039  ΔlogZ=274.218  dead=7700
+
+NS  logZ=230274.27  ΔlogZ=287.21: : 7700 dead [02:46, 45.27 dead/s]
+NS  logZ=230287.04  ΔlogZ=274.22: : 7700 dead [02:46, 45.27 dead/s]  [iter   78]     2.2 s  logZ=+230300.880  ΔlogZ=260.154  dead=7800
+
+NS  logZ=230287.04  ΔlogZ=274.22: : 7800 dead [02:48, 45.50 dead/s]
+NS  logZ=230300.88  ΔlogZ=260.15: : 7800 dead [02:48, 45.50 dead/s]  [iter   79]     2.2 s  logZ=+230315.159  ΔlogZ=245.652  dead=7900
+
+NS  logZ=230300.88  ΔlogZ=260.15: : 7900 dead [02:50, 45.19 dead/s]
+NS  logZ=230315.16  ΔlogZ=245.65: : 7900 dead [02:50, 45.19 dead/s]  [iter   80]     2.2 s  logZ=+230328.021  ΔlogZ=232.567  dead=8000
+
+NS  logZ=230315.16  ΔlogZ=245.65: : 8000 dead [02:52, 45.12 dead/s]
+NS  logZ=230328.02  ΔlogZ=232.57: : 8000 dead [02:52, 45.12 dead/s]  [iter   81]     2.2 s  logZ=+230339.886  ΔlogZ=222.065  dead=8100
+
+NS  logZ=230328.02  ΔlogZ=232.57: : 8100 dead [02:55, 45.40 dead/s]
+NS  logZ=230339.89  ΔlogZ=222.07: : 8100 dead [02:55, 45.40 dead/s]  [iter   82]     2.2 s  logZ=+230352.854  ΔlogZ=235.825  dead=8200
+
+NS  logZ=230339.89  ΔlogZ=222.07: : 8200 dead [02:57, 45.50 dead/s]
+NS  logZ=230352.85  ΔlogZ=235.83: : 8200 dead [02:57, 45.50 dead/s]  [iter   83]     2.2 s  logZ=+230365.193  ΔlogZ=223.262  dead=8300
+
+NS  logZ=230352.85  ΔlogZ=235.83: : 8300 dead [02:59, 45.32 dead/s]
+NS  logZ=230365.19  ΔlogZ=223.26: : 8300 dead [02:59, 45.32 dead/s]  [iter   84]     2.2 s  logZ=+230379.572  ΔlogZ=208.661  dead=8400
+
+NS  logZ=230365.19  ΔlogZ=223.26: : 8400 dead [03:01, 45.63 dead/s]
+NS  logZ=230379.57  ΔlogZ=208.66: : 8400 dead [03:01, 45.63 dead/s]  [iter   85]     2.2 s  logZ=+230392.449  ΔlogZ=195.561  dead=8500
+
+NS  logZ=230379.57  ΔlogZ=208.66: : 8500 dead [03:03, 45.61 dead/s]
+NS  logZ=230392.45  ΔlogZ=195.56: : 8500 dead [03:03, 45.61 dead/s]  [iter   86]     2.2 s  logZ=+230403.611  ΔlogZ=184.176  dead=8600
+
+NS  logZ=230392.45  ΔlogZ=195.56: : 8600 dead [03:06, 45.30 dead/s]
+NS  logZ=230403.61  ΔlogZ=184.18: : 8600 dead [03:06, 45.30 dead/s]  [iter   87]     2.2 s  logZ=+230415.506  ΔlogZ=172.058  dead=8700
+
+NS  logZ=230403.61  ΔlogZ=184.18: : 8700 dead [03:08, 45.22 dead/s]
+NS  logZ=230415.51  ΔlogZ=172.06: : 8700 dead [03:08, 45.22 dead/s]  [iter   88]     2.2 s  logZ=+230426.082  ΔlogZ=161.259  dead=8800
+
+NS  logZ=230415.51  ΔlogZ=172.06: : 8800 dead [03:10, 45.21 dead/s]
+NS  logZ=230426.08  ΔlogZ=161.26: : 8800 dead [03:10, 45.21 dead/s]  [iter   89]     2.2 s  logZ=+230437.128  ΔlogZ=157.492  dead=8900
+
+NS  logZ=230426.08  ΔlogZ=161.26: : 8900 dead [03:12, 45.01 dead/s]
+NS  logZ=230437.13  ΔlogZ=157.49: : 8900 dead [03:12, 45.01 dead/s]  [iter   90]     2.3 s  logZ=+230447.327  ΔlogZ=147.071  dead=9000
+
+NS  logZ=230437.13  ΔlogZ=157.49: : 9000 dead [03:14, 44.61 dead/s]
+NS  logZ=230447.33  ΔlogZ=147.07: : 9000 dead [03:14, 44.61 dead/s]  [iter   91]     2.3 s  logZ=+230456.395  ΔlogZ=172.069  dead=9100
+
+NS  logZ=230447.33  ΔlogZ=147.07: : 9100 dead [03:17, 44.28 dead/s]
+NS  logZ=230456.40  ΔlogZ=172.07: : 9100 dead [03:17, 44.28 dead/s]  [iter   92]     2.3 s  logZ=+230465.355  ΔlogZ=162.887  dead=9200
+
+NS  logZ=230456.40  ΔlogZ=172.07: : 9200 dead [03:19, 44.21 dead/s]
+NS  logZ=230465.36  ΔlogZ=162.89: : 9200 dead [03:19, 44.21 dead/s]  [iter   93]     2.3 s  logZ=+230472.874  ΔlogZ=155.145  dead=9300
+
+NS  logZ=230465.36  ΔlogZ=162.89: : 9300 dead [03:21, 44.02 dead/s]
+NS  logZ=230472.87  ΔlogZ=155.15: : 9300 dead [03:21, 44.02 dead/s]  [iter   94]     2.2 s  logZ=+230480.226  ΔlogZ=147.570  dead=9400
+
+NS  logZ=230472.87  ΔlogZ=155.15: : 9400 dead [03:24, 44.39 dead/s]
+NS  logZ=230480.23  ΔlogZ=147.57: : 9400 dead [03:24, 44.39 dead/s]  [iter   95]     2.2 s  logZ=+230487.664  ΔlogZ=139.910  dead=9500
+
+NS  logZ=230480.23  ΔlogZ=147.57: : 9500 dead [03:26, 44.43 dead/s]
+NS  logZ=230487.66  ΔlogZ=139.91: : 9500 dead [03:26, 44.43 dead/s]  [iter   96]     2.2 s  logZ=+230495.570  ΔlogZ=131.780  dead=9600
+
+NS  logZ=230487.66  ΔlogZ=139.91: : 9600 dead [03:28, 44.56 dead/s]
+NS  logZ=230495.57  ΔlogZ=131.78: : 9600 dead [03:28, 44.56 dead/s]  [iter   97]     2.2 s  logZ=+230502.976  ΔlogZ=124.151  dead=9700
+
+NS  logZ=230495.57  ΔlogZ=131.78: : 9700 dead [03:30, 44.70 dead/s]
+NS  logZ=230502.98  ΔlogZ=124.15: : 9700 dead [03:30, 44.70 dead/s]  [iter   98]     2.2 s  logZ=+230509.264  ΔlogZ=117.640  dead=9800
+
+NS  logZ=230502.98  ΔlogZ=124.15: : 9800 dead [03:32, 44.85 dead/s]
+NS  logZ=230509.26  ΔlogZ=117.64: : 9800 dead [03:32, 44.85 dead/s]  [iter   99]     2.3 s  logZ=+230515.891  ΔlogZ=110.791  dead=9900
+
+NS  logZ=230509.26  ΔlogZ=117.64: : 9900 dead [03:35, 44.47 dead/s]
+NS  logZ=230515.89  ΔlogZ=110.79: : 9900 dead [03:35, 44.47 dead/s]  [iter  100]     2.3 s  logZ=+230520.540  ΔlogZ=105.924  dead=10000
+
+NS  logZ=230515.89  ΔlogZ=110.79: : 10000 dead [03:37, 44.34 dead/s]
+NS  logZ=230520.54  ΔlogZ=105.92: : 10000 dead [03:37, 44.34 dead/s]  [iter  101]     2.3 s  logZ=+230526.666  ΔlogZ=108.257  dead=10100
+
+NS  logZ=230520.54  ΔlogZ=105.92: : 10100 dead [03:39, 44.33 dead/s]
+NS  logZ=230526.67  ΔlogZ=108.26: : 10100 dead [03:39, 44.33 dead/s]  [iter  102]     2.3 s  logZ=+230533.001  ΔlogZ=103.067  dead=10200
+
+NS  logZ=230526.67  ΔlogZ=108.26: : 10200 dead [03:42, 44.06 dead/s]
+NS  logZ=230533.00  ΔlogZ=103.07: : 10200 dead [03:42, 44.06 dead/s]  [iter  103]     2.3 s  logZ=+230538.558  ΔlogZ=103.546  dead=10300
+
+NS  logZ=230533.00  ΔlogZ=103.07: : 10300 dead [03:44, 43.83 dead/s]
+NS  logZ=230538.56  ΔlogZ=103.55: : 10300 dead [03:44, 43.83 dead/s]  [iter  104]     2.3 s  logZ=+230543.582  ΔlogZ=98.300  dead=10400
+
+NS  logZ=230538.56  ΔlogZ=103.55: : 10400 dead [03:46, 43.76 dead/s]
+NS  logZ=230543.58  ΔlogZ=98.30: : 10400 dead [03:46, 43.76 dead/s]   [iter  105]     2.3 s  logZ=+230548.727  ΔlogZ=106.681  dead=10500
+
+NS  logZ=230543.58  ΔlogZ=98.30: : 10500 dead [03:48, 43.80 dead/s]
+NS  logZ=230548.73  ΔlogZ=106.68: : 10500 dead [03:48, 43.80 dead/s]  [iter  106]     2.2 s  logZ=+230553.946  ΔlogZ=101.240  dead=10600
+
+NS  logZ=230548.73  ΔlogZ=106.68: : 10600 dead [03:51, 44.16 dead/s]
+NS  logZ=230553.95  ΔlogZ=101.24: : 10600 dead [03:51, 44.16 dead/s]  [iter  107]     2.3 s  logZ=+230558.253  ΔlogZ=96.709  dead=10700
+
+NS  logZ=230553.95  ΔlogZ=101.24: : 10700 dead [03:53, 44.02 dead/s]
+NS  logZ=230558.25  ΔlogZ=96.71: : 10700 dead [03:53, 44.02 dead/s]   [iter  108]     2.3 s  logZ=+230563.490  ΔlogZ=91.250  dead=10800
+
+NS  logZ=230558.25  ΔlogZ=96.71: : 10800 dead [03:55, 44.05 dead/s]
+NS  logZ=230563.49  ΔlogZ=91.25: : 10800 dead [03:55, 44.05 dead/s]  [iter  109]     2.2 s  logZ=+230568.969  ΔlogZ=85.548  dead=10900
+
+NS  logZ=230563.49  ΔlogZ=91.25: : 10900 dead [03:57, 44.22 dead/s]
+NS  logZ=230568.97  ΔlogZ=85.55: : 10900 dead [03:57, 44.22 dead/s]  [iter  110]     2.3 s  logZ=+230572.940  ΔlogZ=81.354  dead=11000
+
+NS  logZ=230568.97  ΔlogZ=85.55: : 11000 dead [04:00, 43.93 dead/s]
+NS  logZ=230572.94  ΔlogZ=81.35: : 11000 dead [04:00, 43.93 dead/s]  [iter  111]     2.3 s  logZ=+230577.251  ΔlogZ=76.820  dead=11100
+
+NS  logZ=230572.94  ΔlogZ=81.35: : 11100 dead [04:02, 43.90 dead/s]
+NS  logZ=230577.25  ΔlogZ=76.82: : 11100 dead [04:02, 43.90 dead/s]  [iter  112]     2.2 s  logZ=+230581.572  ΔlogZ=72.276  dead=11200
+
+NS  logZ=230577.25  ΔlogZ=76.82: : 11200 dead [04:04, 44.13 dead/s]
+NS  logZ=230581.57  ΔlogZ=72.28: : 11200 dead [04:04, 44.13 dead/s]  [iter  113]     2.3 s  logZ=+230585.037  ΔlogZ=68.588  dead=11300
+
+NS  logZ=230581.57  ΔlogZ=72.28: : 11300 dead [04:07, 44.05 dead/s]
+NS  logZ=230585.04  ΔlogZ=68.59: : 11300 dead [04:07, 44.05 dead/s]  [iter  114]     2.2 s  logZ=+230589.025  ΔlogZ=64.377  dead=11400
+
+NS  logZ=230585.04  ΔlogZ=68.59: : 11400 dead [04:09, 44.28 dead/s]
+NS  logZ=230589.03  ΔlogZ=64.38: : 11400 dead [04:09, 44.28 dead/s]  [iter  115]     2.3 s  logZ=+230592.549  ΔlogZ=60.631  dead=11500
+
+NS  logZ=230589.03  ΔlogZ=64.38: : 11500 dead [04:11, 44.26 dead/s]
+NS  logZ=230592.55  ΔlogZ=60.63: : 11500 dead [04:11, 44.26 dead/s]  [iter  116]     2.3 s  logZ=+230596.379  ΔlogZ=56.578  dead=11600
+
+NS  logZ=230592.55  ΔlogZ=60.63: : 11600 dead [04:13, 44.20 dead/s]
+NS  logZ=230596.38  ΔlogZ=56.58: : 11600 dead [04:13, 44.20 dead/s]  [iter  117]     2.3 s  logZ=+230599.947  ΔlogZ=52.787  dead=11700
+
+NS  logZ=230596.38  ΔlogZ=56.58: : 11700 dead [04:16, 43.97 dead/s]
+NS  logZ=230599.95  ΔlogZ=52.79: : 11700 dead [04:16, 43.97 dead/s]  [iter  118]     2.3 s  logZ=+230603.501  ΔlogZ=49.010  dead=11800
+
+NS  logZ=230599.95  ΔlogZ=52.79: : 11800 dead [04:18, 44.07 dead/s]
+NS  logZ=230603.50  ΔlogZ=49.01: : 11800 dead [04:18, 44.07 dead/s]  [iter  119]     2.4 s  logZ=+230606.630  ΔlogZ=45.658  dead=11900
+
+NS  logZ=230603.50  ΔlogZ=49.01: : 11900 dead [04:20, 43.59 dead/s]
+NS  logZ=230606.63  ΔlogZ=45.66: : 11900 dead [04:20, 43.59 dead/s]  [iter  120]     2.3 s  logZ=+230609.510  ΔlogZ=42.556  dead=12000
+
+NS  logZ=230606.63  ΔlogZ=45.66: : 12000 dead [04:23, 43.50 dead/s]
+NS  logZ=230609.51  ΔlogZ=42.56: : 12000 dead [04:23, 43.50 dead/s]  [iter  121]     2.3 s  logZ=+230612.211  ΔlogZ=39.633  dead=12100
+
+NS  logZ=230609.51  ΔlogZ=42.56: : 12100 dead [04:25, 43.30 dead/s]
+NS  logZ=230612.21  ΔlogZ=39.63: : 12100 dead [04:25, 43.30 dead/s]  [iter  122]     2.3 s  logZ=+230614.403  ΔlogZ=37.218  dead=12200
+
+NS  logZ=230612.21  ΔlogZ=39.63: : 12200 dead [04:27, 43.22 dead/s]
+NS  logZ=230614.40  ΔlogZ=37.22: : 12200 dead [04:27, 43.22 dead/s]  [iter  123]     2.3 s  logZ=+230616.741  ΔlogZ=34.745  dead=12300
+
+NS  logZ=230614.40  ΔlogZ=37.22: : 12300 dead [04:29, 43.57 dead/s]
+NS  logZ=230616.74  ΔlogZ=34.75: : 12300 dead [04:29, 43.57 dead/s]  [iter  124]     2.3 s  logZ=+230619.324  ΔlogZ=31.940  dead=12400
+
+NS  logZ=230616.74  ΔlogZ=34.75: : 12400 dead [04:32, 43.35 dead/s]
+NS  logZ=230619.32  ΔlogZ=31.94: : 12400 dead [04:32, 43.35 dead/s]  [iter  125]     2.5 s  logZ=+230621.473  ΔlogZ=29.572  dead=12500
+
+NS  logZ=230619.32  ΔlogZ=31.94: : 12500 dead [04:34, 42.54 dead/s]
+NS  logZ=230621.47  ΔlogZ=29.57: : 12500 dead [04:34, 42.54 dead/s]  [iter  126]     2.3 s  logZ=+230623.440  ΔlogZ=28.198  dead=12600
+
+NS  logZ=230621.47  ΔlogZ=29.57: : 12600 dead [04:37, 42.89 dead/s]
+NS  logZ=230623.44  ΔlogZ=28.20: : 12600 dead [04:37, 42.89 dead/s]  [iter  127]     2.3 s  logZ=+230625.532  ΔlogZ=27.603  dead=12700
+
+NS  logZ=230623.44  ΔlogZ=28.20: : 12700 dead [04:39, 43.10 dead/s]
+NS  logZ=230625.53  ΔlogZ=27.60: : 12700 dead [04:39, 43.10 dead/s]  [iter  128]     2.5 s  logZ=+230627.383  ΔlogZ=26.764  dead=12800
+
+NS  logZ=230625.53  ΔlogZ=27.60: : 12800 dead [04:41, 42.37 dead/s]
+NS  logZ=230627.38  ΔlogZ=26.76: : 12800 dead [04:41, 42.37 dead/s]  [iter  129]     2.4 s  logZ=+230629.138  ΔlogZ=24.793  dead=12900
+
+NS  logZ=230627.38  ΔlogZ=26.76: : 12900 dead [04:44, 41.94 dead/s]
+NS  logZ=230629.14  ΔlogZ=24.79: : 12900 dead [04:44, 41.94 dead/s]  [iter  130]     2.4 s  logZ=+230630.853  ΔlogZ=22.867  dead=13000
+
+NS  logZ=230629.14  ΔlogZ=24.79: : 13000 dead [04:46, 41.77 dead/s]
+NS  logZ=230630.85  ΔlogZ=22.87: : 13000 dead [04:46, 41.77 dead/s]  [iter  131]     2.4 s  logZ=+230632.297  ΔlogZ=21.232  dead=13100
+
+NS  logZ=230630.85  ΔlogZ=22.87: : 13100 dead [04:49, 41.76 dead/s]
+NS  logZ=230632.30  ΔlogZ=21.23: : 13100 dead [04:49, 41.76 dead/s]  [iter  132]     2.4 s  logZ=+230633.535  ΔlogZ=19.783  dead=13200
+
+NS  logZ=230632.30  ΔlogZ=21.23: : 13200 dead [04:51, 41.57 dead/s]
+NS  logZ=230633.54  ΔlogZ=19.78: : 13200 dead [04:51, 41.57 dead/s]  [iter  133]     2.4 s  logZ=+230634.728  ΔlogZ=18.416  dead=13300
+
+NS  logZ=230633.54  ΔlogZ=19.78: : 13300 dead [04:53, 41.41 dead/s]
+NS  logZ=230634.73  ΔlogZ=18.42: : 13300 dead [04:53, 41.41 dead/s]  [iter  134]     2.3 s  logZ=+230635.868  ΔlogZ=17.154  dead=13400
+
+NS  logZ=230634.73  ΔlogZ=18.42: : 13400 dead [04:56, 41.78 dead/s]
+NS  logZ=230635.87  ΔlogZ=17.15: : 13400 dead [04:56, 41.78 dead/s]  [iter  135]     2.4 s  logZ=+230637.083  ΔlogZ=15.877  dead=13500
+
+NS  logZ=230635.87  ΔlogZ=17.15: : 13500 dead [04:58, 41.92 dead/s]
+NS  logZ=230637.08  ΔlogZ=15.88: : 13500 dead [04:58, 41.92 dead/s]  [iter  136]     2.3 s  logZ=+230638.242  ΔlogZ=14.564  dead=13600
+
+NS  logZ=230637.08  ΔlogZ=15.88: : 13600 dead [05:00, 42.44 dead/s]
+NS  logZ=230638.24  ΔlogZ=14.56: : 13600 dead [05:00, 42.44 dead/s]  [iter  137]     2.4 s  logZ=+230639.225  ΔlogZ=13.381  dead=13700
+
+NS  logZ=230638.24  ΔlogZ=14.56: : 13700 dead [05:03, 42.31 dead/s]
+NS  logZ=230639.23  ΔlogZ=13.38: : 13700 dead [05:03, 42.31 dead/s]  [iter  138]     2.4 s  logZ=+230640.159  ΔlogZ=13.943  dead=13800
+
+NS  logZ=230639.23  ΔlogZ=13.38: : 13800 dead [05:05, 42.16 dead/s]
+NS  logZ=230640.16  ΔlogZ=13.94: : 13800 dead [05:05, 42.16 dead/s]  [iter  139]     2.4 s  logZ=+230641.132  ΔlogZ=14.437  dead=13900
+
+NS  logZ=230640.16  ΔlogZ=13.94: : 13900 dead [05:08, 41.94 dead/s]
+NS  logZ=230641.13  ΔlogZ=14.44: : 13900 dead [05:08, 41.94 dead/s]  [iter  140]     2.4 s  logZ=+230642.006  ΔlogZ=13.567  dead=14000
+
+NS  logZ=230641.13  ΔlogZ=14.44: : 14000 dead [05:10, 42.02 dead/s]
+NS  logZ=230642.01  ΔlogZ=13.57: : 14000 dead [05:10, 42.02 dead/s]  [iter  141]     2.5 s  logZ=+230642.857  ΔlogZ=12.895  dead=14100
+
+NS  logZ=230642.01  ΔlogZ=13.57: : 14100 dead [05:12, 41.61 dead/s]
+NS  logZ=230642.86  ΔlogZ=12.89: : 14100 dead [05:12, 41.61 dead/s]  [iter  142]     2.4 s  logZ=+230643.671  ΔlogZ=11.938  dead=14200
+
+NS  logZ=230642.86  ΔlogZ=12.89: : 14200 dead [05:15, 41.54 dead/s]
+NS  logZ=230643.67  ΔlogZ=11.94: : 14200 dead [05:15, 41.54 dead/s]  [iter  143]     2.4 s  logZ=+230644.402  ΔlogZ=10.997  dead=14300
+
+NS  logZ=230643.67  ΔlogZ=11.94: : 14300 dead [05:17, 41.36 dead/s]
+NS  logZ=230644.40  ΔlogZ=11.00: : 14300 dead [05:17, 41.36 dead/s]  [iter  144]     2.4 s  logZ=+230645.143  ΔlogZ=10.123  dead=14400
+
+NS  logZ=230644.40  ΔlogZ=11.00: : 14400 dead [05:20, 41.51 dead/s]
+NS  logZ=230645.14  ΔlogZ=10.12: : 14400 dead [05:20, 41.51 dead/s]  [iter  145]     2.4 s  logZ=+230645.850  ΔlogZ=9.259  dead=14500
+
+NS  logZ=230645.14  ΔlogZ=10.12: : 14500 dead [05:22, 41.59 dead/s]
+NS  logZ=230645.85  ΔlogZ=9.26: : 14500 dead [05:22, 41.59 dead/s]   [iter  146]     2.4 s  logZ=+230646.499  ΔlogZ=9.394  dead=14600
+
+NS  logZ=230645.85  ΔlogZ=9.26: : 14600 dead [05:25, 41.47 dead/s]
+NS  logZ=230646.50  ΔlogZ=9.39: : 14600 dead [05:25, 41.47 dead/s]  [iter  147]     2.4 s  logZ=+230647.085  ΔlogZ=9.443  dead=14700
+
+NS  logZ=230646.50  ΔlogZ=9.39: : 14700 dead [05:27, 41.58 dead/s]
+NS  logZ=230647.08  ΔlogZ=9.44: : 14700 dead [05:27, 41.58 dead/s]  [iter  148]     2.4 s  logZ=+230647.660  ΔlogZ=9.285  dead=14800
+
+NS  logZ=230647.08  ΔlogZ=9.44: : 14800 dead [05:29, 41.77 dead/s]
+NS  logZ=230647.66  ΔlogZ=9.28: : 14800 dead [05:29, 41.77 dead/s]  [iter  149]     2.4 s  logZ=+230648.226  ΔlogZ=8.656  dead=14900
+
+NS  logZ=230647.66  ΔlogZ=9.28: : 14900 dead [05:32, 41.93 dead/s]
+NS  logZ=230648.23  ΔlogZ=8.66: : 14900 dead [05:32, 41.93 dead/s]  [iter  150]     2.4 s  logZ=+230648.726  ΔlogZ=8.002  dead=15000
+
+NS  logZ=230648.23  ΔlogZ=8.66: : 15000 dead [05:34, 41.86 dead/s]
+NS  logZ=230648.73  ΔlogZ=8.00: : 15000 dead [05:34, 41.86 dead/s]  [iter  151]     2.3 s  logZ=+230649.242  ΔlogZ=7.897  dead=15100
+
+NS  logZ=230648.73  ΔlogZ=8.00: : 15100 dead [05:36, 42.15 dead/s]
+NS  logZ=230649.24  ΔlogZ=7.90: : 15100 dead [05:36, 42.15 dead/s]  [iter  152]     2.4 s  logZ=+230649.762  ΔlogZ=7.276  dead=15200
+
+NS  logZ=230649.24  ΔlogZ=7.90: : 15200 dead [05:39, 41.82 dead/s]
+NS  logZ=230649.76  ΔlogZ=7.28: : 15200 dead [05:39, 41.82 dead/s]  [iter  153]     2.5 s  logZ=+230650.261  ΔlogZ=6.643  dead=15300
+
+NS  logZ=230649.76  ΔlogZ=7.28: : 15300 dead [05:41, 41.45 dead/s]
+NS  logZ=230650.26  ΔlogZ=6.64: : 15300 dead [05:41, 41.45 dead/s]  [iter  154]     2.4 s  logZ=+230650.704  ΔlogZ=6.023  dead=15400
+
+NS  logZ=230650.26  ΔlogZ=6.64: : 15400 dead [05:44, 41.75 dead/s]
+NS  logZ=230650.70  ΔlogZ=6.02: : 15400 dead [05:44, 41.75 dead/s]  [iter  155]     2.4 s  logZ=+230651.121  ΔlogZ=5.641  dead=15500
+
+NS  logZ=230650.70  ΔlogZ=6.02: : 15500 dead [05:46, 41.69 dead/s]
+NS  logZ=230651.12  ΔlogZ=5.64: : 15500 dead [05:46, 41.69 dead/s]  [iter  156]     2.4 s  logZ=+230651.502  ΔlogZ=5.571  dead=15600
+
+NS  logZ=230651.12  ΔlogZ=5.64: : 15600 dead [05:48, 41.48 dead/s]
+NS  logZ=230651.50  ΔlogZ=5.57: : 15600 dead [05:48, 41.48 dead/s]  [iter  157]     2.4 s  logZ=+230651.867  ΔlogZ=5.083  dead=15700
+
+NS  logZ=230651.50  ΔlogZ=5.57: : 15700 dead [05:51, 41.59 dead/s]
+NS  logZ=230651.87  ΔlogZ=5.08: : 15700 dead [05:51, 41.59 dead/s]  [iter  158]     2.4 s  logZ=+230652.207  ΔlogZ=4.606  dead=15800
+
+NS  logZ=230651.87  ΔlogZ=5.08: : 15800 dead [05:53, 41.48 dead/s]
+NS  logZ=230652.21  ΔlogZ=4.61: : 15800 dead [05:53, 41.48 dead/s]  [iter  159]     2.5 s  logZ=+230652.522  ΔlogZ=4.273  dead=15900
+
+NS  logZ=230652.21  ΔlogZ=4.61: : 15900 dead [05:56, 41.16 dead/s]
+NS  logZ=230652.52  ΔlogZ=4.27: : 15900 dead [05:56, 41.16 dead/s]  [iter  160]     2.3 s  logZ=+230652.822  ΔlogZ=3.971  dead=16000
+
+NS  logZ=230652.52  ΔlogZ=4.27: : 16000 dead [05:58, 41.65 dead/s]
+NS  logZ=230652.82  ΔlogZ=3.97: : 16000 dead [05:58, 41.65 dead/s]  [iter  161]     2.4 s  logZ=+230653.112  ΔlogZ=3.553  dead=16100
+
+NS  logZ=230652.82  ΔlogZ=3.97: : 16100 dead [06:00, 41.60 dead/s]
+NS  logZ=230653.11  ΔlogZ=3.55: : 16100 dead [06:00, 41.60 dead/s]  [iter  162]     2.4 s  logZ=+230653.382  ΔlogZ=3.252  dead=16200
+
+NS  logZ=230653.11  ΔlogZ=3.55: : 16200 dead [06:03, 41.80 dead/s]
+NS  logZ=230653.38  ΔlogZ=3.25: : 16200 dead [06:03, 41.80 dead/s]  [iter  163]     2.3 s  logZ=+230653.645  ΔlogZ=2.892  dead=16300
+
+NS  logZ=230653.38  ΔlogZ=3.25: : 16300 dead [06:05, 42.05 dead/s]
+NS  logZ=230653.65  ΔlogZ=2.89: : 16300 dead [06:05, 42.05 dead/s]  [iter  164]     2.4 s  logZ=+230653.893  ΔlogZ=2.681  dead=16400
+
+NS  logZ=230653.65  ΔlogZ=2.89: : 16400 dead [06:08, 42.02 dead/s]
+NS  logZ=230653.89  ΔlogZ=2.68: : 16400 dead [06:08, 42.02 dead/s]  [iter  165]     2.4 s  logZ=+230654.125  ΔlogZ=2.425  dead=16500
+
+NS  logZ=230653.89  ΔlogZ=2.68: : 16500 dead [06:10, 41.76 dead/s]
+NS  logZ=230654.13  ΔlogZ=2.43: : 16500 dead [06:10, 41.76 dead/s]  [iter  166]     2.4 s  logZ=+230654.349  ΔlogZ=2.100  dead=16600
+
+NS  logZ=230654.13  ΔlogZ=2.43: : 16600 dead [06:12, 41.68 dead/s]
+NS  logZ=230654.35  ΔlogZ=2.10: : 16600 dead [06:12, 41.68 dead/s]  [iter  167]     2.4 s  logZ=+230654.555  ΔlogZ=1.895  dead=16700
+
+NS  logZ=230654.35  ΔlogZ=2.10: : 16700 dead [06:15, 41.59 dead/s]
+NS  logZ=230654.56  ΔlogZ=1.90: : 16700 dead [06:15, 41.59 dead/s]  [iter  168]     2.4 s  logZ=+230654.743  ΔlogZ=1.602  dead=16800
+
+NS  logZ=230654.56  ΔlogZ=1.90: : 16800 dead [06:17, 41.75 dead/s]
+NS  logZ=230654.74  ΔlogZ=1.60: : 16800 dead [06:17, 41.75 dead/s]  [iter  169]     2.3 s  logZ=+230654.907  ΔlogZ=1.424  dead=16900
+
+NS  logZ=230654.74  ΔlogZ=1.60: : 16900 dead [06:20, 42.25 dead/s]
+NS  logZ=230654.91  ΔlogZ=1.42: : 16900 dead [06:20, 42.25 dead/s]  [iter  170]     2.4 s  logZ=+230655.056  ΔlogZ=1.206  dead=17000
+
+NS  logZ=230654.91  ΔlogZ=1.42: : 17000 dead [06:22, 41.85 dead/s]
+NS  logZ=230655.06  ΔlogZ=1.21: : 17000 dead [06:22, 41.85 dead/s]  [iter  171]     2.4 s  logZ=+230655.191  ΔlogZ=0.973  dead=17100
+
+NS  logZ=230655.06  ΔlogZ=1.21: : 17100 dead [06:24, 41.59 dead/s]
+NS  logZ=230655.19  ΔlogZ=0.97: : 17100 dead [06:24, 41.59 dead/s]  [iter  172]     2.3 s  logZ=+230655.316  ΔlogZ=0.794  dead=17200
+
+NS  logZ=230655.19  ΔlogZ=0.97: : 17200 dead [06:27, 41.92 dead/s]
+NS  logZ=230655.32  ΔlogZ=0.79: : 17200 dead [06:27, 41.92 dead/s]  [iter  173]     2.3 s  logZ=+230655.427  ΔlogZ=0.648  dead=17300
+
+NS  logZ=230655.32  ΔlogZ=0.79: : 17300 dead [06:29, 42.26 dead/s]
+NS  logZ=230655.43  ΔlogZ=0.65: : 17300 dead [06:29, 42.26 dead/s]  [iter  174]     2.3 s  logZ=+230655.527  ΔlogZ=0.478  dead=17400
+
+NS  logZ=230655.43  ΔlogZ=0.65: : 17400 dead [06:31, 42.61 dead/s]
+NS  logZ=230655.53  ΔlogZ=0.48: : 17400 dead [06:31, 42.61 dead/s]  [iter  175]     2.2 s  logZ=+230655.622  ΔlogZ=0.299  dead=17500
+
+NS  logZ=230655.53  ΔlogZ=0.48: : 17500 dead [06:34, 43.35 dead/s]
+NS  logZ=230655.62  ΔlogZ=0.30: : 17500 dead [06:34, 43.35 dead/s]  [iter  176]     2.2 s  logZ=+230655.713  ΔlogZ=0.137  dead=17600
+
+NS  logZ=230655.62  ΔlogZ=0.30: : 17600 dead [06:36, 43.77 dead/s]
+NS  logZ=230655.71  ΔlogZ=0.14: : 17600 dead [06:36, 43.77 dead/s]  [iter  177]     2.3 s  logZ=+230655.796  ΔlogZ=-0.042  dead=17700
+
+NS  logZ=230655.71  ΔlogZ=0.14: : 17700 dead [06:38, 43.54 dead/s]
+NS  logZ=230655.80  ΔlogZ=-0.04: : 17700 dead [06:38, 43.54 dead/s]  [iter  178]     2.3 s  logZ=+230655.871  ΔlogZ=-0.178  dead=17800
+
+NS  logZ=230655.80  ΔlogZ=-0.04: : 17800 dead [06:40, 43.74 dead/s]
+NS  logZ=230655.87  ΔlogZ=-0.18: : 17800 dead [06:40, 43.74 dead/s]  [iter  179]     2.1 s  logZ=+230655.939  ΔlogZ=-0.329  dead=17900
+
+NS  logZ=230655.87  ΔlogZ=-0.18: : 17900 dead [06:42, 44.82 dead/s]
+NS  logZ=230655.94  ΔlogZ=-0.33: : 17900 dead [06:42, 44.82 dead/s]  [iter  180]     2.2 s  logZ=+230656.000  ΔlogZ=-0.490  dead=18000
+
+NS  logZ=230655.94  ΔlogZ=-0.33: : 18000 dead [06:45, 45.13 dead/s]
+NS  logZ=230656.00  ΔlogZ=-0.49: : 18000 dead [06:45, 45.13 dead/s]  [iter  181]     2.2 s  logZ=+230656.055  ΔlogZ=-0.661  dead=18100
+
+NS  logZ=230656.00  ΔlogZ=-0.49: : 18100 dead [06:47, 45.39 dead/s]
+NS  logZ=230656.06  ΔlogZ=-0.66: : 18100 dead [06:47, 45.39 dead/s]  [iter  182]     2.2 s  logZ=+230656.105  ΔlogZ=-0.794  dead=18200
+
+NS  logZ=230656.06  ΔlogZ=-0.66: : 18200 dead [06:49, 45.45 dead/s]
+NS  logZ=230656.11  ΔlogZ=-0.79: : 18200 dead [06:49, 45.45 dead/s]  [iter  183]     2.1 s  logZ=+230656.149  ΔlogZ=-0.929  dead=18300
+
+NS  logZ=230656.11  ΔlogZ=-0.79: : 18300 dead [06:51, 45.80 dead/s]
+NS  logZ=230656.15  ΔlogZ=-0.93: : 18300 dead [06:51, 45.80 dead/s]  [iter  184]     2.2 s  logZ=+230656.189  ΔlogZ=-1.068  dead=18400
+
+NS  logZ=230656.15  ΔlogZ=-0.93: : 18400 dead [06:53, 45.80 dead/s]
+NS  logZ=230656.19  ΔlogZ=-1.07: : 18400 dead [06:53, 45.80 dead/s]  [iter  185]     2.1 s  logZ=+230656.225  ΔlogZ=-1.187  dead=18500
+
+NS  logZ=230656.19  ΔlogZ=-1.07: : 18500 dead [06:55, 46.18 dead/s]
+NS  logZ=230656.22  ΔlogZ=-1.19: : 18500 dead [06:55, 46.18 dead/s]  [iter  186]     2.2 s  logZ=+230656.257  ΔlogZ=-1.348  dead=18600
+
+NS  logZ=230656.22  ΔlogZ=-1.19: : 18600 dead [06:58, 46.26 dead/s]
+NS  logZ=230656.26  ΔlogZ=-1.35: : 18600 dead [06:58, 46.26 dead/s]  [iter  187]     2.1 s  logZ=+230656.286  ΔlogZ=-1.493  dead=18700
+
+NS  logZ=230656.26  ΔlogZ=-1.35: : 18700 dead [07:00, 46.44 dead/s]
+NS  logZ=230656.29  ΔlogZ=-1.49: : 18700 dead [07:00, 46.44 dead/s]  [iter  188]     2.1 s  logZ=+230656.312  ΔlogZ=-1.659  dead=18800
+
+NS  logZ=230656.29  ΔlogZ=-1.49: : 18800 dead [07:02, 46.76 dead/s]
+NS  logZ=230656.31  ΔlogZ=-1.66: : 18800 dead [07:02, 46.76 dead/s]  [iter  189]     2.1 s  logZ=+230656.335  ΔlogZ=-1.818  dead=18900
+
+NS  logZ=230656.31  ΔlogZ=-1.66: : 18900 dead [07:04, 46.81 dead/s]
+NS  logZ=230656.33  ΔlogZ=-1.82: : 18900 dead [07:04, 46.81 dead/s]  [iter  190]     2.2 s  logZ=+230656.355  ΔlogZ=-1.953  dead=19000
+
+NS  logZ=230656.33  ΔlogZ=-1.82: : 19000 dead [07:06, 46.41 dead/s]
+NS  logZ=230656.36  ΔlogZ=-1.95: : 19000 dead [07:06, 46.41 dead/s]  [iter  191]     2.2 s  logZ=+230656.374  ΔlogZ=-2.104  dead=19100
+
+NS  logZ=230656.36  ΔlogZ=-1.95: : 19100 dead [07:08, 45.81 dead/s]
+NS  logZ=230656.37  ΔlogZ=-2.10: : 19100 dead [07:08, 45.81 dead/s]  [iter  192]     2.2 s  logZ=+230656.389  ΔlogZ=-2.255  dead=19200
+
+NS  logZ=230656.37  ΔlogZ=-2.10: : 19200 dead [07:11, 45.99 dead/s]
+NS  logZ=230656.39  ΔlogZ=-2.25: : 19200 dead [07:11, 45.99 dead/s]  [iter  193]     2.1 s  logZ=+230656.403  ΔlogZ=-2.400  dead=19300
+
+NS  logZ=230656.39  ΔlogZ=-2.25: : 19300 dead [07:13, 46.46 dead/s]
+NS  logZ=230656.40  ΔlogZ=-2.40: : 19300 dead [07:13, 46.46 dead/s]  [iter  194]     2.2 s  logZ=+230656.415  ΔlogZ=-2.555  dead=19400
+
+NS  logZ=230656.40  ΔlogZ=-2.40: : 19400 dead [07:15, 46.06 dead/s]
+NS  logZ=230656.42  ΔlogZ=-2.55: : 19400 dead [07:15, 46.06 dead/s]  [iter  195]     2.1 s  logZ=+230656.426  ΔlogZ=-2.703  dead=19500
+
+NS  logZ=230656.42  ΔlogZ=-2.55: : 19500 dead [07:17, 46.75 dead/s]
+NS  logZ=230656.43  ΔlogZ=-2.70: : 19500 dead [07:17, 46.75 dead/s]  [iter  196]     2.1 s  logZ=+230656.435  ΔlogZ=-2.854  dead=19600
+
+NS  logZ=230656.43  ΔlogZ=-2.70: : 19600 dead [07:19, 47.21 dead/s]
+NS  logZ=230656.44  ΔlogZ=-2.85: : 19600 dead [07:19, 47.21 dead/s]  [iter  197]     2.1 s  logZ=+230656.443  ΔlogZ=-3.018  dead=19700
+
+NS  logZ=230656.44  ΔlogZ=-2.85: : 19700 dead [07:21, 47.37 dead/s]
+NS  logZ=230656.44  ΔlogZ=-3.02: : 19700 dead [07:21, 47.37 dead/s]  [iter  198]     2.1 s  logZ=+230656.450  ΔlogZ=-3.182  dead=19800
+
+NS  logZ=230656.44  ΔlogZ=-3.02: : 19800 dead [07:23, 47.22 dead/s]
+NS  logZ=230656.45  ΔlogZ=-3.18: : 19800 dead [07:23, 47.22 dead/s]  [iter  199]     2.2 s  logZ=+230656.456  ΔlogZ=-3.345  dead=19900
+
+NS  logZ=230656.45  ΔlogZ=-3.18: : 19900 dead [07:26, 46.56 dead/s]
+NS  logZ=230656.46  ΔlogZ=-3.35: : 19900 dead [07:26, 46.56 dead/s]  [iter  200]     2.1 s  logZ=+230656.462  ΔlogZ=-3.515  dead=20000
+
+NS  logZ=230656.46  ΔlogZ=-3.35: : 20000 dead [07:28, 47.06 dead/s]
+NS  logZ=230656.46  ΔlogZ=-3.52: : 20000 dead [07:28, 47.06 dead/s]  [iter  201]     2.1 s  logZ=+230656.466  ΔlogZ=-3.682  dead=20100
+
+NS  logZ=230656.46  ΔlogZ=-3.52: : 20100 dead [07:30, 47.32 dead/s]
+NS  logZ=230656.47  ΔlogZ=-3.68: : 20100 dead [07:30, 47.32 dead/s]  [iter  202]     2.3 s  logZ=+230656.470  ΔlogZ=-3.854  dead=20200
+
+NS  logZ=230656.47  ΔlogZ=-3.68: : 20200 dead [07:32, 46.38 dead/s]
+NS  logZ=230656.47  ΔlogZ=-3.85: : 20200 dead [07:32, 46.38 dead/s]  [iter  203]     2.0 s  logZ=+230656.473  ΔlogZ=-4.024  dead=20300
+
+NS  logZ=230656.47  ΔlogZ=-3.85: : 20300 dead [07:34, 47.11 dead/s]
+NS  logZ=230656.47  ΔlogZ=-4.02: : 20300 dead [07:34, 47.11 dead/s]  [iter  204]     2.1 s  logZ=+230656.476  ΔlogZ=-4.189  dead=20400
+
+NS  logZ=230656.47  ΔlogZ=-4.02: : 20400 dead [07:36, 47.00 dead/s]
+NS  logZ=230656.48  ΔlogZ=-4.19: : 20400 dead [07:36, 47.00 dead/s]  [iter  205]     2.1 s  logZ=+230656.478  ΔlogZ=-4.360  dead=20500
+
+NS  logZ=230656.48  ΔlogZ=-4.19: : 20500 dead [07:38, 46.88 dead/s]
+NS  logZ=230656.48  ΔlogZ=-4.36: : 20500 dead [07:38, 46.88 dead/s]  [iter  206]     2.1 s  logZ=+230656.481  ΔlogZ=-4.539  dead=20600
+
+NS  logZ=230656.48  ΔlogZ=-4.36: : 20600 dead [07:40, 46.85 dead/s]
+NS  logZ=230656.48  ΔlogZ=-4.54: : 20600 dead [07:40, 46.85 dead/s]  [iter  207]     2.1 s  logZ=+230656.482  ΔlogZ=-4.719  dead=20700
+
+NS  logZ=230656.48  ΔlogZ=-4.54: : 20700 dead [07:43, 46.80 dead/s]
+NS  logZ=230656.48  ΔlogZ=-4.72: : 20700 dead [07:43, 46.80 dead/s]  [iter  208]     2.1 s  logZ=+230656.484  ΔlogZ=-4.888  dead=20800
+
+NS  logZ=230656.48  ΔlogZ=-4.72: : 20800 dead [07:45, 47.07 dead/s]
+NS  logZ=230656.48  ΔlogZ=-4.89: : 20800 dead [07:45, 47.07 dead/s]  [iter  209]     2.1 s  logZ=+230656.485  ΔlogZ=-5.074  dead=20900
+
+NS  logZ=230656.48  ΔlogZ=-4.89: : 20900 dead [07:47, 47.47 dead/s]
+NS  logZ=230656.48  ΔlogZ=-5.07: : 20900 dead [07:47, 47.47 dead/s]
+NS  logZ=230656.48  ΔlogZ=-5.07: : 20900 dead [07:47, 44.73 dead/s]  Converged  logZ = 230656.485  (467.2 s,  8,405,881 likelihood calls)
+
+saved result: /workspace/cosmic-chronometers-jwst/results/rtx-5060-production-speedup/M1_210210-20260906-reduce/ceridwen_result.h5
+blackjax.nss  |  n_samples=21400  ln Z = 230656.533 ± 0.314  |  n_like = 8405881  |  wall = 467.2 s
+{"variant": "reduce", "total_fit_seconds": 479.1911379310768, "sampler_seconds": 467.1988035561517, "logical_likelihood_evaluations": 8405881, "slice_transitions": 1358500, "software": {"jax": "0.10.2", "jaxlib": "0.10.2", "blackjax": "1.6.dev98+gf73e12956", "ceridwen": "0.2.3"}, "gpu": ["NVIDIA GeForce RTX 5060"], "x64": true, "calibration_module": "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/likelihood/calibration.py", "calibration_source": "    def normal_matrix(self, mu, sigma, mask) -> Array:\n        \"\"\"``D^T D + Sigma_p^{-1}`` -- the posterior precision of the coefficients.\"\"\"\n        design = self.design(mu, sigma, mask)\n        # Expose each coefficient pair as a pixel reduction. Under NSS vmap,\n        # this avoids a separate, poorly occupied tiny GEMM for every chain.\n        normal = jnp.sum(design[:, :, None] * design[:, None, :], axis=0)\n        precision = self._precision()\n        return normal if precision is None else normal + precision\n"}
+joint fit: diagnostics passed
+ln Z: 230656.533 +/- 0.314
+posterior-weight ESS: 3608.6
+likelihood calls: 8405881
+findfont: Failed to find font weight semibold, now using 700.
+photometry chi2/datum: 12.15
+spectrum chi2/bin: 1.05
+joint chi2/datum: 1.09
+sampled calibration floor: 3.09%
+native valid pixels shown: 4053
+native residual pixels after masks: 3523
+native spectrum is the fitted high-resolution likelihood
+P(lambda) median over fitted pixels: 0.8669 - 1.0990
+end-to-end tilt P(red) / P(blue) - 1: +0.0970
+joint redshift fixed at 0.6542
+spectrum normalization fitted with spectrum_scaling
+joint fit status: diagnostics passed
+saved derived outputs: /workspace/cosmic-chronometers-jwst/results/rtx-5060-production-speedup/M1_210210-20260906-reduce/ceridwen_derived_outputs.h5

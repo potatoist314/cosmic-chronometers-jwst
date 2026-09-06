@@ -1,0 +1,53 @@
+{
+  "amount": 0.277,
+  "description": "Instance 50047892 Charges - 1 day",
+  "end": 1788652800,
+  "items": [
+    {
+      "amount": 0.168,
+      "description": "2.105837 hours at $0.080/hour",
+      "end": 1788652800,
+      "items": [],
+      "metadata": {},
+      "source": null,
+      "start": 1788652800,
+      "type": "gpu"
+    },
+    {
+      "amount": 0.047,
+      "description": "2.132589 hours at $0.022/hour",
+      "end": 1788652800,
+      "items": [],
+      "metadata": {},
+      "source": null,
+      "start": 1788652800,
+      "type": "disk"
+    },
+    {
+      "amount": 0.059,
+      "description": "4.52 GB Downloaded at $0.013/GB",
+      "end": 1788652800,
+      "items": [],
+      "metadata": {},
+      "source": null,
+      "start": 1788652800,
+      "type": "bwd"
+    },
+    {
+      "amount": 0.003,
+      "description": "0.2578125 GB Uploaded at $0.013/GB",
+      "end": 1788652800,
+      "items": [],
+      "metadata": {},
+      "source": null,
+      "start": 1788652800,
+      "type": "bwu"
+    }
+  ],
+  "metadata": {
+    "label": "ceridwen-bench-rtx-5060"
+  },
+  "source": "instance-50047892",
+  "start": 1788652800,
+  "type": "instance"
+}

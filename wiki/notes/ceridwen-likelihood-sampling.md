@@ -1,6 +1,6 @@
 ---
 title: Ceridwen: likelihood and sampling
-date: 2026-09-01
+date: 2026-09-06
 section: Codebase
 tags: [ceridwen, blackjax, nested-sampling]
 job: 
@@ -63,6 +63,24 @@ if self.use_jitter:
 ```
 
 Each enabled term adds a squared uncertainty to `var`. A model prediction, observed data, or absolute jitter can set the term's scale.
+
+<details>
+<summary>Calibration matrix</summary>
+
+`ceridwen/ceridwen/likelihood/calibration.py:235-242 · normal_matrix`
+
+```python
+    def normal_matrix(self, mu, sigma, mask) -> Array:
+        """``D^T D + Sigma_p^{-1}`` -- the posterior precision of the coefficients."""
+        design = self.design(mu, sigma, mask)
+        # Expose each coefficient pair as a pixel reduction. Under NSS vmap,
+        # this avoids a separate, poorly occupied tiny GEMM for every chain.
+        normal = jnp.sum(design[:, :, None] * design[:, None, :], axis=0)
+        precision = self._precision()
+        return normal if precision is None else normal + precision
+```
+
+</details>
 
 ### Multiple observations
 
@@ -168,7 +186,21 @@ The unconstrained transformation prevents hard uniform boundaries from becoming 
 
 The defaults use 500 live points and five inner steps for each dimension. Each iteration deletes one-fifth of the live points. The default `logZ_tol` is `-5` (`sampler/nested.py:144-172` and `350-359`).
 
-The run loop reads `logZ` and `logZ_live` from the device once per iteration and reuses the two floats for the stop condition, the verbose line, the progress bar, and the checkpoint tag. Each read is a blocking device transfer, and earlier revisions performed up to seven of them per iteration.
+`ceridwen/ceridwen/sampler/nested.py:435-445 · _logical_likelihood_calls`
+
+```python
+    @staticmethod
+    def _logical_likelihood_calls(info):
+        """Per-particle evaluations for the pinned stepping-out slice kernel.
+
+        Each expansion loop evaluates its terminating condition once more
+        than its body runs. The two endpoints therefore add two calls per
+        slice. This counts logical evaluations, not redundant GPU lanes in
+        a vectorized while loop.
+        """
+        return jnp.sum(info.update_info.num_expansions
+                       + info.update_info.num_shrink + 2)
+```
 
 1. **Draw from priors**Initial live points
 2. **Evaluate likelihood**Score every point

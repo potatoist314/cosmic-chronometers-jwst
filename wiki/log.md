@@ -486,3 +486,12 @@
 - Removed the old benchmark runs and three performance comparison directories.
 - Removed their active wiki tables, timing claims, and links.
 - Retained scientific fits, raw data, and reusable benchmark code.
+
+## [2026-09-06] codebase | Production calibration and NSS measurements
+
+- Pages: `notes/ceridwen-likelihood-sampling.md`, `index.md`
+- Change: Documented the calibration Gram reduction, synchronized NSS step
+  timing, and logical likelihood counts including initialization and slice work.
+- Evidence: `ceridwen/ceridwen/likelihood/calibration.py`,
+  `ceridwen/ceridwen/sampler/nested.py`,
+  `results/rtx-5060-production-speedup/comparison.ipynb`.
