@@ -212,4 +212,14 @@ def test_notebook_defaults_to_a_free_dust_index():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
     assert 'FREE_DUST_INDEX = os.environ.get("CERIDWEN_FREE_DUST_INDEX", "1") == "1"' in source
-    assert "DUST_INDEX_BOUNDS = (-1.0, 0.4)" in source
+    assert 'os.environ.get("CERIDWEN_DUST_INDEX_BOUNDS", "-1.0,0.4")' in source
+
+
+def test_notebook_defaults_to_the_uniform_tau_prior():
+    notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
+    source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
+    assert 'TAU_PRIOR = os.environ.get("CERIDWEN_TAU_PRIOR", "uniform")' in source
+    # Ceridwen's documented dust-column prior, selected by CERIDWEN_TAU_PRIOR=clipped.
+    assert "ClippedNormal(mean=0.3, sigma=1.0, low=0.0, high=4.0)" in source
+    assert 'attrs["tau_prior"] = TAU_PRIOR' in source
+    assert 'attrs["dust_index_bounds"]' in source

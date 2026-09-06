@@ -24,6 +24,41 @@ def arms():
 
 
 STAGE1 = ["floor20", "emis_wide", "no_irac", "dust_free", "sfh_cont", "mask_cn"]
+NEW_DEFAULT_ARMS = ["tau_cn", "dust_wide"]
+
+
+def test_new_default_arm_pins_both_flipped_defaults(arms):
+    # Equal to the production notebook with no env after the two 2026-09-06 flips.
+    assert arms.ARMS["new_default"] == {
+        "CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total",
+        "CERIDWEN_SFH_PRIOR": "student", "CERIDWEN_FREE_DUST_INDEX": "1",
+    }
+    for name in NEW_DEFAULT_ARMS:
+        extra = {k: v for k, v in arms.ARMS[name].items() if arms.ARMS["new_default"].get(k) != v}
+        assert len(extra) == 1, (name, extra)
+        assert set(arms.ARMS["new_default"]) <= set(arms.ARMS[name])
+    assert arms.ARMS["tau_cn"]["CERIDWEN_TAU_PRIOR"] == "clipped"
+    assert arms.ARMS["dust_wide"]["CERIDWEN_DUST_INDEX_BOUNDS"] == "-2.0,0.5"
+    assert arms.MOCK_ARMS["mock_tilt4_new_default"]["CERIDWEN_SFH_PRIOR"] == "student"
+    assert arms.MOCK_ARMS["mock_tilt4_new_default"]["CERIDWEN_FREE_DUST_INDEX"] == "1"
+    assert arms.MOCK_ARMS["mock_tilt4_new_default"]["CERIDWEN_CALIBRATION_ORDER"] == "3"
+
+
+def test_new_default_seed_repeats_carry_the_new_default_env(arms):
+    cells = arms.build_cells(arms.DEFAULT_TARGETS, ["new_default", "new_default_rep1", "new_default_rep2"], [])
+    by_arm = {}
+    for cell in cells:
+        by_arm.setdefault(cell["arm"], []).append(cell)
+    assert len(by_arm["new_default"]) == 6
+    production = {c["target"]: c["seed"] for c in by_arm["new_default"]}
+    for arm in ("new_default_rep1", "new_default_rep2"):
+        assert sorted(c["target"] for c in by_arm[arm]) == ["M4_108989", "M5_172669"]
+        for cell in by_arm[arm]:
+            assert cell["env"] == arms.ARMS["new_default"]
+            assert cell["seed"] != production[cell["target"]]
+    # Same shifted seeds as the poly3_total repeats, so the two floors are paired.
+    assert arms.SEED_REP_BASE["new_default_rep1"] == arms.SEED_REP_BASE["seed_rep1"]
+    assert arms.SEED_REP_BASE["new_default_rep2"] == arms.SEED_REP_BASE["seed_rep2"]
 
 
 def test_stage1_arms_differ_from_poly3_total_by_one_switch(arms):

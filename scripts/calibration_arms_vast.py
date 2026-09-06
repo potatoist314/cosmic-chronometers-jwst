@@ -30,6 +30,16 @@ Fit-accuracy arms (2026-09-06), each poly3_total plus one switch::
     mock_tilt4_sfh_cont
                   the tilt-4 mock with the polynomial and the StudentT prior
 
+New-defaults arms (2026-09-06), the production notebook after both flips::
+
+    new_default   CERIDWEN_SFH_PRIOR=student CERIDWEN_FREE_DUST_INDEX=1   pinned explicitly
+    new_default_rep1..2
+                  --base-seed shifted like seed_rep1..2; M4_108989 and M5_172669 only
+    tau_cn        CERIDWEN_TAU_PRIOR=clipped        tau_dust ClippedNormal(0.3, 1.0, 0, 4)
+    dust_wide     CERIDWEN_DUST_INDEX_BOUNDS=-2.0,0.5   Prospector's alpha-template range
+    mock_tilt4_new_default
+                  the tilt-4 mock with the polynomial and both flips
+
 Results land in ``$CERIDWEN_ARMS_RESULTS/<arm>/<object>-<target>/``
 (``CERIDWEN_ARMS_RESULTS`` overrides the directory, on this machine and on
 the box) with the same files as the production run.  ``--ceridwen-tree PATH``
@@ -70,6 +80,9 @@ DEFAULT_TARGETS = [
 # -0.7 index the stored poly3_total fits used.
 POLY3_TOTAL = {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total",
                "CERIDWEN_SFH_PRIOR": "uniform", "CERIDWEN_FREE_DUST_INDEX": "0"}
+# The production notebook with no env after both flips, pinned explicitly.
+NEW_DEFAULT = {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total",
+               "CERIDWEN_SFH_PRIOR": "student", "CERIDWEN_FREE_DUST_INDEX": "1"}
 ARMS = {
     "baseline": {"CERIDWEN_CALIBRATION_ORDER": "0", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
     "poly3": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
@@ -84,11 +97,18 @@ ARMS = {
     "dust_free": {**POLY3_TOTAL, "CERIDWEN_FREE_DUST_INDEX": "1"},
     "sfh_cont": {**POLY3_TOTAL, "CERIDWEN_SFH_PRIOR": "student"},
     "mask_cn": {**POLY3_TOTAL, "CERIDWEN_MASK_REST_WINDOWS": "4142:4177,4634:4720"},
+    "new_default": NEW_DEFAULT,
+    "new_default_rep1": NEW_DEFAULT,
+    "new_default_rep2": NEW_DEFAULT,
+    "tau_cn": {**NEW_DEFAULT, "CERIDWEN_TAU_PRIOR": "clipped"},
+    "dust_wide": {**NEW_DEFAULT, "CERIDWEN_DUST_INDEX_BOUNDS": "-2.0,0.5"},
 }
 DEFAULT_BASE_SEED = 20260830          # == run_ceridwen_vast_multi_gpu.DEFAULT_BASE_SEED
 # Independent NSS repeats of the production model: same data, shifted seed.
 SEED_REP_BASE = {"seed_rep1": DEFAULT_BASE_SEED + 1000, "seed_rep2": DEFAULT_BASE_SEED + 2000,
-                 "seed_rep3": DEFAULT_BASE_SEED + 3000}
+                 "seed_rep3": DEFAULT_BASE_SEED + 3000,
+                 "new_default_rep1": DEFAULT_BASE_SEED + 1000,
+                 "new_default_rep2": DEFAULT_BASE_SEED + 2000}
 SEED_REP_TARGETS = ["M4_108989", "M5_172669"]
 MOCK_ENV = {
     "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
@@ -101,6 +121,8 @@ MOCK_ARMS = {
     "mock_tilt4_poly3": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "3"},
     "mock_tilt4_sfh_cont": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "3",
                             "CERIDWEN_SFH_PRIOR": "student"},
+    "mock_tilt4_new_default": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "3",
+                               "CERIDWEN_SFH_PRIOR": "student", "CERIDWEN_FREE_DUST_INDEX": "1"},
 }
 POLL_SECONDS = 120
 # A cell is one fresh notebook process; the RTX 5060 boxes occasionally kill a
