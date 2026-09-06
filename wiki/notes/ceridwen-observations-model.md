@@ -97,20 +97,6 @@ When every width is known at setup, the two broadening stages become one. Gaussi
 
 No flag or environment variable selects the combined form. The installed ceridwen package decides. The superproject records the ceridwen commit that contains `_smoothing.py`, and `.gitmodules` points at the project copy `potatoist314/ceridwen`, because the upstream repository does not carry these commits. `scripts/bootstrap_vast_ai.sh` reinstalls ceridwen from the tree on every run and stops when `ceridwen.observation._smoothing` does not import. That check exists because a non-editable install ignores files copied into the source tree after bootstrap.
 
-One combined convolution against the two chained ones, measured on the M1_210210 joint workload (11 bands, 3523 spectral pixels, grid schema 2.1).
-
-| Quantity | Chained | Combined |
-| --- | --- | --- |
-| Resampling grid points | 4096 and 16384 | 4096 |
-| Bytes per `Spectrum.predict` | 7,252,468 | 909,856 |
-| Transcendental operations per call | 20,482 | 0 |
-| Mean width error, Gaussian line of known width | 0.898% | 0.603% |
-| RTX 5060 throughput, likelihood calls per second | 915 | 3825 |
-| RTX 5060 median step | 1.101 s | 0.263 s |
-| Resident JAX memory during sampling | 619 MiB | 316 MiB |
-
-The GPU measurement is an A/B on one RTX 5060, so it carries no host-to-host variation. Grid schema 2.1. The RTX 5060 has a published dense tensor-core FP32 (TF32) peak of 47 TFLOP/s. Peak memory is unchanged at 1589 MiB, because the peak is set by a transient inside the sampler step rather than by the resident arrays.
-
 The combined form is both cheaper and closer to the analytic width, because it interpolates once rather than twice. The resampling grid is also floored at the input grid size: sizing it from the kernel width alone let a wide kernel undersample the model spectrum. Photometry predictions are unchanged.
 
 `res_convention="fwhm"` means that the supplied instrumental resolution is a FWHM value. With `inres="auto"`, Ceridwen uses the schema-2.1 grid resolution curve. It applies only the additional width required in quadrature (`lines 291-366`). The project GPU workflows install sedpy_jax from the `external/sedpy_jax` submodule: upstream commit `0291d58`, which accepts that per-pixel array, plus one commit that builds filters in NumPy instead of JAX. Filter construction happens once per fit, at setup, and that change cut per-fit setup from about 150 s to about 27 s on a rented GPU.

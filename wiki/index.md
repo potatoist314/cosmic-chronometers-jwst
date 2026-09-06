@@ -48,5 +48,4 @@ Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 ## Archive
 
 - `notes/wiki-log.md` — Wiki log (2026-09-04 · status: obsolete · obsolete)
-- `notes/ceridwen-gpu-benchmarks.md` — Ceridwen GPU benchmarks (2026-09-01 · t_d89d040c · obsolete)
 - `notes/chronometer-notebook-figures.md` — Chronometer notebook figures (2026-08-20 · status: obsolete · obsolete)

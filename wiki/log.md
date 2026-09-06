@@ -480,3 +480,9 @@
   `results/redshift-sigma-wiggle/` as a record.
 - Evidence: sigma_smooth absorbs template mismatch, not kinematics. Delta v
   within 20 km/s moved no physical parameter by more than 1.3 sigma.
+
+## [2026-09-06] cleanup | Obsolete Ceridwen benchmarks removed
+
+- Removed the old benchmark runs and three performance comparison directories.
+- Removed their active wiki tables, timing claims, and links.
+- Retained scientific fits, raw data, and reusable benchmark code.

@@ -113,28 +113,6 @@ PY
 
 The script checks 1,988 spectra. It also checks the catalogue and photometry row counts. It fetches the published schema-2.1 grid and loads it in strict mode. It checks shape `(5, 13, 107, 10992)`.
 
-### Run the fixed benchmark
-
-Run the benchmark after the bootstrap finishes. Replace the example Vast price, host, and instance values:
-
-```
-.venv-ceridwen-gpu/bin/python \
-  scripts/benchmark_ceridwen_vast.py run \
-  --price-usd-per-hour 0.670 \
-  --vast-host 148498 \
-  --vast-instance 48652928`
-```
-
-The workload uses M1_210210, 11 photometric bands, and 3,523 spectral pixels. It compiles one warm-up step. It then times five steps with 1,000 likelihood calls each.
-
-The runner disables JAX's 75% memory reservation before it imports JAX. The Vast sweep therefore accepts 8 GB GPUs for this benchmark.
-
-The runner saves JSON, CSV, and text results. It records input checksums, code versions, GPU metadata, memory use, throughput, and cost. The short run measures performance. It does not estimate a posterior.
-
-The comparison fingerprint includes the workload, inputs, Ceridwen version, and software versions. Allocator settings and the script checksum remain provenance fields. They do not split otherwise equal runs. The summary command also accepts verified schema-v1 results.
-
-Copy each result directory to the local project before you stop the instance. The summary command rejects files with different comparison fingerprints.
-
 ### Run the notebooks
 
 1. Open JupyterLab on the Vast.ai instance.
@@ -170,9 +148,8 @@ After that result passes validation, run shard zero on the first instance and sh
 
 The other instance uses `--shard-index 1`. The full profile uses 500 live points, 65 slice steps, 100 deletions, and `logZ_tol=-5`. Seed `20260830 + manifest_index` identifies each target.
 
-A shard runs one target at a time by default. `--fits-per-gpu N` runs N targets at once, each worker with `XLA_CLIENT_MEM_FRACTION = 0.85/N`, and the shard manifest records `fits_per_gpu`. Concurrent fits share the GPU by time-slicing. With the production sampler settings one fit already keeps the GPU busy: on an 8 GB RTX 4060 Ti three concurrent production fits each ran 3.1 times slower than the same fit alone, on an 8 GB RTX 3070 two and three concurrent fits summed to 0.96 to 0.97 of the single-fit throughput, and on Blackwell (RTX 5060 8 GB, RTX 5070 12 GB, RTX 5060 Ti 16 GB) they summed to 0.99 to 1.03 with no memory pressure. Leave the default unless a same-boot measurement with production settings shows headroom.
+A shard runs one target at a time by default. `--fits-per-gpu N` runs N targets at once, each worker with `XLA_CLIENT_MEM_FRACTION = 0.85/N`, and the shard manifest records `fits_per_gpu`.
 
-GPU memory does not set this limit. One production fit holds 0.8 to 1.0 GiB of JAX device memory; the default JAX preallocation reserves 75 percent of the card, which is what `nvidia-smi` reports. `XLA_CLIENT_MEM_FRACTION=0.14` (a 1,098 MiB pool on 8 GB) and `XLA_PYTHON_CLIENT_PREALLOCATE=false` both run a production fit at full speed; a 0.10 fraction fails in GEMM autotuning at compile time. A smaller pool changes the autotuned kernels and can shift a fit by one outer sampler iteration with the same ln Z within one sigma, so keep the allocator setting fixed inside one comparison.
 
 Each target writes one executed notebook, two HDF5 files, and one execution log. Figures remain embedded in the notebook. The runner retries a failed target once with the same seed.
 
@@ -226,8 +203,4 @@ Do not use the rented computer as the permanent copy of a scientific result.
 - `scripts/bootstrap_vast_ai.sh:122-168` checks the raw data and published grid.
 - `scripts/run_ceridwen_vast_multi_gpu.py:37-137` selects and shards the 187 unique objects.
 - `scripts/run_ceridwen_vast_multi_gpu.py:457-561` runs up to `fits_per_gpu` targets at once and records completion.
-- `scripts/benchmark_ceridwen_vast.py:23-39` fixes the workload and sampler sizes.
-- `scripts/benchmark_ceridwen_vast.py:662-713` excludes one warm-up step and measures five later steps.
-- `scripts/benchmark_ceridwen_vast.py:770-775` disables JAX preallocation before JAX initializes CUDA.
-- `scripts/benchmark_ceridwen_vast.py:154-216` defines schema-v2 and legacy comparison fingerprints.
 - `.gitignore:23-24` keeps the LEGA-C spectra out of Git.

@@ -145,32 +145,6 @@ This quick profile checks the Modal, data, GPU, and notebook path. Its posterior
 
 `astro-ceridwen-results/batch-20260825T151156339684Z/ceridwen_test_spectra.executed.ipynb`
 
-### Trace one sampler step
-
-Run one fixed A100-40GB trace:
-
-```
-uvx --from modal==1.5.4 modal run \
-  scripts/modal_ceridwen.py::trace`
-```
-
-The trace uses the matched M1_210210 workload. It initializes 300 live points and completes one warm-up step. It then records one BlackJAX NSS step with 1,000 likelihood calls.
-
-JAX writes a compressed timeline and an XProf database to the results Volume. The command prints the download and rename commands.
-
-Open a downloaded trace locally:
-
-```
-uvx --from xprof xprof \
-  --logdir benchmarks/ceridwen/runs/ceridwen_modal_a100_kernel_trace_complete_2026-08-26/xprof`
-```
-
-The 26 August trace measured 127.5 calls/s. One reduction fusion used 93.8% of GPU event time. See the [kernel results](figures/ceridwen-gpu-benchmarks.html#kernel-trace).
-
-`scripts/benchmark_ceridwen_vast.py:647-680 · run_traced_step`
-
-`scripts/modal_ceridwen.py:328-351 · _execute_trace`
-
 ### Use interactive Jupyter
 
 Start a Jupyter Sandbox with a one-hour limit:

@@ -27,7 +27,6 @@ Core analysis domains, validated findings, push status, and pending scientific d
 | **Calibration & Tilt Origin** | Spectra are brighter than 3" photometry by 1.26–1.48. Corrected photometry eliminates M4 tilt (+0.4%). M5 retains −20% dust-model tilt. | [Worktree Page](/wiki/f/tmp/worktrees/astro-calibration-polynomial/wiki/analyses/ceridwen-calibration-polynomial.html) · [Arms CSV](/wiki/f/tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/arms.csv) · [Tilt Results](/wiki/f/tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02) | Pushed `85c1e4a` | 1. Choose whether to accept corrected photometry and order-3 poly for 187 galaxies. 2. Choose whether to investigate young-galaxy 0.3-mag optical-to-NIR mismatch first. 3. Choose whether to merge branch `calibration-polynomial`. |
 | **Formation Timescales** | Median Δt is 2.46 Gyr. Flat across formation epoch. Spearman correlation with mass and [α/Fe] is 0.00 in 7-bin SFH. | [Epoch PNG](figures/dr2-quiescent-sample/dt-vs-formation-epoch.png) · [Mass PNG](figures/dr2-quiescent-sample/dt-vs-mass.png) · [Alpha PNG](figures/dr2-quiescent-sample/dt-vs-alpha.png) | Pushed `4c3ad00` | None. |
 | **Fit Quality Diagnostics** | All 187 fits succeeded. Worst joint reduced χ²/ν values are 2.69 (139662), 2.55 (253688), and 2.34 (101089). | [Quality PNG](figures/dr2-quiescent-sample/fit-quality.png) · [Quality PDF](figures/dr2-quiescent-sample/fit-quality.pdf) | Pushed `4c3ad00` | None. |
-| **GPU & Production Benchmarks** | One fit per GPU default. Concurrent runs offer no throughput gain on tested 8-GB and Blackwell GPUs. Fixed-grid SFH default. | [Benchmark Page](../ceridwen-gpu-benchmarks/) · [Runs Dir](/wiki/f/benchmarks/ceridwen/runs) | Pushed `d5cfe51` | None. |
 | **Interactive Checkpoint Evolution** | Interactive view of the accepted prior predictive, last retained checkpoint, and converged rescue posterior (nested sampling solution after sampler convergence). | [Open interactive viewer](../ceridwen-checkpoint-spectrum-evolution/) · [Screenshots Dir](../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots) | Verified local host | Delivered hosted artifact. Verified responsive viewports. |
 
 ### Scientific terms and definitions
@@ -186,22 +185,6 @@ Diagnostic plotting script: [scripts/plot_dr2_distributions_quality.py](/wiki/f/
 
 **Finding.** Zero sampling failures (187/187 completed). The worst joint χ²/ν values are 2.69 (galaxy 139662), 2.55 (galaxy 253688), and 2.34 (galaxy 101089).
 
-### Performance and production benchmarks
-
-Benchmark guide page: [analyses/ceridwen-gpu-benchmarks.html](../ceridwen-gpu-benchmarks/). Comprehensive run archive: [benchmarks/ceridwen/runs/](/wiki/f/benchmarks/ceridwen/runs).
-
-Validated GPU throughput, cost benchmarks, and production recommendations across architectures.
-
-| Report / Specification | Artifact Link | Format | Status | Key Performance Recommendation |
-| --- | --- | --- | --- | --- |
-| Vast.ai Multi-GPU Sweep Manifest | [ceridwen_vast_gpu_sweep_manifest_2026-08-27.json](/wiki/f/benchmarks/ceridwen/runs/ceridwen_vast_gpu_sweep_manifest_2026-08-27.json) | JSON | Pushed | 49 benchmark executions documenting scaling. |
-| Predicted vs Measured Summary | [ceridwen_vast_predicted_vs_measured_gpu_benchmark_summary_2026-08-26.csv](/wiki/f/benchmarks/ceridwen/runs/ceridwen_vast_predicted_vs_measured_gpu_benchmark_summary_2026-08-26.csv) | CSV | Pushed | Empirical timing model across cloud hosts. |
-| 3090 / 4090 / H100 Full Summary | [ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv](/wiki/f/benchmarks/ceridwen/runs/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv) | CSV | Local / Unpushed | High-end card comparisons and memory ceilings. |
-| Production 8GB GPU Sizing | [fits_per_gpu_production_8gb_20260902.json](/wiki/f/benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260902.json) | JSON | Pushed | One fit per GPU default to avoid out-of-memory crashes. |
-| Blackwell RTX 5060 8GB | [fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json](/wiki/f/benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json) | JSON | Pushed | Primary production card. Fast and cost-effective. |
-| Blackwell RTX 5060 Ti 16GB | [fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json](/wiki/f/benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json) | JSON | Pushed | Large memory headroom for high-resolution grids. |
-| Blackwell RTX 5070 12GB | [fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json](/wiki/f/benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json) | JSON | Pushed | Highest per-card throughput in Blackwell series. |
-
 ### Interactive checkpoint spectrum evolution
 
 #### Payload-preserving interactive viewer
@@ -223,8 +206,6 @@ The shaded band shows the 16th to 84th percentile range of noiseless model spect
 Exploratory and benchmark fit runs accessible at directory level:
 
 - [results/refit-static-smoothing/](/wiki/f/results/refit-static-smoothing) — Per-target refits using the static smoother Local / Unpushed.
-- [results/rtx-5060-sfh-fastpath-comparison/](/wiki/f/results/rtx-5060-sfh-fastpath-comparison) — Baseline versus fastpath_a SFH basis comparison Partial.
-- [results/rtx-5090-nss-default-variation-vs-fastpath-a/](/wiki/f/results/rtx-5090-nss-default-variation-vs-fastpath-a) — BlackJAX NSS sampler configuration variations Local / Unpushed.
 - [results/rtx-5090-integrated-fit/](/wiki/f/results/rtx-5090-integrated-fit) — Executed single integrated photometry+spectra fit Pushed.
 - [results/rtx-4070-super-four-galaxy-fits/](/wiki/f/results/rtx-4070-super-four-galaxy-fits) — Four-galaxy GPU validation run and checkpoint host Pushed.
 - [results/a100-feature-spectrum/](/wiki/f/results/a100-feature-spectrum) — A100 feature spectrum test outputs Pushed.
@@ -291,18 +272,8 @@ Complete manifest of all 79 deliverables audited and validated against the live 
 | `tilt-origin-runner-script` | **Tilt-origin runner script** | analysis-script | `text/x-python` | [../../tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_runner.py](/wiki/f/tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_runner.py) | Pushed | — |
 | `tilt-origin-vast-script` | **Tilt-origin Vast launcher** | analysis-script | `text/x-python` | [../../tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_vast.py](/wiki/f/tmp/worktrees/astro-calibration-polynomial/scripts/tilt_origin_vast.py) | Pushed | — |
 | `calibration-local-superseded-dir` | **Superseded local calibration-polynomial snapshots** | result-directory | `inode/directory` | [../../results/calibration-polynomial-2026-09-02](/wiki/f/results/calibration-polynomial-2026-09-02) | Local / Unpushed | Retain or remove after durable storage of the completed tilt-origin results? |
-| `gpu-benchmark-page` | **Ceridwen GPU and production benchmark analysis** | analysis-page | `text/html` | [ceridwen-gpu-benchmarks.html](../ceridwen-gpu-benchmarks/) | Pushed | — |
 | `gpu-benchmark-runs-dir` | **Ceridwen benchmark records directory** | result-directory | `inode/directory` | [../../benchmarks/ceridwen/runs](/wiki/f/benchmarks/ceridwen/runs) | Partial | Commit selected newer verification records or leave them local? |
-| `gpu-sweep-manifest-json` | **Vast GPU sweep manifest** | benchmark-report | `application/json` | [../../benchmarks/ceridwen/runs/ceridwen_vast_gpu_sweep_manifest_2026-08-27.json](/wiki/f/benchmarks/ceridwen/runs/ceridwen_vast_gpu_sweep_manifest_2026-08-27.json) | Pushed | — |
-| `gpu-predicted-measured-csv` | **Predicted versus measured GPU benchmark summary** | benchmark-report | `text/csv` | [../../benchmarks/ceridwen/runs/ceridwen_vast_predicted_vs_measured_gpu_benchmark_summary_2026-08-26.csv](/wiki/f/benchmarks/ceridwen/runs/ceridwen_vast_predicted_vs_measured_gpu_benchmark_summary_2026-08-26.csv) | Pushed | — |
-| `gpu-three-card-summary-csv` | **RTX 3090, RTX 4090, and H100 benchmark summary** | benchmark-report | `text/csv` | [../../benchmarks/ceridwen/runs/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv](/wiki/f/benchmarks/ceridwen/runs/ceridwen_vast_3090_4090_h100_joint_full_benchmark_summary_2026-08-26.csv) | Local / Unpushed | Commit or leave local? |
-| `gpu-production-8gb-json` | **8-GB production concurrency report** | benchmark-report | `application/json` | [../../benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260902.json](/wiki/f/benchmarks/ceridwen/runs/fits_per_gpu_production_8gb_20260902.json) | Pushed | — |
-| `gpu-production-5060-json` | **RTX 5060 production concurrency report** | benchmark-report | `application/json` | [../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json](/wiki/f/benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060_8gb_20260902.json) | Pushed | — |
-| `gpu-production-5060ti-json` | **RTX 5060 Ti production concurrency report** | benchmark-report | `application/json` | [../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json](/wiki/f/benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5060ti_16gb_20260902.json) | Pushed | — |
-| `gpu-production-5070-json` | **RTX 5070 production concurrency report** | benchmark-report | `application/json` | [../../benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json](/wiki/f/benchmarks/ceridwen/runs/fits_per_gpu_production_blackwell_rtx5070_12gb_20260902.json) | Pushed | — |
 | `static-smoothing-refits-dir` | **Static-smoothing refit results** | result-directory | `inode/directory` | [../../results/refit-static-smoothing](/wiki/f/results/refit-static-smoothing) | Local / Unpushed | Commit selected refits or leave local? |
-| `sfh-fastpath-comparison-dir` | **RTX 5060 SFH fast-path comparison** | result-directory | `inode/directory` | [../../results/rtx-5060-sfh-fastpath-comparison](/wiki/f/results/rtx-5060-sfh-fastpath-comparison) | Partial | — |
-| `nss-default-variation-dir` | **RTX 5090 NSS default-variation comparison** | result-directory | `inode/directory` | [../../results/rtx-5090-nss-default-variation-vs-fastpath-a](/wiki/f/results/rtx-5090-nss-default-variation-vs-fastpath-a) | Local / Unpushed | Promote selected comparison outputs? |
 | `rtx5090-integrated-fit-dir` | **RTX 5090 integrated fit result** | result-directory | `inode/directory` | [../../results/rtx-5090-integrated-fit](/wiki/f/results/rtx-5090-integrated-fit) | Pushed | — |
 | `rtx4070-four-fit-dir` | **RTX 4070 Super four-galaxy fits** | result-directory | `inode/directory` | [../../results/rtx-4070-super-four-galaxy-fits](/wiki/f/results/rtx-4070-super-four-galaxy-fits) | Pushed | — |
 | `a100-feature-spectrum-dir` | **A100 feature-spectrum result** | result-directory | `inode/directory` | [../../results/a100-feature-spectrum](/wiki/f/results/a100-feature-spectrum) | Pushed | — |
