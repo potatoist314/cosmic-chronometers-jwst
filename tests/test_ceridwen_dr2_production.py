@@ -227,6 +227,21 @@ def test_notebook_defaults_to_the_uniform_tau_prior():
     assert 'attrs["dust_index_bounds"]' in source
 
 
+def test_notebook_marks_major_absorption_features():
+    notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
+    source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
+    # Windows come from ceridwen's Lick/IDS catalogue, redshifted with z_catalog.
+    assert (
+        "from ceridwen.observation.absorption_features import "
+        "absorption_feature_mask, feature_windows"
+    ) in source
+    assert "def mark_absorption_features(ax" in source
+    assert "mark_absorption_features(axes[0])" in source
+    assert "mark_absorption_features(axes[1], show_labels=False)" in source
+    for name in ("CaK", "CaH", "HdA", "G4300", "HgA", "Fe4383", "Hbeta", "Mgb", "Fe5270"):
+        assert f'("{name}",' in source
+
+
 def test_result_roots_default_to_the_first_production_run(monkeypatch):
     monkeypatch.delenv("CERIDWEN_OUTPUT_ROOT", raising=False)
     monkeypatch.delenv("CERIDWEN_REMOTE_RESULT_ROOT", raising=False)

@@ -7,11 +7,15 @@ job:
 old: _old/notebooks/notebook-map.html
 ---
 
-### Scope
+<details>
+<summary>Scope</summary>
 
 Two Ceridwen notebooks are the current fitting entry points. One post-processing notebook presents a completed feature-spectrum result. Older inference branches are inactive. The `notebooks/practice/` directory contains the practice notebooks. Saved outputs are evidence only when the cell source, execution order, inputs, and kernel still match.
 
-### Ceridwen notebooks
+</details>
+
+<details>
+<summary>Ceridwen notebooks</summary>
 
 - **Spectral notebook**One Spectrum observation
 - **Joint notebook**Photometry and Spectrum observations
@@ -21,9 +25,14 @@ Two Ceridwen notebooks are the current fitting entry points. One post-processing
 3. **HDF5 result**Reloadable posterior
 4. **Posterior report**Tables and corner plots
 
+</details>
+
 <figure>
 <figcaption>The notebooks differ in observations but use the same inference path.</figcaption>
 </figure>
+
+<details>
+<summary>Details</summary>
 
 `ceridwen_test_spectra.ipynb` fits one LEGA-C spectrum. It fetches the published high-resolution Kroupa grid with schema 2.1. It converts wavelength and flux, creates a `Spectrum`, and adds calibration noise. It then runs BlackJAX nested sampling. Its full profile uses 500 live points, 100 deletions, and 60 inner steps. It uses `logZ_tol=-5`.
 
@@ -32,6 +41,8 @@ Two Ceridwen notebooks are the current fitting entry points. One post-processing
 Both modes compact the spectrum before Ceridwen builds the model. They retain two masked endpoint pixels. These endpoints preserve the same smoothing boundaries as the native 6,166-pixel spectrum.
 
 `notebooks/ceridwen_test_spectra.ipynb` · “Build the native-resolution spectrum” · `fit_pixel_mask` and `compact_indices`
+
+</details>
 
 ```
 fit_pixel_mask = native_fit_mask.copy()
@@ -44,6 +55,9 @@ compact_indices = np.unique(
 )`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The notebook markdown requires compact arrays and two endpoint pixels for identical smoothing boundaries.
 
 **Why it matters:** Full and feature modes use the same projection boundary while they select different likelihood pixels.
@@ -53,6 +67,8 @@ compact_indices = np.unique(
 Full-spectrum mode fits `spectrum_scaling` for the slit normalization. Photometry anchors the total flux. The spectral likelihood also samples its fractional calibration floor. Stellar-index mode remains scale invariant and uses catalogue diagonal uncertainties.
 
 Both modes use the published high-resolution grid. The production profile uses 500 live points, 100 deletions, 65 inner steps, and `logZ_tol=-5`.
+
+The full-spectrum fit figure shades nine major absorption features from `ceridwen.observation.absorption_features` on both panels: Ca K, Ca H, Hδ, G band, Hγ, Fe4383, Hβ, Mg b and Fe5270. Bands span their Lick bandpass and lines span ±1000 km/s, redshifted with the catalogue redshift, so the pull near each feature can be read directly (`mark_absorption_features`, 2026-09-07).
 
 The joint notebook reads `CERIDWEN_TARGET_ID`, `CERIDWEN_RESULT_DIR`, and `CERIDWEN_RANDOM_SEED`. The defaults retain the original M1_210210 run. The Vast multi-GPU launcher sets one fixed target and seed for each sequential one-GPU worker.
 
@@ -82,11 +98,17 @@ The executed notebook uses 164 galaxies inside the Borghi redshift range. The fi
 
 The overlap age residual has a 7.32 Gyr-per-redshift slope. The Planck-based formation-time diagnostic also decreases with redshift. The unbinned Ceridwen slope is only 1.2 standard errors below zero, while binning, S/N cuts, and the dispersion split can change the result's sign or scale. These checks identify age-definition drift, population drift, and estimator instability. They do not support a stable positive Ceridwen chronometer measurement.
 
-### Practice
+</details>
+
+<details>
+<summary>Practice</summary>
 
 `notebooks/practice/fits-viewer.ipynb` contains one cell that inspects a FITS table. It is a viewer, not an analysis pipeline.
 
-### Kernels
+</details>
+
+<details>
+<summary>Kernels</summary>
 
 - `notebooks/practice/fits-viewer.ipynb` records the root Python 3.14 kernel.
 - The two Ceridwen notebooks record Python 3.11 kernels.
@@ -94,9 +116,14 @@ The overlap age residual has a 7.32 Gyr-per-redshift slope. The Planck-based for
 
 Kernel choice is part of each notebook’s executable contract.
 
-### Examples
+</details>
+
+<details>
+<summary>Examples</summary>
 
 `notebooks/ceridwen_integrated_photometry_spectra.ipynb` · “Joint posterior” · `spectroscopic_likelihood` through `write_result_h5`
+
+</details>
 
 ```
 spectroscopic_likelihood = (
@@ -120,11 +147,16 @@ result_path = RESULT_DIR / "ceridwen_result.h5"
 write_result_h5(result_path, joint_model, joint_result)`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The notebook markdown requires independent photometric and spectroscopic likelihoods, checkpoints, and a saved posterior.
 
 **Why it matters:** One sampler call combines both observation types. The reload checks preserve parameter and likelihood shapes.
 
 `src/chronometer.py:101-115` · `hubble_from_age_slope`
+
+</details>
 
 ```
 def hubble_from_age_slope(
@@ -144,6 +176,11 @@ def hubble_from_age_slope(
     )`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** `tests/test_chronometer.py` checks the conversion, sign, zero-slope limit, and group-intercept invariance.
 
 **Why it matters:** A slope near zero maps to a broad, non-Gaussian H(z) distribution. The notebook therefore reports quantiles and the positive fraction.
+
+</details>
