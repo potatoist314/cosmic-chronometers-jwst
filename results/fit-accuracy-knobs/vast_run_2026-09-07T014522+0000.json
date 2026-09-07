@@ -1,0 +1,573 @@
+{
+ "started": "2026-09-06T22:16:53+00:00",
+ "branch": "absorption-mask",
+ "offer": {
+  "id": 48742494,
+  "gpu_name": "RTX 5060",
+  "dph_total": 0.10277777777777777,
+  "geolocation": "United Kingdom, GB",
+  "host_id": 166946
+ },
+ "cells": [
+  "mock_tilt4_new_default/M5_172669",
+  "new_default/M12_98104",
+  "tau_cn/M12_98104",
+  "dust_wide/M12_98104",
+  "new_default/M5_173928",
+  "tau_cn/M5_173928",
+  "dust_wide/M5_173928",
+  "new_default/M12_185653",
+  "tau_cn/M12_185653",
+  "dust_wide/M12_185653",
+  "new_default/M4_108989",
+  "new_default_rep1/M4_108989",
+  "new_default_rep2/M4_108989",
+  "tau_cn/M4_108989",
+  "dust_wide/M4_108989",
+  "new_default/M1_206545",
+  "tau_cn/M1_206545",
+  "dust_wide/M1_206545",
+  "new_default/M5_172669",
+  "new_default_rep1/M5_172669",
+  "new_default_rep2/M5_172669",
+  "tau_cn/M5_172669",
+  "dust_wide/M5_172669"
+ ],
+ "credit_before": 15.072539834129927,
+ "instance_id": 50103374,
+ "spend_so_far_usd": 1.6296,
+ "manifest": {
+  "mock_tilt4_sfh_cont/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T14:16:44.326354+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 485.9,
+   "finished": "2026-09-06T14:24:50.272688+00:00"
+  },
+  "floor20/M12_98104": {
+   "status": "done",
+   "started": "2026-09-06T14:24:50.273328+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 313.7,
+   "finished": "2026-09-06T14:30:04.015253+00:00"
+  },
+  "dust_free/M12_98104": {
+   "status": "failed",
+   "started": "2026-09-06T14:30:04.015918+00:00",
+   "returncode": 1,
+   "attempts": 2,
+   "wall_s": 861.6,
+   "finished": "2026-09-06T14:44:25.598470+00:00"
+  },
+  "no_irac/M12_98104": {
+   "status": "done",
+   "started": "2026-09-06T14:44:25.599418+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 318.7,
+   "finished": "2026-09-06T14:49:44.251346+00:00"
+  },
+  "mask_cn/M12_98104": {
+   "status": "done",
+   "started": "2026-09-06T14:49:44.252103+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 332.8,
+   "finished": "2026-09-06T14:55:17.101336+00:00"
+  },
+  "sfh_cont/M12_98104": {
+   "status": "done",
+   "started": "2026-09-06T14:55:17.102079+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 325.5,
+   "finished": "2026-09-06T15:00:42.565507+00:00"
+  },
+  "emis_wide/M12_98104": {
+   "status": "done",
+   "started": "2026-09-06T15:00:42.566262+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 323.6,
+   "finished": "2026-09-06T15:06:06.178669+00:00"
+  },
+  "floor20/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T15:06:06.179366+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 372.7,
+   "finished": "2026-09-06T15:12:18.878607+00:00"
+  },
+  "dust_free/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T15:12:18.879484+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 552.8,
+   "finished": "2026-09-06T15:21:31.656905+00:00"
+  },
+  "no_irac/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T15:21:31.657676+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 386.5,
+   "finished": "2026-09-06T15:27:58.130227+00:00"
+  },
+  "mask_cn/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T15:27:58.130788+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 382.6,
+   "finished": "2026-09-06T15:34:20.686287+00:00"
+  },
+  "sfh_cont/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T15:34:20.687116+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 394.6,
+   "finished": "2026-09-06T15:40:55.277994+00:00"
+  },
+  "emis_wide/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T15:40:55.278757+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 356.6,
+   "finished": "2026-09-06T15:46:51.848740+00:00"
+  },
+  "floor20/M12_185653": {
+   "status": "done",
+   "started": "2026-09-06T15:46:51.849637+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 340.6,
+   "finished": "2026-09-06T15:52:32.452996+00:00"
+  },
+  "dust_free/M12_185653": {
+   "status": "done",
+   "started": "2026-09-06T15:52:32.453872+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 444.6,
+   "finished": "2026-09-06T15:59:57.053839+00:00"
+  },
+  "no_irac/M12_185653": {
+   "status": "done",
+   "started": "2026-09-06T15:59:57.054756+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 320.8,
+   "finished": "2026-09-06T16:05:17.854043+00:00"
+  },
+  "mask_cn/M12_185653": {
+   "status": "done",
+   "started": "2026-09-06T16:05:17.855151+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 333.7,
+   "finished": "2026-09-06T16:10:51.584304+00:00"
+  },
+  "sfh_cont/M12_185653": {
+   "status": "done",
+   "started": "2026-09-06T16:10:51.585351+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 328.7,
+   "finished": "2026-09-06T16:16:20.267547+00:00"
+  },
+  "emis_wide/M12_185653": {
+   "status": "done",
+   "started": "2026-09-06T16:16:20.268350+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 331.8,
+   "finished": "2026-09-06T16:21:52.088546+00:00"
+  },
+  "seed_rep1/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T16:21:52.089502+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 368.7,
+   "finished": "2026-09-06T16:28:00.781810+00:00"
+  },
+  "seed_rep2/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T16:28:00.783055+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 375.8,
+   "finished": "2026-09-06T16:34:16.579545+00:00"
+  },
+  "seed_rep3/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T16:34:16.580471+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 376.7,
+   "finished": "2026-09-06T16:40:33.296342+00:00"
+  },
+  "floor20/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T16:40:33.297310+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 381.7,
+   "finished": "2026-09-06T16:46:55.046773+00:00"
+  },
+  "dust_free/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T16:46:55.047902+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 498.8,
+   "finished": "2026-09-06T16:55:13.872823+00:00"
+  },
+  "no_irac/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T16:55:13.874093+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 367.7,
+   "finished": "2026-09-06T17:01:21.617627+00:00"
+  },
+  "mask_cn/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T17:01:21.618759+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 352.7,
+   "finished": "2026-09-06T17:07:14.289854+00:00"
+  },
+  "sfh_cont/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T17:07:14.295874+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 387.9,
+   "finished": "2026-09-06T17:13:42.162777+00:00"
+  },
+  "emis_wide/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T17:13:42.163848+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 356.6,
+   "finished": "2026-09-06T17:19:38.725304+00:00"
+  },
+  "floor20/M1_206545": {
+   "status": "done",
+   "started": "2026-09-06T17:19:38.726444+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 380.8,
+   "finished": "2026-09-06T17:25:59.525247+00:00"
+  },
+  "dust_free/M1_206545": {
+   "status": "done",
+   "started": "2026-09-06T17:25:59.526306+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 573.8,
+   "finished": "2026-09-06T17:35:33.318414+00:00"
+  },
+  "no_irac/M1_206545": {
+   "status": "done",
+   "started": "2026-09-06T17:35:33.319168+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 376.7,
+   "finished": "2026-09-06T17:41:50.021421+00:00"
+  },
+  "mask_cn/M1_206545": {
+   "status": "done",
+   "started": "2026-09-06T17:41:50.022652+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 375.7,
+   "finished": "2026-09-06T17:48:05.681513+00:00"
+  },
+  "sfh_cont/M1_206545": {
+   "status": "done",
+   "started": "2026-09-06T17:48:05.682253+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 429.8,
+   "finished": "2026-09-06T17:55:15.531188+00:00"
+  },
+  "emis_wide/M1_206545": {
+   "status": "done",
+   "started": "2026-09-06T17:55:15.532254+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 384.9,
+   "finished": "2026-09-06T18:01:40.429266+00:00"
+  },
+  "seed_rep1/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T18:01:40.430522+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 432.5,
+   "finished": "2026-09-06T18:08:52.947690+00:00"
+  },
+  "seed_rep2/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T18:08:52.948783+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 413.6,
+   "finished": "2026-09-06T18:15:46.523394+00:00"
+  },
+  "seed_rep3/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T18:15:46.524948+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 423.7,
+   "finished": "2026-09-06T18:22:50.179286+00:00"
+  },
+  "floor20/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T18:22:50.180826+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 430.8,
+   "finished": "2026-09-06T18:30:00.965724+00:00"
+  },
+  "dust_free/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T18:30:00.966698+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 607.8,
+   "finished": "2026-09-06T18:40:08.815882+00:00"
+  },
+  "no_irac/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T18:40:08.817391+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 424.6,
+   "finished": "2026-09-06T18:47:13.444506+00:00"
+  },
+  "mask_cn/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T18:47:13.445408+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 413.6,
+   "finished": "2026-09-06T18:54:07.090307+00:00"
+  },
+  "sfh_cont/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T18:54:07.091503+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 429.1,
+   "finished": "2026-09-06T19:01:16.167119+00:00"
+  },
+  "emis_wide/M5_172669": {
+   "status": "done",
+   "started": "2026-09-06T19:01:16.167977+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 408.8,
+   "finished": "2026-09-06T19:08:04.938921+00:00"
+  },
+  "mock_tilt4_new_default/M5_172669": {
+   "status": "failed",
+   "started": "2026-09-06T22:20:02.279170+00:00",
+   "returncode": 1,
+   "attempts": 2,
+   "wall_s": 59.6,
+   "finished": "2026-09-06T22:21:01.887432+00:00"
+  },
+  "new_default/M12_98104": {
+   "status": "done",
+   "started": "2026-09-06T22:21:01.888483+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 457.7,
+   "finished": "2026-09-06T22:28:39.609322+00:00"
+  },
+  "tau_cn/M12_98104": {
+   "status": "done",
+   "started": "2026-09-06T22:28:39.610332+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 447.5,
+   "finished": "2026-09-06T22:36:07.159505+00:00"
+  },
+  "dust_wide/M12_98104": {
+   "status": "done",
+   "started": "2026-09-06T22:36:07.160876+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 464.7,
+   "finished": "2026-09-06T22:43:51.871338+00:00"
+  },
+  "new_default/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T22:43:51.872601+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 600.5,
+   "finished": "2026-09-06T22:53:52.389275+00:00"
+  },
+  "tau_cn/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T22:53:52.390410+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 590.7,
+   "finished": "2026-09-06T23:03:43.055794+00:00"
+  },
+  "dust_wide/M5_173928": {
+   "status": "done",
+   "started": "2026-09-06T23:03:43.057049+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 624.8,
+   "finished": "2026-09-06T23:14:07.906807+00:00"
+  },
+  "new_default/M12_185653": {
+   "status": "done",
+   "started": "2026-09-06T23:14:07.908091+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 448.7,
+   "finished": "2026-09-06T23:21:36.618282+00:00"
+  },
+  "tau_cn/M12_185653": {
+   "status": "done",
+   "started": "2026-09-06T23:21:36.619231+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 445.7,
+   "finished": "2026-09-06T23:29:02.312577+00:00"
+  },
+  "dust_wide/M12_185653": {
+   "status": "done",
+   "started": "2026-09-06T23:29:02.314309+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 458.7,
+   "finished": "2026-09-06T23:36:41.005987+00:00"
+  },
+  "new_default/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T23:36:41.007262+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 529.6,
+   "finished": "2026-09-06T23:45:30.610820+00:00"
+  },
+  "new_default_rep1/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T23:45:30.612340+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 525.6,
+   "finished": "2026-09-06T23:54:16.193517+00:00"
+  },
+  "new_default_rep2/M4_108989": {
+   "status": "done",
+   "started": "2026-09-06T23:54:16.194741+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 519.7,
+   "finished": "2026-09-07T00:02:55.924056+00:00"
+  },
+  "tau_cn/M4_108989": {
+   "status": "done",
+   "started": "2026-09-07T00:02:55.925639+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 521.8,
+   "finished": "2026-09-07T00:11:37.719865+00:00"
+  },
+  "dust_wide/M4_108989": {
+   "status": "done",
+   "started": "2026-09-07T00:11:37.721116+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 630.7,
+   "finished": "2026-09-07T00:22:08.451390+00:00"
+  },
+  "new_default/M1_206545": {
+   "status": "done",
+   "started": "2026-09-07T00:22:08.452983+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 631.6,
+   "finished": "2026-09-07T00:32:40.073284+00:00"
+  },
+  "tau_cn/M1_206545": {
+   "status": "done",
+   "started": "2026-09-07T00:32:40.074228+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 631.7,
+   "finished": "2026-09-07T00:43:11.792943+00:00"
+  },
+  "dust_wide/M1_206545": {
+   "status": "done",
+   "started": "2026-09-07T00:43:11.794635+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 612.9,
+   "finished": "2026-09-07T00:53:24.653799+00:00"
+  },
+  "new_default/M5_172669": {
+   "status": "done",
+   "started": "2026-09-07T00:53:24.654784+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 594.7,
+   "finished": "2026-09-07T01:03:19.378364+00:00"
+  },
+  "new_default_rep1/M5_172669": {
+   "status": "done",
+   "started": "2026-09-07T01:03:19.379683+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 619.8,
+   "finished": "2026-09-07T01:13:39.170454+00:00"
+  },
+  "new_default_rep2/M5_172669": {
+   "status": "done",
+   "started": "2026-09-07T01:13:39.172140+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 630.7,
+   "finished": "2026-09-07T01:24:09.917989+00:00"
+  },
+  "tau_cn/M5_172669": {
+   "status": "done",
+   "started": "2026-09-07T01:24:09.919644+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 608.6,
+   "finished": "2026-09-07T01:34:18.502856+00:00"
+  },
+  "dust_wide/M5_172669": {
+   "status": "done",
+   "started": "2026-09-07T01:34:18.504008+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 598.9,
+   "finished": "2026-09-07T01:44:17.385282+00:00"
+  }
+ },
+ "credit_after": 13.442957277830011,
+ "spent_usd": 1.6296,
+ "finished": "2026-09-07T01:45:22+00:00",
+ "instances_left": []
+}

@@ -4,7 +4,7 @@ date: 2026-09-06
 section: Analyses
 tags: [calibration, ceridwen, dr2-quiescent-sample, lick-indices]
 job:
-figures: [stage0_chi2_map.png, stage0_prior_rails.png, stage0_lick_residuals.png, parameters-shift.png, sfh-continuity.png, sfh-histories.png, lick-by-arm.png, mock-sfh-prior.png, chi2-M5_173928.png, corner-M5_173928.png]
+figures: [stage0_chi2_map.png, stage0_prior_rails.png, stage0_lick_residuals.png, parameters-shift.png, sfh-continuity.png, sfh-histories.png, lick-by-arm.png, mock-sfh-prior.png, chi2-M5_173928.png, corner-M5_173928.png, nd-parameters-shift.png, nd-dust-index.png, nd-sfh-histories.png, nd-lick.png]
 ---
 
 ## Stage 0, diagnostics on the poly3_total fits
@@ -265,3 +265,135 @@ Keep
 
 Open
 : M5_173928 has two solutions separated by 0.19 in ln Z and 1.5 Gyr in age, held apart only by two IRAC bands. The [alpha/Fe] rail at -0.2 and the carbon and nitrogen deficit survive every arm in this stage.
+
+## New defaults
+
+Run
+: 2026-09-06 22:17 to 2026-09-07 01:45 UTC on one RTX 5060 (offer 48742494, $0.1028/h, instance 50103374, destroyed). 22 fits landed, 1 mock cell aborted. Executed notebook `results/fit-accuracy-knobs/new-defaults.ipynb`; every table below is a CSV beside it.
+
+Reference
+: `poly3_total`, the original production model: order-3 marginalised Chebyshev, cosmos_total photometry, uniform SFH prior, Kriek and Conroy index fixed at -0.7, tau_dust Uniform(0, 2). 13 sampled parameters.
+
+Arms
+: `new_default` is the notebook with no environment set since 2026-09-06: StudentT(0, 0.3, df 2) on logsfr_ratios and the dust index sampled with Uniform(-1.0, 0.4). 14 parameters. `new_default_rep1` and `rep2` repeat it on M4_108989 and M5_172669 with the base seed shifted by 1000 and 2000. `tau_cn` adds Ceridwen's documented ClippedNormal(0.3, 1.0, 0, 4) on tau_dust. `dust_wide` widens the index to Prospector's alpha range, Uniform(-2.0, 0.5). All arms share the data with the reference, so Delta ln Z is comparable everywhere.
+
+Sampler
+: gpu-full profile unchanged (num_live 500, num_inner_steps 65, num_delete 100, logZ_tol -5). Ceridwen's 5 n rule would ask 70 inner steps for 14 parameters; 65 was kept so only the priors differ. Median wall 495 s per fit against 354 s for `poly3_total`; `dust_wide` 539 s, `tau_cn` 489 s. The stored `n_likelihood_calls` is now counted as `logical_including_initialization`, about 7.5 million per fit against about 1.2 million under the old counting, so the two runs cannot be compared on calls.
+
+### Seed floor
+
+Floor
+: max |shift| between seed repeats, in half-widths of the reference posterior. Old model from six `seed_rep` fits, new model from four `new_default_rep` fits (M4_108989 and M5_172669 only).
+
+| parameter | old model | new model |
+|---|---|---|
+| age | 1.20 | 0.34 |
+| log Z | 0.49 | 0.54 |
+| [alpha/Fe] | 0.96 | 0.23 |
+| tau_dust | 0.32 | 0.07 |
+| log M | 0.49 | 0.29 |
+| dust index | - | 0.15 |
+| ln Z spread | 1.99 | 3.13 |
+
+Reading
+: the new model is more repeatable on age, [alpha/Fe] and tau_dust because its posteriors are wider, so the same absolute scatter is a smaller fraction of a half-width. The ln Z spread grew to 3.1, so a Delta ln Z under about 3 between two 14-parameter fits is seed noise.
+
+### Per galaxy
+
+Shifts
+: `new_default` minus `poly3_total` medians, in reference half-widths, tested against the old floor. `new-defaults-headline.csv` has every column, `new-defaults.csv` the full table.
+
+| galaxy | age old to new (Gyr) | age shift | tau_dust old to new | tau shift | dust index | Delta ln Z |
+|---|---|---|---|---|---|---|
+| M12_98104 | 4.40 to 4.51 | +0.4 | 0.36 to 0.49 | +3.7 | -0.09 +/- 0.20 | +0.5 |
+| M5_173928 | 4.50 to 4.93 | +4.1 | 0.54 to 0.45 | -4.7 | -0.98, 88% within 0.05 of the wall | +5.6 |
+| M4_108989 | 4.61 to 4.70 | +0.8 | 0.25 to 0.35 | +3.4 | +0.11 +/- 0.29 | -3.2 |
+| M12_185653 | 5.02 to 5.00 | -0.0 | 0.17 to 0.31 | +4.6 | +0.26 +/- 0.14 | +4.0 |
+| M1_206545 | 5.06 to 5.16 | +6.8 | 0.46 to 0.39 | -3.2 | -0.99, 98% at the wall | +7.6 |
+| M5_172669 | 1.85 to 2.48 | +6.4 | 0.58 to 0.47 | -5.6 | -0.97, 89% at the wall | +9.0 |
+
+Beyond the old floor
+: age 3 of 6, log Z 4 of 6, [alpha/Fe] 0 of 6, tau_dust 6 of 6, log M 5 of 6. Only M4_108989 loses evidence, and by an amount inside the new ln Z spread.
+
+Two regimes
+: the three galaxies whose index pins to the -1.0 wall (M5_173928, M1_206545, M5_172669) get older by 4 to 7 half-widths and lose tau_dust. A steeper attenuation curve reddens the blue end for less total column, so the fit trades dust for age. The three galaxies whose index settles inside the prior (M12_98104, M4_108989, M12_185653) keep their age and gain tau_dust by 3 to 5 half-widths: the index moves toward Calzetti (0) or flatter, the curve reddens less per unit column, and the fit asks for more column.
+
+Additivity
+: the stage-1 `sfh_cont` and `dust_free` shifts add to the `new_default` shift within about 1 half-width on every parameter, except age on M5_172669 (-1.35) and M5_173928 (+1.33), the two galaxies where both priors act on the same young tail (`new-defaults-additivity.csv`).
+
+<figure>
+<img src="figures/fit-accuracy-knobs/nd-parameters-shift.png" alt="Shift of each physics parameter from poly3_total to new_default in reference half-widths, per galaxy, with the old and new seed floors">
+<figcaption>Parameter shifts of the new defaults against the original production fit; the shaded band is the old seed floor</figcaption>
+</figure>
+
+<figure>
+<img src="figures/fit-accuracy-knobs/nd-dust-index.png" alt="Posterior of the Kriek and Conroy dust index per galaxy under new_default and dust_wide">
+<figcaption>Dust-index posteriors: three galaxies pin to -1.0 under the default bounds and follow the wall to -2.0 when it moves</figcaption>
+</figure>
+
+<figure>
+<img src="figures/fit-accuracy-knobs/nd-sfh-histories.png" alt="Star-formation histories of the six galaxies under poly3_total and new_default">
+<figcaption>Star-formation histories, original production model against the new defaults</figcaption>
+</figure>
+
+### tau_cn
+
+Result
+: every physics shift is at or below 0.5 half-widths, tau_dust medians are unchanged to two decimals, Delta ln Z between -1.5 and +0.5. With the index free the column posterior sits at 0.3 to 0.5 with a half-width of about 0.05, far inside the ClippedNormal's 1.0 sigma, so the prior has nothing to act on.
+
+Verdict
+: reject, no effect.
+
+### dust_wide
+
+Result
+: the three wall-pinned galaxies follow the wall. M1_206545 goes from -0.99 to -1.90 (58% within 0.1 of -2.0), Delta ln Z +24, tau_dust 0.39 to 0.20, log Z +4.6 half-widths, [alpha/Fe] +2.0. M5_173928 goes to -1.75 (20% at the wall), Delta ln Z +31, age -4.4, log Z +24, tau_dust 0.45 to 0.30. M4_108989 flips from +0.11 to a bimodal posterior at -1.94 (78% at the wall), Delta ln Z +28, age -6.0, log Z +12, tau_dust 0.35 to 0.17, raw spectral chi2 -122. M5_172669 settles off the wall at -1.14 +/- 0.08 with Delta ln Z 0. M12_98104 and M12_185653 do not move.
+
+Reading
+: an index of -1.0 is already the steepest curve in Prospector's template library and -2.0 is far outside anything measured in attenuation studies. A parameter that runs to whatever wall it is given, with the evidence rising all the way, is a continuum-tilt nuisance the polynomial does not absorb, not a dust measurement. For quiescent galaxies with tau_dust 0.2 to 0.5 the tilt from the index and the tilt from age are degenerate, which is why age and log Z jump by tens of half-widths.
+
+Sanity
+: Lick mean |residual| falls from 2.31 to 1.97 (M4_108989 3.61 to 2.48, M5_173928 2.61 to 1.56), but the Borghi+22 comparison on M4_108989 flips [Z/H] from -1.67 sigma to +3.32 sigma. Better line fits at the cost of an unphysical dust curve and an unrecognisable metallicity.
+
+Verdict
+: reject as a production setting. Recommend a tight prior on the index instead of the flat Uniform(-1.0, 0.4): Normal(-0.3, 0.3) clipped to [-1, 0.4], or revert to the fixed -0.7 and accept the stage-1 chi2 penalty. Decide after the DR2-wide refit shows how many galaxies pin.
+
+### Sanity checks
+
+Lick
+: mean |residual| over all indices and galaxies: `poly3_total` 2.32, `new_default` 2.31, `tau_cn` 2.32, `sfh_cont` 2.27, `dust_free` 2.36. Seed scatter is about 0.05, so no arm moves the Lick agreement.
+
+Borghi+22
+: `new_default` on M12_185653 disagrees by 3.6 sigma in age, -3.7 in [Z/H], +3.8 in [alpha/Fe]; on M4_108989 by 1.1, -1.7, -5.3 against 0.95, -1.34, -5.19 for `poly3_total`. Unchanged within the run-to-run noise (`borghi-new-defaults.csv`).
+
+<figure>
+<img src="figures/fit-accuracy-knobs/nd-lick.png" alt="Predicted minus catalogue Lick index over catalogue error, per index, galaxy and arm, for poly3_total, new_default, tau_cn and dust_wide">
+<figcaption>Lick residuals for the new-defaults arms</figcaption>
+</figure>
+
+### Mock
+
+Status
+: `mock_tilt4_new_default` did not run. The stored tilt-4 truth has no `diffuse_dust_index`, so the free-index mock check aborted before sampling (two attempts, 60 s). Only `mock_tilt4_poly3` (age pull 0.64) and `mock_tilt4_sfh_cont` (1.82) exist. A new mock truth with a dust index is needed before the new defaults can be checked on a mock.
+
+### Bookkeeping
+
+Spend
+: the runner's counter read $1.63 for this run because it measures the whole-account credit drop, and the independent DR2-wide refit was renting two boxes at the same time. This run's own cost at $0.1028/h for 3.5 h is about $0.36.
+
+Derived summary
+: the h5 `summary/parameter` block does not carry `diffuse_dust_index`. The notebook reads it from the posterior samples through `pgd.load_galaxy` with `pgd.posterior_weights`.
+
+Offer rule
+: after this run Liu Hao fixed the Vast rule: RTX 5060 or 5060 Ti only, under $0.10/h, reliability above 99.5%. It is now `fit_offer_qualifies` in `scripts/sweep_ceridwen_vast_gpus.py`, shared by every fit runner (commit 0b55f35). The offer used here, $0.1028/h, would no longer qualify.
+
+### Verdict
+
+Keep
+: the new defaults. Six of six galaxies move tau_dust past the old floor, five of six gain evidence on identical data, and the direction of every shift follows from the attenuation-curve slope. Lick and Borghi agreement is unchanged, so the gain is in the dust and age posteriors, not in the line fits.
+
+Reject
+: `tau_cn`, no effect. `dust_wide`, unphysical wall-chasing.
+
+Open
+: the flat index prior lets three of six galaxies pin at -1.0. A tight prior or a fixed value is the next decision, after the DR2-wide refit reports the pinned fraction. A mock truth with a dust index is needed to test truth recovery under the new defaults.

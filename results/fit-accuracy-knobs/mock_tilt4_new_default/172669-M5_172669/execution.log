@@ -1,0 +1,914 @@
+
+[2026-09-06T22:20:06.299368+00:00] starting fixed-seed attempt
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+target: M5_172669
+fit mode: full_spectrum
+random seed: 20260830
+JAX devices: [CudaDevice(id=0)]
+result directory: /workspace/cosmic-chronometers-jwst/results/fit-accuracy-knobs/mock_tilt4_new_default/172669-M5_172669
+spectrum pixels: all
+photometry source: cosmos_ap3
+free redshift: fixed
+free sigma*: fixed
+calibration polynomial: Chebyshev order 3, prior sigma 0.1, marginalised
+f_calib ceiling: 0.10
+masked emission lines (rest A): [3726.0, 3728.8, 4861.3, 4958.9, 5006.8]
+masked rest windows (A): []
+dropped photometric bands: []
+dust index: free, Uniform(-1.0, 0.4)
+SFH prior on logsfr_ratios: student
+mock truth: /workspace/cosmic-chronometers-jwst/results/absorption-mask/truth_M5_172669.json seed=1 tilt=0.04 snr_scale=1.0
+SIMPLE  =                    T /Written by IDL:  Wed Jun 13 14:43:20 2018       BITPIX  =                    8 /                                                NAXIS   =                    0 /                                                EXTEND  =                    T /File contains extensions                        DATE    = '2018-06-13'         /                                                ORIGIN  = 'ESO     '           /European Southern Observatory                   TELESCOP= 'ESO-VLT-U3'         /ESO <TEL>                                       INSTRUME= 'VIMOS   '           /Instrument used                                 DISPELEM= 'HR_red  '           /                                                SPECSYS = 'TOPOCENT'           /                                                OBJECT  = 'M5_172669'          /                                                EXT_OBJ =                    T /                                                RA      =           149.853989 /UltraVISTA catalog R.A.                         DEC     =             2.358587 /UltraVISTA catalog Dec.                         EQUINOX =                 2000 /Standard FK5                                    RADECSYS= 'FK5     '           /                                                EXPTIME =              76927.3 /Total integration time per pixel (s)            TEXPTIME=              76927.3 /Total integration time in spectrum (s)          MJD-OBS =       57069.29412100 /                                                MJD-END =       57076.25174180 /                                                PROG_ID = 'MULTI   '           /                                                PROGID1 = '194.A-2005(C)'      /                                                PROGID2 = '194.A-2005(B)'      /                                                OBID1   =              1163842 /Observation block ID                            OBID2   =              1163844 /Observation block ID                            OBID3   =              1205334 /Observation block ID                            OBID4   =              1205358 /Observation block ID                            OBID5   =              1205361 /Observation block ID                            OBID6   =              1205364 /Observation block ID                            OBID7   =              1205367 /Observation block ID                            OBID8   =              1205370 /Observation block ID                            OBID9   =              1205373 /Observation block ID                            OBID10  =              1205376 /Observation block ID                            OBID11  =              1205379 /Observation block ID                            OBID12  =              1205382 /Observation block ID                            OBID13  =              1205385 /Observation block ID                            OBID14  =              1205388 /Observation block ID                            OBID15  =              1205394 /Observation block ID                            OBID16  =              1205397 /Observation block ID                            M_EPOCH =                    T /                                                PROV1   = 'VIMOS.2015-02-16T07:03:32.066.fits' /                                PROV2   = 'VIMOS.2015-02-16T07:24:26.591.fits' /                                PROV3   = 'VIMOS.2015-02-16T07:45:21.587.fits' /                                PROV4   = 'VIMOS.2015-02-16T08:06:16.580.fits' /                                PROV5   = 'VIMOS.2015-02-16T08:45:01.677.fits' /                                PROV6   = 'VIMOS.2015-02-17T01:02:41.892.fits' /                                PROV7   = 'VIMOS.2015-02-17T01:23:37.221.fits' /                                PROV8   = 'VIMOS.2015-02-17T01:44:32.226.fits' /                                PROV9   = 'VIMOS.2015-02-17T02:21:20.054.fits' /                                PROV10  = 'VIMOS.2015-02-17T02:42:15.229.fits' /                                PROV11  = 'VIMOS.2015-02-17T03:03:12.214.fits' /                                PROV12  = 'VIMOS.2015-02-17T03:24:08.228.fits' /                                PROV13  = 'VIMOS.2015-02-17T04:03:12.409.fits' /                                PROV14  = 'VIMOS.2015-02-17T04:24:07.223.fits' /                                PROV15  = 'VIMOS.2015-02-17T04:45:02.228.fits' /                                PROV16  = 'VIMOS.2015-02-17T05:05:57.242.fits' /                                PROV17  = 'VIMOS.2015-02-17T05:43:08.699.fits' /                                PROV18  = 'VIMOS.2015-02-17T06:04:04.234.fits' /                                PROV19  = 'VIMOS.2015-02-17T06:24:59.229.fits' /                                PROV20  = 'VIMOS.2015-02-17T06:45:54.224.fits' /                                PROV21  = 'VIMOS.2015-02-17T07:25:16.788.fits' /                                PROV22  = 'VIMOS.2015-02-17T07:46:11.222.fits' /                                PROV23  = 'VIMOS.2015-02-17T08:07:06.226.fits' /                                PROV24  = 'VIMOS.2015-02-17T08:28:01.232.fits' /                                PROV25  = 'VIMOS.2015-02-18T01:03:06.023.fits' /                                PROV26  = 'VIMOS.2015-02-18T01:24:01.790.fits' /                                PROV27  = 'VIMOS.2015-02-18T01:44:56.784.fits' /                                PROV28  = 'VIMOS.2015-02-18T02:05:51.798.fits' /                                PROV29  = 'VIMOS.2015-02-18T02:46:00.526.fits' /                                PROV30  = 'VIMOS.2015-02-18T03:06:55.795.fits' /                                PROV31  = 'VIMOS.2015-02-18T03:27:50.798.fits' /                                PROV32  = 'VIMOS.2015-02-18T03:48:45.784.fits' /                                PROV33  = 'VIMOS.2015-02-18T04:24:35.353.fits' /                                PROV34  = 'VIMOS.2015-02-18T04:45:30.787.fits' /                                PROV35  = 'VIMOS.2015-02-18T05:06:25.792.fits' /                                PROV36  = 'VIMOS.2015-02-18T05:27:20.797.fits' /                                PROV37  = 'VIMOS.2015-02-18T06:05:00.398.fits' /                                PROV38  = 'VIMOS.2015-02-18T06:25:55.793.fits' /                                PROV39  = 'VIMOS.2015-02-18T07:01:16.536.fits' /                                PROV40  = 'VIMOS.2015-02-18T07:22:11.792.fits' /                                PROV41  = 'VIMOS.2015-02-18T07:43:06.786.fits' /                                PROV42  = 'VIMOS.2015-02-18T08:04:02.401.fits' /                                PROV43  = 'VIMOS.2015-02-18T08:44:05.669.fits' /                                PROV44  = 'VIMOS.2015-02-19T01:18:07.266.fits' /                                PROV45  = 'VIMOS.2015-02-19T01:39:04.139.fits' /                                PROV46  = 'VIMOS.2015-02-19T01:59:59.133.fits' /                                PROV47  = 'VIMOS.2015-02-19T02:01:50.135.fits' /                                PROV48  = 'VIMOS.2015-02-19T03:03:16.415.fits' /                                PROV49  = 'VIMOS.2015-02-19T03:24:11.156.fits' /                                PROV50  = 'VIMOS.2015-02-19T03:45:06.138.fits' /                                PROV51  = 'VIMOS.2015-02-21T02:10:03.294.fits' /                                PROV52  = 'VIMOS.2015-02-21T02:30:58.466.fits' /                                PROV53  = 'VIMOS.2015-02-21T02:51:53.477.fits' /                                PROV54  = 'VIMOS.2015-02-23T00:41:31.158.fits' /                                PROV55  = 'VIMOS.2015-02-23T01:25:26.021.fits' /                                PROV56  = 'VIMOS.2015-02-23T01:46:20.926.fits' /                                PROV57  = 'VIMOS.2015-02-23T02:07:15.927.fits' /                                PROV58  = 'VIMOS.2015-02-23T02:28:12.872.fits' /                                PROV59  = 'VIMOS.2015-02-23T03:03:21.714.fits' /                                PROV60  = 'VIMOS.2015-02-23T03:24:16.920.fits' /                                PROV61  = 'VIMOS.2015-02-23T03:45:11.931.fits' /                                PROV62  = 'VIMOS.2015-02-23T04:06:06.926.fits' /                                PROV63  = 'VIMOS.2015-02-23T04:39:44.766.fits' /                                PROV64  = 'VIMOS.2015-02-23T05:00:40.301.fits' /                                PROV65  = 'VIMOS.2015-02-23T05:21:34.935.fits' /                                PROV66  = 'VIMOS.2015-02-23T05:42:30.541.fits' /                                PRODCATG= 'SCIENCE.SPECTRUM'   /                                                PROCSOFT= 'Reflex 2.8, vimos 3.1.7' /                                           OBSTECH = 'MOS,NODDING'        /                                                FLUXCAL = 'ABSOLUTE'           /                                                CONTNORM=                    F /                                                WAVELMIN=              656.590 /                                                WAVELMAX=              904.690 /                                                SPEC_BIN=            0.0600000 /                                                TOT_FLUX=                    F /                                                FLUXERR =                  10.                                                  REFERENC= '2016ApJS..223...29V' /                                               SNR     =        105.000000000 /                                                SPEC_RES=                 2500 /                                                NCOMBINE=                   66 /                                                DATASUM = '0       '           / data unit checksum updated 2018-06-13T13:04:41 CHECKSUM= 'mSarmSWomSaomSWo'   / HDU checksum updated 2018-06-13T13:04:41       TUTYP3  = 'Spectrum.Data.FluxAxis.Accuracy.StatError'                           TUTYP4  = 'Spectrum.Data.FluxAxis.Quality'                                      END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+M5_172669  z=0.6037
+catalogue S/N=105.0
+observed 4000-A coverage=False
+fixed sigma*=223.8 km/s
+instrument FWHM resolving power=2500
+good spectral coverage: 6570-9043 angstrom
+Photometry (photometry)
+  n_filters     : 12
+  ndof          : 12
+  wave_eff range: 3813 – 44781 Å
+  filters       : cfht_megacam_us_9301, subaru_suprimecam_B, subaru_suprimecam_V, subaru_suprimecam_rp, subaru_suprimecam_ip … (+7 more)
+  masked filters: 0 / 12
+
+  #    filter                           λ_eff [Å]      flux [mag]             σ      S/N   mask   UL
+  --------------------------------------------------------------------------------------------------
+  0    cfht_megacam_us_9301                3813.2      5.2327e-10    2.8282e-11    18.50   True    -
+  1    subaru_suprimecam_B                 4427.2      9.5015e-10    5.0299e-11    18.89   True    -
+  2    subaru_suprimecam_V                 5454.9      3.2553e-09    1.6793e-10    19.39   True    -
+  3    subaru_suprimecam_rp                6249.0      6.8576e-09    3.4645e-10    19.79   True    -
+  4    subaru_suprimecam_ip                7645.9      1.3817e-08    6.9305e-10    19.94   True    -
+  5    subaru_suprimecam_zp                9010.8      2.0526e-08    1.0266e-09    19.99   True    -
+  6    vista_vircam_Y                     10204.7      2.1581e-08    1.0792e-09    20.00   True    -
+  7    vista_vircam_J                     12504.9      2.7061e-08    1.3534e-09    20.00   True    -
+  8    vista_vircam_H                     16388.5      3.4153e-08    1.7082e-09    19.99   True    -
+  9    vista_vircam_Ks                    21452.8      4.2567e-08    2.1287e-09    20.00   True    -
+  10   spitzer_irac_ch1                   35378.5      4.1710e-08    2.0968e-09    19.89   True    -
+  11   spitzer_irac_ch2                   44780.5      2.8339e-08    1.4250e-09    19.89   True    -
+Spectrum (spectrum)
+  ndata         : 6166
+  ndof          : 3602
+  wavelength    : 5801.9 – 9501.9 Å
+  resolution    : 2500.0 (fwhm convention)
+  smoothtype    : R
+  sigma_losvd   : 223.8000030517578 km/s
+  logify        : False
+  calibration   : none
+  sky           : none
+  noise_floor   : 0.0000
+  noise model   : none
+  masked pixels : 2564 / 6166
+
+  i              λ [Å]            flux               σ   mask
+  -----------------------------------------------------------
+  0            5801.91      0.0000e+00      1.0000e+00  False
+  1            5802.51      0.0000e+00      1.0000e+00  False
+  2            5803.11      0.0000e+00      1.0000e+00  False
+  3            5803.71      0.0000e+00      1.0000e+00  False
+  4            5804.31      0.0000e+00      1.0000e+00  False
+  5            5804.91      0.0000e+00      1.0000e+00  False
+  6            5805.51      0.0000e+00      1.0000e+00  False
+  7            5806.11      0.0000e+00      1.0000e+00  False
+  8            5806.71      0.0000e+00      1.0000e+00  False
+  9            5807.31      0.0000e+00      1.0000e+00  False
+  10           5807.91      0.0000e+00      1.0000e+00  False
+  11           5808.51      0.0000e+00      1.0000e+00  False
+  12           5809.11      0.0000e+00      1.0000e+00  False
+  13           5809.71      0.0000e+00      1.0000e+00  False
+  14           5810.31      0.0000e+00      1.0000e+00  False
+  15           5810.91      0.0000e+00      1.0000e+00  False
+  16           5811.51      0.0000e+00      1.0000e+00  False
+  17           5812.11      0.0000e+00      1.0000e+00  False
+  18           5812.71      0.0000e+00      1.0000e+00  False
+  19           5813.31      0.0000e+00      1.0000e+00  False
+  20           5813.91      0.0000e+00      1.0000e+00  False
+  21           5814.51      0.0000e+00      1.0000e+00  False
+  22           5815.11      0.0000e+00      1.0000e+00  False
+  23           5815.71      0.0000e+00      1.0000e+00  False
+  24           5816.31      0.0000e+00      1.0000e+00  False
+  25           5816.91      0.0000e+00      1.0000e+00  False
+  26           5817.51      0.0000e+00      1.0000e+00  False
+  27           5818.11      0.0000e+00      1.0000e+00  False
+  28           5818.71      0.0000e+00      1.0000e+00  False
+  29           5819.31      0.0000e+00      1.0000e+00  False
+  30           5819.91      0.0000e+00      1.0000e+00  False
+  31           5820.51      0.0000e+00      1.0000e+00  False
+  32           5821.11      0.0000e+00      1.0000e+00  False
+  33           5821.71      0.0000e+00      1.0000e+00  False
+  34           5822.31      0.0000e+00      1.0000e+00  False
+  35           5822.91      0.0000e+00      1.0000e+00  False
+  36           5823.51      0.0000e+00      1.0000e+00  False
+  37           5824.11      0.0000e+00      1.0000e+00  False
+  38           5824.71      0.0000e+00      1.0000e+00  False
+  39           5825.31      0.0000e+00      1.0000e+00  False
+  ...
+  6126         9478.50      0.0000e+00      1.0000e+00  False
+  6127         9479.10      0.0000e+00      1.0000e+00  False
+  6128         9479.70      0.0000e+00      1.0000e+00  False
+  6129         9480.30      0.0000e+00      1.0000e+00  False
+  6130         9480.90      0.0000e+00      1.0000e+00  False
+  6131         9481.50      0.0000e+00      1.0000e+00  False
+  6132         9482.10      0.0000e+00      1.0000e+00  False
+  6133         9482.70      0.0000e+00      1.0000e+00  False
+  6134         9483.30      0.0000e+00      1.0000e+00  False
+  6135         9483.90      0.0000e+00      1.0000e+00  False
+  6136         9484.50      0.0000e+00      1.0000e+00  False
+  6137         9485.10      0.0000e+00      1.0000e+00  False
+  6138         9485.70      0.0000e+00      1.0000e+00  False
+  6139         9486.30      0.0000e+00      1.0000e+00  False
+  6140         9486.90      0.0000e+00      1.0000e+00  False
+  6141         9487.50      0.0000e+00      1.0000e+00  False
+  6142         9488.10      0.0000e+00      1.0000e+00  False
+  6143         9488.70      0.0000e+00      1.0000e+00  False
+  6144         9489.30      0.0000e+00      1.0000e+00  False
+  6145         9489.90      0.0000e+00      1.0000e+00  False
+  6146         9490.50      0.0000e+00      1.0000e+00  False
+  6147         9491.10      0.0000e+00      1.0000e+00  False
+  6148         9491.70      0.0000e+00      1.0000e+00  False
+  6149         9492.30      0.0000e+00      1.0000e+00  False
+  6150         9492.90      0.0000e+00      1.0000e+00  False
+  6151         9493.50      0.0000e+00      1.0000e+00  False
+  6152         9494.10      0.0000e+00      1.0000e+00  False
+  6153         9494.70      0.0000e+00      1.0000e+00  False
+  6154         9495.30      0.0000e+00      1.0000e+00  False
+  6155         9495.90      0.0000e+00      1.0000e+00  False
+  6156         9496.50      0.0000e+00      1.0000e+00  False
+  6157         9497.10      0.0000e+00      1.0000e+00  False
+  6158         9497.70      0.0000e+00      1.0000e+00  False
+  6159         9498.30      0.0000e+00      1.0000e+00  False
+  6160         9498.90      0.0000e+00      1.0000e+00  False
+  6161         9499.51      0.0000e+00      1.0000e+00  False
+  6162         9500.11      0.0000e+00      1.0000e+00  False
+  6163         9500.71      0.0000e+00      1.0000e+00  False
+  6164         9501.31      0.0000e+00      1.0000e+00  False
+  6165         9501.91      0.0000e+00      1.0000e+00  False
+  -----------------------------------------------------------
+  [stats over 3602/6166 unmasked, finite pixels]  flux min/med/max = 3.236e-28 / 7.079e-28 / 1.060e-27  mean |S/N| = 99.73
+joint photometric bands: 12
+spectrum normalization: fitted by spectrum_scaling
+native good pixels: 4096
+fitted native pixels: 3602
+library resolution: schema-2.1 automatic curve
+findfont: Failed to find font weight semibold, now using 700.
+SSPDataAfe
+------------------------------------------------------------------
+provenance
+  isochrones (isoc_type)   : MIST v2.5 (aMIST, alpha-variable)
+  spectral library         : C3K v2.3 high-res (c3k_hr, vt=10 km/s)
+  IMF (imf_type)           : 2
+  FSPS version             : —
+  schema version           : 2.1
+  recorded wave_min/max    : 100.0 / 99595854.863
+  build kwargs             : {'source_fits': 'ssp_final_mistv2.5_c3kv2.3vt10allfal_250722.fits', 'provider': 'M. J. Park (2025-07-22)', 'zsun_reference': 0.0185, 'feh_to_logZ': 'log10 Z = [Fe/H] + log10(Zsun)', 'imf_name': 'Kroupa'}
+grids
+  [alpha/Fe]               :    5 pts   [-0.2  0.   0.2  0.4  0.6]
+  metallicity  log10 Z     :   13 pts   [-4.233, -1.233]  (absolute TOTAL Z, NOT Z/Zsun, NOT [Fe/H])
+  age          log10(Gyr)  :  107 pts   [-4.000, +1.300]  = [0.0001, 20] Gyr
+  wavelength   Angstrom    : 10992 pts   [100.0, 99595854.9]
+  flux (n_afe,n_met,n_age,n_wave): (5, 13, 107, 10992)  [L_sun Hz^-1 M_sun^-1]  float64  583.3 MB
+  library resolution       : sigma_v [23.2, 2546.3] km/s over [100, 99595855] AA (100% of pixels; NaN elsewhere)
+  resolution source        : grid 2-pixel sampling floor derived from ssp_wave (sigma_v = 0.8493 c dlambda/lambda)
+catalogue-redshift universe age: 7.880 Gyr
+median grid pixel resolving power: R=6000
+SFH nodes: [0.         0.03       0.1        0.3        1.         3.
+ 5.         7.88040422]
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+Traceback (most recent call last):
+  File "/workspace/cosmic-chronometers-jwst/scripts/run_ceridwen_vast_multi_gpu.py", line 621, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/run_ceridwen_vast_multi_gpu.py", line 614, in main
+    return _worker(args.worker_output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/run_ceridwen_vast_multi_gpu.py", line 320, in _worker
+    client.execute()
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/.uv/python_install/cpython-3.11.16-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+N_RATIOS = len(lookback_template) - 1
+Z_BOUNDS = (
+    float(ssp.ssp_lgmet.min()) + 1e-4,
+    float(ssp.ssp_lgmet.max()) - 1e-4,
+)
+AFE_BOUNDS = (float(ssp.ssp_afe.min()), float(ssp.ssp_afe.max()))
+FIXED_DUST_INDEX = -0.7
+TAU_BOUNDS = (0.0, 2.0) if TAU_PRIOR == "uniform" else (0.0, 4.0)
+
+csp_theta = {
+    "lookback_time": jnp.asarray(lookback_template),
+    "sfh": jnp.ones(len(lookback_template)),
+    "Z": jnp.array([-1.85]),
+    "afe": jnp.array([0.2]),
+    "diffuse_tau_kc": jnp.array([0.2]),
+    "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX]),
+}
+joint_csp = CSPBasis_afe(
+    ssp,
+    theta=csp_theta,
+    zh_const=True,
+    sfh_interp="step",
+    add_dust=False,
+    add_diffuse_dust=True,
+    add_dust_emission=False,
+    add_igm=False,
+    sigma_losvd_kms=0.0,
+    track_zred_age=False,
+    verbose=False,
+)
+
+
+def sfh_from_ratios(free_theta):
+    return logsfr_ratios_to_sfh(
+        free_theta["logsfr_ratios"],
+        sfh_times_yr=np.asarray(joint_csp.sfh_times),
+    )
+
+
+joint_transforms = {"sfh": sfh_from_ratios}
+if not FREE_DUST_INDEX:
+    joint_transforms["diffuse_dust_index"] = lambda free_theta: jnp.array([FIXED_DUST_INDEX])
+joint_priors = {
+    "logsfr_ratios": (
+        StudentT(mean=0.0, scale=0.3, df=2.0)
+        if SFH_PRIOR == "student"
+        else Uniform(low=-3.0, high=3.0)
+    ),
+    "Z": Uniform(low=Z_BOUNDS[0], high=Z_BOUNDS[1]),
+    "afe": Uniform(low=AFE_BOUNDS[0], high=AFE_BOUNDS[1]),
+    "logmass": Uniform(low=8.0, high=13.0),
+    "diffuse_tau_kc": (
+        Uniform(low=TAU_BOUNDS[0], high=TAU_BOUNDS[1])
+        if TAU_PRIOR == "uniform"
+        else ClippedNormal(mean=0.3, sigma=1.0, low=0.0, high=4.0)
+    ),
+}
+if FREE_DUST_INDEX:
+    joint_priors["diffuse_dust_index"] = Uniform(
+        low=DUST_INDEX_BOUNDS[0], high=DUST_INDEX_BOUNDS[1]
+    )
+if FIT_MODE == "full_spectrum":
+    joint_priors["log_f_calib"] = Uniform(
+        low=np.log(0.01),
+        high=np.log(FCALIB_MAX),
+    )
+    joint_priors["spectrum_scaling"] = ClippedNormal(
+        mean=1.0, sigma=0.3, low=0.2, high=3.0
+    )
+ZRED_SIGMA = FREE_ZRED_KMS / C_KMS * (1.0 + z_catalog)
+ZRED_BOUNDS = (z_catalog - 3.0 * ZRED_SIGMA, z_catalog + 3.0 * ZRED_SIGMA)
+SIGMA_BOUNDS = (0.5 * sigma_star, 1.5 * sigma_star)
+if FREE_ZRED_KMS > 0:
+    joint_priors["zred"] = ClippedNormal(
+        mean=z_catalog, sigma=ZRED_SIGMA, low=ZRED_BOUNDS[0], high=ZRED_BOUNDS[1]
+    )
+if FREE_SIGMA_FRAC > 0:
+    joint_priors["sigma_smooth"] = ClippedNormal(
+        mean=sigma_star, sigma=FREE_SIGMA_FRAC * sigma_star,
+        low=SIGMA_BOUNDS[0], high=SIGMA_BOUNDS[1],
+    )
+joint_initial = {
+    "logsfr_ratios": jnp.zeros(N_RATIOS),
+    "logmass": jnp.array([11.0]),
+}
+if FREE_DUST_INDEX:
+    joint_initial["diffuse_dust_index"] = jnp.array([FIXED_DUST_INDEX])
+if FIT_MODE == "full_spectrum":
+    joint_initial["log_f_calib"] = jnp.array(
+        [np.log(SPECTRUM_CALIBRATION_INIT)]
+    )
+    joint_initial["spectrum_scaling"] = jnp.array([1.0])
+if FREE_ZRED_KMS > 0:
+    joint_initial["zred"] = jnp.array([z_catalog])
+if FREE_SIGMA_FRAC > 0:
+    joint_initial["sigma_smooth"] = jnp.array([sigma_star])
+joint_bounds = {
+    "logsfr_ratios": (-3.0, 3.0),
+    "Z": Z_BOUNDS,
+    "afe": AFE_BOUNDS,
+    "logmass": (8.0, 13.0),
+    "diffuse_tau_kc": TAU_BOUNDS,
+}
+if FREE_DUST_INDEX:
+    joint_bounds["diffuse_dust_index"] = DUST_INDEX_BOUNDS
+if FIT_MODE == "full_spectrum":
+    joint_bounds["log_f_calib"] = (np.log(0.01), np.log(FCALIB_MAX))
+    joint_bounds["spectrum_scaling"] = (0.2, 3.0)
+if FREE_ZRED_KMS > 0:
+    joint_bounds["zred"] = ZRED_BOUNDS
+if FREE_SIGMA_FRAC > 0:
+    joint_bounds["sigma_smooth"] = SIGMA_BOUNDS
+joint_model = SedModel(
+    joint_csp,
+    observations=[phot_obs, spectroscopic_obs],
+    priors=joint_priors,
+    transforms=joint_transforms,
+    free_param_init=joint_initial,
+    zred=z_catalog,
+)
+assert sum(np.size(value) for value in joint_model.theta_init.values()) == (
+    (13 if FIT_MODE == "full_spectrum" else 11)
+    + int(FREE_ZRED_KMS > 0)
+    + int(FREE_SIGMA_FRAC > 0)
+    + int(FREE_DUST_INDEX)
+)
+
+MOCK_TRUTH = None
+if MOCK_TRUTH_PATH:
+    import json
+
+    MOCK_TRUTH = {
+        key: jnp.asarray(value, dtype=float)
+        for key, value in json.loads(Path(MOCK_TRUTH_PATH).read_text()).items()
+    }
+    missing = set(joint_model.theta_init) - set(MOCK_TRUTH)
+    assert not missing, f"mock truth lacks {sorted(missing)}"
+    truth_theta = {key: MOCK_TRUTH[key] for key in joint_model.theta_init}
+    truth_prediction = joint_model.predict(truth_theta)
+    mock_rng = np.random.default_rng(MOCK_SEED)
+    phot_flux = np.asarray(truth_prediction["photometry"]) + (
+        phot_uncertainty * mock_rng.standard_normal(len(phot_uncertainty))
+    )
+    phot_obs.flux = jnp.asarray(phot_flux)
+    fitted_wave = spectrum_wave[spectrum_mask]
+    mock_tilt = 1.0 + MOCK_TILT * (
+        2.0 * (spectrum_wave - fitted_wave.min()) / (fitted_wave.max() - fitted_wave.min())
+        - 1.0
+    )
+    spectrum_uncertainty = np.where(
+        native_valid, spectrum_uncertainty / MOCK_SNR_SCALE, 1.0
+    )
+    spectrum_flux = np.where(
+        native_valid,
+        np.asarray(truth_prediction["spectrum"]) * mock_tilt
+        + spectrum_uncertainty * mock_rng.standard_normal(len(spectrum_wave)),
+        0.0,
+    )
+    spectrum_obs.flux = jnp.asarray(spectrum_flux)
+    spectrum_obs.uncertainty = jnp.asarray(spectrum_uncertainty)
+    print(
+        f"mock data: tilt {1 - MOCK_TILT:.3f}..{1 + MOCK_TILT:.3f} across the fitted range, "
+        f"median pixel S/N {np.median(spectrum_flux[spectrum_mask] / spectrum_uncertainty[spectrum_mask]):.1f}"
+    )
+
+feature_mask = None
+feature_downweight = float("nan")
+if SPECTRUM_PIXELS != "all":
+    if SPECTRUM_PIXELS == "features_downweight":
+        in_feature = absorption_feature_mask(
+            spectrum_wave, zred=z_catalog, window_kms=FEATURE_WINDOW_KMS
+        )
+        continuum = spectrum_mask & ~in_feature
+        if FEATURE_DOWNWEIGHT == "balance":
+            feature_downweight = float(np.sqrt(
+                np.sum((spectrum_flux[continuum] / spectrum_uncertainty[continuum]) ** 2)
+                / np.sum((phot_flux / phot_uncertainty) ** 2)
+            ))
+        else:
+            feature_downweight = float(FEATURE_DOWNWEIGHT)
+        feature_mask = spectrum_obs.select_absorption_features(
+            zred=z_catalog,
+            window_kms=FEATURE_WINDOW_KMS,
+            mode="downweight",
+            downweight=feature_downweight,
+        )
+        spectrum_uncertainty = np.asarray(spectrum_obs.uncertainty)
+    else:
+        feature_mask = spectrum_obs.select_absorption_features(
+            zred=z_catalog, window_kms=FEATURE_WINDOW_KMS, mode="drop"
+        )
+    spectrum_mask = np.asarray(spectrum_obs.mask)
+    print(f"pixel selection: {spectrum_obs.pixel_selection}")
+    print(f"fitted native pixels after selection: {spectrum_obs.ndof}")
+
+initial_photometry = np.asarray(
+    joint_model.predict(joint_model.theta_init)["photometry"]
+)
+active_photometry = phot_fit_mask & (initial_photometry > 0) & (phot_flux > 0)
+normalization_shift = np.median(
+    np.log10(phot_flux[active_photometry] / initial_photometry[active_photometry])
+)
+joint_model.theta_init["logmass"] = (
+    joint_model.theta_init["logmass"] + normalization_shift
+)
+initial_prediction = joint_model.predict(joint_model.theta_init)
+joint_csp.check_param_ranges(joint_model.apply_transforms(joint_model.theta_init))
+
+assert np.all(np.isfinite(np.asarray(initial_prediction["photometry"])))
+assert np.all(
+    np.isfinite(np.asarray(initial_prediction[spectroscopic_obs.name]))
+)
+
+if FREE_ZRED_KMS > 0:
+    print(f"joint redshift free: prior {z_catalog:.4f} +/- {ZRED_SIGMA:.5f} ({FREE_ZRED_KMS:.0f} km/s)")
+else:
+    print(f"joint redshift fixed at {z_catalog:.4f}")
+if FREE_SIGMA_FRAC > 0:
+    print(f"spectrum sigma* free: prior {sigma_star:.1f} +/- {FREE_SIGMA_FRAC * sigma_star:.1f} km/s")
+else:
+    print(f"spectrum sigma* fixed at {sigma_star:.1f} km/s")
+print(f"initial logmass: {float(joint_model.theta_init['logmass'][0]):.3f}")
+if FIT_MODE == "full_spectrum":
+    initial_spec_ratio = np.median(
+        spectrum_flux[spectrum_mask]
+        / np.asarray(initial_prediction["spectrum"])[spectrum_mask]
+    )
+    print(f"initial median spectrum/model ratio: {initial_spec_ratio:.3f}")
+else:
+    print(f"initial stellar-index predictions: {stellar_indices_obs.ndata}")
+
+------------------
+
+----- stdout -----
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+----- stdout -----
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mAssertionError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 137[39m
+[32m    133[39m         key: jnp.asarray(value, dtype=float)
+[32m    134[39m         [38;5;28;01mfor[39;00m key, value [38;5;28;01min[39;00m json.loads(Path(MOCK_TRUTH_PATH).read_text()).items()
+[32m    135[39m     }
+[32m    136[39m     missing = set(joint_model.theta_init) - set(MOCK_TRUTH)
+[32m--> [39m[32m137[39m     [38;5;28;01massert[39;00m [38;5;28;01mnot[39;00m missing, [33mf"mock truth lacks {sorted(missing)}"[39m
+[32m    138[39m     truth_theta = {key: MOCK_TRUTH[key] [38;5;28;01mfor[39;00m key [38;5;28;01min[39;00m joint_model.theta_init}
+[32m    139[39m     truth_prediction = joint_model.predict(truth_theta)
+[32m    140[39m     mock_rng = np.random.default_rng(MOCK_SEED)
+
+[31mAssertionError[39m: mock truth lacks ['diffuse_dust_index']
+
+
+[2026-09-06T22:20:36.576734+00:00] starting fixed-seed attempt
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+target: M5_172669
+fit mode: full_spectrum
+random seed: 20260830
+JAX devices: [CudaDevice(id=0)]
+result directory: /workspace/cosmic-chronometers-jwst/results/fit-accuracy-knobs/mock_tilt4_new_default/172669-M5_172669
+spectrum pixels: all
+photometry source: cosmos_ap3
+free redshift: fixed
+free sigma*: fixed
+calibration polynomial: Chebyshev order 3, prior sigma 0.1, marginalised
+f_calib ceiling: 0.10
+masked emission lines (rest A): [3726.0, 3728.8, 4861.3, 4958.9, 5006.8]
+masked rest windows (A): []
+dropped photometric bands: []
+dust index: free, Uniform(-1.0, 0.4)
+SFH prior on logsfr_ratios: student
+mock truth: /workspace/cosmic-chronometers-jwst/results/absorption-mask/truth_M5_172669.json seed=1 tilt=0.04 snr_scale=1.0
+SIMPLE  =                    T /Written by IDL:  Wed Jun 13 14:43:20 2018       BITPIX  =                    8 /                                                NAXIS   =                    0 /                                                EXTEND  =                    T /File contains extensions                        DATE    = '2018-06-13'         /                                                ORIGIN  = 'ESO     '           /European Southern Observatory                   TELESCOP= 'ESO-VLT-U3'         /ESO <TEL>                                       INSTRUME= 'VIMOS   '           /Instrument used                                 DISPELEM= 'HR_red  '           /                                                SPECSYS = 'TOPOCENT'           /                                                OBJECT  = 'M5_172669'          /                                                EXT_OBJ =                    T /                                                RA      =           149.853989 /UltraVISTA catalog R.A.                         DEC     =             2.358587 /UltraVISTA catalog Dec.                         EQUINOX =                 2000 /Standard FK5                                    RADECSYS= 'FK5     '           /                                                EXPTIME =              76927.3 /Total integration time per pixel (s)            TEXPTIME=              76927.3 /Total integration time in spectrum (s)          MJD-OBS =       57069.29412100 /                                                MJD-END =       57076.25174180 /                                                PROG_ID = 'MULTI   '           /                                                PROGID1 = '194.A-2005(C)'      /                                                PROGID2 = '194.A-2005(B)'      /                                                OBID1   =              1163842 /Observation block ID                            OBID2   =              1163844 /Observation block ID                            OBID3   =              1205334 /Observation block ID                            OBID4   =              1205358 /Observation block ID                            OBID5   =              1205361 /Observation block ID                            OBID6   =              1205364 /Observation block ID                            OBID7   =              1205367 /Observation block ID                            OBID8   =              1205370 /Observation block ID                            OBID9   =              1205373 /Observation block ID                            OBID10  =              1205376 /Observation block ID                            OBID11  =              1205379 /Observation block ID                            OBID12  =              1205382 /Observation block ID                            OBID13  =              1205385 /Observation block ID                            OBID14  =              1205388 /Observation block ID                            OBID15  =              1205394 /Observation block ID                            OBID16  =              1205397 /Observation block ID                            M_EPOCH =                    T /                                                PROV1   = 'VIMOS.2015-02-16T07:03:32.066.fits' /                                PROV2   = 'VIMOS.2015-02-16T07:24:26.591.fits' /                                PROV3   = 'VIMOS.2015-02-16T07:45:21.587.fits' /                                PROV4   = 'VIMOS.2015-02-16T08:06:16.580.fits' /                                PROV5   = 'VIMOS.2015-02-16T08:45:01.677.fits' /                                PROV6   = 'VIMOS.2015-02-17T01:02:41.892.fits' /                                PROV7   = 'VIMOS.2015-02-17T01:23:37.221.fits' /                                PROV8   = 'VIMOS.2015-02-17T01:44:32.226.fits' /                                PROV9   = 'VIMOS.2015-02-17T02:21:20.054.fits' /                                PROV10  = 'VIMOS.2015-02-17T02:42:15.229.fits' /                                PROV11  = 'VIMOS.2015-02-17T03:03:12.214.fits' /                                PROV12  = 'VIMOS.2015-02-17T03:24:08.228.fits' /                                PROV13  = 'VIMOS.2015-02-17T04:03:12.409.fits' /                                PROV14  = 'VIMOS.2015-02-17T04:24:07.223.fits' /                                PROV15  = 'VIMOS.2015-02-17T04:45:02.228.fits' /                                PROV16  = 'VIMOS.2015-02-17T05:05:57.242.fits' /                                PROV17  = 'VIMOS.2015-02-17T05:43:08.699.fits' /                                PROV18  = 'VIMOS.2015-02-17T06:04:04.234.fits' /                                PROV19  = 'VIMOS.2015-02-17T06:24:59.229.fits' /                                PROV20  = 'VIMOS.2015-02-17T06:45:54.224.fits' /                                PROV21  = 'VIMOS.2015-02-17T07:25:16.788.fits' /                                PROV22  = 'VIMOS.2015-02-17T07:46:11.222.fits' /                                PROV23  = 'VIMOS.2015-02-17T08:07:06.226.fits' /                                PROV24  = 'VIMOS.2015-02-17T08:28:01.232.fits' /                                PROV25  = 'VIMOS.2015-02-18T01:03:06.023.fits' /                                PROV26  = 'VIMOS.2015-02-18T01:24:01.790.fits' /                                PROV27  = 'VIMOS.2015-02-18T01:44:56.784.fits' /                                PROV28  = 'VIMOS.2015-02-18T02:05:51.798.fits' /                                PROV29  = 'VIMOS.2015-02-18T02:46:00.526.fits' /                                PROV30  = 'VIMOS.2015-02-18T03:06:55.795.fits' /                                PROV31  = 'VIMOS.2015-02-18T03:27:50.798.fits' /                                PROV32  = 'VIMOS.2015-02-18T03:48:45.784.fits' /                                PROV33  = 'VIMOS.2015-02-18T04:24:35.353.fits' /                                PROV34  = 'VIMOS.2015-02-18T04:45:30.787.fits' /                                PROV35  = 'VIMOS.2015-02-18T05:06:25.792.fits' /                                PROV36  = 'VIMOS.2015-02-18T05:27:20.797.fits' /                                PROV37  = 'VIMOS.2015-02-18T06:05:00.398.fits' /                                PROV38  = 'VIMOS.2015-02-18T06:25:55.793.fits' /                                PROV39  = 'VIMOS.2015-02-18T07:01:16.536.fits' /                                PROV40  = 'VIMOS.2015-02-18T07:22:11.792.fits' /                                PROV41  = 'VIMOS.2015-02-18T07:43:06.786.fits' /                                PROV42  = 'VIMOS.2015-02-18T08:04:02.401.fits' /                                PROV43  = 'VIMOS.2015-02-18T08:44:05.669.fits' /                                PROV44  = 'VIMOS.2015-02-19T01:18:07.266.fits' /                                PROV45  = 'VIMOS.2015-02-19T01:39:04.139.fits' /                                PROV46  = 'VIMOS.2015-02-19T01:59:59.133.fits' /                                PROV47  = 'VIMOS.2015-02-19T02:01:50.135.fits' /                                PROV48  = 'VIMOS.2015-02-19T03:03:16.415.fits' /                                PROV49  = 'VIMOS.2015-02-19T03:24:11.156.fits' /                                PROV50  = 'VIMOS.2015-02-19T03:45:06.138.fits' /                                PROV51  = 'VIMOS.2015-02-21T02:10:03.294.fits' /                                PROV52  = 'VIMOS.2015-02-21T02:30:58.466.fits' /                                PROV53  = 'VIMOS.2015-02-21T02:51:53.477.fits' /                                PROV54  = 'VIMOS.2015-02-23T00:41:31.158.fits' /                                PROV55  = 'VIMOS.2015-02-23T01:25:26.021.fits' /                                PROV56  = 'VIMOS.2015-02-23T01:46:20.926.fits' /                                PROV57  = 'VIMOS.2015-02-23T02:07:15.927.fits' /                                PROV58  = 'VIMOS.2015-02-23T02:28:12.872.fits' /                                PROV59  = 'VIMOS.2015-02-23T03:03:21.714.fits' /                                PROV60  = 'VIMOS.2015-02-23T03:24:16.920.fits' /                                PROV61  = 'VIMOS.2015-02-23T03:45:11.931.fits' /                                PROV62  = 'VIMOS.2015-02-23T04:06:06.926.fits' /                                PROV63  = 'VIMOS.2015-02-23T04:39:44.766.fits' /                                PROV64  = 'VIMOS.2015-02-23T05:00:40.301.fits' /                                PROV65  = 'VIMOS.2015-02-23T05:21:34.935.fits' /                                PROV66  = 'VIMOS.2015-02-23T05:42:30.541.fits' /                                PRODCATG= 'SCIENCE.SPECTRUM'   /                                                PROCSOFT= 'Reflex 2.8, vimos 3.1.7' /                                           OBSTECH = 'MOS,NODDING'        /                                                FLUXCAL = 'ABSOLUTE'           /                                                CONTNORM=                    F /                                                WAVELMIN=              656.590 /                                                WAVELMAX=              904.690 /                                                SPEC_BIN=            0.0600000 /                                                TOT_FLUX=                    F /                                                FLUXERR =                  10.                                                  REFERENC= '2016ApJS..223...29V' /                                               SNR     =        105.000000000 /                                                SPEC_RES=                 2500 /                                                NCOMBINE=                   66 /                                                DATASUM = '0       '           / data unit checksum updated 2018-06-13T13:04:41 CHECKSUM= 'mSarmSWomSaomSWo'   / HDU checksum updated 2018-06-13T13:04:41       TUTYP3  = 'Spectrum.Data.FluxAxis.Accuracy.StatError'                           TUTYP4  = 'Spectrum.Data.FluxAxis.Quality'                                      END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+M5_172669  z=0.6037
+catalogue S/N=105.0
+observed 4000-A coverage=False
+fixed sigma*=223.8 km/s
+instrument FWHM resolving power=2500
+good spectral coverage: 6570-9043 angstrom
+Photometry (photometry)
+  n_filters     : 12
+  ndof          : 12
+  wave_eff range: 3813 – 44781 Å
+  filters       : cfht_megacam_us_9301, subaru_suprimecam_B, subaru_suprimecam_V, subaru_suprimecam_rp, subaru_suprimecam_ip … (+7 more)
+  masked filters: 0 / 12
+
+  #    filter                           λ_eff [Å]      flux [mag]             σ      S/N   mask   UL
+  --------------------------------------------------------------------------------------------------
+  0    cfht_megacam_us_9301                3813.2      5.2327e-10    2.8282e-11    18.50   True    -
+  1    subaru_suprimecam_B                 4427.2      9.5015e-10    5.0299e-11    18.89   True    -
+  2    subaru_suprimecam_V                 5454.9      3.2553e-09    1.6793e-10    19.39   True    -
+  3    subaru_suprimecam_rp                6249.0      6.8576e-09    3.4645e-10    19.79   True    -
+  4    subaru_suprimecam_ip                7645.9      1.3817e-08    6.9305e-10    19.94   True    -
+  5    subaru_suprimecam_zp                9010.8      2.0526e-08    1.0266e-09    19.99   True    -
+  6    vista_vircam_Y                     10204.7      2.1581e-08    1.0792e-09    20.00   True    -
+  7    vista_vircam_J                     12504.9      2.7061e-08    1.3534e-09    20.00   True    -
+  8    vista_vircam_H                     16388.5      3.4153e-08    1.7082e-09    19.99   True    -
+  9    vista_vircam_Ks                    21452.8      4.2567e-08    2.1287e-09    20.00   True    -
+  10   spitzer_irac_ch1                   35378.5      4.1710e-08    2.0968e-09    19.89   True    -
+  11   spitzer_irac_ch2                   44780.5      2.8339e-08    1.4250e-09    19.89   True    -
+Spectrum (spectrum)
+  ndata         : 6166
+  ndof          : 3602
+  wavelength    : 5801.9 – 9501.9 Å
+  resolution    : 2500.0 (fwhm convention)
+  smoothtype    : R
+  sigma_losvd   : 223.8000030517578 km/s
+  logify        : False
+  calibration   : none
+  sky           : none
+  noise_floor   : 0.0000
+  noise model   : none
+  masked pixels : 2564 / 6166
+
+  i              λ [Å]            flux               σ   mask
+  -----------------------------------------------------------
+  0            5801.91      0.0000e+00      1.0000e+00  False
+  1            5802.51      0.0000e+00      1.0000e+00  False
+  2            5803.11      0.0000e+00      1.0000e+00  False
+  3            5803.71      0.0000e+00      1.0000e+00  False
+  4            5804.31      0.0000e+00      1.0000e+00  False
+  5            5804.91      0.0000e+00      1.0000e+00  False
+  6            5805.51      0.0000e+00      1.0000e+00  False
+  7            5806.11      0.0000e+00      1.0000e+00  False
+  8            5806.71      0.0000e+00      1.0000e+00  False
+  9            5807.31      0.0000e+00      1.0000e+00  False
+  10           5807.91      0.0000e+00      1.0000e+00  False
+  11           5808.51      0.0000e+00      1.0000e+00  False
+  12           5809.11      0.0000e+00      1.0000e+00  False
+  13           5809.71      0.0000e+00      1.0000e+00  False
+  14           5810.31      0.0000e+00      1.0000e+00  False
+  15           5810.91      0.0000e+00      1.0000e+00  False
+  16           5811.51      0.0000e+00      1.0000e+00  False
+  17           5812.11      0.0000e+00      1.0000e+00  False
+  18           5812.71      0.0000e+00      1.0000e+00  False
+  19           5813.31      0.0000e+00      1.0000e+00  False
+  20           5813.91      0.0000e+00      1.0000e+00  False
+  21           5814.51      0.0000e+00      1.0000e+00  False
+  22           5815.11      0.0000e+00      1.0000e+00  False
+  23           5815.71      0.0000e+00      1.0000e+00  False
+  24           5816.31      0.0000e+00      1.0000e+00  False
+  25           5816.91      0.0000e+00      1.0000e+00  False
+  26           5817.51      0.0000e+00      1.0000e+00  False
+  27           5818.11      0.0000e+00      1.0000e+00  False
+  28           5818.71      0.0000e+00      1.0000e+00  False
+  29           5819.31      0.0000e+00      1.0000e+00  False
+  30           5819.91      0.0000e+00      1.0000e+00  False
+  31           5820.51      0.0000e+00      1.0000e+00  False
+  32           5821.11      0.0000e+00      1.0000e+00  False
+  33           5821.71      0.0000e+00      1.0000e+00  False
+  34           5822.31      0.0000e+00      1.0000e+00  False
+  35           5822.91      0.0000e+00      1.0000e+00  False
+  36           5823.51      0.0000e+00      1.0000e+00  False
+  37           5824.11      0.0000e+00      1.0000e+00  False
+  38           5824.71      0.0000e+00      1.0000e+00  False
+  39           5825.31      0.0000e+00      1.0000e+00  False
+  ...
+  6126         9478.50      0.0000e+00      1.0000e+00  False
+  6127         9479.10      0.0000e+00      1.0000e+00  False
+  6128         9479.70      0.0000e+00      1.0000e+00  False
+  6129         9480.30      0.0000e+00      1.0000e+00  False
+  6130         9480.90      0.0000e+00      1.0000e+00  False
+  6131         9481.50      0.0000e+00      1.0000e+00  False
+  6132         9482.10      0.0000e+00      1.0000e+00  False
+  6133         9482.70      0.0000e+00      1.0000e+00  False
+  6134         9483.30      0.0000e+00      1.0000e+00  False
+  6135         9483.90      0.0000e+00      1.0000e+00  False
+  6136         9484.50      0.0000e+00      1.0000e+00  False
+  6137         9485.10      0.0000e+00      1.0000e+00  False
+  6138         9485.70      0.0000e+00      1.0000e+00  False
+  6139         9486.30      0.0000e+00      1.0000e+00  False
+  6140         9486.90      0.0000e+00      1.0000e+00  False
+  6141         9487.50      0.0000e+00      1.0000e+00  False
+  6142         9488.10      0.0000e+00      1.0000e+00  False
+  6143         9488.70      0.0000e+00      1.0000e+00  False
+  6144         9489.30      0.0000e+00      1.0000e+00  False
+  6145         9489.90      0.0000e+00      1.0000e+00  False
+  6146         9490.50      0.0000e+00      1.0000e+00  False
+  6147         9491.10      0.0000e+00      1.0000e+00  False
+  6148         9491.70      0.0000e+00      1.0000e+00  False
+  6149         9492.30      0.0000e+00      1.0000e+00  False
+  6150         9492.90      0.0000e+00      1.0000e+00  False
+  6151         9493.50      0.0000e+00      1.0000e+00  False
+  6152         9494.10      0.0000e+00      1.0000e+00  False
+  6153         9494.70      0.0000e+00      1.0000e+00  False
+  6154         9495.30      0.0000e+00      1.0000e+00  False
+  6155         9495.90      0.0000e+00      1.0000e+00  False
+  6156         9496.50      0.0000e+00      1.0000e+00  False
+  6157         9497.10      0.0000e+00      1.0000e+00  False
+  6158         9497.70      0.0000e+00      1.0000e+00  False
+  6159         9498.30      0.0000e+00      1.0000e+00  False
+  6160         9498.90      0.0000e+00      1.0000e+00  False
+  6161         9499.51      0.0000e+00      1.0000e+00  False
+  6162         9500.11      0.0000e+00      1.0000e+00  False
+  6163         9500.71      0.0000e+00      1.0000e+00  False
+  6164         9501.31      0.0000e+00      1.0000e+00  False
+  6165         9501.91      0.0000e+00      1.0000e+00  False
+  -----------------------------------------------------------
+  [stats over 3602/6166 unmasked, finite pixels]  flux min/med/max = 3.236e-28 / 7.079e-28 / 1.060e-27  mean |S/N| = 99.73
+joint photometric bands: 12
+spectrum normalization: fitted by spectrum_scaling
+native good pixels: 4096
+fitted native pixels: 3602
+library resolution: schema-2.1 automatic curve
+findfont: Failed to find font weight semibold, now using 700.
+SSPDataAfe
+------------------------------------------------------------------
+provenance
+  isochrones (isoc_type)   : MIST v2.5 (aMIST, alpha-variable)
+  spectral library         : C3K v2.3 high-res (c3k_hr, vt=10 km/s)
+  IMF (imf_type)           : 2
+  FSPS version             : —
+  schema version           : 2.1
+  recorded wave_min/max    : 100.0 / 99595854.863
+  build kwargs             : {'source_fits': 'ssp_final_mistv2.5_c3kv2.3vt10allfal_250722.fits', 'provider': 'M. J. Park (2025-07-22)', 'zsun_reference': 0.0185, 'feh_to_logZ': 'log10 Z = [Fe/H] + log10(Zsun)', 'imf_name': 'Kroupa'}
+grids
+  [alpha/Fe]               :    5 pts   [-0.2  0.   0.2  0.4  0.6]
+  metallicity  log10 Z     :   13 pts   [-4.233, -1.233]  (absolute TOTAL Z, NOT Z/Zsun, NOT [Fe/H])
+  age          log10(Gyr)  :  107 pts   [-4.000, +1.300]  = [0.0001, 20] Gyr
+  wavelength   Angstrom    : 10992 pts   [100.0, 99595854.9]
+  flux (n_afe,n_met,n_age,n_wave): (5, 13, 107, 10992)  [L_sun Hz^-1 M_sun^-1]  float64  583.3 MB
+  library resolution       : sigma_v [23.2, 2546.3] km/s over [100, 99595855] AA (100% of pixels; NaN elsewhere)
+  resolution source        : grid 2-pixel sampling floor derived from ssp_wave (sigma_v = 0.8493 c dlambda/lambda)
+catalogue-redshift universe age: 7.880 Gyr
+median grid pixel resolving power: R=6000
+SFH nodes: [0.         0.03       0.1        0.3        1.         3.
+ 5.         7.88040422]
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+Traceback (most recent call last):
+  File "/workspace/cosmic-chronometers-jwst/scripts/run_ceridwen_vast_multi_gpu.py", line 621, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/run_ceridwen_vast_multi_gpu.py", line 614, in main
+    return _worker(args.worker_output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/run_ceridwen_vast_multi_gpu.py", line 320, in _worker
+    client.execute()
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/.uv/python_install/cpython-3.11.16-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+N_RATIOS = len(lookback_template) - 1
+Z_BOUNDS = (
+    float(ssp.ssp_lgmet.min()) + 1e-4,
+    float(ssp.ssp_lgmet.max()) - 1e-4,
+)
+AFE_BOUNDS = (float(ssp.ssp_afe.min()), float(ssp.ssp_afe.max()))
+FIXED_DUST_INDEX = -0.7
+TAU_BOUNDS = (0.0, 2.0) if TAU_PRIOR == "uniform" else (0.0, 4.0)
+
+csp_theta = {
+    "lookback_time": jnp.asarray(lookback_template),
+    "sfh": jnp.ones(len(lookback_template)),
+    "Z": jnp.array([-1.85]),
+    "afe": jnp.array([0.2]),
+    "diffuse_tau_kc": jnp.array([0.2]),
+    "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX]),
+}
+joint_csp = CSPBasis_afe(
+    ssp,
+    theta=csp_theta,
+    zh_const=True,
+    sfh_interp="step",
+    add_dust=False,
+    add_diffuse_dust=True,
+    add_dust_emission=False,
+    add_igm=False,
+    sigma_losvd_kms=0.0,
+    track_zred_age=False,
+    verbose=False,
+)
+
+
+def sfh_from_ratios(free_theta):
+    return logsfr_ratios_to_sfh(
+        free_theta["logsfr_ratios"],
+        sfh_times_yr=np.asarray(joint_csp.sfh_times),
+    )
+
+
+joint_transforms = {"sfh": sfh_from_ratios}
+if not FREE_DUST_INDEX:
+    joint_transforms["diffuse_dust_index"] = lambda free_theta: jnp.array([FIXED_DUST_INDEX])
+joint_priors = {
+    "logsfr_ratios": (
+        StudentT(mean=0.0, scale=0.3, df=2.0)
+        if SFH_PRIOR == "student"
+        else Uniform(low=-3.0, high=3.0)
+    ),
+    "Z": Uniform(low=Z_BOUNDS[0], high=Z_BOUNDS[1]),
+    "afe": Uniform(low=AFE_BOUNDS[0], high=AFE_BOUNDS[1]),
+    "logmass": Uniform(low=8.0, high=13.0),
+    "diffuse_tau_kc": (
+        Uniform(low=TAU_BOUNDS[0], high=TAU_BOUNDS[1])
+        if TAU_PRIOR == "uniform"
+        else ClippedNormal(mean=0.3, sigma=1.0, low=0.0, high=4.0)
+    ),
+}
+if FREE_DUST_INDEX:
+    joint_priors["diffuse_dust_index"] = Uniform(
+        low=DUST_INDEX_BOUNDS[0], high=DUST_INDEX_BOUNDS[1]
+    )
+if FIT_MODE == "full_spectrum":
+    joint_priors["log_f_calib"] = Uniform(
+        low=np.log(0.01),
+        high=np.log(FCALIB_MAX),
+    )
+    joint_priors["spectrum_scaling"] = ClippedNormal(
+        mean=1.0, sigma=0.3, low=0.2, high=3.0
+    )
+ZRED_SIGMA = FREE_ZRED_KMS / C_KMS * (1.0 + z_catalog)
+ZRED_BOUNDS = (z_catalog - 3.0 * ZRED_SIGMA, z_catalog + 3.0 * ZRED_SIGMA)
+SIGMA_BOUNDS = (0.5 * sigma_star, 1.5 * sigma_star)
+if FREE_ZRED_KMS > 0:
+    joint_priors["zred"] = ClippedNormal(
+        mean=z_catalog, sigma=ZRED_SIGMA, low=ZRED_BOUNDS[0], high=ZRED_BOUNDS[1]
+    )
+if FREE_SIGMA_FRAC > 0:
+    joint_priors["sigma_smooth"] = ClippedNormal(
+        mean=sigma_star, sigma=FREE_SIGMA_FRAC * sigma_star,
+        low=SIGMA_BOUNDS[0], high=SIGMA_BOUNDS[1],
+    )
+joint_initial = {
+    "logsfr_ratios": jnp.zeros(N_RATIOS),
+    "logmass": jnp.array([11.0]),
+}
+if FREE_DUST_INDEX:
+    joint_initial["diffuse_dust_index"] = jnp.array([FIXED_DUST_INDEX])
+if FIT_MODE == "full_spectrum":
+    joint_initial["log_f_calib"] = jnp.array(
+        [np.log(SPECTRUM_CALIBRATION_INIT)]
+    )
+    joint_initial["spectrum_scaling"] = jnp.array([1.0])
+if FREE_ZRED_KMS > 0:
+    joint_initial["zred"] = jnp.array([z_catalog])
+if FREE_SIGMA_FRAC > 0:
+    joint_initial["sigma_smooth"] = jnp.array([sigma_star])
+joint_bounds = {
+    "logsfr_ratios": (-3.0, 3.0),
+    "Z": Z_BOUNDS,
+    "afe": AFE_BOUNDS,
+    "logmass": (8.0, 13.0),
+    "diffuse_tau_kc": TAU_BOUNDS,
+}
+if FREE_DUST_INDEX:
+    joint_bounds["diffuse_dust_index"] = DUST_INDEX_BOUNDS
+if FIT_MODE == "full_spectrum":
+    joint_bounds["log_f_calib"] = (np.log(0.01), np.log(FCALIB_MAX))
+    joint_bounds["spectrum_scaling"] = (0.2, 3.0)
+if FREE_ZRED_KMS > 0:
+    joint_bounds["zred"] = ZRED_BOUNDS
+if FREE_SIGMA_FRAC > 0:
+    joint_bounds["sigma_smooth"] = SIGMA_BOUNDS
+joint_model = SedModel(
+    joint_csp,
+    observations=[phot_obs, spectroscopic_obs],
+    priors=joint_priors,
+    transforms=joint_transforms,
+    free_param_init=joint_initial,
+    zred=z_catalog,
+)
+assert sum(np.size(value) for value in joint_model.theta_init.values()) == (
+    (13 if FIT_MODE == "full_spectrum" else 11)
+    + int(FREE_ZRED_KMS > 0)
+    + int(FREE_SIGMA_FRAC > 0)
+    + int(FREE_DUST_INDEX)
+)
+
+MOCK_TRUTH = None
+if MOCK_TRUTH_PATH:
+    import json
+
+    MOCK_TRUTH = {
+        key: jnp.asarray(value, dtype=float)
+        for key, value in json.loads(Path(MOCK_TRUTH_PATH).read_text()).items()
+    }
+    missing = set(joint_model.theta_init) - set(MOCK_TRUTH)
+    assert not missing, f"mock truth lacks {sorted(missing)}"
+    truth_theta = {key: MOCK_TRUTH[key] for key in joint_model.theta_init}
+    truth_prediction = joint_model.predict(truth_theta)
+    mock_rng = np.random.default_rng(MOCK_SEED)
+    phot_flux = np.asarray(truth_prediction["photometry"]) + (
+        phot_uncertainty * mock_rng.standard_normal(len(phot_uncertainty))
+    )
+    phot_obs.flux = jnp.asarray(phot_flux)
+    fitted_wave = spectrum_wave[spectrum_mask]
+    mock_tilt = 1.0 + MOCK_TILT * (
+        2.0 * (spectrum_wave - fitted_wave.min()) / (fitted_wave.max() - fitted_wave.min())
+        - 1.0
+    )
+    spectrum_uncertainty = np.where(
+        native_valid, spectrum_uncertainty / MOCK_SNR_SCALE, 1.0
+    )
+    spectrum_flux = np.where(
+        native_valid,
+        np.asarray(truth_prediction["spectrum"]) * mock_tilt
+        + spectrum_uncertainty * mock_rng.standard_normal(len(spectrum_wave)),
+        0.0,
+    )
+    spectrum_obs.flux = jnp.asarray(spectrum_flux)
+    spectrum_obs.uncertainty = jnp.asarray(spectrum_uncertainty)
+    print(
+        f"mock data: tilt {1 - MOCK_TILT:.3f}..{1 + MOCK_TILT:.3f} across the fitted range, "
+        f"median pixel S/N {np.median(spectrum_flux[spectrum_mask] / spectrum_uncertainty[spectrum_mask]):.1f}"
+    )
+
+feature_mask = None
+feature_downweight = float("nan")
+if SPECTRUM_PIXELS != "all":
+    if SPECTRUM_PIXELS == "features_downweight":
+        in_feature = absorption_feature_mask(
+            spectrum_wave, zred=z_catalog, window_kms=FEATURE_WINDOW_KMS
+        )
+        continuum = spectrum_mask & ~in_feature
+        if FEATURE_DOWNWEIGHT == "balance":
+            feature_downweight = float(np.sqrt(
+                np.sum((spectrum_flux[continuum] / spectrum_uncertainty[continuum]) ** 2)
+                / np.sum((phot_flux / phot_uncertainty) ** 2)
+            ))
+        else:
+            feature_downweight = float(FEATURE_DOWNWEIGHT)
+        feature_mask = spectrum_obs.select_absorption_features(
+            zred=z_catalog,
+            window_kms=FEATURE_WINDOW_KMS,
+            mode="downweight",
+            downweight=feature_downweight,
+        )
+        spectrum_uncertainty = np.asarray(spectrum_obs.uncertainty)
+    else:
+        feature_mask = spectrum_obs.select_absorption_features(
+            zred=z_catalog, window_kms=FEATURE_WINDOW_KMS, mode="drop"
+        )
+    spectrum_mask = np.asarray(spectrum_obs.mask)
+    print(f"pixel selection: {spectrum_obs.pixel_selection}")
+    print(f"fitted native pixels after selection: {spectrum_obs.ndof}")
+
+initial_photometry = np.asarray(
+    joint_model.predict(joint_model.theta_init)["photometry"]
+)
+active_photometry = phot_fit_mask & (initial_photometry > 0) & (phot_flux > 0)
+normalization_shift = np.median(
+    np.log10(phot_flux[active_photometry] / initial_photometry[active_photometry])
+)
+joint_model.theta_init["logmass"] = (
+    joint_model.theta_init["logmass"] + normalization_shift
+)
+initial_prediction = joint_model.predict(joint_model.theta_init)
+joint_csp.check_param_ranges(joint_model.apply_transforms(joint_model.theta_init))
+
+assert np.all(np.isfinite(np.asarray(initial_prediction["photometry"])))
+assert np.all(
+    np.isfinite(np.asarray(initial_prediction[spectroscopic_obs.name]))
+)
+
+if FREE_ZRED_KMS > 0:
+    print(f"joint redshift free: prior {z_catalog:.4f} +/- {ZRED_SIGMA:.5f} ({FREE_ZRED_KMS:.0f} km/s)")
+else:
+    print(f"joint redshift fixed at {z_catalog:.4f}")
+if FREE_SIGMA_FRAC > 0:
+    print(f"spectrum sigma* free: prior {sigma_star:.1f} +/- {FREE_SIGMA_FRAC * sigma_star:.1f} km/s")
+else:
+    print(f"spectrum sigma* fixed at {sigma_star:.1f} km/s")
+print(f"initial logmass: {float(joint_model.theta_init['logmass'][0]):.3f}")
+if FIT_MODE == "full_spectrum":
+    initial_spec_ratio = np.median(
+        spectrum_flux[spectrum_mask]
+        / np.asarray(initial_prediction["spectrum"])[spectrum_mask]
+    )
+    print(f"initial median spectrum/model ratio: {initial_spec_ratio:.3f}")
+else:
+    print(f"initial stellar-index predictions: {stellar_indices_obs.ndata}")
+
+------------------
+
+----- stdout -----
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+----- stdout -----
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mAssertionError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 137[39m
+[32m    133[39m         key: jnp.asarray(value, dtype=float)
+[32m    134[39m         [38;5;28;01mfor[39;00m key, value [38;5;28;01min[39;00m json.loads(Path(MOCK_TRUTH_PATH).read_text()).items()
+[32m    135[39m     }
+[32m    136[39m     missing = set(joint_model.theta_init) - set(MOCK_TRUTH)
+[32m--> [39m[32m137[39m     [38;5;28;01massert[39;00m [38;5;28;01mnot[39;00m missing, [33mf"mock truth lacks {sorted(missing)}"[39m
+[32m    138[39m     truth_theta = {key: MOCK_TRUTH[key] [38;5;28;01mfor[39;00m key [38;5;28;01min[39;00m joint_model.theta_init}
+[32m    139[39m     truth_prediction = joint_model.predict(truth_theta)
+[32m    140[39m     mock_rng = np.random.default_rng(MOCK_SEED)
+
+[31mAssertionError[39m: mock truth lacks ['diffuse_dust_index']
+
