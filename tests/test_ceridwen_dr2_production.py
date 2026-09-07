@@ -240,6 +240,9 @@ def test_notebook_marks_major_absorption_features():
     assert "mark_absorption_features(axes[1], show_labels=False)" in source
     for name in ("CaK", "CaH", "HdA", "G4300", "HgA", "Fe4383", "Hbeta", "Mgb", "Fe5270"):
         assert f'("{name}",' in source
+    # Feature names read horizontally along the bottom of the flux panel.
+    assert "rotation=0," in source
+    assert "rotation=90" not in source
 
 
 def test_result_roots_default_to_the_first_production_run(monkeypatch):
