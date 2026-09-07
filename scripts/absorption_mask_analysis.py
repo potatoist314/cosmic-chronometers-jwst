@@ -328,7 +328,7 @@ def build_notebook_model(target: dict):
         theta={
             "lookback_time": jnp.asarray(lookback), "sfh": jnp.ones(len(lookback)),
             "Z": jnp.array([-1.85]), "afe": jnp.array([0.2]),
-            "diffuse_tau_kc": jnp.array([0.2]), "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX]),
+            "diffuse_tau_kc": jnp.array([0.1]), "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX]),
         },
         zh_const=True, sfh_interp="step", add_dust=False, add_diffuse_dust=True,
         add_dust_emission=False, add_igm=False, sigma_losvd_kms=0.0,
@@ -344,7 +344,7 @@ def build_notebook_model(target: dict):
         "Z": Uniform(low=z_bounds[0], high=z_bounds[1]),
         "afe": Uniform(low=afe_bounds[0], high=afe_bounds[1]),
         "logmass": Uniform(low=8.0, high=13.0),
-        "diffuse_tau_kc": Uniform(low=0.0, high=2.0),
+        "diffuse_tau_kc": Uniform(low=0.0, high=0.2),
         "log_f_calib": Uniform(low=np.log(0.01), high=np.log(0.10)),
         "spectrum_scaling": ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0),
     }

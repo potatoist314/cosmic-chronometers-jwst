@@ -325,7 +325,7 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
             "sfh": jnp.ones(len(lookback)),
             "Z": jnp.array([-1.85]),
             "afe": jnp.array([0.2]),
-            "diffuse_tau_kc": jnp.array([0.2]),
+            "diffuse_tau_kc": jnp.array([0.1]),
             "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX]),
         },
         zh_const=True, sfh_interp="step", add_dust=False, add_diffuse_dust=True,
