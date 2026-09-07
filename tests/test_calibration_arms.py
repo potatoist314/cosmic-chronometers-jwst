@@ -119,3 +119,27 @@ def test_reference_arm_pins_the_fixed_dust_index_after_the_default_flip(arms):
     for name in ("poly3_total", "seed_rep1", "floor20", "no_irac", "sfh_cont", "mask_cn"):
         assert arms.ARMS[name]["CERIDWEN_FREE_DUST_INDEX"] == "0"
     assert arms.ARMS["dust_free"]["CERIDWEN_FREE_DUST_INDEX"] == "1"
+
+
+def _offer(**overrides):
+    base = dict(gpu_name="RTX 5060", dph_total=0.09, reliability2=0.997, gpu_ram=8151,
+                cuda_max_good=12.8, inet_down_cost=0.0, host_id=1)
+    base.update(overrides)
+    return base
+
+
+def test_offer_rule_accepts_only_cheap_reliable_5060s(arms):
+    """Liu Hao's rule (2026-09-07): RTX 5060 or 5060 Ti, under $0.10/h, above 99.5% reliable."""
+    assert arms.offer_qualifies(_offer())
+    assert arms.offer_qualifies(_offer(gpu_name="RTX 5060 Ti", gpu_ram=16311))
+    assert not arms.offer_qualifies(_offer(dph_total=0.10))
+    assert not arms.offer_qualifies(_offer(dph_total=0.149))
+    assert not arms.offer_qualifies(_offer(reliability2=0.995))
+    assert not arms.offer_qualifies(_offer(gpu_name="RTX 5070"))
+    assert not arms.offer_qualifies(_offer(gpu_name="RTX 4090", dph_total=0.05))
+
+
+def test_offer_rule_constants_match_the_rule(arms):
+    assert arms.MAX_DPH_USD == 0.10
+    assert arms.MIN_RELIABILITY == 0.995
+    assert set(arms.GPU_NAMES) == {"RTX 5060", "RTX 5060 Ti"}

@@ -32,7 +32,6 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SWEEP_PATH = PROJECT_ROOT / "scripts/sweep_ceridwen_vast_gpus.py"
 RESULTS = "results/absorption-mask"
-BLACKWELL = ["RTX_5060", "RTX_5060Ti", "RTX_5070", "RTX_5070Ti", "RTX_5080"]
 POLL_SECONDS = 90
 RUN_TIMEOUT_SECONDS = 4 * 3600
 
@@ -55,16 +54,13 @@ def _log(prefix: str):
     return log
 
 
-def blackwell_offers(minimum_gpu_ram_mib: int = 8000) -> list[dict]:
-    query = (
-        f"gpu_name in [{','.join(BLACKWELL)}] verified=true rentable=true num_gpus=1 "
-        "inet_down>200 disk_space>=40 reliability>0.98"
-    )
-    offers = sweep._vastai_json(["search", "offers", query, "-o", "dph"])
+def fit_offers(minimum_gpu_ram_mib: int = 8000) -> list[dict]:
+    offers = sweep._vastai_json(["search", "offers", sweep.FIT_OFFER_QUERY, "-o", "dph"])
     # gpu_ram and cuda_max_good are not query fields; filter on the returned rows.
     offers = [
         o for o in offers
-        if (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
+        if sweep.fit_offer_qualifies(o)
+        and (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
         and float(o.get("gpu_ram") or 0) >= minimum_gpu_ram_mib
         and float(o.get("cuda_max_good") or 0) >= 12.6
     ]
@@ -252,7 +248,7 @@ def run_instance(offer: dict | None, shard: str, args, outcome: dict, instance_i
 
 
 def command_plan(args) -> int:
-    offers = blackwell_offers()
+    offers = fit_offers()
     for offer in offers[: args.instances]:
         print(_describe(offer))
     return 0
@@ -262,7 +258,7 @@ def command_run(args) -> int:
     shards = args.only_shard or [f"{k}/{args.instances}" for k in range(args.instances)]
     busy_hosts = {int(i.get("host_id") or 0) for i in sweep._vastai_json(["show", "instances"])}
     excluded = busy_hosts | {int(h) for h in args.exclude_host}
-    offers = [o for o in blackwell_offers() if int(o.get("host_id") or 0) not in excluded]
+    offers = [o for o in fit_offers() if int(o.get("host_id") or 0) not in excluded]
     if len(offers) < len(shards):
         print(f"only {len(offers)} suitable offers for {len(shards)} shards", file=sys.stderr)
         return 1

@@ -48,6 +48,22 @@ MINIMUM_RELIABILITY = 0.98
 MINIMUM_GPU_RAM_MIB = 8000
 MINIMUM_DISK_GB = 40.0
 MINIMUM_CUDA_VERSION = 12.8
+
+# Liu Hao's rule for every Ceridwen fit run (2026-09-07): an RTX 5060 or
+# 5060 Ti, under $0.10/h, on a host above 99.5% reliability. Never take a
+# dearer or less reliable box because nothing else is offered; search again.
+FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti")
+FIT_MAX_DPH_USD = 0.10
+FIT_MIN_RELIABILITY = 0.995
+FIT_OFFER_QUERY = (f"gpu_name in [RTX_5060,RTX_5060_Ti] verified=true rentable=true num_gpus=1 "
+                   f"inet_down>200 disk_space>=40 reliability>{FIT_MIN_RELIABILITY} dph<{FIT_MAX_DPH_USD}")
+
+
+def fit_offer_qualifies(offer: dict[str, Any]) -> bool:
+    """The rule above, applied to a returned row (Vast's own dph filter is not exact)."""
+    return (offer.get("gpu_name") in FIT_GPU_NAMES
+            and float(offer.get("dph_total") or 1e9) < FIT_MAX_DPH_USD
+            and float(offer.get("reliability2") or 0.0) > FIT_MIN_RELIABILITY)
 MINIMUM_COMPUTE_CAPABILITY = 700
 MINIMUM_DIRECT_PORTS = 2
 

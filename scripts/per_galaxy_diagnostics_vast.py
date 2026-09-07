@@ -63,12 +63,11 @@ def _log(message: str) -> None:
 
 
 def rtx5060_offers() -> list[dict]:
-    query = ("gpu_name=RTX_5060 verified=true rentable=true num_gpus=1 "
-             "inet_down>200 disk_space>=40 reliability>0.98")
-    offers = sweep._vastai_json(["search", "offers", query, "-o", "dph"])
+    offers = sweep._vastai_json(["search", "offers", sweep.FIT_OFFER_QUERY, "-o", "dph"])
     offers = [
         o for o in offers
-        if (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
+        if sweep.fit_offer_qualifies(o)
+        and (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
         and float(o.get("gpu_ram") or 0) >= 8000
         and float(o.get("cuda_max_good") or 0) >= 12.6
     ]

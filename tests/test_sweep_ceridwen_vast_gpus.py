@@ -257,3 +257,15 @@ def test_batch_cost_is_price_times_hours() -> None:
     offers = [offer(dph_total=0.10), offer(dph_total=0.30)]
 
     assert sweep.estimate_batch_cost_usd(offers, hours=0.5) == pytest.approx(0.20)
+
+
+def test_fit_offer_rule_accepts_only_cheap_reliable_5060s() -> None:
+    """Liu Hao's rule (2026-09-07): fits run on an RTX 5060 or 5060 Ti, under $0.10/h, >99.5% reliable."""
+    good = offer(gpu_name="RTX 5060", dph_total=0.09, reliability2=0.997)
+    assert sweep.fit_offer_qualifies(good)
+    assert sweep.fit_offer_qualifies({**good, "gpu_name": "RTX 5060 Ti"})
+    assert not sweep.fit_offer_qualifies({**good, "dph_total": 0.10})
+    assert not sweep.fit_offer_qualifies({**good, "reliability2": 0.995})
+    assert not sweep.fit_offer_qualifies({**good, "gpu_name": "RTX 5080"})
+    assert (sweep.FIT_GPU_NAMES, sweep.FIT_MAX_DPH_USD, sweep.FIT_MIN_RELIABILITY) == (
+        ("RTX 5060", "RTX 5060 Ti"), 0.10, 0.995)
