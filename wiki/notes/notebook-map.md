@@ -68,7 +68,9 @@ Full-spectrum mode fits `spectrum_scaling` for the slit normalization. Photometr
 
 Both modes use the published high-resolution grid. The production profile uses 500 live points, 100 deletions, 65 inner steps, and `logZ_tol=-5`.
 
-The full-spectrum fit figure shades nine major absorption features from `ceridwen.observation.absorption_features` on both panels: Ca K, Ca H, Hδ, G band, Hγ, Fe4383, Hβ, Mg b and Fe5270. Bands span their Lick bandpass and lines span ±1000 km/s, redshifted with the catalogue redshift, so the pull near each feature can be read directly (`mark_absorption_features`, 2026-09-07).
+The full-spectrum fit figure shades nine major absorption features from `ceridwen.observation.absorption_features` on both panels: Ca K, Ca H, Hδ, G band, Hγ, Fe4383, Hβ, Mg b and Fe5270. Bands span their Lick bandpass and lines span ±1000 km/s, redshifted with the catalogue redshift, so the pull near each feature can be read directly.
+
+That marking is the production standard for every plot with a wavelength axis. `scripts/spectral_figures.py` holds it: `mark_absorption_features(ax, zred)` shades the windows in grey with dotted edges, and the bottom panel of a figure hangs the feature names in one horizontal row below its x axis, dropping a name to the next row only where the rendered text would overlap. Photometric SED panels in observed μm and non-wavelength plots (corner, SFH, histograms) stay bare. Tests: `tests/test_spectral_figures.py`.
 
 The joint notebook reads `CERIDWEN_TARGET_ID`, `CERIDWEN_RESULT_DIR`, and `CERIDWEN_RANDOM_SEED`. The defaults retain the original M1_210210 run. The Vast multi-GPU launcher sets one fixed target and seed for each sequential one-GPU worker.
 

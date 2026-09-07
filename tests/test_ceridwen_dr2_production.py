@@ -229,24 +229,28 @@ def test_notebook_defaults_to_the_uniform_tau_prior():
 
 def test_notebook_marks_major_absorption_features():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
-    source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
-    # Windows come from ceridwen's Lick/IDS catalogue, redshifted with z_catalog.
+    cells = ["".join(cell.get("source", [])) for cell in notebook["cells"]]
+    source = "\n".join(cells)
+    # The windows come from scripts/spectral_figures.py, not a notebook copy.
+    assert 'sys.path.insert(0, str(PROJECT_ROOT / "scripts"))' in source
+    assert "from spectral_figures import mark_absorption_features" in source
     assert (
-        "from ceridwen.observation.absorption_features import "
-        "absorption_feature_mask, feature_windows"
+        "from ceridwen.observation.absorption_features import absorption_feature_mask\n"
     ) in source
-    assert "def mark_absorption_features(ax" in source
-    # Names hang below the pull panel's x axis, outside the plotting area.
-    assert "mark_absorption_features(axes[0], show_labels=False)" in source
-    assert "mark_absorption_features(axes[1])" in source
-    assert "clip_on=False" in source
-    for name in ("CaK", "CaH", "HdA", "G4300", "HgA", "Fe4383", "Hbeta", "Mgb", "Fe5270"):
-        assert f'("{name}",' in source
-    # One row of names; a label drops a line only when its text would overlap.
-    assert "get_window_extent" in source
+    assert "def mark_absorption_features(ax" not in source
+    assert "MARKED_FEATURES" not in source
+    # Every spectral panel is marked; names hang below the bottom axis only.
+    bottom_call = (
+        'axes[1], z_catalog, xlabel="observed vacuum wavelength [angstrom]"'
+    )
+    for index in (13, 23, 25, 27):
+        assert bottom_call in cells[index]
+    for index in (23, 25, 27):
+        assert "mark_absorption_features(axes[0], z_catalog, show_labels=False)" in (
+            cells[index]
+        )
     assert "rotation=90" not in source
-    feature_helper = source.split("def mark_absorption_features(ax")[1]
-    assert "index % 2" not in feature_helper.split("\ndef ")[0]
+    assert "labelpad=30" not in source
 
 
 def test_result_roots_default_to_the_first_production_run(monkeypatch):

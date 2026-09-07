@@ -77,6 +77,9 @@ DEFAULT_OUT_CSV = PROJECT_ROOT / "results/per-galaxy-diagnostics.csv"
 DEFAULT_SUMMARY_DIR = PROJECT_ROOT / "wiki/analyses/per-galaxy-diagnostics"
 FIGURE_SUBDIR = "diagnostics"
 
+sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+from spectral_figures import mark_absorption_features  # noqa: E402
+
 # Fitting-notebook configuration that ``write_result_h5`` does not persist.
 GRID_NAME = "amist_c3k_hr_krou_afe"
 FIXED_DUST_INDEX = -0.7
@@ -822,7 +825,6 @@ def plot_spectral_chi2(galaxy: GalaxyResult, like_ml: dict | None = None, stamp:
     ax.plot(wave, np.cumsum(mask) / mask.sum(), color="0.5", lw=0.9, ls="--", label="uniform per fitted pixel")
     ax.set_ylim(0, 1.02)
     ax.set_ylabel(r"cumulative $\chi^2$ fraction")
-    ax.set_xlabel(r"observed vacuum wavelength [$\mathrm{\AA}$]")
     ax.legend(frameon=False, fontsize=8, loc="upper left")
     n = stored["n"]
     text = (f"stored: $\\chi^2_{{\\rm spec}}$ = {stored['total']:.1f}, N = {n}, $\\chi^2/N$ = {stored['total'] / n:.3f}\n"
@@ -836,6 +838,10 @@ def plot_spectral_chi2(galaxy: GalaxyResult, like_ml: dict | None = None, stamp:
              f"{int(cats['telluric'].sum())} telluric px; outliers |pull| > {OUTLIER_PULL:g}: {int(outliers.sum())}")
     ax.text(0.99, 0.05, text, transform=ax.transAxes, ha="right", va="bottom", fontsize=8,
             bbox=dict(boxstyle="round", fc="white", ec="0.7", alpha=0.95))
+    mark_absorption_features(axes[0], galaxy.z, show_labels=False)
+    mark_absorption_features(axes[1], galaxy.z, show_labels=False)
+    mark_absorption_features(axes[2], galaxy.z,
+                             xlabel=r"observed vacuum wavelength [$\mathrm{\AA}$]")
     fig.tight_layout(rect=(0, 0.06, 1, 1))
     _footer(fig, stamp)
     if out is not None:

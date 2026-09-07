@@ -4,6 +4,7 @@ date: 2026-09-05
 section: Analyses
 tags: [dr2-quiescent-sample, ceridwen, diagnostics]
 job: t_8a78968d
+figures: [M1_210210-photometric_chi2.png, M1_210210-sf_timescales.png, M1_210210-spectral_chi2.png]
 ---
 
 ## Model settings
@@ -43,6 +44,8 @@ Photometry anchor
 <img src="figures/per-galaxy-diagnostics/M1_210210-spectral_chi2.png" alt="M1_210210: per-pixel pull, binned mean pull squared and cumulative chi-squared against wavelength with masked windows and outliers marked">
 <figcaption>Pull per fitted pixel, 1.11 per pixel over 3523.</figcaption>
 </figure>
+
+Grey windows on all three panels are the nine major absorption features, redshifted to the observed frame; their names hang below the bottom panel (`scripts/spectral_figures.py`).
 
 <figure>
 <img src="figures/per-galaxy-diagnostics/M1_210210-sf_timescales.png" alt="M1_210210: fraction of final mass formed earlier than each lookback time with t10 to t90 and their posterior intervals">

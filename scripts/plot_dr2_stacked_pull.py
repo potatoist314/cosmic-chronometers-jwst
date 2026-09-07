@@ -29,6 +29,7 @@ Reuse: ``.venv/bin/python scripts/plot_dr2_stacked_pull.py
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -41,6 +42,9 @@ import pandas as pd
 from matplotlib import rcParams
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+from spectral_figures import mark_absorption_features  # noqa: E402
+
 DEFAULT_RUN_DIR = PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
 DEFAULT_SUMMARY = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
 DEFAULT_OUT_DIR = PROJECT_ROOT / "wiki/analyses/dr2-quiescent-sample"
@@ -162,14 +166,12 @@ def main(argv=None):
                              gridspec_kw={"width_ratios": [1.4, 1.4, 1.0]})
     axes[0].plot(grid, mean_pull2, color=BLUE, lw=1.0)
     axes[0].axhline(1.0, color="black", lw=1.0, ls="--")
-    axes[0].set_xlabel(r"Rest wavelength [$\mathrm{\AA}$]")
     axes[0].set_ylabel("Mean pull$^2$ per bin")
     axes[0].set_title("Stacked chi-squared", fontsize=10)
     axes[1].plot(grid, median, color=BLUE, lw=1.0, label="Median pull")
     axes[1].fill_between(grid, q16, q84, color=BLUE, alpha=0.25,
                          linewidth=0, label="16-84%")
     axes[1].axhline(0.0, color="black", lw=1.0, ls="--")
-    axes[1].set_xlabel(r"Rest wavelength [$\mathrm{\AA}$]")
     axes[1].set_ylabel("Pull per bin")
     axes[1].legend(frameon=False, fontsize=7.5)
     axes[1].set_title("Median pull", fontsize=10)
@@ -182,6 +184,11 @@ def main(argv=None):
     axes[2].set_title(f"Fit quality (N={len(finite)})", fontsize=10)
     for axis in axes:
         axis.set_xlim(axis.get_xlim())
+    # Rest-frame panels, so the catalogue windows sit at zred = 0.
+    for axis in axes[:2]:
+        mark_absorption_features(
+            axis, 0.0, xlabel=r"Rest wavelength [$\mathrm{\AA}$]"
+        )
     fig.suptitle(f"Ceridwen DR2 stacked pulls, rest frame (N={n_used} galaxies, "
                  f"bins with >={MIN_COVER} shown)", fontsize=10)
     caption = ("Template issues live in rest frame; sky residuals live in "

@@ -539,3 +539,9 @@
 - Pages: `notes/dr2-new-defaults.md`, `analyses/dr2-new-defaults/`
 - Change: `ceridwen_new_defaults_comparison.ipynb` gains a second age-redshift figure that keeps the oldest 30% of each σ-z bin (Ceridwen and Borghi+22 alike), beside the unchanged full-median figure. Both runs stay flat; the new defaults sit 1 to 2 Gyr above Borghi+22 under the same cut. High-σ bins hold 3 to 4 galaxies, so the cut there is one galaxy.
 - Evidence: `results/dr2-quiescent-new-defaults/age_redshift_oldest30.csv`, `figures/headline-age-redshift-oldest30.png`.
+
+## [2026-09-07] change | Absorption-feature labels on every spectral plot
+
+- Pages: `notes/notebook-map.md`, `notes/per-galaxy-fit-diagnostics.md`, `notes/stacked-chi2-and-median-pull.md`
+- Change: the fit-figure marking is now the production standard for every plot with a wavelength axis, in one shared module `scripts/spectral_figures.py`. Grey Lick/IDS windows with dotted edges on every wavelength panel; feature names in one horizontal row hanging below the bottom panel's x axis, outside the plotting area, dropping to the next row only where the rendered text would overlap. Rows are placed in points below the axis and the x-label pad is measured from them, so a short or narrow panel keeps the label clear of the names. Callers updated: the joint template notebook, `scripts/per_galaxy_diagnostics.py`, `scripts/plot_dr2_stacked_pull.py`, `notebooks/ceridwen_test_spectra.ipynb` and the five analysis notebooks in `results/`. Photometric SED panels in observed μm and non-wavelength plots (corner, SFH, histograms) stay bare.
+- Evidence: `tests/test_spectral_figures.py` (13 tests), `wiki/analyses/dr2-quiescent-sample/stacked-pull.png`, `wiki/analyses/per-galaxy-diagnostics/M1_210210-spectral_chi2.png`.
