@@ -242,9 +242,11 @@ def test_notebook_marks_major_absorption_features():
     assert "clip_on=False" in source
     for name in ("CaK", "CaH", "HdA", "G4300", "HgA", "Fe4383", "Hbeta", "Mgb", "Fe5270"):
         assert f'("{name}",' in source
-    # Feature names read horizontally along the bottom of the flux panel.
-    assert "rotation=0," in source
+    # One row of names; a label drops a line only when its text would overlap.
+    assert "get_window_extent" in source
     assert "rotation=90" not in source
+    feature_helper = source.split("def mark_absorption_features(ax")[1]
+    assert "index % 2" not in feature_helper.split("\ndef ")[0]
 
 
 def test_result_roots_default_to_the_first_production_run(monkeypatch):
