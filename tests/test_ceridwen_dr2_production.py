@@ -298,3 +298,26 @@ def test_summary_script_takes_a_result_root_and_an_output_path():
     )
     assert chosen.result_root == Path("results/dr2-quiescent-new-defaults")
     assert chosen.out_path == Path("results/dr2-quiescent-new-defaults-summary.csv")
+
+
+def test_destroy_skips_the_interactive_confirmation(monkeypatch):
+    """`vastai destroy` prompts and exits 0 when it aborts, so the monitor's
+    teardown must not rely on the exit code alone to know it ran."""
+    endpoints = [{"instance_id": 50104285}, {"instance_id": 50104286}]
+    calls = []
+    monkeypatch.setattr(
+        runner.subprocess, "run", lambda command, **_kwargs: calls.append(command)
+    )
+
+    runner._set_instances(endpoints, "destroy")
+    assert calls == [
+        ["vastai", "destroy", "instance", "50104285", "-y"],
+        ["vastai", "destroy", "instance", "50104286", "-y"],
+    ]
+
+    calls.clear()
+    runner._set_instances(endpoints, "stop")
+    assert calls == [
+        ["vastai", "stop", "instance", "50104285"],
+        ["vastai", "stop", "instance", "50104286"],
+    ]

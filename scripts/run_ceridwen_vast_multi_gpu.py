@@ -414,9 +414,12 @@ def _vast_credit() -> float:
 
 
 def _set_instances(endpoints: list[dict], action: str) -> None:
+    # `vastai destroy` asks for confirmation and exits 0 when it aborts, so a
+    # monitor running without a terminal tears nothing down unless it says -y.
+    confirmation = ["-y"] if action == "destroy" else []
     for endpoint in endpoints:
         subprocess.run(
-            ["vastai", action, "instance", str(endpoint["instance_id"])],
+            ["vastai", action, "instance", str(endpoint["instance_id"])] + confirmation,
             check=True,
         )
 
