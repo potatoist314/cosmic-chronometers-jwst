@@ -1,0 +1,1232 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "started_at_utc": "2026-09-06T22:41:00.221428+00:00",
+  "shard_index": 1,
+  "num_shards": 2,
+  "fits_per_gpu": 1,
+  "gpu": {
+    "index": 0,
+    "uuid": "GPU-9ab41518-cd3c-c179-2a40-c8387755ec9f",
+    "name": "NVIDIA GeForce RTX 5060 Ti",
+    "memory_mib": 16311
+  },
+  "vast_instance_id": "50104286",
+  "project_commit": "eb6ebc6",
+  "ceridwen_commit": null,
+  "targets": [
+    {
+      "manifest_index": 1,
+      "object_id": 233129,
+      "spect_id": "M10_233129",
+      "sn": 75.5,
+      "shard_index": 1,
+      "seed": 20260831
+    },
+    {
+      "manifest_index": 3,
+      "object_id": 181945,
+      "spect_id": "M12_181945",
+      "sn": 61.79999923706055,
+      "shard_index": 1,
+      "seed": 20260833
+    },
+    {
+      "manifest_index": 5,
+      "object_id": 38648,
+      "spect_id": "M14_38648",
+      "sn": 52.70000076293945,
+      "shard_index": 1,
+      "seed": 20260835
+    },
+    {
+      "manifest_index": 7,
+      "object_id": 233169,
+      "spect_id": "M9_233169",
+      "sn": 51.400001525878906,
+      "shard_index": 1,
+      "seed": 20260837
+    },
+    {
+      "manifest_index": 9,
+      "object_id": 130052,
+      "spect_id": "M1_130052",
+      "sn": 44.29999923706055,
+      "shard_index": 1,
+      "seed": 20260839
+    },
+    {
+      "manifest_index": 11,
+      "object_id": 245252,
+      "spect_id": "M11_245252",
+      "sn": 44.20000076293945,
+      "shard_index": 1,
+      "seed": 20260841
+    },
+    {
+      "manifest_index": 13,
+      "object_id": 213772,
+      "spect_id": "M10_213772",
+      "sn": 40.900001525878906,
+      "shard_index": 1,
+      "seed": 20260843
+    },
+    {
+      "manifest_index": 15,
+      "object_id": 161346,
+      "spect_id": "M8_161346",
+      "sn": 40.5,
+      "shard_index": 1,
+      "seed": 20260845
+    },
+    {
+      "manifest_index": 17,
+      "object_id": 231276,
+      "spect_id": "M9_231276",
+      "sn": 40.099998474121094,
+      "shard_index": 1,
+      "seed": 20260847
+    },
+    {
+      "manifest_index": 19,
+      "object_id": 213004,
+      "spect_id": "M11_213004",
+      "sn": 39.400001525878906,
+      "shard_index": 1,
+      "seed": 20260849
+    },
+    {
+      "manifest_index": 21,
+      "object_id": 228215,
+      "spect_id": "M10_228215",
+      "sn": 36.79999923706055,
+      "shard_index": 1,
+      "seed": 20260851
+    },
+    {
+      "manifest_index": 23,
+      "object_id": 216730,
+      "spect_id": "M10_216730",
+      "sn": 36.70000076293945,
+      "shard_index": 1,
+      "seed": 20260853
+    },
+    {
+      "manifest_index": 25,
+      "object_id": 228380,
+      "spect_id": "M10_228380",
+      "sn": 36.099998474121094,
+      "shard_index": 1,
+      "seed": 20260855
+    },
+    {
+      "manifest_index": 27,
+      "object_id": 257455,
+      "spect_id": "M11_257455",
+      "sn": 36.0,
+      "shard_index": 1,
+      "seed": 20260857
+    },
+    {
+      "manifest_index": 29,
+      "object_id": 215585,
+      "spect_id": "M11_215585",
+      "sn": 35.599998474121094,
+      "shard_index": 1,
+      "seed": 20260859
+    },
+    {
+      "manifest_index": 31,
+      "object_id": 206669,
+      "spect_id": "M2_206669",
+      "sn": 35.20000076293945,
+      "shard_index": 1,
+      "seed": 20260861
+    },
+    {
+      "manifest_index": 33,
+      "object_id": 102456,
+      "spect_id": "M12_102456",
+      "sn": 34.900001525878906,
+      "shard_index": 1,
+      "seed": 20260863
+    },
+    {
+      "manifest_index": 35,
+      "object_id": 238314,
+      "spect_id": "M5_238314",
+      "sn": 34.599998474121094,
+      "shard_index": 1,
+      "seed": 20260865
+    },
+    {
+      "manifest_index": 37,
+      "object_id": 124231,
+      "spect_id": "M4_124231",
+      "sn": 34.5,
+      "shard_index": 1,
+      "seed": 20260867
+    },
+    {
+      "manifest_index": 39,
+      "object_id": 206858,
+      "spect_id": "M1_206858",
+      "sn": 33.400001525878906,
+      "shard_index": 1,
+      "seed": 20260869
+    },
+    {
+      "manifest_index": 41,
+      "object_id": 148698,
+      "spect_id": "M8_148698",
+      "sn": 33.0,
+      "shard_index": 1,
+      "seed": 20260871
+    },
+    {
+      "manifest_index": 43,
+      "object_id": 111390,
+      "spect_id": "M3_111390",
+      "sn": 32.400001525878906,
+      "shard_index": 1,
+      "seed": 20260873
+    },
+    {
+      "manifest_index": 45,
+      "object_id": 236682,
+      "spect_id": "M5_236682",
+      "sn": 31.600000381469727,
+      "shard_index": 1,
+      "seed": 20260875
+    },
+    {
+      "manifest_index": 47,
+      "object_id": 206545,
+      "spect_id": "M1_206545",
+      "sn": 31.399999618530273,
+      "shard_index": 1,
+      "seed": 20260877
+    },
+    {
+      "manifest_index": 49,
+      "object_id": 77745,
+      "spect_id": "M15_77745",
+      "sn": 30.700000762939453,
+      "shard_index": 1,
+      "seed": 20260879
+    },
+    {
+      "manifest_index": 51,
+      "object_id": 248217,
+      "spect_id": "M13_248217",
+      "sn": 30.600000381469727,
+      "shard_index": 1,
+      "seed": 20260881
+    },
+    {
+      "manifest_index": 53,
+      "object_id": 206501,
+      "spect_id": "M1_206501",
+      "sn": 30.5,
+      "shard_index": 1,
+      "seed": 20260883
+    },
+    {
+      "manifest_index": 55,
+      "object_id": 184916,
+      "spect_id": "M12_184916",
+      "sn": 30.399999618530273,
+      "shard_index": 1,
+      "seed": 20260885
+    },
+    {
+      "manifest_index": 57,
+      "object_id": 227516,
+      "spect_id": "M10_227516",
+      "sn": 29.200000762939453,
+      "shard_index": 1,
+      "seed": 20260887
+    },
+    {
+      "manifest_index": 59,
+      "object_id": 226721,
+      "spect_id": "M11_226721",
+      "sn": 29.0,
+      "shard_index": 1,
+      "seed": 20260889
+    },
+    {
+      "manifest_index": 61,
+      "object_id": 120308,
+      "spect_id": "M3_120308",
+      "sn": 29.0,
+      "shard_index": 1,
+      "seed": 20260891
+    },
+    {
+      "manifest_index": 63,
+      "object_id": 232005,
+      "spect_id": "M9_232005",
+      "sn": 29.0,
+      "shard_index": 1,
+      "seed": 20260893
+    },
+    {
+      "manifest_index": 65,
+      "object_id": 211767,
+      "spect_id": "M5_211767",
+      "sn": 28.5,
+      "shard_index": 1,
+      "seed": 20260895
+    },
+    {
+      "manifest_index": 67,
+      "object_id": 125213,
+      "spect_id": "M4_125213",
+      "sn": 27.899999618530273,
+      "shard_index": 1,
+      "seed": 20260897
+    },
+    {
+      "manifest_index": 69,
+      "object_id": 213587,
+      "spect_id": "M9_213587",
+      "sn": 27.100000381469727,
+      "shard_index": 1,
+      "seed": 20260899
+    },
+    {
+      "manifest_index": 71,
+      "object_id": 231544,
+      "spect_id": "M10_231544",
+      "sn": 26.100000381469727,
+      "shard_index": 1,
+      "seed": 20260901
+    },
+    {
+      "manifest_index": 73,
+      "object_id": 122242,
+      "spect_id": "M7_122242",
+      "sn": 26.0,
+      "shard_index": 1,
+      "seed": 20260903
+    },
+    {
+      "manifest_index": 75,
+      "object_id": 119802,
+      "spect_id": "M3_119802",
+      "sn": 25.399999618530273,
+      "shard_index": 1,
+      "seed": 20260905
+    },
+    {
+      "manifest_index": 77,
+      "object_id": 165871,
+      "spect_id": "M5_165871",
+      "sn": 25.0,
+      "shard_index": 1,
+      "seed": 20260907
+    },
+    {
+      "manifest_index": 79,
+      "object_id": 244239,
+      "spect_id": "M13_244239",
+      "sn": 24.5,
+      "shard_index": 1,
+      "seed": 20260909
+    },
+    {
+      "manifest_index": 81,
+      "object_id": 109713,
+      "spect_id": "M3_109713",
+      "sn": 24.200000762939453,
+      "shard_index": 1,
+      "seed": 20260911
+    },
+    {
+      "manifest_index": 83,
+      "object_id": 197591,
+      "spect_id": "M10_197591",
+      "sn": 23.899999618530273,
+      "shard_index": 1,
+      "seed": 20260913
+    },
+    {
+      "manifest_index": 85,
+      "object_id": 107362,
+      "spect_id": "M3_107362",
+      "sn": 23.700000762939453,
+      "shard_index": 1,
+      "seed": 20260915
+    },
+    {
+      "manifest_index": 87,
+      "object_id": 230747,
+      "spect_id": "M13_230747",
+      "sn": 22.600000381469727,
+      "shard_index": 1,
+      "seed": 20260917
+    },
+    {
+      "manifest_index": 89,
+      "object_id": 229883,
+      "spect_id": "M9_229883",
+      "sn": 22.600000381469727,
+      "shard_index": 1,
+      "seed": 20260919
+    },
+    {
+      "manifest_index": 91,
+      "object_id": 180774,
+      "spect_id": "M12_180774",
+      "sn": 22.200000762939453,
+      "shard_index": 1,
+      "seed": 20260921
+    },
+    {
+      "manifest_index": 93,
+      "object_id": 185653,
+      "spect_id": "M12_185653",
+      "sn": 21.5,
+      "shard_index": 1,
+      "seed": 20260923
+    },
+    {
+      "manifest_index": 95,
+      "object_id": 27068,
+      "spect_id": "M14_27068",
+      "sn": 21.200000762939453,
+      "shard_index": 1,
+      "seed": 20260925
+    },
+    {
+      "manifest_index": 97,
+      "object_id": 37023,
+      "spect_id": "M14_37023",
+      "sn": 21.0,
+      "shard_index": 1,
+      "seed": 20260927
+    },
+    {
+      "manifest_index": 99,
+      "object_id": 123161,
+      "spect_id": "M4_123161",
+      "sn": 21.0,
+      "shard_index": 1,
+      "seed": 20260929
+    },
+    {
+      "manifest_index": 101,
+      "object_id": 225431,
+      "spect_id": "M9_225431",
+      "sn": 19.899999618530273,
+      "shard_index": 1,
+      "seed": 20260931
+    },
+    {
+      "manifest_index": 103,
+      "object_id": 212391,
+      "spect_id": "M9_212391",
+      "sn": 19.600000381469727,
+      "shard_index": 1,
+      "seed": 20260933
+    },
+    {
+      "manifest_index": 105,
+      "object_id": 237641,
+      "spect_id": "M6_237641",
+      "sn": 19.299999237060547,
+      "shard_index": 1,
+      "seed": 20260935
+    },
+    {
+      "manifest_index": 107,
+      "object_id": 214296,
+      "spect_id": "M11_214296",
+      "sn": 19.100000381469727,
+      "shard_index": 1,
+      "seed": 20260937
+    },
+    {
+      "manifest_index": 109,
+      "object_id": 120372,
+      "spect_id": "M7_120372",
+      "sn": 19.100000381469727,
+      "shard_index": 1,
+      "seed": 20260939
+    },
+    {
+      "manifest_index": 111,
+      "object_id": 163989,
+      "spect_id": "M8_163989",
+      "sn": 19.0,
+      "shard_index": 1,
+      "seed": 20260941
+    },
+    {
+      "manifest_index": 113,
+      "object_id": 129596,
+      "spect_id": "M2_129596",
+      "sn": 18.600000381469727,
+      "shard_index": 1,
+      "seed": 20260943
+    },
+    {
+      "manifest_index": 115,
+      "object_id": 130005,
+      "spect_id": "M2_130005",
+      "sn": 18.200000762939453,
+      "shard_index": 1,
+      "seed": 20260945
+    },
+    {
+      "manifest_index": 117,
+      "object_id": 107370,
+      "spect_id": "M4_107370",
+      "sn": 17.799999237060547,
+      "shard_index": 1,
+      "seed": 20260947
+    },
+    {
+      "manifest_index": 119,
+      "object_id": 139662,
+      "spect_id": "M2_139662",
+      "sn": 17.299999237060547,
+      "shard_index": 1,
+      "seed": 20260949
+    },
+    {
+      "manifest_index": 121,
+      "object_id": 245621,
+      "spect_id": "M11_245621",
+      "sn": 17.0,
+      "shard_index": 1,
+      "seed": 20260951
+    },
+    {
+      "manifest_index": 123,
+      "object_id": 92132,
+      "spect_id": "M12_92132",
+      "sn": 16.100000381469727,
+      "shard_index": 1,
+      "seed": 20260953
+    },
+    {
+      "manifest_index": 125,
+      "object_id": 240899,
+      "spect_id": "M6_240899",
+      "sn": 15.600000381469727,
+      "shard_index": 1,
+      "seed": 20260955
+    },
+    {
+      "manifest_index": 127,
+      "object_id": 126578,
+      "spect_id": "M1_126578",
+      "sn": 15.100000381469727,
+      "shard_index": 1,
+      "seed": 20260957
+    },
+    {
+      "manifest_index": 129,
+      "object_id": 37219,
+      "spect_id": "M14_37219",
+      "sn": 15.0,
+      "shard_index": 1,
+      "seed": 20260959
+    },
+    {
+      "manifest_index": 131,
+      "object_id": 259737,
+      "spect_id": "M13_259737",
+      "sn": 14.699999809265137,
+      "shard_index": 1,
+      "seed": 20260961
+    },
+    {
+      "manifest_index": 133,
+      "object_id": 103366,
+      "spect_id": "M14_103366",
+      "sn": 14.300000190734863,
+      "shard_index": 1,
+      "seed": 20260963
+    },
+    {
+      "manifest_index": 135,
+      "object_id": 122025,
+      "spect_id": "M7_122025",
+      "sn": 14.0,
+      "shard_index": 1,
+      "seed": 20260965
+    },
+    {
+      "manifest_index": 137,
+      "object_id": 120488,
+      "spect_id": "M7_120488",
+      "sn": 13.600000381469727,
+      "shard_index": 1,
+      "seed": 20260967
+    },
+    {
+      "manifest_index": 139,
+      "object_id": 245864,
+      "spect_id": "M11_245864",
+      "sn": 13.300000190734863,
+      "shard_index": 1,
+      "seed": 20260969
+    },
+    {
+      "manifest_index": 141,
+      "object_id": 93943,
+      "spect_id": "M2_93943",
+      "sn": 13.100000381469727,
+      "shard_index": 1,
+      "seed": 20260971
+    },
+    {
+      "manifest_index": 143,
+      "object_id": 217020,
+      "spect_id": "M10_217020",
+      "sn": 12.800000190734863,
+      "shard_index": 1,
+      "seed": 20260973
+    },
+    {
+      "manifest_index": 145,
+      "object_id": 161113,
+      "spect_id": "M8_161113",
+      "sn": 12.600000381469727,
+      "shard_index": 1,
+      "seed": 20260975
+    },
+    {
+      "manifest_index": 147,
+      "object_id": 38771,
+      "spect_id": "M14_38771",
+      "sn": 12.300000190734863,
+      "shard_index": 1,
+      "seed": 20260977
+    },
+    {
+      "manifest_index": 149,
+      "object_id": 225678,
+      "spect_id": "M9_225678",
+      "sn": 12.300000190734863,
+      "shard_index": 1,
+      "seed": 20260979
+    },
+    {
+      "manifest_index": 151,
+      "object_id": 212718,
+      "spect_id": "M11_212718",
+      "sn": 11.5,
+      "shard_index": 1,
+      "seed": 20260981
+    },
+    {
+      "manifest_index": 153,
+      "object_id": 101830,
+      "spect_id": "M12_101830",
+      "sn": 11.300000190734863,
+      "shard_index": 1,
+      "seed": 20260983
+    },
+    {
+      "manifest_index": 155,
+      "object_id": 156118,
+      "spect_id": "M8_156118",
+      "sn": 11.0,
+      "shard_index": 1,
+      "seed": 20260985
+    },
+    {
+      "manifest_index": 157,
+      "object_id": 126153,
+      "spect_id": "M1_126153",
+      "sn": 10.300000190734863,
+      "shard_index": 1,
+      "seed": 20260987
+    },
+    {
+      "manifest_index": 159,
+      "object_id": 120758,
+      "spect_id": "M7_120758",
+      "sn": 9.800000190734863,
+      "shard_index": 1,
+      "seed": 20260989
+    },
+    {
+      "manifest_index": 161,
+      "object_id": 102968,
+      "spect_id": "M14_102968",
+      "sn": 9.5,
+      "shard_index": 1,
+      "seed": 20260991
+    },
+    {
+      "manifest_index": 163,
+      "object_id": 255047,
+      "spect_id": "M13_255047",
+      "sn": 9.399999618530273,
+      "shard_index": 1,
+      "seed": 20260993
+    },
+    {
+      "manifest_index": 165,
+      "object_id": 101089,
+      "spect_id": "M12_101089",
+      "sn": 8.300000190734863,
+      "shard_index": 1,
+      "seed": 20260995
+    },
+    {
+      "manifest_index": 167,
+      "object_id": 167056,
+      "spect_id": "M5_167056",
+      "sn": 8.100000381469727,
+      "shard_index": 1,
+      "seed": 20260997
+    },
+    {
+      "manifest_index": 169,
+      "object_id": 87207,
+      "spect_id": "M15_87207",
+      "sn": 7.5,
+      "shard_index": 1,
+      "seed": 20260999
+    },
+    {
+      "manifest_index": 171,
+      "object_id": 121482,
+      "spect_id": "M7_121482",
+      "sn": 7.300000190734863,
+      "shard_index": 1,
+      "seed": 20261001
+    },
+    {
+      "manifest_index": 173,
+      "object_id": 89072,
+      "spect_id": "M15_89072",
+      "sn": 7.099999904632568,
+      "shard_index": 1,
+      "seed": 20261003
+    },
+    {
+      "manifest_index": 175,
+      "object_id": 191718,
+      "spect_id": "M10_191718",
+      "sn": 6.800000190734863,
+      "shard_index": 1,
+      "seed": 20261005
+    },
+    {
+      "manifest_index": 177,
+      "object_id": 98104,
+      "spect_id": "M12_98104",
+      "sn": 6.599999904632568,
+      "shard_index": 1,
+      "seed": 20261007
+    },
+    {
+      "manifest_index": 179,
+      "object_id": 112534,
+      "spect_id": "M4_112534",
+      "sn": 6.400000095367432,
+      "shard_index": 1,
+      "seed": 20261009
+    },
+    {
+      "manifest_index": 181,
+      "object_id": 119809,
+      "spect_id": "M3_119809",
+      "sn": 5.699999809265137,
+      "shard_index": 1,
+      "seed": 20261011
+    },
+    {
+      "manifest_index": 183,
+      "object_id": 253688,
+      "spect_id": "M13_253688",
+      "sn": 4.800000190734863,
+      "shard_index": 1,
+      "seed": 20261013
+    },
+    {
+      "manifest_index": 185,
+      "object_id": 217564,
+      "spect_id": "M11_217564",
+      "sn": 3.700000047683716,
+      "shard_index": 1,
+      "seed": 20261015
+    }
+  ],
+  "results": {
+    "M10_233129": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-06T22:51:22.100177+00:00"
+    },
+    "M12_181945": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-06T23:00:55.930164+00:00"
+    },
+    "M14_38648": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-06T23:10:41.825480+00:00"
+    },
+    "M9_233169": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-06T23:18:39.642501+00:00"
+    },
+    "M1_130052": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-06T23:26:22.517168+00:00"
+    },
+    "M11_245252": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-06T23:35:39.333776+00:00"
+    },
+    "M10_213772": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-06T23:44:10.232056+00:00"
+    },
+    "M8_161346": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-06T23:52:39.067893+00:00"
+    },
+    "M9_231276": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T00:01:53.933967+00:00"
+    },
+    "M11_213004": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T00:09:44.834695+00:00"
+    },
+    "M10_228215": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T00:19:00.753785+00:00"
+    },
+    "M10_216730": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T00:28:09.370001+00:00"
+    },
+    "M10_228380": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T00:37:02.428507+00:00"
+    },
+    "M11_257455": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T00:46:15.339480+00:00"
+    },
+    "M11_215585": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T00:53:53.219576+00:00"
+    },
+    "M2_206669": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T01:01:18.905371+00:00"
+    },
+    "M12_102456": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T01:10:17.705372+00:00"
+    },
+    "M5_238314": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T01:20:05.604027+00:00"
+    },
+    "M4_124231": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T01:28:38.434706+00:00"
+    },
+    "M1_206858": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T01:37:04.351073+00:00"
+    },
+    "M8_148698": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T01:45:16.181507+00:00"
+    },
+    "M3_111390": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T01:54:02.044182+00:00"
+    },
+    "M5_236682": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T02:03:19.899729+00:00"
+    },
+    "M1_206545": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T02:12:18.729623+00:00"
+    },
+    "M15_77745": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T02:20:53.596851+00:00"
+    },
+    "M13_248217": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T02:27:29.320213+00:00"
+    },
+    "M1_206501": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T02:36:38.135097+00:00"
+    },
+    "M12_184916": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T02:44:41.012709+00:00"
+    },
+    "M10_227516": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T02:54:15.847237+00:00"
+    },
+    "M11_226721": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T03:02:40.697872+00:00"
+    },
+    "M3_120308": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T03:11:30.528920+00:00"
+    },
+    "M9_232005": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T03:19:22.291058+00:00"
+    },
+    "M5_211767": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T03:28:39.101381+00:00"
+    },
+    "M4_125213": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T03:37:23.994144+00:00"
+    },
+    "M9_213587": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T03:45:57.789233+00:00"
+    },
+    "M10_231544": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T03:53:33.666710+00:00"
+    },
+    "M7_122242": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T04:02:25.495559+00:00"
+    },
+    "M3_119802": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T04:10:48.294923+00:00"
+    },
+    "M5_165871": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T04:19:19.749440+00:00"
+    },
+    "M13_244239": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T04:29:12.615727+00:00"
+    },
+    "M3_109713": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T04:38:01.499515+00:00"
+    },
+    "M10_197591": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T04:46:58.303300+00:00"
+    },
+    "M3_107362": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T04:55:34.011016+00:00"
+    },
+    "M13_230747": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T05:02:11.792036+00:00"
+    },
+    "M9_229883": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T05:10:54.600924+00:00"
+    },
+    "M12_180774": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T05:18:24.386404+00:00"
+    },
+    "M12_185653": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T05:24:52.129419+00:00"
+    },
+    "M14_27068": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T05:32:34.143532+00:00"
+    },
+    "M14_37023": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T05:40:43.813807+00:00"
+    },
+    "M4_123161": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T05:48:48.595358+00:00"
+    },
+    "M9_225431": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T05:56:44.439754+00:00"
+    },
+    "M9_212391": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T06:03:43.281575+00:00"
+    },
+    "M6_237641": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T06:12:44.114518+00:00"
+    },
+    "M11_214296": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T06:21:17.018480+00:00"
+    },
+    "M7_120372": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T06:31:42.946926+00:00"
+    },
+    "M8_163989": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T06:39:54.938397+00:00"
+    },
+    "M2_129596": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T06:47:55.816775+00:00"
+    },
+    "M2_130005": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T06:54:21.587674+00:00"
+    },
+    "M4_107370": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T07:01:37.472272+00:00"
+    },
+    "M2_139662": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T07:09:09.319197+00:00"
+    },
+    "M11_245621": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T07:15:49.040274+00:00"
+    },
+    "M12_92132": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T07:22:32.816906+00:00"
+    },
+    "M6_240899": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T07:30:25.323411+00:00"
+    },
+    "M1_126578": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T07:37:03.801879+00:00"
+    },
+    "M14_37219": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T07:44:35.601063+00:00"
+    },
+    "M13_259737": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T07:52:50.426482+00:00"
+    },
+    "M14_103366": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T08:00:13.290338+00:00"
+    },
+    "M7_122025": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T08:07:09.133097+00:00"
+    },
+    "M7_120488": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T08:16:07.917702+00:00"
+    },
+    "M11_245864": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T08:23:10.721586+00:00"
+    },
+    "M2_93943": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T08:29:45.470510+00:00"
+    },
+    "M10_217020": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T08:37:34.336711+00:00"
+    },
+    "M8_161113": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T08:45:12.181597+00:00"
+    },
+    "M14_38771": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T08:51:08.917763+00:00"
+    },
+    "M9_225678": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T08:57:54.748072+00:00"
+    },
+    "M11_212718": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T09:05:11.637037+00:00"
+    },
+    "M12_101830": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T09:12:20.363305+00:00"
+    },
+    "M8_156118": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T09:18:29.127402+00:00"
+    },
+    "M1_126153": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T09:25:45.849273+00:00"
+    },
+    "M7_120758": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T09:32:49.745236+00:00"
+    },
+    "M14_102968": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T09:42:39.547953+00:00"
+    },
+    "M13_255047": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T09:49:22.089761+00:00"
+    },
+    "M12_101089": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T09:56:19.845342+00:00"
+    },
+    "M5_167056": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T10:03:43.785053+00:00"
+    },
+    "M15_87207": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T10:10:24.603472+00:00"
+    },
+    "M7_121482": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T10:16:34.317871+00:00"
+    },
+    "M15_89072": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T10:23:16.078768+00:00"
+    },
+    "M10_191718": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T10:29:45.877214+00:00"
+    },
+    "M12_98104": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T10:36:17.569604+00:00"
+    },
+    "M4_112534": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T10:42:56.299310+00:00"
+    },
+    "M3_119809": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T10:49:24.120830+00:00"
+    },
+    "M13_253688": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T10:57:00.894968+00:00"
+    },
+    "M11_217564": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-07T11:03:00.626008+00:00"
+    }
+  },
+  "completed_at_utc": "2026-09-07T11:03:00.629432+00:00",
+  "failed_targets": []
+}
