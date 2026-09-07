@@ -3,7 +3,7 @@ title: DR2 quiescent refit with the new production defaults
 date: 2026-09-07
 section: Analyses
 tags: [dr2-quiescent-sample, ceridwen, fit-accuracy-knobs]
-figures: [old-vs-new-parameters.png, dust-index-posteriors.png, headline-age-redshift-old-vs-new.png, example-fits.png, example-sfh.png, example-corner.png]
+figures: [old-vs-new-parameters.png, dust-index-posteriors.png, headline-age-redshift-old-vs-new.png, headline-age-redshift-oldest30.png, example-fits.png, example-sfh.png, example-corner.png]
 ---
 
 Sample
@@ -106,6 +106,25 @@ overlap Borghi+22. The old defaults sat on Borghi+22. The new defaults sit
 about 1.8 Gyr above. Both runs give a flat age-redshift relation across
 0.6 < z < 0.9, so neither recovers the decline a cosmic chronometer needs. The
 new defaults win decisively on evidence and move away from the published ages.
+
+</details>
+
+## Oldest 30% per bin
+
+<figure>
+<img src="figures/dr2-new-defaults/headline-age-redshift-oldest30.png" alt="Mass-weighted age against redshift for the oldest 30 percent of each sigma-z bin, both runs, with Borghi+22 treated the same way">
+<figcaption><code>headline-age-redshift-oldest30.png</code> · oldest 30% of each σ-z bin · Borghi+22 cut the same way</figcaption>
+</figure>
+
+<details>
+<summary>What the chronometer cut shows</summary>
+
+The full-median figure above mixes late quenchers into the low-z bins. This
+cut keeps the oldest 30% of each bin, the usual guard against progenitor bias.
+It does not rescue the trend: the new defaults still sit flat at 5 to 6 Gyr
+across 0.6 < z < 0.9, about 1 to 2 Gyr above Borghi+22 cut the same way. The
+high-σ bins hold 3 to 4 galaxies, so their oldest 30% is one galaxy. Table:
+`results/dr2-quiescent-new-defaults/age_redshift_oldest30.csv`.
 
 </details>
 

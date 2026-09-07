@@ -528,3 +528,14 @@
 - Pages: `notes/dr2-new-defaults.md`, `analyses/dr2-new-defaults/`
 - Change: all 187 LEGA-C DR2 quiescent galaxies refit at `998b6e1` with no env overrides, same manifest and seeds as the first production run, written to `results/dr2-quiescent-new-defaults`. 187/187 pass diagnostics. Sample medians, new minus old: age +1.23 Gyr, log Z -0.17, [alpha/Fe] -0.056, tau_dust +0.17, log M +0.19; against the two runs' combined seed floors those are 13.5, 3.1, 0.8, 7.1 and 4.6 times the noise on a median of 187, so [alpha/Fe] is the only parameter that does not move. Median ln Z rises 254 and every galaxy prefers the new model against a 3.7 combined seed spread. The free dust index is bimodal: 99/187 rail at the -1.0 prior floor, a second group sits between 0.0 and 0.4, 66 medians lie above the old fixed -0.7, and the age shift does not track the index (railed 1.34 Gyr, rest 1.16 Gyr). Mean age offset from Borghi+22 over the 68 overlapping galaxies grows from +0.21 to +1.89 Gyr and the age-redshift relation stays flat in both runs. Two RTX 5060 Ti boxes, 12.5 hours, $4.05. Fixed the monitor's teardown: `vastai destroy` prompts and exits 0 when it aborts, so it reported destroying instances that kept running.
 - Evidence: `results/dr2-quiescent-new-defaults/ceridwen_new_defaults_comparison.ipynb`, `results/dr2-quiescent-new-defaults-summary.csv`, `results/dr2-quiescent-new-defaults/dust_index_posteriors.csv`.
+
+## [2026-09-07] change | Absorption-feature windows on the fit figure
+
+- Pages: `notes/notebook-map.md`
+- Change: `notebooks/ceridwen_integrated_photometry_spectra.ipynb` marks nine major stellar absorption features (Ca K, Ca H, Hδ, G4300, Hγ, Fe4383, Hβ, Mg b, Fe5270) on both panels of the native-spectrum fit figure. Windows come from `ceridwen.observation.absorption_features.feature_windows` at the catalogue redshift: Lick bandpasses for bands, ±1000 km/s for line centres. Grey fill with dotted edges and rotated labels along the bottom of the flux panel. Test `test_notebook_marks_major_absorption_features` pins the helper and the feature list.
+
+## [2026-09-07] analysis | Oldest-30% age-redshift cut on the DR2 refit
+
+- Pages: `notes/dr2-new-defaults.md`, `analyses/dr2-new-defaults/`
+- Change: `ceridwen_new_defaults_comparison.ipynb` gains a second age-redshift figure that keeps the oldest 30% of each σ-z bin (Ceridwen and Borghi+22 alike), beside the unchanged full-median figure. Both runs stay flat; the new defaults sit 1 to 2 Gyr above Borghi+22 under the same cut. High-σ bins hold 3 to 4 galaxies, so the cut there is one galaxy.
+- Evidence: `results/dr2-quiescent-new-defaults/age_redshift_oldest30.csv`, `figures/headline-age-redshift-oldest30.png`.
