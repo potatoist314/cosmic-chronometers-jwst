@@ -236,8 +236,10 @@ def test_notebook_marks_major_absorption_features():
         "absorption_feature_mask, feature_windows"
     ) in source
     assert "def mark_absorption_features(ax" in source
-    assert "mark_absorption_features(axes[0])" in source
-    assert "mark_absorption_features(axes[1], show_labels=False)" in source
+    # Names hang below the pull panel's x axis, outside the plotting area.
+    assert "mark_absorption_features(axes[0], show_labels=False)" in source
+    assert "mark_absorption_features(axes[1])" in source
+    assert "clip_on=False" in source
     for name in ("CaK", "CaH", "HdA", "G4300", "HgA", "Fe4383", "Hbeta", "Mgb", "Fe5270"):
         assert f'("{name}",' in source
     # Feature names read horizontally along the bottom of the flux panel.
