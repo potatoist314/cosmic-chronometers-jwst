@@ -6,6 +6,7 @@ Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 
 ## Analyses
 
+- `notes/dr2-new-defaults.md` — DR2 quiescent refit with the new production defaults (2026-09-07)
 - `notes/fit-accuracy-knobs.md` — Fit-accuracy knobs after the calibration polynomial (2026-09-06)
 - `notes/redshift-sigma-wiggle.md` — Free redshift and velocity dispersion in the DR2 fit (2026-09-06)
 - `notes/calibration-polynomial-dr2.md` — Calibration polynomial in the DR2 pipeline (2026-09-05 · t_ab2b8a0b)
