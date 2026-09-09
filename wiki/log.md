@@ -545,3 +545,20 @@
 - Pages: `notes/notebook-map.md`, `notes/per-galaxy-fit-diagnostics.md`, `notes/stacked-chi2-and-median-pull.md`
 - Change: the fit-figure marking is now the production standard for every plot with a wavelength axis, in one shared module `scripts/spectral_figures.py`. Grey Lick/IDS windows with dotted edges on every wavelength panel; feature names in one horizontal row hanging below the bottom panel's x axis, outside the plotting area, dropping to the next row only where the rendered text would overlap. Rows are placed in points below the axis and the x-label pad is measured from them, so a short or narrow panel keeps the label clear of the names. Callers updated: the joint template notebook, `scripts/per_galaxy_diagnostics.py`, `scripts/plot_dr2_stacked_pull.py`, `notebooks/ceridwen_test_spectra.ipynb` and the five analysis notebooks in `results/`. Photometric SED panels in observed μm and non-wavelength plots (corner, SFH, histograms) stay bare.
 - Evidence: `tests/test_spectral_figures.py` (13 tests), `wiki/analyses/dr2-quiescent-sample/stacked-pull.png`, `wiki/analyses/per-galaxy-diagnostics/M1_210210-spectral_chi2.png`.
+
+## [2026-09-07] analysis | Quiescent sample on the star-forming sequence
+
+- Pages: `notes/sfms-quiescent.md`, `analyses/sfms-quiescent/`
+- Change: 2x2 log SFR100 against log formed mass for the old and new runs against Whitaker+14 and Leja+22 at z = 0.73, with the +-0.3 dex band and the +0.6 starburst and -1.0 quiescent lines. SFR100 averages the youngest 100 Myr per posterior draw; new columns `sfr100_q16/q50/q84` in both summary CSVs. Median offsets: old -1.65/-1.49 dex, new -1.06/-0.89 dex (Whitaker/Leja); q50 below the quiescent line: old 82%/76%, new 54%/42%.
+- Evidence: `scripts/plot_sfms_quiescent.py`, `scripts/build_dr2_quiescent_summary.py:sfr100_draws`, `tests/test_sfr100.py`, `wiki/analyses/sfms-quiescent/sfms-quiescent.png`.
+
+## [2026-09-07] change | Dust against young-SFH corner in the joint notebook
+
+- Pages: `notes/notebook-map.md`
+- Change: `notebooks/ceridwen_integrated_photometry_spectra.ipynb` gains a third corner plot showing the dust parameters against the three youngest formed-mass fractions (0-0.03, 0.03-0.1, 0.1-0.3 Gyr) with per-pair Spearman rank correlations, reusing the existing corner style and quick-profile ranges. The dust index joins the plot only when `FREE_DUST_INDEX` is set. Verified by executing the new block against real draws from both DR2 runs.
+
+## [2026-09-09] change | Galaxy image and photometric aperture in the joint notebook
+
+- Pages: `notes/notebook-map.md`, `notes/data-pipeline.md`
+- Change: `notebooks/ceridwen_integrated_photometry_spectra.ipynb` gains one early cell that draws the HST ACS F814W cutout of the target with an asinh stretch, arcsecond offset axes, north up and east left, and a 1.5-arcsecond-radius circle for the COSMOS2015 3-arcsecond aperture. `scripts/download_hst_cutouts.py` fetched all 187 cutouts from the IRSA `acs_mosaic_2.0` table into `data/raw/hst_f814w/`, with no misses. `scripts/backfill_hst_cutout_cell.py` inserted the cell and its output into the 187 executed notebooks under `results/dr2-quiescent-new-defaults/` without repeating a fit.
+- Evidence: `reports/astro-hst-cutouts-2026-09-09.md`, `tests/test_ceridwen_dr2_production.py` (20 tests). The drawn radius measures 1.49993 to 1.49998 arcseconds through the WCS on three galaxies, and `_validate_result()` passes on the same three.

@@ -243,9 +243,9 @@ def test_notebook_marks_major_absorption_features():
     bottom_call = (
         'axes[1], z_catalog, xlabel="observed vacuum wavelength [angstrom]"'
     )
-    for index in (13, 23, 25, 27):
+    for index in (14, 24, 26, 28):
         assert bottom_call in cells[index]
-    for index in (23, 25, 27):
+    for index in (24, 26, 28):
         assert "mark_absorption_features(axes[0], z_catalog, show_labels=False)" in (
             cells[index]
         )

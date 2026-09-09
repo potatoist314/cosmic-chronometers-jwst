@@ -6,6 +6,7 @@ Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 
 ## Analyses
 
+- `notes/sfms-quiescent.md` — Quiescent sample on the star-forming sequence (2026-09-07)
 - `notes/dr2-new-defaults.md` — DR2 quiescent refit with the new production defaults (2026-09-07)
 - `notes/fit-accuracy-knobs.md` — Fit-accuracy knobs after the calibration polynomial (2026-09-06)
 - `notes/redshift-sigma-wiggle.md` — Free redshift and velocity dispersion in the DR2 fit (2026-09-06)
@@ -28,7 +29,7 @@ Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 ## Notebooks
 
 - `notes/ceridwen-checkpoint-spectrum-evolution.md` — Ceridwen checkpoint spectrum evolution (2026-09-04 · t_ed2b739d)
-- `notes/notebook-map.md` — Notebook map (2026-09-01 · old: _old/notebooks/notebook-map.html)
+- `notes/notebook-map.md` — Notebook map (2026-09-09 · old: _old/notebooks/notebook-map.html)
 
 ## Codebase
 
@@ -36,7 +37,7 @@ Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 - `notes/ceridwen-likelihood-sampling.md` — Ceridwen: likelihood and sampling (2026-09-06 · old: _old/codebase/ceridwen-likelihood-sampling.html)
 - `notes/ceridwen-observations-model.md` — Ceridwen: observations and SedModel (2026-09-06 · old: _old/codebase/ceridwen-observations-model.html)
 - `notes/ceridwen-ssp-csp.md` — Ceridwen: SSP grids to composite spectra (2026-08-30 · old: _old/codebase/ceridwen-ssp-csp.html)
-- `notes/data-pipeline.md` — Data pipeline (2026-08-30 · old: _old/codebase/data-pipeline.html)
+- `notes/data-pipeline.md` — Data pipeline (2026-09-09 · old: _old/codebase/data-pipeline.html)
 - `notes/ceridwen-architecture.md` — Ceridwen architecture (2026-08-25 · old: _old/codebase/ceridwen-architecture.html)
 - `notes/project-map.md` — Project map (2026-08-25 · old: _old/codebase/project-map.html)
 - `notes/project-modules.md` — Project support modules (2026-08-25 · old: _old/codebase/project-modules.html)

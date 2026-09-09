@@ -1,6 +1,6 @@
 ---
 title: Notebook map
-date: 2026-09-01
+date: 2026-09-09
 section: Notebooks
 tags: [notebooks]
 job: 
@@ -72,11 +72,13 @@ The full-spectrum fit figure shades nine major absorption features from `ceridwe
 
 That marking is the production standard for every plot with a wavelength axis. `scripts/spectral_figures.py` holds it: `mark_absorption_features(ax, zred)` shades the windows in grey with dotted edges, and the bottom panel of a figure hangs the feature names in one horizontal row below its x axis, dropping a name to the next row only where the rendered text would overlap. Photometric SED panels in observed μm and non-wavelength plots (corner, SFH, histograms) stay bare. Tests: `tests/test_spectral_figures.py`.
 
+An early cell shows the target itself. It reads the HST ACS F814W cutout from `data/raw/hst_f814w/`. It draws the cutout with an asinh stretch. The axes give the offset from the catalogue position in arcseconds. North is up and east is left. A circle of 1.5-arcsecond radius marks the COSMOS2015 3-arcsecond aperture. The cell prints a note and draws nothing when the cutout is absent. `scripts/backfill_hst_cutout_cell.py` inserted the same cell, with its output, into the 187 executed notebooks under `results/dr2-quiescent-new-defaults/`. That backfill repeated no fit.
+
 The joint notebook reads `CERIDWEN_TARGET_ID`, `CERIDWEN_RESULT_DIR`, and `CERIDWEN_RANDOM_SEED`. The defaults retain the original M1_210210 run. The Vast multi-GPU launcher sets one fixed target and seed for each sequential one-GPU worker.
 
 The joint notebook selects at most 400 deterministic posterior rows. It uses those same rows for direct parameters, mass-weighted age, and formed-mass fractions. It checks finite values, equal row counts, non-negative mass fractions, and unit row sums before plotting.
 
-The physical corner output shows mass, metallicity, alpha enhancement, diffuse dust, calibration floor, spectrum scaling, and mass-weighted age. The second corner output shows age with each formed-mass fraction. Both figures remain embedded in the executed notebook. Index mode also stores observed indices, posterior predictions, uncertainties, masks, units, and pulls in `ceridwen_derived_outputs.h5`.
+The physical corner output shows mass, metallicity, alpha enhancement, diffuse dust, calibration floor, spectrum scaling, and mass-weighted age. The second corner output shows age with each formed-mass fraction. A third corner output shows the dust parameters against the three youngest formed-mass fractions with per-pair Spearman rank correlations. All three figures remain embedded in the executed notebook. Index mode also stores observed indices, posterior predictions, uncertainties, masks, units, and pulls in `ceridwen_derived_outputs.h5`.
 
 All current corner plots use 40-bin blue density maps with Gaussian smoothing. Darker blue marks higher relative posterior density. Existing quantiles and contour probability levels remain unchanged.
 

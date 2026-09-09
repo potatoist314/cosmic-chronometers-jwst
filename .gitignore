@@ -28,3 +28,6 @@ data/raw/cosmos2015/*.fits
 
 # Generated notebook site (rebuild with: python3 wiki/build.py)
 wiki/public/
+
+# HST ACS F814W cutouts, ~170 MB (scripts/download_hst_cutouts.py restores them)
+data/raw/hst_f814w/

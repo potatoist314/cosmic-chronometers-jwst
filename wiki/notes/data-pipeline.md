@@ -1,13 +1,14 @@
 ---
 title: Data pipeline
-date: 2026-08-30
+date: 2026-09-09
 section: Codebase
 tags: [legac, dr2, data]
 job: 
 old: _old/codebase/data-pipeline.html
 ---
 
-### Active Ceridwen flow
+<details>
+<summary>Active Ceridwen flow</summary>
 
 - **LEGA-C DR2**Spectrum or published stellar indices
 - **COSMOS2015**Matched photometry
@@ -19,11 +20,14 @@ old: _old/codebase/data-pipeline.html
 
 Borghi Table 4 supplies a separate reference comparison.
 
+</details>
+
 <figure>
 <figcaption>Three source products enter the active fit through documented conversions.</figcaption>
 </figure>
 
-### Raw catalogues
+<details>
+<summary>Raw catalogues</summary>
 
 `data/raw/borghi2022/vizier_J-ApJ-927-164_table4.tsv` contains 140 unique galaxies. It includes published ages, `[Z/H]`, `[alpha/Fe]`, coordinates, and errors. It does not include redshift, velocity dispersion, or indices (`data/raw/borghi2022/README.md`). The active workflow uses these values for reference comparisons.
 
@@ -31,7 +35,12 @@ Borghi Table 4 supplies a separate reference comparison.
 
 `data/raw/cosmos2015/` contains positional matches for NUVrJ selection and broadband fluxes. Each catalogue row matches a LEGA-C spectrum row. Therefore, an object can occur more than once (`data/raw/cosmos2015/README.md`).
 
-### Selection and comparison tables
+`data/raw/hst_f814w/` contains one HST ACS F814W cutout for each of the 187 production targets. Each file is a 10-arcsecond box at 0.03 arcseconds per pixel, cut from the COSMOS mosaic of Koekemoer et al. (2007) and oriented north up. `scripts/download_hst_cutouts.py` fetches them from the IRSA `acs_mosaic_2.0` cutout table and skips a file that already exists. The directory is 170 MB and stays out of git. These images enter no fit. The joint notebook draws them.
+
+</details>
+
+<details>
+<summary>Selection and comparison tables</summary>
 
 The production selection contains 194 eligible spectrum rows. Seven objects have a repeated eligible spectrum. The runner keeps the highest-S/N row for each `OBJECT`, which leaves 187 galaxy fits. Observed 4000-A coverage is recorded but does not remove a target (`scripts/run_ceridwen_vast_multi_gpu.py:79-137`).
 
@@ -39,7 +48,10 @@ The builder parses and checks exactly 140 Borghi IDs (`scripts/build_borghi2022_
 
 The result contains 143 spectrum rows for 140 galaxies. Two objects with repeat spectra cross the strict 215 km/s boundary. The object audit marks these objects as ambiguous (`data/processed/borghi2022_legac_dr2/README.md`).
 
-### Spectrum files
+</details>
+
+<details>
+<summary>Spectrum files</summary>
 
 Each LEGA-C FITS file stores one binary-table row. The row cells contain these arrays:
 
@@ -53,17 +65,26 @@ The spectra-only notebook first removes invalid pixels, nebular-line regions, an
 
 `notebooks/ceridwen_test_spectra.ipynb` · “Build the native-resolution spectrum” · `LEGAC_FEATURE_BANDS_AIR`, `fit_pixel_mask`, and `compact_indices`
 
-### Published stellar indices
+</details>
+
+<details>
+<summary>Published stellar indices</summary>
 
 The integrated notebook can use 13 LEGA-C Lick measurements and `Dn4000` instead of native spectral pixels. It reads the catalogue values and one-sigma errors. Invalid or missing rows are masked. The four configured targets retain 14, 10, 14, and 13 indices, respectively.
 
 These catalogue values are emission corrected. The likelihood uses their published diagonal uncertainties because the catalogue does not provide an index covariance matrix. This assumption ignores correlations between indices that share continuum bands.
 
-### Photometry
+</details>
+
+<details>
+<summary>Photometry</summary>
 
 The photometry downloader queries within one arcsecond and calculates the separations. It sorts candidates by LEGA-C index and separation. It retains the nearest candidate (`scripts/download_cosmos2015_legac_dr2_photometry.py:61-99`). The selected aperture fluxes use microJy (`lines 110-113`). The joint notebook converts microJy to AB maggies. It also adds a five-percent uncertainty floor. Both spectroscopy modes fit all 12 bands. Full-spectrum mode fits a separate `spectrum_scaling` parameter for the measured slit spectrum.
 
-### Data contracts entering Ceridwen
+</details>
+
+<details>
+<summary>Data contracts entering Ceridwen</summary>
 
 - `Photometry.flux` is a one-dimensional array of AB maggies.
 - `Photometry.uncertainty` has the same shape and units.
@@ -75,9 +96,14 @@ The photometry downloader queries within one arcsecond and calculates the separa
 
 The base observation checks that the arrays are one-dimensional and aligned. It masks nonfinite flux and nonpositive uncertainty (`ceridwen/ceridwen/observation/base.py:189-231`).
 
-### Examples
+</details>
+
+<details>
+<summary>Examples</summary>
 
 `scripts/build_borghi2022_legac_dr2_subset.py:194-213 · main`
+
+</details>
 
 ```
 rows_by_id: dict[int, list[int]] = defaultdict(list)
@@ -102,11 +128,16 @@ for borghi in borghi_rows:
     )`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The module docstring defines this script as the Borghi Table 4 to LEGA-C DR2 join (`scripts/build_borghi2022_legac_dr2_subset.py:2`).
 
 **Why it matters:** `rows_by_id` maps one galaxy ID to a list of rows. This type choice preserves repeat spectra during the join.
 
 `scripts/download_cosmos2015_legac_dr2_photometry.py:87-97 · download_cosmos2015`
+
+</details>
 
 ```
 order = np.lexsort(
@@ -122,6 +153,11 @@ _, nearest = np.unique(
 matched_batches.append(candidates[np.sort(nearest)])`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The function docstring requires the nearest COSMOS2015 match within one arcsecond (`scripts/download_cosmos2015_legac_dr2_photometry.py:62`).
 
 **Why it matters:** The sort groups candidates by LEGA-C row and then by separation. Therefore, `np.unique(..., return_index=True)` selects the nearest candidate in each group.
+
+</details>
