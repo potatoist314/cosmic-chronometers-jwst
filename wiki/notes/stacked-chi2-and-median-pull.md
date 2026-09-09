@@ -20,7 +20,7 @@ Peak bin with ≥ 93 galaxies
 Bootstrap
 : 400 galaxy resamples, seed 20260909
 Commit
-: `34be307` · `origin/absorption-mask`
+: `c0b1841` · `origin/absorption-mask`
 
 pull = (observed − posterior_q50) / effective_uncertainty, over the fitted native spectrum pixels. The script interpolates nothing and rescales no error.
 
