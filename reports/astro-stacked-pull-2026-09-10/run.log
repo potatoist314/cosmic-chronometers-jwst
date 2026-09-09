@@ -1,0 +1,25 @@
+galaxies used: 187
+bins with >=10 galaxies: 1089/1526
+median per-galaxy reduced chi2: 1.086
+median stacked mean pull^2: 1.149
+peak bin: 5566 A, mean pull^2 7.76, 10 galaxies
+peak bin with >=93 galaxies: 3972 A, mean pull^2 2.46, 159 galaxies
+Mean                 max |stacked pull| 1.318, max |z| 16.6
+Median               max |stacked pull| 0.951, max |z| 19.5
+Inverse-variance     max |stacked pull| 1.155, max |z| 16.6
+Sigma-clipped mean   max |stacked pull| 1.318, max |z| 17.2
+Biweight location    max |stacked pull| 0.918, max |z| 17.2
+feature          N          Mean        Median Inverse-varia Sigma-clipped Biweight loca
+Continuum      187 -0.022+-0.002 -0.021+-0.002 -0.020+-0.002 -0.021+-0.002 -0.020+-0.002
+Ca K           151 -0.149+-0.022 -0.098+-0.024 -0.138+-0.019 -0.127+-0.026 -0.109+-0.022
+Ca H+Hepsilon  165 +0.245+-0.024 +0.213+-0.028 +0.238+-0.022 +0.227+-0.023 +0.225+-0.023
+Hdelta         184 -0.124+-0.020 -0.118+-0.021 -0.122+-0.020 -0.114+-0.020 -0.115+-0.019
+G              184 +0.218+-0.021 +0.203+-0.031 +0.221+-0.021 +0.212+-0.021 +0.206+-0.022
+Hgamma         183 +0.312+-0.019 +0.314+-0.034 +0.307+-0.019 +0.312+-0.019 +0.315+-0.022
+Fe4383         182 +0.220+-0.022 +0.202+-0.027 +0.201+-0.023 +0.220+-0.023 +0.213+-0.024
+Hbeta            0 +nan+-nan +nan+-nan +nan+-nan +nan+-nan +nan+-nan
+Mg b            84 -0.314+-0.035 -0.304+-0.032 -0.338+-0.031 -0.319+-0.029 -0.315+-0.030
+Fe5270          63 -0.080+-0.042 -0.095+-0.047 -0.076+-0.040 -0.080+-0.044 -0.072+-0.042
+wrote stacked-pull.{pdf,png} to /Users/liuhao/Downloads/Astro project/wiki/analyses/dr2-quiescent-sample
+wrote stacked-pull-recipes.{pdf,png} to /Users/liuhao/Downloads/Astro project/wiki/analyses/dr2-quiescent-sample
+wrote stacked-pull-by-feature.{pdf,png} to /Users/liuhao/Downloads/Astro project/wiki/analyses/dr2-quiescent-sample

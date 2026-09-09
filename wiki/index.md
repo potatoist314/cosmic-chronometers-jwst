@@ -14,7 +14,7 @@ Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
 - `notes/per-galaxy-fit-diagnostics.md` — Per-galaxy fit diagnostics (2026-09-05 · t_8a78968d)
 - `notes/per-galaxy-diagnostics-gallery.md` — Per-galaxy fit diagnostics, gallery (2026-09-05 · t_8a78968d)
 - `notes/ceridwen-results.md` — Ceridwen common results board (2026-09-04 · t_44b5da5c)
-- `notes/stacked-chi2-and-median-pull.md` — Stacked χ² and median pull (2026-09-04 · t_ee8ca17a)
+- `notes/stacked-chi2-and-median-pull.md` — Stacked χ², five stacking recipes and the per-feature pull (2026-09-10 · t_6417df23)
 - `notes/dr2-quiescent-sample.md` — DR2 quiescent sample (2026-09-03 · t_d0d3a321)
 - `notes/absorption-line-mask.md` — Absorption-line pixel mask (2026-09-02 · t_8f62974f)
 
