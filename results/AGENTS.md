@@ -19,4 +19,4 @@
 
 Example:
 
-- `a100-feature-spectrum`
+- `rtx-5060-dr2-quiescent-full-spectrum`

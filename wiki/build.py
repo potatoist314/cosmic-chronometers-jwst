@@ -7,6 +7,17 @@ The generator writes no prose. Every sentence on the finished site comes out of
 a note. Chrome carries labels only, and `tests/run_tests.py` fails the build if
 a text node outside a note body grows past four words or ends a sentence.
 
+A note lists the figures it may show in its `figures:` front matter, in the
+same words the card used under `deliverables:`. An image that is not on the
+list fails the build. Extra figures are deleted, never kept for reference.
+
+A note's visible body is at most `BODY_WORD_CAP` words. Figures and their
+captions, model-settings blocks, tables, code, and anything already inside a
+collapsed `<details>` block do not count, and each figure caption must be one
+sentence. Everything else a reader has to read does count, headings included.
+A note over the budget fails the build and nothing is published: move the
+overflow into a `<details>` block.
+
     python3 wiki/build.py [--notes DIR] [--out DIR] [--base /wiki]
 """
 
@@ -26,10 +37,24 @@ from xml.sax.saxutils import escape as xesc
 ROOT = Path(__file__).resolve().parent          # wiki/
 PROJECT = ROOT.parent
 
+# The word counter is the bridge's, so the notebook and the handoff gate can
+# never drift apart. It lives next to the bridge because the Review Inbox
+# imports it too.
+BRIDGE_DIR = Path.home() / ".claude/scripts/hermes-bridge"
+sys.path.insert(0, str(BRIDGE_DIR))
+try:
+    import slop_lint
+except ImportError as exc:                      # pragma: no cover - install fault
+    raise SystemExit("build needs the shared word counter at %s/slop_lint.py (%s)"
+                     % (BRIDGE_DIR, exc))
+
 SITE_NAME = "Astro Lab Notebook"
 SITE_WHO = "Liu Hao · DR2 quiescent galaxies"
 # Left rail order. A section with no note is not shown.
 SECTIONS = ["Analyses", "Guides", "Notebooks", "Codebase", "Paper drafts", "Archive"]
+THEMES = ["Single-fit accuracy", "Validation on mocks", "Sample and data", "Population results",
+          "Compute", "Model and code reference", "Background reading"]
+STATUSES = ("adopted", "dropped", "inconclusive", "planned")
 BRIDGE = Path.home() / ".claude/scripts/hermes-bridge/bridge.py"
 
 
@@ -47,14 +72,44 @@ def parse_note(path: Path) -> dict:
             continue
         key, value = line.split(":", 1)
         key, value = key.strip(), value.strip()
-        note[key] = [t.strip() for t in value.strip("[]").split(",") if t.strip()] \
-            if key == "tags" else value
+        note[key] = [t.strip() for t in re.split(r"[;,]", value.strip("[]")) if t.strip()] \
+            if key in ("tags", "figures") else value
+    note.setdefault("figures", [])
     note.setdefault("title", path.stem)
     note.setdefault("date", "")
     note.setdefault("section", "Archive")
     note.setdefault("job", "")
     note.setdefault("status", "")
+    note.setdefault("theme", "")
+    note.setdefault("superseded_by", "")
     return note
+
+
+def parse_themes(path: Path) -> dict:
+    """themes.md: a `## Theme` heading, one purpose line, then an optional
+    experiment table. Returns {theme: {"purpose": str, "rows": [dict]}}."""
+    board = {}
+    if not path.is_file():
+        return board
+    current = None
+    columns = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line.startswith("## "):
+            current = line[3:].strip()
+            board[current] = {"purpose": "", "rows": []}
+            columns = []
+        elif current is None or not line:
+            continue
+        elif line.startswith("|"):
+            cells = [c.strip() for c in line.strip("|").split("|")]
+            if not columns:
+                columns = cells
+            elif not set("".join(cells)) <= set("-: "):
+                board[current]["rows"].append(dict(zip(columns, cells)))
+        elif not board[current]["purpose"]:
+            board[current]["purpose"] = line
+    return board
 
 
 def split_thread(body: str):
@@ -172,6 +227,18 @@ def markdown(text: str, base: str, source_dir: str = "") -> str:
             out.append("<pre><code>%s</code></pre>" % esc("\n".join(body)))
             continue
 
+        if re.match(r"^<details\b", stripped):               # collapsed block
+            block, depth = [], 0
+            while i < len(lines):
+                block.append(lines[i])
+                depth += len(re.findall(r"<details\b", lines[i]))
+                depth -= len(re.findall(r"</details>", lines[i]))
+                i += 1
+                if depth <= 0:
+                    break
+            out.append(details_html("\n".join(block), base, source_dir))
+            continue
+
         if re.match(r"^<(figure|div|iframe|table|dl|p|img)\b", stripped):   # raw HTML block
             block, depth = [], 0
             while i < len(lines):
@@ -225,11 +292,208 @@ def markdown(text: str, base: str, source_dir: str = "") -> str:
         para = [stripped]                                    # paragraph
         i += 1
         while i < len(lines) and lines[i].strip() and not re.match(
-                r"^\s*(```|#{1,6}\s|\||-\s|\d+\.\s|<(figure|div|iframe|table|dl)\b|:\s)", lines[i]):
+                r"^\s*(```|#{1,6}\s|\||-\s|\d+\.\s|</?(figure|div|iframe|table|dl|details|summary)\b|:\s)",
+                lines[i]):
             para.append(lines[i].strip())
             i += 1
         out.append("<p>%s</p>" % inline(" ".join(para), base, source_dir))
     return "\n".join(out)
+
+
+DETAILS_OPEN = re.compile(r"^\s*<details\b([^>]*)>")
+SUMMARY = re.compile(r"<summary\b[^>]*>(.*?)</summary>", re.S | re.I)
+DETAILS_LABEL = "Details"
+
+
+def details_html(block, base, source_dir=""):
+    """A collapsed block whose contents are Markdown, not raw HTML.
+
+    The note writes `<details>`, a one-label `<summary>`, then ordinary
+    Markdown. Without this the whole block came out escaped inside a
+    paragraph.
+    """
+    m = DETAILS_OPEN.match(block)
+    attrs = (m.group(1) if m else "").strip()
+    inner = DETAILS_OPEN.sub("", block, count=1)
+    inner = re.sub(r"</details>\s*$", "", inner.rstrip())
+    label = DETAILS_LABEL
+    sm = SUMMARY.search(inner)
+    if sm:
+        label = re.sub(r"<[^>]+>", "", sm.group(1)).strip() or DETAILS_LABEL
+        inner = inner[:sm.start()] + inner[sm.end():]
+    # A named block is a section of the note, so the rail can link to it.
+    anchor = ' id="%s"' % slugify(label) if label != DETAILS_LABEL else ""
+    return "<details%s><summary%s>%s</summary>%s</details>" % (
+        (" " + attrs) if attrs else "", anchor, inline(label, base, source_dir),
+        markdown(inner, base, source_dir))
+
+
+# ------------------------------------------------------------ word budget
+
+BODY_WORD_CAP = 50
+
+FIGURE_RE = re.compile(r"<figure\b.*?</figure>", re.S | re.I)
+DETAILS_RE = re.compile(r"<details\b.*?</details>", re.S | re.I)
+DL_RE = re.compile(r"<dl\b.*?</dl>", re.S | re.I)
+FIGCAPTION_RE = re.compile(r"<figcaption\b[^>]*>(.*?)</figcaption>", re.S | re.I)
+# Full stops that end an abbreviation, not a sentence.
+ABBREVIATION_RE = re.compile(
+    r"\b(?:e\.g|i\.e|vs|cf|Fig|fig|no|approx|etc|al|Dr|Mr|St|Eq|eq)\.", re.I)
+SENTENCE_END_RE = re.compile(r"[.!?](?:\s|$)")
+
+
+def strip_definition_lists(text: str) -> str:
+    """Drop `term` / `: value` pairs: the model-settings block."""
+    lines = text.split("\n")
+    keep = [True] * len(lines)
+    for i, line in enumerate(lines):
+        if line.strip().startswith(": "):
+            keep[i] = False
+            if i and lines[i - 1].strip():
+                keep[i - 1] = False
+    return "\n".join(line for line, k in zip(lines, keep) if k)
+
+
+def budget_text(body_md: str) -> str:
+    """The part of a note that counts against the body budget.
+
+    Figures and their captions, collapsed blocks, model-settings blocks and
+    tables are not prose a reader has to wade through, so they come out.
+    """
+    text = FIGURE_RE.sub(" ", body_md)
+    text = DETAILS_RE.sub(" ", text)
+    text = DL_RE.sub(" ", text)
+    text = strip_definition_lists(text)
+    text = "\n".join(ln for ln in text.split("\n") if not ln.strip().startswith("|"))
+    return text
+
+
+def body_words(body_md: str) -> int:
+    """How many words of the note a reader has to read before expanding anything."""
+    return slop_lint.prose_words(budget_text(body_md), free_table=False,
+                                 drop_headings=False)
+
+
+# A caption may open with one bold label naming the figure. It is a label,
+# not a sentence, and does not count against the one-sentence rule.
+CAPTION_LABEL_RE = re.compile(r"^\s*(?:<strong>.*?</strong>|<b>.*?</b>|\*\*.*?\*\*)", re.S)
+
+
+def caption_sentences(caption: str) -> int:
+    """How many sentences one figure caption carries."""
+    text = CAPTION_LABEL_RE.sub(" ", caption)
+    text = re.sub(r"`[^`]*`", " ", text)
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = ABBREVIATION_RE.sub(" ", text).strip()
+    return len(SENTENCE_END_RE.findall(text))
+
+
+def caption_faults(body_md: str) -> list:
+    """Every figure caption that runs to more than one sentence."""
+    out = []
+    for m in FIGCAPTION_RE.finditer(body_md):
+        if caption_sentences(m.group(1)) > 1:
+            text = re.sub(r"<[^>]+>", " ", m.group(1))
+            out.append(" ".join(text.split())[:90])
+    return out
+
+
+# The Review Inbox counts the words Liu Hao had to read this week, but it runs
+# under launchd and macOS does not let a launchd agent read ~/Downloads. So
+# the build publishes the counts beside the shared counter, where it can.
+WORD_COUNTS_PATH = BRIDGE_DIR / "wiki_words.json"
+
+
+def publish_word_counts(notes: list, notes_dir: Path) -> None:
+    """Write each note's visible word count where the Review Inbox can read it.
+
+    Only a build of the real notebook publishes. A test build, or a build of
+    some other folder, would otherwise replace the live counts with its own.
+    """
+    if notes_dir.resolve() != (ROOT / "notes").resolve():
+        return
+    counts = {}
+    for note in notes:
+        body, _ = split_thread(note["body"])
+        counts[note["slug"]] = body_words(body)
+    try:
+        WORD_COUNTS_PATH.write_text(json.dumps(
+            {"built_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+             "cap": BODY_WORD_CAP, "notes": counts}, indent=1), encoding="utf-8")
+    except OSError as exc:                      # never fail a build over this
+        print("could not publish word counts: %s" % exc, file=sys.stderr)
+
+
+IMG_SRC_RE = re.compile(r'<img[^>]+src="([^"]+)"', re.I)
+MD_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(([^)\s]+)\)")
+
+
+def note_images(body_md: str) -> list:
+    """Every image a note shows, in order."""
+    return IMG_SRC_RE.findall(body_md) + MD_IMAGE_RE.findall(body_md)
+
+
+def figure_faults(note: dict, body_md: str) -> list:
+    """Images the note shows that its `figures:` list does not name.
+
+    Liu Hao writes the list in his own words on the card, under
+    `deliverables:`, and the note repeats it as `figures:`. An entry matches a
+    file when it is that file name, or when the two share a word.
+    """
+    images = note_images(body_md)
+    if not images:
+        return []
+    if not note.get("figures"):
+        return ["%s: shows %d image(s) and has no `figures:` list in its front "
+                "matter — add the card's deliverables there"
+                % (note["slug"], len(images))]
+    return ["%s: shows an image the `figures:` list does not name — %s"
+            % (note["slug"], name)
+            for name in slop_lint.uncovered(images, note["figures"])]
+
+
+def budget_faults(notes: list) -> list:
+    """One line per note that breaks the budget. Empty means the build may run."""
+    faults = []
+    for note in notes:
+        body, _ = split_thread(note["body"])
+        faults += figure_faults(note, body)
+        words = body_words(body)
+        if words > BODY_WORD_CAP:
+            faults.append("%s: %d words of visible body, budget %d — move the "
+                          "overflow into a <details> block"
+                          % (note["slug"], words, BODY_WORD_CAP))
+        for caption in caption_faults(body):
+            faults.append("%s: figure caption runs to more than one sentence — %s"
+                          % (note["slug"], caption))
+    return faults
+
+
+def theme_faults(notes: list, board: dict) -> list:
+    """Theme front matter and the experiment board against the fixed vocabularies."""
+    faults = []
+    slugs = {n["slug"] for n in notes}
+    for note in notes:
+        if note["theme"] not in THEMES and note["status"] != "obsolete":
+            faults.append("%s: theme %r is not one of %s"
+                          % (note["slug"], note["theme"], ", ".join(THEMES)))
+        if note["superseded_by"] and note["superseded_by"] not in slugs:
+            faults.append("%s: superseded_by %r is not a note"
+                          % (note["slug"], note["superseded_by"]))
+    for theme, entry in board.items():
+        if theme not in THEMES:
+            faults.append("themes.md: %r is not a theme" % theme)
+        for row in entry["rows"]:
+            if row.get("status") not in STATUSES:
+                faults.append("themes.md: %s status %r is not one of %s"
+                              % (row.get("arm"), row.get("status"), ", ".join(STATUSES)))
+            if caption_sentences(row.get("result", "")) > 0:
+                faults.append("themes.md: %s result reads as a sentence — one clause, "
+                              "no full stop" % row.get("arm"))
+            if row.get("note") and row["note"] not in slugs:
+                faults.append("themes.md: %s cites %r, not a note"
+                              % (row.get("arm"), row["note"]))
+    return faults
 
 
 def table_html(rows, base, source_dir=""):
@@ -316,18 +580,28 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 
 def rail_sections(notes, base, current=""):
     counts = {}
+    themes = {}
     for n in notes:
         counts[n["section"]] = counts.get(n["section"], 0) + 1
+        if n["theme"]:
+            themes[n["theme"]] = themes.get(n["theme"], 0) + 1
     items = []
     if not counts:
         return ""
+    for name in THEMES:
+        if name in themes:
+            cls = " class=\"on\"" if name == current else ""
+            items.append('<li%s><a href="%s/themes/%s/">%s</a><span class="n">%d</span></li>'
+                         % (cls, base, slugify(name), esc(name), themes[name]))
+    head = '<div><h4>Themes</h4><ul>%s</ul></div>' % "".join(items) if items else ""
+    items = []
     for name in SECTIONS:
         if name not in counts:
             continue
         cls = " class=\"on\"" if name == current else ""
         items.append('<li%s><a href="%s/sections/#%s">%s</a><span class="n">%d</span></li>'
                      % (cls, base, slugify(name), esc(name), counts[name]))
-    return '<div><h4>Sections</h4><ul>%s</ul></div>' % "".join(items)
+    return head + '<div><h4>Sections</h4><ul>%s</ul></div>' % "".join(items)
 
 
 def rail_note(note, base, headings):
@@ -347,9 +621,9 @@ def rail_note(note, base, headings):
 def feed_rows(notes, base):
     rows = []
     for n in notes:
-        kind = ("%s · %s" % (n["section"].lower(), n["status"])) if n["status"] \
-            else n["section"].lower()
-        cls = " obs" if n["status"] else ""
+        flag = n["status"] or ("superseded" if n["superseded_by"] else "")
+        kind = ("%s · %s" % (n["section"].lower(), flag)) if flag else n["section"].lower()
+        cls = " obs" if flag else ""
         rows.append(
             '<li><span class="d">%s</span><span><a class="t" href="%s/n/%s/">%s</a>'
             '<span class="k%s">%s</span></span></li>'
@@ -357,11 +631,57 @@ def feed_rows(notes, base):
     return '<ul class="feed">%s</ul>' % "".join(rows)
 
 
+def status_chips(rows):
+    tally = {}
+    for row in rows:
+        tally[row["status"]] = tally.get(row["status"], 0) + 1
+    return "".join('<span class="chip %s">%d %s</span>' % (s, tally[s], s)
+                   for s in STATUSES if s in tally)
+
+
+def board_html(rows, notes, base):
+    if not rows:
+        return ""
+    titles = {n["slug"]: n["title"] for n in notes}
+    body = []
+    for r in rows:
+        note = ('<a href="%s/n/%s/">%s</a>' % (base, r["note"], esc(titles[r["note"]]))
+                if r.get("note") else "")
+        body.append('<tr><td>%s</td><td>%s</td><td><span class="chip %s">%s</span></td>'
+                    '<td>%s</td><td>%s</td></tr>'
+                    % (esc(r["experiment"]), inline(r["arm"], base), r["status"], r["status"],
+                       inline(r["result"], base), note))
+    return ('<div class="prose board"><div class="scroll"><table><thead><tr><th>experiment</th>'
+            '<th>arm</th><th>status</th><th>result</th><th>note</th></tr></thead>'
+            '<tbody>%s</tbody></table></div></div>' % "".join(body))
+
+
+def superseded_banner(note, notes, base):
+    if not note["superseded_by"]:
+        return ""
+    target = next(n for n in notes if n["slug"] == note["superseded_by"])
+    return ('<div class="banner">Superseded by <a href="%s/n/%s/">%s</a></div>'
+            % (base, target["slug"], esc(target["title"])))
+
+
 # ---------------------------------------------------------------- build
 
 def build(notes_dir: Path, out: Path, base: str) -> int:
     notes = [n for n in (parse_note(p) for p in sorted(notes_dir.glob("*.md"))) if n]
     notes.sort(key=lambda n: (n["date"], n["title"]), reverse=True)
+    board = parse_themes(notes_dir.parent / "themes.md")
+
+    # Nothing is published until every note is inside its word budget
+    # and every theme and board status is one of the fixed words.
+    faults = budget_faults(notes) + theme_faults(notes, board)
+    if faults:
+        print("build stopped: %d fault(s) against the word budget" % len(faults),
+              file=sys.stderr)
+        for line in faults[:12]:
+            print("  " + line, file=sys.stderr)
+        if len(faults) > 12:
+            print("  ... and %d more" % (len(faults) - 12), file=sys.stderr)
+        return 1
 
     scratch = out.with_name(out.name + ".new")
     shutil.rmtree(scratch, ignore_errors=True)
@@ -397,10 +717,18 @@ def build(notes_dir: Path, out: Path, base: str) -> int:
                          '</iframe></div>' % (base, note["embed"], esc(note["title"])))
         else:
             body_html = markdown(body_md, base, os.path.dirname(note.get("source", "")))
-        headings = re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body_html)
-        headings = [(h, re.sub(r"<[^>]+>", "", t)) for h, t in headings][:8]
+        # Section links for the rail: real headings, plus every named
+        # collapsed block, in the order they appear on the page.
+        headings = re.findall(
+            r'<(?:h2 id="([^"]+)"|summary id="([^"]+)")>(.*?)</(?:h2|summary)>',
+            body_html)
+        headings = [(a or b, re.sub(r"<[^>]+>", "", t)) for a, b, t in headings][:8]
 
-        eyebrow = ['<span>%s</span>' % esc(note["section"])]
+        eyebrow = []
+        if note["theme"]:
+            eyebrow.append('<a href="%s/themes/%s/">%s</a>'
+                           % (base, slugify(note["theme"]), esc(note["theme"])))
+        eyebrow.append('<span>%s</span>' % esc(note["section"]))
         eyebrow += ['<span class="tag">%s</span>' % esc(t) for t in note["tags"][:3]]
         eyebrow.append('<span>%s</span>' % esc(note["date"]))
         if note["status"]:
@@ -418,10 +746,10 @@ def build(notes_dir: Path, out: Path, base: str) -> int:
         else:
             pager.append("<span></span>")
 
-        page = ('<div class="eyebrow">%s</div><h1>%s</h1><div class="prose">%s%s</div>%s'
+        page = ('<div class="eyebrow">%s</div><h1>%s</h1>%s<div class="prose">%s%s</div>%s'
                 '<div class="foot">%s</div>'
-                % ("".join(eyebrow), esc(note["title"]), body_html,
-                   thread_html(thread), ask_box(note, base), "".join(pager)))
+                % ("".join(eyebrow), esc(note["title"]), superseded_banner(note, notes, base),
+                   body_html, thread_html(thread), ask_box(note, base), "".join(pager)))
         dest = scratch / "n" / note["slug"]
         dest.mkdir(parents=True)
         (dest / "index.html").write_text(
@@ -435,10 +763,43 @@ def build(notes_dir: Path, out: Path, base: str) -> int:
     (scratch / "search.json").write_text(json.dumps(index, separators=(",", ":")), encoding="utf-8")
 
     foot = ('<div class="foot"><span>%d</span><span><a href="%s/feed.xml">RSS</a> · '
-            '<a href="%s/date/">By date</a> · <a href="%s/sections/">By topic</a></span></div>'
-            % (len(notes), base, base, base))
+            '<a href="%s/log/">Log</a> · <a href="%s/date/">By date</a> · '
+            '<a href="%s/sections/">By topic</a></span></div>'
+            % (len(notes), base, base, base, base))
+
+    # The front page is the theme hub: one card per theme that has notes or
+    # board rows. Each theme page carries the board, then the notes, with
+    # superseded notes last.
+    cards = []
+    for theme in THEMES:
+        mine = [n for n in notes if n["theme"] == theme]
+        entry = board.get(theme, {"purpose": "", "rows": []})
+        if not mine and not entry["rows"]:
+            continue
+        slug = slugify(theme)
+        purpose = '<p class="prose">%s</p>' % esc(entry["purpose"]) if entry["purpose"] else ""
+        live = [n for n in mine if not n["superseded_by"]]
+        old = [n for n in mine if n["superseded_by"]]
+        count = "%d note" % len(mine) if len(mine) == 1 else "%d notes" % len(mine)
+        cards.append('<a class="card" href="%s/themes/%s/"><h2>%s</h2>%s<div class="meta">'
+                     '<span class="n">%s</span>%s</div></a>'
+                     % (base, slug, esc(theme), purpose, count, status_chips(entry["rows"])))
+        page = ('<div class="eyebrow"><span>Theme</span></div><h1>%s</h1>%s%s%s%s'
+                % (esc(theme), purpose, board_html(entry["rows"], notes, base),
+                   feed_rows(live, base) if live else "",
+                   feed_rows(old, base) if old else ""))
+        dest = scratch / "themes" / slug
+        dest.mkdir(parents=True)
+        (dest / "index.html").write_text(
+            shell("%s · %s" % (theme, SITE_NAME), base, page,
+                  rail_sections(notes, base, theme)), encoding="utf-8")
     (scratch / "index.html").write_text(
-        shell(SITE_NAME, base, "<h1>Notes</h1>" + feed_rows(notes, base) + foot,
+        shell(SITE_NAME, base, '<h1>Themes</h1><div class="cards">%s</div>' % "".join(cards)
+              + foot, rail_sections(notes, base)), encoding="utf-8")
+
+    (scratch / "log").mkdir()
+    (scratch / "log/index.html").write_text(
+        shell("Log · " + SITE_NAME, base, "<h1>Log</h1>" + feed_rows(notes, base),
               rail_sections(notes, base)), encoding="utf-8")
 
     by_date = []
@@ -462,6 +823,7 @@ def build(notes_dir: Path, out: Path, base: str) -> int:
               rail_sections(notes, base)), encoding="utf-8")
 
     (scratch / "feed.xml").write_text(rss(notes, base), encoding="utf-8")
+    publish_word_counts(notes, notes_dir)
 
     backup = out.with_name(out.name + ".old")
     shutil.rmtree(backup, ignore_errors=True)
@@ -596,9 +958,34 @@ p{max-width:65ch;margin:0 0 1em}
 .feed .k{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2);
   margin-left:10px}
 .feed .k.obs,.eyebrow .k.obs{color:var(--obsolete)}
+.eyebrow a{color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:20px 0}
+.card{display:block;border:1px solid var(--rule);background:var(--paper);padding:16px 18px 14px;
+  color:inherit;text-decoration:none}
+.card:hover{border-color:var(--accent)}
+.card h2{margin:0 0 6px;font-size:1.15rem}
+.card p{font-size:.92rem;color:var(--ink-2);margin:0 0 12px}
+.card .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:.72rem;
+  color:var(--ink-3)}
+.chip{font-family:inherit;font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:2px 7px;border-radius:2px;background:var(--wash);color:var(--ink-2);white-space:nowrap}
+.chip.adopted{color:#2f7d4a;background:rgba(47,125,74,.12)}
+.chip.dropped{color:#c0584a;background:rgba(192,88,74,.14)}
+.chip.inconclusive{color:#8a6d1f;background:rgba(138,109,31,.14)}
+.chip.planned{color:var(--ink-3);border:1px dashed var(--rule);background:transparent}
+.board{margin:18px 0 6px}
+.board table{font-size:.88rem}
+.board td:nth-child(2){white-space:nowrap}
+.board td:nth-child(4){max-width:38ch}
+.banner{border-left:3px solid var(--obsolete);background:var(--wash);padding:8px 12px;
+  margin:0 0 18px;font-size:.9rem;color:var(--ink-2)}
 figure{margin:22px 0;max-width:760px}
 figure img{width:100%;height:auto;background:var(--wash);border:1px solid var(--rule)}
 figcaption{font-size:.9rem;color:var(--ink-2);margin-top:8px;max-width:65ch}
+details{margin:34px 0 0;border-top:1px solid var(--rule);padding-top:10px}
+details>summary{cursor:pointer;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-3)}
+details[open]>summary{margin-bottom:10px}
 .embed{margin:20px 0;border:1px solid var(--rule);background:var(--wash)}
 .embed iframe{width:100%;height:78vh;min-height:520px;border:0;display:block}
 .kv{display:grid;grid-template-columns:max-content 1fr;gap:6px 22px;font-size:.95rem;

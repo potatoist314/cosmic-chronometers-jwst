@@ -2,6 +2,7 @@
 title: Stacked χ², five stacking recipes and the per-feature pull
 date: 2026-09-10
 section: Analyses
+theme: Population results
 tags: [dr2-quiescent-sample, ceridwen, diagnostics]
 job: t_6417df23
 figures: [stacked-pull.png, stacked-pull-recipes.png, stacked-pull-by-feature.png]

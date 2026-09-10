@@ -2,6 +2,7 @@
 title: Notebook map
 date: 2026-09-09
 section: Notebooks
+theme: Model and code reference
 tags: [notebooks]
 job: 
 old: _old/notebooks/notebook-map.html
@@ -10,7 +11,7 @@ old: _old/notebooks/notebook-map.html
 <details>
 <summary>Scope</summary>
 
-Two Ceridwen notebooks are the current fitting entry points. One post-processing notebook presents a completed feature-spectrum result. Older inference branches are inactive. The `notebooks/practice/` directory contains the practice notebooks. Saved outputs are evidence only when the cell source, execution order, inputs, and kernel still match.
+Two Ceridwen notebooks are the current fitting entry points. One post-processing notebook presents a completed feature-spectrum result. Older inference branches are inactive. The practice notebooks are in `archive/notebooks/practice/`. Saved outputs are evidence only when the cell source, execution order, inputs, and kernel still match.
 
 </details>
 
@@ -92,7 +93,7 @@ The DR2 production notebook also writes analysis-ready summary, SFH, photometry,
 
 The spectra notebook also writes `ceridwen_derived_outputs.h5`. It contains normalized and equal-weight posterior samples, compact and native-grid predictions, star-formation histories, summary values, and diagnostics.
 
-`ceridwen_feature_spectrum_posterior_report.ipynb` reads the completed feature-spectrum HDF5 files without rerunning Ceridwen. It presents run metadata, 13 one-dimensional marginals, a physical corner plot, an age-SFH corner plot, and the SFH beside its age posterior. The fit samples seven log-SFR ratios. The report uses the 400 stored, index-aligned SFH draws to show mass-weighted age as a derived posterior quantity.
+`archive/notebooks/ceridwen_feature_spectrum_posterior_report.ipynb` reads the completed feature-spectrum HDF5 files without rerunning Ceridwen. It presents run metadata, 13 one-dimensional marginals, a physical corner plot, an age-SFH corner plot, and the SFH beside its age posterior. The fit samples seven log-SFR ratios. The report uses the 400 stored, index-aligned SFH draws to show mass-weighted age as a derived posterior quantity.
 
 `results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb` loads the 187 validated production summaries. It follows the Borghi differential-age construction: two velocity-dispersion groups, four fixed redshift bins, alternate-bin age differences, and inverse-variance combination. It propagates the stored Ceridwen age draws with 10,000 fixed-seed galaxy bootstrap samples. Each realization draws one age per unique galaxy before it resamples galaxies. It also fits an unbinned common slope with a separate intercept for each dispersion group. Its tables and seven figures stay embedded; the numerical tables and bootstrap draws are also stored in `ceridwen_cosmic_chronometer_summary.h5`.
 
@@ -107,14 +108,14 @@ The overlap age residual has a 7.32 Gyr-per-redshift slope. The Planck-based for
 <details>
 <summary>Practice</summary>
 
-`notebooks/practice/fits-viewer.ipynb` contains one cell that inspects a FITS table. It is a viewer, not an analysis pipeline.
+`archive/notebooks/practice/fits-viewer.ipynb` contains one cell that inspects a FITS table. It is a viewer, not an analysis pipeline.
 
 </details>
 
 <details>
 <summary>Kernels</summary>
 
-- `notebooks/practice/fits-viewer.ipynb` records the root Python 3.14 kernel.
+- `archive/notebooks/practice/fits-viewer.ipynb` records the root Python 3.14 kernel.
 - The two Ceridwen notebooks record Python 3.11 kernels.
 - The posterior report records the project Python 3.14 kernel.
 

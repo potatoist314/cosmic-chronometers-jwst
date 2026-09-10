@@ -2,6 +2,7 @@
 title: Per-galaxy fit diagnostics
 date: 2026-09-05
 section: Analyses
+theme: Population results
 tags: [dr2-quiescent-sample, ceridwen, diagnostics]
 job: t_8a78968d
 figures: [M1_210210-photometric_chi2.png, M1_210210-sf_timescales.png, M1_210210-spectral_chi2.png]

@@ -2,8 +2,10 @@
 title: Per-galaxy fit diagnostics, gallery
 date: 2026-09-05
 section: Analyses
+theme: Population results
 tags: [dr2-quiescent-sample, ceridwen, diagnostics]
 job: t_8a78968d
+figures: [photometric_chi2.png, sf_timescales.png, spectral_chi2.png]
 ---
 
 187 galaxies. Method and checks: [Per-galaxy fit diagnostics](../per-galaxy-fit-diagnostics/).

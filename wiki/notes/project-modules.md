@@ -2,6 +2,8 @@
 title: Project support modules
 date: 2026-08-25
 section: Codebase
+theme: Model and code reference
+superseded_by: active-codebase-map
 tags: [repository]
 job: 
 old: _old/codebase/project-modules.html
@@ -9,7 +11,8 @@ old: _old/codebase/project-modules.html
 
 The active notebooks call Ceridwen for stellar-population inference. Project-owned scripts prepare the data. The `src/` modules remain from earlier project stages and are not current fit entry points.
 
-### Current flow
+<details>
+<summary>Current flow</summary>
 
 1. **`scripts/`**Prepare observations
 2. **`notebooks/`**Configure fits
@@ -18,11 +21,14 @@ The active notebooks call Ceridwen for stellar-population inference. Project-own
 
 `src/` retains support code from earlier project stages.
 
+</details>
+
 <figure>
 <figcaption>Project scripts and notebooks drive the active Ceridwen fit.</figcaption>
 </figure>
 
-### Retained `src/cosmology.py`
+<details>
+<summary>Retained `src/cosmology.py`</summary>
 
 This early module contains small cosmology functions. No active notebook currently imports it.
 
@@ -33,6 +39,8 @@ This early module contains small cosmology functions. No active notebook current
 The module ends at line 20. It imports `quad` but does not implement the full age integral. This module is a partial learning module, not a complete cosmology API.
 
 `src/cosmology.py:5-16 · E, H, age_integrand`
+
+</details>
 
 ```
 def E(z, omega_m):
@@ -48,11 +56,17 @@ def age_integrand(z, omega_m):
     return 1/((1+z)*E(z, omega_m))`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The inline documentation defines `E` as `H(z) / H(0)`. The decorator requires Astropy units for `H0` (`src/cosmology.py:5-12`).
 
 **Why it matters:** `H` calls `E` for the dimensionless calculation. `age_integrand` also calls `E`. These calls show the module dependency direction.
 
-### Retained `src/mocks.py`
+</details>
+
+<details>
+<summary>Retained `src/mocks.py`</summary>
 
 This inactive module generates controlled age-redshift samples for earlier cosmic-chronometer work.
 
@@ -62,9 +76,14 @@ This inactive module generates controlled age-redshift samples for earlier cosmi
 4. **Add bias and noise**
 5. **Build MockSample**
 
+</details>
+
 <figure>
 <figcaption>Retained workflow from the inactive cosmic-chronometer mock module.</figcaption>
 </figure>
+
+<details>
+<summary>Details</summary>
 
 - `MockSample` defines four arrays and one truth dictionary (`lines 15-23`).
 - `true_ages` subtracts formation time from observation time (`lines 26-33`).
@@ -74,6 +93,8 @@ This inactive module generates controlled age-redshift samples for earlier cosmi
 All four sample arrays have shape `(n,)`. Ages and age uncertainties use Gyr. The redshift `z` is dimensionless.
 
 `src/mocks.py:86-97 · make_mock`
+
+</details>
 
 ```
 rng = np.random.default_rng(seed)
@@ -90,16 +111,24 @@ noise = rng.normal(0.0, age_err, n)
 age_obs = age + systematic + noise`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The docstring defines every mock input and returns a `MockSample` (`src/mocks.py:54-84`).
 
 **Why it matters:** The cosmology creates `age`. Physical scatter modifies this value. The systematic term and measurement noise then create the reported `age_obs`.
 
 Other inactive method modules remain in `src/` for reproducibility. This page does not include them in the current workflow.
 
-### Active data scripts
+</details>
+
+<details>
+<summary>Active data scripts</summary>
 
 `build_borghi2022_legac_dr2_subset.py` is the main data transformation script. Its `main` function reads both catalogues and checks the required columns. It matches object IDs and checks coordinate separations. It retains repeat spectra and applies the strict 215 km/s split. Finally, it writes the joined and audit tables (`lines 176-358`).
 
 `download_legac_dr2_spectra.py` can continue an incomplete download. It checks the catalogue filenames (`lines 47-61`) and each FITS structure (`lines 64-79`). It downloads each file with a `.part` suffix and then renames the complete file atomically (`lines 82-110`). Finally, it checks the complete file set (`lines 113-146`).
 
 `download_cosmos2015_legac_dr2_photometry.py` queries VizieR in batches. It keeps the nearest match for each LEGA-C row. It adds object identifiers and match separations. Finally, it writes a FITS table (`lines 61-125`).
+
+</details>

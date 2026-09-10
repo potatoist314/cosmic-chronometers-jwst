@@ -2,6 +2,7 @@
 title: Data pipeline
 date: 2026-09-09
 section: Codebase
+theme: Sample and data
 tags: [legac, dr2, data]
 job: 
 old: _old/codebase/data-pipeline.html

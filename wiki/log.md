@@ -568,3 +568,8 @@
 - Pages: `notes/stacked-chi2-and-median-pull.md`
 - Change: `scripts/plot_dr2_stacked_pull.py` no longer interpolates onto the rest-frame grid and no longer multiplies sigma by `sqrt(dlambda_new / dlambda_native)`. That step claimed a noise average that interpolation never performs, so mean pull² sat near 0.16 and the null line at 1 carried no meaning. Every fitted native pixel now goes into the bin that contains it. Mean pull² per native pixel is 1.149 on `results/dr2-quiescent-new-defaults` (187 galaxies) against a per-galaxy reduced χ² of 1.086. The script gained five stacking recipes (mean, median, inverse-variance weighted, sigma-clipped mean, biweight location from Beers, Flynn & Gebhardt 1990), a bootstrap over galaxies for the 1σ width, and a per-feature figure comparing each absorption window with the continuum between the windows. Absorption windows are marked on every rest-frame panel.
 - Evidence: `reports/astro-stacked-pull-2026-09-10/` (three figures and `run.log`), `tests/test_stacked_pull.py` (17 tests, all pass). The regression test fixes mean pull² against bin width, which the old scaling failed. Every feature window sits 5σ to 16σ from zero and far from the continuum level of −0.022. The Hβ window holds no fitted pixel because the fits mask rest-frame Hβ and [O III].
+
+## [2026-09-10] change | Theme hub, archive folder, scripts index
+
+- Pages: [[themes]], [[index]], all 30 themed notes
+- Change: Notes gained `theme:` frontmatter; `wiki/themes.md` board added; front page became the theme hub; date feed moved to `log/`; inactive scripts/notebooks/results moved into `archive/`; `scripts/README.md` added.

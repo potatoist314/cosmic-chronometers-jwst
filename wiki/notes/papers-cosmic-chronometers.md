@@ -2,20 +2,24 @@
 title: Papers: cosmic chronometers
 date: 2026-08-25
 section: Paper drafts
+theme: Background reading
 tags: [papers, chronometer]
 job: 
 source: papers/README.md
 ---
 
-Local reference PDFs are stored here and excluded from version control, so this
-index is the only in-repo record of which literature the project is working
-from. Keep it current when a paper is added or removed.
+Local reference PDFs are stored here and excluded from version control, so this index is the only in-repo record of which literature the project is working from. Keep it current when a paper is added or removed.
+
+<details>
+<summary>Details</summary>
 
 Root-level PDFs cover cosmic chronometers; topic subdirectories group related
 literature. Every paper remains listed in this table.
 
 Full citations are recorded only where they have actually been confirmed. Do
 not fill in the unrecorded ones by guessing — check the PDF.
+
+</details>
 
 | File | Citation | Role |
 | --- | --- | --- |
@@ -34,6 +38,11 @@ not fill in the unrecorded ones by guessing — check the PDF.
 | `spectral fitting/More Is Better - Strong Constraints on LEGA-C Stellar Properties with Prospector.pdf` | Nersesian et al. (2025), A&amp;A 695:A86, arXiv:2502.03021 | Joint Prospector fits constrain LEGA-C ages, metallicities, dust, and stellar masses |
 | `spectral fitting/Less Is Less - Photometry Alone Cannot Predict LEGA-C Spectral Indices.pdf` | Nersesian et al. (2024), A&amp;A 681:A94, arXiv:2310.18000 | Shows photometry-only Prospector fits cannot recover detailed age- and metallicity-sensitive spectra |
 
+<details>
+<summary>Details</summary>
+
 The "role" column records why each paper is here, not an agreed plan to use it.
 
 See the [concise stellar-population fitting review](spectral%20fitting/README.md).
+
+</details>

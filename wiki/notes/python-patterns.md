@@ -2,12 +2,14 @@
 title: Python patterns
 date: 2026-08-25
 section: Guides
+theme: Model and code reference
 tags: [python, jax]
 job: 
 old: _old/guides/python-patterns.html
 ---
 
-### Function
+<details>
+<summary>Function</summary>
 
 A function converts inputs into outputs. First, read its signature. Then find its `return` statements. After that, inspect the intermediate lines.
 
@@ -17,7 +19,10 @@ A function converts inputs into outputs. First, read its signature. Then find it
 
 These return values follow the active Ceridwen prediction and sampling path.
 
-### Dataclass
+</details>
+
+<details>
+<summary>Dataclass</summary>
 
 A dataclass defines a data record. It can store results without implementing the algorithm that produced them.
 
@@ -26,6 +31,8 @@ A dataclass defines a data record. It can store results without implementing the
 The field names define the object’s data contract. Search for class construction to find the producing algorithm.
 
 `ceridwen/ceridwen/sampler/runner.py:69-76 · SamplingResult`
+
+</details>
 
 ```
 @dataclass
@@ -38,15 +45,23 @@ class SamplingResult:
     downstream processing.`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The class docstring defines backend-independent samples, evidence, weights, diagnostics, and raw output (`ceridwen/ceridwen/sampler/runner.py:69-116`).
 
 **Why it matters:** All Ceridwen samplers return this container. Lines 118-128 define the posterior, evidence, diagnostics, timing, and raw-output fields.
 
-### Closure
+</details>
+
+<details>
+<summary>Closure</summary>
 
 A closure is an inner function that retains variables from its outer function. `Spectrum.setup_for_model` stores a projection closure in `_predict_fn` (`ceridwen/ceridwen/observation/spectrum.py:663-667`).
 
 `ceridwen/ceridwen/observation/spectrum.py:663-667`
+
+</details>
 
 ```
 _L = _apply_losvd
@@ -56,9 +71,15 @@ self._predict_fn = (
 )`
 ```
 
+<details>
+<summary>Details</summary>
+
 The lambda retains the prepared smoothing operation and pixel selection. Later predictions supply only the model spectrum.
 
-### Class and inheritance
+</details>
+
+<details>
+<summary>Class and inheritance</summary>
 
 Inheritance defines a specialized form of another class. `Photometry`, `Spectrum`, and `Lines` inherit storage and masking from `Observation`. Each class implements its own projection:
 
@@ -73,21 +94,30 @@ Compare the same method in the parent class and each child class.
 - **Spectrum**Resolution and pixels
 - **Lines**Line measurements
 
+</details>
+
 <figure>
 <figcaption>Each observation type shares one contract and defines its own projection.</figcaption>
 </figure>
 
-### Composition
+<details>
+<summary>Composition</summary>
 
 Composition means that one object contains other objects. `SedModel` contains a CSP, observations, priors, and transforms. It does not inherit their code (`ceridwen/ceridwen/model/model.py:141-167`). Ceridwen uses this design to combine different observation types.
 
-### Adapter
+</details>
+
+<details>
+<summary>Adapter</summary>
 
 An adapter gives different external libraries a common interface. `SamplerAdapter.run(...)` defines the protocol. The sampler classes implement this protocol. The active project path uses the nested-sampling class (`ceridwen/ceridwen/sampler/runner.py:215-268`).
 
 `run_sampler` uses the protocol. It does not use the internal BlackJAX API (`runner.py:275-366`).
 
-### Decorator
+</details>
+
+<details>
+<summary>Decorator</summary>
 
 A decorator changes function execution but keeps the function callable.
 
@@ -99,20 +129,31 @@ Read the decorator before you read the function. The decorator changes execution
 
 The JAX example below shows how `@jax.jit` changes a likelihood function.
 
-### Module exports
+</details>
+
+<details>
+<summary>Module exports</summary>
 
 An `__init__.py` file defines public names. For example, `ceridwen/ceridwen/ssps/__init__.py:7-18` exports grid containers and fetch helpers. Start with that file. Then open the module that defines each name.
 
-### JAX static versus traced values
+</details>
+
+<details>
+<summary>JAX static versus traced values</summary>
 
 This distinction explains much of the Ceridwen structure:
 
 - **Static Python values**Shapes, keys, and observation types
 - **Traced JAX arrays**Sampled numerical parameters
 
+</details>
+
 <figure>
 <figcaption>Python fixes the computation shape before JAX evaluates sampled values.</figcaption>
 </figure>
+
+<details>
+<summary>Details</summary>
 
 - Static Python values define shapes, object types, and observation lists.
 - Traced JAX arrays contain parameter values that change during sampling.
@@ -126,6 +167,8 @@ Examples:
 - `theta` arrays remain differentiable inside prediction: `ceridwen/ceridwen/model/model.py:348-401`.
 
 `ceridwen/ceridwen/sampler/runner.py:348-358 · run_sampler.loglike_fn`
+
+</details>
 
 ```
 # ── Log-likelihood: sum over observations, no prior ───────────────────
@@ -141,6 +184,11 @@ def loglike_fn(theta: dict[str, Array]) -> Array:
     return lnl`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The parent docstring says this compiled function sums observation likelihoods without a prior term (`ceridwen/ceridwen/sampler/runner.py:275-310`).
 
 **Why it matters:** `theta` contains traced numerical data. The code creates `_keys` and `_likelihoods` outside this function. JAX therefore sees a fixed loop structure. A different observation list usually requires new compilation.
+
+</details>

@@ -2,6 +2,7 @@
 title: Fit-accuracy knobs after the calibration polynomial
 date: 2026-09-06
 section: Analyses
+theme: Single-fit accuracy
 tags: [calibration, ceridwen, dr2-quiescent-sample, lick-indices]
 job:
 figures: [stage0_chi2_map.png, stage0_prior_rails.png, stage0_lick_residuals.png, parameters-shift.png, sfh-continuity.png, sfh-histories.png, lick-by-arm.png, mock-sfh-prior.png, chi2-M5_173928.png, corner-M5_173928.png, nd-parameters-shift.png, nd-dust-index.png, nd-sfh-histories.png, nd-lick.png]

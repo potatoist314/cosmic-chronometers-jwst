@@ -2,6 +2,7 @@
 title: Calibration polynomial in the DR2 pipeline
 date: 2026-09-05
 section: Analyses
+theme: Single-fit accuracy
 tags: [calibration, ceridwen, dr2-quiescent-sample]
 job: t_ab2b8a0b
 figures: [calibration-explainer.png, parameters-before-after.png, polynomial-vectors.png]

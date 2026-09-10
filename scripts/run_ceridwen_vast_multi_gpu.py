@@ -27,7 +27,7 @@ DEFAULT_BASE_SEED = 20260830
 # Concurrent fits share the GPU by time-slicing. With the production sampler
 # settings (100 lanes per step) one fit already keeps the GPU busy: three
 # concurrent production fits on an RTX 4060 Ti ran 3.1x slower each, for no
-# aggregate gain (benchmarks/ceridwen/README.md). The linear scaling seen with
+# aggregate gain (scripts/README.md). The linear scaling seen with
 # the 25-lane benchmark workload does not transfer, so the default stays 1.
 DEFAULT_FITS_PER_GPU = 1
 DEFAULT_MINIMUM_GPU_MEMORY_MIB = int(

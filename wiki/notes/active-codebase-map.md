@@ -2,6 +2,7 @@
 title: Active Ceridwen codebase map
 date: 2026-09-01
 section: Codebase
+theme: Model and code reference
 tags: [ceridwen, repository]
 job: 
 old: _old/codebase/active-codebase-map.html

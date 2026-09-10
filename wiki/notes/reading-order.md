@@ -2,10 +2,15 @@
 title: Reading order
 date: 2026-08-25
 section: Guides
+theme: Model and code reference
+superseded_by: overview
 tags: [ceridwen, reading]
 job: 
 old: _old/guides/reading-order.html
 ---
+
+<details>
+<summary>Details</summary>
 
 1. [Repository](#stage-1-learn-the-repository)Boundaries
 2. [Data](#stage-2-read-small-project-functions)Representations
@@ -13,11 +18,14 @@ old: _old/guides/reading-order.html
 4. [Prediction](#stage-4-read-notebooks-as-orchestration)Forward model
 5. [Sampling](#stage-5-trace-one-ceridwen-prediction)Saved result
 
+</details>
+
 <figure>
 <figcaption>Each stage adds one part of the active fit.</figcaption>
 </figure>
 
-### Stage 1: Learn the repository
+<details>
+<summary>Stage 1: Learn the repository</summary>
 
 Read [Project map](../project-map/). Keep these boundaries in mind:
 
@@ -26,7 +34,10 @@ Read [Project map](../project-map/). Keep these boundaries in mind:
 - The project owns its code but does not own submodule code.
 - The root project and Ceridwen use separate Python environments.
 
-### Stage 2: Trace the input data
+</details>
+
+<details>
+<summary>Stage 2: Trace the input data</summary>
 
 Read [Data pipeline](../data-pipeline/). Then trace one LEGA-C object through these forms:
 
@@ -38,7 +49,10 @@ Read [Data pipeline](../data-pipeline/). Then trace one LEGA-C object through th
 
 Each step changes the data representation. The galaxy stays the same.
 
-### Stage 3: Read the active notebooks
+</details>
+
+<details>
+<summary>Stage 3: Read the active notebooks</summary>
 
 Read [Notebook map](../notebook-map/). Then read these notebooks:
 
@@ -47,7 +61,10 @@ Read [Notebook map](../notebook-map/). Then read these notebooks:
 
 The notebooks configure the data, model, likelihood, sampler, and saved result.
 
-### Stage 4: Trace one Ceridwen prediction
+</details>
+
+<details>
+<summary>Stage 4: Trace one Ceridwen prediction</summary>
 
 Read these pages in order:
 
@@ -60,11 +77,14 @@ Read these pages in order:
 3. **CSP prediction**Create model spectrum
 4. **Observation projection**Match measured spaces
 
+</details>
+
 <figure>
 <figcaption>One sampled parameter point becomes one prediction for each observation.</figcaption>
 </figure>
 
-### Stage 5: Trace nested sampling and results
+<details>
+<summary>Stage 5: Trace nested sampling and results</summary>
 
 Read these pages after you understand one prediction:
 
@@ -79,8 +99,15 @@ Read these pages after you understand one prediction:
 4. **SamplingResult**
 5. **Checkpoint and HDF5**
 
+</details>
+
 <figure>
 <figcaption>The sampler evaluates the model and returns restartable, saved output.</figcaption>
 </figure>
 
+<details>
+<summary>Details</summary>
+
 Use [Python patterns](../python-patterns/) when you find an unfamiliar implementation pattern.
+
+</details>

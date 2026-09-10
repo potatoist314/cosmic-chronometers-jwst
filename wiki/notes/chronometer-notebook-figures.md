@@ -2,9 +2,11 @@
 title: Chronometer notebook figures
 date: 2026-08-20
 section: Archive
+theme: Population results
 tags: [chronometer, figures]
 job: 
 status: obsolete
+figures: [chronometer-fig1-cell6.png, chronometer-fig2-cell11.png, chronometer-fig3-cell14.png, chronometer-fig4-cell17.png, chronometer-fig5-cell20.png, chronometer-fig6-cell23.png, chronometer-fig7-cell26.png]
 ---
 
 <figure><img src="figures/_old/chronometer-fig1-cell6.png" alt="Chronometer notebook figure 1"><figcaption><code>chronometer-fig1-cell6.png</code></figcaption></figure>

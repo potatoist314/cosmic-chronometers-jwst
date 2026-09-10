@@ -2,6 +2,7 @@
 title: Free redshift and velocity dispersion in the DR2 fit
 date: 2026-09-06
 section: Analyses
+theme: Single-fit accuracy
 tags: [calibration, ceridwen, dr2-quiescent-sample]
 job:
 figures: [nuisance-posteriors.png, nuisance-degeneracies.png, parameters-fixed-vs-free.png, sfh-fixed-vs-free.png]

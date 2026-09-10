@@ -43,6 +43,7 @@ date: 2026-09-04
 section: Analyses
 tags: [dr2-quiescent-sample, ceridwen]
 job: t_ee8ca17a
+theme: Population results
 status: obsolete   # optional
 ---
 ```
@@ -51,6 +52,10 @@ status: obsolete   # optional
 - `job` is the Hermes card whose worker produced the note. Leave it empty when
   no card produced it. It drives the per-note question box, so never guess it.
 - `status: obsolete` marks a note that stays readable but no longer applies.
+- `theme` is required unless `status: obsolete`. Use one of the seven names in `THEMES` in `wiki/build.py`. Values: Single-fit accuracy, Validation on mocks, Sample and data, Population results, Compute, Model and code reference, Background reading.
+- `superseded_by` is optional and names the slug of the note replacing this one. The build stops if that slug is not a note. The replaced note keeps its page and shows a banner.
+- `wiki/themes.md` is the experiment board. Under each `## Theme` heading, write one purpose line, then a table: `experiment | arm | status | result | note`. Use one row per arm. Status must be adopted, dropped, inconclusive, or planned. Result is one clause with the key number and no full stop. Note is a slug or empty. The build stops on any other status or a sentence in result.
+- The front page is the theme hub. `log/` is the date-ordered feed.
 
 ### The one rule that overrides the rest
 

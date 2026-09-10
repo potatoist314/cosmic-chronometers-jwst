@@ -2,6 +2,7 @@
 title: Ceridwen: observations and SedModel
 date: 2026-09-06
 section: Codebase
+theme: Model and code reference
 tags: [ceridwen]
 job: 
 old: _old/codebase/ceridwen-observations-model.html
@@ -9,16 +10,22 @@ old: _old/codebase/ceridwen-observations-model.html
 
 Observations define the measured data space. `SedModel` connects these data containers to the CSP forward model. It also selects the sampled parameters.
 
-### Observation contract
+<details>
+<summary>Observation contract</summary>
 
 - **Photometry**Filters
 - **Spectrum**Observed pixels
 - **Lines**Line fluxes
 - **StellarIndices**Absorption features
 
+</details>
+
 <figure>
 <figcaption>Each subclass projects the same model spectrum into a different measured space.</figcaption>
 </figure>
+
+<details>
+<summary>Details</summary>
 
 Every `Observation` stores:
 
@@ -32,6 +39,8 @@ Every `Observation` stores:
 Forward prediction can use an observation without flux values. The observation must contain known filters or a known wavelength grid (`base.py:194-202`).
 
 `ceridwen/ceridwen/observation/base.py:204-216 · Observation.rectify`
+
+</details>
 
 ```
 assert self.flux.ndim == 1,        "flux must be 1-D"
@@ -49,11 +58,17 @@ self._automask()
 assert self.ndof > 0, "no valid unmasked data points after masking"`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The base-class docstring defines flux, one-sigma uncertainty, and a mask where `True` includes the datum (`ceridwen/ceridwen/observation/base.py:25-46`).
 
 **Why it matters:** The assertions define the data contract. The input arrays must be one-dimensional and aligned. Automatic masking must leave at least one usable datum.
 
-### Projection contract
+</details>
+
+<details>
+<summary>Projection contract</summary>
 
 `setup_for_model(wave_model)` performs the static work before JIT compilation. `predict` performs the numerical projection at each model evaluation (`base.py:270-319`). `SedModel.__init__` prepares every observation automatically. It also supplies the SSP library resolution curve (`model/model.py:219-240`).
 
@@ -62,15 +77,20 @@ assert self.ndof > 0, "no valid unmasked data points after masking"`
 3. **`predict`**Project each spectrum
 4. **Measured-space values**Match observation length
 
+</details>
+
 <figure>
 <figcaption>Setup prepares fixed work before repeated numerical predictions.</figcaption>
 </figure>
 
-#### Photometry
+<details>
+<summary>Photometry</summary>
 
 `Photometry` stores AB maggies. One maggie is 3631 Jy (`observation/photometry.py:19-46`). The class converts model `F_nu` to `F_lambda`. It then integrates the filter transmission (`lines 117-151`). The prediction contains one value for each filter.
 
 `ceridwen/ceridwen/observation/photometry.py:264-266`
+
+</details>
 
 ```
 if getattr(self, "_has_precomputed_T", False):
@@ -78,9 +98,15 @@ if getattr(self, "_has_precomputed_T", False):
 return self.get_maggies(wave_model, spectrum)`
 ```
 
+<details>
+<summary>Details</summary>
+
 The fast path uses one matrix-vector multiplication. The alternative path performs the same filter projection without a precomputed matrix.
 
-#### Spectrum
+</details>
+
+<details>
+<summary>Spectrum</summary>
 
 `ceridwen/ceridwen/observation/spectrum.py:477-482 · Spectrum.setup_for_model`
 
@@ -103,6 +129,8 @@ The combined form is both cheaper and closer to the analytic width, because it i
 
 `ceridwen/ceridwen/observation/spectrum.py:790-804 · Spectrum.predict`
 
+</details>
+
 ```
 if self.fit_sigma_smooth:
     if sigma_smooth is None:
@@ -121,25 +149,40 @@ if self.fit_sigma_smooth:
 return self._predict_fn(spectrum)`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The method docstring requires prior setup and returns model `F_nu` on the observed pixels (`ceridwen/ceridwen/observation/spectrum.py:740-778`).
 
 **Why it matters:** Both branches call the closure that setup prepared. Only the fitted velocity branch supplies a traced smoothing parameter.
 
-#### Lines
+</details>
+
+<details>
+<summary>Lines</summary>
 
 `Lines` represents continuum-subtracted emission-line fluxes. The solar-scaled `CSPBasis` can predict these fluxes from nebular grids. `CSPBasis_afe` cannot predict them because it has no nebular component.
 
-#### Stellar indices
+</details>
+
+<details>
+<summary>Stellar indices</summary>
 
 `StellarIndices` represents integrated stellar absorption indices and continuum breaks. It is separate from `Lines`, which represents nebular emission fluxes. The LEGA-C definition set contains 13 Lick indices and `Dn4000`.
 
 The class converts the standard rest-air bandpasses to vacuum. Its internal `Spectrum` projector applies the SSP-library, instrumental, and fixed stellar-velocity broadening. Equivalent widths and CN magnitudes use `F_lambda`. `Dn4000` is the red-to-blue `F_nu` ratio (`ceridwen/ceridwen/observation/stellar_indices.py:115-123` and `209-317`).
 
-### Spectrum scaling
+</details>
+
+<details>
+<summary>Spectrum scaling</summary>
 
 Ceridwen can calculate one analytic multiplicative scale for each spectrum before it evaluates the likelihood (`csp/csp.py:1357-1429` and `csp/csp_afe.py:1291-1363`). The project notebooks disable this scale. Full-spectrum mode uses a fixed i-band aperture transfer. Stellar-index mode is scale invariant and uses no aperture transfer.
 
-### SedModel parameter bookkeeping
+</details>
+
+<details>
+<summary>SedModel parameter bookkeeping</summary>
 
 `SedModel.__init__` starts with `csp.theta_init`. It removes parameters that transforms will derive. It then adds the replacement free parameters (`model/model.py:141-195`). It contains these items:
 
@@ -156,11 +199,14 @@ The active notebooks use this parameter structure:
 3. **Model parameters**Add fixed or derived values
 4. **CSP prediction**Use one named dictionary
 
+</details>
+
 <figure>
 <figcaption>SedModel converts sampled values into the complete CSP parameter dictionary.</figcaption>
 </figure>
 
-### One prediction
+<details>
+<summary>One prediction</summary>
 
 `SedModel.predict(theta)` performs these steps:
 
@@ -173,6 +219,8 @@ The active notebooks use this parameter structure:
 
 `ceridwen/ceridwen/model/model.py:395-401`
 
+</details>
+
 ```
 if self._zred_fixed is not None and "zred" not in model_theta:
     if model_theta is theta:          # apply_transforms may not copy
@@ -183,9 +231,15 @@ if self._zred_fixed is not None and "zred" not in model_theta:
 return self.csp.predict(model_theta, self.observations)`
 ```
 
+<details>
+<summary>Details</summary>
+
 The code inserts a fixed redshift only when the sampled dictionary does not contain one. The final line returns a dictionary. The observation names are its keys.
 
-### Shapes and units
+</details>
+
+<details>
+<summary>Shapes and units</summary>
 
 - A scalar free parameter usually has shape `(1,)`.
 - `logsfr_ratios` has shape `(n_sfh_bins - 1,)`.
@@ -194,3 +248,5 @@ The code inserts a fixed redshift only when the sampled dictionary does not cont
 - `Z` is `log10` absolute metallicity.
 - `afe` is `[alpha/Fe]` in dex.
 - `zred` is dimensionless.
+
+</details>

@@ -84,9 +84,13 @@ POLY3_TOTAL = {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos
 NEW_DEFAULT = {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_total",
                "CERIDWEN_SFH_PRIOR": "student", "CERIDWEN_FREE_DUST_INDEX": "1"}
 ARMS = {
+    # Generation 1, calibration polynomial (2026-09-03, results/calibration-polynomial-dr2):
+    # is a multiplicative polynomial on the spectrum needed, and which photometry?
     "baseline": {"CERIDWEN_CALIBRATION_ORDER": "0", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
     "poly3": {"CERIDWEN_CALIBRATION_ORDER": "3", "CERIDWEN_PHOTOMETRY": "cosmos_ap3"},
     "poly3_total": POLY3_TOTAL,
+    # Generation 2, fit-accuracy knobs (2026-09-06, results/fit-accuracy-knobs):
+    # one switch each on top of poly3_total; seed_rep* measure sampler scatter.
     "seed_rep1": POLY3_TOTAL,
     "seed_rep2": POLY3_TOTAL,
     "seed_rep3": POLY3_TOTAL,
@@ -97,6 +101,8 @@ ARMS = {
     "dust_free": {**POLY3_TOTAL, "CERIDWEN_FREE_DUST_INDEX": "1"},
     "sfh_cont": {**POLY3_TOTAL, "CERIDWEN_SFH_PRIOR": "student"},
     "mask_cn": {**POLY3_TOTAL, "CERIDWEN_MASK_REST_WINDOWS": "4142:4177,4634:4720"},
+    # Generation 3, new defaults (2026-09-06, results/dr2-quiescent-new-defaults):
+    # the flipped production model, its seed repeats, and two prior widenings.
     "new_default": NEW_DEFAULT,
     "new_default_rep1": NEW_DEFAULT,
     "new_default_rep2": NEW_DEFAULT,
@@ -492,7 +498,8 @@ def main(argv=None) -> int:
 
     def common(p):
         p.add_argument("--targets", nargs="+", default=DEFAULT_TARGETS, metavar="SPECT_ID")
-        p.add_argument("--arms", nargs="+", default=list(ARMS), choices=list(ARMS))
+        p.add_argument("--arms", nargs="+", required=True, choices=list(ARMS), metavar="ARM",
+                       help="arms to run, from ARMS in this file; no default")
         p.add_argument("--mock-arms", nargs="*", default=list(MOCK_ARMS), choices=list(MOCK_ARMS),
                        metavar="ARM", help="mock cells to run; give no names to skip the mocks")
         p.add_argument("--branch", default="absorption-mask")

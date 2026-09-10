@@ -2,6 +2,7 @@
 title: Ceridwen: SSP grids to composite spectra
 date: 2026-08-30
 section: Codebase
+theme: Model and code reference
 tags: [ceridwen, ssp]
 job: 
 old: _old/codebase/ceridwen-ssp-csp.html
@@ -9,7 +10,8 @@ old: _old/codebase/ceridwen-ssp-csp.html
 
 This layer converts precomputed single-age spectra into one composite galaxy spectrum. A grid stores numerical values. A basis is the algorithm that weights and combines these values.
 
-### SSP containers
+<details>
+<summary>SSP containers</summary>
 
 `SSPData` stores five numerical arrays:
 
@@ -33,11 +35,18 @@ This layer converts precomputed single-age spectra into one composite galaxy spe
 3. **Age**`n_age`
 4. **Wavelength**`n_wave`
 
+</details>
+
 <figure>
 <figcaption><code>SSPDataAfe.ssp_flux</code> follows this four-axis order.</figcaption>
 </figure>
 
+<details>
+<summary>Details</summary>
+
 `ceridwen/ceridwen/ssps/ssp_data.py:297-307 · SSPData.__post_init__`
+
+</details>
 
 ```
 def __post_init__(self):
@@ -53,11 +62,17 @@ def __post_init__(self):
         )`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The class docstring defines the metallicity, age, wavelength, and flux-array shapes (`ceridwen/ceridwen/ssps/ssp_data.py:227-261`).
 
 **Why it matters:** The tuple on the right defines the axis contract. The flux cube must align exactly with the metallicity, age, and wavelength coordinate arrays.
 
-### Available grids
+</details>
+
+<details>
+<summary>Available grids</summary>
 
 `grid_fetch.py:57-153` registers these grids:
 
@@ -69,7 +84,10 @@ def __post_init__(self):
 
 `fetch_grid` caches each grid by name and checks its SHA-256 value. It downloads the grid to a temporary file. It then moves the file atomically (`grid_fetch.py:157-227`). The active notebooks request `amist_c3k_hr_krou_afe`. Its published schema-2.1 file has shape `(5, 13, 107, 10992)`.
 
-### CSP construction
+</details>
+
+<details>
+<summary>CSP construction</summary>
 
 `CSPBasis` uses a three-dimensional `SSPData` object. `CSPBasis_afe` requires a four-dimensional `SSPDataAfe` object. The alpha basis checks the leading axis and rejects an incompatible grid at `csp/csp_afe.py:367-404`.
 
@@ -82,7 +100,10 @@ A CSP construction establishes static structure:
 
 `CSPBasis.initialize_model_structure` checks this contract at `csp/csp.py:544-732`. Both `Z` and `zh` store `log10` absolute metallicity. They do not store `[Z/H]` or `log10(Z/Z_sun)` (`csp/csp.py:1817-1842`).
 
-### From SFH parameters to weights
+</details>
+
+<details>
+<summary>From SFH parameters to weights</summary>
 
 The notebooks sample consecutive SFR log-ratios. The transform uses this sequence:
 
@@ -91,13 +112,20 @@ The notebooks sample consecutive SFR log-ratios. The transform uses this sequenc
 3. **Linear SFR**Apply `10 ** log_sfr`
 4. **Unit-mass SFH**Store as `theta["sfh"]`
 
+</details>
+
 <figure>
 <figcaption>The transform converts sampled ratios into normalized SFH weights.</figcaption>
 </figure>
 
+<details>
+<summary>Details</summary>
+
 `logsfr_ratios_to_sfh` implements this sequence at `ceridwen/ceridwen/model/transforms.py:79-169`. The CSP weight kernel integrates the SFH over the SSP age cells. It also interpolates metallicity (`csp/csp.py:1817-2015`). Small wrappers select constant or time-varying metallicity. They also select linear or step SFH behavior (`lines 2017-2050`).
 
 `ceridwen/ceridwen/model/transforms.py:142-167`
+
+</details>
 
 ```
 ratios  = jnp.asarray(logsfr_ratios, dtype=float)            # (n-1,)
@@ -128,9 +156,15 @@ else:
     sfh = sfr / jnp.sum(sfr)`
 ```
 
+<details>
+<summary>Details</summary>
+
 The first five lines reconstruct relative SFR values. The branch then normalizes a time integral or a discrete sum. Therefore, the later `logmass` parameter controls the total amplitude.
 
-### Alpha interpolation
+</details>
+
+<details>
+<summary>Alpha interpolation</summary>
 
 `CSPBasis_afe._afe_coords` finds the two adjacent alpha planes and the interpolation weight (`csp/csp_afe.py:841-864`). `_flux_at_afe` reads only these two planes and interpolates them linearly (`lines 866-896`). A one-plane grid removes this operation during compilation.
 
@@ -138,13 +172,20 @@ The first five lines reconstruct relative SFR values. The branch then normalizes
 2. **Linear weight**`w` from sampled `afe`
 3. **Interpolated grid**One spectrum cube
 
+</details>
+
 <figure>
 <figcaption>Only two neighbouring alpha planes enter each interpolation.</figcaption>
 </figure>
 
+<details>
+<summary>Details</summary>
+
 The production eight-node model precontracts the age axis once. The forward pass then interpolates alpha, metallicity, and SFH nodes without forming the full age cube. Matching models use this path automatically.
 
 `ceridwen/ceridwen/csp/csp_afe.py:527-545 · CSPBasis_afe._configure_sfh_basis_fastpath`
+
+</details>
 
 ```
 if (self._n_afe, self._n_z, self._n_age) != (5, 13, 107):
@@ -168,14 +209,22 @@ self.sfh_basis_fastpath = True
 return self`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The method docstring enables the fixed-grid basis when the model contract matches.
 
 **Why it matters:** The production model uses the compact five-by-thirteen-by-eight basis. Other model structures retain the general calculation.
 
-### Spectrum and prediction
+</details>
+
+<details>
+<summary>Spectrum and prediction</summary>
 
 The weight calculation produces coefficients over metallicity and age. These coefficients combine the SSP flux cube into a rest-frame spectrum. The enabled physics components modify this spectrum. `predict` then applies mass, distance, redshift, and IGM scaling. Finally, it projects the spectrum into observation space (`csp/csp.py:1139-1203`, `1303-1429`).
 
 During model setup, the CSP sends the grid `ssp_resolution` curve to each `Spectrum`. The observation subtracts that library width in quadrature. It then applies the requested instrumental and LOSVD broadening.
 
 `CSPBasis_afe` does not contain a nebular model. It returns a zero line component and rejects line observations (`csp/csp_afe.py:1114-1195`).
+
+</details>

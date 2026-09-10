@@ -2,12 +2,17 @@
 title: Project map
 date: 2026-08-25
 section: Codebase
+theme: Model and code reference
+superseded_by: active-codebase-map
 tags: [repository]
 job: 
 old: _old/codebase/project-map.html
 ---
 
 The repository now focuses on Ceridwen stellar-population fits. The longer-term goal is cosmic-chronometer work with massive quiescent galaxies. Active notebooks provide the scientific entry points (`README.md:1-21`).
+
+<details>
+<summary>Details</summary>
 
 **Active fit path**
 
@@ -21,11 +26,14 @@ The repository now focuses on Ceridwen stellar-population fits. The longer-term 
 
 `src/` retains earlier support code. `external/` and `ceridwen/` are submodule checkouts.
 
+</details>
+
 <figure>
 <figcaption>The active fit crosses project-owned orchestration and the Ceridwen package.</figcaption>
 </figure>
 
-### Repository boundaries
+<details>
+<summary>Repository boundaries</summary>
 
 - The `ceridwen/` directory contains the primary model and inference implementation.
 - The `src/` directory retains project-owned support code from earlier stages.
@@ -40,7 +48,10 @@ The repository now focuses on Ceridwen stellar-population fits. The longer-term 
 
 `.gitmodules:1-9` declares the three submodule paths and remotes.
 
-### Entry points
+</details>
+
+<details>
+<summary>Entry points</summary>
 
 The repository has no single scientific `main()` function. `main.py:1-6` is a scaffold that prints a greeting. Scientific execution starts in a notebook or one of these functions:
 
@@ -50,7 +61,10 @@ The repository has no single scientific `main()` function. `main.py:1-6` is a sc
 - `ceridwen/ceridwen/fit.py:67` starts a high-level Ceridwen fit.
 - `ceridwen/ceridwen/sampler/runner.py:275` selects and runs a sampler.
 
-### Environments
+</details>
+
+<details>
+<summary>Environments</summary>
 
 The root project requires Python 3.14. It retains dependencies for earlier project stages (`pyproject.toml:1-33`). Ceridwen is an independent package. It requires Python 3.11 or newer, JAX, and BlackJAX (`ceridwen/pyproject.toml:5-82`). The active fits use the Ceridwen environment.
 
@@ -62,11 +76,14 @@ Python 3.14 and retained project dependencies.
 
 Python 3.11 or newer, JAX, and BlackJAX.
 
+</details>
+
 <figure>
 <figcaption>The active notebooks run inside the Ceridwen environment.</figcaption>
 </figure>
 
-### Ownership
+<details>
+<summary>Ownership</summary>
 
 These rules describe code ownership:
 
@@ -77,9 +94,14 @@ These rules describe code ownership:
 
 The inspected Ceridwen checkout is upstream release `v0.2.2` at commit `034381f`. The project records that exact submodule commit.
 
-### `main.py`
+</details>
+
+<details>
+<summary>`main.py`</summary>
 
 `main.py:1-6 · main`
+
+</details>
 
 ```
 def main():
@@ -89,6 +111,11 @@ if __name__ == "__main__":
     main()`
 ```
 
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The project README names the Ceridwen notebooks as the active scientific entry points (`README.md:1-21`).
 
 **Why it matters:** The guard calls `main()` only when Python runs this file directly. `main()` only prints a greeting. Therefore, this file is a package scaffold, not a scientific entry point.
+
+</details>

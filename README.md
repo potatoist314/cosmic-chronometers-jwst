@@ -1,19 +1,22 @@
-# Stellar Ages and Cosmic Chronometers with JWST
+# Ceridwen Stellar-Population Fits for Cosmic Chronometers
 
-Research code and notes for testing age-based cosmological measurements with
-massive quiescent galaxies.
+Research code for Ceridwen fits of massive quiescent galaxies. The current
+workflow fits LEGA-C spectra and photometry with BlackJAX nested sampling. The
+longer-term goal is age-based cosmology with JWST samples.
+
+Ceridwen is the primary implementation focus. Earlier Prospector, MilesPy, and
+Lick-index branches remain only for provenance and reproducibility.
 
 ## Repository layout
 
-- `src/` — reusable scientific code.
-- `notebooks/` — exploratory analyses and reproductions.
-- `scripts/` — reproducible data-processing utilities.
+- `ceridwen/` — primary stellar-population model and inference submodule.
+- `notebooks/` — active Ceridwen analyses.
+- `src/` — reusable support code from earlier project stages.
+- `scripts/` — production run, Vast drivers, figures, data download; see `scripts/README.md`.
 - `data/` — raw and processed research data.
 - `papers/` — local reference literature.
-- `external/` — external reference implementations.
-- `session_plans/` — dated work plans, plus a rough project roadmap. The
-  roadmap is a working draft rather than a committed schedule: its stages are
-  placeholders until explicitly agreed.
+- `external/` — retained external reference implementations.
+- `archive/` — inactive scripts, notebooks, plans and results; see `archive/README.md`.
 
 ## Ceridwen on Vast.ai
 

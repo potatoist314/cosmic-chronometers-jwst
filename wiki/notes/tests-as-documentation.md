@@ -1,7 +1,8 @@
 ---
 title: Tests as documentation
-date: 2026-08-25
+date: 2026-09-10
 section: Codebase
+theme: Model and code reference
 tags: [tests]
 job: 
 old: _old/codebase/tests-as-documentation.html
@@ -9,20 +10,30 @@ old: _old/codebase/tests-as-documentation.html
 
 Tests show which behavior the maintainers treat as a contract. Each test places its inputs and expected outputs together. This structure can make tests easier to read than long implementation files.
 
-The root Astro project currently has no project-owned `tests/` directory. Ceridwen contains focused unit tests, misuse tests, regression tests, and grid-dependent tests.
+<details>
+<summary>Details</summary>
 
-- **Construction tests**Shapes and parameter modes
-- **Projection tests**Units and limiting cases
-- **Sampler tests**Checkpoints and output
-- **Regression tests**Preserved physical behavior
+The root `tests/` directory holds 14 pytest files for the project scripts.
+
+- **Production and Vast drivers:** Check production contracts, calibration arms, benchmarks, GPU selection, watchdogs, and scheduling. `test_ceridwen_dr2_production.py`, `test_calibration_arms.py`, `test_benchmark_ceridwen_vast.py`, `test_sweep_ceridwen_vast_gpus.py`, `test_watch_claude_vast_benchmarks.py`, `test_production_speedup_schedule.py`.
+- **Population analyses:** Check chronometer conversions, formation times, SFR100 derivation, and stacked-pull equations. `test_chronometer.py`, `test_formation_times.py`, `test_sfr100.py`, `test_stacked_pull.py`.
+- **Figures and diagnostics:** Check absorption-feature marking, diagnostic equations, and checkpoint rendering and preservation. `test_spectral_figures.py`, `test_per_galaxy_diagnostics.py`, `test_plot_ceridwen_checkpoint_evolution.py`.
+- **Results board:** Validate the Ceridwen Common Results Board. `test_ceridwen_results_board.py`.
+
+Run from the repo root:
+
+```sh
+ceridwen/.venv/bin/python -m pytest tests -q
+```
+
+</details>
 
 <figure>
 <figcaption>Each test family records a different Ceridwen contract.</figcaption>
 </figure>
 
-### Test map
-
-#### Constructing a CSP
+<details>
+<summary>Constructing a CSP</summary>
 
 Read `ceridwen/tests/test_csp_construction.py` with `ceridwen/ceridwen/csp/csp.py:544-732`.
 
@@ -33,25 +44,37 @@ The test demonstrates these behaviors:
 - Metallicity can be constant or time-varying.
 - Missing structures and one-node grids cause errors.
 
-#### Predictive observations
+</details>
+
+<details>
+<summary>Predictive observations</summary>
 
 Read `ceridwen/tests/test_observation_predictive.py` with `observation/base.py:189-202` and `observation/spectrum.py:368-437`.
 
 The test shows that a spectrum without flux can retain its wavelength grid. It can also prepare a projection and generate model values.
 
-#### SSP provenance
+</details>
+
+<details>
+<summary>SSP provenance</summary>
 
 Read `ceridwen/tests/test_ssp_provenance.py` with `ssps/ssp_data.py`.
 
 The test covers HDF5 metadata round trips and strict schema-2.x loading. It also checks required resolution curves and prohibited FSPS parameters. It checks automatic transfer of isochrone data into the CSP.
 
-#### Redshift-dependent ages
+</details>
+
+<details>
+<summary>Redshift-dependent ages</summary>
 
 Read `ceridwen/tests/test_zred_age_tracking.py` with `csp/csp.py:1817-1842`.
 
 These tests check that the oldest SFH bin tracks the age of the universe. They check that the spectrum changes and gradients pass through redshift. They also check that the fixed-redshift path stays unchanged.
 
-#### Observation projection and noise
+</details>
+
+<details>
+<summary>Observation projection and noise</summary>
 
 - `test_spectrum_fixes.py` checks LSF input resolution, FWHM and sigma conventions, calibration, and line masking.
 - `test_lines_static.py` checks the static line-projection matrix and JIT behavior.
@@ -59,17 +82,26 @@ These tests check that the oldest SFH bin tracks the age of the universe. They c
 - `test_upper_limit_likelihood.py` checks detections, upper limits, and gradients.
 - `test_losvd_no_lyman_spike.py` checks a boundary regression in FFT smoothing.
 
-#### v0.2.2 contracts
+</details>
+
+<details>
+<summary>v0.2.2 contracts</summary>
 
 - `test_spectrum_scaling.py` checks analytic spectrum scaling and fixed-scaling behavior.
 - `test_cosmology_configurable.py` checks configurable cosmology, distances, ages, and gradients.
 - `test_ns_checkpoint.py` checks periodic snapshots, disabled checkpoints, and checkpoint loading.
 
-#### Physical invariants and misuse
+</details>
+
+<details>
+<summary>Physical invariants and misuse</summary>
 
 `ceridwen/tests/regression/test_misuse.py` checks shared units across SSP weight calculations and finite zero-SFR behavior. It also checks emission-line scaling semantics and unknown parameter keys. `tests/csp/test_lookback_flip_invariant.py` checks that time-order conventions do not change the physics silently.
 
-### Examples
+</details>
+
+<details>
+<summary>Examples</summary>
 
 `ceridwen/tests/test_csp_construction.py:48-61 · test_shortcut_matches_full_theta_structure`
 
@@ -89,6 +121,11 @@ def test_shortcut_matches_full_theta_structure(ssp):
     # Neutral initial Z must lie inside the grid: no clamp messages.
     assert via_shortcut.check_param_ranges(warn=False) == []`
 ```
+
+</details>
+
+<details>
+<summary>Details</summary>
 
 **Documented contract:** The test requires both construction routes to produce the same time grid and parameter modes (`ceridwen/tests/test_csp_construction.py:48-61`).
 
@@ -112,6 +149,13 @@ def test_fluxless_spectrum_setup_and_predict():
     np.testing.assert_allclose(np.asarray(pred), 1.0, rtol=1e-6)`
 ```
 
+</details>
+
+<details>
+<summary>Details</summary>
+
 **Documented contract:** The test requires a fluxless Spectrum to project a constant model without changing its value (`ceridwen/tests/test_observation_predictive.py:35-47`).
 
 **Why it matters:** The constant spectrum is a limiting case with a known answer. The test checks the output shape and the numerical invariant.
+
+</details>

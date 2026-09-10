@@ -2,6 +2,7 @@
 title: Ceridwen project overview
 date: 2026-09-01
 section: Guides
+theme: Model and code reference
 tags: [ceridwen, overview]
 job: 
 old: _old/overview.html
@@ -9,7 +10,8 @@ old: _old/overview.html
 
 Ceridwen is the project’s primary stellar-population inference path. The active notebooks fit LEGA-C spectra and photometry. The longer-term goal is age-based cosmology with massive quiescent galaxies.
 
-### Project flow
+<details>
+<summary>Project flow</summary>
 
 - **LEGA-C spectra**Flux and uncertainty
 - **COSMOS photometry**Matched broadband flux
@@ -20,9 +22,14 @@ Ceridwen is the project’s primary stellar-population inference path. The activ
 3. **BlackJAX NSS**Posterior search
 4. **Saved output**Checkpoints and HDF5
 
+</details>
+
 <figure>
 <figcaption>Measured data and an SSP grid become a saved Ceridwen result.</figcaption>
 </figure>
+
+<details>
+<summary>Details</summary>
 
 The current workflow has these boundaries:
 
@@ -31,7 +38,10 @@ The current workflow has these boundaries:
 - Earlier inference branches remain only as historical code and records.
 - A downstream notebook now audits Borghi-style differential ages, exact-object age-source changes, selection sensitivity, and population drift. Its Ceridwen age ceiling inherits an assumed cosmology, so it is not an independent chronometer measurement.
 
-### Ceridwen flow
+</details>
+
+<details>
+<summary>Ceridwen flow</summary>
 
 1. **SSPData**Stellar grid
 2. **CSPBasis**Composite spectrum
@@ -40,9 +50,14 @@ The current workflow has these boundaries:
 5. **Likelihood**Fit score
 6. **SamplingResult**Posterior output
 
+</details>
+
 <figure>
 <figcaption>Ceridwen builds a prediction, scores it, and stores the sampled posterior.</figcaption>
 </figure>
+
+<details>
+<summary>Details</summary>
 
 - The SSP grid supplies spectra for a range of ages and compositions.
 - The CSP combines the spectra with an SFH and a metallicity history.
@@ -51,9 +66,14 @@ The current workflow has these boundaries:
 - The likelihood compares each prediction with the data.
 - An adapter runs the sampler.
 
-### Ceridwen exports
+</details>
+
+<details>
+<summary>Ceridwen exports</summary>
 
 `ceridwen/ceridwen/__init__.py:40-42`
+
+</details>
 
 ```
 from .ssps import SSPData
@@ -61,8 +81,16 @@ from .csp import CSPBasis
 from .model import SedModel`
 ```
 
+<details>
+<summary>Details</summary>
+
 The package exports `SSPData`, `CSPBasis`, and `SedModel` in forward-model order.
 
-### Reading order
+</details>
+
+<details>
+<summary>Reading order</summary>
 
 First, read [Reading order](../reading-order/). Then read [Project map](../project-map/). For the current Ceridwen work, continue with [Ceridwen architecture](../ceridwen-architecture/). Consult [Python patterns](../python-patterns/) when you find an unfamiliar Python pattern.
+
+</details>

@@ -2,6 +2,7 @@
 title: DR2 quiescent refit with the new production defaults
 date: 2026-09-07
 section: Analyses
+theme: Single-fit accuracy
 tags: [dr2-quiescent-sample, ceridwen, fit-accuracy-knobs]
 figures: [old-vs-new-parameters.png, dust-index-posteriors.png, headline-age-redshift-old-vs-new.png, headline-age-redshift-oldest30.png, example-fits.png, example-sfh.png, example-corner.png]
 ---

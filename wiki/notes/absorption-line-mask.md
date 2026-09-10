@@ -2,14 +2,17 @@
 title: Absorption-line pixel mask
 date: 2026-09-02
 section: Analyses
+theme: Single-fit accuracy
 tags: [absorption-mask, ceridwen]
 job: t_8f62974f
 old: _old/analyses/absorption-line-mask.html
+figures: [feature_windows_M5_172669.png, mock_bias_vs_tilt.png, mock_width_ratio.png, real_targets_posteriors.png]
 ---
 
 Draft. Does fitting only the absorption-feature pixels of a LEGA-C spectrum, so that the photometry carries more weight, improve the accuracy of a Ceridwen fit?
 
-### Answer
+<details>
+<summary>Answer</summary>
 
 **No.** Fitting only the absorption-feature pixels, or keeping every pixel and inflating the continuum errors until the continuum carries no more weight than the photometry, does not make the recovered mass, age, metallicity or dust more accurate. It costs precision and, on real spectra, moves the answers by many sigma.
 
@@ -19,7 +22,10 @@ Draft. Does fitting only the absorption-feature pixels of a LEGA-C spectrum, so 
 - **Cost.** The masked fits take 90% (features only) and 87% (down-weighted) of the full-spectrum sampler wall time, a saving too small to buy back the lost precision.
 - **Recommendation.** Keep the option off by default (`CERIDWEN_SPECTRUM_PIXELS=all`). Use `features` as a diagnostic: a many-sigma shift flags a spectrum whose continuum shape the model cannot reproduce. Tilt-shaped calibration errors need a multiplicative calibration polynomial or continuum-normalised indices, not a pixel mask.
 
-### How the current likelihood weighs spectrum against photometry
+</details>
+
+<details>
+<summary>How the current likelihood weighs spectrum against photometry</summary>
 
 The joint log-likelihood is the plain sum of one diagonal Gaussian per data set (`ceridwen/ceridwen/likelihood/likelihood.py:840-875`, `MultiObservationLikelihood.__call__`). No term rebalances the two. Photometry uses the catalogue error with a 5 percent floor in quadrature (`notebooks/ceridwen_integrated_photometry_spectra.ipynb`, heading "Photometric observation", `PHOTOMETRY_FLOOR`). The spectrum uses `DiagonalNoiseModel(use_fractional=True)`, so its per-pixel variance is `sigma^2 + (f_calib * mu)^2` with `log_f_calib` a fitted parameter, uniform between 1 and 10 percent (`ceridwen/ceridwen/likelihood/noise_model.py:283-369`). A free scalar `spectrum_scaling` multiplies the model spectrum only (`ceridwen/ceridwen/csp/csp.py:1351-1362`), so the spectrum constrains shape and the photometry alone fixes the absolute flux.
 
@@ -27,17 +33,24 @@ For a diagonal Gaussian the information on a pure amplitude is the sum of (S/N)2
 
 Weight budget of the current likelihood. Feature pixels are those inside the absorption windows defined below. The balance factor is the sigma inflation of the continuum pixels that equalises the continuum and photometry budgets.
 
+</details>
+
 | Target | z | Fitted pixels | Median pixel S/N | Photometry sum (S/N)2 | Spectrum / photometry, raw | Spectrum / photometry, fcalib = 3% | Feature pixels | Balance factor |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | M5_172669 | 0.604 | 3,602 | 106 | 4,654 | 8,090 | 756 | 1,389 (39%) | 71 |
 | M9_232005 | 0.611 | 3,494 | 29 | 3,961 | 757 | 390 | 1,521 (44%) | 21 |
 | M11_214430 | 0.891 | 3,810 | 15 | 3,776 | 308 | 220 | 1,088 (29%) | 14 |
 
+<details>
+<summary>Details</summary>
+
 Twelve bands at S/N 20 cannot compete with thousands of pixels at S/N 15 to 100 by count. Keeping only the feature pixels removes 56 to 71 percent of the pixels and leaves the ratio between 80 and 3,000. The mask therefore cannot rebalance the two data sets; what it does is remove the continuum shape from the spectrum, which is the information a multiplicative calibration error corrupts.
 
 A sum of (S/N)2 only measures amplitude information. The Fisher matrix of the notebook model at the mock truth (Jacobians of the predicted photometry and spectrum, the notebook noise model with fcalib = 2.9 percent, and the prior curvature added as a diagonal) splits the information per parameter and forecasts the marginal posterior width of a photometry-only, spectrum-only, and joint fit in every pixel mode. For M5_172669:
 
 Fisher forecast for M5_172669 at the mock truth. "Spectrum share" is the spectrum's fraction of the diagonal information; widths are 1-sigma Laplace forecasts. The down-weighted mode (factor 71) is indistinguishable from features-only to three digits because a factor 71 leaves the continuum 1/5000 of its weight. `results/absorption-mask/fisher_M5_172669.json`.
+
+</details>
 
 | Parameter | Spectrum share, full | Spectrum share, features | Width, photometry only | Width, spectrum only | Width, joint full | Width, joint features | Prior width |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -47,11 +60,17 @@ Fisher forecast for M5_172669 at the mock truth. "Spectrum share" is the spectru
 | log M⋆ | 0.999 | 0.997 | 0.012 | 0.105 | 0.0071 | 0.0077 | 1.44 |
 | spectrum scaling | 1.000 | 1.000 | 0.30 | 0.30 | 0.019 | 0.019 | 0.30 |
 
+<details>
+<summary>Details</summary>
+
 Two readings. First, the photometry's share of the raw information is below one percent for every parameter, and the feature mask leaves it below one percent, so no pixel selection makes the twelve bands "carry weight" by count. Second, the photometry matters through degeneracy breaking, not weight: a spectrum with a free scaling cannot fix the stellar mass (spectrum-only width 0.105 dex against 0.012 dex from photometry alone), so the mass is photometric in every mode, and the scaling is only determined once both are present. For metallicity, [α/Fe] and dust the spectrum sets the width, and the feature mask costs a factor 1.3 to 1.5 in forecast width. The SFH ratios are prior- and degeneracy-dominated in this linear forecast and are omitted from the table. Project synthesis: the only way the mask can improve accuracy is by removing continuum-shape information that a calibration error has corrupted; the mocks below test that.
 
 Source: `scripts/absorption_mask_analysis.py budget --features` and `fisher`; catalogue S/N percentiles of the 187-object passive sample are 8, 13, 22, 31 and 39 at the 10th to 90th percentile, so M5_172669 is the best case and M11_214430 is typical.
 
-### The mask
+</details>
+
+<details>
+<summary>The mask</summary>
 
 `Spectrum.select_absorption_features` (`ceridwen/ceridwen/observation/spectrum.py`) builds an observed-frame pixel mask from a rest-frame, in-air feature catalogue (`ceridwen/ceridwen/observation/absorption_features.py`), converts it to vacuum with the same `air2vac` the stellar-index code uses, and redshifts it by 1 + z. Lick feature bandpasses are used where they exist; other features are line centres with a ±`window_kms` window (1000 km/s here, ±13 Å at Ca K).
 
@@ -64,6 +83,8 @@ Source: `scripts/absorption_mask_analysis.py budget --features` and `fisher`; ca
 Two modes: `drop` removes every other pixel from the likelihood (`mask &= in_feature`); `downweight` keeps every pixel but multiplies the continuum `uncertainty` by a factor. Both are edits to the observation arrays that the jitted log-posterior reads once at build time, so the compiled likelihood is unchanged. In the notebook the modes are `CERIDWEN_SPECTRUM_PIXELS=all|features|features_downweight`; the factor `CERIDWEN_FEATURE_DOWNWEIGHT` is a number or `balance` (the table above). The fitted `f_calib` term still adds in quadrature to the inflated sigma.
 
 `ceridwen/ceridwen/observation/spectrum.py · Spectrum.select_absorption_features`
+
+</details>
 
 ```
         if mode == "drop":
@@ -84,9 +105,15 @@ Two modes: `drop` removes every other pixel from the likelihood (`mask &= in_fea
 <figcaption>Pixels of M5_172669 kept by the feature mask (orange) against every fitted pixel (grey).</figcaption>
 </figure>
 
+<details>
+<summary>Details</summary>
+
 Tests: `ceridwen/tests/test_absorption_features.py` (vacuum and redshift of the windows, mask membership, drop and down-weight arithmetic including the chi-squared scaling, error paths).
 
-### Experiment
+</details>
+
+<details>
+<summary>Experiment</summary>
 
 Every fit is the production notebook run through the DR2 shard-runner worker (`scripts/absorption_mask_grid.py`): BlackJAX NSS with 500 live points, 65 inner steps, 100 deletions, logZ tolerance −5, the schema-2.1 C3K alpha-enhanced grid, seven-bin step SFH, constant metallicity, [α/Fe], diffuse dust with fixed slope, fixed redshift and dispersion, fitted `log_f_calib` and `spectrum_scaling`. One comparison group is one target or one mock realisation fitted in all three pixel modes on the same GPU boot.
 
@@ -95,6 +122,8 @@ Every fit is the production notebook run through the DR2 shard-runner worker (`s
 - Hardware: five Vast.ai Blackwell instances (RTX 5060, RTX 5070), one fit per GPU, comparison groups never split across boots.
 
 All 45 fits passed the DR2 diagnostics (45/45 finite evidence and ESS ≥ 200; lowest ESS 2970). Median sampler wall time: 214 s full spectrum, 193 s features only, 186 s down-weighted. Total Vast.ai spend for the job, including failed launches and the notebook re-run, was $2.24. One mock cell (tilt 0.03, S/N 0.25, seed 1, down-weighted) needed two extra single-cell re-runs: its first executed notebook was truncated by a GPU out-of-memory error after the fit, and the second attempt died in a CUDA illegal-address fault; the third attempt is the one recorded.
+
+</details>
 
 | cell | mode | pixels | ESS | calls | sampler wall [s] | ln Z | spec chi2/pixel | phot chi2/band |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -144,11 +173,12 @@ All 45 fits passed the DR2 diagnostics (45/45 finite evidence and ESS ≥ 200; l
 | real_M9_232005_features | features | 1521 | 3811 | 1,170,000 | 175 | 100541.2 ± 0.25 | 1.13 | 6.98 |
 | real_M9_232005_features_downweight | features_downweight | 3494 | 3636 | 1,170,000 | 165 | 226195.2 ± 0.29 | 0.50 | 7.01 |
 
-### Mock recovery
+<details>
+<summary>Mock recovery</summary>
 
 Truth: the weighted posterior median of the stored full-spectrum fit of M5_172669. Each cell is two noise realisations; bias is the mean of (posterior median − truth), the width column is the 16–84 half-width relative to the full-spectrum fit of the same cell, and coverage counts the realisations of that S/N scale (three tilts, two seeds) whose 16–84 interval contains the truth.
 
-##### Pixel S/N scale 1
+</details>
 
 | parameter | mode | bias, ε=0.00 | bias, ε=0.03 | bias, ε=0.06 | width / full, median (range) | 68% coverage |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -167,8 +197,6 @@ Truth: the weighted posterior median of the stored full-spectrum fit of M5_17266
 | τdust | full spectrum | -0.001 | +0.106 | +0.212 | 1.00 (1.00–1.00) | 2/6 |
 | τdust | features only | +0.000 | +0.099 | +0.199 | 1.60 (1.12–2.05) | 2/6 |
 | τdust | continuum down-weighted | +0.001 | +0.098 | +0.201 | 1.39 (0.78–1.93) | 2/6 |
-
-##### Pixel S/N scale 0.25
 
 | parameter | mode | bias, ε=0.00 | bias, ε=0.03 | bias, ε=0.06 | width / full, median (range) | 68% coverage |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -190,7 +218,11 @@ Truth: the weighted posterior median of the stored full-spectrum fit of M5_17266
 
 <figure>
 <img src="figures/absorption-mask/mock_bias_vs_tilt.png" alt="Posterior median and 16-84 interval minus the truth for five parameters against the continuum tilt amplitude, in three pixel modes and two S/N scales">
-<figcaption>Posterior median and 16–84 interval relative to the truth against the tilt amplitude ε, for the native pixel S/N (left) and the noise inflated four times (right). Blue: full spectrum; orange: features only; green: continuum down-weighted. Two realisations per cell, offset for legibility.</figcaption>
+<figcaption>Posterior median and 16–84 interval relative to the truth against the tilt amplitude ε, for the native pixel S/N (left) and the noise inflated four times (right).</figcaption>
+<details>
+<summary>Details</summary>
+<p>Blue: full spectrum; orange: features only; green: continuum down-weighted. Two realisations per cell, offset for legibility.</p>
+</details>
 </figure>
 
 <figure>
@@ -198,9 +230,12 @@ Truth: the weighted posterior median of the stored full-spectrum fit of M5_17266
 <figcaption>Posterior half-width of the masked modes relative to the full-spectrum fit of the same mock.</figcaption>
 </figure>
 
+<details>
+<summary>Details</summary>
+
 Bias is posterior median minus truth, averaged over realisations; width is the 16-84 half-width; z is bias/width (RMS over realisations); cov68 is the fraction of realisations whose 16-84 interval contains the truth.
 
-##### log M*
+</details>
 
 | tilt | S/N scale | mode | n | bias | width | width / full | RMS z | cov68 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -223,8 +258,6 @@ Bias is posterior median minus truth, averaged over realisations; width is the 1
 | 0.06 | 1.00 | features only | 2 | 0.078 | 0.013 | 1.74 | 6.21 | 0.00 |
 | 0.06 | 1.00 | continuum down-weighted | 2 | 0.074 | 0.011 | 1.47 | 6.92 | 0.00 |
 
-##### t_MW [Gyr]
-
 | tilt | S/N scale | mode | n | bias | width | width / full | RMS z | cov68 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0.00 | 0.25 | full spectrum | 2 | 0.037 | 0.071 | 1.00 | 0.52 | 0.00 |
@@ -245,8 +278,6 @@ Bias is posterior median minus truth, averaged over realisations; width is the 1
 | 0.06 | 1.00 | full spectrum | 2 | 0.128 | 0.098 | 1.00 | 1.30 | 0.00 |
 | 0.06 | 1.00 | features only | 2 | 0.136 | 0.179 | 1.83 | 0.77 | 0.00 |
 | 0.06 | 1.00 | continuum down-weighted | 2 | 0.068 | 0.125 | 1.27 | 0.66 | 0.00 |
-
-##### log Z
 
 | tilt | S/N scale | mode | n | bias | width | width / full | RMS z | cov68 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -269,8 +300,6 @@ Bias is posterior median minus truth, averaged over realisations; width is the 1
 | 0.06 | 1.00 | features only | 2 | 0.009 | 0.013 | 1.13 | 1.26 | 0.50 |
 | 0.06 | 1.00 | continuum down-weighted | 2 | 0.009 | 0.013 | 1.09 | 1.48 | 0.50 |
 
-##### [α/Fe]
-
 | tilt | S/N scale | mode | n | bias | width | width / full | RMS z | cov68 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0.00 | 0.25 | full spectrum | 2 | 0.029 | 0.020 | 1.00 | 1.56 | 0.50 |
@@ -291,8 +320,6 @@ Bias is posterior median minus truth, averaged over realisations; width is the 1
 | 0.06 | 1.00 | full spectrum | 2 | -0.006 | 0.010 | 1.00 | 0.90 | 0.50 |
 | 0.06 | 1.00 | features only | 2 | -0.015 | 0.010 | 1.01 | 1.96 | 0.50 |
 | 0.06 | 1.00 | continuum down-weighted | 2 | -0.009 | 0.010 | 1.08 | 1.57 | 0.50 |
-
-##### τ_dust
 
 | tilt | S/N scale | mode | n | bias | width | width / full | RMS z | cov68 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -315,8 +342,6 @@ Bias is posterior median minus truth, averaged over realisations; width is the 1
 | 0.06 | 1.00 | features only | 2 | 0.199 | 0.007 | 1.32 | 30.03 | 0.00 |
 | 0.06 | 1.00 | continuum down-weighted | 2 | 0.201 | 0.005 | 1.00 | 40.52 | 0.00 |
 
-##### s_spec
-
 | tilt | S/N scale | mode | n | bias | width | width / full | RMS z | cov68 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0.00 | 0.25 | full spectrum | 2 | 0.008 | 0.019 | 1.00 | 0.46 | 1.00 |
@@ -337,8 +362,6 @@ Bias is posterior median minus truth, averaged over realisations; width is the 1
 | 0.06 | 1.00 | full spectrum | 2 | 0.099 | 0.023 | 1.00 | 4.40 | 0.00 |
 | 0.06 | 1.00 | features only | 2 | 0.088 | 0.020 | 0.90 | 4.41 | 0.00 |
 | 0.06 | 1.00 | continuum down-weighted | 2 | 0.088 | 0.020 | 0.88 | 4.42 | 0.00 |
-
-##### f_calib [%]
 
 | tilt | S/N scale | mode | n | bias | width | width / full | RMS z | cov68 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -361,9 +384,12 @@ Bias is posterior median minus truth, averaged over realisations; width is the 1
 | 0.06 | 1.00 | features only | 2 | -1.894 | 0.003 | 2.69 | 741.84 | 0.00 |
 | 0.06 | 1.00 | continuum down-weighted | 2 | -1.894 | 0.002 | 2.37 | 825.94 | 0.00 |
 
-### Real targets
+<details>
+<summary>Real targets</summary>
 
 Shift of the masked-mode posterior median from the full-spectrum median, in units of the full-spectrum 16–84 half-width. Feature pixels kept by the 1000 km/s windows: M11_214430: 1088 of 3810 pixels (29%); M5_172669: 1389 of 3602 pixels (39%); M9_232005: 1521 of 3494 pixels (44%).
+
+</details>
 
 | parameter | M11_214430 features only | M11_214430 continuum down-weighted | M5_172669 features only | M5_172669 continuum down-weighted | M9_232005 features only | M9_232005 continuum down-weighted |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -378,11 +404,14 @@ Shift of the masked-mode posterior median from the full-spectrum median, in unit
 <figcaption>Posterior medians with 16–84 intervals for the three DR2 targets in each pixel mode.</figcaption>
 </figure>
 
+<details>
+<summary>Details</summary>
+
 Photometry reduced chi-squared per band, full spectrum → masked modes: M11_214430: 17.44 → 7.87 (features), 7.96 (down-weighted); M5_172669: 14.12 → 12.22 (features), 12.33 (down-weighted); M9_232005: 7.34 → 6.98 (features), 7.01 (down-weighted). The masked fits do not fit the photometry better; they fit a different spectrum model to the same photometry.
 
 Shift is (median - full-spectrum median) / full-spectrum half-width.
 
-##### log M*
+</details>
 
 | target | mode | pixels | median | 16-84 | shift | ESS | calls |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -396,8 +425,6 @@ Shift is (median - full-spectrum median) / full-spectrum half-width.
 | M9_232005 | features only | 1521 | 10.935 | [10.902, 10.962] | 7.37 | 3811 | 1,170,000 |
 | M9_232005 | continuum down-weighted | 3494 | 10.958 | [10.936, 10.980] | 9.41 | 3636 | 1,170,000 |
 
-##### t_MW [Gyr]
-
 | target | mode | pixels | median | 16-84 | shift | ESS | calls |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | M11_214430 | full spectrum | 3810 | 3.829 | [3.600, 3.995] | 0.00 | 4010 | 1,384,500 |
@@ -409,8 +436,6 @@ Shift is (median - full-spectrum median) / full-spectrum half-width.
 | M9_232005 | full spectrum | 3494 | 3.019 | [2.982, 3.170] | 0.00 | 3497 | 1,202,500 |
 | M9_232005 | features only | 1521 | 4.293 | [3.871, 4.569] | 13.59 | 3811 | 1,170,000 |
 | M9_232005 | continuum down-weighted | 3494 | 4.613 | [4.239, 4.988] | 17.00 | 3636 | 1,170,000 |
-
-##### log Z
 
 | target | mode | pixels | median | 16-84 | shift | ESS | calls |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -424,8 +449,6 @@ Shift is (median - full-spectrum median) / full-spectrum half-width.
 | M9_232005 | features only | 1521 | -1.753 | [-1.789, -1.698] | -4.91 | 3811 | 1,170,000 |
 | M9_232005 | continuum down-weighted | 3494 | -1.777 | [-1.793, -1.749] | -6.37 | 3636 | 1,170,000 |
 
-##### [α/Fe]
-
 | target | mode | pixels | median | 16-84 | shift | ESS | calls |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | M11_214430 | full spectrum | 3810 | -0.155 | [-0.168, -0.140] | 0.00 | 4010 | 1,384,500 |
@@ -437,8 +460,6 @@ Shift is (median - full-spectrum median) / full-spectrum half-width.
 | M9_232005 | full spectrum | 3494 | 0.097 | [0.086, 0.108] | 0.00 | 3497 | 1,202,500 |
 | M9_232005 | features only | 1521 | 0.122 | [0.098, 0.137] | 2.28 | 3811 | 1,170,000 |
 | M9_232005 | continuum down-weighted | 3494 | 0.125 | [0.106, 0.140] | 2.58 | 3636 | 1,170,000 |
-
-##### τ_dust
 
 | target | mode | pixels | median | 16-84 | shift | ESS | calls |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -452,8 +473,6 @@ Shift is (median - full-spectrum median) / full-spectrum half-width.
 | M9_232005 | features only | 1521 | 0.177 | [0.160, 0.191] | 1.36 | 3811 | 1,170,000 |
 | M9_232005 | continuum down-weighted | 3494 | 0.174 | [0.163, 0.184] | 1.06 | 3636 | 1,170,000 |
 
-##### s_spec
-
 | target | mode | pixels | median | 16-84 | shift | ESS | calls |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | M11_214430 | full spectrum | 3810 | 1.650 | [1.615, 1.684] | 0.00 | 4010 | 1,384,500 |
@@ -465,8 +484,6 @@ Shift is (median - full-spectrum median) / full-spectrum half-width.
 | M9_232005 | full spectrum | 3494 | 1.051 | [1.032, 1.068] | 0.00 | 3497 | 1,202,500 |
 | M9_232005 | features only | 1521 | 1.059 | [1.041, 1.078] | 0.41 | 3811 | 1,170,000 |
 | M9_232005 | continuum down-weighted | 3494 | 1.059 | [1.037, 1.078] | 0.41 | 3636 | 1,170,000 |
-
-##### f_calib [%]
 
 | target | mode | pixels | median | 16-84 | shift | ESS | calls |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -480,7 +497,8 @@ Shift is (median - full-spectrum median) / full-spectrum half-width.
 | M9_232005 | features only | 1521 | 3.208 | [3.098, 3.353] | 3.92 | 3811 | 1,170,000 |
 | M9_232005 | continuum down-weighted | 3494 | 3.202 | [3.089, 3.312] | 3.85 | 3636 | 1,170,000 |
 
-### Interpretation and recommendation
+<details>
+<summary>Interpretation and recommendation</summary>
 
 *Project synthesis.*
 
@@ -490,8 +508,13 @@ Shift is (median - full-spectrum median) / full-spectrum half-width.
 4. **Coverage.** With no tilt the 68 percent intervals cover the truth in 10/16 (full), 7/16 (features) and 8/16 (down-weighted) parameter-realisations; with a tilt it collapses to 10/32, 10/32 and 9/32 over the four tilted cells. The posteriors are too narrow to absorb a few-percent calibration error whichever pixels are used.
 5. **Recommendation.** Default off. Keep `features` and `features_downweight` as diagnostics behind `CERIDWEN_SPECTRUM_PIXELS`. The line list is the Lick set plus the Balmer, Ca H&K and Ca triplet centres; 1000 km/s windows keep 29 to 44 percent of the pixels. Neither the list nor the window changes the conclusion, because the failure is in what the windows still contain, not in which windows are chosen.
 
-### Evidence
+</details>
+
+<details>
+<summary>Evidence</summary>
 
 - Code: branch `absorption-mask` in the project and in the ceridwen submodule; `scripts/absorption_mask_analysis.py`, `scripts/absorption_mask_grid.py`, `scripts/absorption_mask_vast.py`, `scripts/absorption_mask_report.py`.
 - Results: `results/absorption-mask/<cell>/` (executed notebook, `ceridwen_result.h5`, `ceridwen_derived_outputs.h5`), `summary.csv`, `summary.json`, `fisher_M5_172669.json`, run records `vast_run_*.json`.
 - Figures: `wiki/analyses/absorption-mask/`.
+
+</details>

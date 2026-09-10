@@ -143,3 +143,10 @@ def test_offer_rule_constants_match_the_rule(arms):
     assert arms.MAX_DPH_USD == 0.10
     assert arms.MIN_RELIABILITY == 0.995
     assert set(arms.GPU_NAMES) == {"RTX 5060", "RTX 5060 Ti"}
+
+
+def test_parser_requires_explicit_arms(arms):
+    # Seventeen arms is never the intended run; the caller must name them.
+    with pytest.raises(SystemExit) as exc:
+        arms.main(["plan", "--targets", "M5_172669", "--mock-arms"])
+    assert exc.value.code == 2
