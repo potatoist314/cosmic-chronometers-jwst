@@ -1,20 +1,9 @@
-# Ceridwen forward model: the code that runs in a DR2 fit
-#
-# This file shows only the code that runs in a DR2 fit, with the unused slow
-# path retained in section 8 for reference. A composite stellar population
-# (CSP) combines simple stellar populations (SSPs) through a star-formation
-# history (SFH). The fit interpolates their spectra, applies diffuse dust,
-# scales the flux, and projects it onto each observation.
-#
-# predicted data = observation projection(10^logmass × distance/redshift factor
-# × exp(-diffuse optical depth) × sum over SFH nodes(node star-formation rate ×
-# node basis spectrum))
-#
+# DR2 forward model. Section 8 retains the unused slow path.
+# data = project(10^logmass * flux_factor * exp(-tau_diff) * sum(SFR * basis))
 # SedModel.predict -> CSPBasis_afe.predict -> _assemble_observer_spectra ->
 # get_spectrum_components -> get_spectrum (= get_spectrum_dattn_nodem_noneb) ->
 # _spectrum_from_sfh_basis -> diffuse attenuation -> _apply_mass_redshift_igm
 # -> _project_observations -> obs.predict
-#
 
 
 # =============================================================================
@@ -25,11 +14,8 @@
 # -----------------------------------------------------------------------------
 # predict — ceridwen/ceridwen/csp/csp_afe.py:1210
 # -----------------------------------------------------------------------------
-# - `SedModel.predict` first applies parameter transforms and inserts the fixed
-#   redshift. Its `theta` includes `sfh` from `logsfr_ratios_to_sfh`, but
-#   excludes `lookback_time`.
-# - This CSP method builds one spectrum, applies mass and distance factors, and
-#   returns predictions keyed by observation name.
+# - SedModel.predict inserts fixed redshift and sfh from logsfr_ratios_to_sfh,
+#   but excludes lookback_time.
 
 def predict(self, theta: dict, observations: list) -> dict:
     spectrum_phot, spectrum_slit, line_slit = \
@@ -50,11 +36,7 @@ def predict(self, theta: dict, observations: list) -> dict:
 # -----------------------------------------------------------------------------
 # get_spectrum_components — ceridwen/ceridwen/csp/csp_afe.py:1184
 # -----------------------------------------------------------------------------
-# - Returns the dust-attenuated stellar spectrum and a zero emission-line
-#   component, each with shape `(n_wave,)`. Here `n_wave` counts model
-#   wavelengths.
-# - This class has no nebular emission, meaning emission from gas. The stellar
-#   spectrum retains its absorption features.
+# - No nebular emission. Both outputs have shape (n_wave,).
 
 def get_spectrum_components(self, theta: dict) -> tuple:
     self._warn_unknown_theta_keys(theta)
@@ -65,10 +47,7 @@ def get_spectrum_components(self, theta: dict) -> tuple:
 # -----------------------------------------------------------------------------
 # _assemble_observer_spectra — ceridwen/ceridwen/csp/csp_afe.py:1278
 # -----------------------------------------------------------------------------
-# - Supplies the same stellar spectrum to photometry and slit spectroscopy. The
-#   third array contains only zeros.
-# - Any optional relative scaling of the spectroscopic prediction occurs later,
-#   in `_project_observations`.
+# - Relative spectroscopic scaling occurs later in _project_observations.
 
 def _assemble_observer_spectra(self, theta):
     spectrum_cont, line_component = self.get_spectrum_components(theta)
@@ -78,14 +57,8 @@ def _assemble_observer_spectra(self, theta):
 # -----------------------------------------------------------------------------
 # get_spectrum_dattn_nodem_noneb — ceridwen/ceridwen/csp/csp_afe.py:1926
 # -----------------------------------------------------------------------------
-# - Setup assigns this function to `get_spectrum` because DR2 uses dust
-#   attenuation without dust emission. The zero CSP velocity dispersion
-#   disables its smoothing wrapper.
-# - DR2 satisfies the fast-path conditions and supplies no runtime
-#   `lookback_time`. It combines the cached basis spectra, then multiplies by
-#   diffuse transmission, `exp(-attn_diffuse)`.
-# - Returns shape `(n_wave,)`. The remaining branch uses explicit SSP weights
-#   only when the fast-path conditions fail.
+# - DR2 assigns this to get_spectrum. No dust emission or CSP smoothing.
+# - DR2 uses the fast path without runtime lookback_time. Output: (n_wave,).
 
 def get_spectrum_dattn_nodem_noneb(self, theta, *, include_lines=None):
     _ = include_lines
@@ -124,13 +97,9 @@ def get_spectrum_dattn_nodem_noneb(self, theta, *, include_lines=None):
 # -----------------------------------------------------------------------------
 # _configure_sfh_basis_fastpath — ceridwen/ceridwen/csp/csp_afe.py:525
 # -----------------------------------------------------------------------------
-# - Enables a cached basis for eight SFH nodes, constant metallicity, step
-#   interpolation, fixed ages, and no age-dependent dust or dust emission.
-# - The SSP array has shape `(5, 13, 107, n_wave)`: alpha enhancement,
-#   metallicity, age, and wavelength. Alpha enhancement is the abundance
-#   coordinate `[alpha/Fe]`.
-# - Combines the 107 ages into eight node basis spectra, producing `(5, 13, 8,
-#   n_wave)`. Each fit evaluation then uses this smaller array.
+# - DR2 passes every setup condition below.
+# - Cache: (5, 13, 107, n_wave) -> (5, 13, 8, n_wave),
+#   replacing SSP ages with SFH nodes.
 
 def _configure_sfh_basis_fastpath(self):
     self.sfh_basis_fastpath = False
@@ -160,13 +129,10 @@ def _configure_sfh_basis_fastpath(self):
 # -----------------------------------------------------------------------------
 # _make_sfh_node_to_age_operator — ceridwen/ceridwen/csp/csp_afe.py:550
 # -----------------------------------------------------------------------------
-# - The eight lookback nodes are 0, 0.03, 0.1, 0.3, 1, 3, 5 Gyr, and the
-#   universe age at the galaxy redshift. Internally, times use years.
-# - The seven intervals overlap 107 SSP age cells, whose internal boundaries
-#   lie halfway between adjacent ages in years. `overlap` has shape `(7, 107)`.
-# - Normalizes each interval's age contributions to its duration and assigns
-#   half to each endpoint. The `(8, 107)` operator encodes the step model's
-#   adjacent-node average.
+# - Nodes: 0, 0.03, 0.1, 0.3, 1, 3, 5, universe age at redshift
+#   (Gyr). Internally years.
+# - SSP boundaries use age midpoints in years. Overlap: (7, 107).
+#   Step operator averages adjacent nodes.
 
 def _make_sfh_node_to_age_operator(self):
     t_young = self.sfh_times[:-1]
@@ -193,10 +159,7 @@ def _make_sfh_node_to_age_operator(self):
 # -----------------------------------------------------------------------------
 # _afe_coords — ceridwen/ceridwen/csp/csp_afe.py:890
 # -----------------------------------------------------------------------------
-# - Finds the two grid values surrounding `theta["afe"]`. Returns the upper
-#   index and the linear interpolation weight.
-# - Clips the weight to `[0, 1]`, so values outside the grid select an edge
-#   spectrum.
+# - Values outside the grid select an edge spectrum.
 
 def _afe_coords(self, theta):
     target_afe = jnp.ravel(theta["afe"])[0]
@@ -215,12 +178,9 @@ def _afe_coords(self, theta):
 # -----------------------------------------------------------------------------
 # _sfh_basis_coords — ceridwen/ceridwen/csp/csp_afe.py:952
 # -----------------------------------------------------------------------------
-# - Finds scalar indices and weights for interpolation across alpha enhancement
-#   and metallicity. One metallicity applies to all stellar ages.
-# - `theta["Z"]` means log10 of absolute metallicity, in `ssp_lgmet` units. It
-#   does not mean log10 metallicity relative to solar.
-# - Missing `afe` selects the solar-alpha plane. Metallicity values outside the
-#   grid select the nearest edge.
+# - Z is log10 absolute metallicity in ssp_lgmet units, not relative to solar.
+# - Missing afe selects solar alpha/Fe. Metallicity outside the grid selects
+#   the nearest edge.
 
 def _sfh_basis_coords(self, theta):
     if "afe" in theta:
@@ -246,14 +206,8 @@ def _sfh_basis_coords(self, theta):
 # -----------------------------------------------------------------------------
 # _spectrum_from_sfh_basis — ceridwen/ceridwen/csp/csp_afe.py:973
 # -----------------------------------------------------------------------------
-# - Interpolates four neighboring basis slices in metallicity and alpha
-#   enhancement. Each slice and the resulting `node_basis` have shape `(8,
-#   n_wave)`.
-# - Weights the eight basis spectra by `theta["sfh"]`, shape `(8,)`, and sums
-#   them into `(n_wave,)`. These are linear star-formation rates, with a
-#   positive floor.
-# - The cached basis already includes age integration. This step therefore
-#   avoids summing 107 SSP ages on each call.
+# - node_basis: (8, n_wave). sfh: (8,), linear rates. Output: (n_wave,).
+# - Cached age integration avoids summing 107 SSP ages per call.
 
 def _spectrum_from_sfh_basis(self, theta):
     sfh = jnp.clip(theta["sfh"], 1e-30, None).astype(jnp.float32)
@@ -284,11 +238,8 @@ def _spectrum_from_sfh_basis(self, theta):
 # -----------------------------------------------------------------------------
 # attenuate_diffuse_only — ceridwen/ceridwen/csp/csp_afe.py:876
 # -----------------------------------------------------------------------------
-# - Selects one diffuse attenuation curve for all stellar ages. The
-#   age-dependent optical-depth array is zero, with shape `(1, n_wave)`.
-# - Both outputs represent optical depth. The spectrum calculation converts
-#   diffuse optical depth into transmission after combining the stellar
-#   populations.
+# - DR2: add_diffuse_dust=True, add_dust=False.
+# - Outputs are optical depths. Age-dependent component: (1, n_wave), all zero.
 
 if add_diffuse_dust and add_dust:
     ...
@@ -308,13 +259,8 @@ elif add_diffuse_dust and not add_dust:
 # -----------------------------------------------------------------------------
 # kriek_conroy — external/sedpy_jax/sedpy_jax/attenuation_dust.py:354
 # -----------------------------------------------------------------------------
-# - Returns wavelength-dependent optical depth on the input wavelength grid, in
-#   angstroms. `tau_kc` controls its amplitude.
-# - Modifies a Calzetti-like curve with a power-law slope and a Drude profile,
-#   the broad feature centered at 2175 angstroms.
-# - `dust_index` changes both the slope and the feature strength. The fit
-#   therefore cannot vary those two properties independently through this
-#   function.
+# - Input wavelengths: angstroms. Output: optical depth.
+# - dust_index couples slope and UV bump strength.
 
 def kriek_conroy(wave, tau_kc=1.0, dust_index=0.0, **kwargs):
     lamuvb = 2175.0  # Å, central wavelength of UV bump
@@ -349,13 +295,9 @@ def kriek_conroy(wave, tau_kc=1.0, dust_index=0.0, **kwargs):
 # -----------------------------------------------------------------------------
 # _apply_mass_redshift_igm — ceridwen/ceridwen/csp/csp_afe.py:1302
 # -----------------------------------------------------------------------------
-# - The SFH transform normalizes the integrated star formation to one solar
-#   mass. Multiplication by `10^logmass` sets the model's mass amplitude.
-# - Applies the cosmological flux factor at the fixed redshift.
-#   `SedModel.predict` can supply its cached value through `flux_factor`,
-#   avoiding repeated distance integration.
-# - DR2 disables intergalactic medium (IGM) attenuation, so `self.igm` is
-#   `None`. This function scales flux without changing `self.wave`.
+# - SFH integrates to one solar mass. Cached flux_factor avoids repeated
+#   distance integration.
+# - DR2 fixes redshift and disables IGM attenuation. self.wave stays unchanged.
 
 def _apply_mass_redshift_igm(self, spectrum_phot, spectrum_slit,
                              line_slit, theta):
@@ -398,15 +340,9 @@ def _apply_mass_redshift_igm(self, spectrum_phot, spectrum_slit,
 # -----------------------------------------------------------------------------
 # _project_observations — ceridwen/ceridwen/csp/csp_afe.py:1342
 # -----------------------------------------------------------------------------
-# - Each observation maps the model spectrum to its data: filter-integrated
-#   fluxes for photometry and values on the observed wavelength grid for
-#   spectroscopy.
-# - The DR2 spectrum observation has its velocity dispersion configured
-#   separately. Zero CSP velocity dispersion therefore does not remove
-#   broadening from the observation model.
-# - Optional `spectrum_scaling` multiplies only the spectroscopic prediction,
-#   allowing relative flux calibration against photometry. The returned
-#   dictionary supplies the predictions for the likelihood.
+# - DR2 configures observation broadening separately. Zero CSP dispersion does
+#   not disable it.
+# - spectrum_scaling permits relative flux calibration against photometry.
 
 def _project_observations(self, spectrum_phot, spectrum_slit, line_slit,
                           observations, theta):
@@ -453,10 +389,8 @@ def _project_observations(self, spectrum_phot, spectrum_slit, line_slit,
 # -----------------------------------------------------------------------------
 # _flux_at_afe — ceridwen/ceridwen/csp/csp_afe.py:920
 # -----------------------------------------------------------------------------
-# - Interpolates the full SSP spectra across alpha enhancement, producing shape
-#   `(13, 107, n_wave)` for the DR2 grid.
-# - This supplies individual age spectra when the fast-path conditions fail.
-#   The normal DR2 call instead interpolates the cached eight-node basis.
+# - Output: (13, 107, n_wave). DR2 instead interpolates the cached eight-node
+#   basis.
 
 def _flux_at_afe(self, theta):
     if self._n_afe == 1:
@@ -473,14 +407,9 @@ def _flux_at_afe(self, theta):
 # -----------------------------------------------------------------------------
 # _ssp_weights — ceridwen/ceridwen/csp/csp_afe.py:1713
 # -----------------------------------------------------------------------------
-# - Recomputes age weights from the chosen lookback grid. A runtime
-#   `lookback_time` overrides the setup grid and bypasses the cached basis.
-# - Step interpolation averages adjacent node rates. It distributes each
-#   interval's formed mass over overlapping SSP age cells, then normalizes to
-#   preserve that interval's mass.
-# - Constant metallicity distributes these age weights between two metallicity
-#   planes, returning `(13, 107)`. The spectrum calculation sums the
-#   corresponding SSP spectra with these weights.
+# - Runtime lookback_time overrides setup ages and bypasses the cached basis.
+# - Renormalization preserves each interval's formed mass. Constant-metallicity
+#   output: (13, 107).
 
 def _ssp_weights(self, theta, *, zh_mode, sfh_mode):
     floor = 1e-30
