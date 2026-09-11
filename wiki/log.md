@@ -573,3 +573,8 @@
 
 - Pages: [[themes]], [[index]], all 30 themed notes
 - Change: Notes gained `theme:` frontmatter; `wiki/themes.md` board added; front page became the theme hub; date feed moved to `log/`; inactive scripts/notebooks/results moved into `archive/`; `scripts/README.md` added.
+
+## [2026-09-11] change | Theme board grouped by experiment
+
+- Pages: [[themes]]
+- Change: Grouped board rows under experiment headings linked once to their note; removed note and experiment columns; added change column; rewrote results in plain words; stacked layout on narrow screens.

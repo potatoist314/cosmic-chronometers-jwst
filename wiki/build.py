@@ -86,27 +86,33 @@ def parse_note(path: Path) -> dict:
 
 
 def parse_themes(path: Path) -> dict:
-    """themes.md: a `## Theme` heading, one purpose line, then an optional
-    experiment table. Returns {theme: {"purpose": str, "rows": [dict]}}."""
+    """themes.md: a `## Theme` heading and one purpose line, then `### Experiment`
+    blocks, each an optional `note: <slug>` line and an arm table. Returns
+    {theme: {"purpose": str, "rows": [dict]}}; each row carries its experiment and note."""
     board = {}
     if not path.is_file():
         return board
     current = None
-    columns = []
+    experiment, note, columns = "", "", []
     for line in path.read_text(encoding="utf-8").splitlines():
         line = line.strip()
-        if line.startswith("## "):
+        if line.startswith("### ") and current:
+            experiment, note, columns = line[4:].strip(), "", []
+        elif line.startswith("## "):
             current = line[3:].strip()
             board[current] = {"purpose": "", "rows": []}
-            columns = []
+            experiment, note, columns = "", "", []
         elif current is None or not line:
             continue
+        elif line.startswith("note:") and experiment:
+            note = line[5:].strip()
         elif line.startswith("|"):
             cells = [c.strip() for c in line.strip("|").split("|")]
             if not columns:
                 columns = cells
             elif not set("".join(cells)) <= set("-: "):
-                board[current]["rows"].append(dict(zip(columns, cells)))
+                board[current]["rows"].append(
+                    dict(zip(columns, cells), experiment=experiment, note=note))
         elif not board[current]["purpose"]:
             board[current]["purpose"] = line
     return board
@@ -483,16 +489,19 @@ def theme_faults(notes: list, board: dict) -> list:
     for theme, entry in board.items():
         if theme not in THEMES:
             faults.append("themes.md: %r is not a theme" % theme)
+        cited = set()
         for row in entry["rows"]:
             if row.get("status") not in STATUSES:
                 faults.append("themes.md: %s status %r is not one of %s"
                               % (row.get("arm"), row.get("status"), ", ".join(STATUSES)))
-            if caption_sentences(row.get("result", "")) > 0:
-                faults.append("themes.md: %s result reads as a sentence — one clause, "
-                              "no full stop" % row.get("arm"))
-            if row.get("note") and row["note"] not in slugs:
+            for column in ("change", "result"):
+                if caption_sentences(row.get(column, "")) > 0:
+                    faults.append("themes.md: %s %s reads as a sentence — one clause, "
+                                  "no full stop" % (row.get("arm"), column))
+            if row["note"] and row["note"] not in slugs and row["experiment"] not in cited:
+                cited.add(row["experiment"])
                 faults.append("themes.md: %s cites %r, not a note"
-                              % (row.get("arm"), row["note"]))
+                              % (row["experiment"], row["note"]))
     return faults
 
 
@@ -640,20 +649,29 @@ def status_chips(rows):
 
 
 def board_html(rows, notes, base):
+    """One table for the theme. Each experiment is a tbody headed by its name,
+    linked once to its note; the rows under it are its arms."""
     if not rows:
         return ""
-    titles = {n["slug"]: n["title"] for n in notes}
+    dates = {n["slug"]: n["date"] for n in notes}
+    groups = []
+    for row in rows:
+        if not groups or groups[-1][0] != (row["experiment"], row["note"]):
+            groups.append(((row["experiment"], row["note"]), []))
+        groups[-1][1].append(row)
     body = []
-    for r in rows:
-        note = ('<a href="%s/n/%s/">%s</a>' % (base, r["note"], esc(titles[r["note"]]))
-                if r.get("note") else "")
-        body.append('<tr><td>%s</td><td>%s</td><td><span class="chip %s">%s</span></td>'
-                    '<td>%s</td><td>%s</td></tr>'
-                    % (esc(r["experiment"]), inline(r["arm"], base), r["status"], r["status"],
-                       inline(r["result"], base), note))
-    return ('<div class="prose board"><div class="scroll"><table><thead><tr><th>experiment</th>'
-            '<th>arm</th><th>status</th><th>result</th><th>note</th></tr></thead>'
-            '<tbody>%s</tbody></table></div></div>' % "".join(body))
+    for (name, note), members in groups:
+        label = ('<a href="%s/n/%s/">%s</a><span class="d">%s</span>'
+                 % (base, note, esc(name), esc(dates[note])) if note else esc(name))
+        arms = "".join(
+            '<tr><td>%s</td><td>%s</td><td><span class="chip %s">%s</span></td><td>%s</td></tr>'
+            % (inline(r["arm"], base), inline(r.get("change", ""), base), r["status"],
+               r["status"], inline(r["result"], base)) for r in members)
+        body.append('<tbody><tr class="group"><th colspan="4">%s</th></tr>%s</tbody>'
+                    % (label, arms))
+    return ('<div class="prose board"><div class="scroll"><table><thead><tr><th>arm</th>'
+            '<th>change</th><th>status</th><th>result</th></tr></thead>%s</table></div></div>'
+            % "".join(body))
 
 
 def superseded_banner(note, notes, base):
@@ -975,8 +993,26 @@ p{max-width:65ch;margin:0 0 1em}
 .chip.planned{color:var(--ink-3);border:1px dashed var(--rule);background:transparent}
 .board{margin:18px 0 6px}
 .board table{font-size:.88rem}
-.board td:nth-child(2){white-space:nowrap}
-.board td:nth-child(4){max-width:38ch}
+.board tr.group th{color:var(--ink);font-size:.95rem;letter-spacing:0;text-transform:none;
+  font-weight:600;padding:22px 0 6px}
+.board tbody:first-of-type tr.group th{padding-top:10px}
+.board tr.group .d{margin-left:10px;color:var(--ink-3);font-weight:400;font-size:.78rem}
+.board td{vertical-align:top}
+.board td:first-child{white-space:nowrap}
+.board td:nth-child(2){max-width:26ch}
+.board td:nth-child(4){max-width:36ch}
+@media (max-width:640px){
+  .board thead{display:none}
+  .board table,.board tbody,.board th{display:block;min-width:0}
+  .board tr{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;padding:10px 0;
+    border-bottom:1px solid var(--rule)}
+  .board tr.group{display:block;padding:0;border:0}
+  .board td{border:0;padding:0;max-width:none}
+  .board td:nth-child(1){grid-column:1;grid-row:1}
+  .board td:nth-child(3){grid-column:2;grid-row:1}
+  .board td:nth-child(2){grid-column:1/-1;grid-row:2;color:var(--ink-2);max-width:none}
+  .board td:nth-child(4){grid-column:1/-1;grid-row:3;max-width:none}
+}
 .banner{border-left:3px solid var(--obsolete);background:var(--wash);padding:8px 12px;
   margin:0 0 18px;font-size:.9rem;color:var(--ink-2)}
 figure{margin:22px 0;max-width:760px}

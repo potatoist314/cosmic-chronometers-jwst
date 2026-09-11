@@ -54,7 +54,7 @@ status: obsolete   # optional
 - `status: obsolete` marks a note that stays readable but no longer applies.
 - `theme` is required unless `status: obsolete`. Use one of the seven names in `THEMES` in `wiki/build.py`. Values: Single-fit accuracy, Validation on mocks, Sample and data, Population results, Compute, Model and code reference, Background reading.
 - `superseded_by` is optional and names the slug of the note replacing this one. The build stops if that slug is not a note. The replaced note keeps its page and shows a banner.
-- `wiki/themes.md` is the experiment board. Under each `## Theme` heading, write one purpose line, then a table: `experiment | arm | status | result | note`. Use one row per arm. Status must be adopted, dropped, inconclusive, or planned. Result is one clause with the key number and no full stop. Note is a slug or empty. The build stops on any other status or a sentence in result.
+- In `wiki/themes.md`, write one purpose line under each `## Theme` heading, then one `### Experiment` block per experiment. Add an optional `note: <slug>` line and an `arm | change | status | result` table with one row per arm. Use adopted, dropped, inconclusive, or planned for status. State what the arm does differently in change and what happened in result. Keep each to one clause with no full stop, plain words, no galaxy IDs or symbols. The build stops on an unknown status, a sentence in change or result, or a note slug that is not a note.
 - The front page is the theme hub. `log/` is the date-ordered feed.
 
 ### The one rule that overrides the rest

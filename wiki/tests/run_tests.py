@@ -239,6 +239,11 @@ def main() -> int:
         accuracy = (out / "themes/single-fit-accuracy/index.html").read_text()
         check("a theme page carries its board and its notes",
               "<table>" in accuracy and 'href="/n/calibration-polynomial-dr2/"' in accuracy)
+        board_part = accuracy.split("</table>")[0]
+        cited = {r["note"] for r in bd0.parse_themes(ROOT / "themes.md")["Single-fit accuracy"]["rows"]}
+        repeats = [c for c in cited if board_part.count('href="/n/%s/"' % c) != 1]
+        check("the board links each experiment's note once", bool(cited) and not repeats,
+              ", ".join(repeats))
         old_map = (out / "n/project-map/index.html").read_text()
         check("a superseded note names its successor",
               "Superseded by" in old_map and 'href="/n/active-codebase-map/"' in old_map)
@@ -358,23 +363,21 @@ def main() -> int:
         planted = tmp / "notes"
         planted.mkdir()
         (planted / "tiny.md").write_text(NOTE_HEAD + "two words\n", encoding="utf-8")
-        (tmp / "themes.md").write_text(
-            "# Themes\n\n## Compute\n\nWhere the fits run\n\n"
-            "| experiment | arm | status | result | note |\n| --- | --- | --- | --- | --- |\n"
-            "| gpu | `x` | adopted | " + PLANTED + " | tiny |\n", encoding="utf-8")
-        run, _ = build_into(tmp, BUILD, planted)
+        def board(change, status, result, note="tiny"):
+            (tmp / "themes.md").write_text(
+                "# Themes\n\n## Compute\n\nWhere the fits run\n\n### GPU choice\nnote: %s\n\n"
+                "| arm | change | status | result |\n| --- | --- | --- | --- |\n"
+                "| `x` | %s | %s | %s |\n" % (note, change, status, result), encoding="utf-8")
+            return build_into(tmp, BUILD, planted)
+        run, _ = board("smaller card", "adopted", PLANTED)
         check("a sentence in a board result cell stops the build", run.returncode != 0, run.stdout)
-        (tmp / "themes.md").write_text(
-            "# Themes\n\n## Compute\n\nWhere the fits run\n\n"
-            "| experiment | arm | status | result | note |\n| --- | --- | --- | --- | --- |\n"
-            "| gpu | `x` | maybe | one clause | tiny |\n", encoding="utf-8")
-        run, _ = build_into(tmp, BUILD, planted)
+        run, _ = board(PLANTED, "adopted", "one clause")
+        check("a sentence in a board change cell stops the build", run.returncode != 0, run.stdout)
+        run, _ = board("smaller card", "maybe", "one clause")
         check("an unknown board status stops the build", run.returncode != 0, run.stdout)
-        (tmp / "themes.md").write_text(
-            "# Themes\n\n## Compute\n\nWhere the fits run\n\n"
-            "| experiment | arm | status | result | note |\n| --- | --- | --- | --- | --- |\n"
-            "| gpu | `x` | adopted | one clause | tiny |\n", encoding="utf-8")
-        run, out = build_into(tmp, BUILD, planted)
+        run, _ = board("smaller card", "adopted", "one clause", note="nowhere")
+        check("an experiment citing no note stops the build", run.returncode != 0, run.stdout)
+        run, out = board("smaller card", "adopted", "one clause")
         check("a clean board builds", run.returncode == 0, run.stderr)
         hub = (out / "index.html").read_text() if run.returncode == 0 else ""
         check("the hub tallies the board", "1 adopted" in hub and "1 note" in hub, hub[-600:])
