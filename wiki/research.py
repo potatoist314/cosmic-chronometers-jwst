@@ -6,6 +6,7 @@ import re
 from datetime import date
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
+import research_figures
 
 
 EXPERIMENT_STATES = {
@@ -18,7 +19,7 @@ SECTIONS = {
     "direction": ("Your words",),
     "question": ("Context", "Your words", "References", "Decisions"),
     "experiment": ("Context", "Before delegation", "Execution plan", "Amendments", "Runs",
-                   "Results", "Caveats", "References", "Your interpretation", "Next decision"),
+                   "Figures", "Measurements", "Results", "Caveats", "References", "Your interpretation", "Next decision"),
 }
 MESSAGE_SECTIONS = {"Your words", "Before delegation", "Amendments", "Decisions",
                     "Your interpretation", "Next decision"}
@@ -60,7 +61,7 @@ def parse(path):
             raise ValueError("content must belong to a named section")
     for name in SECTIONS[kind]:
         content = record["sections"].get(name, "").strip()
-        if name in MESSAGE_SECTIONS or name == "Runs":
+        if name in MESSAGE_SECTIONS or name in {"Runs", "Figures"}:
             if not content:
                 value = []
             else:
@@ -265,7 +266,7 @@ def validate(records, project):
             if isinstance(content, str):
                 for match in LINK.finditer(content):
                     evidence(match[1] or match[2])
-    return faults
+    return faults + research_figures.validate(records, project, asset_url)
 
 
 def route(r, base):
@@ -365,9 +366,10 @@ def write_pages(records, notes, scratch, base, builder):
         else:
             parent = by_id[r["question"]]
             body += '<p class="parent-question"><a href="%s">%s</a></p>' % (route(parent, base), esc(parent["title"]))
+            body += '<p><a href="%s">View results</a></p>' % route(r, base)
             body += '<nav class="record-sections" aria-label="Experiment sections">' + "".join(
                 '<a href="#%s">%s</a>' % (builder.slugify(name), name) for name in SECTIONS["experiment"]
-                if s[name] or (not existing and name not in {"Context", "Caveats", "References"})) + '</nav>'
+                if name not in {"Figures", "Measurements"} and (s[name] or (not existing and name not in {"Context", "Caveats", "References"}))) + '</nav>'
             if s["Before delegation"] or not existing:
                 body += section("Before delegation", messages_html(s["Before delegation"]))
             if s["Execution plan"] or not existing:
@@ -409,7 +411,13 @@ def write_pages(records, notes, scratch, base, builder):
             follow = [by_id[key.strip()] for key in r.get("follow_up", "").split(",") if key.strip()]
             if follow:
                 body += section("Follow-up experiments", record_rows(follow, base))
-        page(("q/" if r["kind"] == "question" else "e/") + r["id"], r["title"], '<article class="prose research-record">' + body + '</article>')
+        path = ("q/" if r["kind"] == "question" else "e/") + r["id"]
+        page(path + ("/record" if r["kind"] == "experiment" else ""), r["title"], '<article class="prose research-record">' + body + '</article>')
+        if r["kind"] == "experiment":
+            report = '<h1>%s</h1><div class="report-links"><a href="%s">%s</a><a href="%srecord/">Research record</a></div>' % (
+                esc(r["title"]), route(parent, base), esc(parent["title"]), route(r, base))
+            report += research_figures.render(r, project, scratch, base, asset_url, md)
+            page(path, r["title"], '<article class="prose result-report">' + report + '</article>')
         search.append({"t": r["title"], "u": route(r, base), "d": r["date"],
                        "s": r["kind"].title(), "g": r["id"] + " " + r["status"],
                        "x": r["raw"]})
@@ -453,6 +461,8 @@ def write_pages(records, notes, scratch, base, builder):
         body += builder.feed_rows(rows, base) if rows else '<p class="empty">None yet</p>'
         page(path, title, '<div class="prose">' + body + '</div>')
     (scratch / "research.js").write_text(FILTER_JS, encoding="utf-8")
+    (scratch / "figures.js").write_text(research_figures.JS, encoding="utf-8")
+    research_figures.notebook.cache_clear()
     return search
 
 
@@ -506,3 +516,4 @@ a:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var
 @media(max-width:760px){.research-row{grid-template-columns:1fr auto;gap:6px 12px}.research-row .d{grid-column:1/-1}.verbatim{font-size:1rem}.record-sections{line-height:1.8}}
 @media print{nav.side,.record-sections,.status-filter{display:none}.frame{display:block}.run{break-inside:avoid}.verbatim{color:#000}}
 """
+CSS += research_figures.CSS

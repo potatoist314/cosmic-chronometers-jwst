@@ -4,6 +4,32 @@ The user writes in chat. Agents maintain these records and the linked evidence.
 Existing and new Ceridwen experiments share this structure. Historical reasoning
 is not reconstructed. Existing notebooks, results and source-note URLs stay in place.
 
+## Result pages
+
+Liu Hao is the research supervisor. The governing contract is in `../AGENTS.md`.
+Present fits and relevant figures with short, factual captions. Do not display
+source summaries, essays, process narration or agent-role labels on result pages.
+Keep the full research record at the experiment's `record/` subpage.
+
+**Figures** contains a JSON array. Each item has `caption` and `view` (`Fits`,
+`SFH`, `Posteriors` or `Comparison`), and optionally `target`, `arm` and `run`.
+Use `path` for an existing image, or `notebook`, `cell` and `output` for a saved
+PNG notebook output (zero-based indices). A notebook figure's `run` must identify
+its recorded run, and that run must link the notebook. Copy the run's explicit
+`target` and `arm` into the figure. Do not match targets by a dropdown position.
+Use **Measurements** only for a compact benchmark table, with units and a source.
+
+Inspect the saved output and its code before recording its indices. Do not choose
+images by an index shared across notebook versions. The builder extracts the
+existing bytes; it never executes code, changes plots or generates captions.
+For comparisons, include the reference arm under the same target. Caption changed
+settings and material caveats. Keep failed attempts in the underlying record.
+
+The default report opens Fits, or the first available view for non-fit analyses.
+A target selector keeps every saved target available. SFH, posterior and comparison
+views retain the selected target. Population figures apply to all targets.
+Do not publish a result state without figures or a measured benchmark table.
+
 ## Before delegation
 
 1. Read the current questions and related experiments.

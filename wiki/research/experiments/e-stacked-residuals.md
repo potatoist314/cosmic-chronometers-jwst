@@ -15,6 +15,25 @@ result_groups: results/dr2-quiescent-new-defaults
 
 Stack fitted native pixels from the revised 187-target run in rest-frame bins. Compare five stacking recipes and bootstrap over galaxies.
 
+## Figures
+
+```json
+[
+  {
+    "path": "wiki/analyses/dr2-quiescent-sample/stacked-pull.png",
+    "view": "Comparison",
+    "caption": "187 revised fits, stacked on native pixels. Median mean pull squared is 1.149; the null expectation is 1.",
+    "target": ""
+  },
+  {
+    "path": "wiki/analyses/dr2-quiescent-sample/stacked-pull-by-feature.png",
+    "view": "Comparison",
+    "caption": "Feature pulls with galaxy-bootstrap errors; coherent Ca, Balmer, Mg and Fe residuals remain across stacking recipes.",
+    "target": ""
+  }
+]
+```
+
 ## Results
 
 The recorded median per-galaxy reduced chi2 is 1.086; median stacked mean pull squared is 1.149. Ca, Balmer, Mg and Fe windows show coherent residuals across the recipes. [Source table and method](wiki/notes/stacked-chi2-and-median-pull.md).

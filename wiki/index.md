@@ -2,6 +2,8 @@
 
 Human entry point: `public/index.html`, served at `/wiki/` — the research overview.
 Active workflow: `/wiki/questions/` and `/wiki/experiments/`.
+Result pages show fits and captions; full records live at `/wiki/e/<id>/record/`.
+Governing presentation rule: `wiki/AGENTS.md`, Result reporting.
 Research contract and templates: `research/README.md`, `research/templates/`.
 User direction: `research/direction.md`, with optional light edits and retained originals.
 Research source records: `research/questions/` and `research/experiments/`.
@@ -20,8 +22,8 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 The 28 existing experiment entries cover all 11 analysis notes and all current
 and archived Ceridwen result groups. `source_notes` provides backlinks;
 `related_questions` shares one experiment across questions. `result_groups`
-records coverage without copying evidence. Source summaries retain known
-comparison and unit caveats. Recorded status does not imply user review.
+records coverage without moving evidence. Figure captions flag material
+comparison issues; full source summaries and unit caveats remain in the record. Recorded status does not imply user review.
 
 ## Single-fit accuracy
 
@@ -74,3 +76,12 @@ comparison and unit caveats. Recorded status does not imply user review.
 ## Log
 
 - `notes/wiki-log.md` — Wiki log (2026-09-04 · status: obsolete · obsolete)
+
+## Result presentation
+
+- `research_figures.py` validates and renders explicit figure references.
+- `research.py` renders visual reports separately from full research records.
+- `Figures` maps saved images or notebook outputs to a target, arm and view.
+- Generated notebook images live only under `public/research-images/`.
+- Fits open first. Target selection stays fixed across SFH and posterior views.
+- All 28 result pages retain their existing URLs and underlying records.

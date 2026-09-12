@@ -31,6 +31,14 @@ follow_up:
 []
 ```
 
+## Figures
+
+```json
+[]
+```
+
+## Measurements
+
 ## Results
 
 ## Caveats

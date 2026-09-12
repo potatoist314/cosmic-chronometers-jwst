@@ -41,6 +41,15 @@ Treat these instructions as active until the user explicitly changes them.
 - Prefer a smaller analysis that is understood, tested, and documented over a
   broad analysis whose assumptions have not been examined. E.g., get a small test case of 1 sample or 10 samples working well before attempting to fit a full sample.
 
+## Research result presentation
+
+- Liu Hao is the research supervisor. Follow the result-reporting contract in
+  `wiki/AGENTS.md` for every existing and future wiki result page.
+- Show fits and relevant figures with short, factual captions. No agent source
+  summaries, explanatory essays, process narration or agent-role labels.
+- Keep research reasoning, originals, run metadata and evidence in a separate
+  research-record view. Do not discard them or invent scientific interpretations.
+
 ## Recording research
 
 - Before executing or delegating a new scientific experiment, read

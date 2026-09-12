@@ -28,7 +28,65 @@ M1_210210, 11 fitted photometric bands and 3523 spectral pixels; grid schema 2.1
         "label": "Executed notebook",
         "path": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb"
       }
-    ]
+    ],
+    "target": "M1_210210"
+  }
+]
+```
+
+## Figures
+
+```json
+[
+  {
+    "notebook": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb",
+    "cell": 24,
+    "output": 0,
+    "run": "rtx5090-integrated-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "Fits",
+    "caption": "M1_210210 · saved run. Spectrum and residuals on the saved wavelength grid."
+  },
+  {
+    "notebook": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb",
+    "cell": 22,
+    "output": 0,
+    "run": "rtx5090-integrated-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "Fits",
+    "caption": "M1_210210 · saved run. Photometry and residuals; bands and uncertainty model are those of this run."
+  },
+  {
+    "notebook": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb",
+    "cell": 26,
+    "output": 3,
+    "run": "rtx5090-integrated-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "SFH",
+    "caption": "M1_210210 · saved run. Saved SFH and posterior interval."
+  },
+  {
+    "notebook": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb",
+    "cell": 26,
+    "output": 0,
+    "run": "rtx5090-integrated-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "Posteriors",
+    "caption": "M1_210210 · saved run. Physical-parameter posterior."
+  },
+  {
+    "notebook": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb",
+    "cell": 26,
+    "output": 1,
+    "run": "rtx5090-integrated-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "Posteriors",
+    "caption": "M1_210210 · saved run. Age and formed-mass fractions."
   }
 ]
 ```

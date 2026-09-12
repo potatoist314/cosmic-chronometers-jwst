@@ -63,6 +63,15 @@
 - Skip wiki updates for formatting-only changes or unchanged behavior.
 - Human wiki pages use clean HTML with short, exact code excerpts and source locations; agent-facing memory may remain Markdown.
 
+## Research result presentation
+
+- Liu Hao is the research supervisor. Follow the result-reporting contract in
+  `wiki/AGENTS.md` for every existing and future wiki result page.
+- Show fits and relevant figures with short, factual captions. No agent source
+  summaries, explanatory essays, process narration or agent-role labels.
+- Keep research reasoning, originals, run metadata and evidence in a separate
+  research-record view. Do not discard them or invent scientific interpretations.
+
 ## Recording research
 
 - Before executing or delegating a new scientific experiment, read

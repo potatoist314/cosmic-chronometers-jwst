@@ -15,6 +15,19 @@ result_groups:
 
 Compare SFR100 and formed mass from the baseline and revised runs with the recorded Whitaker and Leja curves at z = 0.73.
 
+## Figures
+
+```json
+[
+  {
+    "path": "wiki/analyses/sfms-quiescent/sfms-quiescent.png",
+    "view": "Comparison",
+    "caption": "Baseline and revised SFR100. The plotted formed mass differs from the literature mass convention; the IMF offset alone does not resolve this.",
+    "target": ""
+  }
+]
+```
+
 ## Results
 
 The source reports smaller quiescent fractions for the revised run under both curves. [Old and revised SFR100 comparison](wiki/analyses/sfms-quiescent/sfms-quiescent.png).

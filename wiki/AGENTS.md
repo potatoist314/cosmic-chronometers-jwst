@@ -5,6 +5,23 @@ The user writes research reasoning in chat. Agents preserve those original words
 and maintain execution records and factual results. The user selects the research
 direction and scientific methodology.
 
+## Result reporting: Liu Hao is the supervisor
+
+- Result pages report the work to Liu Hao as the research supervisor.
+- Show spectral and photometric fits first, with short, factual captions. Keep SFH,
+  posterior and comparison figures available alongside them.
+- Do not add agent source summaries, explanatory essays, process narration or
+  agent-role labels to result pages. Do not teach standard astronomy terms.
+- Captions identify the comparison, report the relevant observation and flag
+  material problems. Preserve uncertainty. Never invent scientific interpretations.
+- Use existing plots or saved notebook images. Do not rerun analyses to populate
+  the wiki. Keep every target accessible and aligned across comparison arms.
+- Use compact measured tables for benchmarks when plots add nothing.
+- Keep before-delegation thoughts, original wording, run metadata and evidence in
+  the underlying research record, accessible separately from the visual report.
+- Apply this contract to existing and future result pages, templates and rendering.
+  Tests must reject summary sections or agent-role labels on result pages.
+
 ## Research workflow
 
 - Read `research/README.md` before recording or delegating a scientific experiment.
@@ -38,7 +55,8 @@ direction and scientific methodology.
 - During wiki-only work, treat project code, notebooks, `papers/`, `data/raw/`,
   submodules, and user-designated sources as read-only evidence.
 - Store only generated knowledge pages inside `wiki/`.
-- Never copy, rename, edit, or delete evidence during wiki work.
+- Never rename, edit, or delete evidence during wiki work. The builder may extract
+  unchanged saved notebook images into generated `public/` assets.
 - Never treat a wiki summary as stronger evidence than its raw source.
 - Keep sourced claims, project inferences, and unresolved questions separate.
 - Do not perform web research unless the user requests it.

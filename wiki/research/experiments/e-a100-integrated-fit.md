@@ -28,7 +28,45 @@ Early joint photometry/spectrum run retained in the common results board.
         "label": "Executed notebook",
         "path": "archive/results/a100-integrated-fit-notebook/ceridwen_integrated_photometry_spectra.ipynb"
       }
-    ]
+    ],
+    "target": "M1_210210"
+  }
+]
+```
+
+## Figures
+
+```json
+[
+  {
+    "notebook": "archive/results/a100-integrated-fit-notebook/ceridwen_integrated_photometry_spectra.ipynb",
+    "cell": 25,
+    "output": 0,
+    "run": "a100-integrated-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "Fits",
+    "caption": "M1_210210 · saved run. Spectrum and residuals on the saved wavelength grid."
+  },
+  {
+    "notebook": "archive/results/a100-integrated-fit-notebook/ceridwen_integrated_photometry_spectra.ipynb",
+    "cell": 23,
+    "output": 0,
+    "run": "a100-integrated-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "Fits",
+    "caption": "M1_210210 · saved run. Photometry and residuals; bands and uncertainty model are those of this run."
+  },
+  {
+    "notebook": "archive/results/a100-integrated-fit-notebook/ceridwen_integrated_photometry_spectra.ipynb",
+    "cell": 27,
+    "output": 1,
+    "run": "a100-integrated-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "SFH",
+    "caption": "M1_210210 · saved run. Saved SFH and posterior interval."
   }
 ]
 ```

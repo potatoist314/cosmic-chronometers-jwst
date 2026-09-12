@@ -15,6 +15,25 @@ result_groups: results/figures
 
 Reanalyse the baseline and revised population fits against redshift, mass, alpha/Fe and the matched Borghi catalogue. No additional sampling.
 
+## Figures
+
+```json
+[
+  {
+    "path": "wiki/analyses/dr2-new-defaults/headline-age-redshift-old-vs-new.png",
+    "view": "Comparison",
+    "caption": "Baseline and revised mass-weighted ages against redshift; Borghi ages are SSP-equivalent.",
+    "target": ""
+  },
+  {
+    "path": "wiki/analyses/dr2-quiescent-sample/dt-vs-alpha.png",
+    "view": "Comparison",
+    "caption": "Saved assembly interval against alpha/Fe. The coarse SFH bins limit time resolution.",
+    "target": ""
+  }
+]
+```
+
 ## Results
 
 Both saved runs have weak full-sample age–redshift trends. The existing figures include velocity-dispersion and oldest-fraction selections, plus assembly-history comparisons.

@@ -1,5 +1,6 @@
 """Research evidence, historical integration and original-message preservation."""
 
+import base64
 import importlib.util
 import json
 import re
@@ -82,6 +83,7 @@ class ResearchTests(unittest.TestCase):
                               ("sample.csv", "id\n1\n"), ("analysis.ipynb", '{"cells": []}'),
                               ("measurements.csv", "age_shift_Gyr\n0.12\n")):
             (folder / name).write_text(content)
+        (folder / "fit.png").write_bytes(base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII="))
         return {"id": "baseline-seed-1", "arm": "baseline", "status": "complete",
                 "config": "results/e-low-dust/config.json", "code": "fixture-version",
                 "model": "fixture-grid-v1", "data": "results/e-low-dust/sample.csv", "seed": 1,
@@ -91,7 +93,8 @@ class ResearchTests(unittest.TestCase):
         run = self.evidence()
         sections = {"Before delegation": [self.message], "Execution plan": "Compare the two fixed configurations.",
                     "Runs": [run], "Results": "Age shift: 0.12 Gyr. [Table](results/e-low-dust/measurements.csv).",
-                    "Your interpretation": interpretation or []}
+                    "Your interpretation": interpretation or [],
+                    "Figures": [{"path": "results/e-low-dust/fit.png", "view": "Fits", "caption": "Two fixed configurations."}]}
         self.write("experiment", "e-low-dust", status, sections, question="q-dust")
         return sections
 
@@ -104,7 +107,7 @@ class ResearchTests(unittest.TestCase):
     def test_planned_experiment_has_no_fabricated_results(self):
         self.assertEqual(self.faults(), [])
         out = self.build()
-        body = (out / "e/e-low-dust/index.html").read_text()
+        body = (out / "e/e-low-dust/record/index.html").read_text()
         self.assertIn("Not recorded", body)
         self.assertNotIn("Agent · synthesis", body)
         self.assertNotIn("Chat reference", body)
@@ -121,9 +124,9 @@ class ResearchTests(unittest.TestCase):
         self.assertEqual(self.faults(), [])
         out = self.build()
         parser = Quotes()
-        parser.feed((out / "e/e-low-dust/index.html").read_text())
+        parser.feed((out / "e/e-low-dust/record/index.html").read_text())
         self.assertEqual(parser.values, [self.original, "correction: use the other sample\n", "inconclusive. keep this open.", "try another seed."])
-        self.assertNotIn("<b>literal</b>", (out / "e/e-low-dust/index.html").read_text())
+        self.assertNotIn("<b>literal</b>", (out / "e/e-low-dust/record/index.html").read_text())
 
     def test_complete_run_cannot_review_itself(self):
         self.completed("reviewed")
@@ -137,7 +140,7 @@ class ResearchTests(unittest.TestCase):
         sections["Runs"] += [repeat, failure]
         self.write("experiment", "e-low-dust", "results-ready", sections, question="q-dust")
         self.assertEqual(self.faults(), [])
-        body = (self.build() / "e/e-low-dust/index.html").read_text()
+        body = (self.build() / "e/e-low-dust/record/index.html").read_text()
         for text in ("baseline-seed-1", "baseline-seed-2", "low-dust-seed-1", "Failed", "Sampler did not finish.", "0.12 Gyr"):
             self.assertIn(text, body)
 
@@ -198,7 +201,7 @@ class ResearchTests(unittest.TestCase):
                                  "--research", str(self.root), "--out", str(out)],
                                 capture_output=True, text=True, timeout=60)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertTrue((out / "e/e-low-dust/index.html").is_file())
+        self.assertTrue((out / "e/e-low-dust/record/index.html").is_file())
 
     def test_invalid_metadata_types_produce_validation_errors(self):
         sections = self.completed()
@@ -272,12 +275,14 @@ class ResearchTests(unittest.TestCase):
         source = self.project / "old-result.csv"
         source.write_text("age_Gyr\n3.0\n")
         refs = "[Saved table](old-result.csv)."
+        self.evidence()
         self.write("question", "q-history", "open", {
             "Context": "An existing comparison.", "References": refs,
         }, origin="existing")
         self.write("experiment", "e-history", "recorded", {
             "Context": "The source records the original comparison.",
             "References": refs, "Results": "Recorded age: 3.0 Gyr. " + refs,
+            "Figures": [{"path": "results/e-low-dust/fit.png", "view": "Fits", "caption": "Saved historical fit."}],
             "Runs": [{"id": "old-fit", "arm": "original", "status": "complete",
                       "artifacts": [{"label": "Saved result", "path": "old-result.csv"}]}],
         }, origin="existing", question="q-history", related_questions="q-dust")
@@ -286,7 +291,7 @@ class ResearchTests(unittest.TestCase):
         self.historical()
         self.assertEqual(self.faults(), [])
         out = self.build()
-        body = (out / "e/e-history/index.html").read_text()
+        body = (out / "e/e-history/record/index.html").read_text()
         self.assertIn("Existing research", body)
         self.assertIn("Recorded age: 3.0 Gyr", body)
         self.assertNotIn("Before delegation", body)
@@ -326,7 +331,7 @@ class ResearchTests(unittest.TestCase):
         r["sections"]["References"] += " [Original note](wiki/notes/source.md)."
         self.write("experiment", "e-history", "recorded", r["sections"], question="q-history", origin="existing", source_notes="source")
         out = self.build()
-        self.assertIn('href="/wiki/n/source/"', (out / "e/e-history/index.html").read_text())
+        self.assertIn('href="/wiki/n/source/"', (out / "e/e-history/record/index.html").read_text())
         self.assertIn('href="/wiki/e/e-history/"', (out / "n/source/index.html").read_text())
         self.write("experiment", "e-history", "recorded", r["sections"], question="q-history", origin="existing", related_questions="q-missing", source_notes="missing")
         faults = "\n".join(self.faults())
@@ -336,6 +341,73 @@ class ResearchTests(unittest.TestCase):
     def test_display_edit_requires_a_nonempty_string(self):
         self.write("question", "q-dust", "open", {"Your words": [dict(self.message, display_text=[])]})
         self.assertIn("display_text must be a nonempty string", "\n".join(self.faults()))
+
+    def test_result_page_shows_figures_and_keeps_reasoning_in_record(self):
+        self.completed()
+        out = self.build()
+        report = (out / "e/e-low-dust/index.html").read_text()
+        for unwanted in ("Agent ·", "Before delegation", "Execution plan", "source summary", "Age shift: 0.12"):
+            self.assertNotIn(unwanted, report)
+        self.assertIn('<img src="/wiki/f/results/e-low-dust/fit.png"', report)
+        self.assertIn("Two fixed configurations.", report)
+        self.assertIn('/wiki/e/e-low-dust/record/', report)
+        record = (out / "e/e-low-dust/record/index.html").read_text()
+        self.assertIn("Age shift: 0.12", record)
+        self.assertIn(self.original.replace("<", "&lt;").replace(">", "&gt;").replace(" & ", " &amp; "), record)
+
+    def notebook_figure(self):
+        sections = self.completed()
+        run = sections["Runs"][0]
+        run["target"] = "M1_1"
+        png = (self.project / "results/e-low-dust/fit.png").read_bytes()
+        notebook = self.project / run["artifacts"][0]["path"]
+        notebook.write_text(json.dumps({"cells": [{"cell_type": "code", "source": ["raise RuntimeError('Do not execute')"],
+            "outputs": [{"output_type": "display_data", "data": {"image/png": base64.b64encode(png).decode()}}]}]}))
+        sections["Figures"] = [{"notebook": run["artifacts"][0]["path"], "cell": 0, "output": 0,
+            "run": run["id"], "target": run["target"], "arm": run["arm"], "view": "Fits", "caption": "M1_1: saved spectrum."}]
+        return sections, png
+
+    def test_saved_image_is_copied_exactly_without_execution(self):
+        sections, png = self.notebook_figure()
+        self.write("experiment", "e-low-dust", "results-ready", sections, question="q-dust")
+        self.assertEqual(self.faults(), [])
+        out = self.build()
+        image = out / "research-images/results/e-low-dust/analysis/c0-o0.png"
+        self.assertEqual(image.read_bytes(), png)
+        self.assertIn('research-images/results/e-low-dust/analysis/c0-o0.png', (out / "e/e-low-dust/index.html").read_text())
+
+    def test_wrong_target_arm_notebook_and_output_are_rejected(self):
+        sections, _ = self.notebook_figure()
+        for field, bad, message in (("target", "M2_2", "target and arm"), ("arm", "other", "target and arm"),
+                                     ("output", 9, "saved PNG"), ("run", "missing", "identified run")):
+            original = sections["Figures"][0][field]
+            sections["Figures"][0][field] = bad
+            self.write("experiment", "e-low-dust", "results-ready", sections, question="q-dust")
+            self.assertIn(message, "\n".join(self.faults()))
+            sections["Figures"][0][field] = original
+
+    def test_all_targets_stay_available_without_loading_hidden_images(self):
+        sections = self.completed()
+        sections["Figures"] = [dict(sections["Figures"][0], target=target, view=view)
+                               for target in ("M1_1", "M2_2") for view in ("Fits", "SFH")]
+        self.write("experiment", "e-low-dust", "results-ready", sections, question="q-dust")
+        body = (self.build() / "e/e-low-dust/index.html").read_text()
+        self.assertIn('<option value="M2_2">', body)
+        self.assertIn('<option value="SFH">', body)
+        self.assertEqual(body.count('<img src='), 1)
+        self.assertEqual(body.count('<img data-src='), 3)
+
+    def test_completed_results_need_visuals_or_benchmark_measurements(self):
+        sections = self.completed()
+        sections["Figures"] = []
+        self.write("experiment", "e-low-dust", "results-ready", sections, question="q-dust")
+        self.assertIn("result page needs figures", "\n".join(self.faults()))
+        sections["Measurements"] = "| Metric | Value |\n| --- | --- |\n| Time | 1 s |"
+        self.write("experiment", "e-low-dust", "results-ready", sections, question="q-dust")
+        self.assertEqual(self.faults(), [])
+        body = (self.build() / "e/e-low-dust/index.html").read_text()
+        self.assertIn("<table>", body)
+        self.assertNotIn("Agent ·", body)
 
 
 class ExistingCorpusTests(unittest.TestCase):

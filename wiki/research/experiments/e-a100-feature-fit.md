@@ -28,7 +28,35 @@ Feature-spectrum full-profile run recorded by the Modal timing file.
         "label": "Executed notebook",
         "path": "archive/results/a100-feature-spectrum/ceridwen_test_spectra.executed.ipynb"
       }
-    ]
+    ],
+    "target": "M1_210210"
+  }
+]
+```
+
+## Figures
+
+```json
+[
+  {
+    "notebook": "archive/results/a100-feature-spectrum/ceridwen_test_spectra.executed.ipynb",
+    "cell": 25,
+    "output": 1,
+    "run": "a100-feature-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "Fits",
+    "caption": "M1_210210 · saved run. Spectrum and residuals on the saved wavelength grid."
+  },
+  {
+    "notebook": "archive/results/a100-feature-spectrum/ceridwen_test_spectra.executed.ipynb",
+    "cell": 27,
+    "output": 1,
+    "run": "a100-feature-fit",
+    "target": "M1_210210",
+    "arm": "saved run",
+    "view": "SFH",
+    "caption": "M1_210210 · saved run. Saved SFH and posterior interval."
   }
 ]
 ```

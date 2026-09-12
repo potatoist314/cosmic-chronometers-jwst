@@ -610,3 +610,21 @@
   returned HTTP 200. All 546 linked run notebooks have outputs and no error cells.
   Browser checks covered original wording, Recorded filtering, search, expanded
   run records and layouts at 360, 736 and 1024 pixels without horizontal overflow.
+
+
+## 2026-09-12 · codebase · Supervisor-style result reporting
+
+- Made figure-first reporting the governing rule in wiki and root instructions.
+- Replaced default experiment summaries with inline fits, diagnostic figures and
+  short captions. Retained full records at each experiment's `record/` subpage.
+- Added target and view selectors, reference-arm comparisons and deferred image
+  loading. All 28 experiments have figures or a measured benchmark table.
+- Figure references identify the saved notebook cell/output or existing image.
+  Extracted images are generated assets; original notebooks and plots are unchanged.
+- Validation: target/arm mismatches and missing figures stop publication. Tests
+  verify exact image extraction, preserved reasoning and absence of agent summary
+  sections from the visual result page.
+- Validation completed: both wiki test suites passed; 58 result/record routes
+  and the private site returned HTTP 200. All 2,693 image assets resolve. Browser
+  checks covered desktop and 360-pixel layouts, loaded images and target retention
+  across Fits, SFH, Posteriors and Comparison views, without horizontal overflow.
