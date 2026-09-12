@@ -628,3 +628,17 @@
   and the private site returned HTTP 200. All 2,693 image assets resolve. Browser
   checks covered desktop and 360-pixel layouts, loaded images and target retention
   across Fits, SFH, Posteriors and Comparison views, without horizontal overflow.
+
+
+## 2026-09-12 · codebase · Absorption-feature colours and side legend
+
+- Replaced grey windows and below-axis names with fixed feature colours and one
+  right-side legend. Shared layout reserves a separate column for the legend.
+- Updated active notebook templates, diagnostic and stacked-residual plotting.
+- Re-rendered affected saved figures from existing results; no fits were rerun.
+- Recorded the default in root and wiki instructions and the notebook map.
+- Refreshed 189 spectral diagnostics, the example notebook image and wiki copy,
+  and both stacked wavelength figures (PNG/PDF). All 189 diagnostics reproduce
+  their recorded likelihood and chi-squared values to absolute tolerance 1e-6.
+- Validation: plotting/production/diagnostics/stacking tests and both wiki suites
+  passed. Existing numerical inputs and unrelated notebook outputs are unchanged.

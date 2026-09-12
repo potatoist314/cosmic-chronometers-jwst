@@ -19,6 +19,9 @@ direction and scientific methodology.
 - Use compact measured tables for benchmarks when plots add nothing.
 - Keep before-delegation thoughts, original wording, run metadata and evidence in
   the underlying research record, accessible separately from the visual report.
+- Absorption features use the shared fixed colours and one right-side legend
+  from `scripts/spectral_figures.py`. Finish these figures with
+  `spectral_tight_layout`; do not put feature names beneath the axis.
 - Apply this contract to existing and future result pages, templates and rendering.
   Tests must reject summary sections or agent-role labels on result pages.
 

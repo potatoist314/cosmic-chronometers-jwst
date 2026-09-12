@@ -28,6 +28,9 @@ Treat these instructions as active until the user explicitly changes them.
 - Notebook markdown cells are terse bullet points, roughly ten words each,
   saying what an otherwise unclear line of code does. No fluff, or restating results or numbers.
 - Use LaTeX for mathematical symbols and parameter names in figures.
+- Absorption-feature labels use fixed colours from `scripts/spectral_figures.py`
+  and one legend to the right of each figure. Use `mark_absorption_features`
+  and `spectral_tight_layout`; do not place feature names under the axis.
 - Run full Ceridwen fits on Vast.ai CUDA GPUs; use local quick tests only.
 - Always use the BlackJAX NSS nested sampler for Ceridwen fits, never NUTS.
 - Keep raw data immutable. Produce processed data through documented scripts or

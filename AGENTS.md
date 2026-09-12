@@ -41,6 +41,9 @@
 - Notebook markdown cells are terse bullet points, roughly ten words each,
   saying what an otherwise unclear line of code does. No fluff, or restating results or numbers.
 - Use LaTeX for mathematical symbols and parameter names in figures.
+- Absorption-feature labels use fixed colours from `scripts/spectral_figures.py`
+  and one legend to the right of each figure. Use `mark_absorption_features`
+  and `spectral_tight_layout`; do not place feature names under the axis.
 - For connected spectral plots, keep the full wavelength grid and set excluded
   values to `NaN`; never plot `wavelength[mask]` as one connected line or band.
 - Run full Ceridwen fits on Vast.ai CUDA GPUs; use local quick tests only.

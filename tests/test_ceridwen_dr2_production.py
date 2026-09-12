@@ -239,7 +239,7 @@ def test_notebook_marks_major_absorption_features():
     ) in source
     assert "def mark_absorption_features(ax" not in source
     assert "MARKED_FEATURES" not in source
-    # Every spectral panel is marked; names hang below the bottom axis only.
+    # Every spectral panel is marked; one side legend covers the figure.
     bottom_call = (
         'axes[1], z_catalog, xlabel="observed vacuum wavelength [angstrom]"'
     )
@@ -249,8 +249,20 @@ def test_notebook_marks_major_absorption_features():
         assert "mark_absorption_features(axes[0], z_catalog, show_labels=False)" in (
             cells[index]
         )
+    for index in (14, 24, 26, 28):
+        assert "spectral_tight_layout()" in cells[index]
     assert "rotation=90" not in source
     assert "labelpad=30" not in source
+
+
+
+def test_marked_notebook_panels_reserve_space_for_the_side_legend():
+    for name in ("ceridwen_test_spectra.ipynb", "ceridwen_integrated_photometry_spectra.ipynb"):
+        notebook = json.loads((NOTEBOOK_PATH.parent / name).read_text())
+        for cell in notebook["cells"]:
+            source = "".join(cell.get("source", []))
+            if "mark_absorption_features(" in source:
+                assert "spectral_tight_layout(" in source
 
 
 def test_result_roots_default_to_the_first_production_run(monkeypatch):

@@ -70,6 +70,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from spectral_figures import (  # noqa: E402
     MARKED_FEATURES,
     mark_absorption_features,
+    spectral_tight_layout,
 )
 
 from ceridwen.observation.absorption_features import feature_windows  # noqa: E402
@@ -344,7 +345,7 @@ def stack_all_recipes(values, weights, n_boot, min_cover=MIN_COVER):
 
 
 def _label_axes(axes, labelled_axis, xlabel):
-    """Shade the absorption windows on every panel, name them under one."""
+    """Colour absorption windows on every panel, with one side legend."""
     for axis in axes:
         axis.set_xlim(axis.get_xlim())
         mark_absorption_features(
@@ -395,7 +396,7 @@ def figure_overview(grid, mean_pull2, averages, redchi2, n_used, out_dir):
         "line at 1 is the null expectation of mean pull$^2$."
     )
     fig.text(0.5, 0.005, caption, ha="center", fontsize=7, color="#555555")
-    fig.tight_layout(rect=(0, 0.04, 1, 0.9))
+    spectral_tight_layout(fig, rect=(0, 0.04, 1, 0.9))
     _save(fig, out_dir, "stacked-pull")
 
 
@@ -422,11 +423,11 @@ def figure_recipes(grid, stacks, n_used, out_dir):
     caption = (
         "Each panel stacks the same per-galaxy mean pull with a different "
         "recipe.\nThe grey band is the 1-sigma spread from resampling "
-        "galaxies. Grey columns mark the known absorption windows."
+        "galaxies. Coloured columns mark the absorption features in the side legend."
     )
     fig.text(0.5, 0.004, caption, ha="center", va="bottom", fontsize=7,
              color="#555555", linespacing=1.5)
-    fig.tight_layout(rect=(0, 0.045, 1, 0.965))
+    spectral_tight_layout(fig, rect=(0, 0.045, 1, 0.965))
     _save(fig, out_dir, "stacked-pull-recipes")
 
 

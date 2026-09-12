@@ -105,7 +105,7 @@ The fits mask the rest-frame Hβ and [O III] regions, so the Hβ window holds no
 
 A feature window needs 5 fitted native pixels before a galaxy contributes to it. The continuum holds every fitted pixel between 2900 Å and 5950 Å that no window contains.
 
-Grey columns on every rest-frame panel are the nine major absorption features at z = 0 (`scripts/spectral_figures.py`). The names sit under the bottom panel of each figure. The histogram carries no wavelength axis, so it stays bare.
+Coloured columns on every rest-frame panel mark the nine major absorption features at z = 0 (`scripts/spectral_figures.py`). Each feature keeps its colour across panels; the names appear in one legend on the right. The histogram carries no wavelength axis, so it stays bare.
 
 </details>
 

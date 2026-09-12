@@ -17,6 +17,8 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 from spectral_figures import (  # noqa: E402
     FEATURE_XLABEL_PAD,
+    FEATURE_COLORS,
+    spectral_tight_layout,
     MARKED_FEATURES,
     mark_absorption_features,
 )
@@ -30,16 +32,6 @@ def shaded_windows(ax):
         (float(patch.get_x()), float(patch.get_x() + patch.get_width()))
         for patch in ax.patches
     ]
-
-
-def text_rows(ax):
-    """Rendered name boxes grouped by row, keyed on the row's baseline y."""
-    renderer = ax.figure.canvas.get_renderer()
-    rows = {}
-    for text in ax.texts:
-        box = text.get_window_extent(renderer)
-        rows.setdefault(round(box.y1, 1), []).append((box, text.get_text()))
-    return rows
 
 
 def make_axis(width=12.0, xlim=(6000.0, 8800.0)):
@@ -77,62 +69,63 @@ def test_window_kms_widens_the_line_windows():
     plt.close(fig)
 
 
-def test_labels_appear_only_on_the_panel_that_asked_for_them():
-    fig, axes = plt.subplots(2, 1, figsize=(12.0, 6.0), sharex=True)
-    for ax in axes:
-        ax.set_xlim(6000.0, 8800.0)
-    mark_absorption_features(axes[0], 0.6, show_labels=False)
-    mark_absorption_features(axes[1], 0.6)
+def test_colours_are_unique_and_do_not_depend_on_visible_features():
+    assert len(set(FEATURE_COLORS.values())) == len(MARKED_FEATURES)
+    fig, ax = make_axis(xlim=(4800, 5000))
+    mark_absorption_features(ax, 0)
+    np.testing.assert_allclose(ax.lines[0].get_color(), FEATURE_COLORS["Hbeta"])
+    assert [t.get_text() for t in fig.legends[0].get_texts()] == [r"H$\beta$"]
+    assert not ax.texts
+    plt.close(fig)
 
-    fig.canvas.draw()
 
-    assert len(axes[0].texts) == 0
-    assert len(axes[1].texts) == len(MARKED_FEATURES)
-    assert [text.get_text() for text in axes[1].texts] == [
-        label for _, label in MARKED_FEATURES
+def test_one_legend_covers_all_panels_without_replacing_data_legend():
+    fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+    axes[0].plot([4000, 4500], [1, 2], label="Observed")
+    data_legend = axes[0].legend()
+    axes[0].set_xlim(3900, 4200)
+    axes[1].set_xlim(4800, 5400)
+    mark_absorption_features(axes[0], 0)
+    mark_absorption_features(axes[1], 0)
+    spectral_tight_layout(fig)
+    assert len(fig.legends) == 1
+    assert axes[0].get_legend() is data_legend
+    assert not axes[0].texts and not axes[1].texts
+    assert [t.get_text() for t in fig.legends[0].get_texts()] == [
+        label for name, label in MARKED_FEATURES
+        if name in {"CaK", "CaH", "HdA", "Hbeta", "Mgb", "Fe5270"}
     ]
+    plt.close(fig)
+
+
+def test_unlabelled_panels_are_coloured_without_requesting_a_legend():
+    fig, ax = make_axis()
+    mark_absorption_features(ax, 0.6, show_labels=False)
+    assert not fig.legends and not ax.texts
+    assert len(ax.patches) == len(MARKED_FEATURES)
+    for patch, (name, _) in zip(ax.patches, MARKED_FEATURES, strict=True):
+        np.testing.assert_allclose(patch.get_facecolor()[:3], FEATURE_COLORS[name][:3])
+    plt.close(fig)
+
+
+@pytest.mark.parametrize("width,nrows", [(3.5, 1), (10, 2), (9, 5)])
+def test_side_legend_clears_axes_and_is_inside_export(width, nrows):
+    fig, axes = plt.subplots(nrows, 1, figsize=(width, max(4, nrows * 2)), squeeze=False)
+    for ax in axes.flat:
+        ax.set_xlim(3200, 5600)
+        mark_absorption_features(ax, 0, show_labels=ax is axes[-1, 0], xlabel="Wavelength")
+    spectral_tight_layout(fig)
+    fig.canvas.draw()
+    size = fig.get_size_inches().copy()
+    spectral_tight_layout(fig)
+    np.testing.assert_allclose(fig.get_size_inches(), size)
+    fig.canvas.draw()
     renderer = fig.canvas.get_renderer()
-    axis_bottom = axes[1].get_window_extent().y0
-    for text in axes[1].texts:
-        assert text.get_window_extent(renderer).y1 < axis_bottom
-        assert text.get_clip_on() is False
-        assert text.get_transform() is not axes[1].transData
-    assert len(shaded_windows(axes[0])) == len(shaded_windows(axes[1]))
-    plt.close(fig)
-
-
-def test_names_drop_a_row_only_when_the_text_would_overlap():
-    fig, ax = make_axis(width=12.0)
-    mark_absorption_features(ax, 0.6)
-    fig.canvas.draw()
-
-    rows = text_rows(ax)
-    second_row = min(rows)
-    assert len(rows) == 2
-    assert [text for _, text in rows[second_row]] == [r"Ca H+H$\epsilon$"]
-    plt.close(fig)
-
-    fig, ax = make_axis(width=24.0)
-    mark_absorption_features(ax, 0.6)
-    fig.canvas.draw()
-
-    assert len(text_rows(ax)) == 1
-    plt.close(fig)
-
-
-def test_narrow_panels_use_as_many_rows_as_the_names_need():
-    # A stacked-pull panel is a third of a figure wide, so two rows are not enough.
-    fig, ax = make_axis(width=3.5, xlim=(3200.0, 5600.0))
-    mark_absorption_features(ax, 0.0, xlabel=r"Rest wavelength [$\mathrm{\AA}$]")
-    fig.canvas.draw()
-
-    rows = text_rows(ax)
-    assert len(rows) >= 3
-    for row in rows.values():
-        row.sort(key=lambda pair: pair[0].x0)
-        for (left, _), (right, _) in zip(row, row[1:]):
-            assert right.x0 > left.x1
-    assert ax.xaxis.labelpad > FEATURE_XLABEL_PAD
+    box = fig.legends[0].get_window_extent(renderer)
+    assert box.x1 <= fig.bbox.x1 and box.y0 >= 0 and box.y1 <= fig.bbox.y1
+    for ax in axes.flat:
+        assert ax.get_tightbbox(renderer).x1 < box.x0
+        assert ax.xaxis.labelpad == FEATURE_XLABEL_PAD
     plt.close(fig)
 
 
@@ -161,42 +154,13 @@ def test_partly_visible_windows_are_drawn_whole():
     plt.close(fig)
 
 
-def test_xlabel_argument_leaves_room_for_the_names():
+def test_xlabel_uses_normal_padding_and_existing_title_is_preserved():
     fig, ax = make_axis()
-    mark_absorption_features(ax, 0.6, xlabel="observed vacuum wavelength [angstrom]")
-    fig.canvas.draw()
-
-    assert ax.get_xlabel() == "observed vacuum wavelength [angstrom]"
-    assert ax.xaxis.labelpad >= FEATURE_XLABEL_PAD
-    # The label clears the lowest name whatever the panel height.
-    renderer = fig.canvas.get_renderer()
-    label_top = ax.xaxis.label.get_window_extent(renderer).y1
-    assert label_top < min(
-        text.get_window_extent(renderer).y0 for text in ax.texts
-    )
-    plt.close(fig)
-
-
-def test_short_panels_still_put_the_label_below_the_names():
-    # Rows are placed as a fraction of the axis, so a short axis needs more pad.
-    fig, axes = plt.subplots(3, 1, figsize=(6.0, 9.0))
-    for ax in axes:
-        ax.set_xlim(6000.0, 8800.0)
-    mark_absorption_features(axes[2], 0.6, xlabel="observed [angstrom]")
-    fig.canvas.draw()
-
-    renderer = fig.canvas.get_renderer()
-    label_top = axes[2].xaxis.label.get_window_extent(renderer).y1
-    assert label_top < min(
-        text.get_window_extent(renderer).y0 for text in axes[2].texts
-    )
-    plt.close(fig)
-
-    fig, ax = make_axis()
-    ax.set_xlabel("kept by the caller")
-    mark_absorption_features(ax, 0.6)
-
-    assert ax.get_xlabel() == "kept by the caller"
+    mark_absorption_features(ax, 0.6, xlabel="Observed wavelength")
+    assert ax.get_xlabel() == "Observed wavelength"
+    assert ax.xaxis.labelpad == FEATURE_XLABEL_PAD
+    mark_absorption_features(ax, 0.6, show_labels=False)
+    assert ax.get_xlabel() == "Observed wavelength"
     plt.close(fig)
 
 

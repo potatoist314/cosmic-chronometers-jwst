@@ -85,3 +85,7 @@ comparison issues; full source summaries and unit caveats remain in the record. 
 - Generated notebook images live only under `public/research-images/`.
 - Fits open first. Target selection stays fixed across SFH and posterior views.
 - All 28 result pages retain their existing URLs and underlying records.
+
+Absorption-feature plotting default: `scripts/spectral_figures.py` assigns fixed
+colours and one right-side legend. Finish marked figures with
+`spectral_tight_layout`; see `notes/notebook-map.md`.

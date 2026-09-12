@@ -1,28 +1,19 @@
-"""Shared absorption-feature marking for every figure with a wavelength axis.
+"""Consistent absorption-feature colours and one legend beside each figure.
 
-Production labelling standard: grey Lick/IDS windows with dotted edges on
-every wavelength panel, and the feature names in one horizontal row hanging
-below the bottom panel's x axis, outside the plotting area.  A name drops to
-the next line only when its rendered text would overlap the name to its left,
-so a wide panel keeps one row and a narrow one grows as many as it needs.
-
-Import it with the project's shared-module pattern::
-
-    sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
-    from spectral_figures import mark_absorption_features
-
-Multi-panel ``sharex`` figures call it with ``show_labels=False`` on the upper
-panels and ``show_labels=True`` on the bottom panel only.
+Call ``mark_absorption_features`` on each wavelength panel, with
+``show_labels=True`` on one panel, then ``spectral_tight_layout(fig)``.
+The layout helper reserves a right-hand legend column without narrowing the
+original figure. Feature windows come from the existing Ceridwen catalogue.
 """
 
 from __future__ import annotations
 
-from matplotlib.transforms import offset_copy
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 from ceridwen.observation.absorption_features import feature_windows
 
-# Major stellar absorption features (Lick/IDS names in ceridwen's catalogue);
-# bands span the Lick bandpass, lines span +-window_kms around the centre.
 MARKED_FEATURES = [
     ("CaK", "Ca K"),
     ("CaH", r"Ca H+H$\epsilon$"),
@@ -34,100 +25,83 @@ MARKED_FEATURES = [
     ("Mgb", r"Mg $b$"),
     ("Fe5270", "Fe5270"),
 ]
-# Fewest points of x-label padding; more when the name rows need it.
-FEATURE_XLABEL_PAD = 30
-# Points below the axis for the first name row, and between rows.  Points, not
-# axes fractions: a fraction moves with the panel height, which tight_layout
-# then changes again in response to the label pad measured from it.
-ROW_ONE_PT, ROW_SPACING_PT = 22.0, 9.0
+# Keep a feature's colour fixed even when other features are outside the axes.
+FEATURE_COLORS = dict(zip(
+    (name for name, _ in MARKED_FEATURES),
+    (mpl.colormaps["tab10"](i) for i in (0, 1, 2, 3, 4, 5, 6, 8, 9)),
+    strict=True,
+))
+FEATURE_XLABEL_PAD = mpl.rcParams["axes.labelpad"]
+_LEGEND_GID = "absorption-feature-legend"
+_WINDOW_PREFIX = "absorption-feature:"
 
 
 def mark_absorption_features(
     ax, zred, *, show_labels=True, window_kms=1000.0, xlabel=None
 ):
-    """Shade the Lick windows of MARKED_FEATURES on ax; names below the axis.
+    """Colour visible catalogue windows; list their names beside the figure.
 
-    ``zred`` redshifts the rest-frame catalogue onto the axis; a rest-frame
-    axis passes ``zred=0.0``.  ``xlabel`` sets the axis title with enough pad
-    to clear the names; a caller that keeps its own label adds the pad itself.
+    ``zred=0`` marks a rest-frame axis. ``show_labels=False`` colours an upper
+    panel without requesting a legend. One legend covers all marked panels.
+    Existing data legends and axis limits are preserved.
     """
     windows = feature_windows(
         [name for name, _ in MARKED_FEATURES], zred=zred, window_kms=window_kms
     )
     x_limits = ax.get_xlim()
-    labels = []
-    for (_, label), (lower, upper) in zip(MARKED_FEATURES, windows, strict=True):
-        if upper < x_limits[0] or lower > x_limits[1]:
+    for (name, _), (lower, upper) in zip(MARKED_FEATURES, windows, strict=True):
+        if upper < min(x_limits) or lower > max(x_limits):
             continue
-        ax.axvspan(
-            lower, upper, facecolor="0.2", alpha=0.10, linewidth=0, zorder=0.5
+        color = FEATURE_COLORS[name]
+        patch = ax.axvspan(
+            lower, upper, facecolor=color, alpha=0.10, linewidth=0, zorder=0.5
         )
+        patch.set_gid(_WINDOW_PREFIX + name)
         for edge in (lower, upper):
-            ax.axvline(edge, color="0.3", lw=0.6, linestyle=":", zorder=1)
-        if show_labels:
-            labels.append(
-                ax.text(
-                    0.5 * (lower + upper),
-                    0.0,
-                    label,
-                    color="0.2",
-                    fontsize=7,
-                    ha="center",
-                    va="top",
-                    transform=_row_transform(ax, 0),
-                    clip_on=False,
-                )
-            )
+            ax.axvline(edge, color=color, lw=0.7, linestyle=":", zorder=1)
     ax.set_xlim(x_limits)
-    # One row below the axis; a name drops to the first row it fits on, so a
-    # narrow panel grows a third and fourth row instead of overlapping names.
-    renderer = ax.figure.canvas.get_renderer()
-    row_right_edge = []
-    for text in labels:
-        box = text.get_window_extent(renderer)
-        row = next(
-            (n for n, edge in enumerate(row_right_edge) if box.x0 > edge + 3),
-            len(row_right_edge),
-        )
-        if row == len(row_right_edge):
-            row_right_edge.append(box.x1)
-        else:
-            row_right_edge[row] = box.x1
-        text.set_transform(_row_transform(ax, row))
     if xlabel is not None:
-        ax.set_xlabel(
-            xlabel, labelpad=_label_pad(ax, labels, len(row_right_edge), renderer)
-        )
+        ax.set_xlabel(xlabel, labelpad=FEATURE_XLABEL_PAD)
+    figure = ax.figure
+    existing = next((leg for leg in figure.legends if leg.get_gid() == _LEGEND_GID), None)
+    if show_labels or existing is not None:
+        visible = {
+            patch.get_gid()[len(_WINDOW_PREFIX):]
+            for axis in figure.axes for patch in axis.patches
+            if (patch.get_gid() or "").startswith(_WINDOW_PREFIX)
+        }
+        if existing is not None:
+            existing.remove()
+        if visible:
+            handles = [Line2D([], [], color=FEATURE_COLORS[name], lw=2, label=label)
+                       for name, label in MARKED_FEATURES if name in visible]
+            legend = figure.legend(handles=handles, loc="center right", frameon=False,
+                                   fontsize=8, title="Absorption features", title_fontsize=8)
+            legend.set_gid(_LEGEND_GID)
 
 
-def _row_transform(ax, row):
-    """Axis x in data units, y a fixed number of points below the axis."""
-    return offset_copy(
-        ax.get_xaxis_transform(),
-        fig=ax.figure,
-        units="points",
-        y=-(ROW_ONE_PT + ROW_SPACING_PT * row),
-    )
+def spectral_tight_layout(fig=None, *, rect=(0, 0, 1, 1), **kwargs):
+    """Apply tight layout, with a separate column for the feature legend.
 
-
-def _label_pad(ax, labels, n_rows, renderer):
-    """Points of x-label pad that clear the name rows on this axis.
-
-    Matplotlib measures ``labelpad`` down from the tick labels, so subtract
-    how far the tick labels already hang below the axis.
+    Figures without feature labels use normal tight layout. Repeated calls do
+    not increase figure dimensions again. Existing top/bottom margins remain.
     """
-    if not labels:
-        return FEATURE_XLABEL_PAD
-    scale = 72.0 / ax.figure.dpi
-    ticks = [text.get_window_extent(renderer) for text in ax.get_xticklabels()]
-    axis_bottom = ax.get_window_extent().y0
-    tick_drop = scale * (axis_bottom - min(box.y0 for box in ticks)) if ticks else 0.0
-    name_height = scale * max(
-        box.y1 - box.y0
-        for box in (text.get_window_extent(renderer) for text in labels)
-    )
-    lowest = ROW_ONE_PT + ROW_SPACING_PT * (n_rows - 1) + name_height
-    return max(FEATURE_XLABEL_PAD, lowest - tick_drop + 4.0)
+    fig = plt.gcf() if fig is None else fig
+    legend = next((leg for leg in fig.legends if leg.get_gid() == _LEGEND_GID), None)
+    if legend is None:
+        fig.tight_layout(rect=rect, **kwargs)
+        return
+    box = legend.get_window_extent(fig.canvas.get_renderer())
+    column = box.width / fig.dpi + 0.35
+    height = box.height / fig.dpi + 0.4
+    if not hasattr(fig, "_absorption_base_size"):
+        fig._absorption_base_size = tuple(fig.get_size_inches())
+    width, original_height = fig._absorption_base_size
+    fig.set_size_inches(width + column, max(original_height, height))
+    right = min(rect[2], 1 - column / fig.get_figwidth())
+    legend.set_bbox_to_anchor((1 - 0.05 / fig.get_figwidth(), (rect[1] + rect[3]) / 2))
+    fig.tight_layout(rect=(rect[0], rect[1], right, rect[3]), **kwargs)
 
 
-__all__ = ["FEATURE_XLABEL_PAD", "MARKED_FEATURES", "mark_absorption_features"]
+__all__ = ["FEATURE_XLABEL_PAD", "FEATURE_COLORS", "MARKED_FEATURES",
+           "mark_absorption_features", "spectral_tight_layout"]

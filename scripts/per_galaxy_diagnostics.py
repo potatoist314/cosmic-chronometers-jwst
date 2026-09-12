@@ -78,7 +78,7 @@ DEFAULT_SUMMARY_DIR = PROJECT_ROOT / "wiki/analyses/per-galaxy-diagnostics"
 FIGURE_SUBDIR = "diagnostics"
 
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
-from spectral_figures import mark_absorption_features  # noqa: E402
+from spectral_figures import mark_absorption_features, spectral_tight_layout  # noqa: E402
 
 # Fitting-notebook configuration that ``write_result_h5`` does not persist.
 GRID_NAME = "amist_c3k_hr_krou_afe"
@@ -842,7 +842,7 @@ def plot_spectral_chi2(galaxy: GalaxyResult, like_ml: dict | None = None, stamp:
     mark_absorption_features(axes[1], galaxy.z, show_labels=False)
     mark_absorption_features(axes[2], galaxy.z,
                              xlabel=r"observed vacuum wavelength [$\mathrm{\AA}$]")
-    fig.tight_layout(rect=(0, 0.06, 1, 1))
+    spectral_tight_layout(fig, rect=(0, 0.06, 1, 1))
     _footer(fig, stamp)
     if out is not None:
         fig.savefig(out)

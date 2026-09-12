@@ -46,7 +46,7 @@ Photometry anchor
 <figcaption>Pull per fitted pixel, 1.11 per pixel over 3523.</figcaption>
 </figure>
 
-Grey windows on all three panels are the nine major absorption features, redshifted to the observed frame; their names hang below the bottom panel (`scripts/spectral_figures.py`).
+Coloured windows on all three panels mark the nine major absorption features, redshifted to the observed frame. Each feature has a fixed colour and one entry in the right-side legend (`scripts/spectral_figures.py`).
 
 <figure>
 <img src="figures/per-galaxy-diagnostics/M1_210210-sf_timescales.png" alt="M1_210210: fraction of final mass formed earlier than each lookback time with t10 to t90 and their posterior intervals">
