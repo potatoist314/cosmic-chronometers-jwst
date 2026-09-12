@@ -642,3 +642,14 @@
   their recorded likelihood and chi-squared values to absolute tolerance 1e-6.
 - Validation: plotting/production/diagnostics/stacking tests and both wiki suites
   passed. Existing numerical inputs and unrelated notebook outputs are unchanged.
+
+
+## 2026-09-12 · codebase · Spectra behind the stacked-pull spikes
+
+- Added M11_216899 and M12_184916 spectrum-and-pull images directly below the
+  stack on the result page and its linked source note.
+- Images are unchanged PNG outputs from the revised-run notebooks, cell 26,
+  output 0; notebook links remain available beside the source figures and in
+  the research record.
+- Captions identify the 3672 Å and 5566 Å bins and each galaxy's contribution.
+  Existing plots and numerical results are unchanged; no fits were rerun.

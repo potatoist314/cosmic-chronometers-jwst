@@ -5,7 +5,7 @@ section: Analyses
 theme: Population results
 tags: [dr2-quiescent-sample, ceridwen, diagnostics]
 job: t_6417df23
-figures: [stacked-pull.png, stacked-pull-recipes.png, stacked-pull-by-feature.png]
+figures: [M11_216899-spectrum.png, M12_184916-spectrum.png, stacked-pull.png, stacked-pull-recipes.png, stacked-pull-by-feature.png]
 ---
 
 Sample
@@ -28,6 +28,16 @@ pull = (observed − posterior_q50) / effective_uncertainty, over the fitted nat
 <figure>
 <img src="figures/dr2-quiescent-sample/stacked-pull.png" alt="Three panels: mean pull-squared with the null line at 1, median pull with a 16-84 percent band, and a reduced chi-squared histogram">
 <figcaption><code>stacked-pull.png</code> · <code>scripts/plot_dr2_stacked_pull.py</code> · vector <code>stacked-pull.pdf</code></figcaption>
+</figure>
+
+<figure>
+<img src="figures/dr2-quiescent-sample/M11_216899-spectrum.png" alt="M11_216899: saved revised spectrum, posterior fit and native-pixel pulls">
+<figcaption><a href="/wiki/f/results/dr2-quiescent-new-defaults/216899-M11_216899/M11_216899_executed.ipynb">M11_216899</a>: revised fit; contributes 79% of summed pull² in the 3672 Å rest-frame bin (about 6234 Å observed).</figcaption>
+</figure>
+
+<figure>
+<img src="figures/dr2-quiescent-sample/M12_184916-spectrum.png" alt="M12_184916: saved revised spectrum, posterior fit and native-pixel pulls">
+<figcaption><a href="/wiki/f/results/dr2-quiescent-new-defaults/184916-M12_184916/M12_184916_executed.ipynb">M12_184916</a>: revised fit; contributes 86% of summed pull² in the 5566 Å rest-frame bin (about 9348 Å observed).</figcaption>
 </figure>
 
 <details>

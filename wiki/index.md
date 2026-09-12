@@ -41,7 +41,7 @@ comparison issues; full source summaries and unit caveats remain in the record. 
 
 ## Population results
 
-- `notes/stacked-chi2-and-median-pull.md` — Stacked χ², five stacking recipes and the per-feature pull (2026-09-10 · t_6417df23)
+- `notes/stacked-chi2-and-median-pull.md` — Stacked χ², five stacking recipes and the per-feature pull (2026-09-10 · t_6417df23); includes the M11_216899 and M12_184916 spike spectra.
 - `notes/per-galaxy-diagnostics-gallery.md` — Per-galaxy fit diagnostics, gallery (2026-09-05 · t_8a78968d)
 - `notes/per-galaxy-fit-diagnostics.md` — Per-galaxy fit diagnostics (2026-09-05 · t_8a78968d)
 - `notes/ceridwen-results.md` — Ceridwen common results board (2026-09-04 · t_44b5da5c)
