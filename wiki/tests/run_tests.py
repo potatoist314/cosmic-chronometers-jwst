@@ -228,12 +228,12 @@ def main() -> int:
         body = "the effective uncertainty actually used by the likelihood"
         check("front page withholds note text", body not in index)
 
-        # the theme hub: one card per theme, one page per theme
+        # Research leads; the earlier theme hub and all of its routes survive.
         bd0 = load_build()
-        check("front page is the theme hub", "<h1>Themes</h1>" in index)
-        check("the hub carries one card per theme",
-              index.count('class="card"') == len(bd0.THEMES),
-              "%d cards for %d themes" % (index.count('class="card"'), len(bd0.THEMES)))
+        check("front page is the research overview", "<h1>Research</h1>" in index)
+        earlier_hub = (out / "themes/index.html").read_text()
+        check("earlier boards retain one card per theme",
+              earlier_hub.count('class="card"') == len(bd0.THEMES))
         theme_pages = sorted((out / "themes").glob("*/index.html"))
         check("one page per theme", len(theme_pages) == len(bd0.THEMES), str(len(theme_pages)))
         accuracy = (out / "themes/single-fit-accuracy/index.html").read_text()
@@ -277,7 +277,7 @@ def main() -> int:
               any(PLANTED in o for o in offenders),
               "%d offenders, none planted" % len(offenders))
 
-    # an empty notebook still builds a finished page: the masthead, and nothing else
+    # An empty research notebook has navigation and honest empty states.
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
         empty = tmp / "notes"
@@ -286,11 +286,13 @@ def main() -> int:
         check("empty notebook builds", run.returncode == 0, run.stderr)
         parser = ChromeText()
         parser.feed((out / "index.html").read_text().split("<body>", 1)[-1])
-        check("empty front page is the masthead and nothing else",
+        check("empty front page keeps research navigation",
               parser.nodes == ["Astro Lab Notebook", "Liu Hao · DR2 quiescent galaxies",
-                               "Themes", "0", "RSS", "·", "Log", "·", "By date", "·",
-                               "By topic"],
+                               "Research", "Overview", "Questions", "Experiments", "Library",
+                               "Reference", "Earlier work", "Earlier boards", "Note log"],
               repr(parser.nodes))
+        empty_page = (out / "index.html").read_text()
+        check("empty research does not invent experiments", empty_page.count("None yet") == 3)
 
     # --- the word budget -------------------------------------------------
     bd = load_build()
@@ -379,8 +381,8 @@ def main() -> int:
         check("an experiment citing no note stops the build", run.returncode != 0, run.stdout)
         run, out = board("smaller card", "adopted", "one clause")
         check("a clean board builds", run.returncode == 0, run.stderr)
-        hub = (out / "index.html").read_text() if run.returncode == 0 else ""
-        check("the hub tallies the board", "1 adopted" in hub and "1 note" in hub, hub[-600:])
+        hub = (out / "themes/index.html").read_text() if run.returncode == 0 else ""
+        check("earlier hub tallies its board", "1 adopted" in hub and "1 note" in hub, hub[-600:])
 
     long_caps = []
     for path in notes:

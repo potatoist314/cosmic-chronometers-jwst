@@ -1,9 +1,13 @@
 # Agent Note Index
 
-Human entry point: `public/index.html`, served at `/wiki/` — the theme hub.
-Experiment board: `themes.md`, one table per theme.
+Human entry point: `public/index.html`, served at `/wiki/` — the research overview.
+Active workflow: `/wiki/questions/` and `/wiki/experiments/`.
+Research contract and templates: `research/README.md`, `research/templates/`.
+User direction: `research/direction.md`, preserved verbatim from chat.
+Earlier experiment boards: `themes.md`, served at `/wiki/themes/`.
 
-Source of truth: `notes/*.md`. Build with `python3 wiki/build.py`.
+Sources: `research/` for new research, `notes/*.md` for the existing corpus.
+Build with `python3 wiki/build.py`. Existing analyses are not reconstructed.
 
 ## Single-fit accuracy
 

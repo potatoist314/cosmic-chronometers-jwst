@@ -40,3 +40,18 @@ Treat these instructions as active until the user explicitly changes them.
 - README targets newcomers; wiki HTML uses short, exact code excerpts; agent memory may stay Markdown.
 - Prefer a smaller analysis that is understood, tested, and documented over a
   broad analysis whose assumptions have not been examined. E.g., get a small test case of 1 sample or 10 samples working well before attempting to fit a full sample.
+
+## Recording new research
+
+- Before executing or delegating a new scientific experiment, read
+  `wiki/research/README.md` and create or reuse its question and experiment record.
+- Preserve Liu Hao's relevant chat messages verbatim before delegation. Never
+  synthesise his reasoning, invent a prediction, or silently improve his words.
+- Record the agent's execution plan, actual run configuration, evidence and factual
+  results separately. Include the experiment ID and record path in handoffs.
+- Append Liu Hao's subsequent interpretation and decisions in his original words.
+  Mark an experiment reviewed only when his interpretation is recorded.
+- Existing authorization in chat is sufficient. Ask only about missing research
+  decisions that materially affect execution, not for repeated permission.
+- This workflow is prospective. Do not reconstruct historical reasoning or migrate
+  old results. Continue using the existing notebooks and result directories.

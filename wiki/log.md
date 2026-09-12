@@ -578,3 +578,17 @@
 
 - Pages: [[themes]]
 - Change: Grouped board rows under experiment headings linked once to their note; removed note and experiment columns; added change column; rewrote results in plain words; stacked layout on narrow screens.
+
+## [2026-09-12] change | Prospective research notebook
+
+- Pages: Research overview, Questions, Experiments, Reference and Earlier work.
+- Change: Added stable question/experiment records, verbatim user messages, separate
+  agent execution plans and measured results, linked runs, status filtering and search.
+- Workflow: Chat remains the writing surface. User amendments, interpretation and
+  decisions retain their original wording. Reviewed status requires a recorded user
+  interpretation. New research is exempt from the legacy 50-word body cap.
+- Preservation: All 31 existing notes and earlier board routes remain accessible;
+  historical reasoning and saved results were not reconstructed or migrated.
+- Evidence: `research/README.md`, `research.py`, `tests/test_research.py` and
+  `tests/run_tests.py`; isolated browser checks covered filtering, search, run
+  metadata and links, dark desktop rendering and 360-pixel mobile light rendering.

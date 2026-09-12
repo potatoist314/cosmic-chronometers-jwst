@@ -1,8 +1,31 @@
 # Astro Research Wiki
 
-This directory contains an LLM-maintained guide to the Astro project codebase.
-Codex maintains the guide so the user can learn to read the code. The user
-selects the research direction and scientific methodology.
+This directory contains the Ceridwen research notebook and codebase reference.
+The user writes research reasoning in chat. Agents preserve those original words
+and maintain execution records and factual results. The user selects the research
+direction and scientific methodology.
+
+## Prospective research workflow
+
+- Read `research/README.md` before recording or delegating a new scientific experiment.
+- Organise questions under `research/questions/` and experiments under
+  `research/experiments/`. Use the templates and stable IDs; group runs under experiments.
+- Capture the user's relevant original messages before execution. Never synthesise,
+  paraphrase, correct spelling, or invent a prediction or interpretation.
+- Record agent execution plans and factual results in their separately attributed
+  sections. Preserve exact run configurations, evidence links, units and limitations.
+- Append later user changes and interpretation as dated original messages. Record
+  existing authorization from chat; do not introduce a separate approval ceremony.
+- `reviewed` means the user's interpretation is recorded, not that a scientific
+  claim passed validation. Agents must not assign it based on their own conclusions.
+- Apply this prospectively. Preserve earlier analyses and URLs; do not reconstruct
+  old reasoning, migrate saved fits, or invent new experiments from the backlog.
+- The homepage is Research. Questions and Experiments are the active workflow;
+  Reference and Earlier work retain the existing corpus.
+- Research entries are exempt from the legacy 50-word body limit and one-sentence
+  caption restriction. Preserve full user wording and readable evidence.
+- Run both `python3 wiki/tests/run_tests.py` and
+  `python3 -m unittest discover -s wiki/tests -p 'test_research.py'` after changes.
 
 ## Current scope
 
@@ -24,8 +47,9 @@ selects the research direction and scientific methodology.
 
 ## Structure
 
-- `notes/` holds the source of truth: one Markdown note for each entry.
-- `build.py` renders `notes/` into `public/`. It is standard library only.
+- `research/` holds prospective questions, experiments and the user's direction.
+- `notes/` holds the existing reference and analysis source notes.
+- `build.py` and `research.py` render both corpora into `public/`, using the standard library.
 - `public/` is generated output. Never edit it by hand.
 - `tests/run_tests.py` fails the build when the generator writes prose.
 - `_old/` keeps every pre-notebook HTML page. Do not delete it without asking.
@@ -55,14 +79,15 @@ status: obsolete   # optional
 - `theme` is required unless `status: obsolete`. Use one of the seven names in `THEMES` in `wiki/build.py`. Values: Single-fit accuracy, Validation on mocks, Sample and data, Population results, Compute, Model and code reference, Background reading.
 - `superseded_by` is optional and names the slug of the note replacing this one. The build stops if that slug is not a note. The replaced note keeps its page and shows a banner.
 - In `wiki/themes.md`, write one purpose line under each `## Theme` heading, then one `### Experiment` block per experiment. Add an optional `note: <slug>` line and an `arm | change | status | result` table with one row per arm. Use adopted, dropped, inconclusive, or planned for status. State what the arm does differently in change and what happened in result. Keep each to one clause with no full stop, plain words, no galaxy IDs or symbols. The build stops on an unknown status, a sentence in change or result, or a note slug that is not a note.
-- The front page is the theme hub. `log/` is the date-ordered feed.
+- `themes/` retains the earlier theme hub. `log/` is the existing date-ordered note feed.
 
-### The one rule that overrides the rest
+### Authorship and generated text
 
-A note shows only Liu Hao's own content: title, date, figures, numbers,
-commands, and his text. Write no summary, no dek, no caption of your own, no
-"related" list, and no explanation. `tests/run_tests.py` fails the build when a
-text node outside a note body is longer than four words, or ends a sentence.
+User-authored research sections show Liu Hao's original words only. Agent-authored
+execution plans and measured results are labelled separately. The renderer must
+never produce scientific interpretations or synthesise the user's reasoning.
+Legacy note content remains intact. Navigation uses short labels; the existing
+test still rejects generated prose outside content bodies.
 
 Run `python3 wiki/tests/run_tests.py` after every change. Run
 `python3 wiki/tests/run_tests.py --plant` to see the audit catch one planted

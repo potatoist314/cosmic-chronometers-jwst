@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""Build the Astro lab notebook from `wiki/notes/*.md` into `wiki/public/`.
+"""Build the research notebook and legacy notes into `wiki/public/`.
+
+`research.py` renders prospective question and experiment records. User messages
+remain verbatim; agent execution plans and measured results are attributed.
+Research records are exempt from the legacy note limits described below.
 
 Standard library only, in the shape of `~/thoughts-site/build.py`.
 
-The generator writes no prose. Every sentence on the finished site comes out of
-a note. Chrome carries labels only, and `tests/run_tests.py` fails the build if
+The generator writes no scientific prose. Content comes from source records.
+Chrome carries labels only, and `tests/run_tests.py` fails the build if
 a text node outside a note body grows past four words or ends a sentence.
 
 A note lists the figures it may show in its `figures:` front matter, in the
@@ -18,7 +22,7 @@ sentence. Everything else a reader has to read does count, headings included.
 A note over the budget fails the build and nothing is published: move the
 overflow into a `<details>` block.
 
-    python3 wiki/build.py [--notes DIR] [--out DIR] [--base /wiki]
+    python3 wiki/build.py [--notes DIR] [--research DIR] [--out DIR] [--base /wiki]
 """
 
 from __future__ import annotations
@@ -31,11 +35,14 @@ import shutil
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from types import SimpleNamespace
 from urllib.parse import quote, unquote
 from xml.sax.saxutils import escape as xesc
 
 ROOT = Path(__file__).resolve().parent          # wiki/
 PROJECT = ROOT.parent
+sys.path.insert(0, str(ROOT))
+import research
 
 # The word counter is the bridge's, so the notebook and the handoff gate can
 # never drift apart. It lives next to the bridge because the Review Inbox
@@ -571,7 +578,7 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 <nav class="side">
   <a class="brand" href="%(base)s/">%(name)s<small>%(who)s</small></a>
   <form class="search" role="search" action="%(base)s/" onsubmit="return false">
-    <input id="q" type="search" autocomplete="off" placeholder="Search notes" aria-label="Search notes">
+    <input id="q" type="search" autocomplete="off" placeholder="Search research" aria-label="Search research">
   </form>
   <div id="results" class="results" hidden></div>
   %(rail)s
@@ -588,29 +595,13 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 
 
 def rail_sections(notes, base, current=""):
-    counts = {}
-    themes = {}
-    for n in notes:
-        counts[n["section"]] = counts.get(n["section"], 0) + 1
-        if n["theme"]:
-            themes[n["theme"]] = themes.get(n["theme"], 0) + 1
-    items = []
-    if not counts:
-        return ""
-    for name in THEMES:
-        if name in themes:
-            cls = " class=\"on\"" if name == current else ""
-            items.append('<li%s><a href="%s/themes/%s/">%s</a><span class="n">%d</span></li>'
-                         % (cls, base, slugify(name), esc(name), themes[name]))
-    head = '<div><h4>Themes</h4><ul>%s</ul></div>' % "".join(items) if items else ""
-    items = []
-    for name in SECTIONS:
-        if name not in counts:
-            continue
-        cls = " class=\"on\"" if name == current else ""
-        items.append('<li%s><a href="%s/sections/#%s">%s</a><span class="n">%d</span></li>'
-                     % (cls, base, slugify(name), esc(name), counts[name]))
-    return head + '<div><h4>Sections</h4><ul>%s</ul></div>' % "".join(items)
+    groups = (("Research", (("", "Overview"), ("questions/", "Questions"),
+                             ("experiments/", "Experiments"))),
+              ("Library", (("reference/", "Reference"), ("earlier/", "Earlier work"),
+                            ("themes/", "Earlier boards"), ("log/", "Note log"))))
+    return "".join('<div><h4>%s</h4><ul>%s</ul></div>' % (heading, "".join(
+        '<li><a href="%s/%s">%s</a></li>' % (base, path, label) for path, label in links))
+        for heading, links in groups)
 
 
 def rail_note(note, base, headings):
@@ -624,7 +615,7 @@ def rail_note(note, base, headings):
     if note.get("old"):
         meta.append('<li><a href="%s/%s">Original</a></li>' % (base, note["old"]))
     blocks.append('<div><h4>Record</h4><ul class="rec">%s</ul></div>' % "".join(meta))
-    return "".join(blocks)
+    return rail_sections([], base) + "".join(blocks)
 
 
 def feed_rows(notes, base):
@@ -684,16 +675,19 @@ def superseded_banner(note, notes, base):
 
 # ---------------------------------------------------------------- build
 
-def build(notes_dir: Path, out: Path, base: str) -> int:
+def build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = None) -> int:
     notes = [n for n in (parse_note(p) for p in sorted(notes_dir.glob("*.md"))) if n]
     notes.sort(key=lambda n: (n["date"], n["title"]), reverse=True)
     board = parse_themes(notes_dir.parent / "themes.md")
+    research_dir = research_dir if research_dir is not None else notes_dir.parent / "research"
+    research_records, research_faults = research.load(research_dir)
 
     # Nothing is published until every note is inside its word budget
     # and every theme and board status is one of the fixed words.
-    faults = budget_faults(notes) + theme_faults(notes, board)
+    faults = (budget_faults(notes) + theme_faults(notes, board)
+              + research_faults + research.validate(research_records, PROJECT))
     if faults:
-        print("build stopped: %d fault(s) against the word budget" % len(faults),
+        print("build stopped: %d validation fault(s)" % len(faults),
               file=sys.stderr)
         for line in faults[:12]:
             print("  " + line, file=sys.stderr)
@@ -719,7 +713,7 @@ def build(notes_dir: Path, out: Path, base: str) -> int:
     if (ROOT / "_old").is_dir():
         shutil.copytree(ROOT / "_old", scratch / "_old", symlinks=False,
                         ignore=shutil.ignore_patterns("*.bak-*"))
-    (scratch / "style.css").write_text(stylesheet(base), encoding="utf-8")
+    (scratch / "style.css").write_text(stylesheet(base) + research.CSS, encoding="utf-8")
     (scratch / "search.js").write_text(SEARCH_JS.replace("__BASE__", base), encoding="utf-8")
     (scratch / "site.webmanifest").write_text(json.dumps({
         "name": SITE_NAME, "short_name": "Notebook", "start_url": base + "/",
@@ -778,8 +772,6 @@ def build(notes_dir: Path, out: Path, base: str) -> int:
                       "g": " ".join(note["tags"]),
                       "x": plain(body_html)[:4000]})
 
-    (scratch / "search.json").write_text(json.dumps(index, separators=(",", ":")), encoding="utf-8")
-
     foot = ('<div class="foot"><span>%d</span><span><a href="%s/feed.xml">RSS</a> · '
             '<a href="%s/log/">Log</a> · <a href="%s/date/">By date</a> · '
             '<a href="%s/sections/">By topic</a></span></div>'
@@ -811,7 +803,8 @@ def build(notes_dir: Path, out: Path, base: str) -> int:
         (dest / "index.html").write_text(
             shell("%s · %s" % (theme, SITE_NAME), base, page,
                   rail_sections(notes, base, theme)), encoding="utf-8")
-    (scratch / "index.html").write_text(
+    (scratch / "themes").mkdir(exist_ok=True)
+    (scratch / "themes/index.html").write_text(
         shell(SITE_NAME, base, '<h1>Themes</h1><div class="cards">%s</div>' % "".join(cards)
               + foot, rail_sections(notes, base)), encoding="utf-8")
 
@@ -839,6 +832,12 @@ def build(notes_dir: Path, out: Path, base: str) -> int:
     (scratch / "sections/index.html").write_text(
         shell("By topic · " + SITE_NAME, base, "<h1>By topic</h1>" + "".join(by_section),
               rail_sections(notes, base)), encoding="utf-8")
+
+    renderer = SimpleNamespace(PROJECT=PROJECT, SITE_NAME=SITE_NAME, markdown=markdown,
+                               slugify=slugify, shell=shell, rail_sections=rail_sections,
+                               feed_rows=feed_rows)
+    index.extend(research.write_pages(research_records, notes, scratch, base, renderer))
+    (scratch / "search.json").write_text(json.dumps(index, separators=(",", ":")), encoding="utf-8")
 
     (scratch / "feed.xml").write_text(rss(notes, base), encoding="utf-8")
     publish_word_counts(notes, notes_dir)
@@ -1086,9 +1085,16 @@ SEARCH_JS = r"""
     return s;
   }
   function render(rows) {
-    panel.innerHTML = rows.map(function (n) {
-      return '<a href="' + n.u + '">' + n.t + '<span class="d">' + n.d + " \u00b7 " + n.s + "</span></a>";
-    }).join("");
+    panel.replaceChildren();
+    rows.forEach(function (n) {
+      var link = document.createElement('a'), detail = document.createElement('span');
+      link.href = n.u;
+      link.append(document.createTextNode(n.t));
+      detail.className = 'd';
+      detail.textContent = n.d + ' \u00b7 ' + n.s;
+      link.append(detail);
+      panel.append(link);
+    });
     panel.hidden = rows.length === 0;
   }
   function run() {
@@ -1140,9 +1146,11 @@ def main(argv):
     ap = argparse.ArgumentParser()
     ap.add_argument("--notes", type=Path, default=ROOT / "notes")
     ap.add_argument("--out", type=Path, default=ROOT / "public")
+    ap.add_argument("--research", type=Path, help="Research sources (default: sibling of --notes)")
     ap.add_argument("--base", default="/wiki")
     args = ap.parse_args(argv[1:])
-    return build(args.notes.resolve(), args.out.resolve(), args.base.rstrip("/"))
+    return build(args.notes.resolve(), args.out.resolve(), args.base.rstrip("/"),
+                 args.research.resolve() if args.research is not None else None)
 
 
 if __name__ == "__main__":
