@@ -5,26 +5,25 @@ The user writes research reasoning in chat. Agents preserve those original words
 and maintain execution records and factual results. The user selects the research
 direction and scientific methodology.
 
-## Prospective research workflow
+## Research workflow
 
-- Read `research/README.md` before recording or delegating a new scientific experiment.
-- Organise questions under `research/questions/` and experiments under
-  `research/experiments/`. Use the templates and stable IDs; group runs under experiments.
-- Capture the user's relevant original messages before execution. Never synthesise,
-  paraphrase, correct spelling, or invent a prediction or interpretation.
-- Record agent execution plans and factual results in their separately attributed
-  sections. Preserve exact run configurations, evidence links, units and limitations.
-- Append later user changes and interpretation as dated original messages. Record
-  existing authorization from chat; do not introduce a separate approval ceremony.
-- `reviewed` means the user's interpretation is recorded, not that a scientific
-  claim passed validation. Agents must not assign it based on their own conclusions.
-- Apply this prospectively. Preserve earlier analyses and URLs; do not reconstruct
-  old reasoning, migrate saved fits, or invent new experiments from the backlog.
-- The homepage is Research. Questions and Experiments are the active workflow;
-  Reference and Earlier work retain the existing corpus.
-- Research entries are exempt from the legacy 50-word body limit and one-sentence
-  caption restriction. Preserve full user wording and readable evidence.
-- Run both `python3 wiki/tests/run_tests.py` and
+- Read `research/README.md` before recording or delegating a scientific experiment.
+- Organise questions and experiments under `research/`, with stable IDs and grouped runs.
+- Retain original chat messages. Allow light editing of displayed spelling, punctuation
+  and phrasing, without changing meaning, uncertainty, emphasis or qualifications.
+- Preserve ambiguous wording. Never invent a prediction, explanation or interpretation.
+- Keep edited display separate from original text, with the original expandable.
+- Attribute agent execution plans and factual results separately from user reasoning.
+- Append later amendments and decisions with their dates. Existing chat authorization
+  remains sufficient. Do not request repeated permission.
+- `reviewed` requires the user's interpretation. It is not a scientific validation grade.
+- Integrate existing Ceridwen results as full entries with source references and caveats.
+  Use `origin: existing` and `status: recorded`. Do not reconstruct historical briefs,
+  invent metadata, rerun fits, or move existing evidence.
+- Existing questions may use source-derived context instead of user messages. Label
+  this context as an agent source summary. Do not attribute it to Liu Hao.
+- Research entries are exempt from the legacy word and caption limits.
+- Run `python3 wiki/tests/run_tests.py` and
   `python3 -m unittest discover -s wiki/tests -p 'test_research.py'` after changes.
 
 ## Current scope
@@ -47,7 +46,7 @@ direction and scientific methodology.
 
 ## Structure
 
-- `research/` holds prospective questions, experiments and the user's direction.
+- `research/` holds existing and new questions, experiments and the user's direction.
 - `notes/` holds the existing reference and analysis source notes.
 - `build.py` and `research.py` render both corpora into `public/`, using the standard library.
 - `public/` is generated output. Never edit it by hand.
@@ -83,11 +82,10 @@ status: obsolete   # optional
 
 ### Authorship and generated text
 
-User-authored research sections show Liu Hao's original words only. Agent-authored
-execution plans and measured results are labelled separately. The renderer must
-never produce scientific interpretations or synthesise the user's reasoning.
-Legacy note content remains intact. Navigation uses short labels; the existing
-test still rejects generated prose outside content bodies.
+User reasoning may have a lightly edited display, with the original text retained.
+Agent source summaries, execution plans and measured results are labelled separately.
+The renderer never rewrites text or generates scientific interpretations. Existing
+note routes and evidence remain accessible. Navigation uses short labels.
 
 Run `python3 wiki/tests/run_tests.py` after every change. Run
 `python3 wiki/tests/run_tests.py --plant` to see the audit catch one planted

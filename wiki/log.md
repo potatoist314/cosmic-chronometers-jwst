@@ -592,3 +592,21 @@
 - Evidence: `research/README.md`, `research.py`, `tests/test_research.py` and
   `tests/run_tests.py`; isolated browser checks covered filtering, search, run
   metadata and links, dark desktop rendering and 360-pixel mobile light rendering.
+
+
+## 2026-09-12 · codebase · Existing research integration and light editing
+
+- Integrated 28 experiments under five research questions, including all analysis
+  notes, current result groups and archived Ceridwen campaigns.
+- Added existing-record provenance, Recorded status, cross-question links and
+  source-note backlinks. Historical evidence does not require invented briefs.
+- Allowed light display edits while retaining original messages. Updated agent
+  instructions and templates to preserve meaning, uncertainty and attribution.
+- Kept saved results in place. Recorded seed-floor units and the full-sample
+  calibration/photometry mismatch as caveats beside the affected results.
+- Evidence: `research/`, `research.py`, `tests/test_research.py` and source links
+  in each record. Raw notebooks, fits and source notes remain unchanged.
+- Validation: both wiki test suites passed; 70 local routes and the private site
+  returned HTTP 200. All 546 linked run notebooks have outputs and no error cells.
+  Browser checks covered original wording, Recorded filtering, search, expanded
+  run records and layouts at 360, 736 and 1024 pixels without horizontal overflow.

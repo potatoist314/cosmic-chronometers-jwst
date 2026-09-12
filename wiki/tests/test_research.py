@@ -1,7 +1,8 @@
-"""Prospective research workflow: exact messages, evidence and lifecycle checks."""
+"""Research evidence, historical integration and original-message preservation."""
 
 import importlib.util
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -108,6 +109,9 @@ class ResearchTests(unittest.TestCase):
         self.assertNotIn("Agent · synthesis", body)
         self.assertNotIn("Chat reference", body)
         self.assertIn("e-low-dust", (out / "q/q-dust/index.html").read_text())
+        anchors = set(re.findall(r'href="#([^"]+)"', body))
+        identifiers = set(re.findall(r'id="([^"]+)"', body))
+        self.assertEqual(anchors - identifiers, set())
 
     def test_exact_words_survive_results_interpretation_and_amendment(self):
         sections = self.completed("reviewed", [{"date": "2026-09-13", "text": "inconclusive. keep this open."}])
@@ -249,6 +253,105 @@ class ResearchTests(unittest.TestCase):
         self.assertIn("/wiki/n/existing/", (out / "earlier/index.html").read_text())
         self.assertTrue((out / "themes/population-results/index.html").is_file())
         self.assertTrue((out / "themes/index.html").is_file())
+
+    def test_light_edit_preserves_original_and_does_not_render_markup(self):
+        edited = "I think this might help, but I am not sure. <b>literal</b>"
+        message = dict(self.message, display_text=edited)
+        self.write("question", "q-dust", "open", {"Your words": [message]})
+        body = (self.build() / "q/q-dust/index.html").read_text()
+        parser = Quotes()
+        parser.feed(body)
+        self.assertEqual(parser.values, [self.original])
+        self.assertIn("Liu Hao · lightly edited", body)
+        self.assertIn("Original wording", body)
+        self.assertIn("might help, but I am not sure. &lt;b&gt;literal&lt;/b&gt;", body)
+        self.assertNotIn("<b>literal</b>", body)
+        self.assertEqual(next(r for r in self.load() if r["kind"] == "question")["sections"]["Your words"][0]["text"], self.original)
+
+    def historical(self):
+        source = self.project / "old-result.csv"
+        source.write_text("age_Gyr\n3.0\n")
+        refs = "[Saved table](old-result.csv)."
+        self.write("question", "q-history", "open", {
+            "Context": "An existing comparison.", "References": refs,
+        }, origin="existing")
+        self.write("experiment", "e-history", "recorded", {
+            "Context": "The source records the original comparison.",
+            "References": refs, "Results": "Recorded age: 3.0 Gyr. " + refs,
+            "Runs": [{"id": "old-fit", "arm": "original", "status": "complete",
+                      "artifacts": [{"label": "Saved result", "path": "old-result.csv"}]}],
+        }, origin="existing", question="q-history", related_questions="q-dust")
+
+    def test_existing_evidence_needs_no_invented_brief_notebook_or_seed(self):
+        self.historical()
+        self.assertEqual(self.faults(), [])
+        out = self.build()
+        body = (out / "e/e-history/index.html").read_text()
+        self.assertIn("Existing research", body)
+        self.assertIn("Recorded age: 3.0 Gyr", body)
+        self.assertNotIn("Before delegation", body)
+        self.assertNotIn("Not recorded", body)
+        self.assertIn("e-history", (out / "q/q-history/index.html").read_text())
+        self.assertIn("e-history", (out / "q/q-dust/index.html").read_text())
+        home = (out / "index.html").read_text()
+        queue = home.split('id="results-awaiting-interpretation"')[1].split("</section>")[0]
+        self.assertNotIn("e-history", queue)
+        self.assertIn("e-history", (out / "experiments/index.html").read_text())
+        search = json.loads((out / "search.json").read_text())
+        self.assertTrue(any(r["s"] == "Experiment" and "e-history" in r["u"] for r in search))
+
+    def test_existing_exceptions_do_not_relax_new_experiments(self):
+        self.historical()
+        record = next(r for r in self.load() if r.get("id") == "e-history")
+        self.write("experiment", "e-history", "recorded", record["sections"], question="q-history")
+        faults = "\n".join(self.faults())
+        self.assertIn("recorded status is only for existing research", faults)
+        self.assertIn("before-delegation words", faults)
+        self.assertIn("executed notebook", faults)
+        self.assertIn("integer seed", faults)
+
+    def test_existing_record_still_needs_sources_and_cannot_review_itself(self):
+        self.historical()
+        record = next(r for r in self.load() if r.get("id") == "e-history")
+        record["sections"]["References"] = "No evidence link."
+        self.write("experiment", "e-history", "reviewed", record["sections"], question="q-history", origin="existing")
+        faults = "\n".join(self.faults())
+        self.assertIn("existing records require a source link", faults)
+        self.assertIn("reviewed requires your recorded interpretation", faults)
+
+    def test_source_notes_link_both_ways_and_missing_crosslinks_fail(self):
+        self.historical()
+        (self.notes / "source.md").write_text("---\ntitle: Source\ndate: 2026-09-01\nsection: Analyses\ntheme: Population results\n---\n\nSaved source.\n")
+        r = next(r for r in self.load() if r.get("id") == "e-history")
+        r["sections"]["References"] += " [Original note](wiki/notes/source.md)."
+        self.write("experiment", "e-history", "recorded", r["sections"], question="q-history", origin="existing", source_notes="source")
+        out = self.build()
+        self.assertIn('href="/wiki/n/source/"', (out / "e/e-history/index.html").read_text())
+        self.assertIn('href="/wiki/e/e-history/"', (out / "n/source/index.html").read_text())
+        self.write("experiment", "e-history", "recorded", r["sections"], question="q-history", origin="existing", related_questions="q-missing", source_notes="missing")
+        faults = "\n".join(self.faults())
+        self.assertIn("related_questions", faults)
+        self.assertIn("missing evidence file", faults)
+
+    def test_display_edit_requires_a_nonempty_string(self):
+        self.write("question", "q-dust", "open", {"Your words": [dict(self.message, display_text=[])]})
+        self.assertIn("display_text must be a nonempty string", "\n".join(self.faults()))
+
+
+class ExistingCorpusTests(unittest.TestCase):
+    def test_existing_analyses_and_result_groups_are_integrated(self):
+        records, faults = research.load(WIKI / "research")
+        self.assertEqual(faults, [])
+        self.assertEqual(research.validate(records, WIKI.parent), [])
+        experiments = [r for r in records if r["kind"] == "experiment"]
+        linked = {slug for r in experiments for slug in research.refs(r, "source_notes")}
+        analyses = {p.stem for p in (WIKI / "notes").glob("*.md") if "\nsection: Analyses\n" in p.read_text()}
+        self.assertEqual(analyses - linked, set())
+        groups = {g for r in experiments for g in research.refs(r, "result_groups")}
+        expected = {str(p.relative_to(WIKI.parent)) for parent in [WIKI.parent / "results", WIKI.parent / "archive/results"]
+                    for p in parent.iterdir() if p.is_dir() and not p.name.startswith(".")}
+        self.assertEqual(expected - groups, set())
+        self.assertTrue(all(r["status"] == "recorded" for r in experiments if r.get("origin") == "existing"))
 
 
 if __name__ == "__main__":

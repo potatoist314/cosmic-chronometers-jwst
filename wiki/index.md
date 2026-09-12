@@ -3,11 +3,25 @@
 Human entry point: `public/index.html`, served at `/wiki/` — the research overview.
 Active workflow: `/wiki/questions/` and `/wiki/experiments/`.
 Research contract and templates: `research/README.md`, `research/templates/`.
-User direction: `research/direction.md`, preserved verbatim from chat.
-Earlier experiment boards: `themes.md`, served at `/wiki/themes/`.
+User direction: `research/direction.md`, with optional light edits and retained originals.
+Research source records: `research/questions/` and `research/experiments/`.
+Original analyses: `notes/*.md`, with links to their structured research entries.
+Earlier experiment boards remain at `/wiki/themes/`; source notes at `/wiki/earlier/`.
+Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 
-Sources: `research/` for new research, `notes/*.md` for the existing corpus.
-Build with `python3 wiki/build.py`. Existing analyses are not reconstructed.
+## Research questions
+
+- `research/questions/q-fitting-choices.md` — calibration, priors, masks and nuisance parameters
+- `research/questions/q-mock-recovery.md` — tilt and SFH-prior recovery
+- `research/questions/q-sample-selection.md` — DR2 inputs and inferred quiescence
+- `research/questions/q-population-results.md` — both DR2 runs, population relations and residuals
+- `research/questions/q-compute.md` — repeatability, GPU campaigns and numerical comparisons
+
+The 28 existing experiment entries cover all 11 analysis notes and all current
+and archived Ceridwen result groups. `source_notes` provides backlinks;
+`related_questions` shares one experiment across questions. `result_groups`
+records coverage without copying evidence. Source summaries retain known
+comparison and unit caveats. Recorded status does not imply user review.
 
 ## Single-fit accuracy
 

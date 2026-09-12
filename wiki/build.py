@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build the research notebook and legacy notes into `wiki/public/`.
 
-`research.py` renders prospective question and experiment records. User messages
-remain verbatim; agent execution plans and measured results are attributed.
+`research.py` renders existing and new question and experiment records. Original
+messages remain available beside light edits; agent-authored sections are attributed.
 Research records are exempt from the legacy note limits described below.
 
 Standard library only, in the shape of `~/thoughts-site/build.py`.
@@ -597,7 +597,7 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 def rail_sections(notes, base, current=""):
     groups = (("Research", (("", "Overview"), ("questions/", "Questions"),
                              ("experiments/", "Experiments"))),
-              ("Library", (("reference/", "Reference"), ("earlier/", "Earlier work"),
+              ("Library", (("reference/", "Reference"), ("earlier/", "Source notes"),
                             ("themes/", "Earlier boards"), ("log/", "Note log"))))
     return "".join('<div><h4>%s</h4><ul>%s</ul></div>' % (heading, "".join(
         '<li><a href="%s/%s">%s</a></li>' % (base, path, label) for path, label in links))
@@ -761,7 +761,8 @@ def build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = Non
         page = ('<div class="eyebrow">%s</div><h1>%s</h1>%s<div class="prose">%s%s</div>%s'
                 '<div class="foot">%s</div>'
                 % ("".join(eyebrow), esc(note["title"]), superseded_banner(note, notes, base),
-                   body_html, thread_html(thread), ask_box(note, base), "".join(pager)))
+                   research.note_backlinks(note["slug"], research_records, base) + body_html,
+                   thread_html(thread), ask_box(note, base), "".join(pager)))
         dest = scratch / "n" / note["slug"]
         dest.mkdir(parents=True)
         (dest / "index.html").write_text(

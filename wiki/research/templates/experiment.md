@@ -3,10 +3,13 @@ kind: experiment
 id: replace-with-experiment-id
 title: Replace with the user's wording
 date: YYYY-MM-DD
+origin: new
 status: planned
 question: replace-with-question-id
 follow_up:
 ---
+
+## Context
 
 ## Before delegation
 
@@ -29,6 +32,10 @@ follow_up:
 ```
 
 ## Results
+
+## Caveats
+
+## References
 
 ## Your interpretation
 

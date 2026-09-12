@@ -289,7 +289,7 @@ def main() -> int:
         check("empty front page keeps research navigation",
               parser.nodes == ["Astro Lab Notebook", "Liu Hao · DR2 quiescent galaxies",
                                "Research", "Overview", "Questions", "Experiments", "Library",
-                               "Reference", "Earlier work", "Earlier boards", "Note log"],
+                               "Reference", "Source notes", "Earlier boards", "Note log"],
               repr(parser.nodes))
         empty_page = (out / "index.html").read_text()
         check("empty research does not invent experiments", empty_page.count("None yet") == 3)
