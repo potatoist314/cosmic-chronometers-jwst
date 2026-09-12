@@ -14,10 +14,12 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 ## Research questions
 
 - `research/questions/q-fitting-choices.md` — calibration, priors, masks and nuisance parameters
-- `research/questions/q-mock-recovery.md` — tilt and SFH-prior recovery
+- `research/questions/q-mock-recovery.md` — mock recovery, including the planned quiescent injection
 - `research/questions/q-sample-selection.md` — DR2 inputs and inferred quiescence
 - `research/questions/q-population-results.md` — both DR2 runs, population relations and residuals
 - `research/questions/q-compute.md` — repeatability, GPU campaigns and numerical comparisons
+
+- `research/experiments/e-quiescent-mock.md` — approved intrinsic truth and physical explanation; 1%, 5%, and 10% noise cases planned, observing setup undecided
 
 The 28 existing experiment entries cover all 11 analysis notes and all current
 and archived Ceridwen result groups. `source_notes` provides backlinks;

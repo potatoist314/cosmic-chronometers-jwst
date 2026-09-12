@@ -653,3 +653,15 @@
   the research record.
 - Captions identify the 3672 Å and 5566 Å bins and each galaxy's contribution.
   Existing plots and numerical results are unchanged; no fits were rerun.
+
+
+## 2026-09-12 · query · Approved quiescent mock truth
+
+- Added `research/experiments/e-quiescent-mock.md` under mock recovery, with
+  status planned and the six approved intrinsic parameter values.
+- Preserved the original user messages and approval, the plain-English physical
+  explanation, and the Bevacqua/Nersesian references.
+- Recorded the planned 1%, 5%, and 10% noise cases. Observing parameters and the
+  noise prescription remain undecided; no fits were run.
+- Validation: both wiki suites passed. The rendered record, approved values,
+  original approval and navigation links were checked; the private route returns 200.
