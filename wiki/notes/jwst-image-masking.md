@@ -1,0 +1,156 @@
+---
+title: JWST image masking — handwritten notes
+date: 2026-09-14
+section: Guides
+theme: Sample and data
+tags: [jwst, nircam, masking, handwritten-notes]
+job:
+---
+
+Inspect each GIF, draw the artifact mask in GIMP, then export the mask for FITS conversion. This explanation follows Liu Hao’s seven handwritten pages. Instrument details and ambiguous shorthand remain unverified.
+
+[Original handwritten PDF](/wiki/f/masking/masking.pdf)
+
+<details open>
+<summary>Masking workflow</summary>
+
+### Inspect the exposures
+
+Inspect each GIF frame by frame, using the inspection table. The notes group observations by position angle (PA) and time. One observation may contain multiple visit groups. Inspect the whole sensor group, including short- and long-wavelength images. A blank entry is acceptable according to the notes, with artifacts noted when present. [Pages 2, 4–5]
+
+A cosmic-ray artifact may appear in only one frame. The instruction is to mask that individual artifact. Masked data are “completely NOT processed.” The final page notes that offsets between dithers can leave a source unmasked in another frame, making that frame usable. [Pages 5, 7]
+
+### Draw and export the mask
+
+1. Save the first frame of each inspected GIF as a PNG in a folder.
+2. Sort by filename. The example `1_2201` has arrows labelled “Visit” and “Group”, but the exact filename fields are unclear.
+3. Open the PNG in GIMP and add an extra layer.
+4. Draw the mask by hand on that layer at 100% opacity.
+5. Export only the mask layer as a PNG into a new folder. Retain the same filename format. The notes record the shortcut as “CMD shift E”.
+6. Crop to the rightmost panel, where the mask was drawn. The notes say the collaborator has a script for the exact crop.
+7. Make N duplicates based on N observations. The notes do not specify the mapping between duplicates and individual exposures.
+8. Convert the folder of PNG masks to FITS and compress it. The notes give an example of about 550 MB before compression and 600 kB afterward, attributed to binary 0/1 data.
+
+These are the recorded instructions, not a newly tested procedure. The notes do not specify mask colour, the meaning of 0 versus 1, or the FITS layout. [Pages 5–7]
+
+### Handoff
+
+Send the FITS mask file to the collaborator mentioned as “him”. The notes say he will handle masking for alignment with Gaia astrometry and send a masking tutorial and artifact types. His identity and the scripts are not specified in these pages. [Page 7]
+
+</details>
+
+<details>
+<summary>Observing context</summary>
+
+### NIRCam and filters
+
+The notes distinguish SW (short wavelength) from LW (long wavelength). The sketch places A2 and A4 above A1 and A3. A red outline surrounds the four boxes and is labelled A5. Beside it, a red annotation says “Combine 4 modules to become A5”. [Page 1]
+
+The page also records “NIRCam — 8 modules”, pixel scales of 0.031 and 0.063 arcsec/pixel, and “LW has half resolution”. These are retained as notes. The detector/module terminology and the meaning of the A5 overlay are unresolved, so the sketch is not presented as a verified instrument layout.
+
+Across pages 1–2, the notes associate long-wavelength filters with higher transmission and wide bandpasses, leading to high S/N and fainter limiting magnitudes. They record approximately 20% throughput at SW. No filter or source is specified for that number.
+
+### Fields and comparison data
+
+The example program identifier reads `JW 018370` [unclear digit grouping]. The historical Hubble CANDELS field list is COSMOS, UDS, EGS, GOODS-S and GOODS-N. COSMOS has a red “relatively larger area” annotation. A blue bracket describes existing observations as shallow, with low S/N. [Pages 2–3]
+
+Red annotations link GOODS-S and GOODS-N to JADES, mention substantial GTO time, and describe high exposure, narrow area and high depth. “NIRCam” and “NIRSpec data” appear beside this annotation. Blue notes say Hubble data extend only to 1.6 micron and propose matching HST to JWST data for Lyman-alpha dropout bands. Rubin, LSST and Euclid appear as data to cross-check. These are the recorded context and intended comparisons. [Page 3]
+
+### Observation grouping
+
+The notes list depth as a limiting magnitude at 5 sigma, then PA and time as observation-grouping quantities. A red annotation records “PA tolerance ≈ ±3° / ±30 days”. Visit groups, observations and exposure counts also appear, with a reminder that a zero is sometimes omitted. The exact grouping rule and identifier convention are not defined. [Page 4]
+
+</details>
+
+<details>
+<summary>Page-by-page transcription</summary>
+
+Spelling and punctuation are lightly edited below. Colour labels preserve annotation layers, without assuming that colour indicates correctness. Brackets identify transcription comments. The linked PDF retains the original handwriting and layout.
+
+### Page 1
+
+- [Black] NIRCam — 8 modules. SW — short λ. LW — long λ.
+- [Diagram] A2, A4 in the top row. A1, A3 in the bottom row. [Red outline around all four, labelled A5.]
+- [Red] A5 — combine 4 modules to become A5.
+- [Black, left of diagram notes] 0.031″/px. 0.063″/px.
+- [Black] A1–4, for SW; the CCD modules are used one at a time.
+- [Black] LW has half resolution.
+- [Black] Artifact list; long.
+- [Heading] NIRCam filters.
+- [Black, continues on page 2] Long-IR has much higher…
+
+### Page 2
+
+- [Continuation] …transmission; with wide filter bandpass ⇒ high S/N.
+- So LW can reach much higher mag. Only ≈20% throughput at SW.
+- Masking using GIMP.
+- [Indented] Inspect the GIF (inspection table!!) per frame!!
+- [Heading] Observations.
+- JW 018370 [unclear digit grouping]. [Arrow: program ID.]
+- Hubble fields (historical). [Continues on page 3.]
+
+### Page 3
+
+- [Black] Hubble CANDELS: 1. COSMOS; 2. UDS; 3. EGS; 4. GOODS-S; 5. GOODS-N.
+- [Red, COSMOS] Relatively larger area.
+- [Blue, bracket beside field list] Shallow existing observations; but lower S/N.
+- [Red, bracket beside GOODS-S and GOODS-N] JADES observes in these fields (lots of GTO time).
+- [Red] JADES is high exposure, narrow, high depth. NIRCam. NIRSpec data.
+- [Blue, bracket under field list] Hubble data only exist to 1.6 micron.
+- [Blue] Match HST data to JWST data to match Lyman-α dropout bands.
+- [Black] Rubin, LSST, Euclid data to cross-check.
+
+### Page 4
+
+- [Black] Depth (limiting mag, 5σ).
+- Position angle (PA).
+- One observing program: data is separated according to PA and time.
+- [Red] PA tolerance ≈ ±3° / ±30 days.
+- [Black] Visit groups, observations.
+- Sometimes he’s lazy and doesn’t write a 0.
+- # Exp: number of exposures.
+- One observation might have multiple visit groups.
+
+### Page 5
+
+- [Black] Entire sensor group (short to long included).
+- [Red] If blank, OK; artifacts are noted.
+- Cosmic-ray artifact might only appear in a single frame ⇒ just mask that single cosmic ray.
+- Masked data is completely NOT processed.
+- GIFs used for inspection; then we save into PNGs.
+- Save first frame of GIF as PNG to proceed with masking. [“First frame” underlined.]
+- Inspect GIFs, generate first frame into folder.
+
+### Page 6
+
+- [Red] `1_2201`. [Arrows below the example labelled “Visit” and “Group”. Their exact extent is unclear.]
+- Just sort by name; rank for largest obs (number). [The last parenthetical word is probably “number”.]
+- Open the file in GIMP.
+- Make an extra layer.
+- And draw 100% opacity on top of it (draw by hand).
+- Export (CMD shift E).
+- Export to new folder; export mask layer only as PNG.
+- Save in the same name format.
+- Mask is only on rightmost panel; then you have to crop to appropriate [word ends here].
+- He has script to crop it exactly.
+- Make N duplicates based on N observations.
+
+### Page 7
+
+- [Red] The whole folder of PNG can be converted to a FITS and zipped.
+- FITS file is huge (550 MB) before compression; after compression only 600 kB → highly compressible due to being 0/1 files.
+- Send FITS masking file to him.
+- [Black] He will do masking for alignment for Gaia astrometry.
+- Masking is often offset → like over dither; if one frame captures unmasked → usable. [Compressed wording retained.]
+- He will send me a masking tutorial and artifact types.
+
+</details>
+
+<details>
+<summary>Source and request</summary>
+
+- Source: [masking/masking.pdf](/wiki/f/masking/masking.pdf), pages 1–7. All pages were inspected visually on 2026-09-14.
+- This page records handwritten instructions and context. It does not report an executed masking task or independently checked instrument specifications.
+- Original request: “just uploaded some handwritten notes regarding JWST masking masking - transcribe and basically save the notes into some human readable explanation on the astro wiki”
+
+</details>

@@ -37,6 +37,7 @@ comparison issues; full source summaries and unit caveats remain in the record. 
 
 ## Sample and data
 
+- `notes/jwst-image-masking.md` — handwritten JWST image-masking workflow, observing context, and seven-page transcription (2026-09-14)
 - `notes/data-pipeline.md` — Data pipeline (2026-09-09 · old: _old/codebase/data-pipeline.html)
 - `notes/sfms-quiescent.md` — Quiescent sample on the star-forming sequence (2026-09-07)
 - `notes/dr2-quiescent-sample.md` — DR2 quiescent sample (2026-09-03 · t_d0d3a321)

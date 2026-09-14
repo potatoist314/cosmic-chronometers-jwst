@@ -665,3 +665,9 @@
   noise prescription remain undecided; no fits were run.
 - Validation: both wiki suites passed. The rendered record, approved values,
   original approval and navigation links were checked; the private route returns 200.
+
+## [2026-09-14] ingest | JWST handwritten masking notes
+
+- Pages: `notes/jwst-image-masking.md`, `index.md`.
+- Change: Added a readable masking workflow, observing context and page-by-page transcription of `masking/masking.pdf`.
+- Preserved colour annotations, ambiguous shorthand and the original PDF link. No image masking or scientific experiment was performed.
