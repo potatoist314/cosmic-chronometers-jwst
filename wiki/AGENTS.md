@@ -92,7 +92,8 @@ status: obsolete   # optional
 ---
 ```
 
-- `section` must be one of Analyses, Guides, Notebooks, Codebase, Paper drafts, Archive.
+- `section` must be one of Analyses, Masking, Guides, Notebooks, Codebase, Paper drafts, Archive.
+- Masking notes appear under the separate Masking sidebar category at `/wiki/masking/`.
 - `job` is the Hermes card whose worker produced the note. Leave it empty when
   no card produced it. It drives the per-note question box, so never guess it.
 - `status: obsolete` marks a note that stays readable but no longer applies.

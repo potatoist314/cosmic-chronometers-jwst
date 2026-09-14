@@ -671,3 +671,8 @@
 - Pages: `notes/jwst-image-masking.md`, `index.md`.
 - Change: Added a readable masking workflow, observing context and page-by-page transcription of `masking/masking.pdf`.
 - Preserved colour annotations, ambiguous shorthand and the original PDF link. No image masking or scientific experiment was performed.
+
+## [2026-09-14] query | Separate masking category
+
+- Added a Masking sidebar category and `/wiki/masking/` listing.
+- Moved the JWST note out of Reference into Masking, retaining its existing URL and content.

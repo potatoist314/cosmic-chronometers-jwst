@@ -58,7 +58,7 @@ except ImportError as exc:                      # pragma: no cover - install fau
 SITE_NAME = "Astro Lab Notebook"
 SITE_WHO = "Liu Hao · DR2 quiescent galaxies"
 # Left rail order. A section with no note is not shown.
-SECTIONS = ["Analyses", "Guides", "Notebooks", "Codebase", "Paper drafts", "Archive"]
+SECTIONS = ["Analyses", "Masking", "Guides", "Notebooks", "Codebase", "Paper drafts", "Archive"]
 THEMES = ["Single-fit accuracy", "Validation on mocks", "Sample and data", "Population results",
           "Compute", "Model and code reference", "Background reading"]
 STATUSES = ("adopted", "dropped", "inconclusive", "planned")
@@ -597,6 +597,7 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 def rail_sections(notes, base, current=""):
     groups = (("Research", (("", "Overview"), ("questions/", "Questions"),
                              ("experiments/", "Experiments"))),
+              ("Masking", (("masking/", "Image masking"),)),
               ("Library", (("reference/", "Reference"), ("earlier/", "Source notes"),
                             ("themes/", "Earlier boards"), ("log/", "Note log"))))
     return "".join('<div><h4>%s</h4><ul>%s</ul></div>' % (heading, "".join(

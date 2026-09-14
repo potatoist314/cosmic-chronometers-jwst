@@ -452,8 +452,13 @@ def write_pages(records, notes, scratch, base, builder):
         body += '<p id="filter-empty" class="empty" hidden>No matches</p><script src="%s/research.js" defer></script>' % base
         page(name.lower(), name, '<div class="prose">' + body + '</div>')
 
-    reference = [n for n in notes if n["section"] not in {"Analyses", "Paper drafts", "Archive"} and n["status"] != "obsolete"]
-    earlier = [n for n in notes if n not in reference]
+    masking = [n for n in notes if n["section"] == "Masking"]
+    body = page_top("Masking", "Image masking")
+    body += builder.feed_rows(masking, base) if masking else '<p class="empty">None yet</p>'
+    page("masking", "Image masking", '<div class="prose">' + body + '</div>')
+
+    reference = [n for n in notes if n["section"] not in {"Analyses", "Masking", "Paper drafts", "Archive"} and n["status"] != "obsolete"]
+    earlier = [n for n in notes if n not in reference and n not in masking]
     for path, title, rows in (("reference", "Reference", reference), ("earlier", "Source notes", earlier)):
         body = page_top("Library", title)
         if path == "earlier":

@@ -288,7 +288,7 @@ def main() -> int:
         parser.feed((out / "index.html").read_text().split("<body>", 1)[-1])
         check("empty front page keeps research navigation",
               parser.nodes == ["Astro Lab Notebook", "Liu Hao · DR2 quiescent galaxies",
-                               "Research", "Overview", "Questions", "Experiments", "Library",
+                               "Research", "Overview", "Questions", "Experiments", "Masking", "Image masking", "Library",
                                "Reference", "Source notes", "Earlier boards", "Note log"],
               repr(parser.nodes))
         empty_page = (out / "index.html").read_text()

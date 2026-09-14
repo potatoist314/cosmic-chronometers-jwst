@@ -1,7 +1,7 @@
 ---
 title: JWST image masking — handwritten notes
 date: 2026-09-14
-section: Guides
+section: Masking
 theme: Sample and data
 tags: [jwst, nircam, masking, handwritten-notes]
 job:
