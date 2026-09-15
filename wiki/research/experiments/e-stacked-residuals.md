@@ -54,7 +54,7 @@ The recorded median per-galaxy reduced chi2 is 1.086; median stacked mean pull s
 
 ## Caveats
 
-The older interpolated stack and its extra error scaling were superseded. The archived Q&A still discusses that earlier version. Bootstrap uncertainty accounts for galaxy-to-galaxy variation; interpret low-coverage wavelength bins separately.
+The earlier stack interpolated spectra and rescaled errors. The current stack uses native pixels and bootstraps over galaxies.
 
 ## References
 

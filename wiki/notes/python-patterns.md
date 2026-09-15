@@ -4,7 +4,7 @@ date: 2026-08-25
 section: Guides
 theme: Model and code reference
 tags: [python, jax]
-job: 
+job:
 old: _old/guides/python-patterns.html
 ---
 
@@ -48,9 +48,9 @@ class SamplingResult:
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The class docstring defines backend-independent samples, evidence, weights, diagnostics, and raw output (`ceridwen/ceridwen/sampler/runner.py:69-116`).
+The class docstring defines backend-independent samples, evidence, weights, diagnostics, and raw output (`ceridwen/ceridwen/sampler/runner.py:69-116`).
 
-**Why it matters:** All Ceridwen samplers return this container. Lines 118-128 define the posterior, evidence, diagnostics, timing, and raw-output fields.
+All Ceridwen samplers return this container. Lines 118-128 define the posterior, evidence, diagnostics, timing, and raw-output fields.
 
 </details>
 
@@ -125,7 +125,7 @@ A decorator changes function execution but keeps the function callable.
 - `@classmethod` passes the class as `cls`: `ssp_data.py:508-566`.
 - `@property` exposes a method like an attribute: `base.py:234-259`.
 
-Read the decorator before you read the function. The decorator changes execution.
+The decorator changes how the function executes.
 
 The JAX example below shows how `@jax.jit` changes a likelihood function.
 
@@ -187,8 +187,8 @@ def loglike_fn(theta: dict[str, Array]) -> Array:
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The parent docstring says this compiled function sums observation likelihoods without a prior term (`ceridwen/ceridwen/sampler/runner.py:275-310`).
+The parent docstring says this compiled function sums observation likelihoods without a prior term (`ceridwen/ceridwen/sampler/runner.py:275-310`).
 
-**Why it matters:** `theta` contains traced numerical data. The code creates `_keys` and `_likelihoods` outside this function. JAX therefore sees a fixed loop structure. A different observation list usually requires new compilation.
+`theta` contains traced numerical data. The code creates `_keys` and `_likelihoods` outside this function. JAX therefore sees a fixed loop structure. A different observation list usually requires new compilation.
 
 </details>

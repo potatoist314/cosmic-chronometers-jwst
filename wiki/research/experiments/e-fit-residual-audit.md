@@ -36,7 +36,7 @@ Reanalyse the six poly3_total fits without new sampling. Compare spectral chi2 a
 
 ## Results
 
-The saved tables show optical/IRAC residuals and several parameters near their bounds. The CN and C4668 residuals motivated later mask tests. [Stage 0 table](results/fit-accuracy-knobs/stage0_summary.csv).
+The saved tables show optical/IRAC residuals and several parameters near their bounds. [Stage 0 table](results/fit-accuracy-knobs/stage0_summary.csv).
 
 [Residual figure](wiki/analyses/fit-accuracy-knobs/stage0_chi2_map.png)
 

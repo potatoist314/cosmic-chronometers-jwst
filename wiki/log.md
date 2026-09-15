@@ -701,6 +701,14 @@
 - Saved the transcription-only rule in root and wiki AGENTS.md and the research README: light rephrasing and complete sentences are allowed; added commentary is not.
 - Validation: 32 research tests and the wiki audit passed; 34 notes built. All 34 notes, 29 experiments and 22 PDF links were checked, with all six sections served locally and on the private wiki. Desktop and 360-pixel layouts, search and original-clarification links were reviewed. The audit/build used the installed Command Line Tools via DEVELOPER_DIR after the default Xcode shim required licence acceptance.
 
+## [2026-09-15] query | No commentary across the wiki
+
+- Extended the standing no-commentary rule to every page, including research records, papers, masking, code and earlier analyses.
+- Removed agent-role labels, source-summary framing, editorial recommendations and generic verdicts. Retained factual explanations, comparison conditions and concrete limitations.
+- Preserved note images, research figure references, run metadata and original user messages. Kept old section anchors.
+- Removed the DR2 comparison's unsupported seed-significance commentary and corrected its settings description to match the existing research record.
+- Validation: 32 research tests and the wiki audit passed; 34 notes built. Checked 120 HTML pages and 11 local/private-site routes. Note images, code excerpts, figure/run arrays, original messages and previous anchors were retained.
+
 ## [2026-09-15] revise | Literature route and commentary lint
 
 - Pages: [[papers-quiescent-parameters]] (section Literature, own page `/wiki/literature/`, four tables expanded, linked from Home and Papers); `wiki/tests/run_tests.py`, `wiki/tests/test_research.py`.

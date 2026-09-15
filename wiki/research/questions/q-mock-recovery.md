@@ -10,7 +10,7 @@ source_notes: calibration-polynomial-dr2,fit-accuracy-knobs,absorption-line-mask
 
 ## Context
 
-Tilt and SFH-prior mocks provide limited recovery checks. These tests do not establish coverage across the DR2 population.
+Recovery tests with continuum tilts, SFH priors and a planned quiescent injection.
 
 ## References
 

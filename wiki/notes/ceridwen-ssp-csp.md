@@ -4,7 +4,7 @@ date: 2026-08-30
 section: Codebase
 theme: Model and code reference
 tags: [ceridwen, ssp]
-job: 
+job:
 old: _old/codebase/ceridwen-ssp-csp.html
 ---
 
@@ -65,9 +65,9 @@ def __post_init__(self):
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The class docstring defines the metallicity, age, wavelength, and flux-array shapes (`ceridwen/ceridwen/ssps/ssp_data.py:227-261`).
+The class docstring defines the metallicity, age, wavelength, and flux-array shapes (`ceridwen/ceridwen/ssps/ssp_data.py:227-261`).
 
-**Why it matters:** The tuple on the right defines the axis contract. The flux cube must align exactly with the metallicity, age, and wavelength coordinate arrays.
+The tuple on the right defines the axis contract. The flux cube must align exactly with the metallicity, age, and wavelength coordinate arrays.
 
 </details>
 
@@ -212,9 +212,9 @@ return self`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The method docstring enables the fixed-grid basis when the model contract matches.
+The method docstring enables the fixed-grid basis when the model contract matches.
 
-**Why it matters:** The production model uses the compact five-by-thirteen-by-eight basis. Other model structures retain the general calculation.
+The production model uses the compact five-by-thirteen-by-eight basis. Other model structures retain the general calculation.
 
 </details>
 

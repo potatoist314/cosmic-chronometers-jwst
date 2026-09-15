@@ -885,7 +885,7 @@ Remove IRAC channels 1 and 2 from the reference fit. All other settings follow t
 
 ## Caveats
 
-Evidence is not comparable across different observed data. Compare residuals only on common bands and pixels.
+Evidence values use different observed bands. Residual comparisons use common bands and pixels.
 
 ## References
 

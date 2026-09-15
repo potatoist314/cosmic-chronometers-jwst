@@ -4,7 +4,7 @@ date: 2026-09-09
 section: Notebooks
 theme: Model and code reference
 tags: [notebooks]
-job: 
+job:
 old: _old/notebooks/notebook-map.html
 ---
 
@@ -59,9 +59,9 @@ compact_indices = np.unique(
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The notebook markdown requires compact arrays and two endpoint pixels for identical smoothing boundaries.
+The notebook markdown requires compact arrays and two endpoint pixels for identical smoothing boundaries.
 
-**Why it matters:** Full and feature modes use the same projection boundary while they select different likelihood pixels.
+Full and feature modes use the same projection boundary while they select different likelihood pixels.
 
 `ceridwen_integrated_photometry_spectra.ipynb` combines photometry with one selectable stellar-spectroscopy observation in one `SedModel` and one `MultiObservationLikelihood`. `CERIDWEN_FIT_MODE=full_spectrum` fits more than 3,000 native pixels and all 12 photometric bands. `stellar_indices` fits up to 14 published absorption indices and all 12 photometric bands.
 
@@ -97,11 +97,11 @@ The spectra notebook also writes `ceridwen_derived_outputs.h5`. It contains norm
 
 `results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb` loads the 187 validated production summaries. It follows the Borghi differential-age construction: two velocity-dispersion groups, four fixed redshift bins, alternate-bin age differences, and inverse-variance combination. It propagates the stored Ceridwen age draws with 10,000 fixed-seed galaxy bootstrap samples. Each realization draws one age per unique galaxy before it resamples galaxies. It also fits an unbinned common slope with a separate intercept for each dispersion group. Its tables and seven figures stay embedded; the numerical tables and bootstrap draws are also stored in `ceridwen_cosmic_chronometer_summary.h5`.
 
-The aggregate notebook labels its result as exploratory. Its age is the mass-weighted SFH lookback age, not the Lick SSP-equivalent age. The production fit also sets the oldest SFH node from `age_gyr(z)` under the Planck-2018 defaults, so the derived quantity is not a cosmology-independent chronometer measurement.
+The aggregate notebook contains an exploratory analysis. Its age is the mass-weighted SFH lookback age, not the Lick SSP-equivalent age. The production fit also sets the oldest SFH node from `age_gyr(z)` under the Planck-2018 defaults, so the derived quantity is not a cosmology-independent chronometer measurement.
 
 The executed notebook uses 164 galaxies inside the Borghi redshift range. The fixed-bin combination gives `H(z=0.741)=-63.6 +/- 17.8` km/s/Mpc. The posterior-plus-bootstrap median is -77.4 km/s/Mpc with a 68-percent interval from -196.3 to -39.9 km/s/Mpc; 14.6 percent of draws are positive. The public Borghi reconstruction gives `97.5 +/- 31.3` km/s/Mpc, close to the published central value but not its exact bin membership or uncertainty. The exact 68-galaxy overlap gives `86.3 +/- 38.0` with Borghi ages and `228.5 +/- 43.6` with Ceridwen ages.
 
-The overlap age residual has a 7.32 Gyr-per-redshift slope. The Planck-based formation-time diagnostic also decreases with redshift. The unbinned Ceridwen slope is only 1.2 standard errors below zero, while binning, S/N cuts, and the dispersion split can change the result's sign or scale. These checks identify age-definition drift, population drift, and estimator instability. They do not support a stable positive Ceridwen chronometer measurement.
+The overlap age residual has a 7.32 Gyr-per-redshift slope. The Planck-based formation-time diagnostic also decreases with redshift. The unbinned Ceridwen slope is only 1.2 standard errors below zero, while binning, S/N cuts, and the dispersion split can change the result's sign or scale.
 
 </details>
 
@@ -155,9 +155,9 @@ write_result_h5(result_path, joint_model, joint_result)`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The notebook markdown requires independent photometric and spectroscopic likelihoods, checkpoints, and a saved posterior.
+The notebook markdown requires independent photometric and spectroscopic likelihoods, checkpoints, and a saved posterior.
 
-**Why it matters:** One sampler call combines both observation types. The reload checks preserve parameter and likelihood shapes.
+One sampler call combines both observation types. The reload checks preserve parameter and likelihood shapes.
 
 `src/chronometer.py:101-115` · `hubble_from_age_slope`
 
@@ -184,8 +184,8 @@ def hubble_from_age_slope(
 <details>
 <summary>Details</summary>
 
-**Documented contract:** `tests/test_chronometer.py` checks the conversion, sign, zero-slope limit, and group-intercept invariance.
+`tests/test_chronometer.py` checks the conversion, sign, zero-slope limit, and group-intercept invariance.
 
-**Why it matters:** A slope near zero maps to a broad, non-Gaussian H(z) distribution. The notebook therefore reports quantiles and the positive fraction.
+A slope near zero maps to a broad, non-Gaussian H(z) distribution. The notebook therefore reports quantiles and the positive fraction.
 
 </details>

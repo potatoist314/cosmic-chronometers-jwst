@@ -207,11 +207,11 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
 
 ## Results
 
-The manifest records all four workers complete. Their executed notebooks retain the fitted spectra and posterior outputs.
+All four runs completed. Each executed notebook contains fitted spectra and posterior outputs.
 
 ## Caveats
 
-This early campaign uses its recorded full-profile settings. It is not a matched speed comparison with later DR2 campaigns.
+These full-profile settings differ from the later DR2 campaigns.
 
 ## References
 

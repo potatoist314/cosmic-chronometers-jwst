@@ -884,7 +884,7 @@ Compare the recorded moderate-dust prior with the uniform reference prior. All o
 
 ## Caveats
 
-The saved comparison tests prior sensitivity on these targets only.
+
 
 ## References
 

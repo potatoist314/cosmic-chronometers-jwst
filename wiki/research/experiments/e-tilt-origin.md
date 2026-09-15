@@ -48,11 +48,11 @@ Earlier calibration work compares aperture/total photometry, attenuation choices
 
 ## Results
 
-Corrected photometry removes the strong tilt in one tested target; a substantial tilt remains in the other. [All 46 comparison rows](tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/arms.csv) and [In-band flux checks](tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/ibands.csv) preserve the individual settings.
+Corrected photometry removes the strong tilt in one tested target; a substantial tilt remains in the other. [All 46 comparison rows](tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/arms.csv) · [In-band flux checks](tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/ibands.csv).
 
 ## Caveats
 
-The source board attributes the remaining tilt to dust/model mismatch. This comparison alone does not establish that mechanism. Evidence remains at its existing worktree path.
+
 
 ## References
 

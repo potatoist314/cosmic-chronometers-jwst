@@ -42,7 +42,7 @@ Both saved runs have weak full-sample age–redshift trends. The existing figure
 
 ## Caveats
 
-Ceridwen mass-weighted ages and Borghi SSP-equivalent ages are different quantities. A flat mixed-population trend alone does not diagnose fit failure. Assembly-history structure depends on the SFH time resolution.
+Ceridwen mass-weighted ages and Borghi SSP-equivalent ages are different quantities. Assembly-history resolution follows the SFH time bins.
 
 ## References
 

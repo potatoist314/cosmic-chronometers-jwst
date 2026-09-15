@@ -98,7 +98,7 @@ date: 2026-09-15
     "title": "Coordinate in a Slack channel",
     "priority": null,
     "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#coordination",
-    "details": "The notes name Amanda, MJ and Sandro."
+    "details": "Amanda, MJ and Sandro."
   },
   {
     "id": "parameters-priors",

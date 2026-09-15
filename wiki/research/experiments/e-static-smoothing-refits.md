@@ -13,7 +13,7 @@ result_groups: archive/results/refit-static-smoothing
 
 ## Context
 
-The common results board records a per-target static-smoother refit campaign. Its saved outputs remain in the archive.
+Per-target static-smoother refits.
 
 ## Runs
 
@@ -2771,11 +2771,11 @@ The common results board records a per-target static-smoother refit campaign. It
 
 ## Results
 
-Twenty target directories contain an executed notebook and saved posterior. Each available fit is linked below.
+Twenty target directories contain an executed notebook and saved posterior.
 
 ## Caveats
 
-No aggregate equivalence conclusion is added. The existing board records these as local refits; importing their evidence does not establish a production adoption decision.
+
 
 ## References
 

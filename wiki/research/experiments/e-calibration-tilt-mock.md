@@ -181,7 +181,7 @@ The saved comparison reports dust recovery within the posterior interval with th
 
 ## Caveats
 
-This is one injected population and one tilt configuration. It does not establish general posterior coverage.
+One injected population and one tilt configuration.
 
 ## References
 

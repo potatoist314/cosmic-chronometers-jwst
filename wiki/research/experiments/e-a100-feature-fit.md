@@ -13,7 +13,7 @@ result_groups: archive/results/a100-feature-spectrum
 
 ## Context
 
-Feature-spectrum full-profile run recorded by the Modal timing file.
+Feature-spectrum full-profile run on a Modal A100.
 
 ## Runs
 
@@ -63,11 +63,11 @@ Feature-spectrum full-profile run recorded by the Modal timing file.
 
 ## Results
 
-The timing record marks the notebook completed, with 10948.46 seconds wall time. This includes notebook execution, not only post-JIT sampling.
+Notebook wall time: 10948.46 seconds, including execution before and after sampling.
 
 ## Caveats
 
-These are different workloads and model versions. No cross-GPU speed ranking or inference about current production performance is made.
+GPU campaigns use different workloads and model versions.
 
 ## References
 

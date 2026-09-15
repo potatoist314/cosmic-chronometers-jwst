@@ -4,7 +4,7 @@ date: 2026-08-25
 section: Paper drafts
 theme: Background reading
 tags: [papers, sed-fitting]
-job: 
+job:
 source: papers/spectral fitting/README.md
 ---
 
@@ -40,10 +40,4 @@ Source: live ADS records and arXiv PDFs; authoritative index: `../README.md`.
 
 </details>
 
-<details>
-<summary>Why this matters here</summary>
-
-- Alpha abundance errors can bias inferred mass-weighted ages.
-- Rigid SFHs risk erasing real quenching diversity and gigayear memory.
-
-</details>
+<div id="why-this-matters-here"></div>

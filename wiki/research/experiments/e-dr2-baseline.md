@@ -13320,7 +13320,7 @@ The current saved summary has 187 rows, median mass-weighted age 3.020 Gyr and m
 
 ## Caveats
 
-Recorded diagnostic success does not establish accurate stellar parameters. The source notes disagree about the sign convention for the assembly interval; retain the saved dt column and consult formation_times before deriving it again.
+Assembly intervals use the saved dt column.
 
 ## References
 

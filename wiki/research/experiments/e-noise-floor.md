@@ -885,7 +885,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
 
 ## Caveats
 
-Extra noise can improve likelihood without resolving model discrepancy.
+
 
 ## References
 

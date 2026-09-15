@@ -5,7 +5,7 @@ section: Codebase
 theme: Model and code reference
 superseded_by: active-codebase-map
 tags: [repository]
-job: 
+job:
 old: _old/codebase/project-map.html
 ---
 
@@ -114,8 +114,8 @@ if __name__ == "__main__":
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The project README names the Ceridwen notebooks as the active scientific entry points (`README.md:1-21`).
+The project README names the Ceridwen notebooks as the active scientific entry points (`README.md:1-21`).
 
-**Why it matters:** The guard calls `main()` only when Python runs this file directly. `main()` only prints a greeting. Therefore, this file is a package scaffold, not a scientific entry point.
+The guard calls `main()` only when Python runs this file directly. `main()` only prints a greeting. Therefore, this file is a package scaffold, not a scientific entry point.
 
 </details>

@@ -885,7 +885,7 @@ Add [NeIII], H-epsilon, H-delta and H-gamma to the masked regions. All other set
 
 ## Caveats
 
-Evidence is not comparable after changing the fitted pixels. The mask test does not identify the origin of all residuals.
+Evidence values use different fitted pixels.
 
 ## References
 

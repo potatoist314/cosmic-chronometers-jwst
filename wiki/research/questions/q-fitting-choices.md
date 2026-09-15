@@ -10,7 +10,7 @@ source_notes: calibration-polynomial-dr2,fit-accuracy-knobs,redshift-sigma-wiggl
 
 ## Context
 
-Calibration, photometry, prior choices and spectral masks have documented comparisons. Fit improvements and parameter shifts need separate interpretation.
+Comparisons of calibration, photometry, priors and spectral masks.
 
 ## References
 

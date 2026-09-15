@@ -54,9 +54,9 @@ fi`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The script sets the default minimum to 8,000 MiB at `scripts/bootstrap_vast_ai.sh:12`.
+The script sets the default minimum to 8,000 MiB at `scripts/bootstrap_vast_ai.sh:12`.
 
-**Why it matters:** The preflight stops before setup when the instance cannot run a Ceridwen GPU fit.
+The preflight stops before setup when the instance cannot run a Ceridwen GPU fit.
 
 </details>
 
@@ -247,9 +247,9 @@ for index, row in enumerate(selected.itertuples(index=False)):
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The function docstring selects one highest-S/N spectrum for each eligible object.
+The function docstring selects one highest-S/N spectrum for each eligible object.
 
-**Why it matters:** Repeat spectra cannot make one galaxy contribute more than one production fit.
+Repeat spectra cannot make one galaxy contribute more than one production fit.
 
 </details>
 

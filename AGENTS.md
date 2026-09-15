@@ -59,6 +59,11 @@
 
 ## Codebase wiki
 
+- No agent commentary on any wiki page, including research records, papers,
+  guides and archived pages. Remove process narration, editorial advice,
+  generic caveats, assessments and agent-role labels. Keep factual content,
+  necessary technical explanations, concrete limitations, citations and the
+  user's own reasoning. This applies to existing pages and future additions.
 - `wiki/` is a Codex-maintained guide for learning this codebase.
 - Read `wiki/AGENTS.md` before creating or changing wiki pages.
 - After substantive code, notebook, or data-flow changes, update affected wiki

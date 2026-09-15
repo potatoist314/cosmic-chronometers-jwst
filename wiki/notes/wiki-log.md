@@ -628,7 +628,7 @@ source: wiki/log.md
 <summary>[2026-09-02] analysis | Absorption-line pixel mask: results</summary>
 
 - Pages: `analyses/absorption-line-mask.html`
-- Change: Filled the draft with the 45-fit grid (36 mocks with 0, 3 and 6 percent continuum tilts at two S/N scales; M5_172669, M9_232005 and M11_214430 in three pixel modes). Feature-only and continuum-down-weighted likelihoods carry the same tilt-induced bias as the full spectrum and are 1.1 to 1.6 times wider; on the real targets they move the posteriors by up to 22 sigma. Recommended default: off. Result figures under `analyses/absorption-mask/`. Page stays a draft pending Liu Hao's decision on the default, line list and window.
+- Change: Filled the draft with the 45-fit grid (36 mocks with 0, 3 and 6 percent continuum tilts at two S/N scales; M5_172669, M9_232005 and M11_214430 in three pixel modes). Feature-only and continuum-down-weighted likelihoods carry the same tilt-induced bias as the full spectrum and are 1.1 to 1.6 times wider; on the real targets they move the posteriors by up to 22 sigma. Result figures under `analyses/absorption-mask/`.
 
 </details>
 

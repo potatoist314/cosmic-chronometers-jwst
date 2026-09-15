@@ -97,7 +97,7 @@ The saved timing is 1307.5 seconds sampling and 1386.14 seconds notebook executi
 
 ## Caveats
 
-These are different workloads and model versions. No cross-GPU speed ranking or inference about current production performance is made.
+GPU campaigns use different workloads and model versions.
 
 ## References
 

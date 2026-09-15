@@ -10,7 +10,9 @@ Meetings: `/wiki/meetings/`. Papers: `/wiki/papers/`, including indexed local PD
 Code, notebooks and guides: `/wiki/code/`, including earlier documentation/history.
 Legacy workflow routes: `/wiki/questions/` and `/wiki/experiments/`.
 Result pages show fits and captions; full records live at `/wiki/e/<id>/record/`.
-Governing presentation rule: `wiki/AGENTS.md`, Result reporting.
+Governing presentation rules: `wiki/AGENTS.md`, All pages and Result reporting.
+No agent commentary anywhere, including research records and earlier notes.
+Retain factual content, technical explanations, concrete limitations and originals.
 Research contract and templates: `research/README.md`, `research/templates/`.
 User direction: `research/direction.md`, with optional light edits and retained originals.
 Research priorities: Home and `/wiki/roadmap/`, from the single
@@ -38,7 +40,7 @@ The 28 existing experiment entries cover all 11 analysis notes and all current
 and archived Ceridwen result groups. `source_notes` provides backlinks;
 `related_questions` shares one experiment across questions. `result_groups`
 records coverage without moving evidence. Figure captions flag material
-comparison issues; full source summaries and unit caveats remain in the record. Recorded status does not imply user review.
+comparison issues; factual configurations and unit limitations remain in the record. Recorded status does not imply user review.
 
 ## Single-fit accuracy
 

@@ -30,11 +30,11 @@ Compare SFR100 and formed mass from the baseline and revised runs with the recor
 
 ## Results
 
-The source reports smaller quiescent fractions for the revised run under both curves. [Old and revised SFR100 comparison](wiki/analyses/sfms-quiescent/sfms-quiescent.png).
+The revised run has smaller quiescent fractions under both curves. [Old and revised SFR100 comparison](wiki/analyses/sfms-quiescent/sfms-quiescent.png).
 
 ## Caveats
 
-The plotted mass is formed mass. The literature comparison uses a different stellar-mass convention; the IMF offset alone does not resolve that mismatch. These fractions therefore do not directly validate or overturn the catalogue selection.
+The plotted mass is formed mass. The literature curves use a different stellar-mass convention.
 
 ## References
 

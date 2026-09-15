@@ -4,7 +4,7 @@ date: 2026-09-06
 section: Codebase
 theme: Model and code reference
 tags: [ceridwen, blackjax, nested-sampling]
-job: 
+job:
 old: _old/codebase/ceridwen-likelihood-sampling.html
 ---
 
@@ -135,16 +135,16 @@ return lnl_total, aux`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The method docstring returns the sum and a diagnostic object for each observation (`ceridwen/ceridwen/likelihood/likelihood.py:848-865`).
+The method docstring returns the sum and a diagnostic object for each observation (`ceridwen/ceridwen/likelihood/likelihood.py:848-865`).
 
-**Why it matters:** The same key selects the data, prediction, uncertainty, and mask. Each observation type returns one scalar contribution. The function sums these contributions.
+The same key selects the data, prediction, uncertainty, and mask. Each observation type returns one scalar contribution. The function sums these contributions.
 
 </details>
 
 <details>
 <summary>Prior</summary>
 
-`SedModel.ln_prior` loops through the registered priors. It sums `prior.logpdf` for each free parameter (`model/model.py:408-447`). A parameter that is absent from the prior dictionary contributes zero. The model configuration must select this behavior intentionally.
+`SedModel.ln_prior` loops through the registered priors. It sums `prior.logpdf` for each free parameter (`model/model.py:408-447`). A parameter that is absent from the prior dictionary contributes zero.
 
 </details>
 
@@ -284,9 +284,9 @@ step_fn = jax.jit(nested_sampler.step)`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The adapter docstring requires a proper prior for every free parameter and defines live-point sampling (`ceridwen/ceridwen/sampler/nested.py:88-142`).
+The adapter docstring requires a proper prior for every free parameter and defines live-point sampling (`ceridwen/ceridwen/sampler/nested.py:88-142`).
 
-**Why it matters:** `anesthetic` calculates evidence and importance weights for the completed dead points (`sampler/nested.py:502-529`). Normalize or resample these weights before you calculate posterior percentiles, predictive draws, or derived SFHs.
+`anesthetic` calculates evidence and importance weights for the completed dead points (`sampler/nested.py:502-529`). Normalize or resample these weights before you calculate posterior percentiles, predictive draws, or derived SFHs.
 
 </details>
 

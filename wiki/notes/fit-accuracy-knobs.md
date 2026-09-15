@@ -23,10 +23,10 @@ Rails
 : A parameter is railed when more than 0.5 of the posterior mass sits within 5 percent of a prior edge.
 
 Lick indices
-: HdA, Fe4383, Dn4000 and Hbeta predicted from 200 weighted posterior draws with `StellarIndices` and the DR2 definitions, minus the DR2 catalogue value, over the catalogue error. Caveat: the catalogue indices come from the uncalibrated DR2 spectra.
+: HdA, Fe4383, Dn4000 and Hbeta predicted from 200 weighted posterior draws with `StellarIndices` and the DR2 definitions, minus the DR2 catalogue value, over the catalogue error. The catalogue indices come from the uncalibrated DR2 spectra.
 
 Borghi+22
-: Age, [Z/H] and [alpha/Fe] for the two overlap galaxies. Borghi's ages are SSP-equivalent, ours are mass-weighted, so the age column is a direction, not a test.
+: Age, [Z/H] and [alpha/Fe] for the two overlap galaxies. Borghi's ages are SSP-equivalent; Ceridwen ages are mass-weighted.
 
 ```
 chi2_raw(f) = sum_i (d_i - s P_i mu_i)^2 / (sigma_i^2 + (f s P_i mu_i)^2)
@@ -93,13 +93,11 @@ Scoring
 : Delta raw spectral chi2 at f = 0.03. Delta photometric chi2. Delta ln Z, counted only when |Delta| > 1 (NSS error 0.2-0.35). Shift of t_MW, log Z, [alpha/Fe], tau_dust and log M in units of the poly3_total posterior half-width, against the seed_rep scatter. Lick residuals and Borghi+22 agreement. Null check on the new nuisance posterior (dust index away from -0.7, f_calib below 0.10).
 
 Default flipped
-: Liu Hao's call on 2026-09-06, before the stage-1 fits finished: the StudentT(0, 0.3, df 2) continuity prior is now the production default in the notebook (`CERIDWEN_SFH_PRIOR` unset means `student`). The `poly3_total` reference arm and its seed repeats pin `uniform`, so the stored fits stay reproducible. The results section shows how the SFH differs per galaxy under the two priors.
+: Liu Hao's call on 2026-09-06, before the stage-1 fits finished: the StudentT(0, 0.3, df 2) continuity prior is now the production default in the notebook (`CERIDWEN_SFH_PRIOR` unset means `student`). The `poly3_total` reference arm and its seed repeats pin `uniform`, so the stored fits stay reproducible.
 
 Default flipped again
-: Liu Hao's call on 2026-09-06, after the stage-1 results: the Kriek and Conroy dust index is free with Uniform(-1.0, 0.4), Ceridwen's own documented default (`CERIDWEN_FREE_DUST_INDEX` unset means `1`). The fixed -0.7 was a project-local choice made by an LLM, not by Liu Hao, and the stage-1 posteriors reject it. The `poly3_total` reference arm pins the fixed index so the stored fits stay reproducible. No stored fit has both flips yet.
+: Liu Hao's call on 2026-09-06, after the stage-1 results: the Kriek and Conroy dust index is free with Uniform(-1.0, 0.4), Ceridwen's own documented default (`CERIDWEN_FREE_DUST_INDEX` unset means `1`). The `poly3_total` reference arm pins the fixed index so the stored fits stay reproducible. No stored fit has both flips yet.
 
-Verdict rule
-: Written before the fits ran. An arm goes into production only if it beats the seed floor on a physics parameter or improves Lick or Borghi agreement. Chi2 alone is not enough, f_calib can always buy chi2.
 
 Run
 : 43 cells (36 arm-galaxy pairs, 6 seed repeats, 1 mock), one RTX 5060, `CERIDWEN_ARMS_RESULTS=results/fit-accuracy-knobs`. 3.99 GPU-hours of sampling over 4 h 56 min of rental, $0.665. Every cell has `passed = True` and posterior ESS above 3250.
@@ -118,22 +116,22 @@ Comparability
 ### Seed floor
 
 Floor
-: Largest shift over the six repeat fits, in units of the reference posterior half-width. Age 1.20, log Z 0.49, [alpha/Fe] 0.96, tau_dust 0.32, log M 0.49. An arm counts only above these.
+: Largest shift over the six repeat fits, in units of the reference posterior half-width. Age 1.20, log Z 0.49, [alpha/Fe] 0.96, tau_dust 0.32, log M 0.49.
 
 Split by galaxy
-: M4_108989 repeats to 0.06 in age, 0.12 in log Z, 0.12 in [alpha/Fe], 0.25 in tau_dust and 0.15 in log M. M5_172669 carries the whole floor: 1.20 in age, 0.96 in [alpha/Fe], 0.49 in log Z. The floor is a property of the galaxy, not of the sampler settings.
+: M4_108989 repeats to 0.06 in age, 0.12 in log Z, 0.12 in [alpha/Fe], 0.25 in tau_dust and 0.15 in log M. M5_172669 carries the whole floor: 1.20 in age, 0.96 in [alpha/Fe], 0.49 in log Z.
 
 ln Z floor
 : Seed-to-seed ln Z spread reaches 2.0 (4.2 combined NSS sigma) on M5_172669, against the 0.2-0.35 per-fit error the scoring rule assumed. The |Delta ln Z| > 1 threshold written before the run therefore sits below the seed floor and cannot separate arms on its own.
 
-| arm | Delta chi2 spec, median | Delta chi2 phot, median | Delta ln Z, median | pairs above floor | verdict |
-| --- | --- | --- | --- | --- | --- |
-| floor20 | +0.9 | -0.6 | +0.1 | 3 of 30 | no, one galaxy only |
-| dust_free | -1.9 | -10.7 | +8.2 | 18 of 30 | adopt |
-| no_irac | -0.5 | +1.9 | not comparable | 16 of 30 | no, diagnostic |
-| mask_cn | -13.8 | -2.2 | not comparable | 13 of 30 | no |
-| sfh_cont | +2.8 | -0.8 | -4.5 | 12 of 30 | already the default |
-| emis_wide | -2.4 | -4.6 | not comparable | 24 of 30 | no |
+| arm | Delta chi2 spec, median | Delta chi2 phot, median | Delta ln Z, median | pairs above floor |
+| --- | --- | --- | --- | --- |
+| floor20 | +0.9 | -0.6 | +0.1 | 3 of 30 |
+| dust_free | -1.9 | -10.7 | +8.2 | 18 of 30 |
+| no_irac | -0.5 | +1.9 | not comparable | 16 of 30 |
+| mask_cn | -13.8 | -2.2 | not comparable | 13 of 30 |
+| sfh_cont | +2.8 | -0.8 | -4.5 | 12 of 30 |
+| emis_wide | -2.4 | -4.6 | not comparable | 24 of 30 |
 
 <figure>
 <img src="figures/fit-accuracy-knobs/parameters-shift.png" alt="Shift of each physics parameter per arm and galaxy in units of the reference posterior half-width">
@@ -143,19 +141,19 @@ ln Z floor
 ### dust_free
 
 Result
-: The only arm that improves the fit and beats the seed floor everywhere. Photometric chi2 falls in five of six galaxies, by 38 on M5_172669, 17 on M1_206545 and 15 on M5_173928. ln Z rises in all six, by +0.8 to +14.8 on identical data.
+: Photometric chi2 falls in five of six galaxies, by 38 on M5_172669, 17 on M1_206545 and 15 on M5_173928. ln Z rises in all six, by +0.8 to +14.8 on identical data.
 
 Dust index
-: The Kriek and Conroy index does not want the fixed -0.7. Three galaxies rail at the lower prior edge (M1_206545 -0.988, M5_173928 -0.971, M5_172669 -0.958, half-widths 0.014-0.030), three sit near zero (M12_98104 -0.000 +/- 0.162, M4_108989 +0.021 +/- 0.338, M12_185653 +0.296 +/- 0.105). M12_98104 alone is 4.3 sigma from -0.7.
+: Three galaxies rail at the lower prior edge (M1_206545 -0.988, M5_173928 -0.971, M5_172669 -0.958, half-widths 0.014-0.030), three sit near zero (M12_98104 -0.000 +/- 0.162, M4_108989 +0.021 +/- 0.338, M12_185653 +0.296 +/- 0.105). M12_98104 alone is 4.3 sigma from -0.7.
 
 Physics
-: A free index buys the attenuation-curve slope, so tau_dust moves 3.0-5.2 half-widths in every galaxy and log M follows by up to 2.2. The stage-0 finding that the model SED is too red in the near-infrared was a curve-shape problem, not a dust-column problem.
+: tau_dust moves 3.0–5.2 reference half-widths in every galaxy; log M moves by up to 2.2.
 
 Cost
 : `dust_free` cells average 7.6 minutes against 5.8 for the reference, the slowest arm in the run.
 
 Adopted
-: Production default since 2026-09-06 (see "Default flipped again" above). The three galaxies that rail at -1.0 say the prior edge, not the data, sets their slope, so a wider lower bound is a candidate stage-2 arm.
+: Production default since 2026-09-06 (see "Default flipped again" above). Three galaxies reach the -1.0 lower bound.
 
 ### no_irac
 
@@ -163,10 +161,10 @@ Result
 : Four of six galaxies barely move. M5_173928 jumps to a different solution: mass-weighted age 4.50 to 3.01 Gyr, log Z -2.23 to -1.49, tau_dust 0.54 to 0.73, at 14.2, 42.1 and 9.7 half-widths.
 
 Reading
-: The two solutions differ by 0.19 in ln Z, so the spectrum alone cannot choose between them. IRAC ch1 and ch2 were the only data pinning M5_173928 to the old-and-metal-poor branch. Dropping them makes the remaining ten bands fit worse by 87 in chi2, so the new branch is not better, only unblocked.
+: Removing IRAC ch1 and ch2 raises chi2 on the remaining ten bands by 87 for M5_173928.
 
 Lick
-: Mean absolute Lick residual falls from 2.31 to 2.14 sigma, entirely from M5_173928 (2.82 to 1.55). Every other galaxy is unchanged, so this is one galaxy's degeneracy, not a model improvement.
+: Mean absolute Lick residual falls from 2.31 to 2.14 sigma, entirely from M5_173928 (2.82 to 1.55). Every other galaxy is unchanged.
 
 <figure>
 <img src="figures/fit-accuracy-knobs/chi2-M5_173928.png" alt="Spectral residuals and photometric pulls per arm for M5_173928">
@@ -181,18 +179,18 @@ Lick
 ### floor20
 
 Result
-: Only M12_98104 was truly railed. Its f_calib goes 9.98 to 14.59 percent and ln Z rises 86.6. M5_173928 sat at 9.01 percent and stays at 8.99 with the ceiling at 20, so it prefers 9 percent and was never railed.
+: M12_98104 f_calib goes 9.98 to 14.59 percent and ln Z rises 86.6. M5_173928 sat at 9.01 percent and stays at 8.99 with the ceiling at 20.
 
 Physics
-: On M12_98104 the physics barely moves: age +0.16, log Z -0.13, log M -0.03 half-widths. The extra evidence is bought by the noise model, not by a better spectrum, since Delta chi2 at fixed f = 3 percent is +0.4.
+: On M12_98104 the physics barely moves: age +0.16, log Z -0.13, log M -0.03 half-widths. Delta chi2 at fixed f = 3 percent is +0.4.
 
 ### mask_cn
 
 Result
-: Removing the CN and C4668 windows lowers the spectral chi2 by 14 in the median, as removing 114-349 pixels must. [alpha/Fe] moves 4.0 half-widths on M5_172669 and 2.2 on M1_206545, log Z 3.6 on M1_206545.
+: Removing the CN and C4668 windows lowers the spectral chi2 by 14 in the median; the mask removes 114–349 pixels. [alpha/Fe] moves 4.0 half-widths on M5_172669 and 2.2 on M1_206545, log Z 3.6 on M1_206545.
 
 Lick
-: Mean absolute Lick residual rises from 2.31 to 2.47 sigma. Masking the pixels stops the fit from trying, so the predicted CN and C4668 drift further from the catalogue. The arm hides the carbon and nitrogen problem rather than fixing it, and the [alpha/Fe] rail at -0.2 does not clear.
+: Mean absolute Lick residual rises from 2.31 to 2.47 sigma. The [alpha/Fe] posterior remains at the -0.2 boundary.
 
 ### emis_wide
 
@@ -200,12 +198,12 @@ Result
 : Adding [NeIII] 3869, H-epsilon, H-delta and H-gamma to the masked-line list removes 181-488 pixels, and those pixels are the Balmer absorption lines that carry the age. Age moves 13.7 half-widths on M4_108989 (4.61 to 3.03 Gyr) and 4.8 on M1_206545, log M by up to 8.9.
 
 Reading
-: The arm was written as an emission-infill test but the switch masks rather than models, so it measures how much the fit depends on the Balmer lines. The answer is: all of it. Any real infill test needs an emission component in the model, not a wider mask.
+: The switch masks the added line windows. It adds no emission component.
 
 ### sfh_cont
 
 Result
-: The StudentT(0, 0.3, df 2) prior on logsfr_ratios raises the mass-weighted age in five of six galaxies and widens every error bar. Delta chi2 is +2.8 in the median and ln Z falls by 0.7 to 6.8 on identical data, so the likelihood prefers the flexible uniform prior.
+: The StudentT(0, 0.3, df 2) prior on logsfr_ratios raises the mass-weighted age in five of six galaxies and widens every error bar. Delta chi2 is +2.8 in the median and ln Z falls by 0.7 to 6.8 on identical data.
 
 | galaxy | t_MW uniform [Gyr] | t_MW student [Gyr] | Delta t_MW [Gyr] | Delta in half-widths | half-width uniform | half-width student |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -217,10 +215,10 @@ Result
 | M12_185653 | 5.02 | 4.89 | -0.13 | -0.4 | 0.370 | 0.420 |
 
 Error bars
-: The half-width in units of which the shift is quoted is itself the thing the prior fixes. M1_206545 gives 5.065 +/- 0.015 Gyr under the uniform prior, a 0.3 percent age from one LEGA-C spectrum, which is not credible; the continuity prior returns 5.167 +/- 0.088. M5_173928 goes 0.105 to 0.380 and M5_172669 0.099 to 0.237. The shift in half-widths is large mostly because the old denominator was too small.
+: M1_206545 gives 5.065 +/- 0.015 Gyr under the uniform prior and 5.167 +/- 0.088 Gyr under the continuity prior. M5_173928 goes 0.105 to 0.380 and M5_172669 0.099 to 0.237.
 
 Late-time tail
-: The uniform prior puts spikes at the young end that the data cannot resolve. Under the continuity prior t80 moves later by 2.1-7.1 half-widths in four galaxies and the recent star formation flattens, which is what raises t_MW.
+: Under the continuity prior t80 moves later by 2.1–7.1 half-widths in four galaxies and the recent SFH becomes flatter.
 
 <figure>
 <img src="figures/fit-accuracy-knobs/sfh-continuity.png" alt="Star formation history and cumulative mass fraction under the uniform and StudentT ratio priors, per galaxy">
@@ -233,7 +231,7 @@ Late-time tail
 </figure>
 
 Mock
-: On the 4 percent tilt mock the continuity prior makes every pull worse: age 0.64 to 1.82, log M 1.38 to 1.89, tau_dust 0.71 to 1.53. The mock truth was drawn from a uniform-prior fit, so its input SFH is spiky by construction and the uniform prior is the matched prior. The mock cannot referee this choice.
+: On the 4 percent tilt mock the continuity prior makes every pull worse: age 0.64 to 1.82, log M 1.38 to 1.89, tau_dust 0.71 to 1.53. The mock truth was drawn from a uniform-prior fit, so its input SFH is spiky by construction and the uniform prior is the matched prior.
 
 <figure>
 <img src="figures/fit-accuracy-knobs/mock-sfh-prior.png" alt="Parameter pulls against mock truth and recovered star formation history for the two ratio priors">
@@ -243,29 +241,17 @@ Mock
 ### Sanity checks
 
 Lick
-: Mean absolute residual over the available indices, against 2.31 sigma for `poly3_total`: `no_irac` 2.14, `sfh_cont` 2.26, `floor20` 2.34, `dust_free` 2.36, `mask_cn` 2.47, `emis_wide` 2.47. Seed repeats scatter by 0.06, so only `no_irac` moves. The caveat from stage 0 stands: the catalogue indices come from the uncalibrated DR2 spectra.
+: Mean absolute residual over the available indices, against 2.31 sigma for `poly3_total`: `no_irac` 2.14, `sfh_cont` 2.26, `floor20` 2.34, `dust_free` 2.36, `mask_cn` 2.47, `emis_wide` 2.47. Seed repeats scatter by 0.06, so only `no_irac` moves. The catalogue indices come from the uncalibrated DR2 spectra.
 
 Borghi+22
-: No arm improves the two overlap galaxies. M4_108989 [alpha/Fe] stays at -5.2 sigma in every arm and M12_185653 [alpha/Fe] at +3.6 to +4.1. `dust_free` moves M12_185653 age from 3.5 to 2.9 sigma and [Z/H] from -3.5 to -3.2, inside the seed scatter of the other arms. Borghi's ages are SSP-equivalent against our mass-weighted, so this is a direction, not a test.
+: No arm improves the two overlap galaxies. M4_108989 [alpha/Fe] stays at -5.2 sigma in every arm and M12_185653 [alpha/Fe] at +3.6 to +4.1. `dust_free` moves M12_185653 age from 3.5 to 2.9 sigma and [Z/H] from -3.5 to -3.2, inside the seed scatter of the other arms. Borghi's ages are SSP-equivalent; Ceridwen ages are mass-weighted.
 
 <figure>
 <img src="figures/fit-accuracy-knobs/lick-by-arm.png" alt="Predicted minus catalogue Lick index over catalogue error, per index, galaxy and arm">
 <figcaption>Lick residuals per arm</figcaption>
 </figure>
 
-### Verdict
-
-Adopt
-: `dust_free`. It is the only arm that improves the data fit, raises ln Z on identical data in every galaxy, and moves a physics parameter well past the seed floor for a reason stage 0 predicted.
-
-Reject
-: `mask_cn` and `emis_wide` remove information without fixing what they targeted. `floor20` fixes one galaxy's noise floor and changes no physics. `no_irac` is a diagnostic that found a second solution branch on M5_173928, not a production setting.
-
-Keep
-: `sfh_cont` stays the default on Liu Hao's 2026-09-06 call. The measurement here is that it costs a little evidence and buys honest age error bars, three to six times wider on the galaxies whose uniform-prior ages were implausibly tight.
-
-Open
-: M5_173928 has two solutions separated by 0.19 in ln Z and 1.5 Gyr in age, held apart only by two IRAC bands. The [alpha/Fe] rail at -0.2 and the carbon and nitrogen deficit survive every arm in this stage.
+<div id="verdict"></div>
 
 ## New defaults
 
@@ -297,7 +283,7 @@ Floor
 | ln Z spread | 1.99 | 3.13 |
 
 Reading
-: the new model is more repeatable on age, [alpha/Fe] and tau_dust because its posteriors are wider, so the same absolute scatter is a smaller fraction of a half-width. The ln Z spread grew to 3.1, so a Delta ln Z under about 3 between two 14-parameter fits is seed noise.
+: The new-model repeats have smaller age, [alpha/Fe] and tau_dust shifts in posterior half-width units. The maximum ln Z spread is 3.1.
 
 ### Per galaxy
 
@@ -317,10 +303,10 @@ Beyond the old floor
 : age 3 of 6, log Z 4 of 6, [alpha/Fe] 0 of 6, tau_dust 6 of 6, log M 5 of 6. Only M4_108989 loses evidence, and by an amount inside the new ln Z spread.
 
 Two regimes
-: the three galaxies whose index pins to the -1.0 wall (M5_173928, M1_206545, M5_172669) get older by 4 to 7 half-widths and lose tau_dust. A steeper attenuation curve reddens the blue end for less total column, so the fit trades dust for age. The three galaxies whose index settles inside the prior (M12_98104, M4_108989, M12_185653) keep their age and gain tau_dust by 3 to 5 half-widths: the index moves toward Calzetti (0) or flatter, the curve reddens less per unit column, and the fit asks for more column.
+: the three galaxies whose index pins to the -1.0 wall (M5_173928, M1_206545, M5_172669) get older by 4 to 7 half-widths and lose tau_dust. The three galaxies whose index settles inside the prior (M12_98104, M4_108989, M12_185653) keep their age and gain tau_dust by 3 to 5 half-widths.
 
 Additivity
-: the stage-1 `sfh_cont` and `dust_free` shifts add to the `new_default` shift within about 1 half-width on every parameter, except age on M5_172669 (-1.35) and M5_173928 (+1.33), the two galaxies where both priors act on the same young tail (`new-defaults-additivity.csv`).
+: the stage-1 `sfh_cont` and `dust_free` shifts add to the `new_default` shift within about 1 half-width on every parameter, except age on M5_172669 (-1.35) and M5_173928 (+1.33) (`new-defaults-additivity.csv`).
 
 <figure>
 <img src="figures/fit-accuracy-knobs/nd-parameters-shift.png" alt="Shift of each physics parameter from poly3_total to new_default in reference half-widths, per galaxy, with the old and new seed floors">
@@ -340,24 +326,18 @@ Additivity
 ### tau_cn
 
 Result
-: every physics shift is at or below 0.5 half-widths, tau_dust medians are unchanged to two decimals, Delta ln Z between -1.5 and +0.5. With the index free the column posterior sits at 0.3 to 0.5 with a half-width of about 0.05, far inside the ClippedNormal's 1.0 sigma, so the prior has nothing to act on.
+: every physics shift is at or below 0.5 half-widths, tau_dust medians are unchanged to two decimals, Delta ln Z between -1.5 and +0.5. With the index free the column posterior sits at 0.3 to 0.5 with a half-width of about 0.05, far inside the ClippedNormal's 1.0 sigma.
 
-Verdict
-: reject, no effect.
 
 ### dust_wide
 
 Result
 : the three wall-pinned galaxies follow the wall. M1_206545 goes from -0.99 to -1.90 (58% within 0.1 of -2.0), Delta ln Z +24, tau_dust 0.39 to 0.20, log Z +4.6 half-widths, [alpha/Fe] +2.0. M5_173928 goes to -1.75 (20% at the wall), Delta ln Z +31, age -4.4, log Z +24, tau_dust 0.45 to 0.30. M4_108989 flips from +0.11 to a bimodal posterior at -1.94 (78% at the wall), Delta ln Z +28, age -6.0, log Z +12, tau_dust 0.35 to 0.17, raw spectral chi2 -122. M5_172669 settles off the wall at -1.14 +/- 0.08 with Delta ln Z 0. M12_98104 and M12_185653 do not move.
 
-Reading
-: an index of -1.0 is already the steepest curve in Prospector's template library and -2.0 is far outside anything measured in attenuation studies. A parameter that runs to whatever wall it is given, with the evidence rising all the way, is a continuum-tilt nuisance the polynomial does not absorb, not a dust measurement. For quiescent galaxies with tau_dust 0.2 to 0.5 the tilt from the index and the tilt from age are degenerate, which is why age and log Z jump by tens of half-widths.
 
 Sanity
-: Lick mean |residual| falls from 2.31 to 1.97 (M4_108989 3.61 to 2.48, M5_173928 2.61 to 1.56), but the Borghi+22 comparison on M4_108989 flips [Z/H] from -1.67 sigma to +3.32 sigma. Better line fits at the cost of an unphysical dust curve and an unrecognisable metallicity.
+: Lick mean |residual| falls from 2.31 to 1.97 (M4_108989 3.61 to 2.48, M5_173928 2.61 to 1.56), but the Borghi+22 comparison on M4_108989 flips [Z/H] from -1.67 sigma to +3.32 sigma.
 
-Verdict
-: reject as a production setting. Recommend a tight prior on the index instead of the flat Uniform(-1.0, 0.4): Normal(-0.3, 0.3) clipped to [-1, 0.4], or revert to the fixed -0.7 and accept the stage-1 chi2 penalty. Decide after the DR2-wide refit shows how many galaxies pin.
 
 ### Sanity checks
 
@@ -375,7 +355,7 @@ Borghi+22
 ### Mock
 
 Status
-: `mock_tilt4_new_default` did not run. The stored tilt-4 truth has no `diffuse_dust_index`, so the free-index mock check aborted before sampling (two attempts, 60 s). Only `mock_tilt4_poly3` (age pull 0.64) and `mock_tilt4_sfh_cont` (1.82) exist. A new mock truth with a dust index is needed before the new defaults can be checked on a mock.
+: `mock_tilt4_new_default` did not run. The stored tilt-4 truth has no `diffuse_dust_index`, so the free-index mock check aborted before sampling (two attempts, 60 s). Only `mock_tilt4_poly3` (age pull 0.64) and `mock_tilt4_sfh_cont` (1.82) exist.
 
 ### Bookkeeping
 
@@ -388,13 +368,4 @@ Derived summary
 Offer rule
 : after this run Liu Hao fixed the Vast rule: RTX 5060 or 5060 Ti only, under $0.10/h, reliability above 99.5%. It is now `fit_offer_qualifies` in `scripts/sweep_ceridwen_vast_gpus.py`, shared by every fit runner (commit 0b55f35). The offer used here, $0.1028/h, would no longer qualify.
 
-### Verdict
-
-Keep
-: the new defaults. Six of six galaxies move tau_dust past the old floor, five of six gain evidence on identical data, and the direction of every shift follows from the attenuation-curve slope. Lick and Borghi agreement is unchanged, so the gain is in the dust and age posteriors, not in the line fits.
-
-Reject
-: `tau_cn`, no effect. `dust_wide`, unphysical wall-chasing.
-
-Open
-: the flat index prior lets three of six galaxies pin at -1.0. A tight prior or a fixed value is the next decision, after the DR2-wide refit reports the pinned fraction. A mock truth with a dust index is needed to test truth recovery under the new defaults.
+<div id="verdict"></div>

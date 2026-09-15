@@ -885,7 +885,7 @@ Maximum age shifts are 1.197 reference half-widths and 0.336 revised half-widths
 
 ## Caveats
 
-The parameter floors are dimensionless, not Gyr or dex. They come from two targets. They cannot be treated as universal absolute errors or divided by sqrt(187) to establish population significance.
+Parameter shifts use dimensionless posterior half-width units. The repeats cover two targets.
 
 ## References
 

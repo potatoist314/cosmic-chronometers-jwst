@@ -13,7 +13,7 @@ result_groups: archive/results/a100-integrated-fit-notebook
 
 ## Context
 
-Early joint photometry/spectrum run retained in the common results board.
+Joint photometry/spectrum run on an A100.
 
 ## Runs
 
@@ -73,11 +73,11 @@ Early joint photometry/spectrum run retained in the common results board.
 
 ## Results
 
-The saved notebook contains fitted outputs and a converged NSS trace. Its run settings and results remain in the notebook.
+The executed notebook contains fitted outputs and a converged NSS trace.
 
 ## Caveats
 
-These are different workloads and model versions. No cross-GPU speed ranking or inference about current production performance is made.
+GPU campaigns use different workloads and model versions.
 
 ## References
 

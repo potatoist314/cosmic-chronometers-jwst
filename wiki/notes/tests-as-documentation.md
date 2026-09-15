@@ -4,11 +4,11 @@ date: 2026-09-10
 section: Codebase
 theme: Model and code reference
 tags: [tests]
-job: 
+job:
 old: _old/codebase/tests-as-documentation.html
 ---
 
-Tests show which behavior the maintainers treat as a contract. Each test places its inputs and expected outputs together. This structure can make tests easier to read than long implementation files.
+Tests specify inputs and expected outputs.
 
 <details>
 <summary>Details</summary>
@@ -127,9 +127,9 @@ def test_shortcut_matches_full_theta_structure(ssp):
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The test requires both construction routes to produce the same time grid and parameter modes (`ceridwen/tests/test_csp_construction.py:48-61`).
+The test requires both construction routes to produce the same time grid and parameter modes (`ceridwen/tests/test_csp_construction.py:48-61`).
 
-**Why it matters:** Two construction routes receive equivalent inputs. Each assertion checks one part of that equivalence. These parts are the grid, node count, SFH representation, metallicity mode, and range validity.
+Two construction routes receive equivalent inputs. Each assertion checks one part of that equivalence. These parts are the grid, node count, SFH representation, metallicity mode, and range validity.
 
 `ceridwen/tests/test_observation_predictive.py:35-47 · test_fluxless_spectrum_setup_and_predict`
 
@@ -154,8 +154,8 @@ def test_fluxless_spectrum_setup_and_predict():
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The test requires a fluxless Spectrum to project a constant model without changing its value (`ceridwen/tests/test_observation_predictive.py:35-47`).
+The test requires a fluxless Spectrum to project a constant model without changing its value (`ceridwen/tests/test_observation_predictive.py:35-47`).
 
-**Why it matters:** The constant spectrum is a limiting case with a known answer. The test checks the output shape and the numerical invariant.
+The constant spectrum is a limiting case with a known answer. The test checks the output shape and the numerical invariant.
 
 </details>

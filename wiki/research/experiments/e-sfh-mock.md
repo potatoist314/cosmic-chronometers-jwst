@@ -182,7 +182,7 @@ Age recovery changes from 0.637 to 1.816 posterior half-widths from truth. Dust 
 
 ## Caveats
 
-The injected SFH favours the reference setup. This single case does not rank population-wide accuracy. mock-new-defaults.csv contains these same two arms; it is not evidence that the combined new-default mock ran.
+One injected SFH. mock-new-defaults.csv contains mock_tilt4_poly3 and mock_tilt4_sfh_cont, with no combined new-default arm.
 
 ## References
 

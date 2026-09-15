@@ -39,7 +39,7 @@ Photometry anchor
 
 <figure>
 <img src="figures/calibration-polynomial-dr2/calibration-explainer.png" alt="Explainer: fitted polynomial on M12_185653, calibration vector with band, dust tilt against an order-1 polynomial, shortest bend against line widths">
-<figcaption>What P absorbs and must not.</figcaption>
+<figcaption>Spectral calibration polynomial and continuum shape.</figcaption>
 </figure>
 
 <figure>
@@ -52,7 +52,7 @@ Photometry anchor
 <figcaption>Mass, t50, dust, age, three arms.</figcaption>
 </figure>
 
-A slit loses more light at one end than the other. P removes that. It must not remove the dust and age tilt. Only the photometry separates them.
+P multiplies the model spectrum. The photometry constrains the continuum without P.
 
 ```
 d_i = s · P(x_i) · mu_i(theta) + n_i,   n_i ~ N(0, sigma_eff,i^2)
@@ -163,4 +163,4 @@ JAX_PLATFORMS=cpu ceridwen/.venv/bin/python -m pytest ceridwen/tests/test_polyno
 
 **Q** 2026-09-05 · poly3 vs poly3total?
 
-**A** Both arms fit the same order-3 Chebyshev calibration polynomial on the spectrum. The only difference is which photometry anchors the absolute scale: poly3 uses the 3-arcsec aperture COSMOS fluxes (cosmos_ap3, same as the baseline), poly3_total uses the Laigle+16 total fluxes (cosmos_total). So poly3 isolates "what does the polynomial alone do", and poly3_total adds "what happens when the anchor is the whole galaxy instead of the slit-sized aperture". That anchor swap is what moved the masses up by 0.16 to 0.39 dex and is why the notebook default is now cosmos_total.
+**A** Both arms use an order-3 Chebyshev polynomial. poly3 uses COSMOS 3-arcsec aperture fluxes; poly3_total uses Laigle+16 total fluxes.

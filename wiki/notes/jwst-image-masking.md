@@ -7,7 +7,7 @@ tags: [jwst, nircam, masking, handwritten-notes]
 job:
 ---
 
-Inspect each GIF, draw the artifact mask in GIMP, then export the mask for FITS conversion. This explanation follows Liu Hao’s seven handwritten pages. Instrument details and ambiguous shorthand remain unverified.
+Inspect each GIF, draw the artifact mask in GIMP, then export the mask for FITS conversion.
 
 [Original handwritten PDF](/wiki/f/masking/masking.pdf)
 
@@ -16,9 +16,9 @@ Inspect each GIF, draw the artifact mask in GIMP, then export the mask for FITS 
 
 ### Inspect the exposures
 
-Inspect each GIF frame by frame, using the inspection table. The notes group observations by position angle (PA) and time. One observation may contain multiple visit groups. Inspect the whole sensor group, including short- and long-wavelength images. A blank entry is acceptable according to the notes, with artifacts noted when present. [Pages 2, 4–5]
+Inspect each GIF frame by frame, using the inspection table. Group observations by position angle (PA) and time. One observation may contain multiple visit groups. Inspect the whole sensor group, including short- and long-wavelength images. A blank entry is OK; note artifacts when present. [Pages 2, 4–5]
 
-A cosmic-ray artifact may appear in only one frame. The instruction is to mask that individual artifact. Masked data are “completely NOT processed.” The final page notes that offsets between dithers can leave a source unmasked in another frame, making that frame usable. [Pages 5, 7]
+A cosmic-ray artifact may appear in only one frame. Mask that individual artifact. Masked data are “completely NOT processed.” Offsets between dithers can leave a source unmasked in another frame, making that frame usable. [Pages 5, 7]
 
 ### Draw and export the mask
 
@@ -26,16 +26,16 @@ A cosmic-ray artifact may appear in only one frame. The instruction is to mask t
 2. Sort by filename. The example `1_2201` has arrows labelled “Visit” and “Group”, but the exact filename fields are unclear.
 3. Open the PNG in GIMP and add an extra layer.
 4. Draw the mask by hand on that layer at 100% opacity.
-5. Export only the mask layer as a PNG into a new folder. Retain the same filename format. The notes record the shortcut as “CMD shift E”.
-6. Crop to the rightmost panel, where the mask was drawn. The notes say the collaborator has a script for the exact crop.
-7. Make N duplicates based on N observations. The notes do not specify the mapping between duplicates and individual exposures.
-8. Convert the folder of PNG masks to FITS and compress it. The notes give an example of about 550 MB before compression and 600 kB afterward, attributed to binary 0/1 data.
+5. Export only the mask layer as a PNG into a new folder. Retain the same filename format. Shortcut: “CMD shift E”.
+6. Crop to the rightmost panel, where the mask was drawn. He has a script for the exact crop.
+7. Make N duplicates based on N observations.
+8. Convert the folder of PNG masks to FITS and compress it. Example: about 550 MB before compression and 600 kB afterward, because the data are binary 0/1.
 
-These are the recorded instructions, not a newly tested procedure. The notes do not specify mask colour, the meaning of 0 versus 1, or the FITS layout. [Pages 5–7]
+[Pages 5–7]
 
 ### Handoff
 
-Send the FITS mask file to the collaborator mentioned as “him”. The notes say he will handle masking for alignment with Gaia astrometry and send a masking tutorial and artifact types. His identity and the scripts are not specified in these pages. [Page 7]
+Send the FITS mask file to him. He will handle masking for alignment with Gaia astrometry and send a masking tutorial and artifact types. [Page 7]
 
 </details>
 
@@ -44,28 +44,26 @@ Send the FITS mask file to the collaborator mentioned as “him”. The notes sa
 
 ### NIRCam and filters
 
-The notes distinguish SW (short wavelength) from LW (long wavelength). The sketch places A2 and A4 above A1 and A3. A red outline surrounds the four boxes and is labelled A5. Beside it, a red annotation says “Combine 4 modules to become A5”. [Page 1]
+SW: short wavelength. LW: long wavelength. A2 and A4 sit above A1 and A3 in the sketch. A red outline surrounds the four boxes, labelled A5: “Combine 4 modules to become A5”. [Page 1]
 
-The page also records “NIRCam — 8 modules”, pixel scales of 0.031 and 0.063 arcsec/pixel, and “LW has half resolution”. These are retained as notes. The detector/module terminology and the meaning of the A5 overlay are unresolved, so the sketch is not presented as a verified instrument layout.
+“NIRCam — 8 modules.” Pixel scales: 0.031 and 0.063 arcsec/pixel. “LW has half resolution.”
 
-Across pages 1–2, the notes associate long-wavelength filters with higher transmission and wide bandpasses, leading to high S/N and fainter limiting magnitudes. They record approximately 20% throughput at SW. No filter or source is specified for that number.
+Long-wavelength filters: higher transmission and wide bandpasses, leading to high S/N and fainter limiting magnitudes. Approximately 20% throughput at SW. [Pages 1–2]
 
 ### Fields and comparison data
 
 The example program identifier reads `JW 018370` [unclear digit grouping]. The historical Hubble CANDELS field list is COSMOS, UDS, EGS, GOODS-S and GOODS-N. COSMOS has a red “relatively larger area” annotation. A blue bracket describes existing observations as shallow, with low S/N. [Pages 2–3]
 
-Red annotations link GOODS-S and GOODS-N to JADES, mention substantial GTO time, and describe high exposure, narrow area and high depth. “NIRCam” and “NIRSpec data” appear beside this annotation. Blue notes say Hubble data extend only to 1.6 micron and propose matching HST to JWST data for Lyman-alpha dropout bands. Rubin, LSST and Euclid appear as data to cross-check. These are the recorded context and intended comparisons. [Page 3]
+JADES observes GOODS-S and GOODS-N with substantial GTO time: high exposure, narrow area and high depth. NIRCam and NIRSpec data. Hubble data extend only to 1.6 micron. Match HST to JWST data for Lyman-alpha dropout bands. Cross-check Rubin, LSST and Euclid data. [Page 3]
 
 ### Observation grouping
 
-The notes list depth as a limiting magnitude at 5 sigma, then PA and time as observation-grouping quantities. A red annotation records “PA tolerance ≈ ±3° / ±30 days”. Visit groups, observations and exposure counts also appear, with a reminder that a zero is sometimes omitted. The exact grouping rule and identifier convention are not defined. [Page 4]
+Depth: limiting magnitude at 5 sigma. Group observations by PA and time. “PA tolerance ≈ ±3° / ±30 days.” Visit groups, observations and exposure counts; sometimes he omits a zero. [Page 4]
 
 </details>
 
 <details>
 <summary>Page-by-page transcription</summary>
-
-Spelling and punctuation are lightly edited below. Colour labels preserve annotation layers, without assuming that colour indicates correctness. Brackets identify transcription comments. The linked PDF retains the original handwriting and layout.
 
 ### Page 1
 
@@ -149,8 +147,7 @@ Spelling and punctuation are lightly edited below. Colour labels preserve annota
 <details>
 <summary>Source and request</summary>
 
-- Source: [masking/masking.pdf](/wiki/f/masking/masking.pdf), pages 1–7. All pages were inspected visually on 2026-09-14.
-- This page records handwritten instructions and context. It does not report an executed masking task or independently checked instrument specifications.
+- Source: [masking/masking.pdf](/wiki/f/masking/masking.pdf), pages 1–7.
 - Original request: “just uploaded some handwritten notes regarding JWST masking masking - transcribe and basically save the notes into some human readable explanation on the astro wiki”
 
 </details>

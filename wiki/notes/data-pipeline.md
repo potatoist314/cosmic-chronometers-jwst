@@ -4,7 +4,7 @@ date: 2026-09-09
 section: Codebase
 theme: Sample and data
 tags: [legac, dr2, data]
-job: 
+job:
 old: _old/codebase/data-pipeline.html
 ---
 
@@ -132,9 +132,9 @@ for borghi in borghi_rows:
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The module docstring defines this script as the Borghi Table 4 to LEGA-C DR2 join (`scripts/build_borghi2022_legac_dr2_subset.py:2`).
+The module docstring defines this script as the Borghi Table 4 to LEGA-C DR2 join (`scripts/build_borghi2022_legac_dr2_subset.py:2`).
 
-**Why it matters:** `rows_by_id` maps one galaxy ID to a list of rows. This type choice preserves repeat spectra during the join.
+`rows_by_id` maps one galaxy ID to a list of rows. This type choice preserves repeat spectra during the join.
 
 `scripts/download_cosmos2015_legac_dr2_photometry.py:87-97 · download_cosmos2015`
 
@@ -157,8 +157,8 @@ matched_batches.append(candidates[np.sort(nearest)])`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The function docstring requires the nearest COSMOS2015 match within one arcsecond (`scripts/download_cosmos2015_legac_dr2_photometry.py:62`).
+The function docstring requires the nearest COSMOS2015 match within one arcsecond (`scripts/download_cosmos2015_legac_dr2_photometry.py:62`).
 
-**Why it matters:** The sort groups candidates by LEGA-C row and then by separation. Therefore, `np.unique(..., return_index=True)` selects the nearest candidate in each group.
+The sort groups candidates by LEGA-C row and then by separation. Therefore, `np.unique(..., return_index=True)` selects the nearest candidate in each group.
 
 </details>

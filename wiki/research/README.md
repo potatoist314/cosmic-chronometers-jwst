@@ -4,6 +4,14 @@ The user writes in chat. Agents maintain these records and the linked evidence.
 Existing and new Ceridwen experiments share this structure. Historical reasoning
 is not reconstructed. Existing notebooks, results and source-note URLs stay in place.
 
+## No agent commentary
+
+The no-commentary rule in `../AGENTS.md` applies to all pages, including these
+research records. Use direct factual descriptions, measured results, concrete
+limitations and literal section titles. Remove editorial advice, generic caveats,
+source-summary framing, process narration and agent-role labels. Keep original
+user wording, evidence and recorded results. Preserve necessary uncertainty.
+
 ## Result pages
 
 Liu Hao is the research supervisor. The governing contract is in `../AGENTS.md`.
@@ -73,7 +81,7 @@ meeting notes; the original scientific direction remains under **Your words**.
    order. Retain original text and optionally add a lightly edited display.
 5. Record an explicit **Execution plan**: comparison, baseline, data, model,
    controlled changes, analysis and requested outputs. This section is the agent's
-   work and is labelled accordingly on the page.
+   work and stays separate from the user's original wording.
 6. Include the experiment ID and source path in the delegated task. Existing
    authorization in the conversation is sufficient; do not ask for it again.
 

@@ -11,18 +11,7 @@ figures: [feature_windows_M5_172669.png, mock_bias_vs_tilt.png, mock_width_ratio
 
 Draft. Does fitting only the absorption-feature pixels of a LEGA-C spectrum, so that the photometry carries more weight, improve the accuracy of a Ceridwen fit?
 
-<details>
-<summary>Answer</summary>
-
-**No.** Fitting only the absorption-feature pixels, or keeping every pixel and inflating the continuum errors until the continuum carries no more weight than the photometry, does not make the recovered mass, age, metallicity or dust more accurate. It costs precision and, on real spectra, moves the answers by many sigma.
-
-- **Weight.** The spectrum outweighs the twelve bands by a factor of 220 to 760 in summed (S/N)2 once the fitted 3 percent calibration floor is included, and the photometry's share of the Fisher information stays below one percent with or without the mask. No pixel selection makes the photometry matter.
-- **Mocks.** A 3 percent linear continuum tilt biases tMW by +0.16 Gyr (full spectrum), +0.12 Gyr (features only) and +0.16 Gyr (down-weighted) at the native S/N; log M⋆ by +0.051, +0.049 and +0.050 dex; τdust by +0.11, +0.10 and +0.10. The masked modes are as biased as the full fit, and their posteriors are 0.9 to 1.6 times as wide (medians per parameter and S/N scale; single realisations range from 0.5 to 2.4).
-- **Real targets.** On M5_172669, M9_232005 and M11_214430 the masked posteriors sit up to 22 full-spectrum sigma away from the full-spectrum ones (M9 age 3.0 → 4.3 Gyr, M5 log Z -1.72 → -1.97, [α/Fe] 0.13 → 0.36). The continuum and the features do not agree under the current model, and the mock test cannot say which side is right.
-- **Cost.** The masked fits take 90% (features only) and 87% (down-weighted) of the full-spectrum sampler wall time, a saving too small to buy back the lost precision.
-- **Recommendation.** Keep the option off by default (`CERIDWEN_SPECTRUM_PIXELS=all`). Use `features` as a diagnostic: a many-sigma shift flags a spectrum whose continuum shape the model cannot reproduce. Tilt-shaped calibration errors need a multiplicative calibration polynomial or continuum-normalised indices, not a pixel mask.
-
-</details>
+<div id="answer"></div>
 
 <details>
 <summary>How the current likelihood weighs spectrum against photometry</summary>
@@ -44,7 +33,7 @@ Weight budget of the current likelihood. Feature pixels are those inside the abs
 <details>
 <summary>Details</summary>
 
-Twelve bands at S/N 20 cannot compete with thousands of pixels at S/N 15 to 100 by count. Keeping only the feature pixels removes 56 to 71 percent of the pixels and leaves the ratio between 80 and 3,000. The mask therefore cannot rebalance the two data sets; what it does is remove the continuum shape from the spectrum, which is the information a multiplicative calibration error corrupts.
+Feature selection removes 56 to 71 percent of the pixels. The summed (S/N)² ratio between spectrum and photometry remains between 80 and 3,000.
 
 A sum of (S/N)2 only measures amplitude information. The Fisher matrix of the notebook model at the mock truth (Jacobians of the predicted photometry and spectrum, the notebook noise model with fcalib = 2.9 percent, and the prior curvature added as a diagonal) splits the information per parameter and forecasts the marginal posterior width of a photometry-only, spectrum-only, and joint fit in every pixel mode. For M5_172669:
 
@@ -63,9 +52,9 @@ Fisher forecast for M5_172669 at the mock truth. "Spectrum share" is the spectru
 <details>
 <summary>Details</summary>
 
-Two readings. First, the photometry's share of the raw information is below one percent for every parameter, and the feature mask leaves it below one percent, so no pixel selection makes the twelve bands "carry weight" by count. Second, the photometry matters through degeneracy breaking, not weight: a spectrum with a free scaling cannot fix the stellar mass (spectrum-only width 0.105 dex against 0.012 dex from photometry alone), so the mass is photometric in every mode, and the scaling is only determined once both are present. For metallicity, [α/Fe] and dust the spectrum sets the width, and the feature mask costs a factor 1.3 to 1.5 in forecast width. The SFH ratios are prior- and degeneracy-dominated in this linear forecast and are omitted from the table. Project synthesis: the only way the mask can improve accuracy is by removing continuum-shape information that a calibration error has corrupted; the mocks below test that.
+Photometry contributes below one percent of the diagonal Fisher information for each tabulated parameter, with or without the feature mask. The forecast mass width is 0.105 dex for spectrum-only and 0.012 dex for photometry-only. Feature selection increases forecast widths for metallicity, [α/Fe] and dust by factors of 1.3 to 1.5. SFH ratios are omitted from the table.
 
-Source: `scripts/absorption_mask_analysis.py budget --features` and `fisher`; catalogue S/N percentiles of the 187-object passive sample are 8, 13, 22, 31 and 39 at the 10th to 90th percentile, so M5_172669 is the best case and M11_214430 is typical.
+Source: `scripts/absorption_mask_analysis.py budget --features` and `fisher`; catalogue S/N percentiles of the 187-object passive sample are 8, 13, 22, 31 and 39 at the 10th to 90th percentile.
 
 </details>
 
@@ -407,7 +396,7 @@ Shift of the masked-mode posterior median from the full-spectrum median, in unit
 <details>
 <summary>Details</summary>
 
-Photometry reduced chi-squared per band, full spectrum → masked modes: M11_214430: 17.44 → 7.87 (features), 7.96 (down-weighted); M5_172669: 14.12 → 12.22 (features), 12.33 (down-weighted); M9_232005: 7.34 → 6.98 (features), 7.01 (down-weighted). The masked fits do not fit the photometry better; they fit a different spectrum model to the same photometry.
+Photometry reduced chi-squared per band, full spectrum → masked modes: M11_214430: 17.44 → 7.87 (features), 7.96 (down-weighted); M5_172669: 14.12 → 12.22 (features), 12.33 (down-weighted); M9_232005: 7.34 → 6.98 (features), 7.01 (down-weighted).
 
 Shift is (median - full-spectrum median) / full-spectrum half-width.
 
@@ -497,18 +486,7 @@ Shift is (median - full-spectrum median) / full-spectrum half-width.
 | M9_232005 | features only | 1521 | 3.208 | [3.098, 3.353] | 3.92 | 3811 | 1,170,000 |
 | M9_232005 | continuum down-weighted | 3494 | 3.202 | [3.089, 3.312] | 3.85 | 3636 | 1,170,000 |
 
-<details>
-<summary>Interpretation and recommendation</summary>
-
-*Project synthesis.*
-
-1. **Why the mask does not remove a tilt.** Each absorption window keeps its local continuum level, and the windows span the fitted range from H10 to TiO. The run of window levels traces the tilt as well as the full continuum does, only with fewer pixels, so the tilt still enters as a colour term. The model absorbs it the same way in every mode: τdust rises by +0.10 to +0.11 per 3 percent of tilt and by +0.20 to +0.21 per 6 percent, and the age and mass move with it. Removing the tilt needs a multiplicative calibration polynomial fitted with the model, or windows normalised by their own pseudo-continuum (index fitting), not fewer pixels.
-2. **Why the photometry cannot take over.** The balance factor of 14 to 71 equalises the continuum pixels with the twelve bands, but the feature pixels keep their full weight and carry the same slope information, so the photometry's Fisher share stays below one percent. Only a calibration model that decouples the spectral shape from the stellar-population shape gives the bands a say.
-3. **What the real-target shifts mean.** The masked posteriors are 0.9 to 1.6 times as wide as the full-spectrum ones in the mocks (medians per parameter and S/N scale) but move by up to 22 sigma on real spectra, so the full-spectrum posteriors are precise about a model the continuum and the lines do not share. Candidates are the relative flux calibration of LEGA-C beyond a linear tilt, and template systematics (the C3K continuum against its line strengths). This test cannot rank them; a fit with a free low-order calibration vector can.
-4. **Coverage.** With no tilt the 68 percent intervals cover the truth in 10/16 (full), 7/16 (features) and 8/16 (down-weighted) parameter-realisations; with a tilt it collapses to 10/32, 10/32 and 9/32 over the four tilted cells. The posteriors are too narrow to absorb a few-percent calibration error whichever pixels are used.
-5. **Recommendation.** Default off. Keep `features` and `features_downweight` as diagnostics behind `CERIDWEN_SPECTRUM_PIXELS`. The line list is the Lick set plus the Balmer, Ca H&K and Ca triplet centres; 1000 km/s windows keep 29 to 44 percent of the pixels. Neither the list nor the window changes the conclusion, because the failure is in what the windows still contain, not in which windows are chosen.
-
-</details>
+<div id="interpretation-and-recommendation"></div>
 
 <details>
 <summary>Evidence</summary>

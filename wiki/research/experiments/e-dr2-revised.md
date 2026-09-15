@@ -26410,11 +26410,11 @@ Matched-row median shifts are age +1.229 Gyr, log Z -0.167 dex, alpha/Fe -0.056 
 
 ## Caveats
 
-The old source summary incorrectly calls calibration and photometry unchanged: the baseline executed notebooks and diagnostic note show aperture photometry and no polynomial. This is not an isolated dust/SFH test, and evidence is not a same-data comparison.
+The baseline uses aperture photometry without a polynomial. The revised run changes photometry, calibration and the dust/SFH priors together. Evidence values use different observed data.
 
-The source seed-noise section treats dimensionless half-width ratios as absolute errors and scales them by sqrt(187). Its significance column is unsupported. A weak age-shift/dust-slope correlation also does not establish which change caused the shift.
+Seed-repeat parameter shifts use dimensionless posterior half-width units.
 
-These saved fits did not use the later tau <= 0.2 sensitivity setting.
+These fits use tau <= 2, not the later tau <= 0.2 sensitivity setting.
 
 ## References
 

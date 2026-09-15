@@ -4,7 +4,7 @@ date: 2026-08-25
 section: Codebase
 theme: Model and code reference
 tags: [ceridwen]
-job: 
+job:
 old: _old/codebase/ceridwen-architecture.html
 ---
 
@@ -44,7 +44,7 @@ Ceridwen is a JAX-native stellar-population forward model and Bayesian fitting p
 - `cosmology.py` calculates differentiable distances, ages, and flux factors.
 - `fit.py` controls high-level fits and saves results.
 
-The package `__init__.py` files show the intended public interface. Read these files before you inspect the implementation modules.
+The package `__init__.py` files export the public interface.
 
 </details>
 
@@ -129,7 +129,7 @@ from .model import SedModel`
 <details>
 <summary>Details</summary>
 
-The package root exports the three construction layers. Start with these names. Then follow each relative import to the module that defines the name.
+The package root exports the three construction layers through relative imports.
 
 `ceridwen/ceridwen/model/model.py:337-342 · SedModel.apply_transforms`
 
@@ -147,9 +147,9 @@ return model_theta`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The method docstring says the result keeps free parameters and adds every derived value (`ceridwen/ceridwen/model/model.py:313-336`).
+The method docstring says the result keeps free parameters and adds every derived value (`ceridwen/ceridwen/model/model.py:313-336`).
 
-**Why it matters:** Each transform adds a derived value to a copy. The free sampler parameters remain in the copy. The transform calculates keys such as `sfh` before the CSP receives the dictionary.
+Each transform adds a derived value to a copy. The free sampler parameters remain in the copy. The transform calculates keys such as `sfh` before the CSP receives the dictionary.
 
 `ceridwen/ceridwen/model/model.py:395-401 · SedModel.predict`
 
@@ -168,8 +168,8 @@ return self.csp.predict(model_theta, self.observations)`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The method docstring returns one prediction array for each observation name (`ceridwen/ceridwen/model/model.py:348-383`).
+The method docstring returns one prediction array for each observation name (`ceridwen/ceridwen/model/model.py:348-383`).
 
-**Why it matters:** `SedModel` first completes the parameter bookkeeping. It then sends the physical prediction and observation projection to the CSP.
+`SedModel` first completes the parameter bookkeeping. It then sends the physical prediction and observation projection to the CSP.
 
 </details>

@@ -4,7 +4,7 @@ date: 2026-09-06
 section: Codebase
 theme: Model and code reference
 tags: [ceridwen]
-job: 
+job:
 old: _old/codebase/ceridwen-observations-model.html
 ---
 
@@ -61,9 +61,9 @@ assert self.ndof > 0, "no valid unmasked data points after masking"`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The base-class docstring defines flux, one-sigma uncertainty, and a mask where `True` includes the datum (`ceridwen/ceridwen/observation/base.py:25-46`).
+The base-class docstring defines flux, one-sigma uncertainty, and a mask where `True` includes the datum (`ceridwen/ceridwen/observation/base.py:25-46`).
 
-**Why it matters:** The assertions define the data contract. The input arrays must be one-dimensional and aligned. Automatic masking must leave at least one usable datum.
+The assertions define the data contract. The input arrays must be one-dimensional and aligned. Automatic masking must leave at least one usable datum.
 
 </details>
 
@@ -152,9 +152,9 @@ return self._predict_fn(spectrum)`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The method docstring requires prior setup and returns model `F_nu` on the observed pixels (`ceridwen/ceridwen/observation/spectrum.py:740-778`).
+The method docstring requires prior setup and returns model `F_nu` on the observed pixels (`ceridwen/ceridwen/observation/spectrum.py:740-778`).
 
-**Why it matters:** Both branches call the closure that setup prepared. Only the fitted velocity branch supplies a traced smoothing parameter.
+Both branches call the closure that setup prepared. Only the fitted velocity branch supplies a traced smoothing parameter.
 
 </details>
 

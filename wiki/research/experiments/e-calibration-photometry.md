@@ -1303,7 +1303,7 @@ The poly3_total arm has the smallest photometric chi2 in each target. Adding the
 
 ## Caveats
 
-The photometry changes between poly3 and poly3_total. Their evidence values are not a comparison on identical observed data. Lower chi2 does not establish unbiased parameters.
+Photometry differs between poly3 and poly3_total, so their evidence values use different observed data.
 
 ## References
 

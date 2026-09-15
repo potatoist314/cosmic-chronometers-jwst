@@ -885,7 +885,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
 
 ## Caveats
 
-Removing spectral pixels changes the data. Parameter movement is a sensitivity result, not a validation criterion.
+The arms fit different spectral pixels. Real-target parameter shifts are relative to the reference fit.
 
 ## References
 

@@ -1317,7 +1317,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
 
 ## Caveats
 
-Several slopes follow the lower boundary when it moves. Better fit quality does not identify the physical cause of the mismatch.
+Several slopes follow the lower boundary when it moves.
 
 ## References
 

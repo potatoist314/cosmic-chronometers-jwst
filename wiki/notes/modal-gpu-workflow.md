@@ -4,7 +4,7 @@ date: 2026-08-28
 section: Guides
 theme: Compute
 tags: [gpu, modal, ceridwen]
-job: 
+job:
 old: _old/guides/modal-gpu-workflow.html
 status: obsolete
 ---
@@ -178,9 +178,9 @@ finally:
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The batch entry point documents complete notebook execution on one Modal GPU (`archive/scripts/modal_ceridwen.py:346-354`). It creates the detached function call at `archive/scripts/modal_ceridwen.py:365-375`.
+The batch entry point documents complete notebook execution on one Modal GPU (`archive/scripts/modal_ceridwen.py:346-354`). It creates the detached function call at `archive/scripts/modal_ceridwen.py:365-375`.
 
-**Why it matters:** The `finally` block commits outputs and timing after success or error. The persistent Volume outlives the GPU container.
+The `finally` block commits outputs and timing after success or error. The persistent Volume outlives the GPU container.
 
 </details>
 
@@ -264,9 +264,9 @@ finally:
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The entry-point docstring defines an attached JupyterLab Sandbox on one Modal GPU (`archive/scripts/modal_ceridwen.py:443-450`).
+The entry-point docstring defines an attached JupyterLab Sandbox on one Modal GPU (`archive/scripts/modal_ceridwen.py:443-450`).
 
-**Why it matters:** Both normal interruption and errors reach `terminate`, which releases the paid GPU container.
+Both normal interruption and errors reach `terminate`, which releases the paid GPU container.
 
 </details>
 

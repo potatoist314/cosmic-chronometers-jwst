@@ -889,7 +889,7 @@ The saved headline table records parameter shifts, width ratios, evidence and re
 
 ## Caveats
 
-The combined change does not isolate dust and SFH effects. Historical adoption is not a validation grade. Repeats are linked under the compute question.
+Dust and SFH priors change together.
 
 ## References
 

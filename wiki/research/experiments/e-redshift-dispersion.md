@@ -591,11 +591,11 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
 
 ## Results
 
-The source comparison finds small age shifts, while M5_173928 reaches the dispersion upper bound. [Per-target shifts](results/redshift-sigma-wiggle/delta-vs-poly3_total.csv).
+Age shifts are small in the four-target comparison. M5_173928 reaches the dispersion upper bound. [Per-target shifts](results/redshift-sigma-wiggle/delta-vs-poly3_total.csv).
 
 ## Caveats
 
-The free-z implementation was an experimental fork. Do not infer current production behaviour from this historical run.
+The free-z implementation is an experimental fork.
 
 ## References
 

@@ -10,7 +10,7 @@ source_notes: vast-ai-gpu-workflow,ceridwen-checkpoint-spectrum-evolution
 
 ## Context
 
-Saved GPU campaigns, repeat fits and the calibration reduction benchmark document runtime and numerical behaviour under their recorded settings.
+GPU runtimes, repeat fits and the calibration reduction benchmark.
 
 ## References
 

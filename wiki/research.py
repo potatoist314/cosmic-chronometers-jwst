@@ -380,10 +380,9 @@ def write_pages(records, notes, scratch, base, builder):
             return m[0].replace(target, asset_url(target, base, project))
         return builder.markdown(LINK.sub(replace, content), base)
 
-    def section(title, content, attribution=""):
-        return '<section class="research-section"><h2 id="%s">%s</h2>%s%s</section>' % (
-            builder.slugify(title), esc(title),
-            '<p class="attribution">%s</p>' % esc(attribution) if attribution else "", content)
+    def section(title, content):
+        return '<section class="research-section"><h2 id="%s">%s</h2>%s</section>' % (
+            builder.slugify(title), esc(title), content)
 
     def page(path, title, body):
         dest = scratch / path / "index.html"
@@ -402,10 +401,8 @@ def write_pages(records, notes, scratch, base, builder):
         body += '<div class="record-meta"><span class="record-id">%s</span><span class="research-status %s">%s</span></div>' % (
             esc(r["id"]), r["status"], states[r["status"]])
         existing = r.get("origin") == "existing"
-        if existing:
-            body += '<p class="attribution">Existing research · organised from saved records</p>'
         if s["Context"]:
-            body += section("Context", md(s["Context"]), "Agent · source summary")
+            body += section("Context", md(s["Context"]))
         if r["kind"] == "question":
             if s["Your words"] or not existing:
                 body += section("Your reasoning", messages_html(s["Your words"]))
@@ -424,7 +421,7 @@ def write_pages(records, notes, scratch, base, builder):
             if s["Before delegation"] or not existing:
                 body += section("Before delegation", messages_html(s["Before delegation"]))
             if s["Execution plan"] or not existing:
-                body += section("Execution plan", md(s["Execution plan"]) or '<p class="empty">Not recorded</p>', "Agent · execution plan")
+                body += section("Execution plan", md(s["Execution plan"]) or '<p class="empty">Not recorded</p>')
             if s["Amendments"] or not existing:
                 body += section("Amendments", messages_html(s["Amendments"]))
             run_html = []
@@ -443,10 +440,10 @@ def write_pages(records, notes, scratch, base, builder):
                 run_html.append('<details class="run"><summary><span>%s</span><span class="research-status">%s</span></summary>'
                                 '<dl class="kv">%s</dl><ul>%s</ul>%s</details>' % (
                                     esc(run["id"]), esc(run["status"].title()), "".join(details), artifacts, error))
-            runs_section = section("Runs", "".join(run_html) or '<p class="empty">None yet</p>', "Agent · execution records")
+            runs_section = section("Runs", "".join(run_html) or '<p class="empty">None yet</p>')
             if not existing:
                 body += runs_section
-            body += section("Results", md(s["Results"]) or '<p class="empty">Not recorded</p>', "Agent · measured results")
+            body += section("Results", md(s["Results"]) or '<p class="empty">Not recorded</p>')
             if s["Caveats"]:
                 body += section("Caveats", md(s["Caveats"]))
             if existing and run_html:

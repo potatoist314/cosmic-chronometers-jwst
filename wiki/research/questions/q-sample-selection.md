@@ -10,7 +10,7 @@ source_notes: data-pipeline,dr2-quiescent-sample,sfms-quiescent
 
 ## Context
 
-The DR2 selection and old/new SFR100 comparisons are recorded. Catalogue selection and inferred quiescence are separate checks.
+DR2 sample selection and SFR100 comparisons for the baseline and revised runs.
 
 ## References
 

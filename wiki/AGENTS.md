@@ -5,6 +5,20 @@ The user writes research reasoning in chat. Agents preserve those original words
 and maintain execution records and factual results. The user selects the research
 direction and scientific methodology.
 
+## All pages: no agent commentary
+
+- Apply this rule to every existing and future page: Home, results, meetings,
+  papers, masking, code, guides, questions, research records and archived pages.
+- Remove process narration, editorial advice, generic caveats, assessments,
+  source-summary framing and agent-role labels. Do not add "why this matters"
+  sections, narrate what a source says, or judge whether the user's notes are valid.
+- Keep factual research content, necessary technical explanations, concrete
+  limitations, citations and the user's own reasoning. State facts directly.
+- Preserve original user messages, handwriting, recorded results and evidence.
+  Do not strip uncertainty from a claim or turn an interpretation into a fact.
+- Keep operational instructions in guides and factual execution plans in records.
+  Do not add unsolicited research recommendations.
+
 ## Result reporting: Liu Hao is the supervisor
 
 - Result pages report the work to Liu Hao as the research supervisor.
@@ -40,8 +54,8 @@ direction and scientific methodology.
 - Integrate existing Ceridwen results as full entries with source references and caveats.
   Use `origin: existing` and `status: recorded`. Do not reconstruct historical briefs,
   invent metadata, rerun fits, or move existing evidence.
-- Existing questions may use source-derived context instead of user messages. Label
-  this context as an agent source summary. Do not attribute it to Liu Hao.
+- Existing questions may use a factual description of the comparison instead of
+  user messages. Do not attribute that description to Liu Hao.
 - Research entries are exempt from the legacy word and caption limits.
 - Run `python3 wiki/tests/run_tests.py` and
   `python3 -m unittest discover -s wiki/tests -p 'test_research.py'` after changes.
@@ -84,7 +98,7 @@ direction and scientific methodology.
 - Never rename, edit, or delete evidence during wiki work. The builder may extract
   unchanged saved notebook images into generated `public/` assets.
 - Never treat a wiki summary as stronger evidence than its raw source.
-- Keep sourced claims, project inferences, and unresolved questions separate.
+- Keep sourced claims and unresolved questions separate.
 - Do not perform web research unless the user requests it.
 - Record uncertainty. Do not guess why the code was written.
 
@@ -141,8 +155,8 @@ status: obsolete   # optional
 ### Authorship and generated text
 
 User reasoning may have a lightly edited display, with the original text retained.
-Agent source summaries, execution plans and measured results are labelled separately
-in research records. Never add these to meeting notes.
+Execution plans and measured results occupy separate sections in research records.
+Use literal section titles without agent-role labels. Never add these to meeting notes.
 The renderer never rewrites text or generates scientific interpretations. Existing
 note routes and evidence remain accessible. Navigation uses short labels.
 
@@ -174,8 +188,8 @@ be resumed shows nothing at all. Do not add a fallback worker or a notice.
 
 ### Reader-facing benchmark pages
 
-- Write benchmark pages for a reader who wants the result and its meaning.
-- Show measured performance, cost, memory, comparison conditions, and useful interpretation.
+- Show measured benchmark results.
+- Show measured performance, cost, memory and comparison conditions.
 - Do not show planning estimates, predicted-versus-measured checks, comparison
   fingerprints, commit hashes, runner hashes, instance IDs, transfer prices,
   commands, agent workflow, or status history unless the user asks for them.
@@ -216,7 +230,7 @@ Each generated HTML page must include:
 - Cite raw files with a page, section, figure, table, or row locator.
 - Cite code with `path:line` and name the relevant class or function.
 - Cite notebooks by filename, heading, and function or variable name.
-- Label uncited interpretation explicitly as `Project synthesis`.
+- Do not add uncited interpretations or `Project synthesis` commentary.
 - Record conflicting claims together. Do not select one without explanation.
 - Link the first meaningful mention of another wiki page.
 - Revise an existing page instead of creating a near-duplicate.
@@ -238,8 +252,8 @@ Each teaching block must contain these parts in this order:
 <div class="source-example">
   <p class="source-locator"><code>path/to/file.py:10-20 · symbol_name</code></p>
   <pre class="python"><code>exact source excerpt</code></pre>
-  <p><strong>Documented contract:</strong> Cited docstring, test, README, or script behavior.</p>
-  <p><strong>Why it matters:</strong> Plain explanation for the active Ceridwen path.</p>
+  <p>Factual contract with its docstring, test, README or script citation.</p>
+  <p>Factual behavior in the active Ceridwen path, if the excerpt needs explanation.</p>
 </div>
 ```
 
@@ -249,7 +263,7 @@ Each teaching block must contain these parts in this order:
 - Cite the nearest public docstring first. Use a test when no useful docstring
   exists. Use a maintained README or script help for operational workflows.
 - Keep the documented contract separate from the wiki explanation.
-- Label an uncited inference as `Project synthesis`.
+- Omit uncited inferences and editorial assessments.
 - Recheck every excerpt and locator against the live source before completion.
 - An analysis page may carry a bare source excerpt with a locator and no
   contract paragraphs.
@@ -273,7 +287,7 @@ environments, caches, generated outputs, and raw data payloads.
 1. Read `index.md`. Then read only the pages that are relevant to the question.
 2. Consult raw sources when the wiki lacks evidence or precision.
 3. Answer with links to wiki pages and exact raw-source locators.
-4. Distinguish established evidence from project synthesis.
+4. State evidence and unresolved questions directly, without added synthesis.
 5. Add durable code explanations when they improve an existing page.
 6. Create a new analysis page only when the user requests it.
 7. Update `index.md` and append a `query` entry when pages change.

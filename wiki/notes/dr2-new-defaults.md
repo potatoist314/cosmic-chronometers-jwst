@@ -14,9 +14,9 @@ Old run
 New run
 : `results/dr2-quiescent-new-defaults` · `results/dr2-quiescent-new-defaults-summary.csv`
 Changed
-: free Kriek & Conroy dust index Uniform(-1.0, 0.4); StudentT(0, 0.3, df 2) continuity prior on `logsfr_ratios`
+: order-0 to order-3 calibration; aperture to `cosmos_total` photometry; free Kriek & Conroy dust index Uniform(-1.0, 0.4); StudentT(0, 0.3, df 2) on `logsfr_ratios`
 Unchanged
-: order-3 marginalised calibration polynomial, `cosmos_total` 12-band photometry, `diffuse_tau_kc` Uniform(0, 2), BlackJAX NSS gpu-full profile
+: `diffuse_tau_kc` Uniform(0, 2), BlackJAX NSS gpu-full profile
 Sampled parameters
 : 14
 Diagnostics
@@ -30,13 +30,13 @@ Commit
 
 ## Per-galaxy shifts
 
-| parameter | median shift | NMAD | median half-width | moved > 1 half-width | median vs seed noise |
-| --- | --- | --- | --- | --- | --- |
-| age [Gyr] | +1.23 | 1.15 | 0.17 | 169/187 | 13.5 |
-| log Z | -0.17 | 0.21 | 0.036 | 173/187 | 3.1 |
-| [α/Fe] | -0.056 | 0.059 | 0.018 | 148/187 | 0.8 |
-| τ_diffuse | +0.17 | 0.15 | 0.023 | 171/187 | 7.1 |
-| log M | +0.19 | 0.12 | 0.018 | 182/187 | 4.6 |
+| parameter | median shift | NMAD | median half-width | moved > 1 half-width |
+| --- | --- | --- | --- | --- |
+| age [Gyr] | +1.23 | 1.15 | 0.17 | 169/187 |
+| log Z | -0.17 | 0.21 | 0.036 | 173/187 |
+| [α/Fe] | -0.056 | 0.059 | 0.018 | 148/187 |
+| τ_diffuse | +0.17 | 0.15 | 0.023 | 171/187 |
+| log M | +0.19 | 0.12 | 0.018 | 182/187 |
 
 <figure>
 <img src="figures/dr2-new-defaults/old-vs-new-parameters.png" alt="Five old-versus-new scatter panels and a histogram of the ln Z shift">
@@ -46,22 +46,13 @@ Commit
 <details>
 <summary>Seed noise</summary>
 
-Posterior half-widths are far smaller than the seed floors measured in
-[fit-accuracy knobs](fit-accuracy-knobs.html). The old model floors are age
-1.20 Gyr, log Z 0.49, [α/Fe] 0.96, τ_dust 0.32, log M 0.49. The new model
-floors are 0.34, 0.54, 0.23, 0.07, 0.29. A shift between the two runs carries
-both, added in quadrature: age 1.25, log Z 0.73, [α/Fe] 0.99, τ_dust 0.33,
-log M 0.57. One galaxy's shift is therefore not resolved against sampler noise,
-and the "moved > 1 half-width" column overstates significance for that reason.
-The sample median is resolved, because noise on a median of 187 galaxies falls
-by sqrt(187). The last column is the median shift over that noise. [α/Fe] at
-0.8 is the one parameter that does not move.
+Seed repeats cover two galaxies. Maximum parameter shifts use posterior
+half-width units: old model [1.20, 0.49, 0.96, 0.32, 0.49], new model
+[0.34, 0.54, 0.23, 0.07, 0.29], for age, log Z, [α/Fe], τ_dust and log M.
+[Seed comparisons](/wiki/e/e-seed-repeatability/).
 
-Old ages pile up near 3 Gyr. New ages spread over 3 to 6 Gyr.
-
-The seed-to-seed ln Z spread is 2.0 for the old model and 3.1 for the new one,
-3.7 combined, against a median shift of 254. ln Z is the prior-weighted
-marginal likelihood, so it compares the two prior choices directly.
+The maximum seed-to-seed ln Z spread is 2.0 for the old model and 3.1 for the
+new model. The old and new population runs use different photometry.
 
 </details>
 
@@ -79,14 +70,9 @@ Bimodal: 99 of 187 rail at -1.0.
 
 Railing counts a galaxy whose 16th percentile falls below -0.98. A second group
 sits between 0.0 and 0.4, medians span -0.997 to 0.390, and 66 medians lie
-above the old fixed -0.7. Few galaxies sit near -0.7, so the old fixed value
-falls in the least-favoured part of the posterior. The prior floor at -1.0 is
-doing real work, and a wider prior would change the railing fraction. The
-`dust_wide` arm already showed galaxies following the wall out to -2.0.
+above the old fixed -0.7. The `dust_wide` arm has posteriors near its -2.0 bound.
 
-The age shift does not track the dust index. Railed galaxies move by a median
-1.34 Gyr and the rest by 1.16 Gyr, so the freed index is not what drives the
-ages up.
+The median age shift is 1.34 Gyr for railed galaxies and 1.16 Gyr for the rest.
 
 </details>
 
@@ -100,13 +86,12 @@ ages up.
 Mean offset from Borghi+22 grows from +0.21 to +1.89 Gyr.
 
 <details>
-<summary>What the headline shows</summary>
+<summary>Headline</summary>
+<div id="what-the-headline-shows"></div>
 
-The offset is the mean over the binned medians for the 68 galaxies that
-overlap Borghi+22. The old defaults sat on Borghi+22. The new defaults sit
-about 1.8 Gyr above. Both runs give a flat age-redshift relation across
-0.6 < z < 0.9, so neither recovers the decline a cosmic chronometer needs. The
-new defaults win decisively on evidence and move away from the published ages.
+The offset is the mean over binned medians for the 68-galaxy Borghi+22 overlap.
+Both runs have a nearly flat age–redshift relation over 0.6 < z < 0.9.
+Ceridwen ages are mass-weighted; Borghi ages are SSP-equivalent.
 
 </details>
 
@@ -118,14 +103,13 @@ new defaults win decisively on evidence and move away from the published ages.
 </figure>
 
 <details>
-<summary>What the chronometer cut shows</summary>
+<summary>Chronometer cut</summary>
+<div id="what-the-chronometer-cut-shows"></div>
 
-The full-median figure above mixes late quenchers into the low-z bins. This
-cut keeps the oldest 30% of each bin, the usual guard against progenitor bias.
-It does not rescue the trend: the new defaults still sit flat at 5 to 6 Gyr
-across 0.6 < z < 0.9, about 1 to 2 Gyr above Borghi+22 cut the same way. The
-high-σ bins hold 3 to 4 galaxies, so their oldest 30% is one galaxy. Table:
-`results/dr2-quiescent-new-defaults/age_redshift_oldest30.csv`.
+The cut keeps the oldest 30% of each bin. New-default ages stay near 5–6 Gyr
+over 0.6 < z < 0.9, about 1–2 Gyr above Borghi+22 with the same cut.
+High-σ bins contain 3–4 galaxies, so their oldest 30% is one galaxy.
+Table: `results/dr2-quiescent-new-defaults/age_redshift_oldest30.csv`.
 
 </details>
 

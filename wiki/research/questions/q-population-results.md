@@ -10,7 +10,7 @@ source_notes: dr2-quiescent-sample,dr2-new-defaults,per-galaxy-fit-diagnostics,s
 
 ## Context
 
-The baseline and revised DR2 runs supply population summaries, age–redshift plots and residual diagnostics. Their model and photometry settings differ.
+Population summaries, age–redshift plots and residual diagnostics for the baseline and revised DR2 runs.
 
 ## References
 

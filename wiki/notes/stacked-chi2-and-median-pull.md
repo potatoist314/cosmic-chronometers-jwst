@@ -41,11 +41,12 @@ pull = (observed − posterior_q50) / effective_uncertainty, over the fitted nat
 </figure>
 
 <details>
-<summary>Why the null line at 1 now means something</summary>
+<summary>Native-pixel stack</summary>
+<div id="why-the-null-line-at-1-now-means-something"></div>
 
-The previous version interpolated each spectrum onto the 2 Å grid and multiplied sigma by sqrt(2 / 0.32). Interpolation blends two neighbouring pixels. It does not average independent pixels, so it earns no reduction in noise. The rescaled sigma claimed an average that never happened. Mean pull² sat near 0.16 and the line at 1 meant nothing.
+The earlier stack interpolated each spectrum onto a 2 Å grid and multiplied sigma by sqrt(2 / 0.32). Mean pull² was near 0.16. The current stack bins native pixels without that rescaling.
 
-Every fitted native pixel now goes into the rest-frame bin that contains it. Mean pull² per native pixel is 1.149 against a per-galaxy reduced χ² of 1.086, so the two agree.
+Every fitted native pixel enters its rest-frame bin. Mean pull² is 1.149; median per-galaxy reduced χ² is 1.086.
 
 Two quantities carry different nulls.
 
@@ -54,7 +55,7 @@ Two quantities carry different nulls.
 
 LEGA-C samples one resolution element with about five pixels, so neighbouring pixels correlate and no fixed width applies. The width comes from a bootstrap over galaxies instead. Galaxies are independent objects, so that resample absorbs both the noise and the pixel correlation. The median 1σ is 0.065 for the mean recipe.
 
-Wavelengths shift to rest frame, observed divided by 1+z, because template mismatch lives in rest frame. Sky-subtraction residuals live in observed frame and wash out in this stack.
+Rest-frame wavelength = observed wavelength / (1+z).
 
 </details>
 
@@ -82,9 +83,9 @@ The five curves agree over the whole range. Maximum |stacked pull| by recipe:
 - median 0.95
 - biweight location 0.92
 
-The residual is coherent across galaxies, so no recipe averages the features away. The robust recipes only trim the most extreme bins.
+The five recipes retain the absorption-feature residuals.
 
-Bins covered by fewer than MIN_COVER = 10 galaxies are NaN. The peak of mean pull² over all covered bins is 7.76 at 5566 Å, but only 10 galaxies reach that bin. Read the red edge with care.
+Bins covered by fewer than MIN_COVER = 10 galaxies are NaN. The peak of mean pull² over all covered bins is 7.76 at 5566 Å, but only 10 galaxies reach that bin.
 
 </details>
 
@@ -128,4 +129,4 @@ ceridwen/.venv/bin/python -m pytest tests/test_stacked_pull.py -q
 
 **Q** 2026-09-04 · Mean pull-squared sits below 1. By roughly what factor are the effective uncertainties inflated, and did you check that against the per-galaxy reduced chi-squared?
 
-**A** Roughly a factor of 2.5 in sigma, so about 6 in variance — the stacked baseline sits near 0.15–0.2 while the null line is at 1. And yes, I checked it against the histogram: median per-galaxy reduced chi-squared on native pixels is 1.12, so the fits themselves are fine. The depression comes almost entirely from the prescribed error scaling, since 2 Å bins over ~0.32 Å native pixels inflates sigma by sqrt(2/0.32) ≈ 2.5, while interpolation doesn't average independent pixels the way true rebinning would.
+**A** The earlier stack multiplied sigma by sqrt(2/0.32), about 2.5, and had mean pull² near 0.15–0.2. Median per-galaxy reduced chi-squared on native pixels was 1.12. That stack interpolated pixels without independent averaging.

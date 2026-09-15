@@ -891,7 +891,7 @@ Compare StudentT(0, 0.3, df=2) SFH ratios with Uniform(-3, 3). All other setting
 
 ## Caveats
 
-Wider posterior intervals alone do not demonstrate better accuracy. Recovery on the existing mock is reported separately.
+
 
 ## References
 

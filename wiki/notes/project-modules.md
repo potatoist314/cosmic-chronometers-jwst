@@ -5,7 +5,7 @@ section: Codebase
 theme: Model and code reference
 superseded_by: active-codebase-map
 tags: [repository]
-job: 
+job:
 old: _old/codebase/project-modules.html
 ---
 
@@ -59,9 +59,9 @@ def age_integrand(z, omega_m):
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The inline documentation defines `E` as `H(z) / H(0)`. The decorator requires Astropy units for `H0` (`src/cosmology.py:5-12`).
+The inline documentation defines `E` as `H(z) / H(0)`. The decorator requires Astropy units for `H0` (`src/cosmology.py:5-12`).
 
-**Why it matters:** `H` calls `E` for the dimensionless calculation. `age_integrand` also calls `E`. These calls show the module dependency direction.
+`H` calls `E` for the dimensionless calculation. `age_integrand` also calls `E`. These calls show the module dependency direction.
 
 </details>
 
@@ -114,11 +114,11 @@ age_obs = age + systematic + noise`
 <details>
 <summary>Details</summary>
 
-**Documented contract:** The docstring defines every mock input and returns a `MockSample` (`src/mocks.py:54-84`).
+The docstring defines every mock input and returns a `MockSample` (`src/mocks.py:54-84`).
 
-**Why it matters:** The cosmology creates `age`. Physical scatter modifies this value. The systematic term and measurement noise then create the reported `age_obs`.
+The cosmology creates `age`. Physical scatter modifies this value. The systematic term and measurement noise then create the reported `age_obs`.
 
-Other inactive method modules remain in `src/` for reproducibility. This page does not include them in the current workflow.
+Other inactive method modules remain in `src/` for reproducibility.
 
 </details>
 

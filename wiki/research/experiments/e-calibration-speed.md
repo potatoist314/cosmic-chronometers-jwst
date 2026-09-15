@@ -184,7 +184,7 @@ Across four matched target/seed pairs, median full-fit speedup is 1.181x, or 15.
 
 ## Caveats
 
-Timing covers data loading through HDF5 save and excludes plotting. Comparisons must use matching compilation paths. The saved rejected-installation attempt is retained as provenance and is not a benchmark pair.
+Timing covers data loading through HDF5 save and excludes plotting. The rejected installation attempt is excluded from the benchmark pairs.
 
 ## References
 
