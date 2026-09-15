@@ -12,9 +12,6 @@ Calibration arms (2026-09-03)::
     baseline      CERIDWEN_CALIBRATION_ORDER=0  CERIDWEN_PHOTOMETRY=cosmos_ap3    former production
     poly3         CERIDWEN_CALIBRATION_ORDER=3  CERIDWEN_PHOTOMETRY=cosmos_ap3    polynomial only
     poly3_total   CERIDWEN_CALIBRATION_ORDER=3  CERIDWEN_PHOTOMETRY=cosmos_total  production
-    mock_tilt4_baseline / mock_tilt4_poly3
-                  M5_172669 mock (stored truth, 4 percent end-to-end tilt on the
-                  spectrum only), without and with the polynomial
 
 Fit-accuracy arms (2026-09-06), each poly3_total plus one switch::
 
@@ -27,8 +24,6 @@ Fit-accuracy arms (2026-09-06), each poly3_total plus one switch::
     sfh_cont      CERIDWEN_SFH_PRIOR=student        StudentT(0, 0.3, df=2) on logsfr_ratios
                   (the production default since 2026-09-06; poly3_total pins uniform)
     mask_cn       CERIDWEN_MASK_REST_WINDOWS=...    mask CN1/CN2 and C4668 (rest Angstrom)
-    mock_tilt4_sfh_cont
-                  the tilt-4 mock with the polynomial and the StudentT prior
 
 New-defaults arms (2026-09-06), the production notebook after both flips::
 
@@ -37,8 +32,15 @@ New-defaults arms (2026-09-06), the production notebook after both flips::
                   --base-seed shifted like seed_rep1..2; M4_108989 and M5_172669 only
     tau_cn        CERIDWEN_TAU_PRIOR=clipped        tau_dust ClippedNormal(0.3, 1.0, 0, 4)
     dust_wide     CERIDWEN_DUST_INDEX_BOUNDS=-2.0,0.5   Prospector's alpha-template range
-    mock_tilt4_new_default
-                  the tilt-4 mock with the polynomial and both flips
+
+Calibration-order arms (2026-09-15, results/calibration-order), new_default with
+a higher Chebyshev order::
+
+    poly5         CERIDWEN_CALIBRATION_ORDER=5
+    poly10        CERIDWEN_CALIBRATION_ORDER=10
+
+The tilt-4 mock arms (mock_tilt4_*) were removed on 2026-09-15; their stored
+fits stay in results/calibration-polynomial-dr2 and results/fit-accuracy-knobs.
 
 Results land in ``$CERIDWEN_ARMS_RESULTS/<arm>/<object>-<target>/``
 (``CERIDWEN_ARMS_RESULTS`` overrides the directory, on this machine and on
@@ -108,6 +110,10 @@ ARMS = {
     "new_default_rep2": NEW_DEFAULT,
     "tau_cn": {**NEW_DEFAULT, "CERIDWEN_TAU_PRIOR": "clipped"},
     "dust_wide": {**NEW_DEFAULT, "CERIDWEN_DUST_INDEX_BOUNDS": "-2.0,0.5"},
+    # Generation 4, calibration order (2026-09-15, results/calibration-order):
+    # new_default with a higher Chebyshev order; the 100 Angstrom mode rule.
+    "poly5": {**NEW_DEFAULT, "CERIDWEN_CALIBRATION_ORDER": "5"},
+    "poly10": {**NEW_DEFAULT, "CERIDWEN_CALIBRATION_ORDER": "10"},
 }
 DEFAULT_BASE_SEED = 20260830          # == run_ceridwen_vast_multi_gpu.DEFAULT_BASE_SEED
 # Independent NSS repeats of the production model: same data, shifted seed.
@@ -116,20 +122,6 @@ SEED_REP_BASE = {"seed_rep1": DEFAULT_BASE_SEED + 1000, "seed_rep2": DEFAULT_BAS
                  "new_default_rep1": DEFAULT_BASE_SEED + 1000,
                  "new_default_rep2": DEFAULT_BASE_SEED + 2000}
 SEED_REP_TARGETS = ["M4_108989", "M5_172669"]
-MOCK_ENV = {
-    "CERIDWEN_MOCK_TRUTH": "results/absorption-mask/truth_M5_172669.json",
-    "CERIDWEN_MOCK_TILT": "0.04",
-    "CERIDWEN_MOCK_SEED": "1",
-    "CERIDWEN_PHOTOMETRY": "cosmos_ap3",
-}
-MOCK_ARMS = {
-    "mock_tilt4_baseline": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "0"},
-    "mock_tilt4_poly3": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "3"},
-    "mock_tilt4_sfh_cont": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "3",
-                            "CERIDWEN_SFH_PRIOR": "student"},
-    "mock_tilt4_new_default": {**MOCK_ENV, "CERIDWEN_CALIBRATION_ORDER": "3",
-                               "CERIDWEN_SFH_PRIOR": "student", "CERIDWEN_FREE_DUST_INDEX": "1"},
-}
 POLL_SECONDS = 120
 # A cell is one fresh notebook process; the RTX 5060 boxes occasionally kill a
 # kernel or raise an XLA runtime error mid-run, so a failed cell runs once more.
@@ -163,7 +155,7 @@ def _log(prefix: str):
 # ---------------------------------------------------------------------------
 # Cells
 # ---------------------------------------------------------------------------
-def build_cells(targets: list[str], arms: list[str], mocks: list[str]) -> list[dict]:
+def build_cells(targets: list[str], arms: list[str]) -> list[dict]:
     multi = _load("multi_gpu", "run_ceridwen_vast_multi_gpu.py")
     assert multi.DEFAULT_BASE_SEED == DEFAULT_BASE_SEED
     manifest = multi.build_target_manifest(num_shards=1, base_seed=DEFAULT_BASE_SEED)
@@ -175,10 +167,6 @@ def build_cells(targets: list[str], arms: list[str], mocks: list[str]) -> list[d
                    for t in multi.build_target_manifest(num_shards=1, base_seed=base)["targets"]}
              for arm, base in SEED_REP_BASE.items()}
     cells = []
-    for arm in mocks:
-        target = by_id["M5_172669"]
-        cells.append(dict(name=f"{arm}/M5_172669", arm=arm, target="M5_172669",
-                          object_id=target["object_id"], seed=target["seed"], env=MOCK_ARMS[arm]))
     for spect_id in targets:                     # arms interleaved per galaxy
         target = by_id[spect_id]
         for arm in arms:
@@ -229,8 +217,6 @@ def command_remote(args) -> int:
         manifest[name] = {"status": "running", "started": datetime.now(UTC).isoformat()}
         write()
         env = {**os.environ, **cell["env"]}
-        if "CERIDWEN_MOCK_TRUTH" in env:
-            env["CERIDWEN_MOCK_TRUTH"] = str(PROJECT_ROOT / env["CERIDWEN_MOCK_TRUTH"])
         command = runner_command(cell, root / cell["arm"])
         started = time.monotonic()
         log(f"{name}: start seed={cell['seed']} {cell['env']}")
@@ -450,7 +436,7 @@ def command_plan(args) -> int:
     sweep = _sweep()
     for offer in offers_rtx_5060(sweep, set())[:5]:
         print(_describe(offer))
-    for cell in build_cells(args.targets, args.arms, args.mock_arms):
+    for cell in build_cells(args.targets, args.arms):
         print(cell["name"], cell["seed"], cell["env"])
     return 0
 
@@ -462,7 +448,7 @@ def command_run(args) -> int:
     if not offers:
         print("no suitable RTX 5060 offer", file=sys.stderr)
         return 1
-    cells = build_cells(args.targets, args.arms, args.mock_arms)
+    cells = build_cells(args.targets, args.arms)
     offer = offers[0]
     record = {
         "started": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -478,7 +464,7 @@ def command_run(args) -> int:
 
 def command_attach(args) -> int:
     sweep = _sweep()
-    cells = build_cells(args.targets, args.arms, args.mock_arms)
+    cells = build_cells(args.targets, args.arms)
     record = {"started": datetime.now(UTC).isoformat(timespec="seconds"), "branch": args.branch,
               "cells": [c["name"] for c in cells], "credit_before": _credit(sweep),
               **_ceridwen_tree_record(args)}
@@ -500,8 +486,6 @@ def main(argv=None) -> int:
         p.add_argument("--targets", nargs="+", default=DEFAULT_TARGETS, metavar="SPECT_ID")
         p.add_argument("--arms", nargs="+", required=True, choices=list(ARMS), metavar="ARM",
                        help="arms to run, from ARMS in this file; no default")
-        p.add_argument("--mock-arms", nargs="*", default=list(MOCK_ARMS), choices=list(MOCK_ARMS),
-                       metavar="ARM", help="mock cells to run; give no names to skip the mocks")
         p.add_argument("--branch", default="absorption-mask")
         p.add_argument("--ceridwen-tree", default=None, metavar="PATH",
                        help="upload this ceridwen checkout over the box's ceridwen/ after the clone")

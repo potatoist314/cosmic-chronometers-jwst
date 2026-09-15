@@ -39,13 +39,10 @@ def test_new_default_arm_pins_both_flipped_defaults(arms):
         assert set(arms.ARMS["new_default"]) <= set(arms.ARMS[name])
     assert arms.ARMS["tau_cn"]["CERIDWEN_TAU_PRIOR"] == "clipped"
     assert arms.ARMS["dust_wide"]["CERIDWEN_DUST_INDEX_BOUNDS"] == "-2.0,0.5"
-    assert arms.MOCK_ARMS["mock_tilt4_new_default"]["CERIDWEN_SFH_PRIOR"] == "student"
-    assert arms.MOCK_ARMS["mock_tilt4_new_default"]["CERIDWEN_FREE_DUST_INDEX"] == "1"
-    assert arms.MOCK_ARMS["mock_tilt4_new_default"]["CERIDWEN_CALIBRATION_ORDER"] == "3"
 
 
 def test_new_default_seed_repeats_carry_the_new_default_env(arms):
-    cells = arms.build_cells(arms.DEFAULT_TARGETS, ["new_default", "new_default_rep1", "new_default_rep2"], [])
+    cells = arms.build_cells(arms.DEFAULT_TARGETS, ["new_default", "new_default_rep1", "new_default_rep2"])
     by_arm = {}
     for cell in cells:
         by_arm.setdefault(cell["arm"], []).append(cell)
@@ -70,7 +67,7 @@ def test_stage1_arms_differ_from_poly3_total_by_one_switch(arms):
 
 
 def test_seed_repeats_only_run_on_two_targets_with_new_seeds(arms):
-    cells = arms.build_cells(arms.DEFAULT_TARGETS, ["poly3_total", "seed_rep1", "seed_rep2"], [])
+    cells = arms.build_cells(arms.DEFAULT_TARGETS, ["poly3_total", "seed_rep1", "seed_rep2"])
     by_arm = {}
     for cell in cells:
         by_arm.setdefault(cell["arm"], []).append(cell)
@@ -96,11 +93,20 @@ def test_seed_forwarded_to_runner_command(arms):
     assert "--base-seed" not in plain
 
 
-def test_mock_arms_are_selected_by_name(arms):
-    cells = arms.build_cells(["M4_108989"], [], ["mock_tilt4_sfh_cont"])
-    assert [c["arm"] for c in cells] == ["mock_tilt4_sfh_cont"]
-    assert cells[0]["env"]["CERIDWEN_SFH_PRIOR"] == "student"
-    assert cells[0]["env"]["CERIDWEN_CALIBRATION_ORDER"] == "3"
+def test_calibration_order_arms_change_only_the_order(arms):
+    for name, order in (("poly5", "5"), ("poly10", "10")):
+        extra = {k: v for k, v in arms.ARMS[name].items() if arms.ARMS["new_default"].get(k) != v}
+        assert extra == {"CERIDWEN_CALIBRATION_ORDER": order}, (name, extra)
+        assert set(arms.ARMS["new_default"]) <= set(arms.ARMS[name])
+    cells = arms.build_cells(arms.DEFAULT_TARGETS, ["poly5", "poly10"])
+    assert len(cells) == 12
+    assert all("base_seed" not in c for c in cells)
+
+
+def test_no_mock_arms(arms):
+    # Removed 2026-09-15; every cell is a real DR2 target from the manifest.
+    assert not hasattr(arms, "MOCK_ARMS")
+    assert not any(a.startswith("mock") for a in arms.ARMS)
 
 
 def test_reference_arm_pins_the_uniform_sfh_prior_after_the_default_flip(arms):
@@ -146,7 +152,7 @@ def test_offer_rule_constants_match_the_rule(arms):
 
 
 def test_parser_requires_explicit_arms(arms):
-    # Seventeen arms is never the intended run; the caller must name them.
+    # Nineteen arms is never the intended run; the caller must name them.
     with pytest.raises(SystemExit) as exc:
-        arms.main(["plan", "--targets", "M5_172669", "--mock-arms"])
+        arms.main(["plan", "--targets", "M5_172669"])
     assert exc.value.code == 2
