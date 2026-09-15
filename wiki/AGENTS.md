@@ -48,6 +48,19 @@ direction and scientific methodology.
 
 ## Current scope
 
+### Research priorities
+
+- Use the same 1–10 scale for all future roadmap guidance and discussion, with
+  10 highest. Read the canonical Roadmap in `research/direction.md` first.
+- Show priority, difficulty and dependencies separately. Keep unspecified tasks
+  unscored. Only user-approved scores belong in the canonical roadmap; identify
+  agent suggestions as proposed until accepted.
+- Preserve dated amendments and original user wording. Render the overview and
+  roadmap from the same task list; never maintain separate copies of the scores.
+- Keep corrected meeting notes alongside their original transcription and source.
+
+### Active research
+
 - Make Ceridwen the primary path in navigation, explanations, and examples.
 - Treat Prospector, MilesPy, and Lick-index work as inactive history.
 - Keep historical facts only when they explain retained code or data.

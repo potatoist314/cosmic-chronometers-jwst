@@ -57,9 +57,9 @@ class ResearchTests(unittest.TestCase):
         self.write("experiment", "e-low-dust", "planned", {"Before delegation": [self.message]}, question="q-dust")
 
     def write(self, kind, ident, status, sections, **meta):
-        parent = self.root / (kind + "s")
+        parent = self.root if kind == "direction" else self.root / (kind + "s")
         parent.mkdir(parents=True, exist_ok=True)
-        path = parent / (ident + ".md")
+        path = parent / ("direction.md" if kind == "direction" else ident + ".md")
         header = dict(kind=kind, id=ident, title=ident + " & <literal>", date="2026-09-12", status=status, **meta)
         text = "---\n" + "\n".join(k + ": " + v for k, v in header.items()) + "\n---\n"
         for name, value in sections.items():
@@ -115,6 +115,87 @@ class ResearchTests(unittest.TestCase):
         anchors = set(re.findall(r'href="#([^"]+)"', body))
         identifiers = set(re.findall(r'id="([^"]+)"', body))
         self.assertEqual(anchors - identifiers, set())
+
+    def roadmap(self):
+        (self.notes / "meeting.md").write_text(
+            "---\ntitle: Meeting\ndate: 2026-09-15\nsection: Guides\n"
+            "theme: Single-fit accuracy\n---\n\n## Metallicity\n\nA question, not a result.\n")
+        tasks = [
+            {"id": "spectrum", "title": "Strong spectrum", "priority": 7,
+             "source": "wiki/notes/meeting.md#metallicity", "depends_on": ["metallicity"]},
+            {"id": "unscored", "title": "Unscored follow-up", "priority": None,
+             "source": "wiki/notes/meeting.md"},
+            {"id": "metallicity", "title": "Metallicity & definition", "priority": 10,
+             "source": "wiki/notes/meeting.md#metallicity", "details": "Is this <total Z>?"},
+            {"id": "literature", "title": "Literature", "priority": 7,
+             "source": "wiki/notes/meeting.md", "effort": "Implementation uncertain"},
+        ]
+        sections = {"Your words": [self.message], "Roadmap": tasks,
+                    "Amendments": [dict(self.message, text="keep this 1-10 scale\n  and my wording")],
+                    "References": "[Meeting](wiki/notes/meeting.md)"}
+        self.write("direction", "research-direction", "", sections)
+        return sections
+
+    def test_roadmap_preserves_scores_dependencies_and_original_amendments(self):
+        self.roadmap()
+        self.assertEqual(self.faults(), [])
+        out = self.build()
+        page = (out / "roadmap/index.html").read_text()
+        home = (out / "index.html").read_text()
+        self.assertEqual(re.findall(r'<tr id="([^"]+)"', page),
+                         ["metallicity", "spectrum", "literature", "unscored"])
+        self.assertEqual(re.findall(r'<tr id="([^"]+)"', home),
+                         ["metallicity", "spectrum", "literature"])
+        self.assertIn('href="/wiki/roadmap/#metallicity"', page)
+        self.assertIn('href="/wiki/n/meeting/#metallicity"', home)
+        self.assertIn("10/10", page)
+        self.assertIn("Unscored follow-up", page)
+        self.assertIn("Implementation uncertain", page)
+        self.assertIn("Is this &lt;total Z&gt;?", page)
+        quotes = Quotes()
+        quotes.feed(page)
+        self.assertEqual(quotes.values, ["keep this 1-10 scale\n  and my wording"])
+        self.assertIn('href="/wiki/roadmap/"', (out / "q/q-dust/index.html").read_text())
+        self.assertTrue(any(item["u"] == "/wiki/roadmap/" for item in json.loads((out / "search.json").read_text())))
+
+    def test_priority_change_updates_both_views_from_one_record(self):
+        sections = self.roadmap()
+        sections["Roadmap"][0]["priority"] = 1
+        self.write("direction", "research-direction", "", sections)
+        out = self.build("")
+        for path in ("index.html", "roadmap/index.html"):
+            body = (out / path).read_text()
+            self.assertEqual(re.findall(r'<tr id="([^"]+)"', body)[:3],
+                             ["metallicity", "literature", "spectrum"])
+            self.assertIn('href="/roadmap/#metallicity"', body)
+            self.assertIn("1/10", body)
+
+    def test_roadmap_rejects_invalid_scores_and_dependencies(self):
+        sections = self.roadmap()
+        for priority in (0, 11, True, 2.5, "7"):
+            with self.subTest(priority=priority):
+                sections["Roadmap"][0]["priority"] = priority
+                self.write("direction", "research-direction", "", sections)
+                self.assertIn("roadmap priority must be an integer", "\n".join(self.faults()))
+        sections["Roadmap"][0]["priority"] = 7
+        for dependencies in (["missing"], ["spectrum"], "metallicity"):
+            with self.subTest(dependencies=dependencies):
+                sections["Roadmap"][0]["depends_on"] = dependencies
+                self.write("direction", "research-direction", "", sections)
+                self.assertIn("roadmap dependencies must reference", "\n".join(self.faults()))
+        sections["Roadmap"][0]["depends_on"] = ["metallicity"]
+        sections["Roadmap"].append(dict(sections["Roadmap"][0]))
+        self.write("direction", "research-direction", "", sections)
+        self.assertIn("roadmap task ids must be unique", "\n".join(self.faults()))
+
+    def test_existing_direction_without_roadmap_still_builds(self):
+        self.write("direction", "research-direction", "", {"Your words": [self.message]})
+        self.assertEqual(self.faults(), [])
+        out = self.build()
+        self.assertIn("No priorities recorded", (out / "roadmap/index.html").read_text())
+        quotes = Quotes()
+        quotes.feed((out / "index.html").read_text())
+        self.assertEqual(quotes.values, [self.original])
 
     def test_exact_words_survive_results_interpretation_and_amendment(self):
         sections = self.completed("reviewed", [{"date": "2026-09-13", "text": "inconclusive. keep this open."}])

@@ -16,7 +16,7 @@ EXPERIMENT_STATES = {
 QUESTION_STATES = {"open": "Open", "paused": "Paused", "answered": "Answered"}
 RUN_STATES = {"planned", "running", "complete", "failed"}
 SECTIONS = {
-    "direction": ("Your words",),
+    "direction": ("Your words", "Roadmap", "Amendments", "References"),
     "question": ("Context", "Your words", "References", "Decisions"),
     "experiment": ("Context", "Before delegation", "Execution plan", "Amendments", "Runs",
                    "Figures", "Measurements", "Results", "Caveats", "References", "Your interpretation", "Next decision"),
@@ -61,7 +61,7 @@ def parse(path):
             raise ValueError("content must belong to a named section")
     for name in SECTIONS[kind]:
         content = record["sections"].get(name, "").strip()
-        if name in MESSAGE_SECTIONS or name in {"Runs", "Figures"}:
+        if name in MESSAGE_SECTIONS or name in {"Runs", "Figures", "Roadmap"}:
             if not content:
                 value = []
             else:
@@ -183,6 +183,34 @@ def validate(records, project):
         if r["kind"] == "direction":
             if not s["Your words"]:
                 fail("direction requires your original words")
+            tasks = s["Roadmap"]
+            task_ids = [task.get("id") for task in tasks]
+            seen_tasks = set()
+            for task in tasks:
+                task_id = task.get("id")
+                if not isinstance(task_id, str) or not ID.fullmatch(task_id):
+                    fail("roadmap task id must use lowercase letters, digits and hyphens")
+                elif task_id in seen_tasks:
+                    fail("roadmap task ids must be unique")
+                else:
+                    seen_tasks.add(task_id)
+                if not isinstance(task.get("title"), str) or not task["title"].strip():
+                    fail("roadmap task requires a title")
+                priority = task.get("priority")
+                if priority is not None and (type(priority) is not int or not 1 <= priority <= 10):
+                    fail("roadmap priority must be an integer from 1 to 10, or null")
+                evidence(task.get("source"))
+                for field in ("details", "effort"):
+                    if field in task and not isinstance(task[field], str):
+                        fail("roadmap " + field + " must be a string")
+                dependencies = task.get("depends_on", [])
+                if not isinstance(dependencies, list) or any(
+                    not isinstance(dep, str) or dep not in task_ids or dep == task_id
+                    for dep in dependencies
+                ):
+                    fail("roadmap dependencies must reference other task ids")
+            for match in LINK.finditer(s["References"]):
+                evidence(match[1] or match[2])
             continue
         states = QUESTION_STATES if r["kind"] == "question" else EXPERIMENT_STATES
         if r.get("status") not in states:
@@ -301,6 +329,31 @@ def record_rows(records, base):
                         r["status"], esc(r["date"]), route(r, base), esc(r["title"]),
                         esc(r["id"]), r["status"], status))
     return '<ul class="research-list">%s</ul>' % "".join(rows) if rows else '<p class="empty">None yet</p>'
+
+
+def roadmap_html(tasks, base, project, compact=False):
+    """Render the same user-ranked tasks on the overview and roadmap."""
+    by_id = {task["id"]: task for task in tasks}
+    rows = []
+    for task in sorted(tasks, key=lambda task: -(task.get("priority") or 0)):
+        priority = task.get("priority")
+        if compact and priority is None:
+            continue
+        score = str(priority) + "/10" if priority is not None else "Unscored"
+        details = '<p>%s</p>' % esc(task["details"]) if task.get("details") and not compact else ""
+        dependency = ", ".join('<a href="%s/roadmap/#%s">%s</a>' % (
+            base, esc(dep), esc(by_id[dep]["title"])) for dep in task.get("depends_on", []))
+        constraints = ('<p><span class="attribution">After:</span> %s</p>' % dependency if dependency else "")
+        if task.get("effort"):
+            constraints += '<p><span class="attribution">Difficulty:</span> %s</p>' % esc(task["effort"])
+        rows.append('<tr id="%s"><td class="roadmap-score">%s</td><td><a href="%s">%s</a>%s%s</td></tr>' % (
+            esc(task["id"]), score, esc(asset_url(task["source"], base, project)),
+            esc(task["title"]), details, constraints))
+    if not rows:
+        return '<p class="empty">No priorities recorded</p>'
+    return ('<table class="roadmap"><caption>Research priorities · 10 highest</caption>'
+            '<thead><tr><th scope="col">Priority</th><th scope="col">Task</th></tr></thead>'
+            '<tbody>%s</tbody></table>' % "".join(rows))
 
 
 def note_backlinks(slug, records, base):
@@ -423,7 +476,24 @@ def write_pages(records, notes, scratch, base, builder):
                        "x": r["raw"]})
 
     direction = next((r for r in records if r["kind"] == "direction"), None)
+    tasks = direction["sections"]["Roadmap"] if direction else []
+    roadmap = page_top("Research", "Roadmap") + roadmap_html(tasks, base, project)
+    if direction:
+        s = direction["sections"]
+        if s["References"]:
+            roadmap += section("Meeting notes", md(s["References"]))
+        if s["Amendments"]:
+            roadmap += '<details id="roadmap-amendments"><summary>Decisions and original wording</summary>%s</details>' % messages_html(s["Amendments"])
+        search.append({"t": "Research roadmap", "u": base + "/roadmap/", "d": direction["date"],
+                       "s": "Roadmap", "g": "research priorities", "x": direction["raw"]})
+    page("roadmap", "Roadmap", '<article class="prose research-record">' + roadmap + '</article>')
     body = page_top("Ceridwen", "Research")
+    if tasks:
+        content = roadmap_html(tasks, base, project, compact=True)
+        content += '<p><a href="%s/roadmap/">Full roadmap</a></p>' % base
+        if direction["sections"]["References"]:
+            content += md(direction["sections"]["References"])
+        body += section("Current priorities", content)
     if direction:
         content = messages_html(direction["sections"]["Your words"])
         body += section("Research direction", content)
@@ -485,6 +555,12 @@ FILTER_JS = """(() => {
 """
 
 CSS = """
+.roadmap{width:100%;table-layout:fixed;border-collapse:collapse}
+.roadmap caption{text-align:left;font-family:system-ui,sans-serif;font-size:.8rem;color:var(--ink-2);padding:8px 0}
+.roadmap th,.roadmap td{text-align:left;vertical-align:top;padding:12px 8px;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}
+.roadmap th:first-child{width:96px;white-space:nowrap}
+.roadmap-score{font-variant-numeric:tabular-nums;font-weight:600}
+.roadmap td p{margin:6px 0 0;font-size:.9rem}
 .research-section{margin-top:30px}
 .research-section h2{font-size:1.25rem;border-top:1px solid var(--rule);padding-top:18px;margin-bottom:14px}
 .user-message{margin:14px 0 24px}

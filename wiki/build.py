@@ -595,7 +595,7 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 
 
 def rail_sections(notes, base, current=""):
-    groups = (("Research", (("", "Overview"), ("questions/", "Questions"),
+    groups = (("Research", (("", "Overview"), ("roadmap/", "Roadmap"), ("questions/", "Questions"),
                              ("experiments/", "Experiments"))),
               ("Masking", (("masking/", "Image masking"),)),
               ("Library", (("reference/", "Reference"), ("earlier/", "Source notes"),

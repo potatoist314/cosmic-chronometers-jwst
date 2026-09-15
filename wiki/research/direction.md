@@ -2,7 +2,7 @@
 kind: direction
 id: research-direction
 title: Research direction
-date: 2026-09-12
+date: 2026-09-15
 ---
 
 ## Your words
@@ -16,3 +16,121 @@ date: 2026-09-12
   }
 ]
 ```
+
+## Roadmap
+
+```json
+[
+  {
+    "id": "metallicity",
+    "title": "Resolve the metallicity definition",
+    "priority": 10,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#metallicity",
+    "details": "Is Ceridwen fitting absolute or solar-relative metallicity? Does its FSPS grid represent total Z or Fe only? Most immediate investigation."
+  },
+  {
+    "id": "calibration-polynomial",
+    "title": "Investigate the calibration polynomial",
+    "priority": 9,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#calibration-polynomial",
+    "details": "Polynomial modes must not be shorter than 100 Å. Inspect the polynomial and the empirical order rule.",
+    "effort": "Expected short fix"
+  },
+  {
+    "id": "literature-comparison",
+    "title": "Compare published methods, ages and metallicities",
+    "priority": 8,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#literature-comparison",
+    "details": "Include expected parameters for local elliptical galaxies and their relationship to the LEGA-C population. Compare established inference methods with Ceridwen. Can start independently."
+  },
+  {
+    "id": "strong-spectrum",
+    "title": "Select one high-S/N spectrum with strong absorption features",
+    "priority": 7,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#one-strong-spectrum",
+    "details": "Choose one case for detailed fitting and literature comparison.",
+    "depends_on": [
+      "metallicity"
+    ]
+  },
+  {
+    "id": "velocity-dispersion",
+    "title": "Fit velocity dispersion as a broadening parameter",
+    "priority": 6,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#velocity-dispersion"
+  },
+  {
+    "id": "photometric-systematics",
+    "title": "Incorporate systematic photometric uncertainties",
+    "priority": 5,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#photometric-uncertainties",
+    "effort": "Difficult or implementation uncertain"
+  },
+  {
+    "id": "wavelength-offsets",
+    "title": "Check rest-frame absorption-line wavelength offsets",
+    "priority": 3,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#rest-frame-wavelength-offsets",
+    "details": "The lines do not seem to sit exactly at the expected wavelengths. Relatively minor issue."
+  },
+  {
+    "id": "mg-b",
+    "title": "Investigate Mg b fitting",
+    "priority": 3,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#mg-b",
+    "details": "Relatively minor issue."
+  },
+  {
+    "id": "noise-calibration",
+    "title": "Investigate noise calibration and f_calib",
+    "priority": null,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#noise-calibration",
+    "details": "Retain the concern about reaching the prior's upper bound; the handwritten percentages remain uncertain."
+  },
+  {
+    "id": "mass-metallicity",
+    "title": "Plot mass and metallicity",
+    "priority": null,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#mass-and-metallicity"
+  },
+  {
+    "id": "slack-coordination",
+    "title": "Coordinate in a Slack channel",
+    "priority": null,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#coordination",
+    "details": "The notes name Amanda, MJ and Sandro."
+  },
+  {
+    "id": "parameters-priors",
+    "title": "Document all free parameters and priors",
+    "priority": null,
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#coordination"
+  }
+]
+```
+
+## Amendments
+
+```json
+[
+  {
+    "date": "2026-09-15",
+    "text": "okay, here are some clarifications. offset -> the absorption lines in the rest frame plot don't seem to be exactly at the correct wavelength (relatively minor issue). Look into Mg B fitting spectral line (again, relatively minor issue). I think i should develop a grading system from 1-10 on research priority and thigns to look into, this would fit well on the wiki. Look into expected parameters for local elliptical galaxies, which should be the same population as Lega C galaxies (medium-high priority). Incorporating systematic uncertainties in photometry (medium priority, but difficult or at least unsure how to implement). Metallicity definition (is ceridwen fitting absolute metallicity or solar metallicity, and when ceridwen uses the FSPS grid, is it modelling the metallicity returned as Z total or Fe only - very high priority, probably most immediate thing to look into). Calibration polynomial - very high priority; easy short fix as well. The 100 angstrom note -> we want frequency modes not shorter than 100 angstrom in the polynomial, is what was meant. The numbered next steps look good, fit velocity dispersion as broadening parameter is medium importance. picking one high S/N strong absorption feature spectra would be pretty high priority but must come after metallicity is fixed. The literature check on established ages and metallicities and the methods they use to do this, comparing to ceridwen is also high priority and not bound by anything",
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md"
+  },
+  {
+    "date": "2026-09-15",
+    "text": "velocity dispersion should be 6. local ellipticals go together with literature comparison on methods. strong spectrum case can be 7. keep this 1-10 scale for all future research roadmap guidance and discussion - save this setup in the appropriate .md files",
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md"
+  },
+  {
+    "date": "2026-09-15",
+    "text": "Implement the plan.",
+    "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md"
+  }
+]
+```
+
+## References
+
+- [15 September 2026 · Meeting with MJ Park and Sandro](wiki/notes/meeting-2026-09-15-mj-park-sandro.md)

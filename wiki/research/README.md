@@ -32,6 +32,30 @@ Do not publish a result state without figures or a measured benchmark table.
 
 ## Before delegation
 
+### Roadmap priorities
+
+All future research roadmap guidance and discussion uses **1–10**, with **10
+highest**. Priority measures research importance, not difficulty. Check the
+current roadmap before proposing work or preparing an experiment handoff.
+
+`direction.md` holds one canonical **Roadmap** section containing a fenced JSON
+array. Each task has a stable `id`, a short `title`, a `source` evidence link,
+and an integer `priority` from 1 to 10, or `null` for unscored work. Optional
+`details` and `effort` retain user-specified context and difficulty. Optional
+`depends_on` lists other task IDs. Dependencies do not change the priority score.
+
+The overview and `/wiki/roadmap/` render this same array in descending priority
+order. Ties retain source order. Unscored tasks appear at the end of the full
+roadmap. A task's title links to its supporting meeting note or other evidence.
+
+Preserve user-assigned priorities. Label suggested scores as **proposed** in
+discussion; do not save them as canonical until the user accepts them. Do not
+assign scores to historical or unspecified work. Append the user's dated changes
+under **Amendments**, retaining the original wording. **References** links the
+meeting notes; the original scientific direction remains under **Your words**.
+
+### Experiment record
+
 1. Read the current questions and related experiments.
 2. Create or reuse one question under `questions/<id>.md`.
 3. Copy `templates/experiment.md` to `experiments/<id>.md`.

@@ -93,3 +93,17 @@
 - Integrate existing Ceridwen results into the same questions and experiments.
   Use documented evidence, with origin existing and status recorded. Do not invent
   historical reasoning or demand missing metadata. Retain notebooks and result paths.
+
+## Research priorities
+
+- Use a 1–10 priority scale in all future research roadmap guidance and discussion;
+  10 is highest. Priority records research importance, separately from difficulty
+  and dependencies.
+- The canonical task list is the Roadmap section of `wiki/research/direction.md`.
+  Use its current user-approved scores in discussion, plans and handoffs.
+- Preserve user-assigned scores. Label agent-suggested scores as proposed and
+  record them as canonical only after user acceptance. Leave unspecified tasks
+  unscored; do not invent priorities or retroactively score existing work.
+- Record explicit dependencies and difficulty separately. Do not infer that a
+  high score removes a dependency or that an easy task must rank higher.
+- Retain dated user amendments and original wording when priorities change.
