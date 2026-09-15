@@ -13,6 +13,15 @@ note: calibration-polynomial-dr2
 | `poly3` | adds a smooth spectrum shape correction | dropped | poor fit to the photometry despite spectrum shape correction |
 | `poly3_total` | adds shape correction and whole-galaxy photometry | adopted | has the best photometric fit in all six galaxies |
 
+### Calibration polynomial order
+note: calibration-order
+
+| arm | change | status | result |
+| --- | --- | --- | --- |
+| `new_default` | order 3 rerun with the current \(\tau_{\mathrm{dust}}\) prior on the same box as the other arms | adopted | matched baseline for the order comparison |
+| `poly5` | Chebyshev order 5 | inconclusive | \(\Delta \ln Z\) −2 to +263; \(t_{50}\) within 2 half-widths of order 3 |
+| `poly10` | Chebyshev order 10 | inconclusive | \(\Delta \ln Z\) +20 to +555; \(t_{50}\) shifts up to 17 half-widths (M1_206545); wall time 1.7x to 2.0x |
+
 ### Tilt origin
 note: ceridwen-results
 

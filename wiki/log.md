@@ -762,6 +762,13 @@
 - Pages: [[dr2-quiescent-sample]], [[dr2-new-defaults]], [[absorption-line-mask]], [[fit-accuracy-knobs]], [[redshift-sigma-wiggle]], [[calibration-polynomial-dr2]], [[papers-quiescent-parameters]]
 - Change: Every figure, table and summary CSV now shows [Fe/H] = grid Z + 1.7328283 instead of log Z. The 545 executed per-target notebooks had their corner figures redrawn from saved posteriors and their summary rows relabelled without re-running any fit (`scripts/relabel_feh_notebooks.py`). Analysis notebooks were re-executed from saved outputs; shifts and half-widths are unchanged.
 
+## [2026-09-15] result | Calibration polynomial order 3, 5, 10
+
+- Pages: [[calibration-order]], [[calibration-polynomial-dr2]], [[themes]]
+- Change: New note and executed analysis for Chebyshev order 3, 5 and 10 on the six reference galaxies. The stored order-3 baseline used the old \(\tau_{\mathrm{dust}}\) prior, so the order-3 arm was rerun with the current prior on the same Vast boot as the other arms. Experiment record `e-calibration-order` at results-ready with 18 complete runs.
+- Files: results/calibration-order/, wiki/analyses/calibration-order/, wiki/notes/calibration-order.md, wiki/research/experiments/e-calibration-order.md.
+- Validation: all 18 result files carry the same dust prior bounds; figures checked at 900 px; wiki build and tests pass.
+
 ## [2026-09-15] change | Calibration polynomial speed-up
 
 - Pages: [[calibration-speedup]], [[ceridwen-likelihood-sampling]], [[themes]]

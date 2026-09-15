@@ -157,6 +157,8 @@ ceridwen/.venv/bin/python scripts/calibration_arms_vast.py run --spend-cap 1.0
 JAX_PLATFORMS=cpu ceridwen/.venv/bin/python -m pytest ceridwen/tests/test_polynomial_calibration.py -q
 ```
 
+Follow-up: orders 5 and 10 against a rerun order-3 baseline in `wiki/notes/calibration-order.md`.
+
 </details>
 
 ## Thread

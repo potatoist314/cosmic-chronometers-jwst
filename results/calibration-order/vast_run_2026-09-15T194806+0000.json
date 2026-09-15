@@ -1,0 +1,37 @@
+{
+ "started": "2026-09-15T15:47:16+00:00",
+ "branch": "absorption-mask",
+ "offer": {
+  "id": 48742491,
+  "gpu_name": "RTX 5060",
+  "dph_total": 0.10277777777777777,
+  "min_bid": 0.08666666666666667,
+  "geolocation": "United Kingdom, GB",
+  "host_id": 166946
+ },
+ "bid_usd_per_hour": null,
+ "cells": [
+  "poly5/M12_98104",
+  "poly10/M12_98104",
+  "poly5/M5_173928",
+  "poly10/M5_173928",
+  "poly5/M12_185653",
+  "poly10/M12_185653",
+  "poly5/M4_108989",
+  "poly10/M4_108989",
+  "poly5/M1_206545",
+  "poly10/M1_206545",
+  "poly5/M5_172669",
+  "poly10/M5_172669"
+ ],
+ "credit_before": 10.923303007130066,
+ "instance_id": 51132758,
+ "spend_so_far_usd": 0.3248,
+ "error": "TimeoutExpired: Command '['ssh', '-p', '47404', '-i', '/Users/liuhao/.ssh/id_ed25519', '-o', 'IdentitiesOnly=yes', '-o', 'StrictHostKeyChecking=accept-new', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'LogLevel=ERROR', '-o', 'ConnectTimeout=20', '-o', 'ServerAliveInterval=30', '-o', 'ServerAliveCountMax=20', 'root@77.104.167.149', \"pgrep -f '^[^ ]*python scripts/calibration_arms_vast.py remote' >/dev/null && echo yes || echo no\"]' timed out after 60.0 seconds",
+ "credit_after": 10.375749970130059,
+ "spent_usd": 0.5476,
+ "finished": "2026-09-15T19:48:06+00:00",
+ "instances_left": [
+  51132758
+ ]
+}
