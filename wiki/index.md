@@ -14,6 +14,9 @@ Canonical parameter reference: `notes/default-fit-parameters.md`; verify against
 Legacy workflow routes: `/wiki/questions/` and `/wiki/experiments/`.
 Result pages show fits and captions; full records live at `/wiki/e/<id>/record/`.
 Governing presentation rules: `wiki/AGENTS.md`, All pages and Result reporting.
+Scientific notation uses rendered LaTeX on every maintained page. See
+`wiki/AGENTS.md`, Rendered scientific notation; `assets/math.js` and `math.css`
+use locally served KaTeX, including for tables and dynamically inserted captions.
 No agent commentary anywhere, including research records and earlier notes.
 Retain factual content, technical explanations, concrete limitations and originals.
 Research contract and templates: `research/README.md`, `research/templates/`.

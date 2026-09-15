@@ -76,7 +76,7 @@ These tests check that the oldest SFH bin tracks the age of the universe. They c
 <details>
 <summary>Observation projection and noise</summary>
 
-- `test_spectrum_fixes.py` checks LSF input resolution, FWHM and sigma conventions, calibration, and line masking.
+- `test_spectrum_fixes.py` checks LSF input resolution, FWHM and \(\sigma\) conventions, calibration, and line masking.
 - `test_lines_static.py` checks the static line-projection matrix and JIT behavior.
 - `test_line_projection_continuum.py` checks continuum-subtracted nebular lines.
 - `test_upper_limit_likelihood.py` checks detections, upper limits, and gradients.

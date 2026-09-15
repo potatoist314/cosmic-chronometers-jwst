@@ -16,5 +16,5 @@ Comparisons of calibration, photometry, priors and spectral masks.
 
 - [calibration-polynomial-dr2](wiki/notes/calibration-polynomial-dr2.md)
 - [fit-accuracy-knobs](wiki/notes/fit-accuracy-knobs.md)
-- [redshift-sigma-wiggle](wiki/notes/redshift-sigma-wiggle.md)
+- [redshift-\(\sigma\)-wiggle](wiki/notes/redshift-sigma-wiggle.md)
 - [absorption-line-mask](wiki/notes/absorption-line-mask.md)

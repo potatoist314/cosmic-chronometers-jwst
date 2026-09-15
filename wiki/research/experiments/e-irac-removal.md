@@ -877,11 +877,11 @@ Remove IRAC channels 1 and 2 from the reference fit. All other settings follow t
 
 ## Results
 
-| Arm | Median delta spectral chi2 | Median delta photometric chi2 | Median delta ln Z |
+| Arm | Median delta spectral \(\chi^2\) | Median delta photometric \(\chi^2\) | Median delta \(\ln Z\) |
 | --- | ---: | ---: | ---: |
 | no_irac | -0.55 | 1.91 | not comparable |
 
-[Verdict table](results/fit-accuracy-knobs/verdict.csv) · [Per-target comparisons](results/fit-accuracy-knobs/before-after.csv). Spectral chi2 uses common pixels at a fixed 3% calibration floor.
+[Verdict table](results/fit-accuracy-knobs/verdict.csv) · [Per-target comparisons](results/fit-accuracy-knobs/before-after.csv). Spectral \(\chi^2\) uses common pixels at a fixed 3% calibration floor.
 
 ## Caveats
 

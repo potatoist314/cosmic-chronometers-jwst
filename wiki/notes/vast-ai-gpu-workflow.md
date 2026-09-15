@@ -173,7 +173,7 @@ The remote kernel requires CUDA and float64 for every notebook session. It also 
 <details>
 <summary>Run the two DR2 shards</summary>
 
-The runner selects 194 eligible spectra. It keeps the highest-S/N spectrum for each repeated object. This produces 187 targets. It sorts targets by decreasing S/N and alternates them between two shards.
+The runner selects 194 eligible spectra. It keeps the highest-\(\mathrm{S/N}\) spectrum for each repeated object. This produces 187 targets. It sorts targets by decreasing \(\mathrm{S/N}\) and alternates them between two shards.
 
 Generate one shared manifest before the remote launch:
 
@@ -247,7 +247,7 @@ for index, row in enumerate(selected.itertuples(index=False)):
 <details>
 <summary>Details</summary>
 
-The function docstring selects one highest-S/N spectrum for each eligible object.
+The function docstring selects one highest-\(\mathrm{S/N}\) spectrum for each eligible object.
 
 Repeat spectra cannot make one galaxy contribute more than one production fit.
 

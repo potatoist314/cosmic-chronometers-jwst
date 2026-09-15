@@ -48,17 +48,17 @@ SW: short wavelength. LW: long wavelength. A2 and A4 sit above A1 and A3 in the 
 
 “NIRCam — 8 modules.” Pixel scales: 0.031 and 0.063 arcsec/pixel. “LW has half resolution.”
 
-Long-wavelength filters: higher transmission and wide bandpasses, leading to high S/N and fainter limiting magnitudes. Approximately 20% throughput at SW. [Pages 1–2]
+Long-wavelength filters: higher transmission and wide bandpasses, leading to high \(\mathrm{S/N}\) and fainter limiting magnitudes. Approximately 20% throughput at SW. [Pages 1–2]
 
 ### Fields and comparison data
 
-The example program identifier reads `JW 018370` [unclear digit grouping]. The historical Hubble CANDELS field list is COSMOS, UDS, EGS, GOODS-S and GOODS-N. COSMOS has a red “relatively larger area” annotation. A blue bracket describes existing observations as shallow, with low S/N. [Pages 2–3]
+The example program identifier reads `JW 018370` [unclear digit grouping]. The historical Hubble CANDELS field list is COSMOS, UDS, EGS, GOODS-S and GOODS-N. COSMOS has a red “relatively larger area” annotation. A blue bracket describes existing observations as shallow, with low \(\mathrm{S/N}\). [Pages 2–3]
 
-JADES observes GOODS-S and GOODS-N with substantial GTO time: high exposure, narrow area and high depth. NIRCam and NIRSpec data. Hubble data extend only to 1.6 micron. Match HST to JWST data for Lyman-alpha dropout bands. Cross-check Rubin, LSST and Euclid data. [Page 3]
+JADES observes GOODS-S and GOODS-N with substantial GTO time: high exposure, narrow area and high depth. NIRCam and NIRSpec data. Hubble data extend only to 1.6 micron. Match HST to JWST data for \(\mathrm{Lyman}\text{-}\alpha\) dropout bands. Cross-check Rubin, LSST and Euclid data. [Page 3]
 
 ### Observation grouping
 
-Depth: limiting magnitude at 5 sigma. Group observations by PA and time. “PA tolerance ≈ ±3° / ±30 days.” Visit groups, observations and exposure counts; sometimes he omits a zero. [Page 4]
+Depth: limiting magnitude at 5 \(\sigma\). Group observations by PA and time. “PA tolerance ≈ ±3° / ±30 days.” Visit groups, observations and exposure counts; sometimes he omits a zero. [Page 4]
 
 </details>
 

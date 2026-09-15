@@ -12,7 +12,7 @@ result_groups: results/calibration-order
 
 ## Context
 
-Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be shorter than 100 Å; the empirical rule is order ≈ wavelength range / 100. Every DR2 fit uses Chebyshev order 3 with coefficient prior Normal(0, 0.1), integrated out at each likelihood call. The fitted observed-frame spans of the six reference targets are 2416–2473 Å, so order 3 has a shortest bend of about 800 Å.
+Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be shorter than 100 \(\text{\AA}\); the empirical rule is order \(\approx\) wavelength range / 100. Every DR2 fit uses Chebyshev order 3 with coefficient prior \(\operatorname{Normal}(0,0.1)\), integrated out at each likelihood call. The fitted observed-frame spans of the six reference targets are 2416–2473 \(\text{\AA}\), so order 3 has a shortest bend of about 800 \(\text{\AA}\).
 
 ## Before delegation
 
@@ -64,7 +64,7 @@ Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be
 - Controlled change: `CERIDWEN_CALIBRATION_ORDER` 5 or 10; arms `poly5`, `poly10` = `new_default` plus the order. Prior width 0.1 unchanged.
 - No mock arms. The tilt-4 mock arms were removed from the driver on 2026-09-15.
 - Hardware: one Vast.ai RTX 5060 or 5060 Ti (8 or 16 GB), under $0.10/h, reliability above 99.5%; results in `results/calibration-order/<arm>/<object>-<target>/`.
-- Analysis: `results/calibration-order/analysis.ipynb`. Per arm and target: polynomial shape P(λ) with feature marks, shortest mode length = span / order against 100 Å, coefficient magnitudes |a_n| against n, Occam term, photometric χ², raw spectral χ², dchi2_basew, lnZ, wall time; τ_dust, t50 and mass-weighted age against the order-3 baseline; corner plots and SFH per fit.
+- Analysis: `results/calibration-order/analysis.ipynb`. Per arm and target: polynomial shape \(P(\lambda)\) with feature marks, shortest mode length = span / order against 100 \(\text{\AA}\), coefficient magnitudes \(|a_n|\) against n, Occam term, photometric \(\chi^2\), raw spectral \(\chi^2\), dchi2_basew, \(\ln Z\), wall time; \(\tau_{\mathrm{dust}}\), \(t_{50}\) and mass-weighted age against the order-3 baseline; corner plots and SFH per fit.
 - Requested outputs: `arms.csv`, figures, the executed notebook, a wiki note.
 
 ## Amendments

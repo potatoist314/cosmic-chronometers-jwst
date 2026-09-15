@@ -1,0 +1,5 @@
+.katex{font-size:1em;color:inherit;text-transform:none;letter-spacing:normal}
+.katex-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:4px 0}
+.display-math{min-width:0;max-width:100%}
+th .katex,figcaption .katex{font-size:1em}
+@media print{.katex-display{overflow:visible;break-inside:avoid}}

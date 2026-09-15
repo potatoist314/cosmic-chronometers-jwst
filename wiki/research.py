@@ -470,7 +470,7 @@ def write_pages(records, notes, scratch, base, builder):
         if r["kind"] == "experiment":
             report = '<h1>%s</h1><div class="report-links"><a href="%s">%s</a><a href="%srecord/">Research record</a></div>' % (
                 esc(r["title"]), route(parent, base), esc(parent["title"]), route(r, base))
-            report += research_figures.render(r, project, scratch, base, asset_url, md)
+            report += research_figures.render(r, project, scratch, base, asset_url, md, builder.math_text)
             page(path, r["title"], '<article class="prose result-report">' + report + '</article>')
         search.append({"t": r["title"], "u": route(r, base), "d": r["date"],
                        "s": r["kind"].title(), "g": r["id"] + " " + r["status"],

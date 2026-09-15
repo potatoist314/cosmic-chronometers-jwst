@@ -93,7 +93,7 @@ M1_210210, 11 fitted photometric bands and 3523 spectral pixels; grid schema 2.1
 
 ## Results
 
-The saved timing is 1307.5 seconds sampling and 1386.14 seconds notebook execution. The saved log evidence is 230637.429 +/- 0.443.
+The saved timing is 1307.5 seconds sampling and 1386.14 seconds notebook execution. The saved log evidence is 230637.429 \(\pm\) 0.443.
 
 ## Caveats
 

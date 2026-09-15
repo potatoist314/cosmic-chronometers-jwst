@@ -311,7 +311,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
 
 ## Results
 
-Median photometric chi2/N = 7.04; median spectral chi2/N = 1.120. The refit table records a 0.44 Gyr age change for M1_210210 and a smaller change for M2_139662. [All target diagnostics](results/per-galaxy-diagnostics.csv) · [GPU refit comparison](results/rtx-5060-per-galaxy-diagnostics-verification/refit_vs_production.csv).
+Median photometric \(\chi^2/N\) = 7.04; median spectral \(\chi^2/N\) = 1.120. The refit table records a 0.44 Gyr age change for M1_210210 and a smaller change for M2_139662. [All target diagnostics](results/per-galaxy-diagnostics.csv) · [GPU refit comparison](results/rtx-5060-per-galaxy-diagnostics-verification/refit_vs_production.csv).
 
 ## Caveats
 

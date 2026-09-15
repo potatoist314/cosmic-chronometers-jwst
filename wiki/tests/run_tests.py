@@ -95,7 +95,7 @@ def author_words(notes: Path) -> set:
                      for m in re.finditer(r"<summary\b[^>]*>(.*?)</summary>", body, re.S | re.I))
         for line in head[1].splitlines():
             line = line.strip()
-            for key in ("title:", "section:", "theme:", "date:", "status:", "job:"):
+            for key in ("title:", "display_title:", "section:", "theme:", "date:", "status:", "job:"):
                 if line.startswith(key):
                     words.add(line.split(":", 1)[1].strip())
             if line.startswith("tags:"):

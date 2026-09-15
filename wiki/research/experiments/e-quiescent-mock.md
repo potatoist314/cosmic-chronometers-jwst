@@ -66,11 +66,11 @@ observed in quiescent LEGA-C galaxies
 
 ### Parameter conventions and remaining choices
 
-- logmass is log10 of total formed mass in solar masses, before stellar mass loss.
-- Z is log10 absolute total metallicity: -1.75 means about 0.0178, or 1.25 times
-  solar using Z_sun=0.0142. afe is [alpha/Fe] in dex.
-- The current eight SFH nodes are [0, 0.03, 0.1, 0.3, 1, 3, 5, t_universe] Gyr
-  before observation. Each logsfr_ratios entry is log10(SFR[i]/SFR[i+1]).
+- logmass is \(\log_{10}\) of total formed mass in solar masses, before stellar mass loss.
+- Z is \(\log_{10}\) absolute total metallicity: -1.75 means about 0.0178, or 1.25 times
+  solar using \(Z_\odot\)=0.0142. afe is \([\alpha/\mathrm{Fe}]\) in dex.
+- The current eight SFH nodes are [0, 0.03, 0.1, 0.3, 1, 3, 5, \(t_{\mathrm{universe}}\)] Gyr
+  before observation. Each logsfr_ratios entry is \(\log_{10}(\mathrm{SFR}_i/\mathrm{SFR}_{i+1})\).
   The oldest node depends on the redshift, which remains to be chosen.
 - Keep this intrinsic truth for the planned 1%, 5%, and 10% noise cases.
 - Redshift, broadening, and the precise noise prescription remain undecided.
@@ -86,6 +86,6 @@ observed in quiescent LEGA-C galaxies
 
 - [Bevacqua et al. (2023): LEGA-C quiescent masses and alpha enhancement; abstract and section 6](https://arxiv.org/abs/2308.03441)
 - [Nersesian et al. (2025): quiescent metallicity and dust; sections 4.2 and 5](https://arxiv.org/html/2502.03021v1)
-- [Tacchella et al. (2022): Z_sun=0.0142 convention; section 3.1](https://arxiv.org/html/2102.12494)
+- [Tacchella et al. (2022): \(Z_\odot\)=0.0142 convention; section 3.1](https://arxiv.org/html/2102.12494)
 - [Integrated fitting notebook: lookback_template and sfh_from_ratios](notebooks/ceridwen_integrated_photometry_spectra.ipynb)
 - [SFH transform: logsfr_ratios_to_sfh](ceridwen/ceridwen/model/transforms.py)

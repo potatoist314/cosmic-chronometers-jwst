@@ -1309,11 +1309,11 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
 
 ## Results
 
-| Arm | Median delta spectral chi2 | Median delta photometric chi2 | Median delta ln Z |
+| Arm | Median delta spectral \(\chi^2\) | Median delta photometric \(\chi^2\) | Median delta \(\ln Z\) |
 | --- | ---: | ---: | ---: |
 | dust_free | -1.92 | -10.65 | 8.18 |
 
-[Verdict table](results/fit-accuracy-knobs/verdict.csv) · [Per-target comparisons](results/fit-accuracy-knobs/before-after.csv). Spectral chi2 uses common pixels at a fixed 3% calibration floor.
+[Verdict table](results/fit-accuracy-knobs/verdict.csv) · [Per-target comparisons](results/fit-accuracy-knobs/before-after.csv). Spectral \(\chi^2\) uses common pixels at a fixed 3% calibration floor.
 
 ## Caveats
 

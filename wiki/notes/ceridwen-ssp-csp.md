@@ -19,7 +19,7 @@ This layer converts precomputed single-age spectra into one composite galaxy spe
 - `ssp_lg_age_gyr` has shape `(n_age,)` and stores `log10(age/Gyr)`.
 - `ssp_wave` has shape `(n_wave,)` and uses Angstrom.
 - `ssp_flux` has shape `(n_met, n_age, n_wave)` and uses `L_sun/Hz/M_sun`.
-- `ssp_resolution` has shape `(n_wave,)`. It stores the library Gaussian velocity width in km/s.
+- `ssp_resolution` has shape `(n_wave,)`. It stores the library Gaussian velocity width in \(\mathrm{km\,s^{-1}}\).
 
 `ceridwen/ceridwen/ssps/ssp_data.py:227-326` defines the contract and shape check. Lines 508-566 load HDF5 files. FSPS grid generation starts at line 568.
 
@@ -108,7 +108,7 @@ A CSP construction establishes static structure:
 The notebooks sample consecutive SFR log-ratios. The transform uses this sequence:
 
 1. **`logsfr_ratios`**Sampled ratios
-2. **Cumulative log SFR**Anchor the first node
+2. **Cumulative \(\log\mathrm{SFR}\)**Anchor the first node
 3. **Linear SFR**Apply `10 ** log_sfr`
 4. **Unit-mass SFH**Store as `theta["sfh"]`
 

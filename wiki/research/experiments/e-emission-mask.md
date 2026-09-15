@@ -877,11 +877,11 @@ Add [NeIII], H-epsilon, H-delta and H-gamma to the masked regions. All other set
 
 ## Results
 
-| Arm | Median delta spectral chi2 | Median delta photometric chi2 | Median delta ln Z |
+| Arm | Median delta spectral \(\chi^2\) | Median delta photometric \(\chi^2\) | Median delta \(\ln Z\) |
 | --- | ---: | ---: | ---: |
 | emis_wide | -2.44 | -4.57 | not comparable |
 
-[Verdict table](results/fit-accuracy-knobs/verdict.csv) · [Per-target comparisons](results/fit-accuracy-knobs/before-after.csv). Spectral chi2 uses common pixels at a fixed 3% calibration floor.
+[Verdict table](results/fit-accuracy-knobs/verdict.csv) · [Per-target comparisons](results/fit-accuracy-knobs/before-after.csv). Spectral \(\chi^2\) uses common pixels at a fixed 3% calibration floor.
 
 ## Caveats
 

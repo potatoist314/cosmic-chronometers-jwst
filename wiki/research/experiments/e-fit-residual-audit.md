@@ -13,7 +13,7 @@ result_groups: results/fit-accuracy-knobs
 
 ## Context
 
-Reanalyse the six poly3_total fits without new sampling. Compare spectral chi2 at a fixed 3% calibration floor, photometric pulls and prior-boundary occupancy.
+Reanalyse the six poly3_total fits without new sampling. Compare spectral \(\chi^2\) at a fixed 3% calibration floor, photometric pulls and prior-boundary occupancy.
 
 ## Figures
 

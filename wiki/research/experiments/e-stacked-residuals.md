@@ -28,13 +28,13 @@ Stack fitted native pixels from the revised 187-target run in rest-frame bins. C
   {
     "path": "wiki/analyses/dr2-quiescent-sample/M11_216899-spectrum.png",
     "view": "Comparison",
-    "caption": "M11_216899: revised fit; contributes 79% of summed pull² in the 3672 Å rest-frame bin (about 6234 Å observed).",
+    "caption": "M11_216899: revised fit; contributes 79% of summed \\(\\mathrm{pull}^2\\) in the 3672 \\(\\text{\\AA}\\) rest-frame bin (about 6234 \\(\\text{\\AA}\\) observed).",
     "target": ""
   },
   {
     "path": "wiki/analyses/dr2-quiescent-sample/M12_184916-spectrum.png",
     "view": "Comparison",
-    "caption": "M12_184916: revised fit; contributes 86% of summed pull² in the 5566 Å rest-frame bin (about 9348 Å observed).",
+    "caption": "M12_184916: revised fit; contributes 86% of summed \\(\\mathrm{pull}^2\\) in the 5566 \\(\\text{\\AA}\\) rest-frame bin (about 9348 \\(\\text{\\AA}\\) observed).",
     "target": ""
   },
   {
@@ -48,7 +48,7 @@ Stack fitted native pixels from the revised 187-target run in rest-frame bins. C
 
 ## Results
 
-The recorded median per-galaxy reduced chi2 is 1.086; median stacked mean pull squared is 1.149. Ca, Balmer, Mg and Fe windows show coherent residuals across the recipes. [Source table and method](wiki/notes/stacked-chi2-and-median-pull.md).
+The recorded median per-galaxy reduced \(\chi^2\) is 1.086; median stacked mean pull squared is 1.149. Ca, Balmer, Mg and Fe windows show coherent residuals across the recipes. [Source table and method](wiki/notes/stacked-chi2-and-median-pull.md).
 
 [Native-pixel stack](wiki/analyses/dr2-quiescent-sample/stacked-pull.png) · [Feature pulls](wiki/analyses/dr2-quiescent-sample/stacked-pull-by-feature.png)
 
@@ -60,6 +60,6 @@ The earlier stack interpolated spectra and rescaled errors. The current stack us
 
 - [Stacking implementation](scripts/plot_dr2_stacked_pull.py)
 - [Revised input table](results/dr2-quiescent-new-defaults-summary.csv)
-- [stacked-chi2-and-median-pull · source note](wiki/notes/stacked-chi2-and-median-pull.md)
+- [stacked-\(\chi^2\)-and-median-pull · source note](wiki/notes/stacked-chi2-and-median-pull.md)
 - [M11_216899 executed fit](results/dr2-quiescent-new-defaults/216899-M11_216899/M11_216899_executed.ipynb) — spectrum: cell 26, output 0 (zero-based).
 - [M12_184916 executed fit](results/dr2-quiescent-new-defaults/184916-M12_184916/M12_184916_executed.ipynb) — spectrum: cell 26, output 0 (zero-based).

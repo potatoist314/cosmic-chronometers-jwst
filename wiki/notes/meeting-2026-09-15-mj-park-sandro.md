@@ -19,25 +19,25 @@ Resolve two questions first:
 - Is Ceridwen fitting absolute metallicity or metallicity relative to solar?
 - When Ceridwen uses the FSPS grid, does the metallicity represent total Z or Fe only?
 
-These are very massive quiescent galaxies, log(M/M_sun) ≈ 11, but they appear extremely metal-poor. We expect at least roughly solar metallicity. Log Z is absolute, not solar!? So actually the error is not so bad. But alpha/Fe should still be +0.4?
+These are very massive quiescent galaxies, \(\log(M/M_\odot)\) \(\approx\) 11, but they appear extremely metal-poor. We expect at least roughly solar metallicity. \(\log Z\) is absolute, not solar!? So actually the error is not so bad. But \(\alpha/\mathrm{Fe}\) should still be +0.4?
 
 ### Calibration polynomial
 
-Very high priority and expected to be a short fix. Polynomial modes must **not be shorter than 100 Å**.
+Very high priority and expected to be a short fix. Polynomial modes must **not be shorter than 100 \(\text{\AA}\)**.
 
-The empirical rule of thumb is order ≈ wavelength range / 100, with no physical basis. Start with orders 5, 10, etc. Inspect the polynomial's shape. Too high an order can mimic spectral signals; too low an order can leave flux-calibration problems.
+The empirical rule of thumb is order \(\approx\) wavelength range / 100, with no physical basis. Start with orders 5, 10, etc. Inspect the polynomial's shape. Too high an order can mimic spectral signals; too low an order can leave flux-calibration problems.
 
 ### Literature comparison
 
 Compare established ages, metallicities and the methods used to infer them with Ceridwen. Include expected parameters for local elliptical galaxies, which should be the same population as the LEGA-C galaxies.
 
-For local ellipticals, expect alpha/Fe ≈ 0.4 and roughly solar metallicity, with no significant chemical evolution.
+For local ellipticals, expect \(\alpha/\mathrm{Fe}\) \(\approx\) 0.4 and roughly solar metallicity, with no significant chemical evolution.
 
 Look at published LEGA-C Prospector fits, their velocity dispersions, ages, metallicities and SFH priors. Which methods are rigorous? This is high priority and can start independently of the fitting fixes.
 
 ### One strong spectrum
 
-Pick one high-S/N spectrum with strong absorption features for a detailed comparison with the literature. This comes after resolving the metallicity issue.
+Pick one high-\(\mathrm{S/N}\) spectrum with strong absorption features for a detailed comparison with the literature. This comes after resolving the metallicity issue.
 
 ### Velocity dispersion
 
@@ -57,7 +57,7 @@ Investigate the Mg b fit. This is also a relatively minor issue.
 
 ### Noise calibration
 
-Investigate noise calibration. f_calib is hitting the prior's upper bound.
+Investigate noise calibration. \(f_{\mathrm{calib}}\) is hitting the prior's upper bound.
 
 ### Mass and metallicity
 

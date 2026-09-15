@@ -19,6 +19,26 @@ direction and scientific methodology.
 - Keep operational instructions in guides and factual execution plans in records.
   Do not add unsolicited research recommendations.
 
+## All pages: rendered scientific notation
+
+- Use LaTeX for scientific symbols and equations on every maintained wiki page,
+  including headings, prose, tables, figure captions and research-record displays.
+- Use `\(...\)` for inline math and `\[...\]` for display equations. Dollar signs
+  remain literal. For example, write `\([\alpha/\mathrm{Fe}]\)`,
+  `\(\sigma_\star\)`, `\(M_\odot\)` and `\(\chi^2\)`.
+- Keep code identifiers, exact source excerpts, URLs and commands literal in code
+  spans or blocks. Keep original quotations, handwriting, archived source files
+  and immutable activity records unchanged. Format the separate display wording.
+- Change notation only: preserve values, units, definitions, uncertainty and
+  meaning. Do not add commentary or infer a scientific correction during conversion.
+- Retain plain document titles and image alt text. Use `display_title` when a
+  note's visible title needs math; keep existing heading anchors available.
+- KaTeX and its fonts are served locally. `assets/math.js` renders explicit math,
+  including content inserted after load; no runtime CDN is required.
+- Check math syntax, phone/tablet layouts, dark mode and print when changing math
+  rendering. Do not rerun fits or regenerate saved plots to change page notation.
+- This is a wiki rule. Scientific equations in chat remain plain text.
+
 ## Result reporting: Liu Hao is the supervisor
 
 - Result pages report the work to Liu Hao as the research supervisor.

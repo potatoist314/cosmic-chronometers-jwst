@@ -43,11 +43,11 @@ Borghi Table 4 supplies a separate reference comparison.
 <details>
 <summary>Selection and comparison tables</summary>
 
-The production selection contains 194 eligible spectrum rows. Seven objects have a repeated eligible spectrum. The runner keeps the highest-S/N row for each `OBJECT`, which leaves 187 galaxy fits. Observed 4000-A coverage is recorded but does not remove a target (`scripts/run_ceridwen_vast_multi_gpu.py:79-137`).
+The production selection contains 194 eligible spectrum rows. Seven objects have a repeated eligible spectrum. The runner keeps the highest-\(\mathrm{S/N}\) row for each `OBJECT`, which leaves 187 galaxy fits. Observed 4000-A coverage is recorded but does not remove a target (`scripts/run_ceridwen_vast_multi_gpu.py:79-137`).
 
 The builder parses and checks exactly 140 Borghi IDs (`scripts/build_borghi2022_legac_dr2_subset.py:109-122`). It indexes every LEGA-C row by `OBJECT` (`lines 194-204`). It retains all matching spectrum rows. It also checks that every coordinate match is within 0.1 arcsec (`lines 209-264`).
 
-The result contains 143 spectrum rows for 140 galaxies. Two objects with repeat spectra cross the strict 215 km/s boundary. The object audit marks these objects as ambiguous (`data/processed/borghi2022_legac_dr2/README.md`).
+The result contains 143 spectrum rows for 140 galaxies. Two objects with repeat spectra cross the strict 215 \(\mathrm{km\,s^{-1}}\) boundary. The object audit marks these objects as ambiguous (`data/processed/borghi2022_legac_dr2/README.md`).
 
 </details>
 
@@ -71,7 +71,7 @@ The spectra-only notebook first removes invalid pixels, nebular-line regions, an
 <details>
 <summary>Published stellar indices</summary>
 
-The integrated notebook can use 13 LEGA-C Lick measurements and `Dn4000` instead of native spectral pixels. It reads the catalogue values and one-sigma errors. Invalid or missing rows are masked. The four configured targets retain 14, 10, 14, and 13 indices, respectively.
+The integrated notebook can use 13 LEGA-C Lick measurements and `Dn4000` instead of native spectral pixels. It reads the catalogue values and one-\(\sigma\) errors. Invalid or missing rows are masked. The four configured targets retain 14, 10, 14, and 13 indices, respectively.
 
 These catalogue values are emission corrected. The likelihood uses their published diagonal uncertainties because the catalogue does not provide an index covariance matrix. This assumption ignores correlations between indices that share continuum bands.
 

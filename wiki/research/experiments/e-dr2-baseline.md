@@ -3956,7 +3956,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
   {
     "path": "wiki/analyses/dr2-quiescent-sample/distributions-1d.png",
     "view": "Comparison",
-    "caption": "Baseline sample: parameter distributions for all 187 targets; ages are mass-weighted and log Z is absolute.",
+    "caption": "Baseline sample: parameter distributions for all 187 targets; ages are mass-weighted and \\(\\log Z\\) is absolute.",
     "target": ""
   },
   {

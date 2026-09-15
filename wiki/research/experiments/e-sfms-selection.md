@@ -13,7 +13,7 @@ result_groups:
 
 ## Context
 
-Compare SFR100 and formed mass from the baseline and revised runs with the recorded Whitaker and Leja curves at z = 0.73.
+Compare SFR100 and formed mass from the baseline and revised runs with the recorded Whitaker and Leja curves at \(z=0.73\).
 
 ## Figures
 

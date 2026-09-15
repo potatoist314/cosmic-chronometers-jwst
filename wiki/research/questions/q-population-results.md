@@ -17,4 +17,4 @@ Population summaries, age–redshift plots and residual diagnostics for the base
 - [dr2-quiescent-sample](wiki/notes/dr2-quiescent-sample.md)
 - [dr2-new-defaults](wiki/notes/dr2-new-defaults.md)
 - [per-galaxy-fit-diagnostics](wiki/notes/per-galaxy-fit-diagnostics.md)
-- [stacked-chi2-and-median-pull](wiki/notes/stacked-chi2-and-median-pull.md)
+- [stacked-\(\chi^2\)-and-median-pull](wiki/notes/stacked-chi2-and-median-pull.md)

@@ -30,12 +30,12 @@ Results dated 2026-09-04.
 
 | Analysis Domain | Key Scientific Finding | Primary Deliverables |
 | --- | --- | --- |
-| **187-Galaxy DR2 Sample** | Median mass-weighted age 3.02 Gyr. Median assembly interval Δt = 2.46 Gyr. Zero fit failures among 187 galaxies. | [Analysis Page](../dr2-quiescent-sample/) · [Summary CSV](/wiki/f/results/dr2-quiescent-summary.csv) · [Results Dir](/wiki/f/results/rtx-5060-dr2-quiescent-full-spectrum) |
+| **187-Galaxy DR2 Sample** | Median mass-weighted age 3.02 Gyr. Median assembly interval \(\Delta t\) = 2.46 Gyr. Zero fit failures among 187 galaxies. | [Analysis Page](../dr2-quiescent-sample/) · [Summary CSV](/wiki/f/results/dr2-quiescent-summary.csv) · [Results Dir](/wiki/f/results/rtx-5060-dr2-quiescent-full-spectrum) |
 | **Borghi+2022 Age vs z** | Ceridwen medians stay flat near 3.0 Gyr, averaging +0.26 Gyr above re-binned N=140 Borghi catalogue. Velocity dispersion split shows a weak gradient. | [Figure PNG](/wiki/f/results/figures/borghi2022-age-vs-z.png) · [Vector PDF](/wiki/f/results/figures/borghi2022-age-vs-z.pdf) · [Source Table](/wiki/f/data/processed/borghi2022_legac_dr2/borghi2022_legac_dr2_spectrum_matches copy.tsv) |
-| **Absorption-Line Mask** | Masked and feature modes keep tilt bias and widen posteriors 1.0–1.6×. Shifts real targets up to 22σ. | [Analysis Page](../absorption-line-mask/) · [Summary CSV](/wiki/f/results/absorption-mask/summary.csv) · [Grid Results](/wiki/f/results/absorption-mask) |
+| **Absorption-Line Mask** | Masked and feature modes keep tilt bias and widen posteriors 1.0–1.6\(\times\). Shifts real targets up to 22\(\sigma\). | [Analysis Page](../absorption-line-mask/) · [Summary CSV](/wiki/f/results/absorption-mask/summary.csv) · [Grid Results](/wiki/f/results/absorption-mask) |
 | **Calibration & Tilt Origin** | Spectra are brighter than 3" photometry by 1.26–1.48. Corrected photometry eliminates M4 tilt (+0.4%). M5 retains a −20% tilt. | [Worktree Page](/wiki/f/tmp/worktrees/astro-calibration-polynomial/wiki/analyses/ceridwen-calibration-polynomial.html) · [Arms CSV](/wiki/f/tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02/arms.csv) · [Tilt Results](/wiki/f/tmp/worktrees/astro-calibration-polynomial/results/tilt-origin-2026-09-02) |
-| **Formation Timescales** | Median Δt is 2.46 Gyr. Flat across formation epoch. Spearman correlation with mass and [α/Fe] is 0.00 in 7-bin SFH. | [Epoch PNG](figures/dr2-quiescent-sample/dt-vs-formation-epoch.png) · [Mass PNG](figures/dr2-quiescent-sample/dt-vs-mass.png) · [Alpha PNG](figures/dr2-quiescent-sample/dt-vs-alpha.png) |
-| **Fit Quality Diagnostics** | All 187 fits succeeded. Worst joint reduced χ²/ν values are 2.69 (139662), 2.55 (253688), and 2.34 (101089). | [Quality PNG](figures/dr2-quiescent-sample/fit-quality.png) · [Quality PDF](figures/dr2-quiescent-sample/fit-quality.pdf) |
+| **Formation Timescales** | Median \(\Delta t\) is 2.46 Gyr. Flat across formation epoch. Spearman correlation with mass and \([\alpha/\mathrm{Fe}]\) is 0.00 in 7-bin SFH. | [Epoch PNG](figures/dr2-quiescent-sample/dt-vs-formation-epoch.png) · [Mass PNG](figures/dr2-quiescent-sample/dt-vs-mass.png) · [Alpha PNG](figures/dr2-quiescent-sample/dt-vs-alpha.png) |
+| **Fit Quality Diagnostics** | All 187 fits succeeded. Worst joint reduced \(\chi^2/\nu\) values are 2.69 (139662), 2.55 (253688), and 2.34 (101089). | [Quality PNG](figures/dr2-quiescent-sample/fit-quality.png) · [Quality PDF](figures/dr2-quiescent-sample/fit-quality.pdf) |
 | **Interactive Checkpoint Evolution** | Interactive view of the accepted prior predictive, last retained checkpoint, and converged rescue posterior (nested sampling solution after sampler convergence). | [Open interactive viewer](../ceridwen-checkpoint-spectrum-evolution/) · [Screenshots Dir](../../../../.claude/scripts/hermes-bridge/reports/ceridwen-checkpoint-animation/screenshots) |
 
 <div id="scientific-terms-and-definitions"></div>
@@ -43,7 +43,7 @@ Results dated 2026-09-04.
 <details>
 <summary>187-galaxy DR2 quiescent sample (final set)</summary>
 
-Analysis page: [analyses/dr2-quiescent-sample.html](../dr2-quiescent-sample/). Master catalogue table: [results/dr2-quiescent-summary.csv](/wiki/f/results/dr2-quiescent-summary.csv) (187 galaxies, 49 columns including t20, t50, t80, Δt). Production run directory: [results/rtx-5060-dr2-quiescent-full-spectrum/](/wiki/f/results/rtx-5060-dr2-quiescent-full-spectrum) (187 individual target folders). Exploratory chronometer notebook: [ceridwen_cosmic_chronometer.ipynb](/wiki/f/results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb) and summary data: [ceridwen_cosmic_chronometer_summary.h5](/wiki/f/results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer_summary.h5). Builders: [build_dr2_quiescent_summary.py](/wiki/f/scripts/build_dr2_quiescent_summary.py), [plot_dr2_headline_candidates.py](/wiki/f/archive/scripts/plot_dr2_headline_candidates.py).
+Analysis page: [analyses/dr2-quiescent-sample.html](../dr2-quiescent-sample/). Master catalogue table: [results/dr2-quiescent-summary.csv](/wiki/f/results/dr2-quiescent-summary.csv) (187 galaxies, 49 columns including \(t_{20}\), \(t_{50}\), \(t_{80}\), \(\Delta t\)). Production run directory: [results/rtx-5060-dr2-quiescent-full-spectrum/](/wiki/f/results/rtx-5060-dr2-quiescent-full-spectrum) (187 individual target folders). Exploratory chronometer notebook: [ceridwen_cosmic_chronometer.ipynb](/wiki/f/results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb) and summary data: [ceridwen_cosmic_chronometer_summary.h5](/wiki/f/results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer_summary.h5). Builders: [build_dr2_quiescent_summary.py](/wiki/f/scripts/build_dr2_quiescent_summary.py), [plot_dr2_headline_candidates.py](/wiki/f/archive/scripts/plot_dr2_headline_candidates.py).
 
 </details>
 
@@ -91,7 +91,7 @@ Standalone figure: [results/figures/borghi2022-age-vs-z.png](/wiki/f/results/fig
 <details>
 <summary>Details</summary>
 
-**Finding.** Ceridwen mass-weighted ages stay flat near 3.0 Gyr from z=0.6 to z=0.9. They average +0.26 Gyr above re-binned Borghi values. The velocity dispersion split (σ < 215 km/s versus σ ≥ 215 km/s) shows a smaller difference than the gradient in Borghi+2022.
+**Finding.** Ceridwen mass-weighted ages stay flat near 3.0 Gyr from \(z=0.6\) to \(z=0.9\). They average +0.26 Gyr above re-binned Borghi values. The velocity dispersion split (\(\sigma\) < 215 km/s versus σ ≥ 215 km/s) shows a smaller difference than the gradient in Borghi+2022.
 
 </details>
 
@@ -107,7 +107,7 @@ Draft analysis page: [analyses/absorption-line-mask.html](../absorption-line-mas
 <figcaption><strong>Absorption feature windows PNG.</strong> The spectrum plot shows observed-frame flux for target galaxy M5_172669.</figcaption>
 <details>
 <summary>Details</summary>
-<p>The orange line traces kept feature pixels inside plus-or-minus 1000 km/s line windows against the grey full fitted spectrum. The mask keeps 1389 of 3602 fitted pixels and excludes 2213 (61.4 percent). </p>
+<p>The orange line traces kept feature pixels inside plus-or-minus 1000 \(\mathrm{km\,s^{-1}}\) line windows against the grey full fitted spectrum. The mask keeps 1389 of 3602 fitted pixels and excludes 2213 (61.4 percent). </p>
 </details>
 </figure>
 
@@ -116,7 +116,7 @@ Draft analysis page: [analyses/absorption-line-mask.html](../absorption-line-mas
 <figcaption><strong>Absorption-mask real-target posteriors PNG.</strong> Posterior medians compare six stellar parameters across three real DR2 galaxy targets.</figcaption>
 <details>
 <summary>Details</summary>
-<p>Masked pixel modes shift parameter medians by up to 22 full-spectrum sigma relative to baseline posteriors. Bars show the 16th to 84th percentile range for each sample object. </p>
+<p>Masked pixel modes shift parameter medians by up to 22 full-spectrum \(\sigma\) relative to baseline posteriors. Bars show the 16th to 84th percentile range for each sample object. </p>
 </details>
 </figure>
 
@@ -151,7 +151,7 @@ Worktree analysis page (pushed on branch `origin/calibration-polynomial` at comm
 <figcaption><strong>Calibration-polynomial explainer PNG.</strong> Diagram shows how a multiplicative polynomial maps spectrum flux calibration onto broadband photometry.</figcaption>
 <details>
 <summary>Details</summary>
-<p>The top panel compares mock, true, and calibrated spectra against true and mock photometry points with error bars. The mock mimics one LEGA-C galaxy observation with a 4 percent tilt plus 2 percent curvature at z = 0.604. The bottom panel compares the data-to-model ratio against the injected distortion, the recovered order-3 polynomial, and a scalar-only model. </p>
+<p>The top panel compares mock, true, and calibrated spectra against true and mock photometry points with error bars. The mock mimics one LEGA-C galaxy observation with a 4 percent tilt plus 2 percent curvature at \(z=0.604\). The bottom panel compares the data-to-model ratio against the injected distortion, the recovered order-3 polynomial, and a scalar-only model. </p>
 </details>
 </figure>
 
@@ -220,9 +220,10 @@ Worktree analysis page (pushed on branch `origin/calibration-polynomial` at comm
 
 
 <details>
-<summary>Formation timescales (Δt)</summary>
+<summary>Formation timescales (\(\Delta t\))</summary>
+<div id="formation-timescales-t"></div>
 
-Analysis script: [scripts/plot_dr2_formation_timescale.py](/wiki/f/scripts/plot_dr2_formation_timescale.py). The mass assembly interval Δt equals t20 − t80. This value measures the lookback time interval during which the middle 60% of stellar mass formed.
+Analysis script: [scripts/plot_dr2_formation_timescale.py](/wiki/f/scripts/plot_dr2_formation_timescale.py). The mass assembly interval \(\Delta t\) equals \(t_{20}\) − \(t_{80}\). This value measures the lookback time interval during which the middle 60% of stellar mass formed.
 
 </details>
 
@@ -256,14 +257,14 @@ Analysis script: [scripts/plot_dr2_formation_timescale.py](/wiki/f/scripts/plot_
 <details>
 <summary>Details</summary>
 
-**Finding.** Median Δt is 2.46 Gyr across the sample. There is no significant correlation between Δt and stellar mass (Spearman 0.00) or [α/Fe] (Spearman 0.00). The coarse 7-bin SFH basis constrains timescale resolution.
+**Finding.** Median \(\Delta t\) is 2.46 Gyr across the sample. There is no significant correlation between \(\Delta t\) and stellar mass (Spearman 0.00) or \([\alpha/\mathrm{Fe}]\) (Spearman 0.00). The coarse 7-bin SFH basis constrains timescale resolution.
 
 </details>
 
 <details>
 <summary>Fit quality diagnostics</summary>
 
-Diagnostic plotting script: [scripts/plot_dr2_distributions_quality.py](/wiki/f/scripts/plot_dr2_distributions_quality.py). Covers likelihood calls, Bayesian log-evidence (logZ, marginal likelihood), Effective Sample Size (ESS, independent posterior samples), and joint reduced χ²/ν across all 187 galaxies.
+Diagnostic plotting script: [scripts/plot_dr2_distributions_quality.py](/wiki/f/scripts/plot_dr2_distributions_quality.py). Covers likelihood calls, Bayesian log-evidence (logZ, marginal likelihood), Effective Sample Size (ESS, independent posterior samples), and joint reduced \(\chi^2/\nu\) across all 187 galaxies.
 
 </details>
 
@@ -279,7 +280,7 @@ Diagnostic plotting script: [scripts/plot_dr2_distributions_quality.py](/wiki/f/
 <details>
 <summary>Details</summary>
 
-**Finding.** Zero sampling failures (187/187 completed). The worst joint χ²/ν values are 2.69 (galaxy 139662), 2.55 (galaxy 253688), and 2.34 (galaxy 101089).
+**Finding.** Zero sampling failures (187/187 completed). The worst joint \(\chi^2/\nu\) values are 2.69 (galaxy 139662), 2.55 (galaxy 253688), and 2.34 (galaxy 101089).
 
 </details>
 

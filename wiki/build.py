@@ -161,10 +161,28 @@ LINK = re.compile(r"\[([^\]]*)\]\(([^)\s]+)\)")
 IMAGE = re.compile(r"!\[([^\]]*)\]\(([^)\s]+)\)")
 BOLD = re.compile(r"\*\*([^*]+)\*\*")
 ITALIC = re.compile(r"(?<![*\w])\*([^*\n]+)\*(?!\*)")
+MATH = re.compile(r"\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]")
+
+
+def math_text(text: str) -> str:
+    """Plain search/metadata text for the wiki's explicit TeX notation."""
+    def plain_match(match):
+        value = match[0][2:-2]
+        value = re.sub(r"\\(?:mathrm|mathbf|mathit|mathcal|operatorname|text)\{([^{}]*)\}", r"\1", value)
+        value = re.sub(r"\\(?:left|right|quad|qquad|allowbreak)\b|\\[,;!]", "", value)
+        value = re.sub(r"\\([a-zA-Z]+)", r"\1", value)
+        return value.translate(str.maketrans("", "", "{}"))
+    return MATH.sub(plain_match, text)
+
+
+def table_cells(line: str) -> list[str]:
+    """Keep TeX absolute-value bars inside their Markdown table cell."""
+    protected = MATH.sub(lambda m: m[0].replace("|", "\x01"), line)
+    return [cell.strip().replace("\x01", "|") for cell in protected.strip().strip("|").split("|")]
 
 
 def inline(text: str, base: str, source_dir: str = "") -> str:
-    """Inline Markdown to HTML. Code spans are protected from every other rule."""
+    """Inline Markdown to HTML, preserving code and explicit TeX spans."""
     spans: list[str] = []
 
     def stash(m):
@@ -172,6 +190,10 @@ def inline(text: str, base: str, source_dir: str = "") -> str:
         return "\x00%d\x00" % (len(spans) - 1)
 
     text = INLINE_CODE.sub(stash, text)
+    def stash_math(m):
+        spans.append(esc(m[0]))
+        return "\x00%d\x00" % (len(spans) - 1)
+    text = MATH.sub(stash_math, text)
     text = esc(text)
     text = IMAGE.sub(lambda m: image_tag(url(m.group(2), base, source_dir), m.group(1)), text)
     text = LINK.sub(lambda m: link_tag(url(m.group(2), base, source_dir), m.group(1)), text)
@@ -240,6 +262,15 @@ def markdown(text: str, base: str, source_dir: str = "") -> str:
             out.append("<pre><code>%s</code></pre>" % esc("\n".join(body)))
             continue
 
+        if stripped.startswith(r"\["):                    # display math
+            block = [line]
+            i += 1
+            while r"\]" not in block[-1] and i < len(lines):
+                block.append(lines[i])
+                i += 1
+            out.append('<div class="display-math">%s</div>' % esc("\n".join(block)))
+            continue
+
         if re.match(r"^<details\b", stripped):               # collapsed block
             block, depth = [], 0
             while i < len(lines):
@@ -276,7 +307,7 @@ def markdown(text: str, base: str, source_dir: str = "") -> str:
         if stripped.startswith("|"):                         # table
             rows = []
             while i < len(lines) and lines[i].strip().startswith("|"):
-                rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")])
+                rows.append(table_cells(lines[i]))
                 i += 1
             out.append(table_html(rows, base, source_dir))
             continue
@@ -305,7 +336,7 @@ def markdown(text: str, base: str, source_dir: str = "") -> str:
         para = [stripped]                                    # paragraph
         i += 1
         while i < len(lines) and lines[i].strip() and not re.match(
-                r"^\s*(```|#{1,6}\s|\||-\s|\d+\.\s|</?(figure|div|iframe|table|dl|details|summary)\b|:\s)",
+                r"^\s*(```|\\\[|#{1,6}\s|\||-\s|\d+\.\s|</?(figure|div|iframe|table|dl|details|summary)\b|:\s)",
                 lines[i]):
             para.append(lines[i].strip())
             i += 1
@@ -334,6 +365,11 @@ def details_html(block, base, source_dir=""):
     if sm:
         label = re.sub(r"<[^>]+>", "", sm.group(1)).strip() or DETAILS_LABEL
         inner = inner[:sm.start()] + inner[sm.end():]
+    if label.startswith(("Original", "Page-by-page transcription", "Source and request")):
+        if re.search(r'class=["\']', attrs):
+            attrs = re.sub(r'(class=["\'])', r'\1original-source ', attrs, count=1)
+        else:
+            attrs += ' class="original-source"'
     # A named block is a section of the note, so the rail can link to it.
     anchor = ' id="%s"' % slugify(label) if label != DETAILS_LABEL else ""
     return "<details%s><summary%s>%s</summary>%s</details>" % (
@@ -562,7 +598,7 @@ def slugify(text: str) -> str:
 def plain(html_text: str) -> str:
     """Visible text of rendered HTML, for the search index."""
     text = re.sub(r"<(script|style)\b.*?</\1>", " ", html_text, flags=re.S)
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", text)).strip()
+    return math_text(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", text)).strip())
 
 
 # ---------------------------------------------------------- resumability
@@ -596,6 +632,8 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>%(title)s</title>
 <link rel="stylesheet" href="%(base)s/style.css">
+<link rel="stylesheet" href="%(base)s/vendor/katex-0.18.7/katex.min.css">
+<link rel="stylesheet" href="%(base)s/math.css">
 <link rel="icon" type="image/png" sizes="32x32" href="%(base)s/icons/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="%(base)s/icons/apple-touch-icon.png">
 <link rel="manifest" href="%(base)s/site.webmanifest">
@@ -618,6 +656,9 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 </main>
 </div>
 <script src="%(base)s/search.js" defer></script>
+<script src="%(base)s/vendor/katex-0.18.7/katex.min.js" defer></script>
+<script src="%(base)s/vendor/katex-0.18.7/contrib/auto-render.min.js" defer></script>
+<script src="%(base)s/math.js" defer></script>
 </body></html>
 """ % {"title": esc(title), "base": base, "name": SITE_NAME,
        "rail": rail, "body": body, "extra": extra_head,
@@ -654,7 +695,7 @@ def feed_rows(notes, base):
         rows.append(
             '<li><span class="d">%s</span><span><a class="t" href="%s/n/%s/">%s</a>'
             '<span class="k%s">%s</span></span></li>'
-            % (esc(n["date"]), base, n["slug"], esc(n["title"]), cls, esc(kind)))
+            % (esc(n["date"]), base, n["slug"], esc(n.get("display_title", n["title"])), cls, esc(kind)))
     return '<ul class="feed">%s</ul>' % "".join(rows)
 
 
@@ -748,6 +789,8 @@ def _build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = No
     (scratch / "style.css").write_text(stylesheet(base) + research.CSS +
                                       (ROOT / "assets/activity.css").read_text(), encoding="utf-8")
     shutil.copy2(ROOT / "assets/activity.js", scratch / "activity.js")
+    for filename in ("math.js", "math.css"):
+        shutil.copy2(ROOT / "assets" / filename, scratch / filename)
     shutil.copytree(ROOT / "assets/vendor", scratch / "vendor")
     (scratch / "search.js").write_text(SEARCH_JS.replace("__BASE__", base), encoding="utf-8")
     (scratch / "site.webmanifest").write_text(json.dumps({
@@ -795,7 +838,7 @@ def _build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = No
 
         page = ('<div class="eyebrow">%s</div><h1>%s</h1>%s<div class="prose">%s%s</div>%s'
                 '<div class="foot">%s</div>'
-                % ("".join(eyebrow), esc(note["title"]), superseded_banner(note, notes, base),
+                % ("".join(eyebrow), esc(note.get("display_title", note["title"])), superseded_banner(note, notes, base),
                    research.note_backlinks(note["slug"], research_records, base) + body_html,
                    thread_html(thread), ask_box(note, base), "".join(pager)))
         dest = scratch / "n" / note["slug"]
@@ -871,8 +914,11 @@ def _build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = No
 
     renderer = SimpleNamespace(PROJECT=PROJECT, RESEARCH=research_dir, SITE_NAME=SITE_NAME, markdown=markdown,
                                slugify=slugify, shell=shell, rail_sections=rail_sections,
-                               feed_rows=feed_rows)
+                               feed_rows=feed_rows, math_text=math_text)
     index.extend(research.write_pages(research_records, notes, scratch, base, renderer))
+    for entry in index:
+        # Retain the exact source too, for code identifiers and TeX searches.
+        entry["x"] += " " + math_text(entry["x"])
     (scratch / "search.json").write_text(json.dumps(index, separators=(",", ":")), encoding="utf-8")
 
     (scratch / "feed.xml").write_text(rss(notes, base), encoding="utf-8")
@@ -893,7 +939,7 @@ def thread_html(turns):
         return ""
     rows = []
     for t in turns:
-        rows.append('<div class="turn"><p class="q"><b>Q</b> <span class="d">%s</span> %s</p>'
+        rows.append('<div class="turn"><p class="q no-math"><b>Q</b> <span class="d">%s</span> %s</p>'
                     '<p class="a"><b>A</b> %s</p></div>'
                     % (esc(t.get("date", "")), esc(t["q"]), esc(t["a"])))
     return '<div class="thread"><h2 id="thread">Thread</h2>%s</div>' % "".join(rows)

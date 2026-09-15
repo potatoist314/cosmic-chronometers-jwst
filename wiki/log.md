@@ -742,3 +742,10 @@
 - Change: Cached finished ink, limited drawing to affected sheets once per display frame, removed repeated canvas resets and deep undo copies, and deferred draft writes until pauses between strokes. Height-only layout changes preserve the active stroke. Removed Pen/Eraser controls. Repeated scribbles over ink erase their covered area; original gesture points remain in saved revisions.
 - Validation: Runtime tests cover 128 samples with 500 finished strokes, eraser rendering, cross-sheet input, immutable undo snapshots and scribble recognition over existing ink. Saved browser previews preserve ink, erased areas and figure pixels.
 - Validation status: All 13 activity tests and eight ink runtime tests pass. Publication is blocked by stale research paths after the concurrent archive move; iPad gesture and latency verification remain pending.
+
+## [2026-09-15] codebase | Rendered scientific notation
+
+- Change: Added locally served KaTeX and fonts to the shared page shell; converted scientific notation in maintained notes, tables, captions and research displays. Saved the standing rule in `AGENTS.md`.
+- Preservation: Original wording and source excerpts stay literal; figure files, parameter values and definitions were not changed by this notation update. Previous heading links remain available.
+- Validation: Eight math tests passed, including compilation of authored expressions with the vendored renderer. Browser checks covered 360, 736 and 1024 CSS pixels, light/dark themes, print and inserted captions. The complete unit run passed 53 of 54 tests; the remaining corpus check reports the unrelated `results/calibration-speedup` directory missing from `result_groups`.
+- Build: An initial 35-note build passed. The later audit and rebuild were blocked when a concurrent archive move removed paths under `results/rtx-5060-dr2-quiescent-full-spectrum`; the saved public site was retained.

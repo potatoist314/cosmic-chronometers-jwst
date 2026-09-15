@@ -125,7 +125,7 @@ Other inactive method modules remain in `src/` for reproducibility.
 <details>
 <summary>Active data scripts</summary>
 
-`build_borghi2022_legac_dr2_subset.py` is the main data transformation script. Its `main` function reads both catalogues and checks the required columns. It matches object IDs and checks coordinate separations. It retains repeat spectra and applies the strict 215 km/s split. Finally, it writes the joined and audit tables (`lines 176-358`).
+`build_borghi2022_legac_dr2_subset.py` is the main data transformation script. Its `main` function reads both catalogues and checks the required columns. It matches object IDs and checks coordinate separations. It retains repeat spectra and applies the strict 215 \(\mathrm{km\,s^{-1}}\) split. Finally, it writes the joined and audit tables (`lines 176-358`).
 
 `download_legac_dr2_spectra.py` can continue an incomplete download. It checks the catalogue filenames (`lines 47-61`) and each FITS structure (`lines 64-79`). It downloads each file with a `.part` suffix and then renames the complete file atomically (`lines 82-110`). Finally, it checks the complete file set (`lines 113-146`).
 

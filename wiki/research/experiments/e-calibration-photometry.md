@@ -1297,7 +1297,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
 
 ## Results
 
-The poly3_total arm has the smallest photometric chi2 in each target. Adding the polynomial alone leaves substantial photometric residuals. [Arms table](results/calibration-polynomial-dr2/arms.csv) records all three settings.
+The poly3_total arm has the smallest photometric \(\chi^2\) in each target. Adding the polynomial alone leaves substantial photometric residuals. [Arms table](results/calibration-polynomial-dr2/arms.csv) records all three settings.
 
 [Parameter comparison](results/calibration-polynomial-dr2/parameters-before-after.png) · [Calibration vectors](results/calibration-polynomial-dr2/polynomial-vectors.png)
 

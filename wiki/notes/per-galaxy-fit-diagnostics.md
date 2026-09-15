@@ -14,13 +14,13 @@ Sample
 : 187 galaxies, DR2 quiescent full-spectrum fits, `results/rtx-5060-dr2-quiescent-full-spectrum/`. Every galaxy: [gallery](../per-galaxy-diagnostics-gallery/).
 
 Stellar grid
-: C3K v2.3 high-res (c3k_hr, vt=10 km/s), MIST v2.5 (aMIST, alpha-variable) isochrones, Kroupa (2001) IMF. Axes [alpha/Fe] -0.2, 0, 0.2, 0.4, 0.6, log10 Z 13 nodes, log10(age/Gyr) 107 nodes.
+: C3K v2.3 high-res (c3k_hr, vt=10 \(\mathrm{km\,s^{-1}}\)), MIST v2.5 (aMIST, alpha-variable) isochrones, Kroupa (2001) IMF. Axes \([\alpha/\mathrm{Fe}]\) -0.2, 0, 0.2, 0.4, 0.6, \(\log_{10} Z\) 13 nodes, \(\log_{10}(\mathrm{age}/\mathrm{Gyr})\) 107 nodes.
 
 Star-formation history
 : Constant star-formation rate in each of 7 lookback bins. Edges 0, 0.03, 0.1, 0.3, 1, 3, 5 Gyr, then the universe age at the galaxy redshift. Metallicity constant in time.
 
 Free parameters and priors
-: 13 free values. Z Uniform(-4.233, -1.233). afe Uniform(-0.2, 0.6). diffuse_tau_kc Uniform(0, 2). log_f_calib Uniform(-4.605, -2.303). logmass Uniform(8, 13). logsfr_ratios Uniform(-3, 3), 7 values. spectrum_scaling ClippedNormal(mean=1, sigma=0.3, low=0.2, high=3).
+: 13 free values. Z \(\operatorname{Uniform}(-4.233, -1.233)\). afe \(\operatorname{Uniform}(-0.2, 0.6)\). diffuse_tau_kc \(\operatorname{Uniform}(0, 2)\). log_f_calib \(\operatorname{Uniform}(-4.605, -2.303)\). logmass \(\operatorname{Uniform}(8, 13)\). logsfr_ratios \(\operatorname{Uniform}(-3, 3)\), 7 values. spectrum_scaling ClippedNormal(mean=1, \(\sigma\)=0.3, low=0.2, high=3).
 
 Fixed
 : Redshift at each galaxy's catalogue value, 0.603 to 0.987 across the sample. Dust index of the attenuation curve at -0.7. Stellar velocity dispersion at the catalogue value.
@@ -29,7 +29,7 @@ Dust, nebular emission and IGM
 : kriek_conroy attenuation on the diffuse component. Birth-cloud dust false. Dust emission false. Nebular emission none. IGM absorption none.
 
 Spectrum calibration
-: No polynomial, order 0. A free fractional noise floor f_calib between 1 and 10 percent of the model flux. A free multiplicative scale spectrum_scaling.
+: No polynomial, order 0. A free fractional noise floor \(f_{\mathrm{calib}}\) between 1 and 10 percent of the model flux. A free multiplicative scale spectrum_scaling.
 
 Photometry anchor
 : cosmos_ap3, the 12 COSMOS2015 3 arcsecond aperture fluxes with total IRAC and no offsets. The model photometry never carries the spectrum scale or a calibration polynomial.
@@ -50,7 +50,7 @@ Coloured windows on all three panels mark the nine major absorption features, re
 
 <figure>
 <img src="figures/per-galaxy-diagnostics/M1_210210-sf_timescales.png" alt="M1_210210: fraction of final mass formed earlier than each lookback time with t10 to t90 and their posterior intervals">
-<figcaption>Mass formed before each lookback time, t50 4.68 Gyr.</figcaption>
+<figcaption>Mass formed before each lookback time, \(t_{50}\) 4.68 Gyr.</figcaption>
 </figure>
 
 <details>
@@ -60,44 +60,44 @@ Method, checks, flags and the GPU verification in full: `reports/astro-chisq-sf-
 
 | Term | Definition |
 | --- | --- |
-| pull | (observed − model) / sigma |
-| stored | pointwise posterior median q50 of 200 draws, sigma_eff² = sigma_obs² + (f_calib · abs(q50))² |
-| at theta_ML | Ceridwen's own likelihood at the dead point with the highest stored log-likelihood, with the sampler's sigma |
-| chi²/N | chi² over the fitted data of one data set. The 13 free parameters are shared, so no per-data-set ndof exists |
-| t_X | lookback time by which X percent of the final stellar mass had formed, so t10 ≥ t20 ≥ t50 ≥ t80 ≥ t90 |
+| pull | (observed − model) / \(\sigma\) |
+| stored | pointwise posterior median \(q_{50}\) of 200 draws, \(\sigma_{\mathrm{eff}}^2=\sigma_{\mathrm{obs}}^2+(f_{\mathrm{calib}}\cdot|q_{50}|)^2\) |
+| at theta_ML | Ceridwen's own likelihood at the dead point with the highest stored log-likelihood, with the sampler's \(\sigma\) |
+| \(\chi^2/N\) | \(\chi^2\) over the fitted data of one data set. The 13 free parameters are shared, so no per-data-set ndof exists |
+| t_X | lookback time by which X percent of the final stellar mass had formed, so t10 ≥ \(t_{20}\) ≥ \(t_{50}\) ≥ \(t_{80}\) ≥ \(t_{90}\) |
 
 | Sample quantity | Median | 5-95 percent | Flagged |
 | --- | --- | --- | --- |
-| photometric χ²/N | 7.04 | 2.00 to 17.49 | 157 above 3 |
-| spectral χ²/N | 1.120 | 1.026 to 1.488 | 10 above 1.5 |
-| calibration floor f_calib | 4.8% | — | 17 at the 10% prior bound |
+| photometric \(\chi^2/N\) | 7.04 | 2.00 to 17.49 | 157 above 3 |
+| spectral \(\chi^2/N\) | 1.120 | 1.026 to 1.488 | 10 above 1.5 |
+| calibration floor \(f_{\mathrm{calib}}\) | 4.8% | — | 17 at the 10% prior bound |
 | pixels with abs(pull) > 4 | 5 | — | 173 galaxies, maximum 82 |
-| t10, t20, t50, t80, t90 [Gyr] | 4.64, 4.23, 3.02, 1.80, 1.39 | — | — |
+| t10, \(t_{20}\), \(t_{50}\), \(t_{80}\), \(t_{90}\) [Gyr] | 4.64, 4.23, 3.02, 1.80, 1.39 | — | — |
 
 3 of the 187 galaxies carry no flag.
 
 | Band | u* | B | V | r+ | i+ | z+ | Y | J | H | Ks | 3.6 µm | 4.5 µm |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | median pull | −0.59 | −1.67 | +1.59 | −0.08 | −1.95 | +0.23 | −1.76 | −1.02 | −0.97 | +0.67 | +3.65 | +4.23 |
-| mean χ² | 5.8 | 11.2 | 4.8 | 5.0 | 6.8 | 3.5 | 3.8 | 1.9 | 3.4 | 4.0 | 20.7 | 23.7 |
+| mean \(\chi^2\) | 5.8 | 11.2 | 4.8 | 5.0 | 6.8 | 3.5 | 3.8 | 1.9 | 3.4 | 4.0 | 20.7 | 23.7 |
 
 | Check | Result |
 | --- | --- |
-| stored masks, sigma and ndof against the sampler's arrays | equal for 187 of 187 |
-| stored pulls and χ² totals from their definitions | reproduce to 1e-12 |
-| rebuilt effective sigma against the stored one | 0.3 percent |
-| spectral χ² at theta_ML against the stored value | +0.1 percent median, 2 percent maximum |
-| photometric χ² at theta_ML against the stored value | ±4 percent (16-84), 57 percent maximum |
-| ln L recomputed on the CPU against the stored GPU value | median −1.4, 16-84 range −4.0 to +0.3 |
+| stored masks, \(\sigma\) and ndof against the sampler's arrays | equal for 187 of 187 |
+| stored pulls and \(\chi^2\) totals from their definitions | reproduce to 1e-12 |
+| rebuilt effective \(\sigma\) against the stored one | 0.3 percent |
+| spectral \(\chi^2\) at theta_ML against the stored value | +0.1 percent median, 2 percent maximum |
+| photometric \(\chi^2\) at theta_ML against the stored value | \(\pm\)4 percent (16-84), 57 percent maximum |
+| \(\ln L\) recomputed on the CPU against the stored GPU value | median −1.4, 16-84 range −4.0 to +0.3 |
 
 RTX 5060 refits of two galaxies with the production settings and seeds, Vast.ai instance 49915972, $0.052 for 0.427 h, destroyed. Files in `results/rtx-5060-per-galaxy-diagnostics-verification/`.
 
-| Galaxy | ln Z production | ln Z refit | wall production | wall refit | age production | age refit |
+| Galaxy | \(\ln Z\) production | \(\ln Z\) refit | wall production | wall refit | age production | age refit |
 | --- | --- | --- | --- | --- | --- | --- |
-| M2_139662 | 222329.41 ± 0.25 | 222330.47 ± 0.25 | 1119 s | 252 s | 5.21 Gyr | 5.10 Gyr (−0.6σ) |
-| M1_210210 | 229449.03 ± 0.19 | 229441.28 ± 0.38 | 1196 s | 291 s | 4.50 Gyr | 4.94 Gyr (+7σ) |
+| M2_139662 | 222329.41 \(\pm\) 0.25 | 222330.47 \(\pm\) 0.25 | 1119 s | 252 s | 5.21 Gyr | 5.10 Gyr (−0.6\(\sigma\)) |
+| M1_210210 | 229449.03 \(\pm\) 0.19 | 229441.28 \(\pm\) 0.38 | 1196 s | 291 s | 4.50 Gyr | 4.94 Gyr (+7\(\sigma\)) |
 
-The offset comes from a change of the Ceridwen forward model, not from device precision, sigma or masks. For M1_210210 the current model moves the mass-weighted age by 0.44 Gyr, seven posterior sigma.
+The offset comes from a change of the Ceridwen forward model, not from device precision, \(\sigma\) or masks. For M1_210210 the current model moves the mass-weighted age by 0.44 Gyr, seven posterior \(\sigma\).
 
 ```
 ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py run

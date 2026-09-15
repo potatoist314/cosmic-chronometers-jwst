@@ -877,11 +877,11 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
 
 ## Results
 
-| Arm | Median delta spectral chi2 | Median delta photometric chi2 | Median delta ln Z |
+| Arm | Median delta spectral \(\chi^2\) | Median delta photometric \(\chi^2\) | Median delta \(\ln Z\) |
 | --- | ---: | ---: | ---: |
 | mask_cn | -13.82 | -2.24 | not comparable |
 
-[Verdict table](results/fit-accuracy-knobs/verdict.csv) · [Per-target comparisons](results/fit-accuracy-knobs/before-after.csv). Spectral chi2 uses common pixels at a fixed 3% calibration floor.
+[Verdict table](results/fit-accuracy-knobs/verdict.csv) · [Per-target comparisons](results/fit-accuracy-knobs/before-after.csv). Spectral \(\chi^2\) uses common pixels at a fixed 3% calibration floor.
 
 ## Caveats
 

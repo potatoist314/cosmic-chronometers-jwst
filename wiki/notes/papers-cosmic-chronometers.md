@@ -12,11 +12,11 @@ Local PDFs: [Papers](/wiki/papers/).
 
 | File | Citation | Subject |
 | --- | --- | --- |
-| `Toward a Better Understanding of Cosmic Chronometers - A New Measurement of H(z) at z 0.7.pdf` | Borghi et al. (2022b) | Differential ages → `H(z)` at `z ~ 0.7`; Table 1, Eq. 2 and §3.1 uncertainty budget |
+| `Toward a Better Understanding of Cosmic Chronometers - A New Measurement of H(z) at z 0.7.pdf` | Borghi et al. (2022b) | Differential ages → \(H(z)\) at \(z\sim0.7\); Table 1, Eq. 2 and §3.1 uncertainty budget |
 | `Toward a Better Understanding of Cosmic Chronometers - Stellar Population Properties of Passive Galaxies at Intermediate Redshift.pdf` | Borghi et al. (2022a), "Paper I" | Companion paper for the same sample; source of the Lick index sets and the age–redshift relations |
-| `Revisiting the Oldest Stars as Cosmological Probes.pdf` | Cimatti & Moresco (2023), ApJ 953:149 | Absolute stellar ages → `H0` in flat ΛCDM |
+| `Revisiting the Oldest Stars as Cosmological Probes.pdf` | Cimatti & Moresco (2023), ApJ 953:149 | Absolute stellar ages → \(H_0\) in flat \(\Lambda\mathrm{CDM}\) |
 | `Implications for the Hubble Tension from the Ages of the Oldest Astrophysical Objects.pdf` | — | Background on absolute-age constraints and the Hubble tension |
-| `Cosmic Chronometers with Photometry - A New Path to H(z).pdf` | — | Alternative route to `H(z)`; background |
+| `Cosmic Chronometers with Photometry - A New Path to H(z).pdf` | — | Alternative route to \(H(z)\); background |
 | `Setting the Stage for Cosmic Chronometers I - Young Stellar Populations.pdf` | — | Cosmic-chronometer sample selection and contamination |
 | `Setting the Stage for Cosmic Chronometers II - SPS Systematics and Full Covariance Matrix.pdf` | — | SPS systematics and the covariance treatment implemented in `external/CCcovariance/` |
 | `spectral fitting/Alpha-MC - Self-consistent Alpha-enhanced Stellar Population Models Covering a Wide Range of Age, Metallicity, and Wavelength.pdf` | Park et al. (2025), ApJ 994:165, arXiv:2410.21375 | Self-consistent alpha-enhanced isochrones and stellar spectra for age, abundance, and full-spectrum modelling |

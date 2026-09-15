@@ -88,7 +88,7 @@ def image_url(figure, project, scratch, base, asset_url):
     return base + "/" + quote(relative.as_posix())
 
 
-def render(record, project, scratch, base, asset_url, markdown):
+def render(record, project, scratch, base, asset_url, markdown, plain_text):
     figures = record["sections"]["Figures"]
     targets = sorted({f["target"] for f in figures if f.get("target")})
     views = [v for v in VIEWS if any(f["view"] == v for f in figures)]
@@ -108,7 +108,7 @@ def render(record, project, scratch, base, asset_url, markdown):
                  '<a href="%s"><img %s="%s" alt="%s" loading="lazy"></a>'
                  '<figcaption>%s</figcaption><button type="button" data-annotate-figure="%s:%s">Annotate figure</button></figure>') % (
                     esc(f.get("target", "")), esc(f["view"]), "" if visible else " hidden",
-                    esc(src), "src" if visible else "data-src", esc(src), esc(f["caption"]), esc(f["caption"]), esc(record["id"]), index)
+                    esc(src), "src" if visible else "data-src", esc(src), esc(plain_text(f["caption"])), esc(f["caption"]), esc(record["id"]), index)
     body += '</div><p id="figure-empty" class="empty" hidden>No figure for this target and view.</p>'
     if record["sections"]["Measurements"]:
         body += '<div class="measurements">%s</div>' % markdown(record["sections"]["Measurements"])

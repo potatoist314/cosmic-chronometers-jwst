@@ -620,7 +620,7 @@ source: wiki/log.md
 <summary>[2026-09-02] analysis | Absorption-line pixel mask (draft)</summary>
 
 - Pages: `analyses/absorption-line-mask.html`, `index.md`
-- Change: Opened a draft analysis of feature-only and continuum-down-weighted spectral likelihoods: the S/N-squared weight budget of the current joint likelihood for three DR2 targets, a Fisher forecast per parameter, the feature catalogue and modes added to ceridwen on branch `absorption-mask`, and the mock and real-target experiment design. Result sections are filled once the Vast runs finish.
+- Change: Opened a draft analysis of feature-only and continuum-down-weighted spectral likelihoods: the \(\mathrm{S/N}\)-squared weight budget of the current joint likelihood for three DR2 targets, a Fisher forecast per parameter, the feature catalogue and modes added to ceridwen on branch `absorption-mask`, and the mock and real-target experiment design. Result sections are filled once the Vast runs finish.
 
 </details>
 
@@ -628,7 +628,7 @@ source: wiki/log.md
 <summary>[2026-09-02] analysis | Absorption-line pixel mask: results</summary>
 
 - Pages: `analyses/absorption-line-mask.html`
-- Change: Filled the draft with the 45-fit grid (36 mocks with 0, 3 and 6 percent continuum tilts at two S/N scales; M5_172669, M9_232005 and M11_214430 in three pixel modes). Feature-only and continuum-down-weighted likelihoods carry the same tilt-induced bias as the full spectrum and are 1.1 to 1.6 times wider; on the real targets they move the posteriors by up to 22 sigma. Result figures under `analyses/absorption-mask/`.
+- Change: Filled the draft with the 45-fit grid (36 mocks with 0, 3 and 6 percent continuum tilts at two \(\mathrm{S/N}\) scales; M5_172669, M9_232005 and M11_214430 in three pixel modes). Feature-only and continuum-down-weighted likelihoods carry the same tilt-induced bias as the full spectrum and are 1.1 to 1.6 times wider; on the real targets they move the posteriors by up to 22 \(\sigma\). Result figures under `analyses/absorption-mask/`.
 
 </details>
 

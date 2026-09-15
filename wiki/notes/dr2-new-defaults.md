@@ -14,14 +14,14 @@ Old run
 New run
 : `results/dr2-quiescent-new-defaults` · `results/dr2-quiescent-new-defaults-summary.csv`
 Changed
-: order-0 to order-3 calibration; aperture to `cosmos_total` photometry; free Kriek & Conroy dust index Uniform(-1.0, 0.4); StudentT(0, 0.3, df 2) on `logsfr_ratios`
+: order-0 to order-3 calibration; aperture to `cosmos_total` photometry; free Kriek & Conroy dust index \(\operatorname{Uniform}(-1.0, 0.4)\); StudentT(0, 0.3, df 2) on `logsfr_ratios`
 Unchanged
-: `diffuse_tau_kc` Uniform(0, 2), BlackJAX NSS gpu-full profile
+: `diffuse_tau_kc` \(\operatorname{Uniform}(0, 2)\), BlackJAX NSS gpu-full profile
 Sampled parameters
 : 14
 Diagnostics
 : 187/187 passed
-Median ln Z shift
+Median \(\ln Z\) shift
 : +254, higher in 187/187
 Cost
 : 12.5 h on two RTX 5060 Ti, $4.05
@@ -33,10 +33,10 @@ Commit
 | parameter | median shift | NMAD | median half-width | moved > 1 half-width |
 | --- | --- | --- | --- | --- |
 | age [Gyr] | +1.23 | 1.15 | 0.17 | 169/187 |
-| log Z | -0.17 | 0.21 | 0.036 | 173/187 |
-| [α/Fe] | -0.056 | 0.059 | 0.018 | 148/187 |
-| τ_diffuse | +0.17 | 0.15 | 0.023 | 171/187 |
-| log M | +0.19 | 0.12 | 0.018 | 182/187 |
+| \(\log Z\) | -0.17 | 0.21 | 0.036 | 173/187 |
+| \([\alpha/\mathrm{Fe}]\) | -0.056 | 0.059 | 0.018 | 148/187 |
+| \(\tau_{\mathrm{diffuse}}\) | +0.17 | 0.15 | 0.023 | 171/187 |
+| \(\log M\) | +0.19 | 0.12 | 0.018 | 182/187 |
 
 <figure>
 <img src="figures/dr2-new-defaults/old-vs-new-parameters.png" alt="Five old-versus-new scatter panels and a histogram of the ln Z shift">
@@ -48,10 +48,10 @@ Commit
 
 Seed repeats cover two galaxies. Maximum parameter shifts use posterior
 half-width units: old model [1.20, 0.49, 0.96, 0.32, 0.49], new model
-[0.34, 0.54, 0.23, 0.07, 0.29], for age, log Z, [α/Fe], τ_dust and log M.
+[0.34, 0.54, 0.23, 0.07, 0.29], for age, \(\log Z\), \([\alpha/\mathrm{Fe}]\), \(\tau_{\mathrm{dust}}\) and \(\log M\).
 [Seed comparisons](/wiki/e/e-seed-repeatability/).
 
-The maximum seed-to-seed ln Z spread is 2.0 for the old model and 3.1 for the
+The maximum seed-to-seed \(\ln Z\) spread is 2.0 for the old model and 3.1 for the
 new model. The old and new population runs use different photometry.
 
 </details>
@@ -80,7 +80,7 @@ The median age shift is 1.34 Gyr for railed galaxies and 1.16 Gyr for the rest.
 
 <figure>
 <img src="figures/dr2-new-defaults/headline-age-redshift-old-vs-new.png" alt="Mass-weighted age against redshift for both runs, with Borghi+22 binned medians">
-<figcaption><code>headline-age-redshift-old-vs-new.png</code> · σ split 215 km/s · four fixed z bins 0.6-0.9</figcaption>
+<figcaption><code>headline-age-redshift-old-vs-new.png</code> · \(\sigma\) split 215 \(\mathrm{km\,s^{-1}}\) · four fixed z bins 0.6-0.9</figcaption>
 </figure>
 
 Mean offset from Borghi+22 grows from +0.21 to +1.89 Gyr.
@@ -99,7 +99,7 @@ Ceridwen ages are mass-weighted; Borghi ages are SSP-equivalent.
 
 <figure>
 <img src="figures/dr2-new-defaults/headline-age-redshift-oldest30.png" alt="Mass-weighted age against redshift for the oldest 30 percent of each sigma-z bin, both runs, with Borghi+22 treated the same way">
-<figcaption><code>headline-age-redshift-oldest30.png</code> · oldest 30% of each σ-z bin · Borghi+22 cut the same way</figcaption>
+<figcaption><code>headline-age-redshift-oldest30.png</code> · oldest 30% of each \(\sigma\)-z bin · Borghi+22 cut the same way</figcaption>
 </figure>
 
 <details>

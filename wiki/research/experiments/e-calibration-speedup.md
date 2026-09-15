@@ -12,7 +12,7 @@ follow_up:
 
 ## Context
 
-The higher-order run (`e-calibration-order`) measured 66, 77 and 135 µs per likelihood call at Chebyshev orders 3, 5 and 10 on one RTX 5060 Ti (M12_98104), about 58 µs + 0.77 µs × order². The quadratic term is the `(n_pix, k, k)` Gram reduction in `PolynomialCalibration.normal_matrix`, followed by an LU solve and a separate slogdet of the same matrix. The replacement forms the Gram matrix from 2k + 1 Chebyshev moments, `N_mn = ½ (M_{m+n} + M_{|m−n|})`, and takes â and ln|N| from one Cholesky factorisation. The likelihood value is unchanged.
+The higher-order run (`e-calibration-order`) measured 66, 77 and 135 \(\mu\mathrm{s}\) per likelihood call at Chebyshev orders 3, 5 and 10 on one RTX 5060 Ti (M12_98104), about 58 \(\mu\mathrm{s}\) + 0.77 \(\mu\mathrm{s}\) \(\times\) \(\mathrm{order}^2\). The quadratic term is the `(n_pix, k, k)` Gram reduction in `PolynomialCalibration.normal_matrix`, followed by an LU solve and a separate slogdet of the same matrix. The replacement forms the Gram matrix from \(2k+1\) Chebyshev moments, \(N_{mn}=\tfrac12(M_{m+n}+M_{|m-n|})\), and takes \(\hat a\) and \(\ln|N|\) from one Cholesky factorisation. The likelihood value is unchanged.
 
 ## Before delegation
 
@@ -33,11 +33,11 @@ The higher-order run (`e-calibration-order`) measured 66, 77 and 135 µs per lik
 
 ## Execution plan
 
-- Code: `ceridwen/ceridwen/likelihood/calibration.py` at ceridwen commit 56505a6 (parent 46a9175): moment basis `chebvander(x, 2k)`, static index arrays m+n and |m−n|, `jax.scipy.linalg.cho_solve`, ln|N| = 2 Σ log diag L.
-- Tests: `ceridwen/tests/test_polynomial_calibration.py` — Gram matrix and gradient against the explicit `DᵀD + Σ_p⁻¹` at orders 1, 3, 7, 10, 24 (1e-10); `calibrate` against explicit `solve` + `slogdet` at orders 10 and 24 (1e-9).
+- Code: `ceridwen/ceridwen/likelihood/calibration.py` at ceridwen commit 56505a6 (parent 46a9175): moment basis `chebvander(x, 2k)`, static index arrays \(m+n\) and \(|m-n|\), `jax.scipy.linalg.cho_solve`, \(\ln|N|=2\sum\log\operatorname{diag}L\).
+- Tests: `ceridwen/tests/test_polynomial_calibration.py` — Gram matrix and gradient against the explicit \(D^\mathsf{T}D+\Sigma_p^{-1}\) at orders 1, 3, 7, 10, 24 (1e-10); `calibrate` against explicit `solve` + `slogdet` at orders 10 and 24 (1e-9).
 - Timing: `scripts/benchmark_calibration_order.py` on one Vast.ai RTX 5060 / 5060 Ti (cap $0.11/h, reliability above 99.5%, inbound bandwidth under $5/TB). Same process and boot: old arithmetic (frozen `calibration_normal_reduce` + LU solve + slogdet) and new, orders 3, 5, 10, 24, 100 and 500 particles, `jax.jit(jax.vmap(loglike))`, median of 20 timed calls after one compile, joint M1_210210 likelihood (`build_joint_workload`).
-- Refit: `poly10` M12_98104 with the new code through `scripts/calibration_arms_vast.py run --arms poly10 --targets M12_98104 --keep-instance`, `CERIDWEN_ARMS_RESULTS=results/calibration-speedup`; same NSS settings and seed rule as `e-calibration-order`. Compare lnZ, τ_dust, t50 and wall time with `results/calibration-order/poly10/98104-M12_98104` (different boot).
-- Analysis: `results/calibration-speedup/analysis.ipynb` — µs per call by order and variant, speed-up ratio, refit fit/SFH/corner outputs, lnZ and parameter deltas.
+- Refit: `poly10` M12_98104 with the new code through `scripts/calibration_arms_vast.py run --arms poly10 --targets M12_98104 --keep-instance`, `CERIDWEN_ARMS_RESULTS=results/calibration-speedup`; same NSS settings and seed rule as `e-calibration-order`. Compare \(\ln Z\), \(\tau_{\mathrm{dust}}\), \(t_{50}\) and wall time with `results/calibration-order/poly10/98104-M12_98104` (different boot).
+- Analysis: `results/calibration-speedup/analysis.ipynb` — \(\mu\mathrm{s}\) per call by order and variant, speed-up ratio, refit fit/SFH/corner outputs, \(\ln Z\) and parameter deltas.
 
 ## Amendments
 

@@ -601,4 +601,4 @@ The free-z implementation is an experimental fork.
 
 - [Executed comparison](results/redshift-sigma-wiggle/analysis.ipynb)
 - [Fitted nuisances](results/redshift-sigma-wiggle/zsig-vs-poly3_total.csv)
-- [Redshift sigma wiggle · source note](wiki/notes/redshift-sigma-wiggle.md)
+- [Redshift \(\sigma\) wiggle · source note](wiki/notes/redshift-sigma-wiggle.md)

@@ -37,7 +37,7 @@ Two Ceridwen notebooks are the current fitting entry points. One post-processing
 
 `ceridwen_test_spectra.ipynb` fits one LEGA-C spectrum. It fetches the published high-resolution Kroupa grid with schema 2.1. It converts wavelength and flux, creates a `Spectrum`, and adds calibration noise. It then runs BlackJAX nested sampling. Its full profile uses 500 live points, 100 deletions, and 60 inner steps. It uses `logZ_tol=-5`.
 
-`CERIDWEN_SPECTRUM_MODE` selects `full` or `features`. Full mode fits 3,523 pixels. Feature mode fits 1,924 pixels from the LEGA-C DR2 feature definitions and their local continuum bands. The notebook fits native flux pixels. It does not fit the catalogue index values. Hβ is absent because the nebular-emission mask removes its central band.
+`CERIDWEN_SPECTRUM_MODE` selects `full` or `features`. Full mode fits 3,523 pixels. Feature mode fits 1,924 pixels from the LEGA-C DR2 feature definitions and their local continuum bands. The notebook fits native flux pixels. It does not fit the catalogue index values. \(\mathrm{H}\beta\) is absent because the nebular-emission mask removes its central band.
 
 Both modes compact the spectrum before Ceridwen builds the model. They retain two masked endpoint pixels. These endpoints preserve the same smoothing boundaries as the native 6,166-pixel spectrum.
 
@@ -69,7 +69,7 @@ Full-spectrum mode fits `spectrum_scaling` for the slit normalization. Photometr
 
 Both modes use the published high-resolution grid. The production profile uses 500 live points, 100 deletions, 65 inner steps, and `logZ_tol=-5`.
 
-The full-spectrum fit figure shades nine major absorption features from `ceridwen.observation.absorption_features` on both panels: Ca K, Ca H, Hδ, G band, Hγ, Fe4383, Hβ, Mg b and Fe5270. Bands span their Lick bandpass and lines span ±1000 km/s, redshifted with the catalogue redshift, so the pull near each feature can be read directly.
+The full-spectrum fit figure shades nine major absorption features from `ceridwen.observation.absorption_features` on both panels: Ca K, Ca H, \(\mathrm{H}\delta\), G band, \(\mathrm{H}\gamma\), Fe4383, \(\mathrm{H}\beta\), Mg b and Fe5270. Bands span their Lick bandpass and lines span \(\pm\)1000 \(\mathrm{km\,s^{-1}}\), redshifted with the catalogue redshift, so the pull near each feature can be read directly.
 
 That marking is the production standard for every plot with a wavelength axis. `scripts/spectral_figures.py` holds it: `mark_absorption_features(ax, zred)` gives each feature a fixed colour for its shading and dotted edges. One legend lists the visible features on the right. `spectral_tight_layout(fig)` reserves the legend column without narrowing the original figure. Photometric SED panels in observed μm and non-wavelength plots (corner, SFH, histograms) stay bare. Tests: `tests/test_spectral_figures.py`.
 
@@ -99,9 +99,9 @@ The spectra notebook also writes `ceridwen_derived_outputs.h5`. It contains norm
 
 The aggregate notebook contains an exploratory analysis. Its age is the mass-weighted SFH lookback age, not the Lick SSP-equivalent age. The production fit also sets the oldest SFH node from `age_gyr(z)` under the Planck-2018 defaults, so the derived quantity is not a cosmology-independent chronometer measurement.
 
-The executed notebook uses 164 galaxies inside the Borghi redshift range. The fixed-bin combination gives `H(z=0.741)=-63.6 +/- 17.8` km/s/Mpc. The posterior-plus-bootstrap median is -77.4 km/s/Mpc with a 68-percent interval from -196.3 to -39.9 km/s/Mpc; 14.6 percent of draws are positive. The public Borghi reconstruction gives `97.5 +/- 31.3` km/s/Mpc, close to the published central value but not its exact bin membership or uncertainty. The exact 68-galaxy overlap gives `86.3 +/- 38.0` with Borghi ages and `228.5 +/- 43.6` with Ceridwen ages.
+The executed notebook uses 164 galaxies inside the Borghi redshift range. The fixed-bin combination gives \(H(z=0.741)=-63.6\pm17.8\) \(\mathrm{km\,s^{-1}\,Mpc^{-1}}\). The posterior-plus-bootstrap median is -77.4 \(\mathrm{km\,s^{-1}\,Mpc^{-1}}\) with a 68-percent interval from -196.3 to -39.9 \(\mathrm{km\,s^{-1}\,Mpc^{-1}}\); 14.6 percent of draws are positive. The public Borghi reconstruction gives \(97.5\pm31.3\) \(\mathrm{km\,s^{-1}\,Mpc^{-1}}\), close to the published central value but not its exact bin membership or uncertainty. The exact 68-galaxy overlap gives \(86.3\pm38.0\) with Borghi ages and \(228.5\pm43.6\) with Ceridwen ages.
 
-The overlap age residual has a 7.32 Gyr-per-redshift slope. The Planck-based formation-time diagnostic also decreases with redshift. The unbinned Ceridwen slope is only 1.2 standard errors below zero, while binning, S/N cuts, and the dispersion split can change the result's sign or scale.
+The overlap age residual has a 7.32 Gyr-per-redshift slope. The Planck-based formation-time diagnostic also decreases with redshift. The unbinned Ceridwen slope is only 1.2 standard errors below zero, while binning, \(\mathrm{S/N}\) cuts, and the dispersion split can change the result's sign or scale.
 
 </details>
 
@@ -186,6 +186,6 @@ def hubble_from_age_slope(
 
 `tests/test_chronometer.py` checks the conversion, sign, zero-slope limit, and group-intercept invariance.
 
-A slope near zero maps to a broad, non-Gaussian H(z) distribution. The notebook therefore reports quantiles and the positive fraction.
+A slope near zero maps to a broad, non-Gaussian \(H(z)\) distribution. The notebook therefore reports quantiles and the positive fraction.
 
 </details>

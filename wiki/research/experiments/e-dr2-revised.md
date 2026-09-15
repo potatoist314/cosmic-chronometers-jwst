@@ -13,7 +13,7 @@ result_groups: results/dr2-quiescent-new-defaults
 
 ## Context
 
-The revised 187-target run uses order-3 calibration, cosmos_total photometry, a free dust slope and a StudentT SFH prior. The saved tau prior is Uniform(0, 2).
+The revised 187-target run uses order-3 calibration, cosmos_total photometry, a free dust slope and a StudentT SFH prior. The saved \(\tau\) prior is \(\operatorname{Uniform}(0, 2)\).
 
 ## Runs
 
@@ -26404,7 +26404,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
 
 ## Results
 
-Matched-row median shifts are age +1.229 Gyr, log Z -0.167 dex, alpha/Fe -0.056 dex and tau +0.169. The saved median delta ln Z is +254.28. [Baseline CSV](results/dr2-quiescent-summary.csv) · [Revised CSV](results/dr2-quiescent-new-defaults-summary.csv).
+Matched-row median shifts are age +1.229 Gyr, \(\log Z\) -0.167 dex, \(\alpha/\mathrm{Fe}\) -0.056 dex and \(\tau\) +0.169. The saved median delta \(\ln Z\) is +254.28. [Baseline CSV](results/dr2-quiescent-summary.csv) · [Revised CSV](results/dr2-quiescent-new-defaults-summary.csv).
 
 [Parameter comparison](wiki/analyses/dr2-new-defaults/old-vs-new-parameters.png)
 
@@ -26414,7 +26414,7 @@ The baseline uses aperture photometry without a polynomial. The revised run chan
 
 Seed-repeat parameter shifts use dimensionless posterior half-width units.
 
-These fits use tau <= 2, not the later tau <= 0.2 sensitivity setting.
+These fits use \(\tau\) <= 2, not the later \(\tau\) <= 0.2 sensitivity setting.
 
 ## References
 

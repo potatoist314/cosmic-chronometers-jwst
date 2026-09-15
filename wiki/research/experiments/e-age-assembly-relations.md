@@ -13,7 +13,7 @@ result_groups: results/figures
 
 ## Context
 
-Reanalyse the baseline and revised population fits against redshift, mass, alpha/Fe and the matched Borghi catalogue. No additional sampling.
+Reanalyse the baseline and revised population fits against redshift, mass, \(\alpha/\mathrm{Fe}\) and the matched Borghi catalogue. No additional sampling.
 
 ## Figures
 
@@ -28,7 +28,7 @@ Reanalyse the baseline and revised population fits against redshift, mass, alpha
   {
     "path": "wiki/analyses/dr2-quiescent-sample/dt-vs-alpha.png",
     "view": "Comparison",
-    "caption": "Saved assembly interval against alpha/Fe. The coarse SFH bins limit time resolution.",
+    "caption": "Saved assembly interval against \\(\\alpha/\\mathrm{Fe}\\). The coarse SFH bins limit time resolution.",
     "target": ""
   }
 ]
@@ -38,7 +38,7 @@ Reanalyse the baseline and revised population fits against redshift, mass, alpha
 
 Both saved runs have weak full-sample age–redshift trends. The existing figures include velocity-dispersion and oldest-fraction selections, plus assembly-history comparisons.
 
-[Old and revised age–redshift](wiki/analyses/dr2-new-defaults/headline-age-redshift-old-vs-new.png) · [Oldest-fraction comparison](wiki/analyses/dr2-new-defaults/headline-age-redshift-oldest30.png) · [Assembly interval against alpha/Fe](wiki/analyses/dr2-quiescent-sample/dt-vs-alpha.png)
+[Old and revised age–redshift](wiki/analyses/dr2-new-defaults/headline-age-redshift-old-vs-new.png) · [Oldest-fraction comparison](wiki/analyses/dr2-new-defaults/headline-age-redshift-oldest30.png) · [Assembly interval against \(\alpha/\mathrm{Fe}\)](wiki/analyses/dr2-quiescent-sample/dt-vs-alpha.png)
 
 ## Caveats
 

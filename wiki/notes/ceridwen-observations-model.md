@@ -30,7 +30,7 @@ Observations define the measured data space. `SedModel` connects these data cont
 Every `Observation` stores:
 
 - `flux` contains one-dimensional measured values.
-- `uncertainty` contains one-dimensional one-sigma errors.
+- `uncertainty` contains one-dimensional one-\(\sigma\) errors.
 - `mask` is Boolean. `True` includes a datum.
 - `name` is the unique key in prediction dictionaries.
 
@@ -61,7 +61,7 @@ assert self.ndof > 0, "no valid unmasked data points after masking"`
 <details>
 <summary>Details</summary>
 
-The base-class docstring defines flux, one-sigma uncertainty, and a mask where `True` includes the datum (`ceridwen/ceridwen/observation/base.py:25-46`).
+The base-class docstring defines flux, one-\(\sigma\) uncertainty, and a mask where `True` includes the datum (`ceridwen/ceridwen/observation/base.py:25-46`).
 
 The assertions define the data contract. The input arrays must be one-dimensional and aligned. Automatic masking must leave at least one usable datum.
 
@@ -119,7 +119,7 @@ The fast path uses one matrix-vector multiplication. The alternative path perfor
             self._predict_fn = lambda spec: w_lo * spec[lo] + w_hi * spec[hi]
 ```
 
-When every width is known at setup, the two broadening stages become one. Gaussians add in quadrature, so a LOSVD followed by an instrumental LSF is a single Gaussian of width `sqrt(losvd^2 + instrument^2 - library^2)` at each wavelength. `observation/_smoothing.py` builds that one convolution and bakes its interpolation indices and its Fourier taper at setup, so no call recomputes them. The chained form remains for `fit_sigma_smooth=True`, where the width is a traced value.
+When every width is known at setup, the two broadening stages become one. Gaussians add in quadrature, so a LOSVD followed by an instrumental LSF is a single Gaussian of width \(\sqrt{\mathrm{losvd}^2+\mathrm{instrument}^2-\mathrm{library}^2}\) at each wavelength. `observation/_smoothing.py` builds that one convolution and bakes its interpolation indices and its Fourier taper at setup, so no call recomputes them. The chained form remains for `fit_sigma_smooth=True`, where the width is a traced value.
 
 No flag or environment variable selects the combined form. The installed ceridwen package decides. The superproject records the ceridwen commit that contains `_smoothing.py`, and `.gitmodules` points at the project copy `potatoist314/ceridwen`, because the upstream repository does not carry these commits. `scripts/bootstrap_vast_ai.sh` reinstalls ceridwen from the tree on every run and stops when `ceridwen.observation._smoothing` does not import. That check exists because a non-editable install ignores files copied into the source tree after bootstrap.
 
