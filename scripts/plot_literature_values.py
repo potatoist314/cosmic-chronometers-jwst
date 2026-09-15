@@ -24,6 +24,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib import rcParams
+from matplotlib.patches import Rectangle
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
@@ -55,21 +56,21 @@ AGE = [
 METALLICITY = [
     ("Conroy+14", 0.05, (-0.05, 0.05), None, "[Fe/H]", "right"),
     ("Borghi+22", 0.70, 0.08, 0.18, "[Z/H]", "right"),
-    ("Beverage+21,\nCheng+25", 0.70, (-0.1, 0.0), None, "[Fe/H]", "left"),
+    ("Beverage+21,\nCheng+25", 0.70, (-0.1, 0.0), None, "[Fe/H]", "below"),
     ("Carnall+22", 1.15, 0.04, 0.14, "[Z/H]", "right"),
     (None, 1.15, -0.13, 0.08, "[Z/H]", "right"),
     (None, 1.15, -0.18, 0.08, "[Fe/H]", "right"),
-    ("Kriek+19,\nBeverage+24", 1.40, -0.2, None, "[Fe/H]", "right"),
-    ("Beverage+24", 2.10, -0.3, None, "[Fe/H]", "left"),
+    ("Kriek+19, Beverage+24", 1.40, -0.2, None, "[Fe/H]", "right"),
+    ("Beverage+24", 2.10, -0.3, None, "[Fe/H]", "right"),
 ]
 ALPHA = [
-    ("Conroy+14", 0.05, (0.0, 0.25), None, "[Mg/Fe]", "below"),
+    ("Conroy+14", 0.05, (0.0, 0.25), None, "[Mg/Fe]", "right"),
     ("Bevacqua+23", 0.68, 0.24, 0.01, "[α/Fe]", "left"),
     ("Borghi+22", 0.70, 0.13, 0.11, "[α/Fe]", "left"),
     ("Beverage+21/23", 0.72, (0.2, 0.3), None, "[Mg/Fe]", "right"),
-    ("Kriek+19", 1.40, 0.44, None, "[Mg/Fe]", "left"),
-    ("Beverage+24", 1.40, 0.3, None, "[Mg/Fe]", "below"),
-    ("Beverage+24", 2.10, 0.5, None, "[Mg/Fe]", "left"),
+    ("Kriek+19", 1.40, 0.44, None, "[Mg/Fe]", "right"),
+    ("Beverage+24", 1.40, 0.3, None, "[Mg/Fe]", "right"),
+    ("Beverage+24", 2.10, 0.5, None, "[Mg/Fe]", "right"),
 ]
 MARKER = {"[Z/H]": "o", "[Fe/H]": "s", "[α/Fe]": "o", "[Mg/Fe]": "s",
           "light-weighted": "s", "SSP-equivalent": "o"}
@@ -77,8 +78,8 @@ LEGEND_NAME = {"[Z/H]": r"$[Z/\mathrm{H}]$", "[Fe/H]": r"$[\mathrm{Fe}/\mathrm{H
                "[α/Fe]": r"$[\alpha/\mathrm{Fe}]$", "[Mg/Fe]": r"$[\mathrm{Mg}/\mathrm{Fe}]$",
                "light-weighted": "light-weighted", "SSP-equivalent": "SSP-equivalent"}
 TEXT_POS = {  # (dx, ha, va, anchor on "top" of the bar, "mid" or "bottom")
-    "right": (0.03, "left", "bottom", "top"),
-    "left": (-0.03, "right", "center", "mid"),
+    "right": (0.025, "left", "bottom", "top"),
+    "left": (-0.025, "right", "center", "mid"),
     "below": (0.03, "left", "top", "bottom"),
 }
 
@@ -103,31 +104,40 @@ def draw_literature(axis, entries):
             continue
         dx, ha, va, anchor = TEXT_POS[where]
         y_text = {"top": hi, "mid": mid, "bottom": lo}[anchor]
-        axis.annotate(label, (z + dx, y_text), fontsize=7, color=GREY, ha=ha, va=va, zorder=4)
+        axis.annotate(label, (z + dx, y_text), fontsize=8, color=GREY, ha=ha, va=va, zorder=4)
 
 
 def draw_ceridwen(axis, z, q16, q50, q84, label, **style):
-    """Sample median with 16-84 spread across galaxies (y) and redshift (x)."""
+    """Sample median (diamond) over a band spanning the 16-84 percentiles in y and z."""
     zlo, zmid, zhi = np.percentile(z, [16, 50, 84])
-    axis.errorbar(zmid + style.pop("dz", 0.0), q50, xerr=[[zmid - zlo], [zhi - zmid]],
-                  yerr=[[q50 - q16], [q84 - q50]], fmt="D", color=BLUE, ms=6, capsize=3,
-                  lw=1.5, zorder=5, label=label, **style)
+    axis.add_patch(Rectangle((zlo, q16), zhi - zlo, q84 - q16, facecolor=BLUE, alpha=0.15,
+                             edgecolor="none", zorder=1))
+    axis.plot(zmid + style.pop("dz", 0.0), q50, "D", color=BLUE, ms=7, mec=BLUE, zorder=5,
+              label=label, **style)
+
+
+def legend(axis, loc):
+    """Literature entries first, Ceridwen last."""
+    handles, labels = axis.get_legend_handles_labels()
+    order = sorted(range(len(labels)), key=lambda i: labels[i].startswith("Ceridwen"))
+    axis.legend([handles[i] for i in order], [labels[i] for i in order],
+                fontsize=8, loc=loc, frameon=False)
 
 
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     df = pd.read_csv(SUMMARY_PATH)
     z = df["z"].to_numpy()
-    fig, axes = plt.subplots(1, 3, figsize=(10.5, 3.4))
+    fig, axes = plt.subplots(3, 1, figsize=(6.0, 9.0), sharex=True)
 
     # Age
     axis = axes[0]
     draw_literature(axis, AGE)
     lo, mid, hi = np.percentile(df["age_q50"], [16, 50, 84])
-    draw_ceridwen(axis, z, lo, mid, hi, "Ceridwen DR2 (N=%d), mass-weighted" % len(df))
+    draw_ceridwen(axis, z, lo, mid, hi, "Ceridwen DR2 (N=%d), mass-weighted; band: 16–84" % len(df))
     axis.set_ylabel("age [Gyr]")
     axis.set_ylim(0, 13.5)
-    axis.legend(fontsize=7, loc="lower right", frameon=False)
+    legend(axis, "upper right")
 
     # Metallicity: Ceridwen log Z is absolute, so show two solar references.
     axis = axes[1]
@@ -141,7 +151,7 @@ def main() -> None:
     axis.set_ylabel(r"$[Z/\mathrm{H}]$ or $[\mathrm{Fe}/\mathrm{H}]$ [dex]")
     axis.set_ylim(-0.7, 0.5)
     axis.axhline(0, color="k", lw=0.5, ls=":")
-    axis.legend(fontsize=7, loc="lower left", frameon=False)
+    legend(axis, "lower left")
 
     # Alpha enhancement
     axis = axes[2]
@@ -151,11 +161,10 @@ def main() -> None:
     axis.set_ylabel(r"$[\alpha/\mathrm{Fe}]$ or $[\mathrm{Mg}/\mathrm{Fe}]$ [dex]")
     axis.set_ylim(-0.3, 0.75)
     axis.axhline(0, color="k", lw=0.5, ls=":")
-    axis.legend(fontsize=7, loc="upper left", frameon=False)
+    legend(axis, "upper left")
 
-    for axis in axes:
-        axis.set_xlim(-0.1, 2.4)
-        axis.set_xlabel(r"$z$")
+    axes[0].set_xlim(-0.1, 2.55)
+    axes[-1].set_xlabel(r"$z$")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "literature-vs-ceridwen.pdf")
     fig.savefig(OUT_DIR / "literature-vs-ceridwen.png")
