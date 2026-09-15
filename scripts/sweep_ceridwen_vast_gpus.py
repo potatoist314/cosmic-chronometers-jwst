@@ -58,8 +58,10 @@ FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti")
 FIT_MAX_DPH_USD = 0.11
 FIT_MIN_RELIABILITY = 0.995
 FIT_BID_MARGIN_USD = 0.005
+FIT_MAX_INET_COST_USD_PER_TB = 5.0  # Liu Hao, 2026-09-15: "keep it less than $5/tb"
 FIT_OFFER_QUERY_BASE = (f"gpu_name in [RTX_5060,RTX_5060_Ti] verified=true rentable=true num_gpus=1 "
-                        f"inet_down>200 disk_space>=40 reliability>{FIT_MIN_RELIABILITY}")
+                        f"inet_down>200 disk_space>=40 reliability>{FIT_MIN_RELIABILITY} "
+                        f"inet_down_cost<{FIT_MAX_INET_COST_USD_PER_TB / 1000}")
 FIT_OFFER_QUERY = f"{FIT_OFFER_QUERY_BASE} dph<{FIT_MAX_DPH_USD}"
 
 
@@ -76,7 +78,8 @@ def fit_offer_qualifies(offer: dict[str, Any], *, interruptible: bool = False) -
     price = fit_bid_price(offer) if interruptible and "min_bid" in offer else float(offer.get("dph_total") or 1e9)
     return (offer.get("gpu_name") in FIT_GPU_NAMES
             and price < FIT_MAX_DPH_USD
-            and float(offer.get("reliability2") or 0.0) > FIT_MIN_RELIABILITY)
+            and float(offer.get("reliability2") or 0.0) > FIT_MIN_RELIABILITY
+            and float(offer.get("inet_down_cost", 1e9)) * 1000 < FIT_MAX_INET_COST_USD_PER_TB)
 MINIMUM_COMPUTE_CAPABILITY = 700
 MINIMUM_DIRECT_PORTS = 2
 

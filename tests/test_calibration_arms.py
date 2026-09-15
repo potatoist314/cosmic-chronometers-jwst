@@ -154,6 +154,8 @@ def test_interruptible_offers_are_judged_on_the_bid(arms):
     assert not arms.offer_qualifies(dear_on_demand)
     assert not arms.offer_qualifies(_offer(dph_total=0.13, min_bid=0.106), interruptible=True)
     assert not arms.offer_qualifies(_offer(min_bid=0.05, reliability2=0.99), interruptible=True)
+    assert arms.offer_qualifies(_offer(inet_down_cost=0.0049))
+    assert not arms.offer_qualifies(_offer(inet_down_cost=0.013))  # $13/TB: 2026-09-15 rule is < $5/TB
 
 
 def test_offer_rule_constants_match_the_rule(arms):
