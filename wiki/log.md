@@ -756,3 +756,8 @@
 - Change: Archived the DR2 run without a calibration polynomial, superseded by results/dr2-quiescent-new-defaults.
 - Files: Moved results/rtx-5060-dr2-quiescent-full-spectrum/ and results/dr2-quiescent-summary.csv to archive/results/dr2-quiescent-no-polynomial/ with a README; repointed scripts, tests, notebooks, wiki notes and research-record evidence paths to the new run or archive; regenerated DR2 sample figures from the new run and updated numbers in notes/dr2-quiescent-sample.md.
 - Validation: Figures checked at 900 px; wiki build and tests pass; 36 pytest cases pass.
+
+## [2026-09-15] revise | [Fe/H] as the displayed metallicity
+
+- Pages: [[dr2-quiescent-sample]], [[dr2-new-defaults]], [[absorption-line-mask]], [[fit-accuracy-knobs]], [[redshift-sigma-wiggle]], [[calibration-polynomial-dr2]], [[papers-quiescent-parameters]]
+- Change: Every figure, table and summary CSV now shows [Fe/H] = grid Z + 1.7328283 instead of log Z. The 545 executed per-target notebooks had their corner figures redrawn from saved posteriors and their summary rows relabelled without re-running any fit (`scripts/relabel_feh_notebooks.py`). Analysis notebooks were re-executed from saved outputs; shifts and half-widths are unchanged.

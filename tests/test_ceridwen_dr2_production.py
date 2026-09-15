@@ -1,4 +1,5 @@
 import json
+import math
 import os
 from pathlib import Path
 
@@ -111,7 +112,9 @@ def test_notebook_uses_production_model_and_sampler_contract():
     assert '"num_delete": 100' in source
     assert '"logZ_tol": -5.0' in source
     assert "assert sum(np.size(value) for value in joint_model.theta_init.values())" in source
-    assert '"Z": "log10 absolute metallicity"' in source
+    assert '"Z": "log10 iron abundance; [Fe/H] = Z + 1.7328283"' in source
+    assert "FEH_OFFSET = 1.7328283" in source
+    assert 'direct_draws["Z"] + FEH_OFFSET' in source
     assert r"$\log_{10}(Z/Z_\odot)$" not in source
     assert "aperture_transfer" not in source
 
@@ -321,6 +324,14 @@ def test_monitor_reads_and_pulls_from_the_given_remote_root(monkeypatch, tmp_pat
         for argument in commands[0]
     )
     assert f"root@ssh8.vast.ai:{remote_root}/targets.json" in commands[0]
+
+
+def test_feh_offset_is_the_afe_grid_solar_reference():
+    from scripts import build_dr2_quiescent_summary as summary
+
+    assert summary.FEH_OFFSET == pytest.approx(-math.log10(0.0185), abs=1e-7)
+    assert summary.SUMMARY_PARAMS["Z"] == "feh"
+    assert summary.SUMMARY_SHIFTS == {"Z": summary.FEH_OFFSET}
 
 
 def test_summary_script_takes_a_result_root_and_an_output_path():

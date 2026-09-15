@@ -98,7 +98,7 @@ A CSP construction establishes static structure:
 - The metallicity is either constant `Z` or time-varying `zh`.
 - The construction selects the dust, nebular, IGM, and smoothing components.
 
-`CSPBasis.initialize_model_structure` checks this contract at `csp/csp.py:544-732`. Both `Z` and `zh` store `log10` absolute metallicity. They do not store `[Z/H]` or `log10(Z/Z_sun)` (`csp/csp.py:1817-1842`).
+`CSPBasis.initialize_model_structure` checks this contract at `csp/csp.py:544-732`. Both `Z` and `zh` store `log10` absolute metallicity. On the alpha-enhanced grid `amist_c3k_hr_krou_afe`, Z = \([\mathrm{Fe}/\mathrm{H}]\) + log10(0.0185), so \([\mathrm{Fe}/\mathrm{H}]\) = Z + 1.7328283 (`ceridwen/scripts_afe/build_afe_hr_grid.py`, lines 63–64). They do not store `[Z/H]` or `log10(Z/Z_sun)` (`csp/csp.py:1817-1842`).
 
 </details>
 

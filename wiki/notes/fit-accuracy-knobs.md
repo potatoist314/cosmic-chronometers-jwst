@@ -26,7 +26,7 @@ Lick indices
 : HdA, Fe4383, Dn4000 and Hbeta predicted from 200 weighted posterior draws with `StellarIndices` and the DR2 definitions, minus the DR2 catalogue value, over the catalogue error. The catalogue indices come from the uncalibrated DR2 spectra.
 
 Borghi+22
-: Age, \([\mathrm{Z}/\mathrm{H}]\) and \([\alpha/\mathrm{Fe}]\) for the two overlap galaxies. Borghi's ages are SSP-equivalent; Ceridwen ages are mass-weighted.
+: Age, \([\mathrm{Fe}/\mathrm{H}]\) against Borghi's \([\mathrm{Z}/\mathrm{H}]\), and \([\alpha/\mathrm{Fe}]\) for the two overlap galaxies. Borghi's ages are SSP-equivalent; Ceridwen ages are mass-weighted.
 
 ```
 chi2_raw(f) = sum_i (d_i - s P_i mu_i)^2 / (sigma_i^2 + (f s P_i mu_i)^2)
@@ -51,7 +51,7 @@ Lick residuals
 : M4_108989 CN1 -5.4, CN2 -5.1, C4668 -7.5, HdA +2.6, Dn4000 -2.8. M1_206545 C4668 -5.8, HgA +4.4. Fe4383 negative in 4 of 5, Dn4000 negative in 4 of 4, C4668 negative in 3 of 3. The model has too little carbon and nitrogen absorption, and \([\alpha/\mathrm{Fe}]\) sits at the -0.2 grid edge for the two galaxies with the strongest CN and C4668 residuals.
 
 Borghi+22
-: M4_108989 age 4.61 vs 4.03 Gyr, \([\mathrm{Z}/\mathrm{H}]\) -0.03 vs +0.07, \([\alpha/\mathrm{Fe}]\) -0.19 vs +0.06. M12_185653 age 5.02 vs 3.11 Gyr, \([\mathrm{Z}/\mathrm{H}]\) -0.34 vs -0.01, \([\alpha/\mathrm{Fe}]\) +0.23 vs -0.06.
+: M4_108989 age 4.61 vs 4.03 Gyr, \([\mathrm{Fe}/\mathrm{H}]\) -0.14 vs [Z/H] +0.07, \([\alpha/\mathrm{Fe}]\) -0.19 vs +0.06. M12_185653 age 5.02 vs 3.11 Gyr, \([\mathrm{Fe}/\mathrm{H}]\) -0.45 vs [Z/H] -0.01, \([\alpha/\mathrm{Fe}]\) +0.23 vs -0.06.
 
 <figure>
 <img src="figures/fit-accuracy-knobs/stage0_chi2_map.png" alt="Spectral chi2 per rest wavelength and photometric pull per band for the six poly3_total fits">
@@ -90,7 +90,7 @@ Pixel guard
 : The line and CN masks remove about 800 more pixels, so the guard is now `good_pixel.sum() > 3000` and `ndof > 0.7 good_pixel.sum()`.
 
 Scoring
-: Delta raw spectral \(\chi^2\) at f = 0.03. Delta photometric \(\chi^2\). \(\Delta\ln Z\), counted only when \(|\Delta|\) > 1 (NSS error 0.2-0.35). Shift of \(t_{\mathrm{MW}}\), \(\log Z\), \([\alpha/\mathrm{Fe}]\), \(\tau_{\mathrm{dust}}\) and \(\log M\) in units of the poly3_total posterior half-width, against the seed_rep scatter. Lick residuals and Borghi+22 agreement. Null check on the new nuisance posterior (dust index away from -0.7, \(f_{\mathrm{calib}}\) below 0.10).
+: Delta raw spectral \(\chi^2\) at f = 0.03. Delta photometric \(\chi^2\). \(\Delta\ln Z\), counted only when \(|\Delta|\) > 1 (NSS error 0.2-0.35). Shift of \(t_{\mathrm{MW}}\), \([\mathrm{Fe}/\mathrm{H}]\), \([\alpha/\mathrm{Fe}]\), \(\tau_{\mathrm{dust}}\) and \(\log M\) in units of the poly3_total posterior half-width, against the seed_rep scatter. Lick residuals and Borghi+22 agreement. Null check on the new nuisance posterior (dust index away from -0.7, \(f_{\mathrm{calib}}\) below 0.10).
 
 Default flipped
 : Liu Hao's call on 2026-09-06, before the stage-1 fits finished: the StudentT(0, 0.3, df 2) continuity prior is now the production default in the notebook (`CERIDWEN_SFH_PRIOR` unset means `student`). The `poly3_total` reference arm and its seed repeats pin `uniform`, so the stored fits stay reproducible.
@@ -116,10 +116,10 @@ Comparability
 ### Seed floor
 
 Floor
-: Largest shift over the six repeat fits, in units of the reference posterior half-width. Age 1.20, \(\log Z\) 0.49, \([\alpha/\mathrm{Fe}]\) 0.96, \(\tau_{\mathrm{dust}}\) 0.32, \(\log M\) 0.49.
+: Largest shift over the six repeat fits, in units of the reference posterior half-width. Age 1.20, \([\mathrm{Fe}/\mathrm{H}]\) 0.49, \([\alpha/\mathrm{Fe}]\) 0.96, \(\tau_{\mathrm{dust}}\) 0.32, \(\log M\) 0.49.
 
 Split by galaxy
-: M4_108989 repeats to 0.06 in age, 0.12 in \(\log Z\), 0.12 in \([\alpha/\mathrm{Fe}]\), 0.25 in \(\tau_{\mathrm{dust}}\) and 0.15 in \(\log M\). M5_172669 carries the whole floor: 1.20 in age, 0.96 in \([\alpha/\mathrm{Fe}]\), 0.49 in \(\log Z\).
+: M4_108989 repeats to 0.06 in age, 0.12 in \([\mathrm{Fe}/\mathrm{H}]\), 0.12 in \([\alpha/\mathrm{Fe}]\), 0.25 in \(\tau_{\mathrm{dust}}\) and 0.15 in \(\log M\). M5_172669 carries the whole floor: 1.20 in age, 0.96 in \([\alpha/\mathrm{Fe}]\), 0.49 in \([\mathrm{Fe}/\mathrm{H}]\).
 
 \(\ln Z\) floor
 : Seed-to-seed \(\ln Z\) spread reaches 2.0 (4.2 combined NSS \(\sigma\)) on M5_172669, against the 0.2-0.35 per-fit error the scoring rule assumed. The |\(\Delta\ln Z\)| > 1 threshold written before the run therefore sits below the seed floor and cannot separate arms on its own.
@@ -158,7 +158,7 @@ Adopted
 ### no_irac
 
 Result
-: Four of six galaxies barely move. M5_173928 jumps to a different solution: mass-weighted age 4.50 to 3.01 Gyr, \(\log Z\) -2.23 to -1.49, \(\tau_{\mathrm{dust}}\) 0.54 to 0.73, at 14.2, 42.1 and 9.7 half-widths.
+: Four of six galaxies barely move. M5_173928 jumps to a different solution: mass-weighted age 4.50 to 3.01 Gyr, \([\mathrm{Fe}/\mathrm{H}]\) -2.23 to -1.49, \(\tau_{\mathrm{dust}}\) 0.54 to 0.73, at 14.2, 42.1 and 9.7 half-widths.
 
 Reading
 : Removing IRAC ch1 and ch2 raises \(\chi^2\) on the remaining ten bands by 87 for M5_173928.
@@ -182,12 +182,12 @@ Result
 : M12_98104 \(f_{\mathrm{calib}}\) goes 9.98 to 14.59 percent and \(\ln Z\) rises 86.6. M5_173928 sat at 9.01 percent and stays at 8.99 with the ceiling at 20.
 
 Physics
-: On M12_98104 the physics barely moves: age +0.16, \(\log Z\) -0.13, \(\log M\) -0.03 half-widths. Delta \(\chi^2\) at fixed f = 3 percent is +0.4.
+: On M12_98104 the physics barely moves: age +0.16, \([\mathrm{Fe}/\mathrm{H}]\) -0.13, \(\log M\) -0.03 half-widths. Delta \(\chi^2\) at fixed f = 3 percent is +0.4.
 
 ### mask_cn
 
 Result
-: Removing the CN and C4668 windows lowers the spectral \(\chi^2\) by 14 in the median; the mask removes 114–349 pixels. \([\alpha/\mathrm{Fe}]\) moves 4.0 half-widths on M5_172669 and 2.2 on M1_206545, \(\log Z\) 3.6 on M1_206545.
+: Removing the CN and C4668 windows lowers the spectral \(\chi^2\) by 14 in the median; the mask removes 114–349 pixels. \([\alpha/\mathrm{Fe}]\) moves 4.0 half-widths on M5_172669 and 2.2 on M1_206545, \([\mathrm{Fe}/\mathrm{H}]\) 3.6 on M1_206545.
 
 Lick
 : Mean absolute Lick residual rises from 2.31 to 2.47 \(\sigma\). The \([\alpha/\mathrm{Fe}]\) posterior remains at the -0.2 boundary.
@@ -244,7 +244,7 @@ Lick
 : Mean absolute residual over the available indices, against 2.31 \(\sigma\) for `poly3_total`: `no_irac` 2.14, `sfh_cont` 2.26, `floor20` 2.34, `dust_free` 2.36, `mask_cn` 2.47, `emis_wide` 2.47. Seed repeats scatter by 0.06, so only `no_irac` moves. The catalogue indices come from the uncalibrated DR2 spectra.
 
 Borghi+22
-: No arm improves the two overlap galaxies. M4_108989 \([\alpha/\mathrm{Fe}]\) stays at -5.2 \(\sigma\) in every arm and M12_185653 \([\alpha/\mathrm{Fe}]\) at +3.6 to +4.1. `dust_free` moves M12_185653 age from 3.5 to 2.9 \(\sigma\) and \([\mathrm{Z}/\mathrm{H}]\) from -3.5 to -3.2, inside the seed scatter of the other arms. Borghi's ages are SSP-equivalent; Ceridwen ages are mass-weighted.
+: No arm improves the two overlap galaxies. M4_108989 \([\alpha/\mathrm{Fe}]\) stays at -5.2 \(\sigma\) in every arm and M12_185653 \([\alpha/\mathrm{Fe}]\) at +3.6 to +4.1. `dust_free` moves M12_185653 age from 3.5 to 2.9 \(\sigma\) and \([\mathrm{Fe}/\mathrm{H}]\) from -4.8 to -4.3, inside the seed scatter of the other arms. Borghi's ages are SSP-equivalent; Ceridwen ages are mass-weighted.
 
 <figure>
 <img src="figures/fit-accuracy-knobs/lick-by-arm.png" alt="Predicted minus catalogue Lick index over catalogue error, per index, galaxy and arm">
@@ -275,7 +275,7 @@ Floor
 | parameter | old model | new model |
 |---|---|---|
 | age | 1.20 | 0.34 |
-| \(\log Z\) | 0.49 | 0.54 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | 0.49 | 0.54 |
 | \([\alpha/\mathrm{Fe}]\) | 0.96 | 0.23 |
 | \(\tau_{\mathrm{dust}}\) | 0.32 | 0.07 |
 | \(\log M\) | 0.49 | 0.29 |
@@ -300,7 +300,7 @@ Shifts
 | M5_172669 | 1.85 to 2.48 | +6.4 | 0.58 to 0.47 | -5.6 | -0.97, 89% at the wall | +9.0 |
 
 Beyond the old floor
-: age 3 of 6, \(\log Z\) 4 of 6, \([\alpha/\mathrm{Fe}]\) 0 of 6, \(\tau_{\mathrm{dust}}\) 6 of 6, \(\log M\) 5 of 6. Only M4_108989 loses evidence, and by an amount inside the new \(\ln Z\) spread.
+: age 3 of 6, \([\mathrm{Fe}/\mathrm{H}]\) 4 of 6, \([\alpha/\mathrm{Fe}]\) 0 of 6, \(\tau_{\mathrm{dust}}\) 6 of 6, \(\log M\) 5 of 6. Only M4_108989 loses evidence, and by an amount inside the new \(\ln Z\) spread.
 
 Two regimes
 : the three galaxies whose index pins to the -1.0 wall (M5_173928, M1_206545, M5_172669) get older by 4 to 7 half-widths and lose \(\tau_{\mathrm{dust}}\). The three galaxies whose index settles inside the prior (M12_98104, M4_108989, M12_185653) keep their age and gain \(\tau_{\mathrm{dust}}\) by 3 to 5 half-widths.
@@ -332,11 +332,11 @@ Result
 ### dust_wide
 
 Result
-: the three wall-pinned galaxies follow the wall. M1_206545 goes from -0.99 to -1.90 (58% within 0.1 of -2.0), \(\Delta\ln Z\) +24, \(\tau_{\mathrm{dust}}\) 0.39 to 0.20, \(\log Z\) +4.6 half-widths, \([\alpha/\mathrm{Fe}]\) +2.0. M5_173928 goes to -1.75 (20% at the wall), \(\Delta\ln Z\) +31, age -4.4, \(\log Z\) +24, \(\tau_{\mathrm{dust}}\) 0.45 to 0.30. M4_108989 flips from +0.11 to a bimodal posterior at -1.94 (78% at the wall), \(\Delta\ln Z\) +28, age -6.0, \(\log Z\) +12, \(\tau_{\mathrm{dust}}\) 0.35 to 0.17, raw spectral \(\chi^2\) -122. M5_172669 settles off the wall at -1.14 \(\pm\) 0.08 with \(\Delta\ln Z\) 0. M12_98104 and M12_185653 do not move.
+: the three wall-pinned galaxies follow the wall. M1_206545 goes from -0.99 to -1.90 (58% within 0.1 of -2.0), \(\Delta\ln Z\) +24, \(\tau_{\mathrm{dust}}\) 0.39 to 0.20, \([\mathrm{Fe}/\mathrm{H}]\) +4.6 half-widths, \([\alpha/\mathrm{Fe}]\) +2.0. M5_173928 goes to -1.75 (20% at the wall), \(\Delta\ln Z\) +31, age -4.4, \([\mathrm{Fe}/\mathrm{H}]\) +24, \(\tau_{\mathrm{dust}}\) 0.45 to 0.30. M4_108989 flips from +0.11 to a bimodal posterior at -1.94 (78% at the wall), \(\Delta\ln Z\) +28, age -6.0, \([\mathrm{Fe}/\mathrm{H}]\) +12, \(\tau_{\mathrm{dust}}\) 0.35 to 0.17, raw spectral \(\chi^2\) -122. M5_172669 settles off the wall at -1.14 \(\pm\) 0.08 with \(\Delta\ln Z\) 0. M12_98104 and M12_185653 do not move.
 
 
 Sanity
-: Lick mean |residual| falls from 2.31 to 1.97 (M4_108989 3.61 to 2.48, M5_173928 2.61 to 1.56), but the Borghi+22 comparison on M4_108989 flips \([\mathrm{Z}/\mathrm{H}]\) from -1.67 \(\sigma\) to +3.32 \(\sigma\).
+: Lick mean |residual| falls from 2.31 to 1.97 (M4_108989 3.61 to 2.48, M5_173928 2.61 to 1.56), but the Borghi+22 comparison on M4_108989 flips \([\mathrm{Fe}/\mathrm{H}]\) from -3.23 \(\sigma\) to +1.94 \(\sigma\).
 
 
 ### Sanity checks
@@ -345,7 +345,7 @@ Lick
 : mean |residual| over all indices and galaxies: `poly3_total` 2.32, `new_default` 2.31, `tau_cn` 2.32, `sfh_cont` 2.27, `dust_free` 2.36. Seed scatter is about 0.05, so no arm moves the Lick agreement.
 
 Borghi+22
-: `new_default` on M12_185653 disagrees by 3.6 \(\sigma\) in age, -3.7 in \([\mathrm{Z}/\mathrm{H}]\), +3.8 in \([\alpha/\mathrm{Fe}]\); on M4_108989 by 1.1, -1.7, -5.3 against 0.95, -1.34, -5.19 for `poly3_total`. Unchanged within the run-to-run noise (`borghi-new-defaults.csv`).
+: `new_default` on M12_185653 disagrees by 3.6 \(\sigma\) in age, -5.1 in \([\mathrm{Fe}/\mathrm{H}]\), +3.8 in \([\alpha/\mathrm{Fe}]\); on M4_108989 by 1.1, -3.2, -5.3 against 0.95, -2.93, -5.19 for `poly3_total`. Unchanged within the run-to-run noise (`borghi-new-defaults.csv`).
 
 <figure>
 <img src="figures/fit-accuracy-knobs/nd-lick.png" alt="Predicted minus catalogue Lick index over catalogue error, per index, galaxy and arm, for poly3_total, new_default, tau_cn and dust_wide">

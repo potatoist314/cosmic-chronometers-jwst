@@ -20,14 +20,16 @@ from pathlib import Path
 import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+from build_dr2_quiescent_summary import FEH_OFFSET  # noqa: E402
 DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "results/absorption-mask"
 DEFAULT_FIGURE_DIR = PROJECT_ROOT / "wiki/analyses/absorption-mask"
 SCALARS = ["logmass", "Z", "afe", "diffuse_tau_kc", "spectrum_scaling", "log_f_calib"]
-PARAMS = ["logmass", "mwa_gyr", "Z", "afe", "diffuse_tau_kc", "spectrum_scaling", "f_calib_pct"]
+PARAMS = ["logmass", "mwa_gyr", "feh", "afe", "diffuse_tau_kc", "spectrum_scaling", "f_calib_pct"]
 LABELS = {
     "logmass": r"$\log M_\star/M_\odot$",
     "mwa_gyr": r"$t_{\rm MW}$ [Gyr]",
-    "Z": r"$\log Z$",
+    "feh": r"$[\mathrm{Fe}/\mathrm{H}]$",
     "afe": r"[$\alpha$/Fe]",
     "diffuse_tau_kc": r"$\tau_{\rm dust}$",
     "spectrum_scaling": r"$s_{\rm spec}$",
@@ -105,11 +107,13 @@ def read_cell(cell_dir: Path) -> dict | None:
     for name in SCALARS:
         draws[name] = np.asarray(result.samples[name]).reshape(len(result.log_weights), -1)[:, 0]
     draws["f_calib_pct"] = 100.0 * np.exp(draws.pop("log_f_calib"))
+    draws["feh"] = draws.pop("Z") + FEH_OFFSET
     quantiles = {name: weighted_quantiles(values, result.log_weights) for name, values in draws.items()}
     quantiles["mwa_gyr"] = [float(np.quantile(mwa_draws, q)) for q in QUANTILES]
     record["quantiles"] = quantiles
     if truth is not None:
         tr = {name: float(np.ravel(truth[name])[0]) for name in ["logmass", "Z", "afe", "diffuse_tau_kc", "spectrum_scaling"]}
+        tr["feh"] = tr.pop("Z") + FEH_OFFSET
         tr["f_calib_pct"] = 100.0 * float(np.exp(np.ravel(truth["log_f_calib"])[0]))
         tr["mwa_gyr"] = mass_weighted_age(truth["logsfr_ratios"], lookback)
         record["truth"] = tr
@@ -219,7 +223,7 @@ def plot_mock_bias(records: list[dict], figure_dir: Path) -> Path | None:
         return None
     tilts = sorted({r["mock_tilt"] for r in mocks})
     snrs = sorted({r["mock_snr_scale"] for r in mocks}, reverse=True)
-    params = ["logmass", "mwa_gyr", "Z", "afe", "diffuse_tau_kc"]
+    params = ["logmass", "mwa_gyr", "feh", "afe", "diffuse_tau_kc"]
     _style()
     fig, axes = plt.subplots(len(params), len(snrs), figsize=(3.4 * len(snrs), 2.1 * len(params)),
                              sharex=True, squeeze=False)
@@ -263,7 +267,7 @@ def plot_mock_width(records: list[dict], figure_dir: Path) -> Path | None:
     mocks = [r for r in records if r["is_mock"]]
     if not mocks:
         return None
-    params = ["logmass", "mwa_gyr", "Z", "afe", "diffuse_tau_kc"]
+    params = ["logmass", "mwa_gyr", "feh", "afe", "diffuse_tau_kc"]
     _style()
     fig, ax = plt.subplots(figsize=(6.4, 3.0))
     x = np.arange(len(params))
@@ -306,7 +310,7 @@ def plot_real(records: list[dict], figure_dir: Path) -> Path | None:
     if not reals:
         return None
     targets = sorted({r["target"] for r in reals})
-    params = ["logmass", "mwa_gyr", "Z", "afe", "diffuse_tau_kc", "spectrum_scaling"]
+    params = ["logmass", "mwa_gyr", "feh", "afe", "diffuse_tau_kc", "spectrum_scaling"]
     _style()
     fig, axes = plt.subplots(2, 3, figsize=(8.4, 6.2), squeeze=False)
     for ax, name in zip(axes.ravel(), params):

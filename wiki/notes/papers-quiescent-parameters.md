@@ -11,18 +11,18 @@ figures: [literature-vs-ceridwen.png]
 
 <figure>
 <img src="figures/papers-quiescent-parameters/literature-vs-ceridwen.png" alt="One row per literature paper for age, metallicity and alpha enhancement, with the Ceridwen DR2 sample median and 16-84 spread as the blue top row">
-<figcaption>Age/metallicity/alpha-enhancement panels show redshift-ordered literature-paper rows: grey bars denote quoted ranges/\(\pm\)1\(\sigma\); blue top-row Ceridwen DR2 187-galaxy medians (also vertical lines) have across-galaxy 16–84 percentile spreads; circles: \([\mathrm{Z}/\mathrm{H}]\)/\([\alpha/\mathrm{Fe}]\), squares: \([\mathrm{Fe}/\mathrm{H}]\)/\([\mathrm{Mg}/\mathrm{Fe}]\); Ceridwen absolute \(\log Z\) uses solar references \(Z_\odot\) = 0.0142/0.020, neither yet fixed.</figcaption>
+<figcaption>Age, metallicity and alpha-enhancement panels: redshift-ordered literature-paper rows; grey bars: quoted ranges/\(\pm\)1\(\sigma\); blue top row: 187-galaxy Ceridwen DR2 median (also vertical line), 16–84 percentile across-galaxy spread; circles: \([\mathrm{Z}/\mathrm{H}]\)/\([\alpha/\mathrm{Fe}]\); squares: \([\mathrm{Fe}/\mathrm{H}]\)/\([\mathrm{Mg}/\mathrm{Fe}]\); Ceridwen \([\mathrm{Fe}/\mathrm{H}]\) = Z + 1.7328 (grid’s built-in solar reference).</figcaption>
 </figure>
 
 ## Ceridwen DR2 against the literature
 
 | Quantity | Ceridwen DR2 median (N=187) | Literature at z~0.7 |
 | --- | --- | --- |
-| \(\log M_\star\) | 11.11 | Kaushal+2024 QG median 11.2 |
+| \(\log M_\star\) | 11.34 | Kaushal+2024 QG median 11.2 |
 | \(\sigma_\star\) | 204 \(\mathrm{km\,s^{-1}}\) | DR3 median 166 \(\mathrm{km\,s^{-1}}\); Kaushal+2024 QG ~200 \(\mathrm{km\,s^{-1}}\) |
-| Age | 3.02 Gyr, mass-weighted | Borghi+2022a 2–4 Gyr SSP-equivalent; Ceridwen +0.26 Gyr above Borghi on the 68-galaxy overlap |
-| Metallicity | \(\log Z\) −1.76, absolute; solar reference open ([roadmap: metallicity](/wiki/roadmap/#metallicity)) | Borghi+2022a \([\mathrm{Z}/\mathrm{H}]\) 0.08; Beverage, Cheng \([\mathrm{Fe}/\mathrm{H}]\) ~ −0.1 to 0.0 |
-| \([\alpha/\mathrm{Fe}]\) | 0.05 | Bevacqua+2023 +0.24; Borghi+2022a +0.13; Beverage \([\mathrm{Mg}/\mathrm{Fe}]\) ~0.2–0.3 |
+| Age | 4.81 Gyr, mass-weighted | Borghi+2022a 2–4 Gyr SSP-equivalent; Ceridwen +1.29 Gyr above Borghi on the 68-galaxy overlap |
+| Metallicity | \([\mathrm{Fe}/\mathrm{H}]\) −0.18 (grid Z −1.91 + 1.7328, `ceridwen/scripts_afe/build_afe_hr_grid.py`) | Borghi+2022a \([\mathrm{Z}/\mathrm{H}]\) 0.08; Beverage, Cheng \([\mathrm{Fe}/\mathrm{H}]\) ~ −0.1 to 0.0 |
+| \([\alpha/\mathrm{Fe}]\) | −0.05 | Bevacqua+2023 +0.24; Borghi+2022a +0.13; Beverage \([\mathrm{Mg}/\mathrm{Fe}]\) ~0.2–0.3 |
 
 ## Stellar mass
 
@@ -111,7 +111,7 @@ figures: [literature-vs-ceridwen.png]
 | Release | DR3: 4081 spectra, 3741 galaxies | DR2 ([Straatman+2018](https://arxiv.org/abs/1809.08236), VizieR J/ApJS/239/27) |
 | Redshift | \(0.6<z<1.0\) | median 0.73 |
 | Spectra | VIMOS, R ~ 2500, 6300–8800 \(\text{\AA}\), \(\mathrm{S/N}\) ~ 20 per \(\text{\AA}\) | same |
-| Mass limit | \(\log M_\star\) \(\gtrsim\) 10.4 | median \(\log M_\star\) 11.11 |
+| Mass limit | \(\log M_\star\) \(\gtrsim\) 10.4 | median \(\log M_\star\) 11.34 |
 | \(\sigma_\star\) 16/50/84 | 127 / 166 / 207 \(\mathrm{km\,s^{-1}}\) | median 204 \(\mathrm{km\,s^{-1}}\) |
 | Quiescent selection | UVJ ([Muzzin+2013](https://arxiv.org/abs/1303.4409)): 1208 galaxies | NUVrJ + emission-line veto: 187 galaxies (`scripts/run_ceridwen_vast_multi_gpu.py:79-137`) |
 

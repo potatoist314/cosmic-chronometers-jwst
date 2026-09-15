@@ -78,6 +78,7 @@ DEFAULT_SUMMARY_DIR = PROJECT_ROOT / "wiki/analyses/per-galaxy-diagnostics"
 FIGURE_SUBDIR = "diagnostics"
 
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+from build_dr2_quiescent_summary import FEH_OFFSET  # noqa: E402
 from spectral_figures import mark_absorption_features, spectral_tight_layout  # noqa: E402
 
 # Fitting-notebook configuration that ``write_result_h5`` does not persist.
@@ -550,8 +551,8 @@ def model_parameter_block(model, ssp, likelihood, settings: dict, seed: int) -> 
         "Stellar population grid",
         f"  library: {getattr(ssp, 'spec_library', None)}; isochrones: {getattr(ssp, 'isoc_type', None)}; "
         f"IMF: imf_type={imf} ({IMF_NAMES.get(imf, 'unknown')}); schema {getattr(ssp, 'schema_version', None)}",
-        f"  grid axes: [alpha/Fe] {_fmt_array(np.asarray(ssp.ssp_afe), 3)}; log10 Z {len(np.asarray(ssp.ssp_lgmet))} nodes "
-        f"[{float(np.min(ssp.ssp_lgmet)):.3f}, {float(np.max(ssp.ssp_lgmet)):.3f}] (absolute Z); "
+        f"  grid axes: [alpha/Fe] {_fmt_array(np.asarray(ssp.ssp_afe), 3)}; [Fe/H] {len(np.asarray(ssp.ssp_lgmet))} nodes "
+        f"[{float(np.min(ssp.ssp_lgmet)) + FEH_OFFSET:.3f}, {float(np.max(ssp.ssp_lgmet)) + FEH_OFFSET:.3f}] (grid Z + {FEH_OFFSET}); "
         f"log10(age/Gyr) {len(np.asarray(ssp.ssp_lg_age_gyr))} nodes; wavelength {len(np.asarray(ssp.ssp_wave))} pts "
         f"[{float(np.min(ssp.ssp_wave)):.0f}, {float(np.max(ssp.ssp_wave)):.0f}] A",
     ]
@@ -1158,7 +1159,7 @@ def _grid_facts(target_dir: Path) -> dict:
         "isochrones": r"isochrones: ([^;]+);",
         "imf": r"IMF: imf_type=\d+ \((.+?)\); schema",
         "afe_nodes": r"\[alpha/Fe\] \[([^\]]+)\]",
-        "met_nodes": r"log10 Z (\d+) nodes",
+        "met_nodes": r"(?:log10 Z|\[Fe/H\]) (\d+) nodes",
         "age_nodes": r"log10\(age/Gyr\) (\d+) nodes",
         "dust_law": r"diffuse attenuation: law '([^']+)'",
         "birth_cloud": r"birth-cloud \(age-dependent\) dust: (\w+)",
@@ -1207,7 +1208,7 @@ def model_settings_block(target_dir: Path, redshift_line: str) -> list[str]:
         "",
         "Stellar grid",
         f": {facts['library']}, {facts['isochrones']} isochrones, {facts['imf']} IMF. "
-        f"Axes [alpha/Fe] {facts['afe_nodes']}, log10 Z {facts['met_nodes']} nodes, "
+        f"Axes [alpha/Fe] {facts['afe_nodes']}, [Fe/H] {facts['met_nodes']} nodes, "
         f"log10(age/Gyr) {facts['age_nodes']} nodes.",
         "",
         "Star-formation history",

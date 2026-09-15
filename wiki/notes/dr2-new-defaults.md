@@ -33,7 +33,7 @@ Commit
 | parameter | median shift | NMAD | median half-width | moved > 1 half-width |
 | --- | --- | --- | --- | --- |
 | age [Gyr] | +1.23 | 1.15 | 0.17 | 169/187 |
-| \(\log Z\) | -0.17 | 0.21 | 0.036 | 173/187 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | -0.17 | 0.21 | 0.036 | 173/187 |
 | \([\alpha/\mathrm{Fe}]\) | -0.056 | 0.059 | 0.018 | 148/187 |
 | \(\tau_{\mathrm{diffuse}}\) | +0.17 | 0.15 | 0.023 | 171/187 |
 | \(\log M\) | +0.19 | 0.12 | 0.018 | 182/187 |
@@ -48,7 +48,7 @@ Commit
 
 Seed repeats cover two galaxies. Maximum parameter shifts use posterior
 half-width units: old model [1.20, 0.49, 0.96, 0.32, 0.49], new model
-[0.34, 0.54, 0.23, 0.07, 0.29], for age, \(\log Z\), \([\alpha/\mathrm{Fe}]\), \(\tau_{\mathrm{dust}}\) and \(\log M\).
+[0.34, 0.54, 0.23, 0.07, 0.29], for age, \([\mathrm{Fe}/\mathrm{H}]\), \([\alpha/\mathrm{Fe}]\), \(\tau_{\mathrm{dust}}\) and \(\log M\).
 [Seed comparisons](/wiki/e/e-seed-repeatability/).
 
 The maximum seed-to-seed \(\ln Z\) spread is 2.0 for the old model and 3.1 for the

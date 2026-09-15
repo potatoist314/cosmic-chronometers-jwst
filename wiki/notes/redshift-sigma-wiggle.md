@@ -38,7 +38,7 @@ Code
 </figure>
 
 <figure>
-<img src="figures/redshift-sigma-wiggle/parameters-fixed-vs-free.png" alt="log M, t50, age, tau_dust, [Fe/H], afe for poly3_total and zsig, four galaxies">
+<img src="figures/redshift-sigma-wiggle/parameters-fixed-vs-free.png" alt="log M, t50, log SFR, tau_dust, t_MW, afe for poly3_total and zsig, four galaxies">
 <figcaption>Physical parameters with fixed against free nuisances, where only \(\tau_{\mathrm{dust}}\) on M5_173928 moves by more than one \(\sigma\)</figcaption>
 </figure>
 

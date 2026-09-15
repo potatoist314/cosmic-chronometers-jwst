@@ -246,6 +246,7 @@ The code inserts a fixed redshift only when the sampled dictionary does not cont
 - Each prediction dictionary value matches its observation length.
 - `logmass` is the `log10` formed stellar mass in solar masses.
 - `Z` is `log10` absolute metallicity.
+- On the alpha-enhanced grid `amist_c3k_hr_krou_afe`, Z = \([\mathrm{Fe}/\mathrm{H}]\) + log10(0.0185), so \([\mathrm{Fe}/\mathrm{H}]\) = Z + 1.7328283 (`ceridwen/scripts_afe/build_afe_hr_grid.py`, lines 63–64).
 - `afe` is `[alpha/Fe]` in dex.
 - `zred` is dimensionless.
 

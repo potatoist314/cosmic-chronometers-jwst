@@ -17,7 +17,7 @@ Arms
 : baseline is order 0 with cosmos_ap3. poly3 is order 3 with cosmos_ap3. poly3_total is order 3 with cosmos_total. Production now runs poly3_total.
 
 Stellar grid
-: C3K v2.3 high-res (c3k_hr, vt=10 \(\mathrm{km\,s^{-1}}\)), MIST v2.5 (aMIST, alpha-variable) isochrones, Kroupa (2001) IMF. Axes \([\alpha/\mathrm{Fe}]\) 5 nodes, \(\log_{10} Z\) 13 nodes, \(\log_{10}(\mathrm{age}/\mathrm{Gyr})\) 107 nodes.
+: C3K v2.3 high-res (c3k_hr, vt=10 \(\mathrm{km\,s^{-1}}\)), MIST v2.5 (aMIST, alpha-variable) isochrones, Kroupa (2001) IMF. Axes \([\alpha/\mathrm{Fe}]\) 5 nodes, \([\mathrm{Fe}/\mathrm{H}]\) 13 nodes, \(\log_{10}(\mathrm{age}/\mathrm{Gyr})\) 107 nodes.
 
 Star-formation history
 : Constant star-formation rate in each of 7 lookback bins. Edges 0, 0.03, 0.1, 0.3, 1, 3, 5 Gyr, then the universe age at the galaxy redshift. Metallicity constant in time.

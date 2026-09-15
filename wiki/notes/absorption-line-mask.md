@@ -43,7 +43,7 @@ Fisher forecast for M5_172669 at the mock truth. "Spectrum share" is the spectru
 
 | Parameter | Spectrum share, full | Spectrum share, features | Width, photometry only | Width, spectrum only | Width, joint full | Width, joint features | Prior width |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| \(\log Z\) | 0.997 | 0.992 | 0.25 | 0.015 | 0.015 | 0.023 | 0.87 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | 0.997 | 0.992 | 0.25 | 0.015 | 0.015 | 0.023 | 0.87 |
 | \([\alpha/\mathrm{Fe}]\) | 0.998 | 0.994 | 0.17 | 0.016 | 0.015 | 0.021 | 0.23 |
 | \(\tau_{\mathrm{dust}}\) | 0.997 | 0.993 | 0.099 | 0.0057 | 0.0056 | 0.0080 | 0.58 |
 | \(\log M_\star\) | 0.999 | 0.997 | 0.012 | 0.105 | 0.0071 | 0.0077 | 1.44 |
@@ -177,9 +177,9 @@ Truth: the weighted posterior median of the stored full-spectrum fit of M5_17266
 | tMW [Gyr] | full spectrum | +0.01 | +0.16 | +0.13 | 1.00 (1.00–1.00) | 2/6 |
 | tMW [Gyr] | features only | +0.01 | +0.12 | +0.14 | 1.11 (0.92–2.44) | 2/6 |
 | tMW [Gyr] | continuum down-weighted | +0.01 | +0.16 | +0.07 | 1.17 (0.80–1.84) | 2/6 |
-| \(\log Z\) | full spectrum | -0.003 | -0.012 | +0.004 | 1.00 (1.00–1.00) | 5/6 |
-| \(\log Z\) | features only | -0.007 | +0.001 | +0.009 | 1.48 (0.86–1.93) | 4/6 |
-| \(\log Z\) | continuum down-weighted | -0.007 | -0.001 | +0.009 | 1.46 (0.79–1.71) | 3/6 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | full spectrum | -0.003 | -0.012 | +0.004 | 1.00 (1.00–1.00) | 5/6 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | features only | -0.007 | +0.001 | +0.009 | 1.48 (0.86–1.93) | 4/6 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | continuum down-weighted | -0.007 | -0.001 | +0.009 | 1.46 (0.79–1.71) | 3/6 |
 | \([\alpha/\mathrm{Fe}]\) | full spectrum | +0.006 | +0.004 | -0.006 | 1.00 (1.00–1.00) | 3/6 |
 | \([\alpha/\mathrm{Fe}]\) | features only | +0.013 | -0.006 | -0.015 | 1.35 (0.87–1.83) | 3/6 |
 | \([\alpha/\mathrm{Fe}]\) | continuum down-weighted | +0.012 | -0.006 | -0.009 | 1.39 (0.84–1.51) | 3/6 |
@@ -195,9 +195,9 @@ Truth: the weighted posterior median of the stored full-spectrum fit of M5_17266
 | tMW [Gyr] | full spectrum | +0.04 | +0.22 | +0.25 | 1.00 (1.00–1.00) | 0/6 |
 | tMW [Gyr] | features only | +0.04 | +0.16 | +0.35 | 0.87 (0.72–1.54) | 1/6 |
 | tMW [Gyr] | continuum down-weighted | +0.04 | +0.20 | +0.35 | 1.10 (0.75–2.09) | 1/6 |
-| \(\log Z\) | full spectrum | -0.013 | -0.018 | -0.011 | 1.00 (1.00–1.00) | 4/6 |
-| \(\log Z\) | features only | -0.038 | -0.004 | -0.003 | 1.60 (1.35–1.89) | 5/6 |
-| \(\log Z\) | continuum down-weighted | -0.036 | -0.011 | -0.000 | 1.55 (1.07–1.97) | 5/6 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | full spectrum | -0.013 | -0.018 | -0.011 | 1.00 (1.00–1.00) | 4/6 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | features only | -0.038 | -0.004 | -0.003 | 1.60 (1.35–1.89) | 5/6 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | continuum down-weighted | -0.036 | -0.011 | -0.000 | 1.55 (1.07–1.97) | 5/6 |
 | \([\alpha/\mathrm{Fe}]\) | full spectrum | +0.029 | -0.014 | -0.048 | 1.00 (1.00–1.00) | 3/6 |
 | \([\alpha/\mathrm{Fe}]\) | features only | +0.060 | -0.035 | -0.079 | 1.35 (1.28–1.61) | 1/6 |
 | \([\alpha/\mathrm{Fe}]\) | continuum down-weighted | +0.059 | -0.036 | -0.077 | 1.44 (1.32–1.58) | 1/6 |
@@ -384,7 +384,7 @@ Shift of the masked-mode posterior median from the full-spectrum median, in unit
 | --- | --- | --- | --- | --- | --- | --- |
 | \(\log M_\star\) | +0.038 (+1.8\(\sigma\)) | +0.019 (+0.9\(\sigma\)) | +0.009 (+1.3\(\sigma\)) | +0.010 (+1.4\(\sigma\)) | +0.084 (+7.4\(\sigma\)) | +0.108 (+9.4\(\sigma\)) |
 | tMW [Gyr] | +0.60 (+3.0\(\sigma\)) | +0.30 (+1.5\(\sigma\)) | +0.03 (+1.4\(\sigma\)) | +0.04 (+1.4\(\sigma\)) | +1.27 (+13.6\(\sigma\)) | +1.59 (+17.0\(\sigma\)) |
-| \(\log Z\) | -0.179 (-5.6\(\sigma\)) | -0.168 (-5.3\(\sigma\)) | -0.249 (-21.7\(\sigma\)) | -0.250 (-21.8\(\sigma\)) | -0.082 (-4.9\(\sigma\)) | -0.107 (-6.4\(\sigma\)) |
+| \([\mathrm{Fe}/\mathrm{H}]\) | -0.179 (-5.6\(\sigma\)) | -0.168 (-5.3\(\sigma\)) | -0.249 (-21.7\(\sigma\)) | -0.250 (-21.8\(\sigma\)) | -0.082 (-4.9\(\sigma\)) | -0.107 (-6.4\(\sigma\)) |
 | \([\alpha/\mathrm{Fe}]\) | -0.041 (-2.9\(\sigma\)) | -0.040 (-2.8\(\sigma\)) | +0.225 (+15.0\(\sigma\)) | +0.224 (+14.9\(\sigma\)) | +0.025 (+2.3\(\sigma\)) | +0.028 (+2.6\(\sigma\)) |
 | \(\tau_{\mathrm{dust}}\) | -0.110 (-6.9\(\sigma\)) | -0.109 (-6.9\(\sigma\)) | +0.044 (+9.5\(\sigma\)) | +0.043 (+9.5\(\sigma\)) | +0.013 (+1.4\(\sigma\)) | +0.010 (+1.1\(\sigma\)) |
 
