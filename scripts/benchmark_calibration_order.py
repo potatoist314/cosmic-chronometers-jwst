@@ -39,7 +39,8 @@ def old_calibrate(self, y, mu, sigma, mask):
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--orders", type=int, nargs="+", default=[3, 5, 10, 24])
+    parser.add_argument("--orders", type=int, nargs="+", default=[0, 3, 5, 10, 24],
+                        help="0 means no calibration polynomial")
     parser.add_argument("--particles", type=int, nargs="+", default=[100, 500])
     parser.add_argument("--repeats", type=int, default=20)
     parser.add_argument("--seed", type=int, default=20260915)
@@ -72,7 +73,7 @@ def main() -> None:
     }
     rows = []
     for order in args.orders:
-        calibration = PolynomialCalibration.from_spectrum(
+        calibration = None if order == 0 else PolynomialCalibration.from_spectrum(
             spectrum, order, prior_sigma=0.1
         )
         likelihood = MultiObservationLikelihood(
@@ -86,6 +87,8 @@ def main() -> None:
             ),
         )
         for variant, (normal_method, calibrate_method) in variants.items():
+            if calibration is None and variant == "old":
+                continue
             PolynomialCalibration.normal_matrix = normal_method
             PolynomialCalibration.calibrate = calibrate_method
             loglike, _ = _make_log_functions(model, likelihood)
@@ -105,7 +108,7 @@ def main() -> None:
                     "order": order,
                     "variant": variant,
                     "particles": count,
-                    "n_coeff": calibration.n_coeff,
+                    "n_coeff": 0 if calibration is None else calibration.n_coeff,
                     "compile_s": compile_s,
                     "median_s": median_s,
                     "min_s": min(samples),
