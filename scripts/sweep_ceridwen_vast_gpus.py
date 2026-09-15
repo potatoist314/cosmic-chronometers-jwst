@@ -50,19 +50,32 @@ MINIMUM_DISK_GB = 40.0
 MINIMUM_CUDA_VERSION = 12.8
 
 # Liu Hao's rule for every Ceridwen fit run (2026-09-07): an RTX 5060 or
-# 5060 Ti, under $0.10/h, on a host above 99.5% reliability. Never take a
-# dearer or less reliable box because nothing else is offered; search again.
+# 5060 Ti, under the price cap, on a host above 99.5% reliability. Never take
+# a dearer or less reliable box because nothing else is offered; search again.
+# Cap raised from $0.10 to $0.11/h on 2026-09-15; the same day: an
+# interruptible (bid) rental is fine for any run under two hours.
 FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti")
-FIT_MAX_DPH_USD = 0.10
+FIT_MAX_DPH_USD = 0.11
 FIT_MIN_RELIABILITY = 0.995
-FIT_OFFER_QUERY = (f"gpu_name in [RTX_5060,RTX_5060_Ti] verified=true rentable=true num_gpus=1 "
-                   f"inet_down>200 disk_space>=40 reliability>{FIT_MIN_RELIABILITY} dph<{FIT_MAX_DPH_USD}")
+FIT_BID_MARGIN_USD = 0.005
+FIT_OFFER_QUERY_BASE = (f"gpu_name in [RTX_5060,RTX_5060_Ti] verified=true rentable=true num_gpus=1 "
+                        f"inet_down>200 disk_space>=40 reliability>{FIT_MIN_RELIABILITY}")
+FIT_OFFER_QUERY = f"{FIT_OFFER_QUERY_BASE} dph<{FIT_MAX_DPH_USD}"
 
 
-def fit_offer_qualifies(offer: dict[str, Any]) -> bool:
-    """The rule above, applied to a returned row (Vast's own dph filter is not exact)."""
+def fit_bid_price(offer: dict[str, Any]) -> float:
+    """Interruptible bid: the host's minimum bid plus a small margin; you pay the bid."""
+    return round(float(offer["min_bid"]) + FIT_BID_MARGIN_USD, 4)
+
+
+def fit_offer_qualifies(offer: dict[str, Any], *, interruptible: bool = False) -> bool:
+    """The rule above, applied to a returned row (Vast's own dph filter is not exact).
+
+    On-demand offers are judged on ``dph_total``; interruptible ones on the bid.
+    """
+    price = fit_bid_price(offer) if interruptible and "min_bid" in offer else float(offer.get("dph_total") or 1e9)
     return (offer.get("gpu_name") in FIT_GPU_NAMES
-            and float(offer.get("dph_total") or 1e9) < FIT_MAX_DPH_USD
+            and price < FIT_MAX_DPH_USD
             and float(offer.get("reliability2") or 0.0) > FIT_MIN_RELIABILITY)
 MINIMUM_COMPUTE_CAPABILITY = 700
 MINIMUM_DIRECT_PORTS = 2
@@ -580,6 +593,7 @@ def _create_instance(offer: dict[str, Any], args: argparse.Namespace) -> int:
             "--cancel-unavail",
             "--label",
             f"ceridwen-bench-{slug}",
+            *(["--bid_price", str(args.bid)] if getattr(args, "bid", None) else []),
         ],
         timeout=300.0,
     )

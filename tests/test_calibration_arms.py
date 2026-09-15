@@ -138,15 +138,26 @@ def test_offer_rule_accepts_only_cheap_reliable_5060s(arms):
     """Liu Hao's rule (2026-09-07): RTX 5060 or 5060 Ti, under $0.10/h, above 99.5% reliable."""
     assert arms.offer_qualifies(_offer())
     assert arms.offer_qualifies(_offer(gpu_name="RTX 5060 Ti", gpu_ram=16311))
-    assert not arms.offer_qualifies(_offer(dph_total=0.10))
+    assert arms.offer_qualifies(_offer(dph_total=0.10))
+    assert not arms.offer_qualifies(_offer(dph_total=0.11))
     assert not arms.offer_qualifies(_offer(dph_total=0.149))
     assert not arms.offer_qualifies(_offer(reliability2=0.995))
     assert not arms.offer_qualifies(_offer(gpu_name="RTX 5070"))
     assert not arms.offer_qualifies(_offer(gpu_name="RTX 4090", dph_total=0.05))
 
 
+def test_interruptible_offers_are_judged_on_the_bid(arms):
+    """2026-09-15: interruptible is fine under two hours; bid = min_bid + margin, under the cap."""
+    dear_on_demand = _offer(dph_total=0.13, min_bid=0.09)
+    assert arms.offer_price(dear_on_demand, interruptible=True) == 0.095
+    assert arms.offer_qualifies(dear_on_demand, interruptible=True)
+    assert not arms.offer_qualifies(dear_on_demand)
+    assert not arms.offer_qualifies(_offer(dph_total=0.13, min_bid=0.106), interruptible=True)
+    assert not arms.offer_qualifies(_offer(min_bid=0.05, reliability2=0.99), interruptible=True)
+
+
 def test_offer_rule_constants_match_the_rule(arms):
-    assert arms.MAX_DPH_USD == 0.10
+    assert arms.MAX_DPH_USD == 0.11
     assert arms.MIN_RELIABILITY == 0.995
     assert set(arms.GPU_NAMES) == {"RTX 5060", "RTX 5060 Ti"}
 

@@ -248,22 +248,29 @@ GPU_NAMES, MAX_DPH_USD, MIN_RELIABILITY = _vast.FIT_GPU_NAMES, _vast.FIT_MAX_DPH
 offer_qualifies = _vast.fit_offer_qualifies
 
 
-def offers_rtx_5060(sweep, exclude_hosts: set[int]) -> list[dict]:
-    offers = sweep._vastai_json(["search", "offers", sweep.FIT_OFFER_QUERY, "-o", "dph"])
+def offer_price(offer: dict, interruptible: bool) -> float:
+    return _vast.fit_bid_price(offer) if interruptible else float(offer["dph_total"])
+
+
+def offers_rtx_5060(sweep, exclude_hosts: set[int], interruptible: bool = False) -> list[dict]:
+    query = sweep.FIT_OFFER_QUERY_BASE if interruptible else sweep.FIT_OFFER_QUERY
+    offers = sweep._vastai_json(["search", "offers", query, "-o", "dph"])
     offers = [
         o for o in offers
-        if offer_qualifies(o)
+        if offer_qualifies(o, interruptible=interruptible)
         and (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
         and float(o.get("gpu_ram") or 0) >= 8000
         and float(o.get("cuda_max_good") or 0) >= 12.6
         and int(o.get("host_id") or 0) not in exclude_hosts
     ]
-    offers.sort(key=lambda o: o["dph_total"])
+    offers.sort(key=lambda o: offer_price(o, interruptible))
     return offers
 
 
-def _describe(offer: dict) -> str:
-    return (f"offer {offer['id']} {offer['gpu_name']} ${offer['dph_total']:.4f}/h "
+def _describe(offer: dict, interruptible: bool = False) -> str:
+    price = (f"bid ${_vast.fit_bid_price(offer):.4f}/h (on demand ${offer['dph_total']:.4f}/h)" if interruptible
+             else f"${offer['dph_total']:.4f}/h")
+    return (f"offer {offer['id']} {offer['gpu_name']} {price} "
             f"{offer.get('geolocation')} host {offer.get('host_id')} "
             f"rel {offer.get('reliability2', 0):.3f}")
 
@@ -370,7 +377,7 @@ def run_instance(sweep, offer, args, cells, record: dict, instance_id: int | Non
         if instance_id is None:
             instance_id = sweep._create_instance(offer, args)
             record["instance_id"] = instance_id
-            log(f"rented instance {instance_id}: {_describe(offer)}")
+            log(f"rented instance {instance_id}: {_describe(offer, bool(args.bid))}")
             _prepare(sweep, instance_id, args, cells, log)
         else:
             record["instance_id"] = instance_id
@@ -434,8 +441,8 @@ def _finish(sweep, record: dict, args) -> int:
 
 def command_plan(args) -> int:
     sweep = _sweep()
-    for offer in offers_rtx_5060(sweep, set())[:5]:
-        print(_describe(offer))
+    for offer in offers_rtx_5060(sweep, set(), args.interruptible)[:5]:
+        print(_describe(offer, args.interruptible))
     for cell in build_cells(args.targets, args.arms):
         print(cell["name"], cell["seed"], cell["env"])
     return 0
@@ -444,16 +451,18 @@ def command_plan(args) -> int:
 def command_run(args) -> int:
     sweep = _sweep()
     busy_hosts = {int(i.get("host_id") or 0) for i in sweep._vastai_json(["show", "instances"])}
-    offers = offers_rtx_5060(sweep, busy_hosts | {int(h) for h in args.exclude_host})
+    offers = offers_rtx_5060(sweep, busy_hosts | {int(h) for h in args.exclude_host}, args.interruptible)
     if not offers:
         print("no suitable RTX 5060 offer", file=sys.stderr)
         return 1
     cells = build_cells(args.targets, args.arms)
     offer = offers[0]
+    args.bid = _vast.fit_bid_price(offer) if args.interruptible else None
     record = {
         "started": datetime.now(UTC).isoformat(timespec="seconds"),
         "branch": args.branch,
-        "offer": {k: offer.get(k) for k in ("id", "gpu_name", "dph_total", "geolocation", "host_id")},
+        "offer": {k: offer.get(k) for k in ("id", "gpu_name", "dph_total", "min_bid", "geolocation", "host_id")},
+        "bid_usd_per_hour": args.bid,
         "cells": [c["name"] for c in cells],
         "credit_before": _credit(sweep),
         **_ceridwen_tree_record(args),
@@ -494,6 +503,10 @@ def main(argv=None) -> int:
         p.add_argument("--spend-cap", type=float, default=1.0, help="USD; stop and destroy beyond it")
         p.add_argument("--keep-instance", action="store_true", help="do not destroy at the end")
         p.add_argument("--exclude-host", nargs="*", default=[])
+        p.add_argument("--interruptible", action="store_true",
+                       help="rent a bid (interruptible) instance at the host's min_bid plus the margin; "
+                            "fine for runs under two hours (2026-09-15)")
+        p.set_defaults(bid=None)
 
     plan = sub.add_parser("plan"); common(plan); plan.set_defaults(function=command_plan)
     run = sub.add_parser("run"); common(run); run.set_defaults(function=command_run)
