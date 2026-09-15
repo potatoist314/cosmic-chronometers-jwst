@@ -372,7 +372,7 @@ def worker(args):
         CERIDWEN_EXPECT_SINGLE_GPU='1',CERIDWEN_CALIBRATION_ORDER='3',
         CERIDWEN_CALIBRATION_PRIOR='0.1',CERIDWEN_PHOTOMETRY='cosmos_total',
         CERIDWEN_FIT_MODE='full_spectrum',CERIDWEN_SPECTRUM_PIXELS='all',
-        CERIDWEN_FREE_ZRED_KMS='0',CERIDWEN_FREE_SIGMA_FRAC='0',
+        CERIDWEN_FREE_ZRED_KMS='0',CERIDWEN_FREE_SIGMA='0',
         MPLBACKEND='module://matplotlib_inline.backend_inline')
     notebook=nbformat.read(PROJECT_ROOT/'notebooks/ceridwen_integrated_photometry_spectra.ipynb',as_version=4)
     if args.replay_existing:
@@ -454,7 +454,7 @@ def comparison(seeds=SEEDS, *, save=True):
     pairs=[]
     fixed=('fit_mode','photometry_source','spectrum_pixels','calibration_order',
            'calibration_prior_sigma','calibration_marginalized','free_zred_kms',
-           'free_sigma_frac','sfh_basis_fastpath','zred','random_seed')
+           'free_sigma','sfh_basis_fastpath','zred','random_seed')
     for target in TARGETS:
         for seed in seeds:
             folders=[RESULT_ROOT/f'{target}-{seed}-{v}' for v in ('baseline','reduce')]

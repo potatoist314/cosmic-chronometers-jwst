@@ -23,7 +23,7 @@ Free velocity dispersion
 : `sigma_smooth` with prior \(\operatorname{Normal}(\sigma_{\mathrm{cat}},0.2\sigma_{\mathrm{cat}})\), bounds 0.5 \(\sigma_{\mathrm{cat}}\) to 1.5 \(\sigma_{\mathrm{cat}}\). \(\sigma_{\mathrm{cat}}\) is the DR2 stellar velocity dispersion.
 
 Code
-: `Spectrum(free_z=True)` and `predict(..., zred=z)` on the fork branch `free-z-spectrum` (354f5e9), not yet merged into the pinned ceridwen submodule. Switches `CERIDWEN_FREE_ZRED_KMS` (100) and `CERIDWEN_FREE_SIGMA_FRAC` (0.2) in `notebooks/ceridwen_integrated_photometry_spectra.ipynb`.
+: `Spectrum(free_z=True)` and `predict(..., zred=z)` on the fork branch `free-z-spectrum` (354f5e9), not yet merged into the pinned ceridwen submodule. Switches `CERIDWEN_FREE_ZRED_KMS` (100) and `CERIDWEN_FREE_SIGMA_FRAC` (0.2) in `notebooks/ceridwen_integrated_photometry_spectra.ipynb`. Since 2026-09-15 the notebook switch is `CERIDWEN_FREE_SIGMA` (0/1) and the `sigma_smooth` prior is \(\operatorname{Normal}(\sigma_{\mathrm{cat}},\sigma_{\mathrm{cat,err}})\) clipped at \(\pm 3\,\sigma_{\mathrm{cat,err}}\), with \(\sigma_{\mathrm{cat,err}}\) the DR2 `SIGMA_STARS_PRIME_err`; the fits on this page used the earlier 0.2 \(\sigma_{\mathrm{cat}}\) prior.
 
 \[\begin{aligned}\Delta v &= c(z-z_{\mathrm{cat}})/(1+z_{\mathrm{cat}})\\ \sigma_{\mathrm{pull}} &= (\sigma_{\mathrm{smooth}}-\sigma_{\mathrm{cat}})/\sigma_{\mathrm{cat,err}}\end{aligned}\]
 
@@ -33,12 +33,12 @@ Code
 </figure>
 
 <figure>
-<img src="figures/redshift-sigma-wiggle/nuisance-degeneracies.png" alt="Corner of Delta v, sigma_smooth, log Z, afe and t_MW for the four galaxies">
-<figcaption>\(\sigma_{\mathrm{smooth}}\) against \(\Delta v\), \(\log Z\), \([\alpha/\mathrm{Fe}]\) and \(t_{\mathrm{MW}}\), with \(|r|\) at most 0.09 except \(\log Z\) at +0.21 (M12_185653) and +0.32 (M5_172669)</figcaption>
+<img src="figures/redshift-sigma-wiggle/nuisance-degeneracies.png" alt="Corner of Delta v, sigma_smooth, [Fe/H], afe and t_MW for the four galaxies">
+<figcaption>\(\sigma_{\mathrm{smooth}}\) against \(\Delta v\), \([\mathrm{Fe}/\mathrm{H}]\), \([\alpha/\mathrm{Fe}]\) and \(t_{\mathrm{MW}}\), with \(|r|\) at most 0.09 except \([\mathrm{Fe}/\mathrm{H}]\) at +0.21 (M12_185653) and +0.32 (M5_172669)</figcaption>
 </figure>
 
 <figure>
-<img src="figures/redshift-sigma-wiggle/parameters-fixed-vs-free.png" alt="log M, t50, age, tau_dust, log Z, afe for poly3_total and zsig, four galaxies">
+<img src="figures/redshift-sigma-wiggle/parameters-fixed-vs-free.png" alt="log M, t50, age, tau_dust, [Fe/H], afe for poly3_total and zsig, four galaxies">
 <figcaption>Physical parameters with fixed against free nuisances, where only \(\tau_{\mathrm{dust}}\) on M5_173928 moves by more than one \(\sigma\)</figcaption>
 </figure>
 
