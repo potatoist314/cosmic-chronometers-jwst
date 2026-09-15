@@ -21,7 +21,7 @@ PHOTOMETRY_PATH = (
     / "data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits"
 )
 DEFAULT_OUTPUT_ROOT = (
-    PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
+    PROJECT_ROOT / "results/dr2-quiescent-new-defaults"
 )
 DEFAULT_BASE_SEED = 20260830
 # Concurrent fits share the GPU by time-slicing. With the production sampler
@@ -34,7 +34,7 @@ DEFAULT_MINIMUM_GPU_MEMORY_MIB = int(
     os.environ.get("CERIDWEN_MIN_GPU_MEMORY_MIB", "8000")
 )
 DEFAULT_REMOTE_RESULT_ROOT = (
-    "/workspace/cosmic-chronometers-jwst/results/rtx-5060-dr2-quiescent-full-spectrum"
+    "/workspace/cosmic-chronometers-jwst/results/dr2-quiescent-new-defaults"
 )
 
 

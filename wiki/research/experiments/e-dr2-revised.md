@@ -3766,18 +3766,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_101089",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/101089-M12_101089/M12_101089_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/101089-M12_101089/M12_101089_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/101089-M12_101089/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/101089-M12_101089/ceridwen_result.h5"
       }
     ],
     "seed": 20260995,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_101089"
   },
   {
@@ -3787,18 +3787,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_101830",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/101830-M12_101830/M12_101830_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/101830-M12_101830/M12_101830_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/101830-M12_101830/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/101830-M12_101830/ceridwen_result.h5"
       }
     ],
     "seed": 20260983,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_101830"
   },
   {
@@ -3808,18 +3808,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_102456",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/102456-M12_102456/M12_102456_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/102456-M12_102456/M12_102456_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/102456-M12_102456/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/102456-M12_102456/ceridwen_result.h5"
       }
     ],
     "seed": 20260863,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_102456"
   },
   {
@@ -3829,18 +3829,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_102968",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/102968-M14_102968/M14_102968_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/102968-M14_102968/M14_102968_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/102968-M14_102968/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/102968-M14_102968/ceridwen_result.h5"
       }
     ],
     "seed": 20260991,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_102968"
   },
   {
@@ -3850,18 +3850,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_103366",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/103366-M14_103366/M14_103366_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/103366-M14_103366/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/ceridwen_result.h5"
       }
     ],
     "seed": 20260963,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_103366"
   },
   {
@@ -3871,18 +3871,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_104877",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/104877-M14_104877/M14_104877_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/104877-M14_104877/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/ceridwen_result.h5"
       }
     ],
     "seed": 20261016,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_104877"
   },
   {
@@ -3892,18 +3892,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_105474",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/105474-M4_105474/M4_105474_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/105474-M4_105474/M4_105474_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/105474-M4_105474/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/105474-M4_105474/ceridwen_result.h5"
       }
     ],
     "seed": 20260850,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_105474"
   },
   {
@@ -3913,18 +3913,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_107362",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/107362-M3_107362/M3_107362_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/107362-M3_107362/M3_107362_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/107362-M3_107362/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/107362-M3_107362/ceridwen_result.h5"
       }
     ],
     "seed": 20260915,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_107362"
   },
   {
@@ -3934,18 +3934,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_107370",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/ceridwen_result.h5"
       }
     ],
     "seed": 20260947,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_107370"
   },
   {
@@ -3955,18 +3955,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_107643",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/107643-M4_107643/M4_107643_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/107643-M4_107643/M4_107643_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/107643-M4_107643/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/107643-M4_107643/ceridwen_result.h5"
       }
     ],
     "seed": 20260928,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_107643"
   },
   {
@@ -3976,18 +3976,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_108989",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/108989-M4_108989/M4_108989_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/108989-M4_108989/M4_108989_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/108989-M4_108989/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/108989-M4_108989/ceridwen_result.h5"
       }
     ],
     "seed": 20260924,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_108989"
   },
   {
@@ -3997,18 +3997,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_109352",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/109352-M3_109352/M3_109352_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/109352-M3_109352/M3_109352_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/109352-M3_109352/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/109352-M3_109352/ceridwen_result.h5"
       }
     ],
     "seed": 20260914,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_109352"
   },
   {
@@ -4018,18 +4018,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_109713",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/ceridwen_result.h5"
       }
     ],
     "seed": 20260911,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_109713"
   },
   {
@@ -4039,18 +4039,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_109843",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/109843-M3_109843/M3_109843_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/109843-M3_109843/M3_109843_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/109843-M3_109843/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/109843-M3_109843/ceridwen_result.h5"
       }
     ],
     "seed": 20260972,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_109843"
   },
   {
@@ -4060,18 +4060,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_111390",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/111390-M3_111390/M3_111390_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/111390-M3_111390/M3_111390_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/111390-M3_111390/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/111390-M3_111390/ceridwen_result.h5"
       }
     ],
     "seed": 20260873,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_111390"
   },
   {
@@ -4081,18 +4081,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_112534",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/112534-M4_112534/M4_112534_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/112534-M4_112534/M4_112534_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/112534-M4_112534/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/112534-M4_112534/ceridwen_result.h5"
       }
     ],
     "seed": 20261009,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_112534"
   },
   {
@@ -4102,18 +4102,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_113852",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/113852-M7_113852/M7_113852_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/113852-M7_113852/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/ceridwen_result.h5"
       }
     ],
     "seed": 20260848,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_113852"
   },
   {
@@ -4123,18 +4123,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_117010",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/117010-M3_117010/M3_117010_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/117010-M3_117010/M3_117010_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/117010-M3_117010/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/117010-M3_117010/ceridwen_result.h5"
       }
     ],
     "seed": 20260944,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_117010"
   },
   {
@@ -4144,18 +4144,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_117400",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/ceridwen_result.h5"
       }
     ],
     "seed": 20260856,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_117400"
   },
   {
@@ -4165,18 +4165,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_117694",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/117694-M3_117694/M3_117694_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/117694-M3_117694/M3_117694_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/117694-M3_117694/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/117694-M3_117694/ceridwen_result.h5"
       }
     ],
     "seed": 20260912,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_117694"
   },
   {
@@ -4186,18 +4186,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_119474",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/119474-M3_119474/M3_119474_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/119474-M3_119474/M3_119474_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/119474-M3_119474/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/119474-M3_119474/ceridwen_result.h5"
       }
     ],
     "seed": 20260860,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_119474"
   },
   {
@@ -4207,18 +4207,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_119802",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/119802-M3_119802/M3_119802_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/119802-M3_119802/M3_119802_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/119802-M3_119802/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/119802-M3_119802/ceridwen_result.h5"
       }
     ],
     "seed": 20260905,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_119802"
   },
   {
@@ -4228,18 +4228,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_119809",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/119809-M3_119809/M3_119809_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/119809-M3_119809/M3_119809_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/119809-M3_119809/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/119809-M3_119809/ceridwen_result.h5"
       }
     ],
     "seed": 20261011,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_119809"
   },
   {
@@ -4249,18 +4249,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_120308",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120308-M3_120308/M3_120308_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120308-M3_120308/M3_120308_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120308-M3_120308/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120308-M3_120308/ceridwen_result.h5"
       }
     ],
     "seed": 20260891,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_120308"
   },
   {
@@ -4270,18 +4270,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_120372",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/ceridwen_result.h5"
       }
     ],
     "seed": 20260939,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_120372"
   },
   {
@@ -4291,18 +4291,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_120488",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/ceridwen_result.h5"
       }
     ],
     "seed": 20260967,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_120488"
   },
   {
@@ -4312,18 +4312,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M3_120540",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120540-M3_120540/M3_120540_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120540-M3_120540/M3_120540_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120540-M3_120540/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120540-M3_120540/ceridwen_result.h5"
       }
     ],
     "seed": 20260958,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_120540"
   },
   {
@@ -4333,18 +4333,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_120758",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120758-M7_120758/M7_120758_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120758-M7_120758/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/ceridwen_result.h5"
       }
     ],
     "seed": 20260989,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_120758"
   },
   {
@@ -4354,18 +4354,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_121482",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/121482-M7_121482/M7_121482_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/121482-M7_121482/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/ceridwen_result.h5"
       }
     ],
     "seed": 20261001,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_121482"
   },
   {
@@ -4375,18 +4375,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_122025",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/122025-M7_122025/M7_122025_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/122025-M7_122025/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/ceridwen_result.h5"
       }
     ],
     "seed": 20260965,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_122025"
   },
   {
@@ -4396,18 +4396,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_122242",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/122242-M7_122242/M7_122242_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/122242-M7_122242/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/ceridwen_result.h5"
       }
     ],
     "seed": 20260903,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_122242"
   },
   {
@@ -4417,18 +4417,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_123161",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/123161-M4_123161/M4_123161_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/123161-M4_123161/M4_123161_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/123161-M4_123161/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/123161-M4_123161/ceridwen_result.h5"
       }
     ],
     "seed": 20260929,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_123161"
   },
   {
@@ -4438,18 +4438,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_124231",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/124231-M4_124231/M4_124231_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/124231-M4_124231/M4_124231_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/124231-M4_124231/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/124231-M4_124231/ceridwen_result.h5"
       }
     ],
     "seed": 20260867,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_124231"
   },
   {
@@ -4459,18 +4459,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_124875",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/ceridwen_result.h5"
       }
     ],
     "seed": 20260876,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_124875"
   },
   {
@@ -4480,18 +4480,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_125213",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/125213-M4_125213/M4_125213_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/125213-M4_125213/M4_125213_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/125213-M4_125213/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/125213-M4_125213/ceridwen_result.h5"
       }
     ],
     "seed": 20260897,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_125213"
   },
   {
@@ -4501,18 +4501,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_126153",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/126153-M1_126153/M1_126153_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/126153-M1_126153/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/ceridwen_result.h5"
       }
     ],
     "seed": 20260987,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_126153"
   },
   {
@@ -4522,18 +4522,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_126578",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/126578-M1_126578/M1_126578_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/126578-M1_126578/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/ceridwen_result.h5"
       }
     ],
     "seed": 20260957,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_126578"
   },
   {
@@ -4543,18 +4543,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_127946",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/127946-M5_127946/M5_127946_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/127946-M5_127946/M5_127946_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/127946-M5_127946/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/127946-M5_127946/ceridwen_result.h5"
       }
     ],
     "seed": 20261010,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_127946"
   },
   {
@@ -4564,18 +4564,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_128311",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/128311-M5_128311/M5_128311_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/128311-M5_128311/M5_128311_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/128311-M5_128311/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/128311-M5_128311/ceridwen_result.h5"
       }
     ],
     "seed": 20260902,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_128311"
   },
   {
@@ -4585,18 +4585,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_129596",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/129596-M2_129596/M2_129596_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/129596-M2_129596/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/ceridwen_result.h5"
       }
     ],
     "seed": 20260943,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_129596"
   },
   {
@@ -4606,18 +4606,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_130005",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/130005-M2_130005/M2_130005_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/130005-M2_130005/M2_130005_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/130005-M2_130005/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/130005-M2_130005/ceridwen_result.h5"
       }
     ],
     "seed": 20260945,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_130005"
   },
   {
@@ -4627,18 +4627,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_130052",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/130052-M1_130052/M1_130052_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/130052-M1_130052/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/ceridwen_result.h5"
       }
     ],
     "seed": 20260839,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_130052"
   },
   {
@@ -4648,18 +4648,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_133240",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/133240-M1_133240/M1_133240_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/133240-M1_133240/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/ceridwen_result.h5"
       }
     ],
     "seed": 20260982,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_133240"
   },
   {
@@ -4669,18 +4669,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_133501",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/ceridwen_result.h5"
       }
     ],
     "seed": 20260834,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_133501"
   },
   {
@@ -4690,18 +4690,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_134021",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/134021-M2_134021/M2_134021_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/134021-M2_134021/M2_134021_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/134021-M2_134021/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/134021-M2_134021/ceridwen_result.h5"
       }
     ],
     "seed": 20260904,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_134021"
   },
   {
@@ -4711,18 +4711,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_134391",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/134391-M2_134391/M2_134391_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/134391-M2_134391/M2_134391_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/134391-M2_134391/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/134391-M2_134391/ceridwen_result.h5"
       }
     ],
     "seed": 20260838,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_134391"
   },
   {
@@ -4732,18 +4732,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_139423",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/139423-M1_139423/M1_139423_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/139423-M1_139423/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/ceridwen_result.h5"
       }
     ],
     "seed": 20260896,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_139423"
   },
   {
@@ -4753,18 +4753,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_139662",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/ceridwen_result.h5"
       }
     ],
     "seed": 20260949,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_139662"
   },
   {
@@ -4774,18 +4774,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_143127",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/143127-M7_143127/M7_143127_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/143127-M7_143127/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/ceridwen_result.h5"
       }
     ],
     "seed": 20260980,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_143127"
   },
   {
@@ -4795,18 +4795,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_145276",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/145276-M8_145276/M8_145276_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/145276-M8_145276/M8_145276_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/145276-M8_145276/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/145276-M8_145276/ceridwen_result.h5"
       }
     ],
     "seed": 20260950,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_145276"
   },
   {
@@ -4816,18 +4816,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_146213",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/146213-M7_146213/M7_146213_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/146213-M7_146213/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/ceridwen_result.h5"
       }
     ],
     "seed": 20260936,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_146213"
   },
   {
@@ -4837,18 +4837,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_147270",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147270-M7_147270/M7_147270_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147270-M7_147270/M7_147270_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147270-M7_147270/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147270-M7_147270/ceridwen_result.h5"
       }
     ],
     "seed": 20260930,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_147270"
   },
   {
@@ -4858,18 +4858,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_147539",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/ceridwen_result.h5"
       }
     ],
     "seed": 20260884,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_147539"
   },
   {
@@ -4879,18 +4879,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_147849",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/ceridwen_result.h5"
       }
     ],
     "seed": 20260886,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_147849"
   },
   {
@@ -4900,18 +4900,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_148698",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/148698-M8_148698/M8_148698_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/148698-M8_148698/M8_148698_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/148698-M8_148698/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/148698-M8_148698/ceridwen_result.h5"
       }
     ],
     "seed": 20260871,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_148698"
   },
   {
@@ -4921,18 +4921,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_150848",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/ceridwen_result.h5"
       }
     ],
     "seed": 20260844,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_150848"
   },
   {
@@ -4942,18 +4942,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_152125",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/152125-M7_152125/M7_152125_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/152125-M7_152125/M7_152125_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/152125-M7_152125/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/152125-M7_152125/ceridwen_result.h5"
       }
     ],
     "seed": 20260954,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_152125"
   },
   {
@@ -4963,18 +4963,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_156118",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/156118-M8_156118/M8_156118_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/156118-M8_156118/M8_156118_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/156118-M8_156118/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/156118-M8_156118/ceridwen_result.h5"
       }
     ],
     "seed": 20260985,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_156118"
   },
   {
@@ -4984,18 +4984,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_160400",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/160400-M8_160400/M8_160400_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/160400-M8_160400/M8_160400_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/160400-M8_160400/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/160400-M8_160400/ceridwen_result.h5"
       }
     ],
     "seed": 20260840,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_160400"
   },
   {
@@ -5005,18 +5005,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_161113",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/161113-M8_161113/M8_161113_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/161113-M8_161113/M8_161113_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/161113-M8_161113/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/161113-M8_161113/ceridwen_result.h5"
       }
     ],
     "seed": 20260975,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_161113"
   },
   {
@@ -5026,18 +5026,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_161346",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/161346-M8_161346/M8_161346_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/161346-M8_161346/M8_161346_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/161346-M8_161346/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/161346-M8_161346/ceridwen_result.h5"
       }
     ],
     "seed": 20260845,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_161346"
   },
   {
@@ -5047,18 +5047,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_162149",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/162149-M8_162149/M8_162149_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/162149-M8_162149/M8_162149_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/162149-M8_162149/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/162149-M8_162149/ceridwen_result.h5"
       }
     ],
     "seed": 20260846,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_162149"
   },
   {
@@ -5068,18 +5068,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M7_162587",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/162587-M7_162587/M7_162587_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/162587-M7_162587/M7_162587_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/162587-M7_162587/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/162587-M7_162587/ceridwen_result.h5"
       }
     ],
     "seed": 20260974,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_162587"
   },
   {
@@ -5089,18 +5089,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M8_163989",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/163989-M8_163989/M8_163989_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/163989-M8_163989/M8_163989_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/163989-M8_163989/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/163989-M8_163989/ceridwen_result.h5"
       }
     ],
     "seed": 20260941,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_163989"
   },
   {
@@ -5110,18 +5110,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_165871",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/165871-M5_165871/M5_165871_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/165871-M5_165871/M5_165871_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/165871-M5_165871/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/165871-M5_165871/ceridwen_result.h5"
       }
     ],
     "seed": 20260907,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_165871"
   },
   {
@@ -5131,18 +5131,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M6_166634",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/166634-M6_166634/M6_166634_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/166634-M6_166634/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/ceridwen_result.h5"
       }
     ],
     "seed": 20261000,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M6_166634"
   },
   {
@@ -5152,18 +5152,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_167056",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/167056-M5_167056/M5_167056_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/167056-M5_167056/M5_167056_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/167056-M5_167056/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/167056-M5_167056/ceridwen_result.h5"
       }
     ],
     "seed": 20260997,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_167056"
   },
   {
@@ -5173,18 +5173,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_172669",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/172669-M5_172669/M5_172669_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/172669-M5_172669/M5_172669_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/172669-M5_172669/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/172669-M5_172669/ceridwen_result.h5"
       }
     ],
     "seed": 20260830,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_172669"
   },
   {
@@ -5194,18 +5194,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_173928",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/173928-M5_173928/M5_173928_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/173928-M5_173928/M5_173928_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/173928-M5_173928/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/173928-M5_173928/ceridwen_result.h5"
       }
     ],
     "seed": 20260970,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_173928"
   },
   {
@@ -5215,18 +5215,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_180774",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/180774-M12_180774/M12_180774_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/180774-M12_180774/M12_180774_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/180774-M12_180774/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/180774-M12_180774/ceridwen_result.h5"
       }
     ],
     "seed": 20260921,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_180774"
   },
   {
@@ -5236,18 +5236,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_181421",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/ceridwen_result.h5"
       }
     ],
     "seed": 20260984,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_181421"
   },
   {
@@ -5257,18 +5257,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_181945",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/181945-M12_181945/M12_181945_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/181945-M12_181945/M12_181945_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/181945-M12_181945/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/181945-M12_181945/ceridwen_result.h5"
       }
     ],
     "seed": 20260833,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_181945"
   },
   {
@@ -5278,18 +5278,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_182890",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/182890-M12_182890/M12_182890_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/182890-M12_182890/M12_182890_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/182890-M12_182890/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/182890-M12_182890/ceridwen_result.h5"
       }
     ],
     "seed": 20260952,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_182890"
   },
   {
@@ -5299,18 +5299,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_184916",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/184916-M12_184916/M12_184916_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/184916-M12_184916/M12_184916_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/184916-M12_184916/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/184916-M12_184916/ceridwen_result.h5"
       }
     ],
     "seed": 20260885,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_184916"
   },
   {
@@ -5320,18 +5320,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_185631",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/185631-M12_185631/M12_185631_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/185631-M12_185631/M12_185631_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/185631-M12_185631/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/185631-M12_185631/ceridwen_result.h5"
       }
     ],
     "seed": 20261012,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_185631"
   },
   {
@@ -5341,18 +5341,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_185653",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/185653-M12_185653/M12_185653_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/185653-M12_185653/M12_185653_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/185653-M12_185653/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/185653-M12_185653/ceridwen_result.h5"
       }
     ],
     "seed": 20260923,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_185653"
   },
   {
@@ -5362,18 +5362,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_189698",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/189698-M10_189698/M10_189698_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/189698-M10_189698/M10_189698_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/189698-M10_189698/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/189698-M10_189698/ceridwen_result.h5"
       }
     ],
     "seed": 20261002,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_189698"
   },
   {
@@ -5383,18 +5383,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_191718",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/191718-M10_191718/M10_191718_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/191718-M10_191718/M10_191718_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/191718-M10_191718/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/191718-M10_191718/ceridwen_result.h5"
       }
     ],
     "seed": 20261005,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_191718"
   },
   {
@@ -5404,18 +5404,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_197591",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/197591-M10_197591/M10_197591_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/197591-M10_197591/M10_197591_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/197591-M10_197591/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/197591-M10_197591/ceridwen_result.h5"
       }
     ],
     "seed": 20260913,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_197591"
   },
   {
@@ -5425,18 +5425,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_201233",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/201233-M10_201233/M10_201233_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/201233-M10_201233/M10_201233_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/201233-M10_201233/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/201233-M10_201233/ceridwen_result.h5"
       }
     ],
     "seed": 20260994,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_201233"
   },
   {
@@ -5446,18 +5446,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_205715",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/205715-M5_205715/M5_205715_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/205715-M5_205715/M5_205715_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/205715-M5_205715/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/205715-M5_205715/ceridwen_result.h5"
       }
     ],
     "seed": 20260870,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_205715"
   },
   {
@@ -5467,18 +5467,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_205742",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/205742-M1_205742/M1_205742_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/205742-M1_205742/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/ceridwen_result.h5"
       }
     ],
     "seed": 20260842,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_205742"
   },
   {
@@ -5488,18 +5488,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_205765",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/205765-M5_205765/M5_205765_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/205765-M5_205765/M5_205765_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/205765-M5_205765/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/205765-M5_205765/ceridwen_result.h5"
       }
     ],
     "seed": 20260964,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_205765"
   },
   {
@@ -5509,18 +5509,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_206501",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/ceridwen_result.h5"
       }
     ],
     "seed": 20260883,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_206501"
   },
   {
@@ -5530,18 +5530,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_206545",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206545-M1_206545/M1_206545_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206545-M1_206545/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/ceridwen_result.h5"
       }
     ],
     "seed": 20260877,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_206545"
   },
   {
@@ -5551,18 +5551,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_206669",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206669-M2_206669/M2_206669_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206669-M2_206669/M2_206669_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206669-M2_206669/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206669-M2_206669/ceridwen_result.h5"
       }
     ],
     "seed": 20260861,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_206669"
   },
   {
@@ -5572,18 +5572,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_206771",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206771-M5_206771/M5_206771_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206771-M5_206771/M5_206771_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206771-M5_206771/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206771-M5_206771/ceridwen_result.h5"
       }
     ],
     "seed": 20260978,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_206771"
   },
   {
@@ -5593,18 +5593,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_206858",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206858-M1_206858/M1_206858_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206858-M1_206858/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/ceridwen_result.h5"
       }
     ],
     "seed": 20260869,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_206858"
   },
   {
@@ -5614,18 +5614,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_208364",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/208364-M2_208364/M2_208364_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/208364-M2_208364/M2_208364_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/208364-M2_208364/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/208364-M2_208364/ceridwen_result.h5"
       }
     ],
     "seed": 20260906,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_208364"
   },
   {
@@ -5635,18 +5635,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_208622",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/208622-M1_208622/M1_208622_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/208622-M1_208622/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/ceridwen_result.h5"
       }
     ],
     "seed": 20260946,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_208622"
   },
   {
@@ -5656,18 +5656,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_210210",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/ceridwen_result.h5"
       }
     ],
     "seed": 20260832,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_210210"
   },
   {
@@ -5677,18 +5677,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_210940",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/ceridwen_result.h5"
       }
     ],
     "seed": 20260966,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_210940"
   },
   {
@@ -5698,18 +5698,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M1_211157",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/211157-M1_211157/M1_211157_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/211157-M1_211157/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/ceridwen_result.h5"
       }
     ],
     "seed": 20260862,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_211157"
   },
   {
@@ -5719,18 +5719,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_211347",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/211347-M5_211347/M5_211347_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/211347-M5_211347/M5_211347_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/211347-M5_211347/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/211347-M5_211347/ceridwen_result.h5"
       }
     ],
     "seed": 20260888,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_211347"
   },
   {
@@ -5740,18 +5740,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_211767",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/ceridwen_result.h5"
       }
     ],
     "seed": 20260895,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_211767"
   },
   {
@@ -5761,18 +5761,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_212391",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/212391-M9_212391/M9_212391_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/212391-M9_212391/M9_212391_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/212391-M9_212391/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/212391-M9_212391/ceridwen_result.h5"
       }
     ],
     "seed": 20260933,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_212391"
   },
   {
@@ -5782,18 +5782,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_212718",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/212718-M11_212718/M11_212718_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/212718-M11_212718/M11_212718_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/212718-M11_212718/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/212718-M11_212718/ceridwen_result.h5"
       }
     ],
     "seed": 20260981,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_212718"
   },
   {
@@ -5803,18 +5803,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_213004",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/213004-M11_213004/M11_213004_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/213004-M11_213004/M11_213004_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/213004-M11_213004/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/213004-M11_213004/ceridwen_result.h5"
       }
     ],
     "seed": 20260849,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_213004"
   },
   {
@@ -5824,18 +5824,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_213587",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/213587-M9_213587/M9_213587_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/213587-M9_213587/M9_213587_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/213587-M9_213587/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/213587-M9_213587/ceridwen_result.h5"
       }
     ],
     "seed": 20260899,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_213587"
   },
   {
@@ -5845,18 +5845,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_213772",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/213772-M10_213772/M10_213772_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/213772-M10_213772/M10_213772_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/213772-M10_213772/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/213772-M10_213772/ceridwen_result.h5"
       }
     ],
     "seed": 20260843,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_213772"
   },
   {
@@ -5866,18 +5866,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_214296",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/214296-M11_214296/M11_214296_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/214296-M11_214296/M11_214296_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/214296-M11_214296/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/214296-M11_214296/ceridwen_result.h5"
       }
     ],
     "seed": 20260937,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_214296"
   },
   {
@@ -5887,18 +5887,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_214430",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/214430-M11_214430/M11_214430_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/214430-M11_214430/M11_214430_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/214430-M11_214430/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/214430-M11_214430/ceridwen_result.h5"
       }
     ],
     "seed": 20260956,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_214430"
   },
   {
@@ -5908,18 +5908,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_214899",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/214899-M9_214899/M9_214899_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/214899-M9_214899/M9_214899_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/214899-M9_214899/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/214899-M9_214899/ceridwen_result.h5"
       }
     ],
     "seed": 20260942,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_214899"
   },
   {
@@ -5929,18 +5929,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_215519",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/215519-M10_215519/M10_215519_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/215519-M10_215519/M10_215519_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/215519-M10_215519/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/215519-M10_215519/ceridwen_result.h5"
       }
     ],
     "seed": 20260948,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_215519"
   },
   {
@@ -5950,18 +5950,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_215585",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/215585-M11_215585/M11_215585_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/215585-M11_215585/M11_215585_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/215585-M11_215585/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/215585-M11_215585/ceridwen_result.h5"
       }
     ],
     "seed": 20260859,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_215585"
   },
   {
@@ -5971,18 +5971,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_216730",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/ceridwen_result.h5"
       }
     ],
     "seed": 20260853,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_216730"
   },
   {
@@ -5992,18 +5992,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_216899",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/216899-M11_216899/M11_216899_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/216899-M11_216899/M11_216899_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/216899-M11_216899/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/216899-M11_216899/ceridwen_result.h5"
       }
     ],
     "seed": 20260926,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_216899"
   },
   {
@@ -6013,18 +6013,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_217020",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/217020-M10_217020/M10_217020_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/217020-M10_217020/M10_217020_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/217020-M10_217020/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/217020-M10_217020/ceridwen_result.h5"
       }
     ],
     "seed": 20260973,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_217020"
   },
   {
@@ -6034,18 +6034,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_217564",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/217564-M11_217564/M11_217564_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/217564-M11_217564/M11_217564_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/217564-M11_217564/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/217564-M11_217564/ceridwen_result.h5"
       }
     ],
     "seed": 20261015,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_217564"
   },
   {
@@ -6055,18 +6055,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_218207",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/218207-M11_218207/M11_218207_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/218207-M11_218207/M11_218207_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/218207-M11_218207/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/218207-M11_218207/ceridwen_result.h5"
       }
     ],
     "seed": 20260852,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_218207"
   },
   {
@@ -6076,18 +6076,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_218701",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/218701-M9_218701/M9_218701_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/218701-M9_218701/M9_218701_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/218701-M9_218701/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/218701-M9_218701/ceridwen_result.h5"
       }
     ],
     "seed": 20260880,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_218701"
   },
   {
@@ -6097,18 +6097,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_221163",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/221163-M11_221163/M11_221163_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/221163-M11_221163/M11_221163_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/221163-M11_221163/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/221163-M11_221163/ceridwen_result.h5"
       }
     ],
     "seed": 20260868,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_221163"
   },
   {
@@ -6118,18 +6118,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_225431",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/225431-M9_225431/M9_225431_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/225431-M9_225431/M9_225431_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/225431-M9_225431/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/225431-M9_225431/ceridwen_result.h5"
       }
     ],
     "seed": 20260931,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_225431"
   },
   {
@@ -6139,18 +6139,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_225441",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/225441-M10_225441/M10_225441_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/225441-M10_225441/M10_225441_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/225441-M10_225441/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/225441-M10_225441/ceridwen_result.h5"
       }
     ],
     "seed": 20260894,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_225441"
   },
   {
@@ -6160,18 +6160,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_225678",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/225678-M9_225678/M9_225678_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/225678-M9_225678/M9_225678_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/225678-M9_225678/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/225678-M9_225678/ceridwen_result.h5"
       }
     ],
     "seed": 20260979,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_225678"
   },
   {
@@ -6181,18 +6181,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_226316",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/226316-M9_226316/M9_226316_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/226316-M9_226316/M9_226316_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/226316-M9_226316/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/226316-M9_226316/ceridwen_result.h5"
       }
     ],
     "seed": 20260836,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_226316"
   },
   {
@@ -6202,18 +6202,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_226721",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/226721-M11_226721/M11_226721_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/226721-M11_226721/M11_226721_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/226721-M11_226721/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/226721-M11_226721/ceridwen_result.h5"
       }
     ],
     "seed": 20260889,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_226721"
   },
   {
@@ -6223,18 +6223,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_227516",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/227516-M10_227516/M10_227516_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/227516-M10_227516/M10_227516_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/227516-M10_227516/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/227516-M10_227516/ceridwen_result.h5"
       }
     ],
     "seed": 20260887,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_227516"
   },
   {
@@ -6244,18 +6244,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_227630",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/227630-M9_227630/M9_227630_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/227630-M9_227630/M9_227630_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/227630-M9_227630/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/227630-M9_227630/ceridwen_result.h5"
       }
     ],
     "seed": 20260940,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_227630"
   },
   {
@@ -6265,18 +6265,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_227672",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/ceridwen_result.h5"
       }
     ],
     "seed": 20260934,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_227672"
   },
   {
@@ -6286,18 +6286,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_228215",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/228215-M10_228215/M10_228215_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/228215-M10_228215/M10_228215_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/228215-M10_228215/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/228215-M10_228215/ceridwen_result.h5"
       }
     ],
     "seed": 20260851,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_228215"
   },
   {
@@ -6307,18 +6307,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_228380",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/228380-M10_228380/M10_228380_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/228380-M10_228380/M10_228380_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/228380-M10_228380/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/228380-M10_228380/ceridwen_result.h5"
       }
     ],
     "seed": 20260855,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_228380"
   },
   {
@@ -6328,18 +6328,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_228717",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/228717-M10_228717/M10_228717_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/228717-M10_228717/M10_228717_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/228717-M10_228717/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/228717-M10_228717/ceridwen_result.h5"
       }
     ],
     "seed": 20260962,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_228717"
   },
   {
@@ -6349,18 +6349,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_229551",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/229551-M11_229551/M11_229551_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/229551-M11_229551/M11_229551_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/229551-M11_229551/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/229551-M11_229551/ceridwen_result.h5"
       }
     ],
     "seed": 20260872,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_229551"
   },
   {
@@ -6370,18 +6370,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_229883",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/ceridwen_result.h5"
       }
     ],
     "seed": 20260919,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_229883"
   },
   {
@@ -6391,18 +6391,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_230747",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/230747-M13_230747/M13_230747_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/230747-M13_230747/M13_230747_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/230747-M13_230747/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/230747-M13_230747/ceridwen_result.h5"
       }
     ],
     "seed": 20260917,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_230747"
   },
   {
@@ -6412,18 +6412,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_230983",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/230983-M10_230983/M10_230983_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/230983-M10_230983/M10_230983_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/230983-M10_230983/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/230983-M10_230983/ceridwen_result.h5"
       }
     ],
     "seed": 20260922,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_230983"
   },
   {
@@ -6433,18 +6433,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_231276",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/231276-M9_231276/M9_231276_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/231276-M9_231276/M9_231276_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/231276-M9_231276/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/231276-M9_231276/ceridwen_result.h5"
       }
     ],
     "seed": 20260847,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_231276"
   },
   {
@@ -6454,18 +6454,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_231544",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/231544-M10_231544/M10_231544_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/231544-M10_231544/M10_231544_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/231544-M10_231544/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/231544-M10_231544/ceridwen_result.h5"
       }
     ],
     "seed": 20260901,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_231544"
   },
   {
@@ -6475,18 +6475,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_231554",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/231554-M13_231554/M13_231554_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/231554-M13_231554/M13_231554_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/231554-M13_231554/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/231554-M13_231554/ceridwen_result.h5"
       }
     ],
     "seed": 20260986,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_231554"
   },
   {
@@ -6496,18 +6496,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_232005",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/232005-M9_232005/M9_232005_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/232005-M9_232005/M9_232005_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/232005-M9_232005/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/232005-M9_232005/ceridwen_result.h5"
       }
     ],
     "seed": 20260893,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_232005"
   },
   {
@@ -6517,18 +6517,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_232627",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/232627-M13_232627/M13_232627_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/232627-M13_232627/M13_232627_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/232627-M13_232627/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/232627-M13_232627/ceridwen_result.h5"
       }
     ],
     "seed": 20260854,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_232627"
   },
   {
@@ -6538,18 +6538,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_232890",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/232890-M9_232890/M9_232890_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/232890-M9_232890/M9_232890_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/232890-M9_232890/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/232890-M9_232890/ceridwen_result.h5"
       }
     ],
     "seed": 20260976,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_232890"
   },
   {
@@ -6559,18 +6559,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_232962",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/232962-M11_232962/M11_232962_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/232962-M11_232962/M11_232962_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/232962-M11_232962/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/232962-M11_232962/ceridwen_result.h5"
       }
     ],
     "seed": 20260878,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_232962"
   },
   {
@@ -6580,18 +6580,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M10_233129",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/233129-M10_233129/M10_233129_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/233129-M10_233129/M10_233129_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/233129-M10_233129/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/233129-M10_233129/ceridwen_result.h5"
       }
     ],
     "seed": 20260831,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_233129"
   },
   {
@@ -6601,18 +6601,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M9_233169",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/233169-M9_233169/M9_233169_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/233169-M9_233169/M9_233169_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/233169-M9_233169/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/233169-M9_233169/ceridwen_result.h5"
       }
     ],
     "seed": 20260837,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_233169"
   },
   {
@@ -6622,18 +6622,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M6_233902",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/233902-M6_233902/M6_233902_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/233902-M6_233902/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/ceridwen_result.h5"
       }
     ],
     "seed": 20260938,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M6_233902"
   },
   {
@@ -6643,18 +6643,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_236682",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/236682-M5_236682/M5_236682_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/236682-M5_236682/M5_236682_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/236682-M5_236682/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/236682-M5_236682/ceridwen_result.h5"
       }
     ],
     "seed": 20260875,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_236682"
   },
   {
@@ -6664,18 +6664,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_236994",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/236994-M5_236994/M5_236994_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/236994-M5_236994/M5_236994_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/236994-M5_236994/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/236994-M5_236994/ceridwen_result.h5"
       }
     ],
     "seed": 20260874,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_236994"
   },
   {
@@ -6685,18 +6685,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M6_237437",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/237437-M6_237437/M6_237437_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/237437-M6_237437/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/ceridwen_result.h5"
       }
     ],
     "seed": 20260908,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M6_237437"
   },
   {
@@ -6706,18 +6706,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M6_237641",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/237641-M6_237641/M6_237641_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/237641-M6_237641/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/ceridwen_result.h5"
       }
     ],
     "seed": 20260935,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M6_237641"
   },
   {
@@ -6727,18 +6727,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_238314",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/ceridwen_result.h5"
       }
     ],
     "seed": 20260865,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_238314"
   },
   {
@@ -6748,18 +6748,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_238580",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/238580-M5_238580/M5_238580_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/238580-M5_238580/M5_238580_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/238580-M5_238580/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/238580-M5_238580/ceridwen_result.h5"
       }
     ],
     "seed": 20260910,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_238580"
   },
   {
@@ -6769,18 +6769,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M6_240899",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/240899-M6_240899/M6_240899_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/240899-M6_240899/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/ceridwen_result.h5"
       }
     ],
     "seed": 20260955,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M6_240899"
   },
   {
@@ -6790,18 +6790,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M5_241189",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/241189-M5_241189/M5_241189_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/241189-M5_241189/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/ceridwen_result.h5"
       }
     ],
     "seed": 20260892,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_241189"
   },
   {
@@ -6811,18 +6811,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_243871",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/243871-M13_243871/M13_243871_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/243871-M13_243871/M13_243871_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/243871-M13_243871/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/243871-M13_243871/ceridwen_result.h5"
       }
     ],
     "seed": 20260920,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_243871"
   },
   {
@@ -6832,18 +6832,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_244239",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/244239-M13_244239/M13_244239_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/244239-M13_244239/M13_244239_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/244239-M13_244239/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/244239-M13_244239/ceridwen_result.h5"
       }
     ],
     "seed": 20260909,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_244239"
   },
   {
@@ -6853,18 +6853,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_244680",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/ceridwen_result.h5"
       }
     ],
     "seed": 20261014,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_244680"
   },
   {
@@ -6874,18 +6874,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_244738",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/244738-M11_244738/M11_244738_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/244738-M11_244738/M11_244738_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/244738-M11_244738/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/244738-M11_244738/ceridwen_result.h5"
       }
     ],
     "seed": 20260890,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_244738"
   },
   {
@@ -6895,18 +6895,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_245252",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/245252-M11_245252/M11_245252_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/245252-M11_245252/M11_245252_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/245252-M11_245252/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/245252-M11_245252/ceridwen_result.h5"
       }
     ],
     "seed": 20260841,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_245252"
   },
   {
@@ -6916,18 +6916,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_245621",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/245621-M11_245621/M11_245621_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/245621-M11_245621/M11_245621_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/245621-M11_245621/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/245621-M11_245621/ceridwen_result.h5"
       }
     ],
     "seed": 20260951,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_245621"
   },
   {
@@ -6937,18 +6937,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_245763",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/245763-M13_245763/M13_245763_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/245763-M13_245763/M13_245763_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/245763-M13_245763/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/245763-M13_245763/ceridwen_result.h5"
       }
     ],
     "seed": 20260992,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_245763"
   },
   {
@@ -6958,18 +6958,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_245864",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/245864-M11_245864/M11_245864_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/245864-M11_245864/M11_245864_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/245864-M11_245864/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/245864-M11_245864/ceridwen_result.h5"
       }
     ],
     "seed": 20260969,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_245864"
   },
   {
@@ -6979,18 +6979,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_246149",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/246149-M13_246149/M13_246149_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/246149-M13_246149/M13_246149_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/246149-M13_246149/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/246149-M13_246149/ceridwen_result.h5"
       }
     ],
     "seed": 20260900,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_246149"
   },
   {
@@ -7000,18 +7000,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_248217",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/248217-M13_248217/M13_248217_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/248217-M13_248217/M13_248217_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/248217-M13_248217/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/248217-M13_248217/ceridwen_result.h5"
       }
     ],
     "seed": 20260881,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_248217"
   },
   {
@@ -7021,18 +7021,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_248829",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/248829-M11_248829/M11_248829_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/248829-M11_248829/M11_248829_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/248829-M11_248829/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/248829-M11_248829/ceridwen_result.h5"
       }
     ],
     "seed": 20260932,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_248829"
   },
   {
@@ -7042,18 +7042,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_250391",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/250391-M11_250391/M11_250391_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/250391-M11_250391/M11_250391_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/250391-M11_250391/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/250391-M11_250391/ceridwen_result.h5"
       }
     ],
     "seed": 20260858,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_250391"
   },
   {
@@ -7063,18 +7063,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_253688",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/253688-M13_253688/M13_253688_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/253688-M13_253688/M13_253688_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/253688-M13_253688/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/253688-M13_253688/ceridwen_result.h5"
       }
     ],
     "seed": 20261013,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_253688"
   },
   {
@@ -7084,18 +7084,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_254350",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/254350-M13_254350/M13_254350_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/254350-M13_254350/M13_254350_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/254350-M13_254350/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/254350-M13_254350/ceridwen_result.h5"
       }
     ],
     "seed": 20260968,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_254350"
   },
   {
@@ -7105,18 +7105,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_255047",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/ceridwen_result.h5"
       }
     ],
     "seed": 20260993,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_255047"
   },
   {
@@ -7126,18 +7126,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M11_257455",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/257455-M11_257455/M11_257455_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/257455-M11_257455/M11_257455_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/257455-M11_257455/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/257455-M11_257455/ceridwen_result.h5"
       }
     ],
     "seed": 20260857,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M11_257455"
   },
   {
@@ -7147,18 +7147,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_258753",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/258753-M13_258753/M13_258753_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/258753-M13_258753/M13_258753_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/258753-M13_258753/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/258753-M13_258753/ceridwen_result.h5"
       }
     ],
     "seed": 20260996,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_258753"
   },
   {
@@ -7168,18 +7168,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M13_259737",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/259737-M13_259737/M13_259737_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/259737-M13_259737/M13_259737_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/259737-M13_259737/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/259737-M13_259737/ceridwen_result.h5"
       }
     ],
     "seed": 20260961,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_259737"
   },
   {
@@ -7189,18 +7189,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_27068",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/27068-M14_27068/M14_27068_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/27068-M14_27068/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/ceridwen_result.h5"
       }
     ],
     "seed": 20260925,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_27068"
   },
   {
@@ -7210,18 +7210,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_31835",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/31835-M14_31835/M14_31835_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/31835-M14_31835/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/ceridwen_result.h5"
       }
     ],
     "seed": 20260898,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_31835"
   },
   {
@@ -7231,18 +7231,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_36550",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/36550-M14_36550/M14_36550_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/36550-M14_36550/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/ceridwen_result.h5"
       }
     ],
     "seed": 20260998,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_36550"
   },
   {
@@ -7252,18 +7252,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_37023",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/37023-M14_37023/M14_37023_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/37023-M14_37023/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/ceridwen_result.h5"
       }
     ],
     "seed": 20260927,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_37023"
   },
   {
@@ -7273,18 +7273,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_37219",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/37219-M14_37219/M14_37219_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/37219-M14_37219/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/ceridwen_result.h5"
       }
     ],
     "seed": 20260959,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_37219"
   },
   {
@@ -7294,18 +7294,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_37723",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/37723-M14_37723/M14_37723_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/37723-M14_37723/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/ceridwen_result.h5"
       }
     ],
     "seed": 20260916,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_37723"
   },
   {
@@ -7315,18 +7315,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_37843",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/37843-M14_37843/M14_37843_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/37843-M14_37843/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/ceridwen_result.h5"
       }
     ],
     "seed": 20261008,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_37843"
   },
   {
@@ -7336,18 +7336,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_38646",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/38646-M14_38646/M14_38646_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/38646-M14_38646/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/ceridwen_result.h5"
       }
     ],
     "seed": 20260990,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_38646"
   },
   {
@@ -7357,18 +7357,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_38648",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/38648-M14_38648/M14_38648_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/38648-M14_38648/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/ceridwen_result.h5"
       }
     ],
     "seed": 20260835,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_38648"
   },
   {
@@ -7378,18 +7378,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_38771",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/38771-M14_38771/M14_38771_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/38771-M14_38771/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/ceridwen_result.h5"
       }
     ],
     "seed": 20260977,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_38771"
   },
   {
@@ -7399,18 +7399,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M14_39865",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/39865-M14_39865/M14_39865_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/39865-M14_39865/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/ceridwen_result.h5"
       }
     ],
     "seed": 20261006,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M14_39865"
   },
   {
@@ -7420,18 +7420,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M15_77632",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/77632-M15_77632/M15_77632_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/77632-M15_77632/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/ceridwen_result.h5"
       }
     ],
     "seed": 20260866,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M15_77632"
   },
   {
@@ -7441,18 +7441,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M15_77745",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/77745-M15_77745/M15_77745_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/77745-M15_77745/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/ceridwen_result.h5"
       }
     ],
     "seed": 20260879,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M15_77745"
   },
   {
@@ -7462,18 +7462,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M4_84337",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/84337-M4_84337/M4_84337_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/84337-M4_84337/M4_84337_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/84337-M4_84337/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/84337-M4_84337/ceridwen_result.h5"
       }
     ],
     "seed": 20260960,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_84337"
   },
   {
@@ -7483,18 +7483,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M15_87207",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/87207-M15_87207/M15_87207_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/87207-M15_87207/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/ceridwen_result.h5"
       }
     ],
     "seed": 20260999,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M15_87207"
   },
   {
@@ -7504,18 +7504,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M15_88032",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/88032-M15_88032/M15_88032_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/88032-M15_88032/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/ceridwen_result.h5"
       }
     ],
     "seed": 20260918,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M15_88032"
   },
   {
@@ -7525,18 +7525,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M15_89072",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/89072-M15_89072/M15_89072_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/89072-M15_89072/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/ceridwen_result.h5"
       }
     ],
     "seed": 20261003,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M15_89072"
   },
   {
@@ -7546,18 +7546,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M15_89153",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/89153-M15_89153/M15_89153_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/89153-M15_89153/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/ceridwen_result.h5"
       }
     ],
     "seed": 20260988,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M15_89153"
   },
   {
@@ -7567,18 +7567,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_91529",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/91529-M12_91529/M12_91529_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/91529-M12_91529/M12_91529_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/91529-M12_91529/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/91529-M12_91529/ceridwen_result.h5"
       }
     ],
     "seed": 20260864,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_91529"
   },
   {
@@ -7588,18 +7588,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_92132",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/92132-M12_92132/M12_92132_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/92132-M12_92132/M12_92132_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/92132-M12_92132/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/92132-M12_92132/ceridwen_result.h5"
       }
     ],
     "seed": 20260953,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_92132"
   },
   {
@@ -7609,18 +7609,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_93943",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/93943-M2_93943/M2_93943_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/93943-M2_93943/M2_93943_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/93943-M2_93943/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/93943-M2_93943/ceridwen_result.h5"
       }
     ],
     "seed": 20260971,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_93943"
   },
   {
@@ -7630,18 +7630,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_94494",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/94494-M2_94494/M2_94494_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/94494-M2_94494/M2_94494_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/94494-M2_94494/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/94494-M2_94494/ceridwen_result.h5"
       }
     ],
     "seed": 20260882,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_94494"
   },
   {
@@ -7651,18 +7651,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M2_97310",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/97310-M2_97310/M2_97310_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/97310-M2_97310/M2_97310_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/97310-M2_97310/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/97310-M2_97310/ceridwen_result.h5"
       }
     ],
     "seed": 20261004,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_97310"
   },
   {
@@ -7672,18 +7672,18 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "artifacts": [
       {
         "label": "Executed fit · M12_98104",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/98104-M12_98104/M12_98104_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/98104-M12_98104/M12_98104_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/98104-M12_98104/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/98104-M12_98104/ceridwen_result.h5"
       }
     ],
     "seed": 20261007,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_98104"
   }
 ]
@@ -7700,7 +7700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": ""
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/189698-M10_189698/M10_189698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/189698-M10_189698/M10_189698_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-189698",
@@ -7710,7 +7710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_189698 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/189698-M10_189698/M10_189698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/189698-M10_189698/M10_189698_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-189698",
@@ -7740,7 +7740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_189698 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/189698-M10_189698/M10_189698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/189698-M10_189698/M10_189698_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-189698",
@@ -7760,7 +7760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_189698 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/189698-M10_189698/M10_189698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/189698-M10_189698/M10_189698_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-189698",
@@ -7770,7 +7770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_189698 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/189698-M10_189698/M10_189698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/189698-M10_189698/M10_189698_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-189698",
@@ -7800,7 +7800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_189698 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/191718-M10_191718/M10_191718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/191718-M10_191718/M10_191718_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-191718",
@@ -7810,7 +7810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_191718 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/191718-M10_191718/M10_191718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/191718-M10_191718/M10_191718_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-191718",
@@ -7840,7 +7840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_191718 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/191718-M10_191718/M10_191718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/191718-M10_191718/M10_191718_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-191718",
@@ -7860,7 +7860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_191718 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/191718-M10_191718/M10_191718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/191718-M10_191718/M10_191718_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-191718",
@@ -7870,7 +7870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_191718 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/191718-M10_191718/M10_191718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/191718-M10_191718/M10_191718_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-191718",
@@ -7900,7 +7900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_191718 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/197591-M10_197591/M10_197591_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/197591-M10_197591/M10_197591_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-197591",
@@ -7910,7 +7910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_197591 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/197591-M10_197591/M10_197591_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/197591-M10_197591/M10_197591_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-197591",
@@ -7940,7 +7940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_197591 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/197591-M10_197591/M10_197591_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/197591-M10_197591/M10_197591_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-197591",
@@ -7960,7 +7960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_197591 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/197591-M10_197591/M10_197591_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/197591-M10_197591/M10_197591_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-197591",
@@ -7970,7 +7970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_197591 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/197591-M10_197591/M10_197591_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/197591-M10_197591/M10_197591_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-197591",
@@ -8000,7 +8000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_197591 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/201233-M10_201233/M10_201233_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/201233-M10_201233/M10_201233_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-201233",
@@ -8010,7 +8010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_201233 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/201233-M10_201233/M10_201233_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/201233-M10_201233/M10_201233_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-201233",
@@ -8040,7 +8040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_201233 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/201233-M10_201233/M10_201233_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/201233-M10_201233/M10_201233_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-201233",
@@ -8060,7 +8060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_201233 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/201233-M10_201233/M10_201233_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/201233-M10_201233/M10_201233_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-201233",
@@ -8070,7 +8070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_201233 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/201233-M10_201233/M10_201233_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/201233-M10_201233/M10_201233_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-201233",
@@ -8100,7 +8100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_201233 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213772-M10_213772/M10_213772_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213772-M10_213772/M10_213772_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-213772",
@@ -8110,7 +8110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_213772 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213772-M10_213772/M10_213772_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213772-M10_213772/M10_213772_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-213772",
@@ -8140,7 +8140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_213772 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213772-M10_213772/M10_213772_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213772-M10_213772/M10_213772_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-213772",
@@ -8160,7 +8160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_213772 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213772-M10_213772/M10_213772_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213772-M10_213772/M10_213772_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-213772",
@@ -8170,7 +8170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_213772 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213772-M10_213772/M10_213772_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213772-M10_213772/M10_213772_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-213772",
@@ -8200,7 +8200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_213772 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215519-M10_215519/M10_215519_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215519-M10_215519/M10_215519_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-215519",
@@ -8210,7 +8210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_215519 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215519-M10_215519/M10_215519_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215519-M10_215519/M10_215519_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-215519",
@@ -8240,7 +8240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_215519 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215519-M10_215519/M10_215519_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215519-M10_215519/M10_215519_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-215519",
@@ -8260,7 +8260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_215519 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215519-M10_215519/M10_215519_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215519-M10_215519/M10_215519_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-215519",
@@ -8270,7 +8270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_215519 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215519-M10_215519/M10_215519_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215519-M10_215519/M10_215519_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-215519",
@@ -8300,7 +8300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_215519 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-216730",
@@ -8310,7 +8310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_216730 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-216730",
@@ -8340,7 +8340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_216730 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-216730",
@@ -8360,7 +8360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_216730 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-216730",
@@ -8370,7 +8370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_216730 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-216730",
@@ -8400,7 +8400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_216730 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217020-M10_217020/M10_217020_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217020-M10_217020/M10_217020_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-217020",
@@ -8410,7 +8410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_217020 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217020-M10_217020/M10_217020_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217020-M10_217020/M10_217020_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-217020",
@@ -8440,7 +8440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_217020 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217020-M10_217020/M10_217020_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217020-M10_217020/M10_217020_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-217020",
@@ -8460,7 +8460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_217020 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217020-M10_217020/M10_217020_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217020-M10_217020/M10_217020_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-217020",
@@ -8470,7 +8470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_217020 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217020-M10_217020/M10_217020_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217020-M10_217020/M10_217020_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-217020",
@@ -8500,7 +8500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_217020 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225441-M10_225441/M10_225441_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225441-M10_225441/M10_225441_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-225441",
@@ -8510,7 +8510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_225441 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225441-M10_225441/M10_225441_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225441-M10_225441/M10_225441_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-225441",
@@ -8540,7 +8540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_225441 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225441-M10_225441/M10_225441_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225441-M10_225441/M10_225441_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-225441",
@@ -8560,7 +8560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_225441 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225441-M10_225441/M10_225441_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225441-M10_225441/M10_225441_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-225441",
@@ -8570,7 +8570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_225441 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225441-M10_225441/M10_225441_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225441-M10_225441/M10_225441_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-225441",
@@ -8600,7 +8600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_225441 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227516-M10_227516/M10_227516_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227516-M10_227516/M10_227516_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-227516",
@@ -8610,7 +8610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227516 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227516-M10_227516/M10_227516_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227516-M10_227516/M10_227516_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-227516",
@@ -8640,7 +8640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227516 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227516-M10_227516/M10_227516_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227516-M10_227516/M10_227516_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-227516",
@@ -8660,7 +8660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227516 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227516-M10_227516/M10_227516_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227516-M10_227516/M10_227516_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-227516",
@@ -8670,7 +8670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227516 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227516-M10_227516/M10_227516_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227516-M10_227516/M10_227516_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-227516",
@@ -8700,7 +8700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227516 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-227672",
@@ -8710,7 +8710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227672 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-227672",
@@ -8740,7 +8740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227672 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-227672",
@@ -8760,7 +8760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227672 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-227672",
@@ -8770,7 +8770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227672 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-227672",
@@ -8800,7 +8800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_227672 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228215-M10_228215/M10_228215_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228215-M10_228215/M10_228215_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-228215",
@@ -8810,7 +8810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228215 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228215-M10_228215/M10_228215_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228215-M10_228215/M10_228215_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-228215",
@@ -8840,7 +8840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228215 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228215-M10_228215/M10_228215_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228215-M10_228215/M10_228215_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-228215",
@@ -8860,7 +8860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228215 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228215-M10_228215/M10_228215_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228215-M10_228215/M10_228215_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-228215",
@@ -8870,7 +8870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228215 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228215-M10_228215/M10_228215_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228215-M10_228215/M10_228215_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-228215",
@@ -8900,7 +8900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228215 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228380-M10_228380/M10_228380_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228380-M10_228380/M10_228380_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-228380",
@@ -8910,7 +8910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228380 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228380-M10_228380/M10_228380_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228380-M10_228380/M10_228380_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-228380",
@@ -8940,7 +8940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228380 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228380-M10_228380/M10_228380_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228380-M10_228380/M10_228380_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-228380",
@@ -8960,7 +8960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228380 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228380-M10_228380/M10_228380_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228380-M10_228380/M10_228380_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-228380",
@@ -8970,7 +8970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228380 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228380-M10_228380/M10_228380_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228380-M10_228380/M10_228380_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-228380",
@@ -9000,7 +9000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228380 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228717-M10_228717/M10_228717_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228717-M10_228717/M10_228717_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-228717",
@@ -9010,7 +9010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228717 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228717-M10_228717/M10_228717_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228717-M10_228717/M10_228717_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-228717",
@@ -9040,7 +9040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228717 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228717-M10_228717/M10_228717_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228717-M10_228717/M10_228717_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-228717",
@@ -9060,7 +9060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228717 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228717-M10_228717/M10_228717_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228717-M10_228717/M10_228717_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-228717",
@@ -9070,7 +9070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228717 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/228717-M10_228717/M10_228717_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/228717-M10_228717/M10_228717_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-228717",
@@ -9100,7 +9100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_228717 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230983-M10_230983/M10_230983_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230983-M10_230983/M10_230983_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-230983",
@@ -9110,7 +9110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_230983 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230983-M10_230983/M10_230983_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230983-M10_230983/M10_230983_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-230983",
@@ -9140,7 +9140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_230983 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230983-M10_230983/M10_230983_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230983-M10_230983/M10_230983_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-230983",
@@ -9160,7 +9160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_230983 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230983-M10_230983/M10_230983_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230983-M10_230983/M10_230983_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-230983",
@@ -9170,7 +9170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_230983 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230983-M10_230983/M10_230983_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230983-M10_230983/M10_230983_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-230983",
@@ -9200,7 +9200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_230983 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231544-M10_231544/M10_231544_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231544-M10_231544/M10_231544_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-231544",
@@ -9210,7 +9210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_231544 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231544-M10_231544/M10_231544_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231544-M10_231544/M10_231544_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-231544",
@@ -9240,7 +9240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_231544 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231544-M10_231544/M10_231544_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231544-M10_231544/M10_231544_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-231544",
@@ -9260,7 +9260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_231544 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231544-M10_231544/M10_231544_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231544-M10_231544/M10_231544_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-231544",
@@ -9270,7 +9270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_231544 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231544-M10_231544/M10_231544_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231544-M10_231544/M10_231544_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-231544",
@@ -9300,7 +9300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_231544 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233129-M10_233129/M10_233129_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233129-M10_233129/M10_233129_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-233129",
@@ -9310,7 +9310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_233129 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233129-M10_233129/M10_233129_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233129-M10_233129/M10_233129_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-233129",
@@ -9340,7 +9340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_233129 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233129-M10_233129/M10_233129_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233129-M10_233129/M10_233129_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-233129",
@@ -9360,7 +9360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_233129 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233129-M10_233129/M10_233129_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233129-M10_233129/M10_233129_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-233129",
@@ -9370,7 +9370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_233129 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233129-M10_233129/M10_233129_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233129-M10_233129/M10_233129_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-233129",
@@ -9400,7 +9400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M10_233129 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212718-M11_212718/M11_212718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212718-M11_212718/M11_212718_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-212718",
@@ -9410,7 +9410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_212718 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212718-M11_212718/M11_212718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212718-M11_212718/M11_212718_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-212718",
@@ -9440,7 +9440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_212718 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212718-M11_212718/M11_212718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212718-M11_212718/M11_212718_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-212718",
@@ -9460,7 +9460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_212718 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212718-M11_212718/M11_212718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212718-M11_212718/M11_212718_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-212718",
@@ -9470,7 +9470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_212718 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212718-M11_212718/M11_212718_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212718-M11_212718/M11_212718_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-212718",
@@ -9500,7 +9500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_212718 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213004-M11_213004/M11_213004_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213004-M11_213004/M11_213004_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-213004",
@@ -9510,7 +9510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_213004 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213004-M11_213004/M11_213004_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213004-M11_213004/M11_213004_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-213004",
@@ -9540,7 +9540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_213004 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213004-M11_213004/M11_213004_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213004-M11_213004/M11_213004_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-213004",
@@ -9560,7 +9560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_213004 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213004-M11_213004/M11_213004_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213004-M11_213004/M11_213004_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-213004",
@@ -9570,7 +9570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_213004 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213004-M11_213004/M11_213004_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213004-M11_213004/M11_213004_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-213004",
@@ -9600,7 +9600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_213004 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214296-M11_214296/M11_214296_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214296-M11_214296/M11_214296_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-214296",
@@ -9610,7 +9610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214296 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214296-M11_214296/M11_214296_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214296-M11_214296/M11_214296_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-214296",
@@ -9640,7 +9640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214296 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214296-M11_214296/M11_214296_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214296-M11_214296/M11_214296_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-214296",
@@ -9660,7 +9660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214296 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214296-M11_214296/M11_214296_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214296-M11_214296/M11_214296_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-214296",
@@ -9670,7 +9670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214296 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214296-M11_214296/M11_214296_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214296-M11_214296/M11_214296_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-214296",
@@ -9700,7 +9700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214296 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214430-M11_214430/M11_214430_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214430-M11_214430/M11_214430_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-214430",
@@ -9710,7 +9710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214430 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214430-M11_214430/M11_214430_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214430-M11_214430/M11_214430_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-214430",
@@ -9740,7 +9740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214430 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214430-M11_214430/M11_214430_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214430-M11_214430/M11_214430_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-214430",
@@ -9760,7 +9760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214430 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214430-M11_214430/M11_214430_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214430-M11_214430/M11_214430_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-214430",
@@ -9770,7 +9770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214430 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214430-M11_214430/M11_214430_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214430-M11_214430/M11_214430_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-214430",
@@ -9800,7 +9800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_214430 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215585-M11_215585/M11_215585_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215585-M11_215585/M11_215585_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-215585",
@@ -9810,7 +9810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_215585 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215585-M11_215585/M11_215585_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215585-M11_215585/M11_215585_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-215585",
@@ -9840,7 +9840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_215585 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215585-M11_215585/M11_215585_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215585-M11_215585/M11_215585_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-215585",
@@ -9860,7 +9860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_215585 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215585-M11_215585/M11_215585_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215585-M11_215585/M11_215585_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-215585",
@@ -9870,7 +9870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_215585 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/215585-M11_215585/M11_215585_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/215585-M11_215585/M11_215585_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-215585",
@@ -9900,7 +9900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_215585 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216899-M11_216899/M11_216899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216899-M11_216899/M11_216899_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-216899",
@@ -9910,7 +9910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_216899 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216899-M11_216899/M11_216899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216899-M11_216899/M11_216899_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-216899",
@@ -9940,7 +9940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_216899 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216899-M11_216899/M11_216899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216899-M11_216899/M11_216899_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-216899",
@@ -9960,7 +9960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_216899 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216899-M11_216899/M11_216899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216899-M11_216899/M11_216899_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-216899",
@@ -9970,7 +9970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_216899 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216899-M11_216899/M11_216899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216899-M11_216899/M11_216899_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-216899",
@@ -10000,7 +10000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_216899 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217564-M11_217564/M11_217564_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217564-M11_217564/M11_217564_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-217564",
@@ -10010,7 +10010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_217564 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217564-M11_217564/M11_217564_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217564-M11_217564/M11_217564_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-217564",
@@ -10040,7 +10040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_217564 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217564-M11_217564/M11_217564_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217564-M11_217564/M11_217564_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-217564",
@@ -10060,7 +10060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_217564 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217564-M11_217564/M11_217564_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217564-M11_217564/M11_217564_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-217564",
@@ -10070,7 +10070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_217564 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/217564-M11_217564/M11_217564_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/217564-M11_217564/M11_217564_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-217564",
@@ -10100,7 +10100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_217564 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218207-M11_218207/M11_218207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218207-M11_218207/M11_218207_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-218207",
@@ -10110,7 +10110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_218207 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218207-M11_218207/M11_218207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218207-M11_218207/M11_218207_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-218207",
@@ -10140,7 +10140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_218207 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218207-M11_218207/M11_218207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218207-M11_218207/M11_218207_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-218207",
@@ -10160,7 +10160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_218207 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218207-M11_218207/M11_218207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218207-M11_218207/M11_218207_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-218207",
@@ -10170,7 +10170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_218207 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218207-M11_218207/M11_218207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218207-M11_218207/M11_218207_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-218207",
@@ -10200,7 +10200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_218207 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/221163-M11_221163/M11_221163_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/221163-M11_221163/M11_221163_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-221163",
@@ -10210,7 +10210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_221163 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/221163-M11_221163/M11_221163_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/221163-M11_221163/M11_221163_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-221163",
@@ -10240,7 +10240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_221163 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/221163-M11_221163/M11_221163_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/221163-M11_221163/M11_221163_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-221163",
@@ -10260,7 +10260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_221163 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/221163-M11_221163/M11_221163_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/221163-M11_221163/M11_221163_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-221163",
@@ -10270,7 +10270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_221163 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/221163-M11_221163/M11_221163_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/221163-M11_221163/M11_221163_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-221163",
@@ -10300,7 +10300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_221163 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226721-M11_226721/M11_226721_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226721-M11_226721/M11_226721_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-226721",
@@ -10310,7 +10310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_226721 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226721-M11_226721/M11_226721_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226721-M11_226721/M11_226721_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-226721",
@@ -10340,7 +10340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_226721 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226721-M11_226721/M11_226721_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226721-M11_226721/M11_226721_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-226721",
@@ -10360,7 +10360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_226721 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226721-M11_226721/M11_226721_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226721-M11_226721/M11_226721_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-226721",
@@ -10370,7 +10370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_226721 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226721-M11_226721/M11_226721_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226721-M11_226721/M11_226721_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-226721",
@@ -10400,7 +10400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_226721 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229551-M11_229551/M11_229551_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229551-M11_229551/M11_229551_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-229551",
@@ -10410,7 +10410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_229551 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229551-M11_229551/M11_229551_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229551-M11_229551/M11_229551_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-229551",
@@ -10440,7 +10440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_229551 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229551-M11_229551/M11_229551_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229551-M11_229551/M11_229551_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-229551",
@@ -10460,7 +10460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_229551 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229551-M11_229551/M11_229551_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229551-M11_229551/M11_229551_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-229551",
@@ -10470,7 +10470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_229551 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229551-M11_229551/M11_229551_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229551-M11_229551/M11_229551_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-229551",
@@ -10500,7 +10500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_229551 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232962-M11_232962/M11_232962_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232962-M11_232962/M11_232962_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-232962",
@@ -10510,7 +10510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_232962 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232962-M11_232962/M11_232962_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232962-M11_232962/M11_232962_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-232962",
@@ -10540,7 +10540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_232962 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232962-M11_232962/M11_232962_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232962-M11_232962/M11_232962_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-232962",
@@ -10560,7 +10560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_232962 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232962-M11_232962/M11_232962_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232962-M11_232962/M11_232962_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-232962",
@@ -10570,7 +10570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_232962 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232962-M11_232962/M11_232962_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232962-M11_232962/M11_232962_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-232962",
@@ -10600,7 +10600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_232962 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244738-M11_244738/M11_244738_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244738-M11_244738/M11_244738_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-244738",
@@ -10610,7 +10610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_244738 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244738-M11_244738/M11_244738_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244738-M11_244738/M11_244738_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-244738",
@@ -10640,7 +10640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_244738 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244738-M11_244738/M11_244738_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244738-M11_244738/M11_244738_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-244738",
@@ -10660,7 +10660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_244738 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244738-M11_244738/M11_244738_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244738-M11_244738/M11_244738_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-244738",
@@ -10670,7 +10670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_244738 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244738-M11_244738/M11_244738_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244738-M11_244738/M11_244738_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-244738",
@@ -10700,7 +10700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_244738 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245252-M11_245252/M11_245252_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245252-M11_245252/M11_245252_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-245252",
@@ -10710,7 +10710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245252 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245252-M11_245252/M11_245252_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245252-M11_245252/M11_245252_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-245252",
@@ -10740,7 +10740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245252 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245252-M11_245252/M11_245252_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245252-M11_245252/M11_245252_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-245252",
@@ -10760,7 +10760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245252 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245252-M11_245252/M11_245252_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245252-M11_245252/M11_245252_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-245252",
@@ -10770,7 +10770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245252 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245252-M11_245252/M11_245252_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245252-M11_245252/M11_245252_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-245252",
@@ -10800,7 +10800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245252 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245621-M11_245621/M11_245621_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245621-M11_245621/M11_245621_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-245621",
@@ -10810,7 +10810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245621 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245621-M11_245621/M11_245621_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245621-M11_245621/M11_245621_executed.ipynb",
     "cell": 22,
     "output": 1,
     "run": "baseline-m11-245621",
@@ -10840,7 +10840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245621 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245621-M11_245621/M11_245621_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245621-M11_245621/M11_245621_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-245621",
@@ -10860,7 +10860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245621 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245621-M11_245621/M11_245621_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245621-M11_245621/M11_245621_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-245621",
@@ -10870,7 +10870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245621 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245621-M11_245621/M11_245621_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245621-M11_245621/M11_245621_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-245621",
@@ -10900,7 +10900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245621 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245864-M11_245864/M11_245864_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245864-M11_245864/M11_245864_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-245864",
@@ -10910,7 +10910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245864 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245864-M11_245864/M11_245864_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245864-M11_245864/M11_245864_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-245864",
@@ -10940,7 +10940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245864 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245864-M11_245864/M11_245864_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245864-M11_245864/M11_245864_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-245864",
@@ -10960,7 +10960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245864 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245864-M11_245864/M11_245864_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245864-M11_245864/M11_245864_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-245864",
@@ -10970,7 +10970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245864 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245864-M11_245864/M11_245864_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245864-M11_245864/M11_245864_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-245864",
@@ -11000,7 +11000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_245864 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248829-M11_248829/M11_248829_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248829-M11_248829/M11_248829_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-248829",
@@ -11010,7 +11010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_248829 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248829-M11_248829/M11_248829_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248829-M11_248829/M11_248829_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-248829",
@@ -11040,7 +11040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_248829 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248829-M11_248829/M11_248829_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248829-M11_248829/M11_248829_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-248829",
@@ -11060,7 +11060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_248829 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248829-M11_248829/M11_248829_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248829-M11_248829/M11_248829_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-248829",
@@ -11070,7 +11070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_248829 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248829-M11_248829/M11_248829_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248829-M11_248829/M11_248829_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-248829",
@@ -11100,7 +11100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_248829 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/250391-M11_250391/M11_250391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/250391-M11_250391/M11_250391_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-250391",
@@ -11110,7 +11110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_250391 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/250391-M11_250391/M11_250391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/250391-M11_250391/M11_250391_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-250391",
@@ -11140,7 +11140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_250391 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/250391-M11_250391/M11_250391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/250391-M11_250391/M11_250391_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-250391",
@@ -11160,7 +11160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_250391 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/250391-M11_250391/M11_250391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/250391-M11_250391/M11_250391_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-250391",
@@ -11170,7 +11170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_250391 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/250391-M11_250391/M11_250391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/250391-M11_250391/M11_250391_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-250391",
@@ -11200,7 +11200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_250391 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/257455-M11_257455/M11_257455_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/257455-M11_257455/M11_257455_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m11-257455",
@@ -11210,7 +11210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_257455 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/257455-M11_257455/M11_257455_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/257455-M11_257455/M11_257455_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m11-257455",
@@ -11240,7 +11240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_257455 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/257455-M11_257455/M11_257455_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/257455-M11_257455/M11_257455_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m11-257455",
@@ -11260,7 +11260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_257455 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/257455-M11_257455/M11_257455_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/257455-M11_257455/M11_257455_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m11-257455",
@@ -11270,7 +11270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_257455 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/257455-M11_257455/M11_257455_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/257455-M11_257455/M11_257455_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m11-257455",
@@ -11300,7 +11300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M11_257455 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101089-M12_101089/M12_101089_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101089-M12_101089/M12_101089_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-101089",
@@ -11310,7 +11310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101089 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101089-M12_101089/M12_101089_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101089-M12_101089/M12_101089_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-101089",
@@ -11340,7 +11340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101089 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101089-M12_101089/M12_101089_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101089-M12_101089/M12_101089_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-101089",
@@ -11360,7 +11360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101089 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101089-M12_101089/M12_101089_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101089-M12_101089/M12_101089_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-101089",
@@ -11370,7 +11370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101089 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101089-M12_101089/M12_101089_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101089-M12_101089/M12_101089_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-101089",
@@ -11400,7 +11400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101089 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101830-M12_101830/M12_101830_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101830-M12_101830/M12_101830_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-101830",
@@ -11410,7 +11410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101830 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101830-M12_101830/M12_101830_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101830-M12_101830/M12_101830_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-101830",
@@ -11440,7 +11440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101830 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101830-M12_101830/M12_101830_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101830-M12_101830/M12_101830_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-101830",
@@ -11460,7 +11460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101830 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101830-M12_101830/M12_101830_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101830-M12_101830/M12_101830_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-101830",
@@ -11470,7 +11470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101830 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/101830-M12_101830/M12_101830_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/101830-M12_101830/M12_101830_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-101830",
@@ -11500,7 +11500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_101830 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102456-M12_102456/M12_102456_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102456-M12_102456/M12_102456_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-102456",
@@ -11510,7 +11510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_102456 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102456-M12_102456/M12_102456_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102456-M12_102456/M12_102456_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-102456",
@@ -11540,7 +11540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_102456 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102456-M12_102456/M12_102456_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102456-M12_102456/M12_102456_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-102456",
@@ -11560,7 +11560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_102456 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102456-M12_102456/M12_102456_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102456-M12_102456/M12_102456_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-102456",
@@ -11570,7 +11570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_102456 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102456-M12_102456/M12_102456_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102456-M12_102456/M12_102456_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-102456",
@@ -11600,7 +11600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_102456 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/180774-M12_180774/M12_180774_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/180774-M12_180774/M12_180774_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-180774",
@@ -11610,7 +11610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_180774 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/180774-M12_180774/M12_180774_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/180774-M12_180774/M12_180774_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-180774",
@@ -11640,7 +11640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_180774 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/180774-M12_180774/M12_180774_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/180774-M12_180774/M12_180774_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-180774",
@@ -11660,7 +11660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_180774 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/180774-M12_180774/M12_180774_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/180774-M12_180774/M12_180774_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-180774",
@@ -11670,7 +11670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_180774 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/180774-M12_180774/M12_180774_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/180774-M12_180774/M12_180774_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-180774",
@@ -11700,7 +11700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_180774 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-181421",
@@ -11710,7 +11710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181421 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-181421",
@@ -11740,7 +11740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181421 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-181421",
@@ -11760,7 +11760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181421 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-181421",
@@ -11770,7 +11770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181421 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-181421",
@@ -11800,7 +11800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181421 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181945-M12_181945/M12_181945_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181945-M12_181945/M12_181945_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-181945",
@@ -11810,7 +11810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181945 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181945-M12_181945/M12_181945_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181945-M12_181945/M12_181945_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-181945",
@@ -11840,7 +11840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181945 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181945-M12_181945/M12_181945_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181945-M12_181945/M12_181945_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-181945",
@@ -11860,7 +11860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181945 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181945-M12_181945/M12_181945_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181945-M12_181945/M12_181945_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-181945",
@@ -11870,7 +11870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181945 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181945-M12_181945/M12_181945_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181945-M12_181945/M12_181945_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-181945",
@@ -11900,7 +11900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_181945 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/182890-M12_182890/M12_182890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/182890-M12_182890/M12_182890_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-182890",
@@ -11910,7 +11910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_182890 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/182890-M12_182890/M12_182890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/182890-M12_182890/M12_182890_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-182890",
@@ -11940,7 +11940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_182890 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/182890-M12_182890/M12_182890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/182890-M12_182890/M12_182890_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-182890",
@@ -11960,7 +11960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_182890 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/182890-M12_182890/M12_182890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/182890-M12_182890/M12_182890_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-182890",
@@ -11970,7 +11970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_182890 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/182890-M12_182890/M12_182890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/182890-M12_182890/M12_182890_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-182890",
@@ -12000,7 +12000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_182890 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/184916-M12_184916/M12_184916_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/184916-M12_184916/M12_184916_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-184916",
@@ -12010,7 +12010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_184916 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/184916-M12_184916/M12_184916_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/184916-M12_184916/M12_184916_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-184916",
@@ -12040,7 +12040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_184916 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/184916-M12_184916/M12_184916_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/184916-M12_184916/M12_184916_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-184916",
@@ -12060,7 +12060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_184916 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/184916-M12_184916/M12_184916_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/184916-M12_184916/M12_184916_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-184916",
@@ -12070,7 +12070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_184916 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/184916-M12_184916/M12_184916_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/184916-M12_184916/M12_184916_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-184916",
@@ -12100,7 +12100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_184916 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185631-M12_185631/M12_185631_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185631-M12_185631/M12_185631_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-185631",
@@ -12110,7 +12110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185631 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185631-M12_185631/M12_185631_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185631-M12_185631/M12_185631_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-185631",
@@ -12140,7 +12140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185631 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185631-M12_185631/M12_185631_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185631-M12_185631/M12_185631_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-185631",
@@ -12160,7 +12160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185631 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185631-M12_185631/M12_185631_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185631-M12_185631/M12_185631_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-185631",
@@ -12170,7 +12170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185631 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185631-M12_185631/M12_185631_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185631-M12_185631/M12_185631_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-185631",
@@ -12200,7 +12200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185631 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185653-M12_185653/M12_185653_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185653-M12_185653/M12_185653_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-185653",
@@ -12210,7 +12210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185653 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185653-M12_185653/M12_185653_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185653-M12_185653/M12_185653_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-185653",
@@ -12240,7 +12240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185653 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185653-M12_185653/M12_185653_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185653-M12_185653/M12_185653_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-185653",
@@ -12260,7 +12260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185653 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185653-M12_185653/M12_185653_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185653-M12_185653/M12_185653_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-185653",
@@ -12270,7 +12270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185653 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/185653-M12_185653/M12_185653_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/185653-M12_185653/M12_185653_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-185653",
@@ -12300,7 +12300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_185653 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/91529-M12_91529/M12_91529_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/91529-M12_91529/M12_91529_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-91529",
@@ -12310,7 +12310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_91529 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/91529-M12_91529/M12_91529_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/91529-M12_91529/M12_91529_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-91529",
@@ -12340,7 +12340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_91529 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/91529-M12_91529/M12_91529_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/91529-M12_91529/M12_91529_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-91529",
@@ -12360,7 +12360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_91529 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/91529-M12_91529/M12_91529_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/91529-M12_91529/M12_91529_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-91529",
@@ -12370,7 +12370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_91529 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/91529-M12_91529/M12_91529_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/91529-M12_91529/M12_91529_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-91529",
@@ -12400,7 +12400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_91529 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/92132-M12_92132/M12_92132_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/92132-M12_92132/M12_92132_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-92132",
@@ -12410,7 +12410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_92132 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/92132-M12_92132/M12_92132_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/92132-M12_92132/M12_92132_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-92132",
@@ -12440,7 +12440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_92132 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/92132-M12_92132/M12_92132_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/92132-M12_92132/M12_92132_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-92132",
@@ -12460,7 +12460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_92132 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/92132-M12_92132/M12_92132_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/92132-M12_92132/M12_92132_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-92132",
@@ -12470,7 +12470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_92132 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/92132-M12_92132/M12_92132_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/92132-M12_92132/M12_92132_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-92132",
@@ -12500,7 +12500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_92132 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/98104-M12_98104/M12_98104_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/98104-M12_98104/M12_98104_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-98104",
@@ -12510,7 +12510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_98104 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/98104-M12_98104/M12_98104_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/98104-M12_98104/M12_98104_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-98104",
@@ -12540,7 +12540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_98104 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/98104-M12_98104/M12_98104_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/98104-M12_98104/M12_98104_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-98104",
@@ -12560,7 +12560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_98104 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/98104-M12_98104/M12_98104_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/98104-M12_98104/M12_98104_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-98104",
@@ -12570,7 +12570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_98104 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/98104-M12_98104/M12_98104_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/98104-M12_98104/M12_98104_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-98104",
@@ -12600,7 +12600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M12_98104 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230747-M13_230747/M13_230747_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230747-M13_230747/M13_230747_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-230747",
@@ -12610,7 +12610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_230747 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230747-M13_230747/M13_230747_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230747-M13_230747/M13_230747_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-230747",
@@ -12640,7 +12640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_230747 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230747-M13_230747/M13_230747_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230747-M13_230747/M13_230747_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-230747",
@@ -12660,7 +12660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_230747 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230747-M13_230747/M13_230747_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230747-M13_230747/M13_230747_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-230747",
@@ -12670,7 +12670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_230747 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/230747-M13_230747/M13_230747_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/230747-M13_230747/M13_230747_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-230747",
@@ -12700,7 +12700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_230747 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231554-M13_231554/M13_231554_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231554-M13_231554/M13_231554_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-231554",
@@ -12710,7 +12710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_231554 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231554-M13_231554/M13_231554_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231554-M13_231554/M13_231554_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-231554",
@@ -12740,7 +12740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_231554 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231554-M13_231554/M13_231554_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231554-M13_231554/M13_231554_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-231554",
@@ -12760,7 +12760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_231554 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231554-M13_231554/M13_231554_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231554-M13_231554/M13_231554_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-231554",
@@ -12770,7 +12770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_231554 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231554-M13_231554/M13_231554_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231554-M13_231554/M13_231554_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-231554",
@@ -12800,7 +12800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_231554 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232627-M13_232627/M13_232627_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232627-M13_232627/M13_232627_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-232627",
@@ -12810,7 +12810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_232627 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232627-M13_232627/M13_232627_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232627-M13_232627/M13_232627_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-232627",
@@ -12840,7 +12840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_232627 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232627-M13_232627/M13_232627_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232627-M13_232627/M13_232627_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-232627",
@@ -12860,7 +12860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_232627 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232627-M13_232627/M13_232627_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232627-M13_232627/M13_232627_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-232627",
@@ -12870,7 +12870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_232627 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232627-M13_232627/M13_232627_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232627-M13_232627/M13_232627_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-232627",
@@ -12900,7 +12900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_232627 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/243871-M13_243871/M13_243871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/243871-M13_243871/M13_243871_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-243871",
@@ -12910,7 +12910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_243871 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/243871-M13_243871/M13_243871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/243871-M13_243871/M13_243871_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-243871",
@@ -12940,7 +12940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_243871 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/243871-M13_243871/M13_243871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/243871-M13_243871/M13_243871_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-243871",
@@ -12960,7 +12960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_243871 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/243871-M13_243871/M13_243871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/243871-M13_243871/M13_243871_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-243871",
@@ -12970,7 +12970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_243871 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/243871-M13_243871/M13_243871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/243871-M13_243871/M13_243871_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-243871",
@@ -13000,7 +13000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_243871 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244239-M13_244239/M13_244239_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244239-M13_244239/M13_244239_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-244239",
@@ -13010,7 +13010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244239 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244239-M13_244239/M13_244239_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244239-M13_244239/M13_244239_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-244239",
@@ -13040,7 +13040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244239 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244239-M13_244239/M13_244239_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244239-M13_244239/M13_244239_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-244239",
@@ -13060,7 +13060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244239 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244239-M13_244239/M13_244239_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244239-M13_244239/M13_244239_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-244239",
@@ -13070,7 +13070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244239 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244239-M13_244239/M13_244239_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244239-M13_244239/M13_244239_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-244239",
@@ -13100,7 +13100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244239 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-244680",
@@ -13110,7 +13110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244680 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-244680",
@@ -13140,7 +13140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244680 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-244680",
@@ -13160,7 +13160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244680 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-244680",
@@ -13170,7 +13170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244680 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-244680",
@@ -13200,7 +13200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_244680 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245763-M13_245763/M13_245763_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245763-M13_245763/M13_245763_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-245763",
@@ -13210,7 +13210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_245763 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245763-M13_245763/M13_245763_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245763-M13_245763/M13_245763_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-245763",
@@ -13240,7 +13240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_245763 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245763-M13_245763/M13_245763_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245763-M13_245763/M13_245763_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-245763",
@@ -13260,7 +13260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_245763 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245763-M13_245763/M13_245763_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245763-M13_245763/M13_245763_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-245763",
@@ -13270,7 +13270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_245763 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/245763-M13_245763/M13_245763_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/245763-M13_245763/M13_245763_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-245763",
@@ -13300,7 +13300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_245763 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/246149-M13_246149/M13_246149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/246149-M13_246149/M13_246149_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-246149",
@@ -13310,7 +13310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_246149 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/246149-M13_246149/M13_246149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/246149-M13_246149/M13_246149_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-246149",
@@ -13340,7 +13340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_246149 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/246149-M13_246149/M13_246149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/246149-M13_246149/M13_246149_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-246149",
@@ -13360,7 +13360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_246149 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/246149-M13_246149/M13_246149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/246149-M13_246149/M13_246149_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-246149",
@@ -13370,7 +13370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_246149 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/246149-M13_246149/M13_246149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/246149-M13_246149/M13_246149_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-246149",
@@ -13400,7 +13400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_246149 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248217-M13_248217/M13_248217_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248217-M13_248217/M13_248217_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-248217",
@@ -13410,7 +13410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_248217 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248217-M13_248217/M13_248217_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248217-M13_248217/M13_248217_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-248217",
@@ -13440,7 +13440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_248217 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248217-M13_248217/M13_248217_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248217-M13_248217/M13_248217_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-248217",
@@ -13460,7 +13460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_248217 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248217-M13_248217/M13_248217_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248217-M13_248217/M13_248217_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-248217",
@@ -13470,7 +13470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_248217 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/248217-M13_248217/M13_248217_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/248217-M13_248217/M13_248217_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-248217",
@@ -13500,7 +13500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_248217 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/253688-M13_253688/M13_253688_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/253688-M13_253688/M13_253688_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-253688",
@@ -13510,7 +13510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_253688 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/253688-M13_253688/M13_253688_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/253688-M13_253688/M13_253688_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-253688",
@@ -13540,7 +13540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_253688 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/253688-M13_253688/M13_253688_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/253688-M13_253688/M13_253688_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-253688",
@@ -13560,7 +13560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_253688 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/253688-M13_253688/M13_253688_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/253688-M13_253688/M13_253688_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-253688",
@@ -13570,7 +13570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_253688 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/253688-M13_253688/M13_253688_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/253688-M13_253688/M13_253688_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-253688",
@@ -13600,7 +13600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_253688 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/254350-M13_254350/M13_254350_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/254350-M13_254350/M13_254350_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-254350",
@@ -13610,7 +13610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_254350 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/254350-M13_254350/M13_254350_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/254350-M13_254350/M13_254350_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-254350",
@@ -13640,7 +13640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_254350 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/254350-M13_254350/M13_254350_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/254350-M13_254350/M13_254350_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-254350",
@@ -13660,7 +13660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_254350 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/254350-M13_254350/M13_254350_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/254350-M13_254350/M13_254350_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-254350",
@@ -13670,7 +13670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_254350 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/254350-M13_254350/M13_254350_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/254350-M13_254350/M13_254350_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-254350",
@@ -13700,7 +13700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_254350 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-255047",
@@ -13710,7 +13710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_255047 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-255047",
@@ -13740,7 +13740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_255047 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-255047",
@@ -13760,7 +13760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_255047 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-255047",
@@ -13770,7 +13770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_255047 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-255047",
@@ -13800,7 +13800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_255047 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/258753-M13_258753/M13_258753_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/258753-M13_258753/M13_258753_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-258753",
@@ -13810,7 +13810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_258753 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/258753-M13_258753/M13_258753_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/258753-M13_258753/M13_258753_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-258753",
@@ -13840,7 +13840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_258753 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/258753-M13_258753/M13_258753_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/258753-M13_258753/M13_258753_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-258753",
@@ -13860,7 +13860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_258753 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/258753-M13_258753/M13_258753_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/258753-M13_258753/M13_258753_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-258753",
@@ -13870,7 +13870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_258753 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/258753-M13_258753/M13_258753_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/258753-M13_258753/M13_258753_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-258753",
@@ -13900,7 +13900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_258753 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/259737-M13_259737/M13_259737_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/259737-M13_259737/M13_259737_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-259737",
@@ -13910,7 +13910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_259737 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/259737-M13_259737/M13_259737_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/259737-M13_259737/M13_259737_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-259737",
@@ -13940,7 +13940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_259737 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/259737-M13_259737/M13_259737_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/259737-M13_259737/M13_259737_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-259737",
@@ -13960,7 +13960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_259737 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/259737-M13_259737/M13_259737_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/259737-M13_259737/M13_259737_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-259737",
@@ -13970,7 +13970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_259737 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/259737-M13_259737/M13_259737_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/259737-M13_259737/M13_259737_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-259737",
@@ -14000,7 +14000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M13_259737 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102968-M14_102968/M14_102968_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102968-M14_102968/M14_102968_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-102968",
@@ -14010,7 +14010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_102968 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102968-M14_102968/M14_102968_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102968-M14_102968/M14_102968_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-102968",
@@ -14040,7 +14040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_102968 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102968-M14_102968/M14_102968_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102968-M14_102968/M14_102968_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-102968",
@@ -14060,7 +14060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_102968 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102968-M14_102968/M14_102968_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102968-M14_102968/M14_102968_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-102968",
@@ -14070,7 +14070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_102968 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/102968-M14_102968/M14_102968_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/102968-M14_102968/M14_102968_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-102968",
@@ -14100,7 +14100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_102968 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/103366-M14_103366/M14_103366_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-103366",
@@ -14110,7 +14110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_103366 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/103366-M14_103366/M14_103366_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-103366",
@@ -14140,7 +14140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_103366 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/103366-M14_103366/M14_103366_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-103366",
@@ -14160,7 +14160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_103366 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/103366-M14_103366/M14_103366_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-103366",
@@ -14170,7 +14170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_103366 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/103366-M14_103366/M14_103366_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-103366",
@@ -14200,7 +14200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_103366 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/104877-M14_104877/M14_104877_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-104877",
@@ -14210,7 +14210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_104877 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/104877-M14_104877/M14_104877_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-104877",
@@ -14240,7 +14240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_104877 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/104877-M14_104877/M14_104877_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-104877",
@@ -14260,7 +14260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_104877 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/104877-M14_104877/M14_104877_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-104877",
@@ -14270,7 +14270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_104877 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/104877-M14_104877/M14_104877_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-104877",
@@ -14300,7 +14300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_104877 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/27068-M14_27068/M14_27068_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-27068",
@@ -14310,7 +14310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_27068 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/27068-M14_27068/M14_27068_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-27068",
@@ -14340,7 +14340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_27068 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/27068-M14_27068/M14_27068_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-27068",
@@ -14360,7 +14360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_27068 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/27068-M14_27068/M14_27068_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-27068",
@@ -14370,7 +14370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_27068 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/27068-M14_27068/M14_27068_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-27068",
@@ -14400,7 +14400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_27068 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/31835-M14_31835/M14_31835_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-31835",
@@ -14410,7 +14410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_31835 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/31835-M14_31835/M14_31835_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-31835",
@@ -14440,7 +14440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_31835 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/31835-M14_31835/M14_31835_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-31835",
@@ -14460,7 +14460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_31835 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/31835-M14_31835/M14_31835_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-31835",
@@ -14470,7 +14470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_31835 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/31835-M14_31835/M14_31835_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-31835",
@@ -14500,7 +14500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_31835 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/36550-M14_36550/M14_36550_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-36550",
@@ -14510,7 +14510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_36550 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/36550-M14_36550/M14_36550_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-36550",
@@ -14540,7 +14540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_36550 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/36550-M14_36550/M14_36550_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-36550",
@@ -14560,7 +14560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_36550 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/36550-M14_36550/M14_36550_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-36550",
@@ -14570,7 +14570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_36550 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/36550-M14_36550/M14_36550_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-36550",
@@ -14600,7 +14600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_36550 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37023-M14_37023/M14_37023_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-37023",
@@ -14610,7 +14610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37023 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37023-M14_37023/M14_37023_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-37023",
@@ -14640,7 +14640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37023 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37023-M14_37023/M14_37023_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-37023",
@@ -14660,7 +14660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37023 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37023-M14_37023/M14_37023_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-37023",
@@ -14670,7 +14670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37023 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37023-M14_37023/M14_37023_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-37023",
@@ -14700,7 +14700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37023 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37219-M14_37219/M14_37219_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-37219",
@@ -14710,7 +14710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37219 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37219-M14_37219/M14_37219_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-37219",
@@ -14740,7 +14740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37219 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37219-M14_37219/M14_37219_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-37219",
@@ -14760,7 +14760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37219 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37219-M14_37219/M14_37219_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-37219",
@@ -14770,7 +14770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37219 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37219-M14_37219/M14_37219_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-37219",
@@ -14800,7 +14800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37219 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37723-M14_37723/M14_37723_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-37723",
@@ -14810,7 +14810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37723 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37723-M14_37723/M14_37723_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-37723",
@@ -14840,7 +14840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37723 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37723-M14_37723/M14_37723_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-37723",
@@ -14860,7 +14860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37723 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37723-M14_37723/M14_37723_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-37723",
@@ -14870,7 +14870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37723 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37723-M14_37723/M14_37723_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-37723",
@@ -14900,7 +14900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37723 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37843-M14_37843/M14_37843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-37843",
@@ -14910,7 +14910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37843 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37843-M14_37843/M14_37843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-37843",
@@ -14940,7 +14940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37843 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37843-M14_37843/M14_37843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-37843",
@@ -14960,7 +14960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37843 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37843-M14_37843/M14_37843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-37843",
@@ -14970,7 +14970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37843 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/37843-M14_37843/M14_37843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-37843",
@@ -15000,7 +15000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_37843 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38646-M14_38646/M14_38646_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-38646",
@@ -15010,7 +15010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38646 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38646-M14_38646/M14_38646_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-38646",
@@ -15040,7 +15040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38646 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38646-M14_38646/M14_38646_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-38646",
@@ -15060,7 +15060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38646 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38646-M14_38646/M14_38646_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-38646",
@@ -15070,7 +15070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38646 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38646-M14_38646/M14_38646_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-38646",
@@ -15100,7 +15100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38646 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38648-M14_38648/M14_38648_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-38648",
@@ -15110,7 +15110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38648 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38648-M14_38648/M14_38648_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-38648",
@@ -15140,7 +15140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38648 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38648-M14_38648/M14_38648_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-38648",
@@ -15160,7 +15160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38648 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38648-M14_38648/M14_38648_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-38648",
@@ -15170,7 +15170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38648 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38648-M14_38648/M14_38648_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-38648",
@@ -15200,7 +15200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38648 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38771-M14_38771/M14_38771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-38771",
@@ -15210,7 +15210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38771 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38771-M14_38771/M14_38771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-38771",
@@ -15240,7 +15240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38771 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38771-M14_38771/M14_38771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-38771",
@@ -15260,7 +15260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38771 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38771-M14_38771/M14_38771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-38771",
@@ -15270,7 +15270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38771 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/38771-M14_38771/M14_38771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-38771",
@@ -15300,7 +15300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_38771 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/39865-M14_39865/M14_39865_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m14-39865",
@@ -15310,7 +15310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_39865 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/39865-M14_39865/M14_39865_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m14-39865",
@@ -15340,7 +15340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_39865 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/39865-M14_39865/M14_39865_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m14-39865",
@@ -15360,7 +15360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_39865 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/39865-M14_39865/M14_39865_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m14-39865",
@@ -15370,7 +15370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_39865 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/39865-M14_39865/M14_39865_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m14-39865",
@@ -15400,7 +15400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M14_39865 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77632-M15_77632/M15_77632_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m15-77632",
@@ -15410,7 +15410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77632 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77632-M15_77632/M15_77632_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m15-77632",
@@ -15440,7 +15440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77632 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77632-M15_77632/M15_77632_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m15-77632",
@@ -15460,7 +15460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77632 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77632-M15_77632/M15_77632_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m15-77632",
@@ -15470,7 +15470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77632 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77632-M15_77632/M15_77632_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m15-77632",
@@ -15500,7 +15500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77632 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77745-M15_77745/M15_77745_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m15-77745",
@@ -15510,7 +15510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77745 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77745-M15_77745/M15_77745_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m15-77745",
@@ -15540,7 +15540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77745 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77745-M15_77745/M15_77745_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m15-77745",
@@ -15560,7 +15560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77745 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77745-M15_77745/M15_77745_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m15-77745",
@@ -15570,7 +15570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77745 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/77745-M15_77745/M15_77745_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m15-77745",
@@ -15600,7 +15600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_77745 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/87207-M15_87207/M15_87207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m15-87207",
@@ -15610,7 +15610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_87207 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/87207-M15_87207/M15_87207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m15-87207",
@@ -15640,7 +15640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_87207 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/87207-M15_87207/M15_87207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m15-87207",
@@ -15660,7 +15660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_87207 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/87207-M15_87207/M15_87207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m15-87207",
@@ -15670,7 +15670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_87207 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/87207-M15_87207/M15_87207_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m15-87207",
@@ -15700,7 +15700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_87207 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/88032-M15_88032/M15_88032_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m15-88032",
@@ -15710,7 +15710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_88032 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/88032-M15_88032/M15_88032_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m15-88032",
@@ -15740,7 +15740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_88032 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/88032-M15_88032/M15_88032_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m15-88032",
@@ -15760,7 +15760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_88032 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/88032-M15_88032/M15_88032_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m15-88032",
@@ -15770,7 +15770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_88032 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/88032-M15_88032/M15_88032_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m15-88032",
@@ -15800,7 +15800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_88032 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89072-M15_89072/M15_89072_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m15-89072",
@@ -15810,7 +15810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89072 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89072-M15_89072/M15_89072_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m15-89072",
@@ -15840,7 +15840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89072 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89072-M15_89072/M15_89072_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m15-89072",
@@ -15860,7 +15860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89072 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89072-M15_89072/M15_89072_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m15-89072",
@@ -15870,7 +15870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89072 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89072-M15_89072/M15_89072_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m15-89072",
@@ -15900,7 +15900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89072 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89153-M15_89153/M15_89153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m15-89153",
@@ -15910,7 +15910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89153 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89153-M15_89153/M15_89153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m15-89153",
@@ -15940,7 +15940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89153 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89153-M15_89153/M15_89153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m15-89153",
@@ -15960,7 +15960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89153 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89153-M15_89153/M15_89153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m15-89153",
@@ -15970,7 +15970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89153 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/89153-M15_89153/M15_89153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m15-89153",
@@ -16000,7 +16000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M15_89153 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126153-M1_126153/M1_126153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-126153",
@@ -16010,7 +16010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126153 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126153-M1_126153/M1_126153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-126153",
@@ -16040,7 +16040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126153 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126153-M1_126153/M1_126153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-126153",
@@ -16060,7 +16060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126153 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126153-M1_126153/M1_126153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-126153",
@@ -16070,7 +16070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126153 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126153-M1_126153/M1_126153_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-126153",
@@ -16100,7 +16100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126153 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126578-M1_126578/M1_126578_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-126578",
@@ -16110,7 +16110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126578 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126578-M1_126578/M1_126578_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-126578",
@@ -16140,7 +16140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126578 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126578-M1_126578/M1_126578_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-126578",
@@ -16160,7 +16160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126578 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126578-M1_126578/M1_126578_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-126578",
@@ -16170,7 +16170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126578 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/126578-M1_126578/M1_126578_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-126578",
@@ -16200,7 +16200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_126578 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130052-M1_130052/M1_130052_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-130052",
@@ -16210,7 +16210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_130052 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130052-M1_130052/M1_130052_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-130052",
@@ -16240,7 +16240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_130052 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130052-M1_130052/M1_130052_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-130052",
@@ -16260,7 +16260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_130052 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130052-M1_130052/M1_130052_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-130052",
@@ -16270,7 +16270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_130052 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130052-M1_130052/M1_130052_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-130052",
@@ -16300,7 +16300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_130052 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133240-M1_133240/M1_133240_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-133240",
@@ -16310,7 +16310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_133240 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133240-M1_133240/M1_133240_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-133240",
@@ -16340,7 +16340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_133240 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133240-M1_133240/M1_133240_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-133240",
@@ -16360,7 +16360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_133240 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133240-M1_133240/M1_133240_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-133240",
@@ -16370,7 +16370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_133240 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133240-M1_133240/M1_133240_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-133240",
@@ -16400,7 +16400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_133240 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139423-M1_139423/M1_139423_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-139423",
@@ -16410,7 +16410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_139423 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139423-M1_139423/M1_139423_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-139423",
@@ -16440,7 +16440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_139423 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139423-M1_139423/M1_139423_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-139423",
@@ -16460,7 +16460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_139423 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139423-M1_139423/M1_139423_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-139423",
@@ -16470,7 +16470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_139423 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139423-M1_139423/M1_139423_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-139423",
@@ -16500,7 +16500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_139423 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205742-M1_205742/M1_205742_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-205742",
@@ -16510,7 +16510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_205742 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205742-M1_205742/M1_205742_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-205742",
@@ -16540,7 +16540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_205742 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205742-M1_205742/M1_205742_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-205742",
@@ -16560,7 +16560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_205742 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205742-M1_205742/M1_205742_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-205742",
@@ -16570,7 +16570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_205742 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205742-M1_205742/M1_205742_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-205742",
@@ -16600,7 +16600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_205742 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-206501",
@@ -16610,7 +16610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206501 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-206501",
@@ -16640,7 +16640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206501 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-206501",
@@ -16660,7 +16660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206501 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-206501",
@@ -16670,7 +16670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206501 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-206501",
@@ -16700,7 +16700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206501 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206545-M1_206545/M1_206545_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-206545",
@@ -16710,7 +16710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206545 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206545-M1_206545/M1_206545_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-206545",
@@ -16740,7 +16740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206545 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206545-M1_206545/M1_206545_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-206545",
@@ -16760,7 +16760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206545 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206545-M1_206545/M1_206545_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-206545",
@@ -16770,7 +16770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206545 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206545-M1_206545/M1_206545_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-206545",
@@ -16800,7 +16800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206545 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206858-M1_206858/M1_206858_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-206858",
@@ -16810,7 +16810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206858 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206858-M1_206858/M1_206858_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
     "cell": 22,
     "output": 1,
     "run": "baseline-m1-206858",
@@ -16840,7 +16840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206858 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206858-M1_206858/M1_206858_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-206858",
@@ -16860,7 +16860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206858 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206858-M1_206858/M1_206858_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-206858",
@@ -16870,7 +16870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206858 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206858-M1_206858/M1_206858_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-206858",
@@ -16900,7 +16900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_206858 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208622-M1_208622/M1_208622_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-208622",
@@ -16910,7 +16910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_208622 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208622-M1_208622/M1_208622_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-208622",
@@ -16940,7 +16940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_208622 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208622-M1_208622/M1_208622_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-208622",
@@ -16960,7 +16960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_208622 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208622-M1_208622/M1_208622_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-208622",
@@ -16970,7 +16970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_208622 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208622-M1_208622/M1_208622_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-208622",
@@ -17000,7 +17000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_208622 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-210210",
@@ -17010,7 +17010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_210210 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-210210",
@@ -17040,7 +17040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_210210 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-210210",
@@ -17060,7 +17060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_210210 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-210210",
@@ -17070,7 +17070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_210210 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-210210",
@@ -17100,7 +17100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_210210 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211157-M1_211157/M1_211157_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-211157",
@@ -17110,7 +17110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_211157 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211157-M1_211157/M1_211157_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-211157",
@@ -17140,7 +17140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_211157 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211157-M1_211157/M1_211157_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-211157",
@@ -17160,7 +17160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_211157 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211157-M1_211157/M1_211157_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-211157",
@@ -17170,7 +17170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_211157 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211157-M1_211157/M1_211157_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-211157",
@@ -17200,7 +17200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M1_211157 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/129596-M2_129596/M2_129596_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-129596",
@@ -17210,7 +17210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_129596 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/129596-M2_129596/M2_129596_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-129596",
@@ -17240,7 +17240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_129596 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/129596-M2_129596/M2_129596_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-129596",
@@ -17260,7 +17260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_129596 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/129596-M2_129596/M2_129596_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-129596",
@@ -17270,7 +17270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_129596 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/129596-M2_129596/M2_129596_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-129596",
@@ -17300,7 +17300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_129596 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130005-M2_130005/M2_130005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130005-M2_130005/M2_130005_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-130005",
@@ -17310,7 +17310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_130005 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130005-M2_130005/M2_130005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130005-M2_130005/M2_130005_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-130005",
@@ -17340,7 +17340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_130005 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130005-M2_130005/M2_130005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130005-M2_130005/M2_130005_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-130005",
@@ -17360,7 +17360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_130005 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130005-M2_130005/M2_130005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130005-M2_130005/M2_130005_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-130005",
@@ -17370,7 +17370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_130005 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/130005-M2_130005/M2_130005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/130005-M2_130005/M2_130005_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-130005",
@@ -17400,7 +17400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_130005 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-133501",
@@ -17410,7 +17410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_133501 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-133501",
@@ -17440,7 +17440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_133501 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-133501",
@@ -17460,7 +17460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_133501 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-133501",
@@ -17470,7 +17470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_133501 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-133501",
@@ -17500,7 +17500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_133501 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134021-M2_134021/M2_134021_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134021-M2_134021/M2_134021_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-134021",
@@ -17510,7 +17510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134021 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134021-M2_134021/M2_134021_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134021-M2_134021/M2_134021_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-134021",
@@ -17540,7 +17540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134021 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134021-M2_134021/M2_134021_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134021-M2_134021/M2_134021_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-134021",
@@ -17560,7 +17560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134021 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134021-M2_134021/M2_134021_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134021-M2_134021/M2_134021_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-134021",
@@ -17570,7 +17570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134021 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134021-M2_134021/M2_134021_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134021-M2_134021/M2_134021_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-134021",
@@ -17600,7 +17600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134021 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134391-M2_134391/M2_134391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134391-M2_134391/M2_134391_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-134391",
@@ -17610,7 +17610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134391 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134391-M2_134391/M2_134391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134391-M2_134391/M2_134391_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-134391",
@@ -17640,7 +17640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134391 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134391-M2_134391/M2_134391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134391-M2_134391/M2_134391_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-134391",
@@ -17660,7 +17660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134391 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134391-M2_134391/M2_134391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134391-M2_134391/M2_134391_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-134391",
@@ -17670,7 +17670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134391 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/134391-M2_134391/M2_134391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/134391-M2_134391/M2_134391_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-134391",
@@ -17700,7 +17700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_134391 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-139662",
@@ -17710,7 +17710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_139662 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-139662",
@@ -17740,7 +17740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_139662 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-139662",
@@ -17760,7 +17760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_139662 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-139662",
@@ -17770,7 +17770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_139662 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-139662",
@@ -17800,7 +17800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_139662 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206669-M2_206669/M2_206669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206669-M2_206669/M2_206669_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-206669",
@@ -17810,7 +17810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_206669 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206669-M2_206669/M2_206669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206669-M2_206669/M2_206669_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-206669",
@@ -17840,7 +17840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_206669 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206669-M2_206669/M2_206669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206669-M2_206669/M2_206669_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-206669",
@@ -17860,7 +17860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_206669 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206669-M2_206669/M2_206669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206669-M2_206669/M2_206669_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-206669",
@@ -17870,7 +17870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_206669 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206669-M2_206669/M2_206669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206669-M2_206669/M2_206669_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-206669",
@@ -17900,7 +17900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_206669 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208364-M2_208364/M2_208364_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208364-M2_208364/M2_208364_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-208364",
@@ -17910,7 +17910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_208364 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208364-M2_208364/M2_208364_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208364-M2_208364/M2_208364_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-208364",
@@ -17940,7 +17940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_208364 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208364-M2_208364/M2_208364_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208364-M2_208364/M2_208364_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-208364",
@@ -17960,7 +17960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_208364 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208364-M2_208364/M2_208364_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208364-M2_208364/M2_208364_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-208364",
@@ -17970,7 +17970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_208364 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/208364-M2_208364/M2_208364_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/208364-M2_208364/M2_208364_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-208364",
@@ -18000,7 +18000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_208364 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-210940",
@@ -18010,7 +18010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_210940 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-210940",
@@ -18040,7 +18040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_210940 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-210940",
@@ -18060,7 +18060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_210940 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-210940",
@@ -18070,7 +18070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_210940 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-210940",
@@ -18100,7 +18100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_210940 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/93943-M2_93943/M2_93943_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/93943-M2_93943/M2_93943_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-93943",
@@ -18110,7 +18110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_93943 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/93943-M2_93943/M2_93943_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/93943-M2_93943/M2_93943_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-93943",
@@ -18140,7 +18140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_93943 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/93943-M2_93943/M2_93943_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/93943-M2_93943/M2_93943_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-93943",
@@ -18160,7 +18160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_93943 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/93943-M2_93943/M2_93943_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/93943-M2_93943/M2_93943_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-93943",
@@ -18170,7 +18170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_93943 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/93943-M2_93943/M2_93943_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/93943-M2_93943/M2_93943_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-93943",
@@ -18200,7 +18200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_93943 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/94494-M2_94494/M2_94494_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/94494-M2_94494/M2_94494_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-94494",
@@ -18210,7 +18210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_94494 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/94494-M2_94494/M2_94494_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/94494-M2_94494/M2_94494_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-94494",
@@ -18240,7 +18240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_94494 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/94494-M2_94494/M2_94494_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/94494-M2_94494/M2_94494_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-94494",
@@ -18260,7 +18260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_94494 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/94494-M2_94494/M2_94494_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/94494-M2_94494/M2_94494_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-94494",
@@ -18270,7 +18270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_94494 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/94494-M2_94494/M2_94494_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/94494-M2_94494/M2_94494_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-94494",
@@ -18300,7 +18300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_94494 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/97310-M2_97310/M2_97310_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/97310-M2_97310/M2_97310_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-97310",
@@ -18310,7 +18310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_97310 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/97310-M2_97310/M2_97310_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/97310-M2_97310/M2_97310_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-97310",
@@ -18340,7 +18340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_97310 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/97310-M2_97310/M2_97310_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/97310-M2_97310/M2_97310_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-97310",
@@ -18360,7 +18360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_97310 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/97310-M2_97310/M2_97310_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/97310-M2_97310/M2_97310_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-97310",
@@ -18370,7 +18370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_97310 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/97310-M2_97310/M2_97310_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/97310-M2_97310/M2_97310_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-97310",
@@ -18400,7 +18400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M2_97310 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107362-M3_107362/M3_107362_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107362-M3_107362/M3_107362_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-107362",
@@ -18410,7 +18410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_107362 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107362-M3_107362/M3_107362_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107362-M3_107362/M3_107362_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-107362",
@@ -18440,7 +18440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_107362 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107362-M3_107362/M3_107362_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107362-M3_107362/M3_107362_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-107362",
@@ -18460,7 +18460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_107362 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107362-M3_107362/M3_107362_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107362-M3_107362/M3_107362_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-107362",
@@ -18470,7 +18470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_107362 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107362-M3_107362/M3_107362_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107362-M3_107362/M3_107362_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-107362",
@@ -18500,7 +18500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_107362 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109352-M3_109352/M3_109352_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109352-M3_109352/M3_109352_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-109352",
@@ -18510,7 +18510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109352 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109352-M3_109352/M3_109352_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109352-M3_109352/M3_109352_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-109352",
@@ -18540,7 +18540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109352 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109352-M3_109352/M3_109352_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109352-M3_109352/M3_109352_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-109352",
@@ -18560,7 +18560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109352 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109352-M3_109352/M3_109352_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109352-M3_109352/M3_109352_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-109352",
@@ -18570,7 +18570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109352 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109352-M3_109352/M3_109352_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109352-M3_109352/M3_109352_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-109352",
@@ -18600,7 +18600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109352 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-109713",
@@ -18610,7 +18610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109713 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-109713",
@@ -18640,7 +18640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109713 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-109713",
@@ -18660,7 +18660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109713 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-109713",
@@ -18670,7 +18670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109713 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-109713",
@@ -18700,7 +18700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109713 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109843-M3_109843/M3_109843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109843-M3_109843/M3_109843_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-109843",
@@ -18710,7 +18710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109843 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109843-M3_109843/M3_109843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109843-M3_109843/M3_109843_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-109843",
@@ -18740,7 +18740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109843 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109843-M3_109843/M3_109843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109843-M3_109843/M3_109843_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-109843",
@@ -18760,7 +18760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109843 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109843-M3_109843/M3_109843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109843-M3_109843/M3_109843_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-109843",
@@ -18770,7 +18770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109843 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109843-M3_109843/M3_109843_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109843-M3_109843/M3_109843_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-109843",
@@ -18800,7 +18800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_109843 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/111390-M3_111390/M3_111390_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/111390-M3_111390/M3_111390_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-111390",
@@ -18810,7 +18810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_111390 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/111390-M3_111390/M3_111390_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/111390-M3_111390/M3_111390_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-111390",
@@ -18840,7 +18840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_111390 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/111390-M3_111390/M3_111390_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/111390-M3_111390/M3_111390_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-111390",
@@ -18860,7 +18860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_111390 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/111390-M3_111390/M3_111390_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/111390-M3_111390/M3_111390_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-111390",
@@ -18870,7 +18870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_111390 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/111390-M3_111390/M3_111390_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/111390-M3_111390/M3_111390_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-111390",
@@ -18900,7 +18900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_111390 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117010-M3_117010/M3_117010_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117010-M3_117010/M3_117010_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-117010",
@@ -18910,7 +18910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117010 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117010-M3_117010/M3_117010_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117010-M3_117010/M3_117010_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-117010",
@@ -18940,7 +18940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117010 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117010-M3_117010/M3_117010_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117010-M3_117010/M3_117010_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-117010",
@@ -18960,7 +18960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117010 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117010-M3_117010/M3_117010_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117010-M3_117010/M3_117010_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-117010",
@@ -18970,7 +18970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117010 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117010-M3_117010/M3_117010_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117010-M3_117010/M3_117010_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-117010",
@@ -19000,7 +19000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117010 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117694-M3_117694/M3_117694_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117694-M3_117694/M3_117694_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-117694",
@@ -19010,7 +19010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117694 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117694-M3_117694/M3_117694_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117694-M3_117694/M3_117694_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-117694",
@@ -19040,7 +19040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117694 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117694-M3_117694/M3_117694_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117694-M3_117694/M3_117694_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-117694",
@@ -19060,7 +19060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117694 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117694-M3_117694/M3_117694_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117694-M3_117694/M3_117694_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-117694",
@@ -19070,7 +19070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117694 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117694-M3_117694/M3_117694_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117694-M3_117694/M3_117694_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-117694",
@@ -19100,7 +19100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_117694 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119474-M3_119474/M3_119474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119474-M3_119474/M3_119474_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-119474",
@@ -19110,7 +19110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119474 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119474-M3_119474/M3_119474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119474-M3_119474/M3_119474_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-119474",
@@ -19140,7 +19140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119474 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119474-M3_119474/M3_119474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119474-M3_119474/M3_119474_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-119474",
@@ -19160,7 +19160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119474 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119474-M3_119474/M3_119474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119474-M3_119474/M3_119474_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-119474",
@@ -19170,7 +19170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119474 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119474-M3_119474/M3_119474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119474-M3_119474/M3_119474_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-119474",
@@ -19200,7 +19200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119474 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119802-M3_119802/M3_119802_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119802-M3_119802/M3_119802_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-119802",
@@ -19210,7 +19210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119802 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119802-M3_119802/M3_119802_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119802-M3_119802/M3_119802_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-119802",
@@ -19240,7 +19240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119802 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119802-M3_119802/M3_119802_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119802-M3_119802/M3_119802_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-119802",
@@ -19260,7 +19260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119802 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119802-M3_119802/M3_119802_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119802-M3_119802/M3_119802_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-119802",
@@ -19270,7 +19270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119802 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119802-M3_119802/M3_119802_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119802-M3_119802/M3_119802_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-119802",
@@ -19300,7 +19300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119802 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119809-M3_119809/M3_119809_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119809-M3_119809/M3_119809_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-119809",
@@ -19310,7 +19310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119809 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119809-M3_119809/M3_119809_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119809-M3_119809/M3_119809_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-119809",
@@ -19340,7 +19340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119809 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119809-M3_119809/M3_119809_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119809-M3_119809/M3_119809_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-119809",
@@ -19360,7 +19360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119809 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119809-M3_119809/M3_119809_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119809-M3_119809/M3_119809_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-119809",
@@ -19370,7 +19370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119809 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/119809-M3_119809/M3_119809_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/119809-M3_119809/M3_119809_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-119809",
@@ -19400,7 +19400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_119809 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120308-M3_120308/M3_120308_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120308-M3_120308/M3_120308_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-120308",
@@ -19410,7 +19410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120308 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120308-M3_120308/M3_120308_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120308-M3_120308/M3_120308_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-120308",
@@ -19440,7 +19440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120308 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120308-M3_120308/M3_120308_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120308-M3_120308/M3_120308_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-120308",
@@ -19460,7 +19460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120308 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120308-M3_120308/M3_120308_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120308-M3_120308/M3_120308_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-120308",
@@ -19470,7 +19470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120308 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120308-M3_120308/M3_120308_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120308-M3_120308/M3_120308_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-120308",
@@ -19500,7 +19500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120308 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120540-M3_120540/M3_120540_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120540-M3_120540/M3_120540_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-120540",
@@ -19510,7 +19510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120540 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120540-M3_120540/M3_120540_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120540-M3_120540/M3_120540_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-120540",
@@ -19540,7 +19540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120540 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120540-M3_120540/M3_120540_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120540-M3_120540/M3_120540_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-120540",
@@ -19560,7 +19560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120540 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120540-M3_120540/M3_120540_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120540-M3_120540/M3_120540_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-120540",
@@ -19570,7 +19570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120540 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120540-M3_120540/M3_120540_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120540-M3_120540/M3_120540_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-120540",
@@ -19600,7 +19600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M3_120540 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/105474-M4_105474/M4_105474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/105474-M4_105474/M4_105474_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-105474",
@@ -19610,7 +19610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_105474 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/105474-M4_105474/M4_105474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/105474-M4_105474/M4_105474_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-105474",
@@ -19640,7 +19640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_105474 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/105474-M4_105474/M4_105474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/105474-M4_105474/M4_105474_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-105474",
@@ -19660,7 +19660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_105474 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/105474-M4_105474/M4_105474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/105474-M4_105474/M4_105474_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-105474",
@@ -19670,7 +19670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_105474 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/105474-M4_105474/M4_105474_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/105474-M4_105474/M4_105474_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-105474",
@@ -19700,7 +19700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_105474 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-107370",
@@ -19710,7 +19710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107370 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-107370",
@@ -19740,7 +19740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107370 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-107370",
@@ -19760,7 +19760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107370 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-107370",
@@ -19770,7 +19770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107370 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-107370",
@@ -19800,7 +19800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107370 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107643-M4_107643/M4_107643_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107643-M4_107643/M4_107643_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-107643",
@@ -19810,7 +19810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107643 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107643-M4_107643/M4_107643_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107643-M4_107643/M4_107643_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-107643",
@@ -19840,7 +19840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107643 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107643-M4_107643/M4_107643_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107643-M4_107643/M4_107643_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-107643",
@@ -19860,7 +19860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107643 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107643-M4_107643/M4_107643_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107643-M4_107643/M4_107643_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-107643",
@@ -19870,7 +19870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107643 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107643-M4_107643/M4_107643_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107643-M4_107643/M4_107643_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-107643",
@@ -19900,7 +19900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_107643 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/108989-M4_108989/M4_108989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/108989-M4_108989/M4_108989_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-108989",
@@ -19910,7 +19910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_108989 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/108989-M4_108989/M4_108989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/108989-M4_108989/M4_108989_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-108989",
@@ -19940,7 +19940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_108989 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/108989-M4_108989/M4_108989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/108989-M4_108989/M4_108989_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-108989",
@@ -19960,7 +19960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_108989 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/108989-M4_108989/M4_108989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/108989-M4_108989/M4_108989_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-108989",
@@ -19970,7 +19970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_108989 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/108989-M4_108989/M4_108989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/108989-M4_108989/M4_108989_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-108989",
@@ -20000,7 +20000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_108989 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/112534-M4_112534/M4_112534_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/112534-M4_112534/M4_112534_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-112534",
@@ -20010,7 +20010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_112534 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/112534-M4_112534/M4_112534_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/112534-M4_112534/M4_112534_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-112534",
@@ -20040,7 +20040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_112534 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/112534-M4_112534/M4_112534_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/112534-M4_112534/M4_112534_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-112534",
@@ -20060,7 +20060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_112534 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/112534-M4_112534/M4_112534_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/112534-M4_112534/M4_112534_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-112534",
@@ -20070,7 +20070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_112534 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/112534-M4_112534/M4_112534_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/112534-M4_112534/M4_112534_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-112534",
@@ -20100,7 +20100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_112534 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-117400",
@@ -20110,7 +20110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_117400 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-117400",
@@ -20140,7 +20140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_117400 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-117400",
@@ -20160,7 +20160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_117400 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-117400",
@@ -20170,7 +20170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_117400 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-117400",
@@ -20200,7 +20200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_117400 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/123161-M4_123161/M4_123161_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/123161-M4_123161/M4_123161_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-123161",
@@ -20210,7 +20210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_123161 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/123161-M4_123161/M4_123161_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/123161-M4_123161/M4_123161_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-123161",
@@ -20240,7 +20240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_123161 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/123161-M4_123161/M4_123161_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/123161-M4_123161/M4_123161_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-123161",
@@ -20260,7 +20260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_123161 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/123161-M4_123161/M4_123161_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/123161-M4_123161/M4_123161_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-123161",
@@ -20270,7 +20270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_123161 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/123161-M4_123161/M4_123161_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/123161-M4_123161/M4_123161_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-123161",
@@ -20300,7 +20300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_123161 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124231-M4_124231/M4_124231_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124231-M4_124231/M4_124231_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-124231",
@@ -20310,7 +20310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_124231 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124231-M4_124231/M4_124231_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124231-M4_124231/M4_124231_executed.ipynb",
     "cell": 22,
     "output": 1,
     "run": "baseline-m4-124231",
@@ -20340,7 +20340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_124231 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124231-M4_124231/M4_124231_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124231-M4_124231/M4_124231_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-124231",
@@ -20360,7 +20360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_124231 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124231-M4_124231/M4_124231_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124231-M4_124231/M4_124231_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-124231",
@@ -20370,7 +20370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_124231 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124231-M4_124231/M4_124231_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124231-M4_124231/M4_124231_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-124231",
@@ -20400,7 +20400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_124231 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/125213-M4_125213/M4_125213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/125213-M4_125213/M4_125213_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-125213",
@@ -20410,7 +20410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_125213 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/125213-M4_125213/M4_125213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/125213-M4_125213/M4_125213_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-125213",
@@ -20440,7 +20440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_125213 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/125213-M4_125213/M4_125213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/125213-M4_125213/M4_125213_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-125213",
@@ -20460,7 +20460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_125213 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/125213-M4_125213/M4_125213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/125213-M4_125213/M4_125213_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-125213",
@@ -20470,7 +20470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_125213 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/125213-M4_125213/M4_125213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/125213-M4_125213/M4_125213_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-125213",
@@ -20500,7 +20500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_125213 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/84337-M4_84337/M4_84337_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/84337-M4_84337/M4_84337_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-84337",
@@ -20510,7 +20510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_84337 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/84337-M4_84337/M4_84337_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/84337-M4_84337/M4_84337_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-84337",
@@ -20540,7 +20540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_84337 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/84337-M4_84337/M4_84337_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/84337-M4_84337/M4_84337_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-84337",
@@ -20560,7 +20560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_84337 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/84337-M4_84337/M4_84337_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/84337-M4_84337/M4_84337_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-84337",
@@ -20570,7 +20570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_84337 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/84337-M4_84337/M4_84337_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/84337-M4_84337/M4_84337_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-84337",
@@ -20600,7 +20600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M4_84337 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/127946-M5_127946/M5_127946_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/127946-M5_127946/M5_127946_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-127946",
@@ -20610,7 +20610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_127946 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/127946-M5_127946/M5_127946_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/127946-M5_127946/M5_127946_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-127946",
@@ -20640,7 +20640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_127946 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/127946-M5_127946/M5_127946_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/127946-M5_127946/M5_127946_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-127946",
@@ -20660,7 +20660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_127946 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/127946-M5_127946/M5_127946_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/127946-M5_127946/M5_127946_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-127946",
@@ -20670,7 +20670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_127946 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/127946-M5_127946/M5_127946_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/127946-M5_127946/M5_127946_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-127946",
@@ -20700,7 +20700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_127946 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/128311-M5_128311/M5_128311_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/128311-M5_128311/M5_128311_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-128311",
@@ -20710,7 +20710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_128311 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/128311-M5_128311/M5_128311_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/128311-M5_128311/M5_128311_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-128311",
@@ -20740,7 +20740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_128311 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/128311-M5_128311/M5_128311_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/128311-M5_128311/M5_128311_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-128311",
@@ -20760,7 +20760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_128311 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/128311-M5_128311/M5_128311_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/128311-M5_128311/M5_128311_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-128311",
@@ -20770,7 +20770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_128311 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/128311-M5_128311/M5_128311_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/128311-M5_128311/M5_128311_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-128311",
@@ -20800,7 +20800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_128311 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/165871-M5_165871/M5_165871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/165871-M5_165871/M5_165871_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-165871",
@@ -20810,7 +20810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_165871 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/165871-M5_165871/M5_165871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/165871-M5_165871/M5_165871_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-165871",
@@ -20840,7 +20840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_165871 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/165871-M5_165871/M5_165871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/165871-M5_165871/M5_165871_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-165871",
@@ -20860,7 +20860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_165871 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/165871-M5_165871/M5_165871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/165871-M5_165871/M5_165871_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-165871",
@@ -20870,7 +20870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_165871 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/165871-M5_165871/M5_165871_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/165871-M5_165871/M5_165871_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-165871",
@@ -20900,7 +20900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_165871 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/167056-M5_167056/M5_167056_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/167056-M5_167056/M5_167056_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-167056",
@@ -20910,7 +20910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_167056 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/167056-M5_167056/M5_167056_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/167056-M5_167056/M5_167056_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-167056",
@@ -20940,7 +20940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_167056 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/167056-M5_167056/M5_167056_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/167056-M5_167056/M5_167056_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-167056",
@@ -20960,7 +20960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_167056 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/167056-M5_167056/M5_167056_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/167056-M5_167056/M5_167056_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-167056",
@@ -20970,7 +20970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_167056 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/167056-M5_167056/M5_167056_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/167056-M5_167056/M5_167056_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-167056",
@@ -21000,7 +21000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_167056 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/172669-M5_172669/M5_172669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/172669-M5_172669/M5_172669_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-172669",
@@ -21010,7 +21010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_172669 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/172669-M5_172669/M5_172669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/172669-M5_172669/M5_172669_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-172669",
@@ -21040,7 +21040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_172669 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/172669-M5_172669/M5_172669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/172669-M5_172669/M5_172669_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-172669",
@@ -21060,7 +21060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_172669 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/172669-M5_172669/M5_172669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/172669-M5_172669/M5_172669_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-172669",
@@ -21070,7 +21070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_172669 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/172669-M5_172669/M5_172669_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/172669-M5_172669/M5_172669_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-172669",
@@ -21100,7 +21100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_172669 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/173928-M5_173928/M5_173928_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/173928-M5_173928/M5_173928_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-173928",
@@ -21110,7 +21110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_173928 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/173928-M5_173928/M5_173928_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/173928-M5_173928/M5_173928_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-173928",
@@ -21140,7 +21140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_173928 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/173928-M5_173928/M5_173928_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/173928-M5_173928/M5_173928_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-173928",
@@ -21160,7 +21160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_173928 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/173928-M5_173928/M5_173928_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/173928-M5_173928/M5_173928_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-173928",
@@ -21170,7 +21170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_173928 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/173928-M5_173928/M5_173928_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/173928-M5_173928/M5_173928_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-173928",
@@ -21200,7 +21200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_173928 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205715-M5_205715/M5_205715_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205715-M5_205715/M5_205715_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-205715",
@@ -21210,7 +21210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205715 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205715-M5_205715/M5_205715_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205715-M5_205715/M5_205715_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-205715",
@@ -21240,7 +21240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205715 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205715-M5_205715/M5_205715_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205715-M5_205715/M5_205715_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-205715",
@@ -21260,7 +21260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205715 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205715-M5_205715/M5_205715_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205715-M5_205715/M5_205715_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-205715",
@@ -21270,7 +21270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205715 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205715-M5_205715/M5_205715_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205715-M5_205715/M5_205715_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-205715",
@@ -21300,7 +21300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205715 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205765-M5_205765/M5_205765_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205765-M5_205765/M5_205765_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-205765",
@@ -21310,7 +21310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205765 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205765-M5_205765/M5_205765_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205765-M5_205765/M5_205765_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-205765",
@@ -21340,7 +21340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205765 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205765-M5_205765/M5_205765_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205765-M5_205765/M5_205765_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-205765",
@@ -21360,7 +21360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205765 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205765-M5_205765/M5_205765_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205765-M5_205765/M5_205765_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-205765",
@@ -21370,7 +21370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205765 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/205765-M5_205765/M5_205765_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/205765-M5_205765/M5_205765_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-205765",
@@ -21400,7 +21400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_205765 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206771-M5_206771/M5_206771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206771-M5_206771/M5_206771_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-206771",
@@ -21410,7 +21410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_206771 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206771-M5_206771/M5_206771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206771-M5_206771/M5_206771_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-206771",
@@ -21440,7 +21440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_206771 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206771-M5_206771/M5_206771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206771-M5_206771/M5_206771_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-206771",
@@ -21460,7 +21460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_206771 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206771-M5_206771/M5_206771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206771-M5_206771/M5_206771_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-206771",
@@ -21470,7 +21470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_206771 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206771-M5_206771/M5_206771_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206771-M5_206771/M5_206771_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-206771",
@@ -21500,7 +21500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_206771 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211347-M5_211347/M5_211347_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211347-M5_211347/M5_211347_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-211347",
@@ -21510,7 +21510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211347 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211347-M5_211347/M5_211347_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211347-M5_211347/M5_211347_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-211347",
@@ -21540,7 +21540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211347 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211347-M5_211347/M5_211347_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211347-M5_211347/M5_211347_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-211347",
@@ -21560,7 +21560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211347 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211347-M5_211347/M5_211347_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211347-M5_211347/M5_211347_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-211347",
@@ -21570,7 +21570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211347 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211347-M5_211347/M5_211347_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211347-M5_211347/M5_211347_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-211347",
@@ -21600,7 +21600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211347 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-211767",
@@ -21610,7 +21610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211767 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-211767",
@@ -21640,7 +21640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211767 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-211767",
@@ -21660,7 +21660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211767 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-211767",
@@ -21670,7 +21670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211767 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-211767",
@@ -21700,7 +21700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_211767 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236682-M5_236682/M5_236682_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236682-M5_236682/M5_236682_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-236682",
@@ -21710,7 +21710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236682 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236682-M5_236682/M5_236682_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236682-M5_236682/M5_236682_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-236682",
@@ -21740,7 +21740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236682 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236682-M5_236682/M5_236682_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236682-M5_236682/M5_236682_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-236682",
@@ -21760,7 +21760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236682 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236682-M5_236682/M5_236682_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236682-M5_236682/M5_236682_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-236682",
@@ -21770,7 +21770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236682 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236682-M5_236682/M5_236682_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236682-M5_236682/M5_236682_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-236682",
@@ -21800,7 +21800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236682 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236994-M5_236994/M5_236994_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236994-M5_236994/M5_236994_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-236994",
@@ -21810,7 +21810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236994 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236994-M5_236994/M5_236994_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236994-M5_236994/M5_236994_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-236994",
@@ -21840,7 +21840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236994 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236994-M5_236994/M5_236994_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236994-M5_236994/M5_236994_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-236994",
@@ -21860,7 +21860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236994 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236994-M5_236994/M5_236994_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236994-M5_236994/M5_236994_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-236994",
@@ -21870,7 +21870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236994 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/236994-M5_236994/M5_236994_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/236994-M5_236994/M5_236994_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-236994",
@@ -21900,7 +21900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_236994 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-238314",
@@ -21910,7 +21910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238314 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-238314",
@@ -21940,7 +21940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238314 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-238314",
@@ -21960,7 +21960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238314 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-238314",
@@ -21970,7 +21970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238314 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-238314",
@@ -22000,7 +22000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238314 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238580-M5_238580/M5_238580_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238580-M5_238580/M5_238580_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-238580",
@@ -22010,7 +22010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238580 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238580-M5_238580/M5_238580_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238580-M5_238580/M5_238580_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-238580",
@@ -22040,7 +22040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238580 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238580-M5_238580/M5_238580_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238580-M5_238580/M5_238580_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-238580",
@@ -22060,7 +22060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238580 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238580-M5_238580/M5_238580_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238580-M5_238580/M5_238580_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-238580",
@@ -22070,7 +22070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238580 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238580-M5_238580/M5_238580_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238580-M5_238580/M5_238580_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-238580",
@@ -22100,7 +22100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_238580 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/241189-M5_241189/M5_241189_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-241189",
@@ -22110,7 +22110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_241189 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/241189-M5_241189/M5_241189_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-241189",
@@ -22140,7 +22140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_241189 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/241189-M5_241189/M5_241189_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-241189",
@@ -22160,7 +22160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_241189 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/241189-M5_241189/M5_241189_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-241189",
@@ -22170,7 +22170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_241189 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/241189-M5_241189/M5_241189_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-241189",
@@ -22200,7 +22200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M5_241189 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/166634-M6_166634/M6_166634_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m6-166634",
@@ -22210,7 +22210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_166634 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/166634-M6_166634/M6_166634_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m6-166634",
@@ -22240,7 +22240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_166634 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/166634-M6_166634/M6_166634_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m6-166634",
@@ -22260,7 +22260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_166634 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/166634-M6_166634/M6_166634_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m6-166634",
@@ -22270,7 +22270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_166634 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/166634-M6_166634/M6_166634_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m6-166634",
@@ -22300,7 +22300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_166634 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233902-M6_233902/M6_233902_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m6-233902",
@@ -22310,7 +22310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_233902 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233902-M6_233902/M6_233902_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m6-233902",
@@ -22340,7 +22340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_233902 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233902-M6_233902/M6_233902_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m6-233902",
@@ -22360,7 +22360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_233902 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233902-M6_233902/M6_233902_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m6-233902",
@@ -22370,7 +22370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_233902 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233902-M6_233902/M6_233902_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m6-233902",
@@ -22400,7 +22400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_233902 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237437-M6_237437/M6_237437_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m6-237437",
@@ -22410,7 +22410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237437 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237437-M6_237437/M6_237437_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m6-237437",
@@ -22440,7 +22440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237437 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237437-M6_237437/M6_237437_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m6-237437",
@@ -22460,7 +22460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237437 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237437-M6_237437/M6_237437_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m6-237437",
@@ -22470,7 +22470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237437 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237437-M6_237437/M6_237437_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m6-237437",
@@ -22500,7 +22500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237437 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237641-M6_237641/M6_237641_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m6-237641",
@@ -22510,7 +22510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237641 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237641-M6_237641/M6_237641_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m6-237641",
@@ -22540,7 +22540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237641 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237641-M6_237641/M6_237641_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m6-237641",
@@ -22560,7 +22560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237641 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237641-M6_237641/M6_237641_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m6-237641",
@@ -22570,7 +22570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237641 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/237641-M6_237641/M6_237641_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m6-237641",
@@ -22600,7 +22600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_237641 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/240899-M6_240899/M6_240899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m6-240899",
@@ -22610,7 +22610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_240899 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/240899-M6_240899/M6_240899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m6-240899",
@@ -22640,7 +22640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_240899 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/240899-M6_240899/M6_240899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m6-240899",
@@ -22660,7 +22660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_240899 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/240899-M6_240899/M6_240899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m6-240899",
@@ -22670,7 +22670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_240899 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/240899-M6_240899/M6_240899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m6-240899",
@@ -22700,7 +22700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M6_240899 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/113852-M7_113852/M7_113852_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-113852",
@@ -22710,7 +22710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_113852 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/113852-M7_113852/M7_113852_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-113852",
@@ -22740,7 +22740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_113852 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/113852-M7_113852/M7_113852_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-113852",
@@ -22760,7 +22760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_113852 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/113852-M7_113852/M7_113852_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-113852",
@@ -22770,7 +22770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_113852 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/113852-M7_113852/M7_113852_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-113852",
@@ -22800,7 +22800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_113852 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-120372",
@@ -22810,7 +22810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120372 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-120372",
@@ -22840,7 +22840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120372 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-120372",
@@ -22860,7 +22860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120372 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-120372",
@@ -22870,7 +22870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120372 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-120372",
@@ -22900,7 +22900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120372 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-120488",
@@ -22910,7 +22910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120488 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-120488",
@@ -22940,7 +22940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120488 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-120488",
@@ -22960,7 +22960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120488 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-120488",
@@ -22970,7 +22970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120488 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-120488",
@@ -23000,7 +23000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120488 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120758-M7_120758/M7_120758_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-120758",
@@ -23010,7 +23010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120758 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120758-M7_120758/M7_120758_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-120758",
@@ -23040,7 +23040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120758 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120758-M7_120758/M7_120758_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-120758",
@@ -23060,7 +23060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120758 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120758-M7_120758/M7_120758_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-120758",
@@ -23070,7 +23070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120758 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120758-M7_120758/M7_120758_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-120758",
@@ -23100,7 +23100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_120758 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/121482-M7_121482/M7_121482_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-121482",
@@ -23110,7 +23110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_121482 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/121482-M7_121482/M7_121482_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-121482",
@@ -23140,7 +23140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_121482 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/121482-M7_121482/M7_121482_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-121482",
@@ -23160,7 +23160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_121482 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/121482-M7_121482/M7_121482_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-121482",
@@ -23170,7 +23170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_121482 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/121482-M7_121482/M7_121482_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-121482",
@@ -23200,7 +23200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_121482 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122025-M7_122025/M7_122025_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-122025",
@@ -23210,7 +23210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122025 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122025-M7_122025/M7_122025_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-122025",
@@ -23240,7 +23240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122025 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122025-M7_122025/M7_122025_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-122025",
@@ -23260,7 +23260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122025 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122025-M7_122025/M7_122025_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-122025",
@@ -23270,7 +23270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122025 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122025-M7_122025/M7_122025_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-122025",
@@ -23300,7 +23300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122025 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122242-M7_122242/M7_122242_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-122242",
@@ -23310,7 +23310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122242 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122242-M7_122242/M7_122242_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-122242",
@@ -23340,7 +23340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122242 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122242-M7_122242/M7_122242_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-122242",
@@ -23360,7 +23360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122242 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122242-M7_122242/M7_122242_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-122242",
@@ -23370,7 +23370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122242 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/122242-M7_122242/M7_122242_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-122242",
@@ -23400,7 +23400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_122242 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-124875",
@@ -23410,7 +23410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_124875 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-124875",
@@ -23440,7 +23440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_124875 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-124875",
@@ -23460,7 +23460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_124875 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-124875",
@@ -23470,7 +23470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_124875 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-124875",
@@ -23500,7 +23500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_124875 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/143127-M7_143127/M7_143127_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-143127",
@@ -23510,7 +23510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_143127 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/143127-M7_143127/M7_143127_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-143127",
@@ -23540,7 +23540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_143127 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/143127-M7_143127/M7_143127_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-143127",
@@ -23560,7 +23560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_143127 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/143127-M7_143127/M7_143127_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-143127",
@@ -23570,7 +23570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_143127 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/143127-M7_143127/M7_143127_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-143127",
@@ -23600,7 +23600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_143127 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/146213-M7_146213/M7_146213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-146213",
@@ -23610,7 +23610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_146213 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/146213-M7_146213/M7_146213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-146213",
@@ -23640,7 +23640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_146213 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/146213-M7_146213/M7_146213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-146213",
@@ -23660,7 +23660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_146213 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/146213-M7_146213/M7_146213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-146213",
@@ -23670,7 +23670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_146213 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/146213-M7_146213/M7_146213_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-146213",
@@ -23700,7 +23700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_146213 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147270-M7_147270/M7_147270_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147270-M7_147270/M7_147270_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-147270",
@@ -23710,7 +23710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147270 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147270-M7_147270/M7_147270_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147270-M7_147270/M7_147270_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-147270",
@@ -23740,7 +23740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147270 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147270-M7_147270/M7_147270_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147270-M7_147270/M7_147270_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-147270",
@@ -23760,7 +23760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147270 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147270-M7_147270/M7_147270_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147270-M7_147270/M7_147270_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-147270",
@@ -23770,7 +23770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147270 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147270-M7_147270/M7_147270_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147270-M7_147270/M7_147270_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-147270",
@@ -23800,7 +23800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147270 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-147849",
@@ -23810,7 +23810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147849 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-147849",
@@ -23840,7 +23840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147849 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-147849",
@@ -23860,7 +23860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147849 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-147849",
@@ -23870,7 +23870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147849 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-147849",
@@ -23900,7 +23900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_147849 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/152125-M7_152125/M7_152125_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/152125-M7_152125/M7_152125_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-152125",
@@ -23910,7 +23910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_152125 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/152125-M7_152125/M7_152125_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/152125-M7_152125/M7_152125_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-152125",
@@ -23940,7 +23940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_152125 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/152125-M7_152125/M7_152125_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/152125-M7_152125/M7_152125_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-152125",
@@ -23960,7 +23960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_152125 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/152125-M7_152125/M7_152125_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/152125-M7_152125/M7_152125_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-152125",
@@ -23970,7 +23970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_152125 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/152125-M7_152125/M7_152125_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/152125-M7_152125/M7_152125_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-152125",
@@ -24000,7 +24000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_152125 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162587-M7_162587/M7_162587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162587-M7_162587/M7_162587_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-162587",
@@ -24010,7 +24010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_162587 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162587-M7_162587/M7_162587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162587-M7_162587/M7_162587_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-162587",
@@ -24040,7 +24040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_162587 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162587-M7_162587/M7_162587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162587-M7_162587/M7_162587_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-162587",
@@ -24060,7 +24060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_162587 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162587-M7_162587/M7_162587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162587-M7_162587/M7_162587_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-162587",
@@ -24070,7 +24070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_162587 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162587-M7_162587/M7_162587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162587-M7_162587/M7_162587_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-162587",
@@ -24100,7 +24100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M7_162587 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/145276-M8_145276/M8_145276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/145276-M8_145276/M8_145276_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-145276",
@@ -24110,7 +24110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_145276 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/145276-M8_145276/M8_145276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/145276-M8_145276/M8_145276_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-145276",
@@ -24140,7 +24140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_145276 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/145276-M8_145276/M8_145276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/145276-M8_145276/M8_145276_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-145276",
@@ -24160,7 +24160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_145276 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/145276-M8_145276/M8_145276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/145276-M8_145276/M8_145276_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-145276",
@@ -24170,7 +24170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_145276 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/145276-M8_145276/M8_145276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/145276-M8_145276/M8_145276_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-145276",
@@ -24200,7 +24200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_145276 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-147539",
@@ -24210,7 +24210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_147539 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-147539",
@@ -24240,7 +24240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_147539 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-147539",
@@ -24260,7 +24260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_147539 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-147539",
@@ -24270,7 +24270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_147539 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-147539",
@@ -24300,7 +24300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_147539 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/148698-M8_148698/M8_148698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/148698-M8_148698/M8_148698_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-148698",
@@ -24310,7 +24310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_148698 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/148698-M8_148698/M8_148698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/148698-M8_148698/M8_148698_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-148698",
@@ -24340,7 +24340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_148698 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/148698-M8_148698/M8_148698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/148698-M8_148698/M8_148698_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-148698",
@@ -24360,7 +24360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_148698 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/148698-M8_148698/M8_148698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/148698-M8_148698/M8_148698_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-148698",
@@ -24370,7 +24370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_148698 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/148698-M8_148698/M8_148698_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/148698-M8_148698/M8_148698_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-148698",
@@ -24400,7 +24400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_148698 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-150848",
@@ -24410,7 +24410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_150848 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-150848",
@@ -24440,7 +24440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_150848 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-150848",
@@ -24460,7 +24460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_150848 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-150848",
@@ -24470,7 +24470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_150848 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-150848",
@@ -24500,7 +24500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_150848 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/156118-M8_156118/M8_156118_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/156118-M8_156118/M8_156118_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-156118",
@@ -24510,7 +24510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_156118 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/156118-M8_156118/M8_156118_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/156118-M8_156118/M8_156118_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-156118",
@@ -24540,7 +24540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_156118 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/156118-M8_156118/M8_156118_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/156118-M8_156118/M8_156118_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-156118",
@@ -24560,7 +24560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_156118 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/156118-M8_156118/M8_156118_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/156118-M8_156118/M8_156118_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-156118",
@@ -24570,7 +24570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_156118 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/156118-M8_156118/M8_156118_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/156118-M8_156118/M8_156118_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-156118",
@@ -24600,7 +24600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_156118 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/160400-M8_160400/M8_160400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/160400-M8_160400/M8_160400_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-160400",
@@ -24610,7 +24610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_160400 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/160400-M8_160400/M8_160400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/160400-M8_160400/M8_160400_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-160400",
@@ -24640,7 +24640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_160400 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/160400-M8_160400/M8_160400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/160400-M8_160400/M8_160400_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-160400",
@@ -24660,7 +24660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_160400 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/160400-M8_160400/M8_160400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/160400-M8_160400/M8_160400_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-160400",
@@ -24670,7 +24670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_160400 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/160400-M8_160400/M8_160400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/160400-M8_160400/M8_160400_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-160400",
@@ -24700,7 +24700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_160400 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161113-M8_161113/M8_161113_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161113-M8_161113/M8_161113_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-161113",
@@ -24710,7 +24710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161113 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161113-M8_161113/M8_161113_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161113-M8_161113/M8_161113_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-161113",
@@ -24740,7 +24740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161113 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161113-M8_161113/M8_161113_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161113-M8_161113/M8_161113_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-161113",
@@ -24760,7 +24760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161113 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161113-M8_161113/M8_161113_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161113-M8_161113/M8_161113_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-161113",
@@ -24770,7 +24770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161113 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161113-M8_161113/M8_161113_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161113-M8_161113/M8_161113_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-161113",
@@ -24800,7 +24800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161113 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161346-M8_161346/M8_161346_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161346-M8_161346/M8_161346_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-161346",
@@ -24810,7 +24810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161346 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161346-M8_161346/M8_161346_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161346-M8_161346/M8_161346_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-161346",
@@ -24840,7 +24840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161346 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161346-M8_161346/M8_161346_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161346-M8_161346/M8_161346_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-161346",
@@ -24860,7 +24860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161346 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161346-M8_161346/M8_161346_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161346-M8_161346/M8_161346_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-161346",
@@ -24870,7 +24870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161346 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/161346-M8_161346/M8_161346_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/161346-M8_161346/M8_161346_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-161346",
@@ -24900,7 +24900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_161346 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162149-M8_162149/M8_162149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162149-M8_162149/M8_162149_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-162149",
@@ -24910,7 +24910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_162149 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162149-M8_162149/M8_162149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162149-M8_162149/M8_162149_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-162149",
@@ -24940,7 +24940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_162149 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162149-M8_162149/M8_162149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162149-M8_162149/M8_162149_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-162149",
@@ -24960,7 +24960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_162149 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162149-M8_162149/M8_162149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162149-M8_162149/M8_162149_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-162149",
@@ -24970,7 +24970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_162149 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/162149-M8_162149/M8_162149_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/162149-M8_162149/M8_162149_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-162149",
@@ -25000,7 +25000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_162149 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/163989-M8_163989/M8_163989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/163989-M8_163989/M8_163989_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-163989",
@@ -25010,7 +25010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_163989 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/163989-M8_163989/M8_163989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/163989-M8_163989/M8_163989_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-163989",
@@ -25040,7 +25040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_163989 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/163989-M8_163989/M8_163989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/163989-M8_163989/M8_163989_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-163989",
@@ -25060,7 +25060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_163989 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/163989-M8_163989/M8_163989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/163989-M8_163989/M8_163989_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-163989",
@@ -25070,7 +25070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_163989 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/163989-M8_163989/M8_163989_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/163989-M8_163989/M8_163989_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-163989",
@@ -25100,7 +25100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M8_163989 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212391-M9_212391/M9_212391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212391-M9_212391/M9_212391_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-212391",
@@ -25110,7 +25110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_212391 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212391-M9_212391/M9_212391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212391-M9_212391/M9_212391_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-212391",
@@ -25140,7 +25140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_212391 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212391-M9_212391/M9_212391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212391-M9_212391/M9_212391_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-212391",
@@ -25160,7 +25160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_212391 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212391-M9_212391/M9_212391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212391-M9_212391/M9_212391_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-212391",
@@ -25170,7 +25170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_212391 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/212391-M9_212391/M9_212391_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/212391-M9_212391/M9_212391_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-212391",
@@ -25200,7 +25200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_212391 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213587-M9_213587/M9_213587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213587-M9_213587/M9_213587_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-213587",
@@ -25210,7 +25210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_213587 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213587-M9_213587/M9_213587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213587-M9_213587/M9_213587_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-213587",
@@ -25240,7 +25240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_213587 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213587-M9_213587/M9_213587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213587-M9_213587/M9_213587_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-213587",
@@ -25260,7 +25260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_213587 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213587-M9_213587/M9_213587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213587-M9_213587/M9_213587_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-213587",
@@ -25270,7 +25270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_213587 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/213587-M9_213587/M9_213587_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/213587-M9_213587/M9_213587_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-213587",
@@ -25300,7 +25300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_213587 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214899-M9_214899/M9_214899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214899-M9_214899/M9_214899_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-214899",
@@ -25310,7 +25310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_214899 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214899-M9_214899/M9_214899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214899-M9_214899/M9_214899_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-214899",
@@ -25340,7 +25340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_214899 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214899-M9_214899/M9_214899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214899-M9_214899/M9_214899_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-214899",
@@ -25360,7 +25360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_214899 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214899-M9_214899/M9_214899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214899-M9_214899/M9_214899_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-214899",
@@ -25370,7 +25370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_214899 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/214899-M9_214899/M9_214899_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/214899-M9_214899/M9_214899_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-214899",
@@ -25400,7 +25400,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_214899 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218701-M9_218701/M9_218701_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218701-M9_218701/M9_218701_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-218701",
@@ -25410,7 +25410,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_218701 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218701-M9_218701/M9_218701_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218701-M9_218701/M9_218701_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-218701",
@@ -25440,7 +25440,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_218701 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218701-M9_218701/M9_218701_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218701-M9_218701/M9_218701_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-218701",
@@ -25460,7 +25460,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_218701 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218701-M9_218701/M9_218701_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218701-M9_218701/M9_218701_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-218701",
@@ -25470,7 +25470,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_218701 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/218701-M9_218701/M9_218701_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/218701-M9_218701/M9_218701_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-218701",
@@ -25500,7 +25500,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_218701 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225431-M9_225431/M9_225431_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225431-M9_225431/M9_225431_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-225431",
@@ -25510,7 +25510,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225431 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225431-M9_225431/M9_225431_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225431-M9_225431/M9_225431_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-225431",
@@ -25540,7 +25540,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225431 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225431-M9_225431/M9_225431_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225431-M9_225431/M9_225431_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-225431",
@@ -25560,7 +25560,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225431 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225431-M9_225431/M9_225431_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225431-M9_225431/M9_225431_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-225431",
@@ -25570,7 +25570,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225431 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225431-M9_225431/M9_225431_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225431-M9_225431/M9_225431_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-225431",
@@ -25600,7 +25600,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225431 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225678-M9_225678/M9_225678_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225678-M9_225678/M9_225678_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-225678",
@@ -25610,7 +25610,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225678 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225678-M9_225678/M9_225678_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225678-M9_225678/M9_225678_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-225678",
@@ -25640,7 +25640,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225678 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225678-M9_225678/M9_225678_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225678-M9_225678/M9_225678_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-225678",
@@ -25660,7 +25660,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225678 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225678-M9_225678/M9_225678_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225678-M9_225678/M9_225678_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-225678",
@@ -25670,7 +25670,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225678 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/225678-M9_225678/M9_225678_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/225678-M9_225678/M9_225678_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-225678",
@@ -25700,7 +25700,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_225678 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226316-M9_226316/M9_226316_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226316-M9_226316/M9_226316_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-226316",
@@ -25710,7 +25710,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_226316 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226316-M9_226316/M9_226316_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226316-M9_226316/M9_226316_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-226316",
@@ -25740,7 +25740,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_226316 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226316-M9_226316/M9_226316_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226316-M9_226316/M9_226316_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-226316",
@@ -25760,7 +25760,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_226316 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226316-M9_226316/M9_226316_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226316-M9_226316/M9_226316_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-226316",
@@ -25770,7 +25770,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_226316 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/226316-M9_226316/M9_226316_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/226316-M9_226316/M9_226316_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-226316",
@@ -25800,7 +25800,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_226316 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227630-M9_227630/M9_227630_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227630-M9_227630/M9_227630_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-227630",
@@ -25810,7 +25810,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_227630 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227630-M9_227630/M9_227630_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227630-M9_227630/M9_227630_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-227630",
@@ -25840,7 +25840,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_227630 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227630-M9_227630/M9_227630_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227630-M9_227630/M9_227630_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-227630",
@@ -25860,7 +25860,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_227630 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227630-M9_227630/M9_227630_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227630-M9_227630/M9_227630_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-227630",
@@ -25870,7 +25870,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_227630 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227630-M9_227630/M9_227630_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227630-M9_227630/M9_227630_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-227630",
@@ -25900,7 +25900,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_227630 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-229883",
@@ -25910,7 +25910,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_229883 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-229883",
@@ -25940,7 +25940,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_229883 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-229883",
@@ -25960,7 +25960,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_229883 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-229883",
@@ -25970,7 +25970,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_229883 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-229883",
@@ -26000,7 +26000,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_229883 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231276-M9_231276/M9_231276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231276-M9_231276/M9_231276_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-231276",
@@ -26010,7 +26010,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_231276 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231276-M9_231276/M9_231276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231276-M9_231276/M9_231276_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-231276",
@@ -26040,7 +26040,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_231276 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231276-M9_231276/M9_231276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231276-M9_231276/M9_231276_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-231276",
@@ -26060,7 +26060,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_231276 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231276-M9_231276/M9_231276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231276-M9_231276/M9_231276_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-231276",
@@ -26070,7 +26070,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_231276 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/231276-M9_231276/M9_231276_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/231276-M9_231276/M9_231276_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-231276",
@@ -26100,7 +26100,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_231276 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232005-M9_232005/M9_232005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232005-M9_232005/M9_232005_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-232005",
@@ -26110,7 +26110,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232005 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232005-M9_232005/M9_232005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232005-M9_232005/M9_232005_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-232005",
@@ -26140,7 +26140,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232005 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232005-M9_232005/M9_232005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232005-M9_232005/M9_232005_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-232005",
@@ -26160,7 +26160,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232005 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232005-M9_232005/M9_232005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232005-M9_232005/M9_232005_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-232005",
@@ -26170,7 +26170,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232005 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232005-M9_232005/M9_232005_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232005-M9_232005/M9_232005_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-232005",
@@ -26200,7 +26200,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232005 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232890-M9_232890/M9_232890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232890-M9_232890/M9_232890_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-232890",
@@ -26210,7 +26210,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232890 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232890-M9_232890/M9_232890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232890-M9_232890/M9_232890_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-232890",
@@ -26240,7 +26240,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232890 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232890-M9_232890/M9_232890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232890-M9_232890/M9_232890_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-232890",
@@ -26260,7 +26260,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232890 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232890-M9_232890/M9_232890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232890-M9_232890/M9_232890_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-232890",
@@ -26270,7 +26270,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232890 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/232890-M9_232890/M9_232890_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/232890-M9_232890/M9_232890_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-232890",
@@ -26300,7 +26300,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_232890 · revised settings. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233169-M9_233169/M9_233169_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233169-M9_233169/M9_233169_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-233169",
@@ -26310,7 +26310,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_233169 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233169-M9_233169/M9_233169_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233169-M9_233169/M9_233169_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-233169",
@@ -26340,7 +26340,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_233169 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233169-M9_233169/M9_233169_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233169-M9_233169/M9_233169_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-233169",
@@ -26360,7 +26360,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_233169 · revised settings. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233169-M9_233169/M9_233169_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233169-M9_233169/M9_233169_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-233169",
@@ -26370,7 +26370,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "caption": "M9_233169 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/233169-M9_233169/M9_233169_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/233169-M9_233169/M9_233169_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-233169",
@@ -26404,7 +26404,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
 
 ## Results
 
-Matched-row median shifts are age +1.229 Gyr, \(\log Z\) -0.167 dex, \(\alpha/\mathrm{Fe}\) -0.056 dex and \(\tau\) +0.169. The saved median delta \(\ln Z\) is +254.28. [Baseline CSV](results/dr2-quiescent-summary.csv) · [Revised CSV](results/dr2-quiescent-new-defaults-summary.csv).
+Matched-row median shifts are age +1.229 Gyr, \(\log Z\) -0.167 dex, \(\alpha/\mathrm{Fe}\) -0.056 dex and \(\tau\) +0.169. The saved median delta \(\ln Z\) is +254.28. [Baseline CSV](archive/results/dr2-quiescent-no-polynomial/dr2-quiescent-summary.csv) · [Revised CSV](results/dr2-quiescent-new-defaults-summary.csv).
 
 [Parameter comparison](wiki/analyses/dr2-new-defaults/old-vs-new-parameters.png)
 
@@ -26416,12 +26416,14 @@ Seed-repeat parameter shifts use dimensionless posterior half-width units.
 
 These fits use \(\tau\) <= 2, not the later \(\tau\) <= 0.2 sensitivity setting.
 
+Evidence paths were rewritten on 2026-09-15: `results/rtx-5060-dr2-quiescent-full-spectrum` and `results/dr2-quiescent-summary.csv` moved to `archive/results/dr2-quiescent-no-polynomial/` (no calibration polynomial; superseded by `results/dr2-quiescent-new-defaults`).
+
 ## References
 
 - [Executed comparison](results/dr2-quiescent-new-defaults/ceridwen_new_defaults_comparison.ipynb)
 - [Revised run manifest](results/dr2-quiescent-new-defaults/shard_0_manifest.json)
 - [Dust-slope quantiles](results/dr2-quiescent-new-defaults/dust_index_posteriors.csv)
-- [Baseline executed notebook](results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb)
+- [Baseline executed notebook](archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb)
 - [Saved revised model](results/dr2-quiescent-new-defaults/229883-M9_229883/ceridwen_result.h5)
 - [dr2-new-defaults · source note](wiki/notes/dr2-new-defaults.md)
 - [per-galaxy-fit-diagnostics · source note](wiki/notes/per-galaxy-fit-diagnostics.md)

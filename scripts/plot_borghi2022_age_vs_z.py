@@ -1,6 +1,6 @@
 """Recreate Borghi+2022a Fig. 9 (median age vs redshift) with our sample.
 
-Reads ``results/dr2-quiescent-summary.csv`` and the tabulated Borghi+2022
+Reads ``results/dr2-quiescent-new-defaults-summary.csv`` and the tabulated Borghi+2022
 match catalogue already in the repo. Left: individual mass-weighted ages
 (``age_q50`` with 16-84 bars), the flat-737-LCDM cosmic age (grey = older
 than the Universe), and dotted pure-passive tracks of constant formation
@@ -26,7 +26,7 @@ from astropy.cosmology import FlatLambdaCDM
 from matplotlib import rcParams
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
+SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-new-defaults-summary.csv"
 BORGHI_PATH = PROJECT_ROOT / (
     "data/processed/borghi2022_legac_dr2/"
     "borghi2022_legac_dr2_spectrum_matches copy.tsv"

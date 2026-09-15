@@ -10,7 +10,7 @@ figures: [old-vs-new-parameters.png, dust-index-posteriors.png, headline-age-red
 Sample
 : 187 LEGA-C DR2 quiescent galaxies, the same manifest and seeds as the first run
 Old run
-: `results/rtx-5060-dr2-quiescent-full-spectrum` · `results/dr2-quiescent-summary.csv`
+: `archive/results/dr2-quiescent-no-polynomial` · `archive/results/dr2-quiescent-no-polynomial/dr2-quiescent-summary.csv`
 New run
 : `results/dr2-quiescent-new-defaults` · `results/dr2-quiescent-new-defaults-summary.csv`
 Changed

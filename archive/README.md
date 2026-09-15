@@ -34,9 +34,9 @@ Everything here was moved with `git mv` on 2026-09-10, with contents untouched. 
 - `results/rtx-5090-integrated-fit/` – Single integrated fit.
 - `results/calibration-polynomial-2026-09-02/` – Local calibration snapshots superseded by `results/calibration-polynomial-dr2`.
 - `results/refit-static-smoothing/` – Static-smoother refits.
+- `results/dr2-quiescent-no-polynomial/` – 187-galaxy DR2 run without a calibration polynomial, moved 2026-09-15 with its summary CSV; superseded by `results/dr2-quiescent-new-defaults` (see its README).
 
 ## Still in results/ but superseded
 
-- `results/rtx-5060-dr2-quiescent-full-spectrum` – Pinned by `tests/test_chronometer.py`.
 - `results/rtx-4070-super-four-galaxy-fits` – Pinned by `tests/test_plot_ceridwen_checkpoint_evolution.py`.
 - `results/rtx-5060-production-speedup` – `RESULT_ROOT` of `scripts/validate_ceridwen_speedups.py`.

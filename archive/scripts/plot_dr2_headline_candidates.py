@@ -1,6 +1,6 @@
 """Candidate headline layouts for the DR2 quiescent sample (CPU only).
 
-Reads ``results/dr2-quiescent-summary.csv`` plus the published Borghi+2022
+Reads ``results/dr2-quiescent-new-defaults-summary.csv`` plus the published Borghi+2022
 match table already in the repo, and writes three candidate age-redshift
 headline figures (PDF + PNG) into the bridge reports folder for style
 selection. The winning style is then applied to the full figure set.
@@ -20,8 +20,8 @@ from matplotlib import rcParams
 
 matplotlib.use("Agg")
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-new-defaults-summary.csv"
 BORGHI_PATH = PROJECT_ROOT / (
     "data/processed/borghi2022_legac_dr2/"
     "borghi2022_legac_dr2_spectrum_matches copy.tsv"

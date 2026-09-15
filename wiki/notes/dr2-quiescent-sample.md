@@ -9,7 +9,7 @@ old: _old/analyses/dr2-quiescent-sample.html
 figures: [borghi2022-age-vs-z.png, distributions-1d.png, dt-vs-alpha.png, dt-vs-formation-epoch.png, dt-vs-mass.png, fit-quality.png, headline-age-redshift.png]
 ---
 
-Paper-quality figure set for the 187 LEGA-C DR2 quiescent full-spectrum Ceridwen fits: the age–redshift headline against Borghi+22, formation timescales, parameter distributions, and fit quality. Every plot renders from one tidy table, [results/dr2-quiescent-summary.csv](/wiki/f/results/dr2-quiescent-summary.csv).
+Paper-quality figure set for the 187 LEGA-C DR2 quiescent full-spectrum Ceridwen fits: the age–redshift headline against Borghi+22, formation timescales, parameter distributions, and fit quality. Every plot renders from one tidy table, [results/dr2-quiescent-new-defaults-summary.csv](/wiki/f/results/dr2-quiescent-summary.csv).
 
 <figure>
 <img src="figures/dr2-quiescent-sample/headline-age-redshift.png" alt="Mass-weighted age against redshift for 187 galaxies with binned medians, plus a Ceridwen-minus-Borghi residual strip for the 68-galaxy overlap">
@@ -30,7 +30,7 @@ Paper-quality figure set for the 187 LEGA-C DR2 quiescent full-spectrum Ceridwen
 <details>
 <summary>Formation timescale</summary>
 
-\(t_X\) is the lookback younger than which X% of the formed mass was made; \(\Delta t=t_{80}-t_{20}\) is the 20th-to-80th mass-assembly interval. Median \(\Delta t\) is 2.46 Gyr, flat against mass, \([\alpha/\mathrm{Fe}]\) and observed redshift; 65% of values sit at 2.2–2.7 Gyr because the 7-bin SFH (2-Gyr bins at 1–5 Gyr) quantises \(\Delta t\), so treat values as resolution-limited.
+\(t_X\) is the lookback younger than which X% of the formed mass was made; \(\Delta t=t_{80}-t_{20}\) is the 20th-to-80th mass-assembly interval. Median \(\Delta t\): 2.55 Gyr; Spearman coefficients with \(t_{50}\), \(\log M_\star\) and \([\alpha/\mathrm{Fe}]\): −0.45, −0.21 and 0.04; 67% lie at 2.3–3.3 Gyr; the 7-bin SFH (2-Gyr bins at 1–5 Gyr) quantises \(\Delta t\), limiting its resolution.
 
 </details>
 
@@ -41,12 +41,12 @@ Paper-quality figure set for the 187 LEGA-C DR2 quiescent full-spectrum Ceridwen
 
 <figure>
 <img src="figures/dr2-quiescent-sample/dt-vs-mass.png" alt="Formation timescale against stellar mass">
-<figcaption>\(\Delta t\) against stellar mass, no trend (Spearman 0.00).</figcaption>
+<figcaption>\(\Delta t\) against stellar mass, Spearman −0.21.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/dr2-quiescent-sample/dt-vs-alpha.png" alt="Formation timescale against alpha enhancement">
-<figcaption>\(\Delta t\) against \([\alpha/\mathrm{Fe}]\), no trend (Spearman 0.00).</figcaption>
+<figcaption>\(\Delta t\) against \([\alpha/\mathrm{Fe}]\), Spearman 0.04.</figcaption>
 </figure>
 
 <details>
@@ -58,7 +58,7 @@ Paper-quality figure set for the 187 LEGA-C DR2 quiescent full-spectrum Ceridwen
 
 <figure>
 <img src="figures/dr2-quiescent-sample/distributions-1d.png" alt="One-dimensional histograms of redshift, mass, age, metallicity, alpha, dust, t50 and delta-t">
-<figcaption>Sample medians: z 0.73, \(\log M_\star\) 11.11, age 3.02 Gyr, \(\log Z\) −1.76 (absolute), \([\alpha/\mathrm{Fe}]\) 0.05, \(\tau_{\mathrm{dust}}\) 0.27, \(t_{50}\) 3.02 Gyr, \(\Delta t\) 2.46 Gyr, N=187 in every panel.</figcaption>
+<figcaption>Sample medians: z 0.73, \(\log M_\star\) 11.34, age 4.81 Gyr, \([\mathrm{Fe}/\mathrm{H}]\) −0.18, \([\alpha/\mathrm{Fe}]\) −0.05, \(\tau_{\mathrm{dust}}\) 0.45, \(t_{50}\) 5.03 Gyr, \(\Delta t\) 2.55 Gyr; N=187 in every panel.</figcaption>
 </figure>
 
 <details>
@@ -73,7 +73,7 @@ Paper-quality figure set for the 187 LEGA-C DR2 quiescent full-spectrum Ceridwen
 <figcaption>All 187 diagnostics passed.</figcaption>
 <details>
 <summary>Details</summary>
-<p>Calls span 0.96–1.5M. Worst joint \(\chi^2\)/ν: 139662 (2.69), 253688 (2.55), 101089 (2.34), labelled by object id. No rerun folders exist (187 directories for 187 targets).</p>
+<p>Calls span 4.9–11.2M; worst joint \(\chi^2\)/ν: 139662 (2.56), 253688 (2.52), 101089 (2.19), labelled by object ID; 187 directories for 187 targets.</p>
 </details>
 </figure>
 
@@ -89,7 +89,7 @@ Paper-quality figure set for the 187 LEGA-C DR2 quiescent full-spectrum Ceridwen
 <figcaption>Median mass-weighted age (<code>age_q50</code>) per \(\Delta z\)=0.075 bin over 0.6&lt;z&lt;0.9 split at \(\sigma_\star\)=215 \(\mathrm{km\,s^{-1}}\), as in Borghi+2022 (their 140 bona fide passive galaxies, NUVrJ + emission-line/visual selected, with SSP-equivalent Lick ages; ours 187 clean-photometry quiescent with mass-weighted SFH ages), plotted at mean bin redshift with \(\mathrm{NMAD}/\sqrt{N}\) errors and x-bars spanning the bin edges, the 737 flat-\(\Lambda\mathrm{CDM}\) cosmic age (grey is unphysical), and labelled pure-passive tracks for \(z_{\mathrm{form}}\)=1, 1.5, 2.5, 5; open diamonds re-bin the tabulated Borghi+22 catalogue ages (N=140) in the same edges using LEGA-C DR2 \(\sigma_\star\) (69 low / 71 high), not digitized from their Figure 9.</figcaption>
 <details>
 <summary>Details</summary>
-<p>Ceridwen medians average +0.26 Gyr above Borghi and stay near 3.0 Gyr. Borghi medians decline with redshift: high-\(\sigma\) 3.69→2.77, low-\(\sigma\) 2.99→2.15 Gyr. The highest-redshift high-\(\sigma\) bin differs by 1.3 Gyr.</p>
+<p>Ceridwen medians by bin span 4.5–5.2 Gyr, averaging +1.95 Gyr above Borghi; Borghi medians decline with redshift: high-\(\sigma\) 3.69→2.77, low-\(\sigma\) 2.99→2.15 Gyr; offsets span 0.8–2.7 Gyr and peak in the low-\(\sigma\) 0.75–0.9 bins.</p>
 </details>
 </figure>
 
@@ -103,7 +103,7 @@ Paper-quality figure set for the 187 LEGA-C DR2 quiescent full-spectrum Ceridwen
 <details>
 <summary>Evidence</summary>
 
-- Data: `results/dr2-quiescent-summary.csv` (187 rows), built by `scripts/build_dr2_quiescent_summary.py` from `results/rtx-5060-dr2-quiescent-full-spectrum/*/ceridwen_{result,derived_outputs}.h5`.
+- Data: `results/dr2-quiescent-new-defaults-summary.csv` (187 rows), built by `scripts/build_dr2_quiescent_summary.py` from `results/dr2-quiescent-new-defaults/*/ceridwen_{result,derived_outputs}.h5`.
 - Figures: `wiki/analyses/dr2-quiescent-sample/` (PNG + PDF). Superseded candidates A/C stay in the bridge reports folder; replaced chronometer figures are kept under `wiki/analyses/_old/`.
 - Tests: `tests/test_formation_times.py` (burst/uniform limiting cases).
 

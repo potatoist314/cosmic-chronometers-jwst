@@ -19,4 +19,4 @@
 
 Example:
 
-- `rtx-5060-dr2-quiescent-full-spectrum`
+- `dr2-quiescent-new-defaults`

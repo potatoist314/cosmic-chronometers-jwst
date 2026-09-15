@@ -18,7 +18,7 @@ from src.chronometer import (
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOK_PATH = (
     PROJECT_ROOT
-    / "results/rtx-5060-dr2-quiescent-full-spectrum"
+    / "archive/results/dr2-quiescent-no-polynomial"
     / "ceridwen_cosmic_chronometer.ipynb"
 )
 SUMMARY_PATH = NOTEBOOK_PATH.with_name("ceridwen_cosmic_chronometer_summary.h5")

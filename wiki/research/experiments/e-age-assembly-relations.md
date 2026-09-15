@@ -44,9 +44,11 @@ Both saved runs have weak full-sample age–redshift trends. The existing figure
 
 Ceridwen mass-weighted ages and Borghi SSP-equivalent ages are different quantities. Assembly-history resolution follows the SFH time bins.
 
+Evidence paths were rewritten on 2026-09-15: `results/rtx-5060-dr2-quiescent-full-spectrum` and `results/dr2-quiescent-summary.csv` moved to `archive/results/dr2-quiescent-no-polynomial/` (no calibration polynomial; superseded by `results/dr2-quiescent-new-defaults`).
+
 ## References
 
-- [Baseline population notebook](results/rtx-5060-dr2-quiescent-full-spectrum/ceridwen_cosmic_chronometer.ipynb)
+- [Baseline population notebook](archive/results/dr2-quiescent-no-polynomial/ceridwen_cosmic_chronometer.ipynb)
 - [Revised population notebook](results/dr2-quiescent-new-defaults/ceridwen_new_defaults_comparison.ipynb)
 - [Oldest-fraction table](results/dr2-quiescent-new-defaults/age_redshift_oldest30.csv)
 - [dr2-quiescent-sample · source note](wiki/notes/dr2-quiescent-sample.md)

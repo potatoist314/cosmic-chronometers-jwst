@@ -115,4 +115,4 @@ figures: [literature-vs-ceridwen.png]
 | \(\sigma_\star\) 16/50/84 | 127 / 166 / 207 \(\mathrm{km\,s^{-1}}\) | median 204 \(\mathrm{km\,s^{-1}}\) |
 | Quiescent selection | UVJ ([Muzzin+2013](https://arxiv.org/abs/1303.4409)): 1208 galaxies | NUVrJ + emission-line veto: 187 galaxies (`scripts/run_ceridwen_vast_multi_gpu.py:79-137`) |
 
-Source: `results/dr2-quiescent-summary.csv`; figures in [DR2 quiescent sample](/wiki/n/dr2-quiescent-sample/). [Literature comparison](/wiki/roadmap/#literature-comparison).
+Source: `results/dr2-quiescent-new-defaults-summary.csv`; figures in [DR2 quiescent sample](/wiki/n/dr2-quiescent-sample/). [Literature comparison](/wiki/roadmap/#literature-comparison).

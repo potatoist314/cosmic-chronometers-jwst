@@ -11,7 +11,7 @@ figures: [M1_210210-photometric_chi2.png, M1_210210-sf_timescales.png, M1_210210
 ## Model settings
 
 Sample
-: 187 galaxies, DR2 quiescent full-spectrum fits, `results/rtx-5060-dr2-quiescent-full-spectrum/`. Every galaxy: [gallery](../per-galaxy-diagnostics-gallery/).
+: 187 galaxies, DR2 quiescent full-spectrum fits, `archive/results/dr2-quiescent-no-polynomial/`. Every galaxy: [gallery](../per-galaxy-diagnostics-gallery/).
 
 Stellar grid
 : C3K v2.3 high-res (c3k_hr, vt=10 \(\mathrm{km\,s^{-1}}\)), MIST v2.5 (aMIST, alpha-variable) isochrones, Kroupa (2001) IMF. Axes \([\alpha/\mathrm{Fe}]\) -0.2, 0, 0.2, 0.4, 0.6, \(\log_{10} Z\) 13 nodes, \(\log_{10}(\mathrm{age}/\mathrm{Gyr})\) 107 nodes.
@@ -101,8 +101,8 @@ The offset comes from a change of the Ceridwen forward model, not from device pr
 
 ```
 ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py run
-ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py check results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210
-ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py block results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210
+ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py check archive/results/dr2-quiescent-no-polynomial/210210-M1_210210
+ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py block archive/results/dr2-quiescent-no-polynomial/210210-M1_210210
 ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics.py gallery
 ceridwen/.venv/bin/python scripts/per_galaxy_diagnostics_vast.py run --target M1_210210 --target M2_139662 --spend-cap-usd 2
 ceridwen/.venv/bin/python -m pytest tests/test_per_galaxy_diagnostics.py -q

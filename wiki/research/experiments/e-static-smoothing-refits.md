@@ -346,18 +346,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M4_107370",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/ceridwen_result.h5"
       }
     ],
     "seed": 20260947,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_107370"
   },
   {
@@ -367,18 +367,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M3_109713",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/ceridwen_result.h5"
       }
     ],
     "seed": 20260911,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M3_109713"
   },
   {
@@ -388,18 +388,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M4_117400",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/ceridwen_result.h5"
       }
     ],
     "seed": 20260856,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M4_117400"
   },
   {
@@ -409,18 +409,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M7_120372",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/ceridwen_result.h5"
       }
     ],
     "seed": 20260939,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_120372"
   },
   {
@@ -430,18 +430,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M7_120488",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/ceridwen_result.h5"
       }
     ],
     "seed": 20260967,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_120488"
   },
   {
@@ -451,18 +451,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M7_124875",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/ceridwen_result.h5"
       }
     ],
     "seed": 20260876,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_124875"
   },
   {
@@ -472,18 +472,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M2_133501",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/ceridwen_result.h5"
       }
     ],
     "seed": 20260834,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_133501"
   },
   {
@@ -493,18 +493,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M8_147539",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/ceridwen_result.h5"
       }
     ],
     "seed": 20260884,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_147539"
   },
   {
@@ -514,18 +514,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M7_147849",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/ceridwen_result.h5"
       }
     ],
     "seed": 20260886,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M7_147849"
   },
   {
@@ -535,18 +535,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M8_150848",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/ceridwen_result.h5"
       }
     ],
     "seed": 20260844,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M8_150848"
   },
   {
@@ -556,18 +556,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M12_181421",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/ceridwen_result.h5"
       }
     ],
     "seed": 20260984,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M12_181421"
   },
   {
@@ -577,18 +577,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M1_206501",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/ceridwen_result.h5"
       }
     ],
     "seed": 20260883,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_206501"
   },
   {
@@ -598,18 +598,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M2_210940",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/ceridwen_result.h5"
       }
     ],
     "seed": 20260966,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_210940"
   },
   {
@@ -619,18 +619,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M5_211767",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/ceridwen_result.h5"
       }
     ],
     "seed": 20260895,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_211767"
   },
   {
@@ -640,18 +640,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M10_216730",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/ceridwen_result.h5"
       }
     ],
     "seed": 20260853,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_216730"
   },
   {
@@ -661,18 +661,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M10_227672",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/ceridwen_result.h5"
       }
     ],
     "seed": 20260934,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M10_227672"
   },
   {
@@ -682,18 +682,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M9_229883",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/ceridwen_result.h5"
       }
     ],
     "seed": 20260919,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M9_229883"
   },
   {
@@ -703,18 +703,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M5_238314",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/ceridwen_result.h5"
       }
     ],
     "seed": 20260865,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M5_238314"
   },
   {
@@ -724,18 +724,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M13_244680",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/ceridwen_result.h5"
       }
     ],
     "seed": 20261014,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_244680"
   },
   {
@@ -745,18 +745,18 @@ Per-target static-smoother refits.
     "artifacts": [
       {
         "label": "Executed fit · M13_255047",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/ceridwen_result.h5"
       }
     ],
     "seed": 20260993,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M13_255047"
   }
 ]
@@ -767,7 +767,7 @@ Per-target static-smoother refits.
 ```json
 [
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-216730",
@@ -777,7 +777,7 @@ Per-target static-smoother refits.
     "caption": "M10_216730 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-216730",
@@ -807,7 +807,7 @@ Per-target static-smoother refits.
     "caption": "M10_216730 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-216730",
@@ -827,7 +827,7 @@ Per-target static-smoother refits.
     "caption": "M10_216730 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-216730",
@@ -837,7 +837,7 @@ Per-target static-smoother refits.
     "caption": "M10_216730 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/216730-M10_216730/M10_216730_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-216730",
@@ -867,7 +867,7 @@ Per-target static-smoother refits.
     "caption": "M10_216730 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m10-227672",
@@ -877,7 +877,7 @@ Per-target static-smoother refits.
     "caption": "M10_227672 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m10-227672",
@@ -907,7 +907,7 @@ Per-target static-smoother refits.
     "caption": "M10_227672 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m10-227672",
@@ -927,7 +927,7 @@ Per-target static-smoother refits.
     "caption": "M10_227672 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m10-227672",
@@ -937,7 +937,7 @@ Per-target static-smoother refits.
     "caption": "M10_227672 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/227672-M10_227672/M10_227672_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m10-227672",
@@ -967,7 +967,7 @@ Per-target static-smoother refits.
     "caption": "M10_227672 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m12-181421",
@@ -977,7 +977,7 @@ Per-target static-smoother refits.
     "caption": "M12_181421 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m12-181421",
@@ -1007,7 +1007,7 @@ Per-target static-smoother refits.
     "caption": "M12_181421 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m12-181421",
@@ -1027,7 +1027,7 @@ Per-target static-smoother refits.
     "caption": "M12_181421 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m12-181421",
@@ -1037,7 +1037,7 @@ Per-target static-smoother refits.
     "caption": "M12_181421 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/181421-M12_181421/M12_181421_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m12-181421",
@@ -1067,7 +1067,7 @@ Per-target static-smoother refits.
     "caption": "M12_181421 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-244680",
@@ -1077,7 +1077,7 @@ Per-target static-smoother refits.
     "caption": "M13_244680 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-244680",
@@ -1107,7 +1107,7 @@ Per-target static-smoother refits.
     "caption": "M13_244680 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-244680",
@@ -1127,7 +1127,7 @@ Per-target static-smoother refits.
     "caption": "M13_244680 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-244680",
@@ -1137,7 +1137,7 @@ Per-target static-smoother refits.
     "caption": "M13_244680 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/244680-M13_244680/M13_244680_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-244680",
@@ -1167,7 +1167,7 @@ Per-target static-smoother refits.
     "caption": "M13_244680 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m13-255047",
@@ -1177,7 +1177,7 @@ Per-target static-smoother refits.
     "caption": "M13_255047 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m13-255047",
@@ -1207,7 +1207,7 @@ Per-target static-smoother refits.
     "caption": "M13_255047 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m13-255047",
@@ -1227,7 +1227,7 @@ Per-target static-smoother refits.
     "caption": "M13_255047 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m13-255047",
@@ -1237,7 +1237,7 @@ Per-target static-smoother refits.
     "caption": "M13_255047 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/255047-M13_255047/M13_255047_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m13-255047",
@@ -1267,7 +1267,7 @@ Per-target static-smoother refits.
     "caption": "M13_255047 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-206501",
@@ -1277,7 +1277,7 @@ Per-target static-smoother refits.
     "caption": "M1_206501 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-206501",
@@ -1307,7 +1307,7 @@ Per-target static-smoother refits.
     "caption": "M1_206501 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-206501",
@@ -1327,7 +1327,7 @@ Per-target static-smoother refits.
     "caption": "M1_206501 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-206501",
@@ -1337,7 +1337,7 @@ Per-target static-smoother refits.
     "caption": "M1_206501 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/206501-M1_206501/M1_206501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-206501",
@@ -1367,7 +1367,7 @@ Per-target static-smoother refits.
     "caption": "M1_206501 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-133501",
@@ -1377,7 +1377,7 @@ Per-target static-smoother refits.
     "caption": "M2_133501 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-133501",
@@ -1407,7 +1407,7 @@ Per-target static-smoother refits.
     "caption": "M2_133501 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-133501",
@@ -1427,7 +1427,7 @@ Per-target static-smoother refits.
     "caption": "M2_133501 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-133501",
@@ -1437,7 +1437,7 @@ Per-target static-smoother refits.
     "caption": "M2_133501 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/133501-M2_133501/M2_133501_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-133501",
@@ -1467,7 +1467,7 @@ Per-target static-smoother refits.
     "caption": "M2_133501 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-210940",
@@ -1477,7 +1477,7 @@ Per-target static-smoother refits.
     "caption": "M2_210940 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-210940",
@@ -1507,7 +1507,7 @@ Per-target static-smoother refits.
     "caption": "M2_210940 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-210940",
@@ -1527,7 +1527,7 @@ Per-target static-smoother refits.
     "caption": "M2_210940 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-210940",
@@ -1537,7 +1537,7 @@ Per-target static-smoother refits.
     "caption": "M2_210940 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210940-M2_210940/M2_210940_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-210940",
@@ -1567,7 +1567,7 @@ Per-target static-smoother refits.
     "caption": "M2_210940 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m3-109713",
@@ -1577,7 +1577,7 @@ Per-target static-smoother refits.
     "caption": "M3_109713 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m3-109713",
@@ -1607,7 +1607,7 @@ Per-target static-smoother refits.
     "caption": "M3_109713 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m3-109713",
@@ -1627,7 +1627,7 @@ Per-target static-smoother refits.
     "caption": "M3_109713 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m3-109713",
@@ -1637,7 +1637,7 @@ Per-target static-smoother refits.
     "caption": "M3_109713 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/109713-M3_109713/M3_109713_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m3-109713",
@@ -1667,7 +1667,7 @@ Per-target static-smoother refits.
     "caption": "M3_109713 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-107370",
@@ -1677,7 +1677,7 @@ Per-target static-smoother refits.
     "caption": "M4_107370 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-107370",
@@ -1707,7 +1707,7 @@ Per-target static-smoother refits.
     "caption": "M4_107370 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-107370",
@@ -1727,7 +1727,7 @@ Per-target static-smoother refits.
     "caption": "M4_107370 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-107370",
@@ -1737,7 +1737,7 @@ Per-target static-smoother refits.
     "caption": "M4_107370 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/107370-M4_107370/M4_107370_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-107370",
@@ -1767,7 +1767,7 @@ Per-target static-smoother refits.
     "caption": "M4_107370 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m4-117400",
@@ -1777,7 +1777,7 @@ Per-target static-smoother refits.
     "caption": "M4_117400 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m4-117400",
@@ -1807,7 +1807,7 @@ Per-target static-smoother refits.
     "caption": "M4_117400 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m4-117400",
@@ -1827,7 +1827,7 @@ Per-target static-smoother refits.
     "caption": "M4_117400 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m4-117400",
@@ -1837,7 +1837,7 @@ Per-target static-smoother refits.
     "caption": "M4_117400 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/117400-M4_117400/M4_117400_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m4-117400",
@@ -1867,7 +1867,7 @@ Per-target static-smoother refits.
     "caption": "M4_117400 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-211767",
@@ -1877,7 +1877,7 @@ Per-target static-smoother refits.
     "caption": "M5_211767 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-211767",
@@ -1907,7 +1907,7 @@ Per-target static-smoother refits.
     "caption": "M5_211767 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-211767",
@@ -1927,7 +1927,7 @@ Per-target static-smoother refits.
     "caption": "M5_211767 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-211767",
@@ -1937,7 +1937,7 @@ Per-target static-smoother refits.
     "caption": "M5_211767 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/211767-M5_211767/M5_211767_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-211767",
@@ -1967,7 +1967,7 @@ Per-target static-smoother refits.
     "caption": "M5_211767 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m5-238314",
@@ -1977,7 +1977,7 @@ Per-target static-smoother refits.
     "caption": "M5_238314 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m5-238314",
@@ -2007,7 +2007,7 @@ Per-target static-smoother refits.
     "caption": "M5_238314 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m5-238314",
@@ -2027,7 +2027,7 @@ Per-target static-smoother refits.
     "caption": "M5_238314 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m5-238314",
@@ -2037,7 +2037,7 @@ Per-target static-smoother refits.
     "caption": "M5_238314 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/238314-M5_238314/M5_238314_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m5-238314",
@@ -2067,7 +2067,7 @@ Per-target static-smoother refits.
     "caption": "M5_238314 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-120372",
@@ -2077,7 +2077,7 @@ Per-target static-smoother refits.
     "caption": "M7_120372 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-120372",
@@ -2107,7 +2107,7 @@ Per-target static-smoother refits.
     "caption": "M7_120372 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-120372",
@@ -2127,7 +2127,7 @@ Per-target static-smoother refits.
     "caption": "M7_120372 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-120372",
@@ -2137,7 +2137,7 @@ Per-target static-smoother refits.
     "caption": "M7_120372 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120372-M7_120372/M7_120372_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-120372",
@@ -2167,7 +2167,7 @@ Per-target static-smoother refits.
     "caption": "M7_120372 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-120488",
@@ -2177,7 +2177,7 @@ Per-target static-smoother refits.
     "caption": "M7_120488 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-120488",
@@ -2207,7 +2207,7 @@ Per-target static-smoother refits.
     "caption": "M7_120488 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-120488",
@@ -2227,7 +2227,7 @@ Per-target static-smoother refits.
     "caption": "M7_120488 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-120488",
@@ -2237,7 +2237,7 @@ Per-target static-smoother refits.
     "caption": "M7_120488 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/120488-M7_120488/M7_120488_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-120488",
@@ -2267,7 +2267,7 @@ Per-target static-smoother refits.
     "caption": "M7_120488 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-124875",
@@ -2277,7 +2277,7 @@ Per-target static-smoother refits.
     "caption": "M7_124875 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-124875",
@@ -2307,7 +2307,7 @@ Per-target static-smoother refits.
     "caption": "M7_124875 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-124875",
@@ -2327,7 +2327,7 @@ Per-target static-smoother refits.
     "caption": "M7_124875 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-124875",
@@ -2337,7 +2337,7 @@ Per-target static-smoother refits.
     "caption": "M7_124875 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/124875-M7_124875/M7_124875_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-124875",
@@ -2367,7 +2367,7 @@ Per-target static-smoother refits.
     "caption": "M7_124875 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m7-147849",
@@ -2377,7 +2377,7 @@ Per-target static-smoother refits.
     "caption": "M7_147849 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m7-147849",
@@ -2407,7 +2407,7 @@ Per-target static-smoother refits.
     "caption": "M7_147849 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m7-147849",
@@ -2427,7 +2427,7 @@ Per-target static-smoother refits.
     "caption": "M7_147849 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m7-147849",
@@ -2437,7 +2437,7 @@ Per-target static-smoother refits.
     "caption": "M7_147849 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147849-M7_147849/M7_147849_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m7-147849",
@@ -2467,7 +2467,7 @@ Per-target static-smoother refits.
     "caption": "M7_147849 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-147539",
@@ -2477,7 +2477,7 @@ Per-target static-smoother refits.
     "caption": "M8_147539 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-147539",
@@ -2507,7 +2507,7 @@ Per-target static-smoother refits.
     "caption": "M8_147539 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-147539",
@@ -2527,7 +2527,7 @@ Per-target static-smoother refits.
     "caption": "M8_147539 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-147539",
@@ -2537,7 +2537,7 @@ Per-target static-smoother refits.
     "caption": "M8_147539 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/147539-M8_147539/M8_147539_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-147539",
@@ -2567,7 +2567,7 @@ Per-target static-smoother refits.
     "caption": "M8_147539 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m8-150848",
@@ -2577,7 +2577,7 @@ Per-target static-smoother refits.
     "caption": "M8_150848 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m8-150848",
@@ -2607,7 +2607,7 @@ Per-target static-smoother refits.
     "caption": "M8_150848 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m8-150848",
@@ -2627,7 +2627,7 @@ Per-target static-smoother refits.
     "caption": "M8_150848 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m8-150848",
@@ -2637,7 +2637,7 @@ Per-target static-smoother refits.
     "caption": "M8_150848 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/150848-M8_150848/M8_150848_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m8-150848",
@@ -2667,7 +2667,7 @@ Per-target static-smoother refits.
     "caption": "M8_150848 · static smoothing. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m9-229883",
@@ -2677,7 +2677,7 @@ Per-target static-smoother refits.
     "caption": "M9_229883 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m9-229883",
@@ -2707,7 +2707,7 @@ Per-target static-smoother refits.
     "caption": "M9_229883 · static smoothing. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m9-229883",
@@ -2727,7 +2727,7 @@ Per-target static-smoother refits.
     "caption": "M9_229883 · static smoothing. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m9-229883",
@@ -2737,7 +2737,7 @@ Per-target static-smoother refits.
     "caption": "M9_229883 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/229883-M9_229883/M9_229883_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m9-229883",
@@ -2774,6 +2774,8 @@ Per-target static-smoother refits.
 Twenty target directories contain an executed notebook and saved posterior.
 
 ## Caveats
+
+Evidence paths were rewritten on 2026-09-15: `results/rtx-5060-dr2-quiescent-full-spectrum` and `results/dr2-quiescent-summary.csv` moved to `archive/results/dr2-quiescent-no-polynomial/` (no calibration polynomial; superseded by `results/dr2-quiescent-new-defaults`).
 
 
 

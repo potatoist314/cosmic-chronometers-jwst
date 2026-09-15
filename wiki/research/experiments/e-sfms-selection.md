@@ -36,9 +36,11 @@ The revised run has smaller quiescent fractions under both curves. [Old and revi
 
 The plotted mass is formed mass. The literature curves use a different stellar-mass convention.
 
+Evidence paths were rewritten on 2026-09-15: `results/rtx-5060-dr2-quiescent-full-spectrum` and `results/dr2-quiescent-summary.csv` moved to `archive/results/dr2-quiescent-no-polynomial/` (no calibration polynomial; superseded by `results/dr2-quiescent-new-defaults`).
+
 ## References
 
 - [Plot implementation](scripts/plot_sfms_quiescent.py)
-- [Baseline SFR100 table](results/dr2-quiescent-summary.csv)
+- [Baseline SFR100 table](archive/results/dr2-quiescent-no-polynomial/dr2-quiescent-summary.csv)
 - [Revised SFR100 table](results/dr2-quiescent-new-defaults-summary.csv)
 - [sfms-quiescent · source note](wiki/notes/sfms-quiescent.md)

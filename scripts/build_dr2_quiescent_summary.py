@@ -8,8 +8,8 @@ Usage (CPU only)::
 
     .venv/bin/python scripts/build_dr2_quiescent_summary.py
     .venv/bin/python scripts/build_dr2_quiescent_summary.py \
-        --result-root results/dr2-quiescent-new-defaults \
-        --out-path results/dr2-quiescent-new-defaults-summary.csv
+        --result-root archive/results/dr2-quiescent-no-polynomial \
+        --out-path archive/results/dr2-quiescent-no-polynomial/dr2-quiescent-summary.csv
 """
 
 from __future__ import annotations
@@ -23,15 +23,21 @@ import numpy as np
 import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_RESULT_ROOT = PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
-DEFAULT_OUT_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
+DEFAULT_RESULT_ROOT = PROJECT_ROOT / "results/dr2-quiescent-new-defaults"
+DEFAULT_OUT_PATH = PROJECT_ROOT / "results/dr2-quiescent-new-defaults-summary.csv"
+
+# On the amist_c3k_hr_krou_afe grid, Ceridwen's ``Z`` is [Fe/H] + log10(0.0185)
+# (ceridwen/scripts_afe/build_afe_hr_grid.py: ZSUN_MIST = 0.0185), so the
+# displayed iron abundance is [Fe/H] = Z + FEH_OFFSET.
+FEH_OFFSET = 1.7328283
 
 SUMMARY_PARAMS = {
     "logmass": "logmass",
-    "Z": "logZ_abs",
+    "Z": "feh",
     "afe": "alpha_fe",
     "diffuse_tau_kc": "tau_dust",
 }
+SUMMARY_SHIFTS = {"Z": FEH_OFFSET}
 
 
 def formation_times(edges: np.ndarray, fracs: np.ndarray) -> tuple[np.ndarray, ...]:
@@ -87,11 +93,9 @@ def load_target(target: dict, result_root: Path) -> dict:
         q84 = derived["summary/q84"][:]
         table = {name: (a, b, c) for name, a, b, c in zip(names, q16, q50, q84)}
         for raw, prefix in SUMMARY_PARAMS.items():
-            a, b, c = table[raw]
+            shift = SUMMARY_SHIFTS.get(raw, 0.0)
             row[f"{prefix}_q16"], row[f"{prefix}_q50"], row[f"{prefix}_q84"] = (
-                float(a),
-                float(b),
-                float(c),
+                float(v) + shift for v in table[raw]
             )
         age = derived["sfh/mass_weighted_age_gyr"][:]
         row["age_q16"], row["age_q50"], row["age_q84"] = (float(v) for v in np.quantile(age, [0.16, 0.5, 0.84]))

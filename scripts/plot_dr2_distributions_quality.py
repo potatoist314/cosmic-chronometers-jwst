@@ -1,6 +1,6 @@
 """Sample distributions and fit-quality panels for the DR2 quiescent run.
 
-Reads ``results/dr2-quiescent-summary.csv`` and writes two paper-style
+Reads ``results/dr2-quiescent-new-defaults-summary.csv`` and writes two paper-style
 figures (PDF + PNG) into the bridge reports folder:
 ``distributions-1d`` (1D parameter histograms, N in panel) and
 ``fit-quality`` (likelihood calls, ln Z, chi2/ndof with the worst fits
@@ -23,7 +23,7 @@ import pandas as pd
 from matplotlib import rcParams
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
+SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-new-defaults-summary.csv"
 OUT_DIR = PROJECT_ROOT / "wiki/analyses/dr2-quiescent-sample"
 
 BLUE, ORANGE = "#0072B2", "#E69F00"
@@ -44,7 +44,7 @@ DIST_PANELS = [
     ("z", "Redshift $z$"),
     ("logmass_q50", r"$\log M_\star\,[M_\odot]$"),
     ("age_q50", "Mass-weighted age [Gyr]"),
-    ("logZ_abs_q50", r"$\log Z$ (absolute)"),
+    ("feh_q50", r"$[\mathrm{Fe}/\mathrm{H}]$"),
     ("alpha_fe_q50", r"$[\alpha/{\rm Fe}]$ [dex]"),
     ("tau_dust_q50", r"Dust $\tau$"),
     ("t50_q50", r"Formation $t_{50}$ [Gyr]"),
@@ -66,7 +66,8 @@ def main() -> None:
         axis.axvline(median, color=ORANGE, lw=1.5)
         axis.set_xlabel(label)
         axis.text(0.95, 0.88, f"med {median:.2f}\nN={n}",
-                  transform=axis.transAxes, ha="right", va="top", fontsize=7.5)
+                  transform=axis.transAxes, ha="right", va="top", fontsize=7.5,
+                  bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.5))
         axis.ticklabel_format(useOffset=False)
     axes[0, 0].set_ylabel("Galaxies")
     axes[1, 0].set_ylabel("Galaxies")
@@ -100,10 +101,11 @@ def main() -> None:
     axes[1, 0].set_ylabel("Galaxies")
     axes[1, 1].scatter(frame["phot_chi2_ndof"], frame["spec_chi2_ndof"],
                        s=10, alpha=0.5, color=BLUE)
-    for _, row in worst.iterrows():
+    for k, (_, row) in enumerate(worst.sort_values("spec_chi2_ndof").iterrows()):
         axes[1, 1].annotate(str(row["object_id"]),
                             (row["phot_chi2_ndof"], row["spec_chi2_ndof"]),
-                            fontsize=6.5)
+                            xytext=(4, -3 if k % 2 else 3), textcoords="offset points",
+                            va="top" if k % 2 else "bottom", fontsize=6.5)
     axes[1, 1].set_xlabel(r"Photometry $\chi^2/\nu$")
     axes[1, 1].set_ylabel(r"Spectrum $\chi^2/\nu$")
     fig.suptitle(f"Ceridwen DR2 quiescent fit quality "

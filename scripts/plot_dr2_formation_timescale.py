@@ -1,6 +1,6 @@
 """Formation-timescale (delta-t) plots for the DR2 quiescent sample (CPU only).
 
-Reads ``results/dr2-quiescent-summary.csv`` and plots delta-t = t80 - t20
+Reads ``results/dr2-quiescent-new-defaults-summary.csv`` and plots delta-t = t80 - t20
 against formation epoch (t50 lookback with a Planck18 z_form top axis, and
 observed redshift), stellar mass, and [alpha/Fe], each with a running median.
 Writes PDF + PNG into the bridge reports folder.
@@ -23,7 +23,7 @@ from astropy.cosmology import Planck18
 from matplotlib import rcParams
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
+SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-new-defaults-summary.csv"
 OUT_DIR = PROJECT_ROOT / "wiki/analyses/dr2-quiescent-sample"
 
 BLUE, ORANGE = "#0072B2", "#E69F00"

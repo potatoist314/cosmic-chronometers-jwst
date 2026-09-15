@@ -36,7 +36,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-PRODUCTION = "results/rtx-5060-dr2-quiescent-full-spectrum"
+PRODUCTION = "results/dr2-quiescent-new-defaults"
 VERIFICATION = "results/rtx-5060-per-galaxy-diagnostics-verification"
 LABEL = "ceridwen-diag-rtx-5060"
 POLL_SECONDS = 60

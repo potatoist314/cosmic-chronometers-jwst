@@ -64,18 +64,18 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "artifacts": [
       {
         "label": "Executed fit · M2_139662",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/ceridwen_result.h5"
       }
     ],
     "seed": 20260949,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_1_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_1_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M2_139662"
   },
   {
@@ -85,18 +85,18 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "artifacts": [
       {
         "label": "Executed fit · M1_210210",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb"
+        "path": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb"
       },
       {
         "label": "Saved posterior",
-        "path": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/ceridwen_result.h5"
+        "path": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/ceridwen_result.h5"
       }
     ],
     "seed": 20260832,
-    "config": "results/rtx-5060-dr2-quiescent-full-spectrum/shard_0_manifest.json",
+    "config": "archive/results/dr2-quiescent-no-polynomial/shard_0_manifest.json",
     "code": "0cc76d3b86a6889f497474c6a3ad04eb627a12fd",
     "model": "Ceridwen afe37fea1055901497154cfd0e27ce91fa47bfbd",
-    "data": "results/rtx-5060-dr2-quiescent-full-spectrum/targets.json",
+    "data": "archive/results/dr2-quiescent-no-polynomial/targets.json",
     "target": "M1_210210"
   }
 ]
@@ -107,7 +107,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
 ```json
 [
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m1-210210",
@@ -117,7 +117,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "caption": "M1_210210 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m1-210210",
@@ -147,7 +147,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "caption": "M1_210210 · verification refit. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m1-210210",
@@ -167,7 +167,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "caption": "M1_210210 · verification refit. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m1-210210",
@@ -177,7 +177,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "caption": "M1_210210 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/210210-M1_210210/M1_210210_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m1-210210",
@@ -207,7 +207,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "caption": "M1_210210 · verification refit. Age and formed-mass fractions."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 24,
     "output": 0,
     "run": "baseline-m2-139662",
@@ -217,7 +217,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "caption": "M2_139662 · baseline. Spectrum and residuals on the saved wavelength grid."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 22,
     "output": 0,
     "run": "baseline-m2-139662",
@@ -247,7 +247,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "caption": "M2_139662 · verification refit. Photometry and residuals; bands and uncertainty model are those of this run."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 26,
     "output": 3,
     "run": "baseline-m2-139662",
@@ -267,7 +267,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "caption": "M2_139662 · verification refit. Saved SFH and posterior interval."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 26,
     "output": 0,
     "run": "baseline-m2-139662",
@@ -277,7 +277,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "caption": "M2_139662 · baseline. Physical-parameter posterior."
   },
   {
-    "notebook": "results/rtx-5060-dr2-quiescent-full-spectrum/139662-M2_139662/M2_139662_executed.ipynb",
+    "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
     "cell": 26,
     "output": 1,
     "run": "baseline-m2-139662",
@@ -316,6 +316,8 @@ Median photometric \(\chi^2/N\) = 7.04; median spectral \(\chi^2/N\) = 1.120. Th
 ## Caveats
 
 The refits change the forward-model implementation while retaining the recorded seeds.
+
+Evidence paths were rewritten on 2026-09-15: `results/rtx-5060-dr2-quiescent-full-spectrum` and `results/dr2-quiescent-summary.csv` moved to `archive/results/dr2-quiescent-no-polynomial/` (no calibration polynomial; superseded by `results/dr2-quiescent-new-defaults`).
 
 ## References
 

@@ -72,7 +72,7 @@ import pandas as pd
 from matplotlib import rcParams
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_RUN_DIR = PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
+DEFAULT_RUN_DIR = PROJECT_ROOT / "results/dr2-quiescent-new-defaults"
 DEFAULT_OUT_CSV = PROJECT_ROOT / "results/per-galaxy-diagnostics.csv"
 DEFAULT_SUMMARY_DIR = PROJECT_ROOT / "wiki/analyses/per-galaxy-diagnostics"
 FIGURE_SUBDIR = "diagnostics"

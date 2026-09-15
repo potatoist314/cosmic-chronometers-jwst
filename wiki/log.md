@@ -749,3 +749,9 @@
 - Preservation: Original wording and source excerpts stay literal; figure files, parameter values and definitions were not changed by this notation update. Previous heading links remain available.
 - Validation: Eight math tests passed, including compilation of authored expressions with the vendored renderer. Browser checks covered 360, 736 and 1024 CSS pixels, light/dark themes, print and inserted captions. The complete unit run passed 53 of 54 tests; the remaining corpus check reports the unrelated `results/calibration-speedup` directory missing from `result_groups`.
 - Build: An initial 35-note build passed. The later audit and rebuild were blocked when a concurrent archive move removed paths under `results/rtx-5060-dr2-quiescent-full-spectrum`; the saved public site was retained.
+
+## [2026-09-15] change | Archived the no-polynomial DR2 run
+
+- Change: Archived the DR2 run without a calibration polynomial, superseded by results/dr2-quiescent-new-defaults.
+- Files: Moved results/rtx-5060-dr2-quiescent-full-spectrum/ and results/dr2-quiescent-summary.csv to archive/results/dr2-quiescent-no-polynomial/ with a README; repointed scripts, tests, notebooks, wiki notes and research-record evidence paths to the new run or archive; regenerated DR2 sample figures from the new run and updated numbers in notes/dr2-quiescent-sample.md.
+- Validation: Figures checked at 900 px; wiki build and tests pass; 36 pytest cases pass.

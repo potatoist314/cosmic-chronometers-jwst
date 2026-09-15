@@ -3,11 +3,11 @@
 Dot plot, one row per paper ordered by redshift, of published age, metallicity
 and alpha-enhancement values of quiescent galaxies (as tabulated in
 ``papers/quiescent populations/README.md``), with the 187-galaxy Ceridwen DR2
-sample from ``results/dr2-quiescent-summary.csv`` as the top row: sample median
+sample from ``results/dr2-quiescent-new-defaults-summary.csv`` as the top row: sample median
 and the 16-84 percentile spread across galaxies, plus a vertical median line.
 
-Ceridwen metallicity is absolute log Z; it is shown for two solar references
-because the project has not fixed one (wiki roadmap, "metallicity").
+The summary CSV's ``feh_q50`` is Ceridwen's grid ``Z`` shifted to [Fe/H]
+(``FEH_OFFSET`` in ``scripts/build_dr2_quiescent_summary.py``).
 
 Usage: ``python3 scripts/plot_literature_values.py``
 """
@@ -26,11 +26,10 @@ import pandas as pd
 from matplotlib import rcParams
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
+SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-new-defaults-summary.csv"
 OUT_DIR = PROJECT_ROOT / "wiki/analyses/papers-quiescent-parameters"
 
 BLUE, GREY = "#0072B2", "#555555"
-SOLAR_Z = {"0.0142": 0.0142, "0.020": 0.020}  # Asplund+2009, Anders & Grevesse 1989
 
 rcParams.update(
     {
@@ -129,16 +128,15 @@ def main() -> None:
     z_med = float(np.median(df["z"]))
     n = len(df)
 
-    def ceridwen_row(column, shift=0.0, tag=""):
-        lo, mid, hi = np.percentile(df[column], [16, 50, 84]) - shift
+    def ceridwen_row(column, tag=""):
+        lo, mid, hi = np.percentile(df[column], [16, 50, 84])
         return ("Ceridwen DR2%s, N=%d" % (tag, n), z_med, mid, (mid - lo, hi - mid), "mass-weighted")
 
-    fig, axes = plt.subplots(3, 1, figsize=(8.0, 8.2), layout="constrained",
-                             gridspec_kw={"height_ratios": [3, 11, 8]})
+    fig, axes = plt.subplots(3, 1, figsize=(8.0, 7.9), layout="constrained",
+                             gridspec_kw={"height_ratios": [3, 10, 8]})
     draw_rows(axes[0], [ceridwen_row("age_q50")], AGE, "age [Gyr]", (0, 13), zero_line=False)
     draw_rows(axes[1],
-              [ceridwen_row("logZ_abs_q50", np.log10(0.0142), r" ($Z_\odot$ 0.0142)"),
-               ceridwen_row("logZ_abs_q50", np.log10(0.020), r" ($Z_\odot$ 0.020)")],
+              [ceridwen_row("feh_q50", r" $[\mathrm{Fe}/\mathrm{H}]$")],
               METALLICITY, r"$[Z/\mathrm{H}]$ or $[\mathrm{Fe}/\mathrm{H}]$ [dex]", (-0.5, 0.5))
     draw_rows(axes[2], [ceridwen_row("alpha_fe_q50")], ALPHA,
               r"$[\alpha/\mathrm{Fe}]$ or $[\mathrm{Mg}/\mathrm{Fe}]$ [dex]", (-0.2, 0.6))

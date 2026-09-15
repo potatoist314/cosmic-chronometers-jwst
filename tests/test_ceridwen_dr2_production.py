@@ -265,14 +265,14 @@ def test_marked_notebook_panels_reserve_space_for_the_side_legend():
                 assert "spectral_tight_layout(" in source
 
 
-def test_result_roots_default_to_the_first_production_run(monkeypatch):
+def test_result_roots_default_to_the_current_production_run(monkeypatch):
     monkeypatch.delenv("CERIDWEN_OUTPUT_ROOT", raising=False)
     monkeypatch.delenv("CERIDWEN_REMOTE_RESULT_ROOT", raising=False)
     args = runner._parser().parse_args([])
 
-    assert args.output_root == PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
+    assert args.output_root == PROJECT_ROOT / "results/dr2-quiescent-new-defaults"
     assert args.remote_result_root == (
-        "/workspace/cosmic-chronometers-jwst/results/rtx-5060-dr2-quiescent-full-spectrum"
+        "/workspace/cosmic-chronometers-jwst/results/dr2-quiescent-new-defaults"
     )
 
 
@@ -327,8 +327,8 @@ def test_summary_script_takes_a_result_root_and_an_output_path():
     from scripts import build_dr2_quiescent_summary as summary
 
     defaults = summary._parser().parse_args([])
-    assert defaults.result_root == PROJECT_ROOT / "results/rtx-5060-dr2-quiescent-full-spectrum"
-    assert defaults.out_path == PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
+    assert defaults.result_root == PROJECT_ROOT / "results/dr2-quiescent-new-defaults"
+    assert defaults.out_path == PROJECT_ROOT / "results/dr2-quiescent-new-defaults-summary.csv"
 
     chosen = summary._parser().parse_args(
         ["--result-root", "results/dr2-quiescent-new-defaults",
