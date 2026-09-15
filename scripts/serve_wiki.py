@@ -319,6 +319,19 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
         super().end_headers()
 
 
+class WikiServer(ThreadingHTTPServer):
+    """One connection per request over HTTP/1.0, so a page load is a burst.
+
+    Safari opens a connection for every script, stylesheet and font of a page,
+    plus speculative preconnects for each subresource it remembers, before the
+    HTML has arrived. The default listen backlog of 5 let the kernel reset the
+    rest of that burst, and a reset `<script defer>` fails silently, leaving
+    the page without KaTeX. 128 matches kern.ipc.somaxconn.
+    """
+
+    request_queue_size = 128
+
+
 def run_server(host: str = "127.0.0.1", port: int = 8765, root: Path = DEFAULT_ROOT) -> None:
     if host not in {"127.0.0.1", "localhost", "::1"}:
         sys.stderr.write(
@@ -328,7 +341,7 @@ def run_server(host: str = "127.0.0.1", port: int = 8765, root: Path = DEFAULT_R
 
     AstroWikiHandler.project_root = root
     publication.request(root)
-    with ThreadingHTTPServer((host, port), AstroWikiHandler) as httpd:
+    with WikiServer((host, port), AstroWikiHandler) as httpd:
         print("Serving Astro Lab Notebook on http://%s:%d/wiki/ (root: %s)" % (host, port, root))
         try:
             httpd.serve_forever()
