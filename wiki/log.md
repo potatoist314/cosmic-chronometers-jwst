@@ -749,6 +749,7 @@
 - Preservation: Original wording and source excerpts stay literal; figure files, parameter values and definitions were not changed by this notation update. Previous heading links remain available.
 - Validation: Eight math tests passed, including compilation of authored expressions with the vendored renderer. Browser checks covered 360, 736 and 1024 CSS pixels, light/dark themes, print and inserted captions. The complete unit run passed 53 of 54 tests; the remaining corpus check reports the unrelated `results/calibration-speedup` directory missing from `result_groups`.
 - Build: An initial 35-note build passed. The later audit and rebuild were blocked when a concurrent archive move removed paths under `results/rtx-5060-dr2-quiescent-full-spectrum`; the saved public site was retained.
+- Completion: After the archive references were updated, the full wiki audit and 35-note build passed. All 137 shared pages include math support; seven private-site routes and assets returned HTTP 200. The final unit run passed 54 of 55 tests, with only the same unrelated calibration-speedup corpus failure.
 
 ## [2026-09-15] change | Archived the no-polynomial DR2 run
 
