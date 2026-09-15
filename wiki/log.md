@@ -736,3 +736,9 @@
 - Change: Added visible Pen/Eraser controls, partial ink erasing, finger scrolling, automatic blank sheets and bounded canvas rendering. Saved records retain ordered ink/eraser paths, figure backgrounds and interior blank sheets.
 - Files: `assets/activity.js`, `assets/activity.css`, `activity.py`, `tests/test_activity.py`, `research/README.md`, `index.md`.
 - Validation: All 12 activity tests, the wiki audit and the 35-note build passed. Safari checks covered partial erasing, Undo/Redo, figure preservation, sheet boundaries, draft recovery, compact layout and the 30-sheet limit. The research suite passed 33 of 34 tests; its corpus check reports the unrelated `results/calibration-speedup` directory missing from `result_groups`.
+
+## [2026-09-15] code | Scribble erasing and handwriting latency
+
+- Change: Cached finished ink, limited drawing to affected sheets once per display frame, removed repeated canvas resets and deep undo copies, and deferred draft writes until pauses between strokes. Height-only layout changes preserve the active stroke. Removed Pen/Eraser controls. Repeated scribbles over ink erase their covered area; original gesture points remain in saved revisions.
+- Validation: Runtime tests cover 128 samples with 500 finished strokes, eraser rendering, cross-sheet input, immutable undo snapshots and scribble recognition over existing ink. Saved browser previews preserve ink, erased areas and figure pixels.
+- Validation status: All 13 activity tests and eight ink runtime tests pass. Publication is blocked by stale research paths after the concurrent archive move; iPad gesture and latency verification remain pending.

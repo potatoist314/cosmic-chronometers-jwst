@@ -28,7 +28,8 @@ Research source records: `research/questions/` and `research/experiments/`.
 Priority detail pages: `/wiki/p/<id>/`, with independent resolution buttons and dated history.
 `activity.py` stores immutable note revisions, ink and status events in `research/activity/`.
 `assets/activity.js` and `assets/activity.css` provide writing sheets and figure markup.
-Writing uses Pen/Eraser buttons, partial erasing and continuous finger scrolling.
+Pencil writing uses scribble-to-erase and continuous finger scrolling.
+Ink rendering caches finished strokes and batches incoming samples per display frame.
 Browser drafts use IndexedDB; saved originals remain on the Mac across rebuilds.
 Chat updates use the same `activity.save` contract in `research/README.md`.
 Original analyses: `notes/*.md`, with links to their structured research entries.

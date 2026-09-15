@@ -168,6 +168,8 @@ def save(root, project, records, kind, ident, payload, *, origin="wiki"):
                             raise ValueError("Invalid drawing tool")
                         if stroke.get("tool", "pen") == "pen" and stroke.get("color") not in {"#17212b", "#2459b3", "#b52a37"}:
                             raise ValueError("Invalid ink colour")
+                        if "gesture" in stroke and (stroke["gesture"] != "scribble" or stroke.get("tool") != "eraser"):
+                            raise ValueError("Invalid ink gesture")
                         sizes = {12, 24, 48} if stroke.get("tool") == "eraser" else {2, 4, 7}
                         if stroke.get("size") not in sizes:
                             raise ValueError("Invalid pen width")
@@ -274,9 +276,7 @@ def editor_html(kind, ident, entries, base, project):
 <label>Notes<textarea data-ink-text rows="5"></textarea></label>
 <label>Evidence links<textarea data-ink-evidence rows="3"></textarea></label></aside>
 <div class="ink-main"><div class="ink-toolbar">
-<button type="button" data-tool="pen" aria-pressed="true">Pen</button>
-<button type="button" data-tool="eraser" aria-pressed="false">Eraser</button>
-<label hidden data-eraser-options>Size<select data-eraser-size><option value="12">Small</option><option value="24" selected>Medium</option><option value="48">Large</option></select></label>
+<span>Scribble over ink to erase</span>
 <label>Colour<select data-color><option value="#17212b">Black</option><option value="#2459b3">Blue</option><option value="#b52a37">Red</option></select></label>
 <label>Width<select data-width><option value="2">Fine</option><option value="4" selected>Medium</option><option value="7">Thick</option></select></label>
 <button type="button" data-undo>Undo</button><button type="button" data-redo>Redo</button>

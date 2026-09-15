@@ -84,9 +84,10 @@ async function setupEditor(root) {
   const path = `activity/${root.dataset.kind}/${root.dataset.id}`;
   const dialog = $('.ink-dialog');
   const sheets = $('.ink-sheets');
-  let slots = [], tool = 'pen';
+  let slots = [];
   const touches = new Map();
-  let scrollFrame = 0;
+  let scrollFrame = 0, inkFrame = 0, draftTimer = 0;
+  const dirtySlots = new Set();
   const viewport = $('.ink-viewport');
   const status = $('[data-save-status]');
   const draftStatus = $('[data-draft-status]');
@@ -115,10 +116,11 @@ async function setupEditor(root) {
     });
   }
   async function persist() {
+    clearTimeout(draftTimer);
     if (restoring) return;
     try {
-      await transaction('readwrite', store => store.put(structuredClone(draft), key));
-      draftStatus.textContent = 'Draft on this device';
+      await transaction('readwrite', store => store.put(draft, key));
+      if (draftStatus.textContent !== 'Draft on this device') draftStatus.textContent = 'Draft on this device';
       storageFailed = false;
     } catch {
       storageFailed = true;
@@ -128,13 +130,21 @@ async function setupEditor(root) {
   function hasContent() {
     return draft.text.trim() || draft.evidence.trim() || draft.pages.some(p => p.strokes.length);
   }
+  function schedulePersist() {
+    clearTimeout(draftTimer);
+    draftTimer = setTimeout(() => { if (!active) persist(); }, 150);
+  }
+  function pageSnapshot() {
+    // Finished strokes are immutable; only copy the arrays that editing changes.
+    return draft.pages.map(page => ({ ...page, strokes: page.strokes.slice() }));
+  }
   function changed() {
     draft.requestId = crypto.randomUUID();
     draft.dirty = true;
-    persist();
+    schedulePersist();
   }
   function captureUndo() {
-    undo.push(structuredClone(draft.pages));
+    undo.push(pageSnapshot());
     if (undo.length > 60) undo.shift();
     redo = [];
   }
@@ -215,39 +225,112 @@ async function setupEditor(root) {
     }
     return path;
   }
-  function paint(context, page, image, ink = document.createElement('canvas')) {
-    ink.width = context.canvas.width; ink.height = context.canvas.height;
-    const layer = ink.getContext('2d');
-    layer.scale(ink.width / page.width, ink.height / page.height);
-    for (const stroke of page.strokes) {
-      if (stroke.tool === 'eraser') {
-        layer.globalCompositeOperation = 'destination-out';
-        layer.lineWidth = stroke.size;
-        layer.lineCap = layer.lineJoin = 'round';
-        layer.beginPath();
-        layer.moveTo(stroke.points[0][0], stroke.points[0][1]);
-        for (const [x, y] of stroke.points) layer.lineTo(x, y);
-        layer.stroke();
-        // A tap also erases, even without pointer movement.
-        layer.beginPath();
-        layer.arc(stroke.points[0][0], stroke.points[0][1], stroke.size / 2, 0, Math.PI * 2);
-        layer.fill();
-      } else {
-        layer.globalCompositeOperation = 'source-over';
-        layer.fillStyle = stroke.color;
-        layer.fill(strokePath(stroke));
+  function pointBounds(points) {
+    let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
+    for (const [x, y] of points) {
+      left = Math.min(left, x); right = Math.max(right, x);
+      top = Math.min(top, y); bottom = Math.max(bottom, y);
+    }
+    return [left, top, right - left, bottom - top];
+  }
+  function scribbleBounds(stroke) {
+    const [x, y, width, height] = pointBounds(stroke.points);
+    return [x - stroke.size / 2, y - stroke.size / 2, width + stroke.size, height + stroke.size];
+  }
+  function isScribble(points) {
+    if (points.length < 6) return false;
+    const spans = pointBounds(points).slice(2);
+    const axis = spans[0] >= spans[1] ? 0 : 1, span = spans[axis];
+    if (span < 24 || span < spans[1 - axis] * 1.2) return false;
+    let length = 0;
+    for (let i = 1; i < points.length; i++) length += Math.hypot(points[i][0] - points[i-1][0], points[i][1] - points[i-1][1]);
+    if (length < span * 3.5) return false;
+    const turn = span * 0.35;
+    let direction = 0, extreme = points[0][axis], sweeps = 0;
+    for (const point of points) {
+      const distance = point[axis] - extreme;
+      if (!direction && Math.abs(distance) >= turn) {
+        direction = Math.sign(distance); extreme = point[axis]; sweeps = 1;
+      } else if (direction * distance > 0) extreme = point[axis];
+      else if (direction * distance <= -turn) {
+        direction = -direction; extreme = point[axis]; sweeps++;
       }
     }
+    return sweeps >= 5;
+  }
+  function overlapsInk(slot, stroke) {
+    if (!slot?.before) return false;
+    const scale = slot.before.width / slot.page.width;
+    const [x, y, width, height] = scribbleBounds({ ...stroke, size: 24 });
+    const left = Math.max(0, Math.floor(x * scale)), top = Math.max(0, Math.floor(y * scale));
+    const right = Math.min(slot.before.width, Math.ceil((x + width) * scale));
+    const bottom = Math.min(slot.before.height, Math.ceil((y + height) * scale));
+    if (right <= left || bottom <= top) return false;
+    const pixels = slot.before.getContext('2d').getImageData(left, top, right - left, bottom - top).data;
+    for (let i = 3; i < pixels.length; i += 4) if (pixels[i]) return true;
+    return false;
+  }
+  function paintStroke(layer, stroke) {
+    if (stroke.tool === 'eraser') {
+      layer.globalCompositeOperation = 'destination-out';
+      if (stroke.gesture === 'scribble') {
+        const [x, y, width, height] = scribbleBounds(stroke);
+        layer.fillRect(x, y, width, height);
+        return;
+      }
+      layer.lineWidth = stroke.size;
+      layer.lineCap = layer.lineJoin = 'round';
+      layer.beginPath();
+      layer.moveTo(stroke.points[0][0], stroke.points[0][1]);
+      for (const [x, y] of stroke.points) layer.lineTo(x, y);
+      layer.stroke();
+      layer.beginPath();
+      layer.arc(stroke.points[0][0], stroke.points[0][1], stroke.size / 2, 0, Math.PI * 2);
+      layer.fill();
+    } else {
+      layer.globalCompositeOperation = 'source-over';
+      layer.fillStyle = stroke.color;
+      layer.fill(strokePath(stroke));
+    }
+  }
+  function present(context, image, ink) {
     context.resetTransform();
     context.fillStyle = '#fff';
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
     if (image) context.drawImage(image, 0, 0, context.canvas.width, context.canvas.height);
     context.drawImage(ink, 0, 0);
   }
+  function paint(context, page, image, ink = document.createElement('canvas')) {
+    ink.width = context.canvas.width; ink.height = context.canvas.height;
+    const layer = ink.getContext('2d');
+    layer.scale(ink.width / page.width, ink.height / page.height);
+    for (const stroke of page.strokes) paintStroke(layer, stroke);
+    present(context, image, ink);
+  }
   function draw() {
-    for (const slot of slots) {
-      if (slot.canvas) paint(slot.canvas.getContext('2d'), slot.page, slot.image, slot.ink);
+    inkFrame = 0;
+    for (const slot of dirtySlots) {
+      if (!slot.canvas || !slot.before) continue;
+      const layer = slot.ink.getContext('2d');
+      layer.resetTransform();
+      layer.globalCompositeOperation = 'source-over';
+      layer.clearRect(0, 0, slot.ink.width, slot.ink.height);
+      layer.drawImage(slot.before, 0, 0);
+      layer.scale(slot.ink.width / slot.page.width, slot.ink.height / slot.page.height);
+      for (const stroke of active.drawings.get(slot.page) || []) paintStroke(layer, stroke);
+      present(slot.canvas.getContext('2d'), slot.image, slot.ink);
     }
+    dirtySlots.clear();
+  }
+  function scheduleDraw(slot) {
+    dirtySlots.add(slot);
+    if (!inkFrame) inkFrame = requestAnimationFrame(draw);
+  }
+  function baseline(slot) {
+    if (!slot.canvas || slot.before) return;
+    slot.before = document.createElement('canvas');
+    slot.before.width = slot.ink.width; slot.before.height = slot.ink.height;
+    slot.before.getContext('2d').drawImage(slot.ink, 0, 0);
   }
   function renderVisible() {
     if (!dialog.open) return;
@@ -266,11 +349,12 @@ async function setupEditor(root) {
         paint(slot.canvas.getContext('2d'), slot.page, slot.image, slot.ink);
         background(slot.page).then(image => {
           slot.image = image;
-          if (slot.canvas) paint(slot.canvas.getContext('2d'), slot.page, image, slot.ink);
+          if (slot.canvas) present(slot.canvas.getContext('2d'), image, slot.ink);
         }).catch(error => { draftStatus.textContent = error.message; });
       } else if (!visible && slot.canvas) {
         slot.canvas.width = slot.canvas.height = slot.ink.width = slot.ink.height = 0;
         slot.canvas.remove(); slot.canvas = slot.ink = null;
+        if (slot.before) { slot.before.width = slot.before.height = 0; slot.before = null; }
       }
     }
     const current = slots.findIndex(slot => slot.top + slot.height > top + 12);
@@ -338,7 +422,7 @@ async function setupEditor(root) {
     draft.pages.push(page);
     slots.push({ element, page, top: last.top + last.height, width: last.width, height, image: null, canvas: null });
     sheets.append(element);
-    updateSheetControls(); persist(); renderVisible();
+    updateSheetControls(); schedulePersist(); renderVisible();
   }
   function scrollNotebook(dx, dy) {
     viewport.scrollLeft += dx; viewport.scrollTop += dy;
@@ -368,7 +452,13 @@ async function setupEditor(root) {
   dialog.addEventListener('close', () => {
     finishStroke(); touches.clear(); persist(); releaseCanvases(); slots = []; sheets.replaceChildren();
   });
-  new ResizeObserver(resize).observe(viewport);
+  let observedWidth = 0;
+  new ResizeObserver(() => {
+    if (viewport.clientWidth !== observedWidth) {
+      observedWidth = viewport.clientWidth;
+      resize();
+    } else renderVisible();
+  }).observe(viewport);
   $('[data-zoom]').addEventListener('change', resize);
   $('[data-sheet]').addEventListener('change', event => {
     finishStroke(); draft.page = Number(event.target.value); showPage(true); persist();
@@ -394,23 +484,15 @@ async function setupEditor(root) {
   $('[data-undo]').addEventListener('click', () => {
     finishStroke();
     if (!undo.length) return;
-    redo.push(structuredClone(draft.pages)); draft.pages = undo.pop();
+    redo.push(pageSnapshot()); draft.pages = undo.pop();
     draft.page = Math.min(draft.page, draft.pages.length - 1); changed(); showPage();
   });
   $('[data-redo]').addEventListener('click', () => {
     finishStroke();
     if (!redo.length) return;
-    undo.push(structuredClone(draft.pages)); draft.pages = redo.pop();
+    undo.push(pageSnapshot()); draft.pages = redo.pop();
     draft.page = Math.min(draft.page, draft.pages.length - 1); changed(); showPage();
   });
-  root.querySelectorAll('[data-tool]').forEach(button => button.addEventListener('click', () => {
-    finishStroke(); tool = button.dataset.tool;
-    root.querySelectorAll('[data-tool]').forEach(el => el.setAttribute('aria-pressed', String(el === button)));
-    $('[data-eraser-options]').hidden = tool !== 'eraser';
-    $('[data-color]').closest('label').hidden = tool !== 'pen';
-    $('[data-width]').closest('label').hidden = tool !== 'pen';
-    viewport.classList.toggle('ink-erasing', tool === 'eraser');
-  }));
   function point(event) {
     const rect = sheets.getBoundingClientRect();
     return [event.clientX - rect.left, event.clientY - rect.top + 12, event.pressure > 0 ? event.pressure : 0.5];
@@ -432,17 +514,21 @@ async function setupEditor(root) {
           Math.max(0, Math.min(slot.page.height, (from[1] + delta * t - low) * scale)),
           from[2] + (to[2] - from[2]) * t];
       };
+      baseline(slot);
       let stroke = active.fragments.get(index);
       if (!stroke) {
         stroke = { tool: active.tool, size: active.size, points: [local(start)],
           ...(active.tool === 'pen' ? { color: active.color } : {}) };
         slot.page.strokes.push(stroke);
+        if (!active.drawings.has(slot.page)) active.drawings.set(slot.page, []);
+        active.drawings.get(slot.page).push(stroke);
       }
       stroke.points.push(local(end)); touched.set(index, stroke);
+      scheduleDraw(slot);
     }
     active.fragments = touched;
     active.last = to;
-    draw();
+    active.gesturePoints.push(to);
   }
   viewport.addEventListener('pointerdown', event => {
     if (busy || restoring) return;
@@ -455,9 +541,10 @@ async function setupEditor(root) {
     if (active || event.button !== 0 || !event.target.closest('.ink-sheet')) return;
     event.preventDefault(); viewport.setPointerCapture(event.pointerId);
     for (const touch of touches.values()) touch.blocked = true;
+    clearTimeout(draftTimer);
     captureUndo();
-    active = { pointerId: event.pointerId, tool, fragments: new Map(), color: $('[data-color]').value,
-      size: Number($(tool === 'eraser' ? '[data-eraser-size]' : '[data-width]').value) };
+    active = { pointerId: event.pointerId, tool: 'pen', fragments: new Map(), drawings: new Map(), gesturePoints: [],
+      color: $('[data-color]').value, size: Number($('[data-width]').value) };
     addSegment(point(event), point(event)); appendSpace();
   });
   viewport.addEventListener('pointermove', event => {
@@ -470,14 +557,30 @@ async function setupEditor(root) {
     }
     if (!active || active.pointerId !== event.pointerId) return;
     event.preventDefault();
-    for (const sample of event.getCoalescedEvents?.().length ? event.getCoalescedEvents() : [event]) {
+    const samples = event.getCoalescedEvents?.();
+    for (const sample of samples?.length ? samples : [event]) {
       addSegment(active.last, point(sample));
     }
     appendSpace();
   });
   function finishStroke() {
     if (!active) return;
-    active = null; changed();
+    if (isScribble(active.gesturePoints) && [...active.drawings].some(([page, strokes]) =>
+      strokes.some(stroke => overlapsInk(slots.find(slot => slot.page === page), stroke)))) {
+      for (const [page, strokes] of active.drawings) {
+        for (const stroke of strokes) Object.assign(stroke, { tool: 'eraser', gesture: 'scribble', size: 24 });
+        const slot = slots.find(slot => slot.page === page);
+        if (slot) dirtySlots.add(slot);
+      }
+    }
+    cancelAnimationFrame(inkFrame); draw();
+    const pointerId = active.pointerId;
+    active = null;
+    if (viewport.hasPointerCapture(pointerId)) viewport.releasePointerCapture(pointerId);
+    for (const slot of slots) {
+      if (slot.before) { slot.before.width = slot.before.height = 0; slot.before = null; }
+    }
+    changed();
   }
   for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) viewport.addEventListener(name, event => {
     touches.delete(event.pointerId);
@@ -485,7 +588,7 @@ async function setupEditor(root) {
       if (name === 'pointerup') addSegment(active.last, point(event));
       finishStroke();
     }
-    persist();
+    schedulePersist();
   });
   window.addEventListener('pagehide', () => { finishStroke(); persist(); });
   window.addEventListener('beforeunload', event => {

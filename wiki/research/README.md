@@ -82,19 +82,19 @@ meeting notes; the original scientific direction remains under **Your words**.
   dependencies, original task IDs and the legacy roadmap anchors are retained.
 - **Write notes** opens the writing sheet beside the question. **Annotate figure**
   opens an existing result figure and attaches the sheet to a priority or question.
-- **Pen** writes; **Eraser** removes only the ink beneath it. Eraser sizes are
-  Small, Medium and Large. Undo/Redo includes erasing. Figure backgrounds remain intact.
+- Pencil input writes. Scribble back and forth over existing ink to erase the
+  covered area. Undo restores the erased ink. Figure backgrounds remain intact.
 - One finger scrolls the notebook. Pencil contact stops scrolling; touches present
   during writing remain ignored until lifted. Mouse drawing is available on desktop.
 - Blank sheets appear automatically near the bottom, up to 30 sheets per note.
   Save the current note before selecting **New note** to continue beyond that limit.
   The sheet selector jumps within the same continuous notebook.
-- Pencil barrel double-tap is unavailable in the browser. Tap the tool buttons.
 - **Save annotation** saves the text, evidence links, strokes and PNG previews.
   The background is an immutable copy of the displayed figure, with its source
   record. Notebook outputs are copied without executing the notebook.
-- Browser IndexedDB retains local drafts after each stroke or text edit. A draft
-  belongs to that browser and device. Server saves require the Mac and Tailscale
+- Browser IndexedDB retains local drafts shortly after each stroke or text edit. A draft
+  belongs to that browser and device. Active ink renders once per display frame over
+  cached finished strokes; finger scrolling and Pencil palm handling are independent. Server saves require the Mac and Tailscale
   connection. The interface distinguishes draft storage, saving and publication.
 - **Revise note** appends another version. Earlier text and ink remain readable.
   **New note** starts a separate entry after the current draft is saved.
@@ -123,7 +123,9 @@ The server exposes GET/POST `/wiki/api/activity/<kind>/<id>`, GET
 of at most 24 MiB. Note saves accept up to 30 sheets, each with dimensions,
 original `[x, y, pressure]` points, pen size/colour and a PNG preview. Stroke
 records accept an optional `tool` (`pen` or `eraser`); omitted means `pen`.
-Eraser sizes are 12, 24 and 48 sheet units. Pen sizes remain 2, 4 and 7.
+Scribble erasures retain their original points with `gesture: "scribble"`; their
+covered rectangle erases ink with a 12-unit margin. Legacy eraser paths remain
+readable. Eraser sizes are 12, 24 and 48 sheet units. Pen sizes remain 2, 4 and 7.
 Operations replay in order on a separate ink layer; later pen strokes remain
 visible over earlier erased areas. Interior blank sheets retain their positions. API writes
 and chat writes share the process lock and atomic event publication. Builds use

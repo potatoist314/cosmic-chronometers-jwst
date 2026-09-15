@@ -123,6 +123,19 @@ class ActivityTests(unittest.TestCase):
         self.assertEqual(result["entries"][1]["pages"][0]["background_path"],
                          original["pages"][0]["background_path"])
 
+    def test_scribble_gesture_is_preserved_and_only_allowed_for_erasers(self):
+        page = self.sheet()
+        gesture = {"tool": "eraser", "gesture": "scribble", "size": 24,
+                   "points": [[10, 20, 0.5], [50, 25, 0.5], [10, 30, 0.5]]}
+        page["strokes"].append(gesture)
+        result = self.save(self.note(pages=[page]))
+        self.assertEqual(result["entries"][0]["pages"][0]["strokes"][-1], gesture)
+        for tool, name in (("pen", "scribble"), ("eraser", "unknown")):
+            page["strokes"][-1] = {**gesture, "tool": tool, "gesture": name,
+                                    "color": "#17212b", "size": 4 if tool == "pen" else 24}
+            with self.assertRaisesRegex(ValueError, "Invalid ink gesture"):
+                self.save(self.note("bad-gesture", pages=[page]))
+
     def test_eraser_validation_uses_eraser_sizes(self):
         for size in (12, 24, 48):
             sheet = self.sheet()
