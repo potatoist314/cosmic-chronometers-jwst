@@ -31,6 +31,10 @@ Treat these instructions as active until the user explicitly changes them.
 - Absorption-feature labels use fixed colours from `scripts/spectral_figures.py`
   and one legend to the right of each figure. Use `mark_absorption_features`
   and `spectral_tight_layout`; do not place feature names under the axis.
+- Before adding any figure to `wiki/analyses/<slug>/` or a wiki note, open the rendered PNG at
+  the wiki column's 900 px display width and check for overlapping labels, legends or ticks,
+  text clipped at axes edges, and unreadable fonts. Fix and re-render until clean; for new
+  figures, then screenshot the built wiki page.
 - Run full Ceridwen fits on Vast.ai CUDA GPUs; use local quick tests only.
 - Always use the BlackJAX NSS nested sampler for Ceridwen fits, never NUTS.
 - Keep raw data immutable. Produce processed data through documented scripts or

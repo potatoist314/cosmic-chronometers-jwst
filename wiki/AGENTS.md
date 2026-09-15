@@ -36,6 +36,10 @@ direction and scientific methodology.
 - Absorption features use the shared fixed colours and one right-side legend
   from `scripts/spectral_figures.py`. Finish these figures with
   `spectral_tight_layout`; do not put feature names beneath the axis.
+- Before adding any figure to `wiki/analyses/<slug>/` or a wiki note, open the rendered PNG at
+  the wiki column's 900 px display width and check for overlapping labels, legends or ticks,
+  text clipped at axes edges, and unreadable fonts. Fix and re-render until clean; for new
+  figures, then screenshot the built wiki page.
 - Apply this contract to existing and future result pages, templates and rendering.
   Tests must reject summary sections or agent-role labels on result pages.
 

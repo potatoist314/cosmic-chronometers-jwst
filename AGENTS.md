@@ -44,6 +44,10 @@
 - Absorption-feature labels use fixed colours from `scripts/spectral_figures.py`
   and one legend to the right of each figure. Use `mark_absorption_features`
   and `spectral_tight_layout`; do not place feature names under the axis.
+- Before adding any figure to `wiki/analyses/<slug>/` or a wiki note, open the rendered PNG at
+  the wiki column's 900 px display width and check for overlapping labels, legends or ticks,
+  text clipped at axes edges, and unreadable fonts. Fix and re-render until clean; for new
+  figures, then screenshot the built wiki page.
 - For connected spectral plots, keep the full wavelength grid and set excluded
   values to `NaN`; never plot `wavelength[mask]` as one connected line or band.
 - Run full Ceridwen fits on Vast.ai CUDA GPUs; use local quick tests only.
