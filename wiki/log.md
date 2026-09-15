@@ -684,3 +684,9 @@
 - Recorded the approved 10, 9, 8, 7, 6, 5, 3, 3 priorities, the metallicity dependency and the unscored remaining tasks.
 - Retained dated clarifications and the standing 1–10 convention in the root and wiki instructions and research README.
 - Validation: the wiki audit and 31 research tests passed; 33 notes built. Scores, dependencies, link anchors and the PDF were checked locally and through the private wiki URL; desktop and 360-pixel layouts were reviewed.
+
+## [2026-09-15] ingest | Quiescent-galaxy parameter literature
+
+- Added 8 PDFs under `papers/quiescent populations`, its README, 8 rows in `papers/README.md`, and `wiki/notes/papers-quiescent-parameters.md`.
+- The note tabulates mass, age, metallicity and [α/Fe] references from nine papers, LEGA-C quiescent galaxies, z~0 anchors and the 187-galaxy Ceridwen DR2 medians.
+- The comparison lists numbers only and links the metallicity roadmap item.

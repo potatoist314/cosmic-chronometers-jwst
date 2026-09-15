@@ -83,6 +83,7 @@ comparison issues; full source summaries and unit caveats remain in the record. 
 
 - `notes/papers-spectral-fitting.md` — Papers: stellar-population fitting (2026-08-25 · source: papers/spectral fitting/README.md)
 - `notes/papers-cosmic-chronometers.md` — Papers: cosmic chronometers (2026-08-25 · source: papers/README.md)
+- `notes/papers-quiescent-parameters.md` — Papers: quiescent-galaxy parameters (2026-09-15 · source: papers/quiescent populations/README.md)
 
 ## Log
 
