@@ -43,6 +43,7 @@ ROOT = Path(__file__).resolve().parent          # wiki/
 PROJECT = ROOT.parent
 sys.path.insert(0, str(ROOT))
 import research
+import activity
 
 # The word counter is the bridge's, so the notebook and the handoff gate can
 # never drift apart. It lives next to the bridge because the Review Inbox
@@ -700,6 +701,11 @@ def superseded_banner(note, notes, base):
 # ---------------------------------------------------------------- build
 
 def build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = None) -> int:
+    with activity.locked(out.with_name(out.name + ".lock")):
+        return _build(notes_dir, out, base, research_dir)
+
+
+def _build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = None) -> int:
     notes = [n for n in (parse_note(p) for p in sorted(notes_dir.glob("*.md"))) if n]
     notes.sort(key=lambda n: (n["date"], n["title"]), reverse=True)
     board = parse_themes(notes_dir.parent / "themes.md")
@@ -737,7 +743,10 @@ def build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = Non
     if (ROOT / "_old").is_dir():
         shutil.copytree(ROOT / "_old", scratch / "_old", symlinks=False,
                         ignore=shutil.ignore_patterns("*.bak-*"))
-    (scratch / "style.css").write_text(stylesheet(base) + research.CSS, encoding="utf-8")
+    (scratch / "style.css").write_text(stylesheet(base) + research.CSS +
+                                      (ROOT / "assets/activity.css").read_text(), encoding="utf-8")
+    shutil.copy2(ROOT / "assets/activity.js", scratch / "activity.js")
+    shutil.copytree(ROOT / "assets/vendor", scratch / "vendor")
     (scratch / "search.js").write_text(SEARCH_JS.replace("__BASE__", base), encoding="utf-8")
     (scratch / "site.webmanifest").write_text(json.dumps({
         "name": SITE_NAME, "short_name": "Notebook", "start_url": base + "/",
@@ -858,7 +867,7 @@ def build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = Non
         shell("By topic · " + SITE_NAME, base, "<h1>By topic</h1>" + "".join(by_section),
               rail_sections(notes, base)), encoding="utf-8")
 
-    renderer = SimpleNamespace(PROJECT=PROJECT, SITE_NAME=SITE_NAME, markdown=markdown,
+    renderer = SimpleNamespace(PROJECT=PROJECT, RESEARCH=research_dir, SITE_NAME=SITE_NAME, markdown=markdown,
                                slugify=slugify, shell=shell, rail_sections=rail_sections,
                                feed_rows=feed_rows)
     index.extend(research.write_pages(research_records, notes, scratch, base, renderer))

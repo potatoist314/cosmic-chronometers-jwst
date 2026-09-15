@@ -87,6 +87,20 @@ direction and scientific methodology.
   roadmap route from the same task list; never maintain separate copies of scores.
 - Keep corrected meeting notes alongside their original transcription and source.
 
+### Priority resolutions and Apple Pencil
+
+- Keep annotations and explicit priority status changes independent.
+- Use `activity.py:save` for browser and chat activity. Append revisions and state
+  changes under `research/activity/`; never rewrite saved originals or events.
+- `research/direction.md` remains canonical for scores, titles and dependencies.
+- Handwritten notes, ink previews and immutable figure backgrounds are permitted
+  source records inside `research/activity/`. They are not scientific result runs.
+- Preserve ink and original text. Transcribe only when requested. Never infer
+  a resolution from handwriting, a saved note, or an experiment's status.
+- Browser drafts stay on the originating device until saved to the Mac.
+- Run `python3 -m unittest discover -s wiki/tests -p 'test_activity.py'` with the
+  existing wiki checks when changing the activity or handwriting workflow.
+
 ### Active research
 
 - Make Ceridwen the primary path in navigation, explanations, and examples.

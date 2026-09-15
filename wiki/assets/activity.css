@@ -1,0 +1,27 @@
+.research-activity{margin-top:32px;border-top:1px solid var(--rule);padding-top:24px}
+.research-activity button,.figure-attach button,.result-figure button{font:inherit;font-size:.85rem;padding:9px 15px;border:1px solid var(--rule);border-radius:5px;background:var(--paper);color:var(--ink);cursor:pointer}
+.research-activity button:hover,.result-figure button:hover{border-color:var(--ink)}
+.research-activity button:disabled{opacity:.5;cursor:wait}
+.activity-actions,.priority-state{display:flex;align-items:center;gap:12px;margin:12px 0}
+.priority-state [data-current-state]{font:600 .85rem system-ui,sans-serif}
+.research-activity textarea{box-sizing:border-box;width:100%;font:inherit;font-size:.95rem;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:10px;resize:vertical}
+.research-activity label{display:block;font: .8rem system-ui,sans-serif;line-height:1.5}
+.activity-text label{margin:12px 0}.activity-event{margin:20px 0;padding:18px 0;border-top:1px solid var(--rule)}
+.activity-event h3{font-size:1rem;margin:0 0 4px}.activity-event time,.activity-event>a:not(:has(img)){display:block;font:.75rem system-ui,sans-serif;color:var(--ink-2);margin-bottom:12px}
+.activity-event .verbatim{white-space:pre-wrap}.ink-preview{max-width:100%;max-height:650px;display:block;object-fit:contain;object-position:left;background:white;border:1px solid var(--rule);margin:14px 0}
+.ink-source{font-size:.8rem}.roadmap-source{font-size:.75rem}.resolved-priorities{margin:20px 0}
+.ink-dialog{box-sizing:border-box;width:calc(100vw - 28px);max-width:1600px;height:calc(100dvh - 28px);max-height:calc(100dvh - 28px);padding:0;border:1px solid var(--rule);border-radius:9px;background:var(--paper);color:var(--ink)}
+.ink-dialog[open]{display:flex;flex-direction:column}.ink-dialog::backdrop,.figure-attach::backdrop{background:#0009}
+.ink-header,.ink-footer{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:12px;flex-shrink:0}
+.ink-header{border-bottom:1px solid var(--rule)}.ink-header h2{margin:0;font-size:1.15rem}.ink-footer{border-top:1px solid var(--rule);font:.8rem system-ui,sans-serif}
+.ink-workspace{display:grid;grid-template-columns:minmax(210px,26%) 1fr;min-height:0;flex:1}
+.ink-context{overflow:auto;padding:16px;border-right:1px solid var(--rule);font-size:.9rem}.ink-context h3{margin:0 0 14px;font-size:1.05rem}.ink-context label{margin:18px 0}
+.ink-main{min-width:0;min-height:0;display:flex;flex-direction:column}.ink-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px;flex-shrink:0;font:.8rem system-ui,sans-serif}
+.ink-toolbar label{display:flex;align-items:center;gap:5px}.ink-toolbar select,.ink-toolbar input,.figure-attach select{font:inherit;max-width:220px;padding:7px;border:1px solid var(--rule);border-radius:4px;color:var(--ink);background:var(--paper)}
+.ink-viewport{flex:1;min-height:80px;overflow:auto;background:#8882;overscroll-behavior:contain;touch-action:none;padding:12px;box-sizing:border-box}
+.ink-canvas{display:block;background:white;box-shadow:0 1px 6px #0002;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.ink-move,.ink-move .ink-canvas{touch-action:pan-x pan-y pinch-zoom}.ink-move .ink-canvas{cursor:grab}
+[data-save-status]{font:.8rem system-ui,sans-serif;min-height:1em}[data-save-ink]{font-weight:600!important}
+.figure-attach{max-width:min(90vw,620px);background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:8px;padding:20px}.figure-attach select{display:block;max-width:100%;width:100%;margin:14px 0}
+@media(max-width:736px){.ink-dialog{width:100vw;height:100dvh;max-height:100dvh;border-radius:0}.ink-workspace{grid-template-columns:1fr;grid-template-rows:130px 1fr}.ink-context{border-right:0;border-bottom:1px solid var(--rule);padding:10px}.ink-context label{margin:8px 0}.ink-toolbar{gap:5px;padding:6px}.ink-toolbar select{max-width:150px}.ink-header,.ink-footer{padding:8px}.ink-toolbar button{padding:7px}.ink-preview{max-height:500px}}
+@media print{.activity-actions,.activity-text,.priority-state button,.activity-event button,.ink-dialog,.figure-attach,[data-save-status],[data-annotate-figure]{display:none!important}.resolved-priorities{display:block}.ink-preview{max-height:none;break-inside:avoid}}

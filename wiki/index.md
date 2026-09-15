@@ -22,6 +22,11 @@ Meeting: `notes/meeting-2026-09-15-mj-park-sandro.md` — corrected meeting note
 original transcription and PDF, linked from Home and Meetings. Transcribe and
 lightly rephrase only; never add commentary. Standing rule: `wiki/AGENTS.md`.
 Research source records: `research/questions/` and `research/experiments/`.
+Priority detail pages: `/wiki/p/<id>/`, with independent resolution buttons and dated history.
+`activity.py` stores immutable note revisions, ink and status events in `research/activity/`.
+`assets/activity.js` and `assets/activity.css` provide writing sheets and figure markup.
+Browser drafts use IndexedDB; saved originals remain on the Mac across rebuilds.
+Chat updates use the same `activity.save` contract in `research/README.md`.
 Original analyses: `notes/*.md`, with links to their structured research entries.
 Earlier experiment boards remain at `/wiki/themes/`; source notes at `/wiki/earlier/`.
 Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.

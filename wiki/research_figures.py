@@ -101,17 +101,19 @@ def render(record, project, scratch, base, asset_url, markdown):
                 name, name.lower(), "".join('<option value="%s">%s</option>' % (esc(v), esc(v)) for v in values)))
     body = '<div class="figure-controls">%s</div>' % "".join(controls) if controls else ""
     body += '<div class="figure-gallery" data-target="%s" data-view="%s">' % (esc(target), esc(view))
-    for f in figures:
+    for index, f in enumerate(figures):
         src = image_url(f, project, scratch, base, asset_url)
         visible = (not f.get("target") or f["target"] == target) and f["view"] == view
         body += ('<figure class="result-figure" data-target="%s" data-view="%s"%s>'
                  '<a href="%s"><img %s="%s" alt="%s" loading="lazy"></a>'
-                 '<figcaption>%s</figcaption></figure>') % (
+                 '<figcaption>%s</figcaption><button type="button" data-annotate-figure="%s:%s">Annotate figure</button></figure>') % (
                     esc(f.get("target", "")), esc(f["view"]), "" if visible else " hidden",
-                    esc(src), "src" if visible else "data-src", esc(src), esc(f["caption"]), esc(f["caption"]))
+                    esc(src), "src" if visible else "data-src", esc(src), esc(f["caption"]), esc(f["caption"]), esc(record["id"]), index)
     body += '</div><p id="figure-empty" class="empty" hidden>No figure for this target and view.</p>'
     if record["sections"]["Measurements"]:
         body += '<div class="measurements">%s</div>' % markdown(record["sections"]["Measurements"])
+    body += '<dialog class="figure-attach"><form method="dialog"><h2>Attach annotation</h2><label>Research item<select data-attach-target></select></label><button value="cancel">Cancel</button><button type="button" data-attach-go>Write notes</button></form></dialog>'
+    body += '<script type="module" src="%s/activity.js"></script>' % base
     body += '<script src="%s/figures.js" defer></script>' % base
     return body
 

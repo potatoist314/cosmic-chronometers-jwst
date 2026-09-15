@@ -7,6 +7,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 import research_figures
+import activity
 
 
 EXPERIMENT_STATES = {
@@ -331,11 +332,14 @@ def record_rows(records, base):
     return '<ul class="research-list">%s</ul>' % "".join(rows) if rows else '<p class="empty">None yet</p>'
 
 
-def roadmap_html(tasks, base, project):
+def roadmap_html(tasks, base, project, states=None, resolved=False):
     """Render the full user-ranked task list on Home and its legacy route."""
     by_id = {task["id"]: task for task in tasks}
+    states = states or {}
     rows = []
     for task in sorted(tasks, key=lambda task: -(task.get("priority") or 0)):
+        if (states.get(task["id"], "open") == "resolved") != resolved:
+            continue
         priority = task.get("priority")
         score = str(priority) + "/10" if priority is not None else "Unscored"
         details = '<p>%s</p>' % esc(task["details"]) if task.get("details") else ""
@@ -344,12 +348,11 @@ def roadmap_html(tasks, base, project):
         constraints = ('<p><span class="attribution">After:</span> %s</p>' % dependency if dependency else "")
         if task.get("effort"):
             constraints += '<p><span class="attribution">Difficulty:</span> %s</p>' % esc(task["effort"])
-        rows.append('<tr id="%s"><td class="roadmap-score">%s</td><td><a href="%s">%s</a>%s%s</td></tr>' % (
-            esc(task["id"]), score, esc(asset_url(task["source"], base, project)),
-            esc(task["title"]), details, constraints))
-    if not rows:
-        return '<p class="empty">No priorities recorded</p>'
-    return ('<table class="roadmap"><caption>Research priorities · 10 highest</caption>'
+        rows.append('<tr id="%s" data-priority-id="%s"><td class="roadmap-score">%s</td><td><a href="%s/p/%s/">%s</a>%s%s <a class="roadmap-source" href="%s">Source</a></td></tr>' % (
+            esc(task["id"]), esc(task["id"]), score, base, esc(task["id"]),
+            esc(task["title"]), details, constraints, esc(asset_url(task["source"], base, project))))
+    empty = '<p class="empty">No priorities recorded</p>' if not rows else ""
+    return (empty + '<table class="roadmap"><caption>Research priorities · 10 highest</caption>'
             '<thead><tr><th scope="col">Priority</th><th scope="col">Task</th></tr></thead>'
             '<tbody>%s</tbody></table>' % "".join(rows))
 
@@ -364,6 +367,7 @@ def note_backlinks(slug, records, base):
 def write_pages(records, notes, scratch, base, builder):
     """Build a shared question and experiment structure, preserving source routes."""
     project = builder.PROJECT
+    research_dir = getattr(builder, "RESEARCH", project / "wiki/research")
     records = sorted(records, key=lambda r: (r["date"], r["id"]), reverse=True)
     questions = [r for r in records if r["kind"] == "question"]
     experiments = [r for r in records if r["kind"] == "experiment"]
@@ -411,6 +415,8 @@ def write_pages(records, notes, scratch, base, builder):
             body += section("Experiments", record_rows([e for e in experiments if e["question"] == r["id"] or r["id"] in refs(e, "related_questions")], base))
             if s["Decisions"] or not existing:
                 body += section("Decisions", messages_html(s["Decisions"]))
+            entries = activity.read(research_dir, "question", r["id"])
+            body += activity.editor_html("question", r["id"], entries, base, project)
         else:
             parent = by_id[r["question"]]
             body += '<p class="parent-question"><a href="%s">%s</a></p>' % (route(parent, base), esc(parent["title"]))
@@ -468,11 +474,31 @@ def write_pages(records, notes, scratch, base, builder):
             page(path, r["title"], '<article class="prose result-report">' + report + '</article>')
         search.append({"t": r["title"], "u": route(r, base), "d": r["date"],
                        "s": r["kind"].title(), "g": r["id"] + " " + r["status"],
-                       "x": r["raw"]})
+                       "x": r["raw"] + " " + (" ".join(e.get("text", "") for e in activity.read(research_dir, "question", r["id"])) if r["kind"] == "question" else "")})
 
     direction = next((r for r in records if r["kind"] == "direction"), None)
     tasks = direction["sections"]["Roadmap"] if direction else []
-    body = '<h1>Home</h1>' + section("Current priorities", roadmap_html(tasks, base, project))
+    states = {task["id"]: activity.state(activity.read(research_dir, "priority", task["id"])) for task in tasks}
+    for task in tasks:
+        entries = activity.read(research_dir, "priority", task["id"])
+        content = page_top("Priority", task["title"])
+        score = str(task["priority"]) + "/10" if task.get("priority") is not None else "Unscored"
+        content += '<p>%s · <a href="%s">Original source</a></p>' % (score, esc(asset_url(task["source"], base, project)))
+        if task.get("details"):
+            content += '<p>%s</p>' % esc(task["details"])
+        if task.get("effort"):
+            content += '<p>Difficulty: %s</p>' % esc(task["effort"])
+        if task.get("depends_on"):
+            content += '<p>After: ' + ", ".join('<a href="%s/p/%s/">%s</a>' % (
+                base, esc(dep), esc(next(t["title"] for t in tasks if t["id"] == dep))) for dep in task["depends_on"]) + '</p>'
+        content += activity.editor_html("priority", task["id"], entries, base, project)
+        page("p/" + task["id"], task["title"], '<article class="prose research-record">' + content + '</article>')
+        search.append({"t": task["title"], "u": base + "/p/" + task["id"] + "/", "d": direction["date"],
+                       "s": "Priority", "g": states[task["id"]],
+                       "x": task.get("details", "") + " " + " ".join(e.get("text", "") for e in entries)})
+    body = '<h1>Home</h1>' + section("Current priorities", roadmap_html(tasks, base, project, states))
+    body += '<details class="resolved-priorities"><summary>Resolved</summary>' + roadmap_html(tasks, base, project, states, True) + '</details>'
+    body += '<script type="module" src="%s/activity.js"></script>' % base
     body += section("Planned and running", record_rows([e for e in experiments if e["status"] in {"planned", "running"}], base))
     content = ""
     if direction:

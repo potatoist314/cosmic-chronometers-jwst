@@ -268,7 +268,7 @@ def main() -> int:
 
         run2, _ = build_into(tmp, BUILD, NOTES)
         check("rebuild over existing output", run2.returncode == 0, run2.stderr)
-        check("no leftover scratch dirs", not list(tmp.glob("public.*")))
+        check("no leftover scratch dirs", not [p for p in tmp.glob("public.*") if p.name != "public.lock"])
 
     # the canary: one planted generator sentence must fail the audit
     with tempfile.TemporaryDirectory() as tmpdir:

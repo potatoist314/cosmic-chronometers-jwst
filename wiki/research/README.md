@@ -1,6 +1,7 @@
 # Research records
 
-The user writes in chat. Agents maintain these records and the linked evidence.
+The user writes in chat or on the wiki. Research records retain the original text,
+handwriting, linked evidence and explicit priority status changes.
 Existing and new Ceridwen experiments share this structure. Historical reasoning
 is not reconstructed. Existing notebooks, results and source-note URLs stay in place.
 
@@ -71,6 +72,53 @@ discussion; do not save them as canonical until the user accepts them. Do not
 assign scores to historical or unspecified work. Append the user's dated changes
 under **Amendments**, retaining the original wording. **References** links the
 meeting notes; the original scientific direction remains under **Your words**.
+
+### Priority history and handwriting
+
+- Open a priority from Home to view its source and dated history.
+- **Mark resolved** and **Reopen** change only that priority's state. Neither
+  requires notes. Saving an annotation never changes a priority or question state.
+- Home keeps active priorities and an expandable **Resolved** list. Scores,
+  dependencies, original task IDs and the legacy roadmap anchors are retained.
+- **Write notes** opens the writing sheet beside the question. **Annotate figure**
+  opens an existing result figure and attaches the sheet to a priority or question.
+- Pen input writes. Finger input does not write. **Move / zoom** permits touch
+  navigation. Mouse drawing is available for desktop use.
+- **Save annotation** saves the text, evidence links, strokes and PNG previews.
+  The background is an immutable copy of the displayed figure, with its source
+  record. Notebook outputs are copied without executing the notebook.
+- Browser IndexedDB retains local drafts after each stroke or text edit. A draft
+  belongs to that browser and device. Server saves require the Mac and Tailscale
+  connection. The interface distinguishes draft storage, saving and publication.
+- **Revise note** appends another version. Earlier text and ink remain readable.
+  **New note** starts a separate entry after the current draft is saved.
+- Transcribe only on request. Keep original handwriting beside the transcription.
+  Do not interpret handwriting as a resolution or invent a scientific conclusion.
+
+Canonical activity lives under `activity/<priority|question>/<id>/<event-id>/`.
+Each immutable directory contains `event.json`, the retry request, sheet previews,
+and any original figure backgrounds. Events have ordered sequence numbers and
+UTC save timestamps. A resolution records the sequence it followed. Later notes
+and reopening do not rewrite the record at that point. The roadmap's title,
+priority and dependencies remain exclusively in `direction.md`.
+
+`wiki/activity.py:save` is the shared browser and chat write interface. Load the
+current records with `research.load`, then call `activity.save(research_root,
+project_root, records, kind, id, payload, origin="chat")` for a chat update. Use a
+unique request `id`, `action: "note"`, original `text`, optional `evidence` links,
+and optional `supersedes` event ID. Retain known message references in `source_ref`.
+For an explicit priority status change, use `action: "state"`, `state: "resolved"`
+or `"open"`, and the current `expected_state`. Reuse the request ID only for an
+identical retry. Rebuild after a chat save and commit only the requested records.
+
+The server exposes GET/POST `/wiki/api/activity/<kind>/<id>`, GET
+`/wiki/api/catalog`, GET `/wiki/api/figure/<experiment>:<index>`, and GET
+`/wiki/api/publication`. POST requests require the same origin and JSON bodies
+of at most 24 MiB. Note saves accept up to 30 sheets, each with dimensions,
+original `[x, y, pressure]` points, pen size/colour and a PNG preview. API writes
+and chat writes share the process lock and atomic event publication. Builds use
+a separate publication lock and run after saved events. A failed build leaves
+the saved record available through the API and retains the previous site.
 
 ### Experiment record
 

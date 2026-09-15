@@ -718,3 +718,8 @@
 
 - Pages: [[papers-quiescent-parameters]]; `scripts/plot_literature_values.py`, `wiki/analyses/papers-quiescent-parameters/literature-vs-ceridwen.{png,pdf}`.
 - Change: Reordered `wiki/notes/papers-quiescent-parameters.md`: comparison table, one table per parameter (mass, velocity dispersion, age, metallicity, alpha), other redshifts, sample definition. Added a figure from `scripts/plot_literature_values.py`.
+
+## [2026-09-15] codebase | Priority history and handwriting
+
+- Pages: Home, priority details, research questions and result figures.
+- Change: Added explicit resolve/reopen controls, immutable activity history, Apple Pencil writing sheets, figure backgrounds and recoverable local drafts.

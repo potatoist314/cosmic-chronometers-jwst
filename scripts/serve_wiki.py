@@ -30,6 +30,11 @@ from urllib.parse import unquote, urlsplit
 DEFAULT_ROOT = Path("/Users/liuhao/Downloads/Astro project").resolve()
 CLAUDE_ROOT = Path.home() / ".claude"
 BRIDGE = CLAUDE_ROOT / "scripts/hermes-bridge/bridge.py"
+sys.path.insert(0, str(DEFAULT_ROOT / "wiki"))
+import activity
+import research
+import research_figures
+
 ASK_TIMEOUT = 480
 SLUG = re.compile(r"^[a-z0-9][a-z0-9-]{0,80}$")
 JOB = re.compile(r"^t_[0-9a-f]{6,16}$")
@@ -47,6 +52,47 @@ mimetypes.add_type("text/javascript; charset=utf-8", ".js")
 
 _ask_lock = threading.Lock()
 _asking: set = set()
+
+
+class Publication:
+    """Coalesce saves into serialized background builds; report failures separately."""
+
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.pending = False
+        self.running = False
+        self.state = "ready"
+
+    def request(self, root):
+        with self.lock:
+            self.pending = True
+            self.state = "pending"
+            if self.running:
+                return
+            self.running = True
+        threading.Thread(target=self.work, args=(root,), daemon=True).start()
+
+    def work(self, root):
+        while True:
+            with self.lock:
+                self.pending = False
+            try:
+                result = subprocess.run([sys.executable, str(root / "wiki/build.py")],
+                                        capture_output=True, text=True, timeout=300)
+                state = "ready" if result.returncode == 0 else "failed"
+                if result.returncode:
+                    print(result.stderr, file=sys.stderr)
+            except Exception as exc:
+                print("Wiki publication failed:", exc, file=sys.stderr)
+                state = "failed"
+            with self.lock:
+                if not self.pending:
+                    self.state = state
+                    self.running = False
+                    return
+
+
+publication = Publication()
 
 
 def today() -> str:
@@ -80,6 +126,7 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
     project_root = DEFAULT_ROOT
 
     def __init__(self, *args, **kwargs):
+        self.project_root = self.project_root.resolve()
         super().__init__(*args, directory=str(self.project_root), **kwargs)
 
     # -- helpers ---------------------------------------------------------
@@ -94,6 +141,9 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
     # -- routing ---------------------------------------------------------
     def do_GET(self) -> None:
         clean_path = urlsplit(self.path).path
+        if clean_path.startswith("/wiki/api/"):
+            self.activity_api("GET")
+            return
         if clean_path in {"", "/", "/index.html"}:
             self.send_response(HTTPStatus.FOUND)
             self.send_header("Location", "/wiki/")
@@ -107,6 +157,9 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
         super().do_GET()
 
     def do_POST(self) -> None:
+        if urlsplit(self.path).path.startswith("/wiki/api/"):
+            self.activity_api("POST")
+            return
         if urlsplit(self.path).path != "/wiki/ask":
             self.send_error(HTTPStatus.NOT_FOUND)
             return
@@ -117,6 +170,76 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
             self.reply_json(HTTPStatus.BAD_REQUEST, {"ok": False, "state": "Bad request"})
             return
         self.ask(payload)
+
+    def activity_api(self, method):
+        """Serve known research targets and accept bounded same-origin writes."""
+        try:
+            root = self.project_root / "wiki/research"
+            records, faults = research.load(root)
+            if faults:
+                raise ValueError("Research records could not be loaded")
+            parts = unquote(urlsplit(self.path).path).removeprefix("/wiki/api/").split("/")
+            if method == "GET" and parts == ["publication"]:
+                self.reply_json(200, {"state": publication.state})
+                return
+            if method == "GET" and parts == ["catalog"]:
+                items = [{"kind": kind, "id": ident, "title": item["title"],
+                          "url": "/wiki/" + ("p/" if kind == "priority" else "q/") + ident + "/",
+                          "state": activity.state(activity.read(root, kind, ident)) if kind == "priority" else item["status"]}
+                         for (kind, ident), item in activity.targets(records).items()]
+                figures = [{"key": key, "title": " · ".join(filter(None, [f["experiment"], f.get("target"), f.get("arm"), f.get("view"), f["caption"]])),
+                            "url": "/wiki/api/figure/" + key}
+                           for key, f in activity.figures(records).items()]
+                self.reply_json(200, {"targets": items, "figures": figures})
+                return
+            if method == "GET" and len(parts) == 2 and parts[0] == "figure":
+                figure = activity.figures(records).get(parts[1])
+                if figure is None:
+                    raise ValueError("Unknown figure")
+                if "path" in figure:
+                    research.asset_url(figure["path"], "/wiki", self.project_root)
+                    path = self.project_root / unquote(figure["path"])
+                    data, mime = path.read_bytes(), mimetypes.guess_type(str(path))[0]
+                else:
+                    data, mime = research_figures.image_bytes(self.project_root, figure), "image/png"
+                    research_figures.notebook.cache_clear()
+                self.send_response(200)
+                self.send_header("Content-Type", mime or "application/octet-stream")
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+                return
+            if len(parts) != 3 or parts[0] != "activity" or tuple(parts[1:]) not in activity.targets(records):
+                self.reply_json(404, {"error": "Unknown research target"})
+                return
+            kind, ident = parts[1:]
+            if method == "POST":
+                origin = urlsplit(self.headers.get("Origin", ""))
+                host = self.headers.get("X-Forwarded-Host", self.headers.get("Host", ""))
+                if origin.scheme not in {"http", "https"} or origin.netloc != host:
+                    self.reply_json(403, {"error": "Same-origin request required"})
+                    return
+                size = int(self.headers.get("Content-Length", "0"))
+                if not 0 < size <= activity.MAX_REQUEST:
+                    self.reply_json(413, {"error": "Note exceeds 24 MB"})
+                    return
+                if self.headers.get_content_type() != "application/json":
+                    raise ValueError("JSON request required")
+                payload = json.loads(self.rfile.read(size))
+                result = activity.save(root, self.project_root, records, kind, ident, payload)
+                publication.request(self.project_root)
+            else:
+                result = activity.snapshot(root, kind, ident)
+            result["html"] = activity.history_html(result["entries"], "/wiki", self.project_root)
+            result["publication"] = publication.state
+            self.reply_json(200, result)
+        except activity.Conflict as exc:
+            self.reply_json(409, {"error": str(exc)})
+        except (ValueError, TypeError, KeyError) as exc:
+            self.reply_json(400, {"error": str(exc)})
+        except Exception as exc:
+            print("Activity request failed:", exc, file=sys.stderr)
+            self.reply_json(500, {"error": "Save failed; draft retained"})
 
     def ask(self, payload) -> None:
         slug = str(payload.get("note", ""))
@@ -204,6 +327,7 @@ def run_server(host: str = "127.0.0.1", port: int = 8765, root: Path = DEFAULT_R
         sys.exit(1)
 
     AstroWikiHandler.project_root = root
+    publication.request(root)
     with ThreadingHTTPServer((host, port), AstroWikiHandler) as httpd:
         print("Serving Astro Lab Notebook on http://%s:%d/wiki/ (root: %s)" % (host, port, root))
         try:

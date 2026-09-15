@@ -31,3 +31,8 @@ wiki/public/
 
 # HST ACS F814W cutouts, ~170 MB (scripts/download_hst_cutouts.py restores them)
 data/raw/hst_f814w/
+
+# Wiki publication and activity locks
+wiki/public.lock
+wiki/research/activity/.write.lock
+wiki/research/activity/**/.pending-*/
