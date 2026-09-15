@@ -1,0 +1,24 @@
+Using only diffuse dust attenuation.
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+{"order": 0, "variant": "new", "particles": 100, "n_coeff": 0, "compile_s": 2.544397061690688, "median_s": 0.0012546232901513577, "min_s": 0.001194952055811882, "us_per_call": 12.546232901513577, "loglike_sum": -5865057382735.009}
+{"order": 0, "variant": "new", "particles": 500, "n_coeff": 0, "compile_s": 2.3894919669255614, "median_s": 0.0029376503080129623, "min_s": 0.002901301719248295, "us_per_call": 5.875300616025925, "loglike_sum": -16028524984567.73}
+{"order": 3, "variant": "old", "particles": 100, "n_coeff": 3, "compile_s": 2.436680714599788, "median_s": 0.0016692806966602802, "min_s": 0.0016259802505373955, "us_per_call": 16.692806966602802, "loglike_sum": -5864935964957.207}
+{"order": 3, "variant": "old", "particles": 500, "n_coeff": 3, "compile_s": 2.31524960976094, "median_s": 0.004204286262392998, "min_s": 0.004187174141407013, "us_per_call": 8.408572524785995, "loglike_sum": -16028174051569.836}
+{"order": 3, "variant": "new", "particles": 100, "n_coeff": 3, "compile_s": 3.605991301126778, "median_s": 0.0016408027149736881, "min_s": 0.0016091493889689445, "us_per_call": 16.40802714973688, "loglike_sum": -5864935964957.207}
+{"order": 3, "variant": "new", "particles": 500, "n_coeff": 3, "compile_s": 3.858008334413171, "median_s": 0.003787874709814787, "min_s": 0.003775881603360176, "us_per_call": 7.575749419629574, "loglike_sum": -16028174051569.836}
+{"order": 5, "variant": "old", "particles": 100, "n_coeff": 5, "compile_s": 1.6200450090691447, "median_s": 0.0018469952046871185, "min_s": 0.0018334649503231049, "us_per_call": 18.469952046871185, "loglike_sum": -5864923699772.903}
+{"order": 5, "variant": "old", "particles": 500, "n_coeff": 5, "compile_s": 1.700292126275599, "median_s": 0.005234928801655769, "min_s": 0.005188478156924248, "us_per_call": 10.469857603311539, "loglike_sum": -16028135915036.447}
+{"order": 5, "variant": "new", "particles": 100, "n_coeff": 5, "compile_s": 5.225606963969767, "median_s": 0.001672642771154642, "min_s": 0.0016374317929148674, "us_per_call": 16.72642771154642, "loglike_sum": -5864923699772.903}
+{"order": 5, "variant": "new", "particles": 500, "n_coeff": 5, "compile_s": 5.389836886897683, "median_s": 0.003852754831314087, "min_s": 0.0038361642509698868, "us_per_call": 7.705509662628174, "loglike_sum": -16028135915036.447}
+{"order": 10, "variant": "old", "particles": 100, "n_coeff": 10, "compile_s": 1.6420049658045173, "median_s": 0.0035903691314160824, "min_s": 0.003544403240084648, "us_per_call": 35.903691314160824, "loglike_sum": -5864881060128.935}
+{"order": 10, "variant": "old", "particles": 500, "n_coeff": 10, "compile_s": 1.807790900580585, "median_s": 0.009737532585859299, "min_s": 0.00969235971570015, "us_per_call": 19.475065171718597, "loglike_sum": -16028010977617.7}
+{"order": 10, "variant": "new", "particles": 100, "n_coeff": 10, "compile_s": 6.463687192648649, "median_s": 0.0017079729586839676, "min_s": 0.001675441861152649, "us_per_call": 17.079729586839676, "loglike_sum": -5864881060128.935}
+E0915 19:58:08.575843   52933 cuda_timer.cc:88] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.
+{"order": 10, "variant": "new", "particles": 500, "n_coeff": 10, "compile_s": 6.833482638001442, "median_s": 0.00415198365226388, "min_s": 0.004126051440834999, "us_per_call": 8.30396730452776, "loglike_sum": -16028010977617.7}
+{"order": 24, "variant": "old", "particles": 100, "n_coeff": 24, "compile_s": 2.3876931965351105, "median_s": 0.013135630637407303, "min_s": 0.013072989881038666, "us_per_call": 131.35630637407303, "loglike_sum": -5864840612757.904}
+{"order": 24, "variant": "old", "particles": 500, "n_coeff": 24, "compile_s": 2.4763296097517014, "median_s": 0.03808349557220936, "min_s": 0.037909623235464096, "us_per_call": 76.16699114441872, "loglike_sum": -16027888908714.91}
+{"order": 24, "variant": "new", "particles": 100, "n_coeff": 24, "compile_s": 9.0026377690956, "median_s": 0.002138175070285797, "min_s": 0.0020846091210842133, "us_per_call": 21.38175070285797, "loglike_sum": -5864840612757.904}
+{"order": 24, "variant": "new", "particles": 500, "n_coeff": 24, "compile_s": 9.227443841286004, "median_s": 0.004971315618604422, "min_s": 0.004925651475787163, "us_per_call": 9.942631237208843, "loglike_sum": -16027888908714.91}
+wrote results/calibration-speedup/timing-gpu.json

@@ -109,6 +109,14 @@ How do inferred ages and assembly histories vary across galaxies?
 
 What resources and runtime do the fits require?
 
+### Calibration polynomial speed-up
+note: calibration-speedup
+
+| arm | change | status | result |
+| --- | --- | --- | --- |
+| `timing` | Chebyshev-moment Gram matrix and one Cholesky in place of the pixel reduction, LU solve and slogdet | adopted | same cost at order 3, 2.1x to 2.4x less at order 10, 6.1x to 7.7x less at order 24 |
+| `poly10` | M12_98104 order-10 refit with the new arithmetic | adopted | \(\ln Z\) and parameters unchanged, 393 s instead of 723 s |
+
 ## Model and code reference
 
 Which model assumptions, priors, and implementations define the fits?

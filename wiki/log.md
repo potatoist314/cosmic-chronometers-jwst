@@ -761,3 +761,17 @@
 
 - Pages: [[dr2-quiescent-sample]], [[dr2-new-defaults]], [[absorption-line-mask]], [[fit-accuracy-knobs]], [[redshift-sigma-wiggle]], [[calibration-polynomial-dr2]], [[papers-quiescent-parameters]]
 - Change: Every figure, table and summary CSV now shows [Fe/H] = grid Z + 1.7328283 instead of log Z. The 545 executed per-target notebooks had their corner figures redrawn from saved posteriors and their summary rows relabelled without re-running any fit (`scripts/relabel_feh_notebooks.py`). Analysis notebooks were re-executed from saved outputs; shifts and half-widths are unchanged.
+
+## [2026-09-15] change | Calibration polynomial speed-up
+
+- Pages: [[calibration-speedup]], [[ceridwen-likelihood-sampling]], [[themes]]
+- Change: `PolynomialCalibration` forms the Gram matrix from Chebyshev moments and takes the coefficients and log-determinant from one Cholesky factor (ceridwen 56505a6); same likelihood value, linear instead of quadratic cost in the order. New note with the same-boot RTX 5060 timing and the order-10 refit of M12_98104.
+- Files: ceridwen/ceridwen/likelihood/calibration.py, ceridwen/tests/test_polynomial_calibration.py, scripts/benchmark_calibration_order.py, results/calibration-speedup/, wiki/analyses/calibration-speedup/, wiki/research/experiments/e-calibration-speedup.md.
+- Validation: Gram and calibrate tests at orders 1 to 24; summed log-likelihoods identical old vs new; figures checked at 900 px; wiki build and tests pass.
+
+
+## [2026-09-15] fix | Wiki server accepts a whole page load at once
+
+- Pages: every served page; `scripts/serve_wiki.py`
+- Change: `WikiServer` sets the listen backlog to 128 (Python's default is 5). Safari opens one HTTP/1.0 connection per script, stylesheet and font, plus a speculative preconnect for every subresource it remembers, before the HTML arrives; the kernel reset the overflow, a reset `<script defer>` failed silently and the page showed raw TeX.
+- Validation: 20 and 60 simultaneous connections to port 8765 all served (13–15 of 20 were reset before); fresh Safari windows on `/wiki/code/`, `/wiki/literature/`, `/wiki/n/default-fit-parameters/` and the Tailscale URL fetched all four scripts and the KaTeX fonts and rendered headings, prose, tables and captions; 420 px layout and dark mode checked; `wiki/tests/test_math.py` passes.
