@@ -4,7 +4,7 @@ id: e-calibration-order
 title: Higher-order calibration polynomials
 date: 2026-09-15
 origin: new
-status: planned
+status: running
 question: q-fitting-choices
 follow_up:
 ---
