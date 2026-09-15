@@ -82,15 +82,21 @@ Each enabled term adds a squared uncertainty to `var`. A model prediction, obser
 <details>
 <summary>Calibration matrix</summary>
 
-`ceridwen/ceridwen/likelihood/calibration.py:235-242 · normal_matrix`
+`ceridwen/ceridwen/likelihood/calibration.py:262-275 · _gram, normal_matrix`
 
 ```python
+    def _gram(self, weights) -> Array:
+        """``D^T D`` from the Chebyshev moments ``M_j = sum_i w_i T_j(x_i)``.
+
+        ``T_m T_n = (T_{m+n} + T_{|m-n|}) / 2`` turns the ``(n_pix, k, k)``
+        reduction into one ``(n_pix, 2k + 1)`` matvec, linear in the order.
+        """
+        moments = weights @ self.moment_basis
+        return 0.5 * (moments[self.pair_plus] + moments[self.pair_minus])
+
     def normal_matrix(self, mu, sigma, mask) -> Array:
         """``D^T D + Sigma_p^{-1}`` -- the posterior precision of the coefficients."""
-        design = self.design(mu, sigma, mask)
-        # Expose each coefficient pair as a pixel reduction. Under NSS vmap,
-        # this avoids a separate, poorly occupied tiny GEMM for every chain.
-        normal = jnp.sum(design[:, :, None] * design[:, None, :], axis=0)
+        normal = self._gram(self._weights(mu, sigma, mask))
         precision = self._precision()
         return normal if precision is None else normal + precision
 ```
