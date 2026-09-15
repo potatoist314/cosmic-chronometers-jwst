@@ -64,9 +64,3 @@ Source: arXiv PDF abstracts; authoritative index: `../README.md`.
 - Median [Z/H] = 0.08 +/- 0.18.
 - Median [alpha/Fe] = 0.13 +/- 0.11.
 - Ages follow cosmic ageing; downsizing.
-
-## Why this matters here
-
-- Literature [alpha/Fe]: +0.13 to +0.24; [Mg/Fe]: ~0.2-0.3; Ceridwen median: 0.05.
-- Literature metallicity is near solar; fix solar reference before comparing Ceridwen absolute log Z.
-- Literature ages are light-weighted or SSP-equivalent; Ceridwen ages are mass-weighted.

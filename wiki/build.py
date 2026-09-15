@@ -57,7 +57,7 @@ except ImportError as exc:                      # pragma: no cover - install fau
 
 SITE_NAME = "Astro Lab Notebook"
 # Left rail order. A section with no note is not shown.
-SECTIONS = ["Analyses", "Meetings", "Masking", "Guides", "Notebooks", "Codebase", "Paper drafts", "Archive"]
+SECTIONS = ["Analyses", "Meetings", "Masking", "Guides", "Notebooks", "Codebase", "Paper drafts", "Literature", "Archive"]
 THEMES = ["Single-fit accuracy", "Validation on mocks", "Sample and data", "Population results",
           "Compute", "Model and code reference", "Background reading"]
 STATUSES = ("adopted", "dropped", "inconclusive", "planned")
@@ -410,6 +410,31 @@ def caption_faults(body_md: str) -> list:
     return out
 
 
+# Agent commentary: labels, verdicts and hedges that a note must not carry.
+# Liu Hao, 2026-09-15: "keep the data and exclude the commentary".
+COMMENTARY_RES = [re.compile(pat, re.I | re.M) for pat in (
+    r"\*\*Why it matters:\*\*",
+    r"\*\*Documented contract:\*\*",
+    r"Project synthesis",
+    r"<summary>\s*(?:Why|Answer|Interpretation|Verdict|What the)\b|<summary>\s*Reading\s*<",
+    r"^(?:\*\*)?(?:Adopt|Reject|Recommendation|Finding|Verdict)(?:\*\*)?:",
+    r"Decisions for Liu Hao",
+    r"Choose whether",
+    r"It is worth noting",
+)]
+
+
+def commentary_faults(body_md: str) -> list:
+    """Every match of an agent-commentary pattern, collapsed blocks included."""
+    out = []
+    for rx in COMMENTARY_RES:
+        for m in rx.finditer(body_md):
+            line = body_md[body_md.rfind("\n", 0, m.start()) + 1:]
+            line = line.split("\n", 1)[0]
+            out.append(" ".join(line.split())[:90])
+    return out
+
+
 # The Review Inbox counts the words Liu Hao had to read this week, but it runs
 # under launchd and macOS does not let a launchd agent read ~/Downloads. So
 # the build publishes the counts beside the shared counter, where it can.
@@ -478,6 +503,9 @@ def budget_faults(notes: list) -> list:
         for caption in caption_faults(body):
             faults.append("%s: figure caption runs to more than one sentence — %s"
                           % (note["slug"], caption))
+        if note["status"] != "obsolete":
+            for line in commentary_faults(note["body"]):
+                faults.append("%s: agent commentary — %s" % (note["slug"], line))
     return faults
 
 

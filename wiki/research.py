@@ -476,6 +476,7 @@ def write_pages(records, notes, scratch, base, builder):
     direction = next((r for r in records if r["kind"] == "direction"), None)
     tasks = direction["sections"]["Roadmap"] if direction else []
     body = '<h1>Home</h1>' + section("Current priorities", roadmap_html(tasks, base, project))
+    body += '<p><a href="%s/literature/">Literature values</a></p>' % base
     body += section("Planned and running", record_rows([e for e in experiments if e["status"] in {"planned", "running"}], base))
     content = ""
     if direction:
@@ -536,7 +537,18 @@ def write_pages(records, notes, scratch, base, builder):
     body += section("Local PDFs", '<ul class="paper-list">%s</ul>' % "".join(pdfs) if pdfs else '<p class="empty">None yet</p>')
     if catalog.is_file():
         body += '<p><a href="%s">Original catalog</a></p>' % esc(asset_url("papers/README.md", base, project))
+    body += '<p><a href="%s/literature/">Literature values</a></p>' % base
     page("papers", "Papers", '<div class="prose">' + body + '</div>')
+
+    literature = [n for n in notes if n["section"] == "Literature" and n["status"] != "obsolete"]
+    body = '<h1>Literature values</h1>'
+    for n in literature:
+        body += '<section class="research-section">%s</section>' % builder.markdown(n["body"], base)
+        search.append({"t": n["title"], "u": base + "/literature/", "d": n["date"],
+                       "s": "Literature", "g": " ".join(n["tags"]), "x": n["body"]})
+    if not literature:
+        body += '<p class="empty">None yet</p>'
+    page("literature", "Literature values", '<div class="prose">' + body + '</div>')
 
     body = '<h1>Code &amp; guides</h1>'
     for name, label in (("Codebase", "Code"), ("Notebooks", "Notebooks"), ("Guides", "Guides")):
@@ -549,7 +561,7 @@ def write_pages(records, notes, scratch, base, builder):
     page("code", "Code & guides", '<div class="prose">' + body + '</div>')
 
     masking = [n for n in notes if n["section"] == "Masking"]
-    reference = [n for n in notes if n["section"] not in {"Analyses", "Masking", "Paper drafts", "Archive"} and n["status"] != "obsolete"]
+    reference = [n for n in notes if n["section"] not in {"Analyses", "Masking", "Paper drafts", "Literature", "Archive"} and n["status"] != "obsolete"]
     earlier = [n for n in notes if n not in reference and n not in masking]
     for path, title, rows in (("reference", "Reference", reference), ("earlier", "Source notes", earlier)):
         body = page_top("Library", title)

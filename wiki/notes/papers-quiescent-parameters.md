@@ -1,17 +1,16 @@
 ---
-title: Papers: quiescent-galaxy parameters
+title: Literature values: LEGA-C quiescent galaxies
 date: 2026-09-15
-section: Paper drafts
+section: Literature
 theme: Background reading
 tags: [papers, quiescent, lega-c]
-job: 
+job:
 source: papers/quiescent populations/README.md
 ---
 
-Reference values of mass, age, metallicity and [α/Fe] from nine papers covering LEGA-C quiescent galaxies and z~0 anchors, side by side with the 187-galaxy Ceridwen DR2 medians.
+<div id="a-lega-c-quiescent-sample"></div>
 
-<details>
-<summary>A. LEGA-C quiescent sample</summary>
+## LEGA-C quiescent sample
 
 | Item | DR3 ([van der Wel+2021](https://arxiv.org/abs/2108.00744)) | Project sample |
 | --- | --- | --- |
@@ -22,10 +21,9 @@ Reference values of mass, age, metallicity and [α/Fe] from nine papers covering
 | σ⋆ 16/50/84 | 127 / 166 / 207 km/s | median 204 km/s |
 | Quiescent selection | UVJ ([Muzzin+2013](https://arxiv.org/abs/1303.4409)): 1208 galaxies | NUVrJ + emission-line veto: 187 galaxies (`scripts/run_ceridwen_vast_multi_gpu.py:79-137`) |
 
-</details>
+<div id="b-reference-values-for-lega-c-quiescent-galaxies-by-paper"></div>
 
-<details>
-<summary>B. Reference values for LEGA-C quiescent galaxies, by paper</summary>
+## Reference values for LEGA-C quiescent galaxies, by paper
 
 | Paper | N | z | Method | log M⋆ | Age | [Z/H] or [Fe/H] | [α/Fe] or [Mg/Fe] |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -42,10 +40,9 @@ Reference values of mass, age, metallicity and [α/Fe] from nine papers covering
 | [Nersesian+2025](https://arxiv.org/abs/2502.03021) / [2026](https://arxiv.org/abs/2512.10383) | 2908 | 0.6–1.0 | Prospector | > 9 | QG 1.1 Gyr older than SFG; τ_q 1.23 Gyr (0.13 compact PSB) | large QG near solar; compact metal-rich | – |
 | [Cappellari 2023](https://arxiv.org/abs/2208.14974) | 3200 | 0.6–1.0 | pPXF + 28 bands | > 10.5 | quench threshold σ⋆ > 200 km/s | [M/H] on σ, then age | – |
 
-</details>
+<div id="c-z-0-anchors-and-other-redshifts"></div>
 
-<details>
-<summary>C. z~0 anchors and other redshifts</summary>
+## z~0 anchors and other redshifts
 
 | Reference | Sample | Result |
 | --- | --- | --- |
@@ -61,10 +58,9 @@ Reference values of mass, age, metallicity and [α/Fe] from nine papers covering
 | [Beverage+2024](https://arxiv.org/abs/2312.05307) | z 1.4 / 2.1 | [Fe/H] −0.2 / −0.3; [Mg/Fe] 0.3 / 0.5 |
 | Reviews | [Renzini 2006](https://arxiv.org/abs/astro-ph/0603479), [Conroy 2013](https://arxiv.org/abs/1301.7095), [Cappellari 2016](https://arxiv.org/abs/1602.04267) | ARA&A |
 
-</details>
+<div id="d-ceridwen-dr2-medians-against-the-literature"></div>
 
-<details>
-<summary>D. Ceridwen DR2 medians against the literature</summary>
+## Ceridwen DR2 medians against the literature
 
 | Quantity | Ceridwen DR2 median (N=187) | Literature at z~0.7 |
 | --- | --- | --- |
@@ -74,15 +70,6 @@ Reference values of mass, age, metallicity and [α/Fe] from nine papers covering
 | Metallicity | log Z −1.76, absolute; solar reference open ([roadmap: metallicity](/wiki/roadmap/#metallicity)) | Borghi+2022a [Z/H] 0.08; Beverage, Cheng [Fe/H] ~ −0.1 to 0.0 |
 | [α/Fe] | 0.05 | Bevacqua+2023 +0.24; Borghi+2022a +0.13; Beverage [Mg/Fe] ~0.2–0.3 |
 
-Source: `results/dr2-quiescent-summary.csv`; figures in [DR2 quiescent sample](/wiki/n/dr2-quiescent-sample/). Numbers only; see [roadmap: literature-comparison](/wiki/roadmap/#literature-comparison).
+Source: `results/dr2-quiescent-summary.csv`; figures in [DR2 quiescent sample](/wiki/n/dr2-quiescent-sample/). [Literature comparison](/wiki/roadmap/#literature-comparison).
 
-</details>
-
-<details>
-<summary>Why this matters here</summary>
-
-- Literature [α/Fe] +0.13 to +0.24, [Mg/Fe] ~0.2–0.3; Ceridwen median 0.05.
-- Literature metallicity is near solar; fix the solar reference before comparing Ceridwen absolute log Z.
-- Literature ages are light-weighted or SSP-equivalent; Ceridwen ages are mass-weighted.
-
-</details>
+<div id="why-this-matters-here"></div>

@@ -700,3 +700,8 @@
 - Removed agent commentary from the Park/Sandro meeting notes. Retained the handwriting, user clarifications, uncertainty markers and previous anchors; direct links open collapsed records.
 - Saved the transcription-only rule in root and wiki AGENTS.md and the research README: light rephrasing and complete sentences are allowed; added commentary is not.
 - Validation: 32 research tests and the wiki audit passed; 34 notes built. All 34 notes, 29 experiments and 22 PDF links were checked, with all six sections served locally and on the private wiki. Desktop and 360-pixel layouts, search and original-clarification links were reviewed. The audit/build used the installed Command Line Tools via DEVELOPER_DIR after the default Xcode shim required licence acceptance.
+
+## [2026-09-15] revise | Literature route and commentary lint
+
+- Pages: [[papers-quiescent-parameters]] (section Literature, own page `/wiki/literature/`, four tables expanded, linked from Home and Papers); `wiki/tests/run_tests.py`, `wiki/tests/test_research.py`.
+- Change: `wiki/build.py` `commentary_faults()` stops the build on agent-commentary labels: Why it matters, Documented contract, Project synthesis, verdict lines, Decisions for Liu Hao.

@@ -102,6 +102,12 @@ class ResearchTests(unittest.TestCase):
         out = self.project / "public"
         with patch.object(build, "PROJECT", self.project):
             self.assertEqual(build.build(self.notes, out, base, self.root), 0)
+        for page in out.rglob("*.html"):
+            body = page.read_text()
+            for label in ("Agent · source summary", "Agent · execution plan",
+                          "Agent · execution records", "Agent · measured results",
+                          "Existing research · organised from saved records"):
+                self.assertNotIn(label, body, str(page))
         return out
 
     def test_planned_experiment_has_no_fabricated_results(self):
@@ -348,7 +354,7 @@ class ResearchTests(unittest.TestCase):
         placements = {"analysis": ("Analyses", "results"), "mask": ("Masking", "masking"),
                       "code": ("Codebase", "code"), "notebook": ("Notebooks", "code"),
                       "guide": ("Guides", "code"), "paper": ("Paper drafts", "papers"),
-                      "archive": ("Archive", "code")}
+                      "archive": ("Archive", "code"), "values": ("Literature", "literature")}
         for slug, (category, _) in placements.items():
             (self.notes / (slug + ".md")).write_text(
                 "---\ntitle: " + slug + "\ndate: 2026-09-15\nsection: " + category +
@@ -362,7 +368,12 @@ class ResearchTests(unittest.TestCase):
             "| `A & B.pdf` | Author (2025), A&amp;A | **Current target** |\n")
         out = self.build()
         for slug, (_, destination) in placements.items():
-            self.assertIn('/wiki/n/' + slug + '/', (out / destination / "index.html").read_text())
+            collection = (out / destination / "index.html").read_text()
+            if destination == "literature":
+                self.assertIn("Existing content.", collection)
+                self.assertIn('/wiki/n/' + slug + '/', (out / "earlier/index.html").read_text())
+            else:
+                self.assertIn('/wiki/n/' + slug + '/', collection)
             self.assertIn("Existing content.", (out / "n" / slug / "index.html").read_text())
         self.assertIn('/wiki/n/meeting/', (out / "meetings/index.html").read_text())
         code = (out / "code/index.html").read_text()
@@ -377,6 +388,9 @@ class ResearchTests(unittest.TestCase):
         self.assertIn('/wiki/f/papers/chronometer/A%20%26%20B.pdf', catalog)
         self.assertIn('Author (2025), A&amp;A', catalog)
         self.assertNotIn('Current target', catalog)
+        self.assertIn('/wiki/literature/', catalog)
+        self.assertIn('/wiki/literature/', (out / "index.html").read_text())
+        self.assertNotIn('/wiki/n/values/', (out / "reference/index.html").read_text())
         search = json.loads((out / "search.json").read_text())
         self.assertTrue(any(item["u"] == '/wiki/f/papers/chronometer/A%20%26%20B.pdf' for item in search))
         for legacy in ("roadmap", "questions", "experiments", "reference", "earlier", "themes", "log"):
@@ -424,7 +438,8 @@ class ResearchTests(unittest.TestCase):
         self.assertEqual(self.faults(), [])
         out = self.build()
         body = (out / "e/e-history/record/index.html").read_text()
-        self.assertIn("Existing research", body)
+        self.assertNotIn("Existing research · organised from saved records", body)
+        self.assertIn("The source records the original comparison.", body)
         self.assertIn("Recorded age: 3.0 Gyr", body)
         self.assertNotIn("Before delegation", body)
         self.assertNotIn("Not recorded", body)

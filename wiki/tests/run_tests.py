@@ -413,6 +413,33 @@ def main() -> int:
     check("a caption may open with one bold label",
           bd.caption_sentences("<strong>A figure PNG.</strong> One sentence here.") == 1)
 
+    # --- agent commentary ------------------------------------------------
+    chatter = []
+    for path in notes:
+        note = bd.parse_note(path)
+        if not note or note["status"] == "obsolete":
+            continue
+        chatter += ["%s: %s" % (note["slug"], c) for c in bd.commentary_faults(note["body"])]
+    check("no live note carries agent commentary", not chatter, "; ".join(chatter[:3]))
+    check("a label inside a collapsed block is still commentary",
+          len(bd.commentary_faults("<details>\n<summary>Why this matters</summary>\n"
+                                   "text\n</details>\n")) == 1)
+    check("a verdict line is commentary",
+          len(bd.commentary_faults("Adopt: the wider prior.\n")) == 1)
+    check("a data line is not commentary",
+          not bd.commentary_faults("| age | 3.02 Gyr |\n"))
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp = Path(tmpdir)
+        planted = tmp / "notes"
+        planted.mkdir()
+        (planted / "chatter.md").write_text(
+            NOTE_HEAD + "**Why it matters:** the sampler returns this.\n", encoding="utf-8")
+        run, _ = build_into(tmp, BUILD, planted)
+        check("a planted commentary block stops the build", run.returncode != 0, run.stdout)
+        check("the build names the commentary",
+              "chatter" in run.stderr and "commentary" in run.stderr, run.stderr.strip()[:200])
+
     # --- canaries: the build must stop -----------------------------------
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
