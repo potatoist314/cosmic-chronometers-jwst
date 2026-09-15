@@ -347,7 +347,7 @@ class ResearchTests(unittest.TestCase):
         self.assertTrue((out / "themes/population-results/index.html").is_file())
         self.assertTrue((out / "themes/index.html").is_file())
 
-    def test_six_sections_keep_all_notes_records_and_papers_reachable(self):
+    def test_seven_sections_keep_all_notes_records_and_papers_reachable(self):
         self.roadmap()
         self.completed()
         self.write("experiment", "e-planned", "planned", {"Before delegation": [self.message]}, question="q-dust")
@@ -388,14 +388,12 @@ class ResearchTests(unittest.TestCase):
         self.assertIn('/wiki/f/papers/chronometer/A%20%26%20B.pdf', catalog)
         self.assertIn('Author (2025), A&amp;A', catalog)
         self.assertNotIn('Current target', catalog)
-        self.assertIn('/wiki/literature/', catalog)
-        self.assertIn('/wiki/literature/', (out / "index.html").read_text())
         self.assertNotIn('/wiki/n/values/', (out / "reference/index.html").read_text())
         search = json.loads((out / "search.json").read_text())
         self.assertTrue(any(item["u"] == '/wiki/f/papers/chronometer/A%20%26%20B.pdf' for item in search))
         for legacy in ("roadmap", "questions", "experiments", "reference", "earlier", "themes", "log"):
             self.assertTrue((out / legacy / "index.html").is_file())
-        expected = [("/wiki/", "Home"), ("/wiki/results/", "Results"), ("/wiki/meetings/", "Meetings"),
+        expected = [("/wiki/", "Home"), ("/wiki/results/", "Results"), ("/wiki/literature/", "Literature"), ("/wiki/meetings/", "Meetings"),
                     ("/wiki/papers/", "Papers"), ("/wiki/masking/", "Masking"), ("/wiki/code/", "Code &amp; guides")]
         for page in out.rglob("index.html"):
             markup = page.read_text()

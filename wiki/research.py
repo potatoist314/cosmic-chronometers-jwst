@@ -473,7 +473,6 @@ def write_pages(records, notes, scratch, base, builder):
     direction = next((r for r in records if r["kind"] == "direction"), None)
     tasks = direction["sections"]["Roadmap"] if direction else []
     body = '<h1>Home</h1>' + section("Current priorities", roadmap_html(tasks, base, project))
-    body += '<p><a href="%s/literature/">Literature values</a></p>' % base
     body += section("Planned and running", record_rows([e for e in experiments if e["status"] in {"planned", "running"}], base))
     content = ""
     if direction:
@@ -534,7 +533,6 @@ def write_pages(records, notes, scratch, base, builder):
     body += section("Local PDFs", '<ul class="paper-list">%s</ul>' % "".join(pdfs) if pdfs else '<p class="empty">None yet</p>')
     if catalog.is_file():
         body += '<p><a href="%s">Original catalog</a></p>' % esc(asset_url("papers/README.md", base, project))
-    body += '<p><a href="%s/literature/">Literature values</a></p>' % base
     page("papers", "Papers", '<div class="prose">' + body + '</div>')
 
     literature = [n for n in notes if n["section"] == "Literature" and n["status"] != "obsolete"]

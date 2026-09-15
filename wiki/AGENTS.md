@@ -104,7 +104,8 @@ direction and scientific methodology.
 
 ## Structure
 
-- Navigation has six links: Home, Results, Meetings, Papers, Masking, Code & guides.
+- Navigation has seven links: Home, Results, Literature, Meetings, Papers, Masking, Code & guides.
+- Literature renders notes with front matter `section: Literature` as expanded tables of established parameter values from the papers.
 - Home shows the full priority list and planned/running work. Original direction,
   questions and dated amendments are in its collapsed research record.
 - Results lists saved visual reports and benchmarks, with other experiment records

@@ -1,7 +1,7 @@
 # Agent Note Index
 
 Human entry point: `public/index.html`, served at `/wiki/` — Home.
-Navigation: Home, Results, Meetings, Papers, Masking, Code & guides.
+Navigation: Home, Results, Literature, Meetings, Papers, Masking, Code & guides.
 Home shows all priorities and planned/running work, with direction, questions and
 amendments in the collapsed research record. `/wiki/roadmap/` is the Home alias.
 Results: `/wiki/results/`, with saved visual reports and benchmarks first;
