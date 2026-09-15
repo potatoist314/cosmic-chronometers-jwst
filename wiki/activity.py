@@ -164,9 +164,12 @@ def save(root, project, records, kind, ident, payload, *, origin="wiki"):
                     if not isinstance(strokes, list) or len(strokes) > 20000:
                         raise ValueError("Invalid strokes")
                     for stroke in strokes:
-                        if not isinstance(stroke, dict) or stroke.get("color") not in {"#17212b", "#2459b3", "#b52a37"}:
+                        if not isinstance(stroke, dict) or stroke.get("tool", "pen") not in {"pen", "eraser"}:
+                            raise ValueError("Invalid drawing tool")
+                        if stroke.get("tool", "pen") == "pen" and stroke.get("color") not in {"#17212b", "#2459b3", "#b52a37"}:
                             raise ValueError("Invalid ink colour")
-                        if stroke.get("size") not in {2, 4, 7}:
+                        sizes = {12, 24, 48} if stroke.get("tool") == "eraser" else {2, 4, 7}
+                        if stroke.get("size") not in sizes:
                             raise ValueError("Invalid pen width")
                         points = stroke.get("points")
                         if not isinstance(points, list) or not 1 <= len(points) <= 100000:
@@ -271,13 +274,15 @@ def editor_html(kind, ident, entries, base, project):
 <label>Notes<textarea data-ink-text rows="5"></textarea></label>
 <label>Evidence links<textarea data-ink-evidence rows="3"></textarea></label></aside>
 <div class="ink-main"><div class="ink-toolbar">
-<label>Tool<select data-tool><option value="pen">Pen</option><option value="eraser">Eraser</option><option value="move">Move / zoom</option></select></label>
+<button type="button" data-tool="pen" aria-pressed="true">Pen</button>
+<button type="button" data-tool="eraser" aria-pressed="false">Eraser</button>
+<label hidden data-eraser-options>Size<select data-eraser-size><option value="12">Small</option><option value="24" selected>Medium</option><option value="48">Large</option></select></label>
 <label>Colour<select data-color><option value="#17212b">Black</option><option value="#2459b3">Blue</option><option value="#b52a37">Red</option></select></label>
 <label>Width<select data-width><option value="2">Fine</option><option value="4" selected>Medium</option><option value="7">Thick</option></select></label>
 <button type="button" data-undo>Undo</button><button type="button" data-redo>Redo</button>
 <label>Zoom<select data-zoom><option value="1">Fit</option><option value="1.5">150%</option><option value="2">200%</option></select></label>
-</div><div class="ink-viewport"><canvas class="ink-canvas" aria-label="Handwriting sheet"></canvas></div>
-<div class="ink-toolbar"><label>Sheet<select data-sheet></select></label><button type="button" data-add-sheet>Add sheet</button>
+</div><div class="ink-viewport" aria-label="Handwriting notebook"><div class="ink-sheets"></div></div>
+<div class="ink-toolbar"><label>Sheet<select data-sheet></select></label><button type="button" data-add-sheet>Add sheet</button><span role="status" data-sheet-limit></span><button type="button" data-new-ink hidden>New note</button>
 <label>Find figure<input type="search" data-figure-search placeholder="Target, view or caption"></label>
 <label>Figure<select data-background><option value="">Blank sheet</option></select></label><button type="button" data-add-figure>Add figure sheet</button></div>
 </div></div><div class="ink-footer"><span role="status" data-draft-status></span><button type="button" data-save-ink>Save annotation</button></div></dialog>

@@ -108,6 +108,42 @@ class ActivityTests(unittest.TestCase):
         self.assertEqual((self.project / entries[1]["pages"][0]["background_path"]).read_bytes(), original_bytes)
         self.assertEqual(entries[0]["pages"][0]["strokes"], self.sheet()["strokes"])
 
+    def test_partial_eraser_operations_preserve_original_ink_and_order(self):
+        sheet = self.sheet("e-fit:0")
+        original = self.save(self.note(pages=[sheet]))["entries"][0]
+        eraser = {"tool": "eraser", "size": 24, "points": [[20, 20, 0.5], [20, 50, 0.5]]}
+        later_ink = {"tool": "pen", "color": "#2459b3", "size": 2,
+                     "points": [[10, 30, 0.2], [30, 30, 0.8]]}
+        sheet["strokes"].extend([eraser, later_ink])
+        sheet["background"] = "saved:note-1:0"
+        result = self.save(self.note("note-2", supersedes="note-1", pages=[sheet]))
+        self.assertEqual(result["state"], "open")
+        self.assertEqual(result["entries"][0], original)
+        self.assertEqual(result["entries"][1]["pages"][0]["strokes"], sheet["strokes"])
+        self.assertEqual(result["entries"][1]["pages"][0]["background_path"],
+                         original["pages"][0]["background_path"])
+
+    def test_eraser_validation_uses_eraser_sizes(self):
+        for size in (12, 24, 48):
+            sheet = self.sheet()
+            sheet["strokes"] = [{"tool": "eraser", "size": size, "points": [[10, 20, 0.5]]}]
+            self.save(self.note(f"erase-{size}", pages=[sheet]))
+        for tool, size in (("eraser", 4), ("pen", 24), ("unknown", 4)):
+            sheet = self.sheet()
+            sheet["strokes"][0].update(tool=tool, size=size)
+            with self.assertRaises(ValueError):
+                self.save(self.note(f"invalid-{tool}", pages=[sheet]))
+
+    def test_long_notes_keep_interior_blank_sheets_and_enforce_limit(self):
+        pages = [self.sheet() for _ in range(30)]
+        pages[1]["strokes"] = []
+        result = self.save(self.note(pages=pages))
+        self.assertEqual(len(result["entries"][0]["pages"]), 30)
+        self.assertEqual(result["entries"][0]["pages"][1]["strokes"], [])
+        self.assertEqual(result["entries"][0]["pages"][-1]["strokes"], pages[-1]["strokes"])
+        with self.assertRaisesRegex(ValueError, "at most 30"):
+            self.save(self.note("too-long", pages=pages + [self.sheet()]))
+
     def test_readers_cannot_see_an_unpublished_staging_directory(self):
         staging = activity.directory(self.root, "priority", "metallicity") / ".pending-test"
         staging.mkdir(parents=True)

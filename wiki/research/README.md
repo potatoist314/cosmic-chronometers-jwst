@@ -82,8 +82,14 @@ meeting notes; the original scientific direction remains under **Your words**.
   dependencies, original task IDs and the legacy roadmap anchors are retained.
 - **Write notes** opens the writing sheet beside the question. **Annotate figure**
   opens an existing result figure and attaches the sheet to a priority or question.
-- Pen input writes. Finger input does not write. **Move / zoom** permits touch
-  navigation. Mouse drawing is available for desktop use.
+- **Pen** writes; **Eraser** removes only the ink beneath it. Eraser sizes are
+  Small, Medium and Large. Undo/Redo includes erasing. Figure backgrounds remain intact.
+- One finger scrolls the notebook. Pencil contact stops scrolling; touches present
+  during writing remain ignored until lifted. Mouse drawing is available on desktop.
+- Blank sheets appear automatically near the bottom, up to 30 sheets per note.
+  Save the current note before selecting **New note** to continue beyond that limit.
+  The sheet selector jumps within the same continuous notebook.
+- Pencil barrel double-tap is unavailable in the browser. Tap the tool buttons.
 - **Save annotation** saves the text, evidence links, strokes and PNG previews.
   The background is an immutable copy of the displayed figure, with its source
   record. Notebook outputs are copied without executing the notebook.
@@ -115,7 +121,11 @@ The server exposes GET/POST `/wiki/api/activity/<kind>/<id>`, GET
 `/wiki/api/catalog`, GET `/wiki/api/figure/<experiment>:<index>`, and GET
 `/wiki/api/publication`. POST requests require the same origin and JSON bodies
 of at most 24 MiB. Note saves accept up to 30 sheets, each with dimensions,
-original `[x, y, pressure]` points, pen size/colour and a PNG preview. API writes
+original `[x, y, pressure]` points, pen size/colour and a PNG preview. Stroke
+records accept an optional `tool` (`pen` or `eraser`); omitted means `pen`.
+Eraser sizes are 12, 24 and 48 sheet units. Pen sizes remain 2, 4 and 7.
+Operations replay in order on a separate ink layer; later pen strokes remain
+visible over earlier erased areas. Interior blank sheets retain their positions. API writes
 and chat writes share the process lock and atomic event publication. Builds use
 a separate publication lock and run after saved events. A failed build leaves
 the saved record available through the API and retains the previous site.

@@ -730,3 +730,9 @@
 - Change: Expanded the current notebook's 14 sampled values, priors and physical meanings above the code links, followed by fixed settings and three marginalised calibration coefficients. The canonical note supplies both views; rows stack on narrow screens.
 - Sources: Current joint-fit notebook configuration and priors, grid axes and metadata, SFH transform, attenuation, noise and calibration implementations. Fitting defaults unchanged.
 - Validation: Wiki audit and 35-note build passed; 33 of 34 research tests passed, including both new tests. The unchanged corpus check reports the unrelated `results/calibration-order` directory missing from `result_groups`. Page and all eight source/reference links returned HTTP 200; private site served the update. Safari layouts checked at 360, 736 and 1024 CSS pixels.
+
+## [2026-09-15] code | Partial erasing and continuous notes
+
+- Change: Added visible Pen/Eraser controls, partial ink erasing, finger scrolling, automatic blank sheets and bounded canvas rendering. Saved records retain ordered ink/eraser paths, figure backgrounds and interior blank sheets.
+- Files: `assets/activity.js`, `assets/activity.css`, `activity.py`, `tests/test_activity.py`, `research/README.md`, `index.md`.
+- Validation: All 12 activity tests, the wiki audit and the 35-note build passed. Safari checks covered partial erasing, Undo/Redo, figure preservation, sheet boundaries, draft recovery, compact layout and the 30-sheet limit. The research suite passed 33 of 34 tests; its corpus check reports the unrelated `results/calibration-speedup` directory missing from `result_groups`.
