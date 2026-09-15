@@ -1,10 +1,10 @@
 """Literature values for quiescent galaxies against redshift, with Ceridwen DR2.
 
-Plots published age, metallicity and alpha-enhancement measurements of
-quiescent galaxies (values as tabulated in
-``papers/quiescent populations/README.md``) against redshift, and overlays the
-187-galaxy Ceridwen DR2 sample from ``results/dr2-quiescent-summary.csv`` as
-the sample median with the 16-84 percentile spread across galaxies.
+Dot plot, one row per paper ordered by redshift, of published age, metallicity
+and alpha-enhancement values of quiescent galaxies (as tabulated in
+``papers/quiescent populations/README.md``), with the 187-galaxy Ceridwen DR2
+sample from ``results/dr2-quiescent-summary.csv`` as the top row: sample median
+and the 16-84 percentile spread across galaxies, plus a vertical median line.
 
 Ceridwen metallicity is absolute log Z; it is shown for two solar references
 because the project has not fixed one (wiki roadmap, "metallicity").
@@ -24,7 +24,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib import rcParams
-from matplotlib.patches import Rectangle
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-summary.csv"
@@ -45,127 +44,104 @@ rcParams.update(
     }
 )
 
-# Each entry: label (None = no text), redshift, value or (low, high) range,
-# symmetric error, kind, and where the text goes relative to the point:
-# "right" of the top of the bar (default), "left" of the value, or "below".
-# Numbers are copied from the tables in papers/quiescent populations/README.md.
+# Each entry: row label, redshift, value or (low, high) range, symmetric error,
+# kind (sets the marker). Numbers are copied from the tables in
+# papers/quiescent populations/README.md.
 AGE = [
-    ("Conroy+14", 0.05, (6.0, 12.0), None, "light-weighted", "right"),
-    ("Borghi+22", 0.70, (2.0, 4.0), None, "SSP-equivalent", "right"),
+    ("Borghi+22", 0.7, (2.0, 4.0), None, "SSP-equivalent"),
+    ("Conroy+14", 0.05, (6.0, 12.0), None, "light-weighted"),
 ]
 METALLICITY = [
-    ("Conroy+14", 0.05, (-0.05, 0.05), None, "[Fe/H]", "right"),
-    ("Borghi+22", 0.70, 0.08, 0.18, "[Z/H]", "right"),
-    ("Beverage+21,\nCheng+25", 0.70, (-0.1, 0.0), None, "[Fe/H]", "below"),
-    ("Carnall+22", 1.15, 0.04, 0.14, "[Z/H]", "right"),
-    (None, 1.15, -0.13, 0.08, "[Z/H]", "right"),
-    (None, 1.15, -0.18, 0.08, "[Fe/H]", "right"),
-    ("Kriek+19, Beverage+24", 1.40, -0.2, None, "[Fe/H]", "right"),
-    ("Beverage+24", 2.10, -0.3, None, "[Fe/H]", "right"),
+    ("Borghi+22", 0.7, 0.08, 0.18, "[Z/H]"),
+    ("Beverage+21, Cheng+25", 0.7, (-0.1, 0.0), None, "[Fe/H]"),
+    ("Conroy+14", 0.05, (-0.05, 0.05), None, "[Fe/H]"),
+    ("Carnall+22 (Bagpipes)", 1.15, -0.13, 0.08, "[Z/H]"),
+    ("Carnall+22 (alf)", 1.15, 0.04, 0.14, "[Z/H]"),
+    ("Carnall+22", 1.15, -0.18, 0.08, "[Fe/H]"),
+    ("Kriek+19", 1.4, -0.2, None, "[Fe/H]"),
+    ("Beverage+24", 1.4, -0.2, None, "[Fe/H]"),
+    ("Beverage+24", 2.1, -0.3, None, "[Fe/H]"),
 ]
 ALPHA = [
-    ("Conroy+14", 0.05, (0.0, 0.25), None, "[Mg/Fe]", "right"),
-    ("Bevacqua+23", 0.68, 0.24, 0.01, "[α/Fe]", "left"),
-    ("Borghi+22", 0.70, 0.13, 0.11, "[α/Fe]", "left"),
-    ("Beverage+21/23", 0.72, (0.2, 0.3), None, "[Mg/Fe]", "right"),
-    ("Kriek+19", 1.40, 0.44, None, "[Mg/Fe]", "right"),
-    ("Beverage+24", 1.40, 0.3, None, "[Mg/Fe]", "right"),
-    ("Beverage+24", 2.10, 0.5, None, "[Mg/Fe]", "right"),
+    ("Bevacqua+23", 0.68, 0.24, 0.01, "[α/Fe]"),
+    ("Borghi+22", 0.7, 0.13, 0.11, "[α/Fe]"),
+    ("Beverage+21/23", 0.7, (0.2, 0.3), None, "[Mg/Fe]"),
+    ("Conroy+14", 0.05, (0.0, 0.25), None, "[Mg/Fe]"),
+    ("Kriek+19", 1.4, 0.44, None, "[Mg/Fe]"),
+    ("Beverage+24", 1.4, 0.3, None, "[Mg/Fe]"),
+    ("Beverage+24", 2.1, 0.5, None, "[Mg/Fe]"),
 ]
 MARKER = {"[Z/H]": "o", "[Fe/H]": "s", "[α/Fe]": "o", "[Mg/Fe]": "s",
-          "light-weighted": "s", "SSP-equivalent": "o"}
+          "light-weighted": "s", "SSP-equivalent": "o", "mass-weighted": "D"}
 LEGEND_NAME = {"[Z/H]": r"$[Z/\mathrm{H}]$", "[Fe/H]": r"$[\mathrm{Fe}/\mathrm{H}]$",
                "[α/Fe]": r"$[\alpha/\mathrm{Fe}]$", "[Mg/Fe]": r"$[\mathrm{Mg}/\mathrm{Fe}]$",
-               "light-weighted": "light-weighted", "SSP-equivalent": "SSP-equivalent"}
-TEXT_POS = {  # (dx, ha, va, anchor on "top" of the bar, "mid" or "bottom")
-    "right": (0.025, "left", "bottom", "top"),
-    "left": (-0.025, "right", "center", "mid"),
-    "below": (0.03, "left", "top", "bottom"),
-}
+               "light-weighted": "light-weighted", "SSP-equivalent": "SSP-equivalent",
+               "mass-weighted": "mass-weighted"}
 
 
-def draw_literature(axis, entries):
-    """Points (with error bars) or vertical range bars, each labelled in place."""
+def row_label(label, z):
+    return "%s, $z$ %s" % (label, ("%.2f" % z).rstrip("0").rstrip("."))
+
+
+def draw_rows(axis, ceridwen, entries, xlabel, xlim, zero_line=True):
+    """One row per entry: Ceridwen rows first (blue), then papers by redshift."""
+    rows = list(ceridwen) + sorted(entries, key=lambda e: e[1])
     seen = set()
-    for label, z, value, err, kind, where in entries:
-        marker = MARKER[kind]
+    labels = []
+    for i, (label, z, value, err, kind) in enumerate(rows):
+        y = len(rows) - 1 - i
+        blue = i < len(ceridwen)
+        colour = BLUE if blue else GREY
         name = LEGEND_NAME[kind] if kind not in seen else None
         seen.add(kind)
         if isinstance(value, tuple):
             lo, hi = value
-            mid = 0.5 * (lo + hi)
-            axis.plot([z, z], [lo, hi], color=GREY, lw=2.5, solid_capstyle="butt", zorder=2)
-            axis.plot(z, mid, marker=marker, color=GREY, ms=4, ls="none", label=name, zorder=3)
+            axis.plot([lo, hi], [y, y], color=colour, lw=4, solid_capstyle="butt", alpha=0.5, zorder=2)
+            axis.plot(0.5 * (lo + hi), y, marker=MARKER[kind], color=colour, ms=6, ls="none",
+                      label=name, zorder=3)
         else:
-            lo, mid, hi = value - (err or 0.0), value, value + (err or 0.0)
-            axis.errorbar(z, value, yerr=err, fmt=marker, color=GREY, ms=4, capsize=2,
-                          lw=1, label=name, zorder=3)
-        if label is None:
-            continue
-        dx, ha, va, anchor = TEXT_POS[where]
-        y_text = {"top": hi, "mid": mid, "bottom": lo}[anchor]
-        axis.annotate(label, (z + dx, y_text), fontsize=8, color=GREY, ha=ha, va=va, zorder=4)
-
-
-def draw_ceridwen(axis, z, q16, q50, q84, label, **style):
-    """Sample median (diamond) over a band spanning the 16-84 percentiles in y and z."""
-    zlo, zmid, zhi = np.percentile(z, [16, 50, 84])
-    axis.add_patch(Rectangle((zlo, q16), zhi - zlo, q84 - q16, facecolor=BLUE, alpha=0.15,
-                             edgecolor="none", zorder=1))
-    axis.plot(zmid + style.pop("dz", 0.0), q50, "D", color=BLUE, ms=7, mec=BLUE, zorder=5,
-              label=label, **style)
-
-
-def legend(axis, loc):
-    """Literature entries first, Ceridwen last."""
-    handles, labels = axis.get_legend_handles_labels()
-    order = sorted(range(len(labels)), key=lambda i: labels[i].startswith("Ceridwen"))
-    axis.legend([handles[i] for i in order], [labels[i] for i in order],
-                fontsize=8, loc=loc, frameon=False)
+            xerr = [[err[0]], [err[1]]] if isinstance(err, tuple) else err
+            axis.errorbar(value, y, xerr=xerr, fmt=MARKER[kind], color=colour, ms=6, capsize=3,
+                          lw=1.2, label=name, zorder=3)
+        if blue:
+            axis.axvline(value if not isinstance(value, tuple) else 0.5 * sum(value),
+                         color=BLUE, lw=1, ls="-" if i == 0 else "--", alpha=0.6, zorder=1)
+        labels.append(row_label(label, z))
+    axis.set_yticks(range(len(rows) - 1, -1, -1))
+    axis.set_yticklabels(labels)
+    for tick, (label, *_rest) in zip(axis.get_yticklabels(), rows):
+        if label.startswith("Ceridwen"):
+            tick.set_color(BLUE)
+    axis.set_ylim(-0.7, len(rows) - 0.3)
+    axis.set_xlim(*xlim)
+    axis.set_xlabel(xlabel)
+    axis.tick_params(axis="y", length=0)
+    axis.grid(axis="y", color="#e5e5e5", lw=0.6, zorder=0)
+    if zero_line:
+        axis.axvline(0, color="k", lw=0.5, ls=":", zorder=1)
+    axis.legend(fontsize=8, loc="upper left", bbox_to_anchor=(1.01, 1.0), frameon=False,
+                handletextpad=0.4, borderaxespad=0.0)
 
 
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     df = pd.read_csv(SUMMARY_PATH)
-    z = df["z"].to_numpy()
-    fig, axes = plt.subplots(3, 1, figsize=(6.0, 9.0), sharex=True)
+    z_med = float(np.median(df["z"]))
+    n = len(df)
 
-    # Age
-    axis = axes[0]
-    draw_literature(axis, AGE)
-    lo, mid, hi = np.percentile(df["age_q50"], [16, 50, 84])
-    draw_ceridwen(axis, z, lo, mid, hi, "Ceridwen DR2 (N=%d), mass-weighted; band: 16–84" % len(df))
-    axis.set_ylabel("age [Gyr]")
-    axis.set_ylim(0, 13.5)
-    legend(axis, "upper right")
+    def ceridwen_row(column, shift=0.0, tag=""):
+        lo, mid, hi = np.percentile(df[column], [16, 50, 84]) - shift
+        return ("Ceridwen DR2%s, N=%d" % (tag, n), z_med, mid, (mid - lo, hi - mid), "mass-weighted")
 
-    # Metallicity: Ceridwen log Z is absolute, so show two solar references.
-    axis = axes[1]
-    draw_literature(axis, METALLICITY)
-    lo, mid, hi = np.percentile(df["logZ_abs_q50"], [16, 50, 84])
-    for i, (name, zsun) in enumerate(SOLAR_Z.items()):
-        shift = np.log10(zsun)
-        draw_ceridwen(axis, z, lo - shift, mid - shift, hi - shift,
-                      r"Ceridwen DR2, $Z_\odot=%s$" % name, dz=0.08 * i,
-                      mfc=BLUE if i == 0 else "white")
-    axis.set_ylabel(r"$[Z/\mathrm{H}]$ or $[\mathrm{Fe}/\mathrm{H}]$ [dex]")
-    axis.set_ylim(-0.7, 0.5)
-    axis.axhline(0, color="k", lw=0.5, ls=":")
-    legend(axis, "lower left")
-
-    # Alpha enhancement
-    axis = axes[2]
-    draw_literature(axis, ALPHA)
-    lo, mid, hi = np.percentile(df["alpha_fe_q50"], [16, 50, 84])
-    draw_ceridwen(axis, z, lo, mid, hi, "Ceridwen DR2")
-    axis.set_ylabel(r"$[\alpha/\mathrm{Fe}]$ or $[\mathrm{Mg}/\mathrm{Fe}]$ [dex]")
-    axis.set_ylim(-0.3, 0.75)
-    axis.axhline(0, color="k", lw=0.5, ls=":")
-    legend(axis, "upper left")
-
-    axes[0].set_xlim(-0.1, 2.55)
-    axes[-1].set_xlabel(r"$z$")
-    fig.tight_layout()
+    fig, axes = plt.subplots(3, 1, figsize=(8.0, 8.2), layout="constrained",
+                             gridspec_kw={"height_ratios": [3, 11, 8]})
+    draw_rows(axes[0], [ceridwen_row("age_q50")], AGE, "age [Gyr]", (0, 13), zero_line=False)
+    draw_rows(axes[1],
+              [ceridwen_row("logZ_abs_q50", np.log10(0.0142), r" ($Z_\odot$ 0.0142)"),
+               ceridwen_row("logZ_abs_q50", np.log10(0.020), r" ($Z_\odot$ 0.020)")],
+              METALLICITY, r"$[Z/\mathrm{H}]$ or $[\mathrm{Fe}/\mathrm{H}]$ [dex]", (-0.5, 0.5))
+    draw_rows(axes[2], [ceridwen_row("alpha_fe_q50")], ALPHA,
+              r"$[\alpha/\mathrm{Fe}]$ or $[\mathrm{Mg}/\mathrm{Fe}]$ [dex]", (-0.2, 0.6))
     fig.savefig(OUT_DIR / "literature-vs-ceridwen.pdf")
     fig.savefig(OUT_DIR / "literature-vs-ceridwen.png")
     plt.close(fig)

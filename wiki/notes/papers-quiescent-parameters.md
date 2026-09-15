@@ -10,8 +10,8 @@ figures: [literature-vs-ceridwen.png]
 ---
 
 <figure>
-<img src="figures/papers-quiescent-parameters/literature-vs-ceridwen.png" alt="Literature ages, metallicities and alpha enhancements of quiescent galaxies against redshift, with the Ceridwen DR2 sample median in blue">
-<figcaption>Literature quiescent-galaxy ages, metallicities ([Z/H] circles, [Fe/H] squares), enhancements ([α/Fe] circles, [Mg/Fe] squares) versus redshift; blue: 187-galaxy Ceridwen DR2 median and 16–84 spread; absolute log Z shown for Z☉ = 0.0142 / 0.020 (solar reference unfixed).</figcaption>
+<img src="figures/papers-quiescent-parameters/literature-vs-ceridwen.png" alt="One row per literature paper for age, metallicity and alpha enhancement, with the Ceridwen DR2 sample median and 16-84 spread as the blue top row">
+<figcaption>Age/metallicity/alpha-enhancement panels show redshift-ordered literature-paper rows: grey bars denote quoted ranges/±1σ; blue top-row Ceridwen DR2 187-galaxy medians (also vertical lines) have across-galaxy 16–84 percentile spreads; circles: [Z/H]/[α/Fe], squares: [Fe/H]/[Mg/Fe]; Ceridwen absolute log Z uses solar references Z☉ = 0.0142/0.020, neither yet fixed.</figcaption>
 </figure>
 
 ## Ceridwen DR2 against the literature
