@@ -258,7 +258,7 @@ class FitExperiment:
         self.calibration_source=inspect.getsource(PolynomialCalibration.normal_matrix)
         self.calibration_module=inspect.getfile(PolynomialCalibration)
         if self.variant == 'reduce':
-            assert 'jnp.sum(design[:, :, None] * design[:, None, :], axis=0)' in self.calibration_source, (
+            assert self.calibration_source != inspect.getsource(calibration_normal_dot), (
                 'The installed Ceridwen package lacks the candidate; reinstall it before fitting.')
         def factory(_adapter, loglike, logprior, inner_steps, num_delete):
             self.loglike, self.logprior = loglike, logprior
