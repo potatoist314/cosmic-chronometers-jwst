@@ -118,7 +118,7 @@ class ResearchTests(unittest.TestCase):
 
     def roadmap(self):
         (self.notes / "meeting.md").write_text(
-            "---\ntitle: Meeting\ndate: 2026-09-15\nsection: Guides\n"
+            "---\ntitle: Meeting\ndate: 2026-09-15\nsection: Meetings\n"
             "theme: Single-fit accuracy\n---\n\n## Metallicity\n\nA question, not a result.\n")
         tasks = [
             {"id": "spectrum", "title": "Strong spectrum", "priority": 7,
@@ -145,8 +145,9 @@ class ResearchTests(unittest.TestCase):
         self.assertEqual(re.findall(r'<tr id="([^"]+)"', page),
                          ["metallicity", "spectrum", "literature", "unscored"])
         self.assertEqual(re.findall(r'<tr id="([^"]+)"', home),
-                         ["metallicity", "spectrum", "literature"])
-        self.assertIn('href="/wiki/roadmap/#metallicity"', page)
+                         ["metallicity", "spectrum", "literature", "unscored"])
+        self.assertEqual(home, page)
+        self.assertIn('href="/wiki/#metallicity"', page)
         self.assertIn('href="/wiki/n/meeting/#metallicity"', home)
         self.assertIn("10/10", page)
         self.assertIn("Unscored follow-up", page)
@@ -154,9 +155,11 @@ class ResearchTests(unittest.TestCase):
         self.assertIn("Is this &lt;total Z&gt;?", page)
         quotes = Quotes()
         quotes.feed(page)
-        self.assertEqual(quotes.values, ["keep this 1-10 scale\n  and my wording"])
-        self.assertIn('href="/wiki/roadmap/"', (out / "q/q-dust/index.html").read_text())
-        self.assertTrue(any(item["u"] == "/wiki/roadmap/" for item in json.loads((out / "search.json").read_text())))
+        self.assertEqual(quotes.values, [self.original, "keep this 1-10 scale\n  and my wording"])
+        self.assertIn('href="/wiki/"', (out / "q/q-dust/index.html").read_text())
+        self.assertIn('<details class="research-history"><summary>Research record</summary>', home)
+        self.assertIn('id="roadmap-amendments"', home)
+        self.assertTrue(any(item["u"] == "/wiki/" for item in json.loads((out / "search.json").read_text())))
 
     def test_priority_change_updates_both_views_from_one_record(self):
         sections = self.roadmap()
@@ -167,7 +170,7 @@ class ResearchTests(unittest.TestCase):
             body = (out / path).read_text()
             self.assertEqual(re.findall(r'<tr id="([^"]+)"', body)[:3],
                              ["metallicity", "literature", "spectrum"])
-            self.assertIn('href="/roadmap/#metallicity"', body)
+            self.assertIn('href="/#metallicity"', body)
             self.assertIn("1/10", body)
 
     def test_roadmap_rejects_invalid_scores_and_dependencies(self):
@@ -263,7 +266,7 @@ class ResearchTests(unittest.TestCase):
         self.assertEqual({r["s"] for r in index}, {"Question", "Experiment"})
         self.assertTrue(all("reason reason" in r["x"] for r in index))
         self.assertIn("results-ready", (out / "experiments/index.html").read_text())
-        self.assertIn("e-low-dust", (out / "index.html").read_text())
+        self.assertIn("e-low-dust", (out / "results/index.html").read_text())
 
     def test_templates_are_not_loaded_and_json_errors_are_actionable(self):
         templates = self.root / "templates"
@@ -338,6 +341,54 @@ class ResearchTests(unittest.TestCase):
         self.assertTrue((out / "themes/population-results/index.html").is_file())
         self.assertTrue((out / "themes/index.html").is_file())
 
+    def test_six_sections_keep_all_notes_records_and_papers_reachable(self):
+        self.roadmap()
+        self.completed()
+        self.write("experiment", "e-planned", "planned", {"Before delegation": [self.message]}, question="q-dust")
+        placements = {"analysis": ("Analyses", "results"), "mask": ("Masking", "masking"),
+                      "code": ("Codebase", "code"), "notebook": ("Notebooks", "code"),
+                      "guide": ("Guides", "code"), "paper": ("Paper drafts", "papers"),
+                      "archive": ("Archive", "code")}
+        for slug, (category, _) in placements.items():
+            (self.notes / (slug + ".md")).write_text(
+                "---\ntitle: " + slug + "\ndate: 2026-09-15\nsection: " + category +
+                "\ntheme: Single-fit accuracy\n---\n\nExisting content.\n")
+        papers = self.project / "papers"
+        papers.mkdir()
+        (papers / "chronometer").mkdir()
+        (papers / "chronometer/A & B.pdf").write_bytes(b"fixture PDF")
+        (papers / "README.md").write_text(
+            "| File | Citation | Role |\n| --- | --- | --- |\n"
+            "| `A & B.pdf` | Author (2025), A&amp;A | **Current target** |\n")
+        out = self.build()
+        for slug, (_, destination) in placements.items():
+            self.assertIn('/wiki/n/' + slug + '/', (out / destination / "index.html").read_text())
+            self.assertIn("Existing content.", (out / "n" / slug / "index.html").read_text())
+        self.assertIn('/wiki/n/meeting/', (out / "meetings/index.html").read_text())
+        code = (out / "code/index.html").read_text()
+        self.assertNotIn('/wiki/n/meeting/', code)
+        self.assertIn('/wiki/log/', code)
+        results = (out / "results/index.html").read_text()
+        self.assertLess(results.index('/wiki/e/e-low-dust/'), results.index('Other experiment records'))
+        self.assertGreater(results.index('/wiki/e/e-planned/'), results.index('Other experiment records'))
+        self.assertIn('/wiki/themes/', results)
+        self.assertIn('/wiki/e/e-planned/', (out / "index.html").read_text())
+        catalog = (out / "papers/index.html").read_text()
+        self.assertIn('/wiki/f/papers/chronometer/A%20%26%20B.pdf', catalog)
+        self.assertIn('Author (2025), A&amp;A', catalog)
+        self.assertNotIn('Current target', catalog)
+        search = json.loads((out / "search.json").read_text())
+        self.assertTrue(any(item["u"] == '/wiki/f/papers/chronometer/A%20%26%20B.pdf' for item in search))
+        for legacy in ("roadmap", "questions", "experiments", "reference", "earlier", "themes", "log"):
+            self.assertTrue((out / legacy / "index.html").is_file())
+        expected = [("/wiki/", "Home"), ("/wiki/results/", "Results"), ("/wiki/meetings/", "Meetings"),
+                    ("/wiki/papers/", "Papers"), ("/wiki/masking/", "Masking"), ("/wiki/code/", "Code &amp; guides")]
+        for page in out.rglob("index.html"):
+            markup = page.read_text()
+            navigation = re.search(r'<ul class="primary-nav">(.*?)</ul>', markup)[1]
+            self.assertEqual(re.findall(r'<a href="([^"]+)">([^<]+)</a>', navigation), expected)
+            self.assertNotIn("Liu Hao · DR2 quiescent galaxies", markup)
+
     def test_light_edit_preserves_original_and_does_not_render_markup(self):
         edited = "I think this might help, but I am not sure. <b>literal</b>"
         message = dict(self.message, display_text=edited)
@@ -380,8 +431,8 @@ class ResearchTests(unittest.TestCase):
         self.assertIn("e-history", (out / "q/q-history/index.html").read_text())
         self.assertIn("e-history", (out / "q/q-dust/index.html").read_text())
         home = (out / "index.html").read_text()
-        queue = home.split('id="results-awaiting-interpretation"')[1].split("</section>")[0]
-        self.assertNotIn("e-history", queue)
+        self.assertNotIn("e-history", home)
+        self.assertIn("e-history", (out / "results/index.html").read_text())
         self.assertIn("e-history", (out / "experiments/index.html").read_text())
         search = json.loads((out / "search.json").read_text())
         self.assertTrue(any(r["s"] == "Experiment" and "e-history" in r["u"] for r in search))

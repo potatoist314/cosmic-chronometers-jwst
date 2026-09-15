@@ -1,16 +1,24 @@
 # Agent Note Index
 
-Human entry point: `public/index.html`, served at `/wiki/` — the research overview.
-Active workflow: `/wiki/questions/` and `/wiki/experiments/`.
+Human entry point: `public/index.html`, served at `/wiki/` — Home.
+Navigation: Home, Results, Meetings, Papers, Masking, Code & guides.
+Home shows all priorities and planned/running work, with direction, questions and
+amendments in the collapsed research record. `/wiki/roadmap/` is the Home alias.
+Results: `/wiki/results/`, with saved visual reports and benchmarks first;
+other experiment records and earlier analyses/boards remain accessible below.
+Meetings: `/wiki/meetings/`. Papers: `/wiki/papers/`, including indexed local PDFs.
+Code, notebooks and guides: `/wiki/code/`, including earlier documentation/history.
+Legacy workflow routes: `/wiki/questions/` and `/wiki/experiments/`.
 Result pages show fits and captions; full records live at `/wiki/e/<id>/record/`.
 Governing presentation rule: `wiki/AGENTS.md`, Result reporting.
 Research contract and templates: `research/README.md`, `research/templates/`.
 User direction: `research/direction.md`, with optional light edits and retained originals.
-Research roadmap: `/wiki/roadmap/`, also shown on the overview, from the single
+Research priorities: Home and `/wiki/roadmap/`, from the single
 Roadmap task list in `research/direction.md`. Priorities use 1–10, with 10 highest;
 difficulty and dependencies remain separate. Unspecified work stays unscored.
 Meeting: `notes/meeting-2026-09-15-mj-park-sandro.md` — corrected meeting notes,
-original transcription and PDF, linked from the roadmap and overview.
+original transcription and PDF, linked from Home and Meetings. Transcribe and
+lightly rephrase only; never add commentary. Standing rule: `wiki/AGENTS.md`.
 Research source records: `research/questions/` and `research/experiments/`.
 Original analyses: `notes/*.md`, with links to their structured research entries.
 Earlier experiment boards remain at `/wiki/themes/`; source notes at `/wiki/earlier/`.

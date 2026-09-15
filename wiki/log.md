@@ -690,3 +690,13 @@
 - Added 8 PDFs under `papers/quiescent populations`, its README, 8 rows in `papers/README.md`, and `wiki/notes/papers-quiescent-parameters.md`.
 - The note tabulates mass, age, metallicity and [α/Fe] references from nine papers, LEGA-C quiescent galaxies, z~0 anchors and the 187-galaxy Ceridwen DR2 medians.
 - The comparison lists numbers only and links the metallicity roadmap item.
+
+## [2026-09-15] query | Six-section navigation and faithful meeting notes
+
+- Replaced the grouped sidebar with Home, Results, Meetings, Papers, Masking and Code & guides; removed the personal/DR2 byline.
+- Home renders the full priority list and planned/running work, with original direction, questions and amendments collapsed below. The Roadmap URL remains an alias with its task and amendment anchors.
+- Results links all saved reports and retains other experiment records and earlier analyses/boards. Code & guides retains earlier documentation and note history.
+- Papers links the catalogued local PDFs and includes them in search. Older catalog paths resolve by their unique filename after the chronometer folder move.
+- Removed agent commentary from the Park/Sandro meeting notes. Retained the handwriting, user clarifications, uncertainty markers and previous anchors; direct links open collapsed records.
+- Saved the transcription-only rule in root and wiki AGENTS.md and the research README: light rephrasing and complete sentences are allowed; added commentary is not.
+- Validation: 32 research tests and the wiki audit passed; 34 notes built. All 34 notes, 29 experiments and 22 PDF links were checked, with all six sections served locally and on the private wiki. Desktop and 360-pixel layouts, search and original-clarification links were reviewed. The audit/build used the installed Command Line Tools via DEVELOPER_DIR after the default Xcode shim required licence acceptance.

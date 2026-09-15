@@ -107,3 +107,13 @@
 - Record explicit dependencies and difficulty separately. Do not infer that a
   high score removes a dependency or that an easy task must rank higher.
 - Retain dated user amendments and original wording when priorities change.
+
+## Meeting notes
+
+- Transcribe and lightly rephrase meeting notes. Join fragments into complete
+  sentences where the meaning is clear. Preserve questions, uncertainty and emphasis.
+- Do not add commentary, explanations, interpretations, caveats or assessments.
+  Do not narrate what the notes say or judge whether their claims are established.
+- Use brief uncertainty markers for unclear handwriting; do not guess missing words.
+- Keep the original handwriting and user clarifications accessible beside the
+  cleaned notes. Apply this rule to existing and future meeting notes.

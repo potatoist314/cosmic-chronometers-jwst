@@ -331,17 +331,15 @@ def record_rows(records, base):
     return '<ul class="research-list">%s</ul>' % "".join(rows) if rows else '<p class="empty">None yet</p>'
 
 
-def roadmap_html(tasks, base, project, compact=False):
-    """Render the same user-ranked tasks on the overview and roadmap."""
+def roadmap_html(tasks, base, project):
+    """Render the full user-ranked task list on Home and its legacy route."""
     by_id = {task["id"]: task for task in tasks}
     rows = []
     for task in sorted(tasks, key=lambda task: -(task.get("priority") or 0)):
         priority = task.get("priority")
-        if compact and priority is None:
-            continue
         score = str(priority) + "/10" if priority is not None else "Unscored"
-        details = '<p>%s</p>' % esc(task["details"]) if task.get("details") and not compact else ""
-        dependency = ", ".join('<a href="%s/roadmap/#%s">%s</a>' % (
+        details = '<p>%s</p>' % esc(task["details"]) if task.get("details") else ""
+        dependency = ", ".join('<a href="%s/#%s">%s</a>' % (
             base, esc(dep), esc(by_id[dep]["title"])) for dep in task.get("depends_on", []))
         constraints = ('<p><span class="attribution">After:</span> %s</p>' % dependency if dependency else "")
         if task.get("effort"):
@@ -477,43 +475,32 @@ def write_pages(records, notes, scratch, base, builder):
 
     direction = next((r for r in records if r["kind"] == "direction"), None)
     tasks = direction["sections"]["Roadmap"] if direction else []
-    roadmap = page_top("Research", "Roadmap") + roadmap_html(tasks, base, project)
+    body = '<h1>Home</h1>' + section("Current priorities", roadmap_html(tasks, base, project))
+    body += section("Planned and running", record_rows([e for e in experiments if e["status"] in {"planned", "running"}], base))
+    content = ""
     if direction:
         s = direction["sections"]
+        content += section("Research direction", messages_html(s["Your words"]))
         if s["References"]:
-            roadmap += section("Meeting notes", md(s["References"]))
+            content += section("Meeting notes", md(s["References"]))
         if s["Amendments"]:
-            roadmap += '<details id="roadmap-amendments"><summary>Decisions and original wording</summary>%s</details>' % messages_html(s["Amendments"])
-        search.append({"t": "Research roadmap", "u": base + "/roadmap/", "d": direction["date"],
-                       "s": "Roadmap", "g": "research priorities", "x": direction["raw"]})
-    page("roadmap", "Roadmap", '<article class="prose research-record">' + roadmap + '</article>')
-    body = page_top("Ceridwen", "Research")
-    if tasks:
-        content = roadmap_html(tasks, base, project, compact=True)
-        content += '<p><a href="%s/roadmap/">Full roadmap</a></p>' % base
-        if direction["sections"]["References"]:
-            content += md(direction["sections"]["References"])
-        body += section("Current priorities", content)
-    if direction:
-        content = messages_html(direction["sections"]["Your words"])
-        body += section("Research direction", content)
-        search.append({"t": direction["title"], "u": base + "/#research-direction", "d": direction["date"],
-                       "s": "Direction", "g": "research", "x": direction["raw"]})
-    overview = []
-    for q in questions:
-        if q["status"] != "open":
-            continue
-        linked = [e for e in experiments if e["question"] == q["id"] or q["id"] in refs(e, "related_questions")]
-        overview.append('<li><h3><a href="%s">%s</a></h3>%s<a class="attribution" href="%s">Experiments · %d</a></li>' % (
-            route(q, base), esc(q["title"]), md(q["sections"]["Context"]), route(q, base), len(linked)))
-    body += section("Research questions", '<ul class="question-overview">%s</ul>' % "".join(overview) if overview else '<p class="empty">None yet</p>')
-    recorded = [e for e in experiments if e["status"] == "recorded"]
-    if recorded:
-        body += section("Existing results", record_rows(recorded[:6], base) + '<p><a href="%s/experiments/">All experiments · %d</a></p>' % (base, len(experiments)))
-    body += section("Results awaiting interpretation", record_rows([e for e in experiments if e["status"] == "results-ready"], base))
-    body += section("Ongoing experiments", record_rows([e for e in experiments if e["status"] in {"planned", "running"}], base))
-    body += '<div class="foot"><a href="%s/questions/">All questions</a><a href="%s/experiments/">All experiments</a></div>' % (base, base)
-    page("", "Research", '<div class="prose">' + body + '</div>')
+            content += '<section id="roadmap-amendments"><h2>Decisions and original wording</h2>%s</section>' % messages_html(s["Amendments"])
+        search.append({"t": "Home", "u": base + "/", "d": direction["date"],
+                       "s": "Home", "g": "research priorities roadmap direction", "x": direction["raw"]})
+    content += section("Questions", record_rows(questions, base))
+    body += '<details class="research-history"><summary>Research record</summary>%s</details>' % content
+    home = '<article class="prose research-record">' + body + '</article>'
+    for path in ("", "roadmap"):
+        page(path, "Home", home)
+
+    saved = [e for e in experiments if e["sections"]["Figures"] or e["sections"]["Measurements"]]
+    body = '<h1>Results</h1>' + record_rows(saved, base)
+    other = [e for e in experiments if e not in saved]
+    body += '<details class="research-history"><summary>Other experiment records</summary>%s</details>' % record_rows(other, base)
+    analyses = [n for n in notes if n["section"] == "Analyses"]
+    body += '<details class="research-history"><summary>Earlier analyses and boards</summary>%s<p><a href="%s/themes/">Experiment boards</a></p></details>' % (
+        builder.feed_rows(analyses, base), base)
+    page("results", "Results", '<div class="prose">' + body + '</div>')
 
     for name, rows, states in (("Questions", questions, QUESTION_STATES), ("Experiments", experiments, EXPERIMENT_STATES)):
         control = '<label class="status-filter">Status <select id="research-status"><option value="">All statuses</option>'
@@ -522,11 +509,46 @@ def write_pages(records, notes, scratch, base, builder):
         body += '<p id="filter-empty" class="empty" hidden>No matches</p><script src="%s/research.js" defer></script>' % base
         page(name.lower(), name, '<div class="prose">' + body + '</div>')
 
-    masking = [n for n in notes if n["section"] == "Masking"]
-    body = page_top("Masking", "Image masking")
-    body += builder.feed_rows(masking, base) if masking else '<p class="empty">None yet</p>'
-    page("masking", "Image masking", '<div class="prose">' + body + '</div>')
+    for name in ("Meetings", "Masking"):
+        rows = [n for n in notes if n["section"] == name]
+        body = '<h1>%s</h1>' % name
+        body += builder.feed_rows(rows, base) if rows else '<p class="empty">None yet</p>'
+        page(name.lower(), name, '<div class="prose">' + body + '</div>')
 
+    papers = [n for n in notes if n["section"] == "Paper drafts"]
+    body = '<h1>Papers</h1>' + section("Reading notes", builder.feed_rows(papers, base) if papers else '<p class="empty">None yet</p>')
+    catalog = project / "papers/README.md"
+    pdfs = []
+    if catalog.is_file():
+        for filename, citation in re.findall(r"^\| `([^`]+\.pdf)` \| ([^|]+) \|", catalog.read_text(encoding="utf-8"), re.M):
+            path = project / "papers" / filename
+            if not path.is_file():
+                # Older catalog rows predate the chronometer subdirectory.
+                matches = list((project / "papers").rglob(Path(filename).name))
+                if len(matches) != 1:
+                    raise ValueError("paper catalog entry has no unique local PDF: " + filename)
+                path = matches[0]
+            url = asset_url(quote(path.relative_to(project).as_posix()), base, project)
+            title = Path(filename).stem
+            citation = html.unescape(citation.strip())
+            pdfs.append('<li><a href="%s">%s</a><p class="attribution">%s</p></li>' % (esc(url), esc(title), esc(citation)))
+            search.append({"t": title, "u": url, "d": "", "s": "Paper", "g": citation, "x": filename + " " + citation})
+    body += section("Local PDFs", '<ul class="paper-list">%s</ul>' % "".join(pdfs) if pdfs else '<p class="empty">None yet</p>')
+    if catalog.is_file():
+        body += '<p><a href="%s">Original catalog</a></p>' % esc(asset_url("papers/README.md", base, project))
+    page("papers", "Papers", '<div class="prose">' + body + '</div>')
+
+    body = '<h1>Code &amp; guides</h1>'
+    for name, label in (("Codebase", "Code"), ("Notebooks", "Notebooks"), ("Guides", "Guides")):
+        rows = [n for n in notes if n["section"] == name and n["status"] != "obsolete" and not n["superseded_by"]]
+        body += section(label, builder.feed_rows(rows, base) if rows else '<p class="empty">None yet</p>')
+    older = [n for n in notes if n["section"] == "Archive" or (
+        n["section"] in {"Codebase", "Notebooks", "Guides"} and (n["status"] == "obsolete" or n["superseded_by"]))]
+    body += '<details class="research-history"><summary>Earlier documentation and history</summary>%s<p><a href="%s/log/">Note history</a></p></details>' % (
+        builder.feed_rows(older, base), base)
+    page("code", "Code & guides", '<div class="prose">' + body + '</div>')
+
+    masking = [n for n in notes if n["section"] == "Masking"]
     reference = [n for n in notes if n["section"] not in {"Analyses", "Masking", "Paper drafts", "Archive"} and n["status"] != "obsolete"]
     earlier = [n for n in notes if n not in reference and n not in masking]
     for path, title, rows in (("reference", "Reference", reference), ("earlier", "Source notes", earlier)):
@@ -563,6 +585,11 @@ CSS = """
 .roadmap td p{margin:6px 0 0;font-size:.9rem}
 .research-section{margin-top:30px}
 .research-section h2{font-size:1.25rem;border-top:1px solid var(--rule);padding-top:18px;margin-bottom:14px}
+.research-history{margin-top:30px}
+.research-history>summary{cursor:pointer}
+.paper-list{list-style:none;padding:0}
+.paper-list li{padding:14px 0;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}
+.paper-list p{margin:6px 0 0}
 .user-message{margin:14px 0 24px}
 .user-message figcaption{font-family:system-ui,sans-serif;font-size:.75rem;color:var(--ink-2);display:flex;gap:12px;flex-wrap:wrap}
 .edited-message{white-space:pre-wrap;overflow-wrap:anywhere}

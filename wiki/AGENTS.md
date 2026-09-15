@@ -48,6 +48,16 @@ direction and scientific methodology.
 
 ## Current scope
 
+### Meeting notes
+
+- Transcribe and lightly rephrase meeting notes. Join fragments into complete
+  sentences where the meaning is clear. Preserve questions, uncertainty and emphasis.
+- Do not add commentary, explanations, interpretations, caveats or assessments.
+  Do not narrate what the notes say or judge whether their claims are established.
+- Use brief uncertainty markers for unclear handwriting; do not guess missing words.
+- Keep original handwriting and user clarifications accessible beside the cleaned
+  notes. Apply this rule to existing and future meeting notes.
+
 ### Research priorities
 
 - Use the same 1–10 scale for all future roadmap guidance and discussion, with
@@ -55,8 +65,8 @@ direction and scientific methodology.
 - Show priority, difficulty and dependencies separately. Keep unspecified tasks
   unscored. Only user-approved scores belong in the canonical roadmap; identify
   agent suggestions as proposed until accepted.
-- Preserve dated amendments and original user wording. Render the overview and
-  roadmap from the same task list; never maintain separate copies of the scores.
+- Preserve dated amendments and original user wording. Render Home and the legacy
+  roadmap route from the same task list; never maintain separate copies of scores.
 - Keep corrected meeting notes alongside their original transcription and source.
 
 ### Active research
@@ -79,6 +89,18 @@ direction and scientific methodology.
 - Record uncertainty. Do not guess why the code was written.
 
 ## Structure
+
+- Navigation has six links: Home, Results, Meetings, Papers, Masking, Code & guides.
+- Home shows the full priority list and planned/running work. Original direction,
+  questions and dated amendments are in its collapsed research record.
+- Results lists saved visual reports and benchmarks, with other experiment records
+  and earlier analyses/boards below. Keep result pages focused on figures and captions.
+- Meetings and Papers have their own collections. Papers links the local PDFs in
+  `papers/README.md`; preserve its citations without promoting historical roles.
+- Code & guides groups code documentation, notebooks and guides, with earlier
+  documentation and note history below. Keep one search across all content.
+- Preserve old URLs and anchors. `/wiki/roadmap/` serves the same content as Home;
+  questions, experiments, reference, source notes, themes and log routes remain.
 
 - `research/` holds existing and new questions, experiments and the user's direction.
 - `notes/` holds the existing reference and analysis source notes.
@@ -105,7 +127,8 @@ status: obsolete   # optional
 ---
 ```
 
-- `section` must be one of Analyses, Masking, Guides, Notebooks, Codebase, Paper drafts, Archive.
+- `section` must be one of Analyses, Meetings, Masking, Guides, Notebooks, Codebase, Paper drafts, Archive.
+- Meeting notes use `section: Meetings` and appear at `/wiki/meetings/`.
 - Masking notes appear under the separate Masking sidebar category at `/wiki/masking/`.
 - `job` is the Hermes card whose worker produced the note. Leave it empty when
   no card produced it. It drives the per-note question box, so never guess it.
@@ -118,7 +141,8 @@ status: obsolete   # optional
 ### Authorship and generated text
 
 User reasoning may have a lightly edited display, with the original text retained.
-Agent source summaries, execution plans and measured results are labelled separately.
+Agent source summaries, execution plans and measured results are labelled separately
+in research records. Never add these to meeting notes.
 The renderer never rewrites text or generates scientific interpretations. Existing
 note routes and evidence remain accessible. Navigation uses short labels.
 

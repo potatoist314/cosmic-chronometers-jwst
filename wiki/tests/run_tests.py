@@ -106,10 +106,10 @@ def author_words(notes: Path) -> set:
 
 
 def site_identity(build_py: Path) -> set:
-    """The site's own name and byline, which the generator carries as data."""
+    """The site's own name, which the generator carries as data."""
     text = build_py.read_text(encoding="utf-8")
     out = set()
-    for key in ("SITE_NAME", "SITE_WHO"):
+    for key in ("SITE_NAME",):
         m = re.search(r'^%s\s*=\s*"([^"]+)"' % key, text, re.M)
         if m:
             out.add(m.group(1))
@@ -230,7 +230,8 @@ def main() -> int:
 
         # Research leads; the earlier theme hub and all of its routes survive.
         bd0 = load_build()
-        check("front page is the research overview", "<h1>Research</h1>" in index)
+        check("front page is Home", "<h1>Home</h1>" in index)
+        check("byline removed", "Liu Hao · DR2 quiescent galaxies" not in index)
         earlier_hub = (out / "themes/index.html").read_text()
         check("earlier boards retain one card per theme",
               earlier_hub.count('class="card"') == len(bd0.THEMES))
@@ -287,12 +288,10 @@ def main() -> int:
         parser = ChromeText()
         parser.feed((out / "index.html").read_text().split("<body>", 1)[-1])
         check("empty front page keeps research navigation",
-              parser.nodes == ["Astro Lab Notebook", "Liu Hao · DR2 quiescent galaxies",
-                               "Research", "Overview", "Roadmap", "Questions", "Experiments", "Masking", "Image masking", "Library",
-                               "Reference", "Source notes", "Earlier boards", "Note log"],
+              parser.nodes == ["Astro Lab Notebook", "Home", "Results", "Meetings", "Papers", "Masking", "Code & guides"],
               repr(parser.nodes))
         empty_page = (out / "index.html").read_text()
-        check("empty research does not invent experiments", empty_page.count("None yet") == 3)
+        check("empty research does not invent experiments", empty_page.count("None yet") == 2)
         check("empty roadmap stays reachable", (out / "roadmap/index.html").is_file())
 
     # --- the word budget -------------------------------------------------

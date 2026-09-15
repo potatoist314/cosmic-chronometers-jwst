@@ -32,6 +32,16 @@ Do not publish a result state without figures or a measured benchmark table.
 
 ## Before delegation
 
+### Meeting notes
+
+Transcribe and lightly rephrase meeting notes. Join fragments into complete
+sentences where the meaning is clear. Preserve questions, uncertainty and emphasis.
+Do not add commentary, explanations, interpretations, caveats or assessments.
+Do not narrate what the notes say or judge whether their claims are established.
+Use brief uncertainty markers for unclear handwriting; do not guess missing words.
+Keep original handwriting and user clarifications accessible beside the cleaned
+notes. Apply this rule to existing and future meeting notes.
+
 ### Roadmap priorities
 
 All future research roadmap guidance and discussion uses **1–10**, with **10
@@ -44,7 +54,7 @@ and an integer `priority` from 1 to 10, or `null` for unscored work. Optional
 `details` and `effort` retain user-specified context and difficulty. Optional
 `depends_on` lists other task IDs. Dependencies do not change the priority score.
 
-The overview and `/wiki/roadmap/` render this same array in descending priority
+Home and the legacy `/wiki/roadmap/` render this same array in descending priority
 order. Ties retain source order. Unscored tasks appear at the end of the full
 roadmap. A task's title links to its supporting meeting note or other evidence.
 
@@ -149,9 +159,11 @@ the existing `/wiki/f/` route. It does not copy or upload result directories.
   a real follow-up brief. Preserve the user's next decision even if no follow-up exists.
 
 The question index groups experiments by question. Experiment pages keep run
-status separate from interpretation status. The homepage shows questions, existing
-results, ongoing experiments and new results
-awaiting interpretation. Existing results do not create a retrospective review backlog.
+status separate from interpretation status. Home shows the full priority list and
+planned/running experiments, with direction, questions and amendments in a collapsed
+research record. Results lists entries with saved figures or benchmark measurements;
+other experiment records and earlier analyses remain accessible below. Existing
+results do not create a retrospective review backlog. Old URLs remain available.
 
 ## Existing research
 

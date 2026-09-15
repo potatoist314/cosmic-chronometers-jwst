@@ -56,9 +56,8 @@ except ImportError as exc:                      # pragma: no cover - install fau
                      % (BRIDGE_DIR, exc))
 
 SITE_NAME = "Astro Lab Notebook"
-SITE_WHO = "Liu Hao · DR2 quiescent galaxies"
 # Left rail order. A section with no note is not shown.
-SECTIONS = ["Analyses", "Masking", "Guides", "Notebooks", "Codebase", "Paper drafts", "Archive"]
+SECTIONS = ["Analyses", "Meetings", "Masking", "Guides", "Notebooks", "Codebase", "Paper drafts", "Archive"]
 THEMES = ["Single-fit accuracy", "Validation on mocks", "Sample and data", "Population results",
           "Compute", "Model and code reference", "Background reading"]
 STATUSES = ("adopted", "dropped", "inconclusive", "planned")
@@ -576,7 +575,7 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 %(desc)s%(extra)s</head><body>
 <div class="frame">
 <nav class="side">
-  <a class="brand" href="%(base)s/">%(name)s<small>%(who)s</small></a>
+  <a class="brand" href="%(base)s/">%(name)s</a>
   <form class="search" role="search" action="%(base)s/" onsubmit="return false">
     <input id="q" type="search" autocomplete="off" placeholder="Search research" aria-label="Search research">
   </form>
@@ -589,20 +588,16 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 </div>
 <script src="%(base)s/search.js" defer></script>
 </body></html>
-""" % {"title": esc(title), "base": base, "name": SITE_NAME, "who": esc(SITE_WHO),
+""" % {"title": esc(title), "base": base, "name": SITE_NAME,
        "rail": rail, "body": body, "extra": extra_head,
        "desc": ('<meta name="description" content="%s">\n' % esc(desc)) if desc else ""}
 
 
 def rail_sections(notes, base, current=""):
-    groups = (("Research", (("", "Overview"), ("roadmap/", "Roadmap"), ("questions/", "Questions"),
-                             ("experiments/", "Experiments"))),
-              ("Masking", (("masking/", "Image masking"),)),
-              ("Library", (("reference/", "Reference"), ("earlier/", "Source notes"),
-                            ("themes/", "Earlier boards"), ("log/", "Note log"))))
-    return "".join('<div><h4>%s</h4><ul>%s</ul></div>' % (heading, "".join(
-        '<li><a href="%s/%s">%s</a></li>' % (base, path, label) for path, label in links))
-        for heading, links in groups)
+    links = (("", "Home"), ("results/", "Results"), ("meetings/", "Meetings"),
+             ("papers/", "Papers"), ("masking/", "Masking"), ("code/", "Code & guides"))
+    return '<ul class="primary-nav">%s</ul>' % "".join(
+        '<li><a href="%s/%s">%s</a></li>' % (base, path, esc(label)) for path, label in links)
 
 
 def rail_note(note, base, headings):
@@ -930,7 +925,7 @@ body{margin:0;background:var(--ground);color:var(--ink);
   font-family:Newsreader,Georgia,"Times New Roman",serif;font-size:18px;line-height:1.55;
   font-optical-sizing:auto}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-code,pre,.mono,.n,.d,.k,.eyebrow,.side h4,dt,.brand small,.search input,.ask input,.ask button{
+code,pre,.mono,.n,.d,.k,.eyebrow,.side h4,dt,.search input,.ask input,.ask button{
   font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
 .frame{max-width:1180px;margin:0 auto;background:var(--paper);border-left:1px solid var(--rule);
   border-right:1px solid var(--rule);display:grid;grid-template-columns:240px 1fr;min-height:100vh}
@@ -938,8 +933,6 @@ nav.side{border-right:1px solid var(--rule);padding:26px 22px;display:flex;flex-
   gap:22px;font-size:.95rem;align-self:start;position:sticky;top:0;max-height:100vh;overflow:auto}
 .brand{font-weight:500;font-size:1.15rem;letter-spacing:-.01em;line-height:1.1;color:var(--ink)}
 .brand:hover{text-decoration:none}
-.brand small{display:block;font-size:.72rem;color:var(--ink-3);letter-spacing:.08em;
-  text-transform:uppercase;margin-top:6px}
 .search{margin:0}
 .search input,.ask input{width:100%;border:1px solid var(--rule);background:var(--ground);
   padding:7px 10px;color:var(--ink);font-size:.85rem;border-radius:0}
@@ -1065,6 +1058,19 @@ th{color:var(--ink-3);font-weight:500;font-size:.72rem;letter-spacing:.06em;text
 
 SEARCH_JS = r"""
 (function () {
+  function revealAnchor() {
+    var target = document.getElementById(location.hash.slice(1));
+    if (!target) return;
+    var block = target.closest('details');
+    while (block) {
+      block.open = true;
+      block = block.parentElement.closest('details');
+    }
+    target.scrollIntoView();
+  }
+  window.addEventListener('hashchange', revealAnchor);
+  revealAnchor();
+
   var base = "__BASE__", box = document.getElementById("q"),
       panel = document.getElementById("results"), data = null, timer = 0;
   if (!box || !panel) return;
@@ -1093,7 +1099,7 @@ SEARCH_JS = r"""
       link.href = n.u;
       link.append(document.createTextNode(n.t));
       detail.className = 'd';
-      detail.textContent = n.d + ' \u00b7 ' + n.s;
+      detail.textContent = n.d ? n.d + ' \u00b7 ' + n.s : n.s;
       link.append(detail);
       panel.append(link);
     });
