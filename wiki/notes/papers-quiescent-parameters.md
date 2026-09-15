@@ -6,43 +6,87 @@ theme: Background reading
 tags: [papers, quiescent, lega-c]
 job:
 source: papers/quiescent populations/README.md
+figures: [literature-vs-ceridwen.png]
 ---
 
-<div id="a-lega-c-quiescent-sample"></div>
+<figure>
+<img src="figures/papers-quiescent-parameters/literature-vs-ceridwen.png" alt="Literature ages, metallicities and alpha enhancements of quiescent galaxies against redshift, with the Ceridwen DR2 sample median in blue">
+<figcaption>Literature quiescent-galaxy ages, metallicities ([Z/H] circles, [Fe/H] squares), enhancements ([α/Fe] circles, [Mg/Fe] squares) versus redshift; blue: 187-galaxy Ceridwen DR2 median and 16–84 spread; absolute log Z shown for Z☉ = 0.0142 / 0.020 (solar reference unfixed).</figcaption>
+</figure>
 
-## LEGA-C quiescent sample
+## Ceridwen DR2 against the literature
 
-| Item | DR3 ([van der Wel+2021](https://arxiv.org/abs/2108.00744)) | Project sample |
+| Quantity | Ceridwen DR2 median (N=187) | Literature at z~0.7 |
 | --- | --- | --- |
-| Release | DR3: 4081 spectra, 3741 galaxies | DR2 ([Straatman+2018](https://arxiv.org/abs/1809.08236), VizieR J/ApJS/239/27) |
-| Redshift | 0.6 < z < 1.0 | median 0.73 |
-| Spectra | VIMOS, R ~ 2500, 6300–8800 Å, S/N ~ 20 per Å | same |
-| Mass limit | log M⋆ ≳ 10.4 | median log M⋆ 11.11 |
-| σ⋆ 16/50/84 | 127 / 166 / 207 km/s | median 204 km/s |
-| Quiescent selection | UVJ ([Muzzin+2013](https://arxiv.org/abs/1303.4409)): 1208 galaxies | NUVrJ + emission-line veto: 187 galaxies (`scripts/run_ceridwen_vast_multi_gpu.py:79-137`) |
+| log M⋆ | 11.11 | Kaushal+2024 QG median 11.2 |
+| σ⋆ | 204 km/s | DR3 median 166 km/s; Kaushal+2024 QG ~200 km/s |
+| Age | 3.02 Gyr, mass-weighted | Borghi+2022a 2–4 Gyr SSP-equivalent; Ceridwen +0.26 Gyr above Borghi on the 68-galaxy overlap |
+| Metallicity | log Z −1.76, absolute; solar reference open ([roadmap: metallicity](/wiki/roadmap/#metallicity)) | Borghi+2022a [Z/H] 0.08; Beverage, Cheng [Fe/H] ~ −0.1 to 0.0 |
+| [α/Fe] | 0.05 | Bevacqua+2023 +0.24; Borghi+2022a +0.13; Beverage [Mg/Fe] ~0.2–0.3 |
 
-<div id="b-reference-values-for-lega-c-quiescent-galaxies-by-paper"></div>
+## Stellar mass
 
-## Reference values for LEGA-C quiescent galaxies, by paper
+| Paper | Sample | log M⋆ |
+| --- | --- | --- |
+| [Kaushal+2024](https://arxiv.org/abs/2307.03725) | 1244, z 0.6–1.0, Bagpipes + Prospector | QG median 11.2 |
+| [Bevacqua+2023](https://arxiv.org/abs/2308.03441) | 183, z 0.60–0.75 | 10.4–11.6 |
+| [Bevacqua+2024](https://arxiv.org/abs/2407.12704) | 637, z 0.6–1.0 | 10.4–11.7 |
+| [Cheng+2025](https://arxiv.org/abs/2505.08858) | ~700, z 0.6–1.0 | 10.2–11.8 |
+| [Cheng+2024](https://arxiv.org/abs/2407.10974) | 456, z 0.6–1.0 | 10.3–11.8 |
+| [Borghi+2022a](https://arxiv.org/abs/2106.14894) | 140, z ~0.7 | > 10.4 |
+| [Cappellari 2023](https://arxiv.org/abs/2208.14974) | 3200, z 0.6–1.0 | > 10.5 |
+| [Gallazzi+2026 I](https://arxiv.org/abs/2512.07952) / [II](https://arxiv.org/abs/2511.11805) | 552, z 0.6–0.77 | > 10 |
 
-| Paper | N | z | Method | log M⋆ | Age | [Z/H] or [Fe/H] | [α/Fe] or [Mg/Fe] |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| [Borghi+2022a](https://arxiv.org/abs/2106.14894) | 140 | ~0.7 | Lick indices, SSP | > 10.4 | 2–4 Gyr SSP-equivalent, declining with z | [Z/H] 0.08 ± 0.18 | 0.13 ± 0.11 |
-| [Beverage+2021](https://arxiv.org/abs/2105.12750) | 65 | 0.59–0.75 | alf | massive | marginal rise with M⋆ | [Fe/H], [Mg/H] track M⋆/Re, not M⋆; ~0.2 dex below z~0 | [Mg/Fe] flat in M⋆ and M⋆/Re |
-| [Beverage+2023](https://arxiv.org/abs/2303.03412) | 135 | ~0.7 | alf, σ stacks | σ 150–250 km/s | rises with σ | Z rises with σ; 0.05 dex precision | [X/Fe] trends mild or absent |
-| [Bevacqua+2023](https://arxiv.org/abs/2308.03441) | 183 | 0.60–0.75 | Mgb, Fe4383 | 10.4–11.6 | – | – | +0.24 ± 0.01; 91% supersolar; no trend with Z, M⋆, σ |
-| [Bevacqua+2024](https://arxiv.org/abs/2407.12704) | 637 | 0.6–1.0 | full spectrum, mass-weighted | 10.4–11.7 | – | mass-dependent lower bound (MEME) | – |
-| [Gallazzi+2026 I](https://arxiv.org/abs/2512.07952) / [II](https://arxiv.org/abs/2511.11805) | 552 | 0.6–0.77 | indices + rizYJ, Bayesian | > 10 | bimodal across ~1e11 M☉; transition at log σ 2.3 | steep→flat at 10^10.8; no QG evolution to SDSS | – |
-| [Cheng+2025](https://arxiv.org/abs/2505.08858) | ~700 | 0.6–1.0 | alf | 10.2–11.8 | rises with U−V | [Fe/H] higher at redder U−V, bluer V−J | – |
-| [Cheng+2024](https://arxiv.org/abs/2407.10974) | 456 | 0.6–1.0 | alf, resolved | 10.3–11.8 | flat gradient | d[Fe/H]/dlog Re −0.05 observed, ~−0.15 intrinsic | flat gradient |
-| [Barone+2022](https://arxiv.org/abs/2107.01054) | LEGA-C + SAMI | 0.60–0.76 | indices | – | no age–Σ relation at z~0.7 | [Z/H] tracks M⋆/Re | – |
-| [Kaushal+2024](https://arxiv.org/abs/2307.03725) | 1244 | 0.6–1.0 | Bagpipes, Prospector | median 11.2 | t50, t90 mass-independent | – | – |
-| [Nersesian+2025](https://arxiv.org/abs/2502.03021) / [2026](https://arxiv.org/abs/2512.10383) | 2908 | 0.6–1.0 | Prospector | > 9 | QG 1.1 Gyr older than SFG; τ_q 1.23 Gyr (0.13 compact PSB) | large QG near solar; compact metal-rich | – |
-| [Cappellari 2023](https://arxiv.org/abs/2208.14974) | 3200 | 0.6–1.0 | pPXF + 28 bands | > 10.5 | quench threshold σ⋆ > 200 km/s | [M/H] on σ, then age | – |
+## Velocity dispersion
 
-<div id="c-z-0-anchors-and-other-redshifts"></div>
+| Paper | Sample | σ⋆ |
+| --- | --- | --- |
+| [van der Wel+2021](https://arxiv.org/abs/2108.00744) | DR3, 3741 galaxies | 16/50/84: 127 / 166 / 207 km/s |
+| [Kaushal+2024](https://arxiv.org/abs/2307.03725) | 1244, z 0.6–1.0 | QG ~200 km/s |
+| [Beverage+2023](https://arxiv.org/abs/2303.03412) | 135, z ~0.7, alf | stacks at 150–250 km/s |
+| [Cappellari 2023](https://arxiv.org/abs/2208.14974) | 3200, z 0.6–1.0, pPXF + 28 bands | quench threshold σ⋆ > 200 km/s |
+| [Gallazzi+2026 I](https://arxiv.org/abs/2512.07952) | 552, z 0.6–0.77 | age transition at log σ 2.3 |
 
-## z~0 anchors and other redshifts
+## Age
+
+| Paper | Sample | Age |
+| --- | --- | --- |
+| [Borghi+2022a](https://arxiv.org/abs/2106.14894) | 140, z ~0.7, Lick indices, SSP | 2–4 Gyr SSP-equivalent, declining with z |
+| [Beverage+2021](https://arxiv.org/abs/2105.12750) | 65, z 0.59–0.75, alf | marginal rise with M⋆ |
+| [Beverage+2023](https://arxiv.org/abs/2303.03412) | 135, z ~0.7, alf, σ stacks | rises with σ |
+| [Gallazzi+2026 I](https://arxiv.org/abs/2512.07952) / [II](https://arxiv.org/abs/2511.11805) | 552, z 0.6–0.77, indices + rizYJ | bimodal across ~1e11 M☉; transition at log σ 2.3 |
+| [Cheng+2025](https://arxiv.org/abs/2505.08858) | ~700, z 0.6–1.0, alf | rises with U−V |
+| [Cheng+2024](https://arxiv.org/abs/2407.10974) | 456, z 0.6–1.0, alf, resolved | flat radial gradient |
+| [Barone+2022](https://arxiv.org/abs/2107.01054) | LEGA-C + SAMI, z 0.60–0.76, indices | no age–Σ relation at z~0.7 |
+| [Kaushal+2024](https://arxiv.org/abs/2307.03725) | 1244, z 0.6–1.0, Bagpipes + Prospector | t50, t90 mass-independent |
+| [Nersesian+2025](https://arxiv.org/abs/2502.03021) / [2026](https://arxiv.org/abs/2512.10383) | 2908, z 0.6–1.0, Prospector | QG 1.1 Gyr older than SFG; τ_q 1.23 Gyr (0.13 compact PSB) |
+
+## Metallicity
+
+| Paper | Sample | [Z/H] or [Fe/H] |
+| --- | --- | --- |
+| [Borghi+2022a](https://arxiv.org/abs/2106.14894) | 140, z ~0.7, Lick indices, SSP | [Z/H] 0.08 ± 0.18 |
+| [Beverage+2021](https://arxiv.org/abs/2105.12750) | 65, z 0.59–0.75, alf | [Fe/H], [Mg/H] track M⋆/Re, not M⋆; ~0.2 dex below z~0 |
+| [Beverage+2023](https://arxiv.org/abs/2303.03412) | 135, z ~0.7, alf, σ stacks | Z rises with σ; 0.05 dex precision |
+| [Bevacqua+2024](https://arxiv.org/abs/2407.12704) | 637, z 0.6–1.0, full spectrum, mass-weighted | mass-dependent lower bound (MEME) |
+| [Gallazzi+2026 I](https://arxiv.org/abs/2512.07952) / [II](https://arxiv.org/abs/2511.11805) | 552, z 0.6–0.77, indices + rizYJ | steep→flat at 10^10.8; no QG evolution to SDSS |
+| [Cheng+2025](https://arxiv.org/abs/2505.08858) | ~700, z 0.6–1.0, alf | [Fe/H] higher at redder U−V, bluer V−J |
+| [Cheng+2024](https://arxiv.org/abs/2407.10974) | 456, z 0.6–1.0, alf, resolved | d[Fe/H]/dlog Re −0.05 observed, ~−0.15 intrinsic |
+| [Barone+2022](https://arxiv.org/abs/2107.01054) | LEGA-C + SAMI, z 0.60–0.76, indices | [Z/H] tracks M⋆/Re |
+| [Nersesian+2025](https://arxiv.org/abs/2502.03021) / [2026](https://arxiv.org/abs/2512.10383) | 2908, z 0.6–1.0, Prospector | large QG near solar; compact metal-rich |
+| [Cappellari 2023](https://arxiv.org/abs/2208.14974) | 3200, z 0.6–1.0, pPXF + 28 bands | [M/H] on σ, then age |
+
+## [α/Fe]
+
+| Paper | Sample | [α/Fe] or [Mg/Fe] |
+| --- | --- | --- |
+| [Bevacqua+2023](https://arxiv.org/abs/2308.03441) | 183, z 0.60–0.75, Mgb + Fe4383 | [α/Fe] +0.24 ± 0.01; 91% supersolar; no trend with Z, M⋆, σ |
+| [Borghi+2022a](https://arxiv.org/abs/2106.14894) | 140, z ~0.7, Lick indices, SSP | [α/Fe] 0.13 ± 0.11 |
+| [Beverage+2021](https://arxiv.org/abs/2105.12750) | 65, z 0.59–0.75, alf | [Mg/Fe] flat in M⋆ and M⋆/Re |
+| [Beverage+2023](https://arxiv.org/abs/2303.03412) | 135, z ~0.7, alf, σ stacks | [X/Fe] trends mild or absent |
+| [Cheng+2024](https://arxiv.org/abs/2407.10974) | 456, z 0.6–1.0, alf, resolved | flat radial gradient |
+
+## Other redshifts
 
 | Reference | Sample | Result |
 | --- | --- | --- |
@@ -58,18 +102,15 @@ source: papers/quiescent populations/README.md
 | [Beverage+2024](https://arxiv.org/abs/2312.05307) | z 1.4 / 2.1 | [Fe/H] −0.2 / −0.3; [Mg/Fe] 0.3 / 0.5 |
 | Reviews | [Renzini 2006](https://arxiv.org/abs/astro-ph/0603479), [Conroy 2013](https://arxiv.org/abs/1301.7095), [Cappellari 2016](https://arxiv.org/abs/1602.04267) | ARA&A |
 
-<div id="d-ceridwen-dr2-medians-against-the-literature"></div>
+## LEGA-C sample definition
 
-## Ceridwen DR2 medians against the literature
-
-| Quantity | Ceridwen DR2 median (N=187) | Literature at z~0.7 |
+| Item | DR3 ([van der Wel+2021](https://arxiv.org/abs/2108.00744)) | Project sample |
 | --- | --- | --- |
-| log M⋆ | 11.11 | Kaushal+2024 QG median 11.2 |
-| σ⋆ | 204 km/s | DR3 median 166 km/s; Kaushal+2024 QG ~200 km/s |
-| Age | 3.02 Gyr, mass-weighted | Borghi+2022a 2–4 Gyr SSP-equivalent; Ceridwen +0.26 Gyr above Borghi on the 68-galaxy overlap |
-| Metallicity | log Z −1.76, absolute; solar reference open ([roadmap: metallicity](/wiki/roadmap/#metallicity)) | Borghi+2022a [Z/H] 0.08; Beverage, Cheng [Fe/H] ~ −0.1 to 0.0 |
-| [α/Fe] | 0.05 | Bevacqua+2023 +0.24; Borghi+2022a +0.13; Beverage [Mg/Fe] ~0.2–0.3 |
+| Release | DR3: 4081 spectra, 3741 galaxies | DR2 ([Straatman+2018](https://arxiv.org/abs/1809.08236), VizieR J/ApJS/239/27) |
+| Redshift | 0.6 < z < 1.0 | median 0.73 |
+| Spectra | VIMOS, R ~ 2500, 6300–8800 Å, S/N ~ 20 per Å | same |
+| Mass limit | log M⋆ ≳ 10.4 | median log M⋆ 11.11 |
+| σ⋆ 16/50/84 | 127 / 166 / 207 km/s | median 204 km/s |
+| Quiescent selection | UVJ ([Muzzin+2013](https://arxiv.org/abs/1303.4409)): 1208 galaxies | NUVrJ + emission-line veto: 187 galaxies (`scripts/run_ceridwen_vast_multi_gpu.py:79-137`) |
 
 Source: `results/dr2-quiescent-summary.csv`; figures in [DR2 quiescent sample](/wiki/n/dr2-quiescent-sample/). [Literature comparison](/wiki/roadmap/#literature-comparison).
-
-<div id="why-this-matters-here"></div>

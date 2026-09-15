@@ -713,3 +713,8 @@
 
 - Pages: [[papers-quiescent-parameters]] (section Literature, own page `/wiki/literature/`, four tables expanded, linked from Home and Papers); `wiki/tests/run_tests.py`, `wiki/tests/test_research.py`.
 - Change: `wiki/build.py` `commentary_faults()` stops the build on agent-commentary labels: Why it matters, Documented contract, Project synthesis, verdict lines, Decisions for Liu Hao.
+
+## [2026-09-15] revise | Literature page by parameter with figure
+
+- Pages: [[papers-quiescent-parameters]]; `scripts/plot_literature_values.py`, `wiki/analyses/papers-quiescent-parameters/literature-vs-ceridwen.{png,pdf}`.
+- Change: Reordered `wiki/notes/papers-quiescent-parameters.md`: comparison table, one table per parameter (mass, velocity dispersion, age, metallicity, alpha), other redshifts, sample definition. Added a figure from `scripts/plot_literature_values.py`.
