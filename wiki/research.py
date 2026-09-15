@@ -572,8 +572,14 @@ def write_pages(records, notes, scratch, base, builder):
     page("literature", "Literature values", '<div class="prose">' + body + '</div>')
 
     body = '<h1>Code &amp; guides</h1>'
+    default_model = next((n for n in notes if n["slug"] == "default-fit-parameters"
+                          and n["status"] != "obsolete" and not n["superseded_by"]), None)
+    if default_model:
+        body += '<section class="default-model"><h2><a href="%s/n/%s/">%s</a></h2>%s</section>' % (
+            base, default_model["slug"], esc(default_model["title"]),
+            builder.markdown(default_model["body"], base))
     for name, label in (("Codebase", "Code"), ("Notebooks", "Notebooks"), ("Guides", "Guides")):
-        rows = [n for n in notes if n["section"] == name and n["status"] != "obsolete" and not n["superseded_by"]]
+        rows = [n for n in notes if n["section"] == name and n["status"] != "obsolete" and not n["superseded_by"] and n is not default_model]
         body += section(label, builder.feed_rows(rows, base) if rows else '<p class="empty">None yet</p>')
     older = [n for n in notes if n["section"] == "Archive" or (
         n["section"] in {"Codebase", "Notebooks", "Guides"} and (n["status"] == "obsolete" or n["superseded_by"]))]
@@ -610,6 +616,29 @@ FILTER_JS = """(() => {
 """
 
 CSS = """
+.default-model{margin:28px 0 42px}
+.default-model>h2{margin:0 0 8px;font-size:1.55rem}
+.default-model>h2 a{color:var(--ink)}
+.default-model-meta,.default-model-sources{font-family:system-ui,sans-serif;color:var(--ink-2);font-size:.76rem;line-height:1.7;max-width:none}
+.default-model-sources{margin:18px 0 0}
+.default-parameter-table{width:100%;table-layout:fixed;font-size:.95rem;margin:18px 0 28px;line-height:1.5}
+.default-parameter-table th,.default-parameter-table td{padding:14px 14px 14px 0;overflow-wrap:anywhere}
+.default-parameter-table th:last-child,.default-parameter-table td:last-child{padding-right:0}
+.default-parameter-table thead th:nth-child(1){width:28%}
+.default-parameter-table thead th:nth-child(2){width:28%}
+.default-parameter-table tbody th{font:inherit;font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink)}
+.default-parameter-table th code{display:block;font-size:.7rem;line-height:1.5;font-weight:400;color:var(--ink-2);margin-top:5px}
+.default-parameter-table small{display:block;color:var(--ink-2);font-size:.83rem;margin-top:5px}
+.default-fixed-table thead th:nth-child(2){width:auto}
+@media(max-width:760px){
+  .default-parameter-table,.default-parameter-table tbody,.default-parameter-table tr,.default-parameter-table th,.default-parameter-table td{display:block;min-width:0;width:100%}
+  .default-parameter-table thead{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .default-parameter-table tr{padding:16px 0;border-bottom:1px solid var(--rule)}
+  .default-parameter-table tbody th,.default-parameter-table td{border:0;padding:0}
+  .default-parameter-table td{margin-top:12px}
+  .default-parameter-table td::before{content:attr(data-label);display:block;font-family:system-ui,sans-serif;font-size:.7rem;color:var(--ink-2);margin-bottom:3px}
+  .default-parameter-table th code{margin-top:2px}
+}
 .roadmap{width:100%;table-layout:fixed;border-collapse:collapse}
 .roadmap caption{text-align:left;font-family:system-ui,sans-serif;font-size:.8rem;color:var(--ink-2);padding:8px 0}
 .roadmap th,.roadmap td{text-align:left;vertical-align:top;padding:12px 8px;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}

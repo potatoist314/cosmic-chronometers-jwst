@@ -7,7 +7,10 @@ amendments in the collapsed research record. `/wiki/roadmap/` is the Home alias.
 Results: `/wiki/results/`, with saved visual reports and benchmarks first;
 other experiment records and earlier analyses/boards remain accessible below.
 Meetings: `/wiki/meetings/`. Papers: `/wiki/papers/`, including indexed local PDFs.
-Code, notebooks and guides: `/wiki/code/`, including earlier documentation/history.
+Code, notebooks and guides: `/wiki/code/`, with current default priors and physical
+meanings expanded first, followed by documentation and earlier history.
+Canonical parameter reference: `notes/default-fit-parameters.md`; verify against
+`notebooks/ceridwen_integrated_photometry_spectra.ipynb` when defaults change.
 Legacy workflow routes: `/wiki/questions/` and `/wiki/experiments/`.
 Result pages show fits and captions; full records live at `/wiki/e/<id>/record/`.
 Governing presentation rules: `wiki/AGENTS.md`, All pages and Result reporting.
@@ -81,6 +84,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 ## Model and code reference
 
+- `notes/default-fit-parameters.md` — current notebook defaults: 14 sampled values, fixed settings and marginalised calibration; expanded at the top of Code & guides
 - `notes/notebook-map.md` — Notebook map (2026-09-09 · old: _old/notebooks/notebook-map.html)
 - `notes/ceridwen-observations-model.md` — Ceridwen: observations and SedModel (2026-09-06 · old: _old/codebase/ceridwen-observations-model.html)
 - `notes/ceridwen-likelihood-sampling.md` — Ceridwen: likelihood and sampling (2026-09-06 · old: _old/codebase/ceridwen-likelihood-sampling.html)

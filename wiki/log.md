@@ -723,3 +723,10 @@
 
 - Pages: Home, priority details, research questions and result figures.
 - Change: Added explicit resolve/reopen controls, immutable activity history, Apple Pencil writing sheets, figure backgrounds and recoverable local drafts.
+
+## [2026-09-15] codebase | Current default priors
+
+- Pages: `notes/default-fit-parameters.md`, Code & guides, `index.md`.
+- Change: Expanded the current notebook's 14 sampled values, priors and physical meanings above the code links, followed by fixed settings and three marginalised calibration coefficients. The canonical note supplies both views; rows stack on narrow screens.
+- Sources: Current joint-fit notebook configuration and priors, grid axes and metadata, SFH transform, attenuation, noise and calibration implementations. Fitting defaults unchanged.
+- Validation: Wiki audit and 35-note build passed; 33 of 34 research tests passed, including both new tests. The unchanged corpus check reports the unrelated `results/calibration-order` directory missing from `result_groups`. Page and all eight source/reference links returned HTTP 200; private site served the update. Safari layouts checked at 360, 736 and 1024 CSS pixels.

@@ -130,8 +130,13 @@ direction and scientific methodology.
   and earlier analyses/boards below. Keep result pages focused on figures and captions.
 - Meetings and Papers have their own collections. Papers links the local PDFs in
   `papers/README.md`; preserve its citations without promoting historical roles.
-- Code & guides groups code documentation, notebooks and guides, with earlier
-  documentation and note history below. Keep one search across all content.
+- Code & guides opens with the expanded current default model from
+  `notes/default-fit-parameters.md`: sampled priors and physical meanings, fixed
+  settings, then marginalised calibration. Keep this reference aligned with
+  `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, without changing defaults.
+  Parameter references use tables and source links; they do not require teaching
+  blocks. Code documentation, notebooks, guides and earlier history follow.
+  Keep one search across all content.
 - Preserve old URLs and anchors. `/wiki/roadmap/` serves the same content as Home;
   questions, experiments, reference, source notes, themes and log routes remain.
 

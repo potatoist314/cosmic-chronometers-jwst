@@ -348,6 +348,7 @@ BODY_WORD_CAP = 50
 FIGURE_RE = re.compile(r"<figure\b.*?</figure>", re.S | re.I)
 DETAILS_RE = re.compile(r"<details\b.*?</details>", re.S | re.I)
 DL_RE = re.compile(r"<dl\b.*?</dl>", re.S | re.I)
+TABLE_RE = re.compile(r"<table\b.*?</table>", re.S | re.I)
 FIGCAPTION_RE = re.compile(r"<figcaption\b[^>]*>(.*?)</figcaption>", re.S | re.I)
 # Full stops that end an abbreviation, not a sentence.
 ABBREVIATION_RE = re.compile(
@@ -376,6 +377,7 @@ def budget_text(body_md: str) -> str:
     text = FIGURE_RE.sub(" ", body_md)
     text = DETAILS_RE.sub(" ", text)
     text = DL_RE.sub(" ", text)
+    text = TABLE_RE.sub(" ", text)
     text = strip_definition_lists(text)
     text = "\n".join(ln for ln in text.split("\n") if not ln.strip().startswith("|"))
     return text

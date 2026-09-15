@@ -401,6 +401,38 @@ class ResearchTests(unittest.TestCase):
             self.assertEqual(re.findall(r'<a href="([^"]+)">([^<]+)</a>', navigation), expected)
             self.assertNotIn("Liu Hao · DR2 quiescent galaxies", markup)
 
+    def test_default_model_is_expanded_before_code_and_has_one_source(self):
+        source = WIKI / "notes/default-fit-parameters.md"
+        (self.notes / source.name).write_text(source.read_text())
+        for base in ("/wiki", ""):
+            with self.subTest(base=base):
+                out = self.build(base)
+                landing = (out / "code/index.html").read_text()
+                canonical = (out / "n/default-fit-parameters/index.html").read_text()
+                featured = re.search(r'<section class="default-model">(.*?)</section>', landing, re.S)[1]
+                self.assertLess(landing.index('class="default-model"'), landing.index('<h2 id="code">Code</h2>'))
+                self.assertNotIn("<details", featured)
+                self.assertIn(base + "/n/default-fit-parameters/", featured)
+                self.assertIn(base + "/f/notebooks/ceridwen_integrated_photometry_spectra.ipynb", featured)
+                tables = re.findall(r'<table\b.*?</table>', featured, re.S)
+                self.assertEqual(len(tables), 3)
+                for table in tables:
+                    self.assertIn(table, canonical)
+                    cells = re.findall(r'<td\b([^>]*)>', table)
+                    self.assertTrue(all('data-label=' in attrs for attrs in cells))
+                counts = re.findall(r'data-parameter="([^"]+)" data-count="(\d+)"', tables[0])
+                self.assertEqual(len(counts), 8)
+                self.assertEqual(sum(int(count) for _, count in counts), 14)
+                self.assertEqual(dict(counts)["logsfr_ratios"], "7")
+                self.assertNotIn('data-parameter=', tables[2])
+                search = json.loads((out / "search.json").read_text())
+                self.assertTrue(any(item["u"] == base + "/n/default-fit-parameters/" for item in search))
+
+    def test_html_parameter_tables_share_markdown_table_budget_exemption(self):
+        table = '<table><tbody><tr><td>' + 'value ' * 70 + '</td></tr></tbody></table>'
+        self.assertEqual(build.body_words('Visible prose.\n' + table), 2)
+        self.assertGreater(build.body_words('Visible prose.\n' + 'value ' * 70), build.BODY_WORD_CAP)
+
     def test_light_edit_preserves_original_and_does_not_render_markup(self):
         edited = "I think this might help, but I am not sure. <b>literal</b>"
         message = dict(self.message, display_text=edited)
