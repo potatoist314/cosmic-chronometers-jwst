@@ -48,7 +48,7 @@ date: 2026-09-15
     "title": "Select one high-\\(\\mathrm{S/N}\\) spectrum with strong absorption features",
     "priority": 7,
     "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#one-strong-spectrum",
-    "details": "Choose one case for detailed fitting and literature comparison.",
+    "details": "Choose one case for detailed fitting and literature comparison. Chosen 17 Sep 2026: M1_210210.",
     "depends_on": [
       "metallicity"
     ]
@@ -128,6 +128,11 @@ date: 2026-09-15
     "date": "2026-09-15",
     "text": "Implement the plan.",
     "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md"
+  },
+  {
+    "date": "2026-09-17",
+    "text": "i want to fix on a single high S/N galaxy with strong absorption features from now on as well (210210?) - this is the current roadmap trajectoy.",
+    "display_text": "I want to fix on a single high S/N galaxy with strong absorption features from now on as well (210210?) - this is the current roadmap trajectory."
   }
 ]
 ```
