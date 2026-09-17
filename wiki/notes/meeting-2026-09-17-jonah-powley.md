@@ -14,7 +14,7 @@ job:
 
 #### Star-formation-history prior
 
-- The Student-t SFH prior, \(T(\mu_{\mathrm{SFH}}, \sigma, 3)\), always has 3 degrees of freedom [?]. For a physically motivated rising star-formation rate, define a higher prior where you physically expect more star formation. ★ This has a strong impact on stellar age.
+- The Student-t SFH prior, \(T(\mu_{\mathrm{SFH}}, \sigma, 3)\), has 3 degrees of freedom. For a physically motivated rising star-formation rate, define a higher prior where you physically expect more star formation. ★ This has a strong impact on stellar age.
 - There is a huge dependence on the SFH prior! ★ Look into the rising continuity prior. His rising continuity prior comes from another paper.
 - The photographed figure shows stellar age for SFH prior (rising, flat) against stellar abundance (solar-scaled, \(\alpha\)-enhanced): 1.19, 1.07, 1.46 and 1.39 Gyr.
 - prospect utils is on GitHub. He made a function to define age bins more explicitly, but it is probably not helpful.
@@ -22,7 +22,7 @@ job:
 #### Abundances and lines
 
 - The Mg b absorption line is the main constraint for \(\alpha/\mathrm{Fe}\).
-- Ca I [?] can be masked because of potential IGM [ISM?] contamination.
+- Ca I [?] can be masked because of potential IGM contamination.
 - ★ Generally, age estimates get older for non-\(\alpha\)-enhanced spectra.
 - \(\alpha\)-enhancement gives a better formation-timescale constraint and more confidence in the physical formation mechanism.
 
@@ -36,7 +36,7 @@ job:
 #### His setup
 
 - ★ Jonah sent me his priors and his first-year PhD report. Get him to send the report.
-- ★ What is \(f_{\mathrm{AGN}}\)? ★ Is his AGN torus parameter uniform in log space? ★ His redshift is a free parameter with [unfinished].
+- ★ What is \(f_{\mathrm{AGN}}\)? ★ Is his AGN torus parameter uniform in log space? ★ His redshift is a free parameter with [the handwriting stops here].
 
 #### Other
 
@@ -53,12 +53,12 @@ job:
 
 ### Page 4
 
-- → T(μ_SFH, σ [?], 3). Margin: “a/w 3” [always 3?].
+- → T(μ_SFH, σ [?], 3). Margin: “a/w 3” [3 degrees of freedom].
 - Student t SFH → physically motivated rising star formation rate. Define higher prior where you expect physically more star formation.
 - Blue ★: Strong impact on stellar age.
 - Get him to send report.
 - Mg b absorption line is main constraint for α/Fe.
-- Ca I [?] can be masked b/c of potential IGM [ISM?] contamination.
+- Ca I [?] can be masked b/c of potential IGM contamination.
 
 ### Page 5
 
@@ -89,7 +89,7 @@ job:
 - ★ Jonah sent me his priors and his 1st year PhD report.
 - ★ What is fagn?
 - ★ His AGN torus parameter is uniform in log space?
-- ★ His redshift is a free parameter with [unfinished].
+- ★ His redshift is a free parameter with [the handwriting stops here].
 - ★ Photometry massively changed mass and dust constraints in his example fit.
 - His tau dust 2 is around 0.77.
 - ★ Infrared data → (page 9) ① AGN torus ② Dust emission } “More physical model”.
@@ -100,6 +100,7 @@ job:
 <summary>Sources</summary>
 
 - [Original handwritten notes](/wiki/f/reports/meeting-2026-09-17-student-group-jonah-powley.pdf), pages 4–9 of a nine-page file exported on 17 September 2026; pages 1–3 are the [student group meeting](/wiki/n/meeting-2026-09-17-student-group/). The page-4 boundary is a reading of the notes, not marked in them; the meeting date is not written in the notes.
+- Clarifications, 17 September 2026: “CIRCI and Ca I are correctly marked. it's IGM contamination. student t df 3 means it should have 3 degrees of freedom.”
 - Original request: “/Users/liuhao/Downloads/group\ student\ meeting.pdf Here's notes from another two meetings: first with a general student group meeting (and some general questions I had after hearing about what others were working on), and next notes from a meeting with Jonah Powley who works extensively with prospector SED fitting and passive quiescent galaxies”
 
 </details>
