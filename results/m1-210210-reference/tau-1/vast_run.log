@@ -1,0 +1,42 @@
+[17:24:59] calibration arms: rented instance 51331110: offer 43619154 RTX 5060 Ti bid $0.1090/h (on demand $0.1841/h) British Columbia, CA host 78432 rel 0.998
+[17:25:00] calibration arms: waiting for instance 51331110: status=None
+[17:25:16] calibration arms: waiting for instance 51331110: status=None
+[17:25:36] calibration arms: cloning branch absorption-mask
+[17:26:20] calibration arms: uploading ceridwen working tree
+[17:26:26] calibration arms: uploading external/sedpy_jax working tree
+[17:26:35] calibration arms: submodule trees uploaded: {'ceridwen': 'c540bc7', 'external/sedpy_jax': '754a118'}
+[17:26:35] calibration arms: uploading data/raw
+[17:27:23] calibration arms: uploaded 1988 spectra
+[17:27:29] calibration arms: bootstrapping the CUDA environment
+[17:31:56] calibration arms: bootstrap: sedpy_jax wavelength-dependent input resolution verified
+[17:31:56] calibration arms: bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+[17:31:56] calibration arms: bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5
+[17:31:56] calibration arms: bootstrap: Select the 'Ceridwen (Vast.ai GPU)' kernel in JupyterLab.
+[17:32:00] calibration arms: probe: devices [CudaDevice(id=0)]
+[17:32:00] calibration arms: probe: backend gpu
+[17:32:00] calibration arms: probe: overlay          40G  8.9G   32G  23% /
+[17:32:07] calibration arms: launched the remote runner
+[17:34:10] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.036 of cap $0.50
+[17:36:17] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.040 of cap $0.50
+[17:38:23] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.043 of cap $0.50
+[17:40:29] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.048 of cap $0.50
+[17:40:32] calibration arms: pulling results
+[17:42:39] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.052 of cap $0.50
+[17:44:45] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.057 of cap $0.50
+[17:46:51] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.061 of cap $0.50
+[17:48:57] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.065 of cap $0.50
+[17:51:03] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.070 of cap $0.50
+[17:53:09] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.074 of cap $0.50
+[17:55:15] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.077 of cap $0.50
+[17:57:21] calibration arms: 0/1 done, 0 failed, running ['poly10/M1_210210']; spend $0.083 of cap $0.50
+[17:57:24] calibration arms: pulling results
+[17:59:31] calibration arms: 1/1 done, 0 failed, running []; spend $0.086 of cap $0.50
+[17:59:34] calibration arms: runner has exited
+[17:59:34] calibration arms: pulling results
+[17:59:50] calibration arms: destroyed instance 51331110
+{
+ "instance_id": 51331110,
+ "spent_usd": 0.0864,
+ "instances_left": [],
+ "error": null
+}

@@ -867,3 +867,10 @@
 - Pages: Home, research/direction.md
 - Change: Roadmap task `dust-index-railing-weak-uv` added at priority 9 on Liu Hao's instruction, in his wording, with the original under Amendments. Codex quota exhausted until 19 Sep, so no Codex pass.
 - Validation: wiki build passes; the task shows on Home at 9/10 and its priority page opens.
+
+## [2026-09-17] analysis | M1_210210 reference fit and prior KL divergence
+
+- Pages: notes/m1-210210-reference.md, research/experiments/e-m1-210210-reference.md
+- Change: Two order-10 fits of M1_210210 on Vast (tau_dust Uniform(0, 0.2) at 55ff5f4; production defaults at cc983ce with tau_dust Uniform(0, 1) and sampled z, sigma_star) beside the stored order-3 fit: parameter table, fit, SFH and corner figures. Per-parameter KL divergence from the prior in bits from `scripts/plot_prior_kl.py`, figure and table written straight to `wiki/analyses/m1-210210-reference/` on Liu Hao's instruction. Codex quota exhausted until 19 Sep, so the note text and captions had no Codex pass.
+- Files: scripts/plot_prior_kl.py, scripts/per_galaxy_diagnostics.py (`prior_unit_values`, `marginal_kl_bits`), tests/test_per_galaxy_diagnostics.py, results/m1-210210-reference/, wiki/analyses/m1-210210-reference/.
+- Validation: four figures checked at 900 px; the first fit figure had the legend on the data and the polynomial panel scaled by unfitted pixels, both fixed; KL tests pass.

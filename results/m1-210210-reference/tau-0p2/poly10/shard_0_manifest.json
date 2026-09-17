@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "started_at_utc": "2026-09-17T17:11:36.324557+00:00",
+  "shard_index": 0,
+  "num_shards": 1,
+  "fits_per_gpu": 1,
+  "gpu": {
+    "index": 0,
+    "uuid": "GPU-20196f92-560b-6c66-8bc4-953109d0dd05",
+    "name": "NVIDIA GeForce RTX 5060 Ti",
+    "memory_mib": 16311
+  },
+  "vast_instance_id": null,
+  "project_commit": null,
+  "ceridwen_commit": null,
+  "targets": [
+    {
+      "manifest_index": 2,
+      "object_id": 210210,
+      "spect_id": "M1_210210",
+      "sn": 62.20000076293945,
+      "shard_index": 0,
+      "seed": 20260832
+    }
+  ],
+  "results": {
+    "M1_210210": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-17T17:20:41.158393+00:00"
+    }
+  },
+  "completed_at_utc": "2026-09-17T17:20:41.158857+00:00",
+  "failed_targets": []
+}

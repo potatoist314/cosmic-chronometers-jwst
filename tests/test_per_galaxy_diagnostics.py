@@ -150,5 +150,42 @@ class RebuildFreeDustModel(unittest.TestCase):
         self.assertAlmostEqual(terms["lnl"] / galaxy.log_likelihoods[index], 1.0, places=5)
 
 
+
+class MarginalKL(unittest.TestCase):
+    """D_KL(posterior || prior) per parameter against closed forms, in bits."""
+
+    PRIOR = '{"type": "Uniform", "low": 0.0, "high": 10.0, "name": ""}'
+
+    def kl(self, draws, prior_text=None):
+        prior = pgd.parse_prior(prior_text or self.PRIOR)
+        return pgd.marginal_kl_bits(pgd.prior_unit_values(draws, prior), np.ones(len(draws)))
+
+    def test_gaussian_under_uniform(self):
+        # log2(W) - 0.5 log2(2 pi e s^2) for a Gaussian well inside a Uniform of width W.
+        sigma = 0.05
+        draws = np.random.default_rng(1).normal(5.0, sigma, 40000)
+        expected = np.log2(10.0) - 0.5 * np.log2(2 * np.pi * np.e * sigma**2)
+        self.assertAlmostEqual(self.kl(draws), expected, delta=0.03)
+
+    def test_posterior_equal_to_prior_is_zero(self):
+        draws = np.random.default_rng(2).uniform(0.0, 10.0, 40000)
+        self.assertAlmostEqual(self.kl(draws), 0.0, delta=0.01)
+        draws = 0.3 * np.random.default_rng(3).standard_t(2.0, 40000)
+        self.assertAlmostEqual(self.kl(draws, "StudentT(mean=0.0, scale=0.3, df=2.0)"), 0.0, delta=0.01)
+
+    def test_railing_at_the_prior_edge(self):
+        # Posterior flat over the top tenth of the prior: log2(10) bits.
+        draws = np.random.default_rng(4).uniform(9.0, 10.0, 40000)
+        self.assertAlmostEqual(self.kl(draws), np.log2(10.0), delta=0.01)
+
+    def test_weights_match_resampling(self):
+        # Prior draws weighted by a Gaussian likelihood equal the Gaussian posterior.
+        draws = np.random.default_rng(5).uniform(0.0, 10.0, 400000)
+        weights = np.exp(-0.5 * ((draws - 5.0) / 0.2) ** 2)
+        prior = pgd.parse_prior(self.PRIOR)
+        expected = np.log2(10.0) - 0.5 * np.log2(2 * np.pi * np.e * 0.2**2)
+        self.assertAlmostEqual(pgd.marginal_kl_bits(pgd.prior_unit_values(draws, prior), weights), expected, delta=0.03)
+
+
 if __name__ == "__main__":
     unittest.main()

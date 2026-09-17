@@ -527,6 +527,29 @@ def weighted_quantile(values, weights, q):
     return float(np.interp(q, cdf, values[order]))
 
 
+def prior_unit_values(values, prior) -> np.ndarray:
+    """u = F_prior(theta): the prior CDF of each sample, so the prior becomes Uniform(0, 1)."""
+    return np.clip(np.asarray(prior.inverse_unit_transform(np.asarray(values, dtype=float)), dtype=float), 0.0, 1.0)
+
+
+def marginal_kl_bits(unit_values, weights, bins=40) -> float:
+    """D_KL(posterior || prior) of one parameter in bits, from weighted samples.
+
+    ``unit_values`` are the samples mapped through the prior CDF (``prior_unit_values``).
+    KL is unchanged by that map, and the prior density becomes 1 on [0, 1], so
+    D_KL = sum_i P_i log2(P_i / du_i) over a histogram of u: ``bins`` equal bins across
+    the weighted 0.05-99.95% range plus one outer bin each side.
+    """
+    u = np.asarray(unit_values, dtype=float)
+    w = np.asarray(weights, dtype=float)
+    lo, hi = (weighted_quantile(u, w, q) for q in (0.0005, 0.9995))
+    edges = np.unique(np.concatenate([[0.0], np.linspace(lo, hi, bins + 1), [1.0]]))
+    mass, _ = np.histogram(u, bins=edges, weights=w)
+    mass = mass / mass.sum()
+    keep = mass > 0
+    return float(np.sum(mass[keep] * np.log2(mass[keep] / np.diff(edges)[keep])))
+
+
 def posterior_median_f_calib(galaxy: GalaxyResult) -> float:
     """Posterior median of the calibration floor, matching the notebook's equal-weight median."""
     return float(np.exp(weighted_quantile(galaxy.samples["log_f_calib"], posterior_weights(galaxy), 0.5)))

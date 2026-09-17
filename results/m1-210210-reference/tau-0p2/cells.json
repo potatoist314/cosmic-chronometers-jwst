@@ -1,0 +1,15 @@
+[
+ {
+  "name": "poly10/M1_210210",
+  "arm": "poly10",
+  "target": "M1_210210",
+  "object_id": 210210,
+  "seed": 20260832,
+  "env": {
+   "CERIDWEN_CALIBRATION_ORDER": "10",
+   "CERIDWEN_PHOTOMETRY": "cosmos_total",
+   "CERIDWEN_SFH_PRIOR": "student",
+   "CERIDWEN_FREE_DUST_INDEX": "1"
+  }
+ }
+]
