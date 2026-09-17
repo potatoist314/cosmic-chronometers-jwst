@@ -36,7 +36,7 @@ job:
 #### His setup
 
 - ★ Jonah sent me his priors and his first-year PhD report. Get him to send the report.
-- ★ What is \(f_{\mathrm{AGN}}\)? ★ Is his AGN torus parameter uniform in log space? ★ His redshift is a free parameter with [the handwriting stops here].
+- ★ What is \(f_{\mathrm{AGN}}\)? ★ Is his AGN torus parameter uniform in log space? ★ His redshift is a free parameter with wiggle around \(\pm 0.1\).
 
 #### Other
 
@@ -89,7 +89,7 @@ job:
 - ★ Jonah sent me his priors and his 1st year PhD report.
 - ★ What is fagn?
 - ★ His AGN torus parameter is uniform in log space?
-- ★ His redshift is a free parameter with [the handwriting stops here].
+- ★ His redshift is a free parameter with wiggle around \(\pm 0.1\) [completed from Liu Hao's clarification; the handwriting stops at “with”].
 - ★ Photometry massively changed mass and dust constraints in his example fit.
 - His tau dust 2 is around 0.77.
 - ★ Infrared data → (page 9) ① AGN torus ② Dust emission } “More physical model”.
@@ -100,7 +100,7 @@ job:
 <summary>Sources</summary>
 
 - [Original handwritten notes](/wiki/f/reports/meeting-2026-09-17-student-group-jonah-powley.pdf), pages 4–9 of a nine-page file exported on 17 September 2026; pages 1–3 are the [student group meeting](/wiki/n/meeting-2026-09-17-student-group/). The page-4 boundary is a reading of the notes, not marked in them; the meeting date is not written in the notes.
-- Clarifications, 17 September 2026: “CIRCI and Ca I are correctly marked. it's IGM contamination. student t df 3 means it should have 3 degrees of freedom.”
+- Clarifications, 17 September 2026: “CIRCI and Ca I are correctly marked. it's IGM contamination. student t df 3 means it should have 3 degrees of freedom.” “free param with wiggle around plus minus 0.1”
 - Original request: “/Users/liuhao/Downloads/group\ student\ meeting.pdf Here's notes from another two meetings: first with a general student group meeting (and some general questions I had after hearing about what others were working on), and next notes from a meeting with Jonah Powley who works extensively with prospector SED fitting and passive quiescent galaxies”
 
 </details>
