@@ -50,6 +50,12 @@ date: 2026-09-15
     "source": "wiki/research/direction.md"
   },
   {
+    "id": "dust-index-railing-weak-uv",
+    "title": "Look into why the Conroy dust index is railing and the UV is so weak",
+    "priority": 9,
+    "source": "wiki/research/direction.md"
+  },
+  {
     "id": "literature-comparison",
     "title": "Compare published methods, ages and metallicities",
     "priority": 8,
@@ -216,6 +222,11 @@ date: 2026-09-15
     "date": "2026-09-17",
     "text": "8/10 priority - consider adding a rising sfh continuityi prior, and pull and download the turner 2015 paper into this project repo",
     "display_text": "8/10 priority: consider adding a rising SFH continuity prior, and pull and download the Turner 2015 paper into this project repo."
+  },
+  {
+    "date": "2026-09-17",
+    "text": "research priority to add - look into why conroy dust index is railing and UV is so weak - 9/10 priority",
+    "display_text": "Research priority to add: look into why the Conroy dust index is railing and the UV is so weak. 9/10 priority."
   }
 ]
 ```
