@@ -51,6 +51,13 @@ date: 2026-09-15
     "details": "Include expected parameters for local elliptical galaxies and their relationship to the LEGA-C population. Compare established inference methods with Ceridwen. Can start independently."
   },
   {
+    "id": "alpha-fe-t50-vs-mass",
+    "title": "Plot \\([\\alpha/\\mathrm{Fe}]\\) and \\(t_{50}\\) against stellar mass",
+    "priority": 8,
+    "source": "wiki/research/direction.md",
+    "details": "Do plots of something like \\([\\alpha/\\mathrm{Fe}]\\) versus stellar mass, and \\(t_{50}\\) versus stellar mass. The physical justification is that you can constrain a relative trend given only a corner plot distribution if you can plot against some x axis."
+  },
+  {
     "id": "strong-spectrum",
     "title": "Select one high-\\(\\mathrm{S/N}\\) spectrum with strong absorption features",
     "priority": 7,
@@ -65,6 +72,12 @@ date: 2026-09-15
     "title": "Fit velocity dispersion as a broadening parameter",
     "priority": 6,
     "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#velocity-dispersion"
+  },
+  {
+    "id": "mock-spectra-test-suite",
+    "title": "Set up the mock spectra test suite",
+    "priority": 6,
+    "source": "wiki/research/direction.md"
   },
   {
     "id": "photometric-systematics",
@@ -170,6 +183,16 @@ date: 2026-09-15
     "date": "2026-09-17",
     "text": "well, give z a plus minus 0.1 wiggle and dont even make these opt in switches - just have this as default and note it appropriately",
     "source_ref": "Redshift and stellar velocity dispersion as default free parameters"
+  },
+  {
+    "date": "2026-09-17",
+    "text": "another priority - 8/10 -> do plots of something like alpha/fe versus stellar mass, and t50 versus stellar mass . the physical justification is that you can constrain a relative trend given only a corner plot distribution if you can plot against some x axis",
+    "display_text": "Another priority, 8/10: do plots of something like \\([\\alpha/\\mathrm{Fe}]\\) versus stellar mass, and \\(t_{50}\\) versus stellar mass. The physical justification is that you can constrain a relative trend given only a corner plot distribution if you can plot against some x axis."
+  },
+  {
+    "date": "2026-09-17",
+    "text": "add another priority - setting up the mock spectra test suite, 6/10",
+    "display_text": "Add another priority: setting up the mock spectra test suite, 6/10."
   }
 ]
 ```

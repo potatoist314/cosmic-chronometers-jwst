@@ -842,3 +842,9 @@
 - Pages: [[model]], [[redshift-sigma-wiggle]], research direction Amendments.
 - Change: On Liu Hao's instruction the production notebook samples redshift, Uniform(z_cat - 0.1, z_cat + 0.1), and sigma_star, Normal(DR2, error) clipped at 3 errors, in every full-spectrum fit. Removed the switches CERIDWEN_FREE_ZRED_KMS and CERIDWEN_FREE_SIGMA. Sampled parameters rise from 14 to 16; NSS inner steps stay 65. Cherry-picked the fork's free-z-spectrum commit 354f5e9 onto the pinned ceridwen branch as c540bc7. Result attribute free_zred_kms replaced by zred_half_width. Updated the Model rows for redshift, sigma_star, resolution and the nested sampler. No fit has run under these defaults. Wording by Claude; codex quota exhausted until 19 Sep.
 - Files: notebooks/ceridwen_integrated_photometry_spectra.ipynb, ceridwen (submodule), tests/test_ceridwen_dr2_production.py, tests/test_production_speedup_schedule.py, scripts/validate_ceridwen_speedups.py, scripts/relabel_feh_notebooks.py, wiki/notes/model.md, wiki/notes/redshift-sigma-wiggle.md, wiki/research/direction.md.
+
+## [2026-09-17] decision | Trend plots against stellar mass and the mock spectra test suite as priorities
+
+- Pages: Home, research/direction.md
+- Change: Roadmap tasks `alpha-fe-t50-vs-mass` at priority 8 and `mock-spectra-test-suite` at priority 6 added on Liu Hao's instruction, in his wording, with the originals under Amendments. Codex quota exhausted until 19 Sep, so no Codex pass.
+- Validation: wiki build passes; both tasks show on Home at 8/10 and 6/10 and their priority pages open.
