@@ -679,6 +679,9 @@ Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be
 | \(\Delta \ln Z\), order 10 − 3 | +20, +555, +284, +29, +305, +427 (M12_98104, M5_173928, M4_108989, M12_185653, M1_206545, M5_172669) |
 | \(\Delta \ln Z\), order 5 − 3 | +4, +224, +263, +23, −2, +82 (same order) |
 | \(t_{50}\) order 3 / 10 [Gyr] | 4.05 / 4.07; 5.02 / 5.51; 4.84 / 5.15; 4.79 / 4.67; 5.10 / 6.07; 2.00 / 2.29 |
+| \([\mathrm{Fe}/\mathrm{H}]\) order 3 / 10 | −0.58 / −0.38; −0.69 / −1.04; −0.14 / −0.28; −0.38 / −0.22; −0.23 / −0.42; +0.05 / −0.18 |
+| \([\alpha/\mathrm{Fe}]\) order 3 / 10 | +0.12 / +0.06; −0.17 / −0.17; −0.19 / −0.18; +0.22 / +0.04; −0.20 / −0.12; +0.02 / +0.04 |
+| \(t_{\mathrm{MW}}\) order 3 / 10 [Gyr] | 3.91 / 3.91; 4.76 / 5.50; 4.69 / 4.99; 4.70 / 4.60; 5.08 / 6.07; 2.21 / 2.72 |
 | \(\tau_{\mathrm{dust}}\) median, all arms | 0.180–0.199 (prior upper bound 0.2) |
 | Shortest mode at order 10 | 242–247 \(\text{\AA}\) observed, 125–154 \(\text{\AA}\) rest frame |
 | Sampler wall time order 3 / 5 / 10 | 365–571 s / 406–643 s / 691–1033 s |
@@ -726,5 +729,11 @@ Stored spectral \(\chi^2\) uses each fit’s own \(f_{\mathrm{calib}}\) and is n
 ## Next decision
 
 ```json
-[]
+[
+  {
+    "date": "2026-09-17",
+    "text": "order 10 has speedups implmented and should be the default for future fits.",
+    "display_text": "Order 10 has speed-ups implemented and should be the default for future fits."
+  }
+]
 ```

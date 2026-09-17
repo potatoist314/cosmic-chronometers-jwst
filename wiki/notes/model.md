@@ -115,7 +115,7 @@ def get_duste_gamma_from_log(log_duste_gamma=None, **extras):
 | Grid | `amist_c3k_hr_krou_afe`: aMIST v2.5, C3K v2.3 high resolution (R ≈ 6000), Kroupa 2001 IMF; 13 metallicity, 5 \([\alpha/\mathrm{Fe}]\) and 107 age nodes | |
 | SFH | Eight lookback nodes: 0, 0.03, 0.1, 0.3, 1, 3, 5 Gyr and the age of the Universe at z; step interpolation; \([\mathrm{Fe}/\mathrm{H}]\) and \([\alpha/\mathrm{Fe}]\) constant over age | |
 | Dust | Kriek–Conroy diffuse law with free slope; birth-cloud dust, dust emission, IGM and nebular emission off | |
-| Calibration polynomial | Chebyshev order 3 over the fitted range, coefficients Normal(0, 0.1), no constant term, marginalised analytically; orders 5 and 10 under test | Liu Hao, 6 Sep 2026; orders 5 and 10 from the 15 Sep 2026 meeting |
+| Calibration polynomial | Chebyshev order 10 over the fitted range; coefficients Normal(0, 0.1); no constant term; marginalised analytically. Order 3 until 17 Sep 2026. | Liu Hao, 17 Sep 2026; order 3 from 6 Sep 2026; orders 5 and 10 tested 15 Sep 2026. |
 | Spectrum scaling | Normal(1, 0.3) clipped to [0.2, 3], sampled | |
 | Extra spectral error | \(\log f_{\mathrm{calib}}\) Uniform(ln 0.01, ln 0.10); \(\sigma_{\mathrm{eff}}^2 = \sigma_{\mathrm{obs}}^2 + (f_{\mathrm{calib}}\,\lvert\mu\rvert)^2\) with model flux \(\mu\) | Under review since the 15 Sep 2026 meeting |
 

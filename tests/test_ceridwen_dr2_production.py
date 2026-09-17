@@ -114,6 +114,7 @@ def test_notebook_uses_production_model_and_sampler_contract():
     assert "assert sum(np.size(value) for value in joint_model.theta_init.values())" in source
     assert '"Z": "log10 iron abundance; [Fe/H] = Z + 1.7328283"' in source
     assert "FEH_OFFSET = 1.7328283" in source
+    assert 'os.environ.get("CERIDWEN_CALIBRATION_ORDER", "10")' in source
     assert 'direct_draws["Z"] + FEH_OFFSET' in source
     assert r"$\log_{10}(Z/Z_\odot)$" not in source
     assert "aperture_transfer" not in source
