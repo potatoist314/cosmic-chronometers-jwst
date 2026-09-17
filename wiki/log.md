@@ -874,3 +874,9 @@
 - Change: Two order-10 fits of M1_210210 on Vast (tau_dust Uniform(0, 0.2) at 55ff5f4; production defaults at cc983ce with tau_dust Uniform(0, 1) and sampled z, sigma_star) beside the stored order-3 fit: parameter table, fit, SFH and corner figures. Per-parameter KL divergence from the prior in bits from `scripts/plot_prior_kl.py`, figure and table written straight to `wiki/analyses/m1-210210-reference/` on Liu Hao's instruction. Codex quota exhausted until 19 Sep, so the note text and captions had no Codex pass.
 - Files: scripts/plot_prior_kl.py, scripts/per_galaxy_diagnostics.py (`prior_unit_values`, `marginal_kl_bits`), tests/test_per_galaxy_diagnostics.py, results/m1-210210-reference/, wiki/analyses/m1-210210-reference/.
 - Validation: four figures checked at 900 px; the first fit figure had the legend on the data and the polynomial panel scaled by unfitted pixels, both fixed; KL tests pass.
+
+## [2026-09-17] revise | Dust corner plot uses every SFH bin by default
+
+- Pages: [[notebook-map]]
+- Change: On Liu Hao's instruction the production notebook's dust corner plots the dust parameters against every formed-mass fraction, not the three youngest. `N_YOUNG_BINS` removed; the Spearman printout covers every bin. No fit has run under this default. Wording by Claude; Codex quota exhausted until 19 Sep.
+- Files: notebooks/ceridwen_integrated_photometry_spectra.ipynb, wiki/notes/notebook-map.md.

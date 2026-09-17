@@ -79,7 +79,7 @@ The joint notebook reads `CERIDWEN_TARGET_ID`, `CERIDWEN_RESULT_DIR`, and `CERID
 
 The joint notebook selects at most 400 deterministic posterior rows. It uses those same rows for direct parameters, mass-weighted age, and formed-mass fractions. It checks finite values, equal row counts, non-negative mass fractions, and unit row sums before plotting.
 
-The physical corner output shows mass, metallicity, alpha enhancement, diffuse dust, calibration floor, spectrum scaling, and mass-weighted age. The second corner output shows age with each formed-mass fraction. A third corner output shows the dust parameters against the three youngest formed-mass fractions with per-pair Spearman rank correlations. All three figures remain embedded in the executed notebook. Index mode also stores observed indices, posterior predictions, uncertainties, masks, units, and pulls in `ceridwen_derived_outputs.h5`.
+The physical corner output shows mass, metallicity, alpha enhancement, diffuse dust, calibration floor, spectrum scaling, and mass-weighted age. The second corner output shows age with each formed-mass fraction. A third corner output shows the dust parameters against every formed-mass fraction with per-pair Spearman rank correlations. All three figures remain embedded in the executed notebook. Index mode also stores observed indices, posterior predictions, uncertainties, masks, units, and pulls in `ceridwen_derived_outputs.h5`.
 
 All current corner plots use 40-bin blue density maps with Gaussian smoothing. Darker blue marks higher relative posterior density. Existing quantiles and contour probability levels remain unchanged.
 
