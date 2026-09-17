@@ -111,7 +111,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 - `notes/papers-spectral-fitting.md` — Papers: stellar-population fitting (2026-08-25 · source: papers/spectral fitting/README.md)
 - `notes/papers-cosmic-chronometers.md` — Papers: cosmic chronometers (2026-08-25 · source: papers/README.md)
-- `notes/papers-quiescent-parameters.md` — Literature values: LEGA-C quiescent galaxies, with every prior, sample cut, preprocessing step, sampler setting and derived quantity (2026-09-17 · source: papers/quiescent populations/README.md)
+- `notes/papers-quiescent-parameters.md` — LEGA-C quiescent-galaxy literature values: every prior, sample cut, preprocessing step, sampler setting and derived quantity, plus Jonah Powley's Prospector priors (2026-09-17 · source: papers/quiescent populations/README.md)
 
 ## Log
 

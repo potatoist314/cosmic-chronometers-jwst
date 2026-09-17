@@ -796,3 +796,10 @@
 - Change: Two meeting notes from one nine-page handwritten PDF: the Thursday student group meeting (pages 1–3) and the meeting with Jonah Powley on Prospector fits of quiescent galaxies (pages 4–9). Each page has the cleaned notes, the original page-by-page transcription and a link to the unchanged PDF under reports/. The split between the two meetings at page 4 is a reading of the notes, not marked in them.
 - Files: reports/meeting-2026-09-17-student-group-jonah-powley.pdf.
 - Validation: wiki build passes (39 notes); the two test suites pass apart from the two failures that predate this change (bridge question box, calibration analyses unlinked); both note pages and the Meetings landing checked in Safari with KaTeX font fetches in the server log; the PDF link answers 200.
+
+## [2026-09-17] add | Jonah Powley's Prospector priors on the literature page
+
+- Pages: [[papers-quiescent-parameters]], [[meeting-2026-09-17-jonah-powley]], index.md, AGENTS.md
+- Change: A reference table above the stage tables lists Jonah Powley's Prospector dust attenuation, dust emission and AGN torus priors beside the Ceridwen production settings, with his original code in a collapsed block. The meeting note links to it and records that \(f_{\mathrm{AGN}}\) and \(\tau_{\mathrm{AGN}}\) are sampled uniformly in \(\log_{10}\). No rows list SFH, mass, metallicity or redshift priors, which are absent from the excerpt.
+- Files: wiki/tests/test_research.py (literature landing table count 7 to 8).
+- Validation: wiki build passes (39 notes); the two test suites pass apart from the two failures that predate this change; every prior re-read against the pasted code; note page, Literature landing and the meeting-note link checked in Safari with KaTeX font fetches in the server log.

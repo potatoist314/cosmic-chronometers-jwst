@@ -416,7 +416,7 @@ class ResearchTests(unittest.TestCase):
                 self.assertIn(base + "/n/default-fit-parameters/", history)
                 self.assertIn('<div class="banner">Superseded by <a href="%s/n/papers-quiescent-parameters/">'
                               'Literature values: LEGA-C quiescent galaxies</a></div>' % base, old)
-                self.assertEqual(len(re.findall(r'<table\b', literature)), 7)
+                self.assertEqual(len(re.findall(r'<table\b', literature)), 8)
                 self.assertIn('id="references"', note)
                 self.assertIn('<img src="%s/figures/papers-quiescent-parameters/literature-vs-ceridwen.png"' % base, note)
                 search = json.loads((out / "search.json").read_text())

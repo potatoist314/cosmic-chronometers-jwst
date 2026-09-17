@@ -156,7 +156,7 @@ direction and scientific methodology.
   stage, a short Decided column filled only from recorded decisions, each citation once
   in the References block. Keep it aligned with
   `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, without changing defaults.
-  `notes/default-fit-parameters.md` is obsolete and superseded by it. Parameter
+  `notes/default-fit-parameters.md` is obsolete and superseded by it. Jonah Powley's Prospector priors have a separate table above the stage tables, with his original code in a collapsed block. Parameter
   references use tables and source links; they do not require teaching blocks. Code
   documentation, notebooks, guides and earlier history follow. Keep one search across
   all content.

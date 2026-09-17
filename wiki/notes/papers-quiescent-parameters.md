@@ -14,6 +14,62 @@ figures: [literature-vs-ceridwen.png]
 <figcaption>Age, metallicity and alpha-enhancement panels: redshift-ordered literature-paper rows; grey bars: quoted ranges/\(\pm\)1\(\sigma\); blue top row: 187-galaxy Ceridwen DR2 median (also vertical line), 16–84 percentile across-galaxy spread; circles: \([\mathrm{Z}/\mathrm{H}]\)/\([\alpha/\mathrm{Fe}]\); squares: \([\mathrm{Fe}/\mathrm{H}]\)/\([\mathrm{Mg}/\mathrm{Fe}]\); Ceridwen \([\mathrm{Fe}/\mathrm{H}]\) = Z + 1.7328 (grid’s built-in solar reference).</figcaption>
 </figure>
 
+## Prospector reference: Jonah Powley
+
+| Parameter | His prior | Ceridwen production |
+| --- | --- | --- |
+| Dust law | Kriek & Conroy (`dust_type` 4) | Kriek–Conroy diffuse law |
+| Dust index | Free, TopHat(−1.2, 0.4) | Uniform(−1.0, 0.4) |
+| \(\tau_{\mathrm{dust},2}\) | Free, ClippedNormal(0.3, 1.0) on [0, 4] | Uniform(0, 0.2); Ceridwen's documented default matches his prior |
+| Birth-cloud dust | `dust1` derived by `convert_to_dust1` (absent from the excerpt); `dust1_fraction` free, ClippedNormal(1.0, 0.3) on [0, 2] | Off |
+| Dust emission (`add_duste`) | \(U_{\mathrm{min}}\) ClippedNormal(1, 10) on [0.1, 25]; \(q_{\mathrm{PAH}}\) ClippedNormal(2, 2) on [0, 7]; \(\log_{10}\gamma\) ClippedNormal(−2, 1) on [−4, 0], \(\gamma\) derived | Off |
+| AGN torus (`add_agn`) | \(\log_{10} f_{\mathrm{AGN}}\) TopHat(−5, \(\log_{10} 3\)); \(\log_{10}\tau_{\mathrm{AGN}}\) TopHat(\(\log_{10} 5\), \(\log_{10} 150\)); linear values derived | Not modelled |
+
+<details>
+<summary>His code, as sent</summary>
+
+```python
+# Dust attenuation
+    model_params["dust_type"]["init"] = 4
+    model_params["dust_index"] = dict(N=1, isfree=True, init=0.0, prior=priors.TopHat(mini=-1.2, maxi=0.4))
+    model_params["dust2"]["prior"] = priors.ClippedNormal(mean=0.3, sigma=1.0, mini=0.0, maxi=4.0)
+    model_params["dust2"]["isfree"] = True
+    model_params["dust1"] = dict(N=1, isfree=False, init=0, prior=None, depends_on=convert_to_dust1)
+    model_params["dust1_fraction"] = dict(N=1, isfree=True, init=1.0, prior=priors.ClippedNormal(mean=1.0, sigma=0.3, mini=0.0, maxi=2.0))
+
+    # Dust emission
+    if add_duste:
+        model_params["add_dust_emission"] = dict(N=1, isfree=False, init=True)
+        model_params["duste_umin"] = dict(N=1, isfree=True, init=1.0, prior=priors.ClippedNormal(mean=1.0, sigma=10.0, mini=0.1, maxi=25.0))
+        model_params["duste_qpah"] = dict(N=1, isfree=True, init=2.0, prior=priors.ClippedNormal(mean=2.0, sigma=2.0, mini=0.0, maxi=7.0))
+        model_params["log_duste_gamma"] = dict(N=1, isfree=True, init=-2.0, prior=priors.ClippedNormal(mean=-2.0, sigma=1.0, mini=-4.0, maxi=0.0))
+        model_params["duste_gamma"] = dict(N=1, isfree=False, init=0.01, depends_on=get_duste_gamma_from_log)
+
+    # AGN torus emission
+    if add_agn:
+        model_params["add_agn"] = dict(N=1, isfree=False, init=True)
+        model_params["log_fagn"] = dict(N=1, isfree=True, init=-2.0, prior=priors.TopHat(mini=-5.0, maxi=np.log10(3.0)))
+        model_params["fagn"] = dict(N=1, isfree=False, init=0.01, depends_on=get_fagn_from_log)
+        model_params["log_agn_tau"] = dict(N=1, isfree=True, init=1.0, prior=priors.TopHat(mini=np.log10(5.0), maxi=np.log10(150.0)))
+        model_params["agn_tau"] = dict(N=1, isfree=False, init=1.0, depends_on=get_agn_tau_from_log)
+
+def get_fagn_from_log(log_fagn=None, **extras):
+    """Convert log10(fagn) back to linear fagn."""
+    return 10**log_fagn
+
+
+def get_agn_tau_from_log(log_agn_tau=None, **extras):
+    """Convert log10(tau_agn) back to linear tau_agn."""
+    return 10**log_agn_tau
+
+
+def get_duste_gamma_from_log(log_duste_gamma=None, **extras):
+    """Convert log10(duste_gamma) back to linear duste_gamma."""
+    return 10**log_duste_gamma
+```
+
+</details>
+
 ## Physical parameters
 
 | Quantity | Prior | DR2 median (187) | Literature at z~0.7 | Decided |
