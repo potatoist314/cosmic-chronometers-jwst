@@ -150,13 +150,16 @@ direction and scientific methodology.
   and earlier analyses/boards below. Keep result pages focused on figures and captions.
 - Meetings and Papers have their own collections. Papers links the local PDFs in
   `papers/README.md`; preserve its citations without promoting historical roles.
-- Code & guides opens with the expanded current default model from
-  `notes/default-fit-parameters.md`: sampled priors and physical meanings, fixed
-  settings, then marginalised calibration. Keep this reference aligned with
+- Record every prior, sample cut, preprocessing step, model setting, sampler setting and
+  derived-quantity definition on the Literature page,
+  `notes/papers-quiescent-parameters.md`, beside the literature values: one table per
+  stage, a short Decided column filled only from recorded decisions, each citation once
+  in the References block. Keep it aligned with
   `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, without changing defaults.
-  Parameter references use tables and source links; they do not require teaching
-  blocks. Code documentation, notebooks, guides and earlier history follow.
-  Keep one search across all content.
+  `notes/default-fit-parameters.md` is obsolete and superseded by it. Parameter
+  references use tables and source links; they do not require teaching blocks. Code
+  documentation, notebooks, guides and earlier history follow. Keep one search across
+  all content.
 - Preserve old URLs and anchors. `/wiki/roadmap/` serves the same content as Home;
   questions, experiments, reference, source notes, themes and log routes remain.
 

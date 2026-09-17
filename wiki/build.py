@@ -220,6 +220,8 @@ def url(href: str, base: str, source_dir: str = ""):
     if href.startswith("../"):
         rest = href[3:]
         return "%s/n/%s" % (base, rest) if not rest.startswith(("..", ".")) else None
+    if href.startswith("figures/") and (ROOT / "analyses" / unquote(href[8:])).is_file():
+        return "%s/%s" % (base, href)
     if source_dir:
         target = (PROJECT / source_dir / unquote(href)).resolve()
         try:

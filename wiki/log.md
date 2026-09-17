@@ -782,3 +782,10 @@
 - Pages: every served page; `scripts/serve_wiki.py`
 - Change: `WikiServer` sets the listen backlog to 128 (Python's default is 5). Safari opens one HTTP/1.0 connection per script, stylesheet and font, plus a speculative preconnect for every subresource it remembers, before the HTML arrives; the kernel reset the overflow, a reset `<script defer>` failed silently and the page showed raw TeX.
 - Validation: 20 and 60 simultaneous connections to port 8765 all served (13–15 of 20 were reset before); fresh Safari windows on `/wiki/code/`, `/wiki/literature/`, `/wiki/n/default-fit-parameters/` and the Tailscale URL fetched all four scripts and the KaTeX fonts and rendered headings, prose, tables and captions; 420 px layout and dark mode checked; `wiki/tests/test_math.py` passes.
+
+## [2026-09-17] lint | Every modelling decision on the literature page
+
+- Pages: [[papers-quiescent-parameters]], [[default-fit-parameters]], index.md, AGENTS.md
+- Change: The literature page now lists every prior, sample cut, preprocessing step, model and calibration setting, sampler setting and derived-quantity definition from the production notebook, one table per stage, with a short Decided column filled only from recorded decisions and each citation once in a collapsed References block. The per-paper tables are merged into the physical-parameters table. `notes/default-fit-parameters.md` is obsolete and superseded by it. A `figures/` path on a note with a `source:` field now resolves to the site figure folder; the note page had shown a broken figure since 2026-09-10.
+- Files: wiki/build.py, wiki/tests/test_research.py.
+- Validation: every value re-read from notebook cells 2 to 30, the executed poly5 notebook's selection counts and the DR2 summary CSV; wiki build passes; the two test suites pass apart from two failures that predate this change (bridge question box, calibration analyses unlinked); note page, literature landing and code landing checked in Safari with KaTeX font fetches in the server log; 400 px layout checked.
