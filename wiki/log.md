@@ -789,3 +789,10 @@
 - Change: The literature page now lists every prior, sample cut, preprocessing step, model and calibration setting, sampler setting and derived-quantity definition from the production notebook, one table per stage, with a short Decided column filled only from recorded decisions and each citation once in a collapsed References block. The per-paper tables are merged into the physical-parameters table. `notes/default-fit-parameters.md` is obsolete and superseded by it. A `figures/` path on a note with a `source:` field now resolves to the site figure folder; the note page had shown a broken figure since 2026-09-10.
 - Files: wiki/build.py, wiki/tests/test_research.py.
 - Validation: every value re-read from notebook cells 2 to 30, the executed poly5 notebook's selection counts and the DR2 summary CSV; wiki build passes; the two test suites pass apart from two failures that predate this change (bridge question box, calibration analyses unlinked); note page, literature landing and code landing checked in Safari with KaTeX font fetches in the server log; 400 px layout checked.
+
+## [2026-09-17] add | Student group meeting and Jonah Powley meeting notes
+
+- Pages: [[meeting-2026-09-17-student-group]], [[meeting-2026-09-17-jonah-powley]], index.md
+- Change: Two meeting notes from one nine-page handwritten PDF: the Thursday student group meeting (pages 1–3) and the meeting with Jonah Powley on Prospector fits of quiescent galaxies (pages 4–9). Each page has the cleaned notes, the original page-by-page transcription and a link to the unchanged PDF under reports/. The split between the two meetings at page 4 is a reading of the notes, not marked in them.
+- Files: reports/meeting-2026-09-17-student-group-jonah-powley.pdf.
+- Validation: wiki build passes (39 notes); the two test suites pass apart from the two failures that predate this change (bridge question box, calibration analyses unlinked); both note pages and the Meetings landing checked in Safari with KaTeX font fetches in the server log; the PDF link answers 200.
