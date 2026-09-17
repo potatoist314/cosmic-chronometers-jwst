@@ -393,7 +393,7 @@ class ResearchTests(unittest.TestCase):
         self.assertTrue(any(item["u"] == '/wiki/f/papers/chronometer/A%20%26%20B.pdf' for item in search))
         for legacy in ("roadmap", "questions", "experiments", "reference", "earlier", "themes", "log"):
             self.assertTrue((out / legacy / "index.html").is_file())
-        expected = [("/wiki/", "Home"), ("/wiki/results/", "Results"), ("/wiki/literature/", "Literature"), ("/wiki/meetings/", "Meetings"),
+        expected = [("/wiki/", "Home"), ("/wiki/results/", "Results"), ("/wiki/model/", "Model"), ("/wiki/meetings/", "Meetings"),
                     ("/wiki/papers/", "Papers"), ("/wiki/masking/", "Masking"), ("/wiki/code/", "Code &amp; guides")]
         for page in out.rglob("index.html"):
             markup = page.read_text()
@@ -401,26 +401,32 @@ class ResearchTests(unittest.TestCase):
             self.assertEqual(re.findall(r'<a href="([^"]+)">([^<]+)</a>', navigation), expected)
             self.assertNotIn("Liu Hao · DR2 quiescent galaxies", markup)
 
-    def test_default_model_is_superseded_by_the_literature_page(self):
-        for name in ("default-fit-parameters.md", "papers-quiescent-parameters.md"):
+    def test_default_model_and_old_literature_note_are_superseded_by_the_model_page(self):
+        for name in ("default-fit-parameters.md", "papers-quiescent-parameters.md", "model.md"):
             (self.notes / name).write_text((WIKI / "notes" / name).read_text())
         for base in ("/wiki", ""):
             with self.subTest(base=base):
                 out = self.build(base)
                 code = (out / "code/index.html").read_text()
-                old = (out / "n/default-fit-parameters/index.html").read_text()
-                literature = (out / "literature/index.html").read_text()
-                note = (out / "n/papers-quiescent-parameters/index.html").read_text()
+                model = (out / "model/index.html").read_text()
+                note = (out / "n/model/index.html").read_text()
                 self.assertNotIn('class="default-model"', code)
                 history = re.search(r'<details class="research-history">(.*?)</details>', code, re.S)[1]
                 self.assertIn(base + "/n/default-fit-parameters/", history)
-                self.assertIn('<div class="banner">Superseded by <a href="%s/n/papers-quiescent-parameters/">'
-                              'Literature values: LEGA-C quiescent galaxies</a></div>' % base, old)
-                self.assertEqual(len(re.findall(r'<table\b', literature)), 8)
+                for old in ("default-fit-parameters", "papers-quiescent-parameters"):
+                    self.assertIn('<div class="banner">Superseded by <a href="%s/n/model/">Model</a></div>' % base,
+                                  (out / "n" / old / "index.html").read_text())
+                # /literature/ is the earlier address of the same page.
+                self.assertEqual(model.replace("/model/", "/literature/"),
+                                 (out / "literature/index.html").read_text().replace("/model/", "/literature/"))
+                self.assertEqual(len(re.findall(r'<dl class="model-group">', model)), 4)
+                self.assertEqual(len(re.findall(r'class="model-flag"', model)), 4)
+                self.assertNotIn("Moved to", model)
                 self.assertIn('id="references"', note)
-                self.assertIn('<img src="%s/figures/papers-quiescent-parameters/literature-vs-ceridwen.png"' % base, note)
+                self.assertIn('id="prospector-reference-jonah-powley"', note)
+                self.assertIn('<img src="%s/figures/model/literature-vs-ceridwen.png"' % base, note)
                 search = json.loads((out / "search.json").read_text())
-                self.assertTrue(any(item["u"] == base + "/n/papers-quiescent-parameters/" for item in search))
+                self.assertTrue(any(item["u"] == base + "/model/" for item in search))
 
     def test_html_parameter_tables_share_markdown_table_budget_exemption(self):
         table = '<table><tbody><tr><td>' + 'value ' * 70 + '</td></tr></tbody></table>'

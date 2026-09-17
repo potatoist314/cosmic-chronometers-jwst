@@ -562,14 +562,16 @@ def write_pages(records, notes, scratch, base, builder):
     page("papers", "Papers", '<div class="prose">' + body + '</div>')
 
     literature = [n for n in notes if n["section"] == "Literature" and n["status"] != "obsolete"]
-    body = '<h1>Literature values</h1>'
+    body = '<h1>Model</h1>'
     for n in literature:
         body += '<section class="research-section">%s</section>' % builder.markdown(n["body"], base)
-        search.append({"t": n["title"], "u": base + "/literature/", "d": n["date"],
-                       "s": "Literature", "g": " ".join(n["tags"]), "x": n["body"]})
+        search.append({"t": n["title"], "u": base + "/model/", "d": n["date"],
+                       "s": "Model", "g": " ".join(n["tags"]), "x": n["body"]})
     if not literature:
         body += '<p class="empty">None yet</p>'
-    page("literature", "Literature values", '<div class="prose">' + body + '</div>')
+    # /literature/ is the earlier address of the same page.
+    for path in ("model", "literature"):
+        page(path, "Model", '<div class="prose">' + body + '</div>')
 
     body = '<h1>Code &amp; guides</h1>'
     default_model = next((n for n in notes if n["slug"] == "default-fit-parameters"
@@ -638,6 +640,29 @@ CSS = """
   .default-parameter-table td{margin-top:12px}
   .default-parameter-table td::before{content:attr(data-label);display:block;font-family:system-ui,sans-serif;font-size:.7rem;color:var(--ink-2);margin-bottom:3px}
   .default-parameter-table th code{margin-top:2px}
+}
+.model-group{margin:10px 0 34px;max-width:none}
+.model-row{display:block;margin:0;padding:0;border:0;border-bottom:1px solid var(--rule)}
+details.model-row>summary,div.model-row{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) minmax(0,12rem) .8rem;column-gap:18px;align-items:baseline;padding:9px 0;margin:0;font:inherit;font-size:.93rem;line-height:1.45;letter-spacing:0;text-transform:none;color:var(--ink);list-style:none}
+details.model-row>summary{cursor:pointer}
+details.model-row>summary::-webkit-details-marker{display:none}
+details.model-row>summary:hover .model-s,details.model-row[open]>summary .model-s{color:var(--accent-2)}
+details.model-row[open]>summary{margin-bottom:0}
+.model-s{font-weight:500}
+.model-v{overflow-wrap:anywhere}
+.model-w{color:var(--ink-2);font-size:.85rem}
+.model-f{text-align:right}
+.model-flag{color:var(--accent);font-weight:700}
+.model-tag{font-family:system-ui,sans-serif;font-size:.62rem;font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-left:6px;white-space:nowrap}
+.model-row>ul{list-style:none;margin:0;padding:2px 0 12px calc(11rem + 18px);font-size:.88rem;line-height:1.5;color:var(--ink-2);max-width:none}
+.model-row>ul li{margin:3px 0;padding:0 0 0 4.85rem;text-indent:-4.85rem}
+.model-row>ul li .katex,.model-row>ul li code{text-indent:0}
+.model-row>ul i{font-style:normal;font-family:system-ui,sans-serif;font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);display:inline-block;min-width:4.6rem;text-indent:0}
+@media(max-width:760px){
+  details.model-row>summary,div.model-row{grid-template-columns:minmax(0,1fr) .8rem;row-gap:2px}
+  .model-s,.model-v,.model-w{grid-column:1}
+  .model-f{grid-column:2;grid-row:1}
+  .model-row>ul{padding-left:0}
 }
 .roadmap{width:100%;table-layout:fixed;border-collapse:collapse}
 .roadmap caption{text-align:left;font-family:system-ui,sans-serif;font-size:.8rem;color:var(--ink-2);padding:8px 0}

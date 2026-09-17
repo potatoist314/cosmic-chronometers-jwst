@@ -6,7 +6,7 @@ tags: [ceridwen, priors, parameters]
 job:
 theme: Model and code reference
 status: obsolete
-superseded_by: papers-quiescent-parameters
+superseded_by: model
 ---
 
 <p class="default-model-meta">Full spectrum + total photometry · 14 free values · 15 September 2026</p>

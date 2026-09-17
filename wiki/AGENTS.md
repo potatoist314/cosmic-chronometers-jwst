@@ -142,24 +142,43 @@ direction and scientific methodology.
 
 ## Structure
 
-- Navigation has seven links: Home, Results, Literature, Meetings, Papers, Masking, Code & guides.
-- Literature renders notes with front matter `section: Literature` as expanded tables of established parameter values from the papers.
+- Navigation has seven links: Home, Results, Model, Meetings, Papers, Masking, Code & guides.
+- Model (`/wiki/model/`) renders notes with front matter `section: Literature`.
+  `/wiki/literature/` remains the earlier address of the same page.
+  The note is `notes/model.md`. The page contract is `research/model-page-spec.md`.
 - Home shows the full priority list and planned/running work. Original direction,
   questions and dated amendments are in its collapsed research record.
 - Results lists saved visual reports and benchmarks, with other experiment records
   and earlier analyses/boards below. Keep result pages focused on figures and captions.
 - Meetings and Papers have their own collections. Papers links the local PDFs in
   `papers/README.md`; preserve its citations without promoting historical roles.
-- Record every prior, sample cut, preprocessing step, model setting, sampler setting and
-  derived-quantity definition on the Literature page,
-  `notes/papers-quiescent-parameters.md`, beside the literature values: one table per
-  stage, a short Decided column filled only from recorded decisions, each citation once
-  in the References block. Keep it aligned with
-  `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, without changing defaults.
-  `notes/default-fit-parameters.md` is obsolete and superseded by it. Jonah Powley's Prospector priors have a separate table above the stage tables, with his original code in a collapsed block. Parameter
-  references use tables and source links; they do not require teaching blocks. Code
-  documentation, notebooks, guides and earlier history follow. Keep one search across
-  all content.
+- List every assumption and setting on the Model page.
+  Include each sample cut, preprocessing step, data source, prior, switch, mask, sampler setting
+  and derived-quantity definition. Tag assumptions nobody on this project chose as `inherited`.
+- Use four groups in this order: Sample and data; Stellar model, SFH and dust;
+  Calibration, noise and sampler; Derived quantities and cosmology.
+  Each group is one raw `<dl class="model-group">`.
+  Use `<div class="model-row">` for a row without bullets.
+  Use `<details class="model-row">` for a row with bullets.
+- Show the setting, value, reason of at most six words, and `!` flag.
+  On click, show fragment bullets labelled why, how, tested, problem, papers, source and note.
+  Link every tested and problem bullet to its experiment record, note or meeting note.
+- Use a reason only from a recorded decision, meeting point, experiment result or paper.
+  Leave the reason empty when none is recorded. Never invent a reason.
+- Use `!` only with linked evidence from this repository's results or a recorded meeting point.
+  A paper that disagrees does not justify a flag. Put it in the Literature section below the groups.
+- Keep the comparison figure and z~0.7 values table in the Literature section.
+  Keep Jonah Powley's Prospector reference collapsed there. Include other redshifts and references.
+  List each citation once.
+- Update the row in the same commit when a prior, switch, mask or data source changes.
+  Apply this rule to sampler settings and derived-quantity definitions.
+  Keep values aligned with `notebooks/ceridwen_integrated_photometry_spectra.ipynb`.
+  Do not change defaults.
+- `notes/default-fit-parameters.md` and `notes/papers-quiescent-parameters.md` are obsolete stubs.
+  `notes/model.md` supersedes both. Keep the stubs so old URLs work.
+  Parameter references use tables and source links; they do not require teaching blocks.
+  Code documentation, notebooks, guides and earlier history follow.
+  Keep one search across all content.
 - Preserve old URLs and anchors. `/wiki/roadmap/` serves the same content as Home;
   questions, experiments, reference, source notes, themes and log routes remain.
 

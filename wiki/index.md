@@ -8,9 +8,9 @@ Results: `/wiki/results/`, with saved visual reports and benchmarks first;
 other experiment records and earlier analyses/boards remain accessible below.
 Meetings: `/wiki/meetings/`. Papers: `/wiki/papers/`, including indexed local PDFs.
 Code, notebooks and guides: `/wiki/code/`, followed by documentation and earlier history.
-Reference for every prior, sample cut, preprocessing step, sampler setting and
-derived quantity, beside the literature values: `notes/papers-quiescent-parameters.md`;
-check against `notebooks/ceridwen_integrated_photometry_spectra.ipynb` when defaults change.
+Every assumption and setting of the model on one page: `/wiki/model/`.
+Source: `notes/model.md`. Contract: `research/model-page-spec.md`.
+Check against `notebooks/ceridwen_integrated_photometry_spectra.ipynb` when defaults change.
 Legacy workflow routes: `/wiki/questions/` and `/wiki/experiments/`.
 Result pages show fits and captions; full records live at `/wiki/e/<id>/record/`.
 Governing presentation rules: `wiki/AGENTS.md`, All pages and Result reporting.
@@ -93,7 +93,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 ## Model and code reference
 
-- `notes/default-fit-parameters.md` — Current default model (2026-09-15 · obsolete, superseded by `notes/papers-quiescent-parameters.md`)
+- `notes/default-fit-parameters.md` — Current default model (2026-09-15 · obsolete, superseded by `notes/model.md`)
 - `notes/notebook-map.md` — Notebook map (2026-09-09 · old: _old/notebooks/notebook-map.html)
 - `notes/ceridwen-observations-model.md` — Ceridwen: observations and SedModel (2026-09-06 · old: _old/codebase/ceridwen-observations-model.html)
 - `notes/ceridwen-likelihood-sampling.md` — Ceridwen: likelihood and sampling (2026-09-06 · old: _old/codebase/ceridwen-likelihood-sampling.html)
@@ -111,7 +111,8 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 - `notes/papers-spectral-fitting.md` — Papers: stellar-population fitting (2026-08-25 · source: papers/spectral fitting/README.md)
 - `notes/papers-cosmic-chronometers.md` — Papers: cosmic chronometers (2026-08-25 · source: papers/README.md)
-- `notes/papers-quiescent-parameters.md` — LEGA-C quiescent-galaxy literature values: every prior, sample cut, preprocessing step, sampler setting and derived quantity, plus Jonah Powley's Prospector priors (2026-09-17 · source: papers/quiescent populations/README.md)
+- `notes/model.md` — Model: every assumption and setting on one page, with the LEGA-C quiescent-galaxy literature values and Jonah Powley's Prospector priors below (2026-09-17 · contract: research/model-page-spec.md)
+- `notes/papers-quiescent-parameters.md` — Literature values (2026-09-17 · obsolete, superseded by `notes/model.md`)
 
 ## Log
 

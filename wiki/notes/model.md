@@ -1,20 +1,102 @@
 ---
-title: Literature values: LEGA-C quiescent galaxies
+title: Model
 date: 2026-09-17
 section: Literature
 theme: Background reading
-tags: [papers, quiescent, lega-c, priors, parameters, defaults]
+tags: [model, assumptions, settings, priors, parameters, defaults, papers, quiescent, lega-c]
 job:
 source: papers/quiescent populations/README.md
 figures: [literature-vs-ceridwen.png]
 ---
 
+## Sample and data
+
+<dl class="model-group">
+<div class="model-row"><span class="model-s">Parent match</span><span class="model-v">DR2 × COSMOS2015; <code>f_use</code> 1, <code>f_ppxf</code> 0, <code>f_z</code> 0, <code>f_int</code> 0, S/N &gt; 0, 0.6 ≤ z &lt; 1.0, rest NUV, r, J present · 1328</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Passive</span><span class="model-v">NUV − r &gt; 3 (r − J) + 1 and NUV − r &gt; 3.1 · 609</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Weak [O II]</span><span class="model-v">EW([O II] 3727) &gt; −5 \(\text{\AA}\) or missing · 454</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">No emission detected</span><span class="model-v">\(\lvert \mathrm{EW}/\sigma_{\mathrm{EW}} \rvert\) &lt; 3 for [O II] 3727 and [O III] 5007 · 349</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Clean photometry</span><span class="model-v">COSMOS2015 Area 0, Sat 0, Cfl 1, Flag 0 · 194</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">One spectrum per object</span><span class="model-v">Highest S/N kept · 187</span><span class="model-w"></span><span class="model-f"></span></div>
+<details class="model-row"><summary><span class="model-s">Pixels</span><span class="model-v"><code>QUAL</code> 0, error &gt; 0, finite flux; over 3000 good pixels; fitted &gt; 0.7 × good</span><span class="model-w"></span><span class="model-f"></span></summary><ul><li><i>source</i> guard set when the line and CN masks were added · <a href="/wiki/n/fit-accuracy-knobs/">accuracy knobs</a></li></ul></details>
+<div class="model-row"><span class="model-s">Units</span><span class="model-v">Air to vacuum; \(10^{-19}\) erg s\(^{-1}\) cm\(^{-2}\) \(\text{\AA}\)\(^{-1}\) to \(F_\nu\) cgs</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Resolution</span><span class="model-v">FITS <code>SPEC_RES</code> as FWHM resolving power; DR2 \(\sigma_\star\) as line-of-sight broadening; CSP broadening 0</span><span class="model-w"></span><span class="model-f"></span></div>
+<details class="model-row"><summary><span class="model-s">Emission-line mask</span><span class="model-v">± 1500 \(\mathrm{km\,s^{-1}}\) around [O II] 3726, 3729, H\(\beta\), [O III] 4959, 5007</span><span class="model-w">no nebular model</span><span class="model-f"></span></summary><ul><li><i>tested</i> adding [Ne III] 3869, H\(\epsilon\), H\(\delta\), H\(\gamma\): 181–488 pixels removed; age moves 13.7 half-widths on M4_108989 · <a href="/wiki/e/e-emission-mask/">emis_wide</a></li></ul></details>
+<div class="model-row"><span class="model-s">Telluric mask</span><span class="model-v">7590–7660 \(\text{\AA}\) air, A band</span><span class="model-w"></span><span class="model-f"></span></div>
+<details class="model-row"><summary><span class="model-s">Fitted pixels</span><span class="model-v">All valid pixels; no rest windows</span><span class="model-w"></span><span class="model-f"></span></summary><ul><li><i>tested</i> CN and C4668 windows masked: spectral \(\chi^2\) −14 median; \([\alpha/\mathrm{Fe}]\) moves 4.0 half-widths on M5_172669 · <a href="/wiki/e/e-cn-mask/">mask_cn</a></li><li><i>tested</i> absorption-feature pixels only: large real-target shifts · <a href="/wiki/e/e-absorption-masks/">absorption masks</a></li></ul></details>
+<details class="model-row"><summary><span class="model-s">Photometry</span><span class="model-v">COSMOS2015 total flux, 12 bands u* to 4.5 µm</span><span class="model-w">aperture optical + total IRAC: SED too red</span><span class="model-f"></span></summary><ul><li><i>how</i> 3″ aperture flux × \(10^{-0.4\,c}\); \(c\) = per-object aperture-to-total offset + Galactic extinction + Laigle+2016 Table 3 zero point</li><li><i>how</i> offset on the ten optical and NIR bands only; IRAC already total; −0.16 to −0.60 mag on the six reference galaxies</li><li><i>tested</i> <code>cosmos_ap3</code>, 3″ apertures without the offset: <code>poly3_total</code> has the smallest photometric \(\chi^2\) in each target · <a href="/wiki/e/e-calibration-photometry/">photometry arms</a></li><li><i>tested</i> IRAC dropped: four of six barely move; M5_173928 jumps to another solution · <a href="/wiki/e/e-irac-removal/">no_irac</a></li><li><i>source</i> switch <code>CERIDWEN_PHOTOMETRY</code>, since 3 Sep 2026</li></ul></details>
+<div class="model-row"><span class="model-s">Photometric errors</span><span class="model-v">5% of flux added in quadrature; all 12 bands fitted</span><span class="model-w"></span><span class="model-f"></span></div>
+</dl>
+
+## Stellar model, SFH and dust
+
+<dl class="model-group">
+<div class="model-row"><span class="model-s">Isochrones <span class="model-tag">inherited</span></span><span class="model-v">aMIST v2.5, \(\alpha\)-variable</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Spectral library <span class="model-tag">inherited</span></span><span class="model-v">C3K v2.3 high resolution, R ≈ 6000</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">IMF <span class="model-tag">inherited</span></span><span class="model-v">Kroupa 2001</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Abundance scale <span class="model-tag">inherited</span></span><span class="model-v">Solar Z 0.0185; \([\mathrm{Fe}/\mathrm{H}]\) = grid Z + 1.7328</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Grid</span><span class="model-v"><code>amist_c3k_hr_krou_afe</code>: 13 \([\mathrm{Fe}/\mathrm{H}]\) × 5 \([\alpha/\mathrm{Fe}]\) × 107 age nodes</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">\(\log M_\star\) formed</span><span class="model-v">Uniform(8, 13)</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">\([\mathrm{Fe}/\mathrm{H}]\)</span><span class="model-v">Uniform(−2.5, 0.5)</span><span class="model-w">grid limits</span><span class="model-f"></span></div>
+<details class="model-row"><summary><span class="model-s">\([\alpha/\mathrm{Fe}]\)</span><span class="model-v">Uniform(−0.2, 0.6)</span><span class="model-w">grid limits</span><span class="model-f"><b class="model-flag" title="Known problem">!</b></span></summary><ul><li><i>problem</i> within 0.03 of the −0.2 grid edge in 2 of 6 at order 10 (M4_108989 −0.183, M5_173928 −0.172) and at order 3 (M1_206545 −0.197, M4_108989 −0.186) · <a href="/wiki/n/calibration-order/">calibration order</a></li><li><i>problem</i> CN and C4668 residuals of −5 to −7.5 \(\sigma\) on the same two galaxies · <a href="/wiki/n/fit-accuracy-knobs/">accuracy knobs</a></li></ul></details>
+<div class="model-row"><span class="model-s">Abundances over age <span class="model-tag">inherited</span></span><span class="model-v">\([\mathrm{Fe}/\mathrm{H}]\) and \([\alpha/\mathrm{Fe}]\) constant</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">SFH nodes</span><span class="model-v">0, 0.03, 0.1, 0.3, 1, 3, 5 Gyr and the age of the Universe at z; step interpolation</span><span class="model-w"></span><span class="model-f"></span></div>
+<details class="model-row"><summary><span class="model-s">SFH prior</span><span class="model-v">Student-t(0, 0.3 dex, df 2) on 7 log ratios</span><span class="model-w">Liu Hao, 6 Sep 2026</span><span class="model-f"></span></summary><ul><li><i>tested</i> Uniform(−3, 3): Student-t raises age in 5 of 6, widens every interval, \(\ln Z\) falls 0.7–6.8 · <a href="/wiki/e/e-sfh-prior/">sfh_cont</a></li><li><i>note</i> rising continuity prior raised by Jonah Powley · <a href="/wiki/n/meeting-2026-09-17-jonah-powley/">17 Sep 2026 meeting</a></li></ul></details>
+<details class="model-row"><summary><span class="model-s">Redshift</span><span class="model-v">Fixed at catalogue z</span><span class="model-w"></span><span class="model-f"></span></summary><ul><li><i>tested</i> Normal, 100 \(\mathrm{km\,s^{-1}}\): age shifts small in four targets · <a href="/wiki/e/e-redshift-dispersion/">zsig</a></li></ul></details>
+<details class="model-row"><summary><span class="model-s">\(\sigma_\star\)</span><span class="model-v">Fixed at DR2; <code>CERIDWEN_FREE_SIGMA=1</code>: Normal(DR2, error) clipped at ± 3 errors</span><span class="model-w">Liu Hao, 15 Sep 2026</span><span class="model-f"></span></summary><ul><li><i>why</i> fit it as a broadening parameter · <a href="/wiki/n/meeting-2026-09-15-mj-park-sandro/">15 Sep 2026 meeting</a></li><li><i>tested</i> Normal(DR2, 0.2 DR2): M5_173928 reaches the upper bound · <a href="/wiki/e/e-redshift-dispersion/">zsig</a></li></ul></details>
+<details class="model-row"><summary><span class="model-s">Dust law <span class="model-tag">inherited</span></span><span class="model-v">Kriek &amp; Conroy 2013, one diffuse screen; \(A_V = 1.086\,\tau\)</span><span class="model-w"></span><span class="model-f"></span></summary><ul><li><i>how</i> \(\tau_\lambda = \tau\,[k_{\mathrm{Calzetti}}(\lambda) + D(\lambda)]/4.05 \times (\lambda/5500\,\text{\AA})^{\delta}\)</li><li><i>how</i> bump at 2175 \(\text{\AA}\), width 350 \(\text{\AA}\), strength \(E_b = 0.85 - 1.9\,\delta\)</li><li><i>source</i> <code>sedpy_jax.attenuation_dust.kriek_conroy</code> through <code>DiffuseDust</code></li></ul></details>
+<details class="model-row"><summary><span class="model-s">\(\tau_{\mathrm{dust}}\) at 5500 \(\text{\AA}\)</span><span class="model-v">Uniform(0, 0.2)</span><span class="model-w"></span><span class="model-f"><b class="model-flag" title="Known problem">!</b></span></summary><ul><li><i>why</i> narrowed from Uniform(0, 2) on 7 Sep 2026 (c053f85); no reason recorded</li><li><i>problem</i> median 0.187–0.199 in 6 of 6 at orders 3 and 10; 5–95% within 0.14–0.20 at order 3 · <a href="/wiki/n/calibration-order/">calibration order</a></li><li><i>problem</i> under Uniform(0, 2) the 187-galaxy median is 0.45; 184 of 187 above 0.2 · <a href="/wiki/n/dr2-quiescent-sample/">DR2 sample</a></li><li><i>tested</i> ClippedNormal(0.3, 1.0) on [0, 4]: medians unchanged to two decimals · <a href="/wiki/e/e-dust-amount-prior/">tau_cn</a></li></ul></details>
+<details class="model-row"><summary><span class="model-s">Dust slope \(\delta\)</span><span class="model-v">Uniform(−1.0, 0.4)</span><span class="model-w">Ceridwen documented default</span><span class="model-f"><b class="model-flag" title="Known problem">!</b></span></summary><ul><li><i>why</i> Liu Hao, 6 Sep 2026, after the stage-1 results · <a href="/wiki/n/fit-accuracy-knobs/">accuracy knobs</a></li><li><i>problem</i> median within 0.03 of the −1.0 bound in 4 of 6 at order 10; within 0.12 in 5 of 6 at order 3 · <a href="/wiki/n/calibration-order/">calibration order</a></li><li><i>tested</i> fixed −0.7: free slope lowers photometric \(\chi^2\) in 5 of 6; \(\ln Z\) +0.8 to +14.8 · <a href="/wiki/e/e-dust-slope/">dust_free</a></li><li><i>tested</i> Uniform(−2.0, 0.5): three galaxies follow the bound to −1.75…−1.94; \([\mathrm{Fe}/\mathrm{H}]\) up to +24 half-widths; dropped · <a href="/wiki/e/e-dust-slope/">dust_wide</a></li><li><i>papers</i> Tacchella+2022 (−1.0, 0.4), reason given for 0.4 only; Leja+2017 (−2.2, 0.4); Kriek &amp; Conroy 2013 measured −0.8 to 0.2</li></ul></details>
+<details class="model-row"><summary><span class="model-s">Off <span class="model-tag">inherited</span></span><span class="model-v">Birth-cloud dust, dust emission, nebular emission, AGN, IGM</span><span class="model-w"></span><span class="model-f"></span></summary><ul><li><i>note</i> dust emission and AGN torus raised for the IRAC bands · <a href="/wiki/n/meeting-2026-09-17-jonah-powley/">17 Sep 2026 meeting</a></li></ul></details>
+</dl>
+
+## Calibration, noise and sampler
+
+<dl class="model-group">
+<details class="model-row"><summary><span class="model-s">Calibration polynomial</span><span class="model-v">Chebyshev order 10; Normal(0, 0.1); no constant; marginalised</span><span class="model-w">Liu Hao, 17 Sep 2026</span><span class="model-f"></span></summary><ul><li><i>why</i> “Order 10 has speed-ups implemented and should be the default for future fits.” · <a href="/wiki/e/e-calibration-order/">orders 3, 5, 10</a></li><li><i>note</i> order 3 from 6 Sep to 17 Sep 2026; the accuracy-knob arms cited on this page ran at order 3 · <a href="/wiki/n/fit-accuracy-knobs/">accuracy knobs</a></li><li><i>tested</i> order 0 and order 3 on 3″ apertures: <code>poly3_total</code> has the smallest photometric \(\chi^2\) in each target · <a href="/wiki/e/e-calibration-photometry/">photometry arms</a></li><li><i>tested</i> orders 5 and 10: \(\ln Z\) +20 to +555 at order 10; \(t_{50}\) half-width 0.00–0.01 Gyr on two galaxies · <a href="/wiki/e/e-calibration-order/">orders 3, 5, 10</a></li><li><i>rule</i> order ≈ range / 100 \(\text{\AA}\); shortest mode ≥ 100 \(\text{\AA}\) allows order 24 · <a href="/wiki/n/meeting-2026-09-15-mj-park-sandro/">15 Sep 2026 meeting</a></li></ul></details>
+<div class="model-row"><span class="model-s">Spectrum scaling</span><span class="model-v">Normal(1, 0.3) clipped to [0.2, 3]</span><span class="model-w"></span><span class="model-f"></span></div>
+<details class="model-row"><summary><span class="model-s">\(f_{\mathrm{calib}}\)</span><span class="model-v">log-uniform 1–10%; \(\sigma_{\mathrm{eff}}^2 = \sigma_{\mathrm{obs}}^2 + (f_{\mathrm{calib}}\,\lvert\mu\rvert)^2\)</span><span class="model-w"></span><span class="model-f"><b class="model-flag" title="Known problem">!</b></span></summary><ul><li><i>problem</i> “90% hits upper bound” · <a href="/wiki/n/meeting-2026-09-15-mj-park-sandro/">15 Sep 2026 meeting</a></li><li><i>problem</i> M12_98104 at 9.98% at orders 3 and 10; M5_173928 9.18% at order 3, 7.01% at order 10 · <a href="/wiki/n/calibration-order/">calibration order</a></li><li><i>tested</i> ceiling 20%: M12_98104 9.98 → 14.59%, \(\ln Z\) +86.6; M5_173928 stays at 8.99% · <a href="/wiki/e/e-noise-floor/">floor20</a></li></ul></details>
+<div class="model-row"><span class="model-s">Likelihood</span><span class="model-v">Diagonal Gaussian, photometry and spectrum; spectrum with \(f_{\mathrm{calib}}\) and the marginalised polynomial</span><span class="model-w"></span><span class="model-f"></span></div>
+<details class="model-row"><summary><span class="model-s">Nested sampler</span><span class="model-v">BlackJAX NSS: 500 live, 65 inner steps, 100 deleted, \(\ln Z\) tolerance −5</span><span class="model-w"></span><span class="model-f"></span></summary><ul><li><i>why</i> 65 inner steps kept, not the 5 n rule's 70, so only priors differ between arms · <a href="/wiki/n/fit-accuracy-knobs/">accuracy knobs</a></li><li><i>tested</i> seed repeats: age moves up to 1.20 half-widths, \(\ln Z\) up to 2.0 · <a href="/wiki/e/e-seed-repeatability/">seed_rep</a></li></ul></details>
+<div class="model-row"><span class="model-s">Seeds</span><span class="model-v">Sampler 20260812; posterior draws 20260813</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Pass rule</span><span class="model-v">Finite \(\ln Z\) and error; posterior-weight ESS ≥ 200</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Posterior draws</span><span class="model-v">2000 equal-weight; 400 evenly spaced rows for derived quantities</span><span class="model-w"></span><span class="model-f"></span></div>
+</dl>
+
+## Derived quantities and cosmology
+
+<dl class="model-group">
+<div class="model-row"><span class="model-s">Bin masses</span><span class="model-v">Trapezoidal integral of the SFR over each of the 7 intervals</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Mass-weighted age</span><span class="model-v">Bin masses weighted by interval midpoints</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">\(t_{20}\), \(t_{50}\), \(t_{80}\)</span><span class="model-v">Lookback time younger than which 20, 50 or 80% of the formed mass was formed; \(\Delta t = t_{80} - t_{20}\)</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">\([\mathrm{Fe}/\mathrm{H}]\)</span><span class="model-v">Grid Z + 1.7328283</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">\(f_{\mathrm{calib}}\)</span><span class="model-v">Reported in percent</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Summaries</span><span class="model-v">Percentiles 16, 50, 84</span><span class="model-w"></span><span class="model-f"></span></div>
+<div class="model-row"><span class="model-s">Cosmology <span class="model-tag">inherited</span></span><span class="model-v">Planck 2018, <code>ceridwen.cosmology.age_gyr</code></span><span class="model-w"></span><span class="model-f"></span></div>
+</dl>
+
+
+## Literature
+
 <figure>
-<img src="figures/papers-quiescent-parameters/literature-vs-ceridwen.png" alt="One row per literature paper for age, metallicity and alpha enhancement, with the Ceridwen DR2 sample median and 16-84 spread as the blue top row">
+<img src="figures/model/literature-vs-ceridwen.png" alt="One row per literature paper for age, metallicity and alpha enhancement, with the Ceridwen DR2 sample median and 16-84 spread as the blue top row">
 <figcaption>Age, metallicity and alpha-enhancement panels: redshift-ordered literature-paper rows; grey bars: quoted ranges/\(\pm\)1\(\sigma\); blue top row: 187-galaxy Ceridwen DR2 median (also vertical line), 16–84 percentile across-galaxy spread; circles: \([\mathrm{Z}/\mathrm{H}]\)/\([\alpha/\mathrm{Fe}]\); squares: \([\mathrm{Fe}/\mathrm{H}]\)/\([\mathrm{Mg}/\mathrm{Fe}]\); Ceridwen \([\mathrm{Fe}/\mathrm{H}]\) = Z + 1.7328 (grid’s built-in solar reference).</figcaption>
 </figure>
 
-## Prospector reference: Jonah Powley
+### Values at z ~ 0.7
+
+| Quantity | DR2 median (187) | Literature at z~0.7 |
+| --- | --- | --- |
+| \(\log M_\star\) formed | 11.34 | Kaushal+2024 QG median 11.2; Borghi+2022a > 10.4; Cappellari 2023 > 10.5 |
+| \([\mathrm{Fe}/\mathrm{H}]\) | −0.18 | Borghi+2022a \([\mathrm{Z}/\mathrm{H}]\) 0.08 \(\pm\) 0.18; Beverage+2021 ~0.2 dex below z~0; Cheng+2025 higher at redder U−V; Gallazzi+2026 no QG evolution to SDSS |
+| \([\alpha/\mathrm{Fe}]\) | −0.05 | Bevacqua+2023 +0.24 \(\pm\) 0.01, 91% supersolar; Borghi+2022a +0.13 \(\pm\) 0.11; Beverage+2023 \([\mathrm{Mg}/\mathrm{Fe}]\) ~0.2–0.3 |
+| SFH | \(t_{50}\) 5.03 Gyr, \(t_{80}-t_{20}\) 2.55 Gyr | Kaushal+2024 \(t_{50}\), \(t_{90}\) mass-independent; Nersesian+2025 \(\tau_q\) 1.23 Gyr |
+| \(\tau_{\mathrm{dust}}\) at 5500 \(\text{\AA}\) | 0.45 under Uniform(0, 2); 184 of 187 above 0.2 | Jonah Powley's Prospector fit: about 0.77 |
+| \(\sigma_\star\) | 204 \(\mathrm{km\,s^{-1}}\) | DR3 16/50/84: 127/166/207 \(\mathrm{km\,s^{-1}}\); Kaushal+2024 QG ~200; Cappellari 2023 quenched above 200; Gallazzi+2026 age transition at \(\log\sigma\) 2.3 |
+| Age, mass-weighted | 4.81 Gyr | Borghi+2022a 2–4 Gyr SSP-equivalent, Ceridwen +1.29 Gyr for the 68-galaxy overlap; Beverage+2023 rises with \(\sigma\); Nersesian+2025 QG 1.1 Gyr older than SFG; Barone+2022 no age–\(\Sigma\) relation |
+
+<details>
+<summary>Prospector reference: Jonah Powley</summary>
 
 | Parameter | His prior | Ceridwen production |
 | --- | --- | --- |
@@ -70,76 +152,9 @@ def get_duste_gamma_from_log(log_duste_gamma=None, **extras):
 
 </details>
 
-## Physical parameters
+</details>
 
-| Quantity | Prior | DR2 median (187) | Literature at z~0.7 | Decided |
-| --- | --- | --- | --- | --- |
-| \(\log M_\star\) formed | Uniform(8, 13) | 11.34 | Kaushal+2024 QG median 11.2; Borghi+2022a > 10.4; Cappellari 2023 > 10.5 | |
-| \([\mathrm{Fe}/\mathrm{H}]\) | Uniform(−2.5, 0.5), 13 grid nodes; grid Z = \([\mathrm{Fe}/\mathrm{H}]\) − 1.7328 | −0.18 | Borghi+2022a \([\mathrm{Z}/\mathrm{H}]\) 0.08 \(\pm\) 0.18; Beverage+2021 ~0.2 dex below z~0; Cheng+2025 higher at redder U−V; Gallazzi+2026 no QG evolution to SDSS | |
-| \([\alpha/\mathrm{Fe}]\) | Uniform(−0.2, 0.6), 5 grid nodes | −0.05 | Bevacqua+2023 +0.24 \(\pm\) 0.01, 91% supersolar; Borghi+2022a +0.13 \(\pm\) 0.11; Beverage+2023 \([\mathrm{Mg}/\mathrm{Fe}]\) ~0.2–0.3 | |
-| SFH ratios \(\times\) 7 | Student-t(0, 0.3 dex, df 2), unbounded | \(t_{50}\) 5.03 Gyr, \(t_{80}-t_{20}\) 2.55 Gyr | Kaushal+2024 \(t_{50}\), \(t_{90}\) mass-independent; Nersesian+2025 \(\tau_q\) 1.23 Gyr | |
-| \(\tau_{\mathrm{dust}}\) at 5500 \(\text{\AA}\) | Uniform(0, 0.2); the 187-galaxy run used Uniform(0, 2) | 0.45; 184 of 187 above 0.2 | | |
-| Dust slope | Uniform(−1.0, 0.4) | | | |
-| \(\sigma_\star\) | Fixed at DR2; with `CERIDWEN_FREE_SIGMA=1`, Normal(DR2, error) clipped at \(\pm\) 3 times the error | 204 \(\mathrm{km\,s^{-1}}\) | DR3 16/50/84: 127/166/207 \(\mathrm{km\,s^{-1}}\); Kaushal+2024 QG ~200; Cappellari 2023 quenched above 200; Gallazzi+2026 age transition at \(\log\sigma\) 2.3 | Liu Hao, 15 Sep 2026 meeting |
-| Redshift | Fixed at catalogue z | 0.73 | | |
-| Age, mass-weighted | Derived | 4.81 Gyr | Borghi+2022a 2–4 Gyr SSP-equivalent, Ceridwen +1.29 Gyr for the 68-galaxy overlap; Beverage+2023 rises with \(\sigma\); Nersesian+2025 QG 1.1 Gyr older than SFG; Barone+2022 no age–\(\Sigma\) relation | |
-
-## Sample
-
-| Step | Rule | N |
-| --- | --- | --- |
-| DR2 spectra matched to COSMOS2015 | `f_use` 1, `f_ppxf` 0, `f_z` 0, `f_int` 0, S/N > 0, 0.6 ≤ z < 1.0, rest NUV, r and J magnitudes present | 1328 |
-| NUVrJ passive | NUV − r > 3 (r − J) + 1 and NUV − r > 3.1 | 609 |
-| Weak [O II] | EW([O II] 3727) > −5 \(\text{\AA}\) or missing | 454 |
-| No emission detected | \(\lvert \mathrm{EW}/\sigma_{\mathrm{EW}} \rvert < 3\) for [O II] 3727 and [O III] 5007 | 349 |
-| Clean photometry | COSMOS2015 Area 0, Sat 0, Cfl 1, Flag 0 | 194 |
-| One spectrum per object | Highest S/N kept | 187 |
-
-## Spectrum and photometry
-
-| Item | Setting |
-| --- | --- |
-| Pixels | DR2 `QUAL` 0, error > 0, finite flux; other pixels assigned uncertainty 1 and masked; over 3000 good pixels required, with fitted pixels above 0.7 × good pixels |
-| Units | Air to vacuum wavelengths; \(10^{-19}\) erg s\(^{-1}\) cm\(^{-2}\) \(\text{\AA}^{-1}\) to \(F_\nu\) cgs |
-| Resolution | FITS `SPEC_RES` as FWHM resolving power; DR2 \(\sigma_\star\) applied as line-of-sight broadening; CSP broadening 0 |
-| Emission-line mask | \(\pm\) 1500 \(\mathrm{km\,s^{-1}}\) at catalogue z around rest 3726.0, 3728.8, 4861.3, 4958.9, 5006.8 \(\text{\AA}\) ([O II], H\(\beta\), [O III]); no nebular model |
-| Telluric mask | 7590–7660 \(\text{\AA}\) air, A band |
-| Fitted pixels | All valid pixels; no extra rest windows |
-| Photometry | 12 COSMOS2015 bands u*, B, V, r+, i+, z+, Y, J, H, Ks, 3.6, 4.5 µm; 3″ apertures scaled to total by the per-object offset (optical and NIR), Galactic extinction with Laigle+2016 coefficients, Table 3 zero-point offsets; IRAC already total; µJy to maggies |
-| Photometric errors | 5% of flux added in quadrature; all 12 bands fitted |
-
-## Model and calibration
-
-| Item | Setting | Decided |
-| --- | --- | --- |
-| Grid | `amist_c3k_hr_krou_afe`: aMIST v2.5, C3K v2.3 high resolution (R ≈ 6000), Kroupa 2001 IMF; 13 metallicity, 5 \([\alpha/\mathrm{Fe}]\) and 107 age nodes | |
-| SFH | Eight lookback nodes: 0, 0.03, 0.1, 0.3, 1, 3, 5 Gyr and the age of the Universe at z; step interpolation; \([\mathrm{Fe}/\mathrm{H}]\) and \([\alpha/\mathrm{Fe}]\) constant over age | |
-| Dust | Kriek–Conroy diffuse law with free slope; birth-cloud dust, dust emission, IGM and nebular emission off | |
-| Calibration polynomial | Chebyshev order 10 over the fitted range; coefficients Normal(0, 0.1); no constant term; marginalised analytically. Order 3 until 17 Sep 2026. | Liu Hao, 17 Sep 2026; order 3 from 6 Sep 2026; orders 5 and 10 tested 15 Sep 2026. |
-| Spectrum scaling | Normal(1, 0.3) clipped to [0.2, 3], sampled | |
-| Extra spectral error | \(\log f_{\mathrm{calib}}\) Uniform(ln 0.01, ln 0.10); \(\sigma_{\mathrm{eff}}^2 = \sigma_{\mathrm{obs}}^2 + (f_{\mathrm{calib}}\,\lvert\mu\rvert)^2\) with model flux \(\mu\) | Under review since the 15 Sep 2026 meeting |
-
-## Sampler
-
-| Item | Setting |
-| --- | --- |
-| Likelihood | Diagonal Gaussian for photometry; diagonal Gaussian with the fractional term and the marginalised polynomial for the spectrum |
-| Nested sampler | BlackJAX NSS: 500 live points, 65 inner steps, 100 deleted per step, log Z tolerance −5, checkpoint every 1200 s, seed 20260812 |
-| Pass rule | Finite log Z and error; posterior-weight ESS ≥ 200 |
-| Posterior draws | 2000 equal-weight draws (seed 20260813); 400 evenly spaced rows for derived quantities |
-
-## Derived quantities
-
-| Quantity | Definition |
-| --- | --- |
-| Bin masses | Trapezoidal integral of the SFR over each of the 7 intervals; fractions of the total formed mass |
-| Mass-weighted age | Bin masses weighted by the interval midpoints |
-| \(t_{20}\), \(t_{50}\), \(t_{80}\) | Lookback time younger than which 20, 50 or 80% of the formed mass was formed; \(\Delta t = t_{80} - t_{20}\) |
-| \([\mathrm{Fe}/\mathrm{H}]\) | Grid Z + 1.7328283 (solar Z 0.0185) |
-| \(f_{\mathrm{calib}}\) | Reported in percent |
-| Summaries | Percentiles: 16, 50 and 84 |
-
-## Other redshifts
+### Other redshifts
 
 | Reference | Sample | Result |
 | --- | --- | --- |
@@ -188,6 +203,6 @@ def get_duste_gamma_from_log(log_duste_gamma=None, **extras):
 - Thomas+2005, [arXiv:astro-ph/0410209](https://arxiv.org/abs/astro-ph/0410209) and 2010, [arXiv:0912.0259](https://arxiv.org/abs/0912.0259): local early types.
 - van der Wel+2021, [arXiv:2108.00744](https://arxiv.org/abs/2108.00744): LEGA-C DR3, 4081 spectra, 3741 galaxies, VIMOS R ~ 2500, 6300–8800 \(\text{\AA}\), UVJ quiescent 1208.
 
-Sources: `notebooks/ceridwen_integrated_photometry_spectra.ipynb` cells 2, 6, 8, 12, 14, 16, 18, 20, 22 and 30 (zero-based); `scripts/build_dr2_quiescent_summary.py`; `ceridwen/ceridwen/likelihood/noise_model.py`; `ceridwen/scripts_afe/build_afe_hr_grid.py`; `results/dr2-quiescent-new-defaults-summary.csv`; the 187-galaxy prior from `results/dr2-quiescent-new-defaults/123161-M4_123161/M4_123161_executed.ipynb`. Figures in [DR2 quiescent sample](/wiki/n/dr2-quiescent-sample/); [literature comparison](/wiki/roadmap/#literature-comparison); earlier reference: [Current default model](/wiki/n/default-fit-parameters/).
+Sources: `notebooks/ceridwen_integrated_photometry_spectra.ipynb` cells 2, 6, 8, 12, 14, 16, 18, 20, 22 and 30 (zero-based); `scripts/build_dr2_quiescent_summary.py`; `ceridwen/ceridwen/likelihood/noise_model.py`; `ceridwen/scripts_afe/build_afe_hr_grid.py`; `results/dr2-quiescent-new-defaults-summary.csv`; the 187-galaxy prior from `results/dr2-quiescent-new-defaults/123161-M4_123161/M4_123161_executed.ipynb`. Figures in [DR2 quiescent sample](/wiki/n/dr2-quiescent-sample/); [literature comparison](/wiki/roadmap/#literature-comparison); earlier reference: [Current default model](/wiki/n/default-fit-parameters/); page contract: `wiki/research/model-page-spec.md`.
 
 </details>

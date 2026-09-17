@@ -27,7 +27,7 @@ from matplotlib import rcParams
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = PROJECT_ROOT / "results/dr2-quiescent-new-defaults-summary.csv"
-OUT_DIR = PROJECT_ROOT / "wiki/analyses/papers-quiescent-parameters"
+OUT_DIR = PROJECT_ROOT / "wiki/analyses/model"
 
 BLUE, GREY = "#0072B2", "#555555"
 

@@ -668,7 +668,7 @@ def shell(title, base, body, rail, extra_head="", desc=""):
 
 
 def rail_sections(notes, base, current=""):
-    links = (("", "Home"), ("results/", "Results"), ("literature/", "Literature"), ("meetings/", "Meetings"),
+    links = (("", "Home"), ("results/", "Results"), ("model/", "Model"), ("meetings/", "Meetings"),
              ("papers/", "Papers"), ("masking/", "Masking"), ("code/", "Code & guides"))
     return '<ul class="primary-nav">%s</ul>' % "".join(
         '<li><a href="%s/%s">%s</a></li>' % (base, path, esc(label)) for path, label in links)

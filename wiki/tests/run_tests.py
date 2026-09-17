@@ -288,7 +288,7 @@ def main() -> int:
         parser = ChromeText()
         parser.feed((out / "index.html").read_text().split("<body>", 1)[-1])
         check("empty front page keeps research navigation",
-              parser.nodes == ["Astro Lab Notebook", "Home", "Results", "Literature", "Meetings", "Papers", "Masking", "Code & guides"],
+              parser.nodes == ["Astro Lab Notebook", "Home", "Results", "Model", "Meetings", "Papers", "Masking", "Code & guides"],
               repr(parser.nodes))
         empty_page = (out / "index.html").read_text()
         check("empty research does not invent experiments", empty_page.count("None yet") == 2)

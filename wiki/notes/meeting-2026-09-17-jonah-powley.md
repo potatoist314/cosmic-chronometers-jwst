@@ -37,7 +37,7 @@ job:
 
 - ★ Jonah sent me his priors and his first-year PhD report. Get him to send the report.
 - ★ What is \(f_{\mathrm{AGN}}\)? ★ Is his AGN torus parameter uniform in log space? ★ His redshift is a free parameter with wiggle around \(\pm 0.1\).
-- His priors are on the [literature page](/wiki/n/papers-quiescent-parameters/#prospector-reference-jonah-powley); \(f_{\mathrm{AGN}}\) and \(\tau_{\mathrm{AGN}}\) are sampled uniformly in \(\log_{10}\).
+- His priors are on the [Model page](/wiki/model/#prospector-reference-jonah-powley); \(f_{\mathrm{AGN}}\) and \(\tau_{\mathrm{AGN}}\) are sampled uniformly in \(\log_{10}\).
 
 #### Other
 
