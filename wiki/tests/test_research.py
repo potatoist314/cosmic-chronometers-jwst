@@ -420,7 +420,7 @@ class ResearchTests(unittest.TestCase):
                 self.assertEqual(model.replace("/model/", "/literature/"),
                                  (out / "literature/index.html").read_text().replace("/model/", "/literature/"))
                 self.assertEqual(len(re.findall(r'<dl class="model-group">', model)), 4)
-                self.assertEqual(len(re.findall(r'class="model-flag"', model)), 4)
+                self.assertEqual(len(re.findall(r'class="model-flag"', model)), 3)
                 self.assertNotIn("Moved to", model)
                 self.assertIn('id="references"', note)
                 self.assertIn('id="prospector-reference-jonah-powley"', note)

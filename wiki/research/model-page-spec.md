@@ -45,7 +45,6 @@ Setting | Value | Why (at most 6 words) | !
 
 Flags at build time:
 
-- tau_dust prior: median 0.187-0.199 in 6 of 6 reference galaxies at orders 3 and 10.
 - Dust slope prior: within 0.03 of the -1.0 bound in 4 of 6 at order 10; follows the bound to -2.0 when widened.
 - [alpha/Fe] prior: within 0.03 of the -0.2 grid edge in 2 of 6 at orders 3 and 10.
 - f_calib prior: M12_98104 at 9.98% at orders 3 and 10; 15 Sep 2026 meeting: "90% hits upper bound".

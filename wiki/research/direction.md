@@ -105,6 +105,13 @@ date: 2026-09-15
     "title": "Document all free parameters and priors",
     "priority": null,
     "source": "wiki/notes/meeting-2026-09-15-mj-park-sandro.md#coordination"
+  },
+  {
+    "id": "tau-dust-railing",
+    "title": "Check \\(\\tau_{\\mathrm{dust}}\\) for railing under Uniform(0, 1)",
+    "priority": null,
+    "source": "wiki/notes/model.md",
+    "details": "Check whether the \\(\\tau_{\\mathrm{dust}}\\) posterior rails at 1 after the prior changed from Uniform(0, 0.2) to Uniform(0, 1) on 17 Sep 2026. Previous medians: Uniform(0, 0.2), 0.187-0.199 for 6 of 6 reference galaxies, and Uniform(0, 2), 0.31-0.49 for those six galaxies, 0.45 across 187 galaxies."
   }
 ]
 ```
@@ -133,6 +140,14 @@ date: 2026-09-15
     "date": "2026-09-17",
     "text": "i want to fix on a single high S/N galaxy with strong absorption features from now on as well (210210?) - this is the current roadmap trajectoy.",
     "display_text": "I want to fix on a single high S/N galaxy with strong absorption features from now on as well (210210?) - this is the current roadmap trajectory."
+  },
+  {
+    "date": "2026-09-17",
+    "text": "change the tau dust prior back to (0,1)"
+  },
+  {
+    "date": "2026-09-17",
+    "text": "resume, although add it as a research note/roadmap, to check for railing"
   }
 ]
 ```
