@@ -131,3 +131,8 @@ comparison issues; factual configurations and unit limitations remain in the rec
 Absorption-feature plotting default: `scripts/spectral_figures.py` assigns fixed
 colours and one right-side legend. Finish marked figures with
 `spectral_tight_layout`; see `notes/notebook-map.md`.
+
+Sampler progress default: fit notebooks write one JSON line per iteration to
+`ns_progress.jsonl` in the result folder and keep it out of the cell output.
+`scripts/relabel_executed_figures.py` redraws labelled spectrum figures in
+existing executed notebooks from stored arrays; see `notes/notebook-map.md`.
