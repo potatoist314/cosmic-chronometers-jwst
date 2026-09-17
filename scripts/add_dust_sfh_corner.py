@@ -67,7 +67,7 @@ def notebook_draws(result_dir, seed, universe_age, posterior_count, selected_cou
             saved_fractions = np.asarray(derived["sfh/mass_fraction_draws"])
     else:
         if seed is None or universe_age is None:
-            raise ValueError("no ceridwen_derived_outputs.h5: give --seed and --universe-age")
+            raise ValueError("no ceridwen_derived_outputs.h5: give --seed and --redshift")
         edges = np.array([0.0, 0.03, 0.1, 0.3, 1.0, 3.0, 5.0, universe_age])
 
     with h5py.File(result_dir / "ceridwen_result.h5", "r") as result:
