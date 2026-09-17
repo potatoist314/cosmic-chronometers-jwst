@@ -848,3 +848,9 @@
 - Pages: Home, research/direction.md
 - Change: Roadmap tasks `alpha-fe-t50-vs-mass` at priority 8 and `mock-spectra-test-suite` at priority 6 added on Liu Hao's instruction, in his wording, with the originals under Amendments. Codex quota exhausted until 19 Sep, so no Codex pass.
 - Validation: wiki build passes; both tasks show on Home at 8/10 and 6/10 and their priority pages open.
+
+## [2026-09-17] decision | Local elliptical galaxies as relative ground truth as a priority
+
+- Pages: Home, research/direction.md
+- Change: Roadmap task `local-ellipticals-ground-truth` added at priority 9 on Liu Hao's instruction, in his wording, with the original under Amendments. Codex quota exhausted until 19 Sep, so no Codex pass.
+- Validation: wiki build passes; the task shows on Home at 9/10 and its priority page opens.

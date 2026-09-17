@@ -44,6 +44,12 @@ date: 2026-09-15
     "effort": "Expected short fix"
   },
   {
+    "id": "local-ellipticals-ground-truth",
+    "title": "Pull local elliptical galaxies as relative 'ground truth' to compare outputs against",
+    "priority": 9,
+    "source": "wiki/research/direction.md"
+  },
+  {
     "id": "literature-comparison",
     "title": "Compare published methods, ages and metallicities",
     "priority": 8,
@@ -193,6 +199,11 @@ date: 2026-09-15
     "date": "2026-09-17",
     "text": "add another priority - setting up the mock spectra test suite, 6/10",
     "display_text": "Add another priority: setting up the mock spectra test suite, 6/10."
+  },
+  {
+    "date": "2026-09-17",
+    "text": "another priority - pull local elliptical galaxies as relative 'ground truth' to compare my outputs against, 9/10",
+    "display_text": "Another priority: pull local elliptical galaxies as relative 'ground truth' to compare my outputs against, 9/10."
   }
 ]
 ```
