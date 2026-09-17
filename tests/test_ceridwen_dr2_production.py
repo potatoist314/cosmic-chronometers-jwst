@@ -92,6 +92,7 @@ def test_monitor_pulls_only_promised_per_target_files(monkeypatch, tmp_path):
     ) == {"M10_233129"}
     result_pull = commands[1]
     assert "--include=execution.log" in result_pull
+    assert "--include=ns_progress.jsonl" in result_pull
     assert "--include=ceridwen_result.h5" in result_pull
     assert "--include=ceridwen_derived_outputs.h5" in result_pull
     assert "--include=M10_233129_executed.ipynb" in result_pull
@@ -231,6 +232,18 @@ def test_notebook_defaults_to_the_uniform_tau_prior():
     assert 'attrs["dust_index_bounds"]' in source
 
 
+def test_notebook_keeps_sampler_progress_out_of_the_cell_output():
+    notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
+    source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
+    fit = source[source.index("joint_adapter = BlackJAXNestedSamplerAdapter("):]
+    fit = fit[:fit.index(")\n")]
+    assert "verbose=False" in fit
+    assert "progress_path=str(PROGRESS_PATH)" in fit
+    assert 'PROGRESS_PATH = RESULT_DIR / "ns_progress.jsonl"' in source
+    # The summary line reads the file back; the module import must precede it.
+    assert source.index("\nimport json\n") < source.index("json.loads(PROGRESS_PATH")
+
+
 def test_notebook_marks_major_absorption_features():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     cells = ["".join(cell.get("source", [])) for cell in notebook["cells"]]
@@ -253,8 +266,11 @@ def test_notebook_marks_major_absorption_features():
         assert "mark_absorption_features(axes[0], z_catalog, show_labels=False)" in (
             cells[index]
         )
-    for index in (14, 24, 26, 28):
+    for index in (14, 24, 28):
         assert "spectral_tight_layout()" in cells[index]
+    # The fit figure's data legend sits below the panels, clear of the band names.
+    assert 'loc="lower center"' in cells[26]
+    assert "spectral_tight_layout(rect=(0, 0.04, 1, 1))" in cells[26]
     assert "rotation=90" not in source
     assert "labelpad=30" not in source
 

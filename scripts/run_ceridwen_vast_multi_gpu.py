@@ -388,6 +388,7 @@ def _pull_completed(
             _rsync_command(
                 endpoint,
                 "--include=execution.log",
+                "--include=ns_progress.jsonl",
                 "--include=ceridwen_result.h5",
                 "--include=ceridwen_derived_outputs.h5",
                 f"--include={spect_id}_executed.ipynb",
