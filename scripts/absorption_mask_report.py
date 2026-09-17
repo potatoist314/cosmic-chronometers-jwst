@@ -22,6 +22,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from build_dr2_quiescent_summary import FEH_OFFSET  # noqa: E402
+from spectral_figures import mark_absorption_features, spectral_tight_layout  # noqa: E402
 DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "results/absorption-mask"
 DEFAULT_FIGURE_DIR = PROJECT_ROOT / "wiki/analyses/absorption-mask"
 SCALARS = ["logmass", "Z", "afe", "diffuse_tau_kc", "spectrum_scaling", "log_f_calib"]
@@ -358,11 +359,11 @@ def plot_windows(output_root: Path, figure_dir: Path, cell="real_M5_172669_featu
     kept = full_mask & feature
     ax.plot(np.where(kept, wave, np.nan), np.where(kept, flux * scale, np.nan), color=MODE_COLORS["features"], lw=0.9,
             label=f"absorption-feature pixels ({kept.sum()} of {full_mask.sum()})")
-    ax.set_xlabel("observed wavelength [Å]")
     ax.set_ylabel(r"$F_\nu$ [$10^{-29}$ erg s$^{-1}$ cm$^{-2}$ Hz$^{-1}$]")
     ax.set_title(f"M5_172669 (z = {z:.3f}): pixels kept by the absorption-feature mask, ±1000 km/s line windows")
     ax.legend(frameon=False, loc="lower right")
-    fig.tight_layout()
+    mark_absorption_features(ax, z, xlabel="observed wavelength [Å]")
+    spectral_tight_layout(fig)
     path = figure_dir / "feature_windows_M5_172669.png"
     fig.savefig(path, bbox_inches="tight")
     plt.close(fig)

@@ -187,5 +187,61 @@ class MarginalKL(unittest.TestCase):
         self.assertAlmostEqual(pgd.marginal_kl_bits(pgd.prior_unit_values(draws, prior), weights), expected, delta=0.03)
 
 
+def synthetic_galaxy(z=0.7, n=400):
+    """The fields the spectrum figures read, with 40 unusable and 60 masked pixels."""
+    from types import SimpleNamespace
+
+    wave = np.linspace(6300.0, 8800.0, n)
+    model = 3e-28 * (1 + 0.1 * np.sin(wave / 90.0))
+    uncertainty = np.full(n, 1e-29)
+    uncertainty[:40] = pgd.INVALID_PIXEL_UNCERTAINTY
+    mask = np.ones(n, bool)
+    mask[:100] = False
+    observed = np.where(uncertainty == pgd.INVALID_PIXEL_UNCERTAINTY, 0.0, model)
+    filters = ["subaru_suprimecam_rp", "subaru_suprimecam_ip", "subaru_suprimecam_zp"]
+    return SimpleNamespace(
+        spect_id="M0_0", z=z, spec={"wavelength": wave},
+        phot={"filters": filters, "flux": np.ones(3), "uncertainty": np.full(3, 0.1), "mask": np.ones(3, bool)},
+        derived_spec={"observed": observed, "uncertainty": uncertainty, "effective_uncertainty": uncertainty,
+                      "mask": mask, "posterior_q16": 0.99 * model, "posterior_q50": model,
+                      "posterior_q84": 1.01 * model, "pull": np.zeros(n)})
+
+
+class SpectrumFigures(unittest.TestCase):
+    """The redrawn notebook figures carry the absorption-feature windows and one legend."""
+
+    def feature_windows_on(self, ax):
+        return sorted((p.get_x(), p.get_x() + p.get_width()) for p in ax.patches
+                      if (p.get_gid() or "").startswith("absorption-feature:"))
+
+    def check(self, plot):
+        import matplotlib.pyplot as plt
+        from ceridwen.observation.absorption_features import feature_windows
+        from spectral_figures import MARKED_FEATURES
+
+        galaxy = synthetic_galaxy()
+        fig = plot(galaxy)
+        lower, upper = fig.axes[0].get_xlim()
+        expected = sorted((lo, hi) for lo, hi in feature_windows([n for n, _ in MARKED_FEATURES], zred=galaxy.z)
+                          if hi >= lower and lo <= upper)
+        self.assertTrue(expected)
+        for ax in fig.axes[:2]:
+            np.testing.assert_allclose(self.feature_windows_on(ax), expected)
+        titles = [legend.get_title().get_text() for legend in fig.legends]
+        self.assertEqual(titles.count("Absorption features"), 1)
+        plt.close(fig)
+        return fig
+
+    def test_fit_spectrum(self):
+        fig = self.check(pgd.plot_fit_spectrum)
+        excluded = fig.axes[0].collections[0].get_offsets()
+        self.assertEqual(len(excluded), 60)      # usable pixels outside the fit mask
+        fitted = fig.axes[0].lines[0].get_ydata()
+        self.assertEqual(int(np.isfinite(fitted).sum()), 300)
+
+    def test_predictive_spectrum(self):
+        self.check(pgd.plot_predictive_spectrum)
+
+
 if __name__ == "__main__":
     unittest.main()

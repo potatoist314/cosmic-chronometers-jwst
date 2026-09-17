@@ -875,6 +875,100 @@ def plot_spectral_chi2(galaxy: GalaxyResult, like_ml: dict | None = None, stamp:
     return fig
 
 
+CGS_FNU_PER_MAGGIE = 3631e-23
+INVALID_PIXEL_UNCERTAINTY = 1.0   # the fitting notebook's placeholder for unusable pixels
+
+
+def _mark_filter_ranges(ax, galaxy: GalaxyResult, show_labels: bool = True):
+    """Shade the photometric passbands that overlap the axis, as the fitting notebook does."""
+    from ceridwen.observation import Photometry
+
+    phot = Photometry(filters=galaxy.phot["filters"], flux=galaxy.phot["flux"],
+                      uncertainty=galaxy.phot["uncertainty"], mask=galaxy.phot["mask"], name="photometry")
+    curves = phot.filterset.filters
+    colors = plt.cm.tab20(np.linspace(0, 1, len(curves)))
+    limits = ax.get_xlim()
+    for index, (label, curve, effective, color) in enumerate(
+            zip(_band_labels(galaxy.phot["filters"]), curves, np.asarray(phot.wave_eff), colors)):
+        blue, red = max(float(curve.blue_edge), limits[0]), min(float(curve.red_edge), limits[1])
+        if blue >= red:
+            continue
+        ax.axvspan(blue, red, facecolor=color, edgecolor=color, alpha=0.18, linewidth=1.0, zorder=0)
+        if show_labels:
+            ax.text(effective if blue <= effective <= red else 0.5 * (blue + red), 0.98 - 0.07 * (index % 2),
+                    label, color="0.15", fontsize=8, fontweight="semibold", ha="center", va="top",
+                    transform=ax.get_xaxis_transform(), clip_on=True)
+    ax.set_xlim(limits)
+
+
+def _finish_spectrum_figure(fig, axes, galaxy: GalaxyResult, out: Path | None, rect=(0, 0, 1, 1)):
+    _mark_filter_ranges(axes[0], galaxy)
+    _mark_filter_ranges(axes[1], galaxy, show_labels=False)
+    mark_absorption_features(axes[0], galaxy.z, show_labels=False)
+    mark_absorption_features(axes[1], galaxy.z, xlabel="observed vacuum wavelength [angstrom]")
+    spectral_tight_layout(fig, rect=rect)
+    if out is not None:
+        fig.savefig(out)
+        plt.close(fig)
+        return None
+    return fig
+
+
+def plot_fit_spectrum(galaxy: GalaxyResult, out: Path | None = None):
+    """The fitting notebook's native-spectrum fit and pull figure, from the stored arrays."""
+    wave = galaxy.spec["wavelength"]
+    ds = galaxy.derived_spec
+    fitted = ds["mask"].astype(bool)
+    valid = ds["uncertainty"] != INVALID_PIXEL_UNCERTAINTY
+    excluded = valid & ~fitted
+    scale = 1e9 / CGS_FNU_PER_MAGGIE
+    flux = np.where(fitted, ds["observed"], np.nan) * scale
+    sigma = np.where(fitted, ds["uncertainty"], np.nan) * scale
+    q16, q50, q84 = (np.where(valid, ds[f"posterior_q{q}"], np.nan) * scale for q in (16, 50, 84))
+
+    fig, axes = plt.subplots(2, 1, figsize=(12, 7), gridspec_kw={"height_ratios": [3, 1]}, sharex=True)
+    ax = axes[0]
+    ax.scatter(wave[excluded], ds["observed"][excluded] * scale, s=4, color="0.75", linewidths=0,
+               label="LEGA-C excluded", rasterized=True)
+    ax.fill_between(wave, flux - sigma, flux + sigma, color="0.5", alpha=0.18, linewidth=0)
+    ax.plot(wave, flux, color="0.15", lw=0.5, label="LEGA-C fitted pixels", rasterized=True)
+    ax.plot(wave, q50, color="tab:red", lw=1.2, label="Ceridwen joint posterior median")
+    ax.fill_between(wave, q16, q84, color="tab:red", alpha=0.25, label="16-84% posterior")
+    ax.plot([], [], color="0.3", lw=0.6, linestyle=":", label="absorption-feature windows")
+    ax.set_ylabel(r"flux density [$10^{-9}$ maggies]")
+    ax.set_title(f"{galaxy.spect_id}: native LEGA-C versus joint C3K_HR Ceridwen fit")
+    # Below the panels: inside the axes the legend covers the band names.
+    fig.legend(*ax.get_legend_handles_labels(), loc="lower center", frameon=False, ncol=5, fontsize=8)
+    axes[1].axhspan(-1, 1, color="0.85", alpha=0.55, linewidth=0)
+    axes[1].axhline(0, color="k", lw=0.8)
+    axes[1].plot(wave, np.where(fitted, ds["pull"], np.nan), color="0.35", lw=0.45, rasterized=True)
+    axes[1].set_ylabel("pull")
+    top = ax.secondary_xaxis("top", functions=(lambda o: o / (1 + galaxy.z), lambda r: r * (1 + galaxy.z)))
+    top.set_xlabel("rest-frame wavelength [angstrom]")
+    return _finish_spectrum_figure(fig, axes, galaxy, out, rect=(0, 0.04, 1, 1))
+
+
+def plot_predictive_spectrum(galaxy: GalaxyResult, out: Path | None = None):
+    """The fitting notebook's posterior-predictive spectrum figure, from the stored arrays."""
+    wave = galaxy.spec["wavelength"]
+    ds = galaxy.derived_spec
+    fitted = ds["mask"].astype(bool)
+    shown = {key: np.where(fitted, ds[key], np.nan) for key in
+             ("observed", "effective_uncertainty", "posterior_q16", "posterior_q50", "posterior_q84", "pull")}
+
+    fig, axes = plt.subplots(2, 1, figsize=(10, 6), gridspec_kw={"height_ratios": [3, 1]}, sharex=True)
+    axes[0].errorbar(wave, shown["observed"], yerr=shown["effective_uncertainty"], fmt="-", lw=0.5,
+                     color="0.35", label="measured LEGA-C")
+    axes[0].plot(wave, shown["posterior_q50"], color="tab:red", lw=1.2, label="joint Ceridwen median")
+    axes[0].fill_between(wave, shown["posterior_q16"], shown["posterior_q84"], color="tab:red", alpha=0.25)
+    axes[0].set(ylabel="F_nu [cgs]")
+    axes[0].legend(frameon=False)
+    axes[1].axhline(0, color="0.5", lw=0.8)
+    axes[1].plot(wave, shown["pull"], lw=0.45, color="0.35")
+    axes[1].set_ylabel("pull")
+    return _finish_spectrum_figure(fig, axes, galaxy, out)
+
+
 def plot_sf_timescales(galaxy: GalaxyResult, stamp: str = "", out: Path | None = None):
     """Cumulative mass formed by lookback time with t10..t90 and their posteriors."""
     edges = galaxy.sfh_edges_gyr
