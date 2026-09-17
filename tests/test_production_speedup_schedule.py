@@ -29,7 +29,7 @@ def test_candidate_fit_rejects_stale_installed_package(monkeypatch, tmp_path):
         FitExperiment(tmp_path, 'reduce').attach(SimpleNamespace())
 
 
-def test_fixed_redshift_notebook_uses_supported_spectrum_arguments():
+def test_notebook_spectrum_arguments_are_supported_by_the_pinned_ceridwen():
     import ast
     import json
     from ceridwen.observation import Spectrum
@@ -42,13 +42,12 @@ def test_fixed_redshift_notebook_uses_supported_spectrum_arguments():
             continue
         for node in ast.walk(ast.parse(''.join(cell['source']))):
             if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == 'Spectrum':
-                for keyword in node.keywords:
-                    if keyword.arg is None:
-                        args = eval(compile(ast.Expression(keyword.value), str(path), 'eval'),
-                                    {'FREE_ZRED_KMS': 0.})
-                        Spectrum(wavelength=jnp.array([4000., 4100.]), **args)
-                        assert args == {}
-                        calls.append(args)
+                names = {keyword.arg for keyword in node.keywords}
+                assert None not in names
+                assert {'free_z', 'fit_sigma_smooth', 'sigma_losvd'} <= names
+                Spectrum(wavelength=jnp.array([4000., 4100.]), sigma_losvd=200.,
+                         fit_sigma_smooth=True, free_z=True)
+                calls.append(names)
     assert len(calls) == 1
 
 

@@ -371,3 +371,15 @@ def test_destroy_skips_the_interactive_confirmation(monkeypatch):
         ["vastai", "stop", "instance", "50104285"],
         ["vastai", "stop", "instance", "50104286"],
     ]
+
+
+def test_notebook_samples_redshift_and_sigma_by_default():
+    notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
+    source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
+    assert "CERIDWEN_FREE_ZRED_KMS" not in source
+    assert "CERIDWEN_FREE_SIGMA" not in source
+    assert "ZRED_HALF_WIDTH = 0.1" in source
+    assert 'FREE_ZRED = FREE_SIGMA = FIT_MODE == "full_spectrum"' in source
+    assert "ZRED_BOUNDS = (z_catalog - ZRED_HALF_WIDTH, z_catalog + ZRED_HALF_WIDTH)" in source
+    assert 'joint_priors["zred"] = Uniform(low=ZRED_BOUNDS[0], high=ZRED_BOUNDS[1])' in source
+    assert "mean=sigma_star, sigma=sigma_star_err," in source

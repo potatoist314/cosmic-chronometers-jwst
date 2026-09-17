@@ -372,7 +372,6 @@ def worker(args):
         CERIDWEN_EXPECT_SINGLE_GPU='1',CERIDWEN_CALIBRATION_ORDER='3',
         CERIDWEN_CALIBRATION_PRIOR='0.1',CERIDWEN_PHOTOMETRY='cosmos_total',
         CERIDWEN_FIT_MODE='full_spectrum',CERIDWEN_SPECTRUM_PIXELS='all',
-        CERIDWEN_FREE_ZRED_KMS='0',CERIDWEN_FREE_SIGMA='0',
         MPLBACKEND='module://matplotlib_inline.backend_inline')
     notebook=nbformat.read(PROJECT_ROOT/'notebooks/ceridwen_integrated_photometry_spectra.ipynb',as_version=4)
     if args.replay_existing:
@@ -453,7 +452,7 @@ def comparison(seeds=SEEDS, *, save=True):
     from per_galaxy_diagnostics import weighted_quantile
     pairs=[]
     fixed=('fit_mode','photometry_source','spectrum_pixels','calibration_order',
-           'calibration_prior_sigma','calibration_marginalized','free_zred_kms',
+           'calibration_prior_sigma','calibration_marginalized','free_zred_kms','zred_half_width',
            'free_sigma','sfh_basis_fastpath','zred','random_seed')
     for target in TARGETS:
         for seed in seeds:
@@ -477,7 +476,7 @@ def comparison(seeds=SEEDS, *, save=True):
             row['total_fit_speedup']=timing[0]['total_fit_seconds']/timing[1]['total_fit_seconds']
             row['sampling_speedup']=timing[0]['sampler_seconds']/timing[1]['sampler_seconds']
             with h5py.File(folders[0]/'ceridwen_result.h5') as a, h5py.File(folders[1]/'ceridwen_result.h5') as b:
-                assert all(a['model'].attrs[k]==b['model'].attrs[k] for k in fixed)
+                assert all(a['model'].attrs.get(k)==b['model'].attrs.get(k) for k in fixed)
                 assert a['model'].attrs['parameter_block']==b['model'].attrs['parameter_block']
                 for k in ('num_live','num_inner_steps','num_delete','logZ_tol','sampler_name'):
                     assert a['samples'].attrs[k]==b['samples'].attrs[k]

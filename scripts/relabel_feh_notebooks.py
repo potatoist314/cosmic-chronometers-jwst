@@ -113,7 +113,7 @@ def posterior_draws(result_path: Path, derived_path: Path):
         if str(attrs["fit_mode"]) == "full_spectrum":
             columns += [100.0 * np.exp(draws("log_f_calib")), draws("spectrum_scaling")]
             labels += [r"$f_{\mathrm{calib}}\,[\%]$", r"$s_{\mathrm{spectrum}}$"]
-        if float(attrs.get("free_zred_kms", 0.0)) > 0:
+        if float(attrs.get("free_zred_kms", 0.0)) > 0 or float(attrs.get("zred_half_width", 0.0)) > 0:
             z_catalog = float(derived.attrs["redshift"])
             columns.append(C_KMS * (draws("zred") - z_catalog) / (1.0 + z_catalog))
             labels.append(r"$\Delta v_z\,[\mathrm{km\,s^{-1}}]$")

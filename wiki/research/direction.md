@@ -165,6 +165,11 @@ date: 2026-09-15
     "date": "2026-09-17",
     "text": "10",
     "source_ref": "Score for the science skills and wiki submission format priority"
+  },
+  {
+    "date": "2026-09-17",
+    "text": "well, give z a plus minus 0.1 wiggle and dont even make these opt in switches - just have this as default and note it appropriately",
+    "source_ref": "Redshift and stellar velocity dispersion as default free parameters"
   }
 ]
 ```
