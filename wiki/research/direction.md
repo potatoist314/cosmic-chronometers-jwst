@@ -29,6 +29,13 @@ date: 2026-09-15
     "details": "Is Ceridwen fitting absolute or solar-relative metallicity? Does its FSPS grid represent total Z or Fe only? Most immediate investigation."
   },
   {
+    "id": "science-skills-wiki-format",
+    "title": "Set up science skills and workflows; outline the wiki submission format for agents",
+    "priority": 10,
+    "source": "wiki/research/direction.md",
+    "details": "Set up appropriate science skills and workflow creation for this workspace. Outline a proper format for agents' wiki submissions."
+  },
+  {
     "id": "calibration-polynomial",
     "title": "Investigate the calibration polynomial",
     "priority": 9,
@@ -148,6 +155,16 @@ date: 2026-09-15
   {
     "date": "2026-09-17",
     "text": "resume, although add it as a research note/roadmap, to check for railing"
+  },
+  {
+    "date": "2026-09-17",
+    "text": "add as a high research priority: setup appropriate science skills / workflow creation for this current workspace, and outline a proper format for wiki submissions for agents",
+    "display_text": "Add as a high research priority: set up appropriate science skills / workflow creation for this current workspace, and outline a proper format for wiki submissions for agents."
+  },
+  {
+    "date": "2026-09-17",
+    "text": "10",
+    "source_ref": "Score for the science skills and wiki submission format priority"
   }
 ]
 ```

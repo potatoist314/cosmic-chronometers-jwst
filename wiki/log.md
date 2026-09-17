@@ -830,3 +830,9 @@
 - Change: Changed the production notebook's uniform tau_dust prior from Uniform(0, 0.2) to Uniform(0, 1) on Liu Hao's instruction. Updated the Model page row. Removed its '!' flag because no fit under the new prior exists yet. Three flags remain. Kept earlier railing results as tested bullets. Corrected the tested bullet: the tau_cn comparison was against Uniform(0, 2). Added the unscored roadmap task tau-dust-railing to check for railing. Appended Liu Hao's words under Amendments.
 - Files: notebooks/ceridwen_integrated_photometry_spectra.ipynb, wiki/notes/model.md, wiki/research/direction.md, wiki/research/model-page-spec.md, wiki/tests/test_research.py.
 - Validation: wiki build passes (40 notes); both wiki test suites pass apart from the two failures that predate this change; tests/test_ceridwen_dr2_production.py passes (22); /wiki/p/tau-dust-railing/ built; Model row checked at 1280 px in a windowless headless renderer.
+
+## [2026-09-17] decision | Science skills, workflows and the agent wiki submission format as a priority
+
+- Pages: Home, research/direction.md
+- Change: Roadmap task `science-skills-wiki-format` added at priority 10 on Liu Hao's instruction, with his original wording under Amendments.
+- Validation: wiki build passes; the task shows on Home at 10/10 and its priority page opens.
