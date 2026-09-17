@@ -880,3 +880,10 @@
 - Pages: [[notebook-map]]
 - Change: On Liu Hao's instruction the production notebook's dust corner plots the dust parameters against every formed-mass fraction, not the three youngest. `N_YOUNG_BINS` removed; the Spearman printout covers every bin. No fit has run under this default. Wording by Claude; Codex quota exhausted until 19 Sep.
 - Files: notebooks/ceridwen_integrated_photometry_spectra.ipynb, wiki/notes/notebook-map.md.
+
+## [2026-09-17] revise | Dust against every SFH bin added to the existing executed notebooks
+
+- Pages: [[notebook-map]]
+- Change: On Liu Hao's instruction every existing executed notebook got one added cell, tagged `dust-sfh-all-bins`, with the dust parameters against every formed-mass fraction and the per-pair Spearman lines. `scripts/add_dust_sfh_corner.py` builds it from `ceridwen_result.h5` with the notebook's own seed and bin edges. No fit was run. 556 of 558 notebooks done; 551 rebuilt draws match the saved `sfh/mass_fraction_draws`; 5 have no `ceridwen_derived_outputs.h5` and use the notebook's seed and the LEGA-C DR2 catalogue redshift. 2 have no `ceridwen_result.h5` and are unchanged: results/fit-accuracy-knobs/mock_tilt4_new_default/172669-M5_172669 and archive/results/a100-feature-spectrum. 163 of the changed notebooks are tracked in git; the rest are untracked on disk. Wording by Claude; Codex quota exhausted until 19 Sep.
+- Files: scripts/add_dust_sfh_corner.py, results/ and archive/results/ executed notebooks, wiki/notes/notebook-map.md.
+- Validation: nbformat validation passes on every changed notebook; each has one tagged cell; tracked diffs are insertions only; figures from every batch viewed, no overlaps or clipping.
