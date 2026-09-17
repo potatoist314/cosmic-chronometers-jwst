@@ -64,6 +64,13 @@ date: 2026-09-15
     "details": "Do plots of something like \\([\\alpha/\\mathrm{Fe}]\\) versus stellar mass, and \\(t_{50}\\) versus stellar mass. The physical justification is that you can constrain a relative trend given only a corner plot distribution if you can plot against some x axis."
   },
   {
+    "id": "rising-sfh-continuity-prior",
+    "title": "Consider adding a rising SFH continuity prior",
+    "priority": 8,
+    "source": "wiki/research/direction.md",
+    "details": "Paper: Turner et al. (2025), MNRAS 537:1826, arXiv:2410.05377, section 3.3. PDF in papers/spectral fitting/."
+  },
+  {
     "id": "strong-spectrum",
     "title": "Select one high-\\(\\mathrm{S/N}\\) spectrum with strong absorption features",
     "priority": 7,
@@ -204,6 +211,11 @@ date: 2026-09-15
     "date": "2026-09-17",
     "text": "another priority - pull local elliptical galaxies as relative 'ground truth' to compare my outputs against, 9/10",
     "display_text": "Another priority: pull local elliptical galaxies as relative 'ground truth' to compare my outputs against, 9/10."
+  },
+  {
+    "date": "2026-09-17",
+    "text": "8/10 priority - consider adding a rising sfh continuityi prior, and pull and download the turner 2015 paper into this project repo",
+    "display_text": "8/10 priority: consider adding a rising SFH continuity prior, and pull and download the Turner 2015 paper into this project repo."
   }
 ]
 ```

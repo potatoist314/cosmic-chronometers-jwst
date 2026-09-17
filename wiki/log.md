@@ -854,3 +854,10 @@
 - Pages: Home, research/direction.md
 - Change: Roadmap task `local-ellipticals-ground-truth` added at priority 9 on Liu Hao's instruction, in his wording, with the original under Amendments. Codex quota exhausted until 19 Sep, so no Codex pass.
 - Validation: wiki build passes; the task shows on Home at 9/10 and its priority page opens.
+
+## [2026-09-17] decision | Rising SFH continuity prior as a priority; Turner et al. (2025) added to papers
+
+- Pages: Home, Papers, research/direction.md
+- Change: Roadmap task `rising-sfh-continuity-prior` added at priority 8 on Liu Hao's instruction, with his original wording under Amendments. He wrote "turner 2015"; the paper with the rising continuity prior is Turner et al. (2025), MNRAS 537:1826-1848, arXiv:2410.05377, citation confirmed from the PDF and Crossref. PDF downloaded to papers/spectral fitting/ and listed in papers/README.md. Codex quota exhausted until 19 Sep, so no Codex pass.
+- Files: papers/README.md, wiki/research/direction.md.
+- Validation: wiki build passes; the task shows on Home at 8/10, its priority page opens and the Papers page links the PDF.
