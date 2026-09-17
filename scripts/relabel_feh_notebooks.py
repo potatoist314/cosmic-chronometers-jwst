@@ -192,6 +192,10 @@ def relabel_notebook(path: Path) -> str:
         source = source.replace(old, new)
     figures = [o for o in cell.outputs if o.output_type == "display_data" and "image/png" in o["data"]]
     tables = [o for o in cell.outputs if o.output_type == "display_data" and "text/html" in o["data"]]
+    if not cell.outputs:  # the run stopped before this cell: source only
+        cell.source = source
+        nbformat.write(notebook, path)
+        return "relabelled"
     if not figures or not tables:
         raise Skip("corner cell has no figure or table output")
     data, labels, stored_z = posterior_draws(path.parent / "ceridwen_result.h5",
@@ -210,8 +214,9 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("roots", nargs="+", type=Path)
     parser.add_argument("--limit", type=int, default=None, help="stop after this many notebooks")
+    parser.add_argument("--pattern", default="*_executed.ipynb", help="notebook file name glob")
     args = parser.parse_args(argv)
-    paths = sorted(p for root in args.roots for p in root.rglob("*_executed.ipynb"))
+    paths = sorted(p for root in args.roots for p in root.rglob(args.pattern))
     if args.limit:
         paths = paths[: args.limit]
     counts = {"relabelled": 0, "already relabelled": 0, "skipped": 0}
