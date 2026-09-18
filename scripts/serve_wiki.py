@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """HTTP server for the Astro lab notebook and the project deliverables.
 
-Standard library only. Bound strictly to loopback (127.0.0.1) and reached from
-the tailnet through Tailscale Serve, which proxies `/wiki` to this port.
+Standard library only. Bound strictly to loopback (127.0.0.1). It runs on the
+TrueNAS box in the python container of scripts/truenas-wiki/docker-compose.yml,
+behind the nginx there, which reaches it for /wiki/api/ and /wiki/ask only;
+Tailscale Serve on the NAS carries the tailnet to that nginx.
 
 Routes:
   /                 redirect to /wiki/
@@ -27,7 +29,8 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
-DEFAULT_ROOT = Path("/Users/liuhao/Downloads/Astro project").resolve()
+# The project is the folder above scripts/, wherever the tree is copied.
+DEFAULT_ROOT = Path(__file__).resolve().parent.parent
 CLAUDE_ROOT = Path.home() / ".claude"
 BRIDGE = CLAUDE_ROOT / "scripts/hermes-bridge/bridge.py"
 sys.path.insert(0, str(DEFAULT_ROOT / "wiki"))

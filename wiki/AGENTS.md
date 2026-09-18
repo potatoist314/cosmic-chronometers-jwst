@@ -186,9 +186,12 @@ direction and scientific methodology.
 - `notes/` holds the existing reference and analysis source notes.
 - `build.py` and `research.py` render both corpora into `public/`, using the standard library.
 - `public/` is generated output. Never edit it by hand.
-- `scripts/publish_wiki.py` mirrors `public/` and every project file linked through `/wiki/f/` to the
-  TrueNAS server, which serves the wiki at `https://truenas-scale.tail5c940d.ts.net:8765/wiki/` when
-  the Mac is off. A launchd agent runs it after each build. Deployment files: `scripts/truenas-wiki/`.
+- The TrueNAS server is the only host of the wiki, at `https://truenas-scale.tail5c940d.ts.net:8765/wiki/`.
+  `scripts/publish_wiki.py` pulls the research activity the browser saved there, sends the wiki
+  sources, `scripts/serve_wiki.py` and every project file linked through `/wiki/f/`, then the NAS
+  builds its own `public/`. A launchd agent on the Mac runs it after each build and every 30 minutes.
+  A build on the Mac is for checking; nothing serves it. Deployment files: `scripts/truenas-wiki/`.
+  The question box needs the Mac's bridge, so the NAS pages do not show it.
 - `tests/run_tests.py` fails the build when the generator writes prose.
 - `_old/` keeps every pre-notebook HTML page. Do not delete it without asking.
 - `assets/fonts/` holds the self-hosted faces. The site loads no CDN.

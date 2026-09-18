@@ -370,17 +370,17 @@ class TestCeridwenResultsBoard(unittest.TestCase):
 
 
     def test_local_server_health(self):
-        """Verify local loopback HTTP server returns 200 for wiki pages."""
+        """Verify the wiki server on the NAS returns 200 for wiki pages."""
         try:
-            req = Request("http://127.0.0.1:8765/wiki/analyses/ceridwen-results.html")
+            req = Request("https://truenas-scale.tail5c940d.ts.net:8765/wiki/analyses/ceridwen-results.html")
             with urlopen(req, timeout=3) as resp:
                 self.assertEqual(resp.status, 200)
 
-            req_index = Request("http://127.0.0.1:8765/wiki/index.html")
+            req_index = Request("https://truenas-scale.tail5c940d.ts.net:8765/wiki/index.html")
             with urlopen(req_index, timeout=3) as resp:
                 self.assertEqual(resp.status, 200)
         except Exception as exc:
-            self.skipTest(f"Local server check skipped (not running or timed out): {exc}")
+            self.skipTest(f"NAS server check skipped (not reachable or timed out): {exc}")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,8 @@
 # The Astro lab notebook on TrueNAS, in /mnt/apps/applications/astro-wiki.
-# scripts/publish_wiki.py on the Mac fills ./public and ./files.
+# scripts/publish_wiki.py on the Mac fills ./files with the project tree the
+# notebook needs (wiki sources, serve_wiki.py, every linked deliverable) and
+# ./home/.claude/scripts/hermes-bridge/slop_lint.py, the word counter
+# wiki/build.py imports. The wiki service builds files/wiki/public here.
 services:
   astro-wiki:
     image: nginx:stable-alpine
@@ -9,8 +12,30 @@ services:
     network_mode: host
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./public:/srv/wiki/public:ro
-      - ./files:/srv/wiki/files:ro
+      # The parent of wiki/public: build.py replaces public/ by rename.
+      - ./files:/srv/project:ro
+      - ./logs:/srv/logs
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: unless-stopped
+
+  astro-wiki-server:
+    image: python:3.12-alpine
+    container_name: astro-wiki-server
+    network_mode: host
+    # truenas_admin, the account the Mac's rsync writes as.
+    user: "950:950"
+    environment:
+      HOME: /srv/home
+      PYTHONUNBUFFERED: "1"
+    working_dir: /srv/project
+    command: ["python3", "/srv/project/scripts/serve_wiki.py", "--bind", "127.0.0.1", "--port", "8766"]
+    volumes:
+      - ./files:/srv/project
+      - ./home:/srv/home
     logging:
       driver: json-file
       options:
