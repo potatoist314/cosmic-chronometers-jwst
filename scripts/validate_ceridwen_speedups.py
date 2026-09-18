@@ -369,19 +369,19 @@ def worker(args):
     os.environ.update(CERIDWEN_PROJECT_ROOT=str(PROJECT_ROOT),CERIDWEN_RESULT_DIR=str(folder),
         CERIDWEN_TARGET_ID=args.target,CERIDWEN_OBJECT_ID=args.target.split('_')[-1],
         CERIDWEN_RANDOM_SEED=str(args.seed),CERIDWEN_NOTEBOOK_QUICK='0',
-        CERIDWEN_EXPECT_SINGLE_GPU='1',CERIDWEN_CALIBRATION_ORDER='3',
-        CERIDWEN_CALIBRATION_PRIOR='0.1',CERIDWEN_PHOTOMETRY='cosmos_total',
-        CERIDWEN_FIT_MODE='full_spectrum',CERIDWEN_SPECTRUM_PIXELS='all',
         MPLBACKEND='module://matplotlib_inline.backend_inline')
+    # Fit settings are literals in the notebook's top cell (SETTINGS/PRIORS); the
+    # replay uses whatever order and photometry the notebook currently states.
     notebook=nbformat.read(PROJECT_ROOT/'notebooks/ceridwen_integrated_photometry_spectra.ipynb',as_version=4)
     if args.replay_existing:
-        notebook.cells=notebook.cells[:20]
+        fit_index=next(i for i,c in enumerate(notebook.cells) if 'joint_result = run_sampler(' in c.source)
+        notebook.cells=notebook.cells[:fit_index+1]
     for cell in notebook.cells:
         if cell.cell_type!='code':continue
         cell.outputs=[];cell.execution_count=None
         if cell.source.startswith('import os') and args.replay_existing:
             cell.source+='\nsys.path.insert(0, str(PROJECT_ROOT / "scripts"))\nfrom validate_ceridwen_speedups import calibration_normal_dot\nfrom ceridwen.likelihood import PolynomialCalibration\nPolynomialCalibration.normal_matrix=calibration_normal_dot\n'
-        if cell.source.startswith('LEGAC_PATH ='):
+        if cell.source.startswith('legac = Table.read('):
             cell.source='import time\n_fit_started=time.perf_counter()\n'+cell.source
         if 'joint_result = run_sampler(' in cell.source:
             if args.replay_existing:

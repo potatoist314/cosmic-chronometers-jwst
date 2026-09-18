@@ -7,6 +7,12 @@ environment (pixel-selection mode, mock settings, seeds).  Cells that share a
 ``group`` are one comparison (the three pixel modes of one target or one mock
 realisation) and always run on the same machine, in sequence.
 
+Historical (2026-09-18): the notebook no longer reads the pixel-selection,
+feature-window or mock switches (``CERIDWEN_SPECTRUM_PIXELS``,
+``CERIDWEN_FEATURE_*``, ``CERIDWEN_MOCK_*``); its settings are literals in the
+top cell. The grid ran to completion before that change; ``status`` still works,
+``run`` would fit every cell in the full-spectrum mode.
+
 Sub-commands::
 
     make-grid  [--out results/absorption-mask/grid.json]

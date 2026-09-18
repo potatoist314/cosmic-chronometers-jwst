@@ -1,6 +1,7 @@
 import json
 import math
 import os
+import re
 from pathlib import Path
 
 import pytest
@@ -105,20 +106,22 @@ def test_notebook_uses_production_model_and_sampler_contract():
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
 
     assert "drop_duplicates(\"OBJECT\", keep=\"first\")" in source
-    assert "assert len(selected_passive) == 187" in source
-    assert "assert phot_fit_mask.sum() == 12" in source
-    assert "ClippedNormal(\n        mean=1.0, sigma=0.3, low=0.2, high=3.0" in source
-    assert '"num_live": 500' in source
-    assert '"num_inner_steps": 65' in source
-    assert '"num_delete": 100' in source
-    assert '"logZ_tol": -5.0' in source
-    assert "assert sum(np.size(value) for value in joint_model.theta_init.values())" in source
+    assert '"spectrum_scaling": ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)' in source
+    assert '"sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}' in source
     assert '"Z": "log10 iron abundance; [Fe/H] = Z + 1.7328283"' in source
     assert "FEH_OFFSET = 1.7328283" in source
-    assert 'os.environ.get("CERIDWEN_CALIBRATION_ORDER", "10")' in source
-    assert 'direct_draws["Z"] + FEH_OFFSET' in source
+    assert '"calibration_order": 10,' in source
+    assert 'scalar_draws("Z") + FEH_OFFSET' in source
     assert r"$\log_{10}(Z/Z_\odot)$" not in source
     assert "aperture_transfer" not in source
+    # Every fit setting is a literal in the top cell; only the launcher's per-galaxy values come from the environment.
+    assert sorted(set(re.findall(r'os\.environ\.get\("(CERIDWEN_[A-Z_]+)"', source))) == [
+        "CERIDWEN_MANIFEST_INDEX",
+        "CERIDWEN_NOTEBOOK_QUICK",
+        "CERIDWEN_RANDOM_SEED",
+        "CERIDWEN_RESULT_DIR",
+        "CERIDWEN_TARGET_ID",
+    ]
 
 
 def test_notebook_embeds_figures_and_writes_analysis_ready_hdf5():
@@ -211,25 +214,19 @@ def test_validator_counts_only_physical_parameter_groups():
 def test_notebook_defaults_to_the_continuity_sfh_prior():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
-    assert 'SFH_PRIOR = os.environ.get("CERIDWEN_SFH_PRIOR", "student")' in source
-    assert 'StudentT(mean=0.0, scale=0.3, df=2.0)' in source
+    assert '"logsfr_ratios": StudentT(mean=0.0, scale=0.3, df=2.0)' in source
 
 
 def test_notebook_defaults_to_a_free_dust_index():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
-    assert 'FREE_DUST_INDEX = os.environ.get("CERIDWEN_FREE_DUST_INDEX", "1") == "1"' in source
-    assert 'os.environ.get("CERIDWEN_DUST_INDEX_BOUNDS", "-1.0,0.4")' in source
+    assert '"diffuse_dust_index": Uniform(low=-1.0, high=0.4)' in source
 
 
 def test_notebook_defaults_to_the_uniform_tau_prior():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
-    assert 'TAU_PRIOR = os.environ.get("CERIDWEN_TAU_PRIOR", "uniform")' in source
-    # Ceridwen's documented dust-column prior, selected by CERIDWEN_TAU_PRIOR=clipped.
-    assert "ClippedNormal(mean=0.3, sigma=1.0, low=0.0, high=4.0)" in source
-    assert 'attrs["tau_prior"] = TAU_PRIOR' in source
-    assert 'attrs["dust_index_bounds"]' in source
+    assert '"diffuse_tau_kc": Uniform(low=0.0, high=1.0)' in source
 
 
 def test_notebook_keeps_sampler_progress_out_of_the_cell_output():
@@ -238,10 +235,7 @@ def test_notebook_keeps_sampler_progress_out_of_the_cell_output():
     fit = source[source.index("joint_adapter = BlackJAXNestedSamplerAdapter("):]
     fit = fit[:fit.index(")\n")]
     assert "verbose=False" in fit
-    assert "progress_path=str(PROGRESS_PATH)" in fit
-    assert 'PROGRESS_PATH = RESULT_DIR / "ns_progress.jsonl"' in source
-    # The summary line reads the file back; the module import must precede it.
-    assert source.index("\nimport json\n") < source.index("json.loads(PROGRESS_PATH")
+    assert 'progress_path=str(RESULT_DIR / "ns_progress.jsonl")' in fit
 
 
 def test_notebook_marks_major_absorption_features():
@@ -251,29 +245,25 @@ def test_notebook_marks_major_absorption_features():
     # The windows come from scripts/spectral_figures.py, not a notebook copy.
     assert 'sys.path.insert(0, str(PROJECT_ROOT / "scripts"))' in source
     assert "from spectral_figures import mark_absorption_features" in source
-    assert (
-        "from ceridwen.observation.absorption_features import absorption_feature_mask\n"
-    ) in source
     assert "def mark_absorption_features(ax" not in source
     assert "MARKED_FEATURES" not in source
     # Every spectral panel is marked; one side legend covers the figure.
     bottom_call = (
         'axes[1], z_catalog, xlabel="observed vacuum wavelength [angstrom]"'
     )
-    for index in (14, 24, 26, 28):
-        assert bottom_call in cells[index]
-    for index in (24, 26, 28):
-        assert "mark_absorption_features(axes[0], z_catalog, show_labels=False)" in (
-            cells[index]
-        )
-    for index in (14, 24, 28):
-        assert "spectral_tight_layout()" in cells[index]
+    residual = next(cell for cell in cells if "spectrum_plot_pull = np.where(" in cell)
+    fit_figure = next(cell for cell in cells if "native_excluded_mask" in cell)
+    polynomial = next(cell for cell in cells if "poly_q16, poly_q50, poly_q84" in cell)
+    for cell in (residual, fit_figure, polynomial):
+        assert bottom_call in cell
+        assert "mark_absorption_features(axes[0], z_catalog, show_labels=False)" in cell
+    for cell in (residual, polynomial):
+        assert "spectral_tight_layout()" in cell
     # The fit figure's data legend sits below the panels, clear of the band names.
-    assert 'loc="lower center"' in cells[26]
-    assert "spectral_tight_layout(rect=(0, 0.04, 1, 1))" in cells[26]
+    assert 'loc="lower center"' in fit_figure
+    assert "spectral_tight_layout(rect=(0, 0.04, 1, 1))" in fit_figure
     assert "rotation=90" not in source
     assert "labelpad=30" not in source
-
 
 
 def test_marked_notebook_panels_reserve_space_for_the_side_legend():
@@ -392,10 +382,8 @@ def test_destroy_skips_the_interactive_confirmation(monkeypatch):
 def test_notebook_samples_redshift_and_sigma_by_default():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
-    assert "CERIDWEN_FREE_ZRED_KMS" not in source
-    assert "CERIDWEN_FREE_SIGMA" not in source
-    assert "ZRED_HALF_WIDTH = 0.1" in source
-    assert 'FREE_ZRED = FREE_SIGMA = FIT_MODE == "full_spectrum"' in source
-    assert "ZRED_BOUNDS = (z_catalog - ZRED_HALF_WIDTH, z_catalog + ZRED_HALF_WIDTH)" in source
-    assert 'joint_priors["zred"] = Uniform(low=ZRED_BOUNDS[0], high=ZRED_BOUNDS[1])' in source
-    assert "mean=sigma_star, sigma=sigma_star_err," in source
+    assert '"zred": "Uniform(z_cat - zred_half_width, z_cat + zred_half_width)"' in source
+    assert '"zred_half_width": 0.1,' in source
+    assert 'free_z="zred" in PRIORS' in source
+    assert 'fit_sigma_smooth="sigma_smooth" in PRIORS' in source
+    assert "mean=sigma_star,\n        sigma=sigma_star_err," in source

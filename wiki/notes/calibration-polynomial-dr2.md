@@ -147,7 +147,7 @@ Photometric \(\chi^2\) over the 12 bands, the metric for the continuum. Decision
 | M5_173928 | 143.3 | 88.7 | 48.2 |
 | mock tilt4 | 22.5 | 4.0 | — |
 
-Implementation: `PolynomialCalibration` in `ceridwen/ceridwen/likelihood/calibration.py`, 20 tests in `ceridwen/tests/test_polynomial_calibration.py`. Switches in `notebooks/ceridwen_integrated_photometry_spectra.ipynb`: `CERIDWEN_CALIBRATION_ORDER` (3), `CERIDWEN_CALIBRATION_PRIOR` (0.1), `CERIDWEN_PHOTOMETRY` (`cosmos_total`). The derived-output file gains a `calibration` group with the coefficient draws and the P quantiles.
+Implementation: `PolynomialCalibration` in `ceridwen/ceridwen/likelihood/calibration.py`, 20 tests in `ceridwen/tests/test_polynomial_calibration.py`. Settings in `notebooks/ceridwen_integrated_photometry_spectra.ipynb` (the `SETTINGS` dict since 2026-09-18, environment switches before): `calibration_order` (3 for these arms, 10 in the notebook since 2026-09-17), `calibration_prior_sigma` (0.1), `photometry` (`cosmos_total`). The derived-output file gains a `calibration` group with the coefficient draws and the P quantiles.
 
 Run: Vast.ai RTX 5060 instance 49915205 at $0.093 per hour, 20 cells, 26 attempts, $0.23, destroyed. Records in `results/calibration-polynomial-dr2/vast_run_*.json`, executed notebook `analysis.ipynb`.
 

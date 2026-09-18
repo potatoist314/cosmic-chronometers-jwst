@@ -63,11 +63,11 @@ The notebook markdown requires compact arrays and two endpoint pixels for identi
 
 Full and feature modes use the same projection boundary while they select different likelihood pixels.
 
-`ceridwen_integrated_photometry_spectra.ipynb` combines photometry with one selectable stellar-spectroscopy observation in one `SedModel` and one `MultiObservationLikelihood`. `CERIDWEN_FIT_MODE=full_spectrum` fits more than 3,000 native pixels and all 12 photometric bands. `stellar_indices` fits up to 14 published absorption indices and all 12 photometric bands.
+`ceridwen_integrated_photometry_spectra.ipynb` combines all 12 photometric bands with the full native LEGA-C spectrum (more than 3,000 pixels) in one `SedModel` and one `MultiObservationLikelihood`. Since 2026-09-18 the notebook has ten code cells: settings and priors, data and target, observations, model, fit, sampling diagnostics, output fit, spectrum fit, calibration polynomial, corners and SFH. Every fit setting and prior is a literal in the `SETTINGS` and `PRIORS` dicts of the top cell; the launcher only passes the target, manifest index, seed and result directory through the environment. A parameter is sampled when it has a `PRIORS` entry, so removing the `zred` or `sigma_smooth` line fixes that parameter. The earlier stellar-index mode and the mock, pixel-selection, prior and photometry switches were removed with the executed notebooks regenerated from the stored posteriors (`scripts/regenerate_fit_notebooks.py`).
 
-Full-spectrum mode fits `spectrum_scaling` for the slit normalization. Photometry anchors the total flux. The spectral likelihood also samples its fractional calibration floor. Stellar-index mode remains scale invariant and uses catalogue diagonal uncertainties.
+The fit samples `spectrum_scaling` for the slit normalization. Photometry anchors the total flux. The spectral likelihood also samples its fractional calibration floor.
 
-Both modes use the published high-resolution grid. The production profile uses 500 live points, 100 deletions, 65 inner steps, and `logZ_tol=-5`.
+The production profile uses 500 live points, 100 deletions, 65 inner steps, and `logZ_tol=-5`.
 
 The full-spectrum fit figure shades nine major absorption features from `ceridwen.observation.absorption_features` on both panels: Ca K, Ca H, \(\mathrm{H}\delta\), G band, \(\mathrm{H}\gamma\), Fe4383, \(\mathrm{H}\beta\), Mg b and Fe5270. Bands span their Lick bandpass and lines span \(\pm\)1000 \(\mathrm{km\,s^{-1}}\), redshifted with the catalogue redshift, so the pull near each feature can be read directly.
 
@@ -130,28 +130,23 @@ Kernel choice is part of each notebook’s executable contract.
 <details>
 <summary>Examples</summary>
 
-`notebooks/ceridwen_integrated_photometry_spectra.ipynb` · “Joint posterior” · `spectroscopic_likelihood` through `write_result_h5`
+`notebooks/ceridwen_integrated_photometry_spectra.ipynb` · “Fit” · `joint_likelihood` through `write_result_h5`
 
 </details>
 
 ```
-spectroscopic_likelihood = (
-    DiagonalGaussianLikelihood(
-        noise_model=DiagonalNoiseModel(use_fractional=True)
-    )
-    if FIT_MODE == "full_spectrum"
-    else DiagonalGaussianLikelihood()
-)
 joint_likelihood = MultiObservationLikelihood(
-    keys=(phot_obs.name, spectroscopic_obs.name),
-    likelihoods=(DiagonalGaussianLikelihood(), spectroscopic_likelihood),
+    keys=("photometry", "spectrum"),
+    likelihoods=(
+        DiagonalGaussianLikelihood(),
+        DiagonalGaussianLikelihood(
+            noise_model=DiagonalNoiseModel(use_fractional=True),
+            calibration=calibration_polynomial,
+        ),
+    ),
 )
-joint_result = run_sampler(
-    joint_model,
-    joint_likelihood,
-    joint_adapter,
-    jax.random.PRNGKey(SEED),
-)
+...
+joint_result = run_sampler(joint_model, joint_likelihood, joint_adapter, jax.random.PRNGKey(SEED))
 result_path = RESULT_DIR / "ceridwen_result.h5"
 write_result_h5(result_path, joint_model, joint_result)`
 ```

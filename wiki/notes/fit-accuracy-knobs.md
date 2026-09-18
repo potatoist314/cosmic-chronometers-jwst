@@ -71,7 +71,7 @@ Borghi+22
 ## Stage 1, one switch per arm
 
 Setup
-: Every arm is `poly3_total` plus one environment switch read in cell 2 of `notebooks/ceridwen_integrated_photometry_spectra.ipynb`. Every default is the production value, checked by an identical quick-profile run against HEAD (same \(\ln Z\), same likelihood-call count). The switch is written to the run log line `name: start seed=... {env}` and to the h5 `model` attributes. Arms live in `scripts/calibration_arms_vast.py`, results under `results/fit-accuracy-knobs/<arm>/`, tests in `tests/test_calibration_arms.py`.
+: Every arm is `poly3_total` plus one environment switch read in cell 2 of `notebooks/ceridwen_integrated_photometry_spectra.ipynb` (removed on 2026-09-18; the notebook now states the same settings as literals in `SETTINGS` and `PRIORS`). Every default is the production value, checked by an identical quick-profile run against HEAD (same \(\ln Z\), same likelihood-call count). The switch is written to the run log line `name: start seed=... {env}` and to the h5 `model` attributes. Arms live in `scripts/calibration_arms_vast.py`, results under `results/fit-accuracy-knobs/<arm>/`, tests in `tests/test_calibration_arms.py`.
 
 | arm | switch | value | tests |
 | --- | --- | --- | --- |

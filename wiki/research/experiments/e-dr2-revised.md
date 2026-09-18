@@ -7721,8 +7721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/189698-M10_189698/M10_189698_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-189698",
     "target": "M10_189698",
     "arm": "revised",
@@ -7731,7 +7731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/189698-M10_189698/M10_189698_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-189698",
     "target": "M10_189698",
@@ -7751,7 +7751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/189698-M10_189698/M10_189698_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-189698",
     "target": "M10_189698",
@@ -7781,7 +7781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/189698-M10_189698/M10_189698_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-189698",
     "target": "M10_189698",
@@ -7791,13 +7791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/189698-M10_189698/M10_189698_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-189698",
     "target": "M10_189698",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_189698 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_189698 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/191718-M10_191718/M10_191718_executed.ipynb",
@@ -7821,8 +7821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/191718-M10_191718/M10_191718_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-191718",
     "target": "M10_191718",
     "arm": "revised",
@@ -7831,7 +7831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/191718-M10_191718/M10_191718_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-191718",
     "target": "M10_191718",
@@ -7851,7 +7851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/191718-M10_191718/M10_191718_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-191718",
     "target": "M10_191718",
@@ -7881,7 +7881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/191718-M10_191718/M10_191718_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-191718",
     "target": "M10_191718",
@@ -7891,13 +7891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/191718-M10_191718/M10_191718_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-191718",
     "target": "M10_191718",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_191718 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_191718 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/197591-M10_197591/M10_197591_executed.ipynb",
@@ -7921,8 +7921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/197591-M10_197591/M10_197591_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-197591",
     "target": "M10_197591",
     "arm": "revised",
@@ -7931,7 +7931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/197591-M10_197591/M10_197591_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-197591",
     "target": "M10_197591",
@@ -7951,7 +7951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/197591-M10_197591/M10_197591_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-197591",
     "target": "M10_197591",
@@ -7981,7 +7981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/197591-M10_197591/M10_197591_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-197591",
     "target": "M10_197591",
@@ -7991,13 +7991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/197591-M10_197591/M10_197591_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-197591",
     "target": "M10_197591",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_197591 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_197591 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/201233-M10_201233/M10_201233_executed.ipynb",
@@ -8021,8 +8021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/201233-M10_201233/M10_201233_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-201233",
     "target": "M10_201233",
     "arm": "revised",
@@ -8031,7 +8031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/201233-M10_201233/M10_201233_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-201233",
     "target": "M10_201233",
@@ -8051,7 +8051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/201233-M10_201233/M10_201233_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-201233",
     "target": "M10_201233",
@@ -8081,7 +8081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/201233-M10_201233/M10_201233_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-201233",
     "target": "M10_201233",
@@ -8091,13 +8091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/201233-M10_201233/M10_201233_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-201233",
     "target": "M10_201233",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_201233 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_201233 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/213772-M10_213772/M10_213772_executed.ipynb",
@@ -8121,8 +8121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213772-M10_213772/M10_213772_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-213772",
     "target": "M10_213772",
     "arm": "revised",
@@ -8131,7 +8131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213772-M10_213772/M10_213772_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-213772",
     "target": "M10_213772",
@@ -8151,7 +8151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213772-M10_213772/M10_213772_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-213772",
     "target": "M10_213772",
@@ -8181,7 +8181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213772-M10_213772/M10_213772_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-213772",
     "target": "M10_213772",
@@ -8191,13 +8191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213772-M10_213772/M10_213772_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-213772",
     "target": "M10_213772",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_213772 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_213772 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/215519-M10_215519/M10_215519_executed.ipynb",
@@ -8221,8 +8221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215519-M10_215519/M10_215519_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-215519",
     "target": "M10_215519",
     "arm": "revised",
@@ -8231,7 +8231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215519-M10_215519/M10_215519_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-215519",
     "target": "M10_215519",
@@ -8251,7 +8251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215519-M10_215519/M10_215519_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-215519",
     "target": "M10_215519",
@@ -8281,7 +8281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215519-M10_215519/M10_215519_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-215519",
     "target": "M10_215519",
@@ -8291,13 +8291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215519-M10_215519/M10_215519_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-215519",
     "target": "M10_215519",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_215519 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_215519 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
@@ -8321,8 +8321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216730-M10_216730/M10_216730_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-216730",
     "target": "M10_216730",
     "arm": "revised",
@@ -8331,7 +8331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216730-M10_216730/M10_216730_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-216730",
     "target": "M10_216730",
@@ -8351,7 +8351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216730-M10_216730/M10_216730_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-216730",
     "target": "M10_216730",
@@ -8381,7 +8381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216730-M10_216730/M10_216730_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-216730",
     "target": "M10_216730",
@@ -8391,13 +8391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216730-M10_216730/M10_216730_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-216730",
     "target": "M10_216730",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_216730 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_216730 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/217020-M10_217020/M10_217020_executed.ipynb",
@@ -8421,8 +8421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217020-M10_217020/M10_217020_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-217020",
     "target": "M10_217020",
     "arm": "revised",
@@ -8431,7 +8431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217020-M10_217020/M10_217020_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-217020",
     "target": "M10_217020",
@@ -8451,7 +8451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217020-M10_217020/M10_217020_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-217020",
     "target": "M10_217020",
@@ -8481,7 +8481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217020-M10_217020/M10_217020_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-217020",
     "target": "M10_217020",
@@ -8491,13 +8491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217020-M10_217020/M10_217020_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-217020",
     "target": "M10_217020",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_217020 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_217020 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/225441-M10_225441/M10_225441_executed.ipynb",
@@ -8521,8 +8521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225441-M10_225441/M10_225441_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-225441",
     "target": "M10_225441",
     "arm": "revised",
@@ -8531,7 +8531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225441-M10_225441/M10_225441_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-225441",
     "target": "M10_225441",
@@ -8551,7 +8551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225441-M10_225441/M10_225441_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-225441",
     "target": "M10_225441",
@@ -8581,7 +8581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225441-M10_225441/M10_225441_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-225441",
     "target": "M10_225441",
@@ -8591,13 +8591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225441-M10_225441/M10_225441_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-225441",
     "target": "M10_225441",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_225441 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_225441 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/227516-M10_227516/M10_227516_executed.ipynb",
@@ -8621,8 +8621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227516-M10_227516/M10_227516_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-227516",
     "target": "M10_227516",
     "arm": "revised",
@@ -8631,7 +8631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227516-M10_227516/M10_227516_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-227516",
     "target": "M10_227516",
@@ -8651,7 +8651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227516-M10_227516/M10_227516_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-227516",
     "target": "M10_227516",
@@ -8681,7 +8681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227516-M10_227516/M10_227516_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-227516",
     "target": "M10_227516",
@@ -8691,13 +8691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227516-M10_227516/M10_227516_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-227516",
     "target": "M10_227516",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_227516 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_227516 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/227672-M10_227672/M10_227672_executed.ipynb",
@@ -8721,8 +8721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227672-M10_227672/M10_227672_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-227672",
     "target": "M10_227672",
     "arm": "revised",
@@ -8731,7 +8731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227672-M10_227672/M10_227672_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-227672",
     "target": "M10_227672",
@@ -8751,7 +8751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227672-M10_227672/M10_227672_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-227672",
     "target": "M10_227672",
@@ -8781,7 +8781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227672-M10_227672/M10_227672_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-227672",
     "target": "M10_227672",
@@ -8791,13 +8791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227672-M10_227672/M10_227672_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-227672",
     "target": "M10_227672",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_227672 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_227672 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/228215-M10_228215/M10_228215_executed.ipynb",
@@ -8821,8 +8821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228215-M10_228215/M10_228215_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-228215",
     "target": "M10_228215",
     "arm": "revised",
@@ -8831,7 +8831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228215-M10_228215/M10_228215_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-228215",
     "target": "M10_228215",
@@ -8851,7 +8851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228215-M10_228215/M10_228215_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-228215",
     "target": "M10_228215",
@@ -8881,7 +8881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228215-M10_228215/M10_228215_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-228215",
     "target": "M10_228215",
@@ -8891,13 +8891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228215-M10_228215/M10_228215_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-228215",
     "target": "M10_228215",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_228215 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_228215 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/228380-M10_228380/M10_228380_executed.ipynb",
@@ -8921,8 +8921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228380-M10_228380/M10_228380_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-228380",
     "target": "M10_228380",
     "arm": "revised",
@@ -8931,7 +8931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228380-M10_228380/M10_228380_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-228380",
     "target": "M10_228380",
@@ -8951,7 +8951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228380-M10_228380/M10_228380_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-228380",
     "target": "M10_228380",
@@ -8981,7 +8981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228380-M10_228380/M10_228380_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-228380",
     "target": "M10_228380",
@@ -8991,13 +8991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228380-M10_228380/M10_228380_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-228380",
     "target": "M10_228380",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_228380 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_228380 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/228717-M10_228717/M10_228717_executed.ipynb",
@@ -9021,8 +9021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228717-M10_228717/M10_228717_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-228717",
     "target": "M10_228717",
     "arm": "revised",
@@ -9031,7 +9031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228717-M10_228717/M10_228717_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-228717",
     "target": "M10_228717",
@@ -9051,7 +9051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228717-M10_228717/M10_228717_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-228717",
     "target": "M10_228717",
@@ -9081,7 +9081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228717-M10_228717/M10_228717_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-228717",
     "target": "M10_228717",
@@ -9091,13 +9091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/228717-M10_228717/M10_228717_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-228717",
     "target": "M10_228717",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_228717 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_228717 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/230983-M10_230983/M10_230983_executed.ipynb",
@@ -9121,8 +9121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230983-M10_230983/M10_230983_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-230983",
     "target": "M10_230983",
     "arm": "revised",
@@ -9131,7 +9131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230983-M10_230983/M10_230983_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-230983",
     "target": "M10_230983",
@@ -9151,7 +9151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230983-M10_230983/M10_230983_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-230983",
     "target": "M10_230983",
@@ -9181,7 +9181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230983-M10_230983/M10_230983_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-230983",
     "target": "M10_230983",
@@ -9191,13 +9191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230983-M10_230983/M10_230983_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-230983",
     "target": "M10_230983",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_230983 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_230983 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/231544-M10_231544/M10_231544_executed.ipynb",
@@ -9221,8 +9221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231544-M10_231544/M10_231544_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-231544",
     "target": "M10_231544",
     "arm": "revised",
@@ -9231,7 +9231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231544-M10_231544/M10_231544_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-231544",
     "target": "M10_231544",
@@ -9251,7 +9251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231544-M10_231544/M10_231544_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-231544",
     "target": "M10_231544",
@@ -9281,7 +9281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231544-M10_231544/M10_231544_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-231544",
     "target": "M10_231544",
@@ -9291,13 +9291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231544-M10_231544/M10_231544_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-231544",
     "target": "M10_231544",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_231544 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_231544 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/233129-M10_233129/M10_233129_executed.ipynb",
@@ -9321,8 +9321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233129-M10_233129/M10_233129_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m10-233129",
     "target": "M10_233129",
     "arm": "revised",
@@ -9331,7 +9331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233129-M10_233129/M10_233129_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m10-233129",
     "target": "M10_233129",
@@ -9351,7 +9351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233129-M10_233129/M10_233129_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m10-233129",
     "target": "M10_233129",
@@ -9381,7 +9381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233129-M10_233129/M10_233129_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m10-233129",
     "target": "M10_233129",
@@ -9391,13 +9391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233129-M10_233129/M10_233129_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m10-233129",
     "target": "M10_233129",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M10_233129 · revised settings. Age and formed-mass fractions."
+    "caption": "M10_233129 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/212718-M11_212718/M11_212718_executed.ipynb",
@@ -9421,8 +9421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212718-M11_212718/M11_212718_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-212718",
     "target": "M11_212718",
     "arm": "revised",
@@ -9431,7 +9431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212718-M11_212718/M11_212718_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-212718",
     "target": "M11_212718",
@@ -9451,7 +9451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212718-M11_212718/M11_212718_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-212718",
     "target": "M11_212718",
@@ -9481,7 +9481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212718-M11_212718/M11_212718_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-212718",
     "target": "M11_212718",
@@ -9491,13 +9491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212718-M11_212718/M11_212718_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-212718",
     "target": "M11_212718",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_212718 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_212718 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/213004-M11_213004/M11_213004_executed.ipynb",
@@ -9521,8 +9521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213004-M11_213004/M11_213004_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-213004",
     "target": "M11_213004",
     "arm": "revised",
@@ -9531,7 +9531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213004-M11_213004/M11_213004_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-213004",
     "target": "M11_213004",
@@ -9551,7 +9551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213004-M11_213004/M11_213004_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-213004",
     "target": "M11_213004",
@@ -9581,7 +9581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213004-M11_213004/M11_213004_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-213004",
     "target": "M11_213004",
@@ -9591,13 +9591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213004-M11_213004/M11_213004_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-213004",
     "target": "M11_213004",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_213004 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_213004 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/214296-M11_214296/M11_214296_executed.ipynb",
@@ -9621,8 +9621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214296-M11_214296/M11_214296_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-214296",
     "target": "M11_214296",
     "arm": "revised",
@@ -9631,7 +9631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214296-M11_214296/M11_214296_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-214296",
     "target": "M11_214296",
@@ -9651,7 +9651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214296-M11_214296/M11_214296_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-214296",
     "target": "M11_214296",
@@ -9681,7 +9681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214296-M11_214296/M11_214296_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-214296",
     "target": "M11_214296",
@@ -9691,13 +9691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214296-M11_214296/M11_214296_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-214296",
     "target": "M11_214296",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_214296 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_214296 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/214430-M11_214430/M11_214430_executed.ipynb",
@@ -9721,8 +9721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214430-M11_214430/M11_214430_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-214430",
     "target": "M11_214430",
     "arm": "revised",
@@ -9731,7 +9731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214430-M11_214430/M11_214430_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-214430",
     "target": "M11_214430",
@@ -9751,7 +9751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214430-M11_214430/M11_214430_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-214430",
     "target": "M11_214430",
@@ -9781,7 +9781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214430-M11_214430/M11_214430_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-214430",
     "target": "M11_214430",
@@ -9791,13 +9791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214430-M11_214430/M11_214430_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-214430",
     "target": "M11_214430",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_214430 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_214430 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/215585-M11_215585/M11_215585_executed.ipynb",
@@ -9821,8 +9821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215585-M11_215585/M11_215585_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-215585",
     "target": "M11_215585",
     "arm": "revised",
@@ -9831,7 +9831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215585-M11_215585/M11_215585_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-215585",
     "target": "M11_215585",
@@ -9851,7 +9851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215585-M11_215585/M11_215585_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-215585",
     "target": "M11_215585",
@@ -9881,7 +9881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215585-M11_215585/M11_215585_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-215585",
     "target": "M11_215585",
@@ -9891,13 +9891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/215585-M11_215585/M11_215585_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-215585",
     "target": "M11_215585",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_215585 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_215585 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/216899-M11_216899/M11_216899_executed.ipynb",
@@ -9921,8 +9921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216899-M11_216899/M11_216899_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-216899",
     "target": "M11_216899",
     "arm": "revised",
@@ -9931,7 +9931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216899-M11_216899/M11_216899_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-216899",
     "target": "M11_216899",
@@ -9951,7 +9951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216899-M11_216899/M11_216899_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-216899",
     "target": "M11_216899",
@@ -9981,7 +9981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216899-M11_216899/M11_216899_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-216899",
     "target": "M11_216899",
@@ -9991,13 +9991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/216899-M11_216899/M11_216899_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-216899",
     "target": "M11_216899",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_216899 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_216899 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/217564-M11_217564/M11_217564_executed.ipynb",
@@ -10021,8 +10021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217564-M11_217564/M11_217564_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-217564",
     "target": "M11_217564",
     "arm": "revised",
@@ -10031,7 +10031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217564-M11_217564/M11_217564_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-217564",
     "target": "M11_217564",
@@ -10051,7 +10051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217564-M11_217564/M11_217564_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-217564",
     "target": "M11_217564",
@@ -10081,7 +10081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217564-M11_217564/M11_217564_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-217564",
     "target": "M11_217564",
@@ -10091,13 +10091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/217564-M11_217564/M11_217564_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-217564",
     "target": "M11_217564",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_217564 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_217564 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/218207-M11_218207/M11_218207_executed.ipynb",
@@ -10121,8 +10121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218207-M11_218207/M11_218207_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-218207",
     "target": "M11_218207",
     "arm": "revised",
@@ -10131,7 +10131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218207-M11_218207/M11_218207_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-218207",
     "target": "M11_218207",
@@ -10151,7 +10151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218207-M11_218207/M11_218207_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-218207",
     "target": "M11_218207",
@@ -10181,7 +10181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218207-M11_218207/M11_218207_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-218207",
     "target": "M11_218207",
@@ -10191,13 +10191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218207-M11_218207/M11_218207_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-218207",
     "target": "M11_218207",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_218207 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_218207 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/221163-M11_221163/M11_221163_executed.ipynb",
@@ -10221,8 +10221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/221163-M11_221163/M11_221163_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-221163",
     "target": "M11_221163",
     "arm": "revised",
@@ -10231,7 +10231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/221163-M11_221163/M11_221163_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-221163",
     "target": "M11_221163",
@@ -10251,7 +10251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/221163-M11_221163/M11_221163_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-221163",
     "target": "M11_221163",
@@ -10281,7 +10281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/221163-M11_221163/M11_221163_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-221163",
     "target": "M11_221163",
@@ -10291,13 +10291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/221163-M11_221163/M11_221163_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-221163",
     "target": "M11_221163",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_221163 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_221163 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/226721-M11_226721/M11_226721_executed.ipynb",
@@ -10321,8 +10321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226721-M11_226721/M11_226721_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-226721",
     "target": "M11_226721",
     "arm": "revised",
@@ -10331,7 +10331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226721-M11_226721/M11_226721_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-226721",
     "target": "M11_226721",
@@ -10351,7 +10351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226721-M11_226721/M11_226721_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-226721",
     "target": "M11_226721",
@@ -10381,7 +10381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226721-M11_226721/M11_226721_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-226721",
     "target": "M11_226721",
@@ -10391,13 +10391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226721-M11_226721/M11_226721_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-226721",
     "target": "M11_226721",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_226721 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_226721 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/229551-M11_229551/M11_229551_executed.ipynb",
@@ -10421,8 +10421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229551-M11_229551/M11_229551_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-229551",
     "target": "M11_229551",
     "arm": "revised",
@@ -10431,7 +10431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229551-M11_229551/M11_229551_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-229551",
     "target": "M11_229551",
@@ -10451,7 +10451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229551-M11_229551/M11_229551_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-229551",
     "target": "M11_229551",
@@ -10481,7 +10481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229551-M11_229551/M11_229551_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-229551",
     "target": "M11_229551",
@@ -10491,13 +10491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229551-M11_229551/M11_229551_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-229551",
     "target": "M11_229551",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_229551 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_229551 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/232962-M11_232962/M11_232962_executed.ipynb",
@@ -10521,8 +10521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232962-M11_232962/M11_232962_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-232962",
     "target": "M11_232962",
     "arm": "revised",
@@ -10531,7 +10531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232962-M11_232962/M11_232962_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-232962",
     "target": "M11_232962",
@@ -10551,7 +10551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232962-M11_232962/M11_232962_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-232962",
     "target": "M11_232962",
@@ -10581,7 +10581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232962-M11_232962/M11_232962_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-232962",
     "target": "M11_232962",
@@ -10591,13 +10591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232962-M11_232962/M11_232962_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-232962",
     "target": "M11_232962",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_232962 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_232962 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/244738-M11_244738/M11_244738_executed.ipynb",
@@ -10621,8 +10621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244738-M11_244738/M11_244738_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-244738",
     "target": "M11_244738",
     "arm": "revised",
@@ -10631,7 +10631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244738-M11_244738/M11_244738_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-244738",
     "target": "M11_244738",
@@ -10651,7 +10651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244738-M11_244738/M11_244738_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-244738",
     "target": "M11_244738",
@@ -10681,7 +10681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244738-M11_244738/M11_244738_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-244738",
     "target": "M11_244738",
@@ -10691,13 +10691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244738-M11_244738/M11_244738_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-244738",
     "target": "M11_244738",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_244738 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_244738 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/245252-M11_245252/M11_245252_executed.ipynb",
@@ -10721,8 +10721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245252-M11_245252/M11_245252_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-245252",
     "target": "M11_245252",
     "arm": "revised",
@@ -10731,7 +10731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245252-M11_245252/M11_245252_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-245252",
     "target": "M11_245252",
@@ -10751,7 +10751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245252-M11_245252/M11_245252_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-245252",
     "target": "M11_245252",
@@ -10781,7 +10781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245252-M11_245252/M11_245252_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-245252",
     "target": "M11_245252",
@@ -10791,13 +10791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245252-M11_245252/M11_245252_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-245252",
     "target": "M11_245252",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_245252 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_245252 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/245621-M11_245621/M11_245621_executed.ipynb",
@@ -10821,8 +10821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245621-M11_245621/M11_245621_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-245621",
     "target": "M11_245621",
     "arm": "revised",
@@ -10831,7 +10831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245621-M11_245621/M11_245621_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-245621",
     "target": "M11_245621",
@@ -10851,7 +10851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245621-M11_245621/M11_245621_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-245621",
     "target": "M11_245621",
@@ -10881,7 +10881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245621-M11_245621/M11_245621_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-245621",
     "target": "M11_245621",
@@ -10891,13 +10891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245621-M11_245621/M11_245621_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-245621",
     "target": "M11_245621",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_245621 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_245621 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/245864-M11_245864/M11_245864_executed.ipynb",
@@ -10921,8 +10921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245864-M11_245864/M11_245864_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-245864",
     "target": "M11_245864",
     "arm": "revised",
@@ -10931,7 +10931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245864-M11_245864/M11_245864_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-245864",
     "target": "M11_245864",
@@ -10951,7 +10951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245864-M11_245864/M11_245864_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-245864",
     "target": "M11_245864",
@@ -10981,7 +10981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245864-M11_245864/M11_245864_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-245864",
     "target": "M11_245864",
@@ -10991,13 +10991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245864-M11_245864/M11_245864_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-245864",
     "target": "M11_245864",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_245864 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_245864 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/248829-M11_248829/M11_248829_executed.ipynb",
@@ -11021,8 +11021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248829-M11_248829/M11_248829_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-248829",
     "target": "M11_248829",
     "arm": "revised",
@@ -11031,7 +11031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248829-M11_248829/M11_248829_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-248829",
     "target": "M11_248829",
@@ -11051,7 +11051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248829-M11_248829/M11_248829_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-248829",
     "target": "M11_248829",
@@ -11081,7 +11081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248829-M11_248829/M11_248829_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-248829",
     "target": "M11_248829",
@@ -11091,13 +11091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248829-M11_248829/M11_248829_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-248829",
     "target": "M11_248829",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_248829 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_248829 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/250391-M11_250391/M11_250391_executed.ipynb",
@@ -11121,8 +11121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/250391-M11_250391/M11_250391_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-250391",
     "target": "M11_250391",
     "arm": "revised",
@@ -11131,7 +11131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/250391-M11_250391/M11_250391_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-250391",
     "target": "M11_250391",
@@ -11151,7 +11151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/250391-M11_250391/M11_250391_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-250391",
     "target": "M11_250391",
@@ -11181,7 +11181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/250391-M11_250391/M11_250391_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-250391",
     "target": "M11_250391",
@@ -11191,13 +11191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/250391-M11_250391/M11_250391_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-250391",
     "target": "M11_250391",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_250391 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_250391 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/257455-M11_257455/M11_257455_executed.ipynb",
@@ -11221,8 +11221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/257455-M11_257455/M11_257455_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m11-257455",
     "target": "M11_257455",
     "arm": "revised",
@@ -11231,7 +11231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/257455-M11_257455/M11_257455_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m11-257455",
     "target": "M11_257455",
@@ -11251,7 +11251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/257455-M11_257455/M11_257455_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m11-257455",
     "target": "M11_257455",
@@ -11281,7 +11281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/257455-M11_257455/M11_257455_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m11-257455",
     "target": "M11_257455",
@@ -11291,13 +11291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/257455-M11_257455/M11_257455_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m11-257455",
     "target": "M11_257455",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M11_257455 · revised settings. Age and formed-mass fractions."
+    "caption": "M11_257455 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/101089-M12_101089/M12_101089_executed.ipynb",
@@ -11321,8 +11321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101089-M12_101089/M12_101089_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-101089",
     "target": "M12_101089",
     "arm": "revised",
@@ -11331,7 +11331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101089-M12_101089/M12_101089_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-101089",
     "target": "M12_101089",
@@ -11351,7 +11351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101089-M12_101089/M12_101089_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-101089",
     "target": "M12_101089",
@@ -11381,7 +11381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101089-M12_101089/M12_101089_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-101089",
     "target": "M12_101089",
@@ -11391,13 +11391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101089-M12_101089/M12_101089_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-101089",
     "target": "M12_101089",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_101089 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_101089 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/101830-M12_101830/M12_101830_executed.ipynb",
@@ -11421,8 +11421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101830-M12_101830/M12_101830_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-101830",
     "target": "M12_101830",
     "arm": "revised",
@@ -11431,7 +11431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101830-M12_101830/M12_101830_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-101830",
     "target": "M12_101830",
@@ -11451,7 +11451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101830-M12_101830/M12_101830_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-101830",
     "target": "M12_101830",
@@ -11481,7 +11481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101830-M12_101830/M12_101830_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-101830",
     "target": "M12_101830",
@@ -11491,13 +11491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/101830-M12_101830/M12_101830_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-101830",
     "target": "M12_101830",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_101830 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_101830 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/102456-M12_102456/M12_102456_executed.ipynb",
@@ -11521,8 +11521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102456-M12_102456/M12_102456_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-102456",
     "target": "M12_102456",
     "arm": "revised",
@@ -11531,7 +11531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102456-M12_102456/M12_102456_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-102456",
     "target": "M12_102456",
@@ -11551,7 +11551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102456-M12_102456/M12_102456_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-102456",
     "target": "M12_102456",
@@ -11581,7 +11581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102456-M12_102456/M12_102456_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-102456",
     "target": "M12_102456",
@@ -11591,13 +11591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102456-M12_102456/M12_102456_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-102456",
     "target": "M12_102456",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_102456 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_102456 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/180774-M12_180774/M12_180774_executed.ipynb",
@@ -11621,8 +11621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/180774-M12_180774/M12_180774_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-180774",
     "target": "M12_180774",
     "arm": "revised",
@@ -11631,7 +11631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/180774-M12_180774/M12_180774_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-180774",
     "target": "M12_180774",
@@ -11651,7 +11651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/180774-M12_180774/M12_180774_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-180774",
     "target": "M12_180774",
@@ -11681,7 +11681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/180774-M12_180774/M12_180774_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-180774",
     "target": "M12_180774",
@@ -11691,13 +11691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/180774-M12_180774/M12_180774_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-180774",
     "target": "M12_180774",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_180774 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_180774 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/181421-M12_181421/M12_181421_executed.ipynb",
@@ -11721,8 +11721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181421-M12_181421/M12_181421_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-181421",
     "target": "M12_181421",
     "arm": "revised",
@@ -11731,7 +11731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181421-M12_181421/M12_181421_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-181421",
     "target": "M12_181421",
@@ -11751,7 +11751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181421-M12_181421/M12_181421_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-181421",
     "target": "M12_181421",
@@ -11781,7 +11781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181421-M12_181421/M12_181421_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-181421",
     "target": "M12_181421",
@@ -11791,13 +11791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181421-M12_181421/M12_181421_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-181421",
     "target": "M12_181421",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_181421 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_181421 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/181945-M12_181945/M12_181945_executed.ipynb",
@@ -11821,8 +11821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181945-M12_181945/M12_181945_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-181945",
     "target": "M12_181945",
     "arm": "revised",
@@ -11831,7 +11831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181945-M12_181945/M12_181945_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-181945",
     "target": "M12_181945",
@@ -11851,7 +11851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181945-M12_181945/M12_181945_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-181945",
     "target": "M12_181945",
@@ -11881,7 +11881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181945-M12_181945/M12_181945_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-181945",
     "target": "M12_181945",
@@ -11891,13 +11891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/181945-M12_181945/M12_181945_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-181945",
     "target": "M12_181945",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_181945 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_181945 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/182890-M12_182890/M12_182890_executed.ipynb",
@@ -11921,8 +11921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/182890-M12_182890/M12_182890_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-182890",
     "target": "M12_182890",
     "arm": "revised",
@@ -11931,7 +11931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/182890-M12_182890/M12_182890_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-182890",
     "target": "M12_182890",
@@ -11951,7 +11951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/182890-M12_182890/M12_182890_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-182890",
     "target": "M12_182890",
@@ -11981,7 +11981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/182890-M12_182890/M12_182890_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-182890",
     "target": "M12_182890",
@@ -11991,13 +11991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/182890-M12_182890/M12_182890_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-182890",
     "target": "M12_182890",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_182890 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_182890 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/184916-M12_184916/M12_184916_executed.ipynb",
@@ -12021,8 +12021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/184916-M12_184916/M12_184916_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-184916",
     "target": "M12_184916",
     "arm": "revised",
@@ -12031,7 +12031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/184916-M12_184916/M12_184916_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-184916",
     "target": "M12_184916",
@@ -12051,7 +12051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/184916-M12_184916/M12_184916_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-184916",
     "target": "M12_184916",
@@ -12081,7 +12081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/184916-M12_184916/M12_184916_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-184916",
     "target": "M12_184916",
@@ -12091,13 +12091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/184916-M12_184916/M12_184916_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-184916",
     "target": "M12_184916",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_184916 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_184916 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/185631-M12_185631/M12_185631_executed.ipynb",
@@ -12121,8 +12121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185631-M12_185631/M12_185631_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-185631",
     "target": "M12_185631",
     "arm": "revised",
@@ -12131,7 +12131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185631-M12_185631/M12_185631_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-185631",
     "target": "M12_185631",
@@ -12151,7 +12151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185631-M12_185631/M12_185631_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-185631",
     "target": "M12_185631",
@@ -12181,7 +12181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185631-M12_185631/M12_185631_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-185631",
     "target": "M12_185631",
@@ -12191,13 +12191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185631-M12_185631/M12_185631_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-185631",
     "target": "M12_185631",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_185631 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_185631 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/185653-M12_185653/M12_185653_executed.ipynb",
@@ -12221,8 +12221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185653-M12_185653/M12_185653_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-185653",
     "target": "M12_185653",
     "arm": "revised",
@@ -12231,7 +12231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185653-M12_185653/M12_185653_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-185653",
     "target": "M12_185653",
@@ -12251,7 +12251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185653-M12_185653/M12_185653_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-185653",
     "target": "M12_185653",
@@ -12281,7 +12281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185653-M12_185653/M12_185653_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-185653",
     "target": "M12_185653",
@@ -12291,13 +12291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/185653-M12_185653/M12_185653_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-185653",
     "target": "M12_185653",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_185653 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_185653 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/91529-M12_91529/M12_91529_executed.ipynb",
@@ -12321,8 +12321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/91529-M12_91529/M12_91529_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-91529",
     "target": "M12_91529",
     "arm": "revised",
@@ -12331,7 +12331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/91529-M12_91529/M12_91529_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-91529",
     "target": "M12_91529",
@@ -12351,7 +12351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/91529-M12_91529/M12_91529_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-91529",
     "target": "M12_91529",
@@ -12381,7 +12381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/91529-M12_91529/M12_91529_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-91529",
     "target": "M12_91529",
@@ -12391,13 +12391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/91529-M12_91529/M12_91529_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-91529",
     "target": "M12_91529",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_91529 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_91529 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/92132-M12_92132/M12_92132_executed.ipynb",
@@ -12421,8 +12421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/92132-M12_92132/M12_92132_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-92132",
     "target": "M12_92132",
     "arm": "revised",
@@ -12431,7 +12431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/92132-M12_92132/M12_92132_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-92132",
     "target": "M12_92132",
@@ -12451,7 +12451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/92132-M12_92132/M12_92132_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-92132",
     "target": "M12_92132",
@@ -12481,7 +12481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/92132-M12_92132/M12_92132_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-92132",
     "target": "M12_92132",
@@ -12491,13 +12491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/92132-M12_92132/M12_92132_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-92132",
     "target": "M12_92132",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_92132 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_92132 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/98104-M12_98104/M12_98104_executed.ipynb",
@@ -12521,8 +12521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/98104-M12_98104/M12_98104_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m12-98104",
     "target": "M12_98104",
     "arm": "revised",
@@ -12531,7 +12531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/98104-M12_98104/M12_98104_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m12-98104",
     "target": "M12_98104",
@@ -12551,7 +12551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/98104-M12_98104/M12_98104_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m12-98104",
     "target": "M12_98104",
@@ -12581,7 +12581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/98104-M12_98104/M12_98104_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m12-98104",
     "target": "M12_98104",
@@ -12591,13 +12591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/98104-M12_98104/M12_98104_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m12-98104",
     "target": "M12_98104",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M12_98104 · revised settings. Age and formed-mass fractions."
+    "caption": "M12_98104 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/230747-M13_230747/M13_230747_executed.ipynb",
@@ -12621,8 +12621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230747-M13_230747/M13_230747_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-230747",
     "target": "M13_230747",
     "arm": "revised",
@@ -12631,7 +12631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230747-M13_230747/M13_230747_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-230747",
     "target": "M13_230747",
@@ -12651,7 +12651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230747-M13_230747/M13_230747_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-230747",
     "target": "M13_230747",
@@ -12681,7 +12681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230747-M13_230747/M13_230747_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-230747",
     "target": "M13_230747",
@@ -12691,13 +12691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/230747-M13_230747/M13_230747_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-230747",
     "target": "M13_230747",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_230747 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_230747 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/231554-M13_231554/M13_231554_executed.ipynb",
@@ -12721,8 +12721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231554-M13_231554/M13_231554_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-231554",
     "target": "M13_231554",
     "arm": "revised",
@@ -12731,7 +12731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231554-M13_231554/M13_231554_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-231554",
     "target": "M13_231554",
@@ -12751,7 +12751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231554-M13_231554/M13_231554_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-231554",
     "target": "M13_231554",
@@ -12781,7 +12781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231554-M13_231554/M13_231554_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-231554",
     "target": "M13_231554",
@@ -12791,13 +12791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231554-M13_231554/M13_231554_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-231554",
     "target": "M13_231554",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_231554 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_231554 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/232627-M13_232627/M13_232627_executed.ipynb",
@@ -12821,8 +12821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232627-M13_232627/M13_232627_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-232627",
     "target": "M13_232627",
     "arm": "revised",
@@ -12831,7 +12831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232627-M13_232627/M13_232627_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-232627",
     "target": "M13_232627",
@@ -12851,7 +12851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232627-M13_232627/M13_232627_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-232627",
     "target": "M13_232627",
@@ -12881,7 +12881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232627-M13_232627/M13_232627_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-232627",
     "target": "M13_232627",
@@ -12891,13 +12891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232627-M13_232627/M13_232627_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-232627",
     "target": "M13_232627",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_232627 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_232627 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/243871-M13_243871/M13_243871_executed.ipynb",
@@ -12921,8 +12921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/243871-M13_243871/M13_243871_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-243871",
     "target": "M13_243871",
     "arm": "revised",
@@ -12931,7 +12931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/243871-M13_243871/M13_243871_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-243871",
     "target": "M13_243871",
@@ -12951,7 +12951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/243871-M13_243871/M13_243871_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-243871",
     "target": "M13_243871",
@@ -12981,7 +12981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/243871-M13_243871/M13_243871_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-243871",
     "target": "M13_243871",
@@ -12991,13 +12991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/243871-M13_243871/M13_243871_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-243871",
     "target": "M13_243871",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_243871 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_243871 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/244239-M13_244239/M13_244239_executed.ipynb",
@@ -13021,8 +13021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244239-M13_244239/M13_244239_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-244239",
     "target": "M13_244239",
     "arm": "revised",
@@ -13031,7 +13031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244239-M13_244239/M13_244239_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-244239",
     "target": "M13_244239",
@@ -13051,7 +13051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244239-M13_244239/M13_244239_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-244239",
     "target": "M13_244239",
@@ -13081,7 +13081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244239-M13_244239/M13_244239_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-244239",
     "target": "M13_244239",
@@ -13091,13 +13091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244239-M13_244239/M13_244239_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-244239",
     "target": "M13_244239",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_244239 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_244239 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/244680-M13_244680/M13_244680_executed.ipynb",
@@ -13121,8 +13121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244680-M13_244680/M13_244680_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-244680",
     "target": "M13_244680",
     "arm": "revised",
@@ -13131,7 +13131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244680-M13_244680/M13_244680_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-244680",
     "target": "M13_244680",
@@ -13151,7 +13151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244680-M13_244680/M13_244680_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-244680",
     "target": "M13_244680",
@@ -13181,7 +13181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244680-M13_244680/M13_244680_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-244680",
     "target": "M13_244680",
@@ -13191,13 +13191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/244680-M13_244680/M13_244680_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-244680",
     "target": "M13_244680",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_244680 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_244680 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/245763-M13_245763/M13_245763_executed.ipynb",
@@ -13221,8 +13221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245763-M13_245763/M13_245763_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-245763",
     "target": "M13_245763",
     "arm": "revised",
@@ -13231,7 +13231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245763-M13_245763/M13_245763_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-245763",
     "target": "M13_245763",
@@ -13251,7 +13251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245763-M13_245763/M13_245763_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-245763",
     "target": "M13_245763",
@@ -13281,7 +13281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245763-M13_245763/M13_245763_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-245763",
     "target": "M13_245763",
@@ -13291,13 +13291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/245763-M13_245763/M13_245763_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-245763",
     "target": "M13_245763",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_245763 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_245763 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/246149-M13_246149/M13_246149_executed.ipynb",
@@ -13321,8 +13321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/246149-M13_246149/M13_246149_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-246149",
     "target": "M13_246149",
     "arm": "revised",
@@ -13331,7 +13331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/246149-M13_246149/M13_246149_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-246149",
     "target": "M13_246149",
@@ -13351,7 +13351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/246149-M13_246149/M13_246149_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-246149",
     "target": "M13_246149",
@@ -13381,7 +13381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/246149-M13_246149/M13_246149_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-246149",
     "target": "M13_246149",
@@ -13391,13 +13391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/246149-M13_246149/M13_246149_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-246149",
     "target": "M13_246149",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_246149 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_246149 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/248217-M13_248217/M13_248217_executed.ipynb",
@@ -13421,8 +13421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248217-M13_248217/M13_248217_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-248217",
     "target": "M13_248217",
     "arm": "revised",
@@ -13431,7 +13431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248217-M13_248217/M13_248217_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-248217",
     "target": "M13_248217",
@@ -13451,7 +13451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248217-M13_248217/M13_248217_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-248217",
     "target": "M13_248217",
@@ -13481,7 +13481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248217-M13_248217/M13_248217_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-248217",
     "target": "M13_248217",
@@ -13491,13 +13491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/248217-M13_248217/M13_248217_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-248217",
     "target": "M13_248217",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_248217 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_248217 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/253688-M13_253688/M13_253688_executed.ipynb",
@@ -13521,8 +13521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/253688-M13_253688/M13_253688_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-253688",
     "target": "M13_253688",
     "arm": "revised",
@@ -13531,7 +13531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/253688-M13_253688/M13_253688_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-253688",
     "target": "M13_253688",
@@ -13551,7 +13551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/253688-M13_253688/M13_253688_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-253688",
     "target": "M13_253688",
@@ -13581,7 +13581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/253688-M13_253688/M13_253688_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-253688",
     "target": "M13_253688",
@@ -13591,13 +13591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/253688-M13_253688/M13_253688_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-253688",
     "target": "M13_253688",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_253688 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_253688 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/254350-M13_254350/M13_254350_executed.ipynb",
@@ -13621,8 +13621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/254350-M13_254350/M13_254350_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-254350",
     "target": "M13_254350",
     "arm": "revised",
@@ -13631,7 +13631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/254350-M13_254350/M13_254350_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-254350",
     "target": "M13_254350",
@@ -13651,7 +13651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/254350-M13_254350/M13_254350_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-254350",
     "target": "M13_254350",
@@ -13681,7 +13681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/254350-M13_254350/M13_254350_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-254350",
     "target": "M13_254350",
@@ -13691,13 +13691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/254350-M13_254350/M13_254350_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-254350",
     "target": "M13_254350",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_254350 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_254350 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/255047-M13_255047/M13_255047_executed.ipynb",
@@ -13721,8 +13721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/255047-M13_255047/M13_255047_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-255047",
     "target": "M13_255047",
     "arm": "revised",
@@ -13731,7 +13731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/255047-M13_255047/M13_255047_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-255047",
     "target": "M13_255047",
@@ -13751,7 +13751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/255047-M13_255047/M13_255047_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-255047",
     "target": "M13_255047",
@@ -13781,7 +13781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/255047-M13_255047/M13_255047_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-255047",
     "target": "M13_255047",
@@ -13791,13 +13791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/255047-M13_255047/M13_255047_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-255047",
     "target": "M13_255047",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_255047 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_255047 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/258753-M13_258753/M13_258753_executed.ipynb",
@@ -13821,8 +13821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/258753-M13_258753/M13_258753_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-258753",
     "target": "M13_258753",
     "arm": "revised",
@@ -13831,7 +13831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/258753-M13_258753/M13_258753_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-258753",
     "target": "M13_258753",
@@ -13851,7 +13851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/258753-M13_258753/M13_258753_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-258753",
     "target": "M13_258753",
@@ -13881,7 +13881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/258753-M13_258753/M13_258753_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-258753",
     "target": "M13_258753",
@@ -13891,13 +13891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/258753-M13_258753/M13_258753_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-258753",
     "target": "M13_258753",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_258753 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_258753 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/259737-M13_259737/M13_259737_executed.ipynb",
@@ -13921,8 +13921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/259737-M13_259737/M13_259737_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m13-259737",
     "target": "M13_259737",
     "arm": "revised",
@@ -13931,7 +13931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/259737-M13_259737/M13_259737_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m13-259737",
     "target": "M13_259737",
@@ -13951,7 +13951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/259737-M13_259737/M13_259737_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m13-259737",
     "target": "M13_259737",
@@ -13981,7 +13981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/259737-M13_259737/M13_259737_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m13-259737",
     "target": "M13_259737",
@@ -13991,13 +13991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/259737-M13_259737/M13_259737_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m13-259737",
     "target": "M13_259737",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M13_259737 · revised settings. Age and formed-mass fractions."
+    "caption": "M13_259737 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/102968-M14_102968/M14_102968_executed.ipynb",
@@ -14021,8 +14021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102968-M14_102968/M14_102968_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-102968",
     "target": "M14_102968",
     "arm": "revised",
@@ -14031,7 +14031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102968-M14_102968/M14_102968_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-102968",
     "target": "M14_102968",
@@ -14051,7 +14051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102968-M14_102968/M14_102968_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-102968",
     "target": "M14_102968",
@@ -14081,7 +14081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102968-M14_102968/M14_102968_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-102968",
     "target": "M14_102968",
@@ -14091,13 +14091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/102968-M14_102968/M14_102968_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-102968",
     "target": "M14_102968",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_102968 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_102968 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
@@ -14121,8 +14121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/103366-M14_103366/M14_103366_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-103366",
     "target": "M14_103366",
     "arm": "revised",
@@ -14131,7 +14131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/103366-M14_103366/M14_103366_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-103366",
     "target": "M14_103366",
@@ -14151,7 +14151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/103366-M14_103366/M14_103366_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-103366",
     "target": "M14_103366",
@@ -14181,7 +14181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/103366-M14_103366/M14_103366_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-103366",
     "target": "M14_103366",
@@ -14191,13 +14191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/103366-M14_103366/M14_103366_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-103366",
     "target": "M14_103366",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_103366 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_103366 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
@@ -14221,8 +14221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/104877-M14_104877/M14_104877_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-104877",
     "target": "M14_104877",
     "arm": "revised",
@@ -14231,7 +14231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/104877-M14_104877/M14_104877_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-104877",
     "target": "M14_104877",
@@ -14251,7 +14251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/104877-M14_104877/M14_104877_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-104877",
     "target": "M14_104877",
@@ -14281,7 +14281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/104877-M14_104877/M14_104877_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-104877",
     "target": "M14_104877",
@@ -14291,13 +14291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/104877-M14_104877/M14_104877_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-104877",
     "target": "M14_104877",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_104877 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_104877 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
@@ -14321,8 +14321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/27068-M14_27068/M14_27068_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-27068",
     "target": "M14_27068",
     "arm": "revised",
@@ -14331,7 +14331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/27068-M14_27068/M14_27068_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-27068",
     "target": "M14_27068",
@@ -14351,7 +14351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/27068-M14_27068/M14_27068_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-27068",
     "target": "M14_27068",
@@ -14381,7 +14381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/27068-M14_27068/M14_27068_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-27068",
     "target": "M14_27068",
@@ -14391,13 +14391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/27068-M14_27068/M14_27068_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-27068",
     "target": "M14_27068",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_27068 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_27068 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
@@ -14421,8 +14421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/31835-M14_31835/M14_31835_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-31835",
     "target": "M14_31835",
     "arm": "revised",
@@ -14431,7 +14431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/31835-M14_31835/M14_31835_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-31835",
     "target": "M14_31835",
@@ -14451,7 +14451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/31835-M14_31835/M14_31835_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-31835",
     "target": "M14_31835",
@@ -14481,7 +14481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/31835-M14_31835/M14_31835_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-31835",
     "target": "M14_31835",
@@ -14491,13 +14491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/31835-M14_31835/M14_31835_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-31835",
     "target": "M14_31835",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_31835 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_31835 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
@@ -14521,8 +14521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/36550-M14_36550/M14_36550_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-36550",
     "target": "M14_36550",
     "arm": "revised",
@@ -14531,7 +14531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/36550-M14_36550/M14_36550_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-36550",
     "target": "M14_36550",
@@ -14551,7 +14551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/36550-M14_36550/M14_36550_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-36550",
     "target": "M14_36550",
@@ -14581,7 +14581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/36550-M14_36550/M14_36550_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-36550",
     "target": "M14_36550",
@@ -14591,13 +14591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/36550-M14_36550/M14_36550_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-36550",
     "target": "M14_36550",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_36550 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_36550 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
@@ -14621,8 +14621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37023-M14_37023/M14_37023_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-37023",
     "target": "M14_37023",
     "arm": "revised",
@@ -14631,7 +14631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37023-M14_37023/M14_37023_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-37023",
     "target": "M14_37023",
@@ -14651,7 +14651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37023-M14_37023/M14_37023_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-37023",
     "target": "M14_37023",
@@ -14681,7 +14681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37023-M14_37023/M14_37023_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-37023",
     "target": "M14_37023",
@@ -14691,13 +14691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37023-M14_37023/M14_37023_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-37023",
     "target": "M14_37023",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_37023 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_37023 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
@@ -14721,8 +14721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37219-M14_37219/M14_37219_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-37219",
     "target": "M14_37219",
     "arm": "revised",
@@ -14731,7 +14731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37219-M14_37219/M14_37219_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-37219",
     "target": "M14_37219",
@@ -14751,7 +14751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37219-M14_37219/M14_37219_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-37219",
     "target": "M14_37219",
@@ -14781,7 +14781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37219-M14_37219/M14_37219_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-37219",
     "target": "M14_37219",
@@ -14791,13 +14791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37219-M14_37219/M14_37219_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-37219",
     "target": "M14_37219",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_37219 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_37219 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
@@ -14821,8 +14821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37723-M14_37723/M14_37723_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-37723",
     "target": "M14_37723",
     "arm": "revised",
@@ -14831,7 +14831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37723-M14_37723/M14_37723_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-37723",
     "target": "M14_37723",
@@ -14851,7 +14851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37723-M14_37723/M14_37723_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-37723",
     "target": "M14_37723",
@@ -14881,7 +14881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37723-M14_37723/M14_37723_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-37723",
     "target": "M14_37723",
@@ -14891,13 +14891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37723-M14_37723/M14_37723_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-37723",
     "target": "M14_37723",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_37723 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_37723 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
@@ -14921,8 +14921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37843-M14_37843/M14_37843_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-37843",
     "target": "M14_37843",
     "arm": "revised",
@@ -14931,7 +14931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37843-M14_37843/M14_37843_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-37843",
     "target": "M14_37843",
@@ -14951,7 +14951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37843-M14_37843/M14_37843_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-37843",
     "target": "M14_37843",
@@ -14981,7 +14981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37843-M14_37843/M14_37843_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-37843",
     "target": "M14_37843",
@@ -14991,13 +14991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/37843-M14_37843/M14_37843_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-37843",
     "target": "M14_37843",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_37843 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_37843 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
@@ -15021,8 +15021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38646-M14_38646/M14_38646_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-38646",
     "target": "M14_38646",
     "arm": "revised",
@@ -15031,7 +15031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38646-M14_38646/M14_38646_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-38646",
     "target": "M14_38646",
@@ -15051,7 +15051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38646-M14_38646/M14_38646_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-38646",
     "target": "M14_38646",
@@ -15081,7 +15081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38646-M14_38646/M14_38646_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-38646",
     "target": "M14_38646",
@@ -15091,13 +15091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38646-M14_38646/M14_38646_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-38646",
     "target": "M14_38646",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_38646 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_38646 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
@@ -15121,8 +15121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38648-M14_38648/M14_38648_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-38648",
     "target": "M14_38648",
     "arm": "revised",
@@ -15131,7 +15131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38648-M14_38648/M14_38648_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-38648",
     "target": "M14_38648",
@@ -15151,7 +15151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38648-M14_38648/M14_38648_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-38648",
     "target": "M14_38648",
@@ -15181,7 +15181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38648-M14_38648/M14_38648_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-38648",
     "target": "M14_38648",
@@ -15191,13 +15191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38648-M14_38648/M14_38648_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-38648",
     "target": "M14_38648",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_38648 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_38648 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
@@ -15221,8 +15221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38771-M14_38771/M14_38771_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-38771",
     "target": "M14_38771",
     "arm": "revised",
@@ -15231,7 +15231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38771-M14_38771/M14_38771_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-38771",
     "target": "M14_38771",
@@ -15251,7 +15251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38771-M14_38771/M14_38771_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-38771",
     "target": "M14_38771",
@@ -15281,7 +15281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38771-M14_38771/M14_38771_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-38771",
     "target": "M14_38771",
@@ -15291,13 +15291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/38771-M14_38771/M14_38771_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-38771",
     "target": "M14_38771",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_38771 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_38771 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
@@ -15321,8 +15321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/39865-M14_39865/M14_39865_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m14-39865",
     "target": "M14_39865",
     "arm": "revised",
@@ -15331,7 +15331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/39865-M14_39865/M14_39865_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m14-39865",
     "target": "M14_39865",
@@ -15351,7 +15351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/39865-M14_39865/M14_39865_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m14-39865",
     "target": "M14_39865",
@@ -15381,7 +15381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/39865-M14_39865/M14_39865_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m14-39865",
     "target": "M14_39865",
@@ -15391,13 +15391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/39865-M14_39865/M14_39865_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m14-39865",
     "target": "M14_39865",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M14_39865 · revised settings. Age and formed-mass fractions."
+    "caption": "M14_39865 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
@@ -15421,8 +15421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77632-M15_77632/M15_77632_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m15-77632",
     "target": "M15_77632",
     "arm": "revised",
@@ -15431,7 +15431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77632-M15_77632/M15_77632_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m15-77632",
     "target": "M15_77632",
@@ -15451,7 +15451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77632-M15_77632/M15_77632_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m15-77632",
     "target": "M15_77632",
@@ -15481,7 +15481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77632-M15_77632/M15_77632_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m15-77632",
     "target": "M15_77632",
@@ -15491,13 +15491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77632-M15_77632/M15_77632_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m15-77632",
     "target": "M15_77632",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M15_77632 · revised settings. Age and formed-mass fractions."
+    "caption": "M15_77632 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
@@ -15521,8 +15521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77745-M15_77745/M15_77745_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m15-77745",
     "target": "M15_77745",
     "arm": "revised",
@@ -15531,7 +15531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77745-M15_77745/M15_77745_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m15-77745",
     "target": "M15_77745",
@@ -15551,7 +15551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77745-M15_77745/M15_77745_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m15-77745",
     "target": "M15_77745",
@@ -15581,7 +15581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77745-M15_77745/M15_77745_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m15-77745",
     "target": "M15_77745",
@@ -15591,13 +15591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/77745-M15_77745/M15_77745_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m15-77745",
     "target": "M15_77745",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M15_77745 · revised settings. Age and formed-mass fractions."
+    "caption": "M15_77745 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
@@ -15621,8 +15621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/87207-M15_87207/M15_87207_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m15-87207",
     "target": "M15_87207",
     "arm": "revised",
@@ -15631,7 +15631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/87207-M15_87207/M15_87207_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m15-87207",
     "target": "M15_87207",
@@ -15651,7 +15651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/87207-M15_87207/M15_87207_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m15-87207",
     "target": "M15_87207",
@@ -15681,7 +15681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/87207-M15_87207/M15_87207_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m15-87207",
     "target": "M15_87207",
@@ -15691,13 +15691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/87207-M15_87207/M15_87207_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m15-87207",
     "target": "M15_87207",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M15_87207 · revised settings. Age and formed-mass fractions."
+    "caption": "M15_87207 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
@@ -15721,8 +15721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/88032-M15_88032/M15_88032_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m15-88032",
     "target": "M15_88032",
     "arm": "revised",
@@ -15731,7 +15731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/88032-M15_88032/M15_88032_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m15-88032",
     "target": "M15_88032",
@@ -15751,7 +15751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/88032-M15_88032/M15_88032_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m15-88032",
     "target": "M15_88032",
@@ -15781,7 +15781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/88032-M15_88032/M15_88032_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m15-88032",
     "target": "M15_88032",
@@ -15791,13 +15791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/88032-M15_88032/M15_88032_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m15-88032",
     "target": "M15_88032",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M15_88032 · revised settings. Age and formed-mass fractions."
+    "caption": "M15_88032 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
@@ -15821,8 +15821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89072-M15_89072/M15_89072_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m15-89072",
     "target": "M15_89072",
     "arm": "revised",
@@ -15831,7 +15831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89072-M15_89072/M15_89072_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m15-89072",
     "target": "M15_89072",
@@ -15851,7 +15851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89072-M15_89072/M15_89072_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m15-89072",
     "target": "M15_89072",
@@ -15881,7 +15881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89072-M15_89072/M15_89072_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m15-89072",
     "target": "M15_89072",
@@ -15891,13 +15891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89072-M15_89072/M15_89072_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m15-89072",
     "target": "M15_89072",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M15_89072 · revised settings. Age and formed-mass fractions."
+    "caption": "M15_89072 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
@@ -15921,8 +15921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89153-M15_89153/M15_89153_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m15-89153",
     "target": "M15_89153",
     "arm": "revised",
@@ -15931,7 +15931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89153-M15_89153/M15_89153_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m15-89153",
     "target": "M15_89153",
@@ -15951,7 +15951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89153-M15_89153/M15_89153_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m15-89153",
     "target": "M15_89153",
@@ -15981,7 +15981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89153-M15_89153/M15_89153_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m15-89153",
     "target": "M15_89153",
@@ -15991,13 +15991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/89153-M15_89153/M15_89153_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m15-89153",
     "target": "M15_89153",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M15_89153 · revised settings. Age and formed-mass fractions."
+    "caption": "M15_89153 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
@@ -16021,8 +16021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126153-M1_126153/M1_126153_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-126153",
     "target": "M1_126153",
     "arm": "revised",
@@ -16031,7 +16031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126153-M1_126153/M1_126153_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-126153",
     "target": "M1_126153",
@@ -16051,7 +16051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126153-M1_126153/M1_126153_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-126153",
     "target": "M1_126153",
@@ -16081,7 +16081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126153-M1_126153/M1_126153_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-126153",
     "target": "M1_126153",
@@ -16091,13 +16091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126153-M1_126153/M1_126153_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-126153",
     "target": "M1_126153",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_126153 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_126153 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
@@ -16121,8 +16121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126578-M1_126578/M1_126578_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-126578",
     "target": "M1_126578",
     "arm": "revised",
@@ -16131,7 +16131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126578-M1_126578/M1_126578_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-126578",
     "target": "M1_126578",
@@ -16151,7 +16151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126578-M1_126578/M1_126578_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-126578",
     "target": "M1_126578",
@@ -16181,7 +16181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126578-M1_126578/M1_126578_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-126578",
     "target": "M1_126578",
@@ -16191,13 +16191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/126578-M1_126578/M1_126578_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-126578",
     "target": "M1_126578",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_126578 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_126578 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
@@ -16221,8 +16221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130052-M1_130052/M1_130052_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-130052",
     "target": "M1_130052",
     "arm": "revised",
@@ -16231,7 +16231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130052-M1_130052/M1_130052_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-130052",
     "target": "M1_130052",
@@ -16251,7 +16251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130052-M1_130052/M1_130052_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-130052",
     "target": "M1_130052",
@@ -16281,7 +16281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130052-M1_130052/M1_130052_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-130052",
     "target": "M1_130052",
@@ -16291,13 +16291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130052-M1_130052/M1_130052_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-130052",
     "target": "M1_130052",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_130052 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_130052 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
@@ -16321,8 +16321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133240-M1_133240/M1_133240_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-133240",
     "target": "M1_133240",
     "arm": "revised",
@@ -16331,7 +16331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133240-M1_133240/M1_133240_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-133240",
     "target": "M1_133240",
@@ -16351,7 +16351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133240-M1_133240/M1_133240_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-133240",
     "target": "M1_133240",
@@ -16381,7 +16381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133240-M1_133240/M1_133240_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-133240",
     "target": "M1_133240",
@@ -16391,13 +16391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133240-M1_133240/M1_133240_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-133240",
     "target": "M1_133240",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_133240 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_133240 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
@@ -16421,8 +16421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139423-M1_139423/M1_139423_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-139423",
     "target": "M1_139423",
     "arm": "revised",
@@ -16431,7 +16431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139423-M1_139423/M1_139423_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-139423",
     "target": "M1_139423",
@@ -16451,7 +16451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139423-M1_139423/M1_139423_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-139423",
     "target": "M1_139423",
@@ -16481,7 +16481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139423-M1_139423/M1_139423_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-139423",
     "target": "M1_139423",
@@ -16491,13 +16491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139423-M1_139423/M1_139423_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-139423",
     "target": "M1_139423",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_139423 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_139423 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
@@ -16521,8 +16521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205742-M1_205742/M1_205742_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-205742",
     "target": "M1_205742",
     "arm": "revised",
@@ -16531,7 +16531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205742-M1_205742/M1_205742_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-205742",
     "target": "M1_205742",
@@ -16551,7 +16551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205742-M1_205742/M1_205742_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-205742",
     "target": "M1_205742",
@@ -16581,7 +16581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205742-M1_205742/M1_205742_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-205742",
     "target": "M1_205742",
@@ -16591,13 +16591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205742-M1_205742/M1_205742_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-205742",
     "target": "M1_205742",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_205742 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_205742 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
@@ -16621,8 +16621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206501-M1_206501/M1_206501_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-206501",
     "target": "M1_206501",
     "arm": "revised",
@@ -16631,7 +16631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206501-M1_206501/M1_206501_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-206501",
     "target": "M1_206501",
@@ -16651,7 +16651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206501-M1_206501/M1_206501_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-206501",
     "target": "M1_206501",
@@ -16681,7 +16681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206501-M1_206501/M1_206501_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-206501",
     "target": "M1_206501",
@@ -16691,13 +16691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206501-M1_206501/M1_206501_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-206501",
     "target": "M1_206501",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_206501 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_206501 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
@@ -16721,8 +16721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206545-M1_206545/M1_206545_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-206545",
     "target": "M1_206545",
     "arm": "revised",
@@ -16731,7 +16731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206545-M1_206545/M1_206545_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-206545",
     "target": "M1_206545",
@@ -16751,7 +16751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206545-M1_206545/M1_206545_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-206545",
     "target": "M1_206545",
@@ -16781,7 +16781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206545-M1_206545/M1_206545_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-206545",
     "target": "M1_206545",
@@ -16791,13 +16791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206545-M1_206545/M1_206545_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-206545",
     "target": "M1_206545",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_206545 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_206545 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
@@ -16821,8 +16821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206858-M1_206858/M1_206858_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-206858",
     "target": "M1_206858",
     "arm": "revised",
@@ -16831,7 +16831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206858-M1_206858/M1_206858_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-206858",
     "target": "M1_206858",
@@ -16851,7 +16851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206858-M1_206858/M1_206858_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-206858",
     "target": "M1_206858",
@@ -16881,7 +16881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206858-M1_206858/M1_206858_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-206858",
     "target": "M1_206858",
@@ -16891,13 +16891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206858-M1_206858/M1_206858_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-206858",
     "target": "M1_206858",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_206858 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_206858 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
@@ -16921,8 +16921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208622-M1_208622/M1_208622_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-208622",
     "target": "M1_208622",
     "arm": "revised",
@@ -16931,7 +16931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208622-M1_208622/M1_208622_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-208622",
     "target": "M1_208622",
@@ -16951,7 +16951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208622-M1_208622/M1_208622_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-208622",
     "target": "M1_208622",
@@ -16981,7 +16981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208622-M1_208622/M1_208622_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-208622",
     "target": "M1_208622",
@@ -16991,13 +16991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208622-M1_208622/M1_208622_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-208622",
     "target": "M1_208622",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_208622 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_208622 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -17021,8 +17021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210210-M1_210210/M1_210210_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-210210",
     "target": "M1_210210",
     "arm": "revised",
@@ -17031,7 +17031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210210-M1_210210/M1_210210_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-210210",
     "target": "M1_210210",
@@ -17051,7 +17051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210210-M1_210210/M1_210210_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-210210",
     "target": "M1_210210",
@@ -17081,7 +17081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210210-M1_210210/M1_210210_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-210210",
     "target": "M1_210210",
@@ -17091,13 +17091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210210-M1_210210/M1_210210_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-210210",
     "target": "M1_210210",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_210210 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_210210 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
@@ -17121,8 +17121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211157-M1_211157/M1_211157_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m1-211157",
     "target": "M1_211157",
     "arm": "revised",
@@ -17131,7 +17131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211157-M1_211157/M1_211157_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m1-211157",
     "target": "M1_211157",
@@ -17151,7 +17151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211157-M1_211157/M1_211157_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m1-211157",
     "target": "M1_211157",
@@ -17181,7 +17181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211157-M1_211157/M1_211157_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m1-211157",
     "target": "M1_211157",
@@ -17191,13 +17191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211157-M1_211157/M1_211157_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m1-211157",
     "target": "M1_211157",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M1_211157 · revised settings. Age and formed-mass fractions."
+    "caption": "M1_211157 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
@@ -17221,8 +17221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/129596-M2_129596/M2_129596_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-129596",
     "target": "M2_129596",
     "arm": "revised",
@@ -17231,7 +17231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/129596-M2_129596/M2_129596_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-129596",
     "target": "M2_129596",
@@ -17251,7 +17251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/129596-M2_129596/M2_129596_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-129596",
     "target": "M2_129596",
@@ -17281,7 +17281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/129596-M2_129596/M2_129596_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-129596",
     "target": "M2_129596",
@@ -17291,13 +17291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/129596-M2_129596/M2_129596_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-129596",
     "target": "M2_129596",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_129596 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_129596 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/130005-M2_130005/M2_130005_executed.ipynb",
@@ -17321,8 +17321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130005-M2_130005/M2_130005_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-130005",
     "target": "M2_130005",
     "arm": "revised",
@@ -17331,7 +17331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130005-M2_130005/M2_130005_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-130005",
     "target": "M2_130005",
@@ -17351,7 +17351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130005-M2_130005/M2_130005_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-130005",
     "target": "M2_130005",
@@ -17381,7 +17381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130005-M2_130005/M2_130005_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-130005",
     "target": "M2_130005",
@@ -17391,13 +17391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/130005-M2_130005/M2_130005_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-130005",
     "target": "M2_130005",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_130005 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_130005 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/133501-M2_133501/M2_133501_executed.ipynb",
@@ -17421,8 +17421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133501-M2_133501/M2_133501_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-133501",
     "target": "M2_133501",
     "arm": "revised",
@@ -17431,7 +17431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133501-M2_133501/M2_133501_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-133501",
     "target": "M2_133501",
@@ -17451,7 +17451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133501-M2_133501/M2_133501_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-133501",
     "target": "M2_133501",
@@ -17481,7 +17481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133501-M2_133501/M2_133501_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-133501",
     "target": "M2_133501",
@@ -17491,13 +17491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/133501-M2_133501/M2_133501_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-133501",
     "target": "M2_133501",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_133501 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_133501 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/134021-M2_134021/M2_134021_executed.ipynb",
@@ -17521,8 +17521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134021-M2_134021/M2_134021_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-134021",
     "target": "M2_134021",
     "arm": "revised",
@@ -17531,7 +17531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134021-M2_134021/M2_134021_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-134021",
     "target": "M2_134021",
@@ -17551,7 +17551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134021-M2_134021/M2_134021_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-134021",
     "target": "M2_134021",
@@ -17581,7 +17581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134021-M2_134021/M2_134021_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-134021",
     "target": "M2_134021",
@@ -17591,13 +17591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134021-M2_134021/M2_134021_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-134021",
     "target": "M2_134021",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_134021 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_134021 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/134391-M2_134391/M2_134391_executed.ipynb",
@@ -17621,8 +17621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134391-M2_134391/M2_134391_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-134391",
     "target": "M2_134391",
     "arm": "revised",
@@ -17631,7 +17631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134391-M2_134391/M2_134391_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-134391",
     "target": "M2_134391",
@@ -17651,7 +17651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134391-M2_134391/M2_134391_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-134391",
     "target": "M2_134391",
@@ -17681,7 +17681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134391-M2_134391/M2_134391_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-134391",
     "target": "M2_134391",
@@ -17691,13 +17691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/134391-M2_134391/M2_134391_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-134391",
     "target": "M2_134391",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_134391 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_134391 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
@@ -17721,8 +17721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139662-M2_139662/M2_139662_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-139662",
     "target": "M2_139662",
     "arm": "revised",
@@ -17731,7 +17731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139662-M2_139662/M2_139662_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-139662",
     "target": "M2_139662",
@@ -17751,7 +17751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139662-M2_139662/M2_139662_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-139662",
     "target": "M2_139662",
@@ -17781,7 +17781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139662-M2_139662/M2_139662_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-139662",
     "target": "M2_139662",
@@ -17791,13 +17791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/139662-M2_139662/M2_139662_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-139662",
     "target": "M2_139662",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_139662 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_139662 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206669-M2_206669/M2_206669_executed.ipynb",
@@ -17821,8 +17821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206669-M2_206669/M2_206669_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-206669",
     "target": "M2_206669",
     "arm": "revised",
@@ -17831,7 +17831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206669-M2_206669/M2_206669_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-206669",
     "target": "M2_206669",
@@ -17851,7 +17851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206669-M2_206669/M2_206669_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-206669",
     "target": "M2_206669",
@@ -17881,7 +17881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206669-M2_206669/M2_206669_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-206669",
     "target": "M2_206669",
@@ -17891,13 +17891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206669-M2_206669/M2_206669_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-206669",
     "target": "M2_206669",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_206669 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_206669 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/208364-M2_208364/M2_208364_executed.ipynb",
@@ -17921,8 +17921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208364-M2_208364/M2_208364_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-208364",
     "target": "M2_208364",
     "arm": "revised",
@@ -17931,7 +17931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208364-M2_208364/M2_208364_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-208364",
     "target": "M2_208364",
@@ -17951,7 +17951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208364-M2_208364/M2_208364_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-208364",
     "target": "M2_208364",
@@ -17981,7 +17981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208364-M2_208364/M2_208364_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-208364",
     "target": "M2_208364",
@@ -17991,13 +17991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/208364-M2_208364/M2_208364_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-208364",
     "target": "M2_208364",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_208364 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_208364 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210940-M2_210940/M2_210940_executed.ipynb",
@@ -18021,8 +18021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210940-M2_210940/M2_210940_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-210940",
     "target": "M2_210940",
     "arm": "revised",
@@ -18031,7 +18031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210940-M2_210940/M2_210940_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-210940",
     "target": "M2_210940",
@@ -18051,7 +18051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210940-M2_210940/M2_210940_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-210940",
     "target": "M2_210940",
@@ -18081,7 +18081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210940-M2_210940/M2_210940_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-210940",
     "target": "M2_210940",
@@ -18091,13 +18091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/210940-M2_210940/M2_210940_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-210940",
     "target": "M2_210940",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_210940 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_210940 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/93943-M2_93943/M2_93943_executed.ipynb",
@@ -18121,8 +18121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/93943-M2_93943/M2_93943_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-93943",
     "target": "M2_93943",
     "arm": "revised",
@@ -18131,7 +18131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/93943-M2_93943/M2_93943_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-93943",
     "target": "M2_93943",
@@ -18151,7 +18151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/93943-M2_93943/M2_93943_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-93943",
     "target": "M2_93943",
@@ -18181,7 +18181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/93943-M2_93943/M2_93943_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-93943",
     "target": "M2_93943",
@@ -18191,13 +18191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/93943-M2_93943/M2_93943_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-93943",
     "target": "M2_93943",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_93943 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_93943 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/94494-M2_94494/M2_94494_executed.ipynb",
@@ -18221,8 +18221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/94494-M2_94494/M2_94494_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-94494",
     "target": "M2_94494",
     "arm": "revised",
@@ -18231,7 +18231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/94494-M2_94494/M2_94494_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-94494",
     "target": "M2_94494",
@@ -18251,7 +18251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/94494-M2_94494/M2_94494_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-94494",
     "target": "M2_94494",
@@ -18281,7 +18281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/94494-M2_94494/M2_94494_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-94494",
     "target": "M2_94494",
@@ -18291,13 +18291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/94494-M2_94494/M2_94494_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-94494",
     "target": "M2_94494",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_94494 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_94494 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/97310-M2_97310/M2_97310_executed.ipynb",
@@ -18321,8 +18321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/97310-M2_97310/M2_97310_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m2-97310",
     "target": "M2_97310",
     "arm": "revised",
@@ -18331,7 +18331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/97310-M2_97310/M2_97310_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m2-97310",
     "target": "M2_97310",
@@ -18351,7 +18351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/97310-M2_97310/M2_97310_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m2-97310",
     "target": "M2_97310",
@@ -18381,7 +18381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/97310-M2_97310/M2_97310_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m2-97310",
     "target": "M2_97310",
@@ -18391,13 +18391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/97310-M2_97310/M2_97310_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m2-97310",
     "target": "M2_97310",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M2_97310 · revised settings. Age and formed-mass fractions."
+    "caption": "M2_97310 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/107362-M3_107362/M3_107362_executed.ipynb",
@@ -18421,8 +18421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107362-M3_107362/M3_107362_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-107362",
     "target": "M3_107362",
     "arm": "revised",
@@ -18431,7 +18431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107362-M3_107362/M3_107362_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-107362",
     "target": "M3_107362",
@@ -18451,7 +18451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107362-M3_107362/M3_107362_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-107362",
     "target": "M3_107362",
@@ -18481,7 +18481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107362-M3_107362/M3_107362_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-107362",
     "target": "M3_107362",
@@ -18491,13 +18491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107362-M3_107362/M3_107362_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-107362",
     "target": "M3_107362",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_107362 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_107362 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/109352-M3_109352/M3_109352_executed.ipynb",
@@ -18521,8 +18521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109352-M3_109352/M3_109352_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-109352",
     "target": "M3_109352",
     "arm": "revised",
@@ -18531,7 +18531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109352-M3_109352/M3_109352_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-109352",
     "target": "M3_109352",
@@ -18551,7 +18551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109352-M3_109352/M3_109352_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-109352",
     "target": "M3_109352",
@@ -18581,7 +18581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109352-M3_109352/M3_109352_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-109352",
     "target": "M3_109352",
@@ -18591,13 +18591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109352-M3_109352/M3_109352_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-109352",
     "target": "M3_109352",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_109352 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_109352 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/109713-M3_109713/M3_109713_executed.ipynb",
@@ -18621,8 +18621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109713-M3_109713/M3_109713_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-109713",
     "target": "M3_109713",
     "arm": "revised",
@@ -18631,7 +18631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109713-M3_109713/M3_109713_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-109713",
     "target": "M3_109713",
@@ -18651,7 +18651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109713-M3_109713/M3_109713_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-109713",
     "target": "M3_109713",
@@ -18681,7 +18681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109713-M3_109713/M3_109713_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-109713",
     "target": "M3_109713",
@@ -18691,13 +18691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109713-M3_109713/M3_109713_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-109713",
     "target": "M3_109713",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_109713 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_109713 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/109843-M3_109843/M3_109843_executed.ipynb",
@@ -18721,8 +18721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109843-M3_109843/M3_109843_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-109843",
     "target": "M3_109843",
     "arm": "revised",
@@ -18731,7 +18731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109843-M3_109843/M3_109843_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-109843",
     "target": "M3_109843",
@@ -18751,7 +18751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109843-M3_109843/M3_109843_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-109843",
     "target": "M3_109843",
@@ -18781,7 +18781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109843-M3_109843/M3_109843_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-109843",
     "target": "M3_109843",
@@ -18791,13 +18791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/109843-M3_109843/M3_109843_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-109843",
     "target": "M3_109843",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_109843 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_109843 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/111390-M3_111390/M3_111390_executed.ipynb",
@@ -18821,8 +18821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/111390-M3_111390/M3_111390_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-111390",
     "target": "M3_111390",
     "arm": "revised",
@@ -18831,7 +18831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/111390-M3_111390/M3_111390_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-111390",
     "target": "M3_111390",
@@ -18851,7 +18851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/111390-M3_111390/M3_111390_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-111390",
     "target": "M3_111390",
@@ -18881,7 +18881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/111390-M3_111390/M3_111390_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-111390",
     "target": "M3_111390",
@@ -18891,13 +18891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/111390-M3_111390/M3_111390_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-111390",
     "target": "M3_111390",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_111390 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_111390 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/117010-M3_117010/M3_117010_executed.ipynb",
@@ -18921,8 +18921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117010-M3_117010/M3_117010_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-117010",
     "target": "M3_117010",
     "arm": "revised",
@@ -18931,7 +18931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117010-M3_117010/M3_117010_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-117010",
     "target": "M3_117010",
@@ -18951,7 +18951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117010-M3_117010/M3_117010_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-117010",
     "target": "M3_117010",
@@ -18981,7 +18981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117010-M3_117010/M3_117010_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-117010",
     "target": "M3_117010",
@@ -18991,13 +18991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117010-M3_117010/M3_117010_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-117010",
     "target": "M3_117010",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_117010 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_117010 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/117694-M3_117694/M3_117694_executed.ipynb",
@@ -19021,8 +19021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117694-M3_117694/M3_117694_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-117694",
     "target": "M3_117694",
     "arm": "revised",
@@ -19031,7 +19031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117694-M3_117694/M3_117694_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-117694",
     "target": "M3_117694",
@@ -19051,7 +19051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117694-M3_117694/M3_117694_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-117694",
     "target": "M3_117694",
@@ -19081,7 +19081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117694-M3_117694/M3_117694_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-117694",
     "target": "M3_117694",
@@ -19091,13 +19091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117694-M3_117694/M3_117694_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-117694",
     "target": "M3_117694",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_117694 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_117694 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/119474-M3_119474/M3_119474_executed.ipynb",
@@ -19121,8 +19121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119474-M3_119474/M3_119474_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-119474",
     "target": "M3_119474",
     "arm": "revised",
@@ -19131,7 +19131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119474-M3_119474/M3_119474_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-119474",
     "target": "M3_119474",
@@ -19151,7 +19151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119474-M3_119474/M3_119474_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-119474",
     "target": "M3_119474",
@@ -19181,7 +19181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119474-M3_119474/M3_119474_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-119474",
     "target": "M3_119474",
@@ -19191,13 +19191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119474-M3_119474/M3_119474_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-119474",
     "target": "M3_119474",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_119474 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_119474 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/119802-M3_119802/M3_119802_executed.ipynb",
@@ -19221,8 +19221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119802-M3_119802/M3_119802_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-119802",
     "target": "M3_119802",
     "arm": "revised",
@@ -19231,7 +19231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119802-M3_119802/M3_119802_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-119802",
     "target": "M3_119802",
@@ -19251,7 +19251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119802-M3_119802/M3_119802_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-119802",
     "target": "M3_119802",
@@ -19281,7 +19281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119802-M3_119802/M3_119802_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-119802",
     "target": "M3_119802",
@@ -19291,13 +19291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119802-M3_119802/M3_119802_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-119802",
     "target": "M3_119802",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_119802 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_119802 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/119809-M3_119809/M3_119809_executed.ipynb",
@@ -19321,8 +19321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119809-M3_119809/M3_119809_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-119809",
     "target": "M3_119809",
     "arm": "revised",
@@ -19331,7 +19331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119809-M3_119809/M3_119809_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-119809",
     "target": "M3_119809",
@@ -19351,7 +19351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119809-M3_119809/M3_119809_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-119809",
     "target": "M3_119809",
@@ -19381,7 +19381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119809-M3_119809/M3_119809_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-119809",
     "target": "M3_119809",
@@ -19391,13 +19391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/119809-M3_119809/M3_119809_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-119809",
     "target": "M3_119809",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_119809 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_119809 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120308-M3_120308/M3_120308_executed.ipynb",
@@ -19421,8 +19421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120308-M3_120308/M3_120308_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-120308",
     "target": "M3_120308",
     "arm": "revised",
@@ -19431,7 +19431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120308-M3_120308/M3_120308_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-120308",
     "target": "M3_120308",
@@ -19451,7 +19451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120308-M3_120308/M3_120308_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-120308",
     "target": "M3_120308",
@@ -19481,7 +19481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120308-M3_120308/M3_120308_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-120308",
     "target": "M3_120308",
@@ -19491,13 +19491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120308-M3_120308/M3_120308_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-120308",
     "target": "M3_120308",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_120308 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_120308 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120540-M3_120540/M3_120540_executed.ipynb",
@@ -19521,8 +19521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120540-M3_120540/M3_120540_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m3-120540",
     "target": "M3_120540",
     "arm": "revised",
@@ -19531,7 +19531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120540-M3_120540/M3_120540_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m3-120540",
     "target": "M3_120540",
@@ -19551,7 +19551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120540-M3_120540/M3_120540_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m3-120540",
     "target": "M3_120540",
@@ -19581,7 +19581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120540-M3_120540/M3_120540_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m3-120540",
     "target": "M3_120540",
@@ -19591,13 +19591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120540-M3_120540/M3_120540_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m3-120540",
     "target": "M3_120540",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M3_120540 · revised settings. Age and formed-mass fractions."
+    "caption": "M3_120540 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/105474-M4_105474/M4_105474_executed.ipynb",
@@ -19621,8 +19621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/105474-M4_105474/M4_105474_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-105474",
     "target": "M4_105474",
     "arm": "revised",
@@ -19631,7 +19631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/105474-M4_105474/M4_105474_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-105474",
     "target": "M4_105474",
@@ -19651,7 +19651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/105474-M4_105474/M4_105474_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-105474",
     "target": "M4_105474",
@@ -19681,7 +19681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/105474-M4_105474/M4_105474_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-105474",
     "target": "M4_105474",
@@ -19691,13 +19691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/105474-M4_105474/M4_105474_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-105474",
     "target": "M4_105474",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_105474 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_105474 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/107370-M4_107370/M4_107370_executed.ipynb",
@@ -19721,8 +19721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107370-M4_107370/M4_107370_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-107370",
     "target": "M4_107370",
     "arm": "revised",
@@ -19731,7 +19731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107370-M4_107370/M4_107370_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-107370",
     "target": "M4_107370",
@@ -19751,7 +19751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107370-M4_107370/M4_107370_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-107370",
     "target": "M4_107370",
@@ -19781,7 +19781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107370-M4_107370/M4_107370_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-107370",
     "target": "M4_107370",
@@ -19791,13 +19791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107370-M4_107370/M4_107370_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-107370",
     "target": "M4_107370",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_107370 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_107370 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/107643-M4_107643/M4_107643_executed.ipynb",
@@ -19821,8 +19821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107643-M4_107643/M4_107643_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-107643",
     "target": "M4_107643",
     "arm": "revised",
@@ -19831,7 +19831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107643-M4_107643/M4_107643_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-107643",
     "target": "M4_107643",
@@ -19851,7 +19851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107643-M4_107643/M4_107643_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-107643",
     "target": "M4_107643",
@@ -19881,7 +19881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107643-M4_107643/M4_107643_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-107643",
     "target": "M4_107643",
@@ -19891,13 +19891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/107643-M4_107643/M4_107643_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-107643",
     "target": "M4_107643",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_107643 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_107643 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/108989-M4_108989/M4_108989_executed.ipynb",
@@ -19921,8 +19921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/108989-M4_108989/M4_108989_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-108989",
     "target": "M4_108989",
     "arm": "revised",
@@ -19931,7 +19931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/108989-M4_108989/M4_108989_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-108989",
     "target": "M4_108989",
@@ -19951,7 +19951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/108989-M4_108989/M4_108989_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-108989",
     "target": "M4_108989",
@@ -19981,7 +19981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/108989-M4_108989/M4_108989_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-108989",
     "target": "M4_108989",
@@ -19991,13 +19991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/108989-M4_108989/M4_108989_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-108989",
     "target": "M4_108989",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_108989 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_108989 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/112534-M4_112534/M4_112534_executed.ipynb",
@@ -20021,8 +20021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/112534-M4_112534/M4_112534_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-112534",
     "target": "M4_112534",
     "arm": "revised",
@@ -20031,7 +20031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/112534-M4_112534/M4_112534_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-112534",
     "target": "M4_112534",
@@ -20051,7 +20051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/112534-M4_112534/M4_112534_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-112534",
     "target": "M4_112534",
@@ -20081,7 +20081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/112534-M4_112534/M4_112534_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-112534",
     "target": "M4_112534",
@@ -20091,13 +20091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/112534-M4_112534/M4_112534_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-112534",
     "target": "M4_112534",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_112534 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_112534 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/117400-M4_117400/M4_117400_executed.ipynb",
@@ -20121,8 +20121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117400-M4_117400/M4_117400_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-117400",
     "target": "M4_117400",
     "arm": "revised",
@@ -20131,7 +20131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117400-M4_117400/M4_117400_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-117400",
     "target": "M4_117400",
@@ -20151,7 +20151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117400-M4_117400/M4_117400_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-117400",
     "target": "M4_117400",
@@ -20181,7 +20181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117400-M4_117400/M4_117400_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-117400",
     "target": "M4_117400",
@@ -20191,13 +20191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/117400-M4_117400/M4_117400_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-117400",
     "target": "M4_117400",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_117400 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_117400 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/123161-M4_123161/M4_123161_executed.ipynb",
@@ -20221,8 +20221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/123161-M4_123161/M4_123161_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-123161",
     "target": "M4_123161",
     "arm": "revised",
@@ -20231,7 +20231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/123161-M4_123161/M4_123161_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-123161",
     "target": "M4_123161",
@@ -20251,7 +20251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/123161-M4_123161/M4_123161_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-123161",
     "target": "M4_123161",
@@ -20281,7 +20281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/123161-M4_123161/M4_123161_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-123161",
     "target": "M4_123161",
@@ -20291,13 +20291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/123161-M4_123161/M4_123161_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-123161",
     "target": "M4_123161",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_123161 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_123161 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/124231-M4_124231/M4_124231_executed.ipynb",
@@ -20321,8 +20321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124231-M4_124231/M4_124231_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-124231",
     "target": "M4_124231",
     "arm": "revised",
@@ -20331,7 +20331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124231-M4_124231/M4_124231_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-124231",
     "target": "M4_124231",
@@ -20351,7 +20351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124231-M4_124231/M4_124231_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-124231",
     "target": "M4_124231",
@@ -20381,7 +20381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124231-M4_124231/M4_124231_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-124231",
     "target": "M4_124231",
@@ -20391,13 +20391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124231-M4_124231/M4_124231_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-124231",
     "target": "M4_124231",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_124231 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_124231 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/125213-M4_125213/M4_125213_executed.ipynb",
@@ -20421,8 +20421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/125213-M4_125213/M4_125213_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-125213",
     "target": "M4_125213",
     "arm": "revised",
@@ -20431,7 +20431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/125213-M4_125213/M4_125213_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-125213",
     "target": "M4_125213",
@@ -20451,7 +20451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/125213-M4_125213/M4_125213_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-125213",
     "target": "M4_125213",
@@ -20481,7 +20481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/125213-M4_125213/M4_125213_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-125213",
     "target": "M4_125213",
@@ -20491,13 +20491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/125213-M4_125213/M4_125213_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-125213",
     "target": "M4_125213",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_125213 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_125213 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/84337-M4_84337/M4_84337_executed.ipynb",
@@ -20521,8 +20521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/84337-M4_84337/M4_84337_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m4-84337",
     "target": "M4_84337",
     "arm": "revised",
@@ -20531,7 +20531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/84337-M4_84337/M4_84337_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m4-84337",
     "target": "M4_84337",
@@ -20551,7 +20551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/84337-M4_84337/M4_84337_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m4-84337",
     "target": "M4_84337",
@@ -20581,7 +20581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/84337-M4_84337/M4_84337_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m4-84337",
     "target": "M4_84337",
@@ -20591,13 +20591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/84337-M4_84337/M4_84337_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m4-84337",
     "target": "M4_84337",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M4_84337 · revised settings. Age and formed-mass fractions."
+    "caption": "M4_84337 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/127946-M5_127946/M5_127946_executed.ipynb",
@@ -20621,8 +20621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/127946-M5_127946/M5_127946_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-127946",
     "target": "M5_127946",
     "arm": "revised",
@@ -20631,7 +20631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/127946-M5_127946/M5_127946_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-127946",
     "target": "M5_127946",
@@ -20651,7 +20651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/127946-M5_127946/M5_127946_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-127946",
     "target": "M5_127946",
@@ -20681,7 +20681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/127946-M5_127946/M5_127946_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-127946",
     "target": "M5_127946",
@@ -20691,13 +20691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/127946-M5_127946/M5_127946_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-127946",
     "target": "M5_127946",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_127946 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_127946 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/128311-M5_128311/M5_128311_executed.ipynb",
@@ -20721,8 +20721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/128311-M5_128311/M5_128311_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-128311",
     "target": "M5_128311",
     "arm": "revised",
@@ -20731,7 +20731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/128311-M5_128311/M5_128311_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-128311",
     "target": "M5_128311",
@@ -20751,7 +20751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/128311-M5_128311/M5_128311_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-128311",
     "target": "M5_128311",
@@ -20781,7 +20781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/128311-M5_128311/M5_128311_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-128311",
     "target": "M5_128311",
@@ -20791,13 +20791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/128311-M5_128311/M5_128311_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-128311",
     "target": "M5_128311",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_128311 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_128311 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/165871-M5_165871/M5_165871_executed.ipynb",
@@ -20821,8 +20821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/165871-M5_165871/M5_165871_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-165871",
     "target": "M5_165871",
     "arm": "revised",
@@ -20831,7 +20831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/165871-M5_165871/M5_165871_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-165871",
     "target": "M5_165871",
@@ -20851,7 +20851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/165871-M5_165871/M5_165871_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-165871",
     "target": "M5_165871",
@@ -20881,7 +20881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/165871-M5_165871/M5_165871_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-165871",
     "target": "M5_165871",
@@ -20891,13 +20891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/165871-M5_165871/M5_165871_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-165871",
     "target": "M5_165871",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_165871 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_165871 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/167056-M5_167056/M5_167056_executed.ipynb",
@@ -20921,8 +20921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/167056-M5_167056/M5_167056_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-167056",
     "target": "M5_167056",
     "arm": "revised",
@@ -20931,7 +20931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/167056-M5_167056/M5_167056_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-167056",
     "target": "M5_167056",
@@ -20951,7 +20951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/167056-M5_167056/M5_167056_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-167056",
     "target": "M5_167056",
@@ -20981,7 +20981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/167056-M5_167056/M5_167056_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-167056",
     "target": "M5_167056",
@@ -20991,13 +20991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/167056-M5_167056/M5_167056_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-167056",
     "target": "M5_167056",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_167056 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_167056 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/172669-M5_172669/M5_172669_executed.ipynb",
@@ -21021,8 +21021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/172669-M5_172669/M5_172669_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-172669",
     "target": "M5_172669",
     "arm": "revised",
@@ -21031,7 +21031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/172669-M5_172669/M5_172669_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-172669",
     "target": "M5_172669",
@@ -21051,7 +21051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/172669-M5_172669/M5_172669_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-172669",
     "target": "M5_172669",
@@ -21081,7 +21081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/172669-M5_172669/M5_172669_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-172669",
     "target": "M5_172669",
@@ -21091,13 +21091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/172669-M5_172669/M5_172669_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-172669",
     "target": "M5_172669",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_172669 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_172669 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/173928-M5_173928/M5_173928_executed.ipynb",
@@ -21121,8 +21121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/173928-M5_173928/M5_173928_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-173928",
     "target": "M5_173928",
     "arm": "revised",
@@ -21131,7 +21131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/173928-M5_173928/M5_173928_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-173928",
     "target": "M5_173928",
@@ -21151,7 +21151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/173928-M5_173928/M5_173928_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-173928",
     "target": "M5_173928",
@@ -21181,7 +21181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/173928-M5_173928/M5_173928_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-173928",
     "target": "M5_173928",
@@ -21191,13 +21191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/173928-M5_173928/M5_173928_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-173928",
     "target": "M5_173928",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_173928 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_173928 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/205715-M5_205715/M5_205715_executed.ipynb",
@@ -21221,8 +21221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205715-M5_205715/M5_205715_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-205715",
     "target": "M5_205715",
     "arm": "revised",
@@ -21231,7 +21231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205715-M5_205715/M5_205715_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-205715",
     "target": "M5_205715",
@@ -21251,7 +21251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205715-M5_205715/M5_205715_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-205715",
     "target": "M5_205715",
@@ -21281,7 +21281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205715-M5_205715/M5_205715_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-205715",
     "target": "M5_205715",
@@ -21291,13 +21291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205715-M5_205715/M5_205715_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-205715",
     "target": "M5_205715",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_205715 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_205715 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/205765-M5_205765/M5_205765_executed.ipynb",
@@ -21321,8 +21321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205765-M5_205765/M5_205765_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-205765",
     "target": "M5_205765",
     "arm": "revised",
@@ -21331,7 +21331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205765-M5_205765/M5_205765_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-205765",
     "target": "M5_205765",
@@ -21351,7 +21351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205765-M5_205765/M5_205765_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-205765",
     "target": "M5_205765",
@@ -21381,7 +21381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205765-M5_205765/M5_205765_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-205765",
     "target": "M5_205765",
@@ -21391,13 +21391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/205765-M5_205765/M5_205765_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-205765",
     "target": "M5_205765",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_205765 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_205765 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206771-M5_206771/M5_206771_executed.ipynb",
@@ -21421,8 +21421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206771-M5_206771/M5_206771_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-206771",
     "target": "M5_206771",
     "arm": "revised",
@@ -21431,7 +21431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206771-M5_206771/M5_206771_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-206771",
     "target": "M5_206771",
@@ -21451,7 +21451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206771-M5_206771/M5_206771_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-206771",
     "target": "M5_206771",
@@ -21481,7 +21481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206771-M5_206771/M5_206771_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-206771",
     "target": "M5_206771",
@@ -21491,13 +21491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/206771-M5_206771/M5_206771_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-206771",
     "target": "M5_206771",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_206771 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_206771 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/211347-M5_211347/M5_211347_executed.ipynb",
@@ -21521,8 +21521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211347-M5_211347/M5_211347_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-211347",
     "target": "M5_211347",
     "arm": "revised",
@@ -21531,7 +21531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211347-M5_211347/M5_211347_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-211347",
     "target": "M5_211347",
@@ -21551,7 +21551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211347-M5_211347/M5_211347_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-211347",
     "target": "M5_211347",
@@ -21581,7 +21581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211347-M5_211347/M5_211347_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-211347",
     "target": "M5_211347",
@@ -21591,13 +21591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211347-M5_211347/M5_211347_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-211347",
     "target": "M5_211347",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_211347 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_211347 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/211767-M5_211767/M5_211767_executed.ipynb",
@@ -21621,8 +21621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211767-M5_211767/M5_211767_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-211767",
     "target": "M5_211767",
     "arm": "revised",
@@ -21631,7 +21631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211767-M5_211767/M5_211767_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-211767",
     "target": "M5_211767",
@@ -21651,7 +21651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211767-M5_211767/M5_211767_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-211767",
     "target": "M5_211767",
@@ -21681,7 +21681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211767-M5_211767/M5_211767_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-211767",
     "target": "M5_211767",
@@ -21691,13 +21691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/211767-M5_211767/M5_211767_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-211767",
     "target": "M5_211767",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_211767 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_211767 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/236682-M5_236682/M5_236682_executed.ipynb",
@@ -21721,8 +21721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236682-M5_236682/M5_236682_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-236682",
     "target": "M5_236682",
     "arm": "revised",
@@ -21731,7 +21731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236682-M5_236682/M5_236682_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-236682",
     "target": "M5_236682",
@@ -21751,7 +21751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236682-M5_236682/M5_236682_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-236682",
     "target": "M5_236682",
@@ -21781,7 +21781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236682-M5_236682/M5_236682_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-236682",
     "target": "M5_236682",
@@ -21791,13 +21791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236682-M5_236682/M5_236682_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-236682",
     "target": "M5_236682",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_236682 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_236682 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/236994-M5_236994/M5_236994_executed.ipynb",
@@ -21821,8 +21821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236994-M5_236994/M5_236994_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-236994",
     "target": "M5_236994",
     "arm": "revised",
@@ -21831,7 +21831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236994-M5_236994/M5_236994_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-236994",
     "target": "M5_236994",
@@ -21851,7 +21851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236994-M5_236994/M5_236994_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-236994",
     "target": "M5_236994",
@@ -21881,7 +21881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236994-M5_236994/M5_236994_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-236994",
     "target": "M5_236994",
@@ -21891,13 +21891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/236994-M5_236994/M5_236994_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-236994",
     "target": "M5_236994",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_236994 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_236994 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/238314-M5_238314/M5_238314_executed.ipynb",
@@ -21921,8 +21921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238314-M5_238314/M5_238314_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-238314",
     "target": "M5_238314",
     "arm": "revised",
@@ -21931,7 +21931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238314-M5_238314/M5_238314_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-238314",
     "target": "M5_238314",
@@ -21951,7 +21951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238314-M5_238314/M5_238314_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-238314",
     "target": "M5_238314",
@@ -21981,7 +21981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238314-M5_238314/M5_238314_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-238314",
     "target": "M5_238314",
@@ -21991,13 +21991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238314-M5_238314/M5_238314_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-238314",
     "target": "M5_238314",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_238314 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_238314 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/238580-M5_238580/M5_238580_executed.ipynb",
@@ -22021,8 +22021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238580-M5_238580/M5_238580_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-238580",
     "target": "M5_238580",
     "arm": "revised",
@@ -22031,7 +22031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238580-M5_238580/M5_238580_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-238580",
     "target": "M5_238580",
@@ -22051,7 +22051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238580-M5_238580/M5_238580_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-238580",
     "target": "M5_238580",
@@ -22081,7 +22081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238580-M5_238580/M5_238580_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-238580",
     "target": "M5_238580",
@@ -22091,13 +22091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/238580-M5_238580/M5_238580_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-238580",
     "target": "M5_238580",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_238580 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_238580 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22121,8 +22121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m5-241189",
     "target": "M5_241189",
     "arm": "revised",
@@ -22131,7 +22131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m5-241189",
     "target": "M5_241189",
@@ -22151,7 +22151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m5-241189",
     "target": "M5_241189",
@@ -22181,7 +22181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m5-241189",
     "target": "M5_241189",
@@ -22191,13 +22191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m5-241189",
     "target": "M5_241189",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_241189 · revised settings. Age and formed-mass fractions."
+    "caption": "M5_241189 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22221,8 +22221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m6-166634",
     "target": "M6_166634",
     "arm": "revised",
@@ -22231,7 +22231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m6-166634",
     "target": "M6_166634",
@@ -22251,7 +22251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m6-166634",
     "target": "M6_166634",
@@ -22281,7 +22281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m6-166634",
     "target": "M6_166634",
@@ -22291,13 +22291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m6-166634",
     "target": "M6_166634",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_166634 · revised settings. Age and formed-mass fractions."
+    "caption": "M6_166634 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22321,8 +22321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m6-233902",
     "target": "M6_233902",
     "arm": "revised",
@@ -22331,7 +22331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m6-233902",
     "target": "M6_233902",
@@ -22351,7 +22351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m6-233902",
     "target": "M6_233902",
@@ -22381,7 +22381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m6-233902",
     "target": "M6_233902",
@@ -22391,13 +22391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m6-233902",
     "target": "M6_233902",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_233902 · revised settings. Age and formed-mass fractions."
+    "caption": "M6_233902 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22421,8 +22421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m6-237437",
     "target": "M6_237437",
     "arm": "revised",
@@ -22431,7 +22431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m6-237437",
     "target": "M6_237437",
@@ -22451,7 +22451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m6-237437",
     "target": "M6_237437",
@@ -22481,7 +22481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m6-237437",
     "target": "M6_237437",
@@ -22491,13 +22491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m6-237437",
     "target": "M6_237437",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_237437 · revised settings. Age and formed-mass fractions."
+    "caption": "M6_237437 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22521,8 +22521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m6-237641",
     "target": "M6_237641",
     "arm": "revised",
@@ -22531,7 +22531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m6-237641",
     "target": "M6_237641",
@@ -22551,7 +22551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m6-237641",
     "target": "M6_237641",
@@ -22581,7 +22581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m6-237641",
     "target": "M6_237641",
@@ -22591,13 +22591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m6-237641",
     "target": "M6_237641",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_237641 · revised settings. Age and formed-mass fractions."
+    "caption": "M6_237641 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22621,8 +22621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m6-240899",
     "target": "M6_240899",
     "arm": "revised",
@@ -22631,7 +22631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m6-240899",
     "target": "M6_240899",
@@ -22651,7 +22651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m6-240899",
     "target": "M6_240899",
@@ -22681,7 +22681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m6-240899",
     "target": "M6_240899",
@@ -22691,13 +22691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m6-240899",
     "target": "M6_240899",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_240899 · revised settings. Age and formed-mass fractions."
+    "caption": "M6_240899 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22721,8 +22721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-113852",
     "target": "M7_113852",
     "arm": "revised",
@@ -22731,7 +22731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-113852",
     "target": "M7_113852",
@@ -22751,7 +22751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-113852",
     "target": "M7_113852",
@@ -22781,7 +22781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-113852",
     "target": "M7_113852",
@@ -22791,13 +22791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-113852",
     "target": "M7_113852",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_113852 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_113852 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22821,8 +22821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-120372",
     "target": "M7_120372",
     "arm": "revised",
@@ -22831,7 +22831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-120372",
     "target": "M7_120372",
@@ -22851,7 +22851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-120372",
     "target": "M7_120372",
@@ -22881,7 +22881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-120372",
     "target": "M7_120372",
@@ -22891,13 +22891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-120372",
     "target": "M7_120372",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_120372 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_120372 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22921,8 +22921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-120488",
     "target": "M7_120488",
     "arm": "revised",
@@ -22931,7 +22931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-120488",
     "target": "M7_120488",
@@ -22951,7 +22951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-120488",
     "target": "M7_120488",
@@ -22981,7 +22981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-120488",
     "target": "M7_120488",
@@ -22991,13 +22991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-120488",
     "target": "M7_120488",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_120488 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_120488 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23021,8 +23021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-120758",
     "target": "M7_120758",
     "arm": "revised",
@@ -23031,7 +23031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-120758",
     "target": "M7_120758",
@@ -23051,7 +23051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-120758",
     "target": "M7_120758",
@@ -23081,7 +23081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-120758",
     "target": "M7_120758",
@@ -23091,13 +23091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-120758",
     "target": "M7_120758",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_120758 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_120758 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23121,8 +23121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-121482",
     "target": "M7_121482",
     "arm": "revised",
@@ -23131,7 +23131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-121482",
     "target": "M7_121482",
@@ -23151,7 +23151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-121482",
     "target": "M7_121482",
@@ -23181,7 +23181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-121482",
     "target": "M7_121482",
@@ -23191,13 +23191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-121482",
     "target": "M7_121482",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_121482 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_121482 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23221,8 +23221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-122025",
     "target": "M7_122025",
     "arm": "revised",
@@ -23231,7 +23231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-122025",
     "target": "M7_122025",
@@ -23251,7 +23251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-122025",
     "target": "M7_122025",
@@ -23281,7 +23281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-122025",
     "target": "M7_122025",
@@ -23291,13 +23291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-122025",
     "target": "M7_122025",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_122025 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_122025 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23321,8 +23321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-122242",
     "target": "M7_122242",
     "arm": "revised",
@@ -23331,7 +23331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-122242",
     "target": "M7_122242",
@@ -23351,7 +23351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-122242",
     "target": "M7_122242",
@@ -23381,7 +23381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-122242",
     "target": "M7_122242",
@@ -23391,13 +23391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-122242",
     "target": "M7_122242",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_122242 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_122242 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23421,8 +23421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-124875",
     "target": "M7_124875",
     "arm": "revised",
@@ -23431,7 +23431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-124875",
     "target": "M7_124875",
@@ -23451,7 +23451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-124875",
     "target": "M7_124875",
@@ -23481,7 +23481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-124875",
     "target": "M7_124875",
@@ -23491,13 +23491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-124875",
     "target": "M7_124875",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_124875 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_124875 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23521,8 +23521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-143127",
     "target": "M7_143127",
     "arm": "revised",
@@ -23531,7 +23531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-143127",
     "target": "M7_143127",
@@ -23551,7 +23551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-143127",
     "target": "M7_143127",
@@ -23581,7 +23581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-143127",
     "target": "M7_143127",
@@ -23591,13 +23591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-143127",
     "target": "M7_143127",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_143127 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_143127 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23621,8 +23621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-146213",
     "target": "M7_146213",
     "arm": "revised",
@@ -23631,7 +23631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-146213",
     "target": "M7_146213",
@@ -23651,7 +23651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-146213",
     "target": "M7_146213",
@@ -23681,7 +23681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-146213",
     "target": "M7_146213",
@@ -23691,13 +23691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-146213",
     "target": "M7_146213",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_146213 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_146213 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/147270-M7_147270/M7_147270_executed.ipynb",
@@ -23721,8 +23721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147270-M7_147270/M7_147270_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-147270",
     "target": "M7_147270",
     "arm": "revised",
@@ -23731,7 +23731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147270-M7_147270/M7_147270_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-147270",
     "target": "M7_147270",
@@ -23751,7 +23751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147270-M7_147270/M7_147270_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-147270",
     "target": "M7_147270",
@@ -23781,7 +23781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147270-M7_147270/M7_147270_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-147270",
     "target": "M7_147270",
@@ -23791,13 +23791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147270-M7_147270/M7_147270_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-147270",
     "target": "M7_147270",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_147270 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_147270 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/147849-M7_147849/M7_147849_executed.ipynb",
@@ -23821,8 +23821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147849-M7_147849/M7_147849_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-147849",
     "target": "M7_147849",
     "arm": "revised",
@@ -23831,7 +23831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147849-M7_147849/M7_147849_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-147849",
     "target": "M7_147849",
@@ -23851,7 +23851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147849-M7_147849/M7_147849_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-147849",
     "target": "M7_147849",
@@ -23881,7 +23881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147849-M7_147849/M7_147849_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-147849",
     "target": "M7_147849",
@@ -23891,13 +23891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147849-M7_147849/M7_147849_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-147849",
     "target": "M7_147849",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_147849 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_147849 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/152125-M7_152125/M7_152125_executed.ipynb",
@@ -23921,8 +23921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/152125-M7_152125/M7_152125_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-152125",
     "target": "M7_152125",
     "arm": "revised",
@@ -23931,7 +23931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/152125-M7_152125/M7_152125_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-152125",
     "target": "M7_152125",
@@ -23951,7 +23951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/152125-M7_152125/M7_152125_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-152125",
     "target": "M7_152125",
@@ -23981,7 +23981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/152125-M7_152125/M7_152125_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-152125",
     "target": "M7_152125",
@@ -23991,13 +23991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/152125-M7_152125/M7_152125_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-152125",
     "target": "M7_152125",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_152125 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_152125 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/162587-M7_162587/M7_162587_executed.ipynb",
@@ -24021,8 +24021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162587-M7_162587/M7_162587_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m7-162587",
     "target": "M7_162587",
     "arm": "revised",
@@ -24031,7 +24031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162587-M7_162587/M7_162587_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m7-162587",
     "target": "M7_162587",
@@ -24051,7 +24051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162587-M7_162587/M7_162587_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m7-162587",
     "target": "M7_162587",
@@ -24081,7 +24081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162587-M7_162587/M7_162587_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m7-162587",
     "target": "M7_162587",
@@ -24091,13 +24091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162587-M7_162587/M7_162587_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m7-162587",
     "target": "M7_162587",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_162587 · revised settings. Age and formed-mass fractions."
+    "caption": "M7_162587 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/145276-M8_145276/M8_145276_executed.ipynb",
@@ -24121,8 +24121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/145276-M8_145276/M8_145276_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-145276",
     "target": "M8_145276",
     "arm": "revised",
@@ -24131,7 +24131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/145276-M8_145276/M8_145276_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-145276",
     "target": "M8_145276",
@@ -24151,7 +24151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/145276-M8_145276/M8_145276_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-145276",
     "target": "M8_145276",
@@ -24181,7 +24181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/145276-M8_145276/M8_145276_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-145276",
     "target": "M8_145276",
@@ -24191,13 +24191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/145276-M8_145276/M8_145276_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-145276",
     "target": "M8_145276",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_145276 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_145276 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/147539-M8_147539/M8_147539_executed.ipynb",
@@ -24221,8 +24221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147539-M8_147539/M8_147539_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-147539",
     "target": "M8_147539",
     "arm": "revised",
@@ -24231,7 +24231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147539-M8_147539/M8_147539_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-147539",
     "target": "M8_147539",
@@ -24251,7 +24251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147539-M8_147539/M8_147539_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-147539",
     "target": "M8_147539",
@@ -24281,7 +24281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147539-M8_147539/M8_147539_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-147539",
     "target": "M8_147539",
@@ -24291,13 +24291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/147539-M8_147539/M8_147539_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-147539",
     "target": "M8_147539",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_147539 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_147539 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/148698-M8_148698/M8_148698_executed.ipynb",
@@ -24321,8 +24321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/148698-M8_148698/M8_148698_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-148698",
     "target": "M8_148698",
     "arm": "revised",
@@ -24331,7 +24331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/148698-M8_148698/M8_148698_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-148698",
     "target": "M8_148698",
@@ -24351,7 +24351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/148698-M8_148698/M8_148698_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-148698",
     "target": "M8_148698",
@@ -24381,7 +24381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/148698-M8_148698/M8_148698_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-148698",
     "target": "M8_148698",
@@ -24391,13 +24391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/148698-M8_148698/M8_148698_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-148698",
     "target": "M8_148698",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_148698 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_148698 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/150848-M8_150848/M8_150848_executed.ipynb",
@@ -24421,8 +24421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/150848-M8_150848/M8_150848_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-150848",
     "target": "M8_150848",
     "arm": "revised",
@@ -24431,7 +24431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/150848-M8_150848/M8_150848_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-150848",
     "target": "M8_150848",
@@ -24451,7 +24451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/150848-M8_150848/M8_150848_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-150848",
     "target": "M8_150848",
@@ -24481,7 +24481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/150848-M8_150848/M8_150848_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-150848",
     "target": "M8_150848",
@@ -24491,13 +24491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/150848-M8_150848/M8_150848_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-150848",
     "target": "M8_150848",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_150848 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_150848 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/156118-M8_156118/M8_156118_executed.ipynb",
@@ -24521,8 +24521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/156118-M8_156118/M8_156118_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-156118",
     "target": "M8_156118",
     "arm": "revised",
@@ -24531,7 +24531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/156118-M8_156118/M8_156118_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-156118",
     "target": "M8_156118",
@@ -24551,7 +24551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/156118-M8_156118/M8_156118_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-156118",
     "target": "M8_156118",
@@ -24581,7 +24581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/156118-M8_156118/M8_156118_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-156118",
     "target": "M8_156118",
@@ -24591,13 +24591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/156118-M8_156118/M8_156118_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-156118",
     "target": "M8_156118",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_156118 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_156118 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/160400-M8_160400/M8_160400_executed.ipynb",
@@ -24621,8 +24621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/160400-M8_160400/M8_160400_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-160400",
     "target": "M8_160400",
     "arm": "revised",
@@ -24631,7 +24631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/160400-M8_160400/M8_160400_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-160400",
     "target": "M8_160400",
@@ -24651,7 +24651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/160400-M8_160400/M8_160400_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-160400",
     "target": "M8_160400",
@@ -24681,7 +24681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/160400-M8_160400/M8_160400_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-160400",
     "target": "M8_160400",
@@ -24691,13 +24691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/160400-M8_160400/M8_160400_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-160400",
     "target": "M8_160400",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_160400 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_160400 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/161113-M8_161113/M8_161113_executed.ipynb",
@@ -24721,8 +24721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161113-M8_161113/M8_161113_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-161113",
     "target": "M8_161113",
     "arm": "revised",
@@ -24731,7 +24731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161113-M8_161113/M8_161113_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-161113",
     "target": "M8_161113",
@@ -24751,7 +24751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161113-M8_161113/M8_161113_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-161113",
     "target": "M8_161113",
@@ -24781,7 +24781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161113-M8_161113/M8_161113_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-161113",
     "target": "M8_161113",
@@ -24791,13 +24791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161113-M8_161113/M8_161113_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-161113",
     "target": "M8_161113",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_161113 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_161113 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/161346-M8_161346/M8_161346_executed.ipynb",
@@ -24821,8 +24821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161346-M8_161346/M8_161346_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-161346",
     "target": "M8_161346",
     "arm": "revised",
@@ -24831,7 +24831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161346-M8_161346/M8_161346_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-161346",
     "target": "M8_161346",
@@ -24851,7 +24851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161346-M8_161346/M8_161346_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-161346",
     "target": "M8_161346",
@@ -24881,7 +24881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161346-M8_161346/M8_161346_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-161346",
     "target": "M8_161346",
@@ -24891,13 +24891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/161346-M8_161346/M8_161346_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-161346",
     "target": "M8_161346",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_161346 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_161346 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/162149-M8_162149/M8_162149_executed.ipynb",
@@ -24921,8 +24921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162149-M8_162149/M8_162149_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-162149",
     "target": "M8_162149",
     "arm": "revised",
@@ -24931,7 +24931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162149-M8_162149/M8_162149_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-162149",
     "target": "M8_162149",
@@ -24951,7 +24951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162149-M8_162149/M8_162149_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-162149",
     "target": "M8_162149",
@@ -24981,7 +24981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162149-M8_162149/M8_162149_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-162149",
     "target": "M8_162149",
@@ -24991,13 +24991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/162149-M8_162149/M8_162149_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-162149",
     "target": "M8_162149",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_162149 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_162149 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/163989-M8_163989/M8_163989_executed.ipynb",
@@ -25021,8 +25021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/163989-M8_163989/M8_163989_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m8-163989",
     "target": "M8_163989",
     "arm": "revised",
@@ -25031,7 +25031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/163989-M8_163989/M8_163989_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m8-163989",
     "target": "M8_163989",
@@ -25051,7 +25051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/163989-M8_163989/M8_163989_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m8-163989",
     "target": "M8_163989",
@@ -25081,7 +25081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/163989-M8_163989/M8_163989_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m8-163989",
     "target": "M8_163989",
@@ -25091,13 +25091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/163989-M8_163989/M8_163989_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m8-163989",
     "target": "M8_163989",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M8_163989 · revised settings. Age and formed-mass fractions."
+    "caption": "M8_163989 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/212391-M9_212391/M9_212391_executed.ipynb",
@@ -25121,8 +25121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212391-M9_212391/M9_212391_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-212391",
     "target": "M9_212391",
     "arm": "revised",
@@ -25131,7 +25131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212391-M9_212391/M9_212391_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-212391",
     "target": "M9_212391",
@@ -25151,7 +25151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212391-M9_212391/M9_212391_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-212391",
     "target": "M9_212391",
@@ -25181,7 +25181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212391-M9_212391/M9_212391_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-212391",
     "target": "M9_212391",
@@ -25191,13 +25191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/212391-M9_212391/M9_212391_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-212391",
     "target": "M9_212391",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_212391 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_212391 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/213587-M9_213587/M9_213587_executed.ipynb",
@@ -25221,8 +25221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213587-M9_213587/M9_213587_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-213587",
     "target": "M9_213587",
     "arm": "revised",
@@ -25231,7 +25231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213587-M9_213587/M9_213587_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-213587",
     "target": "M9_213587",
@@ -25251,7 +25251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213587-M9_213587/M9_213587_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-213587",
     "target": "M9_213587",
@@ -25281,7 +25281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213587-M9_213587/M9_213587_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-213587",
     "target": "M9_213587",
@@ -25291,13 +25291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/213587-M9_213587/M9_213587_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-213587",
     "target": "M9_213587",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_213587 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_213587 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/214899-M9_214899/M9_214899_executed.ipynb",
@@ -25321,8 +25321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214899-M9_214899/M9_214899_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-214899",
     "target": "M9_214899",
     "arm": "revised",
@@ -25331,7 +25331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214899-M9_214899/M9_214899_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-214899",
     "target": "M9_214899",
@@ -25351,7 +25351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214899-M9_214899/M9_214899_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-214899",
     "target": "M9_214899",
@@ -25381,7 +25381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214899-M9_214899/M9_214899_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-214899",
     "target": "M9_214899",
@@ -25391,13 +25391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/214899-M9_214899/M9_214899_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-214899",
     "target": "M9_214899",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_214899 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_214899 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/218701-M9_218701/M9_218701_executed.ipynb",
@@ -25421,8 +25421,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218701-M9_218701/M9_218701_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-218701",
     "target": "M9_218701",
     "arm": "revised",
@@ -25431,7 +25431,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218701-M9_218701/M9_218701_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-218701",
     "target": "M9_218701",
@@ -25451,7 +25451,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218701-M9_218701/M9_218701_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-218701",
     "target": "M9_218701",
@@ -25481,7 +25481,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218701-M9_218701/M9_218701_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-218701",
     "target": "M9_218701",
@@ -25491,13 +25491,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/218701-M9_218701/M9_218701_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-218701",
     "target": "M9_218701",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_218701 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_218701 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/225431-M9_225431/M9_225431_executed.ipynb",
@@ -25521,8 +25521,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225431-M9_225431/M9_225431_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-225431",
     "target": "M9_225431",
     "arm": "revised",
@@ -25531,7 +25531,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225431-M9_225431/M9_225431_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-225431",
     "target": "M9_225431",
@@ -25551,7 +25551,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225431-M9_225431/M9_225431_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-225431",
     "target": "M9_225431",
@@ -25581,7 +25581,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225431-M9_225431/M9_225431_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-225431",
     "target": "M9_225431",
@@ -25591,13 +25591,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225431-M9_225431/M9_225431_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-225431",
     "target": "M9_225431",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_225431 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_225431 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/225678-M9_225678/M9_225678_executed.ipynb",
@@ -25621,8 +25621,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225678-M9_225678/M9_225678_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-225678",
     "target": "M9_225678",
     "arm": "revised",
@@ -25631,7 +25631,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225678-M9_225678/M9_225678_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-225678",
     "target": "M9_225678",
@@ -25651,7 +25651,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225678-M9_225678/M9_225678_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-225678",
     "target": "M9_225678",
@@ -25681,7 +25681,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225678-M9_225678/M9_225678_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-225678",
     "target": "M9_225678",
@@ -25691,13 +25691,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/225678-M9_225678/M9_225678_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-225678",
     "target": "M9_225678",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_225678 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_225678 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/226316-M9_226316/M9_226316_executed.ipynb",
@@ -25721,8 +25721,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226316-M9_226316/M9_226316_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-226316",
     "target": "M9_226316",
     "arm": "revised",
@@ -25731,7 +25731,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226316-M9_226316/M9_226316_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-226316",
     "target": "M9_226316",
@@ -25751,7 +25751,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226316-M9_226316/M9_226316_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-226316",
     "target": "M9_226316",
@@ -25781,7 +25781,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226316-M9_226316/M9_226316_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-226316",
     "target": "M9_226316",
@@ -25791,13 +25791,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/226316-M9_226316/M9_226316_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-226316",
     "target": "M9_226316",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_226316 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_226316 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/227630-M9_227630/M9_227630_executed.ipynb",
@@ -25821,8 +25821,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227630-M9_227630/M9_227630_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-227630",
     "target": "M9_227630",
     "arm": "revised",
@@ -25831,7 +25831,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227630-M9_227630/M9_227630_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-227630",
     "target": "M9_227630",
@@ -25851,7 +25851,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227630-M9_227630/M9_227630_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-227630",
     "target": "M9_227630",
@@ -25881,7 +25881,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227630-M9_227630/M9_227630_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-227630",
     "target": "M9_227630",
@@ -25891,13 +25891,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/227630-M9_227630/M9_227630_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-227630",
     "target": "M9_227630",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_227630 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_227630 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/229883-M9_229883/M9_229883_executed.ipynb",
@@ -25921,8 +25921,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229883-M9_229883/M9_229883_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-229883",
     "target": "M9_229883",
     "arm": "revised",
@@ -25931,7 +25931,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229883-M9_229883/M9_229883_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-229883",
     "target": "M9_229883",
@@ -25951,7 +25951,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229883-M9_229883/M9_229883_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-229883",
     "target": "M9_229883",
@@ -25981,7 +25981,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229883-M9_229883/M9_229883_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-229883",
     "target": "M9_229883",
@@ -25991,13 +25991,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/229883-M9_229883/M9_229883_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-229883",
     "target": "M9_229883",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_229883 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_229883 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/231276-M9_231276/M9_231276_executed.ipynb",
@@ -26021,8 +26021,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231276-M9_231276/M9_231276_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-231276",
     "target": "M9_231276",
     "arm": "revised",
@@ -26031,7 +26031,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231276-M9_231276/M9_231276_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-231276",
     "target": "M9_231276",
@@ -26051,7 +26051,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231276-M9_231276/M9_231276_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-231276",
     "target": "M9_231276",
@@ -26081,7 +26081,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231276-M9_231276/M9_231276_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-231276",
     "target": "M9_231276",
@@ -26091,13 +26091,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/231276-M9_231276/M9_231276_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-231276",
     "target": "M9_231276",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_231276 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_231276 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/232005-M9_232005/M9_232005_executed.ipynb",
@@ -26121,8 +26121,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232005-M9_232005/M9_232005_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-232005",
     "target": "M9_232005",
     "arm": "revised",
@@ -26131,7 +26131,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232005-M9_232005/M9_232005_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-232005",
     "target": "M9_232005",
@@ -26151,7 +26151,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232005-M9_232005/M9_232005_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-232005",
     "target": "M9_232005",
@@ -26181,7 +26181,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232005-M9_232005/M9_232005_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-232005",
     "target": "M9_232005",
@@ -26191,13 +26191,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232005-M9_232005/M9_232005_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-232005",
     "target": "M9_232005",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_232005 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_232005 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/232890-M9_232890/M9_232890_executed.ipynb",
@@ -26221,8 +26221,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232890-M9_232890/M9_232890_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-232890",
     "target": "M9_232890",
     "arm": "revised",
@@ -26231,7 +26231,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232890-M9_232890/M9_232890_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-232890",
     "target": "M9_232890",
@@ -26251,7 +26251,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232890-M9_232890/M9_232890_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-232890",
     "target": "M9_232890",
@@ -26281,7 +26281,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232890-M9_232890/M9_232890_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-232890",
     "target": "M9_232890",
@@ -26291,13 +26291,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/232890-M9_232890/M9_232890_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-232890",
     "target": "M9_232890",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_232890 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_232890 · revised settings. Dust and SFH-ratio posterior."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/233169-M9_233169/M9_233169_executed.ipynb",
@@ -26321,8 +26321,8 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233169-M9_233169/M9_233169_executed.ipynb",
-    "cell": 26,
-    "output": 0,
+    "cell": 14,
+    "output": 2,
     "run": "m9-233169",
     "target": "M9_233169",
     "arm": "revised",
@@ -26331,7 +26331,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233169-M9_233169/M9_233169_executed.ipynb",
-    "cell": 24,
+    "cell": 14,
     "output": 1,
     "run": "m9-233169",
     "target": "M9_233169",
@@ -26351,7 +26351,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233169-M9_233169/M9_233169_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 3,
     "run": "m9-233169",
     "target": "M9_233169",
@@ -26381,7 +26381,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233169-M9_233169/M9_233169_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 0,
     "run": "m9-233169",
     "target": "M9_233169",
@@ -26391,13 +26391,13 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233169-M9_233169/M9_233169_executed.ipynb",
-    "cell": 30,
+    "cell": 20,
     "output": 1,
     "run": "m9-233169",
     "target": "M9_233169",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M9_233169 · revised settings. Age and formed-mass fractions."
+    "caption": "M9_233169 · revised settings. Dust and SFH-ratio posterior."
   }
 ]
 ```

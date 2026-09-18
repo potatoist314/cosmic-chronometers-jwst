@@ -7,6 +7,11 @@ Every cell executes the production notebook
 sampler settings and the production seed of the target, so the arms of one
 galaxy differ only in the environment switches below.
 
+Historical (2026-09-18): the notebook no longer reads these switches. Its fit
+settings and priors are literals in the top cell (``SETTINGS`` and ``PRIORS``);
+edit those before launching an arm. The switch names below record how the
+finished arms were configured.
+
 Calibration arms (2026-09-03)::
 
     baseline      CERIDWEN_CALIBRATION_ORDER=0  CERIDWEN_PHOTOMETRY=cosmos_ap3    former production
