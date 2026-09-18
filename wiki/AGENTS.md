@@ -186,9 +186,11 @@ direction and scientific methodology.
 - `notes/` holds the existing reference and analysis source notes.
 - `build.py` and `research.py` render both corpora into `public/`, using the standard library.
 - `public/` is generated output. Never edit it by hand.
-- The TrueNAS server is the only host of the wiki, at `https://truenas-scale.tail5c940d.ts.net:8765/wiki/`.
+- The TrueNAS server is the only host of the wiki, at `https://wiki.eclw.org/` behind the Pangolin
+  login on the VPS (traefik, gerbil, newt on the NAS, nginx on the newt bridge gateway 172.16.12.1:8765).
+  Pages live at the site root; `/wiki/...` links from before 2026-09-18 redirect permanently.
   `scripts/publish_wiki.py` pulls the research activity the browser saved there, sends the wiki
-  sources, `scripts/serve_wiki.py` and every project file linked through `/wiki/f/`, then the NAS
+  sources, `scripts/serve_wiki.py` and every project file linked through `/f/`, then the NAS
   builds its own `public/`. A launchd agent on the Mac runs it after each build and every 30 minutes.
   A build on the Mac is for checking; nothing serves it. Deployment files: `scripts/truenas-wiki/`.
   The question box needs the Mac's bridge, so the NAS pages do not show it.
