@@ -6,7 +6,7 @@ const api = async (path, payload) => {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
   } : {});
   const result = await response.json();
-  if (!response.ok) throw new Error(result.error || 'Request failed');
+  if (!response.ok) throw Object.assign(new Error(result.error || 'Request failed'), { status: response.status });
   return result;
 };
 const fileURL = path => `${base}/f/${path.split('/').map(encodeURIComponent).join('/')}`;
@@ -40,7 +40,9 @@ async function refreshHome() {
     }
     for (const item of catalog.targets.filter(t => t.kind === 'priority')) {
       const row = document.querySelector(`[data-priority-id="${CSS.escape(item.id)}"]`);
-      if (row) (item.state === 'resolved' ? resolved : active).append(row);
+      if (!row) continue;
+      (item.state === 'resolved' ? resolved : active).append(row);
+      row.querySelector('.roadmap-done input').checked = item.state === 'resolved';
     }
     // Sort after moving rows, preserving the original order for equal scores.
     for (const tbody of [active, resolved]) {
@@ -49,14 +51,34 @@ async function refreshHome() {
         const score = row => parseInt(row.cells[0].textContent) || 0;
         return score(b) - score(a) || order.indexOf(a.dataset.priorityId) - order.indexOf(b.dataset.priorityId);
       }).forEach(row => tbody.append(row));
-      const empty = tbody.closest('table').previousElementSibling;
-      if (empty?.classList.contains('empty')) empty.hidden = !!tbody.children.length;
+      const empty = tbody.closest('table').parentElement.querySelector(':scope > .empty');
+      if (empty) empty.hidden = !!tbody.children.length;
     }
     revealPriorityAnchor();
   } catch { /* Static history remains readable when the server is unavailable. */ }
 }
 refreshHome();
 window.addEventListener('pageshow', refreshHome);
+// Ticking a priority's box resolves it; unticking in the resolved list reopens it.
+document.addEventListener('change', async event => {
+  const box = event.target;
+  const row = box.closest('tr[data-priority-id]');
+  if (!row || !box.matches('.roadmap-done input')) return;
+  const status = row.closest('table').previousElementSibling;
+  status.textContent = '';
+  box.disabled = true;
+  try {
+    await api(`activity/priority/${row.dataset.priorityId}`, { id: crypto.randomUUID(), action: 'state',
+      state: box.checked ? 'resolved' : 'open', expected_state: box.checked ? 'open' : 'resolved' });
+    await refreshHome();
+  } catch (error) {
+    if (error.status === 409) await refreshHome();
+    else {
+      box.checked = !box.checked;
+      status.textContent = error.status ? error.message : 'Connection unavailable';
+    }
+  } finally { box.disabled = false; }
+});
 
 const attach = document.querySelector('.figure-attach');
 if (attach) {

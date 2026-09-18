@@ -2,6 +2,7 @@
 import base64
 import importlib.util
 import json
+import re
 import sys
 import tempfile
 import threading
@@ -200,7 +201,10 @@ class ActivityTests(unittest.TestCase):
             self.assertEqual(build.build(self.project / "wiki/notes", out, "/wiki", self.root), 0)
         home = (out / "index.html").read_text()
         self.assertEqual(home, (out / "roadmap/index.html").read_text())
-        self.assertIn('id="metallicity"', home.split('<summary>Resolved</summary>')[1])
+        current, resolved = home.split('<summary>Resolved</summary>')
+        self.assertIn('id="metallicity"', resolved)
+        self.assertEqual(re.findall(r'<input type="checkbox"( checked)?>', resolved), [" checked"])
+        self.assertEqual(set(re.findall(r'<input type="checkbox"( checked)?>', current)), {""})
         self.assertIn('href="/wiki/#metallicity"', home)
         self.assertIn('10/10', home)
         self.assertIn('Marked resolved', (out / "p/metallicity/index.html").read_text())

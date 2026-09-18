@@ -348,11 +348,14 @@ def roadmap_html(tasks, base, project, states=None, resolved=False):
         constraints = ('<p><span class="attribution">After:</span> %s</p>' % dependency if dependency else "")
         if task.get("effort"):
             constraints += '<p><span class="attribution">Difficulty:</span> %s</p>' % esc(task["effort"])
-        rows.append('<tr id="%s" data-priority-id="%s"><td class="roadmap-score">%s</td><td><a href="%s/p/%s/">%s</a>%s%s <a class="roadmap-source" href="%s">Source</a></td></tr>' % (
-            esc(task["id"]), esc(task["id"]), score, base, esc(task["id"]),
+        # The tick box under the score resolves or reopens the task from Home without a reload.
+        done = ('<label class="roadmap-done"><input type="checkbox"%s><span class="visually-hidden">Resolved</span></label>'
+                % (" checked" if resolved else ""))
+        rows.append('<tr id="%s" data-priority-id="%s"><td class="roadmap-score">%s%s</td><td><a href="%s/p/%s/">%s</a>%s%s <a class="roadmap-source" href="%s">Source</a></td></tr>' % (
+            esc(task["id"]), esc(task["id"]), score, done, base, esc(task["id"]),
             esc(task["title"]), details, constraints, esc(asset_url(task["source"], base, project))))
     empty = '<p class="empty">No priorities recorded</p>' if not rows else ""
-    return (empty + '<table class="roadmap"><caption>Research priorities · 10 highest</caption>'
+    return (empty + '<p class="roadmap-status" role="status"></p><table class="roadmap"><caption>Research priorities · 10 highest</caption>'
             '<thead><tr><th scope="col">Priority</th><th scope="col">Task</th></tr></thead>'
             '<tbody>%s</tbody></table>' % "".join(rows))
 
@@ -668,7 +671,7 @@ details.model-row[open]>summary{margin-bottom:0}
 .roadmap caption{text-align:left;font-family:system-ui,sans-serif;font-size:.8rem;color:var(--ink-2);padding:8px 0}
 .roadmap th,.roadmap td{text-align:left;vertical-align:top;padding:12px 8px;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}
 .roadmap th:first-child{width:96px;white-space:nowrap}
-.roadmap-score{font-variant-numeric:tabular-nums;font-weight:600}
+.roadmap-score{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
 .roadmap td p{margin:6px 0 0;font-size:.9rem}
 .research-section{margin-top:30px}
 .research-section h2{font-size:1.25rem;border-top:1px solid var(--rule);padding-top:18px;margin-bottom:14px}
