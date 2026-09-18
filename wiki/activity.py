@@ -135,7 +135,7 @@ def save(root, project, records, kind, ident, payload, *, origin="wiki"):
             for link in evidence:
                 if not isinstance(link, str):
                     raise ValueError("Invalid evidence link")
-                research.asset_url(link, "/wiki", project)
+                research.asset_url(link, "", project)
             event.update(text=text, evidence=evidence)
             if payload.get("supersedes"):
                 if not any(e["id"] == payload["supersedes"] and e["action"] == "note" for e in entries):
@@ -201,7 +201,7 @@ def save(root, project, records, kind, ident, payload, *, origin="wiki"):
                                 raise ValueError("Unknown figure")
                             figure = catalog[background]
                             if "path" in figure:
-                                research.asset_url(figure["path"], "/wiki", project)
+                                research.asset_url(figure["path"], "", project)
                                 source = project / unquote(figure["path"])
                                 suffix, data = source.suffix.lower(), source.read_bytes()
                             else:

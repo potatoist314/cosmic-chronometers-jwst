@@ -22,7 +22,7 @@ sentence. Everything else a reader has to read does count, headings included.
 A note over the budget fails the build and nothing is published: move the
 overflow into a `<details>` block.
 
-    python3 wiki/build.py [--notes DIR] [--research DIR] [--out DIR] [--base /wiki]
+    python3 wiki/build.py [--notes DIR] [--research DIR] [--out DIR] [--base ""]
 """
 
 from __future__ import annotations
@@ -225,7 +225,7 @@ def url(href: str, base: str, source_dir: str = ""):
     if source_dir:
         target = (PROJECT / source_dir / unquote(href)).resolve()
         try:
-            return "/wiki/f/" + quote(target.relative_to(PROJECT).as_posix())
+            return base + "/f/" + quote(target.relative_to(PROJECT).as_posix())
         except ValueError:
             return None
     return "%s/%s" % (base, href)
@@ -1242,7 +1242,7 @@ def main(argv):
     ap.add_argument("--notes", type=Path, default=ROOT / "notes")
     ap.add_argument("--out", type=Path, default=ROOT / "public")
     ap.add_argument("--research", type=Path, help="Research sources (default: sibling of --notes)")
-    ap.add_argument("--base", default="/wiki")
+    ap.add_argument("--base", default="")
     args = ap.parse_args(argv[1:])
     return build(args.notes.resolve(), args.out.resolve(), args.base.rstrip("/"),
                  args.research.resolve() if args.research is not None else None)

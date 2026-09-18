@@ -325,9 +325,9 @@ class ResearchTests(unittest.TestCase):
         thread.start()
         try:
             host = "http://127.0.0.1:%s" % httpd.server_port
-            with urllib.request.urlopen(host + "/wiki/f/results/e-low-dust/config.json", timeout=5) as response:
+            with urllib.request.urlopen(host + "/f/results/e-low-dust/config.json", timeout=5) as response:
                 self.assertEqual(json.load(response), {"tau": [0, 0.2]})
-            with urllib.request.urlopen(host + "/wiki/f/results/e-low-dust/analysis.ipynb", timeout=5) as response:
+            with urllib.request.urlopen(host + "/f/results/e-low-dust/analysis.ipynb", timeout=5) as response:
                 self.assertEqual(json.load(response), {"cells": []})
         finally:
             httpd.shutdown()

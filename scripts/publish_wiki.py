@@ -3,10 +3,10 @@
 
 The NAS holds a copy of the project tree at `<DEST>/files/`: `wiki/` without
 `public/`, `scripts/serve_wiki.py`, and each project file or directory that a
-`/wiki/f/<path>` link in the Mac's own build names. The word counter
+`/f/<path>` link in the Mac's own build names. The word counter
 `wiki/build.py` imports goes to `<DEST>/home/.claude/scripts/hermes-bridge/`.
 After a copy the wiki container on the NAS rebuilds `files/wiki/public`, the
-pages Tailscale Serve publishes at https://truenas-scale.tail5c940d.ts.net:8765/wiki/.
+pages Pangolin publishes at https://wiki.eclw.org/.
 
 Research activity is written on both sides: by the browser through the NAS
 server and by agents in chat. Every run first pulls the NAS records into
@@ -36,7 +36,7 @@ SLOP_LINT = Path.home() / ".claude/scripts/hermes-bridge/slop_lint.py"
 REMOTE = "truenas"                                  # Host entry in ~/.ssh/config
 DEST = "/mnt/apps/applications/astro-wiki"
 CONTAINER = "astro-wiki-server"                     # docker-compose.yml service
-LINK = re.compile(r"/wiki/f/([^\"' )<>#?]+)")
+LINK = re.compile(r"[\"'(=]/f/([^\"' )<>#?]+)")
 LOCK = Path.home() / "Library/Caches/astro-wiki-publish.lock"
 STAMP = Path.home() / "Library/Caches/astro-wiki-publish.stamp"
 ACCESS_LOG = Path.home() / "Library/Logs/astro-wiki/nas-access.log"

@@ -3,15 +3,14 @@
 
 Standard library only. Bound strictly to loopback (127.0.0.1). It runs on the
 TrueNAS box in the python container of scripts/truenas-wiki/docker-compose.yml,
-behind the nginx there, which reaches it for /wiki/api/ and /wiki/ask only;
-Tailscale Serve on the NAS carries the tailnet to that nginx.
+behind the nginx there, which reaches it for /api/ and /ask only; Pangolin on
+the VPS carries https://wiki.eclw.org/ to that nginx.
 
 Routes:
-  /                 redirect to /wiki/
-  /wiki/...         the built notebook in `wiki/public/`
-  /wiki/f/<path>    one file from the project tree, read-only
-  /wiki/ask         POST a question to the worker that made a note
-  everything else   the project tree, as before
+  /...              the built notebook in `wiki/public/`
+  /f/<path>         one file from the project tree, read-only
+  /api/...          the research activity API
+  /ask              POST a question to the worker that made a note
 """
 
 from __future__ import annotations
@@ -144,26 +143,16 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
     # -- routing ---------------------------------------------------------
     def do_GET(self) -> None:
         clean_path = urlsplit(self.path).path
-        if clean_path.startswith("/wiki/api/"):
+        if clean_path.startswith("/api/"):
             self.activity_api("GET")
-            return
-        if clean_path in {"", "/", "/index.html"}:
-            self.send_response(HTTPStatus.FOUND)
-            self.send_header("Location", "/wiki/")
-            self.end_headers()
-            return
-        if clean_path == "/wiki":
-            self.send_response(HTTPStatus.FOUND)
-            self.send_header("Location", "/wiki/")
-            self.end_headers()
             return
         super().do_GET()
 
     def do_POST(self) -> None:
-        if urlsplit(self.path).path.startswith("/wiki/api/"):
+        if urlsplit(self.path).path.startswith("/api/"):
             self.activity_api("POST")
             return
-        if urlsplit(self.path).path != "/wiki/ask":
+        if urlsplit(self.path).path != "/ask":
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -181,17 +170,17 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
             records, faults = research.load(root)
             if faults:
                 raise ValueError("Research records could not be loaded")
-            parts = unquote(urlsplit(self.path).path).removeprefix("/wiki/api/").split("/")
+            parts = unquote(urlsplit(self.path).path).removeprefix("/api/").split("/")
             if method == "GET" and parts == ["publication"]:
                 self.reply_json(200, {"state": publication.state})
                 return
             if method == "GET" and parts == ["catalog"]:
                 items = [{"kind": kind, "id": ident, "title": item["title"],
-                          "url": "/wiki/" + ("p/" if kind == "priority" else "q/") + ident + "/",
+                          "url": "/" + ("p/" if kind == "priority" else "q/") + ident + "/",
                           "state": activity.state(activity.read(root, kind, ident)) if kind == "priority" else item["status"]}
                          for (kind, ident), item in activity.targets(records).items()]
                 figures = [{"key": key, "title": " · ".join(filter(None, [f["experiment"], f.get("target"), f.get("arm"), f.get("view"), f["caption"]])),
-                            "url": "/wiki/api/figure/" + key}
+                            "url": "/api/figure/" + key}
                            for key, f in activity.figures(records).items()]
                 self.reply_json(200, {"targets": items, "figures": figures})
                 return
@@ -200,7 +189,7 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
                 if figure is None:
                     raise ValueError("Unknown figure")
                 if "path" in figure:
-                    research.asset_url(figure["path"], "/wiki", self.project_root)
+                    research.asset_url(figure["path"], "", self.project_root)
                     path = self.project_root / unquote(figure["path"])
                     data, mime = path.read_bytes(), mimetypes.guess_type(str(path))[0]
                 else:
@@ -233,7 +222,7 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
                 publication.request(self.project_root)
             else:
                 result = activity.snapshot(root, kind, ident)
-            result["html"] = activity.history_html(result["entries"], "/wiki", self.project_root)
+            result["html"] = activity.history_html(result["entries"], "", self.project_root)
             result["publication"] = publication.state
             self.reply_json(200, result)
         except activity.Conflict as exc:
@@ -285,27 +274,13 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
         clean_path = unquote(urlsplit(path).path)
         missing = str(self.project_root / "__not_found__")
 
-        if clean_path.startswith("/wiki/f/"):
-            resolved = (self.project_root / clean_path[len("/wiki/f/"):]).resolve()
+        if clean_path.startswith("/f/"):
+            resolved = (self.project_root / clean_path[len("/f/"):]).resolve()
             try:
                 resolved.relative_to(self.project_root)
                 return str(resolved)
             except ValueError:
                 return missing
-
-        if clean_path == "/wiki/" or clean_path.startswith("/wiki/"):
-            public = (self.project_root / "wiki/public").resolve()
-            rest = clean_path[len("/wiki/"):]
-            resolved = (public / rest).resolve()
-            try:
-                resolved.relative_to(public)
-            except ValueError:
-                return missing
-            if resolved.is_dir():
-                resolved = resolved / "index.html"
-            if resolved.exists():
-                return str(resolved)
-            return missing
 
         if clean_path.startswith("/.claude/"):
             resolved = (CLAUDE_ROOT / clean_path[len("/.claude/"):]).resolve()
@@ -315,7 +290,17 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
             except ValueError:
                 return missing
 
-        return super().translate_path(path)
+        public = (self.project_root / "wiki/public").resolve()
+        resolved = (public / clean_path.lstrip("/")).resolve()
+        try:
+            resolved.relative_to(public)
+        except ValueError:
+            return missing
+        if resolved.is_dir():
+            resolved = resolved / "index.html"
+        if resolved.exists():
+            return str(resolved)
+        return missing
 
     def end_headers(self) -> None:
         self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
@@ -345,7 +330,7 @@ def run_server(host: str = "127.0.0.1", port: int = 8765, root: Path = DEFAULT_R
     AstroWikiHandler.project_root = root
     publication.request(root)
     with WikiServer((host, port), AstroWikiHandler) as httpd:
-        print("Serving Astro Lab Notebook on http://%s:%d/wiki/ (root: %s)" % (host, port, root))
+        print("Serving Astro Lab Notebook on http://%s:%d/ (root: %s)" % (host, port, root))
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:

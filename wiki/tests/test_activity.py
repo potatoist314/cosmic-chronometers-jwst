@@ -222,7 +222,7 @@ class ActivityTests(unittest.TestCase):
         self.addCleanup(thread.join)
         self.addCleanup(httpd.shutdown)
         host = f"http://127.0.0.1:{httpd.server_port}"
-        endpoint = host + "/wiki/api/activity/priority/metallicity"
+        endpoint = host + "/api/activity/priority/metallicity"
         def request(origin, body):
             return urllib.request.Request(endpoint, data=json.dumps(body).encode(), headers={"Origin": origin, "Content-Type": "application/json"})
         with self.assertRaises(urllib.error.HTTPError) as error:
@@ -240,11 +240,11 @@ class ActivityTests(unittest.TestCase):
                 result = json.load(response)
         self.assertEqual(result["state"], "open")
         self.assertIn("&lt;script&gt;", result["html"])
-        with urllib.request.urlopen(host + "/wiki/f/" + result["entries"][0]["pages"][0]["preview"]) as response:
+        with urllib.request.urlopen(host + "/f/" + result["entries"][0]["pages"][0]["preview"]) as response:
             self.assertEqual(response.read(), base64.b64decode(PIXEL))
         with urllib.request.urlopen(endpoint) as response:
             self.assertEqual(json.load(response)["entries"], result["entries"])
-        with urllib.request.urlopen(host + "/wiki/api/catalog") as response:
+        with urllib.request.urlopen(host + "/api/catalog") as response:
             catalog = json.load(response)
         self.assertEqual(len(catalog["targets"]), 3)
         self.assertEqual(catalog["figures"][0]["key"], "e-fit:0")

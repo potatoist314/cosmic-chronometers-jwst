@@ -372,11 +372,11 @@ class TestCeridwenResultsBoard(unittest.TestCase):
     def test_local_server_health(self):
         """Verify the wiki server on the NAS returns 200 for wiki pages."""
         try:
-            req = Request("https://truenas-scale.tail5c940d.ts.net:8765/wiki/analyses/ceridwen-results.html")
+            req = Request("https://wiki.eclw.org/analyses/ceridwen-results.html")
             with urlopen(req, timeout=3) as resp:
                 self.assertEqual(resp.status, 200)
 
-            req_index = Request("https://truenas-scale.tail5c940d.ts.net:8765/wiki/index.html")
+            req_index = Request("https://wiki.eclw.org/index.html")
             with urlopen(req_index, timeout=3) as resp:
                 self.assertEqual(resp.status, 200)
         except Exception as exc:
