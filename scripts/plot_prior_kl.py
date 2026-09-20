@@ -15,9 +15,6 @@ import sys
 from pathlib import Path
 
 import matplotlib
-
-matplotlib.use("Agg")
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -80,6 +77,7 @@ def total_kl_bits(galaxy) -> float:
 
 
 def main() -> None:
+    matplotlib.use("Agg")  # CLI only; a notebook keeps its inline backend
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     galaxies = {k: pgd.load_galaxy(folder) for k, (folder, _c, _n) in FITS.items()}
     kl = {k: kl_table(g) for k, g in galaxies.items()}

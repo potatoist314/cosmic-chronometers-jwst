@@ -56,6 +56,11 @@ M1_210210 was chosen on 17 Sep 2026 for fitting under roadmap item strong-spectr
     "date": "2026-09-17",
     "text": "i feel like KL could be separate from the notebook - it just has to go on the wiki",
     "display_text": "I feel like KL could be separate from the notebook - it just has to go on the wiki."
+  },
+  {
+    "date": "2026-09-20",
+    "text": "I want it to plot KLD versions with the different parameters on the x axis, and KLD divergence on the y axis. So at a glance, I can see which parameters are well constrained. This should be part of the notebook. But don't do a GPU run again - just make the plot and have it regenerated in the output since the data is already there.",
+    "display_text": "I want it to plot KLD versions with the different parameters on the x axis and KL divergence on the y axis, so at a glance I can see which parameters are well constrained. This should be part of the notebook. But don't do a GPU run again; just make the plot and have it regenerated in the output, since the data is already there. (Supersedes the 2026-09-17 message that KL could be separate from the notebook.)"
   }
 ]
 ```

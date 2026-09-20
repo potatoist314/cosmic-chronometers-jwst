@@ -933,3 +933,10 @@
 - Fault: DNS reached the VPS, but Pangolin contained no wiki resource. The NAS served the site correctly; the public gateway returned 404 and no valid wiki certificate.
 - Change: Restored the Astro wiki resource at `wiki.eclw.org`, with HTTPS and SSO, through christscam to `http://172.16.12.1:8765`.
 - Validation: HTTPS certificate verification passes. Unauthenticated requests redirect to Pangolin login. The signed-in browser loads Home, the metallicity priority, and the full-screen notebook.
+
+## [2026-09-20] notebooks | KL bar chart appended to the fit notebook
+
+- Pages: [[notes/notebook-map]], [[research/experiments/e-m1-210210-reference]]
+- Change: On Liu Hao's instruction the fit notebook ends with a bar chart of D_KL(posterior || prior) in bits for every sampled scalar parameter, sorted from most to least constrained, parameters on the x axis. The cell imports `kl_table` from `scripts/plot_prior_kl.py` and `load_galaxy` from `scripts/per_galaxy_diagnostics.py`; `matplotlib.use("Agg")` moved into that script's `main()` so the notebook keeps its inline backend. Only the tau-1 order-10 M1_210210 notebook was regenerated, on the CPU from the stored posterior; the other 188 executed notebooks are unchanged. The 2026-09-20 amendment supersedes the 2026-09-17 message that KL could stay outside the notebook. Wording by Claude, notebook-map sentence by Codex.
+- Files: notebooks/ceridwen_integrated_photometry_spectra.ipynb, scripts/plot_prior_kl.py, results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb.
+- Validation: the regenerated notebook has 23 cells and no error outputs; the KL figure was inspected at full size with 16 rotated labels, none overlapping or clipped; 24 notebook tests pass.
