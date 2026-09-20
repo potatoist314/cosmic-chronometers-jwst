@@ -927,3 +927,9 @@
 
 - Change: Full-screen writing sheet with a compact header and collapsible Notebook options. Done saves before closing. New note saves the current draft and opens a blank notebook. Save errors retain the open editor; local and server save states are distinct. Undo and Redo reflect the available history.
 - Validation: Browser checks cover saved history and notebook options. Twelve ink runtime tests and 13 activity tests pass. The 41-note build passes. The broader wiki audit retains its unrelated question-box failure; the research suite retains its corpus coverage failure.
+
+## [2026-09-20] ops | Restore the public wiki route
+
+- Fault: DNS reached the VPS, but Pangolin contained no wiki resource. The NAS served the site correctly; the public gateway returned 404 and no valid wiki certificate.
+- Change: Restored the Astro wiki resource at `wiki.eclw.org`, with HTTPS and SSO, through christscam to `http://172.16.12.1:8765`.
+- Validation: HTTPS certificate verification passes. Unauthenticated requests redirect to Pangolin login. The signed-in browser loads Home, the metallicity priority, and the full-screen notebook.

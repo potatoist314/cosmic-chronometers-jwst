@@ -1,6 +1,9 @@
 # Agent Note Index
 
-Human entry point: `public/index.html`, served at `/wiki/` — Home.
+Human entry point: `public/index.html`, served at `https://wiki.eclw.org/` — Home.
+Pangolin protects the Astro wiki resource with SSO and forwards to TrueNAS
+`172.16.12.1:8765`; configuration: `scripts/truenas-wiki/nginx.conf`.
+Legacy `/wiki/` URLs redirect to the root routes.
 Navigation: Home, Results, Literature, Meetings, Papers, Masking, Code & guides.
 Home shows all priorities and planned/running work, with direction, questions and
 amendments in the collapsed research record. `/wiki/roadmap/` is the Home alias.
