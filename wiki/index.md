@@ -49,6 +49,7 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 
 - `research/questions/q-fitting-choices.md` — calibration, priors, masks and nuisance parameters
 - `research/questions/q-mock-recovery.md` — mock recovery, including the planned quiescent injection
+- `research/questions/q-external-validation.md` — fit outputs against independent literature measurements
 - `research/questions/q-sample-selection.md` — DR2 inputs and inferred quiescence
 - `research/questions/q-population-results.md` — both DR2 runs, population relations and residuals
 - `research/questions/q-compute.md` — repeatability, GPU campaigns and numerical comparisons
@@ -114,6 +115,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 ## Background reading
 
+- `notes/external-comparison-samples.md` — External comparison samples: local, direct-measurement and z~0.7 literature to check fit outputs against (2026-09-21 · question: q-external-validation)
 - `notes/sfh-continuity-prior-variants.md` — SFH continuity prior and its variants (2026-09-21 · question: q-rising-continuity-prior)
 - `notes/papers-spectral-fitting.md` — Papers: stellar-population fitting (2026-08-25 · source: papers/spectral fitting/README.md)
 - `notes/papers-cosmic-chronometers.md` — Papers: cosmic chronometers (2026-08-25 · source: papers/README.md)

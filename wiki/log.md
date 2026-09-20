@@ -953,3 +953,9 @@
 - Pages: [[notes/sfh-continuity-prior-variants]], [[research/questions/q-rising-continuity-prior]], [[notes/model]]
 - Change: New literature note with the continuity prior (Leja 2019), the rising variants (de Graaff, Turner 2025, Wang 2023), the Dirichlet, bursty and UniverseMachine-centred variants, code locators in bd-j/prospector and jakobhelton/jwst_program_id_08544, and the most likely source of Jonah Powley's rising prior. New question record holds Liu Hao's 2026-09-21 question. Model page SFH prior row links the note. Web research requested by Liu Hao. Note prose by Codex.
 - Validation: wiki build passes with 42 notes; both test suites pass apart from the two failures that predate this change (bridge question box, calibration analyses unlinked); all 188 LaTeX expressions in the note parse in the bundled KaTeX 0.18.7; the built note has 8 collapsed blocks and one table, and the question page shows the original question text.
+
+## [2026-09-21] ingest | External comparison samples for fit outputs
+
+- Pages: [[notes/external-comparison-samples]], [[research/questions/q-external-validation]], [[research/experiments/e-literature-ground-truth]]
+- Change: Literature review requested by Liu Hao. The note tables local early-type samples, direct measurements (dynamical and lensing masses, resolved stars, cluster spectra) and z 0.4-0.8 samples, with method, catalogue access and the definition differences against Ceridwen, and lists three first comparisons. Values read from the arXiv PDFs; unverified values and catalogue locations are omitted. No catalogue data fetched, no fit run. Note and record wording by Codex gpt-6-astra from a fact sheet; log entry by Claude.
+- Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
