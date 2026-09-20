@@ -114,6 +114,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 ## Background reading
 
+- `notes/sfh-continuity-prior-variants.md` — SFH continuity prior and its variants (2026-09-21 · question: q-rising-continuity-prior)
 - `notes/papers-spectral-fitting.md` — Papers: stellar-population fitting (2026-08-25 · source: papers/spectral fitting/README.md)
 - `notes/papers-cosmic-chronometers.md` — Papers: cosmic chronometers (2026-08-25 · source: papers/README.md)
 - `notes/model.md` — Model: every assumption and setting on one page, with the LEGA-C quiescent-galaxy literature values and Jonah Powley's Prospector priors below (2026-09-17 · contract: research/model-page-spec.md)
