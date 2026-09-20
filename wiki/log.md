@@ -940,3 +940,10 @@
 - Change: On Liu Hao's instruction the fit notebook ends with a bar chart of D_KL(posterior || prior) in bits for every sampled scalar parameter, sorted from most to least constrained, parameters on the x axis. The cell imports `kl_table` from `scripts/plot_prior_kl.py` and `load_galaxy` from `scripts/per_galaxy_diagnostics.py`; `matplotlib.use("Agg")` moved into that script's `main()` so the notebook keeps its inline backend. Only the tau-1 order-10 M1_210210 notebook was regenerated, on the CPU from the stored posterior; the other 188 executed notebooks are unchanged. The 2026-09-20 amendment supersedes the 2026-09-17 message that KL could stay outside the notebook. Wording by Claude, notebook-map sentence by Codex.
 - Files: notebooks/ceridwen_integrated_photometry_spectra.ipynb, scripts/plot_prior_kl.py, results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb.
 - Validation: the regenerated notebook has 23 cells and no error outputs; the KL figure was inspected at full size with 16 rotated labels, none overlapping or clipped; 24 notebook tests pass.
+
+## [2026-09-21] notebooks | KL figure uses points, not bars
+
+- Pages: [[notes/notebook-map]], [[research/experiments/e-m1-210210-reference]]
+- Change: Liu Hao rejected the bars ("takes up too much visual space, use points instead"). The last cell of the fit notebook now draws one point per parameter with its bootstrap error bar, labels rotated 40 degrees, no grid, top and right spines removed; layout chosen by Liu Hao from three designer previews. Only the tau-1 order-10 M1_210210 notebook was regenerated, on the CPU from the stored posterior. Amendment recorded with his original text.
+- Files: notebooks/ceridwen_integrated_photometry_spectra.ipynb, results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb.
+- Validation: the regenerated notebook has 23 cells and no error outputs; the figure was inspected at full size, 16 labels, none overlapping or clipped, no stray tick marks on the top or right edges.
