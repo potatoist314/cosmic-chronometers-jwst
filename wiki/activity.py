@@ -271,19 +271,20 @@ def editor_html(kind, ident, entries, base, project):
 <label>Evidence links<textarea data-note-evidence rows="2" placeholder="One link per line"></textarea></label>
 <button type="button" data-save-text>Save notes</button></details>
 <h2>History</h2><div data-activity-history>{history_html(entries, base, project)}</div>
-<dialog class="ink-dialog"><div class="ink-header"><h2>Research notes</h2><button type="button" data-close-writer>Close</button></div>
-<div class="ink-workspace"><aside class="ink-context"><h3 data-context-title></h3><div data-context-content></div>
-<label>Notes<textarea data-ink-text rows="5"></textarea></label>
-<label>Evidence links<textarea data-ink-evidence rows="3"></textarea></label></aside>
-<div class="ink-main"><div class="ink-toolbar">
-<span>Scribble over ink to erase</span>
+<dialog class="ink-dialog" aria-labelledby="ink-writer-title">
+<header class="ink-header"><div class="ink-heading"><h2 id="ink-writer-title" data-writer-title>Research notes</h2><span role="status" data-draft-status></span></div>
+<div class="ink-header-actions"><button type="button" data-undo disabled>Undo</button><button type="button" data-redo disabled>Redo</button><button type="button" data-options-toggle aria-expanded="false" aria-controls="ink-options">Notebook</button><button type="button" data-close-writer>Done</button></div></header>
+<div class="ink-workspace"><aside id="ink-options" class="ink-context" aria-label="Notebook options" hidden>
+<section class="ink-option-group"><h3>Writing</h3><div class="ink-option-row">
 <label>Colour<select data-color><option value="#17212b">Black</option><option value="#2459b3">Blue</option><option value="#b52a37">Red</option></select></label>
-<label>Width<select data-width><option value="2">Fine</option><option value="4" selected>Medium</option><option value="7">Thick</option></select></label>
-<button type="button" data-undo>Undo</button><button type="button" data-redo>Redo</button>
-<label>Zoom<select data-zoom><option value="1">Fit</option><option value="1.5">150%</option><option value="2">200%</option></select></label>
-</div><div class="ink-viewport" aria-label="Handwriting notebook"><div class="ink-sheets"></div></div>
-<div class="ink-toolbar"><label>Sheet<select data-sheet></select></label><button type="button" data-add-sheet>Add sheet</button><span role="status" data-sheet-limit></span><button type="button" data-new-ink hidden>New note</button>
-<label>Find figure<input type="search" data-figure-search placeholder="Target, view or caption"></label>
-<label>Figure<select data-background><option value="">Blank sheet</option></select></label><button type="button" data-add-figure>Add figure sheet</button></div>
-</div></div><div class="ink-footer"><span role="status" data-draft-status></span><button type="button" data-save-ink>Save annotation</button></div></dialog>
+<label>Width<select data-width><option value="2">Fine</option><option value="4" selected>Medium</option><option value="7">Thick</option></select></label></div>
+<label>Zoom<select data-zoom><option value="1">Fit</option><option value="1.5">150%</option><option value="2">200%</option></select></label></section>
+<section class="ink-option-group"><h3>Notebook</h3><label>Sheet<select data-sheet></select></label><div class="ink-option-row"><button type="button" data-add-sheet>Add sheet</button><button type="button" data-new-ink>New note</button></div><span role="status" data-sheet-limit></span></section>
+<section class="ink-option-group"><h3>Figure</h3><label>Find figure<input type="search" data-figure-search placeholder="Target, view or caption"></label>
+<label>Figure<select data-background><option value="">Blank sheet</option></select></label><button type="button" data-add-figure>Add figure sheet</button></section>
+<section class="ink-option-group"><h3 data-context-title></h3><div data-context-content></div>
+<label>Typed notes<textarea data-ink-text rows="4"></textarea></label><label>Evidence links<textarea data-ink-evidence rows="2" placeholder="One link per line"></textarea></label></section>
+<button type="button" data-save-ink>Save notes</button></aside>
+<div class="ink-main"><div class="ink-viewport" aria-label="Handwriting notebook"><div class="ink-sheets"></div></div>
+<p class="ink-hint">Pencil to write · scribble to erase · finger to scroll</p></div></div></dialog>
 <script type="module" src="{esc(base)}/activity.js"></script></section>'''

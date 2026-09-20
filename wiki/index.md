@@ -34,6 +34,7 @@ Priority detail pages: `/wiki/p/<id>/`, with independent resolution buttons and 
 `activity.py` stores immutable note revisions, ink and status events in `research/activity/`.
 `assets/activity.js` and `assets/activity.css` provide writing sheets and figure markup.
 Pencil writing uses scribble-to-erase and continuous finger scrolling.
+The full-screen notebook hides options until opened; Done saves before closing.
 Ink rendering caches finished strokes and batches incoming samples per display frame.
 Browser drafts use IndexedDB; saved originals remain on the Mac across rebuilds.
 Chat updates use the same `activity.save` contract in `research/README.md`.

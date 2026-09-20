@@ -8,7 +8,8 @@ import { getStroke } from '../assets/vendor/perfect-freehand-1.2.3.mjs';
 const source = readFileSync(new URL('../assets/activity.js', import.meta.url), 'utf8');
 // Exercise the actual private functions without loading a browser or a database.
 function definition(name) {
-  const start = source.indexOf(`  function ${name}(`);
+  const regular = source.indexOf(`  function ${name}(`);
+  const start = regular >= 0 ? regular : source.indexOf(`  async function ${name}(`);
   assert.ok(start >= 0, `Missing function ${name}`);
   let end = source.indexOf('{', start), depth = 1;
   for (end++; depth; end++) {
@@ -146,5 +147,65 @@ test('finishing a scribble converts it to erasure only over existing ink', () =>
     assert.equal(stroke.tool, inkPresent ? 'eraser' : 'pen');
     assert.equal(stroke.gesture, inkPresent ? 'scribble' : undefined);
     assert.equal(env.active, null);
+  }
+});
+
+
+test('Done saves changed notes before closing and retains the editor on failure', async () => {
+  for (const success of [true, false]) {
+    const calls = [];
+    const env = { busy: false, restoring: false, draft: { dirty: true },
+      finishStroke: () => calls.push('finish'), hasContent: () => true,
+      saveNote: async () => { calls.push('save'); return success; },
+      persist: async () => calls.push('persist'), dialog: { close: () => calls.push('close') } };
+    runInNewContext(definition('doneWriting'), env);
+    await env.doneWriting();
+    assert.deepEqual(calls, success ? ['finish', 'save', 'persist', 'close'] : ['finish', 'save']);
+  }
+});
+
+test('Done does not create another revision for unchanged notes', async () => {
+  const calls = [];
+  const env = { busy: false, restoring: false, draft: { dirty: false }, finishStroke() {},
+    hasContent: () => true, saveNote: () => assert.fail('Unchanged notes must not be saved again'),
+    persist: async () => calls.push('persist'), dialog: { close: () => calls.push('close') } };
+  runInNewContext(definition('doneWriting'), env);
+  await env.doneWriting();
+  assert.deepEqual(calls, ['persist', 'close']);
+});
+
+test('save status distinguishes local drafts from server saves and history controls follow available actions', () => {
+  const controls = { '[data-undo]': {}, '[data-redo]': {} };
+  const env = { draft: { dirty: true }, draftStatus: {}, busy: false, undo: [], redo: [], $: key => controls[key] };
+  runInNewContext(['updateDraftStatus', 'updateUndoControls'].map(definition).join('\n'), env);
+  env.updateDraftStatus();
+  assert.match(env.draftStatus.textContent, /not yet synced/);
+  env.draft = { dirty: false, supersedes: 'saved-note' }; env.updateDraftStatus();
+  assert.equal(env.draftStatus.textContent, 'Saved');
+  env.updateUndoControls();
+  assert.equal(controls['[data-undo]'].disabled, true);
+  env.undo.push({}); env.updateUndoControls();
+  assert.equal(controls['[data-undo]'].disabled, false);
+  assert.equal(controls['[data-redo]'].disabled, true);
+  env.busy = true; env.updateUndoControls();
+  assert.equal(controls['[data-undo]'].disabled, true);
+});
+
+
+test('failed server save retains the draft and reports local storage failure accurately', async () => {
+  for (const storageFailed of [false, true]) {
+    const draft = { dirty: true, pages: [], text: 'Keep these notes', evidence: '', requestId: 'retry-id' };
+    const env = { busy: false, restoring: false, storageFailed, draft, draftStatus: {}, status: {}, path: 'fixture',
+      finishStroke() {}, hasContent: () => true, saving: value => { env.busy = value; },
+      persist: async () => {}, updateSheetControls() {},
+      api: async () => { throw new Error('Connection unavailable'); } };
+    runInNewContext(definition('saveNote'), env);
+    assert.equal(await env.saveNote(), false);
+    assert.equal(env.draft, draft);
+    assert.equal(draft.dirty, true);
+    assert.equal(draft.requestId, 'retry-id');
+    assert.equal(env.busy, false);
+    assert.match(env.draftStatus.textContent, /Connection unavailable/);
+    assert.match(env.draftStatus.textContent, storageFailed ? /keep this page open/ : /notes kept on this device/);
   }
 });

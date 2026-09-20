@@ -80,22 +80,25 @@ meeting notes; the original scientific direction remains under **Your words**.
   requires notes. Saving an annotation never changes a priority or question state.
 - Home keeps active priorities and an expandable **Resolved** list. Scores,
   dependencies, original task IDs and the legacy roadmap anchors are retained.
-- **Write notes** opens the writing sheet beside the question. **Annotate figure**
+- **Write notes** opens a full-screen notebook. **Notebook** shows the question,
+  typed notes, evidence, writing settings, sheet navigation and figure insertion. **Annotate figure**
   opens an existing result figure and attaches the sheet to a priority or question.
 - Pencil input writes. Scribble back and forth over existing ink to erase the
   covered area. Undo restores the erased ink. Figure backgrounds remain intact.
 - One finger scrolls the notebook. Pencil contact stops scrolling; touches present
   during writing remain ignored until lifted. Mouse drawing is available on desktop.
 - Blank sheets appear automatically near the bottom, up to 30 sheets per note.
-  Save the current note before selecting **New note** to continue beyond that limit.
+  **New note** saves the current note before opening a separate blank notebook.
   The sheet selector jumps within the same continuous notebook.
-- **Save annotation** saves the text, evidence links, strokes and PNG previews.
+- **Done** saves the text, evidence links, strokes and PNG previews before closing.
+  A failed save keeps the notebook open. **Save notes** in Notebook saves without closing.
   The background is an immutable copy of the displayed figure, with its source
   record. Notebook outputs are copied without executing the notebook.
 - Browser IndexedDB retains local drafts shortly after each stroke or text edit. A draft
   belongs to that browser and device. Active ink renders once per display frame over
-  cached finished strokes; finger scrolling and Pencil palm handling are independent. Server saves require the Mac and Tailscale
-  connection. The interface distinguishes draft storage, saving and publication.
+  cached finished strokes; finger scrolling and Pencil palm handling are independent.
+  Server saves use the wiki API on TrueNAS. “Saved on this device” identifies a local
+  draft; “Saved” confirms a server save. Publication is reported separately.
 - **Revise note** appends another version. Earlier text and ink remain readable.
   **New note** starts a separate entry after the current draft is saved.
 - Transcribe only on request. Keep original handwriting beside the transcription.

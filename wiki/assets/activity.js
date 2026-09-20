@@ -141,8 +141,9 @@ async function setupEditor(root) {
     clearTimeout(draftTimer);
     if (restoring) return;
     try {
+      const revision = draft.requestId;
       await transaction('readwrite', store => store.put(draft, key));
-      if (draftStatus.textContent !== 'Draft on this device') draftStatus.textContent = 'Draft on this device';
+      if (revision === draft.requestId && !busy) updateDraftStatus();
       storageFailed = false;
     } catch {
       storageFailed = true;
@@ -150,7 +151,14 @@ async function setupEditor(root) {
     }
   }
   function hasContent() {
-    return draft.text.trim() || draft.evidence.trim() || draft.pages.some(p => p.strokes.length);
+    return draft.text.trim() || draft.evidence.trim() || draft.pages.some(p => p.strokes.length || p.background);
+  }
+  function updateDraftStatus() {
+    draftStatus.textContent = draft.dirty ? 'Saved on this device · not yet synced' : (draft.supersedes ? 'Saved' : '');
+  }
+  function updateUndoControls() {
+    $('[data-undo]').disabled = busy || !undo.length;
+    $('[data-redo]').disabled = busy || !redo.length;
   }
   function schedulePersist() {
     clearTimeout(draftTimer);
@@ -163,12 +171,15 @@ async function setupEditor(root) {
   function changed() {
     draft.requestId = crypto.randomUUID();
     draft.dirty = true;
+    draftStatus.textContent = 'Unsaved changes';
+    updateUndoControls();
     schedulePersist();
   }
   function captureUndo() {
     undo.push(pageSnapshot());
     if (undo.length > 60) undo.shift();
     redo = [];
+    updateUndoControls();
   }
   function syncText() {
     for (const selector of ['[data-note-text]', '[data-ink-text]']) $(selector).value = draft.text;
@@ -195,7 +206,8 @@ async function setupEditor(root) {
   async function refresh() { updateHistory(await api(path)); }
   function saving(value) {
     busy = value;
-    root.querySelectorAll('button, textarea, select').forEach(el => { el.disabled = value; });
+    root.querySelectorAll('button, textarea, select, input').forEach(el => { el.disabled = value; });
+    updateUndoControls();
   }
   async function publicationStatus() {
     try {
@@ -422,7 +434,8 @@ async function setupEditor(root) {
     $('[data-add-sheet]').disabled = busy || full;
     $('[data-add-figure]').disabled = busy || full;
     $('[data-sheet-limit]').textContent = full ? '30 sheets · save before starting a new note' : '';
-    $('[data-new-ink]').hidden = !full;
+    $('[data-new-ink]').hidden = false;
+    updateUndoControls();
   }
   function showPage(jump = false) {
     const target = draft.page;
@@ -462,14 +475,34 @@ async function setupEditor(root) {
   async function openWriter() {
     if (busy || restoring) return;
     syncText();
+    setOptions(false);
     if (!dialog.open) dialog.showModal();
     showPage(true);
   }
   $('[data-open-writer]').addEventListener('click', openWriter);
-  $('[data-close-writer]').addEventListener('click', () => { finishStroke(); persist(); dialog.close(); });
+  function setOptions(open) {
+    finishStroke();
+    dialog.dataset.optionsOpen = String(open);
+    $('[data-options-toggle]').setAttribute('aria-expanded', String(open));
+    $('#ink-options').hidden = !open;
+  }
+  $('[data-options-toggle]').addEventListener('click', () => {
+    setOptions(dialog.dataset.optionsOpen !== 'true');
+  });
+  async function doneWriting() {
+    if (busy || restoring) return;
+    finishStroke();
+    if (draft.dirty && hasContent() && !await saveNote()) return;
+    await persist();
+    dialog.close();
+  }
+  $('[data-close-writer]').addEventListener('click', doneWriting);
   dialog.addEventListener('cancel', event => {
-    if (busy) event.preventDefault();
-    else persist();
+    event.preventDefault();
+    if (dialog.dataset.optionsOpen === 'true') {
+      setOptions(false);
+      $('[data-options-toggle]').focus();
+    } else doneWriting();
   });
   dialog.addEventListener('close', () => {
     finishStroke(); touches.clear(); persist(); releaseCanvases(); slots = []; sheets.replaceChildren();
@@ -618,10 +651,13 @@ async function setupEditor(root) {
   });
 
   async function saveNote() {
-    if (busy || restoring) return;
-    finishStroke(); saving(true);
+    if (busy || restoring) return false;
+    finishStroke();
+    if (!draft.dirty || !hasContent()) return true;
+    saving(true);
     draftStatus.textContent = 'Saving'; status.textContent = 'Saving';
     try {
+      await persist();
       const pages = [];
       // Preserve interior blank sheets; omit only the unused trailing space.
       const lastUsed = draft.pages.findLastIndex(page => page.strokes.length || page.background);
@@ -635,7 +671,6 @@ async function setupEditor(root) {
       const payload = { id: draft.requestId, action: 'note', text: draft.text,
         evidence: draft.evidence.split('\n').map(s => s.trim()).filter(Boolean), pages,
         ...(draft.supersedes ? { supersedes: draft.supersedes } : {}) };
-      await persist();
       const result = await api(path, payload);
       updateHistory(result);
       // Keep the written sheet open. Further edits create a new immutable revision.
@@ -650,9 +685,12 @@ async function setupEditor(root) {
       await persist();
       draftStatus.textContent = 'Saved';
       publicationStatus();
+      return true;
     } catch (error) {
       status.textContent = error.message;
-      draftStatus.textContent = `${error.message} · draft retained`;
+      draftStatus.textContent = `${error.message} · ${storageFailed
+        ? 'keep this page open' : 'notes kept on this device'}. Try Done again.`;
+      return false;
     } finally { saving(false); updateSheetControls(); }
   }
   $('[data-save-ink]').addEventListener('click', saveNote);
@@ -671,17 +709,19 @@ async function setupEditor(root) {
   // A fresh note leaves the saved history intact; explicit revision is available above.
   const newNote = document.createElement('button');
   newNote.type = 'button'; newNote.textContent = 'New note';
-  newNote.addEventListener('click', () => {
-    if (draft.dirty && hasContent()) { status.textContent = 'Save current draft first'; return; }
-    finishStroke(); draft = fresh(); undo = []; redo = []; syncText(); persist(); showPage(true);
+  newNote.addEventListener('click', async () => {
+    if (busy || restoring) return;
+    finishStroke();
+    if (draft.dirty && hasContent() && !await saveNote()) return;
+    draft = fresh(); undo = []; redo = []; syncText(); await persist(); await openWriter();
   });
   $('.activity-actions').append(newNote);
   $('[data-new-ink]').addEventListener('click', () => {
-    if (draft.dirty && hasContent()) { draftStatus.textContent = 'Save current draft first'; return; }
     newNote.click();
   });
 
   $('[data-context-title]').textContent = document.querySelector('h1').textContent;
+  $('[data-writer-title]').textContent = document.querySelector('h1').textContent;
   const context = $('[data-context-content]');
   // Copy only the item's introduction, not its history or interactive controls.
   for (const sibling of [...root.parentElement.children]) {
@@ -695,9 +735,9 @@ async function setupEditor(root) {
   }
   try {
     const saved = await transaction('readonly', store => store.get(key));
-    if (saved) { draft = saved; draftStatus.textContent = saved.dirty ? 'Draft recovered' : (saved.supersedes ? 'Saved notes' : ''); }
+    if (saved) { draft = saved; updateDraftStatus(); }
   } catch { storageFailed = true; draftStatus.textContent = 'Draft storage unavailable'; }
-  restoring = false; syncText();
+  restoring = false; syncText(); updateUndoControls();
   try { await refresh(); } catch { status.textContent = 'Connection unavailable · local drafts available'; }
   try {
     const catalog = await catalogPromise;
