@@ -24,7 +24,6 @@ Treat these instructions as active until the user explicitly changes them.
 
 - Use notebooks as the primary files for explanation,
   exploration, and presentation.
-- Every new result directory must include its executed analysis `.ipynb` with saved fit, SFH/age-history, and corner-plot outputs.
 - Notebook markdown cells are terse bullet points, roughly ten words each,
   saying what an otherwise unclear line of code does. No fluff, or restating results or numbers.
 - Use LaTeX for mathematical symbols and parameter names in figures.
@@ -35,8 +34,7 @@ Treat these instructions as active until the user explicitly changes them.
   the wiki column's 900 px display width and check for overlapping labels, legends or ticks,
   text clipped at axes edges, and unreadable fonts. Fix and re-render until clean; for new
   figures, then screenshot the built wiki page.
-- Run full Ceridwen fits on Vast.ai CUDA GPUs; use local quick tests only.
-- Always use the BlackJAX NSS nested sampler for Ceridwen fits, never NUTS.
+- Experiments: follow `.agents/skills/running-ceridwen-experiments/SKILL.md`.
 - Keep raw data immutable. Produce processed data through documented scripts or
   functions.
 - Put one-time download and bookkeeping utilities in `scripts/`, not notebooks.
@@ -57,21 +55,3 @@ Treat these instructions as active until the user explicitly changes them.
 - Keep research reasoning, originals, run metadata and evidence in a separate
   research-record view. Do not discard them or invent scientific interpretations.
 
-## Recording research
-
-- Before executing or delegating a new scientific experiment, read
-  `wiki/research/README.md` and create or reuse its question and experiment record.
-- Retain Liu Hao's original chat text. Lightly edit displayed wording only for
-  spelling, punctuation and phrasing. Preserve meaning, uncertainty and emphasis.
-  Never invent a prediction, explanation, interpretation or decision.
-- Keep the original available beside edited wording. Keep separate thoughts
-  separate. Preserve ambiguous wording when editing would require guessing.
-- Record agent execution plans, actual configurations, evidence and factual results
-  separately. Include the experiment ID and record path in handoffs.
-- Append subsequent user amendments, interpretation and decisions with their dates.
-  Mark an experiment reviewed only when his interpretation is recorded.
-- Existing authorization in chat is sufficient. Ask only about missing research
-  decisions that materially affect execution, not for repeated permission.
-- Integrate existing Ceridwen results into the same questions and experiments.
-  Use documented evidence, with origin existing and status recorded. Do not invent
-  historical reasoning or demand missing metadata. Retain notebooks and result paths.
