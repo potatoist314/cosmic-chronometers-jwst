@@ -66,6 +66,11 @@ M1_210210 was chosen on 17 Sep 2026 for fitting under roadmap item strong-spectr
     "date": "2026-09-21",
     "text": "i don't like the use of bars, takes up too much visual space, use points instead.",
     "display_text": "I don't like the use of bars; it takes up too much visual space. Use points instead."
+  },
+  {
+    "date": "2026-09-21",
+    "text": "Two reference marks on the KL figure, relayed by the orchestrator: a shaded band at the estimator noise floor, measured from prior-only draws with the posterior weights and the same bin count as marginal_kl_bits, 200 repeats, band top at the 95th percentile; and a dashed line at 1 bit labelled as a factor-two narrowing of the prior. Both chosen by Liu Hao; there is no consensus threshold. He picked the log-axis treatment from two designer variants.",
+    "display_text": "Two reference marks on the KL figure: a shaded band at the measured estimator noise floor (200 prior-only draws with the posterior weights, band top at the 95th percentile), and a dashed line at 1 bit, a factor-two narrowing of the prior. The band is a measurement; the 1-bit line is a stated convention, not a standard. Log-axis treatment picked from two designer variants."
   }
 ]
 ```

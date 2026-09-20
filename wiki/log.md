@@ -941,9 +941,15 @@
 - Files: notebooks/ceridwen_integrated_photometry_spectra.ipynb, scripts/plot_prior_kl.py, results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb.
 - Validation: the regenerated notebook has 23 cells and no error outputs; the KL figure was inspected at full size with 16 rotated labels, none overlapping or clipped; 24 notebook tests pass.
 
-## [2026-09-21] notebooks | KL figure uses points, not bars
+## [2026-09-21] notebooks | KL figure uses points, not bars, with a noise-floor band and a 1-bit line
 
 - Pages: [[notes/notebook-map]], [[research/experiments/e-m1-210210-reference]]
-- Change: Liu Hao rejected the bars ("takes up too much visual space, use points instead"). The last cell of the fit notebook now draws one point per parameter with its bootstrap error bar, labels rotated 40 degrees, no grid, top and right spines removed; layout chosen by Liu Hao from three designer previews. Only the tau-1 order-10 M1_210210 notebook was regenerated, on the CPU from the stored posterior. Amendment recorded with his original text.
+- Change: Liu Hao rejected the bars ("takes up too much visual space, use points instead"). The last cell of the fit notebook now draws one point per parameter with its bootstrap error bar, labels rotated 40 degrees, no grid, top and right spines removed; layout chosen by Liu Hao from three designer previews. Only the tau-1 order-10 M1_210210 notebook was regenerated, on the CPU from the stored posterior. Amendment recorded with his original text. Later the same day two reference marks were added on a log axis: a grey band at the estimator noise floor, measured in the cell from 200 prior-only draws with the posterior weights (95th percentile 0.009 bits), and a dashed line at 1 bit, a stated convention for a factor-two narrowing of the prior, not a standard. Liu Hao picked the log-axis treatment from two designer variants.
 - Files: notebooks/ceridwen_integrated_photometry_spectra.ipynb, results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb.
 - Validation: the regenerated notebook has 23 cells and no error outputs; the figure was inspected at full size, 16 labels, none overlapping or clipped, no stray tick marks on the top or right edges.
+
+## [2026-09-21] query | Rising continuity SFH prior in the literature
+
+- Pages: [[notes/sfh-continuity-prior-variants]], [[research/questions/q-rising-continuity-prior]], [[notes/model]]
+- Change: New literature note with the continuity prior (Leja 2019), the rising variants (de Graaff, Turner 2025, Wang 2023), the Dirichlet, bursty and UniverseMachine-centred variants, code locators in bd-j/prospector and jakobhelton/jwst_program_id_08544, and the most likely source of Jonah Powley's rising prior. New question record holds Liu Hao's 2026-09-21 question. Model page SFH prior row links the note. Web research requested by Liu Hao. Note prose by Codex.
+- Validation: build and wiki tests, see commit.
