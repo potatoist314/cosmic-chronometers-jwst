@@ -85,6 +85,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 ## Sample and data
 - `notes/data-pipeline.md` — Data pipeline (2026-09-09 · old: _old/codebase/data-pipeline.html)
+- `notes/cosmos-photometry-comparison.md` — COSMOS2020 and COSMOS2025 photometry against COSMOS2015 (2026-09-21)
 - `notes/sfms-quiescent.md` — Quiescent sample on the star-forming sequence (2026-09-07)
 - `notes/dr2-quiescent-sample.md` — DR2 quiescent sample (2026-09-03 · t_d0d3a321)
 

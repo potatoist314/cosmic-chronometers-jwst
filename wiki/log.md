@@ -1095,3 +1095,9 @@
 - Pages: [[research/direction]]
 - Change: Liu Hao's 2026-09-21 message appended to Amendments; roadmap task `dr2-sample-new-settings` at his priority 8, one sentence, placed after `alpha-fe-t50-vs-mass` and linked to the record `e-afe-t50-vs-mass`, which holds the bulk-DR2 plot made with the old settings. That record was not edited. No plan or claims added. Sentence by Codex gpt-6-astra, "DR2" and "big" restored to his wording; log entry by Claude.
 - Validation: wiki build with the length check, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] analysis | COSMOS2020 and COSMOS2025 photometry against COSMOS2015
+
+- Pages: [[notes/cosmos-photometry-comparison]], [[research/questions/q-cosmos-photometry]]
+- Change: new note with the M1_210210 comparison figure (design A, picked by Liu Hao on 2026-09-21), the match of the 187 fitted galaxies, the per-band table and the fit notebook changes. Figure by `scripts/plot_cosmos_photometry_comparison.py` from `results/cosmos-photometry-comparison/`. Question record links the note. No fit.
+- Validation: figure checked at 900 px; note passes the length check. The full build stops in check-in 2026-09-21 at `results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb` cell 22, which has no saved output in the working tree; that file belongs to another job.

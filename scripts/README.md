@@ -39,6 +39,7 @@
 | plot_dr2_distributions_quality.py | Sample distributions and fit-quality panels for the DR2 quiescent run. |
 | plot_dr2_formation_timescale.py | Formation-timescale (delta-t) plots for the DR2 quiescent sample. |
 | plot_sfms_quiescent.py | Star-forming sequence for the DR2 quiescent runs. |
+| plot_cosmos_photometry_comparison.py | Plot the fit-input photometry of M1_210210 from each COSMOS catalogue. |
 | plot_borghi2022_age_vs_z.py | Recreate Borghi+2022a Fig. 9 (median age vs redshift) with our sample. |
 | plot_ceridwen_checkpoint_evolution.py | Build a standalone Ceridwen checkpoint spectrum animation. |
 
