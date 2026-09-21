@@ -57,10 +57,10 @@ date: 2026-09-15
   },
   {
     "id": "emission-lines-model-mask-ignore",
-    "title": "Model, mask or ignore emission lines, with a physically justified reason",
+    "title": "Emission lines: model, mask or ignore",
     "priority": 9,
     "source": "wiki/research/questions/q-emission-lines.md",
-    "details": "Decide whether the Ceridwen fits model, mask or ignore emission lines. The decision needs a physically justified reason and belongs to Liu Hao. Evidence: question q-emission-lines. (1) DR2 Balmer-emission EWs: partly circular, dependent on LEGA-C stellar-model absorption depths. (2) [O II]/[O III]: nearly model-free, little stellar absorption; empirical H-beta bound: ~0.6x[O III]5007, range 0.33-1.25 (Trager+2000a). (3) Recombination-fixed Case B ratios: H-gamma/H-beta~0.47, H-delta/H-beta~0.26 (textbook, unverified); gas: H-beta easiest. (4) |EW/err|>=3: H-delta/H-gamma/H-beta=13/7/2; reverse order, suggesting stellar-template mismatch over gas, subject to recount. (5) No-mask Ceridwen: self-test, not truth-test. Recount: fitted galaxies, three-line EW_err coverage: 117/187, z=0.60-0.89; H-beta/H-gamma/H-delta=2/5/10. Three Lick indices present: 129; 2/7/13. 2 H-beta detections (M13_253688, M15_89153, z=0.84): H-gamma/H-delta below 3 sigma. 10 H-delta detections: catalogued H-beta emission 0.00-0.44 A or blank. EW versus flux ratios: continuum-ratio factor. NebularModel: Ceridwen (ceridwen.neb); off in production fits. SSP emission: CLOUDY cube age range only (lines 355-380, young_mask); flagged-young SSP >320 Myr (3.2e8 yr): RuntimeError; older-than-grid SSPs: no emission. FSPS CLOUDY: $SPS_HOME/nebular/ZAU_ND_<isoc>.cont and .lines; MIST defaults: 11 x 10 x 7 (logZ, age, logU). Cube ages read in external/fsps/nebular/ZAU_ND_mist: continuum 0.5-20 Myr, lines 1-20 Myr; maximum 20 Myr, not ~10 Myr. FSPS README: tables computed by Nell Byler. Byler et al. 2017, young clusters ionised by young massive stars, no post-AGB/LIER source: Liu Hao's brief, paper not read, unverified. Enabled: no old-star emission; Balmer fitting: added young stars, biased SFH/age. 'model': new old-star-ionisation grids or empirical Gaussian lines, not existing NebularModel."
+    "details": "Decide whether the Ceridwen fits model, mask or ignore emission lines, on a physically justified reason."
   },
   {
     "id": "literature-comparison",

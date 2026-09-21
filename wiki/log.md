@@ -989,3 +989,15 @@
 - Pages: [[notes/no-emission-mask]], [[research/experiments/e-no-emission-mask]]
 - Change: One no-mask fit of M1_210210 on Vast.ai against the stored masked fit, same seed; arm `no_emission_mask` sets `CERIDWEN_SETTINGS_OVERRIDE` and the runner merges it into `SETTINGS` in the executed copy. Record holds Figures, Measurements, Results and Caveats at status results-ready; overlaid corner picked by Liu Hao from designer previews. Wording by Codex gpt-6-astra from a fact sheet; tables generated from the saved CSVs.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] infrastructure | Wiki edits go live in seconds
+
+- Pages: `research_figures.py`, `research.py`, `build.py`, `scripts/publish_wiki.py`, `tests/test_research.py`, [[AGENTS]]
+- Change: wiki/research_figures.py caches notebook PNGs by notebook version and hardlinks them into builds. NAS build time fell from 79.9 s to 3.4 s, Mac from 28.7 s to 3.7 s. research.py joins section text once and checks evidence paths with os.path. The watcher sends files whose size or time changed over one shared SSH connection. Partial publication takes 5.7 s, an unchanged check 0.3 s. Tests compare cold and cached outputs byte for byte and check cache replacement after notebook edits. Wording by Codex gpt-6-astra from a fact sheet; entry assembled by Claude.
+- Validation: `wiki/tests/run_tests.py`, `python3 -m unittest discover -s wiki/tests`, a timed save measured at the NAS.
+
+## [2026-09-21] roadmap | Priority-9 emission-line item cut to one sentence
+
+- Pages: [[research/direction]], [[research/questions/q-emission-lines]]
+- Change: On Liu Hao's feedback the roadmap item holds one sentence and its link to `q-emission-lines`. All evidence moved to the question as one-fact bullets in full words under five headings; code locators, paths and column names moved to its References. Every fact and unverified mark kept. Wording by Codex gpt-6-astra from a fact sheet; two bullets and the log entry by Claude.
+- Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
