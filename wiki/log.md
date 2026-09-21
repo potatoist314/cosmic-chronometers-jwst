@@ -1054,3 +1054,8 @@
 - Resolution: KL, dust/SFH corner and M1_210210 comparison figures now save at dpi 150.
 - Regeneration: Rebuilt fit and analysis outputs on CPU without sampling; the check-in displays the figures automatically.
 - Exception: Edited `notebooks/ceridwen_test_spectra.ipynb` without execution because it runs a sampler.
+## [2026-09-21] edit | Check-in 2026-09-21 question 5
+
+- Pages: research/checkins/2026-09-21.md.
+- Change: Added Questions item 5 in Liu Hao’s lightly edited words: data sources more modern than LEGA-C DR2, or JWST sources, to fit as well. Question only; no answer, figure or link. Original message appended to Your words.
+- Validation: python3 wiki/build.py, wiki/tests/run_tests.py, test_research.py.
