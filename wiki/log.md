@@ -1077,3 +1077,9 @@
 - Pages: [[research/direction]], [[research/questions/q-ifu-surveys]]
 - Change: Liu Hao's 2026-09-21 message appended to Amendments with 'STSS' kept in the original and 'SDSS/MaNGA (spelling uncertain)' in the display; the surveys he means are not resolved. Roadmap task `ifu-surveys-spectra-photometry` at his priority 7, one sentence, linked to the new question `q-ifu-surveys`. No evidence, plan or survey claims added. Sentence by Codex gpt-6-astra; log entry by Claude.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] roadmap | Simple parametric metallicity evolution model, priority 7
+
+- Pages: [[research/direction]], [[research/questions/q-metallicity-evolution]]
+- Change: Liu Hao's 2026-09-21 message appended to Amendments; roadmap task `metallicity-evolution-model` at his priority 7, one sentence, effort "Unsure on implementation" from his words, linked to the new question `q-metallicity-evolution`. No implementation plan, evidence or claims added. Sentence by Codex gpt-6-astra, one clause restored to his wording; log entry by Claude.
+- Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.

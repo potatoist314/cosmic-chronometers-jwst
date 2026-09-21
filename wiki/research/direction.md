@@ -108,6 +108,14 @@ date: 2026-09-15
     "details": "Look into fitting spectra and photometry for SDSS/MaNGA (spelling uncertain), which Liu Hao notes are IFU surveys and categorically different."
   },
   {
+    "id": "metallicity-evolution-model",
+    "title": "Simple parametric metallicity evolution model",
+    "priority": 7,
+    "source": "wiki/research/questions/q-metallicity-evolution.md",
+    "details": "Try fitting a simple parametric metallicity evolution model with one free parameter or so, apart from just a fixed metallicity; Liu Hao is unsure how to implement it.",
+    "effort": "Unsure on implementation"
+  },
+  {
     "id": "velocity-dispersion",
     "title": "Fit velocity dispersion as a broadening parameter",
     "priority": 6,
@@ -282,6 +290,10 @@ date: 2026-09-15
     "date": "2026-09-21",
     "text": "look into fitting spectra / phot for STSS/MANGA surveys (not sure if spelt correctly) - priority 7 (these are categorically different, are IFU surveys)",
     "display_text": "Look into fitting spectra / photometry for SDSS/MaNGA (spelling uncertain) surveys - priority 7 (these are categorically different, are IFU surveys)."
+  },
+  {
+    "date": "2026-09-21",
+    "text": "research priority 7 (but unsure on implementation) - try fitting a simple parametric metallicity evolution model with one free parameter or so, apart from just a fixed metallicity"
   }
 ]
 ```
