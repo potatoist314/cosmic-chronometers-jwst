@@ -49,6 +49,8 @@
 | download_legac_dr2_spectra.py | Download the LEGA-C DR2 1D spectra listed in the DR2 catalogue. |
 | download_legac_dr2_aperture_photometry.py | Download multi-aperture COSMOS2015 and total UltraVISTA photometry for LEGA-C DR2. |
 | download_cosmos2015_legac_dr2_photometry.py | Download COSMOS2015 photometry matched to the LEGA-C DR2 catalogue. |
+| download_cosmos2020_cosmos2025_legac_dr2_photometry.py | Download COSMOS2020 and COSMOS2025 photometry matched to the LEGA-C DR2 catalogue. |
+| compare_cosmos_photometry.py | Compare COSMOS2020 and COSMOS2025 photometry with the COSMOS2015 fit input. |
 | download_hst_cutouts.py | Download HST ACS F814W cutouts for the production DR2 quiescent targets. |
 | serve_wiki.py | HTTP server for the Astro lab notebook and the project deliverables; runs on the TrueNAS box. |
 | build_ceridwen_results_board.py | Build the Ceridwen common results board from the validated audit manifest. |
