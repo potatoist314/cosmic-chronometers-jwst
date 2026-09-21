@@ -743,6 +743,135 @@ def superseded_banner(note, notes, base):
             % (base, target["slug"], esc(target["title"])))
 
 
+# --------------------------------------------------------- length check
+# Liu Hao, 2026-09-21: "a cheap check would be good." No model call: a roadmap
+# task (title plus details) of more than ROADMAP_CAP words or a paragraph of
+# more than PARAGRAPH_CAP words stops the build. Violations older than the check
+# are listed in wiki/length-baseline.txt and pass until they grow.
+
+ROADMAP_CAP = 30
+PARAGRAPH_CAP = 60
+LENGTH_BASELINE = "length-baseline.txt"
+LIST_ITEM_RE = re.compile(r"(?:[-*+]|\d+[.)])\s")
+LENGTH_SKIP = ("README.md", "templates", "activity")
+
+
+def word_count(text: str) -> int:
+    """Whitespace-separated words; the one count both length rules use."""
+    return len(text.split())
+
+
+def paragraphs(text: str) -> list:
+    """(line number, text) of every paragraph of a markdown page.
+
+    A paragraph is the text between blank lines; each list item is its own.
+    Frontmatter, fenced blocks, table rows, HTML blocks and headings are left out.
+    """
+    lines = text.split("\n")
+    first = 0
+    if lines and lines[0].strip() == "---":
+        first = next((i + 1 for i in range(1, len(lines)) if lines[i].strip() == "---"), len(lines))
+    found, current, start, fence, html = [], [], 0, None, False
+
+    def flush():
+        if current:
+            found.append((start, " ".join(line.strip() for line in current)))
+            current.clear()
+
+    for number, line in enumerate(lines[first:], first + 1):
+        stripped = line.strip()
+        if fence:
+            if stripped.startswith(fence):
+                fence = None
+            continue
+        if stripped.startswith(("```", "~~~")):
+            flush()
+            fence = stripped[:3]
+            continue
+        if html:
+            html = bool(stripped)
+            continue
+        if not stripped:
+            flush()
+            continue
+        if stripped.startswith("<"):
+            flush()
+            html = True
+            continue
+        if stripped.startswith(("#", "|")):
+            flush()
+            continue
+        if LIST_ITEM_RE.match(stripped):
+            flush()
+        if not current:
+            start = number
+        current.append(line)
+    flush()
+    return found
+
+
+def length_pages(wiki_dir: Path) -> list:
+    pages = sorted((wiki_dir / "notes").glob("*.md"))
+    for path in sorted((wiki_dir / "research").rglob("*.md")):
+        relative = path.relative_to(wiki_dir / "research")
+        if relative.name != "README.md" and not set(relative.parts) & set(LENGTH_SKIP[1:]):
+            pages.append(path)
+    return pages
+
+
+def length_violations(wiki_dir: Path, records: list) -> list:
+    """(path, key, words, cap, line) for every over-long roadmap task and paragraph."""
+    found = []
+    root = wiki_dir.resolve().parent
+
+    def shown(path):
+        return os.path.relpath(Path(path).resolve(), root)
+
+    for record in records:
+        if record["kind"] == "direction":
+            for task in record["sections"]["Roadmap"]:
+                count = word_count(task.get("title", "") + " " + task.get("details", ""))
+                if count > ROADMAP_CAP:
+                    found.append((shown(record["path"]), task["id"], count,
+                                  ROADMAP_CAP, task["id"]))
+    for path in length_pages(wiki_dir):
+        for number, text in paragraphs(path.read_text(encoding="utf-8")):
+            count = word_count(text)
+            if count > PARAGRAPH_CAP:
+                found.append((shown(path), " ".join(text.split()[:6]), count,
+                              PARAGRAPH_CAP, str(number)))
+    return found
+
+
+def read_baseline(wiki_dir: Path) -> dict:
+    """{(path, key): words} recorded before the check existed."""
+    baseline = {}
+    path = wiki_dir / LENGTH_BASELINE
+    if path.is_file():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                page, key, count = line.split("\t")
+                baseline[(page, key)] = int(count)
+    return baseline
+
+
+def length_faults(wiki_dir: Path, records: list) -> list:
+    """'<path>: <task id or line>: N words (cap M)' for every new or grown violation."""
+    baseline = read_baseline(wiki_dir)
+    return ["%s: %s: %d words (cap %d)" % (page, where, count, cap)
+            for page, key, count, cap, where in length_violations(wiki_dir, records)
+            if count > baseline.get((page, key), 0)]
+
+
+def check_lengths(wiki_dir: Path, records: list) -> None:
+    """Print every violation and stop the build."""
+    faults = length_faults(wiki_dir, records)
+    if faults:
+        for line in faults:
+            print(line, file=sys.stderr)
+        raise SystemExit("build stopped: %d length fault(s); shorten the text" % len(faults))
+
+
 # ---------------------------------------------------------------- build
 
 def build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = None) -> int:
@@ -769,6 +898,7 @@ def _build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = No
         if len(faults) > 12:
             print("  ... and %d more" % (len(faults) - 12), file=sys.stderr)
         return 1
+    check_lengths(notes_dir.parent, research_records)
 
     scratch = out.with_name(out.name + ".new")
     shutil.rmtree(scratch, ignore_errors=True)

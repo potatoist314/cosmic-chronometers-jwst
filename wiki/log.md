@@ -1001,3 +1001,9 @@
 - Pages: [[research/direction]], [[research/questions/q-emission-lines]]
 - Change: On Liu Hao's feedback the roadmap item holds one sentence and its link to `q-emission-lines`. All evidence moved to the question as one-fact bullets in full words under five headings; code locators, paths and column names moved to its References. Every fact and unverified mark kept. Wording by Codex gpt-6-astra from a fact sheet; two bullets and the log entry by Claude.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] infrastructure | Publish-time length check
+
+- Pages: `build.py`, `length-baseline.txt`, `tests/test_length.py`
+- Change: wiki/build.py runs check_lengths() before output: standard-library-only, no model call, whitespace-split words. Roadmap titles plus details exceeding 30 words or wiki/{notes,research} paragraphs exceeding 60 (excluding README/templates/activity) print '<path>: <task id or line>: N words (cap M)' and raise SystemExit. wiki/length-baseline.txt records 3 roadmap items and 46 paragraphs that exceed caps; they pass until growth. Wording by Codex gpt-6-astra from a fact sheet; entry assembled by Claude. Liu Hao accepted the check on 2026-09-21: "a cheap check would be good."
+- Validation: `python3 wiki/build.py`, `wiki/tests/test_length.py`, `python3 -m unittest discover -s wiki/tests`, `wiki/tests/run_tests.py`.
