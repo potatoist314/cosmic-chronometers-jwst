@@ -52,6 +52,7 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 
 - `research/questions/q-fitting-choices.md` — calibration, priors, masks and nuisance parameters
 - `research/questions/q-mock-recovery.md` — mock recovery, including the planned quiescent injection
+- `research/questions/q-cosmos-photometry.md` — COSMOS 2020/2025 photometry in place of COSMOS2015; priority-10 roadmap task
 - `research/questions/q-emission-lines.md` — model, mask or ignore emission lines; evidence for the priority-9 roadmap task
 - `research/questions/q-external-validation.md` — fit outputs against independent literature measurements
 - `research/questions/q-sample-selection.md` — DR2 inputs and inferred quiescence

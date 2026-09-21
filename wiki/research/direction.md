@@ -36,6 +36,13 @@ date: 2026-09-15
     "details": "Set up appropriate science skills and workflow creation for this workspace. Outline a proper format for agents' wiki submissions."
   },
   {
+    "id": "cosmos-2020-2025-photometry",
+    "title": "Replace COSMOS2015 photometry with COSMOS 2020/2025",
+    "priority": 10,
+    "source": "wiki/research/questions/q-cosmos-photometry.md",
+    "details": "Replace COSMOS2015 photometry with COSMOS 2020/2025 photometry in the Ceridwen fits and see what changes in the fit."
+  },
+  {
     "id": "calibration-polynomial",
     "title": "Investigate the calibration polynomial",
     "priority": 9,
@@ -259,6 +266,10 @@ date: 2026-09-15
     "date": "2026-09-21",
     "text": "very annoying - add this new info to the wiki",
     "display_text": "Very annoying - add this new info to the wiki."
+  },
+  {
+    "date": "2026-09-21",
+    "text": "High research priority (10) - incorporate COSMOS 2020/2025 photometry as a replacement for 2015 and see what changes in the fit"
   }
 ]
 ```
