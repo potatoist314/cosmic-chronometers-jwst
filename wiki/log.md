@@ -1059,3 +1059,9 @@
 - Pages: research/checkins/2026-09-21.md.
 - Change: Added Questions item 5 in Liu Hao’s lightly edited words: data sources more modern than LEGA-C DR2, or JWST sources, to fit as well. Question only; no answer, figure or link. Original message appended to Your words.
 - Validation: python3 wiki/build.py, wiki/tests/run_tests.py, test_research.py.
+
+## [2026-09-21] edit | DR2 alpha/Fe and t50 versus mass
+
+- Pages: research/checkins/2026-09-21.md, research/experiments/e-afe-t50-vs-mass.md.
+- Change: Added Done item 7 to the check-in: [alpha/Fe] and t50 against log stellar mass for the 187-galaxy bulk DR2 fit (`results/dr2-quiescent-new-defaults`). Figure `wiki/analyses/dr2-quiescent-sample/afe-t50-vs-mass.png` from `scripts/plot_dr2_afe_t50_vs_mass.py`. Four bullets record settings differing from the current notebook: calibration order 3 vs 10; tau_dust prior upper limit 2 vs 1; z fixed vs free; sigma_star fixed vs free. Added experiment record under q-population-results with Liu Hao's original words; appended both messages to the check-in's Your words.
+- Validation: `python3 wiki/build.py` passed. `wiki/tests/run_tests.py`: 1 failure (resumable note carries the question box). `test_research.py`: 1 failure (analyses calibration-order, m1-210210-reference, calibration-speedup not linked). Neither failure is in these pages. Page checked headless at 1440 and 900 px.
