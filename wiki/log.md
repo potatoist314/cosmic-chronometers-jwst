@@ -1089,3 +1089,9 @@
 - Pages: [[research/direction]], [[research/questions/q-emission-lines]]
 - Change: Liu Hao's 2026-09-21 message appended to Amendments and to the question's words; roadmap task `emission-line-marginalisation` at his priority 9, one sentence, effort "Unsure what this is and how to implement it" from his words, linked to the existing question `q-emission-lines`. No plan or claims added. The metallicity evolution item was shortened to pass the 30-word check. Sentence by Codex gpt-6-astra, shortened; log entry by Claude.
 - Validation: wiki build with the length check, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] roadmap | Refit the big DR2 sample with new settings, priority 8
+
+- Pages: [[research/direction]]
+- Change: Liu Hao's 2026-09-21 message appended to Amendments; roadmap task `dr2-sample-new-settings` at his priority 8, one sentence, placed after `alpha-fe-t50-vs-mass` and linked to the record `e-afe-t50-vs-mass`, which holds the bulk-DR2 plot made with the old settings. That record was not edited. No plan or claims added. Sentence by Codex gpt-6-astra, "DR2" and "big" restored to his wording; log entry by Claude.
+- Validation: wiki build with the length check, `wiki/tests/run_tests.py` and `test_research.py`.

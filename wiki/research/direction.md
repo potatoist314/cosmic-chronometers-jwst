@@ -92,6 +92,13 @@ date: 2026-09-15
     "details": "Do plots of something like \\([\\alpha/\\mathrm{Fe}]\\) versus stellar mass, and \\(t_{50}\\) versus stellar mass. The physical justification is that you can constrain a relative trend given only a corner plot distribution if you can plot against some x axis."
   },
   {
+    "id": "dr2-sample-new-settings",
+    "title": "Refit the big DR2 sample with new settings",
+    "priority": 8,
+    "source": "wiki/research/experiments/e-afe-t50-vs-mass.md",
+    "details": "Fit the new settings to the big DR2 sample to uncover large-scale trends across the sample, such as \\([\\alpha/\\mathrm{Fe}]\\) versus mass."
+  },
+  {
     "id": "rising-sfh-continuity-prior",
     "title": "Consider adding a rising SFH continuity prior",
     "priority": 8,
@@ -307,6 +314,11 @@ date: 2026-09-15
     "date": "2026-09-21",
     "text": "high priority but unsure implementation (priority 9) - try and account for h beta et cetera emission through marginalisation - not too sure what this is, but it fits some gaussian for the emission line to incorporate for its effect, so no longer need to mask the line (which contains information)",
     "display_text": "High priority but unsure implementation (priority 9): try and account for H-beta et cetera emission through marginalisation. Not too sure what this is, but it fits some Gaussian for the emission line to incorporate for its effect, so no longer need to mask the line (which contains information)."
+  },
+  {
+    "date": "2026-09-21",
+    "text": "moderate priority (8) - try fitting new settings to the big dr2 sample to uncover large scale trends (e.g. alpha fe versus mass) across the datasample",
+    "display_text": "Moderate priority (8): try fitting new settings to the big DR2 sample to uncover large-scale trends (e.g. alpha/Fe versus mass) across the data sample."
   }
 ]
 ```
