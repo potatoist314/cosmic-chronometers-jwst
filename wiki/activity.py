@@ -221,7 +221,6 @@ def save(root, project, records, kind, ident, payload, *, origin="wiki"):
             os.replace(staging, target / event["id"])
             with directory_fd(target) as fd:
                 os.fsync(fd)
-        research_figures.notebook.cache_clear()
         return snapshot(root, kind, ident)
 
 

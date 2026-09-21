@@ -2,6 +2,7 @@
 
 import html
 import json
+import os
 import re
 from datetime import date
 from pathlib import Path
@@ -47,21 +48,21 @@ def parse(path):
     if kind not in SECTIONS:
         raise ValueError("kind must be direction, question or experiment")
     # A heading inside a fenced message is part of the user's text, not structure.
-    current, fence = None, False
+    current, fence, lines = None, False, {}
     for line in body.splitlines(keepends=True):
         if line.startswith("```"):
             fence = not fence
         if line.startswith("## ") and not fence:
             current = line[3:].strip()
-            if current not in SECTIONS[kind] or current in record["sections"]:
+            if current not in SECTIONS[kind] or current in lines:
                 raise ValueError("unknown or repeated section: " + current)
-            record["sections"][current] = ""
+            lines[current] = []
         elif current:
-            record["sections"][current] += line
+            lines[current].append(line)
         elif line.strip():
             raise ValueError("content must belong to a named section")
     for name in SECTIONS[kind]:
-        content = record["sections"].get(name, "").strip()
+        content = "".join(lines.get(name, [])).strip()
         if name in MESSAGE_SECTIONS or name in {"Runs", "Figures", "Roadmap"}:
             if not content:
                 value = []
@@ -97,6 +98,9 @@ def load(directory):
     return records, faults
 
 
+_ROOTS = {}
+
+
 def asset_url(target, base, project):
     """Project-relative evidence links use the existing read-only file route."""
     parsed = urlsplit(target)
@@ -106,13 +110,15 @@ def asset_url(target, base, project):
         return target
     if parsed.scheme or parsed.netloc or target.startswith("/"):
         raise ValueError("use a project-relative file or an http(s) URL: " + target)
-    path = (project / unquote(parsed.path)).resolve()
-    try:
-        relative = path.relative_to(project.resolve())
-    except ValueError as exc:
-        raise ValueError("evidence leaves the project: " + target) from exc
-    if not path.is_file():
+    root = _ROOTS.get(project)
+    if root is None:
+        root = _ROOTS[project] = os.path.realpath(project)
+    path = os.path.normpath(os.path.join(root, unquote(parsed.path)))
+    if not path.startswith(root + os.sep):
+        raise ValueError("evidence leaves the project: " + target)
+    if not os.path.isfile(path):
         raise ValueError("missing evidence file: " + target)
+    relative = Path(path[len(root) + 1:])
     if relative.parent == Path("wiki/notes") and relative.suffix == ".md":
         return base + "/n/" + quote(relative.stem) + "/" + (
             "#" + parsed.fragment if parsed.fragment else "")
@@ -603,7 +609,6 @@ def write_pages(records, notes, scratch, base, builder):
         page(path, title, '<div class="prose">' + body + '</div>')
     (scratch / "research.js").write_text(FILTER_JS, encoding="utf-8")
     (scratch / "figures.js").write_text(research_figures.JS, encoding="utf-8")
-    research_figures.notebook.cache_clear()
     return search
 
 

@@ -1,33 +1,78 @@
-"""Render saved research figures without executing or modifying their sources."""
+"""Render saved research figures without executing or modifying their sources.
+
+A notebook's PNG outputs are extracted once per notebook version into
+`wiki/public.cache/<notebook>/<size>-<mtime>/c<cell>-o<output>.png` and linked
+into each build from there, so a build reads no notebook it has already seen.
+"""
 
 import base64
 import binascii
 import html
 import json
-from functools import lru_cache
+import os
+import shutil
 from pathlib import Path
 from urllib.parse import quote
 
 VIEWS = ("Fits", "SFH", "Posteriors", "Comparison")
+CACHE = "wiki/public.cache"
+PNG = b"\x89PNG\r\n\x1a\n"
 esc = html.escape
 
 
-@lru_cache(maxsize=1)
-def notebook(path):
-    return json.loads(path.read_text(encoding="utf-8"))
+def store(project):
+    return project / CACHE
+
+
+def extracted(project, relative):
+    """The directory holding every PNG output of one notebook, extracted on first use."""
+    source = os.path.join(project, relative)
+    status = os.stat(source)
+    version = os.path.join(project, CACHE, os.path.splitext(relative)[0],
+                           "%d-%d" % (status.st_size, status.st_mtime_ns))
+    if os.path.isdir(version):
+        return version
+    version = Path(version)
+    home = version.parent
+    staging = home / (version.name + ".tmp-%d" % os.getpid())
+    shutil.rmtree(staging, ignore_errors=True)
+    staging.mkdir(parents=True)
+    cells = json.loads(Path(source).read_text(encoding="utf-8"))["cells"]
+    for cell_index, cell in enumerate(cells):
+        for output_index, output in enumerate(cell.get("outputs", [])):
+            encoded = output.get("data", {}).get("image/png") if isinstance(output, dict) else None
+            if encoded is None:
+                continue
+            encoded = "".join(encoded) if isinstance(encoded, list) else encoded
+            try:
+                data = base64.b64decode(encoded, validate=False)
+            except (TypeError, binascii.Error):
+                continue
+            if data.startswith(PNG):
+                (staging / ("c%d-o%d.png" % (cell_index, output_index))).write_bytes(data)
+    try:
+        staging.rename(version)
+    except OSError:                              # another process extracted it first
+        shutil.rmtree(staging, ignore_errors=True)
+    for stale in home.iterdir():
+        if stale != version and not stale.name.endswith(".tmp-%d" % os.getpid()):
+            shutil.rmtree(stale, ignore_errors=True)
+    return str(version)
+
+
+def image_path(project, figure):
+    try:
+        path = os.path.join(extracted(project, figure["notebook"]), "c%d-o%d.png" % (figure["cell"], figure["output"]))
+    except (KeyError, TypeError, ValueError, OSError) as exc:
+        raise ValueError("missing or invalid saved PNG output") from exc
+    if not os.path.isfile(path):
+        raise ValueError("missing or invalid saved PNG output")
+    return path
 
 
 def image_bytes(project, figure):
-    try:
-        output = notebook(project / figure["notebook"])["cells"][figure["cell"]]["outputs"][figure["output"]]
-        encoded = output["data"]["image/png"]
-        encoded = "".join(encoded) if isinstance(encoded, list) else encoded
-        data = base64.b64decode(encoded, validate=False)
-        if not data.startswith(b"\x89PNG\r\n\x1a\n"):
-            raise ValueError("saved output is not a PNG")
-        return data
-    except (KeyError, IndexError, TypeError, ValueError, binascii.Error) as exc:
-        raise ValueError("missing or invalid saved PNG output") from exc
+    with open(image_path(project, figure), "rb") as saved:
+        return saved.read()
 
 
 def validate(records, project, asset_url):
@@ -69,10 +114,9 @@ def validate(records, project, asset_url):
                         raise ValueError("notebook must belong to the identified run")
                     if figure.get("target") != run.get("target") or figure.get("arm") != run.get("arm"):
                         raise ValueError("figure target and arm must match its run")
-                    image_bytes(project, figure)
+                    image_path(project, figure)
             except (ValueError, OSError) as exc:
                 faults.append(prefix + "figure %d: %s" % (index, exc))
-    notebook.cache_clear()
     return faults
 
 
@@ -84,7 +128,11 @@ def image_url(figure, project, scratch, base, asset_url):
     output = scratch / relative
     if not output.exists():
         output.parent.mkdir(parents=True, exist_ok=True)
-        output.write_bytes(image_bytes(project, figure))
+        source = image_path(project, figure)
+        try:
+            os.link(source, output)
+        except OSError:
+            shutil.copyfile(source, output)
     return base + "/" + quote(relative.as_posix())
 
 

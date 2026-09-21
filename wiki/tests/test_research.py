@@ -3,6 +3,7 @@
 import base64
 import importlib.util
 import json
+import shutil
 import re
 import subprocess
 import sys
@@ -557,6 +558,31 @@ class ResearchTests(unittest.TestCase):
         image = out / "research-images/results/e-low-dust/analysis/c0-o0.png"
         self.assertEqual(image.read_bytes(), png)
         self.assertIn('research-images/results/e-low-dust/analysis/c0-o0.png', (out / "e/e-low-dust/index.html").read_text())
+
+    def test_cached_build_matches_a_cold_build_and_follows_notebook_edits(self):
+        sections, png = self.notebook_figure()
+        self.write("experiment", "e-low-dust", "results-ready", sections, question="q-dust")
+        cache = self.project / "wiki/public.cache"
+        shutil.rmtree(cache, ignore_errors=True)
+        cold = self.tree(self.build())
+        entries = sorted(cache.glob("results/e-low-dust/analysis/*"))
+        self.assertEqual(len(entries), 1)
+        self.assertEqual((entries[0] / "c0-o0.png").read_bytes(), png)
+        notebook = self.project / sections["Runs"][0]["artifacts"][0]["path"]
+        notebook.write_text(json.dumps({"cells": [{"cell_type": "code", "source": [], "outputs": [
+            {"output_type": "display_data", "data": {"image/png": "not a picture"}}]}]}))
+        self.assertIn("saved PNG", "\n".join(self.faults()))
+        self.assertEqual(list(cache.glob("results/e-low-dust/analysis/*/*.png")), [])
+        notebook.write_text(json.dumps({"cells": [{"cell_type": "code", "source": ["1"], "outputs": [
+            {"output_type": "display_data", "data": {"image/png": base64.b64encode(png).decode()}}]}]}))
+        self.assertEqual(self.faults(), [])
+        self.assertEqual(self.tree(self.build()), cold)
+        versions = sorted(cache.glob("results/e-low-dust/analysis/*"))
+        self.assertEqual(len(versions), 1)
+        self.assertNotEqual(versions[0].name, entries[0].name)
+
+    def tree(self, out):
+        return {p.relative_to(out).as_posix(): p.read_bytes() for p in out.rglob("*") if p.is_file()}
 
     def test_wrong_target_arm_notebook_and_output_are_rejected(self):
         sections, _ = self.notebook_figure()

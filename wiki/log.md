@@ -993,7 +993,7 @@
 ## [2026-09-21] infrastructure | Wiki edits go live in seconds
 
 - Pages: `research_figures.py`, `research.py`, `build.py`, `scripts/publish_wiki.py`, `tests/test_research.py`, [[AGENTS]]
-- Change: wiki/research_figures.py caches notebook PNGs by notebook version and hardlinks them into builds. NAS build time fell from 79.9 s to 3.4 s, Mac from 28.7 s to 3.7 s. research.py joins section text once and checks evidence paths with os.path. The watcher sends files whose size or time changed over one shared SSH connection. Partial publication takes 5.7 s, an unchanged check 0.3 s. Tests compare cold and cached outputs byte for byte and check cache replacement after notebook edits. Wording by Codex gpt-6-astra from a fact sheet; entry assembled by Claude.
+- Change: wiki/research_figures.py caches notebook PNGs by notebook version and hardlinks them into builds. NAS build time fell from 79.9 s to 3.4 s, Mac from 28.7 s to 3.7 s. research.py joins section text once and checks evidence paths with os.path. The watcher sends files whose size or time changed over one shared SSH connection. Partial publication takes 5.7 s, an unchanged check 0.3 s. On 2026-09-21, NAS nginx showed a note edit 8.7 s after saving and its revert after 9.4 s, previously about 106 s. Tests compare cold and cached outputs byte for byte and check cache replacement after notebook edits. Wording by Codex gpt-6-astra from a fact sheet; entry assembled by Claude.
 - Validation: `wiki/tests/run_tests.py`, `python3 -m unittest discover -s wiki/tests`, a timed save measured at the NAS.
 
 ## [2026-09-21] roadmap | Priority-9 emission-line item cut to one sentence

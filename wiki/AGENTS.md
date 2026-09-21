@@ -191,7 +191,10 @@ direction and scientific methodology.
   Pages live at the site root; `/wiki/...` links from before 2026-09-18 redirect permanently.
   `scripts/publish_wiki.py` pulls the research activity the browser saved there, sends the wiki
   sources, `scripts/serve_wiki.py` and every project file linked through `/f/`, then the NAS
-  builds its own `public/`. A launchd agent on the Mac runs it after each build and every 30 minutes.
+  builds its own `public/`. The launchd agent `com.liuhao.astro-wiki-publish` keeps
+  `scripts/publish_wiki.py --watch` running. The watcher polls sources every second and publishes
+  after one poll with no changes. It sends files whose size or time changed and syncs everything
+  every 30 minutes.
   A build on the Mac is for checking; nothing serves it. Deployment files: `scripts/truenas-wiki/`.
   The question box needs the Mac's bridge, so the NAS pages do not show it.
 - `tests/run_tests.py` fails the build when the generator writes prose.
