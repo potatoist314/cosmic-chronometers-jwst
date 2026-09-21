@@ -965,3 +965,9 @@
 - Pages: [[notes/weak-emission-quiescent]], [[research/experiments/e-weak-emission-literature]]
 - Change: Six citations on faint emission and H-beta infill checked against the arXiv PDFs; Gonzalez 1993 (thesis) not read. The note tables incidence, power source, the H-beta to [O III] ratio, infill and age, z 0.6-0.9 results, and the emission selection and mask of the 187 fitted galaxies read from the local DR2 catalogue. Every row carries a check mark: PDF, not read, derived, textbook or repo. The record keeps the question as relayed in the task brief, not verbatim. Note and record wording by Codex gpt-6-astra from a fact sheet; log entry by Claude.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] roadmap | Emission lines: model, mask or ignore, priority 9
+
+- Pages: [[research/direction]], [[research/questions/q-emission-lines]], [[research/experiments/e-weak-emission-literature]]
+- Change: Liu Hao's 2026-09-21 message appended to Amendments; roadmap task `emission-lines-model-mask-ignore` at his priority 9, linked to the new question `q-emission-lines`, which holds his words, the three options, the DR2 catalogue facts and the evidence links. No decision recorded. `ceridwen.neb.NebularModel` exists and is unused in the production fit. His question on circularity and his request to add the explanation are appended to Amendments; the five-point explanation and a Balmer recount on the 117 fitted galaxies covering all three lines (H-beta 2, H-gamma 5, H-delta 10) are in the item details and the question; Case B ratios marked unverified. Question wording by Codex gpt-6-astra from a fact sheet; log entry by Claude.
+- Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.

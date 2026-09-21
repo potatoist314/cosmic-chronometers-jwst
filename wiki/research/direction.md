@@ -56,6 +56,13 @@ date: 2026-09-15
     "source": "wiki/research/direction.md"
   },
   {
+    "id": "emission-lines-model-mask-ignore",
+    "title": "Model, mask or ignore emission lines, with a physically justified reason",
+    "priority": 9,
+    "source": "wiki/research/questions/q-emission-lines.md",
+    "details": "Decide whether the Ceridwen fits model, mask or ignore emission lines. The decision needs a physically justified reason and belongs to Liu Hao. Evidence: question q-emission-lines. (1) DR2 Balmer-emission EWs: partly circular, dependent on LEGA-C stellar-model absorption depths. (2) [O II]/[O III]: nearly model-free, little stellar absorption; empirical H-beta bound: ~0.6x[O III]5007, range 0.33-1.25 (Trager+2000a). (3) Recombination-fixed Case B ratios: H-gamma/H-beta~0.47, H-delta/H-beta~0.26 (textbook, unverified); gas: H-beta easiest. (4) |EW/err|>=3: H-delta/H-gamma/H-beta=13/7/2; reverse order, suggesting stellar-template mismatch over gas, subject to recount. (5) No-mask Ceridwen: self-test, not truth-test. Recount: fitted galaxies, three-line EW_err coverage: 117/187, z=0.60-0.89; H-beta/H-gamma/H-delta=2/5/10. Three Lick indices present: 129; 2/7/13. 2 H-beta detections (M13_253688, M15_89153, z=0.84): H-gamma/H-delta below 3 sigma. 10 H-delta detections: catalogued H-beta emission 0.00-0.44 A or blank. EW versus flux ratios: continuum-ratio factor."
+  },
+  {
     "id": "literature-comparison",
     "title": "Compare published methods, ages and metallicities",
     "priority": 8,
@@ -227,6 +234,21 @@ date: 2026-09-15
     "date": "2026-09-17",
     "text": "research priority to add - look into why conroy dust index is railing and UV is so weak - 9/10 priority",
     "display_text": "Research priority to add: look into why the Conroy dust index is railing and the UV is so weak. 9/10 priority."
+  },
+  {
+    "date": "2026-09-21",
+    "text": "okay, add this to one of the research priorities on the wiki, priority of 9, to either model, mask, or ignore emission lines, but with a physically justified reason.",
+    "display_text": "Okay, add this to one of the research priorities on the wiki, priority of 9: to either model, mask, or ignore emission lines, but with a physically justified reason."
+  },
+  {
+    "date": "2026-09-21",
+    "text": "this seems really circular? using a model to decide what a sed model should do? or is there some independence i'm not seeing here",
+    "display_text": "This seems really circular? Using a model to decide what an SED model should do? Or is there some independence I'm not seeing here?"
+  },
+  {
+    "date": "2026-09-21",
+    "text": "ugh. add this explanation to the wiki priority 9 item.",
+    "display_text": "Ugh. Add this explanation to the wiki priority 9 item."
   }
 ]
 ```

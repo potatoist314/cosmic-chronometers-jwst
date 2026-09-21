@@ -6,7 +6,7 @@ date: 2026-09-21
 origin: new
 status: planned
 question: q-sample-selection
-related_questions: q-fitting-choices
+related_questions: q-fitting-choices, q-emission-lines
 follow_up:
 ---
 
