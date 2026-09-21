@@ -26,6 +26,7 @@ Replace COSMOS2015 photometry with COSMOS 2020/2025 photometry in the Ceridwen f
 
 - Roadmap task `cosmos-2020-2025-photometry`, [direction](wiki/research/direction.md)
 - [cosmos-photometry-comparison](wiki/notes/cosmos-photometry-comparison.md)
+- [e-cosmos-photometry-refit](wiki/research/experiments/e-cosmos-photometry-refit.md)
 
 ## Decisions
 

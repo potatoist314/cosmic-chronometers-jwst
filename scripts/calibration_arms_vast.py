@@ -50,6 +50,12 @@ notebook; the template keeps its defaults::
 
     no_emission_mask   CERIDWEN_SETTINGS_OVERRIDE={"emission_lines": []}
 
+Photometry arms (2026-09-21, results/cosmos-photometry-refit), totals from
+``scripts/cosmos_photometry.py``::
+
+    cosmos2020_classic CERIDWEN_SETTINGS_OVERRIDE={"photometry": "cosmos2020_classic"}
+    cosmos2025         CERIDWEN_SETTINGS_OVERRIDE={"photometry": "cosmos2025"}
+
 The tilt-4 mock arms (mock_tilt4_*) were removed on 2026-09-15; their stored
 fits stay in results/calibration-polynomial-dr2 and results/fit-accuracy-knobs.
 
@@ -128,6 +134,10 @@ ARMS = {
     # Generation 5, SETTINGS overrides (2026-09-21, results/no-emission-mask): the production
     # notebook with a JSON dict merged into SETTINGS in the executed copy.
     "no_emission_mask": {"CERIDWEN_SETTINGS_OVERRIDE": '{"emission_lines": []}'},
+    # Generation 6, photometry catalogue (2026-09-21, results/cosmos-photometry-refit): COSMOS2020
+    # Classic or COSMOS2025 total fluxes in place of COSMOS2015 cosmos_total.
+    "cosmos2020_classic": {"CERIDWEN_SETTINGS_OVERRIDE": '{"photometry": "cosmos2020_classic"}'},
+    "cosmos2025": {"CERIDWEN_SETTINGS_OVERRIDE": '{"photometry": "cosmos2025"}'},
 }
 DEFAULT_BASE_SEED = 20260830          # == run_ceridwen_vast_multi_gpu.DEFAULT_BASE_SEED
 # Independent NSS repeats of the production model: same data, shifted seed.
