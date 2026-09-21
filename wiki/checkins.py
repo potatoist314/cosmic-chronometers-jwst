@@ -11,7 +11,7 @@ Reorder or delete IDs to curate the page.
 A source can also carry sections of hand-written items. `## Your words` holds the
 original messages. Every other section is a fenced JSON array of items:
 `text`, optional `points`, optional `link`, and one of `figure` (`<experiment>:<index>`),
-`image` (`path`, or `notebook`, `cell`, `output`) or `code` (`notebook`, `cell`, `from`, `until`).
+`image` (`path`, or `notebook`, `cell`, `output`; a list stacks several) or `code` (`notebook`, `cell`, `from`, `until`).
 `research.write_pages` renders the pages during the wiki build.
 """
 import argparse
@@ -131,15 +131,17 @@ def snippet(project, code):
 
 def item_html(item, by_id, project, scratch, base, builder):
     media = ""
-    if item.get("figure") or item.get("image"):
-        figure = item.get("image")
-        if item.get("figure"):
-            experiment, index = item["figure"].rsplit(":", 1)
-            figure = by_id[experiment]["sections"]["Figures"][int(index)]
-        src = research_figures.image_url(figure, project, scratch, base, research.asset_url)
-        media = '<figure><a href="%s"><img src="%s" alt="%s" loading="lazy"></a></figure>' % (
-            esc(src), esc(src), esc(builder.math_text(item["text"])))
-    elif item.get("code"):
+    for key in ("figure", "image"):
+        for figure in [item[key]] if isinstance(item.get(key), (str, dict)) else item.get(key, []):
+            if key == "figure":
+                experiment, index = figure.rsplit(":", 1)
+                figure = by_id[experiment]["sections"]["Figures"][int(index)]
+            src = research_figures.image_url(figure, project, scratch, base, research.asset_url)
+            media += '<figure><a href="%s"><img src="%s" alt="%s" loading="lazy"></a></figure>' % (
+                esc(src), esc(src), esc(builder.math_text(item["text"])))
+    if media.count("<figure>") > 1:
+        media = '<div class="stack">%s</div>' % media
+    if not media and item.get("code"):
         media = builder.markdown("```python\n%s\n```" % snippet(project, item["code"]), base)
     text = inline(item["text"])
     if item.get("link"):
@@ -227,6 +229,8 @@ main{max-width:none;padding:0 48px 60px}
 .items .pair{grid-template-columns:minmax(0,1fr) 310px}
 .item figure a{display:block}
 .item figure img{max-height:calc(100vh - 60px)}
+.stack{display:grid;row-gap:20px;justify-items:start;min-width:0}
+.items .pair>.facts{position:sticky;top:20px}
 .item pre{margin:0;max-width:none;overflow-x:auto;font-size:.72rem;line-height:1.55}
 .item .facts{font-variant-numeric:normal}
 .item .facts li{position:relative;padding:0 0 8px 1em;font-size:1rem;line-height:1.45;color:var(--ink-2)}
@@ -241,7 +245,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-of
   .pair{display:block}
   .pair .facts{margin-top:12px}
   .items .pair{display:flex;flex-direction:column-reverse;gap:14px}
-  .items .pair .facts{margin-top:0;max-width:60ch}
+  .items .pair .facts{margin-top:0;max-width:60ch;position:static}
   .items .pair>pre,.items .pair>figure{max-width:100%}
 }
 @media(max-width:760px){main{padding:0 20px 48px}.ci-head{height:auto;padding:18px 0 14px;flex-wrap:wrap}}

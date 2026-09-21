@@ -1022,3 +1022,9 @@
 - Sources also accept sections of hand-written items in fenced JSON: `text`, `points`, `link`, and one of `figure` (`<experiment>:<index>`), `image`, or code from a notebook cell. `## Your words` preserves the messages in a collapsed Research record.
 - The first page contains Liu Hao’s Done and Questions items. `research.py`’s `write_pages` calls `checkins.write_pages`; `wiki/build.py` is unchanged.
 - Validation: `python3 wiki/build.py`, `wiki/tests/run_tests.py`, `test_research.py`; page checked at 1440 and 900 px.
+
+## [2026-09-21] edit | Check-in 2026-09-21 figures
+
+- Pages: research/checkins/2026-09-21.md; checkins.py.
+- Change: Done 2 replaces six-galaxy polynomial figure with results/m1-210210-reference/fit-M1_210210.png (order 3/10 model spectra on data). Done 4 shows spectrum fit with pulls from tau-1 poly10 executed notebook (cell 14, output 2). Questions 2 shows photometry/model SED with pulls (same cell, output 1) above dust corner. checkins.py stacks image/figure lists. No figure repeats.
+- Validation: python3 wiki/build.py, wiki/tests/run_tests.py, test_research.py; page checked at 1440 and 900 px.
