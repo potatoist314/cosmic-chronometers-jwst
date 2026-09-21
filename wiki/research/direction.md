@@ -112,7 +112,7 @@ date: 2026-09-15
     "title": "Simple parametric metallicity evolution model",
     "priority": 7,
     "source": "wiki/research/questions/q-metallicity-evolution.md",
-    "details": "Try fitting a simple parametric metallicity evolution model with one free parameter or so, apart from just a fixed metallicity; Liu Hao is unsure how to implement it.",
+    "details": "Try fitting a simple parametric metallicity evolution model with one free parameter or so, apart from just a fixed metallicity.",
     "effort": "Unsure on implementation"
   },
   {
