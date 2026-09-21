@@ -94,6 +94,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 - `notes/calibration-speedup.md` — Calibration polynomial speed-up (2026-09-15)
 - `notes/m1-210210-reference.md` — M1_210210 reference fit (2026-09-17)
+- `notes/no-emission-mask.md` — M1_210210 without the emission-line mask (2026-09-21)
 - `notes/ceridwen-checkpoint-spectrum-evolution.md` — Ceridwen checkpoint spectrum evolution (2026-09-04 · t_ed2b739d)
 - `notes/vast-ai-gpu-workflow.md` — Vast.ai GPU workflow (2026-08-30 · t_2fc31190)
 - `notes/modal-gpu-workflow.md` — Modal GPU workflow (2026-08-28 · old: _old/guides/modal-gpu-workflow.html · obsolete)

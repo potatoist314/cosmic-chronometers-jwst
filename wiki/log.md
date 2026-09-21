@@ -983,3 +983,9 @@
 - Pages: [[research/experiments/e-runtime-z-sigma-speed]]
 - Change: Liu Hao's 2026-09-21 message recorded. CPU profile of the M1_210210 likelihood with fixed and free z and sigma_star, the `Spectrum(baked_runtime=True)` path (ceridwen 6707c05, default off) and its equality test. Same-boot GPU benchmark planned, not run. Record wording by Codex gpt-6-astra from a fact sheet; tables and log entry by Claude.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] experiment | M1_210210 without the emission-line mask
+
+- Pages: [[notes/no-emission-mask]], [[research/experiments/e-no-emission-mask]]
+- Change: One no-mask fit of M1_210210 on Vast.ai against the stored masked fit, same seed; arm `no_emission_mask` sets `CERIDWEN_SETTINGS_OVERRIDE` and the runner merges it into `SETTINGS` in the executed copy. Record holds Figures, Measurements, Results and Caveats at status results-ready; overlaid corner picked by Liu Hao from designer previews. Wording by Codex gpt-6-astra from a fact sheet; tables generated from the saved CSVs.
+- Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
