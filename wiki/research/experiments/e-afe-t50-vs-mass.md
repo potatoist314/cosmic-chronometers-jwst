@@ -3,6 +3,7 @@ kind: experiment
 id: e-afe-t50-vs-mass
 title: \([\alpha/\mathrm{Fe}]\) and \(t_{50}\) against stellar mass, bulk DR2 fit
 date: 2026-09-21
+results_at: 2026-09-21T16:10:17+01:00
 origin: new
 status: results-ready
 question: q-population-results

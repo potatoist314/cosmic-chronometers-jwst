@@ -1115,6 +1115,12 @@
 - Change: two refits of M1_210210 on one Vast.ai RTX 5060 Ti (instance 51958216, $0.180, destroyed), arms `cosmos2020_classic` (30 bands) and `cosmos2025` (28 bands), seed 20260832. Record filled with runs, figures, measurements, results and caveats; note with corner, SFH and parameter table. Fit notebook gained the `SETTINGS["photometry"]` options and a clip on the filter-width error bars; `scripts/regenerate_fit_notebooks.py` reads the stored photometry source.
 - Validation: figures checked at 900 px; wiki build with the length check and `test_research.py` pass. `wiki/tests/run_tests.py` fails one check, "resumable note carries the question box", on note `stacked-chi2-and-median-pull`.
 
+## [2026-09-21] infrastructure | Same-day result order
+
+- Pages: `research.py`, `templates/experiment.md`, `README.md`, `tests/test_research.py`, and four experiment records dated 2026-09-21. `wiki/build.py` unchanged.
+- Change: Validate `results_at`, sort descending by `(date, results_at in UTC, id)`, add the template field, and document it. Backfill latest-result commit times (+01:00): e-cosmos-photometry-refit 22:36:55, e-afe-t50-vs-mass 16:10:17, e-runtime-z-sigma-speed 13:08:26, e-no-emission-mask 12:27:44.
+- Validation: Added a test in `tests/test_research.py`. Ran `python3 wiki/build.py`, `wiki/tests/run_tests.py`, and unittest discover. Checked the built Results page order.
+
 ## [2026-09-21] figures | Spectrum fits on the COSMOS photometry refit note
 
 - Pages: [[notes/cosmos-photometry-refit]], [[research/experiments/e-cosmos-photometry-refit]]

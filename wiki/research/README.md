@@ -207,6 +207,8 @@ outputs, data products and configuration in their established result directory.
 Read the configuration from the actual run; never substitute today's defaults.
 Do not overwrite a completed run's configuration with a later attempt.
 
+Experiment frontmatter accepts optional `results_at`: an ISO 8601 time with a UTC offset, e.g. `2026-09-21T22:36:55+01:00`. Set it when recording **Results**. Update it when a later run adds results. Lists sort by date, then `results_at`, newest first. Same-day records without `results_at` follow. The build never reads git history or file modification times.
+
 **Results** is factual Markdown written by the agent: measured quantities with
 units, comparison conditions, figures, checks and unresolved discrepancies.
 Every quantitative claim needs its source table, notebook cell or saved output.

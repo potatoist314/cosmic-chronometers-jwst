@@ -3,6 +3,7 @@ kind: experiment
 id: replace-with-experiment-id
 title: Replace with the user's wording
 date: YYYY-MM-DD
+results_at:
 origin: new
 status: planned
 question: replace-with-question-id

@@ -3,6 +3,7 @@ kind: experiment
 id: e-no-emission-mask
 title: M1_210210 fit without the emission-line mask
 date: 2026-09-21
+results_at: 2026-09-21T12:27:44+01:00
 origin: new
 status: results-ready
 question: q-fitting-choices

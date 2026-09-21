@@ -4,7 +4,7 @@ import html
 import json
 import os
 import re
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 import research_figures
@@ -157,6 +157,12 @@ def validate(records, project):
             date.fromisoformat(r.get("date", ""))
         except ValueError:
             fail("date must be YYYY-MM-DD")
+        if r.get("results_at"):
+            try:
+                if datetime.fromisoformat(r["results_at"]).utcoffset() is None:
+                    raise ValueError
+            except ValueError:
+                fail("results_at must be an ISO time with a UTC offset")
         s = r["sections"]
         existing = r.get("origin", "new") == "existing"
         if r.get("origin", "new") not in {"new", "existing"}:
@@ -305,6 +311,13 @@ def validate(records, project):
     return faults + research_figures.validate(records, project, asset_url)
 
 
+def landed(r):
+    """`results_at` in UTC, for ordering; empty when the record has none."""
+    if not r.get("results_at"):
+        return ""
+    return datetime.fromisoformat(r["results_at"]).astimezone(timezone.utc).isoformat()
+
+
 def route(r, base):
     return base + ("/q/" if r["kind"] == "question" else "/e/") + r["id"] + "/"
 
@@ -378,7 +391,8 @@ def write_pages(records, notes, scratch, base, builder):
     """Build a shared question and experiment structure, preserving source routes."""
     project = builder.PROJECT
     research_dir = getattr(builder, "RESEARCH", project / "wiki/research")
-    records = sorted(records, key=lambda r: (r["date"], r["id"]), reverse=True)
+    # Same-day records: the latest recorded result first, then records without one.
+    records = sorted(records, key=lambda r: (r["date"], landed(r), r["id"]), reverse=True)
     questions = [r for r in records if r["kind"] == "question"]
     experiments = [r for r in records if r["kind"] == "experiment"]
     by_id = {r["id"]: r for r in records}

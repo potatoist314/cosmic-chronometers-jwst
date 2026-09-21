@@ -3,6 +3,7 @@ kind: experiment
 id: e-runtime-z-sigma-speed
 title: Wall time per fit with free z and sigma_star
 date: 2026-09-21
+results_at: 2026-09-21T13:08:26+01:00
 origin: new
 status: results-ready
 question: q-compute

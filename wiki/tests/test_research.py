@@ -111,6 +111,17 @@ class ResearchTests(unittest.TestCase):
                 self.assertNotIn(label, body, str(page))
         return out
 
+    def test_same_day_records_list_the_latest_result_first(self):
+        plan = {"Before delegation": [self.message]}
+        self.write("experiment", "e-z-morning", "planned", plan, question="q-dust", results_at="2026-09-12T09:00:00+01:00")
+        self.write("experiment", "e-a-evening", "planned", plan, question="q-dust", results_at="2026-09-12T18:00:00+00:00")
+        self.assertEqual(self.faults(), [])
+        body = (self.build() / "experiments/index.html").read_text()
+        order = [body.index(">%s &amp;" % ident) for ident in ("e-a-evening", "e-z-morning", "e-low-dust")]
+        self.assertEqual(order, sorted(order))
+        self.write("experiment", "e-a-evening", "planned", plan, question="q-dust", results_at="2026-09-12 18:00")
+        self.assertTrue(any("results_at" in fault for fault in self.faults()))
+
     def test_planned_experiment_has_no_fabricated_results(self):
         self.assertEqual(self.faults(), [])
         out = self.build()
