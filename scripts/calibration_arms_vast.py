@@ -44,6 +44,12 @@ a higher Chebyshev order::
     poly5         CERIDWEN_CALIBRATION_ORDER=5
     poly10        CERIDWEN_CALIBRATION_ORDER=10
 
+SETTINGS-override arms (2026-09-21, results/no-emission-mask).  The runner merges
+``CERIDWEN_SETTINGS_OVERRIDE`` (JSON) into ``SETTINGS`` in the executed copy of the
+notebook; the template keeps its defaults::
+
+    no_emission_mask   CERIDWEN_SETTINGS_OVERRIDE={"emission_lines": []}
+
 The tilt-4 mock arms (mock_tilt4_*) were removed on 2026-09-15; their stored
 fits stay in results/calibration-polynomial-dr2 and results/fit-accuracy-knobs.
 
@@ -119,6 +125,9 @@ ARMS = {
     # new_default with a higher Chebyshev order; the 100 Angstrom mode rule.
     "poly5": {**NEW_DEFAULT, "CERIDWEN_CALIBRATION_ORDER": "5"},
     "poly10": {**NEW_DEFAULT, "CERIDWEN_CALIBRATION_ORDER": "10"},
+    # Generation 5, SETTINGS overrides (2026-09-21, results/no-emission-mask): the production
+    # notebook with a JSON dict merged into SETTINGS in the executed copy.
+    "no_emission_mask": {"CERIDWEN_SETTINGS_OVERRIDE": '{"emission_lines": []}'},
 }
 DEFAULT_BASE_SEED = 20260830          # == run_ceridwen_vast_multi_gpu.DEFAULT_BASE_SEED
 # Independent NSS repeats of the production model: same data, shifted seed.

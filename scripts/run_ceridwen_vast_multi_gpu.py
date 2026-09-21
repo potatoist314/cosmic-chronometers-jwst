@@ -312,6 +312,14 @@ def _worker(output_notebook: Path) -> int:
             return super().process_message(msg, cell, cell_index)
 
     document = nbformat.read(NOTEBOOK_PATH, as_version=4)
+    # An arm changes SETTINGS entries in the executed copy only; the template keeps its defaults.
+    override = os.environ.get("CERIDWEN_SETTINGS_OVERRIDE")
+    if override:
+        settings_cell = next(c for c in document.cells
+                             if c.cell_type == "code" and "SETTINGS = {" in c.source)
+        settings_cell.source += (
+            f"\nSETTINGS.update({json.loads(override)!r})  # arm override (CERIDWEN_SETTINGS_OVERRIDE)\n"
+        )
     client = StreamingNotebookClient(
         document,
         timeout=None,
