@@ -115,6 +115,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 ## Background reading
 
+- `notes/weak-emission-quiescent.md` — Weak emission in quiescent galaxies: incidence, power source, H-beta infill, z 0.6-0.9, and the DR2 emission selection and mask (2026-09-21 · record: e-weak-emission-literature)
 - `notes/external-comparison-samples.md` — External comparison samples: local, direct-measurement and z~0.7 literature to check fit outputs against (2026-09-21 · question: q-external-validation)
 - `notes/sfh-continuity-prior-variants.md` — SFH continuity prior and its variants (2026-09-21 · question: q-rising-continuity-prior)
 - `notes/papers-spectral-fitting.md` — Papers: stellar-population fitting (2026-08-25 · source: papers/spectral fitting/README.md)

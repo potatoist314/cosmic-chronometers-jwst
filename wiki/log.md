@@ -959,3 +959,9 @@
 - Pages: [[notes/external-comparison-samples]], [[research/questions/q-external-validation]], [[research/experiments/e-literature-ground-truth]]
 - Change: Literature review requested by Liu Hao. The note tables local early-type samples, direct measurements (dynamical and lensing masses, resolved stars, cluster spectra) and z 0.4-0.8 samples, with method, catalogue access and the definition differences against Ceridwen, and lists three first comparisons. Values read from the arXiv PDFs; unverified values and catalogue locations are omitted. No catalogue data fetched, no fit run. Note and record wording by Codex gpt-6-astra from a fact sheet; log entry by Claude.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] ingest | Weak emission in quiescent galaxies
+
+- Pages: [[notes/weak-emission-quiescent]], [[research/experiments/e-weak-emission-literature]]
+- Change: Six citations on faint emission and H-beta infill checked against the arXiv PDFs; Gonzalez 1993 (thesis) not read. The note tables incidence, power source, the H-beta to [O III] ratio, infill and age, z 0.6-0.9 results, and the emission selection and mask of the 187 fitted galaxies read from the local DR2 catalogue. Every row carries a check mark: PDF, not read, derived, textbook or repo. The record keeps the question as relayed in the task brief, not verbatim. Note and record wording by Codex gpt-6-astra from a fact sheet; log entry by Claude.
+- Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
