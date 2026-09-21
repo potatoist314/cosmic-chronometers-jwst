@@ -101,6 +101,13 @@ date: 2026-09-15
     ]
   },
   {
+    "id": "ifu-surveys-spectra-photometry",
+    "title": "Spectrum and photometry fitting: SDSS/MaNGA (spelling uncertain)",
+    "priority": 7,
+    "source": "wiki/research/questions/q-ifu-surveys.md",
+    "details": "Look into fitting spectra and photometry for SDSS/MaNGA (spelling uncertain), which Liu Hao notes are IFU surveys and categorically different."
+  },
+  {
     "id": "velocity-dispersion",
     "title": "Fit velocity dispersion as a broadening parameter",
     "priority": 6,
@@ -270,6 +277,11 @@ date: 2026-09-15
   {
     "date": "2026-09-21",
     "text": "High research priority (10) - incorporate COSMOS 2020/2025 photometry as a replacement for 2015 and see what changes in the fit"
+  },
+  {
+    "date": "2026-09-21",
+    "text": "look into fitting spectra / phot for STSS/MANGA surveys (not sure if spelt correctly) - priority 7 (these are categorically different, are IFU surveys)",
+    "display_text": "Look into fitting spectra / photometry for SDSS/MaNGA (spelling uncertain) surveys - priority 7 (these are categorically different, are IFU surveys)."
   }
 ]
 ```

@@ -51,6 +51,7 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 ## Research questions
 
 - `research/questions/q-fitting-choices.md` — calibration, priors, masks and nuisance parameters
+- `research/questions/q-ifu-surveys.md` — fitting spectra and photometry for SDSS/MaNGA (spelling uncertain); priority-7 roadmap task
 - `research/questions/q-mock-recovery.md` — mock recovery, including the planned quiescent injection
 - `research/questions/q-cosmos-photometry.md` — COSMOS 2020/2025 photometry in place of COSMOS2015; priority-10 roadmap task
 - `research/questions/q-emission-lines.md` — model, mask or ignore emission lines; evidence for the priority-9 roadmap task
