@@ -1028,3 +1028,16 @@
 - Pages: research/checkins/2026-09-21.md; checkins.py.
 - Change: Done 2 replaces six-galaxy polynomial figure with results/m1-210210-reference/fit-M1_210210.png (order 3/10 model spectra on data). Done 4 shows spectrum fit with pulls from tau-1 poly10 executed notebook (cell 14, output 2). Questions 2 shows photometry/model SED with pulls (same cell, output 1) above dust corner. checkins.py stacks image/figure lists. No figure repeats.
 - Validation: python3 wiki/build.py, wiki/tests/run_tests.py, test_research.py; page checked at 1440 and 900 px.
+
+## [2026-09-21] infrastructure | Fit settings component
+
+- Pages: `research/checkins/2026-09-21.md`; check-in page titles use the date only.
+- Change: Added `wiki/fit_settings.py`; `render(project, notebook, cell, run=None)` parses a notebook cell’s SETTINGS and PRIORS dictionaries at build time using only the standard library.
+- Two columns contain labelled, colour-coded groups: Data and masks, Stellar population, SFH, Dust, Redshift and kinematics, Calibration, Noise floors, and Sampler. Unmapped keys render ungrouped.
+- Parameter names use LaTeX; code keys appear only where no symbol exists. Notebook comments remain row labels. `zred_half_width` and `sigma_clip` are folded into the `z` and `sigma_star` priors.
+- [Fe/H] and [alpha/Fe] ranges come from the executed run’s printed priors. `emission_lines` displays line names and the mask half-width in angstroms computed from `dv` in cell 6. `sampler_quick` and `baked_runtime` are hidden.
+- Dust includes the Kriek & Conroy 2013 law evaluated by `sedpy_jax.attenuation_dust.kriek_conroy`. Noise floors includes both floor equations from cell 6 and `DiagonalNoiseModel`.
+- CSS joins `style.css` through `research.CSS`; `wiki/build.py` is unchanged.
+- Added item kind `settings` in `checkins.py`; Done item 1 uses it. Questions item 4 gained two points from `notes/sfh-continuity-prior-variants.md`.
+- Tests: `wiki/tests/test_fit_settings.py`.
+- Validation: `python3 wiki/build.py`, `wiki/tests/run_tests.py`, and unittest discovery; page checked at 1440, 900, and 400 px.

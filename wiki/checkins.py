@@ -11,7 +11,8 @@ Reorder or delete IDs to curate the page.
 A source can also carry sections of hand-written items. `## Your words` holds the
 original messages. Every other section is a fenced JSON array of items:
 `text`, optional `points`, optional `link`, and one of `figure` (`<experiment>:<index>`),
-`image` (`path`, or `notebook`, `cell`, `output`; a list stacks several) or `code` (`notebook`, `cell`, `from`, `until`).
+`image` (`path`, or `notebook`, `cell`, `output`; a list stacks several), `code` (`notebook`, `cell`, `from`, `until`)
+or `settings` (`notebook`, `cell`, optional `run`: the cell's `SETTINGS` and `PRIORS`, by `fit_settings`).
 `research.write_pages` renders the pages during the wiki build.
 """
 import argparse
@@ -22,6 +23,7 @@ import sys
 from datetime import date as Date
 from pathlib import Path
 
+import fit_settings
 import research
 import research_figures
 
@@ -99,7 +101,7 @@ def long_date(day):
 
 def rows_html(checkins, base):
     return '<ul class="feed">%s</ul>' % "".join(
-        '<li><span class="d">%s</span><span><a class="t" href="%s/checkins/%s/">Check-in, %s</a></span></li>'
+        '<li><span class="d">%s</span><span><a class="t" href="%s/checkins/%s/">%s</a></span></li>'
         % (esc(c["date"]), base, esc(c["date"]), esc(long_date(c["date"])))
         for c in reversed(checkins))
 
@@ -143,6 +145,8 @@ def item_html(item, by_id, project, scratch, base, builder):
         media = '<div class="stack">%s</div>' % media
     if not media and item.get("code"):
         media = builder.markdown("```python\n%s\n```" % snippet(project, item["code"]), base)
+    if not media and item.get("settings"):
+        media = fit_settings.render(project, **item["settings"])
     text = inline(item["text"])
     if item.get("link"):
         text = '<a href="%s">%s</a>' % (esc(research.asset_url(item["link"], base, project)), text)
@@ -158,7 +162,7 @@ def write_pages(records, scratch, base, builder, rail):
     by_id = {r["id"]: r for r in records if r["kind"] == "experiment"}
     checkins = load(getattr(builder, "RESEARCH", project / "wiki/research"))
     for checkin in checkins:
-        title = "Check-in, " + long_date(checkin["date"])
+        title = long_date(checkin["date"])
         body = '<header class="ci-head"><h1>%s</h1><a class="brand" href="%s/">%s</a></header>' % (
             esc(title), base, esc(builder.SITE_NAME))
         for position, experiment in enumerate(checkin["experiments"]):
@@ -239,6 +243,7 @@ main{max-width:none;padding:0 48px 60px}
 .item .facts li.lead::before{content:none}
 .item .facts li:last-child{padding-bottom:0}
 .nomedia .facts{max-width:60ch}
+.item .facts .katex{display:inline-block;max-width:100%}
 .checkin .research-history{margin-top:0;padding-top:12px}
 a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 @media(max-width:1000px){

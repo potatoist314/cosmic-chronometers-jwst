@@ -9,6 +9,7 @@ from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 import research_figures
 import activity
+import fit_settings
 
 
 EXPERIMENT_STATES = {
@@ -544,7 +545,7 @@ def write_pages(records, notes, scratch, base, builder):
     import checkins
     meetings = checkins.write_pages(records, scratch, base, builder, builder.rail_sections(notes, base))
     for c in meetings:
-        title = "Check-in, " + checkins.long_date(c["date"])
+        title = checkins.long_date(c["date"])
         search.append({"t": title, "u": "%s/checkins/%s/" % (base, c["date"]), "d": c["date"],
                        "s": "Meetings", "g": "check-in meeting", "x": " ".join(c["experiments"])})
     for name in ("Meetings", "Masking"):
@@ -728,3 +729,4 @@ a:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var
 @media print{nav.side,.record-sections,.status-filter{display:none}.frame{display:block}.run{break-inside:avoid}.verbatim{color:#000}}
 """
 CSS += research_figures.CSS
+CSS += fit_settings.CSS
