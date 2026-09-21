@@ -5,7 +5,7 @@ section: Analyses
 theme: Single-fit accuracy
 tags: [ceridwen, photometry, cosmos2020, cosmos2025, reference-galaxy]
 job:
-figures: [spectrum-cosmos2015-M1_210210.png, spectrum-cosmos2020_classic-M1_210210.png, spectrum-cosmos2025-M1_210210.png, corner-M1_210210.png, sfh-M1_210210.png]
+figures: [spectrum-cosmos2015-M1_210210.png, photometry-cosmos2015-M1_210210.png, spectrum-cosmos2020_classic-M1_210210.png, photometry-cosmos2020_classic-M1_210210.png, spectrum-cosmos2025-M1_210210.png, photometry-cosmos2025-M1_210210.png, corner-M1_210210.png, sfh-M1_210210.png]
 ---
 
 <figure>
@@ -14,13 +14,28 @@ figures: [spectrum-cosmos2015-M1_210210.png, spectrum-cosmos2020_classic-M1_2102
 </figure>
 
 <figure>
+<img src="figures/cosmos-photometry-refit/photometry-cosmos2015-M1_210210.png" alt="Photometry of M1_210210 with the joint Ceridwen posterior median per band and pull, COSMOS2015 reference, 12 bands fit">
+<figcaption><code>photometry-cosmos2015-M1_210210.png</code> · COSMOS2015 reference, 12 bands: M1_210210 observed total band fluxes ± fitted uncertainties; joint Ceridwen per-band posterior medians (16–84%); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls</figcaption>
+</figure>
+
+<figure>
 <img src="figures/cosmos-photometry-refit/spectrum-cosmos2020_classic-M1_210210.png" alt="LEGA-C spectrum of M1_210210 with the joint Ceridwen posterior median and pull, COSMOS2020 Classic, 30 bands fit">
 <figcaption><code>spectrum-cosmos2020_classic-M1_210210.png</code> · COSMOS2020 Classic, 30 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges</figcaption>
 </figure>
 
 <figure>
+<img src="figures/cosmos-photometry-refit/photometry-cosmos2020_classic-M1_210210.png" alt="Photometry of M1_210210 with the joint Ceridwen posterior median per band and pull, COSMOS2020 Classic, 30 bands fit">
+<figcaption><code>photometry-cosmos2020_classic-M1_210210.png</code> · COSMOS2020 Classic, 30 bands: M1_210210 observed total band fluxes ± fitted uncertainties; joint Ceridwen per-band posterior medians (16–84%); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls</figcaption>
+</figure>
+
+<figure>
 <img src="figures/cosmos-photometry-refit/spectrum-cosmos2025-M1_210210.png" alt="LEGA-C spectrum of M1_210210 with the joint Ceridwen posterior median and pull, COSMOS2025, 28 bands fit">
 <figcaption><code>spectrum-cosmos2025-M1_210210.png</code> · COSMOS2025, 28 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges</figcaption>
+</figure>
+
+<figure>
+<img src="figures/cosmos-photometry-refit/photometry-cosmos2025-M1_210210.png" alt="Photometry of M1_210210 with the joint Ceridwen posterior median per band and pull, COSMOS2025, 28 bands fit">
+<figcaption><code>photometry-cosmos2025-M1_210210.png</code> · COSMOS2025, 28 bands: M1_210210 observed total band fluxes ± fitted uncertainties; joint Ceridwen per-band posterior medians (16–84%); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls</figcaption>
 </figure>
 
 <figure>
@@ -95,7 +110,6 @@ Record
 - The executed notebook and `ceridwen_derived_outputs.h5` were regenerated on CPU from the stored posterior with `scripts/regenerate_fit_notebooks.py`; the sampler was not re-run.
 - `cosmos2025`: attempt 1 was stopped by hand after 4 minutes so attempt 2 used the fixed notebook; same seed.
 - COSMOS2025 has no zero-point offsets because none are published; its Milky Way extinction uses COSMOS2020 Classic \(E(B-V)=0.015\).
-- The photometry figure inside the executed notebooks was laid out for 12 bands; labels overlap with 30 or 28 bands. It is not shown here.
 - One galaxy. The 5% error floor sets the photometric uncertainty in most bands.
 - Liu Hao raised the price cap to $0.21/h for this rental only on 2026-09-21; the rule stays $0.11/h.
 

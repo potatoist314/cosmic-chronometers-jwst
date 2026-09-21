@@ -123,16 +123,34 @@ The Ceridwen fits use COSMOS2015 `cosmos_total` photometry, 12 bands. COSMOS2020
     "caption": "COSMOS2015 reference, 12 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges"
   },
   {
+    "path": "wiki/analyses/cosmos-photometry-refit/photometry-cosmos2015-M1_210210.png",
+    "view": "Fits",
+    "target": "M1_210210",
+    "caption": "COSMOS2015 reference, 12 bands: M1_210210 observed total band fluxes ± fitted uncertainties; joint Ceridwen per-band posterior medians (16–84%); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls"
+  },
+  {
     "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2020_classic-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
     "caption": "COSMOS2020 Classic, 30 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges"
   },
   {
+    "path": "wiki/analyses/cosmos-photometry-refit/photometry-cosmos2020_classic-M1_210210.png",
+    "view": "Fits",
+    "target": "M1_210210",
+    "caption": "COSMOS2020 Classic, 30 bands: M1_210210 observed total band fluxes ± fitted uncertainties; joint Ceridwen per-band posterior medians (16–84%); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls"
+  },
+  {
     "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2025-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
     "caption": "COSMOS2025, 28 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges"
+  },
+  {
+    "path": "wiki/analyses/cosmos-photometry-refit/photometry-cosmos2025-M1_210210.png",
+    "view": "Fits",
+    "target": "M1_210210",
+    "caption": "COSMOS2025, 28 bands: M1_210210 observed total band fluxes ± fitted uncertainties; joint Ceridwen per-band posterior medians (16–84%); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls"
   },
   {
     "path": "results/cosmos-photometry-refit/corner-M1_210210.png",
@@ -202,7 +220,7 @@ Values are posterior median ± half the 16–84% width. All fits use seed 202608
 - The executed notebook and `ceridwen_derived_outputs.h5` were regenerated on CPU from the stored posterior with `scripts/regenerate_fit_notebooks.py`; the sampler was not re-run.
 - `cosmos2025`: attempt 1 was stopped by hand after 4 minutes so attempt 2 used the fixed notebook; same seed.
 - COSMOS2025 has no zero-point offsets because none are published; its Milky Way extinction uses COSMOS2020 Classic \(E(B-V)=0.015\).
-- The photometry figure inside the executed notebooks was laid out for 12 bands; labels overlap with 30 or 28 bands. It is not shown here.
+- All three executed notebooks were regenerated on CPU from the stored posteriors after the photometry figure changed to `plot_photometry_fit` (commit `65e6966`); the sampler was not re-run.
 - One galaxy. The 5% error floor sets the photometric uncertainty in most bands.
 - Liu Hao raised the price cap to $0.21/h for this rental only on 2026-09-21; the rule stays $0.11/h.
 

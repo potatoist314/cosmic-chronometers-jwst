@@ -1126,3 +1126,9 @@
 - Pages: [[notes/cosmos-photometry-refit]], [[research/experiments/e-cosmos-photometry-refit]]
 - Change: Liu Hao, 2026-09-21: "for experiment fits like this, you have to show the big spectrum plot and photometry plot." The spectrum-fit figure of each arm, copied unchanged from the saved output of its executed notebook, now opens the note and the record's Fits view. The photometry-fit figure waits for his pick of a many-band layout.
 - Validation: figures checked at 900 px; wiki build with the length check and `test_research.py`.
+
+## [2026-09-21] figures | Photometry-fit figure with a band-name rail
+
+- Pages: [[notes/cosmos-photometry-refit]], [[research/experiments/e-cosmos-photometry-refit]], [[notes/notebook-map]], [[research/checkins/2026-09-21]]
+- Change: Liu Hao picked design A on 2026-09-21. `plot_photometry_fit` in `scripts/spectral_figures.py` draws the fit notebook's photometry figure for any band count. The executed notebooks of the COSMOS2015 reference, `cosmos2020_classic` and `cosmos2025` fits of M1_210210 were regenerated on CPU from the stored posteriors; the sampler was not re-run. The note and the record show the spectrum and photometry fit of each arm first. The photometry figure is now output 0 of cell 14, so the check-in's reference moved from output 1 to 0.
+- Validation: figures checked at 900 px; wiki build with the length check and `test_research.py`.
