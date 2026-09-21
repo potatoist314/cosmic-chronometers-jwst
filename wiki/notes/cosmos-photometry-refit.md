@@ -5,8 +5,36 @@ section: Analyses
 theme: Single-fit accuracy
 tags: [ceridwen, photometry, cosmos2020, cosmos2025, reference-galaxy]
 job:
-figures: [corner-M1_210210.png, sfh-M1_210210.png]
+figures: [spectrum-cosmos2015-M1_210210.png, spectrum-cosmos2020_classic-M1_210210.png, spectrum-cosmos2025-M1_210210.png, corner-M1_210210.png, sfh-M1_210210.png]
 ---
+
+<figure>
+<img src="figures/cosmos-photometry-refit/spectrum-cosmos2015-M1_210210.png" alt="LEGA-C spectrum of M1_210210 with the joint Ceridwen posterior median and pull, COSMOS2015 reference, 12 bands fit">
+<figcaption><code>spectrum-cosmos2015-M1_210210.png</code> · COSMOS2015 reference, 12 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges</figcaption>
+</figure>
+
+<figure>
+<img src="figures/cosmos-photometry-refit/spectrum-cosmos2020_classic-M1_210210.png" alt="LEGA-C spectrum of M1_210210 with the joint Ceridwen posterior median and pull, COSMOS2020 Classic, 30 bands fit">
+<figcaption><code>spectrum-cosmos2020_classic-M1_210210.png</code> · COSMOS2020 Classic, 30 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges</figcaption>
+</figure>
+
+<figure>
+<img src="figures/cosmos-photometry-refit/spectrum-cosmos2025-M1_210210.png" alt="LEGA-C spectrum of M1_210210 with the joint Ceridwen posterior median and pull, COSMOS2025, 28 bands fit">
+<figcaption><code>spectrum-cosmos2025-M1_210210.png</code> · COSMOS2025, 28 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges</figcaption>
+</figure>
+
+<figure>
+<img src="figures/cosmos-photometry-refit/corner-M1_210210.png" alt="Corner plot of physical-parameter posteriors for the COSMOS2015, COSMOS2020 Classic and COSMOS2025 fits of M1_210210">
+<figcaption><code>corner-M1_210210.png</code> · Physical-parameter posteriors with \(1\sigma\) contours for the COSMOS2015 reference, COSMOS2020 Classic and COSMOS2025 fits of M1_210210</figcaption>
+</figure>
+
+<figure>
+<img src="figures/cosmos-photometry-refit/sfh-M1_210210.png" alt="Star-formation history and cumulative mass fraction for the three fits of M1_210210">
+<figcaption><code>sfh-M1_210210.png</code> · Star-formation history with 16–84% band and cumulative mass fraction for the COSMOS2015 reference, COSMOS2020 Classic and COSMOS2025 fits of M1_210210</figcaption>
+</figure>
+
+<details>
+<summary>Fits</summary>
 
 Target
 : M1_210210, \(z=0.6542\), seed 20260832
@@ -26,15 +54,7 @@ Evaluation
 Record
 : experiment `e-cosmos-photometry-refit`
 
-<figure>
-<img src="figures/cosmos-photometry-refit/corner-M1_210210.png" alt="Corner plot of physical-parameter posteriors for the COSMOS2015, COSMOS2020 Classic and COSMOS2025 fits of M1_210210">
-<figcaption><code>corner-M1_210210.png</code> · Physical-parameter posteriors with \(1\sigma\) contours for the COSMOS2015 reference, COSMOS2020 Classic and COSMOS2025 fits of M1_210210</figcaption>
-</figure>
-
-<figure>
-<img src="figures/cosmos-photometry-refit/sfh-M1_210210.png" alt="Star-formation history and cumulative mass fraction for the three fits of M1_210210">
-<figcaption><code>sfh-M1_210210.png</code> · Star-formation history with 16–84% band and cumulative mass fraction for the COSMOS2015 reference, COSMOS2020 Classic and COSMOS2025 fits of M1_210210</figcaption>
-</figure>
+</details>
 
 <details open>
 <summary>Parameters</summary>

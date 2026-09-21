@@ -1114,3 +1114,9 @@
 - Pages: [[notes/cosmos-photometry-refit]], [[research/experiments/e-cosmos-photometry-refit]], [[research/questions/q-cosmos-photometry]]
 - Change: two refits of M1_210210 on one Vast.ai RTX 5060 Ti (instance 51958216, $0.180, destroyed), arms `cosmos2020_classic` (30 bands) and `cosmos2025` (28 bands), seed 20260832. Record filled with runs, figures, measurements, results and caveats; note with corner, SFH and parameter table. Fit notebook gained the `SETTINGS["photometry"]` options and a clip on the filter-width error bars; `scripts/regenerate_fit_notebooks.py` reads the stored photometry source.
 - Validation: figures checked at 900 px; wiki build with the length check and `test_research.py` pass. `wiki/tests/run_tests.py` fails one check, "resumable note carries the question box", on note `stacked-chi2-and-median-pull`.
+
+## [2026-09-21] figures | Spectrum fits on the COSMOS photometry refit note
+
+- Pages: [[notes/cosmos-photometry-refit]], [[research/experiments/e-cosmos-photometry-refit]]
+- Change: Liu Hao, 2026-09-21: "for experiment fits like this, you have to show the big spectrum plot and photometry plot." The spectrum-fit figure of each arm, copied unchanged from the saved output of its executed notebook, now opens the note and the record's Fits view. The photometry-fit figure waits for his pick of a many-band layout.
+- Validation: figures checked at 900 px; wiki build with the length check and `test_research.py`.

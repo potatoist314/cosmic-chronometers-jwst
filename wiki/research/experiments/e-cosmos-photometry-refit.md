@@ -3,6 +3,7 @@ kind: experiment
 id: e-cosmos-photometry-refit
 title: M1_210210 refit with COSMOS2020 Classic and COSMOS2025 photometry
 date: 2026-09-21
+results_at: 2026-09-21T22:36:55+01:00
 origin: new
 status: results-ready
 question: q-cosmos-photometry
@@ -115,6 +116,24 @@ The Ceridwen fits use COSMOS2015 `cosmos_total` photometry, 12 bands. COSMOS2020
 
 ```json
 [
+  {
+    "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2015-M1_210210.png",
+    "view": "Fits",
+    "target": "M1_210210",
+    "caption": "COSMOS2015 reference, 12 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges"
+  },
+  {
+    "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2020_classic-M1_210210.png",
+    "view": "Fits",
+    "target": "M1_210210",
+    "caption": "COSMOS2020 Classic, 30 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges"
+  },
+  {
+    "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2025-M1_210210.png",
+    "view": "Fits",
+    "target": "M1_210210",
+    "caption": "COSMOS2025, 28 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges"
+  },
   {
     "path": "results/cosmos-photometry-refit/corner-M1_210210.png",
     "view": "Posteriors",
