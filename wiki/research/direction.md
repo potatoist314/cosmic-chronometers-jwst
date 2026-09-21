@@ -70,6 +70,14 @@ date: 2026-09-15
     "details": "Decide whether the Ceridwen fits model, mask or ignore emission lines, on a physically justified reason."
   },
   {
+    "id": "emission-line-marginalisation",
+    "title": "Marginalise H-beta and other line emission",
+    "priority": 9,
+    "source": "wiki/research/questions/q-emission-lines.md",
+    "details": "Account for H-beta and other line emission through marginalisation, which Liu Hao describes as fitting a Gaussian so the line needs no mask.",
+    "effort": "Unsure what this is and how to implement it"
+  },
+  {
     "id": "literature-comparison",
     "title": "Compare published methods, ages and metallicities",
     "priority": 8,
@@ -294,6 +302,11 @@ date: 2026-09-15
   {
     "date": "2026-09-21",
     "text": "research priority 7 (but unsure on implementation) - try fitting a simple parametric metallicity evolution model with one free parameter or so, apart from just a fixed metallicity"
+  },
+  {
+    "date": "2026-09-21",
+    "text": "high priority but unsure implementation (priority 9) - try and account for h beta et cetera emission through marginalisation - not too sure what this is, but it fits some gaussian for the emission line to incorporate for its effect, so no longer need to mask the line (which contains information)",
+    "display_text": "High priority but unsure implementation (priority 9): try and account for H-beta et cetera emission through marginalisation. Not too sure what this is, but it fits some Gaussian for the emission line to incorporate for its effect, so no longer need to mask the line (which contains information)."
   }
 ]
 ```

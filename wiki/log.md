@@ -1083,3 +1083,9 @@
 - Pages: [[research/direction]], [[research/questions/q-metallicity-evolution]]
 - Change: Liu Hao's 2026-09-21 message appended to Amendments; roadmap task `metallicity-evolution-model` at his priority 7, one sentence, effort "Unsure on implementation" from his words, linked to the new question `q-metallicity-evolution`. No implementation plan, evidence or claims added. Sentence by Codex gpt-6-astra, one clause restored to his wording; log entry by Claude.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] roadmap | Marginalise H-beta and other line emission, priority 9
+
+- Pages: [[research/direction]], [[research/questions/q-emission-lines]]
+- Change: Liu Hao's 2026-09-21 message appended to Amendments and to the question's words; roadmap task `emission-line-marginalisation` at his priority 9, one sentence, effort "Unsure what this is and how to implement it" from his words, linked to the existing question `q-emission-lines`. No plan or claims added. The metallicity evolution item was shortened to pass the 30-word check. Sentence by Codex gpt-6-astra, shortened; log entry by Claude.
+- Validation: wiki build with the length check, `wiki/tests/run_tests.py` and `test_research.py`.

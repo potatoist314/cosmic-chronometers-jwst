@@ -111,6 +111,11 @@ The open decision is whether the Ceridwen fits model, mask or ignore emission li
     "date": "2026-09-21",
     "text": "very annoying - add this new info to the wiki",
     "display_text": "Very annoying - add this new info to the wiki."
+  },
+  {
+    "date": "2026-09-21",
+    "text": "high priority but unsure implementation (priority 9) - try and account for h beta et cetera emission through marginalisation - not too sure what this is, but it fits some gaussian for the emission line to incorporate for its effect, so no longer need to mask the line (which contains information)",
+    "display_text": "High priority but unsure implementation (priority 9): try and account for H-beta et cetera emission through marginalisation. Not too sure what this is, but it fits some Gaussian for the emission line to incorporate for its effect, so no longer need to mask the line (which contains information)."
   }
 ]
 ```
@@ -126,7 +131,7 @@ The open decision is whether the Ceridwen fits model, mask or ignore emission li
 - Nebular model: `ceridwen/ceridwen/neb/NebularGridModel.py:355-380`, `young_mask`, `RuntimeError` above 3.2e8 yr
 - CLOUDY tables: `external/fsps/nebular/ZAU_ND_mist.cont`, `external/fsps/nebular/ZAU_ND_mist.lines` (`$SPS_HOME/nebular`); `external/fsps/README.md`
 - Straatman+2018, [arXiv:1809.08236](https://arxiv.org/abs/1809.08236), section 3.1; Trager+2000a, [arXiv:astro-ph/0001072](https://arxiv.org/abs/astro-ph/0001072)
-- Roadmap task `emission-lines-model-mask-ignore`, [direction](wiki/research/direction.md)
+- Roadmap tasks `emission-lines-model-mask-ignore` and `emission-line-marginalisation`, [direction](wiki/research/direction.md)
 
 ## Decisions
 
