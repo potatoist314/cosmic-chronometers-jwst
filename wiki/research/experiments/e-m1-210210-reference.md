@@ -232,7 +232,7 @@ Fit C uses the production defaults of commit cc983ce. Its \(\ln Z\) exceeds A by
 
 \(\tau_{\mathrm{dust}}\) is 0.443 ± 0.012 in A and 0.405 ± 0.013 in C. \(\delta_{\mathrm{dust}}\) sits at the -1 bound in both fits.
 
-In C the largest KL divergences are \(z\) (11.6 bits), \(\log_{10} M_\star\) (6.6), the youngest SFR ratio (5.8) and \([\mathrm{Fe}/\mathrm{H}]\) (5.1). \(\sigma_\star\) has 0.8 bits. SFR ratios between 0.03 and 1 Gyr have at most 0.2 bits.
+In C the largest KL divergences are \(z\) (11.6 bits), \(\log_{10} M_\star\) (6.6), \(\log_{10}\) SFR in the 0-0.03 Gyr bin (5.6) and \([\mathrm{Fe}/\mathrm{H}]\) (5.1). \(\sigma_\star\) has 0.8 bits. SFR bins between 0.03 and 1 Gyr have 1.6 to 1.8 bits.
 
 ## Caveats
 

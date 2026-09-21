@@ -1096,6 +1096,13 @@
 - Change: Liu Hao's 2026-09-21 message appended to Amendments; roadmap task `dr2-sample-new-settings` at his priority 8, one sentence, placed after `alpha-fe-t50-vs-mass` and linked to the record `e-afe-t50-vs-mass`, which holds the bulk-DR2 plot made with the old settings. That record was not edited. No plan or claims added. Sentence by Codex gpt-6-astra, "DR2" and "big" restored to his wording; log entry by Claude.
 - Validation: wiki build with the length check, `wiki/tests/run_tests.py` and `test_research.py`.
 
+## [2026-09-21] figures | SFH amounts in KL figure
+
+- Pages: [[notes/m1-210210-reference]], [[research/experiments/e-m1-210210-reference]]
+- Change: Liu Hao asked on 2026-09-21 to plot absolute SFH amounts instead of ratios in the KL figure. `scripts/plot_prior_kl.py` `kl_table` now emits `log_sfr_bin` rows labelled by lookback-time edges in Gyr; the prior is a sample through `logsfr_ratios_to_sfh`.
+- Regenerated the fit notebook KL cell of the tau-1 M1_210210 fit, `wiki/analyses/m1-210210-reference/kl-M1_210210.png` and `.csv` on CPU.
+- Validation: wiki build with the length check, `wiki/tests/run_tests.py` and `test_research.py`.
+
 ## [2026-09-21] analysis | COSMOS2020 and COSMOS2025 photometry against COSMOS2015
 
 - Pages: [[notes/cosmos-photometry-comparison]], [[research/questions/q-cosmos-photometry]]

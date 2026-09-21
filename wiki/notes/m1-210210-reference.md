@@ -83,9 +83,12 @@ Quantity
 Estimate
 : `scripts/plot_prior_kl.py`, `marginal_kl_bits` in `scripts/per_galaxy_diagnostics.py`. \(u = F_{\mathrm{prior}}(\theta)\) makes the prior Uniform(0, 1). Weighted histogram of \(u\) over the dead points, 40 bins across the 0.05-99.95% range plus one outer bin each side. Bootstrap half-widths are 0.03 bits or less. Tests: Gaussian under a Uniform prior, posterior equal to prior, posterior at a prior edge.
 
+SFH bins
+: Seven log SFR ratios become derived \(\log_{10}\) SFR per SFH bin in \(M_\odot\)/yr. Draws of every sampled parameter from the stored priors pass through the notebook's `logsfr_ratios_to_sfh`. Their empirical CDF replaces the prior CDF in the same 40-bin estimator. Noise floor 0.008 bits, as for the sampled parameters.
+
 <figure>
-<img src="figures/m1-210210-reference/kl-M1_210210.png" alt="KL divergence in bits for each sampled parameter of M1_210210, fits A and C, sorted by fit C">
-<figcaption>KL divergence of each sampled parameter from its own fit's prior, sorted by fit C.</figcaption>
+<img src="figures/m1-210210-reference/kl-M1_210210.png" alt="KL divergence in bits for each sampled parameter and each SFH bin of M1_210210, fits A and C, sorted by fit C">
+<figcaption>KL divergence of each sampled parameter and of \(\log_{10}\) SFR in each SFH bin from its own fit's prior, sorted by fit C.</figcaption>
 </figure>
 
 The \(\tau_{\mathrm{dust}}\) prior widths are 2 for A and 1 for C.
