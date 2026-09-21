@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shlex
 import statistics
 import subprocess
@@ -55,7 +56,8 @@ MINIMUM_CUDA_VERSION = 12.8
 # Cap raised from $0.10 to $0.11/h on 2026-09-15; the same day: an
 # interruptible (bid) rental is fine for any run under two hours.
 FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti")
-FIT_MAX_DPH_USD = 0.11
+# CERIDWEN_FIT_MAX_DPH_USD raises the cap for one rental that Liu Hao approved by name; the rule stays $0.11/h.
+FIT_MAX_DPH_USD = float(os.environ.get("CERIDWEN_FIT_MAX_DPH_USD", "0.11"))
 FIT_MIN_RELIABILITY = 0.995
 FIT_BID_MARGIN_USD = 0.005
 FIT_MAX_INET_COST_USD_PER_TB = 5.0  # Liu Hao, 2026-09-15: "keep it less than $5/tb"
