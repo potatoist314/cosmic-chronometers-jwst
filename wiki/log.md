@@ -1013,3 +1013,12 @@
 - Pages: [[research/experiments/e-runtime-z-sigma-speed]], [[notes/model]]
 - Change: same-boot RTX 5060 Ti benchmark recorded (run, measurements, Liu Hao's two approvals under Amendments). `Spectrum(baked_runtime=True)` is the ceridwen default (5f2c316) and a `SETTINGS` entry of the fit notebook. Speed lines added to the Redshift and \(\sigma_\star\) rows of the model page. Wording by Codex gpt-6-astra from a fact sheet; tables and log entry by Claude.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] infrastructure | Check-in pages
+
+- Pages: `research/checkins/2026-09-21.md`, `checkins.py`, `research.py`, `index.md`.
+- Change: Added `wiki/checkins.py`. `python3 wiki/checkins.py <date> --since <date>` drafts experiments with status `results-ready` or `reviewed`, dated since the previous check-in and absent from earlier check-ins.
+- Each experiment shows its title, first figure with the record caption, and at most three rows from its first Measurements table, matching labels in Results text or, otherwise, each row’s first number.
+- Sources also accept sections of hand-written items in fenced JSON: `text`, `points`, `link`, and one of `figure` (`<experiment>:<index>`), `image`, or code from a notebook cell. `## Your words` preserves the messages in a collapsed Research record.
+- The first page contains Liu Hao’s Done and Questions items. `research.py`’s `write_pages` calls `checkins.write_pages`; `wiki/build.py` is unchanged.
+- Validation: `python3 wiki/build.py`, `wiki/tests/run_tests.py`, `test_research.py`; page checked at 1440 and 900 px.

@@ -32,6 +32,8 @@ original transcription and PDF, linked from Home and Meetings. Transcribe and
 lightly rephrase only; never add commentary. Standing rule: `wiki/AGENTS.md`.
 Meeting: `notes/meeting-2026-09-17-student-group.md` — student group meeting: questions after the updates and points raised, with the original transcription and handwriting.
 Meeting: `notes/meeting-2026-09-17-jonah-powley.md` — Jonah Powley on Prospector fits of quiescent galaxies: SFH prior, abundances, dust and infrared, his setup, with the original transcription and handwriting.
+Check-ins: `checkins.py` — `research/checkins/<date>.md` → `/checkins/<date>/`; listed on Meetings and in search.
+Meeting: `research/checkins/2026-09-21.md` — Liu Hao’s Done and Questions items.
 Research source records: `research/questions/` and `research/experiments/`.
 Priority detail pages: `/wiki/p/<id>/`, with independent resolution buttons and dated history.
 `activity.py` stores immutable note revisions, ink and status events in `research/activity/`.

@@ -541,9 +541,17 @@ def write_pages(records, notes, scratch, base, builder):
         body += '<p id="filter-empty" class="empty" hidden>No matches</p><script src="%s/research.js" defer></script>' % base
         page(name.lower(), name, '<div class="prose">' + body + '</div>')
 
+    import checkins
+    meetings = checkins.write_pages(records, scratch, base, builder, builder.rail_sections(notes, base))
+    for c in meetings:
+        title = "Check-in, " + checkins.long_date(c["date"])
+        search.append({"t": title, "u": "%s/checkins/%s/" % (base, c["date"]), "d": c["date"],
+                       "s": "Meetings", "g": "check-in meeting", "x": " ".join(c["experiments"])})
     for name in ("Meetings", "Masking"):
         rows = [n for n in notes if n["section"] == name]
         body = '<h1>%s</h1>' % name
+        if name == "Meetings" and meetings:
+            body += checkins.rows_html(meetings, base)
         body += builder.feed_rows(rows, base) if rows else '<p class="empty">None yet</p>'
         page(name.lower(), name, '<div class="prose">' + body + '</div>')
 
