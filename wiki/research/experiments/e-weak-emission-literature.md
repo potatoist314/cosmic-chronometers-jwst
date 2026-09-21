@@ -20,8 +20,11 @@ Literature check on 2026-09-21: weak emission in quiescent galaxies, power sourc
 [
   {
     "date": "2026-09-21",
-    "text": "where the idea comes from that quiescent galaxies have faint emission below detection, and whether the literature establishes it",
-    "source_ref": "relayed in the 2026-09-21 follow-up task brief; not Liu Hao's verbatim message"
+    "text": "where did you get this notion of emission too weak to detect from - is this established in the literature? what's your source for this?"
+  },
+  {
+    "date": "2026-09-21",
+    "text": "tell me more about faint emission from quiescent galaxies"
   }
 ]
 ```
