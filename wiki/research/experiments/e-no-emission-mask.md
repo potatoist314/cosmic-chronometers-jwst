@@ -4,7 +4,7 @@ id: e-no-emission-mask
 title: M1_210210 fit without the emission-line mask
 date: 2026-09-21
 origin: new
-status: planned
+status: running
 question: q-fitting-choices
 follow_up:
 ---
@@ -54,7 +54,35 @@ The production fit masks ±1500 km/s around rest-frame 3726.0, 3728.8 ([O II]), 
   {
     "id": "no-emission-mask-m1-210210",
     "arm": "no_emission_mask",
-    "status": "planned"
+    "status": "complete",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "Executed fit · M1_210210",
+        "path": "results/no-emission-mask/no_emission_mask/210210-M1_210210/M1_210210_executed.ipynb"
+      },
+      {
+        "label": "ceridwen_result.h5",
+        "path": "results/no-emission-mask/no_emission_mask/210210-M1_210210/ceridwen_result.h5"
+      },
+      {
+        "label": "execution.log",
+        "path": "results/no-emission-mask/no_emission_mask/210210-M1_210210/execution.log"
+      },
+      {
+        "label": "Executed analysis",
+        "path": "results/no-emission-mask/analysis.ipynb"
+      },
+      {
+        "label": "Vast driver log",
+        "path": "results/no-emission-mask/vast_run.log"
+      }
+    ],
+    "code": "92e203c; ceridwen working tree uploaded with results/no-emission-mask/ceridwen-worktree.patch",
+    "model": "Ceridwen b419fd1; grid amist_c3k_hr_krou_afe",
+    "config": "results/no-emission-mask/vast_run_2026-09-21T110044+0000.json",
+    "data": "results/no-emission-mask/cells.json",
+    "seed": 20260832
   }
 ]
 ```

@@ -1,0 +1,33 @@
+{
+ "started": "2026-09-21T10:23:01+00:00",
+ "branch": "absorption-mask",
+ "offer": {
+  "id": 43619154,
+  "gpu_name": "RTX 5060 Ti",
+  "dph_total": 0.14405555555555555,
+  "min_bid": 0.088,
+  "geolocation": "British Columbia, CA",
+  "host_id": 78432
+ },
+ "bid_usd_per_hour": 0.093,
+ "cells": [
+  "no_emission_mask/M1_210210"
+ ],
+ "credit_before": 10.055304112860071,
+ "instance_id": 51896980,
+ "spend_so_far_usd": 0.0814,
+ "manifest": {
+  "no_emission_mask/M1_210210": {
+   "status": "done",
+   "started": "2026-09-21T10:32:55.647751+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 1559.5,
+   "finished": "2026-09-21T10:58:55.189043+00:00"
+  }
+ },
+ "credit_after": 9.972935675260082,
+ "spent_usd": 0.0824,
+ "finished": "2026-09-21T11:00:44+00:00",
+ "instances_left": []
+}

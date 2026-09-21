@@ -1,0 +1,42 @@
+[10:23:04] calibration arms: rented instance 51896980: offer 43619154 RTX 5060 Ti bid $0.0930/h (on demand $0.1441/h) British Columbia, CA host 78432 rel 0.998
+[10:23:05] calibration arms: waiting for instance 51896980: status=None
+[10:23:21] calibration arms: waiting for instance 51896980: status=None
+[10:23:41] calibration arms: cloning branch absorption-mask
+[10:24:53] calibration arms: uploading ceridwen working tree
+[10:24:58] calibration arms: uploading external/sedpy_jax working tree
+[10:25:06] calibration arms: submodule trees uploaded: {'ceridwen': 'b419fd1', 'external/sedpy_jax': '754a118'}
+[10:25:06] calibration arms: uploading data/raw
+[10:26:24] calibration arms: uploaded 1988 spectra
+[10:26:30] calibration arms: bootstrapping the CUDA environment
+[10:32:47] calibration arms: bootstrap: sedpy_jax wavelength-dependent input resolution verified
+[10:32:47] calibration arms: bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+[10:32:47] calibration arms: bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5
+[10:32:47] calibration arms: bootstrap: Select the 'Ceridwen (Vast.ai GPU)' kernel in JupyterLab.
+[10:32:50] calibration arms: probe: devices [CudaDevice(id=0)]
+[10:32:50] calibration arms: probe: backend gpu
+[10:32:50] calibration arms: probe: overlay          40G   11G   30G  27% /
+[10:32:57] calibration arms: launched the remote runner
+[10:35:03] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.037 of cap $0.50
+[10:37:09] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.041 of cap $0.50
+[10:39:15] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.045 of cap $0.50
+[10:39:18] calibration arms: pulling results
+[10:41:24] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.049 of cap $0.50
+[10:43:30] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.053 of cap $0.50
+[10:45:36] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.056 of cap $0.50
+[10:47:42] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.060 of cap $0.50
+[10:49:49] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.062 of cap $0.50
+[10:51:55] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.067 of cap $0.50
+[10:54:03] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.070 of cap $0.50
+[10:56:10] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.075 of cap $0.50
+[10:56:13] calibration arms: pulling results
+[10:58:20] calibration arms: 0/1 done, 0 failed, running ['no_emission_mask/M1_210210']; spend $0.078 of cap $0.50
+[11:00:26] calibration arms: 1/1 done, 0 failed, running []; spend $0.081 of cap $0.50
+[11:00:29] calibration arms: runner has exited
+[11:00:29] calibration arms: pulling results
+[11:00:43] calibration arms: destroyed instance 51896980
+{
+ "instance_id": 51896980,
+ "spent_usd": 0.0824,
+ "instances_left": [],
+ "error": null
+}
