@@ -1041,3 +1041,16 @@
 - Added item kind `settings` in `checkins.py`; Done item 1 uses it. Questions item 4 gained two points from `notes/sfh-continuity-prior-variants.md`.
 - Tests: `wiki/tests/test_fit_settings.py`.
 - Validation: `python3 wiki/build.py`, `wiki/tests/run_tests.py`, and unittest discovery; page checked at 1440, 900, and 400 px.
+
+## [2026-09-21] figures | Flux units, wavelength axes and M1_210210 comparisons
+
+- Pages: `notes/m1-210210-reference.md`, `research/experiments/e-m1-210210-reference.md`, `research/checkins/2026-09-21.md`
+- Change: Converted M1_210210 photometry and spectra to microJy; the scaling error did not affect the fit.
+- Units: 1 maggie = 3631e6 microJy; 1 microJy = 1e-29 erg/s/cm^2/Hz; y label `$F_\nu$ [$\mu$Jy]`.
+- Ticks: `set_plain_log_ticks` displays 0.4, 0.6, 1, 2, 4 micron in `scripts/spectral_figures.py`.
+- Axes: `mark_rest_wavelength_axis` adds wavelength above spectra; headers align title left and label right, stacking when space requires.
+- Comparisons: Removed arm B from every M1_210210 figure, table and note at Liu Hao’s request; retained the run on disk.
+- Amendment: Recorded Liu Hao’s exclusion of the tau_dust limit of 0.2, dated 2026-09-21, in the experiment record.
+- Resolution: KL, dust/SFH corner and M1_210210 comparison figures now save at dpi 150.
+- Regeneration: Rebuilt fit and analysis outputs on CPU without sampling; the check-in displays the figures automatically.
+- Exception: Edited `notebooks/ceridwen_test_spectra.ipynb` without execution because it runs a sampler.

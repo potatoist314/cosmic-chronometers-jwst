@@ -115,7 +115,7 @@ def cell_outputs(dust, fractions, edges):
         **CORNER_STYLE,
     )
     buffer = io.BytesIO()
-    figure.savefig(buffer, format="png", dpi=72, bbox_inches="tight")
+    figure.savefig(buffer, format="png", dpi=150, bbox_inches="tight")
     width, height = figure.get_size_inches() * figure.dpi
     description = f"<Figure size {width:g}x{height:g} with {len(figure.axes)} Axes>"
     plt.close(figure)

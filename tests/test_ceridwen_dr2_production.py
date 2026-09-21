@@ -244,7 +244,8 @@ def test_notebook_marks_major_absorption_features():
     source = "\n".join(cells)
     # The windows come from scripts/spectral_figures.py, not a notebook copy.
     assert 'sys.path.insert(0, str(PROJECT_ROOT / "scripts"))' in source
-    assert "from spectral_figures import mark_absorption_features" in source
+    assert "from spectral_figures import (" in source
+    assert "mark_absorption_features," in source
     assert "def mark_absorption_features(ax" not in source
     assert "MARKED_FEATURES" not in source
     # Every spectral panel is marked; one side legend covers the figure.

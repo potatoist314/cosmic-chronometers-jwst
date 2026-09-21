@@ -22,7 +22,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from build_dr2_quiescent_summary import FEH_OFFSET  # noqa: E402
-from spectral_figures import mark_absorption_features, spectral_tight_layout  # noqa: E402
+from spectral_figures import mark_absorption_features, mark_rest_wavelength_axis, spectral_tight_layout  # noqa: E402
 DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "results/absorption-mask"
 DEFAULT_FIGURE_DIR = PROJECT_ROOT / "wiki/analyses/absorption-mask"
 SCALARS = ["logmass", "Z", "afe", "diffuse_tau_kc", "spectrum_scaling", "log_f_calib"]
@@ -354,15 +354,18 @@ def plot_windows(output_root: Path, figure_dir: Path, cell="real_M5_172669_featu
         full_mask = np.asarray(d["spectrum/mask"], dtype=bool)
     _style()
     fig, ax = plt.subplots(figsize=(8.0, 2.8))
-    scale = 1e29
-    ax.plot(wave[full_mask], flux[full_mask] * scale, color="#b5b5b5", lw=0.7, label="fitted pixels, full spectrum")
+    ujy_per_cgs = 1e29  # spectrum stored in erg/s/cm^2/Hz
+    ax.plot(wave[full_mask], flux[full_mask] * ujy_per_cgs, color="#b5b5b5", lw=0.7, label="fitted pixels, full spectrum")
     kept = full_mask & feature
-    ax.plot(np.where(kept, wave, np.nan), np.where(kept, flux * scale, np.nan), color=MODE_COLORS["features"], lw=0.9,
-            label=f"absorption-feature pixels ({kept.sum()} of {full_mask.sum()})")
-    ax.set_ylabel(r"$F_\nu$ [$10^{-29}$ erg s$^{-1}$ cm$^{-2}$ Hz$^{-1}$]")
-    ax.set_title(f"M5_172669 (z = {z:.3f}): pixels kept by the absorption-feature mask, ±1000 km/s line windows")
+    ax.plot(np.where(kept, wave, np.nan), np.where(kept, flux * ujy_per_cgs, np.nan), color=MODE_COLORS["features"],
+            lw=0.9, label=f"absorption-feature pixels, ±1000 km/s line windows ({kept.sum()} of {full_mask.sum()})")
+    ax.set_ylabel(r"$F_\nu$ [$\mu$Jy]")
     ax.legend(frameon=False, loc="lower right")
-    mark_absorption_features(ax, z, xlabel="observed wavelength [Å]")
+    mark_absorption_features(ax, z, xlabel="observed vacuum wavelength [Å]")
+    mark_rest_wavelength_axis(
+        ax, z, label="rest-frame vacuum wavelength [Å]",
+        title=f"M5_172669, z = {z:.3f}: pixels kept by the absorption-feature mask",
+    )
     spectral_tight_layout(fig)
     path = figure_dir / "feature_windows_M5_172669.png"
     fig.savefig(path, bbox_inches="tight")

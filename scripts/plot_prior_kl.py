@@ -29,8 +29,6 @@ OUT_DIR = PROJECT_ROOT / "wiki/analyses/m1-210210-reference"
 FITS = {
     "A": (PROJECT_ROOT / "results/dr2-quiescent-new-defaults" / f"210210-{TARGET}", "k",
           r"A: order 3, $\tau_{\mathrm{dust}} < 2$"),
-    "B": (REFERENCE / "tau-0p2/poly10" / f"210210-{TARGET}", "tab:blue",
-          r"B: order 10, $\tau_{\mathrm{dust}} < 0.2$"),
     "C": (REFERENCE / "tau-1/poly10" / f"210210-{TARGET}", "tab:red",
           r"C: order 10, $\tau_{\mathrm{dust}} < 1$, free $z$, $\sigma_\star$"),
 }
@@ -108,7 +106,7 @@ def main() -> None:
     ax.set_axisbelow(True)
     ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1.0), frameon=False, fontsize=8,
               borderaxespad=0.0, title=TARGET)
-    fig.savefig(OUT_DIR / f"kl-{TARGET}.png", dpi=130, bbox_inches="tight")
+    fig.savefig(OUT_DIR / f"kl-{TARGET}.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
 
 

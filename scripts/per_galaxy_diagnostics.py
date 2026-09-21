@@ -79,7 +79,8 @@ FIGURE_SUBDIR = "diagnostics"
 
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from build_dr2_quiescent_summary import FEH_OFFSET  # noqa: E402
-from spectral_figures import mark_absorption_features, spectral_tight_layout  # noqa: E402
+from spectral_figures import (mark_absorption_features, mark_rest_wavelength_axis,  # noqa: E402
+                              set_plain_log_ticks, spectral_tight_layout)
 
 # Fitting-notebook configuration that ``write_result_h5`` does not persist.
 GRID_NAME = "amist_c3k_hr_krou_afe"
@@ -721,19 +722,19 @@ def plot_photometric_chi2(galaxy: GalaxyResult, model=None, like_ml: dict | None
     """Per-band pull and chi^2 contribution against wavelength."""
     dp = galaxy.derived_phot
     mask = dp["mask"].astype(bool)
-    wave = dp["wavelength"]
+    wave = dp["wavelength"] / 1e4
     labels = _band_labels(galaxy.phot["filters"])
     pull_stored = dp["pull"]
     stored = chi2_contributions(pull_stored, mask)
     n = stored["n"]
     if model is not None:
         phot_obs = model.obs_dict["photometry"]
-        blue = np.array([float(f.blue_edge) for f in phot_obs.filterset.filters])
-        red = np.array([float(f.red_edge) for f in phot_obs.filterset.filters])
+        blue = np.array([float(f.blue_edge) for f in phot_obs.filterset.filters]) / 1e4
+        red = np.array([float(f.red_edge) for f in phot_obs.filterset.filters]) / 1e4
         xerr = np.vstack([wave - blue, red - wave])
     else:
         xerr = None
-    fitted_wave = galaxy.spec["wavelength"][galaxy.spec["mask"]]
+    fitted_wave = galaxy.spec["wavelength"][galaxy.spec["mask"]] / 1e4
 
     fig, axes = plt.subplots(2, 1, figsize=(9.0, 6.4), sharex=True, gridspec_kw={"height_ratios": [1.3, 1.0]})
     ax = axes[0]
@@ -751,6 +752,7 @@ def plot_photometric_chi2(galaxy: GalaxyResult, model=None, like_ml: dict | None
         ax.annotate(label, (w, p), textcoords="offset points", xytext=(0, 7), ha="center", fontsize=7, color="0.2")
     ax.set_ylabel(r"pull $(F_{\rm obs} - F_{\rm model})/\sigma$")
     ax.set_xscale("log")
+    set_plain_log_ticks(ax.xaxis, PHOT_MICRON_TICKS)
     span = max(2.5, float(np.max(np.abs(pull_stored[mask]))) * 1.35)
     ax.set_ylim(-span, span)
     ax.legend(frameon=False, fontsize=8, loc="upper left")
@@ -765,7 +767,8 @@ def plot_photometric_chi2(galaxy: GalaxyResult, model=None, like_ml: dict | None
                 label=r"$\chi^2_i$ at $\theta_{\rm ML}$")
     ax.axhline(1.0, color="k", lw=0.8, ls="--")
     ax.set_xscale("log")
-    ax.set_xlabel(r"observed effective wavelength [$\mathrm{\AA}$]")
+    set_plain_log_ticks(ax.xaxis, PHOT_MICRON_TICKS)
+    ax.set_xlabel(r"observed effective wavelength [$\mu$m]")
     ax.set_ylabel(r"$\chi^2$ contribution per band")
     ax.legend(frameon=False, fontsize=8, loc="upper left")
     text = (f"stored: $\\chi^2_{{\\rm phot}}$ = {stored['total']:.1f}, N = {n}, $\\chi^2/N$ = {stored['total'] / n:.2f}\n"
@@ -826,10 +829,7 @@ def plot_spectral_chi2(galaxy: GalaxyResult, like_ml: dict | None = None, stamp:
     if outliers.any():
         ax.plot(wave[outliers], pull[outliers], "o", color=RED, ms=3.5, label=f"|pull| > {OUTLIER_PULL:g} ({int(outliers.sum())} px)")
     ax.set_ylabel("pull")
-    ax.set_title(f"{galaxy.spect_id} (object {galaxy.object_id}), z = {galaxy.z:.4f}, catalogue S/N {galaxy.catalogue_sn:.1f}: spectral residuals", fontsize=10)
     ax.legend(frameon=False, fontsize=7.5, ncol=3, loc="upper left")
-    top = ax.secondary_xaxis("top", functions=(lambda o: o / (1 + galaxy.z), lambda r: r * (1 + galaxy.z)))
-    top.set_xlabel(r"rest-frame wavelength [$\mathrm{\AA}$]")
 
     ax = axes[1]
     edges, mean, counts = binned_mean_pull2(wave, np.nan_to_num(pull), mask)
@@ -866,6 +866,8 @@ def plot_spectral_chi2(galaxy: GalaxyResult, like_ml: dict | None = None, stamp:
     mark_absorption_features(axes[1], galaxy.z, show_labels=False)
     mark_absorption_features(axes[2], galaxy.z,
                              xlabel=r"observed vacuum wavelength [$\mathrm{\AA}$]")
+    mark_rest_wavelength_axis(axes[0], galaxy.z, title=f"{galaxy.spect_id} (object {galaxy.object_id}), "
+                              f"z = {galaxy.z:.4f}, catalogue S/N {galaxy.catalogue_sn:.1f}: spectral residuals")
     spectral_tight_layout(fig, rect=(0, 0.06, 1, 1))
     _footer(fig, stamp)
     if out is not None:
@@ -876,6 +878,8 @@ def plot_spectral_chi2(galaxy: GalaxyResult, like_ml: dict | None = None, stamp:
 
 
 CGS_FNU_PER_MAGGIE = 3631e-23
+UJY_PER_CGS = 1e29                # 1 microJy = 1e-29 erg/s/cm^2/Hz
+PHOT_MICRON_TICKS = (0.4, 0.6, 1, 2, 4)
 INVALID_PIXEL_UNCERTAINTY = 1.0   # the fitting notebook's placeholder for unusable pixels
 
 
@@ -901,11 +905,12 @@ def _mark_filter_ranges(ax, galaxy: GalaxyResult, show_labels: bool = True):
     ax.set_xlim(limits)
 
 
-def _finish_spectrum_figure(fig, axes, galaxy: GalaxyResult, out: Path | None, rect=(0, 0, 1, 1)):
+def _finish_spectrum_figure(fig, axes, galaxy: GalaxyResult, out: Path | None, rect=(0, 0, 1, 1), title=None):
     _mark_filter_ranges(axes[0], galaxy)
     _mark_filter_ranges(axes[1], galaxy, show_labels=False)
     mark_absorption_features(axes[0], galaxy.z, show_labels=False)
     mark_absorption_features(axes[1], galaxy.z, xlabel="observed vacuum wavelength [angstrom]")
+    mark_rest_wavelength_axis(axes[0], galaxy.z, label="rest-frame vacuum wavelength [angstrom]", title=title)
     spectral_tight_layout(fig, rect=rect)
     if out is not None:
         fig.savefig(out)
@@ -921,7 +926,7 @@ def plot_fit_spectrum(galaxy: GalaxyResult, out: Path | None = None):
     fitted = ds["mask"].astype(bool)
     valid = ds["uncertainty"] != INVALID_PIXEL_UNCERTAINTY
     excluded = valid & ~fitted
-    scale = 1e9 / CGS_FNU_PER_MAGGIE
+    scale = UJY_PER_CGS
     flux = np.where(fitted, ds["observed"], np.nan) * scale
     sigma = np.where(fitted, ds["uncertainty"], np.nan) * scale
     q16, q50, q84 = (np.where(valid, ds[f"posterior_q{q}"], np.nan) * scale for q in (16, 50, 84))
@@ -935,17 +940,15 @@ def plot_fit_spectrum(galaxy: GalaxyResult, out: Path | None = None):
     ax.plot(wave, q50, color="tab:red", lw=1.2, label="Ceridwen joint posterior median")
     ax.fill_between(wave, q16, q84, color="tab:red", alpha=0.25, label="16-84% posterior")
     ax.plot([], [], color="0.3", lw=0.6, linestyle=":", label="absorption-feature windows")
-    ax.set_ylabel(r"flux density [$10^{-9}$ maggies]")
-    ax.set_title(f"{galaxy.spect_id}: native LEGA-C versus joint C3K_HR Ceridwen fit")
+    ax.set_ylabel(r"$F_\nu$ [$\mu$Jy]")
     # Below the panels: inside the axes the legend covers the band names.
     fig.legend(*ax.get_legend_handles_labels(), loc="lower center", frameon=False, ncol=5, fontsize=8)
     axes[1].axhspan(-1, 1, color="0.85", alpha=0.55, linewidth=0)
     axes[1].axhline(0, color="k", lw=0.8)
     axes[1].plot(wave, np.where(fitted, ds["pull"], np.nan), color="0.35", lw=0.45, rasterized=True)
     axes[1].set_ylabel("pull")
-    top = ax.secondary_xaxis("top", functions=(lambda o: o / (1 + galaxy.z), lambda r: r * (1 + galaxy.z)))
-    top.set_xlabel("rest-frame wavelength [angstrom]")
-    return _finish_spectrum_figure(fig, axes, galaxy, out, rect=(0, 0.04, 1, 1))
+    return _finish_spectrum_figure(fig, axes, galaxy, out, rect=(0, 0.04, 1, 1),
+                                   title=f"{galaxy.spect_id}: native LEGA-C versus joint C3K_HR Ceridwen fit")
 
 
 def plot_predictive_spectrum(galaxy: GalaxyResult, out: Path | None = None):
@@ -955,13 +958,15 @@ def plot_predictive_spectrum(galaxy: GalaxyResult, out: Path | None = None):
     fitted = ds["mask"].astype(bool)
     shown = {key: np.where(fitted, ds[key], np.nan) for key in
              ("observed", "effective_uncertainty", "posterior_q16", "posterior_q50", "posterior_q84", "pull")}
+    for key in ("observed", "effective_uncertainty", "posterior_q16", "posterior_q50", "posterior_q84"):
+        shown[key] = shown[key] * UJY_PER_CGS
 
     fig, axes = plt.subplots(2, 1, figsize=(10, 6), gridspec_kw={"height_ratios": [3, 1]}, sharex=True)
     axes[0].errorbar(wave, shown["observed"], yerr=shown["effective_uncertainty"], fmt="-", lw=0.5,
                      color="0.35", label="measured LEGA-C")
     axes[0].plot(wave, shown["posterior_q50"], color="tab:red", lw=1.2, label="joint Ceridwen median")
     axes[0].fill_between(wave, shown["posterior_q16"], shown["posterior_q84"], color="tab:red", alpha=0.25)
-    axes[0].set(ylabel="F_nu [cgs]")
+    axes[0].set(ylabel=r"$F_\nu$ [$\mu$Jy]")
     axes[0].legend(frameon=False)
     axes[1].axhline(0, color="0.5", lw=0.8)
     axes[1].plot(wave, shown["pull"], lw=0.45, color="0.35")
@@ -1062,25 +1067,28 @@ def plot_sf_timescale_summary(table: pd.DataFrame, out: Path | None = None, stam
 
 def plot_photometry_summary(band_table: pd.DataFrame, table: pd.DataFrame, out: Path | None = None):
     """Per-band mean pull and chi^2 across the sample, and the photometric chi^2/N histogram."""
+    wl = band_table["wavelength"] / 1e4
     fig, axes = plt.subplots(1, 3, figsize=(14.0, 4.2), gridspec_kw={"width_ratios": [1.3, 1.3, 1.0]})
     ax = axes[0]
     ax.axhline(0, color="k", lw=0.8)
     ax.axhspan(-1, 1, color="0.9", linewidth=0)
-    ax.errorbar(band_table["wavelength"], band_table["pull_median"],
+    ax.errorbar(wl, band_table["pull_median"],
                 yerr=[band_table["pull_median"] - band_table["pull_q16"], band_table["pull_q84"] - band_table["pull_median"]],
                 fmt="o", color=BLUE, ms=5, capsize=2, label="median pull, 16-84% over galaxies")
-    for w, lab, p in zip(band_table["wavelength"], band_table["band"], band_table["pull_median"]):
+    for w, lab, p in zip(wl, band_table["band"], band_table["pull_median"]):
         ax.annotate(lab, (w, p), textcoords="offset points", xytext=(0, 8), ha="center", fontsize=7)
     ax.set_xscale("log")
-    ax.set_xlabel(r"effective wavelength [$\mathrm{\AA}$]")
+    set_plain_log_ticks(ax.xaxis, PHOT_MICRON_TICKS)
+    ax.set_xlabel(r"effective wavelength [$\mu$m]")
     ax.set_ylabel("pull (stored)")
     ax.set_title("Photometric pull by band, all galaxies", fontsize=10)
     ax.legend(frameon=False, fontsize=8)
     ax = axes[1]
-    ax.bar(band_table["wavelength"], band_table["chi2_mean"], width=0.12 * band_table["wavelength"], color=BLUE, alpha=0.75)
+    ax.bar(wl, band_table["chi2_mean"], width=0.12 * wl, color=BLUE, alpha=0.75)
     ax.axhline(1.0, color="k", lw=0.8, ls="--")
     ax.set_xscale("log")
-    ax.set_xlabel(r"effective wavelength [$\mathrm{\AA}$]")
+    set_plain_log_ticks(ax.xaxis, PHOT_MICRON_TICKS)
+    ax.set_xlabel(r"effective wavelength [$\mu$m]")
     ax.set_ylabel(r"mean $\chi^2$ contribution per band")
     ax.set_title(r"Where the photometric $\chi^2$ comes from", fontsize=10)
     ax = axes[2]
