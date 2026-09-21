@@ -54,6 +54,7 @@ SOURCE_EXCLUDES = ["--exclude=/public*", "--exclude=__pycache__",     # public, 
                    "--exclude=/research/activity"]
 POLL = 1.0                                          # seconds between looks in --watch
 PULL_EVERY = 1800                                   # seconds between pulls of the NAS records
+STALL = 60                                          # seconds of ceaseless change before the log says so
 
 
 def say(text: str) -> None:
@@ -219,6 +220,7 @@ def watch() -> int:
     say("watching the wiki sources")
     publish()
     paths, seen, pulled = linked_files(), "", time.monotonic()
+    still = time.monotonic()                        # when the sources last held still
     while True:
         time.sleep(POLL)
         try:
@@ -226,8 +228,13 @@ def watch() -> int:
         except FileNotFoundError:
             continue
         if state != seen:                           # let a save or a build finish
+            if time.monotonic() - still >= STALL:
+                moved = sorted(set(state.splitlines()) - set(seen.splitlines()))
+                say("still changing after %d s: %s" % (STALL, " ".join(line.split("\t")[0] for line in moved[:4])))
+                still = time.monotonic()
             seen = state
             continue
+        still = time.monotonic()
         if time.monotonic() - pulled >= PULL_EVERY:
             publish()
             pulled = time.monotonic()
