@@ -977,3 +977,9 @@
 - Pages: [[research/direction]], [[research/questions/q-emission-lines]]
 - Change: Liu Hao's two 2026-09-21 messages appended to Amendments. The priority-9 item and the question state that `NebularModel` applies emission only to SSPs inside the CLOUDY cube age range (`NebularGridModel.py:355-380`), that the local MIST cubes span 0.5-20 Myr, and what the "model" option therefore requires. The Byler et al. 2017 attribution is marked unverified. No decision recorded. Wording by Codex gpt-6-astra from a fact sheet; cube-age line and log entry by Claude.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] experiment | Wall time with free z and sigma_star
+
+- Pages: [[research/experiments/e-runtime-z-sigma-speed]]
+- Change: Liu Hao's 2026-09-21 message recorded. CPU profile of the M1_210210 likelihood with fixed and free z and sigma_star, the `Spectrum(baked_runtime=True)` path (ceridwen 6707c05, default off) and its equality test. Same-boot GPU benchmark planned, not run. Record wording by Codex gpt-6-astra from a fact sheet; tables and log entry by Claude.
+- Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.

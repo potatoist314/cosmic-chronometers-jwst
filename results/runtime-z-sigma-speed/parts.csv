@@ -1,0 +1,11 @@
+part,us_per_call
+one static Gaussian (fixed sigma),20.22625005338341
+"LOSVD + instrument chain, current",104.0470803854987
+"LOSVD + instrument chain, baked",62.30209022760391
+"redshift stretch, jnp.interp",89.01915978640318
+"redshift stretch, lookup table",16.4824997773394
+"redshift stretch, searchsorted method=scan_unrolled",234.25624996889383
+"redshift stretch, searchsorted method=sort",174.4020899059251
+"FFT pair, length 8192",16.682500136084855
+"FFT pair, length 32768",66.72624964267015
+"FFT pair, length 18432",33.98125001695007
