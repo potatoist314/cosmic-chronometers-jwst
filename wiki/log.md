@@ -1132,3 +1132,9 @@
 - Pages: [[notes/cosmos-photometry-refit]], [[research/experiments/e-cosmos-photometry-refit]], [[notes/notebook-map]], [[research/checkins/2026-09-21]]
 - Change: Liu Hao picked design A on 2026-09-21. `plot_photometry_fit` in `scripts/spectral_figures.py` draws the fit notebook's photometry figure for any band count. The executed notebooks of the COSMOS2015 reference, `cosmos2020_classic` and `cosmos2025` fits of M1_210210 were regenerated on CPU from the stored posteriors; the sampler was not re-run. The note and the record show the spectrum and photometry fit of each arm first. The photometry figure is now output 0 of cell 14, so the check-in's reference moved from output 1 to 0.
 - Validation: figures checked at 900 px; wiki build with the length check and `test_research.py`.
+
+## [2026-09-22] figures | COSMOS figures in the fit notebook's style
+
+- Pages: [[notes/cosmos-photometry-refit]], [[notes/cosmos-photometry-comparison]], [[notes/notebook-map]]
+- Change: Liu Hao, 2026-09-21: "can you keep the style consistent for the new comsos plots - i dont know why they follow a new style from the existing notebook". `FIT_FIGURE_RCPARAMS` in `scripts/spectral_figures.py` is the one place for the fit-figure rcParams; `scripts/per_galaxy_diagnostics.py` reads it. `plot_photometry_fit` and `scripts/plot_cosmos_photometry_comparison.py` use the old photometry figure's markers, colours, legend and labels; the band-name rail is the only new element. The three M1_210210 executed notebooks were regenerated on CPU from the stored posteriors; the sampler was not re-run.
+- Validation: spectrum fit, photometry fit and comparison figure compared side by side at 900 px; `tests/test_spectral_figures.py`; wiki build with the length check and `test_research.py`.

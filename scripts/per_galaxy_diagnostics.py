@@ -79,8 +79,9 @@ FIGURE_SUBDIR = "diagnostics"
 
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from build_dr2_quiescent_summary import FEH_OFFSET  # noqa: E402
-from spectral_figures import (mark_absorption_features, mark_rest_wavelength_axis,  # noqa: E402
-                              set_plain_log_ticks, spectral_tight_layout)
+from spectral_figures import (FIT_FIGURE_RCPARAMS, mark_absorption_features,  # noqa: E402
+                              mark_rest_wavelength_axis, set_plain_log_ticks,
+                              spectral_tight_layout)
 
 # Fitting-notebook configuration that ``write_result_h5`` does not persist.
 GRID_NAME = "amist_c3k_hr_krou_afe"
@@ -110,17 +111,7 @@ IMF_NAMES = {
 
 BLUE, ORANGE, RED, GREY, GREEN = "#0072B2", "#E69F00", "#D55E00", "#999999", "#009E73"
 
-rcParams.update(
-    {
-        "font.size": 9,
-        "axes.linewidth": 0.8,
-        "xtick.direction": "in",
-        "ytick.direction": "in",
-        "xtick.top": True,
-        "ytick.right": True,
-        "savefig.dpi": 110,
-    }
-)
+rcParams.update(FIT_FIGURE_RCPARAMS)
 
 
 # ----------------------------------------------------------------------------

@@ -27,47 +27,28 @@ from matplotlib.transforms import ScaledTranslation
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+# The import applies FIT_FIGURE_RCPARAMS, the style of the fit-notebook figures.
 from spectral_figures import mark_rest_wavelength_axis, set_plain_log_ticks  # noqa: E402
 
 OUT = ROOT / "wiki" / "analyses" / "cosmos-photometry-comparison"
 DATA = ROOT / "results" / "cosmos-photometry-comparison"
 GALAXY, ZRED, FLOOR = "M1_210210", 0.6542, 0.05
 
-# Tokens ---------------------------------------------------------------------
-INK, INK_2, RULE, BAND = "#2b2b2b", "#555555", "#e4e4e4", "#9a9a9a"
-COLOR = {"cosmos2015": INK, "classic": "#0072B2", "cosmos2025": "#D55E00"}
+# tab:red is the model and tab:purple the LEGA-C range in the fit figures.
+COLOR = {"cosmos2015": "tab:blue", "classic": "tab:orange", "cosmos2025": "tab:green"}
+GREY, LABEL_PT = "0.6", mpl.rcParams["font.size"] - 1.5
 NAME = {"cosmos2015": "COSMOS2015 (present fit)", "classic": "COSMOS2020 Classic",
         "cosmos2025": "COSMOS2025"}
 ORDER = ["cosmos2015", "classic", "cosmos2025"]
-SHIFT_PT = {"cosmos2015": -3.5, "classic": 0.0, "cosmos2025": 3.5}   # catalogue offset in x
+SHIFT_PT = {"cosmos2015": -4.5, "classic": 0.0, "cosmos2025": 4.5}   # catalogue offset in x
 
 FIT = ["u*", "B", "V", "r+", "i+", "z++", "Y", "J", "H", "Ks", "ch1", "ch2"]
-HSC = ["g", "r", "i", "z", "y"]
 SPACE = ["F814W", "F115W", "F150W", "F277W", "F444W"]
 UV_EDGE = 0.3 * (1 + ZRED)            # rest-frame 0.3 um, observed um
-
-
-def family(band):
-    if band in FIT:
-        return "o", 6.0
-    if band in HSC:
-        return "s", 5.2
-    if band in SPACE:
-        return "^", 6.2
-    return "D", 4.6
-
 
 TEX = {"u*": r"$u^{*}$", "B": r"$B$", "V": r"$V$", "r+": r"$r^{+}$", "i+": r"$i^{+}$",
        "z++": r"$z^{++}$", "Y": r"$Y$", "J": r"$J$", "H": r"$H$", "Ks": r"$K_s$",
        "u": r"$u$", "g": r"$g$", "r": r"$r$", "i": r"$i$", "z": r"$z$", "y": r"$y$"}
-
-mpl.rcParams.update({
-    "font.size": 9, "axes.labelsize": 9, "xtick.labelsize": 8, "ytick.labelsize": 8,
-    "legend.fontsize": 8, "axes.edgecolor": "#8a8a8a", "axes.linewidth": 0.8,
-    "axes.spines.right": False, "xtick.color": INK_2, "ytick.color": INK_2,
-    "text.color": INK, "axes.labelcolor": INK, "figure.facecolor": "white",
-    "mathtext.fontset": "dejavusans",
-})
 
 
 def load():
@@ -99,14 +80,13 @@ def draw_flux(ax, bands, errors):
     for cat in ORDER:
         trans = shifted(ax, cat)
         for _, row in bands[bands.catalogue == cat].iterrows():
-            marker, size = family(row.band)
             if errors:
                 for err, lw in ((row.floored, 0.8), (row.total_error_ujy, 2.4)):
                     ax.errorbar(row.um, row.total_flux_ujy, yerr=err, fmt="none",
                                 ecolor=COLOR[cat], elinewidth=lw, capsize=0,
                                 zorder=3 + ORDER.index(cat), transform=trans)
-            ax.plot(row.um, row.total_flux_ujy, marker, ms=size, color=COLOR[cat],
-                    mec="white", mew=0.7, zorder=3.5 + ORDER.index(cat), transform=trans)
+            ax.plot(row.um, row.total_flux_ujy, "o", color=COLOR[cat],
+                    zorder=3.5 + ORDER.index(cat), transform=trans)
 
 
 def label_bands(ax, bands, names, *, side, extra=None, anchor=None):
@@ -126,16 +106,16 @@ def label_bands(ax, bands, names, *, side, extra=None, anchor=None):
         dx, dy = extra.get(band, (0, 0))
         foot = ax.transData + ScaledTranslation(anchor.get(band, 0) / 72, 0,
                                                 ax.figure.dpi_scale_trans)
-        leader = (dict(arrowstyle="-", lw=0.5, color=BAND, shrinkA=1.5, shrinkB=4.5)
+        leader = (dict(arrowstyle="-", lw=0.6, color=GREY, shrinkA=1.5, shrinkB=4.5)
                   if band in extra else None)
         ax.annotate(TEX.get(band, band), (rows.um.iloc[0], hi if up else lo), xycoords=foot,
                     xytext=(dx, (6 + dy) if up else -(6 + dy)), textcoords="offset points",
                     ha="center", va="bottom" if up else "top", arrowprops=leader,
-                    fontsize=7.5, color=INK_2, zorder=8)
+                    fontsize=LABEL_PT, zorder=8)
 
 
 def draw_ratio(ax, galaxy, column, sample=None):
-    ax.axhline(1, color="#8a8a8a", lw=0.8, zorder=1)
+    ax.axhline(1, color="0.5", lw=0.8, zorder=1)
     for cat in ("classic", "cosmos2025"):
         trans = shifted(ax, cat)
         if sample is not None:
@@ -144,10 +124,8 @@ def draw_ratio(ax, galaxy, column, sample=None):
                       zorder=2, capstyle="butt", transform=trans)
             ax.plot(rows.um, rows[0.5], "_", ms=6, mew=1.3, color=COLOR[cat], alpha=0.8,
                     zorder=2.5, transform=trans)
-        for _, row in galaxy[galaxy.catalogue == cat].iterrows():
-            marker, size = family(row.band)
-            ax.plot(row.um, row[column], marker, ms=size, color=COLOR[cat],
-                    mec="white", mew=0.7, zorder=4, transform=trans)
+        rows = galaxy[galaxy.catalogue == cat]
+        ax.plot(rows.um, rows[column], "o", color=COLOR[cat], zorder=4, transform=trans)
 
 
 def style_x(ax, lo, hi, ticks, *, labels=True):
@@ -162,31 +140,22 @@ def rest_axis(ax, ticks, label):
     top = mark_rest_wavelength_axis(ax, ZRED, label=label)
     lo, hi = (v / (1 + ZRED) for v in ax.get_xlim())
     set_plain_log_ticks(top.xaxis, [t for t in ticks if lo <= t <= hi])
-    top.tick_params(labelsize=8, colors=INK_2)
-    top.spines["top"].set_edgecolor("#8a8a8a")
     return top
 
 
 def legend_handles(*, sample_n=None):
-    def dot(color, marker="o", size=6.0):
-        return Line2D([], [], ls="none", marker=marker, ms=size, color=color, mec="white", mew=0.7)
-
     gap = Line2D([], [], ls="none")
-    catalogues = [(dot(COLOR[c]), NAME[c]) for c in ORDER]
-    catalogues.append((gap, "COSMOS2020 Farmer:\nno photometry"))
-    filters = [(dot(BAND, "o"), "filters of the present fit"),
-               (dot(BAND, "s", 5.2), r"HSC $g\,r\,i\,z\,y$"),
-               (dot(BAND, "D", 4.6), "GALEX NUV, CFHT $u$,\nintermediate bands"),
-               (dot(BAND, "^", 6.2), "HST F814W, JWST")]
-    errors = [(Line2D([], [], color=INK_2, lw=2.4), r"catalogue error $\sigma$"),
-              (Line2D([], [], color=INK_2, lw=0.8), r"$\sqrt{\sigma^2 + (0.05\,F_\nu)^2}$"),
-              (Patch(fc=BAND, alpha=0.2, lw=0), r"$\pm 5\%$ error floor")]
+    catalogues = [(Line2D([], [], ls="none", marker="o", color=COLOR[c]), NAME[c]) for c in ORDER]
+    catalogues.append((gap, "COSMOS2020 Farmer: no photometry"))
+    errors = [(Line2D([], [], color="0.35", lw=2.4), r"catalogue error $\sigma$"),
+              (Line2D([], [], color="0.35", lw=0.8), r"$\sqrt{\sigma^2 + (0.05\,F_\nu)^2}$"),
+              (Patch(fc=GREY, alpha=0.2, lw=0), r"$\pm 5\%$ error floor")]
     if sample_n is not None:
         errors.append((Line2D([], [], color=COLOR["classic"], lw=3, alpha=0.35,
                               marker="_", ms=6, mew=1.3, mec=COLOR["classic"]),
                        "sample median, 16–84%\n"
                        rf"($N = {sample_n['classic']}$, ${sample_n['cosmos2025']}$)"))
-    return catalogues, filters, errors, gap
+    return catalogues, errors
 
 
 OBS_TICKS = [0.25, 0.3, 0.4, 0.5, 0.7, 1, 1.5, 2, 3, 4, 5]
@@ -197,8 +166,8 @@ FLUX_LABEL = r"$F_\nu$ [$\mu$Jy]"
 
 
 def plot(bands, galaxy, sample, n):
-    fig = plt.figure(figsize=(9, 9.25))
-    left, width = 0.78, 6.0
+    fig = plt.figure(figsize=(8, 9.25))
+    left, width = 0.72, 7.1
     ax_err = axes_in(fig, left, 0.55, width, 1.0)
     ax_rat = axes_in(fig, left, 1.67, width, 1.3)
     ax_all = axes_in(fig, left, 3.09, width, 1.9)
@@ -207,27 +176,26 @@ def plot(bands, galaxy, sample, n):
     uv = bands[bands.um < UV_EDGE + 0.02]
     draw_flux(ax_uv, uv, errors=True)
     style_x(ax_uv, 0.22, 0.51, OBS_TICKS + [0.35, 0.45])
-    ax_uv.set_ylim(-0.12, 2.95)
-    ax_uv.axhline(0, color="#8a8a8a", lw=0.6, zorder=1)
+    ax_uv.set_ylim(-0.12, 3.25)
+    ax_uv.axhline(0, color="0.5", lw=0.8, zorder=1)
     ax_uv.set_ylabel(FLUX_LABEL)
     ax_uv.set_xlabel(OBS_LABEL)
-    ax_uv.set_facecolor("#f8f7f1")
     rest_axis(ax_uv, REST_TICKS + [0.14, 0.16, 0.18, 0.22, 0.28], REST_LABEL)
     label_bands(ax_uv, uv, ["NUV", "u", "u*", "IB427", "B", "IB464"], side=lambda b: 1)
     g = uv[uv.band.isin(["g", "IA484"])]
     ax_uv.annotate(r"$g$, IA484", (g.um.iloc[0], (g.total_flux_ujy + g.floored).max()),
                    xytext=(0, 6), textcoords="offset points", ha="center", va="bottom",
-                   fontsize=7.5, color=INK_2)
+                   fontsize=LABEL_PT)
 
     draw_flux(ax_all, bands, errors=False)
     ax_all.set_yscale("log")
     ax_all.set_ylim(0.025, 900)
     set_plain_log_ticks(ax_all.yaxis, [0.1, 1, 10, 100])
     ax_all.set_ylabel(FLUX_LABEL)
-    ax_all.axvspan(0.22, 0.51, color="#f1efe6", lw=0, zorder=0)
+    ax_all.axvspan(0.22, 0.51, color=GREY, alpha=0.2, lw=0, zorder=0)
     added = [b for b in bands.band.unique() if b not in FIT and bands[bands.band == b].um.iloc[0] > 0.51]
     # Foot of each leader sits on the band's own marks (catalogue offsets in SHIFT_PT).
-    anchor = {"i+": -1.75, "z++": -1.75, "i": 1.75, "z": 1.75, "y": 1.75,
+    anchor = {"i+": -2.25, "z++": -2.25, "i": 2.25, "z": 2.25, "y": 2.25,
               **{b: SHIFT_PT["cosmos2025"] for b in SPACE}}
     label_bands(ax_all, bands, FIT, side=lambda b: 1, anchor=anchor,
                 extra={"i+": (-5, 7), "z++": (-3, 14), "Y": (5, 7)})
@@ -236,7 +204,7 @@ def plot(bands, galaxy, sample, n):
                        "F814W": (0, 20), "F115W": (0, 20)})
 
     draw_ratio(ax_rat, galaxy, "flux_ratio", sample)
-    ax_rat.axhspan(1 - FLOOR, 1 + FLOOR, color=BAND, alpha=0.2, lw=0, zorder=0)
+    ax_rat.axhspan(1 - FLOOR, 1 + FLOOR, color=GREY, alpha=0.2, lw=0, zorder=0)
     ax_rat.set_ylim(0.5, 1.2)
     ax_rat.set_yticks([0.6, 0.8, 1.0])
     ax_rat.set_ylabel(r"$F_\nu\,/\,F_{\nu,\,2015}$")
@@ -251,15 +219,11 @@ def plot(bands, galaxy, sample, n):
     for ax in (ax_all, ax_rat, ax_err):
         style_x(ax, 0.2, 5.4, OBS_TICKS, labels=ax is ax_err)
     rest_axis(ax_all, [0.15] + REST_TICKS, REST_LABEL)
-    for ax in (ax_rat, ax_err):
-        ax.spines["top"].set_visible(False)
 
-    catalogues, filters, errors, gap = legend_handles(sample_n=n)
-    entries = catalogues + [(gap, "")] + filters + [(gap, "")] + errors
-    fig.legend([h for h, _ in entries], [t for _, t in entries], loc="upper left",
-               bbox_to_anchor=((left + width + 0.18) / 9, 8.78 / 9.25), frameon=False,
-               title=rf"{GALAXY}, $z = {ZRED}$", alignment="left",
-               handlelength=1.4, labelspacing=0.55, borderaxespad=0)
+    catalogues, errors = legend_handles(sample_n=n)
+    entries = catalogues + errors
+    ax_uv.legend([h for h, _ in entries], [t for _, t in entries], loc="upper left", frameon=False,
+                 title=rf"{GALAXY}, $z = {ZRED}$", alignment="left")
     OUT.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT / f"cosmos-photometry-{GALAXY}.png", dpi=150)
     plt.close(fig)
