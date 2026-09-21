@@ -2,7 +2,7 @@
 """Re-execute the compact fit notebook on stored fits without re-running the sampler.
 
 For each result directory the script reads ``ceridwen_result.h5`` (target,
-seed, manifest index, calibration order, tau prior bounds, sampled parameters),
+seed, manifest index, calibration order, photometry source, tau prior bounds, sampled parameters),
 sets those literals in the top cell of
 ``notebooks/ceridwen_integrated_photometry_spectra.ipynb``, replaces the
 ``run_sampler``/``write_result_h5`` block by ``load_result_h5`` of the stored
@@ -47,6 +47,7 @@ def stored_fit(result_dir: Path) -> dict:
             "seed": int(attrs["random_seed"]),
             "manifest_index": int(attrs["manifest_index"]),
             "calibration_order": int(attrs["calibration_order"]),
+            "photometry": str(attrs.get("photometry_source", "cosmos_total")),
             "tau_bounds": (float(low), float(high)),
             "free_zred": "zred" in names,
             "free_sigma": "sigma_smooth" in names,
@@ -64,6 +65,7 @@ def compact_notebook(result_dir: Path, fit: dict) -> nbformat.NotebookNode:
         (r'RESULT_DIR = Path\(os\.environ\.get\("CERIDWEN_RESULT_DIR", [^\n]*\)\)', f'RESULT_DIR = PROJECT_ROOT / "{result_dir.relative_to(PROJECT_ROOT)}"'),
         (r'QUICK = os\.environ\.get\("CERIDWEN_NOTEBOOK_QUICK"\) == "1"', "QUICK = False"),
         (r'"calibration_order": \d+,', f'"calibration_order": {fit["calibration_order"]},'),
+        (r'"photometry": "[^"]*",', f'"photometry": "{fit["photometry"]}",'),
         (r'"diffuse_tau_kc": Uniform\(low=[^)]*\),', f'"diffuse_tau_kc": Uniform(low={fit["tau_bounds"][0]:g}, high={fit["tau_bounds"][1]:g}),'),
     ]
     if not fit["free_zred"]:

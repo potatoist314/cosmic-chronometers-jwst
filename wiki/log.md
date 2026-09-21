@@ -1108,3 +1108,9 @@
 - Pages: [[notes/cosmos-photometry-comparison]], [[research/questions/q-cosmos-photometry]]
 - Change: new note with the M1_210210 comparison figure (design A, picked by Liu Hao on 2026-09-21), the match of the 187 fitted galaxies, the per-band table and the fit notebook changes. Figure by `scripts/plot_cosmos_photometry_comparison.py` from `results/cosmos-photometry-comparison/`. Question record links the note. No fit.
 - Validation: figure checked at 900 px; note passes the length check. The full build stops in check-in 2026-09-21 at `results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb` cell 22, which has no saved output in the working tree; that file belongs to another job.
+
+## [2026-09-21] experiment | M1_210210 refit with COSMOS2020 Classic and COSMOS2025 photometry
+
+- Pages: [[notes/cosmos-photometry-refit]], [[research/experiments/e-cosmos-photometry-refit]], [[research/questions/q-cosmos-photometry]]
+- Change: two refits of M1_210210 on one Vast.ai RTX 5060 Ti (instance 51958216, $0.180, destroyed), arms `cosmos2020_classic` (30 bands) and `cosmos2025` (28 bands), seed 20260832. Record filled with runs, figures, measurements, results and caveats; note with corner, SFH and parameter table. Fit notebook gained the `SETTINGS["photometry"]` options and a clip on the filter-width error bars; `scripts/regenerate_fit_notebooks.py` reads the stored photometry source.
+- Validation: figures checked at 900 px; wiki build with the length check and `test_research.py` pass. `wiki/tests/run_tests.py` fails one check, "resumable note carries the question box", on note `stacked-chi2-and-median-pull`.

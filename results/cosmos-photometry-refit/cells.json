@@ -1,0 +1,22 @@
+[
+ {
+  "name": "cosmos2020_classic/M1_210210",
+  "arm": "cosmos2020_classic",
+  "target": "M1_210210",
+  "object_id": 210210,
+  "seed": 20260832,
+  "env": {
+   "CERIDWEN_SETTINGS_OVERRIDE": "{\"photometry\": \"cosmos2020_classic\"}"
+  }
+ },
+ {
+  "name": "cosmos2025/M1_210210",
+  "arm": "cosmos2025",
+  "target": "M1_210210",
+  "object_id": 210210,
+  "seed": 20260832,
+  "env": {
+   "CERIDWEN_SETTINGS_OVERRIDE": "{\"photometry\": \"cosmos2025\"}"
+  }
+ }
+]

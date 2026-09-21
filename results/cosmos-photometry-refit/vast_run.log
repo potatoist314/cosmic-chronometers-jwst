@@ -1,0 +1,67 @@
+[19:53:16] calibration arms: rented instance 51958216: offer 40931299 RTX 5060 Ti $0.1269/h Virginia, US host 519895 rel 0.996
+[19:53:17] calibration arms: waiting for instance 51958216: status=None
+[19:53:33] calibration arms: waiting for instance 51958216: status=None
+[19:53:49] calibration arms: waiting for instance 51958216: status=loading
+[19:54:11] calibration arms: cloning branch absorption-mask
+[19:55:38] calibration arms: uploading ceridwen working tree
+[19:55:41] calibration arms: uploading external/sedpy_jax working tree
+[19:55:47] calibration arms: submodule trees uploaded: {'ceridwen': '5f2c316', 'external/sedpy_jax': '754a118'}
+[19:55:48] calibration arms: uploading data/raw
+[19:56:24] calibration arms: uploaded 1988 spectra
+[19:56:28] calibration arms: bootstrapping the CUDA environment
+[20:01:24] calibration arms: bootstrap: sedpy_jax wavelength-dependent input resolution verified
+[20:01:24] calibration arms: bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+[20:01:24] calibration arms: bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5
+[20:01:24] calibration arms: bootstrap: Select the 'Ceridwen (Vast.ai GPU)' kernel in JupyterLab.
+[20:01:27] calibration arms: probe: devices [CudaDevice(id=0)]
+[20:01:27] calibration arms: probe: backend gpu
+[20:01:27] calibration arms: probe: overlay          40G   11G   30G  27% /
+[20:01:34] calibration arms: launched the remote runner
+[20:03:37] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.027 of cap $0.60
+[20:05:41] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.031 of cap $0.60
+[20:07:46] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.036 of cap $0.60
+[20:09:51] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.039 of cap $0.60
+[20:09:54] calibration arms: pulling results
+[20:12:00] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.044 of cap $0.60
+[20:14:05] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.048 of cap $0.60
+[20:16:09] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.053 of cap $0.60
+[20:18:13] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.058 of cap $0.60
+[20:20:17] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.062 of cap $0.60
+[20:22:22] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.067 of cap $0.60
+[20:24:28] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.071 of cap $0.60
+[20:26:45] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.077 of cap $0.60
+[20:26:48] calibration arms: pulling results
+[20:29:00] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.080 of cap $0.60
+[20:31:13] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.086 of cap $0.60
+[20:33:23] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.090 of cap $0.60
+[20:35:33] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.094 of cap $0.60
+[20:37:44] calibration arms: 0/2 done, 0 failed, running ['cosmos2020_classic/M1_210210']; spend $0.100 of cap $0.60
+[20:39:56] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.105 of cap $0.60
+[20:42:05] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.110 of cap $0.60
+[20:42:08] calibration arms: pulling results
+[20:44:12] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.112 of cap $0.60
+[20:46:17] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.117 of cap $0.60
+[20:48:22] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.122 of cap $0.60
+[20:50:26] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.127 of cap $0.60
+[20:52:30] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.131 of cap $0.60
+[20:54:35] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.135 of cap $0.60
+[20:56:40] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.140 of cap $0.60
+[20:58:45] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.144 of cap $0.60
+[20:58:47] calibration arms: pulling results
+[21:00:51] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.150 of cap $0.60
+[21:02:56] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.153 of cap $0.60
+[21:05:01] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.158 of cap $0.60
+[21:07:05] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.161 of cap $0.60
+[21:09:09] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.167 of cap $0.60
+[21:11:14] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.171 of cap $0.60
+[21:13:19] calibration arms: 0/2 done, 1 failed, running ['cosmos2025/M1_210210']; spend $0.176 of cap $0.60
+[21:15:27] calibration arms: 1/2 done, 1 failed, running []; spend $0.180 of cap $0.60
+[21:15:28] calibration arms: runner exited before every cell finished
+[21:15:29] calibration arms: pulling results
+[21:15:44] calibration arms: destroyed instance 51958216
+{
+ "instance_id": 51958216,
+ "spent_usd": 0.1804,
+ "instances_left": [],
+ "error": null
+}
