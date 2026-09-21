@@ -30,6 +30,16 @@ Independence of the evidence, from the 2026-09-21 chat explanation:
 - \(10\) \(\mathrm{H}\delta\) detections: catalogued \(\mathrm{H}\beta\) emission \(0.00–0.44\,\text{\AA}\) or blank.
 - EW versus flux ratios: continuum-ratio factor.
 
+`NebularModel` and old-star ionisation, read in `ceridwen/ceridwen/neb/NebularGridModel.py`:
+
+- Ceridwen (`ceridwen.neb`); off in production fits.
+- SSP emission: CLOUDY cube age range only (lines 355-380, `young_mask`); flagged-young SSP >320 Myr (3.2e8 yr): `RuntimeError`; older-than-grid SSPs: no emission.
+- FSPS CLOUDY: `ZAU_ND_<isoc>.cont` and `.lines` in `$SPS_HOME/nebular`; MIST defaults: 11 x 10 x 7 (`logZ`, age, `logU`).
+- Cube ages read in `external/fsps/nebular/ZAU_ND_mist.cont` and `.lines`: continuum 0.5–20 Myr, lines 1–20 Myr; maximum 20 Myr, not ~10 Myr.
+- `external/fsps/README.md`: tables computed by Nell Byler. Byler et al. 2017, young clusters ionised by young massive stars, no post-AGB/LIER source: Liu Hao's brief, paper not read, unverified.
+- Enabled: no old-star emission; Balmer fitting: added young stars, biased SFH/age.
+- “model”: new old-star-ionisation grids or empirical Gaussian lines, not existing `NebularModel`.
+
 ## Your words
 
 ```json
@@ -48,6 +58,16 @@ Independence of the evidence, from the 2026-09-21 chat explanation:
     "date": "2026-09-21",
     "text": "ugh. add this explanation to the wiki priority 9 item.",
     "display_text": "Ugh. Add this explanation to the wiki priority 9 item."
+  },
+  {
+    "date": "2026-09-21",
+    "text": "but does the model account for AGB ionisation, or just the classic UV ionisation",
+    "display_text": "But does the model account for AGB ionisation, or just the classic UV ionisation?"
+  },
+  {
+    "date": "2026-09-21",
+    "text": "very annoying - add this new info to the wiki",
+    "display_text": "Very annoying - add this new info to the wiki."
   }
 ]
 ```
@@ -58,7 +78,8 @@ Independence of the evidence, from the 2026-09-21 chat explanation:
 - [e-weak-emission-literature](wiki/research/experiments/e-weak-emission-literature.md)
 - [e-emission-mask](wiki/research/experiments/e-emission-mask.md)
 - [e-no-emission-mask](wiki/research/experiments/e-no-emission-mask.md), `results/no-emission-mask`
-- `ceridwen/ceridwen/neb/NebularGridModel.py`
+- `ceridwen/ceridwen/neb/NebularGridModel.py:355-380`
+- `external/fsps/nebular/ZAU_ND_mist.cont`, `external/fsps/nebular/ZAU_ND_mist.lines`
 - `scripts/absorption_mask_analysis.py:71-75`
 - Roadmap task `emission-lines-model-mask-ignore`, [direction](wiki/research/direction.md)
 

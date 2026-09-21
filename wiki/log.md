@@ -971,3 +971,9 @@
 - Pages: [[research/direction]], [[research/questions/q-emission-lines]], [[research/experiments/e-weak-emission-literature]]
 - Change: Liu Hao's 2026-09-21 message appended to Amendments; roadmap task `emission-lines-model-mask-ignore` at his priority 9, linked to the new question `q-emission-lines`, which holds his words, the three options, the DR2 catalogue facts and the evidence links. No decision recorded. `ceridwen.neb.NebularModel` exists and is unused in the production fit. His question on circularity and his request to add the explanation are appended to Amendments; the five-point explanation and a Balmer recount on the 117 fitted galaxies covering all three lines (H-beta 2, H-gamma 5, H-delta 10) are in the item details and the question; Case B ratios marked unverified. Question wording by Codex gpt-6-astra from a fact sheet; log entry by Claude.
 - Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
+
+## [2026-09-21] roadmap | NebularModel covers young-star ionisation only
+
+- Pages: [[research/direction]], [[research/questions/q-emission-lines]]
+- Change: Liu Hao's two 2026-09-21 messages appended to Amendments. The priority-9 item and the question state that `NebularModel` applies emission only to SSPs inside the CLOUDY cube age range (`NebularGridModel.py:355-380`), that the local MIST cubes span 0.5-20 Myr, and what the "model" option therefore requires. The Byler et al. 2017 attribution is marked unverified. No decision recorded. Wording by Codex gpt-6-astra from a fact sheet; cube-age line and log entry by Claude.
+- Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
