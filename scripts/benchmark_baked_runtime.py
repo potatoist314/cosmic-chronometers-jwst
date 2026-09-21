@@ -19,7 +19,6 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOK = PROJECT_ROOT / "notebooks/ceridwen_integrated_photometry_spectra.ipynb"
-SPECTRUM_FLAG = 'free_z="zred" in PRIORS,'
 ARMS = {  # label: (free z and sigma_star, baked_runtime)
     "fixed": (False, False),
     "free_current": (True, False),
@@ -30,11 +29,9 @@ ARMS = {  # label: (free z and sigma_star, baked_runtime)
 def build(free: bool, baked: bool) -> dict:
     """Run the settings, data, observation, model and likelihood cells."""
     cells = ["".join(cell["source"]) for cell in json.loads(NOTEBOOK.read_text())["cells"]]
-    if cells[6].count(SPECTRUM_FLAG) != 1:
-        raise SystemExit("the observation cell no longer holds the Spectrum free_z line")
-    cells[6] = cells[6].replace(SPECTRUM_FLAG, f"{SPECTRUM_FLAG} baked_runtime={baked},")
     namespace = {"display": lambda *args, **kwargs: None}
     exec(cells[2], namespace)
+    namespace["SETTINGS"]["baked_runtime"] = baked
     if not free:
         namespace["PRIORS"].pop("zred")
         namespace["PRIORS"].pop("sigma_smooth")

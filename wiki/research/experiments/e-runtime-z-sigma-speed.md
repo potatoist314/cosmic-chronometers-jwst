@@ -31,12 +31,22 @@ For `M1_210210`, order-10 GPU fits with fixed and free \(z\) and \(\sigma_\star\
 - Profile: `results/runtime-z-sigma-speed/analysis.ipynb`; Apple CPU, `jax` 0.11.1 x64, `jit(vmap)` over 100 prior draws, seed 20260921, order-10 joint likelihood, fastest median of eight interleaved rounds.
 - Code: `ceridwen` commit `6707c05`, `Spectrum(baked_runtime=True)`; exact redshift lookup indices, precomputed smoothing interpolation and instrument taper, instrument FFT padding reduced from 32768 to 18432 for `M1_210210`.
 - Tests: `ceridwen/tests/test_baked_runtime.py`; predictions and marginalised order-10 likelihood at 25 sampled points across three instrument routes; lookup interpolation at nodes, one ulp either side and outside the grid.
-- Planned GPU benchmark: same-boot old/new comparison on one Vast.ai RTX 5060-class instance under $0.11/h, after Liu Hao approves.
+- GPU benchmark: Vast.ai RTX 5060 Ti, one process and boot, fixed/current/baked arms. M1_210210, order-10 joint likelihood, JAX 0.10.2 x64, `jit(vmap)`, 100/500 particles, 30 interleaved rounds, 20 timed calls per round, medians, seed 20260921. Ceridwen `6707c05`, project `52b0373`. On demand at $0.1269/h; price cap raised from $0.11/h to $0.13/h for this rental only.
 
 ## Amendments
 
 ```json
-[]
+[
+  {
+    "date": "2026-09-21",
+    "text": "i approve the speedup changes, go forward with the test, make it default if it works",
+    "display_text": "I approve the speedup changes; go forward with the test and make it default if it works."
+  },
+  {
+    "date": "2026-09-21",
+    "text": "go"
+  }
+]
 ```
 
 ## Runs
@@ -71,7 +81,31 @@ For `M1_210210`, order-10 GPU fits with fixed and free \(z\) and \(\sigma_\star\
   {
     "id": "gpu-same-boot-old-vs-new",
     "arm": "timing",
-    "status": "planned"
+    "status": "complete",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "Executed GPU tables",
+        "path": "results/runtime-z-sigma-speed/gpu-benchmark.ipynb"
+      },
+      {
+        "label": "timing-gpu.json",
+        "path": "results/runtime-z-sigma-speed/timing-gpu.json"
+      },
+      {
+        "label": "benchmark-gpu.log",
+        "path": "results/runtime-z-sigma-speed/benchmark-gpu.log"
+      },
+      {
+        "label": "Vast rental record",
+        "path": "results/runtime-z-sigma-speed/vast_run_2026-09-21T115913+0000.json"
+      }
+    ],
+    "code": "52b0373",
+    "model": "Ceridwen 6707c05",
+    "config": "results/runtime-z-sigma-speed/timing-gpu.json",
+    "data": "results/runtime-z-sigma-speed/benchmark-gpu.log",
+    "seed": 20260921
   }
 ]
 ```
@@ -96,9 +130,14 @@ For `M1_210210`, order-10 GPU fits with fixed and free \(z\) and \(\sigma_\star\
 | Redshift stretch alone, `jnp.interp` / lookup table | 89 / 16 \(\mu\mathrm{s}\) |
 | FFT pair alone, length 8192 / 32768 / 18432 | 17 / 67 / 34 \(\mu\mathrm{s}\) |
 | Max \(|\Delta\ln L|\), baked against current, 100 prior draws | 2.8e-9 (relative 2e-14) |
+| GPU device | RTX 5060 Ti, jax 0.10.2 x64, Vast instance 51906463, one boot; 30 interleaved rounds of 20 calls per arm |
+| GPU \(\mu\mathrm{s}\) per call, 100 particles, fixed / current / baked | 18.5 / 45.4 / 31.3 (1.45x, rounds 1.445 to 1.456) |
+| GPU \(\mu\mathrm{s}\) per call, 500 particles, fixed / current / baked | 16.3 / 45.9 / 30.0 (1.53x, rounds 1.528 to 1.535) |
+| GPU max \(|\Delta\ln L|\), baked against current, 500 prior draws | 3.7e-9 (relative 1.0e-13) |
+| Rental | $0.1269/h on demand, $0.0315 spent, instance destroyed |
 | GPU fits, fixed / free, different boots | 468 s, 8.42M calls, 56 \(\mu\mathrm{s}\) / 1502 s, 10.46M calls, 144 \(\mu\mathrm{s}\) |
 
-[Executed profile](results/runtime-z-sigma-speed/analysis.ipynb) · [Timing](results/runtime-z-sigma-speed/timing.csv) · [Parts](results/runtime-z-sigma-speed/parts.csv)
+[Executed profile](results/runtime-z-sigma-speed/analysis.ipynb) · [Timing](results/runtime-z-sigma-speed/timing.csv) · [Parts](results/runtime-z-sigma-speed/parts.csv) · [GPU tables](results/runtime-z-sigma-speed/gpu-benchmark.ipynb) · [GPU timing](results/runtime-z-sigma-speed/timing-gpu.json)
 
 ## Results
 
@@ -106,11 +145,15 @@ CPU cost with both parameters free fell from 267 to 160 \(\mu\mathrm{s}\) per ca
 
 Maximum absolute log-likelihood difference over 100 prior draws was 2.8e-9, with relative difference 2e-14. Prediction tests use 1e-9 relative tolerance. The `ceridwen` suite recorded 184 passed and 26 skipped.
 
+GPU fixed/current/baked costs: 18.5/45.4/31.3 \(\mu\mathrm{s}\)/call at 100 particles, 16.3/45.9/30.0 at 500. Speed-ups: 1.45x/1.53x. Across 500 draws, maximum |ΔlnL| was 3.7e-9, relative 1.0e-13, within tolerance. `Spectrum(baked_runtime=True)` became default in `5f2c316`, with notebook settings enabled. \(z\) and \(\sigma_\star\) remain free, with unchanged priors.
+
 ## Caveats
 
-- No GPU benchmark yet; CPU ratios are a guide. GPU boot-to-boot variance reaches 66%.
-- `baked_runtime` defaults to `False`; fit defaults remain unchanged, with \(z\) and \(\sigma_\star\) free.
-- The remaining 1.40x cost includes both the 18432-point instrument FFT and the 8192-point LOSVD FFT.
+- No full fit rerun under the baked path. Wall time per fit remains unmeasured.
+- GPU boot-to-boot variance reaches 66%.
+- CPU free/fixed ratios fell from 2.33x to 1.40x. GPU ratios at 500 particles fell from 2.81x to 1.84x.
+- The remaining CPU 1.40x cost includes the 18432-point instrument FFT and the 8192-point LOSVD FFT.
+- Baked free GPU cost remains 1.84x fixed cost. Sampled \(\sigma_\star\) needs a second FFT.
 - `test_from_fsps_records_provenance` requires FSPS, which is not installed.
 
 ## References

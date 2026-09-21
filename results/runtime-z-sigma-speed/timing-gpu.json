@@ -1,0 +1,522 @@
+{
+ "target": "M1_210210",
+ "device": "cuda:0",
+ "device_kind": "NVIDIA GeForce RTX 5060 Ti",
+ "jax": "0.10.2",
+ "x64": true,
+ "xla_flags": "--xla_gpu_enable_command_buffer=",
+ "seed": 20260921,
+ "rounds_per_arm": 30,
+ "repeats_per_round": 20,
+ "log_likelihood": {
+  "draws": 500,
+  "finite": true,
+  "lnl_min": -133471617408.5941,
+  "lnl_max": 220959.30387009738,
+  "max_abs_dlnl": 3.725290298461914e-09,
+  "max_rel_dlnl": 1.0196618442706189e-13,
+  "within_test_tolerance": true
+ },
+ "summary": [
+  {
+   "particles": 100,
+   "fixed_us_per_call": 18.51111497671809,
+   "free_current_us_per_call": 45.40874004305806,
+   "free_baked_us_per_call": 31.325287563959137,
+   "speedup_median": 1.4501244547216916,
+   "speedup_min": 1.4454160831967786,
+   "speedup_max": 1.456489101569184
+  },
+  {
+   "particles": 500,
+   "fixed_us_per_call": 16.29903599678073,
+   "free_current_us_per_call": 45.87490201811306,
+   "free_baked_us_per_call": 29.977513986523263,
+   "speedup_median": 1.530358082905095,
+   "speedup_min": 1.5280150769458287,
+   "speedup_max": 1.5351781513019147
+  }
+ ],
+ "rounds": [
+  {
+   "particles": 100,
+   "round": 0,
+   "fixed": 18.34115493693389,
+   "free_current": 45.40093505056575,
+   "free_baked": 31.29997494397685,
+   "speedup": 1.4505102681975914
+  },
+  {
+   "particles": 100,
+   "round": 1,
+   "fixed": 18.526309868320823,
+   "free_current": 45.417604997055605,
+   "free_baked": 31.350744975497946,
+   "speedup": 1.4486930065793193
+  },
+  {
+   "particles": 100,
+   "round": 2,
+   "fixed": 18.530749948695302,
+   "free_current": 45.39723988273181,
+   "free_baked": 31.33667996735312,
+   "speedup": 1.448693350094111
+  },
+  {
+   "particles": 100,
+   "round": 3,
+   "fixed": 18.557025032350793,
+   "free_current": 45.438659872161224,
+   "free_baked": 31.317985121859238,
+   "speedup": 1.450880690292112
+  },
+  {
+   "particles": 100,
+   "round": 4,
+   "fixed": 18.556815048214048,
+   "free_current": 45.21717011812143,
+   "free_baked": 31.045319919940084,
+   "speedup": 1.456489101569184
+  },
+  {
+   "particles": 100,
+   "round": 5,
+   "fixed": 18.290195002919063,
+   "free_current": 45.17896493780427,
+   "free_baked": 31.074759899638593,
+   "speedup": 1.453879775216854
+  },
+  {
+   "particles": 100,
+   "round": 6,
+   "fixed": 18.282835080754012,
+   "free_current": 45.37386499578133,
+   "free_baked": 31.343575101345778,
+   "speedup": 1.447628895206442
+  },
+  {
+   "particles": 100,
+   "round": 7,
+   "fixed": 18.558750016381964,
+   "free_current": 45.40298003121279,
+   "free_baked": 31.307340104831383,
+   "speedup": 1.4502343501294814
+  },
+  {
+   "particles": 100,
+   "round": 8,
+   "fixed": 18.519224977353588,
+   "free_current": 45.41613001492806,
+   "free_baked": 31.28301483229734,
+   "speedup": 1.4517823892101138
+  },
+  {
+   "particles": 100,
+   "round": 9,
+   "fixed": 18.547134968684986,
+   "free_current": 45.40313995676115,
+   "free_baked": 31.33004007395357,
+   "speedup": 1.4491886971605679
+  },
+  {
+   "particles": 100,
+   "round": 10,
+   "fixed": 18.52907007560134,
+   "free_current": 45.41227011941373,
+   "free_baked": 31.418129801750183,
+   "speedup": 1.4454160831967786
+  },
+  {
+   "particles": 100,
+   "round": 11,
+   "fixed": 18.52546993177384,
+   "free_current": 45.398220245260745,
+   "free_baked": 31.346809992101043,
+   "speedup": 1.4482564655446746
+  },
+  {
+   "particles": 100,
+   "round": 12,
+   "fixed": 18.508969951653853,
+   "free_current": 45.51042497041635,
+   "free_baked": 31.415950070368126,
+   "speedup": 1.4486407340372716
+  },
+  {
+   "particles": 100,
+   "round": 13,
+   "fixed": 18.57109004049562,
+   "free_current": 45.40575493592769,
+   "free_baked": 31.349515047622845,
+   "speedup": 1.4483718445708682
+  },
+  {
+   "particles": 100,
+   "round": 14,
+   "fixed": 18.565884965937585,
+   "free_current": 45.41162998066284,
+   "free_baked": 31.349209893960506,
+   "speedup": 1.4485733495124382
+  },
+  {
+   "particles": 100,
+   "round": 15,
+   "fixed": 18.511404923629016,
+   "free_current": 45.42012989986688,
+   "free_baked": 31.347839976660907,
+   "speedup": 1.4489078014205468
+  },
+  {
+   "particles": 100,
+   "round": 16,
+   "fixed": 18.508155044401065,
+   "free_current": 45.406779972836375,
+   "free_baked": 31.329000048572198,
+   "speedup": 1.449352992512947
+  },
+  {
+   "particles": 100,
+   "round": 17,
+   "fixed": 18.529515073169023,
+   "free_current": 45.41439993772656,
+   "free_baked": 31.314395018853247,
+   "speedup": 1.4502723080035305
+  },
+  {
+   "particles": 100,
+   "round": 18,
+   "fixed": 18.52026500273496,
+   "free_current": 45.42701513855718,
+   "free_baked": 31.317334942286834,
+   "speedup": 1.4505389817579426
+  },
+  {
+   "particles": 100,
+   "round": 19,
+   "fixed": 18.478624988347292,
+   "free_current": 45.19901005551219,
+   "free_baked": 31.076349987415597,
+   "speedup": 1.4544504124137996
+  },
+  {
+   "particles": 100,
+   "round": 20,
+   "fixed": 18.301305099157616,
+   "free_current": 45.185170019976795,
+   "free_baked": 31.06991498498246,
+   "speedup": 1.454306200767427
+  },
+  {
+   "particles": 100,
+   "round": 21,
+   "fixed": 18.264599930262193,
+   "free_current": 45.159084984334186,
+   "free_baked": 31.09194993157871,
+   "speedup": 1.452436565854241
+  },
+  {
+   "particles": 100,
+   "round": 22,
+   "fixed": 18.2443750964012,
+   "free_current": 45.166649942984805,
+   "free_baked": 31.1186900944449,
+   "speedup": 1.4514315932291653
+  },
+  {
+   "particles": 100,
+   "round": 23,
+   "fixed": 18.245005048811436,
+   "free_current": 45.17431982094422,
+   "free_baked": 31.06809002929367,
+   "speedup": 1.4540423881336118
+  },
+  {
+   "particles": 100,
+   "round": 24,
+   "fixed": 18.151074909837916,
+   "free_current": 45.46150506939739,
+   "free_baked": 31.337560067186132,
+   "speedup": 1.4507034042194171
+  },
+  {
+   "particles": 100,
+   "round": 25,
+   "fixed": 18.47650491981767,
+   "free_current": 45.41673988569528,
+   "free_baked": 31.321575079346076,
+   "speedup": 1.4500145593139016
+  },
+  {
+   "particles": 100,
+   "round": 26,
+   "fixed": 18.548009975347668,
+   "free_current": 45.43968505458906,
+   "free_baked": 31.371980003314093,
+   "speedup": 1.4484162316114213
+  },
+  {
+   "particles": 100,
+   "round": 27,
+   "fixed": 18.492080125724897,
+   "free_current": 45.42898997897282,
+   "free_baked": 31.312009959947318,
+   "speedup": 1.450848733028739
+  },
+  {
+   "particles": 100,
+   "round": 28,
+   "fixed": 18.510105146560818,
+   "free_current": 45.410700113279745,
+   "free_baked": 31.344524904852733,
+   "speedup": 1.4487601981885294
+  },
+  {
+   "particles": 100,
+   "round": 29,
+   "fixed": 18.510825029807165,
+   "free_current": 45.43499497231096,
+   "free_baked": 31.33772508590482,
+   "speedup": 1.4498498167228755
+  },
+  {
+   "particles": 500,
+   "round": 0,
+   "fixed": 16.268804989522323,
+   "free_current": 45.856427983380854,
+   "free_baked": 29.947040020488203,
+   "speedup": 1.5312507664199293
+  },
+  {
+   "particles": 500,
+   "round": 1,
+   "fixed": 16.263714991509914,
+   "free_current": 45.86018199915998,
+   "free_baked": 29.937939980300143,
+   "speedup": 1.531841603975993
+  },
+  {
+   "particles": 500,
+   "round": 2,
+   "fixed": 16.26733798184432,
+   "free_current": 45.849582995288074,
+   "free_baked": 29.93320199311711,
+   "speedup": 1.5317299835089746
+  },
+  {
+   "particles": 500,
+   "round": 3,
+   "fixed": 16.2503510073293,
+   "free_current": 45.7113960001152,
+   "free_baked": 29.80883899726905,
+   "speedup": 1.5334846152278212
+  },
+  {
+   "particles": 500,
+   "round": 4,
+   "fixed": 16.129800002090633,
+   "free_current": 45.74305203277618,
+   "free_baked": 29.936256993096322,
+   "speedup": 1.5280150769458287
+  },
+  {
+   "particles": 500,
+   "round": 5,
+   "fixed": 16.259926022030413,
+   "free_current": 45.83867697510868,
+   "free_baked": 29.94965700781904,
+   "speedup": 1.5305242715514722
+  },
+  {
+   "particles": 500,
+   "round": 6,
+   "fixed": 16.264047997538,
+   "free_current": 45.84910298581235,
+   "free_baked": 29.947875038487837,
+   "speedup": 1.5309634799426963
+  },
+  {
+   "particles": 500,
+   "round": 7,
+   "fixed": 16.258304996881634,
+   "free_current": 45.83964199991897,
+   "free_baked": 29.943572997581214,
+   "speedup": 1.5308674754219147
+  },
+  {
+   "particles": 500,
+   "round": 8,
+   "fixed": 16.299370996421203,
+   "free_current": 45.87317901314236,
+   "free_baked": 29.92459898814559,
+   "speedup": 1.532958855399021
+  },
+  {
+   "particles": 500,
+   "round": 9,
+   "fixed": 16.290803003357723,
+   "free_current": 45.87625901331194,
+   "free_baked": 29.977987986057997,
+   "speedup": 1.5303314897133131
+  },
+  {
+   "particles": 500,
+   "round": 10,
+   "fixed": 16.29570301156491,
+   "free_current": 45.87498601176776,
+   "free_baked": 29.97009298997,
+   "speedup": 1.5306921479062678
+  },
+  {
+   "particles": 500,
+   "round": 11,
+   "fixed": 16.297833004500717,
+   "free_current": 45.87420501047745,
+   "free_baked": 29.977523983689025,
+   "speedup": 1.5302866586125632
+  },
+  {
+   "particles": 500,
+   "round": 12,
+   "fixed": 16.29932998912409,
+   "free_current": 45.89473101077601,
+   "free_baked": 29.97284199227579,
+   "speedup": 1.5312105212646636
+  },
+  {
+   "particles": 500,
+   "round": 13,
+   "fixed": 16.293144988594577,
+   "free_current": 45.87258800165728,
+   "free_baked": 29.983481974340975,
+   "speedup": 1.5299286467433553
+  },
+  {
+   "particles": 500,
+   "round": 14,
+   "fixed": 16.31889000418596,
+   "free_current": 46.01181301404722,
+   "free_baked": 29.9716439913027,
+   "speedup": 1.5351781513019147
+  },
+  {
+   "particles": 500,
+   "round": 15,
+   "fixed": 16.300955991027877,
+   "free_current": 45.870580011978745,
+   "free_baked": 29.9775039893575,
+   "speedup": 1.5301667553197071
+  },
+  {
+   "particles": 500,
+   "round": 16,
+   "fixed": 16.28929199068807,
+   "free_current": 45.84904701914638,
+   "free_baked": 29.959164996398613,
+   "speedup": 1.530384676096877
+  },
+  {
+   "particles": 500,
+   "round": 17,
+   "fixed": 16.29512498038821,
+   "free_current": 45.874818024458364,
+   "free_baked": 29.980055027408525,
+   "speedup": 1.5301779126995745
+  },
+  {
+   "particles": 500,
+   "round": 18,
+   "fixed": 16.302805015584454,
+   "free_current": 45.88332900311798,
+   "free_baked": 29.987209039973095,
+   "speedup": 1.5300966802864273
+  },
+  {
+   "particles": 500,
+   "round": 19,
+   "fixed": 16.304480988765135,
+   "free_current": 45.884412014856935,
+   "free_baked": 29.98218100401573,
+   "speedup": 1.530389400581342
+  },
+  {
+   "particles": 500,
+   "round": 20,
+   "fixed": 16.305605007801205,
+   "free_current": 45.879198994953185,
+   "free_baked": 29.99338397057727,
+   "speedup": 1.5296439721493076
+  },
+  {
+   "particles": 500,
+   "round": 21,
+   "fixed": 16.304530028719455,
+   "free_current": 45.880852005211636,
+   "free_baked": 29.989600996486843,
+   "speedup": 1.5298920452655034
+  },
+  {
+   "particles": 500,
+   "round": 22,
+   "fixed": 16.306750010699034,
+   "free_current": 45.885962987085804,
+   "free_baked": 29.984872991917655,
+   "speedup": 1.5303037301326654
+  },
+  {
+   "particles": 500,
+   "round": 23,
+   "fixed": 16.298742004437372,
+   "free_current": 45.88094199425541,
+   "free_baked": 29.98444502009079,
+   "speedup": 1.5301581191018652
+  },
+  {
+   "particles": 500,
+   "round": 24,
+   "fixed": 16.30671598832123,
+   "free_current": 45.87965700193308,
+   "free_baked": 29.983788990648463,
+   "speedup": 1.5301487419165845
+  },
+  {
+   "particles": 500,
+   "round": 25,
+   "fixed": 16.31581800756976,
+   "free_current": 45.90479203034192,
+   "free_baked": 30.00414601410739,
+   "speedup": 1.5299482947709409
+  },
+  {
+   "particles": 500,
+   "round": 26,
+   "fixed": 16.31325201014988,
+   "free_current": 45.90232399641536,
+   "free_baked": 29.98817100888118,
+   "speedup": 1.5306810136177063
+  },
+  {
+   "particles": 500,
+   "round": 27,
+   "fixed": 16.30780697450973,
+   "free_current": 45.88979799882509,
+   "free_baked": 30.012501985765994,
+   "speedup": 1.529022739276759
+  },
+  {
+   "particles": 500,
+   "round": 28,
+   "fixed": 16.3080700149294,
+   "free_current": 45.893941016402096,
+   "free_baked": 29.980102000990883,
+   "speedup": 1.5308133713115866
+  },
+  {
+   "particles": 500,
+   "round": 29,
+   "fixed": 16.307412995956838,
+   "free_current": 45.76731997076422,
+   "free_baked": 29.940741980681196,
+   "speedup": 1.5285967194899472
+  }
+ ]
+}

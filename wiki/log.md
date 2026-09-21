@@ -1007,3 +1007,9 @@
 - Pages: `build.py`, `length-baseline.txt`, `tests/test_length.py`
 - Change: wiki/build.py runs check_lengths() before output: standard-library-only, no model call, whitespace-split words. Roadmap titles plus details exceeding 30 words or wiki/{notes,research} paragraphs exceeding 60 (excluding README/templates/activity) print '<path>: <task id or line>: N words (cap M)' and raise SystemExit. wiki/length-baseline.txt records 3 roadmap items and 46 paragraphs that exceed caps; they pass until growth. Wording by Codex gpt-6-astra from a fact sheet; entry assembled by Claude. Liu Hao accepted the check on 2026-09-21: "a cheap check would be good."
 - Validation: `python3 wiki/build.py`, `wiki/tests/test_length.py`, `python3 -m unittest discover -s wiki/tests`, `wiki/tests/run_tests.py`.
+
+## [2026-09-21] experiment | baked_runtime GPU benchmark and default
+
+- Pages: [[research/experiments/e-runtime-z-sigma-speed]], [[notes/model]]
+- Change: same-boot RTX 5060 Ti benchmark recorded (run, measurements, Liu Hao's two approvals under Amendments). `Spectrum(baked_runtime=True)` is the ceridwen default (5f2c316) and a `SETTINGS` entry of the fit notebook. Speed lines added to the Redshift and \(\sigma_\star\) rows of the model page. Wording by Codex gpt-6-astra from a fact sheet; tables and log entry by Claude.
+- Validation: wiki build, `wiki/tests/run_tests.py` and `test_research.py`.
