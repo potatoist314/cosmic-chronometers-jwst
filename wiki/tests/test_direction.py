@@ -14,6 +14,7 @@ from unittest.mock import patch
 WIKI = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(WIKI), str(WIKI.parent / "scripts")]
 import activity
+import build
 import direction
 import research
 import serve_wiki as server
@@ -128,6 +129,30 @@ class DirectionTests(unittest.TestCase):
             self.assertEqual(publisher.push_some([publisher.DIRECTION]), 0)
             run.assert_not_called()
         self.assertIn("--exclude=/research/direction.md", publisher.SOURCE_EXCLUDES)
+
+    def test_save_then_actual_build_keeps_direction_priority_and_activity(self):
+        (self.project / "wiki/notes").mkdir()
+        (self.project / "wiki/themes.md").write_text("")
+        direction.save(self.root, self.payload())
+        direction.save(self.root, self.payload(id="direction-new", kind="direction", text="My exact question?\n  Still uncertain."))
+        direction.save(self.root, self.payload(id="priority-edit", target="p-save-one", title="Revised priority", priority=None))
+        records, _ = research.load(self.root)
+        activity.save(self.root, self.project, records, "priority", "p-save-one", {"id": "saved-note", "action": "note", "text": "Preserve this annotation."})
+        activity.save(self.root, self.project, records, "priority", "p-save-one", {"id": "saved-resolution", "action": "state", "state": "resolved", "expected_state": "open"})
+        before = direction.snapshot(self.root)
+        notes = activity.snapshot(self.root, "priority", "p-save-one")
+        output = self.project / "wiki/public"
+        with patch.object(build, "PROJECT", self.project):
+            self.assertEqual(build.build(self.project / "wiki/notes", output, "", self.root), 0)
+        self.assertEqual(direction.snapshot(self.root), before)
+        self.assertEqual(activity.snapshot(self.root, "priority", "p-save-one"), notes)
+        home = (output / "index.html").read_text()
+        detail = (output / "p/p-save-one/index.html").read_text()
+        self.assertIn("Revised priority", home)
+        self.assertIn("My exact question?", home)
+        self.assertIn("Revised priority", detail)
+        self.assertIn("Preserve this annotation.", detail)
+        self.assertIn("Marked resolved", detail)
 
     def test_both_changed_conflict_and_publish_race_retain_both(self):
         remote, exchange = self.remote_fixture()
