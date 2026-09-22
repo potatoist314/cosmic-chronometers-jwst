@@ -98,6 +98,11 @@ direction and scientific methodology.
 
 ### Research priorities
 
+- Before reading or discussing current priorities or research direction, run
+  `python3 scripts/sync_wiki_direction.py --read`. This synchronizes browser writes.
+  Save through `--save` with revision-checked JSON as documented in
+  `research/README.md`; never write `direction.md` directly. Read and reconcile
+  stale revisions; never blindly resubmit them.
 - Use the same 1–10 scale for all future roadmap guidance and discussion, with
   10 highest. Read the canonical Roadmap in `research/direction.md` first.
 - Show priority, difficulty and dependencies separately. Keep unspecified tasks

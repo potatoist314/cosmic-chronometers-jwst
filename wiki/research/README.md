@@ -53,6 +53,26 @@ notes. Apply this rule to existing and future meeting notes.
 
 ### Roadmap priorities
 
+Before reading or discussing current priorities or research direction, run
+`python3 scripts/sync_wiki_direction.py --read`. It synchronizes browser writes
+into canonical `wiki/research/direction.md` and returns the revision and rows.
+
+Save using `python3 scripts/sync_wiki_direction.py --save` with stdin JSON:
+
+- `id`: unique UUID; `revision`: from read.
+- `kind`: `priority` or `direction`.
+- `target`: existing stable ID; omit for new entries.
+- Priority fields: `title`, `details`, `priority` (null or integer 1–10), `effort`, `depends_on`.
+- Direction fields: `title`, `text`.
+
+Never write raw source directly. Saves preserve dated before/after wording.
+Stale revisions stop with conflict: read and reconcile; never blindly resubmit.
+Supply all editable fields when saving; omitted optional fields become empty.
+
+The publisher excludes this source from rsync, synchronizes over SSH using
+revision checks, and pulls browser changes every 5 seconds. Conflicts involving
+changes on both sides retain both versions and stop publishing.
+
 All future research roadmap guidance and discussion uses **1–10**, with **10
 highest**. Priority measures research importance, not difficulty. Check the
 current roadmap before proposing work or preparing an experiment handoff.

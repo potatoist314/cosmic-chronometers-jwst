@@ -84,6 +84,9 @@
 
 ## Research priorities
 
+- Before reading or discussing direction or priorities, run `python3 scripts/sync_wiki_direction.py --read`.
+  Save through `--save` with revision-checked JSON; never edit `direction.md` directly.
+  Follow the field contract in `wiki/research/README.md`. Reconcile conflicts before retrying.
 - Use a 1–10 priority scale in all future research roadmap guidance and discussion;
   10 is highest. Priority records research importance, separately from difficulty
   and dependencies.

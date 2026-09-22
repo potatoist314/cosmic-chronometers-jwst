@@ -36,7 +36,11 @@ def refs(record, field):
 
 
 def parse(path):
-    raw = path.read_text(encoding="utf-8")
+    return parse_text(path.read_text(encoding="utf-8"), path)
+
+
+def parse_text(raw, path):
+    """Parse one source document without writing a temporary file."""
     if not raw.startswith("---\n") or "\n---\n" not in raw[4:]:
         raise ValueError("missing frontmatter")
     head, body = raw[4:].split("\n---\n", 1)
@@ -387,6 +391,22 @@ def note_backlinks(slug, records, base):
     return '<section class="research-links"><h2>Research entries</h2>%s</section>' % record_rows(linked, base)
 
 
+def priority_html(task, tasks, entries, base, project):
+    """Shared static and live detail rendering from the canonical source."""
+    content = '<div class="eyebrow">Priority</div><h1>%s</h1>' % esc(task["title"])
+    score = str(task["priority"]) + "/10" if task.get("priority") is not None else "Unscored"
+    content += '<p>%s · <a href="%s">Original source</a></p>' % (score, esc(asset_url(task["source"], base, project)))
+    if task.get("details"):
+        content += '<p>%s</p>' % esc(task["details"])
+    if task.get("effort"):
+        content += '<p>Difficulty: %s</p>' % esc(task["effort"])
+    if task.get("depends_on"):
+        content += '<p>After: ' + ", ".join('<a href="%s/p/%s/">%s</a>' % (
+            base, esc(dep), esc(next(t["title"] for t in tasks if t["id"] == dep))) for dep in task["depends_on"]) + '</p>'
+    content += activity.editor_html("priority", task["id"], entries, base, project)
+    return '<article class="prose research-record">' + content + '</article>'
+
+
 def write_pages(records, notes, scratch, base, builder):
     """Build a shared question and experiment structure, preserving source routes."""
     project = builder.PROJECT
@@ -505,18 +525,7 @@ def write_pages(records, notes, scratch, base, builder):
     states = {task["id"]: activity.state(activity.read(research_dir, "priority", task["id"])) for task in tasks}
     for task in tasks:
         entries = activity.read(research_dir, "priority", task["id"])
-        content = page_top("Priority", task["title"])
-        score = str(task["priority"]) + "/10" if task.get("priority") is not None else "Unscored"
-        content += '<p>%s · <a href="%s">Original source</a></p>' % (score, esc(asset_url(task["source"], base, project)))
-        if task.get("details"):
-            content += '<p>%s</p>' % esc(task["details"])
-        if task.get("effort"):
-            content += '<p>Difficulty: %s</p>' % esc(task["effort"])
-        if task.get("depends_on"):
-            content += '<p>After: ' + ", ".join('<a href="%s/p/%s/">%s</a>' % (
-                base, esc(dep), esc(next(t["title"] for t in tasks if t["id"] == dep))) for dep in task["depends_on"]) + '</p>'
-        content += activity.editor_html("priority", task["id"], entries, base, project)
-        page("p/" + task["id"], task["title"], '<article class="prose research-record">' + content + '</article>')
+        page("p/" + task["id"], task["title"], priority_html(task, tasks, entries, base, project))
         search.append({"t": task["title"], "u": base + "/p/" + task["id"] + "/", "d": direction["date"],
                        "s": "Priority", "g": states[task["id"]],
                        "x": task.get("details", "") + " " + " ".join(e.get("text", "") for e in entries)})

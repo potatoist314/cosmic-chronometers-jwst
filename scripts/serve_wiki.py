@@ -34,8 +34,10 @@ CLAUDE_ROOT = Path.home() / ".claude"
 BRIDGE = CLAUDE_ROOT / "scripts/hermes-bridge/bridge.py"
 sys.path.insert(0, str(DEFAULT_ROOT / "wiki"))
 import activity
+import direction
 import research
 import research_figures
+import build as wiki_build
 
 ASK_TIMEOUT = 480
 SLUG = re.compile(r"^[a-z0-9][a-z0-9-]{0,80}$")
@@ -146,7 +148,28 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
         if clean_path.startswith("/api/"):
             self.activity_api("GET")
             return
+        match = re.fullmatch(r"/p/([a-z0-9][a-z0-9-]{0,80})/?", clean_path)
+        if match:
+            self.priority_page(match[1])
+            return
         super().do_GET()
+
+    def priority_page(self, ident):
+        root = self.project_root / "wiki/research"
+        _, parts = direction.read(root)
+        tasks = parts["Roadmap"]
+        task = next((t for t in tasks if t["id"] == ident), None)
+        if task is None:
+            self.send_error(404)
+            return
+        body = research.priority_html(task, tasks, activity.read(root, "priority", ident), "", self.project_root)
+        html = wiki_build.shell(task["title"] + " · " + wiki_build.SITE_NAME, "", body, wiki_build.rail_sections([], ""))
+        data = html.encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
 
     def do_POST(self) -> None:
         if urlsplit(self.path).path.startswith("/api/"):
@@ -171,6 +194,17 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
             if faults:
                 raise ValueError("Research records could not be loaded")
             parts = unquote(urlsplit(self.path).path).removeprefix("/api/").split("/")
+            if parts == ["direction"]:
+                if method == "POST":
+                    payload = self.write_payload()
+                    if payload is None:
+                        return
+                    result = direction.save(root, payload)
+                    publication.request(self.project_root)
+                else:
+                    result = direction.snapshot(root)
+                self.reply_json(200, result)
+                return
             if method == "GET" and parts == ["publication"]:
                 self.reply_json(200, {"state": publication.state})
                 return
@@ -205,18 +239,9 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
                 return
             kind, ident = parts[1:]
             if method == "POST":
-                origin = urlsplit(self.headers.get("Origin", ""))
-                host = self.headers.get("X-Forwarded-Host", self.headers.get("Host", ""))
-                if origin.scheme not in {"http", "https"} or origin.netloc != host:
-                    self.reply_json(403, {"error": "Same-origin request required"})
+                payload = self.write_payload()
+                if payload is None:
                     return
-                size = int(self.headers.get("Content-Length", "0"))
-                if not 0 < size <= activity.MAX_REQUEST:
-                    self.reply_json(413, {"error": "Note exceeds 24 MB"})
-                    return
-                if self.headers.get_content_type() != "application/json":
-                    raise ValueError("JSON request required")
-                payload = json.loads(self.rfile.read(size))
                 result = activity.save(root, self.project_root, records, kind, ident, payload)
                 publication.request(self.project_root)
             else:
@@ -231,6 +256,23 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
         except Exception as exc:
             print("Activity request failed:", exc, file=sys.stderr)
             self.reply_json(500, {"error": "Save failed; draft retained"})
+
+    def write_payload(self):
+        origin = urlsplit(self.headers.get("Origin", ""))
+        host = self.headers.get("X-Forwarded-Host", self.headers.get("Host", ""))
+        if origin.scheme not in {"http", "https"} or origin.netloc != host:
+            self.reply_json(403, {"error": "Same-origin request required"})
+            return None
+        size = int(self.headers.get("Content-Length", "0"))
+        if not 0 < size <= activity.MAX_REQUEST:
+            self.reply_json(413, {"error": "Content exceeds 24 MB"})
+            return None
+        if self.headers.get_content_type() != "application/json":
+            raise ValueError("JSON request required")
+        payload = json.loads(self.rfile.read(size))
+        if not isinstance(payload, dict):
+            raise ValueError("JSON object required")
+        return payload
 
     def ask(self, payload) -> None:
         slug = str(payload.get("note", ""))

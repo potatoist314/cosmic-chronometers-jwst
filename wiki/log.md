@@ -1154,3 +1154,9 @@
 
 - Pages: `notes/model.md`, `notes/notebook-map.md`, `index.md`
 - Change: Widened the calibration constant prior to standard deviation 0.3; shape coefficients retain 0.1. Metadata stores the effective vector; legacy scalar priors remain supported.
+
+## [2026-09-22] codebase | Research direction persistence
+
+- Pages: `index.md`, `research/README.md`
+- Change: Revision-checked direction and priority saves retain dated wording in `research/direction.md`. Publication synchronizes this source separately from file copies. Concurrent changes retain both versions and stop publication.
+- Validation: Isolated creation, editing, history, concurrency, HTTP, activity-preservation and save-then-publish tests.

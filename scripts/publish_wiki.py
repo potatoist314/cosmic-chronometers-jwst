@@ -29,6 +29,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import threading
 from pathlib import Path
 from urllib.parse import unquote
 
@@ -51,7 +52,9 @@ SSH = ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=20", "-o", "ControlMa
        "-o", "ControlPersist=600"]
 RSYNC = ["/usr/bin/rsync", "-rlz", "--timeout=300", "-e", " ".join(SSH)]
 SOURCE_EXCLUDES = ["--exclude=/public*", "--exclude=__pycache__",     # public, .lock, .cache, .new, .old
-                   "--exclude=/research/activity"]
+                   "--exclude=/research/activity", "--exclude=/research/direction.md"]
+DIRECTION = "wiki/research/direction.md"
+DIRECTION_EXCLUDE = "--exclude=/wiki/research/direction.md"
 POLL = 1.0                                          # seconds between looks in --watch
 PULL_EVERY = 1800                                   # seconds between pulls of the NAS records
 STALL = 60                                          # seconds of ceaseless change before the log says so
@@ -72,7 +75,7 @@ def linked_files() -> list[str]:
         for match in LINK.finditer(page.read_text(encoding="utf-8", errors="ignore")):
             relative = unquote(match[1]).strip("/")
             target = (ROOT / relative).resolve()
-            if ROOT in target.parents and target.exists():
+            if ROOT in target.parents and target.exists() and relative != DIRECTION:
                 found.add(relative)
     return sorted(found)
 
@@ -149,7 +152,7 @@ def push(paths: list[str]) -> int:
     with tempfile.NamedTemporaryFile("w", suffix=".txt", encoding="utf-8") as listing:
         listing.write("\n".join(paths) + "\n")
         listing.flush()
-        code = run(RSYNC + ["-t", "--files-from=" + listing.name, str(ROOT) + "/", remote])
+        code = run(RSYNC + ["-t", DIRECTION_EXCLUDE, "--files-from=" + listing.name, str(ROOT) + "/", remote])
     if code:
         return code
     # macOS rsync ignores --chmod; nginx reads these files as another user.
@@ -158,6 +161,9 @@ def push(paths: list[str]) -> int:
 
 def push_some(paths: list[str]) -> int:
     """The changed files alone; records first come down from the NAS, as they are written on both sides."""
+    paths = [path for path in paths if path != DIRECTION]
+    if not paths:
+        return 0
     if any(path.startswith(ACTIVITY + "/") for path in paths):
         code = run(RSYNC + ["-t", "%s:%s/files/%s/" % (REMOTE, DEST, ACTIVITY), str(ROOT / ACTIVITY) + "/"])
         if code:
@@ -165,7 +171,7 @@ def push_some(paths: list[str]) -> int:
     with tempfile.NamedTemporaryFile("w", suffix=".txt", encoding="utf-8") as listing:
         listing.write("\n".join(paths) + "\n")
         listing.flush()
-        code = run(RSYNC + ["-t", "--files-from=" + listing.name, str(ROOT) + "/", "%s:%s/files/" % (REMOTE, DEST)])
+        code = run(RSYNC + ["-t", DIRECTION_EXCLUDE, "--files-from=" + listing.name, str(ROOT) + "/", "%s:%s/files/" % (REMOTE, DEST)])
     return code
 
 
@@ -184,6 +190,12 @@ def publish(everything: bool = True) -> int:
     A full publication pulls the NAS records first and syncs every tree; a
     partial one sends only the files whose size or time changed."""
     started = time.monotonic()
+    try:
+        from sync_wiki_direction import synchronize
+        synchronize()
+    except (ValueError, OSError, subprocess.SubprocessError) as exc:
+        say(str(exc))
+        return 1
     if everything and pull():
         say("could not pull the research activity from the NAS")
         return 1
@@ -217,6 +229,19 @@ def publish(everything: bool = True) -> int:
 
 def watch() -> int:
     """Publish whenever the sources have held still for one poll; sync everything every half hour."""
+    def direction_watch():
+        from sync_wiki_direction import synchronize
+        previous_error = None
+        while True:
+            try:
+                synchronize()
+                previous_error = None
+            except (ValueError, OSError, subprocess.SubprocessError) as exc:
+                if str(exc) != previous_error:
+                    say(str(exc))
+                    previous_error = str(exc)
+            time.sleep(5)
+    threading.Thread(target=direction_watch, daemon=True).start()
     say("watching the wiki sources")
     publish()
     paths, seen, pulled = linked_files(), "", time.monotonic()

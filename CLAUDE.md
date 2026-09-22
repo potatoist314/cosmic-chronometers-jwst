@@ -22,6 +22,9 @@ Treat these instructions as active until the user explicitly changes them.
 
 ## Repository and reproducibility conventions
 
+- Before reading or discussing direction or priorities, run `python3 scripts/sync_wiki_direction.py --read`.
+  Save through `--save` with revision-checked JSON; never edit `direction.md` directly.
+  Follow the field contract in `wiki/research/README.md`. Reconcile conflicts before retrying.
 - Use notebooks as the primary files for explanation,
   exploration, and presentation.
 - Notebook markdown cells are terse bullet points, roughly ten words each,

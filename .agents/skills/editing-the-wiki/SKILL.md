@@ -18,6 +18,9 @@ Rules are in `CLAUDE.md`, `~/.claude/CLAUDE.md`, `wiki/AGENTS.md` and
    and "Page conventions". In `CLAUDE.md`: "Repository and reproducibility conventions"
    and "Research result presentation". In `~/.claude/CLAUDE.md`: "Design work goes
    through the designer agent". For the roadmap or a record: `wiki/research/README.md`.
+   Before reading direction or priorities, run `python3 scripts/sync_wiki_direction.py --read`.
+   Save changes to `direction.md` through `--save` and its revision-checked JSON
+   contract in `wiki/research/README.md`, never by direct file edits.
 2. **Write the prose with Codex.** Put the facts and their source paths in a fact sheet. Then:
    ```
    codex exec -m gpt-6-astra -c model_reasoning_effort="low" -s read-only \
