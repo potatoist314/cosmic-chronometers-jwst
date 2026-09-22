@@ -227,13 +227,16 @@ def plot_photometry_fit(
         shown = (continuum_wave * 1e-4 > x_low) & (continuum_wave * 1e-4 < x_high)
         ax.plot(continuum_wave[shown] * 1e-4, continuum_flux[shown], color="0.6", lw=0.8,
                 label="median continuum")
+    # Data on top with capped 1-sigma bars, since a 5% floor is shorter than a large marker.
     for pick, face, suffix in ((fitted, None, "fitted bands"), (~fitted, "none", "bands outside the fit")):
         if pick.any():
-            ax.errorbar(wave[pick], flux[pick], yerr=sigma[pick], fmt="o", color="tab:blue", mfc=face,
-                        label=f"{data_label} {suffix}")
+            ax.errorbar(wave[pick], flux[pick], yerr=sigma[pick], fmt="o", ms=3.5, color="tab:blue", mfc=face,
+                        elinewidth=1.2, capsize=3, capthick=1.2, zorder=3,
+                        label=rf"{data_label} {suffix}, $1\sigma$")
             ax_pull.scatter(wave[pick], pull[pick], edgecolors="tab:blue",
                             facecolors="tab:blue" if face is None else face)
-    ax.errorbar(wave, q50, yerr=[q50 - q16, q84 - q50], fmt="s", color="tab:red", label="joint Ceridwen")
+    ax.errorbar(wave, q50, yerr=[q50 - q16, q84 - q50], fmt="s", ms=5, color="tab:red", alpha=0.75,
+                elinewidth=0.8, zorder=2, label="joint Ceridwen, 16-84%")
     if spectral_range is not None:
         span = np.asarray(spectral_range) * 1e-4
         for panel in (ax, ax_pull):

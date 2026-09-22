@@ -1171,3 +1171,9 @@
 - Pages: `notes/model.md`, `research/experiments/e-emission-line-marginalisation.md`
 - Change: `emission_line_marginalisation` (default off) adds FSPS emission lines as flat-prior columns to the calibration solve; modelled lines leave the emission mask. Ceridwen `6fc7539`.
 - Validation: option off bit-identical on 20 M1_210210 draws; zero-line limit, quadrature, injected-line and variance tests.
+
+## [2026-09-23] figures | Photometry-fit error bars
+
+- Pages: [[notes/cosmos-photometry-refit]]
+- Change: Liu Hao, 2026-09-22: "Adding an error bar to each photometry band plot point would be nice". `plot_photometry_fit` draws each observed band with a capped 1-sigma bar (catalogue error and the 5% floor in quadrature, the likelihood's error) on top of smaller markers; the model's 16-84% bars are thin, uncapped and drawn below. The three M1_210210 executed notebooks were regenerated on CPU from the stored posteriors; the sampler was not re-run.
+- Validation: three photometry figures checked at 900 px; `tests/test_spectral_figures.py`; wiki build.
