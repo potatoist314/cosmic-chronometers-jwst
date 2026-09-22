@@ -174,7 +174,7 @@ The Ceridwen fits use COSMOS2015 `cosmos_total` photometry, 12 bands. COSMOS2020
 | Photometry | COSMOS2015 `cosmos_total` | COSMOS2020 Classic | COSMOS2025 |
 | Bands | 12 | 30 | 28 |
 | Photometric \(\chi^2\) | 55.0 | 146.5 | 144.8 |
-| Spectral \(\chi^2\), catalogue uncertainties | 10772.1 | 10880.6 | 10869.6 |
+| Spectral \(\chi^2\), catalogue uncertainties | 10772.1 | 10880.6 | 10868.1 |
 | Spectral \(\chi^2\) at the reference fit's floor | 3655.0 | 3694.0 | 3684.3 |
 | \(\ln Z\) | 231153.16 ± 0.35 | 231476.73 ± 0.24 | 231426.50 ± 0.28 |
 | \(\log_{10}(M_\star/M_\odot)\) | 11.650 ± 0.013 | 11.654 ± 0.011 | 11.597 ± 0.012 |
@@ -209,7 +209,7 @@ Values are posterior median ± half the 16–84% width. All fits use seed 202608
 - \(\sigma_\star\) [km/s]: 263.4 ± 3.1 / 267.1 ± 2.9 / 266.6 ± 3.2.
 - \(z\): 0.65422 in all three fits; \(f_{\mathrm{calib}}\): 2.52 / 2.53 / 2.54%.
 - Photometric \(\chi^2\) / bands: 55.0 / 12, 146.5 / 30, 144.8 / 28.
-- Spectral \(\chi^2\) with catalogue uncertainties: 10772 / 10881 / 10870 over 3523 pixels.
+- Spectral \(\chi^2\) with catalogue uncertainties: 10772 / 10881 / 10868 over 3523 pixels.
 - Largest photometric pull in both refits: \(u^*\), about −6 for Classic and −7 for COSMOS2025; the model is above the data.
 
 ## Caveats

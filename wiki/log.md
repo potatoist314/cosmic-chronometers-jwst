@@ -1175,5 +1175,5 @@
 ## [2026-09-23] figures | Photometry-fit error bars
 
 - Pages: [[notes/cosmos-photometry-refit]]
-- Change: Liu Hao, 2026-09-22: "Adding an error bar to each photometry band plot point would be nice". `plot_photometry_fit` draws each observed band with a capped 1-sigma bar (catalogue error and the 5% floor in quadrature, the likelihood's error) on top of smaller markers; the model's 16-84% bars are thin, uncapped and drawn below. The three M1_210210 executed notebooks were regenerated on CPU from the stored posteriors; the sampler was not re-run.
+- Change: Liu Hao, 2026-09-22: "Adding an error bar to each photometry band plot point would be nice". `plot_photometry_fit` draws each observed band with a capped 1-sigma bar (catalogue error and the 5% floor in quadrature, the likelihood's error) on top of smaller markers; the model's 16-84% bars are thin, uncapped and drawn below. The three M1_210210 executed notebooks were regenerated on CPU from the stored posteriors and `results/cosmos-photometry-refit/analysis.ipynb` re-executed; the sampler was not re-run. The new predictive draw moves the COSMOS2025 spectral chi2 with catalogue uncertainties from 10869.6 to 10868.1; the tables are updated.
 - Validation: three photometry figures checked at 900 px; `tests/test_spectral_figures.py`; wiki build.

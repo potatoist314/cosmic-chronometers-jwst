@@ -79,7 +79,7 @@ Record
 | Photometry | COSMOS2015 `cosmos_total` | COSMOS2020 Classic | COSMOS2025 |
 | Bands | 12 | 30 | 28 |
 | Photometric \(\chi^2\) | 55.0 | 146.5 | 144.8 |
-| Spectral \(\chi^2\), catalogue uncertainties | 10772.1 | 10880.6 | 10869.6 |
+| Spectral \(\chi^2\), catalogue uncertainties | 10772.1 | 10880.6 | 10868.1 |
 | Spectral \(\chi^2\) at the reference fit's floor | 3655.0 | 3694.0 | 3684.3 |
 | \(\ln Z\) | 231153.16 ± 0.35 | 231476.73 ± 0.24 | 231426.50 ± 0.28 |
 | \(\log_{10}(M_\star/M_\odot)\) | 11.650 ± 0.013 | 11.654 ± 0.011 | 11.597 ± 0.012 |
