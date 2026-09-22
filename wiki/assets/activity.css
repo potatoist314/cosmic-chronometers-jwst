@@ -28,3 +28,39 @@
 @media(max-width:736px){.ink-header{gap:8px;padding:6px 8px}.ink-header-actions{gap:0}.ink-header-actions button{padding:8px}.ink-preview{max-height:500px}}
 @media(max-width:480px){.ink-header{flex-wrap:wrap;gap:0}.ink-heading{flex:1 1 100%;display:flex;align-items:baseline;gap:10px}.ink-header h2{flex:1}.ink-heading [data-draft-status]{flex-shrink:0;max-width:50%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ink-header-actions{width:100%;justify-content:flex-end}.ink-header-actions [data-undo]{margin-right:auto}}
 @media print{.activity-actions,.activity-text,.priority-state button,.roadmap-done,.roadmap-status,.activity-event button,.ink-dialog,.figure-attach,[data-save-status],[data-annotate-figure]{display:none!important}.resolved-priorities{display:block}.ink-preview{max-height:none;break-inside:avoid}}
+/* Authoring the direction and the priorities in place on Home. */
+[data-edit-direction],[data-add-direction],[data-edit-priority],[data-add-priority]{display:none}
+.authoring [data-edit-direction],.authoring [data-add-direction],.authoring [data-edit-priority],.authoring [data-add-priority]{display:inline-block}
+.text-button{font:.8rem system-ui,sans-serif;background:none;border:0;padding:6px 0;min-height:32px;color:var(--accent-2);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.text-button:hover{color:var(--ink)}
+.text-button[aria-expanded=true]{color:var(--ink);font-weight:600;text-decoration:none}
+.row-edit{margin-left:14px}
+.entry-tools{display:flex;gap:20px;flex-wrap:wrap;margin:4px 0 8px}
+.edit-form{margin:14px 0 18px}
+.edit-form label,.edit-form legend{display:block;font:.8rem/1.5 system-ui,sans-serif;color:var(--ink-2);margin:0 0 4px}
+.edit-form .field{margin:0 0 14px}
+.edit-form input[type=text],.edit-form textarea,.edit-form select{box-sizing:border-box;width:100%;font:inherit;font-size:.95rem;min-height:44px;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:8px 10px}
+.edit-form select{width:auto;max-width:100%;font:.85rem system-ui,sans-serif}
+.edit-form textarea{resize:vertical;line-height:1.5}
+.edit-form input:focus-visible,.edit-form textarea:focus-visible,.edit-form select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.edit-form fieldset{border:0;margin:0 0 14px;padding:0;min-width:0}
+.score-strip{display:flex;flex-wrap:wrap;gap:4px}
+.score-strip input{position:absolute;opacity:0;width:1px;height:1px}
+.score-strip label{margin:0;min-width:44px;padding:12px 0;text-align:center;font:600 .85rem system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink);cursor:pointer;border:1px solid var(--rule);border-radius:4px;background:var(--paper)}
+.score-strip label.unscored{padding:12px;font-weight:400}
+.score-strip input:checked+label{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.score-strip input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+.deps{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.deps li{display:flex;align-items:center;gap:10px;margin:0;padding:5px 6px 5px 10px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);font-size:.9rem}
+.deps button{font:.8rem system-ui,sans-serif;background:none;border:0;padding:6px 4px;min-height:44px;color:var(--accent-2);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.form-actions{display:flex;align-items:center;gap:16px;margin-top:6px;flex-wrap:wrap}
+.form-actions button,.add-button{font:.85rem system-ui,sans-serif;padding:11px 16px;min-height:44px;border:1px solid var(--rule);border-radius:5px;background:var(--paper);color:var(--ink);cursor:pointer}
+.form-actions button.save{border-color:var(--ink);background:var(--ink);color:var(--paper);font-weight:600}
+.form-actions button:disabled{opacity:.5;cursor:wait}
+.form-status{font:.8rem system-ui,sans-serif;color:var(--accent);margin:8px 0 0}
+.form-status:empty{display:none}
+.form-status button{margin-left:10px}
+.roadmap tr.editing td{background:var(--wash)}
+.roadmap tr.editing .edit-form{margin:0}
+@media(max-width:900px){.score-strip{display:grid;grid-template-columns:repeat(5,1fr);max-width:420px}.score-strip label{min-width:0}.score-strip label.unscored{grid-column:1/-1}}
+@media print{.entry-tools,.edit-form,.add-button,.form-status{display:none!important}}

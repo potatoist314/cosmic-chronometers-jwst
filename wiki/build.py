@@ -1263,7 +1263,7 @@ th{color:var(--ink-3);font-weight:500;font-size:.72rem;letter-spacing:.06em;text
   justify-content:space-between;font-size:.85rem;color:var(--ink-3);flex-wrap:wrap;gap:10px}
 .foot a{color:var(--ink-2)}
 @media (max-width:760px){
-  .frame{grid-template-columns:1fr;border:0}
+  .frame{grid-template-columns:1fr;border:0;align-content:start}
   nav.side{border-right:0;border-bottom:1px solid var(--rule);position:static;max-height:none}
   main{padding:24px 20px 48px}
   .feed li{grid-template-columns:1fr;gap:2px}

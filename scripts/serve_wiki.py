@@ -203,6 +203,7 @@ class AstroWikiHandler(SimpleHTTPRequestHandler):
                     publication.request(self.project_root)
                 else:
                     result = direction.snapshot(root)
+                result["history_html"] = research.amendments_html(result["history"])
                 self.reply_json(200, result)
                 return
             if method == "GET" and parts == ["publication"]:

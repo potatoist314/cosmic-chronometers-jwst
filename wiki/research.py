@@ -344,6 +344,53 @@ def messages_html(messages):
     return "".join(blocks) or '<p class="empty">Not recorded</p>'
 
 
+def direction_entry_html(entry, ident):
+    """One recorded direction entry, with its own in-place editing control."""
+    edited = entry.get("display_text")
+    shown = edited if edited and edited != entry["text"] else entry["text"]
+    labels = '<span>Liu Hao</span>' + ('<span>Lightly edited</span>' if shown != entry["text"] else "")
+    source = ('<a href="%s">Chat reference</a>' % esc(entry["_source_url"])) if entry.get("_source_url") else ""
+    heading = '<h3 class="direction-heading">%s</h3>' % esc(entry["title"]) if entry.get("title") else ""
+    body = ('<p class="edited-message">%s</p><details class="original-message">'
+            '<summary>Original wording</summary><blockquote class="verbatim">%s</blockquote></details>'
+            % (esc(shown), esc(entry["text"])) if shown != entry["text"]
+            else '<blockquote class="verbatim">%s</blockquote>' % esc(entry["text"]))
+    return ('<figure class="user-message" data-direction-id="%s"><figcaption>%s<time datetime="%s">%s</time>%s</figcaption>'
+            '%s%s<div class="entry-tools"><button type="button" class="text-button" data-edit-direction="%s">'
+            'Edit research direction</button></div></figure>'
+            % (esc(ident), labels, esc(entry["date"]), esc(entry["date"]), source,
+               heading, body, esc(ident)))
+
+
+def wording(row):
+    """The wording a revision recorded, for a direction entry or a priority."""
+    if "text" in row:
+        return ((row.get("title", "") + "\n\n") if row.get("title") else "") + row["text"]
+    return row.get("title", "") + (("\n\n" + row["details"]) if row.get("details") else "")
+
+
+def amendments_html(amendments):
+    """Dated decisions, each with the wording it replaced."""
+    blocks = []
+    for m in amendments:
+        block = messages_html([m])
+        if isinstance(m.get("before"), dict):
+            block = block.replace("</figure>", '<details class="original-message"><summary>Earlier wording</summary>'
+                                  '<blockquote class="verbatim">%s</blockquote></details></figure>'
+                                  % esc(wording(m["before"])), 1)
+        blocks.append(block)
+    return "".join(blocks) or '<p class="empty">Not recorded</p>'
+
+
+def direction_html(entries):
+    """The recorded direction, above the priorities it ranks."""
+    blocks = "".join(direction_entry_html(entry, entry.get("id") or "direction-%d" % i)
+                     for i, entry in enumerate(entries))
+    return ('<div data-direction-entries>%s</div>'
+            '<p><button type="button" class="text-button" data-add-direction>Add direction entry</button></p>'
+            % (blocks or '<p class="empty">Not recorded</p>'))
+
+
 def record_rows(records, base):
     rows = []
     for r in records:
@@ -375,9 +422,11 @@ def roadmap_html(tasks, base, project, states=None, resolved=False):
         # The tick box under the score resolves or reopens the task from Home without a reload.
         done = ('<label class="roadmap-done"><input type="checkbox"%s><span class="visually-hidden">Resolved</span></label>'
                 % (" checked" if resolved else ""))
-        rows.append('<tr id="%s" data-priority-id="%s"><td class="roadmap-score">%s%s</td><td><a href="%s/p/%s/">%s</a>%s%s <a class="roadmap-source" href="%s">Source</a></td></tr>' % (
+        edit = ('<button type="button" class="text-button row-edit" data-edit-priority="%s">Edit</button>'
+                % esc(task["id"]))
+        rows.append('<tr id="%s" data-priority-id="%s"><td class="roadmap-score">%s%s</td><td><a href="%s/p/%s/">%s</a>%s%s <a class="roadmap-source" href="%s">Source</a>%s</td></tr>' % (
             esc(task["id"]), esc(task["id"]), score, done, base, esc(task["id"]),
-            esc(task["title"]), details, constraints, esc(asset_url(task["source"], base, project))))
+            esc(task["title"]), details, constraints, esc(asset_url(task["source"], base, project)), edit))
     empty = '<p class="empty">No priorities recorded</p>' if not rows else ""
     return (empty + '<p class="roadmap-status" role="status"></p><table class="roadmap"><caption>Research priorities · 10 highest</caption>'
             '<thead><tr><th scope="col">Priority</th><th scope="col">Task</th></tr></thead>'
@@ -529,18 +578,21 @@ def write_pages(records, notes, scratch, base, builder):
         search.append({"t": task["title"], "u": base + "/p/" + task["id"] + "/", "d": direction["date"],
                        "s": "Priority", "g": states[task["id"]],
                        "x": task.get("details", "") + " " + " ".join(e.get("text", "") for e in entries)})
-    body = '<h1>Home</h1>' + section("Current priorities", roadmap_html(tasks, base, project, states))
+    body = '<h1>Home</h1>'
+    if direction:
+        body += section("Research direction", direction_html(direction["sections"]["Your words"]))
+    body += section("Current priorities", roadmap_html(tasks, base, project, states)
+                    + '<p><button type="button" class="add-button" data-add-priority>Add priority</button></p>')
     body += '<details class="resolved-priorities"><summary>Resolved</summary>' + roadmap_html(tasks, base, project, states, True) + '</details>'
     body += '<script type="module" src="%s/activity.js"></script>' % base
     body += section("Planned and running", record_rows([e for e in experiments if e["status"] in {"planned", "running"}], base))
     content = ""
     if direction:
         s = direction["sections"]
-        content += section("Research direction", messages_html(s["Your words"]))
         if s["References"]:
             content += section("Meeting notes", md(s["References"]))
-        if s["Amendments"]:
-            content += '<section id="roadmap-amendments"><h2>Decisions and original wording</h2>%s</section>' % messages_html(s["Amendments"])
+        content += '<section id="roadmap-amendments"%s><h2>Decisions and original wording</h2><div data-amendments>%s</div></section>' % (
+            "" if s["Amendments"] else " hidden", amendments_html(s["Amendments"]))
         search.append({"t": "Home", "u": base + "/", "d": direction["date"],
                        "s": "Home", "g": "research priorities roadmap direction", "x": direction["raw"]})
     content += section("Questions", record_rows(questions, base))
@@ -720,6 +772,7 @@ details.model-row[open]>summary{margin-bottom:0}
 .user-message{margin:14px 0 24px}
 .user-message figcaption{font-family:system-ui,sans-serif;font-size:.75rem;color:var(--ink-2);display:flex;gap:12px;flex-wrap:wrap}
 .edited-message{white-space:pre-wrap;overflow-wrap:anywhere}
+.direction-heading{margin:0 0 4px;font-size:1.05rem;font-weight:600}
 .original-message summary{font-family:system-ui,sans-serif;font-size:.8rem;color:var(--ink-2);cursor:pointer}
 .research-links{margin:20px 0}
 .question-overview{list-style:none;padding:0}

@@ -27,6 +27,8 @@ Research contract and templates: `research/README.md`, `research/templates/`.
 User direction: `research/direction.md`, with optional light edits and retained originals.
 Direction saves: `direction.py`; source synchronization: `scripts/sync_wiki_direction.py`.
 Run its `--read` command before reading direction or priorities; `--save` retains dated revisions.
+Home provides Edit research direction, Add direction entry, per-priority Edit beside Source,
+and Add priority. Inline forms use Save/Cancel, Unscored or 1–10 scores, difficulty and dependencies.
 Research priorities: Home and `/wiki/roadmap/`, from the single
 Roadmap task list in `research/direction.md`. Priorities use 1–10, with 10 highest;
 difficulty and dependencies remain separate. Unspecified work stays unscored.

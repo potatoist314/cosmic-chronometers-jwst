@@ -22,8 +22,10 @@ function revealPriorityAnchor() {
 }
 window.addEventListener('hashchange', revealPriorityAnchor);
 revealPriorityAnchor();
+// Home authoring state; an open form keeps the lists still until it closes.
+const authoring = { revision: null, priorities: [], direction: [], states: {}, open: 0 };
 async function refreshHome() {
-  if (!document.querySelector('[data-priority-id]')) return;
+  if (!document.querySelector('[data-priority-id]') || authoring.open) return;
   try {
     const catalog = await api('catalog');
     const tables = [...document.querySelectorAll('table.roadmap')];
@@ -78,6 +80,335 @@ document.addEventListener('change', async event => {
       status.textContent = error.status ? error.message : 'Connection unavailable';
     }
   } finally { box.disabled = false; }
+});
+
+// Home editing: the direction entries and the priorities, each in its own place.
+const make = (tag, className, text) => {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+};
+const words = value => (value || '').trim().split(/\s+/).filter(Boolean).length;
+
+if (document.querySelector('[data-direction-entries], [data-priority-id]')) await loadDirection();
+
+async function loadDirection(keepForms = false) {
+  try { applySnapshot(await api('direction'), keepForms); } catch { /* The built page stays readable. */ }
+}
+
+function applySnapshot(snapshot, keepForms = false) {
+  authoring.revision = snapshot.revision;
+  authoring.priorities = snapshot.priorities;
+  authoring.direction = snapshot.direction;
+  authoring.states = snapshot.states || {};
+  document.body.classList.add('authoring');
+  renderDirection();
+  renderPriorities();
+  const amendments = document.querySelector('#roadmap-amendments');
+  if (amendments && snapshot.history_html !== undefined) {
+    amendments.querySelector('[data-amendments]').innerHTML = snapshot.history_html;
+    amendments.hidden = !snapshot.history.length;
+  }
+  if (!keepForms) refreshHome();
+}
+
+function renderDirection() {
+  const list = document.querySelector('[data-direction-entries]');
+  if (!list) return;
+  list.querySelector('.empty')?.remove();
+  for (const entry of authoring.direction) {
+    let figure = list.querySelector(`[data-direction-id="${CSS.escape(entry.id)}"]`);
+    if (!figure) {
+      figure = make('figure', 'user-message');
+      figure.dataset.directionId = entry.id;
+      list.append(figure);
+    }
+    if (!figure.querySelector('form.edit-form')) fillDirection(figure, entry);
+  }
+}
+
+function fillDirection(figure, entry) {
+  const shown = entry.display_text && entry.display_text !== entry.text ? entry.display_text : entry.text;
+  const caption = make('figcaption');
+  caption.append(make('span', '', 'Liu Hao'));
+  if (shown !== entry.text) caption.append(make('span', '', 'Lightly edited'));
+  const when = make('time', '', entry.date);
+  when.dateTime = entry.date;
+  caption.append(when);
+  const parts = [caption];
+  if (entry.title) parts.push(make('h3', 'direction-heading', entry.title));
+  if (shown === entry.text) parts.push(make('blockquote', 'verbatim', entry.text));
+  else {
+    const details = make('details', 'original-message');
+    details.append(make('summary', '', 'Original wording'), make('blockquote', 'verbatim', entry.text));
+    parts.push(make('p', 'edited-message', shown), details);
+  }
+  const tools = make('div', 'entry-tools');
+  const edit = make('button', 'text-button', 'Edit research direction');
+  edit.type = 'button';
+  edit.dataset.editDirection = entry.id;
+  edit.setAttribute('aria-expanded', 'false');
+  tools.append(edit);
+  parts.push(tools);
+  figure.replaceChildren(...parts);
+}
+
+function renderPriorities() {
+  const tbody = document.querySelector('table.roadmap tbody');
+  if (!tbody) return;
+  for (const task of authoring.priorities) {
+    let row = document.querySelector(`tr[data-priority-id="${CSS.escape(task.id)}"]`);
+    if (!row) {
+      row = make('tr');
+      row.dataset.priorityId = task.id;
+      tbody.append(row);
+    }
+    if (!row.nextElementSibling?.dataset.editorFor) fillPriorityRow(row, task);
+  }
+}
+
+function fillPriorityRow(row, task) {
+  const source = row.querySelector('.roadmap-source')?.getAttribute('href')
+    || fileURL(task.source || 'wiki/research/direction.md');
+  row.id = task.id;
+  const score = make('td', 'roadmap-score', task.priority == null ? 'Unscored' : `${task.priority}/10`);
+  const label = make('label', 'roadmap-done');
+  const box = make('input');
+  box.type = 'checkbox';
+  box.checked = authoring.states[task.id] === 'resolved';
+  label.append(box, make('span', 'visually-hidden', 'Resolved'));
+  score.append(label);
+  const cell = make('td');
+  const link = make('a', '', task.title);
+  link.href = `${base}/p/${task.id}/`;
+  cell.append(link);
+  if (task.details) cell.append(make('p', '', task.details));
+  if (task.depends_on?.length) {
+    const after = make('p');
+    after.append(make('span', 'attribution', 'After:'), ' ');
+    task.depends_on.forEach((id, index) => {
+      const dependency = make('a', '', authoring.priorities.find(t => t.id === id)?.title || id);
+      dependency.href = `${base}/p/${id}/`;
+      after.append(index ? ', ' : '', dependency);
+    });
+    cell.append(after);
+  }
+  if (task.effort) {
+    const effort = make('p');
+    effort.append(make('span', 'attribution', 'Difficulty:'), ' ' + task.effort);
+    cell.append(effort);
+  }
+  const link_source = make('a', 'roadmap-source', 'Source');
+  link_source.href = source;
+  const edit = make('button', 'text-button row-edit', 'Edit');
+  edit.type = 'button';
+  edit.dataset.editPriority = task.id;
+  edit.setAttribute('aria-expanded', 'false');
+  cell.append(' ', link_source, edit);
+  row.replaceChildren(score, cell);
+}
+
+function formShell(saveLabel) {
+  const form = make('form', 'edit-form');
+  const actions = make('div', 'form-actions');
+  const save = make('button', 'save', saveLabel);
+  const cancel = make('button', '', 'Cancel');
+  cancel.type = 'button';
+  const status = make('p', 'form-status');
+  status.setAttribute('role', 'status');
+  actions.append(save, cancel);
+  form.append(actions, status);
+  form.dataset.revision = authoring.revision || '';
+  return { form, actions, save, cancel, status };
+}
+
+function field(labelText, control, id) {
+  const wrapper = make('div', 'field');
+  const label = make('label', '', labelText);
+  label.htmlFor = id;
+  control.id = id;
+  wrapper.append(label, control);
+  return wrapper;
+}
+
+function directionFields(entry, form, actions) {
+  const uid = Math.random().toString(36).slice(2, 8);
+  const heading = make('input');
+  heading.type = 'text';
+  heading.value = entry.title || '';
+  const text = make('textarea');
+  text.rows = Math.min(14, Math.max(4, (entry.text || '').split('\n').length + 2));
+  text.value = entry.text || '';
+  actions.before(field('Heading (optional)', heading, `heading-${uid}`), field('Text', text, `text-${uid}`));
+  return () => ({ kind: 'direction', title: heading.value, text: text.value });
+}
+
+function priorityFields(task, form, actions) {
+  const uid = Math.random().toString(36).slice(2, 8);
+  const title = make('input');
+  title.type = 'text';
+  title.value = task.title || '';
+  const details = make('textarea');
+  details.rows = 3;
+  details.value = task.details || '';
+  const scores = make('fieldset');
+  scores.append(make('legend', '', 'Score'));
+  const strip = make('div', 'score-strip');
+  for (const value of [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+    const input = make('input');
+    input.type = 'radio';
+    input.name = `score-${uid}`;
+    input.id = `score-${uid}-${value ?? 'none'}`;
+    input.value = value ?? '';
+    input.checked = (task.priority ?? null) === value;
+    const label = make('label', value === null ? 'unscored' : '', value === null ? 'Unscored' : String(value));
+    label.htmlFor = input.id;
+    strip.append(input, label);
+  }
+  scores.append(strip);
+  const effort = make('input');
+  effort.type = 'text';
+  effort.value = task.effort || '';
+  const dependencies = make('fieldset');
+  dependencies.append(make('legend', '', 'After'));
+  const chips = make('ul', 'deps');
+  const choose = make('select');
+  choose.setAttribute('aria-label', 'Add dependency');
+  let depends = [...(task.depends_on || [])];
+  const drawDependencies = () => {
+    chips.replaceChildren(...depends.map(id => {
+      const item = make('li');
+      const name = authoring.priorities.find(t => t.id === id)?.title || id;
+      const remove = make('button', '', 'Remove');
+      remove.type = 'button';
+      remove.setAttribute('aria-label', `Remove ${name}`);
+      remove.addEventListener('click', () => { depends = depends.filter(other => other !== id); drawDependencies(); });
+      item.append(name, remove);
+      return item;
+    }));
+    choose.replaceChildren(new Option('Add dependency', ''), ...authoring.priorities
+      .filter(other => other.id !== task.id && !depends.includes(other.id))
+      .map(other => new Option(other.title, other.id)));
+    choose.value = '';
+  };
+  choose.addEventListener('change', () => {
+    if (!choose.value) return;
+    depends.push(choose.value);
+    drawDependencies();
+  });
+  drawDependencies();
+  dependencies.append(chips, choose);
+  actions.before(field('Title', title, `title-${uid}`), field('Details', details, `details-${uid}`),
+    scores, field('Difficulty', effort, `effort-${uid}`), dependencies);
+  const allowed = Math.max(30, words(task.title) + words(task.details));
+  return () => {
+    if (words(title.value) + words(details.value) > allowed) {
+      throw new Error(`Keep the title and details to ${allowed} words together.`);
+    }
+    const chosen = strip.querySelector('input:checked');
+    return { kind: 'priority', title: title.value, details: details.value, effort: effort.value,
+      priority: chosen?.value ? Number(chosen.value) : null, depends_on: depends };
+  };
+}
+
+function openForm(kind, record, place, trigger) {
+  if (trigger.getAttribute('aria-expanded') === 'true') return;
+  const { form, actions, save, cancel, status } = formShell(kind === 'direction' ? 'Save entry' : 'Save priority');
+  const collect = kind === 'direction' ? directionFields(record, form, actions) : priorityFields(record, form, actions);
+  const close = () => {
+    authoring.open -= 1;
+    trigger.setAttribute('aria-expanded', 'false');
+    place.close(form);
+    trigger.focus();
+    refreshHome();
+  };
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    status.replaceChildren();
+    let payload;
+    try { payload = collect(); } catch (error) { status.textContent = error.message; return; }
+    save.disabled = cancel.disabled = true;
+    try {
+      const result = await api('direction', { id: crypto.randomUUID(), revision: form.dataset.revision,
+        target: record.id, ...payload });
+      // Remove the form first so the saved record re-renders in its place.
+      close();
+      applySnapshot(result, true);
+      if (record.id) document.querySelector(`[data-edit-${kind}="${CSS.escape(record.id)}"]`)?.focus();
+    } catch (error) {
+      if (error.status === 409) offerCurrent(form, status, error.message);
+      else status.textContent = error.status ? error.message : 'Connection unavailable';
+    } finally { save.disabled = cancel.disabled = false; }
+  });
+  cancel.addEventListener('click', close);
+  form.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { event.preventDefault(); close(); }
+    if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) { event.preventDefault(); form.requestSubmit(); }
+  });
+  authoring.open += 1;
+  trigger.setAttribute('aria-expanded', 'true');
+  place.open(form);
+  form.querySelector('input:not([type=radio]), textarea')?.focus();
+}
+
+function offerCurrent(form, status, message) {
+  const load = make('button', 'text-button', 'Load the current version');
+  load.type = 'button';
+  load.addEventListener('click', async () => {
+    await loadDirection(true);
+    form.dataset.revision = authoring.revision || '';
+    status.textContent = 'Loaded the current version. Save again to keep your text.';
+  });
+  status.replaceChildren(message, load);
+}
+
+document.addEventListener('click', event => {
+  const trigger = event.target.closest('[data-edit-direction], [data-add-direction], [data-edit-priority], [data-add-priority]');
+  if (!trigger) return;
+  if (trigger.dataset.editDirection !== undefined) {
+    const figure = trigger.closest('[data-direction-id]');
+    const entry = authoring.direction.find(item => item.id === trigger.dataset.editDirection);
+    if (!entry) return;
+    openForm('direction', entry, {
+      open: form => {
+        figure.querySelector('.direction-heading')?.setAttribute('hidden', '');
+        figure.querySelector('.edited-message')?.setAttribute('hidden', '');
+        figure.querySelector(':scope > blockquote.verbatim')?.setAttribute('hidden', '');
+        figure.querySelector('figcaption').after(form);
+      },
+      close: form => { form.remove(); fillDirection(figure, authoring.direction.find(item => item.id === entry.id) || entry); },
+    }, trigger);
+  } else if (trigger.dataset.addDirection !== undefined) {
+    const list = document.querySelector('[data-direction-entries]');
+    openForm('direction', { text: '' }, {
+      open: form => list.after(form),
+      close: form => form.remove(),
+    }, trigger);
+  } else if (trigger.dataset.editPriority !== undefined) {
+    const row = trigger.closest('tr[data-priority-id]');
+    const task = authoring.priorities.find(item => item.id === trigger.dataset.editPriority);
+    if (!task) return;
+    const editor = make('tr', 'editing');
+    editor.dataset.editorFor = task.id;
+    const cell = make('td');
+    cell.colSpan = 2;
+    editor.append(cell);
+    openForm('priority', task, {
+      open: form => { cell.append(form); row.after(editor); row.hidden = true; },
+      close: () => { editor.remove(); row.hidden = false; },
+    }, trigger);
+  } else {
+    const tbody = document.querySelector('table.roadmap tbody');
+    const editor = make('tr', 'editing');
+    const cell = make('td');
+    cell.colSpan = 2;
+    editor.append(cell);
+    openForm('priority', { depends_on: [] }, {
+      open: form => { cell.append(form); tbody.append(editor); },
+      close: () => editor.remove(),
+    }, trigger);
+  }
 });
 
 const attach = document.querySelector('.figure-attach');

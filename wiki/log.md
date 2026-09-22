@@ -1161,6 +1161,11 @@
 - Change: Revision-checked direction and priority saves retain dated wording in `research/direction.md`. Publication synchronizes this source separately from file copies. Concurrent changes retain both versions and stop publication.
 - Validation: Isolated creation, editing, history, concurrency, HTTP, activity-preservation and save-then-publish tests.
 
+## [2026-09-22] codebase | Inline research editing
+
+- Pages: Home, Roadmap, `index.md`
+- Change: Added inline direction and priority forms with dated-original retention, protected Mac/NAS synchronization and explicit reconciliation for stale edits.
+
 ## [2026-09-22] codebase | Emission-line marginalisation option
 
 - Pages: `notes/model.md`, `research/experiments/e-emission-line-marginalisation.md`
