@@ -1160,3 +1160,9 @@
 - Pages: `index.md`, `research/README.md`
 - Change: Revision-checked direction and priority saves retain dated wording in `research/direction.md`. Publication synchronizes this source separately from file copies. Concurrent changes retain both versions and stop publication.
 - Validation: Isolated creation, editing, history, concurrency, HTTP, activity-preservation and save-then-publish tests.
+
+## [2026-09-22] codebase | Emission-line marginalisation option
+
+- Pages: `notes/model.md`, `research/experiments/e-emission-line-marginalisation.md`
+- Change: `emission_line_marginalisation` (default off) adds FSPS emission lines as flat-prior columns to the calibration solve; modelled lines leave the emission mask. Ceridwen `6fc7539`.
+- Validation: option off bit-identical on 20 M1_210210 draws; zero-line limit, quadrature, injected-line and variance tests.
