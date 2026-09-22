@@ -444,7 +444,7 @@ def test_constant_calibration_active_assembly_and_exports():
     cal = env["calibration_polynomial"]
     assert cal.fit_constant and cal.n_coeff == 11 and cal.order == 10
     np.testing.assert_array_equal(cal.basis[:, 0], np.ones(64))
-    np.testing.assert_array_equal(cal.prior_sigma, np.full(11, .1))
+    np.testing.assert_array_equal(cal.prior_sigma, [.3] + [.1] * 10)
     coeffs = np.arange(22).reshape(2, 11) * .001
     env["calibration_coefficients"] = coeffs
     np.testing.assert_allclose(cal.polynomial(coeffs[0]), 1 + np.polynomial.chebyshev.chebval(cal.x, coeffs[0]))
@@ -505,3 +505,63 @@ def test_saved_notebook_configuration_keeps_legacy_scaling(monkeypatch):
             if cell.cell_type == "code":
                 ast.parse(cell.source)
         assert 'joint_result = run_sampler(' not in notebook.cells[10].source
+
+
+@pytest.mark.parametrize("widths,constant,expected", [
+    (.1, False, [.1] * 10),
+    (.1, True, [.1] * 11),
+    ([.3] + [.1] * 10, True, [.3] + [.1] * 10),
+])
+def test_replay_preserves_scalar_and_vector_calibration_priors(tmp_path, monkeypatch, widths, constant, expected):
+    import ast
+    import h5py
+    import numpy as np
+    from ceridwen.likelihood import PolynomialCalibration
+    from ceridwen.observation import Spectrum
+    from scripts import regenerate_fit_notebooks as regenerate
+
+    folder = tmp_path / "1-test"
+    folder.mkdir()
+    with h5py.File(folder / "ceridwen_result.h5", "w") as f:
+        model = f.create_group("model")
+        model.create_dataset("param_names", data=[b"Z", b"zred", b"sigma_smooth"])
+        model.attrs.update(parameter_block="diffuse_tau_kc: Uniform(0, 1)", random_seed=1,
+                           manifest_index=0, calibration_order=10, calibration_prior_sigma=widths,
+                           calibration_fit_constant=constant)
+    stored = regenerate.stored_fit(folder)
+    monkeypatch.setattr(regenerate, "PROJECT_ROOT", tmp_path)
+    notebook = regenerate.compact_notebook(folder, stored)
+    env = {"np": np, "PolynomialCalibration": PolynomialCalibration,
+           "spectrum_obs": Spectrum(wavelength=np.linspace(6000, 9000, 32),
+                                    flux=np.ones(32), uncertainty=np.ones(32))}
+    for cell in notebook.cells:
+        if cell.cell_type != "code":
+            continue
+        for node in ast.parse(cell.source).body:
+            if isinstance(node, ast.Assign) and any(isinstance(t, ast.Name) and
+                    t.id in {"SETTINGS", "calibration_polynomial"} for t in node.targets):
+                exec(compile(ast.Module(body=[node], type_ignores=[]), "replay", "exec"), env)
+    np.testing.assert_array_equal(env["calibration_polynomial"].prior_sigma, expected)
+
+
+def test_notebook_calibration_metadata_writes_effective_vector():
+    import ast
+    from types import SimpleNamespace
+    import numpy as np
+
+    notebook = json.loads(NOTEBOOK_PATH.read_text())
+    found = []
+    env = dict(np=np, calibration_polynomial=SimpleNamespace(prior_sigma=tuple([.3] + [.1] * 10)))
+    for cell in notebook["cells"]:
+        if cell["cell_type"] != "code":
+            continue
+        for node in ast.walk(ast.parse("".join(cell["source"]))):
+            if isinstance(node, ast.Dict):
+                for key, value in zip(node.keys, node.values):
+                    if (isinstance(key, ast.Constant) and key.value in {"prior_sigma", "calibration_prior_sigma"}
+                            and isinstance(value, ast.Call)):
+                        actual = eval(compile(ast.Expression(value), "metadata", "eval"), env)
+                        np.testing.assert_array_equal(actual, [.3] + [.1] * 10)
+                        found.append(key.value)
+    assert found.count("calibration_prior_sigma") == 2  # result and derived model metadata
+    assert found.count("prior_sigma") == 1  # derived calibration metadata

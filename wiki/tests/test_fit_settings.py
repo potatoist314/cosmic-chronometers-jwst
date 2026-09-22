@@ -66,6 +66,7 @@ class FitSettingsTests(unittest.TestCase):
         self.assertIn("Uniform [8, 13]", found[self.name("logmass")])
         self.assertIn(r"Student-t \(\mu\) 0, scale 0.3, \(\nu\) 2", found[self.name("logsfr_ratios")])
         self.assertIn("Normal, 0 ± 0.1", found["calibration_prior_sigma"])
+        self.assertIn("Normal, 0 ± 0.3", found["calibration_constant_prior_sigma"])
         self.assertNotIn("spectrum_scaling", found)
         self.assertIn("True", found["calibration_fit_constant"])
 

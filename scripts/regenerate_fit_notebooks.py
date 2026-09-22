@@ -26,6 +26,7 @@ from pathlib import Path
 
 import h5py
 import nbformat
+import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOK_PATH = PROJECT_ROOT / "notebooks/ceridwen_integrated_photometry_spectra.ipynb"
@@ -42,13 +43,15 @@ def stored_fit(result_dir: Path) -> dict:
             line for line in attrs["parameter_block"].splitlines() if line.strip().startswith("diffuse_tau_kc:")
         )
         low, high = re.search(r"Uniform\(([^,]+), ([^)]+)\)", tau_line).groups()
+        widths = np.atleast_1d(attrs["calibration_prior_sigma"])
         return {
             "target_id": result_dir.name.split("-", 1)[1],
             "seed": int(attrs["random_seed"]),
             "manifest_index": int(attrs["manifest_index"]),
             "calibration_order": int(attrs["calibration_order"]),
             "calibration_fit_constant": bool(attrs.get("calibration_fit_constant", False)),
-            "calibration_prior_sigma": float(attrs["calibration_prior_sigma"]),
+            "calibration_prior_sigma": float(widths[-1]),
+            "calibration_constant_prior_sigma": float(widths[0]),
             "scaling_prior": (result_file["model/priors"].attrs["spectrum_scaling"]
                               if "spectrum_scaling" in names else None),
             "photometry": str(attrs.get("photometry_source", "cosmos_total")),
@@ -71,6 +74,7 @@ def compact_notebook(result_dir: Path, fit: dict) -> nbformat.NotebookNode:
         (r'"calibration_order": \d+,', f'"calibration_order": {fit["calibration_order"]},'),
         (r'"calibration_fit_constant": (?:True|False),', f'"calibration_fit_constant": {fit["calibration_fit_constant"]},'),
         (r'"calibration_prior_sigma": [^,]+,', f'"calibration_prior_sigma": {fit["calibration_prior_sigma"]},'),
+        (r'"calibration_constant_prior_sigma": [^,]+,', f'"calibration_constant_prior_sigma": {fit["calibration_constant_prior_sigma"]},'),
         (r'"photometry": "[^"]*",', f'"photometry": "{fit["photometry"]}",'),
         (r'"diffuse_tau_kc": Uniform\(low=[^)]*\),', f'"diffuse_tau_kc": Uniform(low={fit["tau_bounds"][0]:g}, high={fit["tau_bounds"][1]:g}),'),
     ]
@@ -87,7 +91,7 @@ def compact_notebook(result_dir: Path, fit: dict) -> nbformat.NotebookNode:
 
     if not fit["calibration_fit_constant"]:
         top.source = top.source.replace(
-            "# a_0 handles spectrum normalisation; 1+a_0 ~ Normal(1, 0.1)",
+            "# a_0 handles spectrum normalisation; its width is set separately",
             "# constant excluded in this stored fit")
     if fit["scaling_prior"] is not None:
         from per_galaxy_diagnostics import parse_prior

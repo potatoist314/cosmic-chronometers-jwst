@@ -20,7 +20,7 @@ GROUPS = [  # label, colour token, keys in display order
     ("SFH", "--g-sfh", ["logsfr_ratios", "sfh_lookback_gyr"]),
     ("Dust", "--g-dust", ["diffuse_tau_kc", "diffuse_dust_index"]),
     ("Redshift and kinematics", "--g-kin", ["zred", "sigma_smooth"]),
-    ("Calibration", "--g-calib", ["calibration_order", "calibration_prior_sigma", "calibration_fit_constant", "spectrum_scaling"]),
+    ("Calibration", "--g-calib", ["calibration_order", "calibration_prior_sigma", "calibration_constant_prior_sigma", "calibration_fit_constant", "spectrum_scaling"]),
     ("Noise floors", "--g-noise", ["photometry_floor", "log_f_calib"]),
     ("Sampler", "--ink-2", ["sampler"]),
 ]
@@ -57,7 +57,8 @@ TEMPLATES = {
                    r"%(log_f_calib.Uniform.high:lnpct)s%% log-uniform, added in quadrature to each pixel",
     "zred": r"Uniform, \(z_{\mathrm{cat}}\) ± %(zred_half_width)s",
     "sigma_smooth": r"Normal, \(\sigma_{\mathrm{DR2}}\) ± err, clipped at %(sigma_clip)s err",
-    "calibration_prior_sigma": "Normal, 0 ± %(calibration_prior_sigma)s",
+    "calibration_prior_sigma": "Shape coefficients: Normal, 0 ± %(calibration_prior_sigma)s",
+    "calibration_constant_prior_sigma": "Constant coefficient: Normal, 0 ± %(calibration_constant_prior_sigma)s",
 }
 # Row equations of templated rows, with the same slots. Photometry: the fit notebook's
 # `phot_uncertainty = np.hypot(phot_error_stat * total_scale, SETTINGS["photometry_floor"] * np.abs(phot_flux))`.

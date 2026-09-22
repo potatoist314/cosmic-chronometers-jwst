@@ -340,7 +340,7 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
         calibration = PolynomialCalibration.from_spectrum(
             spec_obs, order=calibration_order,
             fit_constant=bool(galaxy.extra.get("calibration_fit_constant", False)),
-            prior_sigma=float(galaxy.extra["calibration_prior_sigma"]), marginalize=True,
+            prior_sigma=galaxy.extra["calibration_prior_sigma"], marginalize=True,
         )
     likelihood = MultiObservationLikelihood(
         keys=("photometry", "spectrum"),
@@ -1302,7 +1302,7 @@ def model_settings_block(target_dir: Path, redshift_line: str) -> list[str]:
         priors = {k: _prior_phrase(_text(v)) for k, v in model["priors"].attrs.items()}
         sizes = {k: int(np.size(model["theta_init"][k])) for k in model["theta_init"]}
         order = int(model.attrs.get("calibration_order", 0))
-        prior_sigma = float(model.attrs.get("calibration_prior_sigma", float("nan")))
+        prior_sigma = np.atleast_1d(model.attrs.get("calibration_prior_sigma", float("nan")))
         fit_constant = bool(model.attrs.get("calibration_fit_constant", False))
         anchor = _text(model.attrs["photometry_source"]) if "photometry_source" in model.attrs \
             else "cosmos_ap3"
@@ -1312,8 +1312,9 @@ def model_settings_block(target_dir: Path, redshift_line: str) -> list[str]:
     free = ". ".join(
         f"{name} {priors[name]}" + (f", {sizes[name]} values" if sizes[name] > 1 else "")
         for name in sorted(priors))
+    prior_widths = ", ".join(f"{value:.2g}" for value in prior_sigma)
     calibration = (f"Chebyshev order {order}, one polynomial multiplying the model spectrum, "
-                   f"coefficient priors Normal(0, {prior_sigma:.2g}), integrated out at every "
+                   f"independent coefficient priors Normal(0, sigma), widths [{prior_widths}], integrated out at every "
                    f"likelihood call; constant term {'included' if fit_constant else 'excluded'}") if order else "No polynomial, order 0"
     anchor_text = {
         "cosmos_ap3": f"cosmos_ap3, the {n_band} COSMOS2015 3 arcsecond aperture fluxes with total "

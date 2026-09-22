@@ -1149,3 +1149,8 @@
 
 - Pages: `notes/model.md`, `notes/notebook-map.md`, `index.md`
 - Change: Removed sampled `spectrum_scaling` and included the constant term in order-10 calibration; fractional noise, photometry, sampler settings and baked runtime remain unchanged.
+
+## [2026-09-22] codebase | Separate calibration prior widths
+
+- Pages: `notes/model.md`, `notes/notebook-map.md`, `index.md`
+- Change: Widened the calibration constant prior to standard deviation 0.3; shape coefficients retain 0.1. Metadata stores the effective vector; legacy scalar priors remain supported.
