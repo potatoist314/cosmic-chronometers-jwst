@@ -66,7 +66,8 @@ class FitSettingsTests(unittest.TestCase):
         self.assertIn("Uniform [8, 13]", found[self.name("logmass")])
         self.assertIn(r"Student-t \(\mu\) 0, scale 0.3, \(\nu\) 2", found[self.name("logsfr_ratios")])
         self.assertIn("Normal, 0 ± 0.1", found["calibration_prior_sigma"])
-        self.assertIn("Clipped normal 1 ± 0.3 on [0.2, 3]", found["spectrum_scaling"])
+        self.assertNotIn("spectrum_scaling", found)
+        self.assertIn("True", found["calibration_fit_constant"])
 
     def test_grid_ranges_come_from_the_run(self):
         found = rows(self.rendered)

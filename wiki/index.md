@@ -12,6 +12,7 @@ other experiment records and earlier analyses/boards remain accessible below.
 Meetings: `/wiki/meetings/`. Papers: `/wiki/papers/`, including indexed local PDFs.
 Code, notebooks and guides: `/wiki/code/`, followed by documentation and earlier history.
 Every assumption and setting of the model on one page: `/wiki/model/`.
+Default normalisation: the order-10 calibration includes `a_0`; no sampled `spectrum_scaling` (2026-09-22).
 Source: `notes/model.md`. Contract: `research/model-page-spec.md`.
 Check against `notebooks/ceridwen_integrated_photometry_spectra.ipynb` when defaults change.
 Legacy workflow routes: `/wiki/questions/` and `/wiki/experiments/`.

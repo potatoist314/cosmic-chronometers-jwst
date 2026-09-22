@@ -106,7 +106,10 @@ def test_notebook_uses_production_model_and_sampler_contract():
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
 
     assert "drop_duplicates(\"OBJECT\", keep=\"first\")" in source
-    assert '"spectrum_scaling": ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)' in source
+    assert '"spectrum_scaling": ClippedNormal' not in source
+    assert '"spectrum_scaling": jnp.array' not in source
+    assert '"calibration_fit_constant": True' in source
+    assert 'fit_constant=SETTINGS["calibration_fit_constant"]' in source
     assert '"sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}' in source
     assert '"Z": "log10 iron abundance; [Fe/H] = Z + 1.7328283"' in source
     assert "FEH_OFFSET = 1.7328283" in source
@@ -388,3 +391,117 @@ def test_notebook_samples_redshift_and_sigma_by_default():
     assert 'free_z="zred" in PRIORS' in source
     assert 'fit_sigma_smooth="sigma_smooth" in PRIORS' in source
     assert "mean=sigma_star,\n        sigma=sigma_star_err," in source
+
+def test_constant_calibration_active_assembly_and_exports():
+    """Execute the maintained assembly on a small in-memory SSP, without fitting."""
+    import ast
+    import jax.numpy as jnp
+    import numpy as np
+    from ceridwen.cosmology import age_gyr
+    from ceridwen.csp import CSPBasis_afe
+    from ceridwen.ssps import SSPDataAfe
+    from ceridwen.model import SedModel, logsfr_ratios_to_sfh
+    from ceridwen.observation import Photometry, Spectrum
+    from ceridwen.likelihood import PolynomialCalibration
+    from ceridwen.sampler.priors import ClippedNormal, StudentT, Uniform
+
+    cells = ["".join(c.get("source", [])) for c in json.loads(NOTEBOOK_PATH.read_text())["cells"]
+             if c["cell_type"] == "code"]
+    env = dict(np=np, jnp=jnp, age_gyr=age_gyr, CSPBasis_afe=CSPBasis_afe,
+               SedModel=SedModel, logsfr_ratios_to_sfh=logsfr_ratios_to_sfh,
+               ClippedNormal=ClippedNormal, StudentT=StudentT, Uniform=Uniform,
+               PolynomialCalibration=PolynomialCalibration)
+    settings_cell = next(c for c in cells if "SETTINGS = {" in c)
+    for node in ast.parse(settings_cell).body:
+        if isinstance(node, ast.Assign) and any(
+                isinstance(t, ast.Name) and t.id in {"SETTINGS", "PRIORS"} for t in node.targets):
+            exec(compile(ast.Module(body=[node], type_ignores=[]), "settings", "exec"), env)
+    wave = jnp.geomspace(1000., 30000., 256)
+    env["ssp"] = SSPDataAfe(jnp.array([-2.2, -1.4]), jnp.array([-.2, .6]),
+                            jnp.array([-3., -1., 0., 1.2]), wave,
+                            jnp.ones((2, 2, 4, 256)) * 1e-15)
+    spec_wave = np.linspace(6000., 9000., 64)
+    env.update(z_catalog=.7, sigma_star=180., sigma_star_err=10., phot_flux=np.ones(1))
+    env["phot_obs"] = Photometry(filters=["sdss_r0"], flux=np.ones(1), uncertainty=np.ones(1),
+                                 name="photometry")
+    env["spectrum_obs"] = Spectrum(wavelength=spec_wave, flux=np.ones(64),
+                                    uncertainty=np.ones(64), name="spectrum", free_z=True,
+                                    fit_sigma_smooth=True, baked_runtime=True)
+    assembly = ast.parse(next(c for c in cells if "joint_csp = CSPBasis_afe(" in c))
+    # Supply the tiny grid instead of fetching production data.
+    exec(compile(ast.Module(body=assembly.body[1:], type_ignores=[]), "assembly", "exec"), env)
+    model = env["joint_model"]
+    for names in (env["PRIORS"], env["joint_initial"], model.priors, model.theta_init, model.param_names):
+        assert "spectrum_scaling" not in names
+    prediction = model.predict(model.theta_init)
+    unity = model.predict({**model.theta_init, "spectrum_scaling": jnp.array([1.])})
+    for key in prediction:
+        np.testing.assert_array_equal(prediction[key], unity[key])
+    fit_cell = ast.parse(next(c for c in cells if "calibration_polynomial =" in c))
+    assignment = next(n for n in fit_cell.body if isinstance(n, ast.Assign)
+                      and any(isinstance(t, ast.Name) and t.id == "calibration_polynomial" for t in n.targets))
+    exec(compile(ast.Module(body=[assignment], type_ignores=[]), "calibration", "exec"), env)
+    cal = env["calibration_polynomial"]
+    assert cal.fit_constant and cal.n_coeff == 11 and cal.order == 10
+    np.testing.assert_array_equal(cal.basis[:, 0], np.ones(64))
+    np.testing.assert_array_equal(cal.prior_sigma, np.full(11, .1))
+    coeffs = np.arange(22).reshape(2, 11) * .001
+    env["calibration_coefficients"] = coeffs
+    np.testing.assert_allclose(cal.polynomial(coeffs[0]), 1 + np.polynomial.chebyshev.chebval(cal.x, coeffs[0]))
+    summary_cell = next(c for c in cells if "summary_draws = {" in c)
+    comp = next(n for n in ast.walk(ast.parse(summary_cell)) if isinstance(n, ast.DictComp)
+                and "calibration a_" in ast.unparse(n))
+    exported = eval(compile(ast.Expression(comp), "export", "eval"), env)
+    assert list(exported) == [f"calibration a_{i}" for i in range(11)]
+    for i, value in enumerate(exported.values()):
+        np.testing.assert_array_equal(value, coeffs[:, i])
+    assert '\"fit_constant\": calibration_polynomial.fit_constant' in summary_cell
+
+
+@pytest.mark.parametrize("legacy_scaling", [False, True])
+def test_result_validator_accepts_current_and_legacy_groups(monkeypatch, tmp_path, legacy_scaling):
+    from types import SimpleNamespace
+    import h5py
+    import nbformat
+    import ceridwen.fit
+
+    names = ["Z", "afe", "diffuse_tau_kc", "log_f_calib", "logmass", "logsfr_ratios",
+             "diffuse_dust_index", "zred", "sigma_smooth"]
+    if legacy_scaling:
+        names.append("spectrum_scaling")
+    loaded = SimpleNamespace(param_names=names, log_weights=[-1.], log_evidence=0., log_evidence_err=.1)
+    monkeypatch.setattr(ceridwen.fit, "load_result_h5", lambda _: loaded)
+    with h5py.File(tmp_path / "ceridwen_derived_outputs.h5", "w") as f:
+        for key in ("summary", "sfh", "photometry", "spectrum", "diagnostics"):
+            f.create_group(key)
+        f["diagnostics"].attrs["passed"] = True
+    monkeypatch.setattr(nbformat, "read", lambda *a, **k: SimpleNamespace(cells=[
+        {"outputs": [{"data": {"image/png": "test"}} for _ in range(5)]}]))
+    runner._validate_result(tmp_path, "test")
+    loaded.param_names = names + ["unexpected"]
+    with pytest.raises(RuntimeError, match="physical parameter groups"):
+        runner._validate_result(tmp_path, "test")
+
+
+def test_saved_notebook_configuration_keeps_legacy_scaling(monkeypatch):
+    import ast
+    monkeypatch.syspath_prepend(str(PROJECT_ROOT / "scripts"))
+    from scripts import regenerate_fit_notebooks as regenerate
+    folder = PROJECT_ROOT / "results/m1-210210-reference/tau-1/poly10/210210-M1_210210"
+    fit = regenerate.stored_fit(folder)
+    assert fit["scaling_prior"] is not None
+    assert fit["calibration_fit_constant"] is False
+    old = regenerate.compact_notebook(folder, fit)
+    assert '"spectrum_scaling": ClippedNormal' in old.cells[2].source
+    assert '"spectrum_scaling": jnp.array([1.0])' in old.cells[8].source
+    assert '"calibration_fit_constant": False' in old.cells[2].source
+    new = regenerate.compact_notebook(folder, {**fit, "scaling_prior": None,
+                                               "calibration_fit_constant": True})
+    assert '"spectrum_scaling": ClippedNormal' not in new.cells[2].source
+    assert '"spectrum_scaling": jnp.array' not in new.cells[8].source
+    assert '"calibration_fit_constant": True' in new.cells[2].source
+    for notebook in (old, new):
+        for cell in notebook.cells:
+            if cell.cell_type == "code":
+                ast.parse(cell.source)
+        assert 'joint_result = run_sampler(' not in notebook.cells[10].source

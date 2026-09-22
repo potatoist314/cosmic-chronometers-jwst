@@ -1144,3 +1144,8 @@
 - Pages: [[notes/notebook-map]]
 - Change: Linked `notebooks/ceridwen_diagnostic_test_set.ipynb`: six additional galaxies spanning measured fitting conditions, including one deliberate difficult case. The set provides diagnostic coverage, not statistical representativeness.
 - Validation: selection notebook executed against local catalogues, raw spectra and saved HDF5 results. No fits run.
+
+## [2026-09-22] codebase | Polynomial normalisation default
+
+- Pages: `notes/model.md`, `notes/notebook-map.md`, `index.md`
+- Change: Removed sampled `spectrum_scaling` and included the constant term in order-10 calibration; fractional noise, photometry, sampler settings and baked runtime remain unchanged.

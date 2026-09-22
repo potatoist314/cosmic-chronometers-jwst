@@ -174,7 +174,7 @@ def load_galaxy(folder: Path) -> GalaxyResult:
         transform_names = json.loads(_text(model.attrs["transforms"])) if "transforms" in model.attrs else []
         stored_block = _text(model.attrs["parameter_block"]) if "parameter_block" in model.attrs else None
         extra = {k: (_text(model.attrs[k]) if isinstance(model.attrs[k], (bytes, str)) else model.attrs[k])
-                 for k in ("calibration_order", "calibration_prior_sigma", "photometry_source",
+                 for k in ("calibration_order", "calibration_prior_sigma", "calibration_fit_constant", "photometry_source",
                            "spectrum_pixels", "sfh_basis_fastpath")
                  if k in model.attrs}
         pg, sg = f["obs/photometry"], f["obs/spectrum"]
@@ -338,7 +338,8 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     calibration = None
     if calibration_order > 0:
         calibration = PolynomialCalibration.from_spectrum(
-            spec_obs, order=calibration_order, fit_constant=False,
+            spec_obs, order=calibration_order,
+            fit_constant=bool(galaxy.extra.get("calibration_fit_constant", False)),
             prior_sigma=float(galaxy.extra["calibration_prior_sigma"]), marginalize=True,
         )
     likelihood = MultiObservationLikelihood(
@@ -1302,6 +1303,7 @@ def model_settings_block(target_dir: Path, redshift_line: str) -> list[str]:
         sizes = {k: int(np.size(model["theta_init"][k])) for k in model["theta_init"]}
         order = int(model.attrs.get("calibration_order", 0))
         prior_sigma = float(model.attrs.get("calibration_prior_sigma", float("nan")))
+        fit_constant = bool(model.attrs.get("calibration_fit_constant", False))
         anchor = _text(model.attrs["photometry_source"]) if "photometry_source" in model.attrs \
             else "cosmos_ap3"
         n_band = len(json.loads(_text(f["obs/photometry"].attrs["filternames"])))
@@ -1312,7 +1314,7 @@ def model_settings_block(target_dir: Path, redshift_line: str) -> list[str]:
         for name in sorted(priors))
     calibration = (f"Chebyshev order {order}, one polynomial multiplying the model spectrum, "
                    f"coefficient priors Normal(0, {prior_sigma:.2g}), integrated out at every "
-                   "likelihood call") if order else "No polynomial, order 0"
+                   f"likelihood call; constant term {'included' if fit_constant else 'excluded'}") if order else "No polynomial, order 0"
     anchor_text = {
         "cosmos_ap3": f"cosmos_ap3, the {n_band} COSMOS2015 3 arcsecond aperture fluxes with total "
                       "IRAC and no offsets",
@@ -1346,7 +1348,9 @@ def model_settings_block(target_dir: Path, redshift_line: str) -> list[str]:
         "",
         "Spectrum calibration",
         f": {calibration}. A free fractional noise floor f_calib between 1 and 10 percent of the "
-        "model flux. A free multiplicative scale spectrum_scaling.",
+        "model flux. " + ("A free multiplicative scale spectrum_scaling."
+                          if "spectrum_scaling" in priors else
+                          "No separate spectrum scale is sampled."),
         "",
         "Photometry anchor",
         f": {anchor_text}. The model photometry never carries the spectrum scale or a calibration "

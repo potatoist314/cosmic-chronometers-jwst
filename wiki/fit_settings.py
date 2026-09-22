@@ -20,7 +20,7 @@ GROUPS = [  # label, colour token, keys in display order
     ("SFH", "--g-sfh", ["logsfr_ratios", "sfh_lookback_gyr"]),
     ("Dust", "--g-dust", ["diffuse_tau_kc", "diffuse_dust_index"]),
     ("Redshift and kinematics", "--g-kin", ["zred", "sigma_smooth"]),
-    ("Calibration", "--g-calib", ["calibration_order", "calibration_prior_sigma", "spectrum_scaling"]),
+    ("Calibration", "--g-calib", ["calibration_order", "calibration_prior_sigma", "calibration_fit_constant", "spectrum_scaling"]),
     ("Noise floors", "--g-noise", ["photometry_floor", "log_f_calib"]),
     ("Sampler", "--ink-2", ["sampler"]),
 ]

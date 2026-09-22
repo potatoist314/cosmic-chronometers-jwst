@@ -253,8 +253,9 @@ def _validate_result(result_dir: Path, spect_id: str) -> None:
     notebook_path = result_dir / f"{spect_id}_executed.ipynb"
     loaded = load_result_h5(result_path)
     physical = physical_parameter_names(loaded.param_names)
-    if len(physical) != 7:
-        raise RuntimeError(f"Expected seven physical parameter groups, found {loaded.param_names}")
+    expected = 7 if "spectrum_scaling" in loaded.param_names else 6
+    if len(physical) != expected:
+        raise RuntimeError(f"Expected {expected} physical parameter groups, found {loaded.param_names}")
     if not np.isfinite(np.asarray(loaded.log_weights)).all():
         raise RuntimeError("Posterior log weights contain non-finite values")
     if not np.isfinite([loaded.log_evidence, loaded.log_evidence_err]).all():

@@ -47,6 +47,10 @@ def stored_fit(result_dir: Path) -> dict:
             "seed": int(attrs["random_seed"]),
             "manifest_index": int(attrs["manifest_index"]),
             "calibration_order": int(attrs["calibration_order"]),
+            "calibration_fit_constant": bool(attrs.get("calibration_fit_constant", False)),
+            "calibration_prior_sigma": float(attrs["calibration_prior_sigma"]),
+            "scaling_prior": (result_file["model/priors"].attrs["spectrum_scaling"]
+                              if "spectrum_scaling" in names else None),
             "photometry": str(attrs.get("photometry_source", "cosmos_total")),
             "tau_bounds": (float(low), float(high)),
             "free_zred": "zred" in names,
@@ -65,6 +69,8 @@ def compact_notebook(result_dir: Path, fit: dict) -> nbformat.NotebookNode:
         (r'RESULT_DIR = Path\(os\.environ\.get\("CERIDWEN_RESULT_DIR", [^\n]*\)\)', f'RESULT_DIR = PROJECT_ROOT / "{result_dir.relative_to(PROJECT_ROOT)}"'),
         (r'QUICK = os\.environ\.get\("CERIDWEN_NOTEBOOK_QUICK"\) == "1"', "QUICK = False"),
         (r'"calibration_order": \d+,', f'"calibration_order": {fit["calibration_order"]},'),
+        (r'"calibration_fit_constant": (?:True|False),', f'"calibration_fit_constant": {fit["calibration_fit_constant"]},'),
+        (r'"calibration_prior_sigma": [^,]+,', f'"calibration_prior_sigma": {fit["calibration_prior_sigma"]},'),
         (r'"photometry": "[^"]*",', f'"photometry": "{fit["photometry"]}",'),
         (r'"diffuse_tau_kc": Uniform\(low=[^)]*\),', f'"diffuse_tau_kc": Uniform(low={fit["tau_bounds"][0]:g}, high={fit["tau_bounds"][1]:g}),'),
     ]
@@ -78,6 +84,23 @@ def compact_notebook(result_dir: Path, fit: dict) -> nbformat.NotebookNode:
     top.source = top.source.replace(
         "from ceridwen.fit import write_result_h5", "from ceridwen.fit import load_result_h5"
     )
+
+    if not fit["calibration_fit_constant"]:
+        top.source = top.source.replace(
+            "# a_0 handles spectrum normalisation; 1+a_0 ~ Normal(1, 0.1)",
+            "# constant excluded in this stored fit")
+    if fit["scaling_prior"] is not None:
+        from per_galaxy_diagnostics import parse_prior
+        prior = repr(parse_prior(fit["scaling_prior"]))
+        top.source = top.source.replace("PRIORS = {", f'PRIORS = {{\n    "spectrum_scaling": {prior},')
+        for cell in notebook.cells:
+            if cell.cell_type == "markdown" and "## Calibration polynomial" in cell.source:
+                cell.source = cell.source.replace(
+                    "- Full calibration is $P(\\lambda)$; $a_0$ sets its constant term.",
+                    "- Full calibration is $s_{\\mathrm{spectrum}}P(\\lambda)$ for this stored fit.")
+        model_cell = notebook.cells[8]
+        model_cell.source = model_cell.source.replace(
+            "joint_initial = {", 'joint_initial = {\n    "spectrum_scaling": jnp.array([1.0]),')
 
     fit_markdown = notebook.cells[9]
     fit_cell = notebook.cells[10]
