@@ -1138,3 +1138,9 @@
 - Pages: [[notes/cosmos-photometry-refit]], [[notes/cosmos-photometry-comparison]], [[notes/notebook-map]]
 - Change: Liu Hao, 2026-09-21: "can you keep the style consistent for the new comsos plots - i dont know why they follow a new style from the existing notebook". `FIT_FIGURE_RCPARAMS` in `scripts/spectral_figures.py` is the one place for the fit-figure rcParams; `scripts/per_galaxy_diagnostics.py` reads it. `plot_photometry_fit` and `scripts/plot_cosmos_photometry_comparison.py` use the old photometry figure's markers, colours, legend and labels; the band-name rail is the only new element. The three M1_210210 executed notebooks were regenerated on CPU from the stored posteriors; the sampler was not re-run.
 - Validation: spectrum fit, photometry fit and comparison figure compared side by side at 900 px; `tests/test_spectral_figures.py`; wiki build with the length check and `test_research.py`.
+
+## [2026-09-22] notebooks | Six additional DR2 diagnostic targets
+
+- Pages: [[notes/notebook-map]]
+- Change: Linked `notebooks/ceridwen_diagnostic_test_set.ipynb`: six additional galaxies spanning measured fitting conditions, including one deliberate difficult case. The set provides diagnostic coverage, not statistical representativeness.
+- Validation: selection notebook executed against local catalogues, raw spectra and saved HDF5 results. No fits run.

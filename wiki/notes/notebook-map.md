@@ -8,6 +8,8 @@ job:
 old: _old/notebooks/notebook-map.html
 ---
 
+<p><a href="/wiki/f/notebooks/ceridwen_diagnostic_test_set.ipynb">Six-galaxy diagnostic set</a>: five ordinary comparison targets and one high-redshift photometric-residual case, excluding M1_210210. The notebook contains measurements and saved-result links.</p>
+
 <details>
 <summary>Scope</summary>
 
