@@ -148,6 +148,9 @@ ARMS = {
     "dust1_off": {},
     "dust1_on": {"CERIDWEN_SETTINGS_OVERRIDE": '{"birth_cloud_dust": true}'},
     "dust_index_m3": {"CERIDWEN_PRIORS_OVERRIDE": '{"diffuse_dust_index": "Uniform(low=-3.0, high=0.4)"}'},
+    # Emission-line marginalisation test (2026-09-23), current defaults otherwise.
+    "eline_off": {},
+    "eline_on": {"CERIDWEN_SETTINGS_OVERRIDE": '{"emission_line_marginalisation": true}'},
 }
 DEFAULT_BASE_SEED = 20260830          # == run_ceridwen_vast_multi_gpu.DEFAULT_BASE_SEED
 # Independent NSS repeats of the production model: same data, shifted seed.
