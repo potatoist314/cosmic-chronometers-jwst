@@ -13,6 +13,12 @@ date: 2026-09-15
     "date": "2026-09-12",
     "text": "Like alpha enhanced SSP grids are the new thing i can introduce - and especially because I'm running on ceridwen, that's also new.",
     "display_text": "Alpha-enhanced SSP grids are the new thing I can introduce. Running on Ceridwen is also new."
+  },
+  {
+    "id": "d-58012819-16b2-4ce5-be32-94713f7eb474",
+    "title": "COSMOS2025 as the fiducial catalogue",
+    "text": "Sandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\"",
+    "date": "2026-09-23"
   }
 ]
 ```
@@ -195,6 +201,60 @@ date: 2026-09-15
     "priority": null,
     "source": "wiki/notes/model.md",
     "details": "Check whether the \\(\\tau_{\\mathrm{dust}}\\) posterior rails at 1 after the prior changed from Uniform(0, 0.2) to Uniform(0, 1) on 17 Sep 2026. Previous medians: Uniform(0, 0.2), 0.187-0.199 for 6 of 6 reference galaxies, and Uniform(0, 2), 0.31-0.49 for those six galaxies, 0.45 across 187 galaxies."
+  },
+  {
+    "id": "p-cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
+    "title": "Check birth-cloud dust (dust1)",
+    "details": "Check whether birth-cloud dust (dust1) is switched on in the Ceridwen fit.",
+    "effort": "",
+    "priority": null,
+    "depends_on": [],
+    "source": "wiki/research/direction.md"
+  },
+  {
+    "id": "p-89d4b013-04a4-4c68-ae69-f4a6fc890749",
+    "title": "Test the SED effect of a steeper dust law",
+    "details": "Check whether the steeper dust attenuation law changes the model SED.",
+    "effort": "",
+    "priority": null,
+    "depends_on": [],
+    "source": "wiki/research/direction.md"
+  },
+  {
+    "id": "p-9c4708da-30a8-4268-8281-f50252096add",
+    "title": "Confirm the Kriek & Conroy dust prescription",
+    "details": "Check whether the Ceridwen fit assumes the Kriek and Conroy dust attenuation prescription.",
+    "effort": "",
+    "priority": null,
+    "depends_on": [],
+    "source": "wiki/research/direction.md"
+  },
+  {
+    "id": "p-03df19b8-1627-4f43-a51d-1601bbadaf7a",
+    "title": "Refit with dust slopes down to −3",
+    "details": "Run the fit with the dust index allowed down to −3 and check whether it converges.",
+    "effort": "",
+    "priority": null,
+    "depends_on": [],
+    "source": "wiki/research/direction.md"
+  },
+  {
+    "id": "p-1b7c64b9-ce3b-4c29-890e-d0f30c458412",
+    "title": "Repeat the fit with non-alpha-enhanced MIST models",
+    "details": "Check whether the old MIST models (not alpha-enhanced) show the same problem.",
+    "effort": "",
+    "priority": null,
+    "depends_on": [],
+    "source": "wiki/research/direction.md"
+  },
+  {
+    "id": "p-dae9a5c2-e688-47de-b53a-1cafffc201dd",
+    "title": "Check filter curves and Galactic extinction",
+    "details": "Check that the filter curves and Galactic extinction correction match the input photometry.",
+    "effort": "",
+    "priority": null,
+    "depends_on": [],
+    "source": "wiki/research/direction.md"
   }
 ]
 ```
@@ -319,6 +379,196 @@ date: 2026-09-15
     "date": "2026-09-21",
     "text": "moderate priority (8) - try fitting new settings to the big dr2 sample to uncover large scale trends (e.g. alpha fe versus mass) across the datasample",
     "display_text": "Moderate priority (8): try fitting new settings to the big DR2 sample to uncover large-scale trends (e.g. alpha/Fe versus mass) across the data sample."
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T12:39:15.941579+00:00",
+    "text": "Sandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\"",
+    "kind": "direction",
+    "target": "d-58012819-16b2-4ce5-be32-94713f7eb474",
+    "request_id": "58012819-16b2-4ce5-be32-94713f7eb474",
+    "request": {
+      "id": "58012819-16b2-4ce5-be32-94713f7eb474",
+      "revision": "20279ff26cef315885912be2c4c5b4c68fb80d8c4a9adefeb752a9d813f976b2",
+      "kind": "direction",
+      "title": "COSMOS2025 as the fiducial catalogue",
+      "text": "Sandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\""
+    },
+    "before": null,
+    "after": {
+      "id": "d-58012819-16b2-4ce5-be32-94713f7eb474",
+      "title": "COSMOS2025 as the fiducial catalogue",
+      "text": "Sandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\"",
+      "date": "2026-09-23"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T12:39:24.853561+00:00",
+    "text": "Check birth-cloud dust (dust1)\n\nCheck whether birth-cloud dust (dust1) is switched on in the Ceridwen fit.",
+    "kind": "priority",
+    "target": "p-cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
+    "request_id": "cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
+    "request": {
+      "id": "cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
+      "revision": "8e5bccde737b315de3c257b17c638d7d13d13e3c150ef6cf1e14fdc8eed33321",
+      "kind": "priority",
+      "title": "Check birth-cloud dust (dust1)",
+      "details": "Check whether birth-cloud dust (dust1) is switched on in the Ceridwen fit.",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": null,
+    "after": {
+      "id": "p-cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
+      "title": "Check birth-cloud dust (dust1)",
+      "details": "Check whether birth-cloud dust (dust1) is switched on in the Ceridwen fit.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T12:39:32.364923+00:00",
+    "text": "Test the SED effect of a steeper dust law\n\nCheck whether the steeper dust attenuation law changes the model SED.",
+    "kind": "priority",
+    "target": "p-89d4b013-04a4-4c68-ae69-f4a6fc890749",
+    "request_id": "89d4b013-04a4-4c68-ae69-f4a6fc890749",
+    "request": {
+      "id": "89d4b013-04a4-4c68-ae69-f4a6fc890749",
+      "revision": "c33df3f9176aa2f07c02355cf107457ec7eafa6c9203195ecc87447fb7d33efb",
+      "kind": "priority",
+      "title": "Test the SED effect of a steeper dust law",
+      "details": "Check whether the steeper dust attenuation law changes the model SED.",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": null,
+    "after": {
+      "id": "p-89d4b013-04a4-4c68-ae69-f4a6fc890749",
+      "title": "Test the SED effect of a steeper dust law",
+      "details": "Check whether the steeper dust attenuation law changes the model SED.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T12:39:41.906333+00:00",
+    "text": "Confirm the Kriek & Conroy dust prescription\n\nCheck whether the Ceridwen fit assumes the Kriek and Conroy dust attenuation prescription.",
+    "kind": "priority",
+    "target": "p-9c4708da-30a8-4268-8281-f50252096add",
+    "request_id": "9c4708da-30a8-4268-8281-f50252096add",
+    "request": {
+      "id": "9c4708da-30a8-4268-8281-f50252096add",
+      "revision": "b4f9282eab3ed074c125ec49ac8a3cf0d8cffa38c108c20b859c2391e8a92e48",
+      "kind": "priority",
+      "title": "Confirm the Kriek & Conroy dust prescription",
+      "details": "Check whether the Ceridwen fit assumes the Kriek and Conroy dust attenuation prescription.",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": null,
+    "after": {
+      "id": "p-9c4708da-30a8-4268-8281-f50252096add",
+      "title": "Confirm the Kriek & Conroy dust prescription",
+      "details": "Check whether the Ceridwen fit assumes the Kriek and Conroy dust attenuation prescription.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T12:39:51.559408+00:00",
+    "text": "Refit with dust slopes down to −3\n\nRun the fit with the dust index allowed down to −3 and check whether it converges.",
+    "kind": "priority",
+    "target": "p-03df19b8-1627-4f43-a51d-1601bbadaf7a",
+    "request_id": "03df19b8-1627-4f43-a51d-1601bbadaf7a",
+    "request": {
+      "id": "03df19b8-1627-4f43-a51d-1601bbadaf7a",
+      "revision": "22f9fdcc7ec7d34ba3e9872402b9f4b6c781e2bd770c20e7df5d1e3bbb317404",
+      "kind": "priority",
+      "title": "Refit with dust slopes down to −3",
+      "details": "Run the fit with the dust index allowed down to −3 and check whether it converges.",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": null,
+    "after": {
+      "id": "p-03df19b8-1627-4f43-a51d-1601bbadaf7a",
+      "title": "Refit with dust slopes down to −3",
+      "details": "Run the fit with the dust index allowed down to −3 and check whether it converges.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T12:40:06.004262+00:00",
+    "text": "Repeat the fit with non-alpha-enhanced MIST models\n\nCheck whether the old MIST models (not alpha-enhanced) show the same problem.",
+    "kind": "priority",
+    "target": "p-1b7c64b9-ce3b-4c29-890e-d0f30c458412",
+    "request_id": "1b7c64b9-ce3b-4c29-890e-d0f30c458412",
+    "request": {
+      "id": "1b7c64b9-ce3b-4c29-890e-d0f30c458412",
+      "revision": "cca97b3fd091cfe37867915ed6082104380c8d728c9bcfcd99650c2392829923",
+      "kind": "priority",
+      "title": "Repeat the fit with non-alpha-enhanced MIST models",
+      "details": "Check whether the old MIST models (not alpha-enhanced) show the same problem.",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": null,
+    "after": {
+      "id": "p-1b7c64b9-ce3b-4c29-890e-d0f30c458412",
+      "title": "Repeat the fit with non-alpha-enhanced MIST models",
+      "details": "Check whether the old MIST models (not alpha-enhanced) show the same problem.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T12:40:13.719484+00:00",
+    "text": "Check filter curves and Galactic extinction\n\nCheck that the filter curves and Galactic extinction correction match the input photometry.",
+    "kind": "priority",
+    "target": "p-dae9a5c2-e688-47de-b53a-1cafffc201dd",
+    "request_id": "dae9a5c2-e688-47de-b53a-1cafffc201dd",
+    "request": {
+      "id": "dae9a5c2-e688-47de-b53a-1cafffc201dd",
+      "revision": "bfbecb75af57559df7cdf706b959e2e1b91b4f7a384288153e624c7d71e16daa",
+      "kind": "priority",
+      "title": "Check filter curves and Galactic extinction",
+      "details": "Check that the filter curves and Galactic extinction correction match the input photometry.",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": null,
+    "after": {
+      "id": "p-dae9a5c2-e688-47de-b53a-1cafffc201dd",
+      "title": "Check filter curves and Galactic extinction",
+      "details": "Check that the filter curves and Galactic extinction correction match the input photometry.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
   }
 ]
 ```
