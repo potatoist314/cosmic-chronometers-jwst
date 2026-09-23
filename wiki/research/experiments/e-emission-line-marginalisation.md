@@ -5,7 +5,7 @@ title: Emission-line marginalisation from upstream Ceridwen, integrated into the
 date: 2026-09-22
 results_at:
 origin: new
-status: planned
+status: running
 question: q-emission-lines
 follow_up:
 ---
@@ -86,16 +86,71 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
 ```json
 [
   {
+    "id": "vast-host-516546-setup",
+    "arm": "setup",
+    "status": "failed",
+    "error": "SSH connection closed during the project clone; no fit started.",
+    "config": "results/emission-line-marginalisation/vast_run_2026-09-23T171807+0000.json",
+    "artifacts": [
+      {
+        "label": "Vast setup record",
+        "path": "results/emission-line-marginalisation/vast_run_2026-09-23T171807+0000.json"
+      }
+    ]
+  },
+  {
     "id": "m1-210210-lines-off",
     "arm": "eline_off",
-    "status": "planned",
-    "target": "M1_210210"
+    "status": "complete",
+    "target": "M1_210210",
+    "seed": 20260832,
+    "code": "cbc967c",
+    "model": "Ceridwen 1fae781; amist_c3k_hr_krou_afe",
+    "data": "results/emission-line-marginalisation/cells-attempt1.json",
+    "config": "results/emission-line-marginalisation/cells-attempt1.json",
+    "artifacts": [
+      {
+        "label": "Executed fit",
+        "path": "results/emission-line-marginalisation/eline_off/210210-M1_210210/M1_210210_executed.ipynb"
+      },
+      {
+        "label": "Result HDF5",
+        "path": "results/emission-line-marginalisation/eline_off/210210-M1_210210/ceridwen_result.h5"
+      },
+      {
+        "label": "Derived outputs",
+        "path": "results/emission-line-marginalisation/eline_off/210210-M1_210210/ceridwen_derived_outputs.h5"
+      }
+    ]
   },
   {
     "id": "m1-210210-lines-on",
     "arm": "eline_on",
-    "status": "planned",
-    "target": "M1_210210"
+    "status": "failed",
+    "target": "M1_210210",
+    "seed": 20260832,
+    "code": "cbc967c",
+    "model": "Ceridwen 1fae781; amist_c3k_hr_krou_afe",
+    "data": "results/emission-line-marginalisation/cells-attempt1.json",
+    "config": "results/emission-line-marginalisation/cells-attempt1.json",
+    "error": "SPS_HOME and FSPS emlines_info.dat were absent on the Vast host; sampling did not start.",
+    "artifacts": [
+      {
+        "label": "Failure log",
+        "path": "results/emission-line-marginalisation/eline_on/210210-M1_210210/execution-attempt1.log"
+      }
+    ]
+  },
+  {
+    "id": "m1-210210-lines-on-retry",
+    "arm": "eline_on",
+    "status": "running",
+    "target": "M1_210210",
+    "seed": 20260832,
+    "code": "cbc967c",
+    "model": "Ceridwen 1fae781; amist_c3k_hr_krou_afe",
+    "data": "results/emission-line-marginalisation/cells.json",
+    "config": "results/emission-line-marginalisation/cells.json"
   }
 ]
 ```
