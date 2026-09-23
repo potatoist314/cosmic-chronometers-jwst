@@ -27,6 +27,10 @@ The user's contribution will be focused on overall research direction and method
 - **The goal of explanations is to build a coherent mental model**
 - Use plain-text equations in scientific and mathematical chat messages. Do not use rendered LaTeX.
 - Use the `asd-ste100` skill whenever you explain a technical detail.
+- **Look up every physical or astronomical fact; never state one from memory.**
+  Line wavelengths, atomic ratios, catalogue definitions, survey properties,
+  published values: check a primary source (paper, NIST or another standard
+  database, survey documentation) and cite it. Applies to leads and workers.
 - **The user sets research direction.** Implement requested work directly.
 - Flag a major error in research direction, or something genuinely missed. Nothing else.
 - Do not argue. State a disagreement once, briefly; if the user restates, proceed.
