@@ -16,8 +16,8 @@ date: 2026-09-15
   },
   {
     "id": "d-58012819-16b2-4ce5-be32-94713f7eb474",
-    "title": "Use COSMOS2025 as the main photometry catalogue",
-    "text": "Photometry is the brightness of a galaxy measured through a set of filters. COSMOS2025 is the 2025 photometry catalogue of the COSMOS field. Sandro Tacchella advised that we use COSMOS2025 as the main (fiducial) catalogue from now on.\n\nSandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\"",
+    "title": "COSMOS2025 as fiducial catalogue",
+    "text": "Sandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\"",
     "date": "2026-09-23"
   }
 ]
@@ -204,8 +204,8 @@ date: 2026-09-15
   },
   {
     "id": "p-cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
-    "title": "Check whether extra dust around young stars is on",
-    "details": "dust1 is extra dust around young stars (birth-cloud dust). Check whether the Ceridwen fit switches it on.",
+    "title": "Birth-cloud dust (dust1) on?",
+    "details": "Is dust1 (extra dust around young stars) on in the Ceridwen fit?",
     "effort": "",
     "priority": null,
     "depends_on": [],
@@ -213,8 +213,8 @@ date: 2026-09-15
   },
   {
     "id": "p-89d4b013-04a4-4c68-ae69-f4a6fc890749",
-    "title": "Test the effect of a steeper dust curve",
-    "details": "The dust curve sets how strongly dust dims each wavelength. Check whether a steeper curve changes the model's full spectrum (SED).",
+    "title": "Steeper dust law: effect on SED?",
+    "details": "Does a steeper attenuation curve change the model SED?",
     "effort": "",
     "priority": null,
     "depends_on": [],
@@ -222,8 +222,8 @@ date: 2026-09-15
   },
   {
     "id": "p-9c4708da-30a8-4268-8281-f50252096add",
-    "title": "Confirm which dust curve the fit uses",
-    "details": "Check whether the Ceridwen fit uses the dust curve of Kriek and Conroy (2013).",
+    "title": "Kriek & Conroy dust law?",
+    "details": "Does the fit assume the Kriek & Conroy attenuation curve?",
     "effort": "",
     "priority": null,
     "depends_on": [],
@@ -231,8 +231,8 @@ date: 2026-09-15
   },
   {
     "id": "p-03df19b8-1627-4f43-a51d-1601bbadaf7a",
-    "title": "Allow dust slopes down to −3",
-    "details": "The dust index is the slope of the dust curve. Refit with the index allowed down to −3. Check whether the fit converges.",
+    "title": "Dust index down to −3",
+    "details": "Refit with the dust index (curve slope) allowed to −3. Converges?",
     "effort": "",
     "priority": null,
     "depends_on": [],
@@ -240,8 +240,8 @@ date: 2026-09-15
   },
   {
     "id": "p-1b7c64b9-ce3b-4c29-890e-d0f30c458412",
-    "title": "Repeat the fit with older MIST models",
-    "details": "The current models are alpha-enhanced: extra magnesium, oxygen and similar elements. Check whether the old MIST models without this show the same problem.",
+    "title": "Old MIST models (not alpha-enhanced)",
+    "details": "Same problem without alpha enhancement?",
     "effort": "",
     "priority": null,
     "depends_on": [],
@@ -249,8 +249,8 @@ date: 2026-09-15
   },
   {
     "id": "p-dae9a5c2-e688-47de-b53a-1cafffc201dd",
-    "title": "Check filter curves and Milky Way dust correction",
-    "details": "Filter curves say which wavelengths each band sees. Check that they and the Milky Way dust correction match the catalogue photometry.",
+    "title": "Filter curves and Galactic extinction",
+    "details": "Consistent with the input photometry?",
     "effort": "",
     "priority": null,
     "depends_on": [],
@@ -814,6 +814,256 @@ date: 2026-09-15
       "id": "p-dae9a5c2-e688-47de-b53a-1cafffc201dd",
       "title": "Check filter curves and Milky Way dust correction",
       "details": "Filter curves say which wavelengths each band sees. Check that they and the Milky Way dust correction match the catalogue photometry.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T13:38:52.021257+00:00",
+    "text": "Sandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\"",
+    "kind": "direction",
+    "target": "d-58012819-16b2-4ce5-be32-94713f7eb474",
+    "request_id": "106fbbda-987f-4ef3-81a1-78c927f1abcc",
+    "request": {
+      "id": "106fbbda-987f-4ef3-81a1-78c927f1abcc",
+      "revision": "8c4751e781ba0e6eec89b6d07752ebf52f96f60806fd1c4128fa3960a66f2672",
+      "kind": "direction",
+      "target": "d-58012819-16b2-4ce5-be32-94713f7eb474",
+      "title": "COSMOS2025 as fiducial catalogue",
+      "text": "Sandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\""
+    },
+    "before": {
+      "id": "d-58012819-16b2-4ce5-be32-94713f7eb474",
+      "title": "Use COSMOS2025 as the main photometry catalogue",
+      "text": "Photometry is the brightness of a galaxy measured through a set of filters. COSMOS2025 is the 2025 photometry catalogue of the COSMOS field. Sandro Tacchella advised that we use COSMOS2025 as the main (fiducial) catalogue from now on.\n\nSandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\"",
+      "date": "2026-09-23"
+    },
+    "after": {
+      "id": "d-58012819-16b2-4ce5-be32-94713f7eb474",
+      "title": "COSMOS2025 as fiducial catalogue",
+      "text": "Sandro Tacchella, Slack, 23 Sep 2026: \"Interesting... so I would use 2025 as fiducial catalog going forward.\"\n\nLiu Hao, 23 Sep 2026: \"list of research priorities to work on and add to wiki\"",
+      "date": "2026-09-23"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T13:38:56.992858+00:00",
+    "text": "Birth-cloud dust (dust1) on?\n\nIs dust1 (extra dust around young stars) on in the Ceridwen fit?",
+    "kind": "priority",
+    "target": "p-cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
+    "request_id": "2782f7dd-74e6-4926-ae2e-ca458e6d2d39",
+    "request": {
+      "id": "2782f7dd-74e6-4926-ae2e-ca458e6d2d39",
+      "revision": "30ec62f276cd837fb071fd097ec66dd1b84213cfdc02c247381d59f122da97b3",
+      "kind": "priority",
+      "target": "p-cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
+      "title": "Birth-cloud dust (dust1) on?",
+      "details": "Is dust1 (extra dust around young stars) on in the Ceridwen fit?",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": {
+      "id": "p-cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
+      "title": "Check whether extra dust around young stars is on",
+      "details": "dust1 is extra dust around young stars (birth-cloud dust). Check whether the Ceridwen fit switches it on.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    },
+    "after": {
+      "id": "p-cf330412-1d8f-4ca9-a439-ea16ef6fa6d7",
+      "title": "Birth-cloud dust (dust1) on?",
+      "details": "Is dust1 (extra dust around young stars) on in the Ceridwen fit?",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T13:39:00.272619+00:00",
+    "text": "Steeper dust law: effect on SED?\n\nDoes a steeper attenuation curve change the model SED?",
+    "kind": "priority",
+    "target": "p-89d4b013-04a4-4c68-ae69-f4a6fc890749",
+    "request_id": "996f43b7-b410-4916-bc8b-688236b496c1",
+    "request": {
+      "id": "996f43b7-b410-4916-bc8b-688236b496c1",
+      "revision": "b2e8950651cba2b76b7189bfb3283b733a871592c30fd814aeb07380acfe8e0a",
+      "kind": "priority",
+      "target": "p-89d4b013-04a4-4c68-ae69-f4a6fc890749",
+      "title": "Steeper dust law: effect on SED?",
+      "details": "Does a steeper attenuation curve change the model SED?",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": {
+      "id": "p-89d4b013-04a4-4c68-ae69-f4a6fc890749",
+      "title": "Test the effect of a steeper dust curve",
+      "details": "The dust curve sets how strongly dust dims each wavelength. Check whether a steeper curve changes the model's full spectrum (SED).",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    },
+    "after": {
+      "id": "p-89d4b013-04a4-4c68-ae69-f4a6fc890749",
+      "title": "Steeper dust law: effect on SED?",
+      "details": "Does a steeper attenuation curve change the model SED?",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T13:39:04.308602+00:00",
+    "text": "Kriek & Conroy dust law?\n\nDoes the fit assume the Kriek & Conroy attenuation curve?",
+    "kind": "priority",
+    "target": "p-9c4708da-30a8-4268-8281-f50252096add",
+    "request_id": "c7759456-9edd-42b7-aab2-d77d642e5d0c",
+    "request": {
+      "id": "c7759456-9edd-42b7-aab2-d77d642e5d0c",
+      "revision": "030c0df4d597aa08410b03d8310f8a89e9f4766e7aed243b4bc5f02cba5a3ed9",
+      "kind": "priority",
+      "target": "p-9c4708da-30a8-4268-8281-f50252096add",
+      "title": "Kriek & Conroy dust law?",
+      "details": "Does the fit assume the Kriek & Conroy attenuation curve?",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": {
+      "id": "p-9c4708da-30a8-4268-8281-f50252096add",
+      "title": "Confirm which dust curve the fit uses",
+      "details": "Check whether the Ceridwen fit uses the dust curve of Kriek and Conroy (2013).",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    },
+    "after": {
+      "id": "p-9c4708da-30a8-4268-8281-f50252096add",
+      "title": "Kriek & Conroy dust law?",
+      "details": "Does the fit assume the Kriek & Conroy attenuation curve?",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T13:39:07.877066+00:00",
+    "text": "Dust index down to −3\n\nRefit with the dust index (curve slope) allowed to −3. Converges?",
+    "kind": "priority",
+    "target": "p-03df19b8-1627-4f43-a51d-1601bbadaf7a",
+    "request_id": "c729a4a7-4411-4d25-a739-e8646e278f44",
+    "request": {
+      "id": "c729a4a7-4411-4d25-a739-e8646e278f44",
+      "revision": "9508165902d1404c04b3efac1f1235e4838b9eab90eac75a71e776fac25aeed9",
+      "kind": "priority",
+      "target": "p-03df19b8-1627-4f43-a51d-1601bbadaf7a",
+      "title": "Dust index down to −3",
+      "details": "Refit with the dust index (curve slope) allowed to −3. Converges?",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": {
+      "id": "p-03df19b8-1627-4f43-a51d-1601bbadaf7a",
+      "title": "Allow dust slopes down to −3",
+      "details": "The dust index is the slope of the dust curve. Refit with the index allowed down to −3. Check whether the fit converges.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    },
+    "after": {
+      "id": "p-03df19b8-1627-4f43-a51d-1601bbadaf7a",
+      "title": "Dust index down to −3",
+      "details": "Refit with the dust index (curve slope) allowed to −3. Converges?",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T13:39:11.922296+00:00",
+    "text": "Old MIST models (not alpha-enhanced)\n\nSame problem without alpha enhancement?",
+    "kind": "priority",
+    "target": "p-1b7c64b9-ce3b-4c29-890e-d0f30c458412",
+    "request_id": "55477fd2-e868-466f-be51-bb672a4fbf92",
+    "request": {
+      "id": "55477fd2-e868-466f-be51-bb672a4fbf92",
+      "revision": "0246ebb6a9ace68f91304146a8563797608cc2ebec279ae8a3de94e066e86a3d",
+      "kind": "priority",
+      "target": "p-1b7c64b9-ce3b-4c29-890e-d0f30c458412",
+      "title": "Old MIST models (not alpha-enhanced)",
+      "details": "Same problem without alpha enhancement?",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": {
+      "id": "p-1b7c64b9-ce3b-4c29-890e-d0f30c458412",
+      "title": "Repeat the fit with older MIST models",
+      "details": "The current models are alpha-enhanced: extra magnesium, oxygen and similar elements. Check whether the old MIST models without this show the same problem.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    },
+    "after": {
+      "id": "p-1b7c64b9-ce3b-4c29-890e-d0f30c458412",
+      "title": "Old MIST models (not alpha-enhanced)",
+      "details": "Same problem without alpha enhancement?",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    }
+  },
+  {
+    "date": "2026-09-23",
+    "saved_at": "2026-09-23T13:39:15.355329+00:00",
+    "text": "Filter curves and Galactic extinction\n\nConsistent with the input photometry?",
+    "kind": "priority",
+    "target": "p-dae9a5c2-e688-47de-b53a-1cafffc201dd",
+    "request_id": "7c20c632-a779-44ac-a3b2-874cbcee34f7",
+    "request": {
+      "id": "7c20c632-a779-44ac-a3b2-874cbcee34f7",
+      "revision": "5faec703a61b404157d837671aded83cba9256f649726c7394c8f556cba2b384",
+      "kind": "priority",
+      "target": "p-dae9a5c2-e688-47de-b53a-1cafffc201dd",
+      "title": "Filter curves and Galactic extinction",
+      "details": "Consistent with the input photometry?",
+      "priority": null,
+      "effort": "",
+      "depends_on": []
+    },
+    "before": {
+      "id": "p-dae9a5c2-e688-47de-b53a-1cafffc201dd",
+      "title": "Check filter curves and Milky Way dust correction",
+      "details": "Filter curves say which wavelengths each band sees. Check that they and the Milky Way dust correction match the catalogue photometry.",
+      "effort": "",
+      "priority": null,
+      "depends_on": [],
+      "source": "wiki/research/direction.md"
+    },
+    "after": {
+      "id": "p-dae9a5c2-e688-47de-b53a-1cafffc201dd",
+      "title": "Filter curves and Galactic extinction",
+      "details": "Consistent with the input photometry?",
       "effort": "",
       "priority": null,
       "depends_on": [],
