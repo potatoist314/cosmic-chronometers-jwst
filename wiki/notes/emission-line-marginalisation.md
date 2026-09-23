@@ -92,8 +92,8 @@ Option on; posterior 16th, 50th and 84th percentiles. Units: \(10^{-18}\,\mathrm
 | Vast charge | USD |
 | --- | ---: |
 | Failed setup host | $0.034 |
-| Shared fit host | $0.406 |
-| **Total** | **$0.440** |
+| Shared fit host | $0.415 |
+| **Total** | **$0.449** |
 
 <details>
 <summary>Measurement notes and files</summary>
@@ -108,6 +108,6 @@ Runtime source: [manifest](/wiki/f/results/emission-line-marginalisation/arms_ma
 
 - [Off executed notebook](/wiki/f/results/emission-line-marginalisation/eline_off/210210-M1_210210/M1_210210_executed.ipynb) and [on executed notebook](/wiki/f/results/emission-line-marginalisation/eline_on/210210-M1_210210/M1_210210_executed.ipynb).
 - [Executed comparison notebook](/wiki/f/results/emission-line-marginalisation/analysis.ipynb) and [research record](/wiki/r/e-emission-line-marginalisation/).
-- Vast invoice charges: $0.034 for failed setup, $0.406 for the shared fit instance; total $0.440. Source: `results/emission-line-marginalisation/cost.json`.
+- Vast invoice charges: $0.034 for failed setup, $0.415 for the shared fit instance; total $0.449. Source: `results/emission-line-marginalisation/cost.json`.
 
 </details>

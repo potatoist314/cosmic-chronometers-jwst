@@ -242,7 +242,7 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
 | GPU fit wall time, off / on | 1898.3 / 4321.6 s (`results/emission-line-marginalisation/arms_manifest.json`) |
 | Sampler wall time, off / on | 891.5 / 3275.7 s (result HDF5 files) |
 | Likelihood calls, off / on | 8,424,501 / 6,145,311 (result HDF5 files) |
-| Task cost | $0.440 (`results/emission-line-marginalisation/cost.json`) |
+| Task cost | $0.449 (`results/emission-line-marginalisation/cost.json`) |
 
 ## Results
 
@@ -254,7 +254,7 @@ Median on-minus-off shifts: mass-weighted age −0.408 Gyr, \([\mathrm{Fe}/\math
 
 For the common 26 pixels within ±300 km/s of \(\mathrm{H}\beta\), RMS pull is 0.568 off and 0.484 on. For 134 pixels within ±1500 km/s, it is 0.559 off and 0.561 on. The off-arm model is extrapolated into its masked line region. Source: [hbeta-residuals.csv](results/emission-line-marginalisation/hbeta-residuals.csv).
 
-Both Vast instances destroyed. Invoice charges total $0.440: $0.034 for a failed setup host and $0.406 for the shared fit host. Source: [cost.json](results/emission-line-marginalisation/cost.json). The [executed comparison notebook](results/emission-line-marginalisation/analysis.ipynb) contains the calculations.
+Both Vast instances destroyed. Invoice charges total $0.449: $0.034 for a failed setup host and $0.415 for the shared fit host. Source: [cost.json](results/emission-line-marginalisation/cost.json). The [executed comparison notebook](results/emission-line-marginalisation/analysis.ipynb) contains the calculations.
 
 ## Caveats
 

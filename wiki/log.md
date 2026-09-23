@@ -1223,5 +1223,5 @@
 ## [2026-09-23] experiment | M1_210210 emission-line marginalisation test
 
 - Pages: [[notes/emission-line-marginalisation]], [[research/experiments/e-emission-line-marginalisation]]
-- Change: Both arms completed on one RTX 5060 Ti; spectrum and photometry fits, 23 line fluxes, parameter shifts, H-beta residuals, runtime, likelihood calls and $0.440 total cost recorded.
+- Change: Both arms completed on one RTX 5060 Ti; spectrum and photometry fits, 23 line fluxes, parameter shifts, H-beta residuals, runtime, likelihood calls and $0.449 total cost recorded.
 - Validation: executed notebooks and HDF5 loaded; wiki build and tests.
