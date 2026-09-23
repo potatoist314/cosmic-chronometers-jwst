@@ -1183,3 +1183,9 @@
 - Pages: [[research/direction]], [[research/questions/q-dust-index-railing]]
 - Change: direction entry quoting Sandro Tacchella (Slack, 23 Sep 2026) on COSMOS2025 as fiducial catalogue. Six Unscored items, one per check; each has a note with his original wording, linked to `q-dust-index-railing` (five dust and MIST items) or `q-cosmos-photometry` (filter curves and Galactic extinction). New question record `q-dust-index-railing`.
 - Validation: wiki build; wiki tests.
+
+## [2026-09-23] roadmap | Plain-English rewrite of Sandro Tacchella's checks
+
+- Pages: [[research/direction]], [[research/questions/q-dust-index-railing]]
+- Change: Liu Hao, 2026-09-23: "wiki update is not very readable - plain english please". Direction entry, six roadmap items and `q-dust-index-railing` rewritten in plain English, each term defined once. Facts, numbers, links and quotes unchanged.
+- Validation: wiki build; rendered pages checked on the NAS.
