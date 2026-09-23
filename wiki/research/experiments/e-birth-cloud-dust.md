@@ -5,7 +5,7 @@ title: M1_210210 fit with birth-cloud dust (dust1) on, and with the dust index d
 date: 2026-09-23
 results_at:
 origin: new
-status: planned
+status: stopped
 question: q-birth-cloud-dust
 follow_up:
 ---
@@ -53,7 +53,48 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
 ## Runs
 
 ```json
-[]
+[
+  {
+    "id": "dust1-off-seed20260832",
+    "arm": "dust1_off",
+    "status": "complete",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "Executed fit · M1_210210",
+        "path": "results/birth-cloud-dust/dust1_off/210210-M1_210210/M1_210210_executed.ipynb"
+      },
+      {
+        "label": "ceridwen_result.h5",
+        "path": "results/birth-cloud-dust/dust1_off/210210-M1_210210/ceridwen_result.h5"
+      },
+      {
+        "label": "execution.log",
+        "path": "results/birth-cloud-dust/dust1_off/210210-M1_210210/execution.log"
+      }
+    ],
+    "code": "232aab1",
+    "config": "results/birth-cloud-dust/vast_run_2026-09-23T221813+0000.json",
+    "data": "results/birth-cloud-dust/cells.json",
+    "seed": 20260832
+  },
+  {
+    "id": "dust1-on-seed20260832",
+    "arm": "dust1_on",
+    "status": "failed",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "execution.log",
+        "path": "results/birth-cloud-dust/dust1_on/210210-M1_210210/execution.log"
+      }
+    ],
+    "code": "232aab1",
+    "config": "results/birth-cloud-dust/vast_run_2026-09-23T221813+0000.json",
+    "data": "results/birth-cloud-dust/cells.json",
+    "seed": 20260832
+  }
+]
 ```
 
 ## Figures
@@ -67,6 +108,10 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
 ## Results
 
 ## Caveats
+
+- The box ran the branch default photometry, COSMOS2025, 28 bands; the default changed from COSMOS2015 after the execution plan.
+- `dust1_on` stopped after 10 NSS iterations and `dust_index_m3` did not start: the driver's account-credit spend reached the $0.32 run cap at 22:18 UTC.
+- Instances 52298088, 52298461, 52299165 destroyed; the account showed no instances after the run.
 
 ## References
 
