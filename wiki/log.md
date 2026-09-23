@@ -1204,3 +1204,8 @@
 
 - Pages: `notes/model.md`, `research/experiments/e-emission-line-marginalisation.md`
 - Change: line fluxes have a flat prior on f >= 0 (P(f >= 0) factor, truncated draws); lines selected at the catalogue z, which adds [O III] 4959, 5007. Ceridwen `7f18311`.
+
+## [2026-09-23] codebase | Emission lines: tied doublets, shared photometry
+
+- Pages: `notes/model.md`, `research/experiments/e-emission-line-marginalisation.md`
+- Change: same-upper-level doublets share one flux at the FSPS ratio; with the option on, z is fixed and the line fluxes also enter the photometry. Ceridwen `0f0895f`.

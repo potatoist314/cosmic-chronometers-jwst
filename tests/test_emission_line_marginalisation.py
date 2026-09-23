@@ -75,6 +75,17 @@ def _draws(model):
             for name, template in model.theta_init.items()}
 
 
+def _sampler_loglike(namespace):
+    """The log-likelihood run_sampler hands to the sampler."""
+    import jax
+    from types import SimpleNamespace
+    from ceridwen.sampler.runner import run_sampler
+
+    capture = SimpleNamespace(run=lambda loglike, logprior, theta, key: loglike)
+    return run_sampler(namespace["joint_model"], namespace["joint_likelihood"], capture,
+                       jax.random.PRNGKey(0))
+
+
 def test_default_is_off():
     cells = ["".join(cell["source"]) for cell in json.loads(NOTEBOOK.read_text())["cells"]]
     assert '"emission_line_marginalisation": False,' in cells[2]
@@ -88,18 +99,107 @@ def test_option_off_reproduces_the_previous_loglikelihood_bit_for_bit():
     from benchmark_ceridwen_vast import _make_log_functions  # scripts/ is on sys.path after _build
     assert namespace["emission_line_columns"] is None
     model = namespace["joint_model"]
-    loglike, _ = _make_log_functions(model, namespace["joint_likelihood"])
-    values = np.asarray(jax.jit(jax.vmap(loglike))(_draws(model)))
-    np.testing.assert_array_equal(values, [float.fromhex(value) for value in BASELINE])
+    assert "zred" in model.param_names
+    expected = [float.fromhex(value) for value in BASELINE]
+    for loglike in (_make_log_functions(model, namespace["joint_likelihood"])[0], _sampler_loglike(namespace)):
+        np.testing.assert_array_equal(np.asarray(jax.jit(jax.vmap(loglike))(_draws(model))), expected)
+
+
+def test_option_on_fixes_redshift_ties_oxygen_and_shares_photometry():
+    import jax
+    import numpy as np
+
+    namespace = _build(True)
+    model = namespace["joint_model"]
+    lines = namespace["emission_line_columns"]
+    assert "zred" not in model.param_names and lines.zred_key is None
+    assert lines.photometry_key == "photometry"
+    assert "[O III] 5007 (+[O III] 4959)" in lines.free_names
+    assert "[Ne III] 3869 (+[Ne III] 3968)" in lines.free_names
+    assert "[O II] 3726" not in lines.names          # below the spectrum; never tied
+    values = np.asarray(jax.jit(jax.vmap(_sampler_loglike(namespace)))(_draws(model)))
+    assert np.all(np.isfinite(values))
+
+
+def test_tied_ratio_holds_in_posterior_draws():
+    import jax
+    import jax.numpy as jnp
+    import numpy as np
+
+    namespace = _build(True)
+    model = namespace["joint_model"]
+    lines = namespace["emission_line_columns"]
+    spectrum = model.obs_dict["spectrum"]
+    theta = {name: value[0] for name, value in _draws(model).items()}
+    mu = model.predict(theta)
+    sigma = jnp.sqrt(spectrum.uncertainty ** 2 + (jnp.exp(theta["log_f_calib"][0]) * mu["spectrum"]) ** 2)
+    n = 200
+    _, fluxes, _ = namespace["calibration_polynomial"].posterior_draws_with_lines(
+        spectrum.flux, jnp.tile(mu["spectrum"], (n, 1)), jnp.tile(sigma, (n, 1)),
+        jnp.tile(lines.columns(theta), (n, 1, 1)), spectrum.mask, jax.random.PRNGKey(3),
+        sweeps=100, ridge=lines.ridge,
+        photometry=(lines.band_matrix, namespace["phot_flux"], jnp.tile(mu["photometry"], (n, 1)),
+                    jnp.tile(namespace["phot_uncertainty"], (n, 1)), namespace["phot_fit_mask"]))
+    raw = np.asarray(fluxes) @ lines.tie.T                  # flux of every FSPS line per draw
+    names = list(lines.names)
+    assert np.all(raw >= 0)
+    np.testing.assert_allclose(raw[:, names.index("[O III] 5007")], 3.010 * raw[:, names.index("[O III] 4959")],
+                               rtol=1e-12)
+    np.testing.assert_allclose(raw[:, names.index("[Ne III] 3869")], 3.318 * raw[:, names.index("[Ne III] 3968")],
+                               rtol=1e-12)
+
+
+def test_band_matrix_matches_the_narrow_line_formula_and_changes_bands_slightly():
+    """One unit-flux line at lambda_0 adds lambda_0 T(lambda_0) / (c int T / lambda dlambda)
+    in F_nu to an AB band.  With the posterior-mean fluxes of M1_210210 the bands
+    change by well under their 5 % error floor."""
+    import jax
+    import jax.numpy as jnp
+    import numpy as np
+
+    namespace = _build(True)
+    lines = namespace["emission_line_columns"]
+    phot = namespace["phot_obs"]
+    from dataclasses import replace
+
+    raw_band = replace(lines, tie=None).with_photometry(phot, "photometry").band_matrix  # one column per line
+    np.testing.assert_allclose(raw_band @ lines.tie, lines.band_matrix, rtol=1e-12)
+    # narrow-line limit (1 km/s): the delta-function formula below
+    raw_band = replace(lines, tie=None, sigma_gas_kms=1.0,
+                       sigma_inst_kms=np.ones_like(lines.sigma_inst_kms)).with_photometry(phot, "photometry").band_matrix
+    centre = lines.wave_rest * (1 + lines.zred)
+    for b, curve in enumerate(phot.filterset.filters):
+        lam, trans = np.asarray(curve.wavelength, float), np.asarray(curve.transmission, float)
+        expected = (centre * np.interp(centre, lam, trans, left=0, right=0)
+                    / (2.99792458e18 * np.trapezoid(trans / lam, lam)) / 3631e-23)
+        np.testing.assert_allclose(raw_band[b], expected, rtol=2e-3, atol=1e-4 * np.abs(expected).max())
+
+    model = namespace["joint_model"]
+    draws = _draws(model)
+    spectrum = model.obs_dict["spectrum"]
+    mu = jax.vmap(model.predict)(draws)
+    sigma = jnp.sqrt(spectrum.uncertainty ** 2 + (jnp.exp(draws["log_f_calib"]) * mu["spectrum"]) ** 2)
+    _, fluxes, _ = namespace["calibration_polynomial"].posterior_draws_with_lines(
+        spectrum.flux, mu["spectrum"], sigma, jax.vmap(lines.columns)(draws), spectrum.mask,
+        jax.random.PRNGKey(4), sweeps=300, ridge=lines.ridge,
+        photometry=(lines.band_matrix, namespace["phot_flux"], mu["photometry"],
+                    jnp.broadcast_to(namespace["phot_uncertainty"], mu["photometry"].shape),
+                    namespace["phot_fit_mask"]))
+    change = np.asarray(fluxes) @ lines.band_matrix.T / np.asarray(mu["photometry"])
+    names = namespace["FILTER_LABELS"]
+    print("\nband change from lines, median over draws [%]: "
+          + ", ".join(f"{n} {v:.3f}" for n, v in zip(names, 100 * np.median(change, axis=0))))
+    assert np.all(change >= 0)
+    assert np.max(change) < 0.01
 
 
 def test_stellar_model_variance_is_close_to_the_line_dependent_variance():
     """Fractional noise at the stellar model mu versus at mu + sum f_k L_k.
 
-    Per draw: the joint marginal with sigma^2 = sigma_obs^2 + (f_calib mu)^2 (the
-    implementation), and again with the posterior-mean line fluxes (f >= 0) added
-    to mu in that variance term.  A constant offset leaves the posterior unchanged; its spread
-    over the posterior draws is what can move it.
+    Per draw: the joint marginal (spectrum and photometry sharing the fluxes) with
+    sigma^2 = sigma_obs^2 + (f_calib mu)^2 (the implementation), and again with the
+    posterior-mean line fluxes (f >= 0) added to mu in that variance term.  A constant
+    offset leaves the posterior unchanged; its spread over the draws is what can move it.
     """
     import jax
     import jax.numpy as jnp
@@ -112,55 +212,40 @@ def test_stellar_model_variance_is_close_to_the_line_dependent_variance():
     calibration = namespace["calibration_polynomial"]
     spectrum = model.obs_dict["spectrum"]
     y, sigma_obs, mask = spectrum.flux, spectrum.uncertainty, spectrum.mask
-    assert {"Ba-beta 4861", "[O III] 4959", "[O III] 5007"} <= set(lines.names)
+    y_p, sigma_p, mask_p = namespace["phot_flux"], namespace["phot_uncertainty"], namespace["phot_fit_mask"]
+    band = jnp.asarray(lines.band_matrix)
     assert np.any(np.abs(np.asarray(spectrum.wavelength)[mask] - 4862.76 * (1 + namespace["z_catalog"])) < 3)
 
     def marginal(theta):
-        mu = model.predict(theta)["spectrum"]
+        prediction = model.predict(theta)
+        mu, mu_p = prediction["spectrum"], prediction["photometry"]
         f_calib = jnp.exp(theta["log_f_calib"][0])
         columns = lines.columns(theta)
+        phot = (band, y_p, mu_p, sigma_p, mask_p)
 
         def lnz(sigma):
-            mu_cal, _, _, extra = calibration.calibrate_with_lines(y, mu, sigma, mask, columns,
-                                                                   lines.pairs, lines.ridge)
+            mu_cal, _, f_hat, extra = calibration.calibrate_with_lines(
+                y, mu, sigma, mask, columns, lines.pairs, lines.ridge, phot)
             gauss, _ = lnlike_diag_gaussian(y, mu_cal, 1 / sigma ** 2, 0.5 * jnp.log(2 * jnp.pi * sigma ** 2), mask)
-            return gauss + extra
+            gauss_p, _ = lnlike_diag_gaussian(y_p, mu_p + band @ f_hat, 1 / sigma_p ** 2,
+                                              0.5 * jnp.log(2 * jnp.pi * sigma_p ** 2), mask_p)
+            return gauss + gauss_p + extra
 
         sigma = jnp.sqrt(sigma_obs ** 2 + (f_calib * mu) ** 2)
         stellar = lnz(sigma)
-        # line fluxes: mean of 128 truncated (f >= 0) posterior draws at this theta
+        n = 128
         fluxes = jnp.mean(calibration.posterior_draws_with_lines(
-            y, jnp.tile(mu, (128, 1)), jnp.tile(sigma, (128, 1)), jnp.tile(columns, (128, 1, 1)), mask,
-            jax.random.PRNGKey(0), sweeps=300, ridge=lines.ridge)[1], axis=0)
+            y, jnp.tile(mu, (n, 1)), jnp.tile(sigma, (n, 1)), jnp.tile(columns, (n, 1, 1)), mask,
+            jax.random.PRNGKey(0), sweeps=300, ridge=lines.ridge,
+            photometry=(band, y_p, jnp.tile(mu_p, (n, 1)), jnp.tile(sigma_p, (n, 1)), mask_p))[1], axis=0)
         with_lines = lnz(jnp.sqrt(sigma_obs ** 2 + (f_calib * (mu + columns @ fluxes)) ** 2))
-        # rest-frame equivalent width [A] against the stellar model at the line centre
-        opz = 1 + theta["zred"][0]
-        centre = jnp.asarray(lines.wave_rest) * opz
-        f_lambda = jnp.interp(centre, jnp.asarray(spectrum.wavelength), mu) * 2.99792458e18 / centre ** 2
-        return with_lines - stellar, fluxes / f_lambda / opz
+        return with_lines - stellar, stellar
 
-    delta, ew = (np.asarray(value) for value in jax.jit(jax.vmap(marginal))(_draws(model)))
+    delta, stellar = (np.asarray(value) for value in jax.jit(jax.vmap(marginal))(_draws(model)))
+    # the mu-only variance is what the sampler evaluates
+    np.testing.assert_allclose(stellar, np.asarray(jax.jit(jax.vmap(_sampler_loglike(namespace)))(_draws(model))),
+                               rtol=1e-12)
     print(f"\ndelta lnL: mean {delta.mean():.3f}, sd over draws {delta.std():.3f}, "
-          f"max |delta| {np.abs(delta).max():.3f}; |EW| median {np.median(np.abs(ew)):.3f} A, "
-          f"max {np.abs(ew).max():.3f} A over {len(lines.names)} lines")
+          f"max |delta| {np.abs(delta).max():.3f}")
     assert delta.std() < 0.25
     assert np.abs(delta).max() < 1.0
-
-
-def test_loglikelihood_is_finite_across_the_redshift_prior():
-    """Lines are selected at the catalogue z; at the prior edges some leave the
-    unmasked pixels and their columns shrink, but the likelihood stays finite."""
-    import jax
-    import jax.numpy as jnp
-    import numpy as np
-
-    namespace = _build(True)
-    model = namespace["joint_model"]
-    from benchmark_ceridwen_vast import _make_log_functions
-
-    loglike, _ = _make_log_functions(model, namespace["joint_likelihood"])
-    draws = _draws(model)
-    offsets = np.linspace(-namespace["SETTINGS"]["zred_half_width"], namespace["SETTINGS"]["zred_half_width"], 20)
-    draws["zred"] = jnp.asarray(namespace["z_catalog"] + offsets).reshape(draws["zred"].shape)
-    values = np.asarray(jax.jit(jax.vmap(loglike))(draws))
-    assert np.all(np.isfinite(values))
