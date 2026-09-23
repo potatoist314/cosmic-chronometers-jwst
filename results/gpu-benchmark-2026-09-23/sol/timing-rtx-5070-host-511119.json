@@ -1,0 +1,73 @@
+{
+  "target": "M1_210210",
+  "device": "cuda:0",
+  "device_kind": "NVIDIA GeForce RTX 5070",
+  "jax": "0.10.2",
+  "x64": true,
+  "xla_flags": "--xla_gpu_enable_command_buffer=",
+  "seed": 20260921,
+  "rounds_per_arm": 5,
+  "repeats_per_round": 10,
+  "log_likelihood": {
+    "draws": 500,
+    "finite": true,
+    "lnl_min": -338459076123.9709,
+    "lnl_max": 226974.40556808223,
+    "max_abs_dlnl": 1.3969838619232178e-09,
+    "max_rel_dlnl": 6.600452105811747e-14,
+    "within_test_tolerance": true
+  },
+  "summary": [
+    {
+      "particles": 500,
+      "fixed_us_per_call": 12.711026007309556,
+      "free_current_us_per_call": 33.41167897451669,
+      "free_baked_us_per_call": 22.635294939391315,
+      "speedup_median": 1.4760596927514384,
+      "speedup_min": 1.4752544356043102,
+      "speedup_max": 1.476378251929794
+    }
+  ],
+  "rounds": [
+    {
+      "particles": 500,
+      "round": 0,
+      "fixed": 12.666757917031646,
+      "free_current": 33.386581926606596,
+      "free_baked": 22.631066967733204,
+      "speedup": 1.4752544356043102
+    },
+    {
+      "particles": 500,
+      "round": 1,
+      "fixed": 12.72325892932713,
+      "free_current": 33.39816594962031,
+      "free_baked": 22.63782999943942,
+      "speedup": 1.4753254154858193
+    },
+    {
+      "particles": 500,
+      "round": 2,
+      "fixed": 12.711026007309556,
+      "free_current": 33.413400989957154,
+      "free_baked": 22.636890062130988,
+      "speedup": 1.4760596927514384
+    },
+    {
+      "particles": 500,
+      "round": 3,
+      "fixed": 12.709939968772233,
+      "free_current": 33.417801023460925,
+      "free_baked": 22.634985973127186,
+      "speedup": 1.476378251929794
+    },
+    {
+      "particles": 500,
+      "round": 4,
+      "fixed": 12.720720958895981,
+      "free_current": 33.41167897451669,
+      "free_baked": 22.635294939391315,
+      "speedup": 1.4760876349957188
+    }
+  ]
+}

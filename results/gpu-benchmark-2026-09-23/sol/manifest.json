@@ -188,9 +188,43 @@
       "rented_seconds": 1059.2116838054499,
       "estimated_spend_usd": 0.003,
       "billed_spend_usd": 0.003
+    },
+    {
+      "gpu_name": "RTX 5090",
+      "host_id": 213578,
+      "offer_id": 52008649,
+      "price_usd_per_hour": 0.5703703703703704,
+      "download_usd_per_gb": 0.0026041666666666665,
+      "interruptible": false,
+      "reliability": 0.9963921,
+      "status": "complete",
+      "instance_id": 52289523,
+      "project_commit": "c869309c374bb7976b4bb9729a0650043fbfb4f7",
+      "calls_per_second": 94294.49411244407,
+      "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-213578.json",
+      "destroyed": true,
+      "rented_seconds": 994.3755547089968,
+      "estimated_spend_usd": 0.15754509817405915
+    },
+    {
+      "gpu_name": "RTX 5070",
+      "host_id": 511119,
+      "offer_id": 50786613,
+      "price_usd_per_hour": 0.21037037037037035,
+      "download_usd_per_gb": 0.0026041666666666665,
+      "interruptible": false,
+      "reliability": 0.9967067,
+      "status": "complete",
+      "instance_id": 52292035,
+      "project_commit": "c869309c374bb7976b4bb9729a0650043fbfb4f7",
+      "calls_per_second": 44178.79257494186,
+      "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5070-host-511119.json",
+      "destroyed": true,
+      "rented_seconds": 1352.357106541982,
+      "estimated_spend_usd": 0.07902662927117754
     }
   ],
   "prior_estimated_spend_usd": 0.183,
-  "total_estimated_spend_usd": 0.5640832122986299,
+  "total_estimated_spend_usd": 0.8006549397438667,
   "prior_billed_spend_usd": 0.183
 }
