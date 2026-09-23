@@ -73,11 +73,18 @@ can be run before the submodule is pinned to it.  The instance is destroyed at t
 end, also on failure, and the spend is recorded in
 ``results/calibration-polynomial-dr2/vast_run_<timestamp>.json``.
 
+The rented GPU runs each cell only up to and including the sampler
+(``CERIDWEN_SAMPLER_ONLY=1``); the ~15 min of post-fit CPU diagnostics would
+otherwise bill GPU time for no reason.  After the pull and the destroy, the
+local driver runs the post-fit cells on this machine through
+``scripts/regenerate_fit_notebooks.py`` with the cell's arm switches, then
+validates the full result (derived outputs plus figures).
+
 Sub-commands::
 
     plan                          show the offer and the cells
-    run                           rent, prepare, launch, poll, pull, destroy
-    attach  --instance ID         launch/poll/pull/destroy on a prepared box
+    run                           rent, prepare, launch, poll, pull, destroy, regenerate locally
+    attach  --instance ID         launch/poll/pull/destroy on a prepared box, regenerate locally
     pull    --instance ID         pull results from a running box
     remote  --cells FILE          (on the box) run the cells sequentially
 """
@@ -231,6 +238,16 @@ def runner_command(cell: dict, output_root: Path) -> list[str]:
     return command
 
 
+def remote_env(cell: dict) -> dict[str, str]:
+    """Environment of one remote cell: the arm switches plus the sampler-only stop.
+
+    The rented GPU runs the notebook up to and including the sampler cell and
+    writes ``ceridwen_result.h5``; the post-fit cells run locally after the
+    pull (``_regenerate``), so the box holds no ~15 min of CPU diagnostics.
+    """
+    return {**os.environ, **cell["env"], "CERIDWEN_SAMPLER_ONLY": "1"}
+
+
 # ---------------------------------------------------------------------------
 # Remote runner (executes on the Vast box)
 # ---------------------------------------------------------------------------
@@ -250,13 +267,13 @@ def command_remote(args) -> int:
     for cell in cells:
         name = cell["name"]
         result_dir = root / cell["arm"] / f"{cell['object_id']}-{cell['target']}"
-        if (result_dir / "ceridwen_derived_outputs.h5").exists() and \
+        if (result_dir / "ceridwen_result.h5").exists() and \
                 manifest.get(name, {}).get("status") == "done":
             log(f"{name}: already done")
             continue
         manifest[name] = {"status": "running", "started": datetime.now(UTC).isoformat()}
         write()
-        env = {**os.environ, **cell["env"]}
+        env = remote_env(cell)
         command = runner_command(cell, root / cell["arm"])
         started = time.monotonic()
         log(f"{name}: start seed={cell['seed']} {cell['env']}")
@@ -346,6 +363,51 @@ def _pull(sweep, instance_id: int, log) -> None:
     )
     if result.returncode != 0:
         raise sweep.SweepError(f"pull failed: {(result.stderr or result.stdout)[-400:]}")
+
+
+def regenerate_command(cell: dict, result_dir: Path) -> list[str]:
+    """Local post-fit command: the stored sampler result plus the arm switches."""
+    command = [str(PROJECT_ROOT / "ceridwen/.venv/bin/python"),
+               str(PROJECT_ROOT / "scripts/regenerate_fit_notebooks.py")]
+    for flag, key in (("--settings-override", "CERIDWEN_SETTINGS_OVERRIDE"),
+                      ("--priors-override", "CERIDWEN_PRIORS_OVERRIDE")):
+        if key in cell.get("env", {}):
+            command += [flag, cell["env"][key]]
+    return command + [str(result_dir)]
+
+
+def _regenerate(cells: list[dict], log) -> dict:
+    """Run the post-fit cells locally for every pulled sampler result.
+
+    Called after the instance is destroyed: it only needs the pulled
+    ``ceridwen_result.h5`` files. Each cell re-validates fully (derived
+    outputs plus figures) once its notebook is regenerated.
+    """
+    manifest_path = PROJECT_ROOT / RESULTS / "arms_manifest.json"
+    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    multi = None
+    regen = {}
+    for cell in cells:
+        name = cell["name"]
+        if manifest.get(name, {}).get("status") != "done":
+            continue
+        if multi is None:
+            multi = _load("multi_gpu", "run_ceridwen_vast_multi_gpu.py")
+        result_dir = PROJECT_ROOT / RESULTS / cell["arm"] / f"{cell['object_id']}-{cell['target']}"
+        started = time.monotonic()
+        log(f"{name}: regenerating post-fit cells locally")
+        try:
+            subprocess.run(regenerate_command(cell, result_dir), cwd=PROJECT_ROOT,
+                           check=True, capture_output=True, text=True, timeout=3600.0)
+            multi._validate_result(result_dir, cell["target"])
+        except (FileNotFoundError, KeyError, OSError, RuntimeError, ValueError,
+                subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
+            regen[name] = {"status": "failed", "error": str(error)[-400:]}
+            log(f"{name}: local regen failed: {regen[name]['error']}")
+            continue
+        regen[name] = {"status": "ok", "wall_s": round(time.monotonic() - started, 1)}
+        log(f"{name}: local regen ok in {regen[name]['wall_s'] / 60:.1f} min")
+    return regen
 
 
 def _launch(sweep, instance_id: int, log) -> None:
@@ -480,7 +542,9 @@ def _finish(sweep, record: dict, args) -> int:
     out.write_text(json.dumps(record, indent=1))
     print(json.dumps({k: record.get(k) for k in ("instance_id", "spent_usd", "instances_left", "error")}, indent=1))
     statuses = [v.get("status") for v in record.get("manifest", {}).values()]
-    return 0 if statuses and all(s == "done" for s in statuses) and not record["instances_left"] else 1
+    regen = [v.get("status") for v in record.get("regen", {}).values()]
+    return 0 if (statuses and all(s == "done" for s in statuses)
+                 and all(s == "ok" for s in regen) and not record["instances_left"]) else 1
 
 
 def command_plan(args) -> int:
@@ -512,6 +576,8 @@ def command_run(args) -> int:
         **_ceridwen_tree_record(args),
     }
     run_instance(sweep, offer, args, cells, record)
+    # The instance is already destroyed here; the post-fit cells cost nothing.
+    record["regen"] = _regenerate(cells, _log("calibration arms"))
     return _finish(sweep, record, args)
 
 
@@ -522,6 +588,8 @@ def command_attach(args) -> int:
               "cells": [c["name"] for c in cells], "credit_before": _credit(sweep),
               **_ceridwen_tree_record(args)}
     run_instance(sweep, None, args, cells, record, instance_id=args.instance)
+    # The instance is already destroyed here; the post-fit cells cost nothing.
+    record["regen"] = _regenerate(cells, _log("calibration arms"))
     return _finish(sweep, record, args)
 
 

@@ -179,3 +179,123 @@ def test_parser_requires_explicit_arms(arms):
     with pytest.raises(SystemExit) as exc:
         arms.main(["plan", "--targets", "M5_172669"])
     assert exc.value.code == 2
+
+
+@pytest.fixture(scope="module")
+def multi():
+    spec = importlib.util.spec_from_file_location(
+        "run_ceridwen_vast_multi_gpu", ROOT / "scripts/run_ceridwen_vast_multi_gpu.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def _eline_cell(arms, arm="eline_on"):
+    return dict(name=f"{arm}/M1_210210", arm=arm, target="M1_210210",
+                object_id=210210, seed=20260832, env=arms.ARMS[arm])
+
+
+def test_remote_env_requests_a_sampler_only_run(arms):
+    env = arms.remote_env(_eline_cell(arms))
+    assert env["CERIDWEN_SAMPLER_ONLY"] == "1"
+    # The arm switches ride along unchanged.
+    assert env["CERIDWEN_SETTINGS_OVERRIDE"] == '{"emission_line_marginalisation": true}'
+    assert env["SPS_HOME"] == "/workspace/cosmic-chronometers-jwst/external/fsps"
+
+
+def test_regenerate_command_carries_the_arm_switches(arms):
+    cell = _eline_cell(arms)
+    command = arms.regenerate_command(cell, Path("results/x/210210-M1_210210"))
+    assert command[command.index("--settings-override") + 1] == cell["env"]["CERIDWEN_SETTINGS_OVERRIDE"]
+    assert command[-1] == "results/x/210210-M1_210210"
+    plain = arms.regenerate_command(_eline_cell(arms, "eline_off"), Path("results/x/210210-M1_210210"))
+    assert "--settings-override" not in plain and "--priors-override" not in plain
+
+
+def test_sampler_only_follows_the_env(multi, monkeypatch):
+    monkeypatch.delenv("CERIDWEN_SAMPLER_ONLY", raising=False)
+    assert multi.sampler_only() is False
+    monkeypatch.setenv("CERIDWEN_SAMPLER_ONLY", "1")
+    assert multi.sampler_only() is True
+
+
+def test_truncate_to_sampler_keeps_the_prefix(multi):
+    import nbformat
+
+    document = nbformat.read(ROOT / "notebooks/ceridwen_integrated_photometry_spectra.ipynb", as_version=4)
+    kept = multi.truncate_to_sampler(document)
+    code = [c for c in kept if c.cell_type == "code"]
+    assert len(kept) == 11
+    assert multi.SAMPLER_CELL_MARKER in code[-1].source
+    assert "ceridwen_derived_outputs.h5" not in "\n".join(c.source for c in code)
+
+
+def test_truncate_to_sampler_needs_the_marker(multi):
+    import nbformat
+
+    document = nbformat.v4.new_notebook(cells=[nbformat.v4.new_code_cell("a = 1")])
+    with pytest.raises(ValueError, match="run_sampler"):
+        multi.truncate_to_sampler(document)
+
+
+RESULT_H5 = ROOT / "results/emission-line-marginalisation/eline_off/210210-M1_210210/ceridwen_result.h5"
+needs_result = pytest.mark.skipif(not RESULT_H5.exists(), reason="needs the stored eline_off fit")
+
+
+@needs_result
+def test_sampler_validation_passes_without_derived_outputs(multi, tmp_path):
+    import shutil
+
+    result_dir = tmp_path / "210210-M1_210210"
+    result_dir.mkdir()
+    shutil.copy(RESULT_H5, result_dir / "ceridwen_result.h5")
+    multi._validate_sampler_result(result_dir, "M1_210210")
+    with pytest.raises((FileNotFoundError, KeyError, OSError, RuntimeError, ValueError)):
+        multi._validate_result(result_dir, "M1_210210")
+
+
+def _manifest_tree(monkeypatch, tmp_path, arms, statuses):
+    import json
+
+    monkeypatch.setattr(arms, "PROJECT_ROOT", tmp_path)
+    root = tmp_path / arms.RESULTS
+    root.mkdir(parents=True)
+    (root / "arms_manifest.json").write_text(json.dumps(statuses))
+    return root
+
+
+def test_regenerate_skips_cells_that_are_not_done(arms, tmp_path, monkeypatch):
+    cell = _eline_cell(arms)
+    _manifest_tree(monkeypatch, tmp_path, arms, {cell["name"]: {"status": "failed"}})
+
+    def fail(*args, **kwargs):
+        raise AssertionError("no subprocess for a failed cell")
+
+    monkeypatch.setattr(arms.subprocess, "run", fail)
+    assert arms._regenerate([cell], arms._log("test")) == {}
+
+
+def test_regenerate_runs_and_validates_done_cells(arms, tmp_path, monkeypatch):
+    import types
+
+    cell = _eline_cell(arms)
+    root = _manifest_tree(monkeypatch, tmp_path, arms, {cell["name"]: {"status": "done"}})
+    calls = {}
+
+    def fake_run(command, **kwargs):
+        calls["command"] = command
+        return types.SimpleNamespace(returncode=0)
+
+    def fake_validate(result_dir, target):
+        calls["validated"] = (str(result_dir), target)
+
+    monkeypatch.setattr(arms.subprocess, "run", fake_run)
+    monkeypatch.setattr(arms, "_load", lambda name, filename: types.SimpleNamespace(_validate_result=fake_validate))
+    out = arms._regenerate([cell], arms._log("test"))
+    assert out[cell["name"]]["status"] == "ok"
+    command = calls["command"]
+    assert command[command.index("--settings-override") + 1] == cell["env"]["CERIDWEN_SETTINGS_OVERRIDE"]
+    assert command[-1] == str(root / "eline_on" / "210210-M1_210210")
+    assert calls["validated"] == (str(root / "eline_on" / "210210-M1_210210"), "M1_210210")

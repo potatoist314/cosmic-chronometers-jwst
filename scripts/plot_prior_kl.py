@@ -82,6 +82,32 @@ def log_sfr_bins(logmass, logsfr_ratios, edges_gyr) -> np.ndarray:
         return np.asarray(logmass, dtype=float)[:, None] + np.log10(0.5 * (nodes[:, :-1] + nodes[:, 1:]))
 
 
+def student_t_quantile_df2(u, loc=0.0, scale=1.0):
+    """Inverse CDF of the location-scale Student-t distribution with df = 2.
+
+    Closed form (standard t, then ``loc + scale * Q``): Q(p) = 2 (p - 1/2)
+    sqrt(2 / alpha) with alpha = 4 p (1 - p). Source: Wikipedia,
+    "Quantile function" section "Student's t-distribution"
+    (https://en.wikipedia.org/wiki/Quantile_function#Student's_t-distribution):
+    "Simple formulas exist when nu = 1, 2, 4". TFP's iterative quantile is
+    ~1 s per (26600, 7) call; this is microseconds.
+    """
+    u = np.asarray(u, dtype=float)
+    with np.errstate(divide="ignore", invalid="ignore"):  # u = 0 or 1 maps to -/+inf, as the quantile does
+        alpha = 4.0 * u * (1.0 - u)
+        standard = 2.0 * (u - 0.5) * np.sqrt(2.0 / alpha)
+    return loc + scale * standard
+
+
+def _prior_quantile(prior, u):
+    """``unit_transform`` with the exact df = 2 Student-t closed form where it applies."""
+    if type(prior).__name__ == "StudentT" and float(prior.params["df"]) == 2.0:
+        return student_t_quantile_df2(
+            u, loc=float(prior.params["mean"]), scale=float(prior.params["scale"])
+        )
+    return prior.unit_transform(u)
+
+
 def prior_draws(galaxy, n, rng, names=None) -> dict:
     """``n`` draws of the sampled parameters ``names`` (default all) from the fit's stored priors."""
     draws = {}
@@ -89,7 +115,7 @@ def prior_draws(galaxy, n, rng, names=None) -> dict:
         text = galaxy.prior_text[name]
         size = np.asarray(galaxy.samples[name]).reshape(len(galaxy.log_weights), -1).shape[1]
         u = rng.uniform(0.0, 1.0, (n, size))
-        draws[name] = np.asarray(pgd.parse_prior(text).unit_transform(u), dtype=float).reshape(n, size)
+        draws[name] = np.asarray(_prior_quantile(pgd.parse_prior(text), u), dtype=float).reshape(n, size)
     return draws
 
 
@@ -115,10 +141,17 @@ def log_sfr_noise_floor(galaxy, seed=SEED, repeats=200) -> float:
     """
     rng = np.random.default_rng(seed)
     w = pgd.posterior_weights(galaxy)
-    reference = prior_log_sfr_bins(galaxy, rng, n=PRIOR_SAMPLE_MULT * len(w))
+    n = len(w)
+    reference = prior_log_sfr_bins(galaxy, rng, n=PRIOR_SAMPLE_MULT * n)
     bins = rng.integers(reference.shape[1], size=repeats)
-    values = [pgd.marginal_kl_bits(empirical_unit_values(prior_log_sfr_bins(galaxy, rng)[:, j], reference[:, j]), w)
-              for j in bins]
+    # One batched prior draw for all repeats: a single quantile call per
+    # parameter reshaped to (repeats, n, bins). Same distribution as one draw
+    # per repeat, different Monte Carlo draws at the same seed.
+    d = prior_draws(galaxy, repeats * n, rng, names=("logmass", "logsfr_ratios"))
+    log_sfr = log_sfr_bins(d["logmass"][:, 0], d["logsfr_ratios"], galaxy.sfh_edges_gyr)
+    log_sfr = log_sfr.reshape(repeats, n, -1)
+    values = [pgd.marginal_kl_bits(empirical_unit_values(log_sfr[k, :, j], reference[:, j]), w)
+              for k, j in enumerate(bins)]
     return float(np.percentile(values, 95))
 
 

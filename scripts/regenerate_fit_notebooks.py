@@ -14,11 +14,16 @@ and seeds.
 Usage::
 
     ceridwen/.venv/bin/python scripts/regenerate_fit_notebooks.py [--dry-run] DIR [DIR ...]
+
+``--settings-override`` and ``--priors-override`` take the same JSON the GPU
+worker reads from ``CERIDWEN_SETTINGS_OVERRIDE`` / ``CERIDWEN_PRIORS_OVERRIDE``
+and apply it the same way, so an arm fit regenerates its own model.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 import time
@@ -61,7 +66,8 @@ def stored_fit(result_dir: Path) -> dict:
         }
 
 
-def compact_notebook(result_dir: Path, fit: dict) -> nbformat.NotebookNode:
+def compact_notebook(result_dir: Path, fit: dict, settings_override: dict | None = None,
+                     priors_override: dict | None = None) -> nbformat.NotebookNode:
     notebook = nbformat.read(NOTEBOOK_PATH, as_version=4)
     top = notebook.cells[2]
     assert top.source.startswith("import os")
@@ -106,6 +112,18 @@ def compact_notebook(result_dir: Path, fit: dict) -> nbformat.NotebookNode:
         model_cell.source = model_cell.source.replace(
             "joint_initial = {", 'joint_initial = {\n    "spectrum_scaling": jnp.array([1.0]),')
 
+    # Arm switches, applied exactly as the GPU worker applies them (appended lines
+    # win over the literals above, as they do over the template on the box).
+    if settings_override:
+        settings_cell = next(c for c in notebook.cells
+                             if c.cell_type == "code" and "SETTINGS = {" in c.source)
+        settings_cell.source += f"\nSETTINGS.update({settings_override!r})  # arm override\n"
+    if priors_override:
+        priors_cell = next(c for c in notebook.cells
+                           if c.cell_type == "code" and "PRIORS = {" in c.source)
+        for name, expression in priors_override.items():
+            priors_cell.source += f"\nPRIORS[{name!r}] = {expression}  # arm override\n"
+
     fit_markdown = notebook.cells[9]
     fit_cell = notebook.cells[10]
     assert "joint_result = run_sampler(" in fit_cell.source
@@ -136,7 +154,13 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("result_dirs", nargs="+", type=Path)
     parser.add_argument("--dry-run", action="store_true", help="print the per-fit literals and stop")
+    parser.add_argument("--settings-override", default=None,
+                        help="JSON dict merged into SETTINGS, as on the GPU worker")
+    parser.add_argument("--priors-override", default=None,
+                        help="JSON dict of PRIORS key to prior expression, as on the GPU worker")
     args = parser.parse_args()
+    settings_override = json.loads(args.settings_override) if args.settings_override else None
+    priors_override = json.loads(args.priors_override) if args.priors_override else None
     failed = 0
     for result_dir in args.result_dirs:
         result_dir = result_dir.resolve()
@@ -149,7 +173,7 @@ def main() -> None:
             print(line)
             continue
         started = time.perf_counter()
-        notebook = compact_notebook(result_dir, fit)
+        notebook = compact_notebook(result_dir, fit, settings_override, priors_override)
         output_path = result_dir / f"{fit['target_id']}_executed.ipynb"
         try:
             execute(notebook, output_path)

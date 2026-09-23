@@ -242,16 +242,16 @@ def physical_parameter_names(param_names) -> list[str]:
     return [name for name in param_names if name not in NUISANCE_PARAMS]
 
 
-def _validate_result(result_dir: Path, spect_id: str) -> None:
-    import h5py
-    import nbformat
+def _validate_sampler_result(result_dir: Path, spect_id: str) -> None:
+    """Validate what the GPU run produces: the sampler result alone.
+
+    The post-fit cells (predictive draws, figures, derived outputs) run on the
+    local machine after the pull; see ``scripts/regenerate_fit_notebooks.py``.
+    """
     import numpy as np
     from ceridwen.fit import load_result_h5
 
-    result_path = result_dir / "ceridwen_result.h5"
-    derived_path = result_dir / "ceridwen_derived_outputs.h5"
-    notebook_path = result_dir / f"{spect_id}_executed.ipynb"
-    loaded = load_result_h5(result_path)
+    loaded = load_result_h5(result_dir / "ceridwen_result.h5")
     physical = physical_parameter_names(loaded.param_names)
     expected = 7 if "spectrum_scaling" in loaded.param_names else 6
     if len(physical) != expected:
@@ -260,6 +260,15 @@ def _validate_result(result_dir: Path, spect_id: str) -> None:
         raise RuntimeError("Posterior log weights contain non-finite values")
     if not np.isfinite([loaded.log_evidence, loaded.log_evidence_err]).all():
         raise RuntimeError("Nested-sampling evidence is not finite")
+
+
+def _validate_result(result_dir: Path, spect_id: str) -> None:
+    import h5py
+    import nbformat
+
+    _validate_sampler_result(result_dir, spect_id)
+    derived_path = result_dir / "ceridwen_derived_outputs.h5"
+    notebook_path = result_dir / f"{spect_id}_executed.ipynb"
     with h5py.File(derived_path, "r") as derived:
         required = {"summary", "sfh", "photometry", "spectrum", "diagnostics"}
         missing = required.difference(derived.keys())
@@ -302,6 +311,25 @@ def _execute_target(
         ).returncode
 
 
+# The fit notebook's sampler call; a sampler-only run keeps everything up to and
+# including the cell that holds it (that cell also writes ceridwen_result.h5).
+SAMPLER_CELL_MARKER = "joint_result = run_sampler("
+
+
+def truncate_to_sampler(document):
+    """Drop the post-fit cells of the fit notebook in place; return the kept cells."""
+    for index, cell in enumerate(document.cells):
+        if cell.cell_type == "code" and SAMPLER_CELL_MARKER in cell.source:
+            del document.cells[index + 1:]
+            return document.cells
+    raise ValueError(f"No code cell holds {SAMPLER_CELL_MARKER!r}")
+
+
+def sampler_only() -> bool:
+    """True when the GPU run stops after the sampler; post-fit cells run locally."""
+    return os.environ.get("CERIDWEN_SAMPLER_ONLY") == "1"
+
+
 def _worker(output_notebook: Path) -> int:
     import nbformat
     from nbclient import NotebookClient
@@ -328,6 +356,8 @@ def _worker(output_notebook: Path) -> int:
                              if c.cell_type == "code" and "PRIORS = {" in c.source)
         for name, expression in json.loads(priors_override).items():
             settings_cell.source += f"\nPRIORS[{name!r}] = {expression}  # arm override (CERIDWEN_PRIORS_OVERRIDE)\n"
+    if sampler_only():
+        truncate_to_sampler(document)
     client = StreamingNotebookClient(
         document,
         timeout=None,
@@ -547,12 +577,14 @@ def _run(args: argparse.Namespace) -> int:
     mem_fraction = _memory_fraction(fits_per_gpu)
     bookkeeping = threading.Lock()
 
+    validate = _validate_sampler_result if sampler_only() else _validate_result
+
     def _process_target(target: dict) -> None:
         key = str(target["spect_id"])
         result_dir = args.output_root / f"{target['object_id']}-{key}"
         with bookkeeping:
             try:
-                _validate_result(result_dir, key)
+                validate(result_dir, key)
                 run_manifest["results"][key] = {"status": "complete", "attempts": 0}
                 _write_json(run_manifest_path, run_manifest)
                 return
@@ -566,7 +598,7 @@ def _run(args: argparse.Namespace) -> int:
                 try:
                     if return_code != 0:
                         raise RuntimeError(f"Notebook returned {return_code}")
-                    _validate_result(result_dir, key)
+                    validate(result_dir, key)
                     completed = True
                     run_manifest["results"][key] = {
                         "status": "complete",
