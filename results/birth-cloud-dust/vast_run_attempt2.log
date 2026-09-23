@@ -1,0 +1,40 @@
+[21:06:41] calibration arms: rented instance 52298461: offer 49213098 RTX 5060 Ti bid $0.1383/h (on demand $0.2681/h) Ohio, US host 49107 rel 0.999
+[21:06:42] calibration arms: waiting for instance 52298461: status=None
+[21:07:02] calibration arms: cloning branch absorption-mask
+[21:09:24] calibration arms: uploading ceridwen working tree
+[21:09:28] calibration arms: uploading external/sedpy_jax working tree
+[21:09:34] calibration arms: submodule trees uploaded: {'ceridwen': '1fae781', 'external/sedpy_jax': '754a118'}
+[21:09:38] calibration arms: uploading data/raw
+[21:10:18] calibration arms: uploaded 1988 spectra
+[21:10:22] calibration arms: bootstrapping the CUDA environment
+[21:11:23] calibration arms: failed: SweepError: Resolved 1 package in 108ms
+Downloading tfp-nightly (6.7MiB)
+ Downloaded tfp-nightly
+Prepared 1 package in 319ms
+Installed 1 package in 276ms
+ + tfp-nightly==0.26.0.dev20260810
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Resolved 1 package in 465ms
+   Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+      Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+Prepared 1 package in 381ms
+Uninstalled 1 package in 3ms
+Installed 1 package in 40ms
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 184 packages in 26ms
+All installed packages are compatible
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5
+Connection to 72.49.200.123 closed by remote host.
+[21:11:23] calibration arms: pulling results
+[21:11:24] calibration arms: pull failed: pull failed: ssh: connect to host 72.49.200.123 port 52600: Connection refused
+rsync(54250): error: unexpected end of file
+
+[21:11:25] calibration arms: destroyed instance 52298461
+{
+ "instance_id": 52298461,
+ "spent_usd": 0.0245,
+ "instances_left": [],
+ "error": "SweepError: Resolved 1 package in 108ms\nDownloading tfp-nightly (6.7MiB)\n Downloaded tfp-nightly\nPrepared 1 package in 319ms\nInstalled 1 package in 276ms\n + tfp-nightly==0.26.0.dev20260810\nUsing Python 3.11.16 environment at: .venv-ceridwen-gpu\nResolved 1 package in 465ms\n   Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax\n      Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax\nPrepared 1 package in 381ms\nUninstalled 1 package in 3ms\nInstalled 1 package in 40ms\n - sedpy-jax==0.1.1\n + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)\nUsing Python 3.11.16 environment at: .venv-ceridwen-gpu\nChecked 184 packages in 26ms\nAll installed packages are compatible\n[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5\nConnection to 72.49.200.123 closed by remote host."
+}

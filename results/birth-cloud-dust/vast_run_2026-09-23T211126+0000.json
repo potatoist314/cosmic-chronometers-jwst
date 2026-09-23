@@ -1,0 +1,25 @@
+{
+ "started": "2026-09-23T21:06:39+00:00",
+ "branch": "absorption-mask",
+ "offer": {
+  "id": 49213098,
+  "gpu_name": "RTX 5060 Ti",
+  "dph_total": 0.26805555555555555,
+  "min_bid": 0.13333333333333333,
+  "geolocation": "Ohio, US",
+  "host_id": 49107
+ },
+ "bid_usd_per_hour": 0.1383,
+ "cells": [
+  "dust1_off/M1_210210",
+  "dust1_on/M1_210210",
+  "dust_index_m3/M1_210210"
+ ],
+ "credit_before": 8.303967605320018,
+ "instance_id": 52298461,
+ "error": "SweepError: Resolved 1 package in 108ms\nDownloading tfp-nightly (6.7MiB)\n Downloaded tfp-nightly\nPrepared 1 package in 319ms\nInstalled 1 package in 276ms\n + tfp-nightly==0.26.0.dev20260810\nUsing Python 3.11.16 environment at: .venv-ceridwen-gpu\nResolved 1 package in 465ms\n   Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax\n      Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax\nPrepared 1 package in 381ms\nUninstalled 1 package in 3ms\nInstalled 1 package in 40ms\n - sedpy-jax==0.1.1\n + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)\nUsing Python 3.11.16 environment at: .venv-ceridwen-gpu\nChecked 184 packages in 26ms\nAll installed packages are compatible\n[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5\nConnection to 72.49.200.123 closed by remote host.",
+ "credit_after": 8.279442247320013,
+ "spent_usd": 0.0245,
+ "finished": "2026-09-23T21:11:26+00:00",
+ "instances_left": []
+}

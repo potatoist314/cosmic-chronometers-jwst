@@ -1,0 +1,58 @@
+[21:13:19] calibration arms: rented instance 52299165: offer 48540476 RTX 5060 Ti $0.1548/h Italy, IT host 92578 rel 0.996
+[21:13:20] calibration arms: waiting for instance 52299165: status=None
+[21:13:38] calibration arms: cloning branch absorption-mask
+[21:14:46] calibration arms: uploading ceridwen working tree
+[21:14:48] calibration arms: uploading external/sedpy_jax working tree
+[21:14:53] calibration arms: submodule trees uploaded: {'ceridwen': '1fae781', 'external/sedpy_jax': '754a118'}
+[21:14:56] calibration arms: uploading data/raw
+[21:15:46] calibration arms: uploaded 1988 spectra
+[21:15:49] calibration arms: bootstrapping the CUDA environment
+[21:18:09] calibration arms: bootstrap: sedpy_jax wavelength-dependent input resolution verified
+[21:18:09] calibration arms: bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+[21:18:09] calibration arms: bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5
+[21:18:09] calibration arms: bootstrap: Select the 'Ceridwen (Vast.ai GPU)' kernel in JupyterLab.
+[21:18:13] calibration arms: probe: devices [CudaDevice(id=0)]
+[21:18:13] calibration arms: probe: backend gpu
+[21:18:13] calibration arms: probe: overlay          40G   10G   31G  25% /
+[21:18:17] calibration arms: launched the remote runner
+[21:20:20] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.149 of cap $0.32
+[21:22:23] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.167 of cap $0.32
+[21:24:27] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.172 of cap $0.32
+[21:26:30] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.177 of cap $0.32
+[21:28:33] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.184 of cap $0.32
+[21:28:35] calibration arms: pulling results
+[21:30:38] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.190 of cap $0.32
+[21:32:42] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.196 of cap $0.32
+[21:34:45] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.203 of cap $0.32
+[21:36:49] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.207 of cap $0.32
+[21:38:52] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.213 of cap $0.32
+[21:40:55] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.220 of cap $0.32
+[21:42:58] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.226 of cap $0.32
+[21:45:03] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.229 of cap $0.32
+[21:45:05] calibration arms: pulling results
+[21:47:10] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.235 of cap $0.32
+[21:49:14] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.241 of cap $0.32
+[21:51:17] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.247 of cap $0.32
+[21:53:22] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.253 of cap $0.32
+[21:55:27] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.259 of cap $0.32
+[21:57:31] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.265 of cap $0.32
+[21:59:34] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.271 of cap $0.32
+[22:01:38] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.278 of cap $0.32
+[22:01:40] calibration arms: pulling results
+[22:03:43] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.284 of cap $0.32
+[22:05:46] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.290 of cap $0.32
+[22:07:49] calibration arms: 0/3 done, 0 failed, running ['dust1_off/M1_210210']; spend $0.294 of cap $0.32
+[22:09:53] calibration arms: 1/3 done, 0 failed, running ['dust1_on/M1_210210']; spend $0.300 of cap $0.32
+[22:11:57] calibration arms: 1/3 done, 0 failed, running ['dust1_on/M1_210210']; spend $0.308 of cap $0.32
+[22:14:00] calibration arms: 1/3 done, 0 failed, running ['dust1_on/M1_210210']; spend $0.312 of cap $0.32
+[22:16:03] calibration arms: 1/3 done, 0 failed, running ['dust1_on/M1_210210']; spend $0.318 of cap $0.32
+[22:18:06] calibration arms: 1/3 done, 0 failed, running ['dust1_on/M1_210210']; spend $0.324 of cap $0.32
+[22:18:06] calibration arms: spend cap $0.32 reached
+[22:18:07] calibration arms: pulling results
+[22:18:12] calibration arms: destroyed instance 52299165
+{
+ "instance_id": 52299165,
+ "spent_usd": 0.3244,
+ "instances_left": [],
+ "error": "spend cap $0.32 reached"
+}

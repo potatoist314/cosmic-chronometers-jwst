@@ -1,0 +1,17 @@
+[21:03:47] calibration arms: rented instance 52298088: offer 48540476 RTX 5060 Ti bid $0.1290/h (on demand $0.1548/h) Italy, IT host 92578 rel 0.996
+[21:03:48] calibration arms: waiting for instance 52298088: status=None
+[21:04:04] calibration arms: waiting for instance 52298088: status=None
+[21:04:20] calibration arms: waiting for instance 52298088: status=loading
+[21:04:39] calibration arms: cloning branch absorption-mask
+[21:05:29] calibration arms: failed: SweepError: Connection to 95.253.220.115 closed by remote host.
+[21:05:29] calibration arms: pulling results
+[21:05:30] calibration arms: pull failed: pull failed: ssh: connect to host 95.253.220.115 port 62342: Connection refused
+rsync(29562): error: unexpected end of file
+
+[21:05:32] calibration arms: destroyed instance 52298088
+{
+ "instance_id": 52298088,
+ "spent_usd": 0.0,
+ "instances_left": [],
+ "error": "SweepError: Connection to 95.253.220.115 closed by remote host."
+}

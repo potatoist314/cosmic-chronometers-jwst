@@ -1,0 +1,30 @@
+[
+ {
+  "name": "dust1_off/M1_210210",
+  "arm": "dust1_off",
+  "target": "M1_210210",
+  "object_id": 210210,
+  "seed": 20260832,
+  "env": {}
+ },
+ {
+  "name": "dust1_on/M1_210210",
+  "arm": "dust1_on",
+  "target": "M1_210210",
+  "object_id": 210210,
+  "seed": 20260832,
+  "env": {
+   "CERIDWEN_SETTINGS_OVERRIDE": "{\"birth_cloud_dust\": true}"
+  }
+ },
+ {
+  "name": "dust_index_m3/M1_210210",
+  "arm": "dust_index_m3",
+  "target": "M1_210210",
+  "object_id": 210210,
+  "seed": 20260832,
+  "env": {
+   "CERIDWEN_PRIORS_OVERRIDE": "{\"diffuse_dust_index\": \"Uniform(low=-3.0, high=0.4)\"}"
+  }
+ }
+]
