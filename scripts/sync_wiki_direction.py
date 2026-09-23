@@ -57,7 +57,8 @@ if __name__ == "__main__":
     try:
         synchronize()
         if "--save" in sys.argv:
-            direction.save(ROOT / "wiki/research", json.load(sys.stdin))
+            # The mark tells the prose check an agent wrote this save, not the browser editor.
+            direction.save(ROOT / "wiki/research", {**json.load(sys.stdin), "by": "agent"})
             synchronize()
         if "--read" in sys.argv or "--save" in sys.argv:
             print(json.dumps(direction.snapshot(ROOT / "wiki/research"), ensure_ascii=False))

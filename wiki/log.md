@@ -1194,3 +1194,8 @@
 
 - Pages: [[research/direction]], [[research/questions/q-dust-index-railing]]
 - Change: Liu Hao, 2026-09-23: "shorthand is fine. i want easy to write, concise, avoid verbosity thats unnecessary". Direction entry, six items and `q-dust-index-railing` cut to shorthand, no longer than the first version. Facts, links and quotes unchanged.
+
+## [2026-09-23] tooling | Opus prose check on wiki commits
+
+- Change: Liu Hao, 2026-09-23: "an opus check, bc this is important. it can use my writing style as a reference", then "shorthand is fine. i want easy to write, concise, avoid verbosity thats unnecessary". `scripts/wiki_prose_check.py` runs as the git pre-commit hook on new or changed prose in `wiki/notes` and `wiki/research`. It sends that prose to `claude -p --model opus` and refuses the commit on a fail, printing shorter rewrites. `sync_wiki_direction.py --save` marks agent saves `"by": "agent"`; browser saves are not checked.
+- Validation: today's commits 8a4a12e, 232aab1, 9f466ec pass; 4bda805 fails with 12 rewrites.
