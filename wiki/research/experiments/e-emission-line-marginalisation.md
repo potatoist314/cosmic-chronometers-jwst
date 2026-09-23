@@ -119,7 +119,7 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
 
 - With the flat prior, \(\ln Z\) changes by a constant per line; do not compare the evidence with masked fits.
 - The implemented \(\ln P\) ignores the weak correlations (0.05–0.12) outside the blended pairs; this gives the −0.57 offset.
-- FSPS lists "[O II] 3867" at 3868.16 \(\text{\AA}\) with zero flux at every point of its Cloudy grid; it is fitted as a free line.
+- FSPS "[O II] 3867" (3868.16 \(\text{\AA}\), zero Cloudy flux, no NIST line) is excluded (ceridwen `1fae781`): 21 free fluxes, blend He I 3889/H8 only; implemented minus exact \(\ln P\) −0.60 ± 0.07.
 
 ## References
 
