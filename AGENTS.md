@@ -68,6 +68,12 @@ The user's contribution will be focused on overall research direction and method
 - For connected spectral plots, keep the full wavelength grid and set excluded
   values to `NaN`; never plot `wavelength[mask]` as one connected line or band.
 - Experiments: follow `.agents/skills/running-ceridwen-experiments/SKILL.md`.
+- For paid GPU benchmarks, do not destroy a rental solely because a fixed boot
+  or setup time has elapsed. If progress stalls, briefly compare the expected
+  remaining cost on that instance with the cost of a fresh rental, including
+  repeated boot, transfer, and setup. Continue with the cheaper option while
+  respecting the task's hourly price and total spend caps. Recheck when the
+  machine's state changes; destroy task-owned instances after measurement.
 - Keep raw data immutable. Produce processed data through documented scripts or
   functions.
 - Put one-time download and bookkeeping utilities in `scripts/`, not notebooks.
