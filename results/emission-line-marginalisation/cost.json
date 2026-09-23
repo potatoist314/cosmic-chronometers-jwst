@@ -1,0 +1,118 @@
+{
+  "source": "vastai show invoices-v1 --charges --charge-type instance --start-date 2026-09-23 --end-date 2026-09-24 --limit 100 --raw",
+  "currency": "USD",
+  "task_cap": 0.5,
+  "charges": [
+    {
+      "amount": 0.034,
+      "description": "Instance 52266194 Charges - 1 day",
+      "end": 1790121600,
+      "items": [
+        {
+          "amount": 0.029,
+          "description": "0.199 hours at $0.147/hour",
+          "end": 1790121600,
+          "items": [],
+          "metadata": {},
+          "source": null,
+          "start": 1790121600,
+          "type": "gpu"
+        },
+        {
+          "amount": 0.002,
+          "description": "0.205 hours at $0.011/hour",
+          "end": 1790121600,
+          "items": [],
+          "metadata": {},
+          "source": null,
+          "start": 1790121600,
+          "type": "disk"
+        },
+        {
+          "amount": 0.003,
+          "description": "1.2 GB Downloaded at $0.002/GB",
+          "end": 1790121600,
+          "items": [],
+          "metadata": {},
+          "source": null,
+          "start": 1790121600,
+          "type": "bwd"
+        },
+        {
+          "amount": 0.0,
+          "description": "Bandwidth (upload)",
+          "end": 1790121600,
+          "items": [],
+          "metadata": {},
+          "source": null,
+          "start": 1790121600,
+          "type": "bwu"
+        }
+      ],
+      "metadata": {
+        "label": "ceridwen-bench-rtx-5060-ti"
+      },
+      "source": "instance-52266194",
+      "start": 1790121600,
+      "type": "instance"
+    },
+    {
+      "amount": 0.406,
+      "description": "Instance 52280855 Charges - 1 day",
+      "end": 1790121600,
+      "items": [
+        {
+          "amount": 0.371,
+          "description": "1.989 hours at $0.187/hour",
+          "end": 1790121600,
+          "items": [],
+          "metadata": {},
+          "source": null,
+          "start": 1790121600,
+          "type": "gpu"
+        },
+        {
+          "amount": 0.019,
+          "description": "2.009 hours at $0.009/hour",
+          "end": 1790121600,
+          "items": [],
+          "metadata": {},
+          "source": null,
+          "start": 1790121600,
+          "type": "disk"
+        },
+        {
+          "amount": 0.016,
+          "description": "6.1 GB Downloaded at $0.003/GB",
+          "end": 1790121600,
+          "items": [],
+          "metadata": {},
+          "source": null,
+          "start": 1790121600,
+          "type": "bwd"
+        },
+        {
+          "amount": 0.0,
+          "description": "Bandwidth (upload)",
+          "end": 1790121600,
+          "items": [],
+          "metadata": {},
+          "source": null,
+          "start": 1790121600,
+          "type": "bwu"
+        }
+      ],
+      "metadata": {
+        "label": "ceridwen-bench-rtx-5060-ti"
+      },
+      "source": "instance-52280855",
+      "start": 1790121600,
+      "type": "instance"
+    }
+  ],
+  "total_usd": 0.44,
+  "own_instances_destroyed": [
+    52266194,
+    52280855
+  ]
+}

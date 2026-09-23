@@ -3,11 +3,13 @@ kind: experiment
 id: e-emission-line-marginalisation
 title: Emission-line marginalisation from upstream Ceridwen, integrated into the calibration solve
 date: 2026-09-22
-results_at:
+results_at: 2026-09-23T22:00:02+01:00
 origin: new
-status: running
+status: results-ready
 question: q-emission-lines
 follow_up:
+source_notes: emission-line-marginalisation
+result_groups: results/emission-line-marginalisation
 ---
 
 ## Context
@@ -96,7 +98,11 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
         "label": "Vast setup record",
         "path": "results/emission-line-marginalisation/vast_run_2026-09-23T171807+0000.json"
       }
-    ]
+    ],
+    "code": "547bf2f",
+    "model": "Ceridwen 1fae781; amist_c3k_hr_krou_afe",
+    "data": "results/emission-line-marginalisation/cells-attempt1.json",
+    "seed": 20260832
   },
   {
     "id": "m1-210210-lines-off",
@@ -144,13 +150,31 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
   {
     "id": "m1-210210-lines-on-retry",
     "arm": "eline_on",
-    "status": "running",
+    "status": "complete",
     "target": "M1_210210",
     "seed": 20260832,
     "code": "cbc967c",
     "model": "Ceridwen 1fae781; amist_c3k_hr_krou_afe",
     "data": "results/emission-line-marginalisation/cells.json",
-    "config": "results/emission-line-marginalisation/cells.json"
+    "config": "results/emission-line-marginalisation/cells.json",
+    "artifacts": [
+      {
+        "label": "Executed fit",
+        "path": "results/emission-line-marginalisation/eline_on/210210-M1_210210/M1_210210_executed.ipynb"
+      },
+      {
+        "label": "Result HDF5",
+        "path": "results/emission-line-marginalisation/eline_on/210210-M1_210210/ceridwen_result.h5"
+      },
+      {
+        "label": "Derived outputs",
+        "path": "results/emission-line-marginalisation/eline_on/210210-M1_210210/ceridwen_derived_outputs.h5"
+      },
+      {
+        "label": "Execution log",
+        "path": "results/emission-line-marginalisation/eline_on/210210-M1_210210/execution.log"
+      }
+    ]
   }
 ]
 ```
@@ -158,7 +182,40 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
 ## Figures
 
 ```json
-[]
+[
+  {
+    "path": "wiki/analyses/emission-line-marginalisation/eline-off-spectrum.png",
+    "caption": "Option off: M1_210210 spectrum fit; emission regions masked.",
+    "view": "Fits",
+    "target": "M1_210210",
+    "arm": "eline_off",
+    "run": "m1-210210-lines-off"
+  },
+  {
+    "path": "wiki/analyses/emission-line-marginalisation/eline-off-photometry.png",
+    "caption": "Option off: M1_210210 photometry fit.",
+    "view": "Fits",
+    "target": "M1_210210",
+    "arm": "eline_off",
+    "run": "m1-210210-lines-off"
+  },
+  {
+    "path": "wiki/analyses/emission-line-marginalisation/eline-on-spectrum.png",
+    "caption": "Option on: M1_210210 spectrum fit; fitted lines included.",
+    "view": "Fits",
+    "target": "M1_210210",
+    "arm": "eline_on",
+    "run": "m1-210210-lines-on-retry"
+  },
+  {
+    "path": "wiki/analyses/emission-line-marginalisation/eline-on-photometry.png",
+    "caption": "Option on: M1_210210 photometry fit.",
+    "view": "Fits",
+    "target": "M1_210210",
+    "arm": "eline_on",
+    "run": "m1-210210-lines-on-retry"
+  }
+]
 ```
 
 ## Measurements
@@ -182,6 +239,22 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
 | Plain product of \(\Phi\) minus exact | mean +1.05, standard deviation 0.27 |
 | Line-dependent noise minus \(\mu\)-only noise, \(\Delta\ln L\) over 20 draws | mean −0.39, standard deviation 0.12, max \(\lvert\Delta\rvert\) 0.57 |
 | CPU time, 20 draws per `jit(vmap)` call, off / on | 4.0 / 11.1 ms (Apple CPU, jax x64) |
+| GPU fit wall time, off / on | 1898.3 / 4321.6 s (`results/emission-line-marginalisation/arms_manifest.json`) |
+| Sampler wall time, off / on | 891.5 / 3275.7 s (result HDF5 files) |
+| Likelihood calls, off / on | 8,424,501 / 6,145,311 (result HDF5 files) |
+| Task cost | $0.440 (`results/emission-line-marginalisation/cost.json`) |
+
+## Results
+
+Both arms completed on Vast RTX 5060 Ti instance 52280855 with seed 20260832. The on arm fixes \(z\) at the catalogue value; the off arm samples it. COSMOS2025 photometry, order-10 calibration with constant prior 0.3 and baked runtime were used in both arms.
+
+The on arm fits 23 displayed FSPS lines with 21 free nonnegative fluxes. [O III] 4959/5007 ratio tied; spurious FSPS [O II] 3867 excluded. Line flux 16th, 50th and 84th percentiles are in [line-fluxes.csv](results/emission-line-marginalisation/line-fluxes.csv) and the [result note](wiki/notes/emission-line-marginalisation.md).
+
+Median on-minus-off shifts: mass-weighted age −0.408 Gyr, \([\mathrm{Fe}/\mathrm{H}]\) +0.023 dex, \([\alpha/\mathrm{Fe}]\) −0.0028 dex, \(\log_{10}(M_\star/M_\odot)\) −0.051 dex, \(\tau_{\mathrm{dust}}\) −0.035, dust index +0.005. Quantiles: [comparison.csv](results/emission-line-marginalisation/comparison.csv).
+
+For the common 26 pixels within ±300 km/s of \(\mathrm{H}\beta\), RMS pull is 0.568 off and 0.484 on. For 134 pixels within ±1500 km/s, it is 0.559 off and 0.561 on. The off-arm model is extrapolated into its masked line region. Source: [hbeta-residuals.csv](results/emission-line-marginalisation/hbeta-residuals.csv).
+
+Both Vast instances destroyed. Invoice charges total $0.440: $0.034 for a failed setup host and $0.406 for the shared fit host. Source: [cost.json](results/emission-line-marginalisation/cost.json). The [executed comparison notebook](results/emission-line-marginalisation/analysis.ipynb) contains the calculations.
 
 ## Caveats
 

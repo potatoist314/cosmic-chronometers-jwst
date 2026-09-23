@@ -1219,3 +1219,9 @@
 
 - Pages: `research/experiments/e-afe-fixed-zero.md`
 - Change: FSPS 3.2 cannot pair MIST v1.2 with C3K-HR, so the kept control is MIST+MILES Kroupa; `ssp_grid` setting, three-option CPU check.
+
+## [2026-09-23] experiment | M1_210210 emission-line marginalisation test
+
+- Pages: [[notes/emission-line-marginalisation]], [[research/experiments/e-emission-line-marginalisation]]
+- Change: Both arms completed on one RTX 5060 Ti; spectrum and photometry fits, 23 line fluxes, parameter shifts, H-beta residuals, runtime, likelihood calls and $0.440 total cost recorded.
+- Validation: executed notebooks and HDF5 loaded; wiki build and tests.
