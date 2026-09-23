@@ -33,6 +33,8 @@ Do not use `scripts/bench_gpu_prices_vast.py` or its driver design.
 | RTX 5060 Ti host 516546 | 52260284 | A full-history root clone transferred about 1.1 GB before it was stopped. | Transfer only the required pinned source. |
 | RTX 5090 host 90577 | 52265958 | SSH closed during checkout. The old cleanup destroyed the live instance. | Reconnect and inspect the same instance before any replacement. |
 | RTX 5090 host 109053 | None | Vast returned no instance JSON for offer 39179900. | Mark the host and offer as tried. |
+| RTX 5090 hosts 43794 and 362094 | None | Vast returned no instance JSON for offers 49539124 and 48425192. | Mark each host and offer as tried. |
 | RTX 5080 host 580434 | 52276783 | SSH drops left overlapping Git clones. A later `rsync` failed because the new source upload lacked `data/raw`. Cleanup destroyed the instance before measurement. | Stop duplicate remote clones. Create `data/raw` before transfer. Retain a live instance when a short repair costs less. |
+| RTX 5090 host 60576 | 52283516 | Vast remained in `created` without an SSH port after image load. At 24 minutes, estimated continuation was $0.20 and fresh setup was $0.156. The instance was destroyed and confirmed absent. | Treat a missing instance as gone. Track status progress, not repeated status messages. Apply the cost comparison. |
 
 The prior RTX 5060 result, 27,754 calls/s on host 166946, used an earlier code revision. Do not use it for ratios to the current 5060 Ti runs. Cross-host timings can vary with host load. Keep the per-host raw timing JSON and report both hosts.

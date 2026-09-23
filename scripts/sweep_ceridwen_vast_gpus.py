@@ -435,7 +435,7 @@ def _rsync(
         raise SweepError("rsync failed: " + ("\n".join(detail[-10:]) or "unknown"))
 
 
-def _upload_inputs(instance_id: int, log: Any) -> None:
+def _upload_inputs(instance_id: int, log: Any, timeout: float = 3600.0) -> None:
     """Copy the LEGA-C inputs over ssh and prove they arrived.
 
     ``vastai copy`` reports success for a transfer that moves nothing, so the
@@ -444,11 +444,12 @@ def _upload_inputs(instance_id: int, log: Any) -> None:
     """
     log("uploading data/raw")
     target, port = _ssh_target(instance_id)
+    _ssh(instance_id, f"mkdir -p {shlex.quote(REMOTE_ROOT)}/data/raw", timeout=60)
     _rsync(
         port,
         f"{PROJECT_ROOT / 'data/raw'}/",
         f"{target}:{REMOTE_ROOT}/data/raw/",
-        timeout=3600.0,
+        timeout=timeout,
         mirror=True,
     )
     counted = _ssh(
@@ -464,20 +465,20 @@ def _upload_inputs(instance_id: int, log: Any) -> None:
     log(f"uploaded {counted} spectra")
 
 
-def _bootstrap(instance_id: int, log: Any) -> None:
+def _bootstrap(instance_id: int, log: Any, timeout: float = BOOTSTRAP_TIMEOUT_SECONDS) -> None:
     log("bootstrapping the CUDA environment")
     result = _ssh(
         instance_id,
         f"cd {shlex.quote(REMOTE_ROOT)} && "
         f"CERIDWEN_MIN_GPU_MEMORY_MIB={BENCHMARK_GPU_MEMORY_MIB} "
         "bash scripts/bootstrap_vast_ai.sh",
-        timeout=BOOTSTRAP_TIMEOUT_SECONDS,
+        timeout=timeout,
     )
     for line in result.stdout.strip().splitlines()[-4:]:
         log(f"bootstrap: {line}")
 
 
-def _verify_cuda_backend(instance_id: int, log: Any) -> None:
+def _verify_cuda_backend(instance_id: int, log: Any, timeout: float = 600.0) -> None:
     """Prove the benchmark interpreter sees a GPU before the benchmark runs.
 
     The bootstrap checks CUDA in its own shell. Checking again here, through
@@ -495,7 +496,7 @@ def _verify_cuda_backend(instance_id: int, log: Any) -> None:
         "JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 LD_LIBRARY_PATH= "
         f".venv-ceridwen-gpu/bin/python -c {shlex.quote(probe)} 2>&1 | tail -4; "
         "df -h /workspace | tail -1",
-        timeout=600.0,
+        timeout=timeout,
         check=False,
     )
     output = result.stdout.strip()
@@ -572,7 +573,7 @@ def _destroy(instance_id: int, log: Any) -> None:
     """
     for _ in range(DESTROY_ATTEMPTS):
         try:
-            _vastai(["destroy", "instance", str(instance_id), "--yes"])
+            _vastai(["destroy", "instance", str(instance_id), "-y"])
             if not _instance_exists(instance_id):
                 log(f"destroyed instance {instance_id}")
                 return
@@ -622,7 +623,7 @@ def _measure_offer(
         _prepare_checkout(instance_id, log)
         _upload_inputs(instance_id, log)
         _bootstrap(instance_id, log)
-        _verify_cuda_backend(instance_id, log)
+        _verify_cuda_backend(instance_id, log, timeout=left())
         record = _run_benchmark(instance_id, offer, log)
         _download_result(instance_id, record["result_directory"], log)
     finally:
@@ -804,6 +805,403 @@ def command_run(args: argparse.Namespace) -> int:
     return 0 if all(run.status == "complete" for run in runs) else 1
 
 
+# The price comparison uses the current notebook likelihood, timed by the
+# existing benchmark_baked_runtime.py. Keep this separate from the historical
+# fixed-NSS sweep above so its workload and offer policy do not change.
+PRICE_GPUS = ("RTX 5060 Ti", "RTX 5070", "RTX 5070 Ti", "RTX 5080", "RTX 5090")
+PRICE_LIMITS = {"RTX 5060 Ti": 0.20, "RTX 5070": 0.25,
+                "RTX 5070 Ti": 0.30, "RTX 5080": 0.40, "RTX 5090": 0.70}
+PRICE_CAP_PATH = Path.home() / ".claude/scripts/workspace-overseers/caps/gpu-bench.json"
+PRICE_RESULT_ROOT = PROJECT_ROOT / "results/gpu-benchmark-2026-09-23/sol"
+PRIOR_MATRIX = PROJECT_ROOT / "results/gpu-benchmark-2026-09-23/matrix.json"
+PRICE_PROJECT_COMMIT = "c869309c374bb7976b4bb9729a0650043fbfb4f7"
+
+
+def _replacement_cost(gpu_name: str, current_host: int) -> float | None:
+    """Estimate boot, setup, and download on a fresh, untried host."""
+    _, tried_hosts, tried_offers = _price_spend_state()
+    tried_hosts.add(current_host)
+    prices = []
+    for offer in search_offers("gpu_name in [RTX_5060_Ti,RTX_5070,RTX_5070_Ti,RTX_5080,RTX_5090] reliability>0.995"):
+        if (offer.get("gpu_name") == gpu_name
+                and int(offer.get("host_id") or 0) not in tried_hosts
+                and int(offer.get("id") or 0) not in tried_offers):
+            terms = _price_offer(offer)
+            if terms:
+                prices.append(terms[0] * 14 / 60 + 6 * float(offer.get("inet_down_cost") or 0.0))
+    return min(prices) if prices else None
+
+
+def _replace_loading_host(gpu_name: str, host_id: int, hourly_price: float,
+                          download_price: float, no_progress_seconds: float,
+                          log: Any) -> bool:
+    """Compare remaining image/setup/download cost with a fresh rental."""
+    if no_progress_seconds < 4 * 60:
+        return False
+    fresh_cost = _replacement_cost(gpu_name, host_id)
+    if fresh_cost is None:
+        return False
+    remaining_minutes = 1 + 1.2 * (no_progress_seconds / 60 - 4)
+    continue_cost = hourly_price * (remaining_minutes + 8) / 60 + 6 * download_price
+    log(f"image wait estimate: continue ${continue_cost:.4f}, fresh ${fresh_cost:.4f}")
+    return fresh_cost < continue_cost
+
+
+def _price_spend_state() -> tuple[float, set[int], set[int]]:
+    old = json.loads(PRIOR_MATRIX.read_text())
+    prior = sum(float(entry.get("spent_usd") or 0.0)
+                for entry in old.get("rentals", []) + old.get("failures", []))
+    hosts = {int(entry["offer"]["host_id"])
+             for entry in old.get("rentals", []) + old.get("failures", [])
+             if entry.get("offer", {}).get("host_id") is not None}
+    # These two rentals were interrupted before the previous worker wrote
+    # their failure records; their host IDs remain in driver.log.
+    hosts.update({102063, 91303})
+    offers = {int(value) for value in old.get("tried_offers", [])}
+    manifest = PRICE_RESULT_ROOT / "manifest.json"
+    if manifest.exists():
+        current = json.loads(manifest.read_text())
+        prior = float(current.get("prior_billed_spend_usd", prior))
+        entries = current["attempts"]
+        prior += sum(float(entry.get("estimated_spend_usd") or 0.0) for entry in entries)
+        hosts.update(int(entry["host_id"]) for entry in entries)
+        offers.update(int(entry["offer_id"]) for entry in entries)
+    return prior, hosts, offers
+
+
+def _price_offer(offer: dict[str, Any]) -> tuple[float, float | None] | None:
+    name = offer.get("gpu_name")
+    if name not in PRICE_LIMITS or offer.get("verification") != "verified":
+        return None
+    if (not offer.get("rentable") or float(offer.get("reliability2") or 0) <= 0.995
+            or float(offer.get("disk_space") or 0) < DEFAULT_DISK_GB
+            or float(offer.get("gpu_ram") or 0) < 7500
+            or float(offer.get("cuda_max_good") or 0) < 12.6
+            or int(offer.get("direct_port_count") or 0) < 2):
+        return None
+    on_demand = float(offer.get("dph_total") or 1e9)
+    if on_demand <= PRICE_LIMITS[name]:
+        return on_demand, None
+    bid = round(float(offer.get("min_bid") or 1e9) + 0.005, 4)
+    return (bid, bid) if bid <= PRICE_LIMITS[name] else None
+
+
+def _upload_pinned_submodules(instance_id: int, timeout: float) -> None:
+    """Send the committed submodule revisions without remote GitHub credentials."""
+    target, port = _ssh_target(instance_id)
+    for tree in ("ceridwen", "external/sedpy_jax"):
+        listing = subprocess.run(
+            ["git", "ls-tree", PRICE_PROJECT_COMMIT, tree], cwd=PROJECT_ROOT,
+            check=True, capture_output=True, text=True, timeout=30,
+        ).stdout.strip()
+        revision = listing.split()[2]
+        archive = subprocess.run(
+            ["git", "-C", str(PROJECT_ROOT / tree), "archive", "--format=tar.gz", revision],
+            check=True, capture_output=True, timeout=180,
+        ).stdout
+        remote = f"{REMOTE_ROOT}/{tree}"
+        sent = subprocess.run(
+            ["ssh", *_ssh_options(port), target,
+             f"mkdir -p {shlex.quote(remote)} && tar -xz -C {shlex.quote(remote)}"],
+            input=archive, capture_output=True, timeout=timeout,
+        )
+        if sent.returncode:
+            raise SweepError(f"submodule upload failed for {tree}: {sent.stderr.decode()[-500:]}")
+
+
+def _upload_pinned_project(instance_id: int, timeout: float) -> None:
+    """Transfer only the committed source needed by the likelihood benchmark."""
+    target, port = _ssh_target(instance_id)
+    archive = subprocess.run(
+        ["git", "archive", "--format=tar.gz", PRICE_PROJECT_COMMIT, "scripts",
+         "notebooks/ceridwen_integrated_photometry_spectra.ipynb"],
+        cwd=PROJECT_ROOT, check=True, capture_output=True, timeout=180,
+    ).stdout
+    remote = shlex.quote(REMOTE_ROOT)
+    sent = subprocess.run(
+        ["ssh", *_ssh_options(port), target,
+         f"mkdir -p {remote} && tar -xz -C {remote} && "
+         f"printf '%s\\n' {shlex.quote(PRICE_PROJECT_COMMIT)} > "
+         f"{remote}/.benchmark-source-revision"],
+        input=archive, capture_output=True, timeout=timeout,
+    )
+    if sent.returncode:
+        raise SweepError(f"source upload failed: {sent.stderr.decode()[-500:]}")
+
+
+def _retry_after_ssh_disconnect(instance_id: int, offer: dict[str, Any],
+                                hourly_price: float, rental_started: float,
+                                stage: str,
+                                action: Any, log: Any) -> Any:
+    """Resume a live rental after a dropped SSH channel when that is cheaper."""
+    first_disconnect: float | None = None
+    while True:
+        try:
+            return action()
+        except (SweepError, subprocess.TimeoutExpired) as error:
+            detail = str(error).lower()
+            if not any(word in detail for word in
+                       ("connection", "broken pipe", "timed out", "timeout", "ssh")):
+                raise
+            if first_disconnect is None:
+                first_disconnect = time.monotonic()
+            log(f"{stage}: SSH channel lost; checking the same instance")
+            while True:
+                state = _instance_state(instance_id)
+                if int(state.get("id") or 0) != instance_id:
+                    raise SweepError(f"{stage}: instance no longer exists") from error
+                if state.get("actual_status") in {"offline", "exited"}:
+                    raise SweepError(f"{stage}: instance is {state['actual_status']}") from error
+                try:
+                    probe = _ssh(instance_id, "true", timeout=40, check=False)
+                except (SweepError, subprocess.TimeoutExpired):
+                    probe = None
+                if probe is not None and probe.returncode == 0:
+                    log(f"{stage}: SSH reconnected; resuming on instance {instance_id}")
+                    break
+                stalled = time.monotonic() - first_disconnect
+                spent, _, _ = _price_spend_state()
+                cap = float(json.loads(PRICE_CAP_PATH.read_text())["usd"])
+                projected = spent + hourly_price * (
+                    time.monotonic() - rental_started + 25 * 60
+                ) / 3600
+                if projected > cap or _replace_loading_host(
+                    offer["gpu_name"], int(offer["host_id"]), hourly_price,
+                    float(offer.get("inet_down_cost") or 0.0), stalled, log,
+                ):
+                    raise SweepError(f"{stage}: replacement is cheaper or cap would be exceeded") from error
+                time.sleep(SSH_POLL_SECONDS)
+
+
+def _price_attempt(offer: dict[str, Any], price: float, bid: float | None,
+                   log: Any, attach_instance: int | None = None) -> dict[str, Any]:
+    instance_id: int | None = attach_instance
+    existing_state = _instance_state(attach_instance) if attach_instance else None
+    elapsed = max(0.0, datetime.now(UTC).timestamp() - float(existing_state["start_date"])) if existing_state else 0.0
+    started = time.monotonic() - elapsed
+    result: dict[str, Any] = {
+        "gpu_name": offer["gpu_name"], "host_id": int(offer["host_id"]),
+        "offer_id": int(offer["id"]), "price_usd_per_hour": price,
+        "download_usd_per_gb": float(offer.get("inet_down_cost") or 0.0),
+        "interruptible": bid is not None, "reliability": offer["reliability2"],
+        "status": "failed", "instance_id": None,
+        "project_commit": PRICE_PROJECT_COMMIT,
+    }
+    try:
+        if instance_id is None:
+            args = argparse.Namespace(image=DEFAULT_IMAGE, disk=DEFAULT_DISK_GB, bid=bid)
+            instance_id = _create_instance(offer, args)
+        result["instance_id"] = instance_id
+        state = _instance_state(instance_id)
+        result["price_usd_per_hour"] = float(state.get("dph_total") or price)
+        if result["price_usd_per_hour"] > PRICE_LIMITS[offer["gpu_name"]]:
+            raise SweepError("actual instance hourly price exceeds the card limit")
+        log(f"rented {instance_id}: {offer['gpu_name']} host {offer['host_id']} ${price:.4f}/h")
+        attached = False
+        last_message = None
+        last_status = None
+        last_progress = time.monotonic()
+        while True:
+            state = _instance_state(instance_id)
+            if int(state.get("id") or 0) != instance_id:
+                raise SweepError("instance no longer exists")
+            status = state.get("actual_status")
+            if status in {"offline", "exited"}:
+                raise SweepError(f"instance entered {status}")
+            message = (status, state.get("status_msg"))
+            if status != last_status or (status == "loading" and message != last_message):
+                last_progress = time.monotonic()
+            last_status = status
+            last_message = message
+            spent, _, _ = _price_spend_state()
+            cap = float(json.loads(PRICE_CAP_PATH.read_text())["usd"])
+            projected = spent + result["price_usd_per_hour"] * (time.monotonic() - started + 25 * 60) / 3600
+            if projected > cap:
+                raise SweepError("continuing would exceed the task spend cap")
+            if status == "running":
+                if not attached:
+                    _attach_ssh_key(instance_id)
+                    attached = True
+                try:
+                    probe = _ssh(instance_id, "true", timeout=40, check=False)
+                except (SweepError, subprocess.TimeoutExpired):
+                    probe = None
+                if probe is not None and probe.returncode == 0:
+                    break
+            if _replace_loading_host(offer["gpu_name"], int(offer["host_id"]),
+                                     result["price_usd_per_hour"],
+                                     float(offer.get("inet_down_cost") or 0.0),
+                                     time.monotonic() - last_progress, log):
+                raise SweepError("fresh host has lower estimated remaining setup cost")
+            time.sleep(SSH_POLL_SECONDS)
+
+        def stage(name: str, action: Any) -> Any:
+            return _retry_after_ssh_disconnect(
+                instance_id, offer, result["price_usd_per_hour"], started,
+                name, action, log,
+            )
+        stage("source", lambda: _upload_pinned_project(instance_id, timeout=1800))
+        stage("submodules", lambda: _upload_pinned_submodules(instance_id, timeout=1800))
+        stage("inputs", lambda: _upload_inputs(instance_id, log, timeout=1800))
+        stage("bootstrap", lambda: _bootstrap(instance_id, log, timeout=1800))
+        stage("CUDA check", lambda: _verify_cuda_backend(instance_id, log))
+
+        host = int(offer["host_id"])
+        slug = offer["gpu_name"].lower().replace(" ", "-")
+        remote_path = f"results/gpu-benchmark-2026-09-23/timing-{slug}-host-{host}.json"
+        command = (f"cd {shlex.quote(REMOTE_ROOT)} && mkdir -p results/gpu-benchmark-2026-09-23 && "
+                   "MPLBACKEND=Agg LD_LIBRARY_PATH= JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 "
+                   "XLA_FLAGS='--xla_gpu_enable_command_buffer=' "
+                   ".venv-ceridwen-gpu/bin/python scripts/benchmark_baked_runtime.py "
+                   "--particles 500 --draws 500 --rounds 5 --repeats 10 --seed 20260921 "
+                   f"--output {remote_path}")
+        log(f"measuring {offer['gpu_name']} on host {host}")
+        absolute_output = REMOTE_ROOT + "/" + remote_path
+        def run_or_resume_benchmark() -> None:
+            while True:
+                saved = _ssh(instance_id, f"test -s {shlex.quote(absolute_output)}",
+                             timeout=40, check=False)
+                if saved.returncode == 0:
+                    return
+                running = _ssh(
+                    instance_id,
+                    "pgrep -f '^[.]venv-ceridwen-gpu/bin/python scripts/benchmark_baked_runtime.py'",
+                    timeout=40, check=False,
+                )
+                if running.returncode != 0:
+                    break
+                spent, _, _ = _price_spend_state()
+                cap = float(json.loads(PRICE_CAP_PATH.read_text())["usd"])
+                if spent + result["price_usd_per_hour"] * (
+                    time.monotonic() - started + 5 * 60
+                ) / 3600 > cap:
+                    raise SweepError("continuing the benchmark would exceed the spend cap")
+                time.sleep(SSH_POLL_SECONDS)
+            _ssh(instance_id, command, timeout=720)
+        stage("benchmark", run_or_resume_benchmark)
+        raw = json.loads(stage(
+            "result read",
+            lambda: _ssh(instance_id, f"cat {shlex.quote(absolute_output)}", timeout=60),
+        ).stdout)
+        if not raw["log_likelihood"]["finite"] or not raw["log_likelihood"]["within_test_tolerance"]:
+            raise SweepError("likelihood validation failed")
+        entry = next(row for row in raw["summary"] if row["particles"] == 500)
+        result["calls_per_second"] = 1e6 / float(entry["free_baked_us_per_call"])
+        local = PRICE_RESULT_ROOT / Path(remote_path).name
+        local.write_text(json.dumps(raw, indent=2) + "\n")
+        result["raw_json"] = str(local.relative_to(PROJECT_ROOT))
+        result["status"] = "complete"
+    except Exception as error:
+        result["error"] = f"{type(error).__name__}: {error}"
+        log(result["error"][-300:])
+    finally:
+        if instance_id is not None:
+            retain = False
+            if result["status"] == "failed" and not any(
+                phrase in result.get("error", "") for phrase in
+                ("exceeds the card limit", "exceed the task spend cap",
+                 "exceed the spend cap", "likelihood validation failed",
+                 "instance entered offline", "instance entered exited")
+            ):
+                state = _instance_state(instance_id)
+                spent, _, _ = _price_spend_state()
+                cap = float(json.loads(PRICE_CAP_PATH.read_text())["usd"])
+                fresh = _replacement_cost(offer["gpu_name"], int(offer["host_id"]))
+                repair = result["price_usd_per_hour"] * 5 / 60
+                retain = (state.get("actual_status") == "running"
+                          and spent + result["price_usd_per_hour"] *
+                          (time.monotonic() - started + 10 * 60) / 3600 < cap
+                          and (fresh is None or repair < fresh))
+                if retain:
+                    result["status"] = "needs_recovery"
+                    log(f"retaining instance {instance_id} for a cheaper same-host repair")
+            if not retain:
+                _destroy(instance_id, log)
+            result["destroyed"] = not _instance_exists(instance_id)
+        else:
+            result["destroyed"] = None
+        result["rented_seconds"] = time.monotonic() - started if instance_id else 0.0
+        result["estimated_spend_usd"] = result["price_usd_per_hour"] * result["rented_seconds"] / 3600
+    return result
+
+
+def command_price_matrix(args: argparse.Namespace) -> int:
+    PRICE_RESULT_ROOT.mkdir(parents=True, exist_ok=True)
+    manifest_path = PRICE_RESULT_ROOT / "manifest.json"
+    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"attempts": []}
+    attempts_at_start = len(manifest["attempts"])
+    if args.attach_instance is not None:
+        state = _instance_state(args.attach_instance)
+        if int(state.get("id") or 0) != args.attach_instance:
+            raise SweepError("the requested instance is not live")
+        if args.attach_offer_id is None:
+            raise SweepError("--attach-offer-id is required with --attach-instance")
+        offer = {"gpu_name": state["gpu_name"], "host_id": state["host_id"],
+                 "id": args.attach_offer_id, "reliability2": state["reliability2"]}
+        def log(message: str) -> None:
+            print(f"{datetime.now(UTC):%H:%M:%S} {message}", flush=True)
+        outcome = _price_attempt(offer, float(state["dph_total"]), None, log,
+                                 attach_instance=args.attach_instance)
+        manifest["attempts"].append(outcome)
+        prior, _, _ = _price_spend_state()
+        previous = sum(float(x.get("estimated_spend_usd") or 0)
+                       for x in manifest["attempts"][:-1])
+        manifest["prior_estimated_spend_usd"] = prior - previous
+        manifest["total_estimated_spend_usd"] = manifest["prior_estimated_spend_usd"] + sum(
+            float(x.get("estimated_spend_usd") or 0) for x in manifest["attempts"])
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+        return 0 if outcome["status"] == "complete" and outcome["destroyed"] else 1
+    deadline = time.monotonic() + args.wait_minutes * 60
+    while True:
+        spent, tried_hosts, tried_offers = _price_spend_state()
+        cap = float(json.loads(PRICE_CAP_PATH.read_text())["usd"])
+        completed = {name: {int(entry["host_id"]) for entry in manifest["attempts"]
+                            if entry["gpu_name"] == name and entry["status"] == "complete"}
+                     for name in PRICE_GPUS}
+        if all(len(hosts) >= 2 for hosts in completed.values()):
+            return 0
+        if spent + 0.20 >= cap:
+            print(f"spend guard: ${spent:.3f} of ${cap:.2f}; stopping", flush=True)
+            return 1
+        offers = search_offers("gpu_name in [RTX_5060_Ti,RTX_5070,RTX_5070_Ti,RTX_5080,RTX_5090] reliability>0.995")
+        candidates = []
+        for name in PRICE_GPUS:
+            if len(completed[name]) >= 2:
+                continue
+            for offer in offers:
+                if offer.get("gpu_name") != name or int(offer.get("host_id") or 0) in tried_hosts or int(offer.get("id") or 0) in tried_offers:
+                    continue
+                terms = _price_offer(offer)
+                # Reserve enough for a slow setup and measurement before renting.
+                download_cost = 8 * float(offer.get("inet_down_cost") or 0.0)
+                if terms and spent + terms[0] * 0.66 + download_cost <= cap:
+                    expected_cost = terms[0] * 0.33 + 6 * float(offer.get("inet_down_cost") or 0.0)
+                    candidates.append((len(completed[name]), terms[0], offer, terms[1], expected_cost))
+        if candidates:
+            _, price, offer, bid, _ = min(
+                candidates,
+                key=lambda item: (item[2]["gpu_name"] != "RTX 5060 Ti", item[0], item[4]),
+            )
+            def log(message: str) -> None:
+                print(f"{datetime.now(UTC):%H:%M:%S} {message}", flush=True)
+            outcome = _price_attempt(offer, price, bid, log)
+            manifest["attempts"].append(outcome)
+            manifest["prior_estimated_spend_usd"] = spent - sum(
+                float(x.get("estimated_spend_usd") or 0) for x in manifest["attempts"][:-1])
+            manifest["total_estimated_spend_usd"] = manifest["prior_estimated_spend_usd"] + sum(
+                float(x.get("estimated_spend_usd") or 0) for x in manifest["attempts"])
+            manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+            if outcome.get("destroyed") is False:
+                raise SweepError(f"instance {outcome['instance_id']} still exists; stop further rentals")
+            if len(manifest["attempts"]) - attempts_at_start >= args.max_attempts:
+                return 0
+        elif time.monotonic() >= deadline:
+            print("no remaining qualifying fresh host was listed", flush=True)
+            return 1
+        else:
+            time.sleep(60)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Benchmark Ceridwen on many Vast.ai GPU models, in batches."
@@ -852,6 +1250,15 @@ def build_parser() -> argparse.ArgumentParser:
         help=f"Offers to try per GPU model before giving up. Default: {DEFAULT_ATTEMPTS}.",
     )
     run_parser.set_defaults(function=command_run)
+
+    price_parser = subparsers.add_parser(
+        "price-matrix", help="measure current M1_210210 likelihood on two hosts per card"
+    )
+    price_parser.add_argument("--wait-minutes", type=float, default=0)
+    price_parser.add_argument("--max-attempts", type=int, default=1)
+    price_parser.add_argument("--attach-instance", type=int)
+    price_parser.add_argument("--attach-offer-id", type=int)
+    price_parser.set_defaults(function=command_price_matrix)
     return parser
 
 

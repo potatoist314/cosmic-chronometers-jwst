@@ -1,0 +1,73 @@
+{
+  "target": "M1_210210",
+  "device": "cuda:0",
+  "device_kind": "NVIDIA GeForce RTX 5060 Ti",
+  "jax": "0.10.2",
+  "x64": true,
+  "xla_flags": "--xla_gpu_enable_command_buffer=",
+  "seed": 20260921,
+  "rounds_per_arm": 5,
+  "repeats_per_round": 10,
+  "log_likelihood": {
+    "draws": 500,
+    "finite": true,
+    "lnl_min": -338459076123.9708,
+    "lnl_max": 226974.40556808223,
+    "max_abs_dlnl": 1.862645149230957e-09,
+    "max_rel_dlnl": 7.511508416430671e-14,
+    "within_test_tolerance": true
+  },
+  "summary": [
+    {
+      "particles": 500,
+      "fixed_us_per_call": 16.781848040409386,
+      "free_current_us_per_call": 45.968806953169405,
+      "free_baked_us_per_call": 30.197785003110766,
+      "speedup_median": 1.521608079630124,
+      "speedup_min": 1.5178857656716758,
+      "speedup_max": 1.5338456308807455
+    }
+  ],
+  "rounds": [
+    {
+      "particles": 500,
+      "round": 0,
+      "fixed": 16.34267996996641,
+      "free_current": 45.78159609809518,
+      "free_baked": 30.161423957906663,
+      "speedup": 1.5178857656716758
+    },
+    {
+      "particles": 500,
+      "round": 1,
+      "fixed": 16.781848040409386,
+      "free_current": 45.968806953169405,
+      "free_baked": 30.21067485678941,
+      "speedup": 1.521608079630124
+    },
+    {
+      "particles": 500,
+      "round": 2,
+      "fixed": 16.78874995559454,
+      "free_current": 45.96344695892185,
+      "free_baked": 30.197785003110766,
+      "speedup": 1.5220800781973582
+    },
+    {
+      "particles": 500,
+      "round": 3,
+      "fixed": 16.78781898226589,
+      "free_current": 45.971425832249224,
+      "free_baked": 29.97135103214532,
+      "speedup": 1.5338456308807455
+    },
+    {
+      "particles": 500,
+      "round": 4,
+      "fixed": 16.5320779196918,
+      "free_current": 46.006935997866094,
+      "free_baked": 30.27928899973631,
+      "speedup": 1.5194192967432871
+    }
+  ]
+}
