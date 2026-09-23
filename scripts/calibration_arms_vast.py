@@ -150,7 +150,10 @@ ARMS = {
     "dust_index_m3": {"CERIDWEN_PRIORS_OVERRIDE": '{"diffuse_dust_index": "Uniform(low=-3.0, high=0.4)"}'},
     # Emission-line marginalisation test (2026-09-23), current defaults otherwise.
     "eline_off": {},
-    "eline_on": {"CERIDWEN_SETTINGS_OVERRIDE": '{"emission_line_marginalisation": true}'},
+    "eline_on": {
+        "CERIDWEN_SETTINGS_OVERRIDE": '{"emission_line_marginalisation": true}',
+        "SPS_HOME": "/workspace/cosmic-chronometers-jwst/external/fsps",
+    },
 }
 DEFAULT_BASE_SEED = 20260830          # == run_ceridwen_vast_multi_gpu.DEFAULT_BASE_SEED
 # Independent NSS repeats of the production model: same data, shifted seed.
@@ -368,6 +371,10 @@ def _prepare(sweep, instance_id: int, args, cells: list[dict], log) -> None:
     sweep._wait_for_ssh(instance_id, log)
     absorption._checkout(instance_id, args.branch, log)      # clone + submodule trees
     target, port = sweep._ssh_target(instance_id)
+    fsps_remote = f"{sweep.REMOTE_ROOT}/external/fsps/data"
+    sweep._ssh(instance_id, f"mkdir -p {shlex.quote(fsps_remote)}", timeout=60.0)
+    sweep._rsync(port, str(PROJECT_ROOT / "external/fsps/data/emlines_info.dat"),
+                 f"{target}:{fsps_remote}/", timeout=120.0)
     if args.ceridwen_tree:
         tree = Path(args.ceridwen_tree).resolve()
         log(f"uploading ceridwen tree {tree} ({_tree_sha(tree)})")
