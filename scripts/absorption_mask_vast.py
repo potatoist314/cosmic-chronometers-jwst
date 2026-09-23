@@ -95,7 +95,7 @@ def _checkout(instance_id: int, branch: str, log) -> None:
             "command -v rsync >/dev/null 2>&1 || (apt-get update -qq && apt-get install -y -qq rsync)",
             "mkdir -p /workspace && cd /workspace",
             f"rm -rf {shlex.quote(sweep.REMOTE_ROOT)}",
-            f"git clone --quiet --branch {shlex.quote(branch)} {sweep.REPOSITORY_URL} {shlex.quote(sweep.REMOTE_ROOT)}",
+            f"git clone --quiet --depth 1 --branch {shlex.quote(branch)} {sweep.REPOSITORY_URL} {shlex.quote(sweep.REMOTE_ROOT)}",
             f"cd {shlex.quote(sweep.REMOTE_ROOT)} && git rev-parse --short HEAD",
         ]),
         timeout=900.0,
