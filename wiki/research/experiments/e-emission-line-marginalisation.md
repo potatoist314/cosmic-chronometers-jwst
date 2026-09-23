@@ -43,19 +43,28 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
 
 ## Execution plan
 
-- Model: \(y = P(a)\,\mu + \sum_k f_k L_k\). Coefficients \(a\) keep their priors (0.3 for \(a_0\), 0.1 for \(a_1 \ldots a_{10}\)). Line fluxes \(f_k\) have a flat prior, as upstream. One Gaussian integral covers both.
+- Model: \(y = P(a)\,\mu + \sum_k f_k L_k\). Coefficients \(a\) keep their priors (0.3 for \(a_0\), 0.1 for \(a_1 \ldots a_{10}\)). Line fluxes: flat prior on \(f_k \ge 0\).
+- Marginal = unconstrained Gaussian integral \(\times\, P(f \ge 0)\) under the line-flux posterior. \(P\): product of \(\Phi(\hat f_k/\sigma_k)\); exact bivariate (Genz 2004) for blends with \(|\rho| > 0.5\).
+- Posterior draws of \(f\): truncated at 0 (Gibbs, 1000 sweeps).
 - \(L_k\): unit-flux Gaussian in \(\ln\lambda\) at the FSPS vacuum rest wavelength times \(1+z\). Width \(\sqrt{\sigma_{\mathrm{gas}}^2 + \sigma_{\mathrm{inst}}^2}\); \(\sigma_{\mathrm{gas}}\) is the sampled \(\sigma_\star\), as upstream.
-- Lines: FSPS `emlines_info.dat` lines inside the spectrum at \(z_{\mathrm{cat}}\) and \(z_{\mathrm{cat}} \pm 0.1\), 3\(\sigma\) from the edges, with 3 or more unmasked pixels within 2\(\sigma\) (upstream rules).
+- Lines: FSPS `emlines_info.dat` lines 3\(\sigma\) inside the spectrum, 3 or more unmasked pixels within 2\(\sigma\), tested at \(z_{\mathrm{cat}}\). Upstream tests the \(z\)-prior ends; at \(z_{\mathrm{cat}}+0.1\), [O III] 5007 falls past the last unmasked pixel.
+- A \(10^{-12}\) ridge on each line's precision keeps \(\ln L\) finite where a sampled \(z\) moves a line off the pixels.
 - Lines are added after the polynomial. The fractional noise term uses \(\mu\) without the lines.
 - Photometry has no lines. A 1 \(\text{\AA}\) equivalent-width line changes a filter over 1000 \(\text{\AA}\) wide by under 0.1 %; the floor is 5 %.
 - Setting `emission_line_marginalisation`, default `False`. When `True`, modelled lines leave the emission mask.
-- Code: `ceridwen/ceridwen/likelihood/emission_lines.py`, `PolynomialCalibration.calibrate_with_lines`, `DiagonalGaussianLikelihood(emission_lines=...)`; ceridwen `6fc7539`.
+- Code: `ceridwen/ceridwen/likelihood/emission_lines.py`, `PolynomialCalibration.calibrate_with_lines`, `DiagonalGaussianLikelihood(emission_lines=...)`; ceridwen `6fc7539`, positivity `7f18311`.
 - First GPU fit: M1_210210 with the option on; waits for Liu Hao's approval.
 
 ## Amendments
 
 ```json
-[]
+[
+  {
+    "date": "2026-09-23",
+    "text": "make it strictly positive, negative absorption should already be modelled no",
+    "display_text": "Make it strictly positive; negative absorption should already be modelled, no?"
+  }
+]
 ```
 
 ## Runs
@@ -83,18 +92,24 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
 | --- | --- |
 | Option off against the code before it, joint \(\ln L\) at 20 M1_210210 posterior draws | bit-identical (`tests/test_emission_line_marginalisation.py`) |
 | Zero line columns against the polynomial marginalisation | equal to \(10^{-8}\) in \(\ln L\) (`ceridwen/tests/test_emission_line_columns.py`) |
-| Joint marginal against quadrature over one line flux | equal to \(10^{-6}\) in \(\ln L\) |
-| Injected lines on a synthetic spectrum | recovered within 3\(\sigma\); redshift recovered to \(10^{-4}\) |
-| Lines fitted for M1_210210 | 10: [S II] 4070, 4078, H\(\delta\), [O III] 4363, He I 4471, He II 4686, [Ar IV] 4711, [Ne IV] 4720, [Ar IV] 4740, H\(\beta\) |
-| Fitted pixels, off / on | 3523 / 3657 (H\(\beta\) unmasked) |
-| Line-dependent noise minus \(\mu\)-only noise, \(\Delta\ln L\) over 20 draws | mean −0.41, standard deviation 0.05, max \(\lvert\Delta\rvert\) 0.49 |
-| Rest-frame \(\lvert\mathrm{EW}\rvert\) of the solved lines | median 0.19 \(\text{\AA}\), max 0.47 \(\text{\AA}\) |
-| CPU time, 20 draws per `jit(vmap)` call, off / on | 3.7 / 5.8 ms (Apple CPU, jax x64) |
+| Joint marginal against quadrature over \(f \ge 0\), one line | equal to \(10^{-6}\) in \(\ln L\) |
+| Injected positive lines on a synthetic spectrum | recovered within 3\(\sigma\); redshift to \(10^{-4}\) |
+| Synthetic pure stellar absorption, also twice too deep in the data | flux draws \(\ge 0\), mean below 1.5\(\sigma\) |
+| Lines fitted for M1_210210 | 24, 3798–5200 \(\text{\AA}\) rest, including [O III] 4959, 5007; blended pairs [O II] 3867/[Ne III] 3869, He I 3889/H8, [Ne III] 3968/H\(\epsilon\) |
+| Fitted pixels, off / on | 3523 / 3926 |
+| \(\ln P(f \ge 0)\), exact (scipy, 24-d) over 20 draws | median −51.1, range −63.5 to −48.1 |
+| Implemented minus exact \(\ln P\) | mean −0.62, standard deviation 0.06, max \(\lvert\Delta\rvert\) 0.79 |
+| Plain product of \(\Phi\) minus exact | mean +1.06, standard deviation 0.26 |
+| Line-dependent noise minus \(\mu\)-only noise, \(\Delta\ln L\) over 20 draws | mean +0.19, standard deviation 0.15, max \(\lvert\Delta\rvert\) 0.53 |
+| Rest-frame EW of the posterior-mean lines | median 0.11 \(\text{\AA}\), max 1.13 \(\text{\AA}\) |
+| \(\ln L\) at 20 redshifts across \(z_{\mathrm{cat}} \pm 0.1\) | all finite |
+| CPU time, 20 draws per `jit(vmap)` call, off / on | 4.0 / 10.9 ms (Apple CPU, jax x64) |
 
 ## Caveats
 
 - With the flat prior, \(\ln Z\) changes by a constant per line; do not compare the evidence with masked fits.
-- The flat prior allows negative fluxes. H\(\delta\) and H\(\beta\) columns overlap the stellar Balmer absorption.
+- The implemented \(\ln P\) ignores the weak positive correlations (0.05–0.12) outside the blended pairs; this gives the −0.62 offset.
+- Posterior median [O III] 4959 flux, 1.5e-17, exceeds [O III] 5007, 1.3e-17 erg s\(^{-1}\) cm\(^{-2}\); fluxes are free, not tied to 1:3.
 
 ## References
 

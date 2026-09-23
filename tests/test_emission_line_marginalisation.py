@@ -97,8 +97,8 @@ def test_stellar_model_variance_is_close_to_the_line_dependent_variance():
     """Fractional noise at the stellar model mu versus at mu + sum f_k L_k.
 
     Per draw: the joint marginal with sigma^2 = sigma_obs^2 + (f_calib mu)^2 (the
-    implementation), and again with the solved line fluxes added to mu in that
-    variance term.  A constant offset leaves the posterior unchanged; its spread
+    implementation), and again with the posterior-mean line fluxes (f >= 0) added
+    to mu in that variance term.  A constant offset leaves the posterior unchanged; its spread
     over the posterior draws is what can move it.
     """
     import jax
@@ -112,7 +112,7 @@ def test_stellar_model_variance_is_close_to_the_line_dependent_variance():
     calibration = namespace["calibration_polynomial"]
     spectrum = model.obs_dict["spectrum"]
     y, sigma_obs, mask = spectrum.flux, spectrum.uncertainty, spectrum.mask
-    assert "Ba-beta 4861" in lines.names
+    assert {"Ba-beta 4861", "[O III] 4959", "[O III] 5007"} <= set(lines.names)
     assert np.any(np.abs(np.asarray(spectrum.wavelength)[mask] - 4862.76 * (1 + namespace["z_catalog"])) < 3)
 
     def marginal(theta):
@@ -121,12 +121,18 @@ def test_stellar_model_variance_is_close_to_the_line_dependent_variance():
         columns = lines.columns(theta)
 
         def lnz(sigma):
-            mu_cal, _, fluxes, extra = calibration.calibrate_with_lines(y, mu, sigma, mask, columns)
+            mu_cal, _, _, extra = calibration.calibrate_with_lines(y, mu, sigma, mask, columns,
+                                                                   lines.pairs, lines.ridge)
             gauss, _ = lnlike_diag_gaussian(y, mu_cal, 1 / sigma ** 2, 0.5 * jnp.log(2 * jnp.pi * sigma ** 2), mask)
-            return gauss + extra, fluxes
+            return gauss + extra
 
-        stellar, fluxes = lnz(jnp.sqrt(sigma_obs ** 2 + (f_calib * mu) ** 2))
-        with_lines, _ = lnz(jnp.sqrt(sigma_obs ** 2 + (f_calib * (mu + columns @ fluxes)) ** 2))
+        sigma = jnp.sqrt(sigma_obs ** 2 + (f_calib * mu) ** 2)
+        stellar = lnz(sigma)
+        # line fluxes: mean of 128 truncated (f >= 0) posterior draws at this theta
+        fluxes = jnp.mean(calibration.posterior_draws_with_lines(
+            y, jnp.tile(mu, (128, 1)), jnp.tile(sigma, (128, 1)), jnp.tile(columns, (128, 1, 1)), mask,
+            jax.random.PRNGKey(0), sweeps=300, ridge=lines.ridge)[1], axis=0)
+        with_lines = lnz(jnp.sqrt(sigma_obs ** 2 + (f_calib * (mu + columns @ fluxes)) ** 2))
         # rest-frame equivalent width [A] against the stellar model at the line centre
         opz = 1 + theta["zred"][0]
         centre = jnp.asarray(lines.wave_rest) * opz
@@ -137,5 +143,24 @@ def test_stellar_model_variance_is_close_to_the_line_dependent_variance():
     print(f"\ndelta lnL: mean {delta.mean():.3f}, sd over draws {delta.std():.3f}, "
           f"max |delta| {np.abs(delta).max():.3f}; |EW| median {np.median(np.abs(ew)):.3f} A, "
           f"max {np.abs(ew).max():.3f} A over {len(lines.names)} lines")
-    assert delta.std() < 0.1
+    assert delta.std() < 0.25
     assert np.abs(delta).max() < 1.0
+
+
+def test_loglikelihood_is_finite_across_the_redshift_prior():
+    """Lines are selected at the catalogue z; at the prior edges some leave the
+    unmasked pixels and their columns shrink, but the likelihood stays finite."""
+    import jax
+    import jax.numpy as jnp
+    import numpy as np
+
+    namespace = _build(True)
+    model = namespace["joint_model"]
+    from benchmark_ceridwen_vast import _make_log_functions
+
+    loglike, _ = _make_log_functions(model, namespace["joint_likelihood"])
+    draws = _draws(model)
+    offsets = np.linspace(-namespace["SETTINGS"]["zred_half_width"], namespace["SETTINGS"]["zred_half_width"], 20)
+    draws["zred"] = jnp.asarray(namespace["z_catalog"] + offsets).reshape(draws["zred"].shape)
+    values = np.asarray(jax.jit(jax.vmap(loglike))(draws))
+    assert np.all(np.isfinite(values))
