@@ -1,7 +1,7 @@
 ---
 kind: question
 id: q-dust-index-railing
-title: Why does the Conroy dust index rail at its prior edge, and the UV stay weak?
+title: Why does the Conroy dust index rail and the UV stay weak?
 date: 2026-09-23
 origin: new
 status: open
