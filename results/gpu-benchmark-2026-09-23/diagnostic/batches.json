@@ -1,0 +1,59 @@
+{
+  "target": "M1_210210",
+  "device": "cuda:0",
+  "device_kind": "NVIDIA GeForce RTX 5090",
+  "jax": "0.10.2",
+  "x64": true,
+  "seed": 20260921,
+  "xla_flags": "--xla_gpu_enable_command_buffer=",
+  "batches": [
+    {
+      "particles_per_call": 100,
+      "repeats": 2000,
+      "compile_and_warmup_seconds": 2.499940797686577,
+      "started_utc": "2026-09-23T21:19:46.691532+00:00",
+      "started_unix": 1790198386.691546,
+      "ended_unix": 1790198388.4815147,
+      "calls_per_second": 111765.96238074318,
+      "median_total_seconds_per_batch": 0.000894773518666625,
+      "median_dispatch_seconds_per_batch": 0.00013366155326366425,
+      "median_wait_seconds_per_batch": 0.0007552129682153463
+    },
+    {
+      "particles_per_call": 500,
+      "repeats": 2000,
+      "compile_and_warmup_seconds": 2.646621290128678,
+      "started_utc": "2026-09-23T21:19:51.177294+00:00",
+      "started_unix": 1790198391.1773112,
+      "ended_unix": 1790198397.8044472,
+      "calls_per_second": 150936.5472547925,
+      "median_total_seconds_per_batch": 0.0032242960296571255,
+      "median_dispatch_seconds_per_batch": 0.00019605178385972977,
+      "median_wait_seconds_per_batch": 0.0030284402891993523
+    },
+    {
+      "particles_per_call": 2000,
+      "repeats": 924,
+      "compile_and_warmup_seconds": 2.8890238078311086,
+      "started_utc": "2026-09-23T21:20:00.753196+00:00",
+      "started_unix": 1790198400.7532127,
+      "ended_unix": 1790198413.2715104,
+      "calls_per_second": 147676.4178827102,
+      "median_total_seconds_per_batch": 0.013632162008434534,
+      "median_dispatch_seconds_per_batch": 0.0006533763371407986,
+      "median_wait_seconds_per_batch": 0.012934350408613682
+    },
+    {
+      "particles_per_call": 8000,
+      "repeats": 229,
+      "compile_and_warmup_seconds": 2.7435102169401944,
+      "started_utc": "2026-09-23T21:20:16.068525+00:00",
+      "started_unix": 1790198416.0685492,
+      "ended_unix": 1790198428.1256723,
+      "calls_per_second": 151955.20584925872,
+      "median_total_seconds_per_batch": 0.05269501404836774,
+      "median_dispatch_seconds_per_batch": 0.0006367056630551815,
+      "median_wait_seconds_per_batch": 0.051992546301335096
+    }
+  ]
+}

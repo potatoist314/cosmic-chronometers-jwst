@@ -1,0 +1,122 @@
+{
+  "instance_id": 52299029,
+  "host_id": 622869,
+  "offer_id": 47905086,
+  "project_commit": "c869309c374bb7976b4bb9729a0650043fbfb4f7",
+  "workload": "M1_210210 current defaults, free z and sigma_star, baked runtime, jax.jit(jax.vmap(loglike))",
+  "hardware": {
+    "cpu_model": "AMD Ryzen 9 9950X 16-Core Processor",
+    "physical_cores": 16,
+    "logical_cpus": 32,
+    "pcie_generation_max": 5,
+    "pcie_generation_at_idle_capture": 1,
+    "pcie_width": "16x",
+    "nvidia_driver": "580.173.02",
+    "nvidia_cuda_version": "13.0",
+    "gpu_power_limit_w": 600,
+    "gpu_max_sm_clock_mhz": 3105
+  },
+  "batches": [
+    {
+      "particles_per_call": 100,
+      "repeats": 2000,
+      "compile_and_warmup_seconds": 2.499940797686577,
+      "started_utc": "2026-09-23T21:19:46.691532+00:00",
+      "started_unix": 1790198386.691546,
+      "ended_unix": 1790198388.4815147,
+      "calls_per_second": 111765.96238074318,
+      "median_total_seconds_per_batch": 0.000894773518666625,
+      "median_dispatch_seconds_per_batch": 0.00013366155326366425,
+      "median_wait_seconds_per_batch": 0.0007552129682153463,
+      "gpu_monitor_samples": 2,
+      "gpu_util_mean_percent_all_samples": 51.0,
+      "gpu_util_mean_percent_after_first_second": 93.0,
+      "steady_sample_count": 1,
+      "sm_clock_mean_mhz_after_first_second": 2955.0,
+      "power_mean_w_after_first_second": 278.14,
+      "throttle_reasons_seen": [
+        "0x0000000000000000"
+      ]
+    },
+    {
+      "particles_per_call": 500,
+      "repeats": 2000,
+      "compile_and_warmup_seconds": 2.646621290128678,
+      "started_utc": "2026-09-23T21:19:51.177294+00:00",
+      "started_unix": 1790198391.1773112,
+      "ended_unix": 1790198397.8044472,
+      "calls_per_second": 150936.5472547925,
+      "median_total_seconds_per_batch": 0.0032242960296571255,
+      "median_dispatch_seconds_per_batch": 0.00019605178385972977,
+      "median_wait_seconds_per_batch": 0.0030284402891993523,
+      "gpu_monitor_samples": 7,
+      "gpu_util_mean_percent_all_samples": 84.42857142857143,
+      "gpu_util_mean_percent_after_first_second": 96.0,
+      "steady_sample_count": 6,
+      "sm_clock_mean_mhz_after_first_second": 2947.0,
+      "power_mean_w_after_first_second": 362.8416666666667,
+      "throttle_reasons_seen": [
+        "0x0000000000000000"
+      ]
+    },
+    {
+      "particles_per_call": 2000,
+      "repeats": 924,
+      "compile_and_warmup_seconds": 2.8890238078311086,
+      "started_utc": "2026-09-23T21:20:00.753196+00:00",
+      "started_unix": 1790198400.7532127,
+      "ended_unix": 1790198413.2715104,
+      "calls_per_second": 147676.4178827102,
+      "median_total_seconds_per_batch": 0.013632162008434534,
+      "median_dispatch_seconds_per_batch": 0.0006533763371407986,
+      "median_wait_seconds_per_batch": 0.012934350408613682,
+      "gpu_monitor_samples": 12,
+      "gpu_util_mean_percent_all_samples": 86.75,
+      "gpu_util_mean_percent_after_first_second": 94.63636363636364,
+      "steady_sample_count": 11,
+      "sm_clock_mean_mhz_after_first_second": 2947.0,
+      "power_mean_w_after_first_second": 410.66636363636366,
+      "throttle_reasons_seen": [
+        "0x0000000000000000"
+      ]
+    },
+    {
+      "particles_per_call": 8000,
+      "repeats": 229,
+      "compile_and_warmup_seconds": 2.7435102169401944,
+      "started_utc": "2026-09-23T21:20:16.068525+00:00",
+      "started_unix": 1790198416.0685492,
+      "ended_unix": 1790198428.1256723,
+      "calls_per_second": 151955.20584925872,
+      "median_total_seconds_per_batch": 0.05269501404836774,
+      "median_dispatch_seconds_per_batch": 0.0006367056630551815,
+      "median_wait_seconds_per_batch": 0.051992546301335096,
+      "gpu_monitor_samples": 12,
+      "gpu_util_mean_percent_all_samples": 96.08333333333333,
+      "gpu_util_mean_percent_after_first_second": 98.27272727272727,
+      "steady_sample_count": 11,
+      "sm_clock_mean_mhz_after_first_second": 2944.090909090909,
+      "power_mean_w_after_first_second": 401.7663636363636,
+      "throttle_reasons_seen": [
+        "0x0000000000000000"
+      ]
+    }
+  ],
+  "monitor_sample_interval_seconds": 1,
+  "monitor_total_samples": 105,
+  "monitor_all_throttle_reasons": [
+    "0x0000000000000000"
+  ],
+  "billed_spend_usd": 0.087,
+  "task_cap_usd": 0.3,
+  "invoice_checked_at_utc": "2026-09-23T21:22:58.696085+00:00",
+  "instance_destroyed_and_absence_confirmed": true,
+  "raw_files": [
+    "hardware.txt",
+    "nvidia-smi.csv",
+    "batches.json",
+    "run.log",
+    "rental.json"
+  ],
+  "actual_rental_price_usd_per_hour": 0.5494111111111111
+}

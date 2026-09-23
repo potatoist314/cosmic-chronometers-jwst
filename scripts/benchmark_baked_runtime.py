@@ -15,6 +15,7 @@ import os
 import statistics
 import tempfile
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -43,6 +44,71 @@ def build(free: bool, baked: bool) -> dict:
     return namespace
 
 
+def diagnose_batch_scaling(args: argparse.Namespace, jax: object, jnp: object,
+                           np: object) -> None:
+    """Time the current likelihood at several batch sizes on one GPU boot."""
+    from benchmark_ceridwen_vast import _make_log_functions
+
+    namespace = build(True, True)
+    model = namespace["joint_model"]
+    loglike, _ = _make_log_functions(model, namespace["joint_likelihood"])
+    batched = jax.jit(jax.vmap(loglike))
+    count = max(args.particles)
+    key = jax.random.PRNGKey(args.seed)
+    points = {
+        name: jnp.asarray(
+            model.priors[name].sample(jax.random.fold_in(key, index),
+                                      (count, *np.shape(template)))
+        ).reshape((count, *np.shape(template)))
+        for index, (name, template) in enumerate(model.theta_init.items())
+    }
+    record = {
+        "target": args.target, "device": str(jax.devices()[0]),
+        "device_kind": jax.devices()[0].device_kind, "jax": jax.__version__,
+        "x64": bool(jax.config.jax_enable_x64), "seed": args.seed,
+        "xla_flags": os.environ.get("XLA_FLAGS", ""), "batches": [],
+    }
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    for particles in args.particles:
+        batch = {name: value[:particles] for name, value in points.items()}
+        compiled_at = time.perf_counter()
+        output = batched(batch)
+        output.block_until_ready()
+        compile_seconds = time.perf_counter() - compiled_at
+        if not bool(np.isfinite(np.asarray(output)).all()):
+            raise RuntimeError(f"non-finite likelihood at batch size {particles}")
+        pilot_start = time.perf_counter()
+        batched(batch).block_until_ready()
+        pilot_seconds = time.perf_counter() - pilot_start
+        repeats = min(2000, max(30, int(12 / max(pilot_seconds, 0.001))))
+        dispatch_seconds, wait_seconds, total_seconds = [], [], []
+        started_utc = datetime.now(timezone.utc).isoformat()
+        started_unix = time.time()
+        for _ in range(repeats):
+            start = time.perf_counter()
+            result = batched(batch)
+            dispatched = time.perf_counter()
+            result.block_until_ready()
+            done = time.perf_counter()
+            dispatch_seconds.append(dispatched - start)
+            wait_seconds.append(done - dispatched)
+            total_seconds.append(done - start)
+        ended_unix = time.time()
+        row = {
+            "particles_per_call": particles, "repeats": repeats,
+            "compile_and_warmup_seconds": compile_seconds,
+            "started_utc": started_utc, "started_unix": started_unix,
+            "ended_unix": ended_unix,
+            "calls_per_second": particles * repeats / sum(total_seconds),
+            "median_total_seconds_per_batch": statistics.median(total_seconds),
+            "median_dispatch_seconds_per_batch": statistics.median(dispatch_seconds),
+            "median_wait_seconds_per_batch": statistics.median(wait_seconds),
+        }
+        record["batches"].append(row)
+        args.output.write_text(json.dumps(record, indent=2) + "\n")
+        print(json.dumps(row), flush=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--target", default="M1_210210")
@@ -52,6 +118,8 @@ def main() -> None:
     parser.add_argument("--repeats", type=int, default=20, help="timed calls per arm per round")
     parser.add_argument("--seed", type=int, default=20260921)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--diagnostic", action="store_true",
+                        help="time one current likelihood at several batch sizes")
     args = parser.parse_args()
 
     os.chdir(PROJECT_ROOT)
@@ -63,6 +131,10 @@ def main() -> None:
     import jax.numpy as jnp
     import numpy as np
     from benchmark_ceridwen_vast import _make_log_functions
+
+    if args.diagnostic:
+        diagnose_batch_scaling(args, jax, jnp, np)
+        return
 
     device = jax.devices()[0]
     count = max(args.draws, *args.particles)
