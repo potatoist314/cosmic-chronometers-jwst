@@ -283,10 +283,10 @@ def test_fit_offer_rule_accepts_reliable_cards_under_loose_guards() -> None:
 
 
 def test_fit_speed_factors_match_the_benchmark() -> None:
-    """From results/gpu-benchmark-2026-09-23/sol/summary.json (5060 Ti baseline); 5090 is the conservative host."""
+    """From results/gpu-benchmark-2026-09-23/sol/summary.json (5060 Ti baseline); 5090 is the 150k calls/s host."""
     assert sweep.FIT_SPEED_VS_5060_TI == {
         "RTX 5060": 0.9, "RTX 5060 Ti": 1.00, "RTX 5070": 1.33,
-        "RTX 5080": 2.39, "RTX 5090": 2.84,
+        "RTX 5080": 2.39, "RTX 5090": 4.49,
     }
 
 

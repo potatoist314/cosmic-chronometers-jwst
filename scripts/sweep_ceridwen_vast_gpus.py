@@ -59,15 +59,18 @@ MINIMUM_CUDA_VERSION = 12.8
 FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti", "RTX 5070", "RTX 5080", "RTX 5090")
 # Likelihood speed relative to the RTX 5060 Ti, from the 2026-09-23 Vast
 # benchmark in results/gpu-benchmark-2026-09-23/sol/summary.json: 5070 1.33,
-# 5080 2.39, 5090 2.84 as the conservative value of its two hosts. The RTX
-# 5060 timing ran at commit 1e1f6c8 with cosmos_total photometry while the
-# benchmark pins c869309 (cosmos2025), so it is not comparable; Liu Hao set 0.9.
+# 5080 2.39, 5090 4.49. Two of three 5090 hosts measured about 150,000
+# calls/s (host 406325: 148,930; the diagnostic host: about 150,000 at
+# batch 500 to 8,000 with the GPU 96% busy); host 213578 at 94,294 is
+# treated as a bad or shared host. The RTX 5060 timing ran at commit
+# 1e1f6c8 with cosmos_total photometry while the benchmark pins c869309
+# (cosmos2025), so it is not comparable; Liu Hao set 0.9.
 FIT_SPEED_VS_5060_TI = {
     "RTX 5060": 0.9,
     "RTX 5060 Ti": 1.00,
     "RTX 5070": 1.33,
     "RTX 5080": 2.39,
-    "RTX 5090": 2.84,
+    "RTX 5090": 4.49,
 }
 # Either guard can be raised for one rental that Liu Hao approved by name.
 FIT_MAX_DPH_USD = float(os.environ.get("CERIDWEN_FIT_MAX_DPH_USD", "0.80"))
