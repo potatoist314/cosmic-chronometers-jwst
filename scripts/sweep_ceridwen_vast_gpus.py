@@ -828,12 +828,17 @@ def _replacement_cost(gpu_name: str, current_host: int) -> float | None:
                 and int(offer.get("id") or 0) not in tried_offers):
             terms = _price_offer(offer)
             if terms:
-                prices.append(terms[0] * 14 / 60 + 6 * float(offer.get("inet_down_cost") or 0.0))
+                prices.append(
+                    terms[0] * 8 / 60
+                    + float(offer.get("storage_total_cost") or 0.0) * 14 / 60
+                    + 6 * float(offer.get("inet_down_cost") or 0.0)
+                )
     return min(prices) if prices else None
 
 
 def _replace_loading_host(gpu_name: str, host_id: int, hourly_price: float,
-                          download_price: float, no_progress_seconds: float,
+                          waiting_hourly_price: float, download_price: float,
+                          no_progress_seconds: float,
                           log: Any) -> bool:
     """Compare remaining image/setup/download cost with a fresh rental."""
     if no_progress_seconds < 4 * 60:
@@ -842,9 +847,14 @@ def _replace_loading_host(gpu_name: str, host_id: int, hourly_price: float,
     if fresh_cost is None:
         return False
     remaining_minutes = 1 + 1.2 * (no_progress_seconds / 60 - 4)
-    continue_cost = hourly_price * (remaining_minutes + 8) / 60 + 6 * download_price
+    continue_cost = (
+        waiting_hourly_price * remaining_minutes / 60
+        + hourly_price * 8 / 60 + 6 * download_price
+    )
     log(f"image wait estimate: continue ${continue_cost:.4f}, fresh ${fresh_cost:.4f}")
-    return fresh_cost < continue_cost
+    # The estimate cannot resolve a cent-scale difference in setup cost.
+    margin = max(0.01, 0.10 * continue_cost)
+    return fresh_cost + margin < continue_cost
 
 
 def _price_spend_state() -> tuple[float, set[int], set[int]]:
@@ -935,6 +945,7 @@ def _retry_after_ssh_disconnect(instance_id: int, offer: dict[str, Any],
                                 action: Any, log: Any) -> Any:
     """Resume a live rental after a dropped SSH channel when that is cheaper."""
     first_disconnect: float | None = None
+    replacement_checks = 0
     while True:
         try:
             return action()
@@ -965,11 +976,16 @@ def _retry_after_ssh_disconnect(instance_id: int, offer: dict[str, Any],
                 projected = spent + hourly_price * (
                     time.monotonic() - rental_started + 25 * 60
                 ) / 3600
-                if projected > cap or _replace_loading_host(
+                if projected > cap:
+                    raise SweepError(f"{stage}: task spend cap would be exceeded") from error
+                cheaper = _replace_loading_host(
                     offer["gpu_name"], int(offer["host_id"]), hourly_price,
+                    hourly_price,
                     float(offer.get("inet_down_cost") or 0.0), stalled, log,
-                ):
-                    raise SweepError(f"{stage}: replacement is cheaper or cap would be exceeded") from error
+                )
+                replacement_checks = replacement_checks + 1 if cheaper else 0
+                if replacement_checks >= 3:
+                    raise SweepError(f"{stage}: replacement is consistently cheaper") from error
                 time.sleep(SSH_POLL_SECONDS)
 
 
@@ -979,6 +995,8 @@ def _price_attempt(offer: dict[str, Any], price: float, bid: float | None,
     existing_state = _instance_state(attach_instance) if attach_instance else None
     elapsed = max(0.0, datetime.now(UTC).timestamp() - float(existing_state["start_date"])) if existing_state else 0.0
     started = time.monotonic() - elapsed
+    disk_price = float(existing_state.get("storage_total_cost") or 0.0) if existing_state else 0.0
+    ever_running = False
     result: dict[str, Any] = {
         "gpu_name": offer["gpu_name"], "host_id": int(offer["host_id"]),
         "offer_id": int(offer["id"]), "price_usd_per_hour": price,
@@ -994,6 +1012,7 @@ def _price_attempt(offer: dict[str, Any], price: float, bid: float | None,
         result["instance_id"] = instance_id
         state = _instance_state(instance_id)
         result["price_usd_per_hour"] = float(state.get("dph_total") or price)
+        disk_price = float(state.get("storage_total_cost") or 0.0)
         if result["price_usd_per_hour"] > PRICE_LIMITS[offer["gpu_name"]]:
             raise SweepError("actual instance hourly price exceeds the card limit")
         log(f"rented {instance_id}: {offer['gpu_name']} host {offer['host_id']} ${price:.4f}/h")
@@ -1001,6 +1020,7 @@ def _price_attempt(offer: dict[str, Any], price: float, bid: float | None,
         last_message = None
         last_status = None
         last_progress = time.monotonic()
+        replacement_checks = 0
         while True:
             state = _instance_state(instance_id)
             if int(state.get("id") or 0) != instance_id:
@@ -1015,10 +1035,14 @@ def _price_attempt(offer: dict[str, Any], price: float, bid: float | None,
             last_message = message
             spent, _, _ = _price_spend_state()
             cap = float(json.loads(PRICE_CAP_PATH.read_text())["usd"])
-            projected = spent + result["price_usd_per_hour"] * (time.monotonic() - started + 25 * 60) / 3600
+            waiting_price = (result["price_usd_per_hour"] if status == "running"
+                             else float(state.get("storage_total_cost") or 0.0))
+            projected = (spent + waiting_price * (time.monotonic() - started) / 3600
+                         + result["price_usd_per_hour"] * 25 / 60)
             if projected > cap:
                 raise SweepError("continuing would exceed the task spend cap")
             if status == "running":
+                ever_running = True
                 if not attached:
                     _attach_ssh_key(instance_id)
                     attached = True
@@ -1028,11 +1052,15 @@ def _price_attempt(offer: dict[str, Any], price: float, bid: float | None,
                     probe = None
                 if probe is not None and probe.returncode == 0:
                     break
-            if _replace_loading_host(offer["gpu_name"], int(offer["host_id"]),
-                                     result["price_usd_per_hour"],
-                                     float(offer.get("inet_down_cost") or 0.0),
-                                     time.monotonic() - last_progress, log):
-                raise SweepError("fresh host has lower estimated remaining setup cost")
+            cheaper = _replace_loading_host(
+                offer["gpu_name"], int(offer["host_id"]),
+                result["price_usd_per_hour"], waiting_price,
+                float(offer.get("inet_down_cost") or 0.0),
+                time.monotonic() - last_progress, log,
+            )
+            replacement_checks = replacement_checks + 1 if cheaper else 0
+            if replacement_checks >= 3:
+                raise SweepError("fresh host has consistently lower estimated setup cost")
             time.sleep(SSH_POLL_SECONDS)
 
         def stage(name: str, action: Any) -> Any:
@@ -1121,7 +1149,8 @@ def _price_attempt(offer: dict[str, Any], price: float, bid: float | None,
         else:
             result["destroyed"] = None
         result["rented_seconds"] = time.monotonic() - started if instance_id else 0.0
-        result["estimated_spend_usd"] = result["price_usd_per_hour"] * result["rented_seconds"] / 3600
+        charged_rate = result["price_usd_per_hour"] if ever_running else disk_price
+        result["estimated_spend_usd"] = charged_rate * result["rented_seconds"] / 3600
     return result
 
 
@@ -1143,10 +1172,8 @@ def command_price_matrix(args: argparse.Namespace) -> int:
         outcome = _price_attempt(offer, float(state["dph_total"]), None, log,
                                  attach_instance=args.attach_instance)
         manifest["attempts"].append(outcome)
-        prior, _, _ = _price_spend_state()
-        previous = sum(float(x.get("estimated_spend_usd") or 0)
-                       for x in manifest["attempts"][:-1])
-        manifest["prior_estimated_spend_usd"] = prior - previous
+        manifest["prior_estimated_spend_usd"] = float(
+            manifest.get("prior_billed_spend_usd", manifest.get("prior_estimated_spend_usd", 0.0)))
         manifest["total_estimated_spend_usd"] = manifest["prior_estimated_spend_usd"] + sum(
             float(x.get("estimated_spend_usd") or 0) for x in manifest["attempts"])
         manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
@@ -1186,8 +1213,8 @@ def command_price_matrix(args: argparse.Namespace) -> int:
                 print(f"{datetime.now(UTC):%H:%M:%S} {message}", flush=True)
             outcome = _price_attempt(offer, price, bid, log)
             manifest["attempts"].append(outcome)
-            manifest["prior_estimated_spend_usd"] = spent - sum(
-                float(x.get("estimated_spend_usd") or 0) for x in manifest["attempts"][:-1])
+            manifest["prior_estimated_spend_usd"] = float(
+                manifest.get("prior_billed_spend_usd", manifest.get("prior_estimated_spend_usd", 0.0)))
             manifest["total_estimated_spend_usd"] = manifest["prior_estimated_spend_usd"] + sum(
                 float(x.get("estimated_spend_usd") or 0) for x in manifest["attempts"])
             manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")

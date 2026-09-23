@@ -166,13 +166,31 @@
       "status": "failed",
       "instance_id": 52283516,
       "project_commit": "c869309c374bb7976b4bb9729a0650043fbfb4f7",
-      "error": "Vast remained in created without an SSH port after image load. Estimated continuation $0.20 versus fresh setup $0.156. Destroyed task-owned instance and confirmed absence.",
+      "error": "Vast remained created without SSH. The old comparison used the GPU rate before start and destroyed the instance. Invoice: $0 GPU, $0.005 disk.",
       "destroyed": true,
       "rented_seconds": 1500.0,
-      "estimated_spend_usd": 0.14558796296296297
+      "estimated_spend_usd": 0.005,
+      "billed_spend_usd": 0.005
+    },
+    {
+      "gpu_name": "RTX 5090",
+      "host_id": 526342,
+      "offer_id": 50036752,
+      "price_usd_per_hour": 0.5444444444444444,
+      "download_usd_per_gb": 0.0,
+      "interruptible": false,
+      "reliability": 0.9956744,
+      "status": "failed",
+      "instance_id": 52287384,
+      "project_commit": "c869309c374bb7976b4bb9729a0650043fbfb4f7",
+      "error": "Image pull made no visible progress. A single fresh offer was estimated $0.0017 cheaper, and the sweep destroyed the host. This margin was too small for the estimate.",
+      "destroyed": true,
+      "rented_seconds": 1059.2116838054499,
+      "estimated_spend_usd": 0.003,
+      "billed_spend_usd": 0.003
     }
   ],
   "prior_estimated_spend_usd": 0.183,
-  "total_estimated_spend_usd": 0.701671175261593,
+  "total_estimated_spend_usd": 0.5640832122986299,
   "prior_billed_spend_usd": 0.183
 }
