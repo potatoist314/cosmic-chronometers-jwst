@@ -74,6 +74,7 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
       }
     ],
     "code": "232aab1",
+    "model": "Ceridwen 1fae781",
     "config": "results/birth-cloud-dust/vast_run_2026-09-23T221813+0000.json",
     "data": "results/birth-cloud-dust/cells.json",
     "seed": 20260832
@@ -82,6 +83,7 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
     "id": "dust1-on-seed20260832",
     "arm": "dust1_on",
     "status": "failed",
+    "error": "spend cap $0.32 reached after 10 NSS iterations; instance destroyed",
     "target": "M1_210210",
     "artifacts": [
       {
@@ -90,6 +92,7 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
       }
     ],
     "code": "232aab1",
+    "model": "Ceridwen 1fae781",
     "config": "results/birth-cloud-dust/vast_run_2026-09-23T221813+0000.json",
     "data": "results/birth-cloud-dust/cells.json",
     "seed": 20260832
