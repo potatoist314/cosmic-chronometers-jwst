@@ -56,6 +56,12 @@ Photometry arms (2026-09-21, results/cosmos-photometry-refit), totals from
     cosmos2020_classic CERIDWEN_SETTINGS_OVERRIDE={"photometry": "cosmos2020_classic"}
     cosmos2025         CERIDWEN_SETTINGS_OVERRIDE={"photometry": "cosmos2025"}
 
+Birth-cloud dust arms (2026-09-23, results/birth-cloud-dust), M1_210210 at current defaults::
+
+    dust1_off          no override (birth_cloud_dust False)
+    dust1_on           CERIDWEN_SETTINGS_OVERRIDE={"birth_cloud_dust": true}
+    dust_index_m3      CERIDWEN_PRIORS_OVERRIDE={"diffuse_dust_index": "Uniform(low=-3.0, high=0.4)"}
+
 The tilt-4 mock arms (mock_tilt4_*) were removed on 2026-09-15; their stored
 fits stay in results/calibration-polynomial-dr2 and results/fit-accuracy-knobs.
 
@@ -138,6 +144,10 @@ ARMS = {
     # Classic or COSMOS2025 total fluxes in place of COSMOS2015 cosmos_total.
     "cosmos2020_classic": {"CERIDWEN_SETTINGS_OVERRIDE": '{"photometry": "cosmos2020_classic"}'},
     "cosmos2025": {"CERIDWEN_SETTINGS_OVERRIDE": '{"photometry": "cosmos2025"}'},
+    # Generation 7, birth-cloud dust (2026-09-23, results/birth-cloud-dust): FSPS dust1 off and on.
+    "dust1_off": {},
+    "dust1_on": {"CERIDWEN_SETTINGS_OVERRIDE": '{"birth_cloud_dust": true}'},
+    "dust_index_m3": {"CERIDWEN_PRIORS_OVERRIDE": '{"diffuse_dust_index": "Uniform(low=-3.0, high=0.4)"}'},
 }
 DEFAULT_BASE_SEED = 20260830          # == run_ceridwen_vast_multi_gpu.DEFAULT_BASE_SEED
 # Independent NSS repeats of the production model: same data, shifted seed.

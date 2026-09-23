@@ -41,6 +41,7 @@ LABELS = {
     "afe": r"$[\alpha/\mathrm{Fe}]$", "diffuse_tau_kc": r"$\tau_{\mathrm{dust}}$",
     "diffuse_dust_index": r"$\delta_{\mathrm{dust}}$", "log_f_calib": r"$\log f_{\mathrm{calib}}$",
     "spectrum_scaling": "spectrum scaling", "zred": r"$z$", "sigma_smooth": r"$\sigma_\star$",
+    "dust_ratio": r"$\tau_{\mathrm{bc}}/\tau_{\mathrm{dust}}$",
 }
 N_BOOT = 200
 PRIOR_SAMPLE_MULT = 10  # prior reference sample = this many times the dead points; keeps its own noise near the bootstrap error

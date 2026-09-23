@@ -321,6 +321,13 @@ def _worker(output_notebook: Path) -> int:
         settings_cell.source += (
             f"\nSETTINGS.update({json.loads(override)!r})  # arm override (CERIDWEN_SETTINGS_OVERRIDE)\n"
         )
+    # CERIDWEN_PRIORS_OVERRIDE maps a PRIORS key to a prior expression, e.g. "Uniform(low=-3.0, high=0.4)".
+    priors_override = os.environ.get("CERIDWEN_PRIORS_OVERRIDE")
+    if priors_override:
+        settings_cell = next(c for c in document.cells
+                             if c.cell_type == "code" and "PRIORS = {" in c.source)
+        for name, expression in json.loads(priors_override).items():
+            settings_cell.source += f"\nPRIORS[{name!r}] = {expression}  # arm override (CERIDWEN_PRIORS_OVERRIDE)\n"
     client = StreamingNotebookClient(
         document,
         timeout=None,
