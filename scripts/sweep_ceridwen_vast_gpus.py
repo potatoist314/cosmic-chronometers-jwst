@@ -50,18 +50,35 @@ MINIMUM_GPU_RAM_MIB = 8000
 MINIMUM_DISK_GB = 40.0
 MINIMUM_CUDA_VERSION = 12.8
 
-# Liu Hao's rule for every Ceridwen fit run (2026-09-07): an RTX 5060 or
-# 5060 Ti, under the price cap, on a host above 99.5% reliability. Never take
-# a dearer or less reliable box because nothing else is offered; search again.
-# Cap raised from $0.10 to $0.11/h on 2026-09-15; the same day: an
-# interruptible (bid) rental is fine for any run under two hours.
-FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti")
-# CERIDWEN_FIT_MAX_DPH_USD raises the cap for one rental that Liu Hao approved by name; the rule stays $0.11/h.
-FIT_MAX_DPH_USD = float(os.environ.get("CERIDWEN_FIT_MAX_DPH_USD", "0.11"))
+# Liu Hao's rule for every Ceridwen fit run (2026-09-23): a 5060-class card
+# or better on a host above 99.5% reliability; take the cheapest available
+# offer ranked by cost per unit of work (total run cost divided by the card's
+# benchmark speed factor). The caps below are loose guards against a disaster,
+# not targets; the per-task total spend cap is the real control.
+# An interruptible (bid) rental is fine for any run under two hours.
+FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti", "RTX 5070", "RTX 5080", "RTX 5090")
+# Likelihood speed relative to the RTX 5060 Ti, from the 2026-09-23 Vast
+# benchmark in results/gpu-benchmark-2026-09-23/sol/summary.json: 5070 1.33,
+# 5080 2.39, 5090 2.84 as the conservative value of its two hosts. The RTX
+# 5060 timing ran at commit 1e1f6c8 with cosmos_total photometry while the
+# benchmark pins c869309 (cosmos2025), so it is not comparable; Liu Hao set 0.9.
+FIT_SPEED_VS_5060_TI = {
+    "RTX 5060": 0.9,
+    "RTX 5060 Ti": 1.00,
+    "RTX 5070": 1.33,
+    "RTX 5080": 2.39,
+    "RTX 5090": 2.84,
+}
+# Either guard can be raised for one rental that Liu Hao approved by name.
+FIT_MAX_DPH_USD = float(os.environ.get("CERIDWEN_FIT_MAX_DPH_USD", "0.80"))
 FIT_MIN_RELIABILITY = 0.995
 FIT_BID_MARGIN_USD = 0.005
-FIT_MAX_INET_COST_USD_PER_TB = 5.0  # Liu Hao, 2026-09-15: "keep it less than $5/tb"
-FIT_OFFER_QUERY_BASE = (f"gpu_name in [RTX_5060,RTX_5060_Ti] verified=true rentable=true num_gpus=1 "
+FIT_MAX_INET_COST_USD_PER_TB = float(os.environ.get("CERIDWEN_FIT_MAX_INET_COST_USD_PER_TB", "25.0"))
+# Total-cost ranking weights: about an hour on the box and ~6 GB down
+# (image, data, bootstrap); _replacement_cost below uses the same 6 GB.
+FIT_EXPECTED_HOURS = 1.0
+FIT_TRANSFER_GB = 6.0
+FIT_OFFER_QUERY_BASE = (f"gpu_name in [RTX_5060,RTX_5060_Ti,RTX_5070,RTX_5080,RTX_5090] verified=true rentable=true num_gpus=1 "
                         f"inet_down>200 disk_space>=40 reliability>{FIT_MIN_RELIABILITY} "
                         f"inet_down_cost<{FIT_MAX_INET_COST_USD_PER_TB / 1000}")
 FIT_OFFER_QUERY = f"{FIT_OFFER_QUERY_BASE} dph<{FIT_MAX_DPH_USD}"
@@ -72,14 +89,37 @@ def fit_bid_price(offer: dict[str, Any]) -> float:
     return round(float(offer["min_bid"]) + FIT_BID_MARGIN_USD, 4)
 
 
+def fit_offer_price(offer: dict[str, Any], *, interruptible: bool = False) -> float:
+    """Hourly price: the bid for an interruptible rental, else on-demand."""
+    if interruptible and "min_bid" in offer:
+        return fit_bid_price(offer)
+    return float(offer.get("dph_total") or 1e9)
+
+
+def fit_offer_total_cost(offer: dict[str, Any], *, interruptible: bool = False,
+                         hours: float = FIT_EXPECTED_HOURS,
+                         transfer_gb: float = FIT_TRANSFER_GB) -> float:
+    """Expected total run cost: hourly price plus bandwidth for the transfer."""
+    return (fit_offer_price(offer, interruptible=interruptible) * hours
+            + float(offer.get("inet_down_cost", 1e9)) * transfer_gb)
+
+
+def fit_offer_cost_per_work(offer: dict[str, Any], *, interruptible: bool = False,
+                            hours: float = FIT_EXPECTED_HOURS,
+                            transfer_gb: float = FIT_TRANSFER_GB) -> float:
+    """Ranking key: total run cost divided by the card's benchmark speed factor."""
+    return (fit_offer_total_cost(offer, interruptible=interruptible,
+                                 hours=hours, transfer_gb=transfer_gb)
+            / FIT_SPEED_VS_5060_TI[offer["gpu_name"]])
+
+
 def fit_offer_qualifies(offer: dict[str, Any], *, interruptible: bool = False) -> bool:
     """The rule above, applied to a returned row (Vast's own dph filter is not exact).
 
     On-demand offers are judged on ``dph_total``; interruptible ones on the bid.
     """
-    price = fit_bid_price(offer) if interruptible and "min_bid" in offer else float(offer.get("dph_total") or 1e9)
     return (offer.get("gpu_name") in FIT_GPU_NAMES
-            and price < FIT_MAX_DPH_USD
+            and fit_offer_price(offer, interruptible=interruptible) < FIT_MAX_DPH_USD
             and float(offer.get("reliability2") or 0.0) > FIT_MIN_RELIABILITY
             and float(offer.get("inet_down_cost", 1e9)) * 1000 < FIT_MAX_INET_COST_USD_PER_TB)
 MINIMUM_COMPUTE_CAPABILITY = 700

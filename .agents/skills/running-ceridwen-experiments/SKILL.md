@@ -27,7 +27,8 @@ Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy t
    CERIDWEN_ARMS_RESULTS=results/<slug> python scripts/calibration_arms_vast.py run \
      --arms <arm> --targets M1_210210 --interruptible --spend-cap 0.50
    ```
-   The driver rents one RTX 5060 or 5060 Ti, clones the branch, uploads `ceridwen/` and
+   The driver rents one RTX 5060, 5060 Ti, 5070, 5080 or 5090 at the cheapest
+   cost per unit of work, clones the branch, uploads `ceridwen/` and
    `data/raw`, bootstraps CUDA, runs the notebook, polls every 2 min, pulls, destroys.
    Output: `results/<slug>/<arm>/<object>-<target>/` with `M1_210210_executed.ipynb`,
    `ceridwen_result.h5`, `execution.log`; `results/<slug>/vast_run_<timestamp>.json`

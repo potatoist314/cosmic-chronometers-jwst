@@ -366,6 +366,6 @@ Derived summary
 : the h5 `summary/parameter` block does not carry `diffuse_dust_index`. The notebook reads it from the posterior samples through `pgd.load_galaxy` with `pgd.posterior_weights`.
 
 Offer rule
-: after this run Liu Hao fixed the Vast rule: RTX 5060 or 5060 Ti only, under $0.10/h, reliability above 99.5%. It is now `fit_offer_qualifies` in `scripts/sweep_ceridwen_vast_gpus.py`, shared by every fit runner (commit 0b55f35). The offer used here, $0.1028/h, would no longer qualify.
+: after this run Liu Hao fixed the Vast rule: 5060, 5060 Ti, 5070, 5080 or 5090, reliability above 99.5%, cheapest cost per unit of work wins, with loose $0.80/h and $25/TB guards (2026-09-23). It is `fit_offer_qualifies` and `fit_offer_cost_per_work` in `scripts/sweep_ceridwen_vast_gpus.py`, shared by every fit runner. The offer used here, $0.1028/h, qualifies.
 
 <div id="verdict"></div>

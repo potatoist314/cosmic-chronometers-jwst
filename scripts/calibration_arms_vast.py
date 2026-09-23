@@ -303,7 +303,7 @@ def offers_rtx_5060(sweep, exclude_hosts: set[int], interruptible: bool = False)
         and float(o.get("cuda_max_good") or 0) >= 12.6
         and int(o.get("host_id") or 0) not in exclude_hosts
     ]
-    offers.sort(key=lambda o: offer_price(o, interruptible))
+    offers.sort(key=lambda o: sweep.fit_offer_cost_per_work(o, interruptible=interruptible))
     return offers
 
 

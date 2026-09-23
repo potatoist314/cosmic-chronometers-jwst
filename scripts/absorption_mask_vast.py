@@ -64,7 +64,7 @@ def fit_offers(minimum_gpu_ram_mib: int = 8000) -> list[dict]:
         and float(o.get("gpu_ram") or 0) >= minimum_gpu_ram_mib
         and float(o.get("cuda_max_good") or 0) >= 12.6
     ]
-    offers.sort(key=lambda o: o["dph_total"])
+    offers.sort(key=sweep.fit_offer_cost_per_work)
     return offers
 
 

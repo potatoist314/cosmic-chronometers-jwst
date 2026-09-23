@@ -71,7 +71,7 @@ def rtx5060_offers() -> list[dict]:
         and float(o.get("gpu_ram") or 0) >= 8000
         and float(o.get("cuda_max_good") or 0) >= 12.6
     ]
-    offers.sort(key=lambda o: o["dph_total"])
+    offers.sort(key=lambda o: sweep.fit_offer_cost_per_work(o, hours=EXPECTED_HOURS))
     return offers
 
 
