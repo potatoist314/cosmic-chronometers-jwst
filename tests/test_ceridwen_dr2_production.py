@@ -544,6 +544,66 @@ def test_replay_preserves_scalar_and_vector_calibration_priors(tmp_path, monkeyp
     np.testing.assert_array_equal(env["calibration_polynomial"].prior_sigma, expected)
 
 
+def test_notebook_defaults_to_cosmos2025_photometry():
+    notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
+    cells = ["".join(cell.get("source", [])) for cell in notebook["cells"]]
+    source = "\n".join(cells)
+    assert '"photometry": "cosmos2025"' in source
+    assert 'SETTINGS["photometry"] = resolve_photometry(SETTINGS["photometry"], TARGET_ID)' in source
+    assert "falls back to `cosmos2020_classic`" in source
+
+
+@pytest.mark.parametrize("stored", ["cosmos_total", "cosmos2020_classic", "cosmos2025"])
+def test_regeneration_keeps_the_stored_photometry_source(tmp_path, monkeypatch, stored):
+    """Old fits regenerate with the catalogue they were fit with, not today's default."""
+    import h5py
+
+    from scripts import regenerate_fit_notebooks as regenerate
+
+    folder = tmp_path / "1-test"
+    folder.mkdir()
+    with h5py.File(folder / "ceridwen_result.h5", "w") as result_file:
+        model = result_file.create_group("model")
+        model.create_dataset("param_names", data=[b"Z", b"zred", b"sigma_smooth"])
+        model.attrs.update(
+            parameter_block="diffuse_tau_kc: Uniform(0, 1)",
+            random_seed=1,
+            manifest_index=0,
+            calibration_order=10,
+            calibration_prior_sigma=0.1,
+            calibration_fit_constant=True,
+            photometry_source=stored,
+        )
+    assert regenerate.stored_fit(folder)["photometry"] == stored
+    monkeypatch.setattr(regenerate, "PROJECT_ROOT", tmp_path)
+    notebook = regenerate.compact_notebook(folder, regenerate.stored_fit(folder))
+    assert f'"photometry": "{stored}"' in notebook.cells[2].source
+
+
+def test_regeneration_defaults_to_cosmos_total_without_a_stored_source(tmp_path, monkeypatch):
+    import h5py
+
+    from scripts import regenerate_fit_notebooks as regenerate
+
+    folder = tmp_path / "1-test"
+    folder.mkdir()
+    with h5py.File(folder / "ceridwen_result.h5", "w") as result_file:
+        model = result_file.create_group("model")
+        model.create_dataset("param_names", data=[b"Z", b"zred", b"sigma_smooth"])
+        model.attrs.update(
+            parameter_block="diffuse_tau_kc: Uniform(0, 1)",
+            random_seed=1,
+            manifest_index=0,
+            calibration_order=10,
+            calibration_prior_sigma=0.1,
+            calibration_fit_constant=True,
+        )
+    assert regenerate.stored_fit(folder)["photometry"] == "cosmos_total"
+    monkeypatch.setattr(regenerate, "PROJECT_ROOT", tmp_path)
+    notebook = regenerate.compact_notebook(folder, regenerate.stored_fit(folder))
+    assert '"photometry": "cosmos_total"' in notebook.cells[2].source
+
+
 def test_notebook_calibration_metadata_writes_effective_vector():
     import ast
     from types import SimpleNamespace

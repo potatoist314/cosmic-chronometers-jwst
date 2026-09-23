@@ -18,6 +18,10 @@ Replace COSMOS2015 photometry with COSMOS 2020/2025 photometry in the Ceridwen f
   {
     "date": "2026-09-21",
     "text": "High research priority (10) - incorporate COSMOS 2020/2025 photometry as a replacement for 2015 and see what changes in the fit"
+  },
+  {
+    "date": "2026-09-23",
+    "text": "set cosmos 2025 to default"
   }
 ]
 ```

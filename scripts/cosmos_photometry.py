@@ -19,6 +19,9 @@ columns (four decimals) and fall back to the flux column for non-detections.
 
 `fit_photometry` returns the bands of one catalogue for the fit notebook
 (`SETTINGS["photometry"]` = "cosmos2020_classic" or "cosmos2025").
+"cosmos2025" is the default for new fits; outside its footprint it falls back
+to "cosmos2020_classic" (`resolve_photometry`), and the fit records the
+effective catalogue in `photometry_source`.
 """
 
 from pathlib import Path
@@ -199,12 +202,28 @@ FIT_CATALOGUES = {
     "cosmos2020_classic": ("classic", "FlagCOMBINED"),
     "cosmos2025": ("cosmos2025", "warn-flag"),
 }
+DEFAULT_PHOTOMETRY = "cosmos2025"
+FALLBACK_PHOTOMETRY = "cosmos2020_classic"
+
+
+def resolve_photometry(photometry: str, spect_id: str, tables: dict | None = None) -> str:
+    """Effective fit catalogue: "cosmos2025" outside its footprint uses FALLBACK_PHOTOMETRY."""
+    if photometry != "cosmos2025":
+        return photometry
+    if tables is None:
+        tables = read_matches()
+    return photometry if spect_id in tables["cosmos2025"] else FALLBACK_PHOTOMETRY
 
 
 def fit_photometry(photometry: str, spect_id: str) -> pd.DataFrame:
-    """Bands of one catalogue for the fit: a sedpy_jax curve and a finite total flux."""
-    catalogue, flag_column = FIT_CATALOGUES[photometry]
+    """Bands of one catalogue for the fit: a sedpy_jax curve and a finite total flux.
+
+    "cosmos2025" outside its footprint falls back to FALLBACK_PHOTOMETRY.
+    Callers record the effective catalogue with resolve_photometry.
+    """
     tables = read_matches()
+    photometry = resolve_photometry(photometry, spect_id, tables)
+    catalogue, flag_column = FIT_CATALOGUES[photometry]
     flag = int(tables[catalogue][spect_id][flag_column])
     if flag != 0:
         raise ValueError(f"{spect_id}: {catalogue} {flag_column} = {flag}")
