@@ -7,7 +7,7 @@ description: Use when Liu Hao asks to change a fit setting or a prior of the Cer
 
 Written from the M1_210210 order-10 run of 2026-09-17
 (`wiki/research/experiments/e-m1-210210-reference.md`).
-Rules are in `CLAUDE.md`, `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy them here.
+Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy them here.
 
 ## Steps
 

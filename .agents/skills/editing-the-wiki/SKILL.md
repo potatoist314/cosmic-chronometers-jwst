@@ -9,13 +9,13 @@ Written from the priority-9 roadmap edit of 2026-09-21 (commit `05c8f1a`).
 The version before that commit put every fact of the item into one paragraph of
 `details` in `wiki/research/direction.md`. Liu Hao's words about it:
 "jesus christ, this is BAD word vomit."
-Rules are in `CLAUDE.md`, `~/.claude/CLAUDE.md`, `wiki/AGENTS.md` and
+Rules are in `AGENTS.md`, `~/.claude/CLAUDE.md`, `wiki/AGENTS.md` and
 `wiki/research/README.md`. Read them. Do not copy them here.
 
 ## Steps
 
 1. **Read.** In `wiki/AGENTS.md`: "All pages: no agent commentary", "Result reporting"
-   and "Page conventions". In `CLAUDE.md`: "Repository and reproducibility conventions"
+   and "Page conventions". In `AGENTS.md`: "Repository and reproducibility conventions"
    and "Research result presentation". In `~/.claude/CLAUDE.md`: "Design work goes
    through the designer agent". For the roadmap or a record: `wiki/research/README.md`.
    Before reading direction or priorities, run `python3 scripts/sync_wiki_direction.py --read`.

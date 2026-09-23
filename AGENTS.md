@@ -1,5 +1,10 @@
+The user's contribution will be focused on overall research direction and methodology, yours is implementation.
 
- The user's contribution will be focused on overall research direction and methodology, yours is implementation.
+## Current project focus
+
+- Ceridwen is the primary stellar-population model and inference path.
+- Treat the Prospector, MilesPy, and Lick-index branches as inactive historical work.
+- Do not extend or reactivate an inactive branch unless the user requests it.
 
 ## Local resources
 
@@ -29,7 +34,7 @@
   scripts, extra docs, or README entries unless explicitly requested. Edit the
   file named and stop. Keep the repo clean. Do not add speculative defensive guards to code; rely on documented data contracts unless an observed failure or test justifies the check.
   - **Prefer established or existing libraries for standard operations. Avoid recreating functions that already exist.
-  E.g. ** `milespy`,`astropy`, `scipy`, `specutils`, `spectres` and the other installed packages already implement many standard operations. Confirm their behavior before replacing them with hand-written code.
+  E.g. ** `ceridwen`, `jax`, `blackjax`, `astropy`, `scipy`, `specutils`, and `spectres` already implement many standard operations. Confirm their behavior before replacing them with hand-written code.
 
 
 ## Repository and reproducibility conventions
@@ -40,6 +45,15 @@
 - Notebook markdown cells are terse bullet points, roughly ten words each,
   saying what an otherwise unclear line of code does. No fluff, or restating results or numbers.
 - Use LaTeX for mathematical symbols and parameter names in figures.
+- Every figure that shows a fit or its posterior is designed by the `designer`
+  agent before any plotting code is written. The agent that owns the figure runs
+  `Agent(subagent_type: "designer")` itself, sends the brief, and reports the
+  2-3 previews upward for Liu Hao to pick. An overseer does not run the designer
+  in its own chat session. Never design a fit figure inline.
+  Prefer points or lines to bars; bars use too much of the figure for one number.
+- Every spectrum figure shows observed vacuum wavelength on the bottom axis and
+  rest-frame wavelength on the top axis. Every flux axis states a physical unit
+  (for example µJy), never a bare scale such as "10^-29" or "cgs".
 - Absorption-feature labels use fixed colours from `scripts/spectral_figures.py`
   and one legend to the right of each figure. Use `mark_absorption_features`
   and `spectral_tight_layout`; do not place feature names under the axis.
@@ -65,7 +79,7 @@
   generic caveats, assessments and agent-role labels. Keep factual content,
   necessary technical explanations, concrete limitations, citations and the
   user's own reasoning. This applies to existing pages and future additions.
-- `wiki/` is a Codex-maintained guide for learning this codebase.
+- `wiki/` is an agent-maintained guide for learning this codebase.
 - Read `wiki/AGENTS.md` before creating or changing wiki pages.
 - After substantive code, notebook, or data-flow changes, update affected wiki
   pages, `wiki/index.md`, and `wiki/log.md` without waiting for confirmation.
@@ -76,11 +90,12 @@
 
 - Liu Hao is the research supervisor. Follow the result-reporting contract in
   `wiki/AGENTS.md` for every existing and future wiki result page.
+- Every wiki page for an experiment fit shows the full spectrum-fit figure and the
+  photometry-fit figure for each arm, before any summary table or corner plot.
 - Show fits and relevant figures with short, factual captions. No agent source
   summaries, explanatory essays, process narration or agent-role labels.
 - Keep research reasoning, originals, run metadata and evidence in a separate
   research-record view. Do not discard them or invent scientific interpretations.
-
 
 ## Research priorities
 
