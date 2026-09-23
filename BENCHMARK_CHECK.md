@@ -16,6 +16,7 @@ Do not use `scripts/bench_gpu_prices_vast.py` or its driver design.
 7. If SSH drops, check the same instance. Check remote processes before another checkout or upload. A closed SSH channel can leave the remote command running.
 8. Estimate the remaining cost on this host and the cost of a fresh host. Keep the cheaper path within the task cap. Do not use a fixed 8-minute or 15-minute teardown rule.
 9. After a measurement, destroy only its task-owned instance with `vastai destroy instance <id> -y`. Confirm its absence with `vastai show instances`.
+10. Use per-instance Vast invoices for total spend. Count a resumed instance once. Account-wide credit changes include other jobs.
 
 ## Errors observed in this benchmark
 
@@ -37,5 +38,6 @@ Do not use `scripts/bench_gpu_prices_vast.py` or its driver design.
 | RTX 5080 host 580434 | 52276783 | SSH drops left overlapping Git clones. A later `rsync` failed because the new source upload lacked `data/raw`. Cleanup destroyed the instance before measurement. | Stop duplicate remote clones. Create `data/raw` before transfer. Retain a live instance when a short repair costs less. |
 | RTX 5090 host 60576 | 52283516 | Vast remained in `created` without an SSH port after image load. The sweep destroyed it after an invalid cost comparison. Vast billed $0 GPU time and $0.005 disk for this instance. | Price `created` and `loading` waits at the disk rate. Check the bill. Treat a missing instance as gone. |
 | RTX 5090 host 526342 | 52287384 | The image pull stayed at one status. One fresh offer appeared $0.0017 cheaper in the estimate, and the sweep destroyed this host. Vast billed $0 GPU time and $0.003 disk. | Require a clear savings margin and repeated cheaper estimates before replacing a loading host. |
+| RTX 5090 host 406325 | 52295242 | The external SSP grid download reached only 215 MB after four minutes. The local grid reached the host in 76 seconds and matched SHA-256. The same instance resumed and completed. | Check download progress. Transfer the already verified local grid when that costs less than waiting. Count both attempts as one rental. |
 
 The prior RTX 5060 result, 27,754 calls/s on host 166946, used an earlier code revision. Do not use it for ratios to the current 5060 Ti runs. Cross-host timings can vary with host load. Keep the per-host raw timing JSON and report both hosts.

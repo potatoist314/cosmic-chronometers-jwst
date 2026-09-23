@@ -12,7 +12,8 @@
       "error": "SweepError: fatal: could not read Username for 'https://github.com': No such device or address\nfatal: clone of 'https://github.com/potatoist314/ceridwen.git' into submodule path '/workspace/cosmic-chronometers-jwst/ceridwen' failed\nFailed to clone 'ceridwen'. Retry scheduled\nfatal: could not read Username for 'https://github.com': No such device or address\nfatal: clone of 'https://github.com/potatoist314/sedpy_jax.git' into submodule path '/workspace/cosmic-chronometers-jwst/external/sedpy_jax' failed\nFailed to clone 'external/sedpy_jax'. Retry scheduled\nfatal: could not read Username for 'https://github.com': No such device or address\nfatal: clone of 'https://github.com/potatoist314/ceridwen.git' into submodule path '/workspace/cosmic-chronometers-jwst/ceridwen' failed\nFailed to clone 'ceridwen' a second time, aborting",
       "destroyed": true,
       "rented_seconds": 271.35064654191956,
-      "estimated_spend_usd": 0.013274406628671064
+      "estimated_spend_usd": 0.013274406628671064,
+      "billed_spend_usd": 0.012
     },
     {
       "gpu_name": "RTX 5060 Ti",
@@ -26,7 +27,8 @@
       "error": "Full-history clone stopped after 1.1 GB; shallow clone used on the next host.",
       "destroyed": true,
       "rented_seconds": 370.52106895903125,
-      "estimated_spend_usd": 0.01623888635561186
+      "estimated_spend_usd": 0.01623888635561186,
+      "billed_spend_usd": 0.018
     },
     {
       "gpu_name": "RTX 5060 Ti",
@@ -41,7 +43,8 @@
       "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-87213.json",
       "destroyed": true,
       "rented_seconds": 986.6234954827232,
-      "estimated_spend_usd": 0.05369586719242393
+      "estimated_spend_usd": 0.05369586719242393,
+      "billed_spend_usd": 0.063
     },
     {
       "gpu_name": "RTX 5060 Ti",
@@ -57,7 +60,8 @@
       "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-92578.json",
       "destroyed": true,
       "rented_seconds": 979.9617671670858,
-      "estimated_spend_usd": 0.04742531021351822
+      "estimated_spend_usd": 0.04742531021351822,
+      "billed_spend_usd": 0.087
     },
     {
       "gpu_name": "RTX 5090",
@@ -72,7 +76,8 @@
       "error": "SweepError: Connection to 162.249.226.243 closed by remote host.",
       "destroyed": true,
       "rented_seconds": 393.021859957953,
-      "estimated_spend_usd": 0.04193446203316801
+      "estimated_spend_usd": 0.04193446203316801,
+      "billed_spend_usd": 0.036
     },
     {
       "gpu_name": "RTX 5090",
@@ -104,7 +109,8 @@
       "error": "SweepError: rsync failed: rsync: [Receiver] mkdir \"/workspace/cosmic-chronometers-jwst/data/raw\" failed: No such file or directory (2)\nrsync error: error in file IO (code 11) at main.c(800) [Receiver=3.2.7]\nrsync(57181): error: unexpected end of file",
       "destroyed": true,
       "rented_seconds": 1883.190275181667,
-      "estimated_spend_usd": 0.16192336464874793
+      "estimated_spend_usd": 0.16192336464874793,
+      "billed_spend_usd": 0.134
     },
     {
       "gpu_name": "RTX 5080",
@@ -121,7 +127,8 @@
       "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5080-host-616858.json",
       "destroyed": true,
       "rented_seconds": 394.8459957910236,
-      "estimated_spend_usd": 0.038590915226488935
+      "estimated_spend_usd": 0.038590915226488935,
+      "billed_spend_usd": 0.044
     },
     {
       "gpu_name": "RTX 5090",
@@ -204,7 +211,8 @@
       "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-213578.json",
       "destroyed": true,
       "rented_seconds": 994.3755547089968,
-      "estimated_spend_usd": 0.15754509817405915
+      "estimated_spend_usd": 0.15754509817405915,
+      "billed_spend_usd": 0.171
     },
     {
       "gpu_name": "RTX 5070",
@@ -221,10 +229,47 @@
       "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5070-host-511119.json",
       "destroyed": true,
       "rented_seconds": 1352.357106541982,
-      "estimated_spend_usd": 0.07902662927117754
+      "estimated_spend_usd": 0.07902662927117754,
+      "billed_spend_usd": 0.077
+    },
+    {
+      "gpu_name": "RTX 5090",
+      "host_id": 406325,
+      "offer_id": 45669144,
+      "price_usd_per_hour": 0.48518518518518516,
+      "download_usd_per_gb": 0.005208333333333333,
+      "interruptible": false,
+      "reliability": 0.9976498,
+      "status": "needs_recovery",
+      "instance_id": 52295242,
+      "project_commit": "c869309c374bb7976b4bb9729a0650043fbfb4f7",
+      "error": "SweepError: Resolved 1 package in 262ms\nDownloading tfp-nightly (6.7MiB)\n Downloaded tfp-nightly\nPrepared 1 package in 1.97s\nInstalled 1 package in 355ms\n + tfp-nightly==0.26.0.dev20260810\nUsing Python 3.11.16 environment at: .venv-ceridwen-gpu\nResolved 1 package in 924ms\n   Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax\n      Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax\nPrepared 1 package in 432ms\nUninstalled 1 package in 7ms\nInstalled 1 package in 54ms\n - sedpy-jax==0.1.1\n + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)\nUsing Python 3.11.16 environment at: .venv-ceridwen-gpu\nChecked 184 packages in 27ms\nAll installed packages are compatible\n[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /root/.ceridwen/grids/amist_c3k_hr_krou_afe.h5\nTerminated",
+      "destroyed": false,
+      "rented_seconds": 609.4740968330298,
+      "estimated_spend_usd": 0.08214105626041861,
+      "billed_spend_usd": 0.139
+    },
+    {
+      "gpu_name": "RTX 5090",
+      "host_id": 406325,
+      "offer_id": 45669144,
+      "price_usd_per_hour": 0.48518518518518516,
+      "download_usd_per_gb": 0.0,
+      "interruptible": false,
+      "reliability": 0.9976517,
+      "status": "complete",
+      "instance_id": 52295242,
+      "project_commit": "c869309c374bb7976b4bb9729a0650043fbfb4f7",
+      "calls_per_second": 148930.2494862474,
+      "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-406325.json",
+      "destroyed": true,
+      "rented_seconds": 811.7308853473514,
+      "estimated_spend_usd": 0.10939994442438583,
+      "billed_spend_usd": 0.139
     }
   ],
   "prior_estimated_spend_usd": 0.183,
-  "total_estimated_spend_usd": 0.8006549397438667,
-  "prior_billed_spend_usd": 0.183
+  "total_estimated_spend_usd": 0.972,
+  "prior_billed_spend_usd": 0.183,
+  "billed_spend_as_of_utc": "2026-09-23T20:56:54Z"
 }

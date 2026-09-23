@@ -873,10 +873,28 @@ def _price_spend_state() -> tuple[float, set[int], set[int]]:
         current = json.loads(manifest.read_text())
         prior = float(current.get("prior_billed_spend_usd", prior))
         entries = current["attempts"]
-        prior += sum(float(entry.get("estimated_spend_usd") or 0.0) for entry in entries)
+        prior += _unique_rental_spend(entries)
         hosts.update(int(entry["host_id"]) for entry in entries)
         offers.update(int(entry["offer_id"]) for entry in entries)
     return prior, hosts, offers
+
+
+def _unique_rental_spend(entries: list[dict[str, Any]]) -> float:
+    """Count a resumed instance once and use its bill when available."""
+    estimated: dict[int, float] = {}
+    billed: dict[int, float] = {}
+    for entry in entries:
+        instance_id = entry.get("instance_id")
+        if instance_id is None:
+            continue
+        key = int(instance_id)
+        estimated[key] = max(
+            estimated.get(key, 0.0),
+            float(entry.get("estimated_spend_usd") or 0.0),
+        )
+        if entry.get("billed_spend_usd") is not None:
+            billed[key] = max(billed.get(key, 0.0), float(entry["billed_spend_usd"]))
+    return sum(billed.get(key, amount) for key, amount in estimated.items())
 
 
 def _price_offer(offer: dict[str, Any]) -> tuple[float, float | None] | None:
@@ -1174,8 +1192,8 @@ def command_price_matrix(args: argparse.Namespace) -> int:
         manifest["attempts"].append(outcome)
         manifest["prior_estimated_spend_usd"] = float(
             manifest.get("prior_billed_spend_usd", manifest.get("prior_estimated_spend_usd", 0.0)))
-        manifest["total_estimated_spend_usd"] = manifest["prior_estimated_spend_usd"] + sum(
-            float(x.get("estimated_spend_usd") or 0) for x in manifest["attempts"])
+        manifest["total_estimated_spend_usd"] = (
+            manifest["prior_estimated_spend_usd"] + _unique_rental_spend(manifest["attempts"]))
         manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
         return 0 if outcome["status"] == "complete" and outcome["destroyed"] else 1
     deadline = time.monotonic() + args.wait_minutes * 60
@@ -1215,8 +1233,8 @@ def command_price_matrix(args: argparse.Namespace) -> int:
             manifest["attempts"].append(outcome)
             manifest["prior_estimated_spend_usd"] = float(
                 manifest.get("prior_billed_spend_usd", manifest.get("prior_estimated_spend_usd", 0.0)))
-            manifest["total_estimated_spend_usd"] = manifest["prior_estimated_spend_usd"] + sum(
-                float(x.get("estimated_spend_usd") or 0) for x in manifest["attempts"])
+            manifest["total_estimated_spend_usd"] = (
+                manifest["prior_estimated_spend_usd"] + _unique_rental_spend(manifest["attempts"]))
             manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
             if outcome.get("destroyed") is False:
                 raise SweepError(f"instance {outcome['instance_id']} still exists; stop further rentals")
