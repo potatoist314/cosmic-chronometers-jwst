@@ -1209,3 +1209,8 @@
 
 - Pages: `notes/model.md`, `research/experiments/e-emission-line-marginalisation.md`
 - Change: same-upper-level doublets share one flux at the FSPS ratio; with the option on, z is fixed and the line fluxes also enter the photometry. Ceridwen `0f0895f`.
+
+## [2026-09-23] codebase | afe fixed at 0.0 comparison
+
+- Pages: `research/experiments/e-afe-fixed-zero.md`
+- Change: preparation for the solar-scaled comparison on the current grid; `fix_afe` setting, CPU likelihood check, planned M1_210210 arms.
