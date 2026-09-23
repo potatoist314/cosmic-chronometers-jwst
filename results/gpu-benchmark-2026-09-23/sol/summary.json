@@ -1,0 +1,98 @@
+{
+  "status": "incomplete",
+  "project_commit": "c869309c374bb7976b4bb9729a0650043fbfb4f7",
+  "baseline_gpu": "RTX 5060 Ti",
+  "baseline_mean_calls_per_second": 33173.00212456423,
+  "measurements": [
+    {
+      "gpu_name": "RTX 5060 Ti",
+      "host_id": 87213,
+      "instance_id": 52261203,
+      "rental_price_usd_per_hour": 0.19592592592592595,
+      "calls_per_second": 33115.01157773615,
+      "speed_ratio_to_mean_5060_ti": 0.9982518752264168,
+      "price_cap_usd_per_hour_at_0_11_times_ratio": 0.10980770627490585,
+      "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-87213.json"
+    },
+    {
+      "gpu_name": "RTX 5060 Ti",
+      "host_id": 92578,
+      "instance_id": 52263839,
+      "rental_price_usd_per_hour": 0.17422222222222222,
+      "calls_per_second": 33230.9926713923,
+      "speed_ratio_to_mean_5060_ti": 1.0017481247735829,
+      "price_cap_usd_per_hour_at_0_11_times_ratio": 0.11019229372509412,
+      "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-92578.json"
+    },
+    {
+      "gpu_name": "RTX 5070",
+      "host_id": 511119,
+      "instance_id": 52292035,
+      "rental_price_usd_per_hour": 0.21037037037037035,
+      "calls_per_second": 44178.79257494186,
+      "speed_ratio_to_mean_5060_ti": 1.3317695036780517,
+      "price_cap_usd_per_hour_at_0_11_times_ratio": 0.14649464540458568,
+      "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5070-host-511119.json"
+    },
+    {
+      "gpu_name": "RTX 5080",
+      "host_id": 616858,
+      "instance_id": 52282106,
+      "rental_price_usd_per_hour": 0.35185185185185186,
+      "calls_per_second": 79160.75061034878,
+      "speed_ratio_to_mean_5060_ti": 2.3863004714828375,
+      "price_cap_usd_per_hour_at_0_11_times_ratio": 0.2624930518631121,
+      "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5080-host-616858.json"
+    },
+    {
+      "gpu_name": "RTX 5090",
+      "host_id": 213578,
+      "instance_id": 52289523,
+      "rental_price_usd_per_hour": 0.5703703703703704,
+      "calls_per_second": 94294.49411244407,
+      "speed_ratio_to_mean_5060_ti": 2.842507101358188,
+      "price_cap_usd_per_hour_at_0_11_times_ratio": 0.3126757811494007,
+      "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-213578.json"
+    },
+    {
+      "gpu_name": "RTX 5090",
+      "host_id": 406325,
+      "instance_id": 52295242,
+      "rental_price_usd_per_hour": 0.48518518518518516,
+      "calls_per_second": 148930.2494862474,
+      "speed_ratio_to_mean_5060_ti": 4.489501701625198,
+      "price_cap_usd_per_hour_at_0_11_times_ratio": 0.49384518717877174,
+      "raw_json": "results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-406325.json"
+    }
+  ],
+  "missing_measurements": {
+    "RTX 5070": 1,
+    "RTX 5070 Ti": 2,
+    "RTX 5080": 1
+  },
+  "invoice_charges_usd_by_instance_id": {
+    "52248243": 0,
+    "52254606": 0.05,
+    "52256097": 0.109,
+    "52256098": 0.002,
+    "52256099": 0.02,
+    "52257733": 0.001,
+    "52257734": 0.001,
+    "52259479": 0.012,
+    "52260284": 0.018,
+    "52261203": 0.063,
+    "52263839": 0.087,
+    "52265958": 0.036,
+    "52276783": 0.134,
+    "52282106": 0.044,
+    "52283516": 0.005,
+    "52287384": 0.003,
+    "52289523": 0.171,
+    "52292035": 0.077,
+    "52295242": 0.148
+  },
+  "total_billed_usd_including_failures": 0.981,
+  "invoice_checked_at_utc": "2026-09-23T21:03:28Z",
+  "all_instances_destroyed": true,
+  "manifest_json": "results/gpu-benchmark-2026-09-23/sol/manifest.json"
+}
