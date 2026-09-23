@@ -1214,3 +1214,8 @@
 
 - Pages: `research/experiments/e-afe-fixed-zero.md`
 - Change: preparation for the solar-scaled comparison on the current grid; `fix_afe` setting, CPU likelihood check, planned M1_210210 arms.
+
+## [2026-09-23] codebase | Old-MIST MILES control grid
+
+- Pages: `research/experiments/e-afe-fixed-zero.md`
+- Change: FSPS 3.2 cannot pair MIST v1.2 with C3K-HR, so the kept control is MIST+MILES Kroupa; `ssp_grid` setting, three-option CPU check.

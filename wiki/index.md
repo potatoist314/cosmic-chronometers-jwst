@@ -68,7 +68,7 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 - `research/questions/q-compute.md` — repeatability, GPU campaigns and numerical comparisons
 
 - `research/experiments/e-quiescent-mock.md` — approved intrinsic truth and physical explanation; 1%, 5%, and 10% noise cases planned, observing setup undecided
-- `research/experiments/e-afe-fixed-zero.md` — afe sampled versus fixed at 0.0 on the current grid; planned M1_210210 comparison
+- `research/experiments/e-afe-fixed-zero.md` — old-MIST MILES control grid and afe fixed at 0.0; planned M1_210210 comparison
 
 The 28 existing experiment entries cover all 11 analysis notes and all current
 and archived Ceridwen result groups. `source_notes` provides backlinks;
