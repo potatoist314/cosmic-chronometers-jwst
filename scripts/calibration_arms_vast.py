@@ -93,6 +93,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import math
 import os
 import shlex
 import subprocess
@@ -309,8 +310,59 @@ def offer_price(offer: dict, interruptible: bool) -> float:
     return _vast.fit_offer_price(offer, interruptible=interruptible)
 
 
-def offers_rtx_5060(sweep, exclude_hosts: set[int], interruptible: bool = False) -> list[dict]:
-    return sweep.fit_offers(exclude_hosts=exclude_hosts, interruptible=interruptible)
+ONLY_5090_GPU = "RTX 5090"
+# The 5090-only rental keeps its stricter bandwidth guard; the shared
+# lifecycle in vast.py allows $10/TB with a 96% reliability fallback.
+MAX_5090_INET_COST_USD_PER_TB = 5.0
+
+
+def offer_query_5090(sweep) -> str:
+    """Vast search for the 5090-only rental: no hourly ceiling, reliability kept."""
+    return (f"gpu_name={ONLY_5090_GPU.replace(' ', '_')} verified=true rentable=true num_gpus=1 "
+            f"inet_down>200 disk_space>=40 reliability>{sweep.FIT_MIN_RELIABILITY} "
+            f"inet_down_cost<{MAX_5090_INET_COST_USD_PER_TB / 1000} "
+            f"inet_up_cost<{MAX_5090_INET_COST_USD_PER_TB / 1000}")
+
+
+def offer_qualifies_5090(sweep, offer: dict) -> bool:
+    """5090-only rule (Liu Hao, 2026-09-24, birth-cloud-dust): RTX 5090 above
+    99.5% reliability and both transfer directions under $5/TB; the hourly
+    ceiling is bypassed."""
+    return (offer.get("gpu_name") == ONLY_5090_GPU
+            and float(offer.get("reliability2") or 0.0) > sweep.FIT_MIN_RELIABILITY
+            and all(float(offer.get(field, 1e9)) * 1000 < MAX_5090_INET_COST_USD_PER_TB
+                    for field in ("inet_down_cost", "inet_up_cost")))
+
+
+def offers_rtx_5060(sweep, exclude_hosts: set[int], interruptible: bool = False,
+                    only_5090: bool = False) -> list[dict]:
+    if not only_5090:
+        return sweep.fit_offers(exclude_hosts=exclude_hosts, interruptible=interruptible)
+    offers = [
+        o for o in sweep.search_offers(offer_query_5090(sweep),
+                                       rental_type="bid" if interruptible else "on-demand")
+        if offer_qualifies_5090(sweep, o)
+        and float(o.get("gpu_ram") or 0) >= 8000
+        and float(o.get("cuda_max_good") or 0) >= 12.6
+        and int(o.get("host_id") or 0) not in exclude_hosts
+    ]
+    offers.sort(key=lambda o: offer_price(o, interruptible))
+    return offers
+
+
+def spend_cap_usd(value) -> float:
+    """Positive finite spend cap; the USD 1 guard is checked after parsing."""
+    amount = float(value)
+    if not math.isfinite(amount) or amount <= 0:
+        raise argparse.ArgumentTypeError("experiment spend cap must be above zero")
+    return amount
+
+
+def spend_cap_error(args) -> str | None:
+    """USD 1 stays the ceiling unless --only-5090 carries Liu Hao's exception."""
+    if getattr(args, "spend_cap", 0) > 1.0 and not getattr(args, "only_5090", False):
+        return "--spend-cap above USD 1 needs --only-5090 (Liu Hao 5090 exception, 2026-09-24)"
+    return None
 
 
 def _describe(offer: dict, interruptible: bool = False) -> str:
@@ -354,10 +406,14 @@ def _pull(sweep, instance_id: int, log) -> None:
         raise sweep.SweepError(f"pull failed: {(result.stderr or result.stdout)[-400:]}")
 
 
+def regen_python() -> str:
+    """Local post-fit interpreter; CERIDWEN_REGEN_PYTHON overrides the checkout venv."""
+    return os.environ.get("CERIDWEN_REGEN_PYTHON", str(PROJECT_ROOT / "ceridwen/.venv/bin/python"))
+
+
 def regenerate_command(cell: dict, result_dir: Path) -> list[str]:
     """Local post-fit command: the stored sampler result plus the arm switches."""
-    command = [str(PROJECT_ROOT / "ceridwen/.venv/bin/python"),
-               str(PROJECT_ROOT / "scripts/regenerate_fit_notebooks.py")]
+    command = [regen_python(), str(PROJECT_ROOT / "scripts/regenerate_fit_notebooks.py")]
     for flag, key in (("--settings-override", "CERIDWEN_SETTINGS_OVERRIDE"),
                       ("--priors-override", "CERIDWEN_PRIORS_OVERRIDE")):
         if key in cell.get("env", {}):
@@ -538,7 +594,7 @@ def _finish(sweep, record: dict, args) -> int:
 
 def command_plan(args) -> int:
     sweep = _sweep()
-    for offer in offers_rtx_5060(sweep, set(), args.interruptible)[:5]:
+    for offer in offers_rtx_5060(sweep, set(), args.interruptible, args.only_5090)[:5]:
         print(_describe(offer, args.interruptible))
     for cell in build_cells(args.targets, args.arms):
         print(cell["name"], cell["seed"], cell["env"])
@@ -548,9 +604,10 @@ def command_plan(args) -> int:
 def command_run(args) -> int:
     sweep = _sweep()
     busy_hosts = {int(i.get("host_id") or 0) for i in sweep._vastai_json(["show", "instances"])}
-    offers = offers_rtx_5060(sweep, busy_hosts | {int(h) for h in args.exclude_host}, args.interruptible)
+    offers = offers_rtx_5060(sweep, busy_hosts | {int(h) for h in args.exclude_host}, args.interruptible,
+                             args.only_5090)
     if not offers:
-        print("no suitable RTX 5060 offer", file=sys.stderr)
+        print(f"no suitable {'RTX 5090' if args.only_5090 else 'RTX 5060'} offer", file=sys.stderr)
         return 1
     cells = build_cells(args.targets, args.arms)
     offer = offers[0]
@@ -601,12 +658,16 @@ def main(argv=None) -> int:
                        help="upload this ceridwen checkout over the box's ceridwen/ after the clone")
         p.add_argument("--image", default="vastai/base-image:cuda-12.6.3-auto")
         p.add_argument("--disk", type=int, default=40)
-        p.add_argument("--spend-cap", type=_vast.experiment_cap, default=1.0, help="USD; stop and destroy beyond it")
+        p.add_argument("--spend-cap", type=spend_cap_usd, default=1.0, help="USD; stop and destroy beyond it (above USD 1 needs --only-5090)")
         p.add_argument("--keep-instance", action="store_true", help="do not destroy at the end")
         p.add_argument("--exclude-host", nargs="*", default=[])
         p.add_argument("--interruptible", action="store_true",
                        help="rent a bid (interruptible) instance at the host's min_bid plus the margin; "
                             "fine for runs under two hours (2026-09-15)")
+        p.add_argument("--only-5090", action="store_true",
+                       help="rent the cheapest RTX 5090 by hourly price above 99.5%% reliability "
+                            "and under $5/TB bandwidth; bypasses the hourly ceiling and the "
+                            "USD 1 spend-cap guard (Liu Hao, 2026-09-24, birth-cloud-dust)")
         p.set_defaults(bid=None)
 
     plan = sub.add_parser("plan"); common(plan); plan.set_defaults(function=command_plan)
@@ -618,6 +679,8 @@ def main(argv=None) -> int:
     remote = sub.add_parser("remote"); remote.add_argument("--cells", required=True)
     remote.set_defaults(function=command_remote)
     args = parser.parse_args(argv)
+    if (message := spend_cap_error(args)) is not None:
+        parser.error(message)
     return int(args.function(args))
 
 

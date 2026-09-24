@@ -8,7 +8,19 @@
   "finished": "2026-09-23T22:07:51.935224+00:00"
  },
  "dust1_on/M1_210210": {
-  "status": "running",
-  "started": "2026-09-23T22:07:51.936515+00:00"
+  "status": "failed",
+  "started": "2026-09-24T11:00:32.493964+00:00",
+  "returncode": -15,
+  "attempts": 2,
+  "wall_s": 3784.3,
+  "finished": "2026-09-24T12:03:36.785449+00:00"
+ },
+ "dust_index_m3/M1_210210": {
+  "status": "done",
+  "started": "2026-09-24T12:03:36.785800+00:00",
+  "returncode": 0,
+  "attempts": 1,
+  "wall_s": 340.1,
+  "finished": "2026-09-24T12:09:16.843091+00:00"
  }
 }

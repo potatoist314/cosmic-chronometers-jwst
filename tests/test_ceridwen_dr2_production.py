@@ -214,6 +214,19 @@ def test_validator_counts_only_physical_parameter_groups():
     ]
 
 
+def test_validator_expects_the_birth_cloud_dust_ratio():
+    # dust1_on samples dust_ratio on top of the six baseline physical groups;
+    # without it the finished fit fails validation (2026-09-24).
+    baseline = ["Z", "afe", "diffuse_dust_index", "diffuse_tau_kc", "log_f_calib",
+                "logmass", "logsfr_ratios", "sigma_smooth", "zred"]
+    assert runner.expected_physical_count(baseline) == 6
+    assert runner.expected_physical_count(baseline + ["dust_ratio"]) == 7
+    assert runner.expected_physical_count(baseline + ["spectrum_scaling"]) == 7
+    assert runner.expected_physical_count(
+        baseline + ["dust_ratio", "spectrum_scaling"]) == 8
+    assert len(runner.physical_parameter_names(baseline + ["dust_ratio"])) == 7
+
+
 def test_notebook_defaults_to_the_continuity_sfh_prior():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])

@@ -1255,3 +1255,9 @@
 
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: Documented experiment configuration, grid handling, full notebook execution, saved results, spending limits and resume.
+
+## [2026-09-24] result | Birth-cloud dust and dust index to -3
+
+- Pages: `research/experiments/e-birth-cloud-dust.md`, `notes/birth-cloud-dust.md`, `index.md`
+- Change: three M1_210210 arms compared; per-arm spectrum and photometry fits, SFH, corner, parameter table and $0.9962 RTX 5090 run recorded.
+- Validation: executed notebooks and HDF5 loaded; note/record checks passed; full wiki suites failed on pre-existing missing evidence elsewhere.
