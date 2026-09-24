@@ -1231,7 +1231,7 @@
 - Pages: `notes/gpu-benchmark-2026-09-23-failures.md`
 - Change: failures and fixes from the 2026-09-23 GPU price benchmark, each with file, log line and number.
 
-## [2026-09-23] guide | GPU benchmark cost table
+## [2026-09-24] result | GPU price matrix and 5090 diagnostic
 
-- Pages: `notes/gpu-benchmark-2026-09-23-failures.md`
-- Change: minimal table at the top: speed vs 5060 Ti, price paid, cost per unit of work.
+- Pages: `research/experiments/e-gpu-price-benchmark.md`, `notes/gpu-benchmark-2026-09-23-failures.md`, `index.md`
+- Change: six host timings and price ratios, four missing host slots, billed cost and the same-boot 5090 batch diagnostic on Results.

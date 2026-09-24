@@ -628,6 +628,24 @@ class ResearchTests(unittest.TestCase):
         self.assertIn("<table>", body)
         self.assertNotIn("Agent ·", body)
 
+    def test_benchmark_run_can_link_saved_json_without_notebook(self):
+        run = self.evidence()
+        path = self.project / "results/e-low-dust/benchmark.json"
+        path.write_text('{"calls_per_second": 1000}')
+        run["artifacts"] = [{"label": "Timing", "path": "results/e-low-dust/benchmark.json"}]
+        sections = {"Before delegation": [self.message],
+                    "Execution plan": "Time the fixed workload.",
+                    "Runs": [run],
+                    "Measurements": "| Batch | Calls/s |\n| ---: | ---: |\n| 100 | 1,000 |",
+                    "Results": "1,000 calls/s. [Timing](results/e-low-dust/benchmark.json)."}
+        self.write("experiment", "e-low-dust", "results-ready", sections,
+                   question="q-dust", benchmark="true")
+        self.assertEqual(self.faults(), [])
+        self.assertIn("<table>", (self.build() / "e/e-low-dust/index.html").read_text())
+        self.write("experiment", "e-low-dust", "results-ready", sections,
+                   question="q-dust")
+        self.assertIn("completed run needs", "\n".join(self.faults()))
+
 
 class ExistingCorpusTests(unittest.TestCase):
     def test_existing_analyses_and_result_groups_are_integrated(self):

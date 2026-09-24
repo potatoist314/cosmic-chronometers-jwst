@@ -285,8 +285,13 @@ def validate(records, project):
                 if existing and not artifacts and not run.get("config"):
                     fail("existing run requires an artifact or source configuration")
                 if run.get("status") == "complete" and not existing:
-                    if not any(isinstance(a.get("path"), str) and urlsplit(a["path"]).path.endswith(".ipynb") for a in artifacts):
-                        fail("completed run needs its executed notebook artifact")
+                    paths = [urlsplit(a["path"]).path for a in artifacts
+                             if isinstance(a.get("path"), str)]
+                    notebook = any(path.endswith(".ipynb") for path in paths)
+                    benchmark_json = (r.get("benchmark") == "true" and s["Measurements"]
+                                      and any(path.endswith(".json") for path in paths))
+                    if not notebook and not benchmark_json:
+                        fail("completed run needs an executed notebook or benchmark JSON artifact")
                 if run.get("status") == "failed" and not existing and (not isinstance(run.get("error"), str) or not run["error"]):
                     fail("failed run needs its error recorded")
             status = r.get("status")

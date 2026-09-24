@@ -222,7 +222,9 @@ messages. Never synthesise missing reasoning. An agent's answer is not a user me
 - `error`: required for failed runs; keep the failed attempt and its logs.
 
 A planned run can contain only `id`, `arm` and `status`. Add evidence as it exists.
-Completed runs require an executed notebook link. Keep the notebook, its saved
+Completed runs require an executed notebook link. Benchmark records marked
+`benchmark: true` can link a saved JSON measurement instead when **Measurements**
+contains a table. Keep the notebook, its saved
 outputs, data products and configuration in their established result directory.
 Read the configuration from the actual run; never substitute today's defaults.
 Do not overwrite a completed run's configuration with a later attempt.
