@@ -1266,3 +1266,8 @@
 
 - Pages: `notes/cosmos-photometry-comparison.md`, `notes/cosmos-photometry-refit.md`
 - Change: Clarified COSMOS2025 model fluxes, calibrated uncertainties and unapplied LePhare offsets; corrected the refit caveat.
+
+## [2026-09-24] codebase | Rental preflight and failure handling
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Documented local checks, shared uploads, SSH diagnostics and stopping after failed remote stages.

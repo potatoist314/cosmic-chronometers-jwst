@@ -25,6 +25,8 @@ The default source is committed `HEAD`, excluding local edits. The command uploa
 
 Reuse `--output <saved-directory>` to resume the pinned revision, accumulated spend and rental ownership. The output directory stores the manifest, stage logs, timing results and available charges. The command destroys its owned rentals after each attempt.
 
+Before rental, `ssh -G` checks local SSH configuration without network access, and preflight checks target cutouts. Uploads include HST cutouts and the FSPS line table. Progress shows SSH errors. Local UID errors stop immediately. Failed remote stages save logs, clean up owned rentals and stop automatic retries. Resume manually after fixing the cause.
+
 Source: `scripts/benchmark.py` — `preflight`, `Run.candidates`, `parser`.
 
 </details>
