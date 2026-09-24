@@ -21,7 +21,7 @@ Add GPU names as positional arguments, for example `"RTX 5090" "RTX 4090"`. Add 
 
 Search offers with reliability above 99.5% first. Only when none pass every filter, including host exclusions, repeat with reliability above 96%. Choose the cheapest hourly price in the first tier with eligible offers. Both bandwidth rates must remain below $10/TB. The experiment spending cap remains $1.
 
-The default source is committed `HEAD`, excluding local edits. The command uploads pinned source, inputs and the cached grid. It measures likelihood throughput, not full-fit convergence.
+The default source is committed `HEAD`, excluding local edits. The command uses the compact dependency image and uploads pinned source, selected inputs and the cached grid. It measures likelihood throughput, not full-fit convergence.
 
 Reuse `--output <saved-directory>` to resume the pinned revision, accumulated spend and rental ownership. The output directory stores the manifest, stage logs, timing results and available charges. The command destroys its owned rentals after each attempt.
 
@@ -89,7 +89,7 @@ The spectrum notebook fits spectra. The joint notebook fits photometry with nati
 <details>
 <summary>Choose an instance</summary>
 
-- Use a Linux image with Jupyter, SSH, and CUDA 12. Prefer `vastai/base-image:cuda-12.6.3-auto`. It avoids the unused PyTorch stack. The bootstrap installs CUDA JAX.
+- Use the compact dependency image pinned in `scripts/vast.py`. The launchers share this default; saved benchmarks and experiments retain their recorded image.
 - Require at least 8 GB GPU memory and 12 GB disk.
 - Require host reliability above 99.5 per cent; fall back to above 96 per cent only if no offers pass every filter.
 - Require upload and download prices each below $0.01 per GB.
