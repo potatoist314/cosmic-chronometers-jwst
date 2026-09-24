@@ -1235,3 +1235,9 @@
 
 - Pages: `research/experiments/e-gpu-price-benchmark.md`, `notes/gpu-benchmark-2026-09-23-failures.md`, `index.md`
 - Change: six host timings and price ratios, four missing host slots, billed cost and the same-boot 5090 batch diagnostic on Results.
+
+## [2026-09-24] result | Birth-cloud dust and dust index to -3
+
+- Pages: `research/experiments/e-birth-cloud-dust.md`, `notes/birth-cloud-dust.md`, `index.md`
+- Change: three M1_210210 arms compared; per-arm spectrum and photometry fits, SFH, corner, parameter table and $0.9962 RTX 5090 run recorded.
+- Validation: executed notebooks and HDF5 loaded; wiki build and tests.
