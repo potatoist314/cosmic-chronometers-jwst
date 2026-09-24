@@ -73,9 +73,18 @@ def test_notebook_csp_routes_both_parameters_into_photometric_prediction():
                      jnp.array([-3., -1., 0., 1.2]), wave,
                      jnp.ones((2, 2, 4, 512)) * 1e-15)
     priors = {"diffuse_dust_index": Uniform(low=-1., high=.4),
-              "diffuse_bump_strength": Uniform(low=0., high=4.)}  # test bounds only
+              "diffuse_bump_strength": Uniform(low=0., high=6.)}
     path = Path(__file__).resolve().parents[1] / "notebooks/ceridwen_integrated_photometry_spectra.ipynb"
     cells = json.loads(path.read_text())["cells"]
+    settings_source = next("".join(c["source"]) for c in cells
+                           if c["cell_type"] == "code" and "PRIORS = {" in "".join(c["source"]))
+    prior_dict = next(n.value for n in ast.parse(settings_source).body if isinstance(n, ast.Assign)
+                      and any(isinstance(t, ast.Name) and t.id == "PRIORS" for t in n.targets))
+    bump_prior = next(v for k, v in zip(prior_dict.keys, prior_dict.values)
+                      if isinstance(k, ast.Constant) and k.value == "diffuse_bump_strength")
+    actual_prior = eval(compile(ast.Expression(bump_prior), "bump_prior", "eval"), {"Uniform": Uniform})
+    assert tuple(float(v) for v in actual_prior.bounds) == (0.0, 6.0)
+    priors["diffuse_bump_strength"] = actual_prior
     source = next("".join(c["source"]) for c in cells
                   if c["cell_type"] == "code" and "joint_csp = CSPBasis_afe(" in "".join(c["source"]))
     assignment = next(n for n in ast.parse(source).body if isinstance(n, ast.Assign)
