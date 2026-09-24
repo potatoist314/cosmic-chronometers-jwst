@@ -1240,3 +1240,8 @@
 
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: Documented benchmark commands, source pinning, resume, saved outputs and rental teardown.
+
+## [2026-09-24] codebase | GPU offer selection
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Documented hourly-price selection across both markets, reliability and transfer limits, 40 GB disk quotes, saved alternatives and the $1 experiment cap.

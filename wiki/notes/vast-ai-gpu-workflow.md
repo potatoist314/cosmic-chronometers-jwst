@@ -19,11 +19,13 @@ python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1
 
 Add GPU names as positional arguments, for example `"RTX 5090" "RTX 4090"`. Add `--hosts 2` for two successful hosts per GPU. `--dry-run` performs local preflight only, without network access or rentals.
 
+Search both on-demand and bid offers for each requested GPU type. Choose the cheapest hourly price with reliability above 99.5% and upload/download rates each below $10/TB. Quote 40 GB disk, record alternatives, and cap experiment spending at $1.
+
 The default source is committed `HEAD`, excluding local edits. The command uploads pinned source, inputs and the cached grid. It measures likelihood throughput, not full-fit convergence.
 
 Reuse `--output <saved-directory>` to resume the pinned revision, accumulated spend and rental ownership. The output directory stores the manifest, stage logs, timing results and available charges. The command destroys its owned rentals after each attempt.
 
-Source: `scripts/benchmark.py:57` (`preflight`), `:117` (`Run`), `:396` (`parser`).
+Source: `scripts/benchmark.py` — `preflight`, `Run.candidates`, `parser`.
 
 </details>
 
@@ -42,8 +44,8 @@ The spectrum notebook fits spectra. The joint notebook fits photometry with nati
 - Use a Linux image with Jupyter, SSH, and CUDA 12. Prefer `vastai/base-image:cuda-12.6.3-auto`. It avoids the unused PyTorch stack. The bootstrap installs CUDA JAX.
 - Require at least 8 GB GPU memory and 12 GB disk.
 - Require host reliability above 99.5 per cent.
-- Reject upload or download prices above $0.01 per GB.
-- Use the cheapest qualifying RTX 5060 offer.
+- Require upload and download prices each below $0.01 per GB.
+- Use the cheapest hourly offer for the requested GPU type, with a $1 experiment cap.
 
 Vast host `148498` in Croatia provided a tested-good A100 SXM4 40 GB allocation. Instance `48652928` completed the quick and full fits on 25 August 2026. This result applies to that allocation only.
 
