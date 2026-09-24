@@ -8,6 +8,25 @@ job: t_2fc31190
 old: _old/guides/vast-ai-gpu-workflow.html
 ---
 
+## Benchmark command
+
+```bash
+python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1
+```
+
+<details>
+<summary>Benchmark options and outputs</summary>
+
+Add GPU names as positional arguments, for example `"RTX 5090" "RTX 4090"`. Add `--hosts 2` for two successful hosts per GPU. `--dry-run` performs local preflight only, without network access or rentals.
+
+The default source is committed `HEAD`, excluding local edits. The command uploads pinned source, inputs and the cached grid. It measures likelihood throughput, not full-fit convergence.
+
+Reuse `--output <saved-directory>` to resume the pinned revision, accumulated spend and rental ownership. The output directory stores the manifest, stage logs, timing results and available charges. The command destroys its owned rentals after each attempt.
+
+Source: `scripts/benchmark.py:57` (`preflight`), `:117` (`Run`), `:396` (`parser`).
+
+</details>
+
 Operational guide
 
 <details>

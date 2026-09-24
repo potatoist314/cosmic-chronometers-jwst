@@ -1235,3 +1235,8 @@
 
 - Pages: `research/experiments/e-gpu-price-benchmark.md`, `notes/gpu-benchmark-2026-09-23-failures.md`, `index.md`
 - Change: six host timings and price ratios, four missing host slots, billed cost and the same-boot 5090 batch diagnostic on Results.
+
+## [2026-09-24] codebase | GPU benchmark command
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Documented benchmark commands, source pinning, resume, saved outputs and rental teardown.
