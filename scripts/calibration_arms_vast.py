@@ -297,7 +297,7 @@ def command_remote(args) -> int:
 # Local driver
 # ---------------------------------------------------------------------------
 def _sweep():
-    return _load("vast_sweep", "sweep_ceridwen_vast_gpus.py")
+    return _load("vast_sweep", "vast.py")
 
 
 _vast = _sweep()

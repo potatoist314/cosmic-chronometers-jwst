@@ -30,7 +30,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SWEEP_PATH = PROJECT_ROOT / "scripts/sweep_ceridwen_vast_gpus.py"
+SWEEP_PATH = PROJECT_ROOT / "scripts/vast.py"
 RESULTS = "results/absorption-mask"
 POLL_SECONDS = 90
 RUN_TIMEOUT_SECONDS = 4 * 3600

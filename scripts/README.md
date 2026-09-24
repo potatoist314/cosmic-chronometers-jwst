@@ -6,6 +6,7 @@
 |---|---|
 | spectral_figures.py | Shared absorption-feature marking for every figure with a wavelength axis. |
 | per_galaxy_diagnostics.py | Per-galaxy chi-squared and star-formation-timescale diagnostics for Ceridwen fits. |
+| vast.py | Shared SSH, transfers, instance lifecycle and experiment offer policy. |
 | absorption_mask_analysis.py | Analysis helpers for the absorption-line pixel-mask experiment. |
 
 ## Production run
@@ -26,10 +27,14 @@
 | absorption_mask_grid.py | Run the absorption-line pixel-mask experiment as a grid of notebook fits. |
 | absorption_mask_report.py | Summarise the absorption-mask experiment: tables and figures. |
 | per_galaxy_diagnostics_vast.py | Verify the per-galaxy diagnostics on one Vast.ai RTX 5060. |
-| benchmark_ceridwen_vast.py | Run and compare short, fixed Ceridwen GPU benchmarks on Vast.ai. |
-| sweep_ceridwen_vast_gpus.py | Rent one Vast.ai GPU per model. |
+| benchmark_ceridwen_vast.py | Fixed-workload measurement and comparison utilities. |
+| benchmark_baked_runtime.py | Measure the notebook likelihood on the rented GPU. |
+| benchmark.py | One command to preflight, rent, measure, download and destroy benchmark instances. |
 | validate_ceridwen_speedups.py | Measure complete production NSS fits. |
-| watch_claude_vast_benchmarks.zsh | Poll the Herdr pane that runs the Vast GPU benchmarks. |
+
+Run `python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1`.
+Use `--dry-run` for local preflight, or repeat with `--output <saved-directory>` to resume.
+The default source is committed HEAD. Uncommitted edits are excluded.
 
 ## Figures
 
@@ -59,5 +64,4 @@
 ## Notes
 
 - `scripts/` is a plain directory, not a package; callers add it to `sys.path`.
-- `sweep_ceridwen_vast_gpus.py`’s `BENCHMARK_SCRIPT_SHA256` no longer matches `benchmark_ceridwen_vast.py`; the sweep pins commit `63b4296` for the benchmark.
 - Inactive scripts live in `archive/scripts/`; see `archive/README.md`.
