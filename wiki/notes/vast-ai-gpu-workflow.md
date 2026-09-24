@@ -19,7 +19,7 @@ python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1
 
 Add GPU names as positional arguments, for example `"RTX 5090" "RTX 4090"`. Add `--hosts 2` for two successful hosts per GPU. `--dry-run` performs local preflight only, without network access or rentals.
 
-Search both on-demand and bid offers for each requested GPU type. Choose the cheapest hourly price with reliability above 99.5% and upload/download rates each below $10/TB. Quote 40 GB disk, record alternatives, and cap experiment spending at $1.
+Search offers with reliability above 99.5% first. Only when none pass every filter, including host exclusions, repeat with reliability above 96%. Choose the cheapest hourly price in the first tier with eligible offers. Both bandwidth rates must remain below $10/TB. The experiment spending cap remains $1.
 
 The default source is committed `HEAD`, excluding local edits. The command uploads pinned source, inputs and the cached grid. It measures likelihood throughput, not full-fit convergence.
 
@@ -43,7 +43,7 @@ The spectrum notebook fits spectra. The joint notebook fits photometry with nati
 
 - Use a Linux image with Jupyter, SSH, and CUDA 12. Prefer `vastai/base-image:cuda-12.6.3-auto`. It avoids the unused PyTorch stack. The bootstrap installs CUDA JAX.
 - Require at least 8 GB GPU memory and 12 GB disk.
-- Require host reliability above 99.5 per cent.
+- Require host reliability above 99.5 per cent; fall back to above 96 per cent only if no offers pass every filter.
 - Require upload and download prices each below $0.01 per GB.
 - Use the cheapest hourly offer for the requested GPU type, with a $1 experiment cap.
 

@@ -1245,3 +1245,8 @@
 
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: Documented hourly-price selection across both markets, reliability and transfer limits, 40 GB disk quotes, saved alternatives and the $1 experiment cap.
+
+## [2026-09-24] codebase | GPU reliability fallback
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Documented the >96% reliability fallback when no >99.5% offer passes every filter.
