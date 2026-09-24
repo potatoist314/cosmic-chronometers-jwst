@@ -6,6 +6,15 @@ theme: Compute
 tags: [gpu, vast-ai, benchmark]
 ---
 
+Batched likelihood, current code, 2026-09-23.
+
+| Card | Speed (x RTX 5060 Ti) | Price paid ($/h) | Cost per unit of work ($/h / speed) |
+| --- | ---: | ---: | ---: |
+| RTX 5060 Ti | 1.00 | 0.17-0.20 | 0.17-0.20 |
+| RTX 5070 | 1.33 | 0.21 | 0.16 |
+| RTX 5080 | 2.39 | 0.35 | 0.15 |
+| RTX 5090 | 4.49 | 0.49-0.55 | 0.11-0.12 |
+
 What went wrong in the 2026-09-23 GPU price benchmark and what fixed it. Record: `wiki/research/experiments/e-gpu-price-benchmark.md`. Results: `results/gpu-benchmark-2026-09-23/`.
 
 <details>

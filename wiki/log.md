@@ -1230,3 +1230,8 @@
 
 - Pages: `notes/gpu-benchmark-2026-09-23-failures.md`
 - Change: failures and fixes from the 2026-09-23 GPU price benchmark, each with file, log line and number.
+
+## [2026-09-23] guide | GPU benchmark cost table
+
+- Pages: `notes/gpu-benchmark-2026-09-23-failures.md`
+- Change: minimal table at the top: speed vs 5060 Ti, price paid, cost per unit of work.

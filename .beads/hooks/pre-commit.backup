@@ -1,0 +1,5 @@
+#!/bin/sh
+# Opus prose check of staged wiki prose: scripts/wiki_prose_check.py.
+# Liu Hao skips it for one commit with: SKIP_PROSE_CHECK=1 git commit ...
+git diff --cached --name-only | grep -q '^wiki/' || exit 0
+exec python3 "$(git rev-parse --show-toplevel)/scripts/wiki_prose_check.py"
