@@ -71,7 +71,7 @@ Reuse `--output <saved-directory>` to resume the saved experiment without repeat
 
 Experiments upload selected spectra, cutouts and required catalogue tables. The runner verifies the uploaded grid’s checksum and reuses the grid during bootstrap.
 
-`--image` selects a container and records it in the run manifest. The dependency image installs pinned Ceridwen and sedpy source at runtime without resolving dependencies again. Its build includes no private model code or research data.
+New experiments use a digest-pinned dependency image from `ghcr.io/potatoist314/ceridwen-gpu`. `--image` overrides it; the run manifest records the selection. The dependency image installs pinned Ceridwen and sedpy source at runtime without resolving dependencies again. Its build includes no private model code or research data.
 
 Source: `scripts/experiment.py` — `configuration`, `preflight`, `Run`, `remote`.
 

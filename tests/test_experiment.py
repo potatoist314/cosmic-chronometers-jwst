@@ -241,3 +241,23 @@ def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, monkeypatch
     assert len(grids) == 1
     assert any('sha256sum -c' in cmd for cmd in commands)
     assert any('input-files.json' in cmd for cmd in commands)
+
+
+def test_new_dry_run_records_prebuilt_digest(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(exp, 'preflight', lambda *a, **kw: {'commit': 'abc', 'input_files': []})
+    monkeypatch.setattr(exp.vast, '_vastai_json', lambda *_: pytest.fail('rental during dry run'))
+    exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(tmp_path), '--dry-run'])
+    plan = json.loads(capsys.readouterr().out)
+    assert plan['source']['image'] == exp.DEFAULT_IMAGE
+    assert '@sha256:' in plan['source']['image']
+
+
+def test_rental_uses_manifest_image(run, cloud, monkeypatch):
+    run.data['source']['image'] = 'example/image@sha256:abc'
+    create = exp.vast._create_instance
+    def checked(offer, args):
+        assert args.image == run.data['source']['image']
+        return create(offer, args)
+    monkeypatch.setattr(exp.vast, '_create_instance', checked)
+    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
+    assert run.execute() == 0

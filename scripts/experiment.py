@@ -24,6 +24,7 @@ else:
 vast = engine.vast
 ROOT = engine.ROOT
 WORKER = 'scripts/run_ceridwen_vast_multi_gpu.py'
+DEFAULT_IMAGE = 'ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34'
 
 
 def merge(base, changes):
@@ -300,6 +301,8 @@ def main(argv=None):
         source['image'] = args.image
     elif saved.exists() and 'image' in json.loads(saved.read_text())['source']:
         source['image'] = json.loads(saved.read_text())['source']['image']
+    elif not saved.exists() and 'input_files' in source:
+        source['image'] = DEFAULT_IMAGE
     args.gpus, args.hosts, args.target, args.seed = [args.gpu], 1, 'experiment', 0
     if args.dry_run:
         print(json.dumps({'source': source, 'gpu': args.gpu, 'spend_cap': args.spend_cap}, indent=2))
