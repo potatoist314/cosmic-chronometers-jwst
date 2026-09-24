@@ -129,11 +129,18 @@ print(json.dumps(manifest))
         cell['target_metadata'] = {**targets[cell['target']], 'seed': cell['seed']}
         grid = grids[cell['settings']['ssp_grid']]
         cell['settings'] = {**cell['settings'], 'ssp_grid': f"{engine.REMOTE}/grid/{grid['remote_name']}"}
-    inputs = selected_inputs(cells)
-    for name in inputs:
-        if not (ROOT / name).is_file():
-            raise ValueError(f'missing selected input: {name}')
-    source.update(grids=list(grids.values()), experiment=cells, input_files=inputs)
+    source.update(grids=list(grids.values()), experiment=cells)
+    bootstrap = engine.git('show', f'{revision}:scripts/bootstrap_vast_ai.sh')
+    if 'input-files.json' in bootstrap:
+        inputs = selected_inputs(cells)
+        for name in inputs:
+            if not (ROOT / name).is_file():
+                raise ValueError(f'missing selected input: {name}')
+        source['input_files'] = inputs
+    else:
+        # Historical bootstrap scripts require the complete spectrum directory.
+        for cell in cells:
+            cell['target_metadata'].pop('filename')
     return json.loads(json.dumps(source))
 
 

@@ -160,7 +160,7 @@ def test_preflight_freezes_every_grid_and_target_before_rental(tmp_path, monkeyp
             return 'pinned'
         if args[0] == 'ls-tree':
             return '160000 commit module'
-        return 'REGISTRY = {}' if 'grid_fetch' in args[1] else ''
+        return 'REGISTRY = {}' if 'grid_fetch' in args[1] else 'input-files.json' if 'bootstrap_vast_ai' in args[1] else ''
     monkeypatch.setattr(exp.engine, 'git', git)
     checked = []
     def inspect(revision, **kwargs):

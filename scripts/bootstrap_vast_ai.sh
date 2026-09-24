@@ -188,4 +188,4 @@ if ssp.schema_version != "2.1":
 print(f"LEGA-C inputs and schema-2.1 HR SSP grid verified: {grid_path}")
 PY
 
-echo "Select the 'Ceridwen (Vast.ai GPU)' kernel in JupyterLab."
+echo "Ceridwen GPU environment ready."
