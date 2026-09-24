@@ -1,0 +1,25 @@
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+h5py>=3.8
+astropy>=5.3
+sedpy-jax>=0.1.1
+blackjax @ git+https://github.com/blackjax-devs/blackjax@f73e12956
+tqdm>=4.65
+fastprogress>=1.0
+optax>=0.2.0
+anesthetic>=2.8
+pytest>=7.0
+jax[cuda12]==0.10.2
+jaxlib==0.10.2
+tensorflow-probability>=0.23
+tfp-nightly==0.26.0.dev20260810
+astroquery>=0.4.11,<0.5
+corner>=2.3,<3
+ipykernel>=7.3,<8
+nbclient>=0.10,<0.11
+nbconvert>=7.17,<8
+pandas>=3,<4
+specutils>=2.2,<3
+setuptools>=61
+wheel
