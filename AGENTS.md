@@ -68,6 +68,7 @@ The user's contribution will be focused on overall research direction and method
 - For connected spectral plots, keep the full wavelength grid and set excluded
   values to `NaN`; never plot `wavelength[mask]` as one connected line or band.
 - Experiments: follow `.agents/skills/running-ceridwen-experiments/SKILL.md`.
+  Use `python3 scripts/experiment.py run <config.json> --gpu "<GPU type>"` for new fits.
 - Before another paid Ceridwen GPU benchmark, read `BENCHMARK_CHECK.md`.
 - GPU rentals: choose the lowest hourly price for the requested GPU type, with
   reliability above 99.5% (fall back to above 96% only if no offers pass all filters) and upload/download charges each below $10/TB.

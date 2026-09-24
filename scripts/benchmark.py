@@ -54,7 +54,7 @@ def literal(source, name):
     raise vast.SweepError(f'{name} is missing from the pinned source')
 
 
-def preflight(revision):
+def preflight(revision, *, grid_name=None, workers=('benchmark_baked_runtime.py', 'benchmark_ceridwen_vast.py')):
     """Resolve committed source and check local inputs before renting."""
     for command in ('git', 'ssh', 'rsync', 'vastai'):
         if not shutil.which(command):
@@ -71,13 +71,14 @@ def preflight(revision):
                             if 'SETTINGS = {' in ''.join(c['source'])), 'SETTINGS')
     registry = literal(git('show', f"{modules['ceridwen']}:ceridwen/ssps/grid_fetch.py",
                            tree=ROOT / 'ceridwen'), 'REGISTRY')
-    grid_name = settings['ssp_grid']
-    grid = Path(os.environ.get('CERIDWEN_GRID_DIR', Path.home() / '.ceridwen/grids')) / f'{grid_name}.h5'
+    grid_name = grid_name or settings['ssp_grid']
+    grid = (Path(os.environ.get('CERIDWEN_GRID_DIR', Path.home() / '.ceridwen/grids')) / f'{grid_name}.h5'
+            if grid_name in registry else Path(grid_name).expanduser().resolve())
     if not grid.is_file():
         raise vast.SweepError(f'grid cache missing: {grid}; fetch_grid({grid_name!r}) before renting')
     with grid.open('rb') as stream:
         checksum = hashlib.file_digest(stream, 'sha256').hexdigest()
-    if checksum != registry[grid_name]['sha256']:
+    if grid_name in registry and checksum != registry[grid_name]['sha256']:
         raise vast.SweepError(f'grid checksum mismatch: {grid}')
     for directory in INPUT_DIRS:
         if not (ROOT / 'data/raw' / directory).is_dir():
@@ -86,7 +87,7 @@ def preflight(revision):
     if len(spectra) != vast.EXPECTED_SPECTRUM_FILES:
         raise vast.SweepError(f'expected {vast.EXPECTED_SPECTRUM_FILES} local spectra, found {len(spectra)}')
     # Compile the pinned worker, not an unrelated dirty working copy.
-    for name in ('benchmark_baked_runtime.py', 'benchmark_ceridwen_vast.py'):
+    for name in workers:
         compile(git('show', f'{commit}:scripts/{name}'), name, 'exec')
     return {'commit': commit, 'submodules': modules, 'grid': str(grid), 'grid_sha256': checksum}
 
@@ -125,6 +126,9 @@ def estimated_spend(attempt):
 
 
 class Run:
+    download_gb = 8
+    disk_gb = vast.DEFAULT_DISK_GB
+
     def __init__(self, args, source):
         self.args = args
         self.root = args.output.resolve()
@@ -164,10 +168,12 @@ class Run:
         for min_reliability in vast.RELIABILITY_TIERS:
             query = f'gpu_name={gpu.replace(" ", "_")} verified=true reliability>{min_reliability}'
             offers = [offer for kind in ('on-demand', 'bid')
-                      for offer in vast.search_offers(query, rental_type=kind)]
+                      for offer in vast.search_offers(query, rental_type=kind, disk=self.disk_gb)]
             for offer in offers:
                 terms = offer_terms(offer, min_reliability)
                 reason = offer_rejection(offer, min_reliability)
+                if float(offer.get('disk_space') or 0) < self.disk_gb:
+                    reason = f'disk < {self.disk_gb} GB'
                 if offer['host_id'] in hosts or offer['id'] in ids:
                     reason = 'host active or already tried in this task'
                 row = {'offer_id': offer['id'], 'host_id': offer['host_id'],
@@ -175,7 +181,7 @@ class Run:
                        'reliability': offer['reliability2'], 'rejected': reason}
                 if terms and reason is None:
                     price, bid = terms
-                    expected = price * .5 + 8 * float(offer['inet_down_cost'])
+                    expected = price * .5 + self.download_gb * float(offer['inet_down_cost'])
                     result.append((expected, offer, price, bid))
                     row.update(hourly_usd=price, download_usd_per_gb=offer['inet_down_cost'],
                                expected_usd=expected)
@@ -184,7 +190,7 @@ class Run:
                 break
         result.sort(key=lambda row: (row[2], row[0], row[1]['id'], row[3] is not None))
         self.selection = {'gpu': gpu, 'queried_at': datetime.now(UTC).isoformat(),
-                          'min_reliability': min_reliability, 'estimated_hours': .5, 'estimated_download_gb': 8,
+                          'min_reliability': min_reliability, 'estimated_hours': .5, 'estimated_download_gb': self.download_gb,
                           'ranking': 'hourly USD, then estimated total USD',
                           'offers': sorted(audit, key=lambda row: (row.get('hourly_usd', math.inf), row.get('expected_usd', math.inf)))}
         return result
@@ -238,10 +244,13 @@ class Run:
         vast._ssh(instance, f'mkdir -p {REMOTE}/data/raw {REMOTE}/grid; command -v rsync || (apt-get update -qq && apt-get install -y -qq rsync)', timeout=self.timeout(attempt))
         for directory in INPUT_DIRS:
             vast._rsync(port, str(ROOT / 'data/raw' / directory), f'{target}:{REMOTE}/data/raw/', timeout=self.timeout(attempt, 600))
-        grid = Path(source['grid'])
-        vast._rsync(port, str(grid), f'{target}:{REMOTE}/grid/', timeout=self.timeout(attempt, 600))
-        check = f"{source['grid_sha256']}  {REMOTE}/grid/{grid.name}"
-        vast._ssh(instance, f'printf %s {shlex.quote(check)} | sha256sum -c -', timeout=self.timeout(attempt))
+        grids = source.get('grids', [{'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
+                                      'remote_name': Path(source['grid']).name}])
+        for entry in grids:
+            remote_grid = f"{REMOTE}/grid/{entry['remote_name']}"
+            vast._rsync(port, entry['grid'], f'{target}:{remote_grid}', timeout=self.timeout(attempt, 600))
+            check = f"{entry['grid_sha256']}  {remote_grid}"
+            vast._ssh(instance, f'printf %s {shlex.quote(check)} | sha256sum -c -', timeout=self.timeout(attempt))
 
     def stage(self, attempt, name, command):
         """Detach once; stage locks and exit files survive SSH disconnects."""
@@ -275,8 +284,7 @@ class Run:
                 self.wait_ready(attempt)
             time.sleep(POLL_SECONDS)
 
-    def measure(self, attempt):
-        instance = attempt['instance_id']
+    def prepare(self, attempt):
         self.wait_ready(attempt)
         if not attempt.get('uploaded'):
             log('uploading pinned source, inputs and cached grid')
@@ -293,6 +301,11 @@ class Run:
             self.save()
         environment = f'cd {REMOTE} && export CERIDWEN_GRID_DIR={REMOTE}/grid && '
         self.stage(attempt, 'bootstrap', environment + 'bash scripts/bootstrap_vast_ai.sh')
+        return environment
+
+    def measure(self, attempt):
+        instance = attempt['instance_id']
+        environment = self.prepare(attempt)
         remote_output = f'{REMOTE}/.benchmark/{instance}/timing.json'
         command = (environment + 'MPLBACKEND=Agg LD_LIBRARY_PATH= JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 '
                    "XLA_FLAGS='--xla_gpu_enable_command_buffer=' .venv-ceridwen-gpu/bin/python scripts/benchmark_baked_runtime.py "
@@ -333,7 +346,7 @@ class Run:
 
     def attempt(self, offer, price, bid, existing=None):
         attempt = existing or {'offer': offer, 'price': price, 'bid': bid, 'started': time.time(),
-                               'transfer_estimate': 8 * float(offer['inet_down_cost']), 'status': 'renting'}
+                               'transfer_estimate': self.download_gb * float(offer['inet_down_cost']), 'status': 'renting'}
         if existing is None:
             self.data['attempts'].append(attempt)
             self.save()  # Failed offers are recorded before the create request.
@@ -342,7 +355,7 @@ class Run:
                 label = f"ceridwen-run-{hashlib.sha256(str(self.root).encode()).hexdigest()[:12]}-{len(self.data['attempts'])}"
                 attempt['label'] = label
                 self.save()
-                args = argparse.Namespace(image=vast.DEFAULT_IMAGE, disk=vast.DEFAULT_DISK_GB, bid=bid, label=label)
+                args = argparse.Namespace(image=vast.DEFAULT_IMAGE, disk=self.disk_gb, bid=bid, label=label)
                 attempt['instance_id'] = vast._create_instance(offer, args)
                 self.save()  # Ownership is durable before setup begins.
             self.measure(attempt)
@@ -410,7 +423,7 @@ class Run:
                 self.data.setdefault('selections', []).append(self.selection)
                 self.save()
                 log(f"renting {gpu}, host {offer['host_id']}, ${price:.3f}/h; estimate ${cost:.3f}")
-                log('ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; ' + '; '.join(
+                log(f'ranking: lowest hourly price; estimates use 0.5 hours plus {self.download_gb:g} GB download; ' + '; '.join(
                     f"{r['offer_id']} {r['rental_type']} ${r['hourly_usd']:.3f}/h, ${r['expected_usd']:.3f} total"
                     for r in self.selection['offers'] if r['rejected'] is None)[:600])
                 self.attempt(offer, price, bid)
