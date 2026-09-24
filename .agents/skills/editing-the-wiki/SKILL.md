@@ -40,5 +40,5 @@ Rules are in `AGENTS.md`, `~/.claude/CLAUDE.md`, `wiki/AGENTS.md` and
    The build runs the length check. His words (2026-09-21): "a cheap check would be good."
    The check uses no model. It rejects a roadmap item of more than 30 words. It rejects
    a paragraph of more than 60 words. Make the text shorter. Do not bypass the check.
-5. **Finish.** Commit only your paths. The pre-commit hook `scripts/wiki_prose_check.py` sends new wiki prose to Opus. On a fail, apply its rewrites and commit again. Only Liu Hao uses `SKIP_PROSE_CHECK=1`. Push to `absorption-mask`. The launchd agent
+5. **Finish.** Commit only your paths. The pre-commit hook `scripts/wiki_prose_check.py` sends new wiki prose to Jev for a quick check of conciseness, plain English and natural phrasing. On a fail, revise the flagged passages and commit again. Only Liu Hao uses `SKIP_PROSE_CHECK=1`. Push to `absorption-mask`. The launchd agent
    `com.liuhao.astro-wiki-publish` publishes the change to `https://wiki.eclw.org/`.
