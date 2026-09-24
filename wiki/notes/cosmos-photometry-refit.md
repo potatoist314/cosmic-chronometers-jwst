@@ -109,7 +109,7 @@ Record
 - `xerr` was negative for `hsc_i`: its `sedpy_jax` `red_edge` lies below `wave_eff`. Fixed in commit `066f614`.
 - The executed notebook and `ceridwen_derived_outputs.h5` were regenerated on CPU from the stored posterior with `scripts/regenerate_fit_notebooks.py`; the sampler was not re-run.
 - `cosmos2025`: attempt 1 was stopped by hand after 4 minutes so attempt 2 used the fixed notebook; same seed.
-- COSMOS2025 has no zero-point offsets because none are published; its Milky Way extinction uses COSMOS2020 Classic \(E(B-V)=0.015\).
+- The COSMOS2025 refit uses SE++ model total fluxes and applies no LePhare offsets. Its Milky Way extinction uses COSMOS2020 Classic \(E(B-V)=0.015\). Published per-band offsets appear in [Shuntov et al., Section 6.1, Figure 15](https://arxiv.org/html/2506.03243v1#S6.SS1).
 - One galaxy. The 5% error floor sets the photometric uncertainty in most bands.
 - Liu Hao raised the price cap to $0.21/h for this rental only on 2026-09-21; the rule stays $0.11/h.
 

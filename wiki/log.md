@@ -1261,3 +1261,8 @@
 - Pages: `research/experiments/e-birth-cloud-dust.md`, `notes/birth-cloud-dust.md`, `index.md`
 - Change: three M1_210210 arms compared; per-arm spectrum and photometry fits, SFH, corner, parameter table and $0.9962 RTX 5090 run recorded.
 - Validation: executed notebooks and HDF5 loaded; note/record checks passed; full wiki suites failed on pre-existing missing evidence elsewhere.
+
+## [2026-09-24] query | COSMOS2025 photometry choice
+
+- Pages: `notes/cosmos-photometry-comparison.md`, `notes/cosmos-photometry-refit.md`
+- Change: Clarified COSMOS2025 model fluxes, calibrated uncertainties and unapplied LePhare offsets; corrected the refit caveat.

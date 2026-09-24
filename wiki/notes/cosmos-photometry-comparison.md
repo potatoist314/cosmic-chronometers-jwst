@@ -81,7 +81,12 @@ Plot
 | COSMOS2015 | \(3''\) aperture | Per-object `Offset`; IRAC already total | \(E(B-V)\,F\), Laigle et al. (2016) Table 3 | Laigle et al. (2016) Table 3 \(s_f\), subtracted |
 | COSMOS2020 Classic | \(2''\) aperture | Per-object `totaloff2`; IRAC (IRACLEAN) and GALEX already total | Not in catalogue; applied with the same \(F\) | Weaver et al. (2022) Table 3, LePhare/Classic column, added |
 | COSMOS2020 Farmer | Total model flux | None | Not in catalogue; applied with the same \(F\) | Weaver et al. (2022) Table 3, LePhare/Farmer column, added |
-| COSMOS2025 | Total SE++ model flux, calibrated error `e_Flux-c-mod` | None | No \(E(B-V)\) column; value taken from COSMOS2020 Classic | None tabulated in Shuntov et al. (2025); none applied |
+| COSMOS2025 | Total SE++ model flux `Flux-mod-*`, calibrated error `e_Flux-c-mod-*` | None | No \(E(B-V)\) column; value taken from COSMOS2020 Classic | No LePhare band offsets applied by the loader |
+
+COSMOS2025 uses Sérsic model total fluxes, not aperture or AUTO fluxes. “Calibrated” describes the flux uncertainties, not LePhare’s per-band magnitude offsets. The loader applies no LePhare offsets; all band zero-points and aperture offsets are zero.
+
+Columns: `Flux-mod-{band}` and `e_Flux-c-mod-{band}` in `scripts/cosmos_photometry.py:155–159` (`catalogue_flux`). Their definitions are in the [catalogue documentation](https://cosmos2025.iap.fr/catalog.html). Published LePhare offsets appear in [Shuntov et al., Section 6.1, Figure 15](https://arxiv.org/html/2506.03243v1#S6.SS1).
+
 
 </details>
 
