@@ -22,6 +22,8 @@ columns (four decimals) and fall back to the flux column for non-detections.
 "cosmos2025" is the default for new fits; outside its footprint it falls back
 to "cosmos2020_classic" (`resolve_photometry`), and the fit records the
 effective catalogue in `photometry_source`.
+"cosmos2025_uv" adds COSMOS2020 Classic NUV and CFHT u to COSMOS2025.
+Outside the COSMOS2025 footprint it uses Classic alone, without duplicate bands.
 """
 
 from pathlib import Path
@@ -54,7 +56,7 @@ LAIGLE_F = {
 # COSMOS2020 offsets are Weaver+22 Table 3 (LePhare), added to magnitudes.
 BANDS = {
     "NUV": (2314, "galex_NUV", {"classic": ("GALEXNUV", 0.005), "farmer": ("GALEXNUV", -0.145)}),
-    "u": (3709, None, {"classic": ("CFHTu", 0.001), "farmer": ("CFHTu", -0.092)}),
+    "u": (3709, "cfht_megacam_u_9302", {"classic": ("CFHTu", 0.001), "farmer": ("CFHTu", -0.092)}),
     "u*": (3858, "cfht_megacam_us_9301", {
         "cosmos2015": ("u", 0.010), "classic": ("CFHTustar", 0.058),
         "farmer": ("CFHTustar", -0.002), "cosmos2025": ("CFHT-u", 0.0)}),
@@ -201,6 +203,7 @@ def total_photometry(tables: dict, spect_id: str, bands=None) -> pd.DataFrame:
 FIT_CATALOGUES = {
     "cosmos2020_classic": ("classic", "FlagCOMBINED"),
     "cosmos2025": ("cosmos2025", "warn-flag"),
+    "cosmos2025_uv": ("cosmos2025", "warn-flag"),
 }
 DEFAULT_PHOTOMETRY = "cosmos2025"
 FALLBACK_PHOTOMETRY = "cosmos2020_classic"
@@ -208,7 +211,7 @@ FALLBACK_PHOTOMETRY = "cosmos2020_classic"
 
 def resolve_photometry(photometry: str, spect_id: str, tables: dict | None = None) -> str:
     """Effective fit catalogue: "cosmos2025" outside its footprint uses FALLBACK_PHOTOMETRY."""
-    if photometry != "cosmos2025":
+    if photometry not in ("cosmos2025", "cosmos2025_uv"):
         return photometry
     if tables is None:
         tables = read_matches()
@@ -216,9 +219,10 @@ def resolve_photometry(photometry: str, spect_id: str, tables: dict | None = Non
 
 
 def fit_photometry(photometry: str, spect_id: str) -> pd.DataFrame:
-    """Bands of one catalogue for the fit: a sedpy_jax curve and a finite total flux.
+    """Fit bands with a response curve and finite flux, including non-detections.
 
     "cosmos2025" outside its footprint falls back to FALLBACK_PHOTOMETRY.
+    "cosmos2025_uv" supplements COSMOS2025 with Classic NUV and CFHT u.
     Callers record the effective catalogue with resolve_photometry.
     """
     tables = read_matches()
@@ -228,8 +232,14 @@ def fit_photometry(photometry: str, spect_id: str) -> pd.DataFrame:
     if flag != 0:
         raise ValueError(f"{spect_id}: {catalogue} {flag_column} = {flag}")
     bands = total_photometry(tables, spect_id)
+    selected = bands["catalogue"] == catalogue
+    if photometry == "cosmos2025_uv":
+        classic_flag = int(tables["classic"][spect_id]["FlagCOMBINED"])
+        if classic_flag != 0:
+            raise ValueError(f"cosmos2020_classic: {spect_id}: FlagCOMBINED = {classic_flag}")
+        selected |= (bands["catalogue"] == "classic") & bands["band"].isin(["NUV", "u"])
     bands = bands[
-        (bands["catalogue"] == catalogue)
+        selected
         & bands["filter_in_sedpy_jax"]
         & np.isfinite(bands["total_flux_ujy"])
     ]
