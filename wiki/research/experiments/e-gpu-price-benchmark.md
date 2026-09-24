@@ -213,18 +213,22 @@ Speed ratios of RTX 5060 Ti, 5070, 5070 Ti, 5080 and 5090 (and 5060 if offered) 
 
 ## Measurements
 
-| GPU | Rental $/h | Calls/s | Cost per million calls ($) |
+| GPU | Rental $/h | Calls/s | Estimated sampler cost/fit ($) |
 | --- | ---: | ---: | ---: |
-| [RTX 5060 Ti](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.185 | 33,173 | 0.001550 |
-| [RTX 5070](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.210 | 44,179 | 0.001323 |
-| [RTX 5080](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.352 | 79,161 | 0.001235 |
-| [RTX 5090](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.485 | 148,930 | 0.000905 |
+| [RTX 5060 Ti](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.185 | 33,173 | 0.051 |
+| [RTX 5070](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.210 | 44,179 | 0.044 |
+| [RTX 5080](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.352 | 79,161 | 0.041 |
+| [RTX 5090](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.485 | 148,930 | 0.030 |
 
 ## Results
 
 Six of ten requested host measurements completed: two RTX 5060 Ti, one 5070, one 5080 and two 5090. The 5070 Ti has no measured host. [Price matrix and invoices](results/gpu-benchmark-2026-09-23/sol/summary.json) record $0.981 billed, including failed rentals. [Diagnostic summary](results/gpu-benchmark-2026-09-23/diagnostic/summary.json) records $0.087 billed for the separate 5090 test.
 
 At batch 500 on diagnostic host 622869, GPU use was 96%; host dispatch took 0.196 ms of a 3.224 ms blocked call. Calls/s stayed between 147,676 and 151,955 from batch 500 to 8,000. The host CPU did not leave this GPU idle at those batch sizes.
+
+The estimate uses three converged RTX 5060 Ti M1_210210 sampler times: 1,025 s and 1,064 s for [COSMOS2020 Classic and COSMOS2025](wiki/research/experiments/e-cosmos-photometry-refit.md), and 891.5 s for [emission off](wiki/research/experiments/e-emission-line-marginalisation.md). Their mean is 993.5 s.
+
+Estimated time per card = 993.5 s × 33,173 / measured calls/s. Cost/fit = estimated time × rental $/h / 3,600. Setup, transfer, and postprocessing are excluded.
 
 ## Caveats
 

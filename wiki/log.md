@@ -1306,3 +1306,8 @@
 
 - Pages: `research/experiments/e-gpu-price-benchmark.md`
 - Change: Grouped rentals by GPU, excluded the low 5090 measurement and enabled column sorting.
+
+## [2026-09-24] research | Estimated GPU fit cost
+
+- Pages: `research/experiments/e-gpu-price-benchmark.md`
+- Change: Replaced cost per million calls with an estimate from three converged M1_210210 fits.
