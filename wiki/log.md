@@ -1319,3 +1319,8 @@
 ### 2026-09-24 — GPU startup
 
 - Experiment uploads include selected target files and required catalogues. Bootstrap reuses the uploaded grid and supports a prebuilt dependency image.
+
+## [2026-09-24] codebase | Thirteen SFH bins by default
+
+- Pages: `notes/model.md`, `index.md`
+- Change: SFH nodes use 0.5 Gyr spacing from 1 to 5 Gyr (13 bins); prior, bin-mass and sampler-count rows updated.

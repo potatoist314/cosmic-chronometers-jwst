@@ -173,4 +173,6 @@ Independent dust bump: `notes/model.md` — the existing Noll law samples slope 
 
 Birth-cloud dust: enabled by default in the production notebook (24 Sep 2026); `notes/model.md`.
 
+SFH bins: 13 bins by default in the production notebook (24 Sep 2026), 0.5 Gyr spacing from 1 to 5 Gyr; `notes/model.md`.
+
 Wiki prose check: `scripts/wiki_prose_check.py` — Jev checks conciseness, plain English and natural phrasing in staged passages.
