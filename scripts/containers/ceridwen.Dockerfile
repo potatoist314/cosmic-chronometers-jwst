@@ -4,7 +4,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends git ca-certific
 RUN pip install --no-cache-dir uv==0.7.20
 COPY scripts/containers/requirements.txt /opt/ceridwen-requirements.txt
 RUN uv venv /opt/ceridwen && uv pip install --no-cache --python /opt/ceridwen/bin/python \
-    -r /opt/ceridwen-requirements.txt && uv pip check --python /opt/ceridwen/bin/python
+    -r /opt/ceridwen-requirements.txt \
+    && uv pip install --no-cache --python /opt/ceridwen/bin/python --reinstall --no-deps tfp-nightly==0.26.0.dev20260810 \
+    && uv pip check --python /opt/ceridwen/bin/python
 
 FROM python:3.11.16-slim-bookworm
 RUN apt-get update && apt-get install -y --no-install-recommends \
