@@ -25,3 +25,9 @@ python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1
 
 No historical cap file, agent watchdog, or memory lookup is required.
 Experiment fits use the running-ceridwen-experiments skill.
+
+Local SSH errors stop before rental. Use an execution environment authorized to run
+SSH; waiting for the GPU cannot fix a local user-ID error. The shared upload
+includes HST cutouts and the emission-line table. A nonzero remote stage exit
+saves its log, destroys the owned rental and stops. Diagnose the log before
+repeating the command; do not rent a replacement for the same code or input error.

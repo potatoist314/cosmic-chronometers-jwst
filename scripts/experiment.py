@@ -104,7 +104,7 @@ def preflight(path, revision, *, fetch_missing=False):
                 name = str((path.parent / candidate).resolve())
             elif fetch_missing and name in grid_module['REGISTRY']:
                 grid_module['fetch_grid'](name)
-            source = engine.preflight(revision, grid_name=name,
+            source = engine.preflight(revision, grid_name=name, targets={c['target'] for c in cells},
                                       workers=('experiment.py', 'run_ceridwen_vast_multi_gpu.py'))
             grids[cell['settings']['ssp_grid']] = {
                 'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
@@ -186,16 +186,6 @@ class Run(engine.Run):
         prices = [a['price'] for a in self.data['attempts'] if not a.get('destroyed')]
         return super().budget(reserve + max(prices, default=0) / 30)
 
-    def upload(self, attempt):
-        super().upload(attempt)
-        target, port = vast._ssh_target(attempt['instance_id'])
-        # The emission model uses this existing line table.
-        table = ROOT / 'external/fsps/data/emlines_info.dat'
-        vast._ssh(attempt['instance_id'], f'mkdir -p {engine.REMOTE}/external/fsps/data',
-                  timeout=self.timeout(attempt))
-        vast._rsync(port, str(table), f'{target}:{engine.REMOTE}/external/fsps/data/',
-                    timeout=self.timeout(attempt))
-
     def measure(self, attempt):
         environment = self.prepare(attempt)
         instance = attempt['instance_id']
@@ -218,9 +208,16 @@ class Run(engine.Run):
                 destination = self.root / 'fits'
                 destination.mkdir(exist_ok=True)
                 shell = shlex.join(['ssh', *vast._ssh_options(port)])
-                subprocess.run(['rsync', '-a', '-e', shell, f'{target}:{remote_root}/results/',
-                                f'{destination}/'], check=True, capture_output=True,
-                               timeout=max(1, min(120, int(super().budget() / attempt['price'] * 3600))))
+                stage_error = sys.exception()
+                try:
+                    subprocess.run(['rsync', '-a', '-e', shell, f'{target}:{remote_root}/results/',
+                                    f'{destination}/'], check=True, capture_output=True,
+                                   timeout=max(1, min(120, int(super().budget() / attempt['price'] * 3600))))
+                except (vast.SweepError, subprocess.SubprocessError, OSError) as error:
+                    if stage_error is None:
+                        raise
+                    # Preserve a fatal stage error even if it produced no results to pull.
+                    engine.log(f'partial result download failed: {error}')
             self.data.setdefault('completed_cells', []).append(cell['name'])
             self.save()
         attempt['status'] = 'complete'

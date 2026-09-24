@@ -30,7 +30,8 @@ else:
 ROOT = vast.PROJECT_ROOT
 NOTEBOOK = 'notebooks/ceridwen_integrated_photometry_spectra.ipynb'
 SUBMODULES = ('ceridwen', 'external/sedpy_jax')
-INPUT_DIRS = ('legac_dr2', 'cosmos2015', 'cosmos2020', 'cosmos2025')
+INPUT_DIRS = ('legac_dr2', 'cosmos2015', 'cosmos2020', 'cosmos2025', 'hst_f814w')
+INPUT_FILES = ('external/fsps/data/emlines_info.dat',)
 REMOTE = vast.REMOTE_ROOT
 POLL_SECONDS = 15
 
@@ -54,7 +55,21 @@ def literal(source, name):
     raise vast.SweepError(f'{name} is missing from the pinned source')
 
 
-def preflight(revision, *, grid_name=None, workers=('benchmark_baked_runtime.py', 'benchmark_ceridwen_vast.py')):
+def check_target_inputs(targets):
+    for target in targets:
+        path = ROOT / 'data/raw/hst_f814w' / f'{target}.fits'
+        if not path.is_file():
+            raise vast.SweepError(f'missing target input: {path}')
+    for name in INPUT_FILES:
+        if not (ROOT / name).is_file():
+            raise vast.SweepError(f'missing notebook input: {name}')
+
+
+class StageFailed(RuntimeError):
+    """A completed remote stage failed; inspect its log before renting again."""
+
+
+def preflight(revision, *, grid_name=None, targets=(), workers=('benchmark_baked_runtime.py', 'benchmark_ceridwen_vast.py')):
     """Resolve committed source and check local inputs before renting."""
     for command in ('git', 'ssh', 'rsync', 'vastai'):
         if not shutil.which(command):
@@ -62,6 +77,8 @@ def preflight(revision, *, grid_name=None, workers=('benchmark_baked_runtime.py'
     for path in (vast.SSH_KEY_PATH, vast.SSH_KEY_PATH.with_suffix('.pub')):
         if not path.is_file():
             raise vast.SweepError(f'missing SSH key file: {path}')
+    vast.check_local_ssh()
+    check_target_inputs(targets)
     commit = git('rev-parse', f'{revision}^{{commit}}')
     modules = {tree: git('ls-tree', commit, tree).split()[2] for tree in SUBMODULES}
     for tree, sha in modules.items():
@@ -210,10 +227,14 @@ class Run:
             if state.get('actual_status') == 'running':
                 vast._attach_ssh_key(attempt['instance_id'])
                 try:
-                    if vast._ssh(attempt['instance_id'], 'true', timeout=self.timeout(attempt, 30), check=False).returncode == 0:
+                    probe = vast._ssh(attempt['instance_id'], 'true', timeout=self.timeout(attempt, 30), check=False)
+                    if probe.returncode == 0:
                         return
-                except (vast.SweepError, subprocess.TimeoutExpired):
-                    pass
+                    log(f'SSH not ready: {probe.stderr.strip()}')
+                except vast.LocalSSHError:
+                    raise
+                except (vast.SweepError, subprocess.TimeoutExpired) as error:
+                    log(f'SSH not ready: {error}')
             stalled = time.monotonic() - last_progress
             if stalled >= 240:
                 fresh = self.candidates(attempt['offer']['gpu_name'])
@@ -244,6 +265,10 @@ class Run:
         vast._ssh(instance, f'mkdir -p {REMOTE}/data/raw {REMOTE}/grid; command -v rsync || (apt-get update -qq && apt-get install -y -qq rsync)', timeout=self.timeout(attempt))
         for directory in INPUT_DIRS:
             vast._rsync(port, str(ROOT / 'data/raw' / directory), f'{target}:{REMOTE}/data/raw/', timeout=self.timeout(attempt, 600))
+        for name in INPUT_FILES:
+            remote_parent = f'{REMOTE}/{Path(name).parent}'
+            vast._ssh(instance, f'mkdir -p {remote_parent}', timeout=self.timeout(attempt))
+            vast._rsync(port, str(ROOT / name), f'{target}:{remote_parent}/', timeout=self.timeout(attempt))
         grids = source.get('grids', [{'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
                                       'remote_name': Path(source['grid']).name}])
         for entry in grids:
@@ -277,8 +302,10 @@ class Run:
                     contents = vast._ssh(attempt['instance_id'], f'cat {prefix}.log', timeout=self.timeout(attempt)).stdout
                     (self.root / f'{attempt["instance_id"]}-{name}.log').write_text(contents)
                     if status != '0':
-                        raise RuntimeError(f'{name} exited {status}')
+                        raise StageFailed(f'{name} exited {status}; inspect {self.root / f"{attempt['instance_id']}-{name}.log"} before retrying')
                     return
+            except vast.LocalSSHError:
+                raise
             except (vast.SweepError, subprocess.TimeoutExpired) as error:
                 log(f'{name}: {error}; reconnecting to the same instance')
                 self.wait_ready(attempt)
@@ -293,6 +320,8 @@ class Run:
                 try:
                     self.upload(attempt)
                     break
+                except vast.LocalSSHError:
+                    raise
                 except (vast.SweepError, subprocess.SubprocessError):
                     if retry:
                         raise
@@ -361,6 +390,8 @@ class Run:
             self.measure(attempt)
         except (Exception, KeyboardInterrupt) as error:
             attempt.update(status='failed', error=f'{type(error).__name__}: {error}')
+            if isinstance(error, (vast.LocalSSHError, StageFailed)):
+                attempt['retryable'] = False
             log(attempt['error'])
             if isinstance(error, KeyboardInterrupt):
                 raise
@@ -400,6 +431,8 @@ class Run:
                         self.save()
                 if attempt.get('instance_id') and vast._instance_exists(attempt['instance_id']):
                     self.attempt(attempt['offer'], attempt['price'], attempt['bid'], existing=attempt)
+                    if attempt.get('retryable') is False:
+                        return 1
                 else:
                     attempt.update(destroyed=True, elapsed=time.time() - attempt['started'], status='failed')
                     self.save()
@@ -427,6 +460,8 @@ class Run:
                     f"{r['offer_id']} {r['rental_type']} ${r['hourly_usd']:.3f}/h, ${r['expected_usd']:.3f} total"
                     for r in self.selection['offers'] if r['rejected'] is None)[:600])
                 self.attempt(offer, price, bid)
+                if self.data['attempts'][-1].get('retryable') is False:
+                    return 1
                 count += 1
         return 0
 
@@ -456,7 +491,7 @@ def main(argv=None):
     saved = args.output / 'manifest.json'
     if saved.exists() and args.revision == 'HEAD':
         args.revision = json.loads(saved.read_text())['source']['commit']
-    source = preflight(args.revision)
+    source = preflight(args.revision, targets=[args.target])
     log(f"committed source {source['commit'][:12]}; output {args.output}")
     if args.dry_run:
         print(json.dumps({'source': source, 'gpus': args.gpus, 'spend_cap': args.spend_cap}, indent=2))

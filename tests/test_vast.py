@@ -135,3 +135,35 @@ def test_fit_empty_after_both_tiers(monkeypatch):
     monkeypatch.setattr(sweep, 'search_offers', lambda query, **kw: queries.append(query) or [])
     assert sweep.fit_offers() == []
     assert len(queries) == 2
+
+
+def test_local_ssh_preflight_does_not_connect(monkeypatch):
+    calls = []
+    monkeypatch.setattr(sweep.subprocess, 'run', lambda args, **kw:
+                        calls.append(args) or SimpleNamespace(returncode=0, stderr=''))
+    sweep.check_local_ssh()
+    assert calls[0][:2] == ['ssh', '-G']
+    assert 'BatchMode=yes' in calls[0]
+
+
+def test_local_ssh_uid_error_fails_preflight(monkeypatch):
+    monkeypatch.setattr(sweep.subprocess, 'run', lambda *a, **kw:
+                        SimpleNamespace(returncode=255, stderr='No user exists for uid 501'))
+    with pytest.raises(sweep.LocalSSHError, match='uid 501'):
+        sweep.check_local_ssh()
+
+
+def test_local_ssh_uid_error_is_fatal_even_with_check_false(monkeypatch):
+    monkeypatch.setattr(sweep, '_ssh_target', lambda _: ('root@test', '22'))
+    monkeypatch.setattr(sweep.subprocess, 'run', lambda *a, **kw:
+                        SimpleNamespace(returncode=255, stderr='No user exists for uid 501'))
+    with pytest.raises(sweep.LocalSSHError, match='uid 501'):
+        sweep._ssh(1, 'true', timeout=2, check=False)
+
+
+def test_legacy_wait_also_stops_on_local_ssh_failure(monkeypatch):
+    monkeypatch.setattr(sweep, '_ssh', lambda *a, **kw:
+                        (_ for _ in ()).throw(sweep.LocalSSHError('No user exists for uid 501')))
+    monkeypatch.setattr(sweep.time, 'sleep', lambda _: pytest.fail('waited on local error'))
+    with pytest.raises(sweep.LocalSSHError):
+        sweep._wait_for_ssh(1, lambda _: None)

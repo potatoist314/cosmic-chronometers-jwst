@@ -174,7 +174,7 @@ def test_create_is_not_retried_on_empty_response(monkeypatch):
 
 
 def test_dry_run_never_contacts_cloud_or_writes_output(tmp_path, monkeypatch):
-    monkeypatch.setattr(bench, 'preflight', lambda _: {'commit': 'abc'})
+    monkeypatch.setattr(bench, 'preflight', lambda *a, **kw: {'commit': 'abc'})
     monkeypatch.setattr(bench.vast, '_vastai_json', lambda *_: pytest.fail('network on dry run'))
     output = tmp_path / 'absent'
     assert bench.main(['run', 'RTX 5090', '--spend-cap', '1', '--output', str(output), '--dry-run']) == 0
@@ -273,3 +273,70 @@ def test_no_fallback_when_preferred_offer_exists(run, cloud, monkeypatch):
     assert all(r[1]['id'] == offer['id'] for r in run.candidates('RTX 5090'))
     assert len(queries) == 2
     assert run.selection['min_reliability'] == .995
+
+
+def test_missing_target_cutout_fails_before_source_or_cloud(tmp_path, monkeypatch):
+    monkeypatch.setattr(bench, 'ROOT', tmp_path)
+    key = tmp_path / 'key'
+    key.touch()
+    key.with_suffix('.pub').touch()
+    monkeypatch.setattr(bench.vast, 'SSH_KEY_PATH', key)
+    monkeypatch.setattr(bench.shutil, 'which', lambda _: 'available')
+    monkeypatch.setattr(bench.vast, 'check_local_ssh', lambda: None)
+    monkeypatch.setattr(bench, 'git', lambda *a, **kw: pytest.fail('source work before input check'))
+    with pytest.raises(bench.vast.SweepError, match='hst_f814w/target.fits'):
+        bench.preflight('HEAD', targets=['target'])
+
+
+def test_upload_includes_hst_cutouts_and_line_table(run, cloud, monkeypatch):
+    copied = []
+    monkeypatch.setattr(run, 'archive', lambda *a: None)
+    monkeypatch.setattr(bench.vast, '_ssh_target', lambda _: ('root@test', '22'))
+    monkeypatch.setattr(bench.vast, '_rsync', lambda port, source, dest, **kw: copied.append(source))
+    attempt = {'instance_id': 100, 'price': .2}
+    bench.Run.upload(run, attempt)
+    assert str(bench.ROOT / 'data/raw/hst_f814w') in copied
+    assert str(bench.ROOT / 'external/fsps/data/emlines_info.dat') in copied
+
+
+def test_local_ssh_failure_destroys_once_without_waiting_or_replacement(run, cloud, monkeypatch):
+    offer, state = cloud
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda *a, **kw:
+                        [offer, {**offer, 'id': 2, 'host_id': 43}])
+    monkeypatch.setattr(bench.vast, '_ssh', lambda *a, **kw:
+                        (_ for _ in ()).throw(bench.vast.LocalSSHError('No user exists for uid 501')))
+    monkeypatch.setattr(bench.time, 'sleep', lambda _: pytest.fail('waited on a local SSH failure'))
+    assert run.execute() == 1
+    assert state['created'] == [1]
+    assert state['destroyed'] == [100]
+    assert run.data['attempts'][0]['retryable'] is False
+
+
+def test_remote_stage_exit_does_not_rent_another_host(run, cloud, monkeypatch):
+    offer, state = cloud
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda *a, **kw:
+                        [offer, {**offer, 'id': 2, 'host_id': 43}])
+    original = bench.vast._ssh
+    def ssh(instance, command, **kwargs):
+        if 'tail -c' in command and '/measure.' in command:
+            return SimpleNamespace(stdout='1\nFileNotFoundError: missing cutout', returncode=0)
+        return original(instance, command, **kwargs)
+    monkeypatch.setattr(bench.vast, '_ssh', ssh)
+    assert run.execute() == 1
+    assert state['created'] == [1]
+    assert state['destroyed'] == [100]
+    assert (run.root / '100-measure.log').exists()
+    assert run.data['attempts'][0]['retryable'] is False
+
+
+def test_transient_ssh_error_is_reported_then_retried(run, cloud, monkeypatch, capsys):
+    original = bench.vast._ssh
+    calls = []
+    def ssh(instance, command, **kwargs):
+        if command == 'true' and not calls:
+            calls.append(command)
+            return SimpleNamespace(stdout='', stderr='Connection refused', returncode=255)
+        return original(instance, command, **kwargs)
+    monkeypatch.setattr(bench.vast, '_ssh', ssh)
+    assert run.execute() == 0
+    assert 'SSH not ready: Connection refused' in capsys.readouterr().out

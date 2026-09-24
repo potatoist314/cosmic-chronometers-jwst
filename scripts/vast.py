@@ -97,6 +97,18 @@ class SweepError(RuntimeError):
     """Report an unusable offer, instance, or remote command."""
 
 
+class LocalSSHError(SweepError):
+    """The local SSH client cannot run; waiting for a GPU cannot repair it."""
+
+
+def check_local_ssh():
+    """Parse SSH configuration locally without opening a network connection."""
+    result = subprocess.run(['ssh', '-G', *_ssh_options('22'), 'root@127.0.0.1'],
+                            capture_output=True, text=True, timeout=15, check=False)
+    if result.returncode:
+        raise LocalSSHError(f"local SSH preflight failed: {result.stderr.strip()}")
+
+
 def _vastai(arguments: list[str], timeout: float = 180.0) -> str:
     command = ["vastai", *arguments]
     result = subprocess.run(
@@ -152,6 +164,8 @@ def _ssh_options(port: str) -> list[str]:
         "-o",
         "IdentitiesOnly=yes",
         "-o",
+        "BatchMode=yes",
+        "-o",
         "StrictHostKeyChecking=accept-new",
         "-o",
         "UserKnownHostsFile=/dev/null",
@@ -201,6 +215,9 @@ def _ssh(
         text=True,
         timeout=timeout,
     )
+    if result.returncode and any(message in result.stderr.lower() for message in
+                                 ('no user exists for uid', "you don't exist", 'getpwuid')):
+        raise LocalSSHError(f"local SSH failure: {result.stderr.strip()}")
     if check and result.returncode != 0:
         detail = (result.stderr or result.stdout).strip().splitlines()
         raise SweepError("\n".join(detail[-20:]) or "remote command failed")
@@ -233,7 +250,10 @@ def _wait_for_ssh(instance_id: int, log: Any) -> None:
     while time.monotonic() < deadline:
         try:
             probe = _ssh(instance_id, "true", timeout=60.0, check=False)
-        except (SweepError, subprocess.TimeoutExpired):
+        except LocalSSHError:
+            raise
+        except (SweepError, subprocess.TimeoutExpired) as error:
+            log(f"SSH not ready: {error}")
             probe = None
         if probe is not None and probe.returncode == 0:
             return

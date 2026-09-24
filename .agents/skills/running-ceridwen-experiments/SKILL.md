@@ -71,3 +71,9 @@ Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy t
    `python3 wiki/build.py` and `python3 wiki/tests/run_tests.py`.
 7. **Finish.** Commit and push. Reply with the measurement table and the paths.
    Status `reviewed` only after his interpretation is in the record.
+
+Local SSH errors stop before rental. Use an execution environment authorized to run
+SSH; waiting for the GPU cannot fix a local user-ID error. The shared upload
+includes HST cutouts and the emission-line table. A nonzero remote stage exit
+saves its log, destroys the owned rental and stops. Diagnose the log before
+repeating the command; do not rent a replacement for the same code or input error.

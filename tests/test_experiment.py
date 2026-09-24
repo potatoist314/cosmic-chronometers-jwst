@@ -193,3 +193,20 @@ def test_budget_failure_destroys_without_marking_cells_complete(run, cloud, monk
         run.execute()
     assert cloud[1]['destroyed'] == [100]
     assert not run.data.get('completed_cells')
+
+
+def test_fatal_stage_error_survives_failed_partial_download(run, cloud, monkeypatch):
+    import subprocess
+    offer, state = cloud
+    monkeypatch.setattr(exp.vast, 'search_offers', lambda *a, **kw:
+                        [offer, {**offer, 'id': 2, 'host_id': 43}])
+    monkeypatch.setattr(run, 'prepare', lambda _: '')
+    monkeypatch.setattr(run, 'stage', lambda *a:
+                        (_ for _ in ()).throw(exp.engine.StageFailed('fit exited 1')))
+    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw:
+                        (_ for _ in ()).throw(subprocess.CalledProcessError(23, 'rsync')))
+    assert run.execute() == 1
+    assert state['created'] == [1]
+    assert state['destroyed'] == [100]
+    assert run.data['attempts'][0]['retryable'] is False
+    assert run.data['attempts'][0]['error'].startswith('StageFailed:')
