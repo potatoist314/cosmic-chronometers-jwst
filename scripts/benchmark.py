@@ -310,7 +310,8 @@ class Run:
                     contents = vast._ssh(attempt['instance_id'], f'cat {prefix}.log', timeout=self.timeout(attempt)).stdout
                     (self.root / f'{attempt["instance_id"]}-{name}.log').write_text(contents)
                     if status != '0':
-                        raise StageFailed(f'{name} exited {status}; inspect {self.root / f"{attempt['instance_id']}-{name}.log"} before retrying')
+                        log_path = self.root / f"{attempt['instance_id']}-{name}.log"
+                        raise StageFailed(f'{name} exited {status}; inspect {log_path} before retrying')
                     return
             except vast.LocalSSHError:
                 raise
