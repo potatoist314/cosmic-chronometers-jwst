@@ -19,7 +19,7 @@ def run(tmp_path, monkeypatch):
 
 @pytest.fixture
 def cloud(run, monkeypatch):
-    offer = dict(id=1, host_id=42, gpu_name='RTX 5090', dph_total=.2, inet_down_cost=.001,
+    offer = dict(id=1, host_id=42, gpu_name='RTX 5090', dph_total=.2, inet_down_cost=.001, inet_up_cost=.001,
                  verification='verified', rentable=True, reliability2=.999,
                  gpu_ram=32000, disk_space=80, cuda_max_good=13, direct_port_count=4)
     state = {'live': {}, 'created': [], 'destroyed': [], 'commands': []}
@@ -53,7 +53,7 @@ def cloud(run, monkeypatch):
         state['live'].pop(instance, None)
     monkeypatch.setattr(bench.vast, '_create_instance', create)
     monkeypatch.setattr(bench.vast, '_vastai_json', api)
-    monkeypatch.setattr(bench.vast, 'search_offers', lambda _: [offer])
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda _, **kwargs: [offer] if kwargs['rental_type'] == 'on-demand' else [])
     monkeypatch.setattr(bench.vast, '_instance_state', lambda i: state['live'].get(i, {}))
     monkeypatch.setattr(bench.vast, '_instance_exists', lambda i: i in state['live'])
     monkeypatch.setattr(bench.vast, '_attach_ssh_key', lambda i: None)
@@ -181,7 +181,60 @@ def test_dry_run_never_contacts_cloud_or_writes_output(tmp_path, monkeypatch):
     assert not output.exists()
 
 
-@pytest.mark.parametrize('price', ['0', '-1', 'nan', 'inf'])
+@pytest.mark.parametrize('price', ['0', '-1', 'nan', 'inf', '1.01'])
 def test_invalid_budget_rejected(price):
     with pytest.raises(SystemExit):
         bench.parser().parse_args(['run', 'RTX 5090', '--spend-cap', price])
+
+
+def test_cheaper_valid_offer_wins_even_when_expensive_offer_is_first(run, cloud, monkeypatch):
+    offer, _ = cloud
+    expensive = {**offer, 'id': 10, 'host_id': 10, 'dph_total': .744}
+    cheap = {**offer, 'id': 20, 'host_id': 20, 'dph_total': .45}
+    unreliable = {**offer, 'id': 30, 'host_id': 30, 'dph_total': .10, 'reliability2': .995}
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda _, **kw:
+                        [expensive, unreliable, cheap] if kw['rental_type'] == 'on-demand' else [])
+    ranked = run.candidates('RTX 5090')
+    assert [row[1]['id'] for row in ranked] == [20, 10]
+    assert next(r for r in run.selection['offers'] if r['offer_id'] == 30)['rejected'] == 'reliability <= 99.5%'
+
+
+def test_bid_competes_below_cap_and_includes_disk_cost(run, cloud, monkeypatch):
+    offer, _ = cloud
+    on_demand = {**offer, 'dph_total': .744, 'rental_type': 'on-demand'}
+    bid = {**offer, 'id': 2, 'dph_total': .45, 'dph_base': .40,
+           'min_bid': .40, 'storage_total_cost': .05, 'rental_type': 'bid'}
+    calls = []
+    def search(query, **kwargs):
+        calls.append((query, kwargs['rental_type']))
+        return [bid] if kwargs['rental_type'] == 'bid' else [on_demand]
+    monkeypatch.setattr(bench.vast, 'search_offers', search)
+    ranked = run.candidates('RTX 5090')
+    assert ranked[0][1]['id'] == 2
+    assert ranked[0][2] == pytest.approx(.455)
+    assert ranked[0][3] == pytest.approx(.405)
+    assert all('gpu_name=RTX_5090' in query for query, _ in calls)
+    assert {kind for _, kind in calls} == {'bid', 'on-demand'}
+
+
+def test_hourly_price_wins_with_bandwidth_under_guard(run, cloud, monkeypatch):
+    offer, _ = cloud
+    cheap_hourly = {**offer, 'id': 1, 'dph_total': .45, 'inet_down_cost': .009}
+    cheap_total = {**offer, 'id': 2, 'dph_total': .50, 'inet_down_cost': .001}
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda _, **kw:
+                        [cheap_hourly, cheap_total] if kw['rental_type'] == 'on-demand' else [])
+    ranked = run.candidates('RTX 5090')
+    assert ranked[0][1]['id'] == 1
+    assert run.selection['offers'][0]['hourly_usd'] == .45
+    assert run.selection['offers'][0]['expected_usd'] > run.selection['offers'][1]['expected_usd']
+
+
+def test_search_sets_disk_price_and_price_sort_explicitly(monkeypatch):
+    calls = []
+    monkeypatch.setattr(bench.vast, '_vastai_json', lambda args: calls.append(args) or [{'id': 1}])
+    assert bench.vast.search_offers('gpu_name=RTX_5090', rental_type='bid') == [{'id': 1, 'rental_type': 'bid'}]
+    args = calls[0]
+    assert args[args.index('--type') + 1] == 'bid'
+    assert args[args.index('--storage') + 1] == '40'
+    assert args[args.index('--order') + 1] == 'dph'
+    assert '--no-default' in args

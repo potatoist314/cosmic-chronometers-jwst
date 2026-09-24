@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
+import math
 import shlex
 import subprocess
 import time
@@ -25,43 +25,30 @@ BENCHMARK_GPU_MEMORY_MIB = 6000
 SSH_KEY_PATH = Path.home() / ".ssh/id_ed25519"
 EXPECTED_SPECTRUM_FILES = 1988
 
-MAX_INET_COST_USD_PER_TB = 5.0
-
-# Liu Hao's rule for every Ceridwen fit run (2026-09-23): a 5060-class card
-# or better on a host above 99.5% reliability; take the cheapest available
-# offer ranked by cost per unit of work (total run cost divided by the card's
-# benchmark speed factor). The caps below are loose guards against a disaster,
-# not targets; the per-task total spend cap is the real control.
-# An interruptible (bid) rental is fine for any run under two hours.
+MAX_INET_COST_USD_PER_TB = 10.0
 FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti", "RTX 5070", "RTX 5080", "RTX 5090")
-# Likelihood speed relative to the RTX 5060 Ti, from the 2026-09-23 Vast
-# benchmark in results/gpu-benchmark-2026-09-23/sol/summary.json: 5070 1.33,
-# 5080 2.39, 5090 4.49. Two of three 5090 hosts measured about 150,000
-# calls/s (host 406325: 148,930; the diagnostic host: about 150,000 at
-# batch 500 to 8,000 with the GPU 96% busy); host 213578 at 94,294 is
-# treated as a bad or shared host. The RTX 5060 timing ran at commit
-# 1e1f6c8 with cosmos_total photometry while the benchmark pins c869309
-# (cosmos2025), so it is not comparable; Liu Hao set 0.9.
-FIT_SPEED_VS_5060_TI = {
-    "RTX 5060": 0.9,
-    "RTX 5060 Ti": 1.00,
-    "RTX 5070": 1.33,
-    "RTX 5080": 2.39,
-    "RTX 5090": 4.49,
-}
-# Either guard can be raised for one rental that Liu Hao approved by name.
-FIT_MAX_DPH_USD = float(os.environ.get("CERIDWEN_FIT_MAX_DPH_USD", "0.80"))
 FIT_MIN_RELIABILITY = 0.995
 FIT_BID_MARGIN_USD = 0.005
-FIT_MAX_INET_COST_USD_PER_TB = float(os.environ.get("CERIDWEN_FIT_MAX_INET_COST_USD_PER_TB", "25.0"))
-# Total-cost ranking weights: about an hour on the box and ~6 GB down
-# (image, data, bootstrap).
-FIT_EXPECTED_HOURS = 1.0
-FIT_TRANSFER_GB = 6.0
+FIT_MAX_INET_COST_USD_PER_TB = MAX_INET_COST_USD_PER_TB
+
+
+def experiment_cap(value):
+    amount = float(value)
+    if not math.isfinite(amount) or not 0 < amount <= 1:
+        raise argparse.ArgumentTypeError("experiment spend cap must be above zero and at most USD 1")
+    return amount
+
+
+def bandwidth_qualifies(offer):
+    return all(float(offer.get(field, math.inf)) < MAX_INET_COST_USD_PER_TB / 1000
+               for field in ("inet_down_cost", "inet_up_cost"))
+
+
 FIT_OFFER_QUERY_BASE = (f"gpu_name in [RTX_5060,RTX_5060_Ti,RTX_5070,RTX_5080,RTX_5090] verified=true rentable=true num_gpus=1 "
                         f"inet_down>200 disk_space>=40 reliability>{FIT_MIN_RELIABILITY} "
-                        f"inet_down_cost<{FIT_MAX_INET_COST_USD_PER_TB / 1000}")
-FIT_OFFER_QUERY = f"{FIT_OFFER_QUERY_BASE} dph<{FIT_MAX_DPH_USD}"
+                        f"inet_down_cost<{FIT_MAX_INET_COST_USD_PER_TB / 1000} "
+                        f"inet_up_cost<{FIT_MAX_INET_COST_USD_PER_TB / 1000}")
+FIT_OFFER_QUERY = FIT_OFFER_QUERY_BASE
 
 
 RUNNING_TIMEOUT_SECONDS = 600
@@ -78,36 +65,15 @@ def fit_bid_price(offer: dict[str, Any]) -> float:
 def fit_offer_price(offer: dict[str, Any], *, interruptible: bool = False) -> float:
     """Hourly price: the bid for an interruptible rental, else on-demand."""
     if interruptible and "min_bid" in offer:
-        return fit_bid_price(offer)
+        return fit_bid_price(offer) + float(offer.get("storage_total_cost") or 0)
     return float(offer.get("dph_total") or 1e9)
 
 
-def fit_offer_total_cost(offer: dict[str, Any], *, interruptible: bool = False,
-                         hours: float = FIT_EXPECTED_HOURS,
-                         transfer_gb: float = FIT_TRANSFER_GB) -> float:
-    """Expected total run cost: hourly price plus bandwidth for the transfer."""
-    return (fit_offer_price(offer, interruptible=interruptible) * hours
-            + float(offer.get("inet_down_cost", 1e9)) * transfer_gb)
-
-
-def fit_offer_cost_per_work(offer: dict[str, Any], *, interruptible: bool = False,
-                            hours: float = FIT_EXPECTED_HOURS,
-                            transfer_gb: float = FIT_TRANSFER_GB) -> float:
-    """Ranking key: total run cost divided by the card's benchmark speed factor."""
-    return (fit_offer_total_cost(offer, interruptible=interruptible,
-                                 hours=hours, transfer_gb=transfer_gb)
-            / FIT_SPEED_VS_5060_TI[offer["gpu_name"]])
-
-
 def fit_offer_qualifies(offer: dict[str, Any], *, interruptible: bool = False) -> bool:
-    """The rule above, applied to a returned row (Vast's own dph filter is not exact).
-
-    On-demand offers are judged on ``dph_total``; interruptible ones on the bid.
-    """
+    """Require supported GPUs, reliability above 99.5%, and bandwidth below $10/TB."""
     return (offer.get("gpu_name") in FIT_GPU_NAMES
-            and fit_offer_price(offer, interruptible=interruptible) < FIT_MAX_DPH_USD
             and float(offer.get("reliability2") or 0.0) > FIT_MIN_RELIABILITY
-            and float(offer.get("inet_down_cost", 1e9)) * 1000 < FIT_MAX_INET_COST_USD_PER_TB)
+            and bandwidth_qualifies(offer))
 
 
 class SweepError(RuntimeError):
@@ -145,13 +111,18 @@ def _vastai_json(arguments: list[str], timeout: float = 180.0) -> Any:
     raise SweepError(f"vastai returned no JSON: {output.strip()[:200]}")
 
 
-def search_offers(extra_query: str = "") -> list[dict[str, Any]]:
-    """Return every rentable single-GPU offer Vast currently lists."""
+def search_offers(extra_query: str = "", *, rental_type: str = "on-demand",
+                  disk: int = DEFAULT_DISK_GB) -> list[dict[str, Any]]:
+    """Search explicit rental terms, sorted by hourly price for the requested disk."""
     query = f"num_gpus=1 rentable=true {extra_query}".strip()
-    offers = _vastai_json(["search", "offers", query, "--limit", "5000"])
+    offers = _vastai_json(["search", "offers", query, "--no-default",
+                          "--type", rental_type, "--storage", str(disk),
+                          "--order", "dph", "--limit", "5000"])
     if not isinstance(offers, list):
         raise SweepError("vastai search offers did not return a list")
-    return offers
+    if len(offers) >= 5000:
+        raise SweepError("offer search reached its limit; narrow the GPU query before renting")
+    return [{**offer, "rental_type": rental_type} for offer in offers]
 
 
 def _ssh_options(port: str) -> list[str]:

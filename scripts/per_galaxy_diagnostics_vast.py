@@ -63,15 +63,14 @@ def _log(message: str) -> None:
 
 
 def rtx5060_offers() -> list[dict]:
-    offers = sweep._vastai_json(["search", "offers", sweep.FIT_OFFER_QUERY, "-o", "dph"])
+    offers = sweep.search_offers(sweep.FIT_OFFER_QUERY)
     offers = [
         o for o in offers
         if sweep.fit_offer_qualifies(o)
-        and (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
         and float(o.get("gpu_ram") or 0) >= 8000
         and float(o.get("cuda_max_good") or 0) >= 12.6
     ]
-    offers.sort(key=lambda o: sweep.fit_offer_cost_per_work(o, hours=EXPECTED_HOURS))
+    offers.sort(key=lambda o: sweep.fit_offer_price(o))
     return offers
 
 
@@ -304,7 +303,7 @@ def main(argv=None) -> int:
     run = sub.add_parser("run")
     run.add_argument("--target", action="append", required=True, help="SPECT_ID from the DR2 manifest (repeatable)")
     run.add_argument("--branch", default="absorption-mask")
-    run.add_argument("--spend-cap-usd", type=float, default=2.0)
+    run.add_argument("--spend-cap-usd", type=sweep.experiment_cap, default=1.0)
     run.add_argument("--image", default=sweep.DEFAULT_IMAGE)
     run.add_argument("--disk", type=int, default=sweep.DEFAULT_DISK_GB)
     destroy = sub.add_parser("destroy")

@@ -301,26 +301,25 @@ def _sweep():
 
 
 _vast = _sweep()
-GPU_NAMES, MAX_DPH_USD, MIN_RELIABILITY = _vast.FIT_GPU_NAMES, _vast.FIT_MAX_DPH_USD, _vast.FIT_MIN_RELIABILITY
+GPU_NAMES, MIN_RELIABILITY = _vast.FIT_GPU_NAMES, _vast.FIT_MIN_RELIABILITY
 offer_qualifies = _vast.fit_offer_qualifies
 
 
 def offer_price(offer: dict, interruptible: bool) -> float:
-    return _vast.fit_bid_price(offer) if interruptible else float(offer["dph_total"])
+    return _vast.fit_offer_price(offer, interruptible=interruptible)
 
 
 def offers_rtx_5060(sweep, exclude_hosts: set[int], interruptible: bool = False) -> list[dict]:
     query = sweep.FIT_OFFER_QUERY_BASE if interruptible else sweep.FIT_OFFER_QUERY
-    offers = sweep._vastai_json(["search", "offers", query, "-o", "dph"])
+    offers = sweep.search_offers(query, rental_type="bid" if interruptible else "on-demand")
     offers = [
         o for o in offers
         if offer_qualifies(o, interruptible=interruptible)
-        and (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
         and float(o.get("gpu_ram") or 0) >= 8000
         and float(o.get("cuda_max_good") or 0) >= 12.6
         and int(o.get("host_id") or 0) not in exclude_hosts
     ]
-    offers.sort(key=lambda o: sweep.fit_offer_cost_per_work(o, interruptible=interruptible))
+    offers.sort(key=lambda o: sweep.fit_offer_price(o, interruptible=interruptible))
     return offers
 
 
@@ -612,7 +611,7 @@ def main(argv=None) -> int:
                        help="upload this ceridwen checkout over the box's ceridwen/ after the clone")
         p.add_argument("--image", default="vastai/base-image:cuda-12.6.3-auto")
         p.add_argument("--disk", type=int, default=40)
-        p.add_argument("--spend-cap", type=float, default=1.0, help="USD; stop and destroy beyond it")
+        p.add_argument("--spend-cap", type=_vast.experiment_cap, default=1.0, help="USD; stop and destroy beyond it")
         p.add_argument("--keep-instance", action="store_true", help="do not destroy at the end")
         p.add_argument("--exclude-host", nargs="*", default=[])
         p.add_argument("--interruptible", action="store_true",

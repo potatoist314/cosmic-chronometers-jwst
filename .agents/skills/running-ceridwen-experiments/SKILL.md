@@ -25,10 +25,10 @@ Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy t
    `results/m1-210210-reference/tau-1/poly10/210210-M1_210210` (production defaults, 2026-09-17).
    ```
    CERIDWEN_ARMS_RESULTS=results/<slug> python scripts/calibration_arms_vast.py run \
-     --arms <arm> --targets M1_210210 --interruptible --spend-cap 0.50
+     --arms <arm> --targets M1_210210 --interruptible --spend-cap 1
    ```
-   The driver rents one RTX 5060, 5060 Ti, 5070, 5080 or 5090 at the cheapest
-   cost per unit of work, clones the branch, uploads `ceridwen/` and
+   The total experiment cap is $1 including retries. The driver rents one RTX 5060, 5060 Ti, 5070, 5080 or 5090 at the lowest
+   hourly price, with reliability above 99.5% and bandwidth below $10/TB, clones the branch, uploads `ceridwen/` and
    `data/raw`, bootstraps CUDA, runs the notebook, polls every 2 min, pulls, destroys.
    Output: `results/<slug>/<arm>/<object>-<target>/` with `M1_210210_executed.ipynb`,
    `ceridwen_result.h5`, `execution.log`; `results/<slug>/vast_run_<timestamp>.json`

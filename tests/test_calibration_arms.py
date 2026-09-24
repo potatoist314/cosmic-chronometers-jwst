@@ -129,19 +129,19 @@ def test_reference_arm_pins_the_fixed_dust_index_after_the_default_flip(arms):
 
 def _offer(**overrides):
     base = dict(gpu_name="RTX 5060", dph_total=0.09, reliability2=0.997, gpu_ram=8151,
-                cuda_max_good=12.8, inet_down_cost=0.0, host_id=1)
+                cuda_max_good=12.8, inet_down_cost=0.0, inet_up_cost=0.0, host_id=1)
     base.update(overrides)
     return base
 
 
 def test_offer_rule_accepts_reliable_cards_under_loose_guards(arms):
-    """Liu Hao's rule (2026-09-23): 5060/5060 Ti/5070/5080/5090 above 99.5% reliable; $0.80/h and $25/TB are loose disaster guards."""
+    """No hourly ceiling; reliability and bandwidth requirements still apply."""
     assert arms.offer_qualifies(_offer())
     assert arms.offer_qualifies(_offer(gpu_name="RTX 5060 Ti", gpu_ram=16311))
     assert arms.offer_qualifies(_offer(gpu_name="RTX 5070"))
     assert arms.offer_qualifies(_offer(gpu_name="RTX 5080", dph_total=0.35))
     assert arms.offer_qualifies(_offer(gpu_name="RTX 5090", dph_total=0.57))
-    assert not arms.offer_qualifies(_offer(dph_total=0.80))
+    assert arms.offer_qualifies(_offer(dph_total=1.50))
     assert not arms.offer_qualifies(_offer(reliability2=0.995))
     assert not arms.offer_qualifies(_offer(gpu_name="RTX 5070 Ti"))
     assert not arms.offer_qualifies(_offer(gpu_name="RTX 4090", dph_total=0.05))
@@ -152,24 +152,23 @@ def test_interruptible_offers_are_judged_on_the_bid(arms):
     dear_on_demand = _offer(dph_total=0.90, min_bid=0.09)
     assert arms.offer_price(dear_on_demand, interruptible=True) == 0.095
     assert arms.offer_qualifies(dear_on_demand, interruptible=True)
-    assert not arms.offer_qualifies(dear_on_demand)
-    assert not arms.offer_qualifies(_offer(dph_total=0.90, min_bid=0.80), interruptible=True)
+    assert arms.offer_qualifies(dear_on_demand)
+    assert arms.offer_qualifies(_offer(dph_total=0.90, min_bid=0.80), interruptible=True)
     assert not arms.offer_qualifies(_offer(min_bid=0.05, reliability2=0.99), interruptible=True)
-    assert arms.offer_qualifies(_offer(inet_down_cost=0.013))  # $13/TB passes the loose $25/TB guard
+    assert not arms.offer_qualifies(_offer(inet_down_cost=0.013))
     assert not arms.offer_qualifies(_offer(inet_down_cost=0.025))
 
 
-def test_offer_ranking_prefers_lower_cost_per_work_over_lower_hourly(arms):
+def test_offer_ranking_prefers_lower_hourly_price(arms):
     ti = _offer(gpu_name="RTX 5060 Ti", dph_total=0.10,
                 inet_down_cost=0.001)  # (0.10 + 0.006) / 1.00 = 0.106
     faster = _offer(gpu_name="RTX 5080", dph_total=0.20,
                     inet_down_cost=0.001)  # (0.20 + 0.006) / 2.39 = 0.0862
-    ranked = sorted([ti, faster], key=arms._vast.fit_offer_cost_per_work)
-    assert [entry["gpu_name"] for entry in ranked] == ["RTX 5080", "RTX 5060 Ti"]
+    ranked = sorted([ti, faster], key=arms._vast.fit_offer_price)
+    assert [entry["gpu_name"] for entry in ranked] == ["RTX 5060 Ti", "RTX 5080"]
 
 
 def test_offer_rule_constants_match_the_rule(arms):
-    assert arms.MAX_DPH_USD == 0.80
     assert arms.MIN_RELIABILITY == 0.995
     assert set(arms.GPU_NAMES) == {"RTX 5060", "RTX 5060 Ti", "RTX 5070", "RTX 5080", "RTX 5090"}
 

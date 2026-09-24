@@ -5,12 +5,15 @@ description: Run Ceridwen likelihood throughput benchmarks on Vast.ai with one c
 
 # Benchmark Ceridwen GPUs
 
-With the requested GPUs and approved total budget, run from the project root:
+Run from the project root with the requested GPUs:
 
 ```bash
-python3 scripts/benchmark.py run "RTX 5090" --spend-cap <USD>
+python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1
 ```
 
+- Choose the lowest hourly price for each requested GPU type, reliability above
+  99.5%, and upload/download charges each below $10/TB. No hourly price cap.
+- The experiment cap is $1 including retries; `--spend-cap` can only reduce it.
 - Add more GPU names as positional arguments. Use `--hosts 2` for repeated hosts.
 - Use `--dry-run` for local preflight without rentals.
 - Defaults use committed HEAD, pinned submodules and the verified local grid.

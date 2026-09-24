@@ -91,20 +91,30 @@ def preflight(revision):
     return {'commit': commit, 'submodules': modules, 'grid': str(grid), 'grid_sha256': checksum}
 
 
-def offer_terms(offer, max_hourly):
-    if (offer.get('verification') != 'verified' or not offer.get('rentable')
-            or float(offer.get('reliability2') or 0) <= .995
-            or float(offer.get('gpu_ram') or 0) < 8000
-            or float(offer.get('disk_space') or 0) < vast.DEFAULT_DISK_GB
-            or float(offer.get('cuda_max_good') or 0) < 12.6
-            or int(offer.get('direct_port_count') or 0) < 2
-            or float(offer.get('inet_down_cost', math.inf)) >= .025):
+def offer_rejection(offer):
+    checks = (
+        (offer.get('verification') != 'verified', 'unverified'),
+        (not offer.get('rentable'), 'unavailable'),
+        (float(offer.get('reliability2') or 0) <= .995, 'reliability <= 99.5%'),
+        (float(offer.get('gpu_ram') or 0) < 8000, 'GPU RAM < 8000 MiB'),
+        (float(offer.get('disk_space') or 0) < vast.DEFAULT_DISK_GB, 'disk < 40 GB'),
+        (float(offer.get('cuda_max_good') or 0) < 12.6, 'CUDA < 12.6'),
+        (int(offer.get('direct_port_count') or 0) < 2, 'direct ports < 2'),
+        (not vast.bandwidth_qualifies(offer), 'bandwidth >= $10/TB or missing'),
+    )
+    return next((reason for rejected, reason in checks if rejected), None)
+
+
+def offer_terms(offer):
+    if offer_rejection(offer):
         return None
+    bid = None
     price = float(offer.get('dph_total') or math.inf)
-    if price <= max_hourly:
-        return price, None
-    bid = float(offer.get('min_bid') or math.inf) + .005
-    return (bid, bid) if bid <= max_hourly else None
+    if offer.get('rental_type') == 'bid':
+        bid = round(float(offer['min_bid']) + vast.FIT_BID_MARGIN_USD, 4)
+        # The bid covers compute. The total quote also includes the requested disk.
+        price = price - float(offer['dph_base']) + bid
+    return price, bid
 
 
 def estimated_spend(attempt):
@@ -150,15 +160,31 @@ class Run:
         ids = {a['offer']['id'] for a in self.data['attempts']}
         hosts.update(i['host_id'] for i in vast._vastai_json(['show', 'instances']))
         result = []
-        for offer in vast.search_offers('verified=true reliability>0.995'):
-            if offer['gpu_name'] != gpu or offer['host_id'] in hosts or offer['id'] in ids:
-                continue
-            terms = offer_terms(offer, self.args.max_hourly)
-            if terms:
+        query = f'gpu_name={gpu.replace(" ", "_")} verified=true reliability>0.995'
+        offers = [offer for kind in ('on-demand', 'bid')
+                  for offer in vast.search_offers(query, rental_type=kind)]
+        audit = []
+        for offer in offers:
+            terms = offer_terms(offer)
+            reason = offer_rejection(offer)
+            if offer['host_id'] in hosts or offer['id'] in ids:
+                reason = 'host active or already tried in this task'
+            row = {'offer_id': offer['id'], 'host_id': offer['host_id'],
+                   'rental_type': offer.get('rental_type', 'on-demand'),
+                   'reliability': offer['reliability2'], 'rejected': reason}
+            if terms and reason is None:
                 price, bid = terms
                 expected = price * .5 + 8 * float(offer['inet_down_cost'])
                 result.append((expected, offer, price, bid))
-        return sorted(result, key=lambda row: row[0])
+                row.update(hourly_usd=price, download_usd_per_gb=offer['inet_down_cost'],
+                           expected_usd=expected)
+            audit.append(row)
+        result.sort(key=lambda row: (row[2], row[0], row[1]['id'], row[3] is not None))
+        self.selection = {'gpu': gpu, 'queried_at': datetime.now(UTC).isoformat(),
+                          'estimated_hours': .5, 'estimated_download_gb': 8,
+                          'ranking': 'hourly USD, then estimated total USD',
+                          'offers': sorted(audit, key=lambda row: (row.get('hourly_usd', math.inf), row.get('expected_usd', math.inf)))}
+        return result
 
     def wait_ready(self, attempt):
         last_message, last_progress, cheaper_checks = None, time.monotonic(), 0
@@ -168,8 +194,6 @@ class Run:
             if not state or state.get('actual_status') in ('offline', 'exited'):
                 raise vast.SweepError('instance unavailable')
             attempt['price'] = float(state.get('dph_total') or attempt['price'])
-            if attempt['price'] > self.args.max_hourly:
-                raise vast.SweepError('actual hourly price exceeds --max-hourly')
             message = (state.get('actual_status'), state.get('status_msg'))
             if message != last_message:
                 log(f"instance {attempt['instance_id']}: {message}")
@@ -380,17 +404,15 @@ class Run:
                     continue
                 cost, offer, price, bid = candidates[0]
                 self.budget(reserve=cost)
+                self.data.setdefault('selections', []).append(self.selection)
+                self.save()
                 log(f"renting {gpu}, host {offer['host_id']}, ${price:.3f}/h; estimate ${cost:.3f}")
+                log('ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; ' + '; '.join(
+                    f"{r['offer_id']} {r['rental_type']} ${r['hourly_usd']:.3f}/h, ${r['expected_usd']:.3f} total"
+                    for r in self.selection['offers'] if r['rejected'] is None)[:600])
                 self.attempt(offer, price, bid)
                 count += 1
         return 0
-
-
-def positive(value):
-    number = float(value)
-    if not math.isfinite(number) or number <= 0:
-        raise argparse.ArgumentTypeError('must be finite and positive')
-    return number
 
 
 def parser():
@@ -398,8 +420,7 @@ def parser():
     sub = result.add_subparsers(dest='command', required=True)
     run = sub.add_parser('run', help='preflight, rent, measure, download and destroy')
     run.add_argument('gpus', nargs='+', help='Vast GPU names, e.g. "RTX 5090"')
-    run.add_argument('--spend-cap', type=positive, required=True, help='total USD for this output directory, including retries')
-    run.add_argument('--max-hourly', type=positive, default=.80)
+    run.add_argument('--spend-cap', type=vast.experiment_cap, default=1.0, help='total USD including retries; maximum and default: 1')
     run.add_argument('--hosts', type=int, default=1, help='successful hosts per GPU')
     run.add_argument('--max-attempts', type=int, default=3, help='new rentals per invocation')
     run.add_argument('--wait-minutes', type=float, default=0)

@@ -55,16 +55,15 @@ def _log(prefix: str):
 
 
 def fit_offers(minimum_gpu_ram_mib: int = 8000) -> list[dict]:
-    offers = sweep._vastai_json(["search", "offers", sweep.FIT_OFFER_QUERY, "-o", "dph"])
+    offers = sweep.search_offers(sweep.FIT_OFFER_QUERY)
     # gpu_ram and cuda_max_good are not query fields; filter on the returned rows.
     offers = [
         o for o in offers
         if sweep.fit_offer_qualifies(o)
-        and (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
         and float(o.get("gpu_ram") or 0) >= minimum_gpu_ram_mib
         and float(o.get("cuda_max_good") or 0) >= 12.6
     ]
-    offers.sort(key=sweep.fit_offer_cost_per_work)
+    offers.sort(key=sweep.fit_offer_price)
     return offers
 
 
@@ -218,6 +217,9 @@ def run_instance(offer: dict | None, shard: str, args, outcome: dict, instance_i
         last_pull = time.monotonic()
         while time.monotonic() < deadline:
             time.sleep(POLL_SECONDS)
+            spent = args.credit_before - float(sweep._vastai_json(["show", "user"]).get("credit", 0))
+            if spent >= args.spend_cap:
+                raise sweep.SweepError("experiment reached its USD 1 spend cap")
             manifest = _remote_manifest(instance_id, shard)
             done = [n for n in expected if manifest.get(n, {}).get("status") == "done"]
             failed = [n for n in expected if manifest.get(n, {}).get("status") == "failed"]
@@ -263,6 +265,7 @@ def command_run(args) -> int:
         print(f"only {len(offers)} suitable offers for {len(shards)} shards", file=sys.stderr)
         return 1
     credit_before = sweep._vastai_json(["show", "user"]).get("credit", 0.0)
+    args.credit_before = float(credit_before)
     chosen = offers[: len(shards)]
     outcomes = [dict(shard=shard) for shard in shards]
     threads = [
@@ -297,6 +300,7 @@ def command_run(args) -> int:
 
 def command_attach(args) -> int:
     """Run one shard on an instance that is already bootstrapped."""
+    args.credit_before = float(sweep._vastai_json(["show", "user"]).get("credit", 0))
     outcome = {"shard": args.shard}
     run_instance(None, args.shard, args, outcome, instance_id=args.instance)
     print(json.dumps({k: v for k, v in outcome.items() if k != "manifest"}, indent=1))
@@ -323,6 +327,7 @@ def main(argv=None) -> int:
     plan.add_argument("--instances", type=int, default=3)
     run = sub.add_parser("run")
     run.add_argument("--instances", type=int, default=3)
+    run.add_argument("--spend-cap", type=sweep.experiment_cap, default=1.0)
     run.add_argument("--branch", default="absorption-mask")
     run.add_argument("--only-shard", action="append", help="k/n shard to run (repeatable); default: all n shards")
     run.add_argument("--grid-name", default="grid.json", help="grid file inside results/absorption-mask")
@@ -332,6 +337,7 @@ def main(argv=None) -> int:
     run.add_argument("--disk", type=int, default=sweep.DEFAULT_DISK_GB)
     attach = sub.add_parser("attach")
     attach.add_argument("--instance", type=int, required=True)
+    attach.add_argument("--spend-cap", type=sweep.experiment_cap, default=1.0)
     attach.add_argument("--shard", required=True, help="k/n")
     attach.add_argument("--branch", default="absorption-mask")
     pull = sub.add_parser("pull")

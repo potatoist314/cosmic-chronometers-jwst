@@ -69,6 +69,9 @@ The user's contribution will be focused on overall research direction and method
   values to `NaN`; never plot `wavelength[mask]` as one connected line or band.
 - Experiments: follow `.agents/skills/running-ceridwen-experiments/SKILL.md`.
 - Before another paid Ceridwen GPU benchmark, read `BENCHMARK_CHECK.md`.
+- GPU rentals: choose the lowest hourly price for the requested GPU type, with
+  reliability above 99.5% and upload/download charges each below $10/TB.
+  No per-GPU hourly cap. Each experiment has a total $1 cap, including retries.
 - For paid GPU benchmarks, do not destroy a rental solely because a fixed boot
   or setup time has elapsed. If progress stalls, briefly compare the expected
   remaining cost on that instance with the cost of a fresh rental, including
