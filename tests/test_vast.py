@@ -54,25 +54,20 @@ def test_ssh_options_offer_only_the_registered_key(
     assert "ServerAliveInterval=30" in options
 
 
-def test_upload_inputs_verifies_the_complete_spectrum_set(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    copied = []
-    monkeypatch.setattr(sweep, "_ssh_target", lambda _instance_id: ("root@test", "22"))
-    monkeypatch.setattr(
-        sweep,
-        "_rsync",
-        lambda *args, **kwargs: copied.append((args, kwargs)),
-    )
-    monkeypatch.setattr(
-        sweep,
-        "_ssh",
-        lambda *_args, **_kwargs: SimpleNamespace(stdout="1988\n"),
-    )
-
-    sweep._upload_inputs(123, lambda _message: None)
-
-    assert copied[0][1]["mirror"] is True
+def test_upload_inputs_copies_only_requested_files_and_verifies_them(monkeypatch):
+    copied, commands = [], []
+    files = ['data/raw/legac_dr2/sp/example.fits', 'data/raw/hst_f814w/example.fits']
+    monkeypatch.setattr(sweep, 'target_inputs', lambda targets: files if targets == ['example'] else [])
+    monkeypatch.setattr(sweep, '_ssh_target', lambda _: ('root@test', '22'))
+    monkeypatch.setattr(sweep.subprocess, 'run', lambda cmd, **kw: copied.append(cmd))
+    monkeypatch.setattr(sweep, '_ssh', lambda _, cmd, **kw: commands.append(cmd))
+    sweep._upload_inputs(123, lambda _: None, targets=['example'])
+    assert len(copied) == 1
+    assert copied[0][:3] == ['rsync', '-aR', '--partial']
+    assert '--delete' not in copied[0]
+    assert all(any('/./' + name == arg[-len('/./' + name):] for arg in copied[0]) for name in files)
+    assert all('test -f ' + sweep.REMOTE_ROOT + '/' + name in commands[-1] for name in files)
+    assert 'input-files.json' in commands[-1]
 
 
 def fit_offer(**overrides) -> dict:
@@ -167,3 +162,31 @@ def test_legacy_wait_also_stops_on_local_ssh_failure(monkeypatch):
     monkeypatch.setattr(sweep.time, 'sleep', lambda _: pytest.fail('waited on local error'))
     with pytest.raises(sweep.LocalSSHError):
         sweep._wait_for_ssh(1, lambda _: None)
+
+
+def test_bootstrap_reuses_cached_grid_and_checks_digest(tmp_path, monkeypatch):
+    import hashlib
+    grid = tmp_path / 'amist_c3k_hr_krou_afe.h5'
+    grid.write_bytes(b'cached grid')
+    monkeypatch.setenv('CERIDWEN_GRID_DIR', str(tmp_path))
+    monkeypatch.setattr(sweep, '_ssh_target', lambda _: ('root@test', '22'))
+    copied, commands = [], []
+    monkeypatch.setattr(sweep, '_rsync', lambda *a, **kw: copied.append(a))
+    monkeypatch.setattr(sweep, '_ssh', lambda _, cmd, **kw:
+                        commands.append(cmd) or SimpleNamespace(stdout='ready'))
+    sweep._bootstrap(123, lambda _: None)
+    assert copied[0][1] == str(grid)
+    assert any(hashlib.sha256(b'cached grid').hexdigest() in cmd and 'sha256sum -c' in cmd for cmd in commands)
+    assert 'CERIDWEN_GRID_PATH=' in commands[-1]
+    assert 'bootstrap_vast_ai.sh' in commands[-1]
+
+
+def test_missing_optional_cache_retains_bootstrap_fetch(tmp_path, monkeypatch):
+    monkeypatch.setenv('CERIDWEN_GRID_DIR', str(tmp_path))
+    commands = []
+    monkeypatch.setattr(sweep, '_rsync', lambda *a, **kw: pytest.fail('missing grid transfer'))
+    monkeypatch.setattr(sweep, '_ssh', lambda _, cmd, **kw:
+                        commands.append(cmd) or SimpleNamespace(stdout='ready'))
+    sweep._bootstrap(123, lambda _: None)
+    assert len(commands) == 1
+    assert 'CERIDWEN_GRID_PATH=' not in commands[0]

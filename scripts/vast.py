@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import os
 import json
 import math
 import shlex
@@ -16,8 +18,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY_URL = "https://github.com/potatoist314/cosmic-chronometers-jwst.git"
 REMOTE_ROOT = "/workspace/cosmic-chronometers-jwst"
 
-# The bootstrap installs CUDA JAX, so avoid pulling an unused PyTorch stack.
-DEFAULT_IMAGE = "vastai/base-image:cuda-12.6.3-auto"
+# Dependency-only image; runtime source remains pinned separately.
+DEFAULT_IMAGE = "ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34"
+LEGACY_IMAGE = "vastai/base-image:cuda-12.6.3-auto"
 DEFAULT_DISK_GB = 40
 DESTROY_ATTEMPTS = 3
 VASTAI_JSON_ATTEMPTS = 3
@@ -285,43 +288,81 @@ def _rsync(
         raise SweepError("rsync failed: " + ("\n".join(detail[-10:]) or "unknown"))
 
 
-def _upload_inputs(instance_id: int, log: Any, timeout: float = 3600.0) -> None:
-    """Copy the LEGA-C inputs over ssh and prove they arrived.
+def selected_inputs(cells):
+    files = {'external/fsps/data/emlines_info.dat'} | {
+        'data/raw/legac_dr2/legaCdr2.fits.gz',
+        'data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits',
+        'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits',
+    }
+    catalogs = {
+        'cosmos2020_classic': ['cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits'],
+        'cosmos2020_farmer': ['cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits'],
+        'cosmos2025': ['cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits',
+                       'cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits'],
+    }
+    catalogs['cosmos2025_uv'] = catalogs['cosmos2025']
+    for cell in cells:
+        files.add('data/raw/legac_dr2/sp/' + cell['target_metadata']['filename'])
+        files.add('data/raw/hst_f814w/' + cell['target'] + '.fits')
+        files.update('data/raw/' + name for name in catalogs.get(cell['settings']['photometry'], []))
+    return sorted(files)
 
-    ``vastai copy`` reports success for a transfer that moves nothing, so the
-    bootstrap used to fail its own data check instead. rsync over the ssh
-    channel transfers, and the count below is the proof.
-    """
-    log("uploading data/raw")
+
+def target_inputs(targets, photometry="cosmos2025_uv"):
+    """Resolve catalogue filenames with the local scientific interpreter."""
+    code = """
+import json, sys
+from astropy.table import Table
+catalogue = Table.read(sys.argv[1])
+def text(value):
+    return value.decode() if isinstance(value, bytes) else str(value)
+print(json.dumps({text(row['SPECT_ID']): text(row['Filename']) for row in catalogue}))
+"""
+    filenames = json.loads(subprocess.check_output([
+        str(PROJECT_ROOT / 'ceridwen/.venv/bin/python'), '-c', code,
+        str(PROJECT_ROOT / 'data/raw/legac_dr2/legaCdr2.fits.gz')], text=True))
+    files = selected_inputs([{'target': target, 'target_metadata': {'filename': filenames[target]},
+                             'settings': {'photometry': photometry}} for target in targets])
+    for name in files:
+        if not (PROJECT_ROOT / name).is_file():
+            raise SweepError(f'missing selected input: {name}')
+    return files
+
+
+def _upload_inputs(instance_id: int, log: Any, timeout: float = 3600.0, *, targets) -> None:
+    """Upload and verify only the selected target inputs."""
+    files = target_inputs(targets)
     target, port = _ssh_target(instance_id)
-    _ssh(instance_id, f"mkdir -p {shlex.quote(REMOTE_ROOT)}/data/raw", timeout=60)
-    _rsync(
-        port,
-        f"{PROJECT_ROOT / 'data/raw'}/",
-        f"{target}:{REMOTE_ROOT}/data/raw/",
-        timeout=timeout,
-        mirror=True,
-    )
-    counted = _ssh(
-        instance_id,
-        f"find {shlex.quote(REMOTE_ROOT)}/data/raw/legac_dr2/sp -maxdepth 1 "
-        "-type f -name 'legac_M*_v2.0.fits' | wc -l",
-        timeout=180.0,
-    ).stdout.strip()
-    if int(counted) != EXPECTED_SPECTRUM_FILES:
-        raise SweepError(
-            f"uploaded {counted} spectra, expected {EXPECTED_SPECTRUM_FILES}"
-        )
-    log(f"uploaded {counted} spectra")
+    log(f'uploading {len(files)} selected input files')
+    _ssh(instance_id, f'mkdir -p {shlex.quote(REMOTE_ROOT)}', timeout=60)
+    subprocess.run(['rsync', '-aR', '--partial', '-e', shlex.join(['ssh', *_ssh_options(port)]),
+                    *[str(PROJECT_ROOT) + '/./' + name for name in files],
+                    f'{target}:{REMOTE_ROOT}/'], check=True, capture_output=True, timeout=timeout)
+    payload = json.dumps(files)
+    checks = ' && '.join('test -f ' + shlex.quote(REMOTE_ROOT + '/' + name) for name in files)
+    _ssh(instance_id, f'printf %s {shlex.quote(payload)} > {REMOTE_ROOT}/input-files.json && {checks}', timeout=180)
+    log('selected input files verified')
 
 
 def _bootstrap(instance_id: int, log: Any, timeout: float = BOOTSTRAP_TIMEOUT_SECONDS) -> None:
     log("bootstrapping the CUDA environment")
+    grid = Path(os.environ.get('CERIDWEN_GRID_DIR', Path.home() / '.ceridwen/grids')) / 'amist_c3k_hr_krou_afe.h5'
+    environment = ''
+    if grid.is_file():
+        target, port = _ssh_target(instance_id)
+        remote_grid = '/root/.ceridwen/grids/' + grid.name
+        _ssh(instance_id, 'mkdir -p /root/.ceridwen/grids', timeout=60)
+        _rsync(port, str(grid), f'{target}:{remote_grid}', timeout=timeout)
+        with grid.open('rb') as stream:
+            digest = hashlib.file_digest(stream, 'sha256').hexdigest()
+        check = shlex.quote(digest + '  ' + remote_grid)
+        _ssh(instance_id, f'printf %s {check} | sha256sum -c -', timeout=timeout)
+        environment = f'CERIDWEN_GRID_PATH={shlex.quote(remote_grid)} '
     result = _ssh(
         instance_id,
         f"cd {shlex.quote(REMOTE_ROOT)} && "
         f"CERIDWEN_MIN_GPU_MEMORY_MIB={BENCHMARK_GPU_MEMORY_MIB} "
-        "bash scripts/bootstrap_vast_ai.sh",
+        f"{environment}bash scripts/bootstrap_vast_ai.sh",
         timeout=timeout,
     )
     for line in result.stdout.strip().splitlines()[-4:]:

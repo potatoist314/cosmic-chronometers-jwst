@@ -14,7 +14,7 @@
 | script | does |
 |---|---|
 | run_ceridwen_vast_multi_gpu.py | Run a deterministic Ceridwen DR2 target shard on one Vast GPU. |
-| bootstrap_vast_ai.sh | Build the CUDA JAX environment on a fresh Vast box. |
+| bootstrap_vast_ai.sh | Reuse the compact GPU environment and validate the uploaded model and inputs. |
 | build_dr2_quiescent_summary.py | Build a tidy one-row-per-galaxy summary of the DR2 quiescent run. |
 | build_borghi2022_legac_dr2_subset.py | Join Borghi et al. (2022) Table 4 to matching LEGA-C DR2 spectra. |
 

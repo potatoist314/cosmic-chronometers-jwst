@@ -395,7 +395,7 @@ class Run:
                 label = f"ceridwen-run-{hashlib.sha256(str(self.root).encode()).hexdigest()[:12]}-{len(self.data['attempts'])}"
                 attempt['label'] = label
                 self.save()
-                args = argparse.Namespace(image=self.data['source'].get('image', vast.DEFAULT_IMAGE), disk=self.disk_gb, bid=bid, label=label)
+                args = argparse.Namespace(image=self.data['source'].get('image', vast.LEGACY_IMAGE), disk=self.disk_gb, bid=bid, label=label)
                 attempt['instance_id'] = vast._create_instance(offer, args)
                 self.save()  # Ownership is durable before setup begins.
             self.measure(attempt)
@@ -486,6 +486,7 @@ def parser():
     run.add_argument('--hosts', type=int, default=1, help='successful hosts per GPU')
     run.add_argument('--max-attempts', type=int, default=3, help='new rentals per invocation')
     run.add_argument('--wait-minutes', type=float, default=0)
+    run.add_argument('--image', help='override the default compact image; recorded in the manifest')
     run.add_argument('--revision', default='HEAD', help='committed project revision; defaults to saved revision on resume')
     run.add_argument('--output', type=Path, help='reuse this directory to resume')
     run.add_argument('--target', default='M1_210210')
@@ -503,6 +504,18 @@ def main(argv=None):
     if saved.exists() and args.revision == 'HEAD':
         args.revision = json.loads(saved.read_text())['source']['commit']
     source = preflight(args.revision, targets=[args.target])
+    if saved.exists():
+        previous = json.loads(saved.read_text())['source']
+        for key in ('image', 'input_files'):
+            if key in previous:
+                source[key] = previous[key]
+    else:
+        bootstrap = git('show', f"{source['commit']}:scripts/bootstrap_vast_ai.sh")
+        if 'input-files.json' in bootstrap:
+            source['input_files'] = vast.target_inputs([args.target])
+            source['image'] = vast.DEFAULT_IMAGE
+    if args.image:
+        source['image'] = args.image
     log(f"committed source {source['commit'][:12]}; output {args.output}")
     if args.dry_run:
         print(json.dumps({'source': source, 'gpus': args.gpus, 'spend_cap': args.spend_cap}, indent=2))

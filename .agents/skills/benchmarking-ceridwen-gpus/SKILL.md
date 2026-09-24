@@ -5,6 +5,10 @@ description: Run Ceridwen likelihood throughput benchmarks on Vast.ai with one c
 
 # Benchmark Ceridwen GPUs
 
+New runs use the compact dependency image pinned in `scripts/vast.py`, selected
+input files, and cached grids. Do not replace it with a generic CUDA image.
+Use `--image` only for an explicitly requested override. Saved runs keep their image.
+
 Run from the project root with the requested GPUs:
 
 ```bash

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Verify the per-galaxy diagnostics on one Vast.ai RTX 5060 under a hard spend cap.
 
-The box clones the branch, receives the private submodule trees and
-``data/raw`` by rsync, bootstraps the CUDA environment, then:
+The box receives committed source, private submodule trees and selected inputs,
+reuses the prebuilt CUDA environment, then:
 
 1. refits each requested target with the production notebook and settings
    (same seed as the DR2 run, via ``scripts/run_ceridwen_vast_multi_gpu.py``),
@@ -219,7 +219,7 @@ def command_run(args) -> int:
         sweep._attach_ssh_key(instance_id)
         sweep._wait_for_ssh(instance_id, _log)
         absorption._checkout(instance_id, args.branch, _log)
-        sweep._upload_inputs(instance_id, _log)
+        sweep._upload_inputs(instance_id, _log, targets=[spect for spect, _ in pairs])
         sweep._bootstrap(instance_id, _log)
         sweep._verify_cuda_backend(instance_id, _log)
         _upload_verification_inputs(instance_id, pairs, manifest_path, remote_job_script(pairs, production_dirs))

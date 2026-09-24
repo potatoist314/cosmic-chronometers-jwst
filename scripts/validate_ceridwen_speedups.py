@@ -641,7 +641,7 @@ def rent():
         start = time.monotonic()
         try:
             instance = sweep._create_instance(offer, SimpleNamespace(
-                image="vastai/base-image:cuda-12.6.3-auto", disk=40))
+                image=sweep.DEFAULT_IMAGE, disk=40))
             record["instance_id"] = instance
             save()
             log(f"created {instance}; cap includes setup and transfer time")
@@ -654,19 +654,7 @@ def rent():
             absorption._checkout(instance, "absorption-mask", log)
             target, port = sweep._ssh_target(instance)
             remote = sweep.REMOTE_ROOT
-            # These full fits consume two spectra and the complete catalogues.
-            from astropy.table import Table
-            catalogue = Table.read(PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz")
-            files = ["data/raw/legac_dr2/legaCdr2.fits.gz",
-                     "data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
-                     "data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits"]
-            for row in catalogue:
-                if str(row["SPECT_ID"]).strip() in targets:
-                    files.append("data/raw/legac_dr2/sp/" + str(row["Filename"]).strip())
-            for relative in files:
-                sweep._ssh(instance, f"mkdir -p {shlex.quote(str(Path(remote, relative).parent))}", timeout=60.)
-                sweep._rsync(port, str(PROJECT_ROOT / relative), f"{target}:{remote}/{relative}", timeout=180.)
-            log(f"uploaded {len(files) - 3} selected spectra and all three catalogues")
+            sweep._upload_inputs(instance, log, targets=targets)
             for relative in ("scripts/validate_ceridwen_speedups.py",
                              "scripts/per_galaxy_diagnostics.py",
                              "notebooks/ceridwen_integrated_photometry_spectra.ipynb",

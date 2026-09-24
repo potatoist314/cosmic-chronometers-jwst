@@ -493,7 +493,7 @@ def _prepare(sweep, instance_id: int, args, cells: list[dict], log) -> None:
         )
         if result.returncode != 0:
             raise sweep.SweepError(f"rsync of {tree} failed: {(result.stderr or result.stdout)[-500:]}")
-    sweep._upload_inputs(instance_id, log)
+    sweep._upload_inputs(instance_id, log, targets={cell["target"] for cell in cells})
     local_cells = PROJECT_ROOT / RESULTS / "cells.json"
     local_cells.parent.mkdir(parents=True, exist_ok=True)
     local_cells.write_text(json.dumps(cells, indent=1))
@@ -656,7 +656,7 @@ def main(argv=None) -> int:
         p.add_argument("--branch", default="absorption-mask")
         p.add_argument("--ceridwen-tree", default=None, metavar="PATH",
                        help="upload this ceridwen checkout over the box's ceridwen/ after the clone")
-        p.add_argument("--image", default="vastai/base-image:cuda-12.6.3-auto")
+        p.add_argument("--image", default=_sweep().DEFAULT_IMAGE)
         p.add_argument("--disk", type=int, default=40)
         p.add_argument("--spend-cap", type=spend_cap_usd, default=1.0, help="USD; stop and destroy beyond it (above USD 1 needs --only-5090)")
         p.add_argument("--keep-instance", action="store_true", help="do not destroy at the end")

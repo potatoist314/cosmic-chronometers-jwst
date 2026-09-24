@@ -175,6 +175,8 @@ def test_create_is_not_retried_on_empty_response(monkeypatch):
 
 def test_dry_run_never_contacts_cloud_or_writes_output(tmp_path, monkeypatch):
     monkeypatch.setattr(bench, 'preflight', lambda *a, **kw: {'commit': 'abc'})
+    monkeypatch.setattr(bench, 'git', lambda *a, **kw: 'input-files.json')
+    monkeypatch.setattr(bench.vast, 'target_inputs', lambda targets: ['selected.fits'])
     monkeypatch.setattr(bench.vast, '_vastai_json', lambda *_: pytest.fail('network on dry run'))
     output = tmp_path / 'absent'
     assert bench.main(['run', 'RTX 5090', '--spend-cap', '1', '--output', str(output), '--dry-run']) == 0
@@ -340,3 +342,23 @@ def test_transient_ssh_error_is_reported_then_retried(run, cloud, monkeypatch, c
     monkeypatch.setattr(bench.vast, '_ssh', ssh)
     assert run.execute() == 0
     assert 'SSH not ready: Connection refused' in capsys.readouterr().out
+
+
+def test_benchmark_default_image_and_inputs_are_recorded(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(bench, 'preflight', lambda *a, **kw: {'commit': 'abc'})
+    monkeypatch.setattr(bench, 'git', lambda *a, **kw: 'input-files.json')
+    monkeypatch.setattr(bench.vast, 'target_inputs', lambda targets: ['selected.fits'])
+    bench.main(['run', 'RTX 5090', '--output', str(tmp_path), '--dry-run'])
+    output = capsys.readouterr().out
+    plan = json.loads(output[output.index('{'):])
+    assert plan['source']['image'] == bench.vast.DEFAULT_IMAGE
+    assert plan['source']['input_files'] == ['selected.fits']
+
+
+def test_saved_benchmark_does_not_gain_new_defaults(tmp_path, monkeypatch, capsys):
+    (tmp_path / 'manifest.json').write_text(json.dumps({'source': {'commit': 'abc'}}))
+    monkeypatch.setattr(bench, 'preflight', lambda *a, **kw: {'commit': 'abc'})
+    monkeypatch.setattr(bench, 'git', lambda *a, **kw: pytest.fail('changed saved setup'))
+    bench.main(['run', 'RTX 5090', '--output', str(tmp_path), '--dry-run'])
+    output = capsys.readouterr().out
+    assert json.loads(output[output.index('{'):])['source'] == {'commit': 'abc'}

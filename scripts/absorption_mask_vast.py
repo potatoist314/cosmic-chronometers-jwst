@@ -77,22 +77,16 @@ SUBMODULE_TREES = {
 
 
 def _checkout(instance_id: int, branch: str, log) -> None:
-    log(f"cloning branch {branch}")
-    sweep._ssh(
-        instance_id,
-        " && ".join([
-            "set -eu",
-            "command -v rsync >/dev/null 2>&1 || (apt-get update -qq && apt-get install -y -qq rsync)",
-            "mkdir -p /workspace && cd /workspace",
-            f"rm -rf {shlex.quote(sweep.REMOTE_ROOT)}",
-            f"git clone --quiet --depth 1 --branch {shlex.quote(branch)} {sweep.REPOSITORY_URL} {shlex.quote(sweep.REMOTE_ROOT)}",
-            f"cd {shlex.quote(sweep.REMOTE_ROOT)} && git rev-parse --short HEAD",
-        ]),
-        timeout=900.0,
-    )
+    log(f"uploading committed source from {branch}")
+    archive = subprocess.check_output(['git', '-C', str(PROJECT_ROOT), 'archive',
+                                       '--format=tar.gz', branch, 'scripts', 'notebooks/ceridwen_integrated_photometry_spectra.ipynb'])
     target, port = sweep._ssh_target(instance_id)
+    subprocess.run(['ssh', *sweep._ssh_options(port), target,
+                    f'mkdir -p {shlex.quote(sweep.REMOTE_ROOT)} && tar -xzf - -C {shlex.quote(sweep.REMOTE_ROOT)}'],
+                   input=archive, check=True, capture_output=True, timeout=900.)
     for tree, excludes in SUBMODULE_TREES.items():
         log(f"uploading {tree} working tree")
+        sweep._ssh(instance_id, f"mkdir -p {shlex.quote(sweep.REMOTE_ROOT + '/' + tree)}", timeout=60.0)
         shell = " ".join(shlex.quote(part) for part in ["ssh", *sweep._ssh_options(port)])
         result = subprocess.run(
             ["rsync", "-a", "-e", shell, *excludes,
@@ -171,9 +165,11 @@ def _prepare(instance_id: int, args, log) -> None:
     sweep._attach_ssh_key(instance_id)
     sweep._wait_for_ssh(instance_id, log)
     _checkout(instance_id, args.branch, log)
-    sweep._upload_inputs(instance_id, log)
-    target, port = sweep._ssh_target(instance_id)
     grid_name = getattr(args, "grid_name", "grid.json")
+    cells = json.loads((PROJECT_ROOT / RESULTS / grid_name).read_text())
+    sweep._upload_inputs(instance_id, log, targets={cell["target"] for cell in cells})
+    target, port = sweep._ssh_target(instance_id)
+    sweep._ssh(instance_id, f"mkdir -p {sweep.REMOTE_ROOT}/{RESULTS}", timeout=60.0)
     sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/{grid_name}",
                  f"{target}:{sweep.REMOTE_ROOT}/{RESULTS}/{grid_name}", timeout=120.0)
     sweep._rsync(port, f"{PROJECT_ROOT / RESULTS}/truth_M5_172669.json",

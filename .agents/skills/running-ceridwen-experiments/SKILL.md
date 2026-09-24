@@ -18,6 +18,10 @@ stage logs, and result files are the reproducibility record. Keep only a short
 Beads status with the output path and any blocker. Read `wiki/research/README.md`
 only if research records or wiki publication are part of the request.
 
+New runs use the compact dependency image pinned in `scripts/vast.py`, selected
+input files, and cached grids. Do not replace it with a generic CUDA image.
+Use `--image` only for an explicitly requested override. Saved runs keep their image.
+
 ## Steps
 
 1. **Configure.** Write `experiment.json` in the experiment's result directory.

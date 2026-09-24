@@ -24,7 +24,7 @@ else:
 vast = engine.vast
 ROOT = engine.ROOT
 WORKER = 'scripts/run_ceridwen_vast_multi_gpu.py'
-DEFAULT_IMAGE = 'ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34'
+DEFAULT_IMAGE = vast.DEFAULT_IMAGE
 
 
 def merge(base, changes):
@@ -145,24 +145,7 @@ print(json.dumps(manifest))
     return json.loads(json.dumps(source))
 
 
-def selected_inputs(cells):
-    files = set(engine.INPUT_FILES) | {
-        'data/raw/legac_dr2/legaCdr2.fits.gz',
-        'data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits',
-        'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits',
-    }
-    catalogs = {
-        'cosmos2020_classic': ['cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits'],
-        'cosmos2020_farmer': ['cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits'],
-        'cosmos2025': ['cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits',
-                       'cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits'],
-    }
-    catalogs['cosmos2025_uv'] = catalogs['cosmos2025']
-    for cell in cells:
-        files.add('data/raw/legac_dr2/sp/' + cell['target_metadata']['filename'])
-        files.add('data/raw/hst_f814w/' + cell['target'] + '.fits')
-        files.update('data/raw/' + name for name in catalogs.get(cell['settings']['photometry'], []))
-    return sorted(files)
+selected_inputs = vast.selected_inputs
 
 
 def validate_result(directory):
