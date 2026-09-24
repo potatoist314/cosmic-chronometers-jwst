@@ -52,7 +52,7 @@ The JSON file overrides the notebook configuration:
     "baseline": {},
     "wide_dust": {
       "priors": {
-        "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)"
+        "diffuse_tau_noll": "Uniform(low=0.0, high=2.0)"
       }
     }
   }
@@ -68,6 +68,10 @@ The command pins committed `HEAD` and its submodules. It executes the full noteb
 Rental selection and teardown use the benchmark lifecycle: cheapest hourly price within the first eligible reliability tier, above 99.5% then above 96%. Both bandwidth rates must be below $10/TB. The $1 experiment cap covers all arms and retries.
 
 Reuse `--output <saved-directory>` to resume the saved experiment without repeating completed arm-target pairs.
+
+Experiments upload selected spectra, cutouts and required catalogue tables. The runner verifies the uploaded grid’s checksum and reuses the grid during bootstrap.
+
+`--image` selects a container and records it in the run manifest. The dependency image installs pinned Ceridwen and sedpy source at runtime without resolving dependencies again. Its build includes no private model code or research data.
 
 Source: `scripts/experiment.py` — `configuration`, `preflight`, `Run`, `remote`.
 

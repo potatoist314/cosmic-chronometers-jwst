@@ -111,7 +111,14 @@ def preflight(path, revision, *, fetch_missing=False):
                 'remote_name': f"{source['grid_sha256']}.h5"}
     # Reuse the pinned target selector with the local scientific environment.
     worker = engine.git('show', f'{revision}:{WORKER}')
-    program = worker + '\nprint(json.dumps(build_target_manifest(num_shards=1, base_seed=0)))\n'
+    program = worker + """
+from astropy.table import Table
+manifest = build_target_manifest(num_shards=1, base_seed=0)
+filenames = {_decode(row['SPECT_ID']): _decode(row['Filename']) for row in Table.read(CATALOG_PATH)}
+for target in manifest['targets']:
+    target['filename'] = filenames[target['spect_id']]
+print(json.dumps(manifest))
+"""
     code = 'import sys; exec(sys.stdin.read(), {"__name__": "experiment_preflight", "__file__": sys.argv[1]})'
     completed = subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'), '-c', code, str(ROOT / WORKER)],
                                input=program, text=True, capture_output=True, check=True)
@@ -122,8 +129,32 @@ def preflight(path, revision, *, fetch_missing=False):
         cell['target_metadata'] = {**targets[cell['target']], 'seed': cell['seed']}
         grid = grids[cell['settings']['ssp_grid']]
         cell['settings'] = {**cell['settings'], 'ssp_grid': f"{engine.REMOTE}/grid/{grid['remote_name']}"}
-    source.update(grids=list(grids.values()), experiment=cells)
+    inputs = selected_inputs(cells)
+    for name in inputs:
+        if not (ROOT / name).is_file():
+            raise ValueError(f'missing selected input: {name}')
+    source.update(grids=list(grids.values()), experiment=cells, input_files=inputs)
     return json.loads(json.dumps(source))
+
+
+def selected_inputs(cells):
+    files = set(engine.INPUT_FILES) | {
+        'data/raw/legac_dr2/legaCdr2.fits.gz',
+        'data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits',
+        'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits',
+    }
+    catalogs = {
+        'cosmos2020_classic': ['cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits'],
+        'cosmos2020_farmer': ['cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits'],
+        'cosmos2025': ['cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits',
+                       'cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits'],
+    }
+    catalogs['cosmos2025_uv'] = catalogs['cosmos2025']
+    for cell in cells:
+        files.add('data/raw/legac_dr2/sp/' + cell['target_metadata']['filename'])
+        files.add('data/raw/hst_f814w/' + cell['target'] + '.fits')
+        files.update('data/raw/' + name for name in catalogs.get(cell['settings']['photometry'], []))
+    return sorted(files)
 
 
 def validate_result(directory):
@@ -171,8 +202,9 @@ def remote(config, output):
 class Run(engine.Run):
     def __init__(self, args, source):
         grid_bytes = sum(Path(g['grid']).stat().st_size for g in source['grids'])
-        input_bytes = sum(p.stat().st_size for d in engine.INPUT_DIRS
-                          for p in (ROOT / 'data/raw' / d).rglob('*') if p.is_file())
+        input_bytes = (sum((ROOT / p).stat().st_size for p in source['input_files'])
+                       if 'input_files' in source else sum(p.stat().st_size for d in engine.INPUT_DIRS
+                       for p in (ROOT / 'data/raw' / d).rglob('*') if p.is_file()))
         # Include setup downloads in the transfer reserve, and installed software on disk.
         self.download_gb = max(8, math.ceil((grid_bytes + input_bytes) / 1e9) + 4)
         self.disk_gb = max(40, self.download_gb + 20)
@@ -230,6 +262,7 @@ def parser():
     run.add_argument('config', type=Path, help='JSON targets, seed, settings, priors and named arms')
     run.add_argument('--gpu', required=True, help='Vast GPU name, e.g. RTX 5090')
     run.add_argument('--output', type=Path, help='reuse this directory to resume the same experiment')
+    run.add_argument('--image', help='container image reference; saved in the run manifest')
     run.add_argument('--revision', default='HEAD', help='committed project revision; saved revision on resume')
     run.add_argument('--spend-cap', type=vast.experiment_cap, default=1., help='total USD across arms and retries; maximum 1')
     run.add_argument('--max-attempts', type=int, default=3)
@@ -252,6 +285,14 @@ def main(argv=None):
     if saved.exists() and args.revision == 'HEAD':
         args.revision = json.loads(saved.read_text())['source']['commit']
     source = preflight(args.config.resolve(), args.revision, fetch_missing=not args.dry_run)
+    if saved.exists() and 'input_files' not in json.loads(saved.read_text())['source']:
+        source.pop('input_files', None)
+        for cell in source.get('experiment', []):
+            cell['target_metadata'].pop('filename', None)
+    if args.image:
+        source['image'] = args.image
+    elif saved.exists() and 'image' in json.loads(saved.read_text())['source']:
+        source['image'] = json.loads(saved.read_text())['source']['image']
     args.gpus, args.hosts, args.target, args.seed = [args.gpu], 1, 'experiment', 0
     if args.dry_run:
         print(json.dumps({'source': source, 'gpu': args.gpu, 'spend_cap': args.spend_cap}, indent=2))

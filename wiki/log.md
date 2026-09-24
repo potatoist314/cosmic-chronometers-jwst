@@ -1315,3 +1315,7 @@
 ### 2026-09-24 — Noll dust law
 
 - The production notebook uses the existing Noll law with independent slope and bump priors. Birth-cloud dust remains enabled. The custom dust law is removed.
+
+### 2026-09-24 — GPU startup
+
+- Experiment uploads include selected target files and required catalogues. Bootstrap reuses the uploaded grid and supports a prebuilt dependency image.

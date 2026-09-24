@@ -152,7 +152,7 @@ def test_preflight_freezes_every_grid_and_target_before_rental(tmp_path, monkeyp
     table.parent.mkdir(parents=True)
     table.write_text('table')
     monkeypatch.setattr(exp, 'ROOT', tmp_path)
-    cells = [dict(name=f'{name}/target', target='target', seed=42, settings={'ssp_grid': grid, 'window': (1, 2)})
+    cells = [dict(name=f'{name}/target', target='target', seed=42, settings={'ssp_grid': grid, 'window': (1, 2), 'photometry': 'cosmos_total'})
              for name, grid in [('base', 'registered'), ('other', 'local.h5')]]
     monkeypatch.setattr(exp, 'configuration', lambda *a: cells)
     def git(*args, **kwargs):
@@ -169,7 +169,11 @@ def test_preflight_freezes_every_grid_and_target_before_rental(tmp_path, monkeyp
                 'grid': kwargs['grid_name'], 'grid_sha256': str(len(checked))}
     monkeypatch.setattr(exp.engine, 'preflight', inspect)
     monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: SimpleNamespace(stdout=json.dumps(
-        {'targets': [{'spect_id': 'target', 'object_id': 123, 'manifest_index': 2, 'seed': 2}]})))
+        {'targets': [{'spect_id': 'target', 'object_id': 123, 'manifest_index': 2, 'seed': 2, 'filename': 'spectrum.fits'}]})))
+    for name in exp.selected_inputs([{**c, 'target_metadata': {'filename': 'spectrum.fits'}} for c in cells]):
+        p = tmp_path / name
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.touch()
     source = exp.preflight(config, 'HEAD')
     assert checked == ['registered', str(tmp_path / 'local.h5')]
     assert source == json.loads(json.dumps(source))
@@ -210,3 +214,30 @@ def test_fatal_stage_error_survives_failed_partial_download(run, cloud, monkeypa
     assert state['destroyed'] == [100]
     assert run.data['attempts'][0]['retryable'] is False
     assert run.data['attempts'][0]['error'].startswith('StageFailed:')
+
+
+def test_selected_inputs_include_uv_fallback_but_no_unrelated_targets():
+    cells = [{'target': 'M1_210210', 'target_metadata': {'filename': 'legac_M1_210210_v2.0.fits'},
+              'settings': {'photometry': 'cosmos2025_uv'}}]
+    files = exp.selected_inputs(cells * 2)
+    assert len(files) == len(set(files))
+    assert 'data/raw/cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits' in files
+    assert 'data/raw/cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits' in files
+    assert [p for p in files if '/sp/' in p] == ['data/raw/legac_dr2/sp/legac_M1_210210_v2.0.fits']
+    assert [p for p in files if '/hst_f814w/' in p] == ['data/raw/hst_f814w/M1_210210.fits']
+
+
+def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, monkeypatch):
+    run.data['source']['input_files'] = ['data/raw/hst_f814w/M1_210210.fits']
+    monkeypatch.setattr(run, 'archive', lambda *a: None)
+    monkeypatch.setattr(run, 'timeout', lambda *a: 60)
+    commands, copies, grids = [], [], []
+    monkeypatch.setattr(exp.vast, '_ssh', lambda _, cmd, **kw: commands.append(cmd))
+    monkeypatch.setattr(exp.vast, '_rsync', lambda *a, **kw: grids.append(a))
+    monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: copies.append(cmd))
+    run.upload({'instance_id': 1})
+    assert len(copies) == 1 and copies[0][:2] == ['rsync', '-aR']
+    assert any('/./data/raw/hst_f814w/M1_210210.fits' in arg for arg in copies[0])
+    assert len(grids) == 1
+    assert any('sha256sum -c' in cmd for cmd in commands)
+    assert any('input-files.json' in cmd for cmd in commands)

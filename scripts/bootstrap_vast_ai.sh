@@ -6,7 +6,6 @@ PROJECT_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 ENV_DIR="${PROJECT_ROOT}/.venv-ceridwen-gpu"
 PYTHON_BIN="${ENV_DIR}/bin/python"
 PYTHON_VERSION="3.11.16"
-JAX_VERSION="0.10.2"
 TFP_NIGHTLY_VERSION="0.26.0.dev20260810"
 SEDPY_JAX_DIR="${PROJECT_ROOT}/external/sedpy_jax"
 MINIMUM_GPU_MEMORY_MIB="${CERIDWEN_MIN_GPU_MEMORY_MIB:-8000}"
@@ -45,32 +44,26 @@ else
     UV_BIN="$(python3 -m site --user-base)/bin/uv"
 fi
 
-"${UV_BIN}" python install "${PYTHON_VERSION}"
-if [[ ! -x "${PYTHON_BIN}" ]]; then
-    "${UV_BIN}" venv "${ENV_DIR}" --python "${PYTHON_VERSION}"
+REQUIREMENTS="${PROJECT_ROOT}/scripts/containers/requirements.txt"
+if [[ -x /opt/ceridwen/bin/python ]]; then
+    # Reject a stale image before changing its environment.
+    cmp "${REQUIREMENTS}" /opt/ceridwen-requirements.txt
+    if [[ ! -e "${ENV_DIR}" ]]; then
+        ln -s /opt/ceridwen "${ENV_DIR}"
+    fi
+    echo "Using prebuilt Ceridwen dependencies"
+else
+    "${UV_BIN}" python install "${PYTHON_VERSION}"
+    if [[ ! -x "${PYTHON_BIN}" ]]; then
+        "${UV_BIN}" venv "${ENV_DIR}" --python "${PYTHON_VERSION}"
+    fi
+    "${UV_BIN}" pip install --python "${PYTHON_BIN}" -r "${REQUIREMENTS}"
+    "${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
+        "tfp-nightly==${TFP_NIGHTLY_VERSION}"
 fi
-
-# uv rebuilds a path install only when its metadata files change, so a changed
-# module inside the tree would keep the stale wheel. Reinstall ceridwen always.
-"${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall-package ceridwen \
-    "jax[cuda12]==${JAX_VERSION}" \
-    "jaxlib==${JAX_VERSION}" \
-    "${PROJECT_ROOT}/ceridwen" \
-    "astroquery>=0.4.11,<0.5" \
-    "corner>=2.3,<3" \
-    "ipykernel>=7.3,<8" \
-    "jupyterlab>=4.6,<5" \
-    "nbclient>=0.10,<0.11" \
-    "nbconvert>=7.17,<8" \
-    "pandas>=3,<4" \
-    "specutils>=2.2,<3"
-"${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
-    "tfp-nightly==${TFP_NIGHTLY_VERSION}"
-# The sedpy_jax fork builds filters in NumPy (per-fit setup ~150 s -> ~27 s).
-# It is a submodule installed from the tree, like ceridwen, so the bootstrap
-# never fetches it from GitHub.
-"${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps \
-    "${SEDPY_JAX_DIR}"
+# Install the uploaded, pinned model source without resolving dependencies again.
+"${UV_BIN}" pip install --python "${PYTHON_BIN}" --reinstall --no-deps --no-build-isolation \
+    "${PROJECT_ROOT}/ceridwen" "${SEDPY_JAX_DIR}"
 "${UV_BIN}" pip check --python "${PYTHON_BIN}"
 
 # The installed package, not the source tree, is what a fit imports. Stop here
@@ -147,13 +140,23 @@ for path in "${CATALOG_PATH}" "${PHOTOMETRY_PATH}"; do
     fi
 done
 
-SPECTRA_COUNT=0
-if [[ -d "${SPECTRA_DIR}" ]]; then
+if [[ -f "${PROJECT_ROOT}/input-files.json" ]]; then
+    "${PYTHON_BIN}" - "${PROJECT_ROOT}" <<'PYINPUT'
+import json
+import sys
+from pathlib import Path
+root = Path(sys.argv[1])
+for name in json.loads((root / "input-files.json").read_text()):
+    if not (root / name).is_file():
+        raise SystemExit(f"Missing selected input: {name}")
+print("Selected fit inputs verified")
+PYINPUT
+else
     SPECTRA_COUNT="$(find "${SPECTRA_DIR}" -maxdepth 1 -type f -name 'legac_M*_v2.0.fits' | wc -l | tr -d ' ')"
-fi
-if [[ "${SPECTRA_COUNT}" != "1988" ]]; then
-    echo "Expected 1988 LEGA-C spectra, found ${SPECTRA_COUNT}." >&2
-    missing=1
+    if [[ "${SPECTRA_COUNT}" != "1988" ]]; then
+        echo "Expected 1988 LEGA-C spectra, found ${SPECTRA_COUNT}." >&2
+        missing=1
+    fi
 fi
 
 if (( missing != 0 )); then
@@ -170,14 +173,15 @@ from ceridwen.ssps import SSPDataAfe, fetch_grid
 catalog_path, photometry_path = sys.argv[1:]
 catalog = Table.read(catalog_path)
 photometry = Table.read(photometry_path)
-grid_path = fetch_grid("amist_c3k_hr_krou_afe")
+import os
+grid_path = os.environ.get("CERIDWEN_GRID_PATH") or fetch_grid("amist_c3k_hr_krou_afe")
 ssp = SSPDataAfe.load(grid_path)
 
 if len(catalog) != 1988:
     raise SystemExit(f"Expected 1988 catalogue rows, found {len(catalog)}")
 if len(photometry) != 1982:
     raise SystemExit(f"Expected 1982 photometry rows, found {len(photometry)}")
-if ssp.ssp_flux.shape != (5, 13, 107, 10992):
+if not os.environ.get("CERIDWEN_GRID_PATH") and ssp.ssp_flux.shape != (5, 13, 107, 10992):
     raise SystemExit(f"Unexpected SSP grid shape: {ssp.ssp_flux.shape}")
 if ssp.schema_version != "2.1":
     raise SystemExit(f"Unexpected SSP grid schema: {ssp.schema_version}")

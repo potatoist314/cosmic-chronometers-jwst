@@ -263,12 +263,20 @@ class Run:
             self.archive(attempt, ROOT / tree, revision)
         target, port = vast._ssh_target(instance)
         vast._ssh(instance, f'mkdir -p {REMOTE}/data/raw {REMOTE}/grid; command -v rsync || (apt-get update -qq && apt-get install -y -qq rsync)', timeout=self.timeout(attempt))
-        for directory in INPUT_DIRS:
-            vast._rsync(port, str(ROOT / 'data/raw' / directory), f'{target}:{REMOTE}/data/raw/', timeout=self.timeout(attempt, 600))
-        for name in INPUT_FILES:
-            remote_parent = f'{REMOTE}/{Path(name).parent}'
-            vast._ssh(instance, f'mkdir -p {remote_parent}', timeout=self.timeout(attempt))
-            vast._rsync(port, str(ROOT / name), f'{target}:{remote_parent}/', timeout=self.timeout(attempt))
+        if 'input_files' in source:
+            payload = json.dumps(source['input_files'])
+            vast._ssh(instance, f'printf %s {shlex.quote(payload)} > {REMOTE}/input-files.json', timeout=self.timeout(attempt))
+            subprocess.run(['rsync', '-aR', '-e', shlex.join(['ssh', *vast._ssh_options(port)]),
+                            *[str(ROOT) + '/./' + name for name in source['input_files']],
+                            f'{target}:{REMOTE}/'], check=True, capture_output=True,
+                           timeout=self.timeout(attempt, 600))
+        else:
+            for directory in INPUT_DIRS:
+                vast._rsync(port, str(ROOT / 'data/raw' / directory), f'{target}:{REMOTE}/data/raw/', timeout=self.timeout(attempt, 600))
+            for name in INPUT_FILES:
+                remote_parent = f'{REMOTE}/{Path(name).parent}'
+                vast._ssh(instance, f'mkdir -p {remote_parent}', timeout=self.timeout(attempt))
+                vast._rsync(port, str(ROOT / name), f'{target}:{remote_parent}/', timeout=self.timeout(attempt))
         grids = source.get('grids', [{'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
                                       'remote_name': Path(source['grid']).name}])
         for entry in grids:
@@ -328,7 +336,9 @@ class Run:
                     self.wait_ready(attempt)
             attempt['uploaded'] = True
             self.save()
-        environment = f'cd {REMOTE} && export CERIDWEN_GRID_DIR={REMOTE}/grid && '
+        grid = self.data['source'].get('grids', [{'remote_name': Path(self.data['source']['grid']).name}])[0]['remote_name']
+        remote_grid = shlex.quote(REMOTE + '/grid/' + grid)
+        environment = f'cd {REMOTE} && export CERIDWEN_GRID_DIR={REMOTE}/grid CERIDWEN_GRID_PATH={remote_grid} && '
         self.stage(attempt, 'bootstrap', environment + 'bash scripts/bootstrap_vast_ai.sh')
         return environment
 
@@ -384,7 +394,7 @@ class Run:
                 label = f"ceridwen-run-{hashlib.sha256(str(self.root).encode()).hexdigest()[:12]}-{len(self.data['attempts'])}"
                 attempt['label'] = label
                 self.save()
-                args = argparse.Namespace(image=vast.DEFAULT_IMAGE, disk=self.disk_gb, bid=bid, label=label)
+                args = argparse.Namespace(image=self.data['source'].get('image', vast.DEFAULT_IMAGE), disk=self.disk_gb, bid=bid, label=label)
                 attempt['instance_id'] = vast._create_instance(offer, args)
                 self.save()  # Ownership is durable before setup begins.
             self.measure(attempt)
