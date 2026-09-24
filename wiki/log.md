@@ -1250,3 +1250,8 @@
 
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: Documented the >96% reliability fallback when no >99.5% offer passes every filter.
+
+## [2026-09-24] codebase | Experiment command
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Documented experiment configuration, grid handling, full notebook execution, saved results, spending limits and resume.

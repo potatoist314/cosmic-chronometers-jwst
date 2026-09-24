@@ -29,6 +29,48 @@ Source: `scripts/benchmark.py` — `preflight`, `Run.candidates`, `parser`.
 
 </details>
 
+## Experiment command
+
+```bash
+python3 scripts/experiment.py run experiment.json --gpu "RTX 5090"
+```
+
+<details>
+<summary>Experiment configuration and outputs</summary>
+
+The JSON file overrides the notebook configuration:
+
+```json
+{
+  "targets": ["M1_210210"],
+  "seed": 20260832,
+  "settings": {},
+  "priors": {},
+  "arms": {
+    "baseline": {},
+    "wide_dust": {
+      "priors": {
+        "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)"
+      }
+    }
+  }
+}
+```
+
+The default target is `M1_210210`. The default seed is `20260832`, used exactly for every fit. Settings merge recursively, including nested sampler controls. Prior overrides map existing notebook keys to Python expression strings. Each arm overrides the shared settings and priors. Without `arms`, the configuration uses `{"fit": {}}`.
+
+Set `settings.ssp_grid` to a registered grid name or an `.h5` path relative to the configuration file. Normal runs fetch missing registered grids before renting. `--dry-run` uses no network and requires the grids locally.
+
+The command pins committed `HEAD` and its submodules. It executes the full notebook on the GPU, including postfit cells and existing plots. Each completed arm-target pair downloads to `fits/<arm>/<object>-<target>/`, including its executed notebook and H5 results.
+
+Rental selection and teardown use the benchmark lifecycle: cheapest hourly price within the first eligible reliability tier, above 99.5% then above 96%. Both bandwidth rates must be below $10/TB. The $1 experiment cap covers all arms and retries.
+
+Reuse `--output <saved-directory>` to resume the saved experiment without repeating completed arm-target pairs.
+
+Source: `scripts/experiment.py` — `configuration`, `preflight`, `Run`, `remote`.
+
+</details>
+
 Operational guide
 
 <details>
