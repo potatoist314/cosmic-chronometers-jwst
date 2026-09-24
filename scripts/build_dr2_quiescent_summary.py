@@ -92,6 +92,8 @@ def load_target(target: dict, result_root: Path) -> dict:
         q50 = derived["summary/q50"][:]
         q84 = derived["summary/q84"][:]
         table = {name: (a, b, c) for name, a, b, c in zip(names, q16, q50, q84)}
+        if "diffuse_tau_noll" in table:
+            table["diffuse_tau_kc"] = table["diffuse_tau_noll"]
         for raw, prefix in SUMMARY_PARAMS.items():
             shift = SUMMARY_SHIFTS.get(raw, 0.0)
             row[f"{prefix}_q16"], row[f"{prefix}_q50"], row[f"{prefix}_q84"] = (

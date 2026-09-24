@@ -237,6 +237,7 @@ def _worker_environment(
 # ones: free redshift, free LOSVD, free attenuation-curve slope (dust_free arm).
 NUISANCE_PARAMS = ("zred", "sigma_smooth", "diffuse_dust_index")
 
+NUISANCE_PARAMS += ("diffuse_delta", "diffuse_Ebump")
 
 def physical_parameter_names(param_names) -> list[str]:
     return [name for name in param_names if name not in NUISANCE_PARAMS]

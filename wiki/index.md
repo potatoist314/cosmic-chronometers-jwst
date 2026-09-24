@@ -169,7 +169,7 @@ existing executed notebooks from stored arrays; see `notes/notebook-map.md`.
 
 Photometry UV supplement: `notes/cosmos-photometry-comparison.md` — `cosmos2025_uv` adds Classic GALEX NUV and CFHT u.
 
-Independent dust bump: `notes/model.md` — `diffuse_bump_strength` in notebook priors selects `kriek_conroy_free_bump`.
+Independent dust bump: `notes/model.md` — the existing Noll law samples slope and bump independently.
 
 Birth-cloud dust: enabled by default in the production notebook (24 Sep 2026); `notes/model.md`.
 

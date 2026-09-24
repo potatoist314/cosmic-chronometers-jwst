@@ -236,13 +236,13 @@ def test_notebook_defaults_to_the_continuity_sfh_prior():
 def test_notebook_defaults_to_a_free_dust_index():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
-    assert '"diffuse_dust_index": Uniform(low=-1.0, high=0.4)' in source
+    assert '"diffuse_delta": Uniform(low=-1.0, high=0.4)' in source
 
 
 def test_notebook_defaults_to_the_uniform_tau_prior():
     notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
-    assert '"diffuse_tau_kc": Uniform(low=0.0, high=1.0)' in source
+    assert '"diffuse_tau_noll": Uniform(low=0.0, high=1.0)' in source
 
 
 def test_notebook_keeps_sampler_progress_out_of_the_cell_output():

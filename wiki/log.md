@@ -1311,3 +1311,7 @@
 
 - Pages: `research/experiments/e-gpu-price-benchmark.md`
 - Change: Replaced cost per million calls with an estimate from three converged M1_210210 fits.
+
+### 2026-09-24 — Noll dust law
+
+- The production notebook uses the existing Noll law with independent slope and bump priors. Birth-cloud dust remains enabled. The custom dust law is removed.

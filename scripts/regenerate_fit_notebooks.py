@@ -45,7 +45,7 @@ def stored_fit(result_dir: Path) -> dict:
             for name in result_file["model/param_names"][()]
         ]
         tau_line = next(
-            line for line in attrs["parameter_block"].splitlines() if line.strip().startswith("diffuse_tau_kc:")
+            line for line in attrs["parameter_block"].splitlines() if line.strip().startswith(("diffuse_tau_kc:", "diffuse_tau_noll:"))
         )
         low, high = re.search(r"Uniform\(([^,]+), ([^)]+)\)", tau_line).groups()
         widths = np.atleast_1d(attrs["calibration_prior_sigma"])
@@ -61,6 +61,7 @@ def stored_fit(result_dir: Path) -> dict:
                               if "spectrum_scaling" in names else None),
             "photometry": str(attrs.get("photometry_source", "cosmos_total")),
             "tau_bounds": (float(low), float(high)),
+            "dust_law": "noll" if "diffuse_tau_noll" in names else "kriek_conroy",
             "free_zred": "zred" in names,
             "free_sigma": "sigma_smooth" in names,
         }
@@ -69,6 +70,15 @@ def stored_fit(result_dir: Path) -> dict:
 def compact_notebook(result_dir: Path, fit: dict, settings_override: dict | None = None,
                      priors_override: dict | None = None) -> nbformat.NotebookNode:
     notebook = nbformat.read(NOTEBOOK_PATH, as_version=4)
+    dust_law = fit.get("dust_law", "kriek_conroy")
+    if dust_law == "kriek_conroy":
+        for cell in notebook.cells:
+            cell.source = (cell.source.replace("diffuse_tau_noll", "diffuse_tau_kc")
+                           .replace("diffuse_delta", "diffuse_dust_index")
+                           .replace('diffuse_law="noll"', 'diffuse_law="kriek_conroy"'))
+            cell.source = "\n".join(line for line in cell.source.split("\n")
+                                    if '"diffuse_Ebump": Uniform' not in line)
+    tau_name = "diffuse_tau_noll" if dust_law == "noll" else "diffuse_tau_kc"
     top = notebook.cells[2]
     assert top.source.startswith("import os")
     replacements = [
@@ -82,7 +92,7 @@ def compact_notebook(result_dir: Path, fit: dict, settings_override: dict | None
         (r'"calibration_prior_sigma": [^,]+,', f'"calibration_prior_sigma": {fit["calibration_prior_sigma"]},'),
         (r'"calibration_constant_prior_sigma": [^,]+,', f'"calibration_constant_prior_sigma": {fit["calibration_constant_prior_sigma"]},'),
         (r'"photometry": "[^"]*",', f'"photometry": "{fit["photometry"]}",'),
-        (r'"diffuse_tau_kc": Uniform\(low=[^)]*\),', f'"diffuse_tau_kc": Uniform(low={fit["tau_bounds"][0]:g}, high={fit["tau_bounds"][1]:g}),'),
+        (rf'"{tau_name}": Uniform\(low=[^)]*\),', f'"{tau_name}": Uniform(low={fit["tau_bounds"][0]:g}, high={fit["tau_bounds"][1]:g}),'),
     ]
     if not fit["free_zred"]:
         replacements.append((r'\n    "zred": "[^\n]*\n', "\n"))
