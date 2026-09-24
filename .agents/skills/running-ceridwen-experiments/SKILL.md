@@ -16,23 +16,49 @@ Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy t
    in **Before delegation** unchanged. Write the **Execution plan** as in
    `e-m1-210210-reference.md`: comparison, baseline, data, model, controlled change,
    hardware and outputs. Commit.
-2. **Change the fit.** Edit `SETTINGS` or `PRIORS` in cell 2 of
-   `notebooks/ceridwen_integrated_photometry_spectra.ipynb`. Commit and push:
-   the Vast box clones `absorption-mask`.
-3. **Show the plan and wait.** One table: target, changed setting (old → new),
-   baseline result directory, seed, spend cap. Do not rent before he says OK.
-4. **Run.** Default target M1_210210, seed 20260832. Baseline:
-   `results/m1-210210-reference/tau-1/poly10/210210-M1_210210` (production defaults, 2026-09-17).
+2. **Configure.** Write `experiment.json` in the experiment's result directory.
+   Use the production notebook's `SETTINGS` and `PRIORS` keys. Do not edit its
+   defaults to configure an experiment. Example:
+   ```json
+   {
+     "targets": ["M1_210210"],
+     "seed": 20260832,
+     "settings": {},
+     "priors": {},
+     "arms": {
+       "baseline": {},
+       "wide_dust": {"priors": {"diffuse_tau_kc": "Uniform(low=0.0, high=2.0)"}}
+     }
+   }
    ```
-   CERIDWEN_ARMS_RESULTS=results/<slug> python scripts/calibration_arms_vast.py run \
-     --arms <arm> --targets M1_210210 --interruptible --spend-cap 0.50
+   Each arm merges its changes into the shared settings and priors. Nested
+   settings merge too. Priors are Python expression strings. `settings.ssp_grid`
+   accepts a registered name or a local `.h5` path relative to this JSON file.
+   The exact seed applies to every fit. New model code must be committed before
+   running; the command uses committed HEAD and pinned submodules.
+3. **Check.** Use `--dry-run` to check the configuration and local inputs without
+   rentals or network access. It requires cached grids. Show the targets, changes,
+   baseline and cap if those choices still need the user's approval. Existing
+   authorization covers execution; do not ask for the same approval again.
+4. **Run.** Use this command for new experiment fits:
+   ```bash
+   python3 scripts/experiment.py run results/<slug>/experiment.json \
+     --gpu "RTX 5090" --output results/<slug>/run
    ```
-   The driver rents one RTX 5060, 5060 Ti, 5070, 5080 or 5090 at the cheapest
-   cost per unit of work, clones the branch, uploads `ceridwen/` and
-   `data/raw`, bootstraps CUDA, runs the notebook, polls every 2 min, pulls, destroys.
-   Output: `results/<slug>/<arm>/<object>-<target>/` with `M1_210210_executed.ipynb`,
-   `ceridwen_result.h5`, `execution.log`; `results/<slug>/vast_run_<timestamp>.json`
-   with the instance id and the spend. The M1_210210 fit took 26 min and $0.086.
+   Use the GPU type requested by the user. The runner selects the lowest hourly
+   price above 99.5% reliability, falling back to above 96% only if no offers
+   pass all filters. Both bandwidth rates must be below $10/TB. The total $1
+   cap covers all arms and retries; `--spend-cap` can reduce it.
+
+   Missing registered grids download locally before rental. The command uploads
+   pinned source and checked grids, runs the full notebook including existing
+   post-fit plots, downloads each arm-target result, and destroys its rental.
+   Results are under `run/fits/<arm>/<object>-<target>/`: executed notebook,
+   `ceridwen_result.h5`, derived outputs and logs. The run directory also holds
+   the manifest, stage logs and available charges. Repeat the same command and
+   `--output` to resume its source, configuration, completed fits and budget.
+   Do not manually rent replacements. The historical arm-specific runners remain
+   for their existing runs.
 5. **Evaluate.** Write `results/<slug>/analysis.ipynb` (start from
    `results/m1-210210-reference/analysis.ipynb`). Run it locally with
    `JAX_PLATFORMS=cpu ceridwen/.venv/bin/python`. Outputs beside it:

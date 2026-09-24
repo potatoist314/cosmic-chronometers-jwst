@@ -8,6 +8,69 @@ job: t_2fc31190
 old: _old/guides/vast-ai-gpu-workflow.html
 ---
 
+## Benchmark command
+
+```bash
+python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1
+```
+
+<details>
+<summary>Benchmark options and outputs</summary>
+
+Add GPU names as positional arguments, for example `"RTX 5090" "RTX 4090"`. Add `--hosts 2` for two successful hosts per GPU. `--dry-run` performs local preflight only, without network access or rentals.
+
+Search offers with reliability above 99.5% first. Only when none pass every filter, including host exclusions, repeat with reliability above 96%. Choose the cheapest hourly price in the first tier with eligible offers. Both bandwidth rates must remain below $10/TB. The experiment spending cap remains $1.
+
+The default source is committed `HEAD`, excluding local edits. The command uploads pinned source, inputs and the cached grid. It measures likelihood throughput, not full-fit convergence.
+
+Reuse `--output <saved-directory>` to resume the pinned revision, accumulated spend and rental ownership. The output directory stores the manifest, stage logs, timing results and available charges. The command destroys its owned rentals after each attempt.
+
+Source: `scripts/benchmark.py` — `preflight`, `Run.candidates`, `parser`.
+
+</details>
+
+## Experiment command
+
+```bash
+python3 scripts/experiment.py run experiment.json --gpu "RTX 5090"
+```
+
+<details>
+<summary>Experiment configuration and outputs</summary>
+
+The JSON file overrides the notebook configuration:
+
+```json
+{
+  "targets": ["M1_210210"],
+  "seed": 20260832,
+  "settings": {},
+  "priors": {},
+  "arms": {
+    "baseline": {},
+    "wide_dust": {
+      "priors": {
+        "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)"
+      }
+    }
+  }
+}
+```
+
+The default target is `M1_210210`. The default seed is `20260832`, used exactly for every fit. Settings merge recursively, including nested sampler controls. Prior overrides map existing notebook keys to Python expression strings. Each arm overrides the shared settings and priors. Without `arms`, the configuration uses `{"fit": {}}`.
+
+Set `settings.ssp_grid` to a registered grid name or an `.h5` path relative to the configuration file. Normal runs fetch missing registered grids before renting. `--dry-run` uses no network and requires the grids locally.
+
+The command pins committed `HEAD` and its submodules. It executes the full notebook on the GPU, including postfit cells and existing plots. Each completed arm-target pair downloads to `fits/<arm>/<object>-<target>/`, including its executed notebook and H5 results.
+
+Rental selection and teardown use the benchmark lifecycle: cheapest hourly price within the first eligible reliability tier, above 99.5% then above 96%. Both bandwidth rates must be below $10/TB. The $1 experiment cap covers all arms and retries.
+
+Reuse `--output <saved-directory>` to resume the saved experiment without repeating completed arm-target pairs.
+
+Source: `scripts/experiment.py` — `configuration`, `preflight`, `Run`, `remote`.
+
+</details>
+
 Operational guide
 
 <details>
@@ -22,9 +85,9 @@ The spectrum notebook fits spectra. The joint notebook fits photometry with nati
 
 - Use a Linux image with Jupyter, SSH, and CUDA 12. Prefer `vastai/base-image:cuda-12.6.3-auto`. It avoids the unused PyTorch stack. The bootstrap installs CUDA JAX.
 - Require at least 8 GB GPU memory and 12 GB disk.
-- Require host reliability above 99.5 per cent.
-- Reject upload or download prices above $0.01 per GB.
-- Use the cheapest qualifying RTX 5060 offer.
+- Require host reliability above 99.5 per cent; fall back to above 96 per cent only if no offers pass every filter.
+- Require upload and download prices each below $0.01 per GB.
+- Use the cheapest hourly offer for the requested GPU type, with a $1 experiment cap.
 
 Vast host `148498` in Croatia provided a tested-good A100 SXM4 40 GB allocation. Instance `48652928` completed the quick and full fits on 25 August 2026. This result applies to that allocation only.
 

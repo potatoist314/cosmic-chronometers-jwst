@@ -129,19 +129,19 @@ def test_reference_arm_pins_the_fixed_dust_index_after_the_default_flip(arms):
 
 def _offer(**overrides):
     base = dict(gpu_name="RTX 5060", dph_total=0.09, reliability2=0.997, gpu_ram=8151,
-                cuda_max_good=12.8, inet_down_cost=0.0, host_id=1)
+                cuda_max_good=12.8, inet_down_cost=0.0, inet_up_cost=0.0, host_id=1)
     base.update(overrides)
     return base
 
 
 def test_offer_rule_accepts_reliable_cards_under_loose_guards(arms):
-    """Liu Hao's rule (2026-09-23): 5060/5060 Ti/5070/5080/5090 above 99.5% reliable; $0.80/h and $25/TB are loose disaster guards."""
+    """No hourly ceiling; reliability and bandwidth requirements still apply."""
     assert arms.offer_qualifies(_offer())
     assert arms.offer_qualifies(_offer(gpu_name="RTX 5060 Ti", gpu_ram=16311))
     assert arms.offer_qualifies(_offer(gpu_name="RTX 5070"))
     assert arms.offer_qualifies(_offer(gpu_name="RTX 5080", dph_total=0.35))
     assert arms.offer_qualifies(_offer(gpu_name="RTX 5090", dph_total=0.57))
-    assert not arms.offer_qualifies(_offer(dph_total=0.80))
+    assert arms.offer_qualifies(_offer(dph_total=1.50))
     assert not arms.offer_qualifies(_offer(reliability2=0.995))
     assert not arms.offer_qualifies(_offer(gpu_name="RTX 5070 Ti"))
     assert not arms.offer_qualifies(_offer(gpu_name="RTX 4090", dph_total=0.05))
@@ -152,24 +152,23 @@ def test_interruptible_offers_are_judged_on_the_bid(arms):
     dear_on_demand = _offer(dph_total=0.90, min_bid=0.09)
     assert arms.offer_price(dear_on_demand, interruptible=True) == 0.095
     assert arms.offer_qualifies(dear_on_demand, interruptible=True)
-    assert not arms.offer_qualifies(dear_on_demand)
-    assert not arms.offer_qualifies(_offer(dph_total=0.90, min_bid=0.80), interruptible=True)
+    assert arms.offer_qualifies(dear_on_demand)
+    assert arms.offer_qualifies(_offer(dph_total=0.90, min_bid=0.80), interruptible=True)
     assert not arms.offer_qualifies(_offer(min_bid=0.05, reliability2=0.99), interruptible=True)
-    assert arms.offer_qualifies(_offer(inet_down_cost=0.013))  # $13/TB passes the loose $25/TB guard
+    assert not arms.offer_qualifies(_offer(inet_down_cost=0.013))
     assert not arms.offer_qualifies(_offer(inet_down_cost=0.025))
 
 
-def test_offer_ranking_prefers_lower_cost_per_work_over_lower_hourly(arms):
+def test_offer_ranking_prefers_lower_hourly_price(arms):
     ti = _offer(gpu_name="RTX 5060 Ti", dph_total=0.10,
                 inet_down_cost=0.001)  # (0.10 + 0.006) / 1.00 = 0.106
     faster = _offer(gpu_name="RTX 5080", dph_total=0.20,
                     inet_down_cost=0.001)  # (0.20 + 0.006) / 2.39 = 0.0862
-    ranked = sorted([ti, faster], key=arms._vast.fit_offer_cost_per_work)
-    assert [entry["gpu_name"] for entry in ranked] == ["RTX 5080", "RTX 5060 Ti"]
+    ranked = sorted([ti, faster], key=arms._vast.fit_offer_price)
+    assert [entry["gpu_name"] for entry in ranked] == ["RTX 5060 Ti", "RTX 5080"]
 
 
 def test_offer_rule_constants_match_the_rule(arms):
-    assert arms.MAX_DPH_USD == 0.80
     assert arms.MIN_RELIABILITY == 0.995
     assert set(arms.GPU_NAMES) == {"RTX 5060", "RTX 5060 Ti", "RTX 5070", "RTX 5080", "RTX 5090"}
 
@@ -186,6 +185,7 @@ def test_5090_query_narrows_the_gpu_and_keeps_reliability_bandwidth(arms):
     assert "gpu_name=RTX_5090" in query
     assert "reliability>0.995" in query
     assert "inet_down_cost<0.005" in query
+    assert "inet_up_cost<0.005" in query
     assert "dph<" not in query  # the hourly ceiling is bypassed at the search
 
 
@@ -203,8 +203,11 @@ def test_5090_rule_bypasses_only_the_hourly_ceiling(arms):
     assert not arms.offer_qualifies_5090(sweep, _offer_5090(reliability2=0.995))
     assert not arms.offer_qualifies_5090(sweep, _offer_5090(inet_down_cost=0.005))
     assert arms.offer_qualifies_5090(sweep, _offer_5090(inet_down_cost=0.0049))
+    assert not arms.offer_qualifies_5090(sweep, _offer_5090(inet_up_cost=0.005))
     assert not arms.offer_qualifies_5090(
         sweep, {k: v for k, v in _offer_5090().items() if k != "inet_down_cost"})
+    assert not arms.offer_qualifies_5090(
+        sweep, {k: v for k, v in _offer_5090().items() if k != "inet_up_cost"})
 
 
 def test_5090_selection_ranks_by_hourly_price(arms):
@@ -218,23 +221,83 @@ def test_5090_selection_ranks_by_hourly_price(arms):
     other_gpu = _offer(id=4, gpu_name="RTX 5080", dph_total=0.20, host_id=14)
     flaky = _offer_5090(id=5, dph_total=0.55, reliability2=0.99, host_id=15)
 
-    def fake_vastai_json(argv):
-        seen["query"] = argv[2]
+    def fake_search_offers(extra_query, rental_type="on-demand"):
+        seen["query"] = extra_query
+        seen["rental_type"] = rental_type
         return [cheap_hourly, cheap_total, dear, other_gpu, flaky]
 
     sweep = types.SimpleNamespace(
         FIT_MIN_RELIABILITY=arms._vast.FIT_MIN_RELIABILITY,
-        MAX_INET_COST_USD_PER_TB=arms._vast.MAX_INET_COST_USD_PER_TB,
-        _vastai_json=fake_vastai_json,
-        fit_offer_cost_per_work=arms._vast.fit_offer_cost_per_work,
+        search_offers=fake_search_offers,
     )
     ranked = arms.offers_rtx_5060(sweep, set(), False, True)
     assert [o["id"] for o in ranked] == [1, 2, 3]
     assert "gpu_name=RTX_5090" in seen["query"]
-    # Cost-per-work ranking would put id 2 first; hourly keeps id 1 first.
-    by_work = sorted([cheap_hourly, cheap_total],
-                     key=lambda o: arms._vast.fit_offer_cost_per_work(o))
-    assert [o["id"] for o in by_work] == [2, 1]
+    assert seen["rental_type"] == "on-demand"
+    # Total-cost ranking would put id 2 first (0.61 < 0.60 + 0.004 * 6); hourly keeps id 1 first.
+    by_total = sorted([cheap_hourly, cheap_total],
+                      key=lambda o: o["dph_total"] + o["inet_down_cost"] * 6.0)
+    assert [o["id"] for o in by_total] == [2, 1]
+
+
+def test_5090_selection_uses_bid_rentals_when_interruptible(arms):
+    import types
+
+    seen = {}
+
+    def fake_search_offers(extra_query, rental_type="on-demand"):
+        seen["rental_type"] = rental_type
+        return []
+
+    sweep = types.SimpleNamespace(
+        FIT_MIN_RELIABILITY=arms._vast.FIT_MIN_RELIABILITY,
+        search_offers=fake_search_offers,
+    )
+    assert arms.offers_rtx_5060(sweep, set(), True, True) == []
+    assert seen["rental_type"] == "bid"
+
+
+def test_spend_cap_usd_accepts_only_positive_finite_amounts(arms):
+    import argparse
+    import math
+
+    assert arms.spend_cap_usd("4.50") == 4.50
+    assert arms.spend_cap_usd("1.0") == 1.0
+    assert math.isfinite(arms.spend_cap_usd("0.01"))
+    for bad in ("0", "-2", "nan", "inf"):
+        with pytest.raises(argparse.ArgumentTypeError):
+            arms.spend_cap_usd(bad)
+
+
+def test_spend_cap_above_one_dollar_needs_only_5090(arms):
+    import types
+
+    assert arms.spend_cap_error(types.SimpleNamespace(spend_cap=1.0, only_5090=False)) is None
+    assert arms.spend_cap_error(types.SimpleNamespace(spend_cap=0.5, only_5090=False)) is None
+    assert arms.spend_cap_error(types.SimpleNamespace(spend_cap=4.50, only_5090=True)) is None
+    message = arms.spend_cap_error(types.SimpleNamespace(spend_cap=4.50, only_5090=False))
+    assert message and "USD 1" in message and "--only-5090" in message
+    assert arms.spend_cap_error(types.SimpleNamespace()) is None
+
+
+def test_run_rejects_a_large_cap_without_only_5090(arms):
+    with pytest.raises(SystemExit) as exc:
+        arms.main(["run", "--targets", "M1_210210", "--arms", "dust1_on",
+                   "--spend-cap", "4.50"])
+    assert exc.value.code == 2
+
+
+def test_run_accepts_a_large_cap_with_only_5090(arms, monkeypatch):
+    calls = {}
+
+    def fake_run(args):
+        calls["cap"] = args.spend_cap
+        return 0
+
+    monkeypatch.setattr(arms, "command_run", fake_run)
+    assert arms.main(["run", "--targets", "M1_210210", "--arms", "dust1_on",
+                      "--spend-cap", "4.50", "--only-5090"]) == 0
+    assert calls["cap"] == 4.50
 
 
 @pytest.fixture(scope="module")

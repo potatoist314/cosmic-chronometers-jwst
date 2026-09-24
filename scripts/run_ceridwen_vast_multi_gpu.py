@@ -684,7 +684,11 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--monitor", action="store_true")
     parser.add_argument("--monitor-instance", action="append", default=[])
     parser.add_argument("--credit-baseline", type=float)
-    parser.add_argument("--spend-cap", type=float, default=20.0)
+    try:
+        from scripts.vast import experiment_cap
+    except ModuleNotFoundError:  # Direct execution puts scripts/, not its parent, on sys.path.
+        from vast import experiment_cap
+    parser.add_argument("--spend-cap", type=experiment_cap, default=1.0)
     parser.add_argument("--poll-seconds", type=float, default=300.0)
     return parser
 

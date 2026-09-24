@@ -1236,8 +1236,28 @@
 - Pages: `research/experiments/e-gpu-price-benchmark.md`, `notes/gpu-benchmark-2026-09-23-failures.md`, `index.md`
 - Change: six host timings and price ratios, four missing host slots, billed cost and the same-boot 5090 batch diagnostic on Results.
 
+## [2026-09-24] codebase | GPU benchmark command
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Documented benchmark commands, source pinning, resume, saved outputs and rental teardown.
+
+## [2026-09-24] codebase | GPU offer selection
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Documented hourly-price selection across both markets, reliability and transfer limits, 40 GB disk quotes, saved alternatives and the $1 experiment cap.
+
+## [2026-09-24] codebase | GPU reliability fallback
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Documented the >96% reliability fallback when no >99.5% offer passes every filter.
+
+## [2026-09-24] codebase | Experiment command
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Documented experiment configuration, grid handling, full notebook execution, saved results, spending limits and resume.
+
 ## [2026-09-24] result | Birth-cloud dust and dust index to -3
 
 - Pages: `research/experiments/e-birth-cloud-dust.md`, `notes/birth-cloud-dust.md`, `index.md`
 - Change: three M1_210210 arms compared; per-arm spectrum and photometry fits, SFH, corner, parameter table and $0.9962 RTX 5090 run recorded.
-- Validation: executed notebooks and HDF5 loaded; wiki build and tests.
+- Validation: executed notebooks and HDF5 loaded; note/record checks passed; full wiki suites failed on pre-existing missing evidence elsewhere.
