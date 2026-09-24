@@ -187,6 +187,37 @@ JS = """(() => {
   if (target) target.addEventListener('change', update);
   if (view) view.addEventListener('change', update);
   update();
+
+  const table = document.querySelector('.result-report .measurements table');
+  if (table) {
+    const headers = [...table.tHead.rows[0].cells];
+    const body = table.tBodies[0];
+    const collator = new Intl.Collator(undefined, { numeric: true });
+    headers.forEach((header, column) => {
+      const label = header.textContent.trim();
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = label;
+      button.title = `Sort by ${label}`;
+      header.replaceChildren(button);
+      button.addEventListener('click', () => {
+        const ascending = header.getAttribute('aria-sort') !== 'ascending';
+        headers.forEach(item => item.removeAttribute('aria-sort'));
+        header.setAttribute('aria-sort', ascending ? 'ascending' : 'descending');
+        const rows = [...body.rows];
+        const values = rows.map(row => row.cells[column].textContent.trim());
+        const numbers = values.map(value => Number(value.replace(/[$,]/g, '')));
+        const numeric = numbers.every(Number.isFinite);
+        rows.sort((a, b) => {
+          const left = a.cells[column].textContent.trim();
+          const right = b.cells[column].textContent.trim();
+          const order = numeric ? Number(left.replace(/[$,]/g, '')) - Number(right.replace(/[$,]/g, ''))
+            : collator.compare(left, right);
+          return ascending ? order : -order;
+        }).forEach(row => body.append(row));
+      });
+    });
+  }
 })();
 """
 
@@ -200,5 +231,9 @@ CSS = """
 .figure-gallery figcaption{font-size:.9rem;line-height:1.5;margin:10px 0;padding:0;border:0;text-transform:none;letter-spacing:normal}
 .report-links{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:12px 0 22px;font-size:.85rem}
 .measurements{overflow-x:auto}
+.measurements th button{border:0;background:none;color:inherit;font:inherit;font-weight:inherit;cursor:pointer;padding:0;text-align:left}
+.measurements th button::after{content:" ↕";color:var(--ink-2)}
+.measurements th[aria-sort="ascending"] button::after{content:" ↑"}
+.measurements th[aria-sort="descending"] button::after{content:" ↓"}
 @media print{.figure-controls,.report-links{display:none}.result-figure{break-inside:avoid}}
 """

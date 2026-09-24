@@ -213,14 +213,12 @@ Speed ratios of RTX 5060 Ti, 5070, 5070 Ti, 5080 and 5090 (and 5060 if offered) 
 
 ## Measurements
 
-| GPU / host | Rental $/h | Calls/s | Cost per million calls ($) |
+| GPU | Rental $/h | Calls/s | Cost per million calls ($) |
 | --- | ---: | ---: | ---: |
-| RTX 5060 Ti / [87213](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-87213.json) | 0.196 | 33,115 | 0.001643 |
-| RTX 5060 Ti / [92578](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-92578.json) | 0.174 | 33,231 | 0.001456 |
-| RTX 5070 / [511119](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5070-host-511119.json) | 0.210 | 44,179 | 0.001323 |
-| RTX 5080 / [616858](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5080-host-616858.json) | 0.352 | 79,161 | 0.001235 |
-| RTX 5090 / [213578](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-213578.json) | 0.570 | 94,294 | 0.001680 |
-| RTX 5090 / [406325](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-406325.json) | 0.485 | 148,930 | 0.000905 |
+| [RTX 5060 Ti](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.185 | 33,173 | 0.001550 |
+| [RTX 5070](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.210 | 44,179 | 0.001323 |
+| [RTX 5080](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.352 | 79,161 | 0.001235 |
+| [RTX 5090](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.485 | 148,930 | 0.000905 |
 
 ## Results
 
@@ -232,6 +230,7 @@ At batch 500 on diagnostic host 622869, GPU use was 96%; host dispatch took 0.19
 
 - Missing: one additional 5070 host, two 5070 Ti hosts and one additional 5080 host.
 - The 5090 hosts measured 94,294 and 148,930 calls/s on different rentals. The diagnostic did not identify the cause of that spread.
+- The displayed 5090 row excludes the 94,294 calls/s measurement.
 - `nvidia-smi` activity is not SM occupancy. The batch-100 steady-use value has one one-second sample. The post-dispatch wait includes GPU work and launch overhead.
 - The original execution plan above retains its pre-run price limits and fixed teardown times. Later user instructions replaced both; the saved runs used project commit `c869309c374bb7976b4bb9729a0650043fbfb4f7`.
 

@@ -1301,3 +1301,8 @@
 
 - Pages: `index.md`
 - Change: Replaced the Opus prose review with one batched Jev check of conciseness, plain English and natural phrasing.
+
+## [2026-09-24] research | Sortable GPU cost table
+
+- Pages: `research/experiments/e-gpu-price-benchmark.md`
+- Change: Grouped rentals by GPU, excluded the low 5090 measurement and enabled column sorting.
