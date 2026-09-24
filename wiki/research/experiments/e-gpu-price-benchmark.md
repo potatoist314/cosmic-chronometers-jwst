@@ -1,7 +1,7 @@
 ---
 kind: experiment
 id: e-gpu-price-benchmark
-title: GPU price caps from measured calls/s
+title: GPU likelihood rental cost
 date: 2026-09-23
 results_at: 2026-09-23T22:22:58+01:00
 origin: new
@@ -213,29 +213,14 @@ Speed ratios of RTX 5060 Ti, 5070, 5070 Ti, 5080 and 5090 (and 5060 if offered) 
 
 ## Measurements
 
-| Card | Host / raw timing | Rental $/h | Calls/s | Ratio to mean 5060 Ti | $0.11/h × ratio |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| RTX 5060 Ti | [87213](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-87213.json) | 0.196 | 33,115 | 0.998 | 0.110 |
-| RTX 5060 Ti | [92578](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-92578.json) | 0.174 | 33,231 | 1.002 | 0.110 |
-| RTX 5070 | [511119](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5070-host-511119.json) | 0.210 | 44,179 | 1.332 | 0.146 |
-| RTX 5080 | [616858](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5080-host-616858.json) | 0.352 | 79,161 | 2.386 | 0.262 |
-| RTX 5090 | [213578](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-213578.json) | 0.570 | 94,294 | 2.843 | 0.313 |
-| RTX 5090 | [406325](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-406325.json) | 0.485 | 148,930 | 4.490 | 0.494 |
-
-Current M1_210210 joint likelihood: 500 parameter sets per timed batch; mean RTX 5060 Ti baseline 33,173 calls/s.
-
-5090 host 622869, same-boot batch diagnostic. GPU use is one-second `nvidia-smi` activity, averaged after the first second.
-
-| Parameter sets / batch | Calls/s | GPU use after first second | Dispatch ms / batch | Wait ms / batch |
-| ---: | ---: | ---: | ---: | ---: |
-| 100 | 111,766 | 93% | 0.134 | 0.755 |
-| 500 | 150,937 | 96% | 0.196 | 3.028 |
-| 2,000 | 147,676 | 95% | 0.653 | 12.934 |
-| 8,000 | 151,955 | 98% | 0.637 | 51.993 |
-
-Six of ten requested host slots were measured. One RTX 5070, both RTX 5070 Ti and one RTX 5080 slot remain empty. The [price matrix](results/gpu-benchmark-2026-09-23/sol/summary.json) cost $0.981 including failures; the separate [diagnostic](results/gpu-benchmark-2026-09-23/diagnostic/summary.json) cost $0.087.
-
-At batch 500, dispatch took 0.196 ms of a 3.224 ms blocked call while the GPU was active 96% of the time. The slow 5090 host remains unexplained.
+| GPU / host | Rental $/h | Calls/s | Cost per million calls ($) |
+| --- | ---: | ---: | ---: |
+| RTX 5060 Ti / [87213](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-87213.json) | 0.196 | 33,115 | 0.001643 |
+| RTX 5060 Ti / [92578](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5060-ti-host-92578.json) | 0.174 | 33,231 | 0.001456 |
+| RTX 5070 / [511119](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5070-host-511119.json) | 0.210 | 44,179 | 0.001323 |
+| RTX 5080 / [616858](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5080-host-616858.json) | 0.352 | 79,161 | 0.001235 |
+| RTX 5090 / [213578](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-213578.json) | 0.570 | 94,294 | 0.001680 |
+| RTX 5090 / [406325](results/gpu-benchmark-2026-09-23/sol/timing-rtx-5090-host-406325.json) | 0.485 | 148,930 | 0.000905 |
 
 ## Results
 

@@ -1271,3 +1271,8 @@
 
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: Documented local checks, shared uploads, SSH diagnostics and stopping after failed remote stages.
+
+## [2026-09-24] research | GPU likelihood rental cost
+
+- Pages: `research/experiments/e-gpu-price-benchmark.md`
+- Change: Displayed rental rate, throughput and cost per million calls for each measured host.
