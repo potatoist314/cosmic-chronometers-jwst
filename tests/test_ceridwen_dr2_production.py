@@ -114,7 +114,9 @@ def test_notebook_uses_production_model_and_sampler_contract():
     assert '"Z": "log10 iron abundance; [Fe/H] = Z + 1.7328283"' in source
     assert "FEH_OFFSET = 1.7328283" in source
     assert '"calibration_order": 10,' in source
-    assert '"sfh_lookback_gyr": [0.0, 0.03, 0.1, 0.3, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]' in source
+    assert '"sfh_nbins": 14' in source
+    assert "sfh_lookback_gyr" not in source
+    assert "sfh_tbinmax_yr = universe_age * 0.85 * 1e9" in source
     assert 'scalar_draws("Z") + FEH_OFFSET' in source
     assert r"$\log_{10}(Z/Z_\odot)$" not in source
     assert "aperture_transfer" not in source

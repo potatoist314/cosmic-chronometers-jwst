@@ -68,7 +68,7 @@ x_n=\log_{10}\!\left(\frac{\mathrm{SFR}_n}{\mathrm{SFR}_{n+1}}\right),
 - Prospector `prospect/models/templates.py:98-123`, `adjust_continuity_agebins`: `priors.StudentT(mean=0, scale=0.3, df=2)`.
 - `prospect/models/templates.py:539-560`: `TemplateLibrary["continuity_sfh"]`.
 - `prospect/models/priors.py:560`: `priors.StudentT`.
-- Ceridwen project prior: Student-t\((0,0.3,\mathrm{df}\ 2)\), \(7\) ratios, \(8\) bins.
+- Ceridwen project prior: Student-t\((0,0.3,\mathrm{df}\ 2)\), \(14\) ratios, \(14\) bins (\(15\) nodes).
 
 </details>
 

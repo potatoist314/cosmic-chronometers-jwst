@@ -1324,3 +1324,12 @@
 
 - Pages: `notes/model.md`, `index.md`
 - Change: SFH nodes use 0.5 Gyr spacing from 1 to 5 Gyr (13 bins); prior, bin-mass and sampler-count rows updated.
+
+## [2026-09-24] codebase | Prospector continuity SFH bins
+
+- Pages: `notes/model.md`, `notes/sfh-continuity-prior-variants.md`, `index.md`
+- Change: Default SFH uses Prospector continuity bins with 14 bins; prior, bin-mass and sampler-count rows updated.
+
+### 2026-09-24 — Shared GPU defaults
+
+- GPU launchers share the compact image default in `scripts/vast.py` and upload selected inputs. Saved benchmark and experiment configurations retain their original image.
