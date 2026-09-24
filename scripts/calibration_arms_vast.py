@@ -310,17 +310,7 @@ def offer_price(offer: dict, interruptible: bool) -> float:
 
 
 def offers_rtx_5060(sweep, exclude_hosts: set[int], interruptible: bool = False) -> list[dict]:
-    query = sweep.FIT_OFFER_QUERY_BASE if interruptible else sweep.FIT_OFFER_QUERY
-    offers = sweep.search_offers(query, rental_type="bid" if interruptible else "on-demand")
-    offers = [
-        o for o in offers
-        if offer_qualifies(o, interruptible=interruptible)
-        and float(o.get("gpu_ram") or 0) >= 8000
-        and float(o.get("cuda_max_good") or 0) >= 12.6
-        and int(o.get("host_id") or 0) not in exclude_hosts
-    ]
-    offers.sort(key=lambda o: sweep.fit_offer_price(o, interruptible=interruptible))
-    return offers
+    return sweep.fit_offers(exclude_hosts=exclude_hosts, interruptible=interruptible)
 
 
 def _describe(offer: dict, interruptible: bool = False) -> str:

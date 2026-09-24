@@ -101,3 +101,37 @@ def test_experiment_cap_cannot_exceed_one_dollar(amount):
     import argparse
     with pytest.raises(argparse.ArgumentTypeError):
         sweep.experiment_cap(amount)
+
+
+@pytest.mark.parametrize('blocked_by', ['host', 'hardware', 'bandwidth'])
+def test_fit_fallback_after_all_filters(monkeypatch, blocked_by):
+    preferred = fit_offer(host_id=10)
+    if blocked_by == 'hardware':
+        preferred['gpu_ram'] = 100
+    if blocked_by == 'bandwidth':
+        preferred['inet_down_cost'] = .01
+    rows = [preferred, fit_offer(id=2, reliability2=.97, dph_total=.45),
+            fit_offer(id=3, reliability2=.98, dph_total=.6),
+            fit_offer(id=4, reliability2=.96, dph_total=.01),
+            fit_offer(id=5, reliability2=.98, inet_up_cost=.01)]
+    queries = []
+    monkeypatch.setattr(sweep, 'search_offers', lambda query, **kw: queries.append(query) or rows)
+    result = sweep.fit_offers(exclude_hosts={10} if blocked_by == 'host' else ())
+    assert [o['id'] for o in result] == [2, 3]
+    assert len(queries) == 2
+    assert 'reliability>0.96' in queries[-1]
+
+
+def test_fit_prefers_high_reliability_and_only_queries_once(monkeypatch):
+    queries = []
+    rows = [fit_offer(), fit_offer(id=2, reliability2=.97, dph_total=.01)]
+    monkeypatch.setattr(sweep, 'search_offers', lambda query, **kw: queries.append(query) or rows)
+    assert [o['id'] for o in sweep.fit_offers()] == [1]
+    assert len(queries) == 1
+
+
+def test_fit_empty_after_both_tiers(monkeypatch):
+    queries = []
+    monkeypatch.setattr(sweep, 'search_offers', lambda query, **kw: queries.append(query) or [])
+    assert sweep.fit_offers() == []
+    assert len(queries) == 2

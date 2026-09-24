@@ -5,7 +5,7 @@ Use `--dry-run` for local preflight without renting. Repeat with the printed
 `--output` directory to resume the same source revision and accumulated budget.
 
 Choose the lowest hourly price for the requested GPU type. Require reliability
-above 99.5% and upload/download charges each below $10/TB. No hourly cap;
+above 99.5% (fall back to above 96% only if no offers pass all filters) and upload/download charges each below $10/TB. No hourly cap;
 the experiment total cannot exceed $1 including retries.
 
 The command owns setup, cached-grid transfer, measurement, reconnection,

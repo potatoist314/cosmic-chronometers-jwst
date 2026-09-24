@@ -62,16 +62,8 @@ def _log(message: str) -> None:
     print(f"[{datetime.now(UTC).strftime('%H:%M:%S')}] {message}", flush=True)
 
 
-def rtx5060_offers() -> list[dict]:
-    offers = sweep.search_offers(sweep.FIT_OFFER_QUERY)
-    offers = [
-        o for o in offers
-        if sweep.fit_offer_qualifies(o)
-        and float(o.get("gpu_ram") or 0) >= 8000
-        and float(o.get("cuda_max_good") or 0) >= 12.6
-    ]
-    offers.sort(key=lambda o: sweep.fit_offer_price(o))
-    return offers
+def rtx5060_offers(*, exclude_hosts=()) -> list[dict]:
+    return sweep.fit_offers(exclude_hosts=exclude_hosts)
 
 
 def shard_of(spect_id: str, targets: list[dict]) -> int:
@@ -199,7 +191,7 @@ def command_run(args) -> int:
         record_path.write_text(json.dumps(record, indent=1, default=str))
 
     busy_hosts = {int(i.get("host_id") or 0) for i in sweep._vastai_json(["show", "instances"])}
-    offers = [o for o in rtx5060_offers() if int(o.get("host_id") or 0) not in busy_hosts]
+    offers = rtx5060_offers(exclude_hosts=busy_hosts)
     if not offers:
         print("no qualifying RTX 5060 offer", file=sys.stderr)
         return 1

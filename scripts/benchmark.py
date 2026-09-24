@@ -91,11 +91,11 @@ def preflight(revision):
     return {'commit': commit, 'submodules': modules, 'grid': str(grid), 'grid_sha256': checksum}
 
 
-def offer_rejection(offer):
+def offer_rejection(offer, min_reliability=vast.FIT_MIN_RELIABILITY):
     checks = (
         (offer.get('verification') != 'verified', 'unverified'),
         (not offer.get('rentable'), 'unavailable'),
-        (float(offer.get('reliability2') or 0) <= .995, 'reliability <= 99.5%'),
+        (float(offer.get('reliability2') or 0) <= min_reliability, f'reliability <= {min_reliability * 100:g}%'),
         (float(offer.get('gpu_ram') or 0) < 8000, 'GPU RAM < 8000 MiB'),
         (float(offer.get('disk_space') or 0) < vast.DEFAULT_DISK_GB, 'disk < 40 GB'),
         (float(offer.get('cuda_max_good') or 0) < 12.6, 'CUDA < 12.6'),
@@ -105,8 +105,8 @@ def offer_rejection(offer):
     return next((reason for rejected, reason in checks if rejected), None)
 
 
-def offer_terms(offer):
-    if offer_rejection(offer):
+def offer_terms(offer, min_reliability=vast.FIT_MIN_RELIABILITY):
+    if offer_rejection(offer, min_reliability):
         return None
     bid = None
     price = float(offer.get('dph_total') or math.inf)
@@ -160,28 +160,31 @@ class Run:
         ids = {a['offer']['id'] for a in self.data['attempts']}
         hosts.update(i['host_id'] for i in vast._vastai_json(['show', 'instances']))
         result = []
-        query = f'gpu_name={gpu.replace(" ", "_")} verified=true reliability>0.995'
-        offers = [offer for kind in ('on-demand', 'bid')
-                  for offer in vast.search_offers(query, rental_type=kind)]
         audit = []
-        for offer in offers:
-            terms = offer_terms(offer)
-            reason = offer_rejection(offer)
-            if offer['host_id'] in hosts or offer['id'] in ids:
-                reason = 'host active or already tried in this task'
-            row = {'offer_id': offer['id'], 'host_id': offer['host_id'],
-                   'rental_type': offer.get('rental_type', 'on-demand'),
-                   'reliability': offer['reliability2'], 'rejected': reason}
-            if terms and reason is None:
-                price, bid = terms
-                expected = price * .5 + 8 * float(offer['inet_down_cost'])
-                result.append((expected, offer, price, bid))
-                row.update(hourly_usd=price, download_usd_per_gb=offer['inet_down_cost'],
-                           expected_usd=expected)
-            audit.append(row)
+        for min_reliability in vast.RELIABILITY_TIERS:
+            query = f'gpu_name={gpu.replace(" ", "_")} verified=true reliability>{min_reliability}'
+            offers = [offer for kind in ('on-demand', 'bid')
+                      for offer in vast.search_offers(query, rental_type=kind)]
+            for offer in offers:
+                terms = offer_terms(offer, min_reliability)
+                reason = offer_rejection(offer, min_reliability)
+                if offer['host_id'] in hosts or offer['id'] in ids:
+                    reason = 'host active or already tried in this task'
+                row = {'offer_id': offer['id'], 'host_id': offer['host_id'],
+                       'rental_type': offer.get('rental_type', 'on-demand'),
+                       'reliability': offer['reliability2'], 'rejected': reason}
+                if terms and reason is None:
+                    price, bid = terms
+                    expected = price * .5 + 8 * float(offer['inet_down_cost'])
+                    result.append((expected, offer, price, bid))
+                    row.update(hourly_usd=price, download_usd_per_gb=offer['inet_down_cost'],
+                               expected_usd=expected)
+                audit.append(row)
+            if result:
+                break
         result.sort(key=lambda row: (row[2], row[0], row[1]['id'], row[3] is not None))
         self.selection = {'gpu': gpu, 'queried_at': datetime.now(UTC).isoformat(),
-                          'estimated_hours': .5, 'estimated_download_gb': 8,
+                          'min_reliability': min_reliability, 'estimated_hours': .5, 'estimated_download_gb': 8,
                           'ranking': 'hourly USD, then estimated total USD',
                           'offers': sorted(audit, key=lambda row: (row.get('hourly_usd', math.inf), row.get('expected_usd', math.inf)))}
         return result

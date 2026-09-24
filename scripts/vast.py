@@ -28,6 +28,7 @@ EXPECTED_SPECTRUM_FILES = 1988
 MAX_INET_COST_USD_PER_TB = 10.0
 FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti", "RTX 5070", "RTX 5080", "RTX 5090")
 FIT_MIN_RELIABILITY = 0.995
+RELIABILITY_TIERS = (FIT_MIN_RELIABILITY, 0.96)
 FIT_BID_MARGIN_USD = 0.005
 FIT_MAX_INET_COST_USD_PER_TB = MAX_INET_COST_USD_PER_TB
 
@@ -69,11 +70,27 @@ def fit_offer_price(offer: dict[str, Any], *, interruptible: bool = False) -> fl
     return float(offer.get("dph_total") or 1e9)
 
 
-def fit_offer_qualifies(offer: dict[str, Any], *, interruptible: bool = False) -> bool:
-    """Require supported GPUs, reliability above 99.5%, and bandwidth below $10/TB."""
+def fit_offer_qualifies(offer: dict[str, Any], *, interruptible: bool = False,
+                        min_reliability: float = FIT_MIN_RELIABILITY) -> bool:
+    """Require supported GPUs, the selected reliability tier, and bandwidth below $10/TB."""
     return (offer.get("gpu_name") in FIT_GPU_NAMES
-            and float(offer.get("reliability2") or 0.0) > FIT_MIN_RELIABILITY
+            and float(offer.get("reliability2") or 0.0) > min_reliability
             and bandwidth_qualifies(offer))
+
+
+def fit_offers(*, exclude_hosts=(), minimum_gpu_ram_mib=8000, interruptible=False):
+    """Use the first reliability tier with eligible offers, ordered by hourly price."""
+    for minimum in RELIABILITY_TIERS:
+        query = FIT_OFFER_QUERY.replace(f"reliability>{FIT_MIN_RELIABILITY}",
+                                        f"reliability>{minimum}")
+        offers = [o for o in search_offers(query, rental_type="bid" if interruptible else "on-demand")
+                  if fit_offer_qualifies(o, min_reliability=minimum)
+                  and float(o.get("gpu_ram") or 0) >= minimum_gpu_ram_mib
+                  and float(o.get("cuda_max_good") or 0) >= 12.6
+                  and int(o.get("host_id") or 0) not in exclude_hosts]
+        if offers:
+            return sorted(offers, key=lambda o: fit_offer_price(o, interruptible=interruptible))
+    return []
 
 
 class SweepError(RuntimeError):

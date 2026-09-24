@@ -54,17 +54,8 @@ def _log(prefix: str):
     return log
 
 
-def fit_offers(minimum_gpu_ram_mib: int = 8000) -> list[dict]:
-    offers = sweep.search_offers(sweep.FIT_OFFER_QUERY)
-    # gpu_ram and cuda_max_good are not query fields; filter on the returned rows.
-    offers = [
-        o for o in offers
-        if sweep.fit_offer_qualifies(o)
-        and float(o.get("gpu_ram") or 0) >= minimum_gpu_ram_mib
-        and float(o.get("cuda_max_good") or 0) >= 12.6
-    ]
-    offers.sort(key=sweep.fit_offer_price)
-    return offers
+def fit_offers(minimum_gpu_ram_mib: int = 8000, *, exclude_hosts=()) -> list[dict]:
+    return sweep.fit_offers(minimum_gpu_ram_mib=minimum_gpu_ram_mib, exclude_hosts=exclude_hosts)
 
 
 def _describe(offer: dict) -> str:
@@ -260,7 +251,7 @@ def command_run(args) -> int:
     shards = args.only_shard or [f"{k}/{args.instances}" for k in range(args.instances)]
     busy_hosts = {int(i.get("host_id") or 0) for i in sweep._vastai_json(["show", "instances"])}
     excluded = busy_hosts | {int(h) for h in args.exclude_host}
-    offers = [o for o in fit_offers() if int(o.get("host_id") or 0) not in excluded]
+    offers = fit_offers(exclude_hosts=excluded)
     if len(offers) < len(shards):
         print(f"only {len(offers)} suitable offers for {len(shards)} shards", file=sys.stderr)
         return 1

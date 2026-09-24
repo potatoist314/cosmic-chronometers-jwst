@@ -238,3 +238,38 @@ def test_search_sets_disk_price_and_price_sort_explicitly(monkeypatch):
     assert args[args.index('--storage') + 1] == '40'
     assert args[args.index('--order') + 1] == 'dph'
     assert '--no-default' in args
+
+
+def test_reliability_fallback_after_host_and_hardware_filters(run, cloud, monkeypatch):
+    offer, _ = cloud
+    queries = []
+    rows = [
+        {**offer, 'id': 10, 'host_id': 10, 'reliability2': .999},
+        {**offer, 'id': 11, 'gpu_ram': 100, 'reliability2': .999},
+        {**offer, 'id': 20, 'reliability2': .97, 'dph_total': .45},
+        {**offer, 'id': 21, 'reliability2': .98, 'dph_total': .60},
+        {**offer, 'id': 22, 'reliability2': .96, 'dph_total': .01},
+        {**offer, 'id': 23, 'reliability2': .99, 'inet_up_cost': .01},
+    ]
+    monkeypatch.setattr(bench.vast, '_vastai_json', lambda _: [{'host_id': 10}])
+    def search(query, **kwargs):
+        queries.append(query)
+        return rows if kwargs['rental_type'] == 'on-demand' else []
+    monkeypatch.setattr(bench.vast, 'search_offers', search)
+    assert [r[1]['id'] for r in run.candidates('RTX 5090')] == [20, 21]
+    assert run.selection['min_reliability'] == .96
+    assert len(queries) == 4
+    assert 'reliability>0.995' in queries[0]
+    assert 'reliability>0.96' in queries[2]
+
+
+def test_no_fallback_when_preferred_offer_exists(run, cloud, monkeypatch):
+    offer, _ = cloud
+    queries = []
+    def search(query, **kwargs):
+        queries.append(query)
+        return [offer, {**offer, 'id': 2, 'reliability2': .97, 'dph_total': .01}]
+    monkeypatch.setattr(bench.vast, 'search_offers', search)
+    assert all(r[1]['id'] == offer['id'] for r in run.candidates('RTX 5090'))
+    assert len(queries) == 2
+    assert run.selection['min_reliability'] == .995

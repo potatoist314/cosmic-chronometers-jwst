@@ -12,7 +12,7 @@ python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1
 ```
 
 - Choose the lowest hourly price for each requested GPU type, reliability above
-  99.5%, and upload/download charges each below $10/TB. No hourly price cap.
+  99.5% (fall back to above 96% only if no offers pass all filters), and upload/download charges each below $10/TB. No hourly price cap.
 - The experiment cap is $1 including retries; `--spend-cap` can only reduce it.
 - Add more GPU names as positional arguments. Use `--hosts 2` for repeated hosts.
 - Use `--dry-run` for local preflight without rentals.

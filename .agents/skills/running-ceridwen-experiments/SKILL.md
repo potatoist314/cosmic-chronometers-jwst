@@ -28,7 +28,7 @@ Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy t
      --arms <arm> --targets M1_210210 --interruptible --spend-cap 1
    ```
    The total experiment cap is $1 including retries. The driver rents one RTX 5060, 5060 Ti, 5070, 5080 or 5090 at the lowest
-   hourly price, with reliability above 99.5% and bandwidth below $10/TB, clones the branch, uploads `ceridwen/` and
+   hourly price, with reliability above 99.5% (fall back to above 96% only if no offers pass all filters) and bandwidth below $10/TB, clones the branch, uploads `ceridwen/` and
    `data/raw`, bootstraps CUDA, runs the notebook, polls every 2 min, pulls, destroys.
    Output: `results/<slug>/<arm>/<object>-<target>/` with `M1_210210_executed.ipynb`,
    `ceridwen_result.h5`, `execution.log`; `results/<slug>/vast_run_<timestamp>.json`
