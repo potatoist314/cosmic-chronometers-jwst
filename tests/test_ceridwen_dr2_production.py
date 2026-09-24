@@ -214,6 +214,18 @@ def test_validator_counts_only_physical_parameter_groups():
     ]
 
 
+def test_validator_ignores_the_free_bump_strength():
+    # The free UV bump samples one extra nuisance group like the dust slope;
+    # without it the finished fit fails validation (2026-09-24).
+    baseline = ["Z", "afe", "diffuse_dust_index", "diffuse_tau_kc", "log_f_calib",
+                "logmass", "logsfr_ratios", "sigma_smooth", "zred"]
+    assert runner.physical_parameter_names(baseline + ["diffuse_bump_strength"]) == \
+        runner.physical_parameter_names(baseline)
+    assert len(runner.physical_parameter_names(
+        baseline + ["diffuse_bump_strength", "dust_ratio"])) == \
+        runner.expected_physical_count(baseline + ["dust_ratio"])
+
+
 def test_validator_expects_the_birth_cloud_dust_ratio():
     # dust1_on samples dust_ratio on top of the six baseline physical groups;
     # without it the finished fit fails validation (2026-09-24).

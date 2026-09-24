@@ -234,8 +234,9 @@ def _worker_environment(
 
 
 # Switches that sample one extra nuisance group on top of the seven physical
-# ones: free redshift, free LOSVD, free attenuation-curve slope (dust_free arm).
-NUISANCE_PARAMS = ("zred", "sigma_smooth", "diffuse_dust_index")
+# ones: free redshift, free LOSVD, free attenuation-curve slope (dust_free arm)
+# and free UV bump amplitude (diffuse_bump_strength in PRIORS).
+NUISANCE_PARAMS = ("zred", "sigma_smooth", "diffuse_dust_index", "diffuse_bump_strength")
 
 NUISANCE_PARAMS += ("diffuse_delta", "diffuse_Ebump")
 
