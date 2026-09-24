@@ -44,7 +44,7 @@ Plot
 | band | \(\lambda_\mathrm{obs}\) [\(\mu\)m] | `sedpy_jax` filter | COSMOS2015 [\(\mu\)Jy] | Classic [\(\mu\)Jy] | COSMOS2025 [\(\mu\)Jy] | \(F/F_{2015}\) Classic | \(\sigma/\sigma_{2015}\) Classic | \(F/F_{2015}\) 2025 | \(\sigma/\sigma_{2015}\) 2025 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | NUV | 0.231 | `galex_NUV` |  | 0.056 ± 0.075 |  |  |  |  |  |
-| u | 0.371 | none |  | 0.415 ± 0.018 |  |  |  |  |  |
+| u | 0.371 | cfht_megacam_u_9302 |  | 0.415 ± 0.018 |  |  |  |  |  |
 | u* | 0.386 | `cfht_megacam_us_9301` | 0.531 ± 0.049 | 0.440 ± 0.010 | 0.355 ± 0.046 | 0.83 | 0.21 | 0.67 | 0.95 |
 | IB427 | 0.427 | `subaru_suprimecam_ia427` |  | 0.719 ± 0.094 | 0.608 ± 0.188 |  |  |  |  |
 | B | 0.449 | `subaru_suprimecam_B` | 1.393 ± 0.050 | 1.319 ± 0.019 |  | 0.95 | 0.39 |  |  |
@@ -152,9 +152,18 @@ Columns: `Flux-mod-{band}` and `e_Flux-c-mod-{band}` in `scripts/cosmos_photomet
 - Total-flux recipes above replace `Offset`, `COSMOS2015_SF` and `COSMOS2015_EXTINCTION`.
 - COSMOS2020 fluxes from magnitude columns; VizieR rounds flux columns to \(0.01\,\mu\mathrm{Jy}\).
 - Replace `Area`/`Sat`/`Cfl`/`Flag` cuts with `FlagCOMBINED == 0` (Classic), `FModel == 0` (Farmer), `warn-flag == 0` (COSMOS2025).
-- CFHT \(u\) (\(0.371\,\mu\mathrm{m}\)) has no curve in `sedpy_jax`; `cfht_megacam_us_9301` is the \(u^*\) curve. Every other band has a curve.
+- CFHT \(u\) (\(0.371\,\mu\mathrm{m}\)) uses `cfht_megacam_u_9302`; `cfht_megacam_us_9301` is the \(u^*\) curve. Every other band has a curve.
 - Coverage: Classic 186 of 187; Farmer 165 matched, 145 with a converged model; COSMOS2025 122 of 187.
 - M1_210210 catalogue errors exceed 5% only in COSMOS2015 \(u^*\); Classic NUV, IB427, IB464; COSMOS2025 \(u^*\), IB427.
 - The 5% floor sets the M1_210210 error in every other band.
+
+</details>
+
+<details>
+<summary>Supplementary UV input</summary>
+
+`SETTINGS["photometry"]="cosmos2025_uv"` retains COSMOS2025 bands and adds COSMOS2020 Classic GALEX NUV and CFHT u. It uses the existing total-flux, Galactic-extinction and zero-point corrections. The likelihood uses measured fluxes and errors without an S/N cut, including the NUV non-detection. Source: `scripts/cosmos_photometry.py`, `fit_photometry`.
+
+The `cfht_megacam_u_9302` response is [CADC U.MP9302](https://www1.cadc.hia.nrc-cnrc.gc.ca/en/megapipe/docs/filt.html), including telescope, CCD and 1.25 airmasses. M1_210210 has 30 bands with the UV supplement; explicit Classic mode has 31. The default remains `cosmos2025`. No fit with the supplement is recorded here.
 
 </details>

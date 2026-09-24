@@ -166,3 +166,11 @@ Sampler progress default: fit notebooks write one JSON line per iteration to
 `ns_progress.jsonl` in the result folder and keep it out of the cell output.
 `scripts/relabel_executed_figures.py` redraws labelled spectrum figures in
 existing executed notebooks from stored arrays; see `notes/notebook-map.md`.
+
+Photometry UV supplement: `notes/cosmos-photometry-comparison.md` — `cosmos2025_uv` adds Classic GALEX NUV and CFHT u.
+
+Independent dust bump: `notes/model.md` — `diffuse_bump_strength` in notebook priors selects `kriek_conroy_free_bump`.
+
+Birth-cloud dust: enabled by default in the production notebook (24 Sep 2026); `notes/model.md`.
+
+Wiki prose check: `scripts/wiki_prose_check.py` — Jev checks conciseness, plain English and natural phrasing in staged passages.

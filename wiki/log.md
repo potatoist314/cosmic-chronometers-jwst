@@ -1272,7 +1272,32 @@
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: Documented local checks, shared uploads, SSH diagnostics and stopping after failed remote stages.
 
+## [2026-09-24] codebase | Supplementary UV photometry
+
+- Pages: `notes/cosmos-photometry-comparison.md`, `notes/model.md`, `index.md`
+- Change: Documented the optional GALEX NUV and CFHT u inputs and the CADC response curve.
+
+## [2026-09-24] codebase | Independent dust bump amplitude
+
+- Pages: `notes/model.md`, `index.md`
+- Change: Documented independent bump amplitude through the notebook priors; the linked law remains available.
+
+## [2026-09-24] codebase | Independent bump prior
+
+- Pages: `notes/model.md`
+- Change: Recorded the user-approved Uniform(0, 6) bump-amplitude prior in the production notebook.
+
+## [2026-09-24] codebase | Birth-cloud dust default
+
+- Pages: `notes/model.md`, `index.md`
+- Change: Enabled birth-cloud dust by default with the existing dust-ratio prior.
+
 ## [2026-09-24] research | GPU likelihood rental cost
 
 - Pages: `research/experiments/e-gpu-price-benchmark.md`
 - Change: Displayed rental rate, throughput and cost per million calls for each measured host.
+
+## [2026-09-24] codebase | Jev prose review
+
+- Pages: `index.md`
+- Change: Replaced the Opus prose review with one batched Jev check of conciseness, plain English and natural phrasing.
