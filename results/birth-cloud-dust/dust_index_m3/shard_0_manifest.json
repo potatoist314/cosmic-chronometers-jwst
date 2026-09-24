@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "status": "running",
-  "started_at_utc": "2026-09-24T11:57:58.408810+00:00",
+  "status": "complete",
+  "started_at_utc": "2026-09-24T12:03:37.413604+00:00",
   "shard_index": 0,
   "num_shards": 1,
   "fits_per_gpu": 1,
@@ -24,5 +24,13 @@
       "seed": 20260832
     }
   ],
-  "results": {}
+  "results": {
+    "M1_210210": {
+      "status": "complete",
+      "attempts": 1,
+      "completed_at_utc": "2026-09-24T12:09:16.452598+00:00"
+    }
+  },
+  "completed_at_utc": "2026-09-24T12:09:16.453189+00:00",
+  "failed_targets": []
 }

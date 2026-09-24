@@ -181,6 +181,62 @@ def test_parser_requires_explicit_arms(arms):
     assert exc.value.code == 2
 
 
+def test_5090_query_narrows_the_gpu_and_keeps_reliability_bandwidth(arms):
+    query = arms.offer_query_5090(arms._vast)
+    assert "gpu_name=RTX_5090" in query
+    assert "reliability>0.995" in query
+    assert "inet_down_cost<0.005" in query
+    assert "dph<" not in query  # the hourly ceiling is bypassed at the search
+
+
+def _offer_5090(**overrides):
+    base = dict(gpu_name="RTX 5090", dph_total=1.20, gpu_ram=32768)
+    base.update(overrides)
+    return _offer(**base)
+
+
+def test_5090_rule_bypasses_only_the_hourly_ceiling(arms):
+    sweep = arms._vast
+    assert arms.offer_qualifies_5090(sweep, _offer_5090())
+    assert arms.offer_qualifies_5090(sweep, _offer_5090(dph_total=2.50))
+    assert not arms.offer_qualifies_5090(sweep, _offer_5090(gpu_name="RTX 5080", dph_total=0.20))
+    assert not arms.offer_qualifies_5090(sweep, _offer_5090(reliability2=0.995))
+    assert not arms.offer_qualifies_5090(sweep, _offer_5090(inet_down_cost=0.005))
+    assert arms.offer_qualifies_5090(sweep, _offer_5090(inet_down_cost=0.0049))
+    assert not arms.offer_qualifies_5090(
+        sweep, {k: v for k, v in _offer_5090().items() if k != "inet_down_cost"})
+
+
+def test_5090_selection_ranks_by_hourly_price(arms):
+    import types
+
+    seen = {}
+    # Lower hourly price but higher total cost (bandwidth): hourly ranking keeps it first.
+    cheap_hourly = _offer_5090(id=1, dph_total=0.60, inet_down_cost=0.004, host_id=11)
+    cheap_total = _offer_5090(id=2, dph_total=0.61, inet_down_cost=0.0, host_id=12)
+    dear = _offer_5090(id=3, dph_total=1.50, inet_down_cost=0.0, host_id=13)
+    other_gpu = _offer(id=4, gpu_name="RTX 5080", dph_total=0.20, host_id=14)
+    flaky = _offer_5090(id=5, dph_total=0.55, reliability2=0.99, host_id=15)
+
+    def fake_vastai_json(argv):
+        seen["query"] = argv[2]
+        return [cheap_hourly, cheap_total, dear, other_gpu, flaky]
+
+    sweep = types.SimpleNamespace(
+        FIT_MIN_RELIABILITY=arms._vast.FIT_MIN_RELIABILITY,
+        MAX_INET_COST_USD_PER_TB=arms._vast.MAX_INET_COST_USD_PER_TB,
+        _vastai_json=fake_vastai_json,
+        fit_offer_cost_per_work=arms._vast.fit_offer_cost_per_work,
+    )
+    ranked = arms.offers_rtx_5060(sweep, set(), False, True)
+    assert [o["id"] for o in ranked] == [1, 2, 3]
+    assert "gpu_name=RTX_5090" in seen["query"]
+    # Cost-per-work ranking would put id 2 first; hourly keeps id 1 first.
+    by_work = sorted([cheap_hourly, cheap_total],
+                     key=lambda o: arms._vast.fit_offer_cost_per_work(o))
+    assert [o["id"] for o in by_work] == [2, 1]
+
+
 @pytest.fixture(scope="module")
 def multi():
     spec = importlib.util.spec_from_file_location(
@@ -212,6 +268,20 @@ def test_regenerate_command_carries_the_arm_switches(arms):
     assert command[-1] == "results/x/210210-M1_210210"
     plain = arms.regenerate_command(_eline_cell(arms, "eline_off"), Path("results/x/210210-M1_210210"))
     assert "--settings-override" not in plain and "--priors-override" not in plain
+
+
+def test_regen_python_defaults_to_the_checkout_venv(arms, monkeypatch):
+    monkeypatch.delenv("CERIDWEN_REGEN_PYTHON", raising=False)
+    assert arms.regen_python() == str(arms.PROJECT_ROOT / "ceridwen/.venv/bin/python")
+    assert arms.regenerate_command(_eline_cell(arms), Path("results/x"))[0] == arms.regen_python()
+
+
+def test_regen_python_override_selects_another_interpreter(arms, monkeypatch):
+    # A worktree without ceridwen/.venv reuses an existing environment (2026-09-24).
+    monkeypatch.setenv("CERIDWEN_REGEN_PYTHON", "/elsewhere/bin/python")
+    command = arms.regenerate_command(_eline_cell(arms), Path("results/x/210210-M1_210210"))
+    assert command[0] == "/elsewhere/bin/python"
+    assert command[command.index("--settings-override") + 1] == '{"emission_line_marginalisation": true}'
 
 
 def test_sampler_only_follows_the_env(multi, monkeypatch):

@@ -1,3 +1,6 @@
-[21:18:15] remote: dust1_off/M1_210210: start seed=20260832 {}
-[22:07:51] remote: dust1_off/M1_210210: done in 49.6 min
-[22:07:51] remote: dust1_on/M1_210210: start seed=20260832 {'CERIDWEN_SETTINGS_OVERRIDE': '{"birth_cloud_dust": true}'}
+[11:00:32] remote: dust1_on/M1_210210: start seed=20260832 {'CERIDWEN_SETTINGS_OVERRIDE': '{"birth_cloud_dust": true}'}
+[11:57:57] remote: dust1_on/M1_210210: attempt 1 returned 1
+[12:03:36] remote: dust1_on/M1_210210: attempt 2 returned -15
+[12:03:36] remote: dust1_on/M1_210210: failed in 63.1 min
+[12:03:36] remote: dust_index_m3/M1_210210: start seed=20260832 {'CERIDWEN_PRIORS_OVERRIDE': '{"diffuse_dust_index": "Uniform(low=-3.0, high=0.4)"}'}
+[12:09:16] remote: dust_index_m3/M1_210210: done in 5.7 min

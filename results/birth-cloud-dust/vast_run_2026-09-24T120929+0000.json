@@ -1,0 +1,56 @@
+{
+ "started": "2026-09-24T10:49:38+00:00",
+ "branch": "absorption-mask",
+ "offer": {
+  "id": 47794369,
+  "gpu_name": "RTX 5090",
+  "dph_total": 0.7347222222222223,
+  "min_bid": 0.5333333333333333,
+  "geolocation": "Pennsylvania, US",
+  "host_id": 43746
+ },
+ "bid_usd_per_hour": null,
+ "cells": [
+  "dust1_on/M1_210210",
+  "dust_index_m3/M1_210210"
+ ],
+ "credit_before": 7.949551547319963,
+ "instance_id": 52400715,
+ "spend_so_far_usd": 0.9962,
+ "manifest": {
+  "dust1_off/M1_210210": {
+   "status": "done",
+   "started": "2026-09-23T21:18:15.665049+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 2976.3,
+   "finished": "2026-09-23T22:07:51.935224+00:00"
+  },
+  "dust1_on/M1_210210": {
+   "status": "failed",
+   "started": "2026-09-24T11:00:32.493964+00:00",
+   "returncode": -15,
+   "attempts": 2,
+   "wall_s": 3784.3,
+   "finished": "2026-09-24T12:03:36.785449+00:00"
+  },
+  "dust_index_m3/M1_210210": {
+   "status": "done",
+   "started": "2026-09-24T12:03:36.785800+00:00",
+   "returncode": 0,
+   "attempts": 1,
+   "wall_s": 340.1,
+   "finished": "2026-09-24T12:09:16.843091+00:00"
+  }
+ },
+ "regen": {
+  "dust_index_m3/M1_210210": {
+   "status": "failed",
+   "error": "[Errno 2] No such file or directory: '/Users/liuhao/Downloads/Astro project/tmp/worktrees/birth-cloud-5090/ceridwen/.venv/bin/python'"
+  }
+ },
+ "credit_after": 6.953317011659969,
+ "spent_usd": 0.9962,
+ "finished": "2026-09-24T12:09:29+00:00",
+ "instances_left": []
+}

@@ -309,18 +309,46 @@ def offer_price(offer: dict, interruptible: bool) -> float:
     return _vast.fit_bid_price(offer) if interruptible else float(offer["dph_total"])
 
 
-def offers_rtx_5060(sweep, exclude_hosts: set[int], interruptible: bool = False) -> list[dict]:
-    query = sweep.FIT_OFFER_QUERY_BASE if interruptible else sweep.FIT_OFFER_QUERY
+ONLY_5090_GPU = "RTX 5090"
+
+
+def offer_query_5090(sweep) -> str:
+    """Vast search for the 5090-only rental: no hourly ceiling, reliability kept."""
+    return (f"gpu_name={ONLY_5090_GPU.replace(' ', '_')} verified=true rentable=true num_gpus=1 "
+            f"inet_down>200 disk_space>=40 reliability>{sweep.FIT_MIN_RELIABILITY} "
+            f"inet_down_cost<{sweep.MAX_INET_COST_USD_PER_TB / 1000}")
+
+
+def offer_qualifies_5090(sweep, offer: dict) -> bool:
+    """5090-only rule (Liu Hao, 2026-09-24, birth-cloud-dust): RTX 5090 above
+    99.5% reliability and under $5/TB bandwidth; the hourly ceiling is bypassed."""
+    return (offer.get("gpu_name") == ONLY_5090_GPU
+            and float(offer.get("reliability2") or 0.0) > sweep.FIT_MIN_RELIABILITY
+            and float(offer.get("inet_down_cost", 1e9)) * 1000 < sweep.MAX_INET_COST_USD_PER_TB)
+
+
+def offers_rtx_5060(sweep, exclude_hosts: set[int], interruptible: bool = False,
+                    only_5090: bool = False) -> list[dict]:
+    if only_5090:
+        query = offer_query_5090(sweep)
+    else:
+        query = sweep.FIT_OFFER_QUERY_BASE if interruptible else sweep.FIT_OFFER_QUERY
     offers = sweep._vastai_json(["search", "offers", query, "-o", "dph"])
+    if only_5090:
+        offers = [o for o in offers if offer_qualifies_5090(sweep, o)]
+    else:
+        offers = [o for o in offers if offer_qualifies(o, interruptible=interruptible)]
     offers = [
         o for o in offers
-        if offer_qualifies(o, interruptible=interruptible)
-        and (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
+        if (o.get("inet_down_cost") or 0) <= sweep.MAX_INET_COST_USD_PER_TB
         and float(o.get("gpu_ram") or 0) >= 8000
         and float(o.get("cuda_max_good") or 0) >= 12.6
         and int(o.get("host_id") or 0) not in exclude_hosts
     ]
-    offers.sort(key=lambda o: sweep.fit_offer_cost_per_work(o, interruptible=interruptible))
+    if only_5090:
+        offers.sort(key=lambda o: offer_price(o, interruptible))
+    else:
+        offers.sort(key=lambda o: sweep.fit_offer_cost_per_work(o, interruptible=interruptible))
     return offers
 
 
@@ -365,10 +393,14 @@ def _pull(sweep, instance_id: int, log) -> None:
         raise sweep.SweepError(f"pull failed: {(result.stderr or result.stdout)[-400:]}")
 
 
+def regen_python() -> str:
+    """Local post-fit interpreter; CERIDWEN_REGEN_PYTHON overrides the checkout venv."""
+    return os.environ.get("CERIDWEN_REGEN_PYTHON", str(PROJECT_ROOT / "ceridwen/.venv/bin/python"))
+
+
 def regenerate_command(cell: dict, result_dir: Path) -> list[str]:
     """Local post-fit command: the stored sampler result plus the arm switches."""
-    command = [str(PROJECT_ROOT / "ceridwen/.venv/bin/python"),
-               str(PROJECT_ROOT / "scripts/regenerate_fit_notebooks.py")]
+    command = [regen_python(), str(PROJECT_ROOT / "scripts/regenerate_fit_notebooks.py")]
     for flag, key in (("--settings-override", "CERIDWEN_SETTINGS_OVERRIDE"),
                       ("--priors-override", "CERIDWEN_PRIORS_OVERRIDE")):
         if key in cell.get("env", {}):
@@ -549,7 +581,7 @@ def _finish(sweep, record: dict, args) -> int:
 
 def command_plan(args) -> int:
     sweep = _sweep()
-    for offer in offers_rtx_5060(sweep, set(), args.interruptible)[:5]:
+    for offer in offers_rtx_5060(sweep, set(), args.interruptible, args.only_5090)[:5]:
         print(_describe(offer, args.interruptible))
     for cell in build_cells(args.targets, args.arms):
         print(cell["name"], cell["seed"], cell["env"])
@@ -559,9 +591,10 @@ def command_plan(args) -> int:
 def command_run(args) -> int:
     sweep = _sweep()
     busy_hosts = {int(i.get("host_id") or 0) for i in sweep._vastai_json(["show", "instances"])}
-    offers = offers_rtx_5060(sweep, busy_hosts | {int(h) for h in args.exclude_host}, args.interruptible)
+    offers = offers_rtx_5060(sweep, busy_hosts | {int(h) for h in args.exclude_host}, args.interruptible,
+                             args.only_5090)
     if not offers:
-        print("no suitable RTX 5060 offer", file=sys.stderr)
+        print(f"no suitable {'RTX 5090' if args.only_5090 else 'RTX 5060'} offer", file=sys.stderr)
         return 1
     cells = build_cells(args.targets, args.arms)
     offer = offers[0]
@@ -618,6 +651,10 @@ def main(argv=None) -> int:
         p.add_argument("--interruptible", action="store_true",
                        help="rent a bid (interruptible) instance at the host's min_bid plus the margin; "
                             "fine for runs under two hours (2026-09-15)")
+        p.add_argument("--only-5090", action="store_true",
+                       help="rent the cheapest RTX 5090 by hourly price above 99.5%% reliability "
+                            "and under $5/TB bandwidth; bypasses the hourly ceiling "
+                            "(Liu Hao, 2026-09-24, birth-cloud-dust)")
         p.set_defaults(bid=None)
 
     plan = sub.add_parser("plan"); common(plan); plan.set_defaults(function=command_plan)

@@ -242,6 +242,12 @@ def physical_parameter_names(param_names) -> list[str]:
     return [name for name in param_names if name not in NUISANCE_PARAMS]
 
 
+def expected_physical_count(param_names) -> int:
+    """Physical groups: six baseline groups plus spectrum_scaling / dust_ratio when sampled."""
+    names = list(param_names)
+    return 6 + int("spectrum_scaling" in names) + int("dust_ratio" in names)
+
+
 def _validate_sampler_result(result_dir: Path, spect_id: str) -> None:
     """Validate what the GPU run produces: the sampler result alone.
 
@@ -253,7 +259,7 @@ def _validate_sampler_result(result_dir: Path, spect_id: str) -> None:
 
     loaded = load_result_h5(result_dir / "ceridwen_result.h5")
     physical = physical_parameter_names(loaded.param_names)
-    expected = 7 if "spectrum_scaling" in loaded.param_names else 6
+    expected = expected_physical_count(loaded.param_names)
     if len(physical) != expected:
         raise RuntimeError(f"Expected {expected} physical parameter groups, found {loaded.param_names}")
     if not np.isfinite(np.asarray(loaded.log_weights)).all():
