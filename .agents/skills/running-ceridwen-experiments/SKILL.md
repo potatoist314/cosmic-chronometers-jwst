@@ -1,22 +1,26 @@
 ---
 name: running-ceridwen-experiments
-description: Use when Liu Hao asks to change a fit setting or a prior of the Ceridwen fit, run the fit on Vast.ai, pull the results and put them on the wiki.
+description: Configure and run Ceridwen fits on Vast.ai, retrieve results, and verify local artifacts. Add analysis or wiki reports only when requested.
 ---
 
 # Run one Ceridwen experiment
 
-Written from the M1_210210 order-10 run of 2026-09-17
-(`wiki/research/experiments/e-m1-210210-reference.md`).
-Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy them here.
+## Default scope: fit and retrieve
+
+A request to run or try a fit means configure, run, retrieve, validate, and report.
+Prioritise a working fit and reliable local results. Do not create an experiment
+write-up, separate analysis notebook, extra plots, wiki page, or prose-review task
+unless the user requests that deliverable. Existing notebook plots still run.
+Do not delay launch or retrieval for documentation or a documentation-only commit.
+
+Read `AGENTS.md`. For a quick fit, the configuration, pinned source, seed, manifest,
+stage logs, and result files are the reproducibility record. Keep only a short
+Beads status with the output path and any blocker. Read `wiki/research/README.md`
+only if research records or wiki publication are part of the request.
 
 ## Steps
 
-1. **Record.** Copy `wiki/research/templates/experiment.md` to
-   `wiki/research/experiments/e-<slug>.md`, status `planned`. Put his chat text
-   in **Before delegation** unchanged. Write the **Execution plan** as in
-   `e-m1-210210-reference.md`: comparison, baseline, data, model, controlled change,
-   hardware and outputs. Commit.
-2. **Configure.** Write `experiment.json` in the experiment's result directory.
+1. **Configure.** Write `experiment.json` in the experiment's result directory.
    Use the production notebook's `SETTINGS` and `PRIORS` keys. Do not edit its
    defaults to configure an experiment. Example:
    ```json
@@ -27,7 +31,7 @@ Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy t
      "priors": {},
      "arms": {
        "baseline": {},
-       "wide_dust": {"priors": {"diffuse_tau_kc": "Uniform(low=0.0, high=2.0)"}}
+       "wide_dust": {"priors": {"diffuse_tau_noll": "Uniform(low=0.0, high=2.0)"}}
      }
    }
    ```
@@ -36,11 +40,11 @@ Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy t
    accepts a registered name or a local `.h5` path relative to this JSON file.
    The exact seed applies to every fit. New model code must be committed before
    running; the command uses committed HEAD and pinned submodules.
-3. **Check.** Use `--dry-run` to check the configuration and local inputs without
+2. **Check.** Use `--dry-run` to check the configuration and local inputs without
    rentals or network access. It requires cached grids. Show the targets, changes,
    baseline and cap if those choices still need the user's approval. Existing
    authorization covers execution; do not ask for the same approval again.
-4. **Run.** Use this command for new experiment fits:
+3. **Run.** Use this command for new experiment fits:
    ```bash
    python3 scripts/experiment.py run results/<slug>/experiment.json \
      --gpu "RTX 5090" --output results/<slug>/run
@@ -59,18 +63,30 @@ Rules are in `AGENTS.md` and `wiki/research/README.md`. Read them. Do not copy t
    `--output` to resume its source, configuration, completed fits and budget.
    Do not manually rent replacements. The historical arm-specific runners remain
    for their existing runs.
-5. **Evaluate.** Write `results/<slug>/analysis.ipynb` (start from
-   `results/m1-210210-reference/analysis.ipynb`). Run it locally with
-   `JAX_PLATFORMS=cpu ceridwen/.venv/bin/python`. Outputs beside it:
-   `fit-<target>.png`, `sfh-<target>.png`, `corner-<target>.png`, `comparison.csv`.
-   `scripts/plot_prior_kl.py` writes the KL-from-prior chart and table.
-6. **Wiki.** Copy the PNGs to `wiki/analyses/<slug>/`. Write `wiki/notes/<slug>.md`
-   with the frontmatter and sections of `wiki/notes/m1-210210-reference.md`. In the
-   record fill Runs, Figures, Measurements, Results, Caveats; status `results-ready`.
-   Add one line to `wiki/index.md` and one entry to `wiki/log.md`. Then
-   `python3 wiki/build.py` and `python3 wiki/tests/run_tests.py`.
-7. **Finish.** Commit and push. Reply with the measurement table and the paths.
-   Status `reviewed` only after his interpretation is in the record.
+4. **Verify retrieval.** Check every requested arm and target in the local
+   manifest against `run/fits/`. Run `scripts.experiment.validate_result` locally
+   on each result directory using `ceridwen/.venv/bin/python`. It opens the result
+   HDF5, checks finite weights and evidence, checks derived groups and diagnostics,
+   and checks the executed notebook for errors. Confirm the logs were retrieved.
+   A remote success message or an existing filename is not enough.
+
+   If retrieval or validation fails, preserve the partial files and logs. Diagnose
+   whether the fit, post-processing, or transfer failed. Recover available outputs
+   before considering another paid fit. Resume through the runner with the same
+   configuration and output directory, within the remaining cap. Do not delete
+   completed results or blindly rerun the sampler to repair missing plots.
+5. **Finish.** Report success or partial failure, the local result path, and any
+   diagnostic failure in 2–3 lines. Link the existing executed notebook and result
+   file. Commit and push task-owned configuration or code as required by `AGENTS.md`.
+   Once local results are verified, the quick-fit task is complete.
+
+## Analysis and publication: only when requested
+
+If the user asks for analysis, comparisons, new figures, or a wiki report, produce
+only those requested outputs after retrieval. Follow `wiki/research/README.md` and
+the relevant plotting or wiki skill for that work. An explicit request for a full
+experiment record still includes the record. Do not infer that request from
+“experiment”, “try”, or “run a fit”. Documentation must not delay result retrieval.
 
 Local SSH errors stop before rental. Use an execution environment authorized to run
 SSH; waiting for the GPU cannot fix a local user-ID error. The shared upload

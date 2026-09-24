@@ -68,6 +68,10 @@ The user's contribution will be focused on overall research direction and method
 - For connected spectral plots, keep the full wavelength grid and set excluded
   values to `NaN`; never plot `wavelength[mask]` as one connected line or band.
 - Experiments: follow `.agents/skills/running-ceridwen-experiments/SKILL.md`.
+  Default to a quick fit: configure, run, retrieve, validate local results, and report.
+  Do not create experiment prose, separate analysis notebooks, extra figures, or wiki
+  pages unless requested. Configuration, pinned source, seeds, manifests, and logs
+  provide the run record. Documentation must not delay launch or result retrieval.
   Use `python3 scripts/experiment.py run <config.json> --gpu "<GPU type>"` for new fits.
 - Before another paid Ceridwen GPU benchmark, read `BENCHMARK_CHECK.md`.
 - GPU rentals: choose the lowest hourly price for the requested GPU type, with
@@ -99,6 +103,9 @@ The user's contribution will be focused on overall research direction and method
 - After substantive code, notebook, or data-flow changes, update affected wiki
   pages, `wiki/index.md`, and `wiki/log.md` without waiting for confirmation.
 - Skip wiki updates for formatting-only changes or unchanged behavior.
+- Quick fits and per-run setting overrides do not require wiki updates. The
+  experiment skill defines completion through verified local results. Changes to
+  shared model code or production defaults still require the affected reference updates.
 - Human wiki pages use clean HTML with short, exact code excerpts and source locations; agent-facing memory may remain Markdown.
 
 ## Research result presentation
