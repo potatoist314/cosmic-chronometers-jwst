@@ -50,6 +50,16 @@ def test_rental_disables_interactive_tmux_for_automated_ssh(monkeypatch):
     assert args[args.index('--onstart-cmd') + 1] == 'touch /root/.no_auto_tmux'
 
 
+@pytest.mark.parametrize('photometry', ['cosmos2020_classic', 'cosmos2020_farmer',
+                                       'cosmos2025', 'cosmos2025_uv'])
+def test_selected_inputs_include_every_catalogue_opened_by_loader(photometry):
+    from scripts.cosmos_photometry import FILES
+    files = sweep.selected_inputs([{'target': 'M1_210210',
+                                    'target_metadata': {'filename': 'spectrum.fits'},
+                                    'settings': {'photometry': photometry}}])
+    assert all(str(path.relative_to(sweep.PROJECT_ROOT)) in files for path in FILES.values())
+
+
 def test_ssh_options_offer_only_the_registered_key(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:

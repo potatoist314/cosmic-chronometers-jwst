@@ -294,13 +294,12 @@ def selected_inputs(cells):
         'data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits',
         'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits',
     }
-    catalogs = {
-        'cosmos2020_classic': ['cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits'],
-        'cosmos2020_farmer': ['cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits'],
-        'cosmos2025': ['cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits',
-                       'cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits'],
-    }
-    catalogs['cosmos2025_uv'] = catalogs['cosmos2025']
+    # read_matches() opens every matched catalogue, regardless of the fit selection.
+    matched_catalogs = ['cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits',
+                        'cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits',
+                        'cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits']
+    catalogs = dict.fromkeys(('cosmos2020_classic', 'cosmos2020_farmer',
+                              'cosmos2025', 'cosmos2025_uv'), matched_catalogs)
     for cell in cells:
         files.add('data/raw/legac_dr2/sp/' + cell['target_metadata']['filename'])
         files.add('data/raw/hst_f814w/' + cell['target'] + '.fits')
