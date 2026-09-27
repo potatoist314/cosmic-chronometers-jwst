@@ -22,6 +22,7 @@ def run(tmp_path, monkeypatch):
     args = exp.parser().parse_args(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(tmp_path)])
     args.gpus, args.hosts, args.target, args.seed = [args.gpu], 1, 'experiment', 0
     monkeypatch.setattr(exp.engine.time, 'sleep', lambda _: None)
+    monkeypatch.setattr(exp, 'validate_local_result', lambda _: None)
     monkeypatch.setattr(exp.vast, '_ssh_target', lambda _: ('root@test', '22'))
     return exp.Run(args, source)
 
@@ -261,3 +262,46 @@ def test_rental_uses_manifest_image(run, cloud, monkeypatch):
     monkeypatch.setattr(exp.vast, '_create_instance', checked)
     monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
     assert run.execute() == 0
+
+
+def test_invalid_local_results_retry_download_then_stop_without_refit(run, cloud, monkeypatch):
+    offer, state = cloud
+    monkeypatch.setattr(exp.vast, 'search_offers', lambda *a, **kw:
+                        [offer, {**offer, 'id': 2, 'host_id': 43}])
+    pulls = []
+    monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: pulls.append(cmd))
+    monkeypatch.setattr(exp, 'validate_local_result', lambda _:
+                        (_ for _ in ()).throw(FileNotFoundError('missing HDF5')))
+    assert run.execute() == 1
+    assert len(pulls) == 3
+    assert all('--checksum' in cmd for cmd in pulls[1:])
+    assert state['created'] == [1]
+    assert not run.data.get('completed_cells')
+    assert run.data['attempts'][0]['retryable'] is False
+
+
+def test_download_retry_validates_before_marking_complete(run, cloud, monkeypatch):
+    import subprocess
+    calls = []
+    def pull(cmd, **kw):
+        calls.append(cmd)
+        assert not run.data.get('completed_cells')
+        if len(calls) == 1:
+            raise subprocess.CalledProcessError(23, 'rsync')
+    checked = []
+    monkeypatch.setattr(exp.subprocess, 'run', pull)
+    monkeypatch.setattr(exp, 'validate_local_result', lambda path: checked.append(path))
+    assert run.execute() == 0
+    assert len(calls) == 2
+    assert checked == [run.root / 'fits/baseline/210210-M1_210210']
+    assert cloud[1]['created'] == [1]
+
+
+def test_exhausted_budget_still_attempts_partial_retrieval(run, monkeypatch):
+    attempt = {'instance_id': 100, 'price': .2}
+    monkeypatch.setattr(exp.engine, 'estimated_spend', lambda _: 2.)
+    run.data['attempts'] = [attempt]
+    copies = []
+    monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: copies.append(kw['timeout']))
+    run.retrieve(attempt, run.data['source']['experiment'][0], '/remote', complete=False)
+    assert copies == [1]

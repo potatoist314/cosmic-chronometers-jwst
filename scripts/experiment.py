@@ -171,6 +171,15 @@ def validate_result(directory):
         raise ValueError(f'executed notebook contains an error: {directory}')
 
 
+def validate_local_result(directory):
+    """Use the scientific interpreter even when the driver uses system Python."""
+    subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'), '-c',
+                    'from pathlib import Path; import sys; '
+                    'from scripts.experiment import validate_result; '
+                    'validate_result(Path(sys.argv[1]))', str(directory)],
+                   cwd=ROOT, check=True, capture_output=True, text=True, timeout=60)
+
+
 def remote(config, output):
     if __package__:
         from . import run_ceridwen_vast_multi_gpu as worker
@@ -209,10 +218,34 @@ class Run(engine.Run):
         prices = [a['price'] for a in self.data['attempts'] if not a.get('destroyed')]
         return super().budget(reserve + max(prices, default=0) / 30)
 
+    def retrieve(self, attempt, cell, remote_root, *, complete):
+        destination = self.root / 'fits'
+        result = destination / cell['arm'] / f"{cell['target_metadata']['object_id']}-{cell['target']}"
+        error = None
+        for retry in range(3):
+            remaining = self.args.spend_cap - sum(engine.estimated_spend(a) for a in self.data['attempts'])
+            if retry and remaining <= 0:
+                break
+            timeout = max(1, min(120, int(max(0, remaining) / attempt['price'] * 3600)))
+            try:
+                target, port = vast._ssh_target(attempt['instance_id'])
+                destination.mkdir(exist_ok=True)
+                subprocess.run(['rsync', '-a', '--partial', *(['--checksum'] if retry else []),
+                                '-e', shlex.join(['ssh', *vast._ssh_options(port)]),
+                                f'{target}:{remote_root}/results/', f'{destination}/'],
+                               check=True, capture_output=True, timeout=timeout)
+                if complete:
+                    validate_local_result(result)
+                return
+            except (vast.SweepError, subprocess.SubprocessError, OSError, ValueError) as caught:
+                error = caught
+                engine.log(f'result retrieval attempt {retry + 1} failed: {caught}')
+        raise engine.StageFailed(f'result retrieval failed; local files: {destination}; '
+                                 f'no automatic refit: {error}') from error
+
     def measure(self, attempt):
         environment = self.prepare(attempt)
         instance = attempt['instance_id']
-        target, port = vast._ssh_target(instance)
         for index, cell in enumerate(self.data['source']['experiment']):
             if cell['name'] in self.data.get('completed_cells', []):
                 continue
@@ -227,20 +260,14 @@ class Run(engine.Run):
             try:
                 self.stage(attempt, f'fit-{index}', command)
             finally:
-                # Keep partial notebooks and logs too, before the shared lifecycle destroys the box.
-                destination = self.root / 'fits'
-                destination.mkdir(exist_ok=True)
-                shell = shlex.join(['ssh', *vast._ssh_options(port)])
+                # Recover partial outputs too; preserve a failed fit's original error.
                 stage_error = sys.exception()
                 try:
-                    subprocess.run(['rsync', '-a', '-e', shell, f'{target}:{remote_root}/results/',
-                                    f'{destination}/'], check=True, capture_output=True,
-                                   timeout=max(1, min(120, int(super().budget() / attempt['price'] * 3600))))
-                except (vast.SweepError, subprocess.SubprocessError, OSError) as error:
+                    self.retrieve(attempt, cell, remote_root, complete=stage_error is None)
+                except engine.StageFailed as error:
                     if stage_error is None:
                         raise
-                    # Preserve a fatal stage error even if it produced no results to pull.
-                    engine.log(f'partial result download failed: {error}')
+                    engine.log(str(error))
             self.data.setdefault('completed_cells', []).append(cell['name'])
             self.save()
         attempt['status'] = 'complete'

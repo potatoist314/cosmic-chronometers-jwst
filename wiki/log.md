@@ -1333,3 +1333,7 @@
 ### 2026-09-24 — Shared GPU defaults
 
 - GPU launchers share the compact image default in `scripts/vast.py` and upload selected inputs. Saved benchmark and experiment configurations retain their original image.
+
+### 2026-09-27 — Fit retrieval checks
+
+- Downloads retry before local validation. Persistent retrieval failures stop automatic refits.
