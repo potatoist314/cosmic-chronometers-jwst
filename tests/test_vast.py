@@ -74,9 +74,28 @@ def test_upload_inputs_copies_only_requested_files_and_verifies_them(monkeypatch
     assert len(copied) == 1
     assert copied[0][:3] == ['rsync', '-aR', '--partial']
     assert '--delete' not in copied[0]
-    assert all(any('/./' + name == arg[-len('/./' + name):] for arg in copied[0]) for name in files)
+    assert all(name in copied[0] for name in files)
     assert all('test -f ' + sweep.REMOTE_ROOT + '/' + name in commands[-1] for name in files)
     assert 'input-files.json' in commands[-1]
+
+
+def test_selected_upload_preserves_relative_paths_with_installed_rsync(tmp_path, monkeypatch):
+    source, destination = tmp_path / 'source', tmp_path / 'destination'
+    name = 'data/raw/catalogue.fits'
+    (source / name).parent.mkdir(parents=True)
+    (source / name).write_bytes(b'catalogue')
+    destination.mkdir()
+    monkeypatch.setattr(sweep, 'PROJECT_ROOT', source)
+    monkeypatch.setattr(sweep, 'target_inputs', lambda _: [name])
+    monkeypatch.setattr(sweep, '_ssh_target', lambda _: ('root@test', '22'))
+    monkeypatch.setattr(sweep, '_ssh', lambda *args, **kwargs: None)
+    original_run = sweep.subprocess.run
+    def local_copy(command, **kwargs):
+        command[-1] = str(destination) + '/'
+        return original_run(command, **kwargs)
+    monkeypatch.setattr(sweep.subprocess, 'run', local_copy)
+    sweep._upload_inputs(123, lambda _: None, targets=['example'])
+    assert (destination / name).read_bytes() == b'catalogue'
 
 
 def fit_offer(**overrides) -> dict:

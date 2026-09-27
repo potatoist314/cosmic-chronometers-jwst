@@ -238,7 +238,7 @@ def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, monkeypatch
     monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: copies.append(cmd))
     run.upload({'instance_id': 1})
     assert len(copies) == 1 and copies[0][:2] == ['rsync', '-aR']
-    assert any('/./data/raw/hst_f814w/M1_210210.fits' in arg for arg in copies[0])
+    assert 'data/raw/hst_f814w/M1_210210.fits' in copies[0]
     assert len(grids) == 1
     assert any('sha256sum -c' in cmd for cmd in commands)
     assert any('input-files.json' in cmd for cmd in commands)

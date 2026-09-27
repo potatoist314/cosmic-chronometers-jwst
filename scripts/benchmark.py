@@ -267,8 +267,8 @@ class Run:
             payload = json.dumps(source['input_files'])
             vast._ssh(instance, f'printf %s {shlex.quote(payload)} > {REMOTE}/input-files.json', timeout=self.timeout(attempt))
             subprocess.run(['rsync', '-aR', '-e', shlex.join(['ssh', *vast._ssh_options(port)]),
-                            *[str(ROOT) + '/./' + name for name in source['input_files']],
-                            f'{target}:{REMOTE}/'], check=True, capture_output=True,
+                            *source['input_files'], f'{target}:{REMOTE}/'], cwd=ROOT,
+                           check=True, capture_output=True,
                            timeout=self.timeout(attempt, 600))
         else:
             for directory in INPUT_DIRS:

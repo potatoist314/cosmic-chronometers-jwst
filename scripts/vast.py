@@ -336,8 +336,8 @@ def _upload_inputs(instance_id: int, log: Any, timeout: float = 3600.0, *, targe
     log(f'uploading {len(files)} selected input files')
     _ssh(instance_id, f'mkdir -p {shlex.quote(REMOTE_ROOT)}', timeout=60)
     subprocess.run(['rsync', '-aR', '--partial', '-e', shlex.join(['ssh', *_ssh_options(port)]),
-                    *[str(PROJECT_ROOT) + '/./' + name for name in files],
-                    f'{target}:{REMOTE_ROOT}/'], check=True, capture_output=True, timeout=timeout)
+                    *files, f'{target}:{REMOTE_ROOT}/'], cwd=PROJECT_ROOT,
+                   check=True, capture_output=True, timeout=timeout)
     payload = json.dumps(files)
     checks = ' && '.join('test -f ' + shlex.quote(REMOTE_ROOT + '/' + name) for name in files)
     _ssh(instance_id, f'printf %s {shlex.quote(payload)} > {REMOTE_ROOT}/input-files.json && {checks}', timeout=180)
