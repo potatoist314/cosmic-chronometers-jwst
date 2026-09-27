@@ -41,6 +41,15 @@ def test_vastai_json_retries_an_empty_response(monkeypatch: pytest.MonkeyPatch) 
     assert len(calls) == 2
 
 
+def test_rental_disables_interactive_tmux_for_automated_ssh(monkeypatch):
+    calls = []
+    monkeypatch.setattr(sweep, '_vastai_json', lambda args, **kwargs:
+                        calls.append(args) or {'success': True, 'new_contract': 123})
+    assert sweep._create_instance(offer(), SimpleNamespace(image='test-image', disk=40)) == 123
+    args = calls[0]
+    assert args[args.index('--onstart-cmd') + 1] == 'touch /root/.no_auto_tmux'
+
+
 def test_ssh_options_offer_only_the_registered_key(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:

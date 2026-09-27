@@ -433,6 +433,8 @@ def _create_instance(offer: dict[str, Any], args: argparse.Namespace) -> int:
             str(args.disk),
             "--ssh",
             "--direct",
+            "--onstart-cmd",
+            "touch /root/.no_auto_tmux",
             "--cancel-unavail",
             "--label",
             getattr(args, "label", f"ceridwen-bench-{slug}"),
