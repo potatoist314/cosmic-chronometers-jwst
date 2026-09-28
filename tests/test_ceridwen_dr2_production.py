@@ -457,8 +457,14 @@ def test_constant_calibration_active_assembly_and_exports():
                                     fit_sigma_smooth=True, baked_runtime=True)
     assembly = ast.parse(next(c for c in cells if "joint_csp = CSPBasis_afe(" in c))
     # Supply the tiny grid instead of fetching production data.
-    exec(compile(ast.Module(body=assembly.body[1:], type_ignores=[]), "assembly", "exec"), env)
+    start = next(i for i, node in enumerate(assembly.body)
+                 if isinstance(node, ast.Assign)
+                 and any(isinstance(t, ast.Name) and t.id == "universe_age" for t in node.targets))
+    exec(compile(ast.Module(body=assembly.body[start:], type_ignores=[]), "assembly", "exec"), env)
     model = env["joint_model"]
+    assert not (model.theta_init.keys() - model.priors.keys())
+    assert "diffuse_c_r" not in model.theta_init
+    np.testing.assert_array_equal(model.transforms["diffuse_c_r"](model.theta_init), [0.0])
     for names in (env["PRIORS"], env["joint_initial"], model.priors, model.theta_init, model.param_names):
         assert "spectrum_scaling" not in names
     prediction = model.predict(model.theta_init)
