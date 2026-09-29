@@ -2,6 +2,7 @@ import json
 import math
 import os
 import re
+import warnings
 from pathlib import Path
 
 import pytest
@@ -467,7 +468,12 @@ def test_constant_calibration_active_assembly_and_exports():
     np.testing.assert_array_equal(model.transforms["diffuse_c_r"](model.theta_init), [0.0])
     for names in (env["PRIORS"], env["joint_initial"], model.priors, model.theta_init, model.param_names):
         assert "spectrum_scaling" not in names
-    prediction = model.predict(model.theta_init)
+    # The production model must run on the SFH-basis fast path.
+    assert env["joint_csp"].sfh_basis_fastpath
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        prediction = model.predict(model.theta_init)
+    assert not [w for w in caught if "fast path" in str(w.message)]
     unity = model.predict({**model.theta_init, "spectrum_scaling": jnp.array([1.])})
     for key in prediction:
         np.testing.assert_array_equal(prediction[key], unity[key])
