@@ -53,12 +53,16 @@ Use `--image` only for an explicitly requested override. Saved runs keep their i
    python3 scripts/experiment.py run results/<slug>/experiment.json \
      --gpu "RTX 5090" --output results/<slug>/run
    ```
-   Use the GPU type requested by the user. The runner selects the lowest hourly
-   price above 99.5% reliability, falling back to above 96% only if no offers
-   pass all filters. Both bandwidth rates must be below $10/TB. The total $1
-   cap covers all arms and retries; `--spend-cap` can reduce it.
-   The runner skips a host when its latest row in `scripts/vast_hosts.csv` is
-   `poor`. When two offers have the same hourly price, it rents the `good` host first.
+   Use the GPU type requested by the user. Offers must have reliability above
+   99.5%, falling back to above 96% only if no offers pass all filters. Both
+   bandwidth rates must be below $10/TB. The total $1 cap covers all arms and
+   retries; `--spend-cap` can reduce it.
+   The runner ranks offers by the latest row for each host in `scripts/vast_hosts.csv`:
+   `good`, then no row, then `poor`. It rents a `poor` host only when no other offer
+   passes the filters. In the same group, it rents the lowest cost per fit. It gets
+   the cost per fit from the `calls/s` value of the host. A host without a `calls/s`
+   value gets the median value for the GPU type, so among such hosts the lowest
+   hourly price wins.
 
    Missing registered grids download locally before rental. The command uploads
    pinned source and checked grids, runs the full notebook including existing

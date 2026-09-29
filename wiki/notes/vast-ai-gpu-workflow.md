@@ -95,11 +95,13 @@ The spectrum notebook fits spectra. The joint notebook fits photometry with nati
 - Require at least 8 GB GPU memory and 12 GB disk.
 - Require host reliability above 99.5 per cent; fall back to above 96 per cent only if no offers pass every filter.
 - Require upload and download prices each below $0.01 per GB.
-- Use the cheapest hourly offer for the requested GPU type, with a $1 experiment cap.
-- `scripts/vast_hosts.csv` records `host_id,outcome,gpu,date,run,reason`. Outcomes are `good` or `poor`. The latest row sets each host’s outcome. After each experiment run, the `running-ceridwen-experiments` skill adds one row per host that started an instance.
-- Experiments skip hosts whose latest outcome is `poor` and prefer `good` hosts at equal hourly price. `scripts/benchmark.py` does not read the list.
+- $1 cap per experiment.
+- `scripts/vast_hosts.csv` records `host_id,outcome,gpu,date,run,reason`. Outcomes are `good` or `poor`. The latest row per host sets its outcome.
+- After each experiment or benchmark run, the `running-ceridwen-experiments` or `benchmarking-ceridwen-gpus` skill adds one row per host that started an instance. Benchmark rows record the measured rate in `reason` as `<N> calls/s`.
+- Experiments and benchmarks share one ranking: `good` hosts, then hosts with no row, then `poor` hosts. Rent a `poor` host only when no other offer passes the filters.
+- Within each group, rank by lowest cost per fit: hourly price × 0.5 h × (median calls/s for the GPU type / host calls/s). Hosts without recorded calls/s use the median; among those, lowest hourly price wins.
 
-Source: `scripts/experiment.py` — `Run.candidates`. `scripts/vast.py` — `host_outcomes`.
+Source: `scripts/benchmark.py` — `Run.candidates`. `scripts/vast.py` — `host_outcomes`, `host_speeds`.
 
 Vast host `148498` in Croatia provided a tested-good A100 SXM4 40 GB allocation. Instance `48652928` completed the quick and full fits on 25 August 2026. This result applies to that allocation only.
 

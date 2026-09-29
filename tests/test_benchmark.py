@@ -231,6 +231,26 @@ def test_hourly_price_wins_with_bandwidth_under_guard(run, cloud, monkeypatch):
     assert run.selection['offers'][0]['expected_usd'] > run.selection['offers'][1]['expected_usd']
 
 
+def test_host_record_then_cost_per_fit_sets_rank(run, cloud, monkeypatch):
+    offer, _ = cloud
+    offers = [{**offer, 'id': i, 'host_id': i, 'dph_total': price}
+              for i, price in ((1, .30), (2, .40), (3, .50), (4, .35), (5, .45), (6, .55))]
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda _, **kw: offers if kw['rental_type'] == 'on-demand' else [])
+    monkeypatch.setattr(bench.vast, 'host_outcomes', lambda: {1: 'poor', 2: 'good', 3: 'good', 6: 'good'})
+    # Host 3 costs more per hour than host 2 but is twice as fast; host 6 has no speed, so it gets the median.
+    monkeypatch.setattr(bench.vast, 'host_speeds', lambda gpu: {2: 100., 3: 200., 4: 150.})
+    assert [row[1]['id'] for row in run.candidates('RTX 5090')] == [3, 6, 2, 4, 5, 1]
+    assert {r['offer_id']: r['fit_usd'] for r in run.selection['offers']}[3] == pytest.approx(.50 * .5 * 150 / 200)
+
+
+def test_poor_host_is_rented_when_nothing_else_qualifies(run, cloud, monkeypatch):
+    offer, _ = cloud
+    monkeypatch.setattr(bench.vast, 'host_outcomes', lambda: {offer['host_id']: 'poor'})
+    monkeypatch.setattr(bench.vast, 'host_speeds', lambda gpu: {})
+    assert [row[1]['id'] for row in run.candidates('RTX 5090')] == [offer['id']]
+    assert run.selection['offers'][0]['host_record'] == 'poor'
+
+
 def test_search_sets_disk_price_and_price_sort_explicitly(monkeypatch):
     calls = []
     monkeypatch.setattr(bench.vast, '_vastai_json', lambda args: calls.append(args) or [{'id': 1}])

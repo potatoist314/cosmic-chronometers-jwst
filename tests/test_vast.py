@@ -239,5 +239,15 @@ def test_latest_host_row_sets_outcome(tmp_path):
     assert sweep.host_outcomes(path) == {406325: 'poor', 87213: 'good'}
 
 
+def test_latest_calls_per_second_sets_host_speed_per_gpu(tmp_path):
+    path = tmp_path / 'hosts.csv'
+    path.write_text('host_id,outcome,gpu,date,run,reason\n'
+                    '213578,poor,RTX 5090,2026-09-23,a,measured 94294 calls/s; host 406325 measured 148930 calls/s\n'
+                    '406325,good,RTX 5090,2026-09-23,a,finished the benchmark; 148930 calls/s\n'
+                    '406325,poor,RTX 5090,2026-09-28,b,boot stalled\n'
+                    '166946,good,RTX 5060,2026-09-23,a,finished the benchmark; 27754 calls/s\n')
+    assert sweep.host_speeds('RTX 5090', path) == {213578: 94294., 406325: 148930.}
+
+
 def test_recorded_host_outcomes_are_good_or_poor():
     assert set(sweep.host_outcomes().values()) == {'good', 'poor'}
