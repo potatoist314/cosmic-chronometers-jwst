@@ -9,6 +9,7 @@ question: q-compute
 related_questions: q-fitting-choices
 follow_up:
 result_groups: results/calibration-speedup
+source_notes: calibration-speedup
 ---
 
 ## Context

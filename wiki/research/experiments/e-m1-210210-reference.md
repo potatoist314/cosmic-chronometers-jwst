@@ -7,6 +7,8 @@ origin: new
 status: results-ready
 question: q-fitting-choices
 follow_up:
+source_notes: m1-210210-reference
+result_groups: results/m1-210210-reference
 ---
 
 ## Context

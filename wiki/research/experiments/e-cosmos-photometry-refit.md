@@ -8,6 +8,8 @@ origin: new
 status: results-ready
 question: q-cosmos-photometry
 follow_up:
+source_notes: cosmos-photometry-refit, cosmos-photometry-comparison
+result_groups: results/cosmos-photometry-refit, results/cosmos-photometry-comparison
 ---
 
 ## Context
@@ -163,6 +165,12 @@ The Ceridwen fits use COSMOS2015 `cosmos_total` photometry, 12 bands. COSMOS2020
     "view": "SFH",
     "target": "M1_210210",
     "caption": "Star-formation history with 16–84% band and cumulative mass fraction for the COSMOS2015 reference, COSMOS2020 Classic and COSMOS2025 fits of M1_210210."
+  },
+  {
+    "path": "wiki/analyses/cosmos-photometry-comparison/cosmos-photometry-M1_210210.png",
+    "view": "Comparison",
+    "target": "M1_210210",
+    "caption": "M1_210210 total fluxes from COSMOS2015, COSMOS2020 Classic and COSMOS2025: rest-frame UV (linear), full SED (log), \\(F/F_{2015}\\) with sample median and 16–84% range, \\(\\sigma/\\sigma_{2015}\\); grey band \\(\\pm5\\%\\) error floor; COSMOS2020 Farmer has no photometry, model did not converge"
   }
 ]
 ```

@@ -8,6 +8,7 @@ status: results-ready
 question: q-fitting-choices
 follow_up:
 result_groups: results/calibration-order
+source_notes: calibration-order
 ---
 
 ## Context

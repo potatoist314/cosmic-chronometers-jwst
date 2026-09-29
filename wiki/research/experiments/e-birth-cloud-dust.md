@@ -8,6 +8,8 @@ origin: new
 status: results-ready
 question: q-birth-cloud-dust
 follow_up:
+source_notes: birth-cloud-dust
+result_groups: results/birth-cloud-dust
 ---
 
 ## Context

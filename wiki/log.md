@@ -1367,3 +1367,4 @@
 
 - `notes/m1-210210-kcbump.md` compares spectrum and photometry fits, star-formation histories and posteriors for kcbump and m3; `results/m1-210210-kcbump-2026-09-29/analysis.ipynb` contains the analysis.
 - `research/experiments/e-dust-bump.md` records run3 and the m3 comparison; Results lists it.
+- `source_notes` and `result_groups` link six earlier analyses to their records; the COSMOS photometry comparison figure is under Comparison in `e-cosmos-photometry-refit`.
