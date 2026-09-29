@@ -1366,3 +1366,4 @@
 ### 2026-09-29 — M1_210210 dust-bump comparison
 
 - `notes/m1-210210-kcbump.md` compares spectrum and photometry fits, star-formation histories and posteriors for kcbump and m3; `results/m1-210210-kcbump-2026-09-29/analysis.ipynb` contains the analysis.
+- `research/experiments/e-dust-bump.md` records run3 and the m3 comparison; Results lists it.
