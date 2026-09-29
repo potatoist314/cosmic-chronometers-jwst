@@ -42,6 +42,8 @@ LABELS = {
     "diffuse_dust_index": r"$\delta_{\mathrm{dust}}$", "log_f_calib": r"$\log f_{\mathrm{calib}}$",
     "spectrum_scaling": "spectrum scaling", "zred": r"$z$", "sigma_smooth": r"$\sigma_\star$",
     "dust_ratio": r"$\tau_{\mathrm{bc}}/\tau_{\mathrm{dust}}$",
+    "diffuse_tau_noll": r"$\tau_{\mathrm{dust}}$", "diffuse_delta": r"$\delta_{\mathrm{dust}}$",
+    "diffuse_Ebump": r"$E_{\mathrm{bump}}$",
 }
 N_BOOT = 200
 PRIOR_SAMPLE_MULT = 10  # prior reference sample = this many times the dead points; keeps its own noise near the bootstrap error
