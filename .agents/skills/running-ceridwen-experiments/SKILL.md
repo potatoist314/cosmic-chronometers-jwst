@@ -116,3 +116,90 @@ SSH; waiting for the GPU cannot fix a local user-ID error. The shared upload
 includes HST cutouts and the emission-line table. A nonzero remote stage exit
 saves its log, destroys the owned rental and stops. Diagnose the log before
 repeating the command; do not rent a replacement for the same code or input error.
+
+### Standard figures for a result page
+
+Liu Hao, 2026-09-29: "i just want my usual corner plots, sfh against time etc in
+accordance with the standard wiki". Put these figures on the page, in this order.
+Do not design a different figure.
+
+| Order | Figure | Wiki file | Source |
+| --- | --- | --- | --- |
+| 1 | Spectrum fit: fitted LEGA-C pixels, posterior median, 16-84% band, pulls | `spectrum-<arm>-<target>.png` | `cell14_2.png` |
+| 2 | Photometry fit: band fluxes, model medians, median continuum, pulls | `photometry-<arm>-<target>.png` | `cell14_1.png` |
+| 3 | SFH of one fit: normalized SFR against lookback time, median, 16-84% band | `sfh-<arm>-<target>.png` | `cell20_7.png` |
+| 4 | SFH of all arms on the same axes, and the mass fraction younger | `sfh-<target>.png` | `analysis.ipynb` |
+| 5 | Corner of the physical parameters of one fit | `corner-<arm>-<target>.png` | `cell20_5.png` |
+| 6 | Corner of all arms on the same axes, 1σ contours | `corner-<target>.png` | `analysis.ipynb` |
+
+Show figures 1 and 2 for each arm before figure 3. Figures 4 and 6 are only for a
+comparison of fits. The rules are in `wiki/AGENTS.md`, "Result reporting", and in
+`AGENTS.md`, "Repository and reproducibility conventions". Read them.
+
+The commands are from the M1_210210 KC13-bump page of 2026-09-29:
+`wiki/notes/m1-210210-kcbump.md`, with figures in `wiki/analyses/m1-210210-kcbump/`.
+
+1. **Get the figures of each fit.** The production notebook made them during the fit
+   with `scripts/spectral_figures.py`. Do not run the fit again. This command writes
+   each saved image of the executed notebook to `<dir>/cell<cell>_<count>.png`:
+   ```bash
+   ceridwen/.venv/bin/python - \
+     results/<slug>/run/fits/<arm>/<object>-<target>/<target>_executed.ipynb <dir> <<'EOF'
+   import base64, sys
+   import nbformat
+   nb = nbformat.read(sys.argv[1], as_version=4)
+   k = 0
+   for i, c in enumerate(nb.cells):
+       for o in c.get("outputs", []):
+           if "image/png" in o.get("data", {}):
+               open(f"{sys.argv[2]}/cell{i:02d}_{k}.png", "wb").write(base64.b64decode(o["data"]["image/png"]))
+               k += 1
+   EOF
+   ```
+   Cell 14 is the notebook section "Output fit". Cell 20 is "Corners and SFH". Open
+   each image before you copy it. A different notebook version can change the names.
+2. **Make the comparison figures.** Copy `results/m1-210210-kcbump-2026-09-29/analysis.ipynb`
+   to `results/<slug>/analysis.ipynb`. In code cell 1, set `RESULTS`, `TARGET`, `FIT_DIRS`,
+   `COLOURS`, `NAMES` and `REF`. The baseline arm has the colour `#222222`. Then run:
+   ```bash
+   PYTHONPATH="$PWD/external/sedpy_jax" ceridwen/.venv/bin/python - <<'EOF'
+   import nbformat
+   from nbclient import NotebookClient
+   p = "results/<slug>/analysis.ipynb"
+   nb = nbformat.read(p, as_version=4)
+   try:
+       NotebookClient(nb, timeout=None, kernel_name="python3",
+                      resources={"metadata": {"path": "results/<slug>"}}).execute()
+   finally:
+       nbformat.write(nb, p)
+   EOF
+   ```
+   The notebook reads the saved results of each arm. It writes `sfh-<target>.png`,
+   `corner-<target>.png` and `comparison.csv` to `results/<slug>/`.
+3. **Copy the figures to the wiki.**
+   ```bash
+   D=wiki/analyses/<slug> && mkdir -p $D
+   cp <dir>/cell14_2.png $D/spectrum-<arm>-<target>.png
+   cp <dir>/cell14_1.png $D/photometry-<arm>-<target>.png
+   cp <dir>/cell20_7.png $D/sfh-<arm>-<target>.png
+   cp <dir>/cell20_5.png $D/corner-<arm>-<target>.png
+   cp results/<slug>/sfh-<target>.png results/<slug>/corner-<target>.png $D/
+   ```
+   For an arm that has figures on a different wiki page, use those files.
+4. **Check each figure at 900 px.** Run
+   `sips --resampleWidth 900 <file> --out <dir>/<name>_900.png`. Then open the output.
+5. **Write the page.** Use the `editing-the-wiki` skill. Use the structure of
+   `wiki/notes/m1-210210-kcbump.md`.
+
+The executed notebook has more images. Add one only when the request names it.
+
+| Image | Notebook section | Figure |
+| --- | --- | --- |
+| `cell04_0.png` | Data and target | HST ACS F814W cutout with the 3 arcsec aperture |
+| `cell16_3.png` | Spectrum fit | Spectrum fit on all valid native pixels, excluded pixels in grey |
+| `cell18_4.png` | Calibration polynomial | Calibration polynomial, median and 16-84% band |
+| `cell20_6.png` | Corners and SFH | Corner of the dust parameters against the SFH mass fractions |
+| `cell22_8.png` | Prior-to-posterior KL | KL divergence from prior to posterior for each parameter, in bits |
+
+An old executed notebook can lack `cell20_6.png`. Make it from the saved posterior:
+`ceridwen/.venv/bin/python scripts/add_dust_sfh_corner.py <result dir> --png <file>`.
