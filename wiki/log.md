@@ -1358,3 +1358,7 @@
 
 - Replaced `results/quiescent-test-set/{targets,experiment}.json`: 10 extremes → P10–P90 coverage in log M*, mass-weighted age, [Fe/H], tau_dust, sigma*, half-weight z.
 - Parent: 109/187 DR2 quiescent fits; clean COSMOS2025/COSMOS2020 Classic flags; excluded low-S/N, bad-chi2/N, bound-f_calib, residual-outlier cases. M1_210210 retained; seed 20260929.
+
+### 2026-09-29 — Optional metallicity history
+
+- Added <code>metallicity_evolution</code>, off by default; SFH bins receive formed-mass-averaged metallicities, reproducing \(\langle Z\rangle\) exactly · ceridwen <code>ee68b5f</code>. No fits run with the option on.

@@ -43,7 +43,7 @@ LABELS = {
     "spectrum_scaling": "spectrum scaling", "zred": r"$z$", "sigma_smooth": r"$\sigma_\star$",
     "dust_ratio": r"$\tau_{\mathrm{bc}}/\tau_{\mathrm{dust}}$",
     "diffuse_tau_noll": r"$\tau_{\mathrm{dust}}$", "diffuse_delta": r"$\delta_{\mathrm{dust}}$",
-    "diffuse_Ebump": r"$E_{\mathrm{bump}}$",
+    "diffuse_Ebump": r"$E_{\mathrm{bump}}$", "zh_beta_unit": r"$u_\beta$",
 }
 N_BOOT = 200
 PRIOR_SAMPLE_MULT = 10  # prior reference sample = this many times the dead points; keeps its own noise near the bootstrap error
