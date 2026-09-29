@@ -1369,3 +1369,4 @@
 - `research/experiments/e-dust-bump.md` records run3 and the m3 comparison; Results lists it.
 - `source_notes` and `result_groups` link six earlier analyses to their records; the COSMOS photometry comparison figure is under Comparison in `e-cosmos-photometry-refit`.
 - `notes/m1-210210-kcbump.md` and `e-dust-bump` add the `wide` fit, \(\delta_{\mathrm{dust}}\sim\mathrm{Uniform}(-3,0.4)\) and \(E_{\mathrm{bump}}\sim\mathrm{Uniform}(0,12)\), with its figures and three-arm SFH and corner overlays; `results/m1-210210-kcbump-wide-2026-09-29/`.
+- `notes/m1-210210-kcbump.md` and `e-dust-bump` add the `zevo` fit, `wide` with `metallicity_evolution` on, with its figures and wide/zevo SFH and corner overlays; `results/m1-210210-kcbump-wide-zevo-2026-09-29/`.

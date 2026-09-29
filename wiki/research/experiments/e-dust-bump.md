@@ -4,12 +4,12 @@ id: e-dust-bump
 title: New fit on a 5090 with Eb bump strength as free parameter
 date: 2026-09-24
 origin: new
-results_at: 2026-09-29T22:59:10+01:00
+results_at: 2026-09-30T00:04:12+01:00
 status: results-ready
 question: q-dust-index-railing
 follow_up:
 source_notes: m1-210210-kcbump
-result_groups: results/m1-210210-kcbump-2026-09-29, results/m1-210210-kcbump-wide-2026-09-29
+result_groups: results/m1-210210-kcbump-2026-09-29, results/m1-210210-kcbump-wide-2026-09-29, results/m1-210210-kcbump-wide-zevo-2026-09-29
 ---
 
 ## Context
@@ -91,6 +91,11 @@ implementation landed as `0588f9b` before the run.
   {
     "date": "2026-09-29",
     "text": "rerun with broader priors to see where it converges and stop railing",
+    "source_ref": "Relayed by the Astronomy lead"
+  },
+  {
+    "date": "2026-09-29",
+    "text": "rerun with metallicity evolution on for m210210 and see what changes before the 10 galaxy set",
     "source_ref": "Relayed by the Astronomy lead"
   }
 ]
@@ -286,6 +291,57 @@ implementation landed as `0588f9b` before the run.
     "config": "results/m1-210210-kcbump-wide-2026-09-29/run/manifest.json",
     "seed": 20260927,
     "data": "results/m1-210210-kcbump-wide-2026-09-29/run/manifest.json"
+  },
+  {
+    "id": "zevo-run-53423814",
+    "arm": "zevo",
+    "status": "failed",
+    "error": "instance 53423814 (host 587222, bid) stopped by Vast after the image loaded, intended_status stopped; never ran, 22:13 to 22:37 UTC; driver interrupted, runner destroyed instance; $0.005 billed for storage",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "driver.log",
+        "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/driver.log"
+      },
+      {
+        "label": "manifest.json",
+        "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/manifest.json"
+      }
+    ],
+    "code": "6a9e1fe",
+    "model": "Ceridwen ee68b5f; sedpy_jax 9d8aa19; grid amist_c3k_hr_krou_afe",
+    "config": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/manifest.json",
+    "seed": 20260927,
+    "data": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/manifest.json"
+  },
+  {
+    "id": "zevo-run-53427325",
+    "arm": "zevo",
+    "status": "complete",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "Executed fit · M1_210210",
+        "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb"
+      },
+      {
+        "label": "ceridwen_result.h5",
+        "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/ceridwen_result.h5"
+      },
+      {
+        "label": "ceridwen_derived_outputs.h5",
+        "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/ceridwen_derived_outputs.h5"
+      },
+      {
+        "label": "Executed analysis",
+        "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/analysis.ipynb"
+      }
+    ],
+    "code": "6a9e1fe",
+    "model": "Ceridwen ee68b5f; sedpy_jax 9d8aa19; grid amist_c3k_hr_krou_afe",
+    "config": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/manifest.json",
+    "seed": 20260927,
+    "data": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/manifest.json"
   }
 ]
 ```
@@ -335,6 +391,26 @@ implementation landed as `0588f9b` before the run.
     "caption": "M1_210210 · wide. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
   },
   {
+    "notebook": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "zevo-run-53427325",
+    "target": "M1_210210",
+    "arm": "zevo",
+    "view": "Fits",
+    "caption": "M1_210210 · zevo. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+  },
+  {
+    "notebook": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "zevo-run-53427325",
+    "target": "M1_210210",
+    "arm": "zevo",
+    "view": "Fits",
+    "caption": "M1_210210 · zevo. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+  },
+  {
     "notebook": "results/birth-cloud-dust/dust_index_m3/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 14,
     "output": 2,
@@ -375,10 +451,26 @@ implementation landed as `0588f9b` before the run.
     "caption": "M1_210210 · wide. Normalized SFR against lookback time; median and 16–84% band."
   },
   {
+    "notebook": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "zevo-run-53427325",
+    "target": "M1_210210",
+    "arm": "zevo",
+    "view": "SFH",
+    "caption": "M1_210210 · zevo. Normalized SFR against lookback time; median and 16–84% band."
+  },
+  {
     "path": "results/m1-210210-kcbump-wide-2026-09-29/sfh-M1_210210.png",
     "view": "SFH",
     "target": "M1_210210",
     "caption": "M1_210210 · kcbump / wide / m3. SFR per formed mass [yr⁻¹] against lookback time with 16–84% bands; right-panel cumulative mass fraction."
+  },
+  {
+    "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/sfh-M1_210210.png",
+    "view": "SFH",
+    "target": "M1_210210",
+    "caption": "M1_210210 · wide / zevo. SFR per formed mass [yr⁻¹] against lookback time with 16–84% bands; right-panel cumulative mass fraction."
   },
   {
     "notebook": "results/m1-210210-kcbump-2026-09-29/run3/fits/default14/210210-M1_210210/M1_210210_executed.ipynb",
@@ -401,10 +493,26 @@ implementation landed as `0588f9b` before the run.
     "caption": "M1_210210 · wide. Physical-parameter posteriors for log M*, [Fe/H], [α/Fe], τ_dust, f_calib, Δv_z, σ*, t_MW."
   },
   {
+    "notebook": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "zevo-run-53427325",
+    "target": "M1_210210",
+    "arm": "zevo",
+    "view": "Posteriors",
+    "caption": "M1_210210 · zevo. Physical-parameter posteriors for log M*, [Fe/H], [α/Fe], τ_dust, f_calib, Δv_z, σ*, t_MW; [Fe/H] is log₁₀(⟨Z⟩/Z☉), with ⟨Z⟩ the formed-mass-weighted metallicity."
+  },
+  {
     "path": "results/m1-210210-kcbump-wide-2026-09-29/corner-M1_210210.png",
     "view": "Posteriors",
     "target": "M1_210210",
     "caption": "M1_210210 · kcbump / wide / m3. Physical-parameter posteriors with 1-sigma contours for log M*, [Fe/H], [α/Fe], τ_dust, δ_dust, E_bump, t_MW; m3 E_bump is tied to 0.85 − 1.9 δ_dust."
+  },
+  {
+    "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/corner-M1_210210.png",
+    "view": "Posteriors",
+    "target": "M1_210210",
+    "caption": "M1_210210 · wide / zevo. Physical-parameter posteriors with 1-sigma contours for log M*, [Fe/H], [α/Fe], τ_dust, δ_dust, E_bump, t_MW; [Fe/H] is log₁₀(⟨Z⟩/Z☉) for zevo, with ⟨Z⟩ the formed-mass-weighted metallicity."
   }
 ]
 ```
@@ -447,6 +555,25 @@ implementation landed as `0588f9b` before the run.
 - Checks: `wide` remote executed notebook embedded no figures; post-fit cells re-run locally on CPU from stored `ceridwen_result.h5` with `scripts/regenerate_fit_notebooks.py`, Ceridwen `ee68b5f` and `sedpy_jax 9d8aa19`. Re-derived summary quantiles match the remote values to within \(10^{-4}\); SFH and \(\ln Z\) identical. `validate_result` passes.
 - Evaluation: `results/m1-210210-kcbump-wide-2026-09-29/analysis.ipynb` writes `comparison.csv`, `sfh-M1_210210.png` and `corner-M1_210210.png` for `kcbump`, `wide` and `m3`.
 - Compute: `wide` on RTX 5090; $0.163 total. Instance 53419954 (host 332635): SSH to port 7070 timed out from 21:25 to 21:30 UTC; destroyed, $0.078. Replacement instance 53420896 (host 622869): fit finished, $0.085, destroyed.
+- Order: `wide` / `zevo`; values are posterior median [16, 84] from `results/m1-210210-kcbump-wide-zevo-2026-09-29/comparison.csv`.
+- \(\ln Z\): 231508.68 ± 0.38 / 231525.02 ± 0.21. ESS: 4343 / 4257. Sampler wall: 299.6 s / 304.4 s.
+- Spectral \(\chi^2\) at the `kcbump` floor (2.66%): 3421.0 / 3390.6.
+- Photometric \(\chi^2\) / 28 bands: 47.0 / 46.1. CFHT \(u^*\) pull: +0.60 / +0.63.
+- \(\delta_{\mathrm{dust}}\): −2.094 [−2.368, −1.856] / −2.114 [−2.400, −1.857].
+- \(E_{\mathrm{bump}}\): 7.88 [5.09, 10.40] / 7.41 [4.61, 10.24].
+- \(\tau_{\mathrm{dust}}\): 0.161 [0.138, 0.184] / 0.160 [0.137, 0.185].
+- \(\tau_{\mathrm{bc}}/\tau_{\mathrm{dust}}\): 0.90 [0.61, 1.18] / 0.87 [0.58, 1.16].
+- \(\log_{10}(M_\star/M_\odot)\): 11.508 [11.492, 11.525] / 11.488 [11.472, 11.507].
+- \([\mathrm{Fe}/\mathrm{H}]\): −0.099 [−0.122, −0.079] / −0.041 [−0.064, −0.019]; constant metallicity for `wide`, \(\log_{10}(\langle Z\rangle/Z_\odot)\) for `zevo`.
+- `zevo`: \(\beta\): 0.664 [0.596, 0.701]; \(Z_0\): \([\mathrm{Fe}/\mathrm{H}]=-1.699\), \(Z_\odot/50\) in all samples; \(Z_f\): \([\mathrm{Fe}/\mathrm{H}]=0.429\;[0.342,0.480]\).
+- \([\alpha/\mathrm{Fe}]\): 0.062 [0.053, 0.072] / 0.064 [0.054, 0.076].
+- \(t_{\mathrm{MW}}\) [Gyr]: 4.52 [4.28, 4.78] / 4.36 [4.07, 4.67].
+- \(t_{20}, t_{50}, t_{80}\) [Gyr]: 3.18, 4.29, 5.95 / 2.77, 4.22, 6.04.
+- \(f_{\mathrm{calib}}\) [%]: 2.47 / 2.45. \(\sigma_\star\) [km/s]: 263.0 / 262.3.
+- SFH mass fractions: 1.41–2.07 Gyr, 0.000 / 0.053; 2.07–3.02 Gyr, 0.150 / 0.186; 3.02–4.40 Gyr, 0.377 / 0.291; 4.40–6.43 Gyr, 0.352 / 0.319; 6.43–7.57 Gyr, 0.118 / 0.137; below 1.41 Gyr, 0.001 / 0.003.
+- Checks: `zevo` remote executed notebook embedded no figures; post-fit cells re-run locally on CPU from stored `ceridwen_result.h5` with `scripts/regenerate_fit_notebooks.py`, `metallicity_evolution=True`, Ceridwen `ee68b5f` and `sedpy_jax 9d8aa19`. Re-derived summary quantiles match remote values within \(10^{-4}\); SFH arrays and \(\ln Z\) identical. `validate_result` passes.
+- Evaluation: `results/m1-210210-kcbump-wide-zevo-2026-09-29/analysis.ipynb` writes `comparison.csv`, `sfh-M1_210210.png` and `corner-M1_210210.png` for `wide` and `zevo`; wiki copies: `sfh-wide-zevo-M1_210210.png`, `corner-wide-zevo-M1_210210.png`.
+- Compute: `zevo` on RTX 5090; $0.076 total. Instance 53423814 (host 587222, bid): stopped by Vast after image load, never ran; destroyed, $0.005 storage. Three intervening create calls returned no response and started no instance. Instance 53427325 (host 370354): fit finished, $0.071, destroyed.
 
 ## Caveats
 
@@ -459,6 +586,12 @@ implementation landed as `0588f9b` before the run.
 - `wide` \(\delta_{\mathrm{dust}}\) 1–99%: −2.76 to −1.56, inside Uniform(−3, 0.4).
 - `wide` \(E_{\mathrm{bump}}\) 1–99%: 2.0 to 11.86; the upper tail reaches the 12 bound. Posterior density peaks at 0.141 in [7, 8] and is 0.090 in [11, 12]; \(P(E_{\mathrm{bump}}>11)=0.09\).
 - `wide` and `kcbump` differ only in the \(\delta_{\mathrm{dust}}\) and \(E_{\mathrm{bump}}\) priors and the Ceridwen commit; seed 20260927 in both. Ceridwen `ee68b5f` adds an optional metallicity history, off by default; the fit path with defaults is unchanged.
+- `zevo` is `wide` with `metallicity_evolution` on.
+- `zevo` \(\delta_{\mathrm{dust}}\) 1–99%: −2.75 to −1.57, inside Uniform(−3, 0.4).
+- `zevo` \(E_{\mathrm{bump}}\) 1–99%: 1.39 to 11.89; the upper tail reaches the 12 bound. \(P(E_{\mathrm{bump}}>11)=0.084\); \(P(E_{\mathrm{bump}}>11.76)=0.019\).
+- `zevo` `zh_beta_unit`: median 0.924, 84th percentile 0.979, 99th percentile 0.999; P(`zh_beta_unit` > 0.98) = 0.154. The grid limit sets \(\beta_{\mathrm{hi}}\) in every sample; median 0.718, below 0.80. At `zh_beta_unit` = 1, \(Z_f\) reaches the grid top, \([\mathrm{Fe}/\mathrm{H}]=+0.5\); its 99th percentile is 0.499.
+- `zevo` \([\mathrm{Fe}/\mathrm{H}]\) is \(\log_{10}(\langle Z\rangle/Z_\odot)\), with \(\langle Z\rangle\) the formed-mass-weighted metallicity; `wide` has constant metallicity.
+- Other `zevo` parameters are not within 2% of a prior edge.
 
 ## References
 
