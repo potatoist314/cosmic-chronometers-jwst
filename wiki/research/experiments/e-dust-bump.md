@@ -4,12 +4,12 @@ id: e-dust-bump
 title: New fit on a 5090 with Eb bump strength as free parameter
 date: 2026-09-24
 origin: new
-results_at: 2026-09-29T21:19:50+01:00
+results_at: 2026-09-29T22:59:10+01:00
 status: results-ready
 question: q-dust-index-railing
 follow_up:
 source_notes: m1-210210-kcbump
-result_groups: results/m1-210210-kcbump-2026-09-29
+result_groups: results/m1-210210-kcbump-2026-09-29, results/m1-210210-kcbump-wide-2026-09-29
 ---
 
 ## Context
@@ -86,6 +86,11 @@ implementation landed as `0588f9b` before the run.
   {
     "date": "2026-09-29",
     "text": "i don't see it in results. always put this stuff in results",
+    "source_ref": "Relayed by the Astronomy lead"
+  },
+  {
+    "date": "2026-09-29",
+    "text": "rerun with broader priors to see where it converges and stop railing",
     "source_ref": "Relayed by the Astronomy lead"
   }
 ]
@@ -230,6 +235,57 @@ implementation landed as `0588f9b` before the run.
     "config": "results/birth-cloud-dust/vast_run_2026-09-24T120929+0000.json",
     "data": "results/birth-cloud-dust/cells.json",
     "seed": 20260832
+  },
+  {
+    "id": "wide-run-53419954",
+    "arm": "wide",
+    "status": "failed",
+    "error": "SSH to port 7070 timed out from 21:25 to 21:30 UTC; instance 53419954 (host 332635) destroyed; $0.078 billed; runner rented replacement instance 53420896",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "driver.log",
+        "path": "results/m1-210210-kcbump-wide-2026-09-29/driver.log"
+      },
+      {
+        "label": "manifest.json",
+        "path": "results/m1-210210-kcbump-wide-2026-09-29/run/manifest.json"
+      }
+    ],
+    "code": "319524c",
+    "model": "Ceridwen ee68b5f; sedpy_jax 9d8aa19; grid amist_c3k_hr_krou_afe",
+    "config": "results/m1-210210-kcbump-wide-2026-09-29/run/manifest.json",
+    "seed": 20260927,
+    "data": "results/m1-210210-kcbump-wide-2026-09-29/run/manifest.json"
+  },
+  {
+    "id": "wide-run-53420896",
+    "arm": "wide",
+    "status": "complete",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "Executed fit · M1_210210",
+        "path": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb"
+      },
+      {
+        "label": "ceridwen_result.h5",
+        "path": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/ceridwen_result.h5"
+      },
+      {
+        "label": "ceridwen_derived_outputs.h5",
+        "path": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/ceridwen_derived_outputs.h5"
+      },
+      {
+        "label": "Executed analysis",
+        "path": "results/m1-210210-kcbump-wide-2026-09-29/analysis.ipynb"
+      }
+    ],
+    "code": "319524c",
+    "model": "Ceridwen ee68b5f; sedpy_jax 9d8aa19; grid amist_c3k_hr_krou_afe",
+    "config": "results/m1-210210-kcbump-wide-2026-09-29/run/manifest.json",
+    "seed": 20260927,
+    "data": "results/m1-210210-kcbump-wide-2026-09-29/run/manifest.json"
   }
 ]
 ```
@@ -257,6 +313,26 @@ implementation landed as `0588f9b` before the run.
     "arm": "default14",
     "view": "Fits",
     "caption": "M1_210210 · kcbump. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+  },
+  {
+    "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "wide-run-53420896",
+    "target": "M1_210210",
+    "arm": "wide",
+    "view": "Fits",
+    "caption": "M1_210210 · wide. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+  },
+  {
+    "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "wide-run-53420896",
+    "target": "M1_210210",
+    "arm": "wide",
+    "view": "Fits",
+    "caption": "M1_210210 · wide. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
   },
   {
     "notebook": "results/birth-cloud-dust/dust_index_m3/210210-M1_210210/M1_210210_executed.ipynb",
@@ -289,10 +365,20 @@ implementation landed as `0588f9b` before the run.
     "caption": "M1_210210 · kcbump. Normalized SFR against lookback time; median and 16–84% band."
   },
   {
-    "path": "results/m1-210210-kcbump-2026-09-29/sfh-M1_210210.png",
+    "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "wide-run-53420896",
+    "target": "M1_210210",
+    "arm": "wide",
+    "view": "SFH",
+    "caption": "M1_210210 · wide. Normalized SFR against lookback time; median and 16–84% band."
+  },
+  {
+    "path": "results/m1-210210-kcbump-wide-2026-09-29/sfh-M1_210210.png",
     "view": "SFH",
     "target": "M1_210210",
-    "caption": "M1_210210 · kcbump / m3. SFR per formed mass [yr⁻¹] against lookback time with 16–84% bands; right-panel cumulative mass fraction."
+    "caption": "M1_210210 · kcbump / wide / m3. SFR per formed mass [yr⁻¹] against lookback time with 16–84% bands; right-panel cumulative mass fraction."
   },
   {
     "notebook": "results/m1-210210-kcbump-2026-09-29/run3/fits/default14/210210-M1_210210/M1_210210_executed.ipynb",
@@ -305,10 +391,20 @@ implementation landed as `0588f9b` before the run.
     "caption": "M1_210210 · kcbump. Physical-parameter posteriors for log M*, [Fe/H], [α/Fe], τ_dust, f_calib, Δv_z, σ*, t_MW."
   },
   {
-    "path": "results/m1-210210-kcbump-2026-09-29/corner-M1_210210.png",
+    "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "wide-run-53420896",
+    "target": "M1_210210",
+    "arm": "wide",
+    "view": "Posteriors",
+    "caption": "M1_210210 · wide. Physical-parameter posteriors for log M*, [Fe/H], [α/Fe], τ_dust, f_calib, Δv_z, σ*, t_MW."
+  },
+  {
+    "path": "results/m1-210210-kcbump-wide-2026-09-29/corner-M1_210210.png",
     "view": "Posteriors",
     "target": "M1_210210",
-    "caption": "M1_210210 · kcbump / m3. Physical-parameter posteriors with 1-sigma contours for log M*, [Fe/H], [α/Fe], τ_dust, δ_dust, E_bump, t_MW; m3 E_bump is tied to 0.85 − 1.9 δ_dust."
+    "caption": "M1_210210 · kcbump / wide / m3. Physical-parameter posteriors with 1-sigma contours for log M*, [Fe/H], [α/Fe], τ_dust, δ_dust, E_bump, t_MW; m3 E_bump is tied to 0.85 − 1.9 δ_dust."
   }
 ]
 ```
@@ -334,6 +430,23 @@ implementation landed as `0588f9b` before the run.
 - Checks: `run3` remote stage `fit-0` exited 1 at the prior-KL plot cell with `KeyError 'diffuse_Ebump'`, after the sampler finished and `ceridwen_result.h5` was saved; 264 lines in `ns_progress.jsonl`. Commit `787f9b9` added the three Noll labels to `scripts/plot_prior_kl.py`; post-fit cells re-run locally on CPU from the stored HDF5 with `sedpy_jax 9d8aa19`.
 - Validation: `scripts.experiment.validate_result` passes: finite weights and evidence, derived groups, `diagnostics.passed` true, no notebook errors. `results/m1-210210-kcbump-2026-09-29/analysis.ipynb` writes `comparison.csv`, `sfh-M1_210210.png`, `corner-M1_210210.png`.
 - Compute: `run3` on RTX 5090 instance 53410690 at $0.458/h; $0.088 billed, instance destroyed. Earlier attempts: `run` $0.118 (instances 53382374, 53384393), `run2` $0.555 (instances 53388474, 53389781).
+- Order: `kcbump` / `wide`; values are posterior median [16, 84] from `results/m1-210210-kcbump-wide-2026-09-29/comparison.csv`.
+- \(\ln Z\): 231476.11 ± 0.22 / 231508.68 ± 0.38. ESS: 4635 / 4343. Sampler wall: 318.7 s / 299.6 s.
+- Spectral \(\chi^2\) at the `kcbump` floor: 3440.7 / 3421.0.
+- Photometric \(\chi^2\) / 28 bands: 89.4 / 47.0. CFHT \(u^*\) pull: −4.32 / +0.60.
+- \(\delta_{\mathrm{dust}}\): −0.987 [−0.997, −0.967] / −2.094 [−2.368, −1.856].
+- \(E_{\mathrm{bump}}\): 5.86 [5.63, 5.96] / 7.88 [5.09, 10.40].
+- \(\tau_{\mathrm{dust}}\): 0.323 [0.313, 0.334] / 0.161 [0.138, 0.184].
+- \(\tau_{\mathrm{bc}}/\tau_{\mathrm{dust}}\): 1.21 [0.98, 1.44] / 0.90 [0.61, 1.18].
+- \(\log_{10}(M_\star/M_\odot)\): 11.544 [11.529, 11.559] / 11.508 [11.492, 11.525].
+- \([\mathrm{Fe}/\mathrm{H}]\): −0.142 [−0.163, −0.122] / −0.099 [−0.122, −0.079].
+- \([\alpha/\mathrm{Fe}]\): 0.050 [0.040, 0.060] / 0.062 [0.053, 0.072].
+- \(t_{\mathrm{MW}}\) [Gyr]: 4.44 [4.21, 4.66] / 4.52 [4.28, 4.78].
+- \(t_{20}, t_{50}, t_{80}\) [Gyr]: 3.14, 4.20, 5.84 / 3.18, 4.29, 5.95.
+- SFH mass fractions: 2.07–3.02 Gyr, 0.161 / 0.150; 3.02–4.40 Gyr, 0.394 / 0.377; 4.40–6.43 Gyr, 0.333 / 0.352; 6.43–7.57 Gyr, 0.102 / 0.118; below 1.41 Gyr, 0.001 / 0.001.
+- Checks: `wide` remote executed notebook embedded no figures; post-fit cells re-run locally on CPU from stored `ceridwen_result.h5` with `scripts/regenerate_fit_notebooks.py`, Ceridwen `ee68b5f` and `sedpy_jax 9d8aa19`. Re-derived summary quantiles match the remote values to within \(10^{-4}\); SFH and \(\ln Z\) identical. `validate_result` passes.
+- Evaluation: `results/m1-210210-kcbump-wide-2026-09-29/analysis.ipynb` writes `comparison.csv`, `sfh-M1_210210.png` and `corner-M1_210210.png` for `kcbump`, `wide` and `m3`.
+- Compute: `wide` on RTX 5090; $0.163 total. Instance 53419954 (host 332635): SSH to port 7070 timed out from 21:25 to 21:30 UTC; destroyed, $0.078. Replacement instance 53420896 (host 622869): fit finished, $0.085, destroyed.
 
 ## Caveats
 
@@ -343,6 +456,9 @@ implementation landed as `0588f9b` before the run.
 - Stored spectral \(\chi^2\) uses each fit's own \(f_{\mathrm{calib}}\); the comparison uses the `kcbump` floor.
 - The execution plan named baseline `dust1_on`, seed 20260832, ceridwen `1fae781` and output `results/dust-bump/run`; `run3` used seed 20260927, ceridwen `37f04b0`, `sedpy_jax 9d8aa19` and 14 SFH bins. The comparison arm is `dust_index_m3` per the 2026-09-29 amendment.
 - One galaxy.
+- `wide` \(\delta_{\mathrm{dust}}\) 1–99%: −2.76 to −1.56, inside Uniform(−3, 0.4).
+- `wide` \(E_{\mathrm{bump}}\) 1–99%: 2.0 to 11.86; the upper tail reaches the 12 bound. Posterior density peaks at 0.141 in [7, 8] and is 0.090 in [11, 12]; \(P(E_{\mathrm{bump}}>11)=0.09\).
+- `wide` and `kcbump` differ only in the \(\delta_{\mathrm{dust}}\) and \(E_{\mathrm{bump}}\) priors and the Ceridwen commit; seed 20260927 in both. Ceridwen `ee68b5f` adds an optional metallicity history, off by default; the fit path with defaults is unchanged.
 
 ## References
 
