@@ -9,7 +9,7 @@ status: results-ready
 question: q-cosmos-photometry
 follow_up:
 source_notes: cosmos-photometry-refit, cosmos-photometry-comparison
-result_groups: results/cosmos-photometry-refit, results/cosmos-photometry-comparison
+result_groups: results/cosmos-photometry-refit
 ---
 
 ## Context
