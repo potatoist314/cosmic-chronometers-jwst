@@ -1,0 +1,661 @@
+15:50:31 committed source da0d1d569511; output results/m1-210210-kcbump-2026-09-29/run
+15:50:34 renting RTX 5090, host 96250, $0.412/h; estimate $0.227
+15:50:34 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 46982868 bid $0.412/h, $0.227 total; 51969558 bid $0.452/h, $0.226 total; 52008649 bid $0.474/h, $0.258 total; 47767747 bid $0.483/h, $0.262 total; 44173872 on-demand $0.485/h, $0.284 total; 44173882 on-demand $0.485/h, $0.284 total; 45380600 on-demand $0.485/h, $0.284 total; 49025122 on-demand $0.485/h, $0.284 total; 45669059 on-demand $0.485/h, $0.284 total; 45669177 on-demand $0.485/h, $0.284 total; 36318699 bid $0.536/h, $0.289 total; 52723070 on-demand $0.536/h, $0.310 total; 50184822 bid $0.549/h, $0.316 total; 53277229 bid $0.553/h, $0.297 total; 52214904 bid $0.575/h, $0.361 total; 475
+15:50:36 instance 53382374: (None, None)
+15:50:52 instance 53382374: ('loading', None)
+15:51:41 instance 53382374: ('loading', 'curl: (6) Could not resolve host: cloud.vast.ai\n')
+15:55:46 waiting: remaining estimate $0.227; replacement $0.190
+15:56:06 waiting: remaining estimate $0.227; replacement $0.238
+15:56:25 waiting: remaining estimate $0.227; replacement $0.190
+15:56:45 waiting: remaining estimate $0.227; replacement $0.238
+15:57:04 waiting: remaining estimate $0.227; replacement $0.227
+15:57:23 waiting: remaining estimate $0.227; replacement $0.190
+15:57:42 waiting: remaining estimate $0.227; replacement $0.232
+15:58:02 waiting: remaining estimate $0.228; replacement $0.232
+15:58:21 waiting: remaining estimate $0.228; replacement $0.233
+15:58:40 waiting: remaining estimate $0.228; replacement $0.232
+15:58:59 waiting: remaining estimate $0.228; replacement $0.232
+15:59:18 waiting: remaining estimate $0.228; replacement $0.232
+15:59:38 waiting: remaining estimate $0.228; replacement $0.190
+15:59:57 waiting: remaining estimate $0.228; replacement $0.233
+16:00:16 waiting: remaining estimate $0.228; replacement $0.229
+16:00:35 waiting: remaining estimate $0.228; replacement $0.238
+16:00:54 waiting: remaining estimate $0.228; replacement $0.190
+16:01:13 waiting: remaining estimate $0.228; replacement $0.238
+16:01:32 waiting: remaining estimate $0.228; replacement $0.206
+16:01:52 waiting: remaining estimate $0.228; replacement $0.238
+16:02:11 waiting: remaining estimate $0.228; replacement $0.238
+16:02:27 instance 53382374: (None, None)
+16:03:41 KeyboardInterrupt: 
+16:03:42 destroyed instance 53382374
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 333, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 327, in main
+    return Run(args, source).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 473, in execute
+    self.attempt(offer, price, bid)
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 401, in attempt
+    self.measure(attempt)
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 247, in measure
+    environment = self.prepare(attempt)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 324, in prepare
+    self.wait_ready(attempt)
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 248, in wait_ready
+    time.sleep(POLL_SECONDS)
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 331, in <lambda>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 331, in <genexpr>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+KeyboardInterrupt
+16:04:03 committed source da0d1d569511; output results/m1-210210-kcbump-2026-09-29/run
+16:04:06 renting RTX 5090, host 220936, $0.412/h; estimate $0.206
+16:04:06 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 51969558 bid $0.412/h, $0.206 total; 51027933 bid $0.412/h, $0.227 total; 49539124 bid $0.418/h, $0.230 total; 34905061 bid $0.423/h, $0.232 total; 46877351 bid $0.435/h, $0.238 total; 52008649 bid $0.474/h, $0.258 total; 47767747 bid $0.483/h, $0.262 total; 52190836 on-demand $0.485/h, $0.284 total; 48989823 on-demand $0.485/h, $0.284 total; 45669132 on-demand $0.485/h, $0.284 total; 49025122 on-demand $0.485/h, $0.284 total; 45669355 on-demand $0.485/h, $0.284 total; 45380575 on-demand $0.485/h, $0.284 total; 49024444 on-demand $0.485/h, $0.284 total; 49530295 on-demand $0.531/h, $0.286 tota
+16:04:07 SweepError: vastai returned no JSON: 
+16:04:12 renting RTX 5090, host 362094, $0.392/h; estimate $0.238
+16:04:12 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 48425190 bid $0.392/h, $0.238 total; 49539124 bid $0.418/h, $0.230 total; 52008649 bid $0.474/h, $0.258 total; 47767747 bid $0.483/h, $0.262 total; 45380603 on-demand $0.485/h, $0.284 total; 48989785 on-demand $0.485/h, $0.284 total; 45669132 on-demand $0.485/h, $0.284 total; 49025122 on-demand $0.485/h, $0.284 total; 45669355 on-demand $0.485/h, $0.284 total; 48989819 on-demand $0.485/h, $0.284 total; 48989595 on-demand $0.485/h, $0.284 total; 45685721 on-demand $0.516/h, $0.279 total; 52008649 on-demand $0.532/h, $0.287 total; 52414880 on-demand $0.536/h, $0.310 total; 53277229 bid $0.553/h,
+16:04:13 SweepError: vastai returned no JSON: 
+16:04:17 renting RTX 5090, host 20317, $0.419/h; estimate $0.230
+16:04:17 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 50259927 bid $0.419/h, $0.230 total; 48137358 bid $0.443/h, $0.250 total; 52008649 bid $0.474/h, $0.258 total; 49530295 bid $0.476/h, $0.259 total; 49025068 on-demand $0.485/h, $0.284 total; 50135013 on-demand $0.485/h, $0.284 total; 45669132 on-demand $0.485/h, $0.284 total; 49025122 on-demand $0.485/h, $0.284 total; 45669355 on-demand $0.485/h, $0.284 total; 45669280 on-demand $0.485/h, $0.284 total; 48989595 on-demand $0.485/h, $0.284 total; 40411107 bid $0.512/h, $0.277 total; 52008649 on-demand $0.532/h, $0.287 total; 36318699 bid $0.536/h, $0.289 total; 52414890 on-demand $0.536/h, $0.31
+16:04:18 SweepError: vastai returned no JSON: 
+16:06:48 committed source da0d1d569511; output results/m1-210210-kcbump-2026-09-29/run
+16:06:51 renting RTX 5090, host 202174, $0.409/h; estimate $0.246
+16:06:51 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 52603536 bid $0.409/h, $0.246 total; 46877351 bid $0.435/h, $0.238 total; 48137358 bid $0.443/h, $0.250 total; 52008649 bid $0.474/h, $0.258 total; 48989509 on-demand $0.485/h, $0.284 total; 45669379 on-demand $0.485/h, $0.284 total; 45669132 on-demand $0.485/h, $0.284 total; 49025122 on-demand $0.485/h, $0.284 total; 45669355 on-demand $0.485/h, $0.284 total; 45669186 on-demand $0.485/h, $0.284 total; 49024444 on-demand $0.485/h, $0.284 total; 47513476 bid $0.500/h, $0.271 total; 52008649 on-demand $0.532/h, $0.287 total; 40411107 on-demand $0.607/h, $0.325 total; 49868229 bid $0.636/h, $0.38
+16:06:52 SweepError: vastai returned no JSON: 
+16:06:57 renting RTX 5090, host 97910, $0.423/h; estimate $0.232
+16:06:57 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 34905063 bid $0.423/h, $0.232 total; 48137358 bid $0.443/h, $0.250 total; 52008649 bid $0.474/h, $0.258 total; 49024377 on-demand $0.485/h, $0.284 total; 45669477 on-demand $0.485/h, $0.284 total; 45669132 on-demand $0.485/h, $0.284 total; 49025122 on-demand $0.485/h, $0.284 total; 45669355 on-demand $0.485/h, $0.284 total; 48989698 on-demand $0.485/h, $0.284 total; 47513476 bid $0.500/h, $0.271 total; 52008649 on-demand $0.532/h, $0.287 total; 50184822 bid $0.549/h, $0.316 total; 40999030 on-demand $0.552/h, $0.318 total; 51284767 bid $0.553/h, $0.297 total; 52214904 bid $0.575/h, $0.361 tota
+16:06:58 SweepError: vastai returned no JSON: 
+16:07:03 renting RTX 5090, host 334262, $0.443/h; estimate $0.250
+16:07:03 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 48137358 bid $0.443/h, $0.250 total; 52008649 bid $0.474/h, $0.258 total; 44173815 on-demand $0.485/h, $0.284 total; 45669128 on-demand $0.485/h, $0.284 total; 45669132 on-demand $0.485/h, $0.284 total; 49025122 on-demand $0.485/h, $0.284 total; 45669355 on-demand $0.485/h, $0.284 total; 48989819 on-demand $0.485/h, $0.284 total; 49024444 on-demand $0.485/h, $0.284 total; 47513476 bid $0.500/h, $0.271 total; 52008649 on-demand $0.532/h, $0.287 total; 52414890 on-demand $0.536/h, $0.310 total; 50184822 bid $0.549/h, $0.316 total; 51284767 bid $0.553/h, $0.297 total; 52214904 bid $0.575/h, $0.36
+16:07:05 instance 53384393: (None, None)
+16:07:21 instance 53384393: ('loading', 'dc22b8c341d9: Pull complete\n')
+16:08:25 instance 53384393: ('loading', 'b2449364bbe7: Verifying Checksum\nb2449364bbe7: Download complete\n')
+16:08:58 instance 53384393: ('loading', '#0 building with "default" instance using docker driver\n\n#1 [internal] load build definition from ghcr.io_potatoist314_ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34\n#1 transferring dockerfile: 2.29kB done\n#1 DONE 0.1s\n\n#2 [internal] load metadata for ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34\n#2 DONE 0.0s\n\n#3 [internal] load .dockerignore\n#3 transferring context:\n')
+16:09:14 instance 53384393: ('loading', '#7 10.93 Selecting previously unselected package libassuan0:amd64.\r\n')
+16:09:30 instance 53384393: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+16:09:33 uploading pinned source, inputs and cached grid
+16:11:48 bootstrap: running; en==0.2.3 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 3ms
+All installed packages are compatible
+16:12:08 bootstrap: running; pendent input resolution verified
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16.h5
+16:12:27 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16.h5
+Ceridwen GPU environment ready.
+16:12:37 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:12:56 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:13:15 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:13:35 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:13:54 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:14:14 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:14:33 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:14:52 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:15:12 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:15:31 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:15:50 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:16:10 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:16:30 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:16:51 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:17:11 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:17:31 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:17:50 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:18:09 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:18:29 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:18:49 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:19:08 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:19:27 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:19:46 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:20:06 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:20:25 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:20:45 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:21:05 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:21:24 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:21:43 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:22:03 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:22:22 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:22:41 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:23:01 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:23:21 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:23:40 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:23:59 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:24:19 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:24:38 fit-0: running; 16:12:35 fitting default14/M1_210210, seed 20260927
+16:24:54 KeyboardInterrupt: 
+16:24:56 destroyed instance 53384393
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 333, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 327, in main
+    return Run(args, source).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 473, in execute
+    self.attempt(offer, price, bid)
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 401, in attempt
+    self.measure(attempt)
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 261, in measure
+    self.stage(attempt, f'fit-{index}', command)
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 321, in stage
+    time.sleep(POLL_SECONDS)
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 331, in <lambda>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 331, in <genexpr>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+KeyboardInterrupt
+16:38:30 committed source 71c6622fd3d7; output results/m1-210210-kcbump-2026-09-29/run2
+16:38:33 renting RTX 5090, host 370354, $0.385/h; estimate $0.203
+16:38:33 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 47680627 bid $0.385/h, $0.203 total; 52603536 bid $0.409/h, $0.246 total; 51969558 bid $0.412/h, $0.206 total; 34905061 bid $0.423/h, $0.232 total; 47767747 bid $0.483/h, $0.262 total; 47513476 bid $0.500/h, $0.271 total; 45685721 on-demand $0.516/h, $0.279 total; 52414880 on-demand $0.536/h, $0.310 total; 53076980 on-demand $0.598/h, $0.330 total; 40411107 on-demand $0.607/h, $0.325 total; 47513476 on-demand $0.607/h, $0.325 total; 47680627 on-demand $0.615/h, $0.318 total; 49868229 bid $0.636/h, $0.381 total; 51971807 bid $0.683/h, $0.393 total; 49868227 on-demand $0.684/h, $0.405 total; 309
+16:38:34 SweepError: vastai returned no JSON: 
+16:38:39 renting RTX 5090, host 564477, $0.399/h; estimate $0.231
+16:38:39 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 43626057 bid $0.399/h, $0.231 total; 51969558 bid $0.412/h, $0.206 total; 48137358 bid $0.443/h, $0.250 total; 47767747 bid $0.483/h, $0.262 total; 47513476 bid $0.500/h, $0.271 total; 46877351 bid $0.513/h, $0.277 total; 45080654 bid $0.536/h, $0.269 total; 36318699 bid $0.536/h, $0.289 total; 52414890 on-demand $0.536/h, $0.310 total; 47767747 on-demand $0.544/h, $0.293 total; 47513476 on-demand $0.607/h, $0.325 total; 49868227 bid $0.636/h, $0.381 total; 35010863 on-demand $0.648/h, $0.324 total; 47039432 on-demand $0.675/h, $0.379 total; 49868231 on-demand $0.684/h, $0.405 total; 53150720 
+16:38:40 SweepError: vastai returned no JSON: 
+16:38:45 renting RTX 5090, host 220936, $0.412/h; estimate $0.206
+16:38:45 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 51969558 bid $0.412/h, $0.206 total; 49539124 bid $0.418/h, $0.230 total; 48137358 bid $0.443/h, $0.250 total; 48425192 bid $0.448/h, $0.266 total; 47767747 bid $0.483/h, $0.262 total; 45080654 bid $0.536/h, $0.269 total; 36318699 bid $0.536/h, $0.289 total; 52414890 on-demand $0.536/h, $0.310 total; 47767747 on-demand $0.544/h, $0.293 total; 47513476 on-demand $0.607/h, $0.325 total; 35010867 bid $0.626/h, $0.313 total; 49868227 bid $0.636/h, $0.381 total; 35010863 on-demand $0.648/h, $0.324 total; 47039432 on-demand $0.675/h, $0.379 total; 51971807 bid $0.683/h, $0.393 total; 49868231 on-dem
+16:38:46 SweepError: vastai returned no JSON: 
+16:38:51 renting RTX 5090, host 97910, $0.423/h; estimate $0.232
+16:38:51 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 34905063 bid $0.423/h, $0.232 total; 48425192 bid $0.448/h, $0.266 total; 47767747 bid $0.483/h, $0.262 total; 47513476 bid $0.500/h, $0.271 total; 45685721 on-demand $0.516/h, $0.279 total; 52414890 on-demand $0.536/h, $0.310 total; 47767747 on-demand $0.544/h, $0.293 total; 51284767 bid $0.553/h, $0.297 total; 47513476 on-demand $0.607/h, $0.325 total; 34905063 on-demand $0.611/h, $0.326 total; 49868231 bid $0.636/h, $0.381 total; 52592200 bid $0.677/h, $0.380 total; 52528402 bid $0.681/h, $0.351 total; 51971807 bid $0.683/h, $0.393 total; 49868231 on-demand $0.684/h, $0.405 total; 51971807 
+16:38:52 SweepError: vastai returned no JSON: 
+16:38:57 renting RTX 5090, host 146008, $0.483/h; estimate $0.262
+16:38:57 ranking: lowest hourly price; estimates use 0.5 hours plus 8 GB download; 47767747 bid $0.483/h, $0.262 total; 42405155 bid $0.561/h, $0.301 total; 40411107 on-demand $0.607/h, $0.325 total; 47513476 on-demand $0.607/h, $0.325 total; 49868227 bid $0.636/h, $0.381 total; 47039432 on-demand $0.675/h, $0.379 total; 53039899 on-demand $0.678/h, $0.360 total; 49868231 on-demand $0.684/h, $0.405 total; 51388935 bid $0.709/h, $0.407 total; 47905086 on-demand $0.727/h, $0.395 total; 52845008 on-demand $0.731/h, $0.386 total; 53150720 on-demand $0.756/h, $0.440 total; 53346265 bid $0.764/h, $0.403 total; 53277229 on-demand $0.815/h, $0.428 total; 47580836 bid $0.816/h, $0.41
+16:38:59 instance 53388474: (None, None)
+16:39:31 instance 53388474: ('loading', '55557fec2dac: Verifying Checksum\n55557fec2dac: Download complete\n')
+16:39:47 instance 53388474: ('loading', '77be074b1ca8: Verifying Checksum\n77be074b1ca8: Download complete\n')
+16:43:53 waiting: remaining estimate $0.262; replacement $0.271
+16:44:12 waiting: remaining estimate $0.263; replacement $0.230
+16:44:31 waiting: remaining estimate $0.263; replacement $0.266
+16:44:51 waiting: remaining estimate $0.263; replacement $0.235
+16:45:10 waiting: remaining estimate $0.263; replacement $0.246
+16:45:26 instance 53388474: ('loading', 'b2449364bbe7: Retrying in 1 second\n')
+16:49:22 KeyboardInterrupt: 
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 342, in <module>
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 336, in main
+    raise SystemExit(2)
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 473, in execute
+    time.sleep(30)
+^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 417, in attempt
+    if isinstance(error, KeyboardInterrupt):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/vast.py", line 420, in _destroy
+    def _destroy(instance_id: int, log: Any) -> None:
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/vast.py", line 125, in _vastai
+    result = subprocess.run(['ssh', '-G', *_ssh_options('22'), 'root@127.0.0.1'],
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/subprocess.py", line 2115, in _communicate
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 340, in <lambda>
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 340, in <genexpr>
+KeyboardInterrupt
+16:50:15 committed source 71c6622fd3d7; output results/m1-210210-kcbump-2026-09-29/run2
+16:50:19 renting RTX 5090, host 127708, $0.512/h; estimate $0.277
+16:50:19 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 40411107 unknown bid $0.512/h, $0.256/fit, $0.277 total; 46877351 unknown bid $0.513/h, $0.257/fit, $0.277 total; 44031033 unknown bid $0.532/h, $0.266/fit, $0.277 total; 52414890 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 52723081 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 40411107 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 49868227 unknown bid $0.636/h, $0.318/fit, $0.381 total; 53219819 unknown on-demand $0.648/h, $0.324/fit, $0.398 total; 47039432 unknown on-demand $0.675/h, $0.338/fit, $0.379 total; 52331007 unknown on-demand $0.678/h, $0.339/fit, $0.360 t
+16:50:21 SweepError: vastai returned no JSON: 
+16:50:25 renting RTX 5090, host 80057, $0.416/h; estimate $0.229
+16:50:25 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 53039899 unknown bid $0.416/h, $0.208/fit, $0.229 total; 52331007 unknown bid $0.423/h, $0.212/fit, $0.232 total; 48137358 unknown bid $0.443/h, $0.221/fit, $0.250 total; 44031033 unknown bid $0.532/h, $0.266/fit, $0.277 total; 52723081 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 53061195 unknown bid $0.549/h, $0.275/fit, $0.296 total; 51284767 unknown bid $0.553/h, $0.277/fit, $0.297 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 53076980 unknown on-demand $0.598/h, $0.299/fit, $0.330 total; 49868231 unknown bid $0.636/h, $0.318/fit, $0.381 total; 47039432 unknown o
+16:50:26 SweepError: vastai returned no JSON: 
+16:50:31 renting RTX 5090, host 43794, $0.412/h; estimate $0.227
+16:50:31 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 51027933 unknown bid $0.412/h, $0.206/fit, $0.227 total; 48425190 unknown bid $0.448/h, $0.224/fit, $0.266 total; 53076980 unknown bid $0.513/h, $0.257/fit, $0.288 total; 45080652 unknown bid $0.536/h, $0.268/fit, $0.269 total; 52723081 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 48225469 unknown bid $0.549/h, $0.275/fit, $0.296 total; 53076980 unknown on-demand $0.598/h, $0.299/fit, $0.330 total; 49868229 unknown bid $0.636/h, $0.318/fit, $0.381 total; 47039432 unknown on-demand $0.675/h, $0.338/fit, $0.379 total; 52845008 unknown bid $0.683/h, $0.341/fit, $0.362 total; 51971807 unk
+16:50:33 instance 53389781: (None, None)
+16:51:05 instance 53389781: ('loading', None)
+16:51:22 instance 53389781: ('loading', 'dc22b8c341d9: Pull complete\n')
+16:55:25 instance 53389781: ('loading', 'b2449364bbe7: Verifying Checksum\n')
+16:55:41 instance 53389781: ('loading', '#0 building with "default" instance using docker driver\n\n#1 [internal] load build definition from ghcr.io_potatoist314_ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34\n')
+16:55:57 instance 53389781: ('loading', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34')
+16:56:14 instance 53389781: ('created', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34')
+17:00:19 waiting: remaining estimate $0.227; replacement $0.250
+17:00:43 waiting: remaining estimate $0.227; replacement $0.395
+17:01:10 waiting: remaining estimate $0.227; replacement $0.269
+17:06:11 SweepError: vastai show instance 53389781 --raw failed: Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53389781/?owner=me (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/bin/vastai", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 182, in main
+    run_command(args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 189, in run_command
+    res = args.func(args)
+          ^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 51, in show__instance
+    result = instances_api.show_instance(client, id=args.id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 82, in show_instance
+    r = client.get(f"/instances/{id}/", query_args={"owner": "me"})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 146, in get
+    return self._request('GET', url, headers, json_data, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 127, in _request
+    r = session.send(prep, timeout=effective_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53389781/?owner=me (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+17:06:12 destroy attempt failed for 53389781: vastai destroy instance 53389781 -y failed: Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53389781/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/bin/vastai", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 182, in main
+    run_command(args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 189, in run_command
+    res = args.func(args)
+          ^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 327, in destroy__instance
+    destroy_instance_impl(args.id, args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 293, in destroy_instance_impl
+    rj = instances_api.destroy_instance(client, id=id)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 139, in destroy_instance
+    r = client.delete(f"/instances/{id}/", json_data=json_blob)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 164, in delete
+    return self._request('DELETE', url, headers, json_data if json_data is not None else {}, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 127, in _request
+    r = session.send(prep, timeout=effective_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53389781/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+17:06:29 destroy attempt failed for 53389781: vastai destroy instance 53389781 -y failed: Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53389781/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/bin/vastai", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 182, in main
+    run_command(args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 189, in run_command
+    res = args.func(args)
+          ^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 327, in destroy__instance
+    destroy_instance_impl(args.id, args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 293, in destroy_instance_impl
+    rj = instances_api.destroy_instance(client, id=id)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 139, in destroy_instance
+    r = client.delete(f"/instances/{id}/", json_data=json_blob)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 164, in delete
+    return self._request('DELETE', url, headers, json_data if json_data is not None else {}, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 127, in _request
+    r = session.send(prep, timeout=effective_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53389781/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+17:19:05 destroy attempt failed for 53389781: vastai destroy instance 53389781 -y failed: Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53389781/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/bin/vastai", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 182, in main
+    run_command(args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 189, in run_command
+    res = args.func(args)
+          ^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 327, in destroy__instance
+    destroy_instance_impl(args.id, args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 293, in destroy_instance_impl
+    rj = instances_api.destroy_instance(client, id=id)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 139, in destroy_instance
+    r = client.delete(f"/instances/{id}/", json_data=json_blob)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 164, in delete
+    return self._request('DELETE', url, headers, json_data if json_data is not None else {}, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 127, in _request
+    r = session.send(prep, timeout=effective_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53389781/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+17:19:20 LEAKED INSTANCE 53389781: destroy it manually, it is still billing
+error: vastai show instances --raw failed: Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v1/instances/?select_filters=%7B%7D&order_by=%5B%7B%22col%22%3A+%22id%22%2C+%22dir%22%3A+%22asc%22%7D%5D&limit=25 (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/bin/vastai", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 182, in main
+    run_command(args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 189, in run_command
+    res = args.func(args)
+          ^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 1143, in show__instances
+    return instances_api.show_instances(client, select_filters=select_filters, order_by=order_by)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 45, in show_instances
+    data = show_instances_v1(client, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 69, in show_instances_v1
+    r = client.get("/api/v1/instances/", query_args=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 146, in get
+    return self._request('GET', url, headers, json_data, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 127, in _request
+    r = session.send(prep, timeout=effective_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v1/instances/?select_filters=%7B%7D&order_by=%5B%7B%22col%22%3A+%22id%22%2C+%22dir%22%3A+%22asc%22%7D%5D&limit=25 (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+19:58:53 committed source d522c7662933; output results/m1-210210-kcbump-2026-09-29/run3
+19:58:56 renting RTX 5090, host 332635, $0.494/h; estimate $0.257
+19:58:56 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 46902711 good bid $0.494/h, $0.247/fit, $0.257 total; 47513476 unknown bid $0.388/h, $0.194/fit, $0.215 total; 34905063 unknown bid $0.423/h, $0.212/fit, $0.232 total; 48137358 unknown bid $0.443/h, $0.221/fit, $0.250 total; 46877415 unknown bid $0.443/h, $0.222/fit, $0.242 total; 52902766 unknown bid $0.483/h, $0.241/fit, $0.262 total; 44031033 unknown bid $0.532/h, $0.266/fit, $0.277 total; 49071943 unknown bid $0.539/h, $0.270/fit, $0.270 total; 50208820 unknown bid $0.541/h, $0.271/fit, $0.291 total; 45080654 unknown bid $0.549/h, $0.275/fit, $0.276 total; 42405155 unknown bid $0.561/h, $0
+19:58:58 instance 53410690: (None, None)
+19:59:14 instance 53410690: ('loading', 'dc22b8c341d9: Verifying Checksum\n')
+19:59:30 instance 53410690: ('loading', 'f57cecf87087: Pull complete\n')
+20:02:05 instance 53410690: ('loading', 'b2449364bbe7: Verifying Checksum\nb2449364bbe7: ')
+20:02:22 instance 53410690: ('loading', '#7 3.357 Get:80 http://deb.debian.org/debian bookworm/main amd64 python3-dbus amd64 1.3.2-4+b1 [95.1 kB]\n#7 3.357 Get:81 http://deb.debian.org/debian bookworm/main amd64 python3-distro all 1.8.0-1 [20.5 kB]\n#7 3.414 Get:82 http://deb.debian.org/debian bookworm/main amd64 python3-gi amd64 3.42.2-3+b1 [219 kB]\n#7 3.455 Get:83 http://deb.debian.org/debian bookworm/main amd64 python3-pyparsing all 3.0.9-1 [138 kB]\n')
+20:02:39 instance 53410690: ('loading', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34')
+20:02:57 instance 53410690: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+20:03:02 uploading pinned source, inputs and cached grid
+20:06:41 bootstrap: running; nometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 1ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+20:07:01 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16.h5
+Ceridwen GPU environment ready.
+20:07:14 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:07:34 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:07:53 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:08:13 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:08:32 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:08:53 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:09:12 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:09:32 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:09:54 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:10:13 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:10:32 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:10:52 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:11:13 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:11:32 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:11:52 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:12:11 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:12:30 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:12:49 fit-0: running; 20:07:12 fitting default14/M1_210210, seed 20260927
+20:13:09 fit-0: 1; .py", line 298, in main
+    return remote(args.config, args.output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 197, in remote
+    raise RuntimeError(f"fit failed: {cell['name']}")
+RuntimeError: fit failed: default14/M1_210210
+20:13:20 StageFailed: fit-0 exited 1; inspect /Users/liuhao/Downloads/Astro project/results/m1-210210-kcbump-2026-09-29/run3/53410690-fit-0.log before retrying
+20:13:22 destroyed instance 53410690

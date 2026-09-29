@@ -1,0 +1,108 @@
+[
+  {
+    "amount": 0.003,
+    "description": "Instance 53388474 Charges - 1 day",
+    "end": 1790640000,
+    "items": [
+      {
+        "amount": 0.0,
+        "description": "GPU",
+        "end": 1790640000,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790640000,
+        "type": "gpu"
+      },
+      {
+        "amount": 0.003,
+        "description": "0.266 hours at $0.011/hour",
+        "end": 1790640000,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790640000,
+        "type": "disk"
+      },
+      {
+        "amount": 0.0,
+        "description": "Bandwidth (download)",
+        "end": 1790640000,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790640000,
+        "type": "bwd"
+      },
+      {
+        "amount": 0.0,
+        "description": "Bandwidth (upload)",
+        "end": 1790640000,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790640000,
+        "type": "bwu"
+      }
+    ],
+    "metadata": {
+      "label": "ceridwen-run-03d544aca99b-5"
+    },
+    "source": "instance-53388474",
+    "start": 1790640000,
+    "type": "instance"
+  },
+  {
+    "amount": 0.552,
+    "description": "Instance 53389781 Charges - 1 day",
+    "end": 1790640000,
+    "items": [
+      {
+        "amount": 0.529,
+        "description": "1.307 hours at $0.405/hour",
+        "end": 1790640000,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790640000,
+        "type": "gpu"
+      },
+      {
+        "amount": 0.023,
+        "description": "3.062 hours at $0.007/hour",
+        "end": 1790640000,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790640000,
+        "type": "disk"
+      },
+      {
+        "amount": 0.0,
+        "description": "Bandwidth (download)",
+        "end": 1790640000,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790640000,
+        "type": "bwd"
+      },
+      {
+        "amount": 0.0,
+        "description": "Bandwidth (upload)",
+        "end": 1790640000,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790640000,
+        "type": "bwu"
+      }
+    ],
+    "metadata": {
+      "label": "ceridwen-run-03d544aca99b-8"
+    },
+    "source": "instance-53389781",
+    "start": 1790640000,
+    "type": "instance"
+  }
+]
