@@ -76,9 +76,11 @@ The user's contribution will be focused on overall research direction and method
 - Before another paid Ceridwen GPU benchmark, read `BENCHMARK_CHECK.md`.
 - GPU startup: use the compact image pinned in `scripts/vast.py`, selected input
   uploads and cached grids by default. Preserve the image recorded for resumed runs.
-- GPU rentals: choose the lowest hourly price for the requested GPU type, with
-  reliability above 99.5% (fall back to above 96% only if no offers pass all filters) and upload/download charges each below $10/TB.
-  No per-GPU hourly cap. Each experiment has a total $1 cap, including retries.
+- GPU rentals: among offers for the requested GPU type with reliability above 99.5%
+  (fall back to above 96% only if no offers pass all filters) and upload/download charges each below $10/TB,
+  rank hosts by their record in `scripts/vast_hosts.csv`: good, then unrecorded, then poor (only when
+  nothing else qualifies). Within a record, choose the lowest cost per fit where the host's speed is
+  recorded, otherwise the lowest hourly price. No per-GPU hourly cap. Each experiment has a total $1 cap, including retries.
 - For paid GPU benchmarks, do not destroy a rental solely because a fixed boot
   or setup time has elapsed. If progress stalls, briefly compare the expected
   remaining cost on that instance with the cost of a fresh rental, including
