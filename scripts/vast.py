@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import os
 import json
@@ -34,6 +35,7 @@ FIT_MIN_RELIABILITY = 0.995
 RELIABILITY_TIERS = (FIT_MIN_RELIABILITY, 0.96)
 FIT_BID_MARGIN_USD = 0.005
 FIT_MAX_INET_COST_USD_PER_TB = MAX_INET_COST_USD_PER_TB
+HOSTS_PATH = PROJECT_ROOT / "scripts/vast_hosts.csv"
 
 
 def experiment_cap(value):
@@ -41,6 +43,12 @@ def experiment_cap(value):
     if not math.isfinite(amount) or not 0 < amount <= 1:
         raise argparse.ArgumentTypeError("experiment spend cap must be above zero and at most USD 1")
     return amount
+
+
+def host_outcomes(path=HOSTS_PATH):
+    """Latest recorded outcome, good or poor, for each host id; later rows win."""
+    with open(path, newline="") as handle:
+        return {int(row["host_id"]): row["outcome"] for row in csv.DictReader(handle)}
 
 
 def bandwidth_qualifies(offer):

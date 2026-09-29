@@ -305,3 +305,13 @@ def test_exhausted_budget_still_attempts_partial_retrieval(run, monkeypatch):
     monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: copies.append(kw['timeout']))
     run.retrieve(attempt, run.data['source']['experiment'][0], '/remote', complete=False)
     assert copies == [1]
+
+
+def test_poor_hosts_are_skipped_and_good_hosts_win_price_ties(run, cloud, monkeypatch):
+    offer, _ = cloud
+    offers = [{**offer, 'id': i, 'host_id': i, 'dph_total': price}
+              for i, price in ((1, .40), (2, .45), (3, .45), (4, .50))]
+    monkeypatch.setattr(exp.vast, 'search_offers', lambda _, **kw: offers if kw['rental_type'] == 'on-demand' else [])
+    monkeypatch.setattr(exp.vast, 'host_outcomes', lambda: {1: 'poor', 3: 'good', 4: 'good'})
+    assert [row[1]['id'] for row in run.candidates('RTX 5090')] == [3, 2, 4]
+    assert next(r for r in run.selection['offers'] if r['offer_id'] == 1)['rejected'] == 'poor host in scripts/vast_hosts.csv'

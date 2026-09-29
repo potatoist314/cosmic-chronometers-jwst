@@ -213,6 +213,15 @@ class Run(engine.Run):
             args.spend_cap = min(args.spend_cap, json.loads(saved.read_text())['spend_cap'])
         super().__init__(args, source)
 
+    def candidates(self, gpu):
+        # Skip hosts whose latest row in scripts/vast_hosts.csv is poor; at equal price, good hosts go first.
+        outcomes = vast.host_outcomes()
+        ranked = [row for row in super().candidates(gpu) if outcomes.get(row[1]['host_id']) != 'poor']
+        for row in self.selection['offers']:
+            if row['rejected'] is None and outcomes.get(row['host_id']) == 'poor':
+                row['rejected'] = 'poor host in scripts/vast_hosts.csv'
+        return sorted(ranked, key=lambda row: (row[2], outcomes.get(row[1]['host_id']) != 'good'))
+
     def budget(self, reserve=0):
         # Leave up to two minutes of rental time to retrieve results before teardown.
         prices = [a['price'] for a in self.data['attempts'] if not a.get('destroyed')]

@@ -228,3 +228,16 @@ def test_missing_optional_cache_retains_bootstrap_fetch(tmp_path, monkeypatch):
     sweep._bootstrap(123, lambda _: None)
     assert len(commands) == 1
     assert 'CERIDWEN_GRID_PATH=' not in commands[0]
+
+
+def test_latest_host_row_sets_outcome(tmp_path):
+    path = tmp_path / 'hosts.csv'
+    path.write_text('host_id,outcome,gpu,date,run,reason\n'
+                    '406325,good,RTX 5090,2026-09-23,a,benchmark\n'
+                    '406325,poor,RTX 5090,2026-09-28,b,boot stalled\n'
+                    '87213,good,RTX 5060 Ti,2026-09-23,a,benchmark\n')
+    assert sweep.host_outcomes(path) == {406325: 'poor', 87213: 'good'}
+
+
+def test_recorded_host_outcomes_are_good_or_poor():
+    assert set(sweep.host_outcomes().values()) == {'good', 'poor'}
