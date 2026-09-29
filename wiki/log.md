@@ -1349,3 +1349,7 @@
 ### 2026-09-29 — Vast host ranking
 
 - Experiments and benchmarks share ranking: `good`, no row, `poor` as fallback; then cost per fit using recorded calls/s, or hourly price when absent. The benchmark skill now records hosts.
+
+### 2026-09-29 — SFH-basis fast path for all step-SFH models
+
+- The fast path now covers any bin count, per-bin SFR, evolving metallicity `zh` and birth-cloud dust. Only linear SFH interpolation and `track_zred_age` use the general path. ceridwen `37f04b0`.

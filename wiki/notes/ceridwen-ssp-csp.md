@@ -181,40 +181,43 @@ The first five lines reconstruct relative SFR values. The branch then normalizes
 <details>
 <summary>Details</summary>
 
-The production eight-node model precontracts the age axis once. The forward pass then interpolates alpha, metallicity, and SFH nodes without forming the full age cube. Matching models use this path automatically.
+`CSPBasis_afe` precomputes spectra per SFH bin, alpha plane and metallicity node. The forward pass interpolates alpha and metallicity, then weights bins by SFR without rebuilding the SSP age cube. Step interpolation with a fixed lookback grid enables this for any bin count, SFR layout, metallicity history or SSP grid shape.
 
-`ceridwen/ceridwen/csp/csp_afe.py:527-545 · CSPBasis_afe._configure_sfh_basis_fastpath`
+`ceridwen/ceridwen/csp/csp_afe.py:539-569 · CSPBasis_afe._configure_sfh_basis_fastpath`
 
 </details>
 
 ```
-if (self._n_afe, self._n_z, self._n_age) != (5, 13, 107):
-    return self
-elif self.n_time != 8 or self.sfh_per_bin:
-    return self
-elif not self.zh_const or self.sfh_interp != "step":
-    return self
+if self.sfh_interp != "step":
+    reason = "sfh_interp='linear' weights are not linear in the SFH"
 elif self.track_zred_age:
-    return self
-elif self._has_age_dependent_dust or self._has_dust_emission:
-    return self
-
-self._sfh_node_to_age = self._make_sfh_node_to_age_operator()
+    reason = "track_zred_age changes the age grid for each sample"
+else:
+    reason = None
+...
+operator = self._make_sfh_bin_to_age_operator()
+if self._has_age_dependent_dust:
+    rows, group = np.unique(
+        np.asarray(self._age_bin_mix), axis=0, return_inverse=True
+    )
+else:
+    rows, group = np.zeros((1, 0)), np.zeros(self._n_age, dtype=int)
+in_group = np.ravel(group)[None, :] == np.arange(len(rows))[:, None]
+self._sfh_bin_to_age = operator
 self._sfh_basis = jnp.einsum(
-    "na,pzaw->pznw",
-    self._sfh_node_to_age,
+    "ga,na,pzaw->pzgnw",
+    jnp.asarray(in_group, dtype=jnp.float32),
+    operator,
     self.flux,
 )
-self.sfh_basis_fastpath = True
-return self`
+self._dust_group_mix = jnp.asarray(rows, dtype=jnp.float32)
+self.sfh_basis_fastpath = True`
 ```
 
 <details>
 <summary>Details</summary>
 
-The method docstring enables the fixed-grid basis when the model contract matches.
-
-The production model uses the compact five-by-thirteen-by-eight basis. Other model structures retain the general calculation.
+Birth-cloud dust keeps separate bases for age groups that share an attenuation curve. `frac_obrun` and dust emission use these groups. `sfh_interp="linear"` and `track_zred_age` disable the fast path with warnings. Passing `theta["lookback_time"]` also bypasses it with a warning. `tests/test_ceridwen_dr2_production.py` asserts that the production notebook model uses it.
 
 </details>
 
