@@ -1,0 +1,16 @@
+{
+  "targets": [
+    "M1_210210"
+  ],
+  "seed": 20260927,
+  "settings": {
+    "metallicity_evolution": true
+  },
+  "priors": {
+    "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+    "diffuse_Ebump": "Uniform(low=0.0, high=12.0)"
+  },
+  "arms": {
+    "zevo": {}
+  }
+}
