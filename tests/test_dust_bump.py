@@ -10,7 +10,7 @@ import pytest
 
 jax.config.update("jax_enable_x64", True)
 
-from sedpy_jax.attenuation_dust import kriek_conroy, noll
+from sedpy_jax.attenuation_dust import calzetti, kriek_conroy, noll
 from ceridwen.dust.DustModel import DiffuseDust
 
 
@@ -23,11 +23,11 @@ def test_linked_law_preserves_reference():
 
 
 def test_zero_bump_zero_dust_and_analytic_peak_increment():
-    wave = jnp.array([1500., (1e4 / 4.59), 3000., 5500.])
+    wave = jnp.array([1500., 2175., 3000., 5500.])
     tau, slope, amplitude = .4, -.7, 2.0
     base = noll(wave, tau, slope, 0.)
     bumped = noll(wave, tau, slope, Ebump=amplitude)
-    expected = tau * amplitude / 4.05 * ((1e4 / 4.59) / 5500.) ** slope
+    expected = tau * amplitude / 4.05 * (2175. / 5500.) ** slope
     np.testing.assert_allclose(bumped[1] - base[1], expected, rtol=1e-12)
     np.testing.assert_array_equal(noll(wave, 0., slope, Ebump=amplitude), 0.)
     # After removing the power-law tilt, fixed bump amplitude is independent of slope.
@@ -58,6 +58,21 @@ def test_diffuse_wrapper_jit_and_independent_gradients():
         "diffuse_tau_noll", "diffuse_delta", "diffuse_Ebump", "diffuse_c_r"}
     assert "diffuse_Ebump" not in DiffuseDust().get_param_names()
 
+
+def test_production_bump_follows_kriek_conroy():
+    # Kriek & Conroy (2013) Eq. 2: centre 2175 A, FWHM 350 A.
+    dust = DiffuseDust("noll")
+    wave = jnp.arange(1500., 3000., .01)
+    theta = {"diffuse_tau_noll": .4, "diffuse_c_r": 0., "diffuse_delta": 0.}
+    bump = np.asarray(dust.compute_attenuation(wave, {**theta, "diffuse_Ebump": 2.})
+                      - dust.compute_attenuation(wave, {**theta, "diffuse_Ebump": 0.}))
+    half = np.asarray(wave)[bump >= bump.max() / 2]
+    assert np.asarray(wave)[bump.argmax()] == pytest.approx(2175., abs=.01)
+    assert half[-1] - half[0] == pytest.approx(350., abs=.05)
+    # E_bump = 0 is the tilted Calzetti curve.
+    theta["diffuse_delta"] = -.7
+    np.testing.assert_allclose(dust.compute_attenuation(wave, {**theta, "diffuse_Ebump": 0.}),
+                               .4 * calzetti(wave) * (wave / 5500.) ** -.7, rtol=1e-12)
 
 @pytest.mark.parametrize("birth_cloud", [False, True])
 def test_notebook_csp_routes_both_parameters_into_photometric_prediction(birth_cloud):

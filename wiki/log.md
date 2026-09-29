@@ -1337,3 +1337,7 @@
 ### 2026-09-27 — Fit retrieval checks
 
 - Downloads retry before local validation. Persistent retrieval failures stop automatic refits.
+
+### 2026-09-29 — Noll bump centre and width
+
+- Production Noll bump: Kriek & Conroy centre 2175 Å, FWHM 350 Å; amplitude independently free. sedpy_jax `9d8aa19`.
