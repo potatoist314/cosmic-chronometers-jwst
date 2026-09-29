@@ -190,6 +190,27 @@ The commands are from the M1_210210 KC13-bump page of 2026-09-29:
    `sips --resampleWidth 900 <file> --out <dir>/<name>_900.png`. Then open the output.
 5. **Write the page.** Use the `editing-the-wiki` skill. Use the structure of
    `wiki/notes/m1-210210-kcbump.md`.
+6. **Put the page on the wiki Results page.** Liu Hao, 2026-09-29: "i don't see it in
+   results. always put this stuff in results". Link the page from the research record
+   of the experiment in `wiki/research/experiments/`. The example is
+   `wiki/research/experiments/e-dust-bump.md`:
+   ```yaml
+   source_notes: m1-210210-kcbump
+   result_groups: results/m1-210210-kcbump-2026-09-29
+   ```
+   `source_notes` is the slug of the note. `result_groups` is the result directory.
+   For the other fields, read `wiki/research/README.md`. Then run:
+   ```bash
+   python3 wiki/build.py
+   python3 wiki/tests/run_tests.py
+   python3 -m unittest discover -s wiki/tests -p 'test_research.py'
+   ```
+   Commit and push the record. Then check the live Results page:
+   ```bash
+   ssh truenas 'curl -s http://127.0.0.1:8765/results/' < /dev/null | grep <record id>
+   ```
+   If there is no output, wait 10 seconds and do the check again. If there is no
+   output after 60 seconds, the record is not on the page. Find the cause.
 
 The executed notebook has more images. Add one only when the request names it.
 
