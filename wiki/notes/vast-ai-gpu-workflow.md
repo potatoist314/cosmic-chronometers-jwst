@@ -96,6 +96,10 @@ The spectrum notebook fits spectra. The joint notebook fits photometry with nati
 - Require host reliability above 99.5 per cent; fall back to above 96 per cent only if no offers pass every filter.
 - Require upload and download prices each below $0.01 per GB.
 - Use the cheapest hourly offer for the requested GPU type, with a $1 experiment cap.
+- `scripts/vast_hosts.csv` records `host_id,outcome,gpu,date,run,reason`. Outcomes are `good` or `poor`. The latest row sets each host’s outcome. After each experiment run, the `running-ceridwen-experiments` skill adds one row per host that started an instance.
+- Experiments skip hosts whose latest outcome is `poor` and prefer `good` hosts at equal hourly price. `scripts/benchmark.py` does not read the list.
+
+Source: `scripts/experiment.py` — `Run.candidates`. `scripts/vast.py` — `host_outcomes`.
 
 Vast host `148498` in Croatia provided a tested-good A100 SXM4 40 GB allocation. Instance `48652928` completed the quick and full fits on 25 August 2026. This result applies to that allocation only.
 

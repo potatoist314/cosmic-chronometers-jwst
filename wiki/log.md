@@ -1341,3 +1341,7 @@
 ### 2026-09-29 — Noll bump centre and width
 
 - Production Noll bump: Kriek & Conroy centre 2175 Å, FWHM 350 Å; amplitude independently free. sedpy_jax `9d8aa19`.
+
+### 2026-09-29 — Vast host outcomes
+
+- Seeded `scripts/vast_hosts.csv` from run records in `results/` and `benchmarks/ceridwen/runs/`: 32 rows covering 24 hosts, with 11 good and 13 poor.
