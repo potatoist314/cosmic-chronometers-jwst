@@ -1345,3 +1345,7 @@
 ### 2026-09-29 — Vast host outcomes
 
 - Seeded `scripts/vast_hosts.csv` from run records in `results/` and `benchmarks/ceridwen/runs/`: 32 rows covering 24 hosts, with 11 good and 13 poor.
+
+### 2026-09-29 — Vast host ranking
+
+- Experiments and benchmarks share ranking: `good`, no row, `poor` as fallback; then cost per fit using recorded calls/s, or hourly price when absent. The benchmark skill now records hosts.

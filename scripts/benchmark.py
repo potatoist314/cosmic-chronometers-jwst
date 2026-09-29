@@ -16,6 +16,7 @@ import os
 import shlex
 import shutil
 import signal
+import statistics
 import subprocess
 import sys
 import time
@@ -180,6 +181,9 @@ class Run:
         hosts = {a['offer']['host_id'] for a in self.data['attempts']}
         ids = {a['offer']['id'] for a in self.data['attempts']}
         hosts.update(i['host_id'] for i in vast._vastai_json(['show', 'instances']))
+        outcomes, speeds = vast.host_outcomes(), vast.host_speeds(gpu)
+        # A host without a recorded speed runs at the median recorded speed of this GPU type.
+        typical = statistics.median(speeds.values()) if speeds else None
         result = []
         audit = []
         for min_reliability in vast.RELIABILITY_TIERS:
@@ -199,18 +203,24 @@ class Run:
                 if terms and reason is None:
                     price, bid = terms
                     expected = price * .5 + self.download_gb * float(offer['inet_down_cost'])
-                    result.append((expected, offer, price, bid))
+                    speed = speeds.get(offer['host_id'])
                     row.update(hourly_usd=price, download_usd_per_gb=offer['inet_down_cost'],
-                               expected_usd=expected)
+                               expected_usd=expected, host_record=outcomes.get(offer['host_id'], 'unknown'),
+                               calls_per_second=speed, fit_usd=price * .5 * (typical / speed if speed else 1))
+                    result.append((row, (expected, offer, price, bid)))
                 audit.append(row)
             if result:
                 break
-        result.sort(key=lambda row: (row[2], row[0], row[1]['id'], row[3] is not None))
+        # Poor hosts in scripts/vast_hosts.csv rank last, so they are rented only when nothing else qualifies.
+        order = lambda row: (('good', 'unknown', 'poor', None).index(row.get('host_record')),
+                             row.get('fit_usd', math.inf), row.get('hourly_usd', math.inf),
+                             row.get('expected_usd', math.inf), row['offer_id'], row['rental_type'] == 'bid')
+        result.sort(key=lambda pair: order(pair[0]))
         self.selection = {'gpu': gpu, 'queried_at': datetime.now(UTC).isoformat(),
                           'min_reliability': min_reliability, 'estimated_hours': .5, 'estimated_download_gb': self.download_gb,
-                          'ranking': 'hourly USD, then estimated total USD',
-                          'offers': sorted(audit, key=lambda row: (row.get('hourly_usd', math.inf), row.get('expected_usd', math.inf)))}
-        return result
+                          'ranking': 'host record (good, unknown, poor), then USD per fit at recorded speed, then hourly USD',
+                          'offers': sorted(audit, key=order)}
+        return [candidate for _, candidate in result]
 
     def wait_ready(self, attempt):
         last_message, last_progress, cheaper_checks = None, time.monotonic(), 0
@@ -467,8 +477,8 @@ class Run:
                 self.data.setdefault('selections', []).append(self.selection)
                 self.save()
                 log(f"renting {gpu}, host {offer['host_id']}, ${price:.3f}/h; estimate ${cost:.3f}")
-                log(f'ranking: lowest hourly price; estimates use 0.5 hours plus {self.download_gb:g} GB download; ' + '; '.join(
-                    f"{r['offer_id']} {r['rental_type']} ${r['hourly_usd']:.3f}/h, ${r['expected_usd']:.3f} total"
+                log(f'ranking: host record, then USD per fit; estimates use 0.5 hours plus {self.download_gb:g} GB download; ' + '; '.join(
+                    f"{r['offer_id']} {r['host_record']} {r['rental_type']} ${r['hourly_usd']:.3f}/h, ${r['fit_usd']:.3f}/fit, ${r['expected_usd']:.3f} total"
                     for r in self.selection['offers'] if r['rejected'] is None)[:600])
                 self.attempt(offer, price, bid)
                 if self.data['attempts'][-1].get('retryable') is False:

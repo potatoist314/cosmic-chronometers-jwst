@@ -9,6 +9,7 @@ import hashlib
 import os
 import json
 import math
+import re
 import shlex
 import subprocess
 import time
@@ -49,6 +50,13 @@ def host_outcomes(path=HOSTS_PATH):
     """Latest recorded outcome, good or poor, for each host id; later rows win."""
     with open(path, newline="") as handle:
         return {int(row["host_id"]): row["outcome"] for row in csv.DictReader(handle)}
+
+
+def host_speeds(gpu, path=HOSTS_PATH):
+    """Latest benchmark speed, '<N> calls/s' in the reason, for each host id with this GPU type."""
+    with open(path, newline="") as handle:
+        return {int(row["host_id"]): float(match[1]) for row in csv.DictReader(handle)
+                if row["gpu"] == gpu and (match := re.search(r"(\d+) calls/s", row["reason"]))}
 
 
 def bandwidth_qualifies(offer):
