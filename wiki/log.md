@@ -1353,3 +1353,8 @@
 ### 2026-09-29 — SFH-basis fast path for all step-SFH models
 
 - The fast path now covers any bin count, per-bin SFR, evolving metallicity `zh` and birth-cloud dust. Only linear SFH interpolation and `track_zred_age` use the general path. ceridwen `37f04b0`.
+
+### 2026-09-29 — Representative quiescent test set
+
+- Replaced `results/quiescent-test-set/{targets,experiment}.json`: 10 extremes → P10–P90 coverage in log M*, mass-weighted age, [Fe/H], tau_dust, sigma*, half-weight z.
+- Parent: 109/187 DR2 quiescent fits; clean COSMOS2025/COSMOS2020 Classic flags; excluded low-S/N, bad-chi2/N, bound-f_calib, residual-outlier cases. M1_210210 retained; seed 20260929.
