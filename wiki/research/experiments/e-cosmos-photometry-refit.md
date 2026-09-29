@@ -9,7 +9,7 @@ status: results-ready
 question: q-cosmos-photometry
 follow_up:
 source_notes: cosmos-photometry-refit, cosmos-photometry-comparison
-result_groups: results/cosmos-photometry-refit
+result_groups: results/cosmos-photometry-refit, results/cosmos-photometry-comparison
 ---
 
 ## Context
@@ -235,6 +235,7 @@ Values are posterior median ± half the 16–84% width. All fits use seed 202608
 ## References
 
 - [cosmos-photometry-comparison](wiki/notes/cosmos-photometry-comparison.md)
+- [match.csv](results/cosmos-photometry-comparison/match.csv)
 - [cosmos-photometry-refit](wiki/notes/cosmos-photometry-refit.md)
 - [e-m1-210210-reference](wiki/research/experiments/e-m1-210210-reference.md)
 
