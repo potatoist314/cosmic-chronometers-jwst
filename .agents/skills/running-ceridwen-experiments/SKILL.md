@@ -57,6 +57,8 @@ Use `--image` only for an explicitly requested override. Saved runs keep their i
    price above 99.5% reliability, falling back to above 96% only if no offers
    pass all filters. Both bandwidth rates must be below $10/TB. The total $1
    cap covers all arms and retries; `--spend-cap` can reduce it.
+   The runner skips a host when its latest row in `scripts/vast_hosts.csv` is
+   `poor`. When two offers have the same hourly price, it rents the `good` host first.
 
    Missing registered grids download locally before rental. The command uploads
    pinned source and checked grids, runs the full notebook including existing
@@ -79,9 +81,22 @@ Use `--image` only for an explicitly requested override. Saved runs keep their i
    before considering another paid fit. Resume through the runner with the same
    configuration and output directory, within the remaining cap. Do not delete
    completed results or blindly rerun the sampler to repair missing plots.
-5. **Finish.** Report success or partial failure, the local result path, and any
+5. **Record hosts.** List the hosts that started an instance:
+   ```bash
+   python3 -c "import json; [print(a['offer']['host_id'], a['offer']['gpu_name'], a['status'], a.get('error', '')) for a in json.load(open('results/<slug>/run/manifest.json'))['attempts'] if a.get('instance_id')]"
+   ```
+   Add one row for each host to the end of `scripts/vast_hosts.csv`, with the
+   columns `host_id,outcome,gpu,date,run,reason`. The latest row sets the outcome.
+   - Write `good` when the fit finished on the host.
+   - Write `poor` when the host failed. Examples: the boot stalled, the instance
+     became unavailable, or the host closed SSH.
+   - Do not add a row for an offer that did not start an instance.
+   - Do not add a row for a failure that our code or inputs caused.
+   - Do not add a row when the records do not show the cause.
+6. **Finish.** Report success or partial failure, the local result path, and any
    diagnostic failure in 2–3 lines. Link the existing executed notebook and result
-   file. Commit and push task-owned configuration or code as required by `AGENTS.md`.
+   file. Commit and push task-owned configuration, code and new host rows as
+   required by `AGENTS.md`.
    Once local results are verified, the quick-fit task is complete.
 
 ## Analysis and publication: only when requested

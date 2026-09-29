@@ -1,0 +1,33 @@
+host_id,outcome,gpu,date,run,reason
+148498,good,A100 SXM4,2026-08-25,wiki/notes/vast-ai-gpu-workflow.md,instance 48652928 finished the quick and full fits
+555054,good,RTX 5070,2026-09-02,results/absorption-mask/vast_run_2026-09-02T200313+0000.json,instance 49679425 finished 9 of 9 fits
+332635,good,RTX 5070,2026-09-02,results/absorption-mask/vast_run_2026-09-02T204316+0000.json,instance 49683630 finished 1 of 1 fit
+332635,good,RTX 5070,2026-09-02,results/absorption-mask/vast_run_2026-09-02T205729+0000.json,instance 49684586 finished 1 of 1 fit
+574526,good,RTX 5060,2026-09-05,results/calibration-polynomial-dr2/vast_run_2026-09-05T033850+0000.json,instance 49915205 finished 20 of 20 fits
+166946,good,RTX 5060,2026-09-06,results/fit-accuracy-knobs/vast_run_2026-09-06T190844+0000.json,instance 50066418 finished 42 of 43 fits; 1 fit exited 1
+166946,good,RTX 5060,2026-09-07,results/fit-accuracy-knobs/vast_run_2026-09-07T014522+0000.json,instance 50103374 finished 22 of 23 fits; 1 fit exited 1
+78432,good,RTX 5060 Ti,2026-09-17,results/m1-210210-reference/tau-0p2/vast_run_2026-09-17T172226+0000.json,instance 51329179 finished 1 of 1 fit
+78432,good,RTX 5060 Ti,2026-09-17,results/m1-210210-reference/tau-1/vast_run_2026-09-17T175951+0000.json,instance 51331110 finished 1 of 1 fit
+78432,good,RTX 5060 Ti,2026-09-21,results/no-emission-mask/vast_run_2026-09-21T110044+0000.json,instance 51896980 finished 1 of 1 fit
+366851,poor,RTX 5090,2026-09-23,results/gpu-benchmark-2026-09-23/vast_fail_rtx-5090_host_366851_20260923T145851.json,instance 52248243 went offline before running
+166946,good,RTX 5060,2026-09-23,results/gpu-benchmark-2026-09-23/vast_run_rtx-5060_host_166946_20260923T160645.json,instance 52256097 finished the benchmark; 27754 calls/s
+166757,poor,RTX 5070 Ti,2026-09-23,results/gpu-benchmark-2026-09-23/vast_fail_rtx-5070-ti_host_166757_20260923T160743.json,instance 52256098 had no SSH within 8 min
+605466,poor,RTX 5060 Ti,2026-09-23,results/gpu-benchmark-2026-09-23/vast_fail_rtx-5060-ti_host_605466_20260923T160749.json,instance 52256099 had no SSH within 8 min
+87213,good,RTX 5060 Ti,2026-09-23,results/gpu-benchmark-2026-09-23/sol/manifest.json,instance 52261203 finished the benchmark; 33115 calls/s
+92578,good,RTX 5060 Ti,2026-09-23,results/gpu-benchmark-2026-09-23/sol/manifest.json,instance 52263839 finished the benchmark; 33231 calls/s
+90577,poor,RTX 5090,2026-09-23,results/gpu-benchmark-2026-09-23/sol/manifest.json,bid instance 52265958: host closed the SSH connection after 6.5 min
+516546,poor,RTX 5060 Ti,2026-09-23,results/emission-line-marginalisation/vast_run_2026-09-23T171807+0000.json,instance 52266194: host closed the SSH connection during the run
+616858,good,RTX 5080,2026-09-23,results/gpu-benchmark-2026-09-23/sol/manifest.json,instance 52282106 finished the benchmark; 79161 calls/s
+60576,poor,RTX 5090,2026-09-23,results/gpu-benchmark-2026-09-23/sol/manifest.json,bid instance 52283516 stayed in created without SSH for 25 min
+526342,poor,RTX 5090,2026-09-23,results/gpu-benchmark-2026-09-23/sol/manifest.json,instance 52287384 image pull made no visible progress in 18 min
+213578,poor,RTX 5090,2026-09-23,results/gpu-benchmark-2026-09-23/sol/manifest.json,instance 52289523 measured 94294 calls/s; host 406325 measured 148930 calls/s in the same RTX 5090 benchmark
+511119,good,RTX 5070,2026-09-23,results/gpu-benchmark-2026-09-23/sol/manifest.json,instance 52292035 finished the benchmark; 44179 calls/s
+406325,good,RTX 5090,2026-09-23,results/gpu-benchmark-2026-09-23/sol/manifest.json,instance 52295242 finished the benchmark; 148930 calls/s
+92578,poor,RTX 5060 Ti,2026-09-23,results/birth-cloud-dust/vast_run_2026-09-23T210533+0000.json,bid instance 52298088: host closed the SSH connection
+622869,good,RTX 5090,2026-09-23,results/gpu-benchmark-2026-09-23/diagnostic/summary.json,bid instance 52299029 diagnostic: 150937 calls/s at batch 500 with the GPU 96% busy
+92578,good,RTX 5060 Ti,2026-09-23,results/birth-cloud-dust/vast_run_2026-09-23T221813+0000.json,instance 52299165 finished 1 fit before the task spend cap stopped the run
+51345,poor,RTX 5070,2026-09-24,benchmarks/ceridwen/runs/command-test-5070-5080/manifest.json,instance 52407672 boot stalled; runner replaced it after 530 s
+20317,poor,RTX 5090,2026-09-27,results/m1-210210-default-14bins-2026-09-27/run2/manifest.json,bid instance 52944734 boot stalled; runner replaced it after 442 s
+4535,poor,RTX 5090,2026-09-28,results/m1-210210-default-14bins-2026-09-27/run3/manifest.json,bid instance 53073198 became unavailable during the fit after 8 sampler iterations (bead astro-9i2)
+406325,poor,RTX 5090,2026-09-28,results/m1-210210-default-14bins-2026-09-27/run3/manifest.json,instance 53074427 boot stalled; runner replaced it after 339 s
+96250,poor,RTX 5090,2026-09-29,results/m1-210210-kcbump-2026-09-29/run/manifest.json,bid instance 53382374 stayed in loading for 12 min; host DNS failed (curl: Could not resolve host: cloud.vast.ai); destroyed
