@@ -31,3 +31,5 @@ host_id,outcome,gpu,date,run,reason
 4535,poor,RTX 5090,2026-09-28,results/m1-210210-default-14bins-2026-09-27/run3/manifest.json,bid instance 53073198 became unavailable during the fit after 8 sampler iterations (bead astro-9i2)
 406325,poor,RTX 5090,2026-09-28,results/m1-210210-default-14bins-2026-09-27/run3/manifest.json,instance 53074427 boot stalled; runner replaced it after 339 s
 96250,poor,RTX 5090,2026-09-29,results/m1-210210-kcbump-2026-09-29/run/manifest.json,bid instance 53382374 stayed in loading for 12 min; host DNS failed (curl: Could not resolve host: cloud.vast.ai); destroyed
+332635,poor,RTX 5090,2026-09-29,results/m1-210210-kcbump-wide-2026-09-29/run/manifest.json,instance 53419954: SSH to port 7070 timed out from 21:25 to 21:30 UTC; runner replaced it
+622869,good,RTX 5090,2026-09-29,results/m1-210210-kcbump-wide-2026-09-29/run/manifest.json,instance 53420896 finished 1 of 1 fit
