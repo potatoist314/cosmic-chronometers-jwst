@@ -13,6 +13,8 @@ import shlex
 import signal
 import subprocess
 import sys
+import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -237,7 +239,9 @@ def regenerate_figures(output):
                 derived.write_bytes(gpu_derived)
 
 
-def remote(config, output):
+def remote(config, output, fits_per_gpu=1):
+    if fits_per_gpu > 1:
+        return remote_concurrent(config, output, fits_per_gpu)
     if __package__:
         from . import run_ceridwen_vast_multi_gpu as worker
     else:
@@ -256,6 +260,36 @@ def remote(config, output):
         if worker._execute_target(target, directory) != 0:
             raise RuntimeError(f"fit failed: {cell['name']}")
         validate_result(directory)
+    return 0
+
+
+def remote_concurrent(config, output, fits_per_gpu):
+    """Fit the cells fits_per_gpu at a time under a CUDA MPS daemon that this call owns.
+
+    Under MPS the kernels of concurrent fits share the GPU's multiprocessors instead of
+    time-slicing it. Each cell runs the one-cell path in its own process with its share of
+    the memory pool; with autotune level 0 its dead points match a fit alone bit for bit.
+    """
+    cells = json.loads(config.read_text())
+    pipe = Path(tempfile.mkdtemp(prefix='mps-'))
+    mps = {**os.environ, 'CUDA_MPS_PIPE_DIRECTORY': str(pipe), 'CUDA_MPS_LOG_DIRECTORY': str(pipe)}
+    subprocess.run(['nvidia-cuda-mps-control', '-d'], env=mps, check=True)
+    environment = {**mps, 'XLA_CLIENT_MEM_FRACTION': f'{0.75 / fits_per_gpu:.2f}'}
+
+    def fit(index):
+        cell_config = config.with_name(f'{config.stem}-{index}.json')
+        cell_config.write_text(json.dumps([cells[index]]))
+        return subprocess.run([sys.executable, str(Path(__file__).resolve()), 'remote', '--config', str(cell_config),
+                               '--output', str(output)], env=environment).returncode
+
+    try:
+        with ThreadPoolExecutor(fits_per_gpu) as pool:
+            codes = list(pool.map(fit, range(len(cells))))
+    finally:
+        subprocess.run(['nvidia-cuda-mps-control'], input='quit\n', text=True, env=mps)
+    failed = [cell['name'] for cell, code in zip(cells, codes) if code]
+    if failed:
+        raise RuntimeError(f'fits failed: {failed}')
     return 0
 
 
@@ -306,11 +340,15 @@ class Run(engine.Run):
     def measure(self, attempt):
         environment = self.prepare(attempt)
         instance = attempt['instance_id']
-        for index, cell in enumerate(self.data['source']['experiment']):
-            if cell['name'] in self.data.get('completed_cells', []):
-                continue
+        fits_per_gpu = self.args.fits_per_gpu
+        pending = [(index, cell) for index, cell in enumerate(self.data['source']['experiment'])
+                   if cell['name'] not in self.data.get('completed_cells', [])]
+        # Several fits per GPU: one stage fits every pending cell, fits_per_gpu at a time.
+        groups = [pending] if fits_per_gpu > 1 and len(pending) > 1 else [[item] for item in pending]
+        for group in groups:
+            index, cells = group[0][0], [cell for _, cell in group]
             remote_root = f'{engine.REMOTE}/.experiment/{instance}/{index}'
-            payload = json.dumps([cell])
+            payload = json.dumps(cells)
             vast._ssh(instance, f'mkdir -p {remote_root} && printf %s {shlex.quote(payload)} > {remote_root}/config.json',
                       timeout=self.timeout(attempt))
             # Autotune level 0: XLA's fixed GPU kernel choices, the same in every process.
@@ -319,19 +357,32 @@ class Run(engine.Run):
             xla_flags = '--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0'
             command = environment + f"SPS_HOME={engine.REMOTE}/external/fsps MPLBACKEND=Agg XLA_FLAGS='{xla_flags}' " + shlex.join([
                 '.venv-ceridwen-gpu/bin/python', 'scripts/experiment.py', 'remote',
-                '--config', f'{remote_root}/config.json', '--output', f'{remote_root}/results'])
+                '--config', f'{remote_root}/config.json', '--output', f'{remote_root}/results',
+                *(['--fits-per-gpu', str(fits_per_gpu)] if len(cells) > 1 else [])])
             try:
                 self.stage(attempt, f'fit-{index}', command)
             finally:
                 # Recover partial outputs too; preserve a failed fit's original error.
                 stage_error = sys.exception()
                 try:
-                    self.retrieve(attempt, cell, remote_root, complete=stage_error is None)
+                    # One download holds every cell of the stage; each success is validated.
+                    for cell in (cells if stage_error is None else cells[:1]):
+                        self.retrieve(attempt, cell, remote_root, complete=stage_error is None)
                 except engine.StageFailed as error:
                     if stage_error is None:
                         raise
                     engine.log(str(error))
-            self.data.setdefault('completed_cells', []).append(cell['name'])
+                if stage_error is not None and len(cells) > 1:
+                    # Cells that finished before the failure need no refit on resume.
+                    for cell in cells:
+                        try:
+                            validate_local_result(self.root / 'fits' / cell['arm']
+                                                  / f"{cell['target_metadata']['object_id']}-{cell['target']}")
+                        except (subprocess.SubprocessError, OSError):
+                            continue
+                        self.data.setdefault('completed_cells', []).append(cell['name'])
+                    self.save()
+            self.data.setdefault('completed_cells', []).extend(cell['name'] for cell in cells)
             self.save()
         attempt['status'] = 'complete'
 
@@ -346,19 +397,24 @@ def parser():
     run.add_argument('--image', help='container image reference; saved in the run manifest')
     run.add_argument('--revision', default='HEAD', help='committed project revision; saved revision on resume')
     run.add_argument('--spend-cap', type=vast.experiment_cap, default=1., help='total USD across arms and retries; maximum 1')
+    run.add_argument('--fits-per-gpu', type=int, default=1,
+                     help='cells fitted at once on the rental under CUDA MPS; 1 fits them one by one')
     run.add_argument('--max-attempts', type=int, default=3)
     run.add_argument('--wait-minutes', type=float, default=0)
     run.add_argument('--dry-run', action='store_true', help='check cached inputs and print the plan; no network or rental')
     worker = commands.add_parser('remote', help=argparse.SUPPRESS)
     worker.add_argument('--config', type=Path, required=True)
     worker.add_argument('--output', type=Path, required=True)
+    worker.add_argument('--fits-per-gpu', type=int, default=1)
     return result
 
 
 def main(argv=None):
     args = parser().parse_args(argv)
     if args.command == 'remote':
-        return remote(args.config, args.output)
+        return remote(args.config, args.output, args.fits_per_gpu)
+    if args.fits_per_gpu < 1:
+        raise ValueError('fits per GPU must be positive')
     if args.max_attempts < 1 or not math.isfinite(args.wait_minutes) or args.wait_minutes < 0:
         raise ValueError('attempts must be positive; wait must be finite and nonnegative')
     args.output = args.output or ROOT / 'results/experiments' / datetime.now(UTC).strftime('%Y%m%dT%H%M%S%f')
