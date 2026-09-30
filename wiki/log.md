@@ -1439,3 +1439,8 @@
 ### 2026-09-30 — e-mask-all-ca: O-lines-masked marginalisation arm
 
 - `research/experiments/e-mask-all-ca.md` records `neb_eline_ca_noO` against `neb_eline_ca_nohe` and `neb_maskallca` for M1_210210; the tied [O III] doublet column drops via offset mask entries 4963.5/5005.0 Å; `results/m1-210210-neb-eline-ca-noo-2026-09-30/`.
+
+### 2026-09-30 — Production defaults recorded in skills, wiki and tests
+
+- Recorded `~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5`, `emission_line_marginalisation = True`, and fixed catalogue redshift. The \(\pm1500\ \mathrm{km\,s^{-1}}\) mask covers rest-vacuum Ca II K 3934.77, Ca II H 3966.6 and 3973.3, and Ca I 4227.92 Å. [O II], H\(\beta\) and [O III] remain unmasked. Recorded `metallicity_evolution = True`, `zh_beta_unit` \(\mathrm{Uniform}(0,1)\), \(\beta=1/(1+\alpha)\) from \(0.05\) to \(\min(0.80,Z_f\text{ on the grid})\), and `diffuse_Ebump` \(\mathrm{Uniform}(0,6)\).
+- Files changed: `.agents/skills/running-ceridwen-experiments/SKILL.md`, `.agents/skills/checking-ceridwen-state/SKILL.md`, `wiki/notes/model.md`, `wiki/index.md`, `wiki/research/questions/q-emission-lines.md`, `wiki/notes/m1-210210-reference.md`.

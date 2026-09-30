@@ -20,7 +20,7 @@ Excluded
 : The \(\tau_{\mathrm{dust}}\) Uniform(0, 0.2) fit, `results/m1-210210-reference/tau-0p2`, kept on disk. Removed from the comparison on 2026-09-21: "tau dust less than 0.2 was a mistake and has no basis being compared against".
 
 C
-: `results/m1-210210-reference/tau-1/poly10/210210-M1_210210`. Order 10, \(\tau_{\mathrm{dust}}\) Uniform(0, 1), \(z\) Uniform(\(z_{\mathrm{cat}} \pm 0.1\)), \(\sigma_\star\) ClippedNormal(259.5, 6.5). Branch at cc983ce, ceridwen c540bc7. Production defaults.
+: `results/m1-210210-reference/tau-1/poly10/210210-M1_210210`. Order 10, \(\tau_{\mathrm{dust}}\) Uniform(0, 1), \(z\) Uniform(\(z_{\mathrm{cat}} \pm 0.1\)), \(\sigma_\star\) ClippedNormal(259.5, 6.5). Branch at cc983ce, ceridwen c540bc7. Production defaults at that commit.
 
 Common
 : Seed 20260832, BlackJAX NSS, 3523 spectral pixels, 12 `cosmos_total` bands, one RTX 5060 Ti on Vast.ai. Notebook: `results/m1-210210-reference/analysis.ipynb`.

@@ -19,6 +19,15 @@ The open decision is whether the Ceridwen fits model, mask or ignore emission li
 - Of the 187 fitted galaxies, 154 have neither an \([\mathrm{O\,II}]\) nor an \([\mathrm{O\,III}]\) equivalent width in the catalogue.
 - A blank equivalent width passes the sample cut.
 
+### Since 30 Sep 2026
+
+- The grid `~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5` includes FSPS CLOUDY lines and continuum at \(\log_{10}(\mathrm{age}/\mathrm{yr}) \leq 7.30\).
+- Line marginalisation fits non-negative fluxes shared with photometry, with redshift fixed at the catalogue value.
+- The mask covers \(\pm1500\ \mathrm{km\,s^{-1}}\) around rest-vacuum Ca II K 3934.77, Ca II H 3966.6 and 3973.3, and Ca I 4227.92 Å.
+- [O II], H\(\beta\) and [O III] remain unmasked: Liu Hao, “keep o unmasked as default is fine”.
+- H\(\epsilon\) 3971.26 Å and [Ne III] 3968.65 Å fall inside the Ca II H mask and receive no free-flux columns.
+- Records: `wiki/research/experiments/e-nebular-grid.md`, `e-mask-all-ca.md`, `e-zevo.md`.
+
 ### What the catalogue shows
 
 - The 187 fitted galaxies were matched to the DR2 catalogue by spectrum identifier.
@@ -58,6 +67,7 @@ The open decision is whether the Ceridwen fits model, mask or ignore emission li
 
 - Ceridwen has a nebular emission model.
 - Ceridwen's nebular model is switched off in the production fits.
+- Since 30 Sep 2026, nebular emission enters through `~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5`, not through `NebularModel`.
 - It uses the CLOUDY tables that ship with FSPS.
 - The MIST tables contain 11 metallicities, 10 ages and 7 ionisation parameters.
 - The FSPS documentation says Nell Byler computed the tables.
