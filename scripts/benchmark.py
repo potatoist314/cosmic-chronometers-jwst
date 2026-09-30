@@ -37,6 +37,8 @@ REMOTE = vast.REMOTE_ROOT
 # Stage-end detection lags by up to one interval on a billing instance, so poll
 # briskly; each poll is one cheap SSH round trip now that the target is cached.
 POLL_SECONDS = 5
+# Refused creates rent nothing and cost nothing, so they do not use --max-attempts.
+MAX_REFUSALS = 20
 
 
 def log(message):
@@ -402,13 +404,18 @@ class Run:
         if existing is None:
             self.data['attempts'].append(attempt)
             self.save()  # Failed offers are recorded before the create request.
+        refused = False
         try:
             if not attempt.get('instance_id'):
                 label = f"ceridwen-run-{hashlib.sha256(str(self.root).encode()).hexdigest()[:12]}-{len(self.data['attempts'])}"
                 attempt['label'] = label
                 self.save()
                 args = argparse.Namespace(image=self.data['source'].get('image', vast.LEGACY_IMAGE), disk=self.disk_gb, bid=bid, label=label)
-                attempt['instance_id'] = vast._create_instance(offer, args)
+                try:
+                    attempt['instance_id'] = vast._create_instance(offer, args)
+                except vast.VastAPIError as error:
+                    refused = error.rejected
+                    raise
                 self.save()  # Ownership is durable before setup begins.
             self.measure(attempt)
         except (Exception, KeyboardInterrupt) as error:
@@ -431,13 +438,16 @@ class Run:
             else:
                 attempt['destroyed'] = True
                 attempt['transfer_estimate'] = 0
+                # Vast rejected the create and no instance has the label: nothing was rented.
+                attempt['refused'] = refused
             attempt['elapsed'] = time.time() - attempt['started'] if attempt.get('instance_id') else 0
             self.save()
-            try:
-                self.invoices()
-            except (vast.SweepError, subprocess.SubprocessError) as error:
-                log(f'invoices pending: {error}; conservative estimate retained')
-            self.save()
+            if not attempt.get('refused'):
+                try:
+                    self.invoices()
+                except (vast.SweepError, subprocess.SubprocessError) as error:
+                    log(f'invoices pending: {error}; conservative estimate retained')
+                self.save()
             if not attempt['destroyed']:
                 raise vast.SweepError(f"cleanup failed for owned instance {attempt['instance_id']}; repeat this command before renting again")
 
@@ -459,33 +469,45 @@ class Run:
                 else:
                     attempt.update(destroyed=True, elapsed=time.time() - attempt['started'], status='failed')
                     self.save()
-        count = 0
+        count = refusals = 0
         deadline = time.monotonic() + self.args.wait_minutes * 60
         for gpu in self.args.gpus:
+            candidates = []
             while sum(a['status'] == 'complete' and a['offer']['gpu_name'] == gpu for a in self.data['attempts']) < self.args.hosts:
                 if count >= self.args.max_attempts:
                     return 1
                 self.budget()
-                candidates = self.candidates(gpu)
+                tried = {a['offer']['host_id'] for a in self.data['attempts']}
+                candidates = [c for c in candidates if c[1]['host_id'] not in tried]
                 if not candidates:
-                    if time.monotonic() >= deadline:
-                        log(f'no fresh qualifying {gpu} offer; repeat with the same --output to continue')
-                        return 1
-                    log(f'waiting for {gpu} supply')
-                    time.sleep(30)
-                    continue
-                cost, offer, price, bid = candidates[0]
+                    candidates = self.candidates(gpu)
+                    if not candidates:
+                        if time.monotonic() >= deadline:
+                            log(f'no fresh qualifying {gpu} offer; repeat with the same --output to continue')
+                            return 1
+                        log(f'waiting for {gpu} supply')
+                        time.sleep(30)
+                        continue
+                    self.data.setdefault('selections', []).append(self.selection)
+                    log(f'ranking: host record, then USD per fit; estimates use 0.5 hours plus {self.download_gb:g} GB download; ' + '; '.join(
+                        f"{r['offer_id']} {r['host_record']} {r['rental_type']} ${r['hourly_usd']:.3f}/h, ${r['fit_usd']:.3f}/fit, ${r['expected_usd']:.3f} total"
+                        for r in self.selection['offers'] if r['rejected'] is None)[:600])
+                cost, offer, price, bid = candidates.pop(0)
                 self.budget(reserve=cost)
-                self.data.setdefault('selections', []).append(self.selection)
                 self.save()
                 log(f"renting {gpu}, host {offer['host_id']}, ${price:.3f}/h; estimate ${cost:.3f}")
-                log(f'ranking: host record, then USD per fit; estimates use 0.5 hours plus {self.download_gb:g} GB download; ' + '; '.join(
-                    f"{r['offer_id']} {r['host_record']} {r['rental_type']} ${r['hourly_usd']:.3f}/h, ${r['fit_usd']:.3f}/fit, ${r['expected_usd']:.3f} total"
-                    for r in self.selection['offers'] if r['rejected'] is None)[:600])
                 self.attempt(offer, price, bid)
                 if self.data['attempts'][-1].get('retryable') is False:
                     return 1
+                if self.data['attempts'][-1].get('refused'):
+                    # Nothing was rented: try the next offer of the same ranking at once.
+                    refusals += 1
+                    if refusals >= MAX_REFUSALS:
+                        log(f'{refusals} rentals refused; repeat with the same --output to continue')
+                        return 1
+                    continue
                 count += 1
+                candidates = []
         return 0
 
 

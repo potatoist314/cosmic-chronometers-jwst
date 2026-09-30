@@ -144,6 +144,68 @@ def test_lost_create_response_recovers_and_destroys_owned_instance(run, cloud, m
     assert run.data['attempts'][0]['instance_id'] == 100
 
 
+def refusing(cloud, monkeypatch, refused_ids, status=410):
+    """Offers 1-3 on separate hosts; Vast rejects creates for refused_ids."""
+    offer, state = cloud
+    offers = [{**offer, 'id': i, 'host_id': 40 + i} for i in (1, 2, 3)]
+    searches = []
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda _, **kw: searches.append(kw['rental_type'])
+                        or (offers if kw['rental_type'] == 'on-demand' else []))
+    create = bench.vast._create_instance
+    def refuse(offer, args):
+        if offer['id'] in refused_ids:
+            raise bench.vast.VastAPIError(f'{status} no_such_ask', status)
+        return create(offer, args)
+    monkeypatch.setattr(bench.vast, '_create_instance', refuse)
+    return state, searches
+
+
+def test_refused_create_takes_next_ranked_offer_without_using_an_attempt(run, cloud, monkeypatch):
+    state, searches = refusing(cloud, monkeypatch, {1, 2})
+    run.args.max_attempts = 1
+    assert run.execute() == 0
+    assert state['created'] == [3]
+    assert state['destroyed'] == [100]
+    assert [a['refused'] for a in run.data['attempts'][:2]] == [True, True]
+    assert all('no_such_ask' in a['error'] for a in run.data['attempts'][:2])
+    assert run.data['attempts'][2]['status'] == 'complete'
+    assert len(searches) == 2  # One on-demand and one bid search; refusals reuse the ranking.
+    assert len(run.data['selections']) == 1
+    assert run.data['estimated_total_usd'] == pytest.approx(bench.estimated_spend(run.data['attempts'][2]))
+
+
+def test_refusals_are_bounded(run, cloud, monkeypatch):
+    offer, state = cloud
+    offers = [{**offer, 'id': i, 'host_id': 100 + i} for i in range(2 * bench.MAX_REFUSALS)]
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda _, **kw: offers if kw['rental_type'] == 'on-demand' else [])
+    monkeypatch.setattr(bench.vast, '_create_instance', lambda offer, args:
+                        (_ for _ in ()).throw(bench.vast.VastAPIError('410 no_such_ask', 410)))
+    assert run.execute() == 1
+    assert len(run.data['attempts']) == bench.MAX_REFUSALS
+    assert state['destroyed'] == []
+    assert run.data['estimated_total_usd'] == 0
+
+
+def test_server_error_on_create_uses_an_attempt(run, cloud, monkeypatch):
+    state, _ = refusing(cloud, monkeypatch, {1, 2, 3}, status=502)
+    run.args.max_attempts = 2
+    assert run.execute() == 1
+    assert len(run.data['attempts']) == 2
+    assert not any(a['refused'] for a in run.data['attempts'])
+
+
+def test_rejected_create_with_owned_label_is_destroyed_and_counted(run, cloud, monkeypatch):
+    create = bench.vast._create_instance
+    def rejected_after_rental(offer, args):
+        create(offer, args)
+        raise bench.vast.VastAPIError('410 no_such_ask', 410)
+    monkeypatch.setattr(bench.vast, '_create_instance', rejected_after_rental)
+    assert run.execute() == 1
+    assert cloud[1]['destroyed'] == [100]
+    assert run.data['attempts'][0]['instance_id'] == 100
+    assert 'refused' not in run.data['attempts'][0]
+
+
 def test_source_change_rejected_before_new_rental(run):
     with pytest.raises(bench.vast.SweepError, match='source differs'):
         bench.Run(run.args, {'commit': 'other'})

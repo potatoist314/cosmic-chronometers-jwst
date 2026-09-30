@@ -120,6 +120,16 @@ class LocalSSHError(SweepError):
     """The local SSH client cannot run; waiting for a GPU cannot repair it."""
 
 
+class VastAPIError(SweepError):
+    """Vast answered a request with an HTTP error or an unsuccessful reply."""
+
+    def __init__(self, message: str, status: int | None = None):
+        super().__init__(message)
+        # A client error (4xx) or an unsuccessful reply rejects the request;
+        # after a server error (5xx) the outcome is unknown.
+        self.rejected = status is None or 400 <= status < 500
+
+
 def check_local_ssh():
     """Parse SSH configuration locally without opening a network connection."""
     result = subprocess.run(['ssh', '-G', *_ssh_options('22'), 'root@127.0.0.1'],
@@ -140,14 +150,25 @@ def _vastai(arguments: list[str], timeout: float = 180.0) -> str:
     if result.returncode != 0:
         detail = result.stderr.strip() or result.stdout.strip()
         raise SweepError(f"{shlex.join(command)} failed: {detail}")
+    # With --raw, vastai prints an HTTP error to stderr as JSON and exits zero.
+    error = next((json.loads(line) for line in result.stderr.splitlines()
+                  if line.startswith('{"error": true')), None)
+    if error:
+        raise VastAPIError(f"{shlex.join(command)} failed: {error['status_code']} {error['msg']}",
+                           error["status_code"])
     return result.stdout
 
 
 def _vastai_json(arguments: list[str], timeout: float = 180.0) -> Any:
-    """Run a vastai command and parse its JSON, retrying an empty response."""
+    """Run a vastai command and parse its JSON, retrying an empty response or an API error."""
     attempts = 1 if arguments[:2] == ["create", "instance"] else VASTAI_JSON_ATTEMPTS
     for attempt in range(attempts):
-        output = _vastai([*arguments, "--raw"], timeout=timeout)
+        try:
+            output = _vastai([*arguments, "--raw"], timeout=timeout)
+        except VastAPIError:
+            if attempt + 1 == attempts:
+                raise
+            output = ""
         start = min(
             (index for index in (output.find("["), output.find("{")) if index >= 0),
             default=-1,
@@ -464,5 +485,5 @@ def _create_instance(offer: dict[str, Any], args: argparse.Namespace) -> int:
         timeout=300.0,
     )
     if not payload.get("success", False):
-        raise SweepError(f"vastai refused the rental: {payload}")
+        raise VastAPIError(f"vastai refused the rental: {payload}")
     return int(payload["new_contract"])

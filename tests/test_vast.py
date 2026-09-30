@@ -41,6 +41,39 @@ def test_vastai_json_retries_an_empty_response(monkeypatch: pytest.MonkeyPatch) 
     assert len(calls) == 2
 
 
+NO_SUCH_ASK = ('{"error": true, "status_code": 410, "msg": "error 410/3907: no_such_ask  '
+               'Instance type 1 is no longer available."}\n')
+
+
+def test_raw_http_error_on_stderr_is_reported_and_create_is_not_retried(monkeypatch):
+    # vastai 1.5.5 --raw prints an HTTP error as JSON on stderr and exits zero.
+    calls = []
+    monkeypatch.setattr(sweep.subprocess, 'run', lambda command, **kw: calls.append(command)
+                        or SimpleNamespace(returncode=0, stdout='', stderr=NO_SUCH_ASK))
+    with pytest.raises(sweep.VastAPIError, match='410 error 410/3907: no_such_ask') as refusal:
+        sweep._vastai_json(['create', 'instance', '1'])
+    assert refusal.value.rejected
+    assert len(calls) == 1
+
+
+def test_raw_http_error_on_read_is_retried_then_reported(monkeypatch):
+    calls = []
+    monkeypatch.setattr(sweep.subprocess, 'run', lambda command, **kw: calls.append(command)
+                        or SimpleNamespace(returncode=0, stdout='', stderr=NO_SUCH_ASK))
+    monkeypatch.setattr(sweep.time, 'sleep', lambda _seconds: None)
+    with pytest.raises(sweep.VastAPIError, match='no_such_ask'):
+        sweep._vastai_json(['show', 'instances'])
+    assert len(calls) == sweep.VASTAI_JSON_ATTEMPTS
+
+
+def test_server_error_leaves_create_outcome_unknown(monkeypatch):
+    monkeypatch.setattr(sweep.subprocess, 'run', lambda command, **kw: SimpleNamespace(
+        returncode=0, stdout='', stderr='{"error": true, "status_code": 502, "msg": "Bad Gateway"}\n'))
+    with pytest.raises(sweep.VastAPIError) as error:
+        sweep._vastai_json(['create', 'instance', '1'])
+    assert not error.value.rejected
+
+
 def test_rental_disables_interactive_tmux_for_automated_ssh(monkeypatch):
     calls = []
     monkeypatch.setattr(sweep, '_vastai_json', lambda args, **kwargs:
