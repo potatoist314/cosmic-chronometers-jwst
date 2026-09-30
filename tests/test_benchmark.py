@@ -598,6 +598,43 @@ def test_outbid_instance_is_replaced_instead_of_waited_on(run, cloud, monkeypatc
     assert run.data['attempts'][0]['error'] == 'SweepError: instance unavailable'
 
 
+
+def test_container_that_fails_to_start_is_replaced_after_a_minute(run, cloud, monkeypatch):
+    offer, state = cloud
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda *a, **kw:
+                        [offer, {**offer, 'id': 2, 'host_id': 43}])
+    original = bench.vast._create_instance
+    def create(offer, args):
+        instance = original(offer, args)
+        if offer['id'] == 1:  # The host's Docker daemon refused the container (host 415547).
+            state['live'][instance].update(actual_status='created', status_msg=(
+                'Error response from daemon: failed to create task for container: fork/exec '
+                '/var/lib/vastai_kaalia/latest/kaalia_docker_shim: no such file or directory'))
+        return instance
+    monkeypatch.setattr(bench.vast, '_create_instance', create)
+    clock = [0.0]
+    monkeypatch.setattr(bench.time, 'monotonic', lambda: clock[0])
+    monkeypatch.setattr(bench.time, 'sleep', lambda seconds: clock.__setitem__(0, clock[0] + seconds))
+    assert run.execute() == 0
+    assert state['created'] == [1, 2]
+    assert run.data['attempts'][0]['error'].startswith('SweepError: container failed to start: Error response')
+    assert clock[0] < 70 + 5 * bench.POLL_SECONDS
+
+
+def test_loading_message_does_not_count_as_a_start_failure(run, cloud, monkeypatch):
+    offer, state = cloud
+    statuses = iter([('created', 'Error response from daemon: transient'), ('loading', 'Pull complete'),
+                     ('created', 'Error response from daemon: transient')] * 10)
+    def instance_state(instance):
+        status, message = next(statuses, ('running', None))
+        return {**state['live'][instance], 'actual_status': status, 'status_msg': message}
+    monkeypatch.setattr(bench.vast, '_instance_state', instance_state)
+    clock = [0.0]
+    monkeypatch.setattr(bench.time, 'monotonic', lambda: clock[0])
+    monkeypatch.setattr(bench.time, 'sleep', lambda seconds: clock.__setitem__(0, clock[0] + 20))
+    assert run.execute() == 0
+    assert state['created'] == [1]
+
 def test_remote_stage_exit_does_not_rent_another_host(run, cloud, monkeypatch):
     offer, state = cloud
     monkeypatch.setattr(bench.vast, 'search_offers', lambda *a, **kw:

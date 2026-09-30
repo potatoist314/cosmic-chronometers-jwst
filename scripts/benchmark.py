@@ -59,6 +59,9 @@ GRID_CHECKED = f'{REMOTE}/grid/.checked'
 POLL_SECONDS = 5
 # Refused creates rent nothing and cost nothing, so they do not use --max-attempts.
 MAX_REFUSALS = 20
+# A container the host's Docker daemon refused to start stayed refused through Vast's
+# own retry (hosts 175463 and 415547, 2026-09-30), so it is replaced after this long.
+START_FAILURE_SECONDS = 60
 
 
 def log(message):
@@ -277,7 +280,7 @@ class Run:
         return [candidate for _, candidate in result]
 
     def wait_ready(self, attempt):
-        last_message, last_progress, cheaper_checks = None, time.monotonic(), 0
+        last_message, last_progress, cheaper_checks, start_failed = None, time.monotonic(), 0, None
         while True:
             self.budget(reserve=attempt['price'] * .25)
             state = vast._instance_state(attempt['instance_id'])
@@ -286,6 +289,12 @@ class Run:
                 raise vast.SweepError('instance unavailable')
             attempt['price'] = float(state.get('dph_total') or attempt['price'])
             message = (state.get('actual_status'), state.get('status_msg'))
+            if message[0] == 'created' and (message[1] or '').startswith('Error response from daemon'):
+                start_failed = start_failed or time.monotonic()
+                if time.monotonic() - start_failed >= START_FAILURE_SECONDS:
+                    raise vast.SweepError(f'container failed to start: {message[1][:200]}')
+            else:
+                start_failed = None
             if message != last_message:
                 log(f"instance {attempt['instance_id']}: {message}")
                 last_message, last_progress = message, time.monotonic()
