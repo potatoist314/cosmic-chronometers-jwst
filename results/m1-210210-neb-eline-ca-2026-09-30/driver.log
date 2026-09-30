@@ -1,0 +1,112 @@
+14:36:22 committed source ec6eab345a1c; output results/m1-210210-neb-eline-ca-2026-09-30/run
+14:36:25 renting RTX 5090, host 132677, $0.359/h; estimate $0.200
+14:36:25 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 38587441 unknown bid $0.359/h, $0.180/fit, $0.200 total; 51857148 unknown bid $0.381/h, $0.190/fit, $0.222 total; 38697500 unknown bid $0.416/h, $0.208/fit, $0.229 total; 45508895 unknown bid $0.418/h, $0.209/fit, $0.240 total; 46691993 unknown bid $0.494/h, $0.247/fit, $0.268 total; 38587441 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 50103207 unknown bid $0.549/h, $0.275/fit, $0.296 total; 53509050 unknown on-demand $0.558/h, $0.279/fit, $0.300 total; 52943981 unknown bid $0.576/h, $0.288/fit, $0.309 total; 40411107 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 52943981 unk
+14:36:26 SweepError: vastai returned no JSON: 
+14:36:31 renting RTX 5090, host 81276, $0.412/h; estimate $0.227
+14:36:31 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 51954044 unknown bid $0.412/h, $0.206/fit, $0.227 total; 45508895 unknown bid $0.418/h, $0.209/fit, $0.240 total; 43626057 unknown bid $0.466/h, $0.233/fit, $0.264 total; 48212638 unknown bid $0.478/h, $0.239/fit, $0.260 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 48851735 unknown bid $0.496/h, $0.248/fit, $0.269 total; 51000034 unknown on-demand $0.529/h, $0.264/fit, $0.275 total; 48851735 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 40411107 unknown bid $0.549/h, $0.275/fit, $0.296 total; 53509047 unknown on-demand $0.558/h, $0.279/fit, $0.300 total; 52943981 unk
+14:36:33 instance 53540122: (None, None)
+14:36:52 instance 53540122: ('loading', None)
+14:36:58 instance 53540122: ('loading', 'f57cecf87087: Download complete\n')
+14:37:04 instance 53540122: ('loading', '246ac8b7cadc: Verifying Checksum\n246ac8b7cadc: Download complete\n')
+14:37:16 instance 53540122: ('loading', '9d9229de0a23: Verifying Checksum\n9d9229de0a23: Download complete\n')
+14:37:35 instance 53540122: ('loading', 'dc22b8c341d9: Verifying Checksum\n')
+14:37:47 instance 53540122: ('loading', '77be074b1ca8: Verifying Checksum\n77be074b1ca8: Download complete\n')
+14:38:59 instance 53540122: ('loading', 'b2449364bbe7: Download complete\n')
+14:39:11 instance 53540122: ('loading', '#5 DONE 1.3s\n')
+14:39:17 instance 53540122: ('loading', '(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 10576 files and directories currently installed.)\r\n#7 3.143 Preparing to unpack .../python3-minimal_3.11.2-1+b1_amd64.deb ...\r\n#7 3.143 Unpacking python3-minimal (3.11.2-1+b1) ...\r\n#7 3.152 Selecting previously unselected package media-types.\r\n#7 3.152 Preparing to unpack .../media-types_10.0.0_all.deb ...\r\n#7 3.153 Unpacking media-types (10.0.0) ...\r\n#7 3.161 Selecting previously unselected package libpython3.11-stdlib:amd64.\r\n#7 3.161 Preparing to unpack .../libpython3.11-st')
+14:39:23 instance 53540122: ('loading', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+14:39:29 instance 53540122: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+14:39:32 uploading pinned source, inputs and cached grid
+14:41:46 bootstrap: running; eters-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 0.91ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+14:41:54 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+14:42:02 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:42:11 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:42:20 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:42:29 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:42:37 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:42:46 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:42:55 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:43:03 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:43:12 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:43:20 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:43:29 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:43:37 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:43:46 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:43:54 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:44:03 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:44:11 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:44:20 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:44:28 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:44:37 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:44:45 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:44:53 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:45:02 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:45:10 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:45:18 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:45:27 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:45:35 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:45:44 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:45:52 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:46:01 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:46:09 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:46:17 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:46:26 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:46:34 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:46:42 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:46:51 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:46:59 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:47:07 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:47:15 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:47:24 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:47:32 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:47:41 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:47:49 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:47:57 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:48:05 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:48:14 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:48:22 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:48:30 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:48:38 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:48:47 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:48:55 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:49:03 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:49:11 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:49:20 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:49:28 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:49:36 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:49:45 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:49:53 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:50:01 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:50:09 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:50:18 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:50:26 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:50:35 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:50:43 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:50:51 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:51:00 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:51:08 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:51:16 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:51:24 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:51:32 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:51:41 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:51:49 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:51:57 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:52:06 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:52:15 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:52:23 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:52:31 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:52:40 fit-0: running; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:52:48 fit-0: 0; 14:42:01 fitting neb_eline_ca/M1_210210, seed 20260927
+14:53:06 destroyed instance 53540122
+14:54:06 local figures rebuilt for neb_eline_ca/M1_210210
+runner exit 0
