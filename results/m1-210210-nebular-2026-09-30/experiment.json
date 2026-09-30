@@ -1,0 +1,30 @@
+{
+  "targets": [
+    "M1_210210"
+  ],
+  "seed": 20260927,
+  "settings": {
+    "ssp_grid": "~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5"
+  },
+  "priors": {
+    "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+    "diffuse_Ebump": "Uniform(low=0.0, high=12.0)"
+  },
+  "arms": {
+    "neb": {
+      "settings": {
+        "emission_lines": [3726.0, 3728.8, 4958.9, 5006.8]
+      }
+    },
+    "neb_eline": {
+      "settings": {
+        "emission_line_marginalisation": true
+      }
+    },
+    "neb_maskca": {
+      "settings": {
+        "emission_lines": [3726.0, 3728.8, 3934.77, 3969.59, 4958.9, 5006.8]
+      }
+    }
+  }
+}

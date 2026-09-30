@@ -37,3 +37,6 @@ host_id,outcome,gpu,date,run,reason
 370354,good,RTX 5090,2026-09-29,results/m1-210210-kcbump-wide-zevo-2026-09-29/run/manifest.json,instance 53427325 finished 1 of 1 fit
 8365,poor,RTX 5090,2026-09-30,results/speedup-ablations-2026-09-30/run/manifest.json,bid instance 53508307 stopped after image load (intended_status stopped) and never ran from 10:13 to 10:20 UTC; vastai start replied that the required resources were unavailable; driver interrupted and instance destroyed
 662751,good,RTX 5090,2026-09-30,results/speedup-ablations-2026-09-30/run/manifest.json,instance 53509907 finished 3 of 3 fits
+662751,good,RTX 5090,2026-09-30,results/m1-210210-nebular-2026-09-30/run/manifest.json,instance 53520349 finished the first fit; the second arm stopped on a missing SPS_HOME in our runner
+142157,poor,RTX 5090,2026-09-30,results/m1-210210-nebular-2026-09-30/run/manifest.json,instance 53521924 finished a fit and then closed SSH during result retrieval (rsync exit 255 three times from 12:35:22 UTC); the result file was lost
+58623,good,RTX 5090,2026-09-30,results/m1-210210-nebular-2026-09-30/run/manifest.json,instance 53526532 finished 2 of 2 fits
