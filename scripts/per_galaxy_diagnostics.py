@@ -539,9 +539,17 @@ def marginal_kl_bits(unit_values, weights, bins=40) -> float:
     """
     u = np.asarray(unit_values, dtype=float)
     w = np.asarray(weights, dtype=float)
-    lo, hi = weighted_quantile(u, w, (0.0005, 0.9995))
+    # One sort and one cumulative sum give the range quantiles (as weighted_quantile) and
+    # the histogram (as np.histogram with uneven edges, which sorts in blocks of 65,536).
+    order = np.argsort(u)
+    sorted_u, cumulative = u[order], np.cumsum(w[order])
+    lo, hi = np.interp((0.0005, 0.9995), cumulative / cumulative[-1], sorted_u)
     edges = np.unique(np.concatenate([[0.0], np.linspace(lo, hi, bins + 1), [1.0]]))
-    mass, _ = np.histogram(u, bins=edges, weights=w)
+    if len(u) > 65536:
+        mass, _ = np.histogram(u, bins=edges, weights=w)
+    else:
+        at_edges = np.concatenate((sorted_u.searchsorted(edges[:-1], "left"), sorted_u.searchsorted(edges[-1:], "right")))
+        mass = np.diff(np.concatenate(([0.0], cumulative))[at_edges])
     mass = mass / mass.sum()
     keep = mass > 0
     return float(np.sum(mass[keep] * np.log2(mass[keep] / np.diff(edges)[keep])))

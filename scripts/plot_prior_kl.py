@@ -130,9 +130,13 @@ def prior_log_sfr_bins(galaxy, rng, n=None) -> np.ndarray:
 
 def empirical_unit_values(values, prior_sample) -> np.ndarray:
     """u = F_prior(x) with F the empirical CDF of ``prior_sample`` (mid-rank for ties)."""
-    s = np.sort(np.asarray(prior_sample, dtype=float))
+    return sorted_unit_values(values, np.sort(np.asarray(prior_sample, dtype=float)))
+
+
+def sorted_unit_values(values, sorted_sample) -> np.ndarray:
+    """``empirical_unit_values`` for a prior sample that is already sorted."""
     x = np.asarray(values, dtype=float)
-    return 0.5 * (np.searchsorted(s, x, "left") + np.searchsorted(s, x, "right")) / len(s)
+    return 0.5 * (np.searchsorted(sorted_sample, x, "left") + np.searchsorted(sorted_sample, x, "right")) / len(sorted_sample)
 
 
 def log_sfr_noise_floor(galaxy, seed=SEED, repeats=200) -> float:
@@ -152,7 +156,8 @@ def log_sfr_noise_floor(galaxy, seed=SEED, repeats=200) -> float:
     d = prior_draws(galaxy, repeats * n, rng, names=("logmass", "logsfr_ratios"))
     log_sfr = log_sfr_bins(d["logmass"][:, 0], d["logsfr_ratios"], galaxy.sfh_edges_gyr)
     log_sfr = log_sfr.reshape(repeats, n, -1)
-    values = [pgd.marginal_kl_bits(empirical_unit_values(log_sfr[k, :, j], reference[:, j]), w)
+    ordered = [np.sort(reference[:, j]) for j in range(reference.shape[1])]
+    values = [pgd.marginal_kl_bits(sorted_unit_values(log_sfr[k, :, j], ordered[j]), w)
               for k, j in enumerate(bins)]
     return float(np.percentile(values, 95))
 

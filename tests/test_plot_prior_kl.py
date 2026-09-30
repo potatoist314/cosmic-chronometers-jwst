@@ -79,6 +79,14 @@ def test_other_df_falls_back_to_tfp():
     np.testing.assert_allclose(got, want, rtol=1e-12, atol=0.0)
 
 
+
+def test_sorted_unit_values_equal_empirical_unit_values():
+    rng = np.random.default_rng(8)
+    sample = np.round(rng.normal(size=50000), 2)  # many ties
+    values = np.round(rng.normal(size=17800), 2)
+    np.testing.assert_array_equal(pkl.sorted_unit_values(values, np.sort(sample)),
+                                  pkl.empirical_unit_values(values, sample))
+
 @needs_fit
 def test_kl_table_matches_pre_change_output():
     galaxy = pgd.load_galaxy(RESULT_DIR)

@@ -194,6 +194,24 @@ class MarginalKL(unittest.TestCase):
         np.testing.assert_array_equal(pgd.weighted_quantile(values, weights, q),
                                       [pgd.weighted_quantile(values, weights, p) for p in q])
 
+    def test_kl_bits_bitwise_equal_to_quantiles_and_np_histogram(self):
+        # One sort serves the range quantiles and the histogram; np.histogram sorts in 65,536 blocks.
+        def reference(u, w, bins=40):
+            lo, hi = pgd.weighted_quantile(u, w, (0.0005, 0.9995))
+            edges = np.unique(np.concatenate([[0.0], np.linspace(lo, hi, bins + 1), [1.0]]))
+            mass, _ = np.histogram(u, bins=edges, weights=w)
+            mass = mass / mass.sum()
+            keep = mass > 0
+            return float(np.sum(mass[keep] * np.log2(mass[keep] / np.diff(edges)[keep])))
+
+        rng = np.random.default_rng(7)
+        for n in (17800, 65536, 65537, 100000):
+            u, w = rng.beta(2.0, 5.0, n), rng.uniform(size=n)
+            pick = rng.integers(0, n, n)  # a bootstrap resample: repeated values and weights
+            clipped = np.clip(rng.normal(0.5, 0.4, n), 0.0, 1.0)  # ties at 0 and 1 with different weights
+            for values, weights in ((u, w), (u[pick], w[pick]), (clipped, w)):
+                self.assertEqual(pgd.marginal_kl_bits(values, weights), reference(values, weights))
+
 
 def synthetic_galaxy(z=0.7, n=400):
     """The fields the spectrum figures read, with 40 unusable and 60 masked pixels."""
