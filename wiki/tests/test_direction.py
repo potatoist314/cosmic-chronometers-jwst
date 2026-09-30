@@ -73,6 +73,41 @@ class DirectionTests(unittest.TestCase):
         self.assertEqual(created["direction"][-1]["title"], "Next question")
         self.assertEqual(direction.snapshot(self.root), created)
 
+    def test_delete_keeps_dated_record_and_unlinks_dependents(self):
+        original = direction.snapshot(self.root)
+        request = self.payload(id="delete-metals", target="metals", action="delete")
+        deleted = direction.save(self.root, request)
+        self.assertEqual([t["id"] for t in deleted["priorities"]], ["spectra"])
+        self.assertEqual(deleted["priorities"][0]["depends_on"], [])
+        removal, unlink = deleted["history"][-2:]
+        self.assertEqual((removal["action"], removal["before"], removal["after"]), ("delete", original["priorities"][0], None))
+        self.assertEqual(removal["text"], "Check metallicity")
+        self.assertEqual((unlink["action"], unlink["target"], unlink["before"]["depends_on"]), ("unlink", "spectra", ["metals"]))
+        self.assertEqual(deleted, direction.save(self.root, request))
+        entry = deleted["direction"][0]
+        direction.save(self.root, self.payload(id="add-entry", kind="direction", text="What about age?"))
+        gone = direction.save(self.root, self.payload(id="delete-entry", kind="direction", target=entry["id"], action="delete"))
+        self.assertEqual([e["text"] for e in gone["direction"]], ["What about age?"])
+        self.assertEqual(gone["history"][-1]["before"]["text"], entry["text"])
+        page = research.amendments_html(gone["history"])
+        self.assertIn("Deleted", page)
+        self.assertIn("Maybe alpha enhancement?", page)
+        self.assertEqual(page.count("Check spectra"), 0)
+        for request in (self.payload(id="delete-missing", target="metals", action="delete"),
+                        self.payload(id="delete-last", kind="direction", target=gone["direction"][0]["id"], action="delete")):
+            with self.subTest(request=request["id"]), self.assertRaises(ValueError):
+                direction.save(self.root, request)
+
+    def test_browser_delete_syncs_to_local(self):
+        remote, exchange = self.remote_fixture()
+        saved = direction.save(remote, self.payload(id="delete-remote", target="metals", action="delete"))
+        sync.synchronize(self.project, exchange)
+        self.assertEqual(direction.snapshot(self.root), saved)
+        direction.save(self.root, self.payload(id="delete-local", target="spectra", action="delete"))
+        sync.synchronize(self.project, exchange)
+        self.assertEqual((remote / "direction.md").read_bytes(), (self.root / "direction.md").read_bytes())
+        self.assertEqual(direction.snapshot(remote)["priorities"], [])
+
     def test_validation_leaves_source_unchanged(self):
         before = (self.root / "direction.md").read_bytes()
         invalid = [{"title": ""}, {"priority": 11}, {"priority": True}, {"priority": "9"},

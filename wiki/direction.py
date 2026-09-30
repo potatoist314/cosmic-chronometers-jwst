@@ -98,8 +98,29 @@ def save(root, payload):
         if target and index is None:
             raise ValueError("This entry no longer exists.")
         before = rows[index] if index is not None else None
-        current = dict(before or {})
         now = datetime.now(timezone.utc)
+        stamp = {"date": now.date().isoformat(), "saved_at": now.isoformat()}
+        if payload.get("action") == "delete":
+            if before is None:
+                raise ValueError("Choose an entry to delete.")
+            if kind == "direction" and len(rows) == 1:
+                raise ValueError("Keep at least one direction entry.")
+            del rows[index]
+            parts["Amendments"].append({**stamp, "action": "delete", "text": research.wording(before),
+                                        "kind": kind, "target": before.get("id", target),
+                                        "request_id": payload["id"], "request": payload,
+                                        "before": before, "after": None})
+            # Priorities that waited on the deleted one no longer list it, each with its own revision.
+            for i, row in enumerate(rows if kind == "priority" else []):
+                if target in row.get("depends_on", []):
+                    rows[i] = {**row, "depends_on": [d for d in row["depends_on"] if d != target]}
+                    parts["Amendments"].append({**stamp, "action": "unlink", "text": research.wording(row),
+                                                "kind": kind, "target": row["id"], "before": row, "after": rows[i]})
+            updated = section(section(raw, name, rows), "Amendments", parts["Amendments"])
+            validate(updated, root)
+            atomic_write(root / "direction.md", updated)
+            return snapshot(root)
+        current = dict(before or {})
         current["id"] = target or ("p-" if kind == "priority" else "d-") + payload["id"]
         if kind == "priority":
             current.update(title=text(payload.get("title"), "Title", 300, True),
@@ -178,9 +199,12 @@ def source_exchange(root, request):
                               if row.get("id", "direction-" + str(i)) == target), None)
                 before = rows[index] if index is not None else None
                 after = amendment.get("after")
-                if before != amendment.get("before") or not isinstance(after, dict) or after.get("id") != target:
+                deleted = after is None and index is not None
+                if before != amendment.get("before") or not (deleted or isinstance(after, dict) and after.get("id") == target):
                     raise activity.Conflict("Direction revisions do not match the saved wording.")
-                if index is None:
+                if deleted:
+                    del rows[index]
+                elif index is None:
                     rows.append(after)
                 else:
                     rows[index] = after

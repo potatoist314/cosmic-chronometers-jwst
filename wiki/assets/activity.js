@@ -126,6 +126,8 @@ function renderDirection() {
     }
     if (!figure.querySelector('form.edit-form')) fillDirection(figure, entry);
   }
+  const kept = new Set(authoring.direction.map(entry => entry.id));
+  list.querySelectorAll('[data-direction-id]').forEach(figure => { if (!kept.has(figure.dataset.directionId)) figure.remove(); });
 }
 
 function fillDirection(figure, entry) {
@@ -166,6 +168,8 @@ function renderPriorities() {
     }
     if (!row.nextElementSibling?.dataset.editorFor) fillPriorityRow(row, task);
   }
+  const kept = new Set(authoring.priorities.map(task => task.id));
+  document.querySelectorAll('tr[data-priority-id]').forEach(row => { if (!kept.has(row.dataset.priorityId)) row.remove(); });
 }
 
 function fillPriorityRow(row, task) {
@@ -342,6 +346,7 @@ function openForm(kind, record, place, trigger) {
     } finally { save.disabled = cancel.disabled = false; }
   });
   cancel.addEventListener('click', close);
+  if (record.id) offerDelete(kind, record, form, actions, status, close);
   form.addEventListener('keydown', event => {
     if (event.key === 'Escape') { event.preventDefault(); close(); }
     if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) { event.preventDefault(); form.requestSubmit(); }
@@ -350,6 +355,47 @@ function openForm(kind, record, place, trigger) {
   trigger.setAttribute('aria-expanded', 'true');
   place.open(form);
   form.querySelector('input:not([type=radio]), textarea')?.focus();
+}
+
+// Delete sits inside the editor and asks once, in place of Save and Cancel.
+function offerDelete(kind, record, form, actions, status, close) {
+  const noun = kind === 'direction' ? 'entry' : 'priority';
+  const start = make('button', 'text-button delete-link', `Delete ${noun}`);
+  start.type = 'button';
+  const confirm = make('div', 'confirm-delete');
+  confirm.hidden = true;
+  const yes = make('button', 'danger', `Delete ${noun}`);
+  yes.type = 'button';
+  const keep = make('button', '', 'Keep');
+  keep.type = 'button';
+  confirm.append(make('p', '', `Delete this ${noun}? Its wording stays in the research record with today’s date.`), yes, keep);
+  actions.append(start);
+  actions.after(confirm);
+  const ask = open => {
+    actions.hidden = open;
+    confirm.hidden = !open;
+    (open ? keep : start).focus();
+  };
+  start.addEventListener('click', () => ask(true));
+  keep.addEventListener('click', () => ask(false));
+  confirm.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); ask(false); }
+  });
+  yes.addEventListener('click', async () => {
+    status.replaceChildren();
+    yes.disabled = keep.disabled = true;
+    try {
+      const result = await api('direction', { id: crypto.randomUUID(), revision: form.dataset.revision,
+        kind, target: record.id, action: 'delete' });
+      close();
+      applySnapshot(result, true);
+      document.querySelector(kind === 'direction' ? '[data-add-direction]' : '[data-add-priority]')?.focus();
+    } catch (error) {
+      ask(false);
+      if (error.status === 409) offerCurrent(form, status, error.message);
+      else status.textContent = error.status ? error.message : 'Connection unavailable';
+    } finally { yes.disabled = keep.disabled = false; }
+  });
 }
 
 function offerCurrent(form, status, message) {

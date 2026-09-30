@@ -1395,3 +1395,10 @@
 
 - 4063 figure captions in `research/experiments/*.md` now state each plot's fit changes versus its reference arm, with values; standard-panel boilerplate removed.
 - 46 figcaptions on fit-comparison notes rewritten the same way; `AGENTS.md` carries Liu Hao's caption rule.
+
+### 2026-09-30 — Delete research direction entries
+
+- Existing direction entries and priorities have a delete control with confirmation.
+- Deletion preserves dated wording in the research record and removes deleted priorities from dependencies.
+- The last direction entry cannot be deleted.
+- Files: wiki/direction.py, wiki/research.py, wiki/assets/activity.js, wiki/assets/activity.css, wiki/tests/test_direction.py, wiki/research/README.md.

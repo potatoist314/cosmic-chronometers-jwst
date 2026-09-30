@@ -64,6 +64,7 @@ Save using `python3 scripts/sync_wiki_direction.py --save` with stdin JSON:
 - `target`: existing stable ID; omit for new entries.
 - Priority fields: `title`, `details`, `priority` (null or integer 1–10), `effort`, `depends_on`.
 - Direction fields: `title`, `text`.
+- `action`: `"delete"` removes the existing `target` and preserves its wording in a dated amendment.
 
 Never write raw source directly. Saves preserve dated before/after wording.
 Stale revisions stop with conflict: read and reconcile; never blindly resubmit.

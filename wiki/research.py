@@ -378,6 +378,13 @@ def amendments_html(amendments):
     """Dated decisions, each with the wording it replaced."""
     blocks = []
     for m in amendments:
+        if m.get("action") == "unlink":
+            continue
+        if m.get("action") == "delete":
+            blocks.append('<figure class="user-message"><figcaption><span>Deleted</span><time datetime="%s">%s</time>'
+                          '</figcaption><blockquote class="verbatim">%s</blockquote></figure>'
+                          % (esc(m["date"]), esc(m["date"]), esc(m["text"])))
+            continue
         block = messages_html([m])
         if isinstance(m.get("before"), dict):
             block = block.replace("</figure>", '<details class="original-message"><summary>Earlier wording</summary>'
