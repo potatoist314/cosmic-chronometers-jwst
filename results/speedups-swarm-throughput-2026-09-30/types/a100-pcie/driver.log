@@ -1,0 +1,50 @@
+22:57:10 committed source faf650c146ff; output /Users/liuhao/Downloads/Astro project/tmp/worktrees/swarm-throughput/results/speedups-swarm-throughput-2026-09-30/types/a100-pcie/run
+22:57:14 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 32303769 unknown bid $0.179/h, $0.090/fit, $0.110 total; 47463261 unknown bid $0.416/h, $0.208/fit, $0.229 total; 47463261 unknown on-demand $0.811/h, $0.406/fit, $0.426 total; 36496965 unknown on-demand $0.900/h, $0.450/fit, $0.471 total; 32303769 unknown on-demand $1.011/h, $0.506/fit, $0.526 total
+22:57:14 renting A100 PCIE, host 67231, $0.179/h; estimate $0.110
+22:57:15 VastAPIError: vastai create instance 32303769 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-46a580359a66-1 --bid_price 0.168 --raw failed: 410 error 410/3907: no_such_ask  Instance type 32303769 is no longer available.
+22:57:16 renting A100 PCIE, host 570254, $0.416/h; estimate $0.229
+22:57:18 instance 53600009: (None, None)
+22:57:36 instance 53600009: ('loading', None)
+22:57:42 instance 53600009: ('loading', '774043ccc8cc: Pull complete\n')
+22:57:48 instance 53600009: ('loading', '8412e85cc33a: Verifying Checksum\n8412e85cc33a: Download complete\n')
+22:57:55 instance 53600009: ('loading', 'e08b23c708bf: Verifying Checksum\ne08b23c708bf: Download complete\n')
+22:58:01 instance 53600009: ('loading', 'c1e138b8ef21: Verifying Checksum\nc1e138b8ef21: Download complete\n')
+22:58:19 instance 53600009: ('loading', '3db9425516fe: Verifying Checksum\n3db9425516fe: Download complete\n')
+22:58:25 instance 53600009: ('loading', 'af385361d922: Pull complete\n')
+22:58:37 instance 53600009: ('loading', 'e08b23c708bf: Pull complete\n')
+22:58:43 instance 53600009: ('loading', '5824fe10eb6b: Verifying Checksum\n5824fe10eb6b: Download complete\n')
+22:58:49 instance 53600009: ('loading', '876e798be398: Pull complete\n')
+22:58:56 instance 53600009: ('loading', 'c1e138b8ef21: Pull complete\n')
+22:59:10 instance 53600009: ('loading', '77be074b1ca8: Verifying Checksum\n')
+22:59:16 instance 53600009: ('loading', '1e35cca63fd4: Verifying Checksum\n1e35cca63fd4: Download complete\n')
+22:59:23 instance 53600009: ('loading', 'fd3093a74b0d: Verifying Checksum\nfd3093a74b0d: Download complete\n')
+22:59:29 instance 53600009: ('loading', '3db9425516fe: Pull complete\n')
+22:59:36 instance 53600009: ('loading', '5824fe10eb6b: Pull complete\n')
+22:59:43 instance 53600009: ('loading', 'a96cdfcbf7e6: Pull complete\n')
+22:59:49 instance 53600009: ('loading', 'b53d2084d344: Pull complete\n')
+23:00:07 instance 53600009: ('loading', '77be074b1ca8: Pull complete\n')
+23:00:14 instance 53600009: ('loading', '\n')
+23:00:21 instance 53600009: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1/ssh')
+23:00:30 uploading pinned source, inputs and cached grid
+23:01:36 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+23:01:59 00-probe: running; 
+23:02:08 00-probe: 0; 19         238           0         249         484
+Swap:              7           0           7
+name, compute_mode, memory.total [MiB], clocks.max.sm [MHz], power.limit [W]
+NVIDIA A100 80GB PCIe, Default, 81920 MiB, 1410 MHz, 300.00 W
+model name	: Intel(R) Xeon(R) Gold 5218R CPU @ 2.10GHz
+23:02:29 01-solo30: running; 
+23:02:35 01-solo30: ssh: connect to host 125.249.86.45 port 11445: Connection refused; reconnecting to the same instance
+23:02:39 rsync failed (CalledProcessError); retry 1
+23:03:10 rsync failed (CalledProcessError); retry 2
+23:03:40 rsync failed (CalledProcessError); retry 3
+23:04:11 rsync failed (CalledProcessError); retry 4
+23:04:41 rsync failed (CalledProcessError); retry 5
+23:05:11 SweepError: instance unavailable
+23:05:19 destroyed instance 53600009
+23:05:35 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 36496965 unknown on-demand $0.900/h, $0.450/fit, $0.471 total
+error: task budget exhausted: estimate $0.077, cap $0.50

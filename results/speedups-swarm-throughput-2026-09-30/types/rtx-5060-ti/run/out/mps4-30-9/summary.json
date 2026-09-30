@@ -1,0 +1,239 @@
+{
+ "tag": "mps4-30-9",
+ "kernel": "lanes",
+ "ceridwen": "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/__init__.py",
+ "device": "NVIDIA GeForce RTX 5060 Ti",
+ "jax": "0.10.2",
+ "x64": true,
+ "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0",
+ "iterations": 31,
+ "converged": false,
+ "logZ": 235052.5486869852,
+ "logZ_live": 235832.7526613491,
+ "n_likelihood_calls": 976588,
+ "build_s": 29.353678185027093,
+ "init_s": 8.190674968063831,
+ "sampling_s": 409.9441041869577,
+ "first_iteration_s": 22.050027383957058,
+ "later_iterations_s": 387.6367456233129,
+ "script_s": 451.9113852009177,
+ "rows": [
+  {
+   "iteration": 1,
+   "iteration_s": 22.050027383957058,
+   "logZ": -3691047.2229182813,
+   "logZ_live": 234540.19198927938,
+   "calls": 31774
+  },
+  {
+   "iteration": 2,
+   "iteration_s": 13.584092607954517,
+   "logZ": -681527.1668847036,
+   "logZ_live": 234539.96909554058,
+   "calls": 63559
+  },
+  {
+   "iteration": 3,
+   "iteration_s": 13.05221420689486,
+   "logZ": -138619.22617086172,
+   "logZ_live": 234671.79290054904,
+   "calls": 95090
+  },
+  {
+   "iteration": 4,
+   "iteration_s": 13.048798423958942,
+   "logZ": 69057.5989671528,
+   "logZ_live": 234671.57000681025,
+   "calls": 126496
+  },
+  {
+   "iteration": 5,
+   "iteration_s": 12.611205794848502,
+   "logZ": 147235.23144566765,
+   "logZ_live": 235191.22210507782,
+   "calls": 158158
+  },
+  {
+   "iteration": 6,
+   "iteration_s": 13.088145036948845,
+   "logZ": 186921.37097565108,
+   "logZ_live": 235190.99921133902,
+   "calls": 189794
+  },
+  {
+   "iteration": 7,
+   "iteration_s": 12.845154698006809,
+   "logZ": 204220.87783504196,
+   "logZ_live": 235658.30822035144,
+   "calls": 221324
+  },
+  {
+   "iteration": 8,
+   "iteration_s": 12.796112146927044,
+   "logZ": 213693.03405015456,
+   "logZ_live": 235658.08532661264,
+   "calls": 252700
+  },
+  {
+   "iteration": 9,
+   "iteration_s": 13.394404900958762,
+   "logZ": 218991.556342991,
+   "logZ_live": 235657.8624328738,
+   "calls": 284637
+  },
+  {
+   "iteration": 10,
+   "iteration_s": 13.330844287993386,
+   "logZ": 222882.6557919329,
+   "logZ_live": 235657.639539135,
+   "calls": 315979
+  },
+  {
+   "iteration": 11,
+   "iteration_s": 13.06202518218197,
+   "logZ": 225608.5532986083,
+   "logZ_live": 235657.41664539618,
+   "calls": 347473
+  },
+  {
+   "iteration": 12,
+   "iteration_s": 13.038770130835474,
+   "logZ": 227457.82871854395,
+   "logZ_live": 235657.19375165738,
+   "calls": 379071
+  },
+  {
+   "iteration": 13,
+   "iteration_s": 13.208384789060801,
+   "logZ": 228813.2410019508,
+   "logZ_live": 235656.97085791855,
+   "calls": 410720
+  },
+  {
+   "iteration": 14,
+   "iteration_s": 12.876452489057556,
+   "logZ": 230050.77247784854,
+   "logZ_live": 235656.74796417975,
+   "calls": 442235
+  },
+  {
+   "iteration": 15,
+   "iteration_s": 13.122713556047529,
+   "logZ": 231033.3606482362,
+   "logZ_live": 235656.52507044093,
+   "calls": 473678
+  },
+  {
+   "iteration": 16,
+   "iteration_s": 12.963227233150974,
+   "logZ": 231645.85336351514,
+   "logZ_live": 235656.30217670213,
+   "calls": 504934
+  },
+  {
+   "iteration": 17,
+   "iteration_s": 13.071802970953286,
+   "logZ": 232232.13167968224,
+   "logZ_live": 235656.07951185587,
+   "calls": 536464
+  },
+  {
+   "iteration": 18,
+   "iteration_s": 12.687617987859994,
+   "logZ": 232686.50478830872,
+   "logZ_live": 235655.85661811708,
+   "calls": 568132
+  },
+  {
+   "iteration": 19,
+   "iteration_s": 12.336622441187501,
+   "logZ": 233114.55946685857,
+   "logZ_live": 235655.63372437825,
+   "calls": 599250
+  },
+  {
+   "iteration": 20,
+   "iteration_s": 13.506576488958672,
+   "logZ": 233401.11489811674,
+   "logZ_live": 235655.41083063945,
+   "calls": 630755
+  },
+  {
+   "iteration": 21,
+   "iteration_s": 13.005994838196784,
+   "logZ": 233679.9710281442,
+   "logZ_live": 235655.1879369546,
+   "calls": 662326
+  },
+  {
+   "iteration": 22,
+   "iteration_s": 13.079555272124708,
+   "logZ": 233896.73923131783,
+   "logZ_live": 235784.91847461415,
+   "calls": 693817
+  },
+  {
+   "iteration": 23,
+   "iteration_s": 12.74351179995574,
+   "logZ": 234079.7169401327,
+   "logZ_live": 235784.69558087533,
+   "calls": 725585
+  },
+  {
+   "iteration": 24,
+   "iteration_s": 12.600495281163603,
+   "logZ": 234241.51347884006,
+   "logZ_live": 235784.47268713653,
+   "calls": 757010
+  },
+  {
+   "iteration": 25,
+   "iteration_s": 12.546516834991053,
+   "logZ": 234377.2761203528,
+   "logZ_live": 235784.2497933977,
+   "calls": 788293
+  },
+  {
+   "iteration": 26,
+   "iteration_s": 13.052167895948514,
+   "logZ": 234530.24736159111,
+   "logZ_live": 235784.0268996589,
+   "calls": 819865
+  },
+  {
+   "iteration": 27,
+   "iteration_s": 13.150228783022612,
+   "logZ": 234653.56542354292,
+   "logZ_live": 235783.80400592007,
+   "calls": 851180
+  },
+  {
+   "iteration": 28,
+   "iteration_s": 12.628978021908551,
+   "logZ": 234776.61264859955,
+   "logZ_live": 235783.58111218127,
+   "calls": 882571
+  },
+  {
+   "iteration": 29,
+   "iteration_s": 12.557428939035162,
+   "logZ": 234879.54759402268,
+   "logZ_live": 235783.35821844244,
+   "calls": 913979
+  },
+  {
+   "iteration": 30,
+   "iteration_s": 12.95370613806881,
+   "logZ": 234974.45305835374,
+   "logZ_live": 235809.20154246848,
+   "calls": 945239
+  },
+  {
+   "iteration": 31,
+   "iteration_s": 11.69299644511193,
+   "logZ": 235052.5486869852,
+   "logZ_live": 235832.7526613491,
+   "calls": 976588
+  }
+ ]
+}
