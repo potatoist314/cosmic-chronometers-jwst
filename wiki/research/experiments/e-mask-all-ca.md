@@ -3,14 +3,15 @@ kind: experiment
 id: e-mask-all-ca
 title: M1_210210 with every Ca feature masked
 date: 2026-09-30
-results_at:
+results_at: 2026-09-30T16:07:49+01:00
 origin: new
-status: planned
+status: results-ready
 question: q-dust-index-railing
 related_questions: q-fitting-choices
 follow_up:
-features: emission_lines, ssp_grid
-finding: M1_210210 neb_maskca: model Ca II K / H deeper than the data by 18.8% / 14.9% at the unfitted pixels within ±7 Å; alpha-MC [alpha/Fe] scales Ca with Mg, so [Ca/Fe] = [Mg/Fe]; host-ISM Ca II absorption has the opposite sign; all-Ca mask fit not run
+result_groups: results/m1-210210-maskallca-2026-09-30, results/m1-210210-neb-eline-ca-2026-09-30
+features: emission_lines, emission_line_marginalisation, ssp_grid
+finding: M1_210210, neb_maskca / neb_maskallca / neb_eline_ca: delta_dust −0.164 / −0.154 / −0.183; E_bump 3.53 / 3.02 / 2.15; mass fraction formed at 0–30 Myr 1.96e-5 / 1.37e-5 / 5.87e-7; neb_eline_ca Hε free flux has no unmasked spectral pixel.
 ---
 
 ## Context
@@ -66,26 +67,45 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
 
 ## Execution plan
 
-- Comparison: one new arm `neb_maskallca` for M1_210210 against `neb_maskca`.
+- Comparison: `neb_maskallca` and `neb_eline_ca` for M1_210210 against `neb_maskca` and `neb_eline` of `e-nebular-grid`. Third arm `neb_maskallca_eline` configured.
+- Ca4455 band stays in the fit (Liu Hao, 2026-09-30).
 - Baseline: same data, seed 20260927, 14 SFH bins; SFH-basis fast path on.
 - Model: nebular grid `~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5`; priors `diffuse_delta` Uniform(−3, 0.4) and `diffuse_Ebump` Uniform(0, 12).
-- Controlled change: `emission_lines = [3726.0, 3728.8, 3934.77, 3969.59, 4227.92, 4958.9, 5006.8]`. Notebook masks each entry at ±1500 km/s (`dv=1500.0`, cell 6). No code change.
+- Controlled change, `neb_maskallca`: `emission_lines = [3726.0, 3728.8, 3934.77, 3969.59, 4227.92, 4958.9, 5006.8]`; notebook masks each entry at ±1500 km/s (`dv=1500.0`, cell 6). No code change.
+- Controlled change, `neb_eline_ca`: `emission_line_marginalisation = true`; `emission_lines = [3934.77, 3966.6, 3973.3, 4227.92]`. [O II], Hβ and [O III] unmasked; modelled by nebular grid plus free non-negative line fluxes.
+- Controlled change, `neb_maskallca_eline`: `emission_line_marginalisation = true`; `emission_lines = [3726.0, 3728.8, 3934.77, 3966.6, 3973.3, 4227.92, 4958.9, 5006.8]`.
+- Mask with marginalisation: notebook cell 6 removes a mask entry within 2 Å of a line with a free flux (`EmissionLineColumns.covers`, `tol=2.0`).
+- Mask with marginalisation: entry 3969.59 lies within 2 Å of [Ne III] 3968.65 Å and Hε 3971.26 Å (FSPS `emlines_info.dat`, vacuum); entry leaves the mask; 96 of 109 pixels in the Ca II H window fitted.
+- Mask with marginalisation: entries 3966.6 and 3973.3 replace it: masked 3946.7–3993.2 Å, 0 fitted pixels in 3949.7–3989.5 Å.
 - Mask list: NIST ASD vacuum wavelength; lower level; window. Ca II K 3934.77 Å; ground level; 3915.1–3954.5 Å.
 - Mask list: Ca II H 3969.59 Å; ground level; 3949.7–3989.5 Å.
 - Mask list: Ca I 4227.92 Å (4226.73 Å air); ground level; 4206.8–4249.1 Å. Window contains Lick Ca4227 band 4222.250–4234.750 Å air = 4223.44–4235.94 Å vacuum (Trager et al. 1998, arXiv:astro-ph/9712258, Table 2: measures Ca, (C)).
 - Width: at \(\sigma = 263\) km/s, Gaussian FWHM 619 km/s, 8.1 Å at 3934.77 Å; ±1500 km/s is ±19.7 Å, \(\pm 5.7\sigma\). Shell ratios fall to +0.5% (K) and +1.7% (H) at 1000–1500 km/s.
-- Fitted pixels: 3657 in `neb`; 3452 in `neb_maskca`; 3335 with the list above.
+- Fitted pixels: 3657 in `neb`; 3452 in `neb_maskca`; 3335 in `neb_maskallca`; 3594 in `neb_maskallca_eline`; 3607 in `neb_eline_ca`.
 - Not in the list: Lick Ca4455 band 4452.125–4474.625 Å air = 4453.37–4475.88 Å vacuum. Trager et al. 1998 Table 2: measures (Fe), (C), Cr. Thomas, Maraston & Bender 2003 (arXiv:astro-ph/0209250, Sec. 3.1.3): "Ca4455 is insensitive to Ca abundance", with Fe and Cr the dominant contributors. Masking at ±1500 km/s about 4464.63 Å removes 123 more pixels.
 - Not in the list: Ca I lines from excited levels, NIST ASD lower level 15,158–23,652 cm⁻¹: 4284.22–4319.86 Å (inside Lick G4300 band 4281.375–4316.375 Å air; Trager Table 2: measures C, (O)), 4426.68–4457.86, 4579.83–4587.25, 4879.49, 5043.03, 5190.30 Å.
 - Not in the list: Ca II 3737.96 Å, lower level 25,414 cm⁻¹; centre below fitted range.
 - Not in the list: Ca II triplet near 8500–8662 Å; outside fitted range.
-- Hardware and outputs: Vast.ai RTX 5090, $1 cap; config `results/m1-210210-maskallca-2026-09-30/experiment.json` (not yet written); outputs under `results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/`.
-- Run command: `python3 scripts/experiment.py run results/m1-210210-maskallca-2026-09-30/experiment.json --gpu "RTX 5090" --output results/m1-210210-maskallca-2026-09-30/run`.
+- Hardware and outputs: Vast.ai RTX 5090, $1 cap per run. Configs `results/m1-210210-maskallca-2026-09-30/experiment.json` (arms `neb_maskallca`, `neb_maskallca_eline`) and `results/m1-210210-neb-eline-ca-2026-09-30/experiment.json` (arm `neb_eline_ca`); outputs under each directory’s `run/fits/<arm>/210210-M1_210210/`.
+- Run command: `python3 scripts/experiment.py run results/<dir>/experiment.json --gpu "RTX 5090" --output results/<dir>/run` for each directory.
 
 ## Amendments
 
 ```json
-[]
+[
+  {
+    "date": "2026-09-30",
+    "text": "nebular + marginalisation + ca mask + oiii/oii/h beta unmasked seems good",
+    "display_text": "Nebular + marginalisation + Ca mask + [O III]/[O II]/Hβ unmasked seems good.",
+    "source_ref": "Relayed by the Astronomy lead"
+  },
+  {
+    "date": "2026-09-30",
+    "text": "in this case, it makes sense to drop h epsilon",
+    "display_text": "In this case, it makes sense to drop Hε.",
+    "source_ref": "Relayed by the Astronomy lead"
+  }
+]
 ```
 
 ## Runs
@@ -93,9 +113,106 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
 ```json
 [
   {
-    "id": "neb-maskallca-m1-210210",
+    "id": "neb-maskallca-run-53539531",
     "arm": "neb_maskallca",
-    "status": "planned"
+    "status": "complete",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "Executed fit · M1_210210",
+        "path": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/M1_210210_executed.ipynb"
+      },
+      {
+        "label": "ceridwen_result.h5",
+        "path": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/ceridwen_result.h5"
+      },
+      {
+        "label": "ceridwen_derived_outputs.h5",
+        "path": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/ceridwen_derived_outputs.h5"
+      },
+      {
+        "label": "53539531-fit-0.log",
+        "path": "results/m1-210210-maskallca-2026-09-30/run/53539531-fit-0.log"
+      }
+    ],
+    "code": "ec6eab3",
+    "model": "Ceridwen 0a3bd51; sedpy_jax 9d8aa19; grid amist_c3k_hr_krou_afe_nebular.h5 sha256 6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+    "config": "results/m1-210210-maskallca-2026-09-30/run/manifest.json",
+    "seed": 20260927,
+    "data": "results/m1-210210-maskallca-2026-09-30/run/manifest.json"
+  },
+  {
+    "id": "neb-maskallca-eline-run-53539531",
+    "arm": "neb_maskallca_eline",
+    "status": "failed",
+    "error": "host 370354 refused SSH during the fit at 14:45:53 UTC; rsync exit 255 three times; instance 53539531 unavailable, destroyed; $0.088 billed",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "driver.log",
+        "path": "results/m1-210210-maskallca-2026-09-30/driver.log"
+      },
+      {
+        "label": "manifest.json",
+        "path": "results/m1-210210-maskallca-2026-09-30/run/manifest.json"
+      }
+    ],
+    "code": "ec6eab3",
+    "model": "Ceridwen 0a3bd51; sedpy_jax 9d8aa19; grid amist_c3k_hr_krou_afe_nebular.h5 sha256 6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+    "config": "results/m1-210210-maskallca-2026-09-30/run/manifest.json",
+    "seed": 20260927,
+    "data": "results/m1-210210-maskallca-2026-09-30/run/manifest.json"
+  },
+  {
+    "id": "neb-maskallca-eline-run-53541141",
+    "arm": "neb_maskallca_eline",
+    "status": "failed",
+    "error": "instance 53541141 (host 571938) unavailable 6 s after running; no fit started; destroyed; $0.012 billed",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "driver.log",
+        "path": "results/m1-210210-maskallca-2026-09-30/driver.log"
+      },
+      {
+        "label": "manifest.json",
+        "path": "results/m1-210210-maskallca-2026-09-30/run/manifest.json"
+      }
+    ],
+    "code": "ec6eab3",
+    "model": "Ceridwen 0a3bd51; sedpy_jax 9d8aa19; grid amist_c3k_hr_krou_afe_nebular.h5 sha256 6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+    "config": "results/m1-210210-maskallca-2026-09-30/run/manifest.json",
+    "seed": 20260927,
+    "data": "results/m1-210210-maskallca-2026-09-30/run/manifest.json"
+  },
+  {
+    "id": "neb-eline-ca-run-53540122",
+    "arm": "neb_eline_ca",
+    "status": "complete",
+    "target": "M1_210210",
+    "artifacts": [
+      {
+        "label": "Executed fit · M1_210210",
+        "path": "results/m1-210210-neb-eline-ca-2026-09-30/run/fits/neb_eline_ca/210210-M1_210210/M1_210210_executed.ipynb"
+      },
+      {
+        "label": "ceridwen_result.h5",
+        "path": "results/m1-210210-neb-eline-ca-2026-09-30/run/fits/neb_eline_ca/210210-M1_210210/ceridwen_result.h5"
+      },
+      {
+        "label": "ceridwen_derived_outputs.h5",
+        "path": "results/m1-210210-neb-eline-ca-2026-09-30/run/fits/neb_eline_ca/210210-M1_210210/ceridwen_derived_outputs.h5"
+      },
+      {
+        "label": "53540122-fit-0.log",
+        "path": "results/m1-210210-neb-eline-ca-2026-09-30/run/53540122-fit-0.log"
+      }
+    ],
+    "code": "ec6eab3",
+    "model": "Ceridwen 0a3bd51; sedpy_jax 9d8aa19; grid amist_c3k_hr_krou_afe_nebular.h5 sha256 6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+    "config": "results/m1-210210-neb-eline-ca-2026-09-30/run/manifest.json",
+    "seed": 20260927,
+    "data": "results/m1-210210-neb-eline-ca-2026-09-30/run/manifest.json"
   }
 ]
 ```
@@ -103,14 +220,131 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
 ## Figures
 
 ```json
-[]
+[
+  {
+    "notebook": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "neb-maskallca-run-53539531",
+    "target": "M1_210210",
+    "arm": "neb_maskallca",
+    "view": "Fits",
+    "caption": "M1_210210 · Spectrum · neb_maskallca: nebular grid, Ca H+K and Ca I 4227 masked; otherwise as neb."
+  },
+  {
+    "notebook": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "neb-maskallca-run-53539531",
+    "target": "M1_210210",
+    "arm": "neb_maskallca",
+    "view": "Fits",
+    "caption": "M1_210210 · Photometry · neb_maskallca: nebular grid, Ca H+K and Ca I 4227 masked; otherwise as neb."
+  },
+  {
+    "notebook": "results/m1-210210-neb-eline-ca-2026-09-30/run/fits/neb_eline_ca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "neb-eline-ca-run-53540122",
+    "target": "M1_210210",
+    "arm": "neb_eline_ca",
+    "view": "Fits",
+    "caption": "M1_210210 · Spectrum · neb_eline_ca: nebular grid, line marginalisation on, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
+  },
+  {
+    "notebook": "results/m1-210210-neb-eline-ca-2026-09-30/run/fits/neb_eline_ca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "neb-eline-ca-run-53540122",
+    "target": "M1_210210",
+    "arm": "neb_eline_ca",
+    "view": "Fits",
+    "caption": "M1_210210 · Photometry · neb_eline_ca: nebular grid, line marginalisation on, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
+  },
+  {
+    "notebook": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "neb-maskallca-run-53539531",
+    "target": "M1_210210",
+    "arm": "neb_maskallca",
+    "view": "SFH",
+    "caption": "M1_210210 · SFH · neb_maskallca: nebular grid, Ca H+K and Ca I 4227 masked; otherwise as neb."
+  },
+  {
+    "notebook": "results/m1-210210-neb-eline-ca-2026-09-30/run/fits/neb_eline_ca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "neb-eline-ca-run-53540122",
+    "target": "M1_210210",
+    "arm": "neb_eline_ca",
+    "view": "SFH",
+    "caption": "M1_210210 · SFH · neb_eline_ca: nebular grid, line marginalisation on, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
+  },
+  {
+    "notebook": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "neb-maskallca-run-53539531",
+    "target": "M1_210210",
+    "arm": "neb_maskallca",
+    "view": "Posteriors",
+    "caption": "M1_210210 · Posteriors · neb_maskallca: nebular grid, Ca H+K and Ca I 4227 masked; otherwise as neb."
+  },
+  {
+    "notebook": "results/m1-210210-neb-eline-ca-2026-09-30/run/fits/neb_eline_ca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "neb-eline-ca-run-53540122",
+    "target": "M1_210210",
+    "arm": "neb_eline_ca",
+    "view": "Posteriors",
+    "caption": "M1_210210 · Posteriors · neb_eline_ca: nebular grid, line marginalisation on, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
+  }
+]
 ```
 
 ## Measurements
 
 ## Results
 
+- Order: `neb_maskca` (from `e-nebular-grid`) / `neb_maskallca` / `neb_eline_ca`; posterior median [16, 84] from each arm’s `ceridwen_result.h5` and `ceridwen_derived_outputs.h5`.
+- \(\ln Z\): 226751.06 ± 0.23 / 219048.30 ± 0.24 / 235960.51 ± 0.26.
+- ESS: 4983 / 4815 / 3786.
+- Joint \(\chi^2\) / degrees of freedom: 3661.2/3480 / 3568.1/3363 / 3737.3/3635.
+- Photometric \(\chi^2\) / 28 bands: 41.2 / 41.3 / 38.4.
+- Mass fraction formed at 0–30 Myr: 1.96e-5 [9.26e-6, 2.83e-5] / 1.37e-5 [2.35e-6, 2.39e-5] / 5.87e-7 [6.25e-9, 6.44e-6].
+- Mass fraction formed at 30–100 Myr: 3.71e-5 [1.45e-5, 7.59e-5] / 2.58e-5 [3.24e-6, 5.83e-5] / 1.41e-6 [1.79e-8, 1.77e-5].
+- Mass fraction formed at 100–146 Myr: 1.82e-5 [5.94e-6, 4.92e-5] / 1.24e-5 [1.72e-6, 3.41e-5] / 1.15e-6 [1.48e-8, 1.22e-5].
+- Mass fraction formed at 146 Myr–1.4 Gyr: 6.86e-4 [1.45e-4, 2.71e-3] / 4.05e-4 [7.01e-5, 1.79e-3] / 1.83e-3 [2.54e-5, 2.89e-2].
+- \(\delta_{\mathrm{dust}}\) (`diffuse_delta`): −0.164 [−0.318, −0.029] / −0.154 [−0.309, −0.009] / −0.183 [−0.333, −0.043].
+- \(E_{\mathrm{bump}}\) (`diffuse_Ebump`): 3.53 [1.11, 7.06] / 3.02 [0.92, 6.37] / 2.15 [0.64, 4.86].
+- \(\tau_{\mathrm{dust}}\) (`diffuse_tau_noll`): 0.316 [0.283, 0.350] / 0.311 [0.278, 0.345] / 0.306 [0.275, 0.339].
+- \(\log_{10}(M_\star/M_\odot)\): 11.491 [11.471, 11.517] / 11.500 [11.476, 11.527] / 11.457 [11.437, 11.479].
+- \([\mathrm{Fe}/\mathrm{H}]\): −0.237 [−0.279, −0.212] / −0.266 [−0.303, −0.223] / −0.158 [−0.177, −0.139].
+- \([\alpha/\mathrm{Fe}]\): 0.110 [0.097, 0.123] / 0.155 [0.138, 0.171] / 0.129 [0.114, 0.142].
+- \(\sigma_\star\) [km/s]: 263.6 [260.3, 267.1] / 264.9 [261.9, 268.1] / 261.5 [258.4, 264.6].
+- \(t_{\mathrm{MW}}\) [Gyr]: 3.58 / 3.72 / 3.31.
+- \(P(\delta_{\mathrm{dust}} > −0.4)\): 0.930 / 0.936 / 0.923.
+- \(P(E_{\mathrm{bump}} < 3)\): 0.430 / 0.498 / 0.643.
+- Summed (observed − posterior-median model)/model within ±7 Å rest of each line centre, same order: Ca II K +18.8% / +21.8% / +21.5%; Ca II H +14.9% / +16.9% / −86.1%; Ca I 4227.92 Å +1.6% (pixels fitted) / +2.9% / +2.9%. Pixels unfitted unless marked.
+- `neb_eline_ca` Hε free flux (`Ba-5 3970`): posterior model at rest 3970.69 Å: 98 [48, 158] µJy; observed 6.4 µJy. Excess rest-frame equivalent width over `neb_maskallca` median model in 3955–3990 Å: 124 [57, 204] Å. HSC r pull +0.66 in `neb_maskallca`, −0.59 in `neb_eline_ca`.
+- `neb_eline_ca` free-flux columns: 21. Ba-8, Ba-7, [Ne III] 3869 (+3968), He I 3889, Ba-6, Ba-5 (Hε), [S II] 4070, 4078, Hδ, Hγ, [O III] 4363, He I 4471, He II 4686, [Ar IV] 4711, [Ne IV] 4720, [Ar IV] 4740, Hβ, [O III] 4931, [O III] 5007 (+4959), [Ar III] 5192, [N I] 5200.
+- `neb_eline_ca` free-flux columns: no [O II] column; valid pixels start at rest 3742.8 Å.
+- Validation: `scripts.experiment.validate_result` passes for `neb_maskallca` and `neb_eline_ca`.
+- Checks: figures built locally on CPU from stored posteriors with `scripts/regenerate_fit_notebooks.py`, Ceridwen `0a3bd51`, sedpy_jax `9d8aa19`; GPU `ceridwen_derived_outputs.h5` kept.
+- Compute, `results/m1-210210-maskallca-2026-09-30`: $0.100 invoiced. Instance 53539531 (host 370354, interruptible bid): `neb_maskallca` finished; during `neb_maskallca_eline`, host refused SSH at 14:45:53 UTC, rsync exit 255 three times, instance unavailable; $0.088, destroyed. Instance 53541141 (host 571938, interruptible bid): image load 14 min, unavailable 6 s after `running`; $0.012, destroyed. `neb_maskallca_eline` not run.
+- Compute, `results/m1-210210-neb-eline-ca-2026-09-30`: $0.095 invoiced. Instance 53540122 (host 81276): `neb_eline_ca` finished; destroyed.
+
 ## Caveats
+
+- \(\ln Z\) and joint \(\chi^2\) not comparable between arms: fitted data differ; degrees of freedom 3480 / 3363 / 3635.
+- `neb_eline_ca`: Hε (`Ba-5 3970`) has free flux and 0 unmasked spectral pixels within \(2\sigma\) of the line; constrained only by photometry.
+- `neb_eline_ca`: [Ne III] 3968.65 Å has 0 unmasked pixels within \(2\sigma\); flux tied to [Ne III] 3869.92 Å (38 pixels) at ratio 3.318 (Ceridwen `TIED_RATIOS`).
+- `neb_eline_ca` Ca II H mask spans 3946.7–3993.2 Å, wider than ±1500 km/s about 3969.59 Å (3949.7–3989.5 Å).
+- `neb_maskallca_eline` has no result.
+- Nebular emission only for SSPs with \(\log_{10}(\mathrm{age}/\mathrm{yr}) \leq 7.30\); \(\log U\) and gas-metallicity rule fixed in grid, not sampled.
+- One galaxy.
 
 ## References
 
