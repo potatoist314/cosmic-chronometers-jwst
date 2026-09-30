@@ -196,7 +196,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -206,7 +206,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/185653-M12_185653/M12_185653_executed.ipynb",
@@ -216,7 +216,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "zsig",
     "view": "Fits",
-    "caption": "M12_185653 · free redshift and dispersion. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Spectrum · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/185653-M12_185653/M12_185653_executed.ipynb",
@@ -226,7 +226,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "zsig",
     "view": "Fits",
-    "caption": "M12_185653 · free redshift and dispersion. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -236,7 +236,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_185653 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/185653-M12_185653/M12_185653_executed.ipynb",
@@ -246,7 +246,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "zsig",
     "view": "SFH",
-    "caption": "M12_185653 · free redshift and dispersion. Saved SFH and posterior interval."
+    "caption": "M12_185653 · SFH · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -256,7 +256,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -266,7 +266,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/185653-M12_185653/M12_185653_executed.ipynb",
@@ -276,7 +276,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "zsig",
     "view": "Posteriors",
-    "caption": "M12_185653 · free redshift and dispersion. Physical-parameter posterior."
+    "caption": "M12_185653 · Posteriors · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/185653-M12_185653/M12_185653_executed.ipynb",
@@ -286,7 +286,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M12_185653",
     "arm": "zsig",
     "view": "Posteriors",
-    "caption": "M12_185653 · free redshift and dispersion. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -296,7 +296,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -306,7 +306,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/206545-M1_206545/M1_206545_executed.ipynb",
@@ -316,7 +316,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "zsig",
     "view": "Fits",
-    "caption": "M1_206545 · free redshift and dispersion. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Spectrum · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/206545-M1_206545/M1_206545_executed.ipynb",
@@ -326,7 +326,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "zsig",
     "view": "Fits",
-    "caption": "M1_206545 · free redshift and dispersion. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -336,7 +336,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M1_206545 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/206545-M1_206545/M1_206545_executed.ipynb",
@@ -346,7 +346,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "zsig",
     "view": "SFH",
-    "caption": "M1_206545 · free redshift and dispersion. Saved SFH and posterior interval."
+    "caption": "M1_206545 · SFH · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -356,7 +356,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -366,7 +366,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/206545-M1_206545/M1_206545_executed.ipynb",
@@ -376,7 +376,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "zsig",
     "view": "Posteriors",
-    "caption": "M1_206545 · free redshift and dispersion. Physical-parameter posterior."
+    "caption": "M1_206545 · Posteriors · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/206545-M1_206545/M1_206545_executed.ipynb",
@@ -386,7 +386,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M1_206545",
     "arm": "zsig",
     "view": "Posteriors",
-    "caption": "M1_206545 · free redshift and dispersion. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -396,7 +396,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -406,7 +406,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/172669-M5_172669/M5_172669_executed.ipynb",
@@ -416,7 +416,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "zsig",
     "view": "Fits",
-    "caption": "M5_172669 · free redshift and dispersion. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/172669-M5_172669/M5_172669_executed.ipynb",
@@ -426,7 +426,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "zsig",
     "view": "Fits",
-    "caption": "M5_172669 · free redshift and dispersion. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -436,7 +436,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_172669 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/172669-M5_172669/M5_172669_executed.ipynb",
@@ -446,7 +446,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "zsig",
     "view": "SFH",
-    "caption": "M5_172669 · free redshift and dispersion. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -456,7 +456,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -466,7 +466,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/172669-M5_172669/M5_172669_executed.ipynb",
@@ -476,7 +476,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "zsig",
     "view": "Posteriors",
-    "caption": "M5_172669 · free redshift and dispersion. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/172669-M5_172669/M5_172669_executed.ipynb",
@@ -486,7 +486,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_172669",
     "arm": "zsig",
     "view": "Posteriors",
-    "caption": "M5_172669 · free redshift and dispersion. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -496,7 +496,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -506,7 +506,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/173928-M5_173928/M5_173928_executed.ipynb",
@@ -516,7 +516,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "zsig",
     "view": "Fits",
-    "caption": "M5_173928 · free redshift and dispersion. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Spectrum · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/173928-M5_173928/M5_173928_executed.ipynb",
@@ -526,7 +526,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "zsig",
     "view": "Fits",
-    "caption": "M5_173928 · free redshift and dispersion. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -536,7 +536,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_173928 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/173928-M5_173928/M5_173928_executed.ipynb",
@@ -546,7 +546,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "zsig",
     "view": "SFH",
-    "caption": "M5_173928 · free redshift and dispersion. Saved SFH and posterior interval."
+    "caption": "M5_173928 · SFH · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -556,7 +556,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -566,7 +566,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/173928-M5_173928/M5_173928_executed.ipynb",
@@ -576,7 +576,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "zsig",
     "view": "Posteriors",
-    "caption": "M5_173928 · free redshift and dispersion. Physical-parameter posterior."
+    "caption": "M5_173928 · Posteriors · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   },
   {
     "notebook": "results/redshift-sigma-wiggle/zsig/173928-M5_173928/M5_173928_executed.ipynb",
@@ -586,7 +586,7 @@ Compare zsig with poly3_total for four targets, using the documented free-z spec
     "target": "M5_173928",
     "arm": "zsig",
     "view": "Posteriors",
-    "caption": "M5_173928 · free redshift and dispersion. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · zsig: redshift free (prior 100 km/s), sigma* free (prior 20%); otherwise as poly3_total."
   }
 ]
 ```

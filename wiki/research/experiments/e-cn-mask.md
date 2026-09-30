@@ -280,7 +280,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M12_185653 · CN regions omitted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Spectrum · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/185653-M12_185653/M12_185653_executed.ipynb",
@@ -290,7 +290,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M12_185653 · CN regions omitted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -300,7 +300,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -310,7 +310,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/185653-M12_185653/M12_185653_executed.ipynb",
@@ -320,7 +320,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "mask_cn",
     "view": "SFH",
-    "caption": "M12_185653 · CN regions omitted. Saved SFH and posterior interval."
+    "caption": "M12_185653 · SFH · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -330,7 +330,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_185653 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/185653-M12_185653/M12_185653_executed.ipynb",
@@ -340,7 +340,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M12_185653 · CN regions omitted. Physical-parameter posterior."
+    "caption": "M12_185653 · Posteriors · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/185653-M12_185653/M12_185653_executed.ipynb",
@@ -350,7 +350,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M12_185653 · CN regions omitted. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -360,7 +360,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -370,7 +370,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/98104-M12_98104/M12_98104_executed.ipynb",
@@ -380,7 +380,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M12_98104 · CN regions omitted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Spectrum · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/98104-M12_98104/M12_98104_executed.ipynb",
@@ -390,7 +390,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M12_98104 · CN regions omitted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -400,7 +400,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -410,7 +410,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/98104-M12_98104/M12_98104_executed.ipynb",
@@ -420,7 +420,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "mask_cn",
     "view": "SFH",
-    "caption": "M12_98104 · CN regions omitted. Saved SFH and posterior interval."
+    "caption": "M12_98104 · SFH · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -430,7 +430,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_98104 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/98104-M12_98104/M12_98104_executed.ipynb",
@@ -440,7 +440,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M12_98104 · CN regions omitted. Physical-parameter posterior."
+    "caption": "M12_98104 · Posteriors · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/98104-M12_98104/M12_98104_executed.ipynb",
@@ -450,7 +450,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M12_98104 · CN regions omitted. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -460,7 +460,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -470,7 +470,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/206545-M1_206545/M1_206545_executed.ipynb",
@@ -480,7 +480,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M1_206545 · CN regions omitted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Spectrum · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/206545-M1_206545/M1_206545_executed.ipynb",
@@ -490,7 +490,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M1_206545 · CN regions omitted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -500,7 +500,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -510,7 +510,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/206545-M1_206545/M1_206545_executed.ipynb",
@@ -520,7 +520,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "mask_cn",
     "view": "SFH",
-    "caption": "M1_206545 · CN regions omitted. Saved SFH and posterior interval."
+    "caption": "M1_206545 · SFH · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -530,7 +530,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M1_206545 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/206545-M1_206545/M1_206545_executed.ipynb",
@@ -540,7 +540,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M1_206545 · CN regions omitted. Physical-parameter posterior."
+    "caption": "M1_206545 · Posteriors · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/206545-M1_206545/M1_206545_executed.ipynb",
@@ -550,7 +550,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M1_206545 · CN regions omitted. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -560,7 +560,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -570,7 +570,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/108989-M4_108989/M4_108989_executed.ipynb",
@@ -580,7 +580,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M4_108989 · CN regions omitted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/108989-M4_108989/M4_108989_executed.ipynb",
@@ -590,7 +590,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M4_108989 · CN regions omitted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -600,7 +600,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -610,7 +610,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/108989-M4_108989/M4_108989_executed.ipynb",
@@ -620,7 +620,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "mask_cn",
     "view": "SFH",
-    "caption": "M4_108989 · CN regions omitted. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -630,7 +630,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M4_108989 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/108989-M4_108989/M4_108989_executed.ipynb",
@@ -640,7 +640,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M4_108989 · CN regions omitted. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/108989-M4_108989/M4_108989_executed.ipynb",
@@ -650,7 +650,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M4_108989 · CN regions omitted. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -660,7 +660,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -670,7 +670,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/172669-M5_172669/M5_172669_executed.ipynb",
@@ -680,7 +680,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M5_172669 · CN regions omitted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/172669-M5_172669/M5_172669_executed.ipynb",
@@ -690,7 +690,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M5_172669 · CN regions omitted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -700,7 +700,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -710,7 +710,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/172669-M5_172669/M5_172669_executed.ipynb",
@@ -720,7 +720,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "mask_cn",
     "view": "SFH",
-    "caption": "M5_172669 · CN regions omitted. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -730,7 +730,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_172669 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/172669-M5_172669/M5_172669_executed.ipynb",
@@ -740,7 +740,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M5_172669 · CN regions omitted. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/172669-M5_172669/M5_172669_executed.ipynb",
@@ -750,7 +750,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M5_172669 · CN regions omitted. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -760,7 +760,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -770,7 +770,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/173928-M5_173928/M5_173928_executed.ipynb",
@@ -780,7 +780,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M5_173928 · CN regions omitted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Spectrum · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/173928-M5_173928/M5_173928_executed.ipynb",
@@ -790,7 +790,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "mask_cn",
     "view": "Fits",
-    "caption": "M5_173928 · CN regions omitted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -800,7 +800,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -810,7 +810,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/173928-M5_173928/M5_173928_executed.ipynb",
@@ -820,7 +820,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "mask_cn",
     "view": "SFH",
-    "caption": "M5_173928 · CN regions omitted. Saved SFH and posterior interval."
+    "caption": "M5_173928 · SFH · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -830,7 +830,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_173928 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/173928-M5_173928/M5_173928_executed.ipynb",
@@ -840,7 +840,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M5_173928 · CN regions omitted. Physical-parameter posterior."
+    "caption": "M5_173928 · Posteriors · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mask_cn/173928-M5_173928/M5_173928_executed.ipynb",
@@ -850,7 +850,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "mask_cn",
     "view": "Posteriors",
-    "caption": "M5_173928 · CN regions omitted. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · mask_cn: CN windows 4142-4177, 4634-4720 A masked; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -860,7 +860,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -870,7 +870,7 @@ Exclude rest-frame 4142–4177 and 4634–4720 Angstrom windows. All other setti
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · poly3_total, reference."
   }
 ]
 ```

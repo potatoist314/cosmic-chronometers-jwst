@@ -114,7 +114,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_210210 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -124,7 +124,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_210210 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/210210-M1_210210/M1_210210_executed.ipynb",
@@ -134,7 +134,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "verification",
     "view": "Fits",
-    "caption": "M1_210210 · verification refit. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · Spectrum · verification: repeat fit at recorded seeds; otherwise as baseline."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/210210-M1_210210/M1_210210_executed.ipynb",
@@ -144,7 +144,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "verification",
     "view": "Fits",
-    "caption": "M1_210210 · verification refit. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · Photometry · verification: repeat fit at recorded seeds; otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -154,7 +154,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_210210 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_210210 · SFH · baseline, reference."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/210210-M1_210210/M1_210210_executed.ipynb",
@@ -164,7 +164,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "verification",
     "view": "SFH",
-    "caption": "M1_210210 · verification refit. Saved SFH and posterior interval."
+    "caption": "M1_210210 · SFH · verification: repeat fit at recorded seeds; otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -174,7 +174,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_210210 · baseline. Physical-parameter posterior."
+    "caption": "M1_210210 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -184,7 +184,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_210210 · baseline. Age and formed-mass fractions."
+    "caption": "M1_210210 · Ages · baseline, reference."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/210210-M1_210210/M1_210210_executed.ipynb",
@@ -194,7 +194,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "verification",
     "view": "Posteriors",
-    "caption": "M1_210210 · verification refit. Physical-parameter posterior."
+    "caption": "M1_210210 · Posteriors · verification: repeat fit at recorded seeds; otherwise as baseline."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/210210-M1_210210/M1_210210_executed.ipynb",
@@ -204,7 +204,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M1_210210",
     "arm": "verification",
     "view": "Posteriors",
-    "caption": "M1_210210 · verification refit. Age and formed-mass fractions."
+    "caption": "M1_210210 · Ages · verification: repeat fit at recorded seeds; otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
@@ -214,7 +214,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M2_139662 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M2_139662 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
@@ -224,7 +224,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M2_139662 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M2_139662 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/139662-M2_139662/M2_139662_executed.ipynb",
@@ -234,7 +234,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "verification",
     "view": "Fits",
-    "caption": "M2_139662 · verification refit. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M2_139662 · Spectrum · verification: repeat fit at recorded seeds; otherwise as baseline."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/139662-M2_139662/M2_139662_executed.ipynb",
@@ -244,7 +244,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "verification",
     "view": "Fits",
-    "caption": "M2_139662 · verification refit. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M2_139662 · Photometry · verification: repeat fit at recorded seeds; otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
@@ -254,7 +254,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M2_139662 · baseline. Saved SFH and posterior interval."
+    "caption": "M2_139662 · SFH · baseline, reference."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/139662-M2_139662/M2_139662_executed.ipynb",
@@ -264,7 +264,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "verification",
     "view": "SFH",
-    "caption": "M2_139662 · verification refit. Saved SFH and posterior interval."
+    "caption": "M2_139662 · SFH · verification: repeat fit at recorded seeds; otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
@@ -274,7 +274,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M2_139662 · baseline. Physical-parameter posterior."
+    "caption": "M2_139662 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139662-M2_139662/M2_139662_executed.ipynb",
@@ -284,7 +284,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M2_139662 · baseline. Age and formed-mass fractions."
+    "caption": "M2_139662 · Ages · baseline, reference."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/139662-M2_139662/M2_139662_executed.ipynb",
@@ -294,7 +294,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "verification",
     "view": "Posteriors",
-    "caption": "M2_139662 · verification refit. Physical-parameter posterior."
+    "caption": "M2_139662 · Posteriors · verification: repeat fit at recorded seeds; otherwise as baseline."
   },
   {
     "notebook": "results/rtx-5060-per-galaxy-diagnostics-verification/139662-M2_139662/M2_139662_executed.ipynb",
@@ -304,7 +304,7 @@ Audit stored residuals and assembly histories for the baseline sample, then refi
     "target": "M2_139662",
     "arm": "verification",
     "view": "Posteriors",
-    "caption": "M2_139662 · verification refit. Age and formed-mass fractions."
+    "caption": "M2_139662 · Ages · verification: repeat fit at recorded seeds; otherwise as baseline."
   }
 ]
 ```

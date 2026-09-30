@@ -82,7 +82,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_baseline",
     "view": "Fits",
-    "caption": "M5_172669 · 4% tilt, no polynomial. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · mock_tilt4_baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_baseline/172669-M5_172669/M5_172669_executed.ipynb",
@@ -92,7 +92,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_baseline",
     "view": "Fits",
-    "caption": "M5_172669 · 4% tilt, no polynomial. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · mock_tilt4_baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -102,7 +102,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "Fits",
-    "caption": "M5_172669 · 4% tilt, order 3. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · mock_tilt4_poly3: order-3 polynomial (prior sigma 0.1); otherwise as mock_tilt4_baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -112,7 +112,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "Fits",
-    "caption": "M5_172669 · 4% tilt, order 3. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · mock_tilt4_poly3: order-3 polynomial (prior sigma 0.1); otherwise as mock_tilt4_baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_baseline/172669-M5_172669/M5_172669_executed.ipynb",
@@ -122,7 +122,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_baseline",
     "view": "SFH",
-    "caption": "M5_172669 · 4% tilt, no polynomial. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · mock_tilt4_baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -132,7 +132,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "SFH",
-    "caption": "M5_172669 · 4% tilt, order 3. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · mock_tilt4_poly3: order-3 polynomial (prior sigma 0.1); otherwise as mock_tilt4_baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_baseline/172669-M5_172669/M5_172669_executed.ipynb",
@@ -142,7 +142,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_baseline",
     "view": "Posteriors",
-    "caption": "M5_172669 · 4% tilt, no polynomial. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · mock_tilt4_baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_baseline/172669-M5_172669/M5_172669_executed.ipynb",
@@ -152,7 +152,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_baseline",
     "view": "Posteriors",
-    "caption": "M5_172669 · 4% tilt, no polynomial. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · mock_tilt4_baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -162,7 +162,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "Posteriors",
-    "caption": "M5_172669 · 4% tilt, order 3. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · mock_tilt4_poly3: order-3 polynomial (prior sigma 0.1); otherwise as mock_tilt4_baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -172,7 +172,7 @@ The same 4% tilted mock is fitted without a calibration polynomial and with orde
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "Posteriors",
-    "caption": "M5_172669 · 4% tilt, order 3. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · mock_tilt4_poly3: order-3 polynomial (prior sigma 0.1); otherwise as mock_tilt4_baseline."
   }
 ]
 ```

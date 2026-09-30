@@ -46,7 +46,7 @@ M1_210210, 11 fitted photometric bands and 3523 spectral pixels; grid schema 2.1
     "target": "M1_210210",
     "arm": "saved run",
     "view": "Fits",
-    "caption": "M1_210210 · saved run. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · Spectrum · saved run, reference."
   },
   {
     "notebook": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb",
@@ -56,7 +56,7 @@ M1_210210, 11 fitted photometric bands and 3523 spectral pixels; grid schema 2.1
     "target": "M1_210210",
     "arm": "saved run",
     "view": "Fits",
-    "caption": "M1_210210 · saved run. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · Photometry · saved run, reference."
   },
   {
     "notebook": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb",
@@ -66,7 +66,7 @@ M1_210210, 11 fitted photometric bands and 3523 spectral pixels; grid schema 2.1
     "target": "M1_210210",
     "arm": "saved run",
     "view": "SFH",
-    "caption": "M1_210210 · saved run. Saved SFH and posterior interval."
+    "caption": "M1_210210 · SFH · saved run, reference."
   },
   {
     "notebook": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb",
@@ -76,7 +76,7 @@ M1_210210, 11 fitted photometric bands and 3523 spectral pixels; grid schema 2.1
     "target": "M1_210210",
     "arm": "saved run",
     "view": "Posteriors",
-    "caption": "M1_210210 · saved run. Physical-parameter posterior."
+    "caption": "M1_210210 · Posteriors · saved run, reference."
   },
   {
     "notebook": "archive/results/rtx-5090-integrated-fit/ceridwen_integrated_photometry_spectra_executed.ipynb",
@@ -86,7 +86,7 @@ M1_210210, 11 fitted photometric bands and 3523 spectral pixels; grid schema 2.1
     "target": "M1_210210",
     "arm": "saved run",
     "view": "Posteriors",
-    "caption": "M1_210210 · saved run. Age and formed-mass fractions."
+    "caption": "M1_210210 · Ages · saved run, reference."
   }
 ]
 ```

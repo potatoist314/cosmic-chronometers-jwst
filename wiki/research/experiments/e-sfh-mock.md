@@ -83,7 +83,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "Fits",
-    "caption": "M5_172669 · 4% tilt, order 3. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · mock_tilt4_poly3, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -93,7 +93,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "Fits",
-    "caption": "M5_172669 · 4% tilt, order 3. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · mock_tilt4_poly3, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mock_tilt4_sfh_cont/172669-M5_172669/M5_172669_executed.ipynb",
@@ -103,7 +103,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_sfh_cont",
     "view": "Fits",
-    "caption": "M5_172669 · 4% tilt, continuity prior. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · mock_tilt4_sfh_cont: SFH prior StudentT(0, 0.3, 2); otherwise as mock_tilt4_poly3."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mock_tilt4_sfh_cont/172669-M5_172669/M5_172669_executed.ipynb",
@@ -113,7 +113,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_sfh_cont",
     "view": "Fits",
-    "caption": "M5_172669 · 4% tilt, continuity prior. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · mock_tilt4_sfh_cont: SFH prior StudentT(0, 0.3, 2); otherwise as mock_tilt4_poly3."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -123,7 +123,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "SFH",
-    "caption": "M5_172669 · 4% tilt, order 3. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · mock_tilt4_poly3, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mock_tilt4_sfh_cont/172669-M5_172669/M5_172669_executed.ipynb",
@@ -133,7 +133,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_sfh_cont",
     "view": "SFH",
-    "caption": "M5_172669 · 4% tilt, continuity prior. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · mock_tilt4_sfh_cont: SFH prior StudentT(0, 0.3, 2); otherwise as mock_tilt4_poly3."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -143,7 +143,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "Posteriors",
-    "caption": "M5_172669 · 4% tilt, order 3. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · mock_tilt4_poly3, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -153,7 +153,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_poly3",
     "view": "Posteriors",
-    "caption": "M5_172669 · 4% tilt, order 3. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · mock_tilt4_poly3, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mock_tilt4_sfh_cont/172669-M5_172669/M5_172669_executed.ipynb",
@@ -163,7 +163,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_sfh_cont",
     "view": "Posteriors",
-    "caption": "M5_172669 · 4% tilt, continuity prior. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · mock_tilt4_sfh_cont: SFH prior StudentT(0, 0.3, 2); otherwise as mock_tilt4_poly3."
   },
   {
     "notebook": "results/fit-accuracy-knobs/mock_tilt4_sfh_cont/172669-M5_172669/M5_172669_executed.ipynb",
@@ -173,7 +173,7 @@ Compare mock_tilt4_poly3 and mock_tilt4_sfh_cont on the same saved injected popu
     "target": "M5_172669",
     "arm": "mock_tilt4_sfh_cont",
     "view": "Posteriors",
-    "caption": "M5_172669 · 4% tilt, continuity prior. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · mock_tilt4_sfh_cont: SFH prior StudentT(0, 0.3, 2); otherwise as mock_tilt4_poly3."
   }
 ]
 ```
