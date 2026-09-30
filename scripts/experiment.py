@@ -254,7 +254,7 @@ class Run(engine.Run):
             payload = json.dumps([cell])
             vast._ssh(instance, f'printf %s {shlex.quote(payload)} > {remote_root}/config.json',
                       timeout=self.timeout(attempt))
-            command = environment + "MPLBACKEND=Agg XLA_FLAGS='--xla_gpu_enable_command_buffer=' " + shlex.join([
+            command = environment + f"SPS_HOME={engine.REMOTE}/external/fsps MPLBACKEND=Agg XLA_FLAGS='--xla_gpu_enable_command_buffer=' " + shlex.join([
                 '.venv-ceridwen-gpu/bin/python', 'scripts/experiment.py', 'remote',
                 '--config', f'{remote_root}/config.json', '--output', f'{remote_root}/results'])
             try:
