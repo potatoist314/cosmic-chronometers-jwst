@@ -455,22 +455,24 @@ def _instance_exists(instance_id: int) -> bool:
     return any(int(entry["id"]) == instance_id for entry in instances)
 
 
-def _destroy(instance_id: int, log: Any) -> None:
+def _destroy(instance_id: int, log: Any) -> bool:
     """Destroy the instance and confirm it is gone, so a rental cannot leak.
 
     ``vastai destroy instance`` prompts for confirmation and exits zero when it
     reads no answer, so a return code alone does not prove the rental ended.
+    Returns whether the instance list confirmed it gone.
     """
     for _ in range(DESTROY_ATTEMPTS):
         try:
             _vastai(["destroy", "instance", str(instance_id), "-y"])
             if not _instance_exists(instance_id):
                 log(f"destroyed instance {instance_id}")
-                return
+                return True
         except SweepError as error:
             log(f"destroy attempt failed for {instance_id}: {error}")
         time.sleep(SSH_POLL_SECONDS)
     log(f"LEAKED INSTANCE {instance_id}: destroy it manually, it is still billing")
+    return False
 
 
 def _create_instance(offer: dict[str, Any], args: argparse.Namespace) -> int:

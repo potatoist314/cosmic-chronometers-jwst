@@ -52,6 +52,7 @@ def cloud(run, monkeypatch):
         # Timing must already be local before teardown after successful measurement.
         state['destroyed'].append(instance)
         state['live'].pop(instance, None)
+        return True
     monkeypatch.setattr(bench.vast, '_create_instance', create)
     monkeypatch.setattr(bench.vast, '_vastai_json', api)
     monkeypatch.setattr(bench.vast, 'search_offers', lambda _, **kwargs: [offer] if kwargs['rental_type'] == 'on-demand' else [])
@@ -119,7 +120,7 @@ def test_interrupt_cleans_up_owned_instance_only(run, cloud, monkeypatch):
 
 
 def test_cleanup_failure_blocks_another_rental(run, cloud, monkeypatch):
-    monkeypatch.setattr(bench.vast, '_destroy', lambda *_: None)
+    monkeypatch.setattr(bench.vast, '_destroy', lambda *_: False)
     with pytest.raises(bench.vast.SweepError, match='cleanup failed'):
         run.execute()
     assert cloud[1]['created'] == [1]

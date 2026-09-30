@@ -487,8 +487,7 @@ class Run:
                     attempt['instance_id'] = matches[0]['id']
                     self.save()
             if attempt.get('instance_id'):
-                vast._destroy(attempt['instance_id'], log)
-                attempt['destroyed'] = not vast._instance_exists(attempt['instance_id'])
+                attempt['destroyed'] = vast._destroy(attempt['instance_id'], log)
             else:
                 attempt['destroyed'] = True
                 attempt['transfer_estimate'] = 0

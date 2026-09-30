@@ -74,6 +74,25 @@ def test_server_error_leaves_create_outcome_unknown(monkeypatch):
     assert not error.value.rejected
 
 
+def test_destroy_reports_the_confirmed_teardown(monkeypatch):
+    listed = [[{'id': 7}], []]
+    calls = []
+    monkeypatch.setattr(sweep, '_vastai', lambda args, **kw: calls.append(args) or '')
+    monkeypatch.setattr(sweep, '_instance_exists', lambda i: bool(listed.pop(0)))
+    monkeypatch.setattr(sweep.time, 'sleep', lambda _seconds: None)
+    assert sweep._destroy(7, print) is True
+    assert calls == [['destroy', 'instance', '7', '-y']] * 2
+
+
+def test_destroy_reports_a_leak(monkeypatch):
+    monkeypatch.setattr(sweep, '_vastai', lambda args, **kw: '')
+    monkeypatch.setattr(sweep, '_instance_exists', lambda i: True)
+    monkeypatch.setattr(sweep.time, 'sleep', lambda _seconds: None)
+    logged = []
+    assert sweep._destroy(7, logged.append) is False
+    assert logged[-1].startswith('LEAKED INSTANCE 7')
+
+
 def test_rental_disables_interactive_tmux_for_automated_ssh(monkeypatch):
     calls = []
     monkeypatch.setattr(sweep, '_vastai_json', lambda args, **kwargs:
