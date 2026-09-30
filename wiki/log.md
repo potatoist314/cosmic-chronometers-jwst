@@ -1426,3 +1426,12 @@
 
 - `ssp_grid=~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5`; `emission_line_marginalisation=True`; `emission_lines=[3934.77,3966.6,3973.3,4227.92]`; \(z=z_{\mathrm{cat}}\). `diffuse_Ebump` prior remains \(\mathrm{Uniform}(0,6)\). Liu Hao, 30 Sep 2026: 'this seems like a good default'; record: `research/experiments/e-mask-all-ca.md`.
 - Files: `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, `tests/test_emission_line_marginalisation.py`, `wiki/fit_settings.py`, `wiki/tests/test_fit_settings.py`, `wiki/notes/model.md`.
+
+### 2026-09-30 — e-zevo: metallicity evolution on production defaults
+
+- `research/experiments/e-zevo.md` records `neb_eline_ca_nohe_zevo` against `neb_eline_ca_nohe` for M1_210210; \(\ln Z\) +8.3, \(\beta\) 0.714; `results/m1-210210-neb-eline-ca-nohe-zevo-2026-09-30/`.
+
+### 2026-09-30 — Production defaults: metallicity evolution on
+
+- `metallicity_evolution=True`; `zh_beta_unit` prior remains Uniform(0, 1). Liu Hao, 30 Sep 2026: 'the metallicity-evolution slope (ZH beta) should be part of the production default'; record: `research/experiments/e-zevo.md`.
+- Files: `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, `tests/test_emission_line_marginalisation.py`, `wiki/notes/model.md`.

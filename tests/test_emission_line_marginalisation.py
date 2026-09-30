@@ -34,7 +34,8 @@ BASELINE = [
     "0x1.c393454f2ae25p+17", "0x1.c390fdc3e2883p+17",
 ]
 
-# Grid and mask of the reference fit: the defaults before the nebular grid, line marginalisation and Ca mask.
+# Grid, mask and metallicity of the reference fit: the defaults before the nebular grid,
+# line marginalisation, Ca mask and metallicity evolution.
 REFERENCE_GRID = "amist_c3k_hr_krou_afe"
 REFERENCE_MASK = [3726.0, 3728.8, 4861.3, 4958.9, 5006.8]
 NEBULAR_GRID = Path.home() / ".ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5"
@@ -46,7 +47,8 @@ pytestmark = pytest.mark.skipif(
 )
 
 
-def _build(emission_line_marginalisation, emission_lines=REFERENCE_MASK, ssp_grid=REFERENCE_GRID):
+def _build(emission_line_marginalisation, emission_lines=REFERENCE_MASK, ssp_grid=REFERENCE_GRID,
+           metallicity_evolution=False):
     """The notebook's model and likelihood; None keeps the notebook default of that setting."""
     import jax
 
@@ -61,7 +63,8 @@ def _build(emission_line_marginalisation, emission_lines=REFERENCE_MASK, ssp_gri
     try:
         exec(cells[2], namespace)
         overrides = {"emission_line_marginalisation": emission_line_marginalisation,
-                     "emission_lines": emission_lines, "ssp_grid": ssp_grid}
+                     "emission_lines": emission_lines, "ssp_grid": ssp_grid,
+                     "metallicity_evolution": metallicity_evolution}
         namespace["SETTINGS"].update({key: value for key, value in overrides.items() if value is not None})
         for index in (4, 6, 8):
             exec(cells[index], namespace)
@@ -94,12 +97,13 @@ def _sampler_loglike(namespace):
                        jax.random.PRNGKey(0))
 
 
-def test_default_is_on_with_the_nebular_grid_and_the_ca_mask():
+def test_default_is_on_with_the_nebular_grid_ca_mask_and_zevo():
     cells = ["".join(cell["source"]) for cell in json.loads(NOTEBOOK.read_text())["cells"]]
     assert '"emission_line_marginalisation": True,' in cells[2]
     assert '"ssp_grid": "~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",' in cells[2]
     assert '"emission_lines": [3934.77, 3966.6, 3973.3, 4227.92],' in cells[2]
     assert '"diffuse_Ebump": Uniform(low=0.0, high=6.0),' in cells[2]
+    assert '"metallicity_evolution": True,' in cells[2]
 
 
 @pytest.mark.skipif(not NEBULAR_GRID.exists(), reason="needs the nebular grid of scripts/build_nebular_grid.py")
@@ -107,10 +111,11 @@ def test_default_build_fixes_redshift_and_has_no_h_epsilon_column():
     import jax
     import numpy as np  # the reference fit lacks the Noll parameters, so the model's initial point stands in for draws
 
-    namespace = _build(None, None, None)
+    namespace = _build(None, None, None, None)
     model = namespace["joint_model"]
     lines = namespace["emission_line_columns"]
     assert "zred" not in model.param_names and lines.zred_key is None
+    assert "zh_beta_unit" in model.param_names
     assert "Ba-5 3970" not in lines.names and "[Ne III] 3968" not in lines.names
     assert "[O III] 5007 (+[O III] 4959)" in lines.free_names
     assert np.isfinite(float(jax.jit(_sampler_loglike(namespace))(model.theta_init)))
