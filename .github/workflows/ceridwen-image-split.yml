@@ -42,7 +42,8 @@ jobs:
               for m in tar:
                   digest = hashlib.file_digest(tar.extractfile(m), "sha256").hexdigest() if m.isfile() else ""
                   # Directory times and the files docker create writes differ between any two containers.
-                  mtime = "" if m.isdir() or m.name in (".dockerenv", "etc/hostname", "etc/hosts", "etc/resolv.conf") else m.mtime
+                  created = (".dockerenv", "dev/console", "etc/hostname", "etc/hosts", "etc/mtab", "etc/resolv.conf")
+                  mtime = "" if m.isdir() or m.name in created else m.mtime
                   print(repr(m.name), m.type, oct(m.mode), m.uid, m.gid, m.size, mtime, repr(m.linkname), digest)
           ' | sort
             docker rm "$id" > /dev/null
@@ -50,5 +51,5 @@ jobs:
           }
           listing "$SOURCE" > source.txt
           listing "$SPLIT" > split.txt
-          cmp source.txt split.txt
+          diff source.txt split.txt
           echo "Split $SOURCE into $SPLIT: $(wc -l < split.txt) identical entries and configuration" >> "$GITHUB_STEP_SUMMARY"
