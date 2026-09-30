@@ -41,7 +41,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 
-def _build(emission_line_marginalisation):
+def _build(emission_line_marginalisation, emission_lines=None):
     import jax
 
     jax.config.update("jax_enable_x64", True)
@@ -55,6 +55,8 @@ def _build(emission_line_marginalisation):
     try:
         exec(cells[2], namespace)
         namespace["SETTINGS"]["emission_line_marginalisation"] = emission_line_marginalisation
+        if emission_lines is not None:
+            namespace["SETTINGS"]["emission_lines"] = emission_lines
         for index in (4, 6, 8):
             exec(cells[index], namespace)
         likelihood_lines = cells[10].split("calibration_polynomial =")[1].split("model_parameter_block_text")[0]
@@ -119,6 +121,15 @@ def test_option_on_fixes_redshift_ties_oxygen_and_shares_photometry():
     assert "[O II] 3726" not in lines.names          # below the spectrum; never tied
     values = np.asarray(jax.jit(jax.vmap(_sampler_loglike(namespace)))(_draws(model)))
     assert np.all(np.isfinite(values))
+
+
+def test_a_line_with_masked_pixels_gets_no_free_flux():
+    # The Ca II H mask takes every pixel of H-epsilon and [Ne III] 3968. Two entries: the
+    # notebook drops a mask entry within 2 A of a fitted line.
+    lines = _build(True, emission_lines=[3934.77, 3966.6, 3973.3, 4227.92])["emission_line_columns"]
+    assert "Ba-5 3970" not in lines.names and "[Ne III] 3968" not in lines.names
+    assert "[Ne III] 3869" in lines.free_names
+    assert "Ba-6 3889" in lines.free_names           # outside the masks; keeps its flux
 
 
 def test_tied_ratio_holds_in_posterior_draws():
