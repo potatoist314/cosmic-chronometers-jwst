@@ -20,8 +20,10 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY_URL = "https://github.com/potatoist314/cosmic-chronometers-jwst.git"
 REMOTE_ROOT = "/workspace/cosmic-chronometers-jwst"
 
-# Dependency-only image; runtime source remains pinned separately.
-DEFAULT_IMAGE = "ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34"
+# Dependency-only image; runtime source remains pinned separately. It is image e1c8846c with
+# its venv layer split into 11 (the same files; hosts download the parts in parallel) plus the
+# packages Vast's SSH launch installs (scripts/containers/vast-ssh.Dockerfile).
+DEFAULT_IMAGE = "ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1"
 LEGACY_IMAGE = "vastai/base-image:cuda-12.6.3-auto"
 DEFAULT_DISK_GB = 40
 DESTROY_ATTEMPTS = 3
