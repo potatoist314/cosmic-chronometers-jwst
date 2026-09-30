@@ -7167,7 +7167,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_103366",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_103366 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_103366 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
@@ -7177,7 +7177,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_103366",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_103366 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_103366 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
@@ -7187,7 +7187,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_103366",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_103366 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_103366 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
@@ -7197,7 +7197,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_103366",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_103366 · baseline. Physical-parameter posterior."
+    "caption": "M14_103366 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/103366-M14_103366/M14_103366_executed.ipynb",
@@ -7207,7 +7207,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_103366",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_103366 · baseline. Age and formed-mass fractions."
+    "caption": "M14_103366 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
@@ -7217,7 +7217,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_104877",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_104877 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_104877 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
@@ -7227,7 +7227,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_104877",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_104877 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_104877 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
@@ -7237,7 +7237,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_104877",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_104877 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_104877 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
@@ -7247,7 +7247,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_104877",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_104877 · baseline. Physical-parameter posterior."
+    "caption": "M14_104877 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/104877-M14_104877/M14_104877_executed.ipynb",
@@ -7257,7 +7257,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_104877",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_104877 · baseline. Age and formed-mass fractions."
+    "caption": "M14_104877 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
@@ -7267,7 +7267,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_27068",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_27068 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_27068 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
@@ -7277,7 +7277,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_27068",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_27068 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_27068 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
@@ -7287,7 +7287,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_27068",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_27068 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_27068 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
@@ -7297,7 +7297,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_27068",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_27068 · baseline. Physical-parameter posterior."
+    "caption": "M14_27068 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/27068-M14_27068/M14_27068_executed.ipynb",
@@ -7307,7 +7307,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_27068",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_27068 · baseline. Age and formed-mass fractions."
+    "caption": "M14_27068 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
@@ -7317,7 +7317,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_31835",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_31835 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_31835 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
@@ -7327,7 +7327,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_31835",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_31835 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_31835 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
@@ -7337,7 +7337,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_31835",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_31835 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_31835 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
@@ -7347,7 +7347,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_31835",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_31835 · baseline. Physical-parameter posterior."
+    "caption": "M14_31835 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/31835-M14_31835/M14_31835_executed.ipynb",
@@ -7357,7 +7357,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_31835",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_31835 · baseline. Age and formed-mass fractions."
+    "caption": "M14_31835 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
@@ -7367,7 +7367,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_36550",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_36550 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_36550 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
@@ -7377,7 +7377,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_36550",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_36550 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_36550 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
@@ -7387,7 +7387,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_36550",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_36550 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_36550 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
@@ -7397,7 +7397,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_36550",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_36550 · baseline. Physical-parameter posterior."
+    "caption": "M14_36550 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/36550-M14_36550/M14_36550_executed.ipynb",
@@ -7407,7 +7407,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_36550",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_36550 · baseline. Age and formed-mass fractions."
+    "caption": "M14_36550 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
@@ -7417,7 +7417,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37023",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_37023 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_37023 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
@@ -7427,7 +7427,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37023",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_37023 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_37023 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
@@ -7437,7 +7437,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37023",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_37023 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_37023 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
@@ -7447,7 +7447,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37023",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_37023 · baseline. Physical-parameter posterior."
+    "caption": "M14_37023 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37023-M14_37023/M14_37023_executed.ipynb",
@@ -7457,7 +7457,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37023",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_37023 · baseline. Age and formed-mass fractions."
+    "caption": "M14_37023 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
@@ -7467,7 +7467,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37219",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_37219 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_37219 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
@@ -7477,7 +7477,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37219",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_37219 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_37219 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
@@ -7487,7 +7487,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37219",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_37219 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_37219 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
@@ -7497,7 +7497,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37219",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_37219 · baseline. Physical-parameter posterior."
+    "caption": "M14_37219 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37219-M14_37219/M14_37219_executed.ipynb",
@@ -7507,7 +7507,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37219",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_37219 · baseline. Age and formed-mass fractions."
+    "caption": "M14_37219 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
@@ -7517,7 +7517,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37723",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_37723 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_37723 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
@@ -7527,7 +7527,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37723",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_37723 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_37723 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
@@ -7537,7 +7537,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37723",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_37723 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_37723 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
@@ -7547,7 +7547,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37723",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_37723 · baseline. Physical-parameter posterior."
+    "caption": "M14_37723 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37723-M14_37723/M14_37723_executed.ipynb",
@@ -7557,7 +7557,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37723",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_37723 · baseline. Age and formed-mass fractions."
+    "caption": "M14_37723 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
@@ -7567,7 +7567,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37843",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_37843 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_37843 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
@@ -7577,7 +7577,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37843",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_37843 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_37843 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
@@ -7587,7 +7587,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37843",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_37843 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_37843 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
@@ -7597,7 +7597,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37843",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_37843 · baseline. Physical-parameter posterior."
+    "caption": "M14_37843 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/37843-M14_37843/M14_37843_executed.ipynb",
@@ -7607,7 +7607,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_37843",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_37843 · baseline. Age and formed-mass fractions."
+    "caption": "M14_37843 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
@@ -7617,7 +7617,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38646",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_38646 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_38646 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
@@ -7627,7 +7627,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38646",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_38646 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_38646 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
@@ -7637,7 +7637,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38646",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_38646 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_38646 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
@@ -7647,7 +7647,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38646",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_38646 · baseline. Physical-parameter posterior."
+    "caption": "M14_38646 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38646-M14_38646/M14_38646_executed.ipynb",
@@ -7657,7 +7657,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38646",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_38646 · baseline. Age and formed-mass fractions."
+    "caption": "M14_38646 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
@@ -7667,7 +7667,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38648",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_38648 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_38648 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
@@ -7677,7 +7677,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38648",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_38648 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_38648 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
@@ -7687,7 +7687,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38648",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_38648 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_38648 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
@@ -7697,7 +7697,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38648",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_38648 · baseline. Physical-parameter posterior."
+    "caption": "M14_38648 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38648-M14_38648/M14_38648_executed.ipynb",
@@ -7707,7 +7707,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38648",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_38648 · baseline. Age and formed-mass fractions."
+    "caption": "M14_38648 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
@@ -7717,7 +7717,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38771",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_38771 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_38771 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
@@ -7727,7 +7727,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38771",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_38771 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_38771 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
@@ -7737,7 +7737,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38771",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_38771 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_38771 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
@@ -7747,7 +7747,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38771",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_38771 · baseline. Physical-parameter posterior."
+    "caption": "M14_38771 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/38771-M14_38771/M14_38771_executed.ipynb",
@@ -7757,7 +7757,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_38771",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_38771 · baseline. Age and formed-mass fractions."
+    "caption": "M14_38771 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
@@ -7767,7 +7767,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_39865",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_39865 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_39865 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
@@ -7777,7 +7777,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_39865",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M14_39865 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_39865 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
@@ -7787,7 +7787,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_39865",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M14_39865 · baseline. Saved SFH and posterior interval."
+    "caption": "M14_39865 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
@@ -7797,7 +7797,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_39865",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_39865 · baseline. Physical-parameter posterior."
+    "caption": "M14_39865 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/39865-M14_39865/M14_39865_executed.ipynb",
@@ -7807,7 +7807,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M14_39865",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M14_39865 · baseline. Age and formed-mass fractions."
+    "caption": "M14_39865 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
@@ -7817,7 +7817,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77632",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_77632 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M15_77632 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
@@ -7827,7 +7827,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77632",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_77632 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M15_77632 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
@@ -7837,7 +7837,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77632",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M15_77632 · baseline. Saved SFH and posterior interval."
+    "caption": "M15_77632 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
@@ -7847,7 +7847,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77632",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_77632 · baseline. Physical-parameter posterior."
+    "caption": "M15_77632 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77632-M15_77632/M15_77632_executed.ipynb",
@@ -7857,7 +7857,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77632",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_77632 · baseline. Age and formed-mass fractions."
+    "caption": "M15_77632 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
@@ -7867,7 +7867,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77745",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_77745 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M15_77745 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
@@ -7877,7 +7877,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77745",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_77745 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M15_77745 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
@@ -7887,7 +7887,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77745",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M15_77745 · baseline. Saved SFH and posterior interval."
+    "caption": "M15_77745 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
@@ -7897,7 +7897,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77745",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_77745 · baseline. Physical-parameter posterior."
+    "caption": "M15_77745 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/77745-M15_77745/M15_77745_executed.ipynb",
@@ -7907,7 +7907,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_77745",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_77745 · baseline. Age and formed-mass fractions."
+    "caption": "M15_77745 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
@@ -7917,7 +7917,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_87207",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_87207 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M15_87207 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
@@ -7927,7 +7927,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_87207",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_87207 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M15_87207 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
@@ -7937,7 +7937,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_87207",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M15_87207 · baseline. Saved SFH and posterior interval."
+    "caption": "M15_87207 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
@@ -7947,7 +7947,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_87207",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_87207 · baseline. Physical-parameter posterior."
+    "caption": "M15_87207 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/87207-M15_87207/M15_87207_executed.ipynb",
@@ -7957,7 +7957,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_87207",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_87207 · baseline. Age and formed-mass fractions."
+    "caption": "M15_87207 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
@@ -7967,7 +7967,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_88032",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_88032 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M15_88032 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
@@ -7977,7 +7977,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_88032",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_88032 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M15_88032 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
@@ -7987,7 +7987,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_88032",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M15_88032 · baseline. Saved SFH and posterior interval."
+    "caption": "M15_88032 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
@@ -7997,7 +7997,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_88032",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_88032 · baseline. Physical-parameter posterior."
+    "caption": "M15_88032 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/88032-M15_88032/M15_88032_executed.ipynb",
@@ -8007,7 +8007,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_88032",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_88032 · baseline. Age and formed-mass fractions."
+    "caption": "M15_88032 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
@@ -8017,7 +8017,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89072",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_89072 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M15_89072 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
@@ -8027,7 +8027,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89072",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_89072 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M15_89072 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
@@ -8037,7 +8037,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89072",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M15_89072 · baseline. Saved SFH and posterior interval."
+    "caption": "M15_89072 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
@@ -8047,7 +8047,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89072",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_89072 · baseline. Physical-parameter posterior."
+    "caption": "M15_89072 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89072-M15_89072/M15_89072_executed.ipynb",
@@ -8057,7 +8057,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89072",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_89072 · baseline. Age and formed-mass fractions."
+    "caption": "M15_89072 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
@@ -8067,7 +8067,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89153",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_89153 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M15_89153 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
@@ -8077,7 +8077,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89153",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M15_89153 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M15_89153 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
@@ -8087,7 +8087,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89153",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M15_89153 · baseline. Saved SFH and posterior interval."
+    "caption": "M15_89153 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
@@ -8097,7 +8097,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89153",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_89153 · baseline. Physical-parameter posterior."
+    "caption": "M15_89153 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/89153-M15_89153/M15_89153_executed.ipynb",
@@ -8107,7 +8107,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M15_89153",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M15_89153 · baseline. Age and formed-mass fractions."
+    "caption": "M15_89153 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
@@ -8117,7 +8117,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126153",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_126153 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_126153 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
@@ -8127,7 +8127,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126153",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_126153 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_126153 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
@@ -8137,7 +8137,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126153",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_126153 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_126153 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
@@ -8147,7 +8147,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126153",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_126153 · baseline. Physical-parameter posterior."
+    "caption": "M1_126153 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126153-M1_126153/M1_126153_executed.ipynb",
@@ -8157,7 +8157,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126153",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_126153 · baseline. Age and formed-mass fractions."
+    "caption": "M1_126153 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
@@ -8167,7 +8167,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126578",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_126578 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_126578 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
@@ -8177,7 +8177,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126578",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_126578 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_126578 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
@@ -8187,7 +8187,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126578",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_126578 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_126578 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
@@ -8197,7 +8197,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126578",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_126578 · baseline. Physical-parameter posterior."
+    "caption": "M1_126578 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/126578-M1_126578/M1_126578_executed.ipynb",
@@ -8207,7 +8207,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_126578",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_126578 · baseline. Age and formed-mass fractions."
+    "caption": "M1_126578 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
@@ -8217,7 +8217,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_130052",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_130052 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_130052 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
@@ -8227,7 +8227,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_130052",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_130052 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_130052 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
@@ -8237,7 +8237,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_130052",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_130052 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_130052 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
@@ -8247,7 +8247,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_130052",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_130052 · baseline. Physical-parameter posterior."
+    "caption": "M1_130052 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/130052-M1_130052/M1_130052_executed.ipynb",
@@ -8257,7 +8257,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_130052",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_130052 · baseline. Age and formed-mass fractions."
+    "caption": "M1_130052 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
@@ -8267,7 +8267,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_133240",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_133240 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_133240 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
@@ -8277,7 +8277,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_133240",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_133240 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_133240 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
@@ -8287,7 +8287,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_133240",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_133240 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_133240 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
@@ -8297,7 +8297,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_133240",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_133240 · baseline. Physical-parameter posterior."
+    "caption": "M1_133240 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/133240-M1_133240/M1_133240_executed.ipynb",
@@ -8307,7 +8307,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_133240",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_133240 · baseline. Age and formed-mass fractions."
+    "caption": "M1_133240 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
@@ -8317,7 +8317,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_139423",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_139423 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_139423 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
@@ -8327,7 +8327,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_139423",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_139423 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_139423 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
@@ -8337,7 +8337,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_139423",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_139423 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_139423 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
@@ -8347,7 +8347,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_139423",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_139423 · baseline. Physical-parameter posterior."
+    "caption": "M1_139423 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/139423-M1_139423/M1_139423_executed.ipynb",
@@ -8357,7 +8357,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_139423",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_139423 · baseline. Age and formed-mass fractions."
+    "caption": "M1_139423 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
@@ -8367,7 +8367,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_205742",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_205742 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_205742 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
@@ -8377,7 +8377,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_205742",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_205742 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_205742 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
@@ -8387,7 +8387,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_205742",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_205742 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_205742 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
@@ -8397,7 +8397,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_205742",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_205742 · baseline. Physical-parameter posterior."
+    "caption": "M1_205742 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/205742-M1_205742/M1_205742_executed.ipynb",
@@ -8407,7 +8407,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_205742",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_205742 · baseline. Age and formed-mass fractions."
+    "caption": "M1_205742 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
@@ -8417,7 +8417,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206501",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_206501 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206501 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
@@ -8427,7 +8427,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206501",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_206501 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206501 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
@@ -8437,7 +8437,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206501",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_206501 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_206501 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
@@ -8447,7 +8447,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206501",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_206501 · baseline. Physical-parameter posterior."
+    "caption": "M1_206501 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206501-M1_206501/M1_206501_executed.ipynb",
@@ -8457,7 +8457,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206501",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_206501 · baseline. Age and formed-mass fractions."
+    "caption": "M1_206501 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
@@ -8467,7 +8467,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206545",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_206545 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
@@ -8477,7 +8477,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206545",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_206545 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
@@ -8487,7 +8487,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206545",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_206545 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_206545 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
@@ -8497,7 +8497,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206545",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_206545 · baseline. Physical-parameter posterior."
+    "caption": "M1_206545 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206545-M1_206545/M1_206545_executed.ipynb",
@@ -8507,7 +8507,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206545",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_206545 · baseline. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
@@ -8517,7 +8517,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206858",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_206858 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206858 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
@@ -8527,7 +8527,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206858",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_206858 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206858 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
@@ -8537,7 +8537,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206858",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_206858 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_206858 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
@@ -8547,7 +8547,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206858",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_206858 · baseline. Physical-parameter posterior."
+    "caption": "M1_206858 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/206858-M1_206858/M1_206858_executed.ipynb",
@@ -8557,7 +8557,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_206858",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_206858 · baseline. Age and formed-mass fractions."
+    "caption": "M1_206858 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
@@ -8567,7 +8567,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_208622",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_208622 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_208622 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
@@ -8577,7 +8577,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_208622",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_208622 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_208622 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
@@ -8587,7 +8587,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_208622",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_208622 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_208622 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
@@ -8597,7 +8597,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_208622",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_208622 · baseline. Physical-parameter posterior."
+    "caption": "M1_208622 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/208622-M1_208622/M1_208622_executed.ipynb",
@@ -8607,7 +8607,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_208622",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_208622 · baseline. Age and formed-mass fractions."
+    "caption": "M1_208622 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -8617,7 +8617,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_210210",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_210210 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -8627,7 +8627,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_210210",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_210210 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -8637,7 +8637,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_210210",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_210210 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_210210 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -8647,7 +8647,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_210210",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_210210 · baseline. Physical-parameter posterior."
+    "caption": "M1_210210 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
@@ -8657,7 +8657,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_210210",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_210210 · baseline. Age and formed-mass fractions."
+    "caption": "M1_210210 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
@@ -8667,7 +8667,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_211157",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_211157 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_211157 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
@@ -8677,7 +8677,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_211157",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_211157 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_211157 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
@@ -8687,7 +8687,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_211157",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_211157 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_211157 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
@@ -8697,7 +8697,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_211157",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_211157 · baseline. Physical-parameter posterior."
+    "caption": "M1_211157 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/211157-M1_211157/M1_211157_executed.ipynb",
@@ -8707,7 +8707,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M1_211157",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_211157 · baseline. Age and formed-mass fractions."
+    "caption": "M1_211157 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
@@ -8717,7 +8717,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M2_129596",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M2_129596 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M2_129596 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
@@ -8727,7 +8727,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M2_129596",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M2_129596 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M2_129596 · Photometry · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
@@ -8737,7 +8737,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M2_129596",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M2_129596 · baseline. Saved SFH and posterior interval."
+    "caption": "M2_129596 · SFH · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
@@ -8747,7 +8747,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M2_129596",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M2_129596 · baseline. Physical-parameter posterior."
+    "caption": "M2_129596 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/129596-M2_129596/M2_129596_executed.ipynb",
@@ -8757,7 +8757,7 @@ The first full-spectrum campaign fits the 187 selected DR2 galaxies. Its saved n
     "target": "M2_129596",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M2_129596 · baseline. Age and formed-mass fractions."
+    "caption": "M2_129596 · Ages · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/130005-M2_130005/M2_130005_executed.ipynb",
