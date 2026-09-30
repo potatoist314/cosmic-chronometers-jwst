@@ -105,6 +105,18 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
     "text": "in this case, it makes sense to drop h epsilon",
     "display_text": "In this case, it makes sense to drop Hε.",
     "source_ref": "Relayed by the Astronomy lead"
+  },
+  {
+    "date": "2026-09-30",
+    "text": "yeah, 0,6 is fine. this seems like a good default.",
+    "display_text": "Yeah, 0,6 is fine. This seems like a good default.",
+    "source_ref": "Relayed by the Astronomy lead"
+  },
+  {
+    "date": "2026-09-30",
+    "text": "this seems sensible. can you just get it to do the line list only after the mask instead of even doing anything before the mask",
+    "display_text": "This seems sensible. Can you just get it to do the line list only after the mask instead of even doing anything before the mask?",
+    "source_ref": "Relayed by the Astronomy lead"
   }
 ]
 ```
@@ -404,6 +416,7 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
 - `neb_eline_ca_nohe`: no Hε column; maximum posterior-median model in 3955–3990 Å: 16.4 µJy; HSC r pull +0.73.
 - `neb_eline_ca_nohe`: 20 free-flux columns; those of `neb_eline_ca` without Ba-5 (Hε); [Ne III] 3869 without the 3968 component.
 - `neb_eline_ca_nohe` posterior mass outside notebook default priors `diffuse_delta` Uniform(−1, 0.4) and `diffuse_Ebump` Uniform(0, 6): \(P(\delta_{\mathrm{dust}} < -1) = 0.000\); \(P(E_{\mathrm{bump}} > 6) = 0.134\).
+- Production default prior `diffuse_Ebump` Uniform(0, 6) retained (Liu Hao, 2026-09-30); four arms here used Uniform(0, 12).
 - Sampling wall time: 199.1 s in `neb_maskallca`; 600.6 s in `neb_eline_ca`; 594.5 s in `neb_eline_ca_nohe`.
 - Validation: `scripts.experiment.validate_result` passes for `neb_maskallca`, `neb_eline_ca` and `neb_eline_ca_nohe`.
 - Checks: figures built locally on CPU from stored posteriors with `scripts/regenerate_fit_notebooks.py`, Ceridwen `0a3bd51`, sedpy_jax `9d8aa19`; GPU `ceridwen_derived_outputs.h5` kept.
