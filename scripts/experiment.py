@@ -190,8 +190,11 @@ def remote(config, output):
     for cell in json.loads(config.read_text()):
         target = cell['target_metadata']
         directory = output / cell['arm'] / f"{target['object_id']}-{target['spect_id']}"
+        # Figures render nothing on the box (Agg backend) and are rebuilt locally by
+        # regenerate_fit_notebooks.py, so the fit skips their construction entirely.
         os.environ.update(CERIDWEN_SETTINGS_OVERRIDE=json.dumps(cell['settings']),
-                          CERIDWEN_PRIORS_OVERRIDE=json.dumps(cell['priors']), CERIDWEN_SAMPLER_ONLY='0')
+                          CERIDWEN_PRIORS_OVERRIDE=json.dumps(cell['priors']), CERIDWEN_SAMPLER_ONLY='0',
+                          CERIDWEN_PLOTS='0')
         engine.log(f"fitting {cell['name']}, seed {cell['seed']}")
         if worker._execute_target(target, directory) != 0:
             raise RuntimeError(f"fit failed: {cell['name']}")
