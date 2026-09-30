@@ -1390,3 +1390,8 @@
 ### 2026-09-30 — Ca literature and ISM check on e-mask-all-ca
 
 - `research/experiments/e-mask-all-ca.md` Context records the Ca-tracks-Fe literature, one-alpha-axis grid designs with Ca-separate exceptions, the host-ISM size/sign check, and the IGM-vs-ISM scope against the Jonah Powley meeting note.
+
+### 2026-09-30 — Caption rework: per-plot diffs vs reference arm
+
+- 4063 figure captions in `research/experiments/*.md` now state each plot's fit changes versus its reference arm, with values; standard-panel boilerplate removed.
+- 46 figcaptions on fit-comparison notes rewritten the same way; `AGENTS.md` carries Liu Hao's caption rule.

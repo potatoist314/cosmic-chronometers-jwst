@@ -10,42 +10,42 @@ figures: [spectrum-dust1_off-M1_210210.png, photometry-dust1_off-M1_210210.png, 
 
 <figure>
 <img src="figures/birth-cloud-dust/spectrum-dust1_off-M1_210210.png" alt="LEGA-C spectrum and pull for M1_210210, dust1_off">
-<figcaption><code>spectrum-dust1_off-M1_210210.png</code> · Birth-cloud dust off (current defaults): LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and \(16\text{–}84\%\) band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges.</figcaption>
+<figcaption><code>spectrum-dust1_off-M1_210210.png</code> · M1_210210 · Spectrum · dust1_off, reference.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/birth-cloud-dust/photometry-dust1_off-M1_210210.png" alt="COSMOS2025 photometry and per-band pulls for M1_210210, dust1_off">
-<figcaption><code>photometry-dust1_off-M1_210210.png</code> · Birth-cloud dust off (current defaults): M1_210210 observed COSMOS2025 total band fluxes \(\pm\) fitted uncertainties; joint Ceridwen per-band posterior medians (\(16\text{–}84\%\)); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls.</figcaption>
+<figcaption><code>photometry-dust1_off-M1_210210.png</code> · M1_210210 · Photometry · dust1_off, reference.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/birth-cloud-dust/spectrum-dust1_on-M1_210210.png" alt="LEGA-C spectrum and pull for M1_210210, dust1_on">
-<figcaption><code>spectrum-dust1_on-M1_210210.png</code> · Birth-cloud dust on: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and \(16\text{–}84\%\) band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges.</figcaption>
+<figcaption><code>spectrum-dust1_on-M1_210210.png</code> · M1_210210 · Spectrum · dust1_on: birth-cloud dust on, dust ratio prior ClippedNormal(1, 0.3, 0, 2); otherwise as dust1_off.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/birth-cloud-dust/photometry-dust1_on-M1_210210.png" alt="COSMOS2025 photometry and per-band pulls for M1_210210, dust1_on">
-<figcaption><code>photometry-dust1_on-M1_210210.png</code> · Birth-cloud dust on: M1_210210 observed COSMOS2025 total band fluxes \(\pm\) fitted uncertainties; joint Ceridwen per-band posterior medians (\(16\text{–}84\%\)); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls.</figcaption>
+<figcaption><code>photometry-dust1_on-M1_210210.png</code> · M1_210210 · Photometry · dust1_on: birth-cloud dust on, dust ratio prior ClippedNormal(1, 0.3, 0, 2); otherwise as dust1_off.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/birth-cloud-dust/spectrum-dust_index_m3-M1_210210.png" alt="LEGA-C spectrum and pull for M1_210210, dust_index_m3">
-<figcaption><code>spectrum-dust_index_m3-M1_210210.png</code> · Dust-index prior \(\mathrm{Uniform}(-3, 0.4)\): LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and \(16\text{–}84\%\) band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges.</figcaption>
+<figcaption><code>spectrum-dust_index_m3-M1_210210.png</code> · M1_210210 · Spectrum · dust_index_m3: dust-index prior U(-3, 0.4); otherwise as dust1_off.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/birth-cloud-dust/photometry-dust_index_m3-M1_210210.png" alt="COSMOS2025 photometry and per-band pulls for M1_210210, dust_index_m3">
-<figcaption><code>photometry-dust_index_m3-M1_210210.png</code> · Dust-index prior \(\mathrm{Uniform}(-3, 0.4)\): M1_210210 observed COSMOS2025 total band fluxes \(\pm\) fitted uncertainties; joint Ceridwen per-band posterior medians (\(16\text{–}84\%\)); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls.</figcaption>
+<figcaption><code>photometry-dust_index_m3-M1_210210.png</code> · M1_210210 · Photometry · dust_index_m3: dust-index prior U(-3, 0.4); otherwise as dust1_off.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/birth-cloud-dust/corner-M1_210210.png" alt="Physical-parameter posteriors for the three fits of M1_210210">
-<figcaption><code>corner-M1_210210.png</code> · Physical-parameter posteriors for the birth-cloud dust off, birth-cloud dust on and extended dust-index prior fits of M1_210210.</figcaption>
+<figcaption><code>corner-M1_210210.png</code> · M1_210210 · Posteriors · dust1_off / dust1_on / dust_index_m3.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/birth-cloud-dust/sfh-M1_210210.png" alt="Star-formation history and cumulative mass fraction for the three fits of M1_210210">
-<figcaption><code>sfh-M1_210210.png</code> · Star-formation history with \(16\text{–}84\%\) band and cumulative mass fraction for the three fits of M1_210210.</figcaption>
+<figcaption><code>sfh-M1_210210.png</code> · M1_210210 · SFH · dust1_off / dust1_on / dust_index_m3; right panel cumulative mass fraction.</figcaption>
 </figure>
 
 <details>

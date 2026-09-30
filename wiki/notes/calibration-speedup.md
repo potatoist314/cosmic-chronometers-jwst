@@ -57,7 +57,7 @@ Run
 
 <figure>
 <img src="figures/calibration-speedup/fit-M12_98104.png" alt="M12_98104 order-10 spectrum and photometry with the old-code and new-code posterior medians">
-<figcaption>M12_98104, order 10: spectrum and photometry, old and new code medians.</figcaption>
+<figcaption>M12_98104, order 10: spectrum and photometry, old and new code.</figcaption>
 </figure>
 
 <figure>

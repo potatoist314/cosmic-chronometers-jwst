@@ -46,8 +46,17 @@ direction and scientific methodology.
   posterior and comparison figures available alongside them.
 - Do not add agent source summaries, explanatory essays, process narration or
   agent-role labels to result pages. Do not teach standard astronomy terms.
-- Captions identify the comparison, report the relevant observation and flag
-  material problems. Preserve uncertainty. Never invent scientific interpretations.
+- Captions state what exactly changed in that plot's fit versus its reference
+  arm: the settings, priors, masks or grid that differ, with values, naming
+  the reference arm (e.g. "zevo: metallicity evolution on; otherwise as wide").
+  Take the differences from the run's experiment.json or manifest, not from
+  memory. Never repeat the standard panels: no posterior median, 16–84% band,
+  noise floor, fitted pixels or pull panel. Keep captions short. His words
+  (2026-09-30): "i know that this a joint posterior median and band and there
+  is a noise floor. i am more interested in what exactly was changed for each
+  individual plot."
+- Captions report the relevant observation and flag material problems.
+  Preserve uncertainty. Never invent scientific interpretations.
 - Use existing plots or saved notebook images. Do not rerun analyses to populate
   the wiki. Keep every target accessible and aligned across comparison arms.
 - Use compact measured tables for benchmarks when plots add nothing.

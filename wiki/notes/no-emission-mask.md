@@ -24,17 +24,17 @@ Common
 
 <figure>
 <img src="figures/no-emission-mask/fit-M1_210210.png" alt="M1_210210 spectrum, calibration polynomial and photometry with the posterior medians of the masked and no-mask fits">
-<figcaption>Spectrum, calibration polynomial and photometry with posterior medians of the masked and no-mask fits.</figcaption>
+<figcaption>M1_210210 · Spectrum and photometry · no mask on the ±1500 km/s windows around [O II], H-beta, [O III]; otherwise as the masked fit.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/no-emission-mask/sfh-M1_210210.png" alt="Star-formation history and cumulative mass fraction of M1_210210 for the masked and no-mask fits">
-<figcaption>SFH and cumulative mass fraction, both fits.</figcaption>
+<figcaption>M1_210210 · SFH · masked and no-mask fits.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/no-emission-mask/corner-M1_210210.png" alt="Overlaid corner plot of mass-weighted age, [Fe/H], [alpha/Fe], stellar mass, dust optical depth and velocity dispersion for the masked and no-mask fits">
-<figcaption>Grey shapes are the fit with emission lines masked and red outlines the fit with no mask, each the \(1\sigma\) contour with the 1D posteriors on the diagonal: an offset between a red outline and its grey shape means those parameters moved, and a smaller red outline means a tighter constraint.</figcaption>
+<figcaption>M1_210210 · Posteriors · masked fit (grey) and no-mask fit (red \(1\sigma\) contours): an offset red outline means those parameters moved, a smaller one a tighter constraint.</figcaption>
 </figure>
 
 ## Parameters

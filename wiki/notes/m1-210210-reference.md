@@ -62,17 +62,17 @@ Spectral \(\chi^2\) is at the posterior median. Stored \(\chi^2\) values use eac
 
 <figure>
 <img src="figures/m1-210210-reference/fit-M1_210210.png" alt="M1_210210 spectrum, calibration polynomial and photometry with the posterior medians of fits A and C">
-<figcaption>Spectrum, calibration polynomial over fitted pixels with 16-84% band, and photometry, with the posterior medians of fits A and C.</figcaption>
+<figcaption>M1_210210 · Spectrum and photometry · fit C: calibration order 10; otherwise as fit A (order 3).</figcaption>
 </figure>
 
 <figure>
 <img src="figures/m1-210210-reference/sfh-M1_210210.png" alt="Star-formation history and cumulative mass fraction of M1_210210 for fits A and C">
-<figcaption>Star-formation history and cumulative mass fraction.</figcaption>
+<figcaption>M1_210210 · SFH · fit C: calibration order 10; otherwise as fit A (order 3).</figcaption>
 </figure>
 
 <figure>
 <img src="figures/m1-210210-reference/corner-M1_210210.png" alt="Corner plot of stellar mass, [Fe/H], [alpha/Fe], dust optical depth, dust index and mass-weighted age for fits A and C">
-<figcaption>Physical-parameter posteriors, 1\(\sigma\) contours.</figcaption>
+<figcaption>M1_210210 · Posteriors · fit C: calibration order 10; otherwise as fit A (order 3).</figcaption>
 </figure>
 
 ## KL divergence from the prior
@@ -88,7 +88,7 @@ SFH bins
 
 <figure>
 <img src="figures/m1-210210-reference/kl-M1_210210.png" alt="KL divergence in bits for each sampled parameter and each SFH bin of M1_210210, fits A and C, sorted by fit C">
-<figcaption>KL divergence of each sampled parameter and of \(\log_{10}\) SFR in each SFH bin from its own fit's prior, sorted by fit C.</figcaption>
+<figcaption>M1_210210 · KL divergence per sampled parameter and per SFH bin from its own prior, fits A and C, sorted by fit C.</figcaption>
 </figure>
 
 The \(\tau_{\mathrm{dust}}\) prior widths are 2 for A and 1 for C.

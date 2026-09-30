@@ -14,22 +14,22 @@ M1_210210; `eline_off` and `eline_on`, seed 20260832, COSMOS2025 photometry, ord
 
 <figure>
 <img src="figures/emission-line-marginalisation/eline-off-spectrum.png" alt="M1_210210 spectrum fit with emission-line marginalisation off">
-<figcaption>Option off: observed spectrum and posterior-median fit; emission regions remain masked.</figcaption>
+<figcaption>M1_210210 · Spectrum · eline_off, reference (emission regions masked).</figcaption>
 </figure>
 
 <figure>
 <img src="figures/emission-line-marginalisation/eline-off-photometry.png" alt="M1_210210 photometry fit with emission-line marginalisation off">
-<figcaption>Option off: COSMOS2025 photometry and posterior fit.</figcaption>
+<figcaption>M1_210210 · Photometry · eline_off, reference (emission regions masked).</figcaption>
 </figure>
 
 <figure>
 <img src="figures/emission-line-marginalisation/eline-on-spectrum.png" alt="M1_210210 spectrum fit with emission-line marginalisation on">
-<figcaption>Option on: observed spectrum and posterior-median fit, including the fitted lines.</figcaption>
+<figcaption>M1_210210 · Spectrum · eline_on: line marginalisation on; otherwise as eline_off.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/emission-line-marginalisation/eline-on-photometry.png" alt="M1_210210 photometry fit with emission-line marginalisation on">
-<figcaption>Option on: COSMOS2025 photometry and posterior fit, including line flux.</figcaption>
+<figcaption>M1_210210 · Photometry · eline_on: line marginalisation on; otherwise as eline_off.</figcaption>
 </figure>
 
 ## Runtime
