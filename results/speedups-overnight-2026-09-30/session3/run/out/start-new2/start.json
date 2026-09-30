@@ -1,0 +1,25 @@
+{
+ "tag": "start-new2",
+ "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/payload/aot/ceridwen/__init__.py",
+ "device": "NVIDIA GeForce RTX 5090",
+ "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0",
+ "first_iteration_done_s": 7.621604391839355,
+ "first_iteration_s": 0.9834046638570726,
+ "marks": [
+  {
+   "iteration": 1,
+   "t": 7.621604391839355,
+   "iteration_s": 0.9834046638570726
+  },
+  {
+   "iteration": 2,
+   "t": 8.686892859637737,
+   "iteration_s": 0.9849984920583665
+  },
+  {
+   "iteration": 3,
+   "t": 9.664298278745264,
+   "iteration_s": 0.9764455007389188
+  }
+ ]
+}

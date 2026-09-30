@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/stie:$SEDPY EXPECT_CERIDWEN=payload/stie SPEEDUP_NOTEBOOK={R}/payload/new.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' RUN_TAG=autotune0-30 RUN_ITERS=30 {P} {R}/box_fit.py

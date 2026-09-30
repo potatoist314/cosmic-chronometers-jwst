@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/pad:$SEDPY EXPECT_CERIDWEN=payload/pad SPEEDUP_NOTEBOOK={R}/payload/new.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_dump_to={R}/out/hlo-pad --xla_dump_hlo_as_text' PROF_TAG=hlo-pad PROF_BATCH=100 PROF_REPEATS=3 {P} {R}/box_prof.py

@@ -1,0 +1,78 @@
+{
+ "device": "NVIDIA GeForce RTX 5090",
+ "jax": "0.10.2",
+ "xla_flags": "--xla_gpu_enable_command_buffer=",
+ "n_line": 20,
+ "batches": {
+  "100": {
+   "stages": {
+    "total_loglike": {
+     "median_us_per_call": 27.604895003605634,
+     "min_us_per_call": 27.116239652968943,
+     "compile_s": 5.136134145024698
+    },
+    "model_predict": {
+     "median_us_per_call": 7.57451489334926,
+     "min_us_per_call": 7.541769882664084,
+     "compile_s": 1.4390615180018358
+    },
+    "transforms": {
+     "median_us_per_call": 0.5737051833420992,
+     "min_us_per_call": 0.5410995800048113,
+     "compile_s": 0.22508038202067837
+    },
+    "line_columns": {
+     "median_us_per_call": 3.1533799483440816,
+     "min_us_per_call": 3.0905200401321054,
+     "compile_s": 0.10861829097848386
+    },
+    "spectrum_with_photometry": {
+     "median_us_per_call": 19.60931986104697,
+     "min_us_per_call": 19.52736987732351,
+     "compile_s": 0.8993854289874434
+    },
+    "calibrate_with_lines": {
+     "median_us_per_call": 14.946330047678202,
+     "min_us_per_call": 14.905830030329525,
+     "compile_s": 0.690591830003541
+    }
+   },
+   "max_abs_dlnl_vs_stored": 1.2757314834743738e-05
+  },
+  "500": {
+   "stages": {
+    "total_loglike": {
+     "median_us_per_call": 22.266216983553022,
+     "min_us_per_call": 22.19155605416745,
+     "compile_s": 5.723376718000509
+    },
+    "model_predict": {
+     "median_us_per_call": 6.2339939759112895,
+     "min_us_per_call": 6.203494034707546,
+     "compile_s": 1.4946554620401002
+    },
+    "transforms": {
+     "median_us_per_call": 0.11364102829247713,
+     "min_us_per_call": 0.10976206976920366,
+     "compile_s": 0.08053622499573976
+    },
+    "line_columns": {
+     "median_us_per_call": 2.4120599846355617,
+     "min_us_per_call": 2.3887399584054947,
+     "compile_s": 0.11425543995574117
+    },
+    "spectrum_with_photometry": {
+     "median_us_per_call": 16.057612956501544,
+     "min_us_per_call": 15.923038008622825,
+     "compile_s": 0.958201122994069
+    },
+    "calibrate_with_lines": {
+     "median_us_per_call": 12.24049599841237,
+     "min_us_per_call": 12.20486604142934,
+     "compile_s": 0.8440387430018745
+    }
+   },
+   "max_abs_dlnl_vs_stored": 0.00019661409896798432
+  }
+ }
+}

@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/stie:$SEDPY EXPECT_CERIDWEN=payload/stie SPEEDUP_NOTEBOOK={R}/payload/new.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer=FUSION,CUBLAS,CUBLASLT,CUSTOM_CALL,CUDNN,WHILE,CONDITIONAL' RUN_TAG=cbwhile-30 RUN_ITERS=30 {P} {R}/box_fit.py

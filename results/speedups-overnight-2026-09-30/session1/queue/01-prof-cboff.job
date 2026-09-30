@@ -1,0 +1,1 @@
+PYTHONPATH=$NEW_PYTHONPATH EXPECT_CERIDWEN=new_ceridwen XLA_FLAGS='--xla_gpu_enable_command_buffer=' PROF_TAG=prof-cboff PROF_BATCH=100,500,1000 PROF_REPEATS=30 PROF_TRACE=1 {P} {R}/box_prof.py

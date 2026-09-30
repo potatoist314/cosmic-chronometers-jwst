@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/stie4:$SEDPY EXPECT_CERIDWEN=payload/stie4 SPEEDUP_NOTEBOOK={R}/payload/new.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' DUMP_OUT={R}/out/dump-stie4-det-s3.npz {P} {R}/lnl_dump.py

@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/stie4:$SEDPY EXPECT_CERIDWEN=payload/stie4 SPEEDUP_NOTEBOOK={R}/payload/new.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer=' SPEEDUP_SETTINGS='{"metallicity_evolution": true}' RUN_TAG=zevo-stie4 {P} {R}/box_fit.py

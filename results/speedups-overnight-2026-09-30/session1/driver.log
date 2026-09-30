@@ -1,0 +1,356 @@
+18:03:09 committed source 01f196d9e31c; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session1/run
+18:03:12 renting RTX 5090, host 571938, $0.286/h; estimate $0.164
+18:03:12 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 48854219 unknown bid $0.286/h, $0.143/fit, $0.164 total; 28539924 unknown bid $0.343/h, $0.172/fit, $0.172 total; 49023406 unknown bid $0.390/h, $0.195/fit, $0.216 total; 34905063 unknown bid $0.423/h, $0.212/fit, $0.232 total; 48851731 unknown bid $0.496/h, $0.248/fit, $0.269 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 40411107 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 45070579 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 37267987 unknown on-demand $0.615/h, $0.307/fit, $0.328 total; 51971807 unknown bid $0.616/h, $0.308/fit, $0.360 total; 42405155 unk
+18:03:13 SweepError: vastai returned no JSON: 
+18:03:18 renting RTX 5090, host 146008, $0.416/h; estimate $0.229
+18:03:18 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 38697500 good bid $0.416/h, $0.208/fit, $0.229 total; 52331007 unknown bid $0.416/h, $0.208/fit, $0.229 total; 48212638 unknown bid $0.478/h, $0.239/fit, $0.260 total; 48851740 unknown bid $0.496/h, $0.248/fit, $0.269 total; 41260287 unknown bid $0.498/h, $0.249/fit, $0.270 total; 53213812 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 48225469 unknown bid $0.549/h, $0.275/fit, $0.296 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 53470405 unknown on-demand $0.563/h, $0.281/fit, $0.302 total; 47513476 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 53510527 unknow
+18:03:20 instance 53565581: (None, None)
+18:03:31 instance 53565581: ('loading', None)
+18:03:38 instance 53565581: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+18:03:44 uploading pinned source, inputs and cached grid
+18:06:29 bootstrap: running; dpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 1ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+18:06:41 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+18:07:16 01-prof-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:07:28 01-prof-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:07:40 01-prof-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:07:53 01-prof-cboff: running; 8544507027, "compile_s": 2.6695116269402206}
+transforms {"median_us_per_call": 1.017620088532567, "min_us_per_call": 0.9736581705510616, "compile_s": 0.11469438881613314}
+line_columns {"median_us_per_call": 23.537720553576946, "min_us_per_call": 18.233379814773798, "compile_s": 0.13358273287303746}
+18:08:05 01-prof-cboff: running; _s": 0.13358273287303746}
+spectrum_with_photometry {"median_us_per_call": 36.40702925622463, "min_us_per_call": 31.354089733213186, "compile_s": 1.7431934049818665}
+calibrate_with_lines {"median_us_per_call": 16.02173433639109, "min_us_per_call": 15.638319309800863, "compile_s": 1.0309720421209931}
+18:08:17 01-prof-cboff: running; s": 0.13887813687324524}
+spectrum_with_photometry {"median_us_per_call": 28.317701071500778, "min_us_per_call": 26.803740300238132, "compile_s": 1.994551343144849}
+calibrate_with_lines {"median_us_per_call": 13.665777863934636, "min_us_per_call": 12.593454215675592, "compile_s": 1.0133998258970678}
+18:08:30 01-prof-cboff: running; s": 0.13887813687324524}
+spectrum_with_photometry {"median_us_per_call": 28.317701071500778, "min_us_per_call": 26.803740300238132, "compile_s": 1.994551343144849}
+calibrate_with_lines {"median_us_per_call": 13.665777863934636, "min_us_per_call": 12.593454215675592, "compile_s": 1.0133998258970678}
+18:08:46 01-prof-cboff: 0; .14466764987446368}
+spectrum_with_photometry {"median_us_per_call": 29.62973155081272, "min_us_per_call": 29.086532071232796, "compile_s": 1.8059470031876117}
+calibrate_with_lines {"median_us_per_call": 15.276956022717059, "min_us_per_call": 14.833848923444748, "compile_s": 0.8027289111632854}
+DONE
+18:09:12 02-lanes-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:09:25 02-lanes-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:09:38 02-lanes-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:09:57 02-lanes-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:10:09 02-lanes-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:10:22 02-lanes-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:10:48 02-lanes-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:11:02 02-lanes-cboff: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+18:12:43 02-lanes-cboff: ssh: connect to host 116.127.115.18 port 20576: Network is unreachable; reconnecting to the same instance
+18:14:06 CalledProcessError: Command '['rsync', '-a', '--exclude', '*.xplane.pb', '-e', 'ssh -p 20576 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@116.127.115.18:/workspace/cosmic-chronometers-jwst/.speedup/out/', '/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session1/run/out/']' returned non-zero exit status 255.
+18:14:09 destroy attempt failed for 53565581: vastai destroy instance 53565581 -y failed: Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53565581/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/bin/vastai", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 182, in main
+    run_command(args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 189, in run_command
+    res = args.func(args)
+          ^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 327, in destroy__instance
+    destroy_instance_impl(args.id, args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 293, in destroy_instance_impl
+    rj = instances_api.destroy_instance(client, id=id)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 139, in destroy_instance
+    r = client.delete(f"/instances/{id}/", json_data=json_blob)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 164, in delete
+    return self._request('DELETE', url, headers, json_data if json_data is not None else {}, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 127, in _request
+    r = session.send(prep, timeout=effective_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53565581/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+18:23:25 destroy attempt failed for 53565581: vastai destroy instance 53565581 -y failed: Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53565581/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/bin/vastai", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 182, in main
+    run_command(args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 189, in run_command
+    res = args.func(args)
+          ^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 327, in destroy__instance
+    destroy_instance_impl(args.id, args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 293, in destroy_instance_impl
+    rj = instances_api.destroy_instance(client, id=id)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 139, in destroy_instance
+    r = client.delete(f"/instances/{id}/", json_data=json_blob)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 164, in delete
+    return self._request('DELETE', url, headers, json_data if json_data is not None else {}, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 127, in _request
+    r = session.send(prep, timeout=effective_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53565581/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+18:23:41 destroy attempt failed for 53565581: vastai destroy instance 53565581 -y failed: Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53565581/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/bin/vastai", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 182, in main
+    run_command(args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 189, in run_command
+    res = args.func(args)
+          ^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 327, in destroy__instance
+    destroy_instance_impl(args.id, args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 293, in destroy_instance_impl
+    rj = instances_api.destroy_instance(client, id=id)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 139, in destroy_instance
+    r = client.delete(f"/instances/{id}/", json_data=json_blob)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 164, in delete
+    return self._request('DELETE', url, headers, json_data if json_data is not None else {}, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 127, in _request
+    r = session.send(prep, timeout=effective_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v0/instances/53565581/ (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+18:30:49 LEAKED INSTANCE 53565581: destroy it manually, it is still billing
+error: vastai show instances --raw failed: Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v1/instances/?select_filters=%7B%7D&order_by=%5B%7B%22col%22%3A+%22id%22%2C+%22dir%22%3A+%22asc%22%7D%5D&limit=25 (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/liuhao/.local/bin/vastai", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 182, in main
+    run_command(args)
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/main.py", line 189, in run_command
+    res = args.func(args)
+          ^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/cli/commands/instances.py", line 1143, in show__instances
+    return instances_api.show_instances(client, select_filters=select_filters, order_by=order_by)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 45, in show_instances
+    data = show_instances_v1(client, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/instances.py", line 69, in show_instances_v1
+    r = client.get("/api/v1/instances/", query_args=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 146, in get
+    return self._request('GET', url, headers, json_data, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/vastai/api/client.py", line 127, in _request
+    r = session.send(prep, timeout=effective_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.local/share/uv/tools/vastai/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='console.vast.ai', port=443): Max retries exceeded with url: /api/v1/instances/?select_filters=%7B%7D&order_by=%5B%7B%22col%22%3A+%22id%22%2C+%22dir%22%3A+%22asc%22%7D%5D&limit=25 (Caused by NameResolutionError("HTTPSConnection(host='console.vast.ai', port=443): Failed to resolve 'console.vast.ai' ([Errno 8] nodename nor servname provided, or not known)"))

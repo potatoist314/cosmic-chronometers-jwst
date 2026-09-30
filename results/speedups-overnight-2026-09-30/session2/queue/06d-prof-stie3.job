@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/stie3:$SEDPY EXPECT_CERIDWEN=payload/stie3 SPEEDUP_NOTEBOOK={R}/payload/new.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer=' PROF_TAG=prof-stie3 PROF_BATCH=100,500 PROF_TRACE=1 {P} {R}/box_prof.py

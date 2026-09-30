@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/aot:$SEDPY EXPECT_CERIDWEN=payload/aot SPEEDUP_NOTEBOOK={R}/payload/new.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer=' SPEEDUP_SETTINGS='{"metallicity_evolution": true}' PROF_DEAD={R}/payload/zevo_dead.pkl RUN_TAG=cell14-default {P} {R}/cell14.py

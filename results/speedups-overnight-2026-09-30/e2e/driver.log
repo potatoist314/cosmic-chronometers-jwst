@@ -1,0 +1,77 @@
+20:04:21 committed source 48fdc7f76864; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/e2e/run
+20:04:39 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45028240 unknown bid $0.335/h, $0.168/fit, $0.199 total; 28539924 unknown bid $0.363/h, $0.182/fit, $0.182 total; 48425194 unknown bid $0.404/h, $0.202/fit, $0.244 total; 46055492 unknown bid $0.412/h, $0.206/fit, $0.227 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 34905061 unknown bid $0.423/h, $0.212/fit, $0.232 total; 43580384 unknown on-demand $0.476/h, $0.238/fit, $0.259 total; 48212638 unknown bid $0.478/h, $0.239/fit, $0.260 total; 45685714 unknown on-demand $0.516/h, $0.258/fit, $0.279 total; 45212528 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 51284767 unk
+20:04:39 renting RTX 5090, host 18, $0.335/h; estimate $0.199
+20:04:40 VastAPIError: vastai create instance 45028240 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-a5b7e28bfecb-1 --bid_price 0.324 --raw failed: 410 error 410/3907: no_such_ask  Instance type 45028240 is no longer available.
+20:04:41 renting RTX 5090, host 156806, $0.363/h; estimate $0.182
+20:04:42 VastAPIError: vastai create instance 28539924 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-a5b7e28bfecb-2 --bid_price 0.352 --raw failed: 410 error 410/3907: no_such_ask  Instance type 28539924 is no longer available.
+20:04:43 renting RTX 5090, host 362094, $0.404/h; estimate $0.244
+20:04:44 VastAPIError: vastai create instance 48425194 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-a5b7e28bfecb-3 --bid_price 0.378 --raw failed: 410 error 410/3907: no_such_ask  Instance type 48425194 is no longer available.
+20:04:45 renting RTX 5090, host 127708, $0.412/h; estimate $0.227
+20:04:47 instance 53580917: (None, None)
+20:05:17 instance 53580917: ('loading', '246ac8b7cadc: Verifying Checksum\n')
+20:05:23 instance 53580917: ('loading', '9d9229de0a23: Verifying Checksum\n')
+20:05:28 instance 53580917: ('loading', '55557fec2dac: Verifying Checksum\n55557fec2dac: Download complete\n')
+20:05:34 instance 53580917: ('loading', '77be074b1ca8: Verifying Checksum\n')
+20:09:42 waiting: remaining estimate $0.227; replacement $0.195
+20:09:51 waiting: remaining estimate $0.227; replacement $0.229
+20:10:01 waiting: remaining estimate $0.227; replacement $0.195
+20:10:10 waiting: remaining estimate $0.227; replacement $0.217
+20:10:19 waiting: remaining estimate $0.227; replacement $0.195
+20:10:29 waiting: remaining estimate $0.227; replacement $0.229
+20:10:37 waiting: remaining estimate $0.227; replacement $0.229
+20:10:47 waiting: remaining estimate $0.227; replacement $0.195
+20:10:56 waiting: remaining estimate $0.227; replacement $0.195
+20:11:05 waiting: remaining estimate $0.227; replacement $0.229
+20:11:15 waiting: remaining estimate $0.227; replacement $0.229
+20:11:20 instance 53580917: ('loading', 'b2449364bbe7: Download complete\n')
+20:11:38 instance 53580917: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34\n')
+20:11:44 instance 53580917: ('loading', '#7 1.062 Get:8 http://deb.debian.org/debian bookworm/main amd64 libapparmor1 amd64 3.0.8-3 [41.2 kB]\n#7 1.065 Get:9 http://deb.debian.org/debian bookworm/main amd64 libip4tc2 amd64 1.8.9-2 [19.0 kB]\n#7 1.067 Get:10 http://deb.debian.org/debian bookworm/main amd64 libsystemd-shared amd64 252.39-1~deb12u2 [1696 kB]\n#7 1.211 Get:11 http://deb.debian.org/debian bookworm/main amd64 systemd amd64 252.39-1~deb12u2 [3044 kB]\n')
+20:11:50 instance 53580917: ('loading', '#7 6.411 Preparing to unpack .../02-libdevmapper1.02.1_2%3a1.02.185-2_amd64.deb ...\r\n#7 6.413 Unpacking libdevmapper1.02.1:amd64 (2:1.02.185-2) ...\r\n#7 6.447 Selecting previously unselected package libjson-c5:amd64.\r\n#7 6.449 Preparing to unpack .../03-libjson-c5_0.16-2_amd64.deb ...\r\n#7 6.450 Unpacking libjson-c5:amd64 (0.16-2) ...\r\n')
+20:11:56 instance 53580917: ('loading', '#7 10.79 Preparing to unpack .../24-libxml2_2.9.14+dfsg-1.3~deb12u6_amd64.deb ...\r\n#7 10.80 Unpacking libxml2:amd64 (2.9.14+dfsg-1.3~deb12u6) ...\r\n#7 10.84 Selecting previously unselected package libxmlb2:amd64.\r\n#7 10.84 Preparing to unpack .../25-libxmlb2_0.3.22-1~deb12u1_amd64.deb ...\r\n#7 10.85 Unpacking libxmlb2:amd64 (0.3.22-1~deb12u1) ...\r\n#7 10.87 Selecting previously unselected package libyaml-0-2:amd64.\r')
+20:12:02 instance 53580917: ('loading', '#7 15.45 Setting up liberror-perl (0.17029-2) ...\r\n#7 15.45 Setting up gir1.2-packagekitglib-1.0 (1.2.6-5+deb12u1) ...\r\n#7 15.45 Setting up python3-cryptography (38.0.4-3+deb12u1) ...\r\n#7 15.60 Setting up python3-wadllib (1.3.6-4) ...\r\n')
+20:12:08 instance 53580917: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+20:12:13 uploading pinned source, inputs and cached grid
+20:13:53 bootstrap: running; 
+20:14:01 bootstrap: running; pendent input resolution verified
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+20:14:11 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+20:14:19 fit-0: running; 
+20:14:27 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:14:36 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:14:45 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:14:53 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:15:02 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:15:11 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:15:19 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:15:28 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:15:37 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:15:46 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:15:54 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:16:03 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:16:12 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:16:20 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:16:29 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:16:38 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:16:46 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:16:55 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:17:03 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:17:12 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:17:21 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:17:29 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:17:38 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:17:46 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:17:55 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:18:04 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:18:13 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:18:21 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:18:30 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:18:39 fit-0: running; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:18:47 fit-0: 0; 20:14:19 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+20:18:59 destroyed instance 53580917
+20:19:03 local figure rebuild failed for neb_eline_ca_nohe_zevo/M1_210210: Command '['/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "baked_runtime": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "Z": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-3.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=12.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', '/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/e2e/run/fits/neb_eline_ca_nohe_zevo/210210-M1_210210']' returned non-zero exit status 1.; GPU artifacts kept

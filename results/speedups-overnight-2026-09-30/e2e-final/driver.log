@@ -1,0 +1,88 @@
+21:42:01 committed source 04d45746c994; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/e2e-final/run
+21:42:05 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 47680627 good bid $0.380/h, $0.190/fit, $0.201 total; 47680627 good on-demand $0.615/h, $0.307/fit, $0.318 total; 45028234 unknown bid $0.383/h, $0.192/fit, $0.223 total; 46055492 unknown bid $0.402/h, $0.201/fit, $0.222 total; 32200514 unknown on-demand $0.407/h, $0.204/fit, $0.225 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 47767747 unknown bid $0.483/h, $0.241/fit, $0.262 total; 52845570 unknown bid $0.483/h, $0.241/fit, $0.262 total; 52414890 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 52723070 unknown o
+21:42:05 renting RTX 5090, host 370354, $0.380/h; estimate $0.201
+21:42:06 VastAPIError: vastai create instance 47680627 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-ac994726edf2-1 --bid_price 0.365 --raw failed: 400 error 404/3603: no_such_ask  Instance type by id 47680627 is not available.
+21:42:07 renting RTX 5090, host 18, $0.383/h; estimate $0.223
+21:42:08 VastAPIError: vastai create instance 45028234 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-ac994726edf2-2 --bid_price 0.372 --raw failed: 400 error 404/3603: no_such_ask  Instance type by id 45028234 is not available.
+21:42:09 renting RTX 5090, host 127708, $0.402/h; estimate $0.222
+21:42:10 VastAPIError: vastai create instance 46055492 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-ac994726edf2-3 --bid_price 0.395 --raw failed: 410 error 410/3907: no_such_ask  Instance type 46055492 is no longer available.
+21:42:11 renting RTX 5090, host 415547, $0.407/h; estimate $0.225
+21:42:13 instance 53592074: (None, None)
+21:42:25 instance 53592074: ('loading', 'dc22b8c341d9: Pull complete\n')
+21:42:31 instance 53592074: ('loading', '8412e85cc33a: Verifying Checksum\n8412e85cc33a: Download complete\n')
+21:42:37 instance 53592074: ('loading', 'af385361d922: Verifying Checksum\naf385361d922: Download complete\n')
+21:42:43 instance 53592074: ('loading', '3db9425516fe: Verifying Checksum\n3db9425516fe: Download complete\n')
+21:42:49 instance 53592074: ('loading', 'af385361d922: Pull complete\n')
+21:42:55 instance 53592074: ('loading', '8412e85cc33a: Pull complete\n')
+21:43:01 instance 53592074: ('loading', 'c1e138b8ef21: Pull complete\n')
+21:43:07 instance 53592074: ('loading', '55557fec2dac: Verifying Checksum\n55557fec2dac: Download complete\n')
+21:43:19 instance 53592074: ('loading', '1e35cca63fd4: Verifying Checksum\n1e35cca63fd4: Download complete\n')
+21:43:25 instance 53592074: ('loading', 'a96cdfcbf7e6: Pull complete\n')
+21:43:31 instance 53592074: ('loading', 'fd3093a74b0d: Pull complete\n')
+21:43:37 instance 53592074: ('loading', '#0 building with "default" instance using docker driver\n\n#1 [internal] load build definition from ghcr.io_potatoist314_ceridwen-gpu_sha256_6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1\n')
+21:43:43 instance 53592074: ('created', 'Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: unable to retrieve OCI runtime error (open /run/containerd/io.containerd.runtime.v2.task/moby/244d8b78d9c852031bb9981a4d3f1509fe540900904fc150e0a785e8ae4a7468/log.json: no such file or directory): fork/exec /var/lib/vastai_kaalia/latest/kaalia_docker_shim: no such file or directory: unknown\n')
+21:44:56 SweepError: instance unavailable
+21:44:58 destroyed instance 53592074
+21:45:03 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 43626057 unknown bid $0.392/h, $0.196/fit, $0.227 total; 49539124 unknown bid $0.412/h, $0.206/fit, $0.227 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 47511675 unknown bid $0.419/h, $0.210/fit, $0.230 total; 35146984 unknown bid $0.420/h, $0.210/fit, $0.231 total; 52845570 unknown bid $0.483/h, $0.241/fit, $0.262 total; 46691993 unknown bid $0.494/h, $0.247/fit, $0.268 total; 45080654 unknown bid $0.509/h, $0.255/fit, $0.256 total; 28539924 unknown bid $0.517/h, $0.259/fit, $0.259 total; 49530295 unknown on-demand $0.531/h, $0.266/fit, $0.286 total; 52414895 unknown on-dema
+21:45:03 renting RTX 5090, host 564477, $0.392/h; estimate $0.227
+21:45:06 instance 53592331: (None, None)
+21:45:25 instance 53592331: ('loading', 'af385361d922: Pulling fs layer\ne08b23c708bf: Pulling fs layer\n8412e85cc33a: Pulling fs layer\n876e798be398: Pulling fs layer\n')
+21:45:32 SweepError: instance unavailable
+21:45:34 destroyed instance 53592331
+21:45:38 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 41075410 unknown bid $0.386/h, $0.193/fit, $0.203 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 53039899 unknown bid $0.416/h, $0.208/fit, $0.229 total; 34905063 unknown bid $0.423/h, $0.212/fit, $0.232 total; 49023408 unknown bid $0.431/h, $0.215/fit, $0.236 total; 52845570 unknown bid $0.483/h, $0.241/fit, $0.262 total; 28539924 unknown bid $0.517/h, $0.259/fit, $0.259 total; 52414890 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 52723068 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 45212528 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 52845570 unk
+21:45:38 renting RTX 5090, host 51650, $0.386/h; estimate $0.203
+21:45:39 VastAPIError: vastai create instance 41075410 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-ac994726edf2-6 --bid_price 0.375 --raw failed: 410 error 410/3907: no_such_ask  Instance type 41075410 is no longer available.
+21:45:40 renting RTX 5090, host 132677, $0.416/h; estimate $0.229
+21:45:42 instance 53592414: (None, None)
+21:45:54 instance 53592414: ('loading', None)
+21:46:12 instance 53592414: ('loading', '9d9229de0a23: Verifying Checksum\n9d9229de0a23: ')
+21:46:18 instance 53592414: ('loading', '774043ccc8cc: Verifying Checksum\n774043ccc8cc: ')
+21:46:24 instance 53592414: ('loading', '8412e85cc33a: Verifying Checksum\n')
+21:46:36 instance 53592414: ('loading', 'e08b23c708bf: Verifying Checksum\n')
+21:46:42 instance 53592414: ('loading', 'af385361d922: Verifying Checksum\n')
+21:46:47 instance 53592414: ('loading', 'e08b23c708bf: Pull complete\n')
+21:47:00 instance 53592414: ('loading', '3db9425516fe: Verifying Checksum\n3db9425516fe: ')
+21:47:06 instance 53592414: ('loading', '876e798be398: Verifying Checksum\n876e798be398: Download complete\n')
+21:47:12 instance 53592414: ('loading', '876e798be398: Pull complete\n')
+21:47:24 instance 53592414: ('loading', '5824fe10eb6b: Verifying Checksum\n')
+21:47:29 instance 53592414: ('loading', 'a96cdfcbf7e6: Verifying Checksum\n')
+21:47:41 instance 53592414: ('loading', '20b6301b6072: Verifying Checksum\n20b6301b6072: Download complete\n')
+21:47:47 instance 53592414: ('loading', '20b6301b6072: Pull complete\n')
+21:47:53 instance 53592414: ('loading', 'b53d2084d344: Pull complete\n')
+21:47:59 instance 53592414: ('loading', '#7 0.340 Reading package lists...')
+21:48:05 instance 53592414: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1/ssh')
+21:48:10 uploading pinned source, inputs and cached grid
+21:49:21 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+21:49:29 fit-0: running; 
+21:49:37 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:49:46 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:49:55 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:50:04 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:50:13 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:50:22 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:50:31 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:50:40 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:50:48 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:50:57 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:51:07 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:51:16 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:51:25 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:51:33 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:51:42 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:51:51 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:52:00 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:52:09 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:52:18 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:52:27 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:52:35 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:52:44 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:52:53 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:53:01 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:53:10 fit-0: running; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:53:19 fit-0: 0; 21:49:29 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+21:53:32 destroyed instance 53592414
+21:54:19 local figures rebuilt for neb_eline_ca_nohe_zevo/M1_210210

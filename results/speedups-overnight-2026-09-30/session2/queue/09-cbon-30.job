@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/stie:$SEDPY EXPECT_CERIDWEN=payload/stie SPEEDUP_NOTEBOOK={R}/payload/new.ipynb RUN_TAG=cbon-30 RUN_ITERS=30 {P} {R}/box_fit.py

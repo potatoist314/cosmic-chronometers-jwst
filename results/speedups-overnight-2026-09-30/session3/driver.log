@@ -1,0 +1,211 @@
+21:10:44 committed source 16ba69ef001a; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session3/run
+21:10:47 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45028240 unknown bid $0.136/h, $0.068/fit, $0.099 total; 48854219 unknown bid $0.285/h, $0.142/fit, $0.163 total; 43580384 unknown bid $0.349/h, $0.174/fit, $0.195 total; 53483881 unknown bid $0.392/h, $0.196/fit, $0.217 total; 43626057 unknown bid $0.396/h, $0.198/fit, $0.229 total; 46055492 unknown bid $0.402/h, $0.201/fit, $0.222 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 37375836 unknown bid $0.421/h, $0.210/fit, $0.231 total; 43580384 unknown on-demand $0.476/h, $0.238/fit, $0.259 total; 47767747 unknown bid $0.483/h, $0.241/fit, $0.262 total; 48851731 unknown bid $0.
+21:10:47 renting RTX 5090, host 18, $0.136/h; estimate $0.099
+21:10:49 instance 53588305: (None, None)
+21:11:37 instance 53588305: ('loading', None)
+21:15:44 waiting: remaining estimate $0.100; replacement $0.222
+21:15:53 waiting: remaining estimate $0.100; replacement $0.199
+21:16:03 waiting: remaining estimate $0.100; replacement $0.213
+21:16:12 waiting: remaining estimate $0.100; replacement $0.213
+21:16:21 waiting: remaining estimate $0.100; replacement $0.196
+21:16:30 waiting: remaining estimate $0.100; replacement $0.195
+21:16:40 waiting: remaining estimate $0.100; replacement $0.199
+21:16:49 waiting: remaining estimate $0.100; replacement $0.196
+21:16:58 waiting: remaining estimate $0.100; replacement $0.162
+21:17:07 waiting: remaining estimate $0.100; replacement $0.199
+21:17:17 waiting: remaining estimate $0.100; replacement $0.199
+21:17:26 waiting: remaining estimate $0.100; replacement $0.199
+21:17:36 waiting: remaining estimate $0.100; replacement $0.229
+21:17:45 waiting: remaining estimate $0.100; replacement $0.199
+21:17:55 waiting: remaining estimate $0.100; replacement $0.181
+21:18:05 waiting: remaining estimate $0.100; replacement $0.202
+21:18:14 waiting: remaining estimate $0.100; replacement $0.162
+21:18:23 waiting: remaining estimate $0.100; replacement $0.213
+21:18:32 waiting: remaining estimate $0.100; replacement $0.162
+21:18:41 waiting: remaining estimate $0.100; replacement $0.199
+21:18:51 waiting: remaining estimate $0.100; replacement $0.162
+21:19:00 waiting: remaining estimate $0.100; replacement $0.162
+21:19:09 waiting: remaining estimate $0.100; replacement $0.162
+21:19:18 waiting: remaining estimate $0.100; replacement $0.162
+21:19:27 waiting: remaining estimate $0.100; replacement $0.162
+21:19:36 waiting: remaining estimate $0.100; replacement $0.162
+21:19:46 waiting: remaining estimate $0.100; replacement $0.204
+21:19:56 waiting: remaining estimate $0.100; replacement $0.195
+21:20:06 waiting: remaining estimate $0.100; replacement $0.162
+21:20:15 waiting: remaining estimate $0.101; replacement $0.217
+21:20:24 waiting: remaining estimate $0.101; replacement $0.306
+21:20:33 waiting: remaining estimate $0.101; replacement $0.195
+21:20:43 waiting: remaining estimate $0.101; replacement $0.222
+21:20:52 waiting: remaining estimate $0.101; replacement $0.204
+21:21:01 waiting: remaining estimate $0.101; replacement $0.204
+21:21:10 waiting: remaining estimate $0.101; replacement $0.217
+21:21:19 waiting: remaining estimate $0.101; replacement $0.202
+21:21:28 waiting: remaining estimate $0.101; replacement $0.217
+21:21:37 waiting: remaining estimate $0.101; replacement $0.202
+21:21:47 waiting: remaining estimate $0.101; replacement $0.201
+21:21:56 waiting: remaining estimate $0.101; replacement $0.201
+21:22:05 waiting: remaining estimate $0.101; replacement $0.201
+21:22:14 waiting: remaining estimate $0.101; replacement $0.201
+21:22:23 waiting: remaining estimate $0.101; replacement $0.204
+21:22:32 waiting: remaining estimate $0.101; replacement $0.201
+21:22:41 waiting: remaining estimate $0.101; replacement $0.201
+21:22:50 waiting: remaining estimate $0.101; replacement $0.201
+21:23:00 waiting: remaining estimate $0.101; replacement $0.201
+21:23:06 instance 53588305: (None, None)
+21:27:15 waiting: remaining estimate $0.102; replacement $0.201
+21:27:24 waiting: remaining estimate $0.102; replacement $0.201
+21:27:33 waiting: remaining estimate $0.103; replacement $0.201
+21:27:42 waiting: remaining estimate $0.103; replacement $0.201
+21:27:51 waiting: remaining estimate $0.103; replacement $0.201
+21:28:00 waiting: remaining estimate $0.104; replacement $0.201
+21:28:09 waiting: remaining estimate $0.104; replacement $0.201
+21:28:18 waiting: remaining estimate $0.105; replacement $0.201
+21:28:24 KeyboardInterrupt: 
+21:28:26 destroyed instance 53588305
+Traceback (most recent call last):
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/gpu/gpu_session.py", line 84, in <module>
+    raise SystemExit(experiment.main())
+                     ~~~~~~~~~~~~~~~^^
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/scripts/experiment.py", line 390, in main
+    code = Run(args, source).execute()
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/scripts/benchmark.py", line 577, in execute
+    self.attempt(offer, price, bid)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/scripts/benchmark.py", line 496, in attempt
+    self.measure(attempt)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/gpu/gpu_session.py", line 45, in measure
+    environment = self.prepare(attempt)
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/scripts/benchmark.py", line 413, in prepare
+    self.wait_ready(attempt)
+    ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/scripts/benchmark.py", line 304, in wait_ready
+    fresh = self.candidates(attempt['offer']['gpu_name'])
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/scripts/benchmark.py", line 237, in candidates
+    hosts.update(i['host_id'] for i in vast._vastai_json(['show', 'instances']))
+                                       ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/scripts/vast.py", line 167, in _vastai_json
+    output = _vastai([*arguments, "--raw"], timeout=timeout)
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/scripts/vast.py", line 143, in _vastai
+    result = subprocess.run(
+        command,
+    ...<3 lines>...
+        timeout=timeout,
+    )
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2153, in _communicate
+    ready = selector.select(timeout)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/gpu/gpu_session.py", line 82, in <lambda>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+                                             ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/gpu/gpu_session.py", line 82, in <genexpr>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+KeyboardInterrupt
+21:29:59 committed source 16ba69ef001a; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session3/run
+21:30:04 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 47680627 good bid $0.380/h, $0.190/fit, $0.201 total; 43626057 unknown bid $0.346/h, $0.173/fit, $0.204 total; 46055492 unknown bid $0.402/h, $0.201/fit, $0.222 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 45309042 unknown bid $0.416/h, $0.208/fit, $0.229 total; 47511675 unknown bid $0.419/h, $0.210/fit, $0.230 total; 34905063 unknown bid $0.423/h, $0.212/fit, $0.232 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 46691993 unknown bid $0.494/h, $0.247/fit, $0.268 total; 52414888 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 45212528 unknown on-demand 
+21:30:04 renting RTX 5090, host 370354, $0.380/h; estimate $0.201
+21:30:06 instance 53590735: (None, None)
+21:30:42 instance 53590735: ('loading', 'c1e138b8ef21: Verifying Checksum\nc1e138b8ef21: Download complete\n')
+21:30:48 instance 53590735: ('loading', '3db9425516fe: Verifying Checksum\n3db9425516fe: Download complete\n')
+21:30:54 instance 53590735: ('loading', '77be074b1ca8: Verifying Checksum\n77be074b1ca8: Download complete\n')
+21:31:00 instance 53590735: ('loading', 'e08b23c708bf: Pull complete\n')
+21:31:06 instance 53590735: ('loading', 'b53d2084d344: Verifying Checksum\nb53d2084d344: Download complete\n')
+21:31:12 instance 53590735: ('loading', 'a96cdfcbf7e6: Verifying Checksum\na96cdfcbf7e6: Download complete\n')
+21:31:25 instance 53590735: ('loading', '876e798be398: Pull complete\n')
+21:31:36 instance 53590735: ('loading', '20b6301b6072: Verifying Checksum\n')
+21:31:43 instance 53590735: ('loading', '3db9425516fe: Pull complete\n')
+21:31:49 instance 53590735: ('loading', 'b53d2084d344: Pull complete\n')
+21:31:54 instance 53590735: ('loading', '#7 DONE 1.1s\n\n#8 [5/7] RUN export DEBIAN_FRONTEND=noninteractive; for x in {0..30}; do apt-get install --no-install-recommends -y openssh-server tmux git wget curl less locales sudo software-properties-common rsync && break; sleep 1; done; exit 0;\n')
+21:32:00 instance 53590735: ('loading', '#8 4.485 Selecting previously unselected package perl.\r\n')
+21:32:06 instance 53590735: ('loading', '#8 9.769 Setting up libdw1:amd64 (0.188-2.1) ...\r\n')
+21:32:13 instance 53590735: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_b4881d30b146431bbdb2ec44b39ca931dcf7c6de6a8b26d2b21bc3c52179786b/ssh')
+21:32:18 uploading pinned source, inputs and cached grid
+21:33:19 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+21:33:46 15a-start-old1: running; 
+21:33:55 15a-start-old1: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:34:04 15a-start-old1: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:34:13 15a-start-old1: running; old1", "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/payload/stie4/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0", "first_iteration_done_s": 9.863645490724593, "first_iteration_s": 4.921872288919985}
+21:34:23 15a-start-old1: 0; old1", "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/payload/stie4/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0", "first_iteration_done_s": 9.863645490724593, "first_iteration_s": 4.921872288919985}
+21:34:45 15b-start-new1: running; 
+21:34:54 15b-start-new1: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:35:03 15b-start-new1: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:35:12 15b-start-new1: 0; -new1", "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/payload/aot/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0", "first_iteration_done_s": 7.659762556198984, "first_iteration_s": 0.9823497901670635}
+21:35:34 15c-start-old2: running; 
+21:35:43 15c-start-old2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:35:52 15c-start-old2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:36:01 15c-start-old2: running; -old2", "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/payload/stie4/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0", "first_iteration_done_s": 9.841015448793769, "first_iteration_s": 4.90770944301039}
+21:36:11 15c-start-old2: 0; -old2", "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/payload/stie4/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0", "first_iteration_done_s": 9.841015448793769, "first_iteration_s": 4.90770944301039}
+21:36:33 15d-start-new2: running; 
+21:36:42 15d-start-new2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:36:51 15d-start-new2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:37:01 15d-start-new2: 0; -new2", "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/payload/aot/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0", "first_iteration_done_s": 7.621604391839355, "first_iteration_s": 0.9834046638570726}
+21:37:23 16a-apt-history: running; 
+21:37:33 16a-apt-history: 0; r-- 1 root root  169 Sep 19 01:00 .wget-hsts
+-rw-r--r-- 1 root root    0 Sep 30 21:32 hasbooted
+-rw-r--r-- 1 root root   25 Sep 30 21:32 onstart.sh
+-rw-r--r-- 1 root root    6 Sep 30 21:32 ports.log
+model name	: Intel(R) Core(TM) Ultra 9 285K
+name, driver_version
+NVIDIA GeForce RTX 5090, 580.167.08
+21:37:54 16b-dump-stie4-det-s3: running; 
+21:38:03 16b-dump-stie4-det-s3: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:38:12 16b-dump-stie4-det-s3: 0; /en/latest/units/combining_and_defining.html [astropy.units.core]
+Using combined (binwise + diffuse) dust attenuation.
+Initializing Dust attenuation model...
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+DONE 17300
+21:38:35 16c-cell14-at0: running; 
+21:38:44 16c-cell14-at0: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:38:53 16c-cell14-at0: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:39:03 16c-cell14-at0: 0; bin: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 6.4499888881109655,
+  "cell14 again": 0.8363342499360442
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 5.013303279876709
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.3285808563232422
+ }
+}
+21:39:25 16d-cell14-default: running; 
+21:39:34 16d-cell14-default: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:39:43 16d-cell14-default: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:39:53 16d-cell14-default: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+21:40:02 16d-cell14-default: 0; in: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 12.268685468006879,
+  "cell14 again": 0.8439011531881988
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 10.806736469268799
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.3355374336242676
+ }
+}
+21:40:25 destroyed instance 53590735

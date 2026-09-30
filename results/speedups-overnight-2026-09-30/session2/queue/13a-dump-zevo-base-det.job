@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/base:$SEDPY EXPECT_CERIDWEN=payload/base SPEEDUP_NOTEBOOK={R}/payload/base.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' SPEEDUP_SETTINGS='{"metallicity_evolution": true}' PROF_DEAD={R}/payload/zevo_dead.pkl DUMP_OUT={R}/out/dump-zevo-base-det.npz {P} {R}/lnl_dump.py

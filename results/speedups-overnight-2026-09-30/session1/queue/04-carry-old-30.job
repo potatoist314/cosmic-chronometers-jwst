@@ -1,0 +1,1 @@
+EXPECT_CERIDWEN=jwst/ceridwen/ XLA_FLAGS='--xla_gpu_enable_command_buffer=' RUN_TAG=carry-old-30 RUN_ITERS=30 {P} {R}/box_fit.py

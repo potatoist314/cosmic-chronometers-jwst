@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/base:$SEDPY EXPECT_CERIDWEN=payload/base SPEEDUP_NOTEBOOK={R}/payload/base.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer=' SPEEDUP_SETTINGS='{"metallicity_evolution": true}' RUN_TAG=zevo-base {P} {R}/box_fit.py

@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/stie4:$SEDPY EXPECT_CERIDWEN=payload/stie4 SPEEDUP_NOTEBOOK={R}/payload/new.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' SPEEDUP_SETTINGS='{"metallicity_evolution": true}' RUN_TAG=start-old1 RUN_ITERS=3 {P} {R}/run_start.py

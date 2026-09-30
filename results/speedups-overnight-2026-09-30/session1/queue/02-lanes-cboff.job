@@ -1,0 +1,1 @@
+PYTHONPATH=$NEW_PYTHONPATH EXPECT_CERIDWEN=new_ceridwen XLA_FLAGS='--xla_gpu_enable_command_buffer=' RUN_TAG=lanes-cboff {P} {R}/box_fit.py

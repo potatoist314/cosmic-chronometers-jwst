@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/base:$SEDPY EXPECT_CERIDWEN=payload/base SPEEDUP_NOTEBOOK={R}/payload/base.ipynb XLA_FLAGS='--xla_gpu_enable_command_buffer=' RUN_TAG=lanes-base {P} {R}/box_fit.py
