@@ -1,0 +1,1797 @@
+22:13:23 committed source ea55d8c5fcd6; output /Users/liuhao/Downloads/Astro project/tmp/worktrees/swarm-throughput/results/speedups-swarm-throughput-2026-09-30/session1/run
+22:13:27 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 47680627 good bid $0.380/h, $0.190/fit, $0.201 total; 46055492 unknown bid $0.212/h, $0.106/fit, $0.127 total; 43626057 unknown bid $0.346/h, $0.173/fit, $0.204 total; 45508884 unknown bid $0.378/h, $0.189/fit, $0.220 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 45309042 unknown bid $0.416/h, $0.208/fit, $0.229 total; 52845570 unknown bid $0.483/h, $0.241/fit, $0.262 total; 46691993 unknown bid $0.494/h, $0.247/fit, $0.268 total; 51969558 unknown bid $0.532/h, $0.266/fit, $0.266 total; 45212528 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 45309042 unknown on-demand 
+22:13:27 renting RTX 5090, host 370354, $0.380/h; estimate $0.201
+22:13:29 instance 53595067: (None, None)
+22:13:47 instance 53595067: ('loading', None)
+22:13:53 instance 53595067: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1: Pulling from potatoist314/ceridwen-gpu\n')
+22:14:06 instance 53595067: ('loading', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1')
+22:14:12 instance 53595067: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1/ssh')
+22:14:19 uploading pinned source, inputs and cached grid
+22:15:27 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:15:51 00-probe: running; 
+22:16:00 00-probe: 0; 62           4          10           0          47          57
+Swap:             39           0          39
+name, compute_mode, memory.total [MiB], clocks.max.sm [MHz], power.limit [W]
+NVIDIA GeForce RTX 5090, Default, 32607 MiB, 3210 MHz, 600.00 W
+model name	: Intel(R) Core(TM) Ultra 9 285K
+22:16:22 01-solo: running; 
+22:16:31 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:16:40 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:16:49 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:16:59 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:17:08 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:17:17 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:17:26 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:17:36 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:17:45 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:17:54 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:18:03 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:18:12 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:18:21 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:18:30 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:18:39 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:18:48 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:18:57 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:19:07 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:19:15 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:19:24 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:19:33 01-solo: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:19:43 01-solo: running; "logZ": 236002.77080421132, "logZ_live": 235997.65930289446, "n_likelihood_calls": 5478067, "build_s": 13.552486218046397, "init_s": 2.842744887340814, "sampling_s": 180.48182643810287, "first_iteration_s": 4.903537904843688, "later_iterations_s": 175.25968797923997, "script_s": 198.93960765982047}
+22:19:52 01-solo: 0; "logZ": 236002.77080421132, "logZ_live": 235997.65930289446, "n_likelihood_calls": 5478067, "build_s": 13.552486218046397, "init_s": 2.842744887340814, "sampling_s": 180.48182643810287, "first_iteration_s": 4.903537904843688, "later_iterations_s": 175.25968797923997, "script_s": 198.93960765982047}
+22:20:18 02-mps2: running; 
+22:20:27 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:20:36 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:20:45 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:20:54 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:21:03 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:21:12 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:21:21 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:21:30 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:21:39 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:21:48 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:21:57 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:22:06 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:22:15 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:22:25 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:22:33 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:22:43 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:22:52 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:23:01 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:23:10 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:23:19 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:23:29 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:23:38 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:23:47 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:23:56 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:24:05 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:24:15 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:24:24 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:24:33 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:24:42 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:24:51 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:25:00 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:25:09 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:25:18 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:25:28 02-mps2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:25:37 02-mps2: 0; 6.456 Control  2330] NEW UI
+[2026-09-30 22:25:36.456 Control  2330] Cmd:quit
+[2026-09-30 22:25:36.456 Control  2330] Try shutting down server 2384, backoff is disabled
+[2026-09-30 22:25:36.507 Control  2330] Server 2384 exited with status 0
+[2026-09-30 22:25:36.507 Control  2330] Exit with status 0
+22:26:03 03-mps4: running; 
+22:26:12 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:26:22 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:26:31 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:26:40 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:26:50 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:26:59 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:27:08 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:27:17 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:27:26 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:27:36 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:27:45 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:27:55 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:28:03 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:28:13 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:28:22 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:28:31 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:28:41 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:28:50 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:29:00 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:29:09 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:29:18 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:29:27 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:29:37 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:29:47 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:29:57 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:30:06 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:30:15 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:30:25 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:30:34 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:30:43 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:30:53 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:31:02 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:31:11 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:31:21 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:31:30 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:31:39 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:31:49 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:31:58 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:32:07 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:32:17 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:32:26 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:32:36 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:32:45 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:32:54 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:33:04 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:33:13 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:33:23 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:33:32 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:33:41 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:33:50 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:33:59 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:34:09 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:34:18 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:34:27 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:34:36 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:34:46 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:34:55 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:35:04 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:35:14 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:35:23 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:35:32 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:35:41 03-mps4: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:35:51 03-mps4: running; ue, "logZ": 236002.89827421945, "logZ_live": 235997.89581927902, "n_likelihood_calls": 5335569, "build_s": 14.244334657210857, "init_s": 3.64794969977811, "sampling_s": 557.8984982599504, "first_iteration_s": 8.009371390100569, "later_iterations_s": 549.5305575686507, "script_s": 578.0180676290765}
+22:36:01 03-mps4: 0; 8.945 Control  4763] NEW UI
+[2026-09-30 22:35:58.945 Control  4763] Cmd:quit
+[2026-09-30 22:35:58.945 Control  4763] Try shutting down server 4864, backoff is disabled
+[2026-09-30 22:35:58.998 Control  4763] Server 4864 exited with status 0
+[2026-09-30 22:35:58.999 Control  4763] Exit with status 0
+22:36:30 04-ts2: running; 
+22:36:39 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:36:49 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:36:58 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:37:07 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:37:16 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:37:25 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:37:35 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:37:44 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:37:53 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:38:03 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:38:12 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:38:21 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:38:30 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:38:39 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:38:48 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:38:58 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:39:07 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:39:22 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:39:31 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:39:41 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:39:50 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:39:59 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:40:08 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:40:17 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:40:27 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:40:36 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:40:45 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:40:55 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:41:04 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:41:13 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:41:22 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:41:31 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:41:40 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:41:49 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:42:09 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:42:21 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:42:30 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:42:40 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:42:49 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:42:58 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:43:07 04-ts2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:43:17 04-ts2: 0; , "logZ": 236003.09781168654, "logZ_live": 235998.06919687983, "n_likelihood_calls": 5429288, "build_s": 14.135043900925666, "init_s": 2.999733238015324, "sampling_s": 379.00919923512265, "first_iteration_s": 6.045611317735165, "later_iterations_s": 372.6052246429026, "script_s": 398.3246548217721}
+22:43:47 05-k4: running; 
+22:43:57 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:44:06 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:44:15 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:44:24 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:44:34 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:44:43 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:44:53 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:45:02 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:45:11 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:45:20 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:45:29 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:45:39 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:45:48 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:45:57 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:46:06 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:46:15 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:46:24 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:46:33 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:46:42 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:46:51 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:47:01 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:47:10 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:47:19 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:47:28 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:47:37 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:47:46 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:47:55 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:48:04 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:48:13 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:48:23 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:48:31 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:48:40 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:48:49 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:48:59 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:49:08 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:49:17 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:49:26 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:49:35 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:49:44 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:49:53 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:50:03 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:50:12 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:50:21 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:50:30 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:50:39 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:50:48 05-k4: running; START 1790808227
+22:43:47 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:43:47 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:50:54 05-k4: ssh: connect to host 120.88.119.115 port 30389: Connection refused; reconnecting to the same instance
+22:50:56 rsync failed (CalledProcessError); retry 1
+22:51:26 rsync failed (CalledProcessError); retry 2
+22:51:57 rsync failed (CalledProcessError); retry 3
+22:52:28 rsync failed (CalledProcessError); retry 4
+22:52:59 rsync failed (CalledProcessError); retry 5
+22:53:29 SweepError: instance unavailable
+22:53:32 destroyed instance 53595067
+22:53:38 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45028234 unknown bid $0.391/h, $0.196/fit, $0.227 total; 46055492 unknown bid $0.402/h, $0.201/fit, $0.222 total; 32200514 unknown on-demand $0.407/h, $0.204/fit, $0.225 total; 38697500 unknown bid $0.416/h, $0.208/fit, $0.229 total; 53039899 unknown bid $0.416/h, $0.208/fit, $0.229 total; 53061198 unknown bid $0.416/h, $0.208/fit, $0.229 total; 52845570 unknown bid $0.483/h, $0.241/fit, $0.262 total; 48851731 unknown bid $0.496/h, $0.248/fit, $0.269 total; 51969558 unknown bid $0.532/h, $0.266/fit, $0.266 total; 51454453 unknown bid $0.536/h, $0.268/fit, $0.289 total; 52093612 unknown on-dema
+22:53:38 renting RTX 5090, host 18, $0.391/h; estimate $0.227
+22:53:39 VastAPIError: vastai create instance 45028234 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-0a7cab74d35f-2 --bid_price 0.38 --raw failed: 400 error 404/3603: no_such_ask  Instance type by id 45028234 is not available.
+22:53:40 renting RTX 5090, host 127708, $0.402/h; estimate $0.222
+22:53:41 VastAPIError: vastai create instance 46055492 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-0a7cab74d35f-3 --bid_price 0.395 --raw failed: 410 error 410/3907: no_such_ask  Instance type 46055492 is no longer available.
+22:53:43 renting RTX 5090, host 415547, $0.407/h; estimate $0.225
+22:53:44 VastAPIError: vastai create instance 32200514 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-0a7cab74d35f-4 --raw failed: 400 error 404/3603: no_such_ask  Instance type by id 32200514 is not available.
+22:53:45 renting RTX 5090, host 146008, $0.416/h; estimate $0.229
+22:53:49 instance 53599662: (None, None)
+22:54:27 instance 53599662: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1/ssh')
+22:54:33 uploading pinned source, inputs and cached grid
+22:55:35 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:55:59 05-k4: running; 
+22:56:07 05-k4: running; START 1790808958
+22:55:59 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+22:56:16 05-k4: running; ting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=11674 avail=52457 gpu=26618MiB,0%
+22:56:25 05-k4: running; ting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=11674 avail=52457 gpu=26618MiB,0%
+22:56:33 05-k4: running; 22:55:59 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=11674 avail=52457 gpu=26618MiB,0%
+MEM host_used_MiB=14140 avail=49991 gpu=26666MiB,0%
+22:56:42 05-k4: running; 22:55:59 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=11674 avail=52457 gpu=26618MiB,0%
+MEM host_used_MiB=14140 avail=49991 gpu=26666MiB,0%
+22:56:51 05-k4: running; ed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=11674 avail=52457 gpu=26618MiB,0%
+MEM host_used_MiB=14140 avail=49991 gpu=26666MiB,0%
+MEM host_used_MiB=17501 avail=46630 gpu=27618MiB,100%
+22:57:00 05-k4: running; 4_27068, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=11674 avail=52457 gpu=26618MiB,0%
+MEM host_used_MiB=14140 avail=49991 gpu=26666MiB,0%
+MEM host_used_MiB=17501 avail=46630 gpu=27618MiB,100%
+MEM host_used_MiB=17590 avail=46548 gpu=27618MiB,100%
+22:57:09 05-k4: running; 4_27068, seed 20260927
+22:55:59 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=11674 avail=52457 gpu=26618MiB,0%
+MEM host_used_MiB=14140 avail=49991 gpu=26666MiB,0%
+MEM host_used_MiB=17501 avail=46630 gpu=27618MiB,100%
+MEM host_used_MiB=17590 avail=46548 gpu=27618MiB,100%
+22:57:17 05-k4: running; ohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=11674 avail=52457 gpu=26618MiB,0%
+MEM host_used_MiB=14140 avail=49991 gpu=26666MiB,0%
+MEM host_used_MiB=17501 avail=46630 gpu=27618MiB,100%
+MEM host_used_MiB=17590 avail=46548 gpu=27618MiB,100%
+MEM host_used_MiB=17553 avail=46578 gpu=27618MiB,100%
+22:57:26 05-k4: running; ohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=11674 avail=52457 gpu=26618MiB,0%
+MEM host_used_MiB=14140 avail=49991 gpu=26666MiB,0%
+MEM host_used_MiB=17501 avail=46630 gpu=27618MiB,100%
+MEM host_used_MiB=17590 avail=46548 gpu=27618MiB,100%
+MEM host_used_MiB=17553 avail=46578 gpu=27618MiB,100%
+22:57:34 05-k4: running; 674 avail=52457 gpu=26618MiB,0%
+MEM host_used_MiB=14140 avail=49991 gpu=26666MiB,0%
+MEM host_used_MiB=17501 avail=46630 gpu=27618MiB,100%
+MEM host_used_MiB=17590 avail=46548 gpu=27618MiB,100%
+MEM host_used_MiB=17553 avail=46578 gpu=27618MiB,100%
+MEM host_used_MiB=17560 avail=46571 gpu=27618MiB,100%
+22:57:43 05-k4: running; 674 avail=52457 gpu=26618MiB,0%
+MEM host_used_MiB=14140 avail=49991 gpu=26666MiB,0%
+MEM host_used_MiB=17501 avail=46630 gpu=27618MiB,100%
+MEM host_used_MiB=17590 avail=46548 gpu=27618MiB,100%
+MEM host_used_MiB=17553 avail=46578 gpu=27618MiB,100%
+MEM host_used_MiB=17560 avail=46571 gpu=27618MiB,100%
+22:57:52 05-k4: running; 0 avail=49991 gpu=26666MiB,0%
+MEM host_used_MiB=17501 avail=46630 gpu=27618MiB,100%
+MEM host_used_MiB=17590 avail=46548 gpu=27618MiB,100%
+MEM host_used_MiB=17553 avail=46578 gpu=27618MiB,100%
+MEM host_used_MiB=17560 avail=46571 gpu=27618MiB,100%
+MEM host_used_MiB=17573 avail=46558 gpu=27618MiB,100%
+22:58:00 05-k4: running; avail=46630 gpu=27618MiB,100%
+MEM host_used_MiB=17590 avail=46548 gpu=27618MiB,100%
+MEM host_used_MiB=17553 avail=46578 gpu=27618MiB,100%
+MEM host_used_MiB=17560 avail=46571 gpu=27618MiB,100%
+MEM host_used_MiB=17573 avail=46558 gpu=27618MiB,100%
+MEM host_used_MiB=17575 avail=46555 gpu=27618MiB,100%
+22:58:09 05-k4: running; avail=46630 gpu=27618MiB,100%
+MEM host_used_MiB=17590 avail=46548 gpu=27618MiB,100%
+MEM host_used_MiB=17553 avail=46578 gpu=27618MiB,100%
+MEM host_used_MiB=17560 avail=46571 gpu=27618MiB,100%
+MEM host_used_MiB=17573 avail=46558 gpu=27618MiB,100%
+MEM host_used_MiB=17575 avail=46555 gpu=27618MiB,100%
+22:58:18 05-k4: running; avail=46548 gpu=27618MiB,100%
+MEM host_used_MiB=17553 avail=46578 gpu=27618MiB,100%
+MEM host_used_MiB=17560 avail=46571 gpu=27618MiB,100%
+MEM host_used_MiB=17573 avail=46558 gpu=27618MiB,100%
+MEM host_used_MiB=17575 avail=46555 gpu=27618MiB,100%
+MEM host_used_MiB=17566 avail=46564 gpu=27618MiB,100%
+22:58:26 05-k4: running; avail=46548 gpu=27618MiB,100%
+MEM host_used_MiB=17553 avail=46578 gpu=27618MiB,100%
+MEM host_used_MiB=17560 avail=46571 gpu=27618MiB,100%
+MEM host_used_MiB=17573 avail=46558 gpu=27618MiB,100%
+MEM host_used_MiB=17575 avail=46555 gpu=27618MiB,100%
+MEM host_used_MiB=17566 avail=46564 gpu=27618MiB,100%
+22:58:35 05-k4: running; avail=46578 gpu=27618MiB,100%
+MEM host_used_MiB=17560 avail=46571 gpu=27618MiB,100%
+MEM host_used_MiB=17573 avail=46558 gpu=27618MiB,100%
+MEM host_used_MiB=17575 avail=46555 gpu=27618MiB,100%
+MEM host_used_MiB=17566 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46564 gpu=27618MiB,100%
+22:58:44 05-k4: running; avail=46578 gpu=27618MiB,100%
+MEM host_used_MiB=17560 avail=46571 gpu=27618MiB,100%
+MEM host_used_MiB=17573 avail=46558 gpu=27618MiB,100%
+MEM host_used_MiB=17575 avail=46555 gpu=27618MiB,100%
+MEM host_used_MiB=17566 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46564 gpu=27618MiB,100%
+22:58:53 05-k4: running; avail=46571 gpu=27618MiB,100%
+MEM host_used_MiB=17573 avail=46558 gpu=27618MiB,100%
+MEM host_used_MiB=17575 avail=46555 gpu=27618MiB,100%
+MEM host_used_MiB=17566 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17565 avail=46566 gpu=27618MiB,100%
+22:59:01 05-k4: running; avail=46558 gpu=27618MiB,100%
+MEM host_used_MiB=17575 avail=46555 gpu=27618MiB,100%
+MEM host_used_MiB=17566 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17565 avail=46566 gpu=27618MiB,100%
+MEM host_used_MiB=17593 avail=46538 gpu=27618MiB,100%
+22:59:11 05-k4: running; avail=46558 gpu=27618MiB,100%
+MEM host_used_MiB=17575 avail=46555 gpu=27618MiB,100%
+MEM host_used_MiB=17566 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17565 avail=46566 gpu=27618MiB,100%
+MEM host_used_MiB=17593 avail=46538 gpu=27618MiB,100%
+22:59:20 05-k4: running; avail=46555 gpu=27618MiB,100%
+MEM host_used_MiB=17566 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17565 avail=46566 gpu=27618MiB,100%
+MEM host_used_MiB=17593 avail=46538 gpu=27618MiB,100%
+MEM host_used_MiB=17557 avail=46574 gpu=27618MiB,100%
+22:59:29 05-k4: running; avail=46555 gpu=27618MiB,100%
+MEM host_used_MiB=17566 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17565 avail=46566 gpu=27618MiB,100%
+MEM host_used_MiB=17593 avail=46538 gpu=27618MiB,100%
+MEM host_used_MiB=17557 avail=46574 gpu=27618MiB,100%
+22:59:38 05-k4: running; avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17565 avail=46566 gpu=27618MiB,100%
+MEM host_used_MiB=17593 avail=46538 gpu=27618MiB,100%
+MEM host_used_MiB=17557 avail=46574 gpu=27618MiB,100%
+MEM host_used_MiB=17569 avail=46562 gpu=27618MiB,100%
+22:59:47 05-k4: running; avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17565 avail=46566 gpu=27618MiB,100%
+MEM host_used_MiB=17593 avail=46538 gpu=27618MiB,100%
+MEM host_used_MiB=17557 avail=46574 gpu=27618MiB,100%
+MEM host_used_MiB=17569 avail=46562 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+22:59:58 05-k4: running; avail=46564 gpu=27618MiB,100%
+MEM host_used_MiB=17565 avail=46566 gpu=27618MiB,100%
+MEM host_used_MiB=17593 avail=46538 gpu=27618MiB,100%
+MEM host_used_MiB=17557 avail=46574 gpu=27618MiB,100%
+MEM host_used_MiB=17569 avail=46562 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+23:00:07 05-k4: running; avail=46566 gpu=27618MiB,100%
+MEM host_used_MiB=17593 avail=46538 gpu=27618MiB,100%
+MEM host_used_MiB=17557 avail=46574 gpu=27618MiB,100%
+MEM host_used_MiB=17569 avail=46562 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46563 gpu=27618MiB,100%
+23:00:16 05-k4: running; avail=46538 gpu=27618MiB,100%
+MEM host_used_MiB=17557 avail=46574 gpu=27618MiB,100%
+MEM host_used_MiB=17569 avail=46562 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+23:00:24 05-k4: running; avail=46538 gpu=27618MiB,100%
+MEM host_used_MiB=17557 avail=46574 gpu=27618MiB,100%
+MEM host_used_MiB=17569 avail=46562 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+23:00:33 05-k4: running; avail=46574 gpu=27618MiB,100%
+MEM host_used_MiB=17569 avail=46562 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17581 avail=46550 gpu=27618MiB,100%
+23:00:42 05-k4: running; avail=46574 gpu=27618MiB,100%
+MEM host_used_MiB=17569 avail=46562 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17581 avail=46550 gpu=27618MiB,100%
+23:00:51 05-k4: running; avail=46562 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17581 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17570 avail=46561 gpu=27618MiB,100%
+23:01:00 05-k4: running; avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17581 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17570 avail=46561 gpu=27618MiB,100%
+MEM host_used_MiB=17574 avail=46557 gpu=27618MiB,100%
+23:01:09 05-k4: running; avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17567 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17581 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17570 avail=46561 gpu=27618MiB,100%
+MEM host_used_MiB=17574 avail=46557 gpu=27618MiB,100%
+23:01:18 05-k4: running; avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17581 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17570 avail=46561 gpu=27618MiB,100%
+MEM host_used_MiB=17574 avail=46557 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46550 gpu=27618MiB,100%
+23:01:27 05-k4: running; avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17581 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17570 avail=46561 gpu=27618MiB,100%
+MEM host_used_MiB=17574 avail=46557 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46550 gpu=27618MiB,100%
+23:01:38 05-k4: running; avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17581 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17570 avail=46561 gpu=27618MiB,100%
+MEM host_used_MiB=17574 avail=46557 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+23:01:47 05-k4: running; avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17570 avail=46561 gpu=27618MiB,100%
+MEM host_used_MiB=17574 avail=46557 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+23:01:56 05-k4: running; avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17570 avail=46561 gpu=27618MiB,100%
+MEM host_used_MiB=17574 avail=46557 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+23:02:05 05-k4: running; avail=46561 gpu=27618MiB,100%
+MEM host_used_MiB=17574 avail=46557 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+23:02:15 05-k4: running; avail=46557 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46551 gpu=27618MiB,100%
+23:02:24 05-k4: running; avail=46557 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46551 gpu=27618MiB,100%
+23:02:33 05-k4: running; avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46551 gpu=27618MiB,100%
+MEM host_used_MiB=17584 avail=46547 gpu=27618MiB,100%
+23:02:42 05-k4: running; avail=46550 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46551 gpu=27618MiB,100%
+MEM host_used_MiB=17584 avail=46547 gpu=27618MiB,100%
+23:02:50 05-k4: running; avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46551 gpu=27618MiB,100%
+MEM host_used_MiB=17584 avail=46547 gpu=27618MiB,100%
+MEM host_used_MiB=17586 avail=46545 gpu=27618MiB,100%
+23:02:59 05-k4: running; avail=46553 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46551 gpu=27618MiB,100%
+MEM host_used_MiB=17584 avail=46547 gpu=27618MiB,100%
+MEM host_used_MiB=17586 avail=46545 gpu=27618MiB,100%
+23:03:08 05-k4: running; avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46551 gpu=27618MiB,100%
+MEM host_used_MiB=17584 avail=46547 gpu=27618MiB,100%
+MEM host_used_MiB=17586 avail=46545 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+23:03:17 05-k4: running; avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46551 gpu=27618MiB,100%
+MEM host_used_MiB=17584 avail=46547 gpu=27618MiB,100%
+MEM host_used_MiB=17586 avail=46545 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46552 gpu=27618MiB,100%
+23:03:26 05-k4: running; avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17580 avail=46551 gpu=27618MiB,100%
+MEM host_used_MiB=17584 avail=46547 gpu=27618MiB,100%
+MEM host_used_MiB=17586 avail=46545 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46552 gpu=27618MiB,100%
+23:03:34 05-k4: running; avail=46551 gpu=27618MiB,100%
+MEM host_used_MiB=17584 avail=46547 gpu=27618MiB,100%
+MEM host_used_MiB=17586 avail=46545 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46552 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+23:03:43 05-k4: running; avail=46551 gpu=27618MiB,100%
+MEM host_used_MiB=17584 avail=46547 gpu=27618MiB,100%
+MEM host_used_MiB=17586 avail=46545 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46552 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+23:03:52 05-k4: running; avail=46547 gpu=27618MiB,100%
+MEM host_used_MiB=17586 avail=46545 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46552 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+23:04:00 05-k4: running; avail=46545 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46552 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17594 avail=46536 gpu=27618MiB,100%
+23:04:09 05-k4: running; avail=46545 gpu=27618MiB,100%
+MEM host_used_MiB=17577 avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46552 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17594 avail=46536 gpu=27618MiB,100%
+23:04:18 05-k4: running; avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46552 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17594 avail=46536 gpu=27618MiB,100%
+MEM host_used_MiB=17588 avail=46542 gpu=27618MiB,100%
+23:04:27 05-k4: running; avail=46554 gpu=27618MiB,100%
+MEM host_used_MiB=17578 avail=46552 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17594 avail=46536 gpu=27618MiB,100%
+MEM host_used_MiB=17588 avail=46542 gpu=27618MiB,100%
+23:04:36 05-k4: running; avail=46552 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17594 avail=46536 gpu=27618MiB,100%
+MEM host_used_MiB=17588 avail=46542 gpu=27618MiB,100%
+MEM host_used_MiB=17568 avail=46563 gpu=27618MiB,100%
+23:04:45 05-k4: running; avail=46552 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17594 avail=46536 gpu=27618MiB,100%
+MEM host_used_MiB=17588 avail=46542 gpu=27618MiB,100%
+MEM host_used_MiB=17568 avail=46563 gpu=27618MiB,100%
+23:04:54 05-k4: running; avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17572 avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17594 avail=46536 gpu=27618MiB,100%
+MEM host_used_MiB=17588 avail=46542 gpu=27618MiB,100%
+MEM host_used_MiB=17568 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17585 avail=46546 gpu=27618MiB,100%
+23:05:03 05-k4: running; avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17594 avail=46536 gpu=27618MiB,100%
+MEM host_used_MiB=17588 avail=46542 gpu=27618MiB,100%
+MEM host_used_MiB=17568 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17585 avail=46546 gpu=27618MiB,100%
+MEM host_used_MiB=17672 avail=46458 gpu=27456MiB,100%
+23:05:12 05-k4: running; avail=46559 gpu=27618MiB,100%
+MEM host_used_MiB=17594 avail=46536 gpu=27618MiB,100%
+MEM host_used_MiB=17588 avail=46542 gpu=27618MiB,100%
+MEM host_used_MiB=17568 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17585 avail=46546 gpu=27618MiB,100%
+MEM host_used_MiB=17672 avail=46458 gpu=27456MiB,100%
+23:05:21 05-k4: running; avail=46536 gpu=27618MiB,100%
+MEM host_used_MiB=17588 avail=46542 gpu=27618MiB,100%
+MEM host_used_MiB=17568 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17585 avail=46546 gpu=27618MiB,100%
+MEM host_used_MiB=17672 avail=46458 gpu=27456MiB,100%
+MEM host_used_MiB=13719 avail=50411 gpu=20729MiB,100%
+23:05:30 05-k4: running; avail=46536 gpu=27618MiB,100%
+MEM host_used_MiB=17588 avail=46542 gpu=27618MiB,100%
+MEM host_used_MiB=17568 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17585 avail=46546 gpu=27618MiB,100%
+MEM host_used_MiB=17672 avail=46458 gpu=27456MiB,100%
+MEM host_used_MiB=13719 avail=50411 gpu=20729MiB,100%
+23:05:38 05-k4: running; avail=46542 gpu=27618MiB,100%
+MEM host_used_MiB=17568 avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17585 avail=46546 gpu=27618MiB,100%
+MEM host_used_MiB=17672 avail=46458 gpu=27456MiB,100%
+MEM host_used_MiB=13719 avail=50411 gpu=20729MiB,100%
+MEM host_used_MiB=13718 avail=50416 gpu=20643MiB,100%
+23:05:47 05-k4: running; avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17585 avail=46546 gpu=27618MiB,100%
+MEM host_used_MiB=17672 avail=46458 gpu=27456MiB,100%
+MEM host_used_MiB=13719 avail=50411 gpu=20729MiB,100%
+MEM host_used_MiB=13718 avail=50416 gpu=20643MiB,100%
+MEM host_used_MiB=9771 avail=54360 gpu=13841MiB,100%
+23:05:56 05-k4: running; avail=46563 gpu=27618MiB,100%
+MEM host_used_MiB=17585 avail=46546 gpu=27618MiB,100%
+MEM host_used_MiB=17672 avail=46458 gpu=27456MiB,100%
+MEM host_used_MiB=13719 avail=50411 gpu=20729MiB,100%
+MEM host_used_MiB=13718 avail=50416 gpu=20643MiB,100%
+MEM host_used_MiB=9771 avail=54360 gpu=13841MiB,100%
+23:06:05 05-k4: running; 7585 avail=46546 gpu=27618MiB,100%
+MEM host_used_MiB=17672 avail=46458 gpu=27456MiB,100%
+MEM host_used_MiB=13719 avail=50411 gpu=20729MiB,100%
+MEM host_used_MiB=13718 avail=50416 gpu=20643MiB,100%
+MEM host_used_MiB=9771 avail=54360 gpu=13841MiB,100%
+MEM host_used_MiB=5895 avail=58240 gpu=6868MiB,0%
+23:06:18 05-k4: 0; =27618MiB,100%
+MEM host_used_MiB=17672 avail=46458 gpu=27456MiB,100%
+MEM host_used_MiB=13719 avail=50411 gpu=20729MiB,100%
+MEM host_used_MiB=13718 avail=50416 gpu=20643MiB,100%
+MEM host_used_MiB=9771 avail=54360 gpu=13841MiB,100%
+MEM host_used_MiB=5895 avail=58240 gpu=6868MiB,0%
+END 1790809565 rc=0
+23:06:57 06-k1: running; 
+23:07:06 06-k1: running; START 1790809617
+23:06:57 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+23:07:15 06-k1: running; START 1790809617
+23:06:57 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=5151 avail=58979 gpu=24644MiB,0%
+23:07:24 06-k1: running; START 1790809617
+23:06:57 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=5151 avail=58979 gpu=24644MiB,0%
+23:07:32 06-k1: running; START 1790809617
+23:06:57 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=5151 avail=58979 gpu=24644MiB,0%
+MEM host_used_MiB=6302 avail=57829 gpu=24886MiB,98%
+23:07:41 06-k1: running; START 1790809617
+23:06:57 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=5151 avail=58979 gpu=24644MiB,0%
+MEM host_used_MiB=6302 avail=57829 gpu=24886MiB,98%
+23:07:49 06-k1: running; START 1790809617
+23:06:57 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=5151 avail=58979 gpu=24644MiB,0%
+MEM host_used_MiB=6302 avail=57829 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+23:07:58 06-k1: running; START 1790809617
+23:06:57 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=5151 avail=58979 gpu=24644MiB,0%
+MEM host_used_MiB=6302 avail=57829 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6304 avail=57827 gpu=24886MiB,98%
+23:08:07 06-k1: running; START 1790809617
+23:06:57 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=5151 avail=58979 gpu=24644MiB,0%
+MEM host_used_MiB=6302 avail=57829 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6304 avail=57827 gpu=24886MiB,98%
+23:08:15 06-k1: running; ne_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=5151 avail=58979 gpu=24644MiB,0%
+MEM host_used_MiB=6302 avail=57829 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6304 avail=57827 gpu=24886MiB,98%
+MEM host_used_MiB=6327 avail=57804 gpu=24886MiB,98%
+23:08:24 06-k1: running; ne_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=5151 avail=58979 gpu=24644MiB,0%
+MEM host_used_MiB=6302 avail=57829 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6304 avail=57827 gpu=24886MiB,98%
+MEM host_used_MiB=6327 avail=57804 gpu=24886MiB,98%
+23:08:33 06-k1: running; ed_MiB=5151 avail=58979 gpu=24644MiB,0%
+MEM host_used_MiB=6302 avail=57829 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6304 avail=57827 gpu=24886MiB,98%
+MEM host_used_MiB=6327 avail=57804 gpu=24886MiB,98%
+MEM host_used_MiB=6292 avail=57839 gpu=24886MiB,98%
+23:08:42 06-k1: running; ed_MiB=5151 avail=58979 gpu=24644MiB,0%
+MEM host_used_MiB=6302 avail=57829 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6304 avail=57827 gpu=24886MiB,98%
+MEM host_used_MiB=6327 avail=57804 gpu=24886MiB,98%
+MEM host_used_MiB=6292 avail=57839 gpu=24886MiB,98%
+23:08:51 06-k1: running; d_MiB=6302 avail=57829 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6304 avail=57827 gpu=24886MiB,98%
+MEM host_used_MiB=6327 avail=57804 gpu=24886MiB,98%
+MEM host_used_MiB=6292 avail=57839 gpu=24886MiB,98%
+MEM host_used_MiB=6301 avail=57830 gpu=24886MiB,98%
+23:09:00 06-k1: running; d_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6304 avail=57827 gpu=24886MiB,98%
+MEM host_used_MiB=6327 avail=57804 gpu=24886MiB,98%
+MEM host_used_MiB=6292 avail=57839 gpu=24886MiB,98%
+MEM host_used_MiB=6301 avail=57830 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+23:09:09 06-k1: running; d_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6304 avail=57827 gpu=24886MiB,98%
+MEM host_used_MiB=6327 avail=57804 gpu=24886MiB,98%
+MEM host_used_MiB=6292 avail=57839 gpu=24886MiB,98%
+MEM host_used_MiB=6301 avail=57830 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+23:09:18 06-k1: running; d_MiB=6304 avail=57827 gpu=24886MiB,98%
+MEM host_used_MiB=6327 avail=57804 gpu=24886MiB,98%
+MEM host_used_MiB=6292 avail=57839 gpu=24886MiB,98%
+MEM host_used_MiB=6301 avail=57830 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57810 gpu=24886MiB,98%
+23:09:27 06-k1: running; d_MiB=6304 avail=57827 gpu=24886MiB,98%
+MEM host_used_MiB=6327 avail=57804 gpu=24886MiB,98%
+MEM host_used_MiB=6292 avail=57839 gpu=24886MiB,98%
+MEM host_used_MiB=6301 avail=57830 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57810 gpu=24886MiB,98%
+23:09:36 06-k1: running; d_MiB=6327 avail=57804 gpu=24886MiB,98%
+MEM host_used_MiB=6292 avail=57839 gpu=24886MiB,98%
+MEM host_used_MiB=6301 avail=57830 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57810 gpu=24886MiB,98%
+MEM host_used_MiB=6329 avail=57802 gpu=24886MiB,99%
+23:09:45 06-k1: running; d_MiB=6292 avail=57839 gpu=24886MiB,98%
+MEM host_used_MiB=6301 avail=57830 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57810 gpu=24886MiB,98%
+MEM host_used_MiB=6329 avail=57802 gpu=24886MiB,99%
+MEM host_used_MiB=6316 avail=57815 gpu=24886MiB,99%
+23:09:54 06-k1: running; d_MiB=6292 avail=57839 gpu=24886MiB,98%
+MEM host_used_MiB=6301 avail=57830 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57810 gpu=24886MiB,98%
+MEM host_used_MiB=6329 avail=57802 gpu=24886MiB,99%
+MEM host_used_MiB=6316 avail=57815 gpu=24886MiB,99%
+23:10:03 06-k1: running; d_MiB=6301 avail=57830 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57810 gpu=24886MiB,98%
+MEM host_used_MiB=6329 avail=57802 gpu=24886MiB,99%
+MEM host_used_MiB=6316 avail=57815 gpu=24886MiB,99%
+MEM host_used_MiB=6308 avail=57822 gpu=24886MiB,98%
+23:10:12 06-k1: running; d_MiB=6301 avail=57830 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57810 gpu=24886MiB,98%
+MEM host_used_MiB=6329 avail=57802 gpu=24886MiB,99%
+MEM host_used_MiB=6316 avail=57815 gpu=24886MiB,99%
+MEM host_used_MiB=6308 avail=57822 gpu=24886MiB,98%
+23:10:21 06-k1: running; d_MiB=6320 avail=57811 gpu=24886MiB,98%
+MEM host_used_MiB=6320 avail=57810 gpu=24886MiB,98%
+MEM host_used_MiB=6329 avail=57802 gpu=24886MiB,99%
+MEM host_used_MiB=6316 avail=57815 gpu=24886MiB,99%
+MEM host_used_MiB=6308 avail=57822 gpu=24886MiB,98%
+MEM host_used_MiB=6313 avail=57818 gpu=24886MiB,98%
+23:10:29 06-k1: running; d_MiB=6320 avail=57810 gpu=24886MiB,98%
+MEM host_used_MiB=6329 avail=57802 gpu=24886MiB,99%
+MEM host_used_MiB=6316 avail=57815 gpu=24886MiB,99%
+MEM host_used_MiB=6308 avail=57822 gpu=24886MiB,98%
+MEM host_used_MiB=6313 avail=57818 gpu=24886MiB,98%
+MEM host_used_MiB=6317 avail=57813 gpu=24886MiB,99%
+23:10:38 06-k1: running; d_MiB=6320 avail=57810 gpu=24886MiB,98%
+MEM host_used_MiB=6329 avail=57802 gpu=24886MiB,99%
+MEM host_used_MiB=6316 avail=57815 gpu=24886MiB,99%
+MEM host_used_MiB=6308 avail=57822 gpu=24886MiB,98%
+MEM host_used_MiB=6313 avail=57818 gpu=24886MiB,98%
+MEM host_used_MiB=6317 avail=57813 gpu=24886MiB,99%
+23:10:47 06-k1: running; 16 avail=57815 gpu=24886MiB,99%
+MEM host_used_MiB=6308 avail=57822 gpu=24886MiB,98%
+MEM host_used_MiB=6313 avail=57818 gpu=24886MiB,98%
+MEM host_used_MiB=6317 avail=57813 gpu=24886MiB,99%
+23:10:42 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=2155 avail=61975 gpu=1MiB,0%
+23:10:56 06-k1: running; 16 avail=57815 gpu=24886MiB,99%
+MEM host_used_MiB=6308 avail=57822 gpu=24886MiB,98%
+MEM host_used_MiB=6313 avail=57818 gpu=24886MiB,98%
+MEM host_used_MiB=6317 avail=57813 gpu=24886MiB,99%
+23:10:42 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=2155 avail=61975 gpu=1MiB,0%
+23:11:05 06-k1: running; 308 avail=57822 gpu=24886MiB,98%
+MEM host_used_MiB=6313 avail=57818 gpu=24886MiB,98%
+MEM host_used_MiB=6317 avail=57813 gpu=24886MiB,99%
+23:10:42 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=2155 avail=61975 gpu=1MiB,0%
+MEM host_used_MiB=5494 avail=58636 gpu=24644MiB,0%
+23:11:14 06-k1: running; 313 avail=57818 gpu=24886MiB,98%
+MEM host_used_MiB=6317 avail=57813 gpu=24886MiB,99%
+23:10:42 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=2155 avail=61975 gpu=1MiB,0%
+MEM host_used_MiB=5494 avail=58636 gpu=24644MiB,0%
+MEM host_used_MiB=6645 avail=57486 gpu=24886MiB,98%
+23:11:23 06-k1: running; 313 avail=57818 gpu=24886MiB,98%
+MEM host_used_MiB=6317 avail=57813 gpu=24886MiB,99%
+23:10:42 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=2155 avail=61975 gpu=1MiB,0%
+MEM host_used_MiB=5494 avail=58636 gpu=24644MiB,0%
+MEM host_used_MiB=6645 avail=57486 gpu=24886MiB,98%
+23:11:32 06-k1: running; 317 avail=57813 gpu=24886MiB,99%
+23:10:42 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=2155 avail=61975 gpu=1MiB,0%
+MEM host_used_MiB=5494 avail=58636 gpu=24644MiB,0%
+MEM host_used_MiB=6645 avail=57486 gpu=24886MiB,98%
+MEM host_used_MiB=6621 avail=57509 gpu=24886MiB,96%
+23:11:40 06-k1: running; 317 avail=57813 gpu=24886MiB,99%
+23:10:42 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=2155 avail=61975 gpu=1MiB,0%
+MEM host_used_MiB=5494 avail=58636 gpu=24644MiB,0%
+MEM host_used_MiB=6645 avail=57486 gpu=24886MiB,98%
+MEM host_used_MiB=6621 avail=57509 gpu=24886MiB,96%
+23:11:49 06-k1: running; b_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=2155 avail=61975 gpu=1MiB,0%
+MEM host_used_MiB=5494 avail=58636 gpu=24644MiB,0%
+MEM host_used_MiB=6645 avail=57486 gpu=24886MiB,98%
+MEM host_used_MiB=6621 avail=57509 gpu=24886MiB,96%
+MEM host_used_MiB=6654 avail=57477 gpu=24886MiB,98%
+23:11:58 06-k1: running; st_used_MiB=2155 avail=61975 gpu=1MiB,0%
+MEM host_used_MiB=5494 avail=58636 gpu=24644MiB,0%
+MEM host_used_MiB=6645 avail=57486 gpu=24886MiB,98%
+MEM host_used_MiB=6621 avail=57509 gpu=24886MiB,96%
+MEM host_used_MiB=6654 avail=57477 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57480 gpu=24886MiB,98%
+23:12:07 06-k1: running; st_used_MiB=2155 avail=61975 gpu=1MiB,0%
+MEM host_used_MiB=5494 avail=58636 gpu=24644MiB,0%
+MEM host_used_MiB=6645 avail=57486 gpu=24886MiB,98%
+MEM host_used_MiB=6621 avail=57509 gpu=24886MiB,96%
+MEM host_used_MiB=6654 avail=57477 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57480 gpu=24886MiB,98%
+23:12:16 06-k1: running; ed_MiB=5494 avail=58636 gpu=24644MiB,0%
+MEM host_used_MiB=6645 avail=57486 gpu=24886MiB,98%
+MEM host_used_MiB=6621 avail=57509 gpu=24886MiB,96%
+MEM host_used_MiB=6654 avail=57477 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57480 gpu=24886MiB,98%
+MEM host_used_MiB=6657 avail=57474 gpu=24886MiB,99%
+23:12:25 06-k1: running; ed_MiB=5494 avail=58636 gpu=24644MiB,0%
+MEM host_used_MiB=6645 avail=57486 gpu=24886MiB,98%
+MEM host_used_MiB=6621 avail=57509 gpu=24886MiB,96%
+MEM host_used_MiB=6654 avail=57477 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57480 gpu=24886MiB,98%
+MEM host_used_MiB=6657 avail=57474 gpu=24886MiB,99%
+23:12:34 06-k1: running; d_MiB=6645 avail=57486 gpu=24886MiB,98%
+MEM host_used_MiB=6621 avail=57509 gpu=24886MiB,96%
+MEM host_used_MiB=6654 avail=57477 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57480 gpu=24886MiB,98%
+MEM host_used_MiB=6657 avail=57474 gpu=24886MiB,99%
+MEM host_used_MiB=6618 avail=57512 gpu=24886MiB,98%
+23:12:42 06-k1: running; d_MiB=6645 avail=57486 gpu=24886MiB,98%
+MEM host_used_MiB=6621 avail=57509 gpu=24886MiB,96%
+MEM host_used_MiB=6654 avail=57477 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57480 gpu=24886MiB,98%
+MEM host_used_MiB=6657 avail=57474 gpu=24886MiB,99%
+MEM host_used_MiB=6618 avail=57512 gpu=24886MiB,98%
+23:12:51 06-k1: running; d_MiB=6621 avail=57509 gpu=24886MiB,96%
+MEM host_used_MiB=6654 avail=57477 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57480 gpu=24886MiB,98%
+MEM host_used_MiB=6657 avail=57474 gpu=24886MiB,99%
+MEM host_used_MiB=6618 avail=57512 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,98%
+23:13:00 06-k1: running; d_MiB=6654 avail=57477 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57480 gpu=24886MiB,98%
+MEM host_used_MiB=6657 avail=57474 gpu=24886MiB,99%
+MEM host_used_MiB=6618 avail=57512 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+23:13:10 06-k1: running; d_MiB=6654 avail=57477 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57480 gpu=24886MiB,98%
+MEM host_used_MiB=6657 avail=57474 gpu=24886MiB,99%
+MEM host_used_MiB=6618 avail=57512 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+23:13:19 06-k1: running; d_MiB=6651 avail=57480 gpu=24886MiB,98%
+MEM host_used_MiB=6657 avail=57474 gpu=24886MiB,99%
+MEM host_used_MiB=6618 avail=57512 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6663 avail=57468 gpu=24886MiB,98%
+23:13:28 06-k1: running; d_MiB=6651 avail=57480 gpu=24886MiB,98%
+MEM host_used_MiB=6657 avail=57474 gpu=24886MiB,99%
+MEM host_used_MiB=6618 avail=57512 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6663 avail=57468 gpu=24886MiB,98%
+23:13:36 06-k1: running; d_MiB=6657 avail=57474 gpu=24886MiB,99%
+MEM host_used_MiB=6618 avail=57512 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6663 avail=57468 gpu=24886MiB,98%
+MEM host_used_MiB=6641 avail=57490 gpu=24886MiB,99%
+23:13:45 06-k1: running; d_MiB=6618 avail=57512 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6663 avail=57468 gpu=24886MiB,98%
+MEM host_used_MiB=6641 avail=57490 gpu=24886MiB,99%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+23:13:54 06-k1: running; d_MiB=6618 avail=57512 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6663 avail=57468 gpu=24886MiB,98%
+MEM host_used_MiB=6641 avail=57490 gpu=24886MiB,99%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+23:14:04 06-k1: running; d_MiB=6636 avail=57495 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6663 avail=57468 gpu=24886MiB,98%
+MEM host_used_MiB=6641 avail=57490 gpu=24886MiB,99%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+23:14:13 06-k1: running; d_MiB=6636 avail=57495 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6663 avail=57468 gpu=24886MiB,98%
+MEM host_used_MiB=6641 avail=57490 gpu=24886MiB,99%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+23:14:22 06-k1: running; d_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6663 avail=57468 gpu=24886MiB,98%
+MEM host_used_MiB=6641 avail=57490 gpu=24886MiB,99%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+23:14:31 06-k1: running; vail=57490 gpu=24886MiB,99%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+23:14:25 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=3408 avail=60723 gpu=24630MiB,0%
+23:14:39 06-k1: running; vail=57490 gpu=24886MiB,99%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+23:14:25 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=3408 avail=60723 gpu=24630MiB,0%
+23:14:48 06-k1: running; avail=57482 gpu=24886MiB,98%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+23:14:25 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=3408 avail=60723 gpu=24630MiB,0%
+MEM host_used_MiB=5652 avail=58478 gpu=24648MiB,0%
+23:15:00 06-k1: running; avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6649 avail=57482 gpu=24886MiB,98%
+23:14:25 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=3408 avail=60723 gpu=24630MiB,0%
+MEM host_used_MiB=5652 avail=58478 gpu=24648MiB,0%
+MEM host_used_MiB=6538 avail=57593 gpu=24886MiB,98%
+23:15:17 06-k1: running; avail=57482 gpu=24886MiB,98%
+23:14:25 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=3408 avail=60723 gpu=24630MiB,0%
+MEM host_used_MiB=5652 avail=58478 gpu=24648MiB,0%
+MEM host_used_MiB=6538 avail=57593 gpu=24886MiB,98%
+MEM host_used_MiB=6544 avail=57587 gpu=24886MiB,98%
+23:15:33 06-k1: running; ine_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=3408 avail=60723 gpu=24630MiB,0%
+MEM host_used_MiB=5652 avail=58478 gpu=24648MiB,0%
+MEM host_used_MiB=6538 avail=57593 gpu=24886MiB,98%
+MEM host_used_MiB=6544 avail=57587 gpu=24886MiB,98%
+MEM host_used_MiB=6543 avail=57588 gpu=24886MiB,98%
+23:15:49 06-k1: running; sed_MiB=3408 avail=60723 gpu=24630MiB,0%
+MEM host_used_MiB=5652 avail=58478 gpu=24648MiB,0%
+MEM host_used_MiB=6538 avail=57593 gpu=24886MiB,98%
+MEM host_used_MiB=6544 avail=57587 gpu=24886MiB,98%
+MEM host_used_MiB=6543 avail=57588 gpu=24886MiB,98%
+MEM host_used_MiB=6568 avail=57563 gpu=24886MiB,95%
+23:16:05 06-k1: running; ed_MiB=5652 avail=58478 gpu=24648MiB,0%
+MEM host_used_MiB=6538 avail=57593 gpu=24886MiB,98%
+MEM host_used_MiB=6544 avail=57587 gpu=24886MiB,98%
+MEM host_used_MiB=6543 avail=57588 gpu=24886MiB,98%
+MEM host_used_MiB=6568 avail=57563 gpu=24886MiB,95%
+MEM host_used_MiB=6563 avail=57568 gpu=24886MiB,98%
+23:16:24 06-k1: running; d_MiB=6538 avail=57593 gpu=24886MiB,98%
+MEM host_used_MiB=6544 avail=57587 gpu=24886MiB,98%
+MEM host_used_MiB=6543 avail=57588 gpu=24886MiB,98%
+MEM host_used_MiB=6568 avail=57563 gpu=24886MiB,95%
+MEM host_used_MiB=6563 avail=57568 gpu=24886MiB,98%
+MEM host_used_MiB=6579 avail=57552 gpu=24886MiB,98%
+23:16:40 06-k1: running; d_MiB=6544 avail=57587 gpu=24886MiB,98%
+MEM host_used_MiB=6543 avail=57588 gpu=24886MiB,98%
+MEM host_used_MiB=6568 avail=57563 gpu=24886MiB,95%
+MEM host_used_MiB=6563 avail=57568 gpu=24886MiB,98%
+MEM host_used_MiB=6579 avail=57552 gpu=24886MiB,98%
+MEM host_used_MiB=6565 avail=57566 gpu=24886MiB,98%
+23:16:58 06-k1: running; d_MiB=6543 avail=57588 gpu=24886MiB,98%
+MEM host_used_MiB=6568 avail=57563 gpu=24886MiB,95%
+MEM host_used_MiB=6563 avail=57568 gpu=24886MiB,98%
+MEM host_used_MiB=6579 avail=57552 gpu=24886MiB,98%
+MEM host_used_MiB=6565 avail=57566 gpu=24886MiB,98%
+MEM host_used_MiB=6556 avail=57575 gpu=24886MiB,98%
+23:17:12 06-k1: running; d_MiB=6568 avail=57563 gpu=24886MiB,95%
+MEM host_used_MiB=6563 avail=57568 gpu=24886MiB,98%
+MEM host_used_MiB=6579 avail=57552 gpu=24886MiB,98%
+MEM host_used_MiB=6565 avail=57566 gpu=24886MiB,98%
+MEM host_used_MiB=6556 avail=57575 gpu=24886MiB,98%
+MEM host_used_MiB=6559 avail=57572 gpu=24886MiB,98%
+23:17:29 06-k1: running; ail=57552 gpu=24886MiB,98%
+MEM host_used_MiB=6565 avail=57566 gpu=24886MiB,98%
+MEM host_used_MiB=6556 avail=57575 gpu=24886MiB,98%
+MEM host_used_MiB=6559 avail=57572 gpu=24886MiB,98%
+MEM host_used_MiB=6562 avail=57568 gpu=24886MiB,98%
+23:17:24 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+23:17:43 06-k1: running; vail=57566 gpu=24886MiB,98%
+MEM host_used_MiB=6556 avail=57575 gpu=24886MiB,98%
+MEM host_used_MiB=6559 avail=57572 gpu=24886MiB,98%
+MEM host_used_MiB=6562 avail=57568 gpu=24886MiB,98%
+23:17:24 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=3450 avail=60681 gpu=24630MiB,0%
+23:17:55 06-k1: running; avail=57575 gpu=24886MiB,98%
+MEM host_used_MiB=6559 avail=57572 gpu=24886MiB,98%
+MEM host_used_MiB=6562 avail=57568 gpu=24886MiB,98%
+23:17:24 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=3450 avail=60681 gpu=24630MiB,0%
+MEM host_used_MiB=5735 avail=58395 gpu=24648MiB,0%
+23:18:03 06-k1: running; avail=57572 gpu=24886MiB,98%
+MEM host_used_MiB=6562 avail=57568 gpu=24886MiB,98%
+23:17:24 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=3450 avail=60681 gpu=24630MiB,0%
+MEM host_used_MiB=5735 avail=58395 gpu=24648MiB,0%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+23:18:12 06-k1: running; avail=57572 gpu=24886MiB,98%
+MEM host_used_MiB=6562 avail=57568 gpu=24886MiB,98%
+23:17:24 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=3450 avail=60681 gpu=24630MiB,0%
+MEM host_used_MiB=5735 avail=58395 gpu=24648MiB,0%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+23:18:20 06-k1: running; avail=57568 gpu=24886MiB,98%
+23:17:24 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=3450 avail=60681 gpu=24630MiB,0%
+MEM host_used_MiB=5735 avail=58395 gpu=24648MiB,0%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6668 avail=57463 gpu=24886MiB,99%
+23:18:29 06-k1: running; ine_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=3450 avail=60681 gpu=24630MiB,0%
+MEM host_used_MiB=5735 avail=58395 gpu=24648MiB,0%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6668 avail=57463 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57466 gpu=24886MiB,98%
+23:18:38 06-k1: running; ine_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=3450 avail=60681 gpu=24630MiB,0%
+MEM host_used_MiB=5735 avail=58395 gpu=24648MiB,0%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6668 avail=57463 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57466 gpu=24886MiB,98%
+23:18:46 06-k1: running; sed_MiB=3450 avail=60681 gpu=24630MiB,0%
+MEM host_used_MiB=5735 avail=58395 gpu=24648MiB,0%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6668 avail=57463 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57466 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57478 gpu=24886MiB,99%
+23:18:55 06-k1: running; sed_MiB=3450 avail=60681 gpu=24630MiB,0%
+MEM host_used_MiB=5735 avail=58395 gpu=24648MiB,0%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6668 avail=57463 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57466 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57478 gpu=24886MiB,99%
+23:19:04 06-k1: running; ed_MiB=5735 avail=58395 gpu=24648MiB,0%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6668 avail=57463 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57466 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57478 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57467 gpu=24886MiB,98%
+23:19:13 06-k1: running; ed_MiB=5735 avail=58395 gpu=24648MiB,0%
+MEM host_used_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6668 avail=57463 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57466 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57478 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57467 gpu=24886MiB,98%
+23:19:22 06-k1: running; d_MiB=6639 avail=57492 gpu=24886MiB,98%
+MEM host_used_MiB=6668 avail=57463 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57466 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57478 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57467 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,96%
+23:19:30 06-k1: running; d_MiB=6668 avail=57463 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57466 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57478 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57467 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,96%
+MEM host_used_MiB=6638 avail=57493 gpu=24886MiB,98%
+23:19:39 06-k1: running; d_MiB=6668 avail=57463 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57466 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57478 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57467 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,96%
+MEM host_used_MiB=6638 avail=57493 gpu=24886MiB,98%
+23:19:48 06-k1: running; d_MiB=6664 avail=57466 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57478 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57467 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,96%
+MEM host_used_MiB=6638 avail=57493 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,98%
+23:19:57 06-k1: running; d_MiB=6664 avail=57466 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57478 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57467 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,96%
+MEM host_used_MiB=6638 avail=57493 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,98%
+23:20:06 06-k1: running; d_MiB=6652 avail=57478 gpu=24886MiB,99%
+MEM host_used_MiB=6664 avail=57467 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,96%
+MEM host_used_MiB=6638 avail=57493 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57479 gpu=24886MiB,98%
+23:20:14 06-k1: running; d_MiB=6664 avail=57467 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,96%
+MEM host_used_MiB=6638 avail=57493 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,99%
+23:20:23 06-k1: running; d_MiB=6664 avail=57467 gpu=24886MiB,98%
+MEM host_used_MiB=6636 avail=57495 gpu=24886MiB,96%
+MEM host_used_MiB=6638 avail=57493 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,99%
+23:20:32 06-k1: running; d_MiB=6636 avail=57495 gpu=24886MiB,96%
+MEM host_used_MiB=6638 avail=57493 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,99%
+MEM host_used_MiB=6659 avail=57472 gpu=24886MiB,96%
+23:20:41 06-k1: running; d_MiB=6636 avail=57495 gpu=24886MiB,96%
+MEM host_used_MiB=6638 avail=57493 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,99%
+MEM host_used_MiB=6659 avail=57472 gpu=24886MiB,96%
+23:20:50 06-k1: running; d_MiB=6638 avail=57493 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,99%
+MEM host_used_MiB=6659 avail=57472 gpu=24886MiB,96%
+MEM host_used_MiB=6648 avail=57482 gpu=24886MiB,98%
+23:20:59 06-k1: 0; 93 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6651 avail=57479 gpu=24886MiB,98%
+MEM host_used_MiB=6652 avail=57479 gpu=24886MiB,99%
+MEM host_used_MiB=6659 avail=57472 gpu=24886MiB,96%
+MEM host_used_MiB=6648 avail=57482 gpu=24886MiB,98%
+END 1790810456 rc=0
+23:21:36 07-k2: running; 
+23:21:45 07-k2: running; START 1790810495
+23:21:35 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+23:21:35 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+23:21:53 07-k2: running; START 1790810495
+23:21:35 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+23:21:35 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=7722 avail=56409 gpu=25558MiB,0%
+23:22:02 07-k2: running; START 1790810495
+23:21:35 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+23:21:35 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=7722 avail=56409 gpu=25558MiB,0%
+23:22:11 07-k2: running; START 1790810495
+23:21:35 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+23:21:35 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=7722 avail=56409 gpu=25558MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+23:22:20 07-k2: running; START 1790810495
+23:21:35 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+23:21:35 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=7722 avail=56409 gpu=25558MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+23:22:29 07-k2: running; 1790810495
+23:21:35 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+23:21:35 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=7722 avail=56409 gpu=25558MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10132 avail=53999 gpu=26042MiB,100%
+23:22:38 07-k2: running; 210210, seed 20260927
+23:21:35 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=7722 avail=56409 gpu=25558MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10132 avail=53999 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+23:22:47 07-k2: running; 210210, seed 20260927
+23:21:35 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=7722 avail=56409 gpu=25558MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10132 avail=53999 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+23:22:55 07-k2: running; he_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=7722 avail=56409 gpu=25558MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10132 avail=53999 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10125 avail=54006 gpu=26042MiB,100%
+23:23:04 07-k2: running; he_zevo/M14_27068, seed 20260927
+MEM host_used_MiB=7722 avail=56409 gpu=25558MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10132 avail=53999 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10125 avail=54006 gpu=26042MiB,100%
+23:23:13 07-k2: running; 2 avail=56409 gpu=25558MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10132 avail=53999 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10125 avail=54006 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+23:23:22 07-k2: running; avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10132 avail=53999 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10125 avail=54006 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+23:23:31 07-k2: running; avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10132 avail=53999 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10125 avail=54006 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+23:23:40 07-k2: running; avail=53999 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10125 avail=54006 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10137 avail=53994 gpu=26042MiB,100%
+23:23:49 07-k2: running; avail=53999 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10125 avail=54006 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10137 avail=53994 gpu=26042MiB,100%
+23:23:58 07-k2: running; avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10125 avail=54006 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10137 avail=53994 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+23:24:07 07-k2: running; avail=54006 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10137 avail=53994 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+23:24:15 07-k2: running; avail=54006 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10137 avail=53994 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+23:24:24 07-k2: running; avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10137 avail=53994 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10168 avail=53963 gpu=26042MiB,100%
+23:24:33 07-k2: running; avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10137 avail=53994 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10168 avail=53963 gpu=26042MiB,100%
+23:24:42 07-k2: running; avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10137 avail=53994 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10168 avail=53963 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+23:24:50 07-k2: running; avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10137 avail=53994 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10168 avail=53963 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+23:24:59 07-k2: running; avail=53994 gpu=26042MiB,100%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10168 avail=53963 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+23:25:08 07-k2: running; avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10168 avail=53963 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10134 avail=53997 gpu=26042MiB,100%
+23:25:17 07-k2: running; avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10168 avail=53963 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10134 avail=53997 gpu=26042MiB,100%
+23:25:26 07-k2: running; avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10168 avail=53963 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10134 avail=53997 gpu=26042MiB,100%
+MEM host_used_MiB=10126 avail=54004 gpu=26042MiB,100%
+23:25:35 07-k2: running; avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10168 avail=53963 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10134 avail=53997 gpu=26042MiB,100%
+MEM host_used_MiB=10126 avail=54004 gpu=26042MiB,100%
+23:25:43 07-k2: running; avail=53963 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10134 avail=53997 gpu=26042MiB,100%
+MEM host_used_MiB=10126 avail=54004 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+23:25:52 07-k2: running; avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10134 avail=53997 gpu=26042MiB,100%
+MEM host_used_MiB=10126 avail=54004 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+23:26:01 07-k2: running; avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10134 avail=53997 gpu=26042MiB,100%
+MEM host_used_MiB=10126 avail=54004 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+23:26:10 07-k2: running; avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10134 avail=53997 gpu=26042MiB,100%
+MEM host_used_MiB=10126 avail=54004 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=10124 avail=54007 gpu=26042MiB,100%
+23:26:19 07-k2: running; avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10134 avail=53997 gpu=26042MiB,100%
+MEM host_used_MiB=10126 avail=54004 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=10124 avail=54007 gpu=26042MiB,100%
+23:26:28 07-k2: running; avail=53997 gpu=26042MiB,100%
+MEM host_used_MiB=10126 avail=54004 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=10124 avail=54007 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+23:26:36 07-k2: running; avail=54004 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=10124 avail=54007 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10138 avail=53992 gpu=26042MiB,100%
+23:26:45 07-k2: running; avail=54004 gpu=26042MiB,100%
+MEM host_used_MiB=10147 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=10124 avail=54007 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10138 avail=53992 gpu=26042MiB,100%
+23:26:54 07-k2: running; avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=10124 avail=54007 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10138 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53989 gpu=26042MiB,100%
+23:27:03 07-k2: running; avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=10124 avail=54007 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10138 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53989 gpu=26042MiB,100%
+23:27:11 07-k2: running; 7 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10138 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53989 gpu=26042MiB,100%
+MEM host_used_MiB=10203 avail=53928 gpu=25962MiB,98%
+23:27:11 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+23:27:20 07-k2: running; 7 gpu=26042MiB,100%
+MEM host_used_MiB=10127 avail=54003 gpu=26042MiB,100%
+MEM host_used_MiB=10138 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53989 gpu=26042MiB,100%
+MEM host_used_MiB=10203 avail=53928 gpu=25962MiB,98%
+23:27:11 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+23:27:29 07-k2: running; 042MiB,100%
+MEM host_used_MiB=10142 avail=53989 gpu=26042MiB,100%
+MEM host_used_MiB=10203 avail=53928 gpu=25962MiB,98%
+23:27:11 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=4213 avail=59918 gpu=12800MiB,0%
+23:27:21 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+23:27:37 07-k2: running; =26042MiB,100%
+MEM host_used_MiB=10203 avail=53928 gpu=25962MiB,98%
+23:27:11 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=4213 avail=59918 gpu=12800MiB,0%
+23:27:21 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=9055 avail=55074 gpu=25714MiB,0%
+23:27:46 07-k2: running; =26042MiB,100%
+MEM host_used_MiB=10203 avail=53928 gpu=25962MiB,98%
+23:27:11 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=4213 avail=59918 gpu=12800MiB,0%
+23:27:21 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=9055 avail=55074 gpu=25714MiB,0%
+23:27:55 07-k2: running; =25962MiB,98%
+23:27:11 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=4213 avail=59918 gpu=12800MiB,0%
+23:27:21 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=9055 avail=55074 gpu=25714MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+23:28:03 07-k2: running; =25962MiB,98%
+23:27:11 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+MEM host_used_MiB=4213 avail=59918 gpu=12800MiB,0%
+23:27:21 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=9055 avail=55074 gpu=25714MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+23:28:12 07-k2: running; M14_31835, seed 20260927
+MEM host_used_MiB=4213 avail=59918 gpu=12800MiB,0%
+23:27:21 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=9055 avail=55074 gpu=25714MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+23:28:21 07-k2: running; M14_31835, seed 20260927
+MEM host_used_MiB=4213 avail=59918 gpu=12800MiB,0%
+23:27:21 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=9055 avail=55074 gpu=25714MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+23:28:30 07-k2: running; 59918 gpu=12800MiB,0%
+23:27:21 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=9055 avail=55074 gpu=25714MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10163 avail=53968 gpu=26042MiB,100%
+23:28:38 07-k2: running; he_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=9055 avail=55074 gpu=25714MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10163 avail=53968 gpu=26042MiB,100%
+MEM host_used_MiB=10148 avail=53983 gpu=26042MiB,100%
+23:28:47 07-k2: running; he_zevo/M14_37023, seed 20260927
+MEM host_used_MiB=9055 avail=55074 gpu=25714MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10163 avail=53968 gpu=26042MiB,100%
+MEM host_used_MiB=10148 avail=53983 gpu=26042MiB,100%
+23:28:56 07-k2: running; 5 avail=55074 gpu=25714MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10163 avail=53968 gpu=26042MiB,100%
+MEM host_used_MiB=10148 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10130 avail=54001 gpu=26042MiB,100%
+23:29:05 07-k2: running; 5 avail=55074 gpu=25714MiB,0%
+MEM host_used_MiB=10139 avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10163 avail=53968 gpu=26042MiB,100%
+MEM host_used_MiB=10148 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10130 avail=54001 gpu=26042MiB,100%
+23:29:13 07-k2: running; avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10163 avail=53968 gpu=26042MiB,100%
+MEM host_used_MiB=10148 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10130 avail=54001 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+23:29:22 07-k2: running; avail=53992 gpu=26042MiB,100%
+MEM host_used_MiB=10142 avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10163 avail=53968 gpu=26042MiB,100%
+MEM host_used_MiB=10148 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10130 avail=54001 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+23:29:30 07-k2: running; avail=53988 gpu=26042MiB,100%
+MEM host_used_MiB=10163 avail=53968 gpu=26042MiB,100%
+MEM host_used_MiB=10148 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10130 avail=54001 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10143 avail=53987 gpu=26042MiB,100%
+23:29:39 07-k2: running; avail=53968 gpu=26042MiB,100%
+MEM host_used_MiB=10148 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10130 avail=54001 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10143 avail=53987 gpu=26042MiB,100%
+MEM host_used_MiB=10141 avail=53990 gpu=26042MiB,100%
+23:29:48 07-k2: running; avail=53968 gpu=26042MiB,100%
+MEM host_used_MiB=10148 avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10130 avail=54001 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10143 avail=53987 gpu=26042MiB,100%
+MEM host_used_MiB=10141 avail=53990 gpu=26042MiB,100%
+23:29:57 07-k2: running; avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10130 avail=54001 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10143 avail=53987 gpu=26042MiB,100%
+MEM host_used_MiB=10141 avail=53990 gpu=26042MiB,100%
+MEM host_used_MiB=10160 avail=53970 gpu=26042MiB,100%
+23:30:05 07-k2: running; avail=53983 gpu=26042MiB,100%
+MEM host_used_MiB=10130 avail=54001 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10143 avail=53987 gpu=26042MiB,100%
+MEM host_used_MiB=10141 avail=53990 gpu=26042MiB,100%
+MEM host_used_MiB=10160 avail=53970 gpu=26042MiB,100%
+23:30:14 07-k2: running; avail=54001 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10143 avail=53987 gpu=26042MiB,100%
+MEM host_used_MiB=10141 avail=53990 gpu=26042MiB,100%
+MEM host_used_MiB=10160 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10164 avail=53967 gpu=26042MiB,100%
+23:30:23 07-k2: running; avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10143 avail=53987 gpu=26042MiB,100%
+MEM host_used_MiB=10141 avail=53990 gpu=26042MiB,100%
+MEM host_used_MiB=10160 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10164 avail=53967 gpu=26042MiB,100%
+MEM host_used_MiB=10165 avail=53966 gpu=26042MiB,100%
+23:30:31 07-k2: running; avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10143 avail=53987 gpu=26042MiB,100%
+MEM host_used_MiB=10141 avail=53990 gpu=26042MiB,100%
+MEM host_used_MiB=10160 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10164 avail=53967 gpu=26042MiB,100%
+MEM host_used_MiB=10165 avail=53966 gpu=26042MiB,100%
+23:30:40 07-k2: running; avail=53987 gpu=26042MiB,100%
+MEM host_used_MiB=10141 avail=53990 gpu=26042MiB,100%
+MEM host_used_MiB=10160 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10164 avail=53967 gpu=26042MiB,100%
+MEM host_used_MiB=10165 avail=53966 gpu=26042MiB,100%
+MEM host_used_MiB=10149 avail=53982 gpu=26042MiB,100%
+23:30:49 07-k2: running; avail=53987 gpu=26042MiB,100%
+MEM host_used_MiB=10141 avail=53990 gpu=26042MiB,100%
+MEM host_used_MiB=10160 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10164 avail=53967 gpu=26042MiB,100%
+MEM host_used_MiB=10165 avail=53966 gpu=26042MiB,100%
+MEM host_used_MiB=10149 avail=53982 gpu=26042MiB,100%
+23:30:58 07-k2: running; avail=53990 gpu=26042MiB,100%
+MEM host_used_MiB=10160 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10164 avail=53967 gpu=26042MiB,100%
+MEM host_used_MiB=10165 avail=53966 gpu=26042MiB,100%
+MEM host_used_MiB=10149 avail=53982 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+23:31:06 07-k2: running; avail=53990 gpu=26042MiB,100%
+MEM host_used_MiB=10160 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10164 avail=53967 gpu=26042MiB,100%
+MEM host_used_MiB=10165 avail=53966 gpu=26042MiB,100%
+MEM host_used_MiB=10149 avail=53982 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+23:31:15 07-k2: running; avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10164 avail=53967 gpu=26042MiB,100%
+MEM host_used_MiB=10165 avail=53966 gpu=26042MiB,100%
+MEM host_used_MiB=10149 avail=53982 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10172 avail=53959 gpu=26042MiB,100%
+23:31:24 07-k2: running; avail=53967 gpu=26042MiB,100%
+MEM host_used_MiB=10165 avail=53966 gpu=26042MiB,100%
+MEM host_used_MiB=10149 avail=53982 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10172 avail=53959 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+23:31:33 07-k2: running; avail=53967 gpu=26042MiB,100%
+MEM host_used_MiB=10165 avail=53966 gpu=26042MiB,100%
+MEM host_used_MiB=10149 avail=53982 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10172 avail=53959 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+23:31:42 07-k2: running; avail=53966 gpu=26042MiB,100%
+MEM host_used_MiB=10149 avail=53982 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10172 avail=53959 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+23:31:50 07-k2: running; avail=53966 gpu=26042MiB,100%
+MEM host_used_MiB=10149 avail=53982 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10172 avail=53959 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+23:31:59 07-k2: running; 9 avail=53982 gpu=26042MiB,100%
+MEM host_used_MiB=10161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10172 avail=53959 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=6092 avail=58039 gpu=13052MiB,98%
+23:32:08 07-k2: running; 0161 avail=53970 gpu=26042MiB,100%
+MEM host_used_MiB=10172 avail=53959 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=6092 avail=58039 gpu=13052MiB,98%
+MEM host_used_MiB=6130 avail=58000 gpu=12888MiB,0%
+23:32:17 07-k2: 0; =26042MiB,100%
+MEM host_used_MiB=10172 avail=53959 gpu=26042MiB,100%
+MEM host_used_MiB=10153 avail=53978 gpu=26042MiB,100%
+MEM host_used_MiB=10154 avail=53977 gpu=26042MiB,100%
+MEM host_used_MiB=6092 avail=58039 gpu=13052MiB,98%
+MEM host_used_MiB=6130 avail=58000 gpu=12888MiB,0%
+END 1790811136 rc=0
+23:32:53 destroyed instance 53599662
