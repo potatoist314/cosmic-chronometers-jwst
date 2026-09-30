@@ -235,7 +235,28 @@ The unconstrained transformation prevents hard uniform boundaries from becoming 
 
 The defaults use 500 live points and five inner steps for each dimension. Each iteration deletes one-fifth of the live points. The default `logZ_tol` is `-5` (`sampler/nested.py:144-172` and `350-359`).
 
-`ceridwen/ceridwen/sampler/nested.py:435-445 · _logical_likelihood_calls`
+`BlackJAXNestedSamplerAdapter` defaults to `slice_kernel='carry'`. It builds the BlackJAX NSS kernel with `stepping_out_carry` replacing `blackjax.mcmc.slice.stepping_out`. Each new edge is tested once inside the loop body, which carries the boolean result. This avoids duplicate batched likelihood evaluations under `vmap`. Samples, evidence and logical call counts remain bitwise equal. `'stock'` selects unchanged `blackjax.nss`.
+
+`ceridwen/ceridwen/sampler/nested.py:107-120 · stepping_out_carry`
+
+```python
+    def cond(carry):
+        _, n, inside = carry
+        return inside & (n > 0)
+
+    def step(sign):
+        def body(carry):
+            edge, n, _ = carry
+            edge = edge + sign * width
+            return edge, n - 1, in_slice(edge)
+        return body
+
+    left, jl, _ = jax.lax.while_loop(cond, step(-1), (left, j, in_slice(left)))
+    right, kr, _ = jax.lax.while_loop(cond, step(+1), (right, k, in_slice(right)))
+    return left, right, (j - jl) + (k - kr), lambda t: jnp.asarray(True)
+```
+
+`ceridwen/ceridwen/sampler/nested.py:514-524 · _logical_likelihood_calls`
 
 ```python
     @staticmethod
@@ -266,7 +287,7 @@ The defaults use 500 live points and five inner steps for each dimension. Each i
 <details>
 <summary>Details</summary>
 
-`ceridwen/ceridwen/sampler/nested.py:369-382 · BlackJAXNestedSamplerAdapter.run`
+`ceridwen/ceridwen/sampler/nested.py:577-587 · BlackJAXNestedSamplerAdapter.run`
 
 </details>
 
@@ -277,14 +298,10 @@ particles = self._sample_prior(theta_init, prior_key)
 # ── Build NSS kernel ──────────────────────────────────────────────
 # loglike_fn / logprior_fn operate on a SINGLE particle (un-batched).
 # The NSS step_fn vmaps internally over the live-point ensemble.
-nested_sampler = blackjax.nss(
-    logprior_fn      = logprior_fn,
-    loglikelihood_fn = loglike_fn,
-    num_delete       = num_delete,
-    num_inner_steps  = num_inner_steps,
-)
+nested_sampler = self._build_nested_sampler(
+    loglike_fn, logprior_fn, num_inner_steps, num_delete)
 init_fn = jax.jit(nested_sampler.init)
-step_fn = jax.jit(nested_sampler.step)`
+step_fn = jax.jit(nested_sampler.step)
 ```
 
 <details>

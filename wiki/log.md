@@ -1370,3 +1370,7 @@
 - `source_notes` and `result_groups` link six earlier analyses to their records; the COSMOS photometry comparison figure is under Comparison in `e-cosmos-photometry-refit`.
 - `notes/m1-210210-kcbump.md` and `e-dust-bump` add the `wide` fit, \(\delta_{\mathrm{dust}}\sim\mathrm{Uniform}(-3,0.4)\) and \(E_{\mathrm{bump}}\sim\mathrm{Uniform}(0,12)\), with its figures and three-arm SFH and corner overlays; `results/m1-210210-kcbump-wide-2026-09-29/`.
 - `notes/m1-210210-kcbump.md` and `e-dust-bump` add the `zevo` fit, `wide` with `metallicity_evolution` on, with its figures and wide/zevo SFH and corner overlays; `results/m1-210210-kcbump-wide-zevo-2026-09-29/`.
+
+### 2026-09-30 — Carry-flag slice kernel
+
+- Ceridwen `f973c10` adds the default carry kernel. RTX 5090 timings for M1_210210 run3 are 0.90–0.99 s per NSS step versus 1.12–1.17 s for stock. `ceridwen/tests/test_nss_diagnostics.py` verifies bitwise equality of samples, evidence and logical call counts.
