@@ -71,9 +71,15 @@ Reuse `--output <saved-directory>` to resume the saved experiment without repeat
 
 Downloads are attempted up to three times within the remaining budget. Local HDF5 and notebook validation must pass before completion. Persistent retrieval failures stop automatic refits.
 
-Experiments upload selected spectra, cutouts and required catalogue tables. The runner verifies the uploaded grid’s checksum and reuses the grid during bootstrap.
+Experiments upload selected spectra, cutouts and required catalogue tables; source archives omit tests and dist (`UNUSED_SOURCE`, `scripts/benchmark.py`). The grid travels zlib-packed beside the source in `GRID_STREAMS=4` parallel rsync parts; the instance joins them, checks SHA-256 and creates `grid/.checked`.
 
-New experiments use a digest-pinned dependency image from `ghcr.io/potatoist314/ceridwen-gpu`. `--image` overrides it; the run manifest records the selection. The dependency image installs pinned Ceridwen and sedpy source at runtime without resolving dependencies again. Its build includes no private model code or research data.
+The runner starts `scripts/bootstrap_vast_ai.sh` once source and inputs arrive; with `CERIDWEN_GRID_READY` set, bootstrap waits for `grid/.checked` before its grid step and reuses the uploaded grid.
+
+Fits use `--xla_gpu_autotune_level=0` in `XLA_FLAGS` (`scripts/experiment.py`). An unavailable-offer refusal advances to the next offer without consuming an attempt, up to `MAX_REFUSALS=20`. Instances stopped by Vast (outbid) or no longer existing are replaced.
+
+New experiments use the digest-pinned dependency image from `ghcr.io/potatoist314/ceridwen-gpu`, set by `DEFAULT_IMAGE` in `scripts/vast.py`. `.github/workflows/ceridwen-image.yml` builds it: the 3.5 GB venv layer splits into 11 layers for parallel host downloads, preserving the same files (`scripts/containers/split_image_layer.py`); one additional layer contains packages installed by Vast’s `--ssh` launch (`scripts/containers/vast-ssh.Dockerfile`).
+
+`--image` overrides the default; the run manifest records the selection. The dependency image installs pinned Ceridwen and sedpy source at runtime without resolving dependencies again. Its build includes no private model code or research data.
 
 Source: `scripts/experiment.py` — `configuration`, `preflight`, `Run`, `remote`.
 

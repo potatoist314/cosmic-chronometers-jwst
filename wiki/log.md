@@ -1432,3 +1432,10 @@
 - Ceridwen `8161d3d` merges `lane-kernel` (`16c7a90`); `BlackJAXNestedSamplerAdapter` defaults to `slice_kernel='lanes'`. `'carry'` and `'stock'` remain options. Liu Hao, 30 Sep 2026: “okay yeah turn this on as default.”
 - Evidence: `results/speedup-lane-cause-2026-09-30` traces GPU differences to float32 rounding in `ceridwen/observation/photometry.py:277`; `results/speedup-free-2026-09-30` records RTX 5090, M1_210210 sampling: 253.2 s carry, 108.7 s lanes.
 - Files: `ceridwen` (submodule pin), `wiki/notes/ceridwen-likelihood-sampling.md`.
+
+### 2026-09-30 — Free speedups on branch `speedups`
+
+- `speedups` in this repo and `potatoist314/ceridwen`, pin `a60f1f8`; not merged into `absorption-mask`. Free: bitwise on CPU; GPU within rounding seen between rentals. Liu Hao, 30 Sep 2026: “schedule a really intensive research into free speedups of every kind overnight”.
+- Ceridwen: \(40\sigma\) emission-line windows; tied-doublet column gather; one-select window placement; step kernel compiled at sampler init; sparse filter-grid interpolation in `Photometry.setup_for_model`.
+- Runner/fits: XLA autotune level 0; COSMOS catalogues read once/process; one KL-quantile sort; next offer after Vast refusal; outbid instances replaced; four-part parallel grid upload with overlapping bootstrap; venv image layer split into 11, plus Vast SSH packages.
+- Evidence: `results/speedups-overnight-2026-09-30/REPORT.md` — gains, exactness, commits, before/after fit time and cost. Files: `ceridwen`, `scripts/`, `.github/workflows/ceridwen-image*.yml`, `wiki/notes/vast-ai-gpu-workflow.md`.
