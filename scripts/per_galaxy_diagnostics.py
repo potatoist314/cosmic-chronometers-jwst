@@ -511,13 +511,17 @@ def posterior_weights(galaxy: GalaxyResult) -> np.ndarray:
 
 
 def weighted_quantile(values, weights, q):
-    """Quantile of a weighted sample (linear interpolation on the weighted CDF)."""
+    """Quantile of a weighted sample (linear interpolation on the weighted CDF).
+
+    A sequence ``q`` gives an array, from one sort of ``values``.
+    """
     values = np.asarray(values, dtype=float)
     weights = np.asarray(weights, dtype=float)
     order = np.argsort(values)
     cdf = np.cumsum(weights[order])
     cdf = cdf / cdf[-1]
-    return float(np.interp(q, cdf, values[order]))
+    quantile = np.interp(q, cdf, values[order])
+    return float(quantile) if np.ndim(q) == 0 else quantile
 
 
 def prior_unit_values(values, prior) -> np.ndarray:
@@ -535,7 +539,7 @@ def marginal_kl_bits(unit_values, weights, bins=40) -> float:
     """
     u = np.asarray(unit_values, dtype=float)
     w = np.asarray(weights, dtype=float)
-    lo, hi = (weighted_quantile(u, w, q) for q in (0.0005, 0.9995))
+    lo, hi = weighted_quantile(u, w, (0.0005, 0.9995))
     edges = np.unique(np.concatenate([[0.0], np.linspace(lo, hi, bins + 1), [1.0]]))
     mass, _ = np.histogram(u, bins=edges, weights=w)
     mass = mass / mass.sum()

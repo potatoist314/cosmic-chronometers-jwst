@@ -186,6 +186,14 @@ class MarginalKL(unittest.TestCase):
         expected = np.log2(10.0) - 0.5 * np.log2(2 * np.pi * np.e * 0.2**2)
         self.assertAlmostEqual(pgd.marginal_kl_bits(pgd.prior_unit_values(draws, prior), weights), expected, delta=0.03)
 
+    def test_quantile_sequence_equals_scalar_quantiles(self):
+        # marginal_kl_bits takes both range quantiles from one sort; each equals its own scalar call.
+        rng = np.random.default_rng(6)
+        values, weights = rng.normal(size=20000), rng.uniform(size=20000)
+        q = (0.0005, 0.5, 0.9995)
+        np.testing.assert_array_equal(pgd.weighted_quantile(values, weights, q),
+                                      [pgd.weighted_quantile(values, weights, p) for p in q])
+
 
 def synthetic_galaxy(z=0.7, n=400):
     """The fields the spectrum figures read, with 40 unusable and 60 masked pixels."""
