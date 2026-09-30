@@ -1374,3 +1374,7 @@
 ### 2026-09-30 — Carry-flag slice kernel
 
 - Ceridwen `f973c10` adds the default carry kernel. RTX 5090 timings for M1_210210 run3 are 0.90–0.99 s per NSS step versus 1.12–1.17 s for stock. `ceridwen/tests/test_nss_diagnostics.py` verifies bitwise equality of samples, evidence and logical call counts.
+
+### 2026-09-30 — Short LOSVD FFT pad
+
+- Ceridwen `0a3bd51` reduces M1_210210's FFT length from 8192 to 4608. RTX 5090 sampling time: 253.2 → 240.4 s; same 27000 dead points, positions agree within 2.7e-11, relative ln L within 1.8e-11, ln Z difference 6.7e-10. Record: `results/speedup-free-2026-09-30/`.
