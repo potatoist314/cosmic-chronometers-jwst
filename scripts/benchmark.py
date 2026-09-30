@@ -34,7 +34,9 @@ SUBMODULES = ('ceridwen', 'external/sedpy_jax')
 INPUT_DIRS = ('legac_dr2', 'cosmos2015', 'cosmos2020', 'cosmos2025', 'hst_f814w')
 INPUT_FILES = ('external/fsps/data/emlines_info.dat',)
 REMOTE = vast.REMOTE_ROOT
-POLL_SECONDS = 15
+# Stage-end detection lags by up to one interval on a billing instance, so poll
+# briskly; each poll is one cheap SSH round trip now that the target is cached.
+POLL_SECONDS = 5
 
 
 def log(message):

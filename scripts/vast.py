@@ -210,14 +210,20 @@ def _attach_ssh_key(instance_id: int) -> None:
     _vastai(["attach", "ssh", str(instance_id), public_key])
 
 
+_ssh_targets: dict[int, tuple[str, str]] = {}
+
+
 def _ssh_target(instance_id: int) -> tuple[str, str]:
-    url = _vastai(["ssh-url", str(instance_id)]).strip()
-    remainder = url.removeprefix("ssh://")
-    credentials, _, address = remainder.rpartition("@")
-    host, _, port = address.partition(":")
-    if not host or not port:
-        raise SweepError(f"could not parse the ssh url: {url}")
-    return f"{credentials or 'root'}@{host}", port
+    """Resolve the SSH target once per instance; the URL is stable for its life."""
+    if instance_id not in _ssh_targets:
+        url = _vastai(["ssh-url", str(instance_id)]).strip()
+        remainder = url.removeprefix("ssh://")
+        credentials, _, address = remainder.rpartition("@")
+        host, _, port = address.partition(":")
+        if not host or not port:
+            raise SweepError(f"could not parse the ssh url: {url}")
+        _ssh_targets[instance_id] = (f"{credentials or 'root'}@{host}", port)
+    return _ssh_targets[instance_id]
 
 
 def _ssh(

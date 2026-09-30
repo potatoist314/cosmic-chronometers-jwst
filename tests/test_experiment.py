@@ -137,8 +137,10 @@ def test_remote_passes_configuration_and_exact_seed_to_existing_worker(tmp_path,
         assert json.loads(os.environ['CERIDWEN_SETTINGS_OVERRIDE']) == cell['settings']
         assert json.loads(os.environ['CERIDWEN_PRIORS_OVERRIDE']) == cell['priors']
         assert os.environ['CERIDWEN_SAMPLER_ONLY'] == '0'
+        assert os.environ['CERIDWEN_PLOTS'] == '0'
         return 0
-    for name in ('CERIDWEN_SETTINGS_OVERRIDE', 'CERIDWEN_PRIORS_OVERRIDE', 'CERIDWEN_SAMPLER_ONLY', 'JAX_PLATFORMS'):
+    for name in ('CERIDWEN_SETTINGS_OVERRIDE', 'CERIDWEN_PRIORS_OVERRIDE', 'CERIDWEN_SAMPLER_ONLY',
+                 'CERIDWEN_PLOTS', 'JAX_PLATFORMS'):
         monkeypatch.setenv(name, '')
     monkeypatch.setattr(worker, '_execute_target', execute)
     monkeypatch.setattr(exp, 'validate_result', lambda _: None)
@@ -316,3 +318,73 @@ def test_fits_rank_good_then_unknown_then_poor_hosts(run, cloud, monkeypatch):
     monkeypatch.setattr(exp.vast, 'host_speeds', lambda gpu: {})
     assert [row[1]['id'] for row in run.candidates('RTX 5090')] == [3, 4, 2, 1]
     assert next(r for r in run.selection['offers'] if r['offer_id'] == 1)['rejected'] is None
+
+
+def retrieved_run(tmp_path, name='run', *, figures=False, grid='abc.h5'):
+    out = tmp_path / name
+    cell = {'name': 'arm/M1_210210', 'arm': 'arm', 'target': 'M1_210210', 'seed': 7,
+            'settings': {'ssp_grid': f'/workspace/cosmic-chronometers-jwst/grid/{grid}',
+                         'sampler': {'num_live': 500}},
+            'priors': {'dust': 'Uniform(0, 2)'},
+            'target_metadata': {'object_id': 210210, 'spect_id': 'M1_210210', 'seed': 7}}
+    manifest = {'source': {'experiment': [cell], 'grids': [
+        {'grid': '/local/grid.h5', 'grid_sha256': 'x', 'remote_name': 'abc.h5'}]},
+        'completed_cells': ['arm/M1_210210']}
+    out.mkdir()
+    (out / 'manifest.json').write_text(json.dumps(manifest))
+    directory = out / 'fits/arm/210210-M1_210210'
+    directory.mkdir(parents=True)
+    outputs = [{'data': {'image/png': 'fig'}}] if figures else [{'data': {'text/plain': 'x'}}]
+    (directory / 'M1_210210_executed.ipynb').write_text(json.dumps({'cells': [{'outputs': outputs}]}))
+    (directory / 'ceridwen_derived_outputs.h5').write_bytes(b'gpu-derived')
+    return out, directory, cell
+
+
+def test_regenerate_rebuilds_figures_with_arm_overrides_and_keeps_gpu_derived(tmp_path, monkeypatch):
+    import subprocess
+    out, directory, cell = retrieved_run(tmp_path)
+    calls = []
+    def fake_run(command, **kwargs):
+        calls.append(command)
+        (directory / 'ceridwen_derived_outputs.h5').write_bytes(b'cpu-derived')
+        return SimpleNamespace(returncode=0)
+    monkeypatch.setattr(exp.subprocess, 'run', fake_run)
+    exp.regenerate_figures(out)
+    assert len(calls) == 1
+    assert calls[0][1] == 'scripts/regenerate_fit_notebooks.py'
+    settings = json.loads(calls[0][calls[0].index('--settings-override') + 1])
+    assert settings == {'ssp_grid': '/local/grid.h5', 'sampler': {'num_live': 500}}
+    assert json.loads(calls[0][calls[0].index('--priors-override') + 1]) == cell['priors']
+    assert calls[0][-1] == str(directory)
+    assert (directory / 'ceridwen_derived_outputs.h5').read_bytes() == b'gpu-derived'
+
+
+def test_regenerate_skips_notebook_with_figures_and_unknown_grid(tmp_path, monkeypatch):
+    out, _, _ = retrieved_run(tmp_path, figures=True)
+    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: pytest.fail('regeneration ran'))
+    exp.regenerate_figures(out)
+    out, _, _ = retrieved_run(tmp_path, 'run2', grid='missing.h5')
+    exp.regenerate_figures(out)
+
+
+def test_regenerate_failure_keeps_gpu_artifacts_without_raising(tmp_path, monkeypatch, capsys):
+    import subprocess
+    out, directory, _ = retrieved_run(tmp_path)
+    def fail(command, **kwargs):
+        raise subprocess.CalledProcessError(1, command)
+    monkeypatch.setattr(exp.subprocess, 'run', fail)
+    exp.regenerate_figures(out)
+    assert 'local figure rebuild failed' in capsys.readouterr().out
+    assert (directory / 'ceridwen_derived_outputs.h5').read_bytes() == b'gpu-derived'
+
+
+@pytest.mark.parametrize('code', [0, 1])
+def test_main_rebuilds_figures_only_after_success(tmp_path, monkeypatch, code):
+    out = tmp_path / 'run'
+    out.mkdir()
+    monkeypatch.setattr(exp, 'preflight', lambda *a, **kw: {'commit': 'abc'})
+    monkeypatch.setattr(exp, 'Run', lambda args, source: SimpleNamespace(execute=lambda: code))
+    calls = []
+    monkeypatch.setattr(exp, 'regenerate_figures', lambda output: calls.append(output))
+    assert exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(out)]) == code
+    assert calls == ([out] if code == 0 else [])

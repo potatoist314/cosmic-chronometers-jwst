@@ -180,6 +180,63 @@ def validate_local_result(directory):
                    cwd=ROOT, check=True, capture_output=True, text=True, timeout=60)
 
 
+def notebook_has_figures(path):
+    document = json.loads(path.read_text())
+    return any('image/png' in output.get('data', {})
+               for cell in document.get('cells', []) for output in cell.get('outputs', []))
+
+
+def regenerate_figures(output):
+    """Rebuild figures locally for retrieved fits; best-effort, never fails the run.
+
+    Fits run with CERIDWEN_PLOTS=0, so the retrieved notebook has no figures;
+    re-executing it locally (CPU, unbilled) restores the standard figures for
+    result pages. The GPU-computed derived outputs are kept byte-identical:
+    regeneration only adds the notebook figures.
+    """
+    try:
+        manifest = json.loads((output / 'manifest.json').read_text())
+        grids = {entry['remote_name']: entry['grid'] for entry in manifest['source'].get('grids', [])}
+        cells = {cell['name']: cell for cell in manifest['source']['experiment']}
+        completed = manifest.get('completed_cells', [])
+    except (OSError, ValueError, KeyError) as error:
+        engine.log(f'skipping local figures: unreadable manifest: {error}')
+        return
+    for name in completed:
+        try:
+            cell = cells[name]
+            directory = (output / 'fits' / cell['arm']
+                         / f"{cell['target_metadata']['object_id']}-{cell['target']}")
+            notebooks = list(directory.glob('*_executed.ipynb'))
+            if len(notebooks) != 1 or notebook_has_figures(notebooks[0]):
+                continue
+        except (KeyError, OSError, ValueError) as error:
+            engine.log(f'skipping local figures for {name}: {error}')
+            continue
+        settings = dict(cell['settings'])
+        remote_grid = Path(settings.get('ssp_grid', '')).name
+        if remote_grid in grids:
+            # The identical grid file the box used, at its local path.
+            settings['ssp_grid'] = grids[remote_grid]
+        else:
+            engine.log(f'skipping local figures for {name}: grid {remote_grid} is not local')
+            continue
+        derived = directory / 'ceridwen_derived_outputs.h5'
+        gpu_derived = derived.read_bytes() if derived.is_file() else None
+        try:
+            subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'),
+                            'scripts/regenerate_fit_notebooks.py',
+                            '--settings-override', json.dumps(settings),
+                            '--priors-override', json.dumps(cell['priors']), str(directory)],
+                           cwd=ROOT, check=True, capture_output=True, text=True, timeout=3600)
+            engine.log(f'local figures rebuilt for {name}')
+        except (subprocess.SubprocessError, OSError) as error:
+            engine.log(f'local figure rebuild failed for {name}: {error}; GPU artifacts kept')
+        finally:
+            if gpu_derived is not None:
+                derived.write_bytes(gpu_derived)
+
+
 def remote(config, output):
     if __package__:
         from . import run_ceridwen_vast_multi_gpu as worker
@@ -190,8 +247,11 @@ def remote(config, output):
     for cell in json.loads(config.read_text()):
         target = cell['target_metadata']
         directory = output / cell['arm'] / f"{target['object_id']}-{target['spect_id']}"
+        # Figures render nothing on the box (Agg backend) and are rebuilt locally by
+        # regenerate_fit_notebooks.py, so the fit skips their construction entirely.
         os.environ.update(CERIDWEN_SETTINGS_OVERRIDE=json.dumps(cell['settings']),
-                          CERIDWEN_PRIORS_OVERRIDE=json.dumps(cell['priors']), CERIDWEN_SAMPLER_ONLY='0')
+                          CERIDWEN_PRIORS_OVERRIDE=json.dumps(cell['priors']), CERIDWEN_SAMPLER_ONLY='0',
+                          CERIDWEN_PLOTS='0')
         engine.log(f"fitting {cell['name']}, seed {cell['seed']}")
         if worker._execute_target(target, directory) != 0:
             raise RuntimeError(f"fit failed: {cell['name']}")
@@ -324,7 +384,11 @@ def main(argv=None):
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as error:
             raise vast.SweepError('another driver owns this output directory') from error
-        return Run(args, source).execute()
+        code = Run(args, source).execute()
+        # After teardown, while nothing bills: restore the standard figures locally.
+        if code == 0:
+            regenerate_figures(args.output)
+        return code
 
 
 if __name__ == '__main__':
