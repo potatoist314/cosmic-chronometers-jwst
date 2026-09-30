@@ -1,0 +1,11 @@
+11:54:59 fitting neb_eline/M1_210210, seed 20260927
+Traceback (most recent call last):
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 333, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 298, in main
+    return remote(args.config, args.output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 197, in remote
+    raise RuntimeError(f"fit failed: {cell['name']}")
+RuntimeError: fit failed: neb_eline/M1_210210
