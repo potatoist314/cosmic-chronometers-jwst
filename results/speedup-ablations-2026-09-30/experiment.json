@@ -1,0 +1,11 @@
+{
+  "targets": ["M1_210210"],
+  "seed": 20260927,
+  "settings": {},
+  "priors": {},
+  "arms": {
+    "inner46": {"settings": {"sampler": {"num_inner_steps": 46}}},
+    "inner23": {"settings": {"sampler": {"num_inner_steps": 23}}},
+    "delete250": {"settings": {"sampler": {"num_delete": 250}}}
+  }
+}

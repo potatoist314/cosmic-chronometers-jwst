@@ -1,0 +1,179 @@
+10:08:47 committed source 03bba9b01877; output results/speedup-ablations-2026-09-30/run
+10:08:52 renting RTX 5090, host 166545, $0.355/h; estimate $0.198
+10:08:52 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 46699713 unknown bid $0.355/h, $0.178/fit, $0.198 total; 47511675 unknown bid $0.419/h, $0.210/fit, $0.230 total; 45028230 unknown bid $0.445/h, $0.223/fit, $0.254 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 44031033 unknown bid $0.532/h, $0.266/fit, $0.277 total; 28539924 unknown bid $0.540/h, $0.270/fit, $0.270 total; 45014286 unknown bid $0.545/h, $0.272/fit, $0.279 total; 51969558 unknown bid $0.559/h, $0.280/fit, $0.280 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 52943981 unknown bid $0.576/h, $0.288/fit, $0.309 total; 40077669 unknown bid $0.580/h,
+10:08:53 SweepError: vastai returned no JSON: 
+10:08:59 renting RTX 5090, host 8365, $0.365/h; estimate $0.203
+10:08:59 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 49367586 unknown bid $0.365/h, $0.183/fit, $0.203 total; 45028226 unknown bid $0.376/h, $0.188/fit, $0.219 total; 34905061 unknown bid $0.423/h, $0.212/fit, $0.232 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 28986862 unknown bid $0.513/h, $0.257/fit, $0.277 total; 38697500 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 40411107 unknown bid $0.549/h, $0.275/fit, $0.296 total; 52330851 unknown bid $0.549/h, $0.275/fit, $0.296 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 50268077 unknown bid $0.563/h, $0.281/fit, $0.302 total; 53470405 unknown on-dema
+10:09:01 instance 53508307: (None, None)
+10:09:17 instance 53508307: ('loading', '9d9229de0a23: Pull complete\n')
+10:11:59 instance 53508307: ('loading', 'b2449364bbe7: Verifying Checksum\nb2449364bbe7: Download complete\n')
+10:12:48 instance 53508307: ('loading', '#7 4.095 Get:76 http://deb.debian.org/debian bookworm/main amd64 python3-apt amd64 2.6.0 [159 kB]\n#7 4.101 Get:77 http://deb.debian.org/debian bookworm/main amd64 python3-blinker all 1.5-1 [14.7 kB]\n#7 4.102 Get:78 http://deb.debian.org/debian bookworm/main amd64 python3-cffi-backend amd64 1.15.1-5+b1 [84.6 kB]\n#7 4.112 Get:79 http://deb.debian.org/debian bookworm/main amd64 python3-cryptography amd64 38.0.4-3+deb12u1 [665 kB]\n#7 4.135 Get:80 http://deb.debian.org/debian bookworm/main amd64 python3-dbus amd64 1.3.2-4+b1 [95.1 kB]\n#7 4.139 Get:81 http://deb.debian.org/debian bookworm/main amd64 python3-distro all 1.8.0-1 [20.5 kB]\n#7 4.139 Get:82 http://deb.debian.org/debian bookworm/main amd64 python3-gi amd64 3.42.2-3+b1 [219 kB]\n#7 4.156 Get:83 http://deb.debian.org/debian bookworm/main amd64 python3-pyparsing all 3.0.9-1 [138 kB]\n#7 4.160 Get:84 http://deb.debian.org/debian-security bookworm-security/main amd64 python3-httplib2 all 0.20.4-3+deb12u1 [39.0 kB]\n')
+10:13:04 instance 53508307: ('loading', '#9 DONE 0.5s\n')
+10:13:20 instance 53508307: ('created', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34')
+10:17:25 waiting: remaining estimate $0.204; replacement $0.229
+10:17:45 waiting: remaining estimate $0.204; replacement $0.192
+10:18:04 waiting: remaining estimate $0.204; replacement $0.229
+10:18:24 waiting: remaining estimate $0.204; replacement $0.238
+10:18:43 waiting: remaining estimate $0.204; replacement $0.219
+10:19:03 waiting: remaining estimate $0.204; replacement $0.219
+10:19:22 waiting: remaining estimate $0.204; replacement $0.219
+10:19:43 waiting: remaining estimate $0.204; replacement $0.192
+10:20:03 waiting: remaining estimate $0.204; replacement $0.181
+10:20:22 waiting: remaining estimate $0.204; replacement $0.229
+10:20:27 KeyboardInterrupt: 
+10:20:29 destroyed instance 53508307
+Traceback (most recent call last):
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/30d7adfa-47ff-48a0-9a7d-287d7a068b85/scratchpad/gpu_checks.py", line 58, in <module>
+    raise SystemExit(experiment.main())
+                     ~~~~~~~~~~~~~~~^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 327, in main
+    return Run(args, source).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 483, in execute
+    self.attempt(offer, price, bid)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 411, in attempt
+    self.measure(attempt)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/30d7adfa-47ff-48a0-9a7d-287d7a068b85/scratchpad/gpu_checks.py", line 28, in measure
+    environment = self.prepare(attempt)
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 334, in prepare
+    self.wait_ready(attempt)
+    ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/benchmark.py", line 258, in wait_ready
+    time.sleep(POLL_SECONDS)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/30d7adfa-47ff-48a0-9a7d-287d7a068b85/scratchpad/gpu_checks.py", line 56, in <lambda>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+                                             ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/30d7adfa-47ff-48a0-9a7d-287d7a068b85/scratchpad/gpu_checks.py", line 56, in <genexpr>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+KeyboardInterrupt
+10:20:47 committed source 03bba9b01877; output results/speedup-ablations-2026-09-30/run
+10:20:50 renting RTX 5090, host 80057, $0.416/h; estimate $0.229
+10:20:50 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 52331007 unknown bid $0.416/h, $0.208/fit, $0.229 total; 45028230 unknown bid $0.445/h, $0.223/fit, $0.254 total; 51000034 unknown on-demand $0.529/h, $0.264/fit, $0.275 total; 38697500 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 45014286 unknown bid $0.545/h, $0.272/fit, $0.279 total; 40411107 unknown bid $0.549/h, $0.275/fit, $0.296 total; 50103207 unknown bid $0.549/h, $0.275/fit, $0.296 total; 52003771 unknown bid $0.559/h, $0.280/fit, $0.280 total; 52943981 unknown bid $0.576/h, $0.288/fit, $0.309 total; 53304619 unknown bid $0.681/h, $0.340/fit, $0.346 total; 48822557 unknown b
+10:20:51 SweepError: vastai returned no JSON: 
+10:20:56 renting RTX 5090, host 18, $0.376/h; estimate $0.219
+10:20:56 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45028228 unknown bid $0.376/h, $0.188/fit, $0.219 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 51000034 unknown bid $0.494/h, $0.247/fit, $0.257 total; 28986862 unknown bid $0.513/h, $0.257/fit, $0.277 total; 45309042 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 40411107 unknown bid $0.549/h, $0.275/fit, $0.296 total; 47877848 unknown bid $0.549/h, $0.275/fit, $0.296 total; 46037258 unknown on-demand $0.554/h, $0.277/fit, $0.278 total; 44457595 unknown bid $0.578/h, $0.289/fit, $0.310 total; 40077670 unknown bid $0.580/h, $0.290/fit, $0.321 total; 50184820 unknown o
+10:20:57 SweepError: vastai returned no JSON: 
+10:21:03 renting RTX 5090, host 362094, $0.392/h; estimate $0.238
+10:21:03 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 48425185 unknown bid $0.392/h, $0.196/fit, $0.238 total; 46295486 unknown bid $0.406/h, $0.203/fit, $0.224 total; 50343468 unknown bid $0.416/h, $0.208/fit, $0.229 total; 51000034 unknown bid $0.494/h, $0.247/fit, $0.257 total; 28986860 unknown bid $0.513/h, $0.257/fit, $0.277 total; 51000034 unknown on-demand $0.529/h, $0.264/fit, $0.275 total; 47877848 unknown bid $0.549/h, $0.275/fit, $0.296 total; 46037258 unknown on-demand $0.554/h, $0.277/fit, $0.278 total; 52003771 unknown bid $0.559/h, $0.280/fit, $0.280 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 50268077 unknown o
+10:21:04 SweepError: vastai returned no JSON: 
+10:21:46 committed source 03bba9b01877; output results/speedup-ablations-2026-09-30/run
+10:21:49 renting RTX 5090, host 146008, $0.417/h; estimate $0.229
+10:21:49 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 38697500 unknown bid $0.417/h, $0.209/fit, $0.229 total; 49005869 unknown bid $0.483/h, $0.241/fit, $0.273 total; 51000034 unknown bid $0.494/h, $0.247/fit, $0.257 total; 28986862 unknown bid $0.513/h, $0.257/fit, $0.277 total; 51000034 unknown on-demand $0.529/h, $0.264/fit, $0.275 total; 38697500 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 47794367 unknown bid $0.549/h, $0.275/fit, $0.296 total; 51969558 unknown bid $0.559/h, $0.280/fit, $0.280 total; 36647967 unknown bid $0.583/h, $0.291/fit, $0.312 total; 53304619 unknown bid $0.681/h, $0.340/fit, $0.346 total; 47328576 unknown o
+10:21:50 SweepError: vastai returned no JSON: 
+10:21:55 renting RTX 5090, host 127708, $0.406/h; estimate $0.224
+10:21:55 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 46295486 unknown bid $0.406/h, $0.203/fit, $0.224 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 45685712 unknown bid $0.494/h, $0.247/fit, $0.268 total; 48212638 unknown bid $0.499/h, $0.250/fit, $0.270 total; 28986860 unknown bid $0.513/h, $0.257/fit, $0.277 total; 51000034 unknown on-demand $0.529/h, $0.264/fit, $0.275 total; 50184820 unknown bid $0.549/h, $0.275/fit, $0.316 total; 51284767 unknown bid $0.553/h, $0.277/fit, $0.297 total; 52003771 unknown bid $0.559/h, $0.280/fit, $0.280 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 50268077 unknown bid $0.
+10:21:56 SweepError: vastai returned no JSON: 
+10:22:02 renting RTX 5090, host 662751, $0.483/h; estimate $0.273
+10:22:02 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 49005869 unknown bid $0.483/h, $0.241/fit, $0.273 total; 51000034 unknown bid $0.494/h, $0.247/fit, $0.257 total; 28986862 unknown bid $0.513/h, $0.257/fit, $0.277 total; 47794367 unknown bid $0.549/h, $0.275/fit, $0.296 total; 46037256 unknown on-demand $0.554/h, $0.277/fit, $0.278 total; 51969558 unknown bid $0.559/h, $0.280/fit, $0.280 total; 36647967 unknown bid $0.583/h, $0.291/fit, $0.312 total; 50268077 unknown on-demand $0.584/h, $0.292/fit, $0.313 total; 50103207 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 52943981 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 350108
+10:22:05 instance 53509907: (None, None)
+10:22:21 instance 53509907: ('loading', None)
+10:22:53 instance 53509907: ('loading', '77be074b1ca8: Verifying Checksum\n77be074b1ca8: Download complete\n')
+10:25:03 instance 53509907: ('loading', 'b2449364bbe7: Verifying Checksum\nb2449364bbe7: Download complete\n')
+10:25:20 instance 53509907: ('loading', '#6 1.074 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]\n')
+10:25:36 instance 53509907: ('loading', '#7 14.04 Preparing to unpack .../02-sudo_1.9.13p3-1+deb12u4_amd64.deb ...\r\n#7 14.05 Unpacking sudo (1.9.13p3-1+deb12u4) ...\r\n#7 14.20 Selecting previously unselected package less.\r\n')
+10:25:53 instance 53509907: ('loading', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+10:26:09 instance 53509907: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+10:26:15 uploading pinned source, inputs and cached grid
+10:30:25 bootstrap: running; rtable. Needed to build SSP grids and (with nebular / dust emission) at runtime. See README Installation.
+  [warn] $SPS_HOME  -- unset. Required for nebular / dust-emission models. `export SPS_HOME=/path/to/fsps`
+
+All required components present. (warnings above are optional features / FSPS setup.)
+10:30:49 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16.h5
+Ceridwen GPU environment ready.
+10:31:34 profile: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+10:31:57 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:32:21 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:32:44 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:33:08 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:33:32 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:33:57 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:34:20 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:34:44 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:35:07 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:35:30 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:35:56 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:36:20 profile: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+10:36:43 profile: running; 5059166}
+basis_contraction {"median_us_per_call": 1.160656102001667, "min_us_per_call": 1.1235009878873825}
+dust_apply {"median_us_per_call": 0.3795488737523556, "min_us_per_call": 0.36405865103006363}
+mass_fluxfactor {"median_us_per_call": 0.4004454240202904, "min_us_per_call": 0.2995692193508148}
+10:37:07 profile: 0; : 1.0097975188486474,
+  "photometry_fixed_z_matrix": 0.9298266370086112,
+  "losvd_fft": 10.482510441434654,
+  "instrument_lsf_fft": 30.58301243109264,
+  "redshift_stretch": 3.626296738752511,
+  "photometry_likelihood": 0.5512453148423667,
+  "spectrum_likelihood_calibration": 13.043039997430219
+ }
+}
+10:37:19 lanes: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+10:37:42 lanes: running; ertainty": {"same_shape": true, "equal": true, "max_rel_diff": 0.0}, "spectrum.mask": {"same_shape": true, "equal": true}, "spectrum.wavelength": {"same_shape": true, "equal": true, "max_rel_diff": 0.0}, "model.wave_equal": true}
+ITER 20 {"n_live_rebuilt": 500, "threshold_run3": 223955.27481128517}
+10:38:06 lanes: running; .3010713855784277, "waste_carry": 1.9318045022270374, "waste_state_machine": 1.1469242807270976}}, "stock_over_carry_time_min": 1.1801054622784266, "predicted_stock_s": 1.4526089988648891, "predicted_carry_s": 1.230737004429102}
+ITER 100 {"n_live_rebuilt": 500, "threshold_run3": 231320.85600569498}
+10:38:30 lanes: running; er_carry_time_min": 1.2409009290952184, "predicted_stock_s": 1.1531405542045832, "predicted_carry_s": 0.927116634324193}
+ITER 250 {"n_live_rebuilt": 500, "threshold_run3": 231528.22325699386}
+STEP 250 stock 0 1.1562700397334993
+STEP 250 carry 0 0.9186992477625608
+STEP 250 stock 1 1.1559667536057532
+10:38:53 lanes: 0; ecuted_carry": 60520, "executed_state_machine": 34750, "waste_stock": 2.3631613735796795, "waste_carry": 1.9048818104560763, "waste_state_machine": 1.0937647540209625}}, "stock_over_carry_time_min": 1.2587457590764703, "predicted_stock_s": 1.1894577853381634, "predicted_carry_s": 0.941741181537509}
+10:39:06 instance 53509907: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+10:39:19 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16.h5
+Ceridwen GPU environment ready.
+10:39:40 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:40:03 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:40:27 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:40:50 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:41:14 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:41:37 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:42:01 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:42:24 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:42:47 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:43:11 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:43:34 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:43:58 fit-0: running; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:44:22 fit-0: 0; 10:39:36 fitting inner46/M1_210210, seed 20260927
+10:45:04 fit-1: running; 10:45:00 fitting inner23/M1_210210, seed 20260927
+10:45:28 fit-1: running; 10:45:00 fitting inner23/M1_210210, seed 20260927
+10:45:52 fit-1: running; 10:45:00 fitting inner23/M1_210210, seed 20260927
+10:46:15 fit-1: running; 10:45:00 fitting inner23/M1_210210, seed 20260927
+10:46:39 fit-1: running; 10:45:00 fitting inner23/M1_210210, seed 20260927
+10:47:02 fit-1: running; 10:45:00 fitting inner23/M1_210210, seed 20260927
+10:47:26 fit-1: running; 10:45:00 fitting inner23/M1_210210, seed 20260927
+10:47:49 fit-1: running; 10:45:00 fitting inner23/M1_210210, seed 20260927
+10:48:13 fit-1: 0; 10:45:00 fitting inner23/M1_210210, seed 20260927
+10:48:47 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:49:12 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:49:37 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:50:01 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:50:25 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:50:49 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:51:12 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:51:35 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:51:59 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:52:22 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:52:45 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:53:09 fit-2: running; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:53:32 fit-2: 0; 10:48:43 fitting delete250/M1_210210, seed 20260927
+10:53:51 destroyed instance 53509907

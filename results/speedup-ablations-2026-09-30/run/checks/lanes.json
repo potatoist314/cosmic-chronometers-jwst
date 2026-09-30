@@ -1,0 +1,328 @@
+{
+ "inner_steps": 65,
+ "num_delete": 100,
+ "device": "cuda:0",
+ "device_kind": "NVIDIA GeForce RTX 5090",
+ "iterations": {
+  "20": {
+   "n_live_rebuilt": 500,
+   "threshold_run3": 223955.27481128517,
+   "batch_eval_s_min": 0.0013051293790340424,
+   "batch_eval_s_median": 0.0013607856817543507,
+   "stock_first_call_s": 5.324192767031491,
+   "carry_first_call_s": 7.804968241136521,
+   "stock_step_s": [
+    1.1684085349552333,
+    1.1682230522856116,
+    1.168445365037769,
+    1.1685337950475514,
+    1.1688940171152353
+   ],
+   "carry_step_s": [
+    0.9899310609325767,
+    0.9907827167771757,
+    0.9905116800218821,
+    0.9904952091164887,
+    0.9909764798358083
+   ],
+   "carry_equals_stock": {
+    "loglikelihood_bitwise": true,
+    "max_abs_dloglikelihood": 0.0,
+    "num_expansions_equal": true,
+    "num_shrink_equal": true
+   },
+   "counts": {
+    "logical_calls": 33228,
+    "logical_per_slice_step": 5.112,
+    "left_right_split_matches": 1.0,
+    "mean_expansions": 0.45292307692307693,
+    "mean_shrink": 2.659076923076923,
+    "max_shrink": 16,
+    "lanes_100": {
+     "executed_stock": 111300,
+     "executed_carry": 94300,
+     "executed_state_machine": 49600,
+     "waste_stock": 3.3495846876128565,
+     "waste_carry": 2.837967978813049,
+     "waste_state_machine": 1.4927169856747322
+    },
+    "lanes_50": {
+     "executed_stock": 99800,
+     "executed_carry": 84600,
+     "executed_state_machine": 46350,
+     "waste_stock": 3.0034910316600456,
+     "waste_carry": 2.5460455037919827,
+     "waste_state_machine": 1.3949079089924161
+    },
+    "lanes_25": {
+     "executed_stock": 89700,
+     "executed_carry": 75625,
+     "executed_state_machine": 42425,
+     "waste_stock": 2.699530516431925,
+     "waste_carry": 2.275941976646202,
+     "waste_state_machine": 1.2767846394606959
+    },
+    "lanes_10": {
+     "executed_stock": 76460,
+     "executed_carry": 64190,
+     "executed_state_machine": 38110,
+     "waste_stock": 2.3010713855784277,
+     "waste_carry": 1.9318045022270374,
+     "waste_state_machine": 1.1469242807270976
+    }
+   },
+   "stock_over_carry_time_min": 1.1801054622784266,
+   "predicted_stock_s": 1.4526089988648891,
+   "predicted_carry_s": 1.230737004429102
+  },
+  "100": {
+   "n_live_rebuilt": 500,
+   "threshold_run3": 231320.85600569498,
+   "batch_eval_s_min": 0.0010572606697678566,
+   "batch_eval_s_median": 0.0010785586200654507,
+   "stock_step_s": [
+    1.1614983920007944,
+    1.1603495068848133,
+    1.1607365873642266,
+    1.1606822842732072,
+    1.160299395211041
+   ],
+   "carry_step_s": [
+    0.8989006681367755,
+    0.8997547989711165,
+    0.8991141286678612,
+    0.8997521386481822,
+    0.8998818262480199
+   ],
+   "carry_equals_stock": {
+    "loglikelihood_bitwise": true,
+    "max_abs_dloglikelihood": 0.0,
+    "num_expansions_equal": true,
+    "num_shrink_equal": true
+   },
+   "counts": {
+    "logical_calls": 31412,
+    "logical_per_slice_step": 4.8326153846153845,
+    "left_right_split_matches": 1.0,
+    "mean_expansions": 0.8035384615384615,
+    "mean_shrink": 2.0290769230769232,
+    "max_shrink": 11,
+    "lanes_100": {
+     "executed_stock": 113800,
+     "executed_carry": 87800,
+     "executed_state_machine": 34300,
+     "waste_stock": 3.622819304724309,
+     "waste_carry": 2.795110148987648,
+     "waste_state_machine": 1.091939386221826
+    },
+    "lanes_50": {
+     "executed_stock": 101400,
+     "executed_carry": 78700,
+     "executed_state_machine": 34050,
+     "waste_stock": 3.2280657073729784,
+     "waste_carry": 2.5054119444798166,
+     "waste_state_machine": 1.0839806443397428
+    },
+    "lanes_25": {
+     "executed_stock": 88500,
+     "executed_carry": 69400,
+     "executed_state_machine": 33850,
+     "waste_stock": 2.817394626257481,
+     "waste_carry": 2.2093467464663186,
+     "waste_state_machine": 1.0776136508340761
+    },
+    "lanes_10": {
+     "executed_stock": 74440,
+     "executed_carry": 58730,
+     "executed_state_machine": 33430,
+     "waste_stock": 2.3697949828091174,
+     "waste_carry": 1.8696676429390042,
+     "waste_state_machine": 1.0642429644721763
+    }
+   },
+   "stock_over_carry_time_min": 1.2907982342655144,
+   "predicted_stock_s": 1.2031626421958208,
+   "predicted_carry_s": 0.9282748680561781
+  },
+  "180": {
+   "n_live_rebuilt": 500,
+   "threshold_run3": 231505.84762815174,
+   "batch_eval_s_min": 0.0010464070364832878,
+   "batch_eval_s_median": 0.0010991781018674374,
+   "stock_step_s": [
+    1.1209580171853304,
+    1.12021761899814,
+    1.1206510090269148,
+    1.121286273933947,
+    1.1210172069258988
+   ],
+   "carry_step_s": [
+    0.9038370931521058,
+    0.9027454107999802,
+    0.9036607220768929,
+    0.9038527999073267,
+    0.9036248498596251
+   ],
+   "carry_equals_stock": {
+    "loglikelihood_bitwise": true,
+    "max_abs_dloglikelihood": 0.0,
+    "num_expansions_equal": true,
+    "num_shrink_equal": true
+   },
+   "counts": {
+    "logical_calls": 31666,
+    "logical_per_slice_step": 4.8716923076923075,
+    "left_right_split_matches": 1.0,
+    "mean_expansions": 0.6018461538461538,
+    "mean_shrink": 2.269846153846154,
+    "max_shrink": 12,
+    "lanes_100": {
+     "executed_stock": 110200,
+     "executed_carry": 88600,
+     "executed_state_machine": 38000,
+     "waste_stock": 3.4800732647003096,
+     "waste_carry": 2.797953641129287,
+     "waste_state_machine": 1.200025263689762
+    },
+    "lanes_50": {
+     "executed_stock": 96850,
+     "executed_carry": 78750,
+     "executed_state_machine": 36500,
+     "waste_stock": 3.0584854417987746,
+     "waste_carry": 2.4868944609360195,
+     "waste_state_machine": 1.1526558453862186
+    },
+    "lanes_25": {
+     "executed_stock": 86375,
+     "executed_carry": 70575,
+     "executed_state_machine": 35325,
+     "waste_stock": 2.727689003979031,
+     "waste_carry": 2.2287311311817093,
+     "waste_state_machine": 1.115549801048443
+    },
+    "lanes_10": {
+     "executed_stock": 74180,
+     "executed_carry": 60360,
+     "executed_state_machine": 33920,
+     "waste_stock": 2.342575633171225,
+     "waste_carry": 1.9061453925345797,
+     "waste_state_machine": 1.0711804459041243
+    }
+   },
+   "stock_over_carry_time_min": 1.2409009290952184,
+   "predicted_stock_s": 1.1531405542045832,
+   "predicted_carry_s": 0.927116634324193
+  },
+  "250": {
+   "n_live_rebuilt": 500,
+   "threshold_run3": 231528.22325699386,
+   "batch_eval_s_min": 0.0010452177375555038,
+   "batch_eval_s_median": 0.0011092727072536945,
+   "stock_step_s": [
+    1.1562700397334993,
+    1.1559667536057532,
+    1.155925512779504,
+    1.1559201548807323,
+    1.155566900037229
+   ],
+   "carry_step_s": [
+    0.9186992477625608,
+    0.9183878460898995,
+    0.9181961943395436,
+    0.9180304217152297,
+    0.918330364394933
+   ],
+   "carry_equals_stock": {
+    "loglikelihood_bitwise": true,
+    "max_abs_dloglikelihood": 0.0,
+    "num_expansions_equal": true,
+    "num_shrink_equal": true
+   },
+   "counts": {
+    "logical_calls": 31771,
+    "logical_per_slice_step": 4.887846153846154,
+    "left_right_split_matches": 1.0,
+    "mean_expansions": 0.6835384615384615,
+    "mean_shrink": 2.2043076923076925,
+    "max_shrink": 12,
+    "lanes_100": {
+     "executed_stock": 113800,
+     "executed_carry": 90100,
+     "executed_state_machine": 37000,
+     "waste_stock": 3.581882849139152,
+     "waste_carry": 2.8359195492744957,
+     "waste_state_machine": 1.1645840546410249
+    },
+    "lanes_50": {
+     "executed_stock": 100750,
+     "executed_carry": 80400,
+     "executed_state_machine": 36950,
+     "waste_stock": 3.1711309055427908,
+     "waste_carry": 2.530609675490227,
+     "waste_state_machine": 1.1630102924050234
+    },
+    "lanes_25": {
+     "executed_stock": 88650,
+     "executed_carry": 71325,
+     "executed_state_machine": 36025,
+     "waste_stock": 2.7902804444304556,
+     "waste_carry": 2.2449718296559755,
+     "waste_state_machine": 1.133895691038998
+    },
+    "lanes_10": {
+     "executed_stock": 75080,
+     "executed_carry": 60520,
+     "executed_state_machine": 34750,
+     "waste_stock": 2.3631613735796795,
+     "waste_carry": 1.9048818104560763,
+     "waste_state_machine": 1.0937647540209625
+    }
+   },
+   "stock_over_carry_time_min": 1.2587457590764703,
+   "predicted_stock_s": 1.1894577853381634,
+   "predicted_carry_s": 0.941741181537509
+  }
+ },
+ "inputs": {
+  "photometry.flux": {
+   "same_shape": true,
+   "equal": true,
+   "max_rel_diff": 0.0
+  },
+  "photometry.uncertainty": {
+   "same_shape": true,
+   "equal": true,
+   "max_rel_diff": 0.0
+  },
+  "photometry.mask": {
+   "same_shape": true,
+   "equal": true
+  },
+  "photometry.wavelength": {
+   "same_shape": true,
+   "equal": false,
+   "max_rel_diff": 5.329070518200751e-15
+  },
+  "spectrum.flux": {
+   "same_shape": true,
+   "equal": true,
+   "max_rel_diff": 0.0
+  },
+  "spectrum.uncertainty": {
+   "same_shape": true,
+   "equal": true,
+   "max_rel_diff": 0.0
+  },
+  "spectrum.mask": {
+   "same_shape": true,
+   "equal": true
+  },
+  "spectrum.wavelength": {
+   "same_shape": true,
+   "equal": true,
+   "max_rel_diff": 0.0
+  },
+  "model.wave_equal": true
+ },
+ "run3_iterations": 264
+}
