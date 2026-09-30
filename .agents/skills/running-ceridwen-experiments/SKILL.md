@@ -65,8 +65,11 @@ Use `--image` only for an explicitly requested override. Saved runs keep their i
    hourly price wins.
 
    Missing registered grids download locally before rental. The command uploads
-   pinned source and checked grids, runs the full notebook including existing
-   post-fit plots, downloads each arm-target result, and destroys its rental.
+   pinned source and checked grids, runs the full notebook with figure
+   construction skipped on the box (CERIDWEN_PLOTS=0; figures render nothing
+   under Agg), downloads each arm-target result, destroys its rental, and then
+   rebuilds the standard figures locally while keeping the GPU-computed
+   derived outputs.
    Results are under `run/fits/<arm>/<object>-<target>/`: executed notebook,
    `ceridwen_result.h5`, derived outputs and logs. The run directory also holds
    the manifest, stage logs and available charges. Repeat the same command and
