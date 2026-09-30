@@ -101,19 +101,19 @@ The production fit masks ±1500 km/s around rest-frame 3726.0, 3728.8 ([O II]), 
     "path": "results/no-emission-mask/fit-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "M1_210210. Spectrum, calibration polynomial and photometry with posterior medians of the masked and no-mask fits."
+    "caption": "M1_210210 · Spectrum and photometry · no mask on the ±1500 km/s windows around [O II], H-beta, [O III]; otherwise as the masked fit."
   },
   {
     "path": "results/no-emission-mask/sfh-M1_210210.png",
     "view": "SFH",
     "target": "M1_210210",
-    "caption": "M1_210210. SFH and cumulative mass fraction, both fits."
+    "caption": "M1_210210 · SFH · masked and no-mask fits."
   },
   {
     "path": "results/no-emission-mask/corner-M1_210210.png",
     "view": "Posteriors",
     "target": "M1_210210",
-    "caption": "M1_210210. Grey shapes are the fit with emission lines masked and red outlines the fit with no mask, each the \\(1\\sigma\\) contour with the 1D posteriors on the diagonal: an offset between a red outline and its grey shape means those parameters moved, and a smaller red outline means a tighter constraint."
+    "caption": "M1_210210 · Posteriors · masked fit (grey) and no-mask fit (red 1-sigma contours): an offset red outline means those parameters moved, a smaller one a tighter constraint."
   },
   {
     "notebook": "results/no-emission-mask/no_emission_mask/210210-M1_210210/M1_210210_executed.ipynb",
@@ -123,7 +123,7 @@ The production fit masks ±1500 km/s around rest-frame 3726.0, 3728.8 ([O II]), 
     "target": "M1_210210",
     "arm": "no_emission_mask",
     "view": "Comparison",
-    "caption": "M1_210210. KL divergence of each sampled parameter from its prior in the no-mask fit, from the executed fit notebook."
+    "caption": "M1_210210 · KL divergence of each sampled parameter from its prior in the no-mask fit."
   }
 ]
 ```

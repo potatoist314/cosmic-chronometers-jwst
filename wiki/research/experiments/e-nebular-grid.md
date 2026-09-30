@@ -259,7 +259,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "wide",
     "view": "Fits",
-    "caption": "M1_210210 · wide. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · wide, reference."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
@@ -269,7 +269,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "wide",
     "view": "Fits",
-    "caption": "M1_210210 · wide. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · wide, reference."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb/210210-M1_210210/M1_210210_executed.ipynb",
@@ -279,7 +279,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb",
     "view": "Fits",
-    "caption": "M1_210210 · neb. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · neb: nebular grid, H-beta unmasked; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb/210210-M1_210210/M1_210210_executed.ipynb",
@@ -289,7 +289,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb",
     "view": "Fits",
-    "caption": "M1_210210 · neb. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · neb: nebular grid, H-beta unmasked; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_eline/210210-M1_210210/M1_210210_executed.ipynb",
@@ -299,7 +299,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_eline",
     "view": "Fits",
-    "caption": "M1_210210 · neb_eline. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · neb_eline: nebular grid, line marginalisation on; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_eline/210210-M1_210210/M1_210210_executed.ipynb",
@@ -309,7 +309,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_eline",
     "view": "Fits",
-    "caption": "M1_210210 · neb_eline. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · neb_eline: nebular grid, line marginalisation on; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_maskca/210210-M1_210210/M1_210210_executed.ipynb",
@@ -319,7 +319,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_maskca",
     "view": "Fits",
-    "caption": "M1_210210 · neb_maskca. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · neb_maskca: nebular grid, Ca H+K masked; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_maskca/210210-M1_210210/M1_210210_executed.ipynb",
@@ -329,7 +329,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_maskca",
     "view": "Fits",
-    "caption": "M1_210210 · neb_maskca. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · neb_maskca: nebular grid, Ca H+K masked; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
@@ -339,7 +339,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "wide",
     "view": "SFH",
-    "caption": "M1_210210 · wide. Normalized SFR against lookback time; median and 16–84% band."
+    "caption": "M1_210210 · SFH · wide, reference."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb/210210-M1_210210/M1_210210_executed.ipynb",
@@ -349,7 +349,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb",
     "view": "SFH",
-    "caption": "M1_210210 · neb. Normalized SFR against lookback time; median and 16–84% band."
+    "caption": "M1_210210 · SFH · neb: nebular grid, H-beta unmasked; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_eline/210210-M1_210210/M1_210210_executed.ipynb",
@@ -359,7 +359,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_eline",
     "view": "SFH",
-    "caption": "M1_210210 · neb_eline. Normalized SFR against lookback time; median and 16–84% band."
+    "caption": "M1_210210 · SFH · neb_eline: nebular grid, line marginalisation on; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_maskca/210210-M1_210210/M1_210210_executed.ipynb",
@@ -369,7 +369,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_maskca",
     "view": "SFH",
-    "caption": "M1_210210 · neb_maskca. Normalized SFR against lookback time; median and 16–84% band."
+    "caption": "M1_210210 · SFH · neb_maskca: nebular grid, Ca H+K masked; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
@@ -379,7 +379,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "wide",
     "view": "Posteriors",
-    "caption": "M1_210210 · wide. Posterior corner plot."
+    "caption": "M1_210210 · Posteriors · wide, reference."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb/210210-M1_210210/M1_210210_executed.ipynb",
@@ -389,7 +389,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb",
     "view": "Posteriors",
-    "caption": "M1_210210 · neb. Posterior corner plot."
+    "caption": "M1_210210 · Posteriors · neb: nebular grid, H-beta unmasked; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_eline/210210-M1_210210/M1_210210_executed.ipynb",
@@ -399,7 +399,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_eline",
     "view": "Posteriors",
-    "caption": "M1_210210 · neb_eline. Posterior corner plot."
+    "caption": "M1_210210 · Posteriors · neb_eline: nebular grid, line marginalisation on; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_maskca/210210-M1_210210/M1_210210_executed.ipynb",
@@ -409,7 +409,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_maskca",
     "view": "Posteriors",
-    "caption": "M1_210210 · neb_maskca. Posterior corner plot."
+    "caption": "M1_210210 · Posteriors · neb_maskca: nebular grid, Ca H+K masked; otherwise as wide."
   }
 ]
 ```

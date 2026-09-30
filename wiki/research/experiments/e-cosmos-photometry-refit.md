@@ -124,37 +124,37 @@ The Ceridwen fits use COSMOS2015 `cosmos_total` photometry, 12 bands. COSMOS2020
     "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2015-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "COSMOS2015 reference, 12 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges"
+    "caption": "M1_210210 · Spectrum · COSMOS2015 (12 bands), reference."
   },
   {
     "path": "wiki/analyses/cosmos-photometry-refit/photometry-cosmos2015-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "COSMOS2015 reference, 12 bands: M1_210210 observed total band fluxes ± fitted uncertainties; joint Ceridwen per-band posterior medians (16–84%); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls"
+    "caption": "M1_210210 · Photometry · COSMOS2015 (12 bands), reference."
   },
   {
     "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2020_classic-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "COSMOS2020 Classic, 30 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges"
+    "caption": "M1_210210 · Spectrum · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015 (12 bands)."
   },
   {
     "path": "wiki/analyses/cosmos-photometry-refit/photometry-cosmos2020_classic-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "COSMOS2020 Classic, 30 bands: M1_210210 observed total band fluxes ± fitted uncertainties; joint Ceridwen per-band posterior medians (16–84%); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls"
+    "caption": "M1_210210 · Photometry · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015 (12 bands)."
   },
   {
     "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2025-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "COSMOS2025, 28 bands: LEGA-C M1_210210 spectrum over fitted pixels; joint Ceridwen posterior median and 16–84% band; lower-panel pull at fitted noise floor; shaded fitted-filter wavelength ranges"
+    "caption": "M1_210210 · Spectrum · COSMOS2025 (28 bands); otherwise as COSMOS2015 (12 bands)."
   },
   {
     "path": "wiki/analyses/cosmos-photometry-refit/photometry-cosmos2025-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "COSMOS2025, 28 bands: M1_210210 observed total band fluxes ± fitted uncertainties; joint Ceridwen per-band posterior medians (16–84%); median model continuum; LEGA-C spectral range; band-name rail; lower-panel per-band pulls"
+    "caption": "M1_210210 · Photometry · COSMOS2025 (28 bands); otherwise as COSMOS2015 (12 bands)."
   },
   {
     "path": "results/cosmos-photometry-refit/corner-M1_210210.png",
@@ -166,7 +166,7 @@ The Ceridwen fits use COSMOS2015 `cosmos_total` photometry, 12 bands. COSMOS2020
     "path": "results/cosmos-photometry-refit/sfh-M1_210210.png",
     "view": "SFH",
     "target": "M1_210210",
-    "caption": "Star-formation history with 16–84% band and cumulative mass fraction for the COSMOS2015 reference, COSMOS2020 Classic and COSMOS2025 fits of M1_210210."
+    "caption": "M1_210210 · SFH · COSMOS2015 / COSMOS2020 Classic / COSMOS2025; right panel cumulative mass fraction."
   },
   {
     "path": "wiki/analyses/cosmos-photometry-comparison/cosmos-photometry-M1_210210.png",

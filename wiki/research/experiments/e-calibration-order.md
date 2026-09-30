@@ -541,7 +541,7 @@ Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be
   {
     "path": "results/calibration-order/parameters-by-order.png",
     "view": "Comparison",
-    "caption": "Posterior median and 16–84 range of mass, t50, dust, dust index, mass-weighted age and calibration noise floor for the six galaxies at orders 3, 5 and 10.",
+    "caption": "Mass, t50, dust, dust index, mass-weighted age and calibration noise floor for the six galaxies at orders 3, 5 and 10.",
     "target": ""
   },
   {
@@ -565,7 +565,7 @@ Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be
   {
     "path": "results/calibration-order/fit-M12_98104.png",
     "view": "Fits",
-    "caption": "M12_98104 · spectrum and photometry with the order 3, 5 and 10 posterior medians.",
+    "caption": "M12_98104 · spectrum and photometry at orders 3, 5 and 10.",
     "target": "M12_98104"
   },
   {
@@ -583,7 +583,7 @@ Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be
   {
     "path": "results/calibration-order/fit-M5_173928.png",
     "view": "Fits",
-    "caption": "M5_173928 · spectrum and photometry with the order 3, 5 and 10 posterior medians.",
+    "caption": "M5_173928 · spectrum and photometry at orders 3, 5 and 10.",
     "target": "M5_173928"
   },
   {
@@ -601,7 +601,7 @@ Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be
   {
     "path": "results/calibration-order/fit-M4_108989.png",
     "view": "Fits",
-    "caption": "M4_108989 · spectrum and photometry with the order 3, 5 and 10 posterior medians.",
+    "caption": "M4_108989 · spectrum and photometry at orders 3, 5 and 10.",
     "target": "M4_108989"
   },
   {
@@ -619,7 +619,7 @@ Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be
   {
     "path": "results/calibration-order/fit-M12_185653.png",
     "view": "Fits",
-    "caption": "M12_185653 · spectrum and photometry with the order 3, 5 and 10 posterior medians.",
+    "caption": "M12_185653 · spectrum and photometry at orders 3, 5 and 10.",
     "target": "M12_185653"
   },
   {
@@ -637,7 +637,7 @@ Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be
   {
     "path": "results/calibration-order/fit-M1_206545.png",
     "view": "Fits",
-    "caption": "M1_206545 · spectrum and photometry with the order 3, 5 and 10 posterior medians.",
+    "caption": "M1_206545 · spectrum and photometry at orders 3, 5 and 10.",
     "target": "M1_206545"
   },
   {
@@ -655,7 +655,7 @@ Roadmap item `calibration-polynomial` (priority 9): polynomial modes must not be
   {
     "path": "results/calibration-order/fit-M5_172669.png",
     "view": "Fits",
-    "caption": "M5_172669 · spectrum and photometry with the order 3, 5 and 10 posterior medians.",
+    "caption": "M5_172669 · spectrum and photometry at orders 3, 5 and 10.",
     "target": "M5_172669"
   },
   {

@@ -90,7 +90,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M12_181945",
     "arm": "full",
     "view": "Fits",
-    "caption": "M12_181945 · full. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_181945 · Spectrum · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_1_m12_181945/m12_181945_executed.ipynb",
@@ -100,7 +100,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M12_181945",
     "arm": "full",
     "view": "Fits",
-    "caption": "M12_181945 · full. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_181945 · Photometry · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_1_m12_181945/m12_181945_executed.ipynb",
@@ -110,7 +110,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M12_181945",
     "arm": "full",
     "view": "SFH",
-    "caption": "M12_181945 · full. Saved SFH and posterior interval."
+    "caption": "M12_181945 · SFH · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_3_m14_38648/m14_38648_executed.ipynb",
@@ -120,7 +120,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M14_38648",
     "arm": "full",
     "view": "Fits",
-    "caption": "M14_38648 · full. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M14_38648 · Spectrum · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_3_m14_38648/m14_38648_executed.ipynb",
@@ -130,7 +130,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M14_38648",
     "arm": "full",
     "view": "Fits",
-    "caption": "M14_38648 · full. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M14_38648 · Photometry · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_3_m14_38648/m14_38648_executed.ipynb",
@@ -140,7 +140,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M14_38648",
     "arm": "full",
     "view": "SFH",
-    "caption": "M14_38648 · full. Saved SFH and posterior interval."
+    "caption": "M14_38648 · SFH · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/m1_210210_executed.ipynb",
@@ -150,7 +150,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M1_210210",
     "arm": "full",
     "view": "Fits",
-    "caption": "M1_210210 · full. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · Spectrum · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/m1_210210_executed.ipynb",
@@ -160,7 +160,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M1_210210",
     "arm": "full",
     "view": "Fits",
-    "caption": "M1_210210 · full. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · Photometry · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_0_m1_210210/m1_210210_executed.ipynb",
@@ -170,7 +170,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M1_210210",
     "arm": "full",
     "view": "SFH",
-    "caption": "M1_210210 · full. Saved SFH and posterior interval."
+    "caption": "M1_210210 · SFH · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_2_m2_133501/m2_133501_executed.ipynb",
@@ -180,7 +180,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M2_133501",
     "arm": "full",
     "view": "Fits",
-    "caption": "M2_133501 · full. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M2_133501 · Spectrum · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_2_m2_133501/m2_133501_executed.ipynb",
@@ -190,7 +190,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M2_133501",
     "arm": "full",
     "view": "Fits",
-    "caption": "M2_133501 · full. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M2_133501 · Photometry · full, reference."
   },
   {
     "notebook": "results/rtx-4070-super-four-galaxy-fits/gpu_2_m2_133501/m2_133501_executed.ipynb",
@@ -200,7 +200,7 @@ Four independently seeded full-profile fits, one target per RTX 4070 SUPER worke
     "target": "M2_133501",
     "arm": "full",
     "view": "SFH",
-    "caption": "M2_133501 · full. Saved SFH and posterior interval."
+    "caption": "M2_133501 · SFH · full, reference."
   }
 ]
 ```

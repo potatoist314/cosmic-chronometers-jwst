@@ -187,7 +187,7 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
 [
   {
     "path": "wiki/analyses/emission-line-marginalisation/eline-off-spectrum.png",
-    "caption": "Option off: M1_210210 spectrum fit; emission regions masked.",
+    "caption": "M1_210210 · Spectrum · eline_off, reference (emission regions masked).",
     "view": "Fits",
     "target": "M1_210210",
     "arm": "eline_off",
@@ -195,7 +195,7 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
   },
   {
     "path": "wiki/analyses/emission-line-marginalisation/eline-off-photometry.png",
-    "caption": "Option off: M1_210210 photometry fit.",
+    "caption": "M1_210210 · Photometry · eline_off, reference (emission regions masked).",
     "view": "Fits",
     "target": "M1_210210",
     "arm": "eline_off",
@@ -203,7 +203,7 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
   },
   {
     "path": "wiki/analyses/emission-line-marginalisation/eline-on-spectrum.png",
-    "caption": "Option on: M1_210210 spectrum fit; fitted lines included.",
+    "caption": "M1_210210 · Spectrum · eline_on: line marginalisation on; otherwise as eline_off.",
     "view": "Fits",
     "target": "M1_210210",
     "arm": "eline_on",
@@ -211,7 +211,7 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
   },
   {
     "path": "wiki/analyses/emission-line-marginalisation/eline-on-photometry.png",
-    "caption": "Option on: M1_210210 photometry fit.",
+    "caption": "M1_210210 · Photometry · eline_on: line marginalisation on; otherwise as eline_off.",
     "view": "Fits",
     "target": "M1_210210",
     "arm": "eline_on",

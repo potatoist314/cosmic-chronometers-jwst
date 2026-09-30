@@ -152,25 +152,25 @@ M1_210210 was chosen on 17 Sep 2026 for fitting under roadmap item strong-spectr
     "path": "results/m1-210210-reference/fit-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "M1_210210. Spectrum, calibration polynomial over fitted pixels with 16-84% band, and photometry; posterior medians of fits A and C."
+    "caption": "M1_210210 · Spectrum and photometry · fit C: calibration order 10; otherwise as fit A (order 3)."
   },
   {
     "path": "results/m1-210210-reference/sfh-M1_210210.png",
     "view": "SFH",
     "target": "M1_210210",
-    "caption": "M1_210210. Star-formation history and cumulative mass fraction, fits A and C."
+    "caption": "M1_210210 · SFH · fit C: calibration order 10; otherwise as fit A (order 3)."
   },
   {
     "path": "results/m1-210210-reference/corner-M1_210210.png",
     "view": "Posteriors",
     "target": "M1_210210",
-    "caption": "M1_210210. Physical-parameter posteriors, 1-sigma contours, fits A and C."
+    "caption": "M1_210210 · Posteriors · fit C: calibration order 10; otherwise as fit A (order 3)."
   },
   {
     "path": "wiki/analyses/m1-210210-reference/kl-M1_210210.png",
     "view": "Comparison",
     "target": "M1_210210",
-    "caption": "M1_210210. KL divergence of each sampled parameter's posterior from its prior, in bits, sorted by fit C. Each fit is compared with its own prior."
+    "caption": "M1_210210 · KL divergence per sampled parameter in bits, sorted by fit C; each fit against its own prior."
   }
 ]
 ```

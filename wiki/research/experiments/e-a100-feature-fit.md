@@ -46,7 +46,7 @@ Feature-spectrum full-profile run on a Modal A100.
     "target": "M1_210210",
     "arm": "saved run",
     "view": "Fits",
-    "caption": "M1_210210 · saved run. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · Spectrum · saved run, reference."
   },
   {
     "notebook": "archive/results/a100-feature-spectrum/ceridwen_test_spectra.executed.ipynb",
@@ -56,7 +56,7 @@ Feature-spectrum full-profile run on a Modal A100.
     "target": "M1_210210",
     "arm": "saved run",
     "view": "SFH",
-    "caption": "M1_210210 · saved run. Saved SFH and posterior interval."
+    "caption": "M1_210210 · SFH · saved run, reference."
   }
 ]
 ```

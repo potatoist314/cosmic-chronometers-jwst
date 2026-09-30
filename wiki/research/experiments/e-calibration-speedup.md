@@ -122,19 +122,19 @@ The higher-order run (`e-calibration-order`) measured 66, 77 and 135 \(\mu\mathr
   {
     "path": "results/calibration-speedup/fit-M12_98104.png",
     "view": "Fits",
-    "caption": "M12_98104 · order 10. Spectrum and photometry with the old-code and new-code posterior medians.",
+    "caption": "M12_98104 · Spectrum and photometry · new calibration arithmetic; otherwise as old code (order 10).",
     "target": "M12_98104"
   },
   {
     "path": "results/calibration-speedup/sfh-M12_98104.png",
     "view": "SFH",
-    "caption": "M12_98104 · order 10. Star-formation history and cumulative mass fraction, old and new code.",
+    "caption": "M12_98104 · SFH · new calibration arithmetic; otherwise as old code (order 10).",
     "target": "M12_98104"
   },
   {
     "path": "results/calibration-speedup/corner-M12_98104.png",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 10. Physical-parameter posterior, old and new code.",
+    "caption": "M12_98104 · Posteriors · new calibration arithmetic; otherwise as old code (order 10).",
     "target": "M12_98104"
   }
 ]

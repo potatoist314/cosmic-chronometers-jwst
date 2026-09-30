@@ -360,7 +360,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "default14",
     "view": "Fits",
-    "caption": "M1_210210 · kcbump. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · kcbump, reference (slope prior U(-1, 0.4), bump prior U(0, 6))."
   },
   {
     "notebook": "results/m1-210210-kcbump-2026-09-29/run3/fits/default14/210210-M1_210210/M1_210210_executed.ipynb",
@@ -370,7 +370,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "default14",
     "view": "Fits",
-    "caption": "M1_210210 · kcbump. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · kcbump, reference (slope prior U(-1, 0.4), bump prior U(0, 6))."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
@@ -380,7 +380,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "wide",
     "view": "Fits",
-    "caption": "M1_210210 · wide. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · wide: slope prior U(-3, 0.4), bump prior U(0, 12); otherwise as kcbump."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
@@ -390,7 +390,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "wide",
     "view": "Fits",
-    "caption": "M1_210210 · wide. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · wide: slope prior U(-3, 0.4), bump prior U(0, 12); otherwise as kcbump."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb",
@@ -400,7 +400,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "zevo",
     "view": "Fits",
-    "caption": "M1_210210 · zevo. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · zevo: metallicity evolution on; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb",
@@ -410,7 +410,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "zevo",
     "view": "Fits",
-    "caption": "M1_210210 · zevo. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · zevo: metallicity evolution on; otherwise as wide."
   },
   {
     "notebook": "results/birth-cloud-dust/dust_index_m3/210210-M1_210210/M1_210210_executed.ipynb",
@@ -420,7 +420,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "dust_index_m3",
     "view": "Fits",
-    "caption": "M1_210210 · m3. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · m3: linked-bump law, slope prior U(-3, 0.4), birth-cloud dust off, seed 20260832; otherwise as kcbump."
   },
   {
     "notebook": "results/birth-cloud-dust/dust_index_m3/210210-M1_210210/M1_210210_executed.ipynb",
@@ -430,7 +430,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "dust_index_m3",
     "view": "Fits",
-    "caption": "M1_210210 · m3. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · m3: linked-bump law, slope prior U(-3, 0.4), birth-cloud dust off, seed 20260832; otherwise as kcbump."
   },
   {
     "notebook": "results/m1-210210-kcbump-2026-09-29/run3/fits/default14/210210-M1_210210/M1_210210_executed.ipynb",
@@ -440,7 +440,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "default14",
     "view": "SFH",
-    "caption": "M1_210210 · kcbump. Normalized SFR against lookback time; median and 16–84% band."
+    "caption": "M1_210210 · SFH · kcbump, reference (slope prior U(-1, 0.4), bump prior U(0, 6))."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
@@ -450,7 +450,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "wide",
     "view": "SFH",
-    "caption": "M1_210210 · wide. Normalized SFR against lookback time; median and 16–84% band."
+    "caption": "M1_210210 · SFH · wide: slope prior U(-3, 0.4), bump prior U(0, 12); otherwise as kcbump."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb",
@@ -460,19 +460,19 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "zevo",
     "view": "SFH",
-    "caption": "M1_210210 · zevo. Normalized SFR against lookback time; median and 16–84% band."
+    "caption": "M1_210210 · SFH · zevo: metallicity evolution on; otherwise as wide."
   },
   {
     "path": "results/m1-210210-kcbump-wide-2026-09-29/sfh-M1_210210.png",
     "view": "SFH",
     "target": "M1_210210",
-    "caption": "M1_210210 · kcbump / wide / m3. SFR per formed mass [yr⁻¹] against lookback time with 16–84% bands; right-panel cumulative mass fraction."
+    "caption": "M1_210210 · SFH · kcbump / wide / m3: SFR per formed mass against lookback time; right panel cumulative mass fraction."
   },
   {
     "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/sfh-M1_210210.png",
     "view": "SFH",
     "target": "M1_210210",
-    "caption": "M1_210210 · wide / zevo. SFR per formed mass [yr⁻¹] against lookback time with 16–84% bands; right-panel cumulative mass fraction."
+    "caption": "M1_210210 · SFH · wide / zevo: SFR per formed mass against lookback time; right panel cumulative mass fraction."
   },
   {
     "notebook": "results/m1-210210-kcbump-2026-09-29/run3/fits/default14/210210-M1_210210/M1_210210_executed.ipynb",
@@ -482,7 +482,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "default14",
     "view": "Posteriors",
-    "caption": "M1_210210 · kcbump. Physical-parameter posteriors for log M*, [Fe/H], [α/Fe], τ_dust, f_calib, Δv_z, σ*, t_MW."
+    "caption": "M1_210210 · Posteriors · kcbump, reference (slope prior U(-1, 0.4), bump prior U(0, 6))."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb",
@@ -492,7 +492,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "wide",
     "view": "Posteriors",
-    "caption": "M1_210210 · wide. Physical-parameter posteriors for log M*, [Fe/H], [α/Fe], τ_dust, f_calib, Δv_z, σ*, t_MW."
+    "caption": "M1_210210 · Posteriors · wide: slope prior U(-3, 0.4), bump prior U(0, 12); otherwise as kcbump."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb",
@@ -502,19 +502,19 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "zevo",
     "view": "Posteriors",
-    "caption": "M1_210210 · zevo. Physical-parameter posteriors for log M*, [Fe/H], [α/Fe], τ_dust, f_calib, Δv_z, σ*, t_MW; [Fe/H] is log₁₀(⟨Z⟩/Z☉), with ⟨Z⟩ the formed-mass-weighted metallicity."
+    "caption": "M1_210210 · Posteriors · zevo: metallicity evolution on; otherwise as wide."
   },
   {
     "path": "results/m1-210210-kcbump-wide-2026-09-29/corner-M1_210210.png",
     "view": "Posteriors",
     "target": "M1_210210",
-    "caption": "M1_210210 · kcbump / wide / m3. Physical-parameter posteriors with 1-sigma contours for log M*, [Fe/H], [α/Fe], τ_dust, δ_dust, E_bump, t_MW; m3 E_bump is tied to 0.85 − 1.9 δ_dust."
+    "caption": "M1_210210 · Posteriors · kcbump / wide / m3: log M*, [Fe/H], [a/Fe], tau_dust, delta_dust, E_bump, t_MW with 1-sigma contours; m3 bump tied to slope; kcbump at its delta=-1 and E_bump=6 bounds, wide inside its delta prior with E_bump reaching 12."
   },
   {
     "path": "results/m1-210210-kcbump-wide-zevo-2026-09-29/corner-M1_210210.png",
     "view": "Posteriors",
     "target": "M1_210210",
-    "caption": "M1_210210 · wide / zevo. Physical-parameter posteriors with 1-sigma contours for log M*, [Fe/H], [α/Fe], τ_dust, δ_dust, E_bump, t_MW; [Fe/H] is log₁₀(⟨Z⟩/Z☉) for zevo, with ⟨Z⟩ the formed-mass-weighted metallicity."
+    "caption": "M1_210210 · Posteriors · wide / zevo: log M*, [Fe/H], [a/Fe], tau_dust, delta_dust, E_bump, t_MW with 1-sigma contours; zevo [Fe/H] is formed-mass-weighted."
   }
 ]
 ```

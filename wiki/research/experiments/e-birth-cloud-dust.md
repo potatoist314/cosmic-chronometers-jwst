@@ -201,7 +201,7 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
     "target": "M1_210210",
     "arm": "dust1_off",
     "view": "Fits",
-    "caption": "M1_210210 · birth-cloud dust off. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · dust1_off, reference."
   },
   {
     "notebook": "results/birth-cloud-dust/dust1_off/210210-M1_210210/M1_210210_executed.ipynb",
@@ -211,7 +211,7 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
     "target": "M1_210210",
     "arm": "dust1_off",
     "view": "Fits",
-    "caption": "M1_210210 · birth-cloud dust off. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · dust1_off, reference."
   },
   {
     "notebook": "results/birth-cloud-dust/dust1_on/210210-M1_210210/M1_210210_executed.ipynb",
@@ -221,7 +221,7 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
     "target": "M1_210210",
     "arm": "dust1_on",
     "view": "Fits",
-    "caption": "M1_210210 · birth-cloud dust on. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · dust1_on: birth-cloud dust on, dust ratio prior ClippedNormal(1, 0.3, 0, 2); otherwise as dust1_off."
   },
   {
     "notebook": "results/birth-cloud-dust/dust1_on/210210-M1_210210/M1_210210_executed.ipynb",
@@ -231,7 +231,7 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
     "target": "M1_210210",
     "arm": "dust1_on",
     "view": "Fits",
-    "caption": "M1_210210 · birth-cloud dust on. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · dust1_on: birth-cloud dust on, dust ratio prior ClippedNormal(1, 0.3, 0, 2); otherwise as dust1_off."
   },
   {
     "notebook": "results/birth-cloud-dust/dust_index_m3/210210-M1_210210/M1_210210_executed.ipynb",
@@ -241,7 +241,7 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
     "target": "M1_210210",
     "arm": "dust_index_m3",
     "view": "Fits",
-    "caption": "M1_210210 · dust index prior down to −3. Spectrum over fitted pixels; joint posterior median and 16–84% band; lower-panel pull at fitted noise floor."
+    "caption": "M1_210210 · Spectrum · dust_index_m3: dust-index prior U(-3, 0.4); otherwise as dust1_off."
   },
   {
     "notebook": "results/birth-cloud-dust/dust_index_m3/210210-M1_210210/M1_210210_executed.ipynb",
@@ -251,19 +251,19 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
     "target": "M1_210210",
     "arm": "dust_index_m3",
     "view": "Fits",
-    "caption": "M1_210210 · dust index prior down to −3. Observed 28-band fluxes with per-band posterior medians (16–84%); lower-panel per-band pulls."
+    "caption": "M1_210210 · Photometry · dust_index_m3: dust-index prior U(-3, 0.4); otherwise as dust1_off."
   },
   {
     "path": "results/birth-cloud-dust/sfh-M1_210210.png",
     "view": "SFH",
     "target": "M1_210210",
-    "caption": "M1_210210. Star-formation history with 16–84% band and cumulative mass fraction for the off, on and m3 arms."
+    "caption": "M1_210210 · SFH · dust1_off / dust1_on / dust_index_m3; right panel cumulative mass fraction."
   },
   {
     "path": "results/birth-cloud-dust/corner-M1_210210.png",
     "view": "Posteriors",
     "target": "M1_210210",
-    "caption": "M1_210210. Physical-parameter posteriors with 1-sigma contours for the off, on and m3 arms."
+    "caption": "M1_210210 · Posteriors · dust1_off / dust1_on / dust_index_m3 with 1-sigma contours."
   }
 ]
 ```
