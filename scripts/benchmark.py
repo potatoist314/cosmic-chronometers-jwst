@@ -31,6 +31,9 @@ else:
 ROOT = vast.PROJECT_ROOT
 NOTEBOOK = 'notebooks/ceridwen_integrated_photometry_spectra.ipynb'
 SUBMODULES = ('ceridwen', 'external/sedpy_jax')
+# Not in the installed wheels, so not uploaded: ceridwen test fixtures (64 MB
+# compressed) and old sedpy_jax build outputs (4 MB).
+UNUSED_SOURCE = {'ceridwen': 'tests', 'external/sedpy_jax': 'dist'}
 INPUT_DIRS = ('legac_dr2', 'cosmos2015', 'cosmos2020', 'cosmos2025', 'hst_f814w')
 INPUT_FILES = ('external/fsps/data/emlines_info.dat',)
 REMOTE = vast.REMOTE_ROOT
@@ -274,7 +277,7 @@ class Run:
         source = self.data['source']
         self.archive(attempt, ROOT, source['commit'], ('scripts', NOTEBOOK))
         for tree, revision in source['submodules'].items():
-            self.archive(attempt, ROOT / tree, revision)
+            self.archive(attempt, ROOT / tree, revision, ('.', f':(exclude){UNUSED_SOURCE[tree]}'))
         target, port = vast._ssh_target(instance)
         vast._ssh(instance, f'mkdir -p {REMOTE}/data/raw {REMOTE}/grid; command -v rsync || (apt-get update -qq && apt-get install -y -qq rsync)', timeout=self.timeout(attempt))
         if 'input_files' in source:

@@ -399,6 +399,37 @@ def test_upload_includes_hst_cutouts_and_line_table(run, cloud, monkeypatch):
     assert str(bench.ROOT / 'external/fsps/data/emlines_info.dat') in copied
 
 
+def test_upload_leaves_unused_submodule_source_out(run, cloud, monkeypatch):
+    archives = []
+    monkeypatch.setattr(run, 'archive', lambda attempt, tree, revision, paths=(): archives.append((tree, paths)))
+    monkeypatch.setattr(bench.vast, '_ssh_target', lambda _: ('root@test', '22'))
+    monkeypatch.setattr(bench.vast, '_rsync', lambda *a, **kw: None)
+    run.data['source']['submodules'] = {'ceridwen': 'a', 'external/sedpy_jax': 'b'}
+    bench.Run.upload(run, {'instance_id': 100, 'price': .2})
+    assert archives[1:] == [(bench.ROOT / 'ceridwen', ('.', ':(exclude)tests')),
+                            (bench.ROOT / 'external/sedpy_jax', ('.', ':(exclude)dist'))]
+
+
+def test_archive_pathspec_excludes_a_directory(run, tmp_path, monkeypatch):
+    import io
+    import tarfile
+    tree = tmp_path / 'ceridwen'
+    for name in ('tests/fixture.h5', 'ceridwen/model.py', 'pyproject.toml'):
+        (tree / name).parent.mkdir(parents=True, exist_ok=True)
+        (tree / name).write_text(name)
+    for command in (['init', '-q'], ['add', '.'], ['-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-qm', 'x']):
+        subprocess.run(['git', '-C', str(tree), *command], check=True)
+    monkeypatch.setattr(bench, 'ROOT', tmp_path)
+    monkeypatch.setattr(bench.vast, '_ssh_target', lambda _: ('root@test', '22'))
+    sent, original = [], subprocess.run
+    monkeypatch.setattr(bench.subprocess, 'run', lambda command, **kw: sent.append(kw['input'])
+                        if command[0] == 'ssh' else original(command, **kw))
+    run.archive({'instance_id': 100, 'price': .2}, tree, 'HEAD', ('.', ':(exclude)tests'))
+    names = tarfile.open(fileobj=io.BytesIO(sent[0])).getnames()
+    assert {'ceridwen/model.py', 'pyproject.toml'} <= set(names)
+    assert not any(name.startswith('tests') for name in names)
+
+
 def test_local_ssh_failure_destroys_once_without_waiting_or_replacement(run, cloud, monkeypatch):
     offer, state = cloud
     monkeypatch.setattr(bench.vast, 'search_offers', lambda *a, **kw:
