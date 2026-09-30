@@ -284,7 +284,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep1",
     "view": "Fits",
-    "caption": "M4_108989 · new default rep1 · seed 20261924. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · new_default_rep1: seed 20261924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep1/108989-M4_108989/M4_108989_executed.ipynb",
@@ -294,7 +294,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep1",
     "view": "Fits",
-    "caption": "M4_108989 · new default rep1 · seed 20261924. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · new_default_rep1: seed 20261924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -304,7 +304,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep2",
     "view": "Fits",
-    "caption": "M4_108989 · new default rep2 · seed 20262924. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · new_default_rep2: seed 20262924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -314,7 +314,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep2",
     "view": "Fits",
-    "caption": "M4_108989 · new default rep2 · seed 20262924. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · new_default_rep2: seed 20262924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -324,7 +324,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Photometry · poly3_total, reference (seed 20260924)."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -334,7 +334,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · poly3_total, reference (seed 20260924)."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/108989-M4_108989/M4_108989_executed.ipynb",
@@ -344,7 +344,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep1",
     "view": "Fits",
-    "caption": "M4_108989 · seed rep1 · seed 20261924. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · seed_rep1: seed 20261924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/108989-M4_108989/M4_108989_executed.ipynb",
@@ -354,7 +354,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep1",
     "view": "Fits",
-    "caption": "M4_108989 · seed rep1 · seed 20261924. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · seed_rep1: seed 20261924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -364,7 +364,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep2",
     "view": "Fits",
-    "caption": "M4_108989 · seed rep2 · seed 20262924. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · seed_rep2: seed 20262924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -374,7 +374,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep2",
     "view": "Fits",
-    "caption": "M4_108989 · seed rep2 · seed 20262924. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · seed_rep2: seed 20262924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -384,7 +384,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep3",
     "view": "Fits",
-    "caption": "M4_108989 · seed rep3 · seed 20263924. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · seed_rep3: seed 20263924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -394,7 +394,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep3",
     "view": "Fits",
-    "caption": "M4_108989 · seed rep3 · seed 20263924. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · seed_rep3: seed 20263924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep1/108989-M4_108989/M4_108989_executed.ipynb",
@@ -404,7 +404,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep1",
     "view": "SFH",
-    "caption": "M4_108989 · new default rep1 · seed 20261924. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · new_default_rep1: seed 20261924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -414,7 +414,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep2",
     "view": "SFH",
-    "caption": "M4_108989 · new default rep2 · seed 20262924. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · new_default_rep2: seed 20262924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -424,7 +424,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M4_108989 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M4_108989 · Photometry · poly3_total, reference (seed 20260924)."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/108989-M4_108989/M4_108989_executed.ipynb",
@@ -434,7 +434,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep1",
     "view": "SFH",
-    "caption": "M4_108989 · seed rep1 · seed 20261924. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · seed_rep1: seed 20261924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -444,7 +444,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep2",
     "view": "SFH",
-    "caption": "M4_108989 · seed rep2 · seed 20262924. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · seed_rep2: seed 20262924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -454,7 +454,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep3",
     "view": "SFH",
-    "caption": "M4_108989 · seed rep3 · seed 20263924. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · seed_rep3: seed 20263924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep1/108989-M4_108989/M4_108989_executed.ipynb",
@@ -464,7 +464,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep1",
     "view": "Posteriors",
-    "caption": "M4_108989 · new default rep1 · seed 20261924. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · new_default_rep1: seed 20261924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep1/108989-M4_108989/M4_108989_executed.ipynb",
@@ -474,7 +474,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep1",
     "view": "Posteriors",
-    "caption": "M4_108989 · new default rep1 · seed 20261924. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · new_default_rep1: seed 20261924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -484,7 +484,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep2",
     "view": "Posteriors",
-    "caption": "M4_108989 · new default rep2 · seed 20262924. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · new_default_rep2: seed 20262924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -494,7 +494,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "new_default_rep2",
     "view": "Posteriors",
-    "caption": "M4_108989 · new default rep2 · seed 20262924. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · new_default_rep2: seed 20262924, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -504,7 +504,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M4_108989 · Photometry · poly3_total, reference (seed 20260924)."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -514,7 +514,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · poly3_total, reference (seed 20260924)."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/108989-M4_108989/M4_108989_executed.ipynb",
@@ -524,7 +524,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep1",
     "view": "Posteriors",
-    "caption": "M4_108989 · seed rep1 · seed 20261924. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · seed_rep1: seed 20261924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/108989-M4_108989/M4_108989_executed.ipynb",
@@ -534,7 +534,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep1",
     "view": "Posteriors",
-    "caption": "M4_108989 · seed rep1 · seed 20261924. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · seed_rep1: seed 20261924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -544,7 +544,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep2",
     "view": "Posteriors",
-    "caption": "M4_108989 · seed rep2 · seed 20262924. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · seed_rep2: seed 20262924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/108989-M4_108989/M4_108989_executed.ipynb",
@@ -554,7 +554,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep2",
     "view": "Posteriors",
-    "caption": "M4_108989 · seed rep2 · seed 20262924. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · seed_rep2: seed 20262924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -564,7 +564,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep3",
     "view": "Posteriors",
-    "caption": "M4_108989 · seed rep3 · seed 20263924. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · seed_rep3: seed 20263924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -574,7 +574,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M4_108989",
     "arm": "seed_rep3",
     "view": "Posteriors",
-    "caption": "M4_108989 · seed rep3 · seed 20263924. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · seed_rep3: seed 20263924; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -584,7 +584,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep1",
     "view": "Fits",
-    "caption": "M5_172669 · new default rep1 · seed 20261830. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · new_default_rep1: seed 20261830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -594,7 +594,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep1",
     "view": "Fits",
-    "caption": "M5_172669 · new default rep1 · seed 20261830. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · new_default_rep1: seed 20261830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -604,7 +604,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep2",
     "view": "Fits",
-    "caption": "M5_172669 · new default rep2 · seed 20262830. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · new_default_rep2: seed 20262830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -614,7 +614,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep2",
     "view": "Fits",
-    "caption": "M5_172669 · new default rep2 · seed 20262830. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · new_default_rep2: seed 20262830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -624,7 +624,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Photometry · poly3_total, reference (seed 20260830)."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -634,7 +634,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · poly3_total, reference (seed 20260830)."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -644,7 +644,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep1",
     "view": "Fits",
-    "caption": "M5_172669 · seed rep1 · seed 20261830. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · seed_rep1: seed 20261830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -654,7 +654,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep1",
     "view": "Fits",
-    "caption": "M5_172669 · seed rep1 · seed 20261830. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · seed_rep1: seed 20261830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -664,7 +664,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep2",
     "view": "Fits",
-    "caption": "M5_172669 · seed rep2 · seed 20262830. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · seed_rep2: seed 20262830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -674,7 +674,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep2",
     "view": "Fits",
-    "caption": "M5_172669 · seed rep2 · seed 20262830. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · seed_rep2: seed 20262830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -684,7 +684,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep3",
     "view": "Fits",
-    "caption": "M5_172669 · seed rep3 · seed 20263830. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · seed_rep3: seed 20263830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -694,7 +694,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep3",
     "view": "Fits",
-    "caption": "M5_172669 · seed rep3 · seed 20263830. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · seed_rep3: seed 20263830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -704,7 +704,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep1",
     "view": "SFH",
-    "caption": "M5_172669 · new default rep1 · seed 20261830. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · new_default_rep1: seed 20261830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -714,7 +714,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep2",
     "view": "SFH",
-    "caption": "M5_172669 · new default rep2 · seed 20262830. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · new_default_rep2: seed 20262830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -724,7 +724,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_172669 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_172669 · Photometry · poly3_total, reference (seed 20260830)."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -734,7 +734,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep1",
     "view": "SFH",
-    "caption": "M5_172669 · seed rep1 · seed 20261830. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · seed_rep1: seed 20261830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -744,7 +744,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep2",
     "view": "SFH",
-    "caption": "M5_172669 · seed rep2 · seed 20262830. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · seed_rep2: seed 20262830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -754,7 +754,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep3",
     "view": "SFH",
-    "caption": "M5_172669 · seed rep3 · seed 20263830. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · seed_rep3: seed 20263830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -764,7 +764,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep1",
     "view": "Posteriors",
-    "caption": "M5_172669 · new default rep1 · seed 20261830. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · new_default_rep1: seed 20261830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -774,7 +774,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep1",
     "view": "Posteriors",
-    "caption": "M5_172669 · new default rep1 · seed 20261830. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · new_default_rep1: seed 20261830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -784,7 +784,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep2",
     "view": "Posteriors",
-    "caption": "M5_172669 · new default rep2 · seed 20262830. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · new_default_rep2: seed 20262830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -794,7 +794,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "new_default_rep2",
     "view": "Posteriors",
-    "caption": "M5_172669 · new default rep2 · seed 20262830. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · new_default_rep2: seed 20262830, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -804,7 +804,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_172669 · Photometry · poly3_total, reference (seed 20260830)."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -814,7 +814,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · poly3_total, reference (seed 20260830)."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -824,7 +824,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep1",
     "view": "Posteriors",
-    "caption": "M5_172669 · seed rep1 · seed 20261830. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · seed_rep1: seed 20261830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep1/172669-M5_172669/M5_172669_executed.ipynb",
@@ -834,7 +834,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep1",
     "view": "Posteriors",
-    "caption": "M5_172669 · seed rep1 · seed 20261830. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · seed_rep1: seed 20261830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -844,7 +844,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep2",
     "view": "Posteriors",
-    "caption": "M5_172669 · seed rep2 · seed 20262830. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · seed_rep2: seed 20262830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep2/172669-M5_172669/M5_172669_executed.ipynb",
@@ -854,7 +854,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep2",
     "view": "Posteriors",
-    "caption": "M5_172669 · seed rep2 · seed 20262830. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · seed_rep2: seed 20262830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -864,7 +864,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep3",
     "view": "Posteriors",
-    "caption": "M5_172669 · seed rep3 · seed 20263830. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · seed_rep3: seed 20263830; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/seed_rep3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -874,7 +874,7 @@ Independent NSS seed repeats on two targets, for poly3_total and new_default. Th
     "target": "M5_172669",
     "arm": "seed_rep3",
     "view": "Posteriors",
-    "caption": "M5_172669 · seed rep3 · seed 20263830. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · seed_rep3: seed 20263830; otherwise as poly3_total."
   }
 ]
 ```

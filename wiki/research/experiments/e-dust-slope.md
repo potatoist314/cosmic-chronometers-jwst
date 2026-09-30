@@ -414,7 +414,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M12_185653 · free dust slope. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Spectrum · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/185653-M12_185653/M12_185653_executed.ipynb",
@@ -424,7 +424,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M12_185653 · free dust slope. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/185653-M12_185653/M12_185653_executed.ipynb",
@@ -434,7 +434,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M12_185653 · wider dust-slope bound. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Spectrum · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/185653-M12_185653/M12_185653_executed.ipynb",
@@ -444,7 +444,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M12_185653 · wider dust-slope bound. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -454,7 +454,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -464,7 +464,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/185653-M12_185653/M12_185653_executed.ipynb",
@@ -474,7 +474,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_free",
     "view": "SFH",
-    "caption": "M12_185653 · free dust slope. Saved SFH and posterior interval."
+    "caption": "M12_185653 · SFH · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/185653-M12_185653/M12_185653_executed.ipynb",
@@ -484,7 +484,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_wide",
     "view": "SFH",
-    "caption": "M12_185653 · wider dust-slope bound. Saved SFH and posterior interval."
+    "caption": "M12_185653 · SFH · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -494,7 +494,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_185653 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/185653-M12_185653/M12_185653_executed.ipynb",
@@ -504,7 +504,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M12_185653 · free dust slope. Physical-parameter posterior."
+    "caption": "M12_185653 · Posteriors · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/185653-M12_185653/M12_185653_executed.ipynb",
@@ -514,7 +514,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M12_185653 · free dust slope. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/185653-M12_185653/M12_185653_executed.ipynb",
@@ -524,7 +524,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M12_185653 · wider dust-slope bound. Physical-parameter posterior."
+    "caption": "M12_185653 · Posteriors · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/185653-M12_185653/M12_185653_executed.ipynb",
@@ -534,7 +534,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M12_185653 · wider dust-slope bound. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -544,7 +544,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -554,7 +554,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/98104-M12_98104/M12_98104_executed.ipynb",
@@ -564,7 +564,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M12_98104 · free dust slope. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Spectrum · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/98104-M12_98104/M12_98104_executed.ipynb",
@@ -574,7 +574,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M12_98104 · free dust slope. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/98104-M12_98104/M12_98104_executed.ipynb",
@@ -584,7 +584,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M12_98104 · wider dust-slope bound. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Spectrum · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/98104-M12_98104/M12_98104_executed.ipynb",
@@ -594,7 +594,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M12_98104 · wider dust-slope bound. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -604,7 +604,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -614,7 +614,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/98104-M12_98104/M12_98104_executed.ipynb",
@@ -624,7 +624,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_free",
     "view": "SFH",
-    "caption": "M12_98104 · free dust slope. Saved SFH and posterior interval."
+    "caption": "M12_98104 · SFH · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/98104-M12_98104/M12_98104_executed.ipynb",
@@ -634,7 +634,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_wide",
     "view": "SFH",
-    "caption": "M12_98104 · wider dust-slope bound. Saved SFH and posterior interval."
+    "caption": "M12_98104 · SFH · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -644,7 +644,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_98104 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/98104-M12_98104/M12_98104_executed.ipynb",
@@ -654,7 +654,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M12_98104 · free dust slope. Physical-parameter posterior."
+    "caption": "M12_98104 · Posteriors · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/98104-M12_98104/M12_98104_executed.ipynb",
@@ -664,7 +664,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M12_98104 · free dust slope. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/98104-M12_98104/M12_98104_executed.ipynb",
@@ -674,7 +674,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M12_98104 · wider dust-slope bound. Physical-parameter posterior."
+    "caption": "M12_98104 · Posteriors · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/98104-M12_98104/M12_98104_executed.ipynb",
@@ -684,7 +684,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M12_98104 · wider dust-slope bound. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -694,7 +694,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -704,7 +704,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/206545-M1_206545/M1_206545_executed.ipynb",
@@ -714,7 +714,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M1_206545 · free dust slope. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Spectrum · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/206545-M1_206545/M1_206545_executed.ipynb",
@@ -724,7 +724,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M1_206545 · free dust slope. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/206545-M1_206545/M1_206545_executed.ipynb",
@@ -734,7 +734,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M1_206545 · wider dust-slope bound. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Spectrum · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/206545-M1_206545/M1_206545_executed.ipynb",
@@ -744,7 +744,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M1_206545 · wider dust-slope bound. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -754,7 +754,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -764,7 +764,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/206545-M1_206545/M1_206545_executed.ipynb",
@@ -774,7 +774,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_free",
     "view": "SFH",
-    "caption": "M1_206545 · free dust slope. Saved SFH and posterior interval."
+    "caption": "M1_206545 · SFH · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/206545-M1_206545/M1_206545_executed.ipynb",
@@ -784,7 +784,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_wide",
     "view": "SFH",
-    "caption": "M1_206545 · wider dust-slope bound. Saved SFH and posterior interval."
+    "caption": "M1_206545 · SFH · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -794,7 +794,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M1_206545 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/206545-M1_206545/M1_206545_executed.ipynb",
@@ -804,7 +804,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M1_206545 · free dust slope. Physical-parameter posterior."
+    "caption": "M1_206545 · Posteriors · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/206545-M1_206545/M1_206545_executed.ipynb",
@@ -814,7 +814,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M1_206545 · free dust slope. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/206545-M1_206545/M1_206545_executed.ipynb",
@@ -824,7 +824,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M1_206545 · wider dust-slope bound. Physical-parameter posterior."
+    "caption": "M1_206545 · Posteriors · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/206545-M1_206545/M1_206545_executed.ipynb",
@@ -834,7 +834,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M1_206545 · wider dust-slope bound. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -844,7 +844,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -854,7 +854,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/108989-M4_108989/M4_108989_executed.ipynb",
@@ -864,7 +864,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M4_108989 · free dust slope. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/108989-M4_108989/M4_108989_executed.ipynb",
@@ -874,7 +874,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M4_108989 · free dust slope. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/108989-M4_108989/M4_108989_executed.ipynb",
@@ -884,7 +884,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M4_108989 · wider dust-slope bound. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/108989-M4_108989/M4_108989_executed.ipynb",
@@ -894,7 +894,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M4_108989 · wider dust-slope bound. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -904,7 +904,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -914,7 +914,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/108989-M4_108989/M4_108989_executed.ipynb",
@@ -924,7 +924,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_free",
     "view": "SFH",
-    "caption": "M4_108989 · free dust slope. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/108989-M4_108989/M4_108989_executed.ipynb",
@@ -934,7 +934,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_wide",
     "view": "SFH",
-    "caption": "M4_108989 · wider dust-slope bound. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -944,7 +944,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M4_108989 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/108989-M4_108989/M4_108989_executed.ipynb",
@@ -954,7 +954,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M4_108989 · free dust slope. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/108989-M4_108989/M4_108989_executed.ipynb",
@@ -964,7 +964,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M4_108989 · free dust slope. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/108989-M4_108989/M4_108989_executed.ipynb",
@@ -974,7 +974,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M4_108989 · wider dust-slope bound. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/108989-M4_108989/M4_108989_executed.ipynb",
@@ -984,7 +984,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M4_108989 · wider dust-slope bound. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -994,7 +994,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -1004,7 +1004,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1014,7 +1014,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M5_172669 · free dust slope. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1024,7 +1024,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M5_172669 · free dust slope. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1034,7 +1034,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M5_172669 · wider dust-slope bound. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1044,7 +1044,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M5_172669 · wider dust-slope bound. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1054,7 +1054,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1064,7 +1064,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1074,7 +1074,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_free",
     "view": "SFH",
-    "caption": "M5_172669 · free dust slope. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1084,7 +1084,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_wide",
     "view": "SFH",
-    "caption": "M5_172669 · wider dust-slope bound. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1094,7 +1094,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_172669 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1104,7 +1104,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M5_172669 · free dust slope. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1114,7 +1114,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M5_172669 · free dust slope. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1124,7 +1124,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M5_172669 · wider dust-slope bound. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1134,7 +1134,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M5_172669 · wider dust-slope bound. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1144,7 +1144,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1154,7 +1154,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1164,7 +1164,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M5_173928 · free dust slope. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Spectrum · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1174,7 +1174,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_free",
     "view": "Fits",
-    "caption": "M5_173928 · free dust slope. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1184,7 +1184,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M5_173928 · wider dust-slope bound. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Spectrum · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1194,7 +1194,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_wide",
     "view": "Fits",
-    "caption": "M5_173928 · wider dust-slope bound. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1204,7 +1204,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1214,7 +1214,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1224,7 +1224,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_free",
     "view": "SFH",
-    "caption": "M5_173928 · free dust slope. Saved SFH and posterior interval."
+    "caption": "M5_173928 · SFH · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1234,7 +1234,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_wide",
     "view": "SFH",
-    "caption": "M5_173928 · wider dust-slope bound. Saved SFH and posterior interval."
+    "caption": "M5_173928 · SFH · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1244,7 +1244,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_173928 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1254,7 +1254,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M5_173928 · free dust slope. Physical-parameter posterior."
+    "caption": "M5_173928 · Posteriors · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_free/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1264,7 +1264,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_free",
     "view": "Posteriors",
-    "caption": "M5_173928 · free dust slope. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · dust_free: dust index free U(-1, 0.4); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1274,7 +1274,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M5_173928 · wider dust-slope bound. Physical-parameter posterior."
+    "caption": "M5_173928 · Posteriors · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/dust_wide/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1284,7 +1284,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "dust_wide",
     "view": "Posteriors",
-    "caption": "M5_173928 · wider dust-slope bound. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · dust_wide: dust-index prior U(-2, 0.5), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1294,7 +1294,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1304,7 +1304,7 @@ Free the attenuation slope on [-1, 0.4], then test a wider lower bound. All othe
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · poly3_total, reference."
   }
 ]
 ```
