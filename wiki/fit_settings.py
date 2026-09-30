@@ -83,7 +83,8 @@ DISTRIBUTIONS = {  # class name -> display; slots are the call's keyword argumen
 FUNCTIONS = {"np.log": r"\(\ln\) %s"}
 AXES = {"Z": "[Fe/H]"}  # key shown in the units of this `grid axes` entry of the run's stdout
 LINES_KEY = "emission_lines"  # rest wavelengths masked within the `dv` km/s of the notebook's `mask_lines` call
-LINES = {3726.0: "[O II]", 3728.8: "[O II]", 4861.3: r"H\(\beta\)", 4958.9: "[O III]", 5006.8: "[O III]"}
+LINES = {3726.0: "[O II]", 3728.8: "[O II]", 4861.3: r"H\(\beta\)", 4958.9: "[O III]", 5006.8: "[O III]",
+         3934.77: "Ca II K", 3966.6: "Ca II H", 3973.3: "Ca II H", 4227.92: "Ca I"}
 LINES_NOTE = r"masked ±%d to ±%d \(\text{\AA}\)"
 SLOT = re.compile(r"%\(((\w+)[\w.:]*)\)s")
 DV = re.compile(r"mask_lines\(.*?\bdv=([0-9.]+)", re.S)
