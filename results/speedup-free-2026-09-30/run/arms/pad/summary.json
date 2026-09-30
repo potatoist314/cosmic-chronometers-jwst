@@ -1,0 +1,18 @@
+{
+ "tag": "pad",
+ "kernel": "carry",
+ "pad": "1",
+ "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/new_ceridwen/ceridwen/__init__.py",
+ "sedpy_jax": "/workspace/cosmic-chronometers-jwst/external/sedpy_jax/sedpy_jax/__init__.py",
+ "device": "NVIDIA GeForce RTX 5090",
+ "x64": true,
+ "log_evidence": 231475.9896137546,
+ "sampler_logZ": 231475.92914720232,
+ "n_dead": 27000,
+ "n_likelihood_calls": 8441104,
+ "iterations": 265,
+ "sampling_wall_s": 240.40441063325852,
+ "first_iteration_s": 9.996380261145532,
+ "later_iterations_s": 230.06398385576904,
+ "script_wall_s": 264.6960355238989
+}

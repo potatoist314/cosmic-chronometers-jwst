@@ -1,0 +1,18 @@
+{
+ "tag": "lanes",
+ "kernel": "lanes",
+ "pad": "0",
+ "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/new_ceridwen/ceridwen/__init__.py",
+ "sedpy_jax": "/workspace/cosmic-chronometers-jwst/external/sedpy_jax/sedpy_jax/__init__.py",
+ "device": "NVIDIA GeForce RTX 5090",
+ "x64": true,
+ "log_evidence": 231475.88983920688,
+ "sampler_logZ": 231475.82946685064,
+ "n_dead": 27100,
+ "n_likelihood_calls": 8450649,
+ "iterations": 266,
+ "sampling_wall_s": 108.6742476071231,
+ "first_iteration_s": 5.6912014707922935,
+ "later_iterations_s": 102.68108502496034,
+ "script_wall_s": 132.57764181029052
+}
