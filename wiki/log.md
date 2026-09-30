@@ -1402,3 +1402,8 @@
 - Deletion preserves dated wording in the research record and removes deleted priorities from dependencies.
 - The last direction entry cannot be deleted.
 - Files: wiki/direction.py, wiki/research.py, wiki/assets/activity.js, wiki/assets/activity.css, wiki/tests/test_direction.py, wiki/research/README.md.
+
+### 2026-09-30 — e-mask-all-ca results
+
+- `research/experiments/e-mask-all-ca.md`: results for M1_210210 arms `neb_maskallca`, `neb_eline_ca` and `neb_eline_ca_nohe`; status results-ready.
+- Result directories: `results/m1-210210-maskallca-2026-09-30`, `results/m1-210210-neb-eline-ca-2026-09-30`, `results/m1-210210-neb-eline-ca-nohe-2026-09-30`.
