@@ -412,3 +412,74 @@ def test_main_rebuilds_figures_only_after_success(tmp_path, monkeypatch, code):
     monkeypatch.setattr(exp, 'regenerate_figures', lambda output: calls.append(output))
     assert exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(out)]) == code
     assert calls == ([out] if code == 0 else [])
+
+
+def add_alternative_arm(run):
+    first = run.data['source']['experiment'][0]
+    run.data['source']['experiment'].append({**first, 'name': 'alternative/M1_210210', 'arm': 'alternative'})
+
+
+def test_several_fits_per_gpu_share_one_stage_then_each_is_validated(run, cloud, monkeypatch):
+    add_alternative_arm(run)
+    run.args.fits_per_gpu = 2
+    checked = []
+    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
+    monkeypatch.setattr(exp, 'validate_local_result', checked.append)
+    assert run.execute() == 0
+    commands = cloud[1]['commands']
+    launches = [c for c in commands if 'setsid' in c and '.experiment/' in c]
+    assert len(launches) == 1 and 'fit-0' in launches[0] and '--fits-per-gpu 2' in launches[0]
+    writes = [c for c in commands if c.startswith('mkdir -p') and c.endswith('/config.json')]
+    assert len(writes) == 1 and 'baseline/M1_210210' in writes[0] and 'alternative/M1_210210' in writes[0]
+    assert checked == [run.root / 'fits/baseline/210210-M1_210210', run.root / 'fits/alternative/210210-M1_210210']
+    assert run.data['completed_cells'] == ['baseline/M1_210210', 'alternative/M1_210210']
+
+
+def test_one_pending_cell_runs_alone_whatever_fits_per_gpu(run, cloud, monkeypatch):
+    run.args.fits_per_gpu = 4
+    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
+    assert run.execute() == 0
+    launch = next(c for c in cloud[1]['commands'] if 'setsid' in c and 'fit-0' in c)
+    assert '--fits-per-gpu' not in launch
+
+
+def test_failed_shared_stage_keeps_only_validated_cells(run, cloud, monkeypatch):
+    add_alternative_arm(run)
+    run.args.fits_per_gpu = 2
+    monkeypatch.setattr(run, 'prepare', lambda _: '')
+    monkeypatch.setattr(run, 'stage', lambda *a: (_ for _ in ()).throw(exp.engine.StageFailed('fit-0 exited 1')))
+    pulls = []
+    monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: pulls.append(cmd))
+    def validate(path):
+        if path.name != '210210-M1_210210' or path.parent.name != 'baseline':
+            raise exp.subprocess.CalledProcessError(1, 'validate')
+    monkeypatch.setattr(exp, 'validate_local_result', validate)
+    assert run.execute() == 1
+    assert len(pulls) == 1
+    assert run.data['completed_cells'] == ['baseline/M1_210210']
+    assert cloud[1]['destroyed'] == [100]
+
+
+def test_concurrent_remote_fits_each_cell_alone_under_its_own_mps_daemon(tmp_path, monkeypatch):
+    cells = [{'name': f'arm/t{i}'} for i in range(3)]
+    config = tmp_path / 'config.json'
+    config.write_text(json.dumps(cells))
+    calls = []
+    def run(command, **kwargs):
+        calls.append((command, kwargs))
+        if command[1:3] == [str(exp.Path(exp.__file__).resolve()), 'remote']:
+            fitted = json.loads(exp.Path(command[command.index('--config') + 1]).read_text())
+            assert fitted in ([cell] for cell in cells)
+            assert kwargs['env']['XLA_CLIENT_MEM_FRACTION'] == '0.38'
+            return SimpleNamespace(returncode=int(fitted[0]['name'] == 'arm/t1'))
+        return SimpleNamespace(returncode=0)
+    monkeypatch.setattr(exp.subprocess, 'run', run)
+    with pytest.raises(RuntimeError, match=r"\['arm/t1'\]"):
+        exp.main(['remote', '--config', str(config), '--output', str(tmp_path / 'results'), '--fits-per-gpu', '2'])
+    start, *fits, stop = calls
+    assert start[0] == ['nvidia-cuda-mps-control', '-d'] and start[1]['check']
+    assert stop[0] == ['nvidia-cuda-mps-control'] and stop[1]['input'] == 'quit\n'
+    assert len(fits) == 3
+    pipe = start[1]['env']['CUDA_MPS_PIPE_DIRECTORY']
+    assert all(kwargs['env']['CUDA_MPS_PIPE_DIRECTORY'] == pipe for _, kwargs in [*fits, stop])
+    assert all(command[command.index('--output') + 1] == str(tmp_path / 'results') for command, _ in fits)
