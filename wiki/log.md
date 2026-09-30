@@ -1390,3 +1390,8 @@
 ### 2026-09-30 — Ca literature and ISM check on e-mask-all-ca
 
 - `research/experiments/e-mask-all-ca.md` Context records the Ca-tracks-Fe literature, one-alpha-axis grid designs with Ca-separate exceptions, the host-ISM size/sign check, and the IGM-vs-ISM scope against the Jonah Powley meeting note.
+
+### 2026-09-30 — Masked lines leave the line columns
+
+- `notebooks/ceridwen_integrated_photometry_spectra.ipynb` cell 6 rebuilds `EmissionLineColumns` after `mask_lines`; a line with fewer than 3 unmasked pixels within \(2\sigma\) gets no free flux; default masks give the same columns.
+- `tests/test_emission_line_marginalisation.py` checks that a Ca II H mask removes H\(\epsilon\) and the tied [Ne III] 3968 component; `notes/model.md` row “Emission-line mask” states the rule.
