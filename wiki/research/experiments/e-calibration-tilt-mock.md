@@ -9,6 +9,8 @@ question: q-mock-recovery
 related_questions: q-fitting-choices
 source_notes: calibration-polynomial-dr2
 result_groups: results/calibration-polynomial-dr2
+features: calibration_order
+finding: tilted mock: dust recovered within the posterior interval with the polynomial; overestimated without it
 ---
 
 ## Context

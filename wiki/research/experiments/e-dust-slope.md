@@ -9,6 +9,8 @@ question: q-fitting-choices
 related_questions:
 source_notes: fit-accuracy-knobs
 result_groups: results/fit-accuracy-knobs
+features: diffuse_dust_index
+finding: slope freed on [-1, 0.4] (dust_free arm): median delta photometric chi2 -10.65, ln Z +8.18
 ---
 
 ## Context

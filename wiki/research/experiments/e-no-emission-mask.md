@@ -11,6 +11,8 @@ related_questions: q-emission-lines
 source_notes: no-emission-mask
 result_groups: results/no-emission-mask
 follow_up:
+features: emission_lines
+finding: M1_210210, mask removed: fitted pixels 3523 to 3939; [alpha/Fe] +0.060 to +0.045; t_MW 5.19 to 5.18 Gyr
 ---
 
 ## Context

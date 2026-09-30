@@ -9,6 +9,8 @@ question: q-fitting-choices
 follow_up:
 result_groups: results/calibration-order
 source_notes: calibration-order
+features: calibration_order
+finding: six targets, order 10 minus order 3: delta ln Z +20 to +555
 ---
 
 ## Context

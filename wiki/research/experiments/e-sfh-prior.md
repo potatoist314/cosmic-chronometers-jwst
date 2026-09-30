@@ -9,6 +9,8 @@ question: q-fitting-choices
 related_questions: q-mock-recovery
 source_notes: fit-accuracy-knobs
 result_groups: results/fit-accuracy-knobs
+features: logsfr_ratios
+finding: sfh_cont arm, StudentT(0, 0.3, df=2) against Uniform(-3, 3): median delta ln Z -4.46, spectral chi2 +2.79
 ---
 
 ## Context

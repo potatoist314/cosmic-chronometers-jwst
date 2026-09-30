@@ -8,6 +8,8 @@ origin: new
 status: planned
 question: q-dust-index-railing
 follow_up:
+features: fix_afe, ssp_grid
+finding: no fit has run; one CPU ln L at theta_init: 206338.68 default, 206218.54 fix_afe=0.0, 205223.12 MILES control grid
 ---
 
 ## Context

@@ -10,6 +10,8 @@ question: q-emission-lines
 follow_up:
 source_notes: emission-line-marginalisation
 result_groups: results/emission-line-marginalisation
+features: emission_line_marginalisation
+finding: M1_210210, on minus off: mass-weighted age -0.408 Gyr; RMS pull within 300 km/s of Hbeta 0.568 off, 0.484 on; ln Z not comparable with masked fits
 ---
 
 ## Context

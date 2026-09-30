@@ -10,6 +10,8 @@ question: q-cosmos-photometry
 follow_up:
 source_notes: cosmos-photometry-refit, cosmos-photometry-comparison
 result_groups: results/cosmos-photometry-refit, results/cosmos-photometry-comparison
+features: photometry
+finding: M1_210210, COSMOS2015 / COSMOS2020 Classic / COSMOS2025: log10 M* 11.650 / 11.654 / 11.597; tau_dust 0.405 / 0.407 / 0.356
 ---
 
 ## Context

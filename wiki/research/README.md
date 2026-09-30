@@ -279,6 +279,11 @@ results do not create a retrospective review backlog. Old URLs remain available.
   question IDs. Show the same record under each, without duplicating results.
 - `result_groups` lists existing project-relative result directories represented
   by the entry. This supports the coverage audit; it does not move or copy files.
+- Optional `features` lists comma-separated changed fit settings, priors or Ceridwen model
+  options. Use the name the run used, such as a SETTINGS or PRIORS key in
+  `notebooks/ceridwen_integrated_photometry_spectra.ipynb`.
+- Optional `finding` gives the result in a few words on one line, with numbers copied
+  from Results. `python3 scripts/ceridwen_state.py` prints it under each feature.
 - For existing records, `date` is the dated source report or documented completion
   date. Retain actual per-run dates in their source manifests. Importing a record
   does not make an old result current or validate an earlier interpretation.

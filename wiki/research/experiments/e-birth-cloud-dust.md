@@ -10,6 +10,8 @@ question: q-birth-cloud-dust
 follow_up:
 source_notes: birth-cloud-dust
 result_groups: results/birth-cloud-dust
+features: birth_cloud_dust, dust_ratio, diffuse_dust_index
+finding: M1_210210, arms dust1_off / dust1_on / dust_index_m3: photometric chi2 146.8 / 118.2 / 48.0 over 28 bands; dust_ratio 1.375 +/- 0.221
 ---
 
 ## Context

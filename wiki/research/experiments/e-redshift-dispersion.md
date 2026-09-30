@@ -9,6 +9,8 @@ question: q-fitting-choices
 related_questions:
 source_notes: redshift-sigma-wiggle
 result_groups: results/redshift-sigma-wiggle
+features: zred, sigma_smooth
+finding: four targets, zsig arm: age shifts small; M5_173928 reaches the dispersion upper bound
 ---
 
 ## Context

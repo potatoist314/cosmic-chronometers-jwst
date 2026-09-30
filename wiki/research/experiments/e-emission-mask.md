@@ -9,6 +9,8 @@ question: q-fitting-choices
 related_questions:
 source_notes: fit-accuracy-knobs
 result_groups: results/fit-accuracy-knobs
+features: emission_lines
+finding: [Ne III], H-epsilon, H-delta and H-gamma added to the mask: median delta spectral chi2 -2.44, photometric -4.57
 ---
 
 ## Context

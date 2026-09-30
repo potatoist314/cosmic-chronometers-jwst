@@ -9,6 +9,8 @@ question: q-fitting-choices
 related_questions:
 source_notes: fit-accuracy-knobs
 result_groups: results/fit-accuracy-knobs
+features: log_f_calib
+finding: ceiling 0.10 to 0.20 (floor20 arm): median delta ln Z +0.13, spectral chi2 +0.86, photometric -0.64
 ---
 
 ## Context

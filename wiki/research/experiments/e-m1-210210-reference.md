@@ -9,6 +9,8 @@ question: q-fitting-choices
 follow_up:
 source_notes: m1-210210-reference
 result_groups: results/m1-210210-reference
+features: calibration_order
+finding: fit C (order 10, defaults of cc983ce) against fit A: ln Z +470.1; t_MW 3.92 to 5.19 Gyr; [Fe/H] +0.146 to -0.159
 ---
 
 ## Context

@@ -9,6 +9,8 @@ question: q-fitting-choices
 related_questions:
 source_notes: calibration-polynomial-dr2
 result_groups: results/calibration-polynomial-dr2
+features: calibration_order, photometry
+finding: six targets: poly3_total (order 3, cosmos_total) has the smallest photometric chi2 in each target
 ---
 
 ## Context

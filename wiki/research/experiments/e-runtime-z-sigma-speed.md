@@ -9,6 +9,8 @@ status: results-ready
 question: q-compute
 follow_up:
 result_groups: results/runtime-z-sigma-speed
+features: baked_runtime
+finding: GPU cost per call at 500 particles: 16.3 us with fixed z and sigma, 45.9 us before, 30.0 us baked; maximum |delta ln L| 3.7e-9
 ---
 
 ## Context

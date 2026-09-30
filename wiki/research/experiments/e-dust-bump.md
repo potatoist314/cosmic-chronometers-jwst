@@ -10,6 +10,8 @@ question: q-dust-index-railing
 follow_up:
 source_notes: m1-210210-kcbump
 result_groups: results/m1-210210-kcbump-2026-09-29, results/m1-210210-kcbump-wide-2026-09-29, results/m1-210210-kcbump-wide-zevo-2026-09-29
+features: diffuse_Ebump, diffuse_delta, metallicity_evolution, zh_beta_unit
+finding: M1_210210: default priors rail, delta -0.987 at the -1 bound and E_bump 5.86 at the 6 bound; wide priors give delta -2.094, E_bump 7.88; metallicity_evolution on: ln Z 231508.68 to 231525.02, beta 0.664
 ---
 
 ## Context

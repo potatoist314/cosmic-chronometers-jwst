@@ -10,6 +10,8 @@ related_questions: q-fitting-choices
 follow_up:
 result_groups: results/calibration-speedup
 source_notes: calibration-speedup
+features: calibration_order
+finding: new arithmetic costs 2.1x to 2.4x less per call at order 10; M12_98104 order-10 refit 393 s, was 723 s
 ---
 
 ## Context

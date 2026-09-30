@@ -9,6 +9,8 @@ question: q-mock-recovery
 related_questions: q-fitting-choices
 source_notes: fit-accuracy-knobs
 result_groups: results/fit-accuracy-knobs
+features: logsfr_ratios
+finding: tilted mock, mock_tilt4_poly3 to mock_tilt4_sfh_cont: age 0.637 to 1.816 posterior half-widths from truth; dust 0.711 to 1.534
 ---
 
 ## Context
