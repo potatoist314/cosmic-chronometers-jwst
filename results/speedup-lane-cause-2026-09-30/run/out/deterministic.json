@@ -1,0 +1,171 @@
+{
+ "tag": "deterministic",
+ "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/new_ceridwen/ceridwen/__init__.py",
+ "jax": "0.10.2",
+ "device": "NVIDIA GeForce RTX 5090",
+ "x64": true,
+ "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_deterministic_ops=true",
+ "script_wall_s": 59.17349487199863,
+ "events": [
+  {
+   "event": 94,
+   "L0": 231278.8924295683,
+   "plain_lanes_that_differ": [
+    87
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  },
+  {
+   "event": 108,
+   "L0": 231353.22487353257,
+   "plain_lanes_that_differ": [
+    29
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  },
+  {
+   "event": 174,
+   "L0": 231501.16109354474,
+   "plain_lanes_that_differ": [
+    22
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  },
+  {
+   "event": 181,
+   "L0": 231506.33813428445,
+   "plain_lanes_that_differ": [
+    2
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  },
+  {
+   "event": 207,
+   "L0": 231519.26752160533,
+   "plain_lanes_that_differ": [
+    75
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  },
+  {
+   "event": 234,
+   "L0": 231525.89542933635,
+   "plain_lanes_that_differ": [
+    67
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  },
+  {
+   "event": 236,
+   "L0": 231526.2059730986,
+   "plain_lanes_that_differ": [
+    57
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  },
+  {
+   "event": 244,
+   "L0": 231527.38692270036,
+   "plain_lanes_that_differ": [
+    96
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  },
+  {
+   "event": 263,
+   "L0": 231529.413169228,
+   "plain_lanes_that_differ": [
+    60
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  },
+  {
+   "event": 264,
+   "L0": 231529.49911685745,
+   "plain_lanes_that_differ": [
+    99
+   ],
+   "plain_all_leaves_equal": false,
+   "second_call_equal": {
+    "carry": true,
+    "lanes": true
+   },
+   "lanes_that_differ_from_first_instance": {
+    "carry": [],
+    "lanes": []
+   }
+  }
+ ]
+}

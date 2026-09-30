@@ -1,0 +1,1 @@
+XLA_FLAGS='--xla_gpu_enable_command_buffer=' CAUSE_TAG=trace .venv-ceridwen-gpu/bin/python {R}/cause_trace.py

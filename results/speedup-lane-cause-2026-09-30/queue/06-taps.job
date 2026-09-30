@@ -1,0 +1,1 @@
+XLA_FLAGS='--xla_gpu_enable_command_buffer=' JAX_PLATFORMS=cuda,cpu CAUSE_TAG=taps CAUSE_EVENTS=94,108 CAUSE_TAP_RECORDS=4 .venv-ceridwen-gpu/bin/python {R}/cause_taps.py

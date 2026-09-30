@@ -1,0 +1,1 @@
+XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_deterministic_ops=true' CAUSE_TAG=deterministic CAUSE_TRACE=0 .venv-ceridwen-gpu/bin/python {R}/cause_trace.py

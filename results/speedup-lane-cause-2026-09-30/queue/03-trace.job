@@ -1,0 +1,1 @@
+XLA_FLAGS='--xla_gpu_enable_command_buffer=' JAX_PLATFORMS=cuda,cpu CAUSE_TAG=trace .venv-ceridwen-gpu/bin/python {R}/cause_trace.py
