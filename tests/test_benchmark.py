@@ -452,6 +452,16 @@ def test_pack_that_does_not_match_the_grid_sha_is_not_kept(tmp_path, monkeypatch
     assert list((tmp_path / 'packed').iterdir()) == []
 
 
+def test_interrupted_pack_leaves_no_files(tmp_path, monkeypatch):
+    grid = tmp_path / 'grid.h5'
+    sha = float_grid(grid)
+    monkeypatch.setattr(bench, 'PACKED', tmp_path / 'packed')
+    monkeypatch.setattr(bench.subprocess, 'run', lambda *a, **kw: (_ for _ in ()).throw(KeyboardInterrupt()))
+    with pytest.raises(KeyboardInterrupt):
+        bench.pack(grid, sha)
+    assert list((tmp_path / 'packed').iterdir()) == []
+
+
 def test_grids_are_packed_before_renting(run, cloud, monkeypatch):
     _, state = cloud
     packed = []

@@ -141,17 +141,16 @@ def pack(grid, sha256):
     if not packed.exists():
         PACKED.mkdir(parents=True, exist_ok=True)
         partial, restored = (PACKED / f'{sha256}.{os.getpid()}.{suffix}' for suffix in ('partial', 'h5'))
-        partial.write_bytes(zlib.compress(planes(Path(grid).read_bytes())))
         try:
+            partial.write_bytes(zlib.compress(planes(Path(grid).read_bytes())))
             subprocess.run([sys.executable, '-c', UNPACK, partial, restored], check=True)
             with restored.open('rb') as stream:
-                exact = hashlib.file_digest(stream, 'sha256').hexdigest() == sha256
+                if hashlib.file_digest(stream, 'sha256').hexdigest() != sha256:
+                    raise vast.SweepError(f'packed {grid} does not unpack to sha256 {sha256}')
+            partial.replace(packed)
         finally:
             restored.unlink(missing_ok=True)
-        if not exact:
-            partial.unlink()
-            raise vast.SweepError(f'packed {grid} does not unpack to sha256 {sha256}')
-        partial.replace(packed)
+            partial.unlink(missing_ok=True)
     return packed
 
 
