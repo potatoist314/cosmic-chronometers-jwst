@@ -811,7 +811,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "all",
     "view": "Fits",
-    "caption": "M11_214430 · observed · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M11_214430 · observed · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_all/M11_214430_executed.ipynb",
@@ -821,7 +821,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "all",
     "view": "Fits",
-    "caption": "M11_214430 · observed · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M11_214430 · observed · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features/M11_214430_executed.ipynb",
@@ -831,7 +831,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features",
     "view": "Fits",
-    "caption": "M11_214430 · observed · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M11_214430 · observed · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features/M11_214430_executed.ipynb",
@@ -841,7 +841,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features",
     "view": "Fits",
-    "caption": "M11_214430 · observed · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M11_214430 · observed · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features_downweight/M11_214430_executed.ipynb",
@@ -851,7 +851,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M11_214430 · observed · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M11_214430 · observed · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features_downweight/M11_214430_executed.ipynb",
@@ -861,7 +861,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M11_214430 · observed · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M11_214430 · observed · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_all/M11_214430_executed.ipynb",
@@ -871,7 +871,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "all",
     "view": "SFH",
-    "caption": "M11_214430 · observed · full spectrum. Saved SFH and posterior interval."
+    "caption": "M11_214430 · observed · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features/M11_214430_executed.ipynb",
@@ -881,7 +881,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features",
     "view": "SFH",
-    "caption": "M11_214430 · observed · feature windows. Saved SFH and posterior interval."
+    "caption": "M11_214430 · observed · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features_downweight/M11_214430_executed.ipynb",
@@ -891,7 +891,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M11_214430 · observed · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M11_214430 · observed · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_all/M11_214430_executed.ipynb",
@@ -901,7 +901,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M11_214430 · observed · full spectrum. Physical-parameter posterior."
+    "caption": "M11_214430 · observed · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_all/M11_214430_executed.ipynb",
@@ -911,7 +911,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M11_214430 · observed · full spectrum. Age and formed-mass fractions."
+    "caption": "M11_214430 · observed · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features/M11_214430_executed.ipynb",
@@ -921,7 +921,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M11_214430 · observed · feature windows. Physical-parameter posterior."
+    "caption": "M11_214430 · observed · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features/M11_214430_executed.ipynb",
@@ -931,7 +931,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M11_214430 · observed · feature windows. Age and formed-mass fractions."
+    "caption": "M11_214430 · observed · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features_downweight/M11_214430_executed.ipynb",
@@ -941,7 +941,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M11_214430 · observed · continuum downweighted. Physical-parameter posterior."
+    "caption": "M11_214430 · observed · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M11_214430_features_downweight/M11_214430_executed.ipynb",
@@ -951,7 +951,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M11_214430 · observed",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M11_214430 · observed · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M11_214430 · observed · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -961,7 +961,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -971,7 +971,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -981,7 +981,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -991,7 +991,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1001,7 +1001,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1011,7 +1011,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -1021,7 +1021,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -1031,7 +1031,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1041,7 +1041,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -1051,7 +1051,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -1061,7 +1061,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -1071,7 +1071,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -1081,7 +1081,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1091,7 +1091,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1101,7 +1101,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1111,7 +1111,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1121,7 +1121,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1131,7 +1131,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1141,7 +1141,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1151,7 +1151,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1161,7 +1161,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1171,7 +1171,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1181,7 +1181,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1191,7 +1191,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1201,7 +1201,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1211,7 +1211,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1221,7 +1221,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1231,7 +1231,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1241,7 +1241,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1251,7 +1251,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1261,7 +1261,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1271,7 +1271,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1281,7 +1281,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1291,7 +1291,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1301,7 +1301,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1311,7 +1311,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1321,7 +1321,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1331,7 +1331,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1341,7 +1341,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1351,7 +1351,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1361,7 +1361,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1371,7 +1371,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1381,7 +1381,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1391,7 +1391,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1401,7 +1401,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -1411,7 +1411,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -1421,7 +1421,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -1431,7 +1431,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -1441,7 +1441,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1451,7 +1451,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1461,7 +1461,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -1471,7 +1471,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -1481,7 +1481,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1491,7 +1491,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -1501,7 +1501,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -1511,7 +1511,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -1521,7 +1521,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -1531,7 +1531,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1541,7 +1541,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.00_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1551,7 +1551,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.00 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.00 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -1561,7 +1561,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -1571,7 +1571,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -1581,7 +1581,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -1591,7 +1591,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1601,7 +1601,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1611,7 +1611,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -1621,7 +1621,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -1631,7 +1631,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1641,7 +1641,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -1651,7 +1651,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -1661,7 +1661,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -1671,7 +1671,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -1681,7 +1681,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1691,7 +1691,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1701,7 +1701,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1711,7 +1711,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1721,7 +1721,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1731,7 +1731,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1741,7 +1741,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1751,7 +1751,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1761,7 +1761,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1771,7 +1771,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1781,7 +1781,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1791,7 +1791,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1801,7 +1801,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -1811,7 +1811,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1821,7 +1821,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -1831,7 +1831,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1841,7 +1841,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -1851,7 +1851,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1861,7 +1861,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1871,7 +1871,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1881,7 +1881,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1891,7 +1891,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1901,7 +1901,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1911,7 +1911,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1921,7 +1921,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1931,7 +1931,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1941,7 +1941,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1951,7 +1951,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -1961,7 +1961,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1971,7 +1971,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -1981,7 +1981,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -1991,7 +1991,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2001,7 +2001,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2011,7 +2011,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2021,7 +2021,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2031,7 +2031,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2041,7 +2041,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2051,7 +2051,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2061,7 +2061,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2071,7 +2071,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2081,7 +2081,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2091,7 +2091,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2101,7 +2101,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2111,7 +2111,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2121,7 +2121,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2131,7 +2131,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2141,7 +2141,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.03_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2151,7 +2151,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.03 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.03 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -2161,7 +2161,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -2171,7 +2171,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -2181,7 +2181,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -2191,7 +2191,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2201,7 +2201,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2211,7 +2211,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -2221,7 +2221,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -2231,7 +2231,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2241,7 +2241,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -2251,7 +2251,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_all/M5_172669_executed.ipynb",
@@ -2261,7 +2261,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -2271,7 +2271,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features/M5_172669_executed.ipynb",
@@ -2281,7 +2281,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2291,7 +2291,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2301,7 +2301,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 1 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -2311,7 +2311,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -2321,7 +2321,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -2331,7 +2331,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -2341,7 +2341,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2351,7 +2351,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2361,7 +2361,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -2371,7 +2371,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -2381,7 +2381,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2391,7 +2391,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -2401,7 +2401,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_all/M5_172669_executed.ipynb",
@@ -2411,7 +2411,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -2421,7 +2421,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features/M5_172669_executed.ipynb",
@@ -2431,7 +2431,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2441,7 +2441,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr0.25_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2451,7 +2451,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 0.25 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 0.25 · seed 2 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -2461,7 +2461,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -2471,7 +2471,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -2481,7 +2481,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -2491,7 +2491,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2501,7 +2501,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2511,7 +2511,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -2521,7 +2521,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -2531,7 +2531,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2541,7 +2541,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -2551,7 +2551,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_all/M5_172669_executed.ipynb",
@@ -2561,7 +2561,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -2571,7 +2571,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features/M5_172669_executed.ipynb",
@@ -2581,7 +2581,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2591,7 +2591,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed1_features_downweight/M5_172669_executed.ipynb",
@@ -2601,7 +2601,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 1",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 1 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2611,7 +2611,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2621,7 +2621,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2631,7 +2631,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2641,7 +2641,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2651,7 +2651,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2661,7 +2661,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2671,7 +2671,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2681,7 +2681,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2691,7 +2691,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2701,7 +2701,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_all/M5_172669_executed.ipynb",
@@ -2711,7 +2711,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · full spectrum. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2721,7 +2721,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features/M5_172669_executed.ipynb",
@@ -2731,7 +2731,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · feature windows. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2741,7 +2741,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Physical-parameter posterior."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/mock_tilt0.06_snr1.00_seed2_features_downweight/M5_172669_executed.ipynb",
@@ -2751,7 +2751,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M1_210210 · mock tilt 0.06 · S/N scale 1.00 · seed 2",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M1_210210 · mock tilt 0.06 · \\(\\mathrm{S/N}\\) scale 1.00 · seed 2 · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_all/M5_172669_executed.ipynb",
@@ -2761,7 +2761,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "all",
     "view": "Fits",
-    "caption": "M5_172669 · observed · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · observed · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_all/M5_172669_executed.ipynb",
@@ -2771,7 +2771,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "all",
     "view": "Fits",
-    "caption": "M5_172669 · observed · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · observed · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features/M5_172669_executed.ipynb",
@@ -2781,7 +2781,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features",
     "view": "Fits",
-    "caption": "M5_172669 · observed · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · observed · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features/M5_172669_executed.ipynb",
@@ -2791,7 +2791,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features",
     "view": "Fits",
-    "caption": "M5_172669 · observed · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · observed · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features_downweight/M5_172669_executed.ipynb",
@@ -2801,7 +2801,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M5_172669 · observed · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · observed · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features_downweight/M5_172669_executed.ipynb",
@@ -2811,7 +2811,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M5_172669 · observed · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · observed · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_all/M5_172669_executed.ipynb",
@@ -2821,7 +2821,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "all",
     "view": "SFH",
-    "caption": "M5_172669 · observed · full spectrum. Saved SFH and posterior interval."
+    "caption": "M5_172669 · observed · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features/M5_172669_executed.ipynb",
@@ -2831,7 +2831,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features",
     "view": "SFH",
-    "caption": "M5_172669 · observed · feature windows. Saved SFH and posterior interval."
+    "caption": "M5_172669 · observed · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features_downweight/M5_172669_executed.ipynb",
@@ -2841,7 +2841,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M5_172669 · observed · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M5_172669 · observed · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_all/M5_172669_executed.ipynb",
@@ -2851,7 +2851,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M5_172669 · observed · full spectrum. Physical-parameter posterior."
+    "caption": "M5_172669 · observed · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_all/M5_172669_executed.ipynb",
@@ -2861,7 +2861,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M5_172669 · observed · full spectrum. Age and formed-mass fractions."
+    "caption": "M5_172669 · observed · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features/M5_172669_executed.ipynb",
@@ -2871,7 +2871,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M5_172669 · observed · feature windows. Physical-parameter posterior."
+    "caption": "M5_172669 · observed · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features/M5_172669_executed.ipynb",
@@ -2881,7 +2881,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M5_172669 · observed · feature windows. Age and formed-mass fractions."
+    "caption": "M5_172669 · observed · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features_downweight/M5_172669_executed.ipynb",
@@ -2891,7 +2891,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M5_172669 · observed · continuum downweighted. Physical-parameter posterior."
+    "caption": "M5_172669 · observed · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M5_172669_features_downweight/M5_172669_executed.ipynb",
@@ -2901,7 +2901,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M5_172669 · observed",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M5_172669 · observed · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M5_172669 · observed · Ages · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_all/M9_232005_executed.ipynb",
@@ -2911,7 +2911,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "all",
     "view": "Fits",
-    "caption": "M9_232005 · observed · full spectrum. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M9_232005 · observed · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_all/M9_232005_executed.ipynb",
@@ -2921,7 +2921,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "all",
     "view": "Fits",
-    "caption": "M9_232005 · observed · full spectrum. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M9_232005 · observed · Photometry · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features/M9_232005_executed.ipynb",
@@ -2931,7 +2931,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features",
     "view": "Fits",
-    "caption": "M9_232005 · observed · feature windows. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M9_232005 · observed · Spectrum · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features/M9_232005_executed.ipynb",
@@ -2941,7 +2941,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features",
     "view": "Fits",
-    "caption": "M9_232005 · observed · feature windows. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M9_232005 · observed · Photometry · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features_downweight/M9_232005_executed.ipynb",
@@ -2951,7 +2951,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M9_232005 · observed · continuum downweighted. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M9_232005 · observed · Spectrum · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features_downweight/M9_232005_executed.ipynb",
@@ -2961,7 +2961,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features_downweight",
     "view": "Fits",
-    "caption": "M9_232005 · observed · continuum downweighted. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M9_232005 · observed · Photometry · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_all/M9_232005_executed.ipynb",
@@ -2971,7 +2971,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "all",
     "view": "SFH",
-    "caption": "M9_232005 · observed · full spectrum. Saved SFH and posterior interval."
+    "caption": "M9_232005 · observed · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features/M9_232005_executed.ipynb",
@@ -2981,7 +2981,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features",
     "view": "SFH",
-    "caption": "M9_232005 · observed · feature windows. Saved SFH and posterior interval."
+    "caption": "M9_232005 · observed · SFH · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features_downweight/M9_232005_executed.ipynb",
@@ -2991,7 +2991,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features_downweight",
     "view": "SFH",
-    "caption": "M9_232005 · observed · continuum downweighted. Saved SFH and posterior interval."
+    "caption": "M9_232005 · observed · SFH · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_all/M9_232005_executed.ipynb",
@@ -3001,7 +3001,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M9_232005 · observed · full spectrum. Physical-parameter posterior."
+    "caption": "M9_232005 · observed · Spectrum · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_all/M9_232005_executed.ipynb",
@@ -3011,7 +3011,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "all",
     "view": "Posteriors",
-    "caption": "M9_232005 · observed · full spectrum. Age and formed-mass fractions."
+    "caption": "M9_232005 · observed · Ages · full spectrum, reference."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features/M9_232005_executed.ipynb",
@@ -3021,7 +3021,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M9_232005 · observed · feature windows. Physical-parameter posterior."
+    "caption": "M9_232005 · observed · Posteriors · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features/M9_232005_executed.ipynb",
@@ -3031,7 +3031,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features",
     "view": "Posteriors",
-    "caption": "M9_232005 · observed · feature windows. Age and formed-mass fractions."
+    "caption": "M9_232005 · observed · Ages · feature windows only; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features_downweight/M9_232005_executed.ipynb",
@@ -3041,7 +3041,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M9_232005 · observed · continuum downweighted. Physical-parameter posterior."
+    "caption": "M9_232005 · observed · Posteriors · continuum downweighted; otherwise as full spectrum."
   },
   {
     "notebook": "results/absorption-mask/real_M9_232005_features_downweight/M9_232005_executed.ipynb",
@@ -3051,7 +3051,7 @@ Compare three pixel-weighting modes across real targets and a grid of mock tilts
     "target": "M9_232005 · observed",
     "arm": "features_downweight",
     "view": "Posteriors",
-    "caption": "M9_232005 · observed · continuum downweighted. Age and formed-mass fractions."
+    "caption": "M9_232005 · observed · Ages · continuum downweighted; otherwise as full spectrum."
   }
 ]
 ```
