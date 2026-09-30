@@ -282,7 +282,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M12_185653 · 20% calibration-noise ceiling. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Spectrum · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/185653-M12_185653/M12_185653_executed.ipynb",
@@ -292,7 +292,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M12_185653 · 20% calibration-noise ceiling. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -302,7 +302,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -312,7 +312,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/185653-M12_185653/M12_185653_executed.ipynb",
@@ -322,7 +322,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "floor20",
     "view": "SFH",
-    "caption": "M12_185653 · 20% calibration-noise ceiling. Saved SFH and posterior interval."
+    "caption": "M12_185653 · SFH · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -332,7 +332,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_185653 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/185653-M12_185653/M12_185653_executed.ipynb",
@@ -342,7 +342,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M12_185653 · 20% calibration-noise ceiling. Physical-parameter posterior."
+    "caption": "M12_185653 · Posteriors · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/185653-M12_185653/M12_185653_executed.ipynb",
@@ -352,7 +352,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M12_185653 · 20% calibration-noise ceiling. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -362,7 +362,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -372,7 +372,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/98104-M12_98104/M12_98104_executed.ipynb",
@@ -382,7 +382,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M12_98104 · 20% calibration-noise ceiling. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Spectrum · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/98104-M12_98104/M12_98104_executed.ipynb",
@@ -392,7 +392,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M12_98104 · 20% calibration-noise ceiling. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -402,7 +402,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -412,7 +412,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/98104-M12_98104/M12_98104_executed.ipynb",
@@ -422,7 +422,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "floor20",
     "view": "SFH",
-    "caption": "M12_98104 · 20% calibration-noise ceiling. Saved SFH and posterior interval."
+    "caption": "M12_98104 · SFH · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -432,7 +432,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_98104 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/98104-M12_98104/M12_98104_executed.ipynb",
@@ -442,7 +442,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M12_98104 · 20% calibration-noise ceiling. Physical-parameter posterior."
+    "caption": "M12_98104 · Posteriors · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/98104-M12_98104/M12_98104_executed.ipynb",
@@ -452,7 +452,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M12_98104 · 20% calibration-noise ceiling. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -462,7 +462,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -472,7 +472,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/206545-M1_206545/M1_206545_executed.ipynb",
@@ -482,7 +482,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M1_206545 · 20% calibration-noise ceiling. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Spectrum · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/206545-M1_206545/M1_206545_executed.ipynb",
@@ -492,7 +492,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M1_206545 · 20% calibration-noise ceiling. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -502,7 +502,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -512,7 +512,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/206545-M1_206545/M1_206545_executed.ipynb",
@@ -522,7 +522,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "floor20",
     "view": "SFH",
-    "caption": "M1_206545 · 20% calibration-noise ceiling. Saved SFH and posterior interval."
+    "caption": "M1_206545 · SFH · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -532,7 +532,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M1_206545 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/206545-M1_206545/M1_206545_executed.ipynb",
@@ -542,7 +542,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M1_206545 · 20% calibration-noise ceiling. Physical-parameter posterior."
+    "caption": "M1_206545 · Posteriors · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/206545-M1_206545/M1_206545_executed.ipynb",
@@ -552,7 +552,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M1_206545 · 20% calibration-noise ceiling. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -562,7 +562,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -572,7 +572,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/108989-M4_108989/M4_108989_executed.ipynb",
@@ -582,7 +582,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M4_108989 · 20% calibration-noise ceiling. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/108989-M4_108989/M4_108989_executed.ipynb",
@@ -592,7 +592,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M4_108989 · 20% calibration-noise ceiling. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -602,7 +602,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -612,7 +612,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/108989-M4_108989/M4_108989_executed.ipynb",
@@ -622,7 +622,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "floor20",
     "view": "SFH",
-    "caption": "M4_108989 · 20% calibration-noise ceiling. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -632,7 +632,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M4_108989 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/108989-M4_108989/M4_108989_executed.ipynb",
@@ -642,7 +642,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M4_108989 · 20% calibration-noise ceiling. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/108989-M4_108989/M4_108989_executed.ipynb",
@@ -652,7 +652,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M4_108989 · 20% calibration-noise ceiling. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -662,7 +662,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -672,7 +672,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/172669-M5_172669/M5_172669_executed.ipynb",
@@ -682,7 +682,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M5_172669 · 20% calibration-noise ceiling. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/172669-M5_172669/M5_172669_executed.ipynb",
@@ -692,7 +692,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M5_172669 · 20% calibration-noise ceiling. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -702,7 +702,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -712,7 +712,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/172669-M5_172669/M5_172669_executed.ipynb",
@@ -722,7 +722,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "floor20",
     "view": "SFH",
-    "caption": "M5_172669 · 20% calibration-noise ceiling. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -732,7 +732,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_172669 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/172669-M5_172669/M5_172669_executed.ipynb",
@@ -742,7 +742,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M5_172669 · 20% calibration-noise ceiling. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/172669-M5_172669/M5_172669_executed.ipynb",
@@ -752,7 +752,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M5_172669 · 20% calibration-noise ceiling. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -762,7 +762,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -772,7 +772,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/173928-M5_173928/M5_173928_executed.ipynb",
@@ -782,7 +782,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M5_173928 · 20% calibration-noise ceiling. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Spectrum · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/173928-M5_173928/M5_173928_executed.ipynb",
@@ -792,7 +792,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "floor20",
     "view": "Fits",
-    "caption": "M5_173928 · 20% calibration-noise ceiling. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -802,7 +802,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -812,7 +812,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/173928-M5_173928/M5_173928_executed.ipynb",
@@ -822,7 +822,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "floor20",
     "view": "SFH",
-    "caption": "M5_173928 · 20% calibration-noise ceiling. Saved SFH and posterior interval."
+    "caption": "M5_173928 · SFH · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -832,7 +832,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_173928 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/173928-M5_173928/M5_173928_executed.ipynb",
@@ -842,7 +842,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M5_173928 · 20% calibration-noise ceiling. Physical-parameter posterior."
+    "caption": "M5_173928 · Posteriors · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/floor20/173928-M5_173928/M5_173928_executed.ipynb",
@@ -852,7 +852,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "floor20",
     "view": "Posteriors",
-    "caption": "M5_173928 · 20% calibration-noise ceiling. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · floor20: f_calib ceiling 0.20; otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -862,7 +862,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -872,7 +872,7 @@ Raise the fractional calibration-noise ceiling from 0.10 to 0.20. All other sett
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · poly3_total, reference."
   }
 ]
 ```
