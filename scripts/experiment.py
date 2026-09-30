@@ -313,7 +313,11 @@ class Run(engine.Run):
             payload = json.dumps([cell])
             vast._ssh(instance, f'mkdir -p {remote_root} && printf %s {shlex.quote(payload)} > {remote_root}/config.json',
                       timeout=self.timeout(attempt))
-            command = environment + f"SPS_HOME={engine.REMOTE}/external/fsps MPLBACKEND=Agg XLA_FLAGS='--xla_gpu_enable_command_buffer=' " + shlex.join([
+            # Autotune level 0: XLA's fixed GPU kernel choices, the same in every process.
+            # Timed autotuning chooses per process (the float32 photometry GEMV rounds differently
+            # between rentals), runs no faster per call, and adds about 3 s to each compile.
+            xla_flags = '--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0'
+            command = environment + f"SPS_HOME={engine.REMOTE}/external/fsps MPLBACKEND=Agg XLA_FLAGS='{xla_flags}' " + shlex.join([
                 '.venv-ceridwen-gpu/bin/python', 'scripts/experiment.py', 'remote',
                 '--config', f'{remote_root}/config.json', '--output', f'{remote_root}/results'])
             try:

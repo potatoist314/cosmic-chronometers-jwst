@@ -130,6 +130,13 @@ def test_resume_skips_completed_arm_on_new_instance(run, cloud, monkeypatch):
     assert not any('fit-0' in c for c in commands)
 
 
+def test_fit_runs_with_untimed_gpu_autotuning(run, cloud, monkeypatch):
+    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
+    assert run.execute() == 0
+    launch = next(c for c in cloud[1]['commands'] if 'setsid' in c and 'fit-0' in c)
+    assert '--xla_gpu_autotune_level=0' in launch
+
+
 def test_dry_run_does_not_contact_vast_or_create_output(tmp_path, monkeypatch):
     monkeypatch.setattr(exp, 'preflight', lambda *a, **kw: {'commit': 'abc'})
     monkeypatch.setattr(exp.vast, '_vastai_json', lambda *_: pytest.fail('Vast call during dry run'))
