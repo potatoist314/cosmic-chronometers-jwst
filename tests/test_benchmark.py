@@ -14,7 +14,7 @@ def run(tmp_path, monkeypatch):
     args = bench.parser().parse_args(['run', 'RTX 5090', '--spend-cap', '1', '--output', str(tmp_path)])
     source = {'commit': 'abc', 'submodules': {}, 'grid': '/grid.h5', 'grid_sha256': '123'}
     monkeypatch.setattr(bench.time, 'sleep', lambda _: None)
-    monkeypatch.setattr(bench, 'pack', lambda grid, sha256: tmp_path / f'{sha256}.zlib')
+    monkeypatch.setattr(bench, 'pack', lambda grid, sha256: [tmp_path / f'{sha256}.zlib.{k}' for k in range(4)])
     return bench.Run(args, source)
 
 
@@ -434,10 +434,10 @@ def test_packed_grid_unpacks_exactly_with_the_remote_code(tmp_path, monkeypatch)
     sha = float_grid(grid)
     monkeypatch.setattr(bench, 'PACKED', tmp_path / 'packed')
     packed = bench.pack(grid, sha)
-    assert packed == tmp_path / 'packed' / f'{sha}.zlib'
-    assert [p.name for p in packed.parent.iterdir()] == [packed.name]
-    assert packed.stat().st_size < grid.stat().st_size / 2
-    subprocess.run([sys.executable, '-c', bench.UNPACK, packed, tmp_path / 'out.h5'], check=True)
+    assert packed == [tmp_path / 'packed' / f'{sha}.zlib.{k}' for k in range(bench.GRID_STREAMS)]
+    assert sorted((tmp_path / 'packed').iterdir()) == packed
+    assert sum(p.stat().st_size for p in packed) < grid.stat().st_size / 2
+    subprocess.run([sys.executable, '-c', bench.UNPACK, *packed, tmp_path / 'out.h5'], check=True)
     assert (tmp_path / 'out.h5').read_bytes() == grid.read_bytes()
     monkeypatch.setattr(bench.zlib, 'compress', lambda _: pytest.fail('packed twice'))
     assert bench.pack(grid, sha) == packed
@@ -477,10 +477,12 @@ def test_grid_is_sent_during_source_upload_then_unpacked_and_checked(run, cloud,
     monkeypatch.setattr(bench.vast, '_ssh_target', lambda _: ('root@test', '22'))
     monkeypatch.setattr(bench.vast, '_rsync', lambda *a, **kw: None)
     bench.Run.upload(run, {'instance_id': 100, 'price': .2})
-    assert state['sent'] == [('22', [str(run.root / '123.zlib')], f'root@test:{bench.REMOTE}/grid/')]
-    assert order[0] == ('archive', 1)
+    assert state['sent'] == [('22', [str(run.root / f'123.zlib.{k}')], f'root@test:{bench.REMOTE}/grid/')
+                             for k in range(4)]
+    assert order[0] == ('archive', 4)
+    parts = ' '.join(f'{bench.REMOTE}/grid/123.zlib.{k}' for k in range(4))
     assert state['commands'][-1] == (
-        f'python3 -c {bench.shlex.quote(bench.UNPACK)} {bench.REMOTE}/grid/123.zlib {bench.REMOTE}/grid/grid.h5'
+        f'python3 -c {bench.shlex.quote(bench.UNPACK)} {parts} {bench.REMOTE}/grid/grid.h5'
         f" && printf %s '123  {bench.REMOTE}/grid/grid.h5' | sha256sum -c -")
 
 
@@ -492,7 +494,7 @@ def test_failed_source_upload_stops_the_grid_transfer(run, cloud, monkeypatch):
     monkeypatch.setattr(run, 'archive', lambda *a: (_ for _ in ()).throw(subprocess.CalledProcessError(1, 'ssh')))
     with pytest.raises(subprocess.CalledProcessError):
         bench.Run.upload(run, {'instance_id': 100, 'price': .2})
-    assert killed == [True]
+    assert killed == [True] * 4
 
 
 def test_failed_grid_transfer_is_not_unpacked(run, cloud, monkeypatch):

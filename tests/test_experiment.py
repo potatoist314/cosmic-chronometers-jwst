@@ -24,7 +24,7 @@ def run(tmp_path, monkeypatch):
     monkeypatch.setattr(exp.engine.time, 'sleep', lambda _: None)
     monkeypatch.setattr(exp, 'validate_local_result', lambda _: None)
     monkeypatch.setattr(exp.vast, '_ssh_target', lambda _: ('root@test', '22'))
-    monkeypatch.setattr(exp.engine, 'pack', lambda grid, sha256: tmp_path / f'{sha256}.zlib')
+    monkeypatch.setattr(exp.engine, 'pack', lambda grid, sha256: [tmp_path / f'{sha256}.zlib.{k}' for k in range(4)])
     return exp.Run(args, source)
 
 
@@ -264,8 +264,8 @@ def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, tmp_path, m
     run.upload({'instance_id': 1})
     assert len(copies) == 1 and copies[0][:2] == ['rsync', '-aR']
     assert 'data/raw/hst_f814w/M1_210210.fits' in copies[0]
-    assert grids == [('22', [str(tmp_path / '123.zlib')], f'root@test:{exp.engine.REMOTE}/grid/')]
-    assert f'123.zlib {exp.engine.REMOTE}/grid/123.h5 && ' in commands[-1]
+    assert grids == [('22', [str(tmp_path / f'123.zlib.{k}')], f'root@test:{exp.engine.REMOTE}/grid/') for k in range(4)]
+    assert f'123.zlib.3 {exp.engine.REMOTE}/grid/123.h5 && ' in commands[-1]
     assert commands[-1].endswith(f"printf %s '123  {exp.engine.REMOTE}/grid/123.h5' | sha256sum -c -")
     assert any('input-files.json' in cmd for cmd in commands)
 

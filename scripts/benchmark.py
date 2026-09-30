@@ -38,13 +38,16 @@ UNUSED_SOURCE = {'ceridwen': 'tests', 'external/sedpy_jax': 'dist'}
 # Grids are float64 arrays. Sent as eight byte planes, the 612 MB grid compresses
 # to 77% with zlib (91% without the planes). The image has python3 but no zstd.
 PACKED = Path.home() / '.ceridwen' / 'packed'
+# The packed grid travels as this many byte ranges, one rsync each: from this Mac
+# four SSH streams carry 1.6-2x the bytes per second of one.
+GRID_STREAMS = 4
 UNPACK = """import sys, zlib
-planes = zlib.decompress(open(sys.argv[1], 'rb').read())
+planes = zlib.decompress(b''.join(open(part, 'rb').read() for part in sys.argv[1:-1]))
 whole = len(planes) - len(planes) % 8
 data = bytearray(planes)
 for k in range(8):
     data[k:whole:8] = planes[k * whole // 8:(k + 1) * whole // 8]
-open(sys.argv[2], 'wb').write(data)
+open(sys.argv[-1], 'wb').write(data)
 """
 INPUT_DIRS = ('legac_dr2', 'cosmos2015', 'cosmos2020', 'cosmos2025', 'hst_f814w')
 INPUT_FILES = ('external/fsps/data/emlines_info.dat',)
@@ -136,22 +139,27 @@ def planes(data):
 
 
 def pack(grid, sha256):
-    """Return the cached packed grid; a new one must unpack to the grid's sha256."""
-    packed = PACKED / f'{sha256}.zlib'
-    if not packed.exists():
+    """Return the cached packed grid's GRID_STREAMS parts; new parts must unpack to the grid's sha256."""
+    parts = [PACKED / f'{sha256}.zlib.{k}' for k in range(GRID_STREAMS)]
+    if not all(part.exists() for part in parts):
         PACKED.mkdir(parents=True, exist_ok=True)
-        partial, restored = (PACKED / f'{sha256}.{os.getpid()}.{suffix}' for suffix in ('partial', 'h5'))
+        partials = [PACKED / f'{sha256}.{os.getpid()}.partial{k}' for k in range(GRID_STREAMS)]
+        restored = PACKED / f'{sha256}.{os.getpid()}.h5'
         try:
-            partial.write_bytes(zlib.compress(planes(Path(grid).read_bytes())))
-            subprocess.run([sys.executable, '-c', UNPACK, partial, restored], check=True)
+            packed = zlib.compress(planes(Path(grid).read_bytes()))
+            for k, partial in enumerate(partials):
+                partial.write_bytes(packed[k * len(packed) // GRID_STREAMS:(k + 1) * len(packed) // GRID_STREAMS])
+            subprocess.run([sys.executable, '-c', UNPACK, *partials, restored], check=True)
             with restored.open('rb') as stream:
                 if hashlib.file_digest(stream, 'sha256').hexdigest() != sha256:
                     raise vast.SweepError(f'packed {grid} does not unpack to sha256 {sha256}')
-            partial.replace(packed)
+            for partial, part in zip(partials, parts):
+                partial.replace(part)
         finally:
             restored.unlink(missing_ok=True)
-            partial.unlink(missing_ok=True)
-    return packed
+            for partial in partials:
+                partial.unlink(missing_ok=True)
+    return parts
 
 
 def offer_rejection(offer, min_reliability=vast.FIT_MIN_RELIABILITY):
@@ -321,7 +329,8 @@ class Run:
         vast._ssh(instance, f'mkdir -p {REMOTE}/data/raw {REMOTE}/grid; command -v rsync || (apt-get update -qq && apt-get install -y -qq rsync)', timeout=self.timeout(attempt))
         grids = [(entry, pack(entry['grid'], entry['grid_sha256'])) for entry in self.grids()]
         # The packed grids travel while the source and inputs follow one by one.
-        sending = vast._rsync_background(port, [str(packed) for _, packed in grids], f'{target}:{REMOTE}/grid/')
+        sending = [vast._rsync_background(port, [str(part)], f'{target}:{REMOTE}/grid/')
+                   for _, parts in grids for part in parts]
         try:
             self.archive(attempt, ROOT, source['commit'], ('scripts', NOTEBOOK))
             for tree, revision in source['submodules'].items():
@@ -340,15 +349,17 @@ class Run:
                     remote_parent = f'{REMOTE}/{Path(name).parent}'
                     vast._ssh(instance, f'mkdir -p {remote_parent}', timeout=self.timeout(attempt))
                     vast._rsync(port, str(ROOT / name), f'{target}:{remote_parent}/', timeout=self.timeout(attempt))
-            _, error = sending.communicate(timeout=self.timeout(attempt, 600))
+            errors = [process.communicate(timeout=self.timeout(attempt, 600))[1] for process in sending]
         finally:
-            if sending.poll() is None:
-                sending.kill()
-                sending.wait()
-        if sending.returncode:
-            raise vast.SweepError(f'rsync failed: {error.strip()[-1000:] or "unknown"}')
-        unpack = [f"python3 -c {shlex.quote(UNPACK)} {REMOTE}/grid/{packed.name} {REMOTE}/grid/{entry['remote_name']}"
-                  for entry, packed in grids]
+            for process in sending:
+                if process.poll() is None:
+                    process.kill()
+                    process.wait()
+        for process, error in zip(sending, errors):
+            if process.returncode:
+                raise vast.SweepError(f'rsync failed: {error.strip()[-1000:] or "unknown"}')
+        unpack = [f"python3 -c {shlex.quote(UNPACK)} {' '.join(f'{REMOTE}/grid/{part.name}' for part in parts)} "
+                  f"{REMOTE}/grid/{entry['remote_name']}" for entry, parts in grids]
         checks = '\n'.join(f"{entry['grid_sha256']}  {REMOTE}/grid/{entry['remote_name']}" for entry, _ in grids)
         vast._ssh(instance, ' && '.join([*unpack, f'printf %s {shlex.quote(checks)} | sha256sum -c -']), timeout=self.timeout(attempt))
 
