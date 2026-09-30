@@ -354,6 +354,12 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
     "caption": "M1_210210 · SFH · neb_eline_ca_nohe: nebular grid, line marginalisation on without the H-epsilon column, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
   },
   {
+    "path": "results/m1-210210-maskallca-2026-09-30/sfh-M1_210210.png",
+    "view": "SFH",
+    "target": "M1_210210",
+    "caption": "M1_210210 · SFH · wide / neb_maskallca / neb_eline_ca / neb_eline_ca_nohe: SFR per formed mass against lookback time; right panel cumulative mass fraction."
+  },
+  {
     "notebook": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/M1_210210_executed.ipynb",
     "cell": 20,
     "output": 0,
@@ -382,6 +388,86 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
     "arm": "neb_eline_ca_nohe",
     "view": "Posteriors",
     "caption": "M1_210210 · Posteriors · neb_eline_ca_nohe: nebular grid, line marginalisation on without the H-epsilon column, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
+  },
+  {
+    "notebook": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 1,
+    "run": "neb-maskallca-run-53539531",
+    "target": "M1_210210",
+    "arm": "neb_maskallca",
+    "view": "Posteriors",
+    "caption": "M1_210210 · Dust and SFH mass fractions · neb_maskallca: nebular grid, H-beta unmasked, Ca H+K and Ca I 4227 masked; otherwise as wide."
+  },
+  {
+    "notebook": "results/m1-210210-neb-eline-ca-2026-09-30/run/fits/neb_eline_ca/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 1,
+    "run": "neb-eline-ca-run-53540122",
+    "target": "M1_210210",
+    "arm": "neb_eline_ca",
+    "view": "Posteriors",
+    "caption": "M1_210210 · Dust and SFH mass fractions · neb_eline_ca: nebular grid, line marginalisation on, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
+  },
+  {
+    "notebook": "results/m1-210210-neb-eline-ca-nohe-2026-09-30/run/fits/neb_eline_ca_nohe/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 1,
+    "run": "neb-eline-ca-nohe-run-53545621",
+    "target": "M1_210210",
+    "arm": "neb_eline_ca_nohe",
+    "view": "Posteriors",
+    "caption": "M1_210210 · Dust and SFH mass fractions · neb_eline_ca_nohe: nebular grid, line marginalisation on without the H-epsilon column, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
+  },
+  {
+    "path": "results/m1-210210-maskallca-2026-09-30/corner-M1_210210.png",
+    "view": "Posteriors",
+    "target": "M1_210210",
+    "caption": "M1_210210 · Posteriors · wide / neb_maskallca / neb_eline_ca / neb_eline_ca_nohe: log M*, [Fe/H], [a/Fe], tau_dust, delta_dust, E_bump, dust ratio, t_MW with 1-sigma contours."
+  },
+  {
+    "path": "wiki/analyses/m1-210210-kcbump/spectrum-kcbump-M1_210210.png",
+    "view": "Comparison",
+    "target": "M1_210210",
+    "caption": "M1_210210 · Spectrum · kcbump (default14 of e-dust-bump): slope prior U(-1, 0.4), bump prior U(0, 6); otherwise as wide."
+  },
+  {
+    "notebook": "results/m1-210210-neb-eline-ca-nohe-2026-09-30/run/fits/neb_eline_ca_nohe/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "neb-eline-ca-nohe-run-53545621",
+    "target": "M1_210210",
+    "arm": "neb_eline_ca_nohe",
+    "view": "Comparison",
+    "caption": "M1_210210 · Spectrum · neb_eline_ca_nohe: nebular grid, line marginalisation on without the H-epsilon column, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
+  },
+  {
+    "path": "wiki/analyses/m1-210210-kcbump/photometry-kcbump-M1_210210.png",
+    "view": "Comparison",
+    "target": "M1_210210",
+    "caption": "M1_210210 · Photometry · kcbump (default14 of e-dust-bump): slope prior U(-1, 0.4), bump prior U(0, 6); otherwise as wide."
+  },
+  {
+    "notebook": "results/m1-210210-neb-eline-ca-nohe-2026-09-30/run/fits/neb_eline_ca_nohe/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "neb-eline-ca-nohe-run-53545621",
+    "target": "M1_210210",
+    "arm": "neb_eline_ca_nohe",
+    "view": "Comparison",
+    "caption": "M1_210210 · Photometry · neb_eline_ca_nohe: nebular grid, line marginalisation on without the H-epsilon column, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
+  },
+  {
+    "path": "results/m1-210210-neb-eline-ca-nohe-2026-09-30/sfh-M1_210210.png",
+    "view": "Comparison",
+    "target": "M1_210210",
+    "caption": "M1_210210 · SFH · kcbump / neb_eline_ca_nohe: SFR per formed mass against lookback time; right panel cumulative mass fraction."
+  },
+  {
+    "path": "results/m1-210210-neb-eline-ca-nohe-2026-09-30/corner-M1_210210.png",
+    "view": "Comparison",
+    "target": "M1_210210",
+    "caption": "M1_210210 · Posteriors · kcbump / neb_eline_ca_nohe: log M*, [Fe/H], [a/Fe], tau_dust, delta_dust, E_bump, dust ratio, t_MW with 1-sigma contours."
   }
 ]
 ```

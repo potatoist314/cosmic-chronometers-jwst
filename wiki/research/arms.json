@@ -965,7 +965,9 @@
     "SSP grid",
     "Masked lines",
     "Emission-line marginalisation",
-    "\\(z\\)"
+    "\\(z\\)",
+    "\\(\\delta_{\\mathrm{dust}}\\) prior",
+    "\\(E_b\\) prior"
    ],
    "rows": [
     {
@@ -974,7 +976,9 @@
       "amist_c3k_hr_krou_afe",
       "[O II] 3726/3729, Hβ, [O III] 4959/5007",
       "off",
-      "U(\\(z_{\\mathrm{cat}}\\) ± 0.1)"
+      "U(\\(z_{\\mathrm{cat}}\\) ± 0.1)",
+      "U(−3, 0.4)",
+      "U(0, 12)"
      ]
     },
     {
@@ -982,6 +986,8 @@
      "values": [
       "nebular",
       "[O II], [O III], Ca H+K, Ca I 4227",
+      "",
+      "",
       "",
       ""
      ]
@@ -992,7 +998,9 @@
       "nebular",
       "Ca H+K, Ca I 4227 only",
       "on",
-      "fixed"
+      "fixed",
+      "",
+      ""
      ]
     },
     {
@@ -1001,7 +1009,20 @@
       "nebular",
       "Ca H+K, Ca I 4227 only",
       "on, without Hε",
-      "fixed"
+      "fixed",
+      "",
+      ""
+     ]
+    },
+    {
+     "arm": "kcbump",
+     "values": [
+      "",
+      "",
+      "",
+      "",
+      "U(−1, 0.4)",
+      "U(0, 6)"
      ]
     }
    ]

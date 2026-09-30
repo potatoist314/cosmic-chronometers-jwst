@@ -1412,3 +1412,8 @@
 
 - Result pages and six notes lead with arm/reference tables (matches blank), folded complete settings/priors, and linked reference-diff captions; panels group Noll keys separately without the Kriek–Conroy equation.
 - Files: wiki/research/arms.json, wiki/research_figures.py, wiki/fit_settings.py, wiki/build.py, wiki/tests/test_fit_settings.py.
+
+### 2026-09-30 — e-mask-all-ca comparison figures
+
+- `research/experiments/e-mask-all-ca.md`: SFH/corner overlays for `wide`, `neb_maskallca`, `neb_eline_ca`, `neb_eline_ca_nohe`; dust–14-SFH-fraction corners per arm; `dust_ratio` in corner overlays.
+- Comparison: `neb_eline_ca_nohe` versus `kcbump` (`e-dust-bump` arm `default14`), spectrum, photometry, SFH/corner overlays. `wiki/research/arms.json`: `kcbump` row and `delta_dust`/`E_b` prior columns.
