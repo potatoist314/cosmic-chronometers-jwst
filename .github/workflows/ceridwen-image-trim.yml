@@ -1,8 +1,8 @@
-name: Leave NCCL and NVSHMEM out of the Ceridwen GPU image
+name: Leave unused CUDA libraries out of the Ceridwen GPU image
 on:
   push:
     branches: [speedups]
-    paths: ['scripts/containers/drop_image_layers.py', '.github/workflows/ceridwen-image-trim.yml']
+    paths: ['scripts/containers/drop_image_paths.py', '.github/workflows/ceridwen-image-trim.yml']
 permissions:
   contents: read
   packages: write
@@ -10,6 +10,12 @@ env:
   REPOSITORY: potatoist314/ceridwen-gpu
   SOURCE: sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1
   NVIDIA: opt/ceridwen/lib/python3.11/site-packages/nvidia
+  # NCCL and NVSHMEM are never called on one GPU; XLA loads only libcudnn.so.9 and libcudnn_graph.so.9.
+  UNUSED: >-
+    nccl/lib nvshmem/lib cudnn/lib/libcudnn_adv.so.9 cudnn/lib/libcudnn_cnn.so.9
+    cudnn/lib/libcudnn_engines_precompiled.so.9 cudnn/lib/libcudnn_engines_runtime_compiled.so.9
+    cudnn/lib/libcudnn_engines_tensor_ir.so.9 cudnn/lib/libcudnn_ext.so.9
+    cudnn/lib/libcudnn_heuristic.so.9 cudnn/lib/libcudnn_ops.so.9
 jobs:
   trim:
     runs-on: ubuntu-latest
@@ -18,18 +24,18 @@ jobs:
         with:
           sparse-checkout: scripts/containers
           filter: blob:none
-      - name: Free disk for two unpacked images
+      - name: Free disk for the source layers and two unpacked images
         run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
-      - name: Leave out the layers that hold only NCCL and NVSHMEM
+      - name: Leave out the unused libraries
         id: trim
         env:
           REGISTRY_USER: ${{ github.actor }}
           REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag="trim-${SOURCE#sha256:}"
-          digest=$(python3 scripts/containers/drop_image_layers.py "$REPOSITORY" "$SOURCE" "${tag:0:17}" "$NVIDIA/nccl/lib" "$NVIDIA/nvshmem/lib")
+          tag="slim-${SOURCE#sha256:}"
+          digest=$(python3 scripts/containers/drop_image_paths.py "$REPOSITORY" "$SOURCE" "${tag:0:17}" $(for p in $UNUSED; do echo "$NVIDIA/$p"; done))
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
-      - name: Check the images differ only by those two directories
+      - name: Check the images differ only by those files
         env:
           TRIM: ${{ steps.trim.outputs.digest }}
         run: |
@@ -56,8 +62,9 @@ jobs:
           python3 - <<'PY'
           import os
           lines = [l for l in open("changes.txt") if l[:1] in "<>"]
-          keep = tuple(f"'{os.environ['NVIDIA']}/{d}" for d in ("nccl/lib", "nvshmem/lib"))
-          assert lines and all(l.startswith("< ") and l[2:].startswith(keep) for l in lines), lines[:5]
-          print(f"{len(lines)} entries removed, all under nccl/lib and nvshmem/lib")
+          removed = [f"'{os.environ['NVIDIA']}/{p}" for p in os.environ["UNUSED"].split()]
+          assert lines and all(l.startswith("< ") and any(l[2:].startswith(p + s) for p in removed for s in "'/")
+                               for l in lines), lines[:5]
+          print(f"{len(lines)} entries removed, all in the unused paths")
           PY
-          echo "Trimmed $SOURCE into $TRIM: $(grep -c '^<' changes.txt) entries under nccl/lib and nvshmem/lib removed; nothing else differs" >> "$GITHUB_STEP_SUMMARY"
+          echo "Trimmed $SOURCE into $TRIM: $(grep -c '^<' changes.txt) entries in the unused paths removed; nothing else differs" >> "$GITHUB_STEP_SUMMARY"

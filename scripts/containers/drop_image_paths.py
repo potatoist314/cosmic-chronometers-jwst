@@ -1,10 +1,11 @@
-"""Push a copy of an image without the layers that hold only the given directories.
+"""Push a copy of an image without the given files and directories.
 
-split_image_layer.py puts each large venv directory in its own layer, so a library the
-fits never load (NCCL and NVSHMEM on one GPU) is one layer that can be left out. Every
-other layer, and its bytes, is reused unchanged.
+split_image_layer.py puts each large venv directory in its own layer. A layer that holds
+only removed paths (NCCL, NVSHMEM) is left out; a layer that also holds kept files (the
+cuDNN libraries XLA never loads) is rewritten with its other tar members copied byte for
+byte. Every other layer is reused unchanged.
 
-Usage: drop_image_layers.py <repository> <image digest> <tag> <directory>...
+Usage: drop_image_paths.py <repository> <image digest> <tag> <path>...
 Env: REGISTRY_USER, REGISTRY_TOKEN (push access to ghcr.io/<repository>).
 Prints the new manifest digest.
 """
@@ -15,57 +16,70 @@ import os
 import sys
 import tempfile
 
-from split_image_layer import MANIFEST, call, download, manifest, members, upload
+from split_image_layer import LAYER, MANIFEST, Layer, call, download, manifest, members, upload
 
 
-def inside(path, directory):
-    return path == directory or path.startswith(directory + "/")
+def inside(path, paths):
+    return any(path == p or path.startswith(p + "/") for p in paths)
 
 
-def droppable(layers, directories):
-    """Indices of the layers whose members all lie in one of the directories.
-
-    layers: one list of (path, type flag, link target) per layer. Each directory must be
-    exactly one such layer: no other layer may hold, or hard-link into, any path in it."""
-    chosen = {}
-    for index, entries in enumerate(layers):
-        owners = {d for d in directories for path, _, _ in entries if inside(path, d)}
-        if len(owners) == 1 and all(inside(path, next(iter(owners))) for path, _, _ in entries):
-            chosen.setdefault(owners.pop(), []).append(index)
-    for directory in directories:
-        if len(chosen.get(directory, [])) != 1:
-            raise SystemExit(f"{directory} is not exactly one layer of its own")
-    drop = {i for indices in chosen.values() for i in indices}
-    for index, entries in enumerate(layers):
-        if index in drop:
-            continue
+def plan(layers, paths):
+    """What happens to each layer, given its (path, type flag, link target) members:
+    'keep' (nothing removed), 'drop' (everything removed) or 'rewrite'."""
+    actions = []
+    for entries in layers:
+        removed = sum(inside(path, paths) for path, _, _ in entries)
+        actions.append("keep" if not removed else "drop" if removed == len(entries) else "rewrite")
+    for entries in layers:
         for path, kind, link in entries:
-            for directory in directories:
-                if inside(path, directory) or (kind == b"1" and inside(link.rstrip("/"), directory)):
-                    raise SystemExit(f"layer {index} holds {path}, which depends on {directory}")
-    return sorted(drop)
+            if kind == b"1" and not inside(path, paths) and inside(link.rstrip("/"), paths):
+                raise SystemExit(f"{path} hard-links to {link}, which is removed")
+    if "drop" not in actions and "rewrite" not in actions:
+        raise SystemExit("no member matches the given paths")
+    return actions
+
+
+def rewrite(source, paths, directory, index):
+    """The layer file ``source`` without the members inside ``paths``; the others byte for byte."""
+    layer = Layer(directory, index)
+    with gzip.open(source) as stream:
+        for path, _, _, raw in members(stream):
+            if not inside(path, paths):
+                layer.add(raw)
+    layer.close()
+    return layer
 
 
 def main():
-    repository, digest, tag, *directories = sys.argv[1:]
+    repository, digest, tag, *paths = sys.argv[1:]
     source = manifest(repository, digest)
     config = json.load(call(repository, "GET", f"blobs/{source['config']['digest']}"))
-    layers = []
     with tempfile.TemporaryDirectory() as directory:
-        path = os.path.join(directory, "layer.tar.gz")
-        for layer in source["layers"]:
-            download(repository, layer["digest"], path)
-            with gzip.open(path) as stream:
-                layers.append([(p, kind, link) for p, kind, link, _ in members(stream)])
-    drop = droppable(layers, directories)
-    print(f"leaving out layers {drop}: {sum(source['layers'][i]['size'] for i in drop):,} bytes", file=sys.stderr)
+        files, listings = [], []
+        for index, layer in enumerate(source["layers"]):
+            files.append(os.path.join(directory, f"source{index}.tar.gz"))
+            download(repository, layer["digest"], files[-1])
+            with gzip.open(files[-1]) as stream:
+                listings.append([(path, kind, link) for path, kind, link, _ in members(stream)])
+        actions = plan(listings, paths)
+        layers, diff_ids = [], []
+        for index, (action, layer, diff_id) in enumerate(zip(actions, source["layers"], config["rootfs"]["diff_ids"])):
+            if action == "keep":
+                layers.append(layer)
+                diff_ids.append(diff_id)
+            elif action == "rewrite":
+                rewritten = rewrite(files[index], paths, directory, index)
+                new_digest = f"sha256:{rewritten.digest.hexdigest()}"
+                upload(repository, rewritten.path, new_digest, rewritten.size)
+                layers.append({"mediaType": LAYER, "digest": new_digest, "size": rewritten.size})
+                diff_ids.append(f"sha256:{rewritten.diff_id.hexdigest()}")
+            print(f"layer {index}: {action}", file=sys.stderr)
     # History entries that are not empty layers pair with the layers in order.
     history, seen = [], 0
     for entry in config["history"]:
-        if entry.get("empty_layer") or seen not in drop:
+        if entry.get("empty_layer") or actions[seen] != "drop":
             history.append(entry)
         seen += not entry.get("empty_layer")
-    diff_ids = [d for i, d in enumerate(config["rootfs"]["diff_ids"]) if i not in drop]
     config = {**config, "history": history, "rootfs": {**config["rootfs"], "diff_ids": diff_ids}}
     body = json.dumps(config, separators=(",", ":")).encode()
     config_digest = f"sha256:{hashlib.sha256(body).hexdigest()}"
@@ -75,7 +89,7 @@ def main():
         upload(repository, stream.name, config_digest, len(body))
     document = {"schemaVersion": 2, "mediaType": MANIFEST,
                 "config": {"mediaType": source["config"]["mediaType"], "digest": config_digest, "size": len(body)},
-                "layers": [layer for i, layer in enumerate(source["layers"]) if i not in drop]}
+                "layers": layers}
     response = call(repository, "PUT", f"manifests/{tag}", json.dumps(document).encode(), {"Content-Type": MANIFEST})
     print(response.headers["Docker-Content-Digest"])
 
