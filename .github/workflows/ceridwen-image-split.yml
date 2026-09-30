@@ -1,0 +1,54 @@
+name: Split Ceridwen GPU image layers
+on:
+  push:
+    branches: [speedups]
+    paths: ['scripts/containers/split_image_layer.py', '.github/workflows/ceridwen-image-split.yml']
+permissions:
+  contents: read
+  packages: write
+env:
+  REPOSITORY: potatoist314/ceridwen-gpu
+  SOURCE: sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts/containers
+          filter: blob:none
+      - name: Free disk for two unpacked images
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+      - name: Split the largest layer
+        id: split
+        env:
+          REGISTRY_USER: ${{ github.actor }}
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="split-${SOURCE#sha256:}"
+          digest=$(python3 scripts/containers/split_image_layer.py "$REPOSITORY" "$SOURCE" "${tag:0:18}")
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+      - name: Check both images unpack to the same files and configuration
+        env:
+          SPLIT: ${{ steps.split.outputs.digest }}
+        run: |
+          listing() {
+            docker pull -q --platform linux/amd64 "ghcr.io/$REPOSITORY@$1" > /dev/null
+            docker inspect -f '{{json .Config}}' "ghcr.io/$REPOSITORY@$1"
+            id=$(docker create --platform linux/amd64 "ghcr.io/$REPOSITORY@$1")
+            docker export "$id" | python3 -c '
+          import hashlib, sys, tarfile
+          with tarfile.open(fileobj=sys.stdin.buffer, mode="r|") as tar:
+              for m in tar:
+                  digest = hashlib.file_digest(tar.extractfile(m), "sha256").hexdigest() if m.isfile() else ""
+                  # Directory times and the files docker create writes differ between any two containers.
+                  mtime = "" if m.isdir() or m.name in (".dockerenv", "etc/hostname", "etc/hosts", "etc/resolv.conf") else m.mtime
+                  print(repr(m.name), m.type, oct(m.mode), m.uid, m.gid, m.size, mtime, repr(m.linkname), digest)
+          ' | sort
+            docker rm "$id" > /dev/null
+            docker rmi "ghcr.io/$REPOSITORY@$1" > /dev/null
+          }
+          listing "$SOURCE" > source.txt
+          listing "$SPLIT" > split.txt
+          cmp source.txt split.txt
+          echo "Split $SOURCE into $SPLIT: $(wc -l < split.txt) identical entries and configuration" >> "$GITHUB_STEP_SUMMARY"

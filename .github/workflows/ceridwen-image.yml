@@ -31,4 +31,10 @@ jobs:
           tags: ghcr.io/potatoist314/ceridwen-gpu:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - run: echo 'Image digest ${{ steps.build.outputs.digest }}' >> "$GITHUB_STEP_SUMMARY"
+      - name: Copy the image with its venv layer split, so hosts download the parts in parallel
+        id: split
+        env:
+          REGISTRY_USER: ${{ github.actor }}
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "digest=$(python3 scripts/containers/split_image_layer.py potatoist314/ceridwen-gpu ${{ steps.build.outputs.digest }} ${{ github.sha }}-split)" >> "$GITHUB_OUTPUT"
+      - run: echo 'Image digest ${{ steps.build.outputs.digest }}; split layers ${{ steps.split.outputs.digest }}' >> "$GITHUB_STEP_SUMMARY"
