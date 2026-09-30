@@ -60,6 +60,18 @@ def test_selected_inputs_include_every_catalogue_opened_by_loader(photometry):
     assert all(str(path.relative_to(sweep.PROJECT_ROOT)) in files for path in FILES.values())
 
 
+def test_ssh_target_resolves_once_per_instance(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(sweep, "_ssh_targets", {})
+    calls = []
+    monkeypatch.setattr(sweep, "_vastai", lambda arguments, **kw:
+                        calls.append(arguments) or "ssh://root@host:22")
+
+    assert sweep._ssh_target(7) == ("root@host", "22")
+    assert sweep._ssh_target(7) == ("root@host", "22")
+    assert sweep._ssh_target(8) == ("root@host", "22")
+    assert [c[1] for c in calls] == ["7", "8"]
+
+
 def test_ssh_options_offer_only_the_registered_key(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
