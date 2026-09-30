@@ -1417,3 +1417,7 @@
 
 - `research/experiments/e-mask-all-ca.md`: SFH/corner overlays for `wide`, `neb_maskallca`, `neb_eline_ca`, `neb_eline_ca_nohe`; dust–14-SFH-fraction corners per arm; `dust_ratio` in corner overlays.
 - Comparison: `neb_eline_ca_nohe` versus `kcbump` (`e-dust-bump` arm `default14`), spectrum, photometry, SFH/corner overlays. `wiki/research/arms.json`: `kcbump` row and `delta_dust`/`E_b` prior columns.
+### 2026-09-30 — Masked lines leave the line columns
+
+- `notebooks/ceridwen_integrated_photometry_spectra.ipynb` cell 6 rebuilds `EmissionLineColumns` after `mask_lines`; a line with fewer than 3 unmasked pixels within \(2\sigma\) gets no free flux; default masks give the same columns.
+- `tests/test_emission_line_marginalisation.py` checks that a Ca II H mask removes H\(\epsilon\) and the tied [Ne III] 3968 component; `notes/model.md` row “Emission-line mask” states the rule.
