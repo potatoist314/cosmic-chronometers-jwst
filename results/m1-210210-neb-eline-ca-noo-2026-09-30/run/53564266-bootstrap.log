@@ -1,0 +1,45 @@
+Using prebuilt Ceridwen dependencies
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Resolved 2 packages in 161ms
+   Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+   Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+      Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+      Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+Prepared 2 packages in 281ms
+Uninstalled 1 package in 2ms
+Installed 2 packages in 1ms
+ + ceridwen==0.2.3 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 1ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+CERIDWEN environment check
+==========================
+  [ok  ] Python 3.11
+  [ok  ] jax  -- 0.10.2
+  [ok  ] jaxlib  -- 0.10.2
+  [ok  ] numpy  -- 2.4.6
+  [ok  ] scipy  -- 1.17.1
+  [ok  ] matplotlib  -- 3.11.2
+  [ok  ] h5py  -- 3.16.0
+  [ok  ] astropy  -- 8.0.1
+  [ok  ] tqdm  -- 4.70.1
+  [ok  ] optax  -- 0.2.8
+  [ok  ] anesthetic  -- 2.16.0
+  [ok  ] jax float64  -- enabled
+  [ok  ] sedpy_jax  -- make_lsf_smoother has inres
+  [ok  ] tensorflow-probability  -- jax substrate
+  [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+  [ok  ] blackjax.ns  -- nested sampling available
+  [warn] python-fsps  -- not importable. Needed to build SSP grids and (with nebular / dust emission) at runtime. See README Installation.
+  [warn] $SPS_HOME  -- unset. Required for nebular / dust-emission models. `export SPS_HOME=/path/to/fsps`
+
+All required components present. (warnings above are optional features / FSPS setup.)
+sedpy_jax wavelength-dependent input resolution verified
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.

@@ -1435,3 +1435,7 @@
 
 - `metallicity_evolution=True`; `zh_beta_unit` prior remains Uniform(0, 1). Liu Hao, 30 Sep 2026: 'the metallicity-evolution slope (ZH beta) should be part of the production default'; record: `research/experiments/e-zevo.md`.
 - Files: `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, `tests/test_emission_line_marginalisation.py`, `wiki/notes/model.md`.
+
+### 2026-09-30 — e-mask-all-ca: O-lines-masked marginalisation arm
+
+- `research/experiments/e-mask-all-ca.md` records `neb_eline_ca_noO` against `neb_eline_ca_nohe` and `neb_maskallca` for M1_210210; the tied [O III] doublet column drops via offset mask entries 4963.5/5005.0 Å; `results/m1-210210-neb-eline-ca-noo-2026-09-30/`.
