@@ -402,7 +402,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M12_185653 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Spectrum · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/185653-M12_185653/M12_185653_executed.ipynb",
@@ -412,7 +412,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M12_185653 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/185653-M12_185653/M12_185653_executed.ipynb",
@@ -422,7 +422,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, aperture photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/185653-M12_185653/M12_185653_executed.ipynb",
@@ -432,7 +432,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, aperture photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -442,7 +442,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -452,7 +452,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/185653-M12_185653/M12_185653_executed.ipynb",
@@ -462,7 +462,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M12_185653 · baseline. Saved SFH and posterior interval."
+    "caption": "M12_185653 · SFH · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/185653-M12_185653/M12_185653_executed.ipynb",
@@ -472,7 +472,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3",
     "view": "SFH",
-    "caption": "M12_185653 · order 3, aperture photometry. Saved SFH and posterior interval."
+    "caption": "M12_185653 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -482,7 +482,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_185653 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_185653 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/185653-M12_185653/M12_185653_executed.ipynb",
@@ -492,7 +492,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M12_185653 · baseline. Physical-parameter posterior."
+    "caption": "M12_185653 · Posteriors · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/185653-M12_185653/M12_185653_executed.ipynb",
@@ -502,7 +502,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M12_185653 · baseline. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/185653-M12_185653/M12_185653_executed.ipynb",
@@ -512,7 +512,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, aperture photometry. Physical-parameter posterior."
+    "caption": "M12_185653 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/185653-M12_185653/M12_185653_executed.ipynb",
@@ -522,7 +522,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, aperture photometry. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -532,7 +532,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_185653 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -542,7 +542,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/98104-M12_98104/M12_98104_executed.ipynb",
@@ -552,7 +552,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M12_98104 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Spectrum · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/98104-M12_98104/M12_98104_executed.ipynb",
@@ -562,7 +562,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M12_98104 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/98104-M12_98104/M12_98104_executed.ipynb",
@@ -572,7 +572,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, aperture photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/98104-M12_98104/M12_98104_executed.ipynb",
@@ -582,7 +582,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, aperture photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -592,7 +592,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -602,7 +602,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/98104-M12_98104/M12_98104_executed.ipynb",
@@ -612,7 +612,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M12_98104 · baseline. Saved SFH and posterior interval."
+    "caption": "M12_98104 · SFH · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/98104-M12_98104/M12_98104_executed.ipynb",
@@ -622,7 +622,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3",
     "view": "SFH",
-    "caption": "M12_98104 · order 3, aperture photometry. Saved SFH and posterior interval."
+    "caption": "M12_98104 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -632,7 +632,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_98104 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_98104 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/98104-M12_98104/M12_98104_executed.ipynb",
@@ -642,7 +642,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M12_98104 · baseline. Physical-parameter posterior."
+    "caption": "M12_98104 · Posteriors · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/98104-M12_98104/M12_98104_executed.ipynb",
@@ -652,7 +652,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M12_98104 · baseline. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/98104-M12_98104/M12_98104_executed.ipynb",
@@ -662,7 +662,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, aperture photometry. Physical-parameter posterior."
+    "caption": "M12_98104 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/98104-M12_98104/M12_98104_executed.ipynb",
@@ -672,7 +672,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, aperture photometry. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -682,7 +682,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_98104 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -692,7 +692,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/206545-M1_206545/M1_206545_executed.ipynb",
@@ -702,7 +702,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_206545 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Spectrum · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/206545-M1_206545/M1_206545_executed.ipynb",
@@ -712,7 +712,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M1_206545 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/206545-M1_206545/M1_206545_executed.ipynb",
@@ -722,7 +722,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, aperture photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/206545-M1_206545/M1_206545_executed.ipynb",
@@ -732,7 +732,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, aperture photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -742,7 +742,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -752,7 +752,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/206545-M1_206545/M1_206545_executed.ipynb",
@@ -762,7 +762,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M1_206545 · baseline. Saved SFH and posterior interval."
+    "caption": "M1_206545 · SFH · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/206545-M1_206545/M1_206545_executed.ipynb",
@@ -772,7 +772,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3",
     "view": "SFH",
-    "caption": "M1_206545 · order 3, aperture photometry. Saved SFH and posterior interval."
+    "caption": "M1_206545 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -782,7 +782,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M1_206545 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M1_206545 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/206545-M1_206545/M1_206545_executed.ipynb",
@@ -792,7 +792,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_206545 · baseline. Physical-parameter posterior."
+    "caption": "M1_206545 · Posteriors · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/206545-M1_206545/M1_206545_executed.ipynb",
@@ -802,7 +802,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M1_206545 · baseline. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/206545-M1_206545/M1_206545_executed.ipynb",
@@ -812,7 +812,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, aperture photometry. Physical-parameter posterior."
+    "caption": "M1_206545 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/206545-M1_206545/M1_206545_executed.ipynb",
@@ -822,7 +822,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, aperture photometry. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -832,7 +832,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M1_206545 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -842,7 +842,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/108989-M4_108989/M4_108989_executed.ipynb",
@@ -852,7 +852,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M4_108989 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/108989-M4_108989/M4_108989_executed.ipynb",
@@ -862,7 +862,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M4_108989 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -872,7 +872,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, aperture photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -882,7 +882,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, aperture photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -892,7 +892,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -902,7 +902,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/108989-M4_108989/M4_108989_executed.ipynb",
@@ -912,7 +912,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M4_108989 · baseline. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -922,7 +922,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3",
     "view": "SFH",
-    "caption": "M4_108989 · order 3, aperture photometry. Saved SFH and posterior interval."
+    "caption": "M4_108989 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -932,7 +932,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M4_108989 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M4_108989 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/108989-M4_108989/M4_108989_executed.ipynb",
@@ -942,7 +942,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M4_108989 · baseline. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/108989-M4_108989/M4_108989_executed.ipynb",
@@ -952,7 +952,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M4_108989 · baseline. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -962,7 +962,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, aperture photometry. Physical-parameter posterior."
+    "caption": "M4_108989 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/108989-M4_108989/M4_108989_executed.ipynb",
@@ -972,7 +972,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, aperture photometry. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -982,7 +982,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M4_108989 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -992,7 +992,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1002,7 +1002,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M5_172669 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1012,7 +1012,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M5_172669 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1022,7 +1022,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, aperture photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1032,7 +1032,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, aperture photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1042,7 +1042,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1052,7 +1052,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1062,7 +1062,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M5_172669 · baseline. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1072,7 +1072,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3",
     "view": "SFH",
-    "caption": "M5_172669 · order 3, aperture photometry. Saved SFH and posterior interval."
+    "caption": "M5_172669 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1082,7 +1082,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_172669 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_172669 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1092,7 +1092,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M5_172669 · baseline. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1102,7 +1102,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M5_172669 · baseline. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1112,7 +1112,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, aperture photometry. Physical-parameter posterior."
+    "caption": "M5_172669 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1122,7 +1122,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, aperture photometry. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1132,7 +1132,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_172669 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -1142,7 +1142,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1152,7 +1152,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M5_173928 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Spectrum · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1162,7 +1162,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M5_173928 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1172,7 +1172,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, aperture photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1182,7 +1182,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, aperture photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1192,7 +1192,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1202,7 +1202,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1212,7 +1212,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M5_173928 · baseline. Saved SFH and posterior interval."
+    "caption": "M5_173928 · SFH · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1222,7 +1222,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3",
     "view": "SFH",
-    "caption": "M5_173928 · order 3, aperture photometry. Saved SFH and posterior interval."
+    "caption": "M5_173928 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1232,7 +1232,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_173928 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_173928 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1242,7 +1242,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M5_173928 · baseline. Physical-parameter posterior."
+    "caption": "M5_173928 · Posteriors · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/baseline/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1252,7 +1252,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M5_173928 · baseline. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · baseline, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1262,7 +1262,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, aperture photometry. Physical-parameter posterior."
+    "caption": "M5_173928 · Photometry · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1272,7 +1272,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, aperture photometry. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · poly3: order-3 polynomial (prior sigma 0.1); otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1282,7 +1282,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_173928 · Photometry · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -1292,7 +1292,7 @@ Six DR2 targets: baseline = order 0 with cosmos_ap3; poly3 = order 3 with cosmos
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · poly3_total: order-3 polynomial (prior sigma 0.1), total photometry; otherwise as baseline."
   }
 ]
 ```

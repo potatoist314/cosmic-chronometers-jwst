@@ -286,7 +286,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M12_185653 · free dust slope and continuity prior. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Spectrum · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/185653-M12_185653/M12_185653_executed.ipynb",
@@ -296,7 +296,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M12_185653 · free dust slope and continuity prior. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -306,7 +306,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -316,7 +316,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_185653 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/185653-M12_185653/M12_185653_executed.ipynb",
@@ -326,7 +326,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "new_default",
     "view": "SFH",
-    "caption": "M12_185653 · free dust slope and continuity prior. Saved SFH and posterior interval."
+    "caption": "M12_185653 · SFH · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -336,7 +336,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_185653 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/185653-M12_185653/M12_185653_executed.ipynb",
@@ -346,7 +346,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M12_185653 · free dust slope and continuity prior. Physical-parameter posterior."
+    "caption": "M12_185653 · Posteriors · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/185653-M12_185653/M12_185653_executed.ipynb",
@@ -356,7 +356,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M12_185653 · free dust slope and continuity prior. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -366,7 +366,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_185653 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
@@ -376,7 +376,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_185653",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_185653 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_185653 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/98104-M12_98104/M12_98104_executed.ipynb",
@@ -386,7 +386,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M12_98104 · free dust slope and continuity prior. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Spectrum · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/98104-M12_98104/M12_98104_executed.ipynb",
@@ -396,7 +396,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M12_98104 · free dust slope and continuity prior. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -406,7 +406,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -416,7 +416,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M12_98104 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/98104-M12_98104/M12_98104_executed.ipynb",
@@ -426,7 +426,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "new_default",
     "view": "SFH",
-    "caption": "M12_98104 · free dust slope and continuity prior. Saved SFH and posterior interval."
+    "caption": "M12_98104 · SFH · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -436,7 +436,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M12_98104 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/98104-M12_98104/M12_98104_executed.ipynb",
@@ -446,7 +446,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M12_98104 · free dust slope and continuity prior. Physical-parameter posterior."
+    "caption": "M12_98104 · Posteriors · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/98104-M12_98104/M12_98104_executed.ipynb",
@@ -456,7 +456,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M12_98104 · free dust slope and continuity prior. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -466,7 +466,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M12_98104 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/98104-M12_98104/M12_98104_executed.ipynb",
@@ -476,7 +476,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M12_98104",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M12_98104 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M12_98104 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/206545-M1_206545/M1_206545_executed.ipynb",
@@ -486,7 +486,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M1_206545 · free dust slope and continuity prior. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Spectrum · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/206545-M1_206545/M1_206545_executed.ipynb",
@@ -496,7 +496,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M1_206545 · free dust slope and continuity prior. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -506,7 +506,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -516,7 +516,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M1_206545 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/206545-M1_206545/M1_206545_executed.ipynb",
@@ -526,7 +526,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "new_default",
     "view": "SFH",
-    "caption": "M1_206545 · free dust slope and continuity prior. Saved SFH and posterior interval."
+    "caption": "M1_206545 · SFH · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -536,7 +536,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M1_206545 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/206545-M1_206545/M1_206545_executed.ipynb",
@@ -546,7 +546,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M1_206545 · free dust slope and continuity prior. Physical-parameter posterior."
+    "caption": "M1_206545 · Posteriors · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/206545-M1_206545/M1_206545_executed.ipynb",
@@ -556,7 +556,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M1_206545 · free dust slope and continuity prior. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -566,7 +566,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M1_206545 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/206545-M1_206545/M1_206545_executed.ipynb",
@@ -576,7 +576,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M1_206545",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M1_206545 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M1_206545 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/108989-M4_108989/M4_108989_executed.ipynb",
@@ -586,7 +586,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M4_108989 · free dust slope and continuity prior. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Spectrum · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/108989-M4_108989/M4_108989_executed.ipynb",
@@ -596,7 +596,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M4_108989 · free dust slope and continuity prior. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -606,7 +606,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -616,7 +616,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M4_108989 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/108989-M4_108989/M4_108989_executed.ipynb",
@@ -626,7 +626,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "new_default",
     "view": "SFH",
-    "caption": "M4_108989 · free dust slope and continuity prior. Saved SFH and posterior interval."
+    "caption": "M4_108989 · SFH · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -636,7 +636,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M4_108989 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/108989-M4_108989/M4_108989_executed.ipynb",
@@ -646,7 +646,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M4_108989 · free dust slope and continuity prior. Physical-parameter posterior."
+    "caption": "M4_108989 · Posteriors · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/108989-M4_108989/M4_108989_executed.ipynb",
@@ -656,7 +656,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M4_108989 · free dust slope and continuity prior. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -666,7 +666,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M4_108989 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
@@ -676,7 +676,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M4_108989",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M4_108989 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M4_108989 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/172669-M5_172669/M5_172669_executed.ipynb",
@@ -686,7 +686,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M5_172669 · free dust slope and continuity prior. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Spectrum · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/172669-M5_172669/M5_172669_executed.ipynb",
@@ -696,7 +696,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M5_172669 · free dust slope and continuity prior. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -706,7 +706,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -716,7 +716,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_172669 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/172669-M5_172669/M5_172669_executed.ipynb",
@@ -726,7 +726,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "new_default",
     "view": "SFH",
-    "caption": "M5_172669 · free dust slope and continuity prior. Saved SFH and posterior interval."
+    "caption": "M5_172669 · SFH · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -736,7 +736,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_172669 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/172669-M5_172669/M5_172669_executed.ipynb",
@@ -746,7 +746,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M5_172669 · free dust slope and continuity prior. Physical-parameter posterior."
+    "caption": "M5_172669 · Posteriors · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/172669-M5_172669/M5_172669_executed.ipynb",
@@ -756,7 +756,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M5_172669 · free dust slope and continuity prior. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -766,7 +766,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_172669 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/172669-M5_172669/M5_172669_executed.ipynb",
@@ -776,7 +776,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_172669",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_172669 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_172669 · Ages · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/173928-M5_173928/M5_173928_executed.ipynb",
@@ -786,7 +786,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M5_173928 · free dust slope and continuity prior. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Spectrum · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/173928-M5_173928/M5_173928_executed.ipynb",
@@ -796,7 +796,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "new_default",
     "view": "Fits",
-    "caption": "M5_173928 · free dust slope and continuity prior. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -806,7 +806,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -816,7 +816,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Fits",
-    "caption": "M5_173928 · order 3, total photometry. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/173928-M5_173928/M5_173928_executed.ipynb",
@@ -826,7 +826,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "new_default",
     "view": "SFH",
-    "caption": "M5_173928 · free dust slope and continuity prior. Saved SFH and posterior interval."
+    "caption": "M5_173928 · SFH · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -836,7 +836,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "SFH",
-    "caption": "M5_173928 · order 3, total photometry. Saved SFH and posterior interval."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/173928-M5_173928/M5_173928_executed.ipynb",
@@ -846,7 +846,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M5_173928 · free dust slope and continuity prior. Physical-parameter posterior."
+    "caption": "M5_173928 · Posteriors · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/fit-accuracy-knobs/new_default/173928-M5_173928/M5_173928_executed.ipynb",
@@ -856,7 +856,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "new_default",
     "view": "Posteriors",
-    "caption": "M5_173928 · free dust slope and continuity prior. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · new_default: dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as poly3_total."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -866,7 +866,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Physical-parameter posterior."
+    "caption": "M5_173928 · Photometry · poly3_total, reference."
   },
   {
     "notebook": "results/calibration-polynomial-dr2/poly3_total/173928-M5_173928/M5_173928_executed.ipynb",
@@ -876,7 +876,7 @@ Compare new_default with poly3_total on the same six targets. The polynomial and
     "target": "M5_173928",
     "arm": "poly3_total",
     "view": "Posteriors",
-    "caption": "M5_173928 · order 3, total photometry. Age and formed-mass fractions."
+    "caption": "M5_173928 · Ages · poly3_total, reference."
   }
 ]
 ```
