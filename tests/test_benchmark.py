@@ -165,6 +165,22 @@ def test_reconnect_does_not_launch_a_second_worker_or_truncate_logs(run, cloud, 
     assert cloud[1]['created'] == [1]
 
 
+def test_stage_polls_briskly_until_the_exit_file_lands(run, monkeypatch):
+    polls, sleeps = [], []
+    def ssh(instance, command, **kwargs):
+        if 'tail -c' in command:
+            polls.append(command)
+            return SimpleNamespace(stdout='running\n...', returncode=0) if len(polls) < 3 \
+                else SimpleNamespace(stdout='0\ndone', returncode=0)
+        return SimpleNamespace(stdout='full stage log', returncode=0)
+    monkeypatch.setattr(bench.vast, '_ssh', ssh)
+    monkeypatch.setattr(bench.time, 'sleep', sleeps.append)
+    run.stage({'instance_id': 100, 'price': .2}, 'fit-0', 'true')
+    assert len(polls) == 3
+    assert sleeps == [bench.POLL_SECONDS] * 2 == [5, 5]
+    assert (run.root / '100-fit-0.log').read_text() == 'full stage log'
+
+
 def test_create_is_not_retried_on_empty_response(monkeypatch):
     calls = []
     monkeypatch.setattr(bench.vast, '_vastai', lambda args, **kw: calls.append(args) or '')
