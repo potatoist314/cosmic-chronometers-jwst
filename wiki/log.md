@@ -1417,3 +1417,12 @@
 
 - `research/experiments/e-mask-all-ca.md`: SFH/corner overlays for `wide`, `neb_maskallca`, `neb_eline_ca`, `neb_eline_ca_nohe`; dust–14-SFH-fraction corners per arm; `dust_ratio` in corner overlays.
 - Comparison: `neb_eline_ca_nohe` versus `kcbump` (`e-dust-bump` arm `default14`), spectrum, photometry, SFH/corner overlays. `wiki/research/arms.json`: `kcbump` row and `delta_dust`/`E_b` prior columns.
+### 2026-09-30 — Masked lines leave the line columns
+
+- `notebooks/ceridwen_integrated_photometry_spectra.ipynb` cell 6 builds `EmissionLineColumns` once after `mask_lines`; lines with fewer than 3 unmasked pixels within \(2\sigma\) get no free flux; mask entries within 2 Å of an FSPS line (`read_fsps_line_list`) inside valid pixels leave the mask; default masks give the same columns and \(\ln L\).
+- `tests/test_emission_line_marginalisation.py` checks that a Ca II H mask removes H\(\epsilon\) and the tied [Ne III] 3968 component; `notes/model.md` row “Emission-line mask” states the rule.
+
+### 2026-09-30 — Production defaults: nebular grid, line marginalisation, Ca mask
+
+- `ssp_grid=~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5`; `emission_line_marginalisation=True`; `emission_lines=[3934.77,3966.6,3973.3,4227.92]`; \(z=z_{\mathrm{cat}}\). `diffuse_Ebump` prior remains \(\mathrm{Uniform}(0,6)\). Liu Hao, 30 Sep 2026: 'this seems like a good default'; record: `research/experiments/e-mask-all-ca.md`.
+- Files: `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, `tests/test_emission_line_marginalisation.py`, `wiki/fit_settings.py`, `wiki/tests/test_fit_settings.py`, `wiki/notes/model.md`.

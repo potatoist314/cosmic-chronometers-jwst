@@ -87,9 +87,12 @@ class FitSettingsTests(unittest.TestCase):
 
     def test_masked_lines_are_named_with_a_width_from_the_notebook(self):
         row = rows(self.rendered)["emission_lines"].replace("\u00a0", " ")
-        self.assertIn(r"[O II] 3726/3729, H\(\beta\), [O III] 4959/5007", row)
-        self.assertIn("masked ±19 to ±25", row)
-        self.assertNotIn("3728.8", row)
+        self.assertIn("Ca II K, Ca II H 3967/3973, Ca I", row)
+        self.assertIn("masked ±20 to ±21", row)
+        self.assertNotIn("3966.6", row)
+        old = fit_settings.ast.parse("[3726.0, 3728.8, 4861.3, 4958.9, 5006.8]").body[0].value
+        self.assertEqual(fit_settings.lines_html(old, 1500.0)[0].replace("\u00a0", " "),
+                         r"[O II] 3726/3729, H\(\beta\), [O III] 4959/5007")
         self.assertEqual(fit_settings.lines_html(fit_settings.ast.parse("[3869.0]").body[0].value, 1500.0)[0], "3869")
 
     def test_the_sampler_group_holds_only_the_sampler(self):
