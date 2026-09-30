@@ -10,12 +10,15 @@ env:
   REPOSITORY: potatoist314/ceridwen-gpu
   SOURCE: sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1
   NVIDIA: opt/ceridwen/lib/python3.11/site-packages/nvidia
-  # NCCL and NVSHMEM are never called on one GPU; XLA loads only libcudnn.so.9 and libcudnn_graph.so.9.
+  # Never loaded by a one-GPU fit (/proc/self/maps, results/speedups-overnight-2026-09-30/session5):
+  # NCCL, NVSHMEM, cuDNN but for libcudnn.so.9 and libcudnn_graph.so.9, cusolverMg, cufftw, nvrtc builtins and alt.
   UNUSED: >-
     nccl/lib nvshmem/lib cudnn/lib/libcudnn_adv.so.9 cudnn/lib/libcudnn_cnn.so.9
     cudnn/lib/libcudnn_engines_precompiled.so.9 cudnn/lib/libcudnn_engines_runtime_compiled.so.9
     cudnn/lib/libcudnn_engines_tensor_ir.so.9 cudnn/lib/libcudnn_ext.so.9
     cudnn/lib/libcudnn_heuristic.so.9 cudnn/lib/libcudnn_ops.so.9
+    cusolver/lib/libcusolverMg.so.11 cufft/lib/libcufftw.so.11 cuda_nvrtc/lib/libnvrtc.alt.so.12
+    cuda_nvrtc/lib/libnvrtc-builtins.so.12.9 cuda_nvrtc/lib/libnvrtc-builtins.alt.so.12.9
 jobs:
   trim:
     runs-on: ubuntu-latest
@@ -32,8 +35,7 @@ jobs:
           REGISTRY_USER: ${{ github.actor }}
           REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag="slim-${SOURCE#sha256:}"
-          digest=$(python3 scripts/containers/drop_image_paths.py "$REPOSITORY" "$SOURCE" "${tag:0:17}" $(for p in $UNUSED; do echo "$NVIDIA/$p"; done))
+          digest=$(python3 scripts/containers/drop_image_paths.py "$REPOSITORY" "$SOURCE" "${GITHUB_SHA:0:12}-slim" $(for p in $UNUSED; do echo "$NVIDIA/$p"; done))
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
       - name: Check the images differ only by those files
         env:
