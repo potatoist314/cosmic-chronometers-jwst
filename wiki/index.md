@@ -69,6 +69,8 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 
 - `research/experiments/e-quiescent-mock.md` — approved intrinsic truth and physical explanation; 1%, 5%, and 10% noise cases planned, observing setup undecided
 - `research/experiments/e-afe-fixed-zero.md` — old-MIST MILES control grid and afe fixed at 0.0; planned M1_210210 comparison
+- `research/experiments/e-nebular-grid.md` — M1_210210 nebular grid, free line fluxes and Ca II H/K mask; three arms against `wide`
+- `research/experiments/e-mask-all-ca.md` — Planned M1_210210 comparison adding Ca I 4227.92 Å masking to Ca II H and K masking.
 
 The 28 existing experiment entries cover all 11 analysis notes and all current
 and archived Ceridwen result groups. `source_notes` provides backlinks;

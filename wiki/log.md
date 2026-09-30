@@ -1378,3 +1378,11 @@
 ### 2026-09-30 — Short LOSVD FFT pad
 
 - Ceridwen `0a3bd51` reduces M1_210210's FFT length from 8192 to 4608. RTX 5090 sampling time: 253.2 → 240.4 s; same 27000 dead points, positions agree within 2.7e-11, relative ln L within 1.8e-11, ln Z difference 6.7e-10. Record: `results/speedup-free-2026-09-30/`.
+
+### 2026-09-30 — Nebular grid
+
+- `scripts/build_nebular_grid.py` adds FSPS CLOUDY lines and continuum to young SSPs; checks integrated H\(\beta\) and H\(\alpha\) fluxes.
+- `scripts/experiment.py` exports `SPS_HOME` for the fit on the rental.
+- `research/experiments/e-nebular-grid.md` records `neb`, `neb_eline` and `neb_maskca` for M1_210210 against `wide`.
+- `notes/model.md` row “Off” lists the nebular-grid option and test.
+- Record `e-mask-all-ca` exists: planned M1_210210 Ca masking comparison, `neb_maskallca` against `neb_maskca`; no fit has run.
