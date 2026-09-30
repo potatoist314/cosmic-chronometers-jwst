@@ -233,17 +233,34 @@ def test_reconnect_does_not_launch_a_second_worker_or_truncate_logs(run, cloud, 
 def test_stage_polls_briskly_until_the_exit_file_lands(run, monkeypatch):
     polls, sleeps = [], []
     def ssh(instance, command, **kwargs):
-        if 'tail -c' in command:
-            polls.append(command)
-            return SimpleNamespace(stdout='running\n...', returncode=0) if len(polls) < 3 \
-                else SimpleNamespace(stdout='0\ndone', returncode=0)
-        return SimpleNamespace(stdout='full stage log', returncode=0)
+        polls.append(command)
+        return SimpleNamespace(stdout='running\n...', returncode=0) if len(polls) < 3 \
+            else SimpleNamespace(stdout='0\nfull stage log\ndone\n', returncode=0)
     monkeypatch.setattr(bench.vast, '_ssh', ssh)
     monkeypatch.setattr(bench.time, 'sleep', sleeps.append)
     run.stage({'instance_id': 100, 'price': .2}, 'fit-0', 'true')
-    assert len(polls) == 3
+    # One SSH call per poll, and the last one brings the complete log.
+    assert len(polls) == 3 and all('setsid' in c and 'tail -c 300' in c for c in polls)
     assert sleeps == [bench.POLL_SECONDS] * 2 == [5, 5]
-    assert (run.root / '100-fit-0.log').read_text() == 'full stage log'
+    assert (run.root / '100-fit-0.log').read_text() == 'full stage log\ndone\n'
+
+
+def test_stage_poll_reports_status_then_tail_or_complete_log(run, tmp_path, monkeypatch):
+    commands = []
+    monkeypatch.setattr(bench.vast, '_ssh', lambda instance, command, **kw: commands.append(command)
+                        or SimpleNamespace(stdout='0\n', returncode=0))
+    monkeypatch.setattr(bench, 'REMOTE', str(tmp_path))
+    run.stage({'instance_id': 100, 'price': .2}, 'fit-0', 'true')
+    status = commands[0][commands[0].index('; if test -f') + 2:]
+    prefix = tmp_path / '.benchmark/100/fit-0'
+    prefix.parent.mkdir(parents=True)
+    def reply():
+        return subprocess.run(['bash', '-c', status], capture_output=True, text=True, check=True).stdout
+    assert reply() == 'running\n'
+    prefix.with_suffix('.log').write_text('x' * 400 + 'last')
+    assert reply() == 'running\n' + ('x' * 400 + 'last')[-300:]
+    prefix.with_suffix('.exit').write_text('0\n')
+    assert reply() == '0\n' + 'x' * 400 + 'last'
 
 
 def test_create_is_not_retried_on_empty_response(monkeypatch):

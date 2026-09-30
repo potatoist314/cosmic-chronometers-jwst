@@ -364,18 +364,18 @@ class Run:
         launch = (f'mkdir -p {directory}; if test ! -f {prefix}.exit; then '
                   f'setsid -f bash -c {shlex.quote(inner)} '
                   f'> /dev/null 2>&1 < /dev/null; fi')
+        # One SSH call per poll: the exit status with the complete log, or the log tail.
+        # The first poll can run before the detached stage creates its log.
+        poll = (f'{launch}; if test -f {prefix}.exit; then cat {prefix}.exit {prefix}.log; '
+                f'else echo running; tail -c 300 {prefix}.log 2> /dev/null || true; fi')
         while True:
             self.budget(reserve=attempt['price'] / 120)
             try:
-                vast._ssh(attempt['instance_id'], launch, timeout=self.timeout(attempt, 40))
-                reply = vast._ssh(attempt['instance_id'],
-                                  f'if test -f {prefix}.exit; then cat {prefix}.exit; else echo running; fi; tail -c 300 {prefix}.log',
-                                  timeout=self.timeout(attempt, 40)).stdout
-                status, _, tail = reply.partition('\n')
-                log(f'{name}: {status}; {tail.strip()}')
+                reply = vast._ssh(attempt['instance_id'], poll, timeout=self.timeout(attempt, 40)).stdout
+                status, _, contents = reply.partition('\n')
+                log(f'{name}: {status}; {contents[-300:].strip()}')
                 if status != 'running':
                     # Always preserve the complete stage log, including failed setup.
-                    contents = vast._ssh(attempt['instance_id'], f'cat {prefix}.log', timeout=self.timeout(attempt)).stdout
                     (self.root / f'{attempt["instance_id"]}-{name}.log').write_text(contents)
                     if status != '0':
                         log_path = self.root / f"{attempt['instance_id']}-{name}.log"
