@@ -27,6 +27,18 @@ Ca II absorption by gas in the galaxy adds to the observed stellar line; sign op
 
 Hε 3971.20 Å (NIST ASD): 1.6 Å from Ca II H, inside the H window. K window: no Balmer line.
 
+\([\mathrm{Ca}/\mathrm{Fe}]\) near solar while \([\mathrm{Mg}/\mathrm{Fe}]\) rises with \(\sigma\): Conroy, Graves & van Dokkum 2014 (arXiv:1303.6629, Sec. 5.2, Fig. 13); Johansson, Thomas & Maraston 2012 (arXiv:1112.0322, Sec. 5.9, Fig. 13; Sec. 7: flat, 0.1–0.2 dex below \([\mathrm{Mg}/\mathrm{Fe}]\)); Parikh et al. 2019 (arXiv:1812.02753, Sec. 4.3, Fig. 9: Ca follows Fe); Graves et al. 2007 (arXiv:0707.1523, abstract).
+
+Beverage et al. 2023 (arXiv:2303.03412, Sec. 7): Mg enhanced, Si/Ca/Ti solar at \(z \sim 0.7\) and 0. Prochaska, Rose & Schiavon 2005 (arXiv:astro-ph/0509764, Sec. 6): Ca4227r index raises \([\mathrm{Ca}/\mathrm{Fe}]\) 0.3 dex; Lick Ca4227 CN-contaminated. Bensby et al. 2014 (arXiv:1309.2631, Fig. 15): MW \([\mathrm{X}/\mathrm{Fe}]\) plateaus. Iwamoto et al. 1999 (arXiv:astro-ph/0002337, Sec. 5, Table 3): SNIa W7 Si–Ca; SNII O/Mg-rich.
+
+One \([\alpha/\mathrm{Fe}]\) axis scales \(\alpha\) elements for isochrone and opacity consistency: α-MC (arXiv:2410.21375, Sec. 2.1; Sec. 1 caveat); MILES (Vazdekis et al. 2015, arXiv:1504.08032, Sec. 2.3.2, +0.4); sMILES (Knowles et al. 2023, arXiv:2306.05942, Sec. 2.1.2, lockstep for atmosphere consistency). Separate Ca exists: TMJ11 index tables (arXiv:1010.4569, Sec. 3.5, \([\mathrm{X}/\alpha]\) including Ca); alf spectra (arXiv:1205.6473, Sec. 3).
+
+Existing artefacts: alf code and models (github.com/cconroy20/alf; manual Sec. 1.1: ~100 CPU-hr per converged fit; continuum-normalized only); sMILES SSPs public (miles.iac.es) but lockstep; TMJ tables public (indices only); index analyses use Mgb plus Fe4383 without Ca (Bevacqua et al. 2023, arXiv:2308.03441).
+
+That ISM term is small: quiescent \(A_V < 0.5\) (Kriek & Conroy 2013, arXiv:1308.1099); ISM Na D 0.1–0.5 Å at \(E(B-V)\) 0.02–0.05 against ~4 Å stellar (Poznanski et al. 2012, arXiv:1206.6107, Eq. 9); Ca II absorbers split at 0.7 Å with dust depletion (arXiv:1504.02029).
+
+Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM contamination” (see References). The ISM check covers host-galaxy ISM absorption (sign, size) and Milky Way foreground position; it does not cover intervening IGM absorbers on the sightline.
+
 ## Before delegation
 
 ```json
@@ -111,6 +123,22 @@ Hε 3971.20 Å (NIST ASD): 1.6 Å from Ca II H, inside the H window. K window: n
 - [Thomas, Maraston & Bender 2003](https://arxiv.org/abs/astro-ph/0209250)
 - [Sardane, Turnshek & Rao 2015](https://arxiv.org/abs/1504.02029)
 - [NIST Atomic Spectra Database](https://physics.nist.gov/PhysRefData/ASD/lines_form.html)
+- [Johansson, Thomas & Maraston 2012](https://arxiv.org/abs/1112.0322)
+- [Parikh et al. 2019](https://arxiv.org/abs/1812.02753)
+- [Beverage et al. 2023](https://arxiv.org/abs/2303.03412)
+- [Graves et al. 2007](https://arxiv.org/abs/0707.1523)
+- [Prochaska, Rose & Schiavon 2005](https://arxiv.org/abs/astro-ph/0509764)
+- [Bensby et al. 2014](https://arxiv.org/abs/1309.2631)
+- [Iwamoto et al. 1999](https://arxiv.org/abs/astro-ph/0002337)
+- [Vazdekis et al. 2015](https://arxiv.org/abs/1504.08032)
+- [Knowles et al. 2023](https://arxiv.org/abs/2306.05942)
+- [Thomas, Maraston & Johansson 2011](https://arxiv.org/abs/1010.4569)
+- [Conroy & van Dokkum 2012](https://arxiv.org/abs/1205.6473)
+- [Poznanski, Prochaska & Bloom 2012](https://arxiv.org/abs/1206.6107)
+- [Kriek & Conroy 2013](https://arxiv.org/abs/1308.1099)
+- [Bevacqua et al. 2023](https://arxiv.org/abs/2308.03441)
+- [alf](https://github.com/cconroy20/alf)
+- [Meeting with Jonah Powley](wiki/notes/meeting-2026-09-17-jonah-powley.md)
 
 ## Your interpretation
 
