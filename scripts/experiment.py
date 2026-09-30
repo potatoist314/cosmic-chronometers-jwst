@@ -310,9 +310,8 @@ class Run(engine.Run):
             if cell['name'] in self.data.get('completed_cells', []):
                 continue
             remote_root = f'{engine.REMOTE}/.experiment/{instance}/{index}'
-            vast._ssh(instance, f'mkdir -p {remote_root}', timeout=self.timeout(attempt))
             payload = json.dumps([cell])
-            vast._ssh(instance, f'printf %s {shlex.quote(payload)} > {remote_root}/config.json',
+            vast._ssh(instance, f'mkdir -p {remote_root} && printf %s {shlex.quote(payload)} > {remote_root}/config.json',
                       timeout=self.timeout(attempt))
             command = environment + f"SPS_HOME={engine.REMOTE}/external/fsps MPLBACKEND=Agg XLA_FLAGS='--xla_gpu_enable_command_buffer=' " + shlex.join([
                 '.venv-ceridwen-gpu/bin/python', 'scripts/experiment.py', 'remote',

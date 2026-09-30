@@ -78,6 +78,20 @@ def test_fit_downloads_then_destroys_and_resume_does_not_rent(run, cloud, monkey
     assert state['created'] == [1]
 
 
+def test_cell_config_is_written_in_one_ssh_call(run, cloud, tmp_path, monkeypatch):
+    _, state = cloud
+    monkeypatch.setattr(exp.engine, 'REMOTE', str(tmp_path / 'remote'))
+    monkeypatch.setattr(exp.subprocess, 'run', lambda command, **kw: SimpleNamespace(returncode=0))
+    assert run.execute() == 0
+    cell_root = f"{tmp_path / 'remote'}/.experiment/100/0"
+    writes = [c for c in state['commands'] if c.startswith(f'mkdir -p {cell_root}')]
+    assert len(writes) == 1 and writes[0].endswith('/config.json')
+    monkeypatch.undo()
+    exp.subprocess.run(['bash', '-c', writes[0]], check=True)
+    written = tmp_path / 'remote/.experiment/100/0/config.json'
+    assert json.loads(written.read_text()) == run.data['source']['experiment']
+
+
 def test_fit_failure_pulls_partial_outputs_and_destroys(run, cloud, monkeypatch):
     _, state = cloud
     monkeypatch.setattr(run, 'stage', lambda *args: (_ for _ in ()).throw(RuntimeError('fit failed')))
