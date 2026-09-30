@@ -125,7 +125,7 @@ def test_option_on_fixes_redshift_ties_oxygen_and_shares_photometry():
 
 def test_a_line_with_masked_pixels_gets_no_free_flux():
     # The Ca II H mask takes every pixel of H-epsilon and [Ne III] 3968. Two entries: the
-    # notebook drops a mask entry within 2 A of a fitted line.
+    # notebook drops a mask entry within 2 A of an FSPS line.
     lines = _build(True, emission_lines=[3934.77, 3966.6, 3973.3, 4227.92])["emission_line_columns"]
     assert "Ba-5 3970" not in lines.names and "[Ne III] 3968" not in lines.names
     assert "[Ne III] 3869" in lines.free_names
