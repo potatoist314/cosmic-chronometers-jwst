@@ -1,0 +1,1281 @@
+{
+ "fits": {
+  "poly3_total M12_185653": {
+   "notebook": "results/calibration-polynomial-dr2/poly3_total/185653-M12_185653/M12_185653_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_total",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 3,
+    "calibration_prior_sigma": 0.1,
+    "calibration_fit_constant": false,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "Uniform(low=-3.0, high=3.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "fixed at −0.7",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "poly3_total M4_108989": {
+   "notebook": "results/calibration-polynomial-dr2/poly3_total/108989-M4_108989/M4_108989_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_total",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 3,
+    "calibration_prior_sigma": 0.1,
+    "calibration_fit_constant": false,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "Uniform(low=-3.0, high=3.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "fixed at −0.7",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "baseline M12_185653": {
+   "notebook": "results/calibration-polynomial-dr2/baseline/185653-M12_185653/M12_185653_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_ap3",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 0,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "Uniform(low=-3.0, high=3.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "fixed at −0.7",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "mock_tilt4_baseline": {
+   "notebook": "results/calibration-polynomial-dr2/mock_tilt4_baseline/172669-M5_172669/M5_172669_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_ap3",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 0,
+    "mock_truth": "results/absorption-mask/truth_M5_172669.json",
+    "mock_tilt": 0.04,
+    "mock_seed": 1,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "Uniform(low=-3.0, high=3.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "fixed at −0.7",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "mock_tilt4_poly3": {
+   "notebook": "results/calibration-polynomial-dr2/mock_tilt4_poly3/172669-M5_172669/M5_172669_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_ap3",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 3,
+    "calibration_prior_sigma": 0.1,
+    "calibration_fit_constant": false,
+    "mock_truth": "results/absorption-mask/truth_M5_172669.json",
+    "mock_tilt": 0.04,
+    "mock_seed": 1,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "Uniform(low=-3.0, high=3.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "fixed at −0.7",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "absorption all M11_214430": {
+   "notebook": "results/absorption-mask/real_M11_214430_all/M11_214430_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_ap3",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 0,
+    "spectrum_pixels": "all",
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "Uniform(low=-3.0, high=3.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "fixed at −0.7",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "no-polynomial M10_189698": {
+   "notebook": "archive/results/dr2-quiescent-no-polynomial/189698-M10_189698/M10_189698_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_ap3",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 0,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "Uniform(low=-3.0, high=3.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "fixed at −0.7",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "no-polynomial M1_210210": {
+   "notebook": "archive/results/dr2-quiescent-no-polynomial/210210-M1_210210/M1_210210_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_ap3",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 0,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "Uniform(low=-3.0, high=3.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "fixed at −0.7",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "no-polynomial M10_216730": {
+   "notebook": "archive/results/dr2-quiescent-no-polynomial/216730-M10_216730/M10_216730_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_ap3",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 0,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "Uniform(low=-3.0, high=3.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "fixed at −0.7",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "old code order 10": {
+   "notebook": "results/calibration-order/poly10/98104-M12_98104/M12_98104_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_total",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 10,
+    "calibration_prior_sigma": 0.1,
+    "calibration_fit_constant": false,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=0.2)",
+    "diffuse_dust_index": "Uniform(low=-1.0, high=0.4)",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "fit A": {
+   "notebook": "results/dr2-quiescent-new-defaults/210210-M1_210210/M1_210210_executed.ipynb",
+   "settings": {
+    "photometry": "cosmos_total",
+    "photometry_floor": 0.05,
+    "emission_lines": [
+     3726.0,
+     3728.8,
+     4861.3,
+     4958.9,
+     5006.8
+    ],
+    "telluric_air": [
+     7590.0,
+     7660.0
+    ],
+    "sfh_lookback_gyr": [
+     0.0,
+     0.03,
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     5.0
+    ],
+    "calibration_order": 3,
+    "calibration_prior_sigma": 0.1,
+    "calibration_fit_constant": false,
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -5.0
+    }
+   },
+   "priors": {
+    "logmass": "Uniform(low=8.0, high=13.0)",
+    "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+    "Z": "Uniform over the grid",
+    "afe": "Uniform over the grid",
+    "diffuse_tau_kc": "Uniform(low=0.0, high=2.0)",
+    "diffuse_dust_index": "Uniform(low=-1.0, high=0.4)",
+    "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.10))",
+    "spectrum_scaling": "ClippedNormal(mean=1.0, sigma=0.3, low=0.2, high=3.0)",
+    "zred": "fixed at catalogue z",
+    "sigma_smooth": "fixed at DR2 σ"
+   }
+  },
+  "tau-1 poly10": {
+   "notebook": "results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb"
+  },
+  "kcbump": {
+   "notebook": "results/m1-210210-kcbump-2026-09-29/run3/fits/default14/210210-M1_210210/M1_210210_executed.ipynb"
+  },
+  "wide": {
+   "notebook": "results/m1-210210-kcbump-wide-2026-09-29/run/fits/wide/210210-M1_210210/M1_210210_executed.ipynb"
+  },
+  "dust1_off": {
+   "notebook": "results/birth-cloud-dust/dust1_off/210210-M1_210210/M1_210210_executed.ipynb"
+  },
+  "eline_off": {
+   "notebook": "results/emission-line-marginalisation/eline_off/210210-M1_210210/M1_210210_executed.ipynb"
+  }
+ },
+ "pages": {
+  "e-absorption-masks": {
+   "reference": "absorption all M11_214430",
+   "columns": [
+    "Spectrum pixels"
+   ],
+   "rows": [
+    {
+     "arm": "full spectrum",
+     "values": [
+      "all"
+     ]
+    },
+    {
+     "arm": "feature windows only",
+     "values": [
+      "feature windows, ±1000 km/s"
+     ]
+    },
+    {
+     "arm": "continuum downweighted",
+     "values": [
+      "all, continuum downweighted to balance the feature windows"
+     ]
+    }
+   ]
+  },
+  "e-birth-cloud-dust": {
+   "reference": "dust1_off",
+   "columns": [
+    "Birth-cloud dust",
+    "Dust ratio prior",
+    "\\(\\delta_{\\mathrm{dust}}\\) prior"
+   ],
+   "rows": [
+    {
+     "arm": "dust1_off",
+     "values": [
+      "off",
+      "not sampled",
+      "U(−1, 0.4)"
+     ]
+    },
+    {
+     "arm": "dust1_on",
+     "values": [
+      "on",
+      "Clipped normal 1 ± 0.3 on [0, 2]",
+      ""
+     ]
+    },
+    {
+     "arm": "dust_index_m3",
+     "values": [
+      "",
+      "",
+      "U(−3, 0.4)"
+     ]
+    }
+   ]
+  },
+  "e-calibration-photometry": {
+   "reference": "baseline M12_185653",
+   "columns": [
+    "Calibration",
+    "Photometry"
+   ],
+   "rows": [
+    {
+     "arm": "baseline",
+     "values": [
+      "none, spectrum scaling only",
+      "COSMOS2015 3″ aperture"
+     ]
+    },
+    {
+     "arm": "poly3",
+     "values": [
+      "Chebyshev order 3, σ 0.1",
+      ""
+     ]
+    },
+    {
+     "arm": "poly3_total",
+     "values": [
+      "Chebyshev order 3, σ 0.1",
+      "COSMOS2015 total"
+     ]
+    }
+   ]
+  },
+  "e-calibration-speedup": {
+   "reference": "old code order 10",
+   "columns": [
+    "Calibration arithmetic"
+   ],
+   "rows": [
+    {
+     "arm": "old code (order 10)",
+     "values": [
+      "Gram reduction, LU solve and slogdet"
+     ]
+    },
+    {
+     "arm": "new arithmetic",
+     "values": [
+      "moment basis, Cholesky solve (Ceridwen 56505a6)"
+     ]
+    }
+   ]
+  },
+  "e-calibration-tilt-mock": {
+   "reference": "mock_tilt4_baseline",
+   "columns": [
+    "Calibration"
+   ],
+   "rows": [
+    {
+     "arm": "mock_tilt4_baseline",
+     "values": [
+      "none, spectrum scaling only"
+     ]
+    },
+    {
+     "arm": "mock_tilt4_poly3",
+     "values": [
+      "Chebyshev order 3, σ 0.1"
+     ]
+    }
+   ]
+  },
+  "e-cn-mask": {
+   "reference": "poly3_total M12_185653",
+   "columns": [
+    "Extra masked rest windows"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "none"
+     ]
+    },
+    {
+     "arm": "mask_cn",
+     "values": [
+      "4142–4177, 4634–4720 Å"
+     ]
+    }
+   ]
+  },
+  "e-cosmos-photometry-refit": {
+   "reference": "tau-1 poly10",
+   "columns": [
+    "Photometry",
+    "Bands"
+   ],
+   "rows": [
+    {
+     "arm": "COSMOS2015",
+     "values": [
+      "COSMOS2015 total",
+      "12"
+     ]
+    },
+    {
+     "arm": "COSMOS2020 Classic",
+     "values": [
+      "COSMOS2020 Classic",
+      "30"
+     ]
+    },
+    {
+     "arm": "COSMOS2025",
+     "values": [
+      "COSMOS2025",
+      "28"
+     ]
+    }
+   ]
+  },
+  "e-dr2-revised": {
+   "reference": "no-polynomial M10_189698",
+   "columns": [
+    "Calibration",
+    "Photometry",
+    "\\(\\delta_{\\mathrm{dust}}\\) prior",
+    "SFH prior"
+   ],
+   "rows": [
+    {
+     "arm": "baseline",
+     "values": [
+      "none, spectrum scaling only",
+      "COSMOS2015 3″ aperture",
+      "fixed −0.7",
+      "U(−3, 3)"
+     ]
+    },
+    {
+     "arm": "revised",
+     "values": [
+      "Chebyshev order 3, σ 0.1",
+      "COSMOS2015 total",
+      "U(−1, 0.4)",
+      "Student-t(0, 0.3, 2)"
+     ]
+    }
+   ]
+  },
+  "e-dust-amount-prior": {
+   "reference": "poly3_total M12_185653",
+   "columns": [
+    "\\(\\tau_{\\mathrm{dust}}\\) prior",
+    "\\(\\delta_{\\mathrm{dust}}\\) prior",
+    "SFH prior"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "U(0, 2)",
+      "fixed −0.7",
+      "U(−3, 3)"
+     ]
+    },
+    {
+     "arm": "tau_cn",
+     "values": [
+      "Clipped normal 0.3 ± 1 on [0, 4]",
+      "U(−1, 0.4)",
+      "Student-t(0, 0.3, 2)"
+     ]
+    }
+   ]
+  },
+  "e-dust-bump": {
+   "reference": "kcbump",
+   "columns": [
+    "Dust law",
+    "\\(\\delta_{\\mathrm{dust}}\\) prior",
+    "\\(E_b\\) prior",
+    "Birth-cloud dust",
+    "Metallicity evolution",
+    "SFH bins",
+    "Seed"
+   ],
+   "rows": [
+    {
+     "arm": "kcbump",
+     "values": [
+      "Noll, free bump",
+      "U(−1, 0.4)",
+      "U(0, 6)",
+      "on",
+      "off",
+      "14",
+      "20260927"
+     ]
+    },
+    {
+     "arm": "wide",
+     "values": [
+      "",
+      "U(−3, 0.4)",
+      "U(0, 12)",
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    {
+     "arm": "zevo",
+     "values": [
+      "",
+      "U(−3, 0.4)",
+      "U(0, 12)",
+      "",
+      "on",
+      "",
+      ""
+     ]
+    },
+    {
+     "arm": "m3",
+     "values": [
+      "Kriek & Conroy, linked bump",
+      "U(−3, 0.4)",
+      "tied to \\(\\delta_{\\mathrm{dust}}\\)",
+      "off",
+      "",
+      "7, edges to 5 Gyr",
+      "20260832"
+     ]
+    }
+   ]
+  },
+  "e-dust-slope": {
+   "reference": "poly3_total M12_185653",
+   "columns": [
+    "\\(\\delta_{\\mathrm{dust}}\\) prior",
+    "SFH prior"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "fixed −0.7",
+      "U(−3, 3)"
+     ]
+    },
+    {
+     "arm": "dust_free",
+     "values": [
+      "U(−1, 0.4)",
+      ""
+     ]
+    },
+    {
+     "arm": "dust_wide",
+     "values": [
+      "U(−2, 0.5)",
+      "Student-t(0, 0.3, 2)"
+     ]
+    }
+   ]
+  },
+  "e-emission-line-marginalisation": {
+   "reference": "eline_off",
+   "columns": [
+    "Emission-line marginalisation",
+    "\\(z\\)"
+   ],
+   "rows": [
+    {
+     "arm": "eline_off",
+     "values": [
+      "off, lines masked",
+      "U(\\(z_{\\mathrm{cat}}\\) ± 0.1)"
+     ]
+    },
+    {
+     "arm": "eline_on",
+     "values": [
+      "on",
+      "fixed"
+     ]
+    }
+   ]
+  },
+  "e-emission-mask": {
+   "reference": "poly3_total M12_185653",
+   "columns": [
+    "Masked lines"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "[O II] 3726/3729, Hβ, [O III] 4959/5007"
+     ]
+    },
+    {
+     "arm": "emis_wide",
+     "values": [
+      "adds 3869, 3970, 4102, 4341 Å"
+     ]
+    }
+   ]
+  },
+  "e-irac-removal": {
+   "reference": "poly3_total M12_185653",
+   "columns": [
+    "Photometric bands"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "12"
+     ]
+    },
+    {
+     "arm": "no_irac",
+     "values": [
+      "10, IRAC ch1 and ch2 dropped"
+     ]
+    }
+   ]
+  },
+  "e-m1-210210-reference": {
+   "reference": "fit A",
+   "columns": [
+    "Calibration order",
+    "\\(\\tau_{\\mathrm{dust}}\\) prior",
+    "\\(z\\)",
+    "\\(\\sigma_\\star\\)"
+   ],
+   "rows": [
+    {
+     "arm": "fit A",
+     "values": [
+      "3",
+      "U(0, 2)",
+      "fixed",
+      "fixed"
+     ]
+    },
+    {
+     "arm": "fit C",
+     "values": [
+      "10",
+      "U(0, 1)",
+      "U(\\(z_{\\mathrm{cat}}\\) ± 0.1)",
+      "Clipped normal \\(\\sigma_{\\mathrm{DR2}}\\) ± err, 3 err"
+     ]
+    }
+   ]
+  },
+  "e-mask-all-ca": {
+   "reference": "wide",
+   "columns": [
+    "SSP grid",
+    "Masked lines",
+    "Emission-line marginalisation",
+    "\\(z\\)"
+   ],
+   "rows": [
+    {
+     "arm": "wide",
+     "values": [
+      "amist_c3k_hr_krou_afe",
+      "[O II] 3726/3729, Hβ, [O III] 4959/5007",
+      "off",
+      "U(\\(z_{\\mathrm{cat}}\\) ± 0.1)"
+     ]
+    },
+    {
+     "arm": "neb_maskallca",
+     "values": [
+      "nebular",
+      "[O II], [O III], Ca H+K, Ca I 4227",
+      "",
+      ""
+     ]
+    },
+    {
+     "arm": "neb_eline_ca",
+     "values": [
+      "nebular",
+      "Ca H+K, Ca I 4227 only",
+      "on",
+      "fixed"
+     ]
+    },
+    {
+     "arm": "neb_eline_ca_nohe",
+     "values": [
+      "nebular",
+      "Ca H+K, Ca I 4227 only",
+      "on, without Hε",
+      "fixed"
+     ]
+    }
+   ]
+  },
+  "e-nebular-grid": {
+   "reference": "wide",
+   "columns": [
+    "SSP grid",
+    "Masked lines",
+    "Emission-line marginalisation",
+    "\\(z\\)"
+   ],
+   "rows": [
+    {
+     "arm": "wide",
+     "values": [
+      "amist_c3k_hr_krou_afe",
+      "[O II] 3726/3729, Hβ, [O III] 4959/5007",
+      "off",
+      "U(\\(z_{\\mathrm{cat}}\\) ± 0.1)"
+     ]
+    },
+    {
+     "arm": "neb",
+     "values": [
+      "nebular",
+      "[O II], [O III]",
+      "",
+      ""
+     ]
+    },
+    {
+     "arm": "neb_eline",
+     "values": [
+      "nebular",
+      "",
+      "on",
+      "fixed"
+     ]
+    },
+    {
+     "arm": "neb_maskca",
+     "values": [
+      "nebular",
+      "[O II], [O III], Ca H+K",
+      "",
+      ""
+     ]
+    }
+   ]
+  },
+  "e-no-emission-mask": {
+   "reference": "tau-1 poly10",
+   "columns": [
+    "Masked lines"
+   ],
+   "rows": [
+    {
+     "arm": "masked fit",
+     "values": [
+      "[O II] 3726/3729, Hβ, [O III] 4959/5007"
+     ]
+    },
+    {
+     "arm": "no mask",
+     "values": [
+      "none"
+     ]
+    }
+   ]
+  },
+  "e-noise-floor": {
+   "reference": "poly3_total M12_185653",
+   "columns": [
+    "\\(f_{\\mathrm{calib}}\\) prior"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "1–10% log-uniform"
+     ]
+    },
+    {
+     "arm": "floor20",
+     "values": [
+      "1–20% log-uniform"
+     ]
+    }
+   ]
+  },
+  "e-per-galaxy-diagnostics": {
+   "reference": "no-polynomial M1_210210",
+   "columns": [
+    "Forward model"
+   ],
+   "rows": [
+    {
+     "arm": "baseline",
+     "values": [
+      "Ceridwen afe37fe"
+     ]
+    },
+    {
+     "arm": "verification",
+     "values": [
+      "later implementation, same seed"
+     ]
+    }
+   ]
+  },
+  "e-redshift-dispersion": {
+   "reference": "poly3_total M12_185653",
+   "columns": [
+    "\\(z\\)",
+    "\\(\\sigma_\\star\\)"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "fixed",
+      "fixed"
+     ]
+    },
+    {
+     "arm": "zsig",
+     "values": [
+      "Clipped normal \\(z_{\\mathrm{cat}}\\) ± 100 km/s",
+      "Clipped normal \\(\\sigma_{\\mathrm{DR2}}\\) ± 20%"
+     ]
+    }
+   ]
+  },
+  "e-seed-repeatability": {
+   "reference": "poly3_total M4_108989",
+   "columns": [
+    "Seed",
+    "\\(\\delta_{\\mathrm{dust}}\\) prior",
+    "SFH prior"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "per-target seed \\(s\\)",
+      "fixed −0.7",
+      "U(−3, 3)"
+     ]
+    },
+    {
+     "arm": "seed_rep1",
+     "values": [
+      "\\(s\\) + 1000000",
+      "",
+      ""
+     ]
+    },
+    {
+     "arm": "seed_rep2",
+     "values": [
+      "\\(s\\) + 2000000",
+      "",
+      ""
+     ]
+    },
+    {
+     "arm": "seed_rep3",
+     "values": [
+      "\\(s\\) + 3000000",
+      "",
+      ""
+     ]
+    },
+    {
+     "arm": "new_default_rep1",
+     "values": [
+      "\\(s\\) + 1000000",
+      "U(−1, 0.4)",
+      "Student-t(0, 0.3, 2)"
+     ]
+    },
+    {
+     "arm": "new_default_rep2",
+     "values": [
+      "\\(s\\) + 2000000",
+      "U(−1, 0.4)",
+      "Student-t(0, 0.3, 2)"
+     ]
+    }
+   ]
+  },
+  "e-sfh-mock": {
+   "reference": "mock_tilt4_poly3",
+   "columns": [
+    "SFH prior"
+   ],
+   "rows": [
+    {
+     "arm": "mock_tilt4_poly3",
+     "values": [
+      "U(−3, 3)"
+     ]
+    },
+    {
+     "arm": "mock_tilt4_sfh_cont",
+     "values": [
+      "Student-t(0, 0.3, 2)"
+     ]
+    }
+   ]
+  },
+  "e-sfh-prior": {
+   "reference": "poly3_total M12_185653",
+   "columns": [
+    "SFH prior"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "U(−3, 3)"
+     ]
+    },
+    {
+     "arm": "sfh_cont",
+     "values": [
+      "Student-t(0, 0.3, 2)"
+     ]
+    }
+   ]
+  },
+  "e-six-target-new-defaults": {
+   "reference": "poly3_total M12_185653",
+   "columns": [
+    "\\(\\delta_{\\mathrm{dust}}\\) prior",
+    "SFH prior"
+   ],
+   "rows": [
+    {
+     "arm": "poly3_total",
+     "values": [
+      "fixed −0.7",
+      "U(−3, 3)"
+     ]
+    },
+    {
+     "arm": "new_default",
+     "values": [
+      "U(−1, 0.4)",
+      "Student-t(0, 0.3, 2)"
+     ]
+    }
+   ]
+  },
+  "e-static-smoothing-refits": {
+   "reference": "no-polynomial M10_216730",
+   "columns": [
+    "Forward model"
+   ],
+   "rows": [
+    {
+     "arm": "baseline",
+     "values": [
+      "Ceridwen afe37fe"
+     ]
+    },
+    {
+     "arm": "static-smoothing",
+     "values": [
+      "static smoother"
+     ]
+    }
+   ]
+  }
+ }
+}

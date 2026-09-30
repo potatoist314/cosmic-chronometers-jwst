@@ -8,6 +8,8 @@ job:
 figures: [spectrum-dust1_off-M1_210210.png, photometry-dust1_off-M1_210210.png, spectrum-dust1_on-M1_210210.png, photometry-dust1_on-M1_210210.png, spectrum-dust_index_m3-M1_210210.png, photometry-dust_index_m3-M1_210210.png, corner-M1_210210.png, sfh-M1_210210.png]
 ---
 
+<div data-arms="e-birth-cloud-dust"></div>
+
 <figure>
 <img src="figures/birth-cloud-dust/spectrum-dust1_off-M1_210210.png" alt="LEGA-C spectrum and pull for M1_210210, dust1_off">
 <figcaption><code>spectrum-dust1_off-M1_210210.png</code> · M1_210210 · Spectrum · dust1_off, reference.</figcaption>

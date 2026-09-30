@@ -60,19 +60,21 @@ Spectral \(\chi^2\) is at the posterior median. Stored \(\chi^2\) values use eac
 
 </details>
 
+<div data-arms="e-m1-210210-reference"></div>
+
 <figure>
 <img src="figures/m1-210210-reference/fit-M1_210210.png" alt="M1_210210 spectrum, calibration polynomial and photometry with the posterior medians of fits A and C">
-<figcaption>M1_210210 · Spectrum and photometry · fit C: calibration order 10; otherwise as fit A (order 3).</figcaption>
+<figcaption>M1_210210 · Spectrum and photometry · fit C: calibration order 10, dust-amount prior U(0, 1), redshift and sigma* free; otherwise as fit A.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/m1-210210-reference/sfh-M1_210210.png" alt="Star-formation history and cumulative mass fraction of M1_210210 for fits A and C">
-<figcaption>M1_210210 · SFH · fit C: calibration order 10; otherwise as fit A (order 3).</figcaption>
+<figcaption>M1_210210 · SFH · fit C: calibration order 10, dust-amount prior U(0, 1), redshift and sigma* free; otherwise as fit A.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/m1-210210-reference/corner-M1_210210.png" alt="Corner plot of stellar mass, [Fe/H], [alpha/Fe], dust optical depth, dust index and mass-weighted age for fits A and C">
-<figcaption>M1_210210 · Posteriors · fit C: calibration order 10; otherwise as fit A (order 3).</figcaption>
+<figcaption>M1_210210 · Posteriors · fit C: calibration order 10, dust-amount prior U(0, 1), redshift and sigma* free; otherwise as fit A.</figcaption>
 </figure>
 
 ## KL divergence from the prior

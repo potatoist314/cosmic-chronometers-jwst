@@ -299,7 +299,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_eline",
     "view": "Fits",
-    "caption": "M1_210210 · Spectrum · neb_eline: nebular grid, line marginalisation on; otherwise as wide."
+    "caption": "M1_210210 · Spectrum · neb_eline: nebular grid, line marginalisation on, redshift fixed; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_eline/210210-M1_210210/M1_210210_executed.ipynb",
@@ -309,7 +309,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_eline",
     "view": "Fits",
-    "caption": "M1_210210 · Photometry · neb_eline: nebular grid, line marginalisation on; otherwise as wide."
+    "caption": "M1_210210 · Photometry · neb_eline: nebular grid, line marginalisation on, redshift fixed; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_maskca/210210-M1_210210/M1_210210_executed.ipynb",
@@ -359,7 +359,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_eline",
     "view": "SFH",
-    "caption": "M1_210210 · SFH · neb_eline: nebular grid, line marginalisation on; otherwise as wide."
+    "caption": "M1_210210 · SFH · neb_eline: nebular grid, line marginalisation on, redshift fixed; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_maskca/210210-M1_210210/M1_210210_executed.ipynb",
@@ -399,7 +399,7 @@ Fit masks [O II] 3726, 3729, H\(\beta\) 4861.3, [O III] 4959, 5007 at ± 1500 km
     "target": "M1_210210",
     "arm": "neb_eline",
     "view": "Posteriors",
-    "caption": "M1_210210 · Posteriors · neb_eline: nebular grid, line marginalisation on; otherwise as wide."
+    "caption": "M1_210210 · Posteriors · neb_eline: nebular grid, line marginalisation on, redshift fixed; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-nebular-2026-09-30/run/fits/neb_maskca/210210-M1_210210/M1_210210_executed.ipynb",

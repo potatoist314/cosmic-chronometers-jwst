@@ -152,19 +152,19 @@ M1_210210 was chosen on 17 Sep 2026 for fitting under roadmap item strong-spectr
     "path": "results/m1-210210-reference/fit-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "M1_210210 · Spectrum and photometry · fit C: calibration order 10; otherwise as fit A (order 3)."
+    "caption": "M1_210210 · Spectrum and photometry · fit C: calibration order 10, dust-amount prior U(0, 1), redshift and sigma* free; otherwise as fit A."
   },
   {
     "path": "results/m1-210210-reference/sfh-M1_210210.png",
     "view": "SFH",
     "target": "M1_210210",
-    "caption": "M1_210210 · SFH · fit C: calibration order 10; otherwise as fit A (order 3)."
+    "caption": "M1_210210 · SFH · fit C: calibration order 10, dust-amount prior U(0, 1), redshift and sigma* free; otherwise as fit A."
   },
   {
     "path": "results/m1-210210-reference/corner-M1_210210.png",
     "view": "Posteriors",
     "target": "M1_210210",
-    "caption": "M1_210210 · Posteriors · fit C: calibration order 10; otherwise as fit A (order 3)."
+    "caption": "M1_210210 · Posteriors · fit C: calibration order 10, dust-amount prior U(0, 1), redshift and sigma* free; otherwise as fit A."
   },
   {
     "path": "wiki/analyses/m1-210210-reference/kl-M1_210210.png",

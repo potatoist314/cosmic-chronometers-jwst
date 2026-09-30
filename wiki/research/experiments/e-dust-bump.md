@@ -400,7 +400,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "zevo",
     "view": "Fits",
-    "caption": "M1_210210 · Spectrum · zevo: metallicity evolution on; otherwise as wide."
+    "caption": "M1_210210 · Spectrum · zevo: slope prior U(-3, 0.4), bump prior U(0, 12), metallicity evolution on; otherwise as kcbump."
   },
   {
     "notebook": "results/m1-210210-kcbump-wide-zevo-2026-09-29/run/fits/zevo/210210-M1_210210/M1_210210_executed.ipynb",
@@ -410,7 +410,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "zevo",
     "view": "Fits",
-    "caption": "M1_210210 · Photometry · zevo: metallicity evolution on; otherwise as wide."
+    "caption": "M1_210210 · Photometry · zevo: slope prior U(-3, 0.4), bump prior U(0, 12), metallicity evolution on; otherwise as kcbump."
   },
   {
     "notebook": "results/birth-cloud-dust/dust_index_m3/210210-M1_210210/M1_210210_executed.ipynb",
@@ -460,7 +460,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "zevo",
     "view": "SFH",
-    "caption": "M1_210210 · SFH · zevo: metallicity evolution on; otherwise as wide."
+    "caption": "M1_210210 · SFH · zevo: slope prior U(-3, 0.4), bump prior U(0, 12), metallicity evolution on; otherwise as kcbump."
   },
   {
     "path": "results/m1-210210-kcbump-wide-2026-09-29/sfh-M1_210210.png",
@@ -502,7 +502,7 @@ implementation landed as `0588f9b` before the run.
     "target": "M1_210210",
     "arm": "zevo",
     "view": "Posteriors",
-    "caption": "M1_210210 · Posteriors · zevo: metallicity evolution on; otherwise as wide."
+    "caption": "M1_210210 · Posteriors · zevo: slope prior U(-3, 0.4), bump prior U(0, 12), metallicity evolution on; otherwise as kcbump."
   },
   {
     "path": "results/m1-210210-kcbump-wide-2026-09-29/corner-M1_210210.png",

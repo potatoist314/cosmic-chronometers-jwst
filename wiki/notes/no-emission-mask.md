@@ -22,6 +22,8 @@ No mask
 Common
 : Seed 20260832, calibration order 10, \(\tau_{\mathrm{dust}}\) Uniform(0, 1), sampled \(z\) and \(\sigma_\star\), BlackJAX NSS, 12 `cosmos_total` bands, one RTX 5060 Ti on Vast.ai. Notebook: `results/no-emission-mask/analysis.ipynb`.
 
+<div data-arms="e-no-emission-mask"></div>
+
 <figure>
 <img src="figures/no-emission-mask/fit-M1_210210.png" alt="M1_210210 spectrum, calibration polynomial and photometry with the posterior medians of the masked and no-mask fits">
 <figcaption>M1_210210 · Spectrum and photometry · no mask on the ±1500 km/s windows around [O II], H-beta, [O III]; otherwise as the masked fit.</figcaption>

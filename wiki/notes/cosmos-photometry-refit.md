@@ -8,6 +8,8 @@ job:
 figures: [spectrum-cosmos2015-M1_210210.png, photometry-cosmos2015-M1_210210.png, spectrum-cosmos2020_classic-M1_210210.png, photometry-cosmos2020_classic-M1_210210.png, spectrum-cosmos2025-M1_210210.png, photometry-cosmos2025-M1_210210.png, corner-M1_210210.png, sfh-M1_210210.png]
 ---
 
+<div data-arms="e-cosmos-photometry-refit"></div>
+
 <figure>
 <img src="figures/cosmos-photometry-refit/spectrum-cosmos2015-M1_210210.png" alt="LEGA-C spectrum of M1_210210 with the joint Ceridwen posterior median and pull, COSMOS2015 reference, 12 bands fit">
 <figcaption><code>spectrum-cosmos2015-M1_210210.png</code> · M1_210210 · Spectrum · COSMOS2015 (12 bands), reference.</figcaption>
@@ -20,22 +22,22 @@ figures: [spectrum-cosmos2015-M1_210210.png, photometry-cosmos2015-M1_210210.png
 
 <figure>
 <img src="figures/cosmos-photometry-refit/spectrum-cosmos2020_classic-M1_210210.png" alt="LEGA-C spectrum of M1_210210 with the joint Ceridwen posterior median and pull, COSMOS2020 Classic, 30 bands fit">
-<figcaption><code>spectrum-cosmos2020_classic-M1_210210.png</code> · M1_210210 · Spectrum · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015 (12 bands).</figcaption>
+<figcaption><code>spectrum-cosmos2020_classic-M1_210210.png</code> · M1_210210 · Spectrum · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/cosmos-photometry-refit/photometry-cosmos2020_classic-M1_210210.png" alt="Photometry of M1_210210 with the joint Ceridwen posterior median per band and pull, COSMOS2020 Classic, 30 bands fit">
-<figcaption><code>photometry-cosmos2020_classic-M1_210210.png</code> · M1_210210 · Photometry · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015 (12 bands).</figcaption>
+<figcaption><code>photometry-cosmos2020_classic-M1_210210.png</code> · M1_210210 · Photometry · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/cosmos-photometry-refit/spectrum-cosmos2025-M1_210210.png" alt="LEGA-C spectrum of M1_210210 with the joint Ceridwen posterior median and pull, COSMOS2025, 28 bands fit">
-<figcaption><code>spectrum-cosmos2025-M1_210210.png</code> · M1_210210 · Spectrum · COSMOS2025 (28 bands); otherwise as COSMOS2015 (12 bands).</figcaption>
+<figcaption><code>spectrum-cosmos2025-M1_210210.png</code> · M1_210210 · Spectrum · COSMOS2025 (28 bands); otherwise as COSMOS2015.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/cosmos-photometry-refit/photometry-cosmos2025-M1_210210.png" alt="Photometry of M1_210210 with the joint Ceridwen posterior median per band and pull, COSMOS2025, 28 bands fit">
-<figcaption><code>photometry-cosmos2025-M1_210210.png</code> · M1_210210 · Photometry · COSMOS2025 (28 bands); otherwise as COSMOS2015 (12 bands).</figcaption>
+<figcaption><code>photometry-cosmos2025-M1_210210.png</code> · M1_210210 · Photometry · COSMOS2025 (28 bands); otherwise as COSMOS2015.</figcaption>
 </figure>
 
 <figure>

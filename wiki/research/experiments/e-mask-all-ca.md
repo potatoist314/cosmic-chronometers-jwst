@@ -299,7 +299,7 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
     "target": "M1_210210",
     "arm": "neb_eline_ca_nohe",
     "view": "Fits",
-    "caption": "M1_210210 · Spectrum · neb_eline_ca_nohe: H-epsilon column removed; otherwise as neb_eline_ca."
+    "caption": "M1_210210 · Spectrum · neb_eline_ca_nohe: nebular grid, line marginalisation on without the H-epsilon column, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-neb-eline-ca-nohe-2026-09-30/run/fits/neb_eline_ca_nohe/210210-M1_210210/M1_210210_executed.ipynb",
@@ -309,7 +309,7 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
     "target": "M1_210210",
     "arm": "neb_eline_ca_nohe",
     "view": "Fits",
-    "caption": "M1_210210 · Photometry · neb_eline_ca_nohe: H-epsilon column removed; otherwise as neb_eline_ca."
+    "caption": "M1_210210 · Photometry · neb_eline_ca_nohe: nebular grid, line marginalisation on without the H-epsilon column, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/M1_210210_executed.ipynb",
@@ -339,7 +339,7 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
     "target": "M1_210210",
     "arm": "neb_eline_ca_nohe",
     "view": "SFH",
-    "caption": "M1_210210 · SFH · neb_eline_ca_nohe: H-epsilon column removed; otherwise as neb_eline_ca."
+    "caption": "M1_210210 · SFH · neb_eline_ca_nohe: nebular grid, line marginalisation on without the H-epsilon column, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
   },
   {
     "notebook": "results/m1-210210-maskallca-2026-09-30/run/fits/neb_maskallca/210210-M1_210210/M1_210210_executed.ipynb",
@@ -369,7 +369,7 @@ Jonah Powley meeting, 2026-09-17: “Ca I can be masked because of potential IGM
     "target": "M1_210210",
     "arm": "neb_eline_ca_nohe",
     "view": "Posteriors",
-    "caption": "M1_210210 · Posteriors · neb_eline_ca_nohe: H-epsilon column removed; otherwise as neb_eline_ca."
+    "caption": "M1_210210 · Posteriors · neb_eline_ca_nohe: nebular grid, line marginalisation on without the H-epsilon column, redshift fixed, mask holds only Ca H+K and Ca I 4227; otherwise as wide."
   }
 ]
 ```

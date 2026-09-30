@@ -7,14 +7,19 @@ into each build from there, so a build reads no notebook it has already seen.
 
 import base64
 import binascii
+import functools
 import html
 import json
 import os
+import re
 import shutil
 from pathlib import Path
 from urllib.parse import quote
 
+import fit_settings
+
 VIEWS = ("Fits", "SFH", "Posteriors", "Comparison")
+ARMS = "wiki/research/arms.json"  # per page: reference fit, and each arm's settings that differ from it
 CACHE = "wiki/public.cache"
 PNG = b"\x89PNG\r\n\x1a\n"
 esc = html.escape
@@ -76,7 +81,7 @@ def image_bytes(project, figure):
 
 
 def validate(records, project, asset_url):
-    faults = []
+    faults = validate_arms(records, project)
     for record in records:
         if record["kind"] != "experiment":
             continue
@@ -136,8 +141,83 @@ def image_url(figure, project, scratch, base, asset_url):
     return base + "/" + quote(relative.as_posix())
 
 
+def arms(project):
+    path = project / ARMS
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"fits": {}, "pages": {}}
+
+
+@functools.lru_cache(maxsize=None)
+def reference_panel(project, spec):
+    """The reference fit's full settings and priors, from its notebook cell or its recorded dicts."""
+    spec = json.loads(spec)
+    return fit_settings.render(project, spec["notebook"], spec.get("cell"), spec["notebook"],
+                               spec.get("settings"), spec.get("priors"))
+
+
+def arms_html(page_id, project):
+    """The page's arm table, blank where an arm matches the reference, and the reference fit's settings."""
+    data = arms(project)
+    page = data["pages"].get(page_id)
+    if not page:
+        return ""
+    fit = data["fits"][page["reference"]]
+    head = "".join("<th>%s</th>" % esc(c, quote=False) for c in ["Arm", *page["columns"]])
+    body = ""
+    for index, row in enumerate(page["rows"]):
+        label = esc(row["arm"]) + ("<small>reference</small>" if index == 0 else "")
+        body += '<tr%s><th scope="row">%s</th>%s</tr>' % (
+            ' class="is-ref"' if index == 0 else "", label,
+            "".join("<td>%s</td>" % esc(v, quote=False) for v in row["values"]))
+    return ('<section class="arms" id="arms"><div class="arms-scroll"><table class="arms-table">'
+            '<caption>Blank where an arm matches the reference.</caption><thead><tr>%s</tr></thead>'
+            '<tbody>%s</tbody></table></div><details class="arms-ref"><summary>All %s settings and priors</summary>%s'
+            '</details></section>') % (
+                head, body, esc(page["rows"][0]["arm"]),
+                reference_panel(project, json.dumps(fit, sort_keys=True)))
+
+
+def link_reference(text, page):
+    """Link each "otherwise as <reference>" in escaped text to the arm table."""
+    if not page:
+        return text
+    return re.sub(r"otherwise as (the )?(%s)(?!\w)" % re.escape(esc(page["rows"][0]["arm"])),
+                  r'otherwise as \1<a href="#arms">\2</a>', text)
+
+
+def linked_caption(caption, page):
+    return link_reference(esc(caption), page)
+
+
+def note_arms(body, project):
+    """Replace a note's `<div data-arms="<experiment id>"></div>` with that page's arm block."""
+    found = re.search(r'<div data-arms="([\w-]+)"></div>', body)
+    if not found:
+        return body
+    body = body.replace(found[0], arms_html(found[1], project))
+    return link_reference(body, arms(project)["pages"].get(found[1]))
+
+
+def validate_arms(records, project):
+    """Every page entry names a known reference fit and full reference values."""
+    data, faults = arms(project), []
+    for fit_id, fit in data["fits"].items():
+        if not (project / fit.get("notebook", "")).is_file():
+            faults.append("%s: fit %s needs an executed notebook" % (ARMS, fit_id))
+    for page_id, page in data["pages"].items():
+        prefix = "%s: page %s: " % (ARMS, page_id)
+        if page.get("reference") not in data["fits"]:
+            faults.append(prefix + "unknown reference fit")
+        rows = page.get("rows", [])
+        if not rows or any(len(r.get("values", [])) != len(page.get("columns", [])) for r in rows):
+            faults.append(prefix + "each row needs one value per column")
+        elif not all(rows[0]["values"]):
+            faults.append(prefix + "the reference row needs every value")
+    return faults
+
+
 def render(record, project, scratch, base, asset_url, markdown, plain_text):
     figures = record["sections"]["Figures"]
+    page = arms(project)["pages"].get(record["id"])
     targets = sorted({f["target"] for f in figures if f.get("target")})
     views = [v for v in VIEWS if any(f["view"] == v for f in figures)]
     target = targets[0] if targets else ""
@@ -147,7 +227,8 @@ def render(record, project, scratch, base, asset_url, markdown, plain_text):
         if len(values) > 1:
             controls.append('<label>%s<select id="figure-%s">%s</select></label>' % (
                 name, name.lower(), "".join('<option value="%s">%s</option>' % (esc(v), esc(v)) for v in values)))
-    body = '<div class="figure-controls">%s</div>' % "".join(controls) if controls else ""
+    body = arms_html(record["id"], project)
+    body += '<div class="figure-controls">%s</div>' % "".join(controls) if controls else ""
     body += '<div class="figure-gallery" data-target="%s" data-view="%s">' % (esc(target), esc(view))
     for index, f in enumerate(figures):
         src = image_url(f, project, scratch, base, asset_url)
@@ -156,7 +237,7 @@ def render(record, project, scratch, base, asset_url, markdown, plain_text):
                  '<a href="%s"><img %s="%s" alt="%s" loading="lazy"></a>'
                  '<figcaption>%s</figcaption><button type="button" data-annotate-figure="%s:%s">Annotate figure</button></figure>') % (
                     esc(f.get("target", "")), esc(f["view"]), "" if visible else " hidden",
-                    esc(src), "src" if visible else "data-src", esc(src), esc(plain_text(f["caption"])), esc(f["caption"]), esc(record["id"]), index)
+                    esc(src), "src" if visible else "data-src", esc(src), esc(plain_text(f["caption"])), linked_caption(f["caption"], page), esc(record["id"]), index)
     body += '</div><p id="figure-empty" class="empty" hidden>No figure for this target and view.</p>'
     if record["sections"]["Measurements"]:
         body += '<div class="measurements">%s</div>' % markdown(record["sections"]["Measurements"])
@@ -236,4 +317,19 @@ CSS = """
 .measurements th[aria-sort="ascending"] button::after{content:" ↑"}
 .measurements th[aria-sort="descending"] button::after{content:" ↓"}
 @media print{.figure-controls,.report-links{display:none}.result-figure{break-inside:avoid}}
+.arms{margin:26px 0 8px;max-width:none}
+.arms-scroll{overflow-x:auto}
+.arms-table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums lining-nums}
+.arms-table caption{text-align:left;font-family:system-ui,sans-serif;font-size:.8rem;color:var(--ink-2);padding:0 0 8px}
+.arms-table th,.arms-table td{text-align:left;padding:7px 14px 7px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;text-transform:none;letter-spacing:0}
+.arms-table td{white-space:nowrap}
+.arms-table thead th{font-family:system-ui,sans-serif;font-weight:600;font-size:.8rem;color:var(--ink-2);border-bottom:1px solid var(--ink-3)}
+.arms-table tbody th{font-family:inherit;font-weight:500;font-size:.9rem;color:var(--ink);white-space:nowrap}
+.arms-table tbody th small{display:block;font:400 .75rem system-ui,sans-serif;color:var(--ink-2)}
+.arms-table tr.is-ref>*{border-bottom-color:var(--ink-3)}
+details.arms-ref{margin:0;border-top:0;border-bottom:1px solid var(--rule);padding:12px 0}
+details.arms-ref>summary{font:inherit;font-size:1rem;letter-spacing:0;text-transform:none;color:var(--ink);cursor:pointer}
+details.arms-ref[open]>summary{margin-bottom:16px}
+details.arms-ref>summary:focus-visible,.arms a:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+@media (max-width:640px){.arms-table td{white-space:normal;min-width:7em}}
 """

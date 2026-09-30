@@ -1407,3 +1407,8 @@
 
 - `research/experiments/e-mask-all-ca.md`: results for M1_210210 arms `neb_maskallca`, `neb_eline_ca` and `neb_eline_ca_nohe`; status results-ready.
 - Result directories: `results/m1-210210-maskallca-2026-09-30`, `results/m1-210210-neb-eline-ca-2026-09-30`, `results/m1-210210-neb-eline-ca-nohe-2026-09-30`.
+
+### 2026-09-30 — Reference arm settings on result pages
+
+- Result pages and six notes lead with arm/reference tables (matches blank), folded complete settings/priors, and linked reference-diff captions; panels group Noll keys separately without the Kriek–Conroy equation.
+- Files: wiki/research/arms.json, wiki/research_figures.py, wiki/fit_settings.py, wiki/build.py, wiki/tests/test_fit_settings.py.

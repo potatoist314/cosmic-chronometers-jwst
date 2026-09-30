@@ -15,10 +15,12 @@ import tokenize
 esc = html.escape
 C_KMS = 299792.458
 GROUPS = [  # label, colour token, keys in display order
-    ("Data and masks", "--g-data", ["photometry", "emission_lines", "telluric_air"]),
-    ("Stellar population", "--g-stars", ["logmass", "Z", "afe"]),
-    ("SFH", "--g-sfh", ["logsfr_ratios", "sfh_lookback_gyr"]),
+    ("Data and masks", "--g-data", ["photometry", "emission_lines", "emission_line_marginalisation", "telluric_air"]),
+    ("Stellar population", "--g-stars", ["ssp_grid", "logmass", "Z", "afe", "fix_afe", "metallicity_evolution", "zh_beta_unit"]),
+    ("SFH", "--g-sfh", ["logsfr_ratios", "sfh_lookback_gyr", "sfh_nbins"]),
     ("Dust", "--g-dust", ["diffuse_tau_kc", "diffuse_dust_index"]),
+    ("Dust", "--g-dust", ["diffuse_tau_noll", "diffuse_delta", "diffuse_Ebump"]),  # Noll law
+    ("Birth-cloud dust", "--g-dust", ["birth_cloud_dust", "dust_ratio"]),
     ("Redshift and kinematics", "--g-kin", ["zred", "sigma_smooth"]),
     ("Calibration", "--g-calib", ["calibration_order", "calibration_prior_sigma", "calibration_constant_prior_sigma", "calibration_fit_constant", "spectrum_scaling"]),
     ("Noise floors", "--g-noise", ["photometry_floor", "log_f_calib"]),
@@ -26,7 +28,7 @@ GROUPS = [  # label, colour token, keys in display order
 ]
 # The law Ceridwen evaluates: sedpy_jax/attenuation_dust.py `kriek_conroy(wave, tau_kc, dust_index)`,
 # chosen by `diffuse_law='kriek_conroy'` in ceridwen/csp/csp_afe.py; theta keys diffuse_tau_kc, diffuse_dust_index.
-EQUATIONS = {"Dust": {
+EQUATIONS = {"diffuse_tau_kc": {  # shown with the group that holds this key
     "equation": r"\tau(\lambda) = \frac{\tau_{\mathrm{dust}}}{4.05}\,\bigl[k'(\lambda) + D(\lambda)\bigr]"
                 r"\left(\frac{\lambda}{5500\,\text{\AA}}\right)^{\delta_{\mathrm{dust}}}",
     "notes": [r"\(k'\): Calzetti+2000 curve",
@@ -41,6 +43,9 @@ SYMBOLS = {
     "afe": r"[\alpha/\mathrm{Fe}]",
     "diffuse_tau_kc": r"\tau_{\mathrm{dust}}",
     "diffuse_dust_index": r"\delta_{\mathrm{dust}}",
+    "diffuse_tau_noll": r"\tau_{\mathrm{dust}}",
+    "diffuse_delta": r"\delta_{\mathrm{dust}}",
+    "diffuse_Ebump": r"E_b",
     "log_f_calib": r"\log f_{\mathrm{calib}}",
     "zred": r"z",
     "sigma_smooth": r"\sigma_\star",
@@ -86,17 +91,30 @@ PRIOR_LINE = re.compile(r"^\s+(\w+): .*?prior Uniform\(([^,()]+), ([^()]+)\)", r
 
 
 def parse(text):
-    """{key: (dict name, value node, comment)} for every entry of the two dict literals."""
+    """{key: (dict name, value node, comment)} for every entry of the two dict literals.
+
+    Later arm overrides, `SETTINGS.update({...})` and `PRIORS["key"] = value`, replace the value
+    and keep the comment of the literal's entry.
+    """
     comments = {token.start[0]: token.string.lstrip("#").strip()
                 for token in tokenize.generate_tokens(io.StringIO(text).readline)
                 if token.type == tokenize.COMMENT}
     entries = {}
+    def put(name, key, value):
+        lines = range(key.lineno, value.end_lineno + 1)
+        note = entries[key.value][2] if key.value in entries else next((comments[n] for n in lines if n in comments), "")
+        entries[key.value] = (name, value, note)
     for node in ast.parse(text).body:
         if isinstance(node, ast.Assign) and getattr(node.targets[0], "id", "") in ("SETTINGS", "PRIORS"):
             for key, value in zip(node.value.keys, node.value.values):
-                lines = range(key.lineno, value.end_lineno + 1)
-                entries[key.value] = (node.targets[0].id, value,
-                                      next((comments[n] for n in lines if n in comments), ""))
+                put(node.targets[0].id, key, value)
+        elif (isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Subscript)
+              and getattr(node.targets[0].value, "id", "") in ("SETTINGS", "PRIORS")):
+            put(node.targets[0].value.id, node.targets[0].slice, node.value)
+        elif (isinstance(node, ast.Expr) and isinstance(node.value, ast.Call)
+              and ast.unparse(node.value.func) in ("SETTINGS.update", "PRIORS.update")):
+            for key, value in zip(node.value.args[0].keys, node.value.args[0].values):
+                put(node.value.func.value.id, key, value)
     return entries
 
 
@@ -198,10 +216,10 @@ def row_html(key, entries, text, dv, ranges):
         "" if note else " fs-wide", name, value, note)
 
 
-def equation_html(label):
-    if label not in EQUATIONS:
+def equation_html(keys):
+    law = next((EQUATIONS[key] for key in keys if key in EQUATIONS), None)
+    if not law:
         return ""
-    law = EQUATIONS[label]
     return '<div class="fs-eq"><div>\\[%s\\]</div><a href="%s">%s</a></div><p class="fs-eq-note">%s</p>' % (
         esc(law["equation"], quote=False), esc(law["cite"][1]), esc(law["cite"][0]), "<br>".join(law["notes"]))
 
@@ -215,22 +233,47 @@ def component(text, code="", stdout=""):
               for _, slot in SLOT.findall(template) if slot != key}
     grouped = {key for _, _, keys in GROUPS for key in keys}
     rest = [key for key in entries if key not in grouped | folded | HIDDEN]
-    groups = ""
+    groups, shown = "", set()
     for label, token, keys in [*GROUPS, ("", "--ink-3", rest)]:
-        rows = "".join(row_html(key, entries, text, dv, ranges) for key in keys if key in entries)
+        keys = [key for key in keys if key in entries and key not in shown]
+        shown.update(keys)
+        rows = "".join(row_html(key, entries, text, dv, ranges) for key in keys)
         if rows:
             groups += '<section class="fs-group%s" style="--g:var(%s)">%s%s<dl>%s</dl></section>' % (
-                " fs-pair" if label in PAIRED else "", token, '<h3 class="fs-label">%s</h3>' % esc(label) if label else "", equation_html(label), rows)
+                " fs-pair" if label in PAIRED else "", token, '<h3 class="fs-label">%s</h3>' % esc(label) if label else "", equation_html(keys), rows)
     return '<div class="fitset"><div class="fs-body">%s</div></div>' % groups
 
 
-def render(project, notebook, cell, run=None):
+def render(project, notebook, cell=None, run=None, settings=None, priors=None):
+    """The component for a notebook cell, by default the first that defines `SETTINGS`.
+
+    With `settings` and `priors` (a manifest's dicts; priors as source text), those replace the cell,
+    for notebooks that predate the `SETTINGS` cell.
+    """
     def cells(path):
         return json.loads((project / path).read_text(encoding="utf-8"))["cells"]
-    code = ["".join(c["source"]) for c in cells(notebook) if c["cell_type"] == "code"]
+    sources = ["".join(c["source"]) for c in cells(notebook)]
+    code = [text for c, text in zip(cells(notebook), sources) if c["cell_type"] == "code"]
     stdout = "".join("".join(output["text"]) for c in cells(run) for output in c.get("outputs", [])
                      if output.get("name") == "stdout") if run else ""
-    return component("".join(cells(notebook)[cell]["source"]), "\n".join(code), stdout)
+    if settings is not None:
+        text = literal(settings, priors)
+    else:
+        text = sources[cell if cell is not None else next(i for i, t in enumerate(sources) if "SETTINGS = {" in t)]
+    return component(text, "\n".join(code), stdout)
+
+
+def literal(settings, priors):
+    """`SETTINGS` and `PRIORS` source text from a manifest's dicts; a prior is a call or a quoted text."""
+    def prior(value):
+        try:
+            node = ast.parse(value, mode="eval").body
+        except SyntaxError:
+            node = None
+        return value if isinstance(node, (ast.Call, ast.Constant)) else repr(value)
+    return "SETTINGS = {\n%s}\nPRIORS = {\n%s}\n" % (
+        "".join("    %r: %r,\n" % (key, tuple(v) if key == "telluric_air" else v) for key, v in settings.items()),
+        "".join("    %r: %s,\n" % (key, prior(v)) for key, v in priors.items()))
 
 
 CSS = """

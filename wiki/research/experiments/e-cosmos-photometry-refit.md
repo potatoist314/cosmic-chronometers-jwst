@@ -136,25 +136,25 @@ The Ceridwen fits use COSMOS2015 `cosmos_total` photometry, 12 bands. COSMOS2020
     "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2020_classic-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "M1_210210 · Spectrum · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015 (12 bands)."
+    "caption": "M1_210210 · Spectrum · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015."
   },
   {
     "path": "wiki/analyses/cosmos-photometry-refit/photometry-cosmos2020_classic-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "M1_210210 · Photometry · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015 (12 bands)."
+    "caption": "M1_210210 · Photometry · COSMOS2020 Classic (30 bands); otherwise as COSMOS2015."
   },
   {
     "path": "wiki/analyses/cosmos-photometry-refit/spectrum-cosmos2025-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "M1_210210 · Spectrum · COSMOS2025 (28 bands); otherwise as COSMOS2015 (12 bands)."
+    "caption": "M1_210210 · Spectrum · COSMOS2025 (28 bands); otherwise as COSMOS2015."
   },
   {
     "path": "wiki/analyses/cosmos-photometry-refit/photometry-cosmos2025-M1_210210.png",
     "view": "Fits",
     "target": "M1_210210",
-    "caption": "M1_210210 · Photometry · COSMOS2025 (28 bands); otherwise as COSMOS2015 (12 bands)."
+    "caption": "M1_210210 · Photometry · COSMOS2025 (28 bands); otherwise as COSMOS2015."
   },
   {
     "path": "results/cosmos-photometry-refit/corner-M1_210210.png",

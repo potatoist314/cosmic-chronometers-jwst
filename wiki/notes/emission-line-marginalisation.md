@@ -12,6 +12,8 @@ figures: [eline-off-spectrum.png, eline-off-photometry.png, eline-on-spectrum.pn
 
 M1_210210; `eline_off` and `eline_on`, seed 20260832, COSMOS2025 photometry, order-10 calibration with constant prior 0.3, baked runtime. The on arm fixes \(z\) at the catalogue value; the off arm samples \(z\).
 
+<div data-arms="e-emission-line-marginalisation"></div>
+
 <figure>
 <img src="figures/emission-line-marginalisation/eline-off-spectrum.png" alt="M1_210210 spectrum fit with emission-line marginalisation off">
 <figcaption>M1_210210 · Spectrum · eline_off, reference (emission regions masked).</figcaption>
@@ -24,12 +26,12 @@ M1_210210; `eline_off` and `eline_on`, seed 20260832, COSMOS2025 photometry, ord
 
 <figure>
 <img src="figures/emission-line-marginalisation/eline-on-spectrum.png" alt="M1_210210 spectrum fit with emission-line marginalisation on">
-<figcaption>M1_210210 · Spectrum · eline_on: line marginalisation on; otherwise as eline_off.</figcaption>
+<figcaption>M1_210210 · Spectrum · eline_on: line marginalisation on, redshift fixed; otherwise as eline_off.</figcaption>
 </figure>
 
 <figure>
 <img src="figures/emission-line-marginalisation/eline-on-photometry.png" alt="M1_210210 photometry fit with emission-line marginalisation on">
-<figcaption>M1_210210 · Photometry · eline_on: line marginalisation on; otherwise as eline_off.</figcaption>
+<figcaption>M1_210210 · Photometry · eline_on: line marginalisation on, redshift fixed; otherwise as eline_off.</figcaption>
 </figure>
 
 ## Runtime

@@ -43,6 +43,7 @@ ROOT = Path(__file__).resolve().parent          # wiki/
 PROJECT = ROOT.parent
 sys.path.insert(0, str(ROOT))
 import research
+import research_figures
 import activity
 
 # The word counter is the bridge's, so the notebook and the handoff gate can
@@ -939,6 +940,7 @@ def _build(notes_dir: Path, out: Path, base: str, research_dir: Path | None = No
                          '</iframe></div>' % (base, note["embed"], esc(note["title"])))
         else:
             body_html = markdown(body_md, base, os.path.dirname(note.get("source", "")))
+            body_html = research_figures.note_arms(body_html, PROJECT)
         # Section links for the rail: real headings, plus every named
         # collapsed block, in the order they appear on the page.
         headings = re.findall(

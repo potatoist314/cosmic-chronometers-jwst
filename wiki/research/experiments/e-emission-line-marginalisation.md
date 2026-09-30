@@ -203,7 +203,7 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
   },
   {
     "path": "wiki/analyses/emission-line-marginalisation/eline-on-spectrum.png",
-    "caption": "M1_210210 · Spectrum · eline_on: line marginalisation on; otherwise as eline_off.",
+    "caption": "M1_210210 · Spectrum · eline_on: line marginalisation on, redshift fixed; otherwise as eline_off.",
     "view": "Fits",
     "target": "M1_210210",
     "arm": "eline_on",
@@ -211,7 +211,7 @@ Upstream Ceridwen `be852282` (v1.0.2) marginalises emission-line fluxes analytic
   },
   {
     "path": "wiki/analyses/emission-line-marginalisation/eline-on-photometry.png",
-    "caption": "M1_210210 · Photometry · eline_on: line marginalisation on; otherwise as eline_off.",
+    "caption": "M1_210210 · Photometry · eline_on: line marginalisation on, redshift fixed; otherwise as eline_off.",
     "view": "Fits",
     "target": "M1_210210",
     "arm": "eline_on",

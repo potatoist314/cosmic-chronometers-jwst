@@ -15,6 +15,7 @@ import fit_settings
 
 NOTEBOOK = "notebooks/ceridwen_integrated_photometry_spectra.ipynb"
 RUN = "results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb"
+KC_RUN = "results/birth-cloud-dust/dust1_on/210210-M1_210210/M1_210210_executed.ipynb"
 FOLDED = {"zred_half_width": "zred", "sigma_clip": "sigma_smooth"}
 
 
@@ -118,14 +119,21 @@ class FitSettingsTests(unittest.TestCase):
         self.assertIn("Student-t", found[r"\(%s\)" % fit_settings.SYMBOLS["log_f_calib"]])
         self.assertIn("fractional noise floor on the spectrum", found[r"\(%s\)" % fit_settings.SYMBOLS["log_f_calib"]])
 
-    def test_the_dust_group_carries_its_law(self):
-        dust = self.rendered.split(">Dust</h3>", 1)[1].split("</section>", 1)[0]
+    def test_the_kriek_conroy_dust_group_carries_its_law(self):
+        rendered = fit_settings.render(PROJECT, KC_RUN)
+        dust = rendered.split(">Dust</h3>", 1)[1].split("</section>", 1)[0]
         equation = re.search(r"\\\[(.*?)\\\]", dust)[1]
         for key in ("diffuse_tau_kc", "diffuse_dust_index"):
             self.assertIn(fit_settings.SYMBOLS[key], equation)
             self.assertIn(self.name(key), dust.split("<dl>", 1)[1])
         self.assertIn('<a href="https://arxiv.org/abs/1308.1099">Kriek &amp; Conroy 2013</a>', dust)
-        self.assertEqual(self.rendered.count("fs-eq-note"), 1)
+        self.assertEqual(rendered.count("fs-eq-note"), 1)
+
+    def test_the_noll_dust_group_has_no_kriek_conroy_law(self):
+        dust = self.rendered.split(">Dust</h3>", 1)[1].split("</section>", 1)[0]
+        for key in ("diffuse_tau_noll", "diffuse_delta", "diffuse_Ebump"):
+            self.assertIn(self.name(key), dust)
+        self.assertNotIn("fs-eq", self.rendered)
 
     def test_symbols_compile_with_vendored_katex(self):
         script = ("const katex = require(process.argv[1]);"
