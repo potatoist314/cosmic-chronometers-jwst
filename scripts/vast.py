@@ -271,10 +271,11 @@ def _ssh(
 
 
 def _instance_state(instance_id: int) -> dict[str, Any]:
+    """The instance record, or {} once it no longer exists (vastai then prints {"instances": null})."""
     payload = _vastai_json(["show", "instance", str(instance_id)])
     if isinstance(payload, list):
         return payload[0] if payload else {}
-    return payload
+    return payload.get("instances", payload) or {}
 
 
 def _wait_for_running(instance_id: int, log: Any) -> None:

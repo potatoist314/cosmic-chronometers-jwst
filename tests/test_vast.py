@@ -41,6 +41,13 @@ def test_vastai_json_retries_an_empty_response(monkeypatch: pytest.MonkeyPatch) 
     assert len(calls) == 2
 
 
+def test_destroyed_instance_has_no_state(monkeypatch):
+    monkeypatch.setattr(sweep, "_vastai", lambda arguments, timeout: '{\n "instances": null\n}')
+    assert sweep._instance_state(1) == {}
+    monkeypatch.setattr(sweep, "_vastai", lambda arguments, timeout: '{"id": 1, "actual_status": "loading"}')
+    assert sweep._instance_state(1) == {"id": 1, "actual_status": "loading"}
+
+
 NO_SUCH_ASK = ('{"error": true, "status_code": 410, "msg": "error 410/3907: no_such_ask  '
                'Instance type 1 is no longer available."}\n')
 

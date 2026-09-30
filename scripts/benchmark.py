@@ -281,7 +281,8 @@ class Run:
         while True:
             self.budget(reserve=attempt['price'] * .25)
             state = vast._instance_state(attempt['instance_id'])
-            if not state or state.get('actual_status') in ('offline', 'exited'):
+            # Vast stops an outbid interruptible instance; it would stay in 'loading' indefinitely.
+            if not state or state.get('actual_status') in ('offline', 'exited') or state.get('intended_status') == 'stopped':
                 raise vast.SweepError('instance unavailable')
             attempt['price'] = float(state.get('dph_total') or attempt['price'])
             message = (state.get('actual_status'), state.get('status_msg'))

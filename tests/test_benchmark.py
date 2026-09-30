@@ -581,6 +581,23 @@ def test_local_ssh_failure_destroys_once_without_waiting_or_replacement(run, clo
     assert run.data['attempts'][0]['retryable'] is False
 
 
+def test_outbid_instance_is_replaced_instead_of_waited_on(run, cloud, monkeypatch):
+    offer, state = cloud
+    monkeypatch.setattr(bench.vast, 'search_offers', lambda *a, **kw:
+                        [offer, {**offer, 'id': 2, 'host_id': 43}])
+    original = bench.vast._create_instance
+    def create(offer, args):
+        instance = original(offer, args)
+        if offer['id'] == 1:  # Vast stops an interruptible rental once it is outbid.
+            state['live'][instance].update(actual_status='loading', intended_status='stopped')
+        return instance
+    monkeypatch.setattr(bench.vast, '_create_instance', create)
+    monkeypatch.setattr(bench.time, 'sleep', lambda _: pytest.fail('waited on a stopped instance'))
+    assert run.execute() == 0
+    assert state['created'] == [1, 2]
+    assert run.data['attempts'][0]['error'] == 'SweepError: instance unavailable'
+
+
 def test_remote_stage_exit_does_not_rent_another_host(run, cloud, monkeypatch):
     offer, state = cloud
     monkeypatch.setattr(bench.vast, 'search_offers', lambda *a, **kw:
