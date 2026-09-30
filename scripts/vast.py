@@ -331,6 +331,17 @@ def _rsync(
         raise SweepError("rsync failed: " + ("\n".join(detail[-10:]) or "unknown"))
 
 
+def _rsync_background(port: str, sources: list[str], destination: str) -> subprocess.Popen[str]:
+    """Start the copy that _rsync makes without waiting for it."""
+    shell = " ".join(shlex.quote(part) for part in ["ssh", *_ssh_options(port)])
+    return subprocess.Popen(
+        ["rsync", "-a", "--partial", "-e", shell, *sources, destination],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+
+
 def selected_inputs(cells):
     files = {'external/fsps/data/emlines_info.dat'} | {
         'data/raw/legac_dr2/legaCdr2.fits.gz',

@@ -20,6 +20,7 @@ import statistics
 import subprocess
 import sys
 import time
+import zlib
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
@@ -34,6 +35,17 @@ SUBMODULES = ('ceridwen', 'external/sedpy_jax')
 # Not in the installed wheels, so not uploaded: ceridwen test fixtures (64 MB
 # compressed) and old sedpy_jax build outputs (4 MB).
 UNUSED_SOURCE = {'ceridwen': 'tests', 'external/sedpy_jax': 'dist'}
+# Grids are float64 arrays. Sent as eight byte planes, the 612 MB grid compresses
+# to 77% with zlib (91% without the planes). The image has python3 but no zstd.
+PACKED = Path.home() / '.ceridwen' / 'packed'
+UNPACK = """import sys, zlib
+planes = zlib.decompress(open(sys.argv[1], 'rb').read())
+whole = len(planes) - len(planes) % 8
+data = bytearray(planes)
+for k in range(8):
+    data[k:whole:8] = planes[k * whole // 8:(k + 1) * whole // 8]
+open(sys.argv[2], 'wb').write(data)
+"""
 INPUT_DIRS = ('legac_dr2', 'cosmos2015', 'cosmos2020', 'cosmos2025', 'hst_f814w')
 INPUT_FILES = ('external/fsps/data/emlines_info.dat',)
 REMOTE = vast.REMOTE_ROOT
@@ -115,6 +127,32 @@ def preflight(revision, *, grid_name=None, targets=(), workers=('benchmark_baked
     for name in workers:
         compile(git('show', f'{commit}:scripts/{name}'), name, 'exec')
     return {'commit': commit, 'submodules': modules, 'grid': str(grid), 'grid_sha256': checksum}
+
+
+def planes(data):
+    """Byte k of every 8-byte word, for k = 0..7, then the remainder."""
+    whole = len(data) - len(data) % 8
+    return b''.join([*(data[k:whole:8] for k in range(8)), data[whole:]])
+
+
+def pack(grid, sha256):
+    """Return the cached packed grid; a new one must unpack to the grid's sha256."""
+    packed = PACKED / f'{sha256}.zlib'
+    if not packed.exists():
+        PACKED.mkdir(parents=True, exist_ok=True)
+        partial, restored = (PACKED / f'{sha256}.{os.getpid()}.{suffix}' for suffix in ('partial', 'h5'))
+        partial.write_bytes(zlib.compress(planes(Path(grid).read_bytes())))
+        try:
+            subprocess.run([sys.executable, '-c', UNPACK, partial, restored], check=True)
+            with restored.open('rb') as stream:
+                exact = hashlib.file_digest(stream, 'sha256').hexdigest() == sha256
+        finally:
+            restored.unlink(missing_ok=True)
+        if not exact:
+            partial.unlink()
+            raise vast.SweepError(f'packed {grid} does not unpack to sha256 {sha256}')
+        partial.replace(packed)
+    return packed
 
 
 def offer_rejection(offer, min_reliability=vast.FIT_MIN_RELIABILITY):
@@ -272,35 +310,48 @@ class Run:
                         f'mkdir -p {shlex.quote(destination)} && tar -xz -C {shlex.quote(destination)}'],
                        input=archive, capture_output=True, check=True, timeout=self.timeout(attempt, 180))
 
+    def grids(self):
+        source = self.data['source']
+        return source.get('grids', [{'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
+                                     'remote_name': Path(source['grid']).name}])
+
     def upload(self, attempt):
         instance = attempt['instance_id']
         source = self.data['source']
-        self.archive(attempt, ROOT, source['commit'], ('scripts', NOTEBOOK))
-        for tree, revision in source['submodules'].items():
-            self.archive(attempt, ROOT / tree, revision, ('.', f':(exclude){UNUSED_SOURCE[tree]}'))
         target, port = vast._ssh_target(instance)
         vast._ssh(instance, f'mkdir -p {REMOTE}/data/raw {REMOTE}/grid; command -v rsync || (apt-get update -qq && apt-get install -y -qq rsync)', timeout=self.timeout(attempt))
-        if 'input_files' in source:
-            payload = json.dumps(source['input_files'])
-            vast._ssh(instance, f'printf %s {shlex.quote(payload)} > {REMOTE}/input-files.json', timeout=self.timeout(attempt))
-            subprocess.run(['rsync', '-aR', '-e', shlex.join(['ssh', *vast._ssh_options(port)]),
-                            *source['input_files'], f'{target}:{REMOTE}/'], cwd=ROOT,
-                           check=True, capture_output=True,
-                           timeout=self.timeout(attempt, 600))
-        else:
-            for directory in INPUT_DIRS:
-                vast._rsync(port, str(ROOT / 'data/raw' / directory), f'{target}:{REMOTE}/data/raw/', timeout=self.timeout(attempt, 600))
-            for name in INPUT_FILES:
-                remote_parent = f'{REMOTE}/{Path(name).parent}'
-                vast._ssh(instance, f'mkdir -p {remote_parent}', timeout=self.timeout(attempt))
-                vast._rsync(port, str(ROOT / name), f'{target}:{remote_parent}/', timeout=self.timeout(attempt))
-        grids = source.get('grids', [{'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
-                                      'remote_name': Path(source['grid']).name}])
-        for entry in grids:
-            remote_grid = f"{REMOTE}/grid/{entry['remote_name']}"
-            vast._rsync(port, entry['grid'], f'{target}:{remote_grid}', timeout=self.timeout(attempt, 600))
-            check = f"{entry['grid_sha256']}  {remote_grid}"
-            vast._ssh(instance, f'printf %s {shlex.quote(check)} | sha256sum -c -', timeout=self.timeout(attempt))
+        grids = [(entry, pack(entry['grid'], entry['grid_sha256'])) for entry in self.grids()]
+        # The packed grids travel while the source and inputs follow one by one.
+        sending = vast._rsync_background(port, [str(packed) for _, packed in grids], f'{target}:{REMOTE}/grid/')
+        try:
+            self.archive(attempt, ROOT, source['commit'], ('scripts', NOTEBOOK))
+            for tree, revision in source['submodules'].items():
+                self.archive(attempt, ROOT / tree, revision, ('.', f':(exclude){UNUSED_SOURCE[tree]}'))
+            if 'input_files' in source:
+                payload = json.dumps(source['input_files'])
+                vast._ssh(instance, f'printf %s {shlex.quote(payload)} > {REMOTE}/input-files.json', timeout=self.timeout(attempt))
+                subprocess.run(['rsync', '-aR', '-e', shlex.join(['ssh', *vast._ssh_options(port)]),
+                                *source['input_files'], f'{target}:{REMOTE}/'], cwd=ROOT,
+                               check=True, capture_output=True,
+                               timeout=self.timeout(attempt, 600))
+            else:
+                for directory in INPUT_DIRS:
+                    vast._rsync(port, str(ROOT / 'data/raw' / directory), f'{target}:{REMOTE}/data/raw/', timeout=self.timeout(attempt, 600))
+                for name in INPUT_FILES:
+                    remote_parent = f'{REMOTE}/{Path(name).parent}'
+                    vast._ssh(instance, f'mkdir -p {remote_parent}', timeout=self.timeout(attempt))
+                    vast._rsync(port, str(ROOT / name), f'{target}:{remote_parent}/', timeout=self.timeout(attempt))
+            _, error = sending.communicate(timeout=self.timeout(attempt, 600))
+        finally:
+            if sending.poll() is None:
+                sending.kill()
+                sending.wait()
+        if sending.returncode:
+            raise vast.SweepError(f'rsync failed: {error.strip()[-1000:] or "unknown"}')
+        unpack = [f"python3 -c {shlex.quote(UNPACK)} {REMOTE}/grid/{packed.name} {REMOTE}/grid/{entry['remote_name']}"
+                  for entry, packed in grids]
+        checks = '\n'.join(f"{entry['grid_sha256']}  {REMOTE}/grid/{entry['remote_name']}" for entry, _ in grids)
+        vast._ssh(instance, ' && '.join([*unpack, f'printf %s {shlex.quote(checks)} | sha256sum -c -']), timeout=self.timeout(attempt))
 
     def stage(self, attempt, name, command):
         """Detach once; stage locks and exit files survive SSH disconnects."""
@@ -455,6 +506,9 @@ class Run:
                 raise vast.SweepError(f"cleanup failed for owned instance {attempt['instance_id']}; repeat this command before renting again")
 
     def execute(self):
+        # Pack new grids before renting: 20-30 s for 612 MB, once per grid.
+        for entry in self.grids():
+            pack(entry['grid'], entry['grid_sha256'])
         for attempt in self.data['attempts']:
             if not attempt.get('destroyed'):
                 if not attempt.get('instance_id') and attempt.get('label'):
