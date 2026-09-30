@@ -1,6 +1,7 @@
 """COSMOS2025 default photometry: footprint fallback and the refit recipe."""
 from __future__ import annotations
 
+import pandas as pd
 import pytest
 
 from scripts import cosmos_photometry as phot
@@ -104,3 +105,10 @@ def test_footprint_covers_122_of_the_187_dr2_galaxies(tables):
     assert len(inside) == 122
     uncovered = [s for s in targets if s not in tables["cosmos2025"] and s not in tables["classic"]]
     assert uncovered == []
+
+
+def test_catalogues_are_read_once_and_fit_photometry_is_unchanged(monkeypatch):
+    cached = phot.fit_photometry("cosmos2025", INSIDE)
+    assert phot.read_matches() is phot.read_matches()
+    monkeypatch.setattr(phot, "read_matches", phot.read_matches.__wrapped__)
+    pd.testing.assert_frame_equal(cached, phot.fit_photometry("cosmos2025", INSIDE), check_exact=True)

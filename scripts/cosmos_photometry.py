@@ -26,6 +26,7 @@ effective catalogue in `photometry_source`.
 Outside the COSMOS2025 footprint it uses Classic alone, without duplicate bands.
 """
 
+from functools import cache
 from pathlib import Path
 
 import numpy as np
@@ -160,8 +161,12 @@ def catalogue_flux(catalogue: str, band: str, stem: str, row):
     return flux, error, 0.0
 
 
+@cache
 def read_matches() -> dict:
-    """Matched rows of every catalogue, keyed by catalogue then by LEGA-C spect_id."""
+    """Matched rows of every catalogue, keyed by catalogue then by LEGA-C spect_id.
+
+    Read once per process (about 1.6 s): a fit resolves the catalogue, then fits it.
+    """
     tables = {}
     for catalogue, path in FILES.items():
         table = Table.read(path)
