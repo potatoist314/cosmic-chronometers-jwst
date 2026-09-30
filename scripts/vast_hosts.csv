@@ -43,3 +43,6 @@ host_id,outcome,gpu,date,run,reason
 662751,good,RTX 5090,2026-09-30,results/speedup-free-2026-09-30/run/manifest.json,instance 53528334 finished 6 of 6 seeded nested runs
 81276,good,RTX 5090,2026-09-30,results/m1-210210-neb-eline-ca-2026-09-30/run/manifest.json,instance 53540122 finished 1 of 1 fits
 81276,good,RTX 5090,2026-09-30,results/m1-210210-neb-eline-ca-nohe-2026-09-30/run/manifest.json,instance 53545621 finished 1 of 1 fits
+667570,poor,RTX 5090,2026-09-30,results/speedup-lane-check-2026-09-30/run/manifest.json,instance 53537986 took 11 min to load the image and 14 min to upload, then closed SSH during the measurement (connection refused from 15:04:20 UTC); the result was lost
+166545,poor,RTX 5090,2026-09-30,results/speedup-lane-check-2026-09-30/run/manifest.json,instance 53543426 was still loading the image after 13 min (layer download retries); the runner replaced it
+662751,good,RTX 5090,2026-09-30,results/speedup-lane-check-2026-09-30/run/manifest.json,instance 53545256 finished the 266-iteration kernel check in 18 min from rental

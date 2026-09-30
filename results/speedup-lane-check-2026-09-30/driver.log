@@ -1,0 +1,444 @@
+14:18:57 committed source db75ee2ed959; output results/speedup-lane-check-2026-09-30/run
+14:19:01 renting RTX 5090, host 18, $0.378/h; estimate $0.220
+14:19:01 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45508895 unknown bid $0.378/h, $0.189/fit, $0.220 total; 53061201 unknown bid $0.416/h, $0.208/fit, $0.229 total; 40411107 unknown bid $0.549/h, $0.275/fit, $0.296 total; 51284767 unknown bid $0.553/h, $0.277/fit, $0.297 total; 53483881 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 40077664 unknown bid $0.580/h, $0.290/fit, $0.321 total; 46699713 unknown on-demand $0.610/h, $0.305/fit, $0.326 total; 28539924 unknown on-demand $0.611/h, $0.306/fit, $0.306 total; 40077670 unknown on-demand $0.615/h, $0.307/fit, $0.339 total; 53289413 unknown bid $0.616/h, $0.308/fit, $0.329 total; 482126
+14:19:02 SweepError: vastai returned no JSON: 
+14:19:06 renting RTX 5090, host 667570, $0.473/h; estimate $0.289
+14:19:06 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 51867415 unknown bid $0.473/h, $0.237/fit, $0.289 total; 46691993 unknown bid $0.494/h, $0.247/fit, $0.268 total; 52723070 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 28539924 unknown bid $0.540/h, $0.270/fit, $0.270 total; 45014286 unknown bid $0.545/h, $0.272/fit, $0.279 total; 47513476 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 47511675 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 53304619 unknown bid $0.681/h, $0.340/fit, $0.346 total; 52528400 unknown bid $0.681/h, $0.340/fit, $0.351 total; 52845006 unknown bid $0.683/h, $0.341/fit, $0.362 total; 49868231 unk
+14:19:08 instance 53537986: (None, None)
+14:19:26 instance 53537986: ('loading', '77be074b1ca8: Verifying Checksum\n77be074b1ca8: Download complete\n')
+14:23:33 waiting: remaining estimate $0.289; replacement $0.229
+14:23:42 waiting: remaining estimate $0.289; replacement $0.217
+14:23:52 waiting: remaining estimate $0.289; replacement $0.330
+14:23:58 instance 53537986: ('loading', 'b2449364bbe7: Verifying Checksum\nb2449364bbe7: Download complete\n')
+14:24:15 instance 53537986: ('loading', '#0 building with "default" instance using docker driver\n\n#1 [internal] load build definition from ghcr.io_potatoist314_ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34\n')
+14:24:45 instance 53537986: ('loading', '#6 30.29 Ign:1 http://deb.debian.org/debian bookworm InRelease\n')
+14:25:21 instance 53537986: ('loading', '#6 60.32 Ign:2 http://deb.debian.org/debian bookworm-updates InRelease\n')
+14:25:45 instance 53537986: ('loading', '#6 90.35 Ign:3 http://deb.debian.org/debian-security bookworm-security InRelease\n')
+14:26:15 instance 53537986: ('loading', '#6 120.4 Ign:1 http://deb.debian.org/debian bookworm InRelease\n')
+14:26:45 instance 53537986: ('loading', '#6 150.4 Ign:2 http://deb.debian.org/debian bookworm-updates InRelease\n')
+14:27:15 instance 53537986: ('loading', '#6 180.5 Ign:3 http://deb.debian.org/debian-security bookworm-security InRelease\n')
+14:27:44 instance 53537986: ('loading', '#6 210.5 Ign:1 http://deb.debian.org/debian bookworm InRelease\n')
+14:28:13 instance 53537986: ('loading', '#6 240.5 Ign:2 http://deb.debian.org/debian bookworm-updates InRelease\n')
+14:28:49 instance 53537986: ('loading', '#6 270.5 Ign:3 http://deb.debian.org/debian-security bookworm-security InRelease\n')
+14:29:13 instance 53537986: ('loading', "#6 300.6 Err:1 http://deb.debian.org/debian bookworm InRelease\n#6 300.6   Temporary failure resolving 'deb.debian.org'\n")
+14:29:44 instance 53537986: ('loading', "#6 330.6 Err:2 http://deb.debian.org/debian bookworm-updates InRelease\n#6 330.6   Temporary failure resolving 'deb.debian.org'\n")
+14:30:16 instance 53537986: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+14:30:19 SSH not ready: ssh: connect to host 106.72.183.2 port 5802: Connection refused
+14:30:26 SSH not ready: ssh: connect to host 106.72.183.2 port 5802: Connection refused
+14:30:34 SSH not ready: ssh: connect to host 106.72.183.2 port 5802: Connection refused
+14:30:44 uploading pinned source, inputs and cached grid
+14:43:18 instance 53537986: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+14:45:01 bootstrap: running; -jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 0.86ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+14:45:13 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16.h5
+Ceridwen GPU environment ready.
+14:45:43 lane-check: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+14:45:55 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:46:06 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:46:18 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:46:29 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:46:41 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:46:53 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:47:04 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:47:15 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:47:28 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:47:40 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:47:51 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:48:02 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:48:14 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:48:26 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:48:37 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:48:49 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:49:00 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:49:12 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:49:23 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:49:35 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:49:47 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:49:58 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:50:10 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:50:21 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:50:34 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:50:46 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:50:57 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:51:09 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:51:20 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:51:32 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:51:44 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:51:55 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:52:07 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:52:19 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:52:30 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:52:42 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:52:54 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:53:05 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:53:17 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:53:29 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:53:40 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:53:52 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:54:03 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:54:15 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:54:27 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:54:38 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:54:50 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:55:01 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:55:13 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:55:25 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:55:37 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:55:49 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:56:00 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:56:12 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:56:23 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:56:35 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:56:47 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:56:58 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:57:10 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:57:21 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:57:33 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:57:45 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:57:58 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:58:10 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:58:21 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:58:34 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+14:58:46 lane-check: running; 6259382055141, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 7, "bitwise_equal": true, "carry_step_s": 0.9236102950526401, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 8, "bitwise_equal": true, "carry_step_s": 0.9427191879367456, "dead_max_abs_diff_from_first_run": 0.0}
+14:58:58 lane-check: running; 06879958138, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 15, "bitwise_equal": true, "carry_step_s": 0.9446236719377339, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 16, "bitwise_equal": true, "carry_step_s": 0.9556338820839301, "dead_max_abs_diff_from_first_run": 0.0}
+14:59:09 lane-check: running; 06730078533, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 23, "bitwise_equal": true, "carry_step_s": 1.0383719579549506, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 24, "bitwise_equal": true, "carry_step_s": 0.9937365000369027, "dead_max_abs_diff_from_first_run": 0.0}
+14:59:21 lane-check: running; 55050343275, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 31, "bitwise_equal": true, "carry_step_s": 0.9651799229905009, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 32, "bitwise_equal": true, "carry_step_s": 1.0249960129149258, "dead_max_abs_diff_from_first_run": 0.0}
+14:59:33 lane-check: running; 87100683898, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 39, "bitwise_equal": true, "carry_step_s": 0.9385336560662836, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 40, "bitwise_equal": true, "carry_step_s": 0.9415781629504636, "dead_max_abs_diff_from_first_run": 0.0}
+14:59:45 lane-check: running; 03850482032, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 48, "bitwise_equal": true, "carry_step_s": 0.8917236210545525, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 49, "bitwise_equal": true, "carry_step_s": 0.9206275559263304, "dead_max_abs_diff_from_first_run": 0.0}
+14:59:57 lane-check: running; 222229881212, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 58, "bitwise_equal": true, "carry_step_s": 0.910032132989727, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 59, "bitwise_equal": true, "carry_step_s": 0.9038316620280966, "dead_max_abs_diff_from_first_run": 0.0}
+15:00:08 lane-check: running; 63100115582, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 66, "bitwise_equal": true, "carry_step_s": 0.9241996339987963, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 67, "bitwise_equal": true, "carry_step_s": 0.9075181649532169, "dead_max_abs_diff_from_first_run": 0.0}
+15:00:20 lane-check: running; 30499747768, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 76, "bitwise_equal": true, "carry_step_s": 0.9263604399748147, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 77, "bitwise_equal": true, "carry_step_s": 0.9090814489172772, "dead_max_abs_diff_from_first_run": 0.0}
+15:00:31 lane-check: running; 73630696908, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 84, "bitwise_equal": true, "carry_step_s": 0.9511548189911991, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 85, "bitwise_equal": true, "carry_step_s": 0.9183721219887957, "dead_max_abs_diff_from_first_run": 0.0}
+15:00:43 lane-check: running; 65439912677, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 93, "bitwise_equal": true, "carry_step_s": 0.9124290039762855, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 94, "bitwise_equal": true, "carry_step_s": 0.9088824560167268, "dead_max_abs_diff_from_first_run": 0.0}
+15:00:55 lane-check: running; , "max_abs_diff_from_carry": 1.915267384828188, "max_abs_diff_from_lanes": 2.7219372393410493, "other_lanes_equal_to_carry": 99, "other_lanes_max_abs_diff_from_carry": 0.0}]}]}}
+ITER {"iteration": 98, "bitwise_equal": true, "carry_step_s": 0.929700962966308, "dead_max_abs_diff_from_first_run": 0.0}
+15:01:07 lane-check: running; 040273398, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 105, "bitwise_equal": true, "carry_step_s": 0.9232343410840258, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 106, "bitwise_equal": true, "carry_step_s": 0.9044632710283622, "dead_max_abs_diff_from_first_run": 0.0}
+15:01:19 lane-check: running; ad_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 113, "bitwise_equal": true, "carry_step_s": 0.9338131119729951, "dead_max_abs_diff_from_first_run": 2.834975058392274}
+ITER {"iteration": 114, "bitwise_equal": true, "carry_step_s": 0.8937536869198084, "dead_max_abs_diff_from_first_run": 0.0}
+15:01:30 lane-check: running; un": 24.640873787442303}
+ITER {"iteration": 122, "bitwise_equal": true, "carry_step_s": 0.9141071899794042, "dead_max_abs_diff_from_first_run": 20.49823408571615}
+ITER {"iteration": 123, "bitwise_equal": true, "carry_step_s": 0.911443577031605, "dead_max_abs_diff_from_first_run": 21.15433575649388}
+15:01:42 lane-check: running; n": 17.84607425580083}
+ITER {"iteration": 131, "bitwise_equal": true, "carry_step_s": 0.9104701640317217, "dead_max_abs_diff_from_first_run": 18.14347985390765}
+ITER {"iteration": 132, "bitwise_equal": true, "carry_step_s": 0.9581091919681057, "dead_max_abs_diff_from_first_run": 22.784156139021803}
+15:01:53 lane-check: running; n": 22.081318894095006}
+ITER {"iteration": 140, "bitwise_equal": true, "carry_step_s": 0.9369244910776615, "dead_max_abs_diff_from_first_run": 22.11279794797113}
+ITER {"iteration": 141, "bitwise_equal": true, "carry_step_s": 0.9406056320294738, "dead_max_abs_diff_from_first_run": 22.45989325307542}
+15:02:05 lane-check: running; : 19.979062741264727}
+ITER {"iteration": 149, "bitwise_equal": true, "carry_step_s": 0.9479296349454671, "dead_max_abs_diff_from_first_run": 18.716449322995715}
+ITER {"iteration": 150, "bitwise_equal": true, "carry_step_s": 0.9184580160072073, "dead_max_abs_diff_from_first_run": 19.531520051942408}
+15:02:17 lane-check: running; : 16.558880369235965}
+ITER {"iteration": 156, "bitwise_equal": true, "carry_step_s": 0.9154709130525589, "dead_max_abs_diff_from_first_run": 17.096710779581315}
+ITER {"iteration": 157, "bitwise_equal": true, "carry_step_s": 0.9209178729215637, "dead_max_abs_diff_from_first_run": 21.263518167255654}
+15:02:29 lane-check: running; ": 21.947905605778487}
+ITER {"iteration": 165, "bitwise_equal": true, "carry_step_s": 0.9082024169620126, "dead_max_abs_diff_from_first_run": 16.929928581384672}
+ITER {"iteration": 166, "bitwise_equal": true, "carry_step_s": 0.927905464079231, "dead_max_abs_diff_from_first_run": 17.481239174753853}
+15:02:41 lane-check: running; _run": 19.384542999931}
+ITER {"iteration": 174, "bitwise_equal": true, "carry_step_s": 0.940812167013064, "dead_max_abs_diff_from_first_run": 15.435074373201303}
+ITER {"iteration": 175, "bitwise_equal": true, "carry_step_s": 0.9440067650284618, "dead_max_abs_diff_from_first_run": 16.49288870860198}
+15:02:52 lane-check: running; : 18.073403852842716}
+ITER {"iteration": 180, "bitwise_equal": true, "carry_step_s": 0.9350180689943954, "dead_max_abs_diff_from_first_run": 17.170728151848152}
+ITER {"iteration": 181, "bitwise_equal": true, "carry_step_s": 0.9251939960522577, "dead_max_abs_diff_from_first_run": 16.453527677446004}
+15:03:04 lane-check: running; un": 19.040462947114946}
+ITER {"iteration": 189, "bitwise_equal": true, "carry_step_s": 0.927275741007179, "dead_max_abs_diff_from_first_run": 14.7014060618896}
+ITER {"iteration": 190, "bitwise_equal": true, "carry_step_s": 0.9256399619625881, "dead_max_abs_diff_from_first_run": 14.909938884616565}
+15:03:16 lane-check: running; n": 13.466616531676436}
+ITER {"iteration": 198, "bitwise_equal": true, "carry_step_s": 0.9452052210690454, "dead_max_abs_diff_from_first_run": 26.06823303503691}
+ITER {"iteration": 199, "bitwise_equal": true, "carry_step_s": 0.9129613669356331, "dead_max_abs_diff_from_first_run": 16.13218494520345}
+15:03:27 lane-check: running; : 15.168828553992057}
+ITER {"iteration": 205, "bitwise_equal": true, "carry_step_s": 0.9155943639343604, "dead_max_abs_diff_from_first_run": 16.880114984033355}
+ITER {"iteration": 206, "bitwise_equal": true, "carry_step_s": 0.9396926660556346, "dead_max_abs_diff_from_first_run": 13.405621493323565}
+15:03:39 lane-check: running; carry": 99, "other_lanes_max_abs_diff_from_carry": 0.0}, {"start": 303, "survivor_rank": 245, "p_cuml_minus_r_ulp": 76615.0, "max_abs_diff_from_carry": 1.28886932541467, "max_abs_diff_from_lanes": 1.9537209254971755, "other_lanes_equal_to_carry": 99, "other_lanes_max_abs_diff_from_carry": 0.0}]}]}}
+15:03:51 lane-check: running; ": 13.228624477247763}
+ITER {"iteration": 217, "bitwise_equal": true, "carry_step_s": 0.9225291580660269, "dead_max_abs_diff_from_first_run": 14.22257442108372}
+ITER {"iteration": 218, "bitwise_equal": true, "carry_step_s": 0.9184015559731051, "dead_max_abs_diff_from_first_run": 12.235499742776028}
+15:04:03 lane-check: running; n": 12.61996976619713}
+ITER {"iteration": 225, "bitwise_equal": true, "carry_step_s": 0.9242454600753263, "dead_max_abs_diff_from_first_run": 15.453143815856663}
+ITER {"iteration": 226, "bitwise_equal": true, "carry_step_s": 0.9220665689790621, "dead_max_abs_diff_from_first_run": 11.57132178125488}
+15:04:14 lane-check: running; arry": 99, "other_lanes_max_abs_diff_from_carry": 0.0}, {"start": 370, "survivor_rank": 290, "p_cuml_minus_r_ulp": 50347.0, "max_abs_diff_from_carry": 2.6297162122174096, "max_abs_diff_from_lanes": 2.946587098124553, "other_lanes_equal_to_carry": 99, "other_lanes_max_abs_diff_from_carry": 0.0}]}]}}
+15:04:20 lane-check: ssh: connect to host 106.72.183.2 port 5802: Connection refused; reconnecting to the same instance
+15:04:21 instance 53537986: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+15:04:22 SSH not ready: ssh: connect to host 106.72.183.2 port 5802: Connection refused
+15:04:28 SweepError: rsync failed: ssh: connect to host 106.72.183.2 port 5802: Connection refused
+rsync(91876): error: unexpected end of file
+15:04:31 destroyed instance 53537986
+15:04:39 renting RTX 5090, host 370354, $0.503/h; estimate $0.262
+15:04:39 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 47680627 good bid $0.503/h, $0.251/fit, $0.262 total; 46699713 unknown bid $0.226/h, $0.113/fit, $0.134 total; 43626057 unknown bid $0.346/h, $0.173/fit, $0.204 total; 48425188 unknown bid $0.392/h, $0.196/fit, $0.238 total; 46289581 unknown bid $0.416/h, $0.208/fit, $0.229 total; 50464317 unknown bid $0.416/h, $0.208/fit, $0.229 total; 52331007 unknown bid $0.417/h, $0.209/fit, $0.229 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 52414895 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 48851735 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 40411107 unknown bid 
+15:04:40 SweepError: vastai returned no JSON: 
+15:06:12 committed source db75ee2ed959; output results/speedup-lane-check-2026-09-30/run
+15:06:16 renting RTX 5090, host 564477, $0.346/h; estimate $0.204
+15:06:16 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 43626057 unknown bid $0.346/h, $0.173/fit, $0.204 total; 50771590 unknown bid $0.415/h, $0.208/fit, $0.209 total; 53483881 unknown bid $0.415/h, $0.208/fit, $0.228 total; 50464317 unknown bid $0.416/h, $0.208/fit, $0.229 total; 51000034 unknown bid $0.494/h, $0.247/fit, $0.257 total; 46691993 unknown bid $0.494/h, $0.247/fit, $0.268 total; 48851735 unknown bid $0.496/h, $0.248/fit, $0.269 total; 48851740 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 40411107 unknown bid $0.549/h, $0.275/fit, $0.296 total; 50268077 unknown bid $0.549/h, $0.275/fit, $0.296 total; 41260287 unknown on-dema
+15:06:17 SweepError: vastai returned no JSON: 
+15:06:22 renting RTX 5090, host 166545, $0.334/h; estimate $0.188
+15:06:22 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 46699713 unknown bid $0.334/h, $0.167/fit, $0.188 total; 48425188 unknown bid $0.392/h, $0.196/fit, $0.238 total; 52331007 unknown bid $0.417/h, $0.209/fit, $0.229 total; 49472718 unknown bid $0.535/h, $0.267/fit, $0.288 total; 28539924 unknown bid $0.540/h, $0.270/fit, $0.270 total; 50268077 unknown bid $0.549/h, $0.275/fit, $0.296 total; 46037258 unknown on-demand $0.554/h, $0.277/fit, $0.278 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 52943981 unknown bid $0.576/h, $0.288/fit, $0.309 total; 28539924 unknown on-demand $0.611/h, $0.306/fit, $0.306 total; 52331007 unknown o
+15:06:25 instance 53543426: (None, None)
+15:06:43 instance 53543426: ('loading', None)
+15:07:01 instance 53543426: ('loading', 'f57cecf87087: Verifying Checksum\nf57cecf87087: Download complete\n')
+15:07:37 instance 53543426: ('loading', '246ac8b7cadc: Verifying Checksum\n246ac8b7cadc: Download complete\n')
+15:08:07 instance 53543426: ('loading', '9d9229de0a23: Verifying Checksum\n9d9229de0a23: Download complete\n')
+15:10:01 instance 53543426: ('loading', '53b6cc1cd384: Verifying Checksum\n53b6cc1cd384: Download complete\n')
+15:11:32 instance 53543426: ('loading', '55557fec2dac: Verifying Checksum\n55557fec2dac: Download complete\n')
+15:14:16 instance 53543426: ('loading', '77be074b1ca8: Verifying Checksum\n77be074b1ca8: Download complete\n')
+15:15:18 instance 53543426: ('loading', 'b2449364bbe7: Retrying in 4 seconds\n')
+15:15:24 instance 53543426: ('loading', 'b2449364bbe7: Retrying in 1 second\n')
+15:19:30 waiting: remaining estimate $0.188; replacement $0.227
+15:19:42 waiting: remaining estimate $0.188; replacement $0.165
+15:19:52 waiting: remaining estimate $0.188; replacement $0.165
+15:20:04 waiting: remaining estimate $0.188; replacement $0.165
+15:20:04 SweepError: replacement is consistently cheaper
+15:20:06 destroyed instance 53543426
+15:20:11 renting RTX 5090, host 662751, $0.598/h; estimate $0.330
+15:20:11 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 49005869 good on-demand $0.598/h, $0.299/fit, $0.330 total; 48854219 unknown bid $0.288/h, $0.144/fit, $0.165 total; 48425188 unknown bid $0.392/h, $0.196/fit, $0.238 total; 50464317 unknown bid $0.416/h, $0.208/fit, $0.229 total; 52331007 unknown bid $0.416/h, $0.208/fit, $0.229 total; 46691993 unknown on-demand $0.516/h, $0.258/fit, $0.279 total; 48854219 unknown on-demand $0.537/h, $0.269/fit, $0.289 total; 45070587 unknown bid $0.546/h, $0.273/fit, $0.294 total; 40411107 unknown bid $0.549/h, $0.275/fit, $0.296 total; 48225469 unknown bid $0.549/h, $0.275/fit, $0.296 total; 51284767 unknow
+15:20:13 instance 53545256: (None, None)
+15:20:31 instance 53545256: ('loading', None)
+15:20:37 instance 53545256: ('loading', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+15:20:43 instance 53545256: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+15:20:49 uploading pinned source, inputs and cached grid
+15:24:31 bootstrap: running; dpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 1ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+15:24:44 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/f6af03d813569f5982891d969f030d9345278a60de907b90b2a910d56af32a16.h5
+Ceridwen GPU environment ready.
+15:25:24 lane-check: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+15:25:37 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:25:51 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:26:06 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:26:19 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:26:33 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:26:46 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:26:59 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:27:13 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:27:26 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:27:39 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:27:52 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:28:06 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:28:19 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:28:32 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:28:45 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:28:58 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:29:11 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:29:24 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:29:38 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:29:51 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:30:04 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:30:16 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:30:30 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:30:43 lane-check: running; file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+[ceridwen] fetching grid 'amist_c3k_hr_krou_afe' (~612 MB) -> /workspace/cosmic-chronometers-jwst/grid/amist_c3k_hr_krou_afe.h5
+15:30:55 lane-check: running; 0411696899682, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 1, "bitwise_equal": true, "carry_step_s": 0.9153647320345044, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 2, "bitwise_equal": true, "carry_step_s": 0.9224221049807966, "dead_max_abs_diff_from_first_run": 0.0}
+15:31:08 lane-check: running; 09769034386, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 11, "bitwise_equal": true, "carry_step_s": 0.9200078486464918, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 12, "bitwise_equal": true, "carry_step_s": 0.9603790431283414, "dead_max_abs_diff_from_first_run": 0.0}
+15:31:21 lane-check: running; 48782275617, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 20, "bitwise_equal": true, "carry_step_s": 0.9828682448714972, "dead_max_abs_diff_from_first_run": 0.0}
+ITER {"iteration": 21, "bitwise_equal": true, "carry_step_s": 1.0087889982387424, "dead_max_abs_diff_from_first_run": 0.0}
+15:31:35 lane-check: running; _run": 17.42530506328823}
+ITER {"iteration": 29, "bitwise_equal": true, "carry_step_s": 1.0073640602640808, "dead_max_abs_diff_from_first_run": 21.40533404461155}
+ITER {"iteration": 30, "bitwise_equal": true, "carry_step_s": 0.992799533996731, "dead_max_abs_diff_from_first_run": 23.188661144053214}
+15:31:48 lane-check: running; run": 25.182584963660986}
+ITER {"iteration": 38, "bitwise_equal": true, "carry_step_s": 0.9530157931149006, "dead_max_abs_diff_from_first_run": 17.3608056738166}
+ITER {"iteration": 39, "bitwise_equal": true, "carry_step_s": 0.9066608301363885, "dead_max_abs_diff_from_first_run": 19.290229013172763}
+15:32:01 lane-check: running; un": 22.995739512551012}
+ITER {"iteration": 48, "bitwise_equal": true, "carry_step_s": 0.8944376786239445, "dead_max_abs_diff_from_first_run": 21.501462089629996}
+ITER {"iteration": 49, "bitwise_equal": true, "carry_step_s": 0.8911683820188046, "dead_max_abs_diff_from_first_run": 23.02591293159128}
+15:32:14 lane-check: running; n": 27.190088486140667}
+ITER {"iteration": 58, "bitwise_equal": true, "carry_step_s": 0.9035234479233623, "dead_max_abs_diff_from_first_run": 21.306823449265465}
+ITER {"iteration": 59, "bitwise_equal": true, "carry_step_s": 0.9050123589113355, "dead_max_abs_diff_from_first_run": 27.120175739762345}
+15:32:27 lane-check: running; run": 24.94738035658807}
+ITER {"iteration": 69, "bitwise_equal": true, "carry_step_s": 0.9027331350371242, "dead_max_abs_diff_from_first_run": 25.09293346702691}
+ITER {"iteration": 70, "bitwise_equal": true, "carry_step_s": 0.9168229689821601, "dead_max_abs_diff_from_first_run": 22.098593351687384}
+15:32:40 lane-check: running; run": 20.13379777641137}
+ITER {"iteration": 79, "bitwise_equal": true, "carry_step_s": 0.8918163399212062, "dead_max_abs_diff_from_first_run": 23.253588661762535}
+ITER {"iteration": 80, "bitwise_equal": true, "carry_step_s": 0.8960017431527376, "dead_max_abs_diff_from_first_run": 20.50353851287892}
+15:32:54 lane-check: running; _run": 20.41410686627495}
+ITER {"iteration": 90, "bitwise_equal": true, "carry_step_s": 0.8968257172964513, "dead_max_abs_diff_from_first_run": 23.33500872439018}
+ITER {"iteration": 91, "bitwise_equal": true, "carry_step_s": 0.9168344768695533, "dead_max_abs_diff_from_first_run": 26.64619840541235}
+15:33:08 lane-check: running; _from_carry": 10.261652398132753, "max_abs_diff_from_lanes": 10.06727129630616, "other_lanes_equal_to_carry": 99, "other_lanes_max_abs_diff_from_carry": 0.0}]}]}}
+ITER {"iteration": 95, "bitwise_equal": true, "carry_step_s": 0.9105930859223008, "dead_max_abs_diff_from_first_run": 20.28944919052654}
+15:33:21 lane-check: running; ": 26.263448824265794}
+ITER {"iteration": 105, "bitwise_equal": true, "carry_step_s": 0.8784422450698912, "dead_max_abs_diff_from_first_run": 23.127903746738866}
+ITER {"iteration": 106, "bitwise_equal": true, "carry_step_s": 0.8835185710340738, "dead_max_abs_diff_from_first_run": 34.86689115914962}
+15:33:34 lane-check: running; un": 19.301669356437003}
+ITER {"iteration": 113, "bitwise_equal": true, "carry_step_s": 0.9009539159014821, "dead_max_abs_diff_from_first_run": 25.515791838764784}
+ITER {"iteration": 114, "bitwise_equal": true, "carry_step_s": 0.876008584164083, "dead_max_abs_diff_from_first_run": 24.5483545720991}
+15:33:47 lane-check: running; ": 25.120739212852897}
+ITER {"iteration": 123, "bitwise_equal": true, "carry_step_s": 0.9185503302142024, "dead_max_abs_diff_from_first_run": 17.533670114009226}
+ITER {"iteration": 124, "bitwise_equal": true, "carry_step_s": 0.9320269017480314, "dead_max_abs_diff_from_first_run": 18.42306559056661}
+15:33:59 lane-check: running; ": 20.254274361982198}
+ITER {"iteration": 132, "bitwise_equal": true, "carry_step_s": 0.9610352362506092, "dead_max_abs_diff_from_first_run": 24.329325145829443}
+ITER {"iteration": 133, "bitwise_equal": true, "carry_step_s": 0.9166101110167801, "dead_max_abs_diff_from_first_run": 21.74782858780415}
+15:34:12 lane-check: running; un": 20.48267000629778}
+ITER {"iteration": 142, "bitwise_equal": true, "carry_step_s": 0.9537043659947813, "dead_max_abs_diff_from_first_run": 23.31660649317368}
+ITER {"iteration": 143, "bitwise_equal": true, "carry_step_s": 0.898067323025316, "dead_max_abs_diff_from_first_run": 15.288465635901616}
+15:34:25 lane-check: running; : 19.238252173123726}
+ITER {"iteration": 152, "bitwise_equal": true, "carry_step_s": 0.9116217959672213, "dead_max_abs_diff_from_first_run": 18.362893281647473}
+ITER {"iteration": 153, "bitwise_equal": true, "carry_step_s": 0.9287806879729033, "dead_max_abs_diff_from_first_run": 20.929909042266956}
+15:34:38 lane-check: running; run": 23.23889782085317}
+ITER {"iteration": 162, "bitwise_equal": true, "carry_step_s": 0.9158134181052446, "dead_max_abs_diff_from_first_run": 23.3938376883564}
+ITER {"iteration": 163, "bitwise_equal": true, "carry_step_s": 0.9237510710954666, "dead_max_abs_diff_from_first_run": 21.95963861525948}
+15:34:51 lane-check: running; ": 17.403201667242115}
+ITER {"iteration": 172, "bitwise_equal": true, "carry_step_s": 0.9073885390534997, "dead_max_abs_diff_from_first_run": 18.335328571582778}
+ITER {"iteration": 173, "bitwise_equal": true, "carry_step_s": 0.9150203210301697, "dead_max_abs_diff_from_first_run": 20.83434797585531}
+15:35:04 lane-check: running; un": 13.9148677326192}
+ITER {"iteration": 179, "bitwise_equal": true, "carry_step_s": 0.8849948379211128, "dead_max_abs_diff_from_first_run": 14.263638736703939}
+ITER {"iteration": 180, "bitwise_equal": true, "carry_step_s": 0.9016793263144791, "dead_max_abs_diff_from_first_run": 16.06250117844951}
+15:35:17 lane-check: running; : 12.967806805530358}
+ITER {"iteration": 187, "bitwise_equal": true, "carry_step_s": 0.9393927133642137, "dead_max_abs_diff_from_first_run": 15.909976726267644}
+ITER {"iteration": 188, "bitwise_equal": true, "carry_step_s": 0.9229233809746802, "dead_max_abs_diff_from_first_run": 16.721152234410965}
+15:35:30 lane-check: running; n": 13.23236694627883}
+ITER {"iteration": 197, "bitwise_equal": true, "carry_step_s": 0.9179752413183451, "dead_max_abs_diff_from_first_run": 13.04106041512614}
+ITER {"iteration": 198, "bitwise_equal": true, "carry_step_s": 0.9262547302059829, "dead_max_abs_diff_from_first_run": 18.591759284292095}
+15:35:43 lane-check: running; n": 10.422696378650585}
+ITER {"iteration": 205, "bitwise_equal": true, "carry_step_s": 0.9123608046211302, "dead_max_abs_diff_from_first_run": 14.9596049940983}
+ITER {"iteration": 206, "bitwise_equal": true, "carry_step_s": 0.8894823100417852, "dead_max_abs_diff_from_first_run": 15.326270192790759}
+15:35:56 lane-check: running; : 12.490407417430731}
+ITER {"iteration": 215, "bitwise_equal": true, "carry_step_s": 0.9069999298080802, "dead_max_abs_diff_from_first_run": 12.608374356360969}
+ITER {"iteration": 216, "bitwise_equal": true, "carry_step_s": 0.9093334139324725, "dead_max_abs_diff_from_first_run": 10.925536849482455}
+15:36:09 lane-check: running; ": 10.35424980952422}
+ITER {"iteration": 224, "bitwise_equal": true, "carry_step_s": 0.9277766677550972, "dead_max_abs_diff_from_first_run": 10.860939849541069}
+ITER {"iteration": 225, "bitwise_equal": true, "carry_step_s": 0.9334650640375912, "dead_max_abs_diff_from_first_run": 11.102440986483202}
+15:36:22 lane-check: running; un": 11.07435374459402}
+ITER {"iteration": 232, "bitwise_equal": true, "carry_step_s": 0.8984035518951714, "dead_max_abs_diff_from_first_run": 9.800876316958352}
+ITER {"iteration": 233, "bitwise_equal": true, "carry_step_s": 0.9451418169774115, "dead_max_abs_diff_from_first_run": 9.583693225315358}
+15:36:36 lane-check: running; un": 9.37244907719969}
+ITER {"iteration": 240, "bitwise_equal": true, "carry_step_s": 0.9186538611538708, "dead_max_abs_diff_from_first_run": 8.693580137435731}
+ITER {"iteration": 241, "bitwise_equal": true, "carry_step_s": 0.9256432396359742, "dead_max_abs_diff_from_first_run": 11.529096920364964}
+15:36:49 lane-check: running; t_run": 9.97782834531796}
+ITER {"iteration": 248, "bitwise_equal": true, "carry_step_s": 0.9269026163965464, "dead_max_abs_diff_from_first_run": 9.05347688448478}
+ITER {"iteration": 249, "bitwise_equal": true, "carry_step_s": 0.9126045727171004, "dead_max_abs_diff_from_first_run": 9.06066168581134}
+15:37:02 lane-check: running; run": 8.742676355832657}
+ITER {"iteration": 258, "bitwise_equal": true, "carry_step_s": 0.9492703261785209, "dead_max_abs_diff_from_first_run": 6.62490339144602}
+ITER {"iteration": 259, "bitwise_equal": true, "carry_step_s": 0.9515062901191413, "dead_max_abs_diff_from_first_run": 9.490190410257128}
+15:37:15 lane-check: running; _from_carry": 2.337756698841696, "max_abs_diff_from_lanes": 2.336068968439409, "other_lanes_equal_to_carry": 99, "other_lanes_max_abs_diff_from_carry": 0.0}]}]}}
+ITER {"iteration": 265, "bitwise_equal": true, "carry_step_s": 0.9263602700084448, "dead_max_abs_diff_from_first_run": 5.738548023212047}
+15:37:28 lane-check: 0; w_ceridwen/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "x64": true, "iterations": 266, "iterations_bitwise_equal": 256, "iterations_that_differ": [94, 108, 174, 181, 207, 234, 236, 244, 263, 264], "log_evidence": 231475.8486477981, "n_dead": 27100, "script_wall_s": 714.448363408912}
+15:37:47 destroyed instance 53545256
