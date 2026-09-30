@@ -22,8 +22,9 @@ REMOTE_ROOT = "/workspace/cosmic-chronometers-jwst"
 
 # Dependency-only image; runtime source remains pinned separately. It is image e1c8846c with
 # its venv layer split into 11 (the same files; hosts download the parts in parallel) plus the
-# packages Vast's SSH launch installs (scripts/containers/vast-ssh.Dockerfile).
-DEFAULT_IMAGE = "ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1"
+# packages Vast's SSH launch installs (scripts/containers/vast-ssh.Dockerfile), less the NCCL and
+# NVSHMEM layers (631 MB; one-GPU fits never call them; scripts/containers/drop_image_layers.py).
+DEFAULT_IMAGE = "ghcr.io/potatoist314/ceridwen-gpu@sha256:dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3"
 LEGACY_IMAGE = "vastai/base-image:cuda-12.6.3-auto"
 DEFAULT_DISK_GB = 40
 DESTROY_ATTEMPTS = 3
