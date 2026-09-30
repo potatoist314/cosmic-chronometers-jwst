@@ -22107,7 +22107,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M5_241189 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_241189 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22117,7 +22117,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M5_241189 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_241189 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22127,7 +22127,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M5_241189 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M5_241189 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22137,7 +22137,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M5_241189 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M5_241189 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22147,7 +22147,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M5_241189 · baseline. Saved SFH and posterior interval."
+    "caption": "M5_241189 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22157,7 +22157,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M5_241189 · revised settings. Saved SFH and posterior interval."
+    "caption": "M5_241189 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22167,7 +22167,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M5_241189 · baseline. Physical-parameter posterior."
+    "caption": "M5_241189 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22177,7 +22177,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M5_241189 · baseline. Age and formed-mass fractions."
+    "caption": "M5_241189 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22187,7 +22187,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_241189 · revised settings. Physical-parameter posterior."
+    "caption": "M5_241189 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/241189-M5_241189/M5_241189_executed.ipynb",
@@ -22197,7 +22197,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M5_241189",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M5_241189 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M5_241189 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22207,7 +22207,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_166634 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_166634 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22217,7 +22217,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_166634 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_166634 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22227,7 +22227,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_166634 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_166634 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22237,7 +22237,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_166634 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_166634 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22247,7 +22247,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M6_166634 · baseline. Saved SFH and posterior interval."
+    "caption": "M6_166634 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22257,7 +22257,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M6_166634 · revised settings. Saved SFH and posterior interval."
+    "caption": "M6_166634 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22267,7 +22267,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_166634 · baseline. Physical-parameter posterior."
+    "caption": "M6_166634 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22277,7 +22277,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_166634 · baseline. Age and formed-mass fractions."
+    "caption": "M6_166634 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22287,7 +22287,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_166634 · revised settings. Physical-parameter posterior."
+    "caption": "M6_166634 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/166634-M6_166634/M6_166634_executed.ipynb",
@@ -22297,7 +22297,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_166634",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_166634 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M6_166634 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22307,7 +22307,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_233902 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_233902 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22317,7 +22317,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_233902 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_233902 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22327,7 +22327,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_233902 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_233902 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22337,7 +22337,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_233902 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_233902 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22347,7 +22347,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M6_233902 · baseline. Saved SFH and posterior interval."
+    "caption": "M6_233902 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22357,7 +22357,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M6_233902 · revised settings. Saved SFH and posterior interval."
+    "caption": "M6_233902 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22367,7 +22367,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_233902 · baseline. Physical-parameter posterior."
+    "caption": "M6_233902 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22377,7 +22377,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_233902 · baseline. Age and formed-mass fractions."
+    "caption": "M6_233902 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22387,7 +22387,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_233902 · revised settings. Physical-parameter posterior."
+    "caption": "M6_233902 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/233902-M6_233902/M6_233902_executed.ipynb",
@@ -22397,7 +22397,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_233902",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_233902 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M6_233902 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22407,7 +22407,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_237437 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_237437 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22417,7 +22417,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_237437 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_237437 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22427,7 +22427,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_237437 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_237437 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22437,7 +22437,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_237437 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_237437 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22447,7 +22447,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M6_237437 · baseline. Saved SFH and posterior interval."
+    "caption": "M6_237437 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22457,7 +22457,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M6_237437 · revised settings. Saved SFH and posterior interval."
+    "caption": "M6_237437 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22467,7 +22467,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_237437 · baseline. Physical-parameter posterior."
+    "caption": "M6_237437 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22477,7 +22477,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_237437 · baseline. Age and formed-mass fractions."
+    "caption": "M6_237437 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22487,7 +22487,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_237437 · revised settings. Physical-parameter posterior."
+    "caption": "M6_237437 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237437-M6_237437/M6_237437_executed.ipynb",
@@ -22497,7 +22497,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237437",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_237437 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M6_237437 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22507,7 +22507,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_237641 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_237641 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22517,7 +22517,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_237641 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_237641 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22527,7 +22527,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_237641 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_237641 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22537,7 +22537,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_237641 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_237641 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22547,7 +22547,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M6_237641 · baseline. Saved SFH and posterior interval."
+    "caption": "M6_237641 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22557,7 +22557,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M6_237641 · revised settings. Saved SFH and posterior interval."
+    "caption": "M6_237641 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22567,7 +22567,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_237641 · baseline. Physical-parameter posterior."
+    "caption": "M6_237641 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22577,7 +22577,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_237641 · baseline. Age and formed-mass fractions."
+    "caption": "M6_237641 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22587,7 +22587,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_237641 · revised settings. Physical-parameter posterior."
+    "caption": "M6_237641 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/237641-M6_237641/M6_237641_executed.ipynb",
@@ -22597,7 +22597,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_237641",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_237641 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M6_237641 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22607,7 +22607,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_240899 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_240899 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22617,7 +22617,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M6_240899 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_240899 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22627,7 +22627,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_240899 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M6_240899 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22637,7 +22637,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M6_240899 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M6_240899 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22647,7 +22647,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M6_240899 · baseline. Saved SFH and posterior interval."
+    "caption": "M6_240899 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22657,7 +22657,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M6_240899 · revised settings. Saved SFH and posterior interval."
+    "caption": "M6_240899 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22667,7 +22667,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_240899 · baseline. Physical-parameter posterior."
+    "caption": "M6_240899 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22677,7 +22677,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M6_240899 · baseline. Age and formed-mass fractions."
+    "caption": "M6_240899 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22687,7 +22687,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_240899 · revised settings. Physical-parameter posterior."
+    "caption": "M6_240899 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/240899-M6_240899/M6_240899_executed.ipynb",
@@ -22697,7 +22697,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M6_240899",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M6_240899 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M6_240899 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22707,7 +22707,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_113852 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_113852 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22717,7 +22717,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_113852 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_113852 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22727,7 +22727,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_113852 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_113852 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22737,7 +22737,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_113852 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_113852 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22747,7 +22747,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_113852 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_113852 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22757,7 +22757,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_113852 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_113852 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22767,7 +22767,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_113852 · baseline. Physical-parameter posterior."
+    "caption": "M7_113852 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22777,7 +22777,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_113852 · baseline. Age and formed-mass fractions."
+    "caption": "M7_113852 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22787,7 +22787,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_113852 · revised settings. Physical-parameter posterior."
+    "caption": "M7_113852 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/113852-M7_113852/M7_113852_executed.ipynb",
@@ -22797,7 +22797,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_113852",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_113852 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_113852 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22807,7 +22807,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_120372 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_120372 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22817,7 +22817,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_120372 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_120372 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22827,7 +22827,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_120372 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_120372 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22837,7 +22837,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_120372 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_120372 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22847,7 +22847,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_120372 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_120372 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22857,7 +22857,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_120372 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_120372 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22867,7 +22867,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_120372 · baseline. Physical-parameter posterior."
+    "caption": "M7_120372 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22877,7 +22877,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_120372 · baseline. Age and formed-mass fractions."
+    "caption": "M7_120372 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22887,7 +22887,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_120372 · revised settings. Physical-parameter posterior."
+    "caption": "M7_120372 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120372-M7_120372/M7_120372_executed.ipynb",
@@ -22897,7 +22897,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120372",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_120372 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_120372 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22907,7 +22907,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_120488 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_120488 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22917,7 +22917,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_120488 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_120488 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22927,7 +22927,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_120488 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_120488 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22937,7 +22937,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_120488 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_120488 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22947,7 +22947,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_120488 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_120488 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22957,7 +22957,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_120488 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_120488 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22967,7 +22967,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_120488 · baseline. Physical-parameter posterior."
+    "caption": "M7_120488 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22977,7 +22977,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_120488 · baseline. Age and formed-mass fractions."
+    "caption": "M7_120488 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22987,7 +22987,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_120488 · revised settings. Physical-parameter posterior."
+    "caption": "M7_120488 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120488-M7_120488/M7_120488_executed.ipynb",
@@ -22997,7 +22997,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120488",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_120488 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_120488 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23007,7 +23007,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_120758 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_120758 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23017,7 +23017,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_120758 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_120758 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23027,7 +23027,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_120758 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_120758 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23037,7 +23037,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_120758 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_120758 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23047,7 +23047,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_120758 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_120758 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23057,7 +23057,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_120758 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_120758 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23067,7 +23067,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_120758 · baseline. Physical-parameter posterior."
+    "caption": "M7_120758 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23077,7 +23077,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_120758 · baseline. Age and formed-mass fractions."
+    "caption": "M7_120758 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23087,7 +23087,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_120758 · revised settings. Physical-parameter posterior."
+    "caption": "M7_120758 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/120758-M7_120758/M7_120758_executed.ipynb",
@@ -23097,7 +23097,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_120758",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_120758 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_120758 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23107,7 +23107,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_121482 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_121482 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23117,7 +23117,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_121482 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_121482 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23127,7 +23127,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_121482 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_121482 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23137,7 +23137,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_121482 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_121482 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23147,7 +23147,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_121482 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_121482 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23157,7 +23157,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_121482 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_121482 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23167,7 +23167,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_121482 · baseline. Physical-parameter posterior."
+    "caption": "M7_121482 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23177,7 +23177,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_121482 · baseline. Age and formed-mass fractions."
+    "caption": "M7_121482 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23187,7 +23187,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_121482 · revised settings. Physical-parameter posterior."
+    "caption": "M7_121482 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/121482-M7_121482/M7_121482_executed.ipynb",
@@ -23197,7 +23197,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_121482",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_121482 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_121482 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23207,7 +23207,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_122025 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_122025 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23217,7 +23217,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_122025 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_122025 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23227,7 +23227,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_122025 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_122025 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23237,7 +23237,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_122025 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_122025 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23247,7 +23247,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_122025 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_122025 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23257,7 +23257,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_122025 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_122025 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23267,7 +23267,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_122025 · baseline. Physical-parameter posterior."
+    "caption": "M7_122025 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23277,7 +23277,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_122025 · baseline. Age and formed-mass fractions."
+    "caption": "M7_122025 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23287,7 +23287,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_122025 · revised settings. Physical-parameter posterior."
+    "caption": "M7_122025 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122025-M7_122025/M7_122025_executed.ipynb",
@@ -23297,7 +23297,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122025",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_122025 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_122025 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23307,7 +23307,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_122242 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_122242 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23317,7 +23317,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_122242 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_122242 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23327,7 +23327,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_122242 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_122242 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23337,7 +23337,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_122242 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_122242 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23347,7 +23347,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_122242 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_122242 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23357,7 +23357,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_122242 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_122242 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23367,7 +23367,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_122242 · baseline. Physical-parameter posterior."
+    "caption": "M7_122242 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23377,7 +23377,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_122242 · baseline. Age and formed-mass fractions."
+    "caption": "M7_122242 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23387,7 +23387,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_122242 · revised settings. Physical-parameter posterior."
+    "caption": "M7_122242 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/122242-M7_122242/M7_122242_executed.ipynb",
@@ -23397,7 +23397,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_122242",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_122242 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_122242 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23407,7 +23407,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_124875 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_124875 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23417,7 +23417,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_124875 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_124875 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23427,7 +23427,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_124875 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_124875 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23437,7 +23437,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_124875 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_124875 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23447,7 +23447,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_124875 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_124875 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23457,7 +23457,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_124875 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_124875 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23467,7 +23467,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_124875 · baseline. Physical-parameter posterior."
+    "caption": "M7_124875 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23477,7 +23477,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_124875 · baseline. Age and formed-mass fractions."
+    "caption": "M7_124875 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23487,7 +23487,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_124875 · revised settings. Physical-parameter posterior."
+    "caption": "M7_124875 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/124875-M7_124875/M7_124875_executed.ipynb",
@@ -23497,7 +23497,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_124875",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_124875 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_124875 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23507,7 +23507,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_143127 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_143127 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23517,7 +23517,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_143127 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_143127 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23527,7 +23527,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_143127 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_143127 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23537,7 +23537,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_143127 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_143127 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23547,7 +23547,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_143127 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_143127 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23557,7 +23557,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_143127 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_143127 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23567,7 +23567,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_143127 · baseline. Physical-parameter posterior."
+    "caption": "M7_143127 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23577,7 +23577,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_143127 · baseline. Age and formed-mass fractions."
+    "caption": "M7_143127 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23587,7 +23587,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_143127 · revised settings. Physical-parameter posterior."
+    "caption": "M7_143127 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/143127-M7_143127/M7_143127_executed.ipynb",
@@ -23597,7 +23597,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_143127",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_143127 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_143127 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23607,7 +23607,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_146213 · baseline. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_146213 · Spectrum · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23617,7 +23617,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "baseline",
     "view": "Fits",
-    "caption": "M7_146213 · baseline. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_146213 · Photometry · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23627,7 +23627,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_146213 · revised settings. Spectrum and residuals on the saved wavelength grid."
+    "caption": "M7_146213 · Spectrum · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23637,7 +23637,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "revised",
     "view": "Fits",
-    "caption": "M7_146213 · revised settings. Photometry and residuals; bands and uncertainty model are those of this run."
+    "caption": "M7_146213 · Photometry · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23647,7 +23647,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "baseline",
     "view": "SFH",
-    "caption": "M7_146213 · baseline. Saved SFH and posterior interval."
+    "caption": "M7_146213 · SFH · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23657,7 +23657,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "revised",
     "view": "SFH",
-    "caption": "M7_146213 · revised settings. Saved SFH and posterior interval."
+    "caption": "M7_146213 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23667,7 +23667,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_146213 · baseline. Physical-parameter posterior."
+    "caption": "M7_146213 · Posteriors · baseline, reference."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23677,7 +23677,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "baseline",
     "view": "Posteriors",
-    "caption": "M7_146213 · baseline. Age and formed-mass fractions."
+    "caption": "M7_146213 · Ages · baseline, reference."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23687,7 +23687,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_146213 · revised settings. Physical-parameter posterior."
+    "caption": "M7_146213 · Posteriors · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "results/dr2-quiescent-new-defaults/146213-M7_146213/M7_146213_executed.ipynb",
@@ -23697,7 +23697,7 @@ The revised 187-target run uses order-3 calibration, cosmos_total photometry, a 
     "target": "M7_146213",
     "arm": "revised",
     "view": "Posteriors",
-    "caption": "M7_146213 · revised settings. Dust and SFH-ratio posterior."
+    "caption": "M7_146213 · SFH · revised: order-3 calibration, total photometry, dust index free U(-1, 0.4), SFH StudentT(0, 0.3, 2); otherwise as baseline."
   },
   {
     "notebook": "archive/results/dr2-quiescent-no-polynomial/147270-M7_147270/M7_147270_executed.ipynb",
