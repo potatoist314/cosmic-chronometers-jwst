@@ -235,28 +235,28 @@ The unconstrained transformation prevents hard uniform boundaries from becoming 
 
 The defaults use 500 live points and five inner steps for each dimension. Each iteration deletes one-fifth of the live points. The default `logZ_tol` is `-5` (`sampler/nested.py:144-172` and `350-359`).
 
-`BlackJAXNestedSamplerAdapter` defaults to `slice_kernel='carry'`. It builds the BlackJAX NSS kernel with `stepping_out_carry` replacing `blackjax.mcmc.slice.stepping_out`. Each new edge is tested once inside the loop body, which carries the boolean result. This avoids duplicate batched likelihood evaluations under `vmap`. Samples, evidence and logical call counts remain bitwise equal. `'stock'` selects unchanged `blackjax.nss`.
+`BlackJAXNestedSamplerAdapter` defaults to `slice_kernel='lanes'`. `lane_update` runs each replaced particle’s full slice chain in one `lax.while_loop`, evaluating one left edge, right edge or shrink proposal per iteration. Under `vmap`, iterations equal the largest per-particle evaluation total, not the sum of per-step maxima (Dance et al., 2025, arXiv:2503.17405).
 
-`ceridwen/ceridwen/sampler/nested.py:107-120 · stepping_out_carry`
+CPU samples, evidence and call counts are bitwise equal to `blackjax.nss`. On RTX 5090, lanes and carry differ only through float32 rounding in the photometry product `_T @ spectrum`. M1_210210 sampling: carry 253.2 s; lanes 108.7 s. `'carry'` retains the BlackJAX kernel with `stepping_out_carry` (each new edge tested once); `'stock'` selects unchanged `blackjax.nss`.
+
+`ceridwen/ceridwen/sampler/nested.py:209-220 · lane_update`
 
 ```python
-    def cond(carry):
-        _, n, inside = carry
-        return inside & (n > 0)
+                in_left, in_right = s["phase"] == _LEFT, s["phase"] == _RIGHT
+                in_shrink = s["phase"] == _SHRINK
 
-    def step(sign):
-        def body(carry):
-            edge, n, _ = carry
-            edge = edge + sign * width
-            return edge, n - 1, in_slice(edge)
-        return body
-
-    left, jl, _ = jax.lax.while_loop(cond, step(-1), (left, j, in_slice(left)))
-    right, kr, _ = jax.lax.while_loop(cond, step(+1), (right, k, in_slice(right)))
-    return left, right, (j - jl) + (k - kr), lambda t: jnp.asarray(True)
+                # One candidate per iteration: an edge, or a shrink proposal.
+                key, subkey = jax.random.split(s["key"])
+                t = s["left"] + jax.random.uniform(subkey) * (s["right"] - s["left"])
+                t = jnp.where(in_left, s["left"], jnp.where(in_right, s["right"], t))
+                direction = unravel(directions[i])
+                x = jax.tree.map(lambda p, d: p + t * d, state.position, direction)
+                candidate = init_state_fn(x, loglikelihood_birth=loglikelihood_0)
+                inside = ((candidate.logdensity >= s["level"])
+                          & (candidate.loglikelihood > loglikelihood_0))
 ```
 
-`ceridwen/ceridwen/sampler/nested.py:514-524 · _logical_likelihood_calls`
+`ceridwen/ceridwen/sampler/nested.py:673-683 · _logical_likelihood_calls`
 
 ```python
     @staticmethod

@@ -1426,3 +1426,9 @@
 
 - `ssp_grid=~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5`; `emission_line_marginalisation=True`; `emission_lines=[3934.77,3966.6,3973.3,4227.92]`; \(z=z_{\mathrm{cat}}\). `diffuse_Ebump` prior remains \(\mathrm{Uniform}(0,6)\). Liu Hao, 30 Sep 2026: 'this seems like a good default'; record: `research/experiments/e-mask-all-ca.md`.
 - Files: `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, `tests/test_emission_line_marginalisation.py`, `wiki/fit_settings.py`, `wiki/tests/test_fit_settings.py`, `wiki/notes/model.md`.
+
+### 2026-09-30 — Lane kernel is the default slice kernel
+
+- Ceridwen `8161d3d` merges `lane-kernel` (`16c7a90`); `BlackJAXNestedSamplerAdapter` defaults to `slice_kernel='lanes'`. `'carry'` and `'stock'` remain options. Liu Hao, 30 Sep 2026: “okay yeah turn this on as default.”
+- Evidence: `results/speedup-lane-cause-2026-09-30` traces GPU differences to float32 rounding in `ceridwen/observation/photometry.py:277`; `results/speedup-free-2026-09-30` records RTX 5090, M1_210210 sampling: 253.2 s carry, 108.7 s lanes.
+- Files: `ceridwen` (submodule pin), `wiki/notes/ceridwen-likelihood-sampling.md`.
