@@ -42,3 +42,22 @@ Rules are in `AGENTS.md`, `~/.claude/CLAUDE.md`, `wiki/AGENTS.md` and
    a paragraph of more than 60 words. Make the text shorter. Do not bypass the check.
 5. **Finish.** Commit only your paths. The pre-commit hook `scripts/wiki_prose_check.py` sends new wiki prose to Jev for a quick check of conciseness, plain English and natural phrasing. On a fail, revise the flagged passages and commit again. Only Liu Hao uses `SKIP_PROSE_CHECK=1`. Push to `absorption-mask`. The launchd agent
    `com.liuhao.astro-wiki-publish` publishes the change to `https://wiki.eclw.org/`.
+
+## Captions
+
+Written from the caption rework of 2026-09-30 in `wiki/research/experiments/e-dust-bump.md`.
+His words (2026-09-30): "rework the plot captions for the wiki and such. i know that this a
+joint posterior median and band and there is a noise floor. i am more interested in what
+exactly was changed for each individual plot. change the wiki skill appropraitely"
+
+- State what differs in that plot's fit from its reference arm: the settings, priors,
+  masks or grid, with values. Name the reference arm.
+- Take the differences from the run's `experiment.json` or manifest. Do not write them
+  from memory.
+- Do not repeat what every fit figure shows: posterior median, 16–84% band, noise floor,
+  fitted pixels, pull panel.
+- Keep the caption short.
+
+Before: "M1_210210 · zevo. Spectrum over fitted pixels; joint posterior median and
+16–84% band; lower-panel pull at fitted noise floor."
+After: "M1_210210 · Spectrum · zevo: metallicity evolution on; otherwise as wide."
