@@ -63,7 +63,7 @@ def cloud(run, monkeypatch):
     monkeypatch.setattr(bench.vast, '_destroy', destroy)
     monkeypatch.setattr(bench.vast, '_rsync_background', lambda *a: state['sent'].append(a) or SimpleNamespace(
         communicate=lambda timeout: ('', ''), poll=lambda: 0, returncode=0))
-    monkeypatch.setattr(run, 'upload', lambda a: None)
+    monkeypatch.setattr(run, 'upload', lambda a, bootstrap=None: None)
     return offer, state
 
 
@@ -101,7 +101,7 @@ def test_budget_stops_before_renting(run, cloud):
 
 def test_cap_reached_during_stage_destroys_instance(run, cloud, monkeypatch):
     _, state = cloud
-    def uploaded(attempt):
+    def uploaded(attempt, bootstrap=None):
         run.args.spend_cap = .001
     monkeypatch.setattr(run, 'upload', uploaded)
     with pytest.raises(bench.vast.SweepError, match='budget'):
@@ -483,7 +483,35 @@ def test_grid_is_sent_during_source_upload_then_unpacked_and_checked(run, cloud,
     parts = ' '.join(f'{bench.REMOTE}/grid/123.zlib.{k}' for k in range(4))
     assert state['commands'][-1] == (
         f'python3 -c {bench.shlex.quote(bench.UNPACK)} {parts} {bench.REMOTE}/grid/grid.h5'
-        f" && printf %s '123  {bench.REMOTE}/grid/grid.h5' | sha256sum -c -")
+        f" && printf %s '123  {bench.REMOTE}/grid/grid.h5' | sha256sum -c - && touch {bench.GRID_CHECKED}")
+
+
+def test_bootstrap_starts_after_source_and_inputs_and_before_the_grid_arrives(run, cloud, monkeypatch):
+    _, state = cloud
+    events = []
+    monkeypatch.setattr(run, 'archive', lambda *a: events.append('archive'))
+    monkeypatch.setattr(bench.vast, '_ssh_target', lambda _: ('root@test', '22'))
+    monkeypatch.setattr(bench.vast, '_rsync', lambda *a, **kw: events.append('input'))
+    monkeypatch.setattr(bench.vast, '_ssh', lambda _, command, **kw: events.append(
+        'bootstrap' if 'BOOTSTRAP' in command else 'unpack' if 'sha256sum' in command else 'ssh'))
+    monkeypatch.setattr(bench.vast, '_rsync_background', lambda *a: SimpleNamespace(
+        communicate=lambda timeout: events.append('grid') or ('', ''), poll=lambda: 0, returncode=0))
+    bench.Run.upload(run, {'instance_id': 100, 'price': .2}, 'BOOTSTRAP')
+    start = events.index('bootstrap')
+    assert 'archive' in events[:start] and 'input' in events[:start]
+    assert set(events[start + 1:]) == {'grid', 'unpack'} and events[-1] == 'unpack'
+
+
+def test_prepare_starts_the_bootstrap_during_upload_then_polls_that_stage(run, monkeypatch):
+    calls = []
+    monkeypatch.setattr(run, 'wait_ready', lambda attempt: None)
+    monkeypatch.setattr(run, 'upload', lambda attempt, bootstrap=None: calls.append(('upload', bootstrap)))
+    monkeypatch.setattr(run, 'stage', lambda attempt, name, command: calls.append((name, command)))
+    run.prepare({'instance_id': 100, 'price': .2})
+    (_, early), (name, polled) = calls
+    environment = polled.removesuffix('bash scripts/bootstrap_vast_ai.sh')
+    assert name == 'bootstrap' and 'CERIDWEN_GRID_PATH=' in environment
+    assert early == environment + f'CERIDWEN_GRID_READY={bench.GRID_CHECKED} bash scripts/bootstrap_vast_ai.sh'
 
 
 def test_failed_source_upload_stops_the_grid_transfer(run, cloud, monkeypatch):

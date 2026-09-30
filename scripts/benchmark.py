@@ -52,6 +52,8 @@ open(sys.argv[-1], 'wb').write(data)
 INPUT_DIRS = ('legac_dr2', 'cosmos2015', 'cosmos2020', 'cosmos2025', 'hst_f814w')
 INPUT_FILES = ('external/fsps/data/emlines_info.dat',)
 REMOTE = vast.REMOTE_ROOT
+# Created once every uploaded grid passes its sha256 check; an early bootstrap waits for it.
+GRID_CHECKED = f'{REMOTE}/grid/.checked'
 # Stage-end detection lags by up to one interval on a billing instance, so poll
 # briskly; each poll is one cheap SSH round trip now that the target is cached.
 POLL_SECONDS = 5
@@ -322,7 +324,9 @@ class Run:
         return source.get('grids', [{'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
                                      'remote_name': Path(source['grid']).name}])
 
-    def upload(self, attempt):
+    def upload(self, attempt, bootstrap=None):
+        """Send source, inputs and grids; start the bootstrap command, if given, once the source
+        and inputs are on the box, so it runs while the grid is still on its way."""
         instance = attempt['instance_id']
         source = self.data['source']
         target, port = vast._ssh_target(instance)
@@ -349,6 +353,8 @@ class Run:
                     remote_parent = f'{REMOTE}/{Path(name).parent}'
                     vast._ssh(instance, f'mkdir -p {remote_parent}', timeout=self.timeout(attempt))
                     vast._rsync(port, str(ROOT / name), f'{target}:{remote_parent}/', timeout=self.timeout(attempt))
+            if bootstrap:
+                vast._ssh(instance, self.launch(attempt, 'bootstrap', bootstrap), timeout=self.timeout(attempt))
             errors = [process.communicate(timeout=self.timeout(attempt, 600))[1] for process in sending]
         finally:
             for process in sending:
@@ -361,22 +367,27 @@ class Run:
         unpack = [f"python3 -c {shlex.quote(UNPACK)} {' '.join(f'{REMOTE}/grid/{part.name}' for part in parts)} "
                   f"{REMOTE}/grid/{entry['remote_name']}" for entry, parts in grids]
         checks = '\n'.join(f"{entry['grid_sha256']}  {REMOTE}/grid/{entry['remote_name']}" for entry, _ in grids)
-        vast._ssh(instance, ' && '.join([*unpack, f'printf %s {shlex.quote(checks)} | sha256sum -c -']), timeout=self.timeout(attempt))
+        vast._ssh(instance, ' && '.join([*unpack, f'printf %s {shlex.quote(checks)} | sha256sum -c -', f'touch {GRID_CHECKED}']),
+                  timeout=self.timeout(attempt))
 
-    def stage(self, attempt, name, command):
-        """Detach once; stage locks and exit files survive SSH disconnects."""
+    def launch(self, attempt, name, command):
+        """Shell command that starts a stage once, detached; a started or finished stage is left alone."""
         directory = f'{REMOTE}/.benchmark/{attempt["instance_id"]}'
         prefix = f'{directory}/{name}'
         # flock prevents a reconnect from starting a second bootstrap or worker.
         inner = (f'exec 9>{prefix}.lock; flock -n 9 || exit 0; '
                  f'test ! -f {prefix}.exit || exit 0; exec > {prefix}.log 2>&1; '
                  f'( {command} ); rc=$?; echo "$rc" > {prefix}.exit; exit "$rc"')
-        launch = (f'mkdir -p {directory}; if test ! -f {prefix}.exit; then '
-                  f'setsid -f bash -c {shlex.quote(inner)} '
-                  f'> /dev/null 2>&1 < /dev/null; fi')
+        return (f'mkdir -p {directory}; if test ! -f {prefix}.exit; then '
+                f'setsid -f bash -c {shlex.quote(inner)} '
+                f'> /dev/null 2>&1 < /dev/null; fi')
+
+    def stage(self, attempt, name, command):
+        """Detach once; stage locks and exit files survive SSH disconnects."""
+        prefix = f'{REMOTE}/.benchmark/{attempt["instance_id"]}/{name}'
         # One SSH call per poll: the exit status with the complete log, or the log tail.
         # The first poll can run before the detached stage creates its log.
-        poll = (f'{launch}; if test -f {prefix}.exit; then cat {prefix}.exit {prefix}.log; '
+        poll = (f'{self.launch(attempt, name, command)}; if test -f {prefix}.exit; then cat {prefix}.exit {prefix}.log; '
                 f'else echo running; tail -c 300 {prefix}.log 2> /dev/null || true; fi')
         while True:
             self.budget(reserve=attempt['price'] / 120)
@@ -400,12 +411,15 @@ class Run:
 
     def prepare(self, attempt):
         self.wait_ready(attempt)
+        grid = self.data['source'].get('grids', [{'remote_name': Path(self.data['source']['grid']).name}])[0]['remote_name']
+        remote_grid = shlex.quote(REMOTE + '/grid/' + grid)
+        environment = f'cd {REMOTE} && export CERIDWEN_GRID_DIR={REMOTE}/grid CERIDWEN_GRID_PATH={remote_grid} && '
         if not attempt.get('uploaded'):
             log('uploading pinned source, inputs and cached grid')
             # Partial rsync and tar extraction are repeatable after a disconnect.
             for retry in range(2):
                 try:
-                    self.upload(attempt)
+                    self.upload(attempt, environment + f'CERIDWEN_GRID_READY={GRID_CHECKED} bash scripts/bootstrap_vast_ai.sh')
                     break
                 except vast.LocalSSHError:
                     raise
@@ -415,9 +429,7 @@ class Run:
                     self.wait_ready(attempt)
             attempt['uploaded'] = True
             self.save()
-        grid = self.data['source'].get('grids', [{'remote_name': Path(self.data['source']['grid']).name}])[0]['remote_name']
-        remote_grid = shlex.quote(REMOTE + '/grid/' + grid)
-        environment = f'cd {REMOTE} && export CERIDWEN_GRID_DIR={REMOTE}/grid CERIDWEN_GRID_PATH={remote_grid} && '
+        # Polls the bootstrap that the upload started, or starts it on a resumed run.
         self.stage(attempt, 'bootstrap', environment + 'bash scripts/bootstrap_vast_ai.sh')
         return environment
 

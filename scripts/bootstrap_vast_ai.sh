@@ -163,6 +163,12 @@ if (( missing != 0 )); then
     exit 1
 fi
 
+# The runner starts this script while the grid is still uploading and creates
+# CERIDWEN_GRID_READY once the grid passes its sha256 check.
+if [[ -n "${CERIDWEN_GRID_READY:-}" ]]; then
+    until [[ -e "${CERIDWEN_GRID_READY}" ]]; do sleep 1; done
+fi
+
 "${PYTHON_BIN}" - "${CATALOG_PATH}" "${PHOTOMETRY_PATH}" <<'PY'
 import sys
 

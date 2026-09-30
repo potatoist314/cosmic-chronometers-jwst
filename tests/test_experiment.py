@@ -217,7 +217,7 @@ def test_resume_keeps_lower_original_budget(run):
 
 
 def test_budget_failure_destroys_without_marking_cells_complete(run, cloud, monkeypatch):
-    monkeypatch.setattr(run, 'upload', lambda _: setattr(run.args, 'spend_cap', .001))
+    monkeypatch.setattr(run, 'upload', lambda _, bootstrap=None: setattr(run.args, 'spend_cap', .001))
     with pytest.raises(exp.vast.SweepError, match='budget'):
         run.execute()
     assert cloud[1]['destroyed'] == [100]
@@ -266,7 +266,7 @@ def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, tmp_path, m
     assert 'data/raw/hst_f814w/M1_210210.fits' in copies[0]
     assert grids == [('22', [str(tmp_path / f'123.zlib.{k}')], f'root@test:{exp.engine.REMOTE}/grid/') for k in range(4)]
     assert f'123.zlib.3 {exp.engine.REMOTE}/grid/123.h5 && ' in commands[-1]
-    assert commands[-1].endswith(f"printf %s '123  {exp.engine.REMOTE}/grid/123.h5' | sha256sum -c -")
+    assert commands[-1].endswith(f"printf %s '123  {exp.engine.REMOTE}/grid/123.h5' | sha256sum -c - && touch {exp.engine.GRID_CHECKED}")
     assert any('input-files.json' in cmd for cmd in commands)
 
 
