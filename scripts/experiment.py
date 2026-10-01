@@ -14,6 +14,8 @@ import signal
 import subprocess
 import sys
 import tempfile
+import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime
 from pathlib import Path
@@ -182,20 +184,49 @@ def validate_local_result(directory):
                    cwd=ROOT, check=True, capture_output=True, text=True, timeout=60)
 
 
+def rebuild_while_running(output, done, finished, stop, every=30):
+    """Rebuild the figures of fits retrieved so far, every ``every`` s until ``finished`` is set."""
+    while not finished.wait(every):
+        regenerate_figures(output, done, stop)
+
+
 def notebook_has_figures(path):
     document = json.loads(path.read_text())
     return any('image/png' in output.get('data', {})
                for cell in document.get('cells', []) for output in cell.get('outputs', []))
 
 
-def regenerate_figures(output):
+def rebuild_notebook(command, stop=None, timeout=3600):
+    """``subprocess.run(command, check=True)``; the child is killed after ``timeout`` s,
+    once ``stop`` is set, or when this call is interrupted."""
+    process = subprocess.Popen(command, cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+    deadline = time.monotonic() + timeout
+    try:
+        while True:
+            try:
+                _, stderr = process.communicate(timeout=1)
+                break
+            except subprocess.TimeoutExpired:
+                if (stop is not None and stop.is_set()) or time.monotonic() > deadline:
+                    raise subprocess.SubprocessError('stopped') from None
+    finally:
+        if process.poll() is None:
+            process.kill()
+            process.wait()
+    if process.returncode:
+        raise subprocess.CalledProcessError(process.returncode, command, stderr=stderr)
+
+
+def regenerate_figures(output, done=None, stop=None):
     """Rebuild figures locally for retrieved fits; best-effort, never fails the run.
 
     Fits run with CERIDWEN_PLOTS=0, so the retrieved notebook has no figures;
     re-executing it locally (CPU, unbilled) restores the standard figures for
     result pages. The GPU-computed derived outputs are kept byte-identical:
-    regeneration only adds the notebook figures.
+    regeneration only adds the notebook figures. Cells named in ``done`` are
+    skipped and each cell handled here is added to it; ``stop`` ends the pass.
     """
+    done = set() if done is None else done
     try:
         manifest = json.loads((output / 'manifest.json').read_text())
         grids = {entry['remote_name']: entry['grid'] for entry in manifest['source'].get('grids', [])}
@@ -205,6 +236,9 @@ def regenerate_figures(output):
         engine.log(f'skipping local figures: unreadable manifest: {error}')
         return
     for name in completed:
+        if name in done or (stop is not None and stop.is_set()):
+            continue
+        done.add(name)
         try:
             cell = cells[name]
             directory = (output / 'fits' / cell['arm']
@@ -226,14 +260,14 @@ def regenerate_figures(output):
         derived = directory / 'ceridwen_derived_outputs.h5'
         gpu_derived = derived.read_bytes() if derived.is_file() else None
         try:
-            subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'),
-                            'scripts/regenerate_fit_notebooks.py',
-                            '--settings-override', json.dumps(settings),
-                            '--priors-override', json.dumps(cell['priors']), str(directory)],
-                           cwd=ROOT, check=True, capture_output=True, text=True, timeout=3600)
+            rebuild_notebook([str(ROOT / 'ceridwen/.venv/bin/python'),
+                              'scripts/regenerate_fit_notebooks.py',
+                              '--settings-override', json.dumps(settings),
+                              '--priors-override', json.dumps(cell['priors']), str(directory)], stop)
             engine.log(f'local figures rebuilt for {name}')
         except (subprocess.SubprocessError, OSError) as error:
-            engine.log(f'local figure rebuild failed for {name}: {error}; GPU artifacts kept')
+            reason = (getattr(error, 'stderr', None) or '').strip().splitlines()[-1:]
+            engine.log(f'local figure rebuild failed for {name}: {error} {" ".join(reason)}; GPU artifacts kept')
         finally:
             if gpu_derived is not None:
                 derived.write_bytes(gpu_derived)
@@ -443,10 +477,21 @@ def main(argv=None):
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as error:
             raise vast.SweepError('another driver owns this output directory') from error
-        code = Run(args, source).execute()
-        # After teardown, while nothing bills: restore the standard figures locally.
+        # Fits retrieved while later cells still run get their figures meanwhile.
+        done, finished, stop = set(), threading.Event(), threading.Event()
+        rebuilds = threading.Thread(target=rebuild_while_running, args=(args.output, done, finished, stop), daemon=True)
+        rebuilds.start()
+        try:
+            code = Run(args, source).execute()
+        except BaseException:
+            stop.set()  # interrupted: kill the rebuild in progress; its GPU derived file is restored
+            raise
+        finally:
+            finished.set()
+            rebuilds.join()
+        # After teardown, while nothing bills: the figures of the remaining fits.
         if code == 0:
-            regenerate_figures(args.output)
+            regenerate_figures(args.output, done)
         return code
 
 

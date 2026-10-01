@@ -1,5 +1,9 @@
 """Exercise experiment configuration and paid-instance lifecycle without rentals."""
+import functools
 import json
+import subprocess
+import sys
+import time
 from types import SimpleNamespace
 
 import pytest
@@ -351,7 +355,7 @@ def retrieved_run(tmp_path, name='run', *, figures=False, grid='abc.h5'):
                          'sampler': {'num_live': 500}},
             'priors': {'dust': 'Uniform(0, 2)'},
             'target_metadata': {'object_id': 210210, 'spect_id': 'M1_210210', 'seed': 7}}
-    manifest = {'source': {'experiment': [cell], 'grids': [
+    manifest = {'source': {'commit': 'abc', 'experiment': [cell], 'grids': [
         {'grid': '/local/grid.h5', 'grid_sha256': 'x', 'remote_name': 'abc.h5'}]},
         'completed_cells': ['arm/M1_210210']}
     out.mkdir()
@@ -368,11 +372,10 @@ def test_regenerate_rebuilds_figures_with_arm_overrides_and_keeps_gpu_derived(tm
     import subprocess
     out, directory, cell = retrieved_run(tmp_path)
     calls = []
-    def fake_run(command, **kwargs):
+    def fake_rebuild(command, stop=None):
         calls.append(command)
         (directory / 'ceridwen_derived_outputs.h5').write_bytes(b'cpu-derived')
-        return SimpleNamespace(returncode=0)
-    monkeypatch.setattr(exp.subprocess, 'run', fake_run)
+    monkeypatch.setattr(exp, 'rebuild_notebook', fake_rebuild)
     exp.regenerate_figures(out)
     assert len(calls) == 1
     assert calls[0][1] == 'scripts/regenerate_fit_notebooks.py'
@@ -385,7 +388,7 @@ def test_regenerate_rebuilds_figures_with_arm_overrides_and_keeps_gpu_derived(tm
 
 def test_regenerate_skips_notebook_with_figures_and_unknown_grid(tmp_path, monkeypatch):
     out, _, _ = retrieved_run(tmp_path, figures=True)
-    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: pytest.fail('regeneration ran'))
+    monkeypatch.setattr(exp, 'rebuild_notebook', lambda *a, **kw: pytest.fail('regeneration ran'))
     exp.regenerate_figures(out)
     out, _, _ = retrieved_run(tmp_path, 'run2', grid='missing.h5')
     exp.regenerate_figures(out)
@@ -394,11 +397,12 @@ def test_regenerate_skips_notebook_with_figures_and_unknown_grid(tmp_path, monke
 def test_regenerate_failure_keeps_gpu_artifacts_without_raising(tmp_path, monkeypatch, capsys):
     import subprocess
     out, directory, _ = retrieved_run(tmp_path)
-    def fail(command, **kwargs):
-        raise subprocess.CalledProcessError(1, command)
-    monkeypatch.setattr(exp.subprocess, 'run', fail)
+    def fail(command, stop=None):
+        raise subprocess.CalledProcessError(1, command, stderr='Traceback\nImportError: no mass_mapped_beta\n')
+    monkeypatch.setattr(exp, 'rebuild_notebook', fail)
     exp.regenerate_figures(out)
-    assert 'local figure rebuild failed' in capsys.readouterr().out
+    log = capsys.readouterr().out
+    assert 'local figure rebuild failed' in log and 'ImportError: no mass_mapped_beta' in log
     assert (directory / 'ceridwen_derived_outputs.h5').read_bytes() == b'gpu-derived'
 
 
@@ -409,9 +413,64 @@ def test_main_rebuilds_figures_only_after_success(tmp_path, monkeypatch, code):
     monkeypatch.setattr(exp, 'preflight', lambda *a, **kw: {'commit': 'abc'})
     monkeypatch.setattr(exp, 'Run', lambda args, source: SimpleNamespace(execute=lambda: code))
     calls = []
-    monkeypatch.setattr(exp, 'regenerate_figures', lambda output: calls.append(output))
+    monkeypatch.setattr(exp, 'regenerate_figures', lambda output, done=None: calls.append(output))
     assert exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(out)]) == code
     assert calls == ([out] if code == 0 else [])
+
+
+def test_rebuild_notebook_kills_the_child_once_stopped_and_reports_stderr(tmp_path):
+    import threading
+    stop = threading.Event()
+    threading.Timer(0.2, stop.set).start()
+    started = time.monotonic()
+    with pytest.raises(subprocess.SubprocessError):
+        exp.rebuild_notebook([sys.executable, '-c', 'import time; time.sleep(30)'], stop)
+    assert time.monotonic() - started < 5
+    with pytest.raises(subprocess.CalledProcessError) as failure:
+        exp.rebuild_notebook([sys.executable, '-c', 'import sys; sys.exit("bad notebook")'])
+    assert 'bad notebook' in failure.value.stderr
+
+
+def fast_rebuilds(monkeypatch):
+    monkeypatch.setattr(exp, 'rebuild_while_running', functools.partial(exp.rebuild_while_running, every=0.05))
+    monkeypatch.setattr(exp, 'preflight', lambda *a, **kw: {'commit': 'abc'})
+
+
+def test_main_rebuilds_a_retrieved_fit_while_the_run_goes_on_and_only_once(tmp_path, monkeypatch):
+    out, directory, _ = retrieved_run(tmp_path)
+    fast_rebuilds(monkeypatch)
+    calls = []
+    monkeypatch.setattr(exp, 'rebuild_notebook', lambda command, stop=None: calls.append(command[-1]))
+    def execute():
+        deadline = time.monotonic() + 5
+        while not calls and time.monotonic() < deadline:
+            time.sleep(0.01)
+        assert calls == [str(directory)]  # rebuilt before the run ended
+        return 0
+    monkeypatch.setattr(exp, 'Run', lambda args, source: SimpleNamespace(execute=execute))
+    assert exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(out)]) == 0
+    assert calls == [str(directory)]
+
+
+def test_interrupted_run_kills_the_rebuild_in_progress_and_keeps_gpu_derived(tmp_path, monkeypatch):
+    out, directory, _ = retrieved_run(tmp_path)
+    derived = directory / 'ceridwen_derived_outputs.h5'
+    fast_rebuilds(monkeypatch)
+    rebuild = exp.rebuild_notebook
+    child = ("import sys, time; open(sys.argv[1], 'wb').write(b'cpu-derived'); time.sleep(30)")
+    monkeypatch.setattr(exp, 'rebuild_notebook',
+                        lambda command, stop=None: rebuild([sys.executable, '-c', child, str(derived)], stop))
+    def execute():
+        deadline = time.monotonic() + 10
+        while derived.read_bytes() != b'cpu-derived' and time.monotonic() < deadline:
+            time.sleep(0.01)
+        raise KeyboardInterrupt
+    monkeypatch.setattr(exp, 'Run', lambda args, source: SimpleNamespace(execute=execute))
+    started = time.monotonic()
+    with pytest.raises(KeyboardInterrupt):
+        exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(out)])
+    assert time.monotonic() - started < 15
+    assert derived.read_bytes() == b'gpu-derived'
 
 
 def add_alternative_arm(run):
