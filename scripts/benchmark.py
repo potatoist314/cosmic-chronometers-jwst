@@ -54,6 +54,9 @@ INPUT_FILES = ('external/fsps/data/emlines_info.dat',)
 REMOTE = vast.REMOTE_ROOT
 # Created once every uploaded grid passes its sha256 check; an early bootstrap waits for it.
 GRID_CHECKED = f'{REMOTE}/grid/.checked'
+# Created by the bootstrap once the environment is ready, before it waits for the grid; a fit
+# started during the upload waits for it, then for GRID_CHECKED at the cell that loads the grid.
+ENV_READY = f'{REMOTE}/.env-ready'
 # Stage-end detection lags by up to one interval on a billing instance, so poll
 # briskly; each poll is one cheap SSH round trip now that the target is cached.
 POLL_SECONDS = 5
@@ -334,9 +337,10 @@ class Run:
         return source.get('grids', [{'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
                                      'remote_name': Path(source['grid']).name}])
 
-    def upload(self, attempt, bootstrap=None):
+    def upload(self, attempt, bootstrap=None, early=None):
         """Send source, inputs and grids; start the bootstrap command, if given, once the source
-        and inputs are on the box, so it runs while the grid is still on its way."""
+        and inputs are on the box, so it runs while the grid is still on its way. ``early``, a
+        (stage name, setup command, stage command), starts that stage at the same time."""
         instance = attempt['instance_id']
         source = self.data['source']
         target, port = vast._ssh_target(instance)
@@ -364,7 +368,11 @@ class Run:
                     vast._ssh(instance, f'mkdir -p {remote_parent}', timeout=self.timeout(attempt))
                     vast._rsync(port, str(ROOT / name), f'{target}:{remote_parent}/', timeout=self.timeout(attempt))
             if bootstrap:
-                vast._ssh(instance, self.launch(attempt, 'bootstrap', bootstrap), timeout=self.timeout(attempt))
+                launches = [self.launch(attempt, 'bootstrap', bootstrap)]
+                if early:
+                    name, setup, command = early
+                    launches.append(f'{setup} && {self.launch(attempt, name, command)}')
+                vast._ssh(instance, '; '.join(launches), timeout=self.timeout(attempt))
             errors = [process.communicate(timeout=self.timeout(attempt, 600))[1] for process in sending]
         finally:
             for process in sending:
@@ -428,12 +436,14 @@ class Run:
         grid = self.data['source'].get('grids', [{'remote_name': Path(self.data['source']['grid']).name}])[0]['remote_name']
         remote_grid = shlex.quote(REMOTE + '/grid/' + grid)
         environment = f'cd {REMOTE} && export CERIDWEN_GRID_DIR={REMOTE}/grid CERIDWEN_GRID_PATH={remote_grid} && '
+        bootstrap = environment + f'CERIDWEN_ENV_READY={ENV_READY} bash scripts/bootstrap_vast_ai.sh'
         if not attempt.get('uploaded'):
             log('uploading pinned source, inputs and cached grid')
             # Partial rsync and tar extraction are repeatable after a disconnect.
             for retry in range(2):
                 try:
-                    self.upload(attempt, environment + f'CERIDWEN_GRID_READY={GRID_CHECKED} bash scripts/bootstrap_vast_ai.sh')
+                    self.upload(attempt, environment + f'CERIDWEN_GRID_READY={GRID_CHECKED} CERIDWEN_ENV_READY={ENV_READY} '
+                                'bash scripts/bootstrap_vast_ai.sh', self.early_stage(attempt, environment))
                     break
                 except vast.LocalSSHError:
                     raise
@@ -444,8 +454,12 @@ class Run:
             attempt['uploaded'] = True
             self.save()
         # Polls the bootstrap that the upload started, or starts it on a resumed run.
-        self.stage(attempt, 'bootstrap', environment + 'bash scripts/bootstrap_vast_ai.sh')
+        self.stage(attempt, 'bootstrap', bootstrap)
         return environment
+
+    def early_stage(self, attempt, environment):
+        """Stage to start during the upload, as upload()'s ``early``; none by default."""
+        return None
 
     def measure(self, attempt):
         instance = attempt['instance_id']

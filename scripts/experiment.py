@@ -371,30 +371,48 @@ class Run(engine.Run):
         raise engine.StageFailed(f'result retrieval failed; local files: {destination}; '
                                  f'no automatic refit: {error}') from error
 
-    def measure(self, attempt):
-        environment = self.prepare(attempt)
+    def fit_stages(self, attempt, environment):
+        """(stage name, config upload, command, remote root, cells) of each fit stage still to run."""
         instance = attempt['instance_id']
         fits_per_gpu = self.args.fits_per_gpu
         pending = [(index, cell) for index, cell in enumerate(self.data['source']['experiment'])
                    if cell['name'] not in self.data.get('completed_cells', [])]
         # Several fits per GPU: one stage fits every pending cell, fits_per_gpu at a time.
         groups = [pending] if fits_per_gpu > 1 and len(pending) > 1 else [[item] for item in pending]
+        stages = []
         for group in groups:
             index, cells = group[0][0], [cell for _, cell in group]
             remote_root = f'{engine.REMOTE}/.experiment/{instance}/{index}'
-            payload = json.dumps(cells)
-            vast._ssh(instance, f'mkdir -p {remote_root} && printf %s {shlex.quote(payload)} > {remote_root}/config.json',
-                      timeout=self.timeout(attempt))
+            config = f'{remote_root}/config.json'
+            # Written whole, then renamed: a stage started during the upload may be reading it.
+            setup = f'mkdir -p {remote_root} && printf %s {shlex.quote(json.dumps(cells))} > {config}.tmp && mv {config}.tmp {config}'
             # Autotune level 0: XLA's fixed GPU kernel choices, the same in every process.
             # Timed autotuning chooses per process (the float32 photometry GEMV rounds differently
             # between rentals), runs no faster per call, and adds about 3 s to each compile.
             xla_flags = '--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0'
-            command = environment + f"SPS_HOME={engine.REMOTE}/external/fsps MPLBACKEND=Agg XLA_FLAGS='{xla_flags}' " + shlex.join([
-                '.venv-ceridwen-gpu/bin/python', 'scripts/experiment.py', 'remote',
-                '--config', f'{remote_root}/config.json', '--output', f'{remote_root}/results',
-                *(['--fits-per-gpu', str(fits_per_gpu)] if len(cells) > 1 else [])])
+            # A stage started during the upload waits here for the bootstrap's environment, and
+            # in the notebook, at the cell that loads the grid, for the grid's sha256 check.
+            command = (environment + f'until test -e {engine.ENV_READY}; do sleep .1; done && '
+                       f"CERIDWEN_GRID_READY={engine.GRID_CHECKED} SPS_HOME={engine.REMOTE}/external/fsps "
+                       f"MPLBACKEND=Agg XLA_FLAGS='{xla_flags}' " + shlex.join([
+                           '.venv-ceridwen-gpu/bin/python', 'scripts/experiment.py', 'remote',
+                           '--config', config, '--output', f'{remote_root}/results',
+                           *(['--fits-per-gpu', str(fits_per_gpu)] if len(cells) > 1 else [])]))
+            stages.append((f'fit-{index}', setup, command, remote_root, cells))
+        return stages
+
+    def early_stage(self, attempt, environment):
+        # The first fit runs its grid-free cells while the grid uploads.
+        stages = self.fit_stages(attempt, environment)
+        return stages[0][:3] if stages else None
+
+    def measure(self, attempt):
+        environment = self.prepare(attempt)
+        instance = attempt['instance_id']
+        for name, setup, command, remote_root, cells in self.fit_stages(attempt, environment):
+            vast._ssh(instance, setup, timeout=self.timeout(attempt))
             try:
-                self.stage(attempt, f'fit-{index}', command)
+                self.stage(attempt, name, command)
             finally:
                 # Recover partial outputs too; preserve a failed fit's original error.
                 stage_error = sys.exception()

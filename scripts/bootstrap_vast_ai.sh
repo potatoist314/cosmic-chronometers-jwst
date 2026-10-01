@@ -164,12 +164,17 @@ if (( missing != 0 )); then
 fi
 
 # The runner starts this script while the grid is still uploading and creates
-# CERIDWEN_GRID_READY once the grid passes its sha256 check.
+# CERIDWEN_GRID_READY once the grid passes its sha256 check. A fit started during
+# the upload waits for CERIDWEN_ENV_READY and holds the GPU from then on.
+if [[ -n "${CERIDWEN_ENV_READY:-}" ]]; then
+    touch "${CERIDWEN_ENV_READY}"
+fi
 if [[ -n "${CERIDWEN_GRID_READY:-}" ]]; then
     until [[ -e "${CERIDWEN_GRID_READY}" ]]; do sleep 1; done
 fi
 
-"${PYTHON_BIN}" - "${CATALOG_PATH}" "${PHOTOMETRY_PATH}" <<'PY'
+# On the CPU: the early fit may already hold the GPU.
+JAX_PLATFORMS=cpu "${PYTHON_BIN}" - "${CATALOG_PATH}" "${PHOTOMETRY_PATH}" <<'PY'
 import sys
 
 from astropy.table import Table

@@ -141,6 +141,39 @@ def test_fit_runs_with_untimed_gpu_autotuning(run, cloud, monkeypatch):
     assert '--xla_gpu_autotune_level=0' in launch
 
 
+def test_first_fit_starts_during_upload_and_waits_on_the_box(run, tmp_path, monkeypatch):
+    calls = []
+    monkeypatch.setattr(run, 'wait_ready', lambda attempt: None)
+    monkeypatch.setattr(run, 'upload', lambda attempt, bootstrap=None, early=None: calls.append(early))
+    monkeypatch.setattr(run, 'stage', lambda *a: None)
+    attempt = {'instance_id': 100, 'price': .2}
+    environment = run.prepare(attempt)
+    [early] = calls
+    name, setup, command, remote_root, cells = run.fit_stages(attempt, environment)[0]
+    assert early == (name, setup, command) and name == 'fit-0'
+    # Environment first, then the grid's sha256 check for the notebook's grid cell.
+    assert command.startswith(environment + f'until test -e {exp.engine.ENV_READY}; do sleep .1; done && '
+                              f'CERIDWEN_GRID_READY={exp.engine.GRID_CHECKED} ')
+    ready = tmp_path / 'env-ready'
+    script = command.removeprefix(environment).replace(exp.engine.ENV_READY, str(ready)).split(' && ')[0]
+    waiting = subprocess.Popen(['bash', '-c', script + ' && echo ready'], stdout=subprocess.PIPE, text=True)
+    time.sleep(.3)
+    assert waiting.poll() is None
+    ready.touch()
+    assert waiting.communicate(timeout=5)[0] == 'ready\n'
+
+
+def test_fit_config_is_replaced_whole(run, tmp_path, monkeypatch):
+    monkeypatch.setattr(exp.engine, 'REMOTE', str(tmp_path / 'remote'))
+    _, setup, _, _, cells = run.fit_stages({'instance_id': 100, 'price': .2}, '')[0]
+    config = tmp_path / 'remote/.experiment/100/0/config.json'
+    assert setup.endswith(f'> {config}.tmp && mv {config}.tmp {config}')
+    for _ in range(2):
+        subprocess.run(['bash', '-c', setup], check=True)
+        assert json.loads(config.read_text()) == cells
+    assert not config.with_name('config.json.tmp').exists()
+
+
 def test_dry_run_does_not_contact_vast_or_create_output(tmp_path, monkeypatch):
     monkeypatch.setattr(exp, 'preflight', lambda *a, **kw: {'commit': 'abc'})
     monkeypatch.setattr(exp.vast, '_vastai_json', lambda *_: pytest.fail('Vast call during dry run'))
@@ -221,7 +254,7 @@ def test_resume_keeps_lower_original_budget(run):
 
 
 def test_budget_failure_destroys_without_marking_cells_complete(run, cloud, monkeypatch):
-    monkeypatch.setattr(run, 'upload', lambda _, bootstrap=None: setattr(run.args, 'spend_cap', .001))
+    monkeypatch.setattr(run, 'upload', lambda _, bootstrap=None, early=None: setattr(run.args, 'spend_cap', .001))
     with pytest.raises(exp.vast.SweepError, match='budget'):
         run.execute()
     assert cloud[1]['destroyed'] == [100]

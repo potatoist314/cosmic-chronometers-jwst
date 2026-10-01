@@ -373,6 +373,49 @@ def test_truncate_to_sampler_needs_the_marker(multi):
         multi.truncate_to_sampler(document)
 
 
+def test_wait_for_grid_comes_first_in_the_only_cell_that_reads_the_grid(multi):
+    import nbformat
+
+    path = ROOT / "notebooks/ceridwen_integrated_photometry_spectra.ipynb"
+    original = [c.source for c in nbformat.read(path, as_version=4).cells]
+    document = nbformat.read(path, as_version=4)
+    multi.wait_for_grid(document, "/remote/grid/.checked")
+    changed = [index for index, cell in enumerate(document.cells) if cell.source != original[index]]
+    assert len(changed) == 1 and document.cells[changed[0]].source.endswith(original[changed[0]])
+    assert "'/remote/grid/.checked'" in document.cells[changed[0]].source.split(original[changed[0]])[0]
+    # Cells before it run while the grid uploads: none of them reads the grid.
+    earlier = "\n".join(c.source for c in document.cells[:changed[0]] if c.cell_type == "code")
+    assert multi.GRID_CELL_MARKER in original[changed[0]]
+    assert not any(name in earlier for name in ("SETTINGS[\"ssp_grid\"]", "fetch_grid(", ".load("))
+
+
+def test_wait_for_grid_blocks_until_the_file_exists(multi, tmp_path):
+    import threading
+    import time
+
+    import nbformat
+
+    ready = tmp_path / ".checked"
+    document = nbformat.v4.new_notebook(cells=[nbformat.v4.new_code_cell("ssp = SSPDataAfe.load(path)")])
+    multi.wait_for_grid(document, str(ready))
+    wait = document.cells[0].source.removesuffix("ssp = SSPDataAfe.load(path)")
+    waiting = threading.Thread(target=exec, args=(wait, {}))
+    waiting.start()
+    time.sleep(0.3)
+    assert waiting.is_alive()
+    ready.touch()
+    waiting.join(timeout=2)
+    assert not waiting.is_alive()
+
+
+def test_wait_for_grid_needs_the_marker(multi):
+    import nbformat
+
+    document = nbformat.v4.new_notebook(cells=[nbformat.v4.new_code_cell("a = 1")])
+    with pytest.raises(ValueError, match="SSPDataAfe"):
+        multi.wait_for_grid(document, "/ready")
+
+
 RESULT_H5 = ROOT / "results/emission-line-marginalisation/eline_off/210210-M1_210210/ceridwen_result.h5"
 needs_result = pytest.mark.skipif(not RESULT_H5.exists(), reason="needs the stored eline_off fit")
 

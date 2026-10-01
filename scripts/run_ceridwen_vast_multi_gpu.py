@@ -333,6 +333,23 @@ def truncate_to_sampler(document):
     raise ValueError(f"No code cell holds {SAMPLER_CELL_MARKER!r}")
 
 
+# The fit notebook's grid load; a fit started while the grid uploads waits at that cell.
+GRID_CELL_MARKER = "SSPDataAfe.load("
+
+
+def wait_for_grid(document, ready: str) -> None:
+    """Make the cell that loads the grid first wait, in place, until the file ``ready`` exists."""
+    for cell in document.cells:
+        if cell.cell_type == "code" and GRID_CELL_MARKER in cell.source:
+            cell.source = (
+                "import os as _os, time as _time\n"
+                f"while not _os.path.exists({ready!r}):  # runner: the grid is still uploading\n"
+                "    _time.sleep(0.1)\n" + cell.source
+            )
+            return
+    raise ValueError(f"No code cell holds {GRID_CELL_MARKER!r}")
+
+
 def sampler_only() -> bool:
     """True when the GPU run stops after the sampler; post-fit cells run locally."""
     return os.environ.get("CERIDWEN_SAMPLER_ONLY") == "1"
@@ -366,6 +383,9 @@ def _worker(output_notebook: Path) -> int:
             settings_cell.source += f"\nPRIORS[{name!r}] = {expression}  # arm override (CERIDWEN_PRIORS_OVERRIDE)\n"
     if sampler_only():
         truncate_to_sampler(document)
+    # CERIDWEN_GRID_READY: the runner creates this file once the uploaded grid passes its sha256 check.
+    if os.environ.get("CERIDWEN_GRID_READY"):
+        wait_for_grid(document, os.environ["CERIDWEN_GRID_READY"])
     client = StreamingNotebookClient(
         document,
         timeout=None,
