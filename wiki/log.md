@@ -1444,6 +1444,7 @@
 
 - Dependency image: unused CUDA libraries removed, compressed size 3.68 GB → 2.15 GB. Build excludes the paths. Trim removes the same list and checks that no other paths disappear. Host Docker refusals (“Error response from daemon”) trigger replacement after persisting for 60 s.
 - `--fits-per-gpu K`: pending cells K at a time under CUDA MPS, `XLA_CLIENT_MEM_FRACTION=0.75/K`, default K=1. Results bitwise equal except `wall_time_s`. RTX 5090, four targets: fit stage 839/641/607 s at K=1/2/4. Prior-KL figure: one sort per KL value.
+- `987b0c7`, `scripts/plot_prior_kl.py`: bootstrap `kl_table` and SFH noise-floor KL on threads, input order preserved; test confirms bitwise equality with serial. `3dbc25f`, `scripts/experiment.py`: background figure rebuilds for retrieved fits every 30 s; only remaining fits rebuilt after run; interruption kills active rebuild and restores GPU derived file. N one-at-a-time cells wait for 1 rebuild instead of N. `267888d`, `scripts/benchmark.py`: stage polls wait on-box up to 5 s, checking exit file every 0.1 s; billed-stage end detected within 0.1 s instead of ~2.5 s average.
 - Evidence: `results/speedups-overnight-2026-09-30/REPORT.md`. Files: `scripts/vast.py`, `scripts/benchmark.py`, `scripts/experiment.py`, `scripts/containers/drop_image_paths.py`, `.github/workflows/ceridwen-image.yml`, `.github/workflows/ceridwen-image-trim.yml`, `wiki/notes/vast-ai-gpu-workflow.md`.
 
 ### 2026-10-01 — Swarm sampler speedups
