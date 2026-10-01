@@ -1,0 +1,787 @@
+23:37:04 committed source 3eddd84880d5; output results/speedups-swarm-throughput-2026-09-30/session3/run
+23:37:12 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 47680627 good bid $0.380/h, $0.190/fit, $0.201 total; 47680627 good on-demand $0.615/h, $0.307/fit, $0.318 total; 38697500 unknown bid $0.416/h, $0.208/fit, $0.229 total; 52330942 unknown bid $0.416/h, $0.208/fit, $0.229 total; 50771590 unknown bid $0.474/h, $0.237/fit, $0.238 total; 52414895 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 48854219 unknown on-demand $0.537/h, $0.269/fit, $0.289 total; 45309042 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 53289413 unknown bid $0.616/h, $0.308/fit, $0.329 total; 35408136 unk
+23:37:12 renting RTX 5090, host 370354, $0.380/h; estimate $0.201
+23:37:17 instance 53605046: (None, None)
+23:37:38 instance 53605046: ('loading', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1')
+23:37:54 instance 53605046: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1/ssh')
+23:38:04 uploading pinned source, inputs and cached grid
+23:39:24 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+23:39:51 01-k8: running; 
+23:40:01 01-k8: running; e_ca_nohe_zevo/M14_27068, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37219, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37843, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37723, seed 20260927
+23:40:10 01-k8: running; ting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37219, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37843, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37723, seed 20260927
+MEM host_used_MiB=25614 avail=38386 gpu=27551MiB,0%
+23:40:20 01-k8: running; ting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37219, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37843, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37723, seed 20260927
+MEM host_used_MiB=25614 avail=38386 gpu=27551MiB,0%
+23:40:29 01-k8: running; 3:39:51 fitting neb_eline_ca_nohe_zevo/M14_37219, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37843, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37723, seed 20260927
+MEM host_used_MiB=25614 avail=38386 gpu=27551MiB,0%
+MEM host_used_MiB=37126 avail=26874 gpu=29485MiB,100%
+23:40:39 01-k8: running; 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37843, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37723, seed 20260927
+MEM host_used_MiB=25614 avail=38386 gpu=27551MiB,0%
+MEM host_used_MiB=37126 avail=26874 gpu=29485MiB,100%
+MEM host_used_MiB=35931 avail=28070 gpu=29485MiB,100%
+23:40:48 01-k8: running; 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37843, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37723, seed 20260927
+MEM host_used_MiB=25614 avail=38386 gpu=27551MiB,0%
+MEM host_used_MiB=37126 avail=26874 gpu=29485MiB,100%
+MEM host_used_MiB=35931 avail=28070 gpu=29485MiB,100%
+23:40:57 01-k8: running; 37843, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37723, seed 20260927
+MEM host_used_MiB=25614 avail=38386 gpu=27551MiB,0%
+MEM host_used_MiB=37126 avail=26874 gpu=29485MiB,100%
+MEM host_used_MiB=35931 avail=28070 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+23:41:06 01-k8: running; 37843, seed 20260927
+23:39:51 fitting neb_eline_ca_nohe_zevo/M14_37723, seed 20260927
+MEM host_used_MiB=25614 avail=38386 gpu=27551MiB,0%
+MEM host_used_MiB=37126 avail=26874 gpu=29485MiB,100%
+MEM host_used_MiB=35931 avail=28070 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+23:41:15 01-k8: running; e_zevo/M14_37723, seed 20260927
+MEM host_used_MiB=25614 avail=38386 gpu=27551MiB,0%
+MEM host_used_MiB=37126 avail=26874 gpu=29485MiB,100%
+MEM host_used_MiB=35931 avail=28070 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35628 avail=28372 gpu=29485MiB,100%
+23:41:25 01-k8: running; 4 avail=38386 gpu=27551MiB,0%
+MEM host_used_MiB=37126 avail=26874 gpu=29485MiB,100%
+MEM host_used_MiB=35931 avail=28070 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35628 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28345 gpu=29485MiB,100%
+23:41:34 01-k8: running; 4 avail=38386 gpu=27551MiB,0%
+MEM host_used_MiB=37126 avail=26874 gpu=29485MiB,100%
+MEM host_used_MiB=35931 avail=28070 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35628 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28345 gpu=29485MiB,100%
+23:41:43 01-k8: running; avail=26874 gpu=29485MiB,100%
+MEM host_used_MiB=35931 avail=28070 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35628 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28345 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28344 gpu=29485MiB,100%
+23:41:53 01-k8: running; avail=28070 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35628 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28345 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28344 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+23:42:02 01-k8: running; avail=28070 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35628 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28345 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28344 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+23:42:11 01-k8: running; avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35628 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28345 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28344 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+23:42:20 01-k8: running; avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35628 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28345 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28344 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+23:42:30 01-k8: running; avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28345 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28344 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35674 avail=28327 gpu=29485MiB,100%
+23:42:39 01-k8: running; avail=28345 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28344 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35674 avail=28327 gpu=29485MiB,100%
+MEM host_used_MiB=35652 avail=28349 gpu=29485MiB,100%
+23:42:48 01-k8: running; avail=28345 gpu=29485MiB,100%
+MEM host_used_MiB=35656 avail=28344 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35674 avail=28327 gpu=29485MiB,100%
+MEM host_used_MiB=35652 avail=28349 gpu=29485MiB,100%
+23:42:58 01-k8: running; avail=28344 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35674 avail=28327 gpu=29485MiB,100%
+MEM host_used_MiB=35652 avail=28349 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+23:43:07 01-k8: running; avail=28344 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35674 avail=28327 gpu=29485MiB,100%
+MEM host_used_MiB=35652 avail=28349 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+23:43:16 01-k8: running; avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35636 avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35674 avail=28327 gpu=29485MiB,100%
+MEM host_used_MiB=35652 avail=28349 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35654 avail=28347 gpu=29485MiB,100%
+23:43:25 01-k8: running; avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35674 avail=28327 gpu=29485MiB,100%
+MEM host_used_MiB=35652 avail=28349 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35654 avail=28347 gpu=29485MiB,100%
+MEM host_used_MiB=35673 avail=28328 gpu=29485MiB,100%
+23:43:35 01-k8: running; avail=28365 gpu=29485MiB,100%
+MEM host_used_MiB=35674 avail=28327 gpu=29485MiB,100%
+MEM host_used_MiB=35652 avail=28349 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35654 avail=28347 gpu=29485MiB,100%
+MEM host_used_MiB=35673 avail=28328 gpu=29485MiB,100%
+23:43:44 01-k8: running; avail=28327 gpu=29485MiB,100%
+MEM host_used_MiB=35652 avail=28349 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35654 avail=28347 gpu=29485MiB,100%
+MEM host_used_MiB=35673 avail=28328 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+23:43:53 01-k8: running; avail=28349 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35654 avail=28347 gpu=29485MiB,100%
+MEM host_used_MiB=35673 avail=28328 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35625 avail=28375 gpu=29485MiB,100%
+23:44:02 01-k8: running; avail=28349 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35654 avail=28347 gpu=29485MiB,100%
+MEM host_used_MiB=35673 avail=28328 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35625 avail=28375 gpu=29485MiB,100%
+23:44:11 01-k8: running; avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35654 avail=28347 gpu=29485MiB,100%
+MEM host_used_MiB=35673 avail=28328 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35625 avail=28375 gpu=29485MiB,100%
+MEM host_used_MiB=35614 avail=28387 gpu=29485MiB,100%
+23:44:21 01-k8: running; avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35654 avail=28347 gpu=29485MiB,100%
+MEM host_used_MiB=35673 avail=28328 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35625 avail=28375 gpu=29485MiB,100%
+MEM host_used_MiB=35614 avail=28387 gpu=29485MiB,100%
+23:44:30 01-k8: running; avail=28347 gpu=29485MiB,100%
+MEM host_used_MiB=35673 avail=28328 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35625 avail=28375 gpu=29485MiB,100%
+MEM host_used_MiB=35614 avail=28387 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+23:44:39 01-k8: running; avail=28328 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35625 avail=28375 gpu=29485MiB,100%
+MEM host_used_MiB=35614 avail=28387 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28360 gpu=29485MiB,100%
+23:44:48 01-k8: running; avail=28328 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35625 avail=28375 gpu=29485MiB,100%
+MEM host_used_MiB=35614 avail=28387 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28360 gpu=29485MiB,100%
+23:44:57 01-k8: running; avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35625 avail=28375 gpu=29485MiB,100%
+MEM host_used_MiB=35614 avail=28387 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28360 gpu=29485MiB,100%
+MEM host_used_MiB=35622 avail=28379 gpu=29485MiB,100%
+23:45:07 01-k8: running; avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35625 avail=28375 gpu=29485MiB,100%
+MEM host_used_MiB=35614 avail=28387 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28360 gpu=29485MiB,100%
+MEM host_used_MiB=35622 avail=28379 gpu=29485MiB,100%
+23:45:17 01-k8: running; avail=28375 gpu=29485MiB,100%
+MEM host_used_MiB=35614 avail=28387 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28360 gpu=29485MiB,100%
+MEM host_used_MiB=35622 avail=28379 gpu=29485MiB,100%
+MEM host_used_MiB=35691 avail=28310 gpu=29485MiB,100%
+23:45:26 01-k8: running; avail=28387 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28360 gpu=29485MiB,100%
+MEM host_used_MiB=35622 avail=28379 gpu=29485MiB,100%
+MEM host_used_MiB=35691 avail=28310 gpu=29485MiB,100%
+MEM host_used_MiB=35707 avail=28294 gpu=29485MiB,100%
+23:45:36 01-k8: running; avail=28387 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28360 gpu=29485MiB,100%
+MEM host_used_MiB=35622 avail=28379 gpu=29485MiB,100%
+MEM host_used_MiB=35691 avail=28310 gpu=29485MiB,100%
+MEM host_used_MiB=35707 avail=28294 gpu=29485MiB,100%
+23:45:45 01-k8: running; avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28360 gpu=29485MiB,100%
+MEM host_used_MiB=35622 avail=28379 gpu=29485MiB,100%
+MEM host_used_MiB=35691 avail=28310 gpu=29485MiB,100%
+MEM host_used_MiB=35707 avail=28294 gpu=29485MiB,100%
+MEM host_used_MiB=35619 avail=28382 gpu=29485MiB,100%
+23:45:54 01-k8: running; avail=28360 gpu=29485MiB,100%
+MEM host_used_MiB=35622 avail=28379 gpu=29485MiB,100%
+MEM host_used_MiB=35691 avail=28310 gpu=29485MiB,100%
+MEM host_used_MiB=35707 avail=28294 gpu=29485MiB,100%
+MEM host_used_MiB=35619 avail=28382 gpu=29485MiB,100%
+MEM host_used_MiB=35637 avail=28364 gpu=29485MiB,100%
+23:46:03 01-k8: running; avail=28360 gpu=29485MiB,100%
+MEM host_used_MiB=35622 avail=28379 gpu=29485MiB,100%
+MEM host_used_MiB=35691 avail=28310 gpu=29485MiB,100%
+MEM host_used_MiB=35707 avail=28294 gpu=29485MiB,100%
+MEM host_used_MiB=35619 avail=28382 gpu=29485MiB,100%
+MEM host_used_MiB=35637 avail=28364 gpu=29485MiB,100%
+23:46:12 01-k8: running; avail=28379 gpu=29485MiB,100%
+MEM host_used_MiB=35691 avail=28310 gpu=29485MiB,100%
+MEM host_used_MiB=35707 avail=28294 gpu=29485MiB,100%
+MEM host_used_MiB=35619 avail=28382 gpu=29485MiB,100%
+MEM host_used_MiB=35637 avail=28364 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+23:46:21 01-k8: running; avail=28379 gpu=29485MiB,100%
+MEM host_used_MiB=35691 avail=28310 gpu=29485MiB,100%
+MEM host_used_MiB=35707 avail=28294 gpu=29485MiB,100%
+MEM host_used_MiB=35619 avail=28382 gpu=29485MiB,100%
+MEM host_used_MiB=35637 avail=28364 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+23:46:30 01-k8: running; avail=28310 gpu=29485MiB,100%
+MEM host_used_MiB=35707 avail=28294 gpu=29485MiB,100%
+MEM host_used_MiB=35619 avail=28382 gpu=29485MiB,100%
+MEM host_used_MiB=35637 avail=28364 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35631 avail=28370 gpu=29485MiB,100%
+23:46:39 01-k8: running; avail=28294 gpu=29485MiB,100%
+MEM host_used_MiB=35619 avail=28382 gpu=29485MiB,100%
+MEM host_used_MiB=35637 avail=28364 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35631 avail=28370 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+23:46:49 01-k8: running; avail=28294 gpu=29485MiB,100%
+MEM host_used_MiB=35619 avail=28382 gpu=29485MiB,100%
+MEM host_used_MiB=35637 avail=28364 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35631 avail=28370 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+23:46:58 01-k8: running; avail=28382 gpu=29485MiB,100%
+MEM host_used_MiB=35637 avail=28364 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35631 avail=28370 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28359 gpu=29485MiB,100%
+23:47:07 01-k8: running; avail=28382 gpu=29485MiB,100%
+MEM host_used_MiB=35637 avail=28364 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35631 avail=28370 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28359 gpu=29485MiB,100%
+23:47:16 01-k8: running; avail=28364 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35631 avail=28370 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28359 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+23:47:25 01-k8: running; avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35631 avail=28370 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28359 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35616 avail=28385 gpu=29485MiB,100%
+23:47:34 01-k8: running; avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35631 avail=28370 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28359 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35616 avail=28385 gpu=29485MiB,100%
+23:47:44 01-k8: running; avail=28370 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28359 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35616 avail=28385 gpu=29485MiB,100%
+MEM host_used_MiB=35593 avail=28408 gpu=29485MiB,100%
+23:47:53 01-k8: running; avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28359 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35616 avail=28385 gpu=29485MiB,100%
+MEM host_used_MiB=35593 avail=28408 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+23:48:02 01-k8: running; avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35641 avail=28359 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35616 avail=28385 gpu=29485MiB,100%
+MEM host_used_MiB=35593 avail=28408 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+23:48:11 01-k8: running; avail=28359 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35616 avail=28385 gpu=29485MiB,100%
+MEM host_used_MiB=35593 avail=28408 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35624 avail=28377 gpu=29485MiB,100%
+23:48:21 01-k8: running; avail=28359 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35616 avail=28385 gpu=29485MiB,100%
+MEM host_used_MiB=35593 avail=28408 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35624 avail=28377 gpu=29485MiB,100%
+23:48:30 01-k8: running; avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35616 avail=28385 gpu=29485MiB,100%
+MEM host_used_MiB=35593 avail=28408 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35624 avail=28377 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28368 gpu=29485MiB,100%
+23:48:39 01-k8: running; avail=28385 gpu=29485MiB,100%
+MEM host_used_MiB=35593 avail=28408 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35624 avail=28377 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28368 gpu=29485MiB,100%
+MEM host_used_MiB=35620 avail=28381 gpu=29485MiB,100%
+23:48:48 01-k8: running; avail=28385 gpu=29485MiB,100%
+MEM host_used_MiB=35593 avail=28408 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35624 avail=28377 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28368 gpu=29485MiB,100%
+MEM host_used_MiB=35620 avail=28381 gpu=29485MiB,100%
+23:48:57 01-k8: running; avail=28408 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35624 avail=28377 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28368 gpu=29485MiB,100%
+MEM host_used_MiB=35620 avail=28381 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+23:49:06 01-k8: running; avail=28408 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35624 avail=28377 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28368 gpu=29485MiB,100%
+MEM host_used_MiB=35620 avail=28381 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+23:49:15 01-k8: running; avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35624 avail=28377 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28368 gpu=29485MiB,100%
+MEM host_used_MiB=35620 avail=28381 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+23:49:24 01-k8: running; avail=28377 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28368 gpu=29485MiB,100%
+MEM host_used_MiB=35620 avail=28381 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35581 avail=28420 gpu=29485MiB,100%
+23:49:34 01-k8: running; avail=28377 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28368 gpu=29485MiB,100%
+MEM host_used_MiB=35620 avail=28381 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35581 avail=28420 gpu=29485MiB,100%
+23:49:43 01-k8: running; avail=28368 gpu=29485MiB,100%
+MEM host_used_MiB=35620 avail=28381 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35581 avail=28420 gpu=29485MiB,100%
+MEM host_used_MiB=35572 avail=28429 gpu=29485MiB,100%
+23:49:52 01-k8: running; avail=28368 gpu=29485MiB,100%
+MEM host_used_MiB=35620 avail=28381 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35581 avail=28420 gpu=29485MiB,100%
+MEM host_used_MiB=35572 avail=28429 gpu=29485MiB,100%
+23:50:01 01-k8: running; avail=28381 gpu=29485MiB,100%
+MEM host_used_MiB=35635 avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35581 avail=28420 gpu=29485MiB,100%
+MEM host_used_MiB=35572 avail=28429 gpu=29485MiB,100%
+MEM host_used_MiB=35598 avail=28403 gpu=29485MiB,100%
+23:50:11 01-k8: running; avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35581 avail=28420 gpu=29485MiB,100%
+MEM host_used_MiB=35572 avail=28429 gpu=29485MiB,100%
+MEM host_used_MiB=35598 avail=28403 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+23:50:20 01-k8: running; avail=28366 gpu=29485MiB,100%
+MEM host_used_MiB=35630 avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35581 avail=28420 gpu=29485MiB,100%
+MEM host_used_MiB=35572 avail=28429 gpu=29485MiB,100%
+MEM host_used_MiB=35598 avail=28403 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+23:50:29 01-k8: running; avail=28371 gpu=29485MiB,100%
+MEM host_used_MiB=35581 avail=28420 gpu=29485MiB,100%
+MEM host_used_MiB=35572 avail=28429 gpu=29485MiB,100%
+MEM host_used_MiB=35598 avail=28403 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+23:50:38 01-k8: running; avail=28420 gpu=29485MiB,100%
+MEM host_used_MiB=35572 avail=28429 gpu=29485MiB,100%
+MEM host_used_MiB=35598 avail=28403 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35596 avail=28404 gpu=29485MiB,100%
+23:50:48 01-k8: running; avail=28420 gpu=29485MiB,100%
+MEM host_used_MiB=35572 avail=28429 gpu=29485MiB,100%
+MEM host_used_MiB=35598 avail=28403 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35596 avail=28404 gpu=29485MiB,100%
+23:50:57 01-k8: running; avail=28429 gpu=29485MiB,100%
+MEM host_used_MiB=35598 avail=28403 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35596 avail=28404 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28401 gpu=29485MiB,100%
+23:51:06 01-k8: running; avail=28429 gpu=29485MiB,100%
+MEM host_used_MiB=35598 avail=28403 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35596 avail=28404 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28401 gpu=29485MiB,100%
+23:51:15 01-k8: running; avail=28403 gpu=29485MiB,100%
+MEM host_used_MiB=35640 avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35596 avail=28404 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28401 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+23:51:25 01-k8: running; avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35596 avail=28404 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28401 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+23:51:34 01-k8: running; avail=28361 gpu=29485MiB,100%
+MEM host_used_MiB=35634 avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35596 avail=28404 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28401 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+23:51:43 01-k8: running; avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35596 avail=28404 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28401 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28402 gpu=29485MiB,100%
+23:51:52 01-k8: running; avail=28367 gpu=29485MiB,100%
+MEM host_used_MiB=35596 avail=28404 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28401 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28402 gpu=29485MiB,100%
+23:52:01 01-k8: running; avail=28404 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28401 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28402 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+23:52:10 01-k8: running; avail=28401 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28402 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+23:52:20 01-k8: running; avail=28401 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28402 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+23:52:29 01-k8: running; avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28402 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35629 avail=28372 gpu=29485MiB,100%
+23:52:38 01-k8: running; avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35607 avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28402 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35629 avail=28372 gpu=29485MiB,100%
+23:52:47 01-k8: running; avail=28394 gpu=29485MiB,100%
+MEM host_used_MiB=35599 avail=28402 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35629 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=31823 avail=32178 gpu=25810MiB,100%
+23:52:56 01-k8: running; avail=28402 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35629 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=31823 avail=32178 gpu=25810MiB,100%
+MEM host_used_MiB=31819 avail=32181 gpu=25810MiB,100%
+23:53:05 01-k8: running; avail=28402 gpu=29485MiB,100%
+MEM host_used_MiB=35617 avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35629 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=31823 avail=32178 gpu=25810MiB,100%
+MEM host_used_MiB=31819 avail=32181 gpu=25810MiB,100%
+23:53:14 01-k8: running; avail=28384 gpu=29485MiB,100%
+MEM host_used_MiB=35627 avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35629 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=31823 avail=32178 gpu=25810MiB,100%
+MEM host_used_MiB=31819 avail=32181 gpu=25810MiB,100%
+MEM host_used_MiB=31776 avail=32225 gpu=25810MiB,100%
+23:53:23 01-k8: running; avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35629 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=31823 avail=32178 gpu=25810MiB,100%
+MEM host_used_MiB=31819 avail=32181 gpu=25810MiB,100%
+MEM host_used_MiB=31776 avail=32225 gpu=25810MiB,100%
+MEM host_used_MiB=31767 avail=32234 gpu=25810MiB,100%
+23:53:33 01-k8: running; avail=28374 gpu=29485MiB,100%
+MEM host_used_MiB=35629 avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=31823 avail=32178 gpu=25810MiB,100%
+MEM host_used_MiB=31819 avail=32181 gpu=25810MiB,100%
+MEM host_used_MiB=31776 avail=32225 gpu=25810MiB,100%
+MEM host_used_MiB=31767 avail=32234 gpu=25810MiB,100%
+23:53:42 01-k8: running; avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=31823 avail=32178 gpu=25810MiB,100%
+MEM host_used_MiB=31819 avail=32181 gpu=25810MiB,100%
+MEM host_used_MiB=31776 avail=32225 gpu=25810MiB,100%
+MEM host_used_MiB=31767 avail=32234 gpu=25810MiB,100%
+MEM host_used_MiB=31762 avail=32239 gpu=25810MiB,100%
+23:53:51 01-k8: running; avail=28372 gpu=29485MiB,100%
+MEM host_used_MiB=31823 avail=32178 gpu=25810MiB,100%
+MEM host_used_MiB=31819 avail=32181 gpu=25810MiB,100%
+MEM host_used_MiB=31776 avail=32225 gpu=25810MiB,100%
+MEM host_used_MiB=31767 avail=32234 gpu=25810MiB,100%
+MEM host_used_MiB=31762 avail=32239 gpu=25810MiB,100%
+23:54:00 01-k8: running; avail=32178 gpu=25810MiB,100%
+MEM host_used_MiB=31819 avail=32181 gpu=25810MiB,100%
+MEM host_used_MiB=31776 avail=32225 gpu=25810MiB,100%
+MEM host_used_MiB=31767 avail=32234 gpu=25810MiB,100%
+MEM host_used_MiB=31762 avail=32239 gpu=25810MiB,100%
+MEM host_used_MiB=31748 avail=32253 gpu=25810MiB,100%
+23:54:09 01-k8: running; avail=32181 gpu=25810MiB,100%
+MEM host_used_MiB=31776 avail=32225 gpu=25810MiB,100%
+MEM host_used_MiB=31767 avail=32234 gpu=25810MiB,100%
+MEM host_used_MiB=31762 avail=32239 gpu=25810MiB,100%
+MEM host_used_MiB=31748 avail=32253 gpu=25810MiB,100%
+MEM host_used_MiB=32113 avail=31888 gpu=25734MiB,100%
+23:54:19 01-k8: running; avail=32181 gpu=25810MiB,100%
+MEM host_used_MiB=31776 avail=32225 gpu=25810MiB,100%
+MEM host_used_MiB=31767 avail=32234 gpu=25810MiB,100%
+MEM host_used_MiB=31762 avail=32239 gpu=25810MiB,100%
+MEM host_used_MiB=31748 avail=32253 gpu=25810MiB,100%
+MEM host_used_MiB=32113 avail=31888 gpu=25734MiB,100%
+23:54:28 01-k8: running; avail=32225 gpu=25810MiB,100%
+MEM host_used_MiB=31767 avail=32234 gpu=25810MiB,100%
+MEM host_used_MiB=31762 avail=32239 gpu=25810MiB,100%
+MEM host_used_MiB=31748 avail=32253 gpu=25810MiB,100%
+MEM host_used_MiB=32113 avail=31888 gpu=25734MiB,100%
+MEM host_used_MiB=27950 avail=36050 gpu=22133MiB,100%
+23:54:37 01-k8: running; avail=32225 gpu=25810MiB,100%
+MEM host_used_MiB=31767 avail=32234 gpu=25810MiB,100%
+MEM host_used_MiB=31762 avail=32239 gpu=25810MiB,100%
+MEM host_used_MiB=31748 avail=32253 gpu=25810MiB,100%
+MEM host_used_MiB=32113 avail=31888 gpu=25734MiB,100%
+MEM host_used_MiB=27950 avail=36050 gpu=22133MiB,100%
+23:54:46 01-k8: running; avail=32234 gpu=25810MiB,100%
+MEM host_used_MiB=31762 avail=32239 gpu=25810MiB,100%
+MEM host_used_MiB=31748 avail=32253 gpu=25810MiB,100%
+MEM host_used_MiB=32113 avail=31888 gpu=25734MiB,100%
+MEM host_used_MiB=27950 avail=36050 gpu=22133MiB,100%
+MEM host_used_MiB=27896 avail=36104 gpu=22133MiB,100%
+23:54:55 01-k8: running; avail=32239 gpu=25810MiB,100%
+MEM host_used_MiB=31748 avail=32253 gpu=25810MiB,100%
+MEM host_used_MiB=32113 avail=31888 gpu=25734MiB,100%
+MEM host_used_MiB=27950 avail=36050 gpu=22133MiB,100%
+MEM host_used_MiB=27896 avail=36104 gpu=22133MiB,100%
+MEM host_used_MiB=24007 avail=39995 gpu=18457MiB,100%
+23:55:04 01-k8: running; avail=32239 gpu=25810MiB,100%
+MEM host_used_MiB=31748 avail=32253 gpu=25810MiB,100%
+MEM host_used_MiB=32113 avail=31888 gpu=25734MiB,100%
+MEM host_used_MiB=27950 avail=36050 gpu=22133MiB,100%
+MEM host_used_MiB=27896 avail=36104 gpu=22133MiB,100%
+MEM host_used_MiB=24007 avail=39995 gpu=18457MiB,100%
+23:55:13 01-k8: running; avail=32253 gpu=25810MiB,100%
+MEM host_used_MiB=32113 avail=31888 gpu=25734MiB,100%
+MEM host_used_MiB=27950 avail=36050 gpu=22133MiB,100%
+MEM host_used_MiB=27896 avail=36104 gpu=22133MiB,100%
+MEM host_used_MiB=24007 avail=39995 gpu=18457MiB,100%
+MEM host_used_MiB=20194 avail=43807 gpu=14780MiB,100%
+23:55:23 01-k8: running; avail=32253 gpu=25810MiB,100%
+MEM host_used_MiB=32113 avail=31888 gpu=25734MiB,100%
+MEM host_used_MiB=27950 avail=36050 gpu=22133MiB,100%
+MEM host_used_MiB=27896 avail=36104 gpu=22133MiB,100%
+MEM host_used_MiB=24007 avail=39995 gpu=18457MiB,100%
+MEM host_used_MiB=20194 avail=43807 gpu=14780MiB,100%
+23:55:32 01-k8: running; avail=31888 gpu=25734MiB,100%
+MEM host_used_MiB=27950 avail=36050 gpu=22133MiB,100%
+MEM host_used_MiB=27896 avail=36104 gpu=22133MiB,100%
+MEM host_used_MiB=24007 avail=39995 gpu=18457MiB,100%
+MEM host_used_MiB=20194 avail=43807 gpu=14780MiB,100%
+MEM host_used_MiB=20027 avail=43974 gpu=14780MiB,100%
+23:55:41 01-k8: running; 0 avail=36050 gpu=22133MiB,100%
+MEM host_used_MiB=27896 avail=36104 gpu=22133MiB,100%
+MEM host_used_MiB=24007 avail=39995 gpu=18457MiB,100%
+MEM host_used_MiB=20194 avail=43807 gpu=14780MiB,100%
+MEM host_used_MiB=20027 avail=43974 gpu=14780MiB,100%
+MEM host_used_MiB=20722 avail=43279 gpu=14286MiB,0%
+23:55:50 01-k8: 0; 133MiB,100%
+MEM host_used_MiB=27896 avail=36104 gpu=22133MiB,100%
+MEM host_used_MiB=24007 avail=39995 gpu=18457MiB,100%
+MEM host_used_MiB=20194 avail=43807 gpu=14780MiB,100%
+MEM host_used_MiB=20027 avail=43974 gpu=14780MiB,100%
+MEM host_used_MiB=20722 avail=43279 gpu=14286MiB,0%
+END 1790812547 rc=0
+23:56:23 02-k4: running; 
+23:56:33 02-k4: running; START 1790812583
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+23:56:42 02-k4: running; ting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=16534 avail=47466 gpu=26648MiB,0%
+23:56:51 02-k4: running; ting neb_eline_ca_nohe_zevo/M14_37023, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=16534 avail=47466 gpu=26648MiB,0%
+23:57:00 02-k4: running; 3:56:23 fitting neb_eline_ca_nohe_zevo/M14_31835, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=16534 avail=47466 gpu=26648MiB,0%
+MEM host_used_MiB=21282 avail=42719 gpu=27616MiB,100%
+23:57:09 02-k4: running; 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=16534 avail=47466 gpu=26648MiB,0%
+MEM host_used_MiB=21282 avail=42719 gpu=27616MiB,100%
+MEM host_used_MiB=20458 avail=43543 gpu=27616MiB,100%
+23:57:18 02-k4: running; 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M14_27068, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=16534 avail=47466 gpu=26648MiB,0%
+MEM host_used_MiB=21282 avail=42719 gpu=27616MiB,100%
+MEM host_used_MiB=20458 avail=43543 gpu=27616MiB,100%
+23:57:28 02-k4: running; 27068, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=16534 avail=47466 gpu=26648MiB,0%
+MEM host_used_MiB=21282 avail=42719 gpu=27616MiB,100%
+MEM host_used_MiB=20458 avail=43543 gpu=27616MiB,100%
+MEM host_used_MiB=20356 avail=43645 gpu=27616MiB,100%
+23:57:37 02-k4: running; 27068, seed 20260927
+23:56:23 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=16534 avail=47466 gpu=26648MiB,0%
+MEM host_used_MiB=21282 avail=42719 gpu=27616MiB,100%
+MEM host_used_MiB=20458 avail=43543 gpu=27616MiB,100%
+MEM host_used_MiB=20356 avail=43645 gpu=27616MiB,100%
+23:57:46 02-k4: running; e_zevo/M1_210210, seed 20260927
+MEM host_used_MiB=16534 avail=47466 gpu=26648MiB,0%
+MEM host_used_MiB=21282 avail=42719 gpu=27616MiB,100%
+MEM host_used_MiB=20458 avail=43543 gpu=27616MiB,100%
+MEM host_used_MiB=20356 avail=43645 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+23:57:55 02-k4: running; 4 avail=47466 gpu=26648MiB,0%
+MEM host_used_MiB=21282 avail=42719 gpu=27616MiB,100%
+MEM host_used_MiB=20458 avail=43543 gpu=27616MiB,100%
+MEM host_used_MiB=20356 avail=43645 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20312 avail=43688 gpu=27616MiB,100%
+23:58:04 02-k4: running; 4 avail=47466 gpu=26648MiB,0%
+MEM host_used_MiB=21282 avail=42719 gpu=27616MiB,100%
+MEM host_used_MiB=20458 avail=43543 gpu=27616MiB,100%
+MEM host_used_MiB=20356 avail=43645 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20312 avail=43688 gpu=27616MiB,100%
+23:58:13 02-k4: running; avail=42719 gpu=27616MiB,100%
+MEM host_used_MiB=20458 avail=43543 gpu=27616MiB,100%
+MEM host_used_MiB=20356 avail=43645 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20312 avail=43688 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+23:58:22 02-k4: running; avail=42719 gpu=27616MiB,100%
+MEM host_used_MiB=20458 avail=43543 gpu=27616MiB,100%
+MEM host_used_MiB=20356 avail=43645 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20312 avail=43688 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+23:58:31 02-k4: running; avail=43543 gpu=27616MiB,100%
+MEM host_used_MiB=20356 avail=43645 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20312 avail=43688 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20320 avail=43681 gpu=27616MiB,100%
+23:58:40 02-k4: running; avail=43645 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20312 avail=43688 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20320 avail=43681 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+23:58:50 02-k4: running; avail=43645 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20312 avail=43688 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20320 avail=43681 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+23:58:59 02-k4: running; avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20312 avail=43688 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20320 avail=43681 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+23:59:07 02-k4: running; avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20312 avail=43688 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20320 avail=43681 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+23:59:17 02-k4: running; avail=43688 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20320 avail=43681 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+23:59:26 02-k4: running; avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20320 avail=43681 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20309 avail=43692 gpu=27616MiB,100%
+23:59:35 02-k4: running; avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20320 avail=43681 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20309 avail=43692 gpu=27616MiB,100%
+23:59:44 02-k4: running; avail=43681 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20309 avail=43692 gpu=27616MiB,100%
+MEM host_used_MiB=20322 avail=43678 gpu=27616MiB,100%
+23:59:53 02-k4: running; avail=43681 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20317 avail=43684 gpu=27616MiB,100%
+MEM host_used_MiB=20314 avail=43687 gpu=27616MiB,100%
+MEM host_used_MiB=20309 avail=43692 gpu=27616MiB,100%
+MEM host_used_MiB=20322 avail=43678 gpu=27616MiB,100%
+00:00:02 02-k4: Connection to 120.88.119.115 closed by remote host.; reconnecting to the same instance
+00:00:05 rsync failed (CalledProcessError); retry 1
+00:00:36 rsync failed (CalledProcessError); retry 2
+00:01:07 rsync failed (CalledProcessError); retry 3
+00:01:37 rsync failed (CalledProcessError); retry 4
+00:02:08 rsync failed (CalledProcessError); retry 5
+00:02:38 SweepError: instance unavailable
+00:02:43 destroyed instance 53605046
+00:02:58 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45028228 unknown bid $0.342/h, $0.171/fit, $0.202 total; 44587608 unknown bid $0.380/h, $0.190/fit, $0.211 total; 48854219 unknown bid $0.396/h, $0.198/fit, $0.219 total; 47511675 unknown bid $0.419/h, $0.210/fit, $0.230 total; 53114568 unknown bid $0.420/h, $0.210/fit, $0.252 total; 48212638 unknown bid $0.478/h, $0.239/fit, $0.260 total; 45080654 unknown bid $0.509/h, $0.255/fit, $0.256 total; 51969558 unknown bid $0.532/h, $0.266/fit, $0.266 total; 42405157 unknown bid $0.534/h, $0.267/fit, $0.288 total; 52723068 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 48854219 unknown on-dema
+00:02:58 renting RTX 5090, host 18, $0.342/h; estimate $0.202
+00:03:05 instance 53607483: (None, None)
+00:03:13 SweepError: instance unavailable
+00:03:20 destroyed instance 53607483
+00:03:34 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 41075410 unknown bid $0.398/h, $0.199/fit, $0.209 total; 34905063 unknown bid $0.423/h, $0.212/fit, $0.232 total; 48137358 unknown bid $0.443/h, $0.221/fit, $0.250 total; 53483881 unknown bid $0.456/h, $0.228/fit, $0.249 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 47767747 unknown bid $0.483/h, $0.241/fit, $0.262 total; 47767747 unknown on-demand $0.531/h, $0.266/fit, $0.286 total; 51969558 unknown bid $0.532/h, $0.266/fit, $0.266 total; 51454453 unknown bid $0.536/h, $0.268/fit, $0.289 total; 48854219 unknown on-demand $0.537/h, $0.269/fit, $0.289 total; 45070577 unknown b
+00:03:34 renting RTX 5090, host 51650, $0.398/h; estimate $0.209
+00:03:41 instance 53607561: (None, None)
+00:04:02 SweepError: instance unavailable
+00:04:07 destroyed instance 53607561
