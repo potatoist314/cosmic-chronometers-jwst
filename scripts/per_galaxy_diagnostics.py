@@ -966,10 +966,14 @@ def plot_predictive_spectrum(galaxy: GalaxyResult, out: Path | None = None):
         shown[key] = shown[key] * UJY_PER_CGS
 
     fig, axes = plt.subplots(2, 1, figsize=(10, 6), gridspec_kw={"height_ratios": [3, 1]}, sharex=True)
-    axes[0].errorbar(wave, shown["observed"], yerr=shown["effective_uncertainty"], fmt="-", lw=0.5,
-                     color="0.35", label="measured LEGA-C")
-    axes[0].plot(wave, shown["posterior_q50"], color="tab:red", lw=1.2, label="joint Ceridwen median")
-    axes[0].fill_between(wave, shown["posterior_q16"], shown["posterior_q84"], color="tab:red", alpha=0.25)
+    axes[0].fill_between(wave, shown["observed"] - shown["effective_uncertainty"],
+                         shown["observed"] + shown["effective_uncertainty"],
+                         color="0.5", alpha=0.25, linewidth=0, label="measured LEGA-C", zorder=1)
+    axes[0].plot(wave, shown["observed"], color="0.35", lw=0.4, zorder=2)
+    axes[0].fill_between(wave, shown["posterior_q16"], shown["posterior_q84"], color="tab:red", alpha=0.25,
+                         zorder=3)
+    axes[0].plot(wave, shown["posterior_q50"], color="tab:red", lw=1.6, label="joint Ceridwen median",
+                 zorder=4)
     axes[0].set(ylabel=r"$F_\nu$ [$\mu$Jy]")
     axes[0].legend(frameon=False)
     axes[1].axhline(0, color="0.5", lw=0.8)
