@@ -308,6 +308,23 @@ def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, tmp_path, m
     assert any('input-files.json' in cmd for cmd in commands)
 
 
+def test_upload_shares_source_and_inputs_but_not_grid_parts(run, tmp_path, monkeypatch):
+    run.data['source']['input_files'] = ['data/raw/hst_f814w/M1_210210.fits']
+    monkeypatch.setattr(run, 'archive', lambda *a: None)
+    monkeypatch.setattr(run, 'timeout', lambda *a: 60)
+    ssh_calls, copies, grids = [], [], []
+    monkeypatch.setattr(exp.vast, '_ssh', lambda instance, cmd, **kw: ssh_calls.append((cmd, kw)))
+    monkeypatch.setattr(exp.vast, '_rsync_background', lambda *a: grids.append(a) or SimpleNamespace(
+        communicate=lambda timeout: ('', ''), poll=lambda: 0, returncode=0))
+    monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: copies.append(cmd))
+    run.upload({'instance_id': 1})
+    assert ssh_calls and all(kw.get('shared') is True for _, kw in ssh_calls)
+    assert any('sha256sum -c' in cmd for cmd, _ in ssh_calls)
+    [inputs] = copies
+    assert 'ControlMaster=auto' in inputs[inputs.index('-e') + 1]
+    assert len(grids) == 4 and all(port == '22' for port, _, _ in grids)
+
+
 def test_new_dry_run_records_prebuilt_digest(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(exp, 'preflight', lambda *a, **kw: {'commit': 'abc', 'input_files': []})
     monkeypatch.setattr(exp.vast, '_vastai_json', lambda *_: pytest.fail('rental during dry run'))
@@ -359,6 +376,24 @@ def test_download_retry_validates_before_marking_complete(run, cloud, monkeypatc
     assert len(calls) == 2
     assert checked == [run.root / 'fits/baseline/210210-M1_210210']
     assert cloud[1]['created'] == [1]
+
+
+def test_fit_setup_is_shared_and_retrieval_is_not(run, cloud, monkeypatch):
+    original = exp.vast._ssh
+    ssh_calls, pulls = [], []
+    def ssh(instance, command, **kwargs):
+        ssh_calls.append((command, kwargs))
+        return original(instance, command, **kwargs)
+    monkeypatch.setattr(exp.vast, '_ssh', ssh)
+    monkeypatch.setattr(exp, 'pull_results', lambda cmd, **kw: pulls.append(cmd))
+    assert run.execute() == 0
+    setups = [(c, kw) for c, kw in ssh_calls
+              if c.startswith(f'mkdir -p {exp.engine.REMOTE}/.experiment/')]
+    assert len(setups) == 1 and setups[0][1].get('shared') is True
+    assert all(kw.get('shared') is True for _, kw in ssh_calls)
+    [download] = pulls
+    assert '--partial' in download
+    assert 'ControlMaster' not in download[download.index('-e') + 1]
 
 
 def test_exhausted_budget_still_attempts_partial_retrieval(run, monkeypatch):

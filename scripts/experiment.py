@@ -452,7 +452,7 @@ class Run(engine.Run):
         environment = self.prepare(attempt)
         instance = attempt['instance_id']
         for name, setup, command, remote_root, cells in self.fit_stages(attempt, environment):
-            vast._ssh(instance, setup, timeout=self.timeout(attempt))
+            vast._ssh(instance, setup, timeout=self.timeout(attempt), shared=True)
             try:
                 self.stage(attempt, name, command)
             finally:

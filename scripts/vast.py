@@ -198,8 +198,22 @@ def search_offers(extra_query: str = "", *, rental_type: str = "on-demand",
     return [{**offer, "rental_type": rental_type} for offer in offers]
 
 
-def _ssh_options(port: str) -> list[str]:
-    """Offer only the Vast-registered key, so sshd cannot exhaust its tries."""
+# Commands share one SSH connection per instance: a new connection takes ~12 round trips
+# (3.5 s at the 282 ms to host 132677, 2026-10-01), a command on an open one ~2 (0.6 s).
+# A shared connection that stops answering is dropped after 30 s; the next command opens
+# a new one. %C is a 40-character hash: macOS limits socket paths to 104 bytes.
+CONTROL_PATH = str(Path.home() / ".ssh" / "cm-%C")
+
+
+def _ssh_options(port: str, shared: bool = False) -> list[str]:
+    """Offer only the Vast-registered key, so sshd cannot exhaust its tries. ``shared`` reuses
+    the instance's open connection; a bulk copy on its own TCP stream leaves it off."""
+    if shared:
+        reuse = ["-o", "ControlMaster=auto", "-o", f"ControlPath={CONTROL_PATH}", "-o", "ControlPersist=60",
+                 "-o", "ServerAliveInterval=10", "-o", "ServerAliveCountMax=3"]
+    else:
+        # Bootstrap runs for minutes without output; keep the channel alive.
+        reuse = ["-o", "ServerAliveInterval=30", "-o", "ServerAliveCountMax=20"]
     return [
         "-p",
         port,
@@ -217,11 +231,7 @@ def _ssh_options(port: str) -> list[str]:
         "LogLevel=ERROR",
         "-o",
         "ConnectTimeout=20",
-        # Bootstrap runs for minutes without output; keep the channel alive.
-        "-o",
-        "ServerAliveInterval=30",
-        "-o",
-        "ServerAliveCountMax=20",
+        *reuse,
     ]
 
 
@@ -256,10 +266,11 @@ def _ssh(
     command: str,
     timeout: float,
     check: bool = True,
+    shared: bool = False,
 ) -> subprocess.CompletedProcess[str]:
     target, port = _ssh_target(instance_id)
     result = subprocess.run(
-        ["ssh", *_ssh_options(port), target, command],
+        ["ssh", *_ssh_options(port, shared), target, command],
         check=False,
         capture_output=True,
         text=True,

@@ -304,7 +304,7 @@ class Run:
             if state.get('actual_status') == 'running':
                 vast._attach_ssh_key(attempt['instance_id'])
                 try:
-                    probe = vast._ssh(attempt['instance_id'], 'true', timeout=self.timeout(attempt, 30), check=False)
+                    probe = vast._ssh(attempt['instance_id'], 'true', timeout=self.timeout(attempt, 30), check=False, shared=True)
                     if probe.returncode == 0:
                         return
                     log(f'SSH not ready: {probe.stderr.strip()}')
@@ -328,7 +328,7 @@ class Run:
         archive = subprocess.check_output(['git', '-C', str(tree), 'archive', '--format=tar.gz', revision, *paths])
         target, port = vast._ssh_target(attempt['instance_id'])
         destination = REMOTE if tree == ROOT else f'{REMOTE}/{tree.relative_to(ROOT)}'
-        subprocess.run(['ssh', *vast._ssh_options(port), target,
+        subprocess.run(['ssh', *vast._ssh_options(port, shared=True), target,
                         f'mkdir -p {shlex.quote(destination)} && tar -xz -C {shlex.quote(destination)}'],
                        input=archive, capture_output=True, check=True, timeout=self.timeout(attempt, 180))
 
@@ -344,9 +344,10 @@ class Run:
         instance = attempt['instance_id']
         source = self.data['source']
         target, port = vast._ssh_target(instance)
-        vast._ssh(instance, f'mkdir -p {REMOTE}/data/raw {REMOTE}/grid; command -v rsync || (apt-get update -qq && apt-get install -y -qq rsync)', timeout=self.timeout(attempt))
+        vast._ssh(instance, f'mkdir -p {REMOTE}/data/raw {REMOTE}/grid; command -v rsync || (apt-get update -qq && apt-get install -y -qq rsync)', timeout=self.timeout(attempt), shared=True)
         grids = [(entry, pack(entry['grid'], entry['grid_sha256'])) for entry in self.grids()]
-        # The packed grids travel while the source and inputs follow one by one.
+        # The packed grids travel, each part on its own TCP connection, while the source and
+        # inputs follow one by one over the shared connection.
         sending = [vast._rsync_background(port, [str(part)], f'{target}:{REMOTE}/grid/')
                    for _, parts in grids for part in parts]
         try:
@@ -355,8 +356,8 @@ class Run:
                 self.archive(attempt, ROOT / tree, revision, ('.', f':(exclude){UNUSED_SOURCE[tree]}'))
             if 'input_files' in source:
                 payload = json.dumps(source['input_files'])
-                vast._ssh(instance, f'printf %s {shlex.quote(payload)} > {REMOTE}/input-files.json', timeout=self.timeout(attempt))
-                subprocess.run(['rsync', '-aR', '-e', shlex.join(['ssh', *vast._ssh_options(port)]),
+                vast._ssh(instance, f'printf %s {shlex.quote(payload)} > {REMOTE}/input-files.json', timeout=self.timeout(attempt), shared=True)
+                subprocess.run(['rsync', '-aR', '-e', shlex.join(['ssh', *vast._ssh_options(port, shared=True)]),
                                 *source['input_files'], f'{target}:{REMOTE}/'], cwd=ROOT,
                                check=True, capture_output=True,
                                timeout=self.timeout(attempt, 600))
@@ -372,7 +373,7 @@ class Run:
                 if early:
                     name, setup, command = early
                     launches.append(f'{setup} && {self.launch(attempt, name, command)}')
-                vast._ssh(instance, '; '.join(launches), timeout=self.timeout(attempt))
+                vast._ssh(instance, '; '.join(launches), timeout=self.timeout(attempt), shared=True)
             errors = [process.communicate(timeout=self.timeout(attempt, 600))[1] for process in sending]
         finally:
             for process in sending:
@@ -386,7 +387,7 @@ class Run:
                   f"{REMOTE}/grid/{entry['remote_name']}" for entry, parts in grids]
         checks = '\n'.join(f"{entry['grid_sha256']}  {REMOTE}/grid/{entry['remote_name']}" for entry, _ in grids)
         vast._ssh(instance, ' && '.join([*unpack, f'printf %s {shlex.quote(checks)} | sha256sum -c -', f'touch {GRID_CHECKED}']),
-                  timeout=self.timeout(attempt))
+                  timeout=self.timeout(attempt), shared=True)
 
     def launch(self, attempt, name, command):
         """Shell command that starts a stage once, detached; a started or finished stage is left alone."""
@@ -414,7 +415,7 @@ class Run:
         while True:
             self.budget(reserve=attempt['price'] / 120)
             try:
-                reply = vast._ssh(attempt['instance_id'], poll, timeout=self.timeout(attempt, 40)).stdout
+                reply = vast._ssh(attempt['instance_id'], poll, timeout=self.timeout(attempt, 40), shared=True).stdout
                 status, _, contents = reply.partition('\n')
                 log(f'{name}: {status}; {contents[-300:].strip()}')
                 if status != 'running':
@@ -470,7 +471,7 @@ class Run:
                    f'--target {shlex.quote(self.args.target)} --particles 500 --draws 500 --rounds 5 --repeats 10 '
                    f'--seed {self.args.seed} --output {remote_output}')
         self.stage(attempt, 'measure', command)
-        raw = json.loads(vast._ssh(instance, f'cat {remote_output}', timeout=self.timeout(attempt)).stdout)
+        raw = json.loads(vast._ssh(instance, f'cat {remote_output}', timeout=self.timeout(attempt), shared=True).stdout)
         if (not raw['x64'] or not raw['log_likelihood']['finite']
                 or not raw['log_likelihood']['within_test_tolerance']
                 or attempt['offer']['gpu_name'] not in raw['device_kind']):

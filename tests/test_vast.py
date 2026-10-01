@@ -144,6 +144,53 @@ def test_ssh_options_offer_only_the_registered_key(
     assert "ServerAliveInterval=30" in options
 
 
+def test_ssh_options_shared_reuses_one_connection(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    private_key = tmp_path / "benchmark-key"
+    monkeypatch.setattr(sweep, "SSH_KEY_PATH", private_key)
+
+    options = sweep._ssh_options("22022", shared=True)
+
+    assert options[:4] == ["-p", "22022", "-i", str(private_key)]
+    assert "ControlMaster=auto" in options
+    assert f"ControlPath={sweep.CONTROL_PATH}" in options
+    assert "ControlPersist=60" in options
+    assert "ServerAliveInterval=10" in options
+    assert "ServerAliveCountMax=3" in options
+    plain = sweep._ssh_options("22022")
+    assert not any(option.startswith("Control") for option in plain)
+    assert "ServerAliveInterval=30" in plain
+    assert "ServerAliveCountMax=20" in plain
+
+
+def test_control_path_is_a_short_hash_template() -> None:
+    # %C is a 40-character hash; macOS limits socket paths to 104 bytes.
+    assert sweep.CONTROL_PATH.endswith("cm-%C")
+
+
+def test_ssh_forwards_shared_to_its_options(monkeypatch: pytest.MonkeyPatch) -> None:
+    commands = []
+    monkeypatch.setattr(sweep, "_ssh_target", lambda _: ("root@test", "22"))
+    monkeypatch.setattr(sweep.subprocess, "run", lambda command, **kw: commands.append(command)
+                        or SimpleNamespace(returncode=0, stdout="", stderr=""))
+
+    sweep._ssh(1, "true", timeout=2)
+    assert "ControlMaster=auto" not in commands[-1]
+    sweep._ssh(1, "true", timeout=2, shared=True)
+    assert "ControlMaster=auto" in commands[-1]
+
+
+def test_rsync_background_bypasses_the_shared_connection(monkeypatch: pytest.MonkeyPatch) -> None:
+    commands = []
+    monkeypatch.setattr(sweep.subprocess, "Popen", lambda command, **kw: commands.append(command)
+                        or SimpleNamespace(returncode=0))
+    sweep._rsync_background("22", ["part0"], "root@test:/grid/")
+    shell = commands[-1][commands[-1].index("-e") + 1]
+    assert "ControlMaster" not in shell
+    assert "ServerAliveInterval=30" in shell
+
+
 def test_upload_inputs_copies_only_requested_files_and_verifies_them(monkeypatch):
     copied, commands = [], []
     files = ['data/raw/legac_dr2/sp/example.fits', 'data/raw/hst_f814w/example.fits']

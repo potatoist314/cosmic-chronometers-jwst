@@ -231,6 +231,53 @@ def test_reconnect_does_not_launch_a_second_worker_or_truncate_logs(run, cloud, 
     assert cloud[1]['created'] == [1]
 
 
+def test_lifecycle_commands_share_one_connection(run, cloud, monkeypatch):
+    original = bench.vast._ssh
+    calls = []
+    def ssh(instance, command, **kwargs):
+        calls.append((command, kwargs))
+        return original(instance, command, **kwargs)
+    monkeypatch.setattr(bench.vast, '_ssh', ssh)
+    assert run.execute() == 0
+    assert any(command == 'true' for command, _ in calls)
+    assert any('tail -c' in command for command, _ in calls)
+    assert all(kwargs.get('shared') is True for _, kwargs in calls)
+
+
+def test_shared_poll_timeout_reconnects_without_relaunching(run, cloud, monkeypatch):
+    original = bench.vast._ssh
+    polls, dropped = [], []
+    def ssh(instance, command, **kwargs):
+        if 'tail -c' in command:
+            polls.append(kwargs)
+            if not dropped:
+                dropped.append(True)
+                raise subprocess.TimeoutExpired('ssh', 40)
+        return original(instance, command, **kwargs)
+    monkeypatch.setattr(bench.vast, '_ssh', ssh)
+    assert run.execute() == 0
+    assert dropped and len(polls) >= 2
+    assert all(kwargs.get('shared') is True for kwargs in polls)
+    launches = [c for c in cloud[1]['commands'] if 'setsid' in c]
+    assert all('flock -n 9 || exit 0' in c for c in launches)
+    assert cloud[1]['created'] == [1]
+
+
+def test_interrupt_during_shared_poll_destroys_owned_instance_only(run, cloud, monkeypatch):
+    _, state = cloud
+    state['live'][999] = dict(id=999, host_id=900, label='other-task')
+    original = bench.vast._ssh
+    def ssh(instance, command, **kwargs):
+        if 'tail -c' in command:
+            raise KeyboardInterrupt()
+        return original(instance, command, **kwargs)
+    monkeypatch.setattr(bench.vast, '_ssh', ssh)
+    with pytest.raises(KeyboardInterrupt):
+        run.execute()
+    assert state['destroyed'] == [100]
+    assert 999 in state['live']
+
+
 def test_stage_polls_briskly_until_the_exit_file_lands(run, monkeypatch):
     polls, sleeps = [], []
     def ssh(instance, command, **kwargs):
