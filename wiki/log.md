@@ -1449,3 +1449,8 @@
 
 - `wiki/notes/speedups-follow-ups.md`: rejected barrier relocation, SFH bin truncation, XLA f1/f2 probes and other unbuilt options from the overnight speedups REPORT, with commit-pinned evidence links.
 - Files: `wiki/notes/speedups-follow-ups.md`, `wiki/research/experiments/e-speedups-rejected.md`, `wiki/index.md`, `wiki/log.md`.
+
+### 2026-10-01 — Ten-galaxy speedups fits on the wiki
+
+- `wiki/research/experiments/e-quiescent-speedups.md`: ten-galaxy all-production-defaults run on the combined speedups; spectrum and photometry first per target, SFH and physical-corner views, run metadata and pinned source record.
+- Files: `wiki/research/experiments/e-quiescent-speedups.md`, `results/quiescent-test-set-speedups-2026-10-01/` (84 run files, byte-identical to speedups 187b7ad), `wiki/index.md`, `wiki/log.md`.
