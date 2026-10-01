@@ -217,6 +217,47 @@ def rebuild_notebook(command, stop=None, timeout=3600):
         raise subprocess.CalledProcessError(process.returncode, command, stderr=stderr)
 
 
+# A result download that has written no bytes for this long has stalled: it is stopped and
+# retried. Twice on 2026-10-01 (host 132677) the first download stopped mid-file for its whole
+# 94-120 s attempt; each retry took 12-15 s.
+STALL_SECONDS = 30
+
+
+def tree_bytes(directory):
+    """Bytes in the files under ``directory``; a file renamed while it is counted is left out."""
+    total = 0
+    for root, _, names in os.walk(directory):
+        for name in names:
+            try:
+                total += os.stat(os.path.join(root, name)).st_size
+            except FileNotFoundError:
+                pass
+    return total
+
+
+def pull_results(command, *, directory, timeout):
+    """``subprocess.run(command, check=True, capture_output=True, timeout=timeout)`` for an rsync
+    into ``directory``, also stopped once the files there gain no bytes for STALL_SECONDS.
+    SIGTERM goes to rsync and its ssh together; --partial keeps the part of the file in transfer."""
+    start = changed = time.monotonic()
+    size = tree_bytes(directory)
+    with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True) as process:
+        while True:
+            try:
+                stdout, stderr = process.communicate(timeout=1)
+                break
+            except subprocess.TimeoutExpired:
+                now = time.monotonic()
+                if (current := tree_bytes(directory)) != size:
+                    size, changed = current, now
+                if now - changed > STALL_SECONDS or now - start > timeout:
+                    os.killpg(process.pid, signal.SIGTERM)
+                    stdout, stderr = process.communicate()
+                    raise subprocess.TimeoutExpired(command, round(now - start), stdout, stderr) from None
+    if process.returncode:
+        raise subprocess.CalledProcessError(process.returncode, command, stdout, stderr)
+
+
 def regenerate_figures(output, done=None, stop=None):
     """Rebuild figures locally for retrieved fits; best-effort, never fails the run.
 
@@ -358,16 +399,17 @@ class Run(engine.Run):
             try:
                 target, port = vast._ssh_target(attempt['instance_id'])
                 destination.mkdir(exist_ok=True)
-                subprocess.run(['rsync', '-a', '--partial', *(['--checksum'] if retry else []),
-                                '-e', shlex.join(['ssh', *vast._ssh_options(port)]),
-                                f'{target}:{remote_root}/results/', f'{destination}/'],
-                               check=True, capture_output=True, timeout=timeout)
+                pull_results(['rsync', '-a', '--partial', *(['--checksum'] if retry else []),
+                              '-e', shlex.join(['ssh', *vast._ssh_options(port)]),
+                              f'{target}:{remote_root}/results/', f'{destination}/'],
+                             directory=destination, timeout=timeout)
                 if complete:
                     validate_local_result(result)
                 return
             except (vast.SweepError, subprocess.SubprocessError, OSError, ValueError) as caught:
                 error = caught
-                engine.log(f'result retrieval attempt {retry + 1} failed: {caught}')
+                stderr = (getattr(caught, 'stderr', None) or b'').decode(errors='replace').strip()
+                engine.log(f'result retrieval attempt {retry + 1} failed: {caught} {stderr[-300:]}')
         raise engine.StageFailed(f'result retrieval failed; local files: {destination}; '
                                  f'no automatic refit: {error}') from error
 

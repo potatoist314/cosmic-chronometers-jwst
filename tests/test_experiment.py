@@ -1,6 +1,7 @@
 """Exercise experiment configuration and paid-instance lifecycle without rentals."""
 import functools
 import json
+import os
 import subprocess
 import sys
 import time
@@ -73,7 +74,7 @@ def test_fit_downloads_then_destroys_and_resume_does_not_rent(run, cloud, monkey
         assert state['live']
         pulls.append(command)
         return SimpleNamespace(returncode=0)
-    monkeypatch.setattr(exp.subprocess, 'run', pull)
+    monkeypatch.setattr(exp, 'pull_results', pull)
     assert run.execute() == 0
     assert state['destroyed'] == [100]
     assert len(pulls) == 1
@@ -85,7 +86,7 @@ def test_fit_downloads_then_destroys_and_resume_does_not_rent(run, cloud, monkey
 def test_cell_config_is_written_in_one_ssh_call(run, cloud, tmp_path, monkeypatch):
     _, state = cloud
     monkeypatch.setattr(exp.engine, 'REMOTE', str(tmp_path / 'remote'))
-    monkeypatch.setattr(exp.subprocess, 'run', lambda command, **kw: SimpleNamespace(returncode=0))
+    monkeypatch.setattr(exp, 'pull_results', lambda command, **kw: SimpleNamespace(returncode=0))
     assert run.execute() == 0
     cell_root = f"{tmp_path / 'remote'}/.experiment/100/0"
     writes = [c for c in state['commands'] if c.startswith(f'mkdir -p {cell_root}')]
@@ -101,7 +102,7 @@ def test_fit_failure_pulls_partial_outputs_and_destroys(run, cloud, monkeypatch)
     monkeypatch.setattr(run, 'stage', lambda *args: (_ for _ in ()).throw(RuntimeError('fit failed')))
     monkeypatch.setattr(run, 'prepare', lambda _: '')
     pulls = []
-    monkeypatch.setattr(exp.subprocess, 'run', lambda *args, **kw: pulls.append(args))
+    monkeypatch.setattr(exp, 'pull_results', lambda *args, **kw: pulls.append(args))
     assert run.execute() == 1
     assert pulls
     assert state['destroyed'] == [100]
@@ -110,7 +111,7 @@ def test_fit_failure_pulls_partial_outputs_and_destroys(run, cloud, monkeypatch)
 
 def test_failed_download_never_marks_cell_complete(run, cloud, monkeypatch):
     import subprocess
-    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw:
+    monkeypatch.setattr(exp, 'pull_results', lambda *a, **kw:
                         (_ for _ in ()).throw(subprocess.CalledProcessError(23, 'rsync')))
     assert run.execute() == 1
     assert not run.data.get('completed_cells')
@@ -127,7 +128,7 @@ def test_resume_skips_completed_arm_on_new_instance(run, cloud, monkeypatch):
     first = run.data['source']['experiment'][0]
     run.data['source']['experiment'].append({**first, 'name': 'alternative/M1_210210', 'arm': 'alternative'})
     run.data['completed_cells'] = [first['name']]
-    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
+    monkeypatch.setattr(exp, 'pull_results', lambda *a, **kw: None)
     assert run.execute() == 0
     commands = cloud[1]['commands']
     assert any('fit-1' in c for c in commands)
@@ -135,7 +136,7 @@ def test_resume_skips_completed_arm_on_new_instance(run, cloud, monkeypatch):
 
 
 def test_fit_runs_with_untimed_gpu_autotuning(run, cloud, monkeypatch):
-    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
+    monkeypatch.setattr(exp, 'pull_results', lambda *a, **kw: None)
     assert run.execute() == 0
     launch = next(c for c in cloud[1]['commands'] if 'setsid' in c and 'fit-0' in c)
     assert '--xla_gpu_autotune_level=0' in launch
@@ -269,7 +270,7 @@ def test_fatal_stage_error_survives_failed_partial_download(run, cloud, monkeypa
     monkeypatch.setattr(run, 'prepare', lambda _: '')
     monkeypatch.setattr(run, 'stage', lambda *a:
                         (_ for _ in ()).throw(exp.engine.StageFailed('fit exited 1')))
-    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw:
+    monkeypatch.setattr(exp, 'pull_results', lambda *a, **kw:
                         (_ for _ in ()).throw(subprocess.CalledProcessError(23, 'rsync')))
     assert run.execute() == 1
     assert state['created'] == [1]
@@ -323,7 +324,7 @@ def test_rental_uses_manifest_image(run, cloud, monkeypatch):
         assert args.image == run.data['source']['image']
         return create(offer, args)
     monkeypatch.setattr(exp.vast, '_create_instance', checked)
-    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
+    monkeypatch.setattr(exp, 'pull_results', lambda *a, **kw: None)
     assert run.execute() == 0
 
 
@@ -332,7 +333,7 @@ def test_invalid_local_results_retry_download_then_stop_without_refit(run, cloud
     monkeypatch.setattr(exp.vast, 'search_offers', lambda *a, **kw:
                         [offer, {**offer, 'id': 2, 'host_id': 43}])
     pulls = []
-    monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: pulls.append(cmd))
+    monkeypatch.setattr(exp, 'pull_results', lambda cmd, **kw: pulls.append(cmd))
     monkeypatch.setattr(exp, 'validate_local_result', lambda _:
                         (_ for _ in ()).throw(FileNotFoundError('missing HDF5')))
     assert run.execute() == 1
@@ -352,7 +353,7 @@ def test_download_retry_validates_before_marking_complete(run, cloud, monkeypatc
         if len(calls) == 1:
             raise subprocess.CalledProcessError(23, 'rsync')
     checked = []
-    monkeypatch.setattr(exp.subprocess, 'run', pull)
+    monkeypatch.setattr(exp, 'pull_results', pull)
     monkeypatch.setattr(exp, 'validate_local_result', lambda path: checked.append(path))
     assert run.execute() == 0
     assert len(calls) == 2
@@ -365,9 +366,59 @@ def test_exhausted_budget_still_attempts_partial_retrieval(run, monkeypatch):
     monkeypatch.setattr(exp.engine, 'estimated_spend', lambda _: 2.)
     run.data['attempts'] = [attempt]
     copies = []
-    monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: copies.append(kw['timeout']))
+    monkeypatch.setattr(exp, 'pull_results', lambda cmd, **kw: copies.append(kw['timeout']))
     run.retrieve(attempt, run.data['source']['experiment'][0], '/remote', complete=False)
     assert copies == [1]
+
+
+def test_stalled_download_is_stopped_with_its_ssh_and_keeps_its_bytes(tmp_path, monkeypatch):
+    monkeypatch.setattr(exp, 'STALL_SECONDS', 2)
+    # Writes 5 bytes, then waits on a child that stands in for ssh and never sends more.
+    script = f'printf 12345 > {tmp_path}/part; sleep 60 & echo $! > {tmp_path}/ssh.pid; echo stalled >&2; wait'
+    start = time.monotonic()
+    with pytest.raises(subprocess.TimeoutExpired) as caught:
+        exp.pull_results(['bash', '-c', script], directory=tmp_path, timeout=120)
+    assert time.monotonic() - start < 6
+    assert caught.value.stderr == b'stalled\n'
+    assert (tmp_path / 'part').read_bytes() == b'12345'
+    ssh = int((tmp_path / 'ssh.pid').read_text())
+    for _ in range(50):
+        try:
+            os.kill(ssh, 0)
+        except ProcessLookupError:
+            break
+        time.sleep(.1)
+    else:
+        pytest.fail('the stand-in ssh outlived the stopped download')
+
+
+def test_download_that_keeps_writing_runs_past_the_stall_window(tmp_path, monkeypatch):
+    monkeypatch.setattr(exp, 'STALL_SECONDS', 1.5)
+    script = f'for i in $(seq 12); do printf x >> {tmp_path}/part; sleep .3; done'
+    exp.pull_results(['bash', '-c', script], directory=tmp_path, timeout=120)
+    assert (tmp_path / 'part').read_bytes() == b'x' * 12
+
+
+def test_download_keeps_its_attempt_timeout_and_exit_status(tmp_path):
+    with pytest.raises(subprocess.TimeoutExpired):
+        exp.pull_results(['bash', '-c', f'while :; do printf x >> {tmp_path}/part; sleep .2; done'],
+                         directory=tmp_path, timeout=2)
+    with pytest.raises(subprocess.CalledProcessError) as caught:
+        exp.pull_results(['bash', '-c', 'echo refused >&2; exit 23'], directory=tmp_path, timeout=120)
+    assert (caught.value.returncode, caught.value.stderr) == (23, b'refused\n')
+
+
+def test_failed_retrieval_logs_the_rsync_error(run, monkeypatch):
+    attempt = {'instance_id': 100, 'price': .2}
+    run.data['attempts'] = [attempt]
+    monkeypatch.setattr(exp.engine, 'estimated_spend', lambda _: 0.)
+    logged = []
+    monkeypatch.setattr(exp.engine, 'log', logged.append)
+    monkeypatch.setattr(exp, 'pull_results', lambda cmd, **kw: (_ for _ in ()).throw(
+        subprocess.CalledProcessError(255, 'rsync', stderr=b'Connection reset by peer\n')))
+    with pytest.raises(exp.engine.StageFailed):
+        run.retrieve(attempt, run.data['source']['experiment'][0], '/remote', complete=True)
+    assert len(logged) == 3 and all(line.endswith('Connection reset by peer') for line in logged)
 
 
 def test_fits_rank_good_then_unknown_then_poor_hosts(run, cloud, monkeypatch):
@@ -515,7 +566,7 @@ def test_several_fits_per_gpu_share_one_stage_then_each_is_validated(run, cloud,
     add_alternative_arm(run)
     run.args.fits_per_gpu = 2
     checked = []
-    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
+    monkeypatch.setattr(exp, 'pull_results', lambda *a, **kw: None)
     monkeypatch.setattr(exp, 'validate_local_result', checked.append)
     assert run.execute() == 0
     commands = cloud[1]['commands']
@@ -529,7 +580,7 @@ def test_several_fits_per_gpu_share_one_stage_then_each_is_validated(run, cloud,
 
 def test_one_pending_cell_runs_alone_whatever_fits_per_gpu(run, cloud, monkeypatch):
     run.args.fits_per_gpu = 4
-    monkeypatch.setattr(exp.subprocess, 'run', lambda *a, **kw: None)
+    monkeypatch.setattr(exp, 'pull_results', lambda *a, **kw: None)
     assert run.execute() == 0
     launch = next(c for c in cloud[1]['commands'] if 'setsid' in c and 'fit-0' in c)
     assert '--fits-per-gpu' not in launch
@@ -541,7 +592,7 @@ def test_failed_shared_stage_keeps_only_validated_cells(run, cloud, monkeypatch)
     monkeypatch.setattr(run, 'prepare', lambda _: '')
     monkeypatch.setattr(run, 'stage', lambda *a: (_ for _ in ()).throw(exp.engine.StageFailed('fit-0 exited 1')))
     pulls = []
-    monkeypatch.setattr(exp.subprocess, 'run', lambda cmd, **kw: pulls.append(cmd))
+    monkeypatch.setattr(exp, 'pull_results', lambda cmd, **kw: pulls.append(cmd))
     def validate(path):
         if path.name != '210210-M1_210210' or path.parent.name != 'baseline':
             raise exp.subprocess.CalledProcessError(1, 'validate')
