@@ -48,3 +48,23 @@ host_id,outcome,gpu,date,run,reason
 662751,good,RTX 5090,2026-09-30,results/speedup-lane-check-2026-09-30/run/manifest.json,instance 53545256 finished the 266-iteration kernel check in 18 min from rental
 146915,poor,RTX 5090,2026-09-30,results/m1-210210-neb-eline-ca-noo-2026-09-30/run/manifest.json,instance 53559982 image load failed with docker_build() error writing dockerfile; stuck with no status change; the runner replaced it
 81276,good,RTX 5090,2026-09-30,results/speedup-lane-cause-2026-09-30/run/manifest.json,instance 53556209 booted in 3 min and ran 8 diagnostic jobs
+146008,good,RTX 5090,2026-09-30,results/m1-210210-neb-eline-ca-nohe-zevo-2026-09-30/run/manifest.json,instance 53558252 finished 1 of 1 fits
+146008,poor,RTX 5090,2026-09-30,results/m1-210210-neb-eline-ca-noo-2026-09-30/run/manifest.json,instance 53562482 refused SSH during result retrieval (rsync exit 255 three times); instance unavailable and destroyed; the fit was redone on host 81276
+81276,good,RTX 5090,2026-09-30,results/m1-210210-neb-eline-ca-noo-2026-09-30/run/manifest.json,instance 53564266 finished 1 of 1 fits
+146008,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/session1/run/manifest.json,instance 53565581 ran the profiling session
+175463,poor,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/session2/run/manifest.json,bid instance 53573864 container failed to start (OCI runtime create failed: failed to create shim task); destroyed after 11.5 min
+43794,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/session2/run/manifest.json,instance 53575696 ran the likelihood and autotune A/B jobs for 83 min
+127708,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e/run/manifest.json,instance 53580917 finished 1 of 1 fits; image load 7.3 min
+18,poor,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/session3/run/manifest.json,bid instance 53588305 ($0.125/h) left loading and became unavailable after 12 min without running a job
+370354,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/session3/run/manifest.json,bid instance 53590735 ran the session 3 jobs
+415547,poor,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e-final/run/manifest.json,instance 53592074 container failed to start after image load (OCI runtime create failed: failed to create shim task)
+564477,poor,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e-final/run/manifest.json,bid instance 53592331 became unavailable 30 s after rental
+132677,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e-final/run/manifest.json,bid instance 53592414 finished 1 of 1 fits in 7.9 min from rental
+146008,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/session4/run/manifest.json,bid instance 53595253 ran the session 4 jobs
+43794,poor,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e-trim/run/manifest.json,bid instance 53596914 became unavailable 68 s after rental while loading
+146008,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e-trim/run/manifest.json,bid instance 53597096 finished 1 of 1 fits; running 42 s after rental
+132677,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/session5/run/manifest.json,bid instance 53598740 ran the session 5 jobs
+132677,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e-slim/run/manifest.json,bid instance 53601900 finished 1 of 1 fits
+18,poor,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e-slim2/run/manifest.json,bid instance 53604961 ($0.365/h) became unavailable mid-fit, 6 min after rental
+415547,poor,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e-slim2/run/manifest.json,instance 53605571 container failed to start again (failed to create task); the runner replaced it 64 s after the failure
+383511,good,RTX 5090,2026-09-30,results/speedups-overnight-2026-09-30/e2e-slim2/run/manifest.json,bid instance 53605802 finished 1 of 1 fits
