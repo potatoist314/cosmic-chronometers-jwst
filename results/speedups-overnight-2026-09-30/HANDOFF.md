@@ -146,3 +146,77 @@ Docker fails); host-Docker-aware ranking (conflicts with rental rule).
 - Runner: `python3 scripts/experiment.py run <config> --gpu "RTX 5090"`;
   `--dry-run` preflights; `--spend-cap 1`; policy in `AGENTS.md`
   (reliability >99.5%, bandwidth <$10/TB, host-record ranking).
+
+## Session timeline (UTC 30 Sep – 1 Oct)
+
+| Session | Work | Spend |
+|---|---|---|
+| 1 (profile) | Likelihood profiling, found eline + calibration hot spots | $0.145 |
+| 2 (likelihood, autotune) | Eline windows/gather/one-select; autotune-0 study; 17,300-point bitwise proofs | $0.648 |
+| 3 (image, overlap, cell 14) | Split-image runs, step-compile overlap, posterior-predictive timing | $0.068 |
+| 4 (NCCL/NVSHMEM A/B) | Library-removal A/B; present/hidden/present bitwise protocol | $0.067 |
+| 5 (cuDNN/cuSPARSE/cuSOLVER A/B) | Kept `libcudnn.so.9` + `libcudnn_graph.so.9`; cuSOLVER/cuSPARSE required | $0.151 |
+| 6 (upload streams) | 4 vs 8 vs 12 rsync streams; 12 hits sshd MaxStartups; kept 4 | $0.091 |
+| 7 (timed upload, probes) | 57.38 s upload breakdown; 3/10 transfer stalls; post-fit pull 12.9 s | $0.061 |
+| e2e chain | After each stage: `48fdc7f`, `04d4574`, `f3cf417`, `cadac99`, `f37e4c0` | $0.059–0.102 each |
+| Swarm workers (parallel) | Likelihood (CSP support, line posterior, Gram/f1/f2 probes), sampler (lane rounds, edge-skip), throughput (K-fits, GPU types) | their own records |
+| Integration (1 Oct) | `ea91453` + `bae8f56`/`85d6288` cherry-picks → ceridwen `2d5edc9`; SSH sharing `9d9bd93`; `integrate/` durables; astro `5324377`, `a6fba80` | — |
+| Validation (1 Oct) | `e2e-combined` ($0.634 incl. one DNS-killed $0.612 attempt); ten-galaxy run ($0.237); figure restyle `f7b8ce8` | $0.871 |
+
+Total: $2.311 over 25 instances, all destroyed, every run under its $1 cap.
+
+## Production-fit stage table (condensed)
+
+M1_210210 zevo, seed 20260927. Columns: before `48f56a4` → after
+`48fdc7f` → all `04d4574` → all `f3cf417` (6ca819ac) → all `cadac99` →
+all `f37e4c0`. Full table in REPORT.
+
+- Offer search/refusals: 2.2 min → 26 s → 10 s → 18 s → 10 s → 4 s.
+- Instance loading: ~5.9 min → 7.3 min → 2:25 → 1:46 → 1:10 → 0:14.
+- Upload + bootstrap: ~11 min → 1:58 → 1:11 → 0:53 → 1:08 → 1:03.
+- Fit (box): 11.8 min → 4.5 min → ≤3.8 min → 3.5 min → 2:34 → 2:21.
+- Sampler wall: 628.2 s → 197.8 s → 187.6 s → 184.2 s → 106.6 s → 106.6 s.
+- Iteration 1: — → 17.0 s → 1.04 s → 1.02 s → 0.43 s → 0.43 s.
+- Wall (clean): 31.3 min → 14.6 min → 8.8 min → 10.7 min → 6.0 min → 5.0 min.
+- Cost: $0.162 → $0.067 → $0.036 → $0.071 → $0.059 → $0.059.
+- ln Z stays 236001.2–236001.8 (±0.19–0.41; error varies by RNG design).
+
+## Verification cookbook (run from the worktree root)
+
+Ceridwen tests (70 targeted, CPU):
+`JAX_PLATFORMS=cpu PYTHONPATH=$PWD/ceridwen <venv>/bin/python -m pytest
+tests/test_nss_diagnostics.py tests/test_ns_checkpoint.py
+tests/csp/test_wavelength_support.py tests/csp/test_sfh_basis_fastpath.py
+tests/test_emission_line_columns.py`
+
+Likelihood replay (17,800 dead-point lnL+lnP vs a base tree): the likelihood
+worker's `lnl_dump.py` + `cmp.py` (copies under `integrate/cpu/`).
+
+Sampler replay (production iters 20/140 vs a base `nested.py`):
+`results/speedups-swarm-sampler-2026-10-01/cpu/rounds.py` with
+`BASE_NESTED` set; `ITERS=20,140`.
+
+GPU-equivalence recheck (no rental): committed `integrate/gpu3/out` +
+existing `results/speedups-swarm-sampler-2026-10-01/cpu/cmp2.py` reproduces
+the 5/5 dead + 2/2 adapter-samples bitwise table.
+
+Fit validation: `validate_result(<fit dir>)` from `scripts/experiment.py`
+(checks finite weights/evidence, derived groups + `diagnostics.passed`,
+error-free executed notebook). Run it with `PYTHONPATH` forcing the pinned
+worktree ceridwen/sedpy or the kernel imports the stale main checkout.
+
+Runner tests: 150 tests under `tests/test_{vast,benchmark,experiment}.py`.
+
+## Open items and watch-outs
+
+- `speedups` is NOT merged into `absorption-mask` (needs Liu Hao's call).
+- `log_evidence_err` RNG, host variance (Ryzen 2.5e-13; host 383511
+  wobble), and the combined-tree derived rounding (≤6.3e-14, inferred
+  GPU-kernel cause) are all characterised above — not blockers.
+- `f7b8ce8` restyled the predictive spectrum figure (data-as-band)
+  per Liu Hao's pick; this handoff file follows it on `speedups`.
+- Untracked strays in the worktree (session1/2 trace artifacts) were left
+  alone; the likelihood worktree still carries the uncommitted, proven
+  not-free barrier patch — do not integrate it.
+- Rejected-options wiki page is owned by another worker on
+  `absorption-mask`; this handoff does not duplicate it.
