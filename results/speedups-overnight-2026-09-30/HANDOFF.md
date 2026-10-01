@@ -19,11 +19,15 @@ broadband photometry using nested sampling (BlackJAX). One "fit" =
 ~150–175 nested-sampling iterations × 100 deletions × 65 inner steps ≈
 5–6M likelihood calls on GPU, then posterior draws and figures.
 
-This repo (`cosmic-chronometers-jwst`, branch `speedups`) holds the driver
-notebook, runner scripts, and results; the model lives in the `ceridwen`
-submodule (branch `speedups`, pin `2d5edc9`). Fetch both branches from
-GitHub (`potatoist314/ceridwen`, `potatoist314/cosmic-chronometers-jwst`)
-— every commit hash below exists there.
+This repo holds the driver notebook, runner scripts, and results; the model
+lives in the `ceridwen` submodule (pin `2d5edc9`). Everything is on the
+`speedups` branch of each repo — every commit hash below exists there:
+
+- <https://github.com/potatoist314/cosmic-chronometers-jwst/tree/speedups>
+- <https://github.com/potatoist314/ceridwen/tree/speedups>
+
+This file is at `results/speedups-overnight-2026-09-30/HANDOFF.md`, next to
+the full `REPORT.md` and the `integrate/` proof artifacts.
 
 Reference config, in full: target M1_210210 (LEGA-C DR2, z=0.654);
 photometry cosmos2025; SSP grid `amist_c3k_hr_krou_afe_nebular.h5`;
