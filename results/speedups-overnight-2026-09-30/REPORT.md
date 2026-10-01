@@ -124,6 +124,7 @@ Upload 57.38 s: new-connection SSH commands 3.5–3.9 s each, source archives 5.
 | `jax.jit` of the emission-line columns | | 1,049,770 elements differ on CPU, max 4.0e-28 |
 | `jax.jit` of `posterior_draws_with_lines` | 3.89 → 1.64 s (CPU) | 3e-10 relative differences |
 | Masked-row compaction / windowed Gram matrix | windowed Gram: 2,560 of 17,800 GPU lnL differ, max 1.7e-8 | reorders sums |
+| XLA probes `f1` (Triton GEMM off), `f2` (also cuBLASLt on) | both dumps differ from the candidate baseline on all 17,800 GPU lnL; jobs and dumps under `integrate/gpu-lik/` | cause unresolved; not accepted or integrated |
 | Persistent XLA compile cache | warm cache −2.2 s | executables embed galaxy data; a new galaxy costs ~3 s more |
 | Skip the catalogue YAML header parse | ~1.9 s per read | masked columns rely on it |
 | Parallel offer-search API calls | ~2.5 s | pre-rental total is 5.6 s |
