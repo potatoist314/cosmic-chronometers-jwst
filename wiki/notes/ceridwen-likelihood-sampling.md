@@ -235,28 +235,26 @@ The unconstrained transformation prevents hard uniform boundaries from becoming 
 
 The defaults use 500 live points and five inner steps for each dimension. Each iteration deletes one-fifth of the live points. The default `logZ_tol` is `-5` (`sampler/nested.py:144-172` and `350-359`).
 
-`BlackJAXNestedSamplerAdapter` defaults to `slice_kernel='lanes'`. `lane_update` runs each replaced particle’s full slice chain in one `lax.while_loop`, evaluating one left edge, right edge or shrink proposal per iteration. Under `vmap`, iterations equal the largest per-particle evaluation total, not the sum of per-step maxima (Dance et al., 2025, arXiv:2503.17405).
+`BlackJAXNestedSamplerAdapter` defaults to `slice_kernel='lanes'` (Dance et al., 2025, arXiv:2503.17405). `lane_update` runs each replaced particle’s slice chain as one lane in one `lax.while_loop`. Each round evaluates one batch of `num_delete` candidates: one left edge, right edge or shrink proposal per running lane. `'carry'` retains the BlackJAX kernel with `stepping_out_carry`, testing each new edge once. `'stock'` selects unchanged `blackjax.nss`.
 
-CPU samples, evidence and call counts are bitwise equal to `blackjax.nss`. On RTX 5090, lanes and carry differ only through float32 rounding in the photometry product `_T @ spectrum`. M1_210210 sampling: carry 253.2 s; lanes 108.7 s. `'carry'` retains the BlackJAX kernel with `stepping_out_carry` (each new edge tested once); `'stock'` selects unchanged `blackjax.nss`.
+A candidate with prior below the slice level is outside the slice regardless of likelihood. Each round, a lane advances past up to `free_moves=8` such candidates and stored results outside the slice without a likelihood call. One pass computes each lane’s next `free_moves + lookahead` candidates, assuming earlier candidates are outside, and evaluates their priors as one batch. Finished lanes’ batch slots evaluate running lanes’ next candidates, up to `lookahead - 1 = 3` per lane. Results are stored per lane and reused when slice step, `t` and position match bitwise. A stored result inside the slice also triggers evaluation of that lane’s next candidate in the same round. The batch remains `num_delete`: on CPU, a row’s log-likelihood bits depend on batch size.
 
-`ceridwen/ceridwen/sampler/nested.py:209-220 · lane_update`
+CPU samples, evidence and call counts are bitwise equal to `blackjax.nss` (`tests/test_nss_diagnostics.py`). On RTX 5090, lanes and carry differ only through float32 rounding in `_T @ spectrum`, the photometry product. M1_210210 sampling: carry 253.2 s, lanes 108.7 s. With the rules above, iterations 20 and 140 take 156 and 245 rounds, versus 376 and 427 without them (`ceridwen a60f1f8`). On the same RTX 5090 rental, sampling falls from 180.4 s to 108.0 s and `BlackJAXNestedSamplerAdapter.run` from 183.1 s to 111.2 s. Dead points and samples remain bitwise equal (`results/speedups-swarm-sampler-2026-10-01/session2`).
+
+`ceridwen/ceridwen/sampler/nested.py:330-337 · lane_update`
 
 ```python
-                in_left, in_right = s["phase"] == _LEFT, s["phase"] == _RIGHT
-                in_shrink = s["phase"] == _SHRINK
-
-                # One candidate per iteration: an edge, or a shrink proposal.
-                key, subkey = jax.random.split(s["key"])
-                t = s["left"] + jax.random.uniform(subkey) * (s["right"] - s["left"])
-                t = jnp.where(in_left, s["left"], jnp.where(in_right, s["right"], t))
-                direction = unravel(directions[i])
-                x = jax.tree.map(lambda p, d: p + t * d, state.position, direction)
-                candidate = init_state_fn(x, loglikelihood_birth=loglikelihood_0)
-                inside = ((candidate.logdensity >= s["level"])
-                          & (candidate.loglikelihood > loglikelihood_0))
+            # Move past candidates below the prior level (outside the slice
+            # whatever their likelihood) and stored ones outside the slice,
+            # up to free_moves of them, within the slice step.
+            free = (~(logprior >= level) | (hit & ~found_inside)) & ~ends
+            m = jnp.argmin(free & (jnp.arange(depth) < free_moves), axis=1)
+            at = lambda tree: jax.tree.map(lambda v: v[lanes, m], tree)  # noqa: E731
+            s, now_t, now_x, now_hit, now_found, now_inside = at(
+                (states, t, x, hit, found, found_inside))
 ```
 
-`ceridwen/ceridwen/sampler/nested.py:673-683 · _logical_likelihood_calls`
+`ceridwen/ceridwen/sampler/nested.py:819-829 · _logical_likelihood_calls`
 
 ```python
     @staticmethod
@@ -287,7 +285,7 @@ CPU samples, evidence and call counts are bitwise equal to `blackjax.nss`. On RT
 <details>
 <summary>Details</summary>
 
-`ceridwen/ceridwen/sampler/nested.py:577-587 · BlackJAXNestedSamplerAdapter.run`
+`ceridwen/ceridwen/sampler/nested.py:883-892 · BlackJAXNestedSamplerAdapter.run`
 
 </details>
 

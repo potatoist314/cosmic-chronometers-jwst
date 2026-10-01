@@ -1,0 +1,9 @@
+base       it 168 logZ 236002.77080421132 calls 5478067 sampling 180.4 first 4.7 later 175.2 bitwise True
+hop8       it 168 logZ 236002.77080421132 calls 5478067 sampling 108.0 first 5.5 later 102.1 bitwise True
+k2         it 165 logZ 236003.4457214247 calls 5484956 sampling 155.0 first 6.7 later 147.8 bitwise False
+onepass12  it 168 logZ 236002.77080421132 calls 5478067 sampling 111.9 first 5.9 later 105.5 bitwise True
+onepass4   it 168 logZ 236002.77080421132 calls 5478067 sampling 109.8 first 5.0 later 104.3 bitwise True
+onepass8   it 168 logZ 236002.77080421132 calls 5478067 sampling 109.9 first 5.2 later 104.2 bitwise True
+unroll4    it 168 logZ 236002.77080421132 calls 5478067 sampling 110.7 first 8.1 later 102.1 bitwise True
+adapter-hop8       run 111.2 sampling wall 102.6 logZ 236002.80751911772 calls 5478067 samples bitwise True
+adapter-onepass8   run 113.1 sampling wall 104.9 logZ 236002.80751911772 calls 5478067 samples bitwise True

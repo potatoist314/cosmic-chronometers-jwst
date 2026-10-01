@@ -1439,3 +1439,9 @@
 - Ceridwen: \(40\sigma\) emission-line windows; tied-doublet column gather; one-select window placement; step kernel compiled at sampler init; sparse filter-grid interpolation in `Photometry.setup_for_model`.
 - Runner/fits: XLA autotune level 0; COSMOS catalogues read once/process; one KL-quantile sort; next offer after Vast refusal; outbid instances replaced; four-part parallel grid upload with overlapping bootstrap; venv image layer split into 11, plus Vast SSH packages.
 - Evidence: `results/speedups-overnight-2026-09-30/REPORT.md` — gains, exactness, commits, before/after fit time and cost. Files: `ceridwen`, `scripts/`, `.github/workflows/ceridwen-image*.yml`, `wiki/notes/vast-ai-gpu-workflow.md`.
+
+### 2026-10-01 — Swarm sampler speedups
+
+- Unmerged `speedups-swarm-sampler` in this repo and `potatoist314/ceridwen`; `ceridwen` pin `e8b7643` (`a935a99`, `e8b7643` atop `a60f1f8`). Updated `wiki/notes/ceridwen-likelihood-sampling.md`.
+- `lane_update`: skip likelihood below prior slice level; finished lanes’ slots evaluate running lanes’ next candidates. Store per lane; reuse on bitwise match of slice step, t and position. One pass per round computes next candidates and priors; stored inside results allow another candidate evaluation that round. Batch remains `num_delete`.
+- CPU bitwise equality vs `blackjax.nss` (`tests/test_nss_diagnostics.py`) and vs `a60f1f8` at M1_210210 iterations 20 and 140. Same RTX 5090 rental: sampling 180.4 → 108.0 s; `BlackJAXNestedSamplerAdapter.run` 183.1 → 111.2 s; dead points and samples bitwise equal. Record: `results/speedups-swarm-sampler-2026-10-01`.

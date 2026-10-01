@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/onepass:$SEDPY EXPECT_CERIDWEN=payload/onepass FREE_MOVES=8 LOOKAHEAD=4 XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' SPEEDUP_NOTEBOOK={R}/payload/new.ipynb SPEEDUP_SETTINGS='{"metallicity_evolution": true}' RUN_TAG=onepass8-trace RUN_ITERS=12 RUN_TRACE=10:12 {P} {R}/box_fit.py

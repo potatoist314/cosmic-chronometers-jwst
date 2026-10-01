@@ -1,0 +1,6 @@
+base       it 168 logZ 236002.77080421132 calls 5478067 sampling 194.5 first 9.5 later 184.3 bitwise True
+new        it 168 logZ 236002.77080421132 calls 5478067 sampling 153.8 first 14.1 later 139.0 bitwise True
+unroll4    it 168 logZ 236002.77080421132 calls 5478067 sampling 139.1 first 16.7 later 121.7 bitwise True
+unroll8    it 168 logZ 236002.77080421132 calls 5478067 sampling 153.3 first 22.5 later 130.1 bitwise True
+adapter-new        run 157.4 sampling wall 135.7 logZ 236002.80751911772 calls 5478067 samples bitwise True
+adapter-unroll8    run 159.4 sampling wall 129.2 logZ 236002.80751911772 calls 5478067 samples bitwise True

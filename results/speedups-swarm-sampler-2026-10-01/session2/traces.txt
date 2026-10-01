@@ -1,0 +1,8 @@
+== onepass8-trace
+span 930.0 ms busy 849.6 ms idle 80.7 ms; events {'kernel': 57683, 'memcpy': 14497, 'memset': 390}
+  gaps 0-5 us: 69941 totalling 65.3 ms
+  gaps 5-20 us: 820 totalling 6.1 ms
+  gaps 20-50 us: 96 totalling 2.5 ms
+  gaps 50-200 us: 20 totalling 2.0 ms
+  gaps 200-1000000000000.0 us: 13 totalling 5.0 ms
+kernels >100us: {'gemm_fusion_dot_general_12': 177.2, 'loop_multiply_fusion_4': 95.4, 'gemm_fusion_dot_13': 64.1, 'loop_multiply_fusion_1': 39.4, 'loop_select_fusion_18': 39.3, 'input_reduce_fusion_1': 34.6}

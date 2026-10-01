@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/unroll:$SEDPY EXPECT_CERIDWEN=payload/unroll FREE_MOVES=4 XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' SPEEDUP_NOTEBOOK={R}/payload/new.ipynb SPEEDUP_SETTINGS='{"metallicity_evolution": true}' RUN_TAG=unroll4  {P} {R}/box_fit.py
