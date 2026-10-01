@@ -1,5 +1,9 @@
 # Speedups handoff (overnight 2026-09-30 + integration)
 
+Public repo: <https://github.com/potatoist314/ceridwen> (`speedups` branch).
+Driver repo: <https://github.com/potatoist314/cosmic-chronometers-jwst>
+(`speedups` branch; this file is `results/speedups-overnight-2026-09-30/HANDOFF.md`).
+
 For an agent continuing this work. The full record is `REPORT.md` in this
 directory; this file summarises what changed, how fast it got, and where the
 proof lives. Branch `speedups` (astro + `potatoist314/ceridwen` submodule).
