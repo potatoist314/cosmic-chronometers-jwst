@@ -33,30 +33,38 @@ Likelihood figures: M1_210210 zevo model, RTX 5090, µs per call at batch 100 / 
 | Outbid or vanished instance is replaced | avoids an open-ended wait (12 min observed, session 3); final e2e: next rental 6 s after the outbid stop was seen | no computation; runner tests | `269633f` |
 | GPU image holds the packages Vast's SSH launch installs | Vast's derived-image step 24–30 s → ~6 s (host 132677) | image = split image + one 79.4 MB layer (Actions run 36780287741); no computation | `8515f8f`, `04d4574` |
 | GPU image with the 3.5 GB venv layer split into 11 | created → running 7.3 min (host 127708) / ~5.9 min (host 146008) → 2 min 7 s (host 370354) | 28,224 tar members identical (name, type, mode, owner, mtime, link, pax headers, sha256); container file listings and configuration identical (Actions run 36779780421) | `a481e48`, `7fb6f06`, `04d4574` |
+| GPU image without NCCL and NVSHMEM | download 3.68 → 3.05 GB compressed | one boot: 17,900 dead-point lnL, log prior and stored values bitwise with the libraries present, hidden, present again; production fit on the new image (host 146008) vs the old (host 132677): all 17,800 dead-point lnL and logZ 236001.20006902877 bitwise, 5,624,104 lnL calls in both; container listings differ only by those 24 files (Actions run 36784540834) | `de74870`, `788492d` |
+| GPU image without the eight cuDNN libraries XLA never loads | 3.05 → 2.32 GB (cuDNN layer 770 → 45 MB) | XLA needs `libcudnn.so.9` and `libcudnn_graph.so.9` only (`/proc/self/maps`); one boot: 17,900 lnL, 300 dead points of 3 sampler iterations, cell 14's 143 compiles bitwise with the other eight hidden; production fit on the new image (host 132677): all 54 result and 65 of 66 derived entries bitwise vs the previous image (the 66th is `wall_time_s`) | `88259d8`, `c9d0b3f` |
+| … and without `libcusolverMg`, `libcufftw`, the nvrtc builtins and alt build | 2.32 → 2.15 GB | absent from `/proc/self/maps` in the same three jobs; production fit on it (host 383511, Ryzen 7 9800X3D) completed; dead-point positions bitwise vs the fit on the NCCL-trimmed image (host 146008, i5-12400F); 11,176 of 17,800 lnL differ by ≤ 9.5e-7 (2.5e-13 relative), all downstream of 9 of 28 filter effective wavelengths that sedpy_jax computes with NumPy `log`/`exp` on the host CPU (`observate.py:593–605`), ≤ 5.4e-15 relative | `c73a664`, `f3cf417` |
+| Container that fails to start is replaced after 60 s | ≥ 4 min → 64 s per such host (host 415547 again, 2026-09-30 23:44) | no computation; runner tests | `5b3e186` |
+| KL figure: one sort per KL value; prior reference sorted once | `marginal_kl_bits` 2.25 → 1.23 ms per call (min of 40), ~5,000 calls per figure rebuild | KL table and both noise floors of the production fit bitwise; tests against `np.histogram` at 17,800 / 65,536 / 65,537 / 100,000 samples | `27df4f7` |
+| `--fits-per-gpu K`: K cells at once under CUDA MPS (swarm-throughput) | 4 targets, fit stage 839 → 641 s (K=2), 607 s (K=4), one boot | result and derived h5 of all 4 targets bitwise vs K=1 at K=2 and K=4 (only `wall_time_s`); K=1 default unchanged | `468ffe4` (`faf650c`) |
 
 ## One production fit, before and after
 
 M1_210210, `neb_eline_ca_nohe_zevo`, seed 20260927, RTX 5090, one run each.
 
-| Stage | Before (`48f56a4`) | After (`48fdc7f`) | After (all, `04d4574`) |
-|---|---|---|---|
-| Offer search and refusals | 2.2 min | 26 s | 10 s (3 refusals) |
-| Failed hosts | — | — | 3.5 min: host 415547 container start failed (Vast shim missing; destroyed by hand after 1 min, the stall rule acts after ≥ 4 min), host 564477 outbid |
-| Instance loading | ~5.9 min | 7.3 min | 2 min 25 s |
-| Upload and bootstrap | ~11 min (SSH wait, upload, bootstrap) | 1 min 58 s | 1 min 11 s |
-| Fit (box) | 11.8 min | 4.5 min | ≤ 3.8 min |
-| Sampler wall | 628.2 s | 197.8 s | 187.6 s |
-| Sampler iteration 1 | | 17.0 s | 1.04 s |
-| Retrieval, teardown | 20 s | 12 s | 13 s |
-| Local figure rebuild | | 40.3 s | 47 s |
-| Wall | 31.3 min | 14.6 min | 12.3 min (8.8 min without the failed hosts) |
-| Billed GPU time | 23.2 min | 9.5 min | 4.9 min |
-| Cost | $0.162 | $0.067 | $0.036 |
-| ln Z | 236001.315 ± 0.185 | 236001.806 ± 0.205 | 236001.239 ± 0.245 |
+| Stage | Before (`48f56a4`) | After (`48fdc7f`) | After (all, `04d4574`) | After (all, `f3cf417`, image 6ca819ac) |
+|---|---|---|---|---|
+| Offer search and refusals | 2.2 min | 26 s | 10 s (3 refusals) | 18 s (+2 refusals, 3 s) |
+| Failed hosts | — | — | 3.5 min: host 415547 container start failed (Vast shim missing; destroyed by hand after 1 min, the stall rule acts after ≥ 4 min), host 564477 outbid | 8.8 min: host 18 vanished mid-fit (6 min), host 415547 container start failed again and was replaced after 64 s by the new rule (2.5 min) |
+| Instance loading | ~5.9 min | 7.3 min | 2 min 25 s | 1 min 46 s (cold host) |
+| Upload and bootstrap | ~11 min (SSH wait, upload, bootstrap) | 1 min 58 s | 1 min 11 s | 53 s |
+| Fit (box) | 11.8 min | 4.5 min | ≤ 3.8 min | 3.5 min |
+| Sampler wall | 628.2 s | 197.8 s | 187.6 s | 184.2 s |
+| Sampler iteration 1 | | 17.0 s | 1.04 s | 1.02 s |
+| Retrieval, teardown | 20 s | 12 s | 13 s | 23 s |
+| Local figure rebuild | | 40.3 s | 47 s | 3 min 20 s (this Mac at load average ~150; 40–47 s unloaded) |
+| Wall | 31.3 min | 14.6 min | 12.3 min (8.8 min without the failed hosts) | 19.5 min (10.7 min without the failed hosts) |
+| Billed GPU time | 23.2 min | 9.5 min | 4.9 min | 8.7 min by invoice, for 4.8 min from running to destroyed (+4.4 min on the vanished host) |
+| Cost | $0.162 | $0.067 | $0.036 | $0.071 (+$0.031 on the failed hosts) |
+| ln Z | 236001.315 ± 0.185 | 236001.806 ± 0.205 | 236001.239 ± 0.245 | 236001.239 ± 0.189 |
+
+The two intermediate images each gave a complete production fit: dcfc83f7 (host 146008) $0.066, bitwise equal to `04d4574`'s fit; 4da04a83 (host 132677) $0.056, bitwise equal to dcfc83f7's. Fits on i5-12400F hosts (132677, 146008) are bitwise equal to each other; the Ryzen 7 9800X3D host differs at 2.5e-13 in lnL through the CPU-computed filter wavelengths.
 
 ## Spend
 
-Vast invoices, 30 Sep 2026.
+Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x UTC).
 
 | Run | Instances | Charge |
 |---|---|---|
@@ -65,7 +73,14 @@ Vast invoices, 30 Sep 2026.
 | e2e after (`48fdc7f`) | 53580917 | $0.067 |
 | session 3 (image, compile overlap, cell 14) | 53588305 (outbid), 53590735 | $0.068 |
 | e2e after (all, `04d4574`) | 53592074 (failed start), 53592331 (outbid), 53592414 | $0.036 |
-| Total | 10 instances, all destroyed | $0.964 |
+| session 4 (NCCL/NVSHMEM A/B) | 53595253 | $0.067 |
+| e2e on image dcfc83f7 | 53596914 (vanished while loading), 53597096 | $0.067 |
+| session 5 (cuDNN/cuSPARSE/cuSOLVER A/B) | 53598740 | $0.151 |
+| e2e on image 4da04a83 | 53601900 | $0.056 |
+| e2e on image 6ca819ac (`c73a664`) | 53604961 (vanished mid-fit), 53605571 (failed start), 53605802 | $0.102 |
+| Total | 18 instances, all destroyed | $1.407 |
+
+Every run stayed under its $1 cap; the largest was session 2.
 
 ## Not free: proposals, not built
 
@@ -83,8 +98,18 @@ Vast invoices, 30 Sep 2026.
 | FilterSet numpy rewrite (sedpy_jax) | 2.1 s | changes rounding |
 | KL histogram sort shared between parameters | | reorders sums |
 | `log_evidence_err` uses the numpy global RNG (`nested.py:958`) | | seed handling change, not a speedup |
-| More than one fit per GPU | no gain measured | |
-| Replace a host whose container fails to start at once, not after the 240 s stall rule | ~4 min per such host (one seen: 415547) | free; not built: one observation, Vast restart behaviour unknown |
+| Prefer hosts that pulled the image recently | created → running 42–77 s on hosts with the layers cached (146008, 132677) vs 106 s–7 min on cold hosts | free; conflicts with the AGENTS.md host ranking (Liu Hao's rule) |
+| Grid fetched on the box instead of uploaded from this Mac | upload 473 MB at 8–11 MB/s is the setup critical path (53–144 s with bootstrap) | the nebular grid is not published: Zenodo record 21977508 has `amist_c3k_hr_krou_afe` only, whose `ssp_flux` differs; hosting it (Zenodo, a private registry layer) is a data-release decision |
+| Lossless transform of the packed grid | integer delta along age: 0.775 → 0.732 of 612 MB (~26 MB, ~3 s upload); xz: 0.711 at 20× the pack time | free, but gain under the host-to-host spread; not built |
+| GPU type (swarm-throughput) | RTX 5090 fastest and cheapest per fit up to ~$0.44/h; A100 SXM4 1.30×, 4090 1.62×, 5060 Ti 3.41×, 3090 3.75×, V100 3.91× slower solo | Liu Hao's choice; keep the 5090 (`results/speedups-swarm-throughput-2026-09-30/types`) |
+| Rank offers by USD per fit (swarm-throughput) | host-record ranking paid $0.38–0.615/h for RTX 5090 while a valid $0.153/h bid existed (2.5–4× per fit) | Liu Hao's rental rule; 3 of 9 bid rentals tonight were stopped mid-job, and a K-fit stage loses all K cells' progress on a stop |
+| vmapping several fits into one sampler (swarm-throughput) | MPS with 4 fits already reaches the batch-500 gain (1.26–1.34×) | changes row counts, so lnL bits change; not proposed |
+
+## Tried; not possible
+
+- Removing cuDNN: XLA's GPU compiler requires DNN support (`RET_CHECK dnn_support != nullptr`, `gpu_compiler.cc:2798`).
+- Removing cuSOLVER or cuSPARSE: the likelihood's `cholesky`/`inv` call `gpusolverDnCreate`, which fails with either library hidden.
+- cuFFT, cuBLAS, nvrtc, cupti, cudart, nvJitLink: loaded in every job (`session5/run/out/libs-*.txt`).
 
 ## Blocked
 

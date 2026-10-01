@@ -1,0 +1,55 @@
+22:25:29 committed source de7487067bbb; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/e2e-trim/run
+22:25:48 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 46055492 unknown bid $0.402/h, $0.201/fit, $0.222 total; 52711021 unknown bid $0.412/h, $0.206/fit, $0.227 total; 38697500 unknown bid $0.416/h, $0.208/fit, $0.229 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 52845570 unknown bid $0.483/h, $0.241/fit, $0.262 total; 51969558 unknown bid $0.532/h, $0.266/fit, $0.266 total; 41075410 unknown on-demand $0.544/h, $0.272/fit, $0.283 total; 45212528 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 45309042 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 52845570 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 478778
+22:25:48 renting RTX 5090, host 127708, $0.402/h; estimate $0.222
+22:25:56 VastAPIError: vastai create instance 46055492 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-517c8f180e4c-1 --bid_price 0.395 --raw failed: 410 error 410/3907: no_such_ask  Instance type 46055492 is no longer available.
+22:26:05 renting RTX 5090, host 43794, $0.412/h; estimate $0.227
+22:26:20 instance 53596914: (None, None)
+22:26:40 instance 53596914: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3: Pulling from potatoist314/ceridwen-gpu\n')
+22:26:47 instance 53596914: ('loading', '8412e85cc33a: Verifying Checksum\n')
+22:26:55 instance 53596914: ('loading', 'e08b23c708bf: Verifying Checksum\n')
+22:27:02 instance 53596914: ('loading', 'af385361d922: Verifying Checksum\n')
+22:27:09 SweepError: instance unavailable
+22:27:13 destroyed instance 53596914
+22:27:19 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 41260287 unknown bid $0.393/h, $0.197/fit, $0.217 total; 38697500 unknown bid $0.416/h, $0.208/fit, $0.229 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 52845570 unknown bid $0.483/h, $0.241/fit, $0.262 total; 48851740 unknown bid $0.496/h, $0.248/fit, $0.269 total; 53470405 unknown on-demand $0.504/h, $0.252/fit, $0.273 total; 46691993 unknown on-demand $0.516/h, $0.258/fit, $0.279 total; 47767747 unknown on-demand $0.531/h, $0.266/fit, $0.286 total; 51969558 unknown bid $0.532/h, $0.266/fit, $0.266 total; 51454453 unknown bid $0.536/h, $0.268/fit, $0.289 total; 45212528 unk
+22:27:19 renting RTX 5090, host 90277, $0.393/h; estimate $0.217
+22:27:21 VastAPIError: vastai create instance 41260287 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-517c8f180e4c-3 --bid_price 0.382 --raw failed: 410 error 410/3907: no_such_ask  Instance type 41260287 is no longer available.
+22:27:23 renting RTX 5090, host 146008, $0.416/h; estimate $0.229
+22:27:31 instance 53597096: (None, None)
+22:27:49 instance 53597096: ('loading', '55557fec2dac: Verifying Checksum\n55557fec2dac: Download complete\n')
+22:27:57 instance 53597096: ('loading', 'Removing intermediate container 7fa45fa3ab63\n ---> 633ab5a76a26\nStep 5/8 : RUN export DEBIAN_FRONTEND=noninteractive; for x in {0..30}; do apt-get install --no-install-recommends -y openssh-server tmux git wget curl less locales sudo software-properties-common rsync && break; sleep 1; done; exit 0;')
+22:28:05 instance 53597096: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3/ssh')
+22:28:14 uploading pinned source, inputs and cached grid
+22:29:18 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:29:26 fit-0: running; 
+22:29:35 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:29:44 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:29:53 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:30:02 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:30:11 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:30:20 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:30:29 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:30:38 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:30:47 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:30:56 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:31:05 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:31:14 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:31:23 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:31:32 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:31:41 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:31:50 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:31:58 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:32:07 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:32:16 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:32:25 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:32:34 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:32:43 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:32:51 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:33:01 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:33:10 fit-0: running; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:33:18 fit-0: 0; 22:29:26 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+22:33:45 destroyed instance 53597096
+22:38:41 local figures rebuilt for neb_eline_ca_nohe_zevo/M1_210210

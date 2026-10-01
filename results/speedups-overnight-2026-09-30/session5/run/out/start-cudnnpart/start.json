@@ -1,0 +1,25 @@
+{
+ "tag": "start-cudnnpart",
+ "ceridwen": "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/__init__.py",
+ "device": "NVIDIA GeForce RTX 5090",
+ "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0",
+ "first_iteration_done_s": 9.163200124166906,
+ "first_iteration_s": 1.018702800385654,
+ "marks": [
+  {
+   "iteration": 1,
+   "t": 9.163200124166906,
+   "iteration_s": 1.018702800385654
+  },
+  {
+   "iteration": 2,
+   "t": 10.273500921204686,
+   "iteration_s": 1.022369971498847
+  },
+  {
+   "iteration": 3,
+   "t": 11.288982261903584,
+   "iteration_s": 1.0134452870115638
+  }
+ ]
+}

@@ -1,0 +1,1 @@
+SP=$({P} -c "import sysconfig; print(sysconfig.get_paths()[\"purelib\"])") && C=$SP/nvidia/cudnn && mv $C/lib.hidden $C/lib && mkdir $C/lib.extra && ls -la $C/lib && for f in $C/lib/*; do case $(basename $f) in libcudnn.so.9|libcudnn_graph.so.9) ;; *) mv $f $C/lib.extra/;; esac; done && ls -la $C/lib && du -sh $C/lib $C/lib.extra

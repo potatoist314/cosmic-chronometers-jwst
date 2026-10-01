@@ -1,0 +1,208 @@
+W0930 22:50:33.573006    4293 cuda_executor.cc:1534] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
+E0930 22:50:33.582216    4264 cuda_dnn.cc:441] Could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR
+E0930 22:50:33.582234    4264 cuda_dnn.cc:445] Memory usage: 33139785728 bytes free, 33680064512 bytes total.
+W0930 22:50:33.582335    4293 cuda_executor.cc:1534] Failed to determine cuDNN version (Note that this is expected if the application doesn't link the cuDNN plugin): INTERNAL: cuDNN error: CUDNN_STATUS_INTERNAL_ERROR
+E0930 22:50:33.584162    4264 cuda_dnn.cc:441] Could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR
+E0930 22:50:33.584193    4264 cuda_dnn.cc:445] Memory usage: 33139785728 bytes free, 33680064512 bytes total.
+E0930 22:50:33.584575    4264 cuda_dnn.cc:441] Could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR
+E0930 22:50:33.584625    4264 cuda_dnn.cc:445] Memory usage: 33139785728 bytes free, 33680064512 bytes total.
+E0930 22:50:33.609677    4264 cuda_dnn.cc:441] Could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR
+E0930 22:50:33.609727    4264 cuda_dnn.cc:445] Memory usage: 33139785728 bytes free, 33680064512 bytes total.
+E0930 22:50:33.612122    4264 cuda_dnn.cc:441] Could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR
+E0930 22:50:33.612154    4264 cuda_dnn.cc:445] Memory usage: 33139785728 bytes free, 33680064512 bytes total.
+E0930 22:50:33.612841    4264 status_macros.cc:58] INTERNAL: RET_CHECK failure (external/xla/xla/service/gpu/gpu_compiler.cc:2798) dnn_support != nullptr 
+*** Begin stack trace ***
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	PyObject_Vectorcall
+	_PyEval_EvalFrameDefault
+	
+	_PyEval_EvalFrameDefault
+	
+	PyObject_Vectorcall
+	
+	
+	
+	_PyObject_FastCallDictTstate
+	_PyObject_Call_Prepend
+	
+	_PyObject_MakeTpCall
+	_PyEval_EvalFrameDefault
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	_PyEval_EvalFrameDefault
+	
+	PyObject_Vectorcall
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	PyEval_EvalCode
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	PyObject_CallMethodObjArgs
+	PyImport_ImportModuleLevelObject
+	_PyEval_EvalFrameDefault
+	
+	PyEval_EvalCode
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	PyObject_CallMethodObjArgs
+	PyImport_ImportModuleLevelObject
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	PyObject_CallMethodObjArgs
+	PyImport_ImportModuleLevelObject
+	_PyEval_EvalFrameDefault
+	
+	PyEval_EvalCode
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	PyObject_CallMethodObjArgs
+	PyImport_ImportModuleLevelObject
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	PyObject_CallMethodObjArgs
+	PyImport_ImportModuleLevelObject
+	_PyEval_EvalFrameDefault
+	
+	PyEval_EvalCode
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	PyObject_CallMethodObjArgs
+	PyImport_ImportModuleLevelObject
+	_PyEval_EvalFrameDefault
+	
+	PyEval_EvalCode
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	PyObject_CallMethodObjArgs
+	PyImport_ImportModuleLevelObject
+	_PyEval_EvalFrameDefault
+	
+	PyEval_EvalCode
+	
+	
+	_PyEval_EvalFrameDefault
+	
+	
+	PyObject_CallMethodObjArgs
+*** End stack trace ***
+
+Traceback (most recent call last):
+  File "/workspace/cosmic-chronometers-jwst/.speedup/libs.py", line 13, in <module>
+    runpy.run_path(script, run_name="__main__")
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/cosmic-chronometers-jwst/.speedup/cell14.py", line 19, in <module>
+    ns = common.build()
+         ^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.speedup/common.py", line 27, in build
+    exec(cells[2], ns)
+  File "<string>", line 22, in <module>
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/__init__.py", line 31, in <module>
+    from .dust import DustModel, DustEmission
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/dust/__init__.py", line 5, in <module>
+    from .DustModel import Dust, DiffuseDust
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/dust/DustModel.py", line 5, in <module>
+    from sedpy_jax.attenuation_dust import ATTENUATION_LAWS
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/sedpy_jax/__init__.py", line 1, in <module>
+    from . import observate
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/sedpy_jax/observate.py", line 14, in <module>
+    from sedpy_jax.reference_spectra import vega, solar
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/sedpy_jax/reference_spectra.py", line 39, in <module>
+    vega = _load_fits_spectrum(vega_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/sedpy_jax/reference_spectra.py", line 27, in _load_fits_spectrum
+    return jnp.column_stack((wave, flux))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/numpy/lax_numpy.py", line 4859, in column_stack
+    arrs = [atleast_2d(arr).T if arr.ndim < 2 else arr for arr in map(asarray, tup)]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/numpy/lax_numpy.py", line 4859, in <listcomp>
+    arrs = [atleast_2d(arr).T if arr.ndim < 2 else arr for arr in map(asarray, tup)]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/numpy/array_constructors.py", line 453, in asarray
+    return array(a, dtype=dtype, copy=bool(copy), order=order, device=device,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/numpy/array_constructors.py", line 208, in array
+    return lax.stage(object)
+           ^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/lax/lax.py", line 1626, in stage
+    return stage_p.bind(x)
+           ^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/core.py", line 705, in bind
+    return self.bind_with_trace(prev_trace, args, avals, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/lax/lax.py", line 5406, in _stage_bind_with_trace
+    return trace.stage_value(args[0])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/core.py", line 1283, in stage_value
+    return self.process_primitive(stage_p, [val], {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/core.py", line 1294, in process_primitive
+    return primitive.impl(*args, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/lax/lax.py", line 5396, in _stage_impl
+    return dispatch.apply_primitive(stage_p, x)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/jax/_src/dispatch.py", line 88, in apply_primitive
+    outs = fun(*args)
+           ^^^^^^^^^^
+jax.errors.JaxRuntimeError: INTERNAL: RET_CHECK failure (external/xla/xla/service/gpu/gpu_compiler.cc:2798) dnn_support != nullptr 
+--------------------
+For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.

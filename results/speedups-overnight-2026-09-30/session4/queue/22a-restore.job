@@ -1,0 +1,1 @@
+SP=$({P} -c "import sysconfig; print(sysconfig.get_paths()[\"purelib\"])") && mv $SP/nvidia/nccl/lib.hidden $SP/nvidia/nccl/lib && mv $SP/nvidia/nvshmem/lib.hidden $SP/nvidia/nvshmem/lib && ls $SP/nvidia/nccl/lib $SP/nvidia/nvshmem/lib

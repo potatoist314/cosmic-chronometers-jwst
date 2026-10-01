@@ -1,0 +1,1 @@
+XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' SPEEDUP_SETTINGS='{"metallicity_evolution": true}' PROF_DEAD={R}/payload/zevo_dead.pkl EXPECT_CERIDWEN=cosmic-chronometers-jwst/ceridwen LIBS_OUT={R}/out/libs-start-full.txt RUN_TAG=start-full RUN_ITERS=3 {P} {R}/libs.py {R}/run_start.py

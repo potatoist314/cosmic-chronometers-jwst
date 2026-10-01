@@ -1,0 +1,1 @@
+SP=$({P} -c "import sysconfig; print(sysconfig.get_paths()[\"purelib\"])") && C=$SP/nvidia/cudnn && mv $C/lib.extra/* $C/lib/ && rmdir $C/lib.extra && for d in cusparse cusolver; do mv $SP/nvidia/$d/lib.hidden $SP/nvidia/$d/lib; done && ls $SP/nvidia/cudnn/lib $SP/nvidia/cusparse/lib $SP/nvidia/cusolver/lib

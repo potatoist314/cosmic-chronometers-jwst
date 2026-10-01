@@ -1,0 +1,1 @@
+SP=$({P} -c "import sysconfig; print(sysconfig.get_paths()[\"purelib\"])") && du -sh $SP/nvidia/cudnn/lib && mv $SP/nvidia/cudnn/lib $SP/nvidia/cudnn/lib.hidden

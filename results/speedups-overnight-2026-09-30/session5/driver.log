@@ -1,0 +1,235 @@
+22:42:44 committed source 788492d4d919; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run
+22:42:50 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45028226 unknown bid $0.217/h, $0.109/fit, $0.140 total; 41260287 unknown bid $0.393/h, $0.197/fit, $0.217 total; 46831488 unknown bid $0.399/h, $0.200/fit, $0.220 total; 46055492 unknown bid $0.402/h, $0.201/fit, $0.222 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 37375836 unknown bid $0.421/h, $0.210/fit, $0.231 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 52845570 unknown bid $0.483/h, $0.241/fit, $0.262 total; 48851740 unknown bid $0.496/h, $0.248/fit, $0.269 total; 28539924 unknown bid $0.517/h, $0.259/fit, $0.259 total; 51969558 unknown bid $0.532/h,
+22:42:50 renting RTX 5090, host 18, $0.217/h; estimate $0.140
+22:42:53 VastAPIError: vastai create instance 45028226 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-d03c9ac03c29-1 --bid_price 0.206 --raw failed: 400 error 404/3603: no_such_ask  Instance type by id 45028226 is not available.
+22:42:55 renting RTX 5090, host 90277, $0.393/h; estimate $0.217
+22:42:57 VastAPIError: vastai create instance 41260287 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-d03c9ac03c29-2 --bid_price 0.382 --raw failed: 410 error 410/3907: no_such_ask  Instance type 41260287 is no longer available.
+22:43:00 renting RTX 5090, host 43746, $0.399/h; estimate $0.220
+22:43:03 VastAPIError: vastai create instance 46831488 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-d03c9ac03c29-3 --bid_price 0.388 --raw failed: 410 error 410/3907: no_such_ask  Instance type 46831488 is no longer available.
+22:43:06 renting RTX 5090, host 127708, $0.402/h; estimate $0.222
+22:43:09 VastAPIError: vastai create instance 46055492 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-d03c9ac03c29-4 --bid_price 0.395 --raw failed: 410 error 410/3907: no_such_ask  Instance type 46055492 is no longer available.
+22:43:14 renting RTX 5090, host 132677, $0.416/h; estimate $0.229
+22:43:22 instance 53598740: (None, None)
+22:43:34 instance 53598740: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3: Pulling from potatoist314/ceridwen-gpu\n')
+22:43:52 instance 53598740: ('created', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3/ssh')
+22:44:02 instance 53598740: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_dcfc83f70e45a685d02be2450bb70b97690c53d9c6eb04d310f7fe491e4264f3/ssh')
+22:44:15 uploading pinned source, inputs and cached grid
+22:45:19 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:45:46 30b-dump-full: running; 
+22:45:55 30b-dump-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:46:03 30b-dump-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:46:12 30b-dump-full: 0; /en/latest/units/combining_and_defining.html [astropy.units.core]
+Using combined (binwise + diffuse) dust attenuation.
+Initializing Dust attenuation model...
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+DONE 17900
+22:46:33 30c-start-full: running; 
+22:46:41 30c-start-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:46:50 30c-start-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:46:59 30c-start-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:47:08 30c-start-full: 0; kspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0", "first_iteration_done_s": 9.06121828686446, "first_iteration_s": 1.018336578272283}
+22:47:27 30d-cell14-full: running; 
+22:47:36 30d-cell14-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:47:45 30d-cell14-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:47:53 30d-cell14-full: running; /bin: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 7.447470940649509,
+  "cell14 again": 0.9466314148157835
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 5.718519926071167
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.3857545852661133
+ }
+}
+22:48:02 30d-cell14-full: 0; /bin: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 7.447470940649509,
+  "cell14 again": 0.9466314148157835
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 5.718519926071167
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.3857545852661133
+ }
+}
+22:48:21 30e-dump-fullskip: running; 
+22:48:30 30e-dump-fullskip: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:48:39 30e-dump-fullskip: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:48:48 30e-dump-fullskip: 0; /en/latest/units/combining_and_defining.html [astropy.units.core]
+Using combined (binwise + diffuse) dust attenuation.
+Initializing Dust attenuation model...
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+DONE 17900
+22:49:09 31a-hide-cudnn: running; 
+22:49:17 31a-hide-cudnn: 0; 1.2G	/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nvidia/cudnn/lib
+22:49:36 31b-dump-nocudnn: running; 
+22:49:45 31b-dump-nocudnn: 1; x.errors.JaxRuntimeError: INTERNAL: RET_CHECK failure (external/xla/xla/service/gpu/gpu_compiler.cc:2798) dnn_support != nullptr 
+--------------------
+For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.
+22:49:45 31b-dump-nocudnn exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run/53598740-31b-dump-nocudnn.log before retrying
+22:50:04 31c-start-nocudnn: running; 
+22:50:13 31c-start-nocudnn: 1; x.errors.JaxRuntimeError: INTERNAL: RET_CHECK failure (external/xla/xla/service/gpu/gpu_compiler.cc:2798) dnn_support != nullptr 
+--------------------
+For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.
+22:50:13 31c-start-nocudnn exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run/53598740-31c-start-nocudnn.log before retrying
+22:50:32 31d-cell14-nocudnn: running; 
+22:50:41 31d-cell14-nocudnn: 1; x.errors.JaxRuntimeError: INTERNAL: RET_CHECK failure (external/xla/xla/service/gpu/gpu_compiler.cc:2798) dnn_support != nullptr 
+--------------------
+For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.
+22:50:41 31d-cell14-nocudnn exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run/53598740-31d-cell14-nocudnn.log before retrying
+22:50:59 31e-cudnn-partial: running; 
+22:51:08 31e-cudnn-partial: 0; 8 libcudnn.so.9
+-rw-r--r-- 1 root root 115559344 Sep 24 16:18 libcudnn_graph.so.9
+111M	/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nvidia/cudnn/lib
+1.1G	/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nvidia/cudnn/lib.extra
+22:51:28 31f-dump-cudnnpart: running; 
+22:51:36 31f-dump-cudnnpart: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:51:45 31f-dump-cudnnpart: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:51:54 31f-dump-cudnnpart: 0; /en/latest/units/combining_and_defining.html [astropy.units.core]
+Using combined (binwise + diffuse) dust attenuation.
+Initializing Dust attenuation model...
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+DONE 17900
+22:52:14 31g-start-cudnnpart: running; 
+22:52:23 31g-start-cudnnpart: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:52:31 31g-start-cudnnpart: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:52:40 31g-start-cudnnpart: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:52:49 31g-start-cudnnpart: 0; space/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0", "first_iteration_done_s": 9.163200124166906, "first_iteration_s": 1.018702800385654}
+22:53:08 31h-cell14-cudnnpart: running; 
+22:53:17 31h-cell14-cudnnpart: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:53:25 31h-cell14-cudnnpart: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:53:34 31h-cell14-cudnnpart: running; bin: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 7.3269810657948256,
+  "cell14 again": 0.9422930367290974
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 5.598838806152344
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.3833029270172119
+ }
+}
+22:53:43 31h-cell14-cudnnpart: 0; bin: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 7.3269810657948256,
+  "cell14 again": 0.9422930367290974
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 5.598838806152344
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.3833029270172119
+ }
+}
+22:54:02 32a-hide-cusparse: running; 
+22:54:12 32a-hide-cusparse: 0; 465M	/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nvidia/cusparse/lib
+22:54:32 32b-dump-nocusparse: running; 
+22:54:40 32b-dump-nocusparse: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:54:49 32b-dump-nocusparse: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:54:59 32b-dump-nocusparse: 1; f._single_device_array_to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: INTERNAL: jaxlib/gpu/solver_handle_pool.cc:37: operation gpusolverDnCreate(&handle) failed: cuSolver internal error [executable_name='jit_loglike_fn']
+22:54:59 32b-dump-nocusparse exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run/53598740-32b-dump-nocusparse.log before retrying
+22:55:20 32c-start-nocusparse: running; 
+22:55:28 32c-start-nocusparse: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:55:37 32c-start-nocusparse: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:55:46 32c-start-nocusparse: running; self._single_device_array_to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: INTERNAL: jaxlib/gpu/solver_handle_pool.cc:37: operation gpusolverDnCreate(&handle) failed: cuSolver internal error [executable_name='jit_init_fn']
+22:55:55 32c-start-nocusparse: 1; self._single_device_array_to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: INTERNAL: jaxlib/gpu/solver_handle_pool.cc:37: operation gpusolverDnCreate(&handle) failed: cuSolver internal error [executable_name='jit_init_fn']
+22:55:55 32c-start-nocusparse exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run/53598740-32c-start-nocusparse.log before retrying
+22:56:14 32d-cell14-nocusparse: running; 
+22:56:23 32d-cell14-nocusparse: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:56:32 32d-cell14-nocusparse: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:56:41 32d-cell14-nocusparse: 1; y = self._single_device_array_to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: INTERNAL: jaxlib/gpu/solver_handle_pool.cc:37: operation gpusolverDnCreate(&handle) failed: cuSolver internal error [executable_name='jit_add']
+22:56:41 32d-cell14-nocusparse exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run/53598740-32d-cell14-nocusparse.log before retrying
+22:57:00 33a-hide-cusolver: running; 
+22:57:09 33a-hide-cusolver: 0; 473M	/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nvidia/cusolver/lib
+22:57:28 33b-dump-nocusolver: running; 
+22:57:37 33b-dump-nocusolver: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:57:45 33b-dump-nocusolver: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:57:54 33b-dump-nocusolver: 1; f._single_device_array_to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: INTERNAL: jaxlib/gpu/solver_handle_pool.cc:37: operation gpusolverDnCreate(&handle) failed: cuSolver internal error [executable_name='jit_loglike_fn']
+22:57:54 33b-dump-nocusolver exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run/53598740-33b-dump-nocusolver.log before retrying
+22:58:13 33c-start-nocusolver: running; 
+22:58:22 33c-start-nocusolver: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:58:30 33c-start-nocusolver: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:58:39 33c-start-nocusolver: running; self._single_device_array_to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: INTERNAL: jaxlib/gpu/solver_handle_pool.cc:37: operation gpusolverDnCreate(&handle) failed: cuSolver internal error [executable_name='jit_init_fn']
+22:58:48 33c-start-nocusolver: 1; self._single_device_array_to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: INTERNAL: jaxlib/gpu/solver_handle_pool.cc:37: operation gpusolverDnCreate(&handle) failed: cuSolver internal error [executable_name='jit_init_fn']
+22:58:48 33c-start-nocusolver exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run/53598740-33c-start-nocusolver.log before retrying
+22:59:10 33d-cell14-nocusolver: running; 
+22:59:19 33d-cell14-nocusolver: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:59:28 33d-cell14-nocusolver: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:59:37 33d-cell14-nocusolver: 1; y = self._single_device_array_to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: INTERNAL: jaxlib/gpu/solver_handle_pool.cc:37: operation gpusolverDnCreate(&handle) failed: cuSolver internal error [executable_name='jit_add']
+22:59:37 33d-cell14-nocusolver exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session5/run/53598740-33d-cell14-nocusolver.log before retrying
+23:00:01 34a-restore: running; 
+23:00:09 34a-restore: 0; euristic.so.9
+libcudnn_ops.so.9
+
+/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nvidia/cusolver/lib:
+libcusolver.so.11
+libcusolverMg.so.11
+
+/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nvidia/cusparse/lib:
+libcusparse.so.12
+23:00:29 34b-dump-full2: running; 
+23:00:38 34b-dump-full2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+23:00:47 34b-dump-full2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+23:00:56 34b-dump-full2: 0; /en/latest/units/combining_and_defining.html [astropy.units.core]
+Using combined (binwise + diffuse) dust attenuation.
+Initializing Dust attenuation model...
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+DONE 17900
+23:01:20 34c-start-full2: running; 
+23:01:30 34c-start-full2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+23:01:39 34c-start-full2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+23:01:48 34c-start-full2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+23:01:57 34c-start-full2: 0; pace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/__init__.py", "device": "NVIDIA GeForce RTX 5090", "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0", "first_iteration_done_s": 9.114095805212855, "first_iteration_s": 1.0226655341684818}
+23:02:24 destroyed instance 53598740

@@ -1,0 +1,1 @@
+JAX_SKIP_CUDA_CONSTRAINTS_CHECK=1 XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' SPEEDUP_SETTINGS='{"metallicity_evolution": true}' PROF_DEAD={R}/payload/zevo_dead.pkl EXPECT_CERIDWEN=site-packages/ceridwen LIBS_OUT={R}/out/libs-start-nocusolver.txt RUN_TAG=start-nocusolver RUN_ITERS=3 {P} {R}/libs.py {R}/run_start.py

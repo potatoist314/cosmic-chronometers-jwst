@@ -1,0 +1,163 @@
+22:13:58 committed source ea55d8c5fcd6; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session4/run
+22:14:02 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 46831488 unknown bid $0.349/h, $0.175/fit, $0.196 total; 45508884 unknown bid $0.378/h, $0.189/fit, $0.220 total; 46055492 unknown bid $0.402/h, $0.201/fit, $0.222 total; 38697500 unknown bid $0.416/h, $0.208/fit, $0.229 total; 45212528 unknown bid $0.416/h, $0.208/fit, $0.229 total; 53039899 unknown bid $0.416/h, $0.208/fit, $0.229 total; 52372392 unknown bid $0.523/h, $0.261/fit, $0.282 total; 51969558 unknown bid $0.532/h, $0.266/fit, $0.266 total; 51454453 unknown bid $0.536/h, $0.268/fit, $0.289 total; 45212528 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 52372392 unknown on-dema
+22:14:02 renting RTX 5090, host 43746, $0.349/h; estimate $0.196
+22:14:03 VastAPIError: vastai create instance 46831488 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-f4a695ff7715-1 --bid_price 0.3383 --raw failed: 410 error 410/3907: no_such_ask  Instance type 46831488 is no longer available.
+22:14:04 renting RTX 5090, host 18, $0.378/h; estimate $0.220
+22:14:06 VastAPIError: vastai create instance 45508884 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-f4a695ff7715-2 --bid_price 0.367 --raw failed: 400 error 404/3603: no_such_ask  Instance type by id 45508884 is not available.
+22:14:07 renting RTX 5090, host 127708, $0.402/h; estimate $0.222
+22:14:09 VastAPIError: vastai create instance 46055492 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1 --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-f4a695ff7715-3 --bid_price 0.395 --raw failed: 410 error 410/3907: no_such_ask  Instance type 46055492 is no longer available.
+22:14:10 renting RTX 5090, host 146008, $0.416/h; estimate $0.229
+22:14:13 instance 53595253: (None, None)
+22:14:26 instance 53595253: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1: Pulling from potatoist314/ceridwen-gpu\n')
+22:14:42 instance 53595253: ('loading', '8412e85cc33a: Verifying Checksum\n8412e85cc33a: Download complete\n')
+22:14:50 instance 53595253: ('loading', 'af385361d922: Verifying Checksum\n')
+22:14:59 instance 53595253: ('loading', 'e08b23c708bf: Pull complete\n')
+22:15:14 instance 53595253: ('loading', '3db9425516fe: Verifying Checksum\n')
+22:15:36 instance 53595253: ('loading', '876e798be398: Pull complete\n')
+22:15:43 instance 53595253: ('loading', '5824fe10eb6b: Verifying Checksum\n5824fe10eb6b: Download complete\n')
+22:16:00 instance 53595253: ('loading', 'a96cdfcbf7e6: Verifying Checksum\n')
+22:16:09 instance 53595253: ('loading', '3db9425516fe: Pull complete\n')
+22:16:16 instance 53595253: ('loading', 'b53d2084d344: Verifying Checksum\nb53d2084d344: Download complete\n')
+22:16:22 instance 53595253: ('loading', 'b53d2084d344: Pull complete\n')
+22:16:29 instance 53595253: ('loading', 'Removing intermediate container 8bed4aed573c\n ---> 28f2cb1d4121\n')
+22:16:36 instance 53595253: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1/ssh')
+22:16:44 uploading pinned source, inputs and cached grid
+22:17:47 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:18:12 20a-dump-full: running; 
+22:18:20 20a-dump-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:18:29 20a-dump-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:18:38 20a-dump-full: 0; /en/latest/units/combining_and_defining.html [astropy.units.core]
+Using combined (binwise + diffuse) dust attenuation.
+Initializing Dust attenuation model...
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+DONE 17900
+22:18:58 20b-start-full: running; 
+22:19:07 20b-start-full: 1; ceridwen loaded from /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/__init__.py
+22:19:07 20b-start-full exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session4/run/53595253-20b-start-full.log before retrying
+22:19:26 20c-cell14-full: running; 
+22:19:34 20c-cell14-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:19:43 20c-cell14-full: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:19:52 20c-cell14-full: running; /bin: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 7.274859602097422,
+  "cell14 again": 0.9404225288890302
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 5.569159030914307
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.3878204822540283
+ }
+}
+22:20:01 20c-cell14-full: 0; /bin: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 7.274859602097422,
+  "cell14 again": 0.9404225288890302
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 5.569159030914307
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.3878204822540283
+ }
+}
+22:20:20 21a-hide: running; 
+22:20:28 21a-hide: 0; /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nvidia/nccl:
+include
+lib.hidden
+
+/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/nvidia/nvshmem:
+include
+lib.hidden
+share
+name, driver_version
+NVIDIA GeForce RTX 5090, 570.158.01
+22:20:48 21b-dump-hidden: running; 
+22:20:57 21b-dump-hidden: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:21:05 21b-dump-hidden: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:21:14 21b-dump-hidden: 0; /en/latest/units/combining_and_defining.html [astropy.units.core]
+Using combined (binwise + diffuse) dust attenuation.
+Initializing Dust attenuation model...
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+DONE 17900
+22:21:34 21c-start-hidden: running; 
+22:21:43 21c-start-hidden: 1; ceridwen loaded from /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/__init__.py
+22:21:43 21c-start-hidden exited 1; inspect /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session4/run/53595253-21c-start-hidden.log before retrying
+22:22:02 21d-cell14-hidden: running; 
+22:22:11 21d-cell14-hidden: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:22:20 21d-cell14-hidden: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:22:29 21d-cell14-hidden: running; bin: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 7.248697863891721,
+  "cell14 again": 0.9236962839495391
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 5.541579484939575
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.36919283866882324
+ }
+}
+22:22:37 21d-cell14-hidden: 0; bin: 1.03
+joint chi2/datum: 1.03
+sampled calibration floor: 2.40%
+{
+ "times_s": {
+  "cell14": 7.248697863891721,
+  "cell14 again": 0.9236962839495391
+ },
+ "first_run": {
+  "compiles": 143,
+  "compile_s": 5.541579484939575
+ },
+ "second_run": {
+  "compiles": 1,
+  "compile_s": 0.36919283866882324
+ }
+}
+22:22:57 22a-restore: running; 
+22:23:06 22a-restore: 0; pmi.so.3
+nvshmem_bootstrap_pmi2.so.3
+nvshmem_bootstrap_pmix.so.3
+nvshmem_bootstrap_shmem.so.3
+nvshmem_bootstrap_uid.so.3
+nvshmem_transport_gpunetio.so.7
+nvshmem_transport_ibdevx.so.7
+nvshmem_transport_ibgda.so.7
+nvshmem_transport_ibrc.so.7
+nvshmem_transport_libfabric.so.7
+nvshmem_transport_ucx.so.7
+22:23:25 22b-dump-full2: running; 
+22:23:34 22b-dump-full2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:23:43 22b-dump-full2: running; is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]
+22:23:52 22b-dump-full2: 0; /en/latest/units/combining_and_defining.html [astropy.units.core]
+Using combined (binwise + diffuse) dust attenuation.
+Initializing Dust attenuation model...
+Initializing DiffuseDust model...
+Dust initialization complete.
+Spectrum model: dust attenuation only (alpha-enhanced, no nebular)
+DONE 17900
+22:24:08 destroyed instance 53595253
