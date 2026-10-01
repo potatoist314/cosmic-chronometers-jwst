@@ -1,6 +1,6 @@
 # Free speedups, overnight 2026-09-30
 
-Branches: `speedups` in this repo and in `potatoist314/ceridwen` (ceridwen pinned at `e8b7643`).
+Branches: `speedups` in this repo and in `potatoist314/ceridwen` (ceridwen pinned at `2d5edc9`).
 Neither is merged into `absorption-mask`.
 "Free": bitwise-identical on CPU; on GPU, equal up to the float rounding that the
 current kernel already shows between rentals (`results/speedup-lane-cause-2026-09-30`).
@@ -45,6 +45,10 @@ Likelihood figures: M1_210210 zevo model, RTX 5090, µs per call at batch 100 / 
 | Stage polls wait on the box for the exit file | end of each billed stage (bootstrap, fit) seen within 0.1 s instead of ~2.5 s on average (half the 5 s poll interval) | no computation; runner tests, including a poll against a real exit file | `267888d` |
 | First fit starts while the grid uploads; the notebook waits for the grid's sha256 check at the cell that loads it | host 132677, one run each: running → fit exit 3 min 42 s → 3 min 30 s; the fit started 6 s before the bootstrap ended instead of 7 s after it, and the grid was ready before its cell | result h5 of the production fit: all 35 datasets byte-identical to the `cadac99` fit on the same host; runner tests, including a wait that blocks on a real file | `f37e4c0` |
 | Result download stopped after 30 s without new bytes, then resumed | a stalled first download (2 of 2 runs since 01:31 UTC, both host 132677) ends after ~31 s instead of 94–120 s; each retry took 12–15 s | no computation; tests, and openrsync over a transport that stops mid-file: stopped in 4 s with its ssh, partial file kept, the `--checksum` retry byte-identical | `0958e8d` |
+| Stepping-out edges with no expansion left skip the batch (swarm-sampler) | box sampling 132.0/133.2 → 129.2/130.2 s, adapter.run 140.7 → 137.0 s (RTX 5090, instance 53616870) | GPU: spent payload is `ea91453` modulo docstring; spent/spent-b dead points and adapter-spent samples bitwise vs base (168 iterations, logZ 236002.77080421132, 5,478,067 calls; `integrate/gpu3/`, `cpu/cmp2.py` re-run); CPU: `tests/test_nss_diagnostics.py` bitwise vs `blackjax.nss`, integrator replay of production iterations 20 and 140 bitwise vs `e8b7643` | `ea91453` |
+| CSP: synthesise only the model wavelengths the observations read | GPU `model_predict` 8.14 → 7.35 µs per call at batch 100 (commit message) | 17,800 dead-point lnL and lnP bitwise on CPU (integrator replay vs `e8b7643`) and GPU (box dumps base vs cand same-boot 53604574 and vs cand2 cross-boot 53605629, autotune 0); full box fits on 53608103 (165 iterations, seed 20260927): logZ 236003.1618281287, 5,332,800 calls, all dead-point arrays bitwise; durables under `integrate/gpu-lik/` and `integrate/cpu/` | `578b310` (`bae8f56`) |
+| Line-flux covariance from the line block of the Cholesky factor only | with the CSP change; no separate timing | with the CSP change (box dump-cand2 and fit-cand2 dead points bitwise vs base); `test_line_posterior_equals_the_full_triangular_solve_bitwise` | `2d5edc9` (`85d6288`) |
+| Runner commands share one SSH connection per instance (ControlMaster auto, `%C` socket, ControlPersist 60); grid parts and result retrieval keep their own TCP streams | full-patch end-to-end timing unmeasured; session 7 new-connection commands cost ~3.5–3.9 s each | no computation; 150 runner tests; `ssh -G` accepts plain and shared options | `9d9bd93` |
 
 ## One production fit, before and after
 
@@ -72,7 +76,7 @@ The two intermediate images each gave a complete production fit: dcfc83f7 (host 
 
 ## Spend
 
-Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x, 01:0x and 02:2x UTC).
+Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x, 01:0x and 02:2x UTC; session 7 from its run `charges.json`).
 
 | Run | Instances | Charge |
 |---|---|---|
@@ -89,18 +93,27 @@ Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x, 01:0x and 02:2x UTC).
 | session 6 (grid upload at 4, 8 and 12 streams) | 53613190 | $0.091 |
 | e2e on `cadac99` (lane kernel rounds, stage polls) | 53619207 | $0.059 |
 | e2e on `f37e4c0` (first fit during the upload) | 53622514 (unavailable while loading), 53622713 | $0.059 |
-| Total | 22 instances, all destroyed | $1.616 |
+| session 7 (timed upload, transfer probes) | 53625717 | $0.061 |
+| Total | 23 instances, all destroyed | $1.677 |
 
 Every run stayed under its $1 cap; the largest was session 2.
+
+## Session 7
+
+Timed upload and transfer probes, 02:32–02:42 UTC, host 132677 (image layers cached), source `37399dd`, ceridwen `e8b7643`. Instance 53625717 destroyed 02:42:03 UTC; no instances left running.
+
+Upload 57.38 s: new-connection SSH commands 3.5–3.9 s each, source archives 5.0/6.6/6.8 s, inputs rsync 14.49 s (`session7/run`, `gpu/session7.py`). Transfer probes: 3 of 10 showed stalls (78.9 s, 68.7 s, 163.1 s); without a stall 13 MB takes ~9 s on one stream or four. Post-fit pull 12.9 s, no stall. The box fit reached ln Z 236001.239 ± 0.281 with 5,624,104 calls in 106.6 s of sampling. Invoice: $0.057 GPU (0.140 h), $0.002 disk, $0.001 download, $0.001 upload (`session7/run/charges.json`).
 
 ## Not free: proposals, not built
 
 | Proposal | Measured effect | Why not free |
 |---|---|---|
 | Tied doublet as elementwise sum instead of `profiles @ tie` | not measured on GPU | 1-ulp differences in 2 of 150,000 column elements on CPU (FMA) |
+| Doublet `optimization_barrier` on each dot instead of the whole free matrix (uncommitted) | 92 of 1,780 CPU lnL differ, max 7.0e-10 (control: worker `trsm-s10` dump equals the clean subsample bitwise; dumps and patches under `integrate/cpu/`) | not bitwise; no GPU evidence; not integrated |
+| SFH-basis table per-group bin truncation (`bins-truncation.patch`, unapplied) | 231 of 1,780 CPU lnL differ, max 0.035 (`integrate/cpu/dump-bins-s10.npz` vs clean baseline) | not bitwise; not integrated |
 | `jax.jit` of the emission-line columns | | 1,049,770 elements differ on CPU, max 4.0e-28 |
 | `jax.jit` of `posterior_draws_with_lines` | 3.89 → 1.64 s (CPU) | 3e-10 relative differences |
-| Masked-row compaction / windowed Gram matrix | | reorders sums |
+| Masked-row compaction / windowed Gram matrix | windowed Gram: 2,560 of 17,800 GPU lnL differ, max 1.7e-8 | reorders sums |
 | Persistent XLA compile cache | warm cache −2.2 s | executables embed galaxy data; a new galaxy costs ~3 s more |
 | Skip the catalogue YAML header parse | ~1.9 s per read | masked columns rely on it |
 | Parallel offer-search API calls | ~2.5 s | pre-rental total is 5.6 s |

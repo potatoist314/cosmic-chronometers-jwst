@@ -1452,3 +1452,9 @@
 - Branch `speedups` in this repo and `potatoist314/ceridwen`; `ceridwen` pin `e8b7643` (`a935a99`, `e8b7643` atop `a60f1f8`). Updated `wiki/notes/ceridwen-likelihood-sampling.md`.
 - `lane_update`: skip likelihood below prior slice level; finished lanes’ slots evaluate running lanes’ next candidates. Store per lane; reuse on bitwise match of slice step, t and position. One pass per round computes next candidates and priors; stored inside results allow another candidate evaluation that round. Batch remains `num_delete`.
 - CPU bitwise equality vs `blackjax.nss` (`tests/test_nss_diagnostics.py`) and vs `a60f1f8` at M1_210210 iterations 20 and 140. Same RTX 5090 rental: sampling 180.4 → 108.0 s; `BlackJAXNestedSamplerAdapter.run` 183.1 → 111.2 s; dead points and samples bitwise equal. Record: `results/speedups-swarm-sampler-2026-10-01`.
+
+### 2026-10-01 — Late numerical speedups and session 7
+
+- `ceridwen` pin `2d5edc9`: `ea91453` (stepping-out edges with no expansion left skip the batch), `578b310` and `2d5edc9` (CSP model-support synthesis; line-block triangular solve; cherry-picks of `bae8f56` and `85d6288`). CPU: 70 targeted tests; 17,800 dead-point lnL/lnP bitwise vs `e8b7643`; production iterations 20/140 bitwise. GPU: likelihood box dumps and full fits bitwise (instances 53604574/53605629/53608103); sampler spent run bitwise on instance 53616870 (168 iterations, logZ 236002.77080421132, 5,478,067 calls).
+- `results/speedups-overnight-2026-09-30/REPORT.md`: session 7 (upload 57.38 s, 3/10 stalled transfers, $0.061); spend $1.677 over 23 instances; shared-SSH row (`9d9bd93`); uncommitted barrier edit not free on CPU (92/1,780 lnL differ).
+- Files: `ceridwen`, `results/speedups-overnight-2026-09-30/REPORT.md`, `results/speedups-overnight-2026-09-30/session7/`, `wiki/notes/vast-ai-gpu-workflow.md`, `wiki/notes/ceridwen-likelihood-sampling.md`, `wiki/notes/ceridwen-ssp-csp.md`.

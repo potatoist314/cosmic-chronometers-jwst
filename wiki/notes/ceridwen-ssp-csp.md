@@ -183,7 +183,7 @@ The first five lines reconstruct relative SFR values. The branch then normalizes
 
 `CSPBasis_afe` precomputes spectra per SFH bin, alpha plane and metallicity node. The forward pass interpolates alpha and metallicity, then weights bins by SFR without rebuilding the SSP age cube. Step interpolation with a fixed lookback grid enables this for any bin count, SFR layout, metallicity history or SSP grid shape.
 
-`ceridwen/ceridwen/csp/csp_afe.py:539-569 · CSPBasis_afe._configure_sfh_basis_fastpath`
+`ceridwen/ceridwen/csp/csp_afe.py:538-572 · CSPBasis_afe._configure_sfh_basis_fastpath`
 
 </details>
 
@@ -225,6 +225,8 @@ Birth-cloud dust keeps separate bases for age groups that share an attenuation c
 <summary>Spectrum and prediction</summary>
 
 The weight calculation produces coefficients over metallicity and age. These coefficients combine the SSP flux cube into a rest-frame spectrum. The enabled physics components modify this spectrum. `predict` then applies mass, distance, redshift, and IGM scaling. Finally, it projects the spectrum into observation space (`csp/csp.py:1139-1203`, `1303-1429`).
+
+`CSPBasis_afe.predict` computes the spectrum on the union of its observations' `model_support` ranges and zero-fills the rest after scaling. Dust emission, model-level LOSVD and sampled redshift keep the full grid (`CSPBasis_afe._observation_support`; `tests/csp/test_wavelength_support.py`).
 
 During model setup, the CSP sends the grid `ssp_resolution` curve to each `Spectrum`. The observation subtracts that library width in quadrature. It then applies the requested instrumental and LOSVD broadening.
 

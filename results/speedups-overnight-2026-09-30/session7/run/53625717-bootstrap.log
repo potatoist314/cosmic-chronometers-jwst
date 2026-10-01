@@ -1,0 +1,125 @@
++ set -euo pipefail
++++ dirname -- scripts/bootstrap_vast_ai.sh
+++ cd -- scripts
+++ pwd
++ SCRIPT_DIR=/workspace/cosmic-chronometers-jwst/scripts
+++ cd -- /workspace/cosmic-chronometers-jwst/scripts/..
+++ pwd
++ PROJECT_ROOT=/workspace/cosmic-chronometers-jwst
++ ENV_DIR=/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu
++ PYTHON_BIN=/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python
++ PYTHON_VERSION=3.11.16
++ TFP_NIGHTLY_VERSION=0.26.0.dev20260810
++ SEDPY_JAX_DIR=/workspace/cosmic-chronometers-jwst/external/sedpy_jax
++ MINIMUM_GPU_MEMORY_MIB=8000
++ unset LD_LIBRARY_PATH
+++ uname -s
++ [[ Linux != \L\i\n\u\x ]]
++ command -v nvidia-smi
+++ nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits
+++ head -n 1
+++ tr -d ' '
++ GPU_MEMORY_MIB=32607
++ ((  GPU_MEMORY_MIB < MINIMUM_GPU_MEMORY_MIB  ))
++ [[ ! -f /workspace/cosmic-chronometers-jwst/ceridwen/pyproject.toml ]]
++ [[ ! -f /workspace/cosmic-chronometers-jwst/external/sedpy_jax/setup.py ]]
++ command -v uv
+++ command -v uv
++ UV_BIN=/usr/local/bin/uv
++ REQUIREMENTS=/workspace/cosmic-chronometers-jwst/scripts/containers/requirements.txt
++ [[ -x /opt/ceridwen/bin/python ]]
++ cmp /workspace/cosmic-chronometers-jwst/scripts/containers/requirements.txt /opt/ceridwen-requirements.txt
++ [[ ! -e /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu ]]
++ ln -s /opt/ceridwen /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu
++ echo 'Using prebuilt Ceridwen dependencies'
+Using prebuilt Ceridwen dependencies
++ /usr/local/bin/uv pip install --python /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python --reinstall --no-deps --no-build-isolation /workspace/cosmic-chronometers-jwst/ceridwen /workspace/cosmic-chronometers-jwst/external/sedpy_jax
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Resolved 2 packages in 241ms
+   Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+   Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+      Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+      Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+Prepared 2 packages in 427ms
+Uninstalled 1 package in 3ms
+Installed 2 packages in 2ms
+ + ceridwen==0.2.3 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
++ /usr/local/bin/uv pip check --python /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 1ms
+All installed packages are compatible
++ JAX_PLATFORMS=cpu
++ /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python -
+ceridwen: combined static smoother installed
++ JAX_PLATFORMS=cuda
++ JAX_ENABLE_X64=1
++ /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python -
+JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
++ cd /tmp
++ JAX_PLATFORMS=cuda
++ JAX_ENABLE_X64=1
++ /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python -m ceridwen.check
+CERIDWEN environment check
+==========================
+  [ok  ] Python 3.11
+  [ok  ] jax  -- 0.10.2
+  [ok  ] jaxlib  -- 0.10.2
+  [ok  ] numpy  -- 2.4.6
+  [ok  ] scipy  -- 1.17.1
+  [ok  ] matplotlib  -- 3.11.2
+  [ok  ] h5py  -- 3.16.0
+  [ok  ] astropy  -- 8.0.1
+  [ok  ] tqdm  -- 4.70.1
+  [ok  ] optax  -- 0.2.8
+  [ok  ] anesthetic  -- 2.16.0
+  [ok  ] jax float64  -- enabled
+  [ok  ] sedpy_jax  -- make_lsf_smoother has inres
+  [ok  ] tensorflow-probability  -- jax substrate
+  [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+  [ok  ] blackjax.ns  -- nested sampling available
+  [warn] python-fsps  -- not importable. Needed to build SSP grids and (with nebular / dust emission) at runtime. See README Installation.
+  [warn] $SPS_HOME  -- unset. Required for nebular / dust-emission models. `export SPS_HOME=/path/to/fsps`
+
+All required components present. (warnings above are optional features / FSPS setup.)
++ /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python -
+sedpy_jax wavelength-dependent input resolution verified
++ /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python -m ipykernel install --user --name ceridwen --display-name 'Ceridwen (Vast.ai GPU)'
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+++ /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python -c 'from jupyter_core.paths import jupyter_data_dir; from pathlib import Path; print(Path(jupyter_data_dir()) / "kernels" / "ceridwen" / "kernel.json")'
++ KERNEL_JSON=/root/.local/share/jupyter/kernels/ceridwen/kernel.json
++ /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python - /root/.local/share/jupyter/kernels/ceridwen/kernel.json /workspace/cosmic-chronometers-jwst
++ CATALOG_PATH=/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/legaCdr2.fits.gz
++ PHOTOMETRY_PATH=/workspace/cosmic-chronometers-jwst/data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits
++ SPECTRA_DIR=/workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/sp
++ missing=0
++ for path in "${CATALOG_PATH}" "${PHOTOMETRY_PATH}"
++ [[ ! -f /workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/legaCdr2.fits.gz ]]
++ for path in "${CATALOG_PATH}" "${PHOTOMETRY_PATH}"
++ [[ ! -f /workspace/cosmic-chronometers-jwst/data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits ]]
++ [[ -f /workspace/cosmic-chronometers-jwst/input-files.json ]]
++ /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python - /workspace/cosmic-chronometers-jwst
+Selected fit inputs verified
++ ((  missing != 0  ))
++ [[ -n /workspace/cosmic-chronometers-jwst/.env-ready ]]
++ touch /workspace/cosmic-chronometers-jwst/.env-ready
++ [[ -n /workspace/cosmic-chronometers-jwst/grid/.checked ]]
++ [[ -e /workspace/cosmic-chronometers-jwst/grid/.checked ]]
++ sleep 1
++ [[ -e /workspace/cosmic-chronometers-jwst/grid/.checked ]]
++ sleep 1
++ [[ -e /workspace/cosmic-chronometers-jwst/grid/.checked ]]
++ sleep 1
++ [[ -e /workspace/cosmic-chronometers-jwst/grid/.checked ]]
++ sleep 1
++ [[ -e /workspace/cosmic-chronometers-jwst/grid/.checked ]]
++ sleep 1
++ [[ -e /workspace/cosmic-chronometers-jwst/grid/.checked ]]
++ sleep 1
++ [[ -e /workspace/cosmic-chronometers-jwst/grid/.checked ]]
++ JAX_PLATFORMS=cpu
++ /workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/bin/python - /workspace/cosmic-chronometers-jwst/data/raw/legac_dr2/legaCdr2.fits.gz /workspace/cosmic-chronometers-jwst/data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
++ echo 'Ceridwen GPU environment ready.'
+Ceridwen GPU environment ready.

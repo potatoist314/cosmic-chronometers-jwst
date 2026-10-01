@@ -73,6 +73,8 @@ Downloads are attempted up to three times within the remaining budget. Local HDF
 
 Experiments upload selected spectra, cutouts and required catalogue tables; source archives omit tests and dist (`UNUSED_SOURCE`, `scripts/benchmark.py`). The grid travels zlib-packed beside the source in `GRID_STREAMS=4` parallel rsync parts; the instance joins them, checks SHA-256 and creates `grid/.checked`.
 
+Maintained runner commands reuse SSH (ControlMaster auto, ControlPersist 60); bulk grid parts and result retrieval keep separate TCP connections.
+
 The runner starts `scripts/bootstrap_vast_ai.sh` once source and inputs arrive; with `CERIDWEN_GRID_READY` set, bootstrap waits for `grid/.checked` before its grid step and reuses the uploaded grid.
 
 Fits use `--xla_gpu_autotune_level=0` in `XLA_FLAGS` (`scripts/experiment.py`). Unavailable-offer refusals advance to the next offer without consuming an attempt, up to `MAX_REFUSALS=20`. Outbid or vanished instances are replaced. Host Docker refusals (“Error response from daemon”) trigger replacement after persisting for 60 s (`START_FAILURE_SECONDS`, `scripts/benchmark.py`).

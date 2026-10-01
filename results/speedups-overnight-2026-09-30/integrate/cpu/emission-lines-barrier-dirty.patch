@@ -1,0 +1,21 @@
+diff --git a/ceridwen/likelihood/emission_lines.py b/ceridwen/likelihood/emission_lines.py
+index 29121c5..7ee4ded 100644
+--- a/ceridwen/likelihood/emission_lines.py
++++ b/ceridwen/likelihood/emission_lines.py
+@@ -364,11 +364,11 @@ class EmissionLineColumns:
+         free = profiles[:, np.argmax(self.tie, axis=0)]
+         for c in np.flatnonzero(np.count_nonzero(self.tie, axis=0) > 1):
+             r = np.flatnonzero(self.tie[:, c])
+-            free = jnp.where(np.arange(free.shape[1]) == c,
+-                             (profiles[:, r] @ jnp.asarray(self.tie[r, c]))[:, None], free)
+-        # Without the barrier, XLA fuses the doublet's dot into its consumers
+-        # and can contract it to an FMA, which rounds differently.
+-        return jax.lax.optimization_barrier(free)
++            # Without the barrier, XLA fuses the doublet's dot into its
++            # consumers and can contract it to an FMA, which rounds differently.
++            doublet = jax.lax.optimization_barrier(profiles[:, r] @ jnp.asarray(self.tie[r, c]))
++            free = jnp.where(np.arange(free.shape[1]) == c, doublet[:, None], free)
++        return free
+ 
+     def covers(self, rest_wave: float, tol: float = 2.0) -> bool:
+         """Whether a fitted line lies within ``tol`` A of ``rest_wave``."""

@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/spent:$SEDPY EXPECT_CERIDWEN=payload/spent XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' SPEEDUP_NOTEBOOK={R}/payload/new.ipynb SPEEDUP_SETTINGS='{"metallicity_evolution": true}' RUN_TAG=adapter-spent {P} {R}/payload/adapter_fit.py

@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/base:$SEDPY EXPECT_CERIDWEN=payload/base SPEEDUP_NOTEBOOK={R}/payload/nb.ipynb SPEEDUP_SETTINGS='{"metallicity_evolution": true, "emission_line_marginalisation": true, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92]}' XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' RUN_TAG=fit-base-2 RUN_SEED=20260927 {P} {R}/box_fit.py

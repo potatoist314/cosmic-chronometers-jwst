@@ -1,0 +1,86 @@
+diff --git a/ceridwen/csp/csp_afe.py b/ceridwen/csp/csp_afe.py
+index a282997..6df0901 100644
+--- a/ceridwen/csp/csp_afe.py
++++ b/ceridwen/csp/csp_afe.py
+@@ -573,11 +573,11 @@ class CSPBasis_afe:
+ 
+     def _sfh_basis_table(self, wave):
+         """``_sfh_basis`` on the model wavelengths ``wave`` (a static slice)
+-        as ``(table, rows)``: ``table[afe, z, rows[g, n]]`` is the basis
+-        spectrum of group ``g`` and bin ``n``.  The table holds the nonzero
+-        ``(g, n)`` spectra once, plus one zero row that the empty ones share
+-        (the birth-cloud group has ages in the first bin only).  Cached per
+-        slice."""
++        as ``(table, rows, n_bins)``: ``table[afe, z, rows[g, n]]`` is the
++        basis spectrum of group ``g`` and bin ``n``.  The table holds the
++        nonzero ``(g, n)`` spectra once, plus one zero row that the empty ones
++        share (the birth-cloud group has ages in the first bin only).  Bins
++        ``n >= n_bins[g]`` of group ``g`` are all empty.  Cached per slice."""
+         key = (wave.start, wave.stop)
+         if key not in self._sfh_basis_tables:
+             basis = np.asarray(self._sfh_basis)[..., wave]
+@@ -590,7 +590,9 @@ class CSPBasis_afe:
+                 table = np.concatenate([table, np.zeros_like(table[:, :, :1])], axis=2)
+             # A device array even when the first call is inside a trace.
+             with jax.ensure_compile_time_eval():
+-                self._sfh_basis_tables[key] = (jnp.asarray(table), rows)
++                self._sfh_basis_tables[key] = (
++                    jnp.asarray(table), rows,
++                    [int(np.flatnonzero(row).max(initial=0)) + 1 for row in nonzero])
+         return self._sfh_basis_tables[key]
+ 
+     def _make_sfh_bin_to_age_operator(self):
+@@ -1082,22 +1084,27 @@ class CSPBasis_afe:
+         afe_lo, afe_hi, afe_weight, z_lo, z_hi, z_weight = self._sfh_basis_coords(theta)
+         afe_weight = afe_weight.astype(jnp.float32)
+         z_weight = z_weight.astype(jnp.float32)
+-        table, rows = self._sfh_basis_table(wave)
++        table, rows, n_bins = self._sfh_basis_table(wave)
++        # Each group's sum stops at its last nonzero bin: the dropped terms
++        # are exact zeros at the end of the sum, so no partial sum changes.
++
++        def group_spectrum(g, n):
++            if self.zh_const:
++                def corner(afe, z):
++                    return table[afe, z][rows[g, :n]]               # (n, w)
++                zw = z_weight
++            else:
++                zw = z_weight[:n, None]
+ 
+-        if self.zh_const:
+-            def corner(afe, z):
+-                return table[afe, z][rows]                          # (g, n, w)
+-        else:
+-            z_weight = z_weight[:, None]
++                def corner(afe, z):
++                    # Bin n reads its own metallicity plane z[n].
++                    return table[afe][z[:n], rows[g, :n]]
+ 
+-            def corner(afe, z):
+-                # Bin n reads its own metallicity plane z[n].
+-                return table[afe][z[None, :], rows]
++            lower = (1.0 - zw) * corner(afe_lo, z_lo) + zw * corner(afe_lo, z_hi)
++            upper = (1.0 - zw) * corner(afe_hi, z_lo) + zw * corner(afe_hi, z_hi)
++            return jnp.einsum("n,nw->w", sfh_bin[:n], (1.0 - afe_weight) * lower + afe_weight * upper)
+ 
+-        lower = (1.0 - z_weight) * corner(afe_lo, z_lo) + z_weight * corner(afe_lo, z_hi)
+-        upper = (1.0 - z_weight) * corner(afe_hi, z_lo) + z_weight * corner(afe_hi, z_hi)
+-        group_basis = (1.0 - afe_weight) * lower + afe_weight * upper
+-        return jnp.einsum("n,gnw->gw", sfh_bin, group_basis)
++        return jnp.stack([group_spectrum(g, n) for g, n in enumerate(n_bins)])
+ 
+     def initialize_dust_components(
+         self, add_dust, add_diffuse_dust, add_dust_emission,
+diff --git a/tests/csp/test_wavelength_support.py b/tests/csp/test_wavelength_support.py
+index 320508b..af7c504 100644
+--- a/tests/csp/test_wavelength_support.py
++++ b/tests/csp/test_wavelength_support.py
+@@ -109,6 +109,7 @@ def test_basis_table_rows_rebuild_the_basis(ssp):
+     empty = ~np.any(basis != 0, axis=(0, 1, 4))
+     assert empty.any()
+     for wave in (slice(None), slice(40, 500)):
+-        table, rows = csp._sfh_basis_table(wave)
++        table, rows, n_bins = csp._sfh_basis_table(wave)
++        assert n_bins == [1, rows.shape[1]]
+         assert table.shape[2] == (~empty).sum() + 1
+         assert np.asarray(table)[:, :, rows].tobytes() == basis[..., wave].tobytes()

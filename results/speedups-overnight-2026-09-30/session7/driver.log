@@ -1,0 +1,50 @@
+02:32:43 committed source 37399dd59c12; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session7/run
+02:32:46 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 46055492 good bid $0.392/h, $0.196/fit, $0.217 total; 45212528 good bid $0.416/h, $0.208/fit, $0.229 total; 46065461 good bid $0.416/h, $0.208/fit, $0.229 total; 52902766 good bid $0.483/h, $0.241/fit, $0.262 total; 49005869 good bid $0.529/h, $0.265/fit, $0.296 total; 45212528 good on-demand $0.544/h, $0.272/fit, $0.293 total; 46055492 good on-demand $0.581/h, $0.290/fit, $0.311 total; 48896636 unknown bid $0.381/h, $0.191/fit, $0.211 total; 48137358 unknown bid $0.443/h, $0.221/fit, $0.250 total; 51969558 unknown bid $0.532/h, $0.266/fit, $0.266 total; 52943981 unknown bid $0.576/h, $0.288/f
+02:32:46 renting RTX 5090, host 127708, $0.392/h; estimate $0.217
+02:32:47 VastAPIError: vastai create instance 46055492 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6ca819ac4a623e23c31405b0b3bb6ef906e1e4f1e96a1d640583ab03fa0a2ebd --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-95ad12d6f9d2-1 --bid_price 0.385 --raw failed: 410 error 410/3907: no_such_ask  Instance type 46055492 is no longer available.
+02:32:48 renting RTX 5090, host 132677, $0.416/h; estimate $0.229
+02:32:50 instance 53625717: (None, None)
+02:33:02 instance 53625717: ('loading', None)
+02:33:14 instance 53625717: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6ca819ac4a623e23c31405b0b3bb6ef906e1e4f1e96a1d640583ab03fa0a2ebd/ssh')
+02:33:19 uploading pinned source, inputs and cached grid
+02:33:23 timing ssh 'mkdir -p /workspace/cosmic-chronometers-jwst/data/raw /works': start 1790821999.58, 3.64 s
+02:33:23 timing grid part start 6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.zlib.0: start 1790822003.22, 0.00 s
+02:33:23 timing grid part start 6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.zlib.1: start 1790822003.23, 0.00 s
+02:33:23 timing grid part start 6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.zlib.2: start 1790822003.23, 0.00 s
+02:33:23 timing grid part start 6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.zlib.3: start 1790822003.24, 0.00 s
+02:33:28 timing archive astro: start 1790822003.24, 5.04 s
+02:33:34 timing archive ceridwen: start 1790822008.28, 6.64 s
+02:33:41 timing archive sedpy_jax: start 1790822014.92, 6.82 s
+02:33:45 timing ssh 'printf %s \'["data/raw/cosmos2015/cosmos2015_legac_dr2_apertu': start 1790822021.75, 3.67 s
+02:33:59 timing inputs rsync: start 1790822025.42, 14.49 s
+02:34:03 timing ssh 'mkdir -p /workspace/cosmic-chronometers-jwst/.benchmark/5362': start 1790822039.90, 3.87 s
+02:34:16 timing ssh 'python3 -c \'import sys, zlib\nplanes = zlib.decompress(b\'"\'"\'': start 1790822049.56, 7.40 s
+02:34:16 timing upload: start 1790821999.58, 57.38 s
+02:34:20 bootstrap: 0; t/data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
++ echo 'Ceridwen GPU environment ready.'
+Ceridwen GPU environment ready.
+02:34:38 10-ssh: 10.76 s
+02:34:52 11-upres: 13.44 s
+02:36:11 20-a-down1: 78.94 s
+02:36:19 21-a-down4: 8.70 s
+02:36:30 22-a-downz: 10.67 s
+02:37:39 23-a-raw1: 68.72 s
+02:37:50 24-a-raw4: 11.13 s
+02:37:59 25-b-down1: 8.91 s
+02:40:42 26-b-down4: 163.10 s
+02:40:51 27-b-downz: 9.27 s
+02:41:02 28-b-raw1: 11.43 s
+02:41:10 29-b-raw4: 7.82 s
+02:41:24 40-boxinfo: 0; c-chronometers-jwst/.benchmark/53625717/fit-0.exit 1790822198.357709230
+/workspace/cosmic-chronometers-jwst/.benchmark/53625717/fit-0.lock 1790822043.521070093
+/workspace/cosmic-chronometers-jwst/.benchmark/53625717/fit-0.log 1790822051.105103233
+12
+model name	: 12th Gen Intel(R) Core(TM) i5-12400F
+02:41:42 41-fitpull: 12.90 s
+02:41:56 42-fitinfo: 0; xperiment/53625717/0/results/neb_eline_ca_nohe_zevo/210210-M1_210210/ns_raw_dead_693.pkl 1790822187.469666641
+[2026-10-01T02:34:11.109747+00:00] starting fixed-seed attempt
+blackjax.nss  |  n_samples=17800  ln Z = 236001.239 ± 0.281  |  n_like = 5624104  |  wall = 106.6 s
+ln Z: 236001.239 +/- 0.281
+02:42:01 43-end: 0.03 s
+02:42:03 destroyed instance 53625717

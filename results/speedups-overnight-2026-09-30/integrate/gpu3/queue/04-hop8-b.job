@@ -1,0 +1,1 @@
+PYTHONPATH={R}/payload/hop:$SEDPY EXPECT_CERIDWEN=payload/hop XLA_FLAGS='--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0' SPEEDUP_NOTEBOOK={R}/payload/new.ipynb SPEEDUP_SETTINGS='{"metallicity_evolution": true}' RUN_TAG=hop8-b {P} {R}/box_fit.py

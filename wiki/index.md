@@ -118,7 +118,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 - `notes/birth-cloud-dust.md` — M1_210210 with birth-cloud dust and with the dust index down to -3 (2026-09-24)
 - `notes/m1-210210-kcbump.md` — M1_210210 with a free dust bump and with the dust index down to -3 (2026-09-29)
 - `notes/ceridwen-checkpoint-spectrum-evolution.md` — Ceridwen checkpoint spectrum evolution (2026-09-04 · t_ed2b739d)
-- `notes/vast-ai-gpu-workflow.md` — Vast.ai GPU workflow, benchmarks and experiments, shared compact image default, selected-input uploads and validated retrieval (2026-09-24 · t_2fc31190)
+- `notes/vast-ai-gpu-workflow.md` — Vast.ai GPU workflow, benchmarks and experiments, shared compact image default, selected-input uploads, validated retrieval, shared SSH connection (2026-09-24 · t_2fc31190)
 - `notes/gpu-benchmark-2026-09-23-failures.md` — GPU benchmark 2026-09-23: failures and fixes (2026-09-23)
 - `notes/modal-gpu-workflow.md` — Modal GPU workflow (2026-08-28 · old: _old/guides/modal-gpu-workflow.html · obsolete)
 
