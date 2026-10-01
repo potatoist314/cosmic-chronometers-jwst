@@ -240,9 +240,9 @@ def test_stage_polls_briskly_until_the_exit_file_lands(run, monkeypatch):
     monkeypatch.setattr(bench.vast, '_ssh', ssh)
     monkeypatch.setattr(bench.time, 'sleep', sleeps.append)
     run.stage({'instance_id': 100, 'price': .2}, 'fit-0', 'true')
-    # One SSH call per poll, and the last one brings the complete log.
-    assert len(polls) == 3 and all('setsid' in c and 'tail -c 300' in c for c in polls)
-    assert sleeps == [bench.POLL_SECONDS] * 2 == [5, 5]
+    # One SSH call per poll, and the last one brings the complete log; the box does the waiting.
+    assert len(polls) == 3 and all('setsid' in c and 'tail -c 300' in c and 'seq 50' in c for c in polls)
+    assert sleeps == []
     assert (run.root / '100-fit-0.log').read_text() == 'full stage log\ndone\n'
 
 
@@ -597,6 +597,26 @@ def test_outbid_instance_is_replaced_instead_of_waited_on(run, cloud, monkeypatc
     assert state['created'] == [1, 2]
     assert run.data['attempts'][0]['error'] == 'SweepError: instance unavailable'
 
+
+
+def test_poll_returns_once_the_exit_file_lands_and_waits_at_most_poll_seconds(run, tmp_path, monkeypatch):
+    commands = []
+    monkeypatch.setattr(bench.vast, '_ssh', lambda instance, command, **kw: commands.append(command)
+                        or SimpleNamespace(stdout='0\n', returncode=0))
+    monkeypatch.setattr(bench, 'REMOTE', str(tmp_path))
+    monkeypatch.setattr(bench, 'POLL_SECONDS', 1)
+    run.stage({'instance_id': 100, 'price': .2}, 'fit-0', 'true')
+    wait = commands[0][commands[0].index('; for _ in') + 2:]
+    prefix = tmp_path / '.benchmark/100/fit-0'
+    prefix.parent.mkdir(parents=True)
+    started = time.monotonic()
+    assert subprocess.run(['bash', '-c', wait], capture_output=True, text=True).stdout == 'running\n'
+    assert 0.9 < time.monotonic() - started < 3
+    writer = subprocess.Popen(['bash', '-c', f'sleep .3; echo 0 > {prefix}.exit; echo done > {prefix}.log'])
+    started = time.monotonic()
+    reply = subprocess.run(['bash', '-c', wait], capture_output=True, text=True).stdout
+    writer.wait()
+    assert reply.startswith('0\n') and time.monotonic() - started < 0.9
 
 
 def test_container_that_fails_to_start_is_replaced_after_a_minute(run, cloud, monkeypatch):

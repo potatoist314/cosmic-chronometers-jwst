@@ -396,8 +396,12 @@ class Run:
         """Detach once; stage locks and exit files survive SSH disconnects."""
         prefix = f'{REMOTE}/.benchmark/{attempt["instance_id"]}/{name}'
         # One SSH call per poll: the exit status with the complete log, or the log tail.
+        # Each poll waits on the box up to POLL_SECONDS for the exit file, so the end of a
+        # billed stage is seen within 0.1 s instead of half a poll interval later.
         # The first poll can run before the detached stage creates its log.
-        poll = (f'{self.launch(attempt, name, command)}; if test -f {prefix}.exit; then cat {prefix}.exit {prefix}.log; '
+        poll = (f'{self.launch(attempt, name, command)}; '
+                f'for _ in $(seq {POLL_SECONDS * 10}); do test -f {prefix}.exit && break; sleep .1; done; '
+                f'if test -f {prefix}.exit; then cat {prefix}.exit {prefix}.log; '
                 f'else echo running; tail -c 300 {prefix}.log 2> /dev/null || true; fi')
         while True:
             self.budget(reserve=attempt['price'] / 120)
@@ -417,7 +421,7 @@ class Run:
             except (vast.SweepError, subprocess.TimeoutExpired) as error:
                 log(f'{name}: {error}; reconnecting to the same instance')
                 self.wait_ready(attempt)
-            time.sleep(POLL_SECONDS)
+                time.sleep(POLL_SECONDS)
 
     def prepare(self, attempt):
         self.wait_ready(attempt)
