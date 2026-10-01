@@ -29,15 +29,18 @@ The command reads the committed HEAD, the pinned submodules, the research record
 This is from the run of 2026-09-30. Long lines are cut at `...`.
 
 ```
-emission_line_marginalisation = False  [off; built 2026-09-22; tested]
+emission_line_marginalisation = True  [production default; built 2026-09-22; tested]
     what: True: FSPS lines get free fluxes >= 0 in the calibration solve, shared with the photometry; z fixed; lines leave the mask
     used: notebook cells 6, 10
     built: c0adc0a 2026-09-22 Emission-line marginalisation option (default off): FSPS lines as flat-prior columns of the calibration solve
     code: ceridwen 6fc7539 2026-09-22 Emission lines as free-flux columns of the calibration solve (ceridwen/likelihood/__init__.py, ...)
     code: ceridwen 1fae781 2026-09-23 Emission lines: exclude FSPS's phantom [O II] 3867 (zero Cloudy flux; no NIST line) (ceridwen/likelihood/emission_lines.py)
     changed: 99e3091 2026-09-23 Emission lines: [O III] and [Ne III] doublets tied; z fixed and fluxes shared with photometry when on (Liu Hao, 2026-09-23)
+    changed: c333f31 2026-09-30 Production defaults: nebular grid, line marginalisation, Ca mask
     tested: e-emission-line-marginalisation [results-ready 2026-09-23] M1_210210, on minus off: mass-weighted age -0.408 Gyr; ...
-    ran: results/m1-210210-nebular-2026-09-30 neb_eline=true
+    tested: e-mask-all-ca [results-ready 2026-09-30] M1_210210, neb_maskca / neb_maskallca / neb_eline_ca / neb_eline_ca_nohe / neb_eline_ca_noO: ...
+    ran: e-mask-all-ca neb_maskallca_eline=true, neb_eline_ca=true, neb_eline_ca_nohe=true, neb_eline_ca_noO=true
+    ran: e-zevo neb_eline_ca_nohe_zevo=true
     open: q-emission-lines Should the fits model, mask or ignore emission lines, and on what physical grounds?
 ```
 

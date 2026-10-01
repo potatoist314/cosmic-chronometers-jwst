@@ -22,6 +22,24 @@ New runs use the compact dependency image pinned in `scripts/vast.py`, selected
 input files, and cached grids. Do not replace it with a generic CUDA image.
 Use `--image` only for an explicitly requested override. Saved runs keep their image.
 
+## Production defaults
+
+The production defaults are `SETTINGS` and `PRIORS` in
+`notebooks/ceridwen_integrated_photometry_spectra.ipynb`. An `experiment.json` that
+omits a key runs with the notebook value. `python3 scripts/ceridwen_state.py` prints
+each value with the records that tested it (skill `checking-ceridwen-state`).
+
+Liu Hao, 2026-09-30, on the nebular grid with line marginalisation and the Ca II K,
+Ca II H and Ca I mask: "this seems like a good default". On [O II], Hβ and [O III]:
+"keep o unmasked as default is fine". On `diffuse_Ebump`: "for bump, keep prior (0, 6)".
+On metallicity evolution: "the metallicity-evolution slope (ZH beta, the zevo arm of
+wiki/research/experiments/e-dust-bump.md) should be part of the production default".
+On this section: "make sure all the defaults are well saved in apporpriate skillsl, wiki etc".
+
+The M1_210210 configs of 2026-09-29 and 2026-09-30 under `results/` set
+`diffuse_Ebump` to `Uniform(low=0.0, high=12.0)`; their records state it. The notebook
+default is `Uniform(low=0.0, high=6.0)`.
+
 ## Steps
 
 1. **Configure.** Write `experiment.json` in the experiment's result directory.

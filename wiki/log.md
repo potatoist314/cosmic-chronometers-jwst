@@ -1427,6 +1427,24 @@
 - `ssp_grid=~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5`; `emission_line_marginalisation=True`; `emission_lines=[3934.77,3966.6,3973.3,4227.92]`; \(z=z_{\mathrm{cat}}\). `diffuse_Ebump` prior remains \(\mathrm{Uniform}(0,6)\). Liu Hao, 30 Sep 2026: 'this seems like a good default'; record: `research/experiments/e-mask-all-ca.md`.
 - Files: `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, `tests/test_emission_line_marginalisation.py`, `wiki/fit_settings.py`, `wiki/tests/test_fit_settings.py`, `wiki/notes/model.md`.
 
+### 2026-09-30 — e-zevo: metallicity evolution on production defaults
+
+- `research/experiments/e-zevo.md` records `neb_eline_ca_nohe_zevo` against `neb_eline_ca_nohe` for M1_210210; \(\ln Z\) +8.3, \(\beta\) 0.714; `results/m1-210210-neb-eline-ca-nohe-zevo-2026-09-30/`.
+
+### 2026-09-30 — Production defaults: metallicity evolution on
+
+- `metallicity_evolution=True`; `zh_beta_unit` prior remains Uniform(0, 1). Liu Hao, 30 Sep 2026: 'the metallicity-evolution slope (ZH beta) should be part of the production default'; record: `research/experiments/e-zevo.md`.
+- Files: `notebooks/ceridwen_integrated_photometry_spectra.ipynb`, `tests/test_emission_line_marginalisation.py`, `wiki/notes/model.md`.
+
+### 2026-09-30 — e-mask-all-ca: O-lines-masked marginalisation arm
+
+- `research/experiments/e-mask-all-ca.md` records `neb_eline_ca_noO` against `neb_eline_ca_nohe` and `neb_maskallca` for M1_210210; the tied [O III] doublet column drops via offset mask entries 4963.5/5005.0 Å; `results/m1-210210-neb-eline-ca-noo-2026-09-30/`.
+
+### 2026-09-30 — Production defaults recorded in skills, wiki and tests
+
+- Recorded `~/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5`, `emission_line_marginalisation = True`, and fixed catalogue redshift. The \(\pm1500\ \mathrm{km\,s^{-1}}\) mask covers rest-vacuum Ca II K 3934.77, Ca II H 3966.6 and 3973.3, and Ca I 4227.92 Å. [O II], H\(\beta\) and [O III] remain unmasked. Recorded `metallicity_evolution = True`, `zh_beta_unit` \(\mathrm{Uniform}(0,1)\), \(\beta=1/(1+\alpha)\) from \(0.05\) to \(\min(0.80,Z_f\text{ on the grid})\), and `diffuse_Ebump` \(\mathrm{Uniform}(0,6)\).
+- Files changed: `.agents/skills/running-ceridwen-experiments/SKILL.md`, `.agents/skills/checking-ceridwen-state/SKILL.md`, `wiki/notes/model.md`, `wiki/index.md`, `wiki/research/questions/q-emission-lines.md`, `wiki/notes/m1-210210-reference.md`.
+
 ### 2026-09-30 — Lane kernel is the default slice kernel
 
 - Ceridwen `8161d3d` merges `lane-kernel` (`16c7a90`); `BlackJAXNestedSamplerAdapter` defaults to `slice_kernel='lanes'`. `'carry'` and `'stock'` remain options. Liu Hao, 30 Sep 2026: “okay yeah turn this on as default.”
@@ -1458,3 +1476,9 @@
 - `ceridwen` pin `2d5edc9`: `ea91453` (stepping-out edges with no expansion left skip the batch), `578b310` and `2d5edc9` (CSP model-support synthesis; line-block triangular solve; cherry-picks of `bae8f56` and `85d6288`). CPU: 70 targeted tests; 17,800 dead-point lnL/lnP bitwise vs `e8b7643`; production iterations 20/140 bitwise. GPU: likelihood box dumps and full fits bitwise (instances 53604574/53605629/53608103); sampler spent run bitwise on instance 53616870 (168 iterations, logZ 236002.77080421132, 5,478,067 calls).
 - `results/speedups-overnight-2026-09-30/REPORT.md`: session 7 (upload 57.38 s, 3/10 stalled transfers, $0.061); spend $1.677 over 23 instances; shared-SSH row (`9d9bd93`); uncommitted barrier edit not free on CPU (92/1,780 lnL differ).
 - Files: `ceridwen`, `results/speedups-overnight-2026-09-30/REPORT.md`, `results/speedups-overnight-2026-09-30/session7/`, `wiki/notes/vast-ai-gpu-workflow.md`, `wiki/notes/ceridwen-likelihood-sampling.md`, `wiki/notes/ceridwen-ssp-csp.md`.
+
+### 2026-10-01 — Production commits in speedups
+
+- `speedups` includes `absorption-mask` through `759d7ba`, with the current production defaults and saved results. All host rows and wiki history entries are retained.
+- Merged notebook: both current-default tests pass. Five historical-fixture tests fail on missing `diffuse_tau_noll`; the pre-merge test has the same failure.
+- Wiki evidence references validate against the main checkout; merged pages build with its existing data. No new length faults.

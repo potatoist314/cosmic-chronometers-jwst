@@ -1,0 +1,225 @@
+17:17:10 committed source dc1dbecdd895; output results/m1-210210-neb-eline-ca-noo-2026-09-30/run
+17:17:13 renting RTX 5090, host 334262, $0.443/h; estimate $0.250
+17:17:13 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 48137358 unknown bid $0.443/h, $0.221/fit, $0.250 total; 43580384 unknown on-demand $0.476/h, $0.238/fit, $0.259 total; 51000034 unknown bid $0.494/h, $0.247/fit, $0.257 total; 48851731 unknown bid $0.496/h, $0.248/fit, $0.269 total; 51284767 unknown bid $0.553/h, $0.277/fit, $0.297 total; 53470405 unknown on-demand $0.563/h, $0.281/fit, $0.302 total; 40077664 unknown bid $0.580/h, $0.290/fit, $0.321 total; 52093612 unknown on-demand $0.596/h, $0.298/fit, $0.319 total; 52539911 unknown on-demand $0.598/h, $0.299/fit, $0.320 total; 53510527 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 
+17:17:14 SweepError: vastai returned no JSON: 
+17:17:20 renting RTX 5090, host 354394, $0.349/h; estimate $0.195
+17:17:20 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 43580384 unknown bid $0.349/h, $0.174/fit, $0.195 total; 43580384 unknown on-demand $0.476/h, $0.238/fit, $0.259 total; 51284767 unknown bid $0.553/h, $0.277/fit, $0.297 total; 40077670 unknown bid $0.580/h, $0.290/fit, $0.321 total; 52093612 unknown on-demand $0.596/h, $0.298/fit, $0.319 total; 52539911 unknown on-demand $0.598/h, $0.299/fit, $0.320 total; 34905063 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 51950944 unknown bid $0.633/h, $0.317/fit, $0.337 total; 36736037 unknown on-demand $0.642/h, $0.321/fit, $0.321 total; 47039518 unknown on-demand $0.651/h, $0.325/fit, $0.367 t
+17:17:21 SweepError: vastai returned no JSON: 
+17:17:26 renting RTX 5090, host 146915, $0.531/h; estimate $0.286
+17:17:26 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 53509053 unknown on-demand $0.531/h, $0.266/fit, $0.286 total; 45309042 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 51284767 unknown bid $0.553/h, $0.277/fit, $0.297 total; 41974071 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 40077670 unknown bid $0.580/h, $0.290/fit, $0.321 total; 52330942 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 52331007 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 51950944 unknown bid $0.633/h, $0.317/fit, $0.337 total; 35408136 unknown on-demand $0.652/h, $0.326/fit, $0.326 total; 52592200 unknown on-demand $0.872/h, $0.436/fit, $0
+17:17:28 instance 53559982: (None, None)
+17:17:46 instance 53559982: ('loading', 'dc22b8c341d9: Pull complete\n')
+17:19:47 instance 53559982: ('loading', 'b2449364bbe7: Verifying Checksum\nb2449364bbe7: Download complete\n')
+17:20:35 instance 53559982: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34\n')
+17:23:11 instance 53559982: ('loading', 'docker_build() error writing dockerfile')
+17:27:15 waiting: remaining estimate $0.287; replacement $0.170
+17:27:24 waiting: remaining estimate $0.287; replacement $0.289
+17:27:33 waiting: remaining estimate $0.287; replacement $0.229
+17:27:42 waiting: remaining estimate $0.287; replacement $0.229
+17:27:51 waiting: remaining estimate $0.287; replacement $0.170
+17:27:51 SweepError: replacement is consistently cheaper
+17:27:53 destroyed instance 53559982
+17:29:13 committed source dc1dbecdd895; output results/m1-210210-neb-eline-ca-noo-2026-09-30/run
+17:29:17 renting RTX 5090, host 382033, $0.421/h; estimate $0.231
+17:29:17 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 36647964 unknown bid $0.421/h, $0.210/fit, $0.231 total; 41974074 unknown bid $0.549/h, $0.275/fit, $0.296 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 52093612 unknown on-demand $0.596/h, $0.298/fit, $0.319 total; 52539911 unknown on-demand $0.598/h, $0.299/fit, $0.320 total; 47511675 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 37267986 unknown on-demand $0.615/h, $0.307/fit, $0.328 total; 42405155 unknown on-demand $0.636/h, $0.318/fit, $0.339 total; 35010867 unknown on-demand $0.648/h, $0.324/fit, $0.324 total; 53346265 unknown bid $0.657/h, $0.328/fit, $0.349 t
+17:29:18 SweepError: vastai returned no JSON: 
+17:29:22 renting RTX 5090, host 101829, $0.379/h; estimate $0.210
+17:29:22 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 51201455 unknown bid $0.379/h, $0.190/fit, $0.210 total; 45309042 unknown bid $0.416/h, $0.208/fit, $0.229 total; 48212638 unknown bid $0.478/h, $0.239/fit, $0.260 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 41260287 unknown bid $0.498/h, $0.249/fit, $0.270 total; 53277229 unknown bid $0.553/h, $0.277/fit, $0.297 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 41974074 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 45080654 unknown on-demand $0.598/h, $0.299/fit, $0.300 total; 34905061 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 52331007 unk
+17:29:23 SweepError: vastai returned no JSON: 
+17:29:28 renting RTX 5090, host 584534, $0.549/h; estimate $0.296
+17:29:28 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 41974074 unknown bid $0.549/h, $0.275/fit, $0.296 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 42405155 unknown on-demand $0.636/h, $0.318/fit, $0.339 total; 53346265 unknown bid $0.657/h, $0.328/fit, $0.349 total; 51971807 unknown on-demand $0.678/h, $0.339/fit, $0.391 total; 53277229 unknown on-demand $0.681/h, $0.341/fit, $0.362 total; 52845006 unknown bid $0.683/h, $0.341/fit, $0.362 total; 53346265 unknown on-demand $0.719/h, $0.359/fit, $0.380 total; 46982868 poor bid $0.412/h, $0.206/fit, $0.227 total; 50259927 poor bid $0.432/h, $0.216/fit, $0.237 total; 44188475 poo
+17:29:30 instance 53561441: (None, None)
+17:29:54 instance 53561441: ('loading', None)
+17:29:59 instance 53561441: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34: Pulling from potatoist314/ceridwen-gpu\n')
+17:30:12 instance 53561441: ('loading', '53b6cc1cd384: Download complete\n')
+17:30:36 instance 53561441: ('loading', '55557fec2dac: Download complete\n')
+17:31:17 instance 53561441: ('loading', 'dc22b8c341d9: Download complete\n')
+17:31:23 instance 53561441: ('loading', '9d9229de0a23: Download complete\n')
+17:31:47 instance 53561441: ('loading', '77be074b1ca8: Download complete\n')
+17:35:52 waiting: remaining estimate $0.296; replacement $0.229
+17:36:03 waiting: remaining estimate $0.296; replacement $0.229
+17:36:12 waiting: remaining estimate $0.296; replacement $0.229
+17:36:12 SweepError: replacement is consistently cheaper
+17:36:15 destroyed instance 53561441
+17:37:04 committed source dc1dbecdd895; output results/m1-210210-neb-eline-ca-noo-2026-09-30/run
+17:37:08 renting RTX 5090, host 365487, $0.413/h; estimate $0.238
+17:37:08 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 43092247 unknown bid $0.413/h, $0.207/fit, $0.238 total; 47511675 unknown bid $0.419/h, $0.210/fit, $0.230 total; 47767747 unknown bid $0.483/h, $0.241/fit, $0.262 total; 45309042 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 48851740 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 52168436 unknown bid $0.549/h, $0.275/fit, $0.296 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 52168436 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 34905061 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 40077664 unknown on-demand $0.615/h, $0.307/fit, $0.339 total; 
+17:37:09 SweepError: vastai returned no JSON: 
+17:37:14 renting RTX 5090, host 97910, $0.419/h; estimate $0.230
+17:37:14 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 47511675 unknown bid $0.419/h, $0.210/fit, $0.230 total; 47767747 unknown bid $0.483/h, $0.241/fit, $0.262 total; 45309042 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 48851740 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 52168436 unknown bid $0.549/h, $0.275/fit, $0.296 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 53470405 unknown on-demand $0.563/h, $0.281/fit, $0.302 total; 52168436 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 52093612 unknown on-demand $0.596/h, $0.298/fit, $0.319 total; 47511675 unknown on-demand $0.611/h, $0.306/fit, $0.326 t
+17:37:15 SweepError: vastai returned no JSON: 
+17:37:22 renting RTX 5090, host 387797, $0.478/h; estimate $0.260
+17:37:22 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 48212638 unknown bid $0.478/h, $0.239/fit, $0.260 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 52414888 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 45309042 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 48225469 unknown bid $0.549/h, $0.275/fit, $0.296 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 52168436 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 40077670 unknown bid $0.580/h, $0.290/fit, $0.321 total; 42405155 unknown on-demand $0.636/h, $0.318/fit, $0.339 total; 53346265 unknown bid $0.657/h, $0.328/fit, $0.349 total; 519718
+17:37:23 SweepError: vastai returned no JSON: 
+17:38:11 committed source dc1dbecdd895; output results/m1-210210-neb-eline-ca-noo-2026-09-30/run
+17:38:15 renting RTX 5090, host 146008, $0.483/h; estimate $0.262
+17:38:15 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 47767747 unknown bid $0.483/h, $0.241/fit, $0.262 total; 40038866 unknown bid $0.536/h, $0.268/fit, $0.289 total; 47794369 unknown bid $0.549/h, $0.275/fit, $0.296 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 41260287 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 28539924 unknown on-demand $0.611/h, $0.306/fit, $0.306 total; 50343468 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 52331007 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 42405155 unknown on-demand $0.636/h, $0.318/fit, $0.339 total; 35408140 unknown on-demand $0.650/h, $0.325/fit, $0.325 t
+17:38:17 instance 53562482: (None, None)
+17:38:37 instance 53562482: ('loading', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34')
+17:38:43 instance 53562482: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+17:38:49 uploading pinned source, inputs and cached grid
+17:41:59 bootstrap: running; dpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 1ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+17:42:12 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+17:42:30 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:42:42 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:42:55 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:43:08 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:43:20 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:43:33 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:43:45 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:43:57 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:44:10 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:44:22 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:44:34 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:44:47 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:44:59 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:45:11 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:45:24 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:45:36 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:45:48 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:46:01 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:46:13 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:46:25 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:46:38 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:46:50 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:47:02 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:47:14 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:47:26 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:47:38 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:47:50 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:48:05 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:48:17 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:48:29 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:48:42 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:48:55 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:49:07 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:49:19 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:49:31 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:49:43 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:49:56 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:50:08 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:50:20 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:50:32 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:50:44 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:50:56 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:51:08 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:51:21 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:51:33 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:51:45 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:51:58 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:52:10 fit-0: running; 17:42:26 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:52:18 fit-0: remote command failed; reconnecting to the same instance
+17:52:19 instance 53562482: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+17:52:20 SSH not ready: ssh: connect to host 116.127.115.18 port 20683: Connection refused
+17:52:26 result retrieval attempt 1 failed: Command '['rsync', '-a', '--partial', '-e', 'ssh -p 20683 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@116.127.115.18:/workspace/cosmic-chronometers-jwst/.experiment/53562482/0/results/', '/Users/liuhao/Downloads/Astro project/results/m1-210210-neb-eline-ca-noo-2026-09-30/run/fits/']' returned non-zero exit status 255.
+17:52:26 result retrieval attempt 2 failed: Command '['rsync', '-a', '--partial', '--checksum', '-e', 'ssh -p 20683 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@116.127.115.18:/workspace/cosmic-chronometers-jwst/.experiment/53562482/0/results/', '/Users/liuhao/Downloads/Astro project/results/m1-210210-neb-eline-ca-noo-2026-09-30/run/fits/']' returned non-zero exit status 255.
+17:52:27 result retrieval attempt 3 failed: Command '['rsync', '-a', '--partial', '--checksum', '-e', 'ssh -p 20683 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@116.127.115.18:/workspace/cosmic-chronometers-jwst/.experiment/53562482/0/results/', '/Users/liuhao/Downloads/Astro project/results/m1-210210-neb-eline-ca-noo-2026-09-30/run/fits/']' returned non-zero exit status 255.
+17:52:27 result retrieval failed; local files: /Users/liuhao/Downloads/Astro project/results/m1-210210-neb-eline-ca-noo-2026-09-30/run/fits; no automatic refit: Command '['rsync', '-a', '--partial', '--checksum', '-e', 'ssh -p 20683 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@116.127.115.18:/workspace/cosmic-chronometers-jwst/.experiment/53562482/0/results/', '/Users/liuhao/Downloads/Astro project/results/m1-210210-neb-eline-ca-noo-2026-09-30/run/fits/']' returned non-zero exit status 255.
+17:52:27 SweepError: instance unavailable
+17:52:29 destroyed instance 53562482
+17:52:34 renting RTX 5090, host 81276, $0.412/h; estimate $0.227
+17:52:34 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 51954044 good bid $0.412/h, $0.206/fit, $0.227 total; 28539924 unknown bid $0.279/h, $0.140/fit, $0.140 total; 48751162 unknown bid $0.482/h, $0.241/fit, $0.242 total; 52372392 unknown bid $0.523/h, $0.261/fit, $0.282 total; 52372392 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 42405155 unknown bid $0.561/h, $0.280/fit, $0.301 total; 53470405 unknown on-demand $0.563/h, $0.281/fit, $0.302 total; 40077670 unknown bid $0.580/h, $0.290/fit, $0.321 total; 45080654 unknown on-demand $0.598/h, $0.299/fit, $0.300 total; 28539924 unknown on-demand $0.611/h, $0.306/fit, $0.306 total; 35010867 
+17:52:36 instance 53564266: (None, None)
+17:53:06 instance 53564266: ('loading', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34')
+17:53:12 instance 53564266: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+17:53:15 uploading pinned source, inputs and cached grid
+17:54:56 bootstrap: running; nometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 1ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+17:55:05 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+17:55:13 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:55:21 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:55:29 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:55:38 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:55:46 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:55:55 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:56:03 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:56:11 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:56:19 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:56:28 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:56:36 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:56:44 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:56:52 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:57:00 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:57:08 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:57:16 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:57:24 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:57:32 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:57:40 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:57:48 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:57:57 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:58:05 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:58:13 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:58:21 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:58:30 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:58:38 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:58:46 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:58:54 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:59:02 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:59:10 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:59:18 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:59:26 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:59:34 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:59:42 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:59:50 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+17:59:58 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:00:07 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:00:16 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:00:24 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:00:32 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:00:40 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:00:48 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:00:56 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:01:04 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:01:12 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:01:20 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:01:28 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:01:36 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:01:44 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:01:52 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:02:00 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:02:08 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:02:17 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:02:25 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:02:35 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:02:43 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:02:51 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:02:59 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:03:07 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:03:15 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:03:24 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:03:31 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:03:39 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:03:47 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:03:56 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:04:04 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:04:12 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:04:20 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:04:29 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:04:37 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:04:45 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:04:53 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:05:01 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:05:10 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:05:18 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:05:26 fit-0: running; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:05:34 fit-0: 0; 17:55:11 fitting neb_eline_ca_noO/M1_210210, seed 20260927
+18:05:47 destroyed instance 53564266
+18:05:56 local figure rebuild failed for neb_eline_ca_noO/M1_210210: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3726.0, 3728.8, 3934.77, 3966.6, 3973.3, 4227.92, 4963.5, 5005.0], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": false, "baked_runtime": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "Z": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-3.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=12.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/m1-210210-neb-eline-ca-noo-2026-09-30/run/fits/neb_eline_ca_noO/210210-M1_210210']' returned non-zero exit status 1.; GPU artifacts kept

@@ -245,7 +245,7 @@ Results are stored per lane and reused when slice step, `t` and position match b
 
 CPU samples, evidence and call counts are bitwise equal to `blackjax.nss` (`tests/test_nss_diagnostics.py`). On RTX 5090, lanes and carry differ only through float32 rounding in `_T @ spectrum`, the photometry product. M1_210210 sampling: carry 253.2 s, lanes 108.7 s.
 
-With the rules above, iterations 20 and 140 take 156 and 245 rounds, versus 376 and 427 without them (`ceridwen e8b7643`); skipping edges with no expansion left as well, 150 and 238 rounds (`ceridwen ea91453`).
+With the rules above (`ceridwen e8b7643`), iterations 20 and 140 take 156 and 245 rounds, versus 376 and 427 without them (`ceridwen a60f1f8`). Skipping edges with no expansion left as well gives 150 and 238 rounds (`ceridwen ea91453`).
 
 On the same RTX 5090 rental, sampling falls from 180.4 s to 108.0 s and `BlackJAXNestedSamplerAdapter.run` from 183.1 s to 111.2 s. Dead points and samples remain bitwise equal (`results/speedups-swarm-sampler-2026-10-01/session2`).
 
