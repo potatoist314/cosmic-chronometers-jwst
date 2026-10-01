@@ -40,6 +40,7 @@ Likelihood figures: M1_210210 zevo model, RTX 5090, µs per call at batch 100 / 
 | KL figure: one sort per KL value; prior reference sorted once | `marginal_kl_bits` 2.25 → 1.23 ms per call (min of 40), ~5,000 calls per figure rebuild | KL table and both noise floors of the production fit bitwise; tests against `np.histogram` at 17,800 / 65,536 / 65,537 / 100,000 samples | `27df4f7` |
 | `--fits-per-gpu K`: K cells at once under CUDA MPS (swarm-throughput) | 4 targets, fit stage 839 → 641 s (K=2), 607 s (K=4), one boot | result and derived h5 of all 4 targets bitwise vs K=1 at K=2 and K=4 (only `wall_time_s`); K=1 default unchanged | `468ffe4` (`faf650c`) |
 | KL figure: bootstrap and noise-floor KL values on threads | wall, this M1 Pro at load average 50–70: `kl_table` 10.9–20.5 → 4.7–6.1 s, SFH noise floor 4.1–7.8 → 3.4–3.8 s | results come back in input order; KL table and both noise floors of the production fit bitwise; test: threaded vs serial map on the stored eline_off fit | `987b0c7` |
+| Local figure rebuild while later cells still run | a run of N one-at-a-time cells waits for 1 rebuild instead of N (40–47 s each on an idle M1 Pro, 3 min 20 s at load ~150); one-cell runs unchanged | same rebuild command and inputs; tests: rebuild during the run and only once, interrupted run kills the child and keeps the GPU derived bytes | `3dbc25f` |
 
 ## One production fit, before and after
 
