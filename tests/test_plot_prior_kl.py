@@ -110,3 +110,14 @@ def test_noise_floor_few_repeats_is_finite():
     galaxy = pgd.load_galaxy(RESULT_DIR)
     floor = pkl.log_sfr_noise_floor(galaxy, seed=SEED, repeats=3)
     assert np.isfinite(floor) and floor > 0
+
+
+@needs_fit
+def test_threaded_kl_table_and_floor_bitwise_equal_to_serial(monkeypatch):
+    galaxy = pgd.load_galaxy(RESULT_DIR)
+    threaded = pkl.kl_table(galaxy), pkl.log_sfr_noise_floor(galaxy, seed=SEED, repeats=40)
+    monkeypatch.setattr(pkl, "ordered_map", lambda function, items: [function(x) for x in items])
+    serial = pkl.kl_table(galaxy), pkl.log_sfr_noise_floor(galaxy, seed=SEED, repeats=40)
+    np.testing.assert_array_equal(threaded[0][["bits", "err"]].to_numpy(), serial[0][["bits", "err"]].to_numpy())
+    assert list(threaded[0].index) == list(serial[0].index)
+    assert threaded[1] == serial[1]

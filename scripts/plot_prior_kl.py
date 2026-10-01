@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import functools
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import matplotlib
@@ -48,6 +49,12 @@ LABELS = {
 N_BOOT = 200
 PRIOR_SAMPLE_MULT = 10  # prior reference sample = this many times the dead points; keeps its own noise near the bootstrap error
 SEED = 20260832
+
+
+def ordered_map(function, items) -> list:
+    """``[function(x) for x in items]`` on threads, in order; NumPy's sorts release the GIL."""
+    with ThreadPoolExecutor() as pool:
+        return list(pool.map(function, items))
 
 
 def label(name, j, edges_gyr):
@@ -157,8 +164,8 @@ def log_sfr_noise_floor(galaxy, seed=SEED, repeats=200) -> float:
     log_sfr = log_sfr_bins(d["logmass"][:, 0], d["logsfr_ratios"], galaxy.sfh_edges_gyr)
     log_sfr = log_sfr.reshape(repeats, n, -1)
     ordered = [np.sort(reference[:, j]) for j in range(reference.shape[1])]
-    values = [pgd.marginal_kl_bits(sorted_unit_values(log_sfr[k, :, j], ordered[j]), w)
-              for k, j in enumerate(bins)]
+    values = ordered_map(lambda kj: pgd.marginal_kl_bits(sorted_unit_values(log_sfr[kj[0], :, kj[1]], ordered[kj[1]]), w),
+                         enumerate(bins))
     return float(np.percentile(values, 95))
 
 
@@ -187,7 +194,7 @@ def kl_table(galaxy) -> pd.DataFrame:
                                         empirical_unit_values(posterior[:, j], reference[:, j]))
     rows = []
     for key, (text, u) in columns.items():
-        boot = [pgd.marginal_kl_bits(u[i], w[i]) for i in picks]
+        boot = ordered_map(lambda i: pgd.marginal_kl_bits(u[i], w[i]), picks)
         rows.append({"parameter": key, "label": text, "bits": pgd.marginal_kl_bits(u, w),
                      "err": 0.5 * np.subtract(*np.percentile(boot, [84, 16]))})
     return pd.DataFrame(rows).set_index("parameter")
