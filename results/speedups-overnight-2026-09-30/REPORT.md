@@ -41,26 +41,30 @@ Likelihood figures: M1_210210 zevo model, RTX 5090, µs per call at batch 100 / 
 | `--fits-per-gpu K`: K cells at once under CUDA MPS (swarm-throughput) | 4 targets, fit stage 839 → 641 s (K=2), 607 s (K=4), one boot; 8 targets, 1098 s (K=4) → 957 s (K=8), one boot | result and derived h5 of all 4 targets bitwise vs K=1 at K=2 and K=4 (only `wall_time_s`); 8 targets K=8 vs K=4: 592 datasets, numeric bytes identical, strings equal; K=1 default unchanged | `468ffe4` (`faf650c`); records `39e271f` |
 | KL figure: bootstrap and noise-floor KL values on threads | wall, this M1 Pro at load average 50–70: `kl_table` 10.9–20.5 → 4.7–6.1 s, SFH noise floor 4.1–7.8 → 3.4–3.8 s | results come back in input order; KL table and both noise floors of the production fit bitwise; test: threaded vs serial map on the stored eline_off fit | `987b0c7` |
 | Local figure rebuild while later cells still run | a run of N one-at-a-time cells waits for 1 rebuild instead of N (40–47 s each on an idle M1 Pro, 3 min 20 s at load ~150); one-cell runs unchanged | same rebuild command and inputs; tests: rebuild during the run and only once, interrupted run kills the child and keeps the GPU derived bytes | `3dbc25f` |
+| Lane kernel rounds: no likelihood call below the prior slice level; idle batch slots evaluate running lanes' next candidates, reused on a bitwise (step, t, position) match (swarm-sampler) | sampling 180.4 → 108.0 s, `BlackJAXNestedSamplerAdapter.run` 183.1 → 111.2 s (RTX 5090, one boot, host 662751); rounds at iterations 20 / 140: 376 / 427 → 156 / 245 | GPU, one boot: 168 iterations, logZ 236002.77080421132 and 5,478,067 calls in both, all 16,800 dead points and the adapter samples bitwise; CPU: `tests/test_nss_diagnostics.py` bitwise vs `blackjax.nss`, iterations 20 and 140 of the production model bitwise (worker), 2,000 dead points of 20 iterations bitwise (integrator) | `cadac99` (`a935a99`, `e8b7643`) |
+| Stage polls wait on the box for the exit file | end of each billed stage (bootstrap, fit) seen within 0.1 s instead of ~2.5 s on average (half the 5 s poll interval) | no computation; runner tests, including a poll against a real exit file | `267888d` |
 
 ## One production fit, before and after
 
 M1_210210, `neb_eline_ca_nohe_zevo`, seed 20260927, RTX 5090, one run each.
 
-| Stage | Before (`48f56a4`) | After (`48fdc7f`) | After (all, `04d4574`) | After (all, `f3cf417`, image 6ca819ac) |
-|---|---|---|---|---|
-| Offer search and refusals | 2.2 min | 26 s | 10 s (3 refusals) | 18 s (+2 refusals, 3 s) |
-| Failed hosts | — | — | 3.5 min: host 415547 container start failed (Vast shim missing; destroyed by hand after 1 min, the stall rule acts after ≥ 4 min), host 564477 outbid | 8.8 min: host 18 vanished mid-fit (6 min), host 415547 container start failed again and was replaced after 64 s by the new rule (2.5 min) |
-| Instance loading | ~5.9 min | 7.3 min | 2 min 25 s | 1 min 46 s (cold host) |
-| Upload and bootstrap | ~11 min (SSH wait, upload, bootstrap) | 1 min 58 s | 1 min 11 s | 53 s |
-| Fit (box) | 11.8 min | 4.5 min | ≤ 3.8 min | 3.5 min |
-| Sampler wall | 628.2 s | 197.8 s | 187.6 s | 184.2 s |
-| Sampler iteration 1 | | 17.0 s | 1.04 s | 1.02 s |
-| Retrieval, teardown | 20 s | 12 s | 13 s | 23 s |
-| Local figure rebuild | | 40.3 s | 47 s | 3 min 20 s (this Mac at load average ~150; 40–47 s unloaded) |
-| Wall | 31.3 min | 14.6 min | 12.3 min (8.8 min without the failed hosts) | 19.5 min (10.7 min without the failed hosts) |
-| Billed GPU time | 23.2 min | 9.5 min | 4.9 min | 8.7 min by invoice, for 4.8 min from running to destroyed (+4.4 min on the vanished host) |
-| Cost | $0.162 | $0.067 | $0.036 | $0.071 (+$0.031 on the failed hosts) |
-| ln Z | 236001.315 ± 0.185 | 236001.806 ± 0.205 | 236001.239 ± 0.245 | 236001.239 ± 0.189 |
+| Stage | Before (`48f56a4`) | After (`48fdc7f`) | After (all, `04d4574`) | After (all, `f3cf417`, image 6ca819ac) | After (all, `cadac99`, image 6ca819ac) |
+|---|---|---|---|---|---|
+| Offer search and refusals | 2.2 min | 26 s | 10 s (3 refusals) | 18 s (+2 refusals, 3 s) | 10 s (1 refusal) |
+| Failed hosts | — | — | 3.5 min: host 415547 container start failed (Vast shim missing; destroyed by hand after 1 min, the stall rule acts after ≥ 4 min), host 564477 outbid | 8.8 min: host 18 vanished mid-fit (6 min), host 415547 container start failed again and was replaced after 64 s by the new rule (2.5 min) | — |
+| Instance loading | ~5.9 min | 7.3 min | 2 min 25 s | 1 min 46 s (cold host) | 1 min 10 s (host 132677, image layers cached) |
+| Upload and bootstrap | ~11 min (SSH wait, upload, bootstrap) | 1 min 58 s | 1 min 11 s | 53 s | 1 min 8 s |
+| Fit (box) | 11.8 min | 4.5 min | ≤ 3.8 min | 3.5 min | 2 min 34 s |
+| Sampler wall | 628.2 s | 197.8 s | 187.6 s | 184.2 s | 106.6 s |
+| Sampler iteration 1 | | 17.0 s | 1.04 s | 1.02 s | 0.43 s |
+| Retrieval, teardown | 20 s | 12 s | 13 s | 23 s | 1 min 46 s: the first download stopped after 94 s with ssh exit 255; the retry took 12 s |
+| Local figure rebuild | | 40.3 s | 47 s | 3 min 20 s (this Mac at load average ~150; 40–47 s unloaded) | 39 s (load average ~7; run again by hand: the worktree's venv imported another ceridwen checkout) |
+| Wall | 31.3 min | 14.6 min | 12.3 min (8.8 min without the failed hosts) | 19.5 min (10.7 min without the failed hosts) | 7.6 min (6.0 min without the stopped download) |
+| Billed GPU time | 23.2 min | 9.5 min | 4.9 min | 8.7 min by invoice, for 4.8 min from running to destroyed (+4.4 min on the vanished host) | 8.3 min by invoice, for 5.5 min from running to destroyed |
+| Cost | $0.162 | $0.067 | $0.036 | $0.071 (+$0.031 on the failed hosts) | $0.059 |
+| ln Z | 236001.315 ± 0.185 | 236001.806 ± 0.205 | 236001.239 ± 0.245 | 236001.239 ± 0.189 | 236001.239 ± 0.285 |
+
+The `cadac99` fit (lane kernel rounds, host 132677) has the same 173 iterations and 5,624,104 likelihood calls as the earlier fits, and all 35 datasets of its `ceridwen_result.h5` are byte-identical to the fits on hosts 132677 (`c9d0b3f`, image 4da04a83) and 146008 (`de74870`); the ± differs between runs because `log_evidence_err` draws from numpy's global RNG.
 
 The two intermediate images each gave a complete production fit: dcfc83f7 (host 146008) $0.066, bitwise equal to `04d4574`'s fit; 4da04a83 (host 132677) $0.056, bitwise equal to dcfc83f7's. Fits on i5-12400F hosts (132677, 146008) are bitwise equal to each other; the Ryzen 7 9800X3D host differs at 2.5e-13 in lnL through the CPU-computed filter wavelengths.
 
@@ -81,7 +85,8 @@ Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x and 01:0x UTC).
 | e2e on image 4da04a83 | 53601900 | $0.056 |
 | e2e on image 6ca819ac (`c73a664`) | 53604961 (vanished mid-fit), 53605571 (failed start), 53605802 | $0.102 |
 | session 6 (grid upload at 4, 8 and 12 streams) | 53613190 | $0.091 |
-| Total | 19 instances, all destroyed | $1.498 |
+| e2e on `cadac99` (lane kernel rounds, stage polls) | 53619207 | $0.059 |
+| Total | 20 instances, all destroyed | $1.557 |
 
 Every run stayed under its $1 cap; the largest was session 2.
 
@@ -107,10 +112,14 @@ Every run stayed under its $1 cap; the largest was session 2.
 | GPU type (swarm-throughput) | RTX 5090 fastest and cheapest per fit up to ~$0.44/h; A100 SXM4 1.30×, 4090 1.62×, 5060 Ti 3.41×, 3090 3.75×, V100 3.91× slower solo | Liu Hao's choice; keep the 5090 (`results/speedups-swarm-throughput-2026-09-30/types`) |
 | Rank offers by USD per fit (swarm-throughput) | host-record ranking paid $0.38–0.615/h for RTX 5090 while a valid $0.153/h bid existed (2.5–4× per fit) | Liu Hao's rental rule; 3 of 9 bid rentals tonight were stopped mid-job, and a K-fit stage loses all K cells' progress on a stop |
 | Default `--fits-per-gpu` K = pending cells up to 4, K=8 for 8+ cells (swarm-throughput) | 1.38× (K=4 vs K=1), 1.15× more at K=8 | results bitwise; K=4 peaks at 21.3 GB host RAM and K=8 at 37.2 GB, which the offer filter does not check; a bid rental stopped mid-stage loses all K cells; one-fit runs gain nothing |
+| Two 100-row likelihood batches per round, the second for each lane's next candidate (swarm-sampler) | CPU rounds 156 / 245 → 141 / 175 | RTX 5090, one boot: sampling 108.0 → 155.0 s, 165 iterations, logZ 236003.45: not bitwise on GPU, and slower |
+| Larger or compacted likelihood batch (swarm-sampler) | after `e8b7643` a round costs about one 100-row batch (~3.2 ms on RTX 5090) | the row count changes lnL bits on CPU |
 | vmapping several fits into one sampler (swarm-throughput) | MPS with 4 fits already reaches the batch-500 gain (1.26–1.34×) | changes row counts, so lnL bits change; not proposed |
 | zstd image layers | cuBLAS layer 581 → 468 MB at `zstd -19` (−19.5%; `gzip -9` −0.1%), decompression 3.1 → 2.3 s; ~18 s per cold host at the 24 MB/s seen on host 383511 | results unchanged, but pulls need Docker Engine ≥ 23.0 (moby v23.0.0 release notes) and Vast does not report host Docker versions: an older host fails to start |
 
 ## Tried; not possible
+
+- Sampler, measured with no gain (swarm-sampler): hoisting the covariance Cholesky and inverse (XLA already hoists it); post-run finalise ~0.1 s; host loop between iterations ~1 ms; `free_moves` 4 / 8 / 12 within 2% on GPU (109.8 / 109.9 / 111.9 s).
 
 - Removing cuDNN: XLA's GPU compiler requires DNN support (`RET_CHECK dnn_support != nullptr`, `gpu_compiler.cc:2798`).
 - Removing cuSOLVER or cuSPARSE: the likelihood's `cholesky`/`inv` call `gpusolverDnCreate`, which fails with either library hidden.

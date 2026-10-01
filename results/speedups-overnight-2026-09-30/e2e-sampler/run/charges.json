@@ -1,0 +1,55 @@
+[
+  {
+    "amount": 0.039,
+    "description": "Instance 53619207 Charges - 1 day",
+    "end": 1790812800,
+    "items": [
+      {
+        "amount": 0.037,
+        "description": "0.090 hours at $0.405/hour",
+        "end": 1790812800,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790812800,
+        "type": "gpu"
+      },
+      {
+        "amount": 0.001,
+        "description": "0.104 hours at $0.011/hour",
+        "end": 1790812800,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790812800,
+        "type": "disk"
+      },
+      {
+        "amount": 0.001,
+        "description": "0.5 GB Downloaded at $0.002/GB",
+        "end": 1790812800,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790812800,
+        "type": "bwd"
+      },
+      {
+        "amount": 0.0,
+        "description": "Bandwidth (upload)",
+        "end": 1790812800,
+        "items": [],
+        "metadata": {},
+        "source": null,
+        "start": 1790812800,
+        "type": "bwu"
+      }
+    ],
+    "metadata": {
+      "label": "ceridwen-run-5da583221f1c-2"
+    },
+    "source": "instance-53619207",
+    "start": 1790812800,
+    "type": "instance"
+  }
+]

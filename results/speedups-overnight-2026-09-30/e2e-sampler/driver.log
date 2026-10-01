@@ -1,0 +1,41 @@
+01:26:26 committed source cadac99f48c1; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/e2e-sampler/run
+01:26:31 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 46055492 good bid $0.394/h, $0.197/fit, $0.218 total; 45212528 good bid $0.416/h, $0.208/fit, $0.229 total; 48751162 good bid $0.482/h, $0.241/fit, $0.242 total; 52902766 good bid $0.483/h, $0.241/fit, $0.262 total; 45212528 good on-demand $0.544/h, $0.272/fit, $0.293 total; 46055492 good on-demand $0.581/h, $0.290/fit, $0.311 total; 49005869 good on-demand $0.598/h, $0.299/fit, $0.330 total; 47513476 good on-demand $0.607/h, $0.304/fit, $0.325 total; 46877415 unknown bid $0.347/h, $0.174/fit, $0.194 total; 53039899 unknown bid $0.416/h, $0.208/fit, $0.229 total; 48851746 unknown bid $0.496/h,
+01:26:31 renting RTX 5090, host 127708, $0.394/h; estimate $0.218
+01:26:32 VastAPIError: vastai create instance 46055492 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6ca819ac4a623e23c31405b0b3bb6ef906e1e4f1e96a1d640583ab03fa0a2ebd --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-5da583221f1c-1 --bid_price 0.387 --raw failed: 410 error 410/3907: no_such_ask  Instance type 46055492 is no longer available.
+01:26:34 renting RTX 5090, host 132677, $0.416/h; estimate $0.229
+01:26:36 instance 53619207: (None, None)
+01:26:49 instance 53619207: ('loading', None)
+01:26:55 instance 53619207: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:6ca819ac4a623e23c31405b0b3bb6ef906e1e4f1e96a1d640583ab03fa0a2ebd: Pulling from potatoist314/ceridwen-gpu\n774043ccc8cc: Already exists\n')
+01:27:02 instance 53619207: ('loading', '964852bb1450: Verifying Checksum\n964852bb1450: Download complete\n')
+01:27:21 instance 53619207: ('loading', '65096bf9f695: Pull complete\n')
+01:27:27 instance 53619207: ('loading', '1e35cca63fd4: Verifying Checksum\n')
+01:27:33 instance 53619207: ('loading', 'a96cdfcbf7e6: Pull complete\n')
+01:27:39 instance 53619207: ('loading', '#7 0.585 Building dependency tree...\n#7 0.648 Reading state information...\n#7 0.726 openssh-server is already the newest version (1:9.2p1-2+deb12u10).\n#7 0.726 tmux is already the newest version (3.3a-3).\n#7 0.726 git is already the newest version (1:2.39.5-0+deb12u3).\n#7 0.726 wget is already the newest version (1.21.3-1+deb12u1).\n#7 0.726 curl is already the newest version (7.88.1-10+deb12u15).\n#7 0.726 less is already the newest version (590-2.1~deb12u2).\n#7 0.726 locales is already the newest version (2.36-9+deb12u14).\n#7 0.726 sudo is already the newest version (1.9.13p3-1+deb12u4).\n#7 0.726 software-properties-common is already the newest version (0.99.30-4.1~deb12u1).\n#7 0.726 rsync is already the newest version (3.2.7-1+deb12u6).\n#7 0.726 0 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.\n')
+01:27:46 instance 53619207: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6ca819ac4a623e23c31405b0b3bb6ef906e1e4f1e96a1d640583ab03fa0a2ebd/ssh')
+01:27:52 uploading pinned source, inputs and cached grid
+01:28:54 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+01:29:07 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:29:15 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:29:24 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:29:32 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:29:41 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:29:50 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:29:58 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:30:07 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:30:16 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:30:24 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:30:33 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:30:42 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:30:50 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:30:59 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:31:07 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:31:16 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:31:25 fit-0: running; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:31:28 fit-0: 0; 01:29:01 fitting neb_eline_ca_nohe_zevo/M1_210210, seed 20260927
+01:33:02 result retrieval attempt 1 failed: Command '['rsync', '-a', '--partial', '-e', 'ssh -p 21360 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@116.127.115.18:/workspace/cosmic-chronometers-jwst/.experiment/53619207/0/results/', '/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/e2e-sampler/run/fits/']' returned non-zero exit status 255.
+01:33:14 destroyed instance 53619207
+01:33:18 local figure rebuild failed for neb_eline_ca_nohe_zevo/M1_210210: Command '['/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "baked_runtime": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "Z": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-3.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=12.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', '/private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/e2e-sampler/run/fits/neb_eline_ca_nohe_zevo/210210-M1_210210']' returned non-zero exit status 1. [IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.; GPU artifacts kept
