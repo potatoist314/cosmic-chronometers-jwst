@@ -9,6 +9,37 @@ Reference fit everywhere below: M1_210210, `neb_eline_ca_nohe_zevo`, seed
 "Free" = bitwise-identical on CPU; on GPU, equal within the float rounding
 the kernel already shows between rentals.
 
+## Context (read first without this repo)
+
+Ceridwen is a JAX-based Bayesian stellar-population code: it builds galaxy
+spectra from FSPS single-stellar-population grids (composite populations,
+nebular emission, dust, redshift/velocity smoothing, polynomial flux
+calibration, marginalised emission lines) and fits them together with
+broadband photometry using nested sampling (BlackJAX). One "fit" =
+~150–175 nested-sampling iterations × 100 deletions × 65 inner steps ≈
+5–6M likelihood calls on GPU, then posterior draws and figures.
+
+This repo (`cosmic-chronometers-jwst`, branch `speedups`) holds the driver
+notebook, runner scripts, and results; the model lives in the `ceridwen`
+submodule (branch `speedups`, pin `2d5edc9`). Fetch both branches from
+GitHub (`potatoist314/ceridwen`, `potatoist314/cosmic-chronometers-jwst`)
+— every commit hash below exists there.
+
+Reference config, in full: target M1_210210 (LEGA-C DR2, z=0.654);
+photometry cosmos2025; SSP grid `amist_c3k_hr_krou_afe_nebular.h5`;
+metallicity evolution on; birth-cloud dust on; 14 SFH bins; emission-line
+marginalisation on for [3934.77, 3966.6, 3973.3, 4227.92] Å; calibration
+order 10; priors Ebump U(0,6), delta U(−1,0.4) (e2e runs widened these to
+U(0,12)/U(−3,0.4) — same results); sampler num_live 500, num_delete 100,
+65 inner steps, dlogZ −5. Sampler wall ~100 s of a ~2.5 min box fit.
+
+Numerics you must know: nested sampling here is deterministic given seed
+(no per-run RNG except the `log_evidence_err` estimate, which jitters
+0.14–0.41 by design — never compare it). XLA autotune level 0 makes one
+GPU type mutually bitwise in one boot; across hosts expect ≤8.3e-7 abs in
+lnL (one host showed a 1-ulp logZ wobble). Anything bigger than that is a
+real difference; anything at/below it is noise.
+
 ## Bottom line (one production fit, same config)
 
 | Stage | Before (`48f56a4`) | After (`f37e4c0`) |
@@ -104,6 +135,24 @@ Microbenchmarks: µs/call at batch 100 (one boot).
 - Local figure rebuild overlaps later cells (1 rebuild wait instead of N);
   KL sorts shared/threaded (kl_table ~2×, marginal KL 2.25 → 1.23 ms/call).
   All bitwise. `3dbc25f`, `8b02c95`, `27df4f7`, `987b0c7`.
+
+## What ports to a different Ceridwen version
+
+Portable (pure `ceridwen/` code, no infra): the sampler changes
+(`ceridwen/sampler/nested.py`: lane kernel, rounds, edge-skip, compile
+overlap), the likelihood changes (`likelihood/emission_lines.py`,
+`likelihood/calibration.py`, `csp/csp_afe.py`, `observation/*`: windows,
+gather, one-select, model support, line-block solve), and the photometry
+projection (`observation/photometry.py`). Each is one commit with a test;
+apply in dependency order (sampler → likelihood → CSP) and re-run the
+bitwise checks above — your baseline numbers will differ from ours, but
+before/after must be bitwise on CPU.
+
+Not portable (our infrastructure): everything under `scripts/`
+(runner/SSH/polling/teardown), the GPU image trims, the grid-upload
+pipeline, and the KL-figure/local-rebuild threading (tied to our figure
+code). The *ideas* transfer (autotune 0, MPS K-fits, shared SSH,
+overlap I/O with compute) but the code will not.
 
 ## Rejected — do not retry without new evidence
 
