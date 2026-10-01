@@ -1439,3 +1439,9 @@
 - Ceridwen: \(40\sigma\) emission-line windows; tied-doublet column gather; one-select window placement; step kernel compiled at sampler init; sparse filter-grid interpolation in `Photometry.setup_for_model`.
 - Runner/fits: XLA autotune level 0; COSMOS catalogues read once/process; one KL-quantile sort; next offer after Vast refusal; outbid instances replaced; four-part parallel grid upload with overlapping bootstrap; venv image layer split into 11, plus Vast SSH packages.
 - Evidence: `results/speedups-overnight-2026-09-30/REPORT.md` — gains, exactness, commits, before/after fit time and cost. Files: `ceridwen`, `scripts/`, `.github/workflows/ceridwen-image*.yml`, `wiki/notes/vast-ai-gpu-workflow.md`.
+
+### 2026-10-01 — Free speedups on `speedups`, continued
+
+- Dependency image: unused CUDA libraries removed, compressed size 3.68 GB → 2.15 GB. Build excludes the paths. Trim removes the same list and checks that no other paths disappear. Host Docker refusals (“Error response from daemon”) trigger replacement after persisting for 60 s.
+- `--fits-per-gpu K`: pending cells K at a time under CUDA MPS, `XLA_CLIENT_MEM_FRACTION=0.75/K`, default K=1. Results bitwise equal except `wall_time_s`. RTX 5090, four targets: fit stage 839/641/607 s at K=1/2/4. Prior-KL figure: one sort per KL value.
+- Evidence: `results/speedups-overnight-2026-09-30/REPORT.md`. Files: `scripts/vast.py`, `scripts/benchmark.py`, `scripts/experiment.py`, `scripts/containers/drop_image_paths.py`, `.github/workflows/ceridwen-image.yml`, `.github/workflows/ceridwen-image-trim.yml`, `wiki/notes/vast-ai-gpu-workflow.md`.

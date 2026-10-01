@@ -75,9 +75,15 @@ Experiments upload selected spectra, cutouts and required catalogue tables; sour
 
 The runner starts `scripts/bootstrap_vast_ai.sh` once source and inputs arrive; with `CERIDWEN_GRID_READY` set, bootstrap waits for `grid/.checked` before its grid step and reuses the uploaded grid.
 
-Fits use `--xla_gpu_autotune_level=0` in `XLA_FLAGS` (`scripts/experiment.py`). An unavailable-offer refusal advances to the next offer without consuming an attempt, up to `MAX_REFUSALS=20`. Instances stopped by Vast (outbid) or no longer existing are replaced.
+Fits use `--xla_gpu_autotune_level=0` in `XLA_FLAGS` (`scripts/experiment.py`). Unavailable-offer refusals advance to the next offer without consuming an attempt, up to `MAX_REFUSALS=20`. Outbid or vanished instances are replaced. Host Docker refusals (“Error response from daemon”) trigger replacement after persisting for 60 s (`START_FAILURE_SECONDS`, `scripts/benchmark.py`).
 
-New experiments use the digest-pinned dependency image from `ghcr.io/potatoist314/ceridwen-gpu`, set by `DEFAULT_IMAGE` in `scripts/vast.py`. `.github/workflows/ceridwen-image.yml` builds it: the 3.5 GB venv layer splits into 11 layers for parallel host downloads, preserving the same files (`scripts/containers/split_image_layer.py`); one additional layer contains packages installed by Vast’s `--ssh` launch (`scripts/containers/vast-ssh.Dockerfile`).
+`python3 scripts/experiment.py run <config> --fits-per-gpu K` fits a boot’s pending cells K at a time under a CUDA MPS daemon, each with `XLA_CLIENT_MEM_FRACTION=0.75/K`. Default K=1. Results match K=1 bitwise, excluding `wall_time_s`. RTX 5090, four targets: fit stage 839 s (K=1), 641 s (K=2), 607 s (K=4).
+
+New experiments use the digest-pinned dependency image from `ghcr.io/potatoist314/ceridwen-gpu`, set by `DEFAULT_IMAGE` in `scripts/vast.py`. `.github/workflows/ceridwen-image.yml` builds it: `scripts/containers/split_image_layer.py` splits the 3.5 GB venv layer into 11 layers for parallel host downloads, preserving files. Another layer contains Vast’s `--ssh` launch packages (`scripts/containers/vast-ssh.Dockerfile`).
+
+The image omits CUDA libraries a one-GPU fit never loads: NCCL, NVSHMEM, eight cuDNN sub-libraries, `libcusolverMg`, `libcufftw`, NVRTC builtins and alt libraries. XLA loads only `libcudnn.so.9` and `libcudnn_graph.so.9` from cuDNN. Compressed size: 3.68 GB → 2.15 GB.
+
+`.github/workflows/ceridwen-image.yml` excludes these libraries at build. `.github/workflows/ceridwen-image-trim.yml` removes the same paths from an existing image with `scripts/containers/drop_image_paths.py` and checks that the file listing loses only those paths.
 
 `--image` overrides the default; the run manifest records the selection. The dependency image installs pinned Ceridwen and sedpy source at runtime without resolving dependencies again. Its build includes no private model code or research data.
 
