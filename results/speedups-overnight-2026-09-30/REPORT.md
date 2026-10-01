@@ -6,7 +6,7 @@ Branches: `speedups` in this repo and in `potatoist314/ceridwen` (ceridwen pinne
 
 `speedups` includes the four production commits through `absorption-mask` `759d7ba`. Host records and both wiki histories are retained. The root checkout's uncommitted work is unchanged.
 
-Combined Ceridwen CPU checks: 70 targeted tests passed; 17,800 lnL and lnP values bitwise against `e8b7643`; production iterations 20 and 140 bitwise. Runner checks: 150 passed. Existing per-change GPU evidence is listed below and saved under `integrate/`; the complete combined tree has no new GPU timing.
+Combined Ceridwen CPU checks: 70 targeted tests passed; 17,800 lnL and lnP values bitwise against `e8b7643`; production iterations 20 and 140 bitwise. Runner checks: 150 passed. Existing per-change GPU evidence is listed below and saved under `integrate/`; the complete combined tree is validated end-to-end in `e2e-combined` (99.55 s sampling, trajectory bitwise vs `e2e-early`).
 
 The merged notebook suite has 3 passes and 5 failures: the historical posterior fixture lacks `diffuse_tau_noll`. The pre-merge test reproduces the same missing-parameter failure. Both current-default model tests pass. The fixture needs a separate repair; no reference values were changed.
 
@@ -104,7 +104,8 @@ Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x, 01:0x and 02:2x UTC; se
 | e2e on `cadac99` (lane kernel rounds, stage polls) | 53619207 | $0.059 |
 | e2e on `f37e4c0` (first fit during the upload) | 53622514 (unavailable while loading), 53622713 | $0.059 |
 | session 7 (timed upload, transfer probes) | 53625717 | $0.061 |
-| Total | 23 instances, all destroyed | $1.677 |
+| e2e-combined (full validation fit; one DNS-failed attempt) | 53677154 (+53669702 failed) | $0.634 |
+| Total | 25 instances, all destroyed | $2.311 |
 
 Every run stayed under its $1 cap; the largest was session 2.
 
@@ -113,6 +114,20 @@ Every run stayed under its $1 cap; the largest was session 2.
 Timed upload and transfer probes, 02:32–02:42 UTC, host 132677 (image layers cached), source `37399dd`, ceridwen `e8b7643`. Instance 53625717 destroyed 02:42:03 UTC; no instances left running.
 
 Upload 57.38 s: new-connection SSH commands 3.5–3.9 s each, source archives 5.0/6.6/6.8 s, inputs rsync 14.49 s (`session7/run`, `gpu/session7.py`). Transfer probes: 3 of 10 showed stalls (78.9 s, 68.7 s, 163.1 s); without a stall 13 MB takes ~9 s on one stream or four. Post-fit pull 12.9 s, no stall. The box fit reached ln Z 236001.239 ± 0.281 with 5,624,104 calls in 106.6 s of sampling. Invoice: $0.057 GPU (0.140 h), $0.002 disk, $0.001 download, $0.001 upload (`session7/run/charges.json`).
+
+## Combined end-to-end validation (`e2e-combined`)
+
+Full reference fit on the combined tree: source `4fa1b1d`, ceridwen `2d5edc9`, image `6ca819ac`, config byte-identical to the e2e reference (M1_210210, `neb_eline_ca_nohe_zevo`, seed 20260927). Host 132677 refused the create; rented host 146008 ($0.411/h), instance 53677154.
+
+Stages (UTC 1 Oct): rent 10:18:25, running 10:19:18, upload plus bootstrap to 10:20:49 (fit started 10:20:13, during the upload), fit exit 10:22:56, destroyed 10:23:14. Sampling 99.55 s (173 iterations, logZ 236001.20006902877, 5,624,104 calls); `e2e-early` took 106.63 s on host 132677 (host variance, not a code claim).
+
+Exactness vs `e2e-early` (same config, `e8b7643`): ns_progress all 173 lines identical except timing fields; result h5 all 35 datasets byte-identical; dead points (17,800 lnL, 11 position sets) bitwise; derived h5 29 of 39 byte-identical. The 10 differing draw/quantile sets (calibration draws and polynomial quantiles, spectrum posterior quantiles/pull/uncertainty, summary q16) differ at float rounding only (max relative 6.3e-14, NaN masks equal). Same-host control (`e2e-trim`, `a60f1f8` on 146008) is 0-diff vs `e2e-early` but shows the same 10 diffs vs combined: the rounding follows the new GPU op sequences (support gather/scatter, line-block triangular solve), not the host. Pre-existing host variation is larger (`e2e-slim` vs `e2e-slim2`: 17 sets, plus a 1-ulp logZ wobble).
+
+Vs production zevo (`dc1dbec`): 173 vs 174 iterations, dlogZ −0.076 against ±0.138/±0.185 evidence errors — the same pre-existing lanes-vs-carry pattern as `e2e-early`.
+
+Local figure rebuild first failed: the kernel imported the stale main-checkout ceridwen (`ImportError: mass_mapped_beta`); rerun with `PYTHONPATH` forced to the pinned worktree ceridwen/sedpy succeeded in 40 s (9 figures, no errors). GPU result/derived bytes verified identical after the rebuild; `validate_result` passes.
+
+Cost: $0.022 this rental plus $0.612 for the DNS-failed first attempt (53669702, host 127708, destroyed during the outage) = $0.634, under the $1 run cap. Teardown verified: 0 instances.
 
 ## Not free: proposals, not built
 
