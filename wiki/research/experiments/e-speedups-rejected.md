@@ -40,7 +40,7 @@ Barrier relocation: 92 of 1,780 CPU \(\ln L\) differ, max \(7.0\times10^{-10}\).
 
 ## Caveats
 
-Run evidence lives on the `speedups` branch at the pinned commit, not in this checkout. The combined tree has no new GPU timing (REPORT, Integration check).
+Run evidence lives on the `speedups` branch at the pinned commit, not in this checkout.
 
 ## References
 
