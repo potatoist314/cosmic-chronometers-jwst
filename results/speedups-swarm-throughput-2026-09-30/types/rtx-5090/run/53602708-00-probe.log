@@ -1,0 +1,27 @@
+Wed Sep 30 23:19:49 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.167.08             Driver Version: 580.167.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:02:00.0 Off |                  N/A |
+| 50%   30C    P8             32W /  500W |       1MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+24
+               total        used        free      shared  buff/cache   available
+Mem:              62           4          31           0          27          58
+Swap:             39           0          39
+name, compute_mode, memory.total [MiB], clocks.max.sm [MHz], power.limit [W]
+NVIDIA GeForce RTX 5090, Default, 32607 MiB, 3210 MHz, 500.00 W
+model name	: Intel(R) Core(TM) Ultra 9 285K

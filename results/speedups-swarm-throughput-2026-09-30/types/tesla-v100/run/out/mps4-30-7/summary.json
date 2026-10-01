@@ -1,0 +1,239 @@
+{
+ "tag": "mps4-30-7",
+ "kernel": "lanes",
+ "ceridwen": "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/__init__.py",
+ "device": "Tesla V100-SXM2-32GB",
+ "jax": "0.10.2",
+ "x64": true,
+ "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0",
+ "iterations": 31,
+ "converged": false,
+ "logZ": 235077.77775866777,
+ "logZ_live": 235865.75754232093,
+ "n_likelihood_calls": 977058,
+ "build_s": 35.66897705942392,
+ "init_s": 7.440080840140581,
+ "sampling_s": 305.47535826824605,
+ "first_iteration_s": 24.297029670327902,
+ "later_iterations_s": 280.8764189463109,
+ "script_s": 356.65124597400427,
+ "rows": [
+  {
+   "iteration": 1,
+   "iteration_s": 24.297029670327902,
+   "logZ": -2591451.0193852205,
+   "logZ_live": 234523.72526516268,
+   "calls": 32006
+  },
+  {
+   "iteration": 2,
+   "iteration_s": 9.149400232359767,
+   "logZ": -548178.5031675674,
+   "logZ_live": 234523.50237142388,
+   "calls": 63368
+  },
+  {
+   "iteration": 3,
+   "iteration_s": 9.453102707862854,
+   "logZ": -63263.87117761504,
+   "logZ_live": 234773.07969310487,
+   "calls": 94864
+  },
+  {
+   "iteration": 4,
+   "iteration_s": 9.19272099249065,
+   "logZ": 95747.38574756346,
+   "logZ_live": 234772.85679936607,
+   "calls": 126198
+  },
+  {
+   "iteration": 5,
+   "iteration_s": 9.543161071836948,
+   "logZ": 161091.3693084045,
+   "logZ_live": 234772.63390562724,
+   "calls": 157759
+  },
+  {
+   "iteration": 6,
+   "iteration_s": 9.730110744014382,
+   "logZ": 193635.41639787602,
+   "logZ_live": 235451.56490961972,
+   "calls": 189479
+  },
+  {
+   "iteration": 7,
+   "iteration_s": 10.001418463885784,
+   "logZ": 209305.27139333115,
+   "logZ_live": 235770.48134076287,
+   "calls": 221120
+  },
+  {
+   "iteration": 8,
+   "iteration_s": 9.480421163141727,
+   "logZ": 215410.5678891092,
+   "logZ_live": 235770.25844702407,
+   "calls": 252757
+  },
+  {
+   "iteration": 9,
+   "iteration_s": 9.485116340219975,
+   "logZ": 219875.5201226283,
+   "logZ_live": 235770.03555328524,
+   "calls": 284184
+  },
+  {
+   "iteration": 10,
+   "iteration_s": 10.089434921741486,
+   "logZ": 223230.17066870065,
+   "logZ_live": 235769.81265954644,
+   "calls": 315924
+  },
+  {
+   "iteration": 11,
+   "iteration_s": 9.953735996037722,
+   "logZ": 225769.07101688706,
+   "logZ_live": 235769.5897658076,
+   "calls": 347441
+  },
+  {
+   "iteration": 12,
+   "iteration_s": 9.474991332739592,
+   "logZ": 227673.9514289731,
+   "logZ_live": 235769.36687206881,
+   "calls": 378994
+  },
+  {
+   "iteration": 13,
+   "iteration_s": 9.336626728996634,
+   "logZ": 229362.51645808812,
+   "logZ_live": 235769.14397833,
+   "calls": 410578
+  },
+  {
+   "iteration": 14,
+   "iteration_s": 10.174256559461355,
+   "logZ": 230394.14135241913,
+   "logZ_live": 235768.9210845912,
+   "calls": 442296
+  },
+  {
+   "iteration": 15,
+   "iteration_s": 9.198928883299232,
+   "logZ": 231120.10490134696,
+   "logZ_live": 235768.69819085236,
+   "calls": 473489
+  },
+  {
+   "iteration": 16,
+   "iteration_s": 9.4058779142797,
+   "logZ": 231720.20310858724,
+   "logZ_live": 235768.47529711356,
+   "calls": 504950
+  },
+  {
+   "iteration": 17,
+   "iteration_s": 9.35851714015007,
+   "logZ": 232367.85283400177,
+   "logZ_live": 235768.25240337473,
+   "calls": 536363
+  },
+  {
+   "iteration": 18,
+   "iteration_s": 9.35887984931469,
+   "logZ": 232804.58338444374,
+   "logZ_live": 235768.02950963593,
+   "calls": 567741
+  },
+  {
+   "iteration": 19,
+   "iteration_s": 10.00575658492744,
+   "logZ": 233164.22330506015,
+   "logZ_live": 235767.8066158971,
+   "calls": 599205
+  },
+  {
+   "iteration": 20,
+   "iteration_s": 9.36417143791914,
+   "logZ": 233475.87416153133,
+   "logZ_live": 235767.5837221583,
+   "calls": 630817
+  },
+  {
+   "iteration": 21,
+   "iteration_s": 9.240394845604897,
+   "logZ": 233737.85963334327,
+   "logZ_live": 235767.36082841948,
+   "calls": 662400
+  },
+  {
+   "iteration": 22,
+   "iteration_s": 9.166985880583525,
+   "logZ": 233943.42194889832,
+   "logZ_live": 235767.13793468068,
+   "calls": 693746
+  },
+  {
+   "iteration": 23,
+   "iteration_s": 9.131894636899233,
+   "logZ": 234120.03670990447,
+   "logZ_live": 235766.91504094185,
+   "calls": 725355
+  },
+  {
+   "iteration": 24,
+   "iteration_s": 9.114966183900833,
+   "logZ": 234292.60635582035,
+   "logZ_live": 235784.2904651069,
+   "calls": 756747
+  },
+  {
+   "iteration": 25,
+   "iteration_s": 8.99667052924633,
+   "logZ": 234449.84312633277,
+   "logZ_live": 235784.06757136807,
+   "calls": 788161
+  },
+  {
+   "iteration": 26,
+   "iteration_s": 8.638408564031124,
+   "logZ": 234577.8447922155,
+   "logZ_live": 235866.87201101502,
+   "calls": 819612
+  },
+  {
+   "iteration": 27,
+   "iteration_s": 8.751997204497457,
+   "logZ": 234689.8613385384,
+   "logZ_live": 235866.6491172762,
+   "calls": 851168
+  },
+  {
+   "iteration": 28,
+   "iteration_s": 8.959077455103397,
+   "logZ": 234809.7065434007,
+   "logZ_live": 235866.4262235374,
+   "calls": 882731
+  },
+  {
+   "iteration": 29,
+   "iteration_s": 9.185162557289004,
+   "logZ": 234912.47953541952,
+   "logZ_live": 235866.20332979856,
+   "calls": 914233
+  },
+  {
+   "iteration": 30,
+   "iteration_s": 8.883051676675677,
+   "logZ": 235005.33136927924,
+   "logZ_live": 235865.98043605976,
+   "calls": 945562
+  },
+  {
+   "iteration": 31,
+   "iteration_s": 9.051180347800255,
+   "logZ": 235077.77775866777,
+   "logZ_live": 235865.75754232093,
+   "calls": 977058
+  }
+ ]
+}

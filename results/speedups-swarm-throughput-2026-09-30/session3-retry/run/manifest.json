@@ -1,0 +1,1429 @@
+{
+  "source": {
+    "commit": "fa4ba1cdc6f11e8277e475baa874438b570de1f8",
+    "submodules": {
+      "ceridwen": "a60f1f8f6704e1df0ae266bac4df44cdfb86877f",
+      "external/sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+    },
+    "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+    "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+    "grids": [
+      {
+        "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+        "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+        "remote_name": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5"
+      }
+    ],
+    "experiment": [
+      {
+        "name": "neb_eline_ca_nohe_zevo/M1_210210",
+        "arm": "neb_eline_ca_nohe_zevo",
+        "target": "M1_210210",
+        "seed": 20260927,
+        "settings": {
+          "photometry": "cosmos2025",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "baked_runtime": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "Z": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=12.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 2,
+          "object_id": 210210,
+          "spect_id": "M1_210210",
+          "sn": 62.20000076293945,
+          "shard_index": 0,
+          "seed": 20260927,
+          "filename": "legac_M1_210210_v2.0.fits"
+        }
+      },
+      {
+        "name": "neb_eline_ca_nohe_zevo/M14_27068",
+        "arm": "neb_eline_ca_nohe_zevo",
+        "target": "M14_27068",
+        "seed": 20260927,
+        "settings": {
+          "photometry": "cosmos2025",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "baked_runtime": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "Z": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=12.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 95,
+          "object_id": 27068,
+          "spect_id": "M14_27068",
+          "sn": 21.200000762939453,
+          "shard_index": 0,
+          "seed": 20260927,
+          "filename": "legac_M14_27068_v2.0.fits"
+        }
+      },
+      {
+        "name": "neb_eline_ca_nohe_zevo/M14_31835",
+        "arm": "neb_eline_ca_nohe_zevo",
+        "target": "M14_31835",
+        "seed": 20260927,
+        "settings": {
+          "photometry": "cosmos2025",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "baked_runtime": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "Z": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=12.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 68,
+          "object_id": 31835,
+          "spect_id": "M14_31835",
+          "sn": 27.399999618530273,
+          "shard_index": 0,
+          "seed": 20260927,
+          "filename": "legac_M14_31835_v2.0.fits"
+        }
+      },
+      {
+        "name": "neb_eline_ca_nohe_zevo/M14_37023",
+        "arm": "neb_eline_ca_nohe_zevo",
+        "target": "M14_37023",
+        "seed": 20260927,
+        "settings": {
+          "photometry": "cosmos2025",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "baked_runtime": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "Z": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=12.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 97,
+          "object_id": 37023,
+          "spect_id": "M14_37023",
+          "sn": 21.0,
+          "shard_index": 0,
+          "seed": 20260927,
+          "filename": "legac_M14_37023_v2.0.fits"
+        }
+      },
+      {
+        "name": "neb_eline_ca_nohe_zevo/M14_36550",
+        "arm": "neb_eline_ca_nohe_zevo",
+        "target": "M14_36550",
+        "seed": 20260927,
+        "settings": {
+          "photometry": "cosmos2025",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "baked_runtime": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "Z": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=12.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 168,
+          "object_id": 36550,
+          "spect_id": "M14_36550",
+          "sn": 8.0,
+          "shard_index": 0,
+          "seed": 20260927,
+          "filename": "legac_M14_36550_v2.0.fits"
+        }
+      },
+      {
+        "name": "neb_eline_ca_nohe_zevo/M14_37219",
+        "arm": "neb_eline_ca_nohe_zevo",
+        "target": "M14_37219",
+        "seed": 20260927,
+        "settings": {
+          "photometry": "cosmos2025",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "baked_runtime": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "Z": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=12.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 129,
+          "object_id": 37219,
+          "spect_id": "M14_37219",
+          "sn": 15.0,
+          "shard_index": 0,
+          "seed": 20260927,
+          "filename": "legac_M14_37219_v2.0.fits"
+        }
+      },
+      {
+        "name": "neb_eline_ca_nohe_zevo/M14_37723",
+        "arm": "neb_eline_ca_nohe_zevo",
+        "target": "M14_37723",
+        "seed": 20260927,
+        "settings": {
+          "photometry": "cosmos2025",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "baked_runtime": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "Z": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=12.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 86,
+          "object_id": 37723,
+          "spect_id": "M14_37723",
+          "sn": 22.899999618530273,
+          "shard_index": 0,
+          "seed": 20260927,
+          "filename": "legac_M14_37723_v2.0.fits"
+        }
+      },
+      {
+        "name": "neb_eline_ca_nohe_zevo/M14_37843",
+        "arm": "neb_eline_ca_nohe_zevo",
+        "target": "M14_37843",
+        "seed": 20260927,
+        "settings": {
+          "photometry": "cosmos2025",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "baked_runtime": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "Z": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=12.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 178,
+          "object_id": 37843,
+          "spect_id": "M14_37843",
+          "sn": 6.5,
+          "shard_index": 0,
+          "seed": 20260927,
+          "filename": "legac_M14_37843_v2.0.fits"
+        }
+      }
+    ],
+    "input_files": [
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits",
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
+      "data/raw/cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits",
+      "data/raw/cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits",
+      "data/raw/cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits",
+      "data/raw/hst_f814w/M14_27068.fits",
+      "data/raw/hst_f814w/M14_31835.fits",
+      "data/raw/hst_f814w/M14_36550.fits",
+      "data/raw/hst_f814w/M14_37023.fits",
+      "data/raw/hst_f814w/M14_37219.fits",
+      "data/raw/hst_f814w/M14_37723.fits",
+      "data/raw/hst_f814w/M14_37843.fits",
+      "data/raw/hst_f814w/M1_210210.fits",
+      "data/raw/legac_dr2/legaCdr2.fits.gz",
+      "data/raw/legac_dr2/sp/legac_M14_27068_v2.0.fits",
+      "data/raw/legac_dr2/sp/legac_M14_31835_v2.0.fits",
+      "data/raw/legac_dr2/sp/legac_M14_36550_v2.0.fits",
+      "data/raw/legac_dr2/sp/legac_M14_37023_v2.0.fits",
+      "data/raw/legac_dr2/sp/legac_M14_37219_v2.0.fits",
+      "data/raw/legac_dr2/sp/legac_M14_37723_v2.0.fits",
+      "data/raw/legac_dr2/sp/legac_M14_37843_v2.0.fits",
+      "data/raw/legac_dr2/sp/legac_M1_210210_v2.0.fits",
+      "external/fsps/data/emlines_info.dat"
+    ],
+    "image": "ghcr.io/potatoist314/ceridwen-gpu@sha256:6565b52d486cfe82cd17f6f2bd928b45529576d32b6dc52734c4549a953ed1a1"
+  },
+  "gpus": [
+    "RTX 5090"
+  ],
+  "hosts": 1,
+  "target": "experiment",
+  "seed": 0,
+  "created": 1790813302.6411068,
+  "attempts": [
+    {
+      "offer": {
+        "ask_contract_id": 47680627,
+        "avail_vol_ask_id": 47680822,
+        "avail_vol_dph": 0.00018518518518518515,
+        "avail_vol_size": 512.0,
+        "bundle_id": 1618484822,
+        "bundled_results": null,
+        "bw_nvlink": 0.0,
+        "cluster_id": null,
+        "compute_cap": 1200,
+        "cpu_arch": "amd64",
+        "cpu_cores": 24,
+        "cpu_cores_effective": 24.0,
+        "cpu_ghz": 6.5,
+        "cpu_name": "Core\u2122 Ultra 9 285K",
+        "cpu_ram": 64002,
+        "credit_discount_max": 0.15,
+        "cuda_max_good": 13.0,
+        "direct_port_count": 98,
+        "discount_rate": 0.0,
+        "discounted_dph_total": 0.6148148148148148,
+        "discounted_hourly": 0.0,
+        "disk_bw": 2852.4,
+        "disk_name": "Samsung SSD 990 EVO Plus 4TB",
+        "disk_space": 1840.0,
+        "dlperf": 199.400379748,
+        "dlperf_per_dphtotal": 324.326379748,
+        "dph_base": 0.6,
+        "dph_total": 0.6148148148148148,
+        "dph_total_adj": 0.6281481481481481,
+        "driver_vers": 580167008,
+        "driver_version": "580.167.08",
+        "duration": 2761409.4804415703,
+        "end_date": 1793574714.2216294,
+        "expected_reliability": 0.0,
+        "external": null,
+        "flops_per_dphtotal": 181.77727228915663,
+        "geolocation": "Australia, AU",
+        "geolocode": 147759926,
+        "gpu_arch": "nvidia",
+        "gpu_display_active": false,
+        "gpu_frac": 1.0,
+        "gpu_ids": [
+          204279
+        ],
+        "gpu_lanes": 16,
+        "gpu_max_power": 500.0,
+        "gpu_max_temp": 60.0,
+        "gpu_mem_bw": 1456.3,
+        "gpu_name": "RTX 5090",
+        "gpu_ram": 32607,
+        "gpu_total_ram": 32607,
+        "has_avx": 1,
+        "host_id": 370354,
+        "hosting_type": 0,
+        "hostname": null,
+        "id": 47680627,
+        "inet_down": 1961.4,
+        "inet_down_cost": 0.0013333333333333333,
+        "inet_up": 465.7,
+        "inet_up_cost": 0.0013333333333333333,
+        "instance": {
+          "discountTotalHour": 0,
+          "discountedTotalPerHour": 0.014814814814814812,
+          "diskHour": 0.014814814814814812,
+          "gpuCostPerHour": 0,
+          "slaPremiumPerHour": 0,
+          "totalHour": 0.014814814814814812
+        },
+        "internet_down_cost_per_tb": 1.3653333333333333,
+        "internet_up_cost_per_tb": 1.3653333333333333,
+        "is_bid": false,
+        "is_vm_deverified": true,
+        "logo": "/static/logos/vastai_small2.png",
+        "machine_id": 140286,
+        "min_bid": 0.402,
+        "mobo_name": "Z890 AORUS PRO ICE",
+        "num_gpus": 1,
+        "nw_disk_avg_bw": null,
+        "nw_disk_max_bw": null,
+        "nw_disk_min_bw": null,
+        "os_version": "24.04",
+        "pci_gen": 5.0,
+        "pcie_bw": 54.0,
+        "public_ipaddr": "120.88.119.115",
+        "reliability": 0.9980754,
+        "reliability2": 0.9980754,
+        "reliability_mult": 0.9811097,
+        "rentable": true,
+        "rented": false,
+        "resource_type": "gpu",
+        "rn": 1,
+        "score": 298.8394784097685,
+        "search": {
+          "discountTotalHour": 0,
+          "discountedTotalPerHour": 0.6148148148148148,
+          "diskHour": 0.014814814814814812,
+          "gpuCostPerHour": 0.6,
+          "slaPremiumPerHour": 0.0,
+          "totalHour": 0.6148148148148148
+        },
+        "sla_broker_rate": null,
+        "sla_r_claim": 0.0,
+        "sla_sigma_x": null,
+        "start_date": 1790805552.333743,
+        "static_ip": true,
+        "storage_cost": 0.2666666666666666,
+        "storage_total_cost": 0.014814814814814812,
+        "target_reliability": 0.0,
+        "time_remaining": "",
+        "time_remaining_isbid": "",
+        "total_flops": 111.75936,
+        "vericode": 1,
+        "verification": "verified",
+        "vms_enabled": false,
+        "vram_costperhour": 0.018842579814150336,
+        "webpage": null,
+        "rental_type": "on-demand"
+      },
+      "price": 0.6148148148148148,
+      "bid": null,
+      "started": 1790813306.696568,
+      "transfer_estimate": 0.010666666666666666,
+      "status": "complete",
+      "label": "ceridwen-run-fcf45e925060-1",
+      "instance_id": 53608131,
+      "uploaded": true,
+      "destroyed": true,
+      "elapsed": 2263.951602935791,
+      "billed_usd": 0.379
+    }
+  ],
+  "spend_cap": 1.0,
+  "estimated_total_usd": 0.39730860708574206,
+  "selections": [
+    {
+      "gpu": "RTX 5090",
+      "queried_at": "2026-10-01T00:08:26.694699+00:00",
+      "min_reliability": 0.995,
+      "estimated_hours": 0.5,
+      "estimated_download_gb": 8,
+      "ranking": "host record (good, unknown, poor), then USD per fit at recorded speed, then hourly USD",
+      "offers": [
+        {
+          "offer_id": 47680627,
+          "host_id": 370354,
+          "rental_type": "on-demand",
+          "reliability": 0.9980754,
+          "rejected": null,
+          "hourly_usd": 0.6148148148148148,
+          "download_usd_per_gb": 0.0013333333333333333,
+          "expected_usd": 0.31807407407407406,
+          "host_record": "good",
+          "calls_per_second": null,
+          "fit_usd": 0.3074074074074074
+        },
+        {
+          "offer_id": 47513476,
+          "host_id": 127708,
+          "rental_type": "bid",
+          "reliability": 0.9994982,
+          "rejected": null,
+          "hourly_usd": 0.27740740740740744,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.15953703703703706,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.13870370370370372
+        },
+        {
+          "offer_id": 45028237,
+          "host_id": 18,
+          "rental_type": "bid",
+          "reliability": 0.9973544,
+          "rejected": null,
+          "hourly_usd": 0.34211111111111114,
+          "download_usd_per_gb": 0.00390625,
+          "expected_usd": 0.20230555555555557,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.17105555555555557
+        },
+        {
+          "offer_id": 48425190,
+          "host_id": 362094,
+          "rental_type": "bid",
+          "reliability": 0.996919,
+          "rejected": null,
+          "hourly_usd": 0.3919259259259259,
+          "download_usd_per_gb": 0.005208333333333333,
+          "expected_usd": 0.2376296296296296,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.19596296296296295
+        },
+        {
+          "offer_id": 41075410,
+          "host_id": 51650,
+          "rental_type": "bid",
+          "reliability": 0.9989827,
+          "rejected": null,
+          "hourly_usd": 0.4811111111111111,
+          "download_usd_per_gb": 0.0013020833333333333,
+          "expected_usd": 0.2509722222222222,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.24055555555555555
+        },
+        {
+          "offer_id": 48851740,
+          "host_id": 1801,
+          "rental_type": "bid",
+          "reliability": 0.9964128,
+          "rejected": null,
+          "hourly_usd": 0.4961111111111111,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.2688888888888889,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.24805555555555556
+        },
+        {
+          "offer_id": 51969558,
+          "host_id": 220936,
+          "rental_type": "bid",
+          "reliability": 0.9964261,
+          "rejected": null,
+          "hourly_usd": 0.5324074074074074,
+          "download_usd_per_gb": 0.0,
+          "expected_usd": 0.2662037037037037,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.2662037037037037
+        },
+        {
+          "offer_id": 42405157,
+          "host_id": 150140,
+          "rental_type": "bid",
+          "reliability": 0.9983056,
+          "rejected": null,
+          "hourly_usd": 0.5339222222222223,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.28779444444444446,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.26696111111111115
+        },
+        {
+          "offer_id": 52723068,
+          "host_id": 467312,
+          "rental_type": "on-demand",
+          "reliability": 0.9952435,
+          "rejected": null,
+          "hourly_usd": 0.5362962962962963,
+          "download_usd_per_gb": 0.005208333333333333,
+          "expected_usd": 0.3098148148148148,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.26814814814814814
+        },
+        {
+          "offer_id": 45309042,
+          "host_id": 132677,
+          "rental_type": "on-demand",
+          "reliability": 0.9975858,
+          "rejected": null,
+          "hourly_usd": 0.5444444444444444,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.2930555555555555,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.2722222222222222
+        },
+        {
+          "offer_id": 48851735,
+          "host_id": 1801,
+          "rental_type": "on-demand",
+          "reliability": 0.9964128,
+          "rejected": null,
+          "hourly_usd": 0.5444444444444444,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.2930555555555555,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.2722222222222222
+        },
+        {
+          "offer_id": 45070593,
+          "host_id": 203531,
+          "rental_type": "bid",
+          "reliability": 0.9956066,
+          "rejected": null,
+          "hourly_usd": 0.5457074074074074,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.293687037037037,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.2728537037037037
+        },
+        {
+          "offer_id": 48225469,
+          "host_id": 43746,
+          "rental_type": "bid",
+          "reliability": 0.9952712,
+          "rejected": null,
+          "hourly_usd": 0.5494111111111111,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.29553888888888885,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.27470555555555554
+        },
+        {
+          "offer_id": 46037256,
+          "host_id": 377320,
+          "rental_type": "on-demand",
+          "reliability": 0.9990814,
+          "rejected": null,
+          "hourly_usd": 0.554074074074074,
+          "download_usd_per_gb": 0.00013020833333333333,
+          "expected_usd": 0.2780787037037037,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.277037037037037
+        },
+        {
+          "offer_id": 48191711,
+          "host_id": 281790,
+          "rental_type": "bid",
+          "reliability": 0.9992633,
+          "rejected": null,
+          "hourly_usd": 0.5542185185185184,
+          "download_usd_per_gb": 0.009114583333333334,
+          "expected_usd": 0.3500259259259259,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.2771092592592592
+        },
+        {
+          "offer_id": 42405155,
+          "host_id": 150140,
+          "rental_type": "on-demand",
+          "reliability": 0.9983056,
+          "rejected": null,
+          "hourly_usd": 0.5955555555555556,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.3186111111111111,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.2977777777777778
+        },
+        {
+          "offer_id": 34905063,
+          "host_id": 97910,
+          "rental_type": "on-demand",
+          "reliability": 0.9982121,
+          "rejected": null,
+          "hourly_usd": 0.611111111111111,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.32638888888888884,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.3055555555555555
+        },
+        {
+          "offer_id": 35010863,
+          "host_id": 351444,
+          "rental_type": "bid",
+          "reliability": 0.9952768,
+          "rejected": null,
+          "hourly_usd": 0.6264481481481482,
+          "download_usd_per_gb": 1.3020833333333333e-06,
+          "expected_usd": 0.3132344907407408,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.3132240740740741
+        },
+        {
+          "offer_id": 46831488,
+          "host_id": 43746,
+          "rental_type": "on-demand",
+          "reliability": 0.9971569,
+          "rejected": null,
+          "hourly_usd": 0.6777777777777777,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.35972222222222217,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.33888888888888885
+        },
+        {
+          "offer_id": 53304619,
+          "host_id": 22965,
+          "rental_type": "bid",
+          "reliability": 0.9983082,
+          "rejected": null,
+          "hourly_usd": 0.6805888888888888,
+          "download_usd_per_gb": 0.0006510416666666666,
+          "expected_usd": 0.3455027777777777,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.3402944444444444
+        },
+        {
+          "offer_id": 53277229,
+          "host_id": 516408,
+          "rental_type": "on-demand",
+          "reliability": 0.9968446,
+          "rejected": null,
+          "hourly_usd": 0.6814814814814815,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.36157407407407405,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.34074074074074073
+        },
+        {
+          "offer_id": 52845008,
+          "host_id": 64721,
+          "rental_type": "bid",
+          "reliability": 0.995244,
+          "rejected": null,
+          "hourly_usd": 0.682811111111111,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.36223888888888883,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.3414055555555555
+        },
+        {
+          "offer_id": 48751162,
+          "host_id": 383511,
+          "rental_type": "on-demand",
+          "reliability": 0.9969184,
+          "rejected": null,
+          "hourly_usd": 0.6903703703703703,
+          "download_usd_per_gb": 0.00013020833333333333,
+          "expected_usd": 0.3462268518518518,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.34518518518518515
+        },
+        {
+          "offer_id": 51969558,
+          "host_id": 220936,
+          "rental_type": "on-demand",
+          "reliability": 0.9964261,
+          "rejected": null,
+          "hourly_usd": 0.7540740740740741,
+          "download_usd_per_gb": 0.0,
+          "expected_usd": 0.37703703703703706,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.37703703703703706
+        },
+        {
+          "offer_id": 48191711,
+          "host_id": 281790,
+          "rental_type": "on-demand",
+          "reliability": 0.9992633,
+          "rejected": null,
+          "hourly_usd": 0.7798518518518517,
+          "download_usd_per_gb": 0.009114583333333334,
+          "expected_usd": 0.4628425925925925,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.38992592592592584
+        },
+        {
+          "offer_id": 47580836,
+          "host_id": 302468,
+          "rental_type": "bid",
+          "reliability": 0.9962713,
+          "rejected": null,
+          "hourly_usd": 0.8161111111111111,
+          "download_usd_per_gb": 0.0013020833333333333,
+          "expected_usd": 0.41847222222222225,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.40805555555555556
+        },
+        {
+          "offer_id": 45028237,
+          "host_id": 18,
+          "rental_type": "on-demand",
+          "reliability": 0.9973544,
+          "rejected": null,
+          "hourly_usd": 0.8777777777777778,
+          "download_usd_per_gb": 0.00390625,
+          "expected_usd": 0.4701388888888889,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.4388888888888889
+        },
+        {
+          "offer_id": 47580836,
+          "host_id": 302468,
+          "rental_type": "on-demand",
+          "reliability": 0.9962713,
+          "rejected": null,
+          "hourly_usd": 0.9444444444444443,
+          "download_usd_per_gb": 0.0013020833333333333,
+          "expected_usd": 0.48263888888888884,
+          "host_record": "unknown",
+          "calls_per_second": null,
+          "fit_usd": 0.47222222222222215
+        },
+        {
+          "offer_id": 50259919,
+          "host_id": 20317,
+          "rental_type": "bid",
+          "reliability": 0.9976715,
+          "rejected": null,
+          "hourly_usd": 0.37603703703703706,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.20885185185185187,
+          "host_record": "poor",
+          "calls_per_second": null,
+          "fit_usd": 0.18801851851851853
+        },
+        {
+          "offer_id": 46982868,
+          "host_id": 96250,
+          "rental_type": "bid",
+          "reliability": 0.9973738,
+          "rejected": null,
+          "hourly_usd": 0.41240740740740744,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.22703703703703706,
+          "host_record": "poor",
+          "calls_per_second": null,
+          "fit_usd": 0.20620370370370372
+        },
+        {
+          "offer_id": 43995413,
+          "host_id": 406325,
+          "rental_type": "on-demand",
+          "reliability": 0.9974123,
+          "rejected": null,
+          "hourly_usd": 0.48518518518518516,
+          "download_usd_per_gb": 0.005208333333333333,
+          "expected_usd": 0.28425925925925927,
+          "host_record": "poor",
+          "calls_per_second": 148930.0,
+          "fit_usd": 0.24259259259259258
+        },
+        {
+          "offer_id": 44488747,
+          "host_id": 406325,
+          "rental_type": "on-demand",
+          "reliability": 0.9984945,
+          "rejected": null,
+          "hourly_usd": 0.48518518518518516,
+          "download_usd_per_gb": 0.005208333333333333,
+          "expected_usd": 0.28425925925925927,
+          "host_record": "poor",
+          "calls_per_second": 148930.0,
+          "fit_usd": 0.24259259259259258
+        },
+        {
+          "offer_id": 45669030,
+          "host_id": 406325,
+          "rental_type": "on-demand",
+          "reliability": 0.9978928,
+          "rejected": null,
+          "hourly_usd": 0.48518518518518516,
+          "download_usd_per_gb": 0.005208333333333333,
+          "expected_usd": 0.28425925925925927,
+          "host_record": "poor",
+          "calls_per_second": 148930.0,
+          "fit_usd": 0.24259259259259258
+        },
+        {
+          "offer_id": 45669039,
+          "host_id": 406325,
+          "rental_type": "on-demand",
+          "reliability": 0.9980576,
+          "rejected": null,
+          "hourly_usd": 0.48518518518518516,
+          "download_usd_per_gb": 0.005208333333333333,
+          "expected_usd": 0.28425925925925927,
+          "host_record": "poor",
+          "calls_per_second": 148930.0,
+          "fit_usd": 0.24259259259259258
+        },
+        {
+          "offer_id": 53076980,
+          "host_id": 142157,
+          "rental_type": "bid",
+          "reliability": 0.9975144,
+          "rejected": null,
+          "hourly_usd": 0.5094111111111111,
+          "download_usd_per_gb": 0.00390625,
+          "expected_usd": 0.2859555555555556,
+          "host_record": "poor",
+          "calls_per_second": null,
+          "fit_usd": 0.2547055555555556
+        },
+        {
+          "offer_id": 52159510,
+          "host_id": 406325,
+          "rental_type": "on-demand",
+          "reliability": 0.9987585,
+          "rejected": null,
+          "hourly_usd": 0.5518518518518518,
+          "download_usd_per_gb": 0.005208333333333333,
+          "expected_usd": 0.3175925925925926,
+          "host_record": "poor",
+          "calls_per_second": 148930.0,
+          "fit_usd": 0.2759259259259259
+        },
+        {
+          "offer_id": 50259927,
+          "host_id": 20317,
+          "rental_type": "on-demand",
+          "reliability": 0.9976715,
+          "rejected": null,
+          "hourly_usd": 0.7037037037037037,
+          "download_usd_per_gb": 0.0026041666666666665,
+          "expected_usd": 0.3726851851851852,
+          "host_record": "poor",
+          "calls_per_second": null,
+          "fit_usd": 0.35185185185185186
+        },
+        {
+          "offer_id": 25507611,
+          "host_id": 73118,
+          "rental_type": "on-demand",
+          "reliability": 0.9993468,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 28247758,
+          "host_id": 214845,
+          "rental_type": "bid",
+          "reliability": 0.996003,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 30220754,
+          "host_id": 85684,
+          "rental_type": "on-demand",
+          "reliability": 0.998598,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 30220756,
+          "host_id": 85684,
+          "rental_type": "bid",
+          "reliability": 0.998598,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 33038315,
+          "host_id": 214845,
+          "rental_type": "on-demand",
+          "reliability": 0.9986622,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 43001346,
+          "host_id": 434026,
+          "rental_type": "bid",
+          "reliability": 0.9988633,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 43165147,
+          "host_id": 410852,
+          "rental_type": "bid",
+          "reliability": 0.9961772,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 43165153,
+          "host_id": 410852,
+          "rental_type": "on-demand",
+          "reliability": 0.9961772,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 44096412,
+          "host_id": 3497,
+          "rental_type": "on-demand",
+          "reliability": 0.9983362,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 44096415,
+          "host_id": 3497,
+          "rental_type": "bid",
+          "reliability": 0.9983362,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 44204688,
+          "host_id": 103178,
+          "rental_type": "bid",
+          "reliability": 0.9954384,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 45397698,
+          "host_id": 93419,
+          "rental_type": "on-demand",
+          "reliability": 0.9978749,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 45410075,
+          "host_id": 229807,
+          "rental_type": "on-demand",
+          "reliability": 0.998252,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 50680407,
+          "host_id": 388271,
+          "rental_type": "on-demand",
+          "reliability": 0.9968538,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 50716290,
+          "host_id": 501595,
+          "rental_type": "bid",
+          "reliability": 0.9970536,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 50716297,
+          "host_id": 501595,
+          "rental_type": "on-demand",
+          "reliability": 0.9970536,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 51102922,
+          "host_id": 501595,
+          "rental_type": "on-demand",
+          "reliability": 0.9956581,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 51102922,
+          "host_id": 501595,
+          "rental_type": "bid",
+          "reliability": 0.9956581,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 51305426,
+          "host_id": 366851,
+          "rental_type": "bid",
+          "reliability": 0.9969119,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 51639930,
+          "host_id": 256524,
+          "rental_type": "on-demand",
+          "reliability": 0.997897,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 51639930,
+          "host_id": 256524,
+          "rental_type": "bid",
+          "reliability": 0.997897,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 51929872,
+          "host_id": 57929,
+          "rental_type": "on-demand",
+          "reliability": 0.9968496,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 52152132,
+          "host_id": 172557,
+          "rental_type": "on-demand",
+          "reliability": 0.9985804,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 52827131,
+          "host_id": 90577,
+          "rental_type": "bid",
+          "reliability": 0.9975311,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 52827137,
+          "host_id": 90577,
+          "rental_type": "on-demand",
+          "reliability": 0.9975311,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 53325761,
+          "host_id": 172557,
+          "rental_type": "bid",
+          "reliability": 0.9979654,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 53476199,
+          "host_id": 1276,
+          "rental_type": "on-demand",
+          "reliability": 0.9951605,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 53476223,
+          "host_id": 1276,
+          "rental_type": "on-demand",
+          "reliability": 0.9988088,
+          "rejected": "bandwidth >= $10/TB or missing"
+        },
+        {
+          "offer_id": 53476223,
+          "host_id": 1276,
+          "rental_type": "bid",
+          "reliability": 0.9988088,
+          "rejected": "bandwidth >= $10/TB or missing"
+        }
+      ]
+    }
+  ]
+}

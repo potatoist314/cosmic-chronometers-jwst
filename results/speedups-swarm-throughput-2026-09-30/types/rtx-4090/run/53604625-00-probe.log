@@ -1,0 +1,27 @@
+Wed Sep 30 23:35:27 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.71.05              Driver Version: 595.71.05      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 4090        On  |   00000000:0D:00.0 Off |                  Off |
+| 30%   36C    P8             25W /  450W |       1MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+32
+               total        used        free      shared  buff/cache   available
+Mem:             125           4           7           0         114         120
+Swap:              7           0           7
+name, compute_mode, memory.total [MiB], clocks.max.sm [MHz], power.limit [W]
+NVIDIA GeForce RTX 4090, Default, 24564 MiB, 3150 MHz, 450.00 W
+model name	: AMD Ryzen 9 5950X 16-Core Processor
