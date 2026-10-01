@@ -3,7 +3,8 @@
 Reuses scripts/experiment.py for rental, upload, bootstrap, stages, charges and teardown,
 as results/speedup-lane-cause-2026-09-30/gpu_cause.py does. While the instance is up,
 each file <queue>/<name>.job is one remote command ({R}: remote work directory,
-{P}: python of the box venv). <queue>/END, the session limit or the spend cap ends it.
+{P}: python of the box venv); each <queue>/<name>.ljob is one bash command on this Mac
+({SSH}: the ssh command, {SSHQ}: it quoted, {T}: user@host, {R}), timed into <output>/out/<name>.txt. <queue>/END, the session limit or the spend cap ends it.
 The payload directory (candidate trees <name>/ceridwen, notebooks) is synced to {R}/payload
 before each job. A failed copy is retried and never ends the session.
 Usage: python3 gpu_session.py <payload dir> <queue dir> run <config> --gpu "RTX 5090" --output <dir>
@@ -55,11 +56,26 @@ class Run(experiment.Run):
         deadline = time.time() + SESSION_S
         while time.time() < deadline and not (QUEUE / "END").exists():
             self.budget(reserve=attempt["price"] / 120)
-            jobs = sorted(p for p in QUEUE.glob("*.job") if not (QUEUE / f"{p.stem}.done").exists())
+            jobs = sorted(p for p in [*QUEUE.glob("*.job"), *QUEUE.glob("*.ljob")]
+                          if not (QUEUE / f"{p.stem}.done").exists())
             if not jobs:
                 time.sleep(3)
                 continue
             job = jobs[0]
+            if job.suffix == ".ljob":
+                command = (job.read_text().strip().replace("{R}", REMOTE).replace("{SSHQ}", shlex.quote(ssh))
+                           .replace("{SSH}", ssh).replace("{T}", target))
+                started = time.time()
+                try:
+                    result = subprocess.run(["bash", "-c", command], capture_output=True, text=True,
+                                            timeout=self.timeout(attempt, 900))
+                    report = f"exit {result.returncode}\n{result.stdout[-2000:]}{result.stderr[-2000:]}"
+                except subprocess.TimeoutExpired:
+                    report = "timeout"
+                (self.root / "out" / f"{job.stem}.txt").write_text(f"{time.time() - started:.2f} s, {report}")
+                engine.log(f"{job.stem}: {time.time() - started:.2f} s")
+                (QUEUE / f"{job.stem}.done").touch()
+                continue
             copy("-a", "-e", ssh, *map(str, sorted(HERE.glob("*.py"))), f"{target}:{REMOTE}/",
                  timeout=self.timeout(attempt))
             copy("-a", "--delete", "--exclude", "__pycache__", "-e", ssh, f"{PAYLOAD}/", f"{target}:{REMOTE}/payload/",

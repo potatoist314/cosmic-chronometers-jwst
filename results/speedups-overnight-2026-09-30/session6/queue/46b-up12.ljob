@@ -1,0 +1,1 @@
+ls /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/abparts/12/* | xargs -P 12 -I@ rsync -a --partial -L -e {SSHQ} @ {T}:{R}/ab/ && {SSH} {T} 'du -sb {R}/ab'

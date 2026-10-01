@@ -38,7 +38,7 @@ Likelihood figures: M1_210210 zevo model, RTX 5090, µs per call at batch 100 / 
 | … and without `libcusolverMg`, `libcufftw`, the nvrtc builtins and alt build | 2.32 → 2.15 GB | absent from `/proc/self/maps` in the same three jobs; production fit on it (host 383511, Ryzen 7 9800X3D) completed; dead-point positions bitwise vs the fit on the NCCL-trimmed image (host 146008, i5-12400F); 11,176 of 17,800 lnL differ by ≤ 9.5e-7 (2.5e-13 relative), all downstream of 9 of 28 filter effective wavelengths that sedpy_jax computes with NumPy `log`/`exp` on the host CPU (`observate.py:593–605`), ≤ 5.4e-15 relative | `c73a664`, `f3cf417` |
 | Container that fails to start is replaced after 60 s | ≥ 4 min → 64 s per such host (host 415547 again, 2026-09-30 23:44) | no computation; runner tests | `5b3e186` |
 | KL figure: one sort per KL value; prior reference sorted once | `marginal_kl_bits` 2.25 → 1.23 ms per call (min of 40), ~5,000 calls per figure rebuild | KL table and both noise floors of the production fit bitwise; tests against `np.histogram` at 17,800 / 65,536 / 65,537 / 100,000 samples | `27df4f7` |
-| `--fits-per-gpu K`: K cells at once under CUDA MPS (swarm-throughput) | 4 targets, fit stage 839 → 641 s (K=2), 607 s (K=4), one boot | result and derived h5 of all 4 targets bitwise vs K=1 at K=2 and K=4 (only `wall_time_s`); K=1 default unchanged | `468ffe4` (`faf650c`) |
+| `--fits-per-gpu K`: K cells at once under CUDA MPS (swarm-throughput) | 4 targets, fit stage 839 → 641 s (K=2), 607 s (K=4), one boot; 8 targets, 1098 s (K=4) → 957 s (K=8), one boot | result and derived h5 of all 4 targets bitwise vs K=1 at K=2 and K=4 (only `wall_time_s`); 8 targets K=8 vs K=4: 592 datasets, numeric bytes identical, strings equal; K=1 default unchanged | `468ffe4` (`faf650c`); records `39e271f` |
 | KL figure: bootstrap and noise-floor KL values on threads | wall, this M1 Pro at load average 50–70: `kl_table` 10.9–20.5 → 4.7–6.1 s, SFH noise floor 4.1–7.8 → 3.4–3.8 s | results come back in input order; KL table and both noise floors of the production fit bitwise; test: threaded vs serial map on the stored eline_off fit | `987b0c7` |
 | Local figure rebuild while later cells still run | a run of N one-at-a-time cells waits for 1 rebuild instead of N (40–47 s each on an idle M1 Pro, 3 min 20 s at load ~150); one-cell runs unchanged | same rebuild command and inputs; tests: rebuild during the run and only once, interrupted run kills the child and keeps the GPU derived bytes | `3dbc25f` |
 
@@ -66,7 +66,7 @@ The two intermediate images each gave a complete production fit: dcfc83f7 (host 
 
 ## Spend
 
-Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x UTC).
+Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x and 01:0x UTC).
 
 | Run | Instances | Charge |
 |---|---|---|
@@ -80,7 +80,8 @@ Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x UTC).
 | session 5 (cuDNN/cuSPARSE/cuSOLVER A/B) | 53598740 | $0.151 |
 | e2e on image 4da04a83 | 53601900 | $0.056 |
 | e2e on image 6ca819ac (`c73a664`) | 53604961 (vanished mid-fit), 53605571 (failed start), 53605802 | $0.102 |
-| Total | 18 instances, all destroyed | $1.407 |
+| session 6 (grid upload at 4, 8 and 12 streams) | 53613190 | $0.091 |
+| Total | 19 instances, all destroyed | $1.498 |
 
 Every run stayed under its $1 cap; the largest was session 2.
 
@@ -105,6 +106,7 @@ Every run stayed under its $1 cap; the largest was session 2.
 | Lossless transform of the packed grid | integer delta along age: 0.775 → 0.732 of 612 MB (~26 MB, ~3 s upload); xz: 0.711 at 20× the pack time | free, but gain under the host-to-host spread; not built |
 | GPU type (swarm-throughput) | RTX 5090 fastest and cheapest per fit up to ~$0.44/h; A100 SXM4 1.30×, 4090 1.62×, 5060 Ti 3.41×, 3090 3.75×, V100 3.91× slower solo | Liu Hao's choice; keep the 5090 (`results/speedups-swarm-throughput-2026-09-30/types`) |
 | Rank offers by USD per fit (swarm-throughput) | host-record ranking paid $0.38–0.615/h for RTX 5090 while a valid $0.153/h bid existed (2.5–4× per fit) | Liu Hao's rental rule; 3 of 9 bid rentals tonight were stopped mid-job, and a K-fit stage loses all K cells' progress on a stop |
+| Default `--fits-per-gpu` K = pending cells up to 4, K=8 for 8+ cells (swarm-throughput) | 1.38× (K=4 vs K=1), 1.15× more at K=8 | results bitwise; K=4 peaks at 21.3 GB host RAM and K=8 at 37.2 GB, which the offer filter does not check; a bid rental stopped mid-stage loses all K cells; one-fit runs gain nothing |
 | vmapping several fits into one sampler (swarm-throughput) | MPS with 4 fits already reaches the batch-500 gain (1.26–1.34×) | changes row counts, so lnL bits change; not proposed |
 | zstd image layers | cuBLAS layer 581 → 468 MB at `zstd -19` (−19.5%; `gzip -9` −0.1%), decompression 3.1 → 2.3 s; ~18 s per cold host at the 24 MB/s seen on host 383511 | results unchanged, but pulls need Docker Engine ≥ 23.0 (moby v23.0.0 release notes) and Vast does not report host Docker versions: an older host fails to start |
 
@@ -113,6 +115,7 @@ Every run stayed under its $1 cap; the largest was session 2.
 - Removing cuDNN: XLA's GPU compiler requires DNN support (`RET_CHECK dnn_support != nullptr`, `gpu_compiler.cc:2798`).
 - Removing cuSOLVER or cuSPARSE: the likelihood's `cholesky`/`inv` call `gpusolverDnCreate`, which fails with either library hidden.
 - cuFFT, cuBLAS, nvrtc, cupti, cudart, nvJitLink: loaded in every job (`session5/run/out/libs-*.txt`).
+- More grid upload streams: one boot (host 156806), the 473 MB packed grid, jobs 61–69 in `session6` (41–46 are void: `xargs -I@` also replaced the `@` in `user@host`). 4 streams 47.1–48.6 s, 8 streams 46.9–48.0 s (one 118.7 s trial timed out on a part). At 12 streams 2 of 3 trials lost parts to `kex_exchange_identification: read: Connection reset by peer`: sshd drops unauthenticated connections past `MaxStartups`, default 10:30:100 (sshd_config(5)). This Mac's upload capacity is 13.2 MB/s (`networkQuality`); 4 streams already reach 9.8 MB/s.
 
 ## Blocked
 

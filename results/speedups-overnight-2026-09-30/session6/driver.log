@@ -1,0 +1,57 @@
+00:43:52 committed source 1e2327572502; output /private/tmp/claude-502/-Users-liuhao-Downloads-Astro-project/bceedff6-3261-4d4b-85fa-6fe85867f62e/scratchpad/astro/results/speedups-overnight-2026-09-30/session6/run
+00:43:56 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 46055492 good bid $0.470/h, $0.235/fit, $0.256 total; 46055492 good on-demand $0.581/h, $0.290/fit, $0.311 total; 47513476 good on-demand $0.607/h, $0.304/fit, $0.325 total; 44587608 unknown bid $0.410/h, $0.205/fit, $0.226 total; 53061198 unknown bid $0.416/h, $0.208/fit, $0.229 total; 48137358 unknown bid $0.443/h, $0.221/fit, $0.250 total; 48851746 unknown bid $0.496/h, $0.248/fit, $0.269 total; 51454453 unknown bid $0.536/h, $0.268/fit, $0.289 total; 48854219 unknown on-demand $0.537/h, $0.269/fit, $0.289 total; 45070593 unknown bid $0.546/h, $0.273/fit, $0.294 total; 51284767 unknown bid 
+00:43:56 renting RTX 5090, host 127708, $0.470/h; estimate $0.256
+00:43:57 VastAPIError: vastai create instance 46055492 --image ghcr.io/potatoist314/ceridwen-gpu@sha256:6ca819ac4a623e23c31405b0b3bb6ef906e1e4f1e96a1d640583ab03fa0a2ebd --disk 40 --ssh --direct --onstart-cmd 'touch /root/.no_auto_tmux' --cancel-unavail --label ceridwen-run-f2e5dc37e705-1 --bid_price 0.463 --raw failed: 400 error 404/3603: no_such_ask  Instance type by id 46055492 is not available.
+00:43:59 renting RTX 5090, host 156806, $0.410/h; estimate $0.226
+00:44:01 instance 53613190: (None, None)
+00:44:25 instance 53613190: ('loading', '9d9229de0a23: ')
+00:44:38 instance 53613190: ('loading', '8412e85cc33a: Verifying Checksum\n')
+00:44:44 instance 53613190: ('loading', 'e08b23c708bf: Verifying Checksum\ne08b23c708bf: Download complete\n')
+00:44:50 instance 53613190: ('loading', '964852bb1450: Verifying Checksum\n964852bb1450: Download complete\n')
+00:44:56 instance 53613190: ('loading', 'e08b23c708bf: Pull complete\n')
+00:45:08 instance 53613190: ('loading', '55557fec2dac: Verifying Checksum\n')
+00:45:15 instance 53613190: ('loading', '77be074b1ca8: Verifying Checksum\n')
+00:45:21 instance 53613190: ('loading', '1e35cca63fd4: Verifying Checksum\n1e35cca63fd4: Download complete\n')
+00:45:33 instance 53613190: ('loading', '94fc392e74f2: Pull complete\n')
+00:45:45 instance 53613190: ('loading', '#0 building with "default" instance using docker driver\n\n#1 [internal] load build definition from ghcr.io_potatoist314_ceridwen-gpu_sha256_6ca819ac4a623e23c31405b0b3bb6ef906e1e4f1e96a1d640583ab03fa0a2ebd\n')
+00:45:51 instance 53613190: ('loading', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6ca819ac4a623e23c31405b0b3bb6ef906e1e4f1e96a1d640583ab03fa0a2ebd/ssh')
+00:45:57 instance 53613190: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_6ca819ac4a623e23c31405b0b3bb6ef906e1e4f1e96a1d640583ab03fa0a2ebd/ssh')
+00:46:03 uploading pinned source, inputs and cached grid
+00:47:03 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+00:47:13 41a-clean: 3.66 s
+00:47:20 41b-up4: 6.64 s
+00:47:24 42a-clean: 3.62 s
+00:47:29 42b-up8: 5.58 s
+00:47:33 43a-clean: 3.62 s
+00:47:38 43b-up12: 5.55 s
+00:47:42 44a-clean: 3.66 s
+00:47:46 44b-up4: 3.65 s
+00:47:49 45a-clean: 3.88 s
+00:47:53 45b-up8: 3.97 s
+00:47:57 46a-clean: 3.71 s
+00:48:01 46b-up12: 4.04 s
+00:48:05 61a-clean: 3.56 s
+00:48:53 61b-up4: 48.64 s
+00:48:57 62a-clean: 3.73 s
+00:49:45 62b-up8: 48.01 s
+00:49:49 63a-clean: 3.75 s
+00:50:36 63b-up12: 47.08 s
+00:50:40 64a-clean: 3.67 s
+00:51:23 64b-up12: 43.79 s
+00:51:27 65a-clean: 3.62 s
+00:53:26 65b-up8: 118.69 s
+00:53:29 66a-clean: 3.50 s
+00:54:16 66b-up4: 47.13 s
+00:54:20 67a-clean: 3.64 s
+00:55:08 67b-up4: 48.31 s
+00:55:12 68a-clean: 3.59 s
+00:55:59 68b-up8: 46.93 s
+00:56:03 69a-clean: 3.62 s
+00:56:43 69b-up12: 40.35 s
+00:56:46 70-clean: 3.55 s
+00:56:46 80-end: 0.02 s
+00:56:49 destroyed instance 53613190
