@@ -1,6 +1,6 @@
 # Free speedups, overnight 2026-09-30
 
-Branches: `speedups` in this repo and in `potatoist314/ceridwen` (ceridwen pinned at `a60f1f8`).
+Branches: `speedups` in this repo and in `potatoist314/ceridwen` (ceridwen pinned at `e8b7643`).
 Neither is merged into `absorption-mask`.
 "Free": bitwise-identical on CPU; on GPU, equal up to the float rounding that the
 current kernel already shows between rentals (`results/speedup-lane-cause-2026-09-30`).
@@ -43,34 +43,36 @@ Likelihood figures: M1_210210 zevo model, RTX 5090, µs per call at batch 100 / 
 | Local figure rebuild while later cells still run | a run of N one-at-a-time cells waits for 1 rebuild instead of N (40–47 s each on an idle M1 Pro, 3 min 20 s at load ~150); one-cell runs unchanged | same rebuild command and inputs; tests: rebuild during the run and only once, interrupted run kills the child and keeps the GPU derived bytes | `3dbc25f` |
 | Lane kernel rounds: no likelihood call below the prior slice level; idle batch slots evaluate running lanes' next candidates, reused on a bitwise (step, t, position) match (swarm-sampler) | sampling 180.4 → 108.0 s, `BlackJAXNestedSamplerAdapter.run` 183.1 → 111.2 s (RTX 5090, one boot, host 662751); rounds at iterations 20 / 140: 376 / 427 → 156 / 245 | GPU, one boot: 168 iterations, logZ 236002.77080421132 and 5,478,067 calls in both, all 16,800 dead points and the adapter samples bitwise; CPU: `tests/test_nss_diagnostics.py` bitwise vs `blackjax.nss`, iterations 20 and 140 of the production model bitwise (worker), 2,000 dead points of 20 iterations bitwise (integrator) | `cadac99` (`a935a99`, `e8b7643`) |
 | Stage polls wait on the box for the exit file | end of each billed stage (bootstrap, fit) seen within 0.1 s instead of ~2.5 s on average (half the 5 s poll interval) | no computation; runner tests, including a poll against a real exit file | `267888d` |
+| First fit starts while the grid uploads; the notebook waits for the grid's sha256 check at the cell that loads it | host 132677, one run each: running → fit exit 3 min 42 s → 3 min 30 s; the fit started 6 s before the bootstrap ended instead of 7 s after it, and the grid was ready before its cell | result h5 of the production fit: all 35 datasets byte-identical to the `cadac99` fit on the same host; runner tests, including a wait that blocks on a real file | `f37e4c0` |
+| Result download stopped after 30 s without new bytes, then resumed | a stalled first download (2 of 2 runs since 01:31 UTC, both host 132677) ends after ~31 s instead of 94–120 s; each retry took 12–15 s | no computation; tests, and openrsync over a transport that stops mid-file: stopped in 4 s with its ssh, partial file kept, the `--checksum` retry byte-identical | `0958e8d` |
 
 ## One production fit, before and after
 
 M1_210210, `neb_eline_ca_nohe_zevo`, seed 20260927, RTX 5090, one run each.
 
-| Stage | Before (`48f56a4`) | After (`48fdc7f`) | After (all, `04d4574`) | After (all, `f3cf417`, image 6ca819ac) | After (all, `cadac99`, image 6ca819ac) |
-|---|---|---|---|---|---|
-| Offer search and refusals | 2.2 min | 26 s | 10 s (3 refusals) | 18 s (+2 refusals, 3 s) | 10 s (1 refusal) |
-| Failed hosts | — | — | 3.5 min: host 415547 container start failed (Vast shim missing; destroyed by hand after 1 min, the stall rule acts after ≥ 4 min), host 564477 outbid | 8.8 min: host 18 vanished mid-fit (6 min), host 415547 container start failed again and was replaced after 64 s by the new rule (2.5 min) | — |
-| Instance loading | ~5.9 min | 7.3 min | 2 min 25 s | 1 min 46 s (cold host) | 1 min 10 s (host 132677, image layers cached) |
-| Upload and bootstrap | ~11 min (SSH wait, upload, bootstrap) | 1 min 58 s | 1 min 11 s | 53 s | 1 min 8 s |
-| Fit (box) | 11.8 min | 4.5 min | ≤ 3.8 min | 3.5 min | 2 min 34 s |
-| Sampler wall | 628.2 s | 197.8 s | 187.6 s | 184.2 s | 106.6 s |
-| Sampler iteration 1 | | 17.0 s | 1.04 s | 1.02 s | 0.43 s |
-| Retrieval, teardown | 20 s | 12 s | 13 s | 23 s | 1 min 46 s: the first download stopped after 94 s with ssh exit 255; the retry took 12 s |
-| Local figure rebuild | | 40.3 s | 47 s | 3 min 20 s (this Mac at load average ~150; 40–47 s unloaded) | 39 s (load average ~7; run again by hand: the worktree's venv imported another ceridwen checkout) |
-| Wall | 31.3 min | 14.6 min | 12.3 min (8.8 min without the failed hosts) | 19.5 min (10.7 min without the failed hosts) | 7.6 min (6.0 min without the stopped download) |
-| Billed GPU time | 23.2 min | 9.5 min | 4.9 min | 8.7 min by invoice, for 4.8 min from running to destroyed (+4.4 min on the vanished host) | 8.3 min by invoice, for 5.5 min from running to destroyed |
-| Cost | $0.162 | $0.067 | $0.036 | $0.071 (+$0.031 on the failed hosts) | $0.059 |
-| ln Z | 236001.315 ± 0.185 | 236001.806 ± 0.205 | 236001.239 ± 0.245 | 236001.239 ± 0.189 | 236001.239 ± 0.285 |
+| Stage | Before (`48f56a4`) | After (`48fdc7f`) | After (all, `04d4574`) | After (all, `f3cf417`, image 6ca819ac) | After (all, `cadac99`, image 6ca819ac) | After (all, `f37e4c0`, image 6ca819ac) |
+|---|---|---|---|---|---|---|
+| Offer search and refusals | 2.2 min | 26 s | 10 s (3 refusals) | 18 s (+2 refusals, 3 s) | 10 s (1 refusal) | 4 s |
+| Failed hosts | — | — | 3.5 min: host 415547 container start failed (Vast shim missing; destroyed by hand after 1 min, the stall rule acts after ≥ 4 min), host 564477 outbid | 8.8 min: host 18 vanished mid-fit (6 min), host 415547 container start failed again and was replaced after 64 s by the new rule (2.5 min) | — | 2.1 min: host 127708 unavailable while loading, replaced by the runner |
+| Instance loading | ~5.9 min | 7.3 min | 2 min 25 s | 1 min 46 s (cold host) | 1 min 10 s (host 132677, image layers cached) | 14 s (host 132677, image layers cached) |
+| Upload and bootstrap | ~11 min (SSH wait, upload, bootstrap) | 1 min 58 s | 1 min 11 s | 53 s | 1 min 8 s | 1 min 3 s; the fit started 6 s before its end |
+| Fit (box) | 11.8 min | 4.5 min | ≤ 3.8 min | 3.5 min | 2 min 34 s | 2 min 21 s after the bootstrap |
+| Sampler wall | 628.2 s | 197.8 s | 187.6 s | 184.2 s | 106.6 s | 106.6 s |
+| Sampler iteration 1 | | 17.0 s | 1.04 s | 1.02 s | 0.43 s | 0.43 s |
+| Retrieval, teardown | 20 s | 12 s | 13 s | 23 s | 1 min 46 s: the first download stopped after 94 s with ssh exit 255; the retry took 12 s | 2 min 15 s: the first download stalled until the 120 s attempt timeout; the retry took ~15 s |
+| Local figure rebuild | | 40.3 s | 47 s | 3 min 20 s (this Mac at load average ~150; 40–47 s unloaded) | 39 s (load average ~7; run again by hand: the worktree's venv imported another ceridwen checkout) | 40 s |
+| Wall | 31.3 min | 14.6 min | 12.3 min (8.8 min without the failed hosts) | 19.5 min (10.7 min without the failed hosts) | 7.6 min (6.0 min without the stopped download) | 8.8 min (5.0 min without the failed host and the stall) |
+| Billed GPU time | 23.2 min | 9.5 min | 4.9 min | 8.7 min by invoice, for 4.8 min from running to destroyed (+4.4 min on the vanished host) | 8.3 min by invoice, for 5.5 min from running to destroyed | 8.3 min by invoice, for 5.8 min from running to destroyed |
+| Cost | $0.162 | $0.067 | $0.036 | $0.071 (+$0.031 on the failed hosts) | $0.059 | $0.059 ($0.000 on host 127708) |
+| ln Z | 236001.315 ± 0.185 | 236001.806 ± 0.205 | 236001.239 ± 0.245 | 236001.239 ± 0.189 | 236001.239 ± 0.285 | 236001.239 ± 0.411 |
 
-The `cadac99` fit (lane kernel rounds, host 132677) has the same 173 iterations and 5,624,104 likelihood calls as the earlier fits, and all 35 datasets of its `ceridwen_result.h5` are byte-identical to the fits on hosts 132677 (`c9d0b3f`, image 4da04a83) and 146008 (`de74870`); the ± differs between runs because `log_evidence_err` draws from numpy's global RNG.
+The `cadac99` fit (lane kernel rounds, host 132677) has the same 173 iterations and 5,624,104 likelihood calls as the earlier fits, and all 35 datasets of its `ceridwen_result.h5` are byte-identical to the fits on hosts 132677 (`c9d0b3f`, image 4da04a83) and 146008 (`de74870`), and so are those of the `f37e4c0` fit (host 132677); the ± differs between runs because `log_evidence_err` draws from numpy's global RNG.
 
 The two intermediate images each gave a complete production fit: dcfc83f7 (host 146008) $0.066, bitwise equal to `04d4574`'s fit; 4da04a83 (host 132677) $0.056, bitwise equal to dcfc83f7's. Fits on i5-12400F hosts (132677, 146008) are bitwise equal to each other; the Ryzen 7 9800X3D host differs at 2.5e-13 in lnL through the CPU-computed filter wavelengths.
 
 ## Spend
 
-Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x and 01:0x UTC).
+Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x, 01:0x and 02:2x UTC).
 
 | Run | Instances | Charge |
 |---|---|---|
@@ -86,7 +88,8 @@ Vast invoices, 30 Sep – 1 Oct 2026 (read 1 Oct, 00:1x and 01:0x UTC).
 | e2e on image 6ca819ac (`c73a664`) | 53604961 (vanished mid-fit), 53605571 (failed start), 53605802 | $0.102 |
 | session 6 (grid upload at 4, 8 and 12 streams) | 53613190 | $0.091 |
 | e2e on `cadac99` (lane kernel rounds, stage polls) | 53619207 | $0.059 |
-| Total | 20 instances, all destroyed | $1.557 |
+| e2e on `f37e4c0` (first fit during the upload) | 53622514 (unavailable while loading), 53622713 | $0.059 |
+| Total | 22 instances, all destroyed | $1.616 |
 
 Every run stayed under its $1 cap; the largest was session 2.
 
