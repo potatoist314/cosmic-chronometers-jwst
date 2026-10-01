@@ -1,0 +1,24 @@
+== base-trace
+span 2475.7 ms busy 2134.0 ms idle 343.2 ms; events {'kernel': 92046, 'memcpy': 33015, 'memset': 390}
+  gaps 0-5 us: 65009 totalling 40.5 ms
+  gaps 5-20 us: 46358 totalling 274.0 ms
+  gaps 20-50 us: 355 totalling 9.8 ms
+  gaps 50-200 us: 64 totalling 9.0 ms
+  gaps 200-1000000000000.0 us: 20 totalling 9.9 ms
+kernels >100us: {'gemm_fusion_dot_general_12': 485.2, 'loop_multiply_fusion_4': 240.5, 'gemm_fusion_dot_13': 178.5, 'loop_multiply_fusion_2': 95.5, 'input_reduce_fusion_1': 94.7, 'loop_select_fusion_5': 94.1}
+== new-trace
+span 1649.1 ms busy 1016.7 ms idle 633.1 ms; events {'kernel': 98064, 'memcpy': 39258, 'memset': 390}
+  gaps 0-5 us: 62592 totalling 136.3 ms
+  gaps 5-20 us: 68397 totalling 454.8 ms
+  gaps 20-50 us: 894 totalling 24.2 ms
+  gaps 50-200 us: 63 totalling 8.5 ms
+  gaps 200-1000000000000.0 us: 16 totalling 9.2 ms
+kernels >100us: {'gemm_fusion_dot_general_40': 198.0, 'loop_multiply_fusion_4': 97.8, 'gemm_fusion_dot_16': 72.9, 'loop_multiply_fusion_2': 39.2, 'input_reduce_fusion_5': 38.7, 'loop_select_fusion_7': 38.5}
+== unroll8-trace
+span 1358.2 ms busy 996.4 ms idle 362.4 ms; events {'kernel': 77927, 'memcpy': 15039, 'memset': 390}
+  gaps 0-5 us: 50890 totalling 66.9 ms
+  gaps 5-20 us: 36112 totalling 269.6 ms
+  gaps 20-50 us: 501 totalling 13.9 ms
+  gaps 50-200 us: 45 totalling 4.9 ms
+  gaps 200-1000000000000.0 us: 16 totalling 7.1 ms
+kernels >100us: {'gemm_fusion_dot_general_12': 198.4, 'loop_multiply_fusion_4': 97.5, 'gemm_fusion_dot_13': 73.2, 'loop_multiply_fusion_2': 39.2, 'input_reduce_fusion_1': 38.8, 'loop_select_fusion_6': 38.6}

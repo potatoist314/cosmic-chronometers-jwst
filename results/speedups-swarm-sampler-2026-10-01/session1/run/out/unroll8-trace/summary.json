@@ -1,0 +1,106 @@
+{
+ "tag": "unroll8-trace",
+ "kernel": "lanes",
+ "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/payload/unroll/ceridwen/__init__.py",
+ "device": "NVIDIA GeForce RTX 5090",
+ "jax": "0.10.2",
+ "x64": true,
+ "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0",
+ "iterations": 12,
+ "converged": false,
+ "logZ": 227715.30982018297,
+ "logZ_live": 235557.3247114592,
+ "n_likelihood_calls": 378772,
+ "build_s": 30.28047596802935,
+ "init_s": 5.784665145911276,
+ "sampling_s": 38.02803574874997,
+ "first_iteration_s": 22.142841518856585,
+ "later_iterations_s": 6.342011911328882,
+ "script_s": 78.8331253612414,
+ "rows": [
+  {
+   "iteration": 1,
+   "iteration_s": 22.142841518856585,
+   "logZ": -3016040.618612541,
+   "logZ_live": 234970.2139992279,
+   "calls": 31967
+  },
+  {
+   "iteration": 2,
+   "iteration_s": 0.5308197168633342,
+   "logZ": -650789.6909622146,
+   "logZ_live": 235211.2481401896,
+   "calls": 63549
+  },
+  {
+   "iteration": 3,
+   "iteration_s": 0.543358598370105,
+   "logZ": -108181.87559781369,
+   "logZ_live": 235211.02524645076,
+   "calls": 95101
+  },
+  {
+   "iteration": 4,
+   "iteration_s": 0.5418038028292358,
+   "logZ": 66297.07568386021,
+   "logZ_live": 235210.80386333904,
+   "calls": 126521
+  },
+  {
+   "iteration": 5,
+   "iteration_s": 0.5514700240455568,
+   "logZ": 160668.82126496057,
+   "logZ_live": 235210.5809696002,
+   "calls": 157938
+  },
+  {
+   "iteration": 6,
+   "iteration_s": 0.5640313788317144,
+   "logZ": 190084.58001561093,
+   "logZ_live": 235374.10936167478,
+   "calls": 189381
+  },
+  {
+   "iteration": 7,
+   "iteration_s": 0.5506300120614469,
+   "logZ": 205888.36970682576,
+   "logZ_live": 235373.88646793595,
+   "calls": 221039
+  },
+  {
+   "iteration": 8,
+   "iteration_s": 0.5507482569664717,
+   "logZ": 214656.8394740384,
+   "logZ_live": 235373.66357419715,
+   "calls": 252510
+  },
+  {
+   "iteration": 9,
+   "iteration_s": 0.5737960962578654,
+   "logZ": 219493.6503377267,
+   "logZ_live": 235385.02764672379,
+   "calls": 284102
+  },
+  {
+   "iteration": 10,
+   "iteration_s": 0.5820536967366934,
+   "logZ": 223342.85734819926,
+   "logZ_live": 235384.804752985,
+   "calls": 315846
+  },
+  {
+   "iteration": 11,
+   "iteration_s": 0.6689273701049387,
+   "logZ": 226173.5930393278,
+   "logZ_live": 235384.58185924616,
+   "calls": 347290
+  },
+  {
+   "iteration": 12,
+   "iteration_s": 0.6843729582615197,
+   "logZ": 227715.30982018297,
+   "logZ_live": 235557.3247114592,
+   "calls": 378772
+  }
+ ]
+}

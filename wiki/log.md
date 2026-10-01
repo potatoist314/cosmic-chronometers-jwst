@@ -1445,3 +1445,9 @@
 - Dependency image: unused CUDA libraries removed, compressed size 3.68 GB → 2.15 GB. Build excludes the paths. Trim removes the same list and checks that no other paths disappear. Host Docker refusals (“Error response from daemon”) trigger replacement after persisting for 60 s.
 - `--fits-per-gpu K`: pending cells K at a time under CUDA MPS, `XLA_CLIENT_MEM_FRACTION=0.75/K`, default K=1. Results bitwise equal except `wall_time_s`. RTX 5090, four targets: fit stage 839/641/607 s at K=1/2/4. Prior-KL figure: one sort per KL value.
 - Evidence: `results/speedups-overnight-2026-09-30/REPORT.md`. Files: `scripts/vast.py`, `scripts/benchmark.py`, `scripts/experiment.py`, `scripts/containers/drop_image_paths.py`, `.github/workflows/ceridwen-image.yml`, `.github/workflows/ceridwen-image-trim.yml`, `wiki/notes/vast-ai-gpu-workflow.md`.
+
+### 2026-10-01 — Swarm sampler speedups
+
+- Branch `speedups` in this repo and `potatoist314/ceridwen`; `ceridwen` pin `e8b7643` (`a935a99`, `e8b7643` atop `a60f1f8`). Updated `wiki/notes/ceridwen-likelihood-sampling.md`.
+- `lane_update`: skip likelihood below prior slice level; finished lanes’ slots evaluate running lanes’ next candidates. Store per lane; reuse on bitwise match of slice step, t and position. One pass per round computes next candidates and priors; stored inside results allow another candidate evaluation that round. Batch remains `num_delete`.
+- CPU bitwise equality vs `blackjax.nss` (`tests/test_nss_diagnostics.py`) and vs `a60f1f8` at M1_210210 iterations 20 and 140. Same RTX 5090 rental: sampling 180.4 → 108.0 s; `BlackJAXNestedSamplerAdapter.run` 183.1 → 111.2 s; dead points and samples bitwise equal. Record: `results/speedups-swarm-sampler-2026-10-01`.

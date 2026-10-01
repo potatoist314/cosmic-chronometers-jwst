@@ -1,0 +1,106 @@
+{
+ "tag": "base-trace",
+ "kernel": "lanes",
+ "ceridwen": "/workspace/cosmic-chronometers-jwst/.speedup/payload/base/ceridwen/__init__.py",
+ "device": "NVIDIA GeForce RTX 5090",
+ "jax": "0.10.2",
+ "x64": true,
+ "xla_flags": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0",
+ "iterations": 12,
+ "converged": false,
+ "logZ": 227715.30982018297,
+ "logZ_live": 235557.3247114592,
+ "n_likelihood_calls": 378772,
+ "build_s": 31.204291503876448,
+ "init_s": 5.878483245149255,
+ "sampling_s": 34.195154074113816,
+ "first_iteration_s": 9.699030213989317,
+ "later_iterations_s": 12.043776689097285,
+ "script_s": 76.12712076306343,
+ "rows": [
+  {
+   "iteration": 1,
+   "iteration_s": 9.699030213989317,
+   "logZ": -3016040.618612541,
+   "logZ_live": 234970.2139992279,
+   "calls": 31967
+  },
+  {
+   "iteration": 2,
+   "iteration_s": 1.1193198640830815,
+   "logZ": -650789.6909622146,
+   "logZ_live": 235211.2481401896,
+   "calls": 63549
+  },
+  {
+   "iteration": 3,
+   "iteration_s": 1.0859455349855125,
+   "logZ": -108181.87559781369,
+   "logZ_live": 235211.02524645076,
+   "calls": 95101
+  },
+  {
+   "iteration": 4,
+   "iteration_s": 1.06390950223431,
+   "logZ": 66297.07568386021,
+   "logZ_live": 235210.80386333904,
+   "calls": 126521
+  },
+  {
+   "iteration": 5,
+   "iteration_s": 1.054263109806925,
+   "logZ": 160668.82126496057,
+   "logZ_live": 235210.5809696002,
+   "calls": 157938
+  },
+  {
+   "iteration": 6,
+   "iteration_s": 1.0281674973666668,
+   "logZ": 190084.58001561093,
+   "logZ_live": 235374.10936167478,
+   "calls": 189381
+  },
+  {
+   "iteration": 7,
+   "iteration_s": 1.0567264957353473,
+   "logZ": 205888.36970682576,
+   "logZ_live": 235373.88646793595,
+   "calls": 221039
+  },
+  {
+   "iteration": 8,
+   "iteration_s": 1.039138088002801,
+   "logZ": 214656.8394740384,
+   "logZ_live": 235373.66357419715,
+   "calls": 252510
+  },
+  {
+   "iteration": 9,
+   "iteration_s": 1.0640417030081153,
+   "logZ": 219493.6503377267,
+   "logZ_live": 235385.02764672379,
+   "calls": 284102
+  },
+  {
+   "iteration": 10,
+   "iteration_s": 1.0618721428327262,
+   "logZ": 223342.85734819926,
+   "logZ_live": 235384.804752985,
+   "calls": 315846
+  },
+  {
+   "iteration": 11,
+   "iteration_s": 1.2260781228542328,
+   "logZ": 226173.5930393278,
+   "logZ_live": 235384.58185924616,
+   "calls": 347290
+  },
+  {
+   "iteration": 12,
+   "iteration_s": 1.244314628187567,
+   "logZ": 227715.30982018297,
+   "logZ_live": 235557.3247114592,
+   "calls": 378772
+  }
+ ]
+}
