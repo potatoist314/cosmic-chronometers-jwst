@@ -3,6 +3,10 @@
 Question: does the merged ceridwen give the same likelihood and model outputs as the
 local code it replaces, ceridwen `speedups` 2d5edc9?
 
+Committed copy: parent branch `ceridwen-upstream-merge-equivalence` (origin),
+`results/ceridwen-upstream-merge-2026-10-10/equivalence/` (harness.py, VERDICT.md). Run outputs
+stay in the coordination directory `tmp/ceridwen-upstream-merge/equivalence/runs/`.
+
 ## Method
 
 - Harness: `harness.py` (this directory). The model is built by executing the production
@@ -77,3 +81,13 @@ local code it replaces, ceridwen `speedups` 2d5edc9?
 - No configuration builds: `TypeError: Spectrum(): 'resolution' is not an argument; use
   instrument=Instrument.<unit>(...)` (the merge took upstream's `observation/spectrum.py`; the local
   pieces are follow-up ports). Run: `runs/upstream-merge-c307b54/`.
+
+## Pending (2026-10-11 00:00)
+
+- Final merged commit not yet verified: the production notebook has not been migrated to the
+  merged API (integrator-status "Next" 2). When it lands, run on the final `upstream-merge` tip:
+  `harness.py verify --ceridwen <worktree at tip> --label upstream-merge-<sha>
+  --notebook ceridwen-upstream-merge:notebooks/ceridwen_integrated_photometry_spectra.ipynb
+  --rename Z=logzsol --shift logzsol=1.7328282715969863` (rename and shift per integrator-status:
+  candidate `logzsol` = Z + 1.7328282715969863). Then attribute each `differs` row to an upstream
+  commit by toggling it on a scratch worktree of the tip.

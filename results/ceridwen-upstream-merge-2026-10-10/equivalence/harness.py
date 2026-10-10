@@ -155,6 +155,7 @@ def build(cells, config, target, scratch):
 
 
 RENAME = {}  # candidate parameter name -> point name, from --rename point=candidate
+SHIFT = {}  # candidate parameter name -> added offset, from --shift candidate=offset
 
 
 def batch_for(env, points, offsets):
@@ -165,7 +166,7 @@ def batch_for(env, points, offsets):
         if name == "zred":
             values = env["z_catalog"] + offsets * (1.0 + env["z_catalog"]) / env["C_KMS"]
         else:
-            values = points[RENAME.get(name, name)]
+            values = points[RENAME.get(name, name)] + SHIFT.get(name, 0.0)
         batch[name] = jnp.asarray(values, dtype=jnp.float64).reshape((n,) + np.shape(template))
     return batch
 
@@ -252,6 +253,7 @@ def worker_env(ceridwen):
 def cmd_worker(args):
     """One process, one checkout: evaluate the listed (configuration, target) jobs."""
     RENAME.update(rename_map(args.rename))
+    SHIFT.update({k: float(v) for k, v in (i.split("=") for i in (args.shift or "").split(",") if i)})
     import jax
     import traceback
     import warnings
@@ -316,7 +318,7 @@ def cmd_run(args):
     for i, shard in enumerate(s for s in shards if s):
         cmd = [sys.executable, str(Path(__file__).resolve()), "worker", "--ceridwen", args.ceridwen,
                "--out", str(out), "--notebook", args.notebook, "--points", args.points,
-               "--jobs", ",".join(shard), "--rename", args.rename or ""]
+               "--jobs", ",".join(shard), "--rename", args.rename or "", "--shift", args.shift or ""]
         with record.open("a") as f:
             f.write("  worker: JAX_PLATFORMS=cpu JAX_ENABLE_X64=1 PYTHONPATH="
                     f"{shlex.quote(worker_env(args.ceridwen)['PYTHONPATH'])} {shlex.join(cmd)}\n")
@@ -437,6 +439,7 @@ def cmd_compare(args):
 def cmd_timing_worker(args):
     """Compile the batched lnL once; then time ``n`` calls per stdin line."""
     RENAME.update(rename_map(args.rename))
+    SHIFT.update({k: float(v) for k, v in (i.split("=") for i in (args.shift or "").split(",") if i)})
     import h5py
     import jax
     from scipy.special import softmax
@@ -469,12 +472,14 @@ def cmd_timing_worker(args):
         print(json.dumps(times), file=protocol, flush=True)
 
 
-def timing(reference, candidate, notebooks, config, target, batch, rounds, calls, scratch, rename=""):
+def timing(reference, candidate, notebooks, config, target, batch, rounds, calls, scratch, rename="",
+           shift=""):
     procs = {}
-    for label, ceridwen, notebook, names in (("reference", reference, notebooks[0], ""),
-                                             ("candidate", candidate, notebooks[1], rename)):
+    for label, ceridwen, notebook, names, offsets in (("reference", reference, notebooks[0], "", ""),
+                                                      ("candidate", candidate, notebooks[1], rename, shift)):
         cmd = [sys.executable, str(Path(__file__).resolve()), "timing-worker", "--ceridwen", ceridwen,
                "--notebook", notebook, "--config", config, "--target", target, "--rename", names,
+               "--shift", offsets,
                "--batch", str(batch), "--scratch", str(Path(scratch) / label)]
         procs[label] = subprocess.Popen(cmd, env=worker_env(ceridwen), stdin=subprocess.PIPE,
                                         stdout=subprocess.PIPE, text=True, cwd=PROJECT)
@@ -498,7 +503,7 @@ def timing(reference, candidate, notebooks, config, target, batch, rounds, calls
 def cmd_timing(args):
     result = timing(args.reference, args.candidate, (args.notebook, args.candidate_notebook or args.notebook),
                     args.config, args.target, args.batch, args.rounds, args.calls, args.scratch,
-                    args.rename or "")
+                    args.rename or "", args.shift or "")
     if args.json:
         Path(args.json).write_text(json.dumps(result, indent=1) + "\n")
     print(json.dumps({k: v for k, v in result.items() if k != "times_s"}, indent=1))
@@ -517,14 +522,15 @@ def cmd_verify(args):
     if not args.skip_run:
         cmd_run(argparse.Namespace(ceridwen=args.ceridwen, out=str(out), notebook=args.notebook,
                                    points=str(HERE / "points.h5"), configs=None, targets=None,
-                                   jobs=args.jobs, rename=args.rename))
+                                   jobs=args.jobs, rename=args.rename, shift=args.shift))
     rows = compare_runs(reference_run, out)
     (out / "compare.json").write_text(json.dumps(rows, indent=1) + "\n")
     meta = next(json.loads(f.read_text()) for f in sorted(out.glob("*/*.json")))
     timed = None
     if args.timing and any(r["status"] == "ok" and r["config"] == "production" for r in rows):
         timed = timing(str(reference_ceridwen), args.ceridwen, (NOTEBOOK, args.notebook), "production",
-                       "M1_210210", 128, 20, 5, out / "scratch-timing", args.rename or "")
+                       "M1_210210", 128, 20, 5, out / "scratch-timing", args.rename or "",
+                       args.shift or "")
         (out / "timing.json").write_text(json.dumps(timed, indent=1) + "\n")
     text = [f"## {args.label}: ceridwen {meta['commit'][:12]}"
             + (" (uncommitted changes)" if meta["dirty"] else "") + f", {time.strftime('%Y-%m-%d %H:%M')}",
@@ -557,6 +563,7 @@ def main():
         s.add_argument("--notebook", default=NOTEBOOK)
         s.add_argument("--points", default=str(HERE / "points.h5"))
         s.add_argument("--rename", help="point=candidate parameter names, comma separated")
+        s.add_argument("--shift", help="candidate=offset added to the point value, comma separated")
         if name == "run":
             s.add_argument("--configs")
             s.add_argument("--targets")
@@ -574,6 +581,7 @@ def main():
         s.add_argument("--target", default="M1_210210")
         s.add_argument("--batch", type=int, default=128)
         s.add_argument("--rename", help="point=candidate parameter names (candidate side)")
+        s.add_argument("--shift", help="candidate=offset added to the point value, comma separated")
         if name == "timing":
             s.add_argument("--reference", required=True)
             s.add_argument("--candidate", required=True)
@@ -594,6 +602,7 @@ def main():
     s.add_argument("--reference-ceridwen", default=str(REFERENCE_CERIDWEN))
     s.add_argument("--skip-run", action="store_true")
     s.add_argument("--rename", help="point=candidate parameter names, comma separated")
+    s.add_argument("--shift", help="candidate=offset added to the point value, comma separated")
     s.add_argument("--timing", action=argparse.BooleanOptionalAction, default=True)
     args = p.parse_args()
     return {"points": cmd_points, "run": cmd_run, "worker": cmd_worker, "compare": cmd_compare,
