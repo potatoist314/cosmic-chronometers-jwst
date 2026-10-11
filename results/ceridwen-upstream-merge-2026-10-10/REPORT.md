@@ -2,7 +2,7 @@
 
 ## What merged
 
-- ceridwen `upstream-merge` **54a0d13** (origin, potatoist314/ceridwen): upstream/main cc8ac9d merged
+- ceridwen `upstream-merge` **729fba6** (origin, potatoist314/ceridwen): upstream/main cc8ac9d merged
   into local `speedups` 2d5edc9 (merge c307b54), then:
   - ports of the local speed work onto upstream code (c032d0b, 17d486c, 5cfb739, 852b239);
   - `upstream-merge-fix-core` 6d07e37 (merge ba57bbf): KC13 Noll bump, NumPy FilterSet,
@@ -10,9 +10,11 @@
   - `upstream-merge-fix-spectrum` b0f7130 (merge 4b1f1a6) and 192fd25 (merge c661d46):
     `Spectrum(projector="chain")` = the local LOSVD + LSF chain, `select_absorption_features`,
     `EmissionLineColumns.from_spectrum(sigma_gas_kms=, sigma_key=, zred_key=)`;
-  - b61e998 local spectrum tests on the merged API; 54a0d13 `sedpy-jax>=0.1.1` declared.
+  - b61e998 local spectrum tests on the merged API; 54a0d13 `sedpy-jax>=0.1.1` declared;
+  - 729fba6 `blackjax>=1.6.dev98`: a local deviation from upstream's `>=1.6` (lead decision), so the
+    pinned Vast image passes `uv pip check` (New dependencies).
 - Per-commit decisions and evidence: `LEDGER.md`.
-- Parent `ceridwen-upstream-merge`: ceridwen pinned to 54a0d13. fb7bc4c moves to the merged API:
+- Parent `ceridwen-upstream-merge`: ceridwen pinned to 729fba6. fb7bc4c moves to the merged API:
   - `notebooks/ceridwen_integrated_photometry_spectra.ipynb`;
   - `scripts/per_galaxy_diagnostics.py` and `scripts/plot_prior_kl.py`;
   - 4 parent tests that pin notebook text.
@@ -140,14 +142,18 @@ The same failures occur on b61e998.
 
 ## New dependencies
 
-- Merged `pyproject.toml` floors, against the Vast image `scripts/vast.py` `DEFAULT_IMAGE`
-  (`ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c…`). Image versions come from the 1 Oct
-  bootstrap log (`results/quiescent-test-set-speedups-2026-10-01/run/53684057-bootstrap.log`).
+- The table compares the merged `pyproject.toml` floors with the Vast image in `scripts/vast.py`
+  `DEFAULT_IMAGE` (`ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c…`, created 2026-09-24T16:19Z).
+- The image versions come from a re-resolution of `scripts/containers/requirements.txt`:
+  - settings: uv 0.7.20 (the image's uv), Python 3.11, `x86_64-manylinux_2_28`,
+    `--exclude-newer 2026-09-24T16:19:00Z`;
+  - result: every version equals the one in the 1 Oct bootstrap log (image 6ca819ac,
+    `results/quiescent-test-set-speedups-2026-10-01/run/53684057-bootstrap.log`).
 
 | package | merged floor | image | meets floor |
 |---|---|---|---|
-| blackjax | >=1.6 (was git f73e12956) | 1.6.dev98+gf73e12956 | **no**: 1.6.dev98 < 1.6 (PEP 440) |
-| tensorflow-probability | >=0.25 (was >=0.23) | not in the log (`scripts/containers/requirements.txt`: `tensorflow-probability>=0.23`, `tfp-nightly==0.26.0.dev20260810`) | unverified |
+| blackjax | >=1.6.dev98 (729fba6; upstream >=1.6; was git f73e12956) | 1.6.dev98+gf73e12956 | yes (`>=1.6` would fail: 1.6.dev98 < 1.6, PEP 440) |
+| tensorflow-probability | >=0.25 (was >=0.23) | 0.25.0 (+ `tfp-nightly==0.26.0.dev20260810` files) | yes |
 | sedpy-jax | >=0.1.1 (54a0d13; upstream dropped it) | 0.1.1 | yes |
 | jax / jaxlib | >=0.9.0 | 0.10.2 | yes |
 | numpy | >=2.0 | 2.4.6 | yes |
@@ -156,6 +162,8 @@ The same failures occur on b61e998.
 | astropy | >=8.0 | 8.0.1 | yes |
 | anesthetic | >=2.14 | 2.16.0 | yes |
 | optax | >=0.2.3 | 0.2.8 | yes |
+| tqdm | >=4.65 | 4.70.1 | yes |
+| pytest | >=7.0 | 9.1.1 | yes |
 | fastprogress | dropped | - | - |
 
 - `sedpy-jax`: `Spectrum(projector="chain")` imports its grid helpers (`observation/_smoothing.py`).
@@ -163,9 +171,10 @@ The same failures occur on b61e998.
 - `scripts/bootstrap_vast_ai.sh` with the merged code:
   - the probes pass locally on CPU: `make_static_smoother` import; `python -m ceridwen.check`
     (all ok, blackjax 1.6.dev98 included); base grid schema 2.1, shape (5, 13, 107, 10992);
-  - `uv pip check` (line 67, under `set -euo pipefail`) fails on the blackjax floor, so the
-    bootstrap stops.
-- PyPI has blackjax 1.6, 1.6.1, 1.6.2, 1.7.0 and 1.7.1; its latest tensorflow-probability is 0.25.0.
+  - `uv pip check` (line 67, under `set -euo pipefail`): checked with uv 0.7.20 on stand-in wheels
+    (`blackjax 1.6.dev98+gf73e12956` plus a package that requires the floor). `>=1.6` gives "Found 1
+    incompatibility" and the bootstrap stops; `>=1.6.dev98` gives "All installed packages are compatible".
+- PyPI has blackjax 1.6, 1.6.1, 1.6.2, 1.7.0 and 1.7.1. All satisfy `>=1.6.dev98`.
 - The local `ceridwen/.venv` also has blackjax 1.6.dev98.
 
 ## Step H: GPU check
@@ -225,8 +234,8 @@ The same failures occur on b61e998.
    0.005, shifts < 0.003 sd.
 6. **Polynomial marginal.** The local marginal calibration is kept. Upstream's
    `PolyMarginalGaussianLikelihood` gives the same lnL to 9.3e-10 but refuses lines with the polynomial.
-7. **Vast image.** Rebuild the image with blackjax >= 1.6 from PyPI and tensorflow-probability >= 0.25,
-   or relax the merged floor. GPU runs on the merged code need one of these.
+7. **blackjax floor.** 729fba6 keeps `blackjax>=1.6.dev98` so that the current image works (lead
+   decision). Return to upstream's `>=1.6` after an image rebuild from PyPI blackjax.
 8. **Stored pre-merge results.** Convert them with `ceridwen.fit.convert_result` for diagnostics,
    regeneration and the calibration-arms test, or keep them read only on the old pin.
 9. **`logz_0_cap`.** It keeps the old rounded offset: [Fe/H] = log10(1/50) − 2.84e-8. This gives
