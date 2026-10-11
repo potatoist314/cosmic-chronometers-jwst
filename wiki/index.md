@@ -75,6 +75,7 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 - `research/experiments/e-mask-all-ca.md` — Planned M1_210210 comparison adding Ca I 4227.92 Å masking to Ca II H and K masking.
 - `research/experiments/e-zevo.md` — M1_210210 metallicity evolution on the production-defaults base; `neb_eline_ca_nohe_zevo` against `neb_eline_ca_nohe`
 - `research/experiments/e-quiescent-speedups.md` — Ten-galaxy production-defaults fits on the combined speedups; seed 20260832
+- `research/experiments/e-ceridwen-upstream-merge.md` — Ceridwen upstream merge: CPU equivalence, speed and ten-galaxy GPU check; ceridwen `729fba6`
 
 The 28 existing experiment entries cover all 11 analysis notes and all current
 and archived Ceridwen result groups. `source_notes` provides backlinks;
