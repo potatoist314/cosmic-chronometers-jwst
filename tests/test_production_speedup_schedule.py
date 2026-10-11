@@ -31,7 +31,9 @@ def test_candidate_fit_rejects_stale_installed_package(monkeypatch, tmp_path):
 
 def test_notebook_spectrum_arguments_are_supported_by_the_pinned_ceridwen():
     import ast
+    import inspect
     import json
+    from ceridwen.broadening import Instrument
     from ceridwen.observation import Spectrum
 
     path = Path(__file__).resolve().parents[1]/'notebooks/ceridwen_integrated_photometry_spectra.ipynb'
@@ -44,9 +46,12 @@ def test_notebook_spectrum_arguments_are_supported_by_the_pinned_ceridwen():
             if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == 'Spectrum':
                 names = {keyword.arg for keyword in node.keywords}
                 assert None not in names
-                assert {'free_z', 'fit_sigma_smooth', 'sigma_losvd'} <= names
-                Spectrum(wavelength=jnp.array([4000., 4100.]), sigma_losvd=200.,
-                         fit_sigma_smooth=True, free_z=True)
+                assert {'instrument', 'projector'} <= names
+                assert names <= set(inspect.signature(Spectrum).parameters)
+                for projector in ('chain', 'fft'):
+                    Spectrum(wavelength=np.linspace(6000., 9000., 64), flux=np.ones(64),
+                             uncertainty=np.ones(64), instrument=Instrument.R_fwhm(3500.),
+                             projector=projector, name='spectrum')
                 calls.append(names)
     assert len(calls) == 1
 

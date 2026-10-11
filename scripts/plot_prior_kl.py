@@ -38,6 +38,7 @@ FITS = {
 }
 LABELS = {
     "logmass": r"$\log_{10}(M_\star/M_\odot)$", "Z": r"$[\mathrm{Fe}/\mathrm{H}]$",
+    "logzsol": r"$[\mathrm{Fe}/\mathrm{H}]$",
     "afe": r"$[\alpha/\mathrm{Fe}]$", "diffuse_tau_kc": r"$\tau_{\mathrm{dust}}$",
     "diffuse_dust_index": r"$\delta_{\mathrm{dust}}$", "log_f_calib": r"$\log f_{\mathrm{calib}}$",
     "spectrum_scaling": "spectrum scaling", "zred": r"$z$", "sigma_smooth": r"$\sigma_\star$",

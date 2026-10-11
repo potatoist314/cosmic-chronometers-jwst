@@ -112,13 +112,13 @@ def test_notebook_uses_production_model_and_sampler_contract():
     assert '"calibration_fit_constant": True' in source
     assert 'fit_constant=SETTINGS["calibration_fit_constant"]' in source
     assert '"sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}' in source
-    assert '"Z": "log10 iron abundance; [Fe/H] = Z + 1.7328283"' in source
-    assert "FEH_OFFSET = 1.7328283" in source
+    assert '"logzsol": "log10(Z/Z_sun) = [Fe/H] on this grid"' in source
+    assert 'SSPDataAfe.load(ssp_path, zsun=0.0185, axis_meaning="feh")' in source
     assert '"calibration_order": 10,' in source
     assert '"sfh_nbins": 14' in source
     assert "sfh_lookback_gyr" not in source
     assert "sfh_tbinmax_yr = universe_age * 0.85 * 1e9" in source
-    assert 'scalar_draws("Z") + FEH_OFFSET' in source
+    assert 'scalar_draws("logzsol"), joint_bounds["logzsol"]' in source
     assert r"$\log_{10}(Z/Z_\odot)$" not in source
     assert "aperture_transfer" not in source
     # Every fit setting is a literal in the top cell; only the launcher's per-galaxy values come from the environment.
@@ -417,8 +417,8 @@ def test_notebook_samples_redshift_and_sigma_by_default():
     source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
     assert '"zred": "Uniform(z_cat - zred_half_width, z_cat + zred_half_width)"' in source
     assert '"zred_half_width": 0.1,' in source
-    assert 'free_z="zred" in PRIORS' in source
-    assert 'fit_sigma_smooth="sigma_smooth" in PRIORS' in source
+    assert 'projector="fft" if "zred" in PRIORS else "chain"' in source
+    assert 'Kinematics(sigma_gal="sigma_smooth"' in source
     assert "mean=sigma_star,\n        sigma=sigma_star_err," in source
 
 def test_constant_calibration_active_assembly_and_exports():
@@ -426,6 +426,8 @@ def test_constant_calibration_active_assembly_and_exports():
     import ast
     import jax.numpy as jnp
     import numpy as np
+    from ceridwen import Cosmology
+    from ceridwen.broadening import Instrument, Kinematics
     from ceridwen.cosmology import age_gyr
     from ceridwen.csp import CSPBasis_afe
     from ceridwen.ssps import SSPDataAfe
@@ -439,23 +441,23 @@ def test_constant_calibration_active_assembly_and_exports():
     env = dict(np=np, jnp=jnp, age_gyr=age_gyr, CSPBasis_afe=CSPBasis_afe,
                SedModel=SedModel, logsfr_ratios_to_sfh=logsfr_ratios_to_sfh,
                ClippedNormal=ClippedNormal, StudentT=StudentT, Uniform=Uniform,
-               PolynomialCalibration=PolynomialCalibration)
+               PolynomialCalibration=PolynomialCalibration, Cosmology=Cosmology, Kinematics=Kinematics)
     settings_cell = next(c for c in cells if "SETTINGS = {" in c)
     for node in ast.parse(settings_cell).body:
         if isinstance(node, ast.Assign) and any(
                 isinstance(t, ast.Name) and t.id in {"SETTINGS", "PRIORS"} for t in node.targets):
             exec(compile(ast.Module(body=[node], type_ignores=[]), "settings", "exec"), env)
     wave = jnp.geomspace(1000., 30000., 256)
-    env["ssp"] = SSPDataAfe(jnp.array([-2.2, -1.4]), jnp.array([-.2, .6]),
-                            jnp.array([-3., -1., 0., 1.2]), wave,
-                            jnp.ones((2, 2, 4, 256)) * 1e-15)
+    env["ssp"] = SSPDataAfe(jnp.array([-2.2, -1.4]), jnp.array([-3., -1., 0., 1.2]), wave,
+                            jnp.ones((2, 2, 4, 256)) * 1e-15, ssp_afe=jnp.array([-.2, .6]),
+                            zsun=10 ** -1.4, axis_meaning="feh")
     spec_wave = np.linspace(6000., 9000., 64)
     env.update(z_catalog=.7, sigma_star=180., sigma_star_err=10., phot_flux=np.ones(1))
     env["phot_obs"] = Photometry(filters=["sdss_r0"], flux=np.ones(1), uncertainty=np.ones(1),
                                  name="photometry")
     env["spectrum_obs"] = Spectrum(wavelength=spec_wave, flux=np.ones(64),
-                                    uncertainty=np.ones(64), name="spectrum", free_z=True,
-                                    fit_sigma_smooth=True, baked_runtime=True)
+                                    uncertainty=np.ones(64), name="spectrum",
+                                    instrument=Instrument.R_fwhm(3500.), projector="fft")
     assembly = ast.parse(next(c for c in cells if "joint_csp = CSPBasis_afe(" in c))
     # Supply the tiny grid instead of fetching production data.
     start = next(i for i, node in enumerate(assembly.body)
