@@ -7,8 +7,10 @@ Committed copy: parent branch `ceridwen-upstream-merge-equivalence` (origin),
 `results/ceridwen-upstream-merge-2026-10-10/equivalence/` (harness.py, VERDICT.md). Run outputs
 stay in the coordination directory `tmp/ceridwen-upstream-merge/equivalence/runs/`.
 
-## Current verdict (ceridwen 54a0d13, parent notebook fb7bc4c)
+## Current verdict (final: ceridwen 54a0d13, parent 9ec5a30)
 
+- Final merged commit: ceridwen `upstream-merge` 54a0d13, pinned by parent `ceridwen-upstream-merge` 9ec5a30
+  ("pin 54a0d13, ledger and report"); the 9ec5a30 notebook is the fb7bc4c notebook used in the run.
 - production, elines_off, zevo_off, afe_grid, cal_order0: 10/10 targets bitwise (lnL and every output).
 - free_z: differs on all ten targets (|dlnL| 4.7-17.9), from upstream a7b613c: photometry re-projected at the sampled
   z, and upstream's `SpectralProjector` for a sampled z.
@@ -135,7 +137,7 @@ stay in the coordination directory `tmp/ceridwen-upstream-merge/equivalence/runs
     photometry bitwise; the same config with `projector="chain"` is bitwise. Ledger rows S-proj and S-c540bc7
     compare both projectors with a dense convolution.
 
-## upstream-merge-54a0d13: final candidate, ceridwen 54a0d13 with parent fb7bc4c notebook (2026-10-11 03:48)
+## upstream-merge-54a0d13: final, ceridwen 54a0d13 with parent fb7bc4c notebook (2026-10-11 03:48)
 
 - ceridwen `upstream-merge` 54a0d13 ("Declare sedpy-jax: Spectrum(projector="chain") imports its grid helpers");
   notebook from parent `ceridwen-upstream-merge` fb7bc4c ("Ceridwen upstream merge: pin b61e998, production notebook
