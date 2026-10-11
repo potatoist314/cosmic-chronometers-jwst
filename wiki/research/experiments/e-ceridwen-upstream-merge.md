@@ -597,7 +597,7 @@ Ceridwen `729fba6` merged upstream `cc8ac9d` (1.0.12) into local `speedups` `2d5
 - `baked_off` was unavailable after removal of `baked_runtime`. On `2d5edc9`, `baked_off` matched production within \(5.8\times10^{-11}\) in \(\ln L\).
 - Merged dead points differed from the 1 Oct fit, which had 16,900 samples. GPU likelihoods were not compared point by point; CPU equality covered only 21 points per target.
 - Wall times came from different hosts, not a same-boot comparison.
-- `REPORT.md` leaves decisions open on the projector, Noll bump, filter curves, refused grid cell, photometry broadening, polynomial marginal, `blackjax` floor, and stale parent tests.
+- 11 Oct `REPORT.md` decisions: keep local chain projector; production reads ceridwen's filter library; retain upstream base-grid refusal, cap base-grid `logzsol` prior at +0.25; production nebular grid has no refused cells. Pin `d7c0536`: comments only. Undecided: Noll bump, photometry broadening, polynomial marginal, `blackjax` floor, stale parent tests.
 
 ## References
 
