@@ -59,7 +59,8 @@ CPU, float64, `-n` ≤ 3. Logs: `tmp/ceridwen-upstream-merge/integrator-tests/{u
   `CERIDWEN_TEST_SSP` set:
   - merged 54a0d13: 2 passed in 35 s (`merged-polymarg-fits-gridenv.log`);
   - upstream cc8ac9d: not finished at the 30 min cap (`upstream-polymarg-fits-gridenv.log`).
-- After b61e998, c661d46 adds one test and 54a0d13 changes only `pyproject.toml` and a comment.
+- After b61e998, c661d46 adds one test, 54a0d13 changes only `pyproject.toml` and a comment, and
+  729fba6 changes only `pyproject.toml`.
   On 54a0d13 the chain, line, smoothing and speedups tests give 50 passed.
 
 ### Parent ceridwen tests (17 files)
@@ -91,10 +92,11 @@ The same failures occur on b61e998.
   - `test_dust_bump` notebook tests ×2: NameError `metallicity_init`.
 - `wiki/tests/test_fit_settings.py`: 3 failures with the migrated notebook. The cause is the `Z` key,
   labels, AXES and the hidden `baked_runtime` in `wiki/fit_settings.py`. The wiki was not edited.
+- After the bootstrap change (4ca0b64), `tests/test_vast.py` and `tests/test_experiment.py` give 66 passed.
 
 ## Quick production notebook run
 
-`CERIDWEN_NOTEBOOK_QUICK=1`, M1_210210, CPU, ceridwen 54a0d13.
+`CERIDWEN_NOTEBOOK_QUICK=1`, M1_210210, CPU, ceridwen 54a0d13. The code is identical in 729fba6.
 
 - Passes in 58 s with no cell errors and no warnings. ln Z = 235056.778 ± 0.291.
 - SFH-basis fast path: `joint_csp.sfh_basis_fastpath` True, `_use_sfh_basis(theta)` True.
