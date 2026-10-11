@@ -108,7 +108,7 @@ The fast path uses one matrix-vector multiplication. The alternative path perfor
 <details>
 <summary>Spectrum</summary>
 
-`ceridwen/ceridwen/observation/spectrum.py:477-482 · Spectrum.setup_for_model`
+`ceridwen/ceridwen/observation/_chain.py:161-166 · ChainProjector.__init__`
 
 ```python
         if not has_instr and not has_losvd:
@@ -119,44 +119,40 @@ The fast path uses one matrix-vector multiplication. The alternative path perfor
             self._predict_fn = lambda spec: w_lo * spec[lo] + w_hi * spec[hi]
 ```
 
-When every width is known at setup, the two broadening stages become one. Gaussians add in quadrature, so a LOSVD followed by an instrumental LSF is a single Gaussian of width \(\sqrt{\mathrm{losvd}^2+\mathrm{instrument}^2-\mathrm{library}^2}\) at each wavelength. `observation/_smoothing.py` builds that one convolution and bakes its interpolation indices and its Fourier taper at setup, so no call recomputes them. The chained form remains for `fit_sigma_smooth=True`, where the width is a traced value.
+When every width is known at setup, the two broadening stages become one. Gaussians add in quadrature, so a LOSVD followed by an instrumental LSF is a single Gaussian of width \(\sqrt{\mathrm{losvd}^2+\mathrm{instrument}^2-\mathrm{library}^2}\) at each wavelength. `observation/_smoothing.py` builds that one convolution and bakes its interpolation indices and its Fourier taper at setup, so no call recomputes them. The chained form remains when `Kinematics(sigma_gal=...)` names a sampled parameter (`"sigma_smooth"` in production).
 
-`SedModel` passes the `sigma_smooth` prior's upper limit as `sigma_smooth_max`. `_bake_fft_smoother` uses `_padded_length` to select the shortest FFT length among \(n+n/8\), \(n+n/4\), \(n+n/2\), and \(2n\) whose zero pad spans at least \(20\sigma\) at that limit. An unbounded prior retains \(2n\). No setting selects the pad.
+The notebook sets `Kinematics(sigma_max=...)` to the `sigma_smooth` prior's upper limit; the chain passes it to `_bake_fft_smoother` as `sigma_max`. `_bake_fft_smoother` uses `_padded_length` to select the shortest FFT length among \(n+n/8\), \(n+n/4\), \(n+n/2\), and \(2n\) whose zero pad spans at least \(20\sigma\) at that limit. Without `sigma_max`, the pad stays \(2n\).
 
-No flag or environment variable selects the combined form. The installed ceridwen package decides. The superproject records the ceridwen commit that contains `_smoothing.py`, and `.gitmodules` points at the project copy `potatoist314/ceridwen`, because the upstream repository does not carry these commits. `scripts/bootstrap_vast_ai.sh` reinstalls ceridwen from the tree on every run and stops when `ceridwen.observation._smoothing` does not import. That check exists because a non-editable install ignores files copied into the source tree after bootstrap.
+`Spectrum(projector="chain")` selects the LOSVD + LSF chain in `observation/_chain.py`; the default `"fft"` selects upstream's `broadening.SpectralProjector`. The notebook uses `"chain"` unless `zred` is sampled. Inside the chain, no flag selects the combined form.
+
+The superproject records the ceridwen commit that contains `_smoothing.py`, and `.gitmodules` points at the project copy `potatoist314/ceridwen`, because the upstream repository does not carry these commits. `scripts/bootstrap_vast_ai.sh` reinstalls ceridwen from the tree on every run and stops when `ceridwen.observation._smoothing` does not import. That check exists because a non-editable install ignores files copied into the source tree after bootstrap.
 
 The combined form is both cheaper and closer to the analytic width, because it interpolates once rather than twice. The resampling grid is also floored at the input grid size: sizing it from the kernel width alone let a wide kernel undersample the model spectrum. Photometry predictions are unchanged.
 
-`res_convention="fwhm"` means that the supplied instrumental resolution is a FWHM value. With `inres="auto"`, Ceridwen uses the schema-2.1 grid resolution curve. It applies only the additional width required in quadrature (`lines 291-366`). The project GPU workflows install sedpy_jax from the `external/sedpy_jax` submodule: upstream commit `0291d58`, which accepts that per-pixel array, plus one commit that builds filters in NumPy instead of JAX. Filter construction happens once per fit, at setup, and that change cut per-fit setup from about 150 s to about 27 s on a rented GPU.
+`Instrument.R_fwhm(R)` supplies FWHM resolving power. `Spectrum` refuses `res_convention`, `resolution`, `smoothtype` and `inres` with a `TypeError` (`spectrum.py:92-99`). With `subtract_library=True`, the default, the chain uses the grid resolution curve and applies only the additional width in quadrature (`_chain.py:192-330`).
 
-`ceridwen/ceridwen/observation/spectrum.py:790-804 · Spectrum.predict`
+The project GPU workflows install sedpy_jax from the `external/sedpy_jax` submodule: upstream commit `0291d58`, which accepts that per-pixel array, plus one commit that builds filters in NumPy instead of JAX. Filter construction happens once per fit, at setup, and that change cut per-fit setup from about 150 s to about 27 s on a rented GPU.
+
+`ceridwen/ceridwen/observation/_chain.py:384-390 · ChainProjector.predict`
 
 </details>
 
 ```
-if self.fit_sigma_smooth:
-    if sigma_smooth is None:
-        # Fall back to the constructor default; lets a caller
-        # invoke ``predict(spec, wave)`` for warmup / debugging
-        # even when the closure is the runtime-sigma variant.
-        sigma_smooth = self.sigma_losvd
-    # Pass sigma through without forcing a dtype -- JAX's
-    # dtype-promotion rules with jax_enable_x64=True will
-    # promote to float64 to match the cached smoother grids,
-    # giving the same precision the static fast path achieved.
-    # Forcing float32 here would round-trip-degrade the smoother
-    # output even when the user is fitting in double precision.
-    sv = jnp.asarray(sigma_smooth).reshape(())
-    return self._predict_fn(spectrum, sv)
-return self._predict_fn(spectrum)`
+def predict(self, spectrum, theta):
+    """The model ``spectrum`` (n_wave,) on the observed pixels; a sampled
+    sigma_gal is ``theta[sigma_key]``."""
+    if self.fit_lo:
+        sv = jnp.asarray(theta[self.sigma_key]).reshape(())
+        return self._predict_fn(spectrum, sv)
+    return self._predict_fn(spectrum)
 ```
 
 <details>
 <summary>Details</summary>
 
-The method docstring requires prior setup and returns model `F_nu` on the observed pixels (`ceridwen/ceridwen/observation/spectrum.py:740-778`).
+`Spectrum.predict` calls `ChainProjector.predict` (`_chain.py:384-390`). Its docstring specifies model `F_nu` on the observed pixels (`ceridwen/ceridwen/observation/spectrum.py:379-387`).
 
-Both branches call the closure that setup prepared. Only the fitted velocity branch supplies a traced smoothing parameter.
+Both branches call the closure that setup prepared. Only a sampled `sigma_gal` supplies a traced width, read from `theta[sigma_key]`.
 
 </details>
 
@@ -196,7 +192,7 @@ Ceridwen can calculate one analytic multiplicative scale for each spectrum befor
 
 The active notebooks use this parameter structure:
 
-1. **Free parameters**SFR ratios, Z, afe, mass, and dust
+1. **Free parameters**SFR ratios, `logzsol`, `afe`, mass, and dust
 2. **Transforms**Derive SFH values
 3. **Model parameters**Add fixed or derived values
 4. **CSP prediction**Use one named dictionary
@@ -247,8 +243,8 @@ The code inserts a fixed redshift only when the sampled dictionary does not cont
 - `logsfr_ratios` has shape `(n_sfh_bins - 1,)`.
 - Each prediction dictionary value matches its observation length.
 - `logmass` is the `log10` formed stellar mass in solar masses.
-- `Z` is `log10` absolute metallicity.
-- On the alpha-enhanced grid `amist_c3k_hr_krou_afe`, Z = \([\mathrm{Fe}/\mathrm{H}]\) + log10(0.0185), so \([\mathrm{Fe}/\mathrm{H}]\) = Z + 1.7328283 (`ceridwen/scripts_afe/build_afe_hr_grid.py`, lines 63–64).
+- `logzsol` is \(\log_{10}(Z/Z_\odot)\), with \(Z_\odot\) the grid's own solar node; it equals \([\mathrm{Fe}/\mathrm{H}]\) on aMIST grids (`csp/csp.py:1-8`).
+- For `amist_c3k_hr_krou_afe`, \(\log_{10} Z_\odot = -1.7328282715969863\) and \(Z_\odot = 0.0185\) (`ssps/grid_metadata.py:174-176`). The keys `Z` and `zh` raise a `ValueError` (`csp/csp.py:79-80`, `99-118`).
 - `afe` is `[alpha/Fe]` in dex.
 - `zred` is dimensionless.
 

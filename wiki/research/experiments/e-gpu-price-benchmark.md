@@ -237,6 +237,7 @@ Estimated time per card = 993.5 s × 33,173 / measured calls/s. Cost/fit = estim
 - The displayed 5090 row excludes the 94,294 calls/s measurement.
 - `nvidia-smi` activity is not SM occupancy. The batch-100 steady-use value has one one-second sample. The post-dispatch wait includes GPU work and launch overhead.
 - The original execution plan above retains its pre-run price limits and fixed teardown times. Later user instructions replaced both; the saved runs used project commit `c869309c374bb7976b4bb9729a0650043fbfb4f7`.
+- Since the 10 Oct 2026 Ceridwen upstream merge, `scripts/benchmark_baked_runtime.py` has no `baked_runtime` switch; its arms are fixed and free \(\sigma_\star\), without the speed-up fields.
 
 ## References
 

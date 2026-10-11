@@ -1454,3 +1454,8 @@
 
 - `wiki/research/experiments/e-quiescent-speedups.md`: ten-galaxy all-production-defaults run on the combined speedups; spectrum and photometry first per target, SFH and physical-corner views, run metadata and pinned source record.
 - Files: `wiki/research/experiments/e-quiescent-speedups.md`, `results/quiescent-test-set-speedups-2026-10-01/` (84 run files, byte-identical to speedups 187b7ad), `wiki/index.md`, `wiki/log.md`.
+
+### 2026-10-11 — Ceridwen upstream merge in the wiki
+
+- Ceridwen pinned to `729fba6`: upstream main `cc8ac9d` (version 1.0.12) merged into speedups `2d5edc9`; metallicity key `Z` → `logzsol` = \([\mathrm{Fe}/\mathrm{H}]\) on this grid, `zh` → `logzsol_hist`; spectrum settings `Instrument.R_fwhm`, `projector`, `Kinematics`; `baked_runtime` and `free_z` removed. Report `results/ceridwen-upstream-merge-2026-10-10/REPORT.md`, ledger `results/ceridwen-upstream-merge-2026-10-10/LEDGER.md`.
+- Files: `wiki/notes/ceridwen-observations-model.md`, `wiki/notes/ceridwen-ssp-csp.md`, `wiki/notes/model.md`, `wiki/notes/default-fit-parameters.md`, `wiki/notes/notebook-map.md`, `wiki/notes/redshift-sigma-wiggle.md`, `wiki/research/experiments/e-birth-cloud-dust.md`, `wiki/research/experiments/e-gpu-price-benchmark.md`, `wiki/research/experiments/e-runtime-z-sigma-speed.md`, `wiki/index.md`, `wiki/log.md`.

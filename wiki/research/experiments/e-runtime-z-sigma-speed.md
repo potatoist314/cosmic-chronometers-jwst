@@ -158,6 +158,7 @@ GPU fixed/current/baked costs: 18.5/45.4/31.3 \(\mu\mathrm{s}\)/call at 100 part
 - The remaining CPU 1.40x cost includes the 18432-point instrument FFT and the 8192-point LOSVD FFT.
 - Baked free GPU cost remains 1.84x fixed cost. Sampled \(\sigma_\star\) needs a second FFT.
 - `test_from_fsps_records_provenance` requires FSPS, which is not installed.
+- 10 Oct 2026 Ceridwen upstream merge (ceridwen `729fba6`): no `baked_runtime` switch. The baked \(\sigma_\star\) path stays inside `Spectrum(projector="chain")`; sampled \(z\) uses upstream's `SpectralProjector`. On `2d5edc9`, `baked_off` equals production to 5.8e-11 in lnL.
 
 ## References
 

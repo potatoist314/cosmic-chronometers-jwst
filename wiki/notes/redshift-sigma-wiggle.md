@@ -25,6 +25,12 @@ Free velocity dispersion
 Code
 : `Spectrum(free_z=True)` and `predict(..., zred=z)` on the fork branch `free-z-spectrum` (354f5e9), cherry-picked onto the pinned ceridwen submodule as c540bc7 on 2026-09-17, when both parameters became notebook defaults and the switches were removed. Switches `CERIDWEN_FREE_ZRED_KMS` (100) and `CERIDWEN_FREE_SIGMA_FRAC` (0.2) in `notebooks/ceridwen_integrated_photometry_spectra.ipynb`. Since 2026-09-15 the notebook switch is `CERIDWEN_FREE_SIGMA` (0/1); since 2026-09-18 both parameters are sampled when `PRIORS` in the top cell has a `zred` and a `sigma_smooth` entry, with no switch and the `sigma_smooth` prior is \(\operatorname{Normal}(\sigma_{\mathrm{cat}},\sigma_{\mathrm{cat,err}})\) clipped at \(\pm 3\,\sigma_{\mathrm{cat,err}}\), with \(\sigma_{\mathrm{cat,err}}\) the DR2 `SIGMA_STARS_PRIME_err`; the fits on this page used the earlier 0.2 \(\sigma_{\mathrm{cat}}\) prior.
 
+Since the merge
+: Since the Ceridwen upstream merge (10 Oct 2026, ceridwen `729fba6`), sampled `zred` uses upstream's `broadening.SpectralProjector` (`projector="fft"`), and photometry is re-projected at sampled \(z\) (upstream `a7b613c`). `Spectrum` has no `free_z` argument; the chain refuses sampled \(z\).
+
+Sampled-\(z\) accuracy
+: Against a projector rebuilt at each \(z\): rms 1.0e-5 to 1.9e-5 upstream, 3.5e-4 to 5.2e-4 for the stretch above. Per-target maximum absolute sampled-\(z\) lnL differences from the pre-merge code range from 4.7 to 17.9. Sources: `results/ceridwen-upstream-merge-2026-10-10/REPORT.md`, `results/ceridwen-upstream-merge-2026-10-10/LEDGER.md` row `c540bc7`.
+
 \[\begin{aligned}\Delta v &= c(z-z_{\mathrm{cat}})/(1+z_{\mathrm{cat}})\\ \sigma_{\mathrm{pull}} &= (\sigma_{\mathrm{smooth}}-\sigma_{\mathrm{cat}})/\sigma_{\mathrm{cat,err}}\end{aligned}\]
 
 <figure>
