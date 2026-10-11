@@ -19,6 +19,7 @@ Commits on `upstream-merge` after the merge:
 | c661d46 | merge of upstream-merge-fix-spectrum 192fd25: line widths follow the Spectrum projector (test) |
 | 54a0d13 | `sedpy-jax>=0.1.1` declared (`projector="chain"` imports it in `observation/_smoothing.py`) |
 | 729fba6 | `blackjax>=1.6.dev98` (local deviation from upstream's `>=1.6`; lead decision 2026-10-11) |
+| d7c0536 | Liu Hao's notes of 2026-10-11, comments only (`scripts_afe/build_afe_hr_grid.py`, `ssps/ssp_data_afe.py`); also branch `liuhao-notes-2026-10-11` 35a46d8 on 37f04b0 |
 
 Equivalence evidence below: production inputs of M1_210210 (max-likelihood sample + 200 or 20
 posterior draws) on CPU, float64, unless stated.
@@ -72,9 +73,9 @@ sedpy_jax commits used by production (upstream vendored sedpy_jax's filters and 
 | a6f2625 | metallicity key `logzsol` = log10(Z/Z_sun); `Z`/`zh` refused | notebook keys renamed; grid loads with `zsun=0.0185, axis_meaning="feh"`; stored pre-merge results refused by `load_result_h5` until `convert_result` | adopt |
 | 7940959 (B1-022) | [alpha/Fe] folded into SSP weights (`_contract`) | fallback path only (production uses the fast path) | adopt |
 | a7b613c | Kinematics on SedModel; `sigma_losvd_kms` removed; photometry broadened by default | notebook passes `Kinematics(...)` and `broaden_photometry=False` (bitwise = speedups) | adopt; production opts out |
-| a7b613c | `broadening.SpectralProjector` | production keeps the local chain (`projector="chain"`); fft used for sampled z | carry local chain |
-| b69412c 051808d | vendored filters and dust laws | Noll bump and filter curves differ from production | adopt with 9d8aa19 bump; production curves via `filter_directory` |
-| grid metadata | CHASH table, zsun provenance, refused cell logzsol (+0.25, +0.50] x afe (+0.4, +0.6] | base HR grid refuses priors that reach the cell; nebular grid has no refused cells | upstream-only; flagged |
+| a7b613c | `broadening.SpectralProjector` | production keeps the local chain (`projector="chain"`); fft used for sampled z | carry local chain; Liu Hao 2026-10-11: "no i think you can keep the local convolve." |
+| b69412c 051808d | vendored filters and dust laws | Noll bump differs from production; curves: 8 of 28 production bands change by ≤ 2.2e-4 relative, \|dlnL\| ≤ 6.3e-3 (ten galaxies, 210 points) | adopt with 9d8aa19 bump; curves adopted (Liu Hao 2026-10-11: "bring in extra or changed filter curves."): production reads ceridwen's library, no `filter_directory` |
+| grid metadata | CHASH table, zsun provenance, refused cell logzsol (+0.25, +0.50] x afe (+0.4, +0.6] | base HR grid refuses priors that reach the cell; nebular grid has no refused cells | upstream-only; kept (Liu Hao 2026-10-11: "keep refuse as upstream does."); parent base-grid builders cap logzsol at +0.25 |
 | cosmo | `cosmo=` required | age, D_L, flux factor at M1 z bitwise | adopt |
 | 7bbe66e | `PolyMarginalGaussianLikelihood`, `Spectrum(polynomial_mode=)` | none (production uses the local class) | upstream-only |
 | 3396d97 | profiled polynomial `Spectrum(polynomial_order=)` | none (default off) | upstream-only |
@@ -86,3 +87,20 @@ sedpy_jax commits used by production (upstream vendored sedpy_jax's filters and 
 | eb5bc6f bac259a 680037b bf3de0a | IGM order, IGM on lines, dust emission energy balance | none: no IGM, no dust emission | upstream-only |
 | b730693 | NUTS | not used | upstream-only |
 | pyproject | dependency floors: blackjax>=1.6, jax>=0.9, numpy>=2, astropy>=8, h5py>=3.16, tfp>=0.25, anesthetic>=2.14; sedpy-jax dropped | Vast image blackjax 1.6.dev98+gf73e12956 fails `uv pip check` against `>=1.6` (PEP 440: 1.6.dev98 < 1.6) | adopt floors except blackjax; **local deviation** 729fba6: `blackjax>=1.6.dev98` (upstream's comment: 1.6's `blackjax/ns/` is byte-identical to commit f73e12956, the image's build; PyPI 1.6+ still satisfies it); sedpy-jax re-declared (54a0d13) |
+
+## Phase 3 (2026-10-11): decisions 1, 3, 4
+
+- Parent pin d7c0536. Filter curves: production likelihood change, REPORT.md "Filter curves".
+- Equivalence harness, production, ten galaxies × 21 points, CPU, against the 729fba6 run: spectrum
+  bitwise; photometry ≤ 2.2e-4 relative (vista_vircam_Y; 8 of 28 bands change); dlnL median -1.1e-3,
+  range -6.3e-3 to +4.3e-3 (floor ≤ 2.2e-4).
+- Base-grid builders with logzsol ≤ +0.25: build with the refusal on; lnL and predictions bitwise equal
+  to the phase-2 builds made with the refusal off.
+
+| parent tests (17 files) | failed | passed | skipped | errors |
+|---|---|---|---|---|
+| phase 3 + ceridwen d7c0536 | 7 | 203 | 8 | 15 |
+| fc7994a + ceridwen 729fba6 | 9 | 201 | 8 | 15 |
+| baseline: parent 7354c90 + ceridwen 2d5edc9 | 7 | 203 | 8 | 15 |
+
+Phase 3 fails only tests that also fail on the baseline. The other affected parent tests give 115 passed.
