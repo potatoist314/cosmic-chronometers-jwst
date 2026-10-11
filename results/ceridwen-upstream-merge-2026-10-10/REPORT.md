@@ -21,6 +21,8 @@
 - Later parent commits: the pin to 729fba6; the `scripts/bootstrap_vast_ai.sh` grid probe loads with
   `zsun=0.0185, axis_meaning="feh"` (as the notebook), because the merged code refuses the nebular
   grid without them.
+- 4f2fc99 and fc7994a: the parent scripts, tests and `wiki/fit_settings.py` on the merged API
+  (Parent scripts below).
 - Production notebook on the merged API:
 
 | item | before (2d5edc9) | merged |
@@ -39,50 +41,50 @@
 
 ### Ceridwen full CPU suite
 
-CPU, float64, `-n` ≤ 3. Logs: `tmp/ceridwen-upstream-merge/integrator-tests/{upstream,merged,speedups}.log`.
+CPU, float64, `-n` ≤ 3. Logs: `tmp/ceridwen-upstream-merge/integrator-tests/{upstream,merged,merged-729fba6,speedups}.log`.
 
 | tree | failed | passed | skipped | errors | wall |
 |---|---|---|---|---|---|
 | upstream cc8ac9d | 8 | 755 | 70 | 23 | 33:38 |
+| upstream-merge 729fba6 | 8 | 915 | 70 | 23 | 11:27 |
 | upstream-merge b61e998 | 8 | 914 | 70 | 23 | 20:56 |
 | speedups 2d5edc9 | 7 | 284 | 6 | 10 | - |
 
-- **Merge-only failures: none.** Every merged failure and error fails the same way on upstream cc8ac9d:
+- **Merge-only failures: none.** The 729fba6 failures and errors are the same 31 tests as on b61e998
+  and upstream cc8ac9d (the extra pass is the test c661d46 adds). Each fails the same way on upstream:
   - 23 errors in `tests/regression/test_regression.py`: no FSPS installed;
   - `test_from_fsps_records_provenance`: no FSPS;
   - 4 `test_eline_marginalisation` afe tests: `~/.ceridwen/grids/amist_c3k_lr_chab_afe.h5`
     is a pre-schema-2.0 file, which upstream refuses;
   - `test_noise_calibration` ×2 and `test_outlier_model::test_wiring_sampled_spec_only`: numerical
     tolerance; upstream gets the same values.
-- Both full runs deselected the 2 `tests/likelihood/test_poly_marginal.py` NS-fit tests. Upstream's
+- The full runs deselected the 2 `tests/likelihood/test_poly_marginal.py` NS-fit tests. Upstream's
   full run stalled more than 3.5 h at that point (`upstream-hung.log`). Run alone with
   `CERIDWEN_TEST_SSP` set:
-  - merged 54a0d13: 2 passed in 35 s (`merged-polymarg-fits-gridenv.log`);
+  - merged 729fba6: 2 passed in 68 s (`merged-729fba6-polymarg-fits.log`); 54a0d13: 2 passed in 35 s;
   - upstream cc8ac9d: not finished at the 30 min cap (`upstream-polymarg-fits-gridenv.log`).
-- After b61e998, c661d46 adds one test, 54a0d13 changes only `pyproject.toml` and a comment, and
-  729fba6 changes only `pyproject.toml`.
-  On 54a0d13 the chain, line, smoothing and speedups tests give 50 passed.
 
 ### Parent ceridwen tests (17 files)
 
-Logs: `integrator-tests/parent-merged-54a0d13.log`, `parent-speedups.log`.
+Logs: `integrator-tests/parent-merged-fc7994a.log`, `parent-merged-54a0d13.log`, `parent-speedups.log`.
 
 | tree | failed | passed | skipped | errors |
 |---|---|---|---|---|
+| parent fc7994a + ceridwen 729fba6 | 9 | 201 | 8 | 15 |
 | parent + ceridwen 54a0d13 | 10 | 200 | 8 | 15 |
 | baseline: parent 7354c90 + ceridwen 2d5edc9 | 7 | 203 | 8 | 15 |
 
-The same failures occur on b61e998.
+The 54a0d13 failures also occur on b61e998.
 
-- Merged-only (3). All come from upstream behaviour on stored pre-merge results:
-  - `test_calibration_arms::test_sampler_validation_passes_without_derived_outputs`:
-    `load_result_h5` refuses stored `Z` ("convert with `ceridwen.fit.convert_result`").
+- Merged-only (2), waiting on decision 4:
   - `test_per_galaxy_diagnostics::RebuildCalibratedModel`, `RebuildFreeDustModel`: these rebuild
     old base-grid fits. After Z → logzsol, upstream refuses the cell logzsol (+0.25, +0.50] ×
-    [α/Fe] (+0.4, +0.6] of the base grid (decision 4 below).
-- `test_regenerate_fit_notebooks::test_regen_matches_the_gpu_executed_notebook` fails on both trees:
-  - merged: the stored `Z` refusal;
-  - baseline: reshape 186200 → (26600, 14) stored-fit mismatch.
+    [α/Fe] (+0.4, +0.6] of the base grid.
+- `test_calibration_arms::test_sampler_validation_passes_without_derived_outputs` passes on fc7994a:
+  it validates a copy converted by `ceridwen.fit.convert_result`.
+- `test_regenerate_fit_notebooks::test_regen_matches_the_gpu_executed_notebook` fails on both trees
+  with the same error: reshape 186200 → (26600, 14). The stored eline_off fit has fewer SFH bins than
+  the notebook. On fc7994a the converted fit loads (cell 10) and the error comes in cell 12.
 - Fail on both trees:
   - `test_ceridwen_results_board` (15 errors) and `test_plot_ceridwen_checkpoint_evolution` ×2:
     `wiki/analyses/ceridwen-results.html` and related wiki html are missing;
@@ -90,15 +92,18 @@ The same failures occur on b61e998.
     expected env list;
   - `test_constant_calibration_active_assembly_and_exports`: NameError `mass_mapped_beta`;
   - `test_dust_bump` notebook tests ×2: NameError `metallicity_init`.
-- `wiki/tests/test_fit_settings.py`: 3 failures with the migrated notebook. The cause is the `Z` key,
-  labels, AXES and the hidden `baked_runtime` in `wiki/fit_settings.py`. The wiki was not edited.
-- After the bootstrap change (4ca0b64), `tests/test_vast.py` and `tests/test_experiment.py` give 66 passed.
+- Other affected tests on fc7994a: `tests/test_benchmark.py`, `test_vast.py`, `test_experiment.py`,
+  `test_formation_times.py` and `wiki/tests/test_fit_settings.py` give 115 passed
+  (`parent-extra-fc7994a.log`).
 
 ## Quick production notebook run
 
-`CERIDWEN_NOTEBOOK_QUICK=1`, M1_210210, CPU, ceridwen 54a0d13. The code is identical in 729fba6.
+`CERIDWEN_NOTEBOOK_QUICK=1`, M1_210210, CPU, ceridwen 729fba6, parent 7e68407.
 
-- Passes in 58 s with no cell errors and no warnings. ln Z = 235056.778 ± 0.291.
+- Passes in 65 s with no cell errors and no warnings. ln Z = 235056.778 ± 0.201.
+- The 54a0d13 run gives the same samples, ln Z, likelihood calls and χ²; its ln Z error is ± 0.291.
+  The error is the spread of anesthetic `logZ(12)` (`ceridwen/sampler/nested.py:1031`), which draws
+  volumes with unseeded `np.random.rand` (`anesthetic/samples.py:1220`).
 - SFH-basis fast path: `joint_csp.sfh_basis_fastpath` True, `_use_sfh_basis(theta)` True.
 - Wavelength support: photometry (1569, 10187); spectrum (2355, 6259).
 - Parameter block: `instrument R_fwhm = 2500; projector 'chain'; stellar sigma_gal sampled as
@@ -243,32 +248,49 @@ Ten galaxies, 1 Oct → merged (`run-ten/`):
 - |Δ ln Z|: 0.04–0.93. The 1 Oct and merged NS error estimates are 0.13–0.36.
 - Per-fit wall time: 1.07–1.31× the 1 Oct time on different hosts. This is not a same-boot A/B.
 
-## Wiki pages needing updates (not edited)
+## Wiki pages needing updates
 
-- `wiki/fit_settings.py`, `wiki/tests/test_fit_settings.py`: `Z` key, labels, AXES, hidden
-  `baked_runtime`.
-- `wiki/notes/ceridwen-observations-model.md`: `sigma_losvd`, `fit_sigma_smooth`, `res_convention`,
-  [Fe/H] offset.
-- `wiki/notes/ceridwen-ssp-csp.md`, `wiki/notes/model.md`: [Fe/H] = Z + 1.7328283.
-- `wiki/notes/default-fit-parameters.md`: `Z` key and offset.
-- `wiki/notes/notebook-map.md`: `res_convention`.
-- `wiki/notes/redshift-sigma-wiggle.md`: `free_z`.
-- `wiki/research/experiments/e-birth-cloud-dust.md`, `e-gpu-price-benchmark.md`,
-  `e-runtime-z-sigma-speed.md`: `baked_runtime`.
-- `wiki/analyses/per-galaxy-diagnostics/M1_210210-model_parameters.txt`: `sigma_losvd` line. The
-  new parameter block prints instrument, projector and sigma_gal.
-- `wiki/log.md`, `wiki/index.md`: merge entry.
+- Code, updated in 4f2fc99: `wiki/fit_settings.py` (`logzsol` key, [Fe/H] label, AXES, hidden
+  `baked_runtime` for pre-merge runs) and `wiki/tests/test_fit_settings.py` (13 passed).
+- Prose, not edited:
+  - `wiki/notes/ceridwen-observations-model.md`: `sigma_losvd`, `fit_sigma_smooth`, `res_convention`,
+    [Fe/H] offset.
+  - `wiki/notes/ceridwen-ssp-csp.md`, `wiki/notes/model.md`: [Fe/H] = Z + 1.7328283.
+  - `wiki/notes/default-fit-parameters.md`: `Z` key and offset.
+  - `wiki/notes/notebook-map.md`: `res_convention`.
+  - `wiki/notes/redshift-sigma-wiggle.md`: `free_z`.
+  - `wiki/research/experiments/e-birth-cloud-dust.md`, `e-gpu-price-benchmark.md`,
+    `e-runtime-z-sigma-speed.md`: `baked_runtime`.
+  - `wiki/analyses/per-galaxy-diagnostics/M1_210210-model_parameters.txt`: `sigma_losvd` line. The
+    new parameter block prints instrument, projector and sigma_gal.
+  - `wiki/log.md`, `wiki/index.md`: merge entry.
 
-## Parent scripts still on the pre-merge API (not in the production path)
+## Parent scripts
 
-- `scripts/absorption_mask_analysis.py`, `scripts/benchmark_ceridwen_vast.py`,
-  `scripts/benchmark_baked_runtime.py` (+ the `scripts/benchmark.py` preflight),
-  `scripts/relabel_feh_notebooks.py`: old Spectrum or CSP arguments.
-- `scripts/absorption_mask_report.py`, `scripts/build_dr2_quiescent_summary.py`: read stored `Z`.
-- `scripts/regenerate_fit_notebooks.py` on stored pre-merge results: needs
-  `ceridwen.fit.convert_result`.
-- Changed: `scripts/bootstrap_vast_ai.sh` grid probe (above).
+Ported in 4f2fc99 and fc7994a. Stored pre-merge fits stay unchanged: readers that find `Z` in a stored
+fit load a temporary copy converted by `ceridwen.fit.convert_result` on the base HR grid.
+
+| script | change | check |
+|---|---|---|
+| `benchmark_ceridwen_vast.py` (`build_joint_workload`) | merged Spectrum, Kinematics, Cosmology, `filter_directory`, `logzsol` | lnL at theta_init -166785.99487293736 on both trees (refusal off, decision 4) |
+| `absorption_mask_analysis.py` | same builder port; `load_stored_result`; Fisher truth `Z` → `logzsol` | predictions bitwise equal; Fisher matrix equal to 7.4e-12 relative; posterior and truth readers equal to 3e-17 |
+| `benchmark_baked_runtime.py` + `benchmark.py` preflight | no `baked_runtime` switch: arms fixed / free sigma_smooth; speedup fields removed | runs with emission lines off (proposal 1); `tests/test_benchmark.py` passes |
+| `absorption_mask_report.py` | reads cells through `load_stored_result`; `logzsol` row is [Fe/H] | 45 stored cells: equal to the stored `summary.json`, [Fe/H] to 2.84e-8 (`FEH_OFFSET` rounding) |
+| `build_dr2_quiescent_summary.py` | `logzsol` → `feh`; stored `Z` + `FEH_OFFSET` | 187 stored fits: CSV byte-identical; merged M1 `feh_q50` = stored `logzsol` q50 |
+| `regenerate_fit_notebooks.py` | notebook loads a converted copy when the stored fit has `Z` | converted fit loads (cell 10); the regen test then stops on the stored-fit bin mismatch (above) |
+| `relabel_feh_notebooks.py` | none: imports no ceridwen code | runs unchanged; listed here before by mistake |
+
+- Changed before: `scripts/bootstrap_vast_ai.sh` grid probe (above).
 - No change needed: `scripts/experiment.py`, `scripts/vast.py`, `scripts/run_ceridwen_vast_multi_gpu.py`.
+- Decision 4 also refuses the `benchmark_ceridwen_vast` fixed workload and
+  `absorption_mask_analysis.build_notebook_model` on the base grid.
+- Proposals (outside the phase-2 list, not done):
+  1. `benchmark_ceridwen_vast._make_log_functions` evaluates each likelihood component alone. The
+     production notebook shares emission lines with photometry (since 99e3091), and both 2d5edc9 and the
+     merged code refuse that call, so `benchmark_baked_runtime.py` fails on the production notebook
+     before and after the merge. Fix: evaluate through `likelihood.loglike(data, predictions, theta)`.
+  2. `per_galaxy_diagnostics.rebuild_model` and its filter-curve panel do not pass `filter_directory`,
+     so they use upstream's curves (77 files differ, VISTA among them).
 
 ## Decisions for Liu Hao
 
@@ -290,6 +312,9 @@ Ten galaxies, 1 Oct → merged (`run-ten/`):
    - With `logzsol_hist`, `SedModel._check_refused_alpha_cell` checks the transform at `theta_init`
      only (max +0.105 at M1). A base-grid fit with metallicity evolution is therefore not refused.
    - Options: keep, cap [α/Fe] at +0.4 for logzsol > +0.25, or rebuild the cell.
+   - Waiting on this decision: `test_per_galaxy_diagnostics` RebuildCalibratedModel and
+     RebuildFreeDustModel, the `benchmark_ceridwen_vast` fixed workload and
+     `absorption_mask_analysis.build_notebook_model` (all base grid).
 5. **Photometry broadening** (S-up-kin). Upstream's default broadens the photometry spectrum.
    Production opts out (`broaden_photometry=False`, bitwise = 2d5edc9). Turned on: dlnL -0.004 ±
    0.005, shifts < 0.003 sd.
@@ -297,8 +322,8 @@ Ten galaxies, 1 Oct → merged (`run-ten/`):
    `PolyMarginalGaussianLikelihood` gives the same lnL to 9.3e-10 but refuses lines with the polynomial.
 7. **blackjax floor.** 729fba6 keeps `blackjax>=1.6.dev98` so that the current image works (lead
    decision). Return to upstream's `>=1.6` after an image rebuild from PyPI blackjax.
-8. **Stored pre-merge results.** Convert them with `ceridwen.fit.convert_result` for diagnostics,
-   regeneration and the calibration-arms test, or keep them read only on the old pin.
+8. **Stored pre-merge results.** Resolved (lead): files under `results/` and `archive/` stay as they are;
+   the parent readers convert a temporary copy at load time with `ceridwen.fit.convert_result`.
 9. **`logz_0_cap`.** It keeps the old rounded offset: [Fe/H] = log10(1/50) − 2.84e-8. This gives
    unchanged numbers.
 10. **Stale parent tests** (proposal). Add `mass_mapped_beta`, `mass_mapped_zh` and `metallicity_init`
