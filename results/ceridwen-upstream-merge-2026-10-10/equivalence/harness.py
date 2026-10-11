@@ -305,7 +305,8 @@ def cmd_worker(args):
 
 
 def cmd_run(args):
-    out = Path(args.out)
+    out = Path(args.out).resolve()  # workers run from PROJECT
+    ceridwen = str(Path(args.ceridwen).resolve())
     out.mkdir(parents=True, exist_ok=True)
     configs = args.configs.split(",") if args.configs else list(CONFIGS)
     targets = args.targets.split(",") if args.targets else list(TARGETS)
@@ -316,14 +317,14 @@ def cmd_run(args):
         f.write(f"# {time.strftime('%Y-%m-%d %H:%M:%S')}\n{shlex.join([sys.executable, *sys.argv])}\n")
     procs = []
     for i, shard in enumerate(s for s in shards if s):
-        cmd = [sys.executable, str(Path(__file__).resolve()), "worker", "--ceridwen", args.ceridwen,
-               "--out", str(out), "--notebook", args.notebook, "--points", args.points,
+        cmd = [sys.executable, str(Path(__file__).resolve()), "worker", "--ceridwen", ceridwen,
+               "--out", str(out), "--notebook", args.notebook, "--points", str(Path(args.points).resolve()),
                "--jobs", ",".join(shard), "--rename", args.rename or "", "--shift", args.shift or ""]
         with record.open("a") as f:
             f.write("  worker: JAX_PLATFORMS=cpu JAX_ENABLE_X64=1 PYTHONPATH="
-                    f"{shlex.quote(worker_env(args.ceridwen)['PYTHONPATH'])} {shlex.join(cmd)}\n")
+                    f"{shlex.quote(worker_env(ceridwen)['PYTHONPATH'])} {shlex.join(cmd)}\n")
         log = (out / f"worker-{i}.log").open("a")
-        procs.append(subprocess.Popen(cmd, env=worker_env(args.ceridwen), stdout=log,
+        procs.append(subprocess.Popen(cmd, env=worker_env(ceridwen), stdout=log,
                                       stderr=subprocess.STDOUT, cwd=PROJECT))
     codes = [p.wait() for p in procs]
     print(out, "worker exit codes", codes)

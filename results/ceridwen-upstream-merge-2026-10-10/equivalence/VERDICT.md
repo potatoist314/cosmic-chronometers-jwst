@@ -82,12 +82,55 @@ stay in the coordination directory `tmp/ceridwen-upstream-merge/equivalence/runs
   instrument=Instrument.<unit>(...)` (the merge took upstream's `observation/spectrum.py`; the local
   pieces are follow-up ports). Run: `runs/upstream-merge-c307b54/`.
 
-## Pending (2026-10-11 00:00)
+## interim-4b1f1a6: upstream-merge 4b1f1a6 with a draft notebook migration (2026-10-11 03:11)
 
-- Final merged commit not yet verified: the production notebook has not been migrated to the
-  merged API (integrator-status "Next" 2). When it lands, run on the final `upstream-merge` tip:
+- Not the final commit: the official notebook migration had not landed. The notebook is the reference
+  notebook migrated to the merged API by `runs/interim-4b1f1a6-draft-notebook/draft_migrate.py`
+  (`draft-merged.ipynb`, sha256 22bf123d...): logzsol keys and priors (`--rename Z=logzsol --shift
+  logzsol=1.7328282715969863`), `SSPDataAfe.load(zsun=0.0185, axis_meaning="feh")`, `cosmo=`,
+  `Spectrum(instrument=Instrument.R_fwhm(R), projector="chain")`, `SedModel(kinematics=Kinematics(sigma_gal=
+  "sigma_smooth", sigma_max=<sigma_smooth prior top>), broaden_photometry=False)`, `filter_directory`,
+  `EmissionLineColumns.from_spectrum(sigma_gas_kms=, sigma_key=)`.
+- Run: `runs/interim-4b1f1a6-draft-notebook/` (`verdict-section.md`, `compare.json`, `timing.json`, commands).
+- CPU timing, production lnL, M1_210210, batch 128, 20 interleaved rounds x 5 calls: reference 161.2 ms,
+  candidate 159.3 ms per batch; ratio candidate/reference 0.988 (reference against itself: 0.971).
+
+| config | targets | verdict | max abs dlnL | max rel output diff | cause |
+|---|---|---|---|---|---|
+| production | 10/10 | 10 bitwise | 0 | 0 | - |
+| elines_off | 10/10 | 10 bitwise | 0 | 0 | - |
+| zevo_off | 10/10 | 10 bitwise | 0 | 0 | - |
+| afe_grid | 10/10 | 10 bitwise | 0 | 0 | - |
+| cal_order0 | 10/10 | 10 bitwise | 0 | 0 | - |
+| baked_off | - | no switch | 5.8e-11 (via production) | 1.1e-12 (via production) | merged chain is always baked |
+| free_z | 10/10 (fft projector) | 10 differs | 4.7-17.9 | spectrum 1.9e-3-1.7e-2, photometry 6.7e-4-9.6e-4 | upstream a7b613c (projector and photometry) |
+
+- `baked_off`: the merged chain projector (local port b0f7130) carries the baked lookups of local 6707c05/5f2c316
+  with no switch (ledger S-6707c05); the notebook cell raises `NotImplementedError`. In the reference,
+  `baked_off` equals `production` to |dlnL| <= 5.8e-11 and relative outputs <= 1.1e-12 (all ten targets), and
+  merged `production` equals reference `production` bitwise.
+- `free_z`: `projector="chain"` refuses a sampled redshift (b0f7130; ledger S-c540bc7 adopt-upstream), so
+  this row uses `projector="fft", zred_range=(z_cat - 0.1, z_cat + 0.1)` when zred is sampled
+  (`runs/interim-4b1f1a6-fftz/`, `draft-merged-fftz.ipynb`). Two differences, both from upstream a7b613c
+  ("v3.0.0: ... sampled redshift for every observation type"):
+  - Photometry, 6.7e-4-9.6e-4: a7b613c `SedModel` sets `obs.free_z = zred_is_free` on Photometry
+    (`ceridwen/model/model.py:515`), so `CSPBasis.predict` projects the bands at each sampled z
+    (`Photometry.predict_at_redshift`); 2d5edc9 never sets `free_z` on Photometry, so the bands stay
+    projected at the catalogue z and only the flux factor follows the sampled z. At M1_210210,
+    dv = +192 km/s: reference/production - 1 = -0.0033 in all 28 bands, merged -0.0021 ... -0.0179 per band.
+    Toggle (`toggle_photz.py`, `toggle-photometry-free_z.json`): merged with `free_z = False` on
+    Photometry gives the reference photometry bitwise (M1_210210, M5_238314).
+  - Spectrum, 1.9e-3-1.7e-2, and most of |dlnL| (M1 15.4 of 15.9, M5 17.7 of 17.9 with the photometry
+    toggled): upstream `broadening.SpectralProjector` (a7b613c) instead of the local chain and the local
+    free-z stretch (c540bc7). Toggle at fixed z (`runs/interim-4b1f1a6-fft-fixedz/`, `elines_off`,
+    `projector="fft"`): spectrum 6.1e-4 (M1_210210) and 1.0e-3 (M5_238314), |dlnL| 3.4 and 6.0,
+    photometry bitwise; the same config with `projector="chain"` is bitwise. Ledger rows S-proj and S-c540bc7
+    compare both projectors with a dense convolution.
+
+## Pending (2026-10-11 03:50)
+
+- Final merged commit not yet verified: the official notebook migration is not yet committed on parent
+  `ceridwen-upstream-merge`. When it lands, run on the final `upstream-merge` tip:
   `harness.py verify --ceridwen <worktree at tip> --label upstream-merge-<sha>
   --notebook ceridwen-upstream-merge:notebooks/ceridwen_integrated_photometry_spectra.ipynb
-  --rename Z=logzsol --shift logzsol=1.7328282715969863` (rename and shift per integrator-status:
-  candidate `logzsol` = Z + 1.7328282715969863). Then attribute each `differs` row to an upstream
-  commit by toggling it on a scratch worktree of the tip.
+  --rename Z=logzsol --shift logzsol=1.7328282715969863`.
