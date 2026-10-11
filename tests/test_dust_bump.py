@@ -76,6 +76,7 @@ def test_production_bump_follows_kriek_conroy():
 
 @pytest.mark.parametrize("birth_cloud", [False, True])
 def test_notebook_csp_routes_both_parameters_into_photometric_prediction(birth_cloud):
+    from ceridwen import Cosmology
     from ceridwen.csp import CSPBasis_afe
     from ceridwen.ssps import SSPDataAfe
     from ceridwen.model import SedModel
@@ -83,9 +84,9 @@ def test_notebook_csp_routes_both_parameters_into_photometric_prediction(birth_c
     from ceridwen.sampler.priors import Uniform
 
     wave = jnp.geomspace(1000., 30000., 512)
-    ssp = SSPDataAfe(jnp.array([-2.2, -1.4]), jnp.array([-.2, .6]),
-                     jnp.array([-3., -1., 0., 1.2]), wave,
-                     jnp.ones((2, 2, 4, 512)) * 1e-15)
+    ssp = SSPDataAfe(jnp.array([-2.2, -1.4]), jnp.array([-3., -1., 0., 1.2]), wave,
+                     jnp.ones((2, 2, 4, 512)) * 1e-15, ssp_afe=jnp.array([-.2, .6]),
+                     zsun=10 ** -1.4, axis_meaning="feh")
     priors = {"diffuse_delta": Uniform(low=-1., high=.4),
               "diffuse_Ebump": Uniform(low=0., high=6.)}
     path = Path(__file__).resolve().parents[1] / "notebooks/ceridwen_integrated_photometry_spectra.ipynb"
@@ -103,7 +104,7 @@ def test_notebook_csp_routes_both_parameters_into_photometric_prediction(birth_c
                   if c["cell_type"] == "code" and "joint_csp = CSPBasis_afe(" in "".join(c["source"]))
     assignment = next(n for n in ast.parse(source).body if isinstance(n, ast.Assign)
                       and any(isinstance(t, ast.Name) and t.id == "joint_csp" for t in n.targets))
-    env = dict(CSPBasis_afe=CSPBasis_afe, ssp=ssp, jnp=jnp,
+    env = dict(CSPBasis_afe=CSPBasis_afe, Cosmology=Cosmology, ssp=ssp, jnp=jnp,
                lookback_template=np.array([0., .1, 1., 5.]),
                SETTINGS={"birth_cloud_dust": birth_cloud}, PRIORS=priors)
     exec(compile(ast.Module(body=[assignment], type_ignores=[]), "notebook_csp", "exec"), env)
