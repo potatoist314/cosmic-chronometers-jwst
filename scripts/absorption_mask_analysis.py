@@ -330,7 +330,7 @@ def build_notebook_model(target: dict):
     phot_obs = Photometry(
         filters=FILTER_NAMES, flux=target["phot_flux"],
         uncertainty=target["phot_uncertainty"], mask=np.ones(len(FILTER_NAMES), bool),
-        filter_directory=str(PROJECT_ROOT / "external/sedpy_jax/sedpy_jax/data/filters"), name="photometry",
+        name="photometry",
     )
     spec_obs = Spectrum(
         wavelength=target["wave_vac"], flux=target["flux"], uncertainty=target["uncertainty"],
@@ -338,7 +338,7 @@ def build_notebook_model(target: dict):
         name="spectrum",
     )
     z_bounds = (float(ssp.ssp_lgmet.min() - ssp.log10_zsun) + 1e-4,  # logzsol = log10 Z - log10 Z_sun
-                float(ssp.ssp_lgmet.max() - ssp.log10_zsun) - 1e-4)
+                0.25)  # upstream refuses logzsol > +0.25 with afe > +0.4 on this grid (decision 4)
     afe_bounds = (float(ssp.ssp_afe.min()), float(ssp.ssp_afe.max()))
     csp = CSPBasis_afe(
         ssp,

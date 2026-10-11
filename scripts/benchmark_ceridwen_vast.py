@@ -358,14 +358,11 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
         raise BenchmarkError(
             "the joint likelihood does not contain 11 photometric bands"
         )
-    # the sedpy_jax curves of the production fits, not ceridwen's default library
-    filter_directory = str(project_root / "external/sedpy_jax/sedpy_jax/data/filters")
     phot_obs = Photometry(
         filters=FILTER_NAMES,
         flux=phot_flux,
         uncertainty=phot_uncertainty,
         mask=phot_fit_mask,
-        filter_directory=filter_directory,
         name="photometry",
     )
 
@@ -402,9 +399,7 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
         wave_vacuum[anchor_good],
         native_uncertainty[anchor_good],
     )
-    i_anchor = Photometry(
-        filters=["subaru_suprimecam_ip"], filter_directory=filter_directory, name="i_anchor"
-    )
+    i_anchor = Photometry(filters=["subaru_suprimecam_ip"], name="i_anchor")
     anchor_spectrum = Spectrum(
         wavelength=wave_vacuum,
         flux=anchor_flux,
@@ -459,7 +454,7 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
     lookback_template = np.array([0.0, 0.03, 0.1, 0.3, 1.0, 3.0, 5.0, universe_age])
     z_bounds = (  # logzsol = log10 Z - log10 Z_sun
         float(ssp.ssp_lgmet.min() - ssp.log10_zsun) + 1e-4,
-        float(ssp.ssp_lgmet.max() - ssp.log10_zsun) - 1e-4,
+        0.25,  # upstream refuses logzsol > +0.25 with afe > +0.4 on this grid (decision 4)
     )
     afe_bounds = (float(ssp.ssp_afe.min()), float(ssp.ssp_afe.max()))
     fixed_dust_index = -0.7

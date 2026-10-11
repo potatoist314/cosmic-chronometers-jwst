@@ -2,7 +2,7 @@
 
 ## What merged
 
-- ceridwen `upstream-merge` **729fba6** (origin, potatoist314/ceridwen): upstream/main cc8ac9d merged
+- ceridwen `upstream-merge` **d7c0536** (origin, potatoist314/ceridwen): upstream/main cc8ac9d merged
   into local `speedups` 2d5edc9 (merge c307b54), then:
   - ports of the local speed work onto upstream code (c032d0b, 17d486c, 5cfb739, 852b239);
   - `upstream-merge-fix-core` 6d07e37 (merge ba57bbf): KC13 Noll bump, NumPy FilterSet,
@@ -12,9 +12,13 @@
     `EmissionLineColumns.from_spectrum(sigma_gas_kms=, sigma_key=, zred_key=)`;
   - b61e998 local spectrum tests on the merged API; 54a0d13 `sedpy-jax>=0.1.1` declared;
   - 729fba6 `blackjax>=1.6.dev98`: a local deviation from upstream's `>=1.6` (lead decision), so the
-    pinned Vast image passes `uv pip check` (New dependencies).
+    pinned Vast image passes `uv pip check` (New dependencies);
+  - d7c0536 Liu Hao's notes of 2026-10-11, comments only (`scripts_afe/build_afe_hr_grid.py`,
+    `ceridwen/ssps/ssp_data_afe.py`); the same commit from his main-checkout HEAD 37f04b0 is branch
+    `liuhao-notes-2026-10-11` 35a46d8.
 - Per-commit decisions and evidence: `LEDGER.md`.
-- Parent `ceridwen-upstream-merge`: ceridwen pinned to 729fba6. fb7bc4c moves to the merged API:
+- Parent `ceridwen-upstream-merge`: ceridwen pinned to d7c0536 (729fba6 before phase 3). fb7bc4c moves
+  to the merged API:
   - `notebooks/ceridwen_integrated_photometry_spectra.ipynb`;
   - `scripts/per_galaxy_diagnostics.py` and `scripts/plot_prior_kl.py`;
   - 4 parent tests that pin notebook text.
@@ -23,6 +27,8 @@
   grid without them.
 - 4f2fc99 and fc7994a: the parent scripts, tests and `wiki/fit_settings.py` on the merged API
   (Parent scripts below).
+- Phase 3 (decisions 1, 3, 4; pin d7c0536): production uses ceridwen's filter library; the base-grid
+  builders cap logzsol at +0.25 (Decisions, Filter curves).
 - Production notebook on the merged API:
 
 | item | before (2d5edc9) | merged |
@@ -32,7 +38,7 @@
 | spectrum | `resolution=, smoothtype="R", res_convention="fwhm", sigma_losvd=, fit_sigma_smooth=, free_z=, baked_runtime=` | `instrument=Instrument.R_fwhm(R)`, `projector="chain"` (`"fft"` only when zred is sampled) |
 | kinematics | on Spectrum | `SedModel(kinematics=Kinematics(sigma_gal="sigma_smooth", sigma_max=<prior top>), broaden_photometry=False)` |
 | CSP | `sigma_losvd_kms=0.0` | `cosmo=Cosmology.planck18()` |
-| filters | sedpy_jax curves | same curves via `Photometry(filter_directory=external/sedpy_jax/sedpy_jax/data/filters)` |
+| filters | sedpy_jax curves | ceridwen's library `ceridwen/data/filters` (no `filter_directory`): upstream's curves + local MegaCam U.MP9302 (decision 3) |
 | lines | `from_spectrum(spec, z)` | `from_spectrum(spec, z, sigma_gas_kms=sigma_star, sigma_key="sigma_smooth")` |
 | flux factor | `flux_factor_maggies(z)` | `flux_factor_cgs(z, cosmo)` |
 | setting | `baked_runtime` | removed (no switch on the merged code) |
@@ -66,20 +72,22 @@ CPU, float64, `-n` ≤ 3. Logs: `tmp/ceridwen-upstream-merge/integrator-tests/{u
 
 ### Parent ceridwen tests (17 files)
 
-Logs: `integrator-tests/parent-merged-fc7994a.log`, `parent-merged-54a0d13.log`, `parent-speedups.log`.
+Logs: `integrator-tests/parent-phase3.log`, `parent-merged-fc7994a.log`, `parent-merged-54a0d13.log`,
+`parent-speedups.log`.
 
 | tree | failed | passed | skipped | errors |
 |---|---|---|---|---|
+| phase 3: parent (decisions 3, 4) + ceridwen d7c0536 | 7 | 203 | 8 | 15 |
 | parent fc7994a + ceridwen 729fba6 | 9 | 201 | 8 | 15 |
 | parent + ceridwen 54a0d13 | 10 | 200 | 8 | 15 |
 | baseline: parent 7354c90 + ceridwen 2d5edc9 | 7 | 203 | 8 | 15 |
 
 The 54a0d13 failures also occur on b61e998.
 
-- Merged-only (2), waiting on decision 4:
-  - `test_per_galaxy_diagnostics::RebuildCalibratedModel`, `RebuildFreeDustModel`: these rebuild
-    old base-grid fits. After Z → logzsol, upstream refuses the cell logzsol (+0.25, +0.50] ×
-    [α/Fe] (+0.4, +0.6] of the base grid.
+- Phase 3 has no merged-only failures. `test_per_galaxy_diagnostics::RebuildCalibratedModel` and
+  `RebuildFreeDustModel` pass: `rebuild_model` caps the stored logzsol prior at +0.25 (decision 4).
+  On fc7994a they failed on upstream's refusal of the base-grid cell logzsol (+0.25, +0.50] ×
+  [α/Fe] (+0.4, +0.6].
 - `test_calibration_arms::test_sampler_validation_passes_without_derived_outputs` passes on fc7994a:
   it validates a copy converted by `ceridwen.fit.convert_result`.
 - `test_regenerate_fit_notebooks::test_regen_matches_the_gpu_executed_notebook` fails on both trees
@@ -92,9 +100,9 @@ The 54a0d13 failures also occur on b61e998.
     expected env list;
   - `test_constant_calibration_active_assembly_and_exports`: NameError `mass_mapped_beta`;
   - `test_dust_bump` notebook tests ×2: NameError `metallicity_init`.
-- Other affected tests on fc7994a: `tests/test_benchmark.py`, `test_vast.py`, `test_experiment.py`,
-  `test_formation_times.py` and `wiki/tests/test_fit_settings.py` give 115 passed
-  (`parent-extra-fc7994a.log`).
+- Other affected tests: `tests/test_benchmark.py`, `test_vast.py`, `test_experiment.py`,
+  `test_formation_times.py` and `wiki/tests/test_fit_settings.py` give 115 passed on fc7994a and in
+  phase 3 (`parent-extra-fc7994a.log`, `parent-extra-phase3.log`).
 
 ## Quick production notebook run
 
@@ -108,6 +116,41 @@ The 54a0d13 failures also occur on b61e998.
 - Wavelength support: photometry (1569, 10187); spectrum (2355, 6259).
 - Parameter block: `instrument R_fwhm = 2500; projector 'chain'; stellar sigma_gal sampled as
   sigma_smooth; photometry broadened: False`.
+
+## Filter curves: production likelihood change (decision 3)
+
+Harness `equivalence/harness.py`, production configuration, the ten galaxies, 21 points each, CPU
+float64. Candidate: ceridwen 729fba6 with the phase-3 notebook (no `filter_directory`); compared with
+the 729fba6 run on notebook b891d1a (`equivalence/runs/upstream-merge-729fba6-upstream-curves/`,
+`compare-vs-729fba6.md`).
+
+- Spectrum: bitwise unchanged on all ten.
+- Photometry: 8 of 28 bands change, by at most 2.2e-4 relative:
+
+| band | max rel change |
+|---|---|
+| vista_vircam_Y | 2.2e-4 |
+| jwst_f277w | 2.0e-4 |
+| vista_vircam_Ks | 9.3e-5 |
+| vista_vircam_H | 8.5e-5 |
+| vista_vircam_J | 5.4e-5 |
+| jwst_f115w | 3.0e-5 |
+| jwst_f444w | 2.8e-5 |
+| jwst_f150w | 8.0e-6 |
+
+  The other 20 bands are bitwise unchanged: their curve files are identical, and the shared FilterSet
+  grid (dlnlam 5.0e-5, set by acs_wfc_f814w) is the same.
+- Line fluxes ≤ 1.5e-6 relative; calibrated spectrum ≤ 3.9e-7.
+- lnL, 210 points: dlnL median -1.1e-3, range -6.3e-3 to +4.3e-3, mean |dlnL| 2.0e-3 (rounding floor
+  ≤ 2.2e-4). Max-likelihood rows: -3.5e-3 to +2.6e-3.
+- Per galaxy, max |dlnL|: M1_210210 1.9e-3, M8_150848 7.5e-4, M5_238314 3.9e-3, M3_120308 3.8e-3,
+  M2_134021 3.4e-3, M7_146213 3.2e-3, M3_117010 3.3e-3, M4_107370 4.3e-3, M14_37219 3.7e-3,
+  M8_161113 6.3e-3.
+- Base-grid builders (the same 12 bands, no JWST): the upstream vista_vircam_J curve has a finer native
+  step, so the shared grid goes from dlnlam 5.9e-4 to 4.0e-4 and every band moves.
+  `absorption_mask_analysis` model photometry: up to 1.7e-3 relative (12 of 12 bands), spectrum
+  bitwise. `benchmark_ceridwen_vast` lnL at theta_init: -166785.995 → -166338.567, with theta_init
+  logmass 11.06516 → 11.06495 from its own photometric normalisation.
 
 ## Equivalence verdict: ceridwen 729fba6, notebook b891d1a, vs speedups 2d5edc9
 
@@ -272,49 +315,61 @@ fit load a temporary copy converted by `ceridwen.fit.convert_result` on the base
 
 | script | change | check |
 |---|---|---|
-| `benchmark_ceridwen_vast.py` (`build_joint_workload`) | merged Spectrum, Kinematics, Cosmology, `filter_directory`, `logzsol` | lnL at theta_init -166785.99487293736 on both trees (refusal off, decision 4) |
-| `absorption_mask_analysis.py` | same builder port; `load_stored_result`; Fisher truth `Z` → `logzsol` | predictions bitwise equal; Fisher matrix equal to 7.4e-12 relative; posterior and truth readers equal to 3e-17 |
+| `benchmark_ceridwen_vast.py` (`build_joint_workload`) | merged Spectrum, Kinematics, Cosmology, `logzsol`; phase 3: logzsol prior top +0.25, ceridwen's filter library | phase 2: lnL at theta_init -166785.99487293736 on both trees (refusal off); phase 3 cap: builds with the refusal on, lnL bitwise equal |
+| `absorption_mask_analysis.py` | same builder port; `load_stored_result`; Fisher truth `Z` → `logzsol`; phase 3: logzsol bound top +0.25, ceridwen's filter library | phase 2: predictions bitwise equal; Fisher matrix equal to 7.4e-12 relative; posterior and truth readers equal to 3e-17; phase 3 cap: builds with the refusal on, predictions bitwise equal |
 | `benchmark_baked_runtime.py` + `benchmark.py` preflight | no `baked_runtime` switch: arms fixed / free sigma_smooth; speedup fields removed | runs with emission lines off (proposal 1); `tests/test_benchmark.py` passes |
 | `absorption_mask_report.py` | reads cells through `load_stored_result`; `logzsol` row is [Fe/H] | 45 stored cells: equal to the stored `summary.json`, [Fe/H] to 2.84e-8 (`FEH_OFFSET` rounding) |
 | `build_dr2_quiescent_summary.py` | `logzsol` → `feh`; stored `Z` + `FEH_OFFSET` | 187 stored fits: CSV byte-identical; merged M1 `feh_q50` = stored `logzsol` q50 |
+| `per_galaxy_diagnostics.py` (`rebuild_model`) | phase 3: a stored `Z` prior converts to logzsol with its top capped at +0.25 | Rebuild tests pass; rebuilt diagnostics of old fits show the capped prior |
 | `regenerate_fit_notebooks.py` | notebook loads a converted copy when the stored fit has `Z` | converted fit loads (cell 10); the regen test then stops on the stored-fit bin mismatch (above) |
 | `relabel_feh_notebooks.py` | none: imports no ceridwen code | runs unchanged; listed here before by mistake |
 
 - Changed before: `scripts/bootstrap_vast_ai.sh` grid probe (above).
 - No change needed: `scripts/experiment.py`, `scripts/vast.py`, `scripts/run_ceridwen_vast_multi_gpu.py`.
-- Decision 4 also refuses the `benchmark_ceridwen_vast` fixed workload and
-  `absorption_mask_analysis.build_notebook_model` on the base grid.
+- Decision 4: the logzsol prior top of +0.25 is the lower edge of the refused cell, the smallest of the
+  two caps the refusal offers (logzsol ≤ +0.25 removes 0.25 of the 3.0-dex logzsol range; afe ≤ +0.4
+  would remove 0.2 of the 0.8 afe range). The absorption-mask truth (logzsol +0.010, afe +0.136) and
+  the rebuilt max-likelihood points (logzsol -0.12, afe -0.19) are inside. The Fisher forecast's
+  logzsol prior variance follows the bound: (2.7499)²/12 instead of (2.9998)²/12.
+- `scripts/cosmos_photometry.py` still reads `external/sedpy_jax/sedpy_jax/data/filters`, only to check
+  that a band's curve exists; ceridwen's library holds every curve name in that directory.
 - Proposals (outside the phase-2 list, not done):
   1. `benchmark_ceridwen_vast._make_log_functions` evaluates each likelihood component alone. The
      production notebook shares emission lines with photometry (since 99e3091), and both 2d5edc9 and the
      merged code refuse that call, so `benchmark_baked_runtime.py` fails on the production notebook
      before and after the merge. Fix: evaluate through `likelihood.loglike(data, predictions, theta)`.
-  2. `per_galaxy_diagnostics.rebuild_model` and its filter-curve panel do not pass `filter_directory`,
-     so they use upstream's curves (77 files differ, VISTA among them).
+  2. Closed by decision 3: `per_galaxy_diagnostics.rebuild_model` uses ceridwen's library, as
+     production now does.
 
 ## Decisions for Liu Hao
 
-1. **Projector** (ledger-spectrum S-proj). Production keeps the local chain, bitwise equal to 2d5edc9.
+1. **Projector** (ledger-spectrum S-proj). **Decided 2026-10-11, Liu Hao: "no i think you can keep the
+   local convolve."** No code change. Production keeps the local chain, bitwise equal to 2d5edc9.
    Upstream's `SpectralProjector` compared with a dense convolution:
    - accuracy: rms 8.5e-6 for upstream vs 4.2e-4 for the chain;
    - over 200 draws: dlnL +0.14 ± 0.43, sigma_smooth +1.01 km/s (+0.33 sd);
    - CPU: 3.0 ms per call vs 0.67 ms.
-   Switch production to upstream's projector?
 2. **Noll bump** (D-noll). The merge carries Kriek & Conroy (2013): 2175 Å, 350 Å FWHM. Upstream's
    bump uses x0 = 4.59, gamma = 0.90. With upstream's bump: top-20 dlnL median -0.019, photometry
    max rel 1.2e-2.
-3. **Filter curves** (D-curves). Production keeps its curves through `filter_directory`.
-   - Upstream's vendored curves: top-20 dlnL +0.001 to +0.002.
-   - 77 files differ: JWST, VISTA, Gaia.
-4. **Refused cell** (ledger-core decision 9). Upstream refuses logzsol (+0.25, +0.50] × [α/Fe]
+3. **Filter curves** (D-curves). **Decided 2026-10-11, Liu Hao: "bring in extra or changed filter
+   curves."**
+   - Route: production passes no `filter_directory`, so `Photometry` reads ceridwen's library
+     `ceridwen/data/filters`: upstream's 293 curves + the local `cfht_megacam_u_9302.par` (be1b6e6). It
+     holds every `.par` name of `external/sedpy_jax/sedpy_jax/data/filters`; 77 of those files differ
+     (69 JWST, 5 VISTA, 3 Gaia) and 61 curves are new. The sedpy_jax curves are unchanged.
+   - Same change in the base-grid builders `benchmark_ceridwen_vast` and `absorption_mask_analysis`.
+   - Effect: Filter curves (above). Production photometry ≤ 2.2e-4 relative in 8 bands; |dlnL| ≤ 6.3e-3.
+4. **Refused cell** (ledger-core decision 9). **Decided 2026-10-11, Liu Hao: "keep refuse as upstream
+   does."** Ceridwen's refusal is unchanged. Upstream refuses logzsol (+0.25, +0.50] × [α/Fe]
    (+0.4, +0.6] on the base HR grid. The FSPS `isoc_feh_p050_afe_p6` file is byte-identical to `_p4`.
    - The nebular grid has no refused cells, so production is not refused.
    - With `logzsol_hist`, `SedModel._check_refused_alpha_cell` checks the transform at `theta_init`
      only (max +0.105 at M1). A base-grid fit with metallicity evolution is therefore not refused.
-   - Options: keep, cap [α/Fe] at +0.4 for logzsol > +0.25, or rebuild the cell.
-   - Waiting on this decision: `test_per_galaxy_diagnostics` RebuildCalibratedModel and
-     RebuildFreeDustModel, the `benchmark_ceridwen_vast` fixed workload and
-     `absorption_mask_analysis.build_notebook_model` (all base grid).
+   - The four base-grid items that were refused now cap the logzsol prior top at +0.25:
+     `test_per_galaxy_diagnostics` RebuildCalibratedModel and RebuildFreeDustModel (through
+     `rebuild_model`), the `benchmark_ceridwen_vast` fixed workload and
+     `absorption_mask_analysis.build_notebook_model` (Parent scripts).
 5. **Photometry broadening** (S-up-kin). Upstream's default broadens the photometry spectrum.
    Production opts out (`broaden_photometry=False`, bitwise = 2d5edc9). Turned on: dlnL -0.004 ±
    0.005, shifts < 0.003 sd.

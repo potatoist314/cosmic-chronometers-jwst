@@ -316,8 +316,8 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     priors = {k: parse_prior(v) for k, v in galaxy.prior_text.items()}
     if "Z" in priors:
         z_prior = priors.pop("Z")
-        priors["logzsol"] = type(z_prior)(
-            low=float(z_prior.params["low"]) - STORED_LOG10_ZSUN, high=float(z_prior.params["high"]) - STORED_LOG10_ZSUN
+        priors["logzsol"] = type(z_prior)(  # capped at +0.25: upstream refuses logzsol > +0.25 with afe > +0.4 (decision 4)
+            low=float(z_prior.params["low"]) - STORED_LOG10_ZSUN, high=min(float(z_prior.params["high"]) - STORED_LOG10_ZSUN, 0.25)
         )
     phot_obs = Photometry(
         filters=galaxy.phot["filters"], flux=galaxy.phot["flux"],
