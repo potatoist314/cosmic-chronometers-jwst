@@ -1,0 +1,21 @@
+commit 3320310 M1_210210 Noll fit config with wider slope and bump priors (dry run only)
+diff --git a/results/m1-210210-noll-wider-2026-10-11/experiment.json b/results/m1-210210-noll-wider-2026-10-11/experiment.json
+new file mode 100644
+index 0000000..ec5acd3
+--- /dev/null
++++ b/results/m1-210210-noll-wider-2026-10-11/experiment.json
+@@ -0,0 +1,14 @@
++{
++  "targets": [
++    "M1_210210"
++  ],
++  "seed": 20260927,
++  "settings": {},
++  "priors": {
++    "diffuse_delta": "Uniform(low=-4.0, high=0.4)",
++    "diffuse_Ebump": "Uniform(low=0.0, high=20.0)"
++  },
++  "arms": {
++    "wider": {}
++  }
++}

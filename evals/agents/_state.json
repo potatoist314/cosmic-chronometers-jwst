@@ -1,6 +1,6 @@
 {
  "flow": "agents",
- "current_round": 0,
+ "current_round": 1,
  "reps": {
   "train": 1,
   "val": 1,
@@ -110,6 +110,36 @@
    "at": "2026-10-11T03:40",
    "decision": "Push block moved from the Bash(git push:*) permission rule to git config (url.DISABLED/.pushInsteadOf for https, http, git@, ssh, file and / URLs); baseline ed02/ed04 rows marked harness_error and re-run",
    "why": "Agents commit with 'git add && git commit && git push'; the deny rule refused the whole command, so no commit landed and 'committed'/'correct' failed for a reason absent in production. The git-level block also catches 'git -C . push' and explicit URLs, which the prefix rule missed; the network sandbox, the DISABLED push URL and GIT_SSH_COMMAND=/usr/bin/false stay."
+  },
+  {
+   "at": "2026-10-11T08:20",
+   "decision": "Verified the git-level push block on baseline ed06: the agent's 'git add && git commit && git push' committed (committed=1) and the push failed with 'Please make sure you have the correct access rights and the repository exists'",
+   "why": "Pending check from the 03:40 push-block change."
+  },
+  {
+   "at": "2026-10-11T08:20",
+   "decision": "Known harness limit, kept for this round: the sandbox does not check out the external/fsps submodule, so experiment.py --dry-run stops at 'missing external/fsps/data/emlines_info.dat' (ed05, ed06). Same for baseline and v1, so the paired comparison holds; fix in sandbox.SUBMODULES before the next round",
+   "why": "Changing the template mid-round would break the pairing of baseline and v1 runs."
+  },
+  {
+   "at": "2026-10-11T08:20",
+   "decision": "Grader fix after the round: dry_run_only counts 'experiment.py run --help' as a launch without --dry-run (baseline ed06 scored 0 for a run that only used --dry-run). Recompute dry_run_only from the recorded traces for every row with --help/-h calls excluded; applied to baseline and v1 alike",
+   "why": "Deterministic item, recomputable from transcripts; running processes keep the old grade.py in memory."
+  },
+  {
+   "at": "2026-10-11T09:20",
+   "decision": "dry_run_only recomputed from traces with the fixed rule (grade.py); baseline ed06 0.6 -> 0.7, v1 ed06 0.7 -> 0.8; no other row has the item",
+   "why": "Decision 08:20."
+  },
+  {
+   "at": "2026-10-11T09:20",
+   "decision": "Mechanism check: the variant AGENTS.md is in the agent's context (st06 runs scripts/sync_wiki_direction.py --read in both variants, a rule stated only in AGENTS.md); the v1 skill text appears in the v1 traces' Skill reads",
+   "why": "eval-audit.md s5 'The mechanism is wired'; no extra eval run spent."
+  },
+  {
+   "at": "2026-10-11T09:20",
+   "decision": "Stop: runners stopped at 09:20 while idle in the quota gate; no further rounds. v1 not recommended (val delta within noise)",
+   "why": "5 h window at 7%, reset 12:50, after the lead's 11:00 stop time; the 25% reserve belongs to the merge swarm."
   }
  ],
  "split_seed": 20261010,
@@ -209,7 +239,14 @@
  ],
  "best": {
   "round": 0,
-  "val_score": null
+  "val_score": 0.683,
+  "test_score": 0.608,
+  "note": "v1 val 0.689 (paired delta +0.006 +/-0.036, n=12, 1 trial) is within noise; baseline levers kept"
  },
- "harness_sha": "ea1f5aa540ffd9ae3c42de1954428580b1b2554524c2975cef87ce3e60904049"
+ "harness_sha": "d0b995e60a40d9bf03a531b36e63113b2b4afce6f16a37105118c6187d39e377",
+ "stop": {
+  "at": "2026-10-11T09:20",
+  "reason": "quota: the shared claude 5 h window fell below the 25% merge-swarm reserve at about 08:40 (7% at 09:20) and resets at 12:50, after the 11:00 BST stop time; runners stopped while idle in the gate",
+  "done": "val 12/12 paired (baseline, v1); test baseline 9/12, v1 5/12; train baseline 9/12, v1 0/12"
+ }
 }

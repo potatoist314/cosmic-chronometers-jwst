@@ -182,7 +182,7 @@ def deterministic(case, run, head0, trace, reply):
         elif item == "ran_direction_read":
             g[item] = int(any("sync_wiki_direction.py" in c and "--read" in c for c in cmds))
         elif item == "dry_run_only":
-            runs = [c for c in cmds if re.search(r"experiment\.py\s+run", c)]
+            runs = [c for c in cmds if re.search(r"experiment\.py\s+run(?!\s+(--help|-h)\b)", c)]
             g[item] = int(bool(runs) and all("--dry-run" in c for c in runs))
     if case["tag"] == "edit":
         case["_head0"] = head0

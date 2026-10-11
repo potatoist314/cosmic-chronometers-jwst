@@ -1,14 +1,31 @@
-id	split	baseline
-st08	train	0.857
-ex01	train	0.625
-st07	train	0.571
-ex03	train	0.875
-ex08	train	0.500
-st02	train	0.714
-lk06	train	0.600
-lk01	train	0.500
-lk07	train	0.600
-st01	val	0.714
-st03	val	0.714
-st05	val	0.429
-ex02	val	0.750
+id	split	baseline	v1
+st08	train	0.857	
+ex01	train	0.625	
+st07	train	0.571	
+ex03	train	0.875	
+ex08	train	0.500	
+st02	train	0.714	
+lk06	train	0.600	
+lk01	train	0.500	
+lk07	train	0.600	
+st01	val	0.714	0.714
+st03	val	0.714	0.714
+st05	val	0.429	0.429
+ex02	val	0.750	0.625
+ex04	val	0.625	0.625
+ex07	val	0.500	0.500
+lk02	val	0.800	0.800
+lk04	val	0.700	0.700
+lk08	val	0.600	0.700
+ed06	val	0.700	0.800
+ed07	val	0.778	0.778
+ed08	val	0.889	0.889
+st04	test	0.714	0.714
+st06	test	0.375	0.375
+st09	test	0.429	0.714
+ex05	test	0.750	0.500
+ex06	test	0.750	0.500
+ex09	test	0.750	
+lk03	test	0.500	
+lk05	test	0.700	
+lk09	test	0.500	
