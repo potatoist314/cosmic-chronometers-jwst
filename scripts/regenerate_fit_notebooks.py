@@ -6,7 +6,8 @@ seed, manifest index, calibration order, photometry source, tau prior bounds, sa
 sets those literals in the top cell of
 ``notebooks/ceridwen_integrated_photometry_spectra.ipynb``, replaces the
 ``run_sampler``/``write_result_h5`` block by ``load_result_h5`` of the stored
-file, executes the notebook on the local CPU in ``ceridwen/.venv`` and writes
+file (a fit stored in absolute log10 Z is read from a temporary copy converted
+by ``ceridwen.fit.convert_result``), executes the notebook on the local CPU in ``ceridwen/.venv`` and writes
 ``<TARGET_ID>_executed.ipynb`` in place of the old executed copy. The derived
 outputs cell rewrites ``ceridwen_derived_outputs.h5`` from the same posterior
 and seeds.
@@ -64,6 +65,7 @@ def stored_fit(result_dir: Path) -> dict:
             "dust_law": "noll" if "diffuse_tau_noll" in names else "kriek_conroy",
             "free_zred": "zred" in names,
             "free_sigma": "sigma_smooth" in names,
+            "absolute_z": "Z" in names,
         }
 
 
@@ -138,7 +140,15 @@ def compact_notebook(result_dir: Path, fit: dict, settings_override: dict | None
     fit_cell = notebook.cells[10]
     assert "joint_result = run_sampler(" in fit_cell.source
     head, _ = fit_cell.source.split("joint_result = run_sampler(", 1)
-    fit_cell.source = head + 'joint_result = load_result_h5(RESULT_DIR / "ceridwen_result.h5")\nprint(joint_result.summary())'
+    if fit["absolute_z"]:
+        load = ('import tempfile\n\nfrom ceridwen.fit import convert_result\n\n'
+                'with tempfile.TemporaryDirectory() as converted_dir:  # stored fit samples absolute log10 Z\n'
+                '    joint_result = load_result_h5(convert_result(\n'
+                '        RESULT_DIR / "ceridwen_result.h5", ssp, out=Path(converted_dir) / "ceridwen_result.h5"\n'
+                '    ))\n')
+    else:
+        load = 'joint_result = load_result_h5(RESULT_DIR / "ceridwen_result.h5")\n'
+    fit_cell.source = head + load + 'print(joint_result.summary())'
     fit_markdown.source += "\n- Posterior reloaded from the stored fit; the sampler is not re-run."
     return notebook
 

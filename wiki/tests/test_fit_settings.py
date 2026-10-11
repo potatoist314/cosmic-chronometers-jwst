@@ -14,9 +14,15 @@ sys.path.insert(0, str(WIKI))
 import fit_settings
 
 NOTEBOOK = "notebooks/ceridwen_integrated_photometry_spectra.ipynb"
-RUN = "results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb"
+RUN = "results/ceridwen-upstream-merge-2026-10-10/run-2/fits/fit/210210-M1_210210/M1_210210_executed.ipynb"
+Z_RUN = "results/m1-210210-reference/tau-1/poly10/210210-M1_210210/M1_210210_executed.ipynb"  # pre-merge: grid Z
 KC_RUN = "results/birth-cloud-dust/dust1_on/210210-M1_210210/M1_210210_executed.ipynb"
 FOLDED = {"zred_half_width": "zred", "sigma_clip": "sigma_smooth"}
+
+
+def stdout_of(run):
+    return "".join("".join(o["text"]) for c in json.loads((PROJECT / run).read_text())["cells"]
+                   for o in c.get("outputs", []) if o.get("name") == "stdout")
 
 
 def rows(rendered):
@@ -45,7 +51,7 @@ class FitSettingsTests(unittest.TestCase):
         for key in self.entries:
             shown = names.count(self.name(key)) + names.count("<code>%s</code>" % key)
             self.assertEqual(shown, 0 if key in fit_settings.HIDDEN or key in FOLDED else 1, key)
-        self.assertEqual(len(names), len(self.entries) - len(fit_settings.HIDDEN) - len(FOLDED))
+        self.assertEqual(len(names), len(self.entries) - len(fit_settings.HIDDEN & set(self.entries)) - len(FOLDED))
 
     def test_folded_settings_are_read_from_the_cell(self):
         found = rows(self.rendered)
@@ -73,17 +79,24 @@ class FitSettingsTests(unittest.TestCase):
 
     def test_grid_ranges_come_from_the_run(self):
         found = rows(self.rendered)
-        self.assertIn("Uniform [−2.5, 0.5]", found[self.name("Z")])
+        self.assertIn("Uniform [−2.5, 0.5]", found[self.name("logzsol")])
         self.assertIn("Uniform [−0.2, 0.6]", found[self.name("afe")])
-        stdout = "".join("".join(o["text"]) for c in json.loads((PROJECT / RUN).read_text())["cells"]
-                         for o in c.get("outputs", []) if o.get("name") == "stdout")
+        stdout = stdout_of(RUN)
+        raw = dict((key, (low, high)) for key, low, high in fit_settings.PRIOR_LINE.findall(stdout))["logzsol"]
+        for bound, shown in zip(raw, fit_settings.run_ranges(stdout)["logzsol"]):
+            self.assertAlmostEqual(float(bound), float(shown), places=2)
+        without = rows(fit_settings.render(PROJECT, NOTEBOOK, 2))
+        self.assertIn("Uniform over the grid", without[self.name("logzsol")])
+        self.assertIn("Uniform over the grid", without[self.name("afe")])
+
+    def test_a_pre_merge_run_shows_grid_z_on_the_fe_h_axis(self):
+        text = "".join(json.loads((PROJECT / Z_RUN).read_text())["cells"][2]["source"])
+        stdout = stdout_of(Z_RUN)
         raw = dict((key, (low, high)) for key, low, high in fit_settings.PRIOR_LINE.findall(stdout))["Z"]
-        offset = float(re.search(r"\[Fe/H\] = Z \+ ([0-9.]+)", self.text)[1])
+        offset = float(re.search(r"\[Fe/H\] = Z \+ ([0-9.]+)", text)[1])
         for bound, shown in zip(raw, fit_settings.run_ranges(stdout)["Z"]):
             self.assertAlmostEqual(float(bound) + offset, float(shown), places=2)
-        without = rows(fit_settings.render(PROJECT, NOTEBOOK, 2))
-        self.assertIn("Uniform over the grid", without[self.name("Z")])
-        self.assertIn("Uniform over the grid", without[self.name("afe")])
+        self.assertIn("Uniform [−2.5, 0.5]", rows(fit_settings.render(PROJECT, Z_RUN, 2, Z_RUN))[self.name("Z")])
 
     def test_masked_lines_are_named_with_a_width_from_the_notebook(self):
         row = rows(self.rendered)["emission_lines"].replace("\u00a0", " ")
