@@ -18,6 +18,7 @@ Commits on `upstream-merge` after the merge:
 | b61e998 | local spectrum tests on the merged API |
 | c661d46 | merge of upstream-merge-fix-spectrum 192fd25: line widths follow the Spectrum projector (test) |
 | 54a0d13 | `sedpy-jax>=0.1.1` declared (`projector="chain"` imports it in `observation/_smoothing.py`) |
+| 729fba6 | `blackjax>=1.6.dev98` (local deviation from upstream's `>=1.6`; lead decision 2026-10-11) |
 
 Equivalence evidence below: production inputs of M1_210210 (max-likelihood sample + 200 or 20
 posterior draws) on CPU, float64, unless stated.
@@ -84,4 +85,4 @@ sedpy_jax commits used by production (upstream vendored sedpy_jax's filters and 
 | 0e37d72 9fea53a 27948ff 0e39c9b 3c7e5c6 aac7b3a f15afdc e406d24 | zred-tracked SFH mass, linear SFH top, frac_obrun, nebular cloudy_dust, young MIST surviving mass | none: production uses fixed z, step SFH, no nebular model, no surviving mass | upstream-only |
 | eb5bc6f bac259a 680037b bf3de0a | IGM order, IGM on lines, dust emission energy balance | none: no IGM, no dust emission | upstream-only |
 | b730693 | NUTS | not used | upstream-only |
-| pyproject | dependency floors: blackjax>=1.6, jax>=0.9, numpy>=2, astropy>=8, h5py>=3.16, tfp>=0.25, anesthetic>=2.14; sedpy-jax dropped | Vast image blackjax 1.6.dev98 fails `uv pip check` | adopt floors; sedpy-jax re-declared (54a0d13); see REPORT |
+| pyproject | dependency floors: blackjax>=1.6, jax>=0.9, numpy>=2, astropy>=8, h5py>=3.16, tfp>=0.25, anesthetic>=2.14; sedpy-jax dropped | Vast image blackjax 1.6.dev98+gf73e12956 fails `uv pip check` against `>=1.6` (PEP 440: 1.6.dev98 < 1.6) | adopt floors except blackjax; **local deviation** 729fba6: `blackjax>=1.6.dev98` (upstream's comment: 1.6's `blackjax/ns/` is byte-identical to commit f73e12956, the image's build; PyPI 1.6+ still satisfies it); sedpy-jax re-declared (54a0d13) |
