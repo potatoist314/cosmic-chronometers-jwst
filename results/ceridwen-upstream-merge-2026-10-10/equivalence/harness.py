@@ -147,6 +147,8 @@ def build(cells, config, target, scratch):
     edits = dict(CONFIGS[config])
     if edits.pop("_fixed_z", False):
         env["PRIORS"].pop("zred")
+    for name in DROP:
+        edits.pop(name, None)
     missing = sorted(set(edits) - set(env["SETTINGS"]))
     if missing:  # the notebook no longer has this switch
         raise KeyError(f"notebook SETTINGS has no {missing}")
@@ -154,9 +156,18 @@ def build(cells, config, target, scratch):
     for name in ("data", "observations", "model"):
         run_cell(cells[name], env, name)
     run_cell(cells["fit"], env, "fit", keep={"calibration_polynomial", "joint_likelihood"})
+    if "photometry_catalogue_z" in TOGGLES:  # bands projected at the catalogue z, as in 2d5edc9
+        model = env["joint_model"]
+        for obs in model.observations:
+            if getattr(obs, "_kind", None) == "photometry":
+                obs.free_z = False
+        for cached in ("_predict_jit_fn", "_predict_vmap_fn"):
+            model.__dict__.pop(cached, None)
     return env
 
 
+DROP = set()  # configuration settings the candidate notebook no longer has, from --drop
+TOGGLES = set()  # candidate behaviours switched back for attribution, from --toggle
 RENAME = {}  # candidate parameter name -> point name, from --rename point=candidate
 SHIFT = {}  # candidate parameter name -> added offset, from --shift candidate=offset
 
@@ -257,6 +268,8 @@ def cmd_worker(args):
     """One process, one checkout: evaluate the listed (configuration, target) jobs."""
     RENAME.update(rename_map(args.rename))
     SHIFT.update({k: float(v) for k, v in (i.split("=") for i in (args.shift or "").split(",") if i)})
+    DROP.update(i for i in (args.drop or "").split(",") if i)
+    TOGGLES.update(i for i in (args.toggle or "").split(",") if i)
     import jax
     import traceback
     import warnings
@@ -272,7 +285,8 @@ def cmd_worker(args):
         config, target = job.split(":")
         dest = out / config
         dest.mkdir(parents=True, exist_ok=True)
-        meta = dict(config=config, target=target, notebook=origin, **info)
+        meta = dict(config=config, target=target, notebook=origin, drop=sorted(DROP), toggle=sorted(TOGGLES),
+                    **info)
         started = time.perf_counter()
         try:
             env = build(cells, config, target, out / "scratch" / f"{config}-{target}")
@@ -310,6 +324,7 @@ def cmd_worker(args):
 def cmd_run(args):
     out = Path(args.out).resolve()  # workers run from PROJECT
     ceridwen = str(Path(args.ceridwen).resolve())
+    notebook = str(Path(args.notebook).resolve()) if Path(args.notebook).exists() else args.notebook
     out.mkdir(parents=True, exist_ok=True)
     configs = args.configs.split(",") if args.configs else list(CONFIGS)
     targets = args.targets.split(",") if args.targets else list(TARGETS)
@@ -321,8 +336,9 @@ def cmd_run(args):
     procs = []
     for i, shard in enumerate(s for s in shards if s):
         cmd = [sys.executable, str(Path(__file__).resolve()), "worker", "--ceridwen", ceridwen,
-               "--out", str(out), "--notebook", args.notebook, "--points", str(Path(args.points).resolve()),
-               "--jobs", ",".join(shard), "--rename", args.rename or "", "--shift", args.shift or ""]
+               "--out", str(out), "--notebook", notebook, "--points", str(Path(args.points).resolve()),
+               "--jobs", ",".join(shard), "--rename", args.rename or "", "--shift", args.shift or "",
+               "--drop", args.drop or "", "--toggle", args.toggle or ""]
         with record.open("a") as f:
             f.write("  worker: JAX_PLATFORMS=cpu JAX_ENABLE_X64=1 PYTHONPATH="
                     f"{shlex.quote(worker_env(ceridwen)['PYTHONPATH'])} {shlex.join(cmd)}\n")
@@ -529,7 +545,8 @@ def cmd_verify(args):
     if not args.skip_run:
         cmd_run(argparse.Namespace(ceridwen=ceridwen, out=str(out), notebook=args.notebook,
                                    points=str(HERE / "points.h5"), configs=None, targets=None,
-                                   jobs=args.jobs, rename=args.rename, shift=args.shift))
+                                   jobs=args.jobs, rename=args.rename, shift=args.shift, drop=None,
+                                   toggle=None))
     rows = compare_runs(reference_run, out)
     (out / "compare.json").write_text(json.dumps(rows, indent=1) + "\n")
     meta = next(json.loads(f.read_text()) for f in sorted(out.glob("*/*.json")))
@@ -571,6 +588,8 @@ def main():
         s.add_argument("--points", default=str(HERE / "points.h5"))
         s.add_argument("--rename", help="point=candidate parameter names, comma separated")
         s.add_argument("--shift", help="candidate=offset added to the point value, comma separated")
+        s.add_argument("--drop", help="settings the candidate notebook no longer has; run without them")
+        s.add_argument("--toggle", help="candidate behaviours to switch back: photometry_catalogue_z")
         if name == "run":
             s.add_argument("--configs")
             s.add_argument("--targets")

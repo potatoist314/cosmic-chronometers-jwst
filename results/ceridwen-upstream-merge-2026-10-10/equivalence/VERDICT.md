@@ -12,9 +12,10 @@ stay in the coordination directory `tmp/ceridwen-upstream-merge/equivalence/runs
 - Final merged commit: ceridwen `upstream-merge` 54a0d13, pinned by parent `ceridwen-upstream-merge` 9ec5a30
   ("pin 54a0d13, ledger and report"); the 9ec5a30 notebook is the fb7bc4c notebook used in the run.
 - production, elines_off, zevo_off, afe_grid, cal_order0: 10/10 targets bitwise (lnL and every output).
-- free_z: differs on all ten targets (|dlnL| 4.7-17.9), from upstream a7b613c: photometry re-projected at the sampled
-  z, and upstream's `SpectralProjector` for a sampled z.
-- baked_off: no switch on the merged code; the reference `baked_off` equals `production` to 5.8e-11 in lnL.
+- free_z: differs on all ten targets (|dlnL| 4.7-17.9), all from upstream a7b613c: photometry re-projected at the
+  sampled z (toggle: bitwise), and upstream's `SpectralProjector` (its fixed-z form and its redshift handling).
+- baked_off: no switch on the merged code; run without it, 10/10 targets equal the reference `baked_runtime=False` to
+  |dlnL| <= 5.8e-11 (rounding).
 - CPU timing ratio candidate/reference 0.887 (production lnL, batch 128).
 
 ## Method
@@ -160,27 +161,73 @@ stay in the coordination directory `tmp/ceridwen-upstream-merge/equivalence/runs
 | afe_grid | 10/10 | 10 bitwise | 0 | 0 | - |
 | cal_order0 | 10/10 | 10 bitwise | 0 | 0 | - |
 | free_z | 10/10 | 10 differs | 4.66-17.86 | photometry 6.7e-4-9.6e-4; spectrum 1.9e-3-1.7e-2 | upstream a7b613c |
-| baked_off | 0/10 | no switch | - | - | `baked_runtime` removed with the chain port |
+| baked_off | 10/10 | 10 rounding | 5.8e-11 | 1.1e-12 | none: `baked_runtime` switch removed with the chain port (b0f7130) |
 
-- `baked_off`: the fb7bc4c notebook has no `SETTINGS["baked_runtime"]` (harness: `KeyError: notebook SETTINGS has no
-  ['baked_runtime']`). The merged chain projector (port b0f7130 of local 6707c05/5f2c316) always uses the baked
-  lookups. In the reference, `baked_off` equals `production` to |dlnL| <= 5.8e-11 and relative outputs <= 1.1e-12,
-  and merged `production` equals reference `production` bitwise; `tests/test_baked_runtime.py` on upstream-merge
-  checks the baked lookups against the per-call sedpy_jax smoothers (ledger S-6707c05).
+- `baked_off`: the fb7bc4c notebook has no `SETTINGS["baked_runtime"]`; the merged chain projector (port b0f7130 of
+  local 6707c05/5f2c316, ledger S-6707c05) always uses the baked lookups. Run without the switch
+  (`harness.py run ... --configs baked_off --drop baked_runtime`, `runs/upstream-merge-54a0d13-baked-off/`) against
+  the reference's `baked_runtime=False`: 10/10 rounding, |dlnL| <= 5.8e-11, relative outputs <= 1.1e-12
+  (per-target rows below). Not an upstream change.
 - `free_z`: the notebook uses `projector="fft"` when zred is sampled (`projector="chain"` refuses a sampled z;
-  ledger S-c540bc7 adopt-upstream). The free_z outputs of this run equal those of `runs/interim-4b1f1a6-fftz/`
-  bitwise (all ten targets), so the 4b1f1a6 toggles above apply. Both differences come from upstream a7b613c
-  ("v3.0.0: ... sampled redshift for every observation type"):
+  ledger S-c540bc7 adopt-upstream). All of the difference comes from upstream a7b613c ("v3.0.0: ... sampled
+  redshift for every observation type"), in three parts, each checked on all ten targets:
   - Photometry (6.7e-4-9.6e-4): `SedModel` sets `obs.free_z = zred_is_free` on Photometry
-    (`ceridwen/model/model.py:515`) and `CSPBasis.predict` projects the bands at each sampled z
-    (`Photometry.predict_at_redshift`); 2d5edc9 keeps the bands at the catalogue z. Toggle `free_z = False` on
-    Photometry: reference photometry bitwise.
-  - Spectrum and most of |dlnL|: upstream `broadening.SpectralProjector` instead of the local chain and the local
-    free-z stretch (c540bc7). Toggle `projector="fft"` at fixed z (`elines_off`): 6.1e-4 / 1.0e-3 and |dlnL| 3.4 / 6.0
-    (M1_210210 / M5_238314), photometry bitwise; `projector="chain"` at fixed z: bitwise.
+    (`ceridwen/model/model.py:515`), and `CSPBasis.predict` projects the bands at each sampled z
+    (`Photometry.predict_at_redshift`); 2d5edc9 keeps the bands at the catalogue z. Toggle
+    (`--toggle photometry_catalogue_z`, `runs/upstream-merge-54a0d13-photz-toggle/`): photometry equals the
+    reference bitwise on all ten targets.
+  - Spectrum, upstream projector (row 0, dv = 0): upstream `broadening.SpectralProjector` in place of the local chain.
+    At dv = 0 the sampled-z fft projector equals the fixed-z fft projector (|dlnL| <= 3e-11, spectrum <= 7.4e-11), and the
+    fixed-z fft projector differs from the reference by |dlnL| 0.13-4.70. The same projector at fixed z
+    (`runs/upstream-merge-54a0d13-fft-fixedz/`, notebook `fb7bc4c-fft.ipynb` = fb7bc4c with `projector="fft"`) changes
+    all five fixed-z configurations (table below; photometry bitwise); `projector="chain"` gives them bitwise.
+  - Spectrum, redshift handling (dv != 0): upstream `SpectralProjector(zred_range=)` reads the model at
+    wave_log (1+z_ref)/(1+z) before the instrument; local c540bc7 stretches the prediction baked at the setup z.
+    This is the growth from the row-0 |dlnL| to the full |dlnL| with the photometry toggled (column "dlnL, toggle").
+    Ledger S-c540bc7 compares both with a projector rebuilt at each z: local stretch rms 3.5e-4-5.2e-4, upstream
+    rms 1.0e-5-1.9e-5.
   - The calibrated spectrum and P(x) maxima (up to 0.88 and 0.45) are in masked pixels, where the polynomial is
     evaluated outside the fitted pixels. On fitted pixels, normalised by the fitted-pixel maximum
     (`free_z_fitted_pixels.py`): spectrum 8.1e-4-2.2e-3, calibrated spectrum 7.5e-4-2.5e-3, P(x) 1.3e-4-1.4e-3.
+
+| target | dlnL final | photometry final | photometry, toggle | dlnL, toggle | spectrum, toggle | row 0: dlnL fft sampled-z vs fixed-z | row 0: dlnL fixed-z fft vs reference |
+|---|---|---|---|---|---|---|---|
+| M1_210210 | 15.93 | 9.6e-04 | 0e+00 | 15.41 | 6.4e-03 | 0e+00 | 2.32 |
+| M8_150848 | 6.07 | 8.3e-04 | 0e+00 | 6.02 | 1.7e-02 | 0e+00 | 1.10 |
+| M5_238314 | 17.86 | 7.7e-04 | 0e+00 | 17.72 | 1.1e-02 | 0e+00 | 4.70 |
+| M3_120308 | 7.88 | 7.0e-04 | 0e+00 | 7.68 | 6.5e-03 | 0e+00 | 0.36 |
+| M2_134021 | 4.74 | 6.7e-04 | 0e+00 | 4.26 | 1.9e-03 | 0e+00 | 0.96 |
+| M7_146213 | 13.34 | 8.3e-04 | 0e+00 | 12.76 | 1.1e-02 | 0e+00 | 2.76 |
+| M3_117010 | 12.74 | 8.4e-04 | 0e+00 | 12.07 | 1.0e-02 | 0e+00 | 0.13 |
+| M4_107370 | 7.24 | 8.1e-04 | 0e+00 | 6.40 | 1.0e-02 | 3e-11 | 0.43 |
+| M14_37219 | 9.41 | 9.3e-04 | 0e+00 | 8.65 | 5.5e-03 | 0e+00 | 0.65 |
+| M8_161113 | 4.66 | 8.0e-04 | 0e+00 | 4.70 | 1.3e-02 | 0e+00 | 0.59 |
+
+| config (fixed z, `projector="fft"`) | targets | verdict | abs dlnL range | spectrum | photometry |
+|---|---|---|---|---|---|
+| production | 10/10 | 10 differs | 0.60-2.48 | 6.1e-04-2.0e-03 | 0e+00 |
+| elines_off | 10/10 | 10 differs | 0.95-6.00 | 6.1e-04-2.0e-03 | 0e+00 |
+| zevo_off | 10/10 | 10 differs | 0.76-3.79 | 6.2e-04-2.7e-03 | 0e+00 |
+| afe_grid | 10/10 | 10 differs | 0.60-2.48 | 6.1e-04-2.0e-03 | 0e+00 |
+| cal_order0 | 10/10 | 10 differs | 1.22-17.65 | 6.1e-04-2.0e-03 | 0e+00 |
+
+<details><summary>baked_off per target (`runs/upstream-merge-54a0d13-baked-off/`)</summary>
+
+| config | target | verdict | max abs dlnL | lnL floor | spectrum | photometry | spectrum calibrated | calibration polynomial | calibration coeffs | line fluxes | photometry with lines | same obs/lines | fast path |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| baked_off | M1_210210 | rounding | 2.91e-11 | 1.23e-04 | 1.09e-15 | 0.00e+00 | 3.82e-13 | 1.95e-13 | 6.91e-15 | 2.24e-13 | 3.66e-17 | True/True | True |
+| baked_off | M8_150848 | rounding | 2.91e-11 | 2.23e-04 | 1.08e-15 | 0.00e+00 | 8.54e-14 | 8.48e-14 | 2.00e-14 | 9.38e-15 | 3.22e-17 | True/True | True |
+| baked_off | M5_238314 | rounding | 2.91e-11 | 1.17e-04 | 1.31e-15 | 0.00e+00 | 1.58e-14 | 1.52e-14 | 5.73e-15 | 7.66e-14 | 4.14e-17 | True/True | True |
+| baked_off | M3_120308 | rounding | 5.82e-11 | 1.73e-04 | 1.19e-15 | 0.00e+00 | 4.09e-14 | 4.28e-14 | 1.40e-14 | 1.08e-12 | 9.85e-16 | True/True | True |
+| baked_off | M2_134021 | rounding | 2.91e-11 | 7.53e-05 | 1.15e-15 | 0.00e+00 | 2.97e-14 | 2.76e-14 | 1.08e-14 | 1.48e-13 | 4.04e-17 | True/True | True |
+| baked_off | M7_146213 | rounding | 2.91e-11 | 1.42e-04 | 1.14e-15 | 0.00e+00 | 5.53e-14 | 5.86e-14 | 1.74e-14 | 4.25e-15 | 2.46e-17 | True/True | True |
+| baked_off | M3_117010 | rounding | 2.91e-11 | 1.76e-04 | 1.21e-15 | 0.00e+00 | 2.85e-14 | 2.90e-14 | 1.08e-14 | 1.85e-14 | 3.74e-17 | True/True | True |
+| baked_off | M4_107370 | rounding | 2.91e-11 | 1.55e-04 | 1.44e-15 | 0.00e+00 | 1.69e-14 | 1.53e-14 | 8.04e-15 | 8.24e-14 | 6.07e-17 | True/True | True |
+| baked_off | M14_37219 | rounding | 2.91e-11 | 1.46e-04 | 1.23e-15 | 0.00e+00 | 8.88e-14 | 8.83e-14 | 1.82e-14 | 4.64e-14 | 3.50e-17 | True/True | True |
+| baked_off | M8_161113 | rounding | 2.91e-11 | 1.46e-04 | 1.22e-15 | 0.00e+00 | 2.28e-14 | 2.21e-14 | 1.63e-14 | 1.61e-13 | 2.07e-17 | True/True | True |
+
+</details>
+
 - `runs/upstream-merge-b61e998/`: the integrator's harness run (03:28, their parent worktree, timing 0.914) and a
   second run of the same code into the same directory (03:37, merge-equivalence; its timing step failed on a
   relative `--ceridwen` path, since fixed). Same verdicts as above. `verify` now refuses an existing label.
