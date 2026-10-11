@@ -147,6 +147,9 @@ def build(cells, config, target, scratch):
     edits = dict(CONFIGS[config])
     if edits.pop("_fixed_z", False):
         env["PRIORS"].pop("zred")
+    missing = sorted(set(edits) - set(env["SETTINGS"]))
+    if missing:  # the notebook no longer has this switch
+        raise KeyError(f"notebook SETTINGS has no {missing}")
     env["SETTINGS"].update(edits)
     for name in ("data", "observations", "model"):
         run_cell(cells[name], env, name)
@@ -519,9 +522,12 @@ def cmd_verify(args):
     """Run every point under a checkout, compare with the reference run, time the
     production lnL against the reference checkout, and write the verdict section."""
     out = HERE / "runs" / args.label
+    if out.exists() and not args.skip_run:
+        raise SystemExit(f"{out} exists: choose another --label")  # two runs once shared one directory
+    ceridwen = str(Path(args.ceridwen).resolve())
     reference_run, reference_ceridwen = Path(args.reference_run), Path(args.reference_ceridwen)
     if not args.skip_run:
-        cmd_run(argparse.Namespace(ceridwen=args.ceridwen, out=str(out), notebook=args.notebook,
+        cmd_run(argparse.Namespace(ceridwen=ceridwen, out=str(out), notebook=args.notebook,
                                    points=str(HERE / "points.h5"), configs=None, targets=None,
                                    jobs=args.jobs, rename=args.rename, shift=args.shift))
     rows = compare_runs(reference_run, out)
@@ -529,7 +535,7 @@ def cmd_verify(args):
     meta = next(json.loads(f.read_text()) for f in sorted(out.glob("*/*.json")))
     timed = None
     if args.timing and any(r["status"] == "ok" and r["config"] == "production" for r in rows):
-        timed = timing(str(reference_ceridwen), args.ceridwen, (NOTEBOOK, args.notebook), "production",
+        timed = timing(str(reference_ceridwen), ceridwen, (NOTEBOOK, args.notebook), "production",
                        "M1_210210", 128, 20, 5, out / "scratch-timing", args.rename or "",
                        args.shift or "")
         (out / "timing.json").write_text(json.dumps(timed, indent=1) + "\n")
