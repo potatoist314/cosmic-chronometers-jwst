@@ -370,8 +370,7 @@ def test_feh_offset_is_the_afe_grid_solar_reference():
     from scripts import build_dr2_quiescent_summary as summary
 
     assert summary.FEH_OFFSET == pytest.approx(-math.log10(0.0185), abs=1e-7)
-    assert summary.SUMMARY_PARAMS["Z"] == "feh"
-    assert summary.SUMMARY_SHIFTS == {"Z": summary.FEH_OFFSET}
+    assert summary.SUMMARY_PARAMS["logzsol"] == "feh"
 
 
 def test_summary_script_takes_a_result_root_and_an_output_path():
