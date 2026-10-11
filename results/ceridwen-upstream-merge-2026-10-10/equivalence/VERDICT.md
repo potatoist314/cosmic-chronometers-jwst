@@ -7,16 +7,19 @@ Committed copy: parent branch `ceridwen-upstream-merge-equivalence` (origin),
 `results/ceridwen-upstream-merge-2026-10-10/equivalence/` (harness.py, VERDICT.md). Run outputs
 stay in the coordination directory `tmp/ceridwen-upstream-merge/equivalence/runs/`.
 
-## Current verdict (final: ceridwen 54a0d13, parent 9ec5a30)
+## Current verdict (final: ceridwen 729fba6, parent 4ca0b64)
 
-- Final merged commit: ceridwen `upstream-merge` 54a0d13, pinned by parent `ceridwen-upstream-merge` 9ec5a30
-  ("pin 54a0d13, ledger and report"); the 9ec5a30 notebook is the fb7bc4c notebook used in the run.
+- Final merged commit: ceridwen `upstream-merge` 729fba6 ("Floor blackjax at 1.6.dev98"), pinned by parent
+  `ceridwen-upstream-merge` b891d1a and 4ca0b64; the notebook is the fb7bc4c notebook. Its `ceridwen/` package tree is
+  that of 54a0d13 (d2bcdd9); every 729fba6 run below equals the matching 54a0d13 run bitwise.
 - production, elines_off, zevo_off, afe_grid, cal_order0: 10/10 targets bitwise (lnL and every output).
-- free_z: differs on all ten targets (|dlnL| 4.7-17.9), all from upstream a7b613c: photometry re-projected at the
-  sampled z (toggle: bitwise), and upstream's `SpectralProjector` (its fixed-z form and its redshift handling).
 - baked_off: no switch on the merged code; run without it, 10/10 targets equal the reference `baked_runtime=False` to
   |dlnL| <= 5.8e-11 (rounding).
-- CPU timing ratio candidate/reference 0.887 (production lnL, batch 128).
+- free_z: differs on all ten targets (|dlnL| 4.7-17.9), all from upstream a7b613c: photometry re-projected at the
+  sampled z (toggle: bitwise on all ten), and upstream's `SpectralProjector` (its fixed-z form and its redshift
+  handling).
+- CPU timing ratio candidate/reference 0.832 (production lnL, M1_210210, batch 128, 40 interleaved rounds; candidate
+  faster in 35 of 40 rounds).
 
 ## Method
 
@@ -138,7 +141,7 @@ stay in the coordination directory `tmp/ceridwen-upstream-merge/equivalence/runs
     photometry bitwise; the same config with `projector="chain"` is bitwise. Ledger rows S-proj and S-c540bc7
     compare both projectors with a dense convolution.
 
-## upstream-merge-54a0d13: final, ceridwen 54a0d13 with parent fb7bc4c notebook (2026-10-11 03:48)
+## upstream-merge-54a0d13: ceridwen 54a0d13 with parent fb7bc4c notebook (2026-10-11 03:48; tables hold for final 729fba6)
 
 - ceridwen `upstream-merge` 54a0d13 ("Declare sedpy-jax: Spectrum(projector="chain") imports its grid helpers");
   notebook from parent `ceridwen-upstream-merge` fb7bc4c ("Ceridwen upstream merge: pin b61e998, production notebook
@@ -308,3 +311,27 @@ stay in the coordination directory `tmp/ceridwen-upstream-merge/equivalence/runs
 | cal_order0 | M8_161113 | bitwise | 0.00e+00 | 1.43e-04 | 0.00e+00 | 0.00e+00 | 0.00e+00 | 0.00e+00 | 0.00e+00 | 0.00e+00 | 0.00e+00 | True/True | True |
 
 </details>
+
+## upstream-merge-729fba6: final, ceridwen 729fba6 with parent b891d1a notebook (2026-10-11 04:44)
+
+- ceridwen 729fba6 changes only `pyproject.toml` from 54a0d13 (blackjax floor 1.6.dev98); package tree d2bcdd9 in both.
+  Parent b891d1a pins 729fba6; 4ca0b64 changes `scripts/bootstrap_vast_ai.sh` and REPORT.md only. Notebook blob
+  equal to fb7bc4c.
+- Main run `runs/upstream-merge-729fba6/` (run by the integrator with this harness, 04:27: `harness.py verify
+  --ceridwen <integrator parent worktree>/ceridwen --label upstream-merge-729fba6 --notebook
+  b891d1a:notebooks/ceridwen_integrated_photometry_spectra.ipynb --jobs 3 --rename Z=logzsol --shift
+  logzsol=1.7328282715969863`; job metadata commit 729fba6): production, elines_off, zevo_off, afe_grid, cal_order0
+  10/10 bitwise; free_z 10/10 differs. lnL and all outputs equal the 54a0d13 run bitwise for every configuration.
+- Attribution runs on 729fba6 (`../wt-equiv-merge` at 729fba6, notebook `b891d1a:...`): `runs/upstream-merge-729fba6-baked-off/`
+  (`--configs baked_off --drop baked_runtime`): 10/10 rounding, |dlnL| <= 5.8e-11, relative outputs <= 1.1e-12;
+  `runs/upstream-merge-729fba6-photz-toggle/` (`--configs free_z --toggle photometry_catalogue_z`, `decompose.py`);
+  `runs/upstream-merge-729fba6-fft-fixedz/` (`b891d1a-fft.ipynb`, the fixed-z configurations with `projector="fft"`).
+  Each equals the matching 54a0d13 run bitwise, so the per-target tables and attribution in the 54a0d13 section
+  hold for 729fba6.
+- CPU timing (`harness.py timing --reference ../wt-equiv-2d5edc9 --candidate ../wt-equiv-merge --candidate-notebook
+  b891d1a:... --config production --target M1_210210 --batch 128 --rounds 40 --calls 5 --rename Z=logzsol --shift
+  logzsol=1.7328282715969863`, `runs/upstream-merge-729fba6-timing/timing.json`): reference 196.1 ms (quartiles
+  179.8-217.3), candidate 163.2 ms (139.9-202.6) per batch; **ratio 0.832**; per-round ratio median 0.823, candidate
+  faster in 35/40 rounds; both return the same lnL sum. The integrator's verify timing on 729fba6: 0.785 (18/20
+  rounds faster). Earlier, same package code: 0.887 (54a0d13), 0.914 (b61e998), 0.988 (4b1f1a6, draft notebook);
+  reference against itself 0.971. Machine load average 15-90 during these measurements.
