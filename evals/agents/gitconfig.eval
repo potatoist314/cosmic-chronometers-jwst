@@ -1,0 +1,14 @@
+[user]
+	name = potatoist314
+	email = liuhaoo3.14@gmail.com
+[init]
+	defaultBranch = main
+[core]
+	hooksPath = /dev/null
+[url "DISABLED/"]
+	pushInsteadOf = https://
+	pushInsteadOf = http://
+	pushInsteadOf = git@
+	pushInsteadOf = ssh://
+	pushInsteadOf = file://
+	pushInsteadOf = /

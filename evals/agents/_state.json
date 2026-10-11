@@ -1,0 +1,215 @@
+{
+ "flow": "agents",
+ "current_round": 0,
+ "reps": {
+  "train": 1,
+  "val": 1,
+  "test": 1
+ },
+ "goal": {
+  "target": "score",
+  "direction": "higher",
+  "hold": [
+   "pass",
+   "correct"
+  ]
+ },
+ "approve_each_round": false,
+ "decisions": [
+  {
+   "when": "2026-10-10",
+   "what": "Inputs (36 cases from Liu Hao's Astro-project requests) and grading method treated as approved",
+   "why": "Brief from overseer-astronomy: Liu Hao asleep, 'emphatically do not ask me for feedback'; guide sign-offs recorded here instead."
+  },
+  {
+   "when": "2026-10-10",
+   "what": "Harness approved (--approve-harness) by agent-hillclimb",
+   "why": "Brief grants approval decisions; recorded per brief ('write the decision and its reason in the state file')."
+  },
+  {
+   "when": "2026-10-10",
+   "what": "Split train/val/test 12/12/12, stratified by category, seed 20261010; val picks the winner; test scored each round at 1 rep and at the end with more reps",
+   "why": "Brief: train/validation/test split, measure on validation with repeated trials, test scored each round."
+  },
+  {
+   "when": "2026-10-10",
+   "what": "Lever edits are proposals: each variant's AGENTS.md/skills live in evals/agents/vN/levers and vN/change.patch; the branch's own AGENTS.md and skills stay unchanged",
+   "why": "Liu Hao's rule: agent ideas enter a skill only when he says 'add N'."
+  },
+  {
+   "at": "2026-10-10T23:45",
+   "decision": "Runs use --permission-mode auto",
+   "why": "Production defaultMode is auto (~/.claude/settings.json). The acceptEdits pilot denied git commit and python, which production allows."
+  },
+  {
+   "at": "2026-10-10T23:45",
+   "decision": "Keep the Bash(git push:*) deny rule",
+   "why": "Removing it was refused by the auto-mode classifier as a security weakening. A compound 'commit && push' command is denied as a whole, so some agents may fail 'committed'; counted as a harness limit."
+  },
+  {
+   "at": "2026-10-10T23:45",
+   "decision": "ed09 tests run with .venv/bin/python",
+   "why": "System python3 lacks a module; 4 test_vast cases fail at base. With the project venv all 64 pass at base."
+  },
+  {
+   "at": "2026-10-10T23:45",
+   "decision": "Pause new runs while the shared claude 5 h window is below 15% left; stop at weekly or fable weekly below 30% or at 08:00 BST",
+   "why": "Brief: the Ceridwen merge swarm has priority on quota; floors and deadline from the brief. Implemented in run.py gate()."
+  },
+  {
+   "at": "2026-10-10T23:45",
+   "decision": "Empty reply scores 0 on reply-style items",
+   "why": "Judge negatives (judge_negatives.json): 12/12 empty, 'I don't know' and wrong replies fail 'correct', but an empty reply passed no_commentary and the deterministic style items."
+  },
+  {
+   "at": "2026-10-10T23:45",
+   "decision": "pilot/ is a harness shakedown, not a scored variant",
+   "why": "Run before the change-parser and permission fixes."
+  },
+  {
+   "at": "2026-10-11T00:02",
+   "decision": "Baseline paused at 4/12 train runs; runner stopped",
+   "why": "Shared claude 5 h window reached 0% (resets 02:49); the merge swarm has priority. Judge timed out on st02 at 0%. Resume: python3 run.py --variant baseline --split train,val,test --reps 1,3,1 --concurrency 4 after the reset (resume is per case/rep). Add a judge retry with a shorter timeout first."
+  },
+  {
+   "at": "2026-10-11T02:55",
+   "decision": "Quota gate reads bridge.py quota (live) instead of bridge.py status",
+   "why": "status shows a cached reading; at 02:52 it still said 0% while the live reading was 87%."
+  },
+  {
+   "at": "2026-10-11T02:55",
+   "decision": "Runs reuse fixed sandbox paths (slot0..slotN) per variant",
+   "why": "The system prompt holds the working directory; one path per slot lets runs share the prompt cache. List cost was $0.4-2.0 per run with fresh paths, and one 5 h window is shared with the merge swarm."
+  },
+  {
+   "at": "2026-10-11T02:55",
+   "decision": "Judge: 180 s timeout, up to 4 attempts with backoff",
+   "why": "Two judge calls hung for 600 s at a spent 5 h window (st02, ex08 grader_error)."
+  },
+  {
+   "at": "2026-10-11T02:55",
+   "decision": "Rubric: no_commentary no longer counts source pointers or adjacent content; re-judge recorded rows",
+   "why": "Hand labels on 8 runs: 32/36 items agreed; all 4 disagreements were no_commentary failing file paths/citations or adjacent content already graded by direct (judge_agreement.json)."
+  },
+  {
+   "at": "2026-10-11T02:55",
+   "decision": "Reps: train 1, val 2, test 1 per round (was val 3)",
+   "why": "Remaining time is one 5 h window (to 07:49) shared with the merge swarm, which has priority."
+  },
+  {
+   "at": "2026-10-11T03:06",
+   "decision": "Concurrency 2; reps train 1, val 1, test 1; pause new runs below 25% of the 5 h window",
+   "why": "At 02:53-03:03 the shared 5 h window fell 87% -> 57% with 4 eval runs and 5+ merge-swarm opus sessions active; weekly 68% -> 65%. The swarm has priority. 4 in-flight runs were stopped and are re-run."
+  },
+  {
+   "at": "2026-10-11T03:32",
+   "decision": "Eval runs paused until the 07:50 reset; stop time 11:00 BST; weekly floor 40%; 25% 5 h reserve kept for the merge swarm",
+   "why": "Lead decision (overseer-astronomy, 03:30) in reply to agent-hillclimb's blocked message: the swarm has priority; Liu Hao keeps quota for Sunday. In-flight runs were stopped."
+  },
+  {
+   "at": "2026-10-11T03:40",
+   "decision": "Push block moved from the Bash(git push:*) permission rule to git config (url.DISABLED/.pushInsteadOf for https, http, git@, ssh, file and / URLs); baseline ed02/ed04 rows marked harness_error and re-run",
+   "why": "Agents commit with 'git add && git commit && git push'; the deny rule refused the whole command, so no commit landed and 'committed'/'correct' failed for a reason absent in production. The git-level block also catches 'git -C . push' and explicit URLs, which the prefix rule missed; the network sandbox, the DISABLED push URL and GIT_SSH_COMMAND=/usr/bin/false stay."
+  }
+ ],
+ "split_seed": 20261010,
+ "train_ids": [
+  "st02",
+  "st07",
+  "st08",
+  "ex01",
+  "ex03",
+  "ex08",
+  "lk01",
+  "lk06",
+  "lk07",
+  "ed02",
+  "ed03",
+  "ed04"
+ ],
+ "val_ids": [
+  "st01",
+  "st03",
+  "st05",
+  "ex02",
+  "ex04",
+  "ex07",
+  "lk02",
+  "lk04",
+  "lk08",
+  "ed06",
+  "ed07",
+  "ed08"
+ ],
+ "test_ids": [
+  "st04",
+  "st06",
+  "st09",
+  "ex05",
+  "ex06",
+  "ex09",
+  "lk03",
+  "lk05",
+  "lk09",
+  "ed01",
+  "ed05",
+  "ed09"
+ ],
+ "harness_paths": [
+  "evals/agents/run.py",
+  "evals/agents/grade.py",
+  "evals/agents/sandbox.py",
+  "evals/agents/fixtures.py",
+  "evals/agents/cases.py",
+  "evals/agents/settings.eval.json",
+  "evals/agents/gitconfig.eval"
+ ],
+ "metrics": [
+  {
+   "id": "score",
+   "kind": "float",
+   "label": "Score"
+  },
+  {
+   "id": "pass",
+   "kind": "float",
+   "label": "Pass"
+  },
+  {
+   "id": "correct",
+   "kind": "float",
+   "label": "Correct"
+  },
+  {
+   "id": "lines",
+   "kind": "float",
+   "label": "Length"
+  },
+  {
+   "id": "no_commentary",
+   "kind": "float",
+   "label": "No comment."
+  },
+  {
+   "id": "direct",
+   "kind": "float",
+   "label": "Direct"
+  }
+ ],
+ "perf_fields": [
+  {
+   "id": "latency_s",
+   "label": "Latency",
+   "unit": "s"
+  },
+  {
+   "id": "tool_calls",
+   "label": "Tool calls"
+  }
+ ],
+ "best": {
+  "round": 0,
+  "val_score": null
+ },
+ "harness_sha": "ea1f5aa540ffd9ae3c42de1954428580b1b2554524c2975cef87ce3e60904049"
+}

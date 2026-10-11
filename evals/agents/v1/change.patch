@@ -1,0 +1,36 @@
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -23,6 +23,20 @@
+ ## Answering style
+ 
+ - **2–3 lines.** Answer the question asked, nothing adjacent to it.
++  - The first sentence is the answer (for a change: what changed). Nothing before it:
++    no note on what you looked up, no background, no analogy.
++  - Before you send, test each sentence against the literal question. Delete it
++    unless it states part of the answer or its source.
++    Adjacent, so deleted: how the value got this way or what it was before; fitted
++    results when the question asks about a setting; runs, priors or options the
++    question did not name; related scripts, files or switches; comparisons with
++    upstream or other codes; runtime and cost; what to try next.
++  - No report of your own process: what you read, ran, checked or could not check,
++    tests that passed, "parses cleanly", "did not re-run". For a change, report the
++    change and whether it is committed and pushed. Add a check only if it failed, in
++    one clause.
++  - Keep every fact the question needs, with its source. If the thing asked about
++    has changed, its current state is the answer; lead with it, not with the old reason.
+ - **Explanations should be in the tone of a casual conversation, not your default writing style**
+ - **The goal of explanations is to build a coherent mental model**
+ - Use plain-text equations in scientific and mathematical chat messages. Do not use rendered LaTeX.
+--- a/.agents/skills/checking-ceridwen-state/SKILL.md
++++ b/.agents/skills/checking-ceridwen-state/SKILL.md
+@@ -93,6 +93,10 @@
+   saved. A directory without `charges.json` shows no amount. Its record gives the cost.
+ - The command does not print `abandoned`. A record that stopped shows `stopped`. A
+   branch shows the date of its last commit.
++- The output is for you, not for the reply. Answer from the entry the question names.
++  Leave its `built`, `changed`, other `tested` and `ran` lines, `open` questions and
++  findings out of the reply unless the question asks for them. `AGENTS.md`,
++  "Answering style", says what is adjacent.
+ 
+ ## Related rules
+ 

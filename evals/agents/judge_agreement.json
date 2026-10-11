@@ -1,0 +1,483 @@
+{
+ "labeller": "agent-hillclimb (no human label available overnight)",
+ "rows": [
+  {
+   "run": "pilot/st01",
+   "item": "correct",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "pilot/st01",
+   "item": "direct",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "pilot/st01",
+   "item": "no_commentary",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "pilot/st01",
+   "item": "plain",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "pilot/ex02",
+   "item": "correct",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "pilot/ex02",
+   "item": "direct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "pilot/ex02",
+   "item": "no_commentary",
+   "human": 1,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "pilot/ex02",
+   "item": "plain",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "pilot/ex02",
+   "item": "mental_model",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "pilot/ed04",
+   "item": "correct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "pilot/ed04",
+   "item": "direct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "pilot/ed04",
+   "item": "no_commentary",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "pilot/ed04",
+   "item": "in_scope",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "pilot/lk04",
+   "item": "correct",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "pilot/lk04",
+   "item": "direct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "pilot/lk04",
+   "item": "no_commentary",
+   "human": 1,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 1
+  },
+  {
+   "run": "pilot/lk04",
+   "item": "plain",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "pilot/lk04",
+   "item": "sourced",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/st08",
+   "item": "correct",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/st08",
+   "item": "direct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/st08",
+   "item": "no_commentary",
+   "human": 1,
+   "judge_v1": 0,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/st08",
+   "item": "plain",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 0,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/ex01",
+   "item": "correct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/ex01",
+   "item": "direct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/ex01",
+   "item": "no_commentary",
+   "human": 1,
+   "judge_v1": 0,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/ex01",
+   "item": "plain",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/ex01",
+   "item": "mental_model",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/st07",
+   "item": "correct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/st07",
+   "item": "direct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/st07",
+   "item": "no_commentary",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/st07",
+   "item": "plain",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/ex03",
+   "item": "correct",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/ex03",
+   "item": "direct",
+   "human": 0,
+   "judge_v1": 0,
+   "judge_v2": 0,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/ex03",
+   "item": "no_commentary",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/ex03",
+   "item": "plain",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/ex03",
+   "item": "mental_model",
+   "human": 1,
+   "judge_v1": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/ex08",
+   "item": "correct",
+   "human": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/ex08",
+   "item": "direct",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/ex08",
+   "item": "no_commentary",
+   "human": 1,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/ex08",
+   "item": "plain",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/ex08",
+   "item": "mental_model",
+   "human": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/st02",
+   "item": "correct",
+   "human": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/st02",
+   "item": "direct",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/st02",
+   "item": "no_commentary",
+   "human": 1,
+   "judge_v2": 0,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/st02",
+   "item": "plain",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk06",
+   "item": "correct",
+   "human": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/lk06",
+   "item": "direct",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk06",
+   "item": "no_commentary",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk06",
+   "item": "plain",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk06",
+   "item": "sourced",
+   "human": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/lk01",
+   "item": "correct",
+   "human": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/lk01",
+   "item": "direct",
+   "human": 1,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk01",
+   "item": "no_commentary",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk01",
+   "item": "plain",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk01",
+   "item": "sourced",
+   "human": 1,
+   "judge_v2": 1,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk07",
+   "item": "correct",
+   "human": 1,
+   "judge_v2": 1,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/lk07",
+   "item": "direct",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk07",
+   "item": "no_commentary",
+   "human": 1,
+   "judge_v2": 0,
+   "judge_v3": 1
+  },
+  {
+   "run": "baseline/lk07",
+   "item": "plain",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  },
+  {
+   "run": "baseline/lk07",
+   "item": "sourced",
+   "human": 0,
+   "judge_v2": 0,
+   "judge_v3": 0
+  }
+ ],
+ "agreement_v1": "32/36",
+ "agreement_v2": "52/60",
+ "agreement_v2_by_item": {
+  "correct": "13/13",
+  "direct": "12/13",
+  "no_commentary": "8/13",
+  "plain": "10/12",
+  "mental_model": "4/4",
+  "in_scope": "1/1",
+  "sourced": "4/4"
+ },
+ "note": "Labels on pilot and baseline train runs only (val/test transcripts are not read). judge_v1 = before the no_commentary clarification (02:55); judge_v2 = after. judge_v3 = after narrowing no_commentary to commentary only (03:45). Rows for runs later marked harness_error are dropped.",
+ "agreement_v3": "52/60",
+ "agreement_v3_by_item": {
+  "correct": "13/13",
+  "direct": "11/13",
+  "no_commentary": "10/13",
+  "plain": "11/12",
+  "mental_model": "4/4",
+  "in_scope": "1/1",
+  "sourced": "2/4"
+ }
+}

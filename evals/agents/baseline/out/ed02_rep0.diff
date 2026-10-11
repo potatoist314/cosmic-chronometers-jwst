@@ -1,0 +1,14 @@
+
+diff --git a/notebooks/ceridwen_integrated_photometry_spectra.ipynb b/notebooks/ceridwen_integrated_photometry_spectra.ipynb
+index 57a9777..cbcc3e8 100644
+--- a/notebooks/ceridwen_integrated_photometry_spectra.ipynb
++++ b/notebooks/ceridwen_integrated_photometry_spectra.ipynb
+@@ -113,7 +113,7 @@
+     "    \"calibration_fit_constant\": True,  # a_0 handles spectrum normalisation; its width is set separately\n",
+     "    \"zred_half_width\": 0.1,  # zred prior: catalogue z +/- this\n",
+     "    \"sigma_clip\": 3.0,  # sigma_smooth prior: DR2 sigma +/- this many DR2 errors\n",
+-    "    \"birth_cloud_dust\": False,  # True: power-law optical depth dust_ratio * diffuse_tau_noll, index -1, on stars younger than 10 Myr (FSPS dust1)\n",
++    "    \"birth_cloud_dust\": True,  # True: power-law optical depth dust_ratio * diffuse_tau_noll, index -1, on stars younger than 10 Myr (FSPS dust1)\n",
+     "    \"metallicity_evolution\": True,  # True: Z rises with formed mass, Gallazzi+26 Table 1; Z is then log10 of the formed-mass-weighted metallicity\n",
+     "    \"baked_runtime\": True,  # precomputed smoothing and redshift lookups; False: sedpy_jax smoothers and jnp.interp, same likelihood\n",
+     "    \"sampler\": {\"num_live\": 500, \"num_inner_steps\": 65, \"num_delete\": 100, \"logZ_tol\": -5.0},\n",
