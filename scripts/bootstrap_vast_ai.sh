@@ -174,7 +174,8 @@ catalog = Table.read(catalog_path)
 photometry = Table.read(photometry_path)
 import os
 grid_path = os.environ.get("CERIDWEN_GRID_PATH") or fetch_grid("amist_c3k_hr_krou_afe")
-ssp = SSPDataAfe.load(grid_path)
+# As the production notebook: the nebular grid records no Z_sun (grid attr fsps_kwargs_json: 0.0185).
+ssp = SSPDataAfe.load(grid_path, zsun=0.0185, axis_meaning="feh")
 
 if len(catalog) != 1988:
     raise SystemExit(f"Expected 1988 catalogue rows, found {len(catalog)}")

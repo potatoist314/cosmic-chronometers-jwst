@@ -18,6 +18,9 @@
   - `notebooks/ceridwen_integrated_photometry_spectra.ipynb`;
   - `scripts/per_galaxy_diagnostics.py` and `scripts/plot_prior_kl.py`;
   - 4 parent tests that pin notebook text.
+- Later parent commits: the pin to 729fba6; the `scripts/bootstrap_vast_ai.sh` grid probe loads with
+  `zsun=0.0185, axis_meaning="feh"` (as the notebook), because the merged code refuses the nebular
+  grid without them.
 - Production notebook on the merged API:
 
 | item | before (2d5edc9) | merged |
@@ -99,14 +102,14 @@ The same failures occur on b61e998.
 - Parameter block: `instrument R_fwhm = 2500; projector 'chain'; stellar sigma_gal sampled as
   sigma_smooth; photometry broadened: False`.
 
-## Equivalence verdict: ceridwen 54a0d13, notebook fb7bc4c, vs speedups 2d5edc9
+## Equivalence verdict: ceridwen 729fba6, notebook b891d1a, vs speedups 2d5edc9
 
 - Harness and method: `tmp/ceridwen-upstream-merge/equivalence/` (`harness.py`, `VERDICT.md`). The
   merge-equivalence worker committed both on parent branch `ceridwen-upstream-merge-equivalence`.
-- Run: `equivalence/runs/upstream-merge-54a0d13/`.
+- Run: `equivalence/runs/upstream-merge-729fba6/`.
 - Inputs: 10 targets × 21 points (max-L sample + 20 posterior draws); CPU, float64.
 - Mapping: `--rename Z=logzsol --shift logzsol=1.7328282715969863`.
-- fb7bc4c is the notebook in this branch's final commit.
+- The notebook is unchanged since fb7bc4c.
 
 | config | targets | verdict | max \|dlnL\| | max rel output diff |
 |---|---|---|---|---|
@@ -123,8 +126,7 @@ The same failures occur on b61e998.
   - upstream's `SpectralProjector` is used for a sampled z (LEDGER row c540bc7: upstream rms
     1.0e-5 to 1.9e-5, local 3.5e-4 to 5.2e-4, each against a projector rebuilt at that z).
   - Per-target max |dlnL| is 4.7 to 17.9 and correlates with |dv| (0.83–0.97).
-- Every saved output array of this run equals the b61e998 run (`runs/upstream-merge-b61e998/`;
-  60 of 60 files).
+- Every saved output array of this run equals the 54a0d13 and b61e998 runs (60 of 60 files each).
 - `baked_off`: no switch on the merged code. On 2d5edc9, `baked_off` equals `production` to
   5.8e-11 in lnL (VERDICT.md).
 
@@ -135,6 +137,7 @@ The same failures occur on b61e998.
 
 | merged commit | reference ms | merged ms | ratio |
 |---|---|---|---|
+| 729fba6 | 203.6 | 159.8 | 0.785 |
 | 54a0d13 | 123.0 | 109.1 | 0.887 |
 | b61e998 | 188.6 | 172.5 | 0.914 |
 
@@ -207,6 +210,7 @@ The same failures occur on b61e998.
 - `scripts/absorption_mask_report.py`, `scripts/build_dr2_quiescent_summary.py`: read stored `Z`.
 - `scripts/regenerate_fit_notebooks.py` on stored pre-merge results: needs
   `ceridwen.fit.convert_result`.
+- Changed: `scripts/bootstrap_vast_ai.sh` grid probe (above).
 - No change needed: `scripts/experiment.py`, `scripts/vast.py`, `scripts/run_ceridwen_vast_multi_gpu.py`.
 
 ## Decisions for Liu Hao
