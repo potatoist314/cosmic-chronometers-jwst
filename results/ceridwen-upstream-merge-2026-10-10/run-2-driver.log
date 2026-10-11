@@ -1,0 +1,83 @@
+03:38:36 committed source 4ca0b64abe3b; output results/ceridwen-upstream-merge-2026-10-10/run-2
+03:38:39 renting RTX 5090, host 18, $0.330/h; estimate $0.196
+03:38:39 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45508898 unknown bid $0.330/h, $0.165/fit, $0.196 total; 48600275 unknown bid $0.416/h, $0.208/fit, $0.229 total; 49147085 unknown bid $0.416/h, $0.208/fit, $0.229 total; 50103209 unknown bid $0.416/h, $0.208/fit, $0.229 total; 54735529 unknown bid $0.456/h, $0.228/fit, $0.249 total; 40411107 unknown bid $0.479/h, $0.240/fit, $0.261 total; 54735529 unknown on-demand $0.531/h, $0.266/fit, $0.287 total; 49958043 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 50103207 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 41974055 unknown bid $0.549/h, $0.275/fit, $0.296 total; 52598844 unk
+03:38:39 SweepError: vastai returned no JSON: 
+03:38:43 renting RTX 5090, host 43746, $0.416/h; estimate $0.229
+03:38:43 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 48600275 unknown bid $0.416/h, $0.208/fit, $0.229 total; 49147085 unknown bid $0.416/h, $0.208/fit, $0.229 total; 50103207 unknown bid $0.416/h, $0.208/fit, $0.229 total; 54735529 unknown bid $0.456/h, $0.228/fit, $0.249 total; 40411107 unknown bid $0.479/h, $0.240/fit, $0.261 total; 53657397 unknown on-demand $0.518/h, $0.259/fit, $0.301 total; 54735529 unknown on-demand $0.531/h, $0.266/fit, $0.287 total; 54103122 unknown on-demand $0.536/h, $0.268/fit, $0.310 total; 50103209 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 48854219 unknown on-demand $0.570/h, $0.285/fit, $0.306 total; 
+03:38:45 instance 55330634: (None, None)
+03:39:15 instance 55330634: ('loading', '774043ccc8cc: Pull complete\n')
+03:39:57 instance 55330634: ('loading', 'b2449364bbe7: Verifying Checksum\n')
+03:40:16 instance 55330634: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34\n')
+03:40:23 instance 55330634: ('loading', '#7 2.217 Setting up libjson-c5:amd64 (0.16-2) ...\r\n#7 2.218 Setting up libfdisk1:amd64 (2.38.1-5+deb12u3) ...\r\n#7 2.219 Setting up libkmod2:amd64 (30+20221128-1) ...\r\n#7 2.221 Setting up libapparmor1:amd64 (3.0.8-3) ...\r\n#7 2.222 Setting up libip4tc2:amd64 (1.8.9-2) ...\r\n#7 2.223 Setting up libsystemd-shared:amd64 (252.39-1~deb12u2) ...\r\n#7 2.225 Setting up libdevmapper1.02.1:amd64 (2:1.02.185-2) ...\r\n#7 2.226 Setting up libcryptsetup12:amd64 (2:2.6.1-4~deb12u2) ...\r\n#7 2.228 Setting up systemd (252.39-1~deb12u2) ...\r\n#7 2.236 Created symlink /etc/systemd/system/getty.target.wants/getty@tty1.service → /lib/systemd/system/getty@.service.\r\r\n')
+03:40:29 instance 55330634: ('loading', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+03:40:35 instance 55330634: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+03:40:38 uploading pinned source, inputs and cached grid
+03:42:10 bootstrap: running; n==1.0.12 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 1ms
+All installed packages are compatible
+03:42:17 bootstrap: running; read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+
+Core installation OK: fits of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+03:42:25 bootstrap: running; of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+sedpy_jax wavelength-dependent input resolution verified
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+03:42:33 bootstrap: running; of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+sedpy_jax wavelength-dependent input resolution verified
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+03:42:40 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+03:42:46 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:42:54 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:43:01 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:43:09 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:43:16 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:43:24 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:43:32 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:43:39 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:43:47 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:43:55 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:44:02 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:44:10 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:44:18 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:44:25 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:44:33 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:44:41 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:44:49 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:44:57 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:45:05 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:45:12 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:45:20 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:45:28 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:45:35 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:45:43 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:45:50 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:45:58 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:46:06 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:46:13 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:46:21 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:46:29 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:46:36 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:46:44 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:46:52 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:46:59 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:47:07 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:47:14 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:47:23 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:47:30 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:47:38 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:47:46 fit-0: running; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:47:54 fit-0: 0; 03:42:45 fitting fit/M1_210210, seed 20260832
+03:48:01 destroyed instance 55330634
+03:48:51 local figures rebuilt for fit/M1_210210
+exit 0

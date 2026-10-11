@@ -1,0 +1,60 @@
+Using prebuilt Ceridwen dependencies
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Resolved 2 packages in 216ms
+   Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+   Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+      Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+      Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+Prepared 2 packages in 623ms
+Uninstalled 1 package in 7ms
+Installed 2 packages in 6ms
+ + ceridwen==1.0.12 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 1ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+CERIDWEN environment check
+==========================
+  [ok  ] Python 3.11
+  [ok  ] jax  -- 0.10.2
+  [ok  ] jaxlib  -- 0.10.2
+  [ok  ] numpy  -- 2.4.6
+  [ok  ] scipy  -- 1.17.1
+  [ok  ] matplotlib  -- 3.11.2
+  [ok  ] h5py  -- 3.16.0
+  [ok  ] astropy  -- 8.0.1
+  [ok  ] tqdm  -- 4.70.1
+  [ok  ] optax  -- 0.2.8
+  [ok  ] anesthetic  -- 2.16.0
+  [ok  ] jax float64  -- enabled
+  [ok  ] filters + attenuation  -- 294 filters, 12 attenuation laws
+  [ok  ] tensorflow-probability  -- jax substrate
+  [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+  [ok  ] blackjax.ns  -- nested sampling available
+  [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+  [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+
+Core installation OK: fits of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+sedpy_jax wavelength-dependent input resolution verified
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+Traceback (most recent call last):
+  File "<stdin>", line 11, in <module>
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/ssps/ssp_data_afe.py", line 200, in load
+    return cls(**arrays, ssp_afe=ssp_afe, **_with_axis_meaning(meta, axis_meaning), zsun=zsun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 29, in __init__
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/ssps/ssp_data.py", line 222, in __post_init__
+    self._resolve_metallicity(zsun, _chash_hint)
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/ssps/ssp_data.py", line 288, in _resolve_metallicity
+    log10_zsun, sources, meta = resolve_zsun(
+                                ^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/ssps/grid_metadata.py", line 319, in resolve_zsun
+    raise ValueError(
+ValueError: this SSPDataAfe grid: its solar metallicity Z_sun is unknown.  CERIDWEN's metallicity is logzsol = log10(Z/Z_sun) with the Z_sun of the grid itself, and this grid records none (no log10_zsun provenance) and is not in ceridwen.ssps.grid_metadata.CHASH_TABLE (chash chash-v1:46cb4109c265247008a790c71ec35266f9868818c3b6009a1b2c6ececfa57dc5).  Pass it explicitly, e.g. SSPData.load(path, zsun=0.020) for a BPASS grid, zsun=0.0185 for FSPS >= 2026-07 MIST/C3K, zsun=0.0142 for FSPS <= 0.4.7 MIST; the value must be one of the grid's nodes: 10**ssp_lgmet = [5.850214e-05 1.040331e-04 1.850000e-04 3.289817e-04 5.850214e-04
+ 1.040331e-03 1.850000e-03 3.289817e-03 5.850214e-03 1.040331e-02
+ 1.850000e-02 3.289817e-02 5.850214e-02].  Never guess it from isoc_type.

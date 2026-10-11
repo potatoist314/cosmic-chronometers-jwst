@@ -141,7 +141,7 @@ The same failures occur on b61e998.
 | 54a0d13 | 123.0 | 109.1 | 0.887 |
 | b61e998 | 188.6 | 172.5 | 0.914 |
 
-- GPU: not measured (step H below).
+- GPU: the per-fit NS wall times (step H) come from different hosts, so they are not a speed comparison.
 
 ## New dependencies
 
@@ -182,9 +182,64 @@ The same failures occur on b61e998.
 
 ## Step H: GPU check
 
-- Not run. The bootstrap of the pinned image stops at `uv pip check` (blackjax, above).
-- The brief records image findings only ("do not rebuild"), so the route is a lead decision.
-- No Vast instance was rented; spend $0.
+- Settings:
+  - RTX 5090, image `e1c8846c`, nebular grid sha256 6fe00c55…, seed 20260832;
+  - production notebook defaults (`experiment.json`, `experiment-ten.json`);
+  - settings and priors equal those of the 1 Oct run (`results/quiescent-test-set-speedups-2026-10-01`),
+    except the removed `baked_runtime`.
+- Runs (all instances destroyed; `vastai show instances` lists none):
+
+| run | source | outcome | billed |
+|---|---|---|---|
+| `run/` | b891d1a | bootstrap: `uv pip check` passed with `blackjax>=1.6.dev98`; the grid probe then refused the nebular grid, fixed in 4ca0b64; instance 55330097 | $0.016 |
+| `run-2/` | 4ca0b64 | M1_210210 complete on instance 55330634 (host 43746): 559 s at $0.416/h | $0.049 |
+| `run-ten/` | 4ca0b64 | 10/10 complete on instance 55335713 (host 617499, on-demand, $0.604/h, 1683 s); M1 came from instance 55332978 (host 568360) before it became unavailable | $0.358 |
+
+- Total billed: $0.423.
+- Failed rentals:
+  - Two stalled image loads and two bid instances that became unavailable (SSH closed by the
+    remote host) were replaced by the runner.
+  - Create calls on 13 bid offers failed with "vastai returned no JSON". vastai 1.5.5 writes its error
+    JSON to stderr and exits 0, and `scripts/vast.py` reads stdout only, so the cause is not recorded.
+  - No instance was created by a failed call (checked by label and with `vastai show instances`).
+- All 11 results pass `scripts.experiment.validate_result`, with diagnostics passed.
+- The two merged M1_210210 fits ran on hosts 43746 and 568360:
+  - dead points are bitwise equal (16,700 samples, 5,375,929 likelihood calls);
+  - log likelihoods differ by at most 3.0e-7.
+- Against the 1 Oct fit, the merged dead points differ (16,900 samples). CPU lnL is bitwise equal at
+  the 21 points per target (equivalence above); GPU lnL was not compared point by point.
+
+M1_210210, 1 Oct → merged (`run-2/`):
+- ln Z: 236003.520 ± 0.213 → 236003.678 ± 0.362.
+- Wall: 95.6 s → 125.3 s. The hosts differ: Ryzen 7 9800X3D (1 Oct), EPYC 9135 (merged).
+- Every summary median moves by at most 0.45 of the 1 Oct half-width (q84 − q16)/2, the largest being
+  `logsfr_ratios[7]`. Excluding the SFH ratios, the largest is 0.35 (calibration a_0).
+- [Fe/H] is −0.120 [−0.151, −0.091] → −0.121 [−0.153, −0.091]; sigma_smooth is 260.3 [257.1, 263.3]
+  → 260.5 [257.4, 263.7] km/s.
+
+Ten galaxies, 1 Oct → merged (`run-ten/`):
+- Medians [q16, q84]; logzsol = [Fe/H]; the 1 Oct `Z` is shifted by −log10(0.0185).
+- Max |Δq50|/hw is the largest median shift over all summary rows, in 1 Oct half-widths.
+- Wall is the NS wall time.
+- Hosts: 1 Oct on host 383511 (Ryzen 7 9800X3D); merged M1 on host 568360 (EPYC 7402P), the other nine
+  on host 617499 (EPYC 4564P).
+
+| galaxy | logmass | logzsol | afe | sigma_smooth | mass-weighted age [Gyr] | max \|Δq50\|/hw (row) | ln Z 1 Oct → merged | wall s 1 Oct → merged |
+|---|---|---|---|---|---|---|---|---|
+| M4_107370 | 11.253 [11.226, 11.274] → 11.249 [11.224, 11.277] | -0.729 [-0.785, -0.671] → -0.731 [-0.777, -0.677] | -0.156 [-0.187, -0.106] → -0.161 [-0.189, -0.121] | 172.980 [166.806, 179.805] → 173.456 [167.411, 179.467] | 4.321 [4.063, 4.645] → 4.276 [3.999, 4.598] | 0.22 (logsfr_ratios[0]) | 233403.21 ± 0.27 → 233403.25 ± 0.22 | 80 → 95 |
+| M3_117010 | 10.987 [10.962, 11.014] → 10.984 [10.960, 11.014] | -0.535 [-0.583, -0.496] → -0.537 [-0.587, -0.492] | -0.054 [-0.095, -0.014] → -0.054 [-0.097, -0.015] | 162.374 [157.755, 166.647] → 162.805 [157.870, 166.944] | 4.365 [4.058, 4.688] → 4.360 [4.059, 4.685] | 0.15 (logsfr_ratios[0]) | 233562.31 ± 0.25 → 233562.18 ± 0.19 | 85 → 102 |
+| M3_120308 | 11.509 [11.472, 11.544] → 11.513 [11.477, 11.543] | -0.087 [-0.131, -0.042] → -0.092 [-0.138, -0.044] | 0.005 [-0.033, 0.044] → 0.015 [-0.030, 0.053] | 226.347 [221.685, 230.724] → 225.622 [221.169, 230.447] | 4.296 [3.835, 4.811] → 4.397 [3.864, 4.765] | 0.25 (afe) | 235264.76 ± 0.24 → 235265.45 ± 0.18 | 96 → 110 |
+| M2_134021 | 11.233 [11.193, 11.274] → 11.237 [11.198, 11.271] | -0.356 [-0.419, -0.294] → -0.360 [-0.416, -0.298] | 0.097 [0.064, 0.131] → 0.094 [0.057, 0.132] | 247.616 [240.695, 253.742] → 246.483 [239.638, 252.151] | 3.266 [2.697, 3.734] → 3.282 [2.798, 3.705] | 0.20 (logsfr_ratios[0]) | 238872.35 ± 0.21 → 238872.08 ± 0.29 | 88 → 106 |
+| M7_146213 | 11.138 [11.089, 11.181] → 11.133 [11.091, 11.174] | -0.172 [-0.227, -0.113] → -0.160 [-0.227, -0.116] | 0.093 [0.049, 0.130] → 0.086 [0.051, 0.128] | 159.990 [154.497, 165.376] → 159.954 [155.439, 165.718] | 4.438 [3.757, 4.983] → 4.340 [3.780, 4.861] | 0.28 (logsfr_ratios[4]) | 237378.23 ± 0.13 → 237378.85 ± 0.20 | 68 → 73 |
+| M8_150848 | 11.262 [11.228, 11.293] → 11.266 [11.229, 11.295] | -0.071 [-0.108, -0.036] → -0.081 [-0.110, -0.046] | 0.045 [0.024, 0.068] → 0.048 [0.028, 0.069] | 262.144 [257.816, 267.461] → 261.253 [256.910, 265.367] | 3.593 [3.144, 4.037] → 3.669 [3.150, 4.052] | 0.29 (logzsol) | 248258.46 ± 0.28 → 248258.14 ± 0.23 | 82 → 92 |
+| M8_161113 | 11.477 [11.444, 11.505] → 11.463 [11.433, 11.493] | -0.306 [-0.352, -0.257] → -0.285 [-0.345, -0.231] | -0.195 [-0.198, -0.187] → -0.195 [-0.199, -0.189] | 236.937 [232.840, 240.705] → 237.294 [232.778, 241.021] | 4.262 [3.956, 4.492] → 4.121 [3.837, 4.447] | 0.53 (mass-weighted age [Gyr]) | 234085.28 ± 0.21 → 234084.92 ± 0.26 | 84 → 90 |
+| M1_210210 | 11.466 [11.436, 11.495] → 11.463 [11.432, 11.498] | -0.120 [-0.151, -0.091] → -0.120 [-0.153, -0.091] | 0.132 [0.120, 0.145] → 0.132 [0.117, 0.148] | 260.296 [257.068, 263.290] → 260.532 [257.412, 263.671] | 3.531 [3.079, 3.998] → 3.568 [3.070, 4.100] | 0.45 (logsfr_ratios[7]) | 236003.52 ± 0.21 → 236003.68 ± 0.29 | 96 → 125 |
+| M5_238314 | 11.573 [11.554, 11.592] → 11.574 [11.551, 11.591] | -0.463 [-0.500, -0.431] → -0.463 [-0.497, -0.435] | -0.068 [-0.095, -0.043] → -0.067 [-0.095, -0.037] | 211.733 [208.031, 215.684] → 211.893 [208.581, 215.391] | 4.221 [4.043, 4.427] → 4.169 [4.014, 4.376] | 0.38 (logsfr_ratios[1]) | 235493.35 ± 0.19 → 235492.60 ± 0.24 | 93 → 118 |
+| M14_37219 | 10.966 [10.939, 10.994] → 10.966 [10.944, 10.995] | -0.248 [-0.294, -0.203] → -0.249 [-0.290, -0.205] | -0.062 [-0.102, -0.022] → -0.064 [-0.107, -0.022] | 180.195 [175.053, 185.175] → 179.920 [176.037, 184.833] | 3.486 [3.195, 3.857] → 3.498 [3.175, 3.811] | 0.26 (logsfr_ratios[4]) | 235612.32 ± 0.19 → 235611.39 ± 0.25 | 83 → 102 |
+
+- Largest median shift per galaxy: 0.15–0.53 half-widths.
+- |Δ ln Z|: 0.04–0.93. The 1 Oct and merged NS error estimates are 0.13–0.36.
+- Per-fit wall time: 1.07–1.31× the 1 Oct time on different hosts. This is not a same-boot A/B.
 
 ## Wiki pages needing updates (not edited)
 
