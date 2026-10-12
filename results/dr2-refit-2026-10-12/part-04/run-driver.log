@@ -1,0 +1,333 @@
+21:37:23 committed source a9550ce2736d; output results/dr2-refit-2026-10-12/part-04/run
+21:37:26 renting RTX 5090, host 43794, $0.412/h; estimate $0.227
+21:37:26 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 55155910 unknown bid $0.412/h, $0.206/fit, $0.227 total; 45508888 unknown bid $0.424/h, $0.212/fit, $0.243 total; 53483881 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 49404793 unknown on-demand $0.570/h, $0.285/fit, $0.296 total; 53974470 unknown on-demand $0.590/h, $0.295/fit, $0.316 total; 51971807 unknown bid $0.629/h, $0.315/fit, $0.367 total; 51971807 unknown on-demand $0.691/h, $0.346/fit, $0.398 total; 55188083 unknown bid $0.702/h, $0.351/fit, $0.403 total; 55188080 unknown on-demand $0.737/h, $0.369/fit, $0.421 total; 53809924 unknown on-demand $0.767/h, $0.384/fit, $0.384 t
+21:37:28 instance 55622951: (None, None)
+21:37:52 instance 55622951: ('loading', None)
+21:37:58 instance 55622951: ('loading', 'dc22b8c341d9: Download complete\n')
+21:38:04 instance 55622951: ('loading', '774043ccc8cc: Download complete\n')
+21:42:08 waiting: remaining estimate $0.227; replacement $0.234
+21:42:17 waiting: remaining estimate $0.227; replacement $0.238
+21:42:25 waiting: remaining estimate $0.227; replacement $0.203
+21:42:33 waiting: remaining estimate $0.227; replacement $0.234
+21:42:41 waiting: remaining estimate $0.227; replacement $0.203
+21:42:50 waiting: remaining estimate $0.227; replacement $0.238
+21:42:59 waiting: remaining estimate $0.227; replacement $0.293
+21:43:08 waiting: remaining estimate $0.227; replacement $0.203
+21:43:16 waiting: remaining estimate $0.227; replacement $0.238
+21:43:24 waiting: remaining estimate $0.227; replacement $0.238
+21:43:33 waiting: remaining estimate $0.227; replacement $0.234
+21:43:39 instance 55622951: ('loading', 'b2449364bbe7: Download complete\n')
+21:44:02 instance 55622951: ('loading', '#7 4.673 Preparing to unpack .../07-libapparmor1_3.0.8-3_amd64.deb ...\r\n#7 4.674 Unpacking libapparmor1:amd64 (3.0.8-3) ...\r\n#7 4.684 Selecting previously unselected package libip4tc2:amd64.\r\n#7 4.684 Preparing to unpack .../08-libip4tc2_1.8.9-2_amd64.deb ...\r\n#7 4.685 Unpacking libip4tc2:amd64 (1.8.9-2) ...\r\n#7 4.692 Selecting previously unselected package libsystemd-shared:amd64.\r\n#7 4.693 Preparing to unpack .../09-libsystemd-shared_252.39-1~deb12u2_amd64.deb ...\r\n#7 4.695 Unpacking libsystemd-shared:amd64 (252.39-1~deb12u2) ...\r\n#7 4.760 Selecting previously unselected package systemd.\r\n')
+21:44:08 instance 55622951: ('loading', '#8 DONE 0.4s\n')
+21:44:19 instance 55622951: ('loading', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+21:44:25 instance 55622951: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+21:44:29 SSH not ready: root@113.150.232.222: Permission denied (publickey).
+21:44:39 uploading pinned source, inputs and cached grid
+21:59:12 instance 55622951: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+22:12:29 TimeoutExpired: Command '['rsync', '-a', '--partial', '-e', 'ssh -p 43483 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', '/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5', 'root@113.150.232.222:/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5']' timed out after 600 seconds
+22:12:31 destroyed instance 55622951
+22:12:35 renting RTX 5090, host 18, $0.390/h; estimate $0.226
+22:12:35 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45508898 unknown bid $0.390/h, $0.195/fit, $0.226 total; 43575030 unknown bid $0.444/h, $0.222/fit, $0.223 total; 35147006 unknown bid $0.520/h, $0.260/fit, $0.281 total; 35147006 unknown on-demand $0.521/h, $0.261/fit, $0.282 total; 43575030 unknown on-demand $0.544/h, $0.272/fit, $0.273 total; 48851746 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 28986860 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 36263957 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 44725727 unknown bid $0.641/h, $0.321/fit, $0.321 total; 55188080 unknown bid $0.702/h, $0.351/fit, $0.403 total; 
+22:12:36 SweepError: vastai returned no JSON: 
+22:12:40 renting RTX 5090, host 80960, $0.444/h; estimate $0.223
+22:12:40 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 43575030 unknown bid $0.444/h, $0.222/fit, $0.223 total; 35147006 unknown bid $0.520/h, $0.260/fit, $0.281 total; 35147006 unknown on-demand $0.521/h, $0.261/fit, $0.282 total; 48851746 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 28986862 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 54127168 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 36263957 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 44725727 unknown bid $0.641/h, $0.321/fit, $0.321 total; 51971807 unknown on-demand $0.691/h, $0.346/fit, $0.398 total; 55188080 unknown bid $0.702/h, $0.351/fit, $0.403 t
+22:12:41 SweepError: vastai returned no JSON: 
+22:12:45 renting RTX 5090, host 97910, $0.347/h; estimate $0.194
+22:12:45 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 28986860 unknown bid $0.347/h, $0.174/fit, $0.194 total; 35147006 unknown on-demand $0.521/h, $0.261/fit, $0.282 total; 49404793 unknown on-demand $0.570/h, $0.285/fit, $0.296 total; 36263957 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 53816954 unknown on-demand $0.611/h, $0.306/fit, $0.326 total; 54088691 unknown bid $0.618/h, $0.309/fit, $0.340 total; 53809924 unknown bid $0.652/h, $0.326/fit, $0.326 total; 55188080 unknown bid $0.702/h, $0.351/fit, $0.403 total; 54581347 unknown on-demand $0.819/h, $0.409/fit, $0.430 total; 30949242 unknown bid $0.831/h, $0.415/fit, $0.478 total; 
+22:12:46 instance 55627088: (None, None)
+22:12:58 instance 55627088: ('loading', None)
+22:17:03 waiting: remaining estimate $0.195; replacement $0.211
+22:17:11 waiting: remaining estimate $0.195; replacement $0.227
+22:17:20 waiting: remaining estimate $0.195; replacement $0.268
+22:17:26 instance 55627088: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34: Pulling from potatoist314/ceridwen-gpu\n')
+22:17:32 instance 55627088: ('loading', '55557fec2dac: Verifying Checksum\n55557fec2dac: Download complete\n')
+22:17:38 instance 55627088: ('loading', 'dc22b8c341d9: Pull complete\n')
+22:21:44 waiting: remaining estimate $0.195; replacement $0.344
+22:21:52 waiting: remaining estimate $0.195; replacement $0.314
+22:22:00 waiting: remaining estimate $0.195; replacement $0.314
+22:22:09 waiting: remaining estimate $0.195; replacement $0.314
+22:22:17 waiting: remaining estimate $0.195; replacement $0.241
+22:22:25 waiting: remaining estimate $0.195; replacement $0.344
+22:22:34 waiting: remaining estimate $0.195; replacement $0.344
+22:22:42 waiting: remaining estimate $0.195; replacement $0.344
+22:22:51 waiting: remaining estimate $0.195; replacement $0.314
+22:22:59 waiting: remaining estimate $0.195; replacement $0.314
+22:23:07 waiting: remaining estimate $0.195; replacement $0.241
+22:23:16 waiting: remaining estimate $0.195; replacement $0.241
+22:23:24 waiting: remaining estimate $0.195; replacement $0.241
+22:23:30 instance 55627088: ('loading', 'b2449364bbe7: Verifying Checksum\nb2449364bbe7: Download complete\n')
+22:24:59 instance 55627088: ('loading', 'b2449364bbe7: Pull complete\n')
+22:25:04 instance 55627088: ('loading', '#5 DONE 1.1s\n')
+22:25:16 instance 55627088: ('loading', '#7 8.502 Get:36 http://deb.debian.org/debian bookworm/main amd64 libc-l10n all 2.36-9+deb12u14 [676 kB]\n#7 8.631 Get:37 http://deb.debian.org/debian bookworm/main amd64 libpam-systemd amd64 252.39-1~deb12u2 [226 kB]\n')
+22:25:22 instance 55627088: ('loading', '#7 14.91 Get:50 http://deb.debian.org/debian bookworm/main amd64 libassuan0 amd64 2.5.5-5 [48.5 kB]\n')
+22:25:28 instance 55627088: ('loading', '#7 20.31 Get:56 http://deb.debian.org/debian bookworm/main amd64 libxml2 amd64 2.9.14+dfsg-1.3~deb12u6 [689 kB]\n')
+22:25:34 instance 55627088: ('loading', '#7 24.68 Preparing to unpack .../07-libapparmor1_3.0.8-3_amd64.deb ...\r\n#7 24.69 Unpacking libapparmor1:amd64 (3.0.8-3) ...\r\n#7 24.79 Selecting previously unselected package libip4tc2:amd64.\r')
+22:25:40 instance 55627088: ('loading', '#7 35.05 Preparing to unpack .../23-libicu72_72.1-3+deb12u1_amd64.deb ...\r\n#7 35.06 Unpacking libicu72:amd64 (72.1-3+deb12u1) ...\r\n')
+22:25:46 instance 55627088: ('loading', '#7 40.35 Preparing to unpack .../59-python3-six_1.16.0-4_all.deb ...\r\n#7 40.36 Unpacking python3-six (1.16.0-4) ...\r\n#7 40.46 Selecting previously unselected package python3-lazr.restfulclient.\r\n')
+22:25:52 instance 55627088: ('loading', '#7 44.63 Setting up libglib2.0-bin (2.74.6-2+deb12u9) ...\r\n#7 44.67 Setting up python3 (3.11.2-1+b1) ...\r\n')
+22:25:58 instance 55627088: ('loading', '#7 50.00 invoke-rc.d: policy-rc.d denied execution of reload.\r\n#7 50.15 start-stop-daemon: unable to stat /usr/libexec/polkitd (No such file or directory)\r\n')
+22:26:04 instance 55627088: ('loading', '#8 DONE 0.3s\n')
+22:26:16 instance 55627088: ('loading', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34')
+22:26:51 instance 55627088: ('created', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34')
+22:30:56 waiting: remaining estimate $0.195; replacement $0.314
+22:31:04 waiting: remaining estimate $0.195; replacement $0.344
+22:31:13 waiting: remaining estimate $0.195; replacement $0.314
+22:31:19 instance 55627088: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+22:31:24 uploading pinned source, inputs and cached grid
+22:31:34 instance 55627088: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+22:31:35 SSH not ready: ssh: connect to host 180.70.178.129 port 42267: Connection refused
+22:31:41 SweepError: instance unavailable
+22:31:43 destroyed instance 55627088
+22:31:47 renting RTX 5090, host 127708, $0.364/h; estimate $0.203
+22:31:47 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 40411107 unknown bid $0.364/h, $0.182/fit, $0.203 total; 53967559 unknown bid $0.417/h, $0.209/fit, $0.229 total; 48851746 unknown bid $0.496/h, $0.248/fit, $0.269 total; 53967559 unknown on-demand $0.518/h, $0.259/fit, $0.280 total; 54127168 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 44027561 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 55430500 unknown on-demand $0.611/h, $0.306/fit, $0.337 total; 53809924 unknown bid $0.652/h, $0.326/fit, $0.326 total; 44725727 unknown on-demand $0.663/h, $0.332/fit, $0.332 total; 51971807 unknown on-demand $0.691/h, $0.346/fit, $0.398 t
+22:31:48 SweepError: vastai returned no JSON: 
+22:31:52 renting RTX 5090, host 74292, $0.518/h; estimate $0.290
+22:31:52 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 55430500 unknown bid $0.518/h, $0.259/fit, $0.290 total; 48851746 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 54127168 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 51971807 unknown bid $0.629/h, $0.315/fit, $0.367 total; 28754814 unknown on-demand $0.644/h, $0.322/fit, $0.322 total; 51888123 unknown bid $0.656/h, $0.328/fit, $0.380 total; 55188081 unknown bid $0.702/h, $0.351/fit, $0.403 total; 55440105 unknown bid $0.710/h, $0.355/fit, $0.376 total; 55440105 unknown on-demand $0.719/h, $0.359/fit, $0.380 total; 49760569 unknown bid $0.816/h, $0.408/fit, $0.429 total; 545813
+22:31:53 SweepError: vastai returned no JSON: 
+22:31:58 renting RTX 5090, host 132677, $0.417/h; estimate $0.229
+22:31:58 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 53967559 unknown bid $0.417/h, $0.209/fit, $0.229 total; 48582937 unknown bid $0.425/h, $0.213/fit, $0.234 total; 45685721 unknown on-demand $0.516/h, $0.258/fit, $0.279 total; 53967559 unknown on-demand $0.518/h, $0.259/fit, $0.280 total; 41974055 unknown bid $0.549/h, $0.275/fit, $0.296 total; 44725727 unknown bid $0.641/h, $0.321/fit, $0.321 total; 53809924 unknown bid $0.652/h, $0.326/fit, $0.326 total; 44725727 unknown on-demand $0.663/h, $0.332/fit, $0.332 total; 54088691 unknown on-demand $0.677/h, $0.339/fit, $0.370 total; 55188081 unknown bid $0.702/h, $0.351/fit, $0.403 total; 538099
+22:31:59 SweepError: vastai returned no JSON: 
+22:32:03 renting RTX 5090, host 645875, $0.425/h; estimate $0.234
+22:32:03 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 48582937 unknown bid $0.425/h, $0.213/fit, $0.234 total; 48851735 unknown bid $0.496/h, $0.248/fit, $0.269 total; 54127168 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 51971807 unknown bid $0.629/h, $0.315/fit, $0.367 total; 53809924 unknown bid $0.652/h, $0.326/fit, $0.326 total; 44725727 unknown on-demand $0.663/h, $0.332/fit, $0.332 total; 51971807 unknown on-demand $0.691/h, $0.346/fit, $0.398 total; 55188080 unknown bid $0.702/h, $0.351/fit, $0.403 total; 55440105 unknown bid $0.710/h, $0.355/fit, $0.376 total; 49760569 unknown bid $0.816/h, $0.408/fit, $0.429 total; 54581348 unk
+22:32:04 SweepError: vastai returned no JSON: 
+22:32:08 renting RTX 5090, host 336596, $0.516/h; estimate $0.279
+22:32:08 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45685721 unknown on-demand $0.516/h, $0.258/fit, $0.279 total; 51888123 unknown bid $0.656/h, $0.328/fit, $0.380 total; 55188083 unknown bid $0.702/h, $0.351/fit, $0.403 total; 55440105 unknown on-demand $0.719/h, $0.359/fit, $0.380 total; 49760569 unknown bid $0.816/h, $0.408/fit, $0.429 total; 54581348 unknown on-demand $0.819/h, $0.409/fit, $0.430 total; 27039369 unknown bid $0.831/h, $0.415/fit, $0.478 total; 49760569 unknown on-demand $0.878/h, $0.439/fit, $0.460 total; 49337312 poor on-demand $0.485/h, $0.243/fit, $0.284 total; 54175709 poor bid $0.549/h, $0.275/fit, $0.306 total; 529507
+22:32:09 SweepError: vastai returned no JSON: 
+22:32:14 renting RTX 5090, host 1801, $0.496/h; estimate $0.269
+22:32:14 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 48851735 unknown bid $0.496/h, $0.248/fit, $0.269 total; 51971807 unknown bid $0.629/h, $0.315/fit, $0.367 total; 53809924 unknown bid $0.652/h, $0.326/fit, $0.326 total; 55188083 unknown bid $0.702/h, $0.351/fit, $0.403 total; 55440105 unknown on-demand $0.719/h, $0.359/fit, $0.380 total; 49760569 unknown bid $0.816/h, $0.408/fit, $0.429 total; 54581348 unknown on-demand $0.819/h, $0.409/fit, $0.430 total; 49760569 unknown on-demand $0.878/h, $0.439/fit, $0.460 total; 49337312 poor on-demand $0.485/h, $0.243/fit, $0.284 total; 54175709 poor bid $0.549/h, $0.275/fit, $0.306 total; 54175709 poo
+22:32:16 instance 55630494: (None, None)
+22:32:39 instance 55630494: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34\n')
+22:32:45 instance 55630494: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+22:32:54 uploading pinned source, inputs and cached grid
+22:36:27 bootstrap: running; nometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 4ms
+All installed packages are compatible
+ceridwen: combined static smoother installed
+22:36:46 bootstrap: running; of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+sedpy_jax wavelength-dependent input resolution verified
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+22:37:05 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:37:38 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:37:57 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:38:15 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:38:34 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:38:53 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:39:12 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:39:31 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:39:49 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:39:52 extend_part: cap 1.0, +0 targets [], uploaded 0 inputs, resuming instance 55630494
+22:39:54 committed source a9550ce2736d; output results/dr2-refit-2026-10-12/part-04/run
+22:39:55 instance 55630494: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+22:40:16 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:40:50 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:41:08 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:41:27 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:41:45 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:42:04 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:42:22 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:42:41 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:42:59 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:43:18 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:43:37 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:43:56 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:44:14 fit-0: running; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:44:33 fit-0: 0; 22:37:31 fitting fit/M2_133501, seed 20260832
+22:45:28 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:45:47 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:46:06 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:46:24 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:46:43 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:47:02 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:47:21 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:47:40 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:47:58 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:48:17 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:48:35 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:48:54 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:49:13 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:49:32 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:49:50 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:50:09 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:50:27 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:50:45 fit-1: running; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:51:04 fit-1: 0; 22:45:22 fitting fit/M8_150848, seed 20260832
+22:52:01 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:52:19 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:52:38 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:52:56 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:53:14 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:53:33 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:53:52 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:54:11 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:54:29 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:54:48 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:55:07 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:55:25 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:55:43 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:56:02 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:56:20 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:56:39 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:56:58 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:57:16 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:57:35 fit-2: running; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:57:53 fit-2: 0; 22:51:54 fitting fit/M1_211157, seed 20260832
+22:58:49 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+22:59:07 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+22:59:25 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+22:59:55 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:00:07 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:00:20 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:00:32 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:00:44 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:00:56 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:01:08 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:01:21 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:01:33 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:01:45 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:01:57 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:02:09 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:02:21 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:02:33 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:02:45 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:02:57 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:03:09 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:03:21 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:03:33 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:03:45 fit-3: running; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:03:57 fit-3: 0; 22:58:42 fitting fit/M2_210940, seed 20260832
+23:04:26 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:04:38 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:04:50 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:05:02 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:05:14 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:05:26 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:05:38 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:05:50 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:06:02 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:06:14 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:06:26 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:06:39 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:06:51 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:07:03 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:07:15 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:07:27 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:07:39 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:07:52 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:08:04 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:08:24 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:08:36 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:08:48 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:09:00 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:09:12 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:09:24 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:09:36 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:09:48 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:10:01 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:10:12 fit-4: running; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:10:24 fit-4: 0; 23:04:22 fitting fit/M3_109713, seed 20260832
+23:10:52 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:11:04 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:11:16 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:11:28 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:11:40 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:11:52 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:12:04 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:12:16 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:12:29 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:12:41 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:12:53 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:13:05 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:13:17 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:13:29 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:13:41 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:13:53 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:14:05 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:14:18 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:14:30 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:14:42 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:14:54 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:15:06 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:15:18 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:15:30 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:15:43 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:15:55 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:16:07 fit-5: running; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:16:19 fit-5: 0; 23:10:49 fitting fit/M8_161113, seed 20260832
+23:16:46 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:16:58 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:17:11 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:17:23 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:17:35 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:17:47 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:17:59 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:18:11 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:18:24 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:18:37 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:18:49 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:19:03 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:19:15 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:19:27 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:19:39 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:19:51 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:20:05 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:20:20 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:20:32 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:20:47 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:20:59 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:21:11 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:21:24 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:21:36 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:21:48 fit-6: running; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:22:01 fit-6: 0; 23:16:43 fitting fit/M15_89072, seed 20260832
+23:22:30 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:22:42 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:22:54 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:23:06 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:23:18 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:23:30 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:23:42 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:23:54 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:24:06 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:24:19 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:24:31 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:24:44 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:24:56 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:25:08 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:25:20 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:25:32 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:25:44 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:25:56 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:26:08 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:26:20 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:26:32 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:26:44 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:26:56 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:27:09 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:27:21 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:27:33 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:27:46 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:27:58 fit-7: running; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:28:10 fit-7: 0; 23:22:25 fitting fit/M4_107370, seed 20260832
+23:29:13 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
+23:29:25 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
+23:29:38 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
+23:29:50 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
+23:30:02 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
+23:30:14 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
+23:30:26 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
+23:30:39 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
+23:30:51 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
+23:31:04 fit-8: running; 23:29:09 fitting fit/M12_181421, seed 20260832
