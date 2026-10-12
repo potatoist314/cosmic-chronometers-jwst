@@ -1,0 +1,69 @@
+21:11:53 committed source 7033ef1395c7; output results/dr2-refit-2026-10-12/shard-00/run
+21:11:56 renting RTX 5090, host 18, $0.314/h; estimate $0.188
+21:11:56 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45508891 unknown bid $0.314/h, $0.157/fit, $0.188 total; 49404793 unknown bid $0.448/h, $0.224/fit, $0.234 total; 55301546 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 47580836 unknown bid $0.549/h, $0.275/fit, $0.285 total; 49404793 unknown on-demand $0.570/h, $0.285/fit, $0.296 total; 51971807 unknown bid $0.629/h, $0.315/fit, $0.367 total; 52003777 unknown bid $0.679/h, $0.340/fit, $0.340 total; 54581347 unknown on-demand $0.819/h, $0.409/fit, $0.430 total; 47408439 unknown on-demand $0.878/h, $0.439/fit, $0.440 total; 47580836 unknown on-demand $0.878/h, $0.439/fit, $0.449 total; 
+21:11:57 SweepError: vastai returned no JSON: 
+21:12:01 renting RTX 5090, host 97910, $0.364/h; estimate $0.203
+21:12:01 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 28986860 unknown bid $0.364/h, $0.182/fit, $0.203 total; 43092247 unknown bid $0.536/h, $0.268/fit, $0.299 total; 55301546 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 47580836 unknown bid $0.549/h, $0.275/fit, $0.285 total; 48582937 unknown bid $0.560/h, $0.280/fit, $0.301 total; 28986862 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 44027561 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 43092247 unknown on-demand $0.624/h, $0.312/fit, $0.343 total; 51971807 unknown bid $0.629/h, $0.315/fit, $0.367 total; 51950624 unknown bid $0.645/h, $0.323/fit, $0.343 total; 540886
+21:12:02 SweepError: vastai returned no JSON: 
+21:12:06 renting RTX 5090, host 365487, $0.536/h; estimate $0.299
+21:12:06 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 43092247 unknown bid $0.536/h, $0.268/fit, $0.299 total; 47580836 unknown bid $0.549/h, $0.275/fit, $0.285 total; 48582937 unknown bid $0.560/h, $0.280/fit, $0.301 total; 49404793 unknown on-demand $0.570/h, $0.285/fit, $0.296 total; 44027561 unknown on-demand $0.607/h, $0.304/fit, $0.325 total; 48946843 unknown on-demand $0.611/h, $0.306/fit, $0.316 total; 43092247 unknown on-demand $0.624/h, $0.312/fit, $0.343 total; 51971807 unknown bid $0.629/h, $0.315/fit, $0.367 total; 51950624 unknown bid $0.645/h, $0.323/fit, $0.343 total; 55188081 unknown bid $0.702/h, $0.351/fit, $0.403 total; 554401
+21:12:08 instance 55619552: (None, None)
+21:12:25 instance 55619552: ('loading', 'ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34: Pulling from potatoist314/ceridwen-gpu\n')
+21:12:31 instance 55619552: ('loading', '55557fec2dac: Verifying Checksum\n')
+21:14:57 instance 55619552: ('loading', 'b2449364bbe7: Verifying Checksum\nb2449364bbe7: Download complete\n')
+21:15:09 instance 55619552: ('loading', '#7 1.278 Get:57 http://deb.debian.org/debian bookworm/main amd64 libxmlb2 amd64 0.3.22-1~deb12u1 [61.0 kB]\n#7 1.279 Get:58 http://deb.debian.org/debian bookworm/main amd64 libyaml-0-2 amd64 0.2.5-1 [53.6 kB]\n#7 1.284 Get:59 http://deb.debian.org/debian bookworm/main amd64 libappstream4 amd64 0.16.1-2+b1 [198 kB]\n#7 1.286 Get:60 http://deb.debian.org/debian bookworm/main amd64 libcap2-bin amd64 1:2.66-4+deb12u3+b1 [35.2 kB]\n#7 1.289 Get:61 http://deb.debian.org/debian bookworm/main amd64 libduktape207 amd64 2.7.0-2 [134 kB]\n#7 1.296 Get:62 http://deb.debian.org/debian bookworm/main amd64 libelf1 amd64 0.188-2.1 [174 kB]\n#7 1.300 Get:63 http://deb.debian.org/debian bookworm/main amd64 libdw1 amd64 0.188-2.1 [235 kB]\n')
+21:15:15 instance 55619552: ('loading', '#7 5.753 Selecting previously unselected package libxml2:amd64.\r\n')
+21:15:21 instance 55619552: ('loading', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+21:15:27 instance 55619552: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+21:15:29 SSH not ready: root@77.33.90.207: Permission denied (publickey).
+21:15:36 SSH not ready: root@77.33.90.207: Permission denied (publickey).
+21:15:43 uploading pinned source, inputs and cached grid
+21:16:08 bootstrap: running; Using prebuilt Ceridwen dependencies
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Resolved 2 packages in 201ms
+   Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+   Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+21:16:14 bootstrap: running; of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+sedpy_jax wavelength-dependent input resolution verified
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+21:16:20 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+21:16:22 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:16:29 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:16:35 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:16:41 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:16:47 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:16:53 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:16:59 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:17:05 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:17:11 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:17:18 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:17:24 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:17:30 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:17:36 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:17:42 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:17:48 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:17:54 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:18:00 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:18:07 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:18:13 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:18:44 fit-0: remote command failed; reconnecting to the same instance
+21:18:45 instance 55619552: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+21:18:52 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:18:59 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:19:05 fit-0: running; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:19:11 fit-0: 0; 21:16:22 fitting fit/M5_172669, seed 20260832
+21:19:17 fit-1: running; 21:19:17 fitting fit/M11_245252, seed 20260832
+21:19:23 fit-1: 1; iment.py", line 358, in main
+    return remote(args.config, args.output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 257, in remote
+    raise RuntimeError(f"fit failed: {cell['name']}")
+RuntimeError: fit failed: fit/M11_245252
+21:19:25 StageFailed: fit-1 exited 1; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/shard-00/run/55619552-fit-1.log before retrying
+21:19:27 destroyed instance 55619552
