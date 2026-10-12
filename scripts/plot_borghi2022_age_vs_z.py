@@ -13,6 +13,7 @@ Usage: ``.venv/bin/python scripts/plot_borghi2022_age_vs_z.py``
 
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 import matplotlib
@@ -162,4 +163,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--summary", type=Path, default=SUMMARY_PATH)
+    parser.add_argument("--out-dir", type=Path, default=OUT_DIR)
+    args = parser.parse_args()
+    SUMMARY_PATH, OUT_DIR = args.summary, args.out_dir
     main()

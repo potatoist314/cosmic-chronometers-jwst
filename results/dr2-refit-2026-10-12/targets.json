@@ -1,0 +1,1319 @@
+{
+ "schema_version": 1,
+ "sample": "LEGA-C DR2 quiescent, clean 12-band photometry",
+ "selection": "highest-S/N eligible spectrum per OBJECT",
+ "source": "results/dr2-quiescent-new-defaults/targets.json",
+ "seed": 20260832,
+ "unique_objects": 187,
+ "targets": [
+  {
+   "object_id": 172669,
+   "spect_id": "M5_172669",
+   "sn": 105.0,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/172669-M5_172669"
+  },
+  {
+   "object_id": 233129,
+   "spect_id": "M10_233129",
+   "sn": 75.5,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/233129-M10_233129"
+  },
+  {
+   "object_id": 210210,
+   "spect_id": "M1_210210",
+   "sn": 62.20000076293945,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/210210-M1_210210"
+  },
+  {
+   "object_id": 181945,
+   "spect_id": "M12_181945",
+   "sn": 61.79999923706055,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/181945-M12_181945"
+  },
+  {
+   "object_id": 133501,
+   "spect_id": "M2_133501",
+   "sn": 57.70000076293945,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/133501-M2_133501"
+  },
+  {
+   "object_id": 38648,
+   "spect_id": "M14_38648",
+   "sn": 52.70000076293945,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/38648-M14_38648"
+  },
+  {
+   "object_id": 226316,
+   "spect_id": "M9_226316",
+   "sn": 51.5,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/226316-M9_226316"
+  },
+  {
+   "object_id": 233169,
+   "spect_id": "M9_233169",
+   "sn": 51.400001525878906,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/233169-M9_233169"
+  },
+  {
+   "object_id": 134391,
+   "spect_id": "M2_134391",
+   "sn": 44.599998474121094,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/134391-M2_134391"
+  },
+  {
+   "object_id": 130052,
+   "spect_id": "M1_130052",
+   "sn": 44.29999923706055,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/130052-M1_130052"
+  },
+  {
+   "object_id": 160400,
+   "spect_id": "M8_160400",
+   "sn": 44.29999923706055,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/160400-M8_160400"
+  },
+  {
+   "object_id": 245252,
+   "spect_id": "M11_245252",
+   "sn": 44.20000076293945,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/245252-M11_245252"
+  },
+  {
+   "object_id": 205742,
+   "spect_id": "M1_205742",
+   "sn": 42.79999923706055,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/205742-M1_205742"
+  },
+  {
+   "object_id": 213772,
+   "spect_id": "M10_213772",
+   "sn": 40.900001525878906,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/213772-M10_213772"
+  },
+  {
+   "object_id": 150848,
+   "spect_id": "M8_150848",
+   "sn": 40.900001525878906,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/150848-M8_150848"
+  },
+  {
+   "object_id": 161346,
+   "spect_id": "M8_161346",
+   "sn": 40.5,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/161346-M8_161346"
+  },
+  {
+   "object_id": 162149,
+   "spect_id": "M8_162149",
+   "sn": 40.5,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/162149-M8_162149"
+  },
+  {
+   "object_id": 231276,
+   "spect_id": "M9_231276",
+   "sn": 40.099998474121094,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/231276-M9_231276"
+  },
+  {
+   "object_id": 113852,
+   "spect_id": "M7_113852",
+   "sn": 39.5,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/113852-M7_113852"
+  },
+  {
+   "object_id": 213004,
+   "spect_id": "M11_213004",
+   "sn": 39.400001525878906,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/213004-M11_213004"
+  },
+  {
+   "object_id": 105474,
+   "spect_id": "M4_105474",
+   "sn": 37.29999923706055,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/105474-M4_105474"
+  },
+  {
+   "object_id": 228215,
+   "spect_id": "M10_228215",
+   "sn": 36.79999923706055,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/228215-M10_228215"
+  },
+  {
+   "object_id": 218207,
+   "spect_id": "M11_218207",
+   "sn": 36.79999923706055,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/218207-M11_218207"
+  },
+  {
+   "object_id": 216730,
+   "spect_id": "M10_216730",
+   "sn": 36.70000076293945,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/216730-M10_216730"
+  },
+  {
+   "object_id": 232627,
+   "spect_id": "M13_232627",
+   "sn": 36.400001525878906,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/232627-M13_232627"
+  },
+  {
+   "object_id": 228380,
+   "spect_id": "M10_228380",
+   "sn": 36.099998474121094,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/228380-M10_228380"
+  },
+  {
+   "object_id": 117400,
+   "spect_id": "M4_117400",
+   "sn": 36.099998474121094,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/117400-M4_117400"
+  },
+  {
+   "object_id": 257455,
+   "spect_id": "M11_257455",
+   "sn": 36.0,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/257455-M11_257455"
+  },
+  {
+   "object_id": 250391,
+   "spect_id": "M11_250391",
+   "sn": 35.79999923706055,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/250391-M11_250391"
+  },
+  {
+   "object_id": 215585,
+   "spect_id": "M11_215585",
+   "sn": 35.599998474121094,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/215585-M11_215585"
+  },
+  {
+   "object_id": 119474,
+   "spect_id": "M3_119474",
+   "sn": 35.400001525878906,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/119474-M3_119474"
+  },
+  {
+   "object_id": 206669,
+   "spect_id": "M2_206669",
+   "sn": 35.20000076293945,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/206669-M2_206669"
+  },
+  {
+   "object_id": 211157,
+   "spect_id": "M1_211157",
+   "sn": 35.099998474121094,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/211157-M1_211157"
+  },
+  {
+   "object_id": 102456,
+   "spect_id": "M12_102456",
+   "sn": 34.900001525878906,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/102456-M12_102456"
+  },
+  {
+   "object_id": 91529,
+   "spect_id": "M12_91529",
+   "sn": 34.79999923706055,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/91529-M12_91529"
+  },
+  {
+   "object_id": 238314,
+   "spect_id": "M5_238314",
+   "sn": 34.599998474121094,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/238314-M5_238314"
+  },
+  {
+   "object_id": 77632,
+   "spect_id": "M15_77632",
+   "sn": 34.5,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/77632-M15_77632"
+  },
+  {
+   "object_id": 124231,
+   "spect_id": "M4_124231",
+   "sn": 34.5,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/124231-M4_124231"
+  },
+  {
+   "object_id": 221163,
+   "spect_id": "M11_221163",
+   "sn": 34.20000076293945,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/221163-M11_221163"
+  },
+  {
+   "object_id": 206858,
+   "spect_id": "M1_206858",
+   "sn": 33.400001525878906,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/206858-M1_206858"
+  },
+  {
+   "object_id": 205715,
+   "spect_id": "M5_205715",
+   "sn": 33.20000076293945,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/205715-M5_205715"
+  },
+  {
+   "object_id": 148698,
+   "spect_id": "M8_148698",
+   "sn": 33.0,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/148698-M8_148698"
+  },
+  {
+   "object_id": 229551,
+   "spect_id": "M11_229551",
+   "sn": 32.79999923706055,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/229551-M11_229551"
+  },
+  {
+   "object_id": 111390,
+   "spect_id": "M3_111390",
+   "sn": 32.400001525878906,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/111390-M3_111390"
+  },
+  {
+   "object_id": 236994,
+   "spect_id": "M5_236994",
+   "sn": 31.799999237060547,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/236994-M5_236994"
+  },
+  {
+   "object_id": 236682,
+   "spect_id": "M5_236682",
+   "sn": 31.600000381469727,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/236682-M5_236682"
+  },
+  {
+   "object_id": 124875,
+   "spect_id": "M7_124875",
+   "sn": 31.5,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/124875-M7_124875"
+  },
+  {
+   "object_id": 206545,
+   "spect_id": "M1_206545",
+   "sn": 31.399999618530273,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/206545-M1_206545"
+  },
+  {
+   "object_id": 232962,
+   "spect_id": "M11_232962",
+   "sn": 30.799999237060547,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/232962-M11_232962"
+  },
+  {
+   "object_id": 77745,
+   "spect_id": "M15_77745",
+   "sn": 30.700000762939453,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/77745-M15_77745"
+  },
+  {
+   "object_id": 218701,
+   "spect_id": "M9_218701",
+   "sn": 30.700000762939453,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/218701-M9_218701"
+  },
+  {
+   "object_id": 248217,
+   "spect_id": "M13_248217",
+   "sn": 30.600000381469727,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/248217-M13_248217"
+  },
+  {
+   "object_id": 94494,
+   "spect_id": "M2_94494",
+   "sn": 30.600000381469727,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/94494-M2_94494"
+  },
+  {
+   "object_id": 206501,
+   "spect_id": "M1_206501",
+   "sn": 30.5,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/206501-M1_206501"
+  },
+  {
+   "object_id": 147539,
+   "spect_id": "M8_147539",
+   "sn": 30.5,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/147539-M8_147539"
+  },
+  {
+   "object_id": 184916,
+   "spect_id": "M12_184916",
+   "sn": 30.399999618530273,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/184916-M12_184916"
+  },
+  {
+   "object_id": 147849,
+   "spect_id": "M7_147849",
+   "sn": 29.799999237060547,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/147849-M7_147849"
+  },
+  {
+   "object_id": 227516,
+   "spect_id": "M10_227516",
+   "sn": 29.200000762939453,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/227516-M10_227516"
+  },
+  {
+   "object_id": 211347,
+   "spect_id": "M5_211347",
+   "sn": 29.200000762939453,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/211347-M5_211347"
+  },
+  {
+   "object_id": 226721,
+   "spect_id": "M11_226721",
+   "sn": 29.0,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/226721-M11_226721"
+  },
+  {
+   "object_id": 244738,
+   "spect_id": "M11_244738",
+   "sn": 29.0,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/244738-M11_244738"
+  },
+  {
+   "object_id": 120308,
+   "spect_id": "M3_120308",
+   "sn": 29.0,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/120308-M3_120308"
+  },
+  {
+   "object_id": 241189,
+   "spect_id": "M5_241189",
+   "sn": 29.0,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/241189-M5_241189"
+  },
+  {
+   "object_id": 232005,
+   "spect_id": "M9_232005",
+   "sn": 29.0,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/232005-M9_232005"
+  },
+  {
+   "object_id": 225441,
+   "spect_id": "M10_225441",
+   "sn": 28.899999618530273,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/225441-M10_225441"
+  },
+  {
+   "object_id": 211767,
+   "spect_id": "M5_211767",
+   "sn": 28.5,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/211767-M5_211767"
+  },
+  {
+   "object_id": 139423,
+   "spect_id": "M1_139423",
+   "sn": 28.100000381469727,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/139423-M1_139423"
+  },
+  {
+   "object_id": 125213,
+   "spect_id": "M4_125213",
+   "sn": 27.899999618530273,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/125213-M4_125213"
+  },
+  {
+   "object_id": 31835,
+   "spect_id": "M14_31835",
+   "sn": 27.399999618530273,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/31835-M14_31835"
+  },
+  {
+   "object_id": 213587,
+   "spect_id": "M9_213587",
+   "sn": 27.100000381469727,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/213587-M9_213587"
+  },
+  {
+   "object_id": 246149,
+   "spect_id": "M13_246149",
+   "sn": 26.600000381469727,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/246149-M13_246149"
+  },
+  {
+   "object_id": 231544,
+   "spect_id": "M10_231544",
+   "sn": 26.100000381469727,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/231544-M10_231544"
+  },
+  {
+   "object_id": 128311,
+   "spect_id": "M5_128311",
+   "sn": 26.0,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/128311-M5_128311"
+  },
+  {
+   "object_id": 122242,
+   "spect_id": "M7_122242",
+   "sn": 26.0,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/122242-M7_122242"
+  },
+  {
+   "object_id": 134021,
+   "spect_id": "M2_134021",
+   "sn": 25.799999237060547,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/134021-M2_134021"
+  },
+  {
+   "object_id": 119802,
+   "spect_id": "M3_119802",
+   "sn": 25.399999618530273,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/119802-M3_119802"
+  },
+  {
+   "object_id": 208364,
+   "spect_id": "M2_208364",
+   "sn": 25.100000381469727,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/208364-M2_208364"
+  },
+  {
+   "object_id": 165871,
+   "spect_id": "M5_165871",
+   "sn": 25.0,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/165871-M5_165871"
+  },
+  {
+   "object_id": 237437,
+   "spect_id": "M6_237437",
+   "sn": 25.0,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/237437-M6_237437"
+  },
+  {
+   "object_id": 244239,
+   "spect_id": "M13_244239",
+   "sn": 24.5,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/244239-M13_244239"
+  },
+  {
+   "object_id": 238580,
+   "spect_id": "M5_238580",
+   "sn": 24.299999237060547,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/238580-M5_238580"
+  },
+  {
+   "object_id": 109713,
+   "spect_id": "M3_109713",
+   "sn": 24.200000762939453,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/109713-M3_109713"
+  },
+  {
+   "object_id": 117694,
+   "spect_id": "M3_117694",
+   "sn": 24.200000762939453,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/117694-M3_117694"
+  },
+  {
+   "object_id": 197591,
+   "spect_id": "M10_197591",
+   "sn": 23.899999618530273,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/197591-M10_197591"
+  },
+  {
+   "object_id": 109352,
+   "spect_id": "M3_109352",
+   "sn": 23.899999618530273,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/109352-M3_109352"
+  },
+  {
+   "object_id": 107362,
+   "spect_id": "M3_107362",
+   "sn": 23.700000762939453,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/107362-M3_107362"
+  },
+  {
+   "object_id": 37723,
+   "spect_id": "M14_37723",
+   "sn": 22.899999618530273,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/37723-M14_37723"
+  },
+  {
+   "object_id": 230747,
+   "spect_id": "M13_230747",
+   "sn": 22.600000381469727,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/230747-M13_230747"
+  },
+  {
+   "object_id": 88032,
+   "spect_id": "M15_88032",
+   "sn": 22.600000381469727,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/88032-M15_88032"
+  },
+  {
+   "object_id": 229883,
+   "spect_id": "M9_229883",
+   "sn": 22.600000381469727,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/229883-M9_229883"
+  },
+  {
+   "object_id": 243871,
+   "spect_id": "M13_243871",
+   "sn": 22.299999237060547,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/243871-M13_243871"
+  },
+  {
+   "object_id": 180774,
+   "spect_id": "M12_180774",
+   "sn": 22.200000762939453,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/180774-M12_180774"
+  },
+  {
+   "object_id": 230983,
+   "spect_id": "M10_230983",
+   "sn": 21.700000762939453,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/230983-M10_230983"
+  },
+  {
+   "object_id": 185653,
+   "spect_id": "M12_185653",
+   "sn": 21.5,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/185653-M12_185653"
+  },
+  {
+   "object_id": 108989,
+   "spect_id": "M4_108989",
+   "sn": 21.299999237060547,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/108989-M4_108989"
+  },
+  {
+   "object_id": 27068,
+   "spect_id": "M14_27068",
+   "sn": 21.200000762939453,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/27068-M14_27068"
+  },
+  {
+   "object_id": 216899,
+   "spect_id": "M11_216899",
+   "sn": 21.100000381469727,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/216899-M11_216899"
+  },
+  {
+   "object_id": 37023,
+   "spect_id": "M14_37023",
+   "sn": 21.0,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/37023-M14_37023"
+  },
+  {
+   "object_id": 107643,
+   "spect_id": "M4_107643",
+   "sn": 21.0,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/107643-M4_107643"
+  },
+  {
+   "object_id": 123161,
+   "spect_id": "M4_123161",
+   "sn": 21.0,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/123161-M4_123161"
+  },
+  {
+   "object_id": 147270,
+   "spect_id": "M7_147270",
+   "sn": 20.799999237060547,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/147270-M7_147270"
+  },
+  {
+   "object_id": 225431,
+   "spect_id": "M9_225431",
+   "sn": 19.899999618530273,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/225431-M9_225431"
+  },
+  {
+   "object_id": 248829,
+   "spect_id": "M11_248829",
+   "sn": 19.700000762939453,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/248829-M11_248829"
+  },
+  {
+   "object_id": 212391,
+   "spect_id": "M9_212391",
+   "sn": 19.600000381469727,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/212391-M9_212391"
+  },
+  {
+   "object_id": 227672,
+   "spect_id": "M10_227672",
+   "sn": 19.299999237060547,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/227672-M10_227672"
+  },
+  {
+   "object_id": 237641,
+   "spect_id": "M6_237641",
+   "sn": 19.299999237060547,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/237641-M6_237641"
+  },
+  {
+   "object_id": 146213,
+   "spect_id": "M7_146213",
+   "sn": 19.200000762939453,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/146213-M7_146213"
+  },
+  {
+   "object_id": 214296,
+   "spect_id": "M11_214296",
+   "sn": 19.100000381469727,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/214296-M11_214296"
+  },
+  {
+   "object_id": 233902,
+   "spect_id": "M6_233902",
+   "sn": 19.100000381469727,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/233902-M6_233902"
+  },
+  {
+   "object_id": 120372,
+   "spect_id": "M7_120372",
+   "sn": 19.100000381469727,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/120372-M7_120372"
+  },
+  {
+   "object_id": 227630,
+   "spect_id": "M9_227630",
+   "sn": 19.100000381469727,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/227630-M9_227630"
+  },
+  {
+   "object_id": 163989,
+   "spect_id": "M8_163989",
+   "sn": 19.0,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/163989-M8_163989"
+  },
+  {
+   "object_id": 214899,
+   "spect_id": "M9_214899",
+   "sn": 18.799999237060547,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/214899-M9_214899"
+  },
+  {
+   "object_id": 129596,
+   "spect_id": "M2_129596",
+   "sn": 18.600000381469727,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/129596-M2_129596"
+  },
+  {
+   "object_id": 117010,
+   "spect_id": "M3_117010",
+   "sn": 18.299999237060547,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/117010-M3_117010"
+  },
+  {
+   "object_id": 130005,
+   "spect_id": "M2_130005",
+   "sn": 18.200000762939453,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/130005-M2_130005"
+  },
+  {
+   "object_id": 208622,
+   "spect_id": "M1_208622",
+   "sn": 17.899999618530273,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/208622-M1_208622"
+  },
+  {
+   "object_id": 107370,
+   "spect_id": "M4_107370",
+   "sn": 17.799999237060547,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/107370-M4_107370"
+  },
+  {
+   "object_id": 215519,
+   "spect_id": "M10_215519",
+   "sn": 17.700000762939453,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/215519-M10_215519"
+  },
+  {
+   "object_id": 139662,
+   "spect_id": "M2_139662",
+   "sn": 17.299999237060547,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/139662-M2_139662"
+  },
+  {
+   "object_id": 145276,
+   "spect_id": "M8_145276",
+   "sn": 17.200000762939453,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/145276-M8_145276"
+  },
+  {
+   "object_id": 245621,
+   "spect_id": "M11_245621",
+   "sn": 17.0,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/245621-M11_245621"
+  },
+  {
+   "object_id": 182890,
+   "spect_id": "M12_182890",
+   "sn": 16.799999237060547,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/182890-M12_182890"
+  },
+  {
+   "object_id": 92132,
+   "spect_id": "M12_92132",
+   "sn": 16.100000381469727,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/92132-M12_92132"
+  },
+  {
+   "object_id": 152125,
+   "spect_id": "M7_152125",
+   "sn": 16.0,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/152125-M7_152125"
+  },
+  {
+   "object_id": 240899,
+   "spect_id": "M6_240899",
+   "sn": 15.600000381469727,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/240899-M6_240899"
+  },
+  {
+   "object_id": 214430,
+   "spect_id": "M11_214430",
+   "sn": 15.199999809265137,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/214430-M11_214430"
+  },
+  {
+   "object_id": 126578,
+   "spect_id": "M1_126578",
+   "sn": 15.100000381469727,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/126578-M1_126578"
+  },
+  {
+   "object_id": 120540,
+   "spect_id": "M3_120540",
+   "sn": 15.100000381469727,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/120540-M3_120540"
+  },
+  {
+   "object_id": 37219,
+   "spect_id": "M14_37219",
+   "sn": 15.0,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/37219-M14_37219"
+  },
+  {
+   "object_id": 84337,
+   "spect_id": "M4_84337",
+   "sn": 14.899999618530273,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/84337-M4_84337"
+  },
+  {
+   "object_id": 259737,
+   "spect_id": "M13_259737",
+   "sn": 14.699999809265137,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/259737-M13_259737"
+  },
+  {
+   "object_id": 228717,
+   "spect_id": "M10_228717",
+   "sn": 14.300000190734863,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/228717-M10_228717"
+  },
+  {
+   "object_id": 103366,
+   "spect_id": "M14_103366",
+   "sn": 14.300000190734863,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/103366-M14_103366"
+  },
+  {
+   "object_id": 205765,
+   "spect_id": "M5_205765",
+   "sn": 14.300000190734863,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/205765-M5_205765"
+  },
+  {
+   "object_id": 122025,
+   "spect_id": "M7_122025",
+   "sn": 14.0,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/122025-M7_122025"
+  },
+  {
+   "object_id": 210940,
+   "spect_id": "M2_210940",
+   "sn": 13.699999809265137,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/210940-M2_210940"
+  },
+  {
+   "object_id": 120488,
+   "spect_id": "M7_120488",
+   "sn": 13.600000381469727,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/120488-M7_120488"
+  },
+  {
+   "object_id": 254350,
+   "spect_id": "M13_254350",
+   "sn": 13.5,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/254350-M13_254350"
+  },
+  {
+   "object_id": 245864,
+   "spect_id": "M11_245864",
+   "sn": 13.300000190734863,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/245864-M11_245864"
+  },
+  {
+   "object_id": 173928,
+   "spect_id": "M5_173928",
+   "sn": 13.300000190734863,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/173928-M5_173928"
+  },
+  {
+   "object_id": 93943,
+   "spect_id": "M2_93943",
+   "sn": 13.100000381469727,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/93943-M2_93943"
+  },
+  {
+   "object_id": 109843,
+   "spect_id": "M3_109843",
+   "sn": 12.899999618530273,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/109843-M3_109843"
+  },
+  {
+   "object_id": 217020,
+   "spect_id": "M10_217020",
+   "sn": 12.800000190734863,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/217020-M10_217020"
+  },
+  {
+   "object_id": 162587,
+   "spect_id": "M7_162587",
+   "sn": 12.600000381469727,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/162587-M7_162587"
+  },
+  {
+   "object_id": 161113,
+   "spect_id": "M8_161113",
+   "sn": 12.600000381469727,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/161113-M8_161113"
+  },
+  {
+   "object_id": 232890,
+   "spect_id": "M9_232890",
+   "sn": 12.600000381469727,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/232890-M9_232890"
+  },
+  {
+   "object_id": 38771,
+   "spect_id": "M14_38771",
+   "sn": 12.300000190734863,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/38771-M14_38771"
+  },
+  {
+   "object_id": 206771,
+   "spect_id": "M5_206771",
+   "sn": 12.300000190734863,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/206771-M5_206771"
+  },
+  {
+   "object_id": 225678,
+   "spect_id": "M9_225678",
+   "sn": 12.300000190734863,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/225678-M9_225678"
+  },
+  {
+   "object_id": 143127,
+   "spect_id": "M7_143127",
+   "sn": 12.199999809265137,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/143127-M7_143127"
+  },
+  {
+   "object_id": 212718,
+   "spect_id": "M11_212718",
+   "sn": 11.5,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/212718-M11_212718"
+  },
+  {
+   "object_id": 133240,
+   "spect_id": "M1_133240",
+   "sn": 11.399999618530273,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/133240-M1_133240"
+  },
+  {
+   "object_id": 101830,
+   "spect_id": "M12_101830",
+   "sn": 11.300000190734863,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/101830-M12_101830"
+  },
+  {
+   "object_id": 181421,
+   "spect_id": "M12_181421",
+   "sn": 11.300000190734863,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/181421-M12_181421"
+  },
+  {
+   "object_id": 156118,
+   "spect_id": "M8_156118",
+   "sn": 11.0,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/156118-M8_156118"
+  },
+  {
+   "object_id": 231554,
+   "spect_id": "M13_231554",
+   "sn": 10.899999618530273,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/231554-M13_231554"
+  },
+  {
+   "object_id": 126153,
+   "spect_id": "M1_126153",
+   "sn": 10.300000190734863,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/126153-M1_126153"
+  },
+  {
+   "object_id": 89153,
+   "spect_id": "M15_89153",
+   "sn": 9.800000190734863,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/89153-M15_89153"
+  },
+  {
+   "object_id": 120758,
+   "spect_id": "M7_120758",
+   "sn": 9.800000190734863,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/120758-M7_120758"
+  },
+  {
+   "object_id": 38646,
+   "spect_id": "M14_38646",
+   "sn": 9.699999809265137,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/38646-M14_38646"
+  },
+  {
+   "object_id": 102968,
+   "spect_id": "M14_102968",
+   "sn": 9.5,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/102968-M14_102968"
+  },
+  {
+   "object_id": 245763,
+   "spect_id": "M13_245763",
+   "sn": 9.399999618530273,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/245763-M13_245763"
+  },
+  {
+   "object_id": 255047,
+   "spect_id": "M13_255047",
+   "sn": 9.399999618530273,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/255047-M13_255047"
+  },
+  {
+   "object_id": 201233,
+   "spect_id": "M10_201233",
+   "sn": 9.300000190734863,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/201233-M10_201233"
+  },
+  {
+   "object_id": 101089,
+   "spect_id": "M12_101089",
+   "sn": 8.300000190734863,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/101089-M12_101089"
+  },
+  {
+   "object_id": 258753,
+   "spect_id": "M13_258753",
+   "sn": 8.100000381469727,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/258753-M13_258753"
+  },
+  {
+   "object_id": 167056,
+   "spect_id": "M5_167056",
+   "sn": 8.100000381469727,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/167056-M5_167056"
+  },
+  {
+   "object_id": 36550,
+   "spect_id": "M14_36550",
+   "sn": 8.0,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/36550-M14_36550"
+  },
+  {
+   "object_id": 87207,
+   "spect_id": "M15_87207",
+   "sn": 7.5,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/87207-M15_87207"
+  },
+  {
+   "object_id": 166634,
+   "spect_id": "M6_166634",
+   "sn": 7.300000190734863,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/166634-M6_166634"
+  },
+  {
+   "object_id": 121482,
+   "spect_id": "M7_121482",
+   "sn": 7.300000190734863,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/121482-M7_121482"
+  },
+  {
+   "object_id": 189698,
+   "spect_id": "M10_189698",
+   "sn": 7.199999809265137,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/189698-M10_189698"
+  },
+  {
+   "object_id": 89072,
+   "spect_id": "M15_89072",
+   "sn": 7.099999904632568,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/89072-M15_89072"
+  },
+  {
+   "object_id": 97310,
+   "spect_id": "M2_97310",
+   "sn": 6.900000095367432,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/97310-M2_97310"
+  },
+  {
+   "object_id": 191718,
+   "spect_id": "M10_191718",
+   "sn": 6.800000190734863,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/191718-M10_191718"
+  },
+  {
+   "object_id": 39865,
+   "spect_id": "M14_39865",
+   "sn": 6.800000190734863,
+   "shard": 0,
+   "folder": "shard-00/run/fits/fit/39865-M14_39865"
+  },
+  {
+   "object_id": 98104,
+   "spect_id": "M12_98104",
+   "sn": 6.599999904632568,
+   "shard": 1,
+   "folder": "shard-01/run/fits/fit/98104-M12_98104"
+  },
+  {
+   "object_id": 37843,
+   "spect_id": "M14_37843",
+   "sn": 6.5,
+   "shard": 2,
+   "folder": "shard-02/run/fits/fit/37843-M14_37843"
+  },
+  {
+   "object_id": 112534,
+   "spect_id": "M4_112534",
+   "sn": 6.400000095367432,
+   "shard": 3,
+   "folder": "shard-03/run/fits/fit/112534-M4_112534"
+  },
+  {
+   "object_id": 127946,
+   "spect_id": "M5_127946",
+   "sn": 5.900000095367432,
+   "shard": 4,
+   "folder": "shard-04/run/fits/fit/127946-M5_127946"
+  },
+  {
+   "object_id": 119809,
+   "spect_id": "M3_119809",
+   "sn": 5.699999809265137,
+   "shard": 5,
+   "folder": "shard-05/run/fits/fit/119809-M3_119809"
+  },
+  {
+   "object_id": 185631,
+   "spect_id": "M12_185631",
+   "sn": 4.900000095367432,
+   "shard": 6,
+   "folder": "shard-06/run/fits/fit/185631-M12_185631"
+  },
+  {
+   "object_id": 253688,
+   "spect_id": "M13_253688",
+   "sn": 4.800000190734863,
+   "shard": 7,
+   "folder": "shard-07/run/fits/fit/253688-M13_253688"
+  },
+  {
+   "object_id": 244680,
+   "spect_id": "M13_244680",
+   "sn": 4.400000095367432,
+   "shard": 8,
+   "folder": "shard-08/run/fits/fit/244680-M13_244680"
+  },
+  {
+   "object_id": 217564,
+   "spect_id": "M11_217564",
+   "sn": 3.700000047683716,
+   "shard": 9,
+   "folder": "shard-09/run/fits/fit/217564-M11_217564"
+  },
+  {
+   "object_id": 104877,
+   "spect_id": "M14_104877",
+   "sn": 3.5999999046325684,
+   "shard": 10,
+   "folder": "shard-10/run/fits/fit/104877-M14_104877"
+  }
+ ]
+}
