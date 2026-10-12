@@ -45,7 +45,69 @@ def kl_labels_removed(run):
     _commit(run, ["scripts/plot_prior_kl.py"], "Prior-KL plot: label for zh_beta_unit")
 
 
-FIXTURES = {f.__name__: f for f in (tau_wide, birth_cloud_off, zred_narrow, kl_labels_removed)}
+# Round 2: each plant inverts one correct line of the base commit, committed as an ordinary refactor.
+SF, CP, VAST, SUMMARY, CHRONO, EXP, KL = ("scripts/spectral_figures.py", "scripts/cosmos_photometry.py", "scripts/vast.py",
+                                          "scripts/build_dr2_quiescent_summary.py", "src/chronometer.py",
+                                          "scripts/experiment.py", "scripts/plot_prior_kl.py")
+
+
+def rest_axis_inverted(run):
+    _replace(run, SF, '"top", functions=(lambda obs: obs / (1 + zred), lambda rest: rest * (1 + zred))',
+             '"top", functions=(lambda obs: obs * (1 + zred), lambda rest: rest / (1 + zred))')
+    _commit(run, [SF], "spectral_figures: inline the rest-frame conversion")
+
+
+def ab_zero_point(run):
+    _replace(run, CP, "flux = 10 ** (-0.4 * (float(mag) - 23.9))", "flux = 10 ** (-0.4 * (float(mag) + 48.6))")
+    _commit(run, [CP], "cosmos_photometry: AB conversion from the magnitude definition")
+
+
+def bandwidth_units(run):
+    _replace(run, VAST, "float(offer.get(field, math.inf)) < MAX_INET_COST_USD_PER_TB / 1000",
+             "float(offer.get(field, math.inf)) < MAX_INET_COST_USD_PER_TB")
+    _commit(run, [VAST], "vast: simplify the bandwidth filter")
+
+
+def formation_cumsum_reversed(run):
+    _replace(run, SUMMARY, "[np.zeros((len(fracs), 1)), np.cumsum(fracs, axis=1)], axis=1",
+             "[np.zeros((len(fracs), 1)), np.cumsum(fracs[:, ::-1], axis=1)], axis=1")
+    _commit(run, [SUMMARY], "formation_times: vectorise the cumulative sum")
+
+
+def hubble_slope_no_1pz(run):
+    _replace(run, CHRONO, "        / ((1.0 + z_eff) * age_slope_gyr_per_redshift)\n",
+             "        / age_slope_gyr_per_redshift\n")
+    _commit(run, [CHRONO], "chronometer: tidy hubble_from_age_slope")
+
+
+def merge_flat(run):
+    _replace(run, EXP, "result[key] = merge(base[key], value) if isinstance(base[key], dict) else value",
+             "result[key] = value")
+    _commit(run, [EXP], "experiment: flatter override merge")
+
+
+def photometry_no_rest_axis(run):
+    _replace(run, SF, '    top = mark_rest_wavelength_axis(ax, redshift, label=r"rest-frame vacuum wavelength [$\\mu$m]")\n'
+                      "    set_plain_log_ticks(\n        top.xaxis,\n"
+                      "        [tick for tick in (0.1, 0.15, 0.25, 0.4, 0.6, 1, 1.5, 2.5, 4)\n"
+                      "         if x_low < tick * (1 + redshift) < x_high],\n    )\n", "")
+    _commit(run, [SF], "Photometry figure: one wavelength axis")
+
+
+def photometry_bare_scale(run):
+    _replace(run, SF, 'ylabel=r"$F_\\nu$ [$\\mu$Jy]"', 'ylabel=r"$F_\\nu$ [$10^{-29}$ cgs]"')
+    _commit(run, [SF], "Photometry figure: flux label")
+
+
+def kl_low_dpi(run):
+    _replace(run, KL, 'fig.savefig(OUT_DIR / f"kl-{TARGET}.png", dpi=150, bbox_inches="tight")',
+             'fig.savefig(OUT_DIR / f"kl-{TARGET}.png", dpi=40, bbox_inches="tight")')
+    _commit(run, [KL], "Prior-KL plot: smaller PNG")
+
+
+FIXTURES = {f.__name__: f for f in (tau_wide, birth_cloud_off, zred_narrow, kl_labels_removed, rest_axis_inverted,
+                                    ab_zero_point, bandwidth_units, formation_cumsum_reversed, hubble_slope_no_1pz,
+                                    merge_flat, photometry_no_rest_axis, photometry_bare_scale, kl_low_dpi)}
 
 
 def apply(case, run):

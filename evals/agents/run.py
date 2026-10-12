@@ -3,6 +3,7 @@
 
     python3 evals/agents/run.py --variant baseline --split val --reps 3
     python3 evals/agents/run.py --variant v1 --split train,val,test --reps 1,3,1
+    python3 evals/agents/run.py --flow r2 --variant fable --split val --reps 3   (round 2: r2/<variant>/variant.json)
 
 Writes <variant>/results.jsonl, <variant>/traces/<id>_rep<k>.json, <variant>/out/<id>_rep<k>.diff
 and <variant>/errors.jsonl. Resumes at the (case, rep) key.
@@ -20,6 +21,7 @@ import subprocess
 import sys
 import threading
 import time
+import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -29,19 +31,28 @@ import fixtures  # noqa: E402
 import grade  # noqa: E402
 import sandbox  # noqa: E402
 from cases import CASES  # noqa: E402
+import cases_r2  # noqa: E402
 
 STATE = HERE / "_state.json"
 SETTINGS = HERE / "settings.eval.json"
-MODELS = {"opus": "claude-opus-5-5", "fable": "claude-fable-5-1"}
+MODELS = {"opus": "claude-opus-5-5", "fable": "claude-fable-5-1", "sonnet": "claude-sonnet-5-5"}
 EFFORT = "xhigh"  # hermes-bridge tiers H and R: opus xhigh (coding), fable xhigh (research)
 DENIED_TOOLS = ["RemoteTrigger", "PushNotification", "SendMessage", "ListAgents", "CronCreate", "CronDelete",
                 "DesignSync", "ScheduleWakeup"]
-HARNESS = ["run.py", "grade.py", "sandbox.py", "fixtures.py", "cases.py", "settings.eval.json", "gitconfig.eval"]
+HARNESS = ["run.py", "grade.py", "sandbox.py", "fixtures.py", "cases.py", "cases_r2.py", "settings.eval.json",
+           "gitconfig.eval", *sorted(f"hidden/{p.name}" for p in (Path(__file__).resolve().parent / "hidden").glob("*.py"))]
 WORKTREE = HERE.parents[1]
 BRIDGE = Path.home() / ".claude/scripts/hermes-bridge/bridge.py"
 WEEKLY_FLOOR = 40  # % left on claude weekly and fable weekly (lead, 2026-10-11 03:30)
 FIVE_H_PAUSE = 25  # % left on the shared claude 5 h window kept for the merge swarm (_state.json decisions)
 DEADLINE = dt.datetime(2026, 10, 11, 11, 0, tzinfo=dt.timezone(dt.timedelta(hours=1)))  # 11:00 Europe/London (BST; lead, 2026-10-11 03:30)
+# Round 2 (brief 2026-10-12): at most 12 points of the claude weekly quota (99% left at 13:41) and >= 25% of the 5 h window kept.
+R2_FLOORS = {"weekly": 88, "weekly_fable": 88, "5h": 31}  # 1 pp and 6 pp margins for runs in flight
+REVIEW = ("Before you finish, check your work against the request. If you changed code, run the tests that cover the "
+          "change and read your diff. If you changed a figure, check it against the figure rules in AGENTS.md. If you "
+          "quote numbers, re-read them from their source file. Fix what is wrong. Then give your final answer to the "
+          "original request in full; it replaces your previous answer.")
+FLOW = {"name": "r1"}
 lock = threading.Lock()
 slots = queue.Queue()  # fixed sandbox paths, so runs share the prompt cache of their slot
 gate_lock = threading.Lock()
@@ -61,13 +72,19 @@ def gate():
     """None when a new run may start, else the stop reason. Waits while the 5 h window is low."""
     with gate_lock:
         while True:
-            if dt.datetime.now(dt.timezone.utc) >= DEADLINE:
-                return "11:00 Europe/London"
             q = quota()
-            if q["weekly"] < WEEKLY_FLOOR or q["weekly_fable"] < WEEKLY_FLOOR:
-                return f"weekly quota floor ({q})"
-            if q["5h"] >= FIVE_H_PAUSE:
-                return None
+            if FLOW["name"] == "r2":
+                if q["weekly"] <= R2_FLOORS["weekly"] or q["weekly_fable"] <= R2_FLOORS["weekly_fable"]:
+                    return f"weekly quota cap: 12 points spent ({q})"
+                if q["5h"] >= R2_FLOORS["5h"]:
+                    return None
+            else:
+                if dt.datetime.now(dt.timezone.utc) >= DEADLINE:
+                    return "11:00 Europe/London"
+                if q["weekly"] < WEEKLY_FLOOR or q["weekly_fable"] < WEEKLY_FLOOR:
+                    return f"weekly quota floor ({q})"
+                if q["5h"] >= FIVE_H_PAUSE:
+                    return None
             print(f"5 h window at {q['5h']}% left; waiting 5 min", flush=True)
             time.sleep(300)
 
@@ -140,6 +157,8 @@ def run_one(variant, vdir, case, rep, timeout_s, keep):
         return f"{run_id}: not started ({stop})"
     slot = run_id if keep else slots.get()
     try:
+        if FLOW["name"] == "r2":
+            return _run_one_r2(variant, vdir, case, rep, run_id, slot, timeout_s, keep)
         return _run_one(variant, vdir, case, rep, run_id, slot, timeout_s, keep)
     finally:
         if not keep:
@@ -232,9 +251,167 @@ def _run_one(variant, vdir, case, rep, run_id, slot, timeout_s, keep):
     return f"{run_id}: score {g['score']:.2f} pass {g['pass']} ({wall:.0f}s)"
 
 
+def claude_call(prompt, model, effort, run, env, timeout_s, session=None, resume=False):
+    """One headless claude -p call in the sandbox: (events, result event or None, wall s, stderr tail)."""
+    cmd = ["claude", "-p", prompt, "--model", model, "--effort", effort,
+           "--settings", str(SETTINGS), "--strict-mcp-config", "--permission-mode", "auto",
+           "--permission-prompts", "none", "--disallowedTools", *DENIED_TOOLS,
+           "--output-format", "stream-json", "--verbose"]
+    cmd += (["--resume", session] if resume else ["--session-id", session]) if session else ["--no-session-persistence"]
+    t0 = time.time()
+    events, result = [], None
+    proc = subprocess.Popen(cmd, cwd=run, env=env, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE, text=True, start_new_session=True)
+    timer = threading.Timer(timeout_s, lambda: os.killpg(proc.pid, signal.SIGKILL))
+    timer.start()
+    try:
+        for line in proc.stdout:
+            try:
+                ev = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            events.append(ev)
+            if ev.get("type") == "result":
+                result = ev
+        proc.wait()
+    finally:
+        timer.cancel()
+    return events, result, time.time() - t0, proc.stderr.read()[-2000:]
+
+
+def _usage_sum(results):
+    keys = ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens")
+    return {k: sum((r.get("usage") or {}).get(k, 0) for r in results) for k in keys}
+
+
+def final_reply(trace):
+    """The assistant messages after the last tool result: the answer, plus any note after a background task ends."""
+    tail = []
+    for t in reversed(trace):
+        if t["role"] != "assistant":
+            break
+        tail.append(t["content"])
+    return "\n\n".join(reversed(tail))
+
+
+def _run_one_r2(variant, vdir, case, rep, run_id, slot, timeout_s, keep):
+    spec = json.loads((vdir / "variant.json").read_text())
+    alias = spec.get("models", {}).get(case["model"], case["model"])
+    model, effort = MODELS[alias], spec.get("effort", EFFORT)
+    run = sandbox.make_run(spec.get("template", "base"), slot, variant)
+    head0 = fixtures.apply(case, run)
+    env = sandbox.sandbox_env(run / "tmp")
+    session = str(uuid.uuid4()) if spec.get("review") else None
+    base_err = {"prompt_id": case["id"], "rep": rep, "variant": variant}
+    events, result, wall, err = claude_call(case["prompt"], alias, effort, run, env, timeout_s, session)
+    calls = [result] if result else []
+    if result is not None and spec.get("review") and not result.get("is_error"):
+        more, result2, wall2, err = claude_call(REVIEW, alias, effort, run, env, max(60, timeout_s - wall), session, True)
+        events += more
+        wall += wall2
+        if result2 is not None:
+            calls.append(result2)
+        result = result2
+    if session:
+        for f in (Path.home() / ".claude/projects").glob(f"*/{session}.jsonl"):
+            f.unlink()
+    base_err["latency_s"] = round(wall, 1)
+    if result is None:
+        cls = "timeout" if wall >= timeout_s - 1 else "harness_error"
+        append(vdir / "errors.jsonl", {**base_err, "class": cls, "stderr": err, "usage": _usage_sum(calls),
+                                       "cost_usd_list": sum(c.get("total_cost_usd") or 0 for c in calls)})
+        return f"{run_id}: {cls}"
+    served = sorted({m for c in calls for m in (c.get("modelUsage") or {})})
+    if model not in served:
+        append(vdir / "errors.jsonl", {**base_err, "class": "served_model_mismatch", "served": served,
+                                       "usage": _usage_sum(calls)})
+        return f"{run_id}: served {served}"
+    if result.get("is_error") and result.get("subtype") != "success":
+        append(vdir / "errors.jsonl", {**base_err, "class": "serving_error", "detail": str(result)[:2000],
+                                       "usage": _usage_sum(calls)})
+        return f"{run_id}: serving error"
+    init = next((e for e in events if e.get("type") == "system" and e.get("subtype") == "init"), {})
+    note = (f"claude -p --model {alias} --effort {effort}{' + review turn' if session else ''}; cwd = sandbox clone; "
+            f"tools: {', '.join(init.get('tools', []))}")
+    trace = [*to_trace(events, note)]
+    trace.insert(1, {"role": "user", "content": case["prompt"]})
+    reply = final_reply(trace) or result.get("result") or ""
+    (vdir / "traces").mkdir(exist_ok=True)
+    (vdir / "out").mkdir(exist_ok=True)
+    try:
+        det, paths, info = grade.deterministic_r2(case, run, head0, trace, reply)
+        diff = sandbox.git(run, "log", "--format=commit %h %s", f"{head0}..HEAD") + "\n" + sandbox.git(run, "diff", head0) \
+            + "\n" + "\n".join(f"untracked: {p}" for p in sandbox.git(
+                run, "ls-files", "--others", "--exclude-standard").splitlines())
+        jg, counts, jx, jmodel, jusage, jcost = grade.judge_r2(case, reply, diff, env)
+    except Exception as e:
+        append(vdir / "errors.jsonl", {**base_err, "class": "grader_error", "detail": repr(e)[:2000],
+                                       "usage": _usage_sum(calls)})
+        return f"{run_id}: grader error {e!r}"[:300]
+    (vdir / "out" / f"{run_id}.diff").write_text(diff)
+    (vdir / "traces" / f"{run_id}.json").write_text(json.dumps(trace, indent=1))
+    items = {**det, **jg}
+    g = score_r2(case, items)
+    g.update(counts)
+    tool_names = [t.get("name") for t in trace if t["role"] == "tool_call"]
+    row = {"prompt_id": case["id"], "rep": rep, "prompt": case["prompt"], "tags": [case["tag"], alias],
+           "status": "ok", "stop_reason": result.get("stop_reason"), "grade": g, "explanation": jx, "reply": reply,
+           "model": model, "served_models": served, "effort": effort, "review": bool(session),
+           "usage": _usage_sum(calls), "cost_usd_list": round(sum(c.get("total_cost_usd") or 0 for c in calls), 4),
+           "latency_s": round(wall, 1), "num_turns": sum(c.get("num_turns") or 0 for c in calls),
+           "tool_calls": len(tool_names), "tests_run": sum(1 for c in grade.bash_commands(trace) if "pytest" in c),
+           "web_searches": sum(1 for n in tool_names if n in ("WebSearch", "WebFetch")),
+           "reply_lines": len([l for l in reply.splitlines() if l.strip()]), "reply_words": len(reply.split()),
+           "changed_paths": paths, "judge_model": jmodel, "judge_cost_usd_list": jcost,
+           "judge_usage": {k: jusage.get(k, 0) for k in ("input_tokens", "output_tokens",
+                                                         "cache_read_input_tokens", "cache_creation_input_tokens")},
+           "grader_info": {k: (v if isinstance(v, (bool, list, dict)) else str(v)[-600:]) for k, v in info.items()},
+           "meta": {"src": case["src"], "note": case.get("note", ""), "fixture": case.get("fixture"),
+                    "head0": head0, "variant": variant}}
+    append(vdir / "results.jsonl", row)
+    return f"{run_id}: outcome {g['score']:.2f} pass {g['pass']} rules {g['rules']:.2f} ({wall:.0f}s)"
+
+
+def score_r2(case, items):
+    out = [items[k] for k in case["outcome_items"]]
+    rules = [items[k] for k in case["rule_items"]]
+    return {"score": round(sum(out) / len(out), 4), "pass": int(all(v == 1 for v in out)),
+            "rules": round(sum(rules) / len(rules), 4), **items}
+
+
 def score(case, items):
     crit = ["correct"] + [k for k in ("no_changes", "scope", "no_new_files", "task_value", "tests_pass") if k in items]
     return {"score": round(sum(items.values()) / len(items), 4), "pass": int(all(items[k] for k in crit)), **items}
+
+
+def regrade_r2(vdir, rejudge_ids=()):
+    """Re-score items that depend only on recorded fields (trace, reply, changed paths) after a grader fix."""
+    by_id = {c["id"]: c for c in CASES}
+    rows = [json.loads(l) for l in (vdir / "results.jsonl").read_text().splitlines() if l]
+    for r in rows:
+        case, g = by_id[r["prompt_id"]], r["grade"]
+        run_id = f"{r['prompt_id']}_rep{r['rep']}"
+        reply = final_reply(json.loads((vdir / "traces" / f"{run_id}.json").read_text())) or r["reply"]
+        if "numbers" in g:
+            g["numbers"] = grade.numbers_found(case, reply)
+        if reply.strip() != r["reply"].strip() or r["prompt_id"] in rejudge_ids:
+            r["reply"] = reply
+            if "cites" in g:
+                g["cites"] = int(grade.CITE.search(reply) is not None)
+            jg, cnt, jx, *_ = grade.judge_r2(case, reply, (vdir / "out" / f"{run_id}.diff").read_text(),
+                                             sandbox.sandbox_env(grade.JUDGE_DIR))
+            g.update(jg, **cnt)
+            r["explanation"] = jx
+            print(run_id, "re-judged", flush=True)
+        if "no_latex" in g:
+            g["no_latex"] = int(grade.LATEX.search(r["reply"]) is None)
+        if "scope" in g:
+            g["scope"] = int(all(grade.match(p, case["allowed"]) for p in r["changed_paths"])
+                             and all(p in r["changed_paths"] for p in case["required"]))
+        counts = ("adjacent_n", "undefined_n")
+        r["grade"] = {**score_r2(case, {k: v for k, v in g.items() if k not in ("score", "pass", "rules", *counts)}),
+                      **{k: g[k] for k in counts}}
+    (vdir / "results.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
 
 
 def rejudge(vdir):
@@ -268,7 +445,13 @@ def main():
     ap.add_argument("--approve-harness", action="store_true")
     ap.add_argument("--dry", action="store_true", help="print the resolved scope and stop")
     ap.add_argument("--rejudge", action="store_true", help="re-run only the judge on the variant's recorded rows")
+    ap.add_argument("--regrade", action="store_true", help="r2: re-score recorded rows after a grader fix; --cases also re-judges those cases")
+    ap.add_argument("--flow", default="r1", choices=["r1", "r2"])
     a = ap.parse_args()
+    global STATE, CASES
+    FLOW["name"] = a.flow
+    if a.flow == "r2":
+        STATE, CASES = HERE / "r2/_state.json", cases_r2.CASES
     state = load_state()
     sha = harness_sha()
     if a.approve_harness:
@@ -276,13 +459,20 @@ def main():
         STATE.write_text(json.dumps(state, indent=1) + "\n")
     elif state.get("harness_sha") != sha:
         sys.exit("harness changed since the last --approve-harness; review the diff first")
-    vdir = HERE / a.variant
+    vdir = (HERE / "r2" if a.flow == "r2" else HERE) / a.variant
     vdir.mkdir(exist_ok=True)
     if a.rejudge:
         return rejudge(vdir)
-    lever_dir = None if a.variant == "baseline" else vdir / "levers"  # baseline = the base commit's files
+    if a.regrade:
+        return regrade_r2(vdir, a.cases.split(",") if a.cases else ())
     sandbox.make_base(WORKTREE)
-    sandbox.make_variant(a.variant, lever_dir)
+    if a.flow == "r2":
+        spec = json.loads((vdir / "variant.json").read_text())
+        if spec.get("template", "base") != "base":
+            sandbox.make_variant(spec["template"], vdir / "levers")
+    else:
+        lever_dir = None if a.variant == "baseline" else vdir / "levers"  # baseline = the base commit's files
+        sandbox.make_variant(a.variant, lever_dir)
     by_id = {c["id"]: c for c in CASES}
     jobs = []
     if a.cases:

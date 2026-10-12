@@ -1,0 +1,21 @@
+commit e1c7460 M1_210210 Noll broad-prior config: delta U(-4, 1), E_bump U(0, 20); dry run only
+diff --git a/results/m1-210210-noll-broad-2026-10-12/experiment.json b/results/m1-210210-noll-broad-2026-10-12/experiment.json
+new file mode 100644
+index 0000000..419ff70
+--- /dev/null
++++ b/results/m1-210210-noll-broad-2026-10-12/experiment.json
+@@ -0,0 +1,14 @@
++{
++  "targets": [
++    "M1_210210"
++  ],
++  "seed": 20260927,
++  "settings": {},
++  "priors": {
++    "diffuse_delta": "Uniform(low=-4.0, high=1.0)",
++    "diffuse_Ebump": "Uniform(low=0.0, high=20.0)"
++  },
++  "arms": {
++    "broad": {}
++  }
++}

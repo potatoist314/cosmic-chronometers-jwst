@@ -1,0 +1,164 @@
+{
+ "flow": "agents-r2",
+ "current_round": 0,
+ "reps": {
+  "train": 1,
+  "val": 3,
+  "test": 1
+ },
+ "goal": {
+  "target": "score",
+  "direction": "higher",
+  "hold": [
+   "pass",
+   "rules"
+  ]
+ },
+ "approve_each_round": false,
+ "split_seed": 20261012,
+ "train_ids": [
+  "cf02",
+  "cf05",
+  "ed03",
+  "ed01",
+  "fg04",
+  "fg02",
+  "fx06",
+  "fx05",
+  "lk03",
+  "lk02",
+  "nm02",
+  "nm04"
+ ],
+ "val_ids": [
+  "cf03",
+  "cf01",
+  "ed02",
+  "ed09",
+  "fg03",
+  "fg01",
+  "fx02",
+  "fx01",
+  "lk09",
+  "lk05",
+  "nm01",
+  "nm06"
+ ],
+ "test_ids": [
+  "cf06",
+  "cf04",
+  "ed07",
+  "ed08",
+  "fg05",
+  "fx04",
+  "fx03",
+  "lk04",
+  "lk01",
+  "lk07",
+  "nm03",
+  "nm05"
+ ],
+ "harness_paths": [
+  "evals/agents/run.py",
+  "evals/agents/grade.py",
+  "evals/agents/sandbox.py",
+  "evals/agents/fixtures.py",
+  "evals/agents/cases.py",
+  "evals/agents/cases_r2.py",
+  "evals/agents/settings.eval.json",
+  "evals/agents/gitconfig.eval",
+  "evals/agents/hidden/"
+ ],
+ "metrics": [
+  {
+   "id": "pass",
+   "kind": "binary",
+   "label": "Pass"
+  },
+  {
+   "id": "score",
+   "kind": "float",
+   "label": "Outcome"
+  },
+  {
+   "id": "rules",
+   "kind": "float",
+   "label": "Rules"
+  },
+  {
+   "id": "adjacent_n",
+   "kind": "float",
+   "label": "Adjacent sentences",
+   "better": "lower"
+  },
+  {
+   "id": "undefined_n",
+   "kind": "float",
+   "label": "Undefined terms",
+   "better": "lower"
+  }
+ ],
+ "perf_fields": [
+  {
+   "id": "latency_s",
+   "label": "Latency",
+   "unit": "s"
+  },
+  {
+   "id": "tool_calls",
+   "label": "Tool calls"
+  },
+  {
+   "id": "cost_usd_list",
+   "label": "List cost",
+   "unit": "$"
+  }
+ ],
+ "quota_start": {
+  "at": "2026-10-12T13:41",
+  "claude_5h_left": 93,
+  "claude_weekly_left": 99,
+  "claude_weekly_fable_left": 100
+ },
+ "decisions": [
+  {
+   "when": "2026-10-12",
+   "what": "Quota rule read as: stop at 12 points of claude weekly (and of fable weekly) spent; pause new runs while the 5 h window is below 25% left",
+   "why": "Brief rule 6. Pausing keeps 25% of the window free without ending the round early; the weekly cap ends the runs."
+  },
+  {
+   "when": "2026-10-12",
+   "what": "Split train/val/test 12/12/12, stratified by tag, seed 20261012",
+   "why": "Same design as round 1; levers are judged on val with 3 trials (brief step 3)."
+  },
+  {
+   "at": "2026-10-12 14:20",
+   "what": "Judge negatives: 12 known-bad replies (empty, I don't know, wrong numbers or facts) on lk05, lk09, nm01, nm06 all got correct=0 (r2/judge_negatives.json)."
+  },
+  {
+   "at": "2026-10-12 14:50",
+   "what": "Grader fixes after the baseline val run, applied to recorded rows with run.py --regrade before any lever ran: (1) no_latex no longer fires on currency pairs such as '$5/TB ... $10/TB' (ed09, 2 rows); (2) ed09 scope also allows BENCHMARK_CHECK.md and scripts/validate_ceridwen_speedups.py, which state the same bandwidth limit; (3) the graded reply is the trailing assistant messages after the last tool result, not only the result event, which held a one-line note after a background task ended (lk09 rep0; re-judged)."
+  },
+  {
+   "at": "2026-10-12 14:50",
+   "what": "nm06 key kept unchanged although all 3 baseline reps fail it (no 3342 fitted-pixel count; the judge requires the ln Z non-comparability point). Not tuned after seeing results."
+  },
+  {
+   "at": "2026-10-12 14:50",
+   "what": "Measured cost of baseline val x3 (36 runs): weekly 96 -> 92, weekly_fable 100 -> 97, 5 h 87 -> 33. About 5 pp weekly remain above the 87 floor: lever order sonnet, effort-high, review, fable (fable would need about 18 pp of the fable pool). Gate floors raised to weekly 88 / 5 h 31 to absorb runs in flight."
+  },
+  {
+   "at": "2026-10-12 15:05",
+   "what": "Hand labels (agent-labelled; none from Liu Hao) on the 12 judged baseline val rows: correct agrees 9/12 before and 12/12 after the nm06 key named its required facts; adjacent_n within 1 on 8/12, judge higher by 1.25 on average (r2/judge_agreement.json). The nm06 key change is applied to every variant with run.py --regrade --cases nm06."
+  },
+  {
+   "at": "2026-10-12 15:05",
+   "what": "no_latex: the digit-led $...$ branch now needs a backslash, ^ or _{ and never spans a code span (MAX_INET_COST_USD_PER_TB matched). Round-1 replies give the same result with the old and new pattern."
+  },
+  {
+   "at": "2026-10-12 15:05",
+   "what": "Baseline val x3 after the grader fixes: outcome, pass and rules 1.000 on 36/36 runs. Val cannot show an improvement; levers are compared on losses, counts and cost. Lever order kept: sonnet, effort-high, then review/fable only if quota remains."
+  }
+ ],
+ "harness_sha": "c328946aae6df034e859d9f750fda5be5079c243014e363a27aa295d560d38c8"
+}

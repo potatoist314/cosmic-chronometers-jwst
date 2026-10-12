@@ -1,0 +1,53 @@
+commit 0f1f774 KL figure: points with error bars instead of bars
+diff --git a/scripts/plot_prior_kl.py b/scripts/plot_prior_kl.py
+index 2209784..36639e5 100644
+--- a/scripts/plot_prior_kl.py
++++ b/scripts/plot_prior_kl.py
+@@ -7,7 +7,7 @@ prior. The SFR ratios are replaced by log10 SFR per SFH bin (M_sun/yr), a
+ derived quantity: its prior is a sample of every sampled parameter drawn from
+ the stored priors and pushed through the notebook's SFH conversion, and the
+ empirical CDF of that sample plays the role of the prior CDF. Writes a sorted
+-bar chart and its table to ``wiki/analyses/m1-210210-reference/``.
++point chart and its table to ``wiki/analyses/m1-210210-reference/``.
+ 
+ Usage: ``JAX_PLATFORMS=cpu ceridwen/.venv/bin/python scripts/plot_prior_kl.py``
+ """
+@@ -210,17 +210,18 @@ def main() -> None:
+ 
+     labels = pd.concat([t["label"] for t in kl.values()]).groupby(level=0).first().loc[order]
+     y = np.arange(len(order))[::-1]
+-    h = 0.8 / len(kl)
++    h = 0.3  # vertical offset between fits within a row
+     fig, ax = plt.subplots(figsize=(9.5, 6.8))
+     for n, (k, t) in enumerate(kl.items()):
+         t = t.reindex(order)
+-        yy = y + 0.4 - h * (n + 0.5)
+-        ax.barh(yy, t["bits"], height=h, color=FITS[k][1], label=FITS[k][2], alpha=0.85)
+-        ax.errorbar(t["bits"], yy, xerr=t["err"], fmt="none", ecolor="0.4", lw=0.8, capsize=1.5)
++        yy = y + h * ((len(kl) - 1) / 2 - n)
++        ax.errorbar(t["bits"], yy, xerr=t["err"], fmt="o", ms=5, color=FITS[k][1], elinewidth=0.8,
++                    capsize=1.5, label=FITS[k][2])
+     ax.set_yticks(y)
+     ax.set_yticklabels(labels, fontsize=9)
+     ax.tick_params(axis="y", length=0)
+     ax.set_ylim(-0.6, len(order) - 0.4)
++    ax.set_xlim(left=0)
+     ax.set_xlabel(r"$D_{\mathrm{KL}}(\mathrm{posterior}\,\|\,\mathrm{prior})$ [bits]")
+     ax.grid(axis="x", color="0.9", lw=0.6)
+     ax.set_axisbelow(True)
+diff --git a/wiki/analyses/m1-210210-reference/kl-M1_210210.png b/wiki/analyses/m1-210210-reference/kl-M1_210210.png
+index 58aa8fb..47b3525 100644
+Binary files a/wiki/analyses/m1-210210-reference/kl-M1_210210.png and b/wiki/analyses/m1-210210-reference/kl-M1_210210.png differ
+diff --git a/wiki/log.md b/wiki/log.md
+index ec2de9e..2b558f2 100644
+--- a/wiki/log.md
++++ b/wiki/log.md
+@@ -1454,3 +1454,8 @@
+ 
+ - `wiki/research/experiments/e-quiescent-speedups.md`: ten-galaxy all-production-defaults run on the combined speedups; spectrum and photometry first per target, SFH and physical-corner views, run metadata and pinned source record.
+ - Files: `wiki/research/experiments/e-quiescent-speedups.md`, `results/quiescent-test-set-speedups-2026-10-01/` (84 run files, byte-identical to speedups 187b7ad), `wiki/index.md`, `wiki/log.md`.
++
++### 2026-10-12 — KL figure as points
++
++- Liu Hao asked for points instead of bars in the KL figure. `scripts/plot_prior_kl.py` draws each fit as points with bootstrap error bars, offset within a row, x axis from 0. `wiki/analyses/m1-210210-reference/kl-M1_210210.png` was re-rendered from the stored `kl-M1_210210.csv`; fit A's `ceridwen_result.h5` is not in this checkout.
++- Files: `scripts/plot_prior_kl.py`, `wiki/analyses/m1-210210-reference/kl-M1_210210.png`, `wiki/log.md`.

@@ -1,0 +1,12 @@
+commit 42b3a1e cosmos_photometry: restore uJy AB zero point (23.9)
+diff --git a/scripts/cosmos_photometry.py b/scripts/cosmos_photometry.py
+index 1309bb6..813440a 100644
+--- a/scripts/cosmos_photometry.py
++++ b/scripts/cosmos_photometry.py
+@@ -131,7 +131,7 @@ def from_magnitude(row, flux_column, mag_column, flux_error_column, mag_error_co
+     mag, mag_error = row[mag_column], row[mag_error_column]
+     if np.ma.is_masked(mag) or not np.isfinite(mag) or not 0 < mag < 50:
+         return as_float(row[flux_column]), as_float(row[flux_error_column])
+-    flux = 10 ** (-0.4 * (float(mag) + 48.6))
++    flux = 10 ** (-0.4 * (float(mag) - 23.9))
+     return flux, flux * float(mag_error) * np.log(10) / 2.5

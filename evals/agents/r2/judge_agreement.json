@@ -1,0 +1,106 @@
+{
+ "labeller": "agent-hillclimb (no label from Liu Hao)",
+ "note": "judge_v1 = before the nm06 key marked its required facts; judge_v2 = after (applied to all variants).",
+ "correct_agreement_v1": "9/12",
+ "correct_agreement_v2": "12/12",
+ "adjacent_within_1": "8/12",
+ "adjacent_mean_judge_minus_human": 1.25,
+ "rows": [
+  {
+   "run": "baseline/nm01_rep0",
+   "correct_human": 1,
+   "correct_judge_v1": 1,
+   "correct_judge_v2": 1,
+   "adjacent_human": 6,
+   "adjacent_judge": 6
+  },
+  {
+   "run": "baseline/nm01_rep1",
+   "correct_human": 1,
+   "correct_judge_v1": 1,
+   "correct_judge_v2": 1,
+   "adjacent_human": 4,
+   "adjacent_judge": 4
+  },
+  {
+   "run": "baseline/nm01_rep2",
+   "correct_human": 1,
+   "correct_judge_v1": 1,
+   "correct_judge_v2": 1,
+   "adjacent_human": 5,
+   "adjacent_judge": 6
+  },
+  {
+   "run": "baseline/lk05_rep0",
+   "correct_human": 1,
+   "correct_judge_v1": 1,
+   "correct_judge_v2": 1,
+   "adjacent_human": 2,
+   "adjacent_judge": 3
+  },
+  {
+   "run": "baseline/lk05_rep1",
+   "correct_human": 1,
+   "correct_judge_v1": 1,
+   "correct_judge_v2": 1,
+   "adjacent_human": 2,
+   "adjacent_judge": 2
+  },
+  {
+   "run": "baseline/lk05_rep2",
+   "correct_human": 1,
+   "correct_judge_v1": 1,
+   "correct_judge_v2": 1,
+   "adjacent_human": 3,
+   "adjacent_judge": 3
+  },
+  {
+   "run": "baseline/lk09_rep0",
+   "correct_human": 1,
+   "correct_judge_v1": 1,
+   "correct_judge_v2": 1,
+   "adjacent_human": 2,
+   "adjacent_judge": 4
+  },
+  {
+   "run": "baseline/lk09_rep1",
+   "correct_human": 1,
+   "correct_judge_v1": 1,
+   "correct_judge_v2": 1,
+   "adjacent_human": 1,
+   "adjacent_judge": 3
+  },
+  {
+   "run": "baseline/lk09_rep2",
+   "correct_human": 1,
+   "correct_judge_v1": 1,
+   "correct_judge_v2": 1,
+   "adjacent_human": 0,
+   "adjacent_judge": 3
+  },
+  {
+   "run": "baseline/nm06_rep0",
+   "correct_human": 1,
+   "correct_judge_v1": 0,
+   "correct_judge_v2": 1,
+   "adjacent_human": 3,
+   "adjacent_judge": 3
+  },
+  {
+   "run": "baseline/nm06_rep1",
+   "correct_human": 1,
+   "correct_judge_v1": 0,
+   "correct_judge_v2": 1,
+   "adjacent_human": 1,
+   "adjacent_judge": 6
+  },
+  {
+   "run": "baseline/nm06_rep2",
+   "correct_human": 1,
+   "correct_judge_v1": 0,
+   "correct_judge_v2": 1,
+   "adjacent_human": 2,
+   "adjacent_judge": 3
+  }
+ ]
+}

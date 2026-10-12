@@ -1,0 +1,21 @@
+commit 5024753 M1_210210 Noll wide-prior config: delta U(-3, 0.4), E_bump U(0, 12) on production defaults
+diff --git a/results/m1-210210-noll-wide-2026-10-12/experiment.json b/results/m1-210210-noll-wide-2026-10-12/experiment.json
+new file mode 100644
+index 0000000..02e5ef5
+--- /dev/null
++++ b/results/m1-210210-noll-wide-2026-10-12/experiment.json
+@@ -0,0 +1,14 @@
++{
++  "targets": [
++    "M1_210210"
++  ],
++  "seed": 20260832,
++  "settings": {},
++  "priors": {
++    "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
++    "diffuse_Ebump": "Uniform(low=0.0, high=12.0)"
++  },
++  "arms": {
++    "wide": {}
++  }
++}

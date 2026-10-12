@@ -16,13 +16,14 @@ from pathlib import Path
 
 MAIN = Path("/Users/liuhao/Downloads/Astro project")
 ROOT = MAIN / "tmp/agent-hillclimb"
-TEMPLATES = ROOT / "templates"
-SANDBOXES = ROOT / "sandboxes"
+TEMPLATES = ROOT / "templates_r2"  # round 1: templates/ (a full clone; see make_base)
+SANDBOXES = ROOT / "sandboxes_r2"
 BASE_COMMIT = "7354c90"
 BRANCH = "absorption-mask"
 GITHUB = "https://github.com/potatoist314/cosmic-chronometers-jwst.git"
 SUBMODULES = {"ceridwen": "https://github.com/potatoist314/ceridwen.git",
-              "external/sedpy_jax": "https://github.com/potatoist314/sedpy_jax.git"}
+              "external/sedpy_jax": "https://github.com/potatoist314/sedpy_jax.git",
+              "external/fsps": "https://github.com/cconroy20/fsps.git"}
 # Git-ignored inputs the project's agents normally find on disk.
 COPIES = ["ceridwen/.venv", ".venv", "data/raw", "papers"]
 LEVERS = ["AGENTS.md", "CLAUDE.md", ".agents/skills"]
@@ -49,10 +50,15 @@ def make_base(worktree):
     if base.exists():
         shutil.rmtree(base)
     TEMPLATES.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["git", "clone", "-q", "--no-checkout", "--no-tags", str(worktree), str(base)], check=True)
+    # Only the eval branch's history: the eval's own branch (answer keys) never enters the object store,
+    # and commits after BASE_COMMIT are pruned.
+    subprocess.run(["git", "clone", "-q", "--no-checkout", "--no-tags", "--single-branch", "--branch", BRANCH,
+                    str(worktree), str(base)], check=True)
     git(base, "checkout", "-q", "-B", BRANCH, BASE_COMMIT)
     for ref in git(base, "for-each-ref", "--format=%(refname)", "refs/remotes").split():
         git(base, "update-ref", "-d", ref)
+    git(base, "reflog", "expire", "--expire=now", "--all")
+    git(base, "gc", "-q", "--prune=now")
     git(base, "remote", "set-url", "origin", GITHUB)
     git(base, "remote", "set-url", "--push", "origin", "DISABLED")
     git(base, "update-ref", f"refs/remotes/origin/{BRANCH}", "HEAD")
@@ -110,11 +116,11 @@ def make_variant(variant, lever_dir):
     return tmpl
 
 
-def make_run(variant, run_id):
-    run = SANDBOXES / variant / run_id
+def make_run(template, run_id, variant=None):
+    run = SANDBOXES / (variant or template) / run_id
     if run.exists():
         shutil.rmtree(run)
     run.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["cp", "-cR", str(TEMPLATES / variant), str(run)], check=True)
+    subprocess.run(["cp", "-cR", str(TEMPLATES / template), str(run)], check=True)
     (run / "tmp").mkdir(exist_ok=True)  # git-ignored; TMPDIR of the run
     return run

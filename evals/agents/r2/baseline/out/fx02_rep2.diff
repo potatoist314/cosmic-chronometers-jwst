@@ -1,0 +1,20 @@
+commit 590cfcb cosmos_photometry: AB magnitudes to uJy through astropy ABmag
+diff --git a/scripts/cosmos_photometry.py b/scripts/cosmos_photometry.py
+index 1309bb6..fb4fdbe 100644
+--- a/scripts/cosmos_photometry.py
++++ b/scripts/cosmos_photometry.py
+@@ -30,6 +30,7 @@ from pathlib import Path
+ 
+ import numpy as np
+ import pandas as pd
++from astropy import units as u
+ from astropy.table import Table
+ 
+ PROJECT_ROOT = Path(__file__).resolve().parents[1]
+@@ -131,7 +132,7 @@ def from_magnitude(row, flux_column, mag_column, flux_error_column, mag_error_co
+     mag, mag_error = row[mag_column], row[mag_error_column]
+     if np.ma.is_masked(mag) or not np.isfinite(mag) or not 0 < mag < 50:
+         return as_float(row[flux_column]), as_float(row[flux_error_column])
+-    flux = 10 ** (-0.4 * (float(mag) + 48.6))
++    flux = (float(mag) * u.ABmag).to_value(u.uJy)
+     return flux, flux * float(mag_error) * np.log(10) / 2.5
