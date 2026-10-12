@@ -201,11 +201,27 @@ def weighted_quantiles(values, log_weights, quantiles=(0.16, 0.5, 0.84)):
     return [float(np.interp(q, cdf, np.asarray(values)[order])) for q in quantiles]
 
 
+def load_stored_result(result_path: Path):
+    """``load_result_h5`` of a stored fit. A fit in absolute log10 Z (before the merged ceridwen) is read
+    from a temporary copy converted by ``ceridwen.fit.convert_result``; the stored file is not changed."""
+    import tempfile
+
+    import h5py
+    from ceridwen.fit import convert_result, load_result_h5
+    from ceridwen.ssps import SSPDataAfe, fetch_grid
+
+    with h5py.File(result_path, "r") as f:
+        absolute_z = "Z" in f["samples"]
+    if not absolute_z:
+        return load_result_h5(result_path)
+    with tempfile.TemporaryDirectory() as directory:
+        ssp = SSPDataAfe.load(fetch_grid("amist_c3k_hr_krou_afe"))
+        return load_result_h5(convert_result(result_path, ssp, out=Path(directory) / "ceridwen_result.h5"))
+
+
 def posterior_summary(result_path: Path) -> dict:
     """Weighted 16/50/84 quantiles for every scalar parameter of a stored fit."""
-    from ceridwen.fit import load_result_h5
-
-    result = load_result_h5(result_path)
+    result = load_stored_result(result_path)
     summary = {}
     for name in result.param_names:
         block = np.asarray(result.samples[name])
@@ -220,9 +236,7 @@ def posterior_summary(result_path: Path) -> dict:
 
 def truth_from_result(result_path: Path) -> dict:
     """Weighted posterior medians in the shape ``SedModel.theta_init`` expects."""
-    from ceridwen.fit import load_result_h5
-
-    result = load_result_h5(result_path)
+    result = load_stored_result(result_path)
     truth = {}
     for name in result.param_names:
         block = np.asarray(result.samples[name]).reshape(len(result.log_weights), -1)
@@ -301,6 +315,8 @@ FIXED_DUST_INDEX = -0.7
 def build_notebook_model(target: dict):
     """The joint model of the notebook (full_spectrum mode) for one target."""
     import jax.numpy as jnp
+    from ceridwen import Cosmology
+    from ceridwen.broadening import Instrument, Kinematics
     from ceridwen.cosmology import age_gyr
     from ceridwen.csp import CSPBasis_afe
     from ceridwen.model import SedModel, logsfr_ratios_to_sfh
@@ -318,21 +334,22 @@ def build_notebook_model(target: dict):
     )
     spec_obs = Spectrum(
         wavelength=target["wave_vac"], flux=target["flux"], uncertainty=target["uncertainty"],
-        mask=target["mask"], resolution=target["resolution_fwhm"], smoothtype="R",
-        res_convention="fwhm", sigma_losvd=target["sigma_star"], name="spectrum",
+        mask=target["mask"], instrument=Instrument.R_fwhm(target["resolution_fwhm"]), projector="chain",
+        name="spectrum",
     )
-    z_bounds = (float(ssp.ssp_lgmet.min()) + 1e-4, float(ssp.ssp_lgmet.max()) - 1e-4)
+    z_bounds = (float(ssp.ssp_lgmet.min() - ssp.log10_zsun) + 1e-4,  # logzsol = log10 Z - log10 Z_sun
+                0.25)  # upstream refuses logzsol > +0.25 with afe > +0.4 on this grid (decision 4)
     afe_bounds = (float(ssp.ssp_afe.min()), float(ssp.ssp_afe.max()))
     csp = CSPBasis_afe(
         ssp,
         theta={
             "lookback_time": jnp.asarray(lookback), "sfh": jnp.ones(len(lookback)),
-            "Z": jnp.array([-1.85]), "afe": jnp.array([0.2]),
+            "logzsol": jnp.array([-1.85 - ssp.log10_zsun]), "afe": jnp.array([0.2]),
             "diffuse_tau_kc": jnp.array([0.1]), "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX]),
         },
         zh_const=True, sfh_interp="step", add_dust=False, add_diffuse_dust=True,
-        add_dust_emission=False, add_igm=False, sigma_losvd_kms=0.0,
-        track_zred_age=False, verbose=False,
+        add_dust_emission=False, add_igm=False,
+        track_zred_age=False, cosmo=Cosmology.planck18(), verbose=False,
     )
     sfh_times = np.asarray(csp.sfh_times)
     transforms = {
@@ -341,7 +358,7 @@ def build_notebook_model(target: dict):
     }
     priors = {
         "logsfr_ratios": Uniform(low=-3.0, high=3.0),
-        "Z": Uniform(low=z_bounds[0], high=z_bounds[1]),
+        "logzsol": Uniform(low=z_bounds[0], high=z_bounds[1]),
         "afe": Uniform(low=afe_bounds[0], high=afe_bounds[1]),
         "logmass": Uniform(low=8.0, high=13.0),
         "diffuse_tau_kc": Uniform(low=0.0, high=0.2),
@@ -353,8 +370,9 @@ def build_notebook_model(target: dict):
         "log_f_calib": jnp.array([np.log(0.03)]), "spectrum_scaling": jnp.array([1.0]),
     }
     model = SedModel(csp, observations=[phot_obs, spec_obs], priors=priors,
-                     transforms=transforms, free_param_init=initial, zred=z)
-    bounds = {"Z": z_bounds, "afe": afe_bounds}
+                     transforms=transforms, free_param_init=initial, zred=z,
+                     kinematics=Kinematics(sigma_gal=target["sigma_star"]), broaden_photometry=False)
+    bounds = {"logzsol": z_bounds, "afe": afe_bounds}
     return model, phot_obs, spec_obs, bounds
 
 
@@ -373,7 +391,7 @@ def fisher_forecast(target: dict, truth: dict, feature_mask, downweight: float) 
     data set, with the notebook noise model (photometry: catalogue sigma with the
     5% floor; spectrum: sigma_eff^2 = sigma^2 + (f_calib mu)^2 at the truth
     f_calib).  The prior enters as a diagonal curvature (``PRIOR_VARIANCE``;
-    the grid-range uniforms for Z and afe) so that every inverse exists.
+    the grid-range uniforms for logzsol and afe) so that every inverse exists.
     Returned per free parameter: the diagonal information from each data set
     and pixel mode, the spectrum's share of it, and the forecast marginal sigma
     of photometry-only, spectrum-only, and joint fits per pixel mode.
@@ -383,6 +401,8 @@ def fisher_forecast(target: dict, truth: dict, feature_mask, downweight: float) 
     from jax.flatten_util import ravel_pytree
 
     model, phot_obs, spec_obs, bounds = build_notebook_model(target)
+    if "Z" in truth:  # a truth stored before the merged ceridwen: absolute log10 Z
+        truth = {**truth, "logzsol": (np.asarray(truth["Z"]) - model.csp.log10_zsun).tolist()}
     theta = {k: jnp.asarray(truth[k], dtype=float) for k in model.theta_init}
     flat, unravel = ravel_pytree(theta)
     probe = unravel(jnp.arange(len(flat), dtype=float))

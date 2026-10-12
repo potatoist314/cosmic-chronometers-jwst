@@ -95,7 +95,7 @@ All current corner plots use 40-bin blue density maps with Gaussian smoothing. D
 
 The paired RTX 5060 result keeps separate executed reports in its `baseline/` and `fastpath_a/` directories. Each report loads its matching HDF5 posterior and contains the complete fit, residual, corner, and SFH output set. The reports do not overlay the two implementations.
 
-Both notebooks supply the observed FWHM resolving power with `res_convention="fwhm"`. Ceridwen reads the SSP resolution curve from the grid. It calculates the additional smoothing automatically.
+The joint notebook supplies the observed FWHM resolving power as `Instrument.R_fwhm(R)`. The spectral notebook `ceridwen_test_spectra.ipynb` still passes `res_convention="fwhm"`, which the merged `Spectrum` refuses. Ceridwen reads the SSP resolution curve from the grid. It calculates the additional smoothing automatically.
 
 Both notebooks configure nested-sampling checkpoints every 20 minutes. Each completed run also writes a rescue snapshot and a final reloadable `ceridwen_result.h5` file. A UTC-stamped results directory contains these files.
 

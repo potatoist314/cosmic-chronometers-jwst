@@ -51,3 +51,9 @@ host_id,outcome,gpu,date,run,reason
 146008,good,RTX 5090,2026-09-30,results/m1-210210-neb-eline-ca-nohe-zevo-2026-09-30/run/manifest.json,instance 53558252 finished 1 of 1 fits
 146008,poor,RTX 5090,2026-09-30,results/m1-210210-neb-eline-ca-noo-2026-09-30/run/manifest.json,instance 53562482 refused SSH during result retrieval (rsync exit 255 three times); instance unavailable and destroyed; the fit was redone on host 81276
 81276,good,RTX 5090,2026-09-30,results/m1-210210-neb-eline-ca-noo-2026-09-30/run/manifest.json,instance 53564266 finished 1 of 1 fits
+43746,good,RTX 5090,2026-10-11,results/ceridwen-upstream-merge-2026-10-10/run-2/manifest.json,instance 55330634 finished 1 of 1 fits
+387797,poor,RTX 5090,2026-10-11,results/ceridwen-upstream-merge-2026-10-10/run-ten/manifest.json,instance 55331822 stalled loading the image for 6 min; the runner replaced it
+43746,poor,RTX 5090,2026-10-11,results/ceridwen-upstream-merge-2026-10-10/run-ten/manifest.json,instance 55332348 stalled loading the image for 6 min; the runner replaced it
+568360,poor,RTX 5090,2026-10-11,results/ceridwen-upstream-merge-2026-10-10/run-ten/manifest.json,bid instance 55332978 finished 1 fit; then the remote host closed SSH and the instance became unavailable
+662751,poor,RTX 5090,2026-10-11,results/ceridwen-upstream-merge-2026-10-10/run-ten/manifest.json,bid instance 55334638 became unavailable (SSH closed by the remote host) at the first fit
+617499,good,RTX 5090,2026-10-11,results/ceridwen-upstream-merge-2026-10-10/run-ten/manifest.json,instance 55335713 finished 9 of 9 fits

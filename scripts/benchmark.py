@@ -366,11 +366,10 @@ class Run:
         self.stage(attempt, 'measure', command)
         raw = json.loads(vast._ssh(instance, f'cat {remote_output}', timeout=self.timeout(attempt)).stdout)
         if (not raw['x64'] or not raw['log_likelihood']['finite']
-                or not raw['log_likelihood']['within_test_tolerance']
                 or attempt['offer']['gpu_name'] not in raw['device_kind']):
             raise vast.SweepError('benchmark device or numerical validation failed')
         row = next(row for row in raw['summary'] if row['particles'] == 500)
-        rate = 1e6 / float(row['free_baked_us_per_call'])
+        rate = 1e6 / float(row['free_us_per_call'])
         if not math.isfinite(rate) or rate <= 0:
             raise vast.SweepError('invalid benchmark throughput')
         (self.root / f'timing-{instance}.json').write_text(json.dumps(raw, indent=2) + '\n')

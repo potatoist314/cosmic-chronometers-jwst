@@ -295,6 +295,7 @@ Sandro Tacchella, Slack, 23 Sep 2026: "did you switch on dust1 (birth cloud dust
 - `dust1_on` recovery is a separate local run: the HDF5 reloaded with finite weights and \(\ln Z\) 231446.95 ± 0.24, and the post-fit cells were regenerated on CPU with the corrected validator; full validation passed.
 - `dust1_on` `ns_progress.jsonl` mixes three segments: the 23 September partial prefix (10 lines), the completed attempt (272 lines) and the terminated rerun prefix (20 lines).
 - Offer selection used the worktree-local `--only-5090` patch on branch `birth-cloud-5090`; the box ran `absorption-mask` at `3d24700`, whose fit path is unchanged since `b0c2ca4`.
+- The 10 Oct 2026 Ceridwen upstream merge removed the `baked_runtime` switch named in the baseline above.
 
 ## References
 

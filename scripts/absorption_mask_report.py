@@ -22,10 +22,11 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 from build_dr2_quiescent_summary import FEH_OFFSET  # noqa: E402
+from absorption_mask_analysis import load_stored_result  # noqa: E402
 from spectral_figures import mark_absorption_features, mark_rest_wavelength_axis, spectral_tight_layout  # noqa: E402
 DEFAULT_OUTPUT_ROOT = PROJECT_ROOT / "results/absorption-mask"
 DEFAULT_FIGURE_DIR = PROJECT_ROOT / "wiki/analyses/absorption-mask"
-SCALARS = ["logmass", "Z", "afe", "diffuse_tau_kc", "spectrum_scaling", "log_f_calib"]
+SCALARS = ["logmass", "logzsol", "afe", "diffuse_tau_kc", "spectrum_scaling", "log_f_calib"]
 PARAMS = ["logmass", "mwa_gyr", "feh", "afe", "diffuse_tau_kc", "spectrum_scaling", "f_calib_pct"]
 LABELS = {
     "logmass": r"$\log M_\star/M_\odot$",
@@ -66,13 +67,12 @@ def mass_weighted_age(logsfr_ratios, lookback_gyr):
 
 def read_cell(cell_dir: Path) -> dict | None:
     import h5py
-    from ceridwen.fit import load_result_h5
 
     result_path = cell_dir / "ceridwen_result.h5"
     derived_path = cell_dir / "ceridwen_derived_outputs.h5"
     if not (result_path.exists() and derived_path.exists()):
         return None
-    result = load_result_h5(result_path)
+    result = load_stored_result(result_path)
     record = {"name": cell_dir.name}
     with h5py.File(result_path, "r") as f:
         attrs = f["model"].attrs
@@ -108,7 +108,7 @@ def read_cell(cell_dir: Path) -> dict | None:
     for name in SCALARS:
         draws[name] = np.asarray(result.samples[name]).reshape(len(result.log_weights), -1)[:, 0]
     draws["f_calib_pct"] = 100.0 * np.exp(draws.pop("log_f_calib"))
-    draws["feh"] = draws.pop("Z") + FEH_OFFSET
+    draws["feh"] = draws.pop("logzsol")  # logzsol = [Fe/H] on this grid
     quantiles = {name: weighted_quantiles(values, result.log_weights) for name, values in draws.items()}
     quantiles["mwa_gyr"] = [float(np.quantile(mwa_draws, q)) for q in QUANTILES]
     record["quantiles"] = quantiles

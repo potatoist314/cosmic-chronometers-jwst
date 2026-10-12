@@ -52,7 +52,8 @@ def test_compact_notebook_applies_overrides_like_the_worker():
     top = notebook.cells[2].source
     assert "SETTINGS.update({'emission_line_marginalisation': True})" in top
     assert "PRIORS['diffuse_dust_index'] = Uniform(low=-3.0, high=0.4)" in top
-    assert 'joint_result = load_result_h5(RESULT_DIR / "ceridwen_result.h5")' in notebook.cells[10].source
+    assert fit["absolute_z"]  # a pre-merge fit: loaded from a converted temporary copy
+    assert "joint_result = load_result_h5(convert_result(" in notebook.cells[10].source
     assert "run_sampler(" not in notebook.cells[10].source
     plain = regen.compact_notebook(GPU_DIR, fit)
     assert "SETTINGS.update" not in plain.cells[2].source

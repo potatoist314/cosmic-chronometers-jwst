@@ -16,7 +16,7 @@ esc = html.escape
 C_KMS = 299792.458
 GROUPS = [  # label, colour token, keys in display order
     ("Data and masks", "--g-data", ["photometry", "emission_lines", "emission_line_marginalisation", "telluric_air"]),
-    ("Stellar population", "--g-stars", ["ssp_grid", "logmass", "Z", "afe", "fix_afe", "metallicity_evolution", "zh_beta_unit"]),
+    ("Stellar population", "--g-stars", ["ssp_grid", "logmass", "logzsol", "Z", "afe", "fix_afe", "metallicity_evolution", "zh_beta_unit"]),
     ("SFH", "--g-sfh", ["logsfr_ratios", "sfh_lookback_gyr", "sfh_nbins"]),
     ("Dust", "--g-dust", ["diffuse_tau_kc", "diffuse_dust_index"]),
     ("Dust", "--g-dust", ["diffuse_tau_noll", "diffuse_delta", "diffuse_Ebump"]),  # Noll law
@@ -39,7 +39,8 @@ EQUATIONS = {"diffuse_tau_kc": {  # shown with the group that holds this key
 SYMBOLS = {
     "logmass": r"\log_{10}(M_\star/M_\odot)",
     "logsfr_ratios": r"\log_{10}(\mathrm{SFR}_n/\mathrm{SFR}_{n+1})",
-    "Z": r"[\mathrm{Fe}/\mathrm{H}]",
+    "logzsol": r"[\mathrm{Fe}/\mathrm{H}]",  # log10(Z/Z_sun), Z_sun = 0.0185: [Fe/H] on the HR grids
+    "Z": r"[\mathrm{Fe}/\mathrm{H}]",  # pre-merge runs: grid log10 Z, shown on the [Fe/H] axis
     "afe": r"[\alpha/\mathrm{Fe}]",
     "diffuse_tau_kc": r"\tau_{\mathrm{dust}}",
     "diffuse_dust_index": r"\delta_{\mathrm{dust}}",
@@ -50,7 +51,7 @@ SYMBOLS = {
     "zred": r"z",
     "sigma_smooth": r"\sigma_\star",
 }
-HIDDEN = {"sampler_quick", "baked_runtime"}
+HIDDEN = {"sampler_quick", "baked_runtime"}  # baked_runtime: pre-merge runs only
 PAIRED = {"Noise floors"}  # groups whose rows sit side by side
 NAMES = {"photometry_floor": "Photometry", "log_f_calib": "Spectrum"}  # row names of templated rows
 # Value templates, which replace the value and the comment. A slot is `key`, `key:pct` (the number
@@ -81,7 +82,7 @@ DISTRIBUTIONS = {  # class name -> display; slots are the call's keyword argumen
     "ClippedNormal": "Clipped normal %(mean)s ± %(sigma)s on [%(low)s, %(high)s]",
 }
 FUNCTIONS = {"np.log": r"\(\ln\) %s"}
-AXES = {"Z": "[Fe/H]"}  # key shown in the units of this `grid axes` entry of the run's stdout
+AXES = {"logzsol": "[Fe/H]", "Z": "[Fe/H]"}  # key shown in the units of this `grid axes` entry of the run's stdout
 LINES_KEY = "emission_lines"  # rest wavelengths masked within the `dv` km/s of the notebook's `mask_lines` call
 LINES = {3726.0: "[O II]", 3728.8: "[O II]", 4861.3: r"H\(\beta\)", 4958.9: "[O III]", 5006.8: "[O III]",
          3934.77: "Ca II K", 3966.6: "Ca II H", 3973.3: "Ca II H", 4227.92: "Ca I"}

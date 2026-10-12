@@ -320,6 +320,8 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
     import astropy.units as u
     import jax.numpy as jnp
     import numpy as np
+    from ceridwen import Cosmology
+    from ceridwen.broadening import Instrument, Kinematics
     from ceridwen.cosmology import age_gyr
     from ceridwen.csp import CSPBasis_afe
     from ceridwen.likelihood import (
@@ -424,10 +426,8 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
         flux=np.nan_to_num(scaled_flux, nan=0.0),
         uncertainty=np.where(native_valid, scaled_uncertainty, 1.0),
         mask=native_valid,
-        resolution=instrument_resolution,
-        smoothtype="R",
-        res_convention="fwhm",
-        sigma_losvd=sigma_star,
+        instrument=Instrument.R_fwhm(instrument_resolution),
+        projector="chain",
         name="spectrum",
     )
     spectrum_obs.mask_lines(
@@ -452,16 +452,16 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
 
     universe_age = float(age_gyr(z_catalog))
     lookback_template = np.array([0.0, 0.03, 0.1, 0.3, 1.0, 3.0, 5.0, universe_age])
-    z_bounds = (
-        float(ssp.ssp_lgmet.min()) + 1e-4,
-        float(ssp.ssp_lgmet.max()) - 1e-4,
+    z_bounds = (  # logzsol = log10 Z - log10 Z_sun
+        float(ssp.ssp_lgmet.min() - ssp.log10_zsun) + 1e-4,
+        0.25,  # upstream refuses logzsol > +0.25 with afe > +0.4 on this grid (decision 4)
     )
     afe_bounds = (float(ssp.ssp_afe.min()), float(ssp.ssp_afe.max()))
     fixed_dust_index = -0.7
     csp_theta = {
         "lookback_time": jnp.asarray(lookback_template),
         "sfh": jnp.ones(len(lookback_template)),
-        "Z": jnp.array([-1.85]),
+        "logzsol": jnp.array([-1.85 - ssp.log10_zsun]),
         "afe": jnp.array([0.2]),
         "diffuse_tau_kc": jnp.array([0.1]),
         "diffuse_dust_index": jnp.array([fixed_dust_index]),
@@ -475,8 +475,8 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
         add_diffuse_dust=True,
         add_dust_emission=False,
         add_igm=False,
-        sigma_losvd_kms=0.0,
         track_zred_age=False,
+        cosmo=Cosmology.planck18(),
         verbose=False,
     )
 
@@ -491,7 +491,7 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
         observations=[phot_obs, spectrum_obs],
         priors={
             "logsfr_ratios": Uniform(low=-3.0, high=3.0),
-            "Z": Uniform(low=z_bounds[0], high=z_bounds[1]),
+            "logzsol": Uniform(low=z_bounds[0], high=z_bounds[1]),
             "afe": Uniform(low=afe_bounds[0], high=afe_bounds[1]),
             "logmass": Uniform(low=8.0, high=13.0),
             "diffuse_tau_kc": Uniform(low=0.0, high=0.2),
@@ -507,6 +507,8 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
             "log_f_calib": jnp.array([np.log(0.03)]),
         },
         zred=z_catalog,
+        kinematics=Kinematics(sigma_gal=sigma_star),
+        broaden_photometry=False,
     )
     initial_photometry = np.asarray(
         joint_model.predict(joint_model.theta_init)["photometry"]

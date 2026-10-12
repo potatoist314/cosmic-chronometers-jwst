@@ -43,8 +43,8 @@ def cloud(run, monkeypatch):
         if command.startswith('cat ') and command.endswith('timing.json'):
             return SimpleNamespace(stdout=json.dumps(dict(
                 x64=True, device_kind='NVIDIA GeForce RTX 5090',
-                log_likelihood={'finite': True, 'within_test_tolerance': True},
-                summary=[{'particles': 500, 'free_baked_us_per_call': 10}],
+                log_likelihood={'finite': True},
+                summary=[{'particles': 500, 'free_us_per_call': 10}],
             )), returncode=0)
         return SimpleNamespace(stdout='stage log', returncode=0)
     def destroy(instance, log):

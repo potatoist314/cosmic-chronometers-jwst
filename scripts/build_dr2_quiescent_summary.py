@@ -33,11 +33,10 @@ FEH_OFFSET = 1.7328283
 
 SUMMARY_PARAMS = {
     "logmass": "logmass",
-    "Z": "feh",
+    "logzsol": "feh",
     "afe": "alpha_fe",
     "diffuse_tau_kc": "tau_dust",
 }
-SUMMARY_SHIFTS = {"Z": FEH_OFFSET}
 
 
 def formation_times(edges: np.ndarray, fracs: np.ndarray) -> tuple[np.ndarray, ...]:
@@ -94,11 +93,10 @@ def load_target(target: dict, result_root: Path) -> dict:
         table = {name: (a, b, c) for name, a, b, c in zip(names, q16, q50, q84)}
         if "diffuse_tau_noll" in table:
             table["diffuse_tau_kc"] = table["diffuse_tau_noll"]
+        if "Z" in table:  # fits before the merge: grid Z = [Fe/H] - FEH_OFFSET
+            table["logzsol"] = tuple(float(v) + FEH_OFFSET for v in table.pop("Z"))
         for raw, prefix in SUMMARY_PARAMS.items():
-            shift = SUMMARY_SHIFTS.get(raw, 0.0)
-            row[f"{prefix}_q16"], row[f"{prefix}_q50"], row[f"{prefix}_q84"] = (
-                float(v) + shift for v in table[raw]
-            )
+            row[f"{prefix}_q16"], row[f"{prefix}_q50"], row[f"{prefix}_q84"] = (float(v) for v in table[raw])
         age = derived["sfh/mass_weighted_age_gyr"][:]
         row["age_q16"], row["age_q50"], row["age_q84"] = (float(v) for v in np.quantile(age, [0.16, 0.5, 0.84]))
         edges = np.asarray(derived["sfh/lookback_time_gyr"][:], dtype=float)

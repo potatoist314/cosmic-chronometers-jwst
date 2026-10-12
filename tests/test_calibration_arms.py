@@ -379,11 +379,14 @@ needs_result = pytest.mark.skipif(not RESULT_H5.exists(), reason="needs the stor
 
 @needs_result
 def test_sampler_validation_passes_without_derived_outputs(multi, tmp_path):
-    import shutil
+    from ceridwen.fit import convert_result
+    from ceridwen.ssps import SSPDataAfe, fetch_grid
 
     result_dir = tmp_path / "210210-M1_210210"
     result_dir.mkdir()
-    shutil.copy(RESULT_H5, result_dir / "ceridwen_result.h5")
+    # The stored fit samples absolute log10 Z on the base HR grid: read a converted copy.
+    convert_result(RESULT_H5, SSPDataAfe.load(fetch_grid("amist_c3k_hr_krou_afe")),
+                   out=result_dir / "ceridwen_result.h5")
     multi._validate_sampler_result(result_dir, "M1_210210")
     with pytest.raises((FileNotFoundError, KeyError, OSError, RuntimeError, ValueError)):
         multi._validate_result(result_dir, "M1_210210")

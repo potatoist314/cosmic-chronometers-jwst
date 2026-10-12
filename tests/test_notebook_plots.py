@@ -221,5 +221,5 @@ def test_runner_and_preflight_contracts_hold():
     assert engine.literal(top, "SETTINGS")["sampler"]["num_live"] > 0
     node = next(n.value for n in ast.parse(top).body if isinstance(n, ast.Assign)
                 and any(getattr(t, "id", None) == "PRIORS" for t in n.targets))
-    assert {ast.literal_eval(k) for k in node.keys} >= {"logmass", "Z", "afe"}
+    assert {ast.literal_eval(k) for k in node.keys} >= {"logmass", "logzsol", "afe"}
     assert "joint_result = run_sampler(" in dict(code_cells())[10]

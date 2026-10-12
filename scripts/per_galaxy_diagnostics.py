@@ -87,6 +87,9 @@ from spectral_figures import (FIT_FIGURE_RCPARAMS, mark_absorption_features,  # 
 GRID_NAME = "amist_c3k_hr_krou_afe"
 FIXED_DUST_INDEX = -0.7
 RES_CONVENTION = "fwhm"
+# Fits before the logzsol API sampled "Z" = log10 Z; logzsol = Z - log10(Z_sun),
+# Z_sun = 0.0185 (grid attr fsps_kwargs_json zsun_reference).
+STORED_LOG10_ZSUN = float(np.log10(0.0185))
 REST_EMISSION_LINES = (3726.0, 3728.8, 4861.3, 4958.9, 5006.8)
 EMISSION_MASK_DV_KMS = 1500.0
 TELLURIC_AIR = (7590.0, 7660.0)
@@ -190,9 +193,11 @@ def load_galaxy(folder: Path) -> GalaxyResult:
             "flux": np.asarray(sg["flux"], dtype=float),
             "uncertainty": np.asarray(sg["uncertainty"], dtype=float),
             "mask": np.asarray(sg["mask"], dtype=bool),
-            "resolution": float(sg.attrs["resolution"]),
-            "smoothtype": _text(sg.attrs["smoothtype"]),
         }
+        if "instrument_kind" in sg.attrs:  # Instrument(kind, value)
+            spec["instrument"] = (_text(sg.attrs["instrument_kind"]), float(np.asarray(sg["instrument_value"])))
+        else:  # earlier fits: resolution with smoothtype "R" and RES_CONVENTION
+            spec["instrument"] = (f"R_{RES_CONVENTION}", float(sg.attrs["resolution"]))
         sm = f["samples"]
         samples = {k: np.asarray(sm[k], dtype=float) for k in theta_init}
         settings = {k: sm.attrs[k] for k in ("num_live", "num_inner_steps", "num_delete", "logZ_tol") if k in sm.attrs}
@@ -276,6 +281,13 @@ def load_ssp():
     return SSPDataAfe.load(fetch_grid(GRID_NAME))
 
 
+def merged_theta(theta: dict) -> dict:
+    """``theta`` with a stored ``Z`` (log10 Z) as ``logzsol``."""
+    if "Z" not in theta:
+        return theta
+    return {("logzsol" if k == "Z" else k): (v - STORED_LOG10_ZSUN if k == "Z" else v) for k, v in theta.items()}
+
+
 def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     """Rebuild the fitting notebook's ``SedModel`` and joint likelihood.
 
@@ -288,6 +300,8 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     e.g. a ``StellarIndices`` set measured on the same broadened spectrum.
     """
     import jax.numpy as jnp
+    from ceridwen import Cosmology
+    from ceridwen.broadening import Instrument, Kinematics
     from ceridwen.csp import CSPBasis_afe
     from ceridwen.likelihood import (
         DiagonalGaussianLikelihood,
@@ -300,6 +314,11 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
 
     calibration_order = int(galaxy.extra.get("calibration_order", 0) or 0)
     priors = {k: parse_prior(v) for k, v in galaxy.prior_text.items()}
+    if "Z" in priors:
+        z_prior = priors.pop("Z")
+        priors["logzsol"] = type(z_prior)(  # capped at +0.25: upstream refuses logzsol > +0.25 with afe > +0.4 (decision 4)
+            low=float(z_prior.params["low"]) - STORED_LOG10_ZSUN, high=min(float(z_prior.params["high"]) - STORED_LOG10_ZSUN, 0.25)
+        )
     phot_obs = Photometry(
         filters=galaxy.phot["filters"], flux=galaxy.phot["flux"],
         uncertainty=galaxy.phot["uncertainty"], mask=galaxy.phot["mask"], name="photometry",
@@ -307,8 +326,8 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     spec_obs = Spectrum(
         wavelength=galaxy.spec["wavelength"], flux=galaxy.spec["flux"],
         uncertainty=galaxy.spec["uncertainty"], mask=galaxy.spec["mask"],
-        resolution=galaxy.spec["resolution"], smoothtype=galaxy.spec["smoothtype"],
-        res_convention=RES_CONVENTION, sigma_losvd=galaxy.sigma_star_kms, name="spectrum",
+        instrument=getattr(Instrument, galaxy.spec["instrument"][0])(galaxy.spec["instrument"][1]),
+        projector="chain", name="spectrum",
     )
     lookback = galaxy.sfh_edges_gyr
     csp = CSPBasis_afe(
@@ -316,14 +335,14 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
         theta={
             "lookback_time": jnp.asarray(lookback),
             "sfh": jnp.ones(len(lookback)),
-            "Z": jnp.array([-1.85]),
+            "logzsol": jnp.array([-1.85 - STORED_LOG10_ZSUN]),
             "afe": jnp.array([0.2]),
             "diffuse_tau_kc": jnp.array([0.1]),
             "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX]),
         },
         zh_const=True, sfh_interp="step", add_dust=False, add_diffuse_dust=True,
-        add_dust_emission=False, add_igm=False, sigma_losvd_kms=0.0,
-        track_zred_age=False, verbose=False,
+        add_dust_emission=False, add_igm=False,
+        track_zred_age=False, verbose=False, cosmo=Cosmology.planck18(),
     )
 
     def sfh_from_ratios(free_theta):
@@ -332,9 +351,10 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     transforms = {"sfh": sfh_from_ratios}
     if "diffuse_dust_index" not in galaxy.theta_init:
         transforms["diffuse_dust_index"] = lambda free_theta: jnp.array([FIXED_DUST_INDEX])
-    init = {k: jnp.asarray(v) for k, v in galaxy.theta_init.items()}
+    init = {k: jnp.asarray(v) for k, v in merged_theta(galaxy.theta_init).items()}
     model = SedModel(csp, observations=[phot_obs, spec_obs, *extra_observations], priors=priors,
-                     transforms=transforms, free_param_init=init, zred=galaxy.z)
+                     transforms=transforms, free_param_init=init, zred=galaxy.z,
+                     kinematics=Kinematics(sigma_gal=galaxy.sigma_star_kms), broaden_photometry=False)
     calibration = None
     if calibration_order > 0:
         calibration = PolynomialCalibration.from_spectrum(
@@ -356,7 +376,7 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
 def theta_at(galaxy: GalaxyResult, index: int) -> dict:
     import jax.numpy as jnp
 
-    return {k: jnp.atleast_1d(jnp.asarray(galaxy.samples[k][index])) for k in galaxy.theta_init}
+    return merged_theta({k: jnp.atleast_1d(jnp.asarray(galaxy.samples[k][index])) for k in galaxy.theta_init})
 
 
 def max_likelihood_index(galaxy: GalaxyResult) -> int:
@@ -629,9 +649,9 @@ def model_parameter_block(model, ssp, likelihood, settings: dict, seed: int) -> 
             wave = np.asarray(obs.wavelength, dtype=float)
             lines.append(
                 f"  {obs.name}: {kind}, {int(mask.sum())} of {len(mask)} native pixels fitted, "
-                f"{wave[mask].min():.0f}-{wave[mask].max():.0f} A observed; instrument R = {float(obs.resolution):.0f} "
-                f"({obs.smoothtype}, {obs.res_convention}); fixed stellar sigma_losvd = {float(obs.sigma_losvd):.1f} km/s; "
-                f"CSP-level LOSVD {float(csp.sigma_losvd_kms):.1f} km/s"
+                f"{wave[mask].min():.0f}-{wave[mask].max():.0f} A observed; instrument {obs.instrument.kind} = "
+                f"{float(obs.instrument.value):.0f}; projector '{obs.projector}'; stellar sigma_gal {_sigma_gal(model)}; "
+                f"photometry broadened: {model.broaden_photometry}"
             )
     for key, lhood in zip(likelihood.keys, likelihood.likelihoods):
         nm = lhood.noise_model
@@ -664,6 +684,11 @@ def model_parameter_block(model, ssp, likelihood, settings: dict, seed: int) -> 
     return "\n".join(lines)
 
 
+def _sigma_gal(model) -> str:
+    sigma = model.kinematics.sigma_gal
+    return f"sampled as {sigma}" if isinstance(sigma, str) else f"{float(sigma):.1f} km/s fixed"
+
+
 def model_stamp(model, ssp, likelihood, settings: dict, seed: int) -> str:
     """Compact one-paragraph version of the block for figure footers."""
     csp = model.csp
@@ -676,7 +701,7 @@ def model_stamp(model, ssp, likelihood, settings: dict, seed: int) -> str:
         if derived != "sfh":
             fixed.append(f"{derived}={float(np.asarray(fn(model.theta_init))[0]):g}")
     spec = next((o for o in model.observations if type(o).__name__ == "Spectrum"), None)
-    spec_txt = (f"R={float(spec.resolution):.0f} {spec.res_convention}, sigma*={float(spec.sigma_losvd):.0f} km/s fixed"
+    spec_txt = (f"{spec.instrument.kind}={float(spec.instrument.value):.0f}, sigma*={_sigma_gal(model)}"
                 if spec is not None else "no spectrum")
     imf = getattr(ssp, "imf_type", None)
     return (
