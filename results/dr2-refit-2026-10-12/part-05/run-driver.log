@@ -1,0 +1,498 @@
+21:38:54 committed source a9550ce2736d; output results/dr2-refit-2026-10-12/part-05/run
+21:38:56 renting RTX 5090, host 97910, $0.365/h; estimate $0.203
+21:38:56 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 28986860 unknown bid $0.365/h, $0.183/fit, $0.203 total; 45508884 unknown bid $0.426/h, $0.213/fit, $0.244 total; 53483881 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 48946843 unknown on-demand $0.611/h, $0.306/fit, $0.316 total; 51971807 unknown bid $0.629/h, $0.315/fit, $0.367 total; 44725727 unknown on-demand $0.663/h, $0.332/fit, $0.332 total; 55188083 unknown bid $0.702/h, $0.351/fit, $0.403 total; 49868231 unknown on-demand $0.719/h, $0.359/fit, $0.432 total; 53809924 unknown on-demand $0.767/h, $0.384/fit, $0.384 total; 54581347 unknown on-demand $0.819/h, $0.409/fit, $0.430 t
+21:38:57 SweepError: vastai returned no JSON: 
+21:39:01 renting RTX 5090, host 18, $0.377/h; estimate $0.220
+21:39:01 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 45508895 unknown bid $0.377/h, $0.189/fit, $0.220 total; 53483881 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 50927568 unknown bid $0.549/h, $0.275/fit, $0.285 total; 51971807 unknown bid $0.629/h, $0.315/fit, $0.367 total; 51971807 unknown on-demand $0.691/h, $0.346/fit, $0.398 total; 55188081 unknown bid $0.702/h, $0.351/fit, $0.403 total; 49868231 unknown on-demand $0.719/h, $0.359/fit, $0.432 total; 54581347 unknown on-demand $0.819/h, $0.409/fit, $0.430 total; 30949242 unknown bid $0.831/h, $0.415/fit, $0.478 total; 47408439 unknown on-demand $0.878/h, $0.439/fit, $0.440 total; 
+21:39:03 instance 55623117: (None, None)
+21:39:27 instance 55623117: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+21:39:30 uploading pinned source, inputs and cached grid
+21:40:59 bootstrap: running; n==1.0.12 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 2ms
+All installed packages are compatible
+21:41:08 bootstrap: running; read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+
+Core installation OK: fits of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+21:41:17 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+21:41:26 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:41:35 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:41:44 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:41:52 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:42:01 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:42:10 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:42:19 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:42:28 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:42:37 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:42:45 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:42:54 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:43:03 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:43:12 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:43:21 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:43:30 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:43:38 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:43:47 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:43:56 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:44:05 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:44:13 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:44:22 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:44:31 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:44:40 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:44:48 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:44:57 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:45:06 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:45:14 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:45:23 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:45:32 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:45:41 fit-0: running; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:45:50 fit-0: 0; 21:41:24 fitting fit/M14_38648, seed 20260832
+21:46:07 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:46:16 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:46:25 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:46:34 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:46:43 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:46:52 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:47:01 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:47:10 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:47:18 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:47:27 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:47:36 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:47:45 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:47:53 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:48:02 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:48:11 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:48:19 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:48:28 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:48:37 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:48:46 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:48:54 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:49:03 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:49:12 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:49:20 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:49:29 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:49:38 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:49:47 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:49:55 fit-1: running; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:50:04 fit-1: 0; 21:46:05 fitting fit/M8_161346, seed 20260832
+21:50:20 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:50:28 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:50:37 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:50:46 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:50:55 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:51:05 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:51:14 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:51:23 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:51:31 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:51:40 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:51:49 fit-2: running; 21:50:18 fitting fit/M13_232627, seed 20260832
+21:51:54 fit-2: ssh: connect to host 198.53.64.194 port 35650: Connection refused; reconnecting to the same instance
+21:51:55 instance 55623117: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+21:51:56 SSH not ready: ssh: connect to host 198.53.64.194 port 35650: Connection refused
+21:52:03 SSH not ready: ssh: connect to host 198.53.64.194 port 35650: Connection refused
+21:52:09 result retrieval attempt 1 failed: Command '['rsync', '-a', '--partial', '-e', 'ssh -p 35650 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@198.53.64.194:/workspace/cosmic-chronometers-jwst/.experiment/55623117/2/results/', '/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-05/run/fits/']' returned non-zero exit status 255.
+21:52:09 result retrieval attempt 2 failed: Command '['rsync', '-a', '--partial', '--checksum', '-e', 'ssh -p 35650 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@198.53.64.194:/workspace/cosmic-chronometers-jwst/.experiment/55623117/2/results/', '/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-05/run/fits/']' returned non-zero exit status 255.
+21:52:09 result retrieval attempt 3 failed: Command '['rsync', '-a', '--partial', '--checksum', '-e', 'ssh -p 35650 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@198.53.64.194:/workspace/cosmic-chronometers-jwst/.experiment/55623117/2/results/', '/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-05/run/fits/']' returned non-zero exit status 255.
+21:52:09 result retrieval failed; local files: /Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-05/run/fits; no automatic refit: Command '['rsync', '-a', '--partial', '--checksum', '-e', 'ssh -p 35650 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@198.53.64.194:/workspace/cosmic-chronometers-jwst/.experiment/55623117/2/results/', '/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-05/run/fits/']' returned non-zero exit status 255.
+21:52:09 SweepError: instance unavailable
+21:52:11 destroyed instance 55623117
+21:52:16 renting RTX 5090, host 90277, $0.544/h; estimate $0.293
+21:52:16 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 53483881 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 49404793 unknown on-demand $0.570/h, $0.285/fit, $0.296 total; 54088691 unknown bid $0.618/h, $0.309/fit, $0.340 total; 50927568 unknown on-demand $0.664/h, $0.332/fit, $0.343 total; 51971807 unknown on-demand $0.691/h, $0.346/fit, $0.398 total; 55188083 unknown bid $0.702/h, $0.351/fit, $0.403 total; 55440105 unknown bid $0.710/h, $0.355/fit, $0.376 total; 53809924 unknown on-demand $0.767/h, $0.384/fit, $0.384 total; 54581347 unknown on-demand $0.819/h, $0.409/fit, $0.430 total; 47408441 unknown on-demand $0.878/h, $0.439/fit, $0
+21:52:18 instance 55624600: (None, None)
+21:52:30 instance 55624600: ('loading', None)
+21:52:53 instance 55624600: ('loading', 'dc22b8c341d9: Verifying Checksum\ndc22b8c341d9: Download complete\n')
+21:52:59 instance 55624600: ('loading', 'dc22b8c341d9: Pull complete\n')
+21:57:05 waiting: remaining estimate $0.293; replacement $0.231
+21:57:14 waiting: remaining estimate $0.293; replacement $0.296
+21:57:22 waiting: remaining estimate $0.293; replacement $0.277
+21:57:30 waiting: remaining estimate $0.293; replacement $0.367
+21:57:39 waiting: remaining estimate $0.293; replacement $0.231
+21:57:47 waiting: remaining estimate $0.293; replacement $0.340
+21:57:56 waiting: remaining estimate $0.293; replacement $0.269
+21:58:04 waiting: remaining estimate $0.293; replacement $0.269
+21:58:13 waiting: remaining estimate $0.294; replacement $0.296
+21:58:21 waiting: remaining estimate $0.294; replacement $0.234
+21:58:27 instance 55624600: ('loading', 'b2449364bbe7: Verifying Checksum\nb2449364bbe7: Download complete\n')
+21:59:49 instance 55624600: ('loading', 'b2449364bbe7: Pull complete\n')
+21:59:55 instance 55624600: ('loading', '#7 2.555 Fetched 61.7 MB in 1s (87.5 MB/s)\n#7 2.617 (Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r')
+22:00:08 instance 55624600: ('loading', '#7 8.107 Selecting previously unselected package perl.\r\n')
+22:00:14 instance 55624600: ('loading', '#7 18.38 Selecting previously unselected package xml-core.\r\n')
+22:00:19 instance 55624600: ('loading', '#7 22.83 Generating locales (this might take a while)...\r\n')
+22:00:25 instance 55624600: ('loading', '\n#10 exporting to image\n#10 exporting layers\n')
+22:00:31 instance 55624600: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+22:00:36 uploading pinned source, inputs and cached grid
+22:03:12 bootstrap: running; n==1.0.12 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 3ms
+All installed packages are compatible
+22:03:25 bootstrap: running; of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+sedpy_jax wavelength-dependent input resolution verified
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+22:03:37 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:03:54 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:04:06 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:04:18 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:04:30 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:04:42 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:04:54 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:05:06 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:05:19 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:05:31 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:05:43 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:05:55 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:06:07 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:06:19 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:06:31 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:06:43 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:06:55 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:07:08 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:07:23 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:07:39 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:07:54 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:08:09 fit-2: running; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:08:25 fit-2: 0; 22:03:51 fitting fit/M13_232627, seed 20260832
+22:08:52 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:09:05 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:09:17 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:09:29 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:09:41 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:09:53 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:10:05 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:10:18 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:10:30 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:10:43 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:10:55 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:11:07 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:11:19 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:11:31 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:11:43 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:11:55 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:12:07 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:12:19 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:12:31 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:12:43 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:12:55 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:13:07 fit-3: running; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:13:20 fit-3: 0; 22:08:49 fitting fit/M12_102456, seed 20260832
+22:13:47 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:13:59 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:14:11 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:14:23 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:14:36 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:14:48 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:15:00 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:15:12 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:15:24 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:15:36 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:15:48 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:16:00 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:16:12 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:16:25 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:16:37 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:16:49 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:17:01 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:17:13 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:17:25 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:17:37 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:17:49 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:18:01 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:18:13 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:18:25 fit-4: running; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:18:37 fit-4: 0; 22:13:43 fitting fit/M11_229551, seed 20260832
+22:19:14 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:19:26 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:19:38 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:19:50 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:20:02 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:20:14 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:20:26 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:20:39 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:20:51 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:21:03 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:21:15 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:21:27 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:21:39 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:21:52 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:22:04 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:22:16 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:22:28 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:22:40 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:22:52 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:23:04 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:23:17 fit-5: running; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:23:29 fit-5: 0; 22:19:11 fitting fit/M13_248217, seed 20260832
+22:23:58 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:24:10 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:24:22 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:24:34 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:24:46 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:24:58 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:25:10 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:25:22 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:25:34 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:25:46 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:25:58 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:26:11 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:26:23 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:26:35 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:26:47 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:26:59 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:27:11 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:27:23 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:27:35 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:27:47 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:27:59 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:28:11 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:28:24 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:28:36 fit-6: running; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:28:48 fit-6: 0; 22:23:54 fitting fit/M9_232005, seed 20260832
+22:29:19 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:29:31 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:29:43 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:29:55 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:30:07 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:30:20 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:30:32 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:30:44 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:30:56 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:31:08 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:31:20 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:31:32 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:31:44 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:31:56 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:32:08 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:32:20 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:32:32 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:32:45 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:32:57 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:33:09 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:33:21 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:33:33 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:33:45 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:33:57 fit-7: running; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:34:09 fit-7: 0; 22:29:16 fitting fit/M5_128311, seed 20260832
+22:34:36 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:34:48 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:35:00 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:35:12 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:35:24 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:35:36 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:35:48 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:36:00 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:36:12 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:36:24 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:36:37 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:36:49 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:37:00 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:37:13 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:37:25 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:37:37 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:37:49 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:37:57 extend_part: cap 1.0, +0 targets [], uploaded 0 inputs, resuming instance 55624600
+22:37:58 committed source a9550ce2736d; output results/dr2-refit-2026-10-12/part-05/run
+22:38:00 instance 55624600: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+22:38:12 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:38:29 fit-8: running; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:38:41 fit-8: 0; 22:34:32 fitting fit/M3_117694, seed 20260832
+22:39:06 extend_part: cap 1.0, +0 targets [], uploaded 0 inputs, resuming instance 55624600
+22:39:08 committed source a9550ce2736d; output results/dr2-refit-2026-10-12/part-05/run
+22:39:10 instance 55624600: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+22:39:21 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+22:39:38 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:39:51 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:40:03 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:40:15 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:40:27 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:40:39 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:40:51 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:41:03 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:41:15 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:41:27 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:41:40 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:41:52 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:42:04 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:42:16 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:42:28 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:42:40 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:42:52 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:43:04 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:43:16 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:43:28 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:43:41 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:43:53 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:44:05 fit-9: running; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:44:17 fit-9: 0; 22:39:04 fitting fit/M12_180774, seed 20260832
+22:44:45 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:44:57 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:45:10 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:45:22 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:45:34 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:45:46 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:45:58 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:46:10 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:46:22 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:46:34 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:46:46 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:46:58 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:47:10 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:47:22 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:47:35 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:47:47 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:47:59 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:48:11 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:48:23 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:48:35 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:48:47 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:49:00 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:49:12 fit-10: running; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:49:24 fit-10: 0; 22:44:42 fitting fit/M7_147270, seed 20260832
+22:49:58 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:50:10 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:50:22 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:50:34 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:50:46 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:50:58 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:51:10 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:51:22 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:51:34 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:51:46 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:51:58 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:52:10 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:52:22 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:52:34 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:52:47 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:52:59 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:53:11 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:53:23 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:53:35 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:53:47 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:53:59 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:54:11 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:54:24 fit-11: running; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:54:36 fit-11: 0; 22:49:54 fitting fit/M12_101089, seed 20260832
+22:55:03 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:55:15 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:55:27 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:55:39 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:55:51 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:56:03 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:56:15 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:56:27 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:56:40 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:56:52 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:57:04 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:57:16 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:57:28 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:57:40 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:57:52 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:58:04 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:58:16 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:58:28 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:58:40 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:58:52 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:59:04 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:59:16 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:59:28 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:59:40 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+22:59:52 fit-12: running; 22:55:00 fitting fit/M13_253688, seed 20260832
+23:00:04 fit-12: 0; 22:55:00 fitting fit/M13_253688, seed 20260832
+23:00:32 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:00:44 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:00:56 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:01:08 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:01:20 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:01:32 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:01:44 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:01:56 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:02:08 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:02:20 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:02:32 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:02:44 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:02:56 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:03:08 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:03:20 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:03:32 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:03:44 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:03:56 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:04:08 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:04:20 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:04:32 fit-13: running; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:04:44 fit-13: 0; 23:00:29 fitting fit/M8_156118, seed 20260832
+23:05:12 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:05:24 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:05:36 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:05:48 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:06:00 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:06:12 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:06:24 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:06:36 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:06:48 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:07:00 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:07:12 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:07:24 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:07:36 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:07:49 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:08:01 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:08:13 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:08:25 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:08:37 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:08:49 fit-14: running; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:09:01 fit-14: 0; 23:05:08 fitting fit/M2_97310, seed 20260832
+23:09:32 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:09:44 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:09:56 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:10:08 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:10:20 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:10:32 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:10:44 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:10:56 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:11:09 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:11:21 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:11:33 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:11:45 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:11:57 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:12:09 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:12:21 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:12:34 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:12:46 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:12:58 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:13:10 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:13:22 fit-15: running; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:13:35 fit-15: 0; 23:09:29 fitting fit/M7_120488, seed 20260832
+23:14:02 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:14:14 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:14:27 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:14:39 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:14:51 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:15:03 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:15:17 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:15:29 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:15:41 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:15:53 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:16:05 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:16:17 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:16:29 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:16:41 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
+23:16:54 fit-16: running; 23:13:58 fitting fit/M1_126578, seed 20260832
