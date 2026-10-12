@@ -47,7 +47,7 @@ WEEKLY_FLOOR = 40  # % left on claude weekly and fable weekly (lead, 2026-10-11 
 FIVE_H_PAUSE = 25  # % left on the shared claude 5 h window kept for the merge swarm (_state.json decisions)
 DEADLINE = dt.datetime(2026, 10, 11, 11, 0, tzinfo=dt.timezone(dt.timedelta(hours=1)))  # 11:00 Europe/London (BST; lead, 2026-10-11 03:30)
 # Round 2 (brief 2026-10-12): at most 12 points of the claude weekly quota (99% left at 13:41) and >= 25% of the 5 h window kept.
-R2_FLOORS = {"weekly": 88, "weekly_fable": 88, "5h": 31}  # 1 pp and 6 pp margins for runs in flight
+R2_FLOORS = {"weekly": 85, "weekly_fable": 88, "5h": 31}  # weekly 85: lead decision 2026-10-12 19:00 (cap counts own runs only); 6 pp 5 h margin for runs in flight
 REVIEW = ("Before you finish, check your work against the request. If you changed code, run the tests that cover the "
           "change and read your diff. If you changed a figure, check it against the figure rules in AGENTS.md. If you "
           "quote numbers, re-read them from their source file. Fix what is wrong. Then give your final answer to the "

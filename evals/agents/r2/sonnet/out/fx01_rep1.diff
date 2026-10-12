@@ -1,0 +1,14 @@
+commit 37236f2 spectral_figures: fix inverted rest-frame top axis
+diff --git a/scripts/spectral_figures.py b/scripts/spectral_figures.py
+index 51caaf2..8862483 100644
+--- a/scripts/spectral_figures.py
++++ b/scripts/spectral_figures.py
+@@ -105,7 +105,7 @@ def mark_rest_wavelength_axis(
+     ``spectral_tight_layout``.
+     """
+     top = ax.secondary_xaxis(
+-        "top", functions=(lambda obs: obs * (1 + zred), lambda rest: rest / (1 + zred))
++        "top", functions=(lambda obs: obs / (1 + zred), lambda rest: rest * (1 + zred))
+     )
+     ax.tick_params(axis="x", which="both", top=False)
+     if title is None:

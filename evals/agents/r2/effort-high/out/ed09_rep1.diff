@@ -1,0 +1,167 @@
+commit 91d9dc2 Vast.ai rentals: bandwidth cap $5/TB for upload and download
+diff --git a/.agents/skills/benchmarking-ceridwen-gpus/SKILL.md b/.agents/skills/benchmarking-ceridwen-gpus/SKILL.md
+index 2c358bc..69bcbaa 100644
+--- a/.agents/skills/benchmarking-ceridwen-gpus/SKILL.md
++++ b/.agents/skills/benchmarking-ceridwen-gpus/SKILL.md
+@@ -16,7 +16,7 @@ python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1
+ ```
+ 
+ - Offers must have reliability above 99.5% (fall back to above 96% only if no
+-  offers pass all filters), and upload/download charges each below $10/TB. No hourly price cap.
++  offers pass all filters), and upload/download charges each below $5/TB. No hourly price cap.
+ - The command ranks offers as in the running-ceridwen-experiments skill: host
+   record in `scripts/vast_hosts.csv` first (`good`, no row, `poor`), then the lowest
+   cost per fit, then the lowest hourly price.
+diff --git a/.agents/skills/running-ceridwen-experiments/SKILL.md b/.agents/skills/running-ceridwen-experiments/SKILL.md
+index 92b729a..ab342f0 100644
+--- a/.agents/skills/running-ceridwen-experiments/SKILL.md
++++ b/.agents/skills/running-ceridwen-experiments/SKILL.md
+@@ -73,7 +73,7 @@ default is `Uniform(low=0.0, high=6.0)`.
+    ```
+    Use the GPU type requested by the user. Offers must have reliability above
+    99.5%, falling back to above 96% only if no offers pass all filters. Both
+-   bandwidth rates must be below $10/TB. The total $1 cap covers all arms and
++   bandwidth rates must be below $5/TB. The total $1 cap covers all arms and
+    retries; `--spend-cap` can reduce it.
+    The runner ranks offers by the latest row for each host in `scripts/vast_hosts.csv`:
+    `good`, then no row, then `poor`. It rents a `poor` host only when no other offer
+diff --git a/AGENTS.md b/AGENTS.md
+index 7893fe1..c82c34f 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -77,7 +77,7 @@ The user's contribution will be focused on overall research direction and method
+ - GPU startup: use the compact image pinned in `scripts/vast.py`, selected input
+   uploads and cached grids by default. Preserve the image recorded for resumed runs.
+ - GPU rentals: among offers for the requested GPU type with reliability above 99.5%
+-  (fall back to above 96% only if no offers pass all filters) and upload/download charges each below $10/TB,
++  (fall back to above 96% only if no offers pass all filters) and upload/download charges each below $5/TB,
+   rank hosts by their record in `scripts/vast_hosts.csv`: good, then unrecorded, then poor (only when
+   nothing else qualifies). Within a record, choose the lowest cost per fit where the host's speed is
+   recorded, otherwise the lowest hourly price. No per-GPU hourly cap. Each experiment has a total $1 cap, including retries.
+diff --git a/BENCHMARK_CHECK.md b/BENCHMARK_CHECK.md
+index fd2c65f..489fd50 100644
+--- a/BENCHMARK_CHECK.md
++++ b/BENCHMARK_CHECK.md
+@@ -5,7 +5,7 @@ Use `--dry-run` for local preflight without renting. Repeat with the printed
+ `--output` directory to resume the same source revision and accumulated budget.
+ 
+ Choose the lowest hourly price for the requested GPU type. Require reliability
+-above 99.5% (fall back to above 96% only if no offers pass all filters) and upload/download charges each below $10/TB. No hourly cap;
++above 99.5% (fall back to above 96% only if no offers pass all filters) and upload/download charges each below $5/TB. No hourly cap;
+ the experiment total cannot exceed $1 including retries.
+ 
+ The command owns setup, cached-grid transfer, measurement, reconnection,
+diff --git a/scripts/benchmark.py b/scripts/benchmark.py
+index fe8f5c8..e24165d 100644
+--- a/scripts/benchmark.py
++++ b/scripts/benchmark.py
+@@ -121,7 +121,7 @@ def offer_rejection(offer, min_reliability=vast.FIT_MIN_RELIABILITY):
+         (float(offer.get('disk_space') or 0) < vast.DEFAULT_DISK_GB, 'disk < 40 GB'),
+         (float(offer.get('cuda_max_good') or 0) < 12.6, 'CUDA < 12.6'),
+         (int(offer.get('direct_port_count') or 0) < 2, 'direct ports < 2'),
+-        (not vast.bandwidth_qualifies(offer), 'bandwidth >= $10/TB or missing'),
++        (not vast.bandwidth_qualifies(offer), f'bandwidth >= ${vast.MAX_INET_COST_USD_PER_TB:g}/TB or missing'),
+     )
+     return next((reason for rejected, reason in checks if rejected), None)
+ 
+diff --git a/scripts/calibration_arms_vast.py b/scripts/calibration_arms_vast.py
+index 11806e3..636df14 100644
+--- a/scripts/calibration_arms_vast.py
++++ b/scripts/calibration_arms_vast.py
+@@ -311,8 +311,8 @@ def offer_price(offer: dict, interruptible: bool) -> float:
+ 
+ 
+ ONLY_5090_GPU = "RTX 5090"
+-# The 5090-only rental keeps its stricter bandwidth guard; the shared
+-# lifecycle in vast.py allows $10/TB with a 96% reliability fallback.
++# The 5090-only rental keeps the same $5/TB bandwidth guard as the shared
++# lifecycle in vast.py, without its 96% reliability fallback.
+ MAX_5090_INET_COST_USD_PER_TB = 5.0
+ 
+ 
+diff --git a/scripts/vast.py b/scripts/vast.py
+index 2e4142f..f70c0b0 100644
+--- a/scripts/vast.py
++++ b/scripts/vast.py
+@@ -30,7 +30,7 @@ BENCHMARK_GPU_MEMORY_MIB = 6000
+ SSH_KEY_PATH = Path.home() / ".ssh/id_ed25519"
+ EXPECTED_SPECTRUM_FILES = 1988
+ 
+-MAX_INET_COST_USD_PER_TB = 10.0
++MAX_INET_COST_USD_PER_TB = 5.0
+ FIT_GPU_NAMES = ("RTX 5060", "RTX 5060 Ti", "RTX 5070", "RTX 5080", "RTX 5090")
+ FIT_MIN_RELIABILITY = 0.995
+ RELIABILITY_TIERS = (FIT_MIN_RELIABILITY, 0.96)
+@@ -91,7 +91,7 @@ def fit_offer_price(offer: dict[str, Any], *, interruptible: bool = False) -> fl
+ 
+ def fit_offer_qualifies(offer: dict[str, Any], *, interruptible: bool = False,
+                         min_reliability: float = FIT_MIN_RELIABILITY) -> bool:
+-    """Require supported GPUs, the selected reliability tier, and bandwidth below $10/TB."""
++    """Require supported GPUs, the selected reliability tier, and bandwidth below $5/TB."""
+     return (offer.get("gpu_name") in FIT_GPU_NAMES
+             and float(offer.get("reliability2") or 0.0) > min_reliability
+             and bandwidth_qualifies(offer))
+diff --git a/tests/test_benchmark.py b/tests/test_benchmark.py
+index 8a91fce..0506bdd 100644
+--- a/tests/test_benchmark.py
++++ b/tests/test_benchmark.py
+@@ -237,7 +237,7 @@ def test_bid_competes_below_cap_and_includes_disk_cost(run, cloud, monkeypatch):
+ 
+ def test_hourly_price_wins_with_bandwidth_under_guard(run, cloud, monkeypatch):
+     offer, _ = cloud
+-    cheap_hourly = {**offer, 'id': 1, 'dph_total': .45, 'inet_down_cost': .009}
++    cheap_hourly = {**offer, 'id': 1, 'dph_total': .45, 'inet_down_cost': .0049}
+     cheap_total = {**offer, 'id': 2, 'dph_total': .50, 'inet_down_cost': .001}
+     monkeypatch.setattr(bench.vast, 'search_offers', lambda _, **kw:
+                         [cheap_hourly, cheap_total] if kw['rental_type'] == 'on-demand' else [])
+diff --git a/tests/test_vast.py b/tests/test_vast.py
+index ca14f4c..aaa9875 100644
+--- a/tests/test_vast.py
++++ b/tests/test_vast.py
+@@ -131,9 +131,9 @@ def test_fit_offer_rule_has_no_hourly_cap_and_strict_bandwidth_guard():
+     assert sweep.fit_offer_qualifies(good)
+     assert not sweep.fit_offer_qualifies({**good, "reliability2": .995})
+     for field in ("inet_down_cost", "inet_up_cost"):
+-        assert sweep.fit_offer_qualifies({**good, field: .0099})
+-        assert not sweep.fit_offer_qualifies({**good, field: .010})
+-        assert not sweep.fit_offer_qualifies({**good, field: .011})
++        assert sweep.fit_offer_qualifies({**good, field: .0049})
++        assert not sweep.fit_offer_qualifies({**good, field: .005})
++        assert not sweep.fit_offer_qualifies({**good, field: .006})
+ 
+ 
+ def test_interruptible_price_includes_disk():
+diff --git a/wiki/log.md b/wiki/log.md
+index ec2de9e..9baa197 100644
+--- a/wiki/log.md
++++ b/wiki/log.md
+@@ -1454,3 +1454,8 @@
+ 
+ - `wiki/research/experiments/e-quiescent-speedups.md`: ten-galaxy all-production-defaults run on the combined speedups; spectrum and photometry first per target, SFH and physical-corner views, run metadata and pinned source record.
+ - Files: `wiki/research/experiments/e-quiescent-speedups.md`, `results/quiescent-test-set-speedups-2026-10-01/` (84 run files, byte-identical to speedups 187b7ad), `wiki/index.md`, `wiki/log.md`.
++
++### 2026-10-12 — Vast.ai bandwidth cap lowered to $5/TB
++
++- Rental rule (Liu Hao, 2026-10-12): upload and download charges each below $5/TB, down from $10/TB. `MAX_INET_COST_USD_PER_TB = 5.0` in `scripts/vast.py` applies to fits and benchmarks.
++- Files: `scripts/vast.py`, `scripts/benchmark.py`, `scripts/calibration_arms_vast.py`, `tests/test_vast.py`, `tests/test_benchmark.py`, `AGENTS.md`, `BENCHMARK_CHECK.md`, `.agents/skills/running-ceridwen-experiments/SKILL.md`, `.agents/skills/benchmarking-ceridwen-gpus/SKILL.md`, `wiki/notes/vast-ai-gpu-workflow.md`, `wiki/log.md`.
+diff --git a/wiki/notes/vast-ai-gpu-workflow.md b/wiki/notes/vast-ai-gpu-workflow.md
+index 42e637d..001127a 100644
+--- a/wiki/notes/vast-ai-gpu-workflow.md
++++ b/wiki/notes/vast-ai-gpu-workflow.md
+@@ -19,7 +19,7 @@ python3 scripts/benchmark.py run "RTX 5090" --spend-cap 1
+ 
+ Add GPU names as positional arguments, for example `"RTX 5090" "RTX 4090"`. Add `--hosts 2` for two successful hosts per GPU. `--dry-run` performs local preflight only, without network access or rentals.
+ 
+-Search offers with reliability above 99.5% first. Only when none pass every filter, including host exclusions, repeat with reliability above 96%. Choose the cheapest hourly price in the first tier with eligible offers. Both bandwidth rates must remain below $10/TB. The experiment spending cap remains $1.
++Search offers with reliability above 99.5% first. Only when none pass every filter, including host exclusions, repeat with reliability above 96%. Choose the cheapest hourly price in the first tier with eligible offers. Both bandwidth rates must remain below $5/TB. The experiment spending cap remains $1.
+ 
+ The default source is committed `HEAD`, excluding local edits. The command uses the compact dependency image and uploads pinned source, selected inputs and the cached grid. It measures likelihood throughput, not full-fit convergence.
+ 
+@@ -65,7 +65,7 @@ Set `settings.ssp_grid` to a registered grid name or an `.h5` path relative to t
+ 
+ The command pins committed `HEAD` and its submodules. It executes the full notebook on the GPU, including postfit cells and existing plots. Each completed arm-target pair downloads to `fits/<arm>/<object>-<target>/`, including its executed notebook and H5 results.
+ 
+-Rental selection and teardown use the benchmark lifecycle: cheapest hourly price within the first eligible reliability tier, above 99.5% then above 96%. Both bandwidth rates must be below $10/TB. The $1 experiment cap covers all arms and retries.
++Rental selection and teardown use the benchmark lifecycle: cheapest hourly price within the first eligible reliability tier, above 99.5% then above 96%. Both bandwidth rates must be below $5/TB. The $1 experiment cap covers all arms and retries.
+ 
+ Reuse `--output <saved-directory>` to resume the saved experiment without repeating completed arm-target pairs.

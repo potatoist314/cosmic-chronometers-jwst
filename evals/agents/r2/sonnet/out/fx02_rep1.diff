@@ -1,0 +1,40 @@
+commit 5cb865d cosmos_photometry: convert AB magnitudes to uJy with astropy ABmag
+diff --git a/scripts/cosmos_photometry.py b/scripts/cosmos_photometry.py
+index 1309bb6..fb4fdbe 100644
+--- a/scripts/cosmos_photometry.py
++++ b/scripts/cosmos_photometry.py
+@@ -30,6 +30,7 @@ from pathlib import Path
+ 
+ import numpy as np
+ import pandas as pd
++from astropy import units as u
+ from astropy.table import Table
+ 
+ PROJECT_ROOT = Path(__file__).resolve().parents[1]
+@@ -131,7 +132,7 @@ def from_magnitude(row, flux_column, mag_column, flux_error_column, mag_error_co
+     mag, mag_error = row[mag_column], row[mag_error_column]
+     if np.ma.is_masked(mag) or not np.isfinite(mag) or not 0 < mag < 50:
+         return as_float(row[flux_column]), as_float(row[flux_error_column])
+-    flux = 10 ** (-0.4 * (float(mag) + 48.6))
++    flux = (float(mag) * u.ABmag).to_value(u.uJy)
+     return flux, flux * float(mag_error) * np.log(10) / 2.5
+ 
+ 
+diff --git a/tests/test_cosmos_photometry.py b/tests/test_cosmos_photometry.py
+index fac6c39..d5bbf56 100644
+--- a/tests/test_cosmos_photometry.py
++++ b/tests/test_cosmos_photometry.py
+@@ -35,6 +35,13 @@ def test_resolve_leaves_explicit_sources_unchanged(tables):
+         assert phot.resolve_photometry(source, OUTSIDE, tables) == source
+ 
+ 
++def test_from_magnitude_returns_ujy_matching_the_catalogue_flux(tables):
++    """Classic HSCi aperture magnitude converts to the catalogue's own uJy flux (0.01 uJy rounding)."""
++    row = tables["classic"][INSIDE]
++    flux, _ = phot.from_magnitude(row, "FHSCiap2", "HSCimagap2", "e_FHSCiap2", "e_HSCimagap2")
++    assert flux == pytest.approx(float(row["FHSCiap2"]), abs=0.01)
++
++
+ def test_fit_photometry_matches_the_refit_band_counts():
+     """COSMOS2025 retains 28 bands; the added u response enables Classic's 31st."""
+     _expected = {"cosmos2025": ("cosmos2025", 28), "cosmos2020_classic": ("classic", 31)}

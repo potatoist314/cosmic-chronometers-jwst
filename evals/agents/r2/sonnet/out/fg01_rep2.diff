@@ -1,0 +1,40 @@
+commit 08328ce plot_prior_kl: points with error bars instead of bars
+diff --git a/scripts/plot_prior_kl.py b/scripts/plot_prior_kl.py
+index 2209784..67bad55 100644
+--- a/scripts/plot_prior_kl.py
++++ b/scripts/plot_prior_kl.py
+@@ -7,7 +7,7 @@ prior. The SFR ratios are replaced by log10 SFR per SFH bin (M_sun/yr), a
+ derived quantity: its prior is a sample of every sampled parameter drawn from
+ the stored priors and pushed through the notebook's SFH conversion, and the
+ empirical CDF of that sample plays the role of the prior CDF. Writes a sorted
+-bar chart and its table to ``wiki/analyses/m1-210210-reference/``.
++point chart and its table to ``wiki/analyses/m1-210210-reference/``.
+ 
+ Usage: ``JAX_PLATFORMS=cpu ceridwen/.venv/bin/python scripts/plot_prior_kl.py``
+ """
+@@ -210,19 +210,20 @@ def main() -> None:
+ 
+     labels = pd.concat([t["label"] for t in kl.values()]).groupby(level=0).first().loc[order]
+     y = np.arange(len(order))[::-1]
+-    h = 0.8 / len(kl)
++    h = 0.4 / len(kl)
+     fig, ax = plt.subplots(figsize=(9.5, 6.8))
+     for n, (k, t) in enumerate(kl.items()):
+         t = t.reindex(order)
+-        yy = y + 0.4 - h * (n + 0.5)
+-        ax.barh(yy, t["bits"], height=h, color=FITS[k][1], label=FITS[k][2], alpha=0.85)
+-        ax.errorbar(t["bits"], yy, xerr=t["err"], fmt="none", ecolor="0.4", lw=0.8, capsize=1.5)
++        yy = y + h * (len(kl) - 1 - 2 * n)
++        ax.errorbar(t["bits"], yy, xerr=t["err"], fmt="o", ms=4, color=FITS[k][1], lw=0.8,
++                    capsize=1.5, clip_on=False, label=FITS[k][2])
+     ax.set_yticks(y)
+     ax.set_yticklabels(labels, fontsize=9)
+     ax.tick_params(axis="y", length=0)
+     ax.set_ylim(-0.6, len(order) - 0.4)
++    ax.set_xlim(left=0)
+     ax.set_xlabel(r"$D_{\mathrm{KL}}(\mathrm{posterior}\,\|\,\mathrm{prior})$ [bits]")
+-    ax.grid(axis="x", color="0.9", lw=0.6)
++    ax.grid(color="0.9", lw=0.6)
+     ax.set_axisbelow(True)
+     ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1.0), frameon=False, fontsize=8,
+               borderaxespad=0.0, title=TARGET)

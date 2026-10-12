@@ -1,0 +1,39 @@
+commit f35d45f spectral_figures: restore rest = obs / (1 + z) on the top axis
+diff --git a/scripts/spectral_figures.py b/scripts/spectral_figures.py
+index 51caaf2..8862483 100644
+--- a/scripts/spectral_figures.py
++++ b/scripts/spectral_figures.py
+@@ -105,7 +105,7 @@ def mark_rest_wavelength_axis(
+     ``spectral_tight_layout``.
+     """
+     top = ax.secondary_xaxis(
+-        "top", functions=(lambda obs: obs * (1 + zred), lambda rest: rest / (1 + zred))
++        "top", functions=(lambda obs: obs / (1 + zred), lambda rest: rest * (1 + zred))
+     )
+     ax.tick_params(axis="x", which="both", top=False)
+     if title is None:
+diff --git a/tests/test_spectral_figures.py b/tests/test_spectral_figures.py
+index eabf3e4..f3569ed 100644
+--- a/tests/test_spectral_figures.py
++++ b/tests/test_spectral_figures.py
+@@ -21,6 +21,7 @@ from spectral_figures import (  # noqa: E402
+     spectral_tight_layout,
+     MARKED_FEATURES,
+     mark_absorption_features,
++    mark_rest_wavelength_axis,
+ )
+ 
+ FEATURE_NAMES = [name for name, _ in MARKED_FEATURES]
+@@ -173,3 +174,12 @@ def test_log_axes_keep_their_scale_and_limits():
+     assert ax.get_xlim() == (3000.0, 90000.0)
+     assert len(shaded_windows(ax)) == len(MARKED_FEATURES)
+     plt.close(fig)
++
++
++def test_rest_wavelength_axis_divides_observed_by_one_plus_z():
++    fig, ax = make_axis()
++    top = mark_rest_wavelength_axis(ax, 0.65)
++    forward, inverse = top._functions
++    np.testing.assert_allclose(forward(np.array([7000.0])), [7000.0 / 1.65])
++    np.testing.assert_allclose(inverse(forward(np.array([7000.0]))), [7000.0])
++    plt.close(fig)

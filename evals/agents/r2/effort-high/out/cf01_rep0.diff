@@ -1,0 +1,21 @@
+commit 890cbe2 M1_210210 noll_wide config: diffuse_delta Uniform(-3, 0.4), diffuse_Ebump Uniform(0, 20) on production defaults
+diff --git a/results/m1-210210-noll-wide-2026-10-12/experiment.json b/results/m1-210210-noll-wide-2026-10-12/experiment.json
+new file mode 100644
+index 0000000..46a99df
+--- /dev/null
++++ b/results/m1-210210-noll-wide-2026-10-12/experiment.json
+@@ -0,0 +1,14 @@
++{
++  "targets": [
++    "M1_210210"
++  ],
++  "seed": 20260927,
++  "settings": {},
++  "priors": {
++    "diffuse_delta": "Uniform(low=-3.0, high=0.4)",
++    "diffuse_Ebump": "Uniform(low=0.0, high=20.0)"
++  },
++  "arms": {
++    "noll_wide": {}
++  }
++}

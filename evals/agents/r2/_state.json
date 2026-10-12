@@ -170,9 +170,17 @@
   {
    "at": "2026-10-12 18:55",
    "what": "Weekly 91 -> 88 while this worker was idle (14:53-18:52). Lowering the stop floor to 85 for that idle burn was refused by the auto-mode permission check (self-modification of a spend guard), so the floor stays at 88 = start 99 - 12 + 1 pp margin. Weekly is at 88: the 12 pp cap is reached and no further agent runs start. Report written from the recorded rows."
+  },
+  {
+   "at": "2026-10-12 19:02",
+   "what": "Lead decision (overseer-astronomy, reply to the 18:00 blocked message): the 12 pp cap counts this worker's own runs only; other sessions' burn while idle does not count. Weekly floor is now 85% left. Finish sonnet (26 runs), then effort-high until 85%. Keep 25% of the 5 h window free. Gate: weekly 85; effort-high at concurrency 2 so runs in flight overshoot the floor by at most ~0.3 pp."
+  },
+  {
+   "at": "2026-10-12 19:35",
+   "what": "Sonnet val x3 complete (36/36, outcome 1.000). Effort-high stopped at the 85% weekly floor after 14 runs (cf03, cf01, ed02, ed09 x3; fg03 x2). Review and fable not run. REPORT.md rewritten with both levers' paired deltas; stop = quota limit."
   }
  ],
- "harness_sha": "c328946aae6df034e859d9f750fda5be5079c243014e363a27aa295d560d38c8",
+ "harness_sha": "a20a6013e0317c33297e202010b4367adf9146f88611b18624d678c08859224c",
  "quota_log": [
   {
    "at": "2026-10-12 14:53",
@@ -187,6 +195,20 @@
    "weekly": 88,
    "weekly_fable": 97,
    "event": "resume after 5 h reset"
+  },
+  {
+   "at": "2026-10-12 19:15",
+   "5h": 80,
+   "weekly": 87,
+   "weekly_fable": 97,
+   "event": "sonnet val x3 finished"
+  },
+  {
+   "at": "2026-10-12 19:30",
+   "5h": 67,
+   "weekly": 85,
+   "weekly_fable": 97,
+   "event": "effort-high stopped at the 85 floor after 14 runs"
   }
  ]
 }

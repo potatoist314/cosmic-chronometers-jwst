@@ -1,0 +1,14 @@
+commit eeb39c6 Photometry figure: flux label back to microJy
+diff --git a/scripts/spectral_figures.py b/scripts/spectral_figures.py
+index 893587a..8862483 100644
+--- a/scripts/spectral_figures.py
++++ b/scripts/spectral_figures.py
+@@ -247,7 +247,7 @@ def plot_photometry_fit(
+         ax.plot([], [], color="tab:purple", linewidth=1.5, linestyle="--",
+                 label="LEGA-C spectroscopic data range")
+ 
+-    ax.set(xscale="log", yscale="log", xlim=(x_low, x_high), ylabel=r"$F_\nu$ [$10^{-29}$ cgs]")
++    ax.set(xscale="log", yscale="log", xlim=(x_low, x_high), ylabel=r"$F_\nu$ [$\mu$Jy]")
+     y_low, y_high = ax.get_ylim()
+     set_plain_log_ticks(ax.yaxis, [tick for tick in (0.01, 0.1, 1, 10, 100, 1000) if y_low < tick < y_high])
+     ax.tick_params(labelbottom=False)

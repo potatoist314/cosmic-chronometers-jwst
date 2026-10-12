@@ -1,0 +1,34 @@
+commit 92f406c cosmos_photometry: restore uJy zero point 23.9 in from_magnitude
+diff --git a/scripts/cosmos_photometry.py b/scripts/cosmos_photometry.py
+index 1309bb6..813440a 100644
+--- a/scripts/cosmos_photometry.py
++++ b/scripts/cosmos_photometry.py
+@@ -131,7 +131,7 @@ def from_magnitude(row, flux_column, mag_column, flux_error_column, mag_error_co
+     mag, mag_error = row[mag_column], row[mag_error_column]
+     if np.ma.is_masked(mag) or not np.isfinite(mag) or not 0 < mag < 50:
+         return as_float(row[flux_column]), as_float(row[flux_error_column])
+-    flux = 10 ** (-0.4 * (float(mag) + 48.6))
++    flux = 10 ** (-0.4 * (float(mag) - 23.9))
+     return flux, flux * float(mag_error) * np.log(10) / 2.5
+ 
+ 
+diff --git a/tests/test_cosmos_photometry.py b/tests/test_cosmos_photometry.py
+index fac6c39..0676cac 100644
+--- a/tests/test_cosmos_photometry.py
++++ b/tests/test_cosmos_photometry.py
+@@ -15,6 +15,15 @@ def tables():
+     return phot.read_matches()
+ 
+ 
++def test_from_magnitude_returns_ujy_matching_the_catalogue_flux(tables):
++    """AB magnitude 23.9 is 1 uJy; the Classic flux column is the same quantity rounded to 0.01 uJy."""
++    row = tables["classic"][INSIDE]
++    flux, _ = phot.from_magnitude({"f": 0.0, "m": 23.9, "ef": 0.0, "em": 0.1}, "f", "m", "ef", "em")
++    assert flux == pytest.approx(1.0)
++    flux, _ = phot.from_magnitude(row, "FHSCiap2", "HSCimagap2", "e_FHSCiap2", "e_HSCimagap2")
++    assert flux == pytest.approx(float(row["FHSCiap2"]), abs=0.01)
++
++
+ def test_cosmos2025_is_the_default_with_classic_fallback():
+     assert phot.DEFAULT_PHOTOMETRY == "cosmos2025"
+     assert phot.FALLBACK_PHOTOMETRY == "cosmos2020_classic"

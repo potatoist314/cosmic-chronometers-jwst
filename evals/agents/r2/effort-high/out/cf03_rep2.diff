@@ -1,0 +1,25 @@
+commit 26b54dd Config: production defaults on the 10-galaxy quiescent test set
+diff --git a/results/quiescent-test-set-defaults-2026-10-12/experiment.json b/results/quiescent-test-set-defaults-2026-10-12/experiment.json
+new file mode 100644
+index 0000000..39d1665
+--- /dev/null
++++ b/results/quiescent-test-set-defaults-2026-10-12/experiment.json
+@@ -0,0 +1,18 @@
++{
++  "targets": [
++    "M1_210210",
++    "M8_150848",
++    "M5_238314",
++    "M3_120308",
++    "M2_134021",
++    "M7_146213",
++    "M3_117010",
++    "M4_107370",
++    "M14_37219",
++    "M8_161113"
++  ],
++  "seed": 20261012,
++  "settings": {},
++  "priors": {},
++  "arms": {"default": {}}
++}

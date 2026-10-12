@@ -1,0 +1,224 @@
+[
+ {
+  "role": "system",
+  "content": "claude -p --model sonnet --effort xhigh; cwd = sandbox clone; tools: Task, Bash, CronList, Edit, EnterWorktree, ExitWorktree, Monitor, NotebookEdit, Read, ReportFindings, Skill, TaskStop, ToolSearch, WebFetch, WebSearch, Write"
+ },
+ {
+  "role": "user",
+  "content": "wait, what is that graph y axis and x axis. huh? you put 10^-29 as the units and put 10^20 units again? that seems kinda stupid (the photometry-fit figure from plot_photometry_fit)"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && grep -rn \\\"plot_photometry_fit\\\" --include=*.py --include=*.ipynb --include=*.md . | head -20; git show --stat HEAD | head -20\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "(eval):1: no matches found: --include=*.py\ncommit eff7c9ef258a2f8a15489b704a9ce23633ef9658\nAuthor: potatoist314 <liuhaoo3.14@gmail.com>\nDate:   Mon Oct 12 19:02:19 2026 +0100\n\n    Photometry figure: flux label\n\n scripts/spectral_figures.py | 2 +-\n 1 file changed, 1 insertion(+), 1 deletion(-)"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && git show HEAD | head -40; grep -rn \\\"plot_photometry_fit\\\" . --include='*.py' --include='*.ipynb' --include='*.md' 2>/dev/null | head -20\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "commit eff7c9ef258a2f8a15489b704a9ce23633ef9658\nAuthor: potatoist314 <liuhaoo3.14@gmail.com>\nDate:   Mon Oct 12 19:02:19 2026 +0100\n\n    Photometry figure: flux label\n\ndiff --git a/scripts/spectral_figures.py b/scripts/spectral_figures.py\nindex 8862483..893587a 100644\n--- a/scripts/spectral_figures.py\n+++ b/scripts/spectral_figures.py\n@@ -247,7 +247,7 @@ def plot_photometry_fit(\n         ax.plot([], [], color=\"tab:purple\", linewidth=1.5, linestyle=\"--\",\n                 label=\"LEGA-C spectroscopic data range\")\n \n-    ax.set(xscale=\"log\", yscale=\"log\", xlim=(x_low, x_high), ylabel=r\"$F_\\nu$ [$\\mu$Jy]\")\n+    ax.set(xscale=\"log\", yscale=\"log\", xlim=(x_low, x_high), ylabel=r\"$F_\\nu$ [$10^{-29}$ cgs]\")\n     y_low, y_high = ax.get_ylim()\n     set_plain_log_ticks(ax.yaxis, [tick for tick in (0.01, 0.1, 1, 10, 100, 1000) if y_low < tick < y_high])\n     ax.tick_params(labelbottom=False)\nwiki/research/experiments/e-cosmos-photometry-refit.md:233:- All three executed notebooks were regenerated on CPU from the stored posteriors after the photometry figure changed to `plot_photometry_fit` (commit `65e6966`); the sampler was not re-run.\nwiki/log.md:1133:- Change: Liu Hao picked design A on 2026-09-21. `plot_photometry_fit` in `scripts/spectral_figures.py` draws the fit notebook's photometry figure for any band count. The executed notebooks of the COSMOS2015 reference, `cosmos2020_classic` and `cosmos2025` fits of M1_210210 were regenerated on CPU from the stored posteriors; the sampler was not re-run. The note and the record show the spectrum and photometry fit of each arm first. The photometry figure is now output 0 of cell 14, so the check-in's reference moved from output 1 to 0.\nwiki/log.md:1139:- Change: Liu Hao, 2026-09-21: \"can you keep the style consistent for the new comsos plots - i dont know why they follow a new style from the existing notebook\". `FIT_FIGURE_RCPARAMS` in `scripts/spectral_figures.py` is the one place for the fit-figure rcParams; `scripts/per_galaxy_diagnostics.py` reads it. `plot_photometry_fit` and `scripts/plot_cosmos_photometry_comparison.py` use the old photometry figure's markers, colours, legend and labels; the band-name rail is the only new element. The three M1_210210 executed notebooks were regenerated on CPU from the stored posteriors; the sampler was not re-run.\nwiki/log.md:1178:- Change: Liu Hao, 2026-09-22: \"Adding an error bar to each photometry band plot point would be nice\". `plot_photometry_fit` draws each observed band with a capped 1-sigma bar (catalogue error and the 5% floor in quadrature, the likelihood's error) on top of smaller markers; the model's 16-84% bars are thin, uncapped and drawn below. The three M1_210210 executed notebooks were regenerated on CPU from the stored posteriors and `results/cosmos-photometry-refit/analysis.ipynb` re-executed; the sampler was not re-run. The new predictive draw moves the COSMOS2025 spectral chi2 with catalogue uncertainties from 10869.6 to 10868.1; the tables are updated.\nwiki/notes/notebook-map.md:78:The fit notebook\u2019s photometry figure uses `plot_photometry_fit` in `scripts/spectral_figures.py`, showing the median continuum and LEGA-C spectral range. Spacing places band names with leader lines on a rail between flux and pull panels, keeping 12\u201330 bands readable; do not call `spectral_tight_layout` on this figure.\nresults/m1-210210-nebular-2026-09-30/run/fits/neb_maskca/210210-M1_210210/M1_210210_executed.ipynb:90:    \"    plot_photometry_fit,\\n\",\nresults/m1-210210-nebular-2026-09-30/run/fits/neb_maskca/210210-M1_210210/M1_210210_executed.ipynb:1314:    \"plot_photometry_fit(\\n\",\nresults/m1-210210-nebular-2026-09-30/run/fits/neb_eline/210210-M1_210210/M1_210210_executed.ipynb:90:    \"    plot_photometry_fit,\\n\",\nresults/m1-210210-nebular-2026-09-30/run/fits/neb_eline/210210-M1_210210/M1_210210_executed.ipynb:1306:    \"plot_photometry_fit(\\n\",\nresults/m1-210210-nebular-2026-09-30/run/fits/neb/210210-M1_210210/M1_210210_executed.ipynb:90:    \"    plot_photometry_fit,\\n\",\nresults/m1-210210-nebular-2026-09-30/run/fits/neb/210210-M1_210210/M1_210210_executed.ipynb:1314:    \"plot_photometry_fit(\\n\",\nresults/birth-cloud-dust/dust1_on/210210-M1_210210/M1_210210_executed.ipynb:89:    \"    plot_photometry_fit,\\n\",\nresults/birth-cloud-dust/dust1_on/210210-M1_210210/M1_210210_executed.ipynb:1226:    \"plot_photometry_fit(\\n\",\nresults/birth-cloud-dust/dust_index_m3/210210-M1_210210/M1_210210_executed.ipynb:89:    \"    plot_photometry_fit,\\n\",\nresults/birth-cloud-dust/dust_index_m3/210210-M1_210210/M1_210210_executed.ipynb:1216:    \"plot_photometry_fit(\\n\",\nresults/birth-cloud-dust/dust1_off/210210-M1_210210/M1_210210_executed.ipynb:89:    \"    plot_photometry_fit,\\n\",\nresults/birth-cloud-dust/dust1_off/210210-M1_210210/M1_210210_executed.ipynb:1267:    \"plot_photometry_fit(\\n\",\nresults/speedup-ablations-2026-09-30/run/fits/delete250/210210-M1_210210/M1_210210_executed.ipynb:90:    \"    plot_photometry_fit,\\n\",\nresults/speedup-ablations-2026-09-30/run/fits/delete250/210210-M1_210210/M1_210210_executed.ipynb:1337:    \"plot_photometry_fit(\\n\",\nresults/speedup-ablations-2026-09-30/run/fits/inner46/210210-M1_210210/M1_210210_executed.ipynb:90:    \"    plot_photometry_fit,\\n\","
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && sed -n 130,330p scripts/spectral_figures.py; git log --oneline -8 -- scripts/spectral_figures.py\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "def set_plain_log_ticks(axis, ticks):\n    \"\"\"Log axis with plain decimal tick labels (0.4, 1, 2), no minor ticks.\"\"\"\n    axis.set_major_locator(FixedLocator(list(ticks)))\n    axis.set_major_formatter(FuncFormatter(lambda v, _: f\"{v:g}\"))\n    axis.set_minor_locator(NullLocator())\n\n\ndef spectral_tight_layout(fig=None, *, rect=(0, 0, 1, 1), **kwargs):\n    \"\"\"Apply tight layout, with a separate column for the feature legend.\n\n    Figures without feature labels use normal tight layout. Repeated calls do\n    not increase figure dimensions again. Existing top/bottom margins remain.\n    \"\"\"\n    fig = plt.gcf() if fig is None else fig\n    legend = next((leg for leg in fig.legends if leg.get_gid() == _LEGEND_GID), None)\n    if legend is None:\n        fig.tight_layout(rect=rect, **kwargs)\n        return\n    box = legend.get_window_extent(fig.canvas.get_renderer())\n    column = box.width / fig.dpi + 0.35\n    height = box.height / fig.dpi + 0.4\n    if not hasattr(fig, \"_absorption_base_size\"):\n        fig._absorption_base_size = tuple(fig.get_size_inches())\n    width, original_height = fig._absorption_base_size\n    fig.set_size_inches(width + column, max(original_height, height))\n    right = min(rect[2], 1 - column / fig.get_figwidth())\n    legend.set_bbox_to_anchor((1 - 0.05 / fig.get_figwidth(), (rect[1] + rect[3]) / 2))\n    fig.tight_layout(rect=(rect[0], rect[1], right, rect[3]), **kwargs)\n\n\ndef _spread_labels(positions, minimum, low, high):\n    \"\"\"Nearest positions to sorted ``positions`` with ``minimum`` spacing, inside [low, high].\"\"\"\n    steps = minimum * np.arange(len(positions))\n    blocks = []\n    for value in positions - steps:\n        blocks.append([value, 1])\n        while len(blocks) > 1 and blocks[-2][0] > blocks[-1][0]:\n            mean, count = blocks.pop()\n            total = blocks[-1][1] + count\n            blocks[-1] = [(blocks[-1][0] * blocks[-1][1] + mean * count) / total, total]\n    spread = np.concatenate([[mean] * count for mean, count in blocks])\n    spread = np.maximum.accumulate(np.maximum(spread, low)) + steps\n    return np.minimum(spread, high - steps[::-1])\n\n\ndef _draw_label_rail(rail, wave, labels, fan=0.25):\n    \"\"\"Rotated band names on ``rail``, with leaders to the true wavelength on both edges.\"\"\"\n    fig = rail.figure\n    fontsize = mpl.rcParams[\"font.size\"] - 1.5\n    low, high = np.log10(rail.get_xlim())\n    dex_per_in = (high - low) / (rail.get_position().width * fig.get_figwidth())\n    spacing = 1.37 * fontsize / 72 * dex_per_in\n    spots = 10 ** _spread_labels(np.log10(wave), spacing, low + spacing / 2, high - spacing / 2)\n    texts = [\n        rail.text(spot, 1 - fan - 0.03, label, rotation=90, ha=\"center\", va=\"top\", fontsize=fontsize)\n        for spot, label in zip(spots, labels, strict=True)\n    ]\n    fig.draw_without_rendering()\n    to_rail = rail.transData.inverted()\n    style = dict(color=\"0.6\", lw=0.6, solid_capstyle=\"butt\", clip_on=False)\n    for true, spot, text in zip(wave, spots, texts, strict=True):\n        bottom = to_rail.transform((0, text.get_window_extent().y0))[1] - 0.025\n        rail.plot([true, spot, spot], [1, 1 - fan, 1 - fan - 0.005], **style)\n        rail.plot([spot, spot, true], [bottom, fan, 0], **style)\n\n\ndef plot_photometry_fit(\n    labels, wave_eff, flux, uncertainty, model_q16, model_q50, model_q84, *,\n    redshift, data_label, spectral_range=None, continuum=None, mask=None,\n):\n    \"\"\"Photometry fit with a pull panel; band names sit on a rail between the panels.\n\n    Fluxes in microjansky, wavelengths in observed angstrom. ``spectral_range`` is the\n    (min, max) of the fitted spectral pixels, ``continuum`` a (wavelength, flux) pair,\n    ``mask`` False for a band outside the fit. Returns ``(fig, (ax_flux, ax_pull))``.\n    \"\"\"\n    order = np.argsort(wave_eff)\n    wave = np.asarray(wave_eff, dtype=float)[order] * 1e-4\n    flux, sigma, q16, q50, q84 = (\n        np.asarray(values, dtype=float)[order]\n        for values in (flux, uncertainty, model_q16, model_q50, model_q84)\n    )\n    labels = [labels[index] for index in order]\n    fitted = np.ones(len(wave), dtype=bool) if mask is None else np.asarray(mask, dtype=bool)[order]\n    pull = (flux - q50) / sigma\n    x_low, x_high = wave.min() * 0.84, wave.max() * 1.22\n\n    rail_in = 0.95\n    fig = plt.figure(figsize=(8, 6 + rail_in))\n    grid = fig.add_gridspec(3, 1, height_ratios=[3 * 1.3, rail_in, 1.3], hspace=0)\n    ax = fig.add_subplot(grid[0])\n    rail = fig.add_subplot(grid[1], sharex=ax)\n    ax_pull = fig.add_subplot(grid[2], sharex=ax)\n\n    if continuum is not None:\n        continuum_wave, continuum_flux = (np.asarray(values) for values in continuum)\n        shown = (continuum_wave * 1e-4 > x_low) & (continuum_wave * 1e-4 < x_high)\n        ax.plot(continuum_wave[shown] * 1e-4, continuum_flux[shown], color=\"0.6\", lw=0.8,\n                label=\"median continuum\")\n    # Data on top with capped 1-sigma bars, since a 5% floor is shorter than a large marker.\n    for pick, face, suffix in ((fitted, None, \"fitted bands\"), (~fitted, \"none\", \"bands outside the fit\")):\n        if pick.any():\n            ax.errorbar(wave[pick], flux[pick], yerr=sigma[pick], fmt=\"o\", ms=3.5, color=\"tab:blue\", mfc=face,\n                        elinewidth=1.2, capsize=3, capthick=1.2, zorder=3,\n                        label=rf\"{data_label} {suffix}, $1\\sigma$\")\n            ax_pull.scatter(wave[pick], pull[pick], edgecolors=\"tab:blue\",\n                            facecolors=\"tab:blue\" if face is None else face)\n    ax.errorbar(wave, q50, yerr=[q50 - q16, q84 - q50], fmt=\"s\", ms=5, color=\"tab:red\", alpha=0.75,\n                elinewidth=0.8, zorder=2, label=\"joint Ceridwen, 16-84%\")\n    if spectral_range is not None:\n        span = np.asarray(spectral_range) * 1e-4\n        for panel in (ax, ax_pull):\n            panel.axvspan(*span, facecolor=\"tab:purple\", alpha=0.12, linewidth=0.0, zorder=-1)\n            for boundary in span:\n                panel.axvline(boundary, color=\"tab:purple\", alpha=0.95, linewidth=1.5, linestyle=\"--\",\n                              zorder=1)\n        ax.plot([], [], color=\"tab:purple\", linewidth=1.5, linestyle=\"--\",\n                label=\"LEGA-C spectroscopic data range\")\n\n    ax.set(xscale=\"log\", yscale=\"log\", xlim=(x_low, x_high), ylabel=r\"$F_\\nu$ [$10^{-29}$ cgs]\")\n    y_low, y_high = ax.get_ylim()\n    set_plain_log_ticks(ax.yaxis, [tick for tick in (0.01, 0.1, 1, 10, 100, 1000) if y_low < tick < y_high])\n    ax.tick_params(labelbottom=False)\n    ax.legend(frameon=False, loc=\"lower right\")\n    ax_pull.axhline(0, color=\"0.5\", lw=0.8)\n    ax_pull.set(xlabel=r\"observed vacuum wavelength [$\\mu$m]\", ylabel=\"pull\")\n    set_plain_log_ticks(\n        ax_pull.xaxis, [tick for tick in (0.1, 0.2, 0.4, 0.6, 1, 2, 4, 8) if x_low < tick < x_high]\n    )\n    top = mark_rest_wavelength_axis(ax, redshift, label=r\"rest-frame vacuum wavelength [$\\mu$m]\")\n    set_plain_log_ticks(\n        top.xaxis,\n        [tick for tick in (0.1, 0.15, 0.25, 0.4, 0.6, 1, 1.5, 2.5, 4)\n         if x_low < tick * (1 + redshift) < x_high],\n    )\n    rail.set(ylim=(0, 1))\n    rail.axis(\"off\")\n    fig.tight_layout(h_pad=0)\n    _draw_label_rail(rail, wave, labels)\n    return fig, (ax, ax_pull)\n\n\n__all__ = [\"FEATURE_XLABEL_PAD\", \"FEATURE_COLORS\", \"FIT_FIGURE_RCPARAMS\", \"MARKED_FEATURES\",\n           \"mark_absorption_features\", \"mark_rest_wavelength_axis\", \"plot_photometry_fit\",\n           \"set_plain_log_ticks\", \"spectral_tight_layout\"]\neff7c9e Photometry figure: flux label\nbaca6df Photometry-fit figure: capped 1-sigma error bar on every observed band (catalogue error with the 5% floor), model 16-84% bars thinner and below; three M1_210210 executed notebooks regenerated on CPU\nbbe2422 COSMOS figures in the fit notebook's style: shared FIT_FIGURE_RCPARAMS, photometry rail figure and comparison figure restyled, three executed notebooks regenerated on CPU\n65e6966 Fit notebook photometry figure: band names on a rail between the flux and pull panels, any band count (plot_photometry_fit, design A picked by Liu Hao)\ncd75b91 Spectrum figures: microJy flux units, rest-frame top axis from one shared helper, arm B dropped from M1_210210 comparisons, KL and corner figures at dpi 150\n789eda9 Use fixed absorption-feature colours and side legends\nbb06bd2 Absorption-feature labelling as the production standard for every wavelength plot"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && git show HEAD~1:scripts/spectral_figures.py | grep -n 'ylabel' ; grep -rn \\\"10^{-29}\\\\|1e-29\\\\|10\\\\^{20}\\\\|1e20\\\\|e20\\\" scripts/*.py | head -20\"\n}"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && python3 - <<'EOF'\\nimport json\\nnb=json.load(open(\\\"results/birth-cloud-dust/dust1_on/210210-M1_210210/M1_210210_executed.ipynb\\\"))\\nfor i,c in enumerate(nb[\\\"cells\\\"]):\\n    s=\\\"\\\".join(c[\\\"source\\\"])\\n    if \\\"plot_photometry_fit(\\\" in s:\\n        print(i); print(s)\\nEOF\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "250:    ax.set(xscale=\"log\", yscale=\"log\", xlim=(x_low, x_high), ylabel=r\"$F_\\nu$ [$\\mu$Jy]\")\n256:    ax_pull.set(xlabel=r\"observed vacuum wavelength [$\\mu$m]\", ylabel=\"pull\")\nscripts/per_galaxy_diagnostics.py:873:UJY_PER_CGS = 1e29                # 1 microJy = 1e-29 erg/s/cm^2/Hz"
+ },
+ {
+  "role": "tool_result",
+  "content": "14\ndef posterior_batch(samples, model, count):\n    total = len(next(iter(samples.values())))\n    indices = np.linspace(0, total - 1, min(count, total), dtype=int)\n    batch = {}\n    for name, parameter_template in model.theta_init.items():\n        values = np.asarray(samples[name])[indices]\n        if np.shape(parameter_template) == (1,) and values.ndim == 1:\n            values = values[:, None]\n        batch[name] = jnp.asarray(values)\n    return batch\n\n\npredictive_batch = posterior_batch(joint_posterior, joint_model, 200)\njoint_predictions = joint_model.predict_vmap(predictive_batch)\nphot_predictions = np.asarray(joint_predictions[\"photometry\"])\nspectrum_predictions = np.asarray(joint_predictions[\"spectrum\"])\n# Per draw: the noise model's sigma at the uncalibrated model, then one coefficient\n# draw from N(a_hat, N^-1); P(lambda) multiplies the prediction.\npredictive_sigma = np.hypot(\n    spectrum_uncertainty[None, :],\n    np.exp(np.asarray(predictive_batch[\"log_f_calib\"]).reshape(-1, 1)) * np.abs(spectrum_predictions),\n)\nif emission_line_columns is None:\n    calibration_coefficients, calibration_vectors = (\n        np.asarray(value)\n        for value in calibration_polynomial.posterior_draws(\n            spectrum_flux, spectrum_predictions, predictive_sigma, spectrum_mask, jax.random.PRNGKey(SEED + 2)\n        )\n    )\n    spectrum_predictions = spectrum_predictions * calibration_vectors\nelse:  # one joint draw of coefficients and line fluxes >= 0; the prediction includes the lines\n    calibration_coefficients, emission_line_fluxes, spectrum_predictions = (\n        np.asarray(value)\n        for value in calibration_polynomial.posterior_draws_with_lines(\n            spectrum_flux, spectrum_predictions, predictive_sigma,\n            jax.vmap(emission_line_columns.columns)(predictive_batch), spectrum_mask, jax.random.PRNGKey(SEED + 2),\n            ridge=emission_line_columns.ridge,\n            photometry=(emission_line_columns.band_matrix, phot_flux, phot_predictions,\n                        np.broadcast_to(phot_uncertainty, phot_predictions.shape), phot_fit_mask),\n        )\n    )\n    phot_predictions = phot_predictions + emission_line_fluxes @ emission_line_columns.band_matrix.T\n    calibration_vectors = np.asarray(calibration_polynomial.polynomial(calibration_coefficients.T)).T\nphot_q16, phot_q50, phot_q84 = np.percentile(phot_predictions, [16, 50, 84], axis=0)\nspec_q16, spec_q50, spec_q84 = np.percentile(spectrum_predictions, [16, 50, 84], axis=0)\n\nmedian_theta = {\n    name: jnp.atleast_1d(np.median(np.asarray(values), axis=0)) for name, values in joint_posterior.items()\n}\ncontinuum = (\n    np.asarray(joint_csp.get_spectrum(joint_model.apply_transforms(median_theta)))\n    * 10 ** float(median_theta[\"logmass\"][0])\n    * float(flux_factor_maggies(z_catalog))\n    / CGS_FNU_PER_MAGGIE\n)\ncontinuum_wave = np.asarray(joint_csp.wave) * (1 + z_catalog)\ncontinuum_mask = (continuum_wave > 2500) & (continuum_wave < 55000)\n\n# Photometry in microJy; the h5 stays in maggies. Band names sit on a rail between the panels.\nfitted_wave = spectrum_wave[spectrum_mask]\nplot_photometry_fit(\n    FILTER_LABELS, filter_wave_eff, phot_flux / UJY_TO_MAGGIES, phot_uncertainty / UJY_TO_MAGGIES,\n    phot_q16 / UJY_TO_MAGGIES, phot_q50 / UJY_TO_MAGGIES, phot_q84 / UJY_TO_MAGGIES,\n    redshift=z_catalog, data_label=SETTINGS[\"photometry\"],\n    spectral_range=(fitted_wave.min(), fitted_wave.max()),\n    continuum=(continuum_wave[continuum_mask], continuum[continuum_mask] / UJY_TO_MAGGIES),\n    mask=phot_fit_mask,\n)\nplt.show()\n\ncalibration_fraction = float(np.exp(np.median(np.asarray(joint_posterior[\"log_f_calib\"]))))\neffective_spec_uncertainty = np.hypot(spectrum_uncertainty, calibration_fraction * np.abs(spec_q50))\nspectrum_plot_pull = np.where(\n    spectrum_mask, (spectrum_flux - spec_q50) / effective_spec_uncertainty, np.nan\n)\n\n# Spectrum in microJy; the likelihood and the h5 stay in cgs F_nu.\nUJY_PER_CGS = 1e29\nfig, axes = plt.subplots(2, 1, figsize=(10, 6), gridspec_kw={\"height_ratios\": [3, 1]}, sharex=True)\naxes[0].errorbar(\n    spectrum_wave,\n    np.where(spectrum_mask, spectrum_flux, np.nan) * UJY_PER_CGS,\n    yerr=np.where(spectrum_mask, effective_spec_uncertainty, np.nan) * UJY_PER_CGS,\n    fmt=\"-\", lw=0.5, color=\"0.35\", label=\"measured LEGA-C\",\n)\naxes[0].plot(\n    spectrum_wave, np.where(spectrum_mask, spec_q50, np.nan) * UJY_PER_CGS, color=\"tab:red\", lw=1.2,\n    label=\"joint Ceridwen median\",\n)\naxes[0].fill_between(\n    spectrum_wave,\n    np.where(spectrum_mask, spec_q16, np.nan) * UJY_PER_CGS,\n    np.where(spectrum_mask, spec_q84, np.nan) * UJY_PER_CGS,\n    color=\"tab:red\", alpha=0.25,\n)\naxes[0].set(ylabel=r\"$F_\\nu$ [$\\mu$Jy]\")\naxes[0].legend(frameon=False)\naxes[1].axhline(0, color=\"0.5\", lw=0.8)\naxes[1].plot(spectrum_wave, spectrum_plot_pull, lw=0.45, color=\"0.35\")\naxes[1].set(xlabel=\"observed vacuum wavelength [angstrom]\", ylabel=\"pull\")\nmark_filter_ranges(axes[0])\nmark_filter_ranges(axes[1], show_labels=False)\nmark_absorption_features(axes[0], z_catalog, show_labels=False)\nmark_absorption_features(axes[1], z_catalog, xlabel=\"observed vacuum wavelength [angstrom]\")\nmark_rest_wavelength_axis(axes[0], z_catalog, label=\"rest-frame vacuum wavelength [angstrom]\")\nspectral_tight_layout()\nplt.show()\n\nphot_chi2 = np.sum(((phot_flux - phot_q50) / phot_uncertainty) ** 2)\nspectrum_chi2 = np.sum(\n    ((spectrum_flux[spectrum_mask] - spec_q50[spectrum_mask]) / effective_spec_uncertainty[spectrum_mask]) ** 2\n)\njoint_chi2 = phot_chi2 + spectrum_chi2\njoint_points = phot_obs.ndof + spectrum_obs.ndof\nprint(f\"photometry chi2/datum: {phot_chi2 / phot_obs.ndof:.2f}\")\nprint(f\"spectrum chi2/bin: {spectrum_chi2 / spectrum_obs.ndof:.2f}\")\nprint(f\"joint chi2/datum: {joint_chi2 / joint_points:.2f}\")\nprint(f\"sampled calibration floor: {100 * calibration_fraction:.2f}%\")"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && python3 - <<'EOF'\\nimport sys; sys.path.insert(0,\\\"scripts\\\")\\nimport numpy as np, matplotlib; matplotlib.use(\\\"Agg\\\")\\nimport matplotlib.pyplot as plt\\nimport spectral_figures as sf\\nplt.rcParams.update(sf.FIT_FIGURE_RCPARAMS)\\nw=np.array([3500,4500,6000,8000,12000,16000,22000,36000.])\\nf=np.array([0.3,1.2,3,5,8,10,9,6.])\\nfig,_=sf.plot_photometry_fit([f\\\"b{i}\\\" for i in range(8)],w,f,0.05*f,f*.95,f,f*1.05,redshift=0.7,data_label=\\\"test\\\",spectral_range=(4000,9000))\\nimport os\\nfig.savefig(os.environ[\\\"TMPDIR\\\"]+\\\"/p.png\\\",dpi=100)\\nEOF\\necho $TMPDIR\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "/Users/liuhao/.matplotlib is not a writable directory\nMatplotlib created a temporary cache directory at /tmp/claude-501/matplotlib-vd9w1inn because there was an issue with the default path (/Users/liuhao/.matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.\nMatplotlib is building the font cache; this may take a moment.\nTraceback (most recent call last):\n  File \"<stdin>\", line 4, in <module>\n  File \"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/scripts/spectral_figures.py\", line 17, in <module>\n    from ceridwen.observation.absorption_features import feature_windows\nModuleNotFoundError: No module named 'ceridwen.observation'\n/tmp/claude-501"
+ },
+ {
+  "role": "assistant",
+  "content": "Found it: my last commit changed the flux label to `10^-29 cgs`, which breaks the repo's \u00b5Jy rule. I'm rendering the figure now to see where \"10^20\" comes from."
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && ls -a | head -40; which -a python python3; ls .venv/bin/python 2>/dev/null\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": ".\n..\n.agents\n.beads\n.claude\n.eval-ready\n.git\n.github\n.gitignore\n.gitmodules\n.python-version\n.venv\nAGENTS.md\narchive\nBENCHMARK_CHECK.md\nbenchmarks\nceridwen\nCLAUDE.md\ndata\nexternal\nnotebooks\npapers\npyproject.toml\nREADME.md\nreports\nresults\nscripts\nsrc\ntests\ntmp\nuv.lock\nwiki\n/opt/homebrew/opt/python/libexec/bin/python\n/Users/liuhao/.pyenv/shims/python\n/Users/liuhao/.pyenv/shims/python3\n/opt/homebrew/bin/python3\n/Library/Frameworks/Python.framework/Versions/3.12/bin/python3\n/usr/bin/python3\n.venv/bin/python"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && MPLCONFIGDIR=$TMPDIR/mpl .venv/bin/python - <<'EOF'\\nimport sys, os; sys.path.insert(0,\\\"scripts\\\")\\nimport numpy as np, matplotlib; matplotlib.use(\\\"Agg\\\")\\nimport matplotlib.pyplot as plt\\nimport spectral_figures as sf\\nplt.rcParams.update(sf.FIT_FIGURE_RCPARAMS)\\nw=np.array([3500,4500,6000,8000,12000,16000,22000,36000.])\\nf=np.array([0.3,1.2,3,5,8,10,9,6.])\\nfig,_=sf.plot_photometry_fit([f\\\"b{i}\\\" for i in range(8)],w,f,0.05*f,f*.95,f,f*1.05,redshift=0.7,data_label=\\\"test\\\",spectral_range=(4000,9000))\\nfig.savefig(os.environ[\\\"TMPDIR\\\"]+\\\"/p.png\\\",dpi=100)\\nprint(os.environ[\\\"TMPDIR\\\"]+\\\"/p.png\\\")\\nEOF\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "Exit code 1\nTraceback (most recent call last):\n  File \"<stdin>\", line 4, in <module>\n  File \"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/scripts/spectral_figures.py\", line 17, in <module>\n    from ceridwen.observation.absorption_features import feature_windows\nModuleNotFoundError: No module named 'ceridwen.observation'"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && ls ceridwen | head; find . -path ./node_modules -prune -o -name absorption_features.py -print 2>/dev/null | head; .venv/bin/python -c \\\"import ceridwen;print(ceridwen.__file__, ceridwen.__path__)\\\"\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "AGENTS.md\nceridwen\nCeridwenLogo.png\nCITATION.cff\ndiagnose_lookback_grad.py\ndocs\nexamples\nGOTCHAS.md\nLICENSE\nmkdocs.yml\n./ceridwen/ceridwen/observation/absorption_features.py\nNone _NamespacePath(['/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/ceridwen'])"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && cat > $TMPDIR/render.py <<'EOF'\\nimport sys, os\\nsys.path.insert(0, \\\"scripts\\\"); sys.path.insert(0, \\\"ceridwen\\\")\\nimport numpy as np, matplotlib; matplotlib.use(\\\"Agg\\\")\\nimport matplotlib.pyplot as plt\\nimport spectral_figures as sf\\nplt.rcParams.update(sf.FIT_FIGURE_RCPARAMS)\\nw=np.array([3500,4500,6000,8000,12000,16000,22000,36000.])\\nf=np.array([0.3,1.2,3,5,8,10,9,6.])\\nfig,_=sf.plot_photometry_fit([f\\\"b{i}\\\" for i in range(8)],w,f,0.05*f,f*.95,f,f*1.05,redshift=0.7,data_label=\\\"test\\\",spectral_range=(4000,9000))\\nfig.savefig(sys.argv[1],dpi=100)\\nEOF\\nMPLCONFIGDIR=$TMPDIR/mpl .venv/bin/python -I $TMPDIR/render.py $TMPDIR/p.png 2>&1 | tail -5; ls -la $TMPDIR/p.png\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "Exit code 1\n  File \"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/ceridwen/ceridwen/dust/__init__.py\", line 5, in <module>\n    from .DustModel import Dust, DiffuseDust\n  File \"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/ceridwen/ceridwen/dust/DustModel.py\", line 5, in <module>\n    from sedpy_jax.attenuation_dust import ATTENUATION_LAWS\nModuleNotFoundError: No module named 'sedpy_jax'\nls: /tmp/claude-501/p.png: No such file or directory"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && find . -maxdepth 4 -name 'sedpy_jax*' -not -path './.venv/*' 2>/dev/null | head; ls .venv/lib/python*/site-packages | grep -i -E \\\"sedpy|ceridwen|\\\\.pth\\\"\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "./external/sedpy_jax\n./external/sedpy_jax/sedpy_jax\n./external/sedpy_jax/sedpy_jax.egg-info\n./external/sedpy_jax/dist/sedpy_jax-0.1.0.tar.gz\n./external/sedpy_jax/dist/sedpy_jax-0.1.0-py3-none-any.whl\n./.git/modules/external/sedpy_jax\n_virtualenv.pth\nastro_sedpy-0.4.1.dist-info\nsedpy"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && sed -i 's|sys.path.insert(0, \\\"scripts\\\"); sys.path.insert(0, \\\"ceridwen\\\")|sys.path[:0] = [\\\"scripts\\\", \\\"ceridwen\\\", \\\"external/sedpy_jax\\\"]|' $TMPDIR/render.py && MPLCONFIGDIR=$TMPDIR/mpl .venv/bin/python -I $TMPDIR/render.py $TMPDIR/p.png 2>&1 | tail -5; ls -la $TMPDIR/p.png\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "Exit code 1\nsed: 1: \"/tmp/claude-501/render.py\n\": command c expects \\ followed by text\nls: /tmp/claude-501/p.png: No such file or directory"
+ },
+ {
+  "role": "assistant",
+  "content": "The render script's path edit failed (BSD `sed` quirk). I'm rewriting the script and trying the render again."
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && cat > $TMPDIR/render.py <<'EOF'\\nimport sys, os\\nsys.path[:0] = [\\\"scripts\\\", \\\"ceridwen\\\", \\\"external/sedpy_jax\\\"]\\nimport numpy as np, matplotlib; matplotlib.use(\\\"Agg\\\")\\nimport matplotlib.pyplot as plt\\nimport spectral_figures as sf\\nplt.rcParams.update(sf.FIT_FIGURE_RCPARAMS)\\nw=np.array([3500,4500,6000,8000,12000,16000,22000,36000.])\\nf=np.array([0.3,1.2,3,5,8,10,9,6.])\\nfig,_=sf.plot_photometry_fit([f\\\"b{i}\\\" for i in range(8)],w,f,0.05*f,f*.95,f,f*1.05,redshift=0.7,data_label=\\\"test\\\",spectral_range=(4000,9000))\\nfig.savefig(sys.argv[1],dpi=100)\\nEOF\\nMPLCONFIGDIR=$TMPDIR/mpl .venv/bin/python -I $TMPDIR/render.py $TMPDIR/p.png 2>&1 | tail -5; ls -la $TMPDIR/p.png\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "  \"tau_chev\": \"Optical depth at 5500 \\AA\"\n/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/external/sedpy_jax/sedpy_jax/attenuation_dust.py:506: SyntaxWarning: \"\\A\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\A\"? A raw string is also an option.\n  \"tau_card\": \"Optical depth at 5500 \\AA\",\n/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/external/sedpy_jax/sedpy_jax/attenuation_dust.py:518: SyntaxWarning: \"\\A\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\A\"? A raw string is also an option.\n  \"tau_con\": \"Optical depth at 5500 \\AA\",\n-rw-r--r--  1 liuhao  wheel  37707 12 Oct 19:03 /tmp/claude-501/p.png"
+ },
+ {
+  "role": "tool_call",
+  "name": "Read",
+  "content": "{\n  \"file_path\": \"/tmp/claude-501/p.png\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "<[image]>"
+ },
+ {
+  "role": "tool_call",
+  "name": "Edit",
+  "content": "{\n  \"replace_all\": false,\n  \"file_path\": \"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/scripts/spectral_figures.py\",\n  \"old_string\": \"ylabel=r\\\"$F_\\\\nu$ [$10^{-29}$ cgs]\\\")\",\n  \"new_string\": \"ylabel=r\\\"$F_\\\\nu$ [$\\\\mu$Jy]\\\")\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "The file /Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/scripts/spectral_figures.py has been updated successfully."
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && MPLCONFIGDIR=$TMPDIR/mpl .venv/bin/python -I $TMPDIR/render.py $TMPDIR/p2.png 2>/dev/null; ls $TMPDIR/p2.png\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "/tmp/claude-501/p2.png"
+ },
+ {
+  "role": "tool_call",
+  "name": "Read",
+  "content": "{\n  \"file_path\": \"/tmp/claude-501/p2.png\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "<[image]>"
+ },
+ {
+  "role": "assistant",
+  "content": "Y label is back to \u00b5Jy and the figure renders cleanly. I'm committing it now."
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && git add scripts/spectral_figures.py && git commit -q -m \\\"Photometry figure: flux label back to microJy\\n\\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>\\\" && git push 2>&1 | tail -3; git status -sb | head -3\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "Please make sure you have the correct access rights\nand the repository exists.\n## absorption-mask...origin/absorption-mask [ahead 1]\n m ceridwen\n ? external/sedpy_jax"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && git -C ceridwen status --short | head -5; git -C external/sedpy_jax status --short | head -5; git status --short --ignored scripts | head\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": " M tests/fixtures/ssp_data_bpass_agb_dust.h5\n?? sedpy_jax/__pycache__/__init__.cpython-314.pyc\n?? sedpy_jax/__pycache__/_version.cpython-314.pyc\n?? sedpy_jax/__pycache__/attenuation.cpython-314.pyc\n?? sedpy_jax/__pycache__/attenuation_dust.cpython-314.pyc\n?? sedpy_jax/__pycache__/observate.cpython-314.pyc\n!! scripts/__pycache__/"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && ls -la ceridwen/tests/fixtures/ssp_data_bpass_agb_dust.h5; git -C ceridwen diff --stat | tail -2; git -C ceridwen status --short --ignored | grep pycache | head -3; find external/sedpy_jax ceridwen -name __pycache__ -newer $TMPDIR/render.py 2>/dev/null | head\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "-rw-r--r--  1 liuhao  staff  62168632 12 Oct 14:06 ceridwen/tests/fixtures/ssp_data_bpass_agb_dust.h5\n tests/fixtures/ssp_data_bpass_agb_dust.h5 | Bin 133 -> 62168632 bytes\n 1 file changed, 0 insertions(+), 0 deletions(-)\n!! ceridwen/__pycache__/\n!! ceridwen/csp/__pycache__/\n!! ceridwen/dust/__pycache__/\nexternal/sedpy_jax/sedpy_jax/__pycache__\nceridwen/ceridwen/__pycache__\nceridwen/ceridwen/dust/__pycache__\nceridwen/ceridwen/neb/__pycache__\nceridwen/ceridwen/model/__pycache__\nceridwen/ceridwen/csp/__pycache__\nceridwen/ceridwen/ssps/__pycache__\nceridwen/ceridwen/observation/__pycache__"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2\\\" && rm -rf external/sedpy_jax/sedpy_jax/__pycache__ && git -C external/sedpy_jax status --short | head -3; git status -sb | head -4\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": " D sedpy_jax/__pycache__/__init__.cpython-310.pyc\n D sedpy_jax/__pycache__/_version.cpython-310.pyc\n D sedpy_jax/__pycache__/attenuation.cpython-310.pyc\n## absorption-mask...origin/absorption-mask [ahead 1]\n m ceridwen\n m external/sedpy_jax"
+ },
+ {
+  "role": "tool_call",
+  "name": "Bash",
+  "content": "{\n  \"command\": \"cd \\\"/Users/liuhao/Downloads/Astro project/tmp/agent-hillclimb/sandboxes_r2/sonnet/slot2/external/sedpy_jax\\\" && git checkout -- sedpy_jax/__pycache__ && git status --short | head -3; cd ../.. && git status -sb | head -4\"\n}"
+ },
+ {
+  "role": "tool_result",
+  "content": "## absorption-mask...origin/absorption-mask [ahead 1]\n m ceridwen"
+ },
+ {
+  "role": "assistant",
+  "content": "You're right, that axis was wrong, and it was my mistake. My last commit (`eff7c9e`) swapped the y label from `F_\u03bd [\u00b5Jy]` to `F_\u03bd [10^-29 cgs]`. The tick numbers on that axis are \u00b5Jy values, so the label was a bare scale that didn't match them. It also broke the repo rule that flux axes state a physical unit like \u00b5Jy.\n\nI put the label back to `F_\u03bd [\u00b5Jy]` in `scripts/spectral_figures.py` and rendered a test figure to check. I used synthetic data, not a real fit.\n\nI couldn't find a \"10^20\" anywhere in the figure. The only other axes are `observed vacuum wavelength [\u00b5m]`, `rest-frame vacuum wavelength [\u00b5m]` and `pull`. If you saw it in a particular notebook or wiki image, tell me which one and I'll check.\n\nThe fix is committed locally, but `git push` failed because the sandbox blocks GitHub. You'll need to push it yourself. I didn't re-run any executed notebooks.\n\nThe `ceridwen` submodule shows a modified test fixture, `ssp_data_bpass_agb_dust.h5`. It was changed at 14:06, before this session, so it isn't mine and I left it alone."
+ }
+]
