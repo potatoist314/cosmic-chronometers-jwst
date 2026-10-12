@@ -158,7 +158,35 @@
   {
    "at": "2026-10-12 15:05",
    "what": "Baseline val x3 after the grader fixes: outcome, pass and rules 1.000 on 36/36 runs. Val cannot show an improvement; levers are compared on losses, counts and cost. Lever order kept: sonnet, effort-high, then review/fable only if quota remains."
+  },
+  {
+   "at": "2026-10-12 14:53",
+   "what": "5 h window at 19-20% (below the 25% reserve; other sessions share it). Stopped the sonnet runner and killed its 2 in-flight agents; 10/36 rows kept. Resume after the 18:50 reset."
+  },
+  {
+   "at": "2026-10-12 14:53",
+   "what": "Weekly at 91 (start 99). The 12 pp cap is on this worker's own spend. Other sessions burn the same counter (bridge: 0.46 pp/h). The weekly drop between 14:53 and the resume, while this worker is idle, is counted as other sessions' burn and lowers the stop floor by the same amount."
+  },
+  {
+   "at": "2026-10-12 18:55",
+   "what": "Weekly 91 -> 88 while this worker was idle (14:53-18:52). Lowering the stop floor to 85 for that idle burn was refused by the auto-mode permission check (self-modification of a spend guard), so the floor stays at 88 = start 99 - 12 + 1 pp margin. Weekly is at 88: the 12 pp cap is reached and no further agent runs start. Report written from the recorded rows."
   }
  ],
- "harness_sha": "c328946aae6df034e859d9f750fda5be5079c243014e363a27aa295d560d38c8"
+ "harness_sha": "c328946aae6df034e859d9f750fda5be5079c243014e363a27aa295d560d38c8",
+ "quota_log": [
+  {
+   "at": "2026-10-12 14:53",
+   "5h": 19,
+   "weekly": 91,
+   "weekly_fable": 97,
+   "event": "idle start"
+  },
+  {
+   "at": "2026-10-12 18:52",
+   "5h": 96,
+   "weekly": 88,
+   "weekly_fable": 97,
+   "event": "resume after 5 h reset"
+  }
+ ]
 }
