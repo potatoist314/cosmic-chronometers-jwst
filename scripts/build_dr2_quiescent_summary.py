@@ -30,7 +30,6 @@ DEFAULT_OUT_PATH = PROJECT_ROOT / "results/dr2-quiescent-new-defaults-summary.cs
 # (ceridwen/scripts_afe/build_afe_hr_grid.py: ZSUN_MIST = 0.0185), so the
 # displayed iron abundance is [Fe/H] = Z + FEH_OFFSET.
 FEH_OFFSET = 1.7328283
-
 SUMMARY_PARAMS = {
     "logmass": "logmass",
     "Z": "feh",
@@ -71,6 +70,20 @@ def formation_times(edges: np.ndarray, fracs: np.ndarray) -> tuple[np.ndarray, .
 
 def _str(value) -> str:
     return value.decode() if isinstance(value, bytes) else str(value)
+
+
+def sfr100_draws(mass_fraction_draws: np.ndarray, logmass: np.ndarray) -> np.ndarray:
+    """SFR averaged over the youngest 100 Myr, per posterior draw.
+
+    Bins 0 and 1 span 0-30 and 30-100 Myr, so the mass formed in the last
+    100 Myr is ``M_formed * (f0 + f1)`` and the mean rate divides by 1e8 yr.
+    ``mass_fraction_draws`` has shape (n_draws, 7); ``logmass`` holds the
+    matching formed-mass draws in log10 solar masses.
+    """
+    fracs = np.asarray(mass_fraction_draws, dtype=float)
+    logm = np.asarray(logmass, dtype=float).reshape(-1)
+    young_frac = fracs[:, 0] + fracs[:, 1]
+    return 10.0**logm * np.clip(young_frac, 0.0, None) / 1e8
 
 
 def load_target(target: dict, result_root: Path) -> dict:
@@ -128,6 +141,22 @@ def load_target(target: dict, result_root: Path) -> dict:
         row["n_calls"] = int(samples.attrs["n_likelihood_calls"])
         row["n_samples"] = int(samples.attrs["n_samples"])
         row["wall_time_s"] = float(samples.attrs["wall_time_s"])
+        n = int(samples.attrs["n_samples"])
+        index = np.linspace(0, n - 1, len(fracs)).astype(int)
+        sfr = sfr100_draws(fracs, np.asarray(samples["logmass"][:])[index])
+        with np.errstate(divide="ignore"):
+            log_sfr = np.log10(sfr)
+        finite = log_sfr[np.isfinite(log_sfr)]
+        if len(finite) == 0:
+            row["sfr100_q16"], row["sfr100_q50"], row["sfr100_q84"] = (
+                float("nan"),
+                float("nan"),
+                float("nan"),
+            )
+        else:
+            row["sfr100_q16"], row["sfr100_q50"], row["sfr100_q84"] = (
+                float(v) for v in np.quantile(finite, [0.16, 0.5, 0.84])
+            )
     return row
 
 

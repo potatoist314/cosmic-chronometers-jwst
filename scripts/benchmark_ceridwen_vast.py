@@ -34,6 +34,7 @@ NUM_DELETE = 25
 REFERENCE_LOGZ_TOL = -3.0
 WARMUP_STEPS = 1
 TIMED_STEPS = 5
+TRACE_STEPS = 1
 CALLS_PER_STEP = NUM_INNER_STEPS * NUM_DELETE
 JAX_MEMORY_FRACTION = "0.50"
 LEGACY_RESULT_SCHEMA_VERSION = 1
@@ -660,7 +661,7 @@ def _nvidia_process_memory_mib() -> float | None:
     return total if found else None
 
 
-def run_fixed_steps(workload: BuiltWorkload) -> dict[str, Any]:
+def _initialize_fixed_sampler(workload: BuiltWorkload) -> tuple[Any, Any, Any, float]:
     import blackjax
     import jax
     import numpy as np
@@ -688,6 +689,13 @@ def run_fixed_steps(workload: BuiltWorkload) -> dict[str, Any]:
     live_log_likelihood = np.asarray(live.particles.loglikelihood)
     if not np.all(np.isfinite(live_log_likelihood)):
         raise BenchmarkError("the initialized live-point likelihood is not finite")
+    return rng_key, live, step_fn, initialization_seconds
+
+
+def run_fixed_steps(workload: BuiltWorkload) -> dict[str, Any]:
+    import jax
+
+    rng_key, live, step_fn, initialization_seconds = _initialize_fixed_sampler(workload)
 
     warmup_seconds = []
     for _ in range(WARMUP_STEPS):
@@ -706,6 +714,40 @@ def run_fixed_steps(workload: BuiltWorkload) -> dict[str, Any]:
         duration = time.perf_counter() - start
         iteration_seconds.append(duration)
         print(f"timed step {step}/{TIMED_STEPS}: {duration:.3f} s", flush=True)
+
+    return {
+        "initialization_seconds": initialization_seconds,
+        "warmup_step_seconds": warmup_seconds,
+        "iteration_seconds": iteration_seconds,
+    }
+
+
+def run_traced_step(workload: BuiltWorkload, trace_dir: Path) -> dict[str, Any]:
+    """Trace one post-JIT benchmark step with the JAX profiler."""
+    import jax
+
+    rng_key, live, step_fn, initialization_seconds = _initialize_fixed_sampler(workload)
+
+    warmup_seconds = []
+    for _ in range(WARMUP_STEPS):
+        rng_key, step_key = jax.random.split(rng_key)
+        start = time.perf_counter()
+        live, dead_info = step_fn(step_key, live)
+        jax.block_until_ready((live, dead_info))
+        warmup_seconds.append(time.perf_counter() - start)
+
+    trace_dir.mkdir(parents=True)
+    iteration_seconds = []
+    with jax.profiler.trace(str(trace_dir)):
+        for step in range(1, TRACE_STEPS + 1):
+            rng_key, step_key = jax.random.split(rng_key)
+            start = time.perf_counter()
+            with jax.profiler.StepTraceAnnotation("nss_step", step_num=step):
+                live, dead_info = step_fn(step_key, live)
+                jax.block_until_ready((live, dead_info))
+            duration = time.perf_counter() - start
+            iteration_seconds.append(duration)
+            print(f"traced step {step}/{TRACE_STEPS}: {duration:.3f} s", flush=True)
 
     return {
         "initialization_seconds": initialization_seconds,
@@ -904,6 +946,113 @@ def command_run(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_trace(args: argparse.Namespace) -> int:
+    _configure_cuda_environment()
+
+    import jax
+
+    jax.config.update("jax_enable_x64", True)
+    devices = jax.devices()
+    if len(devices) != 1 or devices[0].platform != "gpu":
+        raise BenchmarkError(f"expected one CUDA GPU device, found {devices}")
+    device = devices[0]
+    print(f"device: {getattr(device, 'device_kind', device)}")
+    print(f"workload: {WORKLOAD_ID}")
+
+    output_dir = args.output_dir.resolve()
+    if output_dir.exists() and any(output_dir.iterdir()):
+        raise BenchmarkError(f"trace output directory is not empty: {output_dir}")
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    project_root = args.project_root.resolve()
+    started_at = datetime.now(UTC)
+    setup_start = time.perf_counter()
+    workload = build_joint_workload(project_root)
+    input_sha256 = {name: _sha256(path) for name, path in workload.input_paths.items()}
+    setup_seconds = time.perf_counter() - setup_start
+    print(
+        "validated workload: "
+        f"{workload.metadata['photometric_bands']} bands, "
+        f"{workload.metadata['spectral_pixels']} spectral pixels"
+    )
+
+    trace_dir = output_dir / "xprof"
+    raw_timings = run_traced_step(workload, trace_dir)
+    runtime = _runtime_metadata(jax, device)
+    contract = {
+        "id": WORKLOAD_ID,
+        **workload.metadata,
+        "seed": SEED,
+        "num_live": NUM_LIVE,
+        "num_inner_steps": NUM_INNER_STEPS,
+        "num_delete": NUM_DELETE,
+        "reference_logZ_tol": REFERENCE_LOGZ_TOL,
+        "warmup_steps": WARMUP_STEPS,
+        "traced_steps": TRACE_STEPS,
+        "likelihood_calls_per_step": CALLS_PER_STEP,
+    }
+    workload_fingerprint = _comparison_fingerprint(
+        contract,
+        input_sha256,
+        _git_metadata(project_root)["ceridwen_commit"],
+        runtime,
+    )
+    trace_files = sorted(
+        str(path.relative_to(output_dir))
+        for path in trace_dir.rglob("*")
+        if path.is_file()
+    )
+    if not trace_files:
+        raise BenchmarkError("JAX did not write profiler trace files")
+
+    completed_at = datetime.now(UTC)
+    profile = {
+        "schema_version": RESULT_SCHEMA_VERSION,
+        "started_at_utc": started_at.isoformat(),
+        "completed_at_utc": completed_at.isoformat(),
+        "workload": contract,
+        "workload_fingerprint": workload_fingerprint,
+        "benchmark_script_sha256": _sha256(Path(__file__).resolve()),
+        "input_sha256": input_sha256,
+        "runtime": runtime,
+        "memory": {
+            "jax": _jax_memory(device),
+            "nvidia_process_memory_mib": _nvidia_process_memory_mib(),
+        },
+        "timings": {
+            "setup_seconds": setup_seconds,
+            **raw_timings,
+            "likelihood_calls_per_step": CALLS_PER_STEP,
+            "traced_likelihood_calls": TRACE_STEPS * CALLS_PER_STEP,
+            "likelihood_calls_per_second": (
+                TRACE_STEPS * CALLS_PER_STEP / sum(raw_timings["iteration_seconds"])
+            ),
+        },
+        "trace_files": trace_files,
+    }
+    profile_path = output_dir / "profile.json"
+    profile_path.write_text(json.dumps(profile, indent=2) + "\n", encoding="utf-8")
+    log_lines = [
+        f"workload: {WORKLOAD_ID}",
+        f"device: {runtime['jax_device_kind']}",
+        f"traced likelihood calls: {profile['timings']['traced_likelihood_calls']}",
+        f"traced wall: {sum(raw_timings['iteration_seconds']):.3f} s",
+        (
+            "throughput: "
+            f"{profile['timings']['likelihood_calls_per_second']:.3f} calls/s"
+        ),
+        f"workload fingerprint: {workload_fingerprint}",
+    ]
+    (output_dir / "profile.log").write_text(
+        "\n".join(log_lines) + "\n",
+        encoding="utf-8",
+    )
+    for line in log_lines[2:]:
+        print(line)
+    print(f"saved: {output_dir}")
+    return 0
+
+
 def _result_json_paths(inputs: list[Path]) -> list[Path]:
     paths: list[Path] = []
     for supplied in inputs:
@@ -985,6 +1134,24 @@ def build_parser() -> argparse.ArgumentParser:
     run_parser.add_argument("--vast-host", help="Vast host ID.")
     run_parser.add_argument("--vast-instance", help="Vast instance ID.")
     run_parser.set_defaults(function=command_run)
+
+    trace_parser = subparsers.add_parser(
+        "trace",
+        help="trace one post-JIT fixed benchmark step",
+    )
+    trace_parser.add_argument(
+        "--project-root",
+        type=Path,
+        default=Path(__file__).resolve().parents[1],
+        help="Project checkout. Default: the checkout that contains this script.",
+    )
+    trace_parser.add_argument(
+        "--output-dir",
+        type=Path,
+        required=True,
+        help="Empty directory for profile metadata and the XProf trace.",
+    )
+    trace_parser.set_defaults(function=command_trace)
 
     summary_parser = subparsers.add_parser(
         "summarize",
