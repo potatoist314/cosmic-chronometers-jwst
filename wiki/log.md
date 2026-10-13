@@ -1470,3 +1470,8 @@
 - `wiki/notes/model.md` σ⋆ row: `broaden_photometry=False` preserves pre-merge unbroadened photometry; records upstream default, pre-filter-change bitwise lnL agreement, and measured broadening effects.
 - 11 Oct 2026: `wiki/index.md` corrects lnL equivalence after filter changes; `wiki/research/experiments/e-ceridwen-upstream-merge.md` records projector, filter and refused-cell decisions, comments-only pin `d7c0536`, and remaining undecided items.
 - Files: `wiki/notes/model.md`, `wiki/index.md`, `wiki/research/experiments/e-ceridwen-upstream-merge.md`, `wiki/log.md`.
+
+### 2026-10-13 — dr2-refit-sample: October refit of the DR2 quiescent sample
+
+- `notes/dr2-refit-sample.md` and `research/experiments/e-dr2-refit.md`: 135 of 180 fittable galaxies on October production defaults; figures in `analyses/dr2-refit-sample/`; `results/dr2-refit-2026-10-12/`.
+- Files: `wiki/notes/dr2-refit-sample.md`, `wiki/research/experiments/e-dr2-refit.md`, `wiki/analyses/dr2-refit-sample/`, `wiki/index.md`, `wiki/log.md`.

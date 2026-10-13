@@ -1,0 +1,98 @@
+23:14:52 lanes: instance 55630268 from part-01; 10 targets in stratified remainder order
+23:14:54 committed source 85d3acbfc029; output results/dr2-refit-2026-10-12/part-11/run
+23:14:55 instance 55630268: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+23:15:00 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+23:15:06 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:15:14 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:15:21 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:15:29 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:15:36 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:15:44 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:15:51 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:15:59 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:16:06 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:16:14 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:16:21 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:16:28 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:16:36 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:16:43 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:16:51 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:16:58 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:17:06 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:17:13 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:17:21 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:17:28 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:17:36 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:17:43 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:17:51 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:17:58 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:18:06 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:18:14 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:18:21 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:18:28 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:18:36 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:18:44 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:18:51 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:18:59 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:19:07 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:19:14 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:19:22 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:19:29 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:19:37 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:19:44 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:19:52 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:19:59 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:20:07 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:20:14 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:20:22 fit-0: running; 23:15:05 fitting fit/M12_92132, seed 20260832
+23:20:27 fit-0: ssh: connect to host 96.234.107.51 port 40438: Connection refused; reconnecting to the same instance
+23:20:28 instance 55630268: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+23:20:29 SSH not ready: ssh: connect to host 96.234.107.51 port 40438: Connection refused
+23:20:35 result retrieval attempt 1 failed: Command '['rsync', '-a', '--partial', '-e', 'ssh -p 40438 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@96.234.107.51:/workspace/cosmic-chronometers-jwst/.experiment/55630268/0/results/', '/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-11/run/fits/']' returned non-zero exit status 255.
+23:20:35 result retrieval attempt 2 failed: Command '['rsync', '-a', '--partial', '--checksum', '-e', 'ssh -p 40438 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@96.234.107.51:/workspace/cosmic-chronometers-jwst/.experiment/55630268/0/results/', '/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-11/run/fits/']' returned non-zero exit status 255.
+23:20:35 result retrieval attempt 3 failed: Command '['rsync', '-a', '--partial', '--checksum', '-e', 'ssh -p 40438 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@96.234.107.51:/workspace/cosmic-chronometers-jwst/.experiment/55630268/0/results/', '/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-11/run/fits/']' returned non-zero exit status 255.
+23:20:35 result retrieval failed; local files: /Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-11/run/fits; no automatic refit: Command '['rsync', '-a', '--partial', '--checksum', '-e', 'ssh -p 40438 -i /Users/liuhao/.ssh/id_ed25519 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=20 -o ServerAliveInterval=30 -o ServerAliveCountMax=20', 'root@96.234.107.51:/workspace/cosmic-chronometers-jwst/.experiment/55630268/0/results/', '/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/results/dr2-refit-2026-10-12/part-11/run/fits/']' returned non-zero exit status 255.
+23:20:35 SweepError: instance unavailable
+23:20:37 destroyed instance 55630268
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/experiment.py", line 397, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/experiment.py", line 387, in main
+    code = Run(args, source).execute()
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/benchmark.py", line 455, in execute
+    self.attempt(attempt['offer'], attempt['price'], attempt['bid'], existing=attempt)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/benchmark.py", line 429, in attempt
+    attempt['destroyed'] = not vast._instance_exists(attempt['instance_id'])
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/vast.py", line 422, in _instance_exists
+    instances = _vastai_json(["show", "instances"])
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/vast.py", line 150, in _vastai_json
+    output = _vastai([*arguments, "--raw"], timeout=timeout)
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/vast.py", line 133, in _vastai
+    result = subprocess.run(
+        command,
+    ...<3 lines>...
+        timeout=timeout,
+    )
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2153, in _communicate
+    ready = selector.select(timeout)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/experiment.py", line 395, in <lambda>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+                                             ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/experiment.py", line 395, in <genexpr>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+KeyboardInterrupt

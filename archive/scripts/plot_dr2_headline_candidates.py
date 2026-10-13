@@ -10,6 +10,7 @@ Usage: ``.venv/bin/python scripts/plot_dr2_headline_candidates.py``
 
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 import matplotlib
@@ -174,7 +175,8 @@ def layout_b_single_with_residual(galaxies: pd.DataFrame, overlap: pd.DataFrame)
     axes[1].axhline(0, color="black", lw=0.8)
     axes[1].scatter(overlap["z"], resid, s=8, alpha=0.5, color=GREEN)
     axes[1].set_xlabel("Redshift $z$")
-    axes[1].set_ylabel("Ceridwen $-$ Borghi+22 [Gyr]")
+    axes[1].set_ylabel("Ceridwen $-$\nBorghi+22 [Gyr]")
+    axes[1].margins(y=0.15)
     style_axes(axes)
     fig.tight_layout()
     fig.savefig(OUT_DIR / "headline-age-redshift.pdf")
@@ -225,4 +227,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--summary", type=Path, default=SUMMARY_PATH)
+    parser.add_argument("--out-dir", type=Path, default=OUT_DIR)
+    args = parser.parse_args()
+    SUMMARY_PATH, OUT_DIR = args.summary, args.out_dir
     main()

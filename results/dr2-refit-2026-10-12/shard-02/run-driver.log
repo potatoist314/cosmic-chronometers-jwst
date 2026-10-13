@@ -1,0 +1,42 @@
+21:21:00 committed source e7c3e07ded84; output results/dr2-refit-2026-10-12/shard-02/run
+21:21:03 renting RTX 5090, host 97910, $0.364/h; estimate $0.203
+21:21:03 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 28986862 unknown bid $0.364/h, $0.182/fit, $0.203 total; 55155910 unknown bid $0.412/h, $0.206/fit, $0.227 total; 45508895 unknown bid $0.424/h, $0.212/fit, $0.243 total; 48851735 unknown bid $0.496/h, $0.248/fit, $0.269 total; 55301546 unknown bid $0.496/h, $0.248/fit, $0.269 total; 48851746 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 55301546 unknown on-demand $0.544/h, $0.272/fit, $0.293 total; 47580836 unknown bid $0.549/h, $0.275/fit, $0.285 total; 50927568 unknown bid $0.549/h, $0.275/fit, $0.285 total; 28986860 unknown on-demand $0.571/h, $0.286/fit, $0.306 total; 45402267 unk
+21:21:04 SweepError: vastai returned no JSON: 
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/experiment.py", line 397, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/experiment.py", line 387, in main
+    code = Run(args, source).execute()
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/benchmark.py", line 484, in execute
+    self.attempt(offer, price, bid)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/benchmark.py", line 436, in attempt
+    self.invoices()
+    ~~~~~~~~~~~~~^^
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/benchmark.py", line 385, in invoices
+    response = vast._vastai_json(args + (['--next-token', token] if token else []))
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/vast.py", line 150, in _vastai_json
+    output = _vastai([*arguments, "--raw"], timeout=timeout)
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/vast.py", line 133, in _vastai
+    result = subprocess.run(
+        command,
+    ...<3 lines>...
+        timeout=timeout,
+    )
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2153, in _communicate
+    ready = selector.select(timeout)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/experiment.py", line 395, in <lambda>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+                                             ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/tmp/worktrees/dr2-refit/scripts/experiment.py", line 395, in <genexpr>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+KeyboardInterrupt

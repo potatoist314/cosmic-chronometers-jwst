@@ -74,7 +74,8 @@ def _str(value) -> str:
 
 def load_target(target: dict, result_root: Path) -> dict:
     """Summarise one target folder into a flat dict."""
-    folder = result_root / f"{target['object_id']}-{target['spect_id']}"
+    # Sharded experiment runs record each fit's folder in targets.json.
+    folder = result_root / target.get("folder", f"{target['object_id']}-{target['spect_id']}")
     row: dict = {
         "target": f"{target['object_id']}-{target['spect_id']}",
         "object_id": target["object_id"],
