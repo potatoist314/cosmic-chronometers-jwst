@@ -4049,6 +4049,5406 @@ Refit the September sample of 187 LEGA-C DR2 quiescent targets with October prod
     "view": "Comparison",
     "caption": "Likelihood calls, \\(\\ln Z\\), joint \\(\\chi^2/\\nu\\) and spectrum versus photometry \\(\\chi^2/\\nu\\); all 135 diagnostics passed, calls span 4.1–7.9 M, joint \\(\\chi^2/\\nu\\) median 1.09 and maximum 2.54 (253688), sampler wall time median 109 s.",
     "target": ""
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/shard-00/run/fits/fit/172669-M5_172669/M5_172669_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "shard-00-m5-172669",
+    "target": "M5_172669",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_172669 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/shard-00/run/fits/fit/172669-M5_172669/M5_172669_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "shard-00-m5-172669",
+    "target": "M5_172669",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_172669 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/shard-00/run/fits/fit/172669-M5_172669/M5_172669_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "shard-00-m5-172669",
+    "target": "M5_172669",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_172669 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/shard-00/run/fits/fit/172669-M5_172669/M5_172669_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "shard-00-m5-172669",
+    "target": "M5_172669",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_172669 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/233129-M10_233129/M10_233129_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m10-233129",
+    "target": "M10_233129",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_233129 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/233129-M10_233129/M10_233129_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m10-233129",
+    "target": "M10_233129",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_233129 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/233129-M10_233129/M10_233129_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m10-233129",
+    "target": "M10_233129",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_233129 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/233129-M10_233129/M10_233129_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m10-233129",
+    "target": "M10_233129",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_233129 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m1-210210",
+    "target": "M1_210210",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_210210 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m1-210210",
+    "target": "M1_210210",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_210210 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m1-210210",
+    "target": "M1_210210",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_210210 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/210210-M1_210210/M1_210210_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m1-210210",
+    "target": "M1_210210",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_210210 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/181945-M12_181945/M12_181945_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m12-181945",
+    "target": "M12_181945",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_181945 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/181945-M12_181945/M12_181945_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m12-181945",
+    "target": "M12_181945",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_181945 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/181945-M12_181945/M12_181945_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m12-181945",
+    "target": "M12_181945",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_181945 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/181945-M12_181945/M12_181945_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m12-181945",
+    "target": "M12_181945",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_181945 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/133501-M2_133501/M2_133501_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-04-m2-133501",
+    "target": "M2_133501",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_133501 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/133501-M2_133501/M2_133501_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-04-m2-133501",
+    "target": "M2_133501",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_133501 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/133501-M2_133501/M2_133501_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-04-m2-133501",
+    "target": "M2_133501",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M2_133501 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/133501-M2_133501/M2_133501_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-04-m2-133501",
+    "target": "M2_133501",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M2_133501 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/38648-M14_38648/M14_38648_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m14-38648",
+    "target": "M14_38648",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_38648 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/38648-M14_38648/M14_38648_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m14-38648",
+    "target": "M14_38648",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_38648 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/38648-M14_38648/M14_38648_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m14-38648",
+    "target": "M14_38648",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_38648 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/38648-M14_38648/M14_38648_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m14-38648",
+    "target": "M14_38648",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_38648 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/233169-M9_233169/M9_233169_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m9-233169",
+    "target": "M9_233169",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_233169 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/233169-M9_233169/M9_233169_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m9-233169",
+    "target": "M9_233169",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_233169 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/233169-M9_233169/M9_233169_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m9-233169",
+    "target": "M9_233169",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M9_233169 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/233169-M9_233169/M9_233169_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m9-233169",
+    "target": "M9_233169",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M9_233169 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/134391-M2_134391/M2_134391_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m2-134391",
+    "target": "M2_134391",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_134391 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/134391-M2_134391/M2_134391_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m2-134391",
+    "target": "M2_134391",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_134391 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/134391-M2_134391/M2_134391_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m2-134391",
+    "target": "M2_134391",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M2_134391 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/134391-M2_134391/M2_134391_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m2-134391",
+    "target": "M2_134391",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M2_134391 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/160400-M8_160400/M8_160400_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m8-160400",
+    "target": "M8_160400",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_160400 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/160400-M8_160400/M8_160400_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m8-160400",
+    "target": "M8_160400",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_160400 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/160400-M8_160400/M8_160400_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m8-160400",
+    "target": "M8_160400",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M8_160400 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/160400-M8_160400/M8_160400_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m8-160400",
+    "target": "M8_160400",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M8_160400 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205742-M1_205742/M1_205742_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m1-205742",
+    "target": "M1_205742",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_205742 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205742-M1_205742/M1_205742_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m1-205742",
+    "target": "M1_205742",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_205742 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205742-M1_205742/M1_205742_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m1-205742",
+    "target": "M1_205742",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_205742 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205742-M1_205742/M1_205742_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m1-205742",
+    "target": "M1_205742",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_205742 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/213772-M10_213772/M10_213772_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m10-213772",
+    "target": "M10_213772",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_213772 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/213772-M10_213772/M10_213772_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m10-213772",
+    "target": "M10_213772",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_213772 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/213772-M10_213772/M10_213772_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m10-213772",
+    "target": "M10_213772",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_213772 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/213772-M10_213772/M10_213772_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m10-213772",
+    "target": "M10_213772",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_213772 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/150848-M8_150848/M8_150848_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-04-m8-150848",
+    "target": "M8_150848",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_150848 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/150848-M8_150848/M8_150848_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-04-m8-150848",
+    "target": "M8_150848",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_150848 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/150848-M8_150848/M8_150848_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-04-m8-150848",
+    "target": "M8_150848",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M8_150848 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/150848-M8_150848/M8_150848_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-04-m8-150848",
+    "target": "M8_150848",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M8_150848 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/161346-M8_161346/M8_161346_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m8-161346",
+    "target": "M8_161346",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_161346 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/161346-M8_161346/M8_161346_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m8-161346",
+    "target": "M8_161346",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_161346 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/161346-M8_161346/M8_161346_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m8-161346",
+    "target": "M8_161346",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M8_161346 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/161346-M8_161346/M8_161346_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m8-161346",
+    "target": "M8_161346",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M8_161346 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/162149-M8_162149/M8_162149_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m8-162149",
+    "target": "M8_162149",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_162149 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/162149-M8_162149/M8_162149_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m8-162149",
+    "target": "M8_162149",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_162149 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/162149-M8_162149/M8_162149_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m8-162149",
+    "target": "M8_162149",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M8_162149 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/162149-M8_162149/M8_162149_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m8-162149",
+    "target": "M8_162149",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M8_162149 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/113852-M7_113852/M7_113852_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m7-113852",
+    "target": "M7_113852",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_113852 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/113852-M7_113852/M7_113852_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m7-113852",
+    "target": "M7_113852",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_113852 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/113852-M7_113852/M7_113852_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m7-113852",
+    "target": "M7_113852",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_113852 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/113852-M7_113852/M7_113852_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m7-113852",
+    "target": "M7_113852",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_113852 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/105474-M4_105474/M4_105474_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m4-105474",
+    "target": "M4_105474",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_105474 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/105474-M4_105474/M4_105474_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m4-105474",
+    "target": "M4_105474",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_105474 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/105474-M4_105474/M4_105474_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m4-105474",
+    "target": "M4_105474",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M4_105474 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/105474-M4_105474/M4_105474_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m4-105474",
+    "target": "M4_105474",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M4_105474 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/228215-M10_228215/M10_228215_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m10-228215",
+    "target": "M10_228215",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_228215 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/228215-M10_228215/M10_228215_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m10-228215",
+    "target": "M10_228215",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_228215 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/228215-M10_228215/M10_228215_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m10-228215",
+    "target": "M10_228215",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_228215 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/228215-M10_228215/M10_228215_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m10-228215",
+    "target": "M10_228215",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_228215 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/218207-M11_218207/M11_218207_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m11-218207",
+    "target": "M11_218207",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_218207 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/218207-M11_218207/M11_218207_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m11-218207",
+    "target": "M11_218207",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_218207 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/218207-M11_218207/M11_218207_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m11-218207",
+    "target": "M11_218207",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_218207 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/218207-M11_218207/M11_218207_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m11-218207",
+    "target": "M11_218207",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_218207 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/216730-M10_216730/M10_216730_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m10-216730",
+    "target": "M10_216730",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_216730 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/216730-M10_216730/M10_216730_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m10-216730",
+    "target": "M10_216730",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_216730 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/216730-M10_216730/M10_216730_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m10-216730",
+    "target": "M10_216730",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_216730 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/216730-M10_216730/M10_216730_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m10-216730",
+    "target": "M10_216730",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_216730 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232627-M13_232627/M13_232627_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m13-232627",
+    "target": "M13_232627",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_232627 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232627-M13_232627/M13_232627_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m13-232627",
+    "target": "M13_232627",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_232627 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232627-M13_232627/M13_232627_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m13-232627",
+    "target": "M13_232627",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_232627 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232627-M13_232627/M13_232627_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m13-232627",
+    "target": "M13_232627",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_232627 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/228380-M10_228380/M10_228380_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m10-228380",
+    "target": "M10_228380",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_228380 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/228380-M10_228380/M10_228380_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m10-228380",
+    "target": "M10_228380",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_228380 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/228380-M10_228380/M10_228380_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m10-228380",
+    "target": "M10_228380",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_228380 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/228380-M10_228380/M10_228380_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m10-228380",
+    "target": "M10_228380",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_228380 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/117400-M4_117400/M4_117400_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m4-117400",
+    "target": "M4_117400",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_117400 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/117400-M4_117400/M4_117400_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m4-117400",
+    "target": "M4_117400",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_117400 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/117400-M4_117400/M4_117400_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m4-117400",
+    "target": "M4_117400",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M4_117400 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/117400-M4_117400/M4_117400_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m4-117400",
+    "target": "M4_117400",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M4_117400 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/257455-M11_257455/M11_257455_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m11-257455",
+    "target": "M11_257455",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_257455 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/257455-M11_257455/M11_257455_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m11-257455",
+    "target": "M11_257455",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_257455 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/257455-M11_257455/M11_257455_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m11-257455",
+    "target": "M11_257455",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_257455 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/257455-M11_257455/M11_257455_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m11-257455",
+    "target": "M11_257455",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_257455 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/215585-M11_215585/M11_215585_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m11-215585",
+    "target": "M11_215585",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_215585 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/215585-M11_215585/M11_215585_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m11-215585",
+    "target": "M11_215585",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_215585 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/215585-M11_215585/M11_215585_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m11-215585",
+    "target": "M11_215585",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_215585 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/215585-M11_215585/M11_215585_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m11-215585",
+    "target": "M11_215585",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_215585 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/119474-M3_119474/M3_119474_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m3-119474",
+    "target": "M3_119474",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_119474 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/119474-M3_119474/M3_119474_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m3-119474",
+    "target": "M3_119474",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_119474 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/119474-M3_119474/M3_119474_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m3-119474",
+    "target": "M3_119474",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M3_119474 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/119474-M3_119474/M3_119474_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m3-119474",
+    "target": "M3_119474",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M3_119474 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/206669-M2_206669/M2_206669_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m2-206669",
+    "target": "M2_206669",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_206669 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/206669-M2_206669/M2_206669_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m2-206669",
+    "target": "M2_206669",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_206669 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/206669-M2_206669/M2_206669_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m2-206669",
+    "target": "M2_206669",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M2_206669 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/206669-M2_206669/M2_206669_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m2-206669",
+    "target": "M2_206669",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M2_206669 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/211157-M1_211157/M1_211157_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-04-m1-211157",
+    "target": "M1_211157",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_211157 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/211157-M1_211157/M1_211157_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-04-m1-211157",
+    "target": "M1_211157",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_211157 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/211157-M1_211157/M1_211157_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-04-m1-211157",
+    "target": "M1_211157",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_211157 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/211157-M1_211157/M1_211157_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-04-m1-211157",
+    "target": "M1_211157",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_211157 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/102456-M12_102456/M12_102456_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m12-102456",
+    "target": "M12_102456",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_102456 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/102456-M12_102456/M12_102456_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m12-102456",
+    "target": "M12_102456",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_102456 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/102456-M12_102456/M12_102456_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m12-102456",
+    "target": "M12_102456",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_102456 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/102456-M12_102456/M12_102456_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m12-102456",
+    "target": "M12_102456",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_102456 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/221163-M11_221163/M11_221163_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m11-221163",
+    "target": "M11_221163",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_221163 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/221163-M11_221163/M11_221163_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m11-221163",
+    "target": "M11_221163",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_221163 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/221163-M11_221163/M11_221163_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m11-221163",
+    "target": "M11_221163",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_221163 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/221163-M11_221163/M11_221163_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m11-221163",
+    "target": "M11_221163",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_221163 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/206858-M1_206858/M1_206858_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m1-206858",
+    "target": "M1_206858",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_206858 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/206858-M1_206858/M1_206858_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m1-206858",
+    "target": "M1_206858",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_206858 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/206858-M1_206858/M1_206858_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m1-206858",
+    "target": "M1_206858",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_206858 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/206858-M1_206858/M1_206858_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m1-206858",
+    "target": "M1_206858",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_206858 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/205715-M5_205715/M5_205715_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m5-205715",
+    "target": "M5_205715",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_205715 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/205715-M5_205715/M5_205715_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m5-205715",
+    "target": "M5_205715",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_205715 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/205715-M5_205715/M5_205715_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m5-205715",
+    "target": "M5_205715",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_205715 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/205715-M5_205715/M5_205715_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m5-205715",
+    "target": "M5_205715",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_205715 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/148698-M8_148698/M8_148698_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m8-148698",
+    "target": "M8_148698",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_148698 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/148698-M8_148698/M8_148698_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m8-148698",
+    "target": "M8_148698",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_148698 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/148698-M8_148698/M8_148698_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m8-148698",
+    "target": "M8_148698",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M8_148698 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/148698-M8_148698/M8_148698_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m8-148698",
+    "target": "M8_148698",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M8_148698 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/229551-M11_229551/M11_229551_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m11-229551",
+    "target": "M11_229551",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_229551 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/229551-M11_229551/M11_229551_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m11-229551",
+    "target": "M11_229551",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_229551 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/229551-M11_229551/M11_229551_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m11-229551",
+    "target": "M11_229551",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_229551 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/229551-M11_229551/M11_229551_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m11-229551",
+    "target": "M11_229551",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_229551 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/236682-M5_236682/M5_236682_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m5-236682",
+    "target": "M5_236682",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_236682 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/236682-M5_236682/M5_236682_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m5-236682",
+    "target": "M5_236682",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_236682 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/236682-M5_236682/M5_236682_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m5-236682",
+    "target": "M5_236682",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_236682 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/236682-M5_236682/M5_236682_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m5-236682",
+    "target": "M5_236682",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_236682 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/206545-M1_206545/M1_206545_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m1-206545",
+    "target": "M1_206545",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_206545 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/206545-M1_206545/M1_206545_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m1-206545",
+    "target": "M1_206545",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_206545 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/206545-M1_206545/M1_206545_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m1-206545",
+    "target": "M1_206545",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_206545 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/206545-M1_206545/M1_206545_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m1-206545",
+    "target": "M1_206545",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_206545 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/232962-M11_232962/M11_232962_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m11-232962",
+    "target": "M11_232962",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_232962 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/232962-M11_232962/M11_232962_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m11-232962",
+    "target": "M11_232962",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_232962 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/232962-M11_232962/M11_232962_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m11-232962",
+    "target": "M11_232962",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_232962 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/232962-M11_232962/M11_232962_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m11-232962",
+    "target": "M11_232962",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_232962 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/77745-M15_77745/M15_77745_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m15-77745",
+    "target": "M15_77745",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M15_77745 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/77745-M15_77745/M15_77745_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m15-77745",
+    "target": "M15_77745",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M15_77745 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/77745-M15_77745/M15_77745_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m15-77745",
+    "target": "M15_77745",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M15_77745 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/77745-M15_77745/M15_77745_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m15-77745",
+    "target": "M15_77745",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M15_77745 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/218701-M9_218701/M9_218701_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m9-218701",
+    "target": "M9_218701",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_218701 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/218701-M9_218701/M9_218701_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m9-218701",
+    "target": "M9_218701",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_218701 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/218701-M9_218701/M9_218701_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m9-218701",
+    "target": "M9_218701",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M9_218701 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/218701-M9_218701/M9_218701_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m9-218701",
+    "target": "M9_218701",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M9_218701 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/248217-M13_248217/M13_248217_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m13-248217",
+    "target": "M13_248217",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_248217 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/248217-M13_248217/M13_248217_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m13-248217",
+    "target": "M13_248217",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_248217 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/248217-M13_248217/M13_248217_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m13-248217",
+    "target": "M13_248217",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_248217 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/248217-M13_248217/M13_248217_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m13-248217",
+    "target": "M13_248217",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_248217 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/147539-M8_147539/M8_147539_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m8-147539",
+    "target": "M8_147539",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_147539 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/147539-M8_147539/M8_147539_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m8-147539",
+    "target": "M8_147539",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_147539 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/147539-M8_147539/M8_147539_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m8-147539",
+    "target": "M8_147539",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M8_147539 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/147539-M8_147539/M8_147539_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m8-147539",
+    "target": "M8_147539",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M8_147539 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/184916-M12_184916/M12_184916_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m12-184916",
+    "target": "M12_184916",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_184916 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/184916-M12_184916/M12_184916_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m12-184916",
+    "target": "M12_184916",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_184916 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/184916-M12_184916/M12_184916_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m12-184916",
+    "target": "M12_184916",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_184916 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/184916-M12_184916/M12_184916_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m12-184916",
+    "target": "M12_184916",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_184916 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/147849-M7_147849/M7_147849_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m7-147849",
+    "target": "M7_147849",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_147849 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/147849-M7_147849/M7_147849_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m7-147849",
+    "target": "M7_147849",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_147849 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/147849-M7_147849/M7_147849_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m7-147849",
+    "target": "M7_147849",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_147849 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/147849-M7_147849/M7_147849_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m7-147849",
+    "target": "M7_147849",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_147849 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/227516-M10_227516/M10_227516_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m10-227516",
+    "target": "M10_227516",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_227516 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/227516-M10_227516/M10_227516_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m10-227516",
+    "target": "M10_227516",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_227516 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/227516-M10_227516/M10_227516_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m10-227516",
+    "target": "M10_227516",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_227516 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/227516-M10_227516/M10_227516_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m10-227516",
+    "target": "M10_227516",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_227516 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/211347-M5_211347/M5_211347_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m5-211347",
+    "target": "M5_211347",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_211347 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/211347-M5_211347/M5_211347_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m5-211347",
+    "target": "M5_211347",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_211347 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/211347-M5_211347/M5_211347_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m5-211347",
+    "target": "M5_211347",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_211347 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/211347-M5_211347/M5_211347_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m5-211347",
+    "target": "M5_211347",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_211347 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/120308-M3_120308/M3_120308_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m3-120308",
+    "target": "M3_120308",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_120308 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/120308-M3_120308/M3_120308_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m3-120308",
+    "target": "M3_120308",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_120308 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/120308-M3_120308/M3_120308_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m3-120308",
+    "target": "M3_120308",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M3_120308 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/120308-M3_120308/M3_120308_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m3-120308",
+    "target": "M3_120308",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M3_120308 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232005-M9_232005/M9_232005_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m9-232005",
+    "target": "M9_232005",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_232005 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232005-M9_232005/M9_232005_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m9-232005",
+    "target": "M9_232005",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_232005 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232005-M9_232005/M9_232005_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m9-232005",
+    "target": "M9_232005",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M9_232005 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232005-M9_232005/M9_232005_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m9-232005",
+    "target": "M9_232005",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M9_232005 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/225441-M10_225441/M10_225441_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m10-225441",
+    "target": "M10_225441",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_225441 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/225441-M10_225441/M10_225441_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m10-225441",
+    "target": "M10_225441",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_225441 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/225441-M10_225441/M10_225441_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m10-225441",
+    "target": "M10_225441",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_225441 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/225441-M10_225441/M10_225441_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m10-225441",
+    "target": "M10_225441",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_225441 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/139423-M1_139423/M1_139423_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m1-139423",
+    "target": "M1_139423",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_139423 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/139423-M1_139423/M1_139423_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m1-139423",
+    "target": "M1_139423",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_139423 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/139423-M1_139423/M1_139423_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m1-139423",
+    "target": "M1_139423",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_139423 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/139423-M1_139423/M1_139423_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m1-139423",
+    "target": "M1_139423",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_139423 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/31835-M14_31835/M14_31835_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m14-31835",
+    "target": "M14_31835",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_31835 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/31835-M14_31835/M14_31835_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m14-31835",
+    "target": "M14_31835",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_31835 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/31835-M14_31835/M14_31835_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m14-31835",
+    "target": "M14_31835",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_31835 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/31835-M14_31835/M14_31835_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m14-31835",
+    "target": "M14_31835",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_31835 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/213587-M9_213587/M9_213587_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m9-213587",
+    "target": "M9_213587",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_213587 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/213587-M9_213587/M9_213587_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m9-213587",
+    "target": "M9_213587",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_213587 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/213587-M9_213587/M9_213587_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m9-213587",
+    "target": "M9_213587",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M9_213587 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/213587-M9_213587/M9_213587_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m9-213587",
+    "target": "M9_213587",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M9_213587 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/246149-M13_246149/M13_246149_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m13-246149",
+    "target": "M13_246149",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_246149 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/246149-M13_246149/M13_246149_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m13-246149",
+    "target": "M13_246149",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_246149 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/246149-M13_246149/M13_246149_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m13-246149",
+    "target": "M13_246149",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_246149 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/246149-M13_246149/M13_246149_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m13-246149",
+    "target": "M13_246149",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_246149 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/231544-M10_231544/M10_231544_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m10-231544",
+    "target": "M10_231544",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_231544 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/231544-M10_231544/M10_231544_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m10-231544",
+    "target": "M10_231544",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_231544 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/231544-M10_231544/M10_231544_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m10-231544",
+    "target": "M10_231544",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_231544 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/231544-M10_231544/M10_231544_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m10-231544",
+    "target": "M10_231544",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_231544 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/128311-M5_128311/M5_128311_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m5-128311",
+    "target": "M5_128311",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_128311 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/128311-M5_128311/M5_128311_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m5-128311",
+    "target": "M5_128311",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_128311 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/128311-M5_128311/M5_128311_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m5-128311",
+    "target": "M5_128311",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_128311 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/128311-M5_128311/M5_128311_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m5-128311",
+    "target": "M5_128311",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_128311 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/122242-M7_122242/M7_122242_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m7-122242",
+    "target": "M7_122242",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_122242 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/122242-M7_122242/M7_122242_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m7-122242",
+    "target": "M7_122242",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_122242 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/122242-M7_122242/M7_122242_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m7-122242",
+    "target": "M7_122242",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_122242 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/122242-M7_122242/M7_122242_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m7-122242",
+    "target": "M7_122242",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_122242 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/134021-M2_134021/M2_134021_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m2-134021",
+    "target": "M2_134021",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_134021 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/134021-M2_134021/M2_134021_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m2-134021",
+    "target": "M2_134021",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_134021 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/134021-M2_134021/M2_134021_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m2-134021",
+    "target": "M2_134021",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M2_134021 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/134021-M2_134021/M2_134021_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m2-134021",
+    "target": "M2_134021",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M2_134021 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119802-M3_119802/M3_119802_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m3-119802",
+    "target": "M3_119802",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_119802 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119802-M3_119802/M3_119802_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m3-119802",
+    "target": "M3_119802",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_119802 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119802-M3_119802/M3_119802_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m3-119802",
+    "target": "M3_119802",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M3_119802 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119802-M3_119802/M3_119802_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m3-119802",
+    "target": "M3_119802",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M3_119802 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/165871-M5_165871/M5_165871_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m5-165871",
+    "target": "M5_165871",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_165871 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/165871-M5_165871/M5_165871_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m5-165871",
+    "target": "M5_165871",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_165871 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/165871-M5_165871/M5_165871_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m5-165871",
+    "target": "M5_165871",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_165871 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/165871-M5_165871/M5_165871_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m5-165871",
+    "target": "M5_165871",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_165871 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/237437-M6_237437/M6_237437_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m6-237437",
+    "target": "M6_237437",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_237437 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/237437-M6_237437/M6_237437_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m6-237437",
+    "target": "M6_237437",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_237437 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/237437-M6_237437/M6_237437_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m6-237437",
+    "target": "M6_237437",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M6_237437 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/237437-M6_237437/M6_237437_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m6-237437",
+    "target": "M6_237437",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M6_237437 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/244239-M13_244239/M13_244239_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m13-244239",
+    "target": "M13_244239",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_244239 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/244239-M13_244239/M13_244239_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m13-244239",
+    "target": "M13_244239",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_244239 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/244239-M13_244239/M13_244239_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m13-244239",
+    "target": "M13_244239",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_244239 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/244239-M13_244239/M13_244239_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m13-244239",
+    "target": "M13_244239",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_244239 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/238580-M5_238580/M5_238580_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m5-238580",
+    "target": "M5_238580",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_238580 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/238580-M5_238580/M5_238580_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m5-238580",
+    "target": "M5_238580",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_238580 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/238580-M5_238580/M5_238580_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m5-238580",
+    "target": "M5_238580",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_238580 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/238580-M5_238580/M5_238580_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m5-238580",
+    "target": "M5_238580",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_238580 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/109713-M3_109713/M3_109713_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-04-m3-109713",
+    "target": "M3_109713",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_109713 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/109713-M3_109713/M3_109713_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-04-m3-109713",
+    "target": "M3_109713",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_109713 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/109713-M3_109713/M3_109713_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-04-m3-109713",
+    "target": "M3_109713",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M3_109713 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/109713-M3_109713/M3_109713_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-04-m3-109713",
+    "target": "M3_109713",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M3_109713 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/117694-M3_117694/M3_117694_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m3-117694",
+    "target": "M3_117694",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_117694 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/117694-M3_117694/M3_117694_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m3-117694",
+    "target": "M3_117694",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_117694 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/117694-M3_117694/M3_117694_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m3-117694",
+    "target": "M3_117694",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M3_117694 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/117694-M3_117694/M3_117694_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m3-117694",
+    "target": "M3_117694",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M3_117694 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/230747-M13_230747/M13_230747_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m13-230747",
+    "target": "M13_230747",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_230747 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/230747-M13_230747/M13_230747_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m13-230747",
+    "target": "M13_230747",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_230747 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/230747-M13_230747/M13_230747_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m13-230747",
+    "target": "M13_230747",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_230747 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/230747-M13_230747/M13_230747_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m13-230747",
+    "target": "M13_230747",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_230747 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/88032-M15_88032/M15_88032_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m15-88032",
+    "target": "M15_88032",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M15_88032 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/88032-M15_88032/M15_88032_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m15-88032",
+    "target": "M15_88032",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M15_88032 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/88032-M15_88032/M15_88032_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m15-88032",
+    "target": "M15_88032",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M15_88032 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/88032-M15_88032/M15_88032_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m15-88032",
+    "target": "M15_88032",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M15_88032 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/229883-M9_229883/M9_229883_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m9-229883",
+    "target": "M9_229883",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_229883 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/229883-M9_229883/M9_229883_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m9-229883",
+    "target": "M9_229883",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_229883 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/229883-M9_229883/M9_229883_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m9-229883",
+    "target": "M9_229883",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M9_229883 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/229883-M9_229883/M9_229883_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m9-229883",
+    "target": "M9_229883",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M9_229883 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/243871-M13_243871/M13_243871_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m13-243871",
+    "target": "M13_243871",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_243871 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/243871-M13_243871/M13_243871_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m13-243871",
+    "target": "M13_243871",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_243871 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/243871-M13_243871/M13_243871_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m13-243871",
+    "target": "M13_243871",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_243871 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/243871-M13_243871/M13_243871_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m13-243871",
+    "target": "M13_243871",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_243871 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/180774-M12_180774/M12_180774_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m12-180774",
+    "target": "M12_180774",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_180774 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/180774-M12_180774/M12_180774_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m12-180774",
+    "target": "M12_180774",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_180774 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/180774-M12_180774/M12_180774_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m12-180774",
+    "target": "M12_180774",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_180774 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/180774-M12_180774/M12_180774_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m12-180774",
+    "target": "M12_180774",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_180774 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185653-M12_185653/M12_185653_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m12-185653",
+    "target": "M12_185653",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_185653 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185653-M12_185653/M12_185653_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m12-185653",
+    "target": "M12_185653",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_185653 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185653-M12_185653/M12_185653_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m12-185653",
+    "target": "M12_185653",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_185653 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185653-M12_185653/M12_185653_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m12-185653",
+    "target": "M12_185653",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_185653 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/27068-M14_27068/M14_27068_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m14-27068",
+    "target": "M14_27068",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_27068 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/27068-M14_27068/M14_27068_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m14-27068",
+    "target": "M14_27068",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_27068 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/27068-M14_27068/M14_27068_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m14-27068",
+    "target": "M14_27068",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_27068 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/27068-M14_27068/M14_27068_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m14-27068",
+    "target": "M14_27068",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_27068 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/216899-M11_216899/M11_216899_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m11-216899",
+    "target": "M11_216899",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_216899 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/216899-M11_216899/M11_216899_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m11-216899",
+    "target": "M11_216899",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_216899 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/216899-M11_216899/M11_216899_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m11-216899",
+    "target": "M11_216899",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_216899 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/216899-M11_216899/M11_216899_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m11-216899",
+    "target": "M11_216899",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_216899 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/37023-M14_37023/M14_37023_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m14-37023",
+    "target": "M14_37023",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_37023 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/37023-M14_37023/M14_37023_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m14-37023",
+    "target": "M14_37023",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_37023 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/37023-M14_37023/M14_37023_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m14-37023",
+    "target": "M14_37023",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_37023 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/37023-M14_37023/M14_37023_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m14-37023",
+    "target": "M14_37023",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_37023 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/107643-M4_107643/M4_107643_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m4-107643",
+    "target": "M4_107643",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_107643 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/107643-M4_107643/M4_107643_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m4-107643",
+    "target": "M4_107643",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_107643 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/107643-M4_107643/M4_107643_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m4-107643",
+    "target": "M4_107643",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M4_107643 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/107643-M4_107643/M4_107643_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m4-107643",
+    "target": "M4_107643",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M4_107643 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/123161-M4_123161/M4_123161_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m4-123161",
+    "target": "M4_123161",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_123161 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/123161-M4_123161/M4_123161_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m4-123161",
+    "target": "M4_123161",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_123161 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/123161-M4_123161/M4_123161_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m4-123161",
+    "target": "M4_123161",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M4_123161 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/123161-M4_123161/M4_123161_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m4-123161",
+    "target": "M4_123161",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M4_123161 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/147270-M7_147270/M7_147270_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m7-147270",
+    "target": "M7_147270",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_147270 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/147270-M7_147270/M7_147270_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m7-147270",
+    "target": "M7_147270",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_147270 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/147270-M7_147270/M7_147270_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m7-147270",
+    "target": "M7_147270",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_147270 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/147270-M7_147270/M7_147270_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m7-147270",
+    "target": "M7_147270",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_147270 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/212391-M9_212391/M9_212391_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m9-212391",
+    "target": "M9_212391",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_212391 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/212391-M9_212391/M9_212391_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m9-212391",
+    "target": "M9_212391",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_212391 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/212391-M9_212391/M9_212391_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m9-212391",
+    "target": "M9_212391",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M9_212391 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/212391-M9_212391/M9_212391_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m9-212391",
+    "target": "M9_212391",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M9_212391 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/237641-M6_237641/M6_237641_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m6-237641",
+    "target": "M6_237641",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_237641 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/237641-M6_237641/M6_237641_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m6-237641",
+    "target": "M6_237641",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_237641 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/237641-M6_237641/M6_237641_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m6-237641",
+    "target": "M6_237641",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M6_237641 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/237641-M6_237641/M6_237641_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m6-237641",
+    "target": "M6_237641",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M6_237641 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/146213-M7_146213/M7_146213_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m7-146213",
+    "target": "M7_146213",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_146213 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/146213-M7_146213/M7_146213_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m7-146213",
+    "target": "M7_146213",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_146213 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/146213-M7_146213/M7_146213_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m7-146213",
+    "target": "M7_146213",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_146213 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/146213-M7_146213/M7_146213_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m7-146213",
+    "target": "M7_146213",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_146213 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/214296-M11_214296/M11_214296_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m11-214296",
+    "target": "M11_214296",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_214296 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/214296-M11_214296/M11_214296_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m11-214296",
+    "target": "M11_214296",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_214296 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/214296-M11_214296/M11_214296_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m11-214296",
+    "target": "M11_214296",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_214296 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/214296-M11_214296/M11_214296_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m11-214296",
+    "target": "M11_214296",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_214296 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/233902-M6_233902/M6_233902_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m6-233902",
+    "target": "M6_233902",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_233902 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/233902-M6_233902/M6_233902_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m6-233902",
+    "target": "M6_233902",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_233902 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/233902-M6_233902/M6_233902_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m6-233902",
+    "target": "M6_233902",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M6_233902 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/233902-M6_233902/M6_233902_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m6-233902",
+    "target": "M6_233902",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M6_233902 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/120372-M7_120372/M7_120372_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m7-120372",
+    "target": "M7_120372",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_120372 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/120372-M7_120372/M7_120372_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m7-120372",
+    "target": "M7_120372",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_120372 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/120372-M7_120372/M7_120372_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m7-120372",
+    "target": "M7_120372",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_120372 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/120372-M7_120372/M7_120372_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m7-120372",
+    "target": "M7_120372",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_120372 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/227630-M9_227630/M9_227630_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m9-227630",
+    "target": "M9_227630",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_227630 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/227630-M9_227630/M9_227630_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m9-227630",
+    "target": "M9_227630",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_227630 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/227630-M9_227630/M9_227630_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m9-227630",
+    "target": "M9_227630",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M9_227630 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/227630-M9_227630/M9_227630_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m9-227630",
+    "target": "M9_227630",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M9_227630 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/129596-M2_129596/M2_129596_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m2-129596",
+    "target": "M2_129596",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_129596 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/129596-M2_129596/M2_129596_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m2-129596",
+    "target": "M2_129596",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_129596 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/129596-M2_129596/M2_129596_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m2-129596",
+    "target": "M2_129596",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M2_129596 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/129596-M2_129596/M2_129596_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m2-129596",
+    "target": "M2_129596",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M2_129596 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/117010-M3_117010/M3_117010_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m3-117010",
+    "target": "M3_117010",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_117010 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/117010-M3_117010/M3_117010_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m3-117010",
+    "target": "M3_117010",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_117010 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/117010-M3_117010/M3_117010_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m3-117010",
+    "target": "M3_117010",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M3_117010 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/117010-M3_117010/M3_117010_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m3-117010",
+    "target": "M3_117010",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M3_117010 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/130005-M2_130005/M2_130005_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m2-130005",
+    "target": "M2_130005",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_130005 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/130005-M2_130005/M2_130005_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m2-130005",
+    "target": "M2_130005",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_130005 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/130005-M2_130005/M2_130005_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m2-130005",
+    "target": "M2_130005",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M2_130005 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/130005-M2_130005/M2_130005_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m2-130005",
+    "target": "M2_130005",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M2_130005 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/208622-M1_208622/M1_208622_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m1-208622",
+    "target": "M1_208622",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_208622 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/208622-M1_208622/M1_208622_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m1-208622",
+    "target": "M1_208622",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_208622 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/208622-M1_208622/M1_208622_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m1-208622",
+    "target": "M1_208622",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_208622 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/208622-M1_208622/M1_208622_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m1-208622",
+    "target": "M1_208622",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_208622 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/107370-M4_107370/M4_107370_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-04-m4-107370",
+    "target": "M4_107370",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_107370 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/107370-M4_107370/M4_107370_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-04-m4-107370",
+    "target": "M4_107370",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_107370 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/107370-M4_107370/M4_107370_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-04-m4-107370",
+    "target": "M4_107370",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M4_107370 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/107370-M4_107370/M4_107370_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-04-m4-107370",
+    "target": "M4_107370",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M4_107370 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/215519-M10_215519/M10_215519_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m10-215519",
+    "target": "M10_215519",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_215519 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/215519-M10_215519/M10_215519_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m10-215519",
+    "target": "M10_215519",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_215519 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/215519-M10_215519/M10_215519_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m10-215519",
+    "target": "M10_215519",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_215519 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/215519-M10_215519/M10_215519_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m10-215519",
+    "target": "M10_215519",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_215519 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/92132-M12_92132/M12_92132_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m12-92132",
+    "target": "M12_92132",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_92132 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/92132-M12_92132/M12_92132_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m12-92132",
+    "target": "M12_92132",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_92132 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/92132-M12_92132/M12_92132_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m12-92132",
+    "target": "M12_92132",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_92132 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/92132-M12_92132/M12_92132_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m12-92132",
+    "target": "M12_92132",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_92132 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/152125-M7_152125/M7_152125_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m7-152125",
+    "target": "M7_152125",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_152125 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/152125-M7_152125/M7_152125_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m7-152125",
+    "target": "M7_152125",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_152125 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/152125-M7_152125/M7_152125_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m7-152125",
+    "target": "M7_152125",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_152125 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/152125-M7_152125/M7_152125_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m7-152125",
+    "target": "M7_152125",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_152125 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/240899-M6_240899/M6_240899_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m6-240899",
+    "target": "M6_240899",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_240899 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/240899-M6_240899/M6_240899_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m6-240899",
+    "target": "M6_240899",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_240899 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/240899-M6_240899/M6_240899_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m6-240899",
+    "target": "M6_240899",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M6_240899 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/240899-M6_240899/M6_240899_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m6-240899",
+    "target": "M6_240899",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M6_240899 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/214430-M11_214430/M11_214430_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m11-214430",
+    "target": "M11_214430",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_214430 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/214430-M11_214430/M11_214430_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m11-214430",
+    "target": "M11_214430",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_214430 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/214430-M11_214430/M11_214430_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m11-214430",
+    "target": "M11_214430",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_214430 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/214430-M11_214430/M11_214430_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m11-214430",
+    "target": "M11_214430",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_214430 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/126578-M1_126578/M1_126578_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m1-126578",
+    "target": "M1_126578",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_126578 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/126578-M1_126578/M1_126578_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m1-126578",
+    "target": "M1_126578",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_126578 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/126578-M1_126578/M1_126578_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m1-126578",
+    "target": "M1_126578",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_126578 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/126578-M1_126578/M1_126578_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m1-126578",
+    "target": "M1_126578",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_126578 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/37219-M14_37219/M14_37219_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m14-37219",
+    "target": "M14_37219",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_37219 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/37219-M14_37219/M14_37219_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m14-37219",
+    "target": "M14_37219",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_37219 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/37219-M14_37219/M14_37219_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m14-37219",
+    "target": "M14_37219",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_37219 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/37219-M14_37219/M14_37219_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m14-37219",
+    "target": "M14_37219",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_37219 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/84337-M4_84337/M4_84337_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m4-84337",
+    "target": "M4_84337",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_84337 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/84337-M4_84337/M4_84337_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m4-84337",
+    "target": "M4_84337",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_84337 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/84337-M4_84337/M4_84337_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m4-84337",
+    "target": "M4_84337",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M4_84337 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/84337-M4_84337/M4_84337_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m4-84337",
+    "target": "M4_84337",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M4_84337 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/259737-M13_259737/M13_259737_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m13-259737",
+    "target": "M13_259737",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_259737 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/259737-M13_259737/M13_259737_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m13-259737",
+    "target": "M13_259737",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_259737 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/259737-M13_259737/M13_259737_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m13-259737",
+    "target": "M13_259737",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_259737 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/259737-M13_259737/M13_259737_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m13-259737",
+    "target": "M13_259737",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_259737 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/103366-M14_103366/M14_103366_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m14-103366",
+    "target": "M14_103366",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_103366 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/103366-M14_103366/M14_103366_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m14-103366",
+    "target": "M14_103366",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_103366 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/103366-M14_103366/M14_103366_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m14-103366",
+    "target": "M14_103366",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_103366 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/103366-M14_103366/M14_103366_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m14-103366",
+    "target": "M14_103366",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_103366 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205765-M5_205765/M5_205765_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m5-205765",
+    "target": "M5_205765",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_205765 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205765-M5_205765/M5_205765_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m5-205765",
+    "target": "M5_205765",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_205765 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205765-M5_205765/M5_205765_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m5-205765",
+    "target": "M5_205765",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_205765 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205765-M5_205765/M5_205765_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m5-205765",
+    "target": "M5_205765",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_205765 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/122025-M7_122025/M7_122025_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m7-122025",
+    "target": "M7_122025",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_122025 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/122025-M7_122025/M7_122025_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m7-122025",
+    "target": "M7_122025",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_122025 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/122025-M7_122025/M7_122025_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m7-122025",
+    "target": "M7_122025",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_122025 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/122025-M7_122025/M7_122025_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m7-122025",
+    "target": "M7_122025",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_122025 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/210940-M2_210940/M2_210940_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-04-m2-210940",
+    "target": "M2_210940",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_210940 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/210940-M2_210940/M2_210940_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-04-m2-210940",
+    "target": "M2_210940",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_210940 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/210940-M2_210940/M2_210940_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-04-m2-210940",
+    "target": "M2_210940",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M2_210940 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/210940-M2_210940/M2_210940_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-04-m2-210940",
+    "target": "M2_210940",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M2_210940 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/120488-M7_120488/M7_120488_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m7-120488",
+    "target": "M7_120488",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_120488 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/120488-M7_120488/M7_120488_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m7-120488",
+    "target": "M7_120488",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_120488 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/120488-M7_120488/M7_120488_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m7-120488",
+    "target": "M7_120488",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_120488 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/120488-M7_120488/M7_120488_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m7-120488",
+    "target": "M7_120488",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_120488 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/245864-M11_245864/M11_245864_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m11-245864",
+    "target": "M11_245864",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_245864 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/245864-M11_245864/M11_245864_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m11-245864",
+    "target": "M11_245864",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_245864 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/245864-M11_245864/M11_245864_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m11-245864",
+    "target": "M11_245864",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_245864 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/245864-M11_245864/M11_245864_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m11-245864",
+    "target": "M11_245864",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_245864 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/109843-M3_109843/M3_109843_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m3-109843",
+    "target": "M3_109843",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_109843 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/109843-M3_109843/M3_109843_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m3-109843",
+    "target": "M3_109843",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_109843 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/109843-M3_109843/M3_109843_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m3-109843",
+    "target": "M3_109843",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M3_109843 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/109843-M3_109843/M3_109843_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m3-109843",
+    "target": "M3_109843",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M3_109843 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/217020-M10_217020/M10_217020_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m10-217020",
+    "target": "M10_217020",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_217020 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/217020-M10_217020/M10_217020_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m10-217020",
+    "target": "M10_217020",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_217020 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/217020-M10_217020/M10_217020_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m10-217020",
+    "target": "M10_217020",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_217020 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/217020-M10_217020/M10_217020_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m10-217020",
+    "target": "M10_217020",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_217020 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/162587-M7_162587/M7_162587_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m7-162587",
+    "target": "M7_162587",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_162587 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/162587-M7_162587/M7_162587_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m7-162587",
+    "target": "M7_162587",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_162587 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/162587-M7_162587/M7_162587_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m7-162587",
+    "target": "M7_162587",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_162587 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/162587-M7_162587/M7_162587_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m7-162587",
+    "target": "M7_162587",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_162587 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/161113-M8_161113/M8_161113_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-04-m8-161113",
+    "target": "M8_161113",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_161113 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/161113-M8_161113/M8_161113_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-04-m8-161113",
+    "target": "M8_161113",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_161113 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/161113-M8_161113/M8_161113_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-04-m8-161113",
+    "target": "M8_161113",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M8_161113 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/161113-M8_161113/M8_161113_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-04-m8-161113",
+    "target": "M8_161113",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M8_161113 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/232890-M9_232890/M9_232890_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m9-232890",
+    "target": "M9_232890",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_232890 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/232890-M9_232890/M9_232890_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m9-232890",
+    "target": "M9_232890",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M9_232890 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/232890-M9_232890/M9_232890_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m9-232890",
+    "target": "M9_232890",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M9_232890 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/232890-M9_232890/M9_232890_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m9-232890",
+    "target": "M9_232890",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M9_232890 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/212718-M11_212718/M11_212718_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m11-212718",
+    "target": "M11_212718",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_212718 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/212718-M11_212718/M11_212718_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m11-212718",
+    "target": "M11_212718",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_212718 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/212718-M11_212718/M11_212718_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m11-212718",
+    "target": "M11_212718",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_212718 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/212718-M11_212718/M11_212718_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m11-212718",
+    "target": "M11_212718",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_212718 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/133240-M1_133240/M1_133240_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m1-133240",
+    "target": "M1_133240",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_133240 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/133240-M1_133240/M1_133240_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m1-133240",
+    "target": "M1_133240",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_133240 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/133240-M1_133240/M1_133240_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m1-133240",
+    "target": "M1_133240",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_133240 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/133240-M1_133240/M1_133240_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m1-133240",
+    "target": "M1_133240",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_133240 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/101830-M12_101830/M12_101830_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m12-101830",
+    "target": "M12_101830",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_101830 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/101830-M12_101830/M12_101830_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m12-101830",
+    "target": "M12_101830",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_101830 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/101830-M12_101830/M12_101830_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m12-101830",
+    "target": "M12_101830",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_101830 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/101830-M12_101830/M12_101830_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m12-101830",
+    "target": "M12_101830",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_101830 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/181421-M12_181421/M12_181421_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m12-181421",
+    "target": "M12_181421",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_181421 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/181421-M12_181421/M12_181421_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m12-181421",
+    "target": "M12_181421",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_181421 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/181421-M12_181421/M12_181421_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m12-181421",
+    "target": "M12_181421",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_181421 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/181421-M12_181421/M12_181421_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m12-181421",
+    "target": "M12_181421",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_181421 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/156118-M8_156118/M8_156118_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m8-156118",
+    "target": "M8_156118",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_156118 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/156118-M8_156118/M8_156118_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m8-156118",
+    "target": "M8_156118",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M8_156118 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/156118-M8_156118/M8_156118_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m8-156118",
+    "target": "M8_156118",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M8_156118 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/156118-M8_156118/M8_156118_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m8-156118",
+    "target": "M8_156118",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M8_156118 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/126153-M1_126153/M1_126153_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m1-126153",
+    "target": "M1_126153",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_126153 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/126153-M1_126153/M1_126153_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m1-126153",
+    "target": "M1_126153",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M1_126153 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/126153-M1_126153/M1_126153_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m1-126153",
+    "target": "M1_126153",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M1_126153 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/126153-M1_126153/M1_126153_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m1-126153",
+    "target": "M1_126153",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M1_126153 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/120758-M7_120758/M7_120758_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m7-120758",
+    "target": "M7_120758",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_120758 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/120758-M7_120758/M7_120758_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m7-120758",
+    "target": "M7_120758",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_120758 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/120758-M7_120758/M7_120758_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m7-120758",
+    "target": "M7_120758",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_120758 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/120758-M7_120758/M7_120758_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m7-120758",
+    "target": "M7_120758",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_120758 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/38646-M14_38646/M14_38646_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m14-38646",
+    "target": "M14_38646",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_38646 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/38646-M14_38646/M14_38646_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m14-38646",
+    "target": "M14_38646",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_38646 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/38646-M14_38646/M14_38646_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m14-38646",
+    "target": "M14_38646",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_38646 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/38646-M14_38646/M14_38646_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m14-38646",
+    "target": "M14_38646",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_38646 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/102968-M14_102968/M14_102968_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m14-102968",
+    "target": "M14_102968",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_102968 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/102968-M14_102968/M14_102968_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m14-102968",
+    "target": "M14_102968",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_102968 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/102968-M14_102968/M14_102968_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m14-102968",
+    "target": "M14_102968",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_102968 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/102968-M14_102968/M14_102968_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m14-102968",
+    "target": "M14_102968",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_102968 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/245763-M13_245763/M13_245763_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m13-245763",
+    "target": "M13_245763",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_245763 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/245763-M13_245763/M13_245763_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m13-245763",
+    "target": "M13_245763",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_245763 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/245763-M13_245763/M13_245763_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m13-245763",
+    "target": "M13_245763",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_245763 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/245763-M13_245763/M13_245763_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m13-245763",
+    "target": "M13_245763",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_245763 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/255047-M13_255047/M13_255047_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m13-255047",
+    "target": "M13_255047",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_255047 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/255047-M13_255047/M13_255047_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m13-255047",
+    "target": "M13_255047",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_255047 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/255047-M13_255047/M13_255047_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m13-255047",
+    "target": "M13_255047",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_255047 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/255047-M13_255047/M13_255047_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m13-255047",
+    "target": "M13_255047",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_255047 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/201233-M10_201233/M10_201233_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-14-m10-201233",
+    "target": "M10_201233",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_201233 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/201233-M10_201233/M10_201233_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-14-m10-201233",
+    "target": "M10_201233",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_201233 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/201233-M10_201233/M10_201233_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-14-m10-201233",
+    "target": "M10_201233",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_201233 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/201233-M10_201233/M10_201233_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-14-m10-201233",
+    "target": "M10_201233",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_201233 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/101089-M12_101089/M12_101089_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m12-101089",
+    "target": "M12_101089",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_101089 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/101089-M12_101089/M12_101089_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m12-101089",
+    "target": "M12_101089",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_101089 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/101089-M12_101089/M12_101089_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m12-101089",
+    "target": "M12_101089",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_101089 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/101089-M12_101089/M12_101089_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m12-101089",
+    "target": "M12_101089",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_101089 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/258753-M13_258753/M13_258753_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-12-m13-258753",
+    "target": "M13_258753",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_258753 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/258753-M13_258753/M13_258753_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-12-m13-258753",
+    "target": "M13_258753",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_258753 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/258753-M13_258753/M13_258753_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-12-m13-258753",
+    "target": "M13_258753",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_258753 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/258753-M13_258753/M13_258753_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-12-m13-258753",
+    "target": "M13_258753",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_258753 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/167056-M5_167056/M5_167056_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m5-167056",
+    "target": "M5_167056",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_167056 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/167056-M5_167056/M5_167056_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m5-167056",
+    "target": "M5_167056",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_167056 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/167056-M5_167056/M5_167056_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m5-167056",
+    "target": "M5_167056",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_167056 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/167056-M5_167056/M5_167056_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m5-167056",
+    "target": "M5_167056",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_167056 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/87207-M15_87207/M15_87207_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m15-87207",
+    "target": "M15_87207",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M15_87207 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/87207-M15_87207/M15_87207_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m15-87207",
+    "target": "M15_87207",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M15_87207 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/87207-M15_87207/M15_87207_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m15-87207",
+    "target": "M15_87207",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M15_87207 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/87207-M15_87207/M15_87207_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m15-87207",
+    "target": "M15_87207",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M15_87207 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/166634-M6_166634/M6_166634_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m6-166634",
+    "target": "M6_166634",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_166634 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/166634-M6_166634/M6_166634_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m6-166634",
+    "target": "M6_166634",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M6_166634 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/166634-M6_166634/M6_166634_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m6-166634",
+    "target": "M6_166634",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M6_166634 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/166634-M6_166634/M6_166634_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m6-166634",
+    "target": "M6_166634",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M6_166634 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/121482-M7_121482/M7_121482_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m7-121482",
+    "target": "M7_121482",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_121482 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/121482-M7_121482/M7_121482_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m7-121482",
+    "target": "M7_121482",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M7_121482 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/121482-M7_121482/M7_121482_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m7-121482",
+    "target": "M7_121482",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M7_121482 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/121482-M7_121482/M7_121482_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m7-121482",
+    "target": "M7_121482",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M7_121482 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/189698-M10_189698/M10_189698_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m10-189698",
+    "target": "M10_189698",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_189698 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/189698-M10_189698/M10_189698_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m10-189698",
+    "target": "M10_189698",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M10_189698 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/189698-M10_189698/M10_189698_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m10-189698",
+    "target": "M10_189698",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M10_189698 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/189698-M10_189698/M10_189698_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m10-189698",
+    "target": "M10_189698",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M10_189698 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/89072-M15_89072/M15_89072_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-04-m15-89072",
+    "target": "M15_89072",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M15_89072 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/89072-M15_89072/M15_89072_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-04-m15-89072",
+    "target": "M15_89072",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M15_89072 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/89072-M15_89072/M15_89072_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-04-m15-89072",
+    "target": "M15_89072",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M15_89072 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/89072-M15_89072/M15_89072_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-04-m15-89072",
+    "target": "M15_89072",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M15_89072 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/97310-M2_97310/M2_97310_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m2-97310",
+    "target": "M2_97310",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_97310 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/97310-M2_97310/M2_97310_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m2-97310",
+    "target": "M2_97310",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M2_97310 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/97310-M2_97310/M2_97310_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m2-97310",
+    "target": "M2_97310",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M2_97310 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/97310-M2_97310/M2_97310_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m2-97310",
+    "target": "M2_97310",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M2_97310 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/37843-M14_37843/M14_37843_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m14-37843",
+    "target": "M14_37843",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_37843 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/37843-M14_37843/M14_37843_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m14-37843",
+    "target": "M14_37843",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_37843 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/37843-M14_37843/M14_37843_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m14-37843",
+    "target": "M14_37843",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_37843 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/37843-M14_37843/M14_37843_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m14-37843",
+    "target": "M14_37843",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_37843 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/112534-M4_112534/M4_112534_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-01-m4-112534",
+    "target": "M4_112534",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_112534 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/112534-M4_112534/M4_112534_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-01-m4-112534",
+    "target": "M4_112534",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M4_112534 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/112534-M4_112534/M4_112534_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-01-m4-112534",
+    "target": "M4_112534",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M4_112534 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/112534-M4_112534/M4_112534_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-01-m4-112534",
+    "target": "M4_112534",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M4_112534 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/127946-M5_127946/M5_127946_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-02-m5-127946",
+    "target": "M5_127946",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_127946 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/127946-M5_127946/M5_127946_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-02-m5-127946",
+    "target": "M5_127946",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M5_127946 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/127946-M5_127946/M5_127946_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-02-m5-127946",
+    "target": "M5_127946",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M5_127946 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/127946-M5_127946/M5_127946_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-02-m5-127946",
+    "target": "M5_127946",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M5_127946 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119809-M3_119809/M3_119809_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-03-m3-119809",
+    "target": "M3_119809",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_119809 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119809-M3_119809/M3_119809_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-03-m3-119809",
+    "target": "M3_119809",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M3_119809 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119809-M3_119809/M3_119809_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-03-m3-119809",
+    "target": "M3_119809",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M3_119809 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119809-M3_119809/M3_119809_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-03-m3-119809",
+    "target": "M3_119809",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M3_119809 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185631-M12_185631/M12_185631_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-15-m12-185631",
+    "target": "M12_185631",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_185631 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185631-M12_185631/M12_185631_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-15-m12-185631",
+    "target": "M12_185631",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M12_185631 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185631-M12_185631/M12_185631_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-15-m12-185631",
+    "target": "M12_185631",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M12_185631 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185631-M12_185631/M12_185631_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-15-m12-185631",
+    "target": "M12_185631",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M12_185631 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/253688-M13_253688/M13_253688_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-05-m13-253688",
+    "target": "M13_253688",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_253688 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/253688-M13_253688/M13_253688_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-05-m13-253688",
+    "target": "M13_253688",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M13_253688 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/253688-M13_253688/M13_253688_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-05-m13-253688",
+    "target": "M13_253688",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M13_253688 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/253688-M13_253688/M13_253688_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-05-m13-253688",
+    "target": "M13_253688",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M13_253688 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/217564-M11_217564/M11_217564_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-16-m11-217564",
+    "target": "M11_217564",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_217564 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/217564-M11_217564/M11_217564_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-16-m11-217564",
+    "target": "M11_217564",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M11_217564 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/217564-M11_217564/M11_217564_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-16-m11-217564",
+    "target": "M11_217564",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M11_217564 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/217564-M11_217564/M11_217564_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-16-m11-217564",
+    "target": "M11_217564",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M11_217564 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/104877-M14_104877/M14_104877_executed.ipynb",
+    "cell": 14,
+    "output": 2,
+    "run": "part-13-m14-104877",
+    "target": "M14_104877",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_104877 · Spectrum · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/104877-M14_104877/M14_104877_executed.ipynb",
+    "cell": 14,
+    "output": 0,
+    "run": "part-13-m14-104877",
+    "target": "M14_104877",
+    "arm": "fit",
+    "view": "Fits",
+    "caption": "M14_104877 · Photometry · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/104877-M14_104877/M14_104877_executed.ipynb",
+    "cell": 20,
+    "output": 3,
+    "run": "part-13-m14-104877",
+    "target": "M14_104877",
+    "arm": "fit",
+    "view": "SFH",
+    "caption": "M14_104877 · SFH · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
+  },
+  {
+    "notebook": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/104877-M14_104877/M14_104877_executed.ipynb",
+    "cell": 20,
+    "output": 0,
+    "run": "part-13-m14-104877",
+    "target": "M14_104877",
+    "arm": "fit",
+    "view": "Posteriors",
+    "caption": "M14_104877 · Posteriors · October defaults vs September run: nebular grid, COSMOS2025, 14 SFH bins, Noll and birth-cloud dust, Ca mask, order-10 calibration."
   }
 ]
 ```
