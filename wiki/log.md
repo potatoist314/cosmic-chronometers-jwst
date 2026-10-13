@@ -1475,3 +1475,8 @@
 
 - `notes/dr2-refit-sample.md` and `research/experiments/e-dr2-refit.md`: 135 of 180 fittable galaxies on October production defaults; figures in `analyses/dr2-refit-sample/`; `results/dr2-refit-2026-10-12/`.
 - Files: `wiki/notes/dr2-refit-sample.md`, `wiki/research/experiments/e-dr2-refit.md`, `wiki/analyses/dr2-refit-sample/`, `wiki/index.md`, `wiki/log.md`.
+
+## [2026-10-13] query | Mg b weighting
+
+- Pages: `research/questions/q-afe-mgb-weighting.md`, `research/direction.md`
+- Change: Recorded abundance evidence and parked carbon-mask refits at priority 10.

@@ -64,6 +64,7 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 - `research/questions/q-cosmos-photometry.md` — COSMOS 2020/2025 photometry in place of COSMOS2015; priority-10 roadmap task
 - `research/questions/q-dust-index-railing.md` — Conroy dust index at its lower bound and weak UV; linked to Sandro's dust checks
 - `research/questions/q-emission-lines.md` — model, mask or ignore emission lines; evidence for the priority-9 roadmap task
+- `research/questions/q-afe-mgb-weighting.md` — abundance evidence and parked carbon-mask refits; priority 10
 - `research/questions/q-external-validation.md` — fit outputs against independent literature measurements
 - `research/questions/q-sample-selection.md` — DR2 inputs and inferred quiescence
 - `research/questions/q-population-results.md` — both DR2 runs, population relations and residuals
