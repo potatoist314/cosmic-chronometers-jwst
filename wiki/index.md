@@ -76,6 +76,7 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 - `research/experiments/e-zevo.md` — M1_210210 metallicity evolution on the production-defaults base; `neb_eline_ca_nohe_zevo` against `neb_eline_ca_nohe`
 - `research/experiments/e-quiescent-speedups.md` — Ten-galaxy production-defaults fits on the combined speedups; seed 20260832
 - `research/experiments/e-ceridwen-upstream-merge.md` — Ceridwen upstream merge: CPU equivalence, speed and ten-galaxy GPU check; ceridwen `729fba6`
+- `research/experiments/e-dr2-refit.md` — DR2 quiescent refit on October production defaults; 135 of 180 fitted
 
 The 28 existing experiment entries cover all 11 analysis notes and all current
 and archived Ceridwen result groups. `source_notes` provides backlinks;
@@ -103,6 +104,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 - `notes/cosmos-photometry-refit.md` — M1_210210 refit with COSMOS2020 Classic and COSMOS2025 photometry (2026-09-21)
 - `notes/cosmos-photometry-comparison.md` — COSMOS2020 and COSMOS2025 photometry against COSMOS2015; model-flux columns and corrections (2026-09-24)
 - `notes/sfms-quiescent.md` — Quiescent sample on the star-forming sequence (2026-09-07)
+- `notes/dr2-refit-sample.md` — DR2 quiescent refit, October defaults (2026-10-13)
 - `notes/dr2-quiescent-sample.md` — DR2 quiescent sample (2026-09-03 · t_d0d3a321)
 
 ## Population results
