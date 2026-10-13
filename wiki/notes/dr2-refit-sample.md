@@ -108,6 +108,6 @@ Evidence:
 - `scripts/plot_borghi2022_age_vs_z.py`
 - `archive/scripts/plot_dr2_headline_candidates.py`
 - `scripts/plot_dr2_refit_figures.py`
-- September reference: [DR2 quiescent sample](dr2-quiescent-sample.md)
+- September reference: [DR2 quiescent sample](../dr2-quiescent-sample/)
 
 </details>
