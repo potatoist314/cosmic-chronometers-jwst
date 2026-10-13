@@ -57,3 +57,13 @@ host_id,outcome,gpu,date,run,reason
 568360,poor,RTX 5090,2026-10-11,results/ceridwen-upstream-merge-2026-10-10/run-ten/manifest.json,bid instance 55332978 finished 1 fit; then the remote host closed SSH and the instance became unavailable
 662751,poor,RTX 5090,2026-10-11,results/ceridwen-upstream-merge-2026-10-10/run-ten/manifest.json,bid instance 55334638 became unavailable (SSH closed by the remote host) at the first fit
 617499,good,RTX 5090,2026-10-11,results/ceridwen-upstream-merge-2026-10-10/run-ten/manifest.json,instance 55335713 finished 9 of 9 fits
+365487,good,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/shard-00/run/manifest.json,bid instance 55619552 finished 1 fit; the second target was refused by its photometry input
+18,poor,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-05/run/manifest.json,bid instances 55622402 (unavailable while loading the image) and 55623117 (unavailable after 2 fits)
+127708,poor,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-02/run/manifest.json,bid instance 55622636 stalled loading the image for 26 min; the runner replaced it
+302468,poor,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-01/run/manifest.json,bid instance 55622880 finished 9 fits; then the instance became unavailable
+97910,poor,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-04/run/manifest.json,bid instance 55627088 stalled loading the image for 19 min; then the instance became unavailable
+474643,good,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-03/run/manifest.json,instance 55623415 finished 26 fits
+90277,good,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-15/run/manifest.json,instance 55624600 finished 35 fits
+665755,good,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-16/run/manifest.json,bid instance 55625700 finished 50 fits
+617499,poor,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-11/run/manifest.json,bid instance 55630268 finished 4 fits; then the remote host refused SSH and the instance became unavailable
+1801,poor,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-04/run/manifest.json,bid instance 55622782 stalled loading the image; bid instance 55630494 finished 8 fits and then stopped (outbid)

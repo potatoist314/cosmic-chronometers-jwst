@@ -102,11 +102,10 @@ def main() -> None:
     axes[1, 0].set_ylabel("Galaxies")
     axes[1, 1].scatter(frame["phot_chi2_ndof"], frame["spec_chi2_ndof"],
                        s=10, alpha=0.5, color=BLUE)
-    for k, (_, row) in enumerate(worst.sort_values("spec_chi2_ndof").iterrows()):
+    for _, row in worst.iterrows():
         axes[1, 1].annotate(str(row["object_id"]),
                             (row["phot_chi2_ndof"], row["spec_chi2_ndof"]),
-                            xytext=(4, -3 if k % 2 else 3), textcoords="offset points",
-                            va="top" if k % 2 else "bottom", fontsize=6.5)
+                            xytext=(4, 0), textcoords="offset points", va="center", fontsize=6.5)
     axes[1, 1].set_xlabel(r"Photometry $\chi^2/\nu$")
     axes[1, 1].set_ylabel(r"Spectrum $\chi^2/\nu$")
     fig.suptitle(f"Ceridwen DR2 quiescent fit quality "
