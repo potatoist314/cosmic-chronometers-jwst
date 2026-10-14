@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Run configured Ceridwen fits on Vast: experiment.py run CONFIG --gpu 'RTX 5090'."""
+"""Run configured Ceridwen fits on Modal: experiment.py run CONFIG --gpu L40S (--backend vast --gpu 'RTX 5090')."""
 from __future__ import annotations
 
 import argparse
 import ast
 import fcntl
+import io
 import json
 import math
 import os
@@ -13,13 +14,18 @@ import shlex
 import signal
 import subprocess
 import sys
-from datetime import UTC, datetime
+import tarfile
+import tempfile
+import time
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 if __package__:
     from . import benchmark as engine
+    from . import modal_gpu
 else:
     import benchmark as engine
+    import modal_gpu
 
 vast = engine.vast
 ROOT = engine.ROOT
@@ -85,7 +91,7 @@ def configuration(path, revision):
     return cells
 
 
-def preflight(path, revision, *, fetch_missing=False):
+def preflight(path, revision, *, fetch_missing=False, commands=('git', 'ssh', 'rsync', 'vastai')):
     """Freeze settings, source, target metadata and every grid before renting."""
     revision = engine.git('rev-parse', f'{revision}^{{commit}}')
     cells = configuration(path, revision)
@@ -106,7 +112,7 @@ def preflight(path, revision, *, fetch_missing=False):
             elif fetch_missing and name in grid_module['REGISTRY']:
                 grid_module['fetch_grid'](name)
             source = engine.preflight(revision, grid_name=name, targets={c['target'] for c in cells},
-                                      workers=('experiment.py', 'run_ceridwen_vast_multi_gpu.py'))
+                                      workers=('experiment.py', 'run_ceridwen_vast_multi_gpu.py'), commands=commands)
             grids[cell['settings']['ssp_grid']] = {
                 'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
                 'remote_name': f"{source['grid_sha256']}.h5"}
@@ -333,16 +339,177 @@ class Run(engine.Run):
         attempt['status'] = 'complete'
 
 
+class ModalRun:
+    """Fit each pending cell in its own Modal GPU container; the manifest and results match Run."""
+
+    def __init__(self, args, source):
+        self.args = args
+        self.root = args.output.resolve()
+        self.path = self.root / 'manifest.json'
+        self.data = json.loads(self.path.read_text()) if self.path.exists() else {
+            'backend': 'modal', 'source': source, 'gpus': [args.gpu], 'created': time.time(), 'attempts': []}
+        for key, value in (('source', source), ('gpus', [args.gpu])):
+            if self.data[key] != value:
+                raise vast.SweepError(f'{key} differs from the saved run; use a new --output directory')
+        self.save()
+
+    def save(self):
+        self.data['estimated_total_usd'] = sum(max(a.get('billed_usd', 0), a.get('estimated_usd', 0))
+                                               for a in self.data['attempts'])
+        temporary = self.path.with_suffix('.tmp')
+        temporary.write_text(json.dumps(self.data, indent=2) + '\n')
+        temporary.replace(self.path)
+
+    def client(self, *arguments, **options):
+        environment = {**os.environ, 'MODAL_PROFILE': modal_gpu.PROFILE,
+                       'CERIDWEN_MODAL_IMAGE': self.data['source']['image']}
+        return subprocess.run([*modal_gpu.CLIENT, *arguments], cwd=ROOT, env=environment, **options)
+
+    def modal_json(self, *arguments):
+        return json.loads(self.client('-m', 'modal', *arguments, '--json', capture_output=True,
+                                      text=True, check=True, timeout=300).stdout)
+
+    def guard(self):
+        """Stop before a launch once this month's Modal usage exceeds the workspace credits."""
+        summary = self.modal_json('billing', 'summary')
+        # Credits and allowances apply as usage accrues; a plan fee is not usage.
+        uncovered = float(summary['billed_cost']) - float(summary['adjustments'].get('plan_cost', 0))
+        if uncovered > 0:
+            raise vast.SweepError(f'Modal credits do not cover this month: ${uncovered:.2f} above credits')
+
+    def archives(self, work):
+        """Pinned source as Run.upload sends it, plus the selected inputs."""
+        source = self.data['source']
+        trees = [('', ROOT, source['commit'], ('scripts', engine.NOTEBOOK))]
+        trees += [(tree, ROOT / tree, revision, ()) for tree, revision in source['submodules'].items()]
+        archives = []
+        for index, (prefix, tree, revision, paths) in enumerate(trees):
+            path = work / f'source-{index}.tar.gz'
+            path.write_bytes(subprocess.check_output(['git', '-C', str(tree), 'archive', '--format=tar.gz',
+                                                      revision, *paths]))
+            archives.append((prefix, str(path)))
+        path = work / 'inputs.tar.gz'
+        with tarfile.open(path, 'w:gz') as archive:
+            for name in source['input_files']:
+                archive.add(ROOT / name, name)
+            listing = json.dumps(source['input_files']).encode()
+            info = tarfile.TarInfo('input-files.json')
+            info.size = len(listing)
+            archive.addfile(info, io.BytesIO(listing))
+        return archives + [('', str(path))]
+
+    def unpack(self, path, index, cell, call):
+        """Results to fits/ exactly as the Vast rsync places them; stage logs beside the manifest."""
+        destination = self.root / 'fits'
+        with tarfile.open(path) as archive:
+            status = json.load(archive.extractfile('status.json'))
+            for member in archive.getmembers():
+                if member.name.startswith('results/'):
+                    member.name = member.name.removeprefix('results/')
+                    archive.extract(member, destination, filter='data')
+                elif member.name in ('bootstrap.log', 'fit.log'):
+                    name = 'bootstrap' if member.name == 'bootstrap.log' else f'fit-{index}'
+                    (self.root / f'{call}-{name}.log').write_bytes(archive.extractfile(member).read())
+        return status
+
+    def stop(self, app_id):
+        """Confirm no container of the app is still running."""
+        for _ in range(3):
+            if all(c['app_id'] != app_id for c in self.modal_json('container', 'list')):
+                return
+            self.client('-m', 'modal', 'app', 'stop', app_id, capture_output=True, timeout=300)
+            time.sleep(5)
+        engine.log(f'Modal app {app_id} still running: stop it with `modal app stop {app_id}`')
+
+    def invoices(self):
+        """Modal's own billed cost for each attempt's app, once its hourly intervals have closed."""
+        owned = {a['app_id']: a for a in self.data['attempts'] if a.get('app_id')}
+        if not owned:
+            return
+        start = datetime.fromtimestamp(self.data['created'], UTC).date().isoformat()
+        end = (datetime.now(UTC) + timedelta(days=1)).date().isoformat()  # includes the current hour
+        try:
+            rows = self.modal_json('billing', 'report', '--start', start, '--end', end, '-r', 'h')
+        except (subprocess.SubprocessError, ValueError) as error:
+            engine.log(f'Modal billing report unavailable: {error}; estimate retained')
+            return
+        for app_id, attempt in owned.items():
+            costs = [float(row['cost']) for row in rows if row.get('object_id') == app_id]
+            if costs:
+                attempt['billed_usd'] = sum(costs)
+
+    def execute(self):
+        self.invoices()
+        cells = self.data['source']['experiment']
+        pending = [(i, c) for i, c in enumerate(cells) if c['name'] not in self.data.get('completed_cells', [])]
+        if not pending:
+            self.save()
+            return 0
+        self.guard()
+        work = self.root / '.modal' / str(len(self.data['attempts']))
+        work.mkdir(parents=True, exist_ok=True)
+        grids = {entry['remote_name']: entry for entry in self.data['source']['grids']}
+        attempt = {'gpu': self.args.gpu, 'cells': {}, 'started': time.time(), 'status': 'running'}
+        self.data['attempts'].append(attempt)
+        self.save()
+        engine.log(f'launching {len(pending)} Modal {self.args.gpu} container(s)')
+        try:
+            # Source and input archives are transient; only calls and result archives land in work.
+            with tempfile.TemporaryDirectory() as temporary:
+                request = {'gpu': self.args.gpu, 'grids': list(grids.values()),
+                           'archives': self.archives(Path(temporary)), 'cells': [
+                    {'index': i, 'cell': c, 'grid': Path(c['settings']['ssp_grid']).name,
+                     'grid_sha256': grids[Path(c['settings']['ssp_grid']).name]['grid_sha256']} for i, c in pending]}
+                (Path(temporary) / 'request.json').write_text(json.dumps(request))
+                self.client('scripts/modal_gpu.py', str(Path(temporary) / 'request.json'), str(work))
+        finally:
+            attempt['elapsed'] = time.time() - attempt['started']
+            calls = json.loads((work / 'calls.json').read_text()) if (work / 'calls.json').exists() else {}
+            attempt['app_id'] = calls.get('app_id')
+            if attempt['app_id']:
+                self.stop(attempt['app_id'])
+            self.save()
+        failed = []
+        for index, cell in pending:
+            call = calls.get('calls', {}).get(str(index), f'cell-{index}')
+            record = attempt['cells'][cell['name']] = {'call_id': call}
+            try:
+                if (work / f'{index}.error').exists():
+                    raise vast.SweepError((work / f'{index}.error').read_text())
+                status = self.unpack(work / f'{index}.tar.gz', index, cell, call)
+                seconds = status['finished'] - status['started']
+                record.update(gpu_name=status['gpu'], container_seconds=seconds, exit=status['exit'],
+                              estimated_usd=modal_gpu.cost_usd(self.args.gpu, seconds))
+                if any(status['exit'].values()) or len(status['exit']) < 2:
+                    raise engine.StageFailed(f"{cell['name']}: stage exit {status['exit']}; inspect {self.root}/{call}-*.log")
+                validate_local_result(self.root / 'fits' / cell['arm']
+                                      / f"{cell['target_metadata']['object_id']}-{cell['target']}")
+                self.data.setdefault('completed_cells', []).append(cell['name'])
+                (work / f'{index}.tar.gz').unlink()
+            except (vast.SweepError, engine.StageFailed, subprocess.SubprocessError, OSError, KeyError) as error:
+                record['error'] = f'{type(error).__name__}: {error}'
+                failed.append(cell['name'])
+                engine.log(record['error'])
+            self.save()
+        attempt['estimated_usd'] = sum(r.get('estimated_usd', 0) for r in attempt['cells'].values())
+        attempt['status'] = 'failed' if failed else 'complete'
+        self.invoices()
+        self.save()
+        engine.log(f"Modal attempt: ${attempt['estimated_usd']:.4f} estimated; failed cells: {failed or 'none'}")
+        return 1 if failed else 0
+
+
 def parser():
     result = argparse.ArgumentParser(description=__doc__)
     commands = result.add_subparsers(dest='command', required=True)
     run = commands.add_parser('run', help='preflight, rent, fit, download and destroy')
     run.add_argument('config', type=Path, help='JSON targets, seed, settings, priors and named arms')
-    run.add_argument('--gpu', required=True, help='Vast GPU name, e.g. RTX 5090')
+    run.add_argument('--gpu', required=True, help='Modal GPU, e.g. L40S; Vast GPU name with --backend vast, e.g. RTX 5090')
+    run.add_argument('--backend', choices=('modal', 'vast'), help='default: the saved run\'s backend, else modal')
     run.add_argument('--output', type=Path, help='reuse this directory to resume the same experiment')
     run.add_argument('--image', help='container image reference; saved in the run manifest')
     run.add_argument('--revision', default='HEAD', help='committed project revision; saved revision on resume')
-    run.add_argument('--spend-cap', type=vast.experiment_cap, default=1., help='total USD across arms and retries; maximum 1')
+    run.add_argument('--spend-cap', type=vast.experiment_cap, default=1., help='Vast only: total USD across arms and retries; maximum 1')
     run.add_argument('--max-attempts', type=int, default=3)
     run.add_argument('--wait-minutes', type=float, default=0)
     run.add_argument('--dry-run', action='store_true', help='check cached inputs and print the plan; no network or rental')
@@ -362,7 +529,12 @@ def main(argv=None):
     saved = args.output / 'manifest.json'
     if saved.exists() and args.revision == 'HEAD':
         args.revision = json.loads(saved.read_text())['source']['commit']
-    source = preflight(args.config.resolve(), args.revision, fetch_missing=not args.dry_run)
+    if args.backend is None:
+        args.backend = json.loads(saved.read_text()).get('backend', 'vast') if saved.exists() else 'modal'
+    if args.backend == 'modal':
+        args.gpu = modal_gpu.gpu_type(args.gpu)
+    commands = ('git', 'uv') if args.backend == 'modal' else ('git', 'ssh', 'rsync', 'vastai')
+    source = preflight(args.config.resolve(), args.revision, fetch_missing=not args.dry_run, commands=commands)
     if saved.exists() and 'input_files' not in json.loads(saved.read_text())['source']:
         source.pop('input_files', None)
         for cell in source.get('experiment', []):
@@ -375,7 +547,8 @@ def main(argv=None):
         source['image'] = DEFAULT_IMAGE
     args.gpus, args.hosts, args.target, args.seed = [args.gpu], 1, 'experiment', 0
     if args.dry_run:
-        print(json.dumps({'source': source, 'gpu': args.gpu, 'spend_cap': args.spend_cap}, indent=2))
+        print(json.dumps({'source': source, 'backend': args.backend, 'gpu': args.gpu,
+                          **({'spend_cap': args.spend_cap} if args.backend == 'vast' else {})}, indent=2))
         return 0
     args.output.mkdir(parents=True, exist_ok=True)
     engine.log(f"committed source {source['commit'][:12]}; output {args.output}")
@@ -384,7 +557,7 @@ def main(argv=None):
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as error:
             raise vast.SweepError('another driver owns this output directory') from error
-        code = Run(args, source).execute()
+        code = (ModalRun if args.backend == 'modal' else Run)(args, source).execute()
         # After teardown, while nothing bills: restore the standard figures locally.
         if code == 0:
             regenerate_figures(args.output)

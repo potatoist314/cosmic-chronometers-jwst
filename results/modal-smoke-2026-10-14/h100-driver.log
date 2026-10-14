@@ -1,0 +1,60 @@
+21:40:43 committed source 2482b6126001; output results/modal-smoke-2026-10-14/h100
+21:41:26 launching 1 Modal H100 container(s)
+✓ Initialized. View run at 
+https://modal.com/apps/initialincrease/main/ap-Q5FvfTXMNEvgxJac0OAxit
+✓ Created objects.
+├── ✓ Uploaded /Users/liuhao/Downloads/Astro 
+│   project/tmp/worktrees/modal-gpu/scripts/modal_gpu.py
+└── ✓ Created Function fit.
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 529ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.60s
+bootstrap: Uninstalled 1 package in 18ms
+bootstrap: Installed 2 packages in 15ms
+bootstrap:  + ceridwen==1.0.12 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 6ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] filters + attenuation  -- 294 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit: 21:42:11 fitting fit/M1_210210, seed 20260832
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/initialincrease/main/ap-Q5FvfTXMNEvgxJac0OAxit
+21:44:46 Modal attempt: $0.1943 estimated; failed cells: none
+21:47:08 local figures rebuilt for fit/M1_210210

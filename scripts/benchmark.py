@@ -72,15 +72,17 @@ class StageFailed(RuntimeError):
     """A completed remote stage failed; inspect its log before renting again."""
 
 
-def preflight(revision, *, grid_name=None, targets=(), workers=('benchmark_baked_runtime.py', 'benchmark_ceridwen_vast.py')):
+def preflight(revision, *, grid_name=None, targets=(), workers=('benchmark_baked_runtime.py', 'benchmark_ceridwen_vast.py'),
+              commands=('git', 'ssh', 'rsync', 'vastai')):
     """Resolve committed source and check local inputs before renting."""
-    for command in ('git', 'ssh', 'rsync', 'vastai'):
+    for command in commands:
         if not shutil.which(command):
             raise vast.SweepError(f'missing command: {command}')
-    for path in (vast.SSH_KEY_PATH, vast.SSH_KEY_PATH.with_suffix('.pub')):
-        if not path.is_file():
-            raise vast.SweepError(f'missing SSH key file: {path}')
-    vast.check_local_ssh()
+    if 'ssh' in commands:
+        for path in (vast.SSH_KEY_PATH, vast.SSH_KEY_PATH.with_suffix('.pub')):
+            if not path.is_file():
+                raise vast.SweepError(f'missing SSH key file: {path}')
+        vast.check_local_ssh()
     check_target_inputs(targets)
     commit = git('rev-parse', f'{revision}^{{commit}}')
     modules = {tree: git('ls-tree', commit, tree).split()[2] for tree in SUBMODULES}

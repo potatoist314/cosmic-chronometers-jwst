@@ -119,7 +119,7 @@ def test_dry_run_does_not_contact_vast_or_create_output(tmp_path, monkeypatch):
     monkeypatch.setattr(exp, 'preflight', lambda *a, **kw: {'commit': 'abc'})
     monkeypatch.setattr(exp.vast, '_vastai_json', lambda *_: pytest.fail('Vast call during dry run'))
     output = tmp_path / 'absent'
-    assert exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(output), '--dry-run']) == 0
+    assert exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--backend', 'vast', '--output', str(output), '--dry-run']) == 0
     assert not output.exists()
 
 
@@ -249,7 +249,7 @@ def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, monkeypatch
 def test_new_dry_run_records_prebuilt_digest(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(exp, 'preflight', lambda *a, **kw: {'commit': 'abc', 'input_files': []})
     monkeypatch.setattr(exp.vast, '_vastai_json', lambda *_: pytest.fail('rental during dry run'))
-    exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(tmp_path), '--dry-run'])
+    exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--backend', 'vast', '--output', str(tmp_path), '--dry-run'])
     plan = json.loads(capsys.readouterr().out)
     assert plan['source']['image'] == exp.DEFAULT_IMAGE
     assert '@sha256:' in plan['source']['image']
@@ -386,5 +386,5 @@ def test_main_rebuilds_figures_only_after_success(tmp_path, monkeypatch, code):
     monkeypatch.setattr(exp, 'Run', lambda args, source: SimpleNamespace(execute=lambda: code))
     calls = []
     monkeypatch.setattr(exp, 'regenerate_figures', lambda output: calls.append(output))
-    assert exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(out)]) == code
+    assert exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--backend', 'vast', '--output', str(out)]) == code
     assert calls == ([out] if code == 0 else [])
