@@ -17,7 +17,7 @@ import sys
 import tarfile
 import tempfile
 import time
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 if __package__:
@@ -427,8 +427,9 @@ class ModalRun:
         if not owned:
             return
         start = datetime.fromtimestamp(self.data['created'], UTC).date().isoformat()
+        end = (datetime.now(UTC) + timedelta(days=1)).date().isoformat()  # includes the current hour
         try:
-            rows = self.modal_json('billing', 'report', '--start', start, '-r', 'h')
+            rows = self.modal_json('billing', 'report', '--start', start, '--end', end, '-r', 'h')
         except (subprocess.SubprocessError, ValueError) as error:
             engine.log(f'Modal billing report unavailable: {error}; estimate retained')
             return
