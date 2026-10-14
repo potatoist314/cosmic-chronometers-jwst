@@ -5,10 +5,8 @@ python3 scripts/benchmark_modal.py run CONFIG --gpu T4 --containers 4 --fits 2 -
 ceridwen/.venv/bin/python scripts/benchmark_modal.py summarize DIR... --reference L40S --output OUT
 
 Each container times, in order: source unpack, the grid read from the Volume, the
-bootstrap, the likelihood harness of the consumer-card benchmark
-(benchmark_baked_runtime.py, 500 particles, 5 rounds of 10 calls, seed 20260921), and
---fits repeats of the one configured fit (experiment.py remote). Image, grid Volume,
-resources and prices come from modal_gpu.py; the manifest, archives, credit guard,
+bootstrap and --fits repeats of the one configured fit (experiment.py remote). Image,
+grid Volume, resources and prices come from modal_gpu.py; the manifest, archives,
 app stop and billed costs from experiment.ModalRun.
 """
 from __future__ import annotations
@@ -39,9 +37,6 @@ GPU_USD_PER_SECOND = {**modal_gpu.GPU_USD_PER_SECOND, 'H100!': modal_gpu.GPU_USD
                       'B300': 0.001972}
 STAGE_PREFIX = (f'SPS_HOME={modal_gpu.REMOTE}/external/fsps MPLBACKEND=Agg '
                 "XLA_FLAGS='--xla_gpu_enable_command_buffer=' ")
-# The consumer-card harness and timing definition of e-gpu-price-benchmark.
-THROUGHPUT = ('.venv-ceridwen-gpu/bin/python scripts/benchmark_baked_runtime.py '
-              '--particles 500 --rounds 5 --repeats 10 --output results/throughput.json')
 KEY_PARAMETERS = ('logmass', 'logzsol', 'afe', 'diffuse_tau_noll', 'sigma_smooth', 'mass-weighted age [Gyr]')
 SAMPLER_CELL = 'joint_result = run_sampler('
 GRID_CELL = 'ssp = SSPDataAfe.load('
@@ -63,8 +58,8 @@ if modal_gpu.modal:
     @app.function(image=image, gpu='L4', cpu=modal_gpu.CPU_CORES, memory=modal_gpu.MEMORY_GIB * 1024,
                   timeout=modal_gpu.TIMEOUT_SECONDS, volumes={'/grids': modal_gpu.grids.read_only()},
                   scaledown_window=2)
-    def bench(archives, config, grid, grid_sha256, default_grid, fits):
-        """Unpack, read the grid, bootstrap, time the harness and each fit; return results as tar.gz."""
+    def bench(archives, config, grid, grid_sha256, fits):
+        """Unpack, read the grid, bootstrap and time each fit; return the results as tar.gz."""
         marks = {'entered': time.time()}
         root = Path(modal_gpu.REMOTE)
         for prefix, data in archives:
@@ -77,17 +72,12 @@ if modal_gpu.modal:
             if hashlib.file_digest(stream, 'sha256').hexdigest() != grid_sha256:
                 raise RuntimeError(f'grid checksum mismatch: {grid}')
         marks['grid_read'] = time.time()
-        # The harness builds the notebook's default model, whose grid path is a local file.
-        local = Path(default_grid).expanduser()
-        local.parent.mkdir(parents=True, exist_ok=True)
-        local.symlink_to(f'/grids/{grid}')
         cell = json.loads(config)[0]
         fit_dir = f"{cell['arm']}/{cell['target_metadata']['object_id']}-{cell['target']}"
         environment = {k: v for k, v in os.environ.items() if k != 'PYTHONPATH'}
         environment.update(CERIDWEN_GRID_DIR=f'{modal_gpu.REMOTE}/grid',
                            CERIDWEN_GRID_PATH=f'{modal_gpu.REMOTE}/grid/{grid}')
-        stages = [('bootstrap', 'bash scripts/bootstrap_vast_ai.sh'),
-                  ('throughput', STAGE_PREFIX + 'JAX_PLATFORMS=cuda JAX_ENABLE_X64=1 ' + THROUGHPUT)]
+        stages = [('bootstrap', 'bash scripts/bootstrap_vast_ai.sh')]
         stages += [(f'fit-{k}', STAGE_PREFIX + '.venv-ceridwen-gpu/bin/python scripts/experiment.py remote '
                     f'--config config.json --output results/fit-{k}') for k in range(fits)]
         records = {}
@@ -112,7 +102,7 @@ if modal_gpu.modal:
                                                 stdout=log, stderr=subprocess.STDOUT).returncode
             record['finished'] = time.time()
             done.set()
-            if record['exit'] and name != 'throughput':
+            if record['exit']:
                 break
         query = 'name,driver_version,memory.total,clocks.max.sm,power.limit,compute_cap'
         gpu = subprocess.run(['nvidia-smi', f'--query-gpu={query}', '--format=csv,noheader'],
@@ -144,8 +134,7 @@ def launch(request_path, work):
     def one(index):
         record = calls['calls'][str(index)] = {'spawned': time.time()}
         call = bench.with_options(gpu=request['gpu']).spawn(
-            archives, json.dumps([request['cell']]), request['grid'], request['grid_sha256'],
-            request['default_grid'], request['fits'])
+            archives, json.dumps([request['cell']]), request['grid'], request['grid_sha256'], request['fits'])
         record['call_id'] = call.object_id
         save()
         try:
@@ -182,11 +171,6 @@ def run(args):
     cell = source['experiment'][0]
     grid = Path(cell['settings']['ssp_grid']).name
     entry = next(g for g in source['grids'] if g['remote_name'] == grid)
-    notebook = json.loads(engine.git('show', f"{source['commit']}:{engine.NOTEBOOK}"))
-    top = next(''.join(c['source']) for c in notebook['cells'] if 'SETTINGS = {' in ''.join(c['source']))
-    default_grid = engine.literal(top, 'SETTINGS')['ssp_grid']
-    if Path(default_grid).expanduser().resolve() != Path(entry['grid']).resolve():
-        raise ValueError('the throughput harness uses the notebook default grid; configure that grid')
     args.output.mkdir(parents=True, exist_ok=True)
     holder = exp.ModalRun(SimpleNamespace(output=args.output, gpu=args.gpu), source)
     # billed_cost is the month's cost after credits and allowances (ModalRun.guard omits the latter).
@@ -196,7 +180,7 @@ def run(args):
     work.mkdir(parents=True, exist_ok=True)
     request = {'gpu': args.gpu, 'containers': args.containers, 'concurrent': args.concurrent,
                'fits': args.fits, 'grids': source['grids'], 'archives': holder.archives(work), 'cell': cell,
-               'grid': grid, 'grid_sha256': entry['grid_sha256'], 'default_grid': default_grid}
+               'grid': grid, 'grid_sha256': entry['grid_sha256']}
     (work / 'request.json').write_text(json.dumps(request))
     attempt = {'gpu': args.gpu, 'containers': {}, 'fits_per_container': args.fits, 'started': time.time(),
                'status': 'running'}
@@ -294,10 +278,6 @@ def fit_record(directory, stage):
 def container_record(directory, call, gpu, fits_dir):
     status = json.loads((directory / 'status.json').read_text())
     marks, stages = status['marks'], status['stages']
-    throughput = None
-    if (directory / 'results/throughput.json').is_file():
-        summary = json.loads((directory / 'results/throughput.json').read_text())['summary'][0]
-        throughput = 1e6 / summary['free_us_per_call']
     fits = []
     for name in sorted((s for s in stages if s.startswith('fit-')), key=lambda s: int(s[4:])):
         if stages[name]['exit'] == 0:
@@ -308,8 +288,6 @@ def container_record(directory, call, gpu, fits_dir):
         'unpack_s': marks['unpacked'] - marks['entered'],
         'grid_read_s': marks['grid_read'] - marks['unpacked'],
         'bootstrap_s': stages['bootstrap']['finished'] - stages['bootstrap']['started'],
-        'throughput_stage_s': stages['throughput']['finished'] - stages['throughput']['started'],
-        'throughput_calls_per_s': throughput,
         'pack_s': call['packed'] - marks['finished'],
         'retrieval_s': call['received'] - call['packed'],
         'container_s': marks['finished'] - marks['entered'],
@@ -343,8 +321,6 @@ def summarize(args):
         card['sampling_s'] = spread([f['sampling_s'] for c in card['containers'] for f in c['fits']])
         card['container_mean_sampling_s'] = per_container
         card['sampling_calls_per_s'] = spread([f['sampling_calls_per_s'] for c in card['containers'] for f in c['fits']])
-        card['throughput_calls_per_s'] = spread([c['throughput_calls_per_s'] for c in card['containers']
-                                                 if c['throughput_calls_per_s']])
         for stage in ('container_start_s', 'unpack_s', 'grid_read_s', 'bootstrap_s', 'retrieval_s'):
             card[stage] = spread([c[stage] for c in card['containers']])
         for stage in ('model_and_grid_cell_s', 'compile_s', 'post_fit_cells_s', 'fit_stage_s'):

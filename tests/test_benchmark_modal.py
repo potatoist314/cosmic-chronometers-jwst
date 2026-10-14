@@ -22,14 +22,12 @@ def write_run(root, gpu, sampling):
         name = f'{index}-fc-{index}'
         directory = root / 'containers' / name
         (directory / 'results').mkdir(parents=True)
-        stages = {'bootstrap': {'started': 10, 'finished': 20, 'exit': 0},
-                  'throughput': {'started': 20, 'finished': 25, 'exit': 0}}
+        stages = {'bootstrap': {'started': 10, 'finished': 20, 'exit': 0}}
         stages.update({f'fit-{k}': {'started': 25, 'finished': 25 + t + 30, 'exit': 0, 'seconds': t}
                        for k, t in enumerate(times)})
         (directory / 'status.json').write_text(json.dumps({
             'gpu': gpu, 'stages': stages,
             'marks': {'entered': 2, 'unpacked': 3, 'grid_read': 5, 'finished': 200}}))
-        (directory / 'results/throughput.json').write_text(json.dumps({'summary': [{'free_us_per_call': 20.0}]}))
         containers[name] = {'call_id': f'fc-{index}', 'spawned': 0, 'packed': 201, 'received': 203}
     (root / 'manifest.json').write_text(json.dumps({
         'gpus': [gpu], 'source': {'commit': 'abc', 'experiment': [cell]},
@@ -61,6 +59,5 @@ def test_relative_speed_and_cost_use_the_reference_median(tmp_path, monkeypatch)
         bench.rate_usd_per_second('H100!') * 50 / (bench.rate_usd_per_second('L40S') * 100))
     assert h100['container_start_s']['median'] == 2
     assert h100['retrieval_s']['median'] == 2
-    assert h100['throughput_calls_per_s']['median'] == pytest.approx(5e4)
     # Setup 1 + grid 2 + bootstrap 10 + first fit stage + packing 1.
     assert h100['container_usd_per_fit'] == pytest.approx(bench.rate_usd_per_second('H100!') * (14 + 50 + 30))
