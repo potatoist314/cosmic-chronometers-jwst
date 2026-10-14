@@ -189,7 +189,9 @@ def run(args):
         raise ValueError('the throughput harness uses the notebook default grid; configure that grid')
     args.output.mkdir(parents=True, exist_ok=True)
     holder = exp.ModalRun(SimpleNamespace(output=args.output, gpu=args.gpu), source)
-    holder.guard()
+    # billed_cost is the month's cost after credits and allowances (ModalRun.guard omits the latter).
+    if float(holder.modal_json('billing', 'summary')['billed_cost']) > 0:
+        raise ValueError('Modal credits no longer cover this month')
     work = args.output / '.modal' / str(len(holder.data['attempts']))
     work.mkdir(parents=True, exist_ok=True)
     request = {'gpu': args.gpu, 'containers': args.containers, 'concurrent': args.concurrent,
