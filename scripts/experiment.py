@@ -15,6 +15,7 @@ import signal
 import subprocess
 import sys
 import tarfile
+import tempfile
 import time
 from datetime import UTC, datetime
 from pathlib import Path
@@ -371,7 +372,8 @@ class ModalRun:
     def guard(self):
         """Stop before a launch once this month's Modal usage exceeds the workspace credits."""
         summary = self.modal_json('billing', 'summary')
-        uncovered = float(summary['metered_cost']) + float(summary['adjustments'].get('credits', 0))
+        # Credits and allowances apply as usage accrues; a plan fee is not usage.
+        uncovered = float(summary['billed_cost']) - float(summary['adjustments'].get('plan_cost', 0))
         if uncovered > 0:
             raise vast.SweepError(f'Modal credits do not cover this month: ${uncovered:.2f} above credits')
 
@@ -446,16 +448,19 @@ class ModalRun:
         work = self.root / '.modal' / str(len(self.data['attempts']))
         work.mkdir(parents=True, exist_ok=True)
         grids = {entry['remote_name']: entry for entry in self.data['source']['grids']}
-        request = {'gpu': self.args.gpu, 'grids': list(grids.values()), 'archives': self.archives(work), 'cells': [
-            {'index': i, 'cell': c, 'grid': Path(c['settings']['ssp_grid']).name,
-             'grid_sha256': grids[Path(c['settings']['ssp_grid']).name]['grid_sha256']} for i, c in pending]}
-        (work / 'request.json').write_text(json.dumps(request))
         attempt = {'gpu': self.args.gpu, 'cells': {}, 'started': time.time(), 'status': 'running'}
         self.data['attempts'].append(attempt)
         self.save()
         engine.log(f'launching {len(pending)} Modal {self.args.gpu} container(s)')
         try:
-            self.client('scripts/modal_gpu.py', str(work / 'request.json'), str(work))
+            # Source and input archives are transient; only calls and result archives land in work.
+            with tempfile.TemporaryDirectory() as temporary:
+                request = {'gpu': self.args.gpu, 'grids': list(grids.values()),
+                           'archives': self.archives(Path(temporary)), 'cells': [
+                    {'index': i, 'cell': c, 'grid': Path(c['settings']['ssp_grid']).name,
+                     'grid_sha256': grids[Path(c['settings']['ssp_grid']).name]['grid_sha256']} for i, c in pending]}
+                (Path(temporary) / 'request.json').write_text(json.dumps(request))
+                self.client('scripts/modal_gpu.py', str(Path(temporary) / 'request.json'), str(work))
         finally:
             attempt['elapsed'] = time.time() - attempt['started']
             calls = json.loads((work / 'calls.json').read_text()) if (work / 'calls.json').exists() else {}
@@ -479,6 +484,7 @@ class ModalRun:
                 validate_local_result(self.root / 'fits' / cell['arm']
                                       / f"{cell['target_metadata']['object_id']}-{cell['target']}")
                 self.data.setdefault('completed_cells', []).append(cell['name'])
+                (work / f'{index}.tar.gz').unlink()
             except (vast.SweepError, engine.StageFailed, subprocess.SubprocessError, OSError, KeyError) as error:
                 record['error'] = f'{type(error).__name__}: {error}'
                 failed.append(cell['name'])

@@ -57,7 +57,7 @@ def modal_run(tmp_path, monkeypatch):
     args = SimpleNamespace(output=tmp_path / 'run', gpu='L40S')
     args.output.mkdir()
     run = exp.ModalRun(args, source)
-    state = {'launches': [], 'stopped': [], 'billing': {'metered_cost': '0', 'adjustments': {'credits': '0'}},
+    state = {'launches': [], 'stopped': [], 'billing': {'billed_cost': '0E-8', 'adjustments': {'plan_cost': '0E-8', 'credits': '-1.01'}},
              'report': [], 'exit': {'bootstrap': 0, 'fit': 0}, 'running': ['ap-other']}
 
     def client(*arguments, **options):
@@ -90,6 +90,7 @@ def test_modal_fit_lands_in_vast_results_layout_with_cost(modal_run):
     assert (root / 'fits/fit/210210-M1_210210/ceridwen_result.h5').read_text() == 'h5'
     assert (root / 'fc-1-bootstrap.log').read_text() == 'ready'
     assert (root / 'fc-1-fit-0.log').read_text() == 'fitting'
+    assert [p.name for p in (root / '.modal/0').iterdir()] == ['calls.json']
     saved = json.loads((root / 'manifest.json').read_text())
     assert saved['backend'] == 'modal'
     assert saved['completed_cells'] == ['fit/M1_210210']
@@ -121,7 +122,7 @@ def test_failed_stage_keeps_partial_results_and_never_completes(modal_run):
 
 def test_credit_guard_stops_before_launch(modal_run):
     run, state = modal_run
-    state['billing'] = {'metered_cost': '31.5', 'adjustments': {'credits': '-30'}}
+    state['billing'] = {'billed_cost': '1.5', 'adjustments': {'plan_cost': '0', 'credits': '-30'}}
     with pytest.raises(exp.vast.SweepError, match='credits'):
         run.execute()
     assert not state['launches']
