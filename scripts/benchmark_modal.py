@@ -57,10 +57,12 @@ if modal_gpu.modal:
 
     @app.function(image=image, gpu='L4', cpu=modal_gpu.CPU_CORES, memory=modal_gpu.MEMORY_GIB * 1024,
                   timeout=modal_gpu.TIMEOUT_SECONDS, volumes={'/grids': modal_gpu.grids.read_only()},
-                  scaledown_window=2)
+                  single_use_containers=True)  # a fresh container for every call
     def bench(archives, config, grid, grid_sha256, fits):
         """Unpack, read the grid, bootstrap and time each fit; return the results as tar.gz."""
         marks = {'entered': time.time()}
+        # Seconds since this container's sandbox started, at function entry.
+        marks['uptime_at_entry'] = float(Path('/proc/uptime').read_text().split()[0])
         root = Path(modal_gpu.REMOTE)
         for prefix, data in archives:
             with tarfile.open(fileobj=io.BytesIO(data)) as archive:
@@ -285,6 +287,9 @@ def container_record(directory, call, gpu, fits_dir):
     return {
         'call_id': call['call_id'], 'gpu': status['gpu'], 'requested_gpu': gpu,
         'container_start_s': marks['entered'] - call['spawned'],
+        # Start splits into the wait for a GPU slot and the sandbox boot up to function entry.
+        'boot_s': marks.get('uptime_at_entry'),
+        'queue_s': marks['entered'] - call['spawned'] - marks.get('uptime_at_entry', 0),
         'unpack_s': marks['unpacked'] - marks['entered'],
         'grid_read_s': marks['grid_read'] - marks['unpacked'],
         'bootstrap_s': stages['bootstrap']['finished'] - stages['bootstrap']['started'],
@@ -321,8 +326,10 @@ def summarize(args):
         card['sampling_s'] = spread([f['sampling_s'] for c in card['containers'] for f in c['fits']])
         card['container_mean_sampling_s'] = per_container
         card['sampling_calls_per_s'] = spread([f['sampling_calls_per_s'] for c in card['containers'] for f in c['fits']])
-        for stage in ('container_start_s', 'unpack_s', 'grid_read_s', 'bootstrap_s', 'retrieval_s'):
-            card[stage] = spread([c[stage] for c in card['containers']])
+        for stage in ('container_start_s', 'boot_s', 'queue_s', 'unpack_s', 'grid_read_s', 'bootstrap_s',
+                      'retrieval_s'):
+            values = [c[stage] for c in card['containers'] if c[stage] is not None]
+            card[stage] = spread(values) if values else None
         for stage in ('model_and_grid_cell_s', 'compile_s', 'post_fit_cells_s', 'fit_stage_s'):
             card[stage] = spread([f[stage] for c in card['containers'] for f in c['fits']])
         rate = rate_usd_per_second(card['gpu'])
