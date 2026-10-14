@@ -58,7 +58,7 @@ def modal_run(tmp_path, monkeypatch):
     args.output.mkdir()
     run = exp.ModalRun(args, source)
     state = {'launches': [], 'stopped': [], 'billing': {'metered_cost': '0', 'adjustments': {'credits': '0'}},
-             'report': [], 'exit': {'bootstrap': 0, 'fit': 0}}
+             'report': [], 'exit': {'bootstrap': 0, 'fit': 0}, 'running': ['ap-other']}
 
     def client(*arguments, **options):
         if arguments[0] == 'scripts/modal_gpu.py':
@@ -71,12 +71,14 @@ def modal_run(tmp_path, monkeypatch):
         return SimpleNamespace(returncode=0)
 
     def modal_json(*arguments):
-        return {('billing', 'summary'): state['billing'], ('app', 'list'): [{'App ID': 'ap-1', 'State': 'stopped'}],
-                ('billing', 'report'): state['report']}[arguments[:2]]
+        if arguments[:2] == ('container', 'list'):
+            return [{'app_id': app, 'container_id': 'ta-1'} for app in state['running'] if app not in state['stopped']]
+        return {('billing', 'summary'): state['billing'], ('billing', 'report'): state['report']}[arguments[:2]]
 
     monkeypatch.setattr(run, 'client', client)
     monkeypatch.setattr(run, 'modal_json', modal_json)
     monkeypatch.setattr(run, 'archives', lambda work: [])
+    monkeypatch.setattr(exp.time, 'sleep', lambda _: None)
     monkeypatch.setattr(exp, 'validate_local_result', lambda directory: None)
     return run, state
 
@@ -143,3 +145,10 @@ def test_backend_defaults_to_modal_and_resume_keeps_saved_vast(tmp_path, monkeyp
     (old / 'manifest.json').write_text(json.dumps({'source': {'commit': 'abc', 'input_files': []}}))
     exp.main(['run', 'config.json', '--gpu', 'RTX 5090', '--output', str(old), '--dry-run'])
     assert json.loads(capsys.readouterr().out)['backend'] == 'vast'
+
+
+def test_leftover_container_is_stopped_and_other_apps_are_untouched(modal_run):
+    run, state = modal_run
+    state['running'].append('ap-1')
+    assert run.execute() == 0
+    assert state['stopped'] == ['ap-1']

@@ -411,9 +411,9 @@ class ModalRun:
         return status
 
     def stop(self, app_id):
-        """Confirm the app, and so every container it started, has stopped."""
+        """Confirm no container of the app is still running."""
         for _ in range(3):
-            if all(a.get('App ID') != app_id or a.get('State') == 'stopped' for a in self.modal_json('app', 'list')):
+            if all(c['app_id'] != app_id for c in self.modal_json('container', 'list')):
                 return
             self.client('-m', 'modal', 'app', 'stop', app_id, capture_output=True, timeout=300)
             time.sleep(5)
