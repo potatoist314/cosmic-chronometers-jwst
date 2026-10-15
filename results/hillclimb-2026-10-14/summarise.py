@@ -146,8 +146,9 @@ def end_to_end(run):
         for name, cell in attempt['cells'].items():
             row = {'cell': name, 'driver_s': round(attempt['elapsed'], 1), 'error': cell.get('error'),
                    'container_s': round(cell.get('container_seconds', 0), 1),
-                   'billed_usd': attempt.get('billed_usd'), 'estimated_usd': round(cell.get('estimated_usd', 0), 4)}
-            fit = next(run.glob('fits/*/*'), None)
+                   'billed_usd': attempt.get('billed_usd'), 'estimated_usd': round(cell.get('estimated_usd', 0), 4),
+                   **{k: cell[k] for k in ('container_cells', 'mode', 'tuned', 'compiled', 'retuned') if k in cell}}
+            fit = next(run.glob(f"fits/{name.split('/')[0]}/*"), None)
             if fit is not None and (fit / 'execution.log').exists():
                 first = (fit / 'execution.log').read_text().split('] starting', 1)[0].lstrip('\n[')
                 start = datetime.fromisoformat(first).timestamp()

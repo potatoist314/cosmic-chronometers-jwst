@@ -1,0 +1,379 @@
+{
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cold_start_s": 9.2,
+ "container_s": 1089.9,
+ "rows": [
+  {
+   "step": 0,
+   "copy": 0,
+   "label": "h2base",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 233.8,
+   "kernel_start_s": 1.5,
+   "notebook_s": 227.5,
+   "after_kernel_s": 4.8,
+   "imports": 6.9,
+   "data": 0.2,
+   "observations": 6.7,
+   "model": 16.1,
+   "sampler cell": 194.7,
+   "predictive": 1.4,
+   "corner/sfh": 1.3,
+   "hash": "ca8d60187238bf1a",
+   "path": "975ac292ad6407e2",
+   "wall_sampler": 173.7,
+   "n_calls": 5331120,
+   "lnZ": 236690.15143638992,
+   "n_samples": 17300,
+   "kish_ess": 4463.9,
+   "ess_per_s": 25.7,
+   "ess": {
+    "logzsol": 2924.5,
+    "afe": 2887.7,
+    "logmass": 2383.4,
+    "t50": 1981.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2563,
+     -0.2134,
+     -0.1751
+    ],
+    "afe": [
+     -0.0639,
+     -0.0367,
+     -0.0056
+    ],
+    "logmass": [
+     11.5647,
+     11.5933,
+     11.6208
+    ],
+    "t50": [
+     4.0221,
+     4.5864,
+     5.0634
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 16.84,
+    "afe": 16.62,
+    "logmass": 13.72,
+    "t50": 11.41
+   },
+   "check_passed": true,
+   "lnZ_err": 0.307
+  },
+  {
+   "step": 1,
+   "copy": 0,
+   "label": "h2base",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 226.2,
+   "kernel_start_s": 1.1,
+   "notebook_s": 220.2,
+   "after_kernel_s": 4.9,
+   "imports": 4.5,
+   "data": 0.2,
+   "observations": 6.4,
+   "model": 14.4,
+   "sampler cell": 191.9,
+   "predictive": 1.4,
+   "corner/sfh": 1.3,
+   "hash": "52dd845a18c078ab",
+   "path": "ae65bdd7a6bee04c",
+   "wall_sampler": 174.3,
+   "n_calls": 5340187,
+   "lnZ": 236689.97905938432,
+   "n_samples": 17300,
+   "kish_ess": 4440.5,
+   "ess_per_s": 25.48,
+   "ess": {
+    "logzsol": 3104.5,
+    "afe": 2839.5,
+    "logmass": 2627.3,
+    "t50": 2208.4
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2594,
+     -0.2186,
+     -0.1787
+    ],
+    "afe": [
+     -0.0657,
+     -0.0381,
+     -0.0081
+    ],
+    "logmass": [
+     11.5687,
+     11.5956,
+     11.6206
+    ],
+    "t50": [
+     4.1285,
+     4.6747,
+     5.0525
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 17.81,
+    "afe": 16.29,
+    "logmass": 15.07,
+    "t50": 12.67
+   },
+   "check_passed": true,
+   "lnZ_err": 0.196
+  },
+  {
+   "step": 2,
+   "copy": 0,
+   "label": "h2base",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 626.4,
+   "kernel_start_s": 1.5,
+   "notebook_s": 618.0,
+   "after_kernel_s": 6.8,
+   "imports": 5.7,
+   "data": 0.2,
+   "observations": 6.4,
+   "model": 13.4,
+   "sampler cell": 589.2,
+   "predictive": 1.6,
+   "corner/sfh": 1.3,
+   "hash": "52dd845a18c078ab",
+   "path": "ae65bdd7a6bee04c",
+   "wall_sampler": 566.6,
+   "n_calls": 5340187,
+   "lnZ": 236689.97905938432,
+   "n_samples": 17300,
+   "kish_ess": 4440.5,
+   "ess_per_s": 7.84,
+   "ess": {
+    "logzsol": 3104.5,
+    "afe": 2839.5,
+    "logmass": 2627.3,
+    "t50": 2208.4
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2594,
+     -0.2186,
+     -0.1787
+    ],
+    "afe": [
+     -0.0657,
+     -0.0381,
+     -0.0081
+    ],
+    "logmass": [
+     11.5687,
+     11.5956,
+     11.6206
+    ],
+    "t50": [
+     4.1285,
+     4.6747,
+     5.0525
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 5.48,
+    "afe": 5.01,
+    "logmass": 4.64,
+    "t50": 3.9
+   },
+   "check_passed": true,
+   "lnZ_err": 0.171
+  },
+  {
+   "step": 2,
+   "copy": 1,
+   "label": "h2base",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 626.4,
+   "kernel_start_s": 1.5,
+   "notebook_s": 617.7,
+   "after_kernel_s": 7.3,
+   "imports": 5.4,
+   "data": 0.2,
+   "observations": 6.4,
+   "model": 13.6,
+   "sampler cell": 589.1,
+   "predictive": 1.6,
+   "corner/sfh": 1.3,
+   "hash": "52dd845a18c078ab",
+   "path": "ae65bdd7a6bee04c",
+   "wall_sampler": 566.3,
+   "n_calls": 5340187,
+   "lnZ": 236689.97905938432,
+   "n_samples": 17300,
+   "kish_ess": 4440.5,
+   "ess_per_s": 7.84,
+   "ess": {
+    "logzsol": 3104.5,
+    "afe": 2839.5,
+    "logmass": 2627.3,
+    "t50": 2208.4
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2594,
+     -0.2186,
+     -0.1787
+    ],
+    "afe": [
+     -0.0657,
+     -0.0381,
+     -0.0081
+    ],
+    "logmass": [
+     11.5687,
+     11.5956,
+     11.6206
+    ],
+    "t50": [
+     4.1285,
+     4.6747,
+     5.0525
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 5.48,
+    "afe": 5.01,
+    "logmass": 4.64,
+    "t50": 3.9
+   },
+   "check_passed": true,
+   "lnZ_err": 0.24
+  },
+  {
+   "step": 2,
+   "copy": 2,
+   "label": "h2base",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 625.4,
+   "kernel_start_s": 1.4,
+   "notebook_s": 617.2,
+   "after_kernel_s": 6.8,
+   "imports": 5.2,
+   "data": 0.2,
+   "observations": 6.4,
+   "model": 13.5,
+   "sampler cell": 588.9,
+   "predictive": 1.6,
+   "corner/sfh": 1.3,
+   "hash": "52dd845a18c078ab",
+   "path": "ae65bdd7a6bee04c",
+   "wall_sampler": 566.1,
+   "n_calls": 5340187,
+   "lnZ": 236689.97905938432,
+   "n_samples": 17300,
+   "kish_ess": 4440.5,
+   "ess_per_s": 7.84,
+   "ess": {
+    "logzsol": 3104.5,
+    "afe": 2839.5,
+    "logmass": 2627.3,
+    "t50": 2208.4
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2594,
+     -0.2186,
+     -0.1787
+    ],
+    "afe": [
+     -0.0657,
+     -0.0381,
+     -0.0081
+    ],
+    "logmass": [
+     11.5687,
+     11.5956,
+     11.6206
+    ],
+    "t50": [
+     4.1285,
+     4.6747,
+     5.0525
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 5.48,
+    "afe": 5.02,
+    "logmass": 4.64,
+    "t50": 3.9
+   },
+   "check_passed": true,
+   "lnZ_err": 0.242
+  },
+  {
+   "step": 2,
+   "copy": 3,
+   "label": "h2base",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 624.8,
+   "kernel_start_s": 1.3,
+   "notebook_s": 616.7,
+   "after_kernel_s": 6.8,
+   "imports": 5.1,
+   "data": 0.2,
+   "observations": 6.4,
+   "model": 13.5,
+   "sampler cell": 588.5,
+   "predictive": 1.6,
+   "corner/sfh": 1.3,
+   "hash": "52dd845a18c078ab",
+   "path": "ae65bdd7a6bee04c",
+   "wall_sampler": 565.8,
+   "n_calls": 5340187,
+   "lnZ": 236689.97905938432,
+   "n_samples": 17300,
+   "kish_ess": 4440.5,
+   "ess_per_s": 7.85,
+   "ess": {
+    "logzsol": 3104.5,
+    "afe": 2839.5,
+    "logmass": 2627.3,
+    "t50": 2208.4
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2594,
+     -0.2186,
+     -0.1787
+    ],
+    "afe": [
+     -0.0657,
+     -0.0381,
+     -0.0081
+    ],
+    "logmass": [
+     11.5687,
+     11.5956,
+     11.6206
+    ],
+    "t50": [
+     4.1285,
+     4.6747,
+     5.0525
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 5.49,
+    "afe": 5.02,
+    "logmass": 4.64,
+    "t50": 3.9
+   },
+   "check_passed": true,
+   "lnZ_err": 0.314
+  }
+ ]
+}

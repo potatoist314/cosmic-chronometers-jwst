@@ -1,0 +1,62 @@
+{
+ "run": "v2-cold3",
+ "rows": [
+  {
+   "cell": "fit/M5_238580",
+   "driver_s": 278.1,
+   "error": null,
+   "container_s": 259.9,
+   "billed_usd": 0.11756165,
+   "estimated_usd": 0.1569,
+   "container_cells": 1,
+   "mode": "alone",
+   "tuned": 721,
+   "compiled": 663,
+   "fit_start_to_sampler_end_s": 224.0,
+   "hash": "b4df7623440643d4",
+   "path": "9ac5cb5174d11394",
+   "wall_sampler": 173.5,
+   "n_calls": 5345499,
+   "lnZ": 236690.2595680767,
+   "n_samples": 17200,
+   "kish_ess": 4345.3,
+   "ess_per_s": 25.04,
+   "ess": {
+    "logzsol": 2950.8,
+    "afe": 2926.2,
+    "logmass": 2603.7,
+    "t50": 2152.1
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2541,
+     -0.2131,
+     -0.1717
+    ],
+    "afe": [
+     -0.0653,
+     -0.0375,
+     -0.0086
+    ],
+    "logmass": [
+     11.5632,
+     11.5932,
+     11.621
+    ],
+    "t50": [
+     4.0295,
+     4.6114,
+     5.0481
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 17.01,
+    "afe": 16.87,
+    "logmass": 15.01,
+    "t50": 12.4
+   },
+   "check_passed": true,
+   "lnZ_err": 0.193
+  }
+ ]
+}

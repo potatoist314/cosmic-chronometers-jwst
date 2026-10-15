@@ -1,0 +1,249 @@
+{
+ "called_at": 1792027533.790407,
+ "entered": 1792027544.4519215,
+ "finished": 1792029064.3464828,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "h2base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792027544.9569294,
+   "end": 1792027784.222588,
+   "returncode": 0,
+   "stdout": "01:25:45 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": ""
+   },
+   "concurrent": 1,
+   "start": 1792027785.065878,
+   "end": 1792028013.3189108,
+   "returncode": 0,
+   "stdout": "01:29:45 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "h2base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792028014.169056,
+   "end": 1792028014.6708388,
+   "returncode": 0,
+   "stdout": ""
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "",
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/k",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 1,
+   "start": 1792028015.5259314,
+   "end": 1792028245.7964103,
+   "returncode": 0,
+   "stdout": "01:33:35 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "h2base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792028246.6474905,
+   "end": 1792028247.6499314,
+   "returncode": 0,
+   "stdout": "COUNT files 1383 kB 97355 autotune 721 jax 0.10.2\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "",
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/k",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 1,
+   "start": 1792028248.5159323,
+   "end": 1792028449.2548738,
+   "returncode": 0,
+   "stdout": "01:37:28 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 6,
+   "copy": 0,
+   "label": "h2base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792028450.0998724,
+   "end": 1792028451.1023107,
+   "returncode": 0,
+   "stdout": "COUNT files 1383 kB 97355 autotune 721 jax 0.10.2\n"
+  },
+  {
+   "index": 7,
+   "label": "mps-start",
+   "returncode": 0,
+   "stdout": "",
+   "stderr": "",
+   "start": 1792028451.6397943,
+   "end": 1792028451.6397953
+  },
+  {
+   "index": 7,
+   "copy": 0,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "",
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/k",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 4,
+   "start": 1792028451.9609053,
+   "end": 1792029061.1427174,
+   "returncode": 0,
+   "stdout": "01:40:52 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 7,
+   "copy": 1,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "",
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/k",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 4,
+   "start": 1792028452.3660977,
+   "end": 1792029061.6429563,
+   "returncode": 0,
+   "stdout": "01:40:52 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 7,
+   "copy": 2,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "",
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/k",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 4,
+   "start": 1792028452.8594375,
+   "end": 1792029061.1427352,
+   "returncode": 0,
+   "stdout": "01:40:53 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 7,
+   "copy": 3,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "",
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/k",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 4,
+   "start": 1792028453.4449298,
+   "end": 1792029061.1427433,
+   "returncode": 0,
+   "stdout": "01:40:53 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 8,
+   "copy": 0,
+   "label": "h2base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792029062.7630577,
+   "end": 1792029063.7666643,
+   "returncode": 0,
+   "stdout": "COUNT files 1383 kB 97355 autotune 721 jax 0.10.2\n"
+  }
+ ],
+ "returned": 1792029067.193697,
+ "plan": [
+  {
+   "label": "h2base"
+  },
+  {
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": ""
+   }
+  },
+  {
+   "label": "h2base",
+   "argv": [
+    "sh",
+    "-c",
+    "mkdir -p /tmp/k"
+   ]
+  },
+  {
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "",
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/k",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   }
+  },
+  {
+   "label": "h2base",
+   "argv": [
+    "sh",
+    "-c",
+    "echo COUNT files $(find /tmp/k -type f | wc -l) kB $(du -sk /tmp/k | cut -f1) autotune $(ls /tmp/k/xla_gpu_per_fusion_autotune_cache_dir 2>/dev/null | wc -l) jax $(/opt/ceridwen/bin/python -c 'import jax; print(jax.__version__)')"
+   ]
+  },
+  {
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "",
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/k",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   }
+  },
+  {
+   "label": "h2base",
+   "argv": [
+    "sh",
+    "-c",
+    "echo COUNT files $(find /tmp/k -type f | wc -l) kB $(du -sk /tmp/k | cut -f1) autotune $(ls /tmp/k/xla_gpu_per_fusion_autotune_cache_dir 2>/dev/null | wc -l) jax $(/opt/ceridwen/bin/python -c 'import jax; print(jax.__version__)')"
+   ]
+  },
+  {
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "",
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/k",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 4,
+   "mps": true
+  },
+  {
+   "label": "h2base",
+   "argv": [
+    "sh",
+    "-c",
+    "echo COUNT files $(find /tmp/k -type f | wc -l) kB $(du -sk /tmp/k | cut -f1) autotune $(ls /tmp/k/xla_gpu_per_fusion_autotune_cache_dir 2>/dev/null | wc -l) jax $(/opt/ceridwen/bin/python -c 'import jax; print(jax.__version__)')"
+   ]
+  }
+ ],
+ "gpu_requested": "L40S",
+ "cpu": 2.0,
+ "memory_gib": 16
+}

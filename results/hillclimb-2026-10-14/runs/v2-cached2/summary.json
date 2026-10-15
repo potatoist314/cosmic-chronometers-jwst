@@ -1,0 +1,62 @@
+{
+ "run": "v2-cached2",
+ "rows": [
+  {
+   "cell": "fit/M5_238580",
+   "driver_s": 252.5,
+   "error": null,
+   "container_s": 231.5,
+   "billed_usd": 0.12204286,
+   "estimated_usd": 0.1398,
+   "container_cells": 1,
+   "mode": "cached",
+   "tuned": 0,
+   "compiled": 0,
+   "fit_start_to_sampler_end_s": 199.1,
+   "hash": "66d1ff505004ca5d",
+   "path": "9ac5cb5174d11394",
+   "wall_sampler": 173.1,
+   "n_calls": 5345499,
+   "lnZ": 236690.2595680767,
+   "n_samples": 17200,
+   "kish_ess": 4345.3,
+   "ess_per_s": 25.1,
+   "ess": {
+    "logzsol": 2950.8,
+    "afe": 2926.2,
+    "logmass": 2603.7,
+    "t50": 2152.1
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2541,
+     -0.2131,
+     -0.1717
+    ],
+    "afe": [
+     -0.0653,
+     -0.0375,
+     -0.0086
+    ],
+    "logmass": [
+     11.5632,
+     11.5932,
+     11.621
+    ],
+    "t50": [
+     4.0295,
+     4.6114,
+     5.0481
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 17.05,
+    "afe": 16.9,
+    "logmass": 15.04,
+    "t50": 12.43
+   },
+   "check_passed": true,
+   "lnZ_err": 0.276
+  }
+ ]
+}
