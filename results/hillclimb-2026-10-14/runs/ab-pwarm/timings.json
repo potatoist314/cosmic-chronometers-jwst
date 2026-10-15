@@ -1,0 +1,99 @@
+{
+ "called_at": 1792019206.7914822,
+ "entered": 1792020292.0410805,
+ "finished": 1792021727.9287405,
+ "gpu": "NVIDIA L40S, 580.95.05, 46068 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "fset",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792020292.4694886,
+   "end": 1792020540.7410147,
+   "returncode": 0,
+   "stdout": "23:24:52 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "pwarm",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792020541.6190677,
+   "end": 1792020775.364388,
+   "returncode": 0,
+   "stdout": "23:29:01 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "pwarm",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792020776.1227467,
+   "end": 1792021006.8802695,
+   "returncode": 0,
+   "stdout": "23:32:56 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "fset",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792021007.6398718,
+   "end": 1792021252.9008737,
+   "returncode": 0,
+   "stdout": "23:36:47 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "fset",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792021253.6583884,
+   "end": 1792021496.4212034,
+   "returncode": 0,
+   "stdout": "23:40:53 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "pwarm",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792021497.1762178,
+   "end": 1792021727.4140298,
+   "returncode": 0,
+   "stdout": "23:44:57 fitting fit/M5_238580, seed 20260832\n"
+  }
+ ],
+ "returned": 1792021731.763804,
+ "plan": [
+  {
+   "label": "fset"
+  },
+  {
+   "label": "pwarm"
+  },
+  {
+   "label": "pwarm"
+  },
+  {
+   "label": "fset"
+  },
+  {
+   "label": "fset"
+  },
+  {
+   "label": "pwarm"
+  }
+ ],
+ "gpu_requested": "L40S",
+ "cpu": 2.0,
+ "memory_gib": 16
+}

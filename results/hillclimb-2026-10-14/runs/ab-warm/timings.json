@@ -1,0 +1,152 @@
+{
+ "called_at": 1792014781.673703,
+ "entered": 1792014794.6111734,
+ "finished": 1792017670.0917704,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu": 2.0,
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792014795.1208558,
+   "end": 1792015064.91222,
+   "returncode": 0,
+   "stdout": "21:53:15 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "cand",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792015066.0059552,
+   "end": 1792015325.833273,
+   "returncode": 0,
+   "stdout": "21:57:46 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "cand",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792015326.6824944,
+   "end": 1792015759.1940875,
+   "returncode": 0,
+   "stdout": "22:02:06 fitting fit/M4_107643 (seed 20260832), fit/M5_238580 (seed 20260832) in one kernel\n[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.\n"
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792015760.0621023,
+   "end": 1792016023.352868,
+   "returncode": 0,
+   "stdout": "22:09:20 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "cand",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792016024.1999965,
+   "end": 1792016284.0003521,
+   "returncode": 0,
+   "stdout": "22:13:44 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "cand",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792016284.853548,
+   "end": 1792016706.3402882,
+   "returncode": 0,
+   "stdout": "22:18:04 fitting fit/M4_107643 (seed 20260832), fit/M5_238580 (seed 20260832) in one kernel\n[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.\n"
+  },
+  {
+   "index": 6,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792016707.2075145,
+   "end": 1792016971.5321853,
+   "returncode": 0,
+   "stdout": "22:25:07 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 7,
+   "copy": 0,
+   "label": "cand",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792016972.3823178,
+   "end": 1792017236.6888099,
+   "returncode": 0,
+   "stdout": "22:29:32 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 8,
+   "copy": 0,
+   "label": "cand",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792017237.5648398,
+   "end": 1792017669.5659063,
+   "returncode": 0,
+   "stdout": "22:33:57 fitting fit/M4_107643 (seed 20260832), fit/M5_238580 (seed 20260832) in one kernel\n[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.\n"
+  }
+ ],
+ "returned": 1792017673.476573,
+ "plan": [
+  {
+   "label": "base"
+  },
+  {
+   "label": "cand"
+  },
+  {
+   "label": "cand",
+   "cells": [
+    "M4_107643",
+    "M5_238580"
+   ]
+  },
+  {
+   "label": "base"
+  },
+  {
+   "label": "cand"
+  },
+  {
+   "label": "cand",
+   "cells": [
+    "M4_107643",
+    "M5_238580"
+   ]
+  },
+  {
+   "label": "base"
+  },
+  {
+   "label": "cand"
+  },
+  {
+   "label": "cand",
+   "cells": [
+    "M4_107643",
+    "M5_238580"
+   ]
+  }
+ ],
+ "gpu_requested": "L40S",
+ "memory_gib": 16
+}

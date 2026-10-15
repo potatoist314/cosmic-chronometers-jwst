@@ -250,7 +250,23 @@ def remote(config, output):
         import run_ceridwen_vast_multi_gpu as worker
     # Keep the controller off the GPU, which belongs to the notebook kernel.
     os.environ['JAX_PLATFORMS'] = 'cpu'
-    for cell in json.loads(config.read_text()):
+    cells = json.loads(config.read_text())
+    if len(cells) > 1:
+        # Several cells share one notebook kernel; results are those of one kernel per cell.
+        os.environ.update(CERIDWEN_SAMPLER_ONLY='0', CERIDWEN_PLOTS='0')
+        fits = [{'target': cell['target_metadata'], 'settings_override': json.dumps(cell['settings']),
+                 'priors_override': json.dumps(cell['priors']),
+                 'result_dir': output / cell['arm'] / '{object_id}-{spect_id}'.format(**cell['target_metadata'])}
+                for cell in cells]
+        engine.log('fitting ' + ', '.join(f"{c['name']} (seed {c['seed']})" for c in cells) + ' in one kernel')
+        worker._execute_targets(fits)
+        for cell, fit in zip(cells, fits):
+            try:
+                validate_result(fit['result_dir'])
+            except (OSError, KeyError, ValueError) as error:
+                raise RuntimeError(f"fit failed: {cell['name']}") from error
+        return 0
+    for cell in cells:
         target = cell['target_metadata']
         directory = output / cell['arm'] / f"{target['object_id']}-{target['spect_id']}"
         # Figures render nothing on the box (Agg backend) and are rebuilt locally by

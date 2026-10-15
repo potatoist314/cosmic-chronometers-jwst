@@ -1,0 +1,202 @@
+{
+ "called_at": 1792022398.642924,
+ "entered": 1792022496.3752594,
+ "finished": 1792024824.1820698,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   },
+   "concurrent": 1,
+   "start": 1792022498.3703704,
+   "end": 1792022753.7095118,
+   "returncode": 0,
+   "stdout": "00:01:38 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   },
+   "concurrent": 1,
+   "start": 1792022754.5505385,
+   "end": 1792022993.8737295,
+   "returncode": 0,
+   "stdout": "00:05:54 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "final",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792022994.722014,
+   "end": 1792023236.01038,
+   "returncode": 0,
+   "stdout": "00:09:54 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   },
+   "concurrent": 1,
+   "start": 1792023236.851693,
+   "end": 1792023464.1016536,
+   "returncode": 0,
+   "stdout": "00:13:56 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "final",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792023464.942566,
+   "end": 1792023705.2216556,
+   "returncode": 0,
+   "stdout": "00:17:45 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   },
+   "concurrent": 1,
+   "start": 1792023706.0666769,
+   "end": 1792023934.3290763,
+   "returncode": 0,
+   "stdout": "00:21:46 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 6,
+   "copy": 0,
+   "label": "final",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792023935.178377,
+   "end": 1792024171.9343157,
+   "returncode": 0,
+   "stdout": "00:25:35 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 7,
+   "label": "mps-start",
+   "returncode": 0,
+   "stdout": "",
+   "stderr": "",
+   "start": 1792024172.4815044,
+   "end": 1792024172.481505
+  },
+  {
+   "index": 7,
+   "copy": 0,
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   },
+   "concurrent": 4,
+   "start": 1792024172.8061476,
+   "end": 1792024821.5649765,
+   "returncode": 0,
+   "stdout": "00:29:32 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 7,
+   "copy": 1,
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   },
+   "concurrent": 4,
+   "start": 1792024173.210566,
+   "end": 1792024822.065571,
+   "returncode": 0,
+   "stdout": "00:29:33 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 7,
+   "copy": 2,
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   },
+   "concurrent": 4,
+   "start": 1792024173.7092044,
+   "end": 1792024822.5659764,
+   "returncode": 0,
+   "stdout": "00:29:33 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 7,
+   "copy": 3,
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   },
+   "concurrent": 4,
+   "start": 1792024174.3050506,
+   "end": 1792024823.5666049,
+   "returncode": 0,
+   "stdout": "00:29:34 fitting fit/M5_238580, seed 20260832\n"
+  }
+ ],
+ "returned": 1792024827.241714,
+ "plan": [
+  {
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   }
+  },
+  {
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   }
+  },
+  {
+   "label": "final"
+  },
+  {
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   }
+  },
+  {
+   "label": "final"
+  },
+  {
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   }
+  },
+  {
+   "label": "final"
+  },
+  {
+   "label": "final",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_per_fusion_autotune_cache_dir=/tmp/atc"
+   },
+   "concurrent": 4,
+   "mps": true
+  }
+ ],
+ "gpu_requested": "L40S",
+ "cpu": 2.0,
+ "memory_gib": 16
+}

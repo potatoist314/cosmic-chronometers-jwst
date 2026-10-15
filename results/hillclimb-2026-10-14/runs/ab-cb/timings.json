@@ -1,0 +1,113 @@
+{
+ "called_at": 1792014788.401322,
+ "entered": 1792014798.6625745,
+ "finished": 1792016362.7589784,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu": 2.0,
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792014799.15777,
+   "end": 1792015066.4873562,
+   "returncode": 0,
+   "stdout": "21:53:19 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": ""
+   },
+   "concurrent": 1,
+   "start": 1792015067.333195,
+   "end": 1792015320.6323652,
+   "returncode": 0,
+   "stdout": "21:57:47 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792015321.4680972,
+   "end": 1792015582.278024,
+   "returncode": 0,
+   "stdout": "22:02:01 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": ""
+   },
+   "concurrent": 1,
+   "start": 1792015583.127975,
+   "end": 1792015837.4385438,
+   "returncode": 0,
+   "stdout": "22:06:23 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792015838.2786486,
+   "end": 1792016098.5947073,
+   "returncode": 0,
+   "stdout": "22:10:38 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": ""
+   },
+   "concurrent": 1,
+   "start": 1792016099.4383087,
+   "end": 1792016362.2381594,
+   "returncode": 0,
+   "stdout": "22:14:59 fitting fit/M5_238580, seed 20260832\n"
+  }
+ ],
+ "returned": 1792016367.449568,
+ "plan": [
+  {
+   "label": "base"
+  },
+  {
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": ""
+   }
+  },
+  {
+   "label": "base"
+  },
+  {
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": ""
+   }
+  },
+  {
+   "label": "base"
+  },
+  {
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": ""
+   }
+  }
+ ],
+ "gpu_requested": "L40S",
+ "memory_gib": 16
+}

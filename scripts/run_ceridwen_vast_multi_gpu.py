@@ -319,6 +319,52 @@ def _execute_target(
         ).returncode
 
 
+# The notebook's first code cell reads these per fit; the rest of the worker
+# environment is the same for every target.
+PER_FIT_ENVIRONMENT = (
+    "CERIDWEN_RANDOM_SEED",
+    "CERIDWEN_RESULT_DIR",
+    "CERIDWEN_TARGET_ID",
+    "CERIDWEN_OBJECT_ID",
+    "CERIDWEN_MANIFEST_INDEX",
+)
+
+
+def _execute_targets(fits: list[dict], mem_fraction: float | None = None) -> int:
+    """Fit targets one after another in one notebook kernel; stop at the first failure.
+
+    fits: {"target", "result_dir", "settings_override", "priors_override"} each. The
+    kernel keeps its imports, the read-once COSMOS catalogues and the jit cache
+    between fits; each fit runs a fresh copy of the notebook with its own target
+    variables. Each fit's cell output goes to its execution.log; the kernel's own
+    stderr goes to this process's stdout.
+    """
+    import tempfile
+
+    batch = []
+    for fit in fits:
+        target, result_dir = fit["target"], Path(fit["result_dir"])
+        result_dir.mkdir(parents=True, exist_ok=True)
+        environment = _worker_environment(target, result_dir, mem_fraction)
+        batch.append({
+            "notebook": str(result_dir / f"{target['spect_id']}_executed.ipynb"),
+            "log": str(result_dir / "execution.log"),
+            "environment": {name: environment[name] for name in PER_FIT_ENVIRONMENT},
+            "settings_override": fit.get("settings_override"),
+            "priors_override": fit.get("priors_override"),
+        })
+    first = fits[0]
+    with tempfile.NamedTemporaryFile("w", suffix=".json") as handle:
+        json.dump(batch, handle)
+        handle.flush()
+        return subprocess.run(
+            [sys.executable, str(Path(__file__).resolve()), "--worker-batch", handle.name],
+            cwd=PROJECT_ROOT,
+            env=_worker_environment(first["target"], Path(first["result_dir"]), mem_fraction),
+            text=True,
+        ).returncode
+
+
 # The fit notebook's sampler call; a sampler-only run keeps everything up to and
 # including the cell that holds it (that cell also writes ceridwen_result.h5).
 SAMPLER_CELL_MARKER = "joint_result = run_sampler("
@@ -338,8 +384,29 @@ def sampler_only() -> bool:
     return os.environ.get("CERIDWEN_SAMPLER_ONLY") == "1"
 
 
-def _worker(output_notebook: Path) -> int:
+def _fit_notebook(override: str | None, priors_override: str | None):
     import nbformat
+
+    document = nbformat.read(NOTEBOOK_PATH, as_version=4)
+    # An arm changes SETTINGS entries in the executed copy only; the template keeps its defaults.
+    if override:
+        settings_cell = next(c for c in document.cells
+                             if c.cell_type == "code" and "SETTINGS = {" in c.source)
+        settings_cell.source += (
+            f"\nSETTINGS.update({json.loads(override)!r})  # arm override (CERIDWEN_SETTINGS_OVERRIDE)\n"
+        )
+    # CERIDWEN_PRIORS_OVERRIDE maps a PRIORS key to a prior expression, e.g. "Uniform(low=-3.0, high=0.4)".
+    if priors_override:
+        settings_cell = next(c for c in document.cells
+                             if c.cell_type == "code" and "PRIORS = {" in c.source)
+        for name, expression in json.loads(priors_override).items():
+            settings_cell.source += f"\nPRIORS[{name!r}] = {expression}  # arm override (CERIDWEN_PRIORS_OVERRIDE)\n"
+    if sampler_only():
+        truncate_to_sampler(document)
+    return document
+
+
+def _streaming_client_class():
     from nbclient import NotebookClient
 
     class StreamingNotebookClient(NotebookClient):
@@ -348,25 +415,15 @@ def _worker(output_notebook: Path) -> int:
                 print(msg["content"]["text"], end="", flush=True)
             return super().process_message(msg, cell, cell_index)
 
-    document = nbformat.read(NOTEBOOK_PATH, as_version=4)
-    # An arm changes SETTINGS entries in the executed copy only; the template keeps its defaults.
-    override = os.environ.get("CERIDWEN_SETTINGS_OVERRIDE")
-    if override:
-        settings_cell = next(c for c in document.cells
-                             if c.cell_type == "code" and "SETTINGS = {" in c.source)
-        settings_cell.source += (
-            f"\nSETTINGS.update({json.loads(override)!r})  # arm override (CERIDWEN_SETTINGS_OVERRIDE)\n"
-        )
-    # CERIDWEN_PRIORS_OVERRIDE maps a PRIORS key to a prior expression, e.g. "Uniform(low=-3.0, high=0.4)".
-    priors_override = os.environ.get("CERIDWEN_PRIORS_OVERRIDE")
-    if priors_override:
-        settings_cell = next(c for c in document.cells
-                             if c.cell_type == "code" and "PRIORS = {" in c.source)
-        for name, expression in json.loads(priors_override).items():
-            settings_cell.source += f"\nPRIORS[{name!r}] = {expression}  # arm override (CERIDWEN_PRIORS_OVERRIDE)\n"
-    if sampler_only():
-        truncate_to_sampler(document)
-    client = StreamingNotebookClient(
+    return StreamingNotebookClient
+
+
+def _worker(output_notebook: Path) -> int:
+    import nbformat
+
+    document = _fit_notebook(os.environ.get("CERIDWEN_SETTINGS_OVERRIDE"),
+                             os.environ.get("CERIDWEN_PRIORS_OVERRIDE"))
+    client = _streaming_client_class()(
         document,
         timeout=None,
         kernel_name="ceridwen",
@@ -377,6 +434,41 @@ def _worker(output_notebook: Path) -> int:
     finally:
         output_notebook.parent.mkdir(parents=True, exist_ok=True)
         nbformat.write(document, output_notebook)
+    return 0
+
+
+def _worker_batch(batch_path: Path) -> int:
+    """Execute each fit of an _execute_targets batch in one kernel, in order."""
+    import contextlib
+
+    import nbformat
+
+    fits = json.loads(batch_path.read_text())
+    client = _streaming_client_class()(
+        nbformat.v4.new_notebook(),
+        timeout=None,
+        kernel_name="ceridwen",
+        resources={"metadata": {"path": str(PROJECT_ROOT)}},
+    )
+    with client.setup_kernel():
+        # As NotebookClient.execute records it in each executed notebook.
+        language_info = client.wait_for_reply(client.kc.kernel_info())["content"]["language_info"]
+        for fit in fits:
+            document = _fit_notebook(fit["settings_override"], fit["priors_override"])
+            document.metadata["language_info"] = language_info
+            client.nb = document
+            client.reset_execution_trackers()
+            with open(fit["log"], "a", encoding="utf-8") as log, contextlib.redirect_stdout(log):
+                print(f"\n[{_utc_now()}] starting fixed-seed attempt", flush=True)
+                reply = client.kc.execute(
+                    f"import os; os.environ.update({fit['environment']!r})", silent=True
+                )
+                client.wait_for_reply(reply)
+                try:
+                    for index, cell in enumerate(document.cells):
+                        client.execute_cell(cell, index)
+                finally:
+                    nbformat.write(document, fit["notebook"])
     return 0
 
 
@@ -647,6 +739,7 @@ def _parser() -> argparse.ArgumentParser:
         description="Run one deterministic Ceridwen DR2 shard on one Vast GPU."
     )
     parser.add_argument("--worker-output", type=Path, help=argparse.SUPPRESS)
+    parser.add_argument("--worker-batch", type=Path, help=argparse.SUPPRESS)
     parser.add_argument("--targets-file", type=Path)
     parser.add_argument("--write-targets-file", type=Path)
     parser.add_argument("--shard-index", type=int, default=0)
@@ -699,6 +792,8 @@ def main() -> int:
     args = _parser().parse_args()
     if args.worker_output is not None:
         return _worker(args.worker_output)
+    if args.worker_batch is not None:
+        return _worker_batch(args.worker_batch)
     if args.monitor:
         return _monitor(args)
     return _run(args)

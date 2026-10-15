@@ -1,0 +1,136 @@
+[
+ {
+  "name": "fit/M5_238580",
+  "arm": "fit",
+  "target": "M5_238580",
+  "seed": 20260832,
+  "settings": {
+   "photometry": "cosmos2025",
+   "fix_afe": null,
+   "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+   "photometry_floor": 0.05,
+   "emission_lines": [
+    3934.77,
+    3966.6,
+    3973.3,
+    4227.92
+   ],
+   "emission_line_marginalisation": true,
+   "telluric_air": [
+    7590.0,
+    7660.0
+   ],
+   "sfh_nbins": 14,
+   "calibration_order": 10,
+   "calibration_prior_sigma": 0.1,
+   "calibration_constant_prior_sigma": 0.3,
+   "calibration_fit_constant": true,
+   "zred_half_width": 0.1,
+   "sigma_clip": 3.0,
+   "birth_cloud_dust": true,
+   "metallicity_evolution": true,
+   "sampler": {
+    "num_live": 500,
+    "num_inner_steps": 65,
+    "num_delete": 100,
+    "logZ_tol": -5.0
+   },
+   "sampler_quick": {
+    "num_live": 16,
+    "num_inner_steps": 2,
+    "num_delete": 8,
+    "logZ_tol": 10000.0
+   }
+  },
+  "priors": {
+   "logmass": "Uniform(low=8.0, high=13.0)",
+   "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+   "logzsol": "'Uniform over the grid'",
+   "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+   "afe": "'Uniform over the grid'",
+   "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+   "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+   "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+   "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+   "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+   "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+   "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+  },
+  "target_metadata": {
+   "manifest_index": 80,
+   "object_id": 238580,
+   "spect_id": "M5_238580",
+   "sn": 24.299999237060547,
+   "shard_index": 0,
+   "seed": 20260832,
+   "filename": "legac_M5_238580_v2.0.fits"
+  }
+ },
+ {
+  "name": "fit/M4_107643",
+  "arm": "fit",
+  "target": "M4_107643",
+  "seed": 20260832,
+  "settings": {
+   "photometry": "cosmos2025",
+   "fix_afe": null,
+   "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+   "photometry_floor": 0.05,
+   "emission_lines": [
+    3934.77,
+    3966.6,
+    3973.3,
+    4227.92
+   ],
+   "emission_line_marginalisation": true,
+   "telluric_air": [
+    7590.0,
+    7660.0
+   ],
+   "sfh_nbins": 14,
+   "calibration_order": 10,
+   "calibration_prior_sigma": 0.1,
+   "calibration_constant_prior_sigma": 0.3,
+   "calibration_fit_constant": true,
+   "zred_half_width": 0.1,
+   "sigma_clip": 3.0,
+   "birth_cloud_dust": true,
+   "metallicity_evolution": true,
+   "sampler": {
+    "num_live": 500,
+    "num_inner_steps": 65,
+    "num_delete": 100,
+    "logZ_tol": -5.0
+   },
+   "sampler_quick": {
+    "num_live": 16,
+    "num_inner_steps": 2,
+    "num_delete": 8,
+    "logZ_tol": 10000.0
+   }
+  },
+  "priors": {
+   "logmass": "Uniform(low=8.0, high=13.0)",
+   "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+   "logzsol": "'Uniform over the grid'",
+   "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+   "afe": "'Uniform over the grid'",
+   "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+   "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+   "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+   "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+   "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+   "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+   "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+  },
+  "target_metadata": {
+   "manifest_index": 98,
+   "object_id": 107643,
+   "spect_id": "M4_107643",
+   "sn": 21.0,
+   "shard_index": 0,
+   "seed": 20260832,
+   "filename": "legac_M4_107643_v2.0.fits"
+  }
+ }
+]

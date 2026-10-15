@@ -148,6 +148,54 @@ def test_remote_passes_configuration_and_exact_seed_to_existing_worker(tmp_path,
     assert calls == [(cell['target_metadata'], tmp_path / 'arm/1-target')]
 
 
+def test_remote_fits_several_cells_in_one_kernel_and_validates_each(tmp_path, monkeypatch):
+    from scripts import run_ceridwen_vast_multi_gpu as worker
+    cells = [{'name': f'arm/t{i}', 'arm': 'arm', 'seed': 7, 'target': f't{i}',
+              'target_metadata': {'object_id': i, 'spect_id': f't{i}', 'seed': 7},
+              'settings': {'ssp_grid': '/grid/123.h5', 'n': i}, 'priors': {'dust': f'Uniform(0, {i})'}}
+             for i in (1, 2)]
+    config = tmp_path / 'config.json'
+    config.write_text(json.dumps(cells))
+    batches, validated = [], []
+    monkeypatch.setattr(worker, '_execute_targets', lambda fits: batches.append(fits) or 0)
+    monkeypatch.setattr(worker, '_execute_target', lambda *a: pytest.fail('one kernel per cell'))
+    monkeypatch.setattr(exp, 'validate_result', validated.append)
+    for name in ('CERIDWEN_SAMPLER_ONLY', 'CERIDWEN_PLOTS', 'JAX_PLATFORMS'):
+        monkeypatch.setenv(name, '')
+    assert exp.remote(config, tmp_path) == 0
+    assert [(f['target'], f['result_dir'], json.loads(f['settings_override']), json.loads(f['priors_override']))
+            for f in batches[0]] == [(c['target_metadata'], tmp_path / f"arm/{i}-t{i}", c['settings'], c['priors'])
+                                     for i, c in zip((1, 2), cells)]
+    assert validated == [tmp_path / 'arm/1-t1', tmp_path / 'arm/2-t2']
+
+    def second_fails(directory):
+        if directory.name == '2-t2':
+            raise ValueError('incomplete derived outputs')
+    monkeypatch.setattr(exp, 'validate_result', second_fails)
+    with pytest.raises(RuntimeError, match='fit failed: arm/t2'):
+        exp.remote(config, tmp_path)
+
+
+def test_batch_worker_gets_each_fits_target_environment(tmp_path, monkeypatch):
+    from scripts import run_ceridwen_vast_multi_gpu as worker
+    fits = [{'target': {'spect_id': f't{i}', 'object_id': i, 'seed': 10 + i, 'manifest_index': i},
+             'result_dir': tmp_path / f'{i}-t{i}', 'settings_override': '{}', 'priors_override': None}
+            for i in (1, 2)]
+    seen = {}
+    def run(command, env, **kw):
+        seen['batch'] = json.loads(open(command[-1]).read())
+        seen['env'] = env
+        return SimpleNamespace(returncode=0)
+    monkeypatch.setattr(worker.subprocess, 'run', run)
+    assert worker._execute_targets(fits) == 0
+    assert [b['environment'] for b in seen['batch']] == [
+        {'CERIDWEN_RANDOM_SEED': str(10 + i), 'CERIDWEN_RESULT_DIR': str(tmp_path / f'{i}-t{i}'),
+         'CERIDWEN_TARGET_ID': f't{i}', 'CERIDWEN_OBJECT_ID': str(i), 'CERIDWEN_MANIFEST_INDEX': str(i)}
+        for i in (1, 2)]
+    assert [b['notebook'] for b in seen['batch']] == [str(tmp_path / f'{i}-t{i}/t{i}_executed.ipynb') for i in (1, 2)]
+    assert seen['env']['JAX_PLATFORMS'] == 'cuda' and seen['env']['CERIDWEN_TARGET_ID'] == 't1'
+
+
 def test_preflight_freezes_every_grid_and_target_before_rental(tmp_path, monkeypatch):
     config = tmp_path / 'experiment.json'
     config.write_text('{}')

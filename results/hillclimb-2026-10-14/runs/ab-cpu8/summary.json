@@ -1,0 +1,379 @@
+{
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cold_start_s": 1092.6,
+ "container_s": 1729.8,
+ "rows": [
+  {
+   "step": 0,
+   "copy": 0,
+   "label": "head",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 314.3,
+   "kernel_start_s": 1.5,
+   "notebook_s": 308.1,
+   "after_kernel_s": 4.8,
+   "imports": 6.8,
+   "data": 0.2,
+   "observations": 12.9,
+   "model": 17.8,
+   "sampler cell": 238.9,
+   "predictive": 30.1,
+   "corner/sfh": 1.3,
+   "hash": "1c31916dc68fbc80",
+   "path": "9ac5cb5174d11394",
+   "wall_sampler": 178.1,
+   "n_calls": 5345499,
+   "lnZ": 236690.2595680767,
+   "n_samples": 17200,
+   "kish_ess": 4345.3,
+   "ess_per_s": 24.4,
+   "ess": {
+    "logzsol": 2950.8,
+    "afe": 2926.2,
+    "logmass": 2603.7,
+    "t50": 2152.1
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2541,
+     -0.2131,
+     -0.1717
+    ],
+    "afe": [
+     -0.0653,
+     -0.0375,
+     -0.0086
+    ],
+    "logmass": [
+     11.5632,
+     11.5932,
+     11.621
+    ],
+    "t50": [
+     4.0295,
+     4.6114,
+     5.0481
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 16.57,
+    "afe": 16.43,
+    "logmass": 14.62,
+    "t50": 12.08
+   },
+   "check_passed": true,
+   "lnZ_err": 0.28
+  },
+  {
+   "step": 1,
+   "copy": 0,
+   "label": "head",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 261.3,
+   "kernel_start_s": 1.1,
+   "notebook_s": 255.2,
+   "after_kernel_s": 5.1,
+   "imports": 4.5,
+   "data": 0.2,
+   "observations": 12.9,
+   "model": 16.0,
+   "sampler cell": 203.0,
+   "predictive": 17.3,
+   "corner/sfh": 1.2,
+   "hash": "e70201cb255112c2",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 179.6,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 24.73,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 14.58,
+    "afe": 15.75,
+    "logmass": 12.13,
+    "t50": 10.05
+   },
+   "check_passed": true,
+   "lnZ_err": 0.243
+  },
+  {
+   "step": 2,
+   "copy": 0,
+   "label": "head",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 311.8,
+   "kernel_start_s": 1.1,
+   "notebook_s": 306.2,
+   "after_kernel_s": 4.6,
+   "imports": 4.5,
+   "data": 0.2,
+   "observations": 12.8,
+   "model": 17.5,
+   "sampler cell": 240.2,
+   "predictive": 29.7,
+   "corner/sfh": 1.3,
+   "hash": "1c31916dc68fbc80",
+   "path": "9ac5cb5174d11394",
+   "wall_sampler": 178.8,
+   "n_calls": 5345499,
+   "lnZ": 236690.2595680767,
+   "n_samples": 17200,
+   "kish_ess": 4345.3,
+   "ess_per_s": 24.3,
+   "ess": {
+    "logzsol": 2950.8,
+    "afe": 2926.2,
+    "logmass": 2603.7,
+    "t50": 2152.1
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2541,
+     -0.2131,
+     -0.1717
+    ],
+    "afe": [
+     -0.0653,
+     -0.0375,
+     -0.0086
+    ],
+    "logmass": [
+     11.5632,
+     11.5932,
+     11.621
+    ],
+    "t50": [
+     4.0295,
+     4.6114,
+     5.0481
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 16.5,
+    "afe": 16.37,
+    "logmass": 14.56,
+    "t50": 12.04
+   },
+   "check_passed": true,
+   "lnZ_err": 0.254
+  },
+  {
+   "step": 3,
+   "copy": 0,
+   "label": "head",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 260.3,
+   "kernel_start_s": 1.1,
+   "notebook_s": 254.1,
+   "after_kernel_s": 5.2,
+   "imports": 4.6,
+   "data": 0.2,
+   "observations": 13.1,
+   "model": 16.4,
+   "sampler cell": 201.1,
+   "predictive": 17.4,
+   "corner/sfh": 1.2,
+   "hash": "4083cf49d46b27a3",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 179.2,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 24.79,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 14.62,
+    "afe": 15.79,
+    "logmass": 12.16,
+    "t50": 10.07
+   },
+   "check_passed": true,
+   "lnZ_err": 0.235
+  },
+  {
+   "step": 4,
+   "copy": 0,
+   "label": "head",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 315.3,
+   "kernel_start_s": 1.1,
+   "notebook_s": 309.0,
+   "after_kernel_s": 5.2,
+   "imports": 4.7,
+   "data": 0.2,
+   "observations": 12.9,
+   "model": 17.2,
+   "sampler cell": 241.3,
+   "predictive": 31.2,
+   "corner/sfh": 1.5,
+   "hash": "b7be40bab5755a51",
+   "path": "9ac5cb5174d11394",
+   "wall_sampler": 179.8,
+   "n_calls": 5345499,
+   "lnZ": 236690.2595680767,
+   "n_samples": 17200,
+   "kish_ess": 4345.3,
+   "ess_per_s": 24.17,
+   "ess": {
+    "logzsol": 2950.8,
+    "afe": 2926.2,
+    "logmass": 2603.7,
+    "t50": 2152.1
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2541,
+     -0.2131,
+     -0.1717
+    ],
+    "afe": [
+     -0.0653,
+     -0.0375,
+     -0.0086
+    ],
+    "logmass": [
+     11.5632,
+     11.5932,
+     11.621
+    ],
+    "t50": [
+     4.0295,
+     4.6114,
+     5.0481
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 16.41,
+    "afe": 16.27,
+    "logmass": 14.48,
+    "t50": 11.97
+   },
+   "check_passed": true,
+   "lnZ_err": 0.202
+  },
+  {
+   "step": 5,
+   "copy": 0,
+   "label": "head",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 261.3,
+   "kernel_start_s": 1.1,
+   "notebook_s": 254.5,
+   "after_kernel_s": 5.6,
+   "imports": 5.0,
+   "data": 0.2,
+   "observations": 13.3,
+   "model": 16.0,
+   "sampler cell": 201.4,
+   "predictive": 17.2,
+   "corner/sfh": 1.3,
+   "hash": "12c674f728ba9f49",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 178.8,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 24.85,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 14.65,
+    "afe": 15.82,
+    "logmass": 12.19,
+    "t50": 10.09
+   },
+   "check_passed": true,
+   "lnZ_err": 0.223
+  }
+ ]
+}
