@@ -3,7 +3,7 @@
 - Every Modal datacentre GPU type was measured on one build (`ce9752c`): the same M1_210210 fit and seed, 4 containers × 2 fits per card, 88 fits.
 - Sampling speed relative to L40S: B200 3.5×, H200 3.0×, H100 2.9×, A100-80GB 1.9×, A100-40GB 1.8×, RTX PRO 6000 1.35×, B300 1.0×, A10 0.42×, L4 0.39×, T4 0.12×. Container-to-container spread is 1–12% (Vast was 66%).
 - **Cheapest card per fit: A100-40GB** ($0.063 of sampling; $0.149 for a one-fit container). H100 and A100-80GB cost 11–12% more per sampled fit. B300 costs 3.4× L40S per fit because it samples no faster than L40S.
-- The cards agree: fits that take the same sampler path match to float rounding on every card. Across the 7 paths seen, ln Z spans 0.61 (median σ 0.24), and posterior medians vary by at most 0.44σ.
+- The cards agree: fits that take the same sampler path match to float rounding on every card. Across the 8 paths seen, ln Z spans 0.61 (median σ 0.24), and posterior medians vary by at most 0.44σ.
 - The same-build RTX 5090 fit (Vast, DR2 refit) is 1.53× L40S. The older consumer table (e-gpu-price-benchmark) is a different build and workload, so it cannot be tied.
 
 ## Relative speed and cost per fit
@@ -120,8 +120,17 @@ Reference: **L40S**, chosen before the run. Modal's GPU guide calls it the "sugg
 ## Spend
 
 - Measured run (`ce9752c`, 11 cards): $20.81, estimated from container seconds × rates in the run manifests.
-- Earlier attempts: an H100 shakedown at `267a7b5^`, $0.28 estimated. The first full launch at `267a7b5` was aborted because Modal reused a warm L40S container (`FileExistsError` on the `/grids` symlink). Its files are in `aborted-267a7b5/`.
-- Modal billed (after credits, `modal billing summary`): $0.00. Modal's billing report for these apps is in "Billed by Modal" below.
+- Earlier attempts: an `H100!` shakedown at `a7e67d4` (`shakedown-a7e67d4/`, 1 fit: 63.4 s sampling on the 5,386,004-call path), $0.28 estimated. The first full launch at `267a7b5` was aborted because Modal reused a warm L40S container (`FileExistsError` on the `/grids` symlink). Its files are in `aborted-267a7b5/`.
+- Billed after credits (`modal billing summary`): $0.00. Credits covered all usage.
+- Modal's hourly billing report for app `ceridwen-gpu-bench`, as of 2026-10-15 00:21 UTC: $0.80 for 21:00 UTC and $2.42 for 22:00 UTC. Later hours had not closed yet. The run ended at 00:11 UTC.
+
+## Open decisions and notes
+
+- **For Liu Hao:** B300 was measured on the pinned CUDA 12 image. A B300 run on a CUDA 13.1+ image, as the GPU guide asks, would be a separate build. It was not run.
+- **For Liu Hao:** a likelihood-harness stage on the production model needs `benchmark_baked_runtime.py` to evaluate through `MultiObservationLikelihood.loglike`. That change is proposed, not made.
+- **For the lead (`modal-gpu` code, unchanged):** `ModalRun.guard` counts the network-egress allowance as uncovered spend, so it refuses every launch. `benchmark_modal.py` checks `billed_cost` instead.
+- **For the lead:** `ModalRun.stop` runs `modal app stop` without `-y`. Run non-interactively, that aborts ("Aborted: no interactive terminal detected"), so containers that are still running keep running. In the measured run, every container had exited before the check. The aborted launch's apps were stopped with `modal app stop -y`. No `ceridwen-gpu-bench` containers remain.
+- **For the lead:** Ctrl-C does not stop the `benchmark_modal.py launch` threads.
 
 ## Record
 
