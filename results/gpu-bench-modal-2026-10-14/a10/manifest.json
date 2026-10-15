@@ -1,0 +1,175 @@
+{
+  "backend": "modal",
+  "source": {
+    "commit": "ce9752cbe65d2a181746e9dd954fd0d3bf92b342",
+    "submodules": {
+      "ceridwen": "d7c0536f9b2c5b8fad7fe4b1031dc75bb181ac97",
+      "external/sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+    },
+    "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+    "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+    "grids": [
+      {
+        "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+        "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+        "remote_name": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5"
+      }
+    ],
+    "experiment": [
+      {
+        "name": "fit/M1_210210",
+        "arm": "fit",
+        "target": "M1_210210",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 2,
+          "object_id": 210210,
+          "spect_id": "M1_210210",
+          "sn": 62.20000076293945,
+          "shard_index": 0,
+          "seed": 20260832,
+          "filename": "legac_M1_210210_v2.0.fits"
+        }
+      }
+    ],
+    "input_files": [
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits",
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
+      "data/raw/cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits",
+      "data/raw/cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits",
+      "data/raw/cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits",
+      "data/raw/hst_f814w/M1_210210.fits",
+      "data/raw/legac_dr2/legaCdr2.fits.gz",
+      "data/raw/legac_dr2/sp/legac_M1_210210_v2.0.fits",
+      "external/fsps/data/emlines_info.dat"
+    ],
+    "image": "ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34"
+  },
+  "gpus": [
+    "A10"
+  ],
+  "created": 1792015709.0426261,
+  "attempts": [
+    {
+      "gpu": "A10",
+      "containers": {
+        "0-fc-01M4Y7BTF443TKCVM4RMWXJ70F": {
+          "spawned": 1792015719.603143,
+          "call_id": "fc-01M4Y7BTF443TKCVM4RMWXJ70F",
+          "received": 1792017035.28939,
+          "packed": 1792017032.4424682,
+          "gpu": "NVIDIA A10, 580.95.05, 23028 MiB, 1695 MHz, 150.00 W, 8.6",
+          "exit": {
+            "bootstrap": 0,
+            "fit-0": 0,
+            "fit-1": 0
+          },
+          "container_seconds": 1019.7685434818268,
+          "estimated_usd": 0.37498928880913734
+        },
+        "1-fc-01M4Y7BVRGTKKYJ0ZF7MNA052T": {
+          "spawned": 1792015719.604191,
+          "call_id": "fc-01M4Y7BVRGTKKYJ0ZF7MNA052T",
+          "received": 1792016746.098264,
+          "packed": 1792016743.2120926,
+          "gpu": "NVIDIA A10, 580.95.05, 23028 MiB, 1695 MHz, 150.00 W, 8.6",
+          "exit": {
+            "bootstrap": 0,
+            "fit-0": 0,
+            "fit-1": 0
+          },
+          "container_seconds": 1012.0676295757294,
+          "estimated_usd": 0.3721575087475872
+        },
+        "2-fc-01M4Y8B3MHP8EEDGEXNNWFCS4G": {
+          "spawned": 1792016746.101928,
+          "call_id": "fc-01M4Y8B3MHP8EEDGEXNNWFCS4G",
+          "received": 1792018674.92561,
+          "packed": 1792018672.5536263,
+          "gpu": "NVIDIA A10, 610.57.04, 23028 MiB, 1695 MHz, 150.00 W, 8.6",
+          "exit": {
+            "bootstrap": 0,
+            "fit-0": 0,
+            "fit-1": 0
+          },
+          "container_seconds": 1025.175264596939,
+          "estimated_usd": 0.37697744829758645
+        },
+        "3-fc-01M4Y8KXQZ12WGVW30GV2WP9A2": {
+          "spawned": 1792017035.292282,
+          "call_id": "fc-01M4Y8KXQZ12WGVW30GV2WP9A2",
+          "received": 1792019793.846209,
+          "packed": 1792019792.3354957,
+          "gpu": "NVIDIA A10G, 610.57.04, 23028 MiB, 1710 MHz, 300.00 W, 8.6",
+          "exit": {
+            "bootstrap": 0,
+            "fit-0": 0,
+            "fit-1": 0
+          },
+          "container_seconds": 1027.1285767555237,
+          "estimated_usd": 0.3776957202445412
+        }
+      },
+      "fits_per_container": 2,
+      "started": 1792015717.46318,
+      "status": "complete",
+      "elapsed": 4076.6966741085052,
+      "app_id": "ap-8vUulXsy94xHyp16ucf11I",
+      "estimated_usd": 1.5018199660988523,
+      "billed_usd": 0.48794722
+    }
+  ],
+  "estimated_total_usd": 1.5018199660988523
+}

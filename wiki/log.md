@@ -1480,3 +1480,8 @@
 
 - Pages: `research/questions/q-afe-mgb-weighting.md`, `research/direction.md`
 - Change: Recorded abundance evidence and parked carbon-mask refits at priority 10.
+
+## [2026-10-15] experiment | Modal GPU benchmark
+
+- Pages: `research/experiments/e-modal-gpu-benchmark.md`
+- Change: Measured 88 fits across 11 Modal GPU types; B200 sampled fastest and A100-40GB cost least per fit.
