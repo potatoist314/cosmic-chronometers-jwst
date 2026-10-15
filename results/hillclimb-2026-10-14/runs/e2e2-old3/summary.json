@@ -1,0 +1,58 @@
+{
+ "run": "e2e2-old3",
+ "rows": [
+  {
+   "cell": "fit/M5_238580",
+   "driver_s": 264.0,
+   "error": null,
+   "container_s": 247.5,
+   "billed_usd": null,
+   "estimated_usd": 0.1494,
+   "fit_start_to_sampler_end_s": 221.9,
+   "hash": "f4c93dce2808215b",
+   "path": "626fb7775bbb4760",
+   "wall_sampler": 178.8,
+   "n_calls": 5393857,
+   "lnZ": 236690.12909194332,
+   "n_samples": 17300,
+   "kish_ess": 4320.8,
+   "ess_per_s": 24.17,
+   "ess": {
+    "logzsol": 2770.8,
+    "afe": 2501.6,
+    "logmass": 1971.0,
+    "t50": 1714.0
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2554,
+     -0.2164,
+     -0.1761
+    ],
+    "afe": [
+     -0.0648,
+     -0.0373,
+     -0.0068
+    ],
+    "logmass": [
+     11.5682,
+     11.5961,
+     11.6225
+    ],
+    "t50": [
+     4.0513,
+     4.6549,
+     5.0782
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 15.5,
+    "afe": 13.99,
+    "logmass": 11.02,
+    "t50": 9.59
+   },
+   "check_passed": true,
+   "lnZ_err": 0.254
+  }
+ ]
+}

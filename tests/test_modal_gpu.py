@@ -35,13 +35,18 @@ CELL = {'name': 'fit/M1_210210', 'arm': 'fit', 'target': 'M1_210210', 'seed': 12
         'target_metadata': {'object_id': 210210, 'spect_id': 'M1_210210', 'seed': 12}}
 
 
-def result_archive(exit_codes, started=1000.0, finished=1150.0):
+def result_archive(cells, exit_codes, started=1000.0, finished=1150.0):
+    """A container's tar.gz as modal_gpu.fit returns it for the request's cells."""
+    status = {'exit': {'bootstrap': exit_codes['bootstrap']}, 'gpu': 'NVIDIA L40S', 'started': started,
+              'finished': finished, 'cells': {str(c['index']): {'exit': exit_codes['fit'], 'mode': 'alone', 'tuned': 3, 'compiled': 5}
+                                              for c in cells}}
     buffer = io.BytesIO()
     with tarfile.open(fileobj=buffer, mode='w:gz') as archive:
-        files = {'status.json': json.dumps({'exit': exit_codes, 'gpu': 'NVIDIA L40S',
-                                            'started': started, 'finished': finished}),
-                 'bootstrap.log': 'ready', 'fit.log': 'fitting',
-                 'results/fit/210210-M1_210210/ceridwen_result.h5': 'h5'}
+        files = {'status.json': json.dumps(status), 'bootstrap.log': 'ready'}
+        for c in cells:
+            metadata = c['cell']['target_metadata']
+            files[f"fit-{c['index']}.log"] = 'fitting'
+            files[f"results/{c['index']}/{c['cell']['arm']}/{metadata['object_id']}-{metadata['spect_id']}/ceridwen_result.h5"] = 'h5'
         for name, text in files.items():
             info = tarfile.TarInfo(name)
             info.size = len(text.encode())
@@ -64,10 +69,13 @@ def modal_run(tmp_path, monkeypatch):
         if arguments[0] == 'scripts/modal_gpu.py':
             work = exp.Path(arguments[2])
             state['launches'].append(json.loads(exp.Path(arguments[1]).read_text()))
-            (work / 'calls.json').write_text(json.dumps({'app_id': 'ap-1', 'calls': {'0': 'fc-1'}}))
+            containers = state['launches'][-1]['containers']
+            (work / 'calls.json').write_text(json.dumps({'app_id': 'ap-1', 'calls': {
+                str(n): f'fc-{n + 1}' for n in range(len(containers))}}))
             if state['interrupt']:
                 raise KeyboardInterrupt
-            (work / '0.tar.gz').write_bytes(result_archive(state['exit']))
+            for number, cells in enumerate(containers):
+                (work / f'{number}.tar.gz').write_bytes(result_archive(cells, state['exit']))
         elif arguments[2:4] == ('app', 'stop'):
             # Without a terminal, `modal app stop` aborts unless -y skips its confirmation.
             if '-y' not in arguments:
@@ -104,9 +112,99 @@ def test_modal_fit_lands_in_vast_results_layout_with_cost(modal_run):
     cell = attempt['cells']['fit/M1_210210']
     assert cell['container_seconds'] == 150
     assert cell['estimated_usd'] == pytest.approx(modal_gpu.cost_usd('L40S', 150))
+    assert (cell['mode'], cell['tuned'], cell['compiled']) == ('alone', 3, 5)
     assert saved['estimated_total_usd'] == pytest.approx(cell['estimated_usd'])
     assert state['launches'][0]['gpu'] == 'L40S'
-    assert state['launches'][0]['cells'][0]['grid'] == '123.h5'
+    assert state['launches'][0]['containers'][0][0]['grid'] == '123.h5'
+
+
+def arms(count):
+    """Cells of identical arms: the same compiled programs, so one cache key."""
+    return [{**CELL, 'name': f'a{i}/M1_210210', 'arm': f'a{i}'} for i in range(count)]
+
+
+def test_cells_beyond_the_gpu_limit_share_containers_and_their_cost(modal_run, monkeypatch):
+    run, state = modal_run
+    run.data['source']['experiment'] = arms(3)
+    monkeypatch.setattr(modal_gpu, 'MAX_CONTAINERS', 2)
+    assert run.execute() == 0
+    containers = state['launches'][0]['containers']
+    assert [len(cells) for cells in containers] == [1, 2]
+    assert len({c['key'] for cells in containers for c in cells}) == 1
+    saved = json.loads((run.root / 'manifest.json').read_text())
+    shared = [saved['attempts'][0]['cells'][c['cell']['name']] for c in containers[1]]
+    assert all(r['estimated_usd'] == pytest.approx(modal_gpu.cost_usd('L40S', 150) / 2) for r in shared)
+    assert saved['estimated_total_usd'] == pytest.approx(2 * modal_gpu.cost_usd('L40S', 150))
+    assert {p.name for p in run.root.glob('fc-2-*.log')} == {
+        'fc-2-bootstrap.log', *(f"fc-2-fit-{c['index']}.log" for c in containers[1])}
+    assert sorted(saved['completed_cells']) == sorted(c['name'] for c in arms(3))
+
+
+def test_one_container_per_cell_up_to_the_gpu_limit(modal_run):
+    run, _ = modal_run
+    pending = list(enumerate(arms(modal_gpu.MAX_CONTAINERS + 3)))
+    assert [len(cells) for cells in run.containers(pending[:4])] == [1, 1, 1, 1]
+    packed = run.containers(pending)
+    assert len(packed) == modal_gpu.MAX_CONTAINERS
+    assert sorted(i for cells in packed for i, _ in cells) == list(range(len(pending)))
+
+
+def test_cache_key_ignores_name_and_arm_only(modal_run):
+    run, _ = modal_run
+    key = run.cache_key(CELL)
+    assert run.cache_key({**CELL, 'name': 'b/M1_210210', 'arm': 'b'}) == key
+    assert run.cache_key({**CELL, 'seed': 99, 'target_metadata': {**CELL['target_metadata'], 'seed': 99}}) != key
+    assert run.cache_key({**CELL, 'settings': {**CELL['settings'], 'calibration_order': 4}}) != key
+    run.data['source']['commit'] = 'def'
+    assert run.cache_key(CELL) != key
+
+
+def test_uncached_cells_fit_alone_then_cached_cells_share_and_incomplete_caches_refit_alone():
+    saved, calls, saves, shares = {'a', 'c'}, [], [], []
+
+    def fit_one(cell, mode):
+        calls.append((cell['index'], mode))
+        return {'exit': 0, 'mode': mode, 'tuned': 2 if (cell['index'], mode) == (3, 'shared') else 0,
+                'compiled': 5 if (cell['key'], mode) == ('c', 'shared') else 0}
+
+    def save(key):
+        saves.append(key)
+        saved.add(key)
+
+    @modal_gpu.contextlib.contextmanager
+    def sharing():
+        shares.append('start')
+        yield
+        shares.append('stop')
+
+    cells = [{'index': i, 'key': k} for i, k in enumerate('abbac')]
+    records = modal_gpu.schedule(cells, saved.__contains__, fit_one, save, sharing)
+    assert calls[0] == (1, 'alone')
+    assert sorted(calls[1:5]) == [(0, 'shared'), (2, 'shared'), (3, 'shared'), (4, 'shared')]
+    # Cell 3's shared fit autotuned: every shared fit of its cache (0 and 3) fits again alone.
+    assert calls[5:] == [(0, 'alone'), (3, 'alone')]
+    assert shares == ['start', 'stop']
+    assert records[0] == records[3] == {'exit': 0, 'mode': 'alone', 'tuned': 0, 'compiled': 0, 'retuned': 2}
+    assert records[2]['mode'] == records[4]['mode'] == 'shared'
+    # New cache b after its first fit; c gained programs compiled for this host; a after each refit.
+    assert saves == ['b', 'c', 'a', 'a']
+
+
+def test_one_cached_cell_fits_alone_from_its_cache_without_mps():
+    saves = []
+    records = modal_gpu.schedule([{'index': 0, 'key': 'a'}], {'a'}.__contains__,
+                                 lambda cell, mode: {'exit': 0, 'mode': mode, 'tuned': 0, 'compiled': 0},
+                                 saves.append, sharing=None)
+    assert records == {0: {'exit': 0, 'mode': 'cached', 'tuned': 0, 'compiled': 0}}
+    assert not saves
+
+
+def test_failed_first_fit_saves_no_cache():
+    saves = []
+    records = modal_gpu.schedule([{'index': 0, 'key': 'a'}], set().__contains__,
+                                 lambda cell, mode: {'exit': 1, 'mode': mode, 'tuned': 9, 'compiled': 9},
+                                 saves.append, sharing=None)
+    assert records[0]['exit'] == 1 and not saves
 
 
 def test_resume_does_not_launch_completed_cells(modal_run):

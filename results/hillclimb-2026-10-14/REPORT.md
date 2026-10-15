@@ -2,9 +2,9 @@
 
 - One benchmark fit on a Modal L40S now takes 234.6 s instead of 261.1 s (−10%), with identical results; cost per fit drops from $0.158 to $0.142 (fit process) and from $0.168 to $0.157 end to end.
 - Five results-identical changes are kept on `hillclimb`: COSMOS catalogues read once, several cells in one notebook kernel, FilterSet built on the host, posterior-predictive programs compiled during the sampler, and the sampler's step-kernel compile started before the prior draw.
-- Reliability: 154 of 154 GPU fits finished and passed the stored convergence check.
+- Reliability: 154 of 154 GPU fits finished and passed the stored convergence check (phase 2: 99 of 99).
 - Bigger sampler gains change results and need Liu Hao's call: `num_inner_steps` 33 halves the sampler time but moves ln Z by +0.54; `logZ_tol` −3 saves 8% of the sampler time with ln Z and posteriors unchanged within the seed scatter.
-- The largest results-identical gain needs a modal-gpu backend change: an XLA autotune cache makes repeat fits bitwise identical and lets 4 fits share one L40S at 162 s each ($0.098 per fit); command buffers (−7 s), a compile cache (−16 s) and several cells per container (−29 s per extra fit) also need backend changes.
+- Phase 2 (`hillclimb-2`) builds the backend changes: a sample run of more than 10 galaxies now costs $0.149 per fit instead of $0.160; a rerun of a cached galaxy costs $0.147, or $0.104 when 4 share a GPU, bitwise identical to the first fit. XLA autotune level 0 would let every sample fit share a GPU (≈ $0.105) but moves ln Z by −0.05 to −0.54 (Liu Hao's call).
 
 ## Benchmark and method
 
@@ -96,12 +96,12 @@ The kept changes do not change the sampling: both builds land on the same two sa
 
 ## Recommended production setting
 
-- Code: branch `hillclimb` at 62aba10 (ceridwen d61175d).
-- Modal: L40S, 2 cores, 16 GiB, one fit per container, as scripts/modal_gpu.py does now. Do not request more cores: a container requested at 2 cores already runs at the 8-core time (261.0 vs ≈ 262 s, LEDGER entry 7), and Modal bills the larger of request and use.
-- Cost per fit: $0.157 end to end ($0.142 for the fit process).
-- If modal-gpu adopts the autotune cache on a Volume: 4 fits per container under MPS, $0.098 per fit for the benchmark galaxy.
+- Code: branch `hillclimb-2` (backend 49ac029; ceridwen d61175d).
+- Modal: L40S, 2 cores, 16 GiB, scripts/modal_gpu.py defaults: up to 10 cells get one container each; more cells share 10 containers (Starter plan GPU limit); reruns of a cached setup share a GPU 4 at a time. Do not request more cores (entry 7).
+- Cost per fit for M5_238580, billed: $0.159 with one container per cell (≤ 10 cells), $0.149 above 10 cells, $0.147 for a cached rerun, $0.104 for 4 cached reruns on one GPU.
+- If Liu Hao accepts XLA autotune level 0 (phase-2 proposal): 4 fits per GPU for every cell, ≈ $0.105 per fit.
 
-## Proposals for the modal-gpu backend (results-identical, not kept: they change scripts/modal_gpu.py)
+## Proposals for the modal-gpu backend (phase 1; built in phase 2, below)
 
 | Proposal | Measured gain | Evidence | Ledger |
 |---|---|---|---|
@@ -139,3 +139,125 @@ M5_238580, L40S, 3 seeds per arm (20260832, 20261014, 20261015) unless noted. Se
 
 - The wiki was not edited (brief). Wiki code excerpts of fit-notebook cells 10 and 14 and of `nested.py` `run()` may now be out of date.
 - tests: tests/test_experiment.py, test_modal_gpu.py, test_cosmos_photometry.py 68 passed; ceridwen suite 581 passed, 1 failed (test_ssp_provenance needs python-fsps, also at d7c0536). tests/test_emission_line_marginalisation.py and test_ceridwen_dr2_production.py: the same 8 failures with and without the branch's notebook change (stale logzsol/afe range, `CERIDWEN_PLOTS` env list, `mass_mapped_beta`).
+
+## Phase 2: Modal backend (branch `hillclimb-2`, 2026-10-15)
+
+- Kept in 49ac029 (scripts/modal_gpu.py, scripts/experiment.py): XLA command buffers on; a JAX compile cache, with XLA's autotune cache inside it, saved per galaxy setup on the Modal Volume `ceridwen-xla-cache`; 4 cached fits per GPU under MPS; several cells per container once an experiment has more than 10 cells.
+- Same container (L40S, n = 3): command buffers −11.2 s per fit; a cached fit 197.8 s instead of 233.5 s (−15%); 4 cached fits on one GPU 151.6 s per fit (−35%). Cached and shared fits are bitwise identical to the fit that wrote the cache.
+- End to end at 49ac029, billed by Modal: $0.160 per fit before; after, $0.159 for a setup's first fit, $0.147 for a rerun of a cached setup, $0.104 per fit when 4 reruns share a GPU.
+- A sample run fits each galaxy once, and every galaxy is a new setup: the cache and MPS sharing then do nothing. Such a run gets command buffers (−11 s) less the cache save (+6 s), and several new setups per container (above 10 cells) halve the overhead outside the fit (15.3 vs 31.0 s): $0.149 per fit instead of $0.160 (−7%).
+- Reliability: 99 of 99 phase-2 GPU fits finished and passed the stored convergence check, 93 of them with command buffers on.
+
+### What the backend does now (49ac029)
+
+| Part | Behaviour |
+|---|---|
+| Command buffers | On (XLA default); the `--xla_gpu_enable_command_buffer=` workaround for RTX 5060 kernel deaths (5eb6483) is dropped |
+| Cache key | sha256 of image, GPU type, pinned source (commit and submodules) and the cell without its name and arm (target, seed, settings and priors stay) |
+| Cache file | `<key>.tar` on the Volume: JAX compile cache (`JAX_COMPILATION_CACHE_DIR`, minimum compile time 0) with XLA's per-fusion autotune cache inside it; 1383 files, 97 MB for M5_238580. Unpacked to `/tmp/xla/<key>`, the same path wherever it is written or read |
+| First fit of a setup | Alone on the GPU, on an empty cache; saves the tar (temporary name, then rename) |
+| Cached fits | Read the tar. 2 or more in one container share the GPU under MPS, 4 at a time, `XLA_CLIENT_MEM_FRACTION` 0.21 |
+| Guards | A shared fit that autotunes anything makes every shared fit of its setup refit alone. Programs a cached fit compiles anew without autotuning (another host fingerprint) are added to the tar |
+| Containers | One per cell up to 10 (Starter plan: "10 GPU concurrency", modal.com/pricing); beyond 10, cells sorted by cache key share 10 containers. Cost is split equally across a container's cells |
+| Records | Per cell in the manifest: `mode` (alone, cached, shared), `tuned` (autotune entries written), `compiled` (programs compiled), `retuned`, `container_cells` |
+
+### Same container (modal_ab.py, L40S, d3ae726, n = 3)
+
+| s | Base (buffers off, no cache) | Buffers on | Cache writer | Cache reader | 4 readers under MPS |
+|---|---|---|---|---|---|
+| Fit process | 233.5 ± 5.1 | 222.3 ± 5.2 | 223.6 ± 5.8 | 197.8 ± 2.6 | 151.6 ± 0.8 per fit (606 ± 3 per 4) |
+| Model cell | 14.5 ± 1.3 | 13.5 ± 1.6 | 13.2 ± 1.7 | 4.8 ± 0.2 | 3.9 ± 0.2 |
+| Sampler cell | 198.0 ± 2.4 | 190.6 ± 2.0 | 193.0 ± 2.5 | 177.7 ± 0.9 | 585 (concurrent) |
+| Sampler wall | 179.5 ± 0.7 | 172.4 ± 0.3 | 172.2 ± 0.2 | 171.9 ± 0.4 | 578.8 ± 0.8 (concurrent) |
+| Paired difference vs base | — | −11.2 ± 0.8 | −9.8 ± 0.8 | −35.7 ± 2.5 | — |
+
+All 24 fits on the two standard sampler paths (3d78, 9ac5). In each container the writer, the reader and the 4 shared fits share one hash (20d8, 5c88, c870); in container 2, buffers off and on also share one (1362).
+
+### End to end (`experiment.py run`, L40S, billed per app by `modal billing report`)
+
+Validation at 49ac029 (runs/v2-*, runs/m4-*). Each round starts with the setup's tar deleted. "4 shared" reads a cache written in another container.
+
+| | First fit of a setup | Cached rerun | 4 shared reruns, one container | Writer + 4 shared, one container | 4 new setups, one container |
+|---|---|---|---|---|---|
+| Container s per fit | 256.6 ± 4.7 (n 2) | 237.7 ± 6.4 (n 3) | 162.6 ± 4.7 (n 3 × 4) | 168.7 (n 1 × 5) | 242.9 ± 4.8 (n 3 × 4) |
+| Billed $ per fit | 0.159 ± 0.003 | 0.147 ± 0.003 | 0.104 ± 0.003 | 0.106 | 0.149 ± 0.003 |
+| Fits per GPU-hour | 14.0 | 15.1 | 22.1 | 21.3 | 14.8 |
+| Fit / overhead s | 225.6 ± 1.1 / 31.0 ± 3.7 | 205.8 ± 6.7 / 28.6 ± 4.1 (n 7, both series) | — | — | 227.7 ± 6.8 / 15.3 ± 1.1 |
+
+Old backend (d3ae726, series 1, runs/e2e2-old*): 257.1 ± 8.4 s, $0.160 ± 0.005 per fit, 14.0 fits per GPU-hour; fit 232.0 ± 6.4 s, overhead 25.1 ± 2.0 s. Series 1 ran the new backend before entry 23's fixes (runs/e2e2-*): first fit 263.7 ± 10.0 s, $0.166 ± 0.004; cached with a compile-cache hit 225.0 ± 0.8 s, $0.137 ± 0.001 (n 2), with a miss 238.9 ± 4.4 s, $0.150 ± 0.003 (n 2); 4 shared 164.3 ± 3.3 s, $0.105 ± 0.003 per fit (n 3 × 4).
+
+"Overhead" is container time outside the fit notebook (bootstrap, the cache save, packing results). A first fit's save adds ≈ 6 s (31.0 vs 25.1 s). Billed cost runs 1–7% above the estimate (requested 2 cores and 16 GiB × container seconds). The manifest's `billed_usd`, read as the run ends, was 5–27% below the settled `modal billing report` value in these runs.
+
+### Cache behaviour
+
+- Saving a 97 MB cache takes 4.7 s (tar onto the Volume 2.1 s, commit 2.7 s); loading takes 1.8 s (probe container, 1383 files).
+- jax 0.10.2 (the image) keys each compiled program by the autotune directory's path (`xla_gpu_per_fusion_autotune_cache_dir` is not cleared in jax/_src/cache_key.py; jax 0.11.1 clears it). A per-cell-index directory made shared cells at index 1–3 recompile all 663 programs; 49ac029 uses one path per setup key.
+- JAX hashes the GPU topology fingerprint into every program key (jax/_src/cache_key.py `_hash_accelerator_config`), and L40S hosts differ: 4 fingerprints in 18 probe containers, with the same platform version, compile options and XLA flags (runs/keyprobe):
+
+| Host | Driver | ECC, memory | Containers | GPU topology fingerprint |
+|---|---|---|---|---|
+| AMD | 610.57.04 | on, 46068 MiB | 3 | 11274905002941961806 |
+| Intel | 610.57.04 | on, 46068 MiB | 6 | 7537698629312052454 |
+| Intel | 610.57.04 | off, 49140 MiB | 6 | 886291908185532482 |
+| Intel | 580.95.05 | on, 46068 MiB | 3 | 2913705999010927856 |
+
+- So a cached fit reuses compiled programs only on a host with the writer's fingerprint (3 of 7 cached reruns here); every autotune entry hits on every host (0 autotuned in all cross-container reads), so the sampler path is always the writer's. A miss costs ≈ 13 s (227.2 vs 239.8 s container time; programs compile again) and adds that host's 663 programs (≈ 100 MB) to the tar; a setup's tar holds at most one program set per fingerprint.
+- A new seed compiled 7 programs and autotuned 3 fusions on another seed's cache, so the seed is part of the key.
+- Volumes are free up to 1 TiB per month (modal.com/pricing). Cache files are written once per setup and host fingerprint, so Volume v1 (no Beta data-loss caveat) is used.
+
+### Cost per fit, throughput and ESS per second
+
+ESS per fit is unchanged (the two standard sampler paths, as in phase 1); per-second values use the fit process time from the same-container A/B, mean of the two paths.
+
+| | Base | Buffers on | Cached | 4 shared |
+|---|---|---|---|---|
+| Fit process s | 233.5 | 222.3 | 197.8 | 151.6 |
+| Fits per GPU-hour (process) | 15.4 | 16.2 | 18.2 | 23.7 |
+| Kish ESS per s | 18.8 | 19.8 | 22.2 | 29.0 |
+| logzsol / afe / logmass / t50 ESS per s | 11.9 / 12.3 / 10.2 / 8.5 | 12.5 / 12.9 / 10.8 / 8.9 | 14.1 / 14.5 / 12.1 / 10.0 | 18.4 / 19.0 / 15.8 / 13.1 |
+
+### Results identical (how checked)
+
+- Same container: bitwise (result hash over every `samples/` dataset) for writer, reader and 4 shared fits in each container.
+- End to end at 49ac029: all 22 fits on path 9ac5 (ln Z 236690.2596); every reader bitwise equal to its writer except the 5 that compiled on another host fingerprint (relative lnL ≤ 6.9e-12); two first fits in different containers differ by 8.7e-6 (entry 24). The 12 fits of entry 25 fit alone on an empty cache, as a single first fit does.
+- Series 1: readers bitwise equal to their writer on compile-cache hits, else relative lnL max 1.9e-9; old-backend repeats 4.7e-10.
+
+### Reliability (phase 2)
+
+| Series | GPU fits | Finished and passed the stored check |
+|---|---|---|
+| Same-container A/B (runs/ab-modes*) | 24 | 24 |
+| End to end, series 1 (runs/e2e2-*, 3 on the old backend) | 23 | 23 |
+| Validation at 49ac029 (runs/v2-*) | 22 | 22 |
+| 4 new setups per container (runs/m4-*) | 12 | 12 |
+| Autotune level 0 A/B (runs/ab-at0mps*) | 18 | 18 |
+| All | 99 | 99 |
+
+Container start failures: 1 from a bootstrap environment bug of mine, fixed before 49ac029; 3 old-backend starts from a baseline worktree with symlinked inputs (Modal `AbsoluteLinkError`). No kernel deaths in 93 L40S fits with command buffers on; the RTX 5060 deaths behind 5eb6483 were not retested (GPU types are gpu-bench-modal's).
+
+### Proposal that changes results: XLA autotune level 0 with 4 fits per GPU
+
+`--xla_gpu_autotune_level=0` turns XLA's autotuning off. With nothing to autotune, a shared GPU cannot change a fit's kernels: in each container (runs/ab-at0mps*, one seed per container, n = 3) the 4 fits under MPS, without any cache, are bitwise identical to the solo fit, and seed 20260832 gives the same hash as phase 1's level-0 fits (entry 4). Every fit of a sample run would then get the shared-GPU gain, which the cache gives only to reruns.
+
+| | Default solo | Level 0 solo | Level 0, 4 under MPS |
+|---|---|---|---|
+| Process s per fit | 233.3 ± 0.6 | 225.9 ± 1.0 (paired −7.3 ± 0.7) | 155.4 ± 1.1 |
+| ln Z, seeds 20260832 / 20261014 / 20261015 | 236690.2461 / .1514 / .1782 | 236689.7049 / .9791 / 236690.1318 | bitwise as solo |
+| Stored ln Z error | 0.26 / 0.31 / 0.32 | 0.17 / 0.20 / 0.23 | bitwise as solo |
+| Medians logzsol / afe / logmass / t50, mean of 3 seeds | −0.2149 / −0.0366 / 11.5937 / 4.596 Gyr | −0.2165 / −0.0374 / 11.5940 / 4.643 Gyr | bitwise as solo |
+| Kish ESS | 4442 / 4464 / 4438 | 4442 / 4441 / 4364 | bitwise as solo |
+
+- ln Z moves by −0.54, −0.17 and −0.05 (mean −0.25); its seed scatter is 0.05 for the default here and 0.22 for level 0. Medians move by at most the phase-1 seed scatter (t50 +0.05 Gyr against ± 0.03–0.05 Gyr).
+- Expected cost for a sample run with 4 fits per GPU: ≈ $0.105 per fit (4 shared reruns at 49ac029 measured 162.6 s and $0.104), against $0.149 with the kept backend. Not built: it changes results (rule 6).
+
+### Not adopted
+
+- `num_inner_steps` 33 and `logZ_tol` −3 (phase-1 proposals table): Liu Hao's call.
+- Splitting each setup's tar per host fingerprint, so a fit loads only its own host's programs: ≈ 5 s per cached fit once a tar holds all 4 program sets (load 1.8 s per 97 MB); not built.
+- Skipping the save for a setup's first fit: ≈ 6 s less overhead per fit in a sample run (31.0 vs 25.1 s), but reruns would then find no cache; kept as built.
+
+### Reused (phase 2)
+
+- modal-gpu backend structure (`fit`, `stage`, `main`, `ModalRun.execute`, the guard and stop fixes from modal-fix) extended, not replaced; `modal_gpu.cost_usd` for estimates.
+- modal_ab.py and summarise.py from phase 1 for every A/B and summary; phase-1 benchmark galaxy, seeds and ESS method.
+- XLA's own per-fusion autotune cache inside JAX's persistent compile cache (no hand-written cache); `nvidia-cuda-mps-control` for MPS.

@@ -1,0 +1,125 @@
+{
+ "called_at": 1792036691.986161,
+ "entered": 1792036700.084484,
+ "finished": 1792037778.6938524,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": ""
+   },
+   "concurrent": 1,
+   "start": 1792036700.5801795,
+   "end": 1792036933.3249147,
+   "returncode": 0,
+   "stdout": "03:58:20 fitting fit/M5_238580, seed 20261015\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_autotune_level=0"
+   },
+   "concurrent": 1,
+   "start": 1792036934.1652248,
+   "end": 1792037158.9193509,
+   "returncode": 0,
+   "stdout": "04:02:14 fitting fit/M5_238580, seed 20261015\n"
+  },
+  {
+   "index": 2,
+   "label": "mps-start",
+   "returncode": 0,
+   "stdout": "",
+   "stderr": "",
+   "start": 1792037159.4639053,
+   "end": 1792037159.4639063
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_autotune_level=0"
+   },
+   "concurrent": 4,
+   "start": 1792037159.7905157,
+   "end": 1792037777.0455816,
+   "returncode": 0,
+   "stdout": "04:05:59 fitting fit/M5_238580, seed 20261015\n"
+  },
+  {
+   "index": 2,
+   "copy": 1,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_autotune_level=0"
+   },
+   "concurrent": 4,
+   "start": 1792037160.1937165,
+   "end": 1792037777.0456207,
+   "returncode": 0,
+   "stdout": "04:06:00 fitting fit/M5_238580, seed 20261015\n"
+  },
+  {
+   "index": 2,
+   "copy": 2,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_autotune_level=0"
+   },
+   "concurrent": 4,
+   "start": 1792037160.7040074,
+   "end": 1792037777.5461009,
+   "returncode": 0,
+   "stdout": "04:06:00 fitting fit/M5_238580, seed 20261015\n"
+  },
+  {
+   "index": 2,
+   "copy": 3,
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_autotune_level=0"
+   },
+   "concurrent": 4,
+   "start": 1792037161.2813184,
+   "end": 1792037778.0466518,
+   "returncode": 0,
+   "stdout": "04:06:01 fitting fit/M5_238580, seed 20261015\n"
+  }
+ ],
+ "returned": 1792037781.3149922,
+ "plan": [
+  {
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": ""
+   },
+   "seed": 20261015
+  },
+  {
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_autotune_level=0"
+   },
+   "seed": 20261015
+  },
+  {
+   "label": "h2base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_autotune_level=0"
+   },
+   "seed": 20261015,
+   "concurrent": 4,
+   "mps": true
+  }
+ ],
+ "gpu_requested": "L40S",
+ "cpu": 2.0,
+ "memory_gib": 16
+}

@@ -1,0 +1,233 @@
+{
+ "run": "m4-2",
+ "rows": [
+  {
+   "cell": "d/M5_238580",
+   "driver_s": 978.6,
+   "error": null,
+   "container_s": 958.9,
+   "billed_usd": 0.54760835,
+   "estimated_usd": 0.1447,
+   "container_cells": 4,
+   "mode": "alone",
+   "tuned": 721,
+   "compiled": 663,
+   "fit_start_to_sampler_end_s": 223.0,
+   "hash": "5b89e57cff156f07",
+   "path": "a603391e31e1d924",
+   "wall_sampler": 172.1,
+   "n_calls": 5341989,
+   "lnZ": 236689.955393424,
+   "n_samples": 17300,
+   "kish_ess": 4514.8,
+   "ess_per_s": 26.23,
+   "ess": {
+    "logzsol": 2914.5,
+    "afe": 2696.6,
+    "logmass": 2277.6,
+    "t50": 1837.6
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2557,
+     -0.2142,
+     -0.1754
+    ],
+    "afe": [
+     -0.0632,
+     -0.036,
+     -0.0053
+    ],
+    "logmass": [
+     11.5641,
+     11.5917,
+     11.6191
+    ],
+    "t50": [
+     4.0989,
+     4.6245,
+     5.0416
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 16.93,
+    "afe": 15.67,
+    "logmass": 13.23,
+    "t50": 10.68
+   },
+   "check_passed": true,
+   "lnZ_err": 0.236
+  },
+  {
+   "cell": "c/M5_238580",
+   "driver_s": 978.6,
+   "error": null,
+   "container_s": 958.9,
+   "billed_usd": 0.54760835,
+   "estimated_usd": 0.1447,
+   "container_cells": 4,
+   "mode": "alone",
+   "tuned": 721,
+   "compiled": 663,
+   "fit_start_to_sampler_end_s": 225.2,
+   "hash": "5691f726ba76d259",
+   "path": "c9ae3836f6804143",
+   "wall_sampler": 175.3,
+   "n_calls": 5383917,
+   "lnZ": 236689.93256782184,
+   "n_samples": 17400,
+   "kish_ess": 4534.8,
+   "ess_per_s": 25.87,
+   "ess": {
+    "logzsol": 2772.9,
+    "afe": 2796.5,
+    "logmass": 2169.8,
+    "t50": 1713.1
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2587,
+     -0.2161,
+     -0.1763
+    ],
+    "afe": [
+     -0.0631,
+     -0.0359,
+     -0.005
+    ],
+    "logmass": [
+     11.5665,
+     11.5949,
+     11.6221
+    ],
+    "t50": [
+     4.0857,
+     4.6622,
+     5.0746
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 15.82,
+    "afe": 15.95,
+    "logmass": 12.38,
+    "t50": 9.77
+   },
+   "check_passed": true,
+   "lnZ_err": 0.35
+  },
+  {
+   "cell": "b/M5_238580",
+   "driver_s": 978.6,
+   "error": null,
+   "container_s": 958.9,
+   "billed_usd": 0.54760835,
+   "estimated_usd": 0.1447,
+   "container_cells": 4,
+   "mode": "alone",
+   "tuned": 721,
+   "compiled": 663,
+   "fit_start_to_sampler_end_s": 220.7,
+   "hash": "4b14cf0e3d17fb2d",
+   "path": "f903f204487afc77",
+   "wall_sampler": 171.1,
+   "n_calls": 5288020,
+   "lnZ": 236690.09644230013,
+   "n_samples": 17200,
+   "kish_ess": 4331.1,
+   "ess_per_s": 25.31,
+   "ess": {
+    "logzsol": 2834.1,
+    "afe": 2693.1,
+    "logmass": 2144.7,
+    "t50": 2025.5
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2578,
+     -0.2172,
+     -0.1783
+    ],
+    "afe": [
+     -0.066,
+     -0.0386,
+     -0.0075
+    ],
+    "logmass": [
+     11.566,
+     11.5927,
+     11.6202
+    ],
+    "t50": [
+     4.0633,
+     4.6306,
+     5.0374
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 16.56,
+    "afe": 15.74,
+    "logmass": 12.53,
+    "t50": 11.84
+   },
+   "check_passed": true,
+   "lnZ_err": 0.249
+  },
+  {
+   "cell": "a/M5_238580",
+   "driver_s": 978.6,
+   "error": null,
+   "container_s": 958.9,
+   "billed_usd": 0.54760835,
+   "estimated_usd": 0.1447,
+   "container_cells": 4,
+   "mode": "alone",
+   "tuned": 721,
+   "compiled": 663,
+   "fit_start_to_sampler_end_s": 222.9,
+   "hash": "0964ce4fbeeec168",
+   "path": "e6626ada10ed03cb",
+   "wall_sampler": 173.1,
+   "n_calls": 5356808,
+   "lnZ": 236689.71673808782,
+   "n_samples": 17400,
+   "kish_ess": 4587.3,
+   "ess_per_s": 26.5,
+   "ess": {
+    "logzsol": 2943.3,
+    "afe": 3057.7,
+    "logmass": 2560.3,
+    "t50": 2179.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2577,
+     -0.2168,
+     -0.176
+    ],
+    "afe": [
+     -0.063,
+     -0.0355,
+     -0.0036
+    ],
+    "logmass": [
+     11.5643,
+     11.5921,
+     11.6194
+    ],
+    "t50": [
+     4.0685,
+     4.6104,
+     5.0387
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 17.0,
+    "afe": 17.66,
+    "logmass": 14.79,
+    "t50": 12.59
+   },
+   "check_passed": true,
+   "lnZ_err": 0.233
+  }
+ ]
+}
