@@ -370,12 +370,11 @@ class ModalRun:
                                       text=True, check=True, timeout=300).stdout)
 
     def guard(self):
-        """Stop before a launch once this month's Modal usage exceeds the workspace credits."""
-        summary = self.modal_json('billing', 'summary')
-        # Credits and allowances apply as usage accrues; a plan fee is not usage.
-        uncovered = float(summary['billed_cost']) - float(summary['adjustments'].get('plan_cost', 0))
-        if uncovered > 0:
-            raise vast.SweepError(f'Modal credits do not cover this month: ${uncovered:.2f} above credits')
+        """Stop before a launch once Modal bills real money: this month's usage exceeds the credits."""
+        # billed_cost is the month's cost after credits and allowances (network egress, free storage).
+        billed = float(self.modal_json('billing', 'summary')['billed_cost'])
+        if billed > 0:
+            raise vast.SweepError(f'Modal credits do not cover this month: ${billed:.2f} billed above credits')
 
     def archives(self, work):
         """Pinned source as Run.upload sends it, plus the selected inputs."""
@@ -417,7 +416,7 @@ class ModalRun:
         for _ in range(3):
             if all(c['app_id'] != app_id for c in self.modal_json('container', 'list')):
                 return
-            self.client('-m', 'modal', 'app', 'stop', app_id, capture_output=True, timeout=300)
+            self.client('-m', 'modal', 'app', 'stop', '-y', app_id, capture_output=True, timeout=300)
             time.sleep(5)
         engine.log(f'Modal app {app_id} still running: stop it with `modal app stop {app_id}`')
 

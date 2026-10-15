@@ -58,16 +58,21 @@ def modal_run(tmp_path, monkeypatch):
     args.output.mkdir()
     run = exp.ModalRun(args, source)
     state = {'launches': [], 'stopped': [], 'billing': {'billed_cost': '0E-8', 'adjustments': {'plan_cost': '0E-8', 'credits': '-1.01'}},
-             'report': [], 'exit': {'bootstrap': 0, 'fit': 0}, 'running': ['ap-other']}
+             'report': [], 'exit': {'bootstrap': 0, 'fit': 0}, 'running': ['ap-other'], 'interrupt': False}
 
     def client(*arguments, **options):
         if arguments[0] == 'scripts/modal_gpu.py':
             work = exp.Path(arguments[2])
             state['launches'].append(json.loads(exp.Path(arguments[1]).read_text()))
             (work / 'calls.json').write_text(json.dumps({'app_id': 'ap-1', 'calls': {'0': 'fc-1'}}))
+            if state['interrupt']:
+                raise KeyboardInterrupt
             (work / '0.tar.gz').write_bytes(result_archive(state['exit']))
         elif arguments[2:4] == ('app', 'stop'):
-            state['stopped'].append(arguments[4])
+            # Without a terminal, `modal app stop` aborts unless -y skips its confirmation.
+            if '-y' not in arguments:
+                return SimpleNamespace(returncode=1)
+            state['stopped'].append(arguments[-1])
         return SimpleNamespace(returncode=0)
 
     def modal_json(*arguments):
@@ -120,6 +125,16 @@ def test_failed_stage_keeps_partial_results_and_never_completes(modal_run):
     assert 'stage exit' in run.data['attempts'][0]['cells']['fit/M1_210210']['error']
 
 
+def test_guard_allows_launch_while_credits_and_allowances_cover_usage(modal_run):
+    run, state = modal_run
+    # `modal billing summary --json`, 2026-10-15: metered cost exceeds credits by the egress allowance.
+    state['billing'] = {'metered_cost': '9.69315129', 'billed_cost': '0E-8', 'adjustments': {
+        'free_storage': '-0E-8', 'plan_cost': '0E-8', 'credits': '-9.69000000',
+        'reservation_adjustment': '-0E-8', 'network_egress_allowance': '-0.00315129'}}
+    assert run.execute() == 0
+    assert len(state['launches']) == 1
+
+
 def test_credit_guard_stops_before_launch(modal_run):
     run, state = modal_run
     state['billing'] = {'billed_cost': '1.5', 'adjustments': {'plan_cost': '0', 'credits': '-30'}}
@@ -153,3 +168,15 @@ def test_leftover_container_is_stopped_and_other_apps_are_untouched(modal_run):
     state['running'].append('ap-1')
     assert run.execute() == 0
     assert state['stopped'] == ['ap-1']
+
+
+def test_interrupted_launch_stops_the_app_and_keeps_the_attempt(modal_run):
+    run, state = modal_run
+    state['running'].append('ap-1')
+    state['interrupt'] = True
+    with pytest.raises(KeyboardInterrupt):
+        run.execute()
+    assert state['stopped'] == ['ap-1']
+    saved = json.loads((run.root / 'manifest.json').read_text())
+    assert saved['attempts'][0]['app_id'] == 'ap-1'
+    assert not saved.get('completed_cells')
