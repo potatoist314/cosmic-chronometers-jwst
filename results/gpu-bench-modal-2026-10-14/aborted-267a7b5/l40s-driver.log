@@ -1,0 +1,42 @@
+21:56:36 launching 4 Modal L40S container(s), 2 at a time
+✓ Initialized. View run at 
+https://modal.com/apps/initialincrease/main/ap-0UsdyzNuqgp4DIRgrvyAnd
+✓ Created objects.
+├── ✓ Uploaded /Users/liuhao/Downloads/Astro 
+│   project/tmp/worktrees/gpu-bench-modal/scripts/benchmark_modal.py
+├── ✓ Uploaded PythonPackage:modal_gpu
+└── ✓ Created Function bench.
+Traceback (most recent call last):
+  File "/pkg/modal/_runtime/container_io_manager.py", line 987, in handle_input_exception
+    yield
+  File "/pkg/modal/_container_entrypoint.py", line 189, in run_input_sync
+    values = io_context.call_function_sync()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pkg/modal/_runtime/container_io_manager.py", line 266, in call_function_sync
+    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/benchmark_modal.py", line 68, in bench
+    (root / 'grid').symlink_to('/grids')
+  File "/usr/local/lib/python3.11/pathlib.py", line 1198, in symlink_to
+    os.symlink(target, self, target_is_directory)
+FileExistsError: [Errno 17] File exists: '/grids' -> '/workspace/cosmic-chronometers-jwst/grid'
+Traceback (most recent call last):
+  File "/pkg/modal/_runtime/container_io_manager.py", line 987, in handle_input_exception
+    yield
+  File "/pkg/modal/_container_entrypoint.py", line 189, in run_input_sync
+    values = io_context.call_function_sync()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pkg/modal/_runtime/container_io_manager.py", line 266, in call_function_sync
+    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/benchmark_modal.py", line 68, in bench
+    (root / 'grid').symlink_to('/grids')
+  File "/usr/local/lib/python3.11/pathlib.py", line 1198, in symlink_to
+    os.symlink(target, self, target_is_directory)
+FileExistsError: [Errno 17] File exists: '/grids' -> '/workspace/cosmic-chronometers-jwst/grid'
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/initialincrease/main/ap-0UsdyzNuqgp4DIRgrvyAnd
+22:06:03 2-fc-01M4Y759754SCHJ1NKXNFRKFNY: RuntimeError: FileExistsError: [Errno 17] File exists: '/grids' -> '/workspace/cosmic-chronometers-jwst/grid'
+22:06:03 3-fc-01M4Y75DNVYM7HAWXQ3BYFK9FV: RuntimeError: FileExistsError: [Errno 17] File exists: '/grids' -> '/workspace/cosmic-chronometers-jwst/grid'
+22:06:06 L40S: $0.6294 estimated; failed containers: ['2-fc-01M4Y759754SCHJ1NKXNFRKFNY', '3-fc-01M4Y75DNVYM7HAWXQ3BYFK9FV']

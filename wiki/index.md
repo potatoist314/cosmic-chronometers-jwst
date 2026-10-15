@@ -119,6 +119,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 ## Compute
 
 - `research/experiments/e-gpu-price-benchmark.md` — GPU likelihood price matrix and 5090 batch diagnostic (2026-09-23; six of ten hosts measured)
+- `research/experiments/e-modal-gpu-benchmark.md` — Modal GPU sampling speed and cost per fit across 11 cards (2026-10-14)
 - `notes/calibration-speedup.md` — Calibration polynomial speed-up (2026-09-15)
 - `notes/m1-210210-reference.md` — M1_210210 reference fit (2026-09-17)
 - `notes/no-emission-mask.md` — M1_210210 without the emission-line mask (2026-09-21)
