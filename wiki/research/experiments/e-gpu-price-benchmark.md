@@ -220,6 +220,33 @@ Speed ratios of RTX 5060 Ti, 5070, 5070 Ti, 5080 and 5090 (and 5060 if offered) 
 | [RTX 5080](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.352 | 79,161 | 0.041 |
 | [RTX 5090](results/gpu-benchmark-2026-09-23/sol/summary.json) | 0.485 | 148,930 | 0.030 |
 
+### Speed relative to RTX 5090
+
+| GPU | 23 Sep · likelihood calls/s | 30 Sep · 30 later sampler steps | 14 Oct · sampling |
+| --- | ---: | ---: | ---: |
+| RTX 3090 |  | [0.26](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/4fa1b1df0249548a7da8959edd6c8009395082f8/results/speedups-swarm-throughput-2026-09-30/types/rtx-3090/run/out/solo30/summary.json) |  |
+| RTX 4090 |  | [0.65](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/4fa1b1df0249548a7da8959edd6c8009395082f8/results/speedups-swarm-throughput-2026-09-30/types/rtx-4090/run/out/solo30/summary.json) |  |
+| RTX 5060 Ti | [0.22](results/gpu-benchmark-2026-09-23/sol/summary.json) | [0.28](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/4fa1b1df0249548a7da8959edd6c8009395082f8/results/speedups-swarm-throughput-2026-09-30/types/rtx-5060-ti/run/out/solo30/summary.json) |  |
+| RTX 5070 | [0.30](results/gpu-benchmark-2026-09-23/sol/summary.json) |  |  |
+| RTX 5080 | [0.53](results/gpu-benchmark-2026-09-23/sol/summary.json) |  |  |
+| RTX 5090 | [1.00](results/gpu-benchmark-2026-09-23/sol/summary.json) | [1.00](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/4fa1b1df0249548a7da8959edd6c8009395082f8/results/speedups-swarm-throughput-2026-09-30/types/rtx-5090/run/out/solo30/summary.json) | [1.00](results/gpu-bench-modal-2026-10-14/REPORT.md) |
+| Tesla V100 |  | [0.25](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/4fa1b1df0249548a7da8959edd6c8009395082f8/results/speedups-swarm-throughput-2026-09-30/types/tesla-v100/run/out/solo30/summary.json) |  |
+| T4 |  |  | [0.08 (0.08–0.08)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| L4 |  |  | [0.26 (0.26–0.26)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| A10 |  |  | [0.27 (0.27–0.30)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| L40S |  |  | [0.66 (0.65–0.68)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| A100 SXM4 (40 GB) |  | [0.91](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/4fa1b1df0249548a7da8959edd6c8009395082f8/results/speedups-swarm-throughput-2026-09-30/types/a100-sxm4/run/out/solo30/summary.json) | [1.19 (1.12–1.23)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| A100 SXM4 (80 GB) |  |  | [1.25 (1.21–1.32)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| RTX PRO 6000 |  |  | [0.89 (0.84–0.91)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| H100 |  |  | [1.90 (1.79–2.02)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| H200 |  |  | [1.94 (1.90–2.00)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| B200 |  |  | [2.31 (2.29–2.32)](results/gpu-bench-modal-2026-10-14/summary.json) |
+| B300 |  |  | [0.66 (0.65–0.66)](results/gpu-bench-modal-2026-10-14/summary.json) |
+
+- The 23 Sep, 30 Sep and 14 Oct columns differ in builds and workloads. Comparisons apply only within each column.
+- The table shows relative sampling speeds from 14 Oct eight-fit median sampling times. Speed ranges use four container mean sampling times.
+- The [14 Oct RTX 5090 anchor](results/gpu-bench-modal-2026-10-14/REPORT.md) is a single same-build fit on one Vast host. Sampling took 116.39 s.
+
 ## Results
 
 Six of ten requested host measurements completed: two RTX 5060 Ti, one 5070, one 5080 and two 5090. The 5070 Ti has no measured host. [Price matrix and invoices](results/gpu-benchmark-2026-09-23/sol/summary.json) record $0.981 billed, including failed rentals. [Diagnostic summary](results/gpu-benchmark-2026-09-23/diagnostic/summary.json) records $0.087 billed for the separate 5090 test.
