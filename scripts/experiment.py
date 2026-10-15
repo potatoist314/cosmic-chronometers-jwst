@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import ast
 import fcntl
+import hashlib
 import io
 import json
 import math
@@ -356,7 +357,7 @@ class Run(engine.Run):
 
 
 class ModalRun:
-    """Fit each pending cell in its own Modal GPU container; the manifest and results match Run."""
+    """Fit the pending cells in Modal GPU containers; the manifest and results match Run."""
 
     def __init__(self, args, source):
         self.args = args
@@ -413,18 +414,32 @@ class ModalRun:
             archive.addfile(info, io.BytesIO(listing))
         return archives + [('', str(path))]
 
-    def unpack(self, path, index, cell, call):
+    def cache_key(self, cell):
+        """Everything that fixes a fit's compiled programs: image, GPU, pinned source, and the cell
+        without its name and arm. The seed stays: a new seed compiles and autotunes a few new programs."""
+        source = self.data['source']
+        fixed = {k: v for k, v in cell.items() if k not in ('name', 'arm')}
+        text = json.dumps([source['image'], self.args.gpu, source['commit'], source['submodules'], fixed],
+                          sort_keys=True)
+        return hashlib.sha256(text.encode()).hexdigest()
+
+    def containers(self, pending):
+        """Up to the GPU limit, one container per cell; beyond it, cells sorted by cache key share them."""
+        ordered = sorted(pending, key=lambda item: self.cache_key(item[1]))
+        count = min(len(ordered), modal_gpu.MAX_CONTAINERS)
+        return [ordered[i * len(ordered) // count:(i + 1) * len(ordered) // count] for i in range(count)]
+
+    def unpack(self, path, call):
         """Results to fits/ exactly as the Vast rsync places them; stage logs beside the manifest."""
         destination = self.root / 'fits'
         with tarfile.open(path) as archive:
             status = json.load(archive.extractfile('status.json'))
             for member in archive.getmembers():
-                if member.name.startswith('results/'):
-                    member.name = member.name.removeprefix('results/')
+                if member.name.startswith('results/') and member.name.count('/') > 1:
+                    member.name = member.name.split('/', 2)[2]
                     archive.extract(member, destination, filter='data')
-                elif member.name in ('bootstrap.log', 'fit.log'):
-                    name = 'bootstrap' if member.name == 'bootstrap.log' else f'fit-{index}'
-                    (self.root / f'{call}-{name}.log').write_bytes(archive.extractfile(member).read())
+                elif member.name.endswith('.log'):
+                    (self.root / f'{call}-{member.name}').write_bytes(archive.extractfile(member).read())
         return status
 
     def stop(self, app_id):
@@ -467,14 +482,16 @@ class ModalRun:
         attempt = {'gpu': self.args.gpu, 'cells': {}, 'started': time.time(), 'status': 'running'}
         self.data['attempts'].append(attempt)
         self.save()
-        engine.log(f'launching {len(pending)} Modal {self.args.gpu} container(s)')
+        containers = self.containers(pending)
+        engine.log(f'launching {len(containers)} Modal {self.args.gpu} container(s) for {len(pending)} cell(s)')
         try:
             # Source and input archives are transient; only calls and result archives land in work.
             with tempfile.TemporaryDirectory() as temporary:
                 request = {'gpu': self.args.gpu, 'grids': list(grids.values()),
-                           'archives': self.archives(Path(temporary)), 'cells': [
-                    {'index': i, 'cell': c, 'grid': Path(c['settings']['ssp_grid']).name,
-                     'grid_sha256': grids[Path(c['settings']['ssp_grid']).name]['grid_sha256']} for i, c in pending]}
+                           'archives': self.archives(Path(temporary)), 'containers': [[
+                    {'index': i, 'cell': c, 'key': self.cache_key(c), 'grid': Path(c['settings']['ssp_grid']).name,
+                     'grid_sha256': grids[Path(c['settings']['ssp_grid']).name]['grid_sha256']} for i, c in members]
+                    for members in containers]}
                 (Path(temporary) / 'request.json').write_text(json.dumps(request))
                 self.client('scripts/modal_gpu.py', str(Path(temporary) / 'request.json'), str(work))
         finally:
@@ -485,27 +502,38 @@ class ModalRun:
                 self.stop(attempt['app_id'])
             self.save()
         failed = []
-        for index, cell in pending:
-            call = calls.get('calls', {}).get(str(index), f'cell-{index}')
-            record = attempt['cells'][cell['name']] = {'call_id': call}
+        for number, members in enumerate(containers):
+            call = calls.get('calls', {}).get(str(number), f'container-{number}')
             try:
-                if (work / f'{index}.error').exists():
-                    raise vast.SweepError((work / f'{index}.error').read_text())
-                status = self.unpack(work / f'{index}.tar.gz', index, cell, call)
-                seconds = status['finished'] - status['started']
-                record.update(gpu_name=status['gpu'], container_seconds=seconds, exit=status['exit'],
-                              estimated_usd=modal_gpu.cost_usd(self.args.gpu, seconds))
-                if any(status['exit'].values()) or len(status['exit']) < 2:
-                    raise engine.StageFailed(f"{cell['name']}: stage exit {status['exit']}; inspect {self.root}/{call}-*.log")
-                validate_local_result(self.root / 'fits' / cell['arm']
-                                      / f"{cell['target_metadata']['object_id']}-{cell['target']}")
-                self.data.setdefault('completed_cells', []).append(cell['name'])
-                (work / f'{index}.tar.gz').unlink()
-            except (vast.SweepError, engine.StageFailed, subprocess.SubprocessError, OSError, KeyError) as error:
-                record['error'] = f'{type(error).__name__}: {error}'
-                failed.append(cell['name'])
-                engine.log(record['error'])
-            self.save()
+                if (work / f'{number}.error').exists():
+                    raise vast.SweepError((work / f'{number}.error').read_text())
+                status, error = self.unpack(work / f'{number}.tar.gz', call), None
+            except (vast.SweepError, OSError, KeyError) as caught:
+                status, error = None, caught
+            for index, cell in members:
+                record = attempt['cells'][cell['name']] = {'call_id': call}
+                try:
+                    if error is not None:
+                        raise error
+                    seconds = status['finished'] - status['started']
+                    fit = status.get('cells', {}).get(str(index), {})
+                    # The container's cost is shared equally by its cells.
+                    record.update(gpu_name=status['gpu'], container_seconds=seconds, container_cells=len(members),
+                                  estimated_usd=modal_gpu.cost_usd(self.args.gpu, seconds) / len(members),
+                                  exit={**status['exit'], **({'fit': fit['exit']} if fit else {})},
+                                  **{k: fit[k] for k in ('mode', 'tuned', 'compiled', 'retuned') if k in fit})
+                    if any(record['exit'].values()) or len(record['exit']) < 2:
+                        raise engine.StageFailed(f"{cell['name']}: stage exit {record['exit']}; inspect {self.root}/{call}-*.log")
+                    validate_local_result(self.root / 'fits' / cell['arm']
+                                          / f"{cell['target_metadata']['object_id']}-{cell['target']}")
+                    self.data.setdefault('completed_cells', []).append(cell['name'])
+                except (vast.SweepError, engine.StageFailed, subprocess.SubprocessError, OSError, KeyError) as caught:
+                    record['error'] = f'{type(caught).__name__}: {caught}'
+                    failed.append(cell['name'])
+                    engine.log(record['error'])
+                self.save()
+            if error is None and all(c['name'] in self.data.get('completed_cells', []) for _, c in members):
+                (work / f'{number}.tar.gz').unlink()
         attempt['estimated_usd'] = sum(r.get('estimated_usd', 0) for r in attempt['cells'].values())
         attempt['status'] = 'failed' if failed else 'complete'
         self.invoices()
