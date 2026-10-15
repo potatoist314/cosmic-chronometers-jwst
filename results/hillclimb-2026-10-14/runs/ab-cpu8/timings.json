@@ -1,0 +1,102 @@
+{
+ "called_at": 1792015760.203284,
+ "entered": 1792016852.819735,
+ "finished": 1792018582.6531758,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu_info": "model name\t: unknown\n8\n",
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792016853.4866514,
+   "end": 1792017167.8323455,
+   "returncode": 0,
+   "stdout": "22:27:33 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792017168.6711123,
+   "end": 1792017429.9570837,
+   "returncode": 0,
+   "stdout": "22:32:48 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792017430.795916,
+   "end": 1792017742.6457515,
+   "returncode": 0,
+   "stdout": "22:37:10 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792017743.4824407,
+   "end": 1792018003.7612276,
+   "returncode": 0,
+   "stdout": "22:42:23 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792018004.616619,
+   "end": 1792018319.964014,
+   "returncode": 0,
+   "stdout": "22:46:44 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792018320.8336835,
+   "end": 1792018582.134877,
+   "returncode": 0,
+   "stdout": "22:52:00 fitting fit/M5_238580, seed 20260832\n"
+  }
+ ],
+ "returned": 1792018585.7365959,
+ "plan": [
+  {
+   "label": "head",
+   "cpus": "0-1"
+  },
+  {
+   "label": "head"
+  },
+  {
+   "label": "head",
+   "cpus": "0-1"
+  },
+  {
+   "label": "head"
+  },
+  {
+   "label": "head",
+   "cpus": "0-1"
+  },
+  {
+   "label": "head"
+  }
+ ],
+ "gpu_requested": "L40S",
+ "cpu": 8.0,
+ "memory_gib": 16
+}

@@ -1,0 +1,129 @@
+{
+ "called_at": 1792017319.1185331,
+ "entered": 1792018411.9444227,
+ "finished": 1792020037.6262267,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792018419.1552362,
+   "end": 1792018723.0966802,
+   "returncode": 0,
+   "stdout": "22:53:39 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792018724.0535657,
+   "end": 1792018990.3876994,
+   "returncode": 0,
+   "stdout": "22:58:44 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792018991.2352273,
+   "end": 1792019253.5405695,
+   "returncode": 0,
+   "stdout": "23:03:11 fitting fit/M5_238580, seed 20261014\n"
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792019254.390351,
+   "end": 1792019510.198759,
+   "returncode": 0,
+   "stdout": "23:07:34 fitting fit/M5_238580, seed 20261014\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792019511.097996,
+   "end": 1792019781.9273837,
+   "returncode": 0,
+   "stdout": "23:11:51 fitting fit/M5_238580, seed 20261015\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792019782.78204,
+   "end": 1792020037.1062613,
+   "returncode": 0,
+   "stdout": "23:16:22 fitting fit/M5_238580, seed 20261015\n"
+  }
+ ],
+ "returned": 1792020040.272506,
+ "plan": [
+  {
+   "label": "head",
+   "seed": 20260832
+  },
+  {
+   "label": "head",
+   "seed": 20260832,
+   "settings": {
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -3.0
+    }
+   }
+  },
+  {
+   "label": "head",
+   "seed": 20261014
+  },
+  {
+   "label": "head",
+   "seed": 20261014,
+   "settings": {
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -3.0
+    }
+   }
+  },
+  {
+   "label": "head",
+   "seed": 20261015
+  },
+  {
+   "label": "head",
+   "seed": 20261015,
+   "settings": {
+    "sampler": {
+     "num_live": 500,
+     "num_inner_steps": 65,
+     "num_delete": 100,
+     "logZ_tol": -3.0
+    }
+   }
+  }
+ ],
+ "gpu_requested": "L40S",
+ "cpu": 2.0,
+ "memory_gib": 16
+}

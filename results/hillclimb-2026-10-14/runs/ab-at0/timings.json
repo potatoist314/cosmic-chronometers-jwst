@@ -1,0 +1,113 @@
+{
+ "called_at": 1792014788.401442,
+ "entered": 1792014906.4458234,
+ "finished": 1792016486.589713,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu": 2.0,
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792014906.9430177,
+   "end": 1792015171.2507813,
+   "returncode": 0,
+   "stdout": "21:55:07 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0"
+   },
+   "concurrent": 1,
+   "start": 1792015172.089764,
+   "end": 1792015429.8902035,
+   "returncode": 0,
+   "stdout": "21:59:32 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792015430.73024,
+   "end": 1792015698.5298066,
+   "returncode": 0,
+   "stdout": "22:03:50 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0"
+   },
+   "concurrent": 1,
+   "start": 1792015699.3701274,
+   "end": 1792015956.1635244,
+   "returncode": 0,
+   "stdout": "22:08:19 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792015957.0029185,
+   "end": 1792016227.3722136,
+   "returncode": 0,
+   "stdout": "22:12:37 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0"
+   },
+   "concurrent": 1,
+   "start": 1792016228.262771,
+   "end": 1792016486.0711348,
+   "returncode": 0,
+   "stdout": "22:17:08 fitting fit/M5_238580, seed 20260832\n"
+  }
+ ],
+ "returned": 1792016488.768186,
+ "plan": [
+  {
+   "label": "base"
+  },
+  {
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0"
+   }
+  },
+  {
+   "label": "base"
+  },
+  {
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0"
+   }
+  },
+  {
+   "label": "base"
+  },
+  {
+   "label": "base",
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_command_buffer= --xla_gpu_autotune_level=0"
+   }
+  }
+ ],
+ "gpu_requested": "L40S",
+ "memory_gib": 16
+}

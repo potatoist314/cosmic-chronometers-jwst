@@ -1,0 +1,565 @@
+{
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cold_start_s": 10.4,
+ "container_s": 1275.8,
+ "rows": [
+  {
+   "step": 0,
+   "copy": 0,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 221.7,
+   "kernel_start_s": 1.1,
+   "notebook_s": 216.6,
+   "after_kernel_s": 4.0,
+   "imports": 5.2,
+   "data": 0.1,
+   "observations": 4.9,
+   "model": 11.5,
+   "sampler cell": 192.5,
+   "predictive": 1.3,
+   "corner/sfh": 1.0,
+   "hash": "080085fd4a8f8135",
+   "path": "9ac5cb5174d11394",
+   "wall_sampler": 177.0,
+   "n_calls": 5345499,
+   "lnZ": 236690.2595680767,
+   "n_samples": 17200,
+   "kish_ess": 4345.3,
+   "ess_per_s": 24.55,
+   "ess": {
+    "logzsol": 2950.8,
+    "afe": 2926.2,
+    "logmass": 2603.7,
+    "t50": 2152.1
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2541,
+     -0.2131,
+     -0.1717
+    ],
+    "afe": [
+     -0.0653,
+     -0.0375,
+     -0.0086
+    ],
+    "logmass": [
+     11.5632,
+     11.5932,
+     11.621
+    ],
+    "t50": [
+     4.0295,
+     4.6114,
+     5.0481
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 16.67,
+    "afe": 16.53,
+    "logmass": 14.71,
+    "t50": 12.16
+   },
+   "check_passed": true,
+   "lnZ_err": 0.204
+  },
+  {
+   "step": 2,
+   "copy": 0,
+   "label": "final",
+   "target": "107643-M4_107643",
+   "rc": 0,
+   "process_s": 157.7,
+   "kernel_start_s": 0.9,
+   "notebook_s": 152.8,
+   "after_kernel_s": 4.0,
+   "imports": 3.4,
+   "data": 0.1,
+   "observations": 4.7,
+   "model": 10.0,
+   "sampler cell": 132.3,
+   "predictive": 1.2,
+   "corner/sfh": 1.0,
+   "hash": "810b70f73ee3c1b1",
+   "path": "825ed807c6f4032c",
+   "wall_sampler": 120.1,
+   "n_calls": 4987406,
+   "lnZ": 231351.23539454455,
+   "n_samples": 15800,
+   "kish_ess": 4358.9,
+   "ess_per_s": 36.29,
+   "ess": {
+    "logzsol": 2759.7,
+    "afe": 2919.9,
+    "logmass": 2600.7,
+    "t50": 2688.6
+   },
+   "quantiles": {
+    "logzsol": [
+     0.0748,
+     0.1295,
+     0.1835
+    ],
+    "afe": [
+     0.0352,
+     0.0711,
+     0.108
+    ],
+    "logmass": [
+     11.1635,
+     11.2123,
+     11.2574
+    ],
+    "t50": [
+     2.3848,
+     3.1088,
+     4.0849
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 22.98,
+    "afe": 24.31,
+    "logmass": 21.65,
+    "t50": 22.39
+   },
+   "check_passed": true,
+   "lnZ_err": 0.204
+  },
+  {
+   "step": 4,
+   "copy": 0,
+   "label": "final",
+   "target": "107643-M4_107643",
+   "rc": 0,
+   "process_s": 154.7,
+   "kernel_start_s": 0.9,
+   "notebook_s": 149.9,
+   "after_kernel_s": 3.9,
+   "imports": 3.3,
+   "data": 0.1,
+   "observations": 4.5,
+   "model": 9.6,
+   "sampler cell": 130.1,
+   "predictive": 1.2,
+   "corner/sfh": 1.0,
+   "hash": "810b70f73ee3c1b1",
+   "path": "825ed807c6f4032c",
+   "wall_sampler": 119.2,
+   "n_calls": 4987406,
+   "lnZ": 231351.23539454455,
+   "n_samples": 15800,
+   "kish_ess": 4358.9,
+   "ess_per_s": 36.57,
+   "ess": {
+    "logzsol": 2759.7,
+    "afe": 2919.9,
+    "logmass": 2600.7,
+    "t50": 2688.6
+   },
+   "quantiles": {
+    "logzsol": [
+     0.0748,
+     0.1295,
+     0.1835
+    ],
+    "afe": [
+     0.0352,
+     0.0711,
+     0.108
+    ],
+    "logmass": [
+     11.1635,
+     11.2123,
+     11.2574
+    ],
+    "t50": [
+     2.3848,
+     3.1088,
+     4.0849
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 23.15,
+    "afe": 24.5,
+    "logmass": 21.82,
+    "t50": 22.56
+   },
+   "check_passed": true,
+   "lnZ_err": 0.229
+  },
+  {
+   "step": 6,
+   "copy": 0,
+   "label": "final",
+   "target": "107643-M4_107643",
+   "rc": 0,
+   "process_s": 158.7,
+   "kernel_start_s": 0.8,
+   "notebook_s": 153.7,
+   "after_kernel_s": 4.2,
+   "imports": 3.4,
+   "data": 0.1,
+   "observations": 4.8,
+   "model": 10.6,
+   "sampler cell": 132.6,
+   "predictive": 1.2,
+   "corner/sfh": 0.9,
+   "hash": "f0f9d03a0c05cda8",
+   "path": "eba21543cef9a755",
+   "wall_sampler": 118.8,
+   "n_calls": 4921874,
+   "lnZ": 231351.1697930118,
+   "n_samples": 15600,
+   "kish_ess": 4107.1,
+   "ess_per_s": 34.57,
+   "ess": {
+    "logzsol": 2693.4,
+    "afe": 2730.0,
+    "logmass": 2426.7,
+    "t50": 2624.5
+   },
+   "quantiles": {
+    "logzsol": [
+     0.076,
+     0.1317,
+     0.1896
+    ],
+    "afe": [
+     0.0323,
+     0.0692,
+     0.1074
+    ],
+    "logmass": [
+     11.1603,
+     11.2112,
+     11.2569
+    ],
+    "t50": [
+     2.3548,
+     3.0854,
+     4.1405
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 22.67,
+    "afe": 22.98,
+    "logmass": 20.43,
+    "t50": 22.09
+   },
+   "check_passed": true,
+   "lnZ_err": 0.175
+  },
+  {
+   "step": 7,
+   "copy": 0,
+   "label": "final",
+   "target": "107643-M4_107643",
+   "rc": 0,
+   "process_s": 413.8,
+   "kernel_start_s": 1.2,
+   "notebook_s": 406.5,
+   "after_kernel_s": 6.0,
+   "imports": 4.3,
+   "data": 0.1,
+   "observations": 4.8,
+   "model": 10.3,
+   "sampler cell": 384.5,
+   "predictive": 1.4,
+   "corner/sfh": 1.1,
+   "hash": "810b70f73ee3c1b1",
+   "path": "825ed807c6f4032c",
+   "wall_sampler": 362.7,
+   "n_calls": 4987406,
+   "lnZ": 231351.23539454455,
+   "n_samples": 15800,
+   "kish_ess": 4358.9,
+   "ess_per_s": 12.02,
+   "ess": {
+    "logzsol": 2759.7,
+    "afe": 2919.9,
+    "logmass": 2600.7,
+    "t50": 2688.6
+   },
+   "quantiles": {
+    "logzsol": [
+     0.0748,
+     0.1295,
+     0.1835
+    ],
+    "afe": [
+     0.0352,
+     0.0711,
+     0.108
+    ],
+    "logmass": [
+     11.1635,
+     11.2123,
+     11.2574
+    ],
+    "t50": [
+     2.3848,
+     3.1088,
+     4.0849
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 7.61,
+    "afe": 8.05,
+    "logmass": 7.17,
+    "t50": 7.41
+   },
+   "check_passed": true,
+   "lnZ_err": 0.241
+  },
+  {
+   "step": 7,
+   "copy": 1,
+   "label": "final",
+   "target": "107643-M4_107643",
+   "rc": 0,
+   "process_s": 412.5,
+   "kernel_start_s": 1.2,
+   "notebook_s": 406.2,
+   "after_kernel_s": 5.1,
+   "imports": 4.1,
+   "data": 0.1,
+   "observations": 4.8,
+   "model": 10.4,
+   "sampler cell": 384.4,
+   "predictive": 1.3,
+   "corner/sfh": 1.1,
+   "hash": "810b70f73ee3c1b1",
+   "path": "825ed807c6f4032c",
+   "wall_sampler": 362.7,
+   "n_calls": 4987406,
+   "lnZ": 231351.23539454455,
+   "n_samples": 15800,
+   "kish_ess": 4358.9,
+   "ess_per_s": 12.02,
+   "ess": {
+    "logzsol": 2759.7,
+    "afe": 2919.9,
+    "logmass": 2600.7,
+    "t50": 2688.6
+   },
+   "quantiles": {
+    "logzsol": [
+     0.0748,
+     0.1295,
+     0.1835
+    ],
+    "afe": [
+     0.0352,
+     0.0711,
+     0.108
+    ],
+    "logmass": [
+     11.1635,
+     11.2123,
+     11.2574
+    ],
+    "t50": [
+     2.3848,
+     3.1088,
+     4.0849
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 7.61,
+    "afe": 8.05,
+    "logmass": 7.17,
+    "t50": 7.41
+   },
+   "check_passed": true,
+   "lnZ_err": 0.204
+  },
+  {
+   "step": 7,
+   "copy": 2,
+   "label": "final",
+   "target": "107643-M4_107643",
+   "rc": 0,
+   "process_s": 413.1,
+   "kernel_start_s": 1.2,
+   "notebook_s": 406.0,
+   "after_kernel_s": 6.0,
+   "imports": 4.0,
+   "data": 0.1,
+   "observations": 4.8,
+   "model": 10.2,
+   "sampler cell": 384.2,
+   "predictive": 1.4,
+   "corner/sfh": 1.1,
+   "hash": "810b70f73ee3c1b1",
+   "path": "825ed807c6f4032c",
+   "wall_sampler": 362.2,
+   "n_calls": 4987406,
+   "lnZ": 231351.23539454455,
+   "n_samples": 15800,
+   "kish_ess": 4358.9,
+   "ess_per_s": 12.03,
+   "ess": {
+    "logzsol": 2759.7,
+    "afe": 2919.9,
+    "logmass": 2600.7,
+    "t50": 2688.6
+   },
+   "quantiles": {
+    "logzsol": [
+     0.0748,
+     0.1295,
+     0.1835
+    ],
+    "afe": [
+     0.0352,
+     0.0711,
+     0.108
+    ],
+    "logmass": [
+     11.1635,
+     11.2123,
+     11.2574
+    ],
+    "t50": [
+     2.3848,
+     3.1088,
+     4.0849
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 7.62,
+    "afe": 8.06,
+    "logmass": 7.18,
+    "t50": 7.42
+   },
+   "check_passed": true,
+   "lnZ_err": 0.158
+  },
+  {
+   "step": 7,
+   "copy": 3,
+   "label": "final",
+   "target": "107643-M4_107643",
+   "rc": 0,
+   "process_s": 411.6,
+   "kernel_start_s": 1.1,
+   "notebook_s": 406.1,
+   "after_kernel_s": 4.5,
+   "imports": 3.9,
+   "data": 0.1,
+   "observations": 4.8,
+   "model": 10.3,
+   "sampler cell": 384.6,
+   "predictive": 1.2,
+   "corner/sfh": 1.1,
+   "hash": "810b70f73ee3c1b1",
+   "path": "825ed807c6f4032c",
+   "wall_sampler": 362.8,
+   "n_calls": 4987406,
+   "lnZ": 231351.23539454455,
+   "n_samples": 15800,
+   "kish_ess": 4358.9,
+   "ess_per_s": 12.01,
+   "ess": {
+    "logzsol": 2759.7,
+    "afe": 2919.9,
+    "logmass": 2600.7,
+    "t50": 2688.6
+   },
+   "quantiles": {
+    "logzsol": [
+     0.0748,
+     0.1295,
+     0.1835
+    ],
+    "afe": [
+     0.0352,
+     0.0711,
+     0.108
+    ],
+    "logmass": [
+     11.1635,
+     11.2123,
+     11.2574
+    ],
+    "t50": [
+     2.3848,
+     3.1088,
+     4.0849
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 7.61,
+    "afe": 8.05,
+    "logmass": 7.17,
+    "t50": 7.41
+   },
+   "check_passed": true,
+   "lnZ_err": 0.262
+  },
+  {
+   "step": 9,
+   "copy": 0,
+   "label": "final",
+   "target": "107643-M4_107643",
+   "rc": 0,
+   "process_s": 159.7,
+   "kernel_start_s": 0.9,
+   "notebook_s": 154.7,
+   "after_kernel_s": 4.0,
+   "imports": 3.5,
+   "data": 0.1,
+   "observations": 4.8,
+   "model": 11.0,
+   "sampler cell": 133.1,
+   "predictive": 1.2,
+   "corner/sfh": 0.9,
+   "hash": "3fe11dd3025c524e",
+   "path": "eba21543cef9a755",
+   "wall_sampler": 118.9,
+   "n_calls": 4921874,
+   "lnZ": 231351.1697930118,
+   "n_samples": 15600,
+   "kish_ess": 4107.1,
+   "ess_per_s": 34.54,
+   "ess": {
+    "logzsol": 2693.4,
+    "afe": 2730.0,
+    "logmass": 2426.7,
+    "t50": 2624.5
+   },
+   "quantiles": {
+    "logzsol": [
+     0.076,
+     0.1317,
+     0.1896
+    ],
+    "afe": [
+     0.0323,
+     0.0692,
+     0.1074
+    ],
+    "logmass": [
+     11.1603,
+     11.2112,
+     11.2569
+    ],
+    "t50": [
+     2.3548,
+     3.0854,
+     4.1405
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 22.65,
+    "afe": 22.96,
+    "logmass": 20.41,
+    "t50": 22.07
+   },
+   "check_passed": true,
+   "lnZ_err": 0.319
+  }
+ ]
+}

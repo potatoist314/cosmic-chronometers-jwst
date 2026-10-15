@@ -1,0 +1,213 @@
+{
+ "called_at": 1792016032.9828339,
+ "entered": 1792017697.7274086,
+ "finished": 1792020034.76605,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc1",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 1,
+   "start": 1792017698.2350967,
+   "end": 1792017900.9565334,
+   "returncode": 0,
+   "stdout": "22:41:38 fitting fit/M4_107643, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc1",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 1,
+   "start": 1792017901.8267512,
+   "end": 1792018146.10837,
+   "returncode": 0,
+   "stdout": "22:45:01 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792018146.9591515,
+   "end": 1792018406.25691,
+   "returncode": 0,
+   "stdout": "22:49:07 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc1",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 1,
+   "start": 1792018407.1690822,
+   "end": 1792018626.9398515,
+   "returncode": 0,
+   "stdout": "22:53:27 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc2",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 1,
+   "start": 1792018627.8183396,
+   "end": 1792018831.5417106,
+   "returncode": 0,
+   "stdout": "22:57:07 fitting fit/M4_107643, seed 20260832\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc2",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 1,
+   "start": 1792018832.4057891,
+   "end": 1792019074.6951454,
+   "returncode": 0,
+   "stdout": "23:00:32 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 6,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792019075.5495079,
+   "end": 1792019333.85508,
+   "returncode": 0,
+   "stdout": "23:04:35 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 7,
+   "copy": 0,
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc3",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 1,
+   "start": 1792019334.7026327,
+   "end": 1792019533.9378946,
+   "returncode": 0,
+   "stdout": "23:08:54 fitting fit/M4_107643, seed 20260832\n"
+  },
+  {
+   "index": 8,
+   "copy": 0,
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc3",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   },
+   "concurrent": 1,
+   "start": 1792019534.7919586,
+   "end": 1792019775.0746756,
+   "returncode": 0,
+   "stdout": "23:12:14 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 9,
+   "copy": 0,
+   "label": "head",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792019775.9320798,
+   "end": 1792020034.2451386,
+   "returncode": 0,
+   "stdout": "23:16:16 fitting fit/M5_238580, seed 20260832\n"
+  }
+ ],
+ "returned": 1792020038.035483,
+ "plan": [
+  {
+   "label": "head",
+   "cells": [
+    "M4_107643"
+   ],
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc1",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   }
+  },
+  {
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc1",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   }
+  },
+  {
+   "label": "head"
+  },
+  {
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc1",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   }
+  },
+  {
+   "label": "head",
+   "cells": [
+    "M4_107643"
+   ],
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc2",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   }
+  },
+  {
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc2",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   }
+  },
+  {
+   "label": "head"
+  },
+  {
+   "label": "head",
+   "cells": [
+    "M4_107643"
+   ],
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc3",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   }
+  },
+  {
+   "label": "head",
+   "env": {
+    "JAX_COMPILATION_CACHE_DIR": "/tmp/xc3",
+    "JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS": "0"
+   }
+  },
+  {
+   "label": "head"
+  }
+ ],
+ "gpu_requested": "L40S",
+ "cpu": 2.0,
+ "memory_gib": 16
+}

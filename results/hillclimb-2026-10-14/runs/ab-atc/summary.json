@@ -1,0 +1,689 @@
+{
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cold_start_s": 97.7,
+ "container_s": 2327.8,
+ "rows": [
+  {
+   "step": 0,
+   "copy": 0,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 255.3,
+   "kernel_start_s": 2.7,
+   "notebook_s": 248.2,
+   "after_kernel_s": 4.4,
+   "imports": 11.5,
+   "data": 0.2,
+   "observations": 8.1,
+   "model": 22.4,
+   "sampler cell": 203.3,
+   "predictive": 1.5,
+   "corner/sfh": 1.2,
+   "hash": "75d10995620f468a",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 179.8,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 24.71,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 14.57,
+    "afe": 15.73,
+    "logmass": 12.12,
+    "t50": 10.04
+   },
+   "check_passed": true,
+   "lnZ_err": 0.258
+  },
+  {
+   "step": 1,
+   "copy": 0,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 239.3,
+   "kernel_start_s": 1.0,
+   "notebook_s": 233.5,
+   "after_kernel_s": 4.8,
+   "imports": 6.3,
+   "data": 0.2,
+   "observations": 9.8,
+   "model": 16.2,
+   "sampler cell": 198.2,
+   "predictive": 1.5,
+   "corner/sfh": 1.3,
+   "hash": "75d10995620f468a",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 182.1,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 24.39,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 14.38,
+    "afe": 15.54,
+    "logmass": 11.97,
+    "t50": 9.91
+   },
+   "check_passed": true,
+   "lnZ_err": 0.196
+  },
+  {
+   "step": 2,
+   "copy": 0,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 241.3,
+   "kernel_start_s": 1.1,
+   "notebook_s": 234.7,
+   "after_kernel_s": 5.5,
+   "imports": 4.6,
+   "data": 0.2,
+   "observations": 6.8,
+   "model": 19.1,
+   "sampler cell": 201.3,
+   "predictive": 1.5,
+   "corner/sfh": 1.2,
+   "hash": "b7be40bab5755a51",
+   "path": "9ac5cb5174d11394",
+   "wall_sampler": 180.7,
+   "n_calls": 5345499,
+   "lnZ": 236690.2595680767,
+   "n_samples": 17200,
+   "kish_ess": 4345.3,
+   "ess_per_s": 24.05,
+   "ess": {
+    "logzsol": 2950.8,
+    "afe": 2926.2,
+    "logmass": 2603.7,
+    "t50": 2152.1
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.2541,
+     -0.2131,
+     -0.1717
+    ],
+    "afe": [
+     -0.0653,
+     -0.0375,
+     -0.0086
+    ],
+    "logmass": [
+     11.5632,
+     11.5932,
+     11.621
+    ],
+    "t50": [
+     4.0295,
+     4.6114,
+     5.0481
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 16.33,
+    "afe": 16.19,
+    "logmass": 14.41,
+    "t50": 11.91
+   },
+   "check_passed": true,
+   "lnZ_err": 0.239
+  },
+  {
+   "step": 3,
+   "copy": 0,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 227.2,
+   "kernel_start_s": 1.0,
+   "notebook_s": 221.5,
+   "after_kernel_s": 4.7,
+   "imports": 4.5,
+   "data": 0.2,
+   "observations": 6.5,
+   "model": 14.4,
+   "sampler cell": 193.2,
+   "predictive": 1.5,
+   "corner/sfh": 1.2,
+   "hash": "75d10995620f468a",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 178.0,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 24.96,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 14.72,
+    "afe": 15.89,
+    "logmass": 12.24,
+    "t50": 10.14
+   },
+   "check_passed": true,
+   "lnZ_err": 0.172
+  },
+  {
+   "step": 4,
+   "copy": 0,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 240.3,
+   "kernel_start_s": 1.1,
+   "notebook_s": 233.6,
+   "after_kernel_s": 5.6,
+   "imports": 4.5,
+   "data": 0.2,
+   "observations": 6.7,
+   "model": 15.5,
+   "sampler cell": 203.9,
+   "predictive": 1.5,
+   "corner/sfh": 1.3,
+   "hash": "5e97b3ad092cd96c",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 183.6,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 24.2,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 14.27,
+    "afe": 15.41,
+    "logmass": 11.87,
+    "t50": 9.83
+   },
+   "check_passed": true,
+   "lnZ_err": 0.164
+  },
+  {
+   "step": 5,
+   "copy": 0,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 228.3,
+   "kernel_start_s": 1.0,
+   "notebook_s": 222.8,
+   "after_kernel_s": 4.5,
+   "imports": 4.6,
+   "data": 0.2,
+   "observations": 7.1,
+   "model": 14.5,
+   "sampler cell": 193.6,
+   "predictive": 1.5,
+   "corner/sfh": 1.3,
+   "hash": "75d10995620f468a",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 178.6,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 24.87,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 14.67,
+    "afe": 15.84,
+    "logmass": 12.2,
+    "t50": 10.11
+   },
+   "check_passed": true,
+   "lnZ_err": 0.176
+  },
+  {
+   "step": 6,
+   "copy": 0,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 236.8,
+   "kernel_start_s": 1.1,
+   "notebook_s": 230.8,
+   "after_kernel_s": 4.9,
+   "imports": 4.6,
+   "data": 0.2,
+   "observations": 6.7,
+   "model": 15.3,
+   "sampler cell": 201.0,
+   "predictive": 1.5,
+   "corner/sfh": 1.4,
+   "hash": "87758c70391b1c5c",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 180.0,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 24.68,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 14.55,
+    "afe": 15.72,
+    "logmass": 12.11,
+    "t50": 10.03
+   },
+   "check_passed": true,
+   "lnZ_err": 0.218
+  },
+  {
+   "step": 7,
+   "copy": 0,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 648.8,
+   "kernel_start_s": 1.5,
+   "notebook_s": 641.1,
+   "after_kernel_s": 6.2,
+   "imports": 5.5,
+   "data": 0.2,
+   "observations": 6.5,
+   "model": 13.6,
+   "sampler cell": 612.1,
+   "predictive": 1.6,
+   "corner/sfh": 1.5,
+   "hash": "75d10995620f468a",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 592.8,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 7.49,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 4.42,
+    "afe": 4.77,
+    "logmass": 3.68,
+    "t50": 3.04
+   },
+   "check_passed": true,
+   "lnZ_err": 0.298
+  },
+  {
+   "step": 7,
+   "copy": 1,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 648.9,
+   "kernel_start_s": 1.5,
+   "notebook_s": 641.9,
+   "after_kernel_s": 5.4,
+   "imports": 5.4,
+   "data": 0.2,
+   "observations": 6.5,
+   "model": 13.7,
+   "sampler cell": 613.2,
+   "predictive": 1.6,
+   "corner/sfh": 1.3,
+   "hash": "75d10995620f468a",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 593.3,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 7.49,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 4.41,
+    "afe": 4.77,
+    "logmass": 3.67,
+    "t50": 3.04
+   },
+   "check_passed": true,
+   "lnZ_err": 0.228
+  },
+  {
+   "step": 7,
+   "copy": 2,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 648.9,
+   "kernel_start_s": 1.5,
+   "notebook_s": 641.9,
+   "after_kernel_s": 5.5,
+   "imports": 5.2,
+   "data": 0.2,
+   "observations": 6.6,
+   "model": 13.7,
+   "sampler cell": 613.3,
+   "predictive": 1.6,
+   "corner/sfh": 1.4,
+   "hash": "75d10995620f468a",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 593.4,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 7.49,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 4.41,
+    "afe": 4.77,
+    "logmass": 3.67,
+    "t50": 3.04
+   },
+   "check_passed": true,
+   "lnZ_err": 0.205
+  },
+  {
+   "step": 7,
+   "copy": 3,
+   "label": "final",
+   "target": "238580-M5_238580",
+   "rc": 0,
+   "process_s": 649.3,
+   "kernel_start_s": 1.3,
+   "notebook_s": 641.9,
+   "after_kernel_s": 6.0,
+   "imports": 5.2,
+   "data": 0.2,
+   "observations": 6.5,
+   "model": 13.7,
+   "sampler cell": 613.3,
+   "predictive": 1.5,
+   "corner/sfh": 1.4,
+   "hash": "75d10995620f468a",
+   "path": "3d782a6fed1c9723",
+   "wall_sampler": 593.5,
+   "n_calls": 5338019,
+   "lnZ": 236690.24605381256,
+   "n_samples": 17200,
+   "kish_ess": 4442.3,
+   "ess_per_s": 7.48,
+   "ess": {
+    "logzsol": 2619.4,
+    "afe": 2829.0,
+    "logmass": 2178.9,
+    "t50": 1804.9
+   },
+   "quantiles": {
+    "logzsol": [
+     -0.256,
+     -0.2156,
+     -0.1782
+    ],
+    "afe": [
+     -0.0652,
+     -0.0369,
+     -0.0048
+    ],
+    "logmass": [
+     11.5677,
+     11.5967,
+     11.623
+    ],
+    "t50": [
+     4.1211,
+     4.6601,
+     5.07
+    ]
+   },
+   "ess_per_s_param": {
+    "logzsol": 4.41,
+    "afe": 4.77,
+    "logmass": 3.67,
+    "t50": 3.04
+   },
+   "check_passed": true,
+   "lnZ_err": 0.212
+  }
+ ]
+}

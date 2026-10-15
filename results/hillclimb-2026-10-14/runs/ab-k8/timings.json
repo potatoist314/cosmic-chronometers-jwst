@@ -1,0 +1,188 @@
+{
+ "called_at": 1792019241.6677608,
+ "entered": 1792020065.8435328,
+ "finished": 1792022226.3929346,
+ "gpu": "NVIDIA L40S, 610.57.04, 49140 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "label": "mps-start",
+   "returncode": 0,
+   "stdout": "",
+   "stderr": "",
+   "start": 1792020065.9020567,
+   "end": 1792020065.9020574
+  },
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "fset",
+   "env": {},
+   "concurrent": 8,
+   "start": 1792020066.290592,
+   "end": 1792021252.911572,
+   "returncode": 0,
+   "stdout": "23:21:06 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 0,
+   "copy": 1,
+   "label": "fset",
+   "env": {},
+   "concurrent": 8,
+   "start": 1792020066.6235855,
+   "end": 1792021285.9380338,
+   "returncode": 0,
+   "stdout": "23:21:06 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 0,
+   "copy": 2,
+   "label": "fset",
+   "env": {},
+   "concurrent": 8,
+   "start": 1792020067.0863795,
+   "end": 1792021289.9424965,
+   "returncode": 0,
+   "stdout": "23:21:07 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 0,
+   "copy": 3,
+   "label": "fset",
+   "env": {},
+   "concurrent": 8,
+   "start": 1792020067.6774917,
+   "end": 1792021258.917129,
+   "returncode": 0,
+   "stdout": "23:21:07 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 0,
+   "copy": 4,
+   "label": "fset",
+   "env": {},
+   "concurrent": 8,
+   "start": 1792020068.1959937,
+   "end": 1792021242.9022377,
+   "returncode": 0,
+   "stdout": "23:21:08 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 0,
+   "copy": 5,
+   "label": "fset",
+   "env": {},
+   "concurrent": 8,
+   "start": 1792020069.0992444,
+   "end": 1792021288.4414585,
+   "returncode": 0,
+   "stdout": "23:21:09 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 0,
+   "copy": 6,
+   "label": "fset",
+   "env": {},
+   "concurrent": 8,
+   "start": 1792020069.9264472,
+   "end": 1792021290.4436226,
+   "returncode": 0,
+   "stdout": "23:21:10 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 0,
+   "copy": 7,
+   "label": "fset",
+   "env": {},
+   "concurrent": 8,
+   "start": 1792020071.84639,
+   "end": 1792021273.4293184,
+   "returncode": 0,
+   "stdout": "23:21:11 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "fset",
+   "env": {},
+   "concurrent": 6,
+   "start": 1792021291.4552016,
+   "end": 1792022225.282166,
+   "returncode": 0,
+   "stdout": "23:41:31 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 1,
+   "label": "fset",
+   "env": {},
+   "concurrent": 6,
+   "start": 1792021291.7462108,
+   "end": 1792022222.2807271,
+   "returncode": 0,
+   "stdout": "23:41:31 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 2,
+   "label": "fset",
+   "env": {},
+   "concurrent": 6,
+   "start": 1792021292.107798,
+   "end": 1792022181.2135978,
+   "returncode": 0,
+   "stdout": "23:41:32 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 3,
+   "label": "fset",
+   "env": {},
+   "concurrent": 6,
+   "start": 1792021292.58408,
+   "end": 1792022225.782533,
+   "returncode": 0,
+   "stdout": "23:41:32 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 4,
+   "label": "fset",
+   "env": {},
+   "concurrent": 6,
+   "start": 1792021293.150303,
+   "end": 1792022222.2807436,
+   "returncode": 0,
+   "stdout": "23:41:33 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 5,
+   "label": "fset",
+   "env": {},
+   "concurrent": 6,
+   "start": 1792021293.7796848,
+   "end": 1792022225.2821841,
+   "returncode": 0,
+   "stdout": "23:41:33 fitting fit/M5_238580, seed 20260832\n"
+  }
+ ],
+ "returned": 1792022229.4375958,
+ "plan": [
+  {
+   "label": "fset",
+   "concurrent": 8,
+   "mps": true
+  },
+  {
+   "label": "fset",
+   "concurrent": 6,
+   "mps": true
+  }
+ ],
+ "gpu_requested": "L40S",
+ "cpu": 2.0,
+ "memory_gib": 32
+}

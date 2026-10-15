@@ -1,0 +1,99 @@
+{
+ "called_at": 1792021889.6308858,
+ "entered": 1792021929.5191665,
+ "finished": 1792023422.0750978,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792021930.0335367,
+   "end": 1792022193.3174791,
+   "returncode": 0,
+   "stdout": "23:52:10 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "final",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792022194.2788541,
+   "end": 1792022428.5357244,
+   "returncode": 0,
+   "stdout": "23:56:34 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "final",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792022429.3846898,
+   "end": 1792022664.6360755,
+   "returncode": 0,
+   "stdout": "00:00:29 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792022665.4864604,
+   "end": 1792022925.2969027,
+   "returncode": 0,
+   "stdout": "00:04:25 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792022926.149396,
+   "end": 1792023186.4442437,
+   "returncode": 0,
+   "stdout": "00:08:46 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "final",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792023187.2962294,
+   "end": 1792023421.5563543,
+   "returncode": 0,
+   "stdout": "00:13:07 fitting fit/M5_238580, seed 20260832\n"
+  }
+ ],
+ "returned": 1792023424.572244,
+ "plan": [
+  {
+   "label": "base"
+  },
+  {
+   "label": "final"
+  },
+  {
+   "label": "final"
+  },
+  {
+   "label": "base"
+  },
+  {
+   "label": "base"
+  },
+  {
+   "label": "final"
+  }
+ ],
+ "gpu_requested": "L40S",
+ "cpu": 2.0,
+ "memory_gib": 16
+}

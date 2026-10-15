@@ -1,0 +1,202 @@
+{
+ "called_at": 1792014788.398413,
+ "entered": 1792015674.2331922,
+ "finished": 1792018857.8005354,
+ "gpu": "NVIDIA L40S, 610.57.04, 46068 MiB",
+ "cpu": 2.0,
+ "steps": [
+  {
+   "index": 0,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792015674.9246037,
+   "end": 1792015949.238152,
+   "returncode": 0,
+   "stdout": "22:07:55 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 2,
+   "start": 1792015950.1159387,
+   "end": 1792016465.6990886,
+   "returncode": 0,
+   "stdout": "22:12:30 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 1,
+   "copy": 1,
+   "label": "base",
+   "env": {},
+   "concurrent": 2,
+   "start": 1792015950.5862508,
+   "end": 1792016465.197988,
+   "returncode": 0,
+   "stdout": "22:12:30 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 4,
+   "start": 1792016466.595472,
+   "end": 1792017431.8817396,
+   "returncode": 0,
+   "stdout": "22:21:06 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 1,
+   "label": "base",
+   "env": {},
+   "concurrent": 4,
+   "start": 1792016467.0671022,
+   "end": 1792017431.8817532,
+   "returncode": 0,
+   "stdout": "22:21:07 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 2,
+   "label": "base",
+   "env": {},
+   "concurrent": 4,
+   "start": 1792016467.691348,
+   "end": 1792017431.8817656,
+   "returncode": 0,
+   "stdout": "22:21:07 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 2,
+   "copy": 3,
+   "label": "base",
+   "env": {},
+   "concurrent": 4,
+   "start": 1792016468.487607,
+   "end": 1792017431.881775,
+   "returncode": 0,
+   "stdout": "22:21:08 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "label": "mps-start",
+   "returncode": 0,
+   "stdout": "",
+   "stderr": "",
+   "start": 1792017432.4847264,
+   "end": 1792017432.4847274
+  },
+  {
+   "index": 3,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 4,
+   "start": 1792017433.2814946,
+   "end": 1792018174.1519191,
+   "returncode": 0,
+   "stdout": "22:37:13 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 1,
+   "label": "base",
+   "env": {},
+   "concurrent": 4,
+   "start": 1792017433.8767855,
+   "end": 1792018173.6510575,
+   "returncode": 0,
+   "stdout": "22:37:14 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 2,
+   "label": "base",
+   "env": {},
+   "concurrent": 4,
+   "start": 1792017434.566188,
+   "end": 1792018173.651134,
+   "returncode": 0,
+   "stdout": "22:37:14 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 3,
+   "copy": 3,
+   "label": "base",
+   "env": {},
+   "concurrent": 4,
+   "start": 1792017435.3530746,
+   "end": 1792018173.6511428,
+   "returncode": 0,
+   "stdout": "22:37:15 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 2,
+   "start": 1792018175.5181608,
+   "end": 1792018583.0158684,
+   "returncode": 0,
+   "stdout": "22:49:35 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 4,
+   "copy": 1,
+   "label": "base",
+   "env": {},
+   "concurrent": 2,
+   "start": 1792018176.0310142,
+   "end": 1792018583.5170043,
+   "returncode": 0,
+   "stdout": "22:49:36 fitting fit/M5_238580, seed 20260832\n"
+  },
+  {
+   "index": 5,
+   "copy": 0,
+   "label": "base",
+   "env": {},
+   "concurrent": 1,
+   "start": 1792018584.424139,
+   "end": 1792018857.2305307,
+   "returncode": 0,
+   "stdout": "22:56:24 fitting fit/M5_238580, seed 20260832\n"
+  }
+ ],
+ "returned": 1792018861.3119428,
+ "plan": [
+  {
+   "label": "base"
+  },
+  {
+   "label": "base",
+   "concurrent": 2
+  },
+  {
+   "label": "base",
+   "concurrent": 4
+  },
+  {
+   "label": "base",
+   "concurrent": 4,
+   "mps": true
+  },
+  {
+   "label": "base",
+   "concurrent": 2,
+   "mps": true
+  },
+  {
+   "label": "base",
+   "mps": true
+  }
+ ],
+ "gpu_requested": "L40S",
+ "memory_gib": 16
+}
