@@ -74,19 +74,15 @@ The user's contribution will be focused on overall research direction and method
   provide the run record. Documentation must not delay launch or result retrieval.
   Use `python3 scripts/experiment.py run <config.json> --gpu "<GPU type>"` for new fits.
 - Before another paid Ceridwen GPU benchmark, read `BENCHMARK_CHECK.md`.
-- GPU startup: use the compact image pinned in `scripts/vast.py`, selected input
-  uploads and cached grids by default. Preserve the image recorded for resumed runs.
-- GPU rentals: among offers for the requested GPU type with reliability above 99.5%
-  (fall back to above 96% only if no offers pass all filters) and upload/download charges each below $10/TB,
-  rank hosts by their record in `scripts/vast_hosts.csv`: good, then unrecorded, then poor (only when
-  nothing else qualifies). Within a record, choose the lowest cost per fit where the host's speed is
-  recorded, otherwise the lowest hourly price. No per-GPU hourly cap. Each experiment has a total $1 cap, including retries.
-- For paid GPU benchmarks, do not destroy a rental solely because a fixed boot
-  or setup time has elapsed. If progress stalls, briefly compare the expected
-  remaining cost on that instance with the cost of a fresh rental, including
-  repeated boot, transfer, and setup. Continue with the cheaper option while
-  respecting the task's hourly price and total spend caps. Recheck when the
-  machine's state changes; destroy task-owned instances after measurement.
+- `experiment.py` runs GPU fits on Modal by default (`scripts/modal_gpu.py`; workspace `initialincrease`,
+  CLI profile `initalincrease`): the compact image pinned in `scripts/vast.py`, selected input uploads,
+  grids and compile caches on Modal Volumes. Preserve the image and backend recorded for resumed runs.
+- GPU type: lowest cost per fit in `results/gpu-bench-modal-2026-10-14/REPORT.md` (A100-40GB).
+- No per-run spend cap. Stay within the Modal credit balance: `experiment.py` refuses a launch once the
+  month's billed cost is above $0. Never add a payment method.
+- Stop every Modal container you start, and only your own apps: check `modal container list`, then
+  `modal app stop -y <app id>`.
+- The Vast path (`--backend vast`, `scripts/vast.py`) still exists; it is not the default.
 - Keep raw data immutable. Produce processed data through documented scripts or
   functions.
 - Put one-time download and bookkeeping utilities in `scripts/`, not notebooks.
