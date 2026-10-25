@@ -34,7 +34,7 @@ _spec.loader.exec_module(slop_lint)
 
 # Reuse the installed TypeSafe transport and credential handling. Import it only
 # when prose needs checking; no-prose commits do not need Jev or credentials.
-JEV_CLIENT_DIR = Path.home() / ".claude/scripts/voice"
+JEV_CLIENT_DIR = Path.home() / ".claude/scripts/jev"
 JEV_MODEL = "jev-1.13.0"
 JEV_TIMEOUT_S = 5.0
 FAULT_THRESHOLD = 0.8
@@ -57,7 +57,7 @@ CHECKS = {
 
 def jev_request(body: dict) -> dict:
     sys.path.insert(0, str(JEV_CLIENT_DIR))
-    from voice_jev import Jev
+    from jev import Jev
 
     client = Jev()
     try:
