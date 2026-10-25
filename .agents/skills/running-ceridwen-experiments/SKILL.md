@@ -1,9 +1,18 @@
 ---
 name: running-ceridwen-experiments
-description: Configure and run Ceridwen fits on Vast.ai, retrieve results, and verify local artifacts. Add analysis or wiki reports only when requested.
+description: Configure and run Ceridwen fits on Modal (the default) or Vast.ai, retrieve results, and verify local artifacts. Add analysis or wiki reports only when requested.
 ---
 
 # Run one Ceridwen experiment
+
+## Workflow update: Modal is the default
+
+Liu Hao, 2026-10-14: "switch gpus to initalincrease@gmail.com on modal instead of vast".
+`scripts/experiment.py run` now runs fits on Modal (`scripts/modal_gpu.py`, workspace
+`initialincrease`, CLI profile `initalincrease`). The Modal rules are in `AGENTS.md`.
+Liu Hao, 2026-10-25: "don't discard vast, just note that the workflow is updated".
+The Vast steps stay in this skill. Use them with `--backend vast`. A resumed run
+keeps the backend that its manifest records.
 
 ## Default scope: fit and retrieve
 
@@ -18,7 +27,7 @@ stage logs, and result files are the reproducibility record. Keep only a short
 Beads status with the output path and any blocker. Read `wiki/research/README.md`
 only if research records or wiki publication are part of the request.
 
-New runs use the compact dependency image pinned in `scripts/vast.py`, selected
+New runs on Modal and Vast use the compact dependency image pinned in `scripts/vast.py`, selected
 input files, and cached grids. Do not replace it with a generic CUDA image.
 Use `--image` only for an explicitly requested override. Saved runs keep their image.
 
@@ -63,13 +72,33 @@ default is `Uniform(low=0.0, high=6.0)`.
    The exact seed applies to every fit. New model code must be committed before
    running; the command uses committed HEAD and pinned submodules.
 2. **Check.** Use `--dry-run` to check the configuration and local inputs without
-   rentals or network access. It requires cached grids. Show the targets, changes,
-   baseline and cap if those choices still need the user's approval. Existing
-   authorization covers execution; do not ask for the same approval again.
-3. **Run.** Use this command for new experiment fits:
+   a Modal launch, a Vast rental or network access. It requires cached grids. Show
+   the targets, changes, baseline and, on Vast, the cap if those choices still need
+   the user's approval. Existing authorization covers execution; do not ask for the
+   same approval again.
+3. **Run on Modal.** Use this command for new experiment fits:
    ```bash
    python3 scripts/experiment.py run results/<slug>/experiment.json \
-     --gpu "RTX 5090" --output results/<slug>/run
+     --gpu A100-40GB --output results/<slug>/run
+   ```
+   Use the GPU type requested by the user. If the user names no type, use A100-40GB.
+   It has the lowest cost per fit in `results/gpu-bench-modal-2026-10-14/REPORT.md`.
+   There is no per-run spend cap. The runner refuses a launch when Modal's
+   `billing summary` shows a billed cost above $0 for the month.
+
+   Missing registered grids download locally before the launch. The runner puts
+   each grid in the Modal Volume `ceridwen-grids` one time. It starts one container
+   for each arm-target fit, to a maximum of 10. More fits share the containers.
+   Then it validates each result, stops its Modal app and rebuilds the standard
+   figures locally. Results are under `run/fits/<arm>/<object>-<target>/`, as on
+   Vast. The stage logs are `run/<call id>-*.log`. Repeat the same command and
+   `--output` to resume the run. After the run, follow the Modal stop rule in
+   `AGENTS.md`. The manifest records the app id of each attempt (`attempts[].app_id`).
+
+   **Run on Vast.** Add `--backend vast` and a Vast GPU name:
+   ```bash
+   python3 scripts/experiment.py run results/<slug>/experiment.json \
+     --backend vast --gpu "RTX 5090" --output results/<slug>/run
    ```
    Use the GPU type requested by the user. Offers must have reliability above
    99.5%, falling back to above 96% only if no offers pass all filters. Both
@@ -104,9 +133,10 @@ default is `Uniform(low=0.0, high=6.0)`.
    If retrieval or validation fails, preserve the partial files and logs. Diagnose
    whether the fit, post-processing, or transfer failed. Recover available outputs
    before considering another paid fit. Resume through the runner with the same
-   configuration and output directory, within the remaining cap. Do not delete
+   configuration and output directory, within the remaining cap on Vast. Do not delete
    completed results or blindly rerun the sampler to repair missing plots.
-5. **Record hosts.** List the hosts that started an instance:
+5. **Record hosts (Vast only).** A Modal run has no host record. List the Vast hosts
+   that started an instance:
    ```bash
    python3 -c "import json; [print(a['offer']['host_id'], a['offer']['gpu_name'], a['status'], a.get('error', '')) for a in json.load(open('results/<slug>/run/manifest.json'))['attempts'] if a.get('instance_id')]"
    ```
@@ -132,7 +162,7 @@ the relevant plotting or wiki skill for that work. An explicit request for a ful
 experiment record still includes the record. Do not infer that request from
 “experiment”, “try”, or “run a fit”. Documentation must not delay result retrieval.
 
-Local SSH errors stop before rental. Use an execution environment authorized to run
+On Vast, local SSH errors stop before rental. Use an execution environment authorized to run
 SSH; waiting for the GPU cannot fix a local user-ID error. The shared upload
 includes HST cutouts and the emission-line table. A nonzero remote stage exit
 saves its log, destroys the owned rental and stops. Diagnose the log before
