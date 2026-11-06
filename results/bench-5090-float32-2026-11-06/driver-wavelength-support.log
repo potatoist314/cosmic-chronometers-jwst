@@ -1,0 +1,90 @@
+23:30:15 project b12ec5f46266; old ceridwen d61175dd899b; new ceridwen 01d65581384f; output results/bench-5090-float32-2026-11-06/run-wavelength-support
+23:30:18 renting RTX 5090, host 367134, $0.415/h; estimate $0.207
+23:30:18 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 59473728 unknown bid $0.415/h, $0.207/fit, $0.207 total; 58929672 unknown bid $0.416/h, $0.208/fit, $0.229 total; 58500201 unknown bid $0.417/h, $0.209/fit, $0.229 total; 51969545 unknown bid $0.426/h, $0.213/fit, $0.213 total; 59016859 unknown bid $0.483/h, $0.241/fit, $0.252 total; 52002270 unknown bid $0.492/h, $0.246/fit, $0.246 total; 58270312 unknown bid $0.556/h, $0.278/fit, $0.299 total; 56894214 unknown bid $0.559/h, $0.280/fit, $0.280 total; 58270322 unknown on-demand $0.670/h, $0.335/fit, $0.356 total; 58545241 unknown on-demand $0.678/h, $0.339/fit, $0.349 total; 50617560 unknown b
+23:30:19 SweepError: vastai returned no JSON: 
+23:30:24 renting RTX 5090, host 57427, $0.366/h; estimate $0.193
+23:30:24 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 58545241 unknown bid $0.366/h, $0.183/fit, $0.193 total; 51969545 unknown bid $0.426/h, $0.213/fit, $0.213 total; 58270319 unknown bid $0.556/h, $0.278/fit, $0.299 total; 56894214 unknown bid $0.559/h, $0.280/fit, $0.280 total; 52002501 unknown bid $0.572/h, $0.286/fit, $0.286 total; 58270312 unknown on-demand $0.670/h, $0.335/fit, $0.356 total; 59454838 unknown on-demand $0.678/h, $0.339/fit, $0.360 total; 35408138 unknown on-demand $0.691/h, $0.346/fit, $0.366 total; 50617560 unknown on-demand $0.718/h, $0.359/fit, $0.380 total; 59016859 unknown on-demand $0.744/h, $0.372/fit, $0.383 total; 
+23:30:26 instance 59483947: (None, None)
+23:31:02 SweepError: instance unavailable
+23:31:04 destroyed instance 59483947
+23:31:08 renting RTX 5090, host 220936, $0.426/h; estimate $0.213
+23:31:08 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 51969545 unknown bid $0.426/h, $0.213/fit, $0.213 total; 51197478 unknown bid $0.469/h, $0.235/fit, $0.256 total; 59016859 unknown bid $0.483/h, $0.241/fit, $0.252 total; 52002270 unknown bid $0.492/h, $0.246/fit, $0.246 total; 58270312 unknown bid $0.556/h, $0.278/fit, $0.299 total; 56894214 unknown bid $0.559/h, $0.280/fit, $0.280 total; 58270319 unknown on-demand $0.670/h, $0.335/fit, $0.356 total; 35408138 unknown on-demand $0.691/h, $0.346/fit, $0.366 total; 50617560 unknown bid $0.696/h, $0.348/fit, $0.369 total; 39675447 unknown on-demand $0.764/h, $0.382/fit, $0.403 total; 59387056 unk
+23:31:09 SweepError: vastai returned no JSON: 
+23:31:27 project b12ec5f46266; old ceridwen d61175dd899b; new ceridwen 01d65581384f; output results/bench-5090-float32-2026-11-06/run-wavelength-support
+23:31:30 renting RTX 5090, host 467312, $0.536/h; estimate $0.310
+23:31:30 ranking: host record, then USD per fit; estimates use 0.5 hours plus 8 GB download; 52723070 good on-demand $0.536/h, $0.268/fit, $0.310 total; 43092247 good on-demand $0.859/h, $0.429/fit, $0.450 total; 59185970 unknown bid $0.410/h, $0.205/fit, $0.205 total; 59016859 unknown bid $0.483/h, $0.241/fit, $0.252 total; 58270319 unknown bid $0.556/h, $0.278/fit, $0.299 total; 58270322 unknown on-demand $0.670/h, $0.335/fit, $0.356 total; 59454838 unknown on-demand $0.678/h, $0.339/fit, $0.360 total; 35408136 unknown on-demand $0.691/h, $0.346/fit, $0.366 total; 39675447 unknown on-demand $0.764/h, $0.382/fit, $0.403 total; 45028234 poor bid $0.410/h, $0.205/fit, $0.236 total; 591
+23:31:32 instance 59484083: (None, None)
+23:31:50 instance 59484083: ('loading', 'Successfully loaded ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34')
+23:31:56 instance 59484083: ('running', 'success, running ghcr.io/potatoist314/ceridwen-gpu_sha256_e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34/ssh')
+23:32:01 uploading pinned source, inputs and cached grid
+23:37:07 bootstrap: running; n==1.0.12 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+ - sedpy-jax==0.1.1
+ + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+Checked 154 packages in 7ms
+All installed packages are compatible
+23:37:18 bootstrap: running; read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+
+Core installation OK: fits of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+23:37:30 bootstrap: 0; d
+Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+Selected fit inputs verified
+LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+Ceridwen GPU environment ready.
+23:37:45 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:37:56 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:38:08 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:38:19 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:38:30 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:38:41 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:38:52 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:39:04 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:39:17 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:39:29 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:39:40 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:39:52 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:40:03 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:40:14 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:40:26 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:40:37 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:40:48 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:40:59 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:41:10 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:41:22 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:41:33 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:41:44 fit-0: running; 23:37:50 fitting old/M1_210210, seed 20260832
+23:41:55 fit-0: 0; 23:37:50 fitting old/M1_210210, seed 20260832
+23:42:58 install-new: running; n @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+Prepared 1 package in 1.22s
+Uninstalled 1 package in 31ms
+Installed 1 package in 30ms
+ - ceridwen==1.0.12 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+ + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+23:43:10 install-new: 0; read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+
+Core installation OK: fits of stellar populations with the published grids work.
+NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+23:43:19 patch-new: 0; patched: wavelength_support=True
+23:43:34 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:43:45 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:43:56 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:44:07 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:44:19 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:44:30 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:44:43 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:44:55 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:45:06 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:45:17 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:45:28 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:45:39 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:45:50 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:46:01 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:46:12 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:46:23 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:46:34 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:46:45 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:46:57 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:47:08 fit-1: running; 23:43:40 fitting new/M1_210210, seed 20260832
+23:47:19 fit-1: 0; 23:43:40 fitting new/M1_210210, seed 20260832
+23:47:35 destroyed instance 59484083

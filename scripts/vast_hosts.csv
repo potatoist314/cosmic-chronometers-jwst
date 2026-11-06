@@ -67,3 +67,6 @@ host_id,outcome,gpu,date,run,reason
 665755,good,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-16/run/manifest.json,bid instance 55625700 finished 50 fits
 617499,poor,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-11/run/manifest.json,bid instance 55630268 finished 4 fits; then the remote host refused SSH and the instance became unavailable
 1801,poor,RTX 5090,2026-10-12,results/dr2-refit-2026-10-12/part-04/run/manifest.json,bid instance 55622782 stalled loading the image; bid instance 55630494 finished 8 fits and then stopped (outbid)
+467312,good,RTX 5090,2026-11-06,results/bench-5090-float32-2026-11-06/run/manifest.json,instance 59481478 finished 2 fits
+57427,poor,RTX 5090,2026-11-06,results/bench-5090-float32-2026-11-06/run-wavelength-support/manifest.json,bid instance 59483947 became unavailable 36 s after creation
+467312,good,RTX 5090,2026-11-06,results/bench-5090-float32-2026-11-06/run-wavelength-support/manifest.json,instance 59484083 finished 2 fits
