@@ -195,9 +195,11 @@ def load_galaxy(folder: Path) -> GalaxyResult:
             "mask": np.asarray(sg["mask"], dtype=bool),
         }
         if "instrument_kind" in sg.attrs:  # Instrument(kind, value)
-            spec["instrument"] = (_text(sg.attrs["instrument_kind"]), float(np.asarray(sg["instrument_value"])))
+            value = np.asarray(sg["instrument_value"], dtype=float)  # per-pixel widths carry instrument_wave
+            spec["instrument"] = (_text(sg.attrs["instrument_kind"]), float(value) if value.ndim == 0 else value,
+                                  np.asarray(sg["instrument_wave"], dtype=float) if value.ndim else None)
         else:  # earlier fits: resolution with smoothtype "R" and RES_CONVENTION
-            spec["instrument"] = (f"R_{RES_CONVENTION}", float(sg.attrs["resolution"]))
+            spec["instrument"] = (f"R_{RES_CONVENTION}", float(sg.attrs["resolution"]), None)
         sm = f["samples"]
         samples = {k: np.asarray(sm[k], dtype=float) for k in theta_init}
         settings = {k: sm.attrs[k] for k in ("num_live", "num_inner_steps", "num_delete", "logZ_tol") if k in sm.attrs}
@@ -326,7 +328,8 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     spec_obs = Spectrum(
         wavelength=galaxy.spec["wavelength"], flux=galaxy.spec["flux"],
         uncertainty=galaxy.spec["uncertainty"], mask=galaxy.spec["mask"],
-        instrument=getattr(Instrument, galaxy.spec["instrument"][0])(galaxy.spec["instrument"][1]),
+        instrument=getattr(Instrument, galaxy.spec["instrument"][0])(galaxy.spec["instrument"][1],
+                                                                     wave=galaxy.spec["instrument"][2]),
         projector="chain", name="spectrum",
     )
     lookback = galaxy.sfh_edges_gyr
@@ -647,10 +650,12 @@ def model_parameter_block(model, ssp, likelihood, settings: dict, seed: int) -> 
             lines.append(f"  {obs.name}: {kind}, {len(obs.filternames)} bands, {int(mask.sum())} fitted; filters {obs.filternames}")
         else:
             wave = np.asarray(obs.wavelength, dtype=float)
+            width = np.asarray(obs.instrument.value)
+            width_text = f"{float(width):.0f}" if width.ndim == 0 else f"{width.min():.2f}-{width.max():.2f} per pixel"
             lines.append(
                 f"  {obs.name}: {kind}, {int(mask.sum())} of {len(mask)} native pixels fitted, "
                 f"{wave[mask].min():.0f}-{wave[mask].max():.0f} A observed; instrument {obs.instrument.kind} = "
-                f"{float(obs.instrument.value):.0f}; projector '{obs.projector}'; stellar sigma_gal {_sigma_gal(model)}; "
+                f"{width_text}; projector '{obs.projector}'; stellar sigma_gal {_sigma_gal(model)}; "
                 f"photometry broadened: {model.broaden_photometry}"
             )
     for key, lhood in zip(likelihood.keys, likelihood.likelihoods):

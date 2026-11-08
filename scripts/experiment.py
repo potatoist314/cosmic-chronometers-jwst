@@ -112,7 +112,7 @@ def preflight(path, revision, *, fetch_missing=False, commands=('git', 'ssh', 'r
                 name = str((path.parent / candidate).resolve())
             elif fetch_missing and name in grid_module['REGISTRY']:
                 grid_module['fetch_grid'](name)
-            source = engine.preflight(revision, grid_name=name, targets={c['target'] for c in cells},
+            source = engine.preflight(revision, grid_name=name, targets={c['target'] for c in cells if not manga(c)},
                                       workers=('experiment.py', 'run_ceridwen_vast_multi_gpu.py'), commands=commands)
             grids[cell['settings']['ssp_grid']] = {
                 'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
@@ -132,9 +132,12 @@ print(json.dumps(manifest))
                                input=program, text=True, capture_output=True, check=True)
     targets = {t['spect_id']: t for t in json.loads(completed.stdout)['targets']}
     for cell in cells:
-        if cell['target'] not in targets:
+        if manga(cell):
+            cell['target_metadata'] = {**manga_target(cell['target']), 'seed': cell['seed']}
+        elif cell['target'] not in targets:
             raise ValueError(f"target not in the production selection: {cell['target']}")
-        cell['target_metadata'] = {**targets[cell['target']], 'seed': cell['seed']}
+        else:
+            cell['target_metadata'] = {**targets[cell['target']], 'seed': cell['seed']}
         grid = grids[cell['settings']['ssp_grid']]
         cell['settings'] = {**cell['settings'], 'ssp_grid': f"{engine.REMOTE}/grid/{grid['remote_name']}"}
     source.update(grids=list(grids.values()), experiment=cells)
@@ -153,6 +156,18 @@ print(json.dumps(manifest))
 
 
 selected_inputs = vast.selected_inputs
+manga = vast.manga_cell
+
+
+def manga_target(plateifu):
+    """Target metadata of a MaNGA aperture spectrum from scripts/manga_aperture_spectra.py."""
+    path = ROOT / 'data/processed/manga_dr17' / f'{plateifu}.fits'
+    if not path.is_file():
+        raise ValueError(f'missing MaNGA aperture spectrum: {path}; run scripts/manga_aperture_spectra.py')
+    header = subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'), '-c',
+                             'import sys; from astropy.io import fits; print(fits.getheader(sys.argv[1])["NSAID"])',
+                             str(path)], text=True, capture_output=True, check=True)
+    return {'spect_id': plateifu, 'object_id': int(header.stdout), 'manifest_index': 0, 'filename': path.name}
 
 
 def validate_result(directory):

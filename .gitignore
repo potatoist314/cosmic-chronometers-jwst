@@ -34,6 +34,11 @@ wiki/public/
 # HST ACS F814W cutouts, ~170 MB (scripts/download_hst_cutouts.py restores them)
 data/raw/hst_f814w/
 
+# MaNGA DR17 drpall, cubes and DAP maps, ~1.8 GB (scripts/download_manga_dr17.py restores them)
+data/raw/manga_dr17/drpall-v3_1_1.fits
+data/raw/manga_dr17/cubes/
+data/raw/manga_dr17/maps/
+
 # Wiki publication and activity locks
 wiki/public.lock
 wiki/public.cache/
