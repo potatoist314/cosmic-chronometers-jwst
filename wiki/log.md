@@ -1490,3 +1490,8 @@
 
 - Pages: `notes/papers-update-2025-2026.md`, `index.md`
 - Change: Added 24 arXiv abstracts (2024-07 to 2026-10) as four-bullet entries under four headings; card t_73af2ef9.
+
+## [2026-11-08] codebase | Ceridwen pin a0b1f6e
+
+- Pages: `index.md`
+- Change: Ceridwen pin moved from `d61175d` to `a0b1f6e` (`upstream-merge-1.0.15`, version 1.0.15); card t_ff71efa0.

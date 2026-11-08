@@ -16,7 +16,8 @@ Default normalisation: the order-10 calibration includes `a_0` (prior width 0.3;
 Source: `notes/model.md`. Contract: `research/model-page-spec.md`.
 Check against `notebooks/ceridwen_integrated_photometry_spectra.ipynb` when defaults change.
 The 30 Sep 2026 production defaults in `notebooks/ceridwen_integrated_photometry_spectra.ipynb` use the nebular grid, line marginalisation, fixed catalogue redshift, the \(\pm1500\ \mathrm{km\,s^{-1}}\) Ca mask, unmasked oxygen lines, metallicity evolution, `zh_beta_unit` \(\mathrm{Uniform}(0,1)\), and `diffuse_Ebump` \(\mathrm{Uniform}(0,6)\).
-10 Oct 2026 merge: `729fba6` (upstream `cc8ac9d`, version 1.0.12, speedups `2d5edc9`); current pin `d7c0536` adds comments only; `logzsol` replaces `Z`. Since 11 Oct 2026 (decision 3), production reads ceridwen's filter library: spectrum bitwise unchanged; photometry changes, |ΔlnL| ≤ 6.3e-3. Report `results/ceridwen-upstream-merge-2026-10-10/REPORT.md`, ledger `results/ceridwen-upstream-merge-2026-10-10/LEDGER.md`.
+10 Oct 2026 merge: `729fba6` (upstream `cc8ac9d`, version 1.0.12, speedups `2d5edc9`); `d7c0536` adds comments only; `logzsol` replaces `Z`. Since 11 Oct 2026 (decision 3), production reads ceridwen's filter library: spectrum bitwise unchanged; photometry changes, |ΔlnL| ≤ 6.3e-3. Report `results/ceridwen-upstream-merge-2026-10-10/REPORT.md`, ledger `results/ceridwen-upstream-merge-2026-10-10/LEDGER.md`.
+8 Nov 2026 pin: `a0b1f6e`, branch `upstream-merge-1.0.15` (upstream `c3e7437`, version 1.0.15, merged into `d61175d`); `CSPBasis_afe` keeps `wavelength_support` on by default. RTX 5090 check: `results/bench-5090-float32-2026-11-06/`.
 Legacy workflow routes: `/wiki/questions/` and `/wiki/experiments/`.
 Result pages show fits and captions; full records live at `/wiki/e/<id>/record/`.
 Governing presentation rules: `wiki/AGENTS.md`, All pages and Result reporting.
