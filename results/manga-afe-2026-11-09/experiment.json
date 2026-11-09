@@ -1,0 +1,78 @@
+{
+  "targets": [
+    "8979-12704",
+    "11943-9102",
+    "8944-12701",
+    "8710-12702",
+    "11943-12705",
+    "9873-12703",
+    "10504-12702",
+    "8999-12702"
+  ],
+  "seed": 20261108,
+  "settings": {
+    "data_source": "manga_dr17",
+    "sky_lines_air": [
+      [
+        5572.0,
+        5583.0
+      ]
+    ]
+  },
+  "priors": {},
+  "arms": {
+    "default": {},
+    "no_wise": {
+      "settings": {
+        "photometry_excluded": [
+          "W1",
+          "W2"
+        ]
+      }
+    },
+    "no_wise_carbon": {
+      "settings": {
+        "photometry_excluded": [
+          "W1",
+          "W2"
+        ],
+        "masked_absorption_features": [
+          "CN4150",
+          "G4300",
+          "Fe4383",
+          "C4668"
+        ]
+      }
+    },
+    "spectrum_r_only": {
+      "settings": {
+        "photometry_excluded": [
+          "FUV",
+          "NUV",
+          "u",
+          "g",
+          "i",
+          "z",
+          "W1",
+          "W2"
+        ]
+      }
+    },
+    "data_floor": {
+      "settings": {
+        "spectrum_floor_anchor": "data"
+      }
+    },
+    "data_floor_carbon": {
+      "settings": {
+        "spectrum_floor_anchor": "data",
+        "masked_absorption_features": [
+          "CN4150",
+          "G4300",
+          "Fe4383",
+          "C4668"
+        ]
+      }
+    }
+  }
+}
