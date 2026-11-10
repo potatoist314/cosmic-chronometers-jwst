@@ -247,7 +247,8 @@ def physical_parameter_names(param_names) -> list[str]:
 def expected_physical_count(param_names) -> int:
     """Physical groups: six baseline groups plus spectrum_scaling / dust_ratio when sampled."""
     names = list(param_names)
-    return 6 + int("spectrum_scaling" in names) + int("dust_ratio" in names)
+    return (6 + int("spectrum_scaling" in names) + int("dust_ratio" in names)
+            + int("cfe" in names) + int("nfe" in names))
 
 
 def _validate_sampler_result(result_dir: Path, spect_id: str) -> None:

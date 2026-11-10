@@ -191,3 +191,5 @@ Birth-cloud dust: enabled by default in the production notebook (24 Sep 2026); `
 SFH bins: Prospector continuity bins (14) by default in the production notebook (24 Sep 2026); `notes/model.md`.
 
 Wiki prose check: `scripts/wiki_prose_check.py` — Jev checks conciseness, plain English and natural phrasing in staged passages.
+
+Optional C/N responses: `notes/model.md`, `notes/ceridwen-ssp-csp.md` — alf transfer at observed resolution, default off; fixed SFH basis retained.

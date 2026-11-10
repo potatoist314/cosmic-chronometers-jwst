@@ -1495,3 +1495,8 @@
 
 - Pages: `index.md`
 - Change: Ceridwen pin moved from `d61175d` to `a0b1f6e` (`upstream-merge-1.0.15`, version 1.0.15); card t_ff71efa0.
+
+## [2026-11-10] codebase | Optional C and N abundance responses
+
+- Pages: `notes/model.md`, `notes/ceridwen-ssp-csp.md`, `index.md`
+- Change: Added the default-off alf C/N option, priors, source support and catalogue-dispersion transfer.

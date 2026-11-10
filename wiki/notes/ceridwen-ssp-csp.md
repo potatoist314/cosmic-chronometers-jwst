@@ -233,3 +233,15 @@ During model setup, the CSP sends the grid `ssp_resolution` curve to each `Spect
 `CSPBasis_afe` does not contain a nebular model. It returns a zero line component and rejects line observations (`csp/csp_afe.py:1114-1195`).
 
 </details>
+
+
+<details>
+<summary>Optional C and N responses</summary>
+
+Optional C and N responses use SFH and metallicity weights on the fixed SFH bin basis. Birth-cloud dust uses the same CSP age groups after template broadening. The correction follows the [alf response prescription](https://github.com/cconroy20/alf/blob/cda32111c721efe586945d7dfcb9f605a9f6a105/src/add_response.f90), with source assumptions in the [alf manual, §§1.4.1 and 1.8](https://github.com/cconroy20/alf/blob/cda32111c721efe586945d7dfcb9f605a9f6a105/doc/alf.pdf).
+
+`CSPBasis_afe(abundance_response=AlfCNResponse.load(path, sigma_catalog=...))` enables the option. The projector subtracts the source \(100\,\mathrm{km\,s^{-1}}\) variance from the combined galaxy-plus-instrument variance. The template ratio uses catalogue dispersion. The Park model retains sampled dispersion. Spectral \(L_\lambda\) templates become proportional \(L_\nu\) before broadening. Zero offsets preserve the prediction's original dtype.
+
+Source: `ceridwen/ceridwen/ssps/abundance_response.py:18-32`, `AlfCNResponse.projected_templates`. Transfer: `ceridwen/ceridwen/csp/csp_afe.py`, `_project_observations`. Tests: `ceridwen/tests/csp/test_cn_response.py` and `tests/test_cn_response_production.py`.
+
+</details>

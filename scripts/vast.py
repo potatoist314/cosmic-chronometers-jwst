@@ -328,6 +328,10 @@ def selected_inputs(cells):
     catalogs = dict.fromkeys(('cosmos2020_classic', 'cosmos2020_farmer',
                               'cosmos2025', 'cosmos2025_uv'), matched_catalogs)
     for cell in cells:
+        response = cell['settings'].get('abundance_response')
+        if response is not None:
+            files.update(str(path.relative_to(PROJECT_ROOT))
+                         for path in (PROJECT_ROOT / response).glob('*.abund.krpa.s100'))
         if manga_cell(cell):
             files.add('data/processed/manga_dr17/' + cell['target_metadata']['filename'])
             continue

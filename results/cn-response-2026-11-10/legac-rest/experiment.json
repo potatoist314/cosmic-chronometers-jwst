@@ -1,0 +1,35 @@
+{
+  "targets": [
+    "M8_150848",
+    "M5_238314",
+    "M3_120308",
+    "M2_134021",
+    "M7_146213",
+    "M3_117010",
+    "M4_107370",
+    "M14_37219",
+    "M8_161113"
+  ],
+  "seed": 20261110,
+  "settings": {},
+  "priors": {},
+  "arms": {
+    "baseline": {},
+    "cn": {
+      "settings": {
+        "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105"
+      }
+    },
+    "cn_carbon_mask": {
+      "settings": {
+        "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+        "masked_absorption_features": [
+          "CN4150",
+          "G4300",
+          "Fe4383",
+          "C4668"
+        ]
+      }
+    }
+  }
+}
