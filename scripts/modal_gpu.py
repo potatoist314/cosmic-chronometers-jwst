@@ -186,7 +186,8 @@ if modal:
         for prefix, data in archives:
             with tarfile.open(fileobj=io.BytesIO(data)) as archive:
                 archive.extractall(root / prefix, filter='data')
-        (root / 'grid').symlink_to('/grids')
+        if not (root / 'grid').is_symlink():
+            (root / 'grid').symlink_to('/grids')
         for grid, digest in {(cell['grid'], cell['grid_sha256']) for cell in cells}:
             with open(f'/grids/{grid}', 'rb') as stream:
                 if hashlib.file_digest(stream, 'sha256').hexdigest() != digest:
