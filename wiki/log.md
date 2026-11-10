@@ -1500,3 +1500,8 @@
 
 - Pages: `notes/model.md`, `notes/ceridwen-ssp-csp.md`, `index.md`
 - Change: Added the default-off alf C/N option, priors, source support and catalogue-dispersion transfer.
+
+## [2026-11-10] codebase | Recorded synthetic observations
+
+- Pages: `notes/model.md`, `index.md`
+- Change: Added the default-off NPZ input contract, units and production noise-floor handling.

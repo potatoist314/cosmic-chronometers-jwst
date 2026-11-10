@@ -328,6 +328,9 @@ def selected_inputs(cells):
     catalogs = dict.fromkeys(('cosmos2020_classic', 'cosmos2020_farmer',
                               'cosmos2025', 'cosmos2025_uv'), matched_catalogs)
     for cell in cells:
+        mock_data = cell['settings'].get('mock_data')
+        if mock_data is not None:
+            files.add(mock_data)
         response = cell['settings'].get('abundance_response')
         if response is not None:
             files.update(str(path.relative_to(PROJECT_ROOT))
