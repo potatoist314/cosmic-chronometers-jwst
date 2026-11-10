@@ -1,0 +1,11 @@
+22:53:42 fitting data_floor_afe_0p2/M4_107370, seed 20260832
+Traceback (most recent call last):
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 628, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 583, in main
+    return remote(args.config, args.output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 295, in remote
+    raise RuntimeError(f"fit failed: {cell['name']}")
+RuntimeError: fit failed: data_floor_afe_0p2/M4_107370

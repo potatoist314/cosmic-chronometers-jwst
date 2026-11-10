@@ -1,0 +1,19 @@
+{
+  "targets": [
+    "M1_210210", "M8_150848", "M5_238314", "M3_120308", "M2_134021",
+    "M7_146213", "M3_117010", "M4_107370", "M14_37219", "M8_161113"
+  ],
+  "seed": 20260832,
+  "settings": {},
+  "priors": {},
+  "arms": {
+    "free_afe": {},
+    "afe_0p0": {"settings": {"fix_afe": 0.0}},
+    "afe_0p2": {"settings": {"fix_afe": 0.2}},
+    "afe_0p4": {"settings": {"fix_afe": 0.4}},
+    "data_floor_free": {"settings": {"spectrum_floor_anchor": "data"}},
+    "data_floor_afe_0p2": {
+      "settings": {"spectrum_floor_anchor": "data", "fix_afe": 0.2}
+    }
+  }
+}
