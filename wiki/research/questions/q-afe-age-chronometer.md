@@ -39,6 +39,17 @@ Age moves only when Fe5015 and Mg b come in.
 
 True −5.24 gives −5.63 full spectrum, −4.54 on the window.
 
+## Your words
+
+```json
+[
+  {
+    "date": "2026-11-10",
+    "text": "fundamentally i'm not getting the alpha/fe i expect from my fits, it's too low because Mg b is not being predicted correctly, but i can't seem to do much about it because that's just how the full spectrum fitting is and if i keep masking arbitrary bands there may as well be no benefit to doing full spectrum fitting. and somewhere along the way this is messing with age so i'm not seeing the overall hubble constant age results i want from the cosmic chronometer"
+  }
+]
+```
+
 ## References
 
 - Detail: [chronometer fits](results/chronometer-135-2026-11-10/REPORT.md), [carbon, nitrogen and mocks](results/cn-response-2026-11-10/REPORT.md), [oldest galaxies](results/oldest-envelope-2026-11-11/REPORT.md).

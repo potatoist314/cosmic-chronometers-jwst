@@ -26,8 +26,7 @@ Rules are in `AGENTS.md`, `~/.claude/CLAUDE.md`, `wiki/AGENTS.md` and
    you can discard the old rule of codex writes prose". Write wiki prose in the style of
    those reports. The page made from them: `wiki/research/questions/q-afe-age-chronometer.md`.
    His words (2026-11-11), about the 1908-word first version of that page: "wiki page much
-   too verbose!" A findings page is the answer lines plus the headline tables, with detail
-   linked. Never transcribe a chat report onto it.
+   too verbose!"
 3. **Edit.** Change the source file in `wiki/notes/`, `wiki/research/` or
    `wiki/analyses/<slug>/`. Do not edit `wiki/public/`. Add one line to `wiki/index.md`
    for a new page. Append one entry to `wiki/log.md`.
