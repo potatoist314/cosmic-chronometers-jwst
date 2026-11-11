@@ -1,0 +1,16 @@
+{
+  "id": "f4211705-cb6e-4fe2-9627-d12f09b168aa",
+  "sequence": 10,
+  "date": "2026-11-11T07:51:04.316489+00:00",
+  "origin": "chat",
+  "action": "note",
+  "text": "Experiment 5, window arms (2026-11-11). Slopes in Gyr per unit redshift, galaxy bootstrap 16–84 in brackets. Candidate common rest windows (widest window fully inside the October fitted range of N galaxies): 129 galaxies 4155.0–4438.1 Å; 120: 4131.3–4573.8; 110: 4074.5–4666.1 (HδA, HγA, Ca4227, Ca4455, CN4150, G4300, Fe4383, Fe4531; z 0.603–0.984); 100: 4103.4–4892.4; 80: 4028.9–5014.7. (h) baseline settings on 4155.0–4438.1 Å, 130 valid: −3.26 [−3.91, −2.62]. (i) baseline settings on 4074.5–4666.1 Å, 110 galaxies: −4.60 [−5.56, −3.60]; median [α/Fe] +0.21 (+0.22 Mg b group, +0.20 no-Mg b group), ρ([α/Fe], z) −0.11 (p 0.24); median age 5.00 Gyr, [Fe/H] −0.50. (j) C and N free on the same window, 110: −5.37 [−6.29, −4.41]; median [α/Fe] +0.14 in both groups, ρ −0.04; [C/Fe] −0.13, [N/Fe] +0.23; H = 106 (90–129) km/s/Mpc at z = 0.725 against Planck18 102.5 at z = 0.728. Planck18 line over these redshifts: −5.31. Same 108 galaxies, full-range fits: (a) −2.09 [−3.13, −0.99], median [α/Fe] +0.09 / −0.15 by group, ρ −0.42; (b) −0.31 [−1.42, +0.92]. Joint slope with a Mg b group step on the 108: (a) −2.40, step −0.08; (b) −4.35, step −1.08; (i) −5.41, step −0.21 [−0.45, +0.02]; (j) −5.80, step −0.11. Window fits lean more on the prior: age width 1.29 (i), 1.27 (j), 1.52 (h), 1.58 (e) times that of (a); ρ(age, prior median age) +0.33 (i), +0.39 (j), +0.15 (a); the prior median-age line over these galaxies is −2.34. Paired age change (i) − (a): median +0.84 Gyr, slope on z −2.59 [−3.52, −1.69]. (h) loses the same five galaxies as (e) (no emission line with fitted pixels in the window). Lead check: (h), (i), (j) slopes and medians recomputed from per-fit.csv. Launched: blue and red extensions of the 4074.5–4666.1 Å window on the galaxies that cover them, and the experiment 9/10 mocks on that window (experiment 11).",
+  "evidence": [
+    "results/chronometer-135-2026-11-10/REPORT.md",
+    "results/chronometer-135-2026-11-10/per-fit.csv",
+    "results/chronometer-135-2026-11-10/common-windows.csv",
+    "results/chronometer-135-2026-11-10/age-width-prior.csv",
+    "results/chronometer-135-2026-11-10/age-redshift-slopes.csv"
+  ],
+  "pages": []
+}
