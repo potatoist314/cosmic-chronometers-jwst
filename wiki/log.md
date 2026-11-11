@@ -1515,3 +1515,8 @@
 
 - Pages: `research/questions/q-afe-age-chronometer.md`
 - Change: Cut from 1908 words to three answer lines, two tables, one mock line and links to the three reports; card t_e083ee8e.
+
+## [2026-11-11] codebase | LEGA-C DR3 data source
+
+- Pages: `notes/model.md`, `notes/data-pipeline.md`, `index.md`
+- Change: Added the `legac_dr3` data source row, the DR3 catalogue paragraph and the 10-galaxy DR3 against DR2 result link; card t_5440a254.

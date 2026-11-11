@@ -103,7 +103,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 
 ## Sample and data
 - `../notebooks/ceridwen_diagnostic_test_set.ipynb` — Six additional DR2 diagnostic targets, catalogue measurements, raw spectra and saved-result links (2026-09-22)
-- `notes/data-pipeline.md` — Data pipeline (2026-09-09 · old: _old/codebase/data-pipeline.html)
+- `notes/data-pipeline.md` — Data pipeline; LEGA-C DR2 and DR3 catalogues (2026-09-09, DR3 2026-11-11 · old: _old/codebase/data-pipeline.html)
 - `notes/cosmos-photometry-refit.md` — M1_210210 refit with COSMOS2020 Classic and COSMOS2025 photometry (2026-09-21)
 - `notes/cosmos-photometry-comparison.md` — COSMOS2020 and COSMOS2025 photometry against COSMOS2015; model-flux columns and corrections (2026-09-24)
 - `notes/sfms-quiescent.md` — Quiescent sample on the star-forming sequence (2026-09-07)

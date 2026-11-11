@@ -34,6 +34,10 @@ Borghi Table 4 supplies a separate reference comparison.
 
 `data/raw/legac_dr2/legaCdr2.fits.gz` contains 1,988 spectrum rows. It supplies redshifts, velocity dispersions, flags, coordinates, spectrum filenames, and published stellar indices. Repeat observations make some object IDs nonunique (`data/raw/legac_dr2/README.md`).
 
+`data/raw/legac_dr3/legac_DR3.fits` contains 4,081 spectrum rows of 3,741 galaxies (van der Wel et al. 2021). `SPECT_ID` is unchanged for spectra shared with DR2. DR3 renames `z` to `Z` and `_err` to `_ERR`. `FLAG_PRIMARY`, `FLAG_SPEC` and `FLAG_MORPH` replace the DR2 flags. Emission-line EWs are positive in DR3 and negative in DR2.
+
+`scripts/download_legac_dr3.py` fetches the catalogue and the 4,081 spectra (627 MB, gitignored) from the ESO archive (`data/raw/legac_dr3/README.md`). The fit notebook reads them with `SETTINGS["data_source"] = "legac_dr3"`.
+
 `data/raw/cosmos2015/` contains positional matches for NUVrJ selection and broadband fluxes. Each catalogue row matches a LEGA-C spectrum row. Therefore, an object can occur more than once (`data/raw/cosmos2015/README.md`).
 
 `data/raw/hst_f814w/` contains one HST ACS F814W cutout for each of the 187 production targets. Each file is a 10-arcsecond box at 0.03 arcseconds per pixel, cut from the COSMOS mosaic of Koekemoer et al. (2007) and oriented north up. `scripts/download_hst_cutouts.py` fetches them from the IRSA `acs_mosaic_2.0` cutout table and skips a file that already exists. The directory is 170 MB and stays out of git. These images enter no fit. The joint notebook draws them.
