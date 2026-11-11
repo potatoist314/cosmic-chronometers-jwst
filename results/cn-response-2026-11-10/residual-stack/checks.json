@@ -1,0 +1,49 @@
+{
+  "checked_utc": "2026-11-11T02:20:04.211460+00:00",
+  "source_h5_count": 270,
+  "source_hashes_unchanged": true,
+  "no_source_writes": true,
+  "no_fits_or_gpu": true,
+  "independent_stack_algorithm": "numpy.histogram; confirms existing bin_native_pulls without interpolation",
+  "bin_edge_ties": 0,
+  "stacks": [
+    {
+      "arm": "baseline",
+      "group": "with_Mgb",
+      "galaxies": 61,
+      "independent_histogram_bins": 1526
+    },
+    {
+      "arm": "baseline",
+      "group": "without_Mgb",
+      "galaxies": 74,
+      "independent_histogram_bins": 1526
+    },
+    {
+      "arm": "cn_free",
+      "group": "with_Mgb",
+      "galaxies": 61,
+      "independent_histogram_bins": 1526
+    },
+    {
+      "arm": "cn_free",
+      "group": "without_Mgb",
+      "galaxies": 74,
+      "independent_histogram_bins": 1526
+    }
+  ],
+  "ranked_intervals": 30,
+  "features": 29,
+  "bootstrap_comparisons": 13,
+  "chi2_partition_sum": 1,
+  "output_sha256": {
+    "intervals.csv": "e4a79c0acac20289dc356d6cfe898aa7a7f0601a52a0b5ed593c348b6d5e1064",
+    "inputs-and-methods.json": "ba529829bed99ac9e241694597309b52080dbf32ada8dd99e21aefeb47648944",
+    "group-differences.csv": "7a73bcf5b11a138814f09d3518f37c1443f2dc7bfd7fc3e4c1b35d28b716e684",
+    "per-galaxy-features.csv": "3f39ace73cb0e33659f06931028b6b5a9840241957c2bfaf0054c25743b79743",
+    "candidate-identifications.json": "64c7e87a85a3253bcb3ce50c352477a664a2fa296641fea7ea481e259534caae",
+    "features.csv": "9b06a6782b4beceb914dbf2844879ee895d2d45f2b0338fabbb43ff9b29d0e90",
+    "stacks.csv": "486d7c18f4a85e2d7084a560c12d4c1ccabc5c22919a3df0cbbd02ba77acbdc4",
+    "chi2-excess.csv": "77e1acabf267e6abfc8e7797d98f1402522f4e520927d90b19469041a7f09b27"
+  }
+}

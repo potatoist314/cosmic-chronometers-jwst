@@ -1,0 +1,5724 @@
+{
+  "created_utc": "2026-11-11T02:17:04.636517+00:00",
+  "loader_notebook": "results/chronometer-135-2026-11-10/analysis.ipynb",
+  "loader_sha256": "aff29acdbcafb8091ebaa777c688110b1729b2e39539906d75efc5f39c7dde5e",
+  "targets_json_sha256": "2c3d0314eaef894ed1109974e50f49f74c53cb05f1f2d9d5ed78b338df6e24d1",
+  "feature_source_sha256": "f27648f6aaf890e172f015a897390833d904ac54d3213b36b5cf34ff9b30d978",
+  "binning_source_sha256": "06c9edf17ba459e05615b230074d4733e7d9f4c478310f59bd4c0d43ac7a7d16",
+  "grid": {
+    "first_center_A": 2900,
+    "last_center_A": 5950,
+    "bin_width_A": 2,
+    "frame": "rest vacuum",
+    "method": "native valid-pixel mean in each bin; no interpolation; equal-galaxy median; excluded and empty values NaN"
+  },
+  "feature_metric": "sum native fitted pulls / sqrt(number fitted band pixels)",
+  "feature_line_half_width_kms": 1000,
+  "emission_mask_half_width_kms": 1500,
+  "emission_windows_vacuum_A": [
+    [
+      3915.0830253502336,
+      3954.4569746497664
+    ],
+    [
+      3946.753769179453,
+      3986.446230820547
+    ],
+    [
+      3953.420246831221,
+      3993.1797531687794
+    ],
+    [
+      4206.766297531688,
+      4249.073702468312
+    ]
+  ],
+  "interval_ranking": {
+    "width_A": 10,
+    "bins": 5,
+    "minimum_galaxies_per_bin": 10,
+    "scope": "15 non-overlapping windows per arm; rank max absolute mean of five stacked bins over the two eligible groups; all bins outside every feature and masked emission-line window"
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "confidence": 0.95,
+    "method": "percentile; independent galaxy resampling in each group",
+    "seed_native_base": 20261111,
+    "seed_matched_base": 20262111,
+    "seed_offset": "zero-based feature index"
+  },
+  "matched_comparison": "mean binned pull per galaxy on fixed common fully-contained 2 A bins of each feature, only galaxies finite on every selected bin; difference of group medians",
+  "chi2_definition": "spectral fitted native pixels only; signed sum(pull^2-1); fractions partition four-carbon-band union, Mgb, complement; not clipped",
+  "records": [
+    {
+      "arm": "baseline",
+      "target": "M5_172669",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/shard-00/run/fits/fit/172669-M5_172669/ceridwen_derived_outputs.h5",
+      "sha256": "27f39712d4149e8f9801dfd068a92c72b3f0c2bd2ae728457d5e5d768ce702ab",
+      "z": 0.6036999821662903,
+      "pixels": 3880,
+      "chi2": 4618.707895649341,
+      "excess": 738.7078956493406,
+      "regional_excess": {
+        "carbon": -184.87693849632274,
+        "Mgb": 28.692977449562274,
+        "elsewhere": 894.8918566961007
+      },
+      "regional_pixels": {
+        "carbon": 554,
+        "Mgb": 86,
+        "elsewhere": 3240
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_233129",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/233129-M10_233129/ceridwen_derived_outputs.h5",
+      "sha256": "49ba9346faf7c4994db5590da862b755ef4e23284105f46f3f4ae92874a77aca",
+      "z": 0.6186460256576538,
+      "pixels": 3736,
+      "chi2": 3763.556437568047,
+      "excess": 27.55643756804693,
+      "regional_excess": {
+        "carbon": 80.85763084045308,
+        "Mgb": 54.118676266429354,
+        "elsewhere": -107.41986953883526
+      },
+      "regional_pixels": {
+        "carbon": 475,
+        "Mgb": 83,
+        "elsewhere": 3178
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_210210",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/210210-M1_210210/ceridwen_derived_outputs.h5",
+      "sha256": "7f86e50c836aa1f336fba3d308131bd44c67f0f1f7840961f5866819c4c65720",
+      "z": 0.65420001745224,
+      "pixels": 3607,
+      "chi2": 3724.1818864766306,
+      "excess": 117.18188647663055,
+      "regional_excess": {
+        "carbon": 45.85567299086418,
+        "Mgb": 18.106377101180087,
+        "elsewhere": 53.2198363845865
+      },
+      "regional_pixels": {
+        "carbon": 573,
+        "Mgb": 89,
+        "elsewhere": 2945
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_181945",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/181945-M12_181945/ceridwen_derived_outputs.h5",
+      "sha256": "047ab09e4b8aacc070368f8dc35c996ca213dc56126ad7bf8e6f5f8374ad99e8",
+      "z": 0.6795139908790588,
+      "pixels": 3610,
+      "chi2": 3906.682025667903,
+      "excess": 296.68202566790296,
+      "regional_excess": {
+        "carbon": 11.974135238895311,
+        "Mgb": 0.0,
+        "elsewhere": 284.7078904290075
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 0,
+        "elsewhere": 3029
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M2_133501",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/133501-M2_133501/ceridwen_derived_outputs.h5",
+      "sha256": "61a703aaa61dfea15df664077c8f8d747ad8359f7d2e62e7a3f0ebdddb5ce120",
+      "z": 0.729200005531311,
+      "pixels": 3656,
+      "chi2": 3976.4482310582325,
+      "excess": 320.4482310582325,
+      "regional_excess": {
+        "carbon": -37.48859946674947,
+        "Mgb": 6.139422098518898,
+        "elsewhere": 351.7974084264631
+      },
+      "regional_pixels": {
+        "carbon": 508,
+        "Mgb": 94,
+        "elsewhere": 3054
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_38648",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/38648-M14_38648/ceridwen_derived_outputs.h5",
+      "sha256": "112ae1edf981525cefee1f166a835426f181205058fdb207956ce430875f04d1",
+      "z": 0.6742770075798035,
+      "pixels": 3632,
+      "chi2": 3834.1721146064433,
+      "excess": 202.1721146064433,
+      "regional_excess": {
+        "carbon": 57.0325466522969,
+        "Mgb": 7.444220652757366,
+        "elsewhere": 137.69534730138918
+      },
+      "regional_pixels": {
+        "carbon": 580,
+        "Mgb": 90,
+        "elsewhere": 2962
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M9_233169",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/233169-M9_233169/ceridwen_derived_outputs.h5",
+      "sha256": "2c039b036e2b9482f3100f9c9016de80bc3ca3449937623d4d19272c1aeb7acb",
+      "z": 0.6103590130805969,
+      "pixels": 3776,
+      "chi2": 3911.901279553943,
+      "excess": 135.9012795539429,
+      "regional_excess": {
+        "carbon": 7.470677526754773,
+        "Mgb": 101.70021452733373,
+        "elsewhere": 26.73038749985467
+      },
+      "regional_pixels": {
+        "carbon": 537,
+        "Mgb": 80,
+        "elsewhere": 3159
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M2_134391",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/134391-M2_134391/ceridwen_derived_outputs.h5",
+      "sha256": "a4917dbada7b0064133c572c204ccb57c9ad86b50357befb5689ffef964d85db",
+      "z": 0.6834999918937683,
+      "pixels": 3686,
+      "chi2": 4244.703729563054,
+      "excess": 558.7037295630544,
+      "regional_excess": {
+        "carbon": 26.634703730320943,
+        "Mgb": 43.39123838050221,
+        "elsewhere": 488.6777874522312
+      },
+      "regional_pixels": {
+        "carbon": 582,
+        "Mgb": 91,
+        "elsewhere": 3013
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M8_160400",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/160400-M8_160400/ceridwen_derived_outputs.h5",
+      "sha256": "2272ea4dd2695ce66ee8a30405cf91237902aeeb85975002bc9933285bc16fb3",
+      "z": 0.6031960248947144,
+      "pixels": 3631,
+      "chi2": 3678.3099589560725,
+      "excess": 47.30995895607248,
+      "regional_excess": {
+        "carbon": 52.30451250484108,
+        "Mgb": 23.448787321200417,
+        "elsewhere": -28.443340869969326
+      },
+      "regional_pixels": {
+        "carbon": 556,
+        "Mgb": 87,
+        "elsewhere": 2988
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_205742",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205742-M1_205742/ceridwen_derived_outputs.h5",
+      "sha256": "2ae18975985d77d557b341ce87c2577dc69d4cfd68f92523c463b3181ba8bffd",
+      "z": 0.7272999882698059,
+      "pixels": 3656,
+      "chi2": 4958.945337413629,
+      "excess": 1302.9453374136292,
+      "regional_excess": {
+        "carbon": 133.98550291886642,
+        "Mgb": 46.870816332400416,
+        "elsewhere": 1122.0890181623618
+      },
+      "regional_pixels": {
+        "carbon": 522,
+        "Mgb": 83,
+        "elsewhere": 3051
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_213772",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/213772-M10_213772/ceridwen_derived_outputs.h5",
+      "sha256": "13068a4fd4232da26cda9f6af0aef3ebe2ff1b957bff81e64980ead05d9d6c28",
+      "z": 0.7003939747810364,
+      "pixels": 3807,
+      "chi2": 3797.120119038563,
+      "excess": -9.879880961436811,
+      "regional_excess": {
+        "carbon": -224.60938979983308,
+        "Mgb": 4.635430531072098,
+        "elsewhere": 210.09407830732448
+      },
+      "regional_pixels": {
+        "carbon": 589,
+        "Mgb": 85,
+        "elsewhere": 3133
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M8_150848",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/150848-M8_150848/ceridwen_derived_outputs.h5",
+      "sha256": "0bdd4444dd949c11143c5d602eec7156a7f432f079683ca52a68d60b366f19ad",
+      "z": 0.7011280059814453,
+      "pixels": 3785,
+      "chi2": 4196.051884617298,
+      "excess": 411.05188461729813,
+      "regional_excess": {
+        "carbon": 105.87262585396203,
+        "Mgb": 23.831391225223594,
+        "elsewhere": 281.34786753811215
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 83,
+        "elsewhere": 3115
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M8_161346",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/161346-M8_161346/ceridwen_derived_outputs.h5",
+      "sha256": "cdd85f2a3339fb93f31184c6b7e499542241b223e752d395a5c8ab54c70dbfba",
+      "z": 0.6566219925880432,
+      "pixels": 3610,
+      "chi2": 3816.974515677246,
+      "excess": 206.97451567724602,
+      "regional_excess": {
+        "carbon": 123.36825804943139,
+        "Mgb": 52.44278370954069,
+        "elsewhere": 31.16347391827417
+      },
+      "regional_pixels": {
+        "carbon": 571,
+        "Mgb": 71,
+        "elsewhere": 2968
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M8_162149",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/162149-M8_162149/ceridwen_derived_outputs.h5",
+      "sha256": "f4c4bebb8860900c5693231a080c94782d2e8a5901423e8c9a692207fbd4c3fd",
+      "z": 0.7034350037574768,
+      "pixels": 3623,
+      "chi2": 3683.8033608084243,
+      "excess": 60.80336080842426,
+      "regional_excess": {
+        "carbon": -128.74532016149743,
+        "Mgb": 2.075315732739699,
+        "elsewhere": 187.47336523718263
+      },
+      "regional_pixels": {
+        "carbon": 589,
+        "Mgb": 13,
+        "elsewhere": 3021
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_113852",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/113852-M7_113852/ceridwen_derived_outputs.h5",
+      "sha256": "e2224e7e796d4efdb69719a6aff82bd437b0752fa875afae489b206dc45e3b2f",
+      "z": 0.6751999855041504,
+      "pixels": 3560,
+      "chi2": 4231.053811895432,
+      "excess": 671.0538118954319,
+      "regional_excess": {
+        "carbon": 74.18580977056143,
+        "Mgb": 112.3783547942233,
+        "elsewhere": 484.489647330647
+      },
+      "regional_pixels": {
+        "carbon": 577,
+        "Mgb": 85,
+        "elsewhere": 2898
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M4_105474",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/105474-M4_105474/ceridwen_derived_outputs.h5",
+      "sha256": "6b140d8e2f3fc0f0ed2446076afa1cae223ff444328ca93040f3982bde865e73",
+      "z": 0.6732000112533569,
+      "pixels": 3551,
+      "chi2": 3745.1201232731664,
+      "excess": 194.12012327316643,
+      "regional_excess": {
+        "carbon": 48.54201009948242,
+        "Mgb": 0.0,
+        "elsewhere": 145.57811317368424
+      },
+      "regional_pixels": {
+        "carbon": 578,
+        "Mgb": 0,
+        "elsewhere": 2973
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_228215",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/228215-M10_228215/ceridwen_derived_outputs.h5",
+      "sha256": "84639349628c6972ffd270c8e71180e83d1229919362d89ac81cd9f4a573913c",
+      "z": 0.6108589768409729,
+      "pixels": 3628,
+      "chi2": 3964.949231432377,
+      "excess": 336.949231432377,
+      "regional_excess": {
+        "carbon": 113.20077510281646,
+        "Mgb": 51.29681131561906,
+        "elsewhere": 172.4516450139415
+      },
+      "regional_pixels": {
+        "carbon": 534,
+        "Mgb": 87,
+        "elsewhere": 3007
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_218207",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/218207-M11_218207/ceridwen_derived_outputs.h5",
+      "sha256": "4ab352e88937630e3e97993f0669ee57927332d26c6ade5914d3ad442e3a2fc6",
+      "z": 0.6817629933357239,
+      "pixels": 3609,
+      "chi2": 3758.0198394274375,
+      "excess": 149.01983942743755,
+      "regional_excess": {
+        "carbon": -202.42230344342897,
+        "Mgb": 0.0,
+        "elsewhere": 351.4421428708662
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 0,
+        "elsewhere": 3028
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_216730",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/216730-M10_216730/ceridwen_derived_outputs.h5",
+      "sha256": "c35d057ca19a251a9f11deb8e81e82dd5390a85be69b6a70cb7fe432e9d0888a",
+      "z": 0.8937180042266846,
+      "pixels": 3504,
+      "chi2": 2357.6999063205426,
+      "excess": -1146.3000936794574,
+      "regional_excess": {
+        "carbon": -422.8517255450758,
+        "Mgb": 0.0,
+        "elsewhere": -723.4483681343819
+      },
+      "regional_pixels": {
+        "carbon": 640,
+        "Mgb": 0,
+        "elsewhere": 2864
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_232627",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232627-M13_232627/ceridwen_derived_outputs.h5",
+      "sha256": "4f133b18f62ceb3a11175d0ba9979b226aefaa2bf654d82a1191a661512e4cbb",
+      "z": 0.6210529804229736,
+      "pixels": 3807,
+      "chi2": 3584.2619831808543,
+      "excess": -222.73801681914574,
+      "regional_excess": {
+        "carbon": -23.815298246363113,
+        "Mgb": 20.56288973312688,
+        "elsewhere": -219.48560830590952
+      },
+      "regional_pixels": {
+        "carbon": 457,
+        "Mgb": 86,
+        "elsewhere": 3264
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_228380",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/228380-M10_228380/ceridwen_derived_outputs.h5",
+      "sha256": "cbff81442c209edb3d87ce502c404204bf0e14b284a10a2a1e5b1e9445260c48",
+      "z": 0.6113759875297546,
+      "pixels": 3637,
+      "chi2": 4033.4617495143443,
+      "excess": 396.4617495143443,
+      "regional_excess": {
+        "carbon": 6.936940146159458,
+        "Mgb": 74.4446909949453,
+        "elsewhere": 315.08011837323977
+      },
+      "regional_pixels": {
+        "carbon": 530,
+        "Mgb": 87,
+        "elsewhere": 3020
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M4_117400",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/117400-M4_117400/ceridwen_derived_outputs.h5",
+      "sha256": "51eaca72f6e9594611b52dde832adec1ada52956793cd83e15e3230d56df7a22",
+      "z": 0.6686999797821045,
+      "pixels": 3538,
+      "chi2": 3974.7641581368975,
+      "excess": 436.76415813689755,
+      "regional_excess": {
+        "carbon": 71.60245600159345,
+        "Mgb": 0.0,
+        "elsewhere": 365.161702135304
+      },
+      "regional_pixels": {
+        "carbon": 566,
+        "Mgb": 0,
+        "elsewhere": 2972
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_257455",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/257455-M11_257455/ceridwen_derived_outputs.h5",
+      "sha256": "2d5876a4ca54a24ae2aec83b171f282a6fec7d1fe77dfc7b4c9928c1152e8442",
+      "z": 0.665710985660553,
+      "pixels": 3624,
+      "chi2": 3777.1609677473903,
+      "excess": 153.16096774739026,
+      "regional_excess": {
+        "carbon": 132.04646771010638,
+        "Mgb": 9.217314750499604,
+        "elsewhere": 11.897185286784634
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 90,
+        "elsewhere": 2958
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_215585",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/215585-M11_215585/ceridwen_derived_outputs.h5",
+      "sha256": "6d7a3ab87c09184191b073f292905ca5a7a4905db104723cf655ee99adfa55a5",
+      "z": 0.7487310171127319,
+      "pixels": 3603,
+      "chi2": 4397.880620486532,
+      "excess": 794.8806204865323,
+      "regional_excess": {
+        "carbon": 6.453387230189563,
+        "Mgb": 0.0,
+        "elsewhere": 788.4272332563424
+      },
+      "regional_pixels": {
+        "carbon": 573,
+        "Mgb": 0,
+        "elsewhere": 3030
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M3_119474",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/119474-M3_119474/ceridwen_derived_outputs.h5",
+      "sha256": "171ebae17e58f9b3edbcd2eaf0a4274f655abb42c3a0ab7c379ecc2e446eedd2",
+      "z": 0.680899977684021,
+      "pixels": 3744,
+      "chi2": 5273.418690214587,
+      "excess": 1529.4186902145866,
+      "regional_excess": {
+        "carbon": 61.15738496740313,
+        "Mgb": 51.46678908598229,
+        "elsewhere": 1416.7945161612017
+      },
+      "regional_pixels": {
+        "carbon": 574,
+        "Mgb": 92,
+        "elsewhere": 3078
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M2_206669",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/206669-M2_206669/ceridwen_derived_outputs.h5",
+      "sha256": "e7a5e5e72d5e16a422b67bc27393d251b6fe5ead67ae6faa2d2495ed18c4fff6",
+      "z": 0.6715999841690063,
+      "pixels": 3884,
+      "chi2": 4446.728473651827,
+      "excess": 562.7284736518268,
+      "regional_excess": {
+        "carbon": 24.219575102661516,
+        "Mgb": 164.2020785691706,
+        "elsewhere": 374.30681997999494
+      },
+      "regional_pixels": {
+        "carbon": 574,
+        "Mgb": 91,
+        "elsewhere": 3219
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_211157",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/211157-M1_211157/ceridwen_derived_outputs.h5",
+      "sha256": "a128ccfc9ea65617a24e8479e1818f005ba3f72b1848c108323f6f0c10749fe8",
+      "z": 0.6069999933242798,
+      "pixels": 3845,
+      "chi2": 4621.76466129645,
+      "excess": 776.76466129645,
+      "regional_excess": {
+        "carbon": -69.14759293445675,
+        "Mgb": 36.45734549427971,
+        "elsewhere": 809.454908736627
+      },
+      "regional_pixels": {
+        "carbon": 557,
+        "Mgb": 84,
+        "elsewhere": 3204
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_102456",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/102456-M12_102456/ceridwen_derived_outputs.h5",
+      "sha256": "0d0685471b5153777adf856c4677f7c23cf516d62b28c124636461468d02c2f1",
+      "z": 0.6779490113258362,
+      "pixels": 3534,
+      "chi2": 4785.910922862286,
+      "excess": 1251.9109228622856,
+      "regional_excess": {
+        "carbon": 165.3536639913921,
+        "Mgb": 8.391260465672817,
+        "elsewhere": 1078.1659984052203
+      },
+      "regional_pixels": {
+        "carbon": 555,
+        "Mgb": 91,
+        "elsewhere": 2888
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_221163",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/221163-M11_221163/ceridwen_derived_outputs.h5",
+      "sha256": "47051afdea47d54229345d244f5615419fa1d0a1c8c478275cceb3b5409e22a6",
+      "z": 0.6975380182266235,
+      "pixels": 3585,
+      "chi2": 3971.3878155894477,
+      "excess": 386.38781558944765,
+      "regional_excess": {
+        "carbon": -209.6974905745419,
+        "Mgb": 0.0,
+        "elsewhere": 596.08530616399
+      },
+      "regional_pixels": {
+        "carbon": 582,
+        "Mgb": 0,
+        "elsewhere": 3003
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_206858",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/206858-M1_206858/ceridwen_derived_outputs.h5",
+      "sha256": "e8e808703c5f7dfa341724856083d82224608e7476276013bb6838f8c2a76f2e",
+      "z": 0.7247999906539917,
+      "pixels": 3617,
+      "chi2": 3735.7250063775427,
+      "excess": 118.72500637754274,
+      "regional_excess": {
+        "carbon": -15.749398192193834,
+        "Mgb": 60.929530627719615,
+        "elsewhere": 73.54487394201726
+      },
+      "regional_pixels": {
+        "carbon": 539,
+        "Mgb": 80,
+        "elsewhere": 2998
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M5_205715",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/205715-M5_205715/ceridwen_derived_outputs.h5",
+      "sha256": "c0cd85ea34c19c48da08f7ea9111aebeaee838efc43f973ddfedc36ac5c318f7",
+      "z": 0.7465000152587891,
+      "pixels": 3590,
+      "chi2": 4161.581062878815,
+      "excess": 571.5810628788149,
+      "regional_excess": {
+        "carbon": 252.71576262831385,
+        "Mgb": 0.0,
+        "elsewhere": 318.86530025050047
+      },
+      "regional_pixels": {
+        "carbon": 553,
+        "Mgb": 0,
+        "elsewhere": 3037
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M8_148698",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/148698-M8_148698/ceridwen_derived_outputs.h5",
+      "sha256": "ef4d36c2d4927641203f472fd469c37e2f67188a7295e99bcd5e3934aba6cc16",
+      "z": 0.6755419969558716,
+      "pixels": 3658,
+      "chi2": 3687.811251582386,
+      "excess": 29.81125158238592,
+      "regional_excess": {
+        "carbon": 30.676828623705163,
+        "Mgb": 11.446577185003457,
+        "elsewhere": -12.312154226322825
+      },
+      "regional_pixels": {
+        "carbon": 580,
+        "Mgb": 91,
+        "elsewhere": 2987
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_229551",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/229551-M11_229551/ceridwen_derived_outputs.h5",
+      "sha256": "6f0af8475043c79e23f612ff66e6719f1c78db9e27df2b0fda95fd828bada881",
+      "z": 0.6957730054855347,
+      "pixels": 3603,
+      "chi2": 3944.4287288610276,
+      "excess": 341.4287288610276,
+      "regional_excess": {
+        "carbon": -193.59130981200497,
+        "Mgb": 0.0,
+        "elsewhere": 535.0200386730322
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 0,
+        "elsewhere": 3016
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M5_236682",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/236682-M5_236682/ceridwen_derived_outputs.h5",
+      "sha256": "6708611688215386fa4f570b234c27c805146aa3ec0e95ee0a65e4183f3496d9",
+      "z": 0.7342000007629395,
+      "pixels": 3559,
+      "chi2": 4109.7236175288,
+      "excess": 550.7236175287999,
+      "regional_excess": {
+        "carbon": 49.07960957567251,
+        "Mgb": 0.0,
+        "elsewhere": 501.6440079531275
+      },
+      "regional_pixels": {
+        "carbon": 482,
+        "Mgb": 0,
+        "elsewhere": 3077
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_206545",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/206545-M1_206545/ceridwen_derived_outputs.h5",
+      "sha256": "2a03f9f0e4885dcf9c667ec31ffc897ee0bcf027e5de32c32d32eea1dc056a29",
+      "z": 0.7282999753952026,
+      "pixels": 3608,
+      "chi2": 4963.00524384489,
+      "excess": 1355.0052438448902,
+      "regional_excess": {
+        "carbon": -63.11897737228571,
+        "Mgb": 0.0,
+        "elsewhere": 1418.1242212171762
+      },
+      "regional_pixels": {
+        "carbon": 514,
+        "Mgb": 0,
+        "elsewhere": 3094
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_232962",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/232962-M11_232962/ceridwen_derived_outputs.h5",
+      "sha256": "31d6a0d228f8d9f0ef654c456c57791ea8e0f7eb25e2e1c1995ee77a6a227da3",
+      "z": 0.6976969838142395,
+      "pixels": 3557,
+      "chi2": 3609.513408471259,
+      "excess": 52.51340847125903,
+      "regional_excess": {
+        "carbon": -90.1200517761178,
+        "Mgb": 0.0,
+        "elsewhere": 142.63346024737712
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 0,
+        "elsewhere": 2970
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M15_77745",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/77745-M15_77745/ceridwen_derived_outputs.h5",
+      "sha256": "47479ad6adf8d9d0f9725544ea51dd9b762dc51433c4c9b5bc50aa66158115c3",
+      "z": 0.8255519866943359,
+      "pixels": 3649,
+      "chi2": 3771.1431792944995,
+      "excess": 122.14317929449953,
+      "regional_excess": {
+        "carbon": -120.23901048392906,
+        "Mgb": 0.0,
+        "elsewhere": 242.38218977842837
+      },
+      "regional_pixels": {
+        "carbon": 571,
+        "Mgb": 0,
+        "elsewhere": 3078
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M9_218701",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/218701-M9_218701/ceridwen_derived_outputs.h5",
+      "sha256": "e41a9a1f71a04de4df3ad37c44ef7d8d10a69aea5193942c9b513ff7d43cf44a",
+      "z": 0.695285975933075,
+      "pixels": 3874,
+      "chi2": 4017.0925436436933,
+      "excess": 143.09254364369326,
+      "regional_excess": {
+        "carbon": 35.945049385014855,
+        "Mgb": 94.04883163171716,
+        "elsewhere": 13.098662626961193
+      },
+      "regional_pixels": {
+        "carbon": 586,
+        "Mgb": 91,
+        "elsewhere": 3197
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_248217",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/248217-M13_248217/ceridwen_derived_outputs.h5",
+      "sha256": "2c52ec71d71964fcf8aa451c6d9c4803964f0123e573592c0c6d9280a2a27e9b",
+      "z": 0.6109169721603394,
+      "pixels": 3867,
+      "chi2": 3973.5156211509793,
+      "excess": 106.51562115097931,
+      "regional_excess": {
+        "carbon": -19.619709592748904,
+        "Mgb": 18.534017031542135,
+        "elsewhere": 107.60131371218597
+      },
+      "regional_pixels": {
+        "carbon": 533,
+        "Mgb": 87,
+        "elsewhere": 3247
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M8_147539",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/147539-M8_147539/ceridwen_derived_outputs.h5",
+      "sha256": "50996308bca82d0f4ce21dd701d0f617fe02530450015803b039c228e05699cb",
+      "z": 0.6958330273628235,
+      "pixels": 3625,
+      "chi2": 4046.5158850680914,
+      "excess": 421.5158850680914,
+      "regional_excess": {
+        "carbon": 173.62752701755412,
+        "Mgb": 27.80721309912621,
+        "elsewhere": 220.08114495141103
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 92,
+        "elsewhere": 2946
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_184916",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/184916-M12_184916/ceridwen_derived_outputs.h5",
+      "sha256": "fe5a70459ea8c395d47d89f70b5ebe7ade863008f40155165ab012b0a5a31420",
+      "z": 0.6794000267982483,
+      "pixels": 3875,
+      "chi2": 5373.341574227874,
+      "excess": 1498.341574227874,
+      "regional_excess": {
+        "carbon": -13.371231764774912,
+        "Mgb": 4.942643522228962,
+        "elsewhere": 1506.770162470419
+      },
+      "regional_pixels": {
+        "carbon": 580,
+        "Mgb": 91,
+        "elsewhere": 3204
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_147849",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/147849-M7_147849/ceridwen_derived_outputs.h5",
+      "sha256": "d5436c8ab372335a7180439b761243d4d013bd8f7030f5f8f509cb6a092aa0e3",
+      "z": 0.677299976348877,
+      "pixels": 3630,
+      "chi2": 3987.932923047345,
+      "excess": 357.93292304734496,
+      "regional_excess": {
+        "carbon": 59.42161734318065,
+        "Mgb": 18.061956473307472,
+        "elsewhere": 280.4493492308564
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 90,
+        "elsewhere": 2959
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_227516",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/227516-M10_227516/ceridwen_derived_outputs.h5",
+      "sha256": "418943c22220d26a6a06420c02a2cdfebc5162686de25f8b935915ea9bd6acdf",
+      "z": 0.7792009711265564,
+      "pixels": 3592,
+      "chi2": 2701.718561990957,
+      "excess": -890.2814380090431,
+      "regional_excess": {
+        "carbon": -134.26717302383358,
+        "Mgb": 0.0,
+        "elsewhere": -756.0142649852098
+      },
+      "regional_pixels": {
+        "carbon": 537,
+        "Mgb": 0,
+        "elsewhere": 3055
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M5_211347",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/211347-M5_211347/ceridwen_derived_outputs.h5",
+      "sha256": "e7d162c7273286dc6b185eab600994b1cdb7bd6eecac4e67fe3c568c4b781330",
+      "z": 0.6972000002861023,
+      "pixels": 3570,
+      "chi2": 4061.415265776509,
+      "excess": 491.41526577650893,
+      "regional_excess": {
+        "carbon": 113.88362778288007,
+        "Mgb": 0.0,
+        "elsewhere": 377.53163799362915
+      },
+      "regional_pixels": {
+        "carbon": 583,
+        "Mgb": 0,
+        "elsewhere": 2987
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M3_120308",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/120308-M3_120308/ceridwen_derived_outputs.h5",
+      "sha256": "04c66df832ebe5ac703493dfa5028838642a84e8bb8f85f9fccf26e6e5e085ec",
+      "z": 0.7279000282287598,
+      "pixels": 3604,
+      "chi2": 3974.9919608321616,
+      "excess": 370.99196083216157,
+      "regional_excess": {
+        "carbon": -104.14813218838378,
+        "Mgb": 87.19604632205368,
+        "elsewhere": 387.9440466984918
+      },
+      "regional_pixels": {
+        "carbon": 517,
+        "Mgb": 88,
+        "elsewhere": 2999
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M9_232005",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/232005-M9_232005/ceridwen_derived_outputs.h5",
+      "sha256": "e4c0494268c6776506b45ad851752af52f440d3af62a89a52500fd680740ce80",
+      "z": 0.6111199855804443,
+      "pixels": 3556,
+      "chi2": 3718.74375424158,
+      "excess": 162.74375424158006,
+      "regional_excess": {
+        "carbon": 67.11617075808732,
+        "Mgb": 15.585173823744267,
+        "elsewhere": 80.04240965974867
+      },
+      "regional_pixels": {
+        "carbon": 530,
+        "Mgb": 79,
+        "elsewhere": 2947
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_225441",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/225441-M10_225441/ceridwen_derived_outputs.h5",
+      "sha256": "0bc436c931763379ff2f4508d2162d9f6a9351f84395457712466fb9d7856345",
+      "z": 0.6823199987411499,
+      "pixels": 3646,
+      "chi2": 3742.011292744357,
+      "excess": 96.01129274435698,
+      "regional_excess": {
+        "carbon": -23.676219267202136,
+        "Mgb": 4.651310444149371,
+        "elsewhere": 115.03620156740956
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 91,
+        "elsewhere": 2974
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_139423",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/139423-M1_139423/ceridwen_derived_outputs.h5",
+      "sha256": "261cb913533b7642658fa6716cdaa16a20cc4bdc031c6bf1bc20d160d35ac43c",
+      "z": 0.7494999766349792,
+      "pixels": 3490,
+      "chi2": 3968.1920266661446,
+      "excess": 478.19202666614456,
+      "regional_excess": {
+        "carbon": -153.61953436981275,
+        "Mgb": 357.0280437612166,
+        "elsewhere": 274.7835172747409
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 90,
+        "elsewhere": 2824
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_31835",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/31835-M14_31835/ceridwen_derived_outputs.h5",
+      "sha256": "f63853dd5e715f97901e63b388821cc68eaaf522af2ff0f230f5bbab273a02c0",
+      "z": 0.67740398645401,
+      "pixels": 3807,
+      "chi2": 4207.241094231186,
+      "excess": 400.24109423118625,
+      "regional_excess": {
+        "carbon": 29.797459241455783,
+        "Mgb": 50.16925010198254,
+        "elsewhere": 320.27438488774794
+      },
+      "regional_pixels": {
+        "carbon": 573,
+        "Mgb": 91,
+        "elsewhere": 3143
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M9_213587",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/213587-M9_213587/ceridwen_derived_outputs.h5",
+      "sha256": "5e37380438bbbbb173a5ddf9be7c2939611fc7043d0aa5a8f8d0e34f5f7c8630",
+      "z": 0.8900439739227295,
+      "pixels": 3490,
+      "chi2": 3822.6293771810024,
+      "excess": 332.6293771810024,
+      "regional_excess": {
+        "carbon": 111.93578360872792,
+        "Mgb": 0.0,
+        "elsewhere": 220.69359357227427
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 0,
+        "elsewhere": 2903
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_246149",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/246149-M13_246149/ceridwen_derived_outputs.h5",
+      "sha256": "3118dc052d53f77aad23f87e4394e9dcec5f6cc26bc45f7f53a66e952c57c5b4",
+      "z": 0.7345340251922607,
+      "pixels": 3594,
+      "chi2": 3885.994573257153,
+      "excess": 291.9945732571532,
+      "regional_excess": {
+        "carbon": -77.82683834340972,
+        "Mgb": 0.0,
+        "elsewhere": 369.82141160056256
+      },
+      "regional_pixels": {
+        "carbon": 483,
+        "Mgb": 0,
+        "elsewhere": 3111
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_231544",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/231544-M10_231544/ceridwen_derived_outputs.h5",
+      "sha256": "db8148de675eb464004d8a91ebf72d3096fd44616b68f1a981c60a513260635b",
+      "z": 0.6547650098800659,
+      "pixels": 3776,
+      "chi2": 3927.448613098615,
+      "excess": 151.44861309861517,
+      "regional_excess": {
+        "carbon": 191.95740041253964,
+        "Mgb": 2.8016474896004944,
+        "elsewhere": -43.31043480352476
+      },
+      "regional_pixels": {
+        "carbon": 572,
+        "Mgb": 89,
+        "elsewhere": 3115
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M5_128311",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/128311-M5_128311/ceridwen_derived_outputs.h5",
+      "sha256": "1ae5fad282c2c2daee6217cfca9420a8bee7d511df639523f66bb22c4f4dc9ab",
+      "z": 0.7303000092506409,
+      "pixels": 3584,
+      "chi2": 4666.575734113099,
+      "excess": 1082.5757341130993,
+      "regional_excess": {
+        "carbon": 19.20398751854396,
+        "Mgb": 0.0,
+        "elsewhere": 1063.3717465945551
+      },
+      "regional_pixels": {
+        "carbon": 501,
+        "Mgb": 0,
+        "elsewhere": 3083
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_122242",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/122242-M7_122242/ceridwen_derived_outputs.h5",
+      "sha256": "a1d89f9ecb005802016b3b5e22a34e001448b57bb381e6f86186374970782d8e",
+      "z": 0.6032000184059143,
+      "pixels": 3602,
+      "chi2": 3679.5125081884717,
+      "excess": 77.51250818847166,
+      "regional_excess": {
+        "carbon": -20.62016116236463,
+        "Mgb": 86.63771743720882,
+        "elsewhere": 11.494951913627617
+      },
+      "regional_pixels": {
+        "carbon": 556,
+        "Mgb": 87,
+        "elsewhere": 2959
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M2_134021",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/134021-M2_134021/ceridwen_derived_outputs.h5",
+      "sha256": "f90114106d9e02a49db55512d4a2664df8f7955e7b5986aff4f5e18976a98784",
+      "z": 0.7493000030517578,
+      "pixels": 3630,
+      "chi2": 3785.4752723427337,
+      "excess": 155.47527234273366,
+      "regional_excess": {
+        "carbon": -3.3628775592674103,
+        "Mgb": 28.14047497652072,
+        "elsewhere": 130.69767492547987
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 94,
+        "elsewhere": 2960
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M3_119802",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119802-M3_119802/ceridwen_derived_outputs.h5",
+      "sha256": "f30aa4b7d282a7199bb53f22e5c17dfc98ad1e12b2517d864050a1fd7989a385",
+      "z": 0.6819999814033508,
+      "pixels": 3608,
+      "chi2": 4090.1660966707104,
+      "excess": 482.16609667071043,
+      "regional_excess": {
+        "carbon": 46.60820907353382,
+        "Mgb": -30.389104939297177,
+        "elsewhere": 465.9469925364733
+      },
+      "regional_pixels": {
+        "carbon": 572,
+        "Mgb": 91,
+        "elsewhere": 2945
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M5_165871",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/165871-M5_165871/ceridwen_derived_outputs.h5",
+      "sha256": "b44ff3408822d7262876a0dc448a91cb3a74a5f01f27aa25a20be61fe1f866f0",
+      "z": 0.7031000256538391,
+      "pixels": 3526,
+      "chi2": 4220.106891892203,
+      "excess": 694.1068918922028,
+      "regional_excess": {
+        "carbon": -14.305291382062912,
+        "Mgb": 45.46403620140777,
+        "elsewhere": 662.9481470728576
+      },
+      "regional_pixels": {
+        "carbon": 589,
+        "Mgb": 78,
+        "elsewhere": 2859
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M6_237437",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/237437-M6_237437/ceridwen_derived_outputs.h5",
+      "sha256": "8d307a5673115e02bc735f47e8205e69d03041350cee03f519d4d37e12e96dc9",
+      "z": 0.7336999773979187,
+      "pixels": 3592,
+      "chi2": 4107.009401379574,
+      "excess": 515.0094013795742,
+      "regional_excess": {
+        "carbon": -97.10445929919291,
+        "Mgb": 0.0,
+        "elsewhere": 612.1138606787671
+      },
+      "regional_pixels": {
+        "carbon": 484,
+        "Mgb": 0,
+        "elsewhere": 3108
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_244239",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/244239-M13_244239/ceridwen_derived_outputs.h5",
+      "sha256": "994a3d73ee8e51ddee2c04ec2b282b9ee85de070965b13ad6671b2b23d08c59d",
+      "z": 0.7378460168838501,
+      "pixels": 3592,
+      "chi2": 3934.461621462819,
+      "excess": 342.46162146281904,
+      "regional_excess": {
+        "carbon": -4.941276576482791,
+        "Mgb": 0.0,
+        "elsewhere": 347.4028980393019
+      },
+      "regional_pixels": {
+        "carbon": 489,
+        "Mgb": 0,
+        "elsewhere": 3103
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M5_238580",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/238580-M5_238580/ceridwen_derived_outputs.h5",
+      "sha256": "19cac5b3336e8b7863072cb65fad0689bb9b92064263f6c0633950a46a4659e9",
+      "z": 0.730400025844574,
+      "pixels": 3633,
+      "chi2": 4012.351135020001,
+      "excess": 379.35113502000104,
+      "regional_excess": {
+        "carbon": -2.5351342549878986,
+        "Mgb": 77.13204829443788,
+        "elsewhere": 304.7542209805507
+      },
+      "regional_pixels": {
+        "carbon": 500,
+        "Mgb": 94,
+        "elsewhere": 3039
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M3_109713",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/109713-M3_109713/ceridwen_derived_outputs.h5",
+      "sha256": "1e7ce4a1a3e725673584b365a237942490bfb938bdf0db67f0133667b423c6cc",
+      "z": 0.7275000214576721,
+      "pixels": 3623,
+      "chi2": 3840.2498765936934,
+      "excess": 217.24987659369344,
+      "regional_excess": {
+        "carbon": -15.500355371577932,
+        "Mgb": 0.0,
+        "elsewhere": 232.750231965271
+      },
+      "regional_pixels": {
+        "carbon": 521,
+        "Mgb": 0,
+        "elsewhere": 3102
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M3_117694",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/117694-M3_117694/ceridwen_derived_outputs.h5",
+      "sha256": "59cc3b6e3061f8ab8ffdfbf9b446c7c84ff6100b39692bb5c4f919e40913d9ea",
+      "z": 0.6830999851226807,
+      "pixels": 3784,
+      "chi2": 4870.901495560394,
+      "excess": 1086.9014955603943,
+      "regional_excess": {
+        "carbon": 87.61018896975958,
+        "Mgb": -11.22420530545885,
+        "elsewhere": 1010.5155118960934
+      },
+      "regional_pixels": {
+        "carbon": 564,
+        "Mgb": 92,
+        "elsewhere": 3128
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_230747",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/230747-M13_230747/ceridwen_derived_outputs.h5",
+      "sha256": "967bc51dae010072d2c799d81e88a1e6fc416e363b31cdd23fc9a43541c29d44",
+      "z": 0.6984639763832092,
+      "pixels": 3630,
+      "chi2": 3933.4876551561947,
+      "excess": 303.4876551561947,
+      "regional_excess": {
+        "carbon": 24.072793614456444,
+        "Mgb": 24.97442068043938,
+        "elsewhere": 254.4404408612986
+      },
+      "regional_pixels": {
+        "carbon": 586,
+        "Mgb": 92,
+        "elsewhere": 2952
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M15_88032",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/88032-M15_88032/ceridwen_derived_outputs.h5",
+      "sha256": "2643a64b561b468e2d2040968e826a46769d905813170961447c08af1deecb87",
+      "z": 0.8392300009727478,
+      "pixels": 3625,
+      "chi2": 4160.246749517917,
+      "excess": 535.2467495179171,
+      "regional_excess": {
+        "carbon": -46.78996183236884,
+        "Mgb": 0.0,
+        "elsewhere": 582.0367113502864
+      },
+      "regional_pixels": {
+        "carbon": 569,
+        "Mgb": 0,
+        "elsewhere": 3056
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M9_229883",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/229883-M9_229883/ceridwen_derived_outputs.h5",
+      "sha256": "701868b97b5b5c48aff9bd6ef5647d66a8c2c4f63d7adf468f713b6b4908c9bc",
+      "z": 0.7279890179634094,
+      "pixels": 3626,
+      "chi2": 3748.6991967120393,
+      "excess": 122.69919671203934,
+      "regional_excess": {
+        "carbon": 74.1724191557216,
+        "Mgb": 2.931612232080721,
+        "elsewhere": 45.59516532423689
+      },
+      "regional_pixels": {
+        "carbon": 516,
+        "Mgb": 22,
+        "elsewhere": 3088
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_243871",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/243871-M13_243871/ceridwen_derived_outputs.h5",
+      "sha256": "be7b21d06fa4cc81f1457190856796a3dd8d6da0a2265c708c64371079674700",
+      "z": 0.7333970069885254,
+      "pixels": 3603,
+      "chi2": 3691.6560445595906,
+      "excess": 88.65604455959055,
+      "regional_excess": {
+        "carbon": -55.38792786362452,
+        "Mgb": 137.2797018145009,
+        "elsewhere": 6.764270608714156
+      },
+      "regional_pixels": {
+        "carbon": 482,
+        "Mgb": 94,
+        "elsewhere": 3027
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_180774",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/180774-M12_180774/ceridwen_derived_outputs.h5",
+      "sha256": "f52cbe92aefdc04c272ddd76c7c16ee1150575e274eb53166cb979b8d31d18bc",
+      "z": 0.6782490015029907,
+      "pixels": 3544,
+      "chi2": 4394.138932250549,
+      "excess": 850.1389322505493,
+      "regional_excess": {
+        "carbon": 120.65367069645029,
+        "Mgb": 0.0,
+        "elsewhere": 729.4852615540985
+      },
+      "regional_pixels": {
+        "carbon": 565,
+        "Mgb": 0,
+        "elsewhere": 2979
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_185653",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185653-M12_185653/ceridwen_derived_outputs.h5",
+      "sha256": "0fa49eae89e5c4755d0af260beba6034b8a28e96eba86f6809840665bd4d2667",
+      "z": 0.6776310205459595,
+      "pixels": 3783,
+      "chi2": 3984.876936027103,
+      "excess": 201.87693602710306,
+      "regional_excess": {
+        "carbon": -32.685372128433976,
+        "Mgb": -9.640721501277472,
+        "elsewhere": 244.2030296568142
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 91,
+        "elsewhere": 3116
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_27068",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/27068-M14_27068/ceridwen_derived_outputs.h5",
+      "sha256": "590583a3d946a500b39c7401a0f2f75295144470a66ba8806349ef9d482c0134",
+      "z": 0.6783069968223572,
+      "pixels": 3557,
+      "chi2": 3805.2095826136133,
+      "excess": 248.2095826136133,
+      "regional_excess": {
+        "carbon": -17.51605844357119,
+        "Mgb": 5.883300201341697,
+        "elsewhere": 259.8423408558426
+      },
+      "regional_pixels": {
+        "carbon": 575,
+        "Mgb": 44,
+        "elsewhere": 2938
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_216899",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/216899-M11_216899/ceridwen_derived_outputs.h5",
+      "sha256": "f72f099f1128ce7894590fba75ea59e9938494e097c9f6b2cdf155fb2600b1d5",
+      "z": 0.697825014591217,
+      "pixels": 3607,
+      "chi2": 5786.966812640329,
+      "excess": 2179.9668126403294,
+      "regional_excess": {
+        "carbon": -142.3574647848568,
+        "Mgb": 0.0,
+        "elsewhere": 2322.3242774251858
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 0,
+        "elsewhere": 3020
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_37023",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/37023-M14_37023/ceridwen_derived_outputs.h5",
+      "sha256": "c9bdba809ddb09e04f65d5f53d4962ba26417397a67fc577ee223499fdce1f37",
+      "z": 0.7354879975318909,
+      "pixels": 3582,
+      "chi2": 3640.5583952971538,
+      "excess": 58.558395297153766,
+      "regional_excess": {
+        "carbon": -3.446296920479739,
+        "Mgb": 0.0,
+        "elsewhere": 62.00469221763347
+      },
+      "regional_pixels": {
+        "carbon": 484,
+        "Mgb": 0,
+        "elsewhere": 3098
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M4_107643",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/107643-M4_107643/ceridwen_derived_outputs.h5",
+      "sha256": "929d92210fe103ef164d96bc5c5c8ae74de70ff775e44b12fd75ddca433a4f94",
+      "z": 0.7343000173568726,
+      "pixels": 3552,
+      "chi2": 4106.262933149754,
+      "excess": 554.2629331497537,
+      "regional_excess": {
+        "carbon": 5.181418325682493,
+        "Mgb": 144.20512292353337,
+        "elsewhere": 404.8763919005372
+      },
+      "regional_pixels": {
+        "carbon": 482,
+        "Mgb": 85,
+        "elsewhere": 2985
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M4_123161",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/123161-M4_123161/ceridwen_derived_outputs.h5",
+      "sha256": "1645529ebab64e0e6f3beb03966d3a8835646cd13ed63985061f2987c3632be9",
+      "z": 0.7994999885559082,
+      "pixels": 3646,
+      "chi2": 3895.456637616785,
+      "excess": 249.45663761678497,
+      "regional_excess": {
+        "carbon": 67.61772894855872,
+        "Mgb": 0.0,
+        "elsewhere": 181.83890866822603
+      },
+      "regional_pixels": {
+        "carbon": 591,
+        "Mgb": 0,
+        "elsewhere": 3055
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_147270",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/147270-M7_147270/ceridwen_derived_outputs.h5",
+      "sha256": "60c2a17eec2a8a99ba0e6f469c0fb34eeb87013472f49fcf4b450ff47ca64ccf",
+      "z": 0.8472999930381775,
+      "pixels": 3596,
+      "chi2": 3965.140068642729,
+      "excess": 369.14006864272915,
+      "regional_excess": {
+        "carbon": -34.91899414600568,
+        "Mgb": 0.0,
+        "elsewhere": 404.05906278873454
+      },
+      "regional_pixels": {
+        "carbon": 622,
+        "Mgb": 0,
+        "elsewhere": 2974
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M9_212391",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/212391-M9_212391/ceridwen_derived_outputs.h5",
+      "sha256": "7e0339409cbb3c41c31052b325b223cf8cd981f58938f5be2aaf563631d75747",
+      "z": 0.7262700200080872,
+      "pixels": 3718,
+      "chi2": 4028.105636523164,
+      "excess": 310.10563652316387,
+      "regional_excess": {
+        "carbon": 8.945120853329886,
+        "Mgb": 41.19036639197525,
+        "elsewhere": 259.97014927785915
+      },
+      "regional_pixels": {
+        "carbon": 528,
+        "Mgb": 87,
+        "elsewhere": 3103
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M6_237641",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/237641-M6_237641/ceridwen_derived_outputs.h5",
+      "sha256": "1dce304f540a3fe91f3510927a97abeff21189847a21df480bfb719990247320",
+      "z": 0.8579000234603882,
+      "pixels": 3584,
+      "chi2": 3557.4651862733335,
+      "excess": -26.53481372666647,
+      "regional_excess": {
+        "carbon": -39.32699056719498,
+        "Mgb": 0.0,
+        "elsewhere": 12.792176840528839
+      },
+      "regional_pixels": {
+        "carbon": 642,
+        "Mgb": 0,
+        "elsewhere": 2942
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_146213",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/146213-M7_146213/ceridwen_derived_outputs.h5",
+      "sha256": "98ab146b3a80794f2a04bb9282fe1ca5deda479167962d3cd9d996b9760ca56d",
+      "z": 0.6875,
+      "pixels": 3618,
+      "chi2": 4121.707428257641,
+      "excess": 503.70742825764137,
+      "regional_excess": {
+        "carbon": 51.99115887007206,
+        "Mgb": -5.088600717900238,
+        "elsewhere": 456.804870105469
+      },
+      "regional_pixels": {
+        "carbon": 578,
+        "Mgb": 92,
+        "elsewhere": 2948
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_214296",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/214296-M11_214296/ceridwen_derived_outputs.h5",
+      "sha256": "90d4e16446e55ba7a00623751a4a6c7a37335be67d9d4691250e7c31f5cd8498",
+      "z": 0.6797130107879639,
+      "pixels": 3601,
+      "chi2": 3874.3243981547193,
+      "excess": 273.32439815471935,
+      "regional_excess": {
+        "carbon": -23.291096732166395,
+        "Mgb": 0.0,
+        "elsewhere": 296.615494886886
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 0,
+        "elsewhere": 3020
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M6_233902",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/233902-M6_233902/ceridwen_derived_outputs.h5",
+      "sha256": "6ce10450fd335db4a97e9ee191f2a4e8e709c66f61bbe78de36a215549e18130",
+      "z": 0.7293000221252441,
+      "pixels": 3566,
+      "chi2": 3574.8257825150145,
+      "excess": 8.825782515014453,
+      "regional_excess": {
+        "carbon": -86.05131373776723,
+        "Mgb": 0.0,
+        "elsewhere": 94.87709625278146
+      },
+      "regional_pixels": {
+        "carbon": 508,
+        "Mgb": 0,
+        "elsewhere": 3058
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_120372",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/120372-M7_120372/ceridwen_derived_outputs.h5",
+      "sha256": "c9839f8bbc92707708b04ee79649bb3fa10b51ff71ee303ecf039a7920af5068",
+      "z": 0.9415000081062317,
+      "pixels": 3629,
+      "chi2": 4129.889636489534,
+      "excess": 500.8896364895336,
+      "regional_excess": {
+        "carbon": -92.72117664870339,
+        "Mgb": 0.0,
+        "elsewhere": 593.6108131382363
+      },
+      "regional_pixels": {
+        "carbon": 386,
+        "Mgb": 0,
+        "elsewhere": 3243
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M9_227630",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/227630-M9_227630/ceridwen_derived_outputs.h5",
+      "sha256": "51d8bc6fbeb3045c889e9a8c64614f583cafa2d76286ed13dc0cff46090e7129",
+      "z": 0.7295899987220764,
+      "pixels": 3572,
+      "chi2": 3851.5970465079254,
+      "excess": 279.59704650792537,
+      "regional_excess": {
+        "carbon": 57.199873238152904,
+        "Mgb": -0.9651623983488207,
+        "elsewhere": 223.36233566812106
+      },
+      "regional_pixels": {
+        "carbon": 505,
+        "Mgb": 86,
+        "elsewhere": 2981
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M2_129596",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/129596-M2_129596/ceridwen_derived_outputs.h5",
+      "sha256": "ca22db69d28da683ab478417b474f56641286874680977c6c610ab052be866e1",
+      "z": 0.6955999732017517,
+      "pixels": 3634,
+      "chi2": 3831.3345508084376,
+      "excess": 197.3345508084376,
+      "regional_excess": {
+        "carbon": 99.14008083430069,
+        "Mgb": 83.99909112301225,
+        "elsewhere": 14.195378851125085
+      },
+      "regional_pixels": {
+        "carbon": 585,
+        "Mgb": 92,
+        "elsewhere": 2957
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M3_117010",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/117010-M3_117010/ceridwen_derived_outputs.h5",
+      "sha256": "cef1d991e717bdba9f786a3563b2c0920739eb106c53e63de4775171fba21dd4",
+      "z": 0.6765999794006348,
+      "pixels": 3539,
+      "chi2": 3840.427355416443,
+      "excess": 301.4273554164429,
+      "regional_excess": {
+        "carbon": 121.4614922970212,
+        "Mgb": 0.0,
+        "elsewhere": 179.9658631194218
+      },
+      "regional_pixels": {
+        "carbon": 577,
+        "Mgb": 0,
+        "elsewhere": 2962
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M2_130005",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/130005-M2_130005/ceridwen_derived_outputs.h5",
+      "sha256": "40151be581bd9f17f6f084cb6b4bb0a6ead3746617251d5db324171a35fafafd",
+      "z": 0.8341000080108643,
+      "pixels": 3448,
+      "chi2": 3754.541386802221,
+      "excess": 306.54138680222104,
+      "regional_excess": {
+        "carbon": 2.4715651276793587,
+        "Mgb": 37.68071050623628,
+        "elsewhere": 266.3891111683058
+      },
+      "regional_pixels": {
+        "carbon": 529,
+        "Mgb": 42,
+        "elsewhere": 2877
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_208622",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/208622-M1_208622/ceridwen_derived_outputs.h5",
+      "sha256": "80cfd1c5e630f76e23e5e32a3f01c8c39887b44e19d1da515bb8be9938c4149d",
+      "z": 0.6478999853134155,
+      "pixels": 3612,
+      "chi2": 3893.934583001469,
+      "excess": 281.93458300146904,
+      "regional_excess": {
+        "carbon": -28.850540615593825,
+        "Mgb": 14.289825212156778,
+        "elsewhere": 296.49529840490607
+      },
+      "regional_pixels": {
+        "carbon": 531,
+        "Mgb": 87,
+        "elsewhere": 2994
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M4_107370",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/107370-M4_107370/ceridwen_derived_outputs.h5",
+      "sha256": "cf8f1860871fbbf27d32a2b8193703c95afa9de0b1eae05376187c0d8a832b09",
+      "z": 0.8435999751091003,
+      "pixels": 3573,
+      "chi2": 3445.880836610284,
+      "excess": -127.11916338971605,
+      "regional_excess": {
+        "carbon": -169.82704967591252,
+        "Mgb": 0.0,
+        "elsewhere": 42.7078862861963
+      },
+      "regional_pixels": {
+        "carbon": 596,
+        "Mgb": 0,
+        "elsewhere": 2977
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_215519",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/215519-M10_215519/ceridwen_derived_outputs.h5",
+      "sha256": "8ae8b9397db7f84b2e2e047674941ad873ca37c1a23eabd2d1f5a3d828fba971",
+      "z": 0.6146249771118164,
+      "pixels": 3852,
+      "chi2": 3675.744098846644,
+      "excess": -176.2559011533558,
+      "regional_excess": {
+        "carbon": -67.2150500474517,
+        "Mgb": 0.9159363555726905,
+        "elsewhere": -109.95678746147698
+      },
+      "regional_pixels": {
+        "carbon": 474,
+        "Mgb": 83,
+        "elsewhere": 3295
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_92132",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/92132-M12_92132/ceridwen_derived_outputs.h5",
+      "sha256": "4380c7524c595fb0ecd20ca72a2d812f9dadc6b663bf8822ea469407fdc61623",
+      "z": 0.7475209832191467,
+      "pixels": 3583,
+      "chi2": 3595.4768934140457,
+      "excess": 12.476893414045662,
+      "regional_excess": {
+        "carbon": -100.56392410583592,
+        "Mgb": 0.0,
+        "elsewhere": 113.04081751988178
+      },
+      "regional_pixels": {
+        "carbon": 563,
+        "Mgb": 0,
+        "elsewhere": 3020
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_152125",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/152125-M7_152125/ceridwen_derived_outputs.h5",
+      "sha256": "bf000ef494b19de4c1b3185e225c847ace5f9a321058032e50b1ae94c7fa37df",
+      "z": 0.7871000170707703,
+      "pixels": 3516,
+      "chi2": 4086.4534977313397,
+      "excess": 570.4534977313397,
+      "regional_excess": {
+        "carbon": 187.4580219150033,
+        "Mgb": 0.0,
+        "elsewhere": 382.9954758163361
+      },
+      "regional_pixels": {
+        "carbon": 575,
+        "Mgb": 0,
+        "elsewhere": 2941
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M6_240899",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/240899-M6_240899/ceridwen_derived_outputs.h5",
+      "sha256": "6d17101597c154029031daaeb1d04760b0aaf36b8b47148b7fe31f35a5294bc6",
+      "z": 0.7394999861717224,
+      "pixels": 3583,
+      "chi2": 3591.4984175623213,
+      "excess": 8.498417562321265,
+      "regional_excess": {
+        "carbon": -44.58500880085127,
+        "Mgb": 0.0,
+        "elsewhere": 53.083426363172265
+      },
+      "regional_pixels": {
+        "carbon": 502,
+        "Mgb": 0,
+        "elsewhere": 3081
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_214430",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/214430-M11_214430/ceridwen_derived_outputs.h5",
+      "sha256": "18762f09f27ee310f283bea1b3474215474f70cdd470dbe716dc8220a96f0bf6",
+      "z": 0.8910719752311707,
+      "pixels": 3556,
+      "chi2": 4055.1858735838923,
+      "excess": 499.1858735838923,
+      "regional_excess": {
+        "carbon": -85.9775953504577,
+        "Mgb": 0.0,
+        "elsewhere": 585.1634689343497
+      },
+      "regional_pixels": {
+        "carbon": 382,
+        "Mgb": 0,
+        "elsewhere": 3174
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_126578",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/126578-M1_126578/ceridwen_derived_outputs.h5",
+      "sha256": "dae1732b70c9326ae985467cd36ce9a6a2829233d09ec0dda930debfb3c0b4ef",
+      "z": 0.7504000067710876,
+      "pixels": 3613,
+      "chi2": 4079.4864269298178,
+      "excess": 466.48642692981775,
+      "regional_excess": {
+        "carbon": -67.39907169889938,
+        "Mgb": -26.06481948762463,
+        "elsewhere": 559.9503181163419
+      },
+      "regional_pixels": {
+        "carbon": 585,
+        "Mgb": 95,
+        "elsewhere": 2933
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_37219",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/37219-M14_37219/ceridwen_derived_outputs.h5",
+      "sha256": "f1e8aff3b2b2e1a2b5cff5647333cbb10a6df73193172677962017b7bb852267",
+      "z": 0.7346779704093933,
+      "pixels": 3578,
+      "chi2": 3827.890261433295,
+      "excess": 249.8902614332951,
+      "regional_excess": {
+        "carbon": 88.0599903231099,
+        "Mgb": 0.0,
+        "elsewhere": 161.8302711101852
+      },
+      "regional_pixels": {
+        "carbon": 483,
+        "Mgb": 0,
+        "elsewhere": 3095
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M4_84337",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/84337-M4_84337/ceridwen_derived_outputs.h5",
+      "sha256": "c587776c018e5eae1952de79580bd2f61f28d4e40ba2fc87d24522bff4cf1081",
+      "z": 0.8388000130653381,
+      "pixels": 3482,
+      "chi2": 4024.0037508712617,
+      "excess": 542.0037508712617,
+      "regional_excess": {
+        "carbon": 26.113342179658204,
+        "Mgb": 0.0,
+        "elsewhere": 515.8904086916032
+      },
+      "regional_pixels": {
+        "carbon": 339,
+        "Mgb": 0,
+        "elsewhere": 3143
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_259737",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/259737-M13_259737/ceridwen_derived_outputs.h5",
+      "sha256": "5612f46dc9624fb0a0b1df5ac46c1f7e66573429781d715522225cd65a9069e4",
+      "z": 0.7028210163116455,
+      "pixels": 3884,
+      "chi2": 5418.153532602136,
+      "excess": 1534.1535326021358,
+      "regional_excess": {
+        "carbon": 168.43784259983812,
+        "Mgb": 35.91175335172794,
+        "elsewhere": 1329.8039366505698
+      },
+      "regional_pixels": {
+        "carbon": 589,
+        "Mgb": 86,
+        "elsewhere": 3209
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_103366",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/103366-M14_103366/ceridwen_derived_outputs.h5",
+      "sha256": "b896fe8c92a80550dc52b151fc4ca052d6c7c47bf036248bcb0215f780ed7a98",
+      "z": 0.674206018447876,
+      "pixels": 3614,
+      "chi2": 3724.996676921234,
+      "excess": 110.99667692123421,
+      "regional_excess": {
+        "carbon": 13.667171175905406,
+        "Mgb": 72.25317361924239,
+        "elsewhere": 25.07633212608664
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 91,
+        "elsewhere": 2947
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M5_205765",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/205765-M5_205765/ceridwen_derived_outputs.h5",
+      "sha256": "761a6ea641d25935322982251cb2104cdffaecdf2cf4928922926dd9b0386628",
+      "z": 0.7286999821662903,
+      "pixels": 3272,
+      "chi2": 3825.6087221509506,
+      "excess": 553.6087221509506,
+      "regional_excess": {
+        "carbon": 53.83495495136444,
+        "Mgb": 0.0,
+        "elsewhere": 499.77376719958625
+      },
+      "regional_pixels": {
+        "carbon": 351,
+        "Mgb": 0,
+        "elsewhere": 2921
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_122025",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/122025-M7_122025/ceridwen_derived_outputs.h5",
+      "sha256": "5cdce17241c9a3ea2989c65a3482169801c47016fa36e879d331b9a74bb6a717",
+      "z": 0.7476999759674072,
+      "pixels": 3544,
+      "chi2": 4169.227612568197,
+      "excess": 625.2276125681974,
+      "regional_excess": {
+        "carbon": 69.86162857159289,
+        "Mgb": 0.0,
+        "elsewhere": 555.3659839966044
+      },
+      "regional_pixels": {
+        "carbon": 561,
+        "Mgb": 0,
+        "elsewhere": 2983
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M2_210940",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/210940-M2_210940/ceridwen_derived_outputs.h5",
+      "sha256": "7eed65db2b6a19b647124e130adf635150739943dbf7aace71f4feb3980d7830",
+      "z": 0.6948999762535095,
+      "pixels": 3869,
+      "chi2": 3638.918768395214,
+      "excess": -230.0812316047859,
+      "regional_excess": {
+        "carbon": -50.34048796242521,
+        "Mgb": 3.4295420044355645,
+        "elsewhere": -183.17028564679612
+      },
+      "regional_pixels": {
+        "carbon": 585,
+        "Mgb": 92,
+        "elsewhere": 3192
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_120488",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/120488-M7_120488/ceridwen_derived_outputs.h5",
+      "sha256": "7f58b957337b1b82d8668310c75a4e4920a4b3e6db10878331a7d1010692fbc8",
+      "z": 0.9334999918937683,
+      "pixels": 3657,
+      "chi2": 4002.9808165078475,
+      "excess": 345.9808165078475,
+      "regional_excess": {
+        "carbon": 20.785385388536838,
+        "Mgb": 0.0,
+        "elsewhere": 325.19543111931023
+      },
+      "regional_pixels": {
+        "carbon": 383,
+        "Mgb": 0,
+        "elsewhere": 3274
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_245864",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/245864-M11_245864/ceridwen_derived_outputs.h5",
+      "sha256": "a33ad77c891edf0d31408d329f6a36b1f734aef04eaf31a641f32605a8ed0efd",
+      "z": 0.6980879902839661,
+      "pixels": 3630,
+      "chi2": 3850.258561751203,
+      "excess": 220.25856175120316,
+      "regional_excess": {
+        "carbon": 219.76003002359025,
+        "Mgb": 2.689753399174279,
+        "elsewhere": -2.191221671561891
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 65,
+        "elsewhere": 2978
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M3_109843",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/109843-M3_109843/ceridwen_derived_outputs.h5",
+      "sha256": "7b0afa5a0b72b14702b6c29f1971ffe06c78b6054919057f13ae8b00e4a8ecf3",
+      "z": 0.7243000268936157,
+      "pixels": 3604,
+      "chi2": 3959.289378238648,
+      "excess": 355.28937823864817,
+      "regional_excess": {
+        "carbon": 4.960060261666527,
+        "Mgb": 0.0,
+        "elsewhere": 350.32931797698154
+      },
+      "regional_pixels": {
+        "carbon": 543,
+        "Mgb": 0,
+        "elsewhere": 3061
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_217020",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/217020-M10_217020/ceridwen_derived_outputs.h5",
+      "sha256": "dda0daecf9f80b25957ca7cbbc169d207b58c23513fd400a64dcbc77161c5c3c",
+      "z": 0.8934249877929688,
+      "pixels": 3550,
+      "chi2": 3673.270211254112,
+      "excess": 123.27021125411193,
+      "regional_excess": {
+        "carbon": -166.13313441190388,
+        "Mgb": 0.0,
+        "elsewhere": 289.40334566601564
+      },
+      "regional_pixels": {
+        "carbon": 645,
+        "Mgb": 0,
+        "elsewhere": 2905
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_162587",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/162587-M7_162587/ceridwen_derived_outputs.h5",
+      "sha256": "8ed0642f562284539ae8e6a940e2f6587316919246f6c583b00e75a490852077",
+      "z": 0.786899983882904,
+      "pixels": 3598,
+      "chi2": 4052.2524732627,
+      "excess": 454.2524732626998,
+      "regional_excess": {
+        "carbon": 128.15865622300373,
+        "Mgb": 0.0,
+        "elsewhere": 326.093817039696
+      },
+      "regional_pixels": {
+        "carbon": 594,
+        "Mgb": 0,
+        "elsewhere": 3004
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M8_161113",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/161113-M8_161113/ceridwen_derived_outputs.h5",
+      "sha256": "02ed0b021100c50b8062a6fc2ed1cd5db3c607605c0d4784b30121dcc63d3717",
+      "z": 0.8911049962043762,
+      "pixels": 3550,
+      "chi2": 3950.5532150840286,
+      "excess": 400.5532150840286,
+      "regional_excess": {
+        "carbon": 113.11514326969267,
+        "Mgb": 0.0,
+        "elsewhere": 287.43807181433607
+      },
+      "regional_pixels": {
+        "carbon": 374,
+        "Mgb": 0,
+        "elsewhere": 3176
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M9_232890",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/232890-M9_232890/ceridwen_derived_outputs.h5",
+      "sha256": "701c8aa54a16908edda370e04bc00b105b5435bef6c388281cf2b6ccaecfff9b",
+      "z": 0.7656890153884888,
+      "pixels": 3543,
+      "chi2": 3714.0801798744196,
+      "excess": 171.08017987441963,
+      "regional_excess": {
+        "carbon": 94.00432410244588,
+        "Mgb": 0.0,
+        "elsewhere": 77.07585577197399
+      },
+      "regional_pixels": {
+        "carbon": 556,
+        "Mgb": 0,
+        "elsewhere": 2987
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_212718",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/212718-M11_212718/ceridwen_derived_outputs.h5",
+      "sha256": "bbd9736d0b98ad36f92c15c413207edcb65c71c30649bf7fce54bf6465538d19",
+      "z": 0.8897830247879028,
+      "pixels": 3540,
+      "chi2": 3789.379257092661,
+      "excess": 249.3792570926612,
+      "regional_excess": {
+        "carbon": -66.51917491051893,
+        "Mgb": 0.0,
+        "elsewhere": 315.8984320031806
+      },
+      "regional_pixels": {
+        "carbon": 219,
+        "Mgb": 0,
+        "elsewhere": 3321
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_133240",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/133240-M1_133240/ceridwen_derived_outputs.h5",
+      "sha256": "0819025ebcff148d6b461d942aab63b787cb90e7af95a4340318a33a1d66eb16",
+      "z": 0.7282000184059143,
+      "pixels": 3605,
+      "chi2": 3770.5918422004543,
+      "excess": 165.59184220045427,
+      "regional_excess": {
+        "carbon": 1.8697587921964214,
+        "Mgb": 0.0,
+        "elsewhere": 163.72208340825748
+      },
+      "regional_pixels": {
+        "carbon": 515,
+        "Mgb": 0,
+        "elsewhere": 3090
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_101830",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/101830-M12_101830/ceridwen_derived_outputs.h5",
+      "sha256": "198ced171e1a4a2570d3e287446e47860634eca485c3e2bc765b2664727d187f",
+      "z": 0.9873830080032349,
+      "pixels": 3560,
+      "chi2": 5131.807675922762,
+      "excess": 1571.8076759227624,
+      "regional_excess": {
+        "carbon": 65.69343354657278,
+        "Mgb": 0.0,
+        "elsewhere": 1506.1142423761898
+      },
+      "regional_pixels": {
+        "carbon": 397,
+        "Mgb": 0,
+        "elsewhere": 3163
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_181421",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/181421-M12_181421/ceridwen_derived_outputs.h5",
+      "sha256": "56ef914102549d178abfa0689115cd27fe801f3338f103eda2666d5dc9df5ecc",
+      "z": 0.9584800004959106,
+      "pixels": 3538,
+      "chi2": 4161.918307795949,
+      "excess": 623.9183077959487,
+      "regional_excess": {
+        "carbon": -56.398087228451224,
+        "Mgb": 0.0,
+        "elsewhere": 680.3163950243995
+      },
+      "regional_pixels": {
+        "carbon": 274,
+        "Mgb": 0,
+        "elsewhere": 3264
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M8_156118",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/156118-M8_156118/ceridwen_derived_outputs.h5",
+      "sha256": "c68155809ed7e9f058350db6dc5787ef0ceb108f3e1a1777811a54835da178b4",
+      "z": 0.8295459747314453,
+      "pixels": 3512,
+      "chi2": 3900.3091405713967,
+      "excess": 388.3091405713967,
+      "regional_excess": {
+        "carbon": -32.65782535181926,
+        "Mgb": 0.0,
+        "elsewhere": 420.9669659232159
+      },
+      "regional_pixels": {
+        "carbon": 545,
+        "Mgb": 0,
+        "elsewhere": 2967
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M1_126153",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/126153-M1_126153/ceridwen_derived_outputs.h5",
+      "sha256": "f085884eeff81175a85cfff617cc061f6e60d452c10817c36e57a5b7bd55269c",
+      "z": 0.6822999715805054,
+      "pixels": 3534,
+      "chi2": 4093.082881711341,
+      "excess": 559.0828817113411,
+      "regional_excess": {
+        "carbon": 107.11365994522836,
+        "Mgb": 1.742881874590237,
+        "elsewhere": 450.2263398915226
+      },
+      "regional_pixels": {
+        "carbon": 568,
+        "Mgb": 91,
+        "elsewhere": 2875
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_120758",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/120758-M7_120758/ceridwen_derived_outputs.h5",
+      "sha256": "eda235d53cb5aac2e0acb3ae151b10feab19f8202fbab15261c6314b137dd362",
+      "z": 0.9365000128746033,
+      "pixels": 3630,
+      "chi2": 3937.2670037243197,
+      "excess": 307.2670037243197,
+      "regional_excess": {
+        "carbon": 16.580923424705773,
+        "Mgb": 0.0,
+        "elsewhere": 290.6860802996143
+      },
+      "regional_pixels": {
+        "carbon": 275,
+        "Mgb": 0,
+        "elsewhere": 3355
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_38646",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/38646-M14_38646/ceridwen_derived_outputs.h5",
+      "sha256": "c7c321b5c0b6950fd22b8ed63a7cf021d3bcf178b7dd18ad6673b5e813af68e9",
+      "z": 0.9688860177993774,
+      "pixels": 3564,
+      "chi2": 4045.0239613281983,
+      "excess": 481.0239613281983,
+      "regional_excess": {
+        "carbon": 64.8561032188955,
+        "Mgb": 0.0,
+        "elsewhere": 416.1678581093027
+      },
+      "regional_pixels": {
+        "carbon": 398,
+        "Mgb": 0,
+        "elsewhere": 3166
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_102968",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/102968-M14_102968/ceridwen_derived_outputs.h5",
+      "sha256": "9db6c11e4559e69332da0a04d312c7af1266b36a355087c2f47526916c6e7bbf",
+      "z": 0.9393450021743774,
+      "pixels": 3669,
+      "chi2": 3970.272422555833,
+      "excess": 301.27242255583315,
+      "regional_excess": {
+        "carbon": -30.80392723190721,
+        "Mgb": 0.0,
+        "elsewhere": 332.0763497877398
+      },
+      "regional_pixels": {
+        "carbon": 392,
+        "Mgb": 0,
+        "elsewhere": 3277
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_245763",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/245763-M13_245763/ceridwen_derived_outputs.h5",
+      "sha256": "707154d77763d0af4932f1930a1a92a80f5eaf21b167da58912c437e48bc6847",
+      "z": 0.7542309761047363,
+      "pixels": 3585,
+      "chi2": 3971.3890425711,
+      "excess": 386.38904257110016,
+      "regional_excess": {
+        "carbon": -95.17790967156293,
+        "Mgb": 0.0,
+        "elsewhere": 481.56695224266326
+      },
+      "regional_pixels": {
+        "carbon": 604,
+        "Mgb": 0,
+        "elsewhere": 2981
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_255047",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/255047-M13_255047/ceridwen_derived_outputs.h5",
+      "sha256": "6d7573944c01c6cae271c19f30f665a55252589cf90e713244623dd65724b76a",
+      "z": 0.8642939925193787,
+      "pixels": 3563,
+      "chi2": 4335.498238444463,
+      "excess": 772.4982384444629,
+      "regional_excess": {
+        "carbon": -59.95899847477104,
+        "Mgb": 0.0,
+        "elsewhere": 832.4572369192343
+      },
+      "regional_pixels": {
+        "carbon": 411,
+        "Mgb": 0,
+        "elsewhere": 3152
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_201233",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-14/run/fits/fit/201233-M10_201233/ceridwen_derived_outputs.h5",
+      "sha256": "16df0d911b464cdde358d6380ff55030cd8cdbf06b79e2240a470fb696017873",
+      "z": 0.8177419900894165,
+      "pixels": 3590,
+      "chi2": 3814.646218315264,
+      "excess": 224.64621831526392,
+      "regional_excess": {
+        "carbon": -14.138342795513228,
+        "Mgb": 0.0,
+        "elsewhere": 238.78456111077725
+      },
+      "regional_pixels": {
+        "carbon": 460,
+        "Mgb": 0,
+        "elsewhere": 3130
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_101089",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/101089-M12_101089/ceridwen_derived_outputs.h5",
+      "sha256": "f31db0b3bb4529e6d088fce76e861f73729ebce17731b04e19c68d4a4f8b18aa",
+      "z": 0.8510000109672546,
+      "pixels": 3563,
+      "chi2": 7164.895635207296,
+      "excess": 3601.8956352072964,
+      "regional_excess": {
+        "carbon": 189.88853402369358,
+        "Mgb": 0.0,
+        "elsewhere": 3412.0071011836026
+      },
+      "regional_pixels": {
+        "carbon": 640,
+        "Mgb": 0,
+        "elsewhere": 2923
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_258753",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-12/run/fits/fit/258753-M13_258753/ceridwen_derived_outputs.h5",
+      "sha256": "50b9024ce861ec7748754f021ca9a4821474eeb6db610a8b7321b41dcf6c98de",
+      "z": 0.9096279740333557,
+      "pixels": 3618,
+      "chi2": 4973.295601838555,
+      "excess": 1355.2956018385548,
+      "regional_excess": {
+        "carbon": 163.4361763576474,
+        "Mgb": 0.0,
+        "elsewhere": 1191.8594254809082
+      },
+      "regional_pixels": {
+        "carbon": 371,
+        "Mgb": 0,
+        "elsewhere": 3247
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M5_167056",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/167056-M5_167056/ceridwen_derived_outputs.h5",
+      "sha256": "a80072d815a44a786dddff02bbb48a0a242ffc2e68e0d4e38af6179cc35e823b",
+      "z": 0.8932999968528748,
+      "pixels": 3548,
+      "chi2": 3644.050190330141,
+      "excess": 96.05019033014105,
+      "regional_excess": {
+        "carbon": 26.461856163680032,
+        "Mgb": 0.0,
+        "elsewhere": 69.58833416646078
+      },
+      "regional_pixels": {
+        "carbon": 374,
+        "Mgb": 0,
+        "elsewhere": 3174
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M15_87207",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/87207-M15_87207/ceridwen_derived_outputs.h5",
+      "sha256": "3885a9d1ef37b3185037be93c1a819eb378b846e9869febb5947da663af5f0bd",
+      "z": 0.8325369954109192,
+      "pixels": 3574,
+      "chi2": 4112.138933429998,
+      "excess": 538.1389334299984,
+      "regional_excess": {
+        "carbon": -22.375710267772988,
+        "Mgb": 0.0,
+        "elsewhere": 560.5146436977706
+      },
+      "regional_pixels": {
+        "carbon": 373,
+        "Mgb": 0,
+        "elsewhere": 3201
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M6_166634",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/166634-M6_166634/ceridwen_derived_outputs.h5",
+      "sha256": "176c05be357730f9d76b0009d51b11079c2e87b27e72617394309a3b99e73af6",
+      "z": 0.8526999950408936,
+      "pixels": 3590,
+      "chi2": 3651.485245576681,
+      "excess": 61.48524557668088,
+      "regional_excess": {
+        "carbon": -15.867676739194145,
+        "Mgb": 0.0,
+        "elsewhere": 77.35292231587485
+      },
+      "regional_pixels": {
+        "carbon": 639,
+        "Mgb": 0,
+        "elsewhere": 2951
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M7_121482",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/121482-M7_121482/ceridwen_derived_outputs.h5",
+      "sha256": "24de56e21ea5581387882bfe4cc379f6899867467ded32c4306c2e74035412cd",
+      "z": 0.9359999895095825,
+      "pixels": 3677,
+      "chi2": 4179.444746191348,
+      "excess": 502.4447461913478,
+      "regional_excess": {
+        "carbon": 15.307392109371943,
+        "Mgb": 0.0,
+        "elsewhere": 487.13735408197545
+      },
+      "regional_pixels": {
+        "carbon": 390,
+        "Mgb": 0,
+        "elsewhere": 3287
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M10_189698",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/189698-M10_189698/ceridwen_derived_outputs.h5",
+      "sha256": "67ca98683b20db4573781f0701f8a8b297c4861669d0af57a8a0215885f6a77e",
+      "z": 0.9257839918136597,
+      "pixels": 3574,
+      "chi2": 3573.205538345844,
+      "excess": -0.7944616541558389,
+      "regional_excess": {
+        "carbon": -25.47168038072354,
+        "Mgb": 0.0,
+        "elsewhere": 24.677218726567663
+      },
+      "regional_pixels": {
+        "carbon": 112,
+        "Mgb": 0,
+        "elsewhere": 3462
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M15_89072",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-04/run/fits/fit/89072-M15_89072/ceridwen_derived_outputs.h5",
+      "sha256": "2d07363729b17007e06be80619d4c88624d74e58a11891b81f86cbf7be992bf5",
+      "z": 0.836991012096405,
+      "pixels": 3528,
+      "chi2": 4034.298208986041,
+      "excess": 506.2982089860411,
+      "regional_excess": {
+        "carbon": -25.978505713276306,
+        "Mgb": 0.0,
+        "elsewhere": 532.2767146993169
+      },
+      "regional_pixels": {
+        "carbon": 549,
+        "Mgb": 0,
+        "elsewhere": 2979
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M2_97310",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/97310-M2_97310/ceridwen_derived_outputs.h5",
+      "sha256": "ff53e3744ca611cd2d9a39e5a257141843d5f18e5a35e240aae781dfd1724ad1",
+      "z": 0.942799985408783,
+      "pixels": 3639,
+      "chi2": 3461.6061366342874,
+      "excess": -177.3938633657126,
+      "regional_excess": {
+        "carbon": -24.871393755821163,
+        "Mgb": 0.0,
+        "elsewhere": -152.5224696098916
+      },
+      "regional_pixels": {
+        "carbon": 193,
+        "Mgb": 0,
+        "elsewhere": 3446
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_37843",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/37843-M14_37843/ceridwen_derived_outputs.h5",
+      "sha256": "1546fa2557d23b52823988435539045828472e68d5a8e487f469deecf9cf99c8",
+      "z": 0.9693750143051147,
+      "pixels": 3560,
+      "chi2": 3889.2633348559557,
+      "excess": 329.2633348559557,
+      "regional_excess": {
+        "carbon": 41.91806963999062,
+        "Mgb": 0.0,
+        "elsewhere": 287.3452652159651
+      },
+      "regional_pixels": {
+        "carbon": 390,
+        "Mgb": 0,
+        "elsewhere": 3170
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M4_112534",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-01/run/fits/fit/112534-M4_112534/ceridwen_derived_outputs.h5",
+      "sha256": "0117b8b8702f256666765e6edb968797c45b15e8967ede434d8441c75c899e7d",
+      "z": 0.9836999773979187,
+      "pixels": 3562,
+      "chi2": 3334.2170101005286,
+      "excess": -227.78298989947143,
+      "regional_excess": {
+        "carbon": -172.04925843723822,
+        "Mgb": 0.0,
+        "elsewhere": -55.73373146223321
+      },
+      "regional_pixels": {
+        "carbon": 584,
+        "Mgb": 0,
+        "elsewhere": 2978
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M5_127946",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-02/run/fits/fit/127946-M5_127946/ceridwen_derived_outputs.h5",
+      "sha256": "2452127c13f8fd66dde5f5fe8fc308caf45abf8a5d0ad60c840e1a5b9fd6590d",
+      "z": 0.9387000203132629,
+      "pixels": 3628,
+      "chi2": 3675.181788722034,
+      "excess": 47.18178872203407,
+      "regional_excess": {
+        "carbon": -23.590868863216844,
+        "Mgb": 0.0,
+        "elsewhere": 70.7726575852509
+      },
+      "regional_pixels": {
+        "carbon": 113,
+        "Mgb": 0,
+        "elsewhere": 3515
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M3_119809",
+      "group": "with_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-03/run/fits/fit/119809-M3_119809/ceridwen_derived_outputs.h5",
+      "sha256": "cf7b91434ce5ce0465d4156da544017525e8fe5e3d9780f3e529411c0217d46b",
+      "z": 0.6801000237464905,
+      "pixels": 3762,
+      "chi2": 4403.173686120024,
+      "excess": 641.1736861200243,
+      "regional_excess": {
+        "carbon": 45.697621561123384,
+        "Mgb": -17.162250242571673,
+        "elsewhere": 612.6383148014723
+      },
+      "regional_pixels": {
+        "carbon": 573,
+        "Mgb": 91,
+        "elsewhere": 3098
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M12_185631",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-15/run/fits/fit/185631-M12_185631/ceridwen_derived_outputs.h5",
+      "sha256": "9a0ba6caa152d5585b3129900fca6c52670e16f2cf6941f5c3c2b75039678713",
+      "z": 0.9253259897232056,
+      "pixels": 3700,
+      "chi2": 6570.331316216221,
+      "excess": 2870.3313162162212,
+      "regional_excess": {
+        "carbon": 605.1507383527507,
+        "Mgb": 0.0,
+        "elsewhere": 2265.1805778634703
+      },
+      "regional_pixels": {
+        "carbon": 654,
+        "Mgb": 0,
+        "elsewhere": 3046
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M13_253688",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-05/run/fits/fit/253688-M13_253688/ceridwen_derived_outputs.h5",
+      "sha256": "b75d56bc3ad01053df2d6c0e79e25386b57c5f9fd2ad4803f2c1921e65a6e740",
+      "z": 0.8370350003242493,
+      "pixels": 3486,
+      "chi2": 8791.880779446554,
+      "excess": 5305.880779446554,
+      "regional_excess": {
+        "carbon": 840.6774152846338,
+        "Mgb": 0.0,
+        "elsewhere": 4465.20336416192
+      },
+      "regional_pixels": {
+        "carbon": 541,
+        "Mgb": 0,
+        "elsewhere": 2945
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M11_217564",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-16/run/fits/fit/217564-M11_217564/ceridwen_derived_outputs.h5",
+      "sha256": "0e1b225d46dc911324e116ee1cc3ba688be880ef40d867ac68c2f6b356e96322",
+      "z": 0.8899400234222412,
+      "pixels": 3574,
+      "chi2": 3983.288533256353,
+      "excess": 409.2885332563528,
+      "regional_excess": {
+        "carbon": -29.201638637350456,
+        "Mgb": 0.0,
+        "elsewhere": 438.490171893703
+      },
+      "regional_pixels": {
+        "carbon": 382,
+        "Mgb": 0,
+        "elsewhere": 3192
+      }
+    },
+    {
+      "arm": "baseline",
+      "target": "M14_104877",
+      "group": "without_Mgb",
+      "path": "results/dr2-refit-2026-10-12/part-13/run/fits/fit/104877-M14_104877/ceridwen_derived_outputs.h5",
+      "sha256": "f8bd791d839119278030fda16aa90c61b4e4bf20fe25dbd3fc572d5ed4cdd370",
+      "z": 0.9544000029563904,
+      "pixels": 3560,
+      "chi2": 5399.796599372155,
+      "excess": 1839.7965993721546,
+      "regional_excess": {
+        "carbon": 348.57014186212865,
+        "Mgb": 0.0,
+        "elsewhere": 1491.2264575100255
+      },
+      "regional_pixels": {
+        "carbon": 650,
+        "Mgb": 0,
+        "elsewhere": 2910
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_172669",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/172669-M5_172669/ceridwen_derived_outputs.h5",
+      "sha256": "b4183c178147aa50539b43a257f29d244d889214bfc7bbdb4f9e6a0ae14cadd8",
+      "z": 0.6036999821662903,
+      "pixels": 3880,
+      "chi2": 4650.115452686119,
+      "excess": 770.1154526861192,
+      "regional_excess": {
+        "carbon": -187.55904122304295,
+        "Mgb": 23.645721772008237,
+        "elsewhere": 934.0287721371539
+      },
+      "regional_pixels": {
+        "carbon": 554,
+        "Mgb": 86,
+        "elsewhere": 3240
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_233129",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/233129-M10_233129/ceridwen_derived_outputs.h5",
+      "sha256": "3428a894b2568b7799ac0a366fbd1d9028422ca1172cabfb3a8eed053c303097",
+      "z": 0.6186460256576538,
+      "pixels": 3736,
+      "chi2": 3764.606046100747,
+      "excess": 28.60604610074688,
+      "regional_excess": {
+        "carbon": 75.08295876633235,
+        "Mgb": 48.04058512168513,
+        "elsewhere": -94.5174977872702
+      },
+      "regional_pixels": {
+        "carbon": 475,
+        "Mgb": 83,
+        "elsewhere": 3178
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_210210",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/210210-M1_210210/ceridwen_derived_outputs.h5",
+      "sha256": "77156c3610e8f18be788cabd15e205ab2afc2a4e896061ec3ab02040041025a4",
+      "z": 0.65420001745224,
+      "pixels": 3607,
+      "chi2": 3717.643053696658,
+      "excess": 110.64305369665817,
+      "regional_excess": {
+        "carbon": 56.30871817109812,
+        "Mgb": 18.08570467797306,
+        "elsewhere": 36.248630847587116
+      },
+      "regional_pixels": {
+        "carbon": 573,
+        "Mgb": 89,
+        "elsewhere": 2945
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_181945",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/181945-M12_181945/ceridwen_derived_outputs.h5",
+      "sha256": "a2b8b63fb6f3f7d70de0748d8f6b4f8de3a7ba98ff2cfa8bbd7cf51a732764dd",
+      "z": 0.6795139908790588,
+      "pixels": 3610,
+      "chi2": 3880.5134860329945,
+      "excess": 270.5134860329945,
+      "regional_excess": {
+        "carbon": 23.16771564055321,
+        "Mgb": 0.0,
+        "elsewhere": 247.34577039244138
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 0,
+        "elsewhere": 3029
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M2_133501",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/133501-M2_133501/ceridwen_derived_outputs.h5",
+      "sha256": "82d2914874ee28534a58834e632122c3a6f3f50b2b1129d10eb52fe6097286de",
+      "z": 0.729200005531311,
+      "pixels": 3656,
+      "chi2": 4070.170298580247,
+      "excess": 414.17029858024716,
+      "regional_excess": {
+        "carbon": -16.67119953013836,
+        "Mgb": 15.07920177777098,
+        "elsewhere": 415.76229633261494
+      },
+      "regional_pixels": {
+        "carbon": 508,
+        "Mgb": 94,
+        "elsewhere": 3054
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_38648",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/38648-M14_38648/ceridwen_derived_outputs.h5",
+      "sha256": "9960dbf0da88d7d311a68fed80cfd1676c3d6448090bca391db49a5fe00b0a1f",
+      "z": 0.6742770075798035,
+      "pixels": 3632,
+      "chi2": 3840.0996928756977,
+      "excess": 208.09969287569766,
+      "regional_excess": {
+        "carbon": 59.544033316013106,
+        "Mgb": -1.7456053067012547,
+        "elsewhere": 150.30126486638568
+      },
+      "regional_pixels": {
+        "carbon": 580,
+        "Mgb": 90,
+        "elsewhere": 2962
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M9_233169",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/233169-M9_233169/ceridwen_derived_outputs.h5",
+      "sha256": "59b66af38aadb6de317b0f09287e293091a25c887551976bd87dcaf5a589954c",
+      "z": 0.6103590130805969,
+      "pixels": 3776,
+      "chi2": 3901.04800465244,
+      "excess": 125.04800465243989,
+      "regional_excess": {
+        "carbon": -12.996279337352856,
+        "Mgb": 48.89584053878758,
+        "elsewhere": 89.14844345100543
+      },
+      "regional_pixels": {
+        "carbon": 537,
+        "Mgb": 80,
+        "elsewhere": 3159
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M2_134391",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/134391-M2_134391/ceridwen_derived_outputs.h5",
+      "sha256": "92188d3d38db90406e68ad4393faf20883dfcfbd1d59e94cb6933ed9bc5125e5",
+      "z": 0.6834999918937683,
+      "pixels": 3686,
+      "chi2": 4257.774587902431,
+      "excess": 571.7745879024314,
+      "regional_excess": {
+        "carbon": 0.6560457033696689,
+        "Mgb": -8.14384491375204,
+        "elsewhere": 579.2623871128138
+      },
+      "regional_pixels": {
+        "carbon": 582,
+        "Mgb": 91,
+        "elsewhere": 3013
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M8_160400",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/160400-M8_160400/ceridwen_derived_outputs.h5",
+      "sha256": "350edd783d31d2475ec6ba53a997565ee3e17f7b2e934dd559fa926b122cbe64",
+      "z": 0.6031960248947144,
+      "pixels": 3631,
+      "chi2": 3658.1614591711714,
+      "excess": 27.161459171171373,
+      "regional_excess": {
+        "carbon": 42.52332952581391,
+        "Mgb": 14.944480742409484,
+        "elsewhere": -30.306351097052172
+      },
+      "regional_pixels": {
+        "carbon": 556,
+        "Mgb": 87,
+        "elsewhere": 2988
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_205742",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/205742-M1_205742/ceridwen_derived_outputs.h5",
+      "sha256": "1c97e855d48db033dcfb0850e54b74e16416cac9afb951871d25fdaa79bbbdfd",
+      "z": 0.7272999882698059,
+      "pixels": 3656,
+      "chi2": 4964.0180585627795,
+      "excess": 1308.0180585627795,
+      "regional_excess": {
+        "carbon": 126.82598686918172,
+        "Mgb": 27.10842435757322,
+        "elsewhere": 1154.0836473360246
+      },
+      "regional_pixels": {
+        "carbon": 522,
+        "Mgb": 83,
+        "elsewhere": 3051
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_213772",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/213772-M10_213772/ceridwen_derived_outputs.h5",
+      "sha256": "6a6eea8dc9fb16ad09a7357ed1dc6d2c19df747e4008285b5e8ae2123343ff25",
+      "z": 0.7003939747810364,
+      "pixels": 3807,
+      "chi2": 3814.2604577222896,
+      "excess": 7.26045772228963,
+      "regional_excess": {
+        "carbon": -225.59523126329805,
+        "Mgb": -10.821044626880543,
+        "elsewhere": 243.67673361246784
+      },
+      "regional_pixels": {
+        "carbon": 589,
+        "Mgb": 85,
+        "elsewhere": 3133
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M8_150848",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/150848-M8_150848/ceridwen_derived_outputs.h5",
+      "sha256": "bb77618556e3373d183053e5caff801e904ed67f5350c7b4cc017625bc1b8b97",
+      "z": 0.7011280059814453,
+      "pixels": 3785,
+      "chi2": 4191.17049479117,
+      "excess": 406.1704947911703,
+      "regional_excess": {
+        "carbon": 73.35538639849828,
+        "Mgb": 16.313031702709893,
+        "elsewhere": 316.5020766899621
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 83,
+        "elsewhere": 3115
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M8_161346",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/161346-M8_161346/ceridwen_derived_outputs.h5",
+      "sha256": "fd316c372b3f343cc4a6075c35129d07989b8fb1ca858a1af8b628d23051602e",
+      "z": 0.6566219925880432,
+      "pixels": 3610,
+      "chi2": 3809.261389364284,
+      "excess": 199.2613893642838,
+      "regional_excess": {
+        "carbon": 135.7528575771233,
+        "Mgb": 57.760827763768496,
+        "elsewhere": 5.747704023392053
+      },
+      "regional_pixels": {
+        "carbon": 571,
+        "Mgb": 71,
+        "elsewhere": 2968
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M8_162149",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/162149-M8_162149/ceridwen_derived_outputs.h5",
+      "sha256": "fcfd1caaed0afc18d445e0aa464d802ba3a0f95b482cacc9f33568324895b933",
+      "z": 0.7034350037574768,
+      "pixels": 3623,
+      "chi2": 3698.3090182189535,
+      "excess": 75.3090182189535,
+      "regional_excess": {
+        "carbon": -124.55506811912998,
+        "Mgb": 2.3592452893083613,
+        "elsewhere": 197.50484104877512
+      },
+      "regional_pixels": {
+        "carbon": 589,
+        "Mgb": 13,
+        "elsewhere": 3021
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_113852",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/113852-M7_113852/ceridwen_derived_outputs.h5",
+      "sha256": "abb4410ce50c4684fee11f171c9e1329a25f7c1b115a7bf171711e50a013115e",
+      "z": 0.6751999855041504,
+      "pixels": 3560,
+      "chi2": 4244.259994600783,
+      "excess": 684.2599946007831,
+      "regional_excess": {
+        "carbon": 56.29482096140176,
+        "Mgb": 79.49608066509387,
+        "elsewhere": 548.4690929742865
+      },
+      "regional_pixels": {
+        "carbon": 577,
+        "Mgb": 85,
+        "elsewhere": 2898
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M4_105474",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/105474-M4_105474/ceridwen_derived_outputs.h5",
+      "sha256": "f660a6d127b6d21418b28d963cafcbf31019d9c30304d1ed0f85a4d19fe3c089",
+      "z": 0.6732000112533569,
+      "pixels": 3551,
+      "chi2": 3776.0364746532614,
+      "excess": 225.0364746532614,
+      "regional_excess": {
+        "carbon": 63.352679278290395,
+        "Mgb": 0.0,
+        "elsewhere": 161.68379537497094
+      },
+      "regional_pixels": {
+        "carbon": 578,
+        "Mgb": 0,
+        "elsewhere": 2973
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_228215",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/228215-M10_228215/ceridwen_derived_outputs.h5",
+      "sha256": "8eb13eb788d90f420e63c3721419d411c9603889ab4f58d2b6d48807ce817454",
+      "z": 0.6108589768409729,
+      "pixels": 3628,
+      "chi2": 3960.458333544121,
+      "excess": 332.45833354412116,
+      "regional_excess": {
+        "carbon": 89.7975547936704,
+        "Mgb": 8.527609646038641,
+        "elsewhere": 234.13316910441193
+      },
+      "regional_pixels": {
+        "carbon": 534,
+        "Mgb": 87,
+        "elsewhere": 3007
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_218207",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/218207-M11_218207/ceridwen_derived_outputs.h5",
+      "sha256": "55684bfa1c01ba3259089221014561783114d66f1c773bbbbb1047d7fa20ee62",
+      "z": 0.6817629933357239,
+      "pixels": 3609,
+      "chi2": 3714.581054748986,
+      "excess": 105.58105474898593,
+      "regional_excess": {
+        "carbon": -118.3936308354622,
+        "Mgb": 0.0,
+        "elsewhere": 223.97468558444848
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 0,
+        "elsewhere": 3028
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_216730",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/216730-M10_216730/ceridwen_derived_outputs.h5",
+      "sha256": "0c5f5a00b743c2aeaad2ef9b79f9f532e4890078296aa66f655474e1a49426cb",
+      "z": 0.8937180042266846,
+      "pixels": 3504,
+      "chi2": 2280.344022185796,
+      "excess": -1223.655977814204,
+      "regional_excess": {
+        "carbon": -436.18185257040915,
+        "Mgb": 0.0,
+        "elsewhere": -787.4741252437949
+      },
+      "regional_pixels": {
+        "carbon": 640,
+        "Mgb": 0,
+        "elsewhere": 2864
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_232627",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/232627-M13_232627/ceridwen_derived_outputs.h5",
+      "sha256": "9d40fd39b5b2edefefe5c02c0a65b2ba37520c8b673081ffd0ea923e3918a61d",
+      "z": 0.6210529804229736,
+      "pixels": 3807,
+      "chi2": 3591.8615598905226,
+      "excess": -215.13844010947741,
+      "regional_excess": {
+        "carbon": -16.45394521341349,
+        "Mgb": 11.571753802043313,
+        "elsewhere": -210.25624869810704
+      },
+      "regional_pixels": {
+        "carbon": 457,
+        "Mgb": 86,
+        "elsewhere": 3264
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_228380",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/228380-M10_228380/ceridwen_derived_outputs.h5",
+      "sha256": "898db55d3b9071ec38c138757b0cbda99c77772e86a296776607b5560ba4c117",
+      "z": 0.6113759875297546,
+      "pixels": 3637,
+      "chi2": 4043.09822833845,
+      "excess": 406.0982283384501,
+      "regional_excess": {
+        "carbon": -6.206377678066357,
+        "Mgb": 50.882144128273026,
+        "elsewhere": 361.42246188824305
+      },
+      "regional_pixels": {
+        "carbon": 530,
+        "Mgb": 87,
+        "elsewhere": 3020
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M4_117400",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/117400-M4_117400/ceridwen_derived_outputs.h5",
+      "sha256": "21a13e6e3eefb84e93d8ec10b978c6ad784c637aec35149c36816bb0766ce0d4",
+      "z": 0.6686999797821045,
+      "pixels": 3538,
+      "chi2": 3949.5094734217455,
+      "excess": 411.5094734217455,
+      "regional_excess": {
+        "carbon": 71.28713020234414,
+        "Mgb": 0.0,
+        "elsewhere": 340.22234321940175
+      },
+      "regional_pixels": {
+        "carbon": 566,
+        "Mgb": 0,
+        "elsewhere": 2972
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_257455",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/257455-M11_257455/ceridwen_derived_outputs.h5",
+      "sha256": "e0d855903cbc27134e0c1350ddbd1a13657f8f53a21363eece9c98bef8b01ce4",
+      "z": 0.665710985660553,
+      "pixels": 3624,
+      "chi2": 3771.034845321632,
+      "excess": 147.03484532163202,
+      "regional_excess": {
+        "carbon": 140.24799259073296,
+        "Mgb": 5.215655737806704,
+        "elsewhere": 1.5711969930927694
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 90,
+        "elsewhere": 2958
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_215585",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/215585-M11_215585/ceridwen_derived_outputs.h5",
+      "sha256": "65b2ab4cb7f31e86c4e8579e86fd305f419819b9d1eee999370ea0dc40014e2d",
+      "z": 0.7487310171127319,
+      "pixels": 3603,
+      "chi2": 4348.479255189026,
+      "excess": 745.4792551890259,
+      "regional_excess": {
+        "carbon": -32.58154430886229,
+        "Mgb": 0.0,
+        "elsewhere": 778.0607994978881
+      },
+      "regional_pixels": {
+        "carbon": 573,
+        "Mgb": 0,
+        "elsewhere": 3030
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M3_119474",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/119474-M3_119474/ceridwen_derived_outputs.h5",
+      "sha256": "d38d905bf482d31ed4d3509bfe5bea4a89107c5fb6698c85a1f6186e3470423b",
+      "z": 0.680899977684021,
+      "pixels": 3744,
+      "chi2": 5246.446489936521,
+      "excess": 1502.4464899365212,
+      "regional_excess": {
+        "carbon": 46.56412813176023,
+        "Mgb": 28.59061849407682,
+        "elsewhere": 1427.291743310684
+      },
+      "regional_pixels": {
+        "carbon": 574,
+        "Mgb": 92,
+        "elsewhere": 3078
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M2_206669",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/206669-M2_206669/ceridwen_derived_outputs.h5",
+      "sha256": "e3d81cab8f22488afaba8e2433a36650972f1720a67f5c0631d164459c63cf27",
+      "z": 0.6715999841690063,
+      "pixels": 3884,
+      "chi2": 4416.3968176459175,
+      "excess": 532.3968176459175,
+      "regional_excess": {
+        "carbon": 1.5003871622435696,
+        "Mgb": 68.96854775117254,
+        "elsewhere": 461.9278827325012
+      },
+      "regional_pixels": {
+        "carbon": 574,
+        "Mgb": 91,
+        "elsewhere": 3219
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_211157",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/211157-M1_211157/ceridwen_derived_outputs.h5",
+      "sha256": "c16fe3295392b20199dd5d9966d787a46ec15a63d383fd05cbca887c2d046fa2",
+      "z": 0.6069999933242798,
+      "pixels": 3845,
+      "chi2": 4634.1380491170385,
+      "excess": 789.1380491170385,
+      "regional_excess": {
+        "carbon": -76.35715641928542,
+        "Mgb": 24.713436157989513,
+        "elsewhere": 840.7817693783344
+      },
+      "regional_pixels": {
+        "carbon": 557,
+        "Mgb": 84,
+        "elsewhere": 3204
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_102456",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/102456-M12_102456/ceridwen_derived_outputs.h5",
+      "sha256": "9616562c5a4c3c23f8aeef9b8b9512a3496e055c5dd099f6725548aa2ea91299",
+      "z": 0.6779490113258362,
+      "pixels": 3534,
+      "chi2": 4784.04319965583,
+      "excess": 1250.04319965583,
+      "regional_excess": {
+        "carbon": 163.22567448544072,
+        "Mgb": 13.691533930467699,
+        "elsewhere": 1073.125991239922
+      },
+      "regional_pixels": {
+        "carbon": 555,
+        "Mgb": 91,
+        "elsewhere": 2888
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_221163",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/221163-M11_221163/ceridwen_derived_outputs.h5",
+      "sha256": "2584bd376ca26451770dd37337c9478da10cdb44ddc939bca45449935679a415",
+      "z": 0.6975380182266235,
+      "pixels": 3585,
+      "chi2": 3921.037140016324,
+      "excess": 336.037140016324,
+      "regional_excess": {
+        "carbon": -203.39909578251977,
+        "Mgb": 0.0,
+        "elsewhere": 539.4362357988438
+      },
+      "regional_pixels": {
+        "carbon": 582,
+        "Mgb": 0,
+        "elsewhere": 3003
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_206858",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/206858-M1_206858/ceridwen_derived_outputs.h5",
+      "sha256": "15bd56750315b9e3c477ff7234e65226cf1521d4e31ded051bc12e0e29ff9979",
+      "z": 0.7247999906539917,
+      "pixels": 3617,
+      "chi2": 3728.7654797648347,
+      "excess": 111.76547976483471,
+      "regional_excess": {
+        "carbon": -16.698085087159114,
+        "Mgb": 61.18014724797224,
+        "elsewhere": 67.28341760402122
+      },
+      "regional_pixels": {
+        "carbon": 539,
+        "Mgb": 80,
+        "elsewhere": 2998
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_205715",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/205715-M5_205715/ceridwen_derived_outputs.h5",
+      "sha256": "981149506e0a592ce1ed9b2e62910dbe1963cff84a35ca8b754ac3354ea5a586",
+      "z": 0.7465000152587891,
+      "pixels": 3590,
+      "chi2": 4099.6432627464355,
+      "excess": 509.64326274643554,
+      "regional_excess": {
+        "carbon": 283.4774417669504,
+        "Mgb": 0.0,
+        "elsewhere": 226.16582097948503
+      },
+      "regional_pixels": {
+        "carbon": 553,
+        "Mgb": 0,
+        "elsewhere": 3037
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M8_148698",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/148698-M8_148698/ceridwen_derived_outputs.h5",
+      "sha256": "ec606f2dc65c74f239944e17ce4d2de64303349e9bf5e99135f255e7f1c8b6e0",
+      "z": 0.6755419969558716,
+      "pixels": 3658,
+      "chi2": 3686.4742935593395,
+      "excess": 28.474293559339458,
+      "regional_excess": {
+        "carbon": 27.52522692685587,
+        "Mgb": 9.652579356184965,
+        "elsewhere": -8.703512723701522
+      },
+      "regional_pixels": {
+        "carbon": 580,
+        "Mgb": 91,
+        "elsewhere": 2987
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_229551",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/229551-M11_229551/ceridwen_derived_outputs.h5",
+      "sha256": "a9b88d3579387e6c3d08a26e8582e8be2d830c07f3f6857c761d34e01a0f8ef8",
+      "z": 0.6957730054855347,
+      "pixels": 3603,
+      "chi2": 3973.3167348046613,
+      "excess": 370.31673480466134,
+      "regional_excess": {
+        "carbon": -189.26807862609806,
+        "Mgb": 0.0,
+        "elsewhere": 559.5848134307593
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 0,
+        "elsewhere": 3016
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_236682",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/236682-M5_236682/ceridwen_derived_outputs.h5",
+      "sha256": "b666d1913deea9a1cd92f72b314443bcca9b5efdc890df8759d5f168a9c8e6d3",
+      "z": 0.7342000007629395,
+      "pixels": 3559,
+      "chi2": 4022.934303360689,
+      "excess": 463.9343033606888,
+      "regional_excess": {
+        "carbon": 41.71816031465998,
+        "Mgb": 0.0,
+        "elsewhere": 422.2161430460288
+      },
+      "regional_pixels": {
+        "carbon": 482,
+        "Mgb": 0,
+        "elsewhere": 3077
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_206545",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/206545-M1_206545/ceridwen_derived_outputs.h5",
+      "sha256": "81e821ead9fd51bdb88c0d39b03507887d574e39662c9784857ab218f15a9515",
+      "z": 0.7282999753952026,
+      "pixels": 3608,
+      "chi2": 4950.9976650138415,
+      "excess": 1342.9976650138415,
+      "regional_excess": {
+        "carbon": -36.85239633698848,
+        "Mgb": 0.0,
+        "elsewhere": 1379.8500613508295
+      },
+      "regional_pixels": {
+        "carbon": 514,
+        "Mgb": 0,
+        "elsewhere": 3094
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_232962",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/232962-M11_232962/ceridwen_derived_outputs.h5",
+      "sha256": "b9a9bf6015299315a3f21c2237e8febb46b51d87c24bcac13f75e493223a1392",
+      "z": 0.6976969838142395,
+      "pixels": 3557,
+      "chi2": 3580.9681853933644,
+      "excess": 23.968185393364365,
+      "regional_excess": {
+        "carbon": -102.28323831468062,
+        "Mgb": 0.0,
+        "elsewhere": 126.25142370804542
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 0,
+        "elsewhere": 2970
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M15_77745",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/77745-M15_77745/ceridwen_derived_outputs.h5",
+      "sha256": "4bbbfaa76b298df406ed4e85fa9f2576c69eb7816099258a594f148a2553c750",
+      "z": 0.8255519866943359,
+      "pixels": 3649,
+      "chi2": 3748.0914302524297,
+      "excess": 99.09143025242975,
+      "regional_excess": {
+        "carbon": -124.02200040360967,
+        "Mgb": 0.0,
+        "elsewhere": 223.11343065603936
+      },
+      "regional_pixels": {
+        "carbon": 571,
+        "Mgb": 0,
+        "elsewhere": 3078
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M9_218701",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/218701-M9_218701/ceridwen_derived_outputs.h5",
+      "sha256": "8be7d036952b86b9488ba077a9a21b4d45911508ae8440372aa3429558e3a834",
+      "z": 0.695285975933075,
+      "pixels": 3874,
+      "chi2": 3993.691865931088,
+      "excess": 119.69186593108816,
+      "regional_excess": {
+        "carbon": 14.983978153534725,
+        "Mgb": 87.29892153990765,
+        "elsewhere": 17.40896623764582
+      },
+      "regional_pixels": {
+        "carbon": 586,
+        "Mgb": 91,
+        "elsewhere": 3197
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_248217",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/248217-M13_248217/ceridwen_derived_outputs.h5",
+      "sha256": "a40d130af66e763945a739aa70400aa53d2e6beb17f484ddf22088e6e1eafe6d",
+      "z": 0.6109169721603394,
+      "pixels": 3867,
+      "chi2": 3959.354176802521,
+      "excess": 92.35417680252112,
+      "regional_excess": {
+        "carbon": -22.808657164589555,
+        "Mgb": 19.105387701888194,
+        "elsewhere": 96.05744626522272
+      },
+      "regional_pixels": {
+        "carbon": 533,
+        "Mgb": 87,
+        "elsewhere": 3247
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M8_147539",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/147539-M8_147539/ceridwen_derived_outputs.h5",
+      "sha256": "dae7c0372678a9dc2b2c36f50be9c025d99f8d8d9a911af0cbe39583f086f06f",
+      "z": 0.6958330273628235,
+      "pixels": 3625,
+      "chi2": 4058.071322812467,
+      "excess": 433.07132281246686,
+      "regional_excess": {
+        "carbon": 157.61558018767386,
+        "Mgb": 18.94942496369565,
+        "elsewhere": 256.5063176610973
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 92,
+        "elsewhere": 2946
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_184916",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/184916-M12_184916/ceridwen_derived_outputs.h5",
+      "sha256": "730b90ffdd8a903a083288c87c2108074203619dcd1f28cd6601dcf2d606b9a3",
+      "z": 0.6794000267982483,
+      "pixels": 3875,
+      "chi2": 5290.291314701306,
+      "excess": 1415.291314701306,
+      "regional_excess": {
+        "carbon": -20.341637654296637,
+        "Mgb": -28.25361329976001,
+        "elsewhere": 1463.8865656553626
+      },
+      "regional_pixels": {
+        "carbon": 580,
+        "Mgb": 91,
+        "elsewhere": 3204
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_147849",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/147849-M7_147849/ceridwen_derived_outputs.h5",
+      "sha256": "838eb13749437d1412cc1e947d46ac2daf3dfb73acedf13e2f6228ebb04fc5a4",
+      "z": 0.677299976348877,
+      "pixels": 3630,
+      "chi2": 3974.278180398096,
+      "excess": 344.2781803980961,
+      "regional_excess": {
+        "carbon": 73.11530683063995,
+        "Mgb": 12.49269449169292,
+        "elsewhere": 258.6701790757636
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 90,
+        "elsewhere": 2959
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_227516",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/227516-M10_227516/ceridwen_derived_outputs.h5",
+      "sha256": "408e8ce08d39d1a8ebe7e448e29d683f8310a280bc3f15d8e8596a61bc9e69b4",
+      "z": 0.7792009711265564,
+      "pixels": 3592,
+      "chi2": 2743.017926771104,
+      "excess": -848.9820732288958,
+      "regional_excess": {
+        "carbon": -95.52562348348226,
+        "Mgb": 0.0,
+        "elsewhere": -753.4564497454135
+      },
+      "regional_pixels": {
+        "carbon": 537,
+        "Mgb": 0,
+        "elsewhere": 3055
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_211347",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/211347-M5_211347/ceridwen_derived_outputs.h5",
+      "sha256": "da00d9cc6e0628558d715d9aa338c9f7a2ba9f5433ace4fdbf870da29c74ca24",
+      "z": 0.6972000002861023,
+      "pixels": 3570,
+      "chi2": 4051.0686579257435,
+      "excess": 481.06865792574354,
+      "regional_excess": {
+        "carbon": 119.09573591128594,
+        "Mgb": 0.0,
+        "elsewhere": 361.97292201445777
+      },
+      "regional_pixels": {
+        "carbon": 583,
+        "Mgb": 0,
+        "elsewhere": 2987
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M3_120308",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/120308-M3_120308/ceridwen_derived_outputs.h5",
+      "sha256": "76fc39354523cbb9c0367a97fb4405921d9729d08d18cce2db456614cb0051d9",
+      "z": 0.7279000282287598,
+      "pixels": 3604,
+      "chi2": 3957.474355178982,
+      "excess": 353.474355178982,
+      "regional_excess": {
+        "carbon": -107.02744871156094,
+        "Mgb": 59.47801101526906,
+        "elsewhere": 401.0237928752739
+      },
+      "regional_pixels": {
+        "carbon": 517,
+        "Mgb": 88,
+        "elsewhere": 2999
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M9_232005",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/232005-M9_232005/ceridwen_derived_outputs.h5",
+      "sha256": "995102cc5f4cac7c4a11bfa7d8d4042689328cbb0889d54d6375ac65ead26edf",
+      "z": 0.6111199855804443,
+      "pixels": 3556,
+      "chi2": 3726.184754252761,
+      "excess": 170.1847542527612,
+      "regional_excess": {
+        "carbon": 65.25508507821517,
+        "Mgb": 2.8110541148956325,
+        "elsewhere": 102.11861505965034
+      },
+      "regional_pixels": {
+        "carbon": 530,
+        "Mgb": 79,
+        "elsewhere": 2947
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_225441",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/225441-M10_225441/ceridwen_derived_outputs.h5",
+      "sha256": "8d5611daca8b7fd8367cc8025369248365d1ea7f9f9b93c1dbf6e40a6bbc3f18",
+      "z": 0.6823199987411499,
+      "pixels": 3646,
+      "chi2": 3744.5723578959446,
+      "excess": 98.5723578959446,
+      "regional_excess": {
+        "carbon": -28.361344680579265,
+        "Mgb": 3.0227822303044967,
+        "elsewhere": 123.91092034621926
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 91,
+        "elsewhere": 2974
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_139423",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/139423-M1_139423/ceridwen_derived_outputs.h5",
+      "sha256": "f17d465008b261a96cc4f8f0430140cc0bd75449f4c95ec610627062b3d5dbf5",
+      "z": 0.7494999766349792,
+      "pixels": 3490,
+      "chi2": 3991.60737931803,
+      "excess": 501.60737931802987,
+      "regional_excess": {
+        "carbon": -149.8015889052199,
+        "Mgb": 355.94122412387935,
+        "elsewhere": 295.4677440993704
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 90,
+        "elsewhere": 2824
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_31835",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/31835-M14_31835/ceridwen_derived_outputs.h5",
+      "sha256": "b5668bd887c4a5b32678f3ec9e4bba5f2157e6db426740bb9a4593e5e974b3a0",
+      "z": 0.67740398645401,
+      "pixels": 3807,
+      "chi2": 4198.888244337943,
+      "excess": 391.88824433794343,
+      "regional_excess": {
+        "carbon": 19.44366606306871,
+        "Mgb": 34.729811947388356,
+        "elsewhere": 337.7147663274865
+      },
+      "regional_pixels": {
+        "carbon": 573,
+        "Mgb": 91,
+        "elsewhere": 3143
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M9_213587",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/213587-M9_213587/ceridwen_derived_outputs.h5",
+      "sha256": "0b873fee8b6b1dabdbf0fc4abb873f474b74a2a6925fb0b9076fb05baff8c8d8",
+      "z": 0.8900439739227295,
+      "pixels": 3490,
+      "chi2": 3804.4416756810165,
+      "excess": 314.4416756810165,
+      "regional_excess": {
+        "carbon": 124.81895357573127,
+        "Mgb": 0.0,
+        "elsewhere": 189.6227221052854
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 0,
+        "elsewhere": 2903
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_246149",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/246149-M13_246149/ceridwen_derived_outputs.h5",
+      "sha256": "b1f8147bf9d37eb7e0c6c77db66237a4cfb48cdd8b192270b4d7edd13b849caf",
+      "z": 0.7345340251922607,
+      "pixels": 3594,
+      "chi2": 3870.5647426553655,
+      "excess": 276.56474265536554,
+      "regional_excess": {
+        "carbon": -47.495889983917564,
+        "Mgb": 0.0,
+        "elsewhere": 324.0606326392834
+      },
+      "regional_pixels": {
+        "carbon": 483,
+        "Mgb": 0,
+        "elsewhere": 3111
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_231544",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/231544-M10_231544/ceridwen_derived_outputs.h5",
+      "sha256": "0c40d9d017dba85a95644e9ed5f3452fdbba80d608262f863f4af98424ecc77f",
+      "z": 0.6547650098800659,
+      "pixels": 3776,
+      "chi2": 3938.0054810683782,
+      "excess": 162.00548106837823,
+      "regional_excess": {
+        "carbon": 173.44422185874572,
+        "Mgb": 6.167471830047703,
+        "elsewhere": -17.606212620415455
+      },
+      "regional_pixels": {
+        "carbon": 572,
+        "Mgb": 89,
+        "elsewhere": 3115
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_128311",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/128311-M5_128311/ceridwen_derived_outputs.h5",
+      "sha256": "8d98b5a653d7b81da1f8cd6a80b244c42918f663597960e676371d88b36b3113",
+      "z": 0.7303000092506409,
+      "pixels": 3584,
+      "chi2": 4591.827166935569,
+      "excess": 1007.827166935569,
+      "regional_excess": {
+        "carbon": 23.785307101364698,
+        "Mgb": 0.0,
+        "elsewhere": 984.0418598342039
+      },
+      "regional_pixels": {
+        "carbon": 501,
+        "Mgb": 0,
+        "elsewhere": 3083
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_122242",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/122242-M7_122242/ceridwen_derived_outputs.h5",
+      "sha256": "561a4e92512d6f3edc1e6dd41b1cded5f8ef5c001a407b17b9797dfb65291c2b",
+      "z": 0.6032000184059143,
+      "pixels": 3602,
+      "chi2": 3679.3607401655754,
+      "excess": 77.36074016557541,
+      "regional_excess": {
+        "carbon": -7.119054806411253,
+        "Mgb": 77.04718619320862,
+        "elsewhere": 7.4326087787779045
+      },
+      "regional_pixels": {
+        "carbon": 556,
+        "Mgb": 87,
+        "elsewhere": 2959
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M2_134021",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/134021-M2_134021/ceridwen_derived_outputs.h5",
+      "sha256": "2e7234e72eca19339d7f358725dbc440b90914b527f23b4c8c73a8ee67aa1ce2",
+      "z": 0.7493000030517578,
+      "pixels": 3630,
+      "chi2": 3794.2436749232525,
+      "excess": 164.24367492325246,
+      "regional_excess": {
+        "carbon": -19.04230081282308,
+        "Mgb": 28.383304121282805,
+        "elsewhere": 154.9026716147926
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 94,
+        "elsewhere": 2960
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M3_119802",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/119802-M3_119802/ceridwen_derived_outputs.h5",
+      "sha256": "2db147ba0634376795173bb3c0f6d4677a6be55a4041bf93a76b7dac3962614a",
+      "z": 0.6819999814033508,
+      "pixels": 3608,
+      "chi2": 4082.8345834673346,
+      "excess": 474.8345834673346,
+      "regional_excess": {
+        "carbon": 43.228006575270854,
+        "Mgb": -32.75564446135163,
+        "elsewhere": 464.3622213534157
+      },
+      "regional_pixels": {
+        "carbon": 572,
+        "Mgb": 91,
+        "elsewhere": 2945
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_165871",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/165871-M5_165871/ceridwen_derived_outputs.h5",
+      "sha256": "f4dc429e51f5c203541658995f864dcd005b26efb41505eed81ddf32cc066982",
+      "z": 0.7031000256538391,
+      "pixels": 3526,
+      "chi2": 4207.289623273687,
+      "excess": 681.2896232736866,
+      "regional_excess": {
+        "carbon": -35.07318140280855,
+        "Mgb": 49.327796625825506,
+        "elsewhere": 667.0350080506693
+      },
+      "regional_pixels": {
+        "carbon": 589,
+        "Mgb": 78,
+        "elsewhere": 2859
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M6_237437",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/237437-M6_237437/ceridwen_derived_outputs.h5",
+      "sha256": "c7e94cfe7ea247c6b6362cfa4f1390f5bc89aeef457ebfaf32dcdfbf6b88fb15",
+      "z": 0.7336999773979187,
+      "pixels": 3592,
+      "chi2": 4114.488933196237,
+      "excess": 522.4889331962368,
+      "regional_excess": {
+        "carbon": -66.0544926397528,
+        "Mgb": 0.0,
+        "elsewhere": 588.5434258359896
+      },
+      "regional_pixels": {
+        "carbon": 484,
+        "Mgb": 0,
+        "elsewhere": 3108
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_244239",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/244239-M13_244239/ceridwen_derived_outputs.h5",
+      "sha256": "be12be5b0ab672c8569f5bf397db7298ec7f40b09b4ddde9d6a5ebe26f5f3097",
+      "z": 0.7378460168838501,
+      "pixels": 3592,
+      "chi2": 3904.2400913076185,
+      "excess": 312.2400913076185,
+      "regional_excess": {
+        "carbon": 2.0361519777378874,
+        "Mgb": 0.0,
+        "elsewhere": 310.20393932988054
+      },
+      "regional_pixels": {
+        "carbon": 489,
+        "Mgb": 0,
+        "elsewhere": 3103
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_238580",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/238580-M5_238580/ceridwen_derived_outputs.h5",
+      "sha256": "9ada550dc8dce9cd5b26114b4d745433947fe528a0257ae6479f46e8df30f968",
+      "z": 0.730400025844574,
+      "pixels": 3633,
+      "chi2": 4006.031117194151,
+      "excess": 373.0311171941512,
+      "regional_excess": {
+        "carbon": 1.164380291677574,
+        "Mgb": 76.06911591291053,
+        "elsewhere": 295.7976209895634
+      },
+      "regional_pixels": {
+        "carbon": 500,
+        "Mgb": 94,
+        "elsewhere": 3039
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M3_109713",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/109713-M3_109713/ceridwen_derived_outputs.h5",
+      "sha256": "ef8875b888b91a1d90f90091b6cab4681927c467f7de62fb3ac0fe5aa6fa4bd9",
+      "z": 0.7275000214576721,
+      "pixels": 3623,
+      "chi2": 3823.1258875425096,
+      "excess": 200.12588754250964,
+      "regional_excess": {
+        "carbon": 4.186088809837685,
+        "Mgb": 0.0,
+        "elsewhere": 195.9397987326718
+      },
+      "regional_pixels": {
+        "carbon": 521,
+        "Mgb": 0,
+        "elsewhere": 3102
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M3_117694",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/117694-M3_117694/ceridwen_derived_outputs.h5",
+      "sha256": "290b62dc3d495be3c038b91768c09e3dbd6dec07172ef73b8dd527915c2fb28f",
+      "z": 0.6830999851226807,
+      "pixels": 3784,
+      "chi2": 4865.070179839315,
+      "excess": 1081.0701798393147,
+      "regional_excess": {
+        "carbon": 77.39156761411763,
+        "Mgb": -21.701171943662892,
+        "elsewhere": 1025.3797841688593
+      },
+      "regional_pixels": {
+        "carbon": 564,
+        "Mgb": 92,
+        "elsewhere": 3128
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_230747",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/230747-M13_230747/ceridwen_derived_outputs.h5",
+      "sha256": "114d365052086b40debd53dd5235b59d03b2b459ca0054a9d14c392f193035a3",
+      "z": 0.6984639763832092,
+      "pixels": 3630,
+      "chi2": 3920.2638941259647,
+      "excess": 290.2638941259647,
+      "regional_excess": {
+        "carbon": 29.755597575476934,
+        "Mgb": 16.378943572565394,
+        "elsewhere": 244.12935297792168
+      },
+      "regional_pixels": {
+        "carbon": 586,
+        "Mgb": 92,
+        "elsewhere": 2952
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M15_88032",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/88032-M15_88032/ceridwen_derived_outputs.h5",
+      "sha256": "13d9193d031ff325d1875db4dd007b6a5780a4d6bea830ab545272f4c52bdf8b",
+      "z": 0.8392300009727478,
+      "pixels": 3625,
+      "chi2": 4104.467793362479,
+      "excess": 479.4677933624789,
+      "regional_excess": {
+        "carbon": -37.988643100618596,
+        "Mgb": 0.0,
+        "elsewhere": 517.4564364630978
+      },
+      "regional_pixels": {
+        "carbon": 569,
+        "Mgb": 0,
+        "elsewhere": 3056
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M9_229883",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/229883-M9_229883/ceridwen_derived_outputs.h5",
+      "sha256": "d7e5b170329a3f6948df65dbd0b284a5bd0a22656ad65ea2418e67c50b2965e8",
+      "z": 0.7279890179634094,
+      "pixels": 3626,
+      "chi2": 3716.2169159143414,
+      "excess": 90.21691591434137,
+      "regional_excess": {
+        "carbon": 60.53929684074615,
+        "Mgb": 2.058552446230492,
+        "elsewhere": 27.619066627364603
+      },
+      "regional_pixels": {
+        "carbon": 516,
+        "Mgb": 22,
+        "elsewhere": 3088
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_243871",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/243871-M13_243871/ceridwen_derived_outputs.h5",
+      "sha256": "f6bdb2795a27791224a552310f71ce82ae04af57256dc6f9fd50ef07eee7e3d1",
+      "z": 0.7333970069885254,
+      "pixels": 3603,
+      "chi2": 3676.1981699887174,
+      "excess": 73.19816998871738,
+      "regional_excess": {
+        "carbon": -91.23810338020994,
+        "Mgb": 128.7547096592224,
+        "elsewhere": 35.6815637097049
+      },
+      "regional_pixels": {
+        "carbon": 482,
+        "Mgb": 94,
+        "elsewhere": 3027
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_180774",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/180774-M12_180774/ceridwen_derived_outputs.h5",
+      "sha256": "02293df88ecb4d8852e5b3dd8892fa166206372c9d3b081d0da284171af0be8f",
+      "z": 0.6782490015029907,
+      "pixels": 3544,
+      "chi2": 4396.48164613697,
+      "excess": 852.4816461369701,
+      "regional_excess": {
+        "carbon": 120.52723605125993,
+        "Mgb": 0.0,
+        "elsewhere": 731.9544100857102
+      },
+      "regional_pixels": {
+        "carbon": 565,
+        "Mgb": 0,
+        "elsewhere": 2979
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_185653",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/185653-M12_185653/ceridwen_derived_outputs.h5",
+      "sha256": "e74fe9ca9715c7005e42f99e406db598eef3d23ca0ea3653a7b6deb9b93e3b8e",
+      "z": 0.6776310205459595,
+      "pixels": 3783,
+      "chi2": 3974.4395693599267,
+      "excess": 191.43956935992674,
+      "regional_excess": {
+        "carbon": -36.32152290982832,
+        "Mgb": -10.023838530136379,
+        "elsewhere": 237.7849307998918
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 91,
+        "elsewhere": 3116
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_27068",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/27068-M14_27068/ceridwen_derived_outputs.h5",
+      "sha256": "704ac61804dd2c7418023c8a2976e64339c841cbddfe1658ba915f074be85d61",
+      "z": 0.6783069968223572,
+      "pixels": 3557,
+      "chi2": 3827.266239960202,
+      "excess": 270.2662399602018,
+      "regional_excess": {
+        "carbon": -12.80867349639535,
+        "Mgb": 6.952133238508892,
+        "elsewhere": 276.1227802180885
+      },
+      "regional_pixels": {
+        "carbon": 575,
+        "Mgb": 44,
+        "elsewhere": 2938
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_216899",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/216899-M11_216899/ceridwen_derived_outputs.h5",
+      "sha256": "1a1501260164d16b60fb94d33b0257e4df1c370be1420707b5b17369f6cb9de3",
+      "z": 0.697825014591217,
+      "pixels": 3607,
+      "chi2": 5776.098656935781,
+      "excess": 2169.098656935781,
+      "regional_excess": {
+        "carbon": -145.2167690224086,
+        "Mgb": 0.0,
+        "elsewhere": 2314.31542595819
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 0,
+        "elsewhere": 3020
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_37023",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/37023-M14_37023/ceridwen_derived_outputs.h5",
+      "sha256": "61c013dd3371e1757ed9b552beb9e9f481024875f163cb1ea431c5cee517d828",
+      "z": 0.7354879975318909,
+      "pixels": 3582,
+      "chi2": 3642.832503308032,
+      "excess": 60.832503308031846,
+      "regional_excess": {
+        "carbon": 1.4043460028481363,
+        "Mgb": 0.0,
+        "elsewhere": 59.42815730518383
+      },
+      "regional_pixels": {
+        "carbon": 484,
+        "Mgb": 0,
+        "elsewhere": 3098
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M4_107643",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/107643-M4_107643/ceridwen_derived_outputs.h5",
+      "sha256": "1222659a1632d884baa0f26e2b92cc3dfcb8c7db07a09778c5866934cef1db8d",
+      "z": 0.7343000173568726,
+      "pixels": 3552,
+      "chi2": 4135.1667201109885,
+      "excess": 583.1667201109885,
+      "regional_excess": {
+        "carbon": 11.622832133677939,
+        "Mgb": 145.8472516457959,
+        "elsewhere": 425.69663633151526
+      },
+      "regional_pixels": {
+        "carbon": 482,
+        "Mgb": 85,
+        "elsewhere": 2985
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M4_123161",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/123161-M4_123161/ceridwen_derived_outputs.h5",
+      "sha256": "e859b5abfcd6baff833796d993123371a990c9f59c5101ea2bd3cc6effc44f2a",
+      "z": 0.7994999885559082,
+      "pixels": 3646,
+      "chi2": 3878.3223601674645,
+      "excess": 232.32236016746447,
+      "regional_excess": {
+        "carbon": 77.05613289807297,
+        "Mgb": 0.0,
+        "elsewhere": 155.26622726939127
+      },
+      "regional_pixels": {
+        "carbon": 591,
+        "Mgb": 0,
+        "elsewhere": 3055
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_147270",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/147270-M7_147270/ceridwen_derived_outputs.h5",
+      "sha256": "d47d18bf59323660b410e1a74648e9a8961b3b001ceb08e93e9e3058405f9e03",
+      "z": 0.8472999930381775,
+      "pixels": 3596,
+      "chi2": 3938.8840942210973,
+      "excess": 342.88409422109726,
+      "regional_excess": {
+        "carbon": -12.663214410941592,
+        "Mgb": 0.0,
+        "elsewhere": 355.5473086320393
+      },
+      "regional_pixels": {
+        "carbon": 622,
+        "Mgb": 0,
+        "elsewhere": 2974
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M9_212391",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/212391-M9_212391/ceridwen_derived_outputs.h5",
+      "sha256": "dc2ebbd029cf1af26b73b8dc2002e050470691c9cc639bf28767ed4137627cf6",
+      "z": 0.7262700200080872,
+      "pixels": 3718,
+      "chi2": 4015.508853246963,
+      "excess": 297.5088532469631,
+      "regional_excess": {
+        "carbon": -3.836398847871056,
+        "Mgb": 43.271411152623905,
+        "elsewhere": 258.07384094221055
+      },
+      "regional_pixels": {
+        "carbon": 528,
+        "Mgb": 87,
+        "elsewhere": 3103
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M6_237641",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/237641-M6_237641/ceridwen_derived_outputs.h5",
+      "sha256": "a0d9c19cac2a06f753fa2203d19120bc4381d1023a30d78892fd75756adfbf61",
+      "z": 0.8579000234603882,
+      "pixels": 3584,
+      "chi2": 3593.0305829584645,
+      "excess": 9.030582958464493,
+      "regional_excess": {
+        "carbon": -30.57339809738214,
+        "Mgb": 0.0,
+        "elsewhere": 39.603981055846646
+      },
+      "regional_pixels": {
+        "carbon": 642,
+        "Mgb": 0,
+        "elsewhere": 2942
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_146213",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/146213-M7_146213/ceridwen_derived_outputs.h5",
+      "sha256": "db38fb53a3ae892f8cf22d77091df45ad44ffd47417b47f2f45aa598e410420e",
+      "z": 0.6875,
+      "pixels": 3618,
+      "chi2": 4110.95426737816,
+      "excess": 492.9542673781598,
+      "regional_excess": {
+        "carbon": 44.95374901453385,
+        "Mgb": -19.473494290050947,
+        "elsewhere": 467.4740126536766
+      },
+      "regional_pixels": {
+        "carbon": 578,
+        "Mgb": 92,
+        "elsewhere": 2948
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_214296",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/214296-M11_214296/ceridwen_derived_outputs.h5",
+      "sha256": "228368604e02e8f056a04866efdc8c2b5f9bc71e994dc1d5def89ed7ea937417",
+      "z": 0.6797130107879639,
+      "pixels": 3601,
+      "chi2": 3883.6742630670847,
+      "excess": 282.67426306708467,
+      "regional_excess": {
+        "carbon": -15.763486907283333,
+        "Mgb": 0.0,
+        "elsewhere": 298.4377499743683
+      },
+      "regional_pixels": {
+        "carbon": 581,
+        "Mgb": 0,
+        "elsewhere": 3020
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M6_233902",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/233902-M6_233902/ceridwen_derived_outputs.h5",
+      "sha256": "85661b53161b311696f2b7d21ba6d095b6ca8b91027a7d20cb80a330a1e92f73",
+      "z": 0.7293000221252441,
+      "pixels": 3566,
+      "chi2": 3577.9508060921507,
+      "excess": 11.950806092150742,
+      "regional_excess": {
+        "carbon": -93.54328303867841,
+        "Mgb": 0.0,
+        "elsewhere": 105.49408913082937
+      },
+      "regional_pixels": {
+        "carbon": 508,
+        "Mgb": 0,
+        "elsewhere": 3058
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_120372",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/120372-M7_120372/ceridwen_derived_outputs.h5",
+      "sha256": "1347f5491d089de87c2a8df8a730090d89b354ff16e3497e45b35b8b36f8dddb",
+      "z": 0.9415000081062317,
+      "pixels": 3629,
+      "chi2": 4261.876735118169,
+      "excess": 632.8767351181687,
+      "regional_excess": {
+        "carbon": -88.40774083168155,
+        "Mgb": 0.0,
+        "elsewhere": 721.2844759498505
+      },
+      "regional_pixels": {
+        "carbon": 386,
+        "Mgb": 0,
+        "elsewhere": 3243
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M9_227630",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/227630-M9_227630/ceridwen_derived_outputs.h5",
+      "sha256": "2a1334a7444510bff20bbdd159f1753d75b1bb2d5dc52c328bffcdbdbfc96174",
+      "z": 0.7295899987220764,
+      "pixels": 3572,
+      "chi2": 3853.6804171300555,
+      "excess": 281.6804171300555,
+      "regional_excess": {
+        "carbon": 55.87240208257707,
+        "Mgb": 1.318485386150398,
+        "elsewhere": 224.4895296613284
+      },
+      "regional_pixels": {
+        "carbon": 505,
+        "Mgb": 86,
+        "elsewhere": 2981
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M2_129596",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/129596-M2_129596/ceridwen_derived_outputs.h5",
+      "sha256": "28a484e3aad2978783081aba12dabf64d59dce6f13e80b923252baa5bdf58c78",
+      "z": 0.6955999732017517,
+      "pixels": 3634,
+      "chi2": 3824.905573445615,
+      "excess": 190.90557344561512,
+      "regional_excess": {
+        "carbon": 101.85923305698611,
+        "Mgb": 79.33924563268663,
+        "elsewhere": 9.707094755942443
+      },
+      "regional_pixels": {
+        "carbon": 585,
+        "Mgb": 92,
+        "elsewhere": 2957
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M3_117010",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/117010-M3_117010/ceridwen_derived_outputs.h5",
+      "sha256": "93aabefd40b623ea6d0f907c1607b296d8a561c915dd5797cb39680a3726fd4b",
+      "z": 0.6765999794006348,
+      "pixels": 3539,
+      "chi2": 3852.664265059555,
+      "excess": 313.66426505955496,
+      "regional_excess": {
+        "carbon": 132.91890440019043,
+        "Mgb": 0.0,
+        "elsewhere": 180.74536065936496
+      },
+      "regional_pixels": {
+        "carbon": 577,
+        "Mgb": 0,
+        "elsewhere": 2962
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M2_130005",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/130005-M2_130005/ceridwen_derived_outputs.h5",
+      "sha256": "881fa046f70db94a925a19d6b57ee3d26d46ed9050f2a9d3df3d40ece84a05e5",
+      "z": 0.8341000080108643,
+      "pixels": 3448,
+      "chi2": 3782.5295539545086,
+      "excess": 334.52955395450863,
+      "regional_excess": {
+        "carbon": -11.460585063881341,
+        "Mgb": 40.00109868320511,
+        "elsewhere": 305.9890403351845
+      },
+      "regional_pixels": {
+        "carbon": 529,
+        "Mgb": 42,
+        "elsewhere": 2877
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_208622",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/208622-M1_208622/ceridwen_derived_outputs.h5",
+      "sha256": "4f035d540fafeb18aa9c5e82c23b0fdbe1d231f0547ef7aa7255aeec267ff994",
+      "z": 0.6478999853134155,
+      "pixels": 3612,
+      "chi2": 3884.374540822765,
+      "excess": 272.3745408227651,
+      "regional_excess": {
+        "carbon": -19.953713103398687,
+        "Mgb": 15.07692702088368,
+        "elsewhere": 277.25132690528
+      },
+      "regional_pixels": {
+        "carbon": 531,
+        "Mgb": 87,
+        "elsewhere": 2994
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M4_107370",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/107370-M4_107370/ceridwen_derived_outputs.h5",
+      "sha256": "970f206c579fbf366a7896250421fa314778b5b86cf273d1cf74b4581a5e319b",
+      "z": 0.8435999751091003,
+      "pixels": 3573,
+      "chi2": 3445.754123305551,
+      "excess": -127.24587669444918,
+      "regional_excess": {
+        "carbon": -168.6453917466984,
+        "Mgb": 0.0,
+        "elsewhere": 41.39951505224906
+      },
+      "regional_pixels": {
+        "carbon": 596,
+        "Mgb": 0,
+        "elsewhere": 2977
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_215519",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/215519-M10_215519/ceridwen_derived_outputs.h5",
+      "sha256": "f432692f62913b4a40f4de715eb8237817269a99c767b8ec154980f9f9daae96",
+      "z": 0.6146249771118164,
+      "pixels": 3852,
+      "chi2": 3689.1977867225323,
+      "excess": -162.80221327746767,
+      "regional_excess": {
+        "carbon": -70.91462186472421,
+        "Mgb": -5.787052699724001,
+        "elsewhere": -86.1005387130194
+      },
+      "regional_pixels": {
+        "carbon": 474,
+        "Mgb": 83,
+        "elsewhere": 3295
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_92132",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/92132-M12_92132/ceridwen_derived_outputs.h5",
+      "sha256": "cd3ae0e2947750ef4de5aeeb06687f17b1d6b845fb27644bbd8a3bb6604cb490",
+      "z": 0.7475209832191467,
+      "pixels": 3583,
+      "chi2": 3588.408356831783,
+      "excess": 5.408356831782839,
+      "regional_excess": {
+        "carbon": -105.28814761480021,
+        "Mgb": 0.0,
+        "elsewhere": 110.6965044465831
+      },
+      "regional_pixels": {
+        "carbon": 563,
+        "Mgb": 0,
+        "elsewhere": 3020
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_152125",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/152125-M7_152125/ceridwen_derived_outputs.h5",
+      "sha256": "e2046d963c624eb9079e49a7b1b01aaff736ed462dedadb7c39b632478ee0de5",
+      "z": 0.7871000170707703,
+      "pixels": 3516,
+      "chi2": 4101.592315734673,
+      "excess": 585.5923157346733,
+      "regional_excess": {
+        "carbon": 187.97176587552906,
+        "Mgb": 0.0,
+        "elsewhere": 397.6205498591437
+      },
+      "regional_pixels": {
+        "carbon": 575,
+        "Mgb": 0,
+        "elsewhere": 2941
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M6_240899",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/240899-M6_240899/ceridwen_derived_outputs.h5",
+      "sha256": "f380586203c8a5700b31bbe77dc594c582e55c89a961b9c06897fc8e29a8b4eb",
+      "z": 0.7394999861717224,
+      "pixels": 3583,
+      "chi2": 3598.807189450798,
+      "excess": 15.807189450797978,
+      "regional_excess": {
+        "carbon": -47.114063004378124,
+        "Mgb": 0.0,
+        "elsewhere": 62.92125245517647
+      },
+      "regional_pixels": {
+        "carbon": 502,
+        "Mgb": 0,
+        "elsewhere": 3081
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_214430",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/214430-M11_214430/ceridwen_derived_outputs.h5",
+      "sha256": "c607c0eadff3911f3f825daed8c8fc2674e88855a9af457820793d32acb02fbc",
+      "z": 0.8910719752311707,
+      "pixels": 3556,
+      "chi2": 4002.869837936404,
+      "excess": 446.8698379364041,
+      "regional_excess": {
+        "carbon": -68.60342690889127,
+        "Mgb": 0.0,
+        "elsewhere": 515.4732648452953
+      },
+      "regional_pixels": {
+        "carbon": 382,
+        "Mgb": 0,
+        "elsewhere": 3174
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_126578",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/126578-M1_126578/ceridwen_derived_outputs.h5",
+      "sha256": "fed6f7aa3c493fecb61fafaeeca928cce4cd106aaf6f19675652cbe701f6275e",
+      "z": 0.7504000067710876,
+      "pixels": 3613,
+      "chi2": 4074.7035802996975,
+      "excess": 461.7035802996975,
+      "regional_excess": {
+        "carbon": -72.09528043982706,
+        "Mgb": -20.307701578840298,
+        "elsewhere": 554.1065623183647
+      },
+      "regional_pixels": {
+        "carbon": 585,
+        "Mgb": 95,
+        "elsewhere": 2933
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_37219",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/37219-M14_37219/ceridwen_derived_outputs.h5",
+      "sha256": "411fee57bc4b92b75b630a5dadec6c73c3d2d102888c9b2e8bffcd60d9d447ae",
+      "z": 0.7346779704093933,
+      "pixels": 3578,
+      "chi2": 3822.4125390686822,
+      "excess": 244.41253906868224,
+      "regional_excess": {
+        "carbon": 92.82391293944073,
+        "Mgb": 0.0,
+        "elsewhere": 151.58862612924133
+      },
+      "regional_pixels": {
+        "carbon": 483,
+        "Mgb": 0,
+        "elsewhere": 3095
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M4_84337",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/84337-M4_84337/ceridwen_derived_outputs.h5",
+      "sha256": "451c614eb04bf663f8d53137fcfaf59b1be6d2cd5c184814340a2dc33fde012e",
+      "z": 0.8388000130653381,
+      "pixels": 3482,
+      "chi2": 4022.8574625904657,
+      "excess": 540.8574625904657,
+      "regional_excess": {
+        "carbon": 47.834496655530245,
+        "Mgb": 0.0,
+        "elsewhere": 493.0229659349353
+      },
+      "regional_pixels": {
+        "carbon": 339,
+        "Mgb": 0,
+        "elsewhere": 3143
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_259737",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/259737-M13_259737/ceridwen_derived_outputs.h5",
+      "sha256": "6730eaf1c728c86d1be3bd4a05d809250a9295ecbc755c6e14084bd39b261f70",
+      "z": 0.7028210163116455,
+      "pixels": 3884,
+      "chi2": 5406.446631292464,
+      "excess": 1522.4466312924642,
+      "regional_excess": {
+        "carbon": 169.4764669838369,
+        "Mgb": 33.90745668082989,
+        "elsewhere": 1319.0627076277972
+      },
+      "regional_pixels": {
+        "carbon": 589,
+        "Mgb": 86,
+        "elsewhere": 3209
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_103366",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/103366-M14_103366/ceridwen_derived_outputs.h5",
+      "sha256": "e5ebae73d2b797d4f6526d90e766e0b90947e9824ff51e4deeb5914e942222cc",
+      "z": 0.674206018447876,
+      "pixels": 3614,
+      "chi2": 3725.506227699306,
+      "excess": 111.50622769930578,
+      "regional_excess": {
+        "carbon": 6.969579068889576,
+        "Mgb": 67.946070299877,
+        "elsewhere": 36.5905783305392
+      },
+      "regional_pixels": {
+        "carbon": 576,
+        "Mgb": 91,
+        "elsewhere": 2947
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_205765",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/205765-M5_205765/ceridwen_derived_outputs.h5",
+      "sha256": "1745073f553dc684340ba2a80e6a2b46e29360e6ee2387c342bafc46b0297c59",
+      "z": 0.7286999821662903,
+      "pixels": 3272,
+      "chi2": 3736.443660494376,
+      "excess": 464.4436604943762,
+      "regional_excess": {
+        "carbon": 28.59979374576808,
+        "Mgb": 0.0,
+        "elsewhere": 435.84386674860826
+      },
+      "regional_pixels": {
+        "carbon": 351,
+        "Mgb": 0,
+        "elsewhere": 2921
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_122025",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/122025-M7_122025/ceridwen_derived_outputs.h5",
+      "sha256": "15fa212d3d1c67297eaaa31032f66685c24abaefc36484a1776030ea9ce04077",
+      "z": 0.7476999759674072,
+      "pixels": 3544,
+      "chi2": 4147.872042430998,
+      "excess": 603.8720424309977,
+      "regional_excess": {
+        "carbon": 82.78237720802814,
+        "Mgb": 0.0,
+        "elsewhere": 521.0896652229687
+      },
+      "regional_pixels": {
+        "carbon": 561,
+        "Mgb": 0,
+        "elsewhere": 2983
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M2_210940",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/210940-M2_210940/ceridwen_derived_outputs.h5",
+      "sha256": "8d45a14208d441e1555f352c648f1fd02dffb3ba64c13b84c22e1d04e782590d",
+      "z": 0.6948999762535095,
+      "pixels": 3869,
+      "chi2": 3631.333386217584,
+      "excess": -237.66661378241588,
+      "regional_excess": {
+        "carbon": -52.31370500239305,
+        "Mgb": 3.0611575914021874,
+        "elsewhere": -188.41406637142558
+      },
+      "regional_pixels": {
+        "carbon": 585,
+        "Mgb": 92,
+        "elsewhere": 3192
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_120488",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/120488-M7_120488/ceridwen_derived_outputs.h5",
+      "sha256": "fd39f4e25162d5e8f7f96b775737e4c020f0de8b76df56ca1a1b1e072e9cbf03",
+      "z": 0.9334999918937683,
+      "pixels": 3657,
+      "chi2": 4011.0666827659256,
+      "excess": 354.06668276592563,
+      "regional_excess": {
+        "carbon": 37.44242395561331,
+        "Mgb": 0.0,
+        "elsewhere": 316.6242588103122
+      },
+      "regional_pixels": {
+        "carbon": 383,
+        "Mgb": 0,
+        "elsewhere": 3274
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_245864",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/245864-M11_245864/ceridwen_derived_outputs.h5",
+      "sha256": "16055a6c015b63c78123e3662421f7803600eca93ad8f2b8f81129f1a97e6b42",
+      "z": 0.6980879902839661,
+      "pixels": 3630,
+      "chi2": 3842.2280080532287,
+      "excess": 212.22800805322868,
+      "regional_excess": {
+        "carbon": 212.03881403850988,
+        "Mgb": 4.075743124723942,
+        "elsewhere": -3.8865491100052054
+      },
+      "regional_pixels": {
+        "carbon": 587,
+        "Mgb": 65,
+        "elsewhere": 2978
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M3_109843",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/109843-M3_109843/ceridwen_derived_outputs.h5",
+      "sha256": "edbec017f052236764321cf750e9386d33164c2abb77b23a5cc2cdf18619ef1a",
+      "z": 0.7243000268936157,
+      "pixels": 3604,
+      "chi2": 3954.1275131554085,
+      "excess": 350.12751315540845,
+      "regional_excess": {
+        "carbon": 11.6703004939803,
+        "Mgb": 0.0,
+        "elsewhere": 338.45721266142834
+      },
+      "regional_pixels": {
+        "carbon": 543,
+        "Mgb": 0,
+        "elsewhere": 3061
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_217020",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/217020-M10_217020/ceridwen_derived_outputs.h5",
+      "sha256": "3041adaac0fdc6a9cdb9117f30bcccd80ac9af011b56b8beaaa13db3b273a654",
+      "z": 0.8934249877929688,
+      "pixels": 3550,
+      "chi2": 3603.119143083124,
+      "excess": 53.11914308312407,
+      "regional_excess": {
+        "carbon": -180.4849754477517,
+        "Mgb": 0.0,
+        "elsewhere": 233.60411853087624
+      },
+      "regional_pixels": {
+        "carbon": 645,
+        "Mgb": 0,
+        "elsewhere": 2905
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_162587",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/162587-M7_162587/ceridwen_derived_outputs.h5",
+      "sha256": "51d199c19b532dc83e456997f32d409af65d9639d388655db51986e744a5ec29",
+      "z": 0.786899983882904,
+      "pixels": 3598,
+      "chi2": 4046.972119387468,
+      "excess": 448.97211938746796,
+      "regional_excess": {
+        "carbon": 130.41389982691408,
+        "Mgb": 0.0,
+        "elsewhere": 318.55821956055365
+      },
+      "regional_pixels": {
+        "carbon": 594,
+        "Mgb": 0,
+        "elsewhere": 3004
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M8_161113",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/161113-M8_161113/ceridwen_derived_outputs.h5",
+      "sha256": "7b6ce5ae69157b2c871f9896a3c0635c10245c1821788e091d109121f28e0590",
+      "z": 0.8911049962043762,
+      "pixels": 3550,
+      "chi2": 3933.7429158169534,
+      "excess": 383.7429158169534,
+      "regional_excess": {
+        "carbon": 99.21959061989376,
+        "Mgb": 0.0,
+        "elsewhere": 284.5233251970596
+      },
+      "regional_pixels": {
+        "carbon": 374,
+        "Mgb": 0,
+        "elsewhere": 3176
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M9_232890",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/232890-M9_232890/ceridwen_derived_outputs.h5",
+      "sha256": "0c3d761e51dd86d10fd4758f83773797198799067aa31567355d96f4ae48f4a8",
+      "z": 0.7656890153884888,
+      "pixels": 3543,
+      "chi2": 3715.8268644957384,
+      "excess": 172.8268644957384,
+      "regional_excess": {
+        "carbon": 103.34590829667216,
+        "Mgb": 0.0,
+        "elsewhere": 69.48095619906627
+      },
+      "regional_pixels": {
+        "carbon": 556,
+        "Mgb": 0,
+        "elsewhere": 2987
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_212718",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/212718-M11_212718/ceridwen_derived_outputs.h5",
+      "sha256": "c1ed7a5d0edabc9fefacf1cca565456039fc3175b4789780c5b40b34dcd65963",
+      "z": 0.8897830247879028,
+      "pixels": 3540,
+      "chi2": 3797.190922773832,
+      "excess": 257.19092277383197,
+      "regional_excess": {
+        "carbon": -59.59356396235028,
+        "Mgb": 0.0,
+        "elsewhere": 316.784486736182
+      },
+      "regional_pixels": {
+        "carbon": 219,
+        "Mgb": 0,
+        "elsewhere": 3321
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_133240",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/133240-M1_133240/ceridwen_derived_outputs.h5",
+      "sha256": "8ff0427f385e33bc0470441432756b0549f04be6d728b059ed514168821b635a",
+      "z": 0.7282000184059143,
+      "pixels": 3605,
+      "chi2": 3738.4217557756238,
+      "excess": 133.42175577562375,
+      "regional_excess": {
+        "carbon": -4.190887692854702,
+        "Mgb": 0.0,
+        "elsewhere": 137.6126434684782
+      },
+      "regional_pixels": {
+        "carbon": 515,
+        "Mgb": 0,
+        "elsewhere": 3090
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_101830",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/101830-M12_101830/ceridwen_derived_outputs.h5",
+      "sha256": "653b0af170e0cc88bf447989c6d67d860c8469212bf8a5f6829e07aa1aab3df7",
+      "z": 0.9873830080032349,
+      "pixels": 3560,
+      "chi2": 5136.753717129512,
+      "excess": 1576.7537171295116,
+      "regional_excess": {
+        "carbon": 69.22203572601691,
+        "Mgb": 0.0,
+        "elsewhere": 1507.5316814034954
+      },
+      "regional_pixels": {
+        "carbon": 397,
+        "Mgb": 0,
+        "elsewhere": 3163
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_181421",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/181421-M12_181421/ceridwen_derived_outputs.h5",
+      "sha256": "c87ab3a7b1313aca365407adceff8d87fa3788e545ffd35a8653dbf0e990cd1c",
+      "z": 0.9584800004959106,
+      "pixels": 3538,
+      "chi2": 4223.662017987006,
+      "excess": 685.662017987006,
+      "regional_excess": {
+        "carbon": -58.22009233316945,
+        "Mgb": 0.0,
+        "elsewhere": 743.8821103201748
+      },
+      "regional_pixels": {
+        "carbon": 274,
+        "Mgb": 0,
+        "elsewhere": 3264
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M8_156118",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/156118-M8_156118/ceridwen_derived_outputs.h5",
+      "sha256": "c51d74d9115e738fb94a07d5794d7312eee13622b9cf9c7716e5d4131fb929ff",
+      "z": 0.8295459747314453,
+      "pixels": 3512,
+      "chi2": 3909.37113466772,
+      "excess": 397.37113466772007,
+      "regional_excess": {
+        "carbon": -32.272707349999315,
+        "Mgb": 0.0,
+        "elsewhere": 429.6438420177201
+      },
+      "regional_pixels": {
+        "carbon": 545,
+        "Mgb": 0,
+        "elsewhere": 2967
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M1_126153",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/126153-M1_126153/ceridwen_derived_outputs.h5",
+      "sha256": "c8fa69ae98a9f62d2f99a73dd637a9a7fa1627b66c8b07c3cea4cd07b4a18bd7",
+      "z": 0.6822999715805054,
+      "pixels": 3534,
+      "chi2": 4078.3808934414305,
+      "excess": 544.3808934414305,
+      "regional_excess": {
+        "carbon": 103.12806872823018,
+        "Mgb": 1.4637063026472132,
+        "elsewhere": 439.78911841055304
+      },
+      "regional_pixels": {
+        "carbon": 568,
+        "Mgb": 91,
+        "elsewhere": 2875
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_120758",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/120758-M7_120758/ceridwen_derived_outputs.h5",
+      "sha256": "b05b8413effc6702cc2090b2b01b1ad6f88b33a39eb6974a1ecd8614c2d6569f",
+      "z": 0.9365000128746033,
+      "pixels": 3630,
+      "chi2": 3930.0871208010603,
+      "excess": 300.08712080106034,
+      "regional_excess": {
+        "carbon": 31.649115179196677,
+        "Mgb": 0.0,
+        "elsewhere": 268.4380056218632
+      },
+      "regional_pixels": {
+        "carbon": 275,
+        "Mgb": 0,
+        "elsewhere": 3355
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_38646",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/38646-M14_38646/ceridwen_derived_outputs.h5",
+      "sha256": "df99f4b213f38ac03b1aca8ee5fa13691bf9741bf55d761a2fb08113087019c3",
+      "z": 0.9688860177993774,
+      "pixels": 3564,
+      "chi2": 4015.3607033923327,
+      "excess": 451.36070339233265,
+      "regional_excess": {
+        "carbon": 62.068487086396104,
+        "Mgb": 0.0,
+        "elsewhere": 389.29221630593696
+      },
+      "regional_pixels": {
+        "carbon": 398,
+        "Mgb": 0,
+        "elsewhere": 3166
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_102968",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/102968-M14_102968/ceridwen_derived_outputs.h5",
+      "sha256": "8dd145282e69212b4504ee160ff3604656c22126525564aa93e308da46fbedf0",
+      "z": 0.9393450021743774,
+      "pixels": 3669,
+      "chi2": 3964.15162526647,
+      "excess": 295.1516252664701,
+      "regional_excess": {
+        "carbon": -22.975298174896846,
+        "Mgb": 0.0,
+        "elsewhere": 318.126923441367
+      },
+      "regional_pixels": {
+        "carbon": 392,
+        "Mgb": 0,
+        "elsewhere": 3277
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_245763",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/245763-M13_245763/ceridwen_derived_outputs.h5",
+      "sha256": "8b285bfa25b46d6f545692dcdb35925b3694b93401ae57c0cea3115571df797c",
+      "z": 0.7542309761047363,
+      "pixels": 3585,
+      "chi2": 3968.13438744405,
+      "excess": 383.13438744404993,
+      "regional_excess": {
+        "carbon": -97.52074762835468,
+        "Mgb": 0.0,
+        "elsewhere": 480.65513507240496
+      },
+      "regional_pixels": {
+        "carbon": 604,
+        "Mgb": 0,
+        "elsewhere": 2981
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_255047",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/255047-M13_255047/ceridwen_derived_outputs.h5",
+      "sha256": "2bd30120ec24f7bf0510b04194f47346672bab93d347234d2619ac0b024cbc42",
+      "z": 0.8642939925193787,
+      "pixels": 3563,
+      "chi2": 4308.500336463164,
+      "excess": 745.5003364631639,
+      "regional_excess": {
+        "carbon": -57.67340808720266,
+        "Mgb": 0.0,
+        "elsewhere": 803.1737445503665
+      },
+      "regional_pixels": {
+        "carbon": 411,
+        "Mgb": 0,
+        "elsewhere": 3152
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_201233",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/201233-M10_201233/ceridwen_derived_outputs.h5",
+      "sha256": "9592db458a39f0ad32d2724ae3230cbe4e827916984b48ed14d40a62c7c17c0d",
+      "z": 0.8177419900894165,
+      "pixels": 3590,
+      "chi2": 3817.480230962524,
+      "excess": 227.48023096252382,
+      "regional_excess": {
+        "carbon": -13.105514779799545,
+        "Mgb": 0.0,
+        "elsewhere": 240.58574574232313
+      },
+      "regional_pixels": {
+        "carbon": 460,
+        "Mgb": 0,
+        "elsewhere": 3130
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_101089",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/101089-M12_101089/ceridwen_derived_outputs.h5",
+      "sha256": "607e2c3d9501dbfc79ebb4be27c46df38f65be7a1af64987ea4d3ce23a5f9a96",
+      "z": 0.8510000109672546,
+      "pixels": 3563,
+      "chi2": 7162.0293109688755,
+      "excess": 3599.0293109688755,
+      "regional_excess": {
+        "carbon": 189.23976746414604,
+        "Mgb": 0.0,
+        "elsewhere": 3409.7895435047294
+      },
+      "regional_pixels": {
+        "carbon": 640,
+        "Mgb": 0,
+        "elsewhere": 2923
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_258753",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/258753-M13_258753/ceridwen_derived_outputs.h5",
+      "sha256": "ffcc765089697987dea78e3ec2d73ce0e0fd6fd6c348b1acd4ea2cdcad8a3100",
+      "z": 0.9096279740333557,
+      "pixels": 3618,
+      "chi2": 4949.037094233158,
+      "excess": 1331.0370942331583,
+      "regional_excess": {
+        "carbon": 166.98955285510226,
+        "Mgb": 0.0,
+        "elsewhere": 1164.047541378056
+      },
+      "regional_pixels": {
+        "carbon": 371,
+        "Mgb": 0,
+        "elsewhere": 3247
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_167056",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/167056-M5_167056/ceridwen_derived_outputs.h5",
+      "sha256": "63eda5d2c6a5f8872849a8832ba2c3957ea8b7518a87b175e849285f0319910b",
+      "z": 0.8932999968528748,
+      "pixels": 3548,
+      "chi2": 3633.8403602348744,
+      "excess": 85.84036023487442,
+      "regional_excess": {
+        "carbon": 31.403434846984062,
+        "Mgb": 0.0,
+        "elsewhere": 54.436925387890184
+      },
+      "regional_pixels": {
+        "carbon": 374,
+        "Mgb": 0,
+        "elsewhere": 3174
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M15_87207",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/87207-M15_87207/ceridwen_derived_outputs.h5",
+      "sha256": "f57e494fe3251af8c2c81fcae8c57102f147beb6aa1275387e69ff7262ae9011",
+      "z": 0.8325369954109192,
+      "pixels": 3574,
+      "chi2": 4102.252889083442,
+      "excess": 528.2528890834419,
+      "regional_excess": {
+        "carbon": -23.603225774337503,
+        "Mgb": 0.0,
+        "elsewhere": 551.8561148577791
+      },
+      "regional_pixels": {
+        "carbon": 373,
+        "Mgb": 0,
+        "elsewhere": 3201
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M6_166634",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/166634-M6_166634/ceridwen_derived_outputs.h5",
+      "sha256": "275711ee57f88521f547cd15a5175b4a7d613970b5f4465801ebb23b40799506",
+      "z": 0.8526999950408936,
+      "pixels": 3590,
+      "chi2": 3669.006344889409,
+      "excess": 79.00634488940887,
+      "regional_excess": {
+        "carbon": -10.277280114956884,
+        "Mgb": 0.0,
+        "elsewhere": 89.28362500436575
+      },
+      "regional_pixels": {
+        "carbon": 639,
+        "Mgb": 0,
+        "elsewhere": 2951
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M7_121482",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/121482-M7_121482/ceridwen_derived_outputs.h5",
+      "sha256": "d89e5fd9e7904959c92577126d0efc98f819bb942af00b3a29e49be394c7e2c4",
+      "z": 0.9359999895095825,
+      "pixels": 3677,
+      "chi2": 4183.572046546009,
+      "excess": 506.572046546009,
+      "regional_excess": {
+        "carbon": 30.457416351054757,
+        "Mgb": 0.0,
+        "elsewhere": 476.114630194955
+      },
+      "regional_pixels": {
+        "carbon": 390,
+        "Mgb": 0,
+        "elsewhere": 3287
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M10_189698",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/189698-M10_189698/ceridwen_derived_outputs.h5",
+      "sha256": "1d96831f56317879af496ef399b6a2e95cc30d00d736ee027944736277a6ec4b",
+      "z": 0.9257839918136597,
+      "pixels": 3574,
+      "chi2": 3522.6398840275897,
+      "excess": -51.36011597241031,
+      "regional_excess": {
+        "carbon": -22.35489509742235,
+        "Mgb": 0.0,
+        "elsewhere": -29.00522087498806
+      },
+      "regional_pixels": {
+        "carbon": 112,
+        "Mgb": 0,
+        "elsewhere": 3462
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M15_89072",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/89072-M15_89072/ceridwen_derived_outputs.h5",
+      "sha256": "91936805fcd91b7fe9b58592059fbd73602b2b3a7d8c10cc763bcb292eded57a",
+      "z": 0.836991012096405,
+      "pixels": 3528,
+      "chi2": 4027.6292095347712,
+      "excess": 499.62920953477123,
+      "regional_excess": {
+        "carbon": -25.293402313462465,
+        "Mgb": 0.0,
+        "elsewhere": 524.9226118482333
+      },
+      "regional_pixels": {
+        "carbon": 549,
+        "Mgb": 0,
+        "elsewhere": 2979
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M2_97310",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/97310-M2_97310/ceridwen_derived_outputs.h5",
+      "sha256": "0e59bd6e68fa961a0e82dae193727e689df69766f9caeeafcf699f8338aa8d89",
+      "z": 0.942799985408783,
+      "pixels": 3639,
+      "chi2": 3448.913475076258,
+      "excess": -190.08652492374222,
+      "regional_excess": {
+        "carbon": -26.22197673543483,
+        "Mgb": 0.0,
+        "elsewhere": -163.86454818830728
+      },
+      "regional_pixels": {
+        "carbon": 193,
+        "Mgb": 0,
+        "elsewhere": 3446
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_37843",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/37843-M14_37843/ceridwen_derived_outputs.h5",
+      "sha256": "faef427f5c29515989e5b80b0f3622fc01c85ce2c5504eec90cb2569e32c62f3",
+      "z": 0.9693750143051147,
+      "pixels": 3560,
+      "chi2": 3885.631573108093,
+      "excess": 325.6315731080931,
+      "regional_excess": {
+        "carbon": 38.21328322145396,
+        "Mgb": 0.0,
+        "elsewhere": 287.4182898866394
+      },
+      "regional_pixels": {
+        "carbon": 390,
+        "Mgb": 0,
+        "elsewhere": 3170
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M4_112534",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/112534-M4_112534/ceridwen_derived_outputs.h5",
+      "sha256": "cb84fbeb15951b26a2172322997f29de01fd2fdd16e25ff8458b1a2631bd7cb6",
+      "z": 0.9836999773979187,
+      "pixels": 3562,
+      "chi2": 3298.284438685137,
+      "excess": -263.71556131486295,
+      "regional_excess": {
+        "carbon": -174.1576184690973,
+        "Mgb": 0.0,
+        "elsewhere": -89.55794284576588
+      },
+      "regional_pixels": {
+        "carbon": 584,
+        "Mgb": 0,
+        "elsewhere": 2978
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M5_127946",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/127946-M5_127946/ceridwen_derived_outputs.h5",
+      "sha256": "e7b6c1f429728b3d62a5508b74bebec41033a88f033deff2c46e311cea06772a",
+      "z": 0.9387000203132629,
+      "pixels": 3628,
+      "chi2": 3662.9794792469247,
+      "excess": 34.97947924692471,
+      "regional_excess": {
+        "carbon": -19.118458599446797,
+        "Mgb": 0.0,
+        "elsewhere": 54.09793784637132
+      },
+      "regional_pixels": {
+        "carbon": 113,
+        "Mgb": 0,
+        "elsewhere": 3515
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M3_119809",
+      "group": "with_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/119809-M3_119809/ceridwen_derived_outputs.h5",
+      "sha256": "c6a8944c10414f8a409a23233ade97381eba04d34a5701533f2e70c75f7e157d",
+      "z": 0.6801000237464905,
+      "pixels": 3762,
+      "chi2": 4403.305344636971,
+      "excess": 641.3053446369713,
+      "regional_excess": {
+        "carbon": 44.71393234365753,
+        "Mgb": -18.404669211800375,
+        "elsewhere": 614.9960815051141
+      },
+      "regional_pixels": {
+        "carbon": 573,
+        "Mgb": 91,
+        "elsewhere": 3098
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M12_185631",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/185631-M12_185631/ceridwen_derived_outputs.h5",
+      "sha256": "53fec66d3895de64f153570e3f49ddec1f60276b5662843810ad96545278cb7e",
+      "z": 0.9253259897232056,
+      "pixels": 3700,
+      "chi2": 6567.109344196737,
+      "excess": 2867.109344196737,
+      "regional_excess": {
+        "carbon": 609.4740558042729,
+        "Mgb": 0.0,
+        "elsewhere": 2257.6352883924637
+      },
+      "regional_pixels": {
+        "carbon": 654,
+        "Mgb": 0,
+        "elsewhere": 3046
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M13_253688",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/253688-M13_253688/ceridwen_derived_outputs.h5",
+      "sha256": "7dba9e510beccb85460c388535ef0c2fc91634d839c9d2f9f05d22ada17c3e60",
+      "z": 0.8370350003242493,
+      "pixels": 3486,
+      "chi2": 8778.023323910562,
+      "excess": 5292.023323910562,
+      "regional_excess": {
+        "carbon": 836.0406762819521,
+        "Mgb": 0.0,
+        "elsewhere": 4455.98264762861
+      },
+      "regional_pixels": {
+        "carbon": 541,
+        "Mgb": 0,
+        "elsewhere": 2945
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M11_217564",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/217564-M11_217564/ceridwen_derived_outputs.h5",
+      "sha256": "6b85bd1b0c66f7af5533dbd09ff1e542419897f598dd8d9adc3c0a9f34dc61f5",
+      "z": 0.8899400234222412,
+      "pixels": 3574,
+      "chi2": 3970.9747863033913,
+      "excess": 396.9747863033913,
+      "regional_excess": {
+        "carbon": -32.1961719199577,
+        "Mgb": 0.0,
+        "elsewhere": 429.17095822334926
+      },
+      "regional_pixels": {
+        "carbon": 382,
+        "Mgb": 0,
+        "elsewhere": 3192
+      }
+    },
+    {
+      "arm": "cn_free",
+      "target": "M14_104877",
+      "group": "without_Mgb",
+      "path": "results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/104877-M14_104877/ceridwen_derived_outputs.h5",
+      "sha256": "9cb75069831e73cbd28111d64cbee9b96c886c8e3ee1168e105e9a7848f389d1",
+      "z": 0.9544000029563904,
+      "pixels": 3560,
+      "chi2": 5396.30104617178,
+      "excess": 1836.3010461717804,
+      "regional_excess": {
+        "carbon": 345.46141095579424,
+        "Mgb": 0.0,
+        "elsewhere": 1490.8396352159862
+      },
+      "regional_pixels": {
+        "carbon": 650,
+        "Mgb": 0,
+        "elsewhere": 2910
+      }
+    }
+  ]
+}

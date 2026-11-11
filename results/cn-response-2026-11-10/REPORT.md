@@ -215,3 +215,128 @@ Each cell is the median [alpha/Fe] bias in dex / age bias in Gyr, against truth.
 | 0.300 | 0.000 | -0.250 / 0.909 | -0.001 / -0.230 | -0.295 / 0.784 | -0.017 / -0.173 | -0.225 / 0.553 |
 | 0.300 | 0.300 | -0.296 / 0.319 | -0.001 / -0.134 | -0.360 / -0.029 | -0.018 / -0.231 | -0.280 / 0.394 |
 | 0.300 | 0.600 | -0.340 / -0.249 | -0.003 / -0.128 | -0.393 / -0.615 | -0.019 / -0.171 | -0.329 / 0.161 |
+
+## Experiment 7 results
+
+| Definition | Value |
+|---|---|
+| Inputs | 135 October baseline fits and 135 C/N-free fits. Loader paths from the other job’s [analysis.ipynb](../chronometer-135-2026-11-10/analysis.ipynb), read only. |
+| Groups | 61 galaxies with fitted Mg b pixels; 74 without. Membership comes from the baseline and agrees between arms. |
+| Stored pull | (observed − posterior-median fitted spectrum) / effective uncertainty. Paired masks, observed fluxes, wavelengths and redshifts agree for all 135 galaxies. |
+| Rest grid | Vacuum wavelength = stored observed vacuum wavelength / (1 + stored redshift). Bin width 2 Å; centres 2900–5950 Å. |
+| Stack | Existing native-pixel binning: mean fitted pull per galaxy per bin, then equal-galaxy median. Excluded pixels and empty bins stay NaN. No interpolation. CSV includes every bin and its galaxy count. |
+| Feature metric | Sum of native fitted band pulls / sqrt(number of fitted band pixels), then median across galaxies. Empty bands have zero galaxies. All 29 [defined features](../../ceridwen/ceridwen/observation/absorption_features.py) are included; line windows use the existing ±1000 km/s default. |
+| Off-feature ranking | 15 non-overlapping 10 Å intervals per arm. Score is the largest absolute mean of five stacked 2 Å bins across the two groups. Ranking uses the existing minimum of 10 galaxies in every bin; all lower-coverage stacks remain in the CSV. Both group values and minimum–maximum counts are shown. |
+| Excluded ranking windows | Every defined vacuum feature window and the actual masked emission-line windows: vacuum centres 3934.77, 3966.60, 3973.30, 4227.92 Å, each ±1500 km/s. Modelled emission lines are not treated as masked lines. |
+| Candidate labels | Cited atomic-line coincidences inside the selected interval, not established causes of its residual. Published air wavelengths use the existing air2vac conversion. Other intervals remain unidentified. [Source wavelengths](residual-stack/candidate-identifications.json). |
+| Group differences | Baseline only. Delta = median without Mg b − median with Mg b. Native metric matches table 1. Matched metric uses each galaxy’s mean pull on fixed common 2 Å bins wholly inside the band; only galaxies finite on every selected bin enter. |
+| Bootstrap | 10000 independent galaxy resamples within each group; pointwise 95% percentile intervals. Seeds are 20261111 + zero-based feature index for native metrics, and 20262111 + index for matched metrics. |
+| Chi-square excess | Spectral native fitted pixels only: E = sum(pull² − 1) = chi-square − pixel count. Fractions are signed regional E / total E, with no clipping. Carbon is the union of CN4150, G4300, Fe4383 and C4668. Elsewhere includes every other fitted pixel. Each arm retains its own stored effective uncertainty. |
+| Saved data | [Stacks](residual-stack/stacks.csv), [feature table](residual-stack/features.csv), [per-galaxy band metrics](residual-stack/per-galaxy-features.csv), [intervals](residual-stack/intervals.csv), [group differences](residual-stack/group-differences.csv), [chi-square partition](residual-stack/chi2-excess.csv). |
+| Evidence | All 270 input hashes unchanged. All 6104 stack rows independently reproduced with histogram binning. [Inputs and methods](residual-stack/inputs-and-methods.json), [checks](residual-stack/checks.json). No fits, GPU, figures, wiki pages, model or notebook changes. |
+| Noticed, not done | Existing state-checker failure at an absent temporary worktree; no repair. |
+
+### 1. Defined feature residuals
+
+| Feature | Vacuum rest window, Å | Baseline with Mg b: metric (N) | Baseline without Mg b: metric (N) | C/N free with Mg b: metric (N) | C/N free without Mg b: metric (N) |
+|---|---|---|---|---|---|
+| H10 | 3786.30–3811.65 | -0.245 (17) | -2.524 (74) | -0.168 (17) | -1.855 (74) |
+| H9 | 3823.68–3849.27 | 0.616 (21) | -0.003 (73) | 0.604 (21) | 0.088 (73) |
+| H8 | 3877.18–3903.13 | 0.226 (33) | 1.512 (73) | 0.066 (33) | 1.242 (73) |
+| HdA | 4084.65–4123.41 | 0.403 (59) | -0.617 (74) | 0.268 (59) | -0.604 (74) |
+| HgA | 4320.96–4364.73 | 0.256 (61) | 1.482 (71) | 0.740 (61) | 1.260 (71) |
+| Hbeta | 4849.23–4877.99 | 0.877 (61) | 0.350 (43) | 0.469 (61) | 0.202 (43) |
+| Halpha | 6542.72–6586.51 | — (0) | — (0) | — (0) | — (0) |
+| CaK | 3921.65–3947.90 | — (0) | — (0) | — (0) | — (0) |
+| CaH | 3956.35–3982.83 | — (0) | — (0) | — (0) | — (0) |
+| Ca4227 | 4223.44–4235.94 | — (0) | — (0) | — (0) | — (0) |
+| Ca4455 | 4453.37–4475.88 | 1.302 (61) | -0.506 (66) | 1.288 (61) | -0.412 (66) |
+| CaT1 | 8472.00–8528.71 | — (0) | — (0) | — (0) | — (0) |
+| CaT2 | 8515.94–8572.94 | — (0) | — (0) | — (0) | — (0) |
+| CaT3 | 8635.62–8693.42 | — (0) | — (0) | — (0) | — (0) |
+| CN4150 | 4143.29–4178.30 | -1.677 (61) | -1.300 (73) | -0.541 (61) | 0.256 (73) |
+| G4300 | 4282.58–4317.59 | 1.738 (61) | 1.515 (72) | 1.833 (61) | 0.520 (72) |
+| C4668 | 4635.30–4721.57 | -5.200 (61) | -2.368 (56) | -5.557 (61) | -3.101 (56) |
+| Fe4383 | 4370.35–4421.62 | -0.911 (61) | -0.194 (70) | -1.062 (61) | -0.677 (70) |
+| Fe4531 | 4515.52–4560.53 | -0.426 (61) | -0.877 (62) | -0.428 (61) | -0.769 (62) |
+| Fe5015 | 4979.14–5055.41 | -0.771 (61) | -0.076 (32) | -1.061 (61) | -0.133 (32) |
+| Fe5270 | 5247.11–5287.12 | -0.362 (44) | — (0) | -0.672 (44) | — (0) |
+| Fe5335 | 5313.60–5353.61 | -1.211 (38) | — (0) | -1.290 (38) | — (0) |
+| Fe5406 | 5389.00–5416.51 | -0.324 (25) | — (0) | -0.259 (25) | — (0) |
+| Fe5709 | 5698.21–5721.96 | — (0) | — (0) | — (0) | — (0) |
+| Fe5782 | 5778.23–5798.23 | — (0) | — (0) | — (0) | — (0) |
+| Mgb | 5161.56–5194.07 | -3.276 (61) | — (0) | -2.159 (61) | — (0) |
+| NaD | 5878.50–5911.01 | — (0) | — (0) | — (0) | — (0) |
+| TiO1 | 5938.27–5995.79 | — (0) | — (0) | — (0) | — (0) |
+| TiO2 | 6191.34–6273.86 | — (0) | — (0) | — (0) | — (0) |
+
+### 2. Largest residual intervals outside defined features and masked lines
+
+#### Baseline
+
+| Rank | Vacuum rest interval, Å | With Mg b: stacked pull | N per bin | Without Mg b: stacked pull | N per bin | Ranking group | Candidate vacuum line, Å |
+|---|---|---|---|---|---|---|---|
+| 1 | 4583–4593 | 0.707 | 57–59 | 0.362 | 57–59 | with Mgb | [Fe II 4585.12 A](https://faculty.epss.ucla.edu/~eyoung/reprints/Doyle_2023_ApJ.pdf#page=14) |
+| 2 | 4593–4603 | 0.631 | 57–58 | 0.385 | 58–59 | with Mgb | unidentified |
+| 3 | 3415–3425 | — | 0 | 0.532 | 24–25 | without Mgb | unidentified |
+| 4 | 3501–3511 | — | 0 | -0.505 | 33–34 | without Mgb | unidentified |
+| 5 | 3745–3755 | 0.347 | 8 | 0.495 | 73 | without Mgb | [Fe I 3746.63 A; Fe I 3749.33 A; Fe I 3750.55 A](https://physics.nist.gov/PhysRefData/Handbook/Tables/irontable2_a.htm) |
+| 6 | 3403–3413 | — | 0 | 0.466 | 22–24 | without Mgb | [Fe I 3408.44 A](https://physics.nist.gov/PhysRefData/Handbook/Tables/irontable2_a.htm) |
+| 7 | 4505–4515 | -0.458 | 52–54 | -0.262 | 56–61 | with Mgb | unidentified |
+| 8 | 4625–4635 | 0.457 | 58–60 | 0.303 | 56 | with Mgb | unidentified |
+| 9 | 4819–4829 | 0.454 | 60–61 | 0.157 | 42–44 | with Mgb | unidentified |
+| 10 | 4431–4441 | -0.453 | 56–60 | -0.421 | 64–67 | with Mgb | unidentified |
+| 11 | 4915–4925 | -0.452 | 61 | -0.201 | 38–39 | with Mgb | [Fe I 4921.88 A](https://physics.nist.gov/PhysRefData/Handbook/Tables/irontable2_a.htm) |
+| 12 | 4607–4617 | 0.436 | 57 | 0.203 | 55–56 | with Mgb | unidentified |
+| 13 | 3705–3715 | — | 0–1 | 0.413 | 69–71 | without Mgb | [Fe I 3706.62 A; Fe I 3708.97 A; Fe I 3710.30 A](https://physics.nist.gov/PhysRefData/Handbook/Tables/irontable2_a.htm) |
+| 14 | 4573–4583 | 0.364 | 57–59 | 0.311 | 57–58 | with Mgb | unidentified |
+| 15 | 4495–4505 | -0.362 | 50–53 | -0.229 | 58–60 | with Mgb | unidentified |
+
+#### C/N free
+
+| Rank | Vacuum rest interval, Å | With Mg b: stacked pull | N per bin | Without Mg b: stacked pull | N per bin | Ranking group | Candidate vacuum line, Å |
+|---|---|---|---|---|---|---|---|
+| 1 | 4583–4593 | 0.624 | 57–59 | 0.289 | 57–59 | with Mgb | [Fe II 4585.12 A](https://faculty.epss.ucla.edu/~eyoung/reprints/Doyle_2023_ApJ.pdf#page=14) |
+| 2 | 4593–4603 | 0.549 | 57–58 | 0.253 | 58–59 | with Mgb | unidentified |
+| 3 | 4819–4829 | 0.508 | 60–61 | 0.214 | 42–44 | with Mgb | unidentified |
+| 4 | 4915–4925 | -0.492 | 61 | -0.186 | 38–39 | with Mgb | [Fe I 4921.88 A](https://physics.nist.gov/PhysRefData/Handbook/Tables/irontable2_a.htm) |
+| 5 | 4625–4635 | 0.438 | 58–60 | 0.297 | 56 | with Mgb | unidentified |
+| 6 | 4431–4441 | -0.437 | 56–60 | -0.351 | 64–67 | with Mgb | unidentified |
+| 7 | 4055–4065 | -0.227 | 53–55 | -0.416 | 74 | without Mgb | [Fe I 4064.74 A](https://physics.nist.gov/PhysRefData/Handbook/Tables/irontable2_a.htm) |
+| 8 | 4607–4617 | 0.415 | 57 | 0.234 | 55–56 | with Mgb | unidentified |
+| 9 | 3403–3413 | — | 0 | 0.405 | 22–24 | without Mgb | [Fe I 3408.44 A](https://physics.nist.gov/PhysRefData/Handbook/Tables/irontable2_a.htm) |
+| 10 | 4573–4583 | 0.403 | 57–59 | 0.308 | 57–58 | with Mgb | unidentified |
+| 11 | 3415–3425 | — | 0 | 0.375 | 24–25 | without Mgb | unidentified |
+| 12 | 4793–4803 | 0.374 | 61 | 0.223 | 45–46 | with Mgb | unidentified |
+| 13 | 3745–3755 | 0.371 | 8 | 0.367 | 73 | without Mgb | [Fe I 3746.63 A; Fe I 3749.33 A; Fe I 3750.55 A](https://physics.nist.gov/PhysRefData/Handbook/Tables/irontable2_a.htm) |
+| 14 | 4505–4515 | -0.357 | 52–54 | -0.093 | 56–61 | with Mgb | unidentified |
+| 15 | 3573–3583 | — | 0 | 0.351 | 41–45 | without Mgb | [Fe I 3582.22 A](https://physics.nist.gov/PhysRefData/Handbook/Tables/irontable2_a.htm) |
+
+### 3. Baseline group differences at shared rest wavelengths
+
+| Band | Native N with/without | Native metric delta [95% interval] | Common 2 Å bins; span, Å | Matched N with/without | Matched mean-pull delta [95% interval] | Matched interval excludes zero |
+|---|---|---|---|---|---|---|
+| H10 | 17/74 | -2.279 [-3.171, -1.730] | 12; 3787–3811 | 13/72 | -0.262 [-0.363, -0.090] | yes |
+| H9 | 21/73 | -0.619 [-1.776, 0.233] | 12; 3825–3849 | 19/72 | -0.078 [-0.209, 0.016] | no |
+| H8 | 33/73 | 1.286 [0.425, 1.871] | 12; 3879–3903 | 28/70 | 0.137 [0.046, 0.221] | yes |
+| HdA | 59/74 | -1.020 [-1.510, -0.433] | 19; 4085–4123 | 57/67 | -0.087 [-0.142, -0.033] | yes |
+| HgA | 61/71 | 1.226 [0.428, 1.823] | 21; 4321–4363 | 58/60 | 0.108 [0.046, 0.173] | yes |
+| Hbeta | 61/43 | -0.528 [-1.161, 0.281] | 13; 4851–4877 | 60/36 | -0.094 [-0.159, -0.005] | yes |
+| Ca4455 | 61/66 | -1.808 [-2.559, -0.818] | 10; 4455–4475 | 54/61 | -0.216 [-0.303, -0.129] | yes |
+| CN4150 | 61/73 | 0.378 [-0.630, 1.125] | 16; 4145–4177 | 59/65 | -0.007 [-0.070, 0.125] | no |
+| G4300 | 61/72 | -0.223 [-1.057, 0.635] | 17; 4283–4317 | 61/66 | -0.057 [-0.148, 0.046] | no |
+| C4668 | 61/56 | 2.832 [1.528, 3.984] | 42; 4637–4721 | 49/45 | 0.171 [0.091, 0.239] | yes |
+| Fe4383 | 61/70 | 0.717 [0.154, 1.399] | 25; 4371–4421 | 48/49 | 0.058 [-0.004, 0.101] | no |
+| Fe4531 | 61/62 | -0.451 [-1.156, 0.555] | 21; 4517–4559 | 40/49 | -0.005 [-0.079, 0.103] | no |
+| Fe5015 | 61/32 | 0.695 [-0.497, 1.680] | 37; 4981–5055 | 49/13 | -0.046 [-0.112, 0.039] | no |
+
+### 4. Native spectral chi-square excess partition
+
+| Arm | Group | Galaxies | Fitted pixels | Total excess E | Carbon excess, % | Mg b excess, % | Elsewhere excess, % |
+|---|---|---|---|---|---|---|---|
+| baseline | all | 135 | 488915 | 62413.5 | 3.61 | 3.91 | 92.48 |
+| baseline | with Mgb | 61 | 224267 | 23310.9 | 6.23 | 10.47 | 83.30 |
+| baseline | without Mgb | 74 | 264648 | 39102.6 | 2.04 | 0.00 | 97.96 |
+| cn free | all | 135 | 488915 | 61423.2 | 3.77 | 3.06 | 93.18 |
+| cn free | with Mgb | 61 | 224267 | 23216.5 | 4.82 | 8.09 | 87.10 |
+| cn free | without Mgb | 74 | 264648 | 38206.7 | 3.13 | 0.00 | 96.87 |
