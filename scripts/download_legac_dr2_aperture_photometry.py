@@ -2,7 +2,9 @@
 """Download multi-aperture COSMOS2015 and total UltraVISTA photometry for LEGA-C DR2.
 
 Two raw tables, one row per LEGA-C DR2 spectrum (``LEGAC_INDEX`` is the row
-number in ``legaCdr2.fits.gz``), nearest match within one arcsecond:
+number in ``legaCdr2.fits.gz``), nearest match within one arcsecond.
+``--release dr3`` matches the DR3 catalogue ``legac_DR3.fits`` instead and
+writes the same tables with ``legac_dr3`` in their names:
 
 ``data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits``
     Laigle et al. (2016): 2" and 3" aperture fluxes of the ten optical/NIR
@@ -14,6 +16,7 @@ number in ``legaCdr2.fits.gz``), nearest match within one arcsecond:
     LEGA-C DR2 used to flux-calibrate every spectrum.
 """
 
+import argparse
 import time
 from pathlib import Path
 
@@ -24,20 +27,23 @@ from astropy.table import Column, Table, vstack
 from astroquery.vizier import Vizier
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-LEGAC_PATH = PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz"
+LEGAC_PATHS = {
+    "dr2": PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz",
+    "dr3": PROJECT_ROOT / "data/raw/legac_dr3/legac_DR3.fits",
+}
 COSMOS_BANDS = ["Fu", "FB", "FV", "Fr", "Fip", "Fzpp", "FY", "FJ", "FH", "FKs",
                 # intermediate bands inside the LEGA-C wavelength range
                 "FIA679", "FIB709", "FIA738", "FIA767", "FIB827"]
 CATALOGUES = {
     "J/ApJS/224/24/cosmos2015": (
-        PROJECT_ROOT / "data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits",
+        "data/raw/cosmos2015/cosmos2015_legac_{release}_apertures_1arcsec.fits",
         ["_q", "RAJ2000", "DEJ2000", "Seq", "Offset", "E(B-V)", "Ksmag", "e_Ksmag",
          "Area", "Sat", "Cfl", "Deep", "Flag",
          *[f"{p}{b}ap{a}" for b in COSMOS_BANDS for a in (2, 3) for p in ("", "e_")],
          "F3.6um", "e_F3.6um", "F4.5um", "e_F4.5um"],
     ),
     "J/ApJS/206/8/catalog": (
-        PROJECT_ROOT / "data/raw/ultravista/ultravista_legac_dr2_1arcsec.fits",
+        "data/raw/ultravista/ultravista_legac_{release}_1arcsec.fits",
         ["_q", "RAJ2000", "DEJ2000", "Seq", "FKstot", "e_FKstot", "FKs", "e_FKs",
          "FH", "e_FH", "FJ", "e_FJ", "FY", "e_FY", "Fch2", "e_Fch2", "Fch1", "e_Fch1",
          "Fzp", "e_Fzp", "Fip", "e_Fip", "Frp", "e_Frp", "FV", "e_FV", "FB", "e_FB",
@@ -94,8 +100,12 @@ def nearest_matches(legac: Table, catalog: str, columns: list[str],
 
 
 def main() -> None:
-    legac = Table.read(LEGAC_PATH)
-    for catalog, (path, columns) in CATALOGUES.items():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--release", choices=sorted(LEGAC_PATHS), default="dr2")
+    release = parser.parse_args().release
+    legac = Table.read(LEGAC_PATHS[release], hdu=1)
+    for catalog, (template, columns) in CATALOGUES.items():
+        path = PROJECT_ROOT / template.format(release=release)
         matched = nearest_matches(legac, catalog, columns)
         path.parent.mkdir(parents=True, exist_ok=True)
         matched.write(path, overwrite=True)

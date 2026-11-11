@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Total COSMOS photometry of a LEGA-C DR2 galaxy from each matched catalogue.
+"""Total COSMOS photometry of a LEGA-C DR2 or DR3 galaxy from each matched catalogue.
 
 Total flux, per catalogue:
 
@@ -36,12 +36,20 @@ from astropy.table import Table
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW = PROJECT_ROOT / "data/raw"
 SEDPY_FILTERS = PROJECT_ROOT / "external/sedpy_jax/sedpy_jax/data/filters"
-FILES = {
-    "cosmos2015": RAW / "cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits",
-    "classic": RAW / "cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits",
-    "farmer": RAW / "cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits",
-    "cosmos2025": RAW / "cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits",
+MATCH_FILES = {
+    "cosmos2015": "cosmos2015/cosmos2015_legac_{release}_apertures_1arcsec.fits",
+    "classic": "cosmos2020/cosmos2020_classic_legac_{release}_1arcsec.fits",
+    "farmer": "cosmos2020/cosmos2020_farmer_legac_{release}_1arcsec.fits",
+    "cosmos2025": "cosmos2025/cosmos2025_phot_legac_{release}_1arcsec.fits",
 }
+
+
+def match_files(release: str = "dr2") -> dict:
+    """Matched catalogues of one LEGA-C release ("dr2" or "dr3"), keyed by catalogue."""
+    return {catalogue: RAW / path.format(release=release) for catalogue, path in MATCH_FILES.items()}
+
+
+FILES = match_files("dr2")
 
 # Laigle+16 Table 3 foreground-extinction factors F against effective wavelength
 # [angstrom]; bands outside the table are interpolated in log wavelength.
@@ -162,13 +170,13 @@ def catalogue_flux(catalogue: str, band: str, stem: str, row):
 
 
 @cache
-def read_matches() -> dict:
+def read_matches(release: str = "dr2") -> dict:
     """Matched rows of every catalogue, keyed by catalogue then by LEGA-C spect_id.
 
-    Read once per process (about 1.6 s): a fit resolves the catalogue, then fits it.
+    Read once per process and release (about 1.6 s): a fit resolves the catalogue, then fits it.
     """
     tables = {}
-    for catalogue, path in FILES.items():
+    for catalogue, path in match_files(release).items():
         table = Table.read(path)
         ids = np.char.strip(np.asarray(table["SPECT_ID"]).astype(str))
         tables[catalogue] = dict(zip(ids, table))
@@ -214,23 +222,25 @@ DEFAULT_PHOTOMETRY = "cosmos2025"
 FALLBACK_PHOTOMETRY = "cosmos2020_classic"
 
 
-def resolve_photometry(photometry: str, spect_id: str, tables: dict | None = None) -> str:
+def resolve_photometry(photometry: str, spect_id: str, tables: dict | None = None,
+                       release: str = "dr2") -> str:
     """Effective fit catalogue: "cosmos2025" outside its footprint uses FALLBACK_PHOTOMETRY."""
     if photometry not in ("cosmos2025", "cosmos2025_uv"):
         return photometry
     if tables is None:
-        tables = read_matches()
+        tables = read_matches(release)
     return photometry if spect_id in tables["cosmos2025"] else FALLBACK_PHOTOMETRY
 
 
-def fit_photometry(photometry: str, spect_id: str) -> pd.DataFrame:
+def fit_photometry(photometry: str, spect_id: str, release: str = "dr2") -> pd.DataFrame:
     """Fit bands with a response curve and finite flux, including non-detections.
 
     "cosmos2025" outside its footprint falls back to FALLBACK_PHOTOMETRY.
     "cosmos2025_uv" supplements COSMOS2025 with Classic NUV and CFHT u.
     Callers record the effective catalogue with resolve_photometry.
+    ``release`` selects the LEGA-C DR2 or DR3 match files.
     """
-    tables = read_matches()
+    tables = read_matches(release)
     photometry = resolve_photometry(photometry, spect_id, tables)
     catalogue, flag_column = FIT_CATALOGUES[photometry]
     flag = int(tables[catalogue][spect_id][flag_column])

@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Download HST ACS F814W cutouts for the production DR2 quiescent targets.
 
+``--manifest`` names another target list; ``--release dr3`` takes the positions
+from the LEGA-C DR3 catalogue.
+
 Each fit notebook shows the galaxy it fits. The image comes from the COSMOS
 HST/ACS F814W mosaic of Koekemoer et al. (2007), drizzled to 0.03 arcsec per
 pixel and oriented north up, which IRSA serves as the ``acs_mosaic_2.0``
@@ -31,7 +34,10 @@ from astropy.io import fits
 from astropy.table import Table
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-LEGAC_PATH = PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz"
+LEGAC_PATHS = {
+    "dr2": PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz",
+    "dr3": PROJECT_ROOT / "data/raw/legac_dr3/legac_DR3.fits",
+}
 DEFAULT_MANIFEST = PROJECT_ROOT / "results/dr2-quiescent-new-defaults/targets.json"
 OUTPUT_DIR = PROJECT_ROOT / "data/raw/hst_f814w"
 
@@ -55,7 +61,7 @@ def manifest_spect_ids(path: Path) -> list[str]:
 
 def catalogue_positions(path: Path) -> dict[str, tuple[float, float]]:
     """Map each LEGA-C SPECT_ID to its catalogue (RA, Dec) in degrees."""
-    catalogue = Table.read(path)
+    catalogue = Table.read(path, hdu=1)
     positions = {}
     for spect_id, ra, dec in zip(
         catalogue["SPECT_ID"], catalogue["RAJ2000"], catalogue["DECJ2000"], strict=True
@@ -145,10 +151,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--size-arcsec", type=float, default=DEFAULT_SIZE_ARCSEC)
+    parser.add_argument("--release", choices=sorted(LEGAC_PATHS), default="dr2")
     arguments = parser.parse_args()
 
     spect_ids = manifest_spect_ids(arguments.manifest)
-    positions = catalogue_positions(LEGAC_PATH)
+    legac_path = LEGAC_PATHS[arguments.release]
+    positions = catalogue_positions(legac_path)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     downloaded = 0
@@ -162,7 +170,7 @@ def main() -> None:
             skipped += 1
             continue
         if spect_id not in positions:
-            misses.append(f"{spect_id}: not in {LEGAC_PATH.name}")
+            misses.append(f"{spect_id}: not in {legac_path.name}")
             continue
         ra, dec = positions[spect_id]
         size = download(spect_id, ra, dec, arguments.size_arcsec)

@@ -1520,3 +1520,8 @@
 
 - Pages: `notes/model.md`, `notes/data-pipeline.md`, `index.md`
 - Change: Added the `legac_dr3` data source row, the DR3 catalogue paragraph and the 10-galaxy DR3 against DR2 result link; card t_5440a254.
+
+## [2026-11-11] codebase | LEGA-C DR3 photometry matches
+
+- Pages: `notes/model.md`
+- Change: `legac_dr3` fits read the COSMOS matches of the DR3 catalogue (`cosmos_photometry.match_files`); card t_5440a254.

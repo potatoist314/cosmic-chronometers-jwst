@@ -1,0 +1,1878 @@
+{
+ "sample": "LEGA-C DR3 quiescent: DR2 notebook cuts with DR3 flags, fittable photometry, valid rest range covers 4074.5-4666.1 A",
+ "source": "results/legac-dr3-2026-11-11/analysis.ipynb, selection-per-galaxy.csv",
+ "targets": [
+  {
+   "spect_id": "M2_133501",
+   "object_id": 133501,
+   "z": 0.7292,
+   "sn": 91.5,
+   "photometry": "cosmos2025",
+   "rest_min": 3806.8,
+   "rest_max": 5237.8
+  },
+  {
+   "spect_id": "M2_210716",
+   "object_id": 210716,
+   "z": 0.6954,
+   "sn": 62.1,
+   "photometry": "cosmos2025",
+   "rest_min": 4006.2,
+   "rest_max": 5468.2
+  },
+  {
+   "spect_id": "M1_210210",
+   "object_id": 210210,
+   "z": 0.6541,
+   "sn": 60.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3743.1,
+   "rest_max": 5219.8
+  },
+  {
+   "spect_id": "M12_181945",
+   "object_id": 181945,
+   "z": 0.6797,
+   "sn": 59.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3697.1,
+   "rest_max": 5152.4
+  },
+  {
+   "spect_id": "M32_142912",
+   "object_id": 142912,
+   "z": 0.6904,
+   "sn": 55.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3806.1,
+   "rest_max": 5259.7
+  },
+  {
+   "spect_id": "M27_247278",
+   "object_id": 247278,
+   "z": 0.7018,
+   "sn": 50.7,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 4028.6,
+   "rest_max": 5490.3
+  },
+  {
+   "spect_id": "M26_172885",
+   "object_id": 172885,
+   "z": 0.6902,
+   "sn": 50.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3757.6,
+   "rest_max": 5213.8
+  },
+  {
+   "spect_id": "M31_250372",
+   "object_id": 250372,
+   "z": 0.7358,
+   "sn": 43.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3818.6,
+   "rest_max": 5245.5
+  },
+  {
+   "spect_id": "M16_32559",
+   "object_id": 32559,
+   "z": 0.6219,
+   "sn": 43.0,
+   "photometry": "cosmos2025",
+   "rest_min": 3994.3,
+   "rest_max": 5516.6
+  },
+  {
+   "spect_id": "M19_57389",
+   "object_id": 57389,
+   "z": 0.6619,
+   "sn": 42.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3786.9,
+   "rest_max": 5266.4
+  },
+  {
+   "spect_id": "M16_72617",
+   "object_id": 72617,
+   "z": 0.6628,
+   "sn": 41.7,
+   "photometry": "cosmos2025",
+   "rest_min": 3730.3,
+   "rest_max": 5202.6
+  },
+  {
+   "spect_id": "M9_231276",
+   "object_id": 231276,
+   "z": 0.6544,
+   "sn": 41.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3521.1,
+   "rest_max": 4981.2
+  },
+  {
+   "spect_id": "M2_134021",
+   "object_id": 134021,
+   "z": 0.7491,
+   "sn": 40.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3820.4,
+   "rest_max": 5237.9
+  },
+  {
+   "spect_id": "M1_205742",
+   "object_id": 205742,
+   "z": 0.7271,
+   "sn": 40.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3937.2,
+   "rest_max": 5371.3
+  },
+  {
+   "spect_id": "M4_86744",
+   "object_id": 86744,
+   "z": 0.6716,
+   "sn": 39.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3647.9,
+   "rest_max": 5107.0
+  },
+  {
+   "spect_id": "M8_162149",
+   "object_id": 162149,
+   "z": 0.7036,
+   "sn": 39.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3724.8,
+   "rest_max": 5165.0
+  },
+  {
+   "spect_id": "M24_202009",
+   "object_id": 202009,
+   "z": 0.7505,
+   "sn": 38.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3662.8,
+   "rest_max": 5066.7
+  },
+  {
+   "spect_id": "M30_55118",
+   "object_id": 55118,
+   "z": 0.6732,
+   "sn": 38.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3935.6,
+   "rest_max": 5414.9
+  },
+  {
+   "spect_id": "M4_117400",
+   "object_id": 117400,
+   "z": 0.669,
+   "sn": 38.8,
+   "photometry": "cosmos2025",
+   "rest_min": 3644.9,
+   "rest_max": 5104.5
+  },
+  {
+   "spect_id": "M18_96346",
+   "object_id": 96346,
+   "z": 0.6108,
+   "sn": 38.7,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3943.2,
+   "rest_max": 5471.9
+  },
+  {
+   "spect_id": "M19_59396",
+   "object_id": 59396,
+   "z": 0.6824,
+   "sn": 38.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 4057.9,
+   "rest_max": 5536.2
+  },
+  {
+   "spect_id": "M11_213004",
+   "object_id": 213004,
+   "z": 0.746,
+   "sn": 38.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3613.1,
+   "rest_max": 5020.3
+  },
+  {
+   "spect_id": "M19_71670",
+   "object_id": 71670,
+   "z": 0.7477,
+   "sn": 37.5,
+   "photometry": "cosmos2025",
+   "rest_min": 3931.7,
+   "rest_max": 5351.0
+  },
+  {
+   "spect_id": "M11_257455",
+   "object_id": 257455,
+   "z": 0.6655,
+   "sn": 36.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3741.6,
+   "rest_max": 5210.7
+  },
+  {
+   "spect_id": "M11_218207",
+   "object_id": 218207,
+   "z": 0.6815,
+   "sn": 36.0,
+   "photometry": "cosmos2025",
+   "rest_min": 3582.9,
+   "rest_max": 5033.4
+  },
+  {
+   "spect_id": "M11_215585",
+   "object_id": 215585,
+   "z": 0.7484,
+   "sn": 35.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3468.1,
+   "rest_max": 4864.8
+  },
+  {
+   "spect_id": "M5_205715",
+   "object_id": 205715,
+   "z": 0.7467,
+   "sn": 34.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3687.9,
+   "rest_max": 5097.0
+  },
+  {
+   "spect_id": "M1_206858",
+   "object_id": 206858,
+   "z": 0.7252,
+   "sn": 34.3,
+   "photometry": "cosmos2025",
+   "rest_min": 3906.4,
+   "rest_max": 5341.4
+  },
+  {
+   "spect_id": "M13_232627",
+   "object_id": 232627,
+   "z": 0.6207,
+   "sn": 34.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 4060.2,
+   "rest_max": 5582.9
+  },
+  {
+   "spect_id": "M4_124231",
+   "object_id": 124231,
+   "z": 0.6775,
+   "sn": 34.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3898.0,
+   "rest_max": 5367.4
+  },
+  {
+   "spect_id": "M12_91529",
+   "object_id": 91529,
+   "z": 0.8408,
+   "sn": 33.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3443.6,
+   "rest_max": 4780.1
+  },
+  {
+   "spect_id": "M30_59531",
+   "object_id": 59531,
+   "z": 0.6741,
+   "sn": 33.1,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3552.1,
+   "rest_max": 5005.8
+  },
+  {
+   "spect_id": "M8_164459",
+   "object_id": 164459,
+   "z": 0.7036,
+   "sn": 32.8,
+   "photometry": "cosmos2025",
+   "rest_min": 3710.4,
+   "rest_max": 5149.2
+  },
+  {
+   "spect_id": "M11_229551",
+   "object_id": 229551,
+   "z": 0.6955,
+   "sn": 32.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3578.4,
+   "rest_max": 5015.5
+  },
+  {
+   "spect_id": "M5_236682",
+   "object_id": 236682,
+   "z": 0.7343,
+   "sn": 31.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3621.2,
+   "rest_max": 5034.8
+  },
+  {
+   "spect_id": "M19_65494",
+   "object_id": 65494,
+   "z": 0.695,
+   "sn": 31.0,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3762.2,
+   "rest_max": 5208.9
+  },
+  {
+   "spect_id": "M6_234538",
+   "object_id": 234538,
+   "z": 0.8425,
+   "sn": 30.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3531.7,
+   "rest_max": 4868.8
+  },
+  {
+   "spect_id": "M20_86906",
+   "object_id": 86906,
+   "z": 0.8213,
+   "sn": 30.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3372.4,
+   "rest_max": 4711.9
+  },
+  {
+   "spect_id": "M30_60369",
+   "object_id": 60369,
+   "z": 0.6851,
+   "sn": 30.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3484.0,
+   "rest_max": 4924.3
+  },
+  {
+   "spect_id": "M27_258059",
+   "object_id": 258059,
+   "z": 0.8423,
+   "sn": 30.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3538.9,
+   "rest_max": 4876.8
+  },
+  {
+   "spect_id": "M15_77632",
+   "object_id": 77632,
+   "z": 0.8257,
+   "sn": 30.0,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3698.6,
+   "rest_max": 5059.6
+  },
+  {
+   "spect_id": "M1_139423",
+   "object_id": 139423,
+   "z": 0.7499,
+   "sn": 30.0,
+   "photometry": "cosmos2025",
+   "rest_min": 3786.5,
+   "rest_max": 5199.5
+  },
+  {
+   "spect_id": "M5_211347",
+   "object_id": 211347,
+   "z": 0.6972,
+   "sn": 30.0,
+   "photometry": "cosmos2025",
+   "rest_min": 3690.1,
+   "rest_max": 5135.3
+  },
+  {
+   "spect_id": "M3_111390",
+   "object_id": 111390,
+   "z": 0.6676,
+   "sn": 29.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3946.7,
+   "rest_max": 5429.5
+  },
+  {
+   "spect_id": "M7_124875",
+   "object_id": 124875,
+   "z": 0.6027,
+   "sn": 29.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3841.8,
+   "rest_max": 5366.6
+  },
+  {
+   "spect_id": "M11_232962",
+   "object_id": 232962,
+   "z": 0.6975,
+   "sn": 29.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3603.2,
+   "rest_max": 5040.0
+  },
+  {
+   "spect_id": "M18_182407",
+   "object_id": 182407,
+   "z": 0.6726,
+   "sn": 29.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3688.4,
+   "rest_max": 5148.4
+  },
+  {
+   "spect_id": "M15_77745",
+   "object_id": 77745,
+   "z": 0.8259,
+   "sn": 29.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3694.3,
+   "rest_max": 5054.1
+  },
+  {
+   "spect_id": "M27_260083",
+   "object_id": 260083,
+   "z": 0.7011,
+   "sn": 29.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3845.7,
+   "rest_max": 5295.4
+  },
+  {
+   "spect_id": "M3_120308",
+   "object_id": 120308,
+   "z": 0.7281,
+   "sn": 29.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3892.9,
+   "rest_max": 5324.5
+  },
+  {
+   "spect_id": "M2_129596",
+   "object_id": 129596,
+   "z": 0.6952,
+   "sn": 28.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3790.0,
+   "rest_max": 5244.4
+  },
+  {
+   "spect_id": "M9_232005",
+   "object_id": 232005,
+   "z": 0.6112,
+   "sn": 28.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3867.3,
+   "rest_max": 5386.7
+  },
+  {
+   "spect_id": "M10_225441",
+   "object_id": 225441,
+   "z": 0.6824,
+   "sn": 28.7,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3936.6,
+   "rest_max": 5403.5
+  },
+  {
+   "spect_id": "M8_147539",
+   "object_id": 147539,
+   "z": 0.6959,
+   "sn": 28.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3845.1,
+   "rest_max": 5302.1
+  },
+  {
+   "spect_id": "M19_69529",
+   "object_id": 69529,
+   "z": 0.6516,
+   "sn": 28.3,
+   "photometry": "cosmos2025",
+   "rest_min": 4074.0,
+   "rest_max": 5572.6
+  },
+  {
+   "spect_id": "M22_239682",
+   "object_id": 239682,
+   "z": 0.677,
+   "sn": 28.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 4065.9,
+   "rest_max": 5544.0
+  },
+  {
+   "spect_id": "M13_248217",
+   "object_id": 248217,
+   "z": 0.6106,
+   "sn": 28.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 4010.7,
+   "rest_max": 5543.0
+  },
+  {
+   "spect_id": "M27_256211",
+   "object_id": 256211,
+   "z": 0.8758,
+   "sn": 28.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3592.8,
+   "rest_max": 4911.9
+  },
+  {
+   "spect_id": "M14_31835",
+   "object_id": 31835,
+   "z": 0.6775,
+   "sn": 28.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3989.2,
+   "rest_max": 5467.9
+  },
+  {
+   "spect_id": "M4_125213",
+   "object_id": 125213,
+   "z": 0.6775,
+   "sn": 28.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3723.1,
+   "rest_max": 5182.0
+  },
+  {
+   "spect_id": "M28_156700",
+   "object_id": 156700,
+   "z": 0.6896,
+   "sn": 27.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3714.5,
+   "rest_max": 5164.5
+  },
+  {
+   "spect_id": "M10_227516",
+   "object_id": 227516,
+   "z": 0.7794,
+   "sn": 27.7,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3545.9,
+   "rest_max": 4922.7
+  },
+  {
+   "spect_id": "M24_189449",
+   "object_id": 189449,
+   "z": 0.6084,
+   "sn": 27.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3827.8,
+   "rest_max": 5350.9
+  },
+  {
+   "spect_id": "M7_147849",
+   "object_id": 147849,
+   "z": 0.6774,
+   "sn": 27.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3789.8,
+   "rest_max": 5256.4
+  },
+  {
+   "spect_id": "M9_212391",
+   "object_id": 212391,
+   "z": 0.7263,
+   "sn": 27.5,
+   "photometry": "cosmos2025",
+   "rest_min": 3942.9,
+   "rest_max": 5382.5
+  },
+  {
+   "spect_id": "M5_165871",
+   "object_id": 165871,
+   "z": 0.7035,
+   "sn": 27.3,
+   "photometry": "cosmos2025",
+   "rest_min": 3861.4,
+   "rest_max": 5314.0
+  },
+  {
+   "spect_id": "M10_231544",
+   "object_id": 231544,
+   "z": 0.6545,
+   "sn": 26.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 4013.9,
+   "rest_max": 5506.9
+  },
+  {
+   "spect_id": "M24_191051",
+   "object_id": 191051,
+   "z": 0.6107,
+   "sn": 26.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3741.8,
+   "rest_max": 5257.6
+  },
+  {
+   "spect_id": "M9_213587",
+   "object_id": 213587,
+   "z": 0.8902,
+   "sn": 26.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3437.1,
+   "rest_max": 4743.4
+  },
+  {
+   "spect_id": "M102_222287",
+   "object_id": 222287,
+   "z": 0.7568,
+   "sn": 26.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3743.6,
+   "rest_max": 5148.7
+  },
+  {
+   "spect_id": "M26_167748",
+   "object_id": 167748,
+   "z": 0.7472,
+   "sn": 26.0,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3843.2,
+   "rest_max": 5263.9
+  },
+  {
+   "spect_id": "M18_95324",
+   "object_id": 95324,
+   "z": 0.8381,
+   "sn": 25.8,
+   "photometry": "cosmos2025",
+   "rest_min": 3710.6,
+   "rest_max": 5064.0
+  },
+  {
+   "spect_id": "M22_167853",
+   "object_id": 167853,
+   "z": 0.9151,
+   "sn": 25.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3445.4,
+   "rest_max": 4738.4
+  },
+  {
+   "spect_id": "M17_40840",
+   "object_id": 40840,
+   "z": 0.669,
+   "sn": 24.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3819.3,
+   "rest_max": 5291.1
+  },
+  {
+   "spect_id": "M18_94726",
+   "object_id": 94726,
+   "z": 0.7275,
+   "sn": 24.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3558.3,
+   "rest_max": 4976.1
+  },
+  {
+   "spect_id": "M27_261268",
+   "object_id": 261268,
+   "z": 0.6658,
+   "sn": 24.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3744.9,
+   "rest_max": 5214.1
+  },
+  {
+   "spect_id": "M15_88032",
+   "object_id": 88032,
+   "z": 0.8391,
+   "sn": 24.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3614.9,
+   "rest_max": 4958.1
+  },
+  {
+   "spect_id": "M101_205687",
+   "object_id": 205687,
+   "z": 0.7277,
+   "sn": 23.8,
+   "photometry": "cosmos2025",
+   "rest_min": 3653.4,
+   "rest_max": 5072.1
+  },
+  {
+   "spect_id": "M7_122242",
+   "object_id": 122242,
+   "z": 0.6033,
+   "sn": 23.7,
+   "photometry": "cosmos2025",
+   "rest_min": 3789.8,
+   "rest_max": 5310.7
+  },
+  {
+   "spect_id": "M13_244239",
+   "object_id": 244239,
+   "z": 0.7375,
+   "sn": 23.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3562.4,
+   "rest_max": 4974.4
+  },
+  {
+   "spect_id": "M3_109713",
+   "object_id": 109713,
+   "z": 0.7276,
+   "sn": 23.5,
+   "photometry": "cosmos2025",
+   "rest_min": 3676.6,
+   "rest_max": 5100.6
+  },
+  {
+   "spect_id": "M6_237437",
+   "object_id": 237437,
+   "z": 0.7334,
+   "sn": 23.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3604.4,
+   "rest_max": 5016.7
+  },
+  {
+   "spect_id": "M3_107362",
+   "object_id": 107362,
+   "z": 0.6769,
+   "sn": 23.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3893.3,
+   "rest_max": 5366.8
+  },
+  {
+   "spect_id": "M28_145882",
+   "object_id": 145882,
+   "z": 0.6586,
+   "sn": 23.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3925.8,
+   "rest_max": 5415.9
+  },
+  {
+   "spect_id": "M22_174436",
+   "object_id": 174436,
+   "z": 0.7431,
+   "sn": 23.1,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3555.7,
+   "rest_max": 4962.2
+  },
+  {
+   "spect_id": "M10_230319",
+   "object_id": 230319,
+   "z": 0.8249,
+   "sn": 22.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3597.3,
+   "rest_max": 4949.3
+  },
+  {
+   "spect_id": "M20_87121",
+   "object_id": 87121,
+   "z": 0.8359,
+   "sn": 22.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3373.7,
+   "rest_max": 4704.5
+  },
+  {
+   "spect_id": "M12_185653",
+   "object_id": 185653,
+   "z": 0.6774,
+   "sn": 22.7,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3968.0,
+   "rest_max": 5441.0
+  },
+  {
+   "spect_id": "M14_37723",
+   "object_id": 37723,
+   "z": 0.7361,
+   "sn": 22.7,
+   "photometry": "cosmos2025",
+   "rest_min": 3656.5,
+   "rest_max": 5069.0
+  },
+  {
+   "spect_id": "M3_109352",
+   "object_id": 109352,
+   "z": 0.7246,
+   "sn": 22.7,
+   "photometry": "cosmos2025",
+   "rest_min": 3883.8,
+   "rest_max": 5321.4
+  },
+  {
+   "spect_id": "M13_230747",
+   "object_id": 230747,
+   "z": 0.6982,
+   "sn": 22.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3888.0,
+   "rest_max": 5342.6
+  },
+  {
+   "spect_id": "M31_247498",
+   "object_id": 247498,
+   "z": 0.818,
+   "sn": 22.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3543.9,
+   "rest_max": 4901.1
+  },
+  {
+   "spect_id": "M4_107643",
+   "object_id": 107643,
+   "z": 0.7346,
+   "sn": 22.3,
+   "photometry": "cosmos2025",
+   "rest_min": 3900.1,
+   "rest_max": 5332.5
+  },
+  {
+   "spect_id": "M24_203503",
+   "object_id": 203503,
+   "z": 0.6571,
+   "sn": 22.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3817.8,
+   "rest_max": 5295.5
+  },
+  {
+   "spect_id": "M10_197591",
+   "object_id": 197591,
+   "z": 0.7961,
+   "sn": 22.1,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3329.5,
+   "rest_max": 4681.8
+  },
+  {
+   "spect_id": "M28_164802",
+   "object_id": 164802,
+   "z": 0.7054,
+   "sn": 21.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3838.1,
+   "rest_max": 5283.4
+  },
+  {
+   "spect_id": "M14_27068",
+   "object_id": 27068,
+   "z": 0.6783,
+   "sn": 21.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3715.6,
+   "rest_max": 5178.5
+  },
+  {
+   "spect_id": "M27_249882",
+   "object_id": 249882,
+   "z": 0.7041,
+   "sn": 21.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3743.1,
+   "rest_max": 5188.5
+  },
+  {
+   "spect_id": "M16_25285",
+   "object_id": 25285,
+   "z": 0.6123,
+   "sn": 21.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3841.2,
+   "rest_max": 5361.8
+  },
+  {
+   "spect_id": "M18_96616",
+   "object_id": 96616,
+   "z": 0.8376,
+   "sn": 21.3,
+   "photometry": "cosmos2025",
+   "rest_min": 3656.7,
+   "rest_max": 5007.9
+  },
+  {
+   "spect_id": "M13_243871",
+   "object_id": 243871,
+   "z": 0.7333,
+   "sn": 21.1,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3878.8,
+   "rest_max": 5310.9
+  },
+  {
+   "spect_id": "M11_248829",
+   "object_id": 248829,
+   "z": 0.7632,
+   "sn": 20.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3715.0,
+   "rest_max": 5118.1
+  },
+  {
+   "spect_id": "M12_95303",
+   "object_id": 95303,
+   "z": 0.882,
+   "sn": 20.8,
+   "photometry": "cosmos2025",
+   "rest_min": 3591.8,
+   "rest_max": 4912.0
+  },
+  {
+   "spect_id": "M26_240536",
+   "object_id": 240536,
+   "z": 0.6742,
+   "sn": 20.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3616.8,
+   "rest_max": 5070.7
+  },
+  {
+   "spect_id": "M9_229883",
+   "object_id": 229883,
+   "z": 0.7281,
+   "sn": 20.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3745.0,
+   "rest_max": 5168.9
+  },
+  {
+   "spect_id": "M4_108989",
+   "object_id": 108989,
+   "z": 0.828,
+   "sn": 20.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3514.0,
+   "rest_max": 4862.8
+  },
+  {
+   "spect_id": "M23_162810",
+   "object_id": 162810,
+   "z": 0.894,
+   "sn": 20.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3484.1,
+   "rest_max": 4787.7
+  },
+  {
+   "spect_id": "M4_123161",
+   "object_id": 123161,
+   "z": 0.7997,
+   "sn": 20.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3580.0,
+   "rest_max": 4946.2
+  },
+  {
+   "spect_id": "M101_126578",
+   "object_id": 126578,
+   "z": 0.7503,
+   "sn": 20.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3751.3,
+   "rest_max": 5160.9
+  },
+  {
+   "spect_id": "M31_243920",
+   "object_id": 243920,
+   "z": 0.7017,
+   "sn": 19.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3915.6,
+   "rest_max": 5372.9
+  },
+  {
+   "spect_id": "M18_181686",
+   "object_id": 181686,
+   "z": 0.8906,
+   "sn": 19.8,
+   "photometry": "cosmos2025",
+   "rest_min": 3670.4,
+   "rest_max": 4984.6
+  },
+  {
+   "spect_id": "M7_147270",
+   "object_id": 147270,
+   "z": 0.8474,
+   "sn": 19.8,
+   "photometry": "cosmos2025",
+   "rest_min": 3440.8,
+   "rest_max": 4772.7
+  },
+  {
+   "spect_id": "M10_227672",
+   "object_id": 227672,
+   "z": 0.6093,
+   "sn": 19.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3858.5,
+   "rest_max": 5377.0
+  },
+  {
+   "spect_id": "M27_259012",
+   "object_id": 259012,
+   "z": 0.763,
+   "sn": 19.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3536.0,
+   "rest_max": 4926.3
+  },
+  {
+   "spect_id": "M9_214899",
+   "object_id": 214899,
+   "z": 0.6754,
+   "sn": 19.5,
+   "photometry": "cosmos2025",
+   "rest_min": 3898.6,
+   "rest_max": 5373.7
+  },
+  {
+   "spect_id": "M31_259181",
+   "object_id": 259181,
+   "z": 0.7641,
+   "sn": 19.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3477.7,
+   "rest_max": 4861.7
+  },
+  {
+   "spect_id": "M16_31873",
+   "object_id": 31873,
+   "z": 0.8931,
+   "sn": 19.3,
+   "photometry": "cosmos2025",
+   "rest_min": 3500.7,
+   "rest_max": 4810.0
+  },
+  {
+   "spect_id": "M9_227630",
+   "object_id": 227630,
+   "z": 0.7298,
+   "sn": 19.1,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3779.1,
+   "rest_max": 5203.4
+  },
+  {
+   "spect_id": "M8_163989",
+   "object_id": 163989,
+   "z": 0.7583,
+   "sn": 18.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3559.5,
+   "rest_max": 4951.8
+  },
+  {
+   "spect_id": "M24_190831",
+   "object_id": 190831,
+   "z": 0.8146,
+   "sn": 18.7,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3494.0,
+   "rest_max": 4850.4
+  },
+  {
+   "spect_id": "M3_117010",
+   "object_id": 117010,
+   "z": 0.6769,
+   "sn": 18.7,
+   "photometry": "cosmos2025",
+   "rest_min": 3566.2,
+   "rest_max": 5015.0
+  },
+  {
+   "spect_id": "M4_120661",
+   "object_id": 120661,
+   "z": 0.7257,
+   "sn": 18.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3534.6,
+   "rest_max": 4947.6
+  },
+  {
+   "spect_id": "M23_163025",
+   "object_id": 163025,
+   "z": 0.9023,
+   "sn": 18.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3438.6,
+   "rest_max": 4735.3
+  },
+  {
+   "spect_id": "M21_204050",
+   "object_id": 204050,
+   "z": 0.7463,
+   "sn": 18.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3327.9,
+   "rest_max": 4677.9
+  },
+  {
+   "spect_id": "M13_259737",
+   "object_id": 259737,
+   "z": 0.703,
+   "sn": 18.0,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 4073.6,
+   "rest_max": 5531.6
+  },
+  {
+   "spect_id": "M7_151258",
+   "object_id": 151258,
+   "z": 0.6659,
+   "sn": 17.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3932.4,
+   "rest_max": 5416.6
+  },
+  {
+   "spect_id": "M8_145276",
+   "object_id": 145276,
+   "z": 0.7509,
+   "sn": 17.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3913.9,
+   "rest_max": 5334.7
+  },
+  {
+   "spect_id": "M14_27265",
+   "object_id": 27265,
+   "z": 0.7329,
+   "sn": 17.7,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3652.2,
+   "rest_max": 5072.5
+  },
+  {
+   "spect_id": "M12_182890",
+   "object_id": 182890,
+   "z": 0.7448,
+   "sn": 17.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3782.1,
+   "rest_max": 5198.2
+  },
+  {
+   "spect_id": "M27_245661",
+   "object_id": 245661,
+   "z": 0.8518,
+   "sn": 17.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3697.0,
+   "rest_max": 5040.1
+  },
+  {
+   "spect_id": "M28_158128",
+   "object_id": 158128,
+   "z": 0.8319,
+   "sn": 17.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3447.9,
+   "rest_max": 4786.2
+  },
+  {
+   "spect_id": "M18_92132",
+   "object_id": 92132,
+   "z": 0.7478,
+   "sn": 17.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3793.8,
+   "rest_max": 5211.9
+  },
+  {
+   "spect_id": "M26_239244",
+   "object_id": 239244,
+   "z": 0.6761,
+   "sn": 17.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3875.8,
+   "rest_max": 5345.4
+  },
+  {
+   "spect_id": "M27_256994",
+   "object_id": 256994,
+   "z": 0.8361,
+   "sn": 16.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3561.6,
+   "rest_max": 4904.1
+  },
+  {
+   "spect_id": "M4_107370",
+   "object_id": 107370,
+   "z": 0.8437,
+   "sn": 16.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3707.4,
+   "rest_max": 5056.7
+  },
+  {
+   "spect_id": "M16_103061",
+   "object_id": 103061,
+   "z": 0.7238,
+   "sn": 15.7,
+   "photometry": "cosmos2025",
+   "rest_min": 3473.3,
+   "rest_max": 4883.1
+  },
+  {
+   "spect_id": "M1_208622",
+   "object_id": 208622,
+   "z": 0.6476,
+   "sn": 15.7,
+   "photometry": "cosmos2025",
+   "rest_min": 3811.7,
+   "rest_max": 5300.1
+  },
+  {
+   "spect_id": "M14_37219",
+   "object_id": 37219,
+   "z": 0.7348,
+   "sn": 15.5,
+   "photometry": "cosmos2025",
+   "rest_min": 3572.4,
+   "rest_max": 4980.8
+  },
+  {
+   "spect_id": "M17_29406",
+   "object_id": 29406,
+   "z": 0.7382,
+   "sn": 15.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3697.3,
+   "rest_max": 5116.4
+  },
+  {
+   "spect_id": "M16_103417",
+   "object_id": 103417,
+   "z": 0.672,
+   "sn": 15.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3935.6,
+   "rest_max": 5411.6
+  },
+  {
+   "spect_id": "M24_201669",
+   "object_id": 201669,
+   "z": 0.6082,
+   "sn": 15.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3929.4,
+   "rest_max": 5453.5
+  },
+  {
+   "spect_id": "M7_152125",
+   "object_id": 152125,
+   "z": 0.7873,
+   "sn": 15.3,
+   "photometry": "cosmos2025",
+   "rest_min": 3516.8,
+   "rest_max": 4892.2
+  },
+  {
+   "spect_id": "M101_129358",
+   "object_id": 129358,
+   "z": 0.8524,
+   "sn": 15.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3357.6,
+   "rest_max": 4678.2
+  },
+  {
+   "spect_id": "M32_68126",
+   "object_id": 68126,
+   "z": 0.6735,
+   "sn": 15.0,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3523.6,
+   "rest_max": 4971.0
+  },
+  {
+   "spect_id": "M19_141436",
+   "object_id": 141436,
+   "z": 0.6951,
+   "sn": 14.8,
+   "photometry": "cosmos2025",
+   "rest_min": 3917.0,
+   "rest_max": 5375.0
+  },
+  {
+   "spect_id": "M10_217020",
+   "object_id": 217020,
+   "z": 0.8935,
+   "sn": 14.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3702.2,
+   "rest_max": 5012.8
+  },
+  {
+   "spect_id": "M31_249433",
+   "object_id": 249433,
+   "z": 0.8372,
+   "sn": 14.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3539.2,
+   "rest_max": 4884.5
+  },
+  {
+   "spect_id": "M13_254350",
+   "object_id": 254350,
+   "z": 0.669,
+   "sn": 14.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 4058.8,
+   "rest_max": 5542.1
+  },
+  {
+   "spect_id": "M14_103366",
+   "object_id": 103366,
+   "z": 0.6745,
+   "sn": 14.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3774.2,
+   "rest_max": 5237.2
+  },
+  {
+   "spect_id": "M8_145294",
+   "object_id": 145294,
+   "z": 0.6852,
+   "sn": 14.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3594.2,
+   "rest_max": 5043.3
+  },
+  {
+   "spect_id": "M7_122025",
+   "object_id": 122025,
+   "z": 0.7477,
+   "sn": 14.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3408.3,
+   "rest_max": 4798.8
+  },
+  {
+   "spect_id": "M11_215711",
+   "object_id": 215711,
+   "z": 0.6654,
+   "sn": 13.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3613.5,
+   "rest_max": 5077.7
+  },
+  {
+   "spect_id": "M102_206842",
+   "object_id": 206842,
+   "z": 0.7258,
+   "sn": 13.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3550.4,
+   "rest_max": 4968.5
+  },
+  {
+   "spect_id": "M22_169219",
+   "object_id": 169219,
+   "z": 0.6325,
+   "sn": 13.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 4072.0,
+   "rest_max": 5590.7
+  },
+  {
+   "spect_id": "M23_158484",
+   "object_id": 158484,
+   "z": 0.6777,
+   "sn": 13.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3464.0,
+   "rest_max": 4867.7
+  },
+  {
+   "spect_id": "M16_27659",
+   "object_id": 27659,
+   "z": 0.9905,
+   "sn": 13.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3455.1,
+   "rest_max": 4705.8
+  },
+  {
+   "spect_id": "M10_217653",
+   "object_id": 217653,
+   "z": 0.9993,
+   "sn": 13.1,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3431.2,
+   "rest_max": 4675.8
+  },
+  {
+   "spect_id": "M3_119005",
+   "object_id": 119005,
+   "z": 0.9249,
+   "sn": 13.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3465.3,
+   "rest_max": 4749.9
+  },
+  {
+   "spect_id": "M6_233902",
+   "object_id": 233902,
+   "z": 0.729,
+   "sn": 13.1,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3646.5,
+   "rest_max": 5065.2
+  },
+  {
+   "spect_id": "M9_232890",
+   "object_id": 232890,
+   "z": 0.7658,
+   "sn": 12.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3576.6,
+   "rest_max": 4965.4
+  },
+  {
+   "spect_id": "M20_77982",
+   "object_id": 77982,
+   "z": 0.8947,
+   "sn": 12.7,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3397.9,
+   "rest_max": 4699.8
+  },
+  {
+   "spect_id": "M13_231554",
+   "object_id": 231554,
+   "z": 0.6964,
+   "sn": 12.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3966.4,
+   "rest_max": 5425.7
+  },
+  {
+   "spect_id": "M16_4949",
+   "object_id": 4949,
+   "z": 0.668,
+   "sn": 12.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3484.5,
+   "rest_max": 4795.6
+  },
+  {
+   "spect_id": "M20_87207",
+   "object_id": 87207,
+   "z": 0.8326,
+   "sn": 12.5,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3635.2,
+   "rest_max": 4983.9
+  },
+  {
+   "spect_id": "M7_162587",
+   "object_id": 162587,
+   "z": 0.7898,
+   "sn": 12.5,
+   "photometry": "cosmos2025",
+   "rest_min": 3746.6,
+   "rest_max": 5129.2
+  },
+  {
+   "spect_id": "M14_36550",
+   "object_id": 36550,
+   "z": 0.7387,
+   "sn": 12.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3714.2,
+   "rest_max": 5128.7
+  },
+  {
+   "spect_id": "M18_181421",
+   "object_id": 181421,
+   "z": 0.9587,
+   "sn": 12.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3469.5,
+   "rest_max": 4734.7
+  },
+  {
+   "spect_id": "M101_209935",
+   "object_id": 209935,
+   "z": 0.6528,
+   "sn": 12.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3516.2,
+   "rest_max": 4942.5
+  },
+  {
+   "spect_id": "M21_189698",
+   "object_id": 189698,
+   "z": 0.9264,
+   "sn": 12.1,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3608.7,
+   "rest_max": 4899.1
+  },
+  {
+   "spect_id": "M102_223199",
+   "object_id": 223199,
+   "z": 0.7366,
+   "sn": 11.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3748.1,
+   "rest_max": 5167.8
+  },
+  {
+   "spect_id": "M15_76336",
+   "object_id": 76336,
+   "z": 0.8243,
+   "sn": 11.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3646.5,
+   "rest_max": 5005.5
+  },
+  {
+   "spect_id": "M5_206771",
+   "object_id": 206771,
+   "z": 0.6297,
+   "sn": 11.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3935.7,
+   "rest_max": 5446.0
+  },
+  {
+   "spect_id": "M101_139662",
+   "object_id": 139662,
+   "z": 0.6713,
+   "sn": 11.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3925.4,
+   "rest_max": 5406.0
+  },
+  {
+   "spect_id": "M11_245864",
+   "object_id": 245864,
+   "z": 0.6977,
+   "sn": 11.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3735.7,
+   "rest_max": 5185.8
+  },
+  {
+   "spect_id": "M11_216899",
+   "object_id": 216899,
+   "z": 0.6976,
+   "sn": 11.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3591.3,
+   "rest_max": 5030.9
+  },
+  {
+   "spect_id": "M1_133240",
+   "object_id": 133240,
+   "z": 0.7283,
+   "sn": 11.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3564.3,
+   "rest_max": 4981.1
+  },
+  {
+   "spect_id": "M20_79475",
+   "object_id": 79475,
+   "z": 0.6994,
+   "sn": 11.1,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3749.6,
+   "rest_max": 5199.3
+  },
+  {
+   "spect_id": "M8_156118",
+   "object_id": 156118,
+   "z": 0.8299,
+   "sn": 10.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3656.3,
+   "rest_max": 5007.6
+  },
+  {
+   "spect_id": "M9_225678",
+   "object_id": 225678,
+   "z": 0.7328,
+   "sn": 10.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3776.4,
+   "rest_max": 5198.2
+  },
+  {
+   "spect_id": "M19_57080",
+   "object_id": 57080,
+   "z": 0.6682,
+   "sn": 10.6,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3722.2,
+   "rest_max": 5193.3
+  },
+  {
+   "spect_id": "M101_126153",
+   "object_id": 126153,
+   "z": 0.6834,
+   "sn": 10.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3915.7,
+   "rest_max": 5383.5
+  },
+  {
+   "spect_id": "M18_182962",
+   "object_id": 182962,
+   "z": 0.8824,
+   "sn": 9.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3389.2,
+   "rest_max": 4694.2
+  },
+  {
+   "spect_id": "M23_150680",
+   "object_id": 150680,
+   "z": 0.7494,
+   "sn": 9.8,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3770.4,
+   "rest_max": 5186.6
+  },
+  {
+   "spect_id": "M20_76593",
+   "object_id": 76593,
+   "z": 0.8986,
+   "sn": 9.7,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3479.2,
+   "rest_max": 4784.4
+  },
+  {
+   "spect_id": "M17_140425",
+   "object_id": 140425,
+   "z": 0.9594,
+   "sn": 9.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3405.8,
+   "rest_max": 4667.8
+  },
+  {
+   "spect_id": "M10_215290",
+   "object_id": 215290,
+   "z": 0.8909,
+   "sn": 9.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3625.7,
+   "rest_max": 4941.6
+  },
+  {
+   "spect_id": "M26_173964",
+   "object_id": 173964,
+   "z": 0.8776,
+   "sn": 9.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3516.1,
+   "rest_max": 4835.3
+  },
+  {
+   "spect_id": "M30_65982",
+   "object_id": 65982,
+   "z": 0.8704,
+   "sn": 9.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3522.0,
+   "rest_max": 4840.8
+  },
+  {
+   "spect_id": "M17_57237",
+   "object_id": 57237,
+   "z": 0.7872,
+   "sn": 9.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3831.0,
+   "rest_max": 5222.6
+  },
+  {
+   "spect_id": "M10_201233",
+   "object_id": 201233,
+   "z": 0.8179,
+   "sn": 8.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3327.6,
+   "rest_max": 4666.9
+  },
+  {
+   "spect_id": "M12_101089",
+   "object_id": 101089,
+   "z": 0.8515,
+   "sn": 8.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3726.8,
+   "rest_max": 5054.2
+  },
+  {
+   "spect_id": "M3_119809",
+   "object_id": 119809,
+   "z": 0.6801,
+   "sn": 8.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3965.2,
+   "rest_max": 5436.6
+  },
+  {
+   "spect_id": "M102_211117",
+   "object_id": 211117,
+   "z": 0.668,
+   "sn": 8.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3901.5,
+   "rest_max": 5382.8
+  },
+  {
+   "spect_id": "M14_39865",
+   "object_id": 39865,
+   "z": 0.8296,
+   "sn": 8.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3715.0,
+   "rest_max": 5069.1
+  },
+  {
+   "spect_id": "M15_89072",
+   "object_id": 89072,
+   "z": 0.8373,
+   "sn": 8.4,
+   "photometry": "cosmos2025",
+   "rest_min": 3583.5,
+   "rest_max": 4911.0
+  },
+  {
+   "spect_id": "M18_185040",
+   "object_id": 185040,
+   "z": 0.7442,
+   "sn": 8.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3558.7,
+   "rest_max": 4960.1
+  },
+  {
+   "spect_id": "M30_54494",
+   "object_id": 54494,
+   "z": 0.9071,
+   "sn": 8.2,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3556.8,
+   "rest_max": 4860.0
+  },
+  {
+   "spect_id": "M102_214145",
+   "object_id": 214145,
+   "z": 0.7265,
+   "sn": 8.1,
+   "photometry": "cosmos2025",
+   "rest_min": 3473.5,
+   "rest_max": 4885.5
+  },
+  {
+   "spect_id": "M23_151373",
+   "object_id": 151373,
+   "z": 0.6764,
+   "sn": 8.0,
+   "photometry": "cosmos2025",
+   "rest_min": 3501.0,
+   "rest_max": 4949.9
+  },
+  {
+   "spect_id": "M23_143947",
+   "object_id": 143947,
+   "z": 0.8381,
+   "sn": 7.9,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3447.7,
+   "rest_max": 4787.1
+  },
+  {
+   "spect_id": "M18_91497",
+   "object_id": 91497,
+   "z": 0.8401,
+   "sn": 7.7,
+   "photometry": "cosmos2025",
+   "rest_min": 3732.6,
+   "rest_max": 5085.5
+  },
+  {
+   "spect_id": "M16_29691",
+   "object_id": 29691,
+   "z": 0.9195,
+   "sn": 7.6,
+   "photometry": "cosmos2025",
+   "rest_min": 3648.9,
+   "rest_max": 4944.9
+  },
+  {
+   "spect_id": "M31_253516",
+   "object_id": 253516,
+   "z": 0.7004,
+   "sn": 7.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3478.1,
+   "rest_max": 4904.4
+  },
+  {
+   "spect_id": "M17_64957",
+   "object_id": 64957,
+   "z": 0.8313,
+   "sn": 6.5,
+   "photometry": "cosmos2025",
+   "rest_min": 3452.3,
+   "rest_max": 4791.4
+  },
+  {
+   "spect_id": "M12_185631",
+   "object_id": 185631,
+   "z": 0.9255,
+   "sn": 6.4,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3436.8,
+   "rest_max": 4719.4
+  },
+  {
+   "spect_id": "M14_104877",
+   "object_id": 104877,
+   "z": 0.9552,
+   "sn": 6.2,
+   "photometry": "cosmos2025",
+   "rest_min": 3449.3,
+   "rest_max": 4714.6
+  },
+  {
+   "spect_id": "M26_169606",
+   "object_id": 169606,
+   "z": 0.8428,
+   "sn": 5.3,
+   "photometry": "cosmos2020_classic",
+   "rest_min": 3461.1,
+   "rest_max": 4798.6
+  },
+  {
+   "spect_id": "M4_112534",
+   "object_id": 112534,
+   "z": 0.9836,
+   "sn": 2.9,
+   "photometry": "cosmos2025",
+   "rest_min": 3440.8,
+   "rest_max": 4691.6
+  }
+ ]
+}

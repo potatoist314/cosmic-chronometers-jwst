@@ -285,6 +285,11 @@ def test_selected_inputs_take_dr3_catalogue_and_spectrum_for_dr3_cells():
     assert 'data/raw/legac_dr3/legac_DR3.fits' in files
     assert [p for p in files if '/sp/' in p] == ['data/raw/legac_dr3/sp/legac_M1_210210_v3.0.fits']
     assert [p for p in files if '/hst_f814w/' in p] == ['data/raw/hst_f814w/M1_210210.fits']
+    assert {'data/raw/cosmos2015/cosmos2015_legac_dr3_apertures_1arcsec.fits',
+            'data/raw/cosmos2020/cosmos2020_classic_legac_dr3_1arcsec.fits',
+            'data/raw/cosmos2020/cosmos2020_farmer_legac_dr3_1arcsec.fits',
+            'data/raw/cosmos2025/cosmos2025_phot_legac_dr3_1arcsec.fits'} <= set(files)
+    assert not any('cosmos2025_phot_legac_dr2' in p for p in files)
 
 
 def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, monkeypatch):

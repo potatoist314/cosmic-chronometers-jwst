@@ -346,12 +346,17 @@ def selected_inputs(cells):
         if manga_cell(cell):
             files.add('data/processed/manga_dr17/' + cell['target_metadata']['filename'])
             continue
+        matched = catalogs.get(cell['settings']['photometry'], [])
         if legac_dr3_cell(cell):
             files.update({LEGAC_DR3_CATALOGUE, 'data/raw/legac_dr3/sp/' + cell['target_metadata']['filename']})
+            # cosmos_photometry.read_matches(release="dr3") opens the DR3 match files.
+            matched = [name.replace('legac_dr2', 'legac_dr3') for name in matched]
+            if matched:
+                matched.append('cosmos2015/cosmos2015_legac_dr3_apertures_1arcsec.fits')
         else:
             files.add('data/raw/legac_dr2/sp/' + cell['target_metadata']['filename'])
         files.add('data/raw/hst_f814w/' + cell['target'] + '.fits')
-        files.update('data/raw/' + name for name in catalogs.get(cell['settings']['photometry'], []))
+        files.update('data/raw/' + name for name in matched)
     return sorted(files)
 
 
