@@ -1505,3 +1505,8 @@
 
 - Pages: `notes/model.md`, `index.md`
 - Change: Added the default-off NPZ input contract, units and production noise-floor handling.
+
+## [2026-11-11] query | Low alpha/Fe, Mg b and the chronometer age slope
+
+- Pages: `research/questions/q-afe-age-chronometer.md`, `index.md`
+- Change: Compiled the 10–11 Nov findings: common rest-frame window, window extensions, C/N, mocks and oldest galaxies; card t_e083ee8e.

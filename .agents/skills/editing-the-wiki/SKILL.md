@@ -21,13 +21,10 @@ Rules are in `AGENTS.md`, `~/.claude/CLAUDE.md`, `wiki/AGENTS.md` and
    Before reading direction or priorities, run `python3 scripts/sync_wiki_direction.py --read`.
    Save changes to `direction.md` through `--save` and its revision-checked JSON
    contract in `wiki/research/README.md`, never by direct file edits.
-2. **Write the prose with Codex.** Put the facts and their source paths in a fact sheet. Then:
-   ```
-   codex exec -m gpt-6-astra -c model_reasoning_effort="low" -s read-only \
-     -C "/Users/liuhao/Downloads/Astro project" -o <scratchpad>/<name>.md "<prompt>"
-   ```
-   His words (2026-09-10): "nothing i hate more than bloated ai slop wiki pages. get
-   astra on light or medium effort to do any prose writing".
+2. **Write the prose yourself.** Do not send it to Codex. His words (2026-11-11), about
+   the chat reports of the 2026-11-10/11 findings: "the writing style is good enough that
+   you can discard the old rule of codex writes prose". Write wiki prose in the style of
+   those reports. The page made from them: `wiki/research/questions/q-afe-age-chronometer.md`.
 3. **Edit.** Change the source file in `wiki/notes/`, `wiki/research/` or
    `wiki/analyses/<slug>/`. Do not edit `wiki/public/`. Add one line to `wiki/index.md`
    for a new page. Append one entry to `wiki/log.md`.
