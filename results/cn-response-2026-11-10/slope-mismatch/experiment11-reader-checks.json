@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "target": "M1_210210",
+      "arm": "C1",
+      "fitted_pixels": 1396,
+      "mask_exact": true,
+      "fast_path": true,
+      "free_CN": false,
+      "sfh_prior_scale": 0.3
+    },
+    {
+      "target": "M1_210210",
+      "arm": "C3",
+      "fitted_pixels": 1396,
+      "mask_exact": true,
+      "fast_path": true,
+      "free_CN": true,
+      "sfh_prior_scale": 0.3
+    },
+    {
+      "target": "M8_161113",
+      "arm": "C3",
+      "fitted_pixels": 1490,
+      "mask_exact": true,
+      "fast_path": true,
+      "free_CN": true,
+      "sfh_prior_scale": 0.3
+    }
+  ],
+  "no_sampling": true,
+  "no_figures": true
+}
