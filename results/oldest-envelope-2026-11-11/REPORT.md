@@ -224,4 +224,4 @@ Each row: all choices of one estimator family (oldest fraction: 4 fractions × 5
 - Arms (a)–(d), (f), (g), (k)–(m): not common-window fits; not analysed.
 - Lower-σ★ subsample (Borghi et al. 2022b use both) and a stellar-mass cut (Moresco et al. 2022, log M > 10.6–11): not done. The Ceridwen `logmass` differs between arms.
 - Constant-width z bins (Borghi et al. 2022b baseline, Δz ≈ 0.075, alternate points): not done; equal-count bins only.
-- Items 2 and 3 of the approved list (DR3 download and refits): separate tasks.
+- Items 2 and 3 of the approved list (DR3 download and refits): card t_5440a254, results in `results/legac-dr3-2026-11-11/`.
