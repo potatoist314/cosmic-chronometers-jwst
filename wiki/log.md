@@ -1510,3 +1510,8 @@
 
 - Pages: `research/questions/q-afe-age-chronometer.md`, `index.md`
 - Change: Compiled the 10–11 Nov findings: common rest-frame window, window extensions, C/N, mocks and oldest galaxies; card t_e083ee8e.
+
+## [2026-11-11] query | Chronometer findings page cut to answer lines and two tables
+
+- Pages: `research/questions/q-afe-age-chronometer.md`
+- Change: Cut from 1908 words to three answer lines, two tables, one mock line and links to the three reports; card t_e083ee8e.
