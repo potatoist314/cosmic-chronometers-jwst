@@ -1,0 +1,16 @@
+{
+  "id": "def6d366-3788-4b3a-9b1d-6ac335650313",
+  "sequence": 8,
+  "date": "2026-11-11T05:27:54.673465+00:00",
+  "origin": "chat",
+  "action": "note",
+  "text": "Experiment 5 (2026-11-11), age–redshift slope on the 135 LEGA-C DR2 quiescent galaxies, 940/945 fits valid. Slopes in Gyr per unit redshift from a straight line through posterior median mass-weighted ages, galaxy bootstrap 16–84 in brackets. Planck18 universe-age line over the same redshifts: −5.17. All galaxies: (a) October baseline −1.55 [−2.23, −0.88]; (b) C and N free +0.97 [+0.20, +1.75]; (c) C and N free with [α/Fe] fixed at +0.25: +1.18 [+0.42, +1.95]; (d) carbon mask −2.72 [−3.40, −2.04]; (e) as (c) on rest 4155.0–4438.1 Å only (the widest window covered by 129 of 135; 130 valid, median 667 fitted pixels against 3604): −3.77 [−4.42, −3.09]; (f) as (b) with the 61 Mg b galaxies cut at rest 5144 Å: −0.42 [−1.14, +0.30]; (g) baseline with the same cut: −1.11 [−1.78, −0.47]. Scatter about the line 0.80–1.04 Gyr. Step model age = a + b z + c [Mg b group] (61 galaxies with Mg b pixels in the October fit, median z 0.682; 74 without, median z 0.822): joint slope b and step c: (a) −1.58, −0.01; (b) −2.18, −0.99 [−1.19, −0.79]; (c) −1.99, −0.99; (d) −3.03, −0.10; (e) −4.46 [−5.38, −3.55], −0.21; (f) −2.88, −0.77 [−0.98, −0.57]; (g) −1.69, −0.18. Within the Mg b group: (a) −2.77, (b) −2.76, (c) −3.40, (d) −4.76 [−7.22, −2.35], (e) −4.68, (f) −7.13 [−9.29, −4.75], (g) −3.45 (line −5.82). Within the no-Mg b group: (a) −1.35, (b) −2.07, (c) −1.72, (d) −2.70, (e) −4.42 [−5.41, −3.42] (line −4.97). Medians, Mg b group / no-Mg b group: [α/Fe] (a) +0.08 / −0.16, (b) +0.21 / −0.05, (d) +0.20 / −0.11; (b) [C/Fe] +0.12 / −0.14, [N/Fe] +0.12 / +0.45, age 3.73 / 4.70 Gyr. Cutting the red end at 5144 Å for the 61: with C/N free [α/Fe] −0.22 (lower in 97%), [C/Fe] −0.12, age +0.15 Gyr, and the age change has slope −4.4 Gyr per unit z within the group; plain grid [α/Fe] −0.11 (lower in 95%), age −0.09 Gyr. ρ([α/Fe], z): (a) −0.47, (g) −0.29. No arm's interval for all galaxies reaches the Planck18 line; H(z) is not constrained (H = −977.79 / ((1+z) slope), Jimenez & Loeb 2002 eq. 2). Lead check: all seven slopes recomputed from per-fit.csv. Launched: baseline settings on the 4155–4438 Å window, a wider common window on a sub-sample (plain and C/N free), and mock chronometers with injected C/N and with the window (experiment 10).",
+  "evidence": [
+    "results/chronometer-135-2026-11-10/REPORT.md",
+    "results/chronometer-135-2026-11-10/per-fit.csv",
+    "results/chronometer-135-2026-11-10/age-redshift-slopes.csv",
+    "results/chronometer-135-2026-11-10/mgb-cut-paired.csv",
+    "results/chronometer-135-2026-11-10/paired-age-differences.csv"
+  ],
+  "pages": []
+}
