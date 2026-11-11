@@ -36,12 +36,13 @@ CELL = {'name': 'fit/M1_210210', 'arm': 'fit', 'target': 'M1_210210', 'seed': 12
         'target_metadata': {'object_id': 210210, 'spect_id': 'M1_210210', 'seed': 12}}
 
 
-def result_archive(cells, exit_codes, started=1000.0, finished=1150.0, call=None):
+def result_archive(cells, exit_codes, started=1000.0, finished=1150.0, call=None, provisional=False):
     """A container's tar.gz as modal_gpu.fit returns it for the request's cells; with `call`, the
     tar.gz of one fit as modal_gpu.keep writes it to the results Volume."""
     status = {'exit': {'bootstrap': exit_codes['bootstrap']}, 'gpu': 'NVIDIA L40S', 'started': started,
               'finished': finished, 'cells': {str(c['index']): {'exit': exit_codes['fit'], 'mode': 'alone', 'tuned': 3, 'compiled': 5}
-                                              for c in cells}, **({'call': call} if call else {})}
+                                              for c in cells},
+              **({'call': call, 'provisional': provisional} if call else {})}
     buffer = io.BytesIO()
     with tarfile.open(fileobj=buffer, mode='w:gz') as archive:
         files = {'status.json': json.dumps(status), 'bootstrap.log': 'ready'}
@@ -67,8 +68,9 @@ def modal_run(tmp_path, monkeypatch):
     args.output.mkdir()
     run = exp.ModalRun(args, source)
     # `billing` is one summary for every profile, or a summary for each profile name. `lost` containers
-    # stop before they return; `kept` is the fits on the results Volume of each profile: {profile: {index: cell}}.
-    state = {'launches': [], 'profiles': [], 'stopped': [], 'billing': {'billed_cost': '0E-8', 'adjustments': {'plan_cost': '0E-8', 'credits': '-1.01'}},
+    # stop before they return; `kept` is the fits on the results Volume of each profile: {profile: {index: cell}},
+    # of which the indices in `provisional` are shared fits that their alone fit was to replace.
+    state = {'provisional': set(), 'launches': [], 'profiles': [], 'stopped': [], 'billing': {'billed_cost': '0E-8', 'adjustments': {'plan_cost': '0E-8', 'credits': '-1.01'}},
              'report': [], 'exit': {'bootstrap': 0, 'fit': 0}, 'running': ['ap-other'], 'interrupt': False,
              'lost': set(), 'kept': {}, 'removed': [], 'launched': None, 'refuses': set()}
 
@@ -105,7 +107,7 @@ def modal_run(tmp_path, monkeypatch):
                 target = exp.Path(arguments[6]) / run.data['kept'] / f'{index}.tar.gz'
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(result_archive([{'index': index, 'cell': cell}], state['exit'], 1000.0, 1100.0,
-                                                  call='fc-kept'))
+                                                  call='fc-kept', provisional=index in state['provisional']))
         elif arguments[2:5] == ('volume', 'rm', '-r'):
             assert arguments[5:] == (modal_gpu.RESULT_VOLUME, run.data['kept'])
             state['removed'].append(profile)
@@ -345,6 +347,23 @@ def test_stopped_container_gives_its_kept_fits_and_the_resume_fits_the_rest(moda
     assert records['a1/M1_210210']['estimated_usd'] == pytest.approx(modal_gpu.cost_usd('L40S', 100))
     assert 'RemoteError' in records['a0/M1_210210']['error'] and run.data['attempts'][0]['status'] == 'failed'
     assert state['removed'] == [modal_gpu.PROFILES[0]] and not list((run.root / '.modal').glob(run.data['kept']))
+    state['lost'] = set()
+    assert run.execute() == 0
+    assert [c['index'] for cells in state['launches'][1]['containers'] for c in cells] == [0, 2]
+    assert sorted(run.data['completed_cells']) == sorted(c['name'] for c in cells)
+
+
+def test_stopped_container_gives_only_its_final_fits_and_the_resume_fits_the_provisional_ones(
+        modal_run, monkeypatch, capsys):
+    run, state = modal_run
+    cells = run.data['source']['experiment'] = arms(3)
+    monkeypatch.setattr(modal_gpu, 'MAX_CONTAINERS', 1)
+    state['lost'], state['kept'], state['provisional'] = {0}, {modal_gpu.PROFILES[0]: {1: cells[1], 2: cells[2]}}, {2}
+    assert run.execute() == 1
+    assert run.data['completed_cells'] == ['a1/M1_210210']
+    assert not (run.root / 'fits/a2').exists() and not (run.root / 'fc-kept-fit-2.log').exists()
+    assert 'a2/M1_210210: provisional on Volume ceridwen-results; fitted again' in capsys.readouterr().out
+    assert state['removed'] == [modal_gpu.PROFILES[0]]
     state['lost'] = set()
     assert run.execute() == 0
     assert [c['index'] for cells in state['launches'][1]['containers'] for c in cells] == [0, 2]

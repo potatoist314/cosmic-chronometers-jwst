@@ -503,10 +503,12 @@ class ModalRun:
 
     def unpack(self, path, call=None):
         """Results to fits/ exactly as the Vast rsync places them; stage logs beside the manifest.
-        A kept fit names its own call."""
+        A kept fit names its own call; a provisional one is not unpacked."""
         destination = self.root / 'fits'
         with tarfile.open(path) as archive:
             status = json.load(archive.extractfile('status.json'))
+            if status.get('provisional'):
+                return status
             call = call or status['call']
             for member in archive.getmembers():
                 if member.name.startswith('results/') and member.name.count('/') > 1:
@@ -573,7 +575,7 @@ class ModalRun:
 
     def recover(self, attempt):
         """The fits that the attempt's containers kept on the results Volume and did not return:
-        complete each pending one, then empty the run's directory in that Volume."""
+        complete each pending one that is final, then empty the run's directory in that Volume."""
         profile, local = self.profile_of(attempt), self.root / '.modal' / self.data['kept']
         shutil.rmtree(local, ignore_errors=True)
         self.client('-m', 'modal', 'volume', 'get', modal_gpu.RESULT_VOLUME, self.data['kept'] + '/',
@@ -585,6 +587,9 @@ class ModalRun:
             index = int(path.name.split('.')[0])
             if index in pending:
                 status = self.unpack(path)
+                if status.get('provisional'):  # its key's cache autotuned in a shared fit
+                    engine.log(f"{pending[index]['name']}: provisional on Volume {modal_gpu.RESULT_VOLUME}; fitted again")
+                    continue
                 self.settle(attempt, status['call'], index, pending[index], status, 1)
                 engine.log(f"{pending[index]['name']}: from Volume {modal_gpu.RESULT_VOLUME} of {profile}")
         shutil.rmtree(local)

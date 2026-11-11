@@ -188,7 +188,9 @@ use L4 GPU functions.") and `initalincrease` had a billed cost of $0.61. The fit
    again in `liuhaoo3-14` 14 s later (`uninterrupted-m1-driver.log`).
 3. **Know where the finished fits are.** Each container writes each finished fit to the
    Volume `ceridwen-results` of its workspace before it starts the next fit. The path is
-   `<kept>/<cell index>.tar.gz`. `kept` is in `run/manifest.json`.
+   `<kept>/<cell index>.tar.gz`. `kept` is in `run/manifest.json`. A fit that shared the
+   GPU while its cache got a new autotune entry is provisional: the container fits it
+   again alone, and the alone fit replaces it.
    ```bash
    modal volume ls ceridwen-results <kept> --profile <profile> --json
    ```
@@ -197,8 +199,9 @@ use L4 GPU functions.") and `initalincrease` had a billed cost of $0.61. The fit
    python3 scripts/experiment.py run results/<slug>/experiment.json \
      --backend modal --gpu A100-40GB --output results/<slug>/run
    ```
-   The runner first gets each fit that a stopped container left on the Volume. The log
-   shows `<arm>/<target>: from Volume ceridwen-results of <profile>`. The runner then
+   The runner first gets each fit that a stopped container left on the Volume, except a
+   provisional fit. The log shows `<arm>/<target>: from Volume ceridwen-results of <profile>`,
+   or `<arm>/<target>: provisional on Volume ceridwen-results; fitted again`. The runner then
    removes these fits from the Volume. Then it fits only the missing cells, with the saved
    image, backend, seed and pinned source. In the run of 2026-11-11, the app was stopped
    after 1 of 2 fits (`modal app stop -y <app id> --profile liuhaoo3-14`). The runner got

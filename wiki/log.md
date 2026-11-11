@@ -1530,3 +1530,8 @@
 
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: Modal launches use the first profile with a billed cost of $0; each finished fit goes to the Volume `ceridwen-results` and a resumed run takes it; card t_60c41d46.
+
+## [2026-11-11] codebase | Shared Modal fits saved as each finishes
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: a fit that shares the GPU goes to the Volume `ceridwen-results` when it ends, provisional if its cache autotuned; a resumed run takes only final fits; card t_3c7afc3a.

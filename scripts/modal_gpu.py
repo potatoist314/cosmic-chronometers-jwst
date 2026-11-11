@@ -147,14 +147,23 @@ if modal:
     reference = os.environ.get('CERIDWEN_MODAL_IMAGE')  # set by the local client only
     image = modal.Image.from_registry(reference) if reference else None
 
-    extracting = threading.Lock()
+    extracting, keeping = threading.Lock(), threading.Lock()
 
-    def fit_cell(root, cell, mode, environment):
+    def fit_cell(root, cell, mode, environment, untuned):
         """One cell in its own kernel. JAX's compile cache, with XLA's autotune cache inside it, has one
         directory per cache key, at the same path wherever it is written or read: JAX 0.10 keys each
-        compiled program by the autotune directory's path as well (jax/_src/cache_key.py)."""
+        compiled program by the autotune directory's path as well (jax/_src/cache_key.py).
+
+        A shared fit is final when its key's autotune cache has no new entry at its end. A new entry is
+        written during a fit of that key, so schedule fits every cell of the key again alone. Without one,
+        the saved cache held every fusion of the key's programs (a cache key fixes them, see
+        experiment.py), so no later fit of the key autotunes either and schedule keeps the shared fit.
+        `untuned` has the autotune entries of each key's cache when its first fit from the saved cache began."""
         index, cache = cell['index'], Path('/tmp/xla') / cell['key']
         shutil.rmtree(root / 'results' / str(index), ignore_errors=True)
+        # JAX keeps XLA's per-fusion autotune cache in this subdirectory (jax_persistent_cache_enable_xla_caches).
+        tuned = lambda: len(list((cache / 'xla_gpu_per_fusion_autotune_cache_dir').glob('*')))
+        compiled = lambda: sum(1 for path in cache.iterdir() if path.is_file())
         with extracting:
             if mode == 'alone':
                 shutil.rmtree(cache, ignore_errors=True)
@@ -163,9 +172,8 @@ if modal:
                 if mode != 'alone':
                     with tarfile.open(CACHE / f"{cell['key']}.tar") as archive:
                         archive.extractall(cache, filter='data')
-        # JAX keeps XLA's per-fusion autotune cache in this subdirectory (jax_persistent_cache_enable_xla_caches).
-        tuned = lambda: len(list((cache / 'xla_gpu_per_fusion_autotune_cache_dir').glob('*')))
-        compiled = lambda: sum(1 for path in cache.iterdir() if path.is_file())
+            if mode != 'alone':
+                untuned.setdefault(cell['key'], tuned())
         before = tuned(), compiled()
         (root / f'config-{index}.json').write_text(json.dumps([cell['cell']]))
         environment = {**environment, 'JAX_COMPILATION_CACHE_DIR': str(cache),
@@ -177,7 +185,8 @@ if modal:
         code = stage(root, f'fit-{index}', f'SPS_HOME={REMOTE}/external/fsps MPLBACKEND=Agg .venv-ceridwen-gpu/bin/python '
                      f'scripts/experiment.py remote --config config-{index}.json --output results/{index}', environment)
         return {'exit': code, 'mode': mode, 'started': started, 'finished': time.time(),
-                'tuned': tuned() - before[0], 'compiled': compiled() - before[1]}
+                'tuned': tuned() - before[0], 'compiled': compiled() - before[1],
+                'final': mode != 'shared' or tuned() == untuned[cell['key']]}
 
     def save(key):
         """The key's cache directory to the Volume: a complete file under a temporary name, renamed,
@@ -190,22 +199,25 @@ if modal:
 
     def keep(root, run, index, status):
         """One finished fit to the results Volume, in the layout that fit returns: a complete file
-        under a temporary name, renamed, then committed."""
-        (KEPT / run).mkdir(exist_ok=True)
-        temporary = KEPT / run / f'.{index}.{uuid.uuid4().hex}'
-        (root / f'status-{index}.json').write_text(json.dumps(status))
-        with tarfile.open(temporary, 'w:gz') as archive:
-            archive.add(root / f'status-{index}.json', 'status.json')
-            archive.add(root / f'fit-{index}.log', f'fit-{index}.log')
-            archive.add(root / 'results' / str(index), f'results/{index}')
-        temporary.replace(KEPT / run / f'{index}.tar.gz')
-        kept.commit()
+        under a temporary name, renamed, then committed. One fit at a time: a commit reloads the
+        Volume, and a reload fails while a file on it is open (modal.Volume.reload)."""
+        with keeping:
+            (KEPT / run).mkdir(exist_ok=True)
+            temporary = KEPT / run / f'.{index}.{uuid.uuid4().hex}'
+            (root / f'status-{index}.json').write_text(json.dumps(status))
+            with tarfile.open(temporary, 'w:gz') as archive:
+                archive.add(root / f'status-{index}.json', 'status.json')
+                archive.add(root / f'fit-{index}.log', f'fit-{index}.log')
+                archive.add(root / 'results' / str(index), f'results/{index}')
+            temporary.replace(KEPT / run / f'{index}.tar.gz')
+            kept.commit()
 
     @app.function(image=image, gpu='L4', cpu=CPU_CORES, memory=MEMORY_GIB * 1024, timeout=TIMEOUT_SECONDS,
                   volumes={'/grids': grids.read_only(), str(CACHE): caches, str(KEPT): kept}, scaledown_window=2)
     def fit(archives, cells, run):
         """Unpack pinned source and inputs, bootstrap once, fit the cells; return the results as tar.gz.
-        Each fit that passed also goes to the results Volume under `run` as soon as its record is final."""
+        Each fit that passed also goes to the results Volume under `run` as soon as it ends. A shared fit
+        that is not final is kept as provisional; its alone fit replaces it (fit_cell)."""
         started = time.time()
         root = Path(REMOTE)
         for prefix, data in archives:
@@ -226,25 +238,21 @@ if modal:
         gpu = subprocess.run(['nvidia-smi', '--query-gpu=name', '--format=csv,noheader'],
                              capture_output=True, text=True).stdout.strip()
 
-        def kept_fit(cell, record):
-            if record['exit'] == 0:
-                keep(root, run, cell['index'], {
-                    'exit': status['exit'], 'cells': {cell['index']: record}, 'gpu': gpu,
-                    'call': modal.current_function_call_id(), 'started': record['started'],
-                    'finished': record['finished']})
+        call = modal.current_function_call_id()  # a context variable: None in schedule's worker threads
+        untuned = {}
 
         def fit_one(cell, mode):
             record = fit_cell(root, cell, mode, {
-                **environment, 'CERIDWEN_GRID_PATH': f"{REMOTE}/grid/{cell['grid']}"})
-            if mode != 'shared':  # schedule can fit a shared cell again, alone: final only when it returns
-                kept_fit(cell, record)
+                **environment, 'CERIDWEN_GRID_PATH': f"{REMOTE}/grid/{cell['grid']}"}, untuned)
+            if record['exit'] == 0:
+                keep(root, run, cell['index'], {
+                    'exit': status['exit'], 'cells': {cell['index']: record}, 'gpu': gpu, 'call': call,
+                    'started': record['started'], 'finished': record['finished'],
+                    'provisional': not record['final']})
             return record
 
         if not status['exit']['bootstrap']:
             status['cells'] = schedule(cells, lambda key: (CACHE / f'{key}.tar').exists(), fit_one, save)
-            for cell in cells:
-                if status['cells'][cell['index']]['mode'] == 'shared':
-                    kept_fit(cell, status['cells'][cell['index']])
         (root / 'status.json').write_text(json.dumps({**status, 'gpu': gpu, 'started': started,
                                                       'finished': time.time()}))
         buffer = io.BytesIO()

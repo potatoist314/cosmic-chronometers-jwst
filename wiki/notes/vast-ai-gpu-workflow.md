@@ -69,7 +69,7 @@ Rental selection and teardown use the benchmark lifecycle: cheapest hourly price
 
 Reuse `--output <saved-directory>` to resume the saved experiment without repeating completed arm-target pairs.
 
-On Modal, a launch uses the first CLI profile of `censusgalaxy`, `initalincrease`, `liuhaoo3-14` with a billed cost of $0 for the month. Each container writes each finished fit to the Volume `ceridwen-results` at once. A resumed run takes those fits first, then fits the missing pairs. The manifest records the profile of each fit.
+On Modal, a launch uses the first CLI profile of `censusgalaxy`, `initalincrease`, `liuhaoo3-14` with a billed cost of $0 for the month. Each container writes each finished fit to the Volume `ceridwen-results` at once. A fit that shared the GPU while its cache got a new autotune entry is provisional: the container fits it again alone. A resumed run takes the other fits first, then fits the missing and provisional pairs. The manifest records the profile of each fit.
 
 Downloads are attempted up to three times within the remaining budget. Local HDF5 and notebook validation must pass before completion. Persistent retrieval failures stop automatic refits.
 
