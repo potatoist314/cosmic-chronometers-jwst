@@ -602,3 +602,86 @@ Arm W.
 | M8_161113 | 20261111 | 3.35139 | 3.21317 [2.78543, 3.82858] | -0.13822 | yes | +0.15566 | -0.04434 | -0.10389 | +0.09611 |
 | M8_161113 | 20261112 | 3.35139 | 3.15780 [2.77641, 3.91808] | -0.19359 | yes | +0.18067 | -0.01933 | -0.10930 | +0.09070 |
 | M8_161113 | 20261113 | 3.35139 | 3.46390 [2.97962, 3.99753] | +0.11251 | yes | +0.20171 | +0.00171 | -0.13880 | +0.06120 |
+
+## Experiment 10 results
+
+All 120 new recoveries use the ten Experiment 9 galaxies and three recorded noise seeds. P9 below is the existing Experiment 9 production arm; it was read without modification. Slopes have units Gyr per unit redshift, ages and age differences are Gyr, and abundance differences are dex.
+
+| Arm | Injected C/Fe, N/Fe | Recovery | Rest-frame vacuum window (A) | New fits |
+| --- | --- | --- | --- | ---: |
+| P9 | 0, 0 | Plain grid | Original coverage | 0 |
+| A | 0, 0 | Plain grid | 4155.0–4438.1 | 30 |
+| B1 | +0.15, +0.30 | Plain grid | Original coverage | 30 |
+| B2 | +0.15, +0.30 | C and N free | Original coverage | 30 |
+| B3 | +0.15, +0.30 | Plain grid | 4155.0–4438.1 | 30 |
+
+The exact truth has a finite-sample OLS slope of -5.239110. Each interval below is a 95% galaxy-cluster bootstrap interval, not a posterior interval.
+
+| Arm | Recovered slope [95% bootstrap] | Recovered / true | True slope inside interval | Median alpha/Fe bias |
+| --- | ---: | ---: | --- | ---: |
+| P9 | -5.626 [-6.299, -3.411] | 1.074 | yes | -0.012 |
+| A | -3.412 [-4.311, -0.925] | 0.651 | no | +0.012 |
+| B1 | -5.944 [-6.986, -3.345] | 1.135 | yes | -0.213 |
+| B2 | -5.493 [-6.421, -3.859] | 1.049 | yes | -0.013 |
+| B3 | -4.348 [-6.043, -2.333] | 0.830 | yes | -0.206 |
+
+With zero injected C/N, the common window recovers 0.651 of the true slope. Full-range C/N injection gives a more negative point slope than P9; C/N freedom brings it closer to truth. The interval-membership column gives the bootstrap comparison with the exact true slope for this ten-galaxy mock design.
+
+
+| Arm | Age bias, lower z | Upper z | Originally with Mg b | Originally without Mg b | Age truth inside 16–84, all / with / without |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| P9 | +0.572 | +0.537 | +0.598 | +0.436 | 10/30 / 3/15 / 7/15 |
+| A | +0.539 | +0.695 | +0.548 | +0.695 | 17/30 / 10/15 / 7/15 |
+| B1 | +0.442 | +0.430 | +0.516 | +0.399 | 13/30 / 5/15 / 8/15 |
+| B2 | +0.542 | +0.481 | +0.548 | +0.450 | 11/30 / 5/15 / 6/15 |
+| B3 | +0.941 | +1.173 | +0.941 | +1.173 | 6/30 / 3/15 / 3/15 |
+
+The lower and upper halves each contain five galaxies and fifteen noise realizations. The original five-with/five-without Mg b grouping stays fixed in every arm. The joint fit is age = a + b z + c g, with g = 1 originally with Mg b and g = 0 originally without. Thus c is with minus without at fixed redshift; it is distinct from a difference of the two median biases.
+
+| Arm | a | Joint slope b | Mg b group step c [95% bootstrap] |
+| --- | ---: | ---: | ---: |
+| P9 | 8.790 | -5.516 | +0.031 [-0.262, +0.259] |
+| A | 7.596 | -3.720 | -0.085 [-0.348, +0.174] |
+| B1 | 8.752 | -5.624 | +0.089 [-0.162, +0.284] |
+| B2 | 8.602 | -5.355 | +0.038 [-0.215, +0.254] |
+| B3 | 8.423 | -4.400 | -0.014 [-0.386, +0.275] |
+
+The same joint fit to exact true ages gives b = -5.241253 and c = -0.000593. The small nonzero true c comes from approximating the curved age-redshift relation by a plane, with a common formation history in both groups. Every recovered group-step 95% bootstrap interval includes zero.
+
+| Arm | Original Mg b coverage | Mocks | Median age width | Matching P9 width | Median paired width ratio | Median paired width difference |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| P9 | all | 30 | 0.843 | 0.843 | 1.000 | +0.000 |
+| P9 | with_Mgb | 15 | 0.840 | 0.840 | 1.000 | +0.000 |
+| P9 | without_Mgb | 15 | 0.921 | 0.921 | 1.000 | +0.000 |
+| A | all | 30 | 1.310 | 0.843 | 1.539 | +0.463 |
+| A | with_Mgb | 15 | 1.303 | 0.840 | 1.580 | +0.511 |
+| A | without_Mgb | 15 | 1.317 | 0.921 | 1.514 | +0.403 |
+| B1 | all | 30 | 0.843 | 0.843 | 0.990 | -0.010 |
+| B1 | with_Mgb | 15 | 0.837 | 0.840 | 1.045 | +0.030 |
+| B1 | without_Mgb | 15 | 0.885 | 0.921 | 0.976 | -0.019 |
+| B2 | all | 30 | 0.862 | 0.843 | 0.983 | -0.015 |
+| B2 | with_Mgb | 15 | 0.861 | 0.840 | 0.991 | -0.008 |
+| B2 | without_Mgb | 15 | 0.891 | 0.921 | 0.959 | -0.034 |
+| B3 | all | 30 | 1.310 | 0.843 | 1.519 | +0.464 |
+| B3 | with_Mgb | 15 | 1.316 | 0.840 | 1.642 | +0.525 |
+| B3 | without_Mgb | 15 | 1.258 | 0.921 | 1.414 | +0.416 |
+
+Age width is q84 minus q16. Ratios and differences are computed for each matching galaxy and seed before taking the median; a ratio of median widths is a different statistic.
+
+A changes the recovered slope from P9 by +2.215. At full coverage the C/N injection changes the plain-grid slope by -0.318; freeing C/N then changes it by +0.451. In the common window the injection changes the slope from A to B3 by -0.937.
+
+| Method or check | Recorded choice or result |
+| --- | --- |
+| Truth and noise | The Experiment 9 cosmic-time formation window [2.468870095056303, 3.468870095056303] Gyr, exact per-galaxy ages, grids, native masks, instrument, filters, statistical uncertainties, dust and dispersion are unchanged. Fine truth uses 102 bins, including 100 active 0.01 Gyr bins. Alpha/Fe is +0.2 and Fe/H is -0.2. The inherited truth has constant metallicity; production fitting retains metallicity evolution and 14 SFH ratio parameters. |
+| C/N injection | Only B injects +0.15 and +0.30 through the existing alf responses. At zero C/N, the fine-history mean spectrum and photometry are bitwise identical to Experiment 9 for all ten galaxies. All other original mock fields are bitwise unchanged. Enhanced-spectrum noise uses the same standardized Gaussian draws, photometry first then spectrum, and the same statistical-plus-floor recipe evaluated on the enhanced mean. |
+| Response resolution | Existing catalogue-dispersion response ratios and unchanged isochrones. Minimum total response sigma is 171.151–275.252 km/s across targets; none is below 100 km/s. The existing fixed-catalogue-sigma approximation is inherited. |
+| Inference | Production priors, SFH fast path, 500 live points, 65 inner steps, 100 deletions and logZ tolerance -5. SFH ratios retain StudentT scale 0.3 and df 2. Inference seed 20261110; noise seeds 20261111, 20261112, 20261113. No new sampler, notebook or model changes. |
+| Windows | A and B3 apply the notebook rest_range setting, inclusive 4155.0–4438.1 A on the native rest-frame vacuum grid, retaining all native mask holes. Photometry is unchanged between recovery windows. |
+| Posterior summaries | All weighted raw posterior samples determine age and alpha/Fe quantiles. SFH mass fractions and ages independently match the stored derived draws. Age coverage is the exact true formed-mass-weighted age inside q16–q84. |
+| Slopes and bootstrap | Unweighted OLS on thirty posterior median ages, equivalent to OLS on ten galaxy means. Same 10,000 galaxy-cluster resamples and seed 20261129 as Experiment 9, retaining all three seeds together. All resamples enter slope intervals; 9,979 full-rank resamples enter the group-step intervals, with 21 nonidentified steps excluded. |
+| Real-data reference | The read-only [135-galaxy report](../chronometer-135-2026-11-10/REPORT.md) gives -1.55 and +0.97 for the two 135-galaxy arms. Its -3.77 common-window result is arm (e), 130 valid galaxies, C/N free and alpha/Fe fixed +0.25. The requested mock arms here retain free alpha/Fe; they do not duplicate that extra fixed-alpha setting. |
+| Label repair | Only cfe and nfe entries were added to scripts/plot_prior_kl.py label(). Both original KeyErrors were reproduced. All seven existing test_plot_prior_kl.py tests pass; the real C/N caller also returns both abundance labels. No figures were generated. |
+| Validation | All 120 retrieved raw/derived fits pass the existing validator, input/mask/uncertainty checks and SFH-age checks. Original thirty Experiment 9 mock hashes and new thirty injected mock hashes remain unchanged; all twenty raw response files retain their recorded hashes. Independent slope, bootstrap, group-step, coverage and paired-width checks pass. All twenty owned Modal apps are stopped and no owned containers remain. |
+| GPU provenance | Requested A100-40GB for every fit. Actual completed-fit GPU counts: {"NVIDIA A100 80GB PCIe": 3, "NVIDIA A100-SXM4-40GB": 84, "NVIDIA A100-SXM4-80GB": 33}. All remote bootstrap and fit exits are zero. |
+| Artifacts | [Per-mock results](slope-mismatch/per-mock.csv), [arm summary](slope-mismatch/summary.csv), [paired widths](slope-mismatch/width-comparison.csv), [inputs](slope-mismatch/inputs.json), [validation](slope-mismatch/artifact-checks.json), [independent checks](slope-mismatch/independent-checks.json), [Modal state](slope-mismatch/modal-state.json), [script](slope-mismatch/analyse.py). |
+| Noticed, not done | The pre-existing Ceridwen state-checker worktree error remains. No figures, wiki pages, notebook or model changes. |

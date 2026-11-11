@@ -1,0 +1,13 @@
+{
+  "seed": 20261129,
+  "draws": 10000,
+  "interval": "95% percentile",
+  "clusters": "Ten galaxies, keeping all three noise realizations together.",
+  "estimator": "Unweighted OLS on all 30 posterior median ages, equivalent to OLS on ten galaxy means.",
+  "step": "age = a + b*z + c*g; g=1 originally with Mg b, 0 originally without, fixed across all arms.",
+  "step_bootstrap_valid": 9979,
+  "step_bootstrap_nonidentified": 21,
+  "step_bootstrap_rule": "Only full-rank three-column fits enter step intervals; all 10000 draws enter slope intervals.",
+  "true_group_step_gyr": -0.0005931152901803309,
+  "true_step_note": "The common cosmic-time history has no physical group offset; this tiny fitted linear step comes from curvature of age_universe(z)."
+}

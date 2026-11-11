@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "fits": 120,
+  "reference_rows": 30,
+  "independent_slopes": "SciPy linregress on all thirty ages per arm",
+  "independent_bootstrap": "SciPy QR and SVD least squares, same fixed galaxy clusters",
+  "maximum_coefficient_difference": 7.105427357601002e-15,
+  "maximum_interval_difference": 5.551115123125783e-14,
+  "identified_step_bootstraps": 9979,
+  "posterior_coverage_and_paired_widths_verified": true,
+  "executed_notebooks": 120,
+  "embedded_images": 0,
+  "png_files": 0,
+  "requested_gpu": "A100-40GB",
+  "actual_gpu_counts": {
+    "NVIDIA A100-SXM4-80GB": 33,
+    "NVIDIA A100-SXM4-40GB": 84,
+    "NVIDIA A100 80GB PCIe": 3
+  },
+  "remote_bootstrap_and_fit_exits_all_zero": true,
+  "mock_hashes_unchanged": true,
+  "raw_response_hashes_unchanged": true,
+  "frozen_reference_hashes_unchanged": true,
+  "read_only_real_report_initial_sha256": "fafbd2db07dc8cd09692b659b74d23ee7b0761b032447da7240cd87a3cfcedf9",
+  "read_only_real_report_final_sha256": "fafbd2db07dc8cd09692b659b74d23ee7b0761b032447da7240cd87a3cfcedf9"
+}
