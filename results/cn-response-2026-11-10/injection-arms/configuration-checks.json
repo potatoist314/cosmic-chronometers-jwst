@@ -1,0 +1,43 @@
+[
+  {
+    "arm": "A_full_cn",
+    "cells": 27,
+    "same_seed": true,
+    "same_production_priors": true,
+    "same_target_metadata": true,
+    "only_requested_setting_changes": [
+      "abundance_response"
+    ]
+  },
+  {
+    "arm": "B_cut_plain",
+    "cells": 27,
+    "same_seed": true,
+    "same_production_priors": true,
+    "same_target_metadata": true,
+    "only_requested_setting_changes": [
+      "rest_range"
+    ]
+  },
+  {
+    "arm": "C_cut_cn",
+    "cells": 27,
+    "same_seed": true,
+    "same_production_priors": true,
+    "same_target_metadata": true,
+    "only_requested_setting_changes": [
+      "rest_range",
+      "abundance_response"
+    ]
+  },
+  {
+    "arm": "D_carbon_mask",
+    "cells": 27,
+    "same_seed": true,
+    "same_production_priors": true,
+    "same_target_metadata": true,
+    "only_requested_setting_changes": [
+      "masked_absorption_features"
+    ]
+  }
+]

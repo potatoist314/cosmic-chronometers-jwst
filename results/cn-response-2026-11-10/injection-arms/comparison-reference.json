@@ -1,0 +1,48 @@
+{
+  "plain_full_reference": "../injection/medians.csv",
+  "reference_hashes": {
+    "results/cn-response-2026-11-10/injection/per-mock.csv": "b2f3e779588288ad6c8cc3598796d9ca9b98969d21a82c2c8be5751f498b7e70",
+    "results/cn-response-2026-11-10/injection/medians.csv": "b2765b150fca1d5cf5ad35fa420566da3ab5ca8e0d268b9f050af28d8ec69583",
+    "results/cn-response-2026-11-10/injection/artifact-checks.json": "e2249b46154fff5bf2548af74db54ec4961b00bfb3369a24a79df9eb9666db7c",
+    "results/cn-response-2026-11-10/exp3-per-galaxy.csv": "1379e3707aa574fd7dffc02255e1d545ef9d0426a1c0e54e3b504cae4867aeb5"
+  },
+  "real_no_Mgb_CFE": [
+    {
+      "target": "M4_107370",
+      "cfe_q16": "-0.013298597621861986",
+      "cfe": "0.046819781899981025",
+      "cfe_q84": "0.09861640941077578",
+      "nfe": "-0.2773223203924476"
+    },
+    {
+      "target": "M3_117010",
+      "cfe_q16": "-0.28760469931729554",
+      "cfe": "-0.2610432107626272",
+      "cfe_q84": "-0.22364137786955543",
+      "nfe": "0.2221722603743452"
+    },
+    {
+      "target": "M8_161113",
+      "cfe_q16": "-0.28352072408597856",
+      "cfe": "-0.25068368076134995",
+      "cfe_q84": "-0.20361762799807284",
+      "nfe": "0.7481896330385488"
+    },
+    {
+      "target": "M5_238314",
+      "cfe_q16": "-0.2570481560374962",
+      "cfe": "-0.22954837994055555",
+      "cfe_q84": "-0.20066590584320654",
+      "nfe": "0.2412856182713551"
+    },
+    {
+      "target": "M14_37219",
+      "cfe_q16": "-0.2586048708507291",
+      "cfe": "-0.2069744592580174",
+      "cfe_q84": "-0.1471732076322016",
+      "nfe": "0.12808385387892823"
+    }
+  ],
+  "real_negative_CFE_medians": 4,
+  "real_no_Mgb_galaxies": 5
+}
