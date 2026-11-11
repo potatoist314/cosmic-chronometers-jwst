@@ -1,0 +1,54 @@
+[
+  {
+    "arm": "A_full_cn",
+    "fast_path": true,
+    "CN_free": true,
+    "fitted_pixels": 3607,
+    "band_pixels": {
+      "Mgb": 89,
+      "CN4150": 97,
+      "G4300": 97,
+      "Fe4383": 141,
+      "C4668": 238
+    }
+  },
+  {
+    "arm": "B_cut_plain",
+    "fast_path": true,
+    "CN_free": false,
+    "fitted_pixels": 3050,
+    "band_pixels": {
+      "Mgb": 0,
+      "CN4150": 97,
+      "G4300": 97,
+      "Fe4383": 141,
+      "C4668": 238
+    }
+  },
+  {
+    "arm": "C_cut_cn",
+    "fast_path": true,
+    "CN_free": true,
+    "fitted_pixels": 3050,
+    "band_pixels": {
+      "Mgb": 0,
+      "CN4150": 97,
+      "G4300": 97,
+      "Fe4383": 141,
+      "C4668": 238
+    }
+  },
+  {
+    "arm": "D_carbon_mask",
+    "fast_path": true,
+    "CN_free": false,
+    "fitted_pixels": 3034,
+    "band_pixels": {
+      "Mgb": 89,
+      "CN4150": 0,
+      "G4300": 0,
+      "Fe4383": 0,
+      "C4668": 0
+    }
+  }
+]

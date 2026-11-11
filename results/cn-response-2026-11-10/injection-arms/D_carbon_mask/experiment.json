@@ -1,0 +1,152 @@
+{
+  "targets": [
+    "M1_210210"
+  ],
+  "seed": 20261110,
+  "settings": {
+    "masked_absorption_features": [
+      "CN4150",
+      "G4300",
+      "Fe4383",
+      "C4668"
+    ]
+  },
+  "priors": {},
+  "arms": {
+    "c0p00_n0p00_s20261111": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p00_n0p00_s20261111.npz"
+      }
+    },
+    "c0p00_n0p00_s20261112": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p00_n0p00_s20261112.npz"
+      }
+    },
+    "c0p00_n0p00_s20261113": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p00_n0p00_s20261113.npz"
+      }
+    },
+    "c0p00_n0p30_s20261111": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p00_n0p30_s20261111.npz"
+      }
+    },
+    "c0p00_n0p30_s20261112": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p00_n0p30_s20261112.npz"
+      }
+    },
+    "c0p00_n0p30_s20261113": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p00_n0p30_s20261113.npz"
+      }
+    },
+    "c0p00_n0p60_s20261111": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p00_n0p60_s20261111.npz"
+      }
+    },
+    "c0p00_n0p60_s20261112": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p00_n0p60_s20261112.npz"
+      }
+    },
+    "c0p00_n0p60_s20261113": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p00_n0p60_s20261113.npz"
+      }
+    },
+    "c0p15_n0p00_s20261111": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p15_n0p00_s20261111.npz"
+      }
+    },
+    "c0p15_n0p00_s20261112": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p15_n0p00_s20261112.npz"
+      }
+    },
+    "c0p15_n0p00_s20261113": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p15_n0p00_s20261113.npz"
+      }
+    },
+    "c0p15_n0p30_s20261111": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p15_n0p30_s20261111.npz"
+      }
+    },
+    "c0p15_n0p30_s20261112": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p15_n0p30_s20261112.npz"
+      }
+    },
+    "c0p15_n0p30_s20261113": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p15_n0p30_s20261113.npz"
+      }
+    },
+    "c0p15_n0p60_s20261111": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p15_n0p60_s20261111.npz"
+      }
+    },
+    "c0p15_n0p60_s20261112": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p15_n0p60_s20261112.npz"
+      }
+    },
+    "c0p15_n0p60_s20261113": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p15_n0p60_s20261113.npz"
+      }
+    },
+    "c0p30_n0p00_s20261111": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p30_n0p00_s20261111.npz"
+      }
+    },
+    "c0p30_n0p00_s20261112": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p30_n0p00_s20261112.npz"
+      }
+    },
+    "c0p30_n0p00_s20261113": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p30_n0p00_s20261113.npz"
+      }
+    },
+    "c0p30_n0p30_s20261111": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p30_n0p30_s20261111.npz"
+      }
+    },
+    "c0p30_n0p30_s20261112": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p30_n0p30_s20261112.npz"
+      }
+    },
+    "c0p30_n0p30_s20261113": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p30_n0p30_s20261113.npz"
+      }
+    },
+    "c0p30_n0p60_s20261111": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p30_n0p60_s20261111.npz"
+      }
+    },
+    "c0p30_n0p60_s20261112": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p30_n0p60_s20261112.npz"
+      }
+    },
+    "c0p30_n0p60_s20261113": {
+      "settings": {
+        "mock_data": "data/processed/cn-mocks-2026-11-10/c0p30_n0p60_s20261113.npz"
+      }
+    }
+  }
+}
