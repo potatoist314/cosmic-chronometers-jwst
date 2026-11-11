@@ -1,0 +1,19 @@
+{
+  "draws": 200000,
+  "seed": 20261119,
+  "scale": 0.3,
+  "df": 2.0,
+  "ratios": 14,
+  "common_draws_across_redshifts": true,
+  "cosmology": {
+    "H0": 67.66,
+    "Om0": 0.30966,
+    "Tcmb0": 2.7255,
+    "Neff": 3.046,
+    "m_nu_ev_sum": 0.06,
+    "name": "Planck18"
+  },
+  "stable_transform_reference_max_relative_error": 3.4416913763379853e-15,
+  "estimator": "Unweighted OLS of each galaxy's prior median mass-weighted age against catalog redshift.",
+  "stable_transform": "scipy softmax of cumulative log SFR; common scaling cancels; no truncation of StudentT tails."
+}

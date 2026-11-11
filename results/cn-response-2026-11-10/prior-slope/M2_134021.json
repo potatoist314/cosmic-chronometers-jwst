@@ -1,0 +1,51 @@
+{
+  "targets": [
+    "M2_134021"
+  ],
+  "seed": 20261110,
+  "settings": {
+    "abundance_response": null
+  },
+  "priors": {},
+  "arms": {
+    "P_s20261111": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M2_134021_s20261111.npz"
+      }
+    },
+    "W_s20261111": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M2_134021_s20261111.npz"
+      },
+      "priors": {
+        "logsfr_ratios": "StudentT(mean=0.0, scale=1.0, df=2.0)"
+      }
+    },
+    "P_s20261112": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M2_134021_s20261112.npz"
+      }
+    },
+    "W_s20261112": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M2_134021_s20261112.npz"
+      },
+      "priors": {
+        "logsfr_ratios": "StudentT(mean=0.0, scale=1.0, df=2.0)"
+      }
+    },
+    "P_s20261113": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M2_134021_s20261113.npz"
+      }
+    },
+    "W_s20261113": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M2_134021_s20261113.npz"
+      },
+      "priors": {
+        "logsfr_ratios": "StudentT(mean=0.0, scale=1.0, df=2.0)"
+      }
+    }
+  }
+}
