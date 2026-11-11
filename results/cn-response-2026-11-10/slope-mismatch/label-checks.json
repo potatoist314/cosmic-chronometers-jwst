@@ -1,0 +1,10 @@
+{
+  "before": {
+    "cfe": "KeyError 'cfe'",
+    "nfe": "KeyError 'nfe'"
+  },
+  "existing_tests": "tests/test_plot_prior_kl.py",
+  "result": "7 passed in 32.23s",
+  "figures_created": false,
+  "change": "Only two LABELS entries added; kl_table on stored M1 C/N fit completes."
+}

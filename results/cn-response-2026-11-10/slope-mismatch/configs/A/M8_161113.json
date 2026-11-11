@@ -1,0 +1,31 @@
+{
+  "targets": [
+    "M8_161113"
+  ],
+  "seed": 20261110,
+  "settings": {
+    "abundance_response": null,
+    "rest_range": [
+      4155.0,
+      4438.1
+    ]
+  },
+  "priors": {},
+  "arms": {
+    "A_s20261111": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M8_161113_s20261111.npz"
+      }
+    },
+    "A_s20261112": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M8_161113_s20261112.npz"
+      }
+    },
+    "A_s20261113": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M8_161113_s20261113.npz"
+      }
+    }
+  }
+}
