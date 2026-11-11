@@ -124,3 +124,94 @@ The exact outputs are in `validation/baseline-existing-tests.log` and `validatio
 ## Noticed, not done
 
 Ca offsets; experiments 1, 2 and the full-sample chronometer experiment 5 (owned by the lead/other worker); pre-existing production/wiki test faults. The existing model-page photometry row still says 12 bands. Visual wiki check: Not tested. On the M1, `freespace` opened no new Safari window and macOS denied Apple Events (`-1743`). Live NAS text readback passed. No new figures or wiki result pages.
+
+## Experiment 6 results
+
+C/N freedom removes the large injection-dependent [alpha/Fe] bias with the full spectrum. The red cut leaves a smaller negative [alpha/Fe] bias. Neither arm fully recovers N/Fe. The carbon mask does not remove the [alpha/Fe] or age biases.
+
+- **With Mg b in range (A):** truth lies inside the 16–84% interval in 27/27 fits for [alpha/Fe], mass-weighted age, [Fe/H] and C/Fe. Across the nine injections, median biases are −0.004…−0.001 dex, −0.230…−0.038 Gyr and −0.006…+0.007 dex for [alpha/Fe], age and [Fe/H]. N/Fe is low by 0.053–0.072 dex; its truth is inside 9/27 intervals.
+- **With the red cut (C):** age, [Fe/H] and C/Fe truth remain inside 27/27 intervals; [alpha/Fe] truth is inside 19/27. Median biases are −0.020…−0.017 dex, −0.231…−0.080 Gyr and −0.008…+0.009 dex. The zero-C/N control already has [alpha/Fe] bias −0.017 dex and age bias −0.220 Gyr. N/Fe is low by 0.058–0.077 dex; its truth is inside 9/27 intervals.
+- **Carbon mask (D):** at C/Fe=+0.30, N/Fe=+0.60, [alpha/Fe] bias is −0.329 dex, versus −0.340 dex for the plain full-range arm. Only 2/27 [alpha/Fe] intervals contain truth in either arm. Masked median age biases still span −0.898…+0.553 Gyr; age truth is inside 16/27 intervals, versus 11/27 for the plain full-range arm.
+- **C/Fe sign without Mg b:** all 18 positive-carbon injections have positive fitted C/Fe medians. Five of nine zero-carbon fits have negative medians, but none has its 84th percentile below zero. Only two of the nine injection-cell medians are negative, both about −0.001 dex at zero injected carbon. The real no-Mg-b fits have four negative medians out of five, −0.261…−0.207 dex, all with their 84th percentile below zero. These mocks do not reproduce that negative-C/Fe pattern.
+
+### Inputs, cut and table definitions
+
+The 27 experiment-4 NPZ inputs and hashes are unchanged. Inference seed 20261110, production priors, photometry and the SFH-basis fast path are retained. The cut uses notebook `rest_range = [0.0, 5015.155244540448]` Å: the red limit is the median fitted rest-frame red edge of M4_107370, M3_117010, M8_161113, M5_238314 and M14_37219. The zero lower limit leaves the original blue coverage unchanged. [Input hashes and individual red edges](injection-arms/inputs-and-cut.json).
+
+Actual fitted spectrum pixels are 3607 for A, 3050 for B/C and 3034 for D. A/D retain 89 Mg b pixels; B/C retain zero. B/C retain all four carbon bands. D excludes CN4150, G4300, Fe4383 and C4668 completely. No notebook or model code changes were needed. All 108 saved fits passed artifact and diagnostic checks; executed notebooks contain no image outputs. Own Modal apps have no active containers. [Artifact checks](injection-arms/artifact-checks.json), [configuration checks](injection-arms/configuration-checks.json), [Modal state](injection-arms/modal-state.json).
+
+Each row below is a median over the same three noise seeds, following the experiment-4 table. Truth is [alpha/Fe]=+0.2 dex, mass-weighted age=3.588756 Gyr and [Fe/H]=−0.2 dex. Bias is recovered median minus truth. Ages are in Gyr; abundances are in dex. The 27 fits reuse three common noise realisations across nine injections.
+
+For C/Fe and N/Fe, each displayed q16/q50/q84 is the median of the corresponding three per-seed quantiles; these are not pooled-posterior intervals. “Truth inside” is the number of individual fits whose unrounded 16–84% interval contains the injected value, out of three. [All 108 individual recoveries and intervals](injection-arms/per-mock.csv), [36 injection-cell medians](injection-arms/medians.csv), [five-arm biases](injection-arms/five-arm-biases.csv), [coverage and sign checks](injection-arms/recovery-checks.json).
+
+### A: C and N free, full range
+
+| C/Fe injected | N/Fe injected | afe recovered | age recovered | Fe/H recovered | afe bias | age bias | Fe/H bias | C/Fe q50 [q16, q84]; truth inside | N/Fe q50 [q16, q84]; truth inside |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0.000 | 0.000 | 0.197 | 3.378 | -0.200 | -0.003 | -0.211 | 0.000 | 0.013 [-0.012, 0.035]; 3/3 | -0.069 [-0.116, -0.026]; 1/3 |
+| 0.000 | 0.300 | 0.196 | 3.415 | -0.206 | -0.004 | -0.174 | -0.006 | 0.013 [-0.011, 0.035]; 3/3 | 0.247 [0.208, 0.284]; 1/3 |
+| 0.000 | 0.600 | 0.198 | 3.551 | -0.203 | -0.002 | -0.038 | -0.003 | 0.012 [-0.012, 0.032]; 3/3 | 0.543 [0.503, 0.584]; 1/3 |
+| 0.150 | 0.000 | 0.199 | 3.483 | -0.200 | -0.001 | -0.106 | 0.000 | 0.163 [0.143, 0.185]; 3/3 | -0.071 [-0.117, -0.028]; 1/3 |
+| 0.150 | 0.300 | 0.197 | 3.512 | -0.194 | -0.003 | -0.077 | 0.006 | 0.164 [0.141, 0.186]; 3/3 | 0.244 [0.208, 0.279]; 1/3 |
+| 0.150 | 0.600 | 0.198 | 3.482 | -0.197 | -0.002 | -0.107 | 0.003 | 0.161 [0.138, 0.182]; 3/3 | 0.539 [0.502, 0.580]; 1/3 |
+| 0.300 | 0.000 | 0.199 | 3.359 | -0.193 | -0.001 | -0.230 | 0.007 | 0.312 [0.290, 0.335]; 3/3 | -0.072 [-0.114, -0.030]; 1/3 |
+| 0.300 | 0.300 | 0.199 | 3.455 | -0.197 | -0.001 | -0.134 | 0.003 | 0.309 [0.286, 0.332]; 3/3 | 0.241 [0.206, 0.276]; 1/3 |
+| 0.300 | 0.600 | 0.197 | 3.461 | -0.194 | -0.003 | -0.128 | 0.006 | 0.314 [0.290, 0.337]; 3/3 | 0.534 [0.493, 0.576]; 1/3 |
+
+### B: plain grid, red cut
+
+| C/Fe injected | N/Fe injected | afe recovered | age recovered | Fe/H recovered | afe bias | age bias | Fe/H bias |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0.000 | 0.000 | 0.188 | 3.557 | -0.219 | -0.012 | -0.032 | -0.019 |
+| 0.000 | 0.300 | 0.123 | 2.781 | -0.103 | -0.077 | -0.808 | 0.097 |
+| 0.000 | 0.600 | 0.063 | 2.350 | -0.002 | -0.137 | -1.239 | 0.198 |
+| 0.150 | 0.000 | 0.061 | 4.149 | -0.191 | -0.139 | 0.560 | 0.009 |
+| 0.150 | 0.300 | -0.019 | 3.279 | -0.096 | -0.219 | -0.310 | 0.104 |
+| 0.150 | 0.600 | -0.086 | 2.554 | -0.009 | -0.286 | -1.035 | 0.191 |
+| 0.300 | 0.000 | -0.095 | 4.373 | -0.163 | -0.295 | 0.784 | 0.037 |
+| 0.300 | 0.300 | -0.160 | 3.560 | -0.094 | -0.360 | -0.029 | 0.106 |
+| 0.300 | 0.600 | -0.193 | 2.973 | -0.021 | -0.393 | -0.615 | 0.179 |
+
+### C: C and N free, red cut
+
+| C/Fe injected | N/Fe injected | afe recovered | age recovered | Fe/H recovered | afe bias | age bias | Fe/H bias | C/Fe q50 [q16, q84]; truth inside | N/Fe q50 [q16, q84]; truth inside |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0.000 | 0.000 | 0.183 | 3.368 | -0.205 | -0.017 | -0.220 | -0.005 | 0.002 [-0.027, 0.029]; 3/3 | -0.058 [-0.108, -0.011]; 1/3 |
+| 0.000 | 0.300 | 0.183 | 3.509 | -0.206 | -0.017 | -0.080 | -0.006 | -0.001 [-0.031, 0.026]; 3/3 | 0.242 [0.204, 0.279]; 1/3 |
+| 0.000 | 0.600 | 0.180 | 3.500 | -0.208 | -0.020 | -0.089 | -0.008 | -0.001 [-0.028, 0.024]; 3/3 | 0.534 [0.492, 0.577]; 1/3 |
+| 0.150 | 0.000 | 0.183 | 3.434 | -0.208 | -0.017 | -0.155 | -0.008 | 0.155 [0.126, 0.181]; 3/3 | -0.070 [-0.123, -0.020]; 1/3 |
+| 0.150 | 0.300 | 0.183 | 3.460 | -0.199 | -0.017 | -0.128 | 0.001 | 0.157 [0.131, 0.183]; 3/3 | 0.242 [0.201, 0.280]; 1/3 |
+| 0.150 | 0.600 | 0.182 | 3.377 | -0.197 | -0.018 | -0.212 | 0.003 | 0.151 [0.125, 0.178]; 3/3 | 0.536 [0.496, 0.576]; 1/3 |
+| 0.300 | 0.000 | 0.183 | 3.416 | -0.195 | -0.017 | -0.173 | 0.005 | 0.302 [0.274, 0.332]; 3/3 | -0.077 [-0.127, -0.027]; 1/3 |
+| 0.300 | 0.300 | 0.182 | 3.357 | -0.193 | -0.018 | -0.231 | 0.007 | 0.306 [0.277, 0.336]; 3/3 | 0.238 [0.197, 0.281]; 1/3 |
+| 0.300 | 0.600 | 0.181 | 3.418 | -0.191 | -0.019 | -0.171 | 0.009 | 0.305 [0.277, 0.335]; 3/3 | 0.541 [0.500, 0.588]; 1/3 |
+
+### D: plain grid, carbon mask
+
+| C/Fe injected | N/Fe injected | afe recovered | age recovered | Fe/H recovered | afe bias | age bias | Fe/H bias |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0.000 | 0.000 | 0.198 | 3.586 | -0.243 | -0.002 | -0.003 | -0.043 |
+| 0.000 | 0.300 | 0.133 | 3.291 | -0.136 | -0.067 | -0.298 | 0.064 |
+| 0.000 | 0.600 | 0.073 | 2.691 | -0.015 | -0.127 | -0.898 | 0.185 |
+| 0.150 | 0.000 | 0.097 | 3.943 | -0.211 | -0.103 | 0.354 | -0.011 |
+| 0.150 | 0.300 | 0.035 | 3.663 | -0.114 | -0.165 | 0.075 | 0.086 |
+| 0.150 | 0.600 | -0.032 | 3.434 | -0.012 | -0.232 | -0.154 | 0.188 |
+| 0.300 | 0.000 | -0.025 | 4.141 | -0.173 | -0.225 | 0.553 | 0.027 |
+| 0.300 | 0.300 | -0.080 | 3.983 | -0.086 | -0.280 | 0.394 | 0.114 |
+| 0.300 | 0.600 | -0.129 | 3.750 | 0.008 | -0.329 | 0.161 | 0.208 |
+
+### Five-arm bias comparison
+
+Each cell is the median [alpha/Fe] bias in dex / age bias in Gyr, against truth.
+
+| C/Fe injected | N/Fe injected | Plain full (Exp. 4) | A: free full | B: plain cut | C: free cut | D: carbon mask |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.000 | 0.000 | -0.001 / -0.010 | -0.003 / -0.211 | -0.012 / -0.032 | -0.017 / -0.220 | -0.002 / -0.003 |
+| 0.000 | 0.300 | -0.060 / -0.863 | -0.004 / -0.174 | -0.077 / -0.808 | -0.017 / -0.080 | -0.067 / -0.298 |
+| 0.000 | 0.600 | -0.113 / -1.320 | -0.002 / -0.038 | -0.137 / -1.239 | -0.020 / -0.089 | -0.127 / -0.898 |
+| 0.150 | 0.000 | -0.114 / 0.601 | -0.001 / -0.106 | -0.139 / 0.560 | -0.017 / -0.155 | -0.103 / 0.354 |
+| 0.150 | 0.300 | -0.170 / -0.123 | -0.003 / -0.077 | -0.219 / -0.310 | -0.017 / -0.128 | -0.165 / 0.075 |
+| 0.150 | 0.600 | -0.233 / -0.987 | -0.002 / -0.107 | -0.286 / -1.035 | -0.018 / -0.212 | -0.232 / -0.154 |
+| 0.300 | 0.000 | -0.250 / 0.909 | -0.001 / -0.230 | -0.295 / 0.784 | -0.017 / -0.173 | -0.225 / 0.553 |
+| 0.300 | 0.300 | -0.296 / 0.319 | -0.001 / -0.134 | -0.360 / -0.029 | -0.018 / -0.231 | -0.280 / 0.394 |
+| 0.300 | 0.600 | -0.340 / -0.249 | -0.003 / -0.128 | -0.393 / -0.615 | -0.019 / -0.171 | -0.329 / 0.161 |

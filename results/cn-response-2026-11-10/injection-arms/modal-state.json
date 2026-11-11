@@ -1,0 +1,40 @@
+{
+  "checked_utc": "2026-11-11T02:06:11.718411+00:00",
+  "owned_apps": {
+    "A_full_cn": "ap-hP9Ybjuy7swKfUc9LzwPO0",
+    "B_cut_plain": "ap-2Am7o8TUKDuJWEIxFK4q6j",
+    "C_cut_cn": "ap-0T3T5TJEYFOQDPo076hFa3",
+    "D_carbon_mask": "ap-gb1opf2mR2lMBferMSwL0W"
+  },
+  "owned_active_containers": [],
+  "other_container_count": 1,
+  "driver_exit_codes": {
+    "A_full_cn": 0,
+    "B_cut_plain": 0,
+    "C_cut_cn": 0,
+    "D_carbon_mask": 0
+  },
+  "billing_summary": {
+    "metered_cost": "86.18977117",
+    "billed_cost": "0E-8",
+    "adjustments": {
+      "plan_cost": "0E-8",
+      "free_storage": "-0.09825118",
+      "reservation_adjustment": "-0E-8",
+      "credits": "-85.95000000",
+      "network_egress_allowance": "-0.14152000"
+    },
+    "metered_cost_breakdown": {
+      "llm_tokens": "0E-8",
+      "ephemeral_apps": "85.94720079",
+      "network_egress": "0.14152000",
+      "volumes": "0.09825118"
+    }
+  },
+  "manifest_estimates_usd": {
+    "A_full_cn": 4.46205162,
+    "B_cut_plain": 2.8888242,
+    "C_cut_cn": 4.25068148,
+    "D_carbon_mask": 2.88005572
+  }
+}

@@ -1,0 +1,3141 @@
+{
+  "checked_utc": "2026-11-11T02:06:02.492596+00:00",
+  "fits": 108,
+  "unchanged_input_hashes": 27,
+  "reference_hashes_unchanged": true,
+  "images": 0,
+  "records": [
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p00_n0p00_s20261111/M1_210210",
+      "result_sha256": "ee52dc2c7caeb796819c0271c5ae68b0ad02103e6f8f4a64dc277cd02eaef78f",
+      "derived_sha256": "ddd899a526269f88875d13c3d10f2c9506a1cd383740607069a037059e3574af",
+      "executed_notebook_sha256": "57f9e70b6d202686872d9d1cedb12437e8a83d88ac264b535f16d7a5507d2348",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3578.147434824761,
+        "joint_ndof": 3635,
+        "log_evidence": 235970.14732227617,
+        "log_evidence_err": 0.2740863730333067,
+        "passed": true,
+        "photometry_chi2": 24.549709101114022,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4743.1046967314,
+        "spectrum_chi2": 3553.5977257236473,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p00_n0p00_s20261112/M1_210210",
+      "result_sha256": "10e48236d8087208bc005400a1e426abd4073d68404f67d8116a5caad83d608c",
+      "derived_sha256": "b52b8227d5dabb87df9d91c43d51e42e356f51729595d89d554fb413cdb5b50a",
+      "executed_notebook_sha256": "0a5e451ab822da2d8c5c1913346e85a7dcdb3a9de2d2b55e2bdcc32feba351cb",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3615.308691352103,
+        "joint_ndof": 3635,
+        "log_evidence": 235982.45577528674,
+        "log_evidence_err": 0.2717236831964254,
+        "passed": true,
+        "photometry_chi2": 26.739513404444335,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4436.523420188676,
+        "spectrum_chi2": 3588.5691779476583,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p00_n0p00_s20261113/M1_210210",
+      "result_sha256": "efe8bf91e6d6fbf10d9f1ab2a62aee0030843578ccdb38c1e69e76b8eae7512e",
+      "derived_sha256": "ddf56bd4809b2a1001c9ffa63d9d99aa6c9bf4b0985a7d712918d13ee7e03563",
+      "executed_notebook_sha256": "82f4a2fcf5d2d63dcbb124cd97f182224101446a4172a28c1d6b1a9ac99889d2",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3578.7846220280067,
+        "joint_ndof": 3635,
+        "log_evidence": 235982.2231719136,
+        "log_evidence_err": 0.2733953708270422,
+        "passed": true,
+        "photometry_chi2": 22.077266226072716,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4010.963632386229,
+        "spectrum_chi2": 3556.7073558019338,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p00_n0p30_s20261111/M1_210210",
+      "result_sha256": "34be61dd2ae042d8104565195f52d99dd7936fad541b8d9809506e33ec148b61",
+      "derived_sha256": "1e5ef7b8fa753b06fe34b6063fe863e553ba224437dc6811d09025cfbea7031b",
+      "executed_notebook_sha256": "07a30a7fb5bcf4e3922c17668c0c57e1801d7ff3d98e8ea75056d4a42bb2fe7a",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3577.482138415242,
+        "joint_ndof": 3635,
+        "log_evidence": 235972.78105768713,
+        "log_evidence_err": 0.2734429218901023,
+        "passed": true,
+        "photometry_chi2": 23.983919752135044,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4584.177482363295,
+        "spectrum_chi2": 3553.498218663107,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p00_n0p30_s20261112/M1_210210",
+      "result_sha256": "fdd0d5f466e5b1fa05a8e3b3eb104eab0b34715369f08868eb5c9a9832457276",
+      "derived_sha256": "672c28b72b044d959b8c8d447fe556244632b8054eba5ac6dab61889e64745ba",
+      "executed_notebook_sha256": "721928a972ddaace061d9d45b3f4e3dbaf722a59500ae9f84c8a7855b1743c8c",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3607.3873074031108,
+        "joint_ndof": 3635,
+        "log_evidence": 235984.20516273234,
+        "log_evidence_err": 0.2725416971750561,
+        "passed": true,
+        "photometry_chi2": 26.12982540859712,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4390.643922178765,
+        "spectrum_chi2": 3581.2574819945135,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p00_n0p30_s20261113/M1_210210",
+      "result_sha256": "e7b3de9859fcd61333a449f9251f69b87e496639ba13859a97c739c4b60c42b7",
+      "derived_sha256": "14d1dbca53d8d6ac59ced81638170b60d48f5ecd3b4f24f85008f7c48db65842",
+      "executed_notebook_sha256": "23bdc8c7629b583048fee273771ff22fce0e08f2b29e25b584bc66c0feba8bf3",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3570.4199746751597,
+        "joint_ndof": 3635,
+        "log_evidence": 235984.32042260372,
+        "log_evidence_err": 0.26895466426688747,
+        "passed": true,
+        "photometry_chi2": 21.972195691847936,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4178.259210730402,
+        "spectrum_chi2": 3548.4477789833118,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p00_n0p60_s20261111/M1_210210",
+      "result_sha256": "560211e624d906b4dad2b3e4494a4979fb39865a0ffb9ce5e8d5b2ac0759a016",
+      "derived_sha256": "bd278d0ee2e9888e160a5741065f36e0951264b6653b46fe91c5f1b6bdd32b32",
+      "executed_notebook_sha256": "4b6f6b039bf37e0f2b2eeb59b287c9f5fee39522335691d4dc48dd595b47cf9b",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3580.3195331304337,
+        "joint_ndof": 3635,
+        "log_evidence": 235974.56510303638,
+        "log_evidence_err": 0.2747259638734855,
+        "passed": true,
+        "photometry_chi2": 23.743951547644897,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4622.362352562656,
+        "spectrum_chi2": 3556.575581582789,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p00_n0p60_s20261112/M1_210210",
+      "result_sha256": "bc7d321e5fe665fcf00dc537190c2459ecf2992aced4e79374d77146ada6f1ae",
+      "derived_sha256": "e4b6c1ba35d76d04ceae363f72c150355d1be13153bd4acea541816a3369f453",
+      "executed_notebook_sha256": "d36d09123c6068fdf4851692e63087d005eb3f3709a0a72f706865ba43c67abb",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3615.0854565982463,
+        "joint_ndof": 3635,
+        "log_evidence": 235985.59010994,
+        "log_evidence_err": 0.27553307933178556,
+        "passed": true,
+        "photometry_chi2": 26.40563982856765,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4351.182663292159,
+        "spectrum_chi2": 3588.679816769679,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p00_n0p60_s20261113/M1_210210",
+      "result_sha256": "2fc99bfa923fd0dfc1de830eb190895182f1b9146fe99bc789399e460f34e259",
+      "derived_sha256": "80cee3c0705295014ce4bd2a5581718f6398f3c09da3341df893b7eccab0b5b2",
+      "executed_notebook_sha256": "b2ed119d146c3e958eeb54320e9e1dbe76ca63ab6846668cb8016c1fcad28505",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3562.782805839006,
+        "joint_ndof": 3635,
+        "log_evidence": 235986.06229611352,
+        "log_evidence_err": 0.2718935331881561,
+        "passed": true,
+        "photometry_chi2": 21.48709057567508,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4030.3262295601394,
+        "spectrum_chi2": 3541.2957152633307,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p15_n0p00_s20261111/M1_210210",
+      "result_sha256": "84595211dd954c5b16d0bcb23fe03ca1340565b852ea5f361b705d58a4262ec9",
+      "derived_sha256": "bbf99054d47aa5e36692f0b7c8f4a5f34a7256bb2895bb16c31e2fb975ae9600",
+      "executed_notebook_sha256": "3d7c29e664f8752ea5d8a91bdc73465b23751a4c77cb42c2a2d16afb267b4071",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3573.906011616697,
+        "joint_ndof": 3635,
+        "log_evidence": 235986.17359005322,
+        "log_evidence_err": 0.2756543810309774,
+        "passed": true,
+        "photometry_chi2": 24.669346619192506,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4529.1425076270525,
+        "spectrum_chi2": 3549.2366649975047,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p15_n0p00_s20261112/M1_210210",
+      "result_sha256": "42cde6b70d4761785deb740bb4936acee32ffdff143ef60fc7f18239882049a7",
+      "derived_sha256": "66d1dfd13ec01235902f414bfc64d3cfd6b1ac53b2b7f7a3de7f2cd3c9c913fc",
+      "executed_notebook_sha256": "405436d8e197dc474808626cb3e71c9ddef3ad82629bc08d54d97f456bc27b30",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3621.393021938418,
+        "joint_ndof": 3635,
+        "log_evidence": 235997.9696629883,
+        "log_evidence_err": 0.27368844860120134,
+        "passed": true,
+        "photometry_chi2": 26.994572904097957,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4354.596434362586,
+        "spectrum_chi2": 3594.39844903432,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p15_n0p00_s20261113/M1_210210",
+      "result_sha256": "104a69555d4d5d9e774e696b17fdf9454b8af96339d990781d758d0948ca617e",
+      "derived_sha256": "7facd613811d41bced39d138d32597adb3bd424172224a3cb32ec5dc40fc28e2",
+      "executed_notebook_sha256": "5bcdb28ba77ac66d58dff972af49b6b62a0b4be0744d17226845ee0a61d21f7d",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3558.508822908634,
+        "joint_ndof": 3635,
+        "log_evidence": 235997.28536472385,
+        "log_evidence_err": 0.2737111262793832,
+        "passed": true,
+        "photometry_chi2": 21.331360796946555,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4212.385891009552,
+        "spectrum_chi2": 3537.1774621116874,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p15_n0p30_s20261111/M1_210210",
+      "result_sha256": "91f4015d30211ed6cc46a7f86d92ca1a15c832bb3ea70ba6d3876e781b08a01b",
+      "derived_sha256": "ed77e93a24e103590561b573bc73bcb5d1f862edca0d760655290140e3138332",
+      "executed_notebook_sha256": "1af536c6d77ca6d58c96d04f1fee3afff5968322a88f8b72bb68568312b01674",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3592.2527422520393,
+        "joint_ndof": 3635,
+        "log_evidence": 235988.09149791778,
+        "log_evidence_err": 0.2729236104355311,
+        "passed": true,
+        "photometry_chi2": 24.669436120803425,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4736.08984769724,
+        "spectrum_chi2": 3567.583306131236,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p15_n0p30_s20261112/M1_210210",
+      "result_sha256": "31ba0440eeedc27ec7957800be2f2acd3625ae0de3d0a2c037dfdb4d0ccbc3f6",
+      "derived_sha256": "7215e5ef889e63ed9e3563d7c494783fe385a027f2aef0d81e73a6dbdb7471bf",
+      "executed_notebook_sha256": "6a6cb45520ca1d5eb26a21afb546dde028bffc984ad8009770a0c5e60c369de3",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3621.5770296821615,
+        "joint_ndof": 3635,
+        "log_evidence": 235999.50506247702,
+        "log_evidence_err": 0.27312899662528306,
+        "passed": true,
+        "photometry_chi2": 27.488744788444734,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4483.0565079591415,
+        "spectrum_chi2": 3594.0882848937167,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p15_n0p30_s20261113/M1_210210",
+      "result_sha256": "914b24a28eeb39d84e57473225aaefb1334db5bf7664169ea0a5362266aa3736",
+      "derived_sha256": "b11061f23cb9383b48cbe2c87e8720d9e78c03a142a2479574da40f8bd4c3568",
+      "executed_notebook_sha256": "f6cc22c2547bce347ef967c85716e0258b257db788be954caccdf04dd142a1d7",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3559.484348203832,
+        "joint_ndof": 3635,
+        "log_evidence": 235999.77768478935,
+        "log_evidence_err": 0.26940709806084084,
+        "passed": true,
+        "photometry_chi2": 21.56933780118937,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4143.329629376946,
+        "spectrum_chi2": 3537.9150104026426,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p15_n0p60_s20261111/M1_210210",
+      "result_sha256": "a64a50b0f6c61fc210d5f3a14f586e094fc76a822911b57de53fbb07e65ad3f5",
+      "derived_sha256": "df37405ab889fd322ac1ac1460abe5d6c6c17ea1d5d4fadccda2a272f2c49a61",
+      "executed_notebook_sha256": "27d328ea1668425979fb3371ae42101a4adc2faecf5ceee34784137f07adceda",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3578.610134088605,
+        "joint_ndof": 3635,
+        "log_evidence": 235989.53314565585,
+        "log_evidence_err": 0.27442950359662205,
+        "passed": true,
+        "photometry_chi2": 23.901812501117,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4737.9248003236025,
+        "spectrum_chi2": 3554.7083215874877,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p15_n0p60_s20261112/M1_210210",
+      "result_sha256": "89c723a57181f1f80973278a9e4e53a7048da6e388dccd6e51b527f946d0bfdb",
+      "derived_sha256": "be566f121f618c27b92bf4b55056c1814894b2625b7cfe0272417600b8ad392c",
+      "executed_notebook_sha256": "5fc8cb1c60c9712c35e2113976e9dd2e44df029fac1e457403377dbbf088cee3",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3614.905153298189,
+        "joint_ndof": 3635,
+        "log_evidence": 236001.68828945217,
+        "log_evidence_err": 0.27372523011386024,
+        "passed": true,
+        "photometry_chi2": 27.523013978115827,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4387.355300598255,
+        "spectrum_chi2": 3587.3821393200733,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p15_n0p60_s20261113/M1_210210",
+      "result_sha256": "30153e56f819064841542fff1a0dbabdc1d88e50fca3ab420ac2abcdb19d9aa4",
+      "derived_sha256": "41060ca647009dd14c66179eff046a37bb0d68f347c6a4a632269dee57d23a75",
+      "executed_notebook_sha256": "9164141287234995aed2ad85f116f256be94b8358d645088d6499e618e131434",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3570.5826357465667,
+        "joint_ndof": 3635,
+        "log_evidence": 236000.92823826158,
+        "log_evidence_err": 0.27316904769273376,
+        "passed": true,
+        "photometry_chi2": 21.55906426204799,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4069.6756325825845,
+        "spectrum_chi2": 3549.0235714845185,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p30_n0p00_s20261111/M1_210210",
+      "result_sha256": "7e345689f71a900eaa7585047d33aea50ee03a4b86e451ed0f52a300b6f78579",
+      "derived_sha256": "24331d0d0b76a08fc6f4f1abead9970104c73c60f4f7f99bef82b8039bd9c503",
+      "executed_notebook_sha256": "e5bccecbaf1ab193ffb4525a08f50f48acd22eb7f4eaf3f288701df4b9e5cd1c",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3587.420654846947,
+        "joint_ndof": 3635,
+        "log_evidence": 236001.9054724059,
+        "log_evidence_err": 0.2753816080270821,
+        "passed": true,
+        "photometry_chi2": 25.275409169967222,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4688.845081698884,
+        "spectrum_chi2": 3562.14524567698,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p30_n0p00_s20261112/M1_210210",
+      "result_sha256": "fbcc3fb2b3f7d9de1db36c5f466a0cd1d5e999451dd75ee6db7761974ae98118",
+      "derived_sha256": "161bfba076f021c54cc6504e38ced39e99f72c69ee9fb79dcab7519ee1396000",
+      "executed_notebook_sha256": "ad3f56cb3fb3609e376667a09e5d0ceadc860dd4b47edb856b9d412fc32315f2",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3618.8123988303846,
+        "joint_ndof": 3635,
+        "log_evidence": 236013.45057611325,
+        "log_evidence_err": 0.2747504549523734,
+        "passed": true,
+        "photometry_chi2": 27.352905303626983,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4532.639202051491,
+        "spectrum_chi2": 3591.459493526758,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p30_n0p00_s20261113/M1_210210",
+      "result_sha256": "ad1a6e4c6c29ca6660c1e68df862fdaf9f26719afee35bd9d7eb7c59b5a0696f",
+      "derived_sha256": "67d067fa62274a42f6b986c6394bb4865c5b08be3133db589051f48b4c334e64",
+      "executed_notebook_sha256": "a1b8534c8ebcb5197121b6afbff8d07ba44c1b7b1c599a20ab2a0367d7513e93",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3569.1215496272753,
+        "joint_ndof": 3635,
+        "log_evidence": 236014.0053735303,
+        "log_evidence_err": 0.2703622352669151,
+        "passed": true,
+        "photometry_chi2": 21.872936818008213,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4064.990706962038,
+        "spectrum_chi2": 3547.248612809267,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p30_n0p30_s20261111/M1_210210",
+      "result_sha256": "dbcf94c19187345b4ffe4fcd123b928229f7615c1b34e43140affd8b183669de",
+      "derived_sha256": "d922b7dcf895c4d007891ff44bea0b74f6510ed7bb4699db74dbaa140ac821f3",
+      "executed_notebook_sha256": "e7ac75feef8beb6bb6b2f2de5de3e7d67f917dcbba45c440075a9ba55df0dd6a",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3582.764215598681,
+        "joint_ndof": 3635,
+        "log_evidence": 236003.1343910282,
+        "log_evidence_err": 0.2761313482856444,
+        "passed": true,
+        "photometry_chi2": 25.326298693100966,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4473.644759836113,
+        "spectrum_chi2": 3557.43791690558,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p30_n0p30_s20261112/M1_210210",
+      "result_sha256": "9168222d52fe38af6ce56c5d527ded989bd24201eea26a273476ad71779d9f3d",
+      "derived_sha256": "52a6ffc777cfae46e48db2df5bb796e75dc74f85376e60449e1a09969aef31f3",
+      "executed_notebook_sha256": "13a631dcaa326ca3f4ba3571d854c4f72d0ae5831f1513307a447badb311c2db",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3624.5498068737616,
+        "joint_ndof": 3635,
+        "log_evidence": 236014.933238634,
+        "log_evidence_err": 0.27476740133342525,
+        "passed": true,
+        "photometry_chi2": 27.76162289801923,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4453.964280728003,
+        "spectrum_chi2": 3596.7881839757424,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p30_n0p30_s20261113/M1_210210",
+      "result_sha256": "56f6ec98fce50f090adfe5e1e37ffbe1b89464836648868bc85cb1aa993b0d09",
+      "derived_sha256": "9b1a5db356b178ef02ed9c1cace263bc6ce4c1fabdcf64b324b6a76d4a801923",
+      "executed_notebook_sha256": "83fb51e338110bcf1646d72166bb2387cd0dd1368f789dc011c3a0548073d589",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3563.6048826703104,
+        "joint_ndof": 3635,
+        "log_evidence": 236014.46897924502,
+        "log_evidence_err": 0.2757131011034738,
+        "passed": true,
+        "photometry_chi2": 21.29276944741225,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4104.571144079139,
+        "spectrum_chi2": 3542.312113222898,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p30_n0p60_s20261111/M1_210210",
+      "result_sha256": "12aff8d032d5fd024a74aded47646fc32c35fb0239a13924b90c8c77f3389f85",
+      "derived_sha256": "d0a436ee49252a92faa8c5bdca4ffb2173f845b40ba129d9dde61fadf1aa8d4c",
+      "executed_notebook_sha256": "55f7021a30bab678a416d4760252afb74ab3aa6059721c71786b604eeb83cf50",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3583.683853381037,
+        "joint_ndof": 3635,
+        "log_evidence": 236004.69112060248,
+        "log_evidence_err": 0.2752723755999241,
+        "passed": true,
+        "photometry_chi2": 24.890164914378918,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4729.807331986202,
+        "spectrum_chi2": 3558.793688466658,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p30_n0p60_s20261112/M1_210210",
+      "result_sha256": "3418eead0a014ca0e65bdec92de949682fc7d8bebdf8c7194b463c4ddd8d6d02",
+      "derived_sha256": "8c24cfb36ff924608734ac2b9082307c06767d10f5c4d9f3b349de77704feba9",
+      "executed_notebook_sha256": "963c8bf0519478704979d23da7387e86270a73d5d7fee46e643045ac121102c4",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3612.8361911066954,
+        "joint_ndof": 3635,
+        "log_evidence": 236016.6198523162,
+        "log_evidence_err": 0.27476270584537066,
+        "passed": true,
+        "photometry_chi2": 27.770104924165594,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4447.725507609992,
+        "spectrum_chi2": 3585.06608618253,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "A_full_cn",
+      "cell": "c0p30_n0p60_s20261113/M1_210210",
+      "result_sha256": "9e0e98028a42d7c9c9e585d3cddf9ad6e2c31c52d74a2ad9f1d78f70309be5c6",
+      "derived_sha256": "b4dcca70dcef3d7e2bffcf3bccea3bc537f59e75516d8931e089680be0591118",
+      "executed_notebook_sha256": "b7666915730ecbdcb87b1d12e0a4890d0eb0d0d676b74b44be819ae16eedd633",
+      "image_outputs": 0,
+      "fitted_pixels": 3607,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3572.881300366509,
+        "joint_ndof": 3635,
+        "log_evidence": 236016.76408709778,
+        "log_evidence_err": 0.27243442473574975,
+        "passed": true,
+        "photometry_chi2": 21.555331612032916,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4059.631038132102,
+        "spectrum_chi2": 3551.325968754476,
+        "spectrum_ndof": 3607,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p00_n0p00_s20261111/M1_210210",
+      "result_sha256": "6d86c83c53832fd6d644713e8441aff099cb9c9a3b721edfb20c0b3c830e9ce7",
+      "derived_sha256": "6ac26c52999ebdb2cc2cb937e926fe70f74366e00e03190395a469347f79ac4c",
+      "executed_notebook_sha256": "2f0bcd4c28c354e87e59203d88b3b26f856ce292ff397d8829c6825f410a030e",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3036.4488542954696,
+        "joint_ndof": 3078,
+        "log_evidence": 199811.9365291418,
+        "log_evidence_err": 0.23398374518262924,
+        "passed": true,
+        "photometry_chi2": 24.28488192113761,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4135.605161551008,
+        "spectrum_chi2": 3012.163972374332,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p00_n0p00_s20261112/M1_210210",
+      "result_sha256": "f8a40a26b7e8a7be1b30db48d01ab94f77a2c961a6b3b492230c5a3c8da65f3f",
+      "derived_sha256": "adb9197a1c5464ec1df5a4a8a91b0685a6ae6169189e15872c343c87ab240705",
+      "executed_notebook_sha256": "87e2226be43111de448833ebe1fe113fc99eba5785dcce16268b0dd3a1b7fd63",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3069.6656828847313,
+        "joint_ndof": 3078,
+        "log_evidence": 199830.14009807137,
+        "log_evidence_err": 0.23667586855576028,
+        "passed": true,
+        "photometry_chi2": 26.73206333388666,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4260.621794306681,
+        "spectrum_chi2": 3042.9336195508445,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p00_n0p00_s20261113/M1_210210",
+      "result_sha256": "8a7b3b245505ff8aaed1e7eac3b1161f1e4e5b251500a11295be069070a19288",
+      "derived_sha256": "4e311dcc377068ed6182fe8122841751addbad83e76f3b7f1bfd5ddd2dd6ed91",
+      "executed_notebook_sha256": "28a4630bbf3dd72057ad5d230a1710198de171a6cbb0aeb28e4696fad4586ace",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3022.9381957972173,
+        "joint_ndof": 3078,
+        "log_evidence": 199819.13002246319,
+        "log_evidence_err": 0.22710574411480294,
+        "passed": true,
+        "photometry_chi2": 21.74261100592718,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3682.6840967797634,
+        "spectrum_chi2": 3001.19558479129,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p00_n0p30_s20261111/M1_210210",
+      "result_sha256": "a3dbb427e9ea44cbfb6b2bfeea9ec2bece1217c8f351764c4bcf9b0dbbcae66f",
+      "derived_sha256": "c64bd607d63af90799a2310129dedfd93fbfe3069a38a2dc0dba4733a3832811",
+      "executed_notebook_sha256": "d655f242ed49d8b6d48b75ebf0a448d1f6c6622f0b1d6b6dcd207b97bd10b5f1",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3047.461315379295,
+        "joint_ndof": 3078,
+        "log_evidence": 199787.8603264134,
+        "log_evidence_err": 0.24699430544103282,
+        "passed": true,
+        "photometry_chi2": 25.650616365546195,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4006.818750973559,
+        "spectrum_chi2": 3021.8106990137485,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p00_n0p30_s20261112/M1_210210",
+      "result_sha256": "3052ff33af71191f0fd3ef3a4829a2fbd9f47b12a1e9f2a3bb92e5977e59b710",
+      "derived_sha256": "ea48e92dc256733c871ec697755296b4cd72b6e1c2b03da293d90cbed2d152ce",
+      "executed_notebook_sha256": "c27b1e84cdbdf32ee772162887c850db2a24f57eb9978684263bc32298b39397",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3078.871932827362,
+        "joint_ndof": 3078,
+        "log_evidence": 199817.00631139838,
+        "log_evidence_err": 0.24476884477812014,
+        "passed": true,
+        "photometry_chi2": 27.66771556986595,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4287.800102927362,
+        "spectrum_chi2": 3051.204217257496,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p00_n0p30_s20261113/M1_210210",
+      "result_sha256": "d8018e5d1c0064d9ae211ba03608d5a33dd0bb078aec68fef4ab2778a388b1da",
+      "derived_sha256": "d2f5626979543a574c58cc399390db72f9ad18848d214f739541e2d1de964942",
+      "executed_notebook_sha256": "4f377d6f8acf2993832a5a2444ffe0ce03f141187a04fc40f4a63d078277d705",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3028.018446097805,
+        "joint_ndof": 3078,
+        "log_evidence": 199810.93315634353,
+        "log_evidence_err": 0.2372908589954141,
+        "passed": true,
+        "photometry_chi2": 22.04064262219964,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3944.638346503794,
+        "spectrum_chi2": 3005.977803475605,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p00_n0p60_s20261111/M1_210210",
+      "result_sha256": "214218e0cfbe1d76ecf89d6203fcbd2ad0f2b1539dd98acecb9d5cd745579874",
+      "derived_sha256": "4ff2a8206b7b12d8c421d5b303a143f926a66202e44ae46d09ca2d69f7fb3310",
+      "executed_notebook_sha256": "866e4a1e3afbd116d15481b06da43dbfa027f413663da3e34a07212a097fff9d",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3067.8004341426736,
+        "joint_ndof": 3078,
+        "log_evidence": 199714.8959622455,
+        "log_evidence_err": 0.2689147519684998,
+        "passed": true,
+        "photometry_chi2": 25.348958274460905,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4170.455341611417,
+        "spectrum_chi2": 3042.4514758682126,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p00_n0p60_s20261112/M1_210210",
+      "result_sha256": "3e9a0fc76ee0d90ea5c60727d7db727a7b804e12223f82f3cfc7987f97135d20",
+      "derived_sha256": "11093b6d15c398e93d7ca466c8cdb1f761e2d57fd50d32d1fe54416db98ed133",
+      "executed_notebook_sha256": "42845be5f5a1f807f9f706e4f7cbd4f19b680b25d0ca3faf1bef9560008c1851",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3099.958140662911,
+        "joint_ndof": 3078,
+        "log_evidence": 199755.23443350632,
+        "log_evidence_err": 0.2639300498437298,
+        "passed": true,
+        "photometry_chi2": 27.840048681060484,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4315.808263305779,
+        "spectrum_chi2": 3072.1180919818503,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p00_n0p60_s20261113/M1_210210",
+      "result_sha256": "eeb110034d7e53739271aeaaadc04e1f72977104231847bbbcd8e90fc1f7a742",
+      "derived_sha256": "b91c41179cac7b63d648c53f395188eeb7ac3257c88eb90b80df0950c1f0f38a",
+      "executed_notebook_sha256": "b3b9c0f8ae7f29402af71cbd1c2fc8e7be1ad0a287189008a7688fd655f8acfc",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3051.915936604961,
+        "joint_ndof": 3078,
+        "log_evidence": 199751.37893413467,
+        "log_evidence_err": 0.2585784025415301,
+        "passed": true,
+        "photometry_chi2": 23.151738930374343,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4221.036292133482,
+        "spectrum_chi2": 3028.7641976745867,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p15_n0p00_s20261111/M1_210210",
+      "result_sha256": "aa0a355073e89fd8afaa224080d1cd938f44d93af0dfce80a8bedda5f5a0fcdf",
+      "derived_sha256": "eb2b13959a55596732e21c21978630cfb623162f2831cbda03b780bfccfde6c1",
+      "executed_notebook_sha256": "8e3b2761fb7b7c1555055b22cd6705537ab6c473e09b2ba37013bf21fe14af3f",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3039.7170181495635,
+        "joint_ndof": 3078,
+        "log_evidence": 199811.16762643674,
+        "log_evidence_err": 0.23423287510495036,
+        "passed": true,
+        "photometry_chi2": 23.62567995832577,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3992.1120839075065,
+        "spectrum_chi2": 3016.091338191238,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p15_n0p00_s20261112/M1_210210",
+      "result_sha256": "b4491735d652391ce1787a3187c954df2d84d71b03dc09ec0ab8b479cfad2a18",
+      "derived_sha256": "0fbf4b4cd2311a1ee6fcda2c6af37fa81401ff173e1bdee2ce46414b30442239",
+      "executed_notebook_sha256": "b96cb038a4998c34cd2ff0d9e235db5de4dc3c9364641ac1a1205a792eed734c",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3072.429768569502,
+        "joint_ndof": 3078,
+        "log_evidence": 199828.9939770533,
+        "log_evidence_err": 0.23508353372528415,
+        "passed": true,
+        "photometry_chi2": 24.890219969045422,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4063.5789994655665,
+        "spectrum_chi2": 3047.5395486004563,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p15_n0p00_s20261113/M1_210210",
+      "result_sha256": "d1414a782908b2dfb463ffd283a90513e0026c965b08759163fc0a5b8154d1dc",
+      "derived_sha256": "b507b2ec9e6e419ad6db42e890102603ee9a65de92c84de9934de8d65b0e0dea",
+      "executed_notebook_sha256": "b02b1efeda60b461ef541d79da911688b60bd45d1b3c426653382b163c17c292",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3027.803695595081,
+        "joint_ndof": 3078,
+        "log_evidence": 199815.5019395274,
+        "log_evidence_err": 0.22897831255903883,
+        "passed": true,
+        "photometry_chi2": 20.533843823926958,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3764.7822244546364,
+        "spectrum_chi2": 3007.269851771154,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p15_n0p30_s20261111/M1_210210",
+      "result_sha256": "9178569322dbf7bb1d2d051a44ef86ae94a26d271ac2dd5d4fdeee3c07fd235e",
+      "derived_sha256": "73b44d600eeb8268b2ab3741b06ccec9195bb5ac510bb72265c741b5313c9a2b",
+      "executed_notebook_sha256": "35590eaa86876937b62d87d8ff5cb09d63166ed586527d570e3c617dd9702b3a",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3049.861657721723,
+        "joint_ndof": 3078,
+        "log_evidence": 199785.14045286868,
+        "log_evidence_err": 0.24210195289908285,
+        "passed": true,
+        "photometry_chi2": 25.09357239159848,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3852.451207803451,
+        "spectrum_chi2": 3024.7680853301244,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p15_n0p30_s20261112/M1_210210",
+      "result_sha256": "967c2b4323bd220503c90be6b1d0a76271582d73d509f3cef48b7562446aed83",
+      "derived_sha256": "ab5d069c48b0dcbf6a5abb80473b2712613e577a62668e6147b74356115bdff4",
+      "executed_notebook_sha256": "c1c47609915c8ffea4f6d9b97450d2b99ead26e0b9c30e8b1b763a1ac924682c",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3084.4532890706037,
+        "joint_ndof": 3078,
+        "log_evidence": 199811.99413340108,
+        "log_evidence_err": 0.2386181818373462,
+        "passed": true,
+        "photometry_chi2": 26.11182267379541,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3964.9710284143616,
+        "spectrum_chi2": 3058.3414663968083,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p15_n0p30_s20261113/M1_210210",
+      "result_sha256": "1a672aa64c8e3bd0f411a7ba2407535059566532f7c9b1219e2c42efe988b8e8",
+      "derived_sha256": "e15668fc232196e935ba7043a7107f397d9a6ed9296052a446e3b30bb12c0d7a",
+      "executed_notebook_sha256": "b74631e8d3855178eaca29af8ad0289a8740ea9a1640abec43ced716c4dec57b",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3052.5882804107828,
+        "joint_ndof": 3078,
+        "log_evidence": 199803.29125773552,
+        "log_evidence_err": 0.23300179787156539,
+        "passed": true,
+        "photometry_chi2": 20.853781848749822,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3783.077900417512,
+        "spectrum_chi2": 3031.734498562033,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p15_n0p60_s20261111/M1_210210",
+      "result_sha256": "28cf1ce230099a77b41cebe3f66d63e6091ee1ef57535082b8845a84c5bb019a",
+      "derived_sha256": "96e3972e72ccb1b1a15480b8f4fe05f99b0c59d89136bac919f0e0edef9e3872",
+      "executed_notebook_sha256": "d64a2fe751835608de26de7ce1456ae8d9860bc222c542d3c360a61f0da0741d",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3086.278754359655,
+        "joint_ndof": 3078,
+        "log_evidence": 199716.48372234372,
+        "log_evidence_err": 0.2586722687855845,
+        "passed": true,
+        "photometry_chi2": 27.033629546551946,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4276.150209489577,
+        "spectrum_chi2": 3059.2451248131033,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p15_n0p60_s20261112/M1_210210",
+      "result_sha256": "816b46b1c51c46f40f0ff438d95e2e2c50ed7985675dc25fb384a6332992a44e",
+      "derived_sha256": "9852e439278d6c581e9c50b588da6303b33301b8a32a7d9eab5f8ddb0f1580a9",
+      "executed_notebook_sha256": "3c4d589a0381b1b5b04d299aa7a5bde62f0b7a98e096f71545777ef033a357db",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3094.2720813520946,
+        "joint_ndof": 3078,
+        "log_evidence": 199753.03052871878,
+        "log_evidence_err": 0.2485233925622903,
+        "passed": true,
+        "photometry_chi2": 28.283798573270168,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4214.767848590097,
+        "spectrum_chi2": 3065.988282778824,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p15_n0p60_s20261113/M1_210210",
+      "result_sha256": "2192ab30c760116b485fa340a828e253ccf0d23462070fe39aebeb546eae52c1",
+      "derived_sha256": "1acf3be65069d2860a213b2002612ceda4fafd79f0eaaf6b80e8b5fea0c800ad",
+      "executed_notebook_sha256": "c474e3883b1feb9a522ad95edb675e0b7a8e714a96ab5cf77453e470857a7842",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3053.2271352169437,
+        "joint_ndof": 3078,
+        "log_evidence": 199748.5413283017,
+        "log_evidence_err": 0.2485071547710825,
+        "passed": true,
+        "photometry_chi2": 21.741392410291077,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3859.9100803403667,
+        "spectrum_chi2": 3031.4857428066525,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p30_n0p00_s20261111/M1_210210",
+      "result_sha256": "46800f1f807f243272bf58e3b24b60dec3c1ec008aabe4a684c32c098ae5a76a",
+      "derived_sha256": "d6d9fba7c1202ace741fec64ffb86de264e837703c4480270c0ad939818bf0c4",
+      "executed_notebook_sha256": "31d8296151054f86237d4c9ddb6ca03a03def4d82902b92fdf4176087a7d415a",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3055.5807352625216,
+        "joint_ndof": 3078,
+        "log_evidence": 199785.37234760096,
+        "log_evidence_err": 0.2330146266018142,
+        "passed": true,
+        "photometry_chi2": 22.012149046307965,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4068.793944996997,
+        "spectrum_chi2": 3033.5685862162136,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p30_n0p00_s20261112/M1_210210",
+      "result_sha256": "52c1ee5683fbd87ed21fc2d8530f0a203266fd7efd7a730d6d497d394c748319",
+      "derived_sha256": "ff943fbb69c04d17c63b08f38ac14ae06e25c1d6fe32d6041cb650fbdd3be7b6",
+      "executed_notebook_sha256": "8b7b89d8653b37aeb5ab05a90d53218964f9c4d375e3f82307c6fbe1d4c501a5",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3088.2699525759976,
+        "joint_ndof": 3078,
+        "log_evidence": 199800.55183074603,
+        "log_evidence_err": 0.23733120151129397,
+        "passed": true,
+        "photometry_chi2": 24.560266788043503,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4060.512876503624,
+        "spectrum_chi2": 3063.709685787954,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p30_n0p00_s20261113/M1_210210",
+      "result_sha256": "881c7f2de329cedefd1156cfd2dc4088ea08339a73a7bddbf72eaf3540216d21",
+      "derived_sha256": "0c678cce16c33873cf99bdc0f2cebae3044d7a413e0a00302eacf17a25604474",
+      "executed_notebook_sha256": "45d8b14290822caed6f5a5530b10e4a5c51d0c2acbbb19e8a0a4ee8b8aa3b930",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3058.627732180595,
+        "joint_ndof": 3078,
+        "log_evidence": 199785.51898116586,
+        "log_evidence_err": 0.22879195299387087,
+        "passed": true,
+        "photometry_chi2": 19.722028536824265,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3791.088817967049,
+        "spectrum_chi2": 3038.9057036437707,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p30_n0p30_s20261111/M1_210210",
+      "result_sha256": "d4d32510c2bca083ed9eb46966e7abe42daba974da9c4395f7a0e178a8e0e470",
+      "derived_sha256": "9bdc1eb6e32f406d634b99374f8c6f7b90205cc819ad0866750c34783c65fe78",
+      "executed_notebook_sha256": "c281d8dd39e5b7b9cf47582f675e92363e4cd52640f87b56c5714e65fffca7e6",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3079.5633155604337,
+        "joint_ndof": 3078,
+        "log_evidence": 199764.14046439723,
+        "log_evidence_err": 0.2357998114106024,
+        "passed": true,
+        "photometry_chi2": 25.44348149029768,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3691.1082341323213,
+        "spectrum_chi2": 3054.119834070136,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p30_n0p30_s20261112/M1_210210",
+      "result_sha256": "1eefcef7e136c573074433dae6870bfc940ed019e97e34dba421f7585c3ec25f",
+      "derived_sha256": "b17b708bb727fc45a57cf2543a02342509e0c0904446a1aa9c007dffcf5aaff9",
+      "executed_notebook_sha256": "4a2cbe8786ae61a1568787836ad9e6b34c92d0386cbd5976f716a24d6ff4a591",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3097.1938796887935,
+        "joint_ndof": 3078,
+        "log_evidence": 199785.92680508675,
+        "log_evidence_err": 0.23608605669638164,
+        "passed": true,
+        "photometry_chi2": 25.398471842463486,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4023.1308398791757,
+        "spectrum_chi2": 3071.79540784633,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p30_n0p30_s20261113/M1_210210",
+      "result_sha256": "af2a864a92dbcd6258a683ec8123eba1954ee06862db99a6e6eb2bcf3896a7b7",
+      "derived_sha256": "bb1ea189ad7fdaff7da23224f2e4857782b1d2607438beb80e73240eac62cc13",
+      "executed_notebook_sha256": "882b4a4b29b3f76ef626ad0fbe48fe90f5aa108e0b129983d328c2ae10cae05b",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3053.2859317698894,
+        "joint_ndof": 3078,
+        "log_evidence": 199776.02041423536,
+        "log_evidence_err": 0.23324595781064683,
+        "passed": true,
+        "photometry_chi2": 19.818459426470124,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3753.222036961187,
+        "spectrum_chi2": 3033.467472343419,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p30_n0p60_s20261111/M1_210210",
+      "result_sha256": "67e89489b358d834a5388302a038665e790b4b6a14b8e2634e30a77008060a91",
+      "derived_sha256": "eff3a737c9bf313c20068ac3e6ed1f4d3431f6e150a4ff5849a5efec52d1d685",
+      "executed_notebook_sha256": "bf81da7fcaea8d71fa49ba8476440e09d62950cbaa4c67fb37506ab5cfe30836",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3097.749627518893,
+        "joint_ndof": 3078,
+        "log_evidence": 199697.79179922375,
+        "log_evidence_err": 0.26087080108781396,
+        "passed": true,
+        "photometry_chi2": 27.04644132967715,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4526.36562842974,
+        "spectrum_chi2": 3070.7031861892156,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p30_n0p60_s20261112/M1_210210",
+      "result_sha256": "ace09c4db28f8f0bf0097e97b6f4e2ca6b2dbb0ebde3df1602a6191cd94626d8",
+      "derived_sha256": "b97fbe6fd92fd34179556c573f2d62da4c03a6b6a955d36e3db3952cee7cedaf",
+      "executed_notebook_sha256": "f998f01579f0a7caddce226781ef873c2051fcd8e3c30708bdb7f6b388079323",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3125.3269192764983,
+        "joint_ndof": 3078,
+        "log_evidence": 199727.52056362465,
+        "log_evidence_err": 0.26079514182336777,
+        "passed": true,
+        "photometry_chi2": 26.023756182265274,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4307.091169453132,
+        "spectrum_chi2": 3099.3031630942332,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "B_cut_plain",
+      "cell": "c0p30_n0p60_s20261113/M1_210210",
+      "result_sha256": "42f119a77be6c057f09fc52de3496d6bd95dd1be4f90388b3338879a06ef7d34",
+      "derived_sha256": "50f2e2b59364c7f3c0815432de9279f18b59ce10006f4f7728fff9ac28571668",
+      "executed_notebook_sha256": "549703db35f59020d00ba3939bb00d48e6e2717fb22003937d717db40f8cc2ae",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3074.023171464758,
+        "joint_ndof": 3078,
+        "log_evidence": 199721.92388454598,
+        "log_evidence_err": 0.25725734339362066,
+        "passed": true,
+        "photometry_chi2": 20.23126405827786,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4132.985132448452,
+        "spectrum_chi2": 3053.7919074064803,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p00_n0p00_s20261111/M1_210210",
+      "result_sha256": "66fbb5bda5b220fbbf93d45e08d793b10851c6256c2472c587082b9d18dcfe98",
+      "derived_sha256": "b734856430876360e507292e1b516d5d666d0610ce449a43693e351e36849ffd",
+      "executed_notebook_sha256": "c4d2556b7d8094d10d50f97700d8c242f81c5f8214ff24d3218f3c493a6c8859",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3028.341053079617,
+        "joint_ndof": 3078,
+        "log_evidence": 199807.23493987438,
+        "log_evidence_err": 0.2693062373892015,
+        "passed": true,
+        "photometry_chi2": 24.497197043379625,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4184.030405917552,
+        "spectrum_chi2": 3003.8438560362374,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p00_n0p00_s20261112/M1_210210",
+      "result_sha256": "a71c811ea6a7b9dd29dec7c3113d52b99b889c091585e8f4aeee0b8a1e77f926",
+      "derived_sha256": "120fdd15d61d48aa8c51aba3d82f230c9a84691d1e1bb284153d86c94e266be6",
+      "executed_notebook_sha256": "7ea9cb3e97fceec43313d1f7c1de901d70110a1aa0bf9ac05d23e9a9969b8e32",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3050.005385566385,
+        "joint_ndof": 3078,
+        "log_evidence": 199826.35326631446,
+        "log_evidence_err": 0.26757085014796966,
+        "passed": true,
+        "photometry_chi2": 26.805545358811756,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4567.669388802986,
+        "spectrum_chi2": 3023.1998402075733,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p00_n0p00_s20261113/M1_210210",
+      "result_sha256": "a56056bdd3285d2ded0a102d4b0b13a9230a3650c228c400a6d20091e57815fd",
+      "derived_sha256": "c2563f9f9e115e770ff854f39f3c47bc62b8d590209775cd2ac00f3f585d1096",
+      "executed_notebook_sha256": "a699b224d1fb1a1e823f50163aea6151a164edd42dbfeaf50a956af8179c4535",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3024.865935306632,
+        "joint_ndof": 3078,
+        "log_evidence": 199816.90550766131,
+        "log_evidence_err": 0.25995009888797216,
+        "passed": true,
+        "photometry_chi2": 22.305054255012873,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4083.4829235606157,
+        "spectrum_chi2": 3002.560881051619,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p00_n0p30_s20261111/M1_210210",
+      "result_sha256": "330fe1f4afa441b55cbd5f9b842d0235badcf29fc60830b17f7cee36d863ed9e",
+      "derived_sha256": "452fafa2b920eca017a9ecae147ca4ecd07febe7c23cdd627f570435949638cc",
+      "executed_notebook_sha256": "66ce0b3653b467ab00c9774a649018d507526901223cc3f57dbe4b1a0e4767bf",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3032.3381241521824,
+        "joint_ndof": 3078,
+        "log_evidence": 199811.34581018472,
+        "log_evidence_err": 0.2668607676856021,
+        "passed": true,
+        "photometry_chi2": 25.09532253631675,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4411.820518520949,
+        "spectrum_chi2": 3007.2428016158656,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p00_n0p30_s20261112/M1_210210",
+      "result_sha256": "60f97226ab7cf0eada690f70b7d53ed9e15c6aada630443218c870cb5b95ca95",
+      "derived_sha256": "d5a95c3cc3c779459b82bbd920a4bcb739e476eb1c96d6564011ca2458d2d865",
+      "executed_notebook_sha256": "34fcf2ac9bf1c9bff94701934baab1ebe422660f60e4648dec8122ca32ff3fc3",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3058.2087791155277,
+        "joint_ndof": 3078,
+        "log_evidence": 199829.41062053875,
+        "log_evidence_err": 0.2717028279959542,
+        "passed": true,
+        "photometry_chi2": 26.0496927100789,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4437.599802337553,
+        "spectrum_chi2": 3032.1590864054488,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p00_n0p30_s20261113/M1_210210",
+      "result_sha256": "5925c6f04125e2e2a32569e3da4724143ae5fe8373a00f4c85c9372b339d4f56",
+      "derived_sha256": "f6ad483b937c515f4e2c39d7e8dbe68699485030e071cd2abb4e4bf909c04d13",
+      "executed_notebook_sha256": "5f30d398a7a589bd8a0645e3f1a7190cb7fe29667b1131cea395103398a9db3e",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3023.1360443065164,
+        "joint_ndof": 3078,
+        "log_evidence": 199819.2186088841,
+        "log_evidence_err": 0.2677901915435353,
+        "passed": true,
+        "photometry_chi2": 21.98013880286048,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4123.43012133585,
+        "spectrum_chi2": 3001.155905503656,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p00_n0p60_s20261111/M1_210210",
+      "result_sha256": "b7da579a3efc5158dad30134bc68dba029c88afc17cd50dcc6f07d3bdfe0933d",
+      "derived_sha256": "2116bca3c4689a058656928ffbbc4359018646e819bf02e3e4b3e759a89ab580",
+      "executed_notebook_sha256": "d5aced533fff3f7903cabf2ea795fbbdd7bc40ef1ed1a3ba6061d29bf10a1d91",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3037.936932702436,
+        "joint_ndof": 3078,
+        "log_evidence": 199814.53690917089,
+        "log_evidence_err": 0.2729863560230769,
+        "passed": true,
+        "photometry_chi2": 24.727883723799966,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4090.0233004818874,
+        "spectrum_chi2": 3013.209048978636,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p00_n0p60_s20261112/M1_210210",
+      "result_sha256": "562f6b20ca0f2b41c7d17da0ef8d8e306b0aa92ca72af9bb58f849d17ec732b1",
+      "derived_sha256": "4841163224c4c112ee1fb2124b8bced6a02488b1df0a7c44bda1d63afe92faa0",
+      "executed_notebook_sha256": "56ab15c2dcdf02d67827aa021d6307314ff0546c25c14ae5fe06b3b90c0727f5",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3063.629039066899,
+        "joint_ndof": 3078,
+        "log_evidence": 199833.1099038514,
+        "log_evidence_err": 0.27357070033882547,
+        "passed": true,
+        "photometry_chi2": 25.70948605032718,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4231.3158600941415,
+        "spectrum_chi2": 3037.919553016572,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p00_n0p60_s20261113/M1_210210",
+      "result_sha256": "5b55444399817d45288495944f6865390f49dd7fca9dd3fb83b6371e9ecacca8",
+      "derived_sha256": "ae393475045c9c3ba18d68fdaaf4a9cd30820212ad229961c68b79f36a6982aa",
+      "executed_notebook_sha256": "28cd1836385345b12bd3acb24e8ee0ccbcce2a4b4e55873567da94e959ac6cbd",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3023.966044319993,
+        "joint_ndof": 3078,
+        "log_evidence": 199823.350284493,
+        "log_evidence_err": 0.26362243069220137,
+        "passed": true,
+        "photometry_chi2": 21.317335780644132,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4135.432402132387,
+        "spectrum_chi2": 3002.648708539349,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p15_n0p00_s20261111/M1_210210",
+      "result_sha256": "d9aadee6e4c873d7a6167d0aa2869149cd0c27bcee9d8fe25c705bb71273d7e3",
+      "derived_sha256": "17f7d4f23ff1ed9144b7543bac55a7e9123513185c65114ee1034987d96c53c5",
+      "executed_notebook_sha256": "45798267009051fb01fcf0d3e221db44dbfa449459b16f5813baaa526e1f63da",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3034.5920892138674,
+        "joint_ndof": 3078,
+        "log_evidence": 199822.31300979917,
+        "log_evidence_err": 0.2717046516480667,
+        "passed": true,
+        "photometry_chi2": 24.6574565216879,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4364.90416415303,
+        "spectrum_chi2": 3009.9346326921795,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p15_n0p00_s20261112/M1_210210",
+      "result_sha256": "e5f34d2003fb63274669e252e5c5465fc76923c589391c9214047fc4f973fb05",
+      "derived_sha256": "d66c93a5375cf823d6464d11dd0ba5c088a4386359bacc69dec141219b9d55b0",
+      "executed_notebook_sha256": "eea63715f0a624a3cd55b5334720c10bd86878153d6d4f325a4b7ddf0b164731",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3065.437869069715,
+        "joint_ndof": 3078,
+        "log_evidence": 199841.0427109451,
+        "log_evidence_err": 0.2725153020931715,
+        "passed": true,
+        "photometry_chi2": 28.130926125184352,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4255.734021573911,
+        "spectrum_chi2": 3037.3069429445304,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p15_n0p00_s20261113/M1_210210",
+      "result_sha256": "c7f7ff7d0f22ab4b88baf349a79374fd90a79425ac7cbfc5e8379c6625a7a04b",
+      "derived_sha256": "2e9398e0ada91550ca5d313d7a04a87ebf545870e714d54863c5c4d606413e73",
+      "executed_notebook_sha256": "b17c6bae86558d85d5c6c4a046d57f244532890ad47e2eaebb873285a82b1684",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3023.986011231834,
+        "joint_ndof": 3078,
+        "log_evidence": 199831.56146052768,
+        "log_evidence_err": 0.262010511407686,
+        "passed": true,
+        "photometry_chi2": 21.572060662237703,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3894.61041803419,
+        "spectrum_chi2": 3002.413950569596,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p15_n0p30_s20261111/M1_210210",
+      "result_sha256": "49926e6ee3fbf6d9cf17e211f83a5efafef4bd0bc74f56b34aa6607513ba9d66",
+      "derived_sha256": "197df1a95c4ca3fc54f9249ca0cb9ad1bcd2046ab3a87a55fd401d6cda0cd5eb",
+      "executed_notebook_sha256": "35d3ad22d40f3a429629072b1a7bd125c91df373b1d268dbd7007b8f19808f72",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3028.1188836657643,
+        "joint_ndof": 3078,
+        "log_evidence": 199825.59879557372,
+        "log_evidence_err": 0.2697600183513298,
+        "passed": true,
+        "photometry_chi2": 24.95382852304651,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4378.03385020804,
+        "spectrum_chi2": 3003.165055142718,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p15_n0p30_s20261112/M1_210210",
+      "result_sha256": "29f7d0e8e4e456f8b6dcb29297933f93aa763d60d4efb6b731b0b54a07f71da0",
+      "derived_sha256": "b29b2452e915e1fad5e5113cd3429130ce0445a2fd6ff9493d9540639bae5ff1",
+      "executed_notebook_sha256": "20aaec3eeda4ba6d7c7b7781b4786f19bb04ae05643a090868c8f53eb2dfe90e",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3058.2071312799662,
+        "joint_ndof": 3078,
+        "log_evidence": 199844.33297634684,
+        "log_evidence_err": 0.2729724867388247,
+        "passed": true,
+        "photometry_chi2": 26.47669029609567,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4294.455731827706,
+        "spectrum_chi2": 3031.7304409838707,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p15_n0p30_s20261113/M1_210210",
+      "result_sha256": "55cb6c81f078e4a316856f2d22f080ac2d302adaf82a3b62bbfe2796560ee91e",
+      "derived_sha256": "157a2c1f09f392052b257ffe2b9863794b2fec79cc8f8e6d9c75021151183400",
+      "executed_notebook_sha256": "36e22c77f74cb1e83a05b026ccb321df4a1b27302474aa5a26f5c9ccd99f06d8",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3023.6067454556883,
+        "joint_ndof": 3078,
+        "log_evidence": 199833.62914505214,
+        "log_evidence_err": 0.2698605105509267,
+        "passed": true,
+        "photometry_chi2": 21.449637393835193,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4103.376528931146,
+        "spectrum_chi2": 3002.1571080618533,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p15_n0p60_s20261111/M1_210210",
+      "result_sha256": "e0a5e6b6c4adfccabf42ed3b96de2121d16d152032b4d19c713059b3478fffd7",
+      "derived_sha256": "1e1014c293ee9e03becd3dcb972ba97665e309e53686041d116a0b9b3b87aede",
+      "executed_notebook_sha256": "187cad8c4f42aed63a560a0bcc020e73a2ec3cc4f544a268202dfabf244ee503",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3037.35922878608,
+        "joint_ndof": 3078,
+        "log_evidence": 199829.38346194912,
+        "log_evidence_err": 0.27101669897550207,
+        "passed": true,
+        "photometry_chi2": 24.445059481815413,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4326.8779560997555,
+        "spectrum_chi2": 3012.9141693042648,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p15_n0p60_s20261112/M1_210210",
+      "result_sha256": "4d5b2a82d8d5e2452a579f0a1568a3c14b7ae816fe0e8d1478fd4721795a00e8",
+      "derived_sha256": "34fe58adcbfcf572949aa1ea9c8f6a18fcd085ddbd76f1717cdc7afd99638442",
+      "executed_notebook_sha256": "d8e845a237d01c3ed01a1fbe607e149eacb4b64119a74215c4ae393d5e8aef2a",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3062.7068313081813,
+        "joint_ndof": 3078,
+        "log_evidence": 199847.99927045373,
+        "log_evidence_err": 0.2703953336859274,
+        "passed": true,
+        "photometry_chi2": 26.52954042724888,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4372.142296524426,
+        "spectrum_chi2": 3036.1772908809326,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p15_n0p60_s20261113/M1_210210",
+      "result_sha256": "24982e8673e374fefde11977c1b5081ba711497ae0caf39fc6c0117fca8324fe",
+      "derived_sha256": "25ed98c57e47ba14bfa4c42446b7bda41f46299f1cfaf0cc9213535167ecfcc7",
+      "executed_notebook_sha256": "2b2efc98750dde524ee36d26a319c4cb6a81be37b15eec6ee8757f1feec88c15",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3011.542013674021,
+        "joint_ndof": 3078,
+        "log_evidence": 199837.52798013613,
+        "log_evidence_err": 0.26856200721808077,
+        "passed": true,
+        "photometry_chi2": 21.360897282450903,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3972.5003973001612,
+        "spectrum_chi2": 2990.18111639157,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p30_n0p00_s20261111/M1_210210",
+      "result_sha256": "c5aed8d977ceb63644363a84c970d00519d5064709938f9ea576d7ac4d7415a9",
+      "derived_sha256": "89a928a9bba1c2a3faa299612f162f78ba7f8638fab8c8752c86482f1f85b8ec",
+      "executed_notebook_sha256": "087c284dc3f02b6c4972e828464e6a9d53fe9c0e3d960aaf5929dbd08f0db727",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3030.591139442044,
+        "joint_ndof": 3078,
+        "log_evidence": 199837.6583212583,
+        "log_evidence_err": 0.2726490594110272,
+        "passed": true,
+        "photometry_chi2": 25.206354619101184,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4318.117241439088,
+        "spectrum_chi2": 3005.384784822943,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p30_n0p00_s20261112/M1_210210",
+      "result_sha256": "5add01a50de0ae820e2691a94d36c8ebc03a8a4630a55bb1cd8f782101579aac",
+      "derived_sha256": "1186ffcb57ebecf2f905623f3b7d42abf396283b607d764c70f6518357cdee0b",
+      "executed_notebook_sha256": "c0e4f9432cb0c8e3e49b3e19ee0f517600e272f10b01e2c2d79e6b42c5a1579f",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3062.7893695037187,
+        "joint_ndof": 3078,
+        "log_evidence": 199855.71128904488,
+        "log_evidence_err": 0.27215518059497124,
+        "passed": true,
+        "photometry_chi2": 27.721413255359188,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4506.970480544479,
+        "spectrum_chi2": 3035.0679562483597,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p30_n0p00_s20261113/M1_210210",
+      "result_sha256": "8b97e4a1093d6d479224508b16b1043e67909fdbc0f86949e2f5e7b41b5421a1",
+      "derived_sha256": "0cb46cdd32f3e143dacd7c0b1a74523864afe4ed226246c94ea358858b3a9e86",
+      "executed_notebook_sha256": "f6fe48ea882624ed0a8f893d035b4ef430a29c1c8cb7d9cf91b336f707642b94",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3024.3918091574055,
+        "joint_ndof": 3078,
+        "log_evidence": 199846.2012226904,
+        "log_evidence_err": 0.26244160907329883,
+        "passed": true,
+        "photometry_chi2": 21.56698779883542,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4051.163040774902,
+        "spectrum_chi2": 3002.8248213585703,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p30_n0p30_s20261111/M1_210210",
+      "result_sha256": "40adad26555d2c7b5a5c391444969f6d242e74a44c24ac17f89ec25a40b6fca8",
+      "derived_sha256": "649d3ddfc03f1cf809f6605e8a9bfec9b73bd812d1ad4a96d4e24bfba6556fba",
+      "executed_notebook_sha256": "d66cb4e4c12d5aa913b474bf70727c2c379bcfc06d3b1d5790eb43143e0f3ac3",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3035.220948559218,
+        "joint_ndof": 3078,
+        "log_evidence": 199840.72941131593,
+        "log_evidence_err": 0.2731399295528237,
+        "passed": true,
+        "photometry_chi2": 24.67260343908631,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4299.801715708376,
+        "spectrum_chi2": 3010.5483451201317,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p30_n0p30_s20261112/M1_210210",
+      "result_sha256": "a6d87b03b912e567f2f39a7a33262ccb67428fea596721ed9b1a54292cf34a93",
+      "derived_sha256": "340014b2ecf780b3f5bae4937f600ce19f73f52b336d31c4c5c45389a275d867",
+      "executed_notebook_sha256": "6c68f4721ef5b60af16f49e49a439de5272b0efe8c1fdf1f3e77738518bf3783",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3058.6996053830276,
+        "joint_ndof": 3078,
+        "log_evidence": 199859.1065464258,
+        "log_evidence_err": 0.271921675904459,
+        "passed": true,
+        "photometry_chi2": 27.195681497138455,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4460.658217200867,
+        "spectrum_chi2": 3031.503923885889,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p30_n0p30_s20261113/M1_210210",
+      "result_sha256": "0c1f3e5e8bfc6f14ddb80330e7a8f59e285cf62cce4e18c0726a9ac9ad79e28d",
+      "derived_sha256": "a6f108f050348265eaacf296c1fce067b3b1379fe22bff10d92fb894e0f5d81e",
+      "executed_notebook_sha256": "f8efb1b5dc310fa165bfaa4a1c5e6e8946f70a732d767b6d004f9ece07dd89bf",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3021.0592793211517,
+        "joint_ndof": 3078,
+        "log_evidence": 199849.2318029599,
+        "log_evidence_err": 0.26588005191645014,
+        "passed": true,
+        "photometry_chi2": 21.356111616024155,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3956.9644260817176,
+        "spectrum_chi2": 2999.7031677051277,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p30_n0p60_s20261111/M1_210210",
+      "result_sha256": "6e0015e62d4c33037da133cca1f43bfe57cf0ed39cd144f1c6613bad4473e882",
+      "derived_sha256": "5795ffa99d397e13ffca81d23f10db8ea79a287f1e7a2523db0f2ddc628d6692",
+      "executed_notebook_sha256": "6f8f99cfe1ea168d75653a08319528996248ac6d0dbc67d3ed1d6104c520f726",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3025.9691171557465,
+        "joint_ndof": 3078,
+        "log_evidence": 199844.19223451064,
+        "log_evidence_err": 0.2742484138186139,
+        "passed": true,
+        "photometry_chi2": 25.120126104466774,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4258.874920298745,
+        "spectrum_chi2": 3000.84899105128,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p30_n0p60_s20261112/M1_210210",
+      "result_sha256": "13a8884ca05bd1121686b8c8cd6877433372137d0638bb795ea8a2d023944ba2",
+      "derived_sha256": "e7f16ff868b4fa62797a1c2f38fae531e0fd0cd8793673f1a222d0390e2b6ea2",
+      "executed_notebook_sha256": "199bb69919af8c8a76b43e49d1c0d68407de8fb5e14edc66df053af02e32819d",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3060.6219683875515,
+        "joint_ndof": 3078,
+        "log_evidence": 199862.63270744047,
+        "log_evidence_err": 0.2732153061086997,
+        "passed": true,
+        "photometry_chi2": 27.690723112572478,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4298.283107089093,
+        "spectrum_chi2": 3032.931245274979,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "C_cut_cn",
+      "cell": "c0p30_n0p60_s20261113/M1_210210",
+      "result_sha256": "22dfecb41829f1a6606199b52e0822b77ed91915353ca92e3085328885474d58",
+      "derived_sha256": "d5006c5ed1dd50747323991c1873353887a25b55462e03e4221dfa3194b2ce5a",
+      "executed_notebook_sha256": "ed1821c284b8cf85e8e69ec8d4122f05aa36b054a5e4afbedbd57c1e7f0fbdc0",
+      "image_outputs": 0,
+      "fitted_pixels": 3050,
+      "band_pixels": {
+        "Mgb": 0,
+        "CN4150": 97,
+        "G4300": 97,
+        "Fe4383": 141,
+        "C4668": 238
+      },
+      "diagnostics": {
+        "joint_chi2": 3029.214484453456,
+        "joint_ndof": 3078,
+        "log_evidence": 199853.28262062426,
+        "log_evidence_err": 0.25901748979363637,
+        "passed": true,
+        "photometry_chi2": 21.255592316470203,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3850.2864427318477,
+        "spectrum_chi2": 3007.958892136986,
+        "spectrum_ndof": 3050,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p00_n0p00_s20261111/M1_210210",
+      "result_sha256": "33b8a19954947766b90a3c2d69349a98dc11e959473a1580bb4be788712f662b",
+      "derived_sha256": "a71e73202479b2a8c758966268a52650ce8ba308446ade3df1c12b461665d76f",
+      "executed_notebook_sha256": "9d29602ac4d37ae1f8711dae3d1995d1f089e63bf7feafba83ae36fd2231db34",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 2996.9892691056984,
+        "joint_ndof": 3062,
+        "log_evidence": 198519.01020767758,
+        "log_evidence_err": 0.24009709630685816,
+        "passed": true,
+        "photometry_chi2": 24.43816206411873,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4094.542063225113,
+        "spectrum_chi2": 2972.5511070415796,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p00_n0p00_s20261112/M1_210210",
+      "result_sha256": "0f7509623d2c97aa4410e1ba5625c9c68fde7ee12944c4f8a3050b85a24a1f8d",
+      "derived_sha256": "042e28dab9ccb1a672e3ee5b6245b6af09578d3268b3055d68ff066ebe10b111",
+      "executed_notebook_sha256": "bf5d2a1846d612c113cae426b79dc3b222540d420d26bcfe91e2e9c5b892a9a2",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3043.1853007678965,
+        "joint_ndof": 3062,
+        "log_evidence": 198536.29012904572,
+        "log_evidence_err": 0.23236794090623683,
+        "passed": true,
+        "photometry_chi2": 25.50639538569697,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4158.136226523192,
+        "spectrum_chi2": 3017.6789053821994,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p00_n0p00_s20261113/M1_210210",
+      "result_sha256": "a124c5922f56e857c52075a3045a578fe25dfc938fae39a8bb3b0686d2770614",
+      "derived_sha256": "22be0ec8c4c55995bdfef5a9cc787842c06506fbc10942e70e664a566f55b64a",
+      "executed_notebook_sha256": "8432d78764f0ce1147f4ee2345caf8f88652e0a5f8582c784bda5377422ed82e",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 2986.906738935742,
+        "joint_ndof": 3062,
+        "log_evidence": 198545.38890118123,
+        "log_evidence_err": 0.22926020079340742,
+        "passed": true,
+        "photometry_chi2": 21.477427617029793,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3823.451612832426,
+        "spectrum_chi2": 2965.4293113187123,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p00_n0p30_s20261111/M1_210210",
+      "result_sha256": "08f5d0b36f45656686231bc51547b9df6c64e70183faf3c49acb9d86ad3ad794",
+      "derived_sha256": "9676b493611eefae8f142b8e2e647efb692953e361b4cf50b6a739835cff8786",
+      "executed_notebook_sha256": "1175a06d2ff20da5218598e8fb110ee306538484bf6a0e0fa59c4922be2d223c",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3006.1352213038285,
+        "joint_ndof": 3062,
+        "log_evidence": 198502.2163726718,
+        "log_evidence_err": 0.2514892473772069,
+        "passed": true,
+        "photometry_chi2": 23.148431315322707,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4692.889476617106,
+        "spectrum_chi2": 2982.9867899885057,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p00_n0p30_s20261112/M1_210210",
+      "result_sha256": "8e7890b50db5ed6ddba573589576fbb17bdefb2ce9268d394e3883ab8d85a2cc",
+      "derived_sha256": "fcecde262a58179cdad618635b9920d94a24546533029feeb21bbb4a246cdbb5",
+      "executed_notebook_sha256": "8fc703ffbb6dbea737609663408b05975fc5a5980f7941f34502d8438adc5312",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3047.1562134533547,
+        "joint_ndof": 3062,
+        "log_evidence": 198525.1163771616,
+        "log_evidence_err": 0.23918996519807553,
+        "passed": true,
+        "photometry_chi2": 24.179818952923572,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4294.604329231712,
+        "spectrum_chi2": 3022.976394500431,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p00_n0p30_s20261113/M1_210210",
+      "result_sha256": "d7708b3077d34e46134a027bef7c39d38e57c50d32c10a1ff5800c53fca39ccc",
+      "derived_sha256": "121e6cedc03ad5bda5b01c4efd268a33af4e5f3de7cd4081c187bcddd774a231",
+      "executed_notebook_sha256": "23a1c52c4e6ee8882a544ab225120aad8e172ff9ded8440999b3f15b646a0b2e",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3005.2130477057513,
+        "joint_ndof": 3062,
+        "log_evidence": 198537.3006231348,
+        "log_evidence_err": 0.23766970258193587,
+        "passed": true,
+        "photometry_chi2": 20.91392431212182,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3995.6556918784,
+        "spectrum_chi2": 2984.2991233936295,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p00_n0p60_s20261111/M1_210210",
+      "result_sha256": "b568c6440db90f0f0f5a397937e752fd26b0a8f2d03cb2dd4fd142b8de57351b",
+      "derived_sha256": "01b2d85eb94057e7f129dba0cff6b1406d56728c8eb92efd09edd85d4c2ef36c",
+      "executed_notebook_sha256": "e2d5ce4766781aec211cd5225380e4977a9e144a7b94f3b1f474bcb38a1cd4be",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3020.9445659898583,
+        "joint_ndof": 3062,
+        "log_evidence": 198448.93431119766,
+        "log_evidence_err": 0.2651627287499368,
+        "passed": true,
+        "photometry_chi2": 23.463323287788622,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4857.329992742421,
+        "spectrum_chi2": 2997.4812427020697,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p00_n0p60_s20261112/M1_210210",
+      "result_sha256": "0f03f45fa89d9f7e546abfef9b85ad828557504efd913bcda71e9916f8427ee1",
+      "derived_sha256": "fe291a5eeb4eea9d2e62ef4640c4601e88e9456e89ccef1be761bd39344a717d",
+      "executed_notebook_sha256": "c0da97075136923d8b80fd950155e88b642401a71af035b4d98fb0b898ca4142",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3071.6607645010336,
+        "joint_ndof": 3062,
+        "log_evidence": 198478.13429766023,
+        "log_evidence_err": 0.2594487902260603,
+        "passed": true,
+        "photometry_chi2": 22.875261485342726,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4599.1925008388125,
+        "spectrum_chi2": 3048.7855030156907,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p00_n0p60_s20261113/M1_210210",
+      "result_sha256": "d5555317178ba5ff56946e319f8905f0b0d216671ee47cd27bfcb1b2bdac173e",
+      "derived_sha256": "8c8902ac41a80a4d72237862f96076085a52f12baf38207e0864a062eb4b7b77",
+      "executed_notebook_sha256": "ae0b7913ee9ebabcff9d02501ff97e07b36074434e977bf60b93ed5a6369db6e",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3035.183597434839,
+        "joint_ndof": 3062,
+        "log_evidence": 198492.6266391325,
+        "log_evidence_err": 0.2517570042455997,
+        "passed": true,
+        "photometry_chi2": 21.625941812938766,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4385.090758649503,
+        "spectrum_chi2": 3013.5576556219003,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p15_n0p00_s20261111/M1_210210",
+      "result_sha256": "1946f80e5695da68c2343c2de6810bb5b481ffbae5c3321be6d7108e4ea21451",
+      "derived_sha256": "d9918c53b3c9e00eb358e8ebcb415f6d6805450ff40d22391e77fd76866be5d1",
+      "executed_notebook_sha256": "03717245eb803162d2ab428394274bfb36af14a202e0bc2894f77ab4caea5451",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3002.3106865164746,
+        "joint_ndof": 3062,
+        "log_evidence": 198515.69237156754,
+        "log_evidence_err": 0.23700814702516987,
+        "passed": true,
+        "photometry_chi2": 22.777651949219052,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4209.125512264251,
+        "spectrum_chi2": 2979.5330345672555,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p15_n0p00_s20261112/M1_210210",
+      "result_sha256": "0817366b3e7a79d9f02ec9af44c1b5136850097d73347f249714cd22684d1842",
+      "derived_sha256": "0467c3d7d50a4c3b95abd3959d37a029c0f51c424453c9c1780f037897aa8c88",
+      "executed_notebook_sha256": "063d03e6659d727346d84d9c2de712f0b4238279f953d4f8b9befe4478c4cab2",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3051.939209275964,
+        "joint_ndof": 3062,
+        "log_evidence": 198526.09020902333,
+        "log_evidence_err": 0.23401400645355475,
+        "passed": true,
+        "photometry_chi2": 25.01126943622775,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4222.003661628492,
+        "spectrum_chi2": 3026.927939839736,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p15_n0p00_s20261113/M1_210210",
+      "result_sha256": "cf7e8ef66f028975144f7980496282402e296fc13c5c302f0d1b91b7258375a4",
+      "derived_sha256": "8452d2bc2efd7d68d254bc5251f33502ed8341e7f9fb2ffe20edbcd5dcd7ac9b",
+      "executed_notebook_sha256": "87d8fbba6639c7602b71a091353072752f58f32c1082e9b6b48490bd2e7a5fa6",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3018.898891043762,
+        "joint_ndof": 3062,
+        "log_evidence": 198538.9525001922,
+        "log_evidence_err": 0.22794979098130774,
+        "passed": true,
+        "photometry_chi2": 20.215828235475414,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3576.8000323758006,
+        "spectrum_chi2": 2998.6830628082866,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p15_n0p30_s20261111/M1_210210",
+      "result_sha256": "a3776fd1600572e6e1ece8c9aa844d87121efc69d84114f8da9be86bb1f3e017",
+      "derived_sha256": "de80a4820837220776faa13c5ae455d114da2c4d60f8bd0ac7c7139a0d248ec2",
+      "executed_notebook_sha256": "a5b3610ab4ff270a393a22162df112a6df4b2e3a7d45d2e3a7b526f130f8c9f0",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3013.8698872948453,
+        "joint_ndof": 3062,
+        "log_evidence": 198492.44196228034,
+        "log_evidence_err": 0.247160303319065,
+        "passed": true,
+        "photometry_chi2": 22.436160817818937,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4192.82180372428,
+        "spectrum_chi2": 2991.4337264770265,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p15_n0p30_s20261112/M1_210210",
+      "result_sha256": "da3cec0048cf0aeb41cccb9482b4df00faccda0d95ba4fd59ee3c6c936e6f2de",
+      "derived_sha256": "db1b1ddf4c2e78acae0ca0f9658224c43ad24b453585d2c2a8db119dbe6ecebe",
+      "executed_notebook_sha256": "4ddb2d4a156ba4f9ec846ceebcf1a2396be5564d0852dc66bae99c485c4c901e",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3069.54686310474,
+        "joint_ndof": 3062,
+        "log_evidence": 198509.15626605277,
+        "log_evidence_err": 0.24175793561552833,
+        "passed": true,
+        "photometry_chi2": 23.44223420316692,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4179.191424357053,
+        "spectrum_chi2": 3046.104628901573,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p15_n0p30_s20261113/M1_210210",
+      "result_sha256": "064c941495fabfa329b9202eb626b522ab37838dbbf8ccbaafc09d0704fff476",
+      "derived_sha256": "2312f09824d0ab653d5565c2f09a8ae9e85e6b0df299edc7b4550d2328a87a5d",
+      "executed_notebook_sha256": "8ce618d31ad3f01293147f7c2c7d7e7e65174e2aaff026da50b5c3cb2fa4524d",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3026.328634284696,
+        "joint_ndof": 3062,
+        "log_evidence": 198525.36574211903,
+        "log_evidence_err": 0.23515660040329442,
+        "passed": true,
+        "photometry_chi2": 21.124467305990937,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3848.045643125934,
+        "spectrum_chi2": 3005.204166978705,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p15_n0p60_s20261111/M1_210210",
+      "result_sha256": "ff2089e609cb452745c92649300b337bc7cd99d2454c3f8591978bf9a9df4224",
+      "derived_sha256": "a7ac6761b243f5ee5bbfd817053bf663150684e4afdcd5d793a01bd4f90a13f8",
+      "executed_notebook_sha256": "94677d44ace14bd1c5316d4dac675097a96614c7bb512073b65d2ad7cdcb4d20",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3033.0863166009876,
+        "joint_ndof": 3062,
+        "log_evidence": 198437.36844297504,
+        "log_evidence_err": 0.26094691262795255,
+        "passed": true,
+        "photometry_chi2": 21.574416837837454,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 5036.749129902769,
+        "spectrum_chi2": 3011.5118997631503,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p15_n0p60_s20261112/M1_210210",
+      "result_sha256": "caa8da5a1cf04864f673b165e452aa9abf3a6771a6ae7ef576ea28ac0eb5db75",
+      "derived_sha256": "b1c3d1f16f2bb0aa707c7b6026f1349bb308db6cadeb59cf5705996954086ab9",
+      "executed_notebook_sha256": "1cda297a32813f68890659271b46f4398d4d9206af2140dad3345b208464a940",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3098.2149970768755,
+        "joint_ndof": 3062,
+        "log_evidence": 198460.353534267,
+        "log_evidence_err": 0.25958649768295006,
+        "passed": true,
+        "photometry_chi2": 22.86356630783022,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4616.16712838452,
+        "spectrum_chi2": 3075.3514307690452,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p15_n0p60_s20261113/M1_210210",
+      "result_sha256": "eceaa0c373f465500d73675d2581d42c9f892195448b154619d825ee48a59884",
+      "derived_sha256": "3d1c2501e32c6cc6a05e41c7fe4cfc70bf4c968ac6eaefc22792e8d4723796f3",
+      "executed_notebook_sha256": "897c49ebe461ebc22bc9151596f537be6b6d728841a87434ecd1bc2c71a2fe2a",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3043.643121119749,
+        "joint_ndof": 3062,
+        "log_evidence": 198476.88132044167,
+        "log_evidence_err": 0.25611051310209787,
+        "passed": true,
+        "photometry_chi2": 20.355663575624455,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4120.341499768127,
+        "spectrum_chi2": 3023.2874575441247,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p30_n0p00_s20261111/M1_210210",
+      "result_sha256": "3f1f8f0001c3a4664a42be912ce3c41dbce79216181ff31013a53126729176f6",
+      "derived_sha256": "15afd4bd7a05255762c4b112dd62c30a332e8dc473c5e35c46ac461b70b6acce",
+      "executed_notebook_sha256": "8da3783f82b4686e5a082ae0327c331c6583ee437637795ab4a4155a1a758bd0",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3014.57333494234,
+        "joint_ndof": 3062,
+        "log_evidence": 198484.55894811332,
+        "log_evidence_err": 0.23764129755069555,
+        "passed": true,
+        "photometry_chi2": 22.19056725530214,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4143.481867885397,
+        "spectrum_chi2": 2992.382767687038,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p30_n0p00_s20261112/M1_210210",
+      "result_sha256": "49c4ba2484d5e8004c488c40ab6944d459ab3dbc10b8e426b8d457b64507998a",
+      "derived_sha256": "a7ca98e194ce3b334a35ddf04cdb6fe11d73cd71b839d22ebad3bd5308c5a7a1",
+      "executed_notebook_sha256": "16b7685d491f8895d6fc8bbe4637bd6d0c819ec3d0caeaaece2d06315f9a18ab",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3061.499435897142,
+        "joint_ndof": 3062,
+        "log_evidence": 198490.0735797525,
+        "log_evidence_err": 0.2398703094046839,
+        "passed": true,
+        "photometry_chi2": 24.031094173485936,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4153.376615283452,
+        "spectrum_chi2": 3037.468341723656,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p30_n0p00_s20261113/M1_210210",
+      "result_sha256": "12c1f0afb8dce46546b5cff7e945b60b9635640a9b9ae57ec7ed3b7b667d529a",
+      "derived_sha256": "9f6b0f2bf10833806fd13d6248b5156b6a0ef0f5bca4ee049c488d66426c082d",
+      "executed_notebook_sha256": "044b7dcf0d043398a22750f81d88a7f1e136b361945e358905eb99fd978235cc",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3016.8976313933936,
+        "joint_ndof": 3062,
+        "log_evidence": 198506.06831628236,
+        "log_evidence_err": 0.22885709642987465,
+        "passed": true,
+        "photometry_chi2": 20.21810509588001,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3875.6123900658517,
+        "spectrum_chi2": 2996.6795262975133,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p30_n0p30_s20261111/M1_210210",
+      "result_sha256": "ba50c109a1ba38242a7cb90f1be45e35fd784b500754180151b65054e02da519",
+      "derived_sha256": "3e350451114603ffd8b8631c975beec01e08455fc2d3b4a6d68f67d0fad1d784",
+      "executed_notebook_sha256": "4de3350ae2f2ad965236d1571f9b21a168dacb33c89a3f9ebb81a94c1ccc406b",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3035.944382874747,
+        "joint_ndof": 3062,
+        "log_evidence": 198461.33511414126,
+        "log_evidence_err": 0.24779222809432921,
+        "passed": true,
+        "photometry_chi2": 21.085180158558067,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4565.111466663494,
+        "spectrum_chi2": 3014.859202716189,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p30_n0p30_s20261112/M1_210210",
+      "result_sha256": "b576b5b200bfb13fc2067747700f23f1d679cf1854c6b0ddc0431d3b229d947a",
+      "derived_sha256": "c35ae961d185b2e7984786a7c2447b0a2f8145e682e03112f199743897a671fe",
+      "executed_notebook_sha256": "e57e1ba7f59b053c2eafcb2c8d9f9ce0f6344bc3223830ed0e2dfe8ad848cfc5",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3070.0511889644567,
+        "joint_ndof": 3062,
+        "log_evidence": 198472.7560892594,
+        "log_evidence_err": 0.2441583219376162,
+        "passed": true,
+        "photometry_chi2": 23.094756091237876,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4181.753969296522,
+        "spectrum_chi2": 3046.956432873219,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p30_n0p30_s20261113/M1_210210",
+      "result_sha256": "6e999c209607684d20233b468151d979b5943b916364d3fefa31171bc000ccd9",
+      "derived_sha256": "4e83dca0d8cd0c2e739a14bff10dad6bbb22f28ee42cbb9c758b4eb74ab2e441",
+      "executed_notebook_sha256": "0a5f88cfa575b2a8e156b5a4049a86695830c7c301221505e5227498a37e5878",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3031.0948563064144,
+        "joint_ndof": 3062,
+        "log_evidence": 198491.18475983804,
+        "log_evidence_err": 0.23598349011247874,
+        "passed": true,
+        "photometry_chi2": 20.067000511910855,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 3847.345702144628,
+        "spectrum_chi2": 3011.0278557945035,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p30_n0p60_s20261111/M1_210210",
+      "result_sha256": "a232d8eb5dd7426ab5f3cd87cc4451e819f44e8ae2f456458c1e674e8a060ac3",
+      "derived_sha256": "1a15f2b72c4abd86f0653b47b56f5d350971d5f9e3dd94d4ac643233bd4e3c66",
+      "executed_notebook_sha256": "04186c7d280f014b801154f3149157282ec2ef64c1ce0511480c86b6c379b0ae",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3040.8243623717026,
+        "joint_ndof": 3062,
+        "log_evidence": 198406.40267489522,
+        "log_evidence_err": 0.2667859759608355,
+        "passed": true,
+        "photometry_chi2": 21.225279926358333,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4786.9201263124405,
+        "spectrum_chi2": 3019.5990824453443,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p30_n0p60_s20261112/M1_210210",
+      "result_sha256": "ac2686550b3995bcb051c3122fd03976c96f84d0855b7db4aec621b6ddb4e90d",
+      "derived_sha256": "c516375dbfb21a46a886f9e0318f6a55aa77727250d91fe482095fafb4e590f5",
+      "executed_notebook_sha256": "85c59d3e5f046e6ac6b3c4044657f95fb26358c4c3149d785a77109c531e64df",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3102.8357168226858,
+        "joint_ndof": 3062,
+        "log_evidence": 198424.91464872728,
+        "log_evidence_err": 0.25457496228623583,
+        "passed": true,
+        "photometry_chi2": 21.616079011300865,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4380.272330695831,
+        "spectrum_chi2": 3081.219637811385,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    },
+    {
+      "arm": "D_carbon_mask",
+      "cell": "c0p30_n0p60_s20261113/M1_210210",
+      "result_sha256": "da1861a80b97aa46069eb876ec03bc850826e76943b460f8074e25577fb392df",
+      "derived_sha256": "2b5676e9697fc108321c0aca9a86b6582305fd8f7f433129a8877678b344f712",
+      "executed_notebook_sha256": "7c3474780cfb1708a88aed22ae8f53bc442f958595abf9a7a6540587d44ea700",
+      "image_outputs": 0,
+      "fitted_pixels": 3034,
+      "band_pixels": {
+        "Mgb": 89,
+        "CN4150": 0,
+        "G4300": 0,
+        "Fe4383": 0,
+        "C4668": 0
+      },
+      "diagnostics": {
+        "joint_chi2": 3067.1705008636977,
+        "joint_ndof": 3062,
+        "log_evidence": 198443.07643136525,
+        "log_evidence_err": 0.25132919325346875,
+        "passed": true,
+        "photometry_chi2": 20.11124894798239,
+        "photometry_ndof": 28,
+        "posterior_weight_ess": 4401.575155243099,
+        "spectrum_chi2": 3047.0592519157153,
+        "spectrum_ndof": 3034,
+        "status": "diagnostics passed"
+      }
+    }
+  ]
+}
