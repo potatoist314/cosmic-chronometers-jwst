@@ -1,0 +1,16 @@
+{
+  "id": "71b7ac32-0359-4654-950b-665b7bf113eb",
+  "sequence": 6,
+  "date": "2026-11-11T03:03:32.396997+00:00",
+  "origin": "chat",
+  "action": "note",
+  "text": "Experiments 7 and 8 (2026-11-11), analysis of existing fits, no new fits. Pull = band-summed pull/sqrt(n) in sigma, negative = model too weak. Experiment 7, residual stack of 135 baseline and 135 C/N-free LEGA-C fits, 2 Å rest-frame bins, split 61 with Mg b / 74 without. Median pulls, with-Mg b group, baseline → C/N free: Mg b −3.28 → −2.16; C2 4668 −5.20 → −5.56; CN4150 −1.68 → −0.54; G4300 +1.74 → +1.83; Fe4383 −0.91 → −1.06. Without-Mg b group: C2 4668 −2.37 → −3.10 (56 galaxies); CN4150 −1.30 → +0.26; G4300 +1.52 → +0.52; H10 −2.52 → −1.86. Baseline group difference at shared wavelengths (without − with, 95% bootstrap): C2 4668 +2.83 [+1.53, +3.98]; Ca4455 −1.81 [−2.56, −0.82]; H10, H8, HδA, HγA also exclude zero. Chi-square excess (sum of pull² − 1 over fitted pixels): 3.6% in the four carbon bands, 3.9% in Mg b, 92.5% elsewhere (baseline); 3.8 / 3.1 / 93.2% with C/N free. Largest off-feature stacked residual: rest 4583–4603 Å, +0.6 to +0.7 per 2 Å bin, in both arms. Experiment 8, linear response at the posterior medians of the 10 test-set fits (Jacobian through the production model, nuisance polynomial and line columns projected out; Student-t SFH prior entered with its expected curvature because the exact local curvature is indefinite in 16/20 fits). [α/Fe], five galaxies with Mg b, share of data information: Mg b 20.0%, four carbon bands 20.9%, remaining spectrum 40.3% (baseline); 18.7 / 12.8 / 48.1% with C/N free. Linearised tugs on [α/Fe]: Mg b +0.060 dex, carbon bands −0.067 dex (C2 4668 −0.029) in the baseline; +0.044 and −0.021 with C/N free, remaining spectrum −0.020. Five galaxies without Mg b: remaining spectrum −0.054 (baseline), −0.057 (C/N free). Forecast σ([α/Fe]) rises by a factor 1.22 without Mg b and 1.21 without the carbon bands (baseline). Age: the SFH prior carries 67% of the marginal age information with Mg b and 57% without (baseline); Mg b carries 1.3% of the data share, carbon bands 37%. Linearised prior tug on age +0.80 Gyr (with Mg b), +0.35 Gyr (without). Forecast σ(age)/posterior half-width 0.96–1.24 in the baseline. Lead check: headline fractions and tugs recomputed from information-map/pixels.csv. Launched: experiment 9, prior-only age–redshift relation and a mock chronometer with one formation time (results/cn-response-2026-11-10/prior-slope).",
+  "evidence": [
+    "results/cn-response-2026-11-10/REPORT.md",
+    "results/cn-response-2026-11-10/residual-stack/features.csv",
+    "results/cn-response-2026-11-10/residual-stack/chi2-excess.csv",
+    "results/cn-response-2026-11-10/information-map/medians-regions.csv",
+    "results/cn-response-2026-11-10/information-map/pixels.csv"
+  ],
+  "pages": []
+}
