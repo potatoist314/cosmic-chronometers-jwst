@@ -1,5 +1,5 @@
 {
- "sample": "LEGA-C DR3 quiescent: DR2 notebook cuts with DR3 flags, fittable photometry, valid rest range covers 4074.5-4666.1 A",
+ "sample": "LEGA-C DR3 quiescent: DR2 notebook cuts with DR3 flags, fittable photometry, valid rest range covers 4074.5-4666.1 A, finite SIGMA_STARS_PRIME_ERR",
  "source": "results/legac-dr3-2026-11-11/analysis.ipynb, selection-per-galaxy.csv",
  "targets": [
   {
@@ -39,15 +39,6 @@
    "rest_max": 5152.4
   },
   {
-   "spect_id": "M32_142912",
-   "object_id": 142912,
-   "z": 0.6904,
-   "sn": 55.4,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3806.1,
-   "rest_max": 5259.7
-  },
-  {
    "spect_id": "M27_247278",
    "object_id": 247278,
    "z": 0.7018,
@@ -55,24 +46,6 @@
    "photometry": "cosmos2020_classic",
    "rest_min": 4028.6,
    "rest_max": 5490.3
-  },
-  {
-   "spect_id": "M26_172885",
-   "object_id": 172885,
-   "z": 0.6902,
-   "sn": 50.5,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3757.6,
-   "rest_max": 5213.8
-  },
-  {
-   "spect_id": "M31_250372",
-   "object_id": 250372,
-   "z": 0.7358,
-   "sn": 43.2,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3818.6,
-   "rest_max": 5245.5
   },
   {
    "spect_id": "M16_32559",
@@ -543,15 +516,6 @@
    "rest_max": 5182.0
   },
   {
-   "spect_id": "M28_156700",
-   "object_id": 156700,
-   "z": 0.6896,
-   "sn": 27.9,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3714.5,
-   "rest_max": 5164.5
-  },
-  {
    "spect_id": "M10_227516",
    "object_id": 227516,
    "z": 0.7794,
@@ -631,15 +595,6 @@
    "photometry": "cosmos2020_classic",
    "rest_min": 3743.6,
    "rest_max": 5148.7
-  },
-  {
-   "spect_id": "M26_167748",
-   "object_id": 167748,
-   "z": 0.7472,
-   "sn": 26.0,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3843.2,
-   "rest_max": 5263.9
   },
   {
    "spect_id": "M18_95324",
@@ -750,15 +705,6 @@
    "rest_max": 5366.8
   },
   {
-   "spect_id": "M28_145882",
-   "object_id": 145882,
-   "z": 0.6586,
-   "sn": 23.3,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3925.8,
-   "rest_max": 5415.9
-  },
-  {
    "spect_id": "M22_174436",
    "object_id": 174436,
    "z": 0.7431,
@@ -822,15 +768,6 @@
    "rest_max": 5342.6
   },
   {
-   "spect_id": "M31_247498",
-   "object_id": 247498,
-   "z": 0.818,
-   "sn": 22.4,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3543.9,
-   "rest_max": 4901.1
-  },
-  {
    "spect_id": "M4_107643",
    "object_id": 107643,
    "z": 0.7346,
@@ -856,15 +793,6 @@
    "photometry": "cosmos2020_classic",
    "rest_min": 3329.5,
    "rest_max": 4681.8
-  },
-  {
-   "spect_id": "M28_164802",
-   "object_id": 164802,
-   "z": 0.7054,
-   "sn": 21.9,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3838.1,
-   "rest_max": 5283.4
   },
   {
    "spect_id": "M14_27068",
@@ -982,15 +910,6 @@
    "photometry": "cosmos2025",
    "rest_min": 3751.3,
    "rest_max": 5160.9
-  },
-  {
-   "spect_id": "M31_243920",
-   "object_id": 243920,
-   "z": 0.7017,
-   "sn": 19.9,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3915.6,
-   "rest_max": 5372.9
   },
   {
    "spect_id": "M18_181686",
@@ -1173,15 +1092,6 @@
    "rest_max": 5040.1
   },
   {
-   "spect_id": "M28_158128",
-   "object_id": 158128,
-   "z": 0.8319,
-   "sn": 17.4,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3447.9,
-   "rest_max": 4786.2
-  },
-  {
    "spect_id": "M18_92132",
    "object_id": 92132,
    "z": 0.7478,
@@ -1189,15 +1099,6 @@
    "photometry": "cosmos2020_classic",
    "rest_min": 3793.8,
    "rest_max": 5211.9
-  },
-  {
-   "spect_id": "M26_239244",
-   "object_id": 239244,
-   "z": 0.6761,
-   "sn": 17.2,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3875.8,
-   "rest_max": 5345.4
   },
   {
    "spect_id": "M27_256994",
@@ -1315,15 +1216,6 @@
    "photometry": "cosmos2025",
    "rest_min": 3702.2,
    "rest_max": 5012.8
-  },
-  {
-   "spect_id": "M31_249433",
-   "object_id": 249433,
-   "z": 0.8372,
-   "sn": 14.6,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3539.2,
-   "rest_max": 4884.5
   },
   {
    "spect_id": "M13_254350",
@@ -1677,15 +1569,6 @@
    "rest_max": 4941.6
   },
   {
-   "spect_id": "M26_173964",
-   "object_id": 173964,
-   "z": 0.8776,
-   "sn": 9.3,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3516.1,
-   "rest_max": 4835.3
-  },
-  {
    "spect_id": "M30_65982",
    "object_id": 65982,
    "z": 0.8704,
@@ -1855,15 +1738,6 @@
    "photometry": "cosmos2025",
    "rest_min": 3449.3,
    "rest_max": 4714.6
-  },
-  {
-   "spect_id": "M26_169606",
-   "object_id": 169606,
-   "z": 0.8428,
-   "sn": 5.3,
-   "photometry": "cosmos2020_classic",
-   "rest_min": 3461.1,
-   "rest_max": 4798.6
   },
   {
    "spect_id": "M4_112534",
