@@ -35833,9 +35833,118 @@
       "app_id": "ap-fKRBuiwcxTzcWygvBP4UZC",
       "estimated_usd": 29.01842882395546,
       "billed_usd": 37.394429009999996
+    },
+    {
+      "gpu": "A100-40GB",
+      "cells": {
+        "dr3_cn_free_w/M9_213587": {
+          "call_id": "fc-01M75Q6YW65T4WR3K3QYACWPHJ",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 202.22734999656677,
+          "container_cells": 1,
+          "estimated_usd": 0.13038001708978653,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "cached",
+          "tuned": 0,
+          "compiled": 795
+        },
+        "dr3_plain_w/M31_259181": {
+          "call_id": "fc-01M75Q7PMGBBRS3A03SC9ZK7ZH",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 139.3394157886505,
+          "container_cells": 1,
+          "estimated_usd": 0.08983490814725875,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "cached",
+          "tuned": 0,
+          "compiled": 649
+        },
+        "dr3_plain_w/M11_213004": {
+          "call_id": "fc-01M75Q8E32RK6TWVW6WWY4DJWK",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 149.37454319000244,
+          "container_cells": 1,
+          "estimated_usd": 0.09630475548545837,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 715,
+          "compiled": 648
+        },
+        "dr3_plain_w/M10_227516": {
+          "call_id": "fc-01M75Q95MCFXTYV13VR6A0WXE2",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 219.43235158920288,
+          "container_cells": 1,
+          "estimated_usd": 0.14147242571659088,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 715,
+          "compiled": 649
+        },
+        "dr3_cn_free_w/M1_210210": {
+          "call_id": "fc-01M75QA0WE6WSY11P6SQ0VF4GM",
+          "gpu_name": "NVIDIA A100-SXM4-80GB",
+          "container_seconds": 240.35288882255554,
+          "container_cells": 1,
+          "estimated_usd": 0.15496031448167802,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "cached",
+          "tuned": 869,
+          "compiled": 795
+        },
+        "dr3_cn_free_w/M14_39865": {
+          "call_id": "fc-01M75QAS8AP2TD8DE0DMEKWV08",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 168.79789662361145,
+          "container_cells": 1,
+          "estimated_usd": 0.10882737991117478,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "cached",
+          "tuned": 0,
+          "compiled": 0
+        },
+        "dr3_plain_w/M30_59531": {
+          "call_id": "fc-01M75QBK2N6M6QNRK9DBH2QJF6",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 203.6400384902954,
+          "container_cells": 1,
+          "estimated_usd": 0.13129080561546325,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 715,
+          "compiled": 650
+        }
+      },
+      "started": 1794414416.787919,
+      "status": "complete",
+      "elapsed": 688.4625928401947,
+      "app_id": "ap-XRPQVbzMyXJFA12Cn8LA43",
+      "estimated_usd": 0.8530706064474106,
+      "billed_usd": 0.95848218
     }
   ],
-  "estimated_total_usd": 37.394429009999996,
+  "estimated_total_usd": 38.35291118999999,
   "completed_cells": [
     "dr3_cn_free_w/M2_133501",
     "dr3_cn_free_w/M22_169219",
@@ -36217,6 +36326,13 @@
     "dr3_plain_w/M2_133501",
     "dr3_cn_free_w/M11_215711",
     "dr3_plain_w/M27_245661",
-    "dr3_plain_w/M4_107370"
+    "dr3_plain_w/M4_107370",
+    "dr3_cn_free_w/M9_213587",
+    "dr3_plain_w/M31_259181",
+    "dr3_plain_w/M11_213004",
+    "dr3_plain_w/M10_227516",
+    "dr3_cn_free_w/M1_210210",
+    "dr3_cn_free_w/M14_39865",
+    "dr3_plain_w/M30_59531"
   ]
 }

@@ -1048,3 +1048,748 @@ https://modal.com/apps/initialincrease/main/ap-fKRBuiwcxTzcWygvBP4UZC
 15:27:57 SweepError: RemoteError: 
 15:28:45 Modal attempt: $29.0184 estimated; failed cells: ['dr3_plain_w/M22_167853', 'dr3_plain_w/M102_214145', 'dr3_cn_free_w/M24_201669', 'dr3_cn_free_w/M15_88032', 'dr3_cn_free_w/M13_254350', 'dr3_cn_free_w/M14_37723', 'dr3_cn_free_w/M24_191051', 'dr3_cn_free_w/M21_189698', 'dr3_cn_free_w/M7_124875', 'dr3_cn_free_w/M16_4949', 'dr3_plain_w/M14_27068', 'dr3_cn_free_w/M14_31835', 'dr3_cn_free_w/M102_214145', 'dr3_cn_free_w/M101_209935', 'dr3_cn_free_w/M7_162587', 'dr3_cn_free_w/M11_232962', 'dr3_cn_free_w/M22_239682', 'dr3_cn_free_w/M19_57389', 'dr3_cn_free_w/M5_236682', 'dr3_cn_free_w/M6_237437', 'dr3_plain_w/M12_185631', 'dr3_cn_free_w/M20_86906', 'dr3_cn_free_w/M11_215585', 'dr3_cn_free_w/M18_95324', 'dr3_cn_free_w/M10_217653', 'dr3_plain_w/M5_206771', 'dr3_cn_free_w/M101_126578', 'dr3_plain_w/M11_218207', 'dr3_plain_w/M9_214899', 'dr3_plain_w/M10_217653', 'dr3_plain_w/M11_257455', 'dr3_cn_free_w/M20_79475', 'dr3_plain_w/M101_209935', 'dr3_cn_free_w/M2_210716', 'dr3_cn_free_w/M14_27068', 'dr3_cn_free_w/M9_213587', 'dr3_plain_w/M31_259181', 'dr3_plain_w/M11_213004', 'dr3_plain_w/M10_227516', 'dr3_plain_w/M20_79475', 'dr3_plain_w/M30_60369', 'dr3_cn_free_w/M19_69529', 'dr3_cn_free_w/M20_77982', 'dr3_plain_w/M3_120308', 'dr3_plain_w/M27_247278', 'dr3_cn_free_w/M12_185653', 'dr3_plain_w/M9_213587', 'dr3_plain_w/M10_231544', 'dr3_cn_free_w/M11_229551', 'dr3_plain_w/M16_29691', 'dr3_plain_w/M4_112534', 'dr3_plain_w/M27_249882', 'dr3_plain_w/M23_163025', 'dr3_cn_free_w/M18_91497', 'dr3_cn_free_w/M18_185040', 'dr3_plain_w/M4_124231', 'dr3_cn_free_w/M6_233902', 'dr3_plain_w/M31_253516', 'dr3_cn_free_w/M2_129596', 'dr3_cn_free_w/M27_247278', 'dr3_plain_w/M27_256211', 'dr3_plain_w/M10_197591', 'dr3_cn_free_w/M16_32559', 'dr3_cn_free_w/M16_103061', 'dr3_cn_free_w/M1_206858', 'dr3_cn_free_w/M23_143947', 'dr3_plain_w/M7_122242', 'dr3_cn_free_w/M4_120661', 'dr3_plain_w/M6_237437', 'dr3_plain_w/M27_259012', 'dr3_cn_free_w/M9_232890', 'dr3_plain_w/M2_133501', 'dr3_cn_free_w/M11_215711', 'dr3_plain_w/M27_245661', 'dr3_plain_w/M4_107370', 'dr3_cn_free_w/M1_210210', 'dr3_cn_free_w/M14_39865', 'dr3_plain_w/M30_59531']
 exit 1
+=== resume 16:26:50
+<string>:8: UserWarning: Warning: converting a masked element to nan.
+16:26:54 committed source dea843770ef5; output results/legac-dr3-2026-11-11/window-194/run
+16:26:56 launching 7 Modal A100-40GB container(s) for 7 cell(s)
+✓ Initialized. View run at 
+https://modal.com/apps/initialincrease/main/ap-XRPQVbzMyXJFA12Cn8LA43
+✓ Created objects.
+├── ✓ Uploaded /Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py
+└── ✓ Created Function fit.
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Resolved 2 packages in 579ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Resolved 2 packages in 576ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap: Resolved 2 packages in 580ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.97s
+bootstrap: Uninstalled 1 package in 28ms
+bootstrap: Installed 2 packages in 22ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.76s
+bootstrap: Uninstalled 1 package in 20ms
+bootstrap: Installed 2 packages in 18ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.83s
+bootstrap: Uninstalled 1 package in 20ms
+bootstrap: Installed 2 packages in 19ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-18: 16:33:08 fitting dr3_plain_w/M11_213004, seed 20260832
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-258: 16:33:11 fitting dr3_cn_free_w/M9_213587, seed 20260832
+fit-106: 16:33:12 fitting dr3_plain_w/M31_259181, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 706ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.18s
+bootstrap: Uninstalled 1 package in 30ms
+bootstrap: Installed 2 packages in 27ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 9ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 609ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.83s
+bootstrap: Uninstalled 1 package in 19ms
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed 2 packages in 18ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-196: 16:34:11 fitting dr3_cn_free_w/M1_210210, seed 20260832
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 794ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+fit-374: 16:34:26 fitting dr3_cn_free_w/M14_39865, seed 20260832
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.29s
+bootstrap: Uninstalled 1 package in 27ms
+bootstrap: Installed 2 packages in 24ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 8ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 825ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.42s
+bootstrap: Uninstalled 1 package in 26ms
+bootstrap: Installed 2 packages in 22ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 9ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-57: 16:34:51 fitting dr3_plain_w/M10_227516, seed 20260832
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-28: 16:35:06 fitting dr3_plain_w/M30_59531, seed 20260832
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/initialincrease/main/ap-XRPQVbzMyXJFA12Cn8LA43
+16:38:36 Modal attempt: $0.8531 estimated; failed cells: none
+16:39:28 local figures rebuilt for dr3_cn_free_w/M2_133501
+16:40:17 local figures rebuilt for dr3_cn_free_w/M22_169219
+16:41:06 local figures rebuilt for dr3_cn_free_w/M24_203503
+16:41:48 local figures rebuilt for dr3_plain_w/M24_189449
+16:42:26 local figures rebuilt for dr3_plain_w/M17_64957
+16:43:05 local figures rebuilt for dr3_plain_w/M12_101089
+16:43:43 local figures rebuilt for dr3_plain_w/M7_147270
+16:44:27 local figures rebuilt for dr3_plain_w/M15_76336
+16:45:20 local figures rebuilt for dr3_cn_free_w/M16_72617
+16:46:12 local figures rebuilt for dr3_cn_free_w/M19_59396
+16:46:58 local figures rebuilt for dr3_cn_free_w/M23_158484
+16:47:47 local figures rebuilt for dr3_cn_free_w/M17_140425
+16:48:27 local figures rebuilt for dr3_plain_w/M19_69529
+16:49:15 local figures rebuilt for dr3_cn_free_w/M27_259012
+16:49:56 local figures rebuilt for dr3_plain_w/M22_169219
+16:50:37 local figures rebuilt for dr3_plain_w/M16_31873
+16:51:18 local figures rebuilt for dr3_plain_w/M101_126578
+16:52:09 local figures rebuilt for dr3_cn_free_w/M8_147539
+16:52:51 local figures rebuilt for dr3_plain_w/M3_111390
+16:53:36 local figures rebuilt for dr3_cn_free_w/M18_92132
+16:54:19 local figures rebuilt for dr3_plain_w/M18_95324
+16:54:58 local figures rebuilt for dr3_plain_w/M18_91497
+16:55:44 local figures rebuilt for dr3_cn_free_w/M3_111390
+16:56:33 local figures rebuilt for dr3_cn_free_w/M18_96346
+16:57:23 local figures rebuilt for dr3_cn_free_w/M21_204050
+16:58:04 local figures rebuilt for dr3_plain_w/M22_239682
+16:58:45 local figures rebuilt for dr3_plain_w/M101_126153
+16:59:32 local figures rebuilt for dr3_cn_free_w/M101_205687
+17:00:17 local figures rebuilt for dr3_cn_free_w/M12_101089
+17:00:55 local figures rebuilt for dr3_plain_w/M10_217020
+17:01:36 local figures rebuilt for dr3_plain_w/M10_230319
+17:02:23 local figures rebuilt for dr3_cn_free_w/M3_120308
+17:03:13 local figures rebuilt for dr3_cn_free_w/M10_227672
+17:03:59 local figures rebuilt for dr3_cn_free_w/M5_165871
+17:04:51 local figures rebuilt for dr3_cn_free_w/M11_213004
+17:05:46 local figures rebuilt for dr3_cn_free_w/M8_164459
+17:06:26 local figures rebuilt for dr3_plain_w/M4_107643
+17:07:13 local figures rebuilt for dr3_cn_free_w/M3_107362
+17:07:56 local figures rebuilt for dr3_plain_w/M1_139423
+17:08:51 local figures rebuilt for dr3_cn_free_w/M27_261268
+17:09:38 local figures rebuilt for dr3_cn_free_w/M3_119809
+17:10:28 local figures rebuilt for dr3_cn_free_w/M19_71670
+17:11:12 local figures rebuilt for dr3_plain_w/M11_229551
+17:12:00 local figures rebuilt for dr3_cn_free_w/M27_260083
+17:12:41 local figures rebuilt for dr3_plain_w/M14_37219
+17:13:21 local figures rebuilt for dr3_plain_w/M101_205687
+17:14:03 local figures rebuilt for dr3_plain_w/M7_151258
+17:14:42 local figures rebuilt for dr3_plain_w/M102_206842
+17:15:33 local figures rebuilt for dr3_cn_free_w/M22_167853
+17:16:24 local figures rebuilt for dr3_cn_free_w/M10_231544
+17:17:11 local figures rebuilt for dr3_cn_free_w/M4_112534
+17:18:06 local figures rebuilt for dr3_cn_free_w/M30_59531
+17:18:55 local figures rebuilt for dr3_cn_free_w/M10_201233
+17:19:40 local figures rebuilt for dr3_plain_w/M20_76593
+17:20:29 local figures rebuilt for dr3_cn_free_w/M18_94726
+17:21:18 local figures rebuilt for dr3_cn_free_w/M8_145294
+17:22:12 local figures rebuilt for dr3_cn_free_w/M6_234538
+17:22:53 local figures rebuilt for dr3_plain_w/M18_185040
+17:23:33 local figures rebuilt for dr3_plain_w/M16_27659
+17:24:22 local figures rebuilt for dr3_cn_free_w/M12_91529
+17:25:11 local figures rebuilt for dr3_cn_free_w/M13_230747
+17:25:58 local figures rebuilt for dr3_cn_free_w/M14_103366
+17:26:51 local figures rebuilt for dr3_cn_free_w/M16_25285
+17:27:47 local figures rebuilt for dr3_cn_free_w/M13_244239
+17:28:29 local figures rebuilt for dr3_plain_w/M4_86744
+17:29:12 local figures rebuilt for dr3_plain_w/M30_54494
+17:30:00 local figures rebuilt for dr3_plain_w/M5_236682
+17:30:54 local figures rebuilt for dr3_cn_free_w/M31_259181
+17:31:38 local figures rebuilt for dr3_plain_w/M101_139662
+17:32:53 local figures rebuilt for dr3_cn_free_w/M18_181686
+17:33:38 local figures rebuilt for dr3_plain_w/M4_108989
+17:34:40 local figures rebuilt for dr3_cn_free_w/M10_197591
+17:35:26 local figures rebuilt for dr3_plain_w/M23_162810
+17:36:10 local figures rebuilt for dr3_plain_w/M17_140425
+17:36:56 local figures rebuilt for dr3_plain_w/M15_77632
+17:37:50 local figures rebuilt for dr3_cn_free_w/M32_68126
+17:38:43 local figures rebuilt for dr3_cn_free_w/M13_248217
+17:39:31 local figures rebuilt for dr3_cn_free_w/M12_95303
+17:40:15 local figures rebuilt for dr3_cn_free_w/M23_150680
+17:40:57 local figures rebuilt for dr3_plain_w/M4_117400
+17:41:53 local figures rebuilt for dr3_cn_free_w/M9_231276
+17:42:50 local figures rebuilt for dr3_cn_free_w/M31_253516
+17:43:29 local figures rebuilt for dr3_plain_w/M23_151373
+17:44:16 local figures rebuilt for dr3_cn_free_w/M8_163989
+17:44:58 local figures rebuilt for dr3_plain_w/M12_95303
+17:45:40 local figures rebuilt for dr3_plain_w/M14_39865
+17:46:32 local figures rebuilt for dr3_cn_free_w/M20_76593
+17:47:27 local figures rebuilt for dr3_cn_free_w/M1_205742
+17:48:15 local figures rebuilt for dr3_cn_free_w/M102_211117
+17:48:59 local figures rebuilt for dr3_plain_w/M27_256994
+17:49:47 local figures rebuilt for dr3_plain_w/M30_65982
+17:50:45 local figures rebuilt for dr3_cn_free_w/M13_259737
+17:51:33 local figures rebuilt for dr3_plain_w/M6_234538
+17:52:24 local figures rebuilt for dr3_cn_free_w/M17_29406
+17:53:08 local figures rebuilt for dr3_cn_free_w/M19_141436
+17:53:57 local figures rebuilt for dr3_cn_free_w/M9_225678
+17:54:50 local figures rebuilt for dr3_cn_free_w/M27_249882
+17:55:37 local figures rebuilt for dr3_cn_free_w/M7_152125
+17:56:18 local figures rebuilt for dr3_plain_w/M3_117010
+17:57:07 local figures rebuilt for dr3_cn_free_w/M15_89072
+17:57:57 local figures rebuilt for dr3_cn_free_w/M16_31873
+17:58:47 local figures rebuilt for dr3_cn_free_w/M3_109713
+17:59:26 local figures rebuilt for dr3_plain_w/M102_211117
+18:00:13 local figures rebuilt for dr3_plain_w/M1_205742
+18:01:00 local figures rebuilt for dr3_cn_free_w/M18_182962
+18:01:48 local figures rebuilt for dr3_plain_w/M15_77745
+18:13:57 local figures rebuilt for dr3_plain_w/M24_203503
+18:25:47 local figures rebuilt for dr3_plain_w/M11_245864
+18:26:33 local figures rebuilt for dr3_plain_w/M3_119809
+18:27:26 local figures rebuilt for dr3_cn_free_w/M10_230319
+18:28:14 local figures rebuilt for dr3_plain_w/M5_205715
+18:29:06 local figures rebuilt for dr3_plain_w/M16_72617
+18:30:01 local figures rebuilt for dr3_cn_free_w/M8_156118
+18:30:59 local figures rebuilt for dr3_cn_free_w/M2_134021
+18:31:49 local figures rebuilt for dr3_plain_w/M19_57389
+18:32:44 local figures rebuilt for dr3_plain_w/M4_120661
+18:33:25 local figures rebuilt for dr3_plain_w/M18_182407
+18:34:08 local figures rebuilt for dr3_plain_w/M11_216899
+18:34:52 local figures rebuilt for dr3_plain_w/M4_123161
+18:35:36 local figures rebuilt for dr3_plain_w/M19_59396
+18:36:27 local figures rebuilt for dr3_cn_free_w/M9_214899
+18:37:11 local figures rebuilt for dr3_plain_w/M9_231276
+18:37:52 local figures rebuilt for dr3_plain_w/M9_212391
+18:38:37 local figures rebuilt for dr3_cn_free_w/M23_151373
+18:39:17 local figures rebuilt for dr3_plain_w/M12_185653
+18:40:04 local figures rebuilt for dr3_cn_free_w/M4_125213
+18:40:55 local figures rebuilt for dr3_cn_free_w/M27_258059
+18:41:39 local figures rebuilt for dr3_plain_w/M24_191051
+18:42:23 local figures rebuilt for dr3_plain_w/M13_248217
+18:43:06 local figures rebuilt for dr3_plain_w/M24_202009
+18:43:45 local figures rebuilt for dr3_plain_w/M14_31835
+18:44:39 local figures rebuilt for dr3_cn_free_w/M12_181945
+18:45:23 local figures rebuilt for dr3_cn_free_w/M101_139662
+18:46:16 local figures rebuilt for dr3_cn_free_w/M8_162149
+18:47:05 local figures rebuilt for dr3_cn_free_w/M5_205715
+18:47:53 local figures rebuilt for dr3_cn_free_w/M11_248829
+18:48:35 local figures rebuilt for dr3_plain_w/M17_40840
+18:49:26 local figures rebuilt for dr3_cn_free_w/M11_218207
+18:50:10 local figures rebuilt for dr3_cn_free_w/M18_181421
+18:51:00 local figures rebuilt for dr3_cn_free_w/M7_122242
+18:51:42 local figures rebuilt for dr3_plain_w/M15_89072
+18:52:21 local figures rebuilt for dr3_plain_w/M23_143947
+18:52:59 local figures rebuilt for dr3_plain_w/M26_240536
+18:53:40 local figures rebuilt for dr3_plain_w/M18_94726
+18:54:21 local figures rebuilt for dr3_plain_w/M24_190831
+18:55:10 local figures rebuilt for dr3_cn_free_w/M13_232627
+18:55:51 local figures rebuilt for dr3_plain_w/M13_230747
+18:56:38 local figures rebuilt for dr3_cn_free_w/M101_126153
+18:57:18 local figures rebuilt for dr3_plain_w/M21_189698
+18:57:58 local figures rebuilt for dr3_plain_w/M13_259737
+18:58:36 local figures rebuilt for dr3_plain_w/M5_165871
+18:59:23 local figures rebuilt for dr3_cn_free_w/M30_54494
+19:00:16 local figures rebuilt for dr3_cn_free_w/M24_202009
+19:00:56 local figures rebuilt for dr3_plain_w/M32_68126
+19:01:45 local figures rebuilt for dr3_cn_free_w/M24_189449
+19:02:30 local figures rebuilt for dr3_cn_free_w/M3_109352
+19:03:13 local figures rebuilt for dr3_plain_w/M8_162149
+19:03:54 local figures rebuilt for dr3_plain_w/M14_27265
+19:04:32 local figures rebuilt for dr3_plain_w/M15_88032
+19:05:13 local figures rebuilt for dr3_plain_w/M19_71670
+19:05:51 local figures rebuilt for dr3_plain_w/M18_92132
+19:06:33 local figures rebuilt for dr3_plain_w/M20_86906
+19:07:20 local figures rebuilt for dr3_cn_free_w/M14_37219
+19:08:09 local figures rebuilt for dr3_cn_free_w/M30_60369
+19:08:51 local figures rebuilt for dr3_plain_w/M9_227630
+19:09:40 local figures rebuilt for dr3_cn_free_w/M16_27659
+19:10:23 local figures rebuilt for dr3_plain_w/M1_206858
+19:11:08 local figures rebuilt for dr3_plain_w/M20_87121
+19:11:54 local figures rebuilt for dr3_cn_free_w/M14_104877
+19:12:34 local figures rebuilt for dr3_plain_w/M8_163989
+19:13:18 local figures rebuilt for dr3_cn_free_w/M12_185631
+19:14:08 local figures rebuilt for dr3_cn_free_w/M23_163025
+19:14:52 local figures rebuilt for dr3_plain_w/M30_55118
+19:15:37 local figures rebuilt for dr3_cn_free_w/M18_96616
+19:16:18 local figures rebuilt for dr3_plain_w/M18_181686
+19:17:08 local figures rebuilt for dr3_cn_free_w/M1_139423
+19:17:58 local figures rebuilt for dr3_cn_free_w/M7_151258
+19:18:39 local figures rebuilt for dr3_plain_w/M6_233902
+19:19:18 local figures rebuilt for dr3_plain_w/M3_109352
+19:20:00 local figures rebuilt for dr3_plain_w/M13_232627
+19:20:38 local figures rebuilt for dr3_plain_w/M10_215290
+19:21:25 local figures rebuilt for dr3_cn_free_w/M14_36550
+19:22:18 local figures rebuilt for dr3_cn_free_w/M4_124231
+19:23:04 local figures rebuilt for dr3_plain_w/M20_77982
+19:23:55 local figures rebuilt for dr3_cn_free_w/M13_231554
+19:24:34 local figures rebuilt for dr3_plain_w/M14_36550
+19:25:29 local figures rebuilt for dr3_cn_free_w/M10_227516
+19:26:18 local figures rebuilt for dr3_cn_free_w/M11_216899
+19:27:01 local figures rebuilt for dr3_plain_w/M11_232962
+19:27:50 local figures rebuilt for dr3_cn_free_w/M27_245661
+19:28:31 local figures rebuilt for dr3_plain_w/M16_103417
+19:29:19 local figures rebuilt for dr3_cn_free_w/M4_117400
+19:30:04 local figures rebuilt for dr3_cn_free_w/M1_133240
+19:30:43 local figures rebuilt for dr3_plain_w/M10_201233
+19:31:30 local figures rebuilt for dr3_cn_free_w/M5_211347
+19:32:09 local figures rebuilt for dr3_plain_w/M18_96616
+19:32:48 local figures rebuilt for dr3_plain_w/M5_211347
+19:33:28 local figures rebuilt for dr3_plain_w/M22_174436
+19:34:10 local figures rebuilt for dr3_plain_w/M13_254350
+19:35:02 local figures rebuilt for dr3_cn_free_w/M101_129358
+19:35:53 local figures rebuilt for dr3_cn_free_w/M11_257455
+19:36:39 local figures rebuilt for dr3_cn_free_w/M3_117010
+19:37:27 local figures rebuilt for dr3_plain_w/M8_164459
+19:38:17 local figures rebuilt for dr3_cn_free_w/M10_225441
+19:38:56 local figures rebuilt for dr3_plain_w/M8_156118
+19:39:40 local figures rebuilt for dr3_cn_free_w/M102_223199
+19:40:28 local figures rebuilt for dr3_cn_free_w/M102_222287
+19:41:13 local figures rebuilt for dr3_cn_free_w/M1_208622
+19:41:53 local figures rebuilt for dr3_plain_w/M1_208622
+19:42:31 local figures rebuilt for dr3_plain_w/M1_133240
+19:43:09 local figures rebuilt for dr3_plain_w/M2_129596
+19:43:50 local figures rebuilt for dr3_plain_w/M11_215585
+19:44:29 local figures rebuilt for dr3_plain_w/M14_104877
+19:45:15 local figures rebuilt for dr3_cn_free_w/M8_145276
+19:45:54 local figures rebuilt for dr3_plain_w/M7_152125
+19:46:32 local figures rebuilt for dr3_plain_w/M19_57080
+19:47:17 local figures rebuilt for dr3_cn_free_w/M26_240536
+19:47:56 local figures rebuilt for dr3_plain_w/M17_57237
+19:48:41 local figures rebuilt for dr3_cn_free_w/M9_227630
+19:49:32 local figures rebuilt for dr3_cn_free_w/M4_123161
+19:50:18 local figures rebuilt for dr3_cn_free_w/M16_29691
+19:50:56 local figures rebuilt for dr3_plain_w/M8_145276
+19:51:35 local figures rebuilt for dr3_plain_w/M16_4949
+19:52:11 local figures rebuilt for dr3_plain_w/M23_150680
+19:52:57 local figures rebuilt for dr3_cn_free_w/M24_190831
+19:53:37 local figures rebuilt for dr3_plain_w/M18_96346
+19:54:37 local figures rebuilt for dr3_cn_free_w/M11_245864
+19:55:17 local figures rebuilt for dr3_plain_w/M102_222287
+19:55:58 local figures rebuilt for dr3_plain_w/M9_229883
+19:56:40 local figures rebuilt for dr3_cn_free_w/M10_217020
+19:57:28 local figures rebuilt for dr3_cn_free_w/M9_229883
+19:58:09 local figures rebuilt for dr3_plain_w/M21_204050
+19:58:50 local figures rebuilt for dr3_plain_w/M27_258059
+19:59:41 local figures rebuilt for dr3_cn_free_w/M27_256211
+20:00:33 local figures rebuilt for dr3_cn_free_w/M15_77745
+20:01:16 local figures rebuilt for dr3_cn_free_w/M17_57237
+20:02:00 local figures rebuilt for dr3_plain_w/M3_119005
+20:02:46 local figures rebuilt for dr3_cn_free_w/M17_40840
+20:03:23 local figures rebuilt for dr3_plain_w/M19_141436
+20:04:02 local figures rebuilt for dr3_plain_w/M7_162587
+20:04:42 local figures rebuilt for dr3_plain_w/M23_158484
+20:05:30 local figures rebuilt for dr3_cn_free_w/M15_77632
+20:06:17 local figures rebuilt for dr3_cn_free_w/M4_108989
+20:06:59 local figures rebuilt for dr3_plain_w/M2_134021
+20:07:43 local figures rebuilt for dr3_cn_free_w/M7_122025
+20:08:23 local figures rebuilt for dr3_plain_w/M12_91529
+20:09:10 local figures rebuilt for dr3_cn_free_w/M15_76336
+20:09:56 local figures rebuilt for dr3_cn_free_w/M18_182407
+20:10:44 local figures rebuilt for dr3_plain_w/M11_215711
+20:11:24 local figures rebuilt for dr3_plain_w/M19_65494
+20:12:09 local figures rebuilt for dr3_cn_free_w/M27_256994
+20:12:47 local figures rebuilt for dr3_plain_w/M17_29406
+20:13:31 local figures rebuilt for dr3_cn_free_w/M4_107370
+20:14:10 local figures rebuilt for dr3_plain_w/M20_87207
+20:15:04 local figures rebuilt for dr3_cn_free_w/M9_232005
+20:15:43 local figures rebuilt for dr3_plain_w/M13_231554
+20:16:23 local figures rebuilt for dr3_plain_w/M1_210210
+20:17:00 local figures rebuilt for dr3_plain_w/M18_181421
+20:17:45 local figures rebuilt for dr3_cn_free_w/M5_206771
+20:18:30 local figures rebuilt for dr3_cn_free_w/M20_87207
+20:19:15 local figures rebuilt for dr3_plain_w/M27_261268
+20:19:58 local figures rebuilt for dr3_plain_w/M12_181945
+20:20:38 local figures rebuilt for dr3_cn_free_w/M10_215290
+20:21:26 local figures rebuilt for dr3_cn_free_w/M4_86744
+20:22:03 local figures rebuilt for dr3_plain_w/M16_25285
+20:22:44 local figures rebuilt for dr3_cn_free_w/M17_64957
+20:23:24 local figures rebuilt for dr3_plain_w/M13_244239
+20:24:01 local figures rebuilt for dr3_plain_w/M18_182962
+20:24:41 local figures rebuilt for dr3_plain_w/M9_225678
+20:25:19 local figures rebuilt for dr3_plain_w/M24_201669
+20:25:57 local figures rebuilt for dr3_plain_w/M16_103061
+20:26:41 local figures rebuilt for dr3_cn_free_w/M4_107643
+20:27:19 local figures rebuilt for dr3_plain_w/M4_125213
+20:28:02 local figures rebuilt for dr3_cn_free_w/M102_206842
+20:28:49 local figures rebuilt for dr3_cn_free_w/M23_162810
+20:29:37 local figures rebuilt for dr3_cn_free_w/M19_65494
+20:30:26 local figures rebuilt for dr3_cn_free_w/M3_119005
+20:31:14 local figures rebuilt for dr3_cn_free_w/M20_87121
+20:31:57 local figures rebuilt for dr3_plain_w/M16_32559
+20:32:47 local figures rebuilt for dr3_cn_free_w/M30_65982
+20:33:35 local figures rebuilt for dr3_cn_free_w/M22_174436
+20:34:21 local figures rebuilt for dr3_cn_free_w/M9_212391
+20:35:01 local figures rebuilt for dr3_plain_w/M8_147539
+20:35:43 local figures rebuilt for dr3_plain_w/M101_129358
+20:36:23 local figures rebuilt for dr3_plain_w/M3_109713
+20:37:03 local figures rebuilt for dr3_plain_w/M27_260083
+20:37:48 local figures rebuilt for dr3_plain_w/M9_232005
+20:38:32 local figures rebuilt for dr3_cn_free_w/M16_103417
+20:39:10 local figures rebuilt for dr3_plain_w/M7_147849
+20:39:54 local figures rebuilt for dr3_cn_free_w/M7_147270
+20:40:35 local figures rebuilt for dr3_plain_w/M14_37723
+20:41:14 local figures rebuilt for dr3_plain_w/M8_145294
+20:41:54 local figures rebuilt for dr3_plain_w/M13_243871
+20:42:41 local figures rebuilt for dr3_plain_w/M2_210716
+20:43:22 local figures rebuilt for dr3_plain_w/M10_227672
+20:44:00 local figures rebuilt for dr3_plain_w/M102_223199
+20:44:44 local figures rebuilt for dr3_cn_free_w/M19_57080
+20:45:28 local figures rebuilt for dr3_cn_free_w/M7_147849
+20:46:16 local figures rebuilt for dr3_cn_free_w/M14_27265
+20:46:56 local figures rebuilt for dr3_plain_w/M7_124875
+20:47:49 local figures rebuilt for dr3_cn_free_w/M13_243871
+20:48:28 local figures rebuilt for dr3_plain_w/M11_248829
+20:49:11 local figures rebuilt for dr3_plain_w/M10_225441
+20:49:51 local figures rebuilt for dr3_plain_w/M9_232890
+20:50:29 local figures rebuilt for dr3_plain_w/M3_107362
+20:51:20 local figures rebuilt for dr3_cn_free_w/M30_55118
+20:52:08 local figures rebuilt for dr3_cn_free_w/M12_182890
+20:52:48 local figures rebuilt for dr3_plain_w/M7_122025
+20:53:28 local figures rebuilt for dr3_plain_w/M12_182890
+20:54:04 local figures rebuilt for dr3_plain_w/M14_103366
+20:54:43 local figures rebuilt for dr3_plain_w/M22_167853
+20:55:19 local figures rebuilt for dr3_plain_w/M102_214145
+20:56:04 local figures rebuilt for dr3_cn_free_w/M24_201669
+20:56:53 local figures rebuilt for dr3_cn_free_w/M15_88032
+20:57:42 local figures rebuilt for dr3_cn_free_w/M13_254350
+20:58:30 local figures rebuilt for dr3_cn_free_w/M14_37723
+20:59:20 local figures rebuilt for dr3_cn_free_w/M24_191051
+21:00:07 local figures rebuilt for dr3_cn_free_w/M21_189698
+21:00:54 local figures rebuilt for dr3_cn_free_w/M7_124875
+21:01:39 local figures rebuilt for dr3_cn_free_w/M16_4949
+21:02:19 local figures rebuilt for dr3_plain_w/M14_27068
+21:03:02 local figures rebuilt for dr3_cn_free_w/M14_31835
+21:03:45 local figures rebuilt for dr3_cn_free_w/M102_214145
+21:04:30 local figures rebuilt for dr3_cn_free_w/M101_209935
+21:05:16 local figures rebuilt for dr3_cn_free_w/M7_162587
+21:06:03 local figures rebuilt for dr3_cn_free_w/M11_232962
+21:06:48 local figures rebuilt for dr3_cn_free_w/M22_239682
+21:07:37 local figures rebuilt for dr3_cn_free_w/M19_57389
+21:08:24 local figures rebuilt for dr3_cn_free_w/M5_236682
+21:09:18 local figures rebuilt for dr3_cn_free_w/M6_237437
+21:09:57 local figures rebuilt for dr3_plain_w/M12_185631
+21:10:50 local figures rebuilt for dr3_cn_free_w/M20_86906
+21:11:36 local figures rebuilt for dr3_cn_free_w/M11_215585
+21:12:24 local figures rebuilt for dr3_cn_free_w/M18_95324
+21:13:12 local figures rebuilt for dr3_cn_free_w/M10_217653
+21:13:52 local figures rebuilt for dr3_plain_w/M5_206771
+21:14:40 local figures rebuilt for dr3_cn_free_w/M101_126578
+21:15:23 local figures rebuilt for dr3_plain_w/M11_218207
+21:16:02 local figures rebuilt for dr3_plain_w/M9_214899
+21:16:41 local figures rebuilt for dr3_plain_w/M10_217653
+21:17:21 local figures rebuilt for dr3_plain_w/M11_257455
+21:18:03 local figures rebuilt for dr3_cn_free_w/M20_79475
+21:18:41 local figures rebuilt for dr3_plain_w/M101_209935
+21:19:39 local figures rebuilt for dr3_cn_free_w/M2_210716
+21:20:24 local figures rebuilt for dr3_cn_free_w/M14_27068
+21:21:00 local figures rebuilt for dr3_plain_w/M20_79475
+21:21:39 local figures rebuilt for dr3_plain_w/M30_60369
+21:22:28 local figures rebuilt for dr3_cn_free_w/M19_69529
+21:23:23 local figures rebuilt for dr3_cn_free_w/M20_77982
+21:24:03 local figures rebuilt for dr3_plain_w/M3_120308
+21:24:43 local figures rebuilt for dr3_plain_w/M27_247278
+21:25:27 local figures rebuilt for dr3_cn_free_w/M12_185653
+21:26:07 local figures rebuilt for dr3_plain_w/M9_213587
+21:26:49 local figures rebuilt for dr3_plain_w/M10_231544
+21:27:38 local figures rebuilt for dr3_cn_free_w/M11_229551
+21:28:16 local figures rebuilt for dr3_plain_w/M16_29691
+21:28:51 local figures rebuilt for dr3_plain_w/M4_112534
+21:29:30 local figures rebuilt for dr3_plain_w/M27_249882
+21:30:11 local figures rebuilt for dr3_plain_w/M23_163025
+21:30:55 local figures rebuilt for dr3_cn_free_w/M18_91497
+21:31:37 local figures rebuilt for dr3_cn_free_w/M18_185040
+21:32:16 local figures rebuilt for dr3_plain_w/M4_124231
+21:32:59 local figures rebuilt for dr3_cn_free_w/M6_233902
+21:33:39 local figures rebuilt for dr3_plain_w/M31_253516
+21:34:22 local figures rebuilt for dr3_cn_free_w/M2_129596
+21:35:10 local figures rebuilt for dr3_cn_free_w/M27_247278
+21:35:57 local figures rebuilt for dr3_plain_w/M27_256211
+21:36:41 local figures rebuilt for dr3_plain_w/M10_197591
+21:37:31 local figures rebuilt for dr3_cn_free_w/M16_32559
+21:38:15 local figures rebuilt for dr3_cn_free_w/M16_103061
+21:39:04 local figures rebuilt for dr3_cn_free_w/M1_206858
+21:39:47 local figures rebuilt for dr3_cn_free_w/M23_143947
+21:40:27 local figures rebuilt for dr3_plain_w/M7_122242
+21:41:31 local figures rebuilt for dr3_cn_free_w/M4_120661
+21:42:19 local figures rebuilt for dr3_plain_w/M6_237437
+21:43:00 local figures rebuilt for dr3_plain_w/M27_259012
+21:43:44 local figures rebuilt for dr3_cn_free_w/M9_232890
+21:44:25 local figures rebuilt for dr3_plain_w/M2_133501
+21:45:21 local figures rebuilt for dr3_cn_free_w/M11_215711
+21:46:03 local figures rebuilt for dr3_plain_w/M27_245661
+21:46:40 local figures rebuilt for dr3_plain_w/M4_107370
+21:47:25 local figures rebuilt for dr3_cn_free_w/M9_213587
+21:48:05 local figures rebuilt for dr3_plain_w/M31_259181
+21:48:47 local figures rebuilt for dr3_plain_w/M11_213004
+21:49:32 local figures rebuilt for dr3_plain_w/M10_227516
+21:50:19 local figures rebuilt for dr3_cn_free_w/M1_210210
+21:51:05 local figures rebuilt for dr3_cn_free_w/M14_39865
+21:51:47 local figures rebuilt for dr3_plain_w/M30_59531
+exit 0
