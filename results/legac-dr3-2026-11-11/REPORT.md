@@ -235,14 +235,67 @@ Choices from `wiki/notes/model.md` (Sample and data; Calibration, noise and samp
 - Finite σ★ error: the σ★ prior is Normal(catalogue, error). 14 of the 208 have a NaN `SIGMA_STARS_PRIME_ERR` (M26 5, M28 4, M31 4, M32 1); 13 of them lie outside the HST F814W mosaic. All DR3: 428 spectra with σ★ and no error; DR2: 0.
 - 194 fitted: z 0.603–0.999, median 0.728; 99 with COSMOS2025, 95 with Classic; 69 are DR2 135 spectra; 73 objects fitted in chronometer arm (i).
 
-## Phase 3 estimate
+## Phase 3: DR3 window sample, partial (381 of 388 fits)
 
-- 208 galaxies, common window [4074.5, 4666.1], plain grid and C/N free.
-- Per fit from the chronometer arms: (i) $8.89 / 110 = $0.081; (j) $13.23 / 110 = $0.120. Estimate 208 × ($0.081 + $0.120) = $41.8.
-- Inputs missing for Phase 3: DR3 match files in `scripts/cosmos_photometry.py` `FILES` (99 of the 208 `SPECT_ID` are not in DR2); HST F814W cutouts for 114 (`scripts/download_hst_cutouts.py`); a DR3 COSMOS2015 aperture match (`total_photometry` reads E(B-V) through it).
+- 194 galaxies, plain grid (`dr3_plain_w`) and C/N free (`dr3_cn_free_w`), `rest_range` [4074.5, 4666.1]. `window-194/experiment.json`, seed 20260832.
+- Modal A100-40GB, 10 containers, app `ap-fKRBuiwcxTzcWygvBP4UZC`. Source dea84377, ceridwen 13791e0e, sedpy_jax 9d8aa190, image `ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c…`.
+- Estimate before launch: 194 × ($0.081 + $0.120) = $39. Modal billing report for the app: $37.39. Credits stopped at $251.20 at about 15:16; `modal billing summary` billed cost $0.12–1.40 after that. App stopped 15:20 (`modal app stop`).
+- Fits: 310 returned by `experiment.py`. Containers 6 and 8 failed at the stop; 71 of their finished fits had been copied from the live containers (`modal container exec`, MD5-checked) and are in `run/fits` and `manifest.json` `completed_cells` with a `recovered` note. 298 fits copied the same way and also returned by `experiment.py`: 1192 of 1192 files byte-identical.
+- Missing, 7: plain M11_213004, M30_59531, M10_227516, M31_259181; C/N free M1_210210, M9_213587, M14_39865 (`window-194-fit-status.csv`).
+- Resume: `python3 scripts/experiment.py run results/legac-dr3-2026-11-11/window-194/experiment.json --gpu A100-40GB --output results/legac-dr3-2026-11-11/window-194/run` fits only the 7 cells not in `completed_cells`, with the saved revision, image and seed. It refuses to launch while `modal billing summary` billed cost is above $0 (`experiment.py` `guard`).
+- DR2 references: chronometer arm (i) plain and arm (j) C/N free, 73 of the 110 window fits (`OBJECT` in the 194). DR2 overlap: `OBJECT` fitted in arm (i); new in DR3: the rest.
+
+| arm | release | fits | valid |
+|---|---|---|---|
+| C/N free | DR2 | 73 | 73 |
+| C/N free | DR3 | 194 | 191 |
+| plain | DR2 | 73 | 73 |
+| plain | DR3 | 194 | 190 |
+
+- Slope: least-squares age against z; 16–84: 10000 bootstrap resamples of galaxies, seed 20261110.
+- Planck18 line: the same fit to the age of the universe at each galaxy z (Planck 2018, Astropy `Planck18`).
+- H = −1 / ((1 + z_med) dt/dz) (Jimenez & Loeb 2002, eq. 2).
+
+| arm | release | galaxies | z range | z median | slope [Gyr per unit z] | bootstrap 16–84 | scatter [Gyr] | Planck18 line | H [km/s/Mpc] | H from 16–84 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| plain, all | DR3 | 190 | 0.603–0.999 | 0.728 | -5.00 | -5.66 to -4.34 | 0.87 | -5.22 | 113 | 100–130 |
+| C/N free, all | DR3 | 191 | 0.603–0.999 | 0.728 | -5.12 | -5.78 to -4.49 | 0.81 | -5.22 | 110 | 98–126 |
+| plain, DR2 overlap | DR3 | 72 | 0.603–0.984 | 0.728 | -4.91 | -5.94 to -3.88 | 0.93 | -5.24 | 115 | 95–146 |
+| plain, DR2 overlap | DR2 | 73 | 0.603–0.984 | 0.728 | -4.48 | -5.46 to -3.45 | 0.84 | -5.24 | 126 | 104–164 |
+| C/N free, DR2 overlap | DR3 | 71 | 0.603–0.984 | 0.728 | -4.84 | -5.84 to -3.84 | 0.83 | -5.24 | 117 | 97–147 |
+| C/N free, DR2 overlap | DR2 | 73 | 0.603–0.984 | 0.728 | -5.14 | -6.08 to -4.11 | 0.80 | -5.24 | 110 | 93–138 |
+| plain, new in DR3 | DR3 | 118 | 0.603–0.999 | 0.730 | -5.09 | -5.92 to -4.27 | 0.83 | -5.22 | 111 | 95–132 |
+| C/N free, new in DR3 | DR3 | 120 | 0.603–0.999 | 0.730 | -5.29 | -6.09 to -4.51 | 0.80 | -5.22 | 107 | 93–125 |
+
+| arm | group | release | galaxies | median [α/Fe] | ρ([α/Fe], z) | p | [α/Fe] slope per unit z (16–84) | median age [Gyr] | median [Fe/H] | median [C/Fe] | median [N/Fe] |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| plain | all | DR3 | 190 | +0.131 | -0.01 | 0.86 | +0.01 (-0.11 to +0.14) | 4.88 | -0.32 | — | — |
+| plain | DR2 overlap | DR3 | 72 | +0.131 | +0.04 | 0.72 | -0.01 (-0.24 to +0.26) | 4.85 | -0.32 | — | — |
+| plain | new in DR3 | DR3 | 118 | +0.131 | -0.03 | 0.74 | +0.01 (-0.13 to +0.16) | 4.93 | -0.31 | — | — |
+| plain | DR2 overlap | DR2 | 73 | +0.203 | -0.11 | 0.36 | -0.39 (-0.61 to -0.12) | 4.85 | -0.51 | — | — |
+| C/N free | all | DR3 | 191 | +0.162 | +0.06 | 0.38 | +0.10 (-0.03 to +0.23) | 4.88 | -0.33 | -0.03 | +0.24 |
+| C/N free | DR2 overlap | DR3 | 71 | +0.169 | +0.10 | 0.42 | +0.12 (-0.11 to +0.42) | 4.86 | -0.34 | -0.03 | +0.22 |
+| C/N free | new in DR3 | DR3 | 120 | +0.158 | +0.05 | 0.61 | +0.09 (-0.06 to +0.25) | 4.90 | -0.32 | -0.04 | +0.24 |
+| C/N free | DR2 overlap | DR2 | 73 | +0.142 | -0.07 | 0.54 | -0.07 (-0.26 to +0.16) | 5.03 | -0.50 | -0.12 | +0.18 |
+
+- [Fe/H] shift: DR3 − DR2 posterior median, each DR2-overlap galaxy. σ: half the DR2 16–84 range.
+
+| arm | galaxies | higher in DR3 | median shift [dex] | 16–84 | median shift/σ | ρ(shift, z) | p | slope per unit z (16–84) | median age shift [Gyr] | median [α/Fe] shift | same spectrum |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| C/N free | 71 | 60 | +0.177 | +0.027 to +0.305 | +2.40 | -0.04 | 0.74 | -0.46 (-0.84 to -0.04) | -0.20 | +0.031 | 67 |
+| plain | 72 | 61 | +0.210 | +0.022 to +0.336 | +2.35 | -0.05 | 0.65 | -0.38 (-0.76 to +0.05) | -0.06 | -0.051 | 68 |
+
+| arm | spectrum | galaxies | higher in DR3 | median shift [dex] |
+|---|---|---|---|---|
+| C/N free | same SPECT_ID | 67 | 56 | +0.162 |
+| C/N free | other SPECT_ID | 4 | 4 | +0.224 |
+| plain | same SPECT_ID | 68 | 57 | +0.179 |
+| plain | other SPECT_ID | 4 | 4 | +0.248 |
 
 ## Files
 
 - `analysis.ipynb`: every table above.
 - `crossmatch.csv`, `spectra-dr3-vs-dr2.csv`, `selection-counts.csv`, `selection-per-galaxy.csv`, `dr2-only-galaxies.csv`, `fits.csv`, `paired-changes.csv`, `paired-changes-per-galaxy.csv`, `calibration-polynomial.csv`, `band-pulls.csv`, `band-pulls-per-galaxy.csv`, `likelihood-evidence.csv`, `likelihood-evidence-per-galaxy.csv`.
 - `test-set/experiment.json`, `test-set/run/` (fits, manifest, Modal logs), `test-set/run-driver.log`.
+- `window-194-fits.csv`, `window-194-fit-status.csv`, `window-194-age-redshift-slopes.csv`, `window-194-afe-medians.csv`, `window-194-feh-shift.csv`, `window-194-feh-shift-per-galaxy.csv`.
+- `window-194/experiment.json`, `window-194/run/` (fits, manifest, Modal logs), `window-194/run-driver.log`.

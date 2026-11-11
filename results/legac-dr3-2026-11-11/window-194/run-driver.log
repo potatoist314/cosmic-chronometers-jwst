@@ -1,0 +1,1050 @@
+<string>:8: UserWarning: Warning: converting a masked element to nan.
+13:34:52 committed source dea843770ef5; output results/legac-dr3-2026-11-11/window-194/run
+13:34:54 launching 10 Modal A100-40GB container(s) for 388 cell(s)
+✓ Initialized. View run at 
+https://modal.com/apps/initialincrease/main/ap-fKRBuiwcxTzcWygvBP4UZC
+✓ Created objects.
+├── ✓ Uploaded /Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py
+└── ✓ Created Function fit.
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 622ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.93s
+bootstrap: Uninstalled 1 package in 26ms
+bootstrap: Installed 2 packages in 21ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-194: 13:40:20 fitting dr3_cn_free_w/M2_133501, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 564ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.84s
+bootstrap: Uninstalled 1 package in 21ms
+bootstrap: Installed 2 packages in 17ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-38: 13:40:46 fitting dr3_plain_w/M1_139423, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 622ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.95s
+bootstrap: Uninstalled 1 package in 28ms
+bootstrap: Installed 2 packages in 19ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 10ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-288: 13:41:11 fitting dr3_cn_free_w/M12_95303, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 614ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.87s
+bootstrap: Uninstalled 1 package in 21ms
+bootstrap: Installed 2 packages in 18ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 8ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 604ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.93s
+bootstrap: Uninstalled 1 package in 27ms
+bootstrap: Installed 2 packages in 20ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-43: 13:41:41 fitting dr3_plain_w/M18_182407, seed 20260832
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-277: 13:41:57 fitting dr3_cn_free_w/M3_109352, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 643ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.89s
+bootstrap: Uninstalled 1 package in 19ms
+bootstrap: Installed 2 packages in 24ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 618ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap: Ceridwen GPU environment ready.
+fit-233: 13:42:28 fitting dr3_cn_free_w/M5_211347, seed 20260832
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.92s
+bootstrap: Uninstalled 1 package in 28ms
+bootstrap: Installed 2 packages in 21ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+fit-264: 13:42:42 fitting dr3_cn_free_w/M27_261268, seed 20260832
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-67: 13:42:46 fitting dr3_plain_w/M22_167853, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 579ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.91s
+bootstrap: Uninstalled 1 package in 28ms
+bootstrap: Installed 2 packages in 21ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 8ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-36: 13:43:11 fitting dr3_plain_w/M27_258059, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 594ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.81s
+bootstrap: Uninstalled 1 package in 21ms
+bootstrap: Installed 2 packages in 18ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 6ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+fit-335: 13:43:38 fitting dr3_cn_free_w/M22_169219, seed 20260832
+fit-162: 13:43:41 fitting dr3_plain_w/M11_216899, seed 20260832
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-164: 13:43:42 fitting dr3_plain_w/M20_79475, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 593ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.79s
+bootstrap: Uninstalled 1 package in 21ms
+bootstrap: Installed 2 packages in 18ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 6ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+fit-364: 13:44:02 fitting dr3_cn_free_w/M23_150680, seed 20260832
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-279: 13:44:06 fitting dr3_cn_free_w/M4_107643, seed 20260832
+fit-12: 13:44:39 fitting dr3_plain_w/M8_162149, seed 20260832
+fit-184: 13:44:44 fitting dr3_plain_w/M102_214145, seed 20260832
+fit-248: 13:45:12 fitting dr3_cn_free_w/M27_256211, seed 20260832
+fit-91: 13:45:21 fitting dr3_plain_w/M18_96616, seed 20260832
+fit-35: 13:45:32 fitting dr3_plain_w/M30_60369, seed 20260832
+fit-99: 13:45:44 fitting dr3_plain_w/M4_123161, seed 20260832
+fit-372: 13:46:06 fitting dr3_cn_free_w/M3_119809, seed 20260832
+fit-323: 13:46:26 fitting dr3_cn_free_w/M24_201669, seed 20260832
+fit-280: 13:46:30 fitting dr3_cn_free_w/M24_203503, seed 20260832
+fit-15: 13:46:32 fitting dr3_plain_w/M4_117400, seed 20260832
+fit-118: 13:46:37 fitting dr3_plain_w/M14_27265, seed 20260832
+fit-56: 13:46:52 fitting dr3_plain_w/M4_125213, seed 20260832
+fit-39: 13:47:13 fitting dr3_plain_w/M5_211347, seed 20260832
+fit-245: 13:47:28 fitting dr3_cn_free_w/M19_69529, seed 20260832
+fit-17: 13:47:52 fitting dr3_plain_w/M19_59396, seed 20260832
+fit-238: 13:48:18 fitting dr3_cn_free_w/M15_77745, seed 20260832
+fit-202: 13:48:25 fitting dr3_cn_free_w/M9_231276, seed 20260832
+fit-71: 13:48:36 fitting dr3_plain_w/M15_88032, seed 20260832
+fit-334: 13:48:46 fitting dr3_cn_free_w/M102_206842, seed 20260832
+fit-213: 13:48:55 fitting dr3_cn_free_w/M19_71670, seed 20260832
+fit-78: 13:49:05 fitting dr3_plain_w/M22_174436, seed 20260832
+fit-265: 13:49:09 fitting dr3_cn_free_w/M15_88032, seed 20260832
+fit-58: 13:49:20 fitting dr3_plain_w/M24_189449, seed 20260832
+fit-299: 13:49:58 fitting dr3_cn_free_w/M9_214899, seed 20260832
+fit-342: 13:50:08 fitting dr3_cn_free_w/M20_77982, seed 20260832
+fit-19: 13:50:26 fitting dr3_plain_w/M19_71670, seed 20260832
+fit-135: 13:51:03 fitting dr3_plain_w/M13_254350, seed 20260832
+fit-190: 13:51:12 fitting dr3_plain_w/M17_64957, seed 20260832
+fit-292: 13:51:30 fitting dr3_cn_free_w/M23_162810, seed 20260832
+fit-369: 13:51:32 fitting dr3_cn_free_w/M17_57237, seed 20260832
+fit-383: 13:51:32 fitting dr3_cn_free_w/M31_253516, seed 20260832
+fit-30: 13:51:51 fitting dr3_plain_w/M11_229551, seed 20260832
+fit-329: 13:51:52 fitting dr3_cn_free_w/M13_254350, seed 20260832
+fit-121: 13:52:18 fitting dr3_plain_w/M18_92132, seed 20260832
+fit-8: 13:52:58 fitting dr3_plain_w/M9_231276, seed 20260832
+fit-177: 13:53:00 fitting dr3_plain_w/M12_101089, seed 20260832
+fit-325: 13:53:01 fitting dr3_cn_free_w/M101_129358, seed 20260832
+fit-46: 13:53:10 fitting dr3_plain_w/M3_120308, seed 20260832
+fit-239: 13:53:49 fitting dr3_cn_free_w/M27_260083, seed 20260832
+fit-34: 13:54:02 fitting dr3_plain_w/M20_86906, seed 20260832
+fit-145: 13:54:12 fitting dr3_plain_w/M3_119005, seed 20260832
+fit-226: 13:54:31 fitting dr3_cn_free_w/M19_65494, seed 20260832
+fit-185: 13:54:31 fitting dr3_plain_w/M23_151373, seed 20260832
+fit-276: 13:54:52 fitting dr3_cn_free_w/M14_37723, seed 20260832
+fit-102: 13:54:55 fitting dr3_plain_w/M7_147270, seed 20260832
+fit-60: 13:54:58 fitting dr3_plain_w/M9_212391, seed 20260832
+fit-4: 13:55:05 fitting dr3_plain_w/M27_247278, seed 20260832
+fit-320: 13:56:01 fitting dr3_cn_free_w/M14_37219, seed 20260832
+fit-262: 13:56:14 fitting dr3_cn_free_w/M17_40840, seed 20260832
+fit-303: 13:56:14 fitting dr3_cn_free_w/M8_163989, seed 20260832
+fit-214: 13:56:15 fitting dr3_cn_free_w/M11_257455, seed 20260832
+fit-126: 13:56:35 fitting dr3_plain_w/M14_37219, seed 20260832
+fit-158: 13:56:39 fitting dr3_plain_w/M15_76336, seed 20260832
+fit-275: 13:56:56 fitting dr3_cn_free_w/M12_185653, seed 20260832
+fit-379: 13:57:00 fitting dr3_cn_free_w/M23_151373, seed 20260832
+fit-339: 13:57:38 fitting dr3_cn_free_w/M3_119005, seed 20260832
+fit-257: 13:57:38 fitting dr3_cn_free_w/M24_191051, seed 20260832
+fit-72: 13:58:24 fitting dr3_plain_w/M101_205687, seed 20260832
+fit-229: 13:58:40 fitting dr3_cn_free_w/M30_60369, seed 20260832
+fit-201: 13:58:50 fitting dr3_cn_free_w/M16_72617, seed 20260832
+fit-133: 13:59:00 fitting dr3_plain_w/M19_141436, seed 20260832
+fit-94: 13:59:03 fitting dr3_plain_w/M12_95303, seed 20260832
+fit-305: 13:59:22 fitting dr3_cn_free_w/M3_117010, seed 20260832
+fit-81: 13:59:34 fitting dr3_plain_w/M12_185653, seed 20260832
+fit-64: 13:59:49 fitting dr3_plain_w/M9_213587, seed 20260832
+fit-116: 14:00:19 fitting dr3_plain_w/M7_151258, seed 20260832
+fit-152: 14:00:42 fitting dr3_plain_w/M7_162587, seed 20260832
+fit-350: 14:00:52 fitting dr3_cn_free_w/M21_189698, seed 20260832
+fit-180: 14:00:55 fitting dr3_plain_w/M14_39865, seed 20260832
+fit-274: 14:00:59 fitting dr3_cn_free_w/M20_87121, seed 20260832
+fit-250: 14:01:28 fitting dr3_cn_free_w/M4_125213, seed 20260832
+fit-108: 14:01:33 fitting dr3_plain_w/M9_227630, seed 20260832
+fit-62: 14:01:45 fitting dr3_plain_w/M10_231544, seed 20260832
+fit-211: 14:01:56 fitting dr3_cn_free_w/M19_59396, seed 20260832
+fit-140: 14:02:16 fitting dr3_plain_w/M102_206842, seed 20260832
+fit-29: 14:02:16 fitting dr3_plain_w/M8_164459, seed 20260832
+fit-142: 14:02:30 fitting dr3_plain_w/M23_158484, seed 20260832
+fit-365: 14:02:54 fitting dr3_cn_free_w/M20_76593, seed 20260832
+fit-337: 14:03:22 fitting dr3_cn_free_w/M16_27659, seed 20260832
+fit-235: 14:03:33 fitting dr3_cn_free_w/M7_124875, seed 20260832
+fit-224: 14:03:40 fitting dr3_cn_free_w/M11_229551, seed 20260832
+fit-261: 14:04:01 fitting dr3_cn_free_w/M22_167853, seed 20260832
+fit-5: 14:04:13 fitting dr3_plain_w/M16_32559, seed 20260832
+fit-231: 14:04:22 fitting dr3_cn_free_w/M15_77632, seed 20260832
+fit-230: 14:04:32 fitting dr3_cn_free_w/M27_258059, seed 20260832
+fit-243: 14:04:34 fitting dr3_cn_free_w/M10_225441, seed 20260832
+fit-336: 14:05:06 fitting dr3_cn_free_w/M23_158484, seed 20260832
+fit-204: 14:05:58 fitting dr3_cn_free_w/M1_205742, seed 20260832
+fit-24: 14:06:03 fitting dr3_plain_w/M1_206858, seed 20260832
+fit-344: 14:06:14 fitting dr3_cn_free_w/M16_4949, seed 20260832
+fit-368: 14:06:22 fitting dr3_cn_free_w/M30_65982, seed 20260832
+fit-188: 14:06:42 fitting dr3_plain_w/M16_29691, seed 20260832
+fit-256: 14:07:01 fitting dr3_cn_free_w/M10_231544, seed 20260832
+fit-291: 14:07:24 fitting dr3_cn_free_w/M4_108989, seed 20260832
+fit-63: 14:07:44 fitting dr3_plain_w/M24_191051, seed 20260832
+fit-165: 14:07:47 fitting dr3_plain_w/M8_156118, seed 20260832
+fit-366: 14:07:54 fitting dr3_cn_free_w/M17_140425, seed 20260832
+fit-80: 14:08:01 fitting dr3_plain_w/M20_87121, seed 20260832
+fit-193: 14:08:32 fitting dr3_plain_w/M4_112534, seed 20260832
+fit-88: 14:09:00 fitting dr3_plain_w/M14_27068, seed 20260832
+fit-373: 14:09:20 fitting dr3_cn_free_w/M102_211117, seed 20260832
+fit-351: 14:09:37 fitting dr3_cn_free_w/M102_223199, seed 20260832
+fit-53: 14:09:50 fitting dr3_plain_w/M13_248217, seed 20260832
+fit-272: 14:09:50 fitting dr3_cn_free_w/M22_174436, seed 20260832
+fit-387: 14:09:57 fitting dr3_cn_free_w/M4_112534, seed 20260832
+fit-386: 14:10:00 fitting dr3_cn_free_w/M14_104877, seed 20260832
+fit-9: 14:10:14 fitting dr3_plain_w/M2_134021, seed 20260832
+fit-89: 14:10:16 fitting dr3_plain_w/M27_249882, seed 20260832
+fit-249: 14:10:51 fitting dr3_cn_free_w/M14_31835, seed 20260832
+fit-51: 14:10:54 fitting dr3_plain_w/M19_69529, seed 20260832
+fit-13: 14:11:53 fitting dr3_plain_w/M24_202009, seed 20260832
+fit-122: 14:12:03 fitting dr3_plain_w/M27_256994, seed 20260832
+fit-113: 14:12:09 fitting dr3_plain_w/M23_163025, seed 20260832
+fit-332: 14:12:11 fitting dr3_cn_free_w/M7_122025, seed 20260832
+fit-259: 14:12:25 fitting dr3_cn_free_w/M102_222287, seed 20260832
+fit-222: 14:12:27 fitting dr3_cn_free_w/M30_59531, seed 20260832
+fit-109: 14:12:29 fitting dr3_plain_w/M8_163989, seed 20260832
+fit-298: 14:12:36 fitting dr3_cn_free_w/M27_259012, seed 20260832
+fit-254: 14:12:53 fitting dr3_cn_free_w/M9_212391, seed 20260832
+fit-378: 14:13:28 fitting dr3_cn_free_w/M102_214145, seed 20260832
+fit-174: 14:13:57 fitting dr3_plain_w/M30_65982, seed 20260832
+fit-55: 14:13:59 fitting dr3_plain_w/M14_31835, seed 20260832
+fit-381: 14:14:07 fitting dr3_cn_free_w/M18_91497, seed 20260832
+fit-385: 14:14:16 fitting dr3_cn_free_w/M12_185631, seed 20260832
+fit-27: 14:14:54 fitting dr3_plain_w/M12_91529, seed 20260832
+fit-319: 14:15:25 fitting dr3_cn_free_w/M1_208622, seed 20260832
+fit-141: 14:15:28 fitting dr3_plain_w/M22_169219, seed 20260832
+fit-370: 14:15:45 fitting dr3_cn_free_w/M10_201233, seed 20260832
+fit-197: 14:15:47 fitting dr3_cn_free_w/M12_181945, seed 20260832
+fit-50: 14:15:51 fitting dr3_plain_w/M8_147539, seed 20260832
+fit-349: 14:15:59 fitting dr3_cn_free_w/M101_209935, seed 20260832
+fit-309: 14:16:05 fitting dr3_cn_free_w/M13_259737, seed 20260832
+fit-376: 14:16:50 fitting dr3_cn_free_w/M18_185040, seed 20260832
+fit-307: 14:16:51 fitting dr3_cn_free_w/M23_163025, seed 20260832
+fit-352: 14:16:57 fitting dr3_cn_free_w/M15_76336, seed 20260832
+fit-107: 14:17:21 fitting dr3_plain_w/M16_31873, seed 20260832
+fit-131: 14:17:46 fitting dr3_plain_w/M101_129358, seed 20260832
+fit-125: 14:18:07 fitting dr3_plain_w/M1_208622, seed 20260832
+fit-171: 14:18:29 fitting dr3_plain_w/M20_76593, seed 20260832
+fit-346: 14:18:54 fitting dr3_cn_free_w/M7_162587, seed 20260832
+fit-33: 14:19:02 fitting dr3_plain_w/M6_234538, seed 20260832
+fit-100: 14:19:15 fitting dr3_plain_w/M101_126578, seed 20260832
+fit-354: 14:19:18 fitting dr3_cn_free_w/M101_139662, seed 20260832
+fit-26: 14:19:30 fitting dr3_plain_w/M4_124231, seed 20260832
+fit-14: 14:19:46 fitting dr3_plain_w/M30_55118, seed 20260832
+fit-75: 14:19:46 fitting dr3_plain_w/M3_109713, seed 20260832
+fit-163: 14:19:56 fitting dr3_plain_w/M1_133240, seed 20260832
+fit-237: 14:20:09 fitting dr3_cn_free_w/M18_182407, seed 20260832
+fit-263: 14:20:21 fitting dr3_cn_free_w/M18_94726, seed 20260832
+fit-321: 14:21:03 fitting dr3_cn_free_w/M17_29406, seed 20260832
+fit-244: 14:21:08 fitting dr3_cn_free_w/M8_147539, seed 20260832
+fit-340: 14:21:28 fitting dr3_cn_free_w/M6_233902, seed 20260832
+fit-236: 14:21:36 fitting dr3_cn_free_w/M11_232962, seed 20260832
+fit-285: 14:21:40 fitting dr3_cn_free_w/M18_96616, seed 20260832
+fit-45: 14:21:41 fitting dr3_plain_w/M27_260083, seed 20260832
+fit-47: 14:21:41 fitting dr3_plain_w/M2_129596, seed 20260832
+fit-206: 14:21:56 fitting dr3_cn_free_w/M8_162149, seed 20260832
+fit-139: 14:23:06 fitting dr3_plain_w/M11_215711, seed 20260832
+fit-331: 14:23:19 fitting dr3_cn_free_w/M8_145294, seed 20260832
+fit-22: 14:23:29 fitting dr3_plain_w/M11_215585, seed 20260832
+fit-48: 14:23:38 fitting dr3_plain_w/M9_232005, seed 20260832
+fit-327: 14:23:57 fitting dr3_cn_free_w/M19_141436, seed 20260832
+fit-40: 14:24:02 fitting dr3_plain_w/M3_111390, seed 20260832
+fit-101: 14:24:17 fitting dr3_plain_w/M18_181686, seed 20260832
+fit-189: 14:24:17 fitting dr3_plain_w/M31_253516, seed 20260832
+fit-246: 14:24:33 fitting dr3_cn_free_w/M22_239682, seed 20260832
+fit-217: 14:25:12 fitting dr3_cn_free_w/M5_205715, seed 20260832
+fit-192: 14:25:26 fitting dr3_plain_w/M14_104877, seed 20260832
+fit-32: 14:25:29 fitting dr3_plain_w/M19_65494, seed 20260832
+fit-322: 14:25:49 fitting dr3_cn_free_w/M16_103417, seed 20260832
+fit-315: 14:25:52 fitting dr3_cn_free_w/M18_92132, seed 20260832
+fit-232: 14:26:06 fitting dr3_cn_free_w/M1_139423, seed 20260832
+fit-227: 14:26:08 fitting dr3_cn_free_w/M6_234538, seed 20260832
+fit-241: 14:26:23 fitting dr3_cn_free_w/M2_129596, seed 20260832
+fit-360: 14:26:28 fitting dr3_cn_free_w/M9_225678, seed 20260832
+fit-311: 14:27:11 fitting dr3_cn_free_w/M8_145276, seed 20260832
+fit-200: 14:27:21 fitting dr3_cn_free_w/M19_57389, seed 20260832
+fit-316: 14:27:30 fitting dr3_cn_free_w/M27_256994, seed 20260832
+fit-287: 14:28:12 fitting dr3_cn_free_w/M11_248829, seed 20260832
+fit-66: 14:28:34 fitting dr3_plain_w/M18_95324, seed 20260832
+fit-59: 14:28:37 fitting dr3_plain_w/M7_147849, seed 20260832
+fit-310: 14:29:00 fitting dr3_cn_free_w/M7_151258, seed 20260832
+fit-198: 14:29:12 fitting dr3_cn_free_w/M27_247278, seed 20260832
+fit-182: 14:29:13 fitting dr3_plain_w/M18_185040, seed 20260832
+fit-283: 14:29:29 fitting dr3_cn_free_w/M27_249882, seed 20260832
+fit-130: 14:29:52 fitting dr3_plain_w/M7_152125, seed 20260832
+fit-127: 14:30:20 fitting dr3_plain_w/M17_29406, seed 20260832
+fit-296: 14:30:30 fitting dr3_cn_free_w/M7_147270, seed 20260832
+fit-225: 14:30:32 fitting dr3_cn_free_w/M5_236682, seed 20260832
+fit-187: 14:30:35 fitting dr3_plain_w/M18_91497, seed 20260832
+fit-143: 14:30:58 fitting dr3_plain_w/M16_27659, seed 20260832
+fit-68: 14:31:07 fitting dr3_plain_w/M17_40840, seed 20260832
+fit-167: 14:31:44 fitting dr3_plain_w/M19_57080, seed 20260832
+fit-146: 14:31:56 fitting dr3_plain_w/M6_233902, seed 20260832
+fit-317: 14:32:13 fitting dr3_cn_free_w/M4_107370, seed 20260832
+fit-324: 14:32:20 fitting dr3_cn_free_w/M7_152125, seed 20260832
+fit-234: 14:32:23 fitting dr3_cn_free_w/M3_111390, seed 20260832
+fit-54: 14:32:32 fitting dr3_plain_w/M27_256211, seed 20260832
+fit-221: 14:32:47 fitting dr3_cn_free_w/M12_91529, seed 20260832
+fit-215: 14:33:01 fitting dr3_cn_free_w/M11_218207, seed 20260832
+fit-82: 14:33:19 fitting dr3_plain_w/M14_37723, seed 20260832
+fit-270: 14:33:27 fitting dr3_cn_free_w/M6_237437, seed 20260832
+fit-289: 14:33:36 fitting dr3_cn_free_w/M26_240536, seed 20260832
+fit-83: 14:33:39 fitting dr3_plain_w/M3_109352, seed 20260832
+fit-87: 14:34:40 fitting dr3_plain_w/M10_197591, seed 20260832
+fit-151: 14:34:54 fitting dr3_plain_w/M20_87207, seed 20260832
+fit-111: 14:35:01 fitting dr3_plain_w/M3_117010, seed 20260832
+fit-210: 14:35:04 fitting dr3_cn_free_w/M18_96346, seed 20260832
+fit-25: 14:35:23 fitting dr3_plain_w/M13_232627, seed 20260832
+fit-137: 14:35:32 fitting dr3_plain_w/M8_145294, seed 20260832
+fit-278: 14:35:53 fitting dr3_cn_free_w/M13_230747, seed 20260832
+fit-348: 14:36:05 fitting dr3_cn_free_w/M18_181421, seed 20260832
+fit-175: 14:36:24 fitting dr3_plain_w/M17_57237, seed 20260832
+fit-242: 14:36:39 fitting dr3_cn_free_w/M9_232005, seed 20260832
+fit-375: 14:36:50 fitting dr3_cn_free_w/M15_89072, seed 20260832
+fit-199: 14:36:55 fitting dr3_cn_free_w/M16_32559, seed 20260832
+fit-191: 14:37:01 fitting dr3_plain_w/M12_185631, seed 20260832
+fit-173: 14:37:13 fitting dr3_plain_w/M10_215290, seed 20260832
+fit-92: 14:37:29 fitting dr3_plain_w/M13_243871, seed 20260832
+fit-308: 14:37:58 fitting dr3_cn_free_w/M21_204050, seed 20260832
+fit-302: 14:38:15 fitting dr3_cn_free_w/M9_227630, seed 20260832
+fit-330: 14:38:38 fitting dr3_cn_free_w/M14_103366, seed 20260832
+fit-228: 14:38:46 fitting dr3_cn_free_w/M20_86906, seed 20260832
+fit-267: 14:38:49 fitting dr3_cn_free_w/M7_122242, seed 20260832
+fit-347: 14:38:51 fitting dr3_cn_free_w/M14_36550, seed 20260832
+fit-1: 14:39:35 fitting dr3_plain_w/M2_210716, seed 20260832
+fit-301: 14:39:38 fitting dr3_cn_free_w/M16_31873, seed 20260832
+fit-149: 14:40:00 fitting dr3_plain_w/M13_231554, seed 20260832
+fit-318: 14:40:07 fitting dr3_cn_free_w/M16_103061, seed 20260832
+fit-52: 14:40:51 fitting dr3_plain_w/M22_239682, seed 20260832
+fit-284: 14:41:13 fitting dr3_cn_free_w/M16_25285, seed 20260832
+fit-293: 14:41:16 fitting dr3_cn_free_w/M4_123161, seed 20260832
+fit-220: 14:41:22 fitting dr3_cn_free_w/M4_124231, seed 20260832
+fit-2: 14:41:43 fitting dr3_plain_w/M1_210210, seed 20260832
+fit-103: 14:41:48 fitting dr3_plain_w/M10_227672, seed 20260832
+fit-181: 14:41:49 fitting dr3_plain_w/M15_89072, seed 20260832
+fit-216: 14:41:51 fitting dr3_cn_free_w/M11_215585, seed 20260832
+fit-269: 14:42:30 fitting dr3_cn_free_w/M3_109713, seed 20260832
+fit-168: 14:42:41 fitting dr3_plain_w/M101_126153, seed 20260832
+fit-218: 14:42:50 fitting dr3_cn_free_w/M1_206858, seed 20260832
+fit-154: 14:43:37 fitting dr3_plain_w/M18_181421, seed 20260832
+fit-186: 14:43:44 fitting dr3_plain_w/M23_143947, seed 20260832
+fit-157: 14:43:50 fitting dr3_plain_w/M102_223199, seed 20260832
+fit-268: 14:43:56 fitting dr3_cn_free_w/M13_244239, seed 20260832
+fit-148: 14:44:09 fitting dr3_plain_w/M20_77982, seed 20260832
+fit-266: 14:44:30 fitting dr3_cn_free_w/M101_205687, seed 20260832
+fit-382: 14:44:35 fitting dr3_cn_free_w/M16_29691, seed 20260832
+fit-260: 14:44:36 fitting dr3_cn_free_w/M18_95324, seed 20260832
+fit-353: 14:45:20 fitting dr3_cn_free_w/M5_206771, seed 20260832
+fit-179: 14:45:25 fitting dr3_plain_w/M102_211117, seed 20260832
+fit-95: 14:45:38 fitting dr3_plain_w/M26_240536, seed 20260832
+fit-361: 14:45:43 fitting dr3_cn_free_w/M19_57080, seed 20260832
+fit-343: 14:46:02 fitting dr3_cn_free_w/M13_231554, seed 20260832
+fit-380: 14:46:09 fitting dr3_cn_free_w/M23_143947, seed 20260832
+fit-11: 14:46:46 fitting dr3_plain_w/M4_86744, seed 20260832
+fit-10: 14:47:13 fitting dr3_plain_w/M1_205742, seed 20260832
+fit-371: 14:47:16 fitting dr3_cn_free_w/M12_101089, seed 20260832
+fit-117: 14:47:31 fitting dr3_plain_w/M8_145276, seed 20260832
+fit-69: 14:47:32 fitting dr3_plain_w/M18_94726, seed 20260832
+fit-338: 14:47:44 fitting dr3_cn_free_w/M10_217653, seed 20260832
+fit-345: 14:48:09 fitting dr3_cn_free_w/M20_87207, seed 20260832
+fit-153: 14:48:28 fitting dr3_plain_w/M14_36550, seed 20260832
+fit-253: 14:48:33 fitting dr3_cn_free_w/M7_147849, seed 20260832
+fit-183: 14:48:37 fitting dr3_plain_w/M30_54494, seed 20260832
+fit-73: 14:48:57 fitting dr3_plain_w/M7_122242, seed 20260832
+fit-363: 14:49:15 fitting dr3_cn_free_w/M18_182962, seed 20260832
+fit-150: 14:49:28 fitting dr3_plain_w/M16_4949, seed 20260832
+fit-110: 14:49:35 fitting dr3_plain_w/M24_190831, seed 20260832
+fit-134: 14:49:50 fitting dr3_plain_w/M10_217020, seed 20260832
+fit-251: 14:50:08 fitting dr3_cn_free_w/M10_227516, seed 20260832
+fit-159: 14:50:32 fitting dr3_plain_w/M5_206771, seed 20260832
+fit-31: 14:50:33 fitting dr3_plain_w/M5_236682, seed 20260832
+fit-70: 14:50:44 fitting dr3_plain_w/M27_261268, seed 20260832
+fit-306: 14:50:54 fitting dr3_cn_free_w/M4_120661, seed 20260832
+fit-170: 14:51:32 fitting dr3_plain_w/M23_150680, seed 20260832
+fit-79: 14:51:32 fitting dr3_plain_w/M10_230319, seed 20260832
+fit-219: 14:51:40 fitting dr3_cn_free_w/M13_232627, seed 20260832
+fit-44: 14:51:54 fitting dr3_plain_w/M15_77745, seed 20260832
+fit-312: 14:52:00 fitting dr3_cn_free_w/M14_27265, seed 20260832
+fit-294: 14:52:23 fitting dr3_cn_free_w/M101_126578, seed 20260832
+fit-300: 14:52:35 fitting dr3_cn_free_w/M31_259181, seed 20260832
+fit-3: 14:52:51 fitting dr3_plain_w/M12_181945, seed 20260832
+fit-304: 14:53:22 fitting dr3_cn_free_w/M24_190831, seed 20260832
+fit-356: 14:53:28 fitting dr3_cn_free_w/M11_216899, seed 20260832
+fit-240: 14:53:33 fitting dr3_cn_free_w/M3_120308, seed 20260832
+fit-86: 14:54:00 fitting dr3_plain_w/M24_203503, seed 20260832
+fit-84: 14:54:51 fitting dr3_plain_w/M13_230747, seed 20260832
+fit-367: 14:54:58 fitting dr3_cn_free_w/M10_215290, seed 20260832
+fit-76: 14:54:58 fitting dr3_plain_w/M6_237437, seed 20260832
+fit-41: 14:55:09 fitting dr3_plain_w/M7_124875, seed 20260832
+fit-21: 14:55:10 fitting dr3_plain_w/M11_218207, seed 20260832
+fit-160: 14:55:34 fitting dr3_plain_w/M101_139662, seed 20260832
+fit-161: 14:55:54 fitting dr3_plain_w/M11_245864, seed 20260832
+fit-297: 14:56:23 fitting dr3_cn_free_w/M10_227672, seed 20260832
+fit-16: 14:56:24 fitting dr3_plain_w/M18_96346, seed 20260832
+fit-42: 14:56:33 fitting dr3_plain_w/M11_232962, seed 20260832
+fit-362: 14:56:46 fitting dr3_cn_free_w/M101_126153, seed 20260832
+fit-105: 14:56:59 fitting dr3_plain_w/M9_214899, seed 20260832
+fit-286: 14:57:00 fitting dr3_cn_free_w/M13_243871, seed 20260832
+fit-295: 14:57:17 fitting dr3_cn_free_w/M18_181686, seed 20260832
+fit-104: 14:57:22 fitting dr3_plain_w/M27_259012, seed 20260832
+fit-205: 14:57:24 fitting dr3_cn_free_w/M4_86744, seed 20260832
+fit-178: 14:58:17 fitting dr3_plain_w/M3_119809, seed 20260832
+fit-314: 14:58:27 fitting dr3_cn_free_w/M27_245661, seed 20260832
+fit-355: 14:58:30 fitting dr3_cn_free_w/M11_245864, seed 20260832
+fit-144: 14:58:46 fitting dr3_plain_w/M10_217653, seed 20260832
+fit-341: 14:59:21 fitting dr3_cn_free_w/M9_232890, seed 20260832
+fit-255: 14:59:24 fitting dr3_cn_free_w/M5_165871, seed 20260832
+fit-156: 14:59:40 fitting dr3_plain_w/M21_189698, seed 20260832
+fit-97: 15:00:03 fitting dr3_plain_w/M4_108989, seed 20260832
+fit-93: 15:00:06 fitting dr3_plain_w/M11_248829, seed 20260832
+fit-273: 15:00:10 fitting dr3_cn_free_w/M10_230319, seed 20260832
+fit-90: 15:00:12 fitting dr3_plain_w/M16_25285, seed 20260832
+fit-20: 15:00:38 fitting dr3_plain_w/M11_257455, seed 20260832
+fit-128: 15:01:27 fitting dr3_plain_w/M16_103417, seed 20260832
+fit-115: 15:01:32 fitting dr3_plain_w/M13_259737, seed 20260832
+fit-281: 15:01:54 fitting dr3_cn_free_w/M10_197591, seed 20260832
+fit-384: 15:01:59 fitting dr3_cn_free_w/M17_64957, seed 20260832
+fit-49: 15:02:02 fitting dr3_plain_w/M10_225441, seed 20260832
+fit-212: 15:02:04 fitting dr3_cn_free_w/M11_213004, seed 20260832
+fit-0: 15:02:06 fitting dr3_plain_w/M2_133501, seed 20260832
+fit-358: 15:02:34 fitting dr3_cn_free_w/M20_79475, seed 20260832
+fit-65: 15:02:57 fitting dr3_plain_w/M102_222287, seed 20260832
+fit-209: 15:03:13 fitting dr3_cn_free_w/M4_117400, seed 20260832
+fit-23: 15:03:24 fitting dr3_plain_w/M5_205715, seed 20260832
+fit-61: 15:03:31 fitting dr3_plain_w/M5_165871, seed 20260832
+fit-147: 15:04:05 fitting dr3_plain_w/M9_232890, seed 20260832
+fit-333: 15:04:17 fitting dr3_cn_free_w/M11_215711, seed 20260832
+fit-74: 15:04:32 fitting dr3_plain_w/M13_244239, seed 20260832
+fit-96: 15:04:55 fitting dr3_plain_w/M9_229883, seed 20260832
+fit-155: 15:05:09 fitting dr3_plain_w/M101_209935, seed 20260832
+fit-98: 15:05:10 fitting dr3_plain_w/M23_162810, seed 20260832
+fit-223: 15:05:10 fitting dr3_cn_free_w/M8_164459, seed 20260832
+fit-7: 15:05:20 fitting dr3_plain_w/M16_72617, seed 20260832
+fit-377: 15:05:25 fitting dr3_cn_free_w/M30_54494, seed 20260832
+fit-77: 15:05:52 fitting dr3_plain_w/M3_107362, seed 20260832
+fit-357: 15:06:03 fitting dr3_cn_free_w/M1_133240, seed 20260832
+fit-169: 15:06:22 fitting dr3_plain_w/M18_182962, seed 20260832
+fit-328: 15:06:55 fitting dr3_cn_free_w/M10_217020, seed 20260832
+fit-195: 15:07:01 fitting dr3_cn_free_w/M2_210716, seed 20260832
+fit-172: 15:07:04 fitting dr3_plain_w/M17_140425, seed 20260832
+fit-359: 15:07:30 fitting dr3_cn_free_w/M8_156118, seed 20260832
+fit-208: 15:07:46 fitting dr3_cn_free_w/M30_55118, seed 20260832
+fit-166: 15:08:08 fitting dr3_plain_w/M9_225678, seed 20260832
+fit-120: 15:08:21 fitting dr3_plain_w/M27_245661, seed 20260832
+fit-85: 15:08:23 fitting dr3_plain_w/M4_107643, seed 20260832
+fit-176: 15:08:33 fitting dr3_plain_w/M10_201233, seed 20260832
+fit-207: 15:08:33 fitting dr3_cn_free_w/M24_202009, seed 20260832
+fit-37: 15:09:04 fitting dr3_plain_w/M15_77632, seed 20260832
+fit-290: 15:09:36 fitting dr3_cn_free_w/M9_229883, seed 20260832
+fit-129: 15:10:03 fitting dr3_plain_w/M24_201669, seed 20260832
+fit-203: 15:10:08 fitting dr3_cn_free_w/M2_134021, seed 20260832
+fit-271: 15:10:12 fitting dr3_cn_free_w/M3_107362, seed 20260832
+fit-282: 15:10:28 fitting dr3_cn_free_w/M14_27068, seed 20260832
+fit-123: 15:10:31 fitting dr3_plain_w/M4_107370, seed 20260832
+fit-313: 15:10:57 fitting dr3_cn_free_w/M12_182890, seed 20260832
+fit-326: 15:11:03 fitting dr3_cn_free_w/M32_68126, seed 20260832
+fit-124: 15:11:48 fitting dr3_plain_w/M16_103061, seed 20260832
+fit-132: 15:11:55 fitting dr3_plain_w/M32_68126, seed 20260832
+fit-196: 15:12:21 fitting dr3_cn_free_w/M1_210210, seed 20260832
+fit-114: 15:12:38 fitting dr3_plain_w/M21_204050, seed 20260832
+fit-6: 15:13:06 fitting dr3_plain_w/M19_57389, seed 20260832
+fit-258: 15:13:17 fitting dr3_cn_free_w/M9_213587, seed 20260832
+fit-252: 15:13:50 fitting dr3_cn_free_w/M24_189449, seed 20260832
+fit-138: 15:13:52 fitting dr3_plain_w/M7_122025, seed 20260832
+fit-247: 15:13:52 fitting dr3_cn_free_w/M13_248217, seed 20260832
+fit-112: 15:15:16 fitting dr3_plain_w/M4_120661, seed 20260832
+fit-374: 15:15:29 fitting dr3_cn_free_w/M14_39865, seed 20260832
+fit-119: 15:15:43 fitting dr3_plain_w/M12_182890, seed 20260832
+fit-106: 15:16:10 fitting dr3_plain_w/M31_259181, seed 20260832
+fit-136: 15:17:41 fitting dr3_plain_w/M14_103366, seed 20260832
+fit-18: 15:18:04 fitting dr3_plain_w/M11_213004, seed 20260832
+fit-28: 15:18:31 fitting dr3_plain_w/M30_59531, seed 20260832
+Stopping app - user stopped from CLI.
+Runner terminated.
+Runner terminated.
+[modal-client] 2026-11-11T15:20:10+0000 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+[modal-client] 2026-11-11T15:20:25+0000 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+[modal-client] 2026-11-11T15:20:41+0000 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+[modal-client] 2026-11-11T15:20:56+0000 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+[modal-client] 2026-11-11T15:21:11+0000 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+[modal-client] 2026-11-11T15:21:26+0000 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+[modal-client] 2026-11-11T15:21:42+0000 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+[modal-client] 2026-11-11T15:21:57+0000 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+[modal-client] 2026-11-11T15:22:12+0000 Loop attempt for _run_app.<locals>.heartbeat failed
+Traceback (most recent call last):
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_utils/async_utils.py", line 588, in loop_coro
+    await asyncio.wait_for(async_f(), timeout=timeout)
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 66, in _heartbeat
+    await client._stub.AppHeartbeat(request, retry=Retry(attempt_timeout=HEARTBEAT_TIMEOUT))
+modal.exception.ConflictError: App state is APP_STATE_STOPPED
+✓ App completed. View run at 
+https://modal.com/apps/initialincrease/main/ap-fKRBuiwcxTzcWygvBP4UZC
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:10 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:27:57 SweepError: RemoteError: 
+15:28:45 Modal attempt: $29.0184 estimated; failed cells: ['dr3_plain_w/M22_167853', 'dr3_plain_w/M102_214145', 'dr3_cn_free_w/M24_201669', 'dr3_cn_free_w/M15_88032', 'dr3_cn_free_w/M13_254350', 'dr3_cn_free_w/M14_37723', 'dr3_cn_free_w/M24_191051', 'dr3_cn_free_w/M21_189698', 'dr3_cn_free_w/M7_124875', 'dr3_cn_free_w/M16_4949', 'dr3_plain_w/M14_27068', 'dr3_cn_free_w/M14_31835', 'dr3_cn_free_w/M102_214145', 'dr3_cn_free_w/M101_209935', 'dr3_cn_free_w/M7_162587', 'dr3_cn_free_w/M11_232962', 'dr3_cn_free_w/M22_239682', 'dr3_cn_free_w/M19_57389', 'dr3_cn_free_w/M5_236682', 'dr3_cn_free_w/M6_237437', 'dr3_plain_w/M12_185631', 'dr3_cn_free_w/M20_86906', 'dr3_cn_free_w/M11_215585', 'dr3_cn_free_w/M18_95324', 'dr3_cn_free_w/M10_217653', 'dr3_plain_w/M5_206771', 'dr3_cn_free_w/M101_126578', 'dr3_plain_w/M11_218207', 'dr3_plain_w/M9_214899', 'dr3_plain_w/M10_217653', 'dr3_plain_w/M11_257455', 'dr3_cn_free_w/M20_79475', 'dr3_plain_w/M101_209935', 'dr3_cn_free_w/M2_210716', 'dr3_cn_free_w/M14_27068', 'dr3_cn_free_w/M9_213587', 'dr3_plain_w/M31_259181', 'dr3_plain_w/M11_213004', 'dr3_plain_w/M10_227516', 'dr3_plain_w/M20_79475', 'dr3_plain_w/M30_60369', 'dr3_cn_free_w/M19_69529', 'dr3_cn_free_w/M20_77982', 'dr3_plain_w/M3_120308', 'dr3_plain_w/M27_247278', 'dr3_cn_free_w/M12_185653', 'dr3_plain_w/M9_213587', 'dr3_plain_w/M10_231544', 'dr3_cn_free_w/M11_229551', 'dr3_plain_w/M16_29691', 'dr3_plain_w/M4_112534', 'dr3_plain_w/M27_249882', 'dr3_plain_w/M23_163025', 'dr3_cn_free_w/M18_91497', 'dr3_cn_free_w/M18_185040', 'dr3_plain_w/M4_124231', 'dr3_cn_free_w/M6_233902', 'dr3_plain_w/M31_253516', 'dr3_cn_free_w/M2_129596', 'dr3_cn_free_w/M27_247278', 'dr3_plain_w/M27_256211', 'dr3_plain_w/M10_197591', 'dr3_cn_free_w/M16_32559', 'dr3_cn_free_w/M16_103061', 'dr3_cn_free_w/M1_206858', 'dr3_cn_free_w/M23_143947', 'dr3_plain_w/M7_122242', 'dr3_cn_free_w/M4_120661', 'dr3_plain_w/M6_237437', 'dr3_plain_w/M27_259012', 'dr3_cn_free_w/M9_232890', 'dr3_plain_w/M2_133501', 'dr3_cn_free_w/M11_215711', 'dr3_plain_w/M27_245661', 'dr3_plain_w/M4_107370', 'dr3_cn_free_w/M1_210210', 'dr3_cn_free_w/M14_39865', 'dr3_plain_w/M30_59531']
+exit 1
