@@ -789,5 +789,30 @@
     "observed_error": "Not authorised to send Apple events to Safari. (-1743)",
     "status": "Not tested visually",
     "live_NAS_text_readback": true
-  }
+  },
+  "experiment4": {
+    "configured": 27,
+    "independently_validated": 27,
+    "recovery_CN_off": true,
+    "artifact_hashes": "injection/artifact-checks.json",
+    "no_image_outputs": true,
+    "all_background_refresh_jobs_finished": true
+  },
+  "modal_final_check": {
+    "utc": "2026-11-11T00:25:43.646615+00:00",
+    "owned_apps": [
+      "ap-4r098jXlR0EXj09b8f0NNe",
+      "ap-AI3NXyBmtrG3SS3ONpM6Y2",
+      "ap-Z1tYS1SkyBSBr1WJkP8bAi",
+      "ap-edR4LQBkaIbFkDZMcr0xup",
+      "ap-fsXqGBc6Lsk5v4HpgO35T1",
+      "ap-j82Oey9vB9Ojvy9ebvi62e",
+      "ap-pBQ7YwaJpTgig8tiuuC3Lo",
+      "ap-pk9plDPnpd8xMJ3wAGAaLA",
+      "ap-xzYZOTJhXMkDqhyINOMHmX"
+    ],
+    "active_owned_containers": [],
+    "monthly_billed_cost": "0E-8"
+  },
+  "todo_check": "No clearly matching C/N, abundance, carbon, MaNGA or chronometer todo found; no unrelated todo ticked."
 }

@@ -1,6 +1,6 @@
 # C/N responses and injection recovery
 
-Experiment 3: all 78 fits retrieved and independently validated. Experiment 4: 27 injections generated and checked; plain-grid recovery is running.
+All 78 real-data fits and 27 plain-grid mock recoveries are retrieved and independently validated. Every owned background job has finished and no owned Modal container remains.
 
 ## Experiment 3 results
 
@@ -48,6 +48,52 @@ Medians of matched-galaxy differences; these differ from differences between gro
 
 All galaxies and intervals: [per-galaxy table](exp3-per-galaxy.csv). [Group medians](exp3-medians.csv). [Matched changes](exp3-paired-changes.csv).
 
+## Experiment 4 results
+
+Within these mocks, omitted C/N biases [α/Fe] downward. Carbon-only injections make the recovered age older; nitrogen-only injections make it younger. At C/Fe=+0.15, N/Fe=+0.30, the paired changes from zero injection are −0.169 dex in [α/Fe], −0.114 Gyr in age and +0.139 dex in [Fe/H]. At +0.30/+0.60, they are −0.338 dex, −0.285 Gyr and +0.249 dex.
+
+The task records carbon-mask shifts of about +0.13 dex and +0.32 Gyr. The moderate injection has a comparable [α/Fe] effect but a smaller age effect. The strongest injection has an age effect near that scale but a substantially larger [α/Fe] effect. Neither tested case reproduces both median shifts together. The individual paired age shifts are −0.159…−0.040 Gyr for +0.15/+0.30 and −0.360…−0.240 Gyr for +0.30/+0.60 across the three seeds.
+
+No nonzero tested pair reproduces the median signs of all five observed M1_210210 bands. The real baseline pulls are Mg b −4.19, C2 −6.10, CN4150 −4.31, G4300 +4.21 and Fe4383 +2.14. All carbon-positive cases have negative median G4300 pulls. Nitrogen without carbon can make G4300 positive, but its C2 pull is positive. These injections therefore reproduce part of the downward [α/Fe] bias, with a C/N-dependent age bias, rather than the full observed residual pattern.
+
+Medians over three noise seeds. Bias is recovered median minus recorded truth. Age is in Gyr and abundances are in dex.
+
+| C/Fe injected | N/Fe injected | afe recovered | age recovered | Fe/H recovered | afe bias | age bias | Fe/H bias |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0.000 | 0.000 | 0.199 | 3.579 | -0.222 | -0.001 | -0.010 | -0.022 |
+| 0.000 | 0.300 | 0.140 | 2.726 | -0.090 | -0.060 | -0.863 | 0.110 |
+| 0.000 | 0.600 | 0.087 | 2.268 | 0.026 | -0.113 | -1.320 | 0.226 |
+| 0.150 | 0.000 | 0.086 | 4.190 | -0.191 | -0.114 | 0.601 | 0.009 |
+| 0.150 | 0.300 | 0.030 | 3.466 | -0.083 | -0.170 | -0.123 | 0.117 |
+| 0.150 | 0.600 | -0.033 | 2.602 | 0.025 | -0.233 | -0.987 | 0.225 |
+| 0.300 | 0.000 | -0.050 | 4.498 | -0.149 | -0.250 | 0.909 | 0.051 |
+| 0.300 | 0.300 | -0.096 | 3.908 | -0.060 | -0.296 | 0.319 | 0.140 |
+| 0.300 | 0.600 | -0.140 | 3.340 | 0.025 | -0.340 | -0.249 | 0.225 |
+
+Band-summed pulls divided by sqrt(n), medians over the same three seeds.
+
+| C/Fe injected | N/Fe injected | Mg b | C2 4668 | CN4150 | G4300 | Fe4383 |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.00 | 0.00 | -0.33 | -0.57 | 0.03 | -1.32 | 0.41 |
+| 0.00 | 0.30 | -0.36 | 1.54 | -3.22 | -0.33 | 1.39 |
+| 0.00 | 0.60 | -0.46 | 3.41 | -6.26 | 0.59 | 2.22 |
+| 0.15 | 0.00 | -1.56 | -2.17 | -0.99 | -2.65 | 0.40 |
+| 0.15 | 0.30 | -1.65 | -0.08 | -4.10 | -1.85 | 1.32 |
+| 0.15 | 0.60 | -1.96 | 2.17 | -6.75 | -1.07 | 2.27 |
+| 0.30 | 0.00 | -3.25 | -3.55 | -1.72 | -4.15 | 0.60 |
+| 0.30 | 0.30 | -3.33 | -1.28 | -4.46 | -3.30 | 1.35 |
+| 0.30 | 0.60 | -3.57 | 0.92 | -7.02 | -2.46 | 2.05 |
+
+[All 27 recoveries and intervals](injection/per-mock.csv). [Medians, absolute biases and same-seed zero-injection differences](injection/medians.csv). [Truth, input hashes and seeds](injection/mocks.json).
+
+### Injection choices
+
+A single recorded 14-bin SFH uses the M1_210210 baseline posterior medians for SFH, dust and mass. Truth [α/Fe]=+0.2, mass-weighted [Fe/H]=−0.2 and catalogue dispersion 259.5 km/s are set explicitly. The true mass-weighted age is 3.588756 Gyr. C/Fe takes 0, +0.15, +0.30 and N/Fe takes 0, +0.30, +0.60 dex. Isochrones are unchanged. The native wavelength grid, filters, instrument, masks and statistical uncertainties come from M1_210210.
+
+Gaussian noise uses seeds 20261111, 20261112 and 20261113, with identical standardized draws across C/N at each seed. Spectrum variance is the recorded statistical variance plus the squared true model-scaled calibration floor (2.377%). Photometric draws use 5% of true model flux; recovery keeps the normal observed-flux floor. The true calibration polynomial is unity and emission-line amplitudes are zero. Median spectral statistical S/N is 64.9–66.6; total S/N is 35.3–35.6. Recovery uses the plain grid, production priors and inference seed 20261110. NPZ inputs carry synthetic fluxes and the target’s unchanged statistical uncertainties.
+
+Recovery source: Astro `5be040e`, Ceridwen `13791e0`. Generation records Astro `99c179ba`; its notebook and generator blobs are identical to `5be040e`. All 27 input hashes, units, shapes and finite arrays were checked. Zero-injection mean spectrum and photometry are bitwise equal to the plain-grid prediction. The mock test covers this one SFH and nonnegative C/N offsets through the same independent-response prescription used for fitting.
+
 ## Model and run record
 
 Science source: Astro `0a419b8`, Ceridwen `13791e0`; alf `cda32111c721efe586945d7dfcb9f605a9f6a105`. The four experiment configurations record seed 20261110. Baseline uses the existing target configuration. `cn` adds only C/N freedom. `cn_carbon_mask` also excludes CN4150, G4300, Fe4383 and C4668. MaNGA runs use either their existing full range or rest 3860–5330 Å. Production priors, SFH, calibration, emission-line marginalisation and isochrones are unchanged. C/N are sampled because their multiplicative response depends on SFH, metallicity and both abundances. Their priors are C/Fe = −0.3…+0.5 and N/Fe = −0.3…+1 dex. The SFH basis fast path remains active. The default response setting is off.
@@ -73,7 +119,7 @@ Both existing tests below fail at both revisions. Existing tests were not edited
 - `test_notebook_uses_production_model_and_sampler_contract`: `AssertionError` at `tests/test_ceridwen_dr2_production.py:125`; `At index 2 diff: 'CERIDWEN_PLOTS' != 'CERIDWEN_RANDOM_SEED'`; `Left contains one more item: 'CERIDWEN_TARGET_ID'`.
 - `test_constant_calibration_active_assembly_and_exports`: `NameError: name 'mass_mapped_beta' is not defined`; old assembly line 75, new assembly line 83.
 
-The exact outputs are in `validation/baseline-existing-tests.log` and `validation/current-existing-tests.log`; `validation/cross-pin-checks.txt` records the comparison. Focused response/fast-path tests: 35 passed. The wider selected suite: 106 passed, these two pre-existing failures. Existing wiki test failures are recorded in `validation.json`.
+The exact outputs are in `validation/baseline-existing-tests.log` and `validation/current-existing-tests.log`; `validation/cross-pin-checks.txt` records the comparison. Focused response/fast-path tests: 35 passed. The wider selected suite: 106 passed, these two pre-existing failures. Existing wiki test failures are recorded in `validation.json`. Synthetic-input and related production checks: 62 passed. The final 105-artifact check verifies stored result/derived hashes, unchanged mock inputs and zero image outputs.
 
 ## Noticed, not done
 
