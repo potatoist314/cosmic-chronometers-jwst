@@ -1,0 +1,11 @@
+03:36:14 fitting cn_afe0p25_common/M2_97310, seed 20260832
+Traceback (most recent call last):
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 628, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 583, in main
+    return remote(args.config, args.output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cosmic-chronometers-jwst/scripts/experiment.py", line 295, in remote
+    raise RuntimeError(f"fit failed: {cell['name']}")
+RuntimeError: fit failed: cn_afe0p25_common/M2_97310
