@@ -533,3 +533,130 @@ Mg b group by October coverage. (e), (h), (i) and (j) fit no Mg b pixels; (a) an
 
 - `common-windows.csv`, `age-width-prior.csv`; new rows in `per-fit.csv`, `validation.csv`, `age-redshift-slopes.csv` (samples `own_valid`, `w110`), `paired-age-differences.csv`, `paired-age-differences-per-galaxy.csv`.
 - `baseline-common/`, `baseline-w110/`, `cn-free-w110/`: `experiment.json`, `run-driver.log`, `run/`.
+
+## Window extensions: arms (k), (l), (m)
+
+overseer-astronomy follow-up, under Liu Hao, 2026-11-10: "you can research and run experiments overnight, i'll sleep soon". On the 108 galaxies of the window sample, (i) gives slope -4.62 Gyr/z, median [α/Fe] +0.22 / +0.20 (Mg b group / no-Mg b group) and ρ([α/Fe], z) -0.09. The full-range fits (a) of the same galaxies give -2.09, +0.09 / -0.15 and -0.42. These arms extend the (i) window blue or red, with baseline settings, on the window-sample galaxies that fully cover the extended window.
+
+### Windows
+
+| arm | window (Å) | galaxies | Mg b group | z range | features added | fitted pixels added, median | Modal cost estimate |
+|---|---|---|---|---|---|---|---|
+| (k) | 3742.9–4666.1 | 60 | 7 | 0.654–0.984 | H10, H9, H8, CaK, CaH | 730 | $5.19 |
+| (l) | 4074.5–4893.0 | 96 | 56 | 0.603–0.894 | Hbeta, C4668 | 636 | $7.87 |
+| (m) | 4074.5–5207.9 | 46 | 46 | 0.603–0.750 | Hbeta, C4668, Fe5015, Mgb | 1496 | $4.49 |
+
+- Edges: Lick definitions of Trager et al. 1998, Table 2 (air), converted to vacuum with `ceridwen.observation.filters.air2vac`. R1 and R2 are rounded up to 0.1 Å. "Covers": the October fitted rest range contains the window.
+- (k): B = 3742.9 Å, the bluest limit that at least 60 of the 110 cover (60th smallest October first fitted pixel, 3742.84 Å, rounded up to 0.1 Å).
+- (l): R1 = 4893.0 Å, just above the Hβ red pseudo-continuum (4891.625 Å air = 4892.99 Å vacuum). It contains the C4668 and Hβ bandpasses and their pseudo-continua, and stops below the Fe5015 blue pseudo-continuum (4946.500 Å air = 4947.88 Å) and bandpass (4977.750 Å air = 4979.14 Å).
+- (m): R2 = 5207.9 Å, just above the Mg b red pseudo-continuum (5206.375 Å air = 5207.82 Å vacuum).
+- Features added: catalogue windows (Lick bandpass, or line centre ±1000 km/s) wholly inside the arm's window and not wholly inside 4074.5–4666.1 Å. C4668 crosses the (i) red edge.
+- (k) and (l) fit zero Mg b bandpass pixels in every galaxy. (m) fits the Mg b bandpass in all 46 of its valid fits (median 90 pixels; median 175 in bandpass plus pseudo-continua).
+- CaK and CaH have no fitted pixels: the production `emission_lines` setting masks ±1500 km/s around 3934.77 Å (Ca II K) and 3966.6 and 3973.3 Å (Ca II H), rest vacuum; this contains the catalogue windows, 3921.7–3947.9 Å and 3956.4–3982.8 Å.
+- Seed 20260832, revision 99c179ba / Ceridwen 13791e0e, Modal A100-40GB, `rest_range` only. Billed cost after credits $0.00 before launch.
+
+### Failed validations
+
+| arm | fits | valid | failed |
+|---|---|---|---|
+| (k) | 60 | 60 | 0 |
+| (l) | 96 | 96 | 0 |
+| (m) | 46 | 46 | 0 |
+
+- none
+
+### Paired change against (i), same galaxies
+
+Extension arm minus (i), posterior medians per galaxy; median and 16–84 across galaxies. dΔage/dz: straight-line slope with galaxy-bootstrap 16–84. (m): every galaxy is in the Mg b group, so only the "all" row is shown.
+
+| arm | group | N | Δ[α/Fe] | Δage (Gyr) | Δ[Fe/H] | dΔage/dz (Gyr/z) | ρ(Δage, z) |
+|---|---|---|---|---|---|---|---|
+| (k) | all | 60 | -0.18 (-0.32 to -0.07) | +0.01 (-0.38 to +0.39) | +0.02 (-0.06 to +0.10) | +0.47 (-0.27 to +1.27) | +0.06 (p 0.624) |
+| (k) | Mg b group (October coverage) | 7 | -0.19 (-0.24 to -0.16) | +0.24 (-0.23 to +0.51) | -0.04 (-0.06 to +0.04) | +19.00 (+12.99 to +24.60) | +0.75 (p 0.052) |
+| (k) | no-Mg b group | 53 | -0.18 (-0.34 to -0.06) | +0.01 (-0.38 to +0.34) | +0.02 (-0.06 to +0.13) | +0.62 (-0.23 to +1.52) | +0.07 (p 0.594) |
+| (l) | all | 96 | -0.12 (-0.26 to -0.04) | +0.01 (-0.34 to +0.33) | +0.01 (-0.07 to +0.09) | +0.28 (-0.34 to +0.90) | -0.01 (p 0.940) |
+| (l) | Mg b group (October coverage) | 56 | -0.14 (-0.25 to -0.04) | -0.03 (-0.35 to +0.38) | +0.01 (-0.07 to +0.09) | -0.43 (-1.55 to +0.73) | -0.12 (p 0.380) |
+| (l) | no-Mg b group | 40 | -0.11 (-0.28 to -0.04) | +0.06 (-0.32 to +0.27) | +0.02 (-0.07 to +0.09) | +0.55 (-0.27 to +1.38) | +0.11 (p 0.489) |
+| (m) | all | 46 | -0.16 (-0.29 to -0.00) | -0.96 (-1.37 to -0.29) | +0.21 (+0.09 to +0.29) | +2.15 (+0.45 to +3.78) | +0.13 (p 0.377) |
+
+### Age–redshift slope on each arm's galaxies
+
+(a), (i) and the extension arm on the galaxies valid in all three. Same bootstrap draws for the three arms.
+
+| galaxies | group | N | z med | arm | slope (Gyr/z) | bootstrap 16–84 | scatter (Gyr) | d t_univ/dz, line | H (km/s/Mpc) | ρ([α/Fe], z) | median [α/Fe] | median age (Gyr) | median [Fe/H] |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| (k) galaxies | all | 60 | 0.735 | (a) baseline | -1.47 | -2.90 to +0.02 | 0.88 | -5.13 | 382 | -0.27 (p 0.040) | -0.10 | 3.80 | -0.29 |
+| (k) galaxies | all | 60 | 0.735 | (i) baseline, 4074.5–4666.1 Å | -4.59 | -5.92 to -3.23 | 0.91 | -5.13 | 123 | -0.09 (p 0.484) | +0.21 | 4.91 | -0.51 |
+| (k) galaxies | all | 60 | 0.735 | (k) baseline, blue extension | -4.12 | -5.44 to -2.73 | 0.86 | -5.13 | 137 | -0.15 (p 0.263) | +0.01 | 4.88 | -0.47 |
+| (k) galaxies | Mg b group (October coverage) | 7 | 0.678 | (a) baseline | +34.98 | +12.92 to +63.25 | 0.91 | -5.86 | – | -0.46 (p 0.294) | +0.05 | 3.57 | -0.18 |
+| (k) galaxies | Mg b group (October coverage) | 7 | 0.678 | (i) baseline, 4074.5–4666.1 Å | -0.21 | -8.71 to +11.12 | 0.63 | -5.86 | 2830 | +0.57 (p 0.180) | +0.23 | 5.15 | -0.45 |
+| (k) galaxies | Mg b group (October coverage) | 7 | 0.678 | (k) baseline, blue extension | +18.80 | +10.21 to +29.43 | 0.47 | -5.86 | – | +0.18 (p 0.702) | +0.06 | 5.00 | -0.48 |
+| (k) galaxies | no-Mg b group | 53 | 0.747 | (a) baseline | -2.29 | -3.80 to -0.76 | 0.85 | -5.08 | 244 | -0.15 (p 0.282) | -0.15 | 3.82 | -0.29 |
+| (k) galaxies | no-Mg b group | 53 | 0.747 | (i) baseline, 4074.5–4666.1 Å | -5.14 | -6.80 to -3.54 | 0.94 | -5.08 | 109 | -0.04 (p 0.753) | +0.20 | 4.91 | -0.53 |
+| (k) galaxies | no-Mg b group | 53 | 0.747 | (k) baseline, blue extension | -4.52 | -6.07 to -2.95 | 0.89 | -5.08 | 124 | -0.09 (p 0.531) | -0.02 | 4.86 | -0.45 |
+| (l) galaxies | all | 96 | 0.698 | (a) baseline | -2.39 | -3.95 to -0.67 | 0.86 | -5.46 | 241 | -0.35 (p 0.000) | +0.04 | 4.02 | -0.25 |
+| (l) galaxies | all | 96 | 0.698 | (i) baseline, 4074.5–4666.1 Å | -4.87 | -6.25 to -3.35 | 0.96 | -5.46 | 118 | -0.02 (p 0.859) | +0.22 | 5.05 | -0.49 |
+| (l) galaxies | all | 96 | 0.698 | (l) baseline, red to Hβ | -4.59 | -5.93 to -3.10 | 0.92 | -5.46 | 125 | -0.11 (p 0.292) | +0.10 | 5.03 | -0.50 |
+| (l) galaxies | Mg b group (October coverage) | 56 | 0.683 | (a) baseline | -2.63 | -4.81 to -0.44 | 0.79 | -5.79 | 221 | -0.30 (p 0.027) | +0.09 | 4.22 | -0.24 |
+| (l) galaxies | Mg b group (October coverage) | 56 | 0.683 | (i) baseline, 4074.5–4666.1 Å | -6.18 | -8.66 to -3.79 | 0.89 | -5.79 | 94 | -0.18 (p 0.191) | +0.22 | 5.02 | -0.47 |
+| (l) galaxies | Mg b group (October coverage) | 56 | 0.683 | (l) baseline, red to Hβ | -6.61 | -8.60 to -4.71 | 0.82 | -5.79 | 88 | -0.16 (p 0.224) | +0.08 | 5.05 | -0.47 |
+| (l) galaxies | no-Mg b group | 40 | 0.735 | (a) baseline | -2.66 | -5.13 to +0.11 | 0.96 | -5.24 | 212 | -0.14 (p 0.377) | -0.13 | 3.80 | -0.28 |
+| (l) galaxies | no-Mg b group | 40 | 0.735 | (i) baseline, 4074.5–4666.1 Å | -5.62 | -8.25 to -2.89 | 1.06 | -5.24 | 100 | +0.16 (p 0.326) | +0.21 | 5.08 | -0.53 |
+| (l) galaxies | no-Mg b group | 40 | 0.735 | (l) baseline, red to Hβ | -5.07 | -7.63 to -2.37 | 1.05 | -5.24 | 111 | -0.10 (p 0.532) | +0.11 | 5.03 | -0.51 |
+| (m) galaxies | all | 46 | 0.682 | (a) baseline | -4.44 | -7.09 to -1.57 | 0.79 | -5.92 | 131 | -0.18 (p 0.225) | +0.10 | 4.23 | -0.24 |
+| (m) galaxies | all | 46 | 0.682 | (i) baseline, 4074.5–4666.1 Å | -9.38 | -12.11 to -6.50 | 0.92 | -5.92 | 62 | -0.24 (p 0.115) | +0.22 | 5.00 | -0.46 |
+| (m) galaxies | all | 46 | 0.682 | (m) baseline, red past Mg b | -7.23 | -9.91 to -4.43 | 0.84 | -5.92 | 80 | -0.27 (p 0.065) | +0.06 | 4.08 | -0.26 |
+
+### Band pulls of the added features
+
+Band pull: sum of the stored fitted pulls (observed − posterior median) / effective uncertainty over the fitted pixels in the feature window, divided by √(number of those pixels); negative: data below the model. The metric of `results/cn-response-2026-11-10` (residual stack). Median and 16–84 across galaxies; galaxies with no fitted pixel in the window are left out.
+
+| arm | feature | fit | galaxies with fitted pixels | median band pull (16–84) | median fitted pixels |
+|---|---|---|---|---|---|
+| (k) | H10 | own fit | 60 | -0.40 (-1.68 to +0.43) | 73 |
+| (k) | H9 | own fit | 60 | +0.80 (-0.30 to +2.02) | 74 |
+| (k) | H8 | own fit | 60 | +0.70 (-0.57 to +1.88) | 75 |
+| (k) | CaK | own fit | 0 | – | – |
+| (k) | CaH | own fit | 0 | – | – |
+| (k) | H10 | (a), same galaxies | 60 | -2.34 (-3.54 to -0.69) | 73 |
+| (k) | H9 | (a), same galaxies | 60 | +0.31 (-0.94 to +1.38) | 74 |
+| (k) | H8 | (a), same galaxies | 60 | +1.47 (+0.25 to +3.09) | 75 |
+| (k) | CaK | (a), same galaxies | 0 | – | – |
+| (k) | CaH | (a), same galaxies | 0 | – | – |
+| (l) | Hbeta | own fit | 96 | +0.02 (-0.70 to +1.35) | 81 |
+| (l) | C4668 | own fit | 96 | -2.58 (-3.76 to -0.79) | 244 |
+| (l) | Hbeta | (a), same galaxies | 96 | +0.64 (-0.70 to +2.22) | 81 |
+| (l) | C4668 | (a), same galaxies | 96 | -3.82 (-6.64 to -2.02) | 244 |
+| (m) | Hbeta | own fit | 46 | +0.21 (-1.25 to +1.66) | 80 |
+| (m) | C4668 | own fit | 46 | -4.72 (-7.32 to -2.68) | 240 |
+| (m) | Fe5015 | own fit | 46 | -0.05 (-2.24 to +1.72) | 208 |
+| (m) | Mgb | own fit | 46 | -2.20 (-3.75 to -0.85) | 90 |
+| (m) | Hbeta | (a), same galaxies | 46 | +0.90 (-0.55 to +2.47) | 80 |
+| (m) | C4668 | (a), same galaxies | 46 | -5.39 (-8.11 to -3.37) | 240 |
+| (m) | Fe5015 | (a), same galaxies | 46 | -0.65 (-3.21 to +1.41) | 208 |
+| (m) | Mgb | (a), same galaxies | 46 | -3.80 (-5.66 to -1.61) | 90 |
+
+### Window ladder
+
+Each arm on its own valid fits.
+
+| arm | window (Å) | N | median [α/Fe] | slope (Gyr/z) | bootstrap 16–84 | d t_univ/dz, line |
+|---|---|---|---|---|---|---|
+| (a) baseline | October fitted range | 135 | -0.03 | -1.55 | -2.23 to -0.88 | -5.17 |
+| (h) baseline, 4155.0–4438.1 Å | 4155.0–4438.1 | 130 | +0.25 | -3.26 | -3.91 to -2.62 | -5.19 |
+| (i) baseline, 4074.5–4666.1 Å | 4074.5–4666.1 | 110 | +0.21 | -4.60 | -5.56 to -3.60 | -5.31 |
+| (k) baseline, blue extension | 3742.9–4666.1 | 60 | +0.01 | -4.12 | -5.44 to -2.73 | -5.13 |
+| (l) baseline, red to Hβ | 4074.5–4893.0 | 96 | +0.10 | -4.59 | -5.93 to -3.10 | -5.46 |
+| (m) baseline, red past Mg b | 4074.5–5207.9 | 46 | +0.06 | -7.23 | -9.91 to -4.43 | -5.92 |
+
+### Numbers in brief
+
+- (k) (3742.9–4666.1 Å, 60 galaxies): Δ[α/Fe] -0.18, Δage +0.01 Gyr against (i). Slope -4.12; (i) -4.59, (a) -1.47, Planck18 line -5.13. ρ([α/Fe], z) -0.15; (i) -0.09, (a) -0.27.
+- (l) (4074.5–4893.0 Å, 96 galaxies): Δ[α/Fe] -0.12, Δage +0.01 Gyr against (i). Slope -4.59; (i) -4.87, (a) -2.39, Planck18 line -5.46. ρ([α/Fe], z) -0.11; (i) -0.02, (a) -0.35.
+- (m) (4074.5–5207.9 Å, 46 galaxies): Δ[α/Fe] -0.16, Δage -0.96 Gyr against (i). Slope -7.23; (i) -9.38, (a) -4.44, Planck18 line -5.92. ρ([α/Fe], z) -0.27; (i) -0.24, (a) -0.18.
+- Slope minus the (i) slope, same galaxies: (k) +0.47, (l) +0.28, (m) +2.15 Gyr/z; (a) minus (i): +3.12 on the (k) galaxies, +2.48 on the (l) galaxies, +4.95 on the (m) galaxies.
+
+### Files
+
+- `window-extension-paired.csv`, `window-extension-paired-per-galaxy.csv`, `window-extension-band-pulls.csv`, `window-extension-band-pulls-per-galaxy.csv`, `window-ladder.csv`; new rows in `per-fit.csv`, `validation.csv`, `age-redshift-slopes.csv` (samples `own_valid` and `<arm>_galaxies`).
+- `baseline-blue/`, `baseline-red-hb/`, `baseline-red-mgb/`: `experiment.json`, `run-driver.log`, `run/`.
