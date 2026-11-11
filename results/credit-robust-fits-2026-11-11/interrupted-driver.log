@@ -1,0 +1,174 @@
+18:39:47 committed source 31486d951daa; output results/credit-robust-fits-2026-11-11/interrupted
+18:39:48 launching 1 Modal A100-40GB container(s) for 2 cell(s) in censusgalaxy
+✓ Initialized. View run at 
+https://modal.com/apps/censusgalaxy/main/ap-FDSYlQip7ZSRNm7g4wA0ls
+Stopping app - uncaught exception raised locally: InvalidError('Please add a payment method to use L4 GPU functions.').
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py", line 291, in <module>
+    raise SystemExit(main(*sys.argv[1:]))
+                     ~~~~^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py", line 274, in main
+    with modal.enable_output(), app.run():
+                                ~~~~~~~^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/app.py", line 494, in run
+    async with _run_app(
+               ~~~~~~~~^
+        self, name=name, client=client, detach=detach, interactive=interactive, environment_name=environment_name
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 455, in _run_app
+    await _create_all_objects(running_app, local_app_state, load_context)
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 203, in _create_all_objects
+    await asyncio.gather(*[tc.create_task(_load(tag, obj)) for tag, obj in indexed_objects.items()])
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 194, in _load
+    await resolver.load(obj, load_context, existing_object_id=existing_object_id)
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_functions.py", line 974, in _load
+    with FunctionCreationStatus("Server" if is_server else "Function", tag) as function_creation_status:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_output/status.py", line 45, in __exit__
+    raise exc_val
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_functions.py", line 1185, in _load
+    response: api_pb2.FunctionCreateResponse = await load_context.client._stub.FunctionCreate(request)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+modal.exception.InvalidError: Please add a payment method to use L4 GPU functions.
+18:39:59 FileNotFoundError: [Errno 2] No such file or directory: '/Users/liuhao/Downloads/Astro project/results/credit-robust-fits-2026-11-11/interrupted/.modal/0/0.tar.gz'
+18:39:59 FileNotFoundError: [Errno 2] No such file or directory: '/Users/liuhao/Downloads/Astro project/results/credit-robust-fits-2026-11-11/interrupted/.modal/0/0.tar.gz'
+18:39:59 Modal attempt: $0.0000 estimated; failed cells: ['window/M1_210210', 'window/M8_150848']
+18:41:28 committed source 31486d951daa; output results/credit-robust-fits-2026-11-11/interrupted
+18:41:30 launching 1 Modal A100-40GB container(s) for 2 cell(s) in censusgalaxy
+✓ Initialized. View run at 
+https://modal.com/apps/censusgalaxy/main/ap-T7hUHX0qiZPwwmcnLzOu8o
+Stopping app - uncaught exception raised locally: InvalidError('Please add a payment method to use L4 GPU functions.').
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py", line 291, in <module>
+    raise SystemExit(main(*sys.argv[1:]))
+                     ~~~~^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py", line 274, in main
+    with modal.enable_output(), app.run():
+                                ~~~~~~~^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/app.py", line 494, in run
+    async with _run_app(
+               ~~~~~~~~^
+        self, name=name, client=client, detach=detach, interactive=interactive, environment_name=environment_name
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 455, in _run_app
+    await _create_all_objects(running_app, local_app_state, load_context)
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 203, in _create_all_objects
+    await asyncio.gather(*[tc.create_task(_load(tag, obj)) for tag, obj in indexed_objects.items()])
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 194, in _load
+    await resolver.load(obj, load_context, existing_object_id=existing_object_id)
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_functions.py", line 974, in _load
+    with FunctionCreationStatus("Server" if is_server else "Function", tag) as function_creation_status:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_output/status.py", line 45, in __exit__
+    raise exc_val
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_functions.py", line 1185, in _load
+    response: api_pb2.FunctionCreateResponse = await load_context.client._stub.FunctionCreate(request)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+modal.exception.InvalidError: Please add a payment method to use L4 GPU functions.
+18:41:40 Modal started no container in censusgalaxy; the next profile launches
+18:41:42 launching 1 Modal A100-40GB container(s) for 2 cell(s) in liuhaoo3-14
+✓ Initialized. View run at 
+https://modal.com/apps/liuhaoo3-14/main/ap-o5AqzzkRwRfAcVeHGAjyuO
+Building image im-ScZPr0WlkOF6A3Z2Yh2IBN
+
+=> Step 0: FROM ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34
+Getting image source signatures
+Copying blob sha256:f57cecf87087697ab89776daeb60b1b2b2149c876d4aa69ae6765ae7ad66a470
+Copying blob sha256:77be074b1ca8f5fe3c40cd539fc13f21374b1e31924ef2567e9a5a8eb0f7c707
+Copying blob sha256:55557fec2dac80dad26e15ec0df0a065e9cf11c4520858c78feee5f4c92e261b
+Copying blob sha256:b2449364bbe73278a9c4ff823b55c63b6bb105ed0ab3fd713f887502c433f55e
+Copying blob sha256:774043ccc8ccd0d0833a9ee0792142ab7ad93df971e59dd248fbf82db16d0150
+Copying blob sha256:dc22b8c341d91e21b901b9eb1e414c18b487f4de1a165c539ecb32bb590acbd4
+Copying blob sha256:246ac8b7cadc4ee7c220a2d4e02a37a296797f40648480115ae41e083aa60b6e
+Copying blob sha256:9d9229de0a232d9fdc8cebfe7332540cbc5e646b38d987f1ed32a8c2ded9ee92
+Copying blob sha256:53b6cc1cd384fbceb54508a981942677f602e01aafe75ec09edd2d1bd6ef0ec2
+Copying config sha256:38ccca5b05f7e99912b4c42771678be362206a8373bb2b7f20b68da25cff3720
+Writing manifest to image destination
+Unpacking OCI image
+   • unpacking rootfs ...     
+   • ... done                 
+   • unpacked image rootfs: /tmp/task-data/ta-01M75YN64C2EXBQ52GVARHKHDB/registry-unpackDcTqHp
+Copied image in 5.61s
+Saving image...
+Image saved, took 6.28s
+
+Built image im-ScZPr0WlkOF6A3Z2Yh2IBN in 99.67s
+
+
+✓ Created objects.
+├── ✓ Uploaded /Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py
+└── ✓ Created Function fit.
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 743ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.34s
+bootstrap: Uninstalled 1 package in 26ms
+bootstrap: Installed 2 packages in 24ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 9ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-1: 18:59:17 fitting window/M8_150848, seed 20260832
+fit-0: 19:01:35 fitting window/M1_210210, seed 20260832
+Stopping app - user stopped from CLI.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/liuhaoo3-14/main/ap-o5AqzzkRwRfAcVeHGAjyuO
+19:02:03 SweepError: RemoteError: 
+19:02:03 SweepError: RemoteError: 
+19:02:07 window/M8_150848: from Volume ceridwen-results of liuhaoo3-14
+19:02:09 Modal attempt: $0.0833 estimated; failed cells: ['window/M1_210210']

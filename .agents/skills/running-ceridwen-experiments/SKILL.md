@@ -183,7 +183,9 @@ use L4 GPU functions.") and `initalincrease` had a billed cost of $0.61. The fit
    During a run, the runner reads this value each 120 s. When the value is above 0, the
    runner stops its app, gets the finished fits, and starts the missing fits in the next
    profile. The driver log then shows `Modal credits of <profile> are used up`. If no
-   profile is left, the runner stops with `no Modal profile can launch`.
+   profile is left, the runner stops with `no Modal profile can launch`. On 2026-11-11 at
+   21:01 UTC this occurred in `initalincrease` at $0.07 billed. The runner started the fit
+   again in `liuhaoo3-14` 14 s later (`uninterrupted-m1-driver.log`).
 3. **Know where the finished fits are.** Each container writes each finished fit to the
    Volume `ceridwen-results` of its workspace before it starts the next fit. The path is
    `<kept>/<cell index>.tar.gz`. `kept` is in `run/manifest.json`.

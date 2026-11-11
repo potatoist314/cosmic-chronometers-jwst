@@ -1,0 +1,102 @@
+19:02:32 committed source 31486d951daa; output results/credit-robust-fits-2026-11-11/interrupted
+19:02:35 launching 1 Modal A100-40GB container(s) for 1 cell(s) in censusgalaxy
+✓ Initialized. View run at 
+https://modal.com/apps/censusgalaxy/main/ap-4zUnNRGr2njGglrP5fq2Zi
+Stopping app - uncaught exception raised locally: InvalidError('Please add a payment method to use L4 GPU functions.').
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py", line 291, in <module>
+    raise SystemExit(main(*sys.argv[1:]))
+                     ~~~~^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py", line 274, in main
+    with modal.enable_output(), app.run():
+                                ~~~~~~~^^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/app.py", line 494, in run
+    async with _run_app(
+               ~~~~~~~~^
+        self, name=name, client=client, detach=detach, interactive=interactive, environment_name=environment_name
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/liuhao/.local/share/uv/python/cpython-3.13.5-macos-aarch64-none/lib/python3.13/contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 455, in _run_app
+    await _create_all_objects(running_app, local_app_state, load_context)
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 203, in _create_all_objects
+    await asyncio.gather(*[tc.create_task(_load(tag, obj)) for tag, obj in indexed_objects.items()])
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/runner.py", line 194, in _load
+    await resolver.load(obj, load_context, existing_object_id=existing_object_id)
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_functions.py", line 974, in _load
+    with FunctionCreationStatus("Server" if is_server else "Function", tag) as function_creation_status:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_output/status.py", line 45, in __exit__
+    raise exc_val
+  File "/Users/liuhao/.cache/uv/archive-v0/WOUurPN_AEnvlOffrbmlD/lib/python3.13/site-packages/modal/_functions.py", line 1185, in _load
+    response: api_pb2.FunctionCreateResponse = await load_context.client._stub.FunctionCreate(request)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+modal.exception.InvalidError: Please add a payment method to use L4 GPU functions.
+19:02:45 Modal started no container in censusgalaxy; the next profile launches
+19:02:49 launching 1 Modal A100-40GB container(s) for 1 cell(s) in liuhaoo3-14
+✓ Initialized. View run at 
+https://modal.com/apps/liuhaoo3-14/main/ap-UahmeVcJHNoZvKdafDOm14
+✓ Created objects.
+├── ✓ Uploaded /Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py
+└── ✓ Created Function fit.
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 644ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.00s
+bootstrap: Uninstalled 1 package in 39ms
+bootstrap: Installed 2 packages in 22ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 8ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-0: 19:06:21 fitting window/M1_210210, seed 20260832
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/liuhaoo3-14/main/ap-UahmeVcJHNoZvKdafDOm14
+19:08:32 Modal attempt: $0.0965 estimated; failed cells: none
+19:09:14 local figures rebuilt for window/M8_150848
+19:09:57 local figures rebuilt for window/M1_210210
