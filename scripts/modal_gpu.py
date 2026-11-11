@@ -4,7 +4,9 @@
 experiment.py runs `CLIENT scripts/modal_gpu.py REQUEST OUTPUT`; the driver's own Python
 needs no `modal` package. The container uses the compact image pinned in vast.py, runs the
 unchanged Vast bootstrap and one `experiment.py remote` per cell, and returns the results
-directory. JAX compile caches, with XLA's autotune choices, persist per cell setup on a Volume.
+directory. Each finished fit also goes to a Volume at once, so that a container stopped before it
+returns loses only the fit in progress. JAX compile caches, with XLA's autotune choices, persist
+per cell setup on a Volume.
 """
 from __future__ import annotations
 
@@ -28,12 +30,20 @@ try:
 except ModuleNotFoundError:  # the driver's Python; CLIENT supplies the package
     modal = None
 
-PROFILE = 'initalincrease'  # Modal workspace initialincrease
+# Modal CLI profiles (workspaces censusgalaxy, initialincrease, liuhaoo3-14). A launch uses the first one
+# whose month the credits still cover. Grids, compile caches and kept fits are Volumes of each workspace.
+PROFILES = ('censusgalaxy', 'initalincrease', 'liuhaoo3-14')
+CREDIT_CHECK_SECONDS = 120  # experiment.py reads the profile's billing summary this often during a run
 CLIENT = ['uv', 'run', '--quiet', '--no-project', '--python', '3.13', '--with', 'modal==1.6.1', 'python']
+# One image build in every workspace: initialincrease and liuhaoo3-14 use builder 2025.06. censusgalaxy's
+# default, 2026.10, is newer than modal 1.6.1 accepts (VersionError at launch, 2026-11-11).
+IMAGE_BUILDER = '2025.06'
 APP_NAME = 'ceridwen-experiment'
 GRID_VOLUME = 'ceridwen-grids'
 CACHE_VOLUME = 'ceridwen-xla-cache'
 CACHE = Path('/xla-cache')  # <cache key>.tar: one cell setup's JAX compile cache
+RESULT_VOLUME = 'ceridwen-results'
+KEPT = Path('/kept')  # <run>/<cell index>.tar.gz: one finished fit, until experiment.py has it
 FITS_PER_GPU = 4  # cached fits sharing one GPU (results/hillclimb-2026-10-14/LEDGER.md entries 15, 18)
 MAX_CONTAINERS = 10  # Starter plan, "10 GPU concurrency": https://modal.com/pricing (read 2026-10-15)
 MPS = {'CUDA_MPS_PIPE_DIRECTORY': '/tmp/mps-pipe', 'CUDA_MPS_LOG_DIRECTORY': '/tmp/mps-log'}
@@ -133,6 +143,7 @@ if modal:
     app = modal.App(APP_NAME)
     grids = modal.Volume.from_name(GRID_VOLUME, create_if_missing=True)
     caches = modal.Volume.from_name(CACHE_VOLUME, create_if_missing=True)
+    kept = modal.Volume.from_name(RESULT_VOLUME, create_if_missing=True)
     reference = os.environ.get('CERIDWEN_MODAL_IMAGE')  # set by the local client only
     image = modal.Image.from_registry(reference) if reference else None
 
@@ -177,10 +188,24 @@ if modal:
         temporary.replace(CACHE / f'{key}.tar')
         caches.commit()
 
+    def keep(root, run, index, status):
+        """One finished fit to the results Volume, in the layout that fit returns: a complete file
+        under a temporary name, renamed, then committed."""
+        (KEPT / run).mkdir(exist_ok=True)
+        temporary = KEPT / run / f'.{index}.{uuid.uuid4().hex}'
+        (root / f'status-{index}.json').write_text(json.dumps(status))
+        with tarfile.open(temporary, 'w:gz') as archive:
+            archive.add(root / f'status-{index}.json', 'status.json')
+            archive.add(root / f'fit-{index}.log', f'fit-{index}.log')
+            archive.add(root / 'results' / str(index), f'results/{index}')
+        temporary.replace(KEPT / run / f'{index}.tar.gz')
+        kept.commit()
+
     @app.function(image=image, gpu='L4', cpu=CPU_CORES, memory=MEMORY_GIB * 1024, timeout=TIMEOUT_SECONDS,
-                  volumes={'/grids': grids.read_only(), str(CACHE): caches}, scaledown_window=2)
-    def fit(archives, cells):
-        """Unpack pinned source and inputs, bootstrap once, fit the cells; return the results as tar.gz."""
+                  volumes={'/grids': grids.read_only(), str(CACHE): caches, str(KEPT): kept}, scaledown_window=2)
+    def fit(archives, cells, run):
+        """Unpack pinned source and inputs, bootstrap once, fit the cells; return the results as tar.gz.
+        Each fit that passed also goes to the results Volume under `run` as soon as its record is final."""
         started = time.time()
         root = Path(REMOTE)
         for prefix, data in archives:
@@ -198,13 +223,28 @@ if modal:
         # The bootstrap checks the first cell's grid; each fit reads its own.
         status = {'exit': {'bootstrap': stage(root, 'bootstrap', 'bash scripts/bootstrap_vast_ai.sh', {
             **environment, 'CERIDWEN_GRID_PATH': f"{REMOTE}/grid/{cells[0]['grid']}"})}}
-        if not status['exit']['bootstrap']:
-            status['cells'] = schedule(cells, lambda key: (CACHE / f'{key}.tar').exists(),
-                                       lambda cell, mode: fit_cell(root, cell, mode, {
-                                           **environment, 'CERIDWEN_GRID_PATH': f"{REMOTE}/grid/{cell['grid']}"}),
-                                       save)
         gpu = subprocess.run(['nvidia-smi', '--query-gpu=name', '--format=csv,noheader'],
                              capture_output=True, text=True).stdout.strip()
+
+        def kept_fit(cell, record):
+            if record['exit'] == 0:
+                keep(root, run, cell['index'], {
+                    'exit': status['exit'], 'cells': {cell['index']: record}, 'gpu': gpu,
+                    'call': modal.current_function_call_id(), 'started': record['started'],
+                    'finished': record['finished']})
+
+        def fit_one(cell, mode):
+            record = fit_cell(root, cell, mode, {
+                **environment, 'CERIDWEN_GRID_PATH': f"{REMOTE}/grid/{cell['grid']}"})
+            if mode != 'shared':  # schedule can fit a shared cell again, alone: final only when it returns
+                kept_fit(cell, record)
+            return record
+
+        if not status['exit']['bootstrap']:
+            status['cells'] = schedule(cells, lambda key: (CACHE / f'{key}.tar').exists(), fit_one, save)
+            for cell in cells:
+                if status['cells'][cell['index']]['mode'] == 'shared':
+                    kept_fit(cell, status['cells'][cell['index']])
         (root / 'status.json').write_text(json.dumps({**status, 'gpu': gpu, 'started': started,
                                                       'finished': time.time()}))
         buffer = io.BytesIO()
@@ -233,7 +273,7 @@ def main(request_path, output):
     archives = [(prefix, Path(path).read_bytes()) for prefix, path in request['archives']]
     with modal.enable_output(), app.run():
         upload_grids(request['grids'])
-        calls = {number: fit.with_options(gpu=request['gpu']).spawn(archives, cells)
+        calls = {number: fit.with_options(gpu=request['gpu']).spawn(archives, cells, request['kept'])
                  for number, cells in enumerate(request['containers'])}
         (output / 'calls.json').write_text(json.dumps(
             {'app_id': app.app_id, 'calls': {i: c.object_id for i, c in calls.items()}}))

@@ -1525,3 +1525,8 @@
 
 - Pages: `notes/model.md`
 - Change: `legac_dr3` fits read the COSMOS matches of the DR3 catalogue (`cosmos_photometry.match_files`); card t_5440a254.
+
+## [2026-11-11] codebase | Modal profiles and per-fit results Volume
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: Modal launches use the first profile with a billed cost of $0; each finished fit goes to the Volume `ceridwen-results` and a resumed run takes it; card t_60c41d46.

@@ -74,12 +74,14 @@ The user's contribution will be focused on overall research direction and method
   provide the run record. Documentation must not delay launch or result retrieval.
   Use `python3 scripts/experiment.py run <config.json> --gpu "<GPU type>"` for new fits.
 - Before another paid Ceridwen GPU benchmark, read `BENCHMARK_CHECK.md`.
-- `experiment.py` runs GPU fits on Modal by default (`scripts/modal_gpu.py`; workspace `initialincrease`,
-  CLI profile `initalincrease`): the compact image pinned in `scripts/vast.py`, selected input uploads,
-  grids and compile caches on Modal Volumes. Preserve the image and backend recorded for resumed runs.
+- `experiment.py` runs GPU fits on Modal by default (`scripts/modal_gpu.py`; CLI profiles `censusgalaxy`,
+  `initalincrease`, `liuhaoo3-14`: a launch uses the first one with a billed cost of $0 for the month):
+  the compact image pinned in `scripts/vast.py`, selected input uploads, and grids, compile caches and
+  finished fits on Modal Volumes of each workspace. Preserve the image and backend recorded for resumed runs.
 - GPU type: lowest cost per fit in `results/gpu-bench-modal-2026-10-14/REPORT.md` (A100-40GB).
 - No per-run spend cap. Stay within the Modal credit balance: `experiment.py` refuses a launch once the
-  month's billed cost is above $0. Never add a payment method.
+  month's billed cost is above $0 in each profile, and stops a run when its profile goes above $0.
+  Never add a payment method.
 - Stop every Modal container you start, and only your own apps: check `modal container list`, then
   `modal app stop -y <app id>`.
 - The Vast path (`--backend vast`, `scripts/vast.py`) still exists; it is not the default.

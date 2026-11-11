@@ -2,6 +2,7 @@
 import io
 import json
 import tarfile
+import threading
 from types import SimpleNamespace
 
 import pytest
@@ -35,11 +36,12 @@ CELL = {'name': 'fit/M1_210210', 'arm': 'fit', 'target': 'M1_210210', 'seed': 12
         'target_metadata': {'object_id': 210210, 'spect_id': 'M1_210210', 'seed': 12}}
 
 
-def result_archive(cells, exit_codes, started=1000.0, finished=1150.0):
-    """A container's tar.gz as modal_gpu.fit returns it for the request's cells."""
+def result_archive(cells, exit_codes, started=1000.0, finished=1150.0, call=None):
+    """A container's tar.gz as modal_gpu.fit returns it for the request's cells; with `call`, the
+    tar.gz of one fit as modal_gpu.keep writes it to the results Volume."""
     status = {'exit': {'bootstrap': exit_codes['bootstrap']}, 'gpu': 'NVIDIA L40S', 'started': started,
               'finished': finished, 'cells': {str(c['index']): {'exit': exit_codes['fit'], 'mode': 'alone', 'tuned': 3, 'compiled': 5}
-                                              for c in cells}}
+                                              for c in cells}, **({'call': call} if call else {})}
     buffer = io.BytesIO()
     with tarfile.open(fileobj=buffer, mode='w:gz') as archive:
         files = {'status.json': json.dumps(status), 'bootstrap.log': 'ready'}
@@ -48,6 +50,8 @@ def result_archive(cells, exit_codes, started=1000.0, finished=1150.0):
             files[f"fit-{c['index']}.log"] = 'fitting'
             files[f"results/{c['index']}/{c['cell']['arm']}/{metadata['object_id']}-{metadata['spect_id']}/ceridwen_result.h5"] = 'h5'
         for name, text in files.items():
+            if call and name == 'bootstrap.log':
+                continue
             info = tarfile.TarInfo(name)
             info.size = len(text.encode())
             archive.addfile(info, io.BytesIO(text.encode()))
@@ -62,30 +66,56 @@ def modal_run(tmp_path, monkeypatch):
     args = SimpleNamespace(output=tmp_path / 'run', gpu='L40S')
     args.output.mkdir()
     run = exp.ModalRun(args, source)
-    state = {'launches': [], 'stopped': [], 'billing': {'billed_cost': '0E-8', 'adjustments': {'plan_cost': '0E-8', 'credits': '-1.01'}},
-             'report': [], 'exit': {'bootstrap': 0, 'fit': 0}, 'running': ['ap-other'], 'interrupt': False}
+    # `billing` is one summary for every profile, or a summary for each profile name. `lost` containers
+    # stop before they return; `kept` is the fits on the results Volume of each profile: {profile: {index: cell}}.
+    state = {'launches': [], 'profiles': [], 'stopped': [], 'billing': {'billed_cost': '0E-8', 'adjustments': {'plan_cost': '0E-8', 'credits': '-1.01'}},
+             'report': [], 'exit': {'bootstrap': 0, 'fit': 0}, 'running': ['ap-other'], 'interrupt': False,
+             'lost': set(), 'kept': {}, 'removed': [], 'launched': None, 'refuses': set()}
 
-    def client(*arguments, **options):
+    def client(*arguments, profile=None, **options):
+        profile = profile or run.profile
         if arguments[0] == 'scripts/modal_gpu.py':
             work = exp.Path(arguments[2])
             state['launches'].append(json.loads(exp.Path(arguments[1]).read_text()))
+            state['profiles'].append(profile)
             containers = state['launches'][-1]['containers']
+            if profile in state['refuses']:
+                return SimpleNamespace(returncode=1)
             (work / 'calls.json').write_text(json.dumps({'app_id': 'ap-1', 'calls': {
                 str(n): f'fc-{n + 1}' for n in range(len(containers))}}))
             if state['interrupt']:
                 raise KeyboardInterrupt
+            if state['launched']:
+                state['launched'](profile)
             for number, cells in enumerate(containers):
-                (work / f'{number}.tar.gz').write_bytes(result_archive(cells, state['exit']))
+                if number in state['lost']:
+                    (work / f'{number}.error').write_text('RemoteError: ')
+                else:
+                    (work / f'{number}.tar.gz').write_bytes(result_archive(cells, state['exit']))
         elif arguments[2:4] == ('app', 'stop'):
             # Without a terminal, `modal app stop` aborts unless -y skips its confirmation.
             if '-y' not in arguments:
                 return SimpleNamespace(returncode=1)
             state['stopped'].append(arguments[-1])
+        elif arguments[2:4] == ('volume', 'get'):
+            # `modal volume get <volume> <directory>/ <destination>` writes <destination>/<directory>/<files>.
+            assert arguments[4] == modal_gpu.RESULT_VOLUME and arguments[5] == run.data['kept'] + '/'
+            for index, cell in state['kept'].get(profile, {}).items():
+                target = exp.Path(arguments[6]) / run.data['kept'] / f'{index}.tar.gz'
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(result_archive([{'index': index, 'cell': cell}], state['exit'], 1000.0, 1100.0,
+                                                  call='fc-kept'))
+        elif arguments[2:5] == ('volume', 'rm', '-r'):
+            assert arguments[5:] == (modal_gpu.RESULT_VOLUME, run.data['kept'])
+            state['removed'].append(profile)
+            state['kept'].pop(profile, None)
         return SimpleNamespace(returncode=0)
 
-    def modal_json(*arguments):
+    def modal_json(*arguments, profile=None):
         if arguments[:2] == ('container', 'list'):
             return [{'app_id': app, 'container_id': 'ta-1'} for app in state['running'] if app not in state['stopped']]
+        if arguments[:2] == ('billing', 'summary') and 'billed_cost' not in state['billing']:
+            return state['billing'][profile or run.profile]
         return {('billing', 'summary'): state['billing'], ('billing', 'report'): state['report']}[arguments[:2]]
 
     monkeypatch.setattr(run, 'client', client)
@@ -278,3 +308,105 @@ def test_interrupted_launch_stops_the_app_and_keeps_the_attempt(modal_run):
     saved = json.loads((run.root / 'manifest.json').read_text())
     assert saved['attempts'][0]['app_id'] == 'ap-1'
     assert not saved.get('completed_cells')
+
+
+def test_fits_run_in_the_first_profile_and_each_fit_records_it(modal_run):
+    run, state = modal_run
+    assert run.execute() == 0
+    assert state['profiles'] == [modal_gpu.PROFILES[0]]
+    attempt = run.data['attempts'][0]
+    assert attempt['profile'] == attempt['cells']['fit/M1_210210']['profile'] == modal_gpu.PROFILES[0]
+    # The container returned each fit: the copies on the results Volume are removed, none is downloaded.
+    assert state['removed'] == [modal_gpu.PROFILES[0]]
+
+
+def test_launch_skips_a_profile_that_modal_bills_above_its_credits(modal_run):
+    run, state = modal_run
+    first, second = modal_gpu.PROFILES[:2]
+    state['billing'] = {first: {'billed_cost': '0.61'}, second: {'billed_cost': '0E-8'}}
+    assert run.execute() == 0
+    assert state['profiles'] == [second]
+    assert run.data['attempts'][0]['cells']['fit/M1_210210']['profile'] == second
+
+
+def test_stopped_container_gives_its_kept_fits_and_the_resume_fits_the_rest(modal_run, monkeypatch):
+    run, state = modal_run
+    cells = run.data['source']['experiment'] = arms(3)
+    monkeypatch.setattr(modal_gpu, 'MAX_CONTAINERS', 1)
+    state['lost'], state['kept'] = {0}, {modal_gpu.PROFILES[0]: {1: cells[1]}}
+    assert run.execute() == 1
+    assert run.data['completed_cells'] == ['a1/M1_210210']
+    assert (run.root / 'fits/a1/210210-M1_210210/ceridwen_result.h5').read_text() == 'h5'
+    assert (run.root / 'fc-kept-fit-1.log').read_text() == 'fitting'
+    records = run.data['attempts'][0]['cells']
+    assert records['a1/M1_210210']['call_id'] == 'fc-kept' and 'error' not in records['a1/M1_210210']
+    # A kept fit carries the cost of its own seconds.
+    assert records['a1/M1_210210']['estimated_usd'] == pytest.approx(modal_gpu.cost_usd('L40S', 100))
+    assert 'RemoteError' in records['a0/M1_210210']['error'] and run.data['attempts'][0]['status'] == 'failed'
+    assert state['removed'] == [modal_gpu.PROFILES[0]] and not list((run.root / '.modal').glob(run.data['kept']))
+    state['lost'] = set()
+    assert run.execute() == 0
+    assert [c['index'] for cells in state['launches'][1]['containers'] for c in cells] == [0, 2]
+    assert sorted(run.data['completed_cells']) == sorted(c['name'] for c in cells)
+
+
+def test_resume_after_an_interrupted_driver_takes_the_kept_fits_first(modal_run):
+    run, state = modal_run
+    state['running'].append('ap-1')
+    state['interrupt'] = True
+    with pytest.raises(KeyboardInterrupt):
+        run.execute()
+    state['interrupt'], state['kept'] = False, {modal_gpu.PROFILES[0]: {0: CELL}}
+    assert run.execute() == 0
+    assert len(state['launches']) == 1
+    assert run.data['completed_cells'] == ['fit/M1_210210']
+    assert run.data['attempts'][0]['cells']['fit/M1_210210']['call_id'] == 'fc-kept'
+
+
+def test_credit_stop_during_a_run_keeps_finished_fits_and_resumes_in_the_next_profile(modal_run, monkeypatch):
+    run, state = modal_run
+    first, second = modal_gpu.PROFILES[:2]
+    cells = run.data['source']['experiment'] = arms(2)
+    monkeypatch.setattr(modal_gpu, 'MAX_CONTAINERS', 1)
+    monkeypatch.setattr(modal_gpu, 'CREDIT_CHECK_SECONDS', 0.01)
+    state['billing'] = {first: {'billed_cost': '0E-8'}, second: {'billed_cost': '0E-8'}}
+    state['running'].append('ap-1')
+    stopped = threading.Event()
+
+    def launched(profile):
+        """The first profile's credits end during its run; its container stops with one fit kept."""
+        if profile == first:
+            state['billing'][first] = {'billed_cost': '0.61'}
+            state['lost'], state['kept'] = {0}, {first: {0: cells[0]}}
+            while 'ap-1' not in state['stopped']:
+                stopped.wait(0.01)
+        else:
+            state['lost'] = set()
+
+    state['launched'] = launched
+    assert run.execute() == 0
+    assert state['profiles'] == [first, second]
+    first_attempt, second_attempt = run.data['attempts']
+    assert 'credit_stop' in first_attempt and first_attempt['status'] == 'failed'
+    assert first_attempt['cells']['a0/M1_210210']['profile'] == first
+    assert second_attempt['cells']['a1/M1_210210']['profile'] == second and second_attempt['status'] == 'complete'
+    assert [c['index'] for members in state['launches'][1]['containers'] for c in members] == [1]
+    assert sorted(run.data['completed_cells']) == ['a0/M1_210210', 'a1/M1_210210']
+
+
+def test_profile_that_starts_no_container_gives_the_launch_to_the_next_profile(modal_run):
+    run, state = modal_run
+    first, second, third = modal_gpu.PROFILES
+    # 2026-11-11: censusgalaxy has no payment method and Modal refuses its GPU functions; initalincrease
+    # is billed above its credits.
+    state['refuses'] = {first}
+    state['billing'] = {first: {'billed_cost': '0E-8'}, second: {'billed_cost': '0.61'}, third: {'billed_cost': '0E-8'}}
+    assert run.execute() == 0
+    assert state['profiles'] == [first, third]
+    refused, attempt = run.data['attempts']
+    assert refused['status'] == 'refused' and not refused['cells']
+    assert attempt['cells']['fit/M1_210210']['profile'] == third
+    state['refuses'] = set(modal_gpu.PROFILES)
+    run.data['completed_cells'] = []
+    with pytest.raises(exp.vast.SweepError, match='started no container'):
+        run.execute()

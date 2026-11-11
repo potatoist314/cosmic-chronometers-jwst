@@ -12,12 +12,15 @@ import math
 import os
 import re
 import shlex
+import shutil
 import signal
 import subprocess
 import sys
 import tarfile
 import tempfile
+import threading
 import time
+import uuid
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
@@ -403,6 +406,9 @@ class ModalRun:
         for key, value in (('source', source), ('gpus', [args.gpu])):
             if self.data[key] != value:
                 raise vast.SweepError(f'{key} differs from the saved run; use a new --output directory')
+        self.data.setdefault('kept', uuid.uuid4().hex)  # this run's directory in each results Volume
+        self.profile = modal_gpu.PROFILES[0]  # guard() sets the profile of a launch
+        self.refused = set()  # profiles in which Modal started no container for this driver
         self.save()
 
     def save(self):
@@ -412,21 +418,52 @@ class ModalRun:
         temporary.write_text(json.dumps(self.data, indent=2) + '\n')
         temporary.replace(self.path)
 
-    def client(self, *arguments, **options):
-        environment = {**os.environ, 'MODAL_PROFILE': modal_gpu.PROFILE,
+    def client(self, *arguments, profile=None, **options):
+        environment = {**os.environ, 'MODAL_PROFILE': profile or self.profile,
+                       'MODAL_IMAGE_BUILDER_VERSION': modal_gpu.IMAGE_BUILDER,
                        'CERIDWEN_MODAL_IMAGE': self.data['source']['image']}
         return subprocess.run([*modal_gpu.CLIENT, *arguments], cwd=ROOT, env=environment, **options)
 
-    def modal_json(self, *arguments):
-        return json.loads(self.client('-m', 'modal', *arguments, '--json', capture_output=True,
+    def modal_json(self, *arguments, profile=None):
+        return json.loads(self.client('-m', 'modal', *arguments, '--json', profile=profile, capture_output=True,
                                       text=True, check=True, timeout=300).stdout)
 
+    @staticmethod
+    def profile_of(attempt):
+        """The attempt's Modal profile. Attempts before 2026-11-11 name none: they ran in initalincrease."""
+        return attempt.get('profile', 'initalincrease')
+
+    def billed(self):
+        """This month's cost in the profile after credits and allowances (network egress, free storage)."""
+        return float(self.modal_json('billing', 'summary')['billed_cost'])
+
     def guard(self):
-        """Stop before a launch once Modal bills real money: this month's usage exceeds the credits."""
-        # billed_cost is the month's cost after credits and allowances (network egress, free storage).
-        billed = float(self.modal_json('billing', 'summary')['billed_cost'])
-        if billed > 0:
-            raise vast.SweepError(f'Modal credits do not cover this month: ${billed:.2f} billed above credits')
+        """Launch in the first profile whose month the credits cover and that starts containers; stop
+        when none is left. Modal bills real money in a profile once billed_cost is above 0."""
+        reasons = []
+        for profile in modal_gpu.PROFILES:
+            self.profile = profile
+            if profile in self.refused:
+                reasons.append(f'{profile} started no container')
+            elif (billed := self.billed()) > 0:
+                reasons.append(f'{profile} has ${billed:.2f} billed above credits')
+            else:
+                return
+        raise vast.SweepError('no Modal profile can launch: ' + '; '.join(reasons))
+
+    def watch(self, attempt, work, done):
+        """While the containers run: stop the app once Modal bills the profile above its credits."""
+        while not done.wait(modal_gpu.CREDIT_CHECK_SECONDS):
+            try:
+                billed = self.billed()
+            except (subprocess.SubprocessError, ValueError) as error:
+                engine.log(f'Modal billing summary unavailable: {error}')
+                continue
+            if billed > 0 and (work / 'calls.json').exists():
+                engine.log(f'Modal credits of {self.profile} are used up: ${billed:.2f} billed; stopping the app')
+                attempt['credit_stop'] = time.time()
+                self.stop(json.loads((work / 'calls.json').read_text())['app_id'])
+                return
 
     def archives(self, work):
         """Pinned source as Run.upload sends it, plus the selected inputs."""
@@ -464,11 +501,13 @@ class ModalRun:
         count = min(len(ordered), modal_gpu.MAX_CONTAINERS)
         return [ordered[i * len(ordered) // count:(i + 1) * len(ordered) // count] for i in range(count)]
 
-    def unpack(self, path, call):
-        """Results to fits/ exactly as the Vast rsync places them; stage logs beside the manifest."""
+    def unpack(self, path, call=None):
+        """Results to fits/ exactly as the Vast rsync places them; stage logs beside the manifest.
+        A kept fit names its own call."""
         destination = self.root / 'fits'
         with tarfile.open(path) as archive:
             status = json.load(archive.extractfile('status.json'))
+            call = call or status['call']
             for member in archive.getmembers():
                 if member.name.startswith('results/') and member.name.count('/') > 1:
                     member.name = member.name.split('/', 2)[2]
@@ -477,36 +516,90 @@ class ModalRun:
                     (self.root / f'{call}-{member.name}').write_bytes(archive.extractfile(member).read())
         return status
 
-    def stop(self, app_id):
+    def stop(self, app_id, profile=None):
         """Confirm no container of the app is still running."""
         for _ in range(3):
-            if all(c['app_id'] != app_id for c in self.modal_json('container', 'list')):
+            if all(c['app_id'] != app_id for c in self.modal_json('container', 'list', profile=profile)):
                 return
-            self.client('-m', 'modal', 'app', 'stop', '-y', app_id, capture_output=True, timeout=300)
+            self.client('-m', 'modal', 'app', 'stop', '-y', app_id, profile=profile, capture_output=True,
+                        timeout=300)
             time.sleep(5)
         engine.log(f'Modal app {app_id} still running: stop it with `modal app stop {app_id}`')
 
     def invoices(self):
         """Modal's own billed cost for each attempt's app, once its hourly intervals have closed."""
-        owned = {a['app_id']: a for a in self.data['attempts'] if a.get('app_id')}
-        if not owned:
-            return
+        owned = [a for a in self.data['attempts'] if a.get('app_id')]
         start = datetime.fromtimestamp(self.data['created'], UTC).date().isoformat()
         end = (datetime.now(UTC) + timedelta(days=1)).date().isoformat()  # includes the current hour
+        for profile in sorted({self.profile_of(a) for a in owned}):
+            try:
+                rows = self.modal_json('billing', 'report', '--start', start, '--end', end, '-r', 'h',
+                                       profile=profile)
+            except (subprocess.SubprocessError, ValueError) as error:
+                engine.log(f'Modal billing report unavailable: {error}; estimate retained')
+                continue
+            for attempt in owned:
+                costs = [float(row['cost']) for row in rows if row.get('object_id') == attempt['app_id']]
+                if costs and self.profile_of(attempt) == profile:
+                    attempt['billed_usd'] = sum(costs)
+
+    def pending(self):
+        done = self.data.get('completed_cells', [])
+        return [(i, c) for i, c in enumerate(self.data['source']['experiment']) if c['name'] not in done]
+
+    def settle(self, attempt, call, index, cell, status, share):
+        """One cell's stage exits and cost into the attempt; validate its unpacked result and complete it.
+        `status` is the status.json of the cell's archive, or the error that left no archive."""
+        record = attempt['cells'][cell['name']] = {'call_id': call, 'profile': self.profile_of(attempt)}
         try:
-            rows = self.modal_json('billing', 'report', '--start', start, '--end', end, '-r', 'h')
-        except (subprocess.SubprocessError, ValueError) as error:
-            engine.log(f'Modal billing report unavailable: {error}; estimate retained')
+            if isinstance(status, Exception):
+                raise status
+            seconds = status['finished'] - status['started']
+            fit = status.get('cells', {}).get(str(index), {})
+            # The archive's cost is shared equally by its cells.
+            record.update(gpu_name=status['gpu'], container_seconds=seconds, container_cells=share,
+                          estimated_usd=modal_gpu.cost_usd(self.args.gpu, seconds) / share,
+                          exit={**status['exit'], **({'fit': fit['exit']} if fit else {})},
+                          **{k: fit[k] for k in ('mode', 'tuned', 'compiled', 'retuned') if k in fit})
+            if any(record['exit'].values()) or len(record['exit']) < 2:
+                raise engine.StageFailed(f"{cell['name']}: stage exit {record['exit']}; inspect {self.root}/{call}-*.log")
+            validate_local_result(self.root / 'fits' / cell['arm']
+                                  / f"{cell['target_metadata']['object_id']}-{cell['target']}")
+            self.data.setdefault('completed_cells', []).append(cell['name'])
+        except (vast.SweepError, engine.StageFailed, subprocess.SubprocessError, OSError, KeyError) as caught:
+            record['error'] = f'{type(caught).__name__}: {caught}'
+            engine.log(record['error'])
+        self.save()
+
+    def recover(self, attempt):
+        """The fits that the attempt's containers kept on the results Volume and did not return:
+        complete each pending one, then empty the run's directory in that Volume."""
+        profile, local = self.profile_of(attempt), self.root / '.modal' / self.data['kept']
+        shutil.rmtree(local, ignore_errors=True)
+        self.client('-m', 'modal', 'volume', 'get', modal_gpu.RESULT_VOLUME, self.data['kept'] + '/',
+                    str(local.parent), profile=profile, capture_output=True, timeout=3600)
+        if not local.is_dir():  # the Volume has no fit of this run
             return
-        for app_id, attempt in owned.items():
-            costs = [float(row['cost']) for row in rows if row.get('object_id') == app_id]
-            if costs:
-                attempt['billed_usd'] = sum(costs)
+        pending = dict(self.pending())
+        for path in sorted(local.glob('[0-9]*.tar.gz')):
+            index = int(path.name.split('.')[0])
+            if index in pending:
+                status = self.unpack(path)
+                self.settle(attempt, status['call'], index, pending[index], status, 1)
+                engine.log(f"{pending[index]['name']}: from Volume {modal_gpu.RESULT_VOLUME} of {profile}")
+        shutil.rmtree(local)
+        self.forget(profile)
+
+    def forget(self, profile):
+        """Empty the run's directory in the profile's results Volume: every kept fit is local or refitted."""
+        self.client('-m', 'modal', 'volume', 'rm', '-r', modal_gpu.RESULT_VOLUME, self.data['kept'],
+                    profile=profile, capture_output=True, timeout=300)
 
     def execute(self):
         self.invoices()
-        cells = self.data['source']['experiment']
-        pending = [(i, c) for i, c in enumerate(cells) if c['name'] not in self.data.get('completed_cells', [])]
+        if self.data['attempts'] and self.pending():
+            self.recover(self.data['attempts'][-1])
+        pending = self.pending()
         if not pending:
             self.save()
             return 0
@@ -514,15 +607,19 @@ class ModalRun:
         work = self.root / '.modal' / str(len(self.data['attempts']))
         work.mkdir(parents=True, exist_ok=True)
         grids = {entry['remote_name']: entry for entry in self.data['source']['grids']}
-        attempt = {'gpu': self.args.gpu, 'cells': {}, 'started': time.time(), 'status': 'running'}
+        attempt = {'gpu': self.args.gpu, 'profile': self.profile, 'cells': {}, 'started': time.time(),
+                   'status': 'running'}
         self.data['attempts'].append(attempt)
         self.save()
         containers = self.containers(pending)
-        engine.log(f'launching {len(containers)} Modal {self.args.gpu} container(s) for {len(pending)} cell(s)')
+        engine.log(f'launching {len(containers)} Modal {self.args.gpu} container(s) for {len(pending)} cell(s) '
+                   f'in {self.profile}')
+        done = threading.Event()
+        threading.Thread(target=self.watch, args=(attempt, work, done), daemon=True).start()
         try:
             # Source and input archives are transient; only calls and result archives land in work.
             with tempfile.TemporaryDirectory() as temporary:
-                request = {'gpu': self.args.gpu, 'grids': list(grids.values()),
+                request = {'gpu': self.args.gpu, 'grids': list(grids.values()), 'kept': self.data['kept'],
                            'archives': self.archives(Path(temporary)), 'containers': [[
                     {'index': i, 'cell': c, 'key': self.cache_key(c), 'grid': Path(c['settings']['ssp_grid']).name,
                      'grid_sha256': grids[Path(c['settings']['ssp_grid']).name]['grid_sha256']} for i, c in members]
@@ -530,50 +627,46 @@ class ModalRun:
                 (Path(temporary) / 'request.json').write_text(json.dumps(request))
                 self.client('scripts/modal_gpu.py', str(Path(temporary) / 'request.json'), str(work))
         finally:
+            done.set()
             attempt['elapsed'] = time.time() - attempt['started']
             calls = json.loads((work / 'calls.json').read_text()) if (work / 'calls.json').exists() else {}
             attempt['app_id'] = calls.get('app_id')
             if attempt['app_id']:
                 self.stop(attempt['app_id'])
             self.save()
-        failed = []
+        if not calls:
+            # censusgalaxy, 2026-11-11: "InvalidError: Please add a payment method to use L4 GPU functions."
+            engine.log(f'Modal started no container in {self.profile}; the next profile launches')
+            attempt['status'] = 'refused'
+            self.save()
+            self.refused.add(self.profile)
+            return self.execute()
+        lost = False
         for number, members in enumerate(containers):
             call = calls.get('calls', {}).get(str(number), f'container-{number}')
             try:
                 if (work / f'{number}.error').exists():
                     raise vast.SweepError((work / f'{number}.error').read_text())
-                status, error = self.unpack(work / f'{number}.tar.gz', call), None
+                status = self.unpack(work / f'{number}.tar.gz', call)
             except (vast.SweepError, OSError, KeyError) as caught:
-                status, error = None, caught
+                status, lost = caught, True
             for index, cell in members:
-                record = attempt['cells'][cell['name']] = {'call_id': call}
-                try:
-                    if error is not None:
-                        raise error
-                    seconds = status['finished'] - status['started']
-                    fit = status.get('cells', {}).get(str(index), {})
-                    # The container's cost is shared equally by its cells.
-                    record.update(gpu_name=status['gpu'], container_seconds=seconds, container_cells=len(members),
-                                  estimated_usd=modal_gpu.cost_usd(self.args.gpu, seconds) / len(members),
-                                  exit={**status['exit'], **({'fit': fit['exit']} if fit else {})},
-                                  **{k: fit[k] for k in ('mode', 'tuned', 'compiled', 'retuned') if k in fit})
-                    if any(record['exit'].values()) or len(record['exit']) < 2:
-                        raise engine.StageFailed(f"{cell['name']}: stage exit {record['exit']}; inspect {self.root}/{call}-*.log")
-                    validate_local_result(self.root / 'fits' / cell['arm']
-                                          / f"{cell['target_metadata']['object_id']}-{cell['target']}")
-                    self.data.setdefault('completed_cells', []).append(cell['name'])
-                except (vast.SweepError, engine.StageFailed, subprocess.SubprocessError, OSError, KeyError) as caught:
-                    record['error'] = f'{type(caught).__name__}: {caught}'
-                    failed.append(cell['name'])
-                    engine.log(record['error'])
-                self.save()
-            if error is None and all(c['name'] in self.data.get('completed_cells', []) for _, c in members):
+                self.settle(attempt, call, index, cell, status, len(members))
+            if not isinstance(status, Exception) and all(
+                    c['name'] in self.data.get('completed_cells', []) for _, c in members):
                 (work / f'{number}.tar.gz').unlink()
+        if lost:
+            self.recover(attempt)
+        else:
+            self.forget(self.profile)
+        failed = [c['name'] for _, c in self.pending()]
         attempt['estimated_usd'] = sum(r.get('estimated_usd', 0) for r in attempt['cells'].values())
         attempt['status'] = 'failed' if failed else 'complete'
         self.invoices()
         self.save()
         engine.log(f"Modal attempt: ${attempt['estimated_usd']:.4f} estimated; failed cells: {failed or 'none'}")
+        if failed and 'credit_stop' in attempt:
+            return self.execute()  # the missing fits, in the next profile that the credits cover
         return 1 if failed else 0
 
 

@@ -8,8 +8,9 @@ description: Configure and run Ceridwen fits on Modal (the default) or Vast.ai, 
 ## Workflow update: Modal is the default
 
 Liu Hao, 2026-10-14: "switch gpus to initalincrease@gmail.com on modal instead of vast".
-`scripts/experiment.py run` now runs fits on Modal (`scripts/modal_gpu.py`, workspace
-`initialincrease`, CLI profile `initalincrease`). The Modal rules are in `AGENTS.md`.
+`scripts/experiment.py run` now runs fits on Modal (`scripts/modal_gpu.py`, CLI profiles
+`censusgalaxy`, `initalincrease`, `liuhaoo3-14`; read "Modal credit ends during a run").
+The Modal rules are in `AGENTS.md`.
 Liu Hao, 2026-10-25: "don't discard vast, just note that the workflow is updated".
 The Vast steps stay in this skill. Use them with `--backend vast`. A resumed run
 keeps the backend that its manifest records.
@@ -84,7 +85,7 @@ default is `Uniform(low=0.0, high=6.0)`.
    Use the GPU type requested by the user. If the user names no type, use A100-40GB.
    It has the lowest cost per fit in `results/gpu-bench-modal-2026-10-14/REPORT.md`.
    There is no per-run spend cap. The runner refuses a launch when Modal's
-   `billing summary` shows a billed cost above $0 for the month.
+   `billing summary` shows a billed cost above $0 for the month in each profile.
 
    Missing registered grids download locally before the launch. The runner puts
    each grid in the Modal Volume `ceridwen-grids` one time. It starts one container
@@ -153,6 +154,58 @@ default is `Uniform(low=0.0, high=6.0)`.
    file. Commit and push task-owned configuration, code and new host rows as
    required by `AGENTS.md`.
    Once local results are verified, the quick-fit task is complete.
+
+## Modal credit ends during a run
+
+Liu Hao, 2026-11-11: "update the ceridwen experiment skill to be more robust to credits
+running out halfway". On a second workspace: "i've got some extra modal credits in a
+different workspace - i'm not sure how to switch to that though". On a launcher that
+selects the workspace: "yeah, let's do automatic rotation".
+Never add a payment method (`AGENTS.md`).
+
+The commands are from the run of 2026-11-11 in `results/credit-robust-fits-2026-11-11/`.
+On that day Modal refused GPU functions in `censusgalaxy` ("Please add a payment method to
+use L4 GPU functions.") and `initalincrease` had a billed cost of $0.61. The fits ran in
+`liuhaoo3-14`.
+
+1. **Know the profiles.** `PROFILES` in `scripts/modal_gpu.py` is the ordered list of
+   Modal CLI profiles: `censusgalaxy`, `initalincrease`, `liuhaoo3-14`. A launch uses the
+   first profile that has a billed cost of $0 for the month. If Modal starts no container
+   in a profile, the runner uses the next profile. Each workspace has its own Volumes:
+   `ceridwen-grids`, `ceridwen-xla-cache` and `ceridwen-results`.
+2. **See that the credit ended.** Read `billed_cost`:
+   ```bash
+   modal billing summary --profile <profile> --json
+   ```
+   A value above 0 means that the usage is more than the credits. Modal does not stop the
+   containers. On 2026-11-11 the credits of `initalincrease` ended during a 388-fit run, and
+   the billed cost went to $0.12–1.40 (`results/legac-dr3-2026-11-11/REPORT.md`).
+   During a run, the runner reads this value each 120 s. When the value is above 0, the
+   runner stops its app, gets the finished fits, and starts the missing fits in the next
+   profile. The driver log then shows `Modal credits of <profile> are used up`. If no
+   profile is left, the runner stops with `no Modal profile can launch`.
+3. **Know where the finished fits are.** Each container writes each finished fit to the
+   Volume `ceridwen-results` of its workspace before it starts the next fit. The path is
+   `<kept>/<cell index>.tar.gz`. `kept` is in `run/manifest.json`.
+   ```bash
+   modal volume ls ceridwen-results <kept> --profile <profile> --json
+   ```
+4. **Get the partial results and resume.** Repeat the same command and `--output`:
+   ```bash
+   python3 scripts/experiment.py run results/<slug>/experiment.json \
+     --backend modal --gpu A100-40GB --output results/<slug>/run
+   ```
+   The runner first gets each fit that a stopped container left on the Volume. The log
+   shows `<arm>/<target>: from Volume ceridwen-results of <profile>`. The runner then
+   removes these fits from the Volume. Then it fits only the missing cells, with the saved
+   image, backend, seed and pinned source. In the run of 2026-11-11, the app was stopped
+   after 1 of 2 fits (`modal app stop -y <app id> --profile liuhaoo3-14`). The runner got
+   that fit from the Volume, and the second command fitted only the other cell.
+5. **Check the profile of each fit.** The manifest records it:
+   ```bash
+   python3 -c "import json; [print(a['profile'], a['status'], n, c.get('error', 'ok')) for a in json.load(open('results/<slug>/run/manifest.json'))['attempts'] for n, c in a['cells'].items()]"
+   ```
+   Then do step 4 of "Steps".
 
 ## Analysis and publication: only when requested
 
