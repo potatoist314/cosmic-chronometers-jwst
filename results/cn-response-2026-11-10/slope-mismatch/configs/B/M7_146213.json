@@ -1,0 +1,82 @@
+{
+  "targets": [
+    "M7_146213"
+  ],
+  "seed": 20261110,
+  "settings": {},
+  "priors": {},
+  "arms": {
+    "B1_s20261111": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M7_146213_s20261111.npz",
+        "abundance_response": null,
+        "rest_range": null
+      }
+    },
+    "B2_s20261111": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M7_146213_s20261111.npz",
+        "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+        "rest_range": null
+      }
+    },
+    "B3_s20261111": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M7_146213_s20261111.npz",
+        "abundance_response": null,
+        "rest_range": [
+          4155.0,
+          4438.1
+        ]
+      }
+    },
+    "B1_s20261112": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M7_146213_s20261112.npz",
+        "abundance_response": null,
+        "rest_range": null
+      }
+    },
+    "B2_s20261112": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M7_146213_s20261112.npz",
+        "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+        "rest_range": null
+      }
+    },
+    "B3_s20261112": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M7_146213_s20261112.npz",
+        "abundance_response": null,
+        "rest_range": [
+          4155.0,
+          4438.1
+        ]
+      }
+    },
+    "B1_s20261113": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M7_146213_s20261113.npz",
+        "abundance_response": null,
+        "rest_range": null
+      }
+    },
+    "B2_s20261113": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M7_146213_s20261113.npz",
+        "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+        "rest_range": null
+      }
+    },
+    "B3_s20261113": {
+      "settings": {
+        "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M7_146213_s20261113.npz",
+        "abundance_response": null,
+        "rest_range": [
+          4155.0,
+          4438.1
+        ]
+      }
+    }
+  }
+}
