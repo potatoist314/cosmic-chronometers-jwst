@@ -1,0 +1,707 @@
+23:59:45 committed source 99c179ba4b15; output results/chronometer-135-2026-11-10/cn-free/run
+23:59:46 launching 10 Modal A100-40GB container(s) for 135 cell(s)
+✓ Initialized. View run at 
+https://modal.com/apps/initialincrease/main/ap-dGsAcobsOnOdimkF0CuVZW
+✓ Created objects.
+├── ✓ Uploaded /Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py
+└── ✓ Created Function fit.
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 610ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.94s
+bootstrap: Uninstalled 1 package in 27ms
+bootstrap: Installed 2 packages in 19ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 9ms
+bootstrap: All installed packages are compatible
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 786ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: ceridwen: combined static smoother installed
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.43s
+bootstrap: Uninstalled 1 package in 26ms
+bootstrap: Installed 2 packages in 25ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 9ms
+bootstrap: All installed packages are compatible
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-2: 00:12:15 fitting cn_free/M14_37023, seed 20260832
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-71: 00:12:29 fitting cn_free/M12_181945, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 483ms
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 602ms
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.46s
+bootstrap: Uninstalled 1 package in 16ms
+bootstrap: Installed 2 packages in 14ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 5ms
+bootstrap: All installed packages are compatible
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.89s
+bootstrap: Uninstalled 1 package in 24ms
+bootstrap: Installed 2 packages in 21ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Selected fit inputs verified
+bootstrap: Ceridwen GPU environment ready.
+fit-92: 00:12:52 fitting cn_free/M11_214296, seed 20260832
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-95: 00:12:55 fitting cn_free/M11_215585, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 608ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 593ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Resolved 2 packages in 617ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.89s
+bootstrap: Uninstalled 1 package in 27ms
+bootstrap: Installed 2 packages in 23ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.86s
+bootstrap: Uninstalled 1 package in 25ms
+bootstrap: Installed 2 packages in 19ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.98s
+bootstrap: Uninstalled 1 package in 26ms
+bootstrap: Installed 2 packages in 23ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 8ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-113: 00:14:56 fitting cn_free/M13_232627, seed 20260832
+bootstrap: Ceridwen GPU environment ready.
+fit-24: 00:14:56 fitting cn_free/M3_109843, seed 20260832
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-122: 00:15:01 fitting cn_free/M5_238580, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 611ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.93s
+bootstrap: Uninstalled 1 package in 25ms
+bootstrap: Installed 2 packages in 23ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-40: 00:15:40 fitting cn_free/M4_123161, seed 20260832
+fit-55: 00:15:45 fitting cn_free/M7_147849, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 756ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.20s
+bootstrap: Uninstalled 1 package in 25ms
+bootstrap: Installed 2 packages in 22ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 10ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-36: 00:16:15 fitting cn_free/M7_120758, seed 20260832
+fit-52: 00:16:23 fitting cn_free/M7_146213, seed 20260832
+fit-57: 00:16:38 fitting cn_free/M8_150848, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 762ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.28s
+bootstrap: Uninstalled 1 package in 26ms
+bootstrap: Installed 2 packages in 24ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 9ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-12: 00:17:14 fitting cn_free/M12_92132, seed 20260832
+fit-19: 00:17:59 fitting cn_free/M14_104877, seed 20260832
+fit-86: 00:18:27 fitting cn_free/M1_211157, seed 20260832
+fit-17: 00:18:27 fitting cn_free/M14_102968, seed 20260832
+fit-35: 00:18:54 fitting cn_free/M7_120488, seed 20260832
+fit-90: 00:19:34 fitting cn_free/M9_213587, seed 20260832
+fit-56: 00:19:36 fitting cn_free/M8_148698, seed 20260832
+fit-63: 00:19:42 fitting cn_free/M8_162149, seed 20260832
+fit-94: 00:19:48 fitting cn_free/M10_215519, seed 20260832
+fit-33: 00:19:55 fitting cn_free/M3_120308, seed 20260832
+fit-11: 00:21:05 fitting cn_free/M15_89072, seed 20260832
+fit-115: 00:21:22 fitting cn_free/M11_232962, seed 20260832
+fit-70: 00:21:26 fitting cn_free/M12_181421, seed 20260832
+fit-65: 00:21:59 fitting cn_free/M5_165871, seed 20260832
+fit-60: 00:22:02 fitting cn_free/M8_160400, seed 20260832
+fit-106: 00:22:53 fitting cn_free/M10_228215, seed 20260832
+fit-15: 00:22:55 fitting cn_free/M12_101830, seed 20260832
+fit-58: 00:23:16 fitting cn_free/M7_152125, seed 20260832
+fit-77: 00:23:22 fitting cn_free/M5_205715, seed 20260832
+fit-23: 00:23:51 fitting cn_free/M3_109713, seed 20260832
+fit-68: 00:24:16 fitting cn_free/M5_172669, seed 20260832
+fit-89: 00:24:41 fitting cn_free/M11_212718, seed 20260832
+fit-34: 00:25:34 fitting cn_free/M7_120372, seed 20260832
+fit-98: 00:25:38 fitting cn_free/M10_217020, seed 20260832
+fit-22: 00:25:40 fitting cn_free/M4_107643, seed 20260832
+fit-128: 00:25:54 fitting cn_free/M13_246149, seed 20260832
+fit-46: 00:26:31 fitting cn_free/M2_130005, seed 20260832
+fit-54: 00:26:34 fitting cn_free/M8_147539, seed 20260832
+fit-96: 00:26:47 fitting cn_free/M10_216730, seed 20260832
+fit-1: 00:27:46 fitting cn_free/M14_31835, seed 20260832
+fit-80: 00:28:21 fitting cn_free/M1_206545, seed 20260832
+fit-116: 00:28:49 fitting cn_free/M10_233129, seed 20260832
+fit-87: 00:28:51 fitting cn_free/M5_211347, seed 20260832
+fit-110: 00:28:59 fitting cn_free/M13_230747, seed 20260832
+fit-41: 00:29:35 fitting cn_free/M1_126153, seed 20260832
+fit-13: 00:29:35 fitting cn_free/M2_97310, seed 20260832
+fit-84: 00:29:52 fitting cn_free/M1_210210, seed 20260832
+fit-48: 00:30:16 fitting cn_free/M2_133501, seed 20260832
+fit-8: 00:30:43 fitting cn_free/M4_84337, seed 20260832
+fit-120: 00:31:45 fitting cn_free/M6_237437, seed 20260832
+fit-64: 00:32:16 fitting cn_free/M7_162587, seed 20260832
+fit-117: 00:32:30 fitting cn_free/M9_233169, seed 20260832
+fit-104: 00:32:37 fitting cn_free/M10_227516, seed 20260832
+fit-45: 00:32:40 fitting cn_free/M2_129596, seed 20260832
+fit-101: 00:33:01 fitting cn_free/M9_218701, seed 20260832
+fit-102: 00:33:24 fitting cn_free/M11_221163, seed 20260832
+fit-125: 00:33:35 fitting cn_free/M13_244239, seed 20260832
+fit-53: 00:33:36 fitting cn_free/M7_147270, seed 20260832
+fit-14: 00:34:38 fitting cn_free/M12_101089, seed 20260832
+fit-91: 00:35:32 fitting cn_free/M10_213772, seed 20260832
+fit-76: 00:36:06 fitting cn_free/M10_201233, seed 20260832
+fit-108: 00:36:47 fitting cn_free/M11_229551, seed 20260832
+fit-131: 00:36:48 fitting cn_free/M13_255047, seed 20260832
+fit-103: 00:36:48 fitting cn_free/M10_225441, seed 20260832
+fit-61: 00:36:49 fitting cn_free/M8_161113, seed 20260832
+fit-18: 00:36:54 fitting cn_free/M14_103366, seed 20260832
+fit-62: 00:36:59 fitting cn_free/M8_161346, seed 20260832
+fit-111: 00:37:49 fitting cn_free/M10_231544, seed 20260832
+fit-67: 00:38:03 fitting cn_free/M5_167056, seed 20260832
+fit-25: 00:39:21 fitting cn_free/M4_112534, seed 20260832
+fit-126: 00:39:30 fitting cn_free/M13_245763, seed 20260832
+fit-130: 00:39:43 fitting cn_free/M13_253688, seed 20260832
+fit-31: 00:39:55 fitting cn_free/M3_119802, seed 20260832
+fit-51: 00:40:14 fitting cn_free/M1_139423, seed 20260832
+fit-21: 00:40:27 fitting cn_free/M4_107370, seed 20260832
+fit-123: 00:40:55 fitting cn_free/M6_240899, seed 20260832
+fit-73: 00:41:06 fitting cn_free/M12_185631, seed 20260832
+fit-43: 00:41:28 fitting cn_free/M5_127946, seed 20260832
+fit-93: 00:42:04 fitting cn_free/M11_214430, seed 20260832
+fit-28: 00:42:22 fitting cn_free/M4_117400, seed 20260832
+fit-9: 00:42:40 fitting cn_free/M15_87207, seed 20260832
+fit-79: 00:43:14 fitting cn_free/M5_205765, seed 20260832
+fit-107: 00:43:35 fitting cn_free/M10_228380, seed 20260832
+fit-0: 00:43:58 fitting cn_free/M14_27068, seed 20260832
+fit-38: 00:44:02 fitting cn_free/M7_122025, seed 20260832
+fit-37: 00:44:24 fitting cn_free/M7_121482, seed 20260832
+fit-74: 00:44:50 fitting cn_free/M12_185653, seed 20260832
+fit-49: 00:45:31 fitting cn_free/M2_134021, seed 20260832
+fit-129: 00:45:44 fitting cn_free/M13_248217, seed 20260832
+fit-10: 00:45:52 fitting cn_free/M15_88032, seed 20260832
+fit-39: 00:46:02 fitting cn_free/M7_122242, seed 20260832
+fit-134: 00:46:14 fitting cn_free/M13_259737, seed 20260832
+fit-85: 00:46:42 fitting cn_free/M2_210940, seed 20260832
+fit-78: 00:47:12 fitting cn_free/M1_205742, seed 20260832
+fit-26: 00:47:18 fitting cn_free/M7_113852, seed 20260832
+fit-133: 00:47:37 fitting cn_free/M13_258753, seed 20260832
+fit-109: 00:48:26 fitting cn_free/M9_229883, seed 20260832
+fit-81: 00:49:21 fitting cn_free/M2_206669, seed 20260832
+fit-119: 00:49:31 fitting cn_free/M5_236682, seed 20260832
+fit-47: 00:49:37 fitting cn_free/M1_133240, seed 20260832
+fit-3: 00:49:37 fitting cn_free/M14_37219, seed 20260832
+fit-32: 00:49:55 fitting cn_free/M3_119809, seed 20260832
+fit-99: 00:50:08 fitting cn_free/M11_217564, seed 20260832
+fit-29: 00:50:42 fitting cn_free/M3_117694, seed 20260832
+fit-112: 00:50:47 fitting cn_free/M9_232005, seed 20260832
+fit-4: 00:50:53 fitting cn_free/M14_37843, seed 20260832
+fit-121: 00:52:24 fitting cn_free/M6_237641, seed 20260832
+fit-27: 00:52:43 fitting cn_free/M3_117010, seed 20260832
+fit-7: 00:52:54 fitting cn_free/M15_77745, seed 20260832
+fit-72: 00:53:06 fitting cn_free/M12_184916, seed 20260832
+fit-83: 00:53:24 fitting cn_free/M1_208622, seed 20260832
+fit-124: 00:53:38 fitting cn_free/M13_243871, seed 20260832
+fit-100: 00:53:42 fitting cn_free/M11_218207, seed 20260832
+fit-42: 00:53:59 fitting cn_free/M1_126578, seed 20260832
+fit-118: 00:54:06 fitting cn_free/M6_233902, seed 20260832
+fit-50: 00:54:31 fitting cn_free/M2_134391, seed 20260832
+fit-16: 00:55:49 fitting cn_free/M12_102456, seed 20260832
+fit-20: 00:56:57 fitting cn_free/M4_105474, seed 20260832
+fit-59: 00:57:00 fitting cn_free/M8_156118, seed 20260832
+fit-6: 00:57:19 fitting cn_free/M14_38648, seed 20260832
+fit-127: 00:57:31 fitting cn_free/M11_245864, seed 20260832
+fit-44: 00:57:59 fitting cn_free/M5_128311, seed 20260832
+fit-105: 00:58:11 fitting cn_free/M9_227630, seed 20260832
+fit-69: 00:58:12 fitting cn_free/M12_180774, seed 20260832
+fit-75: 01:00:48 fitting cn_free/M10_189698, seed 20260832
+fit-132: 01:01:19 fitting cn_free/M11_257455, seed 20260832
+fit-97: 01:01:35 fitting cn_free/M11_216899, seed 20260832
+fit-88: 01:02:23 fitting cn_free/M9_212391, seed 20260832
+fit-30: 01:02:50 fitting cn_free/M3_119474, seed 20260832
+fit-82: 01:04:09 fitting cn_free/M1_206858, seed 20260832
+fit-114: 01:06:25 fitting cn_free/M9_232890, seed 20260832
+fit-66: 01:06:55 fitting cn_free/M6_166634, seed 20260832
+fit-5: 01:08:17 fitting cn_free/M14_38646, seed 20260832
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/initialincrease/main/ap-dGsAcobsOnOdimkF0CuVZW
+01:14:46 Modal attempt: $19.2936 estimated; failed cells: none
+01:15:18 local figure rebuild failed for cn_free/M14_37023: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/37023-M14_37023']' returned non-zero exit status 1.; GPU artifacts kept
+01:15:50 local figure rebuild failed for cn_free/M7_147849: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/147849-M7_147849']' returned non-zero exit status 1.; GPU artifacts kept
+01:16:20 local figure rebuild failed for cn_free/M10_215519: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/215519-M10_215519']' returned non-zero exit status 1.; GPU artifacts kept
+01:16:50 local figure rebuild failed for cn_free/M10_228215: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/228215-M10_228215']' returned non-zero exit status 1.; GPU artifacts kept
+01:17:19 local figure rebuild failed for cn_free/M2_130005: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/130005-M2_130005']' returned non-zero exit status 1.; GPU artifacts kept
+01:17:50 local figure rebuild failed for cn_free/M1_210210: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/210210-M1_210210']' returned non-zero exit status 1.; GPU artifacts kept
+01:18:20 local figure rebuild failed for cn_free/M7_147270: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/147270-M7_147270']' returned non-zero exit status 1.; GPU artifacts kept
+01:18:50 local figure rebuild failed for cn_free/M8_161113: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/161113-M8_161113']' returned non-zero exit status 1.; GPU artifacts kept
+01:19:20 local figure rebuild failed for cn_free/M3_119802: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/119802-M3_119802']' returned non-zero exit status 1.; GPU artifacts kept
+01:19:50 local figure rebuild failed for cn_free/M5_205765: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/205765-M5_205765']' returned non-zero exit status 1.; GPU artifacts kept
+01:20:20 local figure rebuild failed for cn_free/M13_259737: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/259737-M13_259737']' returned non-zero exit status 1.; GPU artifacts kept
+01:20:50 local figure rebuild failed for cn_free/M11_217564: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/217564-M11_217564']' returned non-zero exit status 1.; GPU artifacts kept
+01:21:20 local figure rebuild failed for cn_free/M12_184916: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/184916-M12_184916']' returned non-zero exit status 1.; GPU artifacts kept
+01:21:51 local figure rebuild failed for cn_free/M12_181945: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/181945-M12_181945']' returned non-zero exit status 1.; GPU artifacts kept
+01:22:21 local figure rebuild failed for cn_free/M14_104877: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/104877-M14_104877']' returned non-zero exit status 1.; GPU artifacts kept
+01:22:52 local figure rebuild failed for cn_free/M11_232962: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/232962-M11_232962']' returned non-zero exit status 1.; GPU artifacts kept
+01:23:23 local figure rebuild failed for cn_free/M10_217020: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/217020-M10_217020']' returned non-zero exit status 1.; GPU artifacts kept
+01:23:54 local figure rebuild failed for cn_free/M1_126153: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/126153-M1_126153']' returned non-zero exit status 1.; GPU artifacts kept
+01:24:24 local figure rebuild failed for cn_free/M11_221163: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/221163-M11_221163']' returned non-zero exit status 1.; GPU artifacts kept
+01:24:55 local figure rebuild failed for cn_free/M10_231544: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/231544-M10_231544']' returned non-zero exit status 1.; GPU artifacts kept
+01:25:25 local figure rebuild failed for cn_free/M11_214430: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/214430-M11_214430']' returned non-zero exit status 1.; GPU artifacts kept
+01:25:57 local figure rebuild failed for cn_free/M15_88032: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/88032-M15_88032']' returned non-zero exit status 1.; GPU artifacts kept
+01:26:28 local figure rebuild failed for cn_free/M3_119809: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/119809-M3_119809']' returned non-zero exit status 1.; GPU artifacts kept
+01:26:59 local figure rebuild failed for cn_free/M6_233902: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/233902-M6_233902']' returned non-zero exit status 1.; GPU artifacts kept
+01:27:30 local figure rebuild failed for cn_free/M12_180774: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/180774-M12_180774']' returned non-zero exit status 1.; GPU artifacts kept
+01:28:00 local figure rebuild failed for cn_free/M3_119474: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/119474-M3_119474']' returned non-zero exit status 1.; GPU artifacts kept
+01:28:31 local figure rebuild failed for cn_free/M6_166634: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/166634-M6_166634']' returned non-zero exit status 1.; GPU artifacts kept
+01:29:01 local figure rebuild failed for cn_free/M11_215585: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/215585-M11_215585']' returned non-zero exit status 1.; GPU artifacts kept
+01:29:32 local figure rebuild failed for cn_free/M7_146213: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/146213-M7_146213']' returned non-zero exit status 1.; GPU artifacts kept
+01:30:02 local figure rebuild failed for cn_free/M9_213587: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/213587-M9_213587']' returned non-zero exit status 1.; GPU artifacts kept
+01:30:32 local figure rebuild failed for cn_free/M12_101830: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/101830-M12_101830']' returned non-zero exit status 1.; GPU artifacts kept
+01:31:03 local figure rebuild failed for cn_free/M13_246149: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/246149-M13_246149']' returned non-zero exit status 1.; GPU artifacts kept
+01:31:33 local figure rebuild failed for cn_free/M2_97310: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/97310-M2_97310']' returned non-zero exit status 1.; GPU artifacts kept
+01:32:03 local figure rebuild failed for cn_free/M10_227516: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/227516-M10_227516']' returned non-zero exit status 1.; GPU artifacts kept
+01:32:35 local figure rebuild failed for cn_free/M14_103366: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/103366-M14_103366']' returned non-zero exit status 1.; GPU artifacts kept
+01:33:06 local figure rebuild failed for cn_free/M1_139423: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/139423-M1_139423']' returned non-zero exit status 1.; GPU artifacts kept
+01:33:37 local figure rebuild failed for cn_free/M14_27068: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/27068-M14_27068']' returned non-zero exit status 1.; GPU artifacts kept
+01:34:08 local figure rebuild failed for cn_free/M13_258753: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/258753-M13_258753']' returned non-zero exit status 1.; GPU artifacts kept
+01:34:38 local figure rebuild failed for cn_free/M3_117694: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/117694-M3_117694']' returned non-zero exit status 1.; GPU artifacts kept
+01:35:08 local figure rebuild failed for cn_free/M1_126578: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/126578-M1_126578']' returned non-zero exit status 1.; GPU artifacts kept
+01:35:40 local figure rebuild failed for cn_free/M11_214296: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/214296-M11_214296']' returned non-zero exit status 1.; GPU artifacts kept
+01:36:11 local figure rebuild failed for cn_free/M8_150848: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/150848-M8_150848']' returned non-zero exit status 1.; GPU artifacts kept
+01:36:41 local figure rebuild failed for cn_free/M3_120308: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/120308-M3_120308']' returned non-zero exit status 1.; GPU artifacts kept
+01:37:14 local figure rebuild failed for cn_free/M5_205715: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/205715-M5_205715']' returned non-zero exit status 1.; GPU artifacts kept
+01:37:46 local figure rebuild failed for cn_free/M10_216730: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/216730-M10_216730']' returned non-zero exit status 1.; GPU artifacts kept
+01:38:18 local figure rebuild failed for cn_free/M4_84337: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/84337-M4_84337']' returned non-zero exit status 1.; GPU artifacts kept
+01:38:49 local figure rebuild failed for cn_free/M13_244239: Command '['/Users/liuhao/Downloads/Astro project/ceridwen/.venv/bin/python', 'scripts/regenerate_fit_notebooks.py', '--settings-override', '{"photometry": "cosmos2025", "data_source": "legac_dr2", "mock_data": null, "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105", "fix_afe": null, "ssp_grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5", "photometry_floor": 0.05, "emission_lines": [3934.77, 3966.6, 3973.3, 4227.92], "emission_line_marginalisation": true, "telluric_air": [7590.0, 7660.0], "sky_lines_air": [], "rest_range": null, "photometry_excluded": [], "spectrum_floor_anchor": "model", "masked_absorption_features": [], "sfh_nbins": 14, "calibration_order": 10, "calibration_prior_sigma": 0.1, "calibration_constant_prior_sigma": 0.3, "calibration_fit_constant": true, "zred_half_width": 0.1, "sigma_clip": 3.0, "birth_cloud_dust": true, "metallicity_evolution": true, "sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}, "sampler_quick": {"num_live": 16, "num_inner_steps": 2, "num_delete": 8, "logZ_tol": 10000.0}}', '--priors-override', '{"logmass": "Uniform(low=8.0, high=13.0)", "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)", "logzsol": "\'Uniform over the grid\'", "zh_beta_unit": "Uniform(low=0.0, high=1.0)", "afe": "\'Uniform over the grid\'", "cfe": "Uniform(low=-0.3, high=0.5)", "nfe": "Uniform(low=-0.3, high=1.0)", "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)", "diffuse_delta": "Uniform(low=-1.0, high=0.4)", "diffuse_Ebump": "Uniform(low=0.0, high=6.0)", "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)", "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))", "zred": "\'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)\'", "sigma_smooth": "\'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)\'"}', 'results/chronometer-135-2026-11-10/cn-free/run/fits/cn_free/244239-M13_244239']' returned non-zero exit status 1.; GPU artifacts kept
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 628, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 621, in main
+    regenerate_figures(args.output)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 249, in regenerate_figures
+    subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'),
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    'scripts/regenerate_fit_notebooks.py',
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    '--settings-override', json.dumps(settings),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    '--priors-override', json.dumps(cell['priors']), str(directory)],
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   cwd=ROOT, check=True, capture_output=True, text=True, timeout=3600)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2153, in _communicate
+    ready = selector.select(timeout)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 626, in <lambda>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+                                             ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 626, in <genexpr>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+KeyboardInterrupt
