@@ -1,0 +1,111 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+___________ test_notebook_uses_production_model_and_sampler_contract ___________
+
+    def test_notebook_uses_production_model_and_sampler_contract():
+        notebook = json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
+        source = "\n".join("".join(cell.get("source", [])) for cell in notebook["cells"])
+    
+        assert "drop_duplicates(\"OBJECT\", keep=\"first\")" in source
+        assert '"spectrum_scaling": ClippedNormal' not in source
+        assert '"spectrum_scaling": jnp.array' not in source
+        assert '"calibration_fit_constant": True' in source
+        assert 'fit_constant=SETTINGS["calibration_fit_constant"]' in source
+        assert '"sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}' in source
+        assert '"logzsol": "log10(Z/Z_sun) = [Fe/H] on this grid"' in source
+        assert 'SSPDataAfe.load(ssp_path, zsun=0.0185, axis_meaning="feh")' in source
+        assert '"calibration_order": 10,' in source
+        assert '"sfh_nbins": 14' in source
+        assert "sfh_lookback_gyr" not in source
+        assert "sfh_tbinmax_yr = universe_age * 0.85 * 1e9" in source
+        assert 'scalar_draws("logzsol"), joint_bounds["logzsol"]' in source
+        assert r"$\log_{10}(Z/Z_\odot)$" not in source
+        assert "aperture_transfer" not in source
+        # Every fit setting is a literal in the top cell; only the launcher's per-galaxy values come from the environment.
+>       assert sorted(set(re.findall(r'os\.environ\.get\("(CERIDWEN_[A-Z_]+)"', source))) == [
+            "CERIDWEN_MANIFEST_INDEX",
+            "CERIDWEN_NOTEBOOK_QUICK",
+            "CERIDWEN_RANDOM_SEED",
+            "CERIDWEN_RESULT_DIR",
+            "CERIDWEN_TARGET_ID",
+        ]
+E       AssertionError: assert ['CERIDWEN_MA...EN_TARGET_ID'] == ['CERIDWEN_MA...EN_TARGET_ID']
+E         
+E         At index 2 diff: 'CERIDWEN_PLOTS' != 'CERIDWEN_RANDOM_SEED'
+E         Left contains one more item: 'CERIDWEN_TARGET_ID'
+E         Use -v to get more diff
+
+tests/test_ceridwen_dr2_production.py:125: AssertionError
+____________ test_constant_calibration_active_assembly_and_exports _____________
+
+    def test_constant_calibration_active_assembly_and_exports():
+        """Execute the maintained assembly on a small in-memory SSP, without fitting."""
+        import ast
+        import jax.numpy as jnp
+        import numpy as np
+        from ceridwen import Cosmology
+        from ceridwen.broadening import Instrument, Kinematics
+        from ceridwen.cosmology import age_gyr
+        from ceridwen.csp import CSPBasis_afe
+        from ceridwen.ssps import SSPDataAfe
+        from ceridwen.model import SedModel, logsfr_ratios_to_sfh
+        from ceridwen.observation import Photometry, Spectrum
+        from ceridwen.likelihood import PolynomialCalibration
+        from ceridwen.sampler.priors import ClippedNormal, StudentT, Uniform
+    
+        cells = ["".join(c.get("source", [])) for c in json.loads(NOTEBOOK_PATH.read_text())["cells"]
+                 if c["cell_type"] == "code"]
+        env = dict(np=np, jnp=jnp, age_gyr=age_gyr, CSPBasis_afe=CSPBasis_afe,
+                   SedModel=SedModel, logsfr_ratios_to_sfh=logsfr_ratios_to_sfh,
+                   ClippedNormal=ClippedNormal, StudentT=StudentT, Uniform=Uniform,
+                   PolynomialCalibration=PolynomialCalibration, Cosmology=Cosmology, Kinematics=Kinematics)
+        settings_cell = next(c for c in cells if "SETTINGS = {" in c)
+        for node in ast.parse(settings_cell).body:
+            if isinstance(node, ast.Assign) and any(
+                    isinstance(t, ast.Name) and t.id in {"SETTINGS", "PRIORS"} for t in node.targets):
+                exec(compile(ast.Module(body=[node], type_ignores=[]), "settings", "exec"), env)
+        wave = jnp.geomspace(1000., 30000., 256)
+        env["ssp"] = SSPDataAfe(jnp.array([-2.2, -1.4]), jnp.array([-3., -1., 0., 1.2]), wave,
+                                jnp.ones((2, 2, 4, 256)) * 1e-15, ssp_afe=jnp.array([-.2, .6]),
+                                zsun=10 ** -1.4, axis_meaning="feh")
+        spec_wave = np.linspace(6000., 9000., 64)
+        env.update(z_catalog=.7, sigma_star=180., sigma_star_err=10., phot_flux=np.ones(1))
+        env["phot_obs"] = Photometry(filters=["sdss_r0"], flux=np.ones(1), uncertainty=np.ones(1),
+                                     name="photometry")
+        env["spectrum_obs"] = Spectrum(wavelength=spec_wave, flux=np.ones(64),
+                                        uncertainty=np.ones(64), name="spectrum",
+                                        instrument=Instrument.R_fwhm(3500.), projector="fft")
+        assembly = ast.parse(next(c for c in cells if "joint_csp = CSPBasis_afe(" in c))
+        # Supply the tiny grid instead of fetching production data.
+        start = next(i for i, node in enumerate(assembly.body)
+                     if isinstance(node, ast.Assign)
+                     and any(isinstance(t, ast.Name) and t.id == "universe_age" for t in node.targets))
+>       exec(compile(ast.Module(body=assembly.body[start:], type_ignores=[]), "assembly", "exec"), env)
+
+tests/test_ceridwen_dr2_production.py:465: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+assembly:145: in <module>
+    ???
+ceridwen/ceridwen/model/model.py:863: in predict
+    model_theta = self._with_fixed_distance(self.apply_transforms(theta))
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ceridwen/ceridwen/model/model.py:855: in apply_transforms
+    model_theta[derived_param] = fn(free_theta)
+                                 ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+free_theta = {'afe': Array([0.6], dtype=float64), 'diffuse_tau_noll': Array([0.1], dtype=float64), 'diffuse_delta': Array([-0.7], dtype=float64), 'diffuse_Ebump': Array([0.], dtype=float64), ...}
+
+>   ???
+E   NameError: name 'mass_mapped_beta' is not defined
+
+assembly:83: NameError
+=============================== warnings summary ===============================
+tests/test_ceridwen_dr2_production.py::test_constant_calibration_active_assembly_and_exports
+  assembly:130: UserWarning: the oldest SFH node, 7.297 Gyr of lookback time, predates the Universe at the high-zred end of the prior (age 6.759 Gyr at zred = 0.8); with track_zred_age=False the grid is not rescaled with the sampled redshift.  Use CSPBasis(track_zred_age=True) or a grid within csp.age_at(zred_max)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_ceridwen_dr2_production.py::test_notebook_uses_production_model_and_sampler_contract
+FAILED tests/test_ceridwen_dr2_production.py::test_constant_calibration_active_assembly_and_exports
+2 failed, 1 warning in 3.20s

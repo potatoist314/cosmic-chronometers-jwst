@@ -1,0 +1,16 @@
+Cross-pin verification: M1_210210
+Old: Astro 9b189a36, ceridwen a0b1f6e (isolated worktrees).
+New: Astro 0a419b8, ceridwen 13791e0, abundance_response=None.
+All 12 spectrum/photometry arrays are bitwise identical: eager and JIT at three parameter points. This is additional to the within-new-pin zero-C/N comparison.
+
+Both named existing tests fail at both revisions. Existing tests were not edited.
+1. test_notebook_uses_production_model_and_sampler_contract
+AssertionError: assert ['CERIDWEN_MA...EN_TARGET_ID'] == ['CERIDWEN_MA...EN_TARGET_ID']
+At index 2 diff: 'CERIDWEN_PLOTS' != 'CERIDWEN_RANDOM_SEED'
+Left contains one more item: 'CERIDWEN_TARGET_ID'
+tests/test_ceridwen_dr2_production.py:125: AssertionError
+2. test_constant_calibration_active_assembly_and_exports
+NameError: name 'mass_mapped_beta' is not defined
+Old assembly:75. New assembly:83.
+
+Full outputs: baseline-existing-tests.log and current-existing-tests.log. Arrays: baseline-predictions.npz and current-predictions.npz. Source locations are in prediction-export logs. Validation is on CPU x64 with the same scientific environment and input files. Modal fits continue separately.
