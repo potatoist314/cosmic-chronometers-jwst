@@ -1,0 +1,115 @@
+{
+  "checked_at": "2026-11-11T08:59:54.012399+00:00",
+  "own_apps": [
+    {
+      "app_id": "ap-qEosVN3yfBa0hyxdLBFkBB",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:25+00:00",
+      "stopped_at": "2026-11-11 08:18:28+00:00"
+    },
+    {
+      "app_id": "ap-kTtP2BlOntV28ii8tQqfTW",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:22+00:00",
+      "stopped_at": "2026-11-11 08:27:58+00:00"
+    },
+    {
+      "app_id": "ap-IYoFB0zvyLbVN7vnXWkUHw",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:22+00:00",
+      "stopped_at": "2026-11-11 08:24:50+00:00"
+    },
+    {
+      "app_id": "ap-oyK628Ufw1nWe1DZZUXrZY",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:21+00:00",
+      "stopped_at": "2026-11-11 08:05:15+00:00"
+    },
+    {
+      "app_id": "ap-mK4CEjXpyOJxBfeg3ZBLCO",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:17+00:00",
+      "stopped_at": "2026-11-11 08:49:23+00:00"
+    },
+    {
+      "app_id": "ap-4a3Is3gLc5JpRszYi5nUKW",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:15+00:00",
+      "stopped_at": "2026-11-11 08:15:14+00:00"
+    },
+    {
+      "app_id": "ap-FEgxhsbBA7U19vvJSzJIBH",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:09+00:00",
+      "stopped_at": "2026-11-11 08:54:35+00:00"
+    },
+    {
+      "app_id": "ap-uRP6gLP5Gd75MTOUrWDWN1",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:06+00:00",
+      "stopped_at": "2026-11-11 08:15:00+00:00"
+    },
+    {
+      "app_id": "ap-fyncnCwRGluB8D6Pt8dDwR",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:03+00:00",
+      "stopped_at": "2026-11-11 08:00:43+00:00"
+    },
+    {
+      "app_id": "ap-TYmDISsonZIywYVdunhCgq",
+      "description": "ceridwen-experiment",
+      "state": "stopped",
+      "tasks": "0",
+      "created_at": "2026-11-11 07:51:01+00:00",
+      "stopped_at": "2026-11-11 08:03:41+00:00"
+    }
+  ],
+  "own_containers": [],
+  "billing_summary": {
+    "metered_cost": "211.82462941",
+    "billed_cost": "0E-8",
+    "adjustments": {
+      "network_egress_allowance": "-0.54996216",
+      "reservation_adjustment": "-0E-8",
+      "plan_cost": "0E-8",
+      "credits": "-210.76000000",
+      "free_storage": "-0.51466725"
+    },
+    "metered_cost_breakdown": {
+      "llm_tokens": "0E-8",
+      "ephemeral_apps": "210.75924565",
+      "volumes": "0.51466725",
+      "network_egress": "0.54996216"
+    }
+  },
+  "local_driver_exits": {
+    "M4_107370": 0,
+    "M1_210210": 0,
+    "M8_150848": 0,
+    "M3_117010": 0,
+    "M2_134021": 0,
+    "M14_37219": 0,
+    "M8_161113": 0,
+    "M5_238314": 0,
+    "M7_146213": 0,
+    "M3_120308": 0
+  }
+}

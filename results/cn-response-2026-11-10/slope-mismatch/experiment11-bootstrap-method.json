@@ -1,0 +1,11 @@
+{
+  "seed": 20261129,
+  "draws": 10000,
+  "interval": "95% percentile",
+  "clusters": "Ten galaxies including the partial-coverage target; retain all three seeds together.",
+  "estimator": "Unweighted OLS on thirty posterior median ages, equivalent to ten galaxy means.",
+  "step": "age = a + b*z + c*g; g=1 originally with Mg b, 0 originally without; fixed across all arms.",
+  "step_bootstrap_valid": 9979,
+  "step_bootstrap_nonidentified": 21,
+  "rule": "All draws enter slope intervals; only full-rank joint fits enter step intervals."
+}

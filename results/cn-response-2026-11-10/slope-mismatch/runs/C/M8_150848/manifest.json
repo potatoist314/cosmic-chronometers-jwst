@@ -1,0 +1,939 @@
+{
+  "backend": "modal",
+  "source": {
+    "commit": "e0b0086e9f99bf9c930b5739ff6e8221c0ac1015",
+    "submodules": {
+      "ceridwen": "13791e0e971aa95d4723a38941438706912ea1dc",
+      "external/sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+    },
+    "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+    "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+    "grids": [
+      {
+        "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+        "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+        "remote_name": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5"
+      }
+    ],
+    "experiment": [
+      {
+        "name": "C1_s20261111/M8_150848",
+        "arm": "C1_s20261111",
+        "target": "M8_150848",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M8_150848_s20261111.npz",
+          "abundance_response": null,
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 14,
+          "object_id": 150848,
+          "spect_id": "M8_150848",
+          "sn": 40.900001525878906,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M8_150848_v2.0.fits"
+        }
+      },
+      {
+        "name": "C2_s20261111/M8_150848",
+        "arm": "C2_s20261111",
+        "target": "M8_150848",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M8_150848_s20261111.npz",
+          "abundance_response": null,
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 14,
+          "object_id": 150848,
+          "spect_id": "M8_150848",
+          "sn": 40.900001525878906,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M8_150848_v2.0.fits"
+        }
+      },
+      {
+        "name": "C3_s20261111/M8_150848",
+        "arm": "C3_s20261111",
+        "target": "M8_150848",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M8_150848_s20261111.npz",
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 14,
+          "object_id": 150848,
+          "spect_id": "M8_150848",
+          "sn": 40.900001525878906,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M8_150848_v2.0.fits"
+        }
+      },
+      {
+        "name": "C1_s20261112/M8_150848",
+        "arm": "C1_s20261112",
+        "target": "M8_150848",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M8_150848_s20261112.npz",
+          "abundance_response": null,
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 14,
+          "object_id": 150848,
+          "spect_id": "M8_150848",
+          "sn": 40.900001525878906,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M8_150848_v2.0.fits"
+        }
+      },
+      {
+        "name": "C2_s20261112/M8_150848",
+        "arm": "C2_s20261112",
+        "target": "M8_150848",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M8_150848_s20261112.npz",
+          "abundance_response": null,
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 14,
+          "object_id": 150848,
+          "spect_id": "M8_150848",
+          "sn": 40.900001525878906,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M8_150848_v2.0.fits"
+        }
+      },
+      {
+        "name": "C3_s20261112/M8_150848",
+        "arm": "C3_s20261112",
+        "target": "M8_150848",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M8_150848_s20261112.npz",
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 14,
+          "object_id": 150848,
+          "spect_id": "M8_150848",
+          "sn": 40.900001525878906,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M8_150848_v2.0.fits"
+        }
+      },
+      {
+        "name": "C1_s20261113/M8_150848",
+        "arm": "C1_s20261113",
+        "target": "M8_150848",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "mock_data": "results/cn-response-2026-11-10/prior-slope/mocks/M8_150848_s20261113.npz",
+          "abundance_response": null,
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 14,
+          "object_id": 150848,
+          "spect_id": "M8_150848",
+          "sn": 40.900001525878906,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M8_150848_v2.0.fits"
+        }
+      },
+      {
+        "name": "C2_s20261113/M8_150848",
+        "arm": "C2_s20261113",
+        "target": "M8_150848",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M8_150848_s20261113.npz",
+          "abundance_response": null,
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 14,
+          "object_id": 150848,
+          "spect_id": "M8_150848",
+          "sn": 40.900001525878906,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M8_150848_v2.0.fits"
+        }
+      },
+      {
+        "name": "C3_s20261113/M8_150848",
+        "arm": "C3_s20261113",
+        "target": "M8_150848",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "mock_data": "results/cn-response-2026-11-10/slope-mismatch/mocks/M8_150848_s20261113.npz",
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 14,
+          "object_id": 150848,
+          "spect_id": "M8_150848",
+          "sn": 40.900001525878906,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M8_150848_v2.0.fits"
+        }
+      }
+    ],
+    "input_files": [
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zp0.2.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zp0.2.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zp0.2.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zp0.2.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zp0.2.abund.krpa.s100",
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits",
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
+      "data/raw/cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits",
+      "data/raw/cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits",
+      "data/raw/cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits",
+      "data/raw/hst_f814w/M8_150848.fits",
+      "data/raw/legac_dr2/legaCdr2.fits.gz",
+      "data/raw/legac_dr2/sp/legac_M8_150848_v2.0.fits",
+      "external/fsps/data/emlines_info.dat",
+      "results/cn-response-2026-11-10/prior-slope/mocks/M8_150848_s20261111.npz",
+      "results/cn-response-2026-11-10/prior-slope/mocks/M8_150848_s20261112.npz",
+      "results/cn-response-2026-11-10/prior-slope/mocks/M8_150848_s20261113.npz",
+      "results/cn-response-2026-11-10/slope-mismatch/mocks/M8_150848_s20261111.npz",
+      "results/cn-response-2026-11-10/slope-mismatch/mocks/M8_150848_s20261112.npz",
+      "results/cn-response-2026-11-10/slope-mismatch/mocks/M8_150848_s20261113.npz"
+    ],
+    "image": "ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34"
+  },
+  "gpus": [
+    "A100-40GB"
+  ],
+  "created": 1794383379.2748811,
+  "attempts": [
+    {
+      "gpu": "A100-40GB",
+      "cells": {
+        "C1_s20261113/M8_150848": {
+          "call_id": "fc-01M74SEK487XEZA8GWA3NJKBTS",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 165.35791945457458,
+          "container_cells": 1,
+          "estimated_usd": 0.10660955783075332,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 712,
+          "compiled": 648
+        },
+        "C2_s20261113/M8_150848": {
+          "call_id": "fc-01M74SF1MVT9MYQ05B75E5QFG7",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 127.24741816520691,
+          "container_cells": 1,
+          "estimated_usd": 0.08203895543947219,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 715,
+          "compiled": 648
+        },
+        "C2_s20261111/M8_150848": {
+          "call_id": "fc-01M74SFG5Q9CAYPA37TZ8XJN5J",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 123.04249382019043,
+          "container_cells": 1,
+          "estimated_usd": 0.07932795661575318,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 715,
+          "compiled": 648
+        },
+        "C3_s20261113/M8_150848": {
+          "call_id": "fc-01M74SFYXKTNVPSD3YNC1GYTBJ",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 213.133709192276,
+          "container_cells": 1,
+          "estimated_usd": 0.13741156499044418,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 870,
+          "compiled": 795
+        },
+        "C1_s20261112/M8_150848": {
+          "call_id": "fc-01M74SGBWA081WE8Q3745QT7YV",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 123.55664682388306,
+          "container_cells": 1,
+          "estimated_usd": 0.07965944134029389,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 712,
+          "compiled": 648
+        },
+        "C2_s20261112/M8_150848": {
+          "call_id": "fc-01M74SGQR8JJ79TZ3AVC3ZDQDC",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 122.1378128528595,
+          "container_cells": 1,
+          "estimated_usd": 0.07874469070249557,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 712,
+          "compiled": 648
+        },
+        "C1_s20261111/M8_150848": {
+          "call_id": "fc-01M74SH1J9SCBERF74NWBEQA8H",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 170.10097527503967,
+          "container_cells": 1,
+          "estimated_usd": 0.10966750077932358,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 715,
+          "compiled": 648
+        },
+        "C3_s20261111/M8_150848": {
+          "call_id": "fc-01M74SH9DZ579MKMW437BSD35E",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 180.4751935005188,
+          "container_cells": 1,
+          "estimated_usd": 0.11635596675365448,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 870,
+          "compiled": 795
+        },
+        "C3_s20261112/M8_150848": {
+          "call_id": "fc-01M74SHFKFKST0N59WXFSZK264",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 219.65784764289856,
+          "container_cells": 1,
+          "estimated_usd": 0.14161780753232955,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 0
+          },
+          "mode": "alone",
+          "tuned": 870,
+          "compiled": 795
+        }
+      },
+      "started": 1794383380.7571452,
+      "status": "complete",
+      "elapsed": 935.2681086063385,
+      "app_id": "ap-oyK628Ufw1nWe1DZZUXrZY",
+      "estimated_usd": 0.9314334419845199,
+      "billed_usd": 0.98516566
+    }
+  ],
+  "estimated_total_usd": 0.98516566,
+  "completed_cells": [
+    "C1_s20261113/M8_150848",
+    "C2_s20261113/M8_150848",
+    "C2_s20261111/M8_150848",
+    "C3_s20261113/M8_150848",
+    "C1_s20261112/M8_150848",
+    "C2_s20261112/M8_150848",
+    "C1_s20261111/M8_150848",
+    "C3_s20261111/M8_150848",
+    "C3_s20261112/M8_150848"
+  ]
+}

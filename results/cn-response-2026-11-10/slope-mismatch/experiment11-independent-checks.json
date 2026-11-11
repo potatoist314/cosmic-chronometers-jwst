@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "fits": 90,
+  "reference_rows": 150,
+  "independent_slopes": "SciPy linregress on thirty ages per arm",
+  "independent_bootstrap": "SciPy QR and SVD on the same galaxy clusters",
+  "maximum_interval_difference": 5.551115123125783e-14,
+  "identified_step_bootstraps": 9979,
+  "coverage_counts_independently_verified": true,
+  "partial_targets": [
+    "M8_161113"
+  ],
+  "original_reference_rows_unchanged": true,
+  "all_sixty_mock_hashes_unchanged": true,
+  "response_files": 25,
+  "response_hashes_unchanged": true,
+  "executed_notebooks": 90,
+  "embedded_images": 0,
+  "png_files": 0,
+  "requested_gpu": "A100-40GB",
+  "actual_gpu_counts": {
+    "NVIDIA A100-SXM4-80GB": 12,
+    "NVIDIA A100-SXM4-40GB": 74,
+    "NVIDIA A100 80GB PCIe": 4
+  },
+  "remote_exits_all_zero": true
+}
