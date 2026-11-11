@@ -1,0 +1,710 @@
+05:29:27 committed source 99c179ba4b15; output results/chronometer-135-2026-11-10/baseline-w110/run
+05:29:28 launching 10 Modal A100-40GB container(s) for 110 cell(s)
+✓ Initialized. View run at 
+https://modal.com/apps/initialincrease/main/ap-bRoGtbMMjRfMQ7RFQF5eJt
+✓ Created objects.
+├── ✓ Uploaded /Users/liuhao/Downloads/Astro project/scripts/modal_gpu.py
+└── ✓ Created Function fit.
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 777ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.31s
+bootstrap: Uninstalled 1 package in 31ms
+bootstrap: Installed 2 packages in 22ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 10ms
+bootstrap: All installed packages are compatible
+bootstrap: Resolved 2 packages in 594ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Resolved 2 packages in 584ms
+bootstrap: Prepared 2 packages in 2.00s
+bootstrap: Uninstalled 1 package in 30ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Installed 2 packages in 22ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 8ms
+bootstrap: All installed packages are compatible
+bootstrap: Resolved 2 packages in 769ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: ceridwen: combined static smoother installed
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.94s
+bootstrap: Uninstalled 1 package in 26ms
+bootstrap: Installed 2 packages in 20ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: Resolved 2 packages in 603ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: ceridwen: combined static smoother installed
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.42s
+bootstrap: Uninstalled 1 package in 29ms
+bootstrap: Installed 2 packages in 25ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 10ms
+bootstrap: All installed packages are compatible
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.92s
+bootstrap: Uninstalled 1 package in 27ms
+bootstrap: Installed 2 packages in 18ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Resolved 2 packages in 792ms
+bootstrap: CERIDWEN environment check
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Resolved 2 packages in 590ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Prepared 2 packages in 2.29s
+bootstrap: Uninstalled 1 package in 26ms
+bootstrap: Installed 2 packages in 23ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 9ms
+bootstrap: All installed packages are compatible
+bootstrap: Resolved 2 packages in 595ms
+bootstrap: Prepared 2 packages in 1.77s
+bootstrap: Uninstalled 1 package in 21ms
+bootstrap: Installed 2 packages in 17ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: Selected fit inputs verified
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: CERIDWEN environment check
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap: Resolved 2 packages in 828ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: Prepared 2 packages in 1.94s
+bootstrap: Uninstalled 1 package in 30ms
+bootstrap: Installed 2 packages in 18ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 9ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 2.37s
+bootstrap: Uninstalled 1 package in 31ms
+bootstrap: Installed 2 packages in 20ms
+bootstrap:  + ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  - sedpy-jax==0.1.1
+bootstrap:  + sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 10ms
+bootstrap: All installed packages are compatible
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap: Ceridwen GPU environment ready.
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+fit-73: 05:32:26 fitting baseline_w110/M11_214296, seed 20260832
+bootstrap: Ceridwen GPU environment ready.
+fit-1: 05:32:26 fitting baseline_w110/M14_31835, seed 20260832
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-99: 05:32:28 fitting baseline_w110/M5_238580, seed 20260832
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-37: 05:32:30 fitting baseline_w110/M2_133501, seed 20260832
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-108: 05:32:38 fitting baseline_w110/M11_257455, seed 20260832
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Ceridwen GPU environment ready.
+fit-13: 05:32:41 fitting baseline_w110/M14_104877, seed 20260832
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: Ceridwen GPU environment ready.
+fit-39: 05:32:42 fitting baseline_w110/M2_134391, seed 20260832
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-64: 05:32:48 fitting baseline_w110/M1_206858, seed 20260832
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-103: 05:32:53 fitting baseline_w110/M13_245763, seed 20260832
+fit-25: 05:34:19 fitting baseline_w110/M3_119802, seed 20260832
+fit-84: 05:34:28 fitting baseline_w110/M10_228215, seed 20260832
+fit-36: 05:34:35 fitting baseline_w110/M1_133240, seed 20260832
+fit-81: 05:34:41 fitting baseline_w110/M10_225441, seed 20260832
+fit-28: 05:34:51 fitting baseline_w110/M7_122025, seed 20260832
+fit-21: 05:35:01 fitting baseline_w110/M3_117010, seed 20260832
+fit-4: 05:35:08 fitting baseline_w110/M14_38648, seed 20260832
+fit-98: 05:35:08 fitting baseline_w110/M6_237641, seed 20260832
+fit-50: 05:35:09 fitting baseline_w110/M8_161346, seed 20260832
+fit-55: 05:36:15 fitting baseline_w110/M12_180774, seed 20260832
+fit-63: 05:36:18 fitting baseline_w110/M1_206545, seed 20260832
+fit-89: 05:36:24 fitting baseline_w110/M10_231544, seed 20260832
+fit-67: 05:36:34 fitting baseline_w110/M2_210940, seed 20260832
+fit-8: 05:36:42 fitting baseline_w110/M15_89072, seed 20260832
+fit-77: 05:37:13 fitting baseline_w110/M10_217020, seed 20260832
+fit-59: 05:37:29 fitting baseline_w110/M10_201233, seed 20260832
+fit-107: 05:37:38 fitting baseline_w110/M13_253688, seed 20260832
+fit-74: 05:37:43 fitting baseline_w110/M11_215585, seed 20260832
+fit-78: 05:38:08 fitting baseline_w110/M11_218207, seed 20260832
+fit-71: 05:38:15 fitting baseline_w110/M9_213587, seed 20260832
+fit-27: 05:38:15 fitting baseline_w110/M3_120308, seed 20260832
+fit-11: 05:38:18 fitting baseline_w110/M12_102456, seed 20260832
+fit-96: 05:38:28 fitting baseline_w110/M5_236682, seed 20260832
+fit-2: 05:39:28 fitting baseline_w110/M14_37023, seed 20260832
+fit-100: 05:39:38 fitting baseline_w110/M6_240899, seed 20260832
+fit-60: 05:39:53 fitting baseline_w110/M5_205715, seed 20260832
+fit-56: 05:39:56 fitting baseline_w110/M12_181945, seed 20260832
+fit-97: 05:40:02 fitting baseline_w110/M6_237437, seed 20260832
+fit-14: 05:40:02 fitting baseline_w110/M4_105474, seed 20260832
+fit-69: 05:40:05 fitting baseline_w110/M5_211347, seed 20260832
+fit-51: 05:40:09 fitting baseline_w110/M8_162149, seed 20260832
+fit-10: 05:40:26 fitting baseline_w110/M12_101089, seed 20260832
+fit-90: 05:41:43 fitting baseline_w110/M9_232005, seed 20260832
+fit-31: 05:41:44 fitting baseline_w110/M1_126153, seed 20260832
+fit-61: 05:41:57 fitting baseline_w110/M1_205742, seed 20260832
+fit-5: 05:41:58 fitting baseline_w110/M15_77745, seed 20260832
+fit-109: 05:42:03 fitting baseline_w110/M13_259737, seed 20260832
+fit-70: 05:42:13 fitting baseline_w110/M9_212391, seed 20260832
+fit-93: 05:42:18 fitting baseline_w110/M11_232962, seed 20260832
+fit-53: 05:42:21 fitting baseline_w110/M5_165871, seed 20260832
+fit-104: 05:42:22 fitting baseline_w110/M11_245864, seed 20260832
+fit-83: 05:43:47 fitting baseline_w110/M9_227630, seed 20260832
+fit-41: 05:43:48 fitting baseline_w110/M7_146213, seed 20260832
+fit-35: 05:44:00 fitting baseline_w110/M2_130005, seed 20260832
+fit-101: 05:44:03 fitting baseline_w110/M13_243871, seed 20260832
+fit-106: 05:44:08 fitting baseline_w110/M13_248217, seed 20260832
+fit-43: 05:44:11 fitting baseline_w110/M8_147539, seed 20260832
+fit-72: 05:44:14 fitting baseline_w110/M10_213772, seed 20260832
+fit-86: 05:44:27 fitting baseline_w110/M11_229551, seed 20260832
+fit-52: 05:44:52 fitting baseline_w110/M7_162587, seed 20260832
+fit-57: 05:45:38 fitting baseline_w110/M12_185631, seed 20260832
+fit-49: 05:45:50 fitting baseline_w110/M8_160400, seed 20260832
+fit-105: 05:45:59 fitting baseline_w110/M13_246149, seed 20260832
+fit-62: 05:46:01 fitting baseline_w110/M5_205765, seed 20260832
+fit-44: 05:46:11 fitting baseline_w110/M7_147849, seed 20260832
+fit-80: 05:46:16 fitting baseline_w110/M11_221163, seed 20260832
+fit-7: 05:46:26 fitting baseline_w110/M15_88032, seed 20260832
+fit-17: 05:46:55 fitting baseline_w110/M3_109713, seed 20260832
+fit-18: 05:47:07 fitting baseline_w110/M3_109843, seed 20260832
+fit-58: 05:47:35 fitting baseline_w110/M12_185653, seed 20260832
+fit-48: 05:47:41 fitting baseline_w110/M8_156118, seed 20260832
+fit-85: 05:47:49 fitting baseline_w110/M10_228380, seed 20260832
+fit-19: 05:48:01 fitting baseline_w110/M4_112534, seed 20260832
+fit-75: 05:48:03 fitting baseline_w110/M10_216730, seed 20260832
+fit-6: 05:48:37 fitting baseline_w110/M15_87207, seed 20260832
+fit-12: 05:48:42 fitting baseline_w110/M14_103366, seed 20260832
+fit-54: 05:49:03 fitting baseline_w110/M6_166634, seed 20260832
+fit-47: 05:49:20 fitting baseline_w110/M7_152125, seed 20260832
+fit-38: 05:49:23 fitting baseline_w110/M2_134021, seed 20260832
+fit-92: 05:49:23 fitting baseline_w110/M9_232890, seed 20260832
+fit-79: 05:49:40 fitting baseline_w110/M9_218701, seed 20260832
+fit-87: 05:49:51 fitting baseline_w110/M9_229883, seed 20260832
+fit-26: 05:50:06 fitting baseline_w110/M3_119809, seed 20260832
+fit-102: 05:50:44 fitting baseline_w110/M13_244239, seed 20260832
+fit-20: 05:51:03 fitting baseline_w110/M7_113852, seed 20260832
+fit-0: 05:51:10 fitting baseline_w110/M14_27068, seed 20260832
+fit-40: 05:51:12 fitting baseline_w110/M1_139423, seed 20260832
+fit-9: 05:51:16 fitting baseline_w110/M12_92132, seed 20260832
+fit-22: 05:51:28 fitting baseline_w110/M4_117400, seed 20260832
+fit-82: 05:51:48 fitting baseline_w110/M10_227516, seed 20260832
+fit-32: 05:51:57 fitting baseline_w110/M1_126578, seed 20260832
+fit-33: 05:52:11 fitting baseline_w110/M5_128311, seed 20260832
+fit-29: 05:52:58 fitting baseline_w110/M7_122242, seed 20260832
+bootstrap: Using prebuilt Ceridwen dependencies
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Resolved 2 packages in 353ms
+bootstrap:    Building sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:    Building ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap:       Built sedpy-jax @ file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax
+bootstrap:       Built ceridwen @ file:///workspace/cosmic-chronometers-jwst/ceridwen
+bootstrap: Prepared 2 packages in 1.78s
+bootstrap: Uninstalled 2 packages in 18ms
+bootstrap: Installed 2 packages in 17ms
+bootstrap:  ~ ceridwen==1.0.15 (from file:///workspace/cosmic-chronometers-jwst/ceridwen)
+bootstrap:  ~ sedpy-jax==0.1.1 (from file:///workspace/cosmic-chronometers-jwst/external/sedpy_jax)
+bootstrap: Using Python 3.11.16 environment at: .venv-ceridwen-gpu
+bootstrap: Checked 154 packages in 7ms
+bootstrap: All installed packages are compatible
+bootstrap: ceridwen: combined static smoother installed
+bootstrap: JAX 0.10.2: [CudaDevice(id=0)]; float64 verified
+bootstrap: CERIDWEN environment check
+bootstrap: ==========================
+bootstrap:   [ok  ] Python 3.11
+bootstrap:   [warn] ceridwen 1.0.15  -- 2.0.0 is on PyPI: pip install --upgrade ceridwen
+bootstrap:   [ok  ] jax  -- 0.10.2
+bootstrap:   [ok  ] jaxlib  -- 0.10.2
+bootstrap:   [ok  ] numpy  -- 2.4.6
+bootstrap:   [ok  ] scipy  -- 1.17.1
+bootstrap:   [ok  ] matplotlib  -- 3.11.2
+bootstrap:   [ok  ] h5py  -- 3.16.0
+bootstrap:   [ok  ] astropy  -- 8.0.1
+bootstrap:   [ok  ] tqdm  -- 4.70.1
+bootstrap:   [ok  ] optax  -- 0.2.8
+bootstrap:   [ok  ] anesthetic  -- 2.16.0
+bootstrap:   [ok  ] jax float64  -- enabled
+bootstrap:   [ok  ] jax backend  -- gpu (cuda:0)
+bootstrap:   [ok  ] filters + attenuation  -- 297 filters, 12 attenuation laws
+bootstrap:   [ok  ] tensorflow-probability  -- jax substrate
+bootstrap:   [ok  ] blackjax  -- 1.6.dev98+gf73e12956
+bootstrap:   [ok  ] blackjax.ns  -- nested sampling available
+bootstrap:   [warn] python-fsps  -- not importable. Only needed to build your own SSP grid (SSPData.from_fsps); the published grids need no FSPS (ceridwen.ssps.fetch_grid).
+bootstrap:   [warn] $SPS_HOME  -- unset: nebular emission (add_neb) and dust emission (add_dust_emission) read FSPS's data files from it. No compiling needed: `git clone https://github.com/cconroy20/fsps` and `export SPS_HOME=/path/to/fsps`
+bootstrap: 
+bootstrap: Core installation OK: fits of stellar populations with the published grids work.
+bootstrap: NOT yet available: nebular emission and dust emission (need $SPS_HOME, see above).
+bootstrap: sedpy_jax wavelength-dependent input resolution verified
+bootstrap: Installed kernelspec ceridwen in /root/.local/share/jupyter/kernels/ceridwen
+bootstrap: Selected fit inputs verified
+bootstrap: LEGA-C inputs and schema-2.1 HR SSP grid verified: /workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5
+bootstrap: Ceridwen GPU environment ready.
+fit-3: 05:53:20 fitting baseline_w110/M14_37219, seed 20260832
+fit-15: 05:53:23 fitting baseline_w110/M4_107370, seed 20260832
+fit-88: 05:53:24 fitting baseline_w110/M13_230747, seed 20260832
+fit-30: 05:54:25 fitting baseline_w110/M4_123161, seed 20260832
+fit-68: 05:55:06 fitting baseline_w110/M1_211157, seed 20260832
+fit-66: 05:55:09 fitting baseline_w110/M1_210210, seed 20260832
+fit-91: 05:55:31 fitting baseline_w110/M13_232627, seed 20260832
+fit-65: 05:55:32 fitting baseline_w110/M1_208622, seed 20260832
+fit-76: 05:56:44 fitting baseline_w110/M11_216899, seed 20260832
+fit-16: 05:56:55 fitting baseline_w110/M4_107643, seed 20260832
+fit-24: 05:58:40 fitting baseline_w110/M3_119474, seed 20260832
+fit-34: 06:00:27 fitting baseline_w110/M2_129596, seed 20260832
+fit-94: 06:02:07 fitting baseline_w110/M10_233129, seed 20260832
+fit-23: 06:04:07 fitting baseline_w110/M3_117694, seed 20260832
+fit-42: 06:05:52 fitting baseline_w110/M7_147270, seed 20260832
+fit-45: 06:07:35 fitting baseline_w110/M8_148698, seed 20260832
+fit-46: 06:09:31 fitting baseline_w110/M8_150848, seed 20260832
+fit-95: 06:11:20 fitting baseline_w110/M6_233902, seed 20260832
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/initialincrease/main/ap-bRoGtbMMjRfMQ7RFQF5eJt
+06:15:37 Modal attempt: $8.8882 estimated; failed cells: none
+06:16:29 local figures rebuilt for baseline_w110/M2_133501
+06:17:16 local figures rebuilt for baseline_w110/M6_237641
+06:17:59 local figures rebuilt for baseline_w110/M10_201233
+06:18:46 local figures rebuilt for baseline_w110/M6_240899
+06:19:31 local figures rebuilt for baseline_w110/M1_205742
+06:20:16 local figures rebuilt for baseline_w110/M8_147539
+06:20:58 local figures rebuilt for baseline_w110/M15_88032
+06:21:41 local figures rebuilt for baseline_w110/M15_87207
+06:22:28 local figures rebuilt for baseline_w110/M13_244239
+06:23:17 local figures rebuilt for baseline_w110/M7_122242
+06:24:06 local figures rebuilt for baseline_w110/M1_210210
+06:24:54 local figures rebuilt for baseline_w110/M11_257455
+06:25:41 local figures rebuilt for baseline_w110/M8_161346
+06:26:59 local figures rebuilt for baseline_w110/M13_253688
+06:28:37 local figures rebuilt for baseline_w110/M5_211347
+06:29:31 local figures rebuilt for baseline_w110/M11_245864
+06:30:13 local figures rebuilt for baseline_w110/M7_162587
+06:30:55 local figures rebuilt for baseline_w110/M3_109843
+06:31:37 local figures rebuilt for baseline_w110/M7_152125
+06:32:19 local figures rebuilt for baseline_w110/M5_128311
+06:33:04 local figures rebuilt for baseline_w110/M4_123161
+06:33:51 local figures rebuilt for baseline_w110/M11_216899
+06:34:33 local figures rebuilt for baseline_w110/M14_31835
+06:35:17 local figures rebuilt for baseline_w110/M3_119802
+06:36:01 local figures rebuilt for baseline_w110/M12_180774
+06:36:46 local figures rebuilt for baseline_w110/M11_218207
+06:37:31 local figures rebuilt for baseline_w110/M5_205715
+06:38:19 local figures rebuilt for baseline_w110/M9_232005
+06:39:01 local figures rebuilt for baseline_w110/M9_227630
+06:39:46 local figures rebuilt for baseline_w110/M12_185631
+06:40:28 local figures rebuilt for baseline_w110/M12_185653
+06:41:12 local figures rebuilt for baseline_w110/M2_134021
+06:41:58 local figures rebuilt for baseline_w110/M12_92132
+06:42:43 local figures rebuilt for baseline_w110/M11_214296
+06:43:29 local figures rebuilt for baseline_w110/M10_228215
+06:44:14 local figures rebuilt for baseline_w110/M10_231544
+06:44:57 local figures rebuilt for baseline_w110/M9_213587
+06:45:49 local figures rebuilt for baseline_w110/M6_237437
+06:46:32 local figures rebuilt for baseline_w110/M9_212391
+06:47:16 local figures rebuilt for baseline_w110/M13_248217
+06:47:57 local figures rebuilt for baseline_w110/M5_205765
+06:48:40 local figures rebuilt for baseline_w110/M10_228380
+06:49:23 local figures rebuilt for baseline_w110/M9_218701
+06:50:06 local figures rebuilt for baseline_w110/M4_117400
+06:50:52 local figures rebuilt for baseline_w110/M5_238580
+06:51:32 local figures rebuilt for baseline_w110/M1_133240
+06:52:16 local figures rebuilt for baseline_w110/M1_206545
+06:52:58 local figures rebuilt for baseline_w110/M3_120308
+06:53:45 local figures rebuilt for baseline_w110/M4_105474
+06:54:29 local figures rebuilt for baseline_w110/M13_259737
+06:55:13 local figures rebuilt for baseline_w110/M13_243871
+06:55:59 local figures rebuilt for baseline_w110/M13_246149
+06:56:44 local figures rebuilt for baseline_w110/M10_216730
+06:57:27 local figures rebuilt for baseline_w110/M3_119809
+06:58:07 local figures rebuilt for baseline_w110/M1_126578
+06:58:51 local figures rebuilt for baseline_w110/M1_206858
+06:59:41 local figures rebuilt for baseline_w110/M14_38648
+07:00:26 local figures rebuilt for baseline_w110/M11_215585
+07:01:12 local figures rebuilt for baseline_w110/M12_181945
+07:01:54 local figures rebuilt for baseline_w110/M5_165871
+07:02:40 local figures rebuilt for baseline_w110/M11_229551
+07:03:22 local figures rebuilt for baseline_w110/M3_109713
+07:04:03 local figures rebuilt for baseline_w110/M6_166634
+07:04:45 local figures rebuilt for baseline_w110/M14_27068
+07:05:27 local figures rebuilt for baseline_w110/M13_230747
+07:06:07 local figures rebuilt for baseline_w110/M1_208622
+07:06:49 local figures rebuilt for baseline_w110/M14_104877
+07:07:31 local figures rebuilt for baseline_w110/M7_122025
+07:08:12 local figures rebuilt for baseline_w110/M15_89072
+07:08:56 local figures rebuilt for baseline_w110/M5_236682
+07:09:39 local figures rebuilt for baseline_w110/M12_101089
+07:10:22 local figures rebuilt for baseline_w110/M11_232962
+07:11:04 local figures rebuilt for baseline_w110/M10_213772
+07:11:46 local figures rebuilt for baseline_w110/M7_147849
+07:12:26 local figures rebuilt for baseline_w110/M4_112534
+07:13:10 local figures rebuilt for baseline_w110/M9_229883
+07:13:58 local figures rebuilt for baseline_w110/M10_227516
+07:14:38 local figures rebuilt for baseline_w110/M13_245763
+07:15:19 local figures rebuilt for baseline_w110/M3_117010
+07:15:59 local figures rebuilt for baseline_w110/M10_217020
+07:16:41 local figures rebuilt for baseline_w110/M14_37023
+07:17:21 local figures rebuilt for baseline_w110/M1_126153
+07:18:02 local figures rebuilt for baseline_w110/M7_146213
+07:18:46 local figures rebuilt for baseline_w110/M11_221163
+07:19:26 local figures rebuilt for baseline_w110/M14_103366
+07:20:08 local figures rebuilt for baseline_w110/M1_139423
+07:20:49 local figures rebuilt for baseline_w110/M4_107370
+07:21:32 local figures rebuilt for baseline_w110/M13_232627
+07:22:17 local figures rebuilt for baseline_w110/M2_134391
+07:23:01 local figures rebuilt for baseline_w110/M10_225441
+07:23:44 local figures rebuilt for baseline_w110/M2_210940
+07:24:29 local figures rebuilt for baseline_w110/M12_102456
+07:25:15 local figures rebuilt for baseline_w110/M8_162149
+07:26:03 local figures rebuilt for baseline_w110/M15_77745
+07:26:46 local figures rebuilt for baseline_w110/M2_130005
+07:27:31 local figures rebuilt for baseline_w110/M8_160400
+07:28:11 local figures rebuilt for baseline_w110/M8_156118
+07:28:52 local figures rebuilt for baseline_w110/M9_232890
+07:29:36 local figures rebuilt for baseline_w110/M7_113852
+07:30:20 local figures rebuilt for baseline_w110/M14_37219
+07:31:02 local figures rebuilt for baseline_w110/M1_211157
+07:31:44 local figures rebuilt for baseline_w110/M4_107643
+07:32:27 local figures rebuilt for baseline_w110/M3_119474
+07:33:07 local figures rebuilt for baseline_w110/M2_129596
+07:33:53 local figures rebuilt for baseline_w110/M10_233129
+07:34:36 local figures rebuilt for baseline_w110/M3_117694
+07:35:16 local figures rebuilt for baseline_w110/M7_147270
+07:36:01 local figures rebuilt for baseline_w110/M8_148698
+07:36:45 local figures rebuilt for baseline_w110/M8_150848
+07:37:28 local figures rebuilt for baseline_w110/M6_233902
