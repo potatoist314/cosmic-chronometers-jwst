@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Download COSMOS2015 photometry matched to the LEGA-C DR2 catalogue."""
+"""Download COSMOS2015 photometry matched to the LEGA-C DR2 (default) or DR3 catalogue."""
 
+import argparse
 from pathlib import Path
 
 import astropy.units as u
@@ -11,11 +12,10 @@ from astroquery.vizier import Vizier
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-LEGAC_PATH = PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz"
-OUTPUT_PATH = (
-    PROJECT_ROOT
-    / "data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits"
-)
+LEGAC_PATHS = {
+    "dr2": PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz",
+    "dr3": PROJECT_ROOT / "data/raw/legac_dr3/legac_DR3.fits",
+}
 COSMOS_CATALOG = "J/ApJS/224/24/cosmos2015"
 COSMOS_COLUMNS = [
     "_q",
@@ -114,15 +114,22 @@ def download_cosmos2015(legac: Table, batch_size: int = 200) -> Table:
 
 
 def main() -> None:
-    if OUTPUT_PATH.exists():
-        print(f"Already downloaded: {OUTPUT_PATH.relative_to(PROJECT_ROOT)}")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--release", choices=sorted(LEGAC_PATHS), default="dr2")
+    release = parser.parse_args().release
+    output_path = (
+        PROJECT_ROOT
+        / f"data/raw/cosmos2015/cosmos2015_legac_{release}_photometry_1arcsec.fits"
+    )
+    if output_path.exists():
+        print(f"Already downloaded: {output_path.relative_to(PROJECT_ROOT)}")
         return
 
-    legac = Table.read(LEGAC_PATH)
+    legac = Table.read(LEGAC_PATHS[release], hdu=1)
     photometry = download_cosmos2015(legac)
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    photometry.write(OUTPUT_PATH)
-    print(f"Wrote {len(photometry)} matches to {OUTPUT_PATH.relative_to(PROJECT_ROOT)}")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    photometry.write(output_path)
+    print(f"Wrote {len(photometry)} matches to {output_path.relative_to(PROJECT_ROOT)}")
 
 
 if __name__ == "__main__":

@@ -278,6 +278,15 @@ def test_selected_inputs_include_uv_fallback_but_no_unrelated_targets():
     assert [p for p in files if '/hst_f814w/' in p] == ['data/raw/hst_f814w/M1_210210.fits']
 
 
+def test_selected_inputs_take_dr3_catalogue_and_spectrum_for_dr3_cells():
+    cells = [{'target': 'M1_210210', 'target_metadata': {'filename': 'legac_M1_210210_v3.0.fits'},
+              'settings': {'photometry': 'cosmos2025', 'data_source': 'legac_dr3'}}]
+    files = exp.selected_inputs(cells)
+    assert 'data/raw/legac_dr3/legac_DR3.fits' in files
+    assert [p for p in files if '/sp/' in p] == ['data/raw/legac_dr3/sp/legac_M1_210210_v3.0.fits']
+    assert [p for p in files if '/hst_f814w/' in p] == ['data/raw/hst_f814w/M1_210210.fits']
+
+
 def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, monkeypatch):
     run.data['source']['input_files'] = ['data/raw/hst_f814w/M1_210210.fits']
     monkeypatch.setattr(run, 'archive', lambda *a: None)

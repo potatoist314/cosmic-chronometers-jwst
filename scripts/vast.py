@@ -315,6 +315,14 @@ def manga_cell(cell):
     return cell['settings'].get('data_source', 'legac_dr2') == 'manga_dr17'
 
 
+LEGAC_DR3_CATALOGUE = 'data/raw/legac_dr3/legac_DR3.fits'
+
+
+def legac_dr3_cell(cell):
+    """True for a fit of a LEGA-C DR3 spectrum (notebook SETTINGS["data_source"])."""
+    return cell['settings'].get('data_source', 'legac_dr2') == 'legac_dr3'
+
+
 def selected_inputs(cells):
     files = {'external/fsps/data/emlines_info.dat'} | {
         'data/raw/legac_dr2/legaCdr2.fits.gz',
@@ -338,7 +346,10 @@ def selected_inputs(cells):
         if manga_cell(cell):
             files.add('data/processed/manga_dr17/' + cell['target_metadata']['filename'])
             continue
-        files.add('data/raw/legac_dr2/sp/' + cell['target_metadata']['filename'])
+        if legac_dr3_cell(cell):
+            files.update({LEGAC_DR3_CATALOGUE, 'data/raw/legac_dr3/sp/' + cell['target_metadata']['filename']})
+        else:
+            files.add('data/raw/legac_dr2/sp/' + cell['target_metadata']['filename'])
         files.add('data/raw/hst_f814w/' + cell['target'] + '.fits')
         files.update('data/raw/' + name for name in catalogs.get(cell['settings']['photometry'], []))
     return sorted(files)

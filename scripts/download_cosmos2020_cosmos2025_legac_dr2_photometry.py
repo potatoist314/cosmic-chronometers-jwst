@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Download COSMOS2020 and COSMOS2025 photometry matched to the LEGA-C DR2 catalogue."""
+"""Download COSMOS2020 and COSMOS2025 photometry matched to the LEGA-C DR2 (default) or DR3 catalogue."""
 
+import argparse
 from pathlib import Path
 
 import astropy.units as u
@@ -11,7 +12,10 @@ from astroquery.vizier import Vizier
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-LEGAC_PATH = PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz"
+LEGAC_PATHS = {
+    "dr2": PROJECT_ROOT / "data/raw/legac_dr2/legaCdr2.fits.gz",
+    "dr3": PROJECT_ROOT / "data/raw/legac_dr3/legac_DR3.fits",
+}
 RAW = PROJECT_ROOT / "data/raw"
 # VizieR table -> output file. Every column of each table is kept.
 CATALOGS = {
@@ -79,8 +83,12 @@ def download_matches(legac: Table, catalog: str, batch_size: int = 200) -> Table
 
 
 def main() -> None:
-    legac = Table.read(LEGAC_PATH)
-    for catalog, output_path in CATALOGS.items():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--release", choices=sorted(LEGAC_PATHS), default="dr2")
+    release = parser.parse_args().release
+    legac = Table.read(LEGAC_PATHS[release], hdu=1)
+    for catalog, dr2_path in CATALOGS.items():
+        output_path = dr2_path.with_name(dr2_path.name.replace("legac_dr2", f"legac_{release}"))
         if output_path.exists():
             print(f"Already downloaded: {output_path.relative_to(PROJECT_ROOT)}")
             continue

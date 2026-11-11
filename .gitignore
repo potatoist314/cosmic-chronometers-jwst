@@ -23,6 +23,9 @@ tmp/
 # LEGA-C DR2 1D spectra, ~205 MB (scripts/download_legac_dr2_spectra.py restores them)
 data/raw/legac_dr2/sp/
 
+# LEGA-C DR3 1D spectra (scripts/download_legac_dr3.py restores them)
+data/raw/legac_dr3/sp/
+
 # Downloaded and matched COSMOS catalogues
 data/raw/cosmos2015/*.fits
 data/raw/cosmos2020/*.fits

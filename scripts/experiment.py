@@ -131,9 +131,12 @@ print(json.dumps(manifest))
     completed = subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'), '-c', code, str(ROOT / WORKER)],
                                input=program, text=True, capture_output=True, check=True)
     targets = {t['spect_id']: t for t in json.loads(completed.stdout)['targets']}
+    dr3_targets = legac_dr3_targets() if any(legac_dr3(cell) for cell in cells) else {}
     for cell in cells:
         if manga(cell):
             cell['target_metadata'] = {**manga_target(cell['target']), 'seed': cell['seed']}
+        elif legac_dr3(cell):
+            cell['target_metadata'] = {**dr3_targets[cell['target']], 'seed': cell['seed']}
         elif cell['target'] not in targets:
             raise ValueError(f"target not in the production selection: {cell['target']}")
         else:
@@ -157,6 +160,23 @@ print(json.dumps(manifest))
 
 selected_inputs = vast.selected_inputs
 manga = vast.manga_cell
+legac_dr3 = vast.legac_dr3_cell
+
+
+def legac_dr3_targets():
+    """Target metadata of every LEGA-C DR3 spectrum, keyed by SPECT_ID; DR3 has no production selection."""
+    code = """
+import json, sys
+from astropy.table import Table
+def text(value):
+    return (value.decode() if isinstance(value, bytes) else str(value)).strip()
+rows = Table.read(sys.argv[1], hdu=1)
+print(json.dumps({text(row['SPECT_ID']): {'spect_id': text(row['SPECT_ID']), 'object_id': int(row['OBJECT']),
+                  'manifest_index': index, 'sn': float(row['SN']), 'filename': text(row['Filename'])}
+                  for index, row in enumerate(rows)}))
+"""
+    return json.loads(subprocess.check_output([str(ROOT / 'ceridwen/.venv/bin/python'), '-c', code,
+                                               str(ROOT / vast.LEGAC_DR3_CATALOGUE)], text=True))
 
 
 def manga_target(plateifu):
