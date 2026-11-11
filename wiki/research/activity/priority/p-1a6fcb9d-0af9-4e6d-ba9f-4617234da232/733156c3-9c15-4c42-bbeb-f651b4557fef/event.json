@@ -1,0 +1,14 @@
+{
+  "id": "733156c3-9c15-4c42-bbeb-f651b4557fef",
+  "sequence": 9,
+  "date": "2026-11-11T07:36:06.718771+00:00",
+  "origin": "chat",
+  "action": "note",
+  "text": "Experiment 10 (2026-11-11), mock chronometer under a common window and under unmodelled C/N, 120 fits, same 10 galaxies × 3 seeds and formation history as experiment 9 (true slope −5.24 Gyr per unit redshift). Recovered slope [95% cluster bootstrap], ratio to truth: P9 (no injection, plain grid, full range) −5.63 [−6.30, −3.41], 1.07; A (no injection, plain grid, rest 4155.0–4438.1 Å) −3.41 [−4.31, −0.93], 0.65; B1 (C/Fe +0.15, N/Fe +0.30 injected, plain grid, full range) −5.94 [−6.99, −3.35], 1.13, median [α/Fe] bias −0.21; B2 (same injection, C and N free) −5.49 [−6.42, −3.86], 1.05, [α/Fe] bias −0.01; B3 (same injection, plain grid, 4155.0–4438.1 Å) −4.35 [−6.04, −2.33], 0.83. Step between the five galaxies with Mg b and the five without, from age = a + b z + c g: every arm within [−0.39, +0.28] of zero (B1 +0.09). Posterior age width on the window is 1.5 times the full-range width. Median age bias +0.4 to +0.6 Gyr in the full-range arms, +0.5 to +0.7 (A) and +0.9 to +1.2 (B3) on the window. On these mocks the 4155–4438 Å window flattens a true −5.24 slope to −3.41; the real 130 galaxies on that window give −3.77 (experiment 5, arm e). Unmodelled C/N of this size, with the real change of rest-frame coverage, neither flattens the slope nor produces an age step by Mg b coverage; the real fits show +0.97 and a −0.99 Gyr step with C and N free. Lead check: slopes recomputed from slope-mismatch/per-mock.csv. Launched: the same mocks on rest 4074.5–4666.1 Å (experiment 11) for the 110-galaxy window arms.",
+  "evidence": [
+    "results/cn-response-2026-11-10/REPORT.md",
+    "results/cn-response-2026-11-10/slope-mismatch/per-mock.csv",
+    "results/cn-response-2026-11-10/slope-mismatch/summary.csv"
+  ],
+  "pages": []
+}
