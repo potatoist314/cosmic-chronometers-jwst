@@ -1,0 +1,28 @@
+{
+  "fits": 20,
+  "source_files_unchanged": 40,
+  "source_files_match_experiment3": true,
+  "physical_jacobians_available": 20,
+  "finite_difference_checks": 80,
+  "maximum_finite_difference_relative_L2_error": 0.0069289711002878,
+  "age_derivative_max_absolute_error_Gyr": 2.194382509035364e-09,
+  "gaussian_nuisance_normal_matches_likelihood": true,
+  "information_and_tug_accounting_passed": true,
+  "observed_local_prior_indefinite": 16,
+  "expected_prior_positive_definite": 20,
+  "source_notebook_unchanged": true,
+  "output_sha256": {
+    "parameters.csv": "444b76a090e30bafeaf974ef07a75d3fcd96c8b1a646959d8fd2a0508709f5f7",
+    "region-comparisons.csv": "e89ba5292f60c63514479251265fa7c37aed04439125203ed8a951d7f9a3c214",
+    "regions.csv": "5519c17861fc08c0d1e6957d49e5ac5beeab4341c0e3f89be38f1a721528c0dd",
+    "medians-regions.csv": "964f471b584d83251a6b60fe28848219048078a01f0b0b245ff1bf2436d0d651",
+    "analyse.py": "262b198c177451e4a3b79341bbaf488345ba46144e327c41006ecd68e095cd20",
+    "derivative-probe.json": "adbcec8d2e98f5ebb694a8d7b7435951fefe979fc2a131f6f052bb8362db72cf",
+    "pixels.csv": "e9dcad66fe7ef40ea561e127dad9f7c1b6908d0018d37346f99077f58ebd8b97",
+    "finite-differences.csv": "15903b372699188780fbee238ed7b619bae5300baa12158a2a9d55305150190a",
+    "inputs.json": "cb5e589ffab7c2738b6926c680133b1067cca131e8df36b70565014afcc38d7a",
+    "widths.csv": "d63fb329ef94bf34a0bcc96d7c7d2fe1a80943f9efa2dc493a96e4cf3fb80148",
+    "medians-comparisons.csv": "0609ca989e35189bd308418182281a9fc2b75fe52f6259cbf9864649528ef6f4",
+    "medians-widths.csv": "e8b1b878e6815abafba2ddae7075eb6e67786642b06ec2fb572d048d69f06a21"
+  }
+}

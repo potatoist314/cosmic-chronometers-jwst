@@ -340,3 +340,147 @@ Each cell is the median [alpha/Fe] bias in dex / age bias in Gyr, against truth.
 | cn free | all | 135 | 488915 | 61423.2 | 3.77 | 3.06 | 93.18 |
 | cn free | with Mgb | 61 | 224267 | 23216.5 | 4.82 | 8.09 | 87.10 |
 | cn free | without Mgb | 74 | 264648 | 38206.7 | 3.13 | 0.00 | 96.87 |
+
+## Experiment 8 results
+
+| Result | Measured value |
+|---|---|
+| [alpha/Fe], five galaxies with Mg b | Baseline: Mg b carries 20.0% of data information; the four carbon bands together carry 20.9%. With C/N free: 18.7% and 12.8%. |
+| Opposed [alpha/Fe] tugs | With Mg b coverage, baseline median Mg b tug is +0.060 dex and combined carbon tug is −0.067 dex. C/N-free values are +0.044 and −0.021 dex. |
+| Age information | For the same five galaxies, Mg b carries 1.34% / 1.54% of age data information in baseline / C/N-free fits. Carbon bands carry 36.7% / 37.1%. The prior contributes median 67.1% / 67.2% of total age information under the expected-prior approximation below. |
+| Width check | Fisher sigma / posterior 16–84 half-width spans 0.79–8.22 for [alpha/Fe] and 0.53–1.40 for age. M8_161113 baseline has median [alpha/Fe]=−0.19544 near the −0.2 bound: Fisher sigma 0.04391 dex, posterior half-width 0.00534 dex. |
+| Tug closure | Pixel contributions sum to their reported global linear shift. Nonzero totals are retained. Componentwise medians, stored predictive-median pulls and omitted score terms do not provide a stationary expansion point. |
+
+### Definitions and approximations
+
+| Definition | Choice or limitation |
+|---|---|
+| Inputs | The 10 [test-set targets](../quiescent-test-set/targets.json), using the existing experiment-3 baseline and C/N-free arms recorded in [per-galaxy results](exp3-per-galaxy.csv). All 40 raw/derived file hashes match experiment 3. Each arm has five galaxies with Mg b and five without. |
+| Model and point | Existing production notebook model assembly with each fit’s recorded settings and priors. Componentwise weighted posterior medians for every sampled coordinate. Local CPU, JAX x64; the production float32 SFH basis remains unchanged. No sampler or predictive-warmup thread runs. |
+| Sampled Jacobian | 24 sampled scalar coordinates in baseline, 26 with C/N free. Includes all 14 SFH ratios, metallicity, metallicity-history parameter, [alpha/Fe], dust, mass, dispersion and C/N where sampled. Every derivative is available. |
+| Linear nuisance columns | The production calibration assignment and EmissionLineColumns provide the same polynomial, tied spectral lines, shared photometry columns, Gaussian polynomial precisions and line ridge. There are 26–33 nuisance columns. The Gaussian-kernel conditional unconstrained nuisance mode defines the mean-point Jacobian; physical derivatives include polynomial multiplication and changing line profiles. |
+| Nuisance approximation | Gaussian local treatment of the analytic nuisance integral. The positive-line-flux orthant factor and parameter-dependent marginal-volume curvature are omitted. Hard flux positivity and hard sampled-prior boundaries do not truncate the Fisher covariance. |
+| Weights and null direction | W is fixed at stored effective inverse variance; photometry uses its stored uncertainty where no separate effective-uncertainty dataset exists. Noise/covariance derivatives are omitted. log_f_calib has an exactly zero mean Jacobian column and zero curvature with these fixed weights. Its disconnected null direction is excluded from inversion and remains listed in the parameter CSV. |
+| Fisher and prior | F = A^T A + P, with A = W^(1/2) J including nuisance columns. Student-t SFH priors use expected negative log-density curvature (nu+1)/((nu+3) scale²) = 6.666667 for nu=2, scale=0.3. Other sampled priors use their exact local negative Hessian; flat priors contribute zero. Polynomial precision and the likelihood’s line ridge are retained. |
+| Prior approximation check | The exact local Student-t curvature makes the full matrix indefinite in 16/20 fits. Those statuses and negative-curvature coordinates are preserved in inputs.json. The expected-prior Fisher matrices are positive definite on identifiable coordinates for all 20 fits; no eigenvalue clipping or additional ridge is used. Expected Student-t curvature is checked by independent quadrature. |
+| Age propagation | The existing SFH mapping and notebook formed-mass convention define age in Gyr. g_age is differentiated through all SFH ratios. g_afe selects the [alpha/Fe] coordinate. Age values match the existing age helper; age derivatives also pass finite differences. |
+| Marginal information | C = F^-1 on identifiable coordinates; v = g^T C g; q = C g. The nuisance-projected derivative is A q / v. Pixel information is (A q)² / v². Its sum plus q^T P q / v² equals 1/v. CSVs contain both fractions of total marginal information and fractions normalized over data only. |
+| Regions | Disjoint partition: Mg b; CN4150; G4300; Fe4383; C4668; remaining defined Balmer features; remaining Fe features; other defined features; remaining fitted spectral pixels; photometry. The four named carbon bands take precedence over the Fe grouping. Feature windows use the existing vacuum conversion and ±1000 km/s line default. |
+| Window-deletion forecasts | All three forecasts use the same median point, Jacobian, stored weights, nuisance basis and prior curvature. The matrix and all nuisance projections are recomputed after removing the specified rows. These are local forecasts without refitting. |
+| Tugs | Pixel delta = (A C g) times the stored pull. Regional deltas sum over their pixels. A positive value pushes the named quantity upward. The separate prior tug uses the actual log-prior gradient plus Gaussian nuisance-prior gradients, with the same approximate C. No recentering forces a zero sum. |
+| Posterior width | Reported actual width is (q84 − q16)/2, not a Gaussian standard-deviation estimate. [alpha/Fe] uses weighted stored samples; age uses the notebook’s stored 400 histories. Hard bounds and nonlinear SFH/abundance correlations can make these differ strongly from the local forecast. |
+| Validation | 80 finite-difference comparisons: [alpha/Fe] and the most informative SFH coordinate, at steps 0.001 and 0.0005. Largest whitened relative L2 discrepancy is 0.693%. The nuisance normal matrix matches the production likelihood; all pixel/region information and tug identities pass. [Checks](information-map/checks.json). |
+| Median convention | Group rows are medians of per-galaxy values. Component medians need not add to 100% or to the median total tug. Carbon-union values sum the four bands inside each galaxy before taking the group median. |
+| Files and reproduction | [Script](information-map/analyse.py), [input records and approximations](information-map/inputs.json), [all sampled/nuisance derivatives and curvatures](information-map/parameters.csv), [finite differences](information-map/finite-differences.csv), [pixel contributions](information-map/pixels.csv). Run with ceridwen/.venv/bin/python; --self-test and --check-only validate equations and saved outputs. |
+| Noticed, not done | Fitted weighting, model code, notebook code and priors are unchanged. No new fits, GPU, figures or wiki pages. The pre-existing state-checker fault remains. |
+
+### Information fractions by region
+
+| Arm | Mg b coverage | Quantity | N | Mg b % | CN4150 % | G4300 % | Fe4383 % | C4668 % | Balmer % | Other Fe % | Other features % | Remaining spectrum % | Photometry % | Prior % |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| baseline | with_Mgb | afe | 5 | 19.73 | 1.53 | 3.64 | 8.93 | 4.95 | 7.52 | 5.17 | 1.62 | 39.79 | 3.07 | 2.59 |
+| baseline | with_Mgb | age_gyr | 5 | 0.42 | 2.09 | 4.37 | 2.50 | 0.31 | 5.08 | 0.45 | 0.89 | 9.77 | 3.64 | 67.12 |
+| baseline | without_Mgb | afe | 5 | 0.00 | 3.01 | 3.81 | 5.38 | 4.89 | 22.47 | 0.90 | 1.50 | 55.04 | 2.11 | 0.83 |
+| baseline | without_Mgb | age_gyr | 5 | 0.00 | 0.81 | 8.80 | 0.57 | 0.75 | 8.52 | 1.22 | 1.51 | 17.96 | 3.35 | 56.89 |
+| cn | with_Mgb | afe | 5 | 18.25 | 2.45 | 1.39 | 6.32 | 2.50 | 9.34 | 6.33 | 2.17 | 47.41 | 2.63 | 1.79 |
+| cn | with_Mgb | age_gyr | 5 | 0.52 | 0.29 | 7.70 | 1.67 | 1.53 | 3.06 | 0.81 | 1.16 | 10.48 | 4.18 | 67.15 |
+| cn | without_Mgb | afe | 5 | 0.00 | 3.34 | 4.64 | 4.90 | 4.58 | 19.31 | 2.33 | 1.96 | 55.03 | 1.99 | 1.87 |
+| cn | without_Mgb | age_gyr | 5 | 0.00 | 0.23 | 1.24 | 0.39 | 0.64 | 7.88 | 0.87 | 0.43 | 12.99 | 4.07 | 71.45 |
+
+### Data-information comparison and combined carbon tug
+
+| Arm | Mg b coverage | N | Mg b data % | Four-carbon data % | Remaining-spectrum data % | Mg b tug, dex | Carbon tug, dex | Remaining-spectrum tug, dex |
+|---|---|---|---|---|---|---|---|---|
+| baseline | with_Mgb | 5 | 19.98 | 20.87 | 40.27 | 0.060 | -0.067 | 0.006 |
+| cn | with_Mgb | 5 | 18.67 | 12.81 | 48.11 | 0.044 | -0.021 | -0.020 |
+| baseline | without_Mgb | 5 | 0.00 | 17.34 | 56.00 | 0.000 | -0.026 | -0.054 |
+| cn | without_Mgb | 5 | 0.00 | 17.02 | 55.55 | 0.000 | -0.043 | -0.057 |
+
+### Regional tugs
+
+#### afe (dex)
+
+| Arm | Mg b coverage | Mg b | CN4150 | G4300 | Fe4383 | C4668 | Balmer | Other Fe | Other features | Remaining | Photometry | Prior | Total data | Data + prior |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| baseline | with_Mgb | 0.060 | -0.009 | -0.008 | -0.007 | -0.029 | 0.011 | 0.003 | -0.008 | 0.006 | -0.003 | 0.004 | 0.025 | 0.030 |
+| baseline | without_Mgb | 0.000 | -0.019 | 0.008 | -0.007 | 0.000 | 0.015 | 0.000 | -0.007 | -0.054 | -0.001 | -0.002 | -0.045 | -0.045 |
+| cn | with_Mgb | 0.044 | -0.008 | -0.003 | -0.003 | -0.003 | 0.003 | -0.001 | -0.003 | -0.020 | -0.005 | 0.000 | 0.026 | 0.026 |
+| cn | without_Mgb | 0.000 | -0.015 | 0.013 | -0.014 | 0.000 | 0.028 | 0.001 | 0.000 | -0.057 | -0.005 | 0.021 | -0.048 | -0.035 |
+
+#### age_gyr (Gyr)
+
+| Arm | Mg b coverage | Mg b | CN4150 | G4300 | Fe4383 | C4668 | Balmer | Other Fe | Other features | Remaining | Photometry | Prior | Total data | Data + prior |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| baseline | with_Mgb | 0.161 | -0.101 | -0.021 | 0.120 | 0.042 | 0.092 | 0.006 | 0.125 | -0.354 | 0.099 | 0.798 | 0.453 | 1.022 |
+| baseline | without_Mgb | 0.000 | -0.012 | -0.098 | 0.009 | 0.000 | 0.175 | -0.030 | 0.045 | -0.133 | -0.029 | 0.347 | -0.227 | 0.302 |
+| cn | with_Mgb | 0.062 | 0.026 | -0.060 | 0.084 | -0.161 | 0.141 | -0.013 | 0.118 | -0.347 | 0.116 | 0.910 | -0.059 | 1.002 |
+| cn | without_Mgb | 0.000 | 0.018 | 0.017 | 0.024 | -0.013 | 0.123 | -0.042 | 0.022 | -0.074 | 0.004 | 0.417 | 0.148 | 0.330 |
+
+### Per-galaxy widths and total shifts
+
+#### afe (dex)
+
+| Galaxy | Arm | Mg b coverage | Sigma all | Sigma no Mg b | Sigma no carbon | Posterior half-width | Sigma / posterior | Total data tug | Prior tug | Data + prior |
+|---|---|---|---|---|---|---|---|---|---|---|
+| M1_210210 | baseline | with_Mgb | 0.017 | 0.020 | 0.019 | 0.014 | 1.15 | 0.024 | 0.004 | 0.028 |
+| M1_210210 | cn | with_Mgb | 0.024 | 0.030 | 0.027 | 0.023 | 1.04 | 0.026 | 0.000 | 0.026 |
+| M4_107370 | baseline | without_Mgb | 0.079 | 0.079 | 0.089 | 0.036 | 2.22 | 0.015 | 0.015 | 0.029 |
+| M3_117010 | baseline | without_Mgb | 0.049 | 0.049 | 0.056 | 0.043 | 1.14 | -0.066 | -0.002 | -0.068 |
+| M3_120308 | baseline | with_Mgb | 0.031 | 0.037 | 0.038 | 0.039 | 0.79 | 0.033 | 0.008 | 0.041 |
+| M2_134021 | baseline | with_Mgb | 0.037 | 0.045 | 0.045 | 0.034 | 1.09 | 0.046 | 0.003 | 0.049 |
+| M7_146213 | baseline | with_Mgb | 0.038 | 0.046 | 0.044 | 0.037 | 1.02 | 0.020 | 0.001 | 0.021 |
+| M8_150848 | baseline | with_Mgb | 0.022 | 0.029 | 0.027 | 0.023 | 0.99 | 0.025 | 0.005 | 0.030 |
+| M8_161113 | baseline | without_Mgb | 0.044 | 0.044 | 0.048 | 0.005 | 8.22 | -0.242 | -0.002 | -0.244 |
+| M5_238314 | baseline | without_Mgb | 0.031 | 0.031 | 0.036 | 0.030 | 1.03 | -0.045 | 0.000 | -0.045 |
+| M14_37219 | baseline | without_Mgb | 0.042 | 0.042 | 0.047 | 0.041 | 1.02 | 0.010 | -0.003 | 0.007 |
+| M4_107370 | cn | without_Mgb | 0.130 | 0.130 | 0.145 | 0.034 | 3.86 | -0.314 | 0.021 | -0.293 |
+| M3_117010 | cn | without_Mgb | 0.084 | 0.084 | 0.098 | 0.042 | 2.01 | -0.099 | 0.023 | -0.076 |
+| M3_120308 | cn | with_Mgb | 0.039 | 0.047 | 0.042 | 0.034 | 1.14 | 0.015 | 0.005 | 0.020 |
+| M2_134021 | cn | with_Mgb | 0.048 | 0.055 | 0.053 | 0.048 | 1.01 | 0.068 | 0.001 | 0.069 |
+| M7_146213 | cn | with_Mgb | 0.050 | 0.061 | 0.054 | 0.051 | 0.97 | 0.031 | -0.005 | 0.026 |
+| M8_150848 | cn | with_Mgb | 0.031 | 0.043 | 0.033 | 0.022 | 1.41 | -0.001 | -0.009 | -0.009 |
+| M8_161113 | cn | without_Mgb | 0.092 | 0.092 | 0.101 | 0.046 | 2.00 | -0.048 | 0.027 | -0.021 |
+| M5_238314 | cn | without_Mgb | 0.054 | 0.054 | 0.063 | 0.021 | 2.54 | -0.046 | 0.011 | -0.035 |
+| M14_37219 | cn | without_Mgb | 0.076 | 0.076 | 0.086 | 0.044 | 1.72 | -0.014 | -0.001 | -0.015 |
+
+#### age_gyr (Gyr)
+
+| Galaxy | Arm | Mg b coverage | Sigma all | Sigma no Mg b | Sigma no carbon | Posterior half-width | Sigma / posterior | Total data tug | Prior tug | Data + prior |
+|---|---|---|---|---|---|---|---|---|---|---|
+| M1_210210 | baseline | with_Mgb | 0.412 | 0.414 | 0.459 | 0.414 | 0.99 | -0.219 | 0.839 | 0.620 |
+| M1_210210 | cn | with_Mgb | 0.459 | 0.460 | 0.473 | 0.441 | 1.04 | 0.949 | 0.579 | 1.528 |
+| M4_107370 | baseline | without_Mgb | 0.327 | 0.327 | 0.347 | 0.301 | 1.09 | -0.045 | 0.347 | 0.302 |
+| M3_117010 | baseline | without_Mgb | 0.384 | 0.384 | 0.420 | 0.332 | 1.16 | -0.357 | 0.567 | 0.210 |
+| M3_120308 | baseline | with_Mgb | 0.467 | 0.473 | 0.516 | 0.427 | 1.10 | 0.495 | 0.238 | 0.733 |
+| M2_134021 | baseline | with_Mgb | 0.528 | 0.529 | 0.569 | 0.495 | 1.07 | 0.062 | 0.960 | 1.022 |
+| M7_146213 | baseline | with_Mgb | 0.552 | 0.554 | 0.602 | 0.576 | 0.96 | 0.690 | 0.347 | 1.037 |
+| M8_150848 | baseline | with_Mgb | 0.483 | 0.488 | 0.572 | 0.446 | 1.08 | 0.453 | 0.798 | 1.251 |
+| M8_161113 | baseline | without_Mgb | 0.292 | 0.292 | 0.316 | 0.280 | 1.04 | 0.028 | 0.298 | 0.326 |
+| M5_238314 | baseline | without_Mgb | 0.236 | 0.236 | 0.258 | 0.205 | 1.15 | -0.343 | 0.316 | -0.027 |
+| M14_37219 | baseline | without_Mgb | 0.409 | 0.409 | 0.437 | 0.330 | 1.24 | -0.227 | 0.708 | 0.481 |
+| M4_107370 | cn | without_Mgb | 0.352 | 0.352 | 0.368 | 0.253 | 1.39 | -0.330 | 0.417 | 0.087 |
+| M3_117010 | cn | without_Mgb | 0.447 | 0.447 | 0.459 | 0.320 | 1.40 | 0.148 | 0.486 | 0.635 |
+| M3_120308 | cn | with_Mgb | 0.436 | 0.438 | 0.515 | 0.430 | 1.01 | -0.148 | 0.880 | 0.732 |
+| M2_134021 | cn | with_Mgb | 0.420 | 0.420 | 0.447 | 0.340 | 1.23 | -0.679 | 0.910 | 0.231 |
+| M7_146213 | cn | with_Mgb | 0.518 | 0.523 | 0.583 | 0.519 | 1.00 | -0.059 | 1.060 | 1.002 |
+| M8_150848 | cn | with_Mgb | 0.396 | 0.397 | 0.465 | 0.313 | 1.27 | 0.320 | 0.945 | 1.264 |
+| M8_161113 | cn | without_Mgb | 0.181 | 0.181 | 0.182 | 0.343 | 0.53 | 0.181 | -0.145 | 0.036 |
+| M5_238314 | cn | without_Mgb | 0.322 | 0.322 | 0.328 | 0.263 | 1.23 | 0.195 | 0.135 | 0.330 |
+| M14_37219 | cn | without_Mgb | 0.466 | 0.466 | 0.475 | 0.358 | 1.30 | -0.112 | 0.866 | 0.754 |
+
+### Median widths by coverage
+
+| Arm | Mg b coverage | Quantity | N | Sigma all | Sigma no Mg b | Sigma no carbon | Posterior half-width | Median no-Mg/all ratio | Median no-carbon/all ratio |
+|---|---|---|---|---|---|---|---|---|---|
+| baseline | with_Mgb | afe | 5 | 0.031 | 0.037 | 0.038 | 0.034 | 1.217 | 1.209 |
+| baseline | with_Mgb | age_gyr | 5 | 0.483 | 0.488 | 0.569 | 0.446 | 1.005 | 1.104 |
+| cn | with_Mgb | afe | 5 | 0.039 | 0.047 | 0.042 | 0.034 | 1.236 | 1.091 |
+| cn | with_Mgb | age_gyr | 5 | 0.436 | 0.438 | 0.473 | 0.430 | 1.003 | 1.126 |
+| baseline | without_Mgb | afe | 5 | 0.044 | 0.044 | 0.048 | 0.036 | 1.000 | 1.129 |
+| baseline | without_Mgb | age_gyr | 5 | 0.327 | 0.327 | 0.347 | 0.301 | 1.000 | 1.081 |
+| cn | without_Mgb | afe | 5 | 0.084 | 0.084 | 0.098 | 0.042 | 1.000 | 1.136 |
+| cn | without_Mgb | age_gyr | 5 | 0.352 | 0.352 | 0.368 | 0.320 | 1.000 | 1.019 |
+
+| Saved per-galaxy values | Saved medians |
+|---|---|
+| [Region information and tugs](information-map/regions.csv), [widths and closure](information-map/widths.csv), [combined carbon comparison](information-map/region-comparisons.csv) | [Regions](information-map/medians-regions.csv), [widths](information-map/medians-widths.csv), [combined comparison](information-map/medians-comparisons.csv) |
