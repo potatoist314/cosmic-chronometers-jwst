@@ -1,0 +1,33 @@
+{
+  "regressions": [
+    {
+      "arm": "P",
+      "independent_slope": -5.626412649905352,
+      "independent_bootstrap_interval": [
+        -6.299388856006462,
+        -3.4114163762613723
+      ]
+    },
+    {
+      "arm": "W",
+      "independent_slope": -6.749225992484975,
+      "independent_bootstrap_interval": [
+        -8.347338817033684,
+        -0.8197666723125547
+      ]
+    }
+  ],
+  "original_report_preserved": true,
+  "notebooks": 60,
+  "embedded_images": 0,
+  "age_check_max_gyr": 8.881784197001252e-15,
+  "fraction_check_max": 2.4970475255499894e-15,
+  "remote_fits": 60,
+  "requested_gpu": "A100-40GB",
+  "remote_gpu_names": {
+    "NVIDIA A100-SXM4-40GB": 56,
+    "NVIDIA A100-SXM4-80GB": 4
+  },
+  "source_and_model_pins_match": true,
+  "remote_all_exit_zero": true
+}

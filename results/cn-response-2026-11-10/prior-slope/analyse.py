@@ -27,6 +27,7 @@ import jax
 import jax.numpy as jnp
 import numpy as np
 from scipy.special import softmax
+from scipy.spatial import cKDTree
 
 from ceridwen import Cosmology
 from ceridwen.broadening import Kinematics
@@ -299,19 +300,40 @@ def summarize():
                 validate_result(directory)
                 raw = directory / "ceridwen_result.h5"
                 fit = load_result_h5(raw)
+                assert not ({"cfe", "nfe"} & set(fit.samples))
+                assert np.asarray(fit.samples["logsfr_ratios"]).shape[1:] == (14,)
                 with h5py.File(directory / "ceridwen_derived_outputs.h5", "r") as stored:
                     times = np.asarray(stored["sfh/lookback_time_gyr"])
+                    assert int(stored.attrs["random_seed"]) == FIT_SEED
                     assert np.isclose(float(stored.attrs["redshift"]), truth["redshift"], atol=1e-10, rtol=0)
                     assert hashlib.sha256(np.asarray(stored["spectrum/mask"]).tobytes()).hexdigest() == truth["spectrum_mask_sha256"]
                     data = np.load(OUT / "mocks" / f"{target}_s{seed}.npz")
+                    np.testing.assert_array_equal(stored["spectrum/wavelength"], data["spectrum_wave"])
+                    # Production replaces invalid-pixel uncertainties with 1; those pixels remain excluded.
+                    np.testing.assert_array_equal(stored["spectrum/uncertainty"], np.where(
+                        data["native_valid"], data["spectrum_uncertainty"], 1.))
+                    np.testing.assert_allclose(stored["photometry/uncertainty"], np.hypot(
+                        data["photometry_uncertainty"], .05 * np.abs(data["photometry_flux"])), rtol=1e-14)
+                    with h5py.File((ROOT / truth["baseline_result"]).with_name("ceridwen_derived_outputs.h5"), "r") as baseline:
+                        np.testing.assert_array_equal(stored["photometry/mask"], baseline["photometry/mask"])
+                        np.testing.assert_array_equal(baseline["spectrum/wavelength"], data["spectrum_wave"])
+                        np.testing.assert_array_equal(baseline["spectrum/mask"], data["spectrum_mask"])
+                        np.testing.assert_array_equal(baseline["spectrum/uncertainty"], np.where(
+                            data["native_valid"], data["spectrum_uncertainty"], 1.))
                     for group, name in (("spectrum", "spectrum_flux"), ("photometry", "photometry_flux")):
                         np.testing.assert_array_equal(np.asarray(stored[f"{group}/observed"]), data[name])
                     derived_age = np.quantile(np.asarray(stored["sfh/mass_weighted_age_gyr"]), [.16, .5, .84])
+                    stored_ages = np.asarray(stored["sfh/mass_weighted_age_gyr"])
+                    stored_fractions = np.asarray(stored["sfh/mass_fraction_draws"])
                 # All weighted posterior samples, with the production mass-age definition.
                 ratios = np.asarray(fit.samples["logsfr_ratios"])
                 sfr = softmax(np.c_[np.zeros(len(ratios)), -np.cumsum(ratios, axis=1)] * np.log(10.), axis=1)
                 masses = .5 * (sfr[:, :-1] + sfr[:, 1:]) * np.diff(times)
                 ages = masses @ (.5 * (times[:-1] + times[1:])) / masses.sum(axis=1)
+                fractions = masses / masses.sum(axis=1)[:, None]
+                distances, indices = cKDTree(fractions).query(stored_fractions)
+                assert np.max(distances) < 1e-11
+                np.testing.assert_allclose(ages[indices], stored_ages, atol=1e-11, rtol=0)
                 ageq = weighted_quantiles(ages, fit.log_weights, quantiles=[.16, .5, .84])
                 row = dict(arm=arm, target=target, noise_seed=seed, redshift=truth["redshift"],
                            true_age_gyr=truth["true_age_gyr"], age_q16=ageq[0], age_q50=ageq[1],
@@ -320,9 +342,8 @@ def summarize():
                 for param, true in (("afe", .2), ("logzsol", -.2)):
                     q = weighted_quantiles(np.asarray(fit.samples[param]).ravel(), fit.log_weights,
                                            quantiles=[.16, .5, .84])
-                    row.update({f"{param}_q16": q[0], f"{param}_q50": q[1], f"{param}_q84": q[2],
-                                f"{param}_bias": q[1] - true})
-                row.update(lnZ=float(fit.log_evidence), result_path=str(raw.relative_to(ROOT)))
+                    row.update({f"{param}_q50": q[1], f"{param}_bias": q[1] - true})
+                row.update(result_path=str(raw.relative_to(ROOT)))
                 rows.append(row)
                 cell = next(c for c in manifest["source"]["experiment"]
                             if c["arm"] == f"{arm}_s{seed}" and c["target"] == target)
@@ -334,6 +355,8 @@ def summarize():
                 checks.append(dict(arm=arm, target=target, noise_seed=seed, validation=True,
                                    raw_sha256=sha(raw), derived_sha256=sha(raw.with_name("ceridwen_derived_outputs.h5")),
                                    source_commit=manifest["source"]["commit"],
+                                   stored_sfh_fraction_max_distance=float(np.max(distances)),
+                                   stored_age_max_error_gyr=float(np.max(np.abs(ages[indices] - stored_ages))),
                                    age_quantiles_400_equal_draws=derived_age.tolist(),
                                    age_quantiles_all_weighted=ageq))
     assert len(rows) == 60
@@ -372,12 +395,91 @@ def summarize():
     print(json.dumps(summaries), flush=True)
 
 
+def report():
+    """Append the requested section only after every recovery is validated."""
+    prior = list(csv.DictReader((OUT / "prior-slopes.csv").open()))
+    all_prior = {r["target"]: r for r in csv.DictReader((OUT / "prior-per-galaxy.csv").open())}
+    recoveries = list(csv.DictReader((OUT / "per-mock.csv").open()))
+    slopes = list(csv.DictReader((OUT / "recovery-slopes.csv").open()))
+    inputs = json.loads((OUT / "inputs.json").read_text())
+    checks = json.loads((OUT / "artifact-checks.json").read_text())
+    assert len(checks["fits"]) == 60 and all(r["validation"] for r in checks["fits"])
+    lines = ["\n## Experiment 9 results\n",
+             "Production SFH prior and a common cosmic-time formation history. "
+             "All slopes below are in Gyr per unit redshift; ages are in Gyr and abundances in dex.\n",
+             "| Sample | N | Prior median-age slope | Universe-age OLS slope | d(t_univ)/dz at median z | Prior / universe OLS |",
+             "| --- | ---: | ---: | ---: | ---: | ---: |"]
+    for r in prior:
+        ratio = float(r["prior_median_age_slope"]) / float(r["universe_age_ols_slope"])
+        lines.append(f'| {r["sample"]} | {r["galaxies"]} | {float(r["prior_median_age_slope"]):.6f} | '
+                     f'{float(r["universe_age_ols_slope"]):.6f} | {float(r["dt_univ_dz_at_median"]):.6f} | {ratio:.4f} |')
+    lines += ["", "The prior-only median-age slope is about 44% of the universe-age slope. "
+              "The complete [prior table](prior-slope/prior-per-galaxy.csv) contains the 135 October galaxies "
+              "and the extra test-set member M5_238314, which is absent from that October selection.\n",
+              "| Arm | Recovered slope [95% bootstrap] | True OLS slope | Recovered / true | Median age bias, lower z | Median age bias, upper z | Age truth within 16–84 | Median alpha/Fe bias | Median Fe/H bias |",
+              "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
+    for r in slopes:
+        lines.append(f'| {r["arm"]} | {float(r["recovered_age_slope"]):.5f} '
+                     f'[{float(r["slope_bootstrap_q025"]):.5f}, {float(r["slope_bootstrap_q975"]):.5f}] | '
+                     f'{float(r["true_age_slope"]):.5f} | {float(r["slope_ratio"]):.4f} | '
+                     f'{float(r["median_age_bias_lower_z"]):+.5f} | {float(r["median_age_bias_upper_z"]):+.5f} | '
+                     f'{r["age_truth_inside"]}/30 | {float(r["median_afe_bias"]):+.5f} | {float(r["median_feh_bias"]):+.5f} |')
+    by_arm = {r["arm"]: r for r in slopes}
+    p, w = by_arm["P"], by_arm["W"]
+    assert all(float(r["slope_bootstrap_q025"]) < float(r["true_age_slope"])
+               < float(r["slope_bootstrap_q975"]) for r in slopes)
+    lines += ["", f'These mocks do not establish flattening of the recovered slope. '
+              f'Production P recovers {float(p["slope_ratio"]):.3f} times the true slope; '
+              f'the wider prior W recovers {float(w["slope_ratio"]):.3f}. '
+              'Both 95% bootstrap intervals include the true slope. '
+              'The wider prior reduces the positive age offset in both redshift halves; '
+              'its slope point estimate is steeper and farther from truth.\n',
+              "| Item | Definition or check |", "| --- | --- |",
+              "| Prior draws | 200,000 production StudentT ratio vectors: mean 0, scale 0.3, df 2; seed 20261119. The same vectors are used at every redshift. Fourteen ratios define the notebook's fifteen time nodes. No tail clipping. scipy softmax removes a common SFR normalisation to avoid overflow; 100 draws agree with the production transform to relative tolerance 1e-12. |",
+              "| Prior slope | Unweighted OLS of each galaxy's prior median mass-weighted age against catalog redshift. The universe-age OLS column uses the same redshifts; the derivative column is the tangent at their median. |",
+              "| Cosmology and bins | The [production notebook](../../notebooks/ceridwen_integrated_photometry_spectra.ipynb) uses [age_gyr and Cosmology.planck18](../../ceridwen/ceridwen/cosmology.py); identical parameters and 14-bin construction. Per-galaxy fitting bins match the stored production bins. The derivative agrees with a central finite difference to relative tolerance 1e-8. The true age curve is t_univ(z) minus a constant; recovery ratios use its OLS slope over the same ten redshifts. |",
+              f'| Formation window | Constant star formation from cosmic time {inputs["formation_start_gyr"]:.9f} to {inputs["formation_end_gyr"]:.9f} Gyr. At median z = {inputs["median_redshift"]:.9f}, the exact true age equals the test-set median baseline age, {inputs["median_baseline_age_gyr"]:.9f} Gyr. Baseline ages use the stored 400 equal-weight SFH draws, as in Experiment 8. |',
+              "| Fine truth | Existing [CSPBasis_afe](../../ceridwen/ceridwen/csp/csp_afe.py) and [per-bin step integration](../../ceridwen/ceridwen/csp/csp.py): 100 active bins of 0.01 Gyr with exact window boundaries, plus two empty intervals. SFH integrates to one formed solar mass before baseline logmass scaling. The exact formed-mass age is the window midpoint in lookback time. Halving active bins to 0.005 Gyr for M1 changes the spectrum by 9.42e-7 and photometry by 2.10e-7 of their respective maximum fluxes. The SSP age grid and isochrones remain unchanged. |",
+              "| Truth and observations | alpha/Fe +0.2, constant Fe/H -0.2, no C/N. Each galaxy retains its native wavelength grid, instrument, filters, masks and statistical uncertainties. Dust, dispersion, logmass and spectral fractional floor use that galaxy's weighted baseline medians. Catalog redshift; unity calibration; zero emission amplitudes. |",
+              "| Noise | Experiment 4 recipe: independent Gaussian bands then pixels, baseline model-scaled spectral floor and 5% photometry floor. Seeds 20261111, 20261112, 20261113; RNG restarts for each galaxy, so standardized noise is shared by seed on native indices. Recovery retains original statistical uncertainties and production floor rules. Every saved draw was independently reproduced exactly. |",
+              "| Recovery arms | P: unchanged production StudentT scale 0.3. W: only priors.logsfr_ratios = StudentT(mean=0.0, scale=1.0, df=2.0) through the existing experiment config. Both use production settings, plain grid, analytic linear nuisances, fast SFH basis, 500 live points, 65 inner steps, 100 deletes and logZ tolerance -5; inference seed 20261110, A100-40GB. No notebook or model source changes. |",
+              "| Age and abundance summaries | Recovery quantiles use all weighted posterior samples, with the production formed-mass age definition. Intervals are 16–84%. Bias is posterior median minus truth. Fe/H is the sampled formed-mass mean metallicity coordinate. |",
+              "| Slope and bootstrap | OLS on all 30 posterior median ages, equivalent to OLS on each galaxy's mean across three noise seeds. 10,000 cluster bootstrap draws resample ten galaxies, keeping each galaxy's three noise realizations together; seed 20261129, 95% percentile interval. Lower and upper halves contain five galaxies each, split at median catalog redshift. |",
+              "| Scope of comparison | Fine-time constant-metallicity truth is recovered with the coarser production evolving-metallicity model. Both arms share those differences; their only recovery setting difference is SFH prior scale. The bootstrap describes these ten targets and three fixed noise realizations. |",
+              "| Validation | All sixty fits pass local artifact validation and stored diagnostics. Native grids, masks, statistical errors and production photometry floors match the inputs. Stored SFH draws match the full-sample age calculation within 8.9e-15 Gyr. All sixty cells requested A100-40GB and exit zero. Modal supplied 56 A100-SXM4-40GB and four A100-SXM4-80GB allocations. All ten own apps are stopped; zero own containers, zero billed cost. |",
+              "| Artifacts | [Inputs and exact histories](prior-slope/inputs.json), [per-mock recoveries](prior-slope/per-mock.csv), [slopes](prior-slope/recovery-slopes.csv), [validation](prior-slope/artifact-checks.json), [script](prior-slope/analyse.py). Thirty immutable NPZ inputs and all sixty retrieved fits are in prior-slope/. |",
+              "| Noticed, not done | No changes to shared model/notebook code or production defaults. No figures or wiki pages. The pre-existing state-checker worktree error remains. |", "",
+              "| Galaxy | z | Prior age 16 / 50 / 84 | Exact mock age | Baseline age |",
+              "| --- | ---: | ---: | ---: | ---: |"]
+    for t in sorted(inputs["truths"], key=lambda t: t["redshift"]):
+        r = all_prior[t["target"]]
+        lines.append(f'| {t["target"]} | {t["redshift"]:.6f} | {float(r["prior_age_q16"]):.5f} / '
+                     f'{float(r["prior_age_q50"]):.5f} / {float(r["prior_age_q84"]):.5f} | '
+                     f'{t["true_age_gyr"]:.9f} | {t["baseline_age_gyr"]:.5f} |')
+    for arm in ("P", "W"):
+        lines += ["", f"Arm {arm}.\n", "| Galaxy | Noise seed | True age | Recovered age [16–84] | Age bias | Truth inside | alpha/Fe | alpha/Fe bias | Fe/H | Fe/H bias |",
+                  "| --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | ---: |"]
+        for r in sorted((r for r in recoveries if r["arm"] == arm), key=lambda r: (float(r["redshift"]), r["noise_seed"])):
+            lines.append(f'| {r["target"]} | {r["noise_seed"]} | {float(r["true_age_gyr"]):.5f} | '
+                         f'{float(r["age_q50"]):.5f} [{float(r["age_q16"]):.5f}, {float(r["age_q84"]):.5f}] | '
+                         f'{float(r["age_bias_gyr"]):+.5f} | {"yes" if r["age_truth_inside"] == "True" else "no"} | '
+                         f'{float(r["afe_q50"]):+.5f} | {float(r["afe_bias"]):+.5f} | '
+                         f'{float(r["logzsol_q50"]):+.5f} | {float(r["logzsol_bias"]):+.5f} |')
+    path = BASE / "REPORT.md"
+    old = path.read_text()
+    assert "## Experiment 9 results" not in old
+    path.write_text(old + "\n".join(lines) + "\n")
+    print("Appended Experiment 9 results.")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("step", choices=["prior", "probe", "generate", "summarize"])
+    parser.add_argument("step", choices=["prior", "probe", "generate", "summarize", "report"])
     args = parser.parse_args()
     OUT.mkdir(exist_ok=True)
-    if args.step == "summarize":
+    if args.step == "report":
+        report()
+    elif args.step == "summarize":
         summarize()
     elif args.step == "prior":
         prior_only()

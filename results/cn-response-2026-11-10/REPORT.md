@@ -484,3 +484,121 @@ Each cell is the median [alpha/Fe] bias in dex / age bias in Gyr, against truth.
 | Saved per-galaxy values | Saved medians |
 |---|---|
 | [Region information and tugs](information-map/regions.csv), [widths and closure](information-map/widths.csv), [combined carbon comparison](information-map/region-comparisons.csv) | [Regions](information-map/medians-regions.csv), [widths](information-map/medians-widths.csv), [combined comparison](information-map/medians-comparisons.csv) |
+
+## Experiment 9 results
+
+Production SFH prior and a common cosmic-time formation history. All slopes below are in Gyr per unit redshift; ages are in Gyr and abundances in dex.
+
+| Sample | N | Prior median-age slope | Universe-age OLS slope | d(t_univ)/dz at median z | Prior / universe OLS |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| all135 | 135 | -2.278833 | -5.172135 | -5.518885 | 0.4406 |
+| test10 | 10 | -2.309617 | -5.239110 | -5.508097 | 0.4408 |
+
+The prior-only median-age slope is about 44% of the universe-age slope. The complete [prior table](prior-slope/prior-per-galaxy.csv) contains the 135 October galaxies and the extra test-set member M5_238314, which is absent from that October selection.
+
+| Arm | Recovered slope [95% bootstrap] | True OLS slope | Recovered / true | Median age bias, lower z | Median age bias, upper z | Age truth within 16–84 | Median alpha/Fe bias | Median Fe/H bias |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| P | -5.62641 [-6.29939, -3.41142] | -5.23911 | 1.0739 | +0.57218 | +0.53700 | 10/30 | -0.01181 | +0.05219 |
+| W | -6.74923 [-8.34734, -0.81977] | -5.23911 | 1.2882 | +0.22905 | +0.31801 | 14/30 | -0.01220 | +0.04326 |
+
+These mocks do not establish flattening of the recovered slope. Production P recovers 1.074 times the true slope; the wider prior W recovers 1.288. Both 95% bootstrap intervals include the true slope. The wider prior reduces the positive age offset in both redshift halves; its slope point estimate is steeper and farther from truth.
+
+| Item | Definition or check |
+| --- | --- |
+| Prior draws | 200,000 production StudentT ratio vectors: mean 0, scale 0.3, df 2; seed 20261119. The same vectors are used at every redshift. Fourteen ratios define the notebook's fifteen time nodes. No tail clipping. scipy softmax removes a common SFR normalisation to avoid overflow; 100 draws agree with the production transform to relative tolerance 1e-12. |
+| Prior slope | Unweighted OLS of each galaxy's prior median mass-weighted age against catalog redshift. The universe-age OLS column uses the same redshifts; the derivative column is the tangent at their median. |
+| Cosmology and bins | The [production notebook](../../notebooks/ceridwen_integrated_photometry_spectra.ipynb) uses [age_gyr and Cosmology.planck18](../../ceridwen/ceridwen/cosmology.py); identical parameters and 14-bin construction. Per-galaxy fitting bins match the stored production bins. The derivative agrees with a central finite difference to relative tolerance 1e-8. The true age curve is t_univ(z) minus a constant; recovery ratios use its OLS slope over the same ten redshifts. |
+| Formation window | Constant star formation from cosmic time 2.468870095 to 3.468870095 Gyr. At median z = 0.729950011, the exact true age equals the test-set median baseline age, 4.160633248 Gyr. Baseline ages use the stored 400 equal-weight SFH draws, as in Experiment 8. |
+| Fine truth | Existing [CSPBasis_afe](../../ceridwen/ceridwen/csp/csp_afe.py) and [per-bin step integration](../../ceridwen/ceridwen/csp/csp.py): 100 active bins of 0.01 Gyr with exact window boundaries, plus two empty intervals. SFH integrates to one formed solar mass before baseline logmass scaling. The exact formed-mass age is the window midpoint in lookback time. Halving active bins to 0.005 Gyr for M1 changes the spectrum by 9.42e-7 and photometry by 2.10e-7 of their respective maximum fluxes. The SSP age grid and isochrones remain unchanged. |
+| Truth and observations | alpha/Fe +0.2, constant Fe/H -0.2, no C/N. Each galaxy retains its native wavelength grid, instrument, filters, masks and statistical uncertainties. Dust, dispersion, logmass and spectral fractional floor use that galaxy's weighted baseline medians. Catalog redshift; unity calibration; zero emission amplitudes. |
+| Noise | Experiment 4 recipe: independent Gaussian bands then pixels, baseline model-scaled spectral floor and 5% photometry floor. Seeds 20261111, 20261112, 20261113; RNG restarts for each galaxy, so standardized noise is shared by seed on native indices. Recovery retains original statistical uncertainties and production floor rules. Every saved draw was independently reproduced exactly. |
+| Recovery arms | P: unchanged production StudentT scale 0.3. W: only priors.logsfr_ratios = StudentT(mean=0.0, scale=1.0, df=2.0) through the existing experiment config. Both use production settings, plain grid, analytic linear nuisances, fast SFH basis, 500 live points, 65 inner steps, 100 deletes and logZ tolerance -5; inference seed 20261110, A100-40GB. No notebook or model source changes. |
+| Age and abundance summaries | Recovery quantiles use all weighted posterior samples, with the production formed-mass age definition. Intervals are 16–84%. Bias is posterior median minus truth. Fe/H is the sampled formed-mass mean metallicity coordinate. |
+| Slope and bootstrap | OLS on all 30 posterior median ages, equivalent to OLS on each galaxy's mean across three noise seeds. 10,000 cluster bootstrap draws resample ten galaxies, keeping each galaxy's three noise realizations together; seed 20261129, 95% percentile interval. Lower and upper halves contain five galaxies each, split at median catalog redshift. |
+| Scope of comparison | Fine-time constant-metallicity truth is recovered with the coarser production evolving-metallicity model. Both arms share those differences; their only recovery setting difference is SFH prior scale. The bootstrap describes these ten targets and three fixed noise realizations. |
+| Validation | All sixty fits pass local artifact validation and stored diagnostics. Native grids, masks, statistical errors and production photometry floors match the inputs. Stored SFH draws match the full-sample age calculation within 8.9e-15 Gyr. All sixty cells requested A100-40GB and exit zero. Modal supplied 56 A100-SXM4-40GB and four A100-SXM4-80GB allocations. All ten own apps are stopped; zero own containers, zero billed cost. |
+| Artifacts | [Inputs and exact histories](prior-slope/inputs.json), [per-mock recoveries](prior-slope/per-mock.csv), [slopes](prior-slope/recovery-slopes.csv), [validation](prior-slope/artifact-checks.json), [script](prior-slope/analyse.py). Thirty immutable NPZ inputs and all sixty retrieved fits are in prior-slope/. |
+| Noticed, not done | No changes to shared model/notebook code or production defaults. No figures or wiki pages. The pre-existing state-checker worktree error remains. |
+
+| Galaxy | z | Prior age 16 / 50 / 84 | Exact mock age | Baseline age |
+| --- | ---: | ---: | ---: | ---: |
+| M1_210210 | 0.654200 | 1.02742 / 3.29854 / 5.03825 | 4.597337894 | 3.48668 |
+| M3_117010 | 0.676600 | 1.00864 / 3.24012 / 4.95167 | 4.464036425 | 4.42204 |
+| M7_146213 | 0.687500 | 0.99940 / 3.21230 / 4.91049 | 4.400462472 | 4.32716 |
+| M8_150848 | 0.701128 | 0.98855 / 3.17770 / 4.85982 | 4.322139396 | 3.66283 |
+| M3_120308 | 0.727900 | 0.96666 / 3.11168 / 4.76186 | 4.171938486 | 4.46606 |
+| M5_238314 | 0.732000 | 0.96351 / 3.10167 / 4.74732 | 4.149355452 | 4.21940 |
+| M14_37219 | 0.734678 | 0.96126 / 3.09516 / 4.73761 | 4.134663999 | 3.52217 |
+| M2_134021 | 0.749300 | 0.95022 / 3.06006 / 4.68613 | 4.055262380 | 3.22927 |
+| M4_107370 | 0.843600 | 0.88171 / 2.84787 / 4.37405 | 3.574528180 | 4.40188 |
+| M8_161113 | 0.891105 | 0.85036 / 2.74965 / 4.22867 | 3.351390107 | 4.10187 |
+
+Arm P.
+
+| Galaxy | Noise seed | True age | Recovered age [16–84] | Age bias | Truth inside | alpha/Fe | alpha/Fe bias | Fe/H | Fe/H bias |
+| --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | ---: |
+| M1_210210 | 20261111 | 4.59734 | 5.20488 [4.92670, 5.50903] | +0.60754 | no | +0.20672 | +0.00672 | -0.17316 | +0.02684 |
+| M1_210210 | 20261112 | 4.59734 | 5.44410 [5.10684, 5.81651] | +0.84676 | no | +0.18566 | -0.01434 | -0.18254 | +0.01746 |
+| M1_210210 | 20261113 | 4.59734 | 5.16951 [4.84077, 5.51977] | +0.57218 | no | +0.19832 | -0.00168 | -0.18704 | +0.01296 |
+| M3_117010 | 20261111 | 4.46404 | 4.73806 [4.24167, 5.20340] | +0.27402 | yes | +0.07986 | -0.12014 | -0.07797 | +0.12203 |
+| M3_117010 | 20261112 | 4.46404 | 4.76860 [4.22144, 5.32267] | +0.30456 | yes | +0.25572 | +0.05572 | -0.13276 | +0.06724 |
+| M3_117010 | 20261113 | 4.46404 | 4.89112 [4.37305, 5.36343] | +0.42708 | yes | +0.22327 | +0.02327 | -0.13015 | +0.06985 |
+| M7_146213 | 20261111 | 4.40046 | 4.81425 [4.35923, 5.31344] | +0.41379 | yes | +0.14835 | -0.05165 | -0.17521 | +0.02479 |
+| M7_146213 | 20261112 | 4.40046 | 4.88667 [4.41355, 5.33892] | +0.48621 | no | +0.17666 | -0.02334 | -0.13199 | +0.06801 |
+| M7_146213 | 20261113 | 4.40046 | 5.55844 [5.09385, 6.03793] | +1.15798 | no | +0.23643 | +0.03643 | -0.23641 | -0.03641 |
+| M8_150848 | 20261111 | 4.32214 | 4.92027 [4.52132, 5.36103] | +0.59813 | no | +0.21244 | +0.01244 | -0.18060 | +0.01940 |
+| M8_150848 | 20261112 | 4.32214 | 5.10350 [4.72415, 5.47437] | +0.78136 | no | +0.19072 | -0.00928 | -0.19711 | +0.00289 |
+| M8_150848 | 20261113 | 4.32214 | 4.86287 [4.51437, 5.22616] | +0.54073 | no | +0.18353 | -0.01647 | -0.15121 | +0.04879 |
+| M3_120308 | 20261111 | 4.17194 | 4.58121 [4.16649, 5.01360] | +0.40928 | yes | +0.22228 | +0.02228 | -0.14386 | +0.05614 |
+| M3_120308 | 20261112 | 4.17194 | 4.80374 [4.45526, 5.17374] | +0.63180 | no | +0.16536 | -0.03464 | -0.13608 | +0.06392 |
+| M3_120308 | 20261113 | 4.17194 | 4.78657 [4.41721, 5.17544] | +0.61463 | no | +0.18308 | -0.01692 | -0.16215 | +0.03785 |
+| M5_238314 | 20261111 | 4.14936 | 4.96994 [4.55425, 5.36848] | +0.82058 | no | +0.22803 | +0.02803 | -0.16385 | +0.03615 |
+| M5_238314 | 20261112 | 4.14936 | 4.68508 [4.38096, 5.00181] | +0.53573 | no | +0.16392 | -0.03608 | -0.15403 | +0.04597 |
+| M5_238314 | 20261113 | 4.14936 | 5.31958 [4.92669, 5.66506] | +1.17022 | no | +0.18470 | -0.01530 | -0.18966 | +0.01034 |
+| M14_37219 | 20261111 | 4.13466 | 5.02958 [4.50614, 5.51831] | +0.89492 | no | +0.20359 | +0.00359 | -0.12859 | +0.07141 |
+| M14_37219 | 20261112 | 4.13466 | 4.39001 [3.89796, 4.86849] | +0.25535 | yes | +0.13498 | -0.06502 | -0.09302 | +0.10698 |
+| M14_37219 | 20261113 | 4.13466 | 4.96224 [4.39022, 5.48898] | +0.82758 | no | +0.11312 | -0.08688 | -0.14440 | +0.05560 |
+| M2_134021 | 20261111 | 4.05526 | 4.85984 [4.39862, 5.37948] | +0.80458 | no | +0.21114 | +0.01114 | -0.24621 | -0.04621 |
+| M2_134021 | 20261112 | 4.05526 | 4.59226 [4.10852, 5.10822] | +0.53700 | no | +0.23091 | +0.03091 | -0.10658 | +0.09342 |
+| M2_134021 | 20261113 | 4.05526 | 4.47209 [3.96288, 4.95066] | +0.41683 | yes | +0.20623 | +0.00623 | -0.12640 | +0.07360 |
+| M4_107370 | 20261111 | 3.57453 | 4.42651 [4.00675, 4.82806] | +0.85198 | no | +0.20161 | +0.00161 | -0.21830 | -0.01830 |
+| M4_107370 | 20261112 | 3.57453 | 4.01085 [3.55472, 4.47550] | +0.43632 | yes | +0.15419 | -0.04581 | -0.10472 | +0.09528 |
+| M4_107370 | 20261113 | 3.57453 | 4.00530 [3.54320, 4.49110] | +0.43077 | yes | +0.10141 | -0.09859 | -0.10777 | +0.09223 |
+| M8_161113 | 20261111 | 3.35139 | 3.76576 [3.37548, 4.15724] | +0.41437 | no | +0.15774 | -0.04226 | -0.12839 | +0.07161 |
+| M8_161113 | 20261112 | 3.35139 | 3.74925 [3.33742, 4.12334] | +0.39786 | yes | +0.18341 | -0.01659 | -0.13255 | +0.06745 |
+| M8_161113 | 20261113 | 3.35139 | 3.96523 [3.57352, 4.32046] | +0.61384 | no | +0.20313 | +0.00313 | -0.17692 | +0.02308 |
+
+Arm W.
+
+| Galaxy | Noise seed | True age | Recovered age [16–84] | Age bias | Truth inside | alpha/Fe | alpha/Fe bias | Fe/H | Fe/H bias |
+| --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | ---: |
+| M1_210210 | 20261111 | 4.59734 | 4.80992 [4.70287, 5.16943] | +0.21258 | no | +0.20799 | +0.00799 | -0.16649 | +0.03351 |
+| M1_210210 | 20261112 | 4.59734 | 5.39694 [4.74317, 5.97330] | +0.79961 | no | +0.18584 | -0.01416 | -0.18527 | +0.01473 |
+| M1_210210 | 20261113 | 4.59734 | 4.82639 [4.61236, 5.35348] | +0.22905 | no | +0.19721 | -0.00279 | -0.18647 | +0.01353 |
+| M3_117010 | 20261111 | 4.46404 | 4.47753 [3.78983, 5.17206] | +0.01350 | yes | +0.07335 | -0.12665 | -0.07794 | +0.12206 |
+| M3_117010 | 20261112 | 4.46404 | 4.46742 [3.66904, 5.10159] | +0.00338 | yes | +0.25425 | +0.05425 | -0.12400 | +0.07600 |
+| M3_117010 | 20261113 | 4.46404 | 4.54220 [3.83751, 5.15990] | +0.07817 | yes | +0.22900 | +0.02900 | -0.12605 | +0.07395 |
+| M7_146213 | 20261111 | 4.40046 | 4.60916 [4.10736, 5.32164] | +0.20870 | yes | +0.14639 | -0.05361 | -0.17765 | +0.02235 |
+| M7_146213 | 20261112 | 4.40046 | 4.60798 [4.08250, 5.11187] | +0.20751 | yes | +0.17396 | -0.02604 | -0.12896 | +0.07104 |
+| M7_146213 | 20261113 | 4.40046 | 5.52593 [4.77291, 6.02495] | +1.12546 | no | +0.23799 | +0.03799 | -0.24658 | -0.04658 |
+| M8_150848 | 20261111 | 4.32214 | 4.85787 [4.35378, 5.67610] | +0.53573 | no | +0.21253 | +0.01253 | -0.19088 | +0.00912 |
+| M8_150848 | 20261112 | 4.32214 | 4.76448 [4.48038, 5.32270] | +0.44234 | no | +0.18963 | -0.01037 | -0.19470 | +0.00530 |
+| M8_150848 | 20261113 | 4.32214 | 4.59472 [4.37234, 5.00161] | +0.27258 | no | +0.18597 | -0.01403 | -0.15888 | +0.04112 |
+| M3_120308 | 20261111 | 4.17194 | 4.31865 [3.71421, 4.93893] | +0.14671 | yes | +0.22368 | +0.02368 | -0.14031 | +0.05969 |
+| M3_120308 | 20261112 | 4.17194 | 4.54625 [4.21844, 5.07413] | +0.37431 | no | +0.16532 | -0.03468 | -0.14907 | +0.05093 |
+| M3_120308 | 20261113 | 4.17194 | 4.68540 [4.19673, 5.49683] | +0.51347 | no | +0.18285 | -0.01715 | -0.16970 | +0.03030 |
+| M5_238314 | 20261111 | 4.14936 | 4.93341 [4.38649, 5.52448] | +0.78406 | no | +0.22649 | +0.02649 | -0.16922 | +0.03078 |
+| M5_238314 | 20261112 | 4.14936 | 4.46737 [4.26005, 4.80747] | +0.31801 | no | +0.16281 | -0.03719 | -0.16197 | +0.03803 |
+| M5_238314 | 20261113 | 4.14936 | 5.34250 [4.78090, 5.79279] | +1.19315 | no | +0.18420 | -0.01580 | -0.19189 | +0.00811 |
+| M14_37219 | 20261111 | 4.13466 | 5.39751 [4.42909, 6.01434] | +1.26285 | no | +0.20632 | +0.00632 | -0.15575 | +0.04425 |
+| M14_37219 | 20261112 | 4.13466 | 4.03598 [3.21715, 4.69698] | -0.09869 | yes | +0.12680 | -0.07320 | -0.08278 | +0.11722 |
+| M14_37219 | 20261113 | 4.13466 | 5.17389 [4.37485, 5.87475] | +1.03922 | no | +0.11021 | -0.08979 | -0.15773 | +0.04227 |
+| M2_134021 | 20261111 | 4.05526 | 4.74952 [4.32051, 5.49654] | +0.69425 | no | +0.20969 | +0.00969 | -0.26618 | -0.06618 |
+| M2_134021 | 20261112 | 4.05526 | 4.40446 [3.63983, 5.29819] | +0.34920 | yes | +0.23282 | +0.03282 | -0.11471 | +0.08529 |
+| M2_134021 | 20261113 | 4.05526 | 4.12453 [3.34915, 4.69895] | +0.06926 | yes | +0.20483 | +0.00483 | -0.12435 | +0.07565 |
+| M4_107370 | 20261111 | 3.57453 | 4.17979 [3.74008, 4.79735] | +0.60526 | no | +0.20287 | +0.00287 | -0.21879 | -0.01879 |
+| M4_107370 | 20261112 | 3.57453 | 3.64120 [2.92953, 4.28840] | +0.06668 | yes | +0.14743 | -0.05257 | -0.09331 | +0.10669 |
+| M4_107370 | 20261113 | 3.57453 | 3.68240 [2.85708, 5.09110] | +0.10787 | yes | +0.10800 | -0.09200 | -0.10638 | +0.09362 |
+| M8_161113 | 20261111 | 3.35139 | 3.21317 [2.78543, 3.82858] | -0.13822 | yes | +0.15566 | -0.04434 | -0.10389 | +0.09611 |
+| M8_161113 | 20261112 | 3.35139 | 3.15780 [2.77641, 3.91808] | -0.19359 | yes | +0.18067 | -0.01933 | -0.10930 | +0.09070 |
+| M8_161113 | 20261113 | 3.35139 | 3.46390 [2.97962, 3.99753] | +0.11251 | yes | +0.20171 | +0.00171 | -0.13880 | +0.06120 |
