@@ -2,7 +2,7 @@
 
 Liu Hao, 2026-11-11 11:14: "yeah do all 3"
 
-Phases from the overseer-astronomy brief (card t_5440a254). Phases 1 and 2 are below. Phase 3 waits for the lead's answer to the checkpoint.
+Phases from the overseer-astronomy brief (card t_5440a254).
 
 ## Download and cross-match
 
@@ -165,6 +165,52 @@ Choices from `wiki/notes/model.md` (Sample and data; Calibration, noise and samp
 | window | Fe4383 | 8 | +0.48 | +0.56 | +0.45 | 2.87 |
 | window | Fe4531 | 8 | +0.26 | -0.66 | -0.85 | 4.40 |
 
+## Test set: likelihood and evidence
+
+- ln Z and log L are for different data vectors and error bars: DR3 errors are rescaled (W21 Appendix C). The comparable numbers are the spectral χ² per pixel at raw catalogue errors and at one fixed f_calib.
+- Model: posterior-median spectrum. Pixels fitted in both releases (`common`). Fixed f_calib: the DR2 fit's posterior median, for both. σ_eff² = σ² + (f_calib · model)² (`ceridwen/likelihood/noise_model.py`). No noise floor in any fit.
+- Improves: higher ln Z or log L, lower χ².
+
+| arm | quantity | pairs | median DR2 | median DR3 | median DR3 − DR2 | improves in DR3 |
+|---|---|---|---|---|---|---|
+| full | ln Z | 10 | 235552.1 | 234479.7 | -478.9 | 4 |
+| full | max log L | 10 | 235582.0 | 234509.7 | -481.3 | 4 |
+| full | posterior-median log L | 10 | 235576.8 | 234503.3 | -482.0 | 4 |
+| full | spectral χ²/px, raw errors | 10 | 1.826 | 2.006 | +0.289 | 3 |
+| full | spectral χ²/px, fixed f_calib | 10 | 1.073 | 1.183 | +0.117 | 3 |
+| full | spectral χ²/px, own f_calib | 10 | 1.073 | 1.174 | +0.086 | 4 |
+| full | photometry χ² | 10 | 41.3 | 42.2 | +1.3 | 4 |
+| window | ln Z | 8 | 95506.0 | 93944.2 | -143.9 | 3 |
+| window | max log L | 8 | 95531.8 | 93971.8 | -143.7 | 3 |
+| window | posterior-median log L | 8 | 95526.4 | 93964.7 | -143.6 | 3 |
+| window | spectral χ²/px, raw errors | 8 | 1.553 | 1.666 | +0.216 | 1 |
+| window | spectral χ²/px, fixed f_calib | 8 | 1.011 | 1.181 | +0.131 | 0 |
+| window | spectral χ²/px, own f_calib | 8 | 1.011 | 1.109 | +0.118 | 2 |
+| window | photometry χ² | 8 | 41.4 | 39.9 | -0.5 | 5 |
+
+| arm | galaxy | fitted px DR2 / DR3 / common | Δ ln Z | Δ max log L | Δ median log L | χ²/px raw DR2 → DR3 | χ²/px fixed f_calib DR2 → DR3 | χ²/px own f_calib DR2 → DR3 | f_calib [%] DR2 → DR3 | photometry χ² DR2 → DR3 (n) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| full | M1_210210 | 3607 / 3610 / 3599 | +578.6 ± 0.3 | +580.1 | +579.5 | 3.006 → 3.290 | 1.035 → 1.076 | 1.035 → 1.185 | 2.4 → 2.2 | 41.1 → 40.6 (28) |
+| full | M8_150848 | 3785 / 3807 / 3771 | +1579.5 ± 0.3 | +1575.1 | +1578.3 | 2.004 → 1.875 | 1.108 → 1.081 | 1.108 → 1.137 | 2.3 → 2.1 | 620.3 → 624.3 (28) |
+| full | M5_238314 | 3603 / 3588 / 3566 | -1934.0 ± 0.3 | -1936.8 | -1936.3 | 1.940 → 2.717 | 1.215 → 1.735 | 1.215 → 1.204 | 2.3 → 3.6 | 38.7 → 43.5 (28) |
+| full | M3_120308 | 3604 / 3585 / 3565 | -1087.8 ± 0.3 | -1089.7 | -1089.4 | 1.843 → 2.136 | 1.076 → 1.269 | 1.076 → 1.273 | 3.0 → 2.9 | 36.0 → 37.1 (28) |
+| full | M2_134021 | 3630 / 3451 / 3434 | -11813.4 ± 0.3 | -11814.9 | -11814.1 | 1.623 → 5.924 | 1.030 → 2.471 | 1.030 → 1.365 | 2.9 → 4.7 | 40.8 → 40.5 (28) |
+| full | M7_146213 | 3618 / 3601 / 3559 | -1518.7 ± 0.3 | -1520.2 | -1518.6 | 1.809 → 2.315 | 1.145 → 1.400 | 1.145 → 1.115 | 3.9 → 5.2 | 41.5 → 44.1 (28) |
+| full | M3_117010 | 3539 / 3531 / 3509 | -509.0 ± 0.3 | -509.5 | -510.2 | 1.531 → 1.860 | 1.069 → 1.311 | 1.069 → 1.212 | 3.8 → 4.3 | 54.3 → 55.8 (28) |
+| full | M4_107370 | 3573 / 3589 / 3546 | +1379.3 ± 0.3 | +1378.4 | +1378.2 | 2.091 → 1.730 | 0.955 → 0.924 | 0.955 → 1.163 | 6.3 → 4.5 | 45.4 → 36.1 (28) |
+| full | M14_37219 | 3578 / 3591 / 3570 | +1403.6 ± 0.3 | +1404.0 | +1403.9 | 1.334 → 1.336 | 1.070 → 1.036 | 1.070 → 1.058 | 3.3 → 3.2 | 38.7 → 40.9 (28) |
+| full | M8_161113 | 3550 / 3553 / 3531 | -448.9 ± 0.3 | -453.1 | -453.8 | 1.506 → 1.414 | 1.095 → 1.096 | 1.095 → 1.071 | 4.2 → 4.5 | 54.5 → 52.1 (28) |
+| window | M1_210210 | 1396 / 1392 / 1390 | -245.8 ± 0.3 | -245.7 | -245.6 | 2.705 → 3.817 | 0.975 → 1.239 | 0.975 → 1.111 | 2.1 → 2.3 | 40.8 → 37.5 (28) |
+| window | M8_150848 | 1435 / 1434 / 1422 | -42.0 ± 0.3 | -41.7 | -41.7 | 1.564 → 1.624 | 1.056 → 1.122 | 1.056 → 1.091 | 1.9 → 2.0 | 619.0 → 618.0 (28) |
+| window | M3_120308 | 1463 / 1455 / 1452 | -551.5 ± 0.2 | -549.3 | -550.6 | 1.256 → 1.709 | 0.971 → 1.320 | 0.971 → 1.107 | 1.9 → 2.7 | 37.4 → 36.6 (28) |
+| window | M2_134021 | 1485 / 1391 / 1389 | -6336.2 ± 0.3 | -6334.6 | -6335.8 | 1.209 → 5.651 | 0.967 → 3.436 | 0.967 → 1.327 | 1.9 → 4.6 | 37.0 → 36.8 (28) |
+| window | M7_146213 | 1416 / 1392 / 1375 | -1617.5 ± 0.2 | -1617.3 | -1617.0 | 1.568 → 1.588 | 1.086 → 1.107 | 1.086 → 1.064 | 3.6 → 3.8 | 42.6 → 43.8 (28) |
+| window | M3_117010 | 1402 / 1407 / 1391 | +385.5 ± 0.2 | +388.0 | +386.6 | 1.541 → 1.791 | 1.082 → 1.255 | 1.082 → 1.184 | 3.4 → 3.7 | 53.9 → 54.4 (28) |
+| window | M4_107370 | 1543 / 1563 / 1534 | +1360.0 ± 0.2 | +1359.5 | +1359.9 | 1.726 → 1.613 | 0.989 → 1.019 | 0.989 → 1.139 | 4.5 → 3.8 | 37.4 → 34.2 (28) |
+| window | M14_37219 | 1461 / 1470 / 1459 | +756.0 ± 0.2 | +755.9 | +755.3 | 1.284 → 1.466 | 1.034 → 1.123 | 1.034 → 1.018 | 3.0 → 3.6 | 42.1 → 42.3 (28) |
+
+- M2_134021: DR3 error/flux ratio 0.63 × DR2, S/N 1.58 × DR2 (spectra table above).
+
 ## DR3 sample
 
 - Same cuts as the DR2 notebook selection; DR3 flags and EW sign as in the table above. COSMOS2015 matches of each release.
@@ -182,10 +228,12 @@ Choices from `wiki/notes/model.md` (Sample and data; Calibration, noise and samp
 | one spectrum per OBJECT | 187 | 302 |
 | fittable photometry | 180 | 284 |
 | fittable, covers window | 144 | 208 |
+| and finite σ★ error | 144 | 194 |
 
 - DR3 302: 129 objects also in the DR2 187; 173 new.
 - DR2 187 spectra not selected in DR3 (`dr2-only-galaxies.csv`): 47 a 3σ [O II] or [O III] line, 8 [O II] EW and a 3σ line, 3 `FLAG_MORPH` 1, 7 another spectrum of the same object selected (higher `SN`). Of the DR2 135: 33, 7, 2, 6.
-- 208 fittable and covering: z 0.603–0.999, median 0.728; 99 with COSMOS2025, 109 with Classic; 69 are DR2 135 spectra.
+- Finite σ★ error: the σ★ prior is Normal(catalogue, error). 14 of the 208 have a NaN `SIGMA_STARS_PRIME_ERR` (M26 5, M28 4, M31 4, M32 1); 13 of them lie outside the HST F814W mosaic. All DR3: 428 spectra with σ★ and no error; DR2: 0.
+- 194 fitted: z 0.603–0.999, median 0.728; 99 with COSMOS2025, 95 with Classic; 69 are DR2 135 spectra; 73 objects fitted in chronometer arm (i).
 
 ## Phase 3 estimate
 
@@ -196,5 +244,5 @@ Choices from `wiki/notes/model.md` (Sample and data; Calibration, noise and samp
 ## Files
 
 - `analysis.ipynb`: every table above.
-- `crossmatch.csv`, `spectra-dr3-vs-dr2.csv`, `selection-counts.csv`, `selection-per-galaxy.csv`, `dr2-only-galaxies.csv`, `fits.csv`, `paired-changes.csv`, `paired-changes-per-galaxy.csv`, `calibration-polynomial.csv`, `band-pulls.csv`, `band-pulls-per-galaxy.csv`.
+- `crossmatch.csv`, `spectra-dr3-vs-dr2.csv`, `selection-counts.csv`, `selection-per-galaxy.csv`, `dr2-only-galaxies.csv`, `fits.csv`, `paired-changes.csv`, `paired-changes-per-galaxy.csv`, `calibration-polynomial.csv`, `band-pulls.csv`, `band-pulls-per-galaxy.csv`, `likelihood-evidence.csv`, `likelihood-evidence-per-galaxy.csv`.
 - `test-set/experiment.json`, `test-set/run/` (fits, manifest, Modal logs), `test-set/run-driver.log`.
