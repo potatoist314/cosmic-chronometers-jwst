@@ -271,19 +271,27 @@ def main(request_path, output):
     request = json.loads(Path(request_path).read_text())
     output = Path(output)
     archives = [(prefix, Path(path).read_bytes()) for prefix, path in request['archives']]
-    with modal.enable_output(), app.run():
-        upload_grids(request['grids'])
-        calls = {number: fit.with_options(gpu=request['gpu']).spawn(archives, cells, request['kept'])
-                 for number, cells in enumerate(request['containers'])}
-        (output / 'calls.json').write_text(json.dumps(
-            {'app_id': app.app_id, 'calls': {i: c.object_id for i, c in calls.items()}}))
-        failures = 0
-        for number, call in calls.items():
-            try:
-                (output / f'{number}.tar.gz').write_bytes(call.get())
-            except Exception as error:  # one failed container must not discard the others
-                failures += 1
-                (output / f'{number}.error').write_text(f'{type(error).__name__}: {error}')
+    try:
+        with modal.enable_output(), app.run():
+            upload_grids(request['grids'])
+            calls = {number: fit.with_options(gpu=request['gpu']).spawn(archives, cells, request['kept'])
+                     for number, cells in enumerate(request['containers'])}
+            (output / 'calls.json').write_text(json.dumps(
+                {'app_id': app.app_id, 'calls': {i: c.object_id for i, c in calls.items()}}))
+            failures = 0
+            for number, call in calls.items():
+                try:
+                    (output / f'{number}.tar.gz').write_bytes(call.get())
+                except Exception as error:  # one failed container must not discard the others
+                    failures += 1
+                    (output / f'{number}.error').write_text(f'{type(error).__name__}: {error}')
+    except modal.exception.Error as error:
+        if (output / 'calls.json').exists():
+            raise
+        # Modal started no container (censusgalaxy, 2026-11-11: "Please add a payment method to use L4 GPU
+        # functions."). experiment.py prints this message in one line and launches in the next profile.
+        (output / 'refused').write_text(f'{type(error).__name__}: {error}')
+        return 1
     return 1 if failures else 0
 
 

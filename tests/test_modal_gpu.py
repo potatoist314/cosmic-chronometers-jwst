@@ -80,6 +80,7 @@ def modal_run(tmp_path, monkeypatch):
             state['profiles'].append(profile)
             containers = state['launches'][-1]['containers']
             if profile in state['refuses']:
+                (work / 'refused').write_text('InvalidError: Please add a payment method to use L4 GPU functions.')
                 return SimpleNamespace(returncode=1)
             (work / 'calls.json').write_text(json.dumps({'app_id': 'ap-1', 'calls': {
                 str(n): f'fc-{n + 1}' for n in range(len(containers))}}))
@@ -394,7 +395,7 @@ def test_credit_stop_during_a_run_keeps_finished_fits_and_resumes_in_the_next_pr
     assert sorted(run.data['completed_cells']) == ['a0/M1_210210', 'a1/M1_210210']
 
 
-def test_profile_that_starts_no_container_gives_the_launch_to_the_next_profile(modal_run):
+def test_profile_that_starts_no_container_gives_the_launch_to_the_next_profile(modal_run, capsys):
     run, state = modal_run
     first, second, third = modal_gpu.PROFILES
     # 2026-11-11: censusgalaxy has no payment method and Modal refuses its GPU functions; initalincrease
@@ -405,6 +406,10 @@ def test_profile_that_starts_no_container_gives_the_launch_to_the_next_profile(m
     assert state['profiles'] == [first, third]
     refused, attempt = run.data['attempts']
     assert refused['status'] == 'refused' and not refused['cells']
+    skipped = [line for line in capsys.readouterr().out.splitlines() if 'skipping' in line]
+    assert len(skipped) == 1 and skipped[0].endswith(
+        f'skipping {first}: Modal started no container (InvalidError: Please add a payment method to use L4 GPU '
+        'functions.); the next profile launches')
     assert attempt['cells']['fit/M1_210210']['profile'] == third
     state['refuses'] = set(modal_gpu.PROFILES)
     run.data['completed_cells'] = []

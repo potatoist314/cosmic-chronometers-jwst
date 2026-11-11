@@ -636,7 +636,8 @@ class ModalRun:
             self.save()
         if not calls:
             # censusgalaxy, 2026-11-11: "InvalidError: Please add a payment method to use L4 GPU functions."
-            engine.log(f'Modal started no container in {self.profile}; the next profile launches')
+            reason = (work / 'refused').read_text() if (work / 'refused').exists() else 'no message from Modal'
+            engine.log(f'skipping {self.profile}: Modal started no container ({reason}); the next profile launches')
             attempt['status'] = 'refused'
             self.save()
             self.refused.add(self.profile)
