@@ -49,6 +49,16 @@ def test_arms_merge_nested_controls_and_preserve_baseline(config):
     assert baseline['seed'] == changed['seed'] == 4
 
 
+def test_mock_data_target_placeholder_gives_each_target_its_file(config, monkeypatch):
+    top = 'SETTINGS = {"ssp_grid": "default", "mock_data": None}\nPRIORS = {}'
+    monkeypatch.setattr(exp.engine, 'git', lambda *args, **kw: json.dumps({'cells': [{'source': [top]}]}))
+    config.write_text(json.dumps({'targets': ['M1_1', 'M2_2'], 'arms': {
+        'real': {}, 'mock': {'settings': {'mock_data': 'mocks/{target}.npz'}}}}))
+    cells = {cell['name']: cell['settings']['mock_data'] for cell in exp.configuration(config, 'abc')}
+    assert cells == {'real/M1_1': None, 'real/M2_2': None,
+                     'mock/M1_1': 'mocks/M1_1.npz', 'mock/M2_2': 'mocks/M2_2.npz'}
+
+
 @pytest.mark.parametrize('bad', [
     {'settings': {'typo': 1}}, {'priors': {'typo': 'Uniform(0, 1)'}},
     {'arms': {}}, {'arms': {'../escape': {}}}, {'targets': []},

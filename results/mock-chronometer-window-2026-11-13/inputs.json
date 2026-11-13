@@ -1,0 +1,1429 @@
+{
+ "source_commit": "4d353939e0c2344b72f7a362ed4ccfc9d3eb607b",
+ "ceridwen_commit": "13791e0e971aa95d4723a38941438706912ea1dc",
+ "formation_time_gyr": 2.968870095056303,
+ "shapes": {
+  "tophat1": {
+   "cosmic_time_edges_gyr": [
+    [
+     2.468870095056303,
+     3.468870095056303
+    ]
+   ],
+   "mass_fractions": [
+    0.9999999999999999
+   ]
+  },
+  "short": {
+   "cosmic_time_edges_gyr": [
+    [
+     2.718870095056303,
+     3.218870095056303
+    ]
+   ],
+   "mass_fractions": [
+    1.0
+   ]
+  },
+  "exp": {
+   "cosmic_time_edges_gyr": [
+    [
+     2.28189704723619,
+     4.28189704723619
+    ]
+   ],
+   "mass_fractions": [
+    1.0
+   ]
+  },
+  "twoburst": {
+   "cosmic_time_edges_gyr": [
+    [
+     2.3188700950563033,
+     2.8188700950563033
+    ],
+    [
+     4.318870095056303,
+     4.818870095056303
+    ]
+   ],
+   "mass_fractions": [
+    0.8,
+    0.2
+   ]
+  }
+ },
+ "fine_bin_gyr": 0.01,
+ "noise_seed": 20261113,
+ "fit_seed": 20260832,
+ "cosmology": {
+  "H0": 67.66,
+  "Om0": 0.30966,
+  "Tcmb0": 2.7255,
+  "Neff": 3.046,
+  "m_nu_ev_sum": 0.06,
+  "name": "Planck18"
+ },
+ "noise": "Independent Gaussian photometry then spectral draws, default_rng([noise_seed, object_id]); spectral floor f_calib * |uncalibrated model| with the real fit's median f_calib, 5% photometric floor; real statistical uncertainties and native validity.",
+ "choices": "Constant truth [Fe/H]=-0.2, [alpha/Fe]=+0.2, no C/N; catalogue redshift; dust, dispersion and log_f_calib: weighted medians of the real dr3_plain_w fit; formed mass from the real photometry; one calibration constant matches the median real window flux; emission zero.",
+ "mocks": [
+  {
+   "target": "M7_124875",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M7_124875.npz",
+   "mock_sha256": "509cf33144f8cc9d8e634b6147346d9ded5059dc77434a79d89100f3a323be39"
+  },
+  {
+   "target": "M7_122242",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M7_122242.npz",
+   "mock_sha256": "859f20df5633ba2685a7753cb66646853db3b21d6b17e12db859cd7d1b98940b"
+  },
+  {
+   "target": "M24_201669",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M24_201669.npz",
+   "mock_sha256": "caf267f2bc66fd54eb31b5bfe420cfa541d32aaab2c4bf97d6f994c6fbda4c7e"
+  },
+  {
+   "target": "M24_189449",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M24_189449.npz",
+   "mock_sha256": "5bd3fa7f6514d10d8463baa22dec0c8209547f5560e76cf727e8e7771ccd84ee"
+  },
+  {
+   "target": "M10_227672",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_227672.npz",
+   "mock_sha256": "1ce5b867e00289f58c218a969f9e63c27d7d50053226208860d0cdce1a052718"
+  },
+  {
+   "target": "M13_248217",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M13_248217.npz",
+   "mock_sha256": "f9fd9ecd6e5e15ec64b6c7b935ced8da1d4c8e8725d3f1e5d0ea970e16f78c32"
+  },
+  {
+   "target": "M24_191051",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M24_191051.npz",
+   "mock_sha256": "de9c3a5a123c036e3677e3b01e4a0902da1427ce134da07b91c0f0f0ec4c2a7e"
+  },
+  {
+   "target": "M18_96346",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_96346.npz",
+   "mock_sha256": "baca7d7a462231dc6ac732cdc64022d1804c82203c181773f753d317307e2bff"
+  },
+  {
+   "target": "M9_232005",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M9_232005.npz",
+   "mock_sha256": "202b4234c69389565137022703ed7c4a20d160fe93807f1dcdb2df0fe1dca45f"
+  },
+  {
+   "target": "M16_25285",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M16_25285.npz",
+   "mock_sha256": "da61186014c128d07000bd1fcc305086c3424f8a384a4b9255b1bca10d0b4841"
+  },
+  {
+   "target": "M13_232627",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M13_232627.npz",
+   "mock_sha256": "4f6c6f462ae954c359b51e254ec50232647a658a5246a80f0f1179f733304d9e"
+  },
+  {
+   "target": "M16_32559",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M16_32559.npz",
+   "mock_sha256": "d1aa6726ddc176770ca452924a0c337bc6cae7347197c7ae8abeb93e772468cb"
+  },
+  {
+   "target": "M5_206771",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M5_206771.npz",
+   "mock_sha256": "f3400880bf6d1098ca5036d4ac6d42890aef14a39cdcf8aca1cba8bcdb647116"
+  },
+  {
+   "target": "M22_169219",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M22_169219.npz",
+   "mock_sha256": "4c3c4882ef7aa16e07fc1d40b5a5ba8c7a8ea4b8b4e403a4727cb59519359ad2"
+  },
+  {
+   "target": "M1_208622",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M1_208622.npz",
+   "mock_sha256": "1af63a3c07817fc910facb8f0e9ae5fdfaecc92cebacb5714ffbfb49bf0a166f"
+  },
+  {
+   "target": "M19_69529",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M19_69529.npz",
+   "mock_sha256": "444669c4ff4a9229d71e84558ce6d51a41146e59ad3a3d1c4032dfcecd684386"
+  },
+  {
+   "target": "M101_209935",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M101_209935.npz",
+   "mock_sha256": "5534411a7ffb18355bb790af44d7afad19a02b827adb92a26013a2d8aa46d22e"
+  },
+  {
+   "target": "M1_210210",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M1_210210.npz",
+   "mock_sha256": "695bfd12a8b5f7cdb64139889e0e8ea83a0e9856f2cae4134c275e704ff3e6ee"
+  },
+  {
+   "target": "M9_231276",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M9_231276.npz",
+   "mock_sha256": "83fa42401e85aa9b75cb88c2ad6afbf9f42259366028a1b5918cb34fa3bb19bd"
+  },
+  {
+   "target": "M10_231544",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_231544.npz",
+   "mock_sha256": "7a8710f7376c0072fd653d14fdff003074974b277c38c85a7f61aeb48a653df0"
+  },
+  {
+   "target": "M24_203503",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M24_203503.npz",
+   "mock_sha256": "bda3856860c94c6e953b1dda2676960a65d0e59960e73b3f4814a78a99a59f6c"
+  },
+  {
+   "target": "M19_57389",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M19_57389.npz",
+   "mock_sha256": "dac17e8c8881a5832651cc119140e9668c4cb41aa304f5b83325b18441804394"
+  },
+  {
+   "target": "M16_72617",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M16_72617.npz",
+   "mock_sha256": "fb3cfb18fd954b61fd86a8070e28dffcc14077398940cd4fa5c82a0ec338d468"
+  },
+  {
+   "target": "M11_215711",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_215711.npz",
+   "mock_sha256": "f6ab468215cd7b4879f637e899103050f17e00f70e81db10e3f3ede068cd1114"
+  },
+  {
+   "target": "M11_257455",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_257455.npz",
+   "mock_sha256": "92b25f2003339fb6ab51ad6e67ca3060244d48d54aa1dbc741d6130252c23cdd"
+  },
+  {
+   "target": "M27_261268",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M27_261268.npz",
+   "mock_sha256": "1bcaf1ba676c9995fa8e84fc7a7b783441ce7c8e14fe3cdcda46d74bdd74a3f5"
+  },
+  {
+   "target": "M7_151258",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M7_151258.npz",
+   "mock_sha256": "df6bdf4066d7d0eae47e13c04295dd98a4bd19c5eaffa12fff10faad3c40e84e"
+  },
+  {
+   "target": "M3_111390",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M3_111390.npz",
+   "mock_sha256": "12db276c3452cf606217251798c67b01df39e43705b208af76d5d4d67d1e4b63"
+  },
+  {
+   "target": "M102_211117",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M102_211117.npz",
+   "mock_sha256": "0d248721895b563cf12a6293df2a82fa6a91aa1671ef0ac84b65be4eb8932e8e"
+  },
+  {
+   "target": "M16_4949",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M16_4949.npz",
+   "mock_sha256": "bf166a218311fd9a3127c84f4324d4f67685e6e1c3f241d23b5f098ab34e6417"
+  },
+  {
+   "target": "M19_57080",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M19_57080.npz",
+   "mock_sha256": "55e6d0687232b98a38a078905dcd6277d7c982970a2185a8c1e56246ef2ccf02"
+  },
+  {
+   "target": "M13_254350",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M13_254350.npz",
+   "mock_sha256": "44179a5d1070264271bbfd3ed21ad7b7c28eadf9057a9860f38e58976fd8c929"
+  },
+  {
+   "target": "M17_40840",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M17_40840.npz",
+   "mock_sha256": "e8714941c34f8cf5f8637c81b3b66c61ca725d2d8d9e5d92c400c89300ad518c"
+  },
+  {
+   "target": "M4_117400",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_117400.npz",
+   "mock_sha256": "366bc67eb9ba68b9d781b3282c089b7dd0f9eb189544873f6e1a13dcccfff093"
+  },
+  {
+   "target": "M101_139662",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M101_139662.npz",
+   "mock_sha256": "6084b491de6fb13f52a7bf09c5e308a40df2b3decb467a0eead50f7ab226569b"
+  },
+  {
+   "target": "M4_86744",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_86744.npz",
+   "mock_sha256": "253eb6afa128556499e2d31d83b96d7930a610f5d50c5abe30561aef4c9bef9a"
+  },
+  {
+   "target": "M16_103417",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M16_103417.npz",
+   "mock_sha256": "7607ac8e35685378e528a7eebfbf6444d6a367d146131b0f10a0108f1d34233b"
+  },
+  {
+   "target": "M18_182407",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_182407.npz",
+   "mock_sha256": "24b7c5a1ec220c678c2fbeebf464fe340a6fae803c7a0e562bc28238d27b50e2"
+  },
+  {
+   "target": "M30_55118",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M30_55118.npz",
+   "mock_sha256": "3bcaeead0a3c2595ccf5413b1553ee43d1b4841b11181cd2d56be783b4466671"
+  },
+  {
+   "target": "M32_68126",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M32_68126.npz",
+   "mock_sha256": "f6cccd29241afd04ba6294c334db2397937d2e2cccdadc39349a857ca9b69377"
+  },
+  {
+   "target": "M30_59531",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M30_59531.npz",
+   "mock_sha256": "c2f852061558417411d745edce695258e5ec4070fc6331b92553ea94638c52a9"
+  },
+  {
+   "target": "M26_240536",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M26_240536.npz",
+   "mock_sha256": "7f846e5d5ce271b61a9986b60d4cd32de6681d1042a90ba581135276d32913f9"
+  },
+  {
+   "target": "M14_103366",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M14_103366.npz",
+   "mock_sha256": "fa97e6b0e0fbf9e1b02e21f17382c0f3a2b07f32128eb1e9e4458872dfa6b7c2"
+  },
+  {
+   "target": "M9_214899",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M9_214899.npz",
+   "mock_sha256": "c6bf7b985eba47f586d2613a7b7a470da5f3a68dd82eb8640da0aeead236546b"
+  },
+  {
+   "target": "M23_151373",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M23_151373.npz",
+   "mock_sha256": "6c901de6e47c6f47c3ed2acf0081a4c49dcb2cf6247b4061a8c1418e2b26f448"
+  },
+  {
+   "target": "M3_107362",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M3_107362.npz",
+   "mock_sha256": "0c8cd430afc93a8ea834ae72ae33f3d80c68057678a8d784d9e2b37f1c20fb25"
+  },
+  {
+   "target": "M3_117010",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M3_117010.npz",
+   "mock_sha256": "8270d3d70d20ed795ef92a2af1482a82d7c8d2e03e1c682644d49ef48ffc630a"
+  },
+  {
+   "target": "M22_239682",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M22_239682.npz",
+   "mock_sha256": "1a7abd31c70da3b42e0e06a76dcfc15d643debdb172f61901a24f3625ee595f3"
+  },
+  {
+   "target": "M12_185653",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M12_185653.npz",
+   "mock_sha256": "b4ebcbb603666b3b5a4e13a3cf991487a0d628c4c3764a59e4895df626786a56"
+  },
+  {
+   "target": "M7_147849",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M7_147849.npz",
+   "mock_sha256": "50289c5c67a4275f39370b7c58694ddc31fc240ae9be9295314fecefa8ffedf0"
+  },
+  {
+   "target": "M14_31835",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M14_31835.npz",
+   "mock_sha256": "ed055181ef5e50f5139add160d48ef3e953ab1b0d004a9b32489015fedadcd8f"
+  },
+  {
+   "target": "M4_124231",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_124231.npz",
+   "mock_sha256": "cb3e207576c995c8c78e9d1dbcdc018ea815043daceaf46bef4b4b9b604b60f2"
+  },
+  {
+   "target": "M4_125213",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_125213.npz",
+   "mock_sha256": "1c3f9f2666a301af7dd66f966385b7347ca9a14808b8781c14e50e8d6d7e2dee"
+  },
+  {
+   "target": "M23_158484",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M23_158484.npz",
+   "mock_sha256": "4e9d76702e94a060ac7180a343084080f422333114b2302b7305ee9b51555092"
+  },
+  {
+   "target": "M14_27068",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M14_27068.npz",
+   "mock_sha256": "08625240d5a615ad2592a403c304884d2aede0c3025b4c785aa372a96a490849"
+  },
+  {
+   "target": "M12_181945",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M12_181945.npz",
+   "mock_sha256": "56be0cdc6de952f0e25aca05494b13f9383ff16952278144dcb9f9a1f29b71b8"
+  },
+  {
+   "target": "M3_119809",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M3_119809.npz",
+   "mock_sha256": "e27d8921abee484c640ea2110c1d63bd24804a2ef565f1f253f91f50ecd24e65"
+  },
+  {
+   "target": "M11_218207",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_218207.npz",
+   "mock_sha256": "25a1ef9065297970113731854dbcd05f798f7af2cedf51a1a1d176d0a8798b1a"
+  },
+  {
+   "target": "M10_225441",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_225441.npz",
+   "mock_sha256": "75f6023c0835f21d089a690774aedddcd13a29bbb268f8e86b6ae96a145e475a"
+  },
+  {
+   "target": "M19_59396",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M19_59396.npz",
+   "mock_sha256": "217497402752c349fdf8b0df880a48efa14f10f5a1a91f11d2de5e135fbc4557"
+  },
+  {
+   "target": "M101_126153",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M101_126153.npz",
+   "mock_sha256": "c10d6460d23053c75f9e24dac4f928dec9fbff9e70d8d6a4caf7258fa9f508c5"
+  },
+  {
+   "target": "M30_60369",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M30_60369.npz",
+   "mock_sha256": "61303f84043a7797de1dfb84dd73ceaf71eee94a30c34d162ae9aafc48272c1f"
+  },
+  {
+   "target": "M8_145294",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M8_145294.npz",
+   "mock_sha256": "0648609a939a05528f73af6a9cfbbf8bff0ea63b095d4baa8b075aad363f3d8c"
+  },
+  {
+   "target": "M19_65494",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M19_65494.npz",
+   "mock_sha256": "eeb68735076296c9b57db3480b4e0b9f5966f4a9d11db645e59b2af020c51bc9"
+  },
+  {
+   "target": "M19_141436",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M19_141436.npz",
+   "mock_sha256": "4a7a51baad9fb5f257b296874cad90ec00142806e2d6c8f4f0a145c54c1527e8"
+  },
+  {
+   "target": "M2_129596",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M2_129596.npz",
+   "mock_sha256": "1e7da695bf93c2344678bf432aba70d5b499c07895f190dd1bf332b87bf5849e"
+  },
+  {
+   "target": "M2_210716",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M2_210716.npz",
+   "mock_sha256": "eb0d7a28c21a2e99927709fb183f32001ec418d2a11cfc1e54c0c4607c55b583"
+  },
+  {
+   "target": "M11_229551",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_229551.npz",
+   "mock_sha256": "68f21e7b4510b46079f0636ae230b6f754a0d09599f07cf910d0abb483958e2e"
+  },
+  {
+   "target": "M8_147539",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M8_147539.npz",
+   "mock_sha256": "6e882335915680fbf182fedfa421aa079272ceb46b72d12a53ec87a2bde19094"
+  },
+  {
+   "target": "M13_231554",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M13_231554.npz",
+   "mock_sha256": "f46fc58e19841a54fe415eea27b6b577d44ba12a7efc3d613060a5df67d8db82"
+  },
+  {
+   "target": "M5_211347",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M5_211347.npz",
+   "mock_sha256": "3379a7f989944026f7c31269e38caf03dbc889532b91a8032d1edc7f165c62ad"
+  },
+  {
+   "target": "M11_232962",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_232962.npz",
+   "mock_sha256": "95bd8fa9c11c09262ea84a8d183e7b727ff5d391b9c70d8cd465b314051c70b7"
+  },
+  {
+   "target": "M11_216899",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_216899.npz",
+   "mock_sha256": "ffdbce41378bffe3bbebcf5a08b8d9086aa2668a197f68ccd2e74baa5ce57df3"
+  },
+  {
+   "target": "M11_245864",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_245864.npz",
+   "mock_sha256": "55a0cbffb5e62ce4f70fd5978f93a6e1098903569ee4bfba30b31fb82247be3c"
+  },
+  {
+   "target": "M13_230747",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M13_230747.npz",
+   "mock_sha256": "80e158ca57ba3dbabc45c4c17419fc6ac5cebf7d13481f1617361aaee0c5bb96"
+  },
+  {
+   "target": "M20_79475",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M20_79475.npz",
+   "mock_sha256": "56c8466d7eea819feb1e8335255d33077eefaee02c1031adfa6cff006eabbc24"
+  },
+  {
+   "target": "M31_253516",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M31_253516.npz",
+   "mock_sha256": "0040c20f62d681fea1b2ca63fd8887de41ce6f207bb387f6c597789dd10e223d"
+  },
+  {
+   "target": "M27_260083",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M27_260083.npz",
+   "mock_sha256": "a67eee1a2542badaefdc7680a452f9b6ded9af1bea2d409af7b4dae7776612dd"
+  },
+  {
+   "target": "M27_247278",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M27_247278.npz",
+   "mock_sha256": "75d1f9fc95fe2d061eb9b553cd32dfa48656d0a3984b0ca09fe4ecf706ad7b30"
+  },
+  {
+   "target": "M13_259737",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M13_259737.npz",
+   "mock_sha256": "8dbc1d77be75eb581b8d8cb6af9b2f089536d3ca9c90af5946540d9b0d2b1551"
+  },
+  {
+   "target": "M5_165871",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M5_165871.npz",
+   "mock_sha256": "43bc8e29017551cf19d4939144e3b30a8e68fd42fb4e187cabddba73d75cf2f3"
+  },
+  {
+   "target": "M8_162149",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M8_162149.npz",
+   "mock_sha256": "6002a97f4e3786db58548780af4064e4ca86ea715d837104951a1826b1de3e8a"
+  },
+  {
+   "target": "M8_164459",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M8_164459.npz",
+   "mock_sha256": "09d43c0931090189359db36693fd1253d59436cd4434a18bfd37ac0eca348309"
+  },
+  {
+   "target": "M27_249882",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M27_249882.npz",
+   "mock_sha256": "01743de4954e52cdbbe2995b312031f187b82dafbb07c951802ea1a1d9fe16fc"
+  },
+  {
+   "target": "M16_103061",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M16_103061.npz",
+   "mock_sha256": "045fcdd4bcf666cadbcf09089bad8392fa788591f339bfac1be6ffbfe91c45d6"
+  },
+  {
+   "target": "M3_109352",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M3_109352.npz",
+   "mock_sha256": "3662a16fbad63ae03989dcca86acf203366456880b155f70d17698df66f54fba"
+  },
+  {
+   "target": "M1_206858",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M1_206858.npz",
+   "mock_sha256": "f6e9fedfec4a3536faaeb1a7e60c63782b69c6cf8105f9c3b3d5e5a854ae1e14"
+  },
+  {
+   "target": "M4_120661",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_120661.npz",
+   "mock_sha256": "807e988462762fe569eb169b3ad947e4543137ecaaf5705323813ee0f788bb1e"
+  },
+  {
+   "target": "M102_206842",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M102_206842.npz",
+   "mock_sha256": "06023e9bff0974303d9a0cddde6ca0d74d275d50e6495e398f357d06b2d9b41c"
+  },
+  {
+   "target": "M9_212391",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M9_212391.npz",
+   "mock_sha256": "dd7418ecc137c365f869abdd7ce5e246b5723bc27c7dfa9b09d34ed90bd79b8e"
+  },
+  {
+   "target": "M102_214145",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M102_214145.npz",
+   "mock_sha256": "01b0373e53ae72a1b369b0aebcefb0f0ee79a42e8f092d1329ec5501447a66f4"
+  },
+  {
+   "target": "M1_205742",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M1_205742.npz",
+   "mock_sha256": "1e3564ccfaeac12bf107e3cc4b1f185d7fb7cfa1f07caca0897edfbe3ba8c3d3"
+  },
+  {
+   "target": "M18_94726",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_94726.npz",
+   "mock_sha256": "48cc9a78e24b3df6dcaa0ef2fa5ee33b21154fd2a722a6b4d24444985e94ab0f"
+  },
+  {
+   "target": "M3_109713",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M3_109713.npz",
+   "mock_sha256": "e41090550156923ccafc8e4585e855701dffe17d1f5e1906312ec8aad8a11401"
+  },
+  {
+   "target": "M101_205687",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M101_205687.npz",
+   "mock_sha256": "97c36222caf514d9ae12fabc4986c0fd2d726b2c077392ab8be12f19738a4483"
+  },
+  {
+   "target": "M3_120308",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M3_120308.npz",
+   "mock_sha256": "a22f74694419acba983f239ea1eb7b8513e1fe91bebf0bb6bdea197f69de35f4"
+  },
+  {
+   "target": "M9_229883",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M9_229883.npz",
+   "mock_sha256": "c9b2fabc6664dc37ca47e2c31d8b3e4b9406cf2bdefd4e17d67c345f90baafd8"
+  },
+  {
+   "target": "M1_133240",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M1_133240.npz",
+   "mock_sha256": "ff1fac9bc2b447eff0f6065fa5e13f7b38138f5431b40f591b0baf8570b8dc6f"
+  },
+  {
+   "target": "M6_233902",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M6_233902.npz",
+   "mock_sha256": "038ab85b6bc567e052e60266bf892de49807f482069187affaf790212046c97a"
+  },
+  {
+   "target": "M2_133501",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M2_133501.npz",
+   "mock_sha256": "3443c10474311841061b39312bb01ccf5d44ed97897ac25e21c1d6a792f0eda2"
+  },
+  {
+   "target": "M9_227630",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M9_227630.npz",
+   "mock_sha256": "f382d2d31e36829647635954c97f03088d1a8ec437994f2ecdc186f2f6b70af0"
+  },
+  {
+   "target": "M9_225678",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M9_225678.npz",
+   "mock_sha256": "f7583090739dcb10be6601102cb6327d90392f53ba0bc4c031b50a674338ddac"
+  },
+  {
+   "target": "M14_27265",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M14_27265.npz",
+   "mock_sha256": "22ebff2cb2a6f6385d0c6be81355b957a8a989b2e1d74e81cf41bdd0932860b9"
+  },
+  {
+   "target": "M13_243871",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M13_243871.npz",
+   "mock_sha256": "7994ccbccc52016f9c2ad5a7dd1de9c36fc04d8de0b88479fe893cb90cc5a896"
+  },
+  {
+   "target": "M6_237437",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M6_237437.npz",
+   "mock_sha256": "674341fe41b8daf5cd2755d38e3990e528bb062e9477af8181c90188d9b9579e"
+  },
+  {
+   "target": "M5_236682",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M5_236682.npz",
+   "mock_sha256": "ba96bfb885b3fed375f5549d2f3d8868ab7e1dd94a2e9e33901c5ddef0ac26f1"
+  },
+  {
+   "target": "M4_107643",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_107643.npz",
+   "mock_sha256": "df94246f7a5a094cd2aee72c63b203eeb3ee843bd4808387e094e8b873c373dc"
+  },
+  {
+   "target": "M14_37219",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M14_37219.npz",
+   "mock_sha256": "b5ecd7d94c79229ef5a1ea91fd42c88c711c0ccb17f22c3fba038cac7eb99822"
+  },
+  {
+   "target": "M14_37723",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M14_37723.npz",
+   "mock_sha256": "f82d8c975422e52eff4aafcaf5978ca2d12b83edad3d747561a007dd28e4ac30"
+  },
+  {
+   "target": "M102_223199",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M102_223199.npz",
+   "mock_sha256": "1a3abb27caac05b5918f1a0e17991ad521561657d6423826b1f79dccdd7b35fc"
+  },
+  {
+   "target": "M13_244239",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M13_244239.npz",
+   "mock_sha256": "d60029be996100b15a94ebba11d217db28feddf9846e4411ee4169bb211230de"
+  },
+  {
+   "target": "M17_29406",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M17_29406.npz",
+   "mock_sha256": "f4cad885e710a00f8b78423b4442f2a35e716e6dbe771bc7ea9f3f69ed304219"
+  },
+  {
+   "target": "M14_36550",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M14_36550.npz",
+   "mock_sha256": "2e5452b94cced160467aa27ccd6b2e6ab381702141c5772e14461703d4d38f74"
+  },
+  {
+   "target": "M22_174436",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M22_174436.npz",
+   "mock_sha256": "499a4524afa4e9975fbdad2bd05d5dc2329fc48d1f86216a3ee7362db154a45c"
+  },
+  {
+   "target": "M18_185040",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_185040.npz",
+   "mock_sha256": "2adeddfd1234cf5602a9eaf6d0585302b144618c2e56503ddd0455baac3d941a"
+  },
+  {
+   "target": "M12_182890",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M12_182890.npz",
+   "mock_sha256": "04fb1c914ccf650863551e280b1a4a3bae9e77a0c97345d076d55231d831d007"
+  },
+  {
+   "target": "M11_213004",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_213004.npz",
+   "mock_sha256": "23d82da93870f4bc489cf692c3b4c3006fec6a571ed8b5e6dc4468195039f674"
+  },
+  {
+   "target": "M21_204050",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M21_204050.npz",
+   "mock_sha256": "b47edaf460bea104c6df2dedb42551f91b2ef4dfe55f260b3fd2384e3c71c660"
+  },
+  {
+   "target": "M5_205715",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M5_205715.npz",
+   "mock_sha256": "e69fe876c7f8be98437a6701eac9f84b6f54ae4bd523e4506f4042fb38f09aa2"
+  },
+  {
+   "target": "M19_71670",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M19_71670.npz",
+   "mock_sha256": "be747444f28bbc1f546e35c9161efec498220a79dd406790b45c63ddef0e3a99"
+  },
+  {
+   "target": "M7_122025",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M7_122025.npz",
+   "mock_sha256": "04b8437d65051c9ff0590f6298e889e7a1f732fe177bde25cfa0c16d4052964c"
+  },
+  {
+   "target": "M18_92132",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_92132.npz",
+   "mock_sha256": "c9ed51d24e2a7d80ab5da3349f40091cbb4b45d7cb356a3f01aa0b1a6b65fb8b"
+  },
+  {
+   "target": "M11_215585",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_215585.npz",
+   "mock_sha256": "b1c2d53c4cbc27599a736ea6e057a23ba7c2b2ef1101f7124d77c35a847202d1"
+  },
+  {
+   "target": "M2_134021",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M2_134021.npz",
+   "mock_sha256": "e0550b509008ae722b0c3603e708eadfa775d69626a09ad769de202fcb6e8c4f"
+  },
+  {
+   "target": "M23_150680",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M23_150680.npz",
+   "mock_sha256": "9101c5aae223a879e6d575b5cefd74b06072ec4856e24c0316964619aaec81f3"
+  },
+  {
+   "target": "M1_139423",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M1_139423.npz",
+   "mock_sha256": "fdaee10316ebce8e3893a9530adf4c2c03e752ab30f1ac1ae553ab8c3dd069e2"
+  },
+  {
+   "target": "M101_126578",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M101_126578.npz",
+   "mock_sha256": "25fce4a928862b280ba2f5dfc8623914667b15d7baabee788e660dd5de25fe0a"
+  },
+  {
+   "target": "M24_202009",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M24_202009.npz",
+   "mock_sha256": "d8151e95ef6eb2148b00261ebf9cdb37e999ba417631ba298c38ac8a87e381a0"
+  },
+  {
+   "target": "M8_145276",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M8_145276.npz",
+   "mock_sha256": "490935a2aa9a9bb7398907d31a60c055df7d4ebcec0bd80655aca1aa15a28f77"
+  },
+  {
+   "target": "M102_222287",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M102_222287.npz",
+   "mock_sha256": "d1ee04c221cecaefc30a13cd0d9980057aec78f3ea8e8189451856c80c137f01"
+  },
+  {
+   "target": "M8_163989",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M8_163989.npz",
+   "mock_sha256": "029c5d88cf7dee95ec8b8be3ac3a080ead5a8753018304e247ed074e585daf7f"
+  },
+  {
+   "target": "M27_259012",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M27_259012.npz",
+   "mock_sha256": "2f5471947d525935e2e47dc3518a9e7eab78a05ff0e3554e3ce41b60368a721c"
+  },
+  {
+   "target": "M11_248829",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M11_248829.npz",
+   "mock_sha256": "b732abe51aaccb87855dc24b564135ad57741e2d72819fcf669f9853e05097bb"
+  },
+  {
+   "target": "M31_259181",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M31_259181.npz",
+   "mock_sha256": "c26a81f228655a79cadb28ef1200e9b3fd345f6b17918e6728440952d98a1b26"
+  },
+  {
+   "target": "M9_232890",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M9_232890.npz",
+   "mock_sha256": "d63b6842e53dba74a0bb70f8a7a90553bac7e07d38301fba5a11fb6308c8f40a"
+  },
+  {
+   "target": "M10_227516",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_227516.npz",
+   "mock_sha256": "42940b16b383eef0c4d55d35ae18d9165d02c06ba515709a5029ebdc268f7f9e"
+  },
+  {
+   "target": "M17_57237",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M17_57237.npz",
+   "mock_sha256": "f25f413bfd6a577a9ea0422534ab9064326771bd39b2a271e9af42faa4141058"
+  },
+  {
+   "target": "M7_152125",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M7_152125.npz",
+   "mock_sha256": "48698668143692ffbad7161c1f6dcb05f94ad5cfb9e3adf56105ee4b3cd389d7"
+  },
+  {
+   "target": "M7_162587",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M7_162587.npz",
+   "mock_sha256": "22d19460421e1a633d502494599f8ebad1e006095258f9a26ec41c45a21cf72c"
+  },
+  {
+   "target": "M10_197591",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_197591.npz",
+   "mock_sha256": "21cd7a85e3fee000072918a4e19231c0cf8e1967737e16826af58e2c53d5c3df"
+  },
+  {
+   "target": "M4_123161",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_123161.npz",
+   "mock_sha256": "d31ea4c170c7ae33feaf7a7631e683d35ec83dcc070cf550b59d5c8c9e4cc137"
+  },
+  {
+   "target": "M24_190831",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M24_190831.npz",
+   "mock_sha256": "a5775fb9b11882255c33e0871ae3f22bb5462e888522f83f911a7beec5fc2d3c"
+  },
+  {
+   "target": "M10_201233",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_201233.npz",
+   "mock_sha256": "3f56e3ec4b2cd815184636dbf8ca66dd21ad607302160397db9cad0b97e2b932"
+  },
+  {
+   "target": "M20_86906",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M20_86906.npz",
+   "mock_sha256": "8f4c5b966d97a8416b5c644dd23d883d14f3fc56ccab3f1c6ef22f3a0ed15234"
+  },
+  {
+   "target": "M15_76336",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M15_76336.npz",
+   "mock_sha256": "62fc0435539d5a3c3723ce754f066b3260cc07701eb0226f0b0b2571e0a066fa"
+  },
+  {
+   "target": "M10_230319",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_230319.npz",
+   "mock_sha256": "d7f449426e0621197666156d0e8783aaba8ce20f93da8fb9ad258c6237d80f01"
+  },
+  {
+   "target": "M15_77632",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M15_77632.npz",
+   "mock_sha256": "1458095866d9e58e935aa0ccc89be5b66e6ea9145017c415378f6b37e38a9356"
+  },
+  {
+   "target": "M15_77745",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M15_77745.npz",
+   "mock_sha256": "2fadbfc206d2ce4b7860e118822ffc8defa9a493996e42a7210822808223cc44"
+  },
+  {
+   "target": "M4_108989",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_108989.npz",
+   "mock_sha256": "5e2ce4341c8f42ccf2c0f8e37e747031601fc1e10373c1970744536b9f3c3e02"
+  },
+  {
+   "target": "M14_39865",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M14_39865.npz",
+   "mock_sha256": "04311ba722e9582b49f54a6181776b85c8c7296eb60edc3867bc925933c71ba7"
+  },
+  {
+   "target": "M8_156118",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M8_156118.npz",
+   "mock_sha256": "eeb3944e612bc1a86913e872d49cdad2b87c3fa38750b49a2b2a721efb82804c"
+  },
+  {
+   "target": "M17_64957",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M17_64957.npz",
+   "mock_sha256": "9f7ddc19154426bb4671fee0c66d1aff3de3a0a1b509adc746d7c27bbbaf8ac0"
+  },
+  {
+   "target": "M20_87207",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M20_87207.npz",
+   "mock_sha256": "f9aef9679f048c3069b86e2a2dbbf069bbefab0fff998b5962af717be0c25291"
+  },
+  {
+   "target": "M20_87121",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M20_87121.npz",
+   "mock_sha256": "77aa93e43122185db4942ba86c3b7c85443890d15a19ebfdd9ba15c223cb7951"
+  },
+  {
+   "target": "M27_256994",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M27_256994.npz",
+   "mock_sha256": "dcf69404650d86ada98b1df8affbabb0ce6a578975e3373960ea107a4e1bbf6e"
+  },
+  {
+   "target": "M15_89072",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M15_89072.npz",
+   "mock_sha256": "5c23bb4d70b9e4ec6cae8e43a20d87fcd2ed3b5d569db17ffc09370045910d2d"
+  },
+  {
+   "target": "M18_96616",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_96616.npz",
+   "mock_sha256": "6b64ebe0af78b09feb2eac2e14dd789c30402168abe103d0bf60aa215295999e"
+  },
+  {
+   "target": "M18_95324",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_95324.npz",
+   "mock_sha256": "178b413bfde0094ebe9ad52f2881c9d4fb787ef768ba10974d18d9d8b39e7a4d"
+  },
+  {
+   "target": "M23_143947",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M23_143947.npz",
+   "mock_sha256": "584cec4832a19e70ad6ffd1e6929cff45cdc5225a9acbc7c16e615ebc0e7bc86"
+  },
+  {
+   "target": "M15_88032",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M15_88032.npz",
+   "mock_sha256": "c2bd7a8ffadaa8e1745222905fe8ad4cad1cd2ac30bfcbc4cad945905c255472"
+  },
+  {
+   "target": "M18_91497",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_91497.npz",
+   "mock_sha256": "10a2fe77d0e766248db59f3ac11fae0b78d891dbc4e7bc36fe163c08a4b8458c"
+  },
+  {
+   "target": "M12_91529",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M12_91529.npz",
+   "mock_sha256": "ab23a6d87bed70568b1211a3d99b0ab35f6c21b2ec1c71e1aff89af67c9868ea"
+  },
+  {
+   "target": "M27_258059",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M27_258059.npz",
+   "mock_sha256": "f60722ac19802429e5f36a36ffff117fab6f5a9677155d4f32edf2c3bcb84656"
+  },
+  {
+   "target": "M6_234538",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M6_234538.npz",
+   "mock_sha256": "f65f2959c4f78f1e39ad276038883ef52899d7ae63f51164b322544a242398ca"
+  },
+  {
+   "target": "M4_107370",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_107370.npz",
+   "mock_sha256": "9f2569189c3a66cfbda051755e76be217166c37579956c221b5c93ad915d38de"
+  },
+  {
+   "target": "M7_147270",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M7_147270.npz",
+   "mock_sha256": "e40274aadfa9c65238b72980db052b3d0ebeb17ea7d1465495bb870571371179"
+  },
+  {
+   "target": "M12_101089",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M12_101089.npz",
+   "mock_sha256": "90387e3721ad5cfcb222d7ede7a4525e539fbb8e0b1c587d06235fa6386a94d5"
+  },
+  {
+   "target": "M27_245661",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M27_245661.npz",
+   "mock_sha256": "719921cd1a53027bc3882055538de50a102973a1eaf35bd34d3b79bd6314ac04"
+  },
+  {
+   "target": "M101_129358",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M101_129358.npz",
+   "mock_sha256": "914f6680b165f95fe70a728c6146dd1cd55820948047be838b6b6f15dbbd4ac8"
+  },
+  {
+   "target": "M30_65982",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M30_65982.npz",
+   "mock_sha256": "1033c58b051398517dd348935a75c9744815ed7e747935528b460a2f2499c005"
+  },
+  {
+   "target": "M27_256211",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M27_256211.npz",
+   "mock_sha256": "2ae31afcbb409acc5aee0ee704713fe02e72f4b5111cc159025d1bb39e69c5cb"
+  },
+  {
+   "target": "M12_95303",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M12_95303.npz",
+   "mock_sha256": "0ac199871a2006fe6f96ba9ecd70ae4098b174abfaa202afdceb189b478eed7e"
+  },
+  {
+   "target": "M18_182962",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_182962.npz",
+   "mock_sha256": "ccbf2fe2bce8fc14d9706ba13c04803f8eac4450558a305247d3f6ffe8163cf4"
+  },
+  {
+   "target": "M9_213587",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M9_213587.npz",
+   "mock_sha256": "cf5924b2a75e2c7e2928d8db72bf7ece72da57e78df1429c8e7fa810091cb78f"
+  },
+  {
+   "target": "M18_181686",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_181686.npz",
+   "mock_sha256": "e45b5be6a8017d0dd2f970e6d9741ee4cb1c5b21254725207bad7328bba9628d"
+  },
+  {
+   "target": "M10_215290",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_215290.npz",
+   "mock_sha256": "ea0a52a26936f7f3769cda63fef046b8308147c7206e11d15344c9c5b3bed9e6"
+  },
+  {
+   "target": "M16_31873",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M16_31873.npz",
+   "mock_sha256": "853491f298163b361e4fedc4b0b81bb47a5f5a085cf2327891127812aed2acd2"
+  },
+  {
+   "target": "M10_217020",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_217020.npz",
+   "mock_sha256": "5120f8638c9ac7c86d5455fe0f47e0c207ab78c377ab2fe9e0e77b86626b94b9"
+  },
+  {
+   "target": "M23_162810",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M23_162810.npz",
+   "mock_sha256": "b59d6d0e773632e0719ec6b699f6900155df89cf12d68afcdd06ac6b9681202e"
+  },
+  {
+   "target": "M20_77982",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M20_77982.npz",
+   "mock_sha256": "c4c62f3c339f8e7c9ca3c976c8471ad10dcd8545f4f6fdffceb2fb37c4060ae4"
+  },
+  {
+   "target": "M20_76593",
+   "shape": "short",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M20_76593.npz",
+   "mock_sha256": "51082b851dfe4e65076d568daeab5606a1f239f781abf2e47318ce486d5f11b9"
+  },
+  {
+   "target": "M23_163025",
+   "shape": "exp",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M23_163025.npz",
+   "mock_sha256": "0c1c9e28701aee430367cfad050b3c91c61ffaf65af34ac293efd983b34c5d6b"
+  },
+  {
+   "target": "M30_54494",
+   "shape": "twoburst",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M30_54494.npz",
+   "mock_sha256": "79757e26044df1e4a664a0e565e443d2b101b311f4bc7f1212fba01dc3fb11dd"
+  },
+  {
+   "target": "M22_167853",
+   "shape": "tophat1",
+   "subset": true,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M22_167853.npz",
+   "mock_sha256": "400c42b555eae493c0af2c45187c2909514b29dd22698fe6e6701dc9b5a06890"
+  },
+  {
+   "target": "M16_29691",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M16_29691.npz",
+   "mock_sha256": "2b08664cd8fb059cf13f60d7c95a9c63998e224e237f16b3afd2954f897f5c66"
+  },
+  {
+   "target": "M3_119005",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M3_119005.npz",
+   "mock_sha256": "016c7add7188f1e37a05e4e8a3c4cc9194ceceea3e4d126defff17cfcdb55054"
+  },
+  {
+   "target": "M12_185631",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M12_185631.npz",
+   "mock_sha256": "f1be8fb95762bee07b5869118ffa169e2d61e11ea86746c9d5645812b439c355"
+  },
+  {
+   "target": "M21_189698",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M21_189698.npz",
+   "mock_sha256": "12d1e04ba8ea69c672f0d864d51c58c9ce0ea8d8586dc3a2c34e60109e3f5149"
+  },
+  {
+   "target": "M14_104877",
+   "shape": "twoburst",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M14_104877.npz",
+   "mock_sha256": "2a700ae23ddee5367fd80a3ecba993127426ffb766c8d689135e134037cff9e0"
+  },
+  {
+   "target": "M18_181421",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M18_181421.npz",
+   "mock_sha256": "476de233f42fb6e164b3b6cb897352b1dadd1a1bcb5fffffc59ab37bdc0727f4"
+  },
+  {
+   "target": "M17_140425",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M17_140425.npz",
+   "mock_sha256": "2015cd41fc714ef3f8de533698498216a6549db808058ae639e6612b85a885db"
+  },
+  {
+   "target": "M4_112534",
+   "shape": "exp",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M4_112534.npz",
+   "mock_sha256": "9ea3d03c1f0e653be698aa1f1fade872981fa328dc0117d5ee6898e4e8e80b71"
+  },
+  {
+   "target": "M16_27659",
+   "shape": "tophat1",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M16_27659.npz",
+   "mock_sha256": "df4c7159c179bb9680b70e47d3bb306e089b8ddf70fcd48a0d913a2ad0431da5"
+  },
+  {
+   "target": "M10_217653",
+   "shape": "short",
+   "subset": false,
+   "mock": "results/mock-chronometer-window-2026-11-13/mocks/M10_217653.npz",
+   "mock_sha256": "4d001007e3e1f39ab52ae9ad6ae65d4e36ad9cba4cbe471952c532d63dc7820e"
+  }
+ ]
+}

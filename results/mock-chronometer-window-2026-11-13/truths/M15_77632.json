@@ -1,0 +1,89 @@
+{
+ "target": "M15_77632",
+ "object_id": 77632,
+ "rank": 146,
+ "redshift": 0.8256999850273132,
+ "shape": "exp",
+ "subset": false,
+ "true_age_gyr": 3.661792156783108,
+ "ssp_weight_age_gyr": 3.663314045756541,
+ "universe_age_gyr": 6.630662251839412,
+ "real_fit": "results/legac-dr3-2026-11-11/window-194/run/fits/dr3_plain_w/77632-M15_77632",
+ "real_fit_sha256": "225627f0beaa363f4c8275bfa8a120d41358b65bd7d096abed6e699ea8b657d8",
+ "real_medians": {
+  "afe": [
+   0.2363702691836775
+  ],
+  "diffuse_tau_noll": [
+   0.48722098138060327
+  ],
+  "diffuse_delta": [
+   0.16031016691975897
+  ],
+  "diffuse_Ebump": [
+   2.8100627011139356
+  ],
+  "logsfr_ratios": [
+   -0.10439242217543819,
+   -0.45136835931653435,
+   -0.19097681845809397,
+   -0.10317639073530833,
+   -0.028196710109059234,
+   -0.013121499052544058,
+   -0.07700887786306083,
+   -0.10914631378521966,
+   -0.10134244538714483,
+   -0.20083593235205868,
+   -0.28490557314791803,
+   -0.2585258234128971,
+   -0.10732881272185119,
+   -0.018481068363632433
+  ],
+  "logmass": [
+   11.824872170645298
+  ],
+  "log_f_calib": [
+   -3.9666608427473977
+  ],
+  "dust_ratio": [
+   1.0496103447462346
+  ],
+  "logzsol": [
+   -0.26540288209321783
+  ],
+  "zh_beta_unit": [
+   0.3752650369162824
+  ],
+  "sigma_smooth": [
+   254.33262115328324
+  ]
+ },
+ "truth": {
+  "logzsol": -0.2,
+  "afe": 0.2,
+  "logmass": 11.81736559405312,
+  "calibration_constant": 0.8100919669376633,
+  "diffuse_tau_noll": 0.48722098138060327,
+  "diffuse_delta": 0.16031016691975897,
+  "diffuse_Ebump": 2.8100627011139356,
+  "dust_ratio": 1.0496103447462346,
+  "sigma_smooth": 254.33262115328324,
+  "log_f_calib": -3.9666608427473977
+ },
+ "logmass_shift_from_real_fit": -0.007506576592177144,
+ "photometry_source": "cosmos2020_classic",
+ "bands": 30,
+ "fitted_pixels": 1541,
+ "fitted_rest_range": [
+  4074.6826171875,
+  4666.0673828125
+ ],
+ "sn_real": 33.01454492623794,
+ "sn_mock_statistical": 34.44041362806028,
+ "sn_mock_total": 26.826933427108496,
+ "real_over_mock_spectrum_rms": 0.06352470965610887,
+ "truth_bins": 202,
+ "spectrum_mask_sha256": "210ee3bcdcdf5f5b16407be11ba38d728871932ae9ddf6add631d701d23d53eb",
+ "mock": "results/mock-chronometer-window-2026-11-13/mocks/M15_77632.npz",
+ "mock_sha256": "1458095866d9e58e935aa0ccc89be5b66e6ea9145017c415378f6b37e38a9356"
+}

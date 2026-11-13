@@ -91,8 +91,12 @@ def configuration(path, revision):
                 raise ValueError('priors must be Python expression strings')
             ast.parse(expression, mode='eval')
         for target in targets:
+            mock = arm_settings.get('mock_data')
+            # "{target}" in mock_data: one mock file for each target of the arm.
+            cell_settings = (arm_settings if mock is None
+                             else {**arm_settings, 'mock_data': mock.replace('{target}', target)})
             cells.append({'name': f'{name}/{target}', 'arm': name, 'target': target,
-                          'seed': seed, 'settings': arm_settings, 'priors': arm_priors})
+                          'seed': seed, 'settings': cell_settings, 'priors': arm_priors})
     return cells
 
 
