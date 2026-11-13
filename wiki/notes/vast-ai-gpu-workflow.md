@@ -71,7 +71,9 @@ Reuse `--output <saved-directory>` to resume the saved experiment without repeat
 
 A new run uses Colab first (`--backend colab`) while `colab --auth adc usage` shows compute units; pending fits then go to Modal. The Colab runtime gets the pinned image's files, source, inputs and grids, runs the Vast bootstrap and fits one pair at a time. Each fit returns by rsync when it ends.
 
-On Modal, a launch uses the first CLI profile of `censusgalaxy`, `initalincrease`, `liuhaoo3-14` with a billed cost of $0 for the month. Each container writes each finished fit to the Volume `ceridwen-results` at once. A fit that shared the GPU while its cache got a new autotune entry is provisional: the container fits it again alone. A resumed run takes the other fits first, then fits the missing and provisional pairs. The manifest records the profile of each fit.
+On Modal, a launch uses the first CLI profile of `censusgalaxy`, `initalincrease`, `liuhaoo3-14` with a billed cost of $0 for the month. Each container writes each finished fit to the Volume `ceridwen-results` at once. The manifest records the profile of each fit.
+
+A fit that shared the GPU while its cache got a new autotune entry is provisional: the container fits it again alone. A resumed run takes the other fits first, then fits the missing and provisional pairs.
 
 Downloads are attempted up to three times within the remaining budget. Local HDF5 and notebook validation must pass before completion. Persistent retrieval failures stop automatic refits.
 
