@@ -1,0 +1,239 @@
+{
+  "backend": "colab",
+  "source": {
+    "commit": "0a419b8807bf58be501309dab5e199f05b79cf95",
+    "submodules": {
+      "ceridwen": "13791e0e971aa95d4723a38941438706912ea1dc",
+      "external/sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+    },
+    "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+    "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+    "grids": [
+      {
+        "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+        "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+        "remote_name": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5"
+      }
+    ],
+    "experiment": [
+      {
+        "name": "baseline/M1_210210",
+        "arm": "baseline",
+        "target": "M1_210210",
+        "seed": 20261110,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "legac_dr2",
+          "abundance_response": null,
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": null,
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "manifest_index": 2,
+          "object_id": 210210,
+          "spect_id": "M1_210210",
+          "sn": 62.20000076293945,
+          "shard_index": 0,
+          "seed": 20261110,
+          "filename": "legac_M1_210210_v2.0.fits"
+        }
+      }
+    ],
+    "input_files": [
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits",
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
+      "data/raw/cosmos2020/cosmos2020_classic_legac_dr2_1arcsec.fits",
+      "data/raw/cosmos2020/cosmos2020_farmer_legac_dr2_1arcsec.fits",
+      "data/raw/cosmos2025/cosmos2025_phot_legac_dr2_1arcsec.fits",
+      "data/raw/hst_f814w/M1_210210.fits",
+      "data/raw/legac_dr2/legaCdr2.fits.gz",
+      "data/raw/legac_dr2/sp/legac_M1_210210_v2.0.fits",
+      "external/fsps/data/emlines_info.dat"
+    ],
+    "image": "ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34"
+  },
+  "gpus": [
+    "A100"
+  ],
+  "created": 1794575268.716945,
+  "attempts": [
+    {
+      "number": 0,
+      "session": "ceridwen-c7d9b6-0",
+      "gpu": "A100",
+      "units_before": 200.0,
+      "cells": {},
+      "started": 1794575271.282023,
+      "status": "failed",
+      "error": "Colab allocation failed: https://colab.research.google.com/tun/m/assign?nbh=4d4cce04_b1ff_4b81_83a3_3cf5c ae208fb........&variant=GPU&accelerator=A100: Service Unavailable"
+    },
+    {
+      "number": 1,
+      "session": "ceridwen-c7d9b6-1",
+      "gpu": "A100",
+      "units_before": 200.0,
+      "cells": {},
+      "started": 1794575324.836231,
+      "status": "failed",
+      "allocated": 1794575329.105601,
+      "gpu_name": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+      "error": "bootstrap exited 12; inspect /Users/liuhao/Downloads/Astro project/results/colab-backend-2026-11-11/reference/run/colab-1-bootstrap.log",
+      "elapsed": 384.25347900390625,
+      "released": 1794575713.095423,
+      "units_after": 199.44
+    },
+    {
+      "number": 2,
+      "session": "ceridwen-c7d9b6-2",
+      "gpu": "A100",
+      "units_before": 198.69,
+      "cells": {},
+      "started": 1794576424.778775,
+      "status": "failed",
+      "error": "Colab allocation failed: https://colab.research.google.com/tun/m/assign?nbh=eb515ebf_7b71_4092_8a20_9e12d 3e69bd8........&variant=GPU&accelerator=A100: Service Unavailable"
+    },
+    {
+      "number": 3,
+      "session": "ceridwen-c7d9b6-3",
+      "gpu": "A100",
+      "units_before": 198.69,
+      "cells": {},
+      "started": 1794576488.394537,
+      "status": "failed",
+      "allocated": 1794576519.3363242,
+      "gpu_name": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+      "error": "image exited 1; inspect /Users/liuhao/Downloads/Astro project/results/colab-backend-2026-11-11/reference/run/colab-3-image.log",
+      "elapsed": 421.34423303604126,
+      "released": 1794576913.0796318,
+      "units_after": 198.13
+    },
+    {
+      "number": 4,
+      "session": "ceridwen-c7d9b6-4",
+      "gpu": "A100",
+      "units_before": 198.13,
+      "cells": {
+        "baseline/M1_210210": {
+          "started": 1794577223.295535,
+          "finished": 1794577236.7881012,
+          "error": "StageFailed: fit-0 exited 1; inspect /Users/liuhao/Downloads/Astro project/results/colab-backend-2026-11-11/reference/run/colab-4-fit-0.log"
+        }
+      },
+      "started": 1794576959.252535,
+      "status": "failed",
+      "allocated": 1794576963.366931,
+      "gpu_name": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+      "units_per_hour": 6.73,
+      "elapsed": 279.2138159275055,
+      "released": 1794577241.339197,
+      "units_after": 197.82
+    },
+    {
+      "number": 5,
+      "session": "ceridwen-c7d9b6-5",
+      "gpu": "A100",
+      "units_before": 197.82,
+      "cells": {},
+      "started": 1794577309.071996,
+      "status": "failed",
+      "error": "Colab allocation failed: https://colab.research.google.com/tun/m/assign?nbh=9cb07d6b_7168_4480_8faf_b80b4 bc6864b........&variant=GPU&accelerator=A100: Service Unavailable"
+    },
+    {
+      "number": 6,
+      "session": "ceridwen-c7d9b6-6",
+      "gpu": "A100",
+      "units_before": 197.82,
+      "cells": {},
+      "started": 1794577372.168401,
+      "status": "failed",
+      "error": "Colab allocation failed: https://colab.research.google.com/tun/m/assign?nbh=255e2aa1_3ab9_42db_bd2a_04c2b 6f9a4e0........&variant=GPU&accelerator=A100: Service Unavailable"
+    },
+    {
+      "number": 7,
+      "session": "ceridwen-c7d9b6-7",
+      "gpu": "A100",
+      "units_before": 197.82,
+      "cells": {},
+      "started": 1794577435.120499,
+      "status": "failed",
+      "error": "Colab allocation failed: https://colab.research.google.com/tun/m/assign?nbh=c80f304a_e10d_41c4_89ed_9bde8 964c416........&variant=GPU&accelerator=A100: Service Unavailable"
+    },
+    {
+      "number": 8,
+      "session": "ceridwen-c7d9b6-8",
+      "gpu": "A100",
+      "units_before": 197.82,
+      "cells": {
+        "baseline/M1_210210": {
+          "started": 1794578144.539477,
+          "finished": 1794578301.165107
+        }
+      },
+      "started": 1794577933.337167,
+      "status": "complete",
+      "allocated": 1794577962.514396,
+      "gpu_name": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+      "units_per_hour": 6.73,
+      "elapsed": 372.0836560726166,
+      "released": 1794578308.3365881,
+      "units_after": 197.7
+    }
+  ],
+  "completed_cells": [
+    "baseline/M1_210210"
+  ]
+}

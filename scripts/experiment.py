@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run configured Ceridwen fits on Modal: experiment.py run CONFIG --gpu L40S (--backend vast --gpu 'RTX 5090')."""
+"""Run configured Ceridwen fits on Colab, then Modal: experiment.py run CONFIG --gpu A100 (--backend vast --gpu 'RTX 5090')."""
 from __future__ import annotations
 
 import argparse
@@ -26,9 +26,10 @@ from pathlib import Path
 
 if __package__:
     from . import benchmark as engine
-    from . import modal_gpu
+    from . import colab, modal_gpu
 else:
     import benchmark as engine
+    import colab
     import modal_gpu
 
 vast = engine.vast
@@ -682,7 +683,8 @@ def parser():
     run = commands.add_parser('run', help='preflight, rent, fit, download and destroy')
     run.add_argument('config', type=Path, help='JSON targets, seed, settings, priors and named arms')
     run.add_argument('--gpu', required=True, help='Modal GPU, e.g. L40S; Vast GPU name with --backend vast, e.g. RTX 5090')
-    run.add_argument('--backend', choices=('modal', 'vast'), help='default: the saved run\'s backend, else modal')
+    run.add_argument('--backend', choices=('colab', 'modal', 'vast'),
+                     help='default: the saved run\'s backend, else colab while Colab compute units remain, else modal')
     run.add_argument('--output', type=Path, help='reuse this directory to resume the same experiment')
     run.add_argument('--image', help='container image reference; saved in the run manifest')
     run.add_argument('--revision', default='HEAD', help='committed project revision; saved revision on resume')
@@ -706,11 +708,15 @@ def main(argv=None):
     saved = args.output / 'manifest.json'
     if saved.exists() and args.revision == 'HEAD':
         args.revision = json.loads(saved.read_text())['source']['commit']
+    automatic, requested_gpu = args.backend is None, args.gpu
     if args.backend is None:
-        args.backend = json.loads(saved.read_text()).get('backend', 'vast') if saved.exists() else 'modal'
+        args.backend = (json.loads(saved.read_text()).get('backend', 'vast') if saved.exists()
+                        else colab.preferred(args.gpu, offline=args.dry_run))
     if args.backend == 'modal':
         args.gpu = modal_gpu.gpu_type(args.gpu)
-    commands = ('git', 'uv') if args.backend == 'modal' else ('git', 'ssh', 'rsync', 'vastai')
+    elif args.backend == 'colab':
+        args.gpu = colab.gpu_type(args.gpu)
+    commands = {'modal': ('git', 'uv'), 'colab': ('git', 'ssh', 'rsync')}.get(args.backend, ('git', 'ssh', 'rsync', 'vastai'))
     source = preflight(args.config.resolve(), args.revision, fetch_missing=not args.dry_run, commands=commands)
     if saved.exists() and 'input_files' not in json.loads(saved.read_text())['source']:
         source.pop('input_files', None)
@@ -734,7 +740,14 @@ def main(argv=None):
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as error:
             raise vast.SweepError('another driver owns this output directory') from error
-        code = (ModalRun if args.backend == 'modal' else Run)(args, source).execute()
+        if args.backend == 'colab':
+            code = colab.ColabRun(args, source).execute()
+            if code == colab.HAND_OVER and automatic:
+                # Colab first while compute units remain, then Modal for the cells still pending.
+                args.backend, args.gpu = 'modal', modal_gpu.gpu_type(requested_gpu)
+                colab.hand_over(args.output, args.gpu)
+        if args.backend != 'colab':
+            code = (ModalRun if args.backend == 'modal' else Run)(args, source).execute()
         # After teardown, while nothing bills: restore the standard figures locally.
         if code == 0:
             regenerate_figures(args.output)

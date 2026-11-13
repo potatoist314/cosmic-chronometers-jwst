@@ -1535,3 +1535,8 @@
 
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: a fit that shares the GPU goes to the Volume `ceridwen-results` when it ends, provisional if its cache autotuned; a resumed run takes only final fits; card t_3c7afc3a.
+
+## [2026-11-13] codebase | Colab first, then Modal
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: a new run fits on Colab while compute units remain, then on Modal; card t_a9ea44d4.

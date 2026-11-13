@@ -74,11 +74,16 @@ The user's contribution will be focused on overall research direction and method
   provide the run record. Documentation must not delay launch or result retrieval.
   Use `python3 scripts/experiment.py run <config.json> --gpu "<GPU type>"` for new fits.
 - Before another paid Ceridwen GPU benchmark, read `BENCHMARK_CHECK.md`.
-- `experiment.py` runs GPU fits on Modal by default (`scripts/modal_gpu.py`; CLI profiles `censusgalaxy`,
+- A new `experiment.py` run uses Colab first (`scripts/colab.py`, `--backend colab`) while
+  `colab --auth adc usage` shows compute units left, then Modal for the fits still pending
+  (Liu Hao, 2026-11-11: "try and exhaust those before using modal credits?"). Stop every Colab
+  runtime you start, and only your own: check `colab --auth adc sessions`, then `colab --auth adc stop -s <session>`.
+- After Colab, `experiment.py` runs GPU fits on Modal (`scripts/modal_gpu.py`; CLI profiles `censusgalaxy`,
   `initalincrease`, `liuhaoo3-14`: a launch uses the first one with a billed cost of $0 for the month):
   the compact image pinned in `scripts/vast.py`, selected input uploads, and grids, compile caches and
   finished fits on Modal Volumes of each workspace. Preserve the image and backend recorded for resumed runs.
-- GPU type: lowest cost per fit in `results/gpu-bench-modal-2026-10-14/REPORT.md` (A100-40GB).
+- GPU type: lowest cost per fit in `results/gpu-bench-modal-2026-10-14/REPORT.md` (A100-40GB;
+  `--gpu A100` names the same card on Colab and Modal).
 - No per-run spend cap. Stay within the Modal credit balance: `experiment.py` refuses a launch once the
   month's billed cost is above $0 in each profile, and stops a run when its profile goes above $0.
   Never add a payment method.

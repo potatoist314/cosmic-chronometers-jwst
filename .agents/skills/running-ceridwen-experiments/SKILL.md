@@ -1,6 +1,6 @@
 ---
 name: running-ceridwen-experiments
-description: Configure and run Ceridwen fits on Modal (the default) or Vast.ai, retrieve results, and verify local artifacts. Add analysis or wiki reports only when requested.
+description: Configure and run Ceridwen fits on Colab while compute units remain, then Modal (the default order), or on Vast.ai; retrieve results and verify local artifacts. Add analysis or wiki reports only when requested.
 ---
 
 # Run one Ceridwen experiment
@@ -15,6 +15,59 @@ Liu Hao, 2026-10-25: "don't discard vast, just note that the workflow is updated
 The Vast steps stay in this skill. Use them with `--backend vast`. A resumed run
 keeps the backend that its manifest records.
 
+## Workflow update: Colab first, then Modal
+
+Liu Hao, 2026-11-11: "google colab pro has a100 gpu access, although i don't know what the
+amounts are there. try and exhaust those before using modal credits? i believe i'm signed
+into google colab cli. so i guess add colab as another experiment infrastructure part and set
+up or modify new/existing skills to take this into account".
+
+The commands are from the runs of 2026-11-13 in `results/colab-backend-2026-11-11/`.
+
+1. **Read the compute units.**
+   ```bash
+   colab --auth adc usage
+   ```
+   `Current balance` is the number of units that are left. `Usage rate` is the units per
+   hour of the runtimes that operate now. On 2026-11-13 the balance was 200.00 units. One
+   A100 runtime used 6.73 units each hour. The balance shows the units used some minutes late.
+   If the command finds no Google credentials, Liu Hao must sign in. This command signed in
+   on 2026-11-13:
+   ```bash
+   gcloud auth application-default login --scopes=openid,https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/colaboratory
+   ```
+2. **Run.** Without `--backend`, a new run uses Colab when the balance is more than 0 and
+   `--gpu` is a Colab GPU: T4, L4, G4, H100 or A100. `A100-40GB` is A100. Otherwise the
+   run uses Modal. This command did the 4-fit run:
+   ```bash
+   python3 scripts/experiment.py run results/colab-backend-2026-11-11/resume/experiment.json \
+     --gpu A100 --backend colab --revision 33a06784d --wait-minutes 30 \
+     --output results/colab-backend-2026-11-11/resume/run
+   ```
+   The runner starts the runtime `ceridwen-<6 characters>-<attempt number>`. It puts these
+   items on the runtime: the files of the image pinned in `scripts/vast.py`, the pinned
+   source, the selected inputs and the grids. Then it runs `scripts/bootstrap_vast_ai.sh`
+   and one fit at a time. It gets and validates each fit when the fit ends. The results are
+   in `run/fits/<arm>/<object>-<target>/`. The stage logs are
+   `run/colab-<attempt number>-<stage>.log`. At the end, the runner stops the runtime. On
+   2026-11-13 the setup took 3–9 minutes. The fit stage took 146–177 s for each fit.
+3. **No free GPU.** When Colab has no free GPU of the type, it refuses the runtime with
+   `Service Unavailable`. The log then shows `no free Colab A100; next request in 60 s`.
+   `--wait-minutes` sets the time that the runner tries again. On 2026-11-13 the wait was
+   1–4 minutes. After that time, a run without `--backend` fits the pending cells on Modal.
+   A run with `--backend colab` stops with exit code 3.
+4. **The units end.** Before each fit, the runner reads the balance. When the balance is
+   less than 15 minutes of the runtime, the runner stops the runtime. Then a run without
+   `--backend` fits the pending cells on Modal in the same `--output`. The manifest keeps
+   the Colab attempts in `colab`.
+5. **Resume.** Repeat the same command. On 2026-11-13 the driver got SIGTERM during fit 2
+   of 4. It stopped the runtime in 6 s. The same command then fitted only the 3 missing fits.
+6. **Stop your runtimes.** Do this after each run. Stop only the sessions that you started:
+   ```bash
+   colab --auth adc sessions
+   colab --auth adc stop -s <session>
+   ```
+
 ## Default scope: fit and retrieve
 
 A request to run or try a fit means configure, run, retrieve, validate, and report.
@@ -28,8 +81,8 @@ stage logs, and result files are the reproducibility record. Keep only a short
 Beads status with the output path and any blocker. Read `wiki/research/README.md`
 only if research records or wiki publication are part of the request.
 
-New runs on Modal and Vast use the compact dependency image pinned in `scripts/vast.py`, selected
-input files, and cached grids. Do not replace it with a generic CUDA image.
+New runs on Colab, Modal and Vast use the compact dependency image pinned in `scripts/vast.py`
+(on Colab, its files), selected input files, and cached grids. Do not replace it with a generic CUDA image.
 Use `--image` only for an explicitly requested override. Saved runs keep their image.
 
 ## Production defaults

@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/workspace/cosmic-chronometers-jwst/.colab/image.py", line 33, in <module>
+    archive.extract(member, '/', filter='tar')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 2490, in extract
+    self._extract_one(tarinfo, path, set_attrs, numeric_owner,
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      filter_function=filter_function)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 2533, in _extract_one
+    self._extract_member(tarinfo, os.path.join(path, tarinfo.name),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         set_attrs=set_attrs,
+                         ^^^^^^^^^^^^^^^^^^^^
+                         numeric_owner=numeric_owner,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         filter_function=filter_function,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         extraction_root=path)
+                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 2622, in _extract_member
+    self.makefile(tarinfo, targetpath)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 2679, in makefile
+    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/tarfile.py", line 252, in copyfileobj
+    raise exception("unexpected end of data")
+tarfile.ReadError: unexpected end of data
