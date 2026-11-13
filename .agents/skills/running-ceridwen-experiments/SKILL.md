@@ -54,12 +54,20 @@ The commands are from the runs of 2026-11-13 in `results/colab-backend-2026-11-1
 3. **No free GPU.** When Colab has no free GPU of the type, it refuses the runtime with
    `Service Unavailable`. The log then shows `no free Colab A100; next request in 60 s`.
    `--wait-minutes` sets the time that the runner tries again. On 2026-11-13 the wait was
-   1–4 minutes. After that time, a run without `--backend` fits the pending cells on Modal.
-   A run with `--backend colab` stops with exit code 3.
-4. **The units end.** Before each fit, the runner reads the balance. When the balance is
-   less than 15 minutes of the runtime, the runner stops the runtime. Then a run without
-   `--backend` fits the pending cells on Modal in the same `--output`. The manifest keeps
-   the Colab attempts in `colab`.
+   1–4 minutes.
+4. **Colab stops, Modal continues.** On 2026-11-13 this command started a 2-fit run
+   without `--backend`:
+   ```bash
+   python3 scripts/experiment.py run results/colab-backend-2026-11-11/handover/experiment.json \
+     --gpu A100 --revision 33a06784d --wait-minutes 30 \
+     --output results/colab-backend-2026-11-11/handover/run
+   ```
+   The log showed `Colab compute units: 194.46; backend colab`. Colab fitted M1_210210.
+   The driver got SIGTERM during fit 2. Then the same command ran with
+   `GOOGLE_APPLICATION_CREDENTIALS=/nonexistent/adc.json`, so `colab usage` could not read
+   the units. The log showed `Colab stopped with cells pending; 1 cell(s) continue on Modal
+   A100-40GB`. Modal fitted M3_117694 in `liuhaoo3-14` for $0.107, in the same `--output`.
+   The manifest keeps the Colab attempts in `colab`.
 5. **Resume.** Repeat the same command. On 2026-11-13 the driver got SIGTERM during fit 2
    of 4. It stopped the runtime in 6 s. The same command then fitted only the 3 missing fits.
 6. **Stop your runtimes.** Do this after each run. Stop only the sessions that you started:
