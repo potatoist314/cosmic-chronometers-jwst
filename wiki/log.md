@@ -1540,3 +1540,8 @@
 
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: a new run fits on Colab while compute units remain, then on Modal; card t_a9ea44d4.
+
+## [2026-11-14] query | Chronometer findings page: DR3 window and mock chronometer
+
+- Pages: `research/questions/q-afe-age-chronometer.md`
+- Change: age-redshift figure of the three DR3 window arms, mock chronometer figure, one slope table; DR2 tables collapsed; figures in `analyses/afe-age-chronometer/`; card t_785695c2.
