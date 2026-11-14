@@ -1,0 +1,551 @@
+20:27:19 Colab compute units: 190.42; backend colab
+<string>:8: UserWarning: Warning: converting a masked element to nan.
+20:27:22 committed source dea843770ef5; output results/carbon-mask-window-2026-11-13/window-194/run
+20:27:30 Colab runtime ceridwen-04545b-0: NVIDIA A100-SXM4-40GB, 40960 MiB
+20:33:56 fitting dr3_mask_w/M2_133501, seed 20260832 (190.27 units left)
+20:34:59 fit-0: running; 20:33:57 fitting dr3_mask_w/M2_133501, seed 20260832
+20:36:08 fitting dr3_mask_w/M2_210716, seed 20260832 (189.71 units left)
+20:37:11 fit-1: running; 20:36:09 fitting dr3_mask_w/M2_210716, seed 20260832
+20:38:14 fit-1: running; 20:36:09 fitting dr3_mask_w/M2_210716, seed 20260832
+20:38:29 fitting dr3_mask_w/M1_210210, seed 20260832 (189.71 units left)
+20:39:32 fit-2: running; 20:38:30 fitting dr3_mask_w/M1_210210, seed 20260832
+20:40:28 fitting dr3_mask_w/M12_181945, seed 20260832 (189.13 units left)
+20:41:31 fit-3: running; 20:40:29 fitting dr3_mask_w/M12_181945, seed 20260832
+20:42:34 fit-3: running; 20:40:29 fitting dr3_mask_w/M12_181945, seed 20260832
+20:42:49 fitting dr3_mask_w/M27_247278, seed 20260832 (189.13 units left)
+20:43:52 fit-4: running; 20:42:49 fitting dr3_mask_w/M27_247278, seed 20260832
+20:44:49 fitting dr3_mask_w/M16_32559, seed 20260832 (188.58 units left)
+20:45:52 fit-5: running; 20:44:49 fitting dr3_mask_w/M16_32559, seed 20260832
+20:46:59 fitting dr3_mask_w/M19_57389, seed 20260832 (188.58 units left)
+20:48:02 fit-6: running; 20:46:59 fitting dr3_mask_w/M19_57389, seed 20260832
+20:49:04 fit-6: running; 20:46:59 fitting dr3_mask_w/M19_57389, seed 20260832
+20:49:20 fitting dr3_mask_w/M16_72617, seed 20260832 (188.02 units left)
+20:50:23 fit-7: running; 20:49:20 fitting dr3_mask_w/M16_72617, seed 20260832
+20:51:30 fitting dr3_mask_w/M9_231276, seed 20260832 (188.02 units left)
+20:52:33 fit-8: running; 20:51:31 fitting dr3_mask_w/M9_231276, seed 20260832
+20:53:40 fitting dr3_mask_w/M2_134021, seed 20260832 (188.02 units left)
+20:54:43 fit-9: running; 20:53:41 fitting dr3_mask_w/M2_134021, seed 20260832
+20:55:50 fitting dr3_mask_w/M1_205742, seed 20260832 (187.46 units left)
+20:56:53 fit-10: running; 20:55:51 fitting dr3_mask_w/M1_205742, seed 20260832
+20:57:56 fit-10: running; 20:55:51 fitting dr3_mask_w/M1_205742, seed 20260832
+20:58:11 fitting dr3_mask_w/M4_86744, seed 20260832 (187.46 units left)
+20:59:14 fit-11: running; 20:58:11 fitting dr3_mask_w/M4_86744, seed 20260832
+21:00:21 fitting dr3_mask_w/M8_162149, seed 20260832 (186.90 units left)
+21:01:24 fit-12: running; 21:00:21 fitting dr3_mask_w/M8_162149, seed 20260832
+21:02:31 fitting dr3_mask_w/M24_202009, seed 20260832 (186.90 units left)
+21:03:34 fit-13: running; 21:02:32 fitting dr3_mask_w/M24_202009, seed 20260832
+21:04:42 fitting dr3_mask_w/M30_55118, seed 20260832 (186.35 units left)
+21:05:45 fit-14: running; 21:04:42 fitting dr3_mask_w/M30_55118, seed 20260832
+21:06:42 fitting dr3_mask_w/M4_117400, seed 20260832 (186.35 units left)
+21:07:45 fit-15: running; 21:06:42 fitting dr3_mask_w/M4_117400, seed 20260832
+21:08:52 fitting dr3_mask_w/M18_96346, seed 20260832 (186.35 units left)
+21:09:55 fit-16: running; 21:08:52 fitting dr3_mask_w/M18_96346, seed 20260832
+21:11:02 fitting dr3_mask_w/M19_59396, seed 20260832 (185.78 units left)
+21:12:05 fit-17: running; 21:11:03 fitting dr3_mask_w/M19_59396, seed 20260832
+21:13:12 fitting dr3_mask_w/M11_213004, seed 20260832 (185.78 units left)
+21:14:15 fit-18: running; 21:13:13 fitting dr3_mask_w/M11_213004, seed 20260832
+21:15:22 fitting dr3_mask_w/M19_71670, seed 20260832 (185.23 units left)
+21:16:25 fit-19: running; 21:15:23 fitting dr3_mask_w/M19_71670, seed 20260832
+21:17:32 fitting dr3_mask_w/M11_257455, seed 20260832 (185.23 units left)
+21:18:35 fit-20: running; 21:17:33 fitting dr3_mask_w/M11_257455, seed 20260832
+21:19:42 fitting dr3_mask_w/M11_218207, seed 20260832 (184.65 units left)
+21:20:45 fit-21: running; 21:19:43 fitting dr3_mask_w/M11_218207, seed 20260832
+21:21:42 fitting dr3_mask_w/M11_215585, seed 20260832 (184.65 units left)
+21:22:45 fit-22: running; 21:21:42 fitting dr3_mask_w/M11_215585, seed 20260832
+21:23:52 fitting dr3_mask_w/M5_205715, seed 20260832 (184.65 units left)
+21:24:55 fit-23: running; 21:23:52 fitting dr3_mask_w/M5_205715, seed 20260832
+21:26:02 fitting dr3_mask_w/M1_206858, seed 20260832 (184.09 units left)
+21:27:05 fit-24: running; 21:26:02 fitting dr3_mask_w/M1_206858, seed 20260832
+21:28:11 fitting dr3_mask_w/M13_232627, seed 20260832 (184.09 units left)
+21:29:14 fit-25: running; 21:28:12 fitting dr3_mask_w/M13_232627, seed 20260832
+21:30:21 fitting dr3_mask_w/M4_124231, seed 20260832 (183.53 units left)
+21:31:24 fit-26: running; 21:30:22 fitting dr3_mask_w/M4_124231, seed 20260832
+21:32:31 fitting dr3_mask_w/M12_91529, seed 20260832 (183.53 units left)
+21:33:34 fit-27: running; 21:32:32 fitting dr3_mask_w/M12_91529, seed 20260832
+21:34:41 fitting dr3_mask_w/M30_59531, seed 20260832 (182.96 units left)
+21:35:44 fit-28: running; 21:34:42 fitting dr3_mask_w/M30_59531, seed 20260832
+21:36:51 fitting dr3_mask_w/M8_164459, seed 20260832 (182.96 units left)
+21:37:54 fit-29: running; 21:36:52 fitting dr3_mask_w/M8_164459, seed 20260832
+21:38:57 fit-29: running; 21:36:52 fitting dr3_mask_w/M8_164459, seed 20260832
+21:39:12 fitting dr3_mask_w/M11_229551, seed 20260832 (182.43 units left)
+21:40:15 fit-30: running; 21:39:12 fitting dr3_mask_w/M11_229551, seed 20260832
+21:41:22 fitting dr3_mask_w/M5_236682, seed 20260832 (182.43 units left)
+21:42:25 fit-31: running; 21:41:22 fitting dr3_mask_w/M5_236682, seed 20260832
+21:43:32 fitting dr3_mask_w/M19_65494, seed 20260832 (182.43 units left)
+21:44:34 fit-32: running; 21:43:32 fitting dr3_mask_w/M19_65494, seed 20260832
+21:45:42 fitting dr3_mask_w/M6_234538, seed 20260832 (181.85 units left)
+21:46:45 fit-33: running; 21:45:43 fitting dr3_mask_w/M6_234538, seed 20260832
+21:47:52 fitting dr3_mask_w/M20_86906, seed 20260832 (181.85 units left)
+21:48:55 fit-34: running; 21:47:53 fitting dr3_mask_w/M20_86906, seed 20260832
+21:49:57 fit-34: running; 21:47:53 fitting dr3_mask_w/M20_86906, seed 20260832
+21:50:12 fitting dr3_mask_w/M30_60369, seed 20260832 (181.29 units left)
+21:51:15 fit-35: running; 21:50:13 fitting dr3_mask_w/M30_60369, seed 20260832
+21:52:22 fitting dr3_mask_w/M27_258059, seed 20260832 (181.29 units left)
+21:53:25 fit-36: running; 21:52:23 fitting dr3_mask_w/M27_258059, seed 20260832
+21:54:32 fitting dr3_mask_w/M15_77632, seed 20260832 (180.74 units left)
+21:55:35 fit-37: running; 21:54:33 fitting dr3_mask_w/M15_77632, seed 20260832
+21:56:43 fitting dr3_mask_w/M1_139423, seed 20260832 (180.74 units left)
+21:57:45 fit-38: running; 21:56:43 fitting dr3_mask_w/M1_139423, seed 20260832
+21:58:52 fitting dr3_mask_w/M5_211347, seed 20260832 (180.18 units left)
+21:59:55 fit-39: running; 21:58:53 fitting dr3_mask_w/M5_211347, seed 20260832
+22:00:51 fitting dr3_mask_w/M3_111390, seed 20260832 (180.18 units left)
+22:01:54 fit-40: running; 22:00:51 fitting dr3_mask_w/M3_111390, seed 20260832
+22:02:50 fitting dr3_mask_w/M7_124875, seed 20260832 (180.18 units left)
+22:03:53 fit-41: running; 22:02:51 fitting dr3_mask_w/M7_124875, seed 20260832
+22:04:49 fitting dr3_mask_w/M11_232962, seed 20260832 (179.62 units left)
+22:05:52 fit-42: running; 22:04:50 fitting dr3_mask_w/M11_232962, seed 20260832
+22:06:58 fitting dr3_mask_w/M18_182407, seed 20260832 (179.62 units left)
+22:08:01 fit-43: running; 22:06:59 fitting dr3_mask_w/M18_182407, seed 20260832
+22:09:24 fitting dr3_mask_w/M15_77745, seed 20260832 (179.06 units left)
+22:10:27 fit-44: running; 22:09:24 fitting dr3_mask_w/M15_77745, seed 20260832
+22:11:29 fit-44: running; 22:09:24 fitting dr3_mask_w/M15_77745, seed 20260832
+22:11:44 fitting dr3_mask_w/M27_260083, seed 20260832 (179.06 units left)
+22:12:47 fit-45: running; 22:11:45 fitting dr3_mask_w/M27_260083, seed 20260832
+22:13:44 fitting dr3_mask_w/M3_120308, seed 20260832 (179.06 units left)
+22:14:47 fit-46: running; 22:13:45 fitting dr3_mask_w/M3_120308, seed 20260832
+22:15:55 fitting dr3_mask_w/M2_129596, seed 20260832 (178.50 units left)
+22:16:57 fit-47: running; 22:15:55 fitting dr3_mask_w/M2_129596, seed 20260832
+22:17:54 fitting dr3_mask_w/M9_232005, seed 20260832 (178.50 units left)
+22:18:57 fit-48: running; 22:17:55 fitting dr3_mask_w/M9_232005, seed 20260832
+22:20:00 fit-48: running; 22:17:55 fitting dr3_mask_w/M9_232005, seed 20260832
+22:20:15 fitting dr3_mask_w/M10_225441, seed 20260832 (177.94 units left)
+22:21:18 fit-49: running; 22:20:15 fitting dr3_mask_w/M10_225441, seed 20260832
+22:22:25 fitting dr3_mask_w/M8_147539, seed 20260832 (177.94 units left)
+22:23:28 fit-50: running; 22:22:25 fitting dr3_mask_w/M8_147539, seed 20260832
+22:24:24 fitting dr3_mask_w/M19_69529, seed 20260832 (177.38 units left)
+22:25:27 fit-51: running; 22:24:25 fitting dr3_mask_w/M19_69529, seed 20260832
+22:26:24 fitting dr3_mask_w/M22_239682, seed 20260832 (177.38 units left)
+22:27:27 fit-52: running; 22:26:24 fitting dr3_mask_w/M22_239682, seed 20260832
+22:28:24 fitting dr3_mask_w/M13_248217, seed 20260832 (177.38 units left)
+22:29:27 fit-53: running; 22:28:24 fitting dr3_mask_w/M13_248217, seed 20260832
+22:30:33 fitting dr3_mask_w/M27_256211, seed 20260832 (176.82 units left)
+22:31:36 fit-54: running; 22:30:34 fitting dr3_mask_w/M27_256211, seed 20260832
+22:32:43 fitting dr3_mask_w/M14_31835, seed 20260832 (176.82 units left)
+22:33:46 fit-55: running; 22:32:44 fitting dr3_mask_w/M14_31835, seed 20260832
+22:34:43 fitting dr3_mask_w/M4_125213, seed 20260832 (176.26 units left)
+22:35:46 fit-56: running; 22:34:43 fitting dr3_mask_w/M4_125213, seed 20260832
+22:36:43 fitting dr3_mask_w/M10_227516, seed 20260832 (176.26 units left)
+22:37:45 fit-57: running; 22:36:43 fitting dr3_mask_w/M10_227516, seed 20260832
+22:38:48 fit-57: running; 22:36:43 fitting dr3_mask_w/M10_227516, seed 20260832
+22:39:03 fitting dr3_mask_w/M24_189449, seed 20260832 (175.70 units left)
+22:40:06 fit-58: running; 22:39:04 fitting dr3_mask_w/M24_189449, seed 20260832
+22:41:03 fitting dr3_mask_w/M7_147849, seed 20260832 (175.70 units left)
+22:42:06 fit-59: running; 22:41:04 fitting dr3_mask_w/M7_147849, seed 20260832
+22:43:03 fitting dr3_mask_w/M9_212391, seed 20260832 (175.70 units left)
+22:44:06 fit-60: running; 22:43:04 fitting dr3_mask_w/M9_212391, seed 20260832
+22:45:03 fitting dr3_mask_w/M5_165871, seed 20260832 (175.14 units left)
+22:46:06 fit-61: running; 22:45:04 fitting dr3_mask_w/M5_165871, seed 20260832
+22:47:03 fitting dr3_mask_w/M10_231544, seed 20260832 (175.14 units left)
+22:48:06 fit-62: running; 22:47:04 fitting dr3_mask_w/M10_231544, seed 20260832
+22:49:13 fitting dr3_mask_w/M24_191051, seed 20260832 (174.58 units left)
+22:50:16 fit-63: running; 22:49:14 fitting dr3_mask_w/M24_191051, seed 20260832
+22:51:24 fitting dr3_mask_w/M9_213587, seed 20260832 (174.58 units left)
+22:52:27 fit-64: running; 22:51:25 fitting dr3_mask_w/M9_213587, seed 20260832
+22:53:34 fitting dr3_mask_w/M102_222287, seed 20260832 (174.58 units left)
+22:54:37 fit-65: running; 22:53:34 fitting dr3_mask_w/M102_222287, seed 20260832
+22:55:33 fitting dr3_mask_w/M18_95324, seed 20260832 (174.00 units left)
+22:56:36 fit-66: running; 22:55:34 fitting dr3_mask_w/M18_95324, seed 20260832
+22:57:38 fit-66: running; 22:55:34 fitting dr3_mask_w/M18_95324, seed 20260832
+22:57:53 fitting dr3_mask_w/M22_167853, seed 20260832 (174.00 units left)
+22:58:56 fit-67: running; 22:57:54 fitting dr3_mask_w/M22_167853, seed 20260832
+23:00:03 fitting dr3_mask_w/M17_40840, seed 20260832 (173.46 units left)
+23:01:06 fit-68: running; 23:00:04 fitting dr3_mask_w/M17_40840, seed 20260832
+23:02:03 fitting dr3_mask_w/M18_94726, seed 20260832 (173.46 units left)
+23:03:06 fit-69: running; 23:02:03 fitting dr3_mask_w/M18_94726, seed 20260832
+23:04:13 fitting dr3_mask_w/M27_261268, seed 20260832 (172.88 units left)
+23:05:16 fit-70: running; 23:04:13 fitting dr3_mask_w/M27_261268, seed 20260832
+23:06:18 fit-70: running; 23:04:13 fitting dr3_mask_w/M27_261268, seed 20260832
+23:06:34 fitting dr3_mask_w/M15_88032, seed 20260832 (172.88 units left)
+23:07:37 fit-71: running; 23:06:34 fitting dr3_mask_w/M15_88032, seed 20260832
+23:08:33 fitting dr3_mask_w/M101_205687, seed 20260832 (172.88 units left)
+23:09:36 fit-72: running; 23:08:34 fitting dr3_mask_w/M101_205687, seed 20260832
+23:10:43 fitting dr3_mask_w/M7_122242, seed 20260832 (172.33 units left)
+23:11:46 fit-73: running; 23:10:44 fitting dr3_mask_w/M7_122242, seed 20260832
+23:12:53 fitting dr3_mask_w/M13_244239, seed 20260832 (172.33 units left)
+23:13:56 fit-74: running; 23:12:53 fitting dr3_mask_w/M13_244239, seed 20260832
+23:15:02 fitting dr3_mask_w/M3_109713, seed 20260832 (171.76 units left)
+23:16:05 fit-75: running; 23:15:03 fitting dr3_mask_w/M3_109713, seed 20260832
+23:17:12 fitting dr3_mask_w/M6_237437, seed 20260832 (171.76 units left)
+23:18:15 fit-76: running; 23:17:13 fitting dr3_mask_w/M6_237437, seed 20260832
+23:19:18 fit-76: running; 23:17:13 fitting dr3_mask_w/M6_237437, seed 20260832
+23:19:43 fitting dr3_mask_w/M3_107362, seed 20260832 (171.21 units left)
+23:20:46 fit-77: running; 23:19:44 fitting dr3_mask_w/M3_107362, seed 20260832
+23:21:43 fitting dr3_mask_w/M22_174436, seed 20260832 (171.21 units left)
+23:22:46 fit-78: running; 23:21:43 fitting dr3_mask_w/M22_174436, seed 20260832
+23:23:53 fitting dr3_mask_w/M10_230319, seed 20260832 (170.65 units left)
+23:24:56 fit-79: running; 23:23:54 fitting dr3_mask_w/M10_230319, seed 20260832
+23:25:59 fit-79: running; 23:23:54 fitting dr3_mask_w/M10_230319, seed 20260832
+23:26:14 fitting dr3_mask_w/M20_87121, seed 20260832 (170.65 units left)
+23:27:17 fit-80: running; 23:26:14 fitting dr3_mask_w/M20_87121, seed 20260832
+23:28:19 fit-80: running; 23:26:14 fitting dr3_mask_w/M20_87121, seed 20260832
+23:28:34 fitting dr3_mask_w/M12_185653, seed 20260832 (170.65 units left)
+23:29:37 fit-81: running; 23:28:35 fitting dr3_mask_w/M12_185653, seed 20260832
+23:30:34 fitting dr3_mask_w/M14_37723, seed 20260832 (170.07 units left)
+23:31:36 fit-82: running; 23:30:34 fitting dr3_mask_w/M14_37723, seed 20260832
+23:32:43 fitting dr3_mask_w/M3_109352, seed 20260832 (170.07 units left)
+23:33:46 fit-83: running; 23:32:44 fitting dr3_mask_w/M3_109352, seed 20260832
+23:34:43 fitting dr3_mask_w/M13_230747, seed 20260832 (169.52 units left)
+23:35:46 fit-84: running; 23:34:44 fitting dr3_mask_w/M13_230747, seed 20260832
+23:36:42 fitting dr3_mask_w/M4_107643, seed 20260832 (169.52 units left)
+23:37:45 fit-85: running; 23:36:43 fitting dr3_mask_w/M4_107643, seed 20260832
+23:38:53 fitting dr3_mask_w/M24_203503, seed 20260832 (168.97 units left)
+23:39:56 fit-86: running; 23:38:54 fitting dr3_mask_w/M24_203503, seed 20260832
+23:41:03 fitting dr3_mask_w/M10_197591, seed 20260832 (168.97 units left)
+23:42:06 fit-87: running; 23:41:04 fitting dr3_mask_w/M10_197591, seed 20260832
+23:43:08 fit-87: running; 23:41:04 fitting dr3_mask_w/M10_197591, seed 20260832
+23:43:23 fitting dr3_mask_w/M14_27068, seed 20260832 (168.97 units left)
+23:44:26 fit-88: running; 23:43:24 fitting dr3_mask_w/M14_27068, seed 20260832
+23:45:33 fitting dr3_mask_w/M27_249882, seed 20260832 (168.41 units left)
+23:46:36 fit-89: running; 23:45:34 fitting dr3_mask_w/M27_249882, seed 20260832
+23:47:43 fitting dr3_mask_w/M16_25285, seed 20260832 (168.41 units left)
+23:48:46 fit-90: running; 23:47:44 fitting dr3_mask_w/M16_25285, seed 20260832
+23:49:42 fitting dr3_mask_w/M18_96616, seed 20260832 (167.85 units left)
+23:50:46 fit-91: running; 23:49:43 fitting dr3_mask_w/M18_96616, seed 20260832
+23:51:42 fitting dr3_mask_w/M13_243871, seed 20260832 (167.85 units left)
+23:52:45 fit-92: running; 23:51:43 fitting dr3_mask_w/M13_243871, seed 20260832
+23:53:53 fitting dr3_mask_w/M11_248829, seed 20260832 (167.85 units left)
+23:54:56 fit-93: running; 23:53:53 fitting dr3_mask_w/M11_248829, seed 20260832
+23:55:52 fitting dr3_mask_w/M12_95303, seed 20260832 (167.27 units left)
+23:56:55 fit-94: running; 23:55:53 fitting dr3_mask_w/M12_95303, seed 20260832
+23:57:52 fitting dr3_mask_w/M26_240536, seed 20260832 (167.27 units left)
+23:58:55 fit-95: running; 23:57:52 fitting dr3_mask_w/M26_240536, seed 20260832
+23:59:52 fitting dr3_mask_w/M9_229883, seed 20260832 (166.73 units left)
+00:00:55 fit-96: running; 23:59:53 fitting dr3_mask_w/M9_229883, seed 20260832
+00:02:02 fitting dr3_mask_w/M4_108989, seed 20260832 (166.73 units left)
+00:03:05 fit-97: running; 00:02:02 fitting dr3_mask_w/M4_108989, seed 20260832
+00:04:01 fitting dr3_mask_w/M23_162810, seed 20260832 (166.73 units left)
+00:05:04 fit-98: running; 00:04:02 fitting dr3_mask_w/M23_162810, seed 20260832
+00:06:11 fitting dr3_mask_w/M4_123161, seed 20260832 (166.15 units left)
+00:07:14 fit-99: running; 00:06:11 fitting dr3_mask_w/M4_123161, seed 20260832
+00:08:16 fit-99: running; 00:06:11 fitting dr3_mask_w/M4_123161, seed 20260832
+00:08:31 fitting dr3_mask_w/M101_126578, seed 20260832 (166.15 units left)
+00:09:34 fit-100: running; 00:08:32 fitting dr3_mask_w/M101_126578, seed 20260832
+00:10:31 fitting dr3_mask_w/M18_181686, seed 20260832 (165.60 units left)
+00:11:34 fit-101: running; 00:10:32 fitting dr3_mask_w/M18_181686, seed 20260832
+00:12:31 fitting dr3_mask_w/M7_147270, seed 20260832 (165.60 units left)
+00:13:34 fit-102: running; 00:12:32 fitting dr3_mask_w/M7_147270, seed 20260832
+00:14:31 fitting dr3_mask_w/M10_227672, seed 20260832 (165.04 units left)
+00:15:33 fit-103: running; 00:14:31 fitting dr3_mask_w/M10_227672, seed 20260832
+00:16:40 fitting dr3_mask_w/M27_259012, seed 20260832 (165.04 units left)
+00:17:43 fit-104: running; 00:16:41 fitting dr3_mask_w/M27_259012, seed 20260832
+00:18:40 fitting dr3_mask_w/M9_214899, seed 20260832 (165.04 units left)
+00:19:43 fit-105: running; 00:18:41 fitting dr3_mask_w/M9_214899, seed 20260832
+00:20:41 fitting dr3_mask_w/M31_259181, seed 20260832 (164.48 units left)
+00:21:43 fit-106: running; 00:20:41 fitting dr3_mask_w/M31_259181, seed 20260832
+00:22:50 fitting dr3_mask_w/M16_31873, seed 20260832 (164.48 units left)
+00:23:53 fit-107: running; 00:22:51 fitting dr3_mask_w/M16_31873, seed 20260832
+00:24:50 fitting dr3_mask_w/M9_227630, seed 20260832 (163.91 units left)
+00:25:53 fit-108: running; 00:24:51 fitting dr3_mask_w/M9_227630, seed 20260832
+00:27:00 fitting dr3_mask_w/M8_163989, seed 20260832 (163.91 units left)
+00:28:03 fit-109: running; 00:27:01 fitting dr3_mask_w/M8_163989, seed 20260832
+00:29:00 fitting dr3_mask_w/M24_190831, seed 20260832 (163.36 units left)
+00:30:03 fit-110: running; 00:29:01 fitting dr3_mask_w/M24_190831, seed 20260832
+00:31:11 fitting dr3_mask_w/M3_117010, seed 20260832 (163.36 units left)
+00:32:14 fit-111: running; 00:31:12 fitting dr3_mask_w/M3_117010, seed 20260832
+00:33:21 fitting dr3_mask_w/M4_120661, seed 20260832 (163.36 units left)
+00:34:24 fit-112: running; 00:33:22 fitting dr3_mask_w/M4_120661, seed 20260832
+00:35:26 fit-112: running; 00:33:22 fitting dr3_mask_w/M4_120661, seed 20260832
+00:36:03 fitting dr3_mask_w/M23_163025, seed 20260832 (162.80 units left)
+00:37:06 fit-113: running; 00:36:03 fitting dr3_mask_w/M23_163025, seed 20260832
+00:38:13 fitting dr3_mask_w/M21_204050, seed 20260832 (162.80 units left)
+00:39:16 fit-114: running; 00:38:13 fitting dr3_mask_w/M21_204050, seed 20260832
+00:40:13 fitting dr3_mask_w/M13_259737, seed 20260832 (162.23 units left)
+00:41:16 fit-115: running; 00:40:14 fitting dr3_mask_w/M13_259737, seed 20260832
+00:42:23 fitting dr3_mask_w/M7_151258, seed 20260832 (162.23 units left)
+00:43:26 fit-116: running; 00:42:24 fitting dr3_mask_w/M7_151258, seed 20260832
+00:44:34 fitting dr3_mask_w/M8_145276, seed 20260832 (161.68 units left)
+00:45:37 fit-117: running; 00:44:35 fitting dr3_mask_w/M8_145276, seed 20260832
+00:46:24 fitting dr3_mask_w/M14_27265, seed 20260832 (161.68 units left)
+00:47:26 fit-118: running; 00:46:24 fitting dr3_mask_w/M14_27265, seed 20260832
+00:48:29 fit-118: running; 00:46:24 fitting dr3_mask_w/M14_27265, seed 20260832
+00:48:44 fitting dr3_mask_w/M12_182890, seed 20260832 (161.68 units left)
+00:49:47 fit-119: running; 00:48:45 fitting dr3_mask_w/M12_182890, seed 20260832
+00:50:44 fitting dr3_mask_w/M27_245661, seed 20260832 (161.11 units left)
+00:51:47 fit-120: running; 00:50:45 fitting dr3_mask_w/M27_245661, seed 20260832
+00:52:54 fitting dr3_mask_w/M18_92132, seed 20260832 (161.11 units left)
+00:53:57 fit-121: running; 00:52:55 fitting dr3_mask_w/M18_92132, seed 20260832
+00:54:54 fitting dr3_mask_w/M27_256994, seed 20260832 (160.56 units left)
+00:55:57 fit-122: running; 00:54:55 fitting dr3_mask_w/M27_256994, seed 20260832
+00:57:04 fitting dr3_mask_w/M4_107370, seed 20260832 (160.56 units left)
+00:58:07 fit-123: running; 00:57:05 fitting dr3_mask_w/M4_107370, seed 20260832
+00:59:04 fitting dr3_mask_w/M16_103061, seed 20260832 (159.99 units left)
+01:00:07 fit-124: running; 00:59:04 fitting dr3_mask_w/M16_103061, seed 20260832
+01:01:04 fitting dr3_mask_w/M1_208622, seed 20260832 (159.99 units left)
+01:02:07 fit-125: running; 01:01:04 fitting dr3_mask_w/M1_208622, seed 20260832
+01:03:04 fitting dr3_mask_w/M14_37219, seed 20260832 (159.99 units left)
+01:04:07 fit-126: running; 01:03:04 fitting dr3_mask_w/M14_37219, seed 20260832
+01:05:04 fitting dr3_mask_w/M17_29406, seed 20260832 (159.42 units left)
+01:06:07 fit-127: running; 01:05:04 fitting dr3_mask_w/M17_29406, seed 20260832
+01:07:14 fitting dr3_mask_w/M16_103417, seed 20260832 (159.42 units left)
+01:08:17 fit-128: running; 01:07:14 fitting dr3_mask_w/M16_103417, seed 20260832
+01:09:13 fitting dr3_mask_w/M24_201669, seed 20260832 (158.88 units left)
+01:10:16 fit-129: running; 01:09:14 fitting dr3_mask_w/M24_201669, seed 20260832
+01:11:13 fitting dr3_mask_w/M7_152125, seed 20260832 (158.88 units left)
+01:12:15 fit-130: running; 01:11:13 fitting dr3_mask_w/M7_152125, seed 20260832
+01:13:12 fitting dr3_mask_w/M101_129358, seed 20260832 (158.88 units left)
+01:14:15 fit-131: running; 01:13:12 fitting dr3_mask_w/M101_129358, seed 20260832
+01:15:22 fitting dr3_mask_w/M32_68126, seed 20260832 (158.29 units left)
+01:16:25 fit-132: running; 01:15:22 fitting dr3_mask_w/M32_68126, seed 20260832
+01:17:21 fitting dr3_mask_w/M19_141436, seed 20260832 (158.29 units left)
+01:18:24 fit-133: running; 01:17:22 fitting dr3_mask_w/M19_141436, seed 20260832
+01:19:11 fitting dr3_mask_w/M10_217020, seed 20260832 (157.75 units left)
+01:20:14 fit-134: running; 01:19:11 fitting dr3_mask_w/M10_217020, seed 20260832
+01:21:10 fitting dr3_mask_w/M13_254350, seed 20260832 (157.75 units left)
+01:22:13 fit-135: running; 01:21:11 fitting dr3_mask_w/M13_254350, seed 20260832
+01:23:20 fitting dr3_mask_w/M14_103366, seed 20260832 (157.75 units left)
+01:24:22 fit-136: running; 01:23:20 fitting dr3_mask_w/M14_103366, seed 20260832
+01:25:19 fitting dr3_mask_w/M8_145294, seed 20260832 (157.19 units left)
+01:26:22 fit-137: running; 01:25:19 fitting dr3_mask_w/M8_145294, seed 20260832
+01:27:29 fitting dr3_mask_w/M7_122025, seed 20260832 (157.19 units left)
+01:28:32 fit-138: running; 01:27:29 fitting dr3_mask_w/M7_122025, seed 20260832
+01:29:28 fitting dr3_mask_w/M11_215711, seed 20260832 (156.63 units left)
+01:30:31 fit-139: running; 01:29:29 fitting dr3_mask_w/M11_215711, seed 20260832
+01:31:33 fit-139: running; 01:29:29 fitting dr3_mask_w/M11_215711, seed 20260832
+01:31:59 fitting dr3_mask_w/M102_206842, seed 20260832 (156.63 units left)
+01:33:02 fit-140: running; 01:31:59 fitting dr3_mask_w/M102_206842, seed 20260832
+01:33:58 fitting dr3_mask_w/M22_169219, seed 20260832 (156.07 units left)
+01:35:01 fit-141: running; 01:33:59 fitting dr3_mask_w/M22_169219, seed 20260832
+01:36:08 fitting dr3_mask_w/M23_158484, seed 20260832 (156.07 units left)
+01:37:11 fit-142: running; 01:36:09 fitting dr3_mask_w/M23_158484, seed 20260832
+01:38:18 fitting dr3_mask_w/M16_27659, seed 20260832 (156.07 units left)
+01:39:21 fit-143: running; 01:38:19 fitting dr3_mask_w/M16_27659, seed 20260832
+01:40:18 fitting dr3_mask_w/M10_217653, seed 20260832 (155.51 units left)
+01:41:21 fit-144: running; 01:40:18 fitting dr3_mask_w/M10_217653, seed 20260832
+01:42:17 fitting dr3_mask_w/M3_119005, seed 20260832 (155.51 units left)
+01:43:20 fit-145: running; 01:42:18 fitting dr3_mask_w/M3_119005, seed 20260832
+01:44:27 fitting dr3_mask_w/M6_233902, seed 20260832 (154.94 units left)
+01:45:30 fit-146: running; 01:44:27 fitting dr3_mask_w/M6_233902, seed 20260832
+01:46:26 fitting dr3_mask_w/M9_232890, seed 20260832 (154.94 units left)
+01:47:30 fit-147: running; 01:46:27 fitting dr3_mask_w/M9_232890, seed 20260832
+01:48:26 fitting dr3_mask_w/M20_77982, seed 20260832 (154.94 units left)
+01:49:29 fit-148: running; 01:48:27 fitting dr3_mask_w/M20_77982, seed 20260832
+01:50:36 fitting dr3_mask_w/M13_231554, seed 20260832 (154.38 units left)
+01:51:39 fit-149: running; 01:50:37 fitting dr3_mask_w/M13_231554, seed 20260832
+01:52:25 fitting dr3_mask_w/M16_4949, seed 20260832 (154.38 units left)
+01:53:28 fit-150: running; 01:52:26 fitting dr3_mask_w/M16_4949, seed 20260832
+01:54:25 fitting dr3_mask_w/M20_87207, seed 20260832 (153.82 units left)
+01:55:28 fit-151: running; 01:54:26 fitting dr3_mask_w/M20_87207, seed 20260832
+01:56:25 fitting dr3_mask_w/M7_162587, seed 20260832 (153.82 units left)
+01:57:28 fit-152: running; 01:56:26 fitting dr3_mask_w/M7_162587, seed 20260832
+01:58:25 fitting dr3_mask_w/M14_36550, seed 20260832 (153.82 units left)
+01:59:28 fit-153: running; 01:58:26 fitting dr3_mask_w/M14_36550, seed 20260832
+02:00:24 fitting dr3_mask_w/M18_181421, seed 20260832 (153.25 units left)
+02:01:27 fit-154: running; 02:00:25 fitting dr3_mask_w/M18_181421, seed 20260832
+02:02:24 fitting dr3_mask_w/M101_209935, seed 20260832 (153.25 units left)
+02:03:27 fit-155: running; 02:02:24 fitting dr3_mask_w/M101_209935, seed 20260832
+02:04:34 fitting dr3_mask_w/M21_189698, seed 20260832 (152.70 units left)
+02:05:37 fit-156: running; 02:04:34 fitting dr3_mask_w/M21_189698, seed 20260832
+02:06:33 fitting dr3_mask_w/M102_223199, seed 20260832 (152.70 units left)
+02:07:36 fit-157: running; 02:06:34 fitting dr3_mask_w/M102_223199, seed 20260832
+02:08:32 fitting dr3_mask_w/M15_76336, seed 20260832 (152.70 units left)
+02:09:35 fit-158: running; 02:08:33 fitting dr3_mask_w/M15_76336, seed 20260832
+02:10:37 fit-158: running; 02:08:33 fitting dr3_mask_w/M15_76336, seed 20260832
+02:10:53 fitting dr3_mask_w/M5_206771, seed 20260832 (152.14 units left)
+02:11:55 fit-159: running; 02:10:53 fitting dr3_mask_w/M5_206771, seed 20260832
+02:12:52 fitting dr3_mask_w/M101_139662, seed 20260832 (152.14 units left)
+02:13:55 fit-160: running; 02:12:53 fitting dr3_mask_w/M101_139662, seed 20260832
+02:14:52 fitting dr3_mask_w/M11_245864, seed 20260832 (151.58 units left)
+02:15:55 fit-161: running; 02:14:52 fitting dr3_mask_w/M11_245864, seed 20260832
+02:17:02 fitting dr3_mask_w/M11_216899, seed 20260832 (151.58 units left)
+02:18:05 fit-162: running; 02:17:02 fitting dr3_mask_w/M11_216899, seed 20260832
+02:19:12 fitting dr3_mask_w/M1_133240, seed 20260832 (151.02 units left)
+02:20:15 fit-163: running; 02:19:12 fitting dr3_mask_w/M1_133240, seed 20260832
+02:21:01 fitting dr3_mask_w/M20_79475, seed 20260832 (151.02 units left)
+02:22:03 fit-164: running; 02:21:01 fitting dr3_mask_w/M20_79475, seed 20260832
+02:23:00 fitting dr3_mask_w/M8_156118, seed 20260832 (151.02 units left)
+02:24:03 fit-165: running; 02:23:01 fitting dr3_mask_w/M8_156118, seed 20260832
+02:25:00 fitting dr3_mask_w/M9_225678, seed 20260832 (150.44 units left)
+02:26:03 fit-166: running; 02:25:00 fitting dr3_mask_w/M9_225678, seed 20260832
+02:27:10 fitting dr3_mask_w/M19_57080, seed 20260832 (150.44 units left)
+02:28:13 fit-167: running; 02:27:11 fitting dr3_mask_w/M19_57080, seed 20260832
+02:29:10 fitting dr3_mask_w/M101_126153, seed 20260832 (149.89 units left)
+02:30:13 fit-168: running; 02:29:10 fitting dr3_mask_w/M101_126153, seed 20260832
+02:31:09 fitting dr3_mask_w/M18_182962, seed 20260832 (149.89 units left)
+02:32:12 fit-169: running; 02:31:10 fitting dr3_mask_w/M18_182962, seed 20260832
+02:33:09 fitting dr3_mask_w/M23_150680, seed 20260832 (149.89 units left)
+02:34:12 fit-170: running; 02:33:10 fitting dr3_mask_w/M23_150680, seed 20260832
+02:34:58 fitting dr3_mask_w/M20_76593, seed 20260832 (149.34 units left)
+02:36:00 fit-171: running; 02:34:58 fitting dr3_mask_w/M20_76593, seed 20260832
+02:37:08 fitting dr3_mask_w/M17_140425, seed 20260832 (149.34 units left)
+02:38:11 fit-172: running; 02:37:08 fitting dr3_mask_w/M17_140425, seed 20260832
+02:39:18 fitting dr3_mask_w/M10_215290, seed 20260832 (148.77 units left)
+02:40:21 fit-173: running; 02:39:19 fitting dr3_mask_w/M10_215290, seed 20260832
+02:41:08 fitting dr3_mask_w/M30_65982, seed 20260832 (148.77 units left)
+02:42:11 fit-174: running; 02:41:08 fitting dr3_mask_w/M30_65982, seed 20260832
+02:43:13 fit-174: running; 02:41:08 fitting dr3_mask_w/M30_65982, seed 20260832
+02:43:29 fitting dr3_mask_w/M17_57237, seed 20260832 (148.77 units left)
+02:44:32 fit-175: running; 02:43:29 fitting dr3_mask_w/M17_57237, seed 20260832
+02:45:28 fitting dr3_mask_w/M10_201233, seed 20260832 (148.21 units left)
+02:46:31 fit-176: running; 02:45:29 fitting dr3_mask_w/M10_201233, seed 20260832
+02:47:28 fitting dr3_mask_w/M12_101089, seed 20260832 (148.21 units left)
+02:48:31 fit-177: running; 02:47:29 fitting dr3_mask_w/M12_101089, seed 20260832
+02:49:28 fitting dr3_mask_w/M3_119809, seed 20260832 (147.66 units left)
+02:50:31 fit-178: running; 02:49:28 fitting dr3_mask_w/M3_119809, seed 20260832
+02:51:28 fitting dr3_mask_w/M102_211117, seed 20260832 (147.66 units left)
+02:52:30 fit-179: running; 02:51:28 fitting dr3_mask_w/M102_211117, seed 20260832
+02:53:27 fitting dr3_mask_w/M14_39865, seed 20260832 (147.66 units left)
+02:54:30 fit-180: running; 02:53:27 fitting dr3_mask_w/M14_39865, seed 20260832
+02:55:37 fitting dr3_mask_w/M15_89072, seed 20260832 (147.10 units left)
+02:56:40 fit-181: running; 02:55:38 fitting dr3_mask_w/M15_89072, seed 20260832
+02:57:37 fitting dr3_mask_w/M18_185040, seed 20260832 (147.10 units left)
+02:58:40 fit-182: running; 02:57:38 fitting dr3_mask_w/M18_185040, seed 20260832
+02:59:36 fitting dr3_mask_w/M30_54494, seed 20260832 (146.53 units left)
+03:00:39 fit-183: running; 02:59:37 fitting dr3_mask_w/M30_54494, seed 20260832
+03:01:47 fitting dr3_mask_w/M102_214145, seed 20260832 (146.53 units left)
+03:02:50 fit-184: running; 03:01:47 fitting dr3_mask_w/M102_214145, seed 20260832
+03:03:47 fitting dr3_mask_w/M23_151373, seed 20260832 (146.53 units left)
+03:04:50 fit-185: running; 03:03:48 fitting dr3_mask_w/M23_151373, seed 20260832
+03:05:37 fitting dr3_mask_w/M23_143947, seed 20260832 (145.97 units left)
+03:06:39 fit-186: running; 03:05:37 fitting dr3_mask_w/M23_143947, seed 20260832
+03:07:36 fitting dr3_mask_w/M18_91497, seed 20260832 (145.97 units left)
+03:08:39 fit-187: running; 03:07:37 fitting dr3_mask_w/M18_91497, seed 20260832
+03:09:36 fitting dr3_mask_w/M16_29691, seed 20260832 (145.41 units left)
+03:10:39 fit-188: running; 03:09:37 fitting dr3_mask_w/M16_29691, seed 20260832
+03:11:36 fitting dr3_mask_w/M31_253516, seed 20260832 (145.41 units left)
+03:12:39 fit-189: running; 03:11:36 fitting dr3_mask_w/M31_253516, seed 20260832
+03:13:36 fitting dr3_mask_w/M17_64957, seed 20260832 (145.41 units left)
+03:14:39 fit-190: running; 03:13:36 fitting dr3_mask_w/M17_64957, seed 20260832
+03:15:36 fitting dr3_mask_w/M12_185631, seed 20260832 (144.85 units left)
+03:16:39 fit-191: running; 03:15:37 fitting dr3_mask_w/M12_185631, seed 20260832
+03:17:35 fitting dr3_mask_w/M14_104877, seed 20260832 (144.85 units left)
+03:18:38 fit-192: running; 03:17:36 fitting dr3_mask_w/M14_104877, seed 20260832
+03:19:35 fitting dr3_mask_w/M4_112534, seed 20260832 (144.27 units left)
+03:20:38 fit-193: running; 03:19:36 fitting dr3_mask_w/M4_112534, seed 20260832
+03:21:39 Colab: 194 of 194 cell(s) complete; pending: none
+03:22:23 local figures rebuilt for dr3_mask_w/M2_133501
+03:23:10 local figures rebuilt for dr3_mask_w/M2_210716
+03:23:51 local figures rebuilt for dr3_mask_w/M1_210210
+03:24:36 local figures rebuilt for dr3_mask_w/M12_181945
+03:25:17 local figures rebuilt for dr3_mask_w/M27_247278
+03:25:57 local figures rebuilt for dr3_mask_w/M16_32559
+03:26:40 local figures rebuilt for dr3_mask_w/M19_57389
+03:27:23 local figures rebuilt for dr3_mask_w/M16_72617
+03:28:05 local figures rebuilt for dr3_mask_w/M9_231276
+03:28:45 local figures rebuilt for dr3_mask_w/M2_134021
+03:29:30 local figures rebuilt for dr3_mask_w/M1_205742
+03:30:10 local figures rebuilt for dr3_mask_w/M4_86744
+03:30:53 local figures rebuilt for dr3_mask_w/M8_162149
+03:31:36 local figures rebuilt for dr3_mask_w/M24_202009
+03:32:16 local figures rebuilt for dr3_mask_w/M30_55118
+03:32:56 local figures rebuilt for dr3_mask_w/M4_117400
+03:33:37 local figures rebuilt for dr3_mask_w/M18_96346
+03:34:19 local figures rebuilt for dr3_mask_w/M19_59396
+03:35:02 local figures rebuilt for dr3_mask_w/M11_213004
+03:35:42 local figures rebuilt for dr3_mask_w/M19_71670
+03:36:21 local figures rebuilt for dr3_mask_w/M11_257455
+03:37:00 local figures rebuilt for dr3_mask_w/M11_218207
+03:37:41 local figures rebuilt for dr3_mask_w/M11_215585
+03:38:21 local figures rebuilt for dr3_mask_w/M5_205715
+03:39:04 local figures rebuilt for dr3_mask_w/M1_206858
+03:39:45 local figures rebuilt for dr3_mask_w/M13_232627
+03:40:24 local figures rebuilt for dr3_mask_w/M4_124231
+03:41:06 local figures rebuilt for dr3_mask_w/M12_91529
+03:41:49 local figures rebuilt for dr3_mask_w/M30_59531
+03:42:36 local figures rebuilt for dr3_mask_w/M8_164459
+03:43:16 local figures rebuilt for dr3_mask_w/M11_229551
+03:43:57 local figures rebuilt for dr3_mask_w/M5_236682
+03:44:37 local figures rebuilt for dr3_mask_w/M19_65494
+03:45:17 local figures rebuilt for dr3_mask_w/M6_234538
+03:46:01 local figures rebuilt for dr3_mask_w/M20_86906
+03:46:42 local figures rebuilt for dr3_mask_w/M30_60369
+03:47:22 local figures rebuilt for dr3_mask_w/M27_258059
+03:48:05 local figures rebuilt for dr3_mask_w/M15_77632
+03:48:46 local figures rebuilt for dr3_mask_w/M1_139423
+03:49:25 local figures rebuilt for dr3_mask_w/M5_211347
+03:50:05 local figures rebuilt for dr3_mask_w/M3_111390
+03:50:43 local figures rebuilt for dr3_mask_w/M7_124875
+03:51:25 local figures rebuilt for dr3_mask_w/M11_232962
+03:52:05 local figures rebuilt for dr3_mask_w/M18_182407
+03:52:48 local figures rebuilt for dr3_mask_w/M15_77745
+03:53:27 local figures rebuilt for dr3_mask_w/M27_260083
+03:54:06 local figures rebuilt for dr3_mask_w/M3_120308
+03:54:44 local figures rebuilt for dr3_mask_w/M2_129596
+03:55:30 local figures rebuilt for dr3_mask_w/M9_232005
+03:56:12 local figures rebuilt for dr3_mask_w/M10_225441
+03:56:53 local figures rebuilt for dr3_mask_w/M8_147539
+03:57:30 local figures rebuilt for dr3_mask_w/M19_69529
+03:58:09 local figures rebuilt for dr3_mask_w/M22_239682
+03:58:49 local figures rebuilt for dr3_mask_w/M13_248217
+03:59:31 local figures rebuilt for dr3_mask_w/M27_256211
+04:00:11 local figures rebuilt for dr3_mask_w/M14_31835
+04:00:51 local figures rebuilt for dr3_mask_w/M4_125213
+04:01:36 local figures rebuilt for dr3_mask_w/M10_227516
+04:02:17 local figures rebuilt for dr3_mask_w/M24_189449
+04:02:55 local figures rebuilt for dr3_mask_w/M7_147849
+04:03:34 local figures rebuilt for dr3_mask_w/M9_212391
+04:04:13 local figures rebuilt for dr3_mask_w/M5_165871
+04:04:54 local figures rebuilt for dr3_mask_w/M10_231544
+04:05:37 local figures rebuilt for dr3_mask_w/M24_191051
+04:06:19 local figures rebuilt for dr3_mask_w/M9_213587
+04:07:00 local figures rebuilt for dr3_mask_w/M102_222287
+04:07:44 local figures rebuilt for dr3_mask_w/M18_95324
+04:08:25 local figures rebuilt for dr3_mask_w/M22_167853
+04:09:05 local figures rebuilt for dr3_mask_w/M17_40840
+04:09:46 local figures rebuilt for dr3_mask_w/M18_94726
+04:10:30 local figures rebuilt for dr3_mask_w/M27_261268
+04:11:08 local figures rebuilt for dr3_mask_w/M15_88032
+04:11:47 local figures rebuilt for dr3_mask_w/M101_205687
+04:12:28 local figures rebuilt for dr3_mask_w/M7_122242
+04:13:06 local figures rebuilt for dr3_mask_w/M13_244239
+04:13:47 local figures rebuilt for dr3_mask_w/M3_109713
+04:14:34 local figures rebuilt for dr3_mask_w/M6_237437
+04:15:12 local figures rebuilt for dr3_mask_w/M3_107362
+04:15:53 local figures rebuilt for dr3_mask_w/M22_174436
+04:16:35 local figures rebuilt for dr3_mask_w/M10_230319
+04:17:16 local figures rebuilt for dr3_mask_w/M20_87121
+04:17:55 local figures rebuilt for dr3_mask_w/M12_185653
+04:18:36 local figures rebuilt for dr3_mask_w/M14_37723
+04:19:14 local figures rebuilt for dr3_mask_w/M3_109352
+04:19:54 local figures rebuilt for dr3_mask_w/M13_230747
+04:20:33 local figures rebuilt for dr3_mask_w/M4_107643
+04:21:13 local figures rebuilt for dr3_mask_w/M24_203503
+04:21:55 local figures rebuilt for dr3_mask_w/M10_197591
+04:22:36 local figures rebuilt for dr3_mask_w/M14_27068
+04:23:17 local figures rebuilt for dr3_mask_w/M27_249882
+04:23:55 local figures rebuilt for dr3_mask_w/M16_25285
+04:24:33 local figures rebuilt for dr3_mask_w/M18_96616
+04:25:13 local figures rebuilt for dr3_mask_w/M13_243871
+04:25:52 local figures rebuilt for dr3_mask_w/M11_248829
+04:26:30 local figures rebuilt for dr3_mask_w/M12_95303
+04:27:07 local figures rebuilt for dr3_mask_w/M26_240536
+04:27:48 local figures rebuilt for dr3_mask_w/M9_229883
+04:28:27 local figures rebuilt for dr3_mask_w/M4_108989
+04:29:08 local figures rebuilt for dr3_mask_w/M23_162810
+04:29:50 local figures rebuilt for dr3_mask_w/M4_123161
+04:30:30 local figures rebuilt for dr3_mask_w/M101_126578
+04:31:10 local figures rebuilt for dr3_mask_w/M18_181686
+04:31:48 local figures rebuilt for dr3_mask_w/M7_147270
+Traceback (most recent call last):
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 764, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 757, in main
+    regenerate_figures(args.output)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 277, in regenerate_figures
+    subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'),
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    'scripts/regenerate_fit_notebooks.py',
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    '--settings-override', json.dumps(settings),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    '--priors-override', json.dumps(cell['priors']), str(directory)],
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   cwd=ROOT, check=True, capture_output=True, text=True, timeout=3600)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2153, in _communicate
+    ready = selector.select(timeout)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 762, in <lambda>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+                                             ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/liuhao/Downloads/Astro project/scripts/experiment.py", line 762, in <genexpr>
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+KeyboardInterrupt
