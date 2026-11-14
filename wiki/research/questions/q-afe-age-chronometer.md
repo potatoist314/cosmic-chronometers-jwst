@@ -13,7 +13,7 @@ status: open
 
 - **LEGA-C DR3, common window, 194 galaxies:** slope −5.04 plain, −5.15 C/N free, −4.26 carbon mask; Planck18 −5.23.
 - **Carbon mask:** median \([\alpha/\mathrm{Fe}]\) +0.23 against +0.13 plain; slope 1.5σ shallower than Planck18.
-- **Mocks on the same window:** true slope −5.42 gives −5.13 (174 of 194 mocks).
+- **Mocks on the same window:** true slope −5.23 gives −5.12 (194 mocks).
 
 A mock is a synthetic spectrum and photometry with a known age, made at a real galaxy's redshift, S/N and window and fitted with the plain arm.
 
@@ -33,8 +33,8 @@ A mock is a synthetic spectrum and photometry with a known age, made at a real g
 | C/N free, \(N=194\) | −5.15 (−5.78 to −4.53) | 110 (98 to 125) | +0.16 |
 | Carbon mask, \(N=194\) | −4.26 (−4.90 to −3.62) | 133 (116 to 156) | +0.23 |
 | Planck18 | −5.23 | 108 | |
-| Mock truth, \(N=174\) | −5.42 | 105 | +0.20 |
-| Mock recovered, \(N=174\) | −5.13 (−5.48 to −4.78) | 110 (103 to 119) | +0.21 |
+| Mock truth, \(N=194\) | −5.23 | 108 | +0.20 |
+| Mock recovered, \(N=194\) | −5.12 (−5.36 to −4.88) | 111 (106 to 116) | +0.21 |
 
 <details>
 <summary>LEGA-C DR2, 2026-11-10</summary>

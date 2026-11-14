@@ -1545,3 +1545,8 @@
 
 - Pages: `research/questions/q-afe-age-chronometer.md`
 - Change: age-redshift figure of the three DR3 window arms, mock chronometer figure, one slope table; DR2 tables collapsed; figures in `analyses/afe-age-chronometer/`; card t_785695c2.
+
+## [2026-11-14] query | Chronometer findings page: all 194 mocks
+
+- Pages: `research/questions/q-afe-age-chronometer.md`
+- Change: mock figure, mock table rows and mock answer line use all 194 mock fits; card t_00cad0b0.
