@@ -1,0 +1,14 @@
+{
+  "id": "7b1e6c1e-3f0a-4f6e-9a55-2d1a6f0c9e41",
+  "sequence": 16,
+  "date": "2026-11-14T22:30:00.552162+00:00",
+  "origin": "chat",
+  "action": "note",
+  "text": "Mock chronometer on the common rest window (4074.5-4666.1 A): 194 mocks at the redshifts, wavelength coverage and noise of the DR3 window sample, one formation time, four SFH shapes (49/49/48/48), plain grid, seed 20260832. True slope -5.23 Gyr per unit z; recovered -5.12 (16-84% -5.36 to -4.88; 95% -5.59 to -4.65), ratio 0.98, scatter 0.33 Gyr. Median age bias +0.62 Gyr; by redshift third +0.60, +0.65, +0.62; by S/N third +0.59, +0.70, +0.65. Age truth inside 16-84% in 59 of 194. Median [alpha/Fe] bias +0.005, [Fe/H] +0.03. Per-shape slope ratios 0.95-1.03. The 0.87 ratio of experiment 11 (30 fits, 10 galaxies) is not reproduced.",
+  "evidence": [
+    "results/mock-chronometer-window-2026-11-13/slopes.csv",
+    "results/mock-chronometer-window-2026-11-13/age-bias-thirds.csv",
+    "results/mock-chronometer-window-2026-11-13/per-mock.csv"
+  ],
+  "pages": []
+}
