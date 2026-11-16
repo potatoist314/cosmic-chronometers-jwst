@@ -154,7 +154,9 @@ print(json.dumps(manifest))
     source.update(grids=list(grids.values()), experiment=cells)
     bootstrap = engine.git('show', f'{revision}:scripts/bootstrap_vast_ai.sh')
     if 'input-files.json' in bootstrap:
-        inputs = selected_inputs(cells)
+        # Outside the ACS mosaic a target has no F814W cutout; only the local figures read it.
+        inputs = [name for name in selected_inputs(cells)
+                  if '/hst_f814w/' not in name or (ROOT / name).is_file()]
         for name in inputs:
             if not (ROOT / name).is_file():
                 raise ValueError(f'missing selected input: {name}')

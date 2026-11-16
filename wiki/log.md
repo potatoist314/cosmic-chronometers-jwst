@@ -1555,3 +1555,8 @@
 
 - Pages: `notes/model.md`, `research/questions/q-afe-age-chronometer.md`
 - Change: model row `cn-responses` gains one plain explanation with the response equation and the carbon-mask comparison; chronometer page links it, states C/N free is carried forward and adds the 40-mock C/N-free row; card t_9d172164.
+
+## [2026-11-16] codebase | Fit notebook setting `sigma_err_fraction`
+
+- Pages: none; the settings table reads the notebook cell.
+- Change: `sigma_err_fraction` (default `None`) sets the σ★ error to that fraction of σ★ where the LEGA-C catalogue error is NaN; `experiment.py` preflight skips an HST cutout that does not exist; card t_bc7fff3c.
