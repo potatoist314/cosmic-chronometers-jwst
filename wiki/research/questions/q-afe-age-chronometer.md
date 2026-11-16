@@ -11,16 +11,16 @@ status: open
 
 ### Answer
 
-- **LEGA-C DR3, common window, 194 galaxies:** slope −5.04 plain, −5.15 C/N free, −4.26 carbon mask; Planck18 −5.23.
-- **Carbon mask:** median \([\alpha/\mathrm{Fe}]\) +0.23 against +0.13 plain; slope 1.5σ shallower than Planck18.
+- **LEGA-C DR3, common window, 194 galaxies:** slope −5.04 plain, −5.15 C/N free, −4.26 carbon mask; same line fit to Planck18 ages −5.23.
+- **Carbon mask:** median \([\alpha/\mathrm{Fe}]\) +0.23 against +0.13 plain; slope 1.5σ shallower than the same line fit to Planck18 ages.
 - **Mocks on the same window:** true slope −5.23 gives −5.12 (194 mocks).
 - **Carried forward:** C/N free. Liu Hao, 2026-11-16: “sure cn free seems good to carry on”.
 
 A mock is a synthetic spectrum and photometry with a known age, made at a real galaxy's redshift, S/N and window and fitted with the plain arm.
 
 <figure>
-<img src="wiki/analyses/afe-age-chronometer/age-redshift-dr3.png" alt="Mass-weighted age against redshift, 194 LEGA-C DR3 galaxies, plain, C/N-free and carbon-mask arms, with fitted lines and Planck18">
-<figcaption>LEGA-C DR3, rest frame 4074.5–4666.1 Å. C/N free: \([\mathrm{C}/\mathrm{Fe}]\), \([\mathrm{N}/\mathrm{Fe}]\) free (<a href="wiki/notes/model.md#cn-responses">alf responses</a>). Carbon mask: CN4150, G4300, Fe4383, C4668 masked. Otherwise as plain. Dashed: Planck18 slope through each arm's mean.</figcaption>
+<img src="wiki/analyses/afe-age-chronometer/age-redshift-dr3.png" alt="Mass-weighted age against redshift, 194 LEGA-C DR3 galaxies, three arms, with fitted lines and the same line fit to Planck18 ages">
+<figcaption>LEGA-C DR3, rest frame 4074.5–4666.1 Å. C/N free: \([\mathrm{C}/\mathrm{Fe}]\), \([\mathrm{N}/\mathrm{Fe}]\) free (<a href="wiki/notes/model.md#cn-responses">alf responses</a>). Carbon mask: CN4150, G4300, Fe4383, C4668 masked. Otherwise as plain. Dashed: same line fit to Planck18 ages, through each arm's mean.</figcaption>
 </figure>
 
 <figure>
@@ -33,7 +33,8 @@ A mock is a synthetic spectrum and photometry with a known age, made at a real g
 | Plain, \(N=194\) | −5.04 (−5.70 to −4.39) | 112 (99 to 129) | +0.13 |
 | [C/N free](wiki/notes/model.md#cn-responses), \(N=194\) | −5.15 (−5.78 to −4.53) | 110 (98 to 125) | +0.16 |
 | Carbon mask, \(N=194\) | −4.26 (−4.90 to −3.62) | 133 (116 to 156) | +0.23 |
-| Planck18 | −5.23 | 108 | |
+| Planck18 ages, same line fit | −5.23 | 108 |  |
+| Planck18 at \(z=0.728\), \(H_0=67.66\) | −5.52 | 102.5 |  |
 | Mock truth, \(N=194\) | −5.23 | 108 | +0.20 |
 | Mock recovered, \(N=194\) | −5.12 (−5.36 to −4.88) | 111 (106 to 116) | +0.21 |
 | Mock C/N free, \(N=40\), true −5.35 | −5.04 (−5.47 to −4.57) |  | +0.20 |

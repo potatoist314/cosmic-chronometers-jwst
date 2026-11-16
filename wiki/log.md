@@ -1560,3 +1560,8 @@
 
 - Pages: none; the settings table reads the notebook cell.
 - Change: `sigma_err_fraction` (default `None`) sets the σ★ error to that fraction of σ★ where the LEGA-C catalogue error is NaN; `experiment.py` preflight skips an HST cutout that does not exist; card t_bc7fff3c.
+
+## [2026-11-16] query | Chronometer page: Planck18 row relabelled
+
+- Pages: `research/questions/q-afe-age-chronometer.md`
+- Change: the Planck18 row, answer lines, caption and figure label name the same line fit to Planck18 ages (−5.23, 108); new row Planck18 at \(z=0.728\): \(H=102.5\), \(\mathrm{d}t/\mathrm{d}z=-5.52\), \(H_0=67.66\), from astropy in `scripts/plot_afe_age_chronometer.py`; card t_71a6005a.

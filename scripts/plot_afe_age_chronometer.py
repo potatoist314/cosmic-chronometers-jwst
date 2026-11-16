@@ -11,6 +11,8 @@ import importlib.util
 import json
 from pathlib import Path
 
+import astropy.units as u
+from astropy.cosmology import Planck18
 import h5py
 import matplotlib
 
@@ -37,6 +39,7 @@ from scripts.experiment import validate_result  # noqa: E402
 
 COSMO = resolve_cosmology(None)  # Planck18, as the slope analyses
 AGE = "mass-weighted age [Gyr]"
+PLANCK_FIT = "Planck18 ages, same line fit"  # the arms' least-squares line applied to the Planck18 age at each galaxy's z
 
 
 def real_ages():
@@ -75,7 +78,8 @@ def hubble(slope, z):
 
 
 def table(mock):
-    """Markdown rows: slope, H and median [α/Fe] per arm, the Planck18 line, and the mock truth and recovery."""
+    """Markdown rows: slope, H and median [α/Fe] per arm; Planck18 ages through the same line fit, and Planck18 dt/dz and
+    H at the median z (astropy); the mock truth and recovery."""
     slopes = pd.read_csv(MASK / "age-redshift-slopes.csv").query("group == 'all'").set_index("arm")
     span = lambda a, b, c: f"{a:.2f} ({b:.2f} to {c:.2f})"
     rows = []
@@ -84,7 +88,10 @@ def table(mock):
         rows.append((f"{label}, \\(N={s.galaxies}\\)", span(s.slope_gyr_per_z, s.bootstrap_q16, s.bootstrap_q84),
                      f"{s.H_kms_mpc:.0f} ({s.H_from_q16:.0f} to {s.H_from_q84:.0f})", f"{s.median_afe:+.2f}"))
     s = slopes.loc["plain"]
-    rows.append(("Planck18", f"{s.planck18_line_slope:.2f}", f"{hubble(s.planck18_line_slope, s.z_median):.0f}", ""))
+    rows.append((PLANCK_FIT, f"{s.planck18_line_slope:.2f}", f"{hubble(s.planck18_line_slope, s.z_median):.0f}", ""))
+    H = Planck18.H(s.z_median)
+    rows.append((f"Planck18 at \\(z={s.z_median:.3f}\\), \\(H_0={Planck18.H0.to_value(u.km / u.s / u.Mpc):.2f}\\)",
+                 f"{-(1 / ((1 + s.z_median) * H)).to_value(u.Gyr):.2f}", f"{H.to_value(u.km / u.s / u.Mpc):.1f}", ""))
     z, z_med = mock.z.to_numpy(), float(mock.z.median())
     true, fit = mocks.line_fit(z, mock.true_age_gyr.to_numpy()), mocks.line_fit(z, mock.age_q50.to_numpy())
     rows.append((f"Mock truth, \\(N={len(mock)}\\)", f"{true['slope']:.2f}", f"{hubble(true['slope'], z_med):.0f}", f"{mocks.TRUE_AFE:+.2f}"))
@@ -196,7 +203,7 @@ def age_redshift_figure(real):
                 fig.add_subplot(grid[1, 1], sharex=first, sharey=first)]
         rows = [(name, colour, fit.slope_gyr_per_z[arm], fit.bootstrap_q16[arm], fit.bootstrap_q84[arm], True)
                 for arm, (name, colour) in ARMS.items()]
-        _slope_strip(strip, rows, ref, f"Planck18 {_num(ref)}", (-6.2, -3.0))
+        _slope_strip(strip, rows, ref, f"{PLANCK_FIT} {_num(ref)}", (-6.2, -3.0))
         for ax, (arm, (name, colour)) in zip(axes, ARMS.items()):
             g = real[real.arm == arm]
             assert np.isclose(mocks.line_fit(g.z.to_numpy(), g.age_gyr_q50.to_numpy())["slope"], fit.slope_gyr_per_z[arm])
@@ -212,7 +219,7 @@ def age_redshift_figure(real):
             ax.set_xlabel(REDSHIFT)
             ax.set_ylabel(AGE_LABEL)
         axes[2].set_ylabel("")
-        _key(axes[0], [("Planck18 slope", INK, True)], top=0.07)
+        _key(axes[0], [(PLANCK_FIT, INK, True)], top=0.07)
     return fig
 
 
