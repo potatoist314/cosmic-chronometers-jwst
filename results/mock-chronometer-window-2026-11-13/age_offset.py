@@ -4,8 +4,9 @@
     ceridwen/.venv/bin/python results/mock-chronometer-window-2026-11-13/age_offset.py per-mock
     ceridwen/.venv/bin/python results/mock-chronometer-window-2026-11-13/age_offset.py summarize
 
-Per mock: the posterior mass in each SFH bin against the true formation window, the age of the SFH prior
-alone, and the production likelihood of the exact truth and of the best fits at fixed age.
+Per mock: the posterior mass in each SFH bin against the true formation window, the part of the offset that
+the fit's own bins give with the true SFH put into them (binning) and the part that is left, the age of the SFH
+prior alone, and the production likelihood of the exact truth and of the best fits at fixed age.
 """
 from __future__ import annotations
 
@@ -23,6 +24,7 @@ from jax.flatten_util import ravel_pytree
 import nbformat
 import numpy as np
 from scipy.optimize import minimize
+from scipy.stats import linregress
 
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
 import mocks
@@ -34,11 +36,12 @@ from ceridwen.sampler.priors import StudentT
 EARLIER = ROOT / "results/cn-response-2026-11-10/prior-slope"  # Experiment 9: prior scale 0.3 (P) and 1.0 (W)
 PRIOR_SEED = 20261116
 PER_MOCK, SUMMARY = OUT / "age-offset-per-mock.csv", OUT / "age-offset.csv"
-FIELDS = ("target shape z universe_age_gyr true_age_gyr age_q16 age_q50 age_q84 age_bias_gyr age_mean_bias_gyr older_bins mass_older "
-          "term_older_gyr term_younger_gyr term_overlap_gyr binned_truth_bias_gyr mass_last ratio13_q50 ratio14_q16 "
-          "ratio14_q50 ratio14_q84 prior_age_q16 prior_age_q50 prior_age_q84 lnl_truth lnl_posterior_q50 "
-          "lnl_posterior_max lnl_check_max_abs lnl_free age_free_gyr lnl_true_age lnl_posterior_age lnl_mirror_age "
-          "lnl_no_older age_no_older_gyr").split()
+LIKELIHOOD = ("lnl_truth lnl_posterior_q50 lnl_posterior_max lnl_check_max_abs lnl_free age_free_gyr lnl_true_age "
+              "lnl_posterior_age lnl_mirror_age lnl_no_older age_no_older_gyr").split()
+FIELDS = ("target shape z universe_age_gyr true_age_gyr age_q16 age_q50 age_q84 age_bias_gyr age_mean_bias_gyr "
+          "binned_truth_bias_gyr age_bias_minus_binned_truth_gyr older_bins mass_older truth_mass_older older_gap_gyr "
+          "term_older_gyr term_younger_gyr term_overlap_gyr age_bias_other_bins_gyr age_bias_at_zero_older_gyr mass_last "
+          "ratio13_q50 ratio14_q16 ratio14_q50 ratio14_q84 prior_age_q16 prior_age_q50 prior_age_q84").split() + LIKELIHOOD
 
 
 def masses(ratios, edges):
@@ -68,13 +71,25 @@ def posterior(result, mock):
     younger = edges[1:] <= times[:-1][fine > 0].min() + 1e-9
     mean_mass, shift = weights @ mass, mid - true_age
     quantile = lambda values: weighted_quantiles(values, log_weights, (0.16, 0.5, 0.84))
+    # Binning: the bin-midpoint age of the true SFH put into the fit bins, against the true age.
+    binned_truth_bias = float(truth_mass @ mid) - true_age
+    # Across the posterior samples: weighted least squares of age on the mass in the older bins, read at zero mass.
+    sample_older = mass[:, older].sum(axis=1)
+    centred = sample_older - weights @ sample_older
+    slope = (weights @ (centred * age)) / (weights @ centred**2)
     row = dict(true_age_gyr=true_age, **dict(zip(("age_q16", "age_q50", "age_q84"), quantile(age))),
                age_bias_gyr=quantile(age)[1] - true_age,
-               age_mean_bias_gyr=float(weights @ age) - true_age, older_bins=int(older.sum()),
-               mass_older=float(mean_mass[older].sum()), term_older_gyr=float(mean_mass[older] @ shift[older]),
+               age_mean_bias_gyr=float(weights @ age) - true_age, binned_truth_bias_gyr=binned_truth_bias,
+               age_bias_minus_binned_truth_gyr=quantile(age)[1] - true_age - binned_truth_bias, older_bins=int(older.sum()),
+               mass_older=float(mean_mass[older].sum()), truth_mass_older=float(truth_mass[older].sum()),
+               older_gap_gyr=float(edges[:-1][older].min() - times[1:][fine > 0].max()),
+               term_older_gyr=float(mean_mass[older] @ shift[older]),
                term_younger_gyr=float(mean_mass[younger] @ shift[younger]),
                term_overlap_gyr=float(mean_mass[~older & ~younger] @ shift[~older & ~younger]),
-               binned_truth_bias_gyr=float(truth_mass @ mid) - true_age, mass_last=float(mean_mass[-1]),
+               # Mean age of the posterior-mean mass outside the older bins.
+               age_bias_other_bins_gyr=float(mean_mass[~older] @ mid[~older] / mean_mass[~older].sum()) - true_age,
+               age_bias_at_zero_older_gyr=float(weights @ age - slope * (weights @ sample_older)) - true_age,
+               mass_last=float(mean_mass[-1]),
                ratio13_q50=quantile(ratios[:, 12])[1],
                **dict(zip(("ratio14_q16", "ratio14_q50", "ratio14_q84"), quantile(ratios[:, 13]))))
     return row, dict(ratios=ratios, weights=weights, lnl=lnl, edges=edges, age=age, older=older, mass=mass,
@@ -169,7 +184,8 @@ def row_path(row):
     return row_path.paths[row["target"]]
 
 
-def one(row):
+def one(job):
+    row, stored = job
     truth = json.loads((OUT / "truths" / f'{row["target"]}.json').read_text())
     mock = dict(np.load(ROOT / truth["mock"]))
     stats, fit = posterior(ROOT / row_path(row) / "ceridwen_result.h5", mock)
@@ -177,21 +193,21 @@ def one(row):
     prior = prior_ages(fit["edges"])
     out = dict(target=row["target"], shape=row["shape"], z=row["z"], universe_age_gyr=truth["universe_age_gyr"], **stats,
                prior_age_q16=prior[0], prior_age_q50=prior[1], prior_age_q84=prior[2],
-               **likelihood(row, truth, mock, dict(fit, true_age=stats["true_age_gyr"], age_q50=stats["age_q50"])))
+               **(stored or likelihood(row, truth, mock, dict(fit, true_age=stats["true_age_gyr"], age_q50=stats["age_q50"]))))
     return {name: out[name] for name in FIELDS}
 
 
-def per_mock(workers, limit):
-    done = {r["target"] for r in csv.DictReader(PER_MOCK.open())} if PER_MOCK.exists() else set()
-    rows = [r for r in mocks.read_design() if r["target"] not in done][:limit]
-    with PER_MOCK.open("a", newline="") as stream, ProcessPoolExecutor(workers, multiprocessing.get_context("spawn")) as pool:
-        writer = csv.DictWriter(stream, fieldnames=FIELDS)
-        if not done:
-            writer.writeheader()
-        for count, result in enumerate(pool.map(one, rows), 1):
-            writer.writerow(result)
-            stream.flush()
-            print(count, len(rows), result["target"], flush=True)
+def per_mock(workers):
+    """One row per mock. The likelihood columns of a mock already in the table are kept, not run again."""
+    stored = ({r["target"]: {k: float(r[k]) for k in LIKELIHOOD} for r in csv.DictReader(PER_MOCK.open())}
+              if PER_MOCK.exists() else {})
+    jobs = [(r, stored.get(r["target"])) for r in mocks.read_design()]
+    with ProcessPoolExecutor(workers, multiprocessing.get_context("spawn")) as pool:
+        rows = []
+        for result in pool.map(one, jobs):
+            rows.append(result)
+            mocks.table(PER_MOCK, rows)
+            print(len(rows), len(jobs), result["target"], flush=True)
 
 
 def summarize():
@@ -200,13 +216,25 @@ def summarize():
     median = lambda group, name: float(np.median([r[name] for r in group]))
     difference = lambda group, a, b: (lambda d: d[np.isfinite(d)])(np.array([r[a] - r[b] for r in group]))
     out = []
-    for name, group in [("all", rows)] + [(s, [r for r in rows if r["shape"] == s]) for s in mocks.SHAPES]:
+    binning = lambda low, high: [r for r in rows if low <= r["binned_truth_bias_gyr"] < high]
+    for name, group in ([("all", rows)] + [(s, [r for r in rows if r["shape"] == s]) for s in mocks.SHAPES]
+                        # Mocks sorted by the offset that the fit bins give with the true SFH put into them.
+                        + [("binning_under_0.1_gyr", binning(-np.inf, 0.1)), ("binning_0.1_to_0.3_gyr", binning(0.1, 0.3)),
+                           ("binning_over_0.3_gyr", binning(0.3, np.inf))]):
         flat = difference(group, "lnl_posterior_age", "lnl_true_age")
+        # Offset against the binning term over the mocks: a slope of 1 if the binning term added to the offset.
+        line = linregress([r["binned_truth_bias_gyr"] for r in group], [r["age_bias_gyr"] for r in group])
         out.append(dict(
             sample=name, prior_scale=0.3, mocks=len(group), age_bias_gyr=median(group, "age_bias_gyr"),
-            mass_older=median(group, "mass_older"), term_older_gyr=median(group, "term_older_gyr"),
-            term_younger_gyr=median(group, "term_younger_gyr"), term_overlap_gyr=median(group, "term_overlap_gyr"),
             binned_truth_bias_gyr=median(group, "binned_truth_bias_gyr"),
+            age_bias_minus_binned_truth_gyr=median(group, "age_bias_minus_binned_truth_gyr"),
+            offset_slope_on_binned_truth=float(line.slope), offset_slope_error=float(line.stderr),
+            offset_binned_truth_r=float(line.rvalue),
+            mass_older=median(group, "mass_older"), truth_mass_older_max=max(r["truth_mass_older"] for r in group),
+            older_gap_gyr=median(group, "older_gap_gyr"), term_older_gyr=median(group, "term_older_gyr"),
+            term_younger_gyr=median(group, "term_younger_gyr"), term_overlap_gyr=median(group, "term_overlap_gyr"),
+            age_bias_other_bins_gyr=median(group, "age_bias_other_bins_gyr"),
+            age_bias_at_zero_older_gyr=median(group, "age_bias_at_zero_older_gyr"),
             prior_age_minus_truth_gyr=float(np.median(difference(group, "prior_age_q50", "true_age_gyr"))),
             ratio14_q16=median(group, "ratio14_q16"), ratio14_q50=median(group, "ratio14_q50"),
             ratio14_q84=median(group, "ratio14_q84"),
@@ -230,9 +258,12 @@ def summarize():
                  for r in earlier if r["arm"] == arm]
         out.append(dict(dict.fromkeys(out[0]), sample=f"experiment9_{arm}", prior_scale=scale, mocks=len(group),
                         true_age_inside_posterior_68=int(np.sum([r["age_q16"] <= r["true_age_gyr"] <= r["age_q84"] for r in group])),
-                        **{name: median(group, name) for name in ("age_bias_gyr", "mass_older", "term_older_gyr", "term_younger_gyr",
-                                                                 "term_overlap_gyr", "binned_truth_bias_gyr", "ratio14_q16",
-                                                                 "ratio14_q50", "ratio14_q84")}))
+                        truth_mass_older_max=max(r["truth_mass_older"] for r in group),
+                        **{name: median(group, name) for name in (
+                            "age_bias_gyr", "binned_truth_bias_gyr", "age_bias_minus_binned_truth_gyr", "mass_older",
+                            "older_gap_gyr", "term_older_gyr", "term_younger_gyr", "term_overlap_gyr",
+                            "age_bias_other_bins_gyr", "age_bias_at_zero_older_gyr", "ratio14_q16", "ratio14_q50",
+                            "ratio14_q84")}))
     mocks.table(SUMMARY, out)
     print(json.dumps(out, indent=1))
 
@@ -241,6 +272,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("step", choices=["per-mock", "summarize"])
     parser.add_argument("--workers", type=int, default=3)
-    parser.add_argument("--limit", type=int, default=None)
     args = parser.parse_args()
-    summarize() if args.step == "summarize" else per_mock(args.workers, args.limit)
+    summarize() if args.step == "summarize" else per_mock(args.workers)
