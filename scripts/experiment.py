@@ -120,7 +120,8 @@ def preflight(path, revision, *, fetch_missing=False, commands=('git', 'ssh', 'r
                 name = str((path.parent / candidate).resolve())
             elif fetch_missing and name in grid_module['REGISTRY']:
                 grid_module['fetch_grid'](name)
-            source = engine.preflight(revision, grid_name=name, targets={c['target'] for c in cells if not manga(c)},
+            # targets=(): the fit does not read the F814W cutout, so preflight does not require it.
+            source = engine.preflight(revision, grid_name=name, targets=(),
                                       workers=('experiment.py', 'run_ceridwen_vast_multi_gpu.py'), commands=commands)
             grids[cell['settings']['ssp_grid']] = {
                 'grid': source['grid'], 'grid_sha256': source['grid_sha256'],
