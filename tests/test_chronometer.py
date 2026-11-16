@@ -11,6 +11,7 @@ from src.chronometer import (
     hubble_from_age_difference,
     hubble_from_age_slope,
     hubble_uncertainty_from_age_errors,
+    effective_redshift,
     inverse_variance_combine,
 )
 
@@ -147,3 +148,15 @@ def test_executed_audit_summary_has_expected_cohorts_and_finite_draws():
             assert np.all(np.isfinite(summary[f"regression/{cohort_name}/H_km_s_Mpc"][:]))
         assert len(summary["influence/top_five/object_id"]) == 5
         assert len(summary["diagnostics/by_bin/z_bin"]) == 8
+
+
+@pytest.mark.parametrize("H0, Om0", [(60.0, 0.25), (67.66, 0.30966), (75.0, 0.40), (70.0, 0.30)])
+def test_line_slope_at_effective_redshift_returns_hubble(H0, Om0):
+    from astropy.cosmology import Planck18
+
+    redshift = np.random.default_rng(20261116).uniform(0.6, 1.0, 194)
+    z_eff = effective_redshift(redshift)["z_eff"]
+    cosmo = Planck18.clone(H0=H0, Om0=Om0)
+    slope = np.polyfit(redshift, cosmo.age(redshift).to("Gyr").value, 1)[0]
+
+    assert hubble_from_age_slope(z_eff, slope) == pytest.approx(cosmo.H(z_eff).value, rel=0.005)

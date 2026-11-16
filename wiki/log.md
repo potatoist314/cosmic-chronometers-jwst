@@ -1565,3 +1565,8 @@
 
 - Pages: `research/questions/q-afe-age-chronometer.md`
 - Change: the Planck18 row, answer lines, caption and figure label name the same line fit to Planck18 ages (−5.23, 108); new row Planck18 at \(z=0.728\): \(H=102.5\), \(\mathrm{d}t/\mathrm{d}z=-5.52\), \(H_0=67.66\), from astropy in `scripts/plot_afe_age_chronometer.py`; card t_71a6005a.
+
+## [2026-11-16] query | Chronometer page: H at the effective redshift
+
+- Pages: `research/questions/q-afe-age-chronometer.md`
+- Change: the \(H\) column is \(H(z_\mathrm{eff})\), \(z_\mathrm{eff}=0.775\) (`effective_redshift` in `src/chronometer.py`); one Planck18 row at \(z_\mathrm{eff}\) (−5.23, 105.4) replaces the same-line-fit and median-\(z\) rows; `age-redshift-slopes.csv` and the mock `slopes.csv` gain \(z_\mathrm{eff}\) and \(H(z_\mathrm{eff})\) columns; card t_d3278298.

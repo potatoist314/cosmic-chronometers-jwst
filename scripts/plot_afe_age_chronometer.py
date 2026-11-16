@@ -36,6 +36,7 @@ spec.loader.exec_module(mocks)  # line_fit, read_design, TRUE_AFE of the mock ex
 
 from ceridwen.cosmology import age_gyr, resolve_cosmology  # noqa: E402
 from scripts.experiment import validate_result  # noqa: E402
+from src.chronometer import effective_redshift  # noqa: E402
 
 COSMO = resolve_cosmology(None)  # Planck18, as the slope analyses
 AGE = "mass-weighted age [Gyr]"
@@ -78,25 +79,24 @@ def hubble(slope, z):
 
 
 def table(mock):
-    """Markdown rows: slope, H and median [α/Fe] per arm; Planck18 ages through the same line fit, and Planck18 dt/dz and
-    H at the median z (astropy); the mock truth and recovery."""
+    """Markdown rows: slope, H at z_eff and median [α/Fe] per arm; Planck18 line slope and H at z_eff (astropy); the mock
+    truth and recovery at the mocks' z_eff."""
     slopes = pd.read_csv(MASK / "age-redshift-slopes.csv").query("group == 'all'").set_index("arm")
     span = lambda a, b, c: f"{a:.2f} ({b:.2f} to {c:.2f})"
     rows = []
     for arm, label in (("plain", "Plain"), ("cn_free", "C/N free"), ("mask", "Carbon mask")):
         s = slopes.loc[arm]
         rows.append((f"{label}, \\(N={s.galaxies}\\)", span(s.slope_gyr_per_z, s.bootstrap_q16, s.bootstrap_q84),
-                     f"{s.H_kms_mpc:.0f} ({s.H_from_q16:.0f} to {s.H_from_q84:.0f})", f"{s.median_afe:+.2f}"))
+                     f"{s.H_zeff_kms_mpc:.0f} ({s.H_zeff_from_q16:.0f} to {s.H_zeff_from_q84:.0f})", f"{s.median_afe:+.2f}"))
     s = slopes.loc["plain"]
-    rows.append((PLANCK_FIT, f"{s.planck18_line_slope:.2f}", f"{hubble(s.planck18_line_slope, s.z_median):.0f}", ""))
-    H = Planck18.H(s.z_median)
-    rows.append((f"Planck18 at \\(z={s.z_median:.3f}\\), \\(H_0={Planck18.H0.to_value(u.km / u.s / u.Mpc):.2f}\\)",
-                 f"{-(1 / ((1 + s.z_median) * H)).to_value(u.Gyr):.2f}", f"{H.to_value(u.km / u.s / u.Mpc):.1f}", ""))
-    z, z_med = mock.z.to_numpy(), float(mock.z.median())
+    rows.append((f"Planck18 at \\(z_\\mathrm{{eff}}={s.z_eff:.3f}\\), \\(H_0={Planck18.H0.to_value(u.km / u.s / u.Mpc):.2f}\\)",
+                 f"{s.planck18_line_slope:.2f}", f"{s.planck18_H_zeff:.1f}", ""))
+    z = mock.z.to_numpy()
+    z_eff = effective_redshift(z)["z_eff"]
     true, fit = mocks.line_fit(z, mock.true_age_gyr.to_numpy()), mocks.line_fit(z, mock.age_q50.to_numpy())
-    rows.append((f"Mock truth, \\(N={len(mock)}\\)", f"{true['slope']:.2f}", f"{hubble(true['slope'], z_med):.0f}", f"{mocks.TRUE_AFE:+.2f}"))
+    rows.append((f"Mock truth, \\(N={len(mock)}\\)", f"{true['slope']:.2f}", f"{hubble(true['slope'], z_eff):.0f}", f"{mocks.TRUE_AFE:+.2f}"))
     rows.append((f"Mock recovered, \\(N={len(mock)}\\)", span(fit["slope"], fit["q16"], fit["q84"]),
-                 f"{hubble(fit['slope'], z_med):.0f} ({hubble(fit['q16'], z_med):.0f} to {hubble(fit['q84'], z_med):.0f})",
+                 f"{hubble(fit['slope'], z_eff):.0f} ({hubble(fit['q16'], z_eff):.0f} to {hubble(fit['q84'], z_eff):.0f})",
                  f"{mock.afe_q50.median():+.2f}"))
     return rows
 

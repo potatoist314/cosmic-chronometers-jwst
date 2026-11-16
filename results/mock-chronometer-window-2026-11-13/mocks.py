@@ -324,7 +324,9 @@ def line_fit(z, y):
 def summarize():
     """Per-mock recoveries, age-redshift slopes against truth, and age bias in redshift and S/N thirds."""
     import h5py
+    from astropy.cosmology import Planck18
     from scripts.experiment import validate_result
+    from src.chronometer import effective_redshift, hubble_from_age_slope
 
     rows = []
     for row in read_design():
@@ -362,13 +364,17 @@ def summarize():
             continue
         z, age, true, bias = (column(chosen, n) for n in ("z", "age_q50", "true_age_gyr", "age_bias_gyr"))
         fit, exact = line_fit(z, age), line_fit(z, true)
+        zeff = effective_redshift(z)
+        H = lambda slope: hubble_from_age_slope(zeff["z_eff"], slope)  # H at z_eff, km/s/Mpc
         slopes.append(dict(group=group, mocks=len(chosen), true_slope=exact["slope"], recovered_slope=fit["slope"],
                            slope_q16=fit["q16"], slope_q84=fit["q84"], slope_q025=fit["q025"], slope_q975=fit["q975"],
                            recovered_over_true=fit["slope"] / exact["slope"], residual_scatter_gyr=fit["scatter"],
                            median_age_bias_gyr=float(np.median(bias)), mean_age_bias_gyr=float(bias.mean()),
                            age_truth_inside=int(sum(r["age_truth_inside"] for r in chosen)),
                            median_afe_bias=float(np.median(column(chosen, "afe_bias"))),
-                           median_feh_bias=float(np.median(column(chosen, "feh_bias")))))
+                           median_feh_bias=float(np.median(column(chosen, "feh_bias"))))
+                      | zeff | dict(true_H_zeff=H(exact["slope"]), H_zeff_kms_mpc=H(fit["slope"]), H_zeff_from_q16=H(fit["q16"]),
+                                    H_zeff_from_q84=H(fit["q84"]), planck18_H_zeff=float(Planck18.H(zeff["z_eff"]).value)))
     table(OUT / "slopes.csv", slopes)
     thirds = []
     for name in ("z", "sn"):

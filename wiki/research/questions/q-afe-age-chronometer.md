@@ -28,16 +28,17 @@ A mock is a synthetic spectrum and photometry with a known age, made at a real g
 <figcaption>Mocks: plain arm; four SFH shapes, one formation epoch; \([\alpha/\mathrm{Fe}]=+0.2\), \([\mathrm{Fe}/\mathrm{H}]=-0.2\); fluxes matched to each galaxy.</figcaption>
 </figure>
 
-| Fit | Slope (Gyr per unit \(z\), 16–84%) | \(H\) (km/s/Mpc) | Median \([\alpha/\mathrm{Fe}]\) |
+| Fit | Slope (Gyr per unit \(z\), 16–84%) | \(H(z_\mathrm{eff})\) (km/s/Mpc) | Median \([\alpha/\mathrm{Fe}]\) |
 | --- | --- | --- | --- |
-| Plain, \(N=194\) | −5.04 (−5.70 to −4.39) | 112 (99 to 129) | +0.13 |
-| [C/N free](wiki/notes/model.md#cn-responses), \(N=194\) | −5.15 (−5.78 to −4.53) | 110 (98 to 125) | +0.16 |
-| Carbon mask, \(N=194\) | −4.26 (−4.90 to −3.62) | 133 (116 to 156) | +0.23 |
-| Planck18 ages, same line fit | −5.23 | 108 |  |
-| Planck18 at \(z=0.728\), \(H_0=67.66\) | −5.52 | 102.5 |  |
-| Mock truth, \(N=194\) | −5.23 | 108 | +0.20 |
-| Mock recovered, \(N=194\) | −5.12 (−5.36 to −4.88) | 111 (106 to 116) | +0.21 |
+| Plain, \(N=194\) | −5.04 (−5.70 to −4.39) | 109 (97 to 126) | +0.13 |
+| [C/N free](wiki/notes/model.md#cn-responses), \(N=194\) | −5.15 (−5.78 to −4.53) | 107 (95 to 122) | +0.16 |
+| Carbon mask, \(N=194\) | −4.26 (−4.90 to −3.62) | 129 (112 to 152) | +0.23 |
+| Planck18 at \(z_\mathrm{eff}=0.775\), \(H_0=67.66\) | −5.23 | 105.4 |  |
+| Mock truth, \(N=194\) | −5.23 | 105 | +0.20 |
+| Mock recovered, \(N=194\) | −5.12 (−5.36 to −4.88) | 108 (103 to 113) | +0.21 |
 | Mock C/N free, \(N=40\), true −5.35 | −5.04 (−5.47 to −4.57) |  | +0.20 |
+
+Age against \(z\) is curved, so a straight-line slope equals \(\mathrm{d}t/\mathrm{d}z\) at \(z_\mathrm{eff}=0.775\), not at the median \(z=0.728\); \(z_\mathrm{eff}\) is 0.774–0.775 for \(H_0\) 60–75, \(\Omega_m\) 0.25–0.40.
 
 <details>
 <summary>LEGA-C DR2, 2026-11-10</summary>
@@ -71,6 +72,10 @@ Window extensions change from the common window. Age moves only when Fe5015 and 
   {
     "date": "2026-11-14",
     "text": "cool,  good methodology,  but not well presented or visible"
+  },
+  {
+    "date": "2026-11-16",
+    "text": "yes, the standard seems good"
   }
 ]
 ```
@@ -78,4 +83,4 @@ Window extensions change from the common window. Age moves only when Fe5015 and 
 ## References
 
 - Detail: [DR3 window fits](results/legac-dr3-2026-11-11/REPORT.md), [carbon mask on the window](results/carbon-mask-window-2026-11-13/age-redshift-slopes.csv), [mock chronometer](results/mock-chronometer-window-2026-11-13/mocks.py), [C/N-free mocks](results/mock-chronometer-cn-free-2026-11-16/slopes.csv) ([paired with plain](results/mock-chronometer-cn-free-2026-11-16/paired-slopes.csv)), [DR2 chronometer fits](results/chronometer-135-2026-11-10/REPORT.md), [carbon, nitrogen and mocks](results/cn-response-2026-11-10/REPORT.md), [oldest galaxies](results/oldest-envelope-2026-11-11/REPORT.md).
-- Figures and table: `scripts/plot_afe_age_chronometer.py`.
+- Figures and table: `scripts/plot_afe_age_chronometer.py`; \(z_\mathrm{eff}\): `effective_redshift` in `src/chronometer.py`.

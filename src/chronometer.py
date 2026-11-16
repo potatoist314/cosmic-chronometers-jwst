@@ -113,3 +113,31 @@ def hubble_from_age_slope(
         -GYR_INV_TO_KM_S_MPC
         / ((1.0 + z_eff) * age_slope_gyr_per_redshift)
     )
+
+
+def effective_redshift(
+    redshift: np.ndarray,
+    reference=None,
+    H0: tuple[float, ...] = (60.0, 67.5, 75.0),
+    Om0: tuple[float, ...] = (0.25, 0.325, 0.40),
+) -> dict[str, float]:
+    """Return the redshift at which a straight-line age slope equals dt/dz.
+
+    z_eff is the z where the reference dt/dz = -1 / ((1 + z) H(z)) equals the
+    least-squares slope of reference ages at ``redshift``. Then
+    ``hubble_from_age_slope(z_eff, slope)`` is H(z_eff). The spread is the range
+    of z_eff over flat clones of the reference on the H0 x Om0 grid.
+    """
+    from astropy.cosmology import Planck18
+    from scipy.optimize import brentq
+
+    reference = Planck18 if reference is None else reference
+    redshift = np.asarray(redshift, dtype=float)
+
+    def solve(cosmo):
+        slope = np.polyfit(redshift, cosmo.age(redshift).to_value(u.Gyr), 1)[0]
+        dt_dz = lambda z: -(1 / ((1 + z) * cosmo.H(z))).to_value(u.Gyr)
+        return brentq(lambda z: dt_dz(z) - slope, redshift.min(), redshift.max(), xtol=1e-10)
+
+    spread = [solve(reference.clone(H0=h, Om0=m)) for h in H0 for m in Om0]
+    return dict(z_eff=float(solve(reference)), z_eff_min=float(min(spread)), z_eff_max=float(max(spread)))
