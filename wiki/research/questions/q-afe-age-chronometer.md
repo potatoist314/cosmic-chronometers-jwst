@@ -36,7 +36,7 @@ A mock is a synthetic spectrum and photometry with a known age, made at a real g
 | Planck18 | −5.23 | 108 | |
 | Mock truth, \(N=194\) | −5.23 | 108 | +0.20 |
 | Mock recovered, \(N=194\) | −5.12 (−5.36 to −4.88) | 111 (106 to 116) | +0.21 |
-| Mock C/N free, \(N=40\), true −5.35 | −5.04 (−5.47 to −4.57) | 113 (104 to 125) | +0.20 |
+| Mock C/N free, \(N=40\), true −5.35 | −5.04 (−5.47 to −4.57) |  | +0.20 |
 
 <details>
 <summary>LEGA-C DR2, 2026-11-10</summary>
