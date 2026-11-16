@@ -276,6 +276,7 @@ def regenerate_figures(output):
             continue
         derived = directory / 'ceridwen_derived_outputs.h5'
         gpu_derived = derived.read_bytes() if derived.is_file() else None
+        gpu_notebook = notebooks[0].read_bytes()
         try:
             subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'),
                             'scripts/regenerate_fit_notebooks.py',
@@ -284,6 +285,8 @@ def regenerate_figures(output):
                            cwd=ROOT, check=True, capture_output=True, text=True, timeout=3600)
             engine.log(f'local figures rebuilt for {name}')
         except (subprocess.SubprocessError, OSError) as error:
+            # A failed rebuild leaves its error in the notebook, which then fails validate_result.
+            notebooks[0].write_bytes(gpu_notebook)
             engine.log(f'local figure rebuild failed for {name}: {error}; GPU artifacts kept')
         finally:
             if gpu_derived is not None:

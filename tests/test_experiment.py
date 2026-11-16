@@ -442,12 +442,16 @@ def test_regenerate_skips_notebook_with_figures_and_unknown_grid(tmp_path, monke
 def test_regenerate_failure_keeps_gpu_artifacts_without_raising(tmp_path, monkeypatch, capsys):
     import subprocess
     out, directory, _ = retrieved_run(tmp_path)
+    notebook = directory / 'M1_210210_executed.ipynb'
+    gpu_notebook = notebook.read_bytes()
     def fail(command, **kwargs):
+        notebook.write_text('notebook with the rebuild error')
         raise subprocess.CalledProcessError(1, command)
     monkeypatch.setattr(exp.subprocess, 'run', fail)
     exp.regenerate_figures(out)
     assert 'local figure rebuild failed' in capsys.readouterr().out
     assert (directory / 'ceridwen_derived_outputs.h5').read_bytes() == b'gpu-derived'
+    assert notebook.read_bytes() == gpu_notebook
 
 
 @pytest.mark.parametrize('code', [0, 1])
