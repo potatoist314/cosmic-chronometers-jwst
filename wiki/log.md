@@ -1550,3 +1550,8 @@
 
 - Pages: `research/questions/q-afe-age-chronometer.md`
 - Change: mock figure, mock table rows and mock answer line use all 194 mock fits; card t_00cad0b0.
+
+## [2026-11-16] query | C and N responses explained; C/N free carried forward
+
+- Pages: `notes/model.md`, `research/questions/q-afe-age-chronometer.md`
+- Change: model row `cn-responses` gains why, how and carbon-mask bullets with the response equation; chronometer page links it, states C/N free is carried forward and adds the 40-mock C/N-free row; card t_9d172164.
