@@ -192,13 +192,17 @@ def test_cache_key_ignores_name_and_arm_only(modal_run):
     assert run.cache_key(CELL) != key
 
 
-def test_uncached_cells_fit_alone_then_cached_cells_share_and_incomplete_caches_refit_alone():
-    saved, calls, saves, shares = {'a', 'c'}, [], [], []
+def test_uncached_cells_fit_in_one_batch_then_cached_cells_share_and_incomplete_caches_refit_alone():
+    saved, calls, batches, saves, shares = {'a', 'c'}, [], [], [], []
 
     def fit_one(cell, mode):
         calls.append((cell['index'], mode))
         return {'exit': 0, 'mode': mode, 'tuned': 2 if (cell['index'], mode) == (3, 'shared') else 0,
                 'compiled': 5 if (cell['key'], mode) == ('c', 'shared') else 0}
+
+    def fit_batch(fresh):
+        batches.append([cell['index'] for cell in fresh])
+        return {cell['index']: {'exit': 0, 'mode': 'batch', 'tuned': 9, 'compiled': 9} for cell in fresh}
 
     def save(key):
         saves.append(key)
@@ -211,33 +215,58 @@ def test_uncached_cells_fit_alone_then_cached_cells_share_and_incomplete_caches_
         shares.append('stop')
 
     cells = [{'index': i, 'key': k} for i, k in enumerate('abbac')]
-    records = modal_gpu.schedule(cells, saved.__contains__, fit_one, save, sharing)
-    assert calls[0] == (1, 'alone')
-    assert sorted(calls[1:5]) == [(0, 'shared'), (2, 'shared'), (3, 'shared'), (4, 'shared')]
+    records = modal_gpu.schedule(cells, saved.__contains__, fit_one, save, fit_batch, sharing)
+    assert batches == [[1, 2]]
+    assert sorted(calls[:3]) == [(0, 'shared'), (3, 'shared'), (4, 'shared')]
     # Cell 3's shared fit autotuned: every shared fit of its cache (0 and 3) fits again alone.
-    assert calls[5:] == [(0, 'alone'), (3, 'alone')]
+    assert calls[3:] == [(0, 'alone'), (3, 'alone')]
     assert shares == ['start', 'stop']
     assert records[0] == records[3] == {'exit': 0, 'mode': 'alone', 'tuned': 0, 'compiled': 0, 'retuned': 2}
-    assert records[2]['mode'] == records[4]['mode'] == 'shared'
-    # New cache b after its first fit; c gained programs compiled for this host; a after each refit.
-    assert saves == ['b', 'c', 'a', 'a']
+    assert records[1]['mode'] == records[2]['mode'] == 'batch'
+    assert records[4]['mode'] == 'shared'
+    # The batch saves no cache; c gained programs compiled for this host; a after each refit.
+    assert saves == ['c', 'a', 'a']
 
 
 def test_one_cached_cell_fits_alone_from_its_cache_without_mps():
     saves = []
     records = modal_gpu.schedule([{'index': 0, 'key': 'a'}], {'a'}.__contains__,
                                  lambda cell, mode: {'exit': 0, 'mode': mode, 'tuned': 0, 'compiled': 0},
-                                 saves.append, sharing=None)
+                                 saves.append, None, sharing=None)
     assert records == {0: {'exit': 0, 'mode': 'cached', 'tuned': 0, 'compiled': 0}}
     assert not saves
 
 
-def test_failed_first_fit_saves_no_cache():
-    saves = []
-    records = modal_gpu.schedule([{'index': 0, 'key': 'a'}], set().__contains__,
-                                 lambda cell, mode: {'exit': 1, 'mode': mode, 'tuned': 9, 'compiled': 9},
-                                 saves.append, sharing=None)
-    assert records[0]['exit'] == 1 and not saves
+def test_batch_gives_each_fit_its_results_log_and_record_as_it_ends(tmp_path, monkeypatch):
+    monkeypatch.setattr(modal_gpu, 'BATCH_CACHE', tmp_path / 'xla')
+    cells = [{'index': index, 'grid': '123.h5', 'cell': {**CELL, 'name': f'fit/{spect}', 'target': spect,
+                                                          'target_metadata': {'object_id': index, 'spect_id': spect}}}
+             for index, spect in [(4, 'M1_1'), (7, 'M2_2'), (9, 'M3_3')]]
+    ends = []
+
+    def stage(root, name, command, environment, each):
+        assert name == 'fit-batch' and environment['JAX_COMPILATION_CACHE_DIR'] == str(tmp_path / 'xla')
+        assert [cell['name'] for cell in json.loads((root / 'config-batch.json').read_text())] == [
+            'fit/M1_1', 'fit/M2_2', 'fit/M3_3']
+        for cell, end in zip(cells[:2], [exp.FIT_DONE, exp.FIT_FAILED]):
+            fit = cell['cell']
+            (root / 'batch/fit' / f"{cell['index']}-{fit['target']}").mkdir(parents=True)
+            (root / 'batch/fit' / f"{cell['index']}-{fit['target']}/ceridwen_result.h5").write_text('h5')
+            each(f"fitting {fit['name']}\n")
+            # The line experiment.py remote logs as the fit ends.
+            each(f"23:01:02 {end}{fit['name']}{': ValueError: no samples' if end == exp.FIT_FAILED else ''}\n")
+        each('Traceback: the kernel died\n')
+        return 1
+
+    monkeypatch.setattr(modal_gpu, 'stage', stage)
+    records = modal_gpu.batch(tmp_path, cells, {}, lambda cell, record: ends.append((cell['index'], record['exit'])))
+    assert ends == [(4, 0), (7, 1), (9, 1)]
+    assert {index: record['mode'] for index, record in records.items()} == {4: 'batch', 7: 'batch', 9: 'batch'}
+    assert (tmp_path / 'results/4/fit/4-M1_1/ceridwen_result.h5').read_text() == 'h5'
+    assert (tmp_path / 'results/7/fit/7-M2_2/ceridwen_result.h5').exists()
+    assert not (tmp_path / 'results/9').exists()
+    assert (tmp_path / 'fit-4.log').read_text() == 'fitting fit/M1_1\n23:01:02 fit done: fit/M1_1\n'
+    assert (tmp_path / 'fit-9.log').read_text() == 'Traceback: the kernel died\n'
 
 
 def test_resume_does_not_launch_completed_cells(modal_run):
