@@ -125,6 +125,7 @@ def test_notebook_uses_production_model_and_sampler_contract():
     assert sorted(set(re.findall(r'os\.environ\.get\("(CERIDWEN_[A-Z_]+)"', source))) == [
         "CERIDWEN_MANIFEST_INDEX",
         "CERIDWEN_NOTEBOOK_QUICK",
+        "CERIDWEN_PLOTS",
         "CERIDWEN_RANDOM_SEED",
         "CERIDWEN_RESULT_DIR",
         "CERIDWEN_TARGET_ID",
@@ -420,17 +421,23 @@ def test_notebook_samples_redshift_and_sigma_by_default():
     assert 'Kinematics(sigma_gal="sigma_smooth"' in source
     assert "mean=sigma_star,\n        sigma=sigma_star_err," in source
 
-def test_constant_calibration_active_assembly_and_exports():
+def test_constant_calibration_active_assembly_and_exports(request):
     """Execute the maintained assembly on a small in-memory SSP, without fitting."""
     import ast
+    import jax
     import jax.numpy as jnp
+
+    # The fit workers set JAX_USE_SIMPLIFIED_JAXPR_CONSTANTS=True (runner._worker_environment).
+    previous = jax.config.jax_use_simplified_jaxpr_constants
+    jax.config.update("jax_use_simplified_jaxpr_constants", True)
+    request.addfinalizer(lambda: jax.config.update("jax_use_simplified_jaxpr_constants", previous))
     import numpy as np
     from ceridwen import Cosmology
     from ceridwen.broadening import Instrument, Kinematics
     from ceridwen.cosmology import age_gyr
     from ceridwen.csp import CSPBasis_afe
     from ceridwen.ssps import SSPDataAfe
-    from ceridwen.model import SedModel, logsfr_ratios_to_sfh
+    from ceridwen.model import SedModel, logsfr_ratios_to_sfh, mass_mapped_beta, mass_mapped_zh
     from ceridwen.observation import Photometry, Spectrum
     from ceridwen.likelihood import PolynomialCalibration
     from ceridwen.sampler.priors import ClippedNormal, StudentT, Uniform
@@ -439,6 +446,7 @@ def test_constant_calibration_active_assembly_and_exports():
              if c["cell_type"] == "code"]
     env = dict(np=np, jnp=jnp, age_gyr=age_gyr, CSPBasis_afe=CSPBasis_afe,
                SedModel=SedModel, logsfr_ratios_to_sfh=logsfr_ratios_to_sfh,
+               mass_mapped_beta=mass_mapped_beta, mass_mapped_zh=mass_mapped_zh,
                ClippedNormal=ClippedNormal, StudentT=StudentT, Uniform=Uniform,
                PolynomialCalibration=PolynomialCalibration, Cosmology=Cosmology, Kinematics=Kinematics)
     settings_cell = next(c for c in cells if "SETTINGS = {" in c)
@@ -447,7 +455,8 @@ def test_constant_calibration_active_assembly_and_exports():
                 isinstance(t, ast.Name) and t.id in {"SETTINGS", "PRIORS"} for t in node.targets):
             exec(compile(ast.Module(body=[node], type_ignores=[]), "settings", "exec"), env)
     wave = jnp.geomspace(1000., 30000., 256)
-    env["ssp"] = SSPDataAfe(jnp.array([-2.2, -1.4]), jnp.array([-3., -1., 0., 1.2]), wave,
+    # logzsol range [-1.6, 0]: holds the mass-mapped logzsol_hist at theta_init (down to -1.1).
+    env["ssp"] = SSPDataAfe(jnp.array([-3.0, -1.4]), jnp.array([-3., -1., 0., 1.2]), wave,
                             jnp.ones((2, 2, 4, 256)) * 1e-15, ssp_afe=jnp.array([-.2, .6]),
                             zsun=10 ** -1.4, axis_meaning="feh")
     spec_wave = np.linspace(6000., 9000., 64)
@@ -590,7 +599,7 @@ def test_notebook_defaults_to_cosmos2025_photometry():
     cells = ["".join(cell.get("source", [])) for cell in notebook["cells"]]
     source = "\n".join(cells)
     assert '"photometry": "cosmos2025"' in source
-    assert 'SETTINGS["photometry"] = resolve_photometry(SETTINGS["photometry"], TARGET_ID)' in source
+    assert 'SETTINGS["photometry"] = resolve_photometry(SETTINGS["photometry"], TARGET_ID, release=match_release)' in source
     assert "falls back to `cosmos2020_classic`" in source
 
 
