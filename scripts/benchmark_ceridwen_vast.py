@@ -460,7 +460,7 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
     fixed_dust_index = -0.7
     csp_theta = {
         "lookback_time": jnp.asarray(lookback_template),
-        "sfh": jnp.ones(len(lookback_template)),
+        "sfh": jnp.ones(len(lookback_template) - 1),
         "logzsol": jnp.array([-1.85 - ssp.log10_zsun]),
         "afe": jnp.array([0.2]),
         "diffuse_tau_kc": jnp.array([0.1]),
@@ -481,10 +481,12 @@ def build_joint_workload(project_root: Path) -> BuiltWorkload:
     )
 
     def sfh_from_ratios(free_theta: dict[str, Any]) -> Any:
-        return logsfr_ratios_to_sfh(
+        # Fixed workload: one ratio per node pair; each bin SFR is the mean of its two node SFRs.
+        nodes = logsfr_ratios_to_sfh(
             free_theta["logsfr_ratios"],
             sfh_times_yr=np.asarray(joint_csp.sfh_times),
         )
+        return 0.5 * (nodes[:-1] + nodes[1:])
 
     joint_model = SedModel(
         joint_csp,
