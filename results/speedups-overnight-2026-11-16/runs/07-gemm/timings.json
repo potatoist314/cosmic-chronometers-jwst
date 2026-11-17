@@ -1,0 +1,274 @@
+{
+ "called_at": 1794897646.3605702,
+ "entered": 1794897652.6012557,
+ "finished": 1794898616.6371994,
+ "gpu": "NVIDIA A100-SXM4-40GB, 610.57.04, 40960 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794897653.5398145,
+   "end": 1794897760.5553858,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:40:53 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 658,
+   "cache_bytes": 3207579
+  },
+  {
+   "index": 1,
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794897760.6300995,
+   "end": 1794897860.8533347,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:42:40 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 644,
+   "cache_bytes": 3057950
+  },
+  {
+   "index": 2,
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794897860.9202232,
+   "end": 1794897966.0541484,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:44:21 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 658,
+   "cache_bytes": 3211588
+  },
+  {
+   "index": 3,
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794897966.1308846,
+   "end": 1794898062.9701211,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:46:06 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 644,
+   "cache_bytes": 3054348
+  },
+  {
+   "index": 4,
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794898063.0457735,
+   "end": 1794898159.5662732,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:47:43 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 644,
+   "cache_bytes": 3053429
+  },
+  {
+   "index": 5,
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794898159.638418,
+   "end": 1794898261.4488344,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:49:19 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 658,
+   "cache_bytes": 3214252
+  },
+  {
+   "index": 6,
+   "label": "final",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "start": 1794898261.5190115,
+   "end": 1794898349.6760929,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:51:01 fitting dr3_plain_w/M1_210210, seed 20260832\n",
+   "compiled": 472,
+   "tuned": 602,
+   "cache_bytes": 2986769
+  },
+  {
+   "index": 7,
+   "label": "final",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "start": 1794898349.748152,
+   "end": 1794898434.9232972,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:52:29 fitting dr3_plain_w/M1_210210, seed 20260832\n",
+   "compiled": 472,
+   "tuned": 585,
+   "cache_bytes": 2874010
+  },
+  {
+   "index": 8,
+   "label": "final",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "start": 1794898434.9850807,
+   "end": 1794898516.3602142,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:53:55 fitting dr3_plain_w/M1_210210, seed 20260832\n",
+   "compiled": 472,
+   "tuned": 585,
+   "cache_bytes": 2872984
+  },
+  {
+   "index": 9,
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794898516.4215329,
+   "end": 1794898570.2999623,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "d_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nMODEL PARAMETERS (generated from the SedModel object)\nStellar population grid\n  library: C3K v2.3 high-res (c3k_hr, vt=10 km/s); isochrones: MIST v2.5 (aMIST, alpha-variable); IMF: imf_type=2 (Kroupa (2001)); schema 2.1\n  grid axes: [alpha/Fe] [-0.2, 0, 0.2, 0.4, 0.6]; [Fe/H] 13 nodes [-2.500, 0.500] (grid Z + 1.7328283); log10(age/Gyr) 107 nodes; wavelength 10992 pts [100, 99595855] A\nStar-formation history\n  form: piecewise-constant SFR ('step' interpolation) on 14 lookback bins; metallicity history: time-varying zh\n  bin edges (lookback, Gyr): [0, 0.03001, 0.1, 0.146, 0.2132, 0.3113, 0.4545, 0.6637, 0.9691, 1.415, 2.066, 3.017, 4.405, 6.432, 7.567]  (last edge = universe age at z)\n  free parameters: logsfr_ratios[14] = log10(SFR_i / SFR_i+1), transform 'sfh_from_ratios' -> unit-mass SFH (integral 1 Msun); logmass scales the total formed mass\nFree parameters and priors\n  afe: shape (1,); prior Uniform(-0.2, 0.6); init [0.2]\n  cfe: shape (1,); prior Uniform(-0.3, 0.5); init [0]\n  diffuse_Ebump: shape (1,); prior Uniform(0, 6); init [0]\n  diffuse_delta: shape (1,); prior Uniform(-1, 0.4); init [-0.7]\n  diffuse_tau_noll: shape (1,); prior Uniform(0, 1); init [0.1]\n  dust_ratio: shape (1,); prior ClippedNormal(mean=1, sigma=0.3, low=0, high=2); init [1]\n  log_f_calib: shape (1,); prior Uniform(-4.605, -2.303); init [-3.507]\n  logmass: shape (1,); prior Uniform(8, 13); init [11.04]\n  logsfr_ratios: shape (14,); prior StudentT(mean=0, scale=0.3, df=2); init [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\n  logzsol: shape (1,); prior Uniform(-2.5, 0.4999); init [-0.1172]\n  nfe: shape (1,); prior Uniform(-0.3, 1); init [0]\n  sigma_smooth: shape (1,); prior ClippedNormal(mean=256.9, sigma=4.9, low=242.2, high=271.6); init [256.9]\n  zh_beta_unit: shape (1,); prior Uniform(0, 1); init [0.5]\nFixed and derived quantities\n  redshift: fixed at z = 0.654100 (SedModel.zred); SFH age grid tracks z: False\n  diffuse_c_r: fixed by transform '<lambda>' = [0]\n  tau_pow: fixed by transform '<lambda>' = [0.1]\n  alpha_pow: fixed by transform '<lambda>' = [-1]\n  logzsol_hist: fixed by transform 'zh_from_mass' = [0.1048, 0.1045, 0.1038, 0.1031, 0.1017, 0.09934, 0.09519, 0.0879, 0.07493, 0.05144, 0.007352, -0.08182, -0.3008, -0.8127]\nDust, nebular emission, IGM\n  diffuse attenuation: law 'noll', parameters ['diffuse_tau_noll', 'diffuse_delta', 'diffuse_c_r', 'diffuse_Ebump']; birth-cloud (age-dependent) dust: True; dust emission: False\n  nebular emission: none (spectrum model 'get_spectrum_dattn_nodem_noneb')\n  IGM absorption: none\n  cosmology: Cosmology(H0=67.66, Om0=0.30966, Tcmb0=2.7255, Neff=3.046, m_nu_ev_sum=0.06, name='Planck18')\nObservations and calibration\n  photometry: Photometry, 28 bands, 28 fitted; filters ['cfht_megacam_us_9301', 'subaru_suprimecam_ia427', 'hsc_g', 'subaru_suprimecam_ia484', 'subaru_suprimecam_ia505', 'subaru_suprimecam_ia527', 'subaru_suprimecam_ia574', 'hsc_r', 'subaru_suprimecam_ia624', 'subaru_suprimecam_ia679', 'subaru_suprimecam_ia709', 'subaru_suprimecam_ia738', 'subaru_suprimecam_ia767', 'hsc_i', 'acs_wfc_f814w', 'subaru_suprimecam_ia827', 'hsc_z', 'hsc_y', 'vista_vircam_Y', 'jwst_f115w', 'vista_vircam_J', 'jwst_f150w', 'vista_vircam_H', 'vista_vircam_Ks', 'jwst_f277w', 'spitzer_irac_ch1', 'jwst_f444w', 'spitzer_irac_ch2']\n  spectrum: Spectrum, 1392 of 6166 native pixels fitted, 6740-7718 A observed; instrument R_fwhm = 2500; projector 'chain'; stellar sigma_gal sampled as sigma_smooth; photometry broadened: False\n  likelihood[photometry]: DiagonalGaussianLikelihood with DiagonalNoiseModel: var = sigma_obs^2 (no extra terms)\n  likelihood[spectrum]: DiagonalGaussianLikelihood with DiagonalNoiseModel: var = sigma_obs^2 + model-scaled fractional floor f_calib*|mu| (log_f_calib free in [1%, 10%])\n  likelihood[spectrum] calibration polynomial: PolynomialCalibration(order=10, fit_constant=True, prior_sigma=(0.3, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1), marginalize=True, n_pix=6166)\nSampler\n  blackjax.nss: num_live 500, num_inner_steps 65, num_delete 100, logZ_tol -5.0; random seed 20260832\nloglike                        compile    9.44 s   batch of 100     1.348 ms\npredict                        compile    5.14 s   batch of 100     0.761 ms\nlikelihood given prediction    compile    2.90 s   batch of 100     0.999 ms\ntransforms                     compile    0.32 s   batch of 100     0.191 ms\nget_spectrum                   compile    2.53 s   batch of 100     0.217 ms\nfactor grid                    compile    2.37 s   batch of 100     0.215 ms\nfactor spectrum                compile    2.23 s   batch of 100     0.238 ms\n",
+   "compiled": 293,
+   "tuned": 323,
+   "cache_bytes": 226415075
+  },
+  {
+   "index": 10,
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794898570.3344076,
+   "end": 1794898616.593956,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "d_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solMass.yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(solLum)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nWARNING: UnitsWarning: 'log(yr**-1)' did not parse as fits unit: 'log' is not a recognized function If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html [astropy.units.core]\nMODEL PARAMETERS (generated from the SedModel object)\nStellar population grid\n  library: C3K v2.3 high-res (c3k_hr, vt=10 km/s); isochrones: MIST v2.5 (aMIST, alpha-variable); IMF: imf_type=2 (Kroupa (2001)); schema 2.1\n  grid axes: [alpha/Fe] [-0.2, 0, 0.2, 0.4, 0.6]; [Fe/H] 13 nodes [-2.500, 0.500] (grid Z + 1.7328283); log10(age/Gyr) 107 nodes; wavelength 10992 pts [100, 99595855] A\nStar-formation history\n  form: piecewise-constant SFR ('step' interpolation) on 14 lookback bins; metallicity history: time-varying zh\n  bin edges (lookback, Gyr): [0, 0.03001, 0.1, 0.146, 0.2132, 0.3113, 0.4545, 0.6637, 0.9691, 1.415, 2.066, 3.017, 4.405, 6.432, 7.567]  (last edge = universe age at z)\n  free parameters: logsfr_ratios[14] = log10(SFR_i / SFR_i+1), transform 'sfh_from_ratios' -> unit-mass SFH (integral 1 Msun); logmass scales the total formed mass\nFree parameters and priors\n  afe: shape (1,); prior Uniform(-0.2, 0.6); init [0.2]\n  cfe: shape (1,); prior Uniform(-0.3, 0.5); init [0]\n  diffuse_Ebump: shape (1,); prior Uniform(0, 6); init [0]\n  diffuse_delta: shape (1,); prior Uniform(-1, 0.4); init [-0.7]\n  diffuse_tau_noll: shape (1,); prior Uniform(0, 1); init [0.1]\n  dust_ratio: shape (1,); prior ClippedNormal(mean=1, sigma=0.3, low=0, high=2); init [1]\n  log_f_calib: shape (1,); prior Uniform(-4.605, -2.303); init [-3.507]\n  logmass: shape (1,); prior Uniform(8, 13); init [11.04]\n  logsfr_ratios: shape (14,); prior StudentT(mean=0, scale=0.3, df=2); init [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\n  logzsol: shape (1,); prior Uniform(-2.5, 0.4999); init [-0.1172]\n  nfe: shape (1,); prior Uniform(-0.3, 1); init [0]\n  sigma_smooth: shape (1,); prior ClippedNormal(mean=256.9, sigma=4.9, low=242.2, high=271.6); init [256.9]\n  zh_beta_unit: shape (1,); prior Uniform(0, 1); init [0.5]\nFixed and derived quantities\n  redshift: fixed at z = 0.654100 (SedModel.zred); SFH age grid tracks z: False\n  diffuse_c_r: fixed by transform '<lambda>' = [0]\n  tau_pow: fixed by transform '<lambda>' = [0.1]\n  alpha_pow: fixed by transform '<lambda>' = [-1]\n  logzsol_hist: fixed by transform 'zh_from_mass' = [0.1048, 0.1045, 0.1038, 0.1031, 0.1017, 0.09934, 0.09519, 0.0879, 0.07493, 0.05144, 0.007352, -0.08182, -0.3008, -0.8127]\nDust, nebular emission, IGM\n  diffuse attenuation: law 'noll', parameters ['diffuse_tau_noll', 'diffuse_delta', 'diffuse_c_r', 'diffuse_Ebump']; birth-cloud (age-dependent) dust: True; dust emission: False\n  nebular emission: none (spectrum model 'get_spectrum_dattn_nodem_noneb')\n  IGM absorption: none\n  cosmology: Cosmology(H0=67.66, Om0=0.30966, Tcmb0=2.7255, Neff=3.046, m_nu_ev_sum=0.06, name='Planck18')\nObservations and calibration\n  photometry: Photometry, 28 bands, 28 fitted; filters ['cfht_megacam_us_9301', 'subaru_suprimecam_ia427', 'hsc_g', 'subaru_suprimecam_ia484', 'subaru_suprimecam_ia505', 'subaru_suprimecam_ia527', 'subaru_suprimecam_ia574', 'hsc_r', 'subaru_suprimecam_ia624', 'subaru_suprimecam_ia679', 'subaru_suprimecam_ia709', 'subaru_suprimecam_ia738', 'subaru_suprimecam_ia767', 'hsc_i', 'acs_wfc_f814w', 'subaru_suprimecam_ia827', 'hsc_z', 'hsc_y', 'vista_vircam_Y', 'jwst_f115w', 'vista_vircam_J', 'jwst_f150w', 'vista_vircam_H', 'vista_vircam_Ks', 'jwst_f277w', 'spitzer_irac_ch1', 'jwst_f444w', 'spitzer_irac_ch2']\n  spectrum: Spectrum, 1392 of 6166 native pixels fitted, 6740-7718 A observed; instrument R_fwhm = 2500; projector 'chain'; stellar sigma_gal sampled as sigma_smooth; photometry broadened: False\n  likelihood[photometry]: DiagonalGaussianLikelihood with DiagonalNoiseModel: var = sigma_obs^2 (no extra terms)\n  likelihood[spectrum]: DiagonalGaussianLikelihood with DiagonalNoiseModel: var = sigma_obs^2 + model-scaled fractional floor f_calib*|mu| (log_f_calib free in [1%, 10%])\n  likelihood[spectrum] calibration polynomial: PolynomialCalibration(order=10, fit_constant=True, prior_sigma=(0.3, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1), marginalize=True, n_pix=6166)\nSampler\n  blackjax.nss: num_live 500, num_inner_steps 65, num_delete 100, logZ_tol -5.0; random seed 20260832\nloglike                        compile    6.90 s   batch of 100     1.251 ms\npredict                        compile    4.40 s   batch of 100     0.777 ms\nlikelihood given prediction    compile    2.04 s   batch of 100     1.006 ms\ntransforms                     compile    0.32 s   batch of 100     0.188 ms\nget_spectrum                   compile    2.53 s   batch of 100     0.258 ms\nfactor grid                    compile    1.22 s   batch of 100     0.248 ms\nfactor spectrum                compile    1.13 s   batch of 100     0.250 ms\n",
+   "compiled": 293,
+   "tuned": 314,
+   "cache_bytes": 225711910
+  }
+ ],
+ "returned": 1794898620.573836,
+ "plan": [
+  {
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+   }
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+   }
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false --xla_gpu_enable_cublaslt=true"
+   }
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_triton_gemm_any=true"
+   }
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ]
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+   }
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false --xla_gpu_enable_cublaslt=true"
+   }
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "bench": true
+  },
+  {
+   "label": "final",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "bench": true,
+   "env": {
+    "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+   }
+  }
+ ],
+ "usd": 0.6215332536522865,
+ "staged": {
+  "final": {
+   "commit": "7ba8577d45b1805b2b29df9dd8b79063f8be1ace",
+   "ceridwen": "8ef5c8cf001d25849bdafd5d768054dc2350f82e",
+   "sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+  }
+ }
+}

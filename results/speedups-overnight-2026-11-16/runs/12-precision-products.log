@@ -1,0 +1,58 @@
+gpu NVIDIA A100-SXM4-40GB, 620.70.06, 40960 MiB | cold start 12 s | container 1330 s | $0.86
+ 0 t5         exit 0 process   59.7 s  compiled 292 tuned 302 cache 226 MB
+     loglike                        compile    8.66 s   batch of 100     1.032 ms
+     predict                        compile    5.49 s   batch of 100     0.721 ms
+     likelihood given prediction    compile    2.30 s   batch of 100     0.838 ms
+     transforms                     compile    0.31 s   batch of 100     0.177 ms
+     get_spectrum                   compile    3.07 s   batch of 100     0.237 ms
+     factor grid                    compile    1.58 s   batch of 100     0.177 ms
+     factor spectrum                compile    1.24 s   batch of 100     0.121 ms
+ 1 t6a        exit 0 process   56.3 s  compiled 292 tuned 302 cache 227 MB
+     loglike                        compile    8.02 s   batch of 100     1.195 ms
+     predict                        compile    5.55 s   batch of 100     0.901 ms
+     likelihood given prediction    compile    2.19 s   batch of 100     0.831 ms
+     transforms                     compile    0.33 s   batch of 100     0.188 ms
+     get_spectrum                   compile    2.98 s   batch of 100     0.398 ms
+     factor grid                    compile    1.56 s   batch of 100     0.181 ms
+     factor spectrum                compile    1.27 s   batch of 100     0.148 ms
+ 2 t6b        exit 0 process   58.0 s  compiled 292 tuned 302 cache 227 MB
+     loglike                        compile    8.78 s   batch of 100     1.373 ms
+     predict                        compile    5.64 s   batch of 100     1.127 ms
+     likelihood given prediction    compile    2.40 s   batch of 100     0.832 ms
+     transforms                     compile    0.33 s   batch of 100     0.216 ms
+     get_spectrum                   compile    3.05 s   batch of 100     0.394 ms
+     factor grid                    compile    1.58 s   batch of 100     0.256 ms
+     factor spectrum                compile    1.23 s   batch of 100     0.216 ms
+ 3 t5         exit 0 process   46.0 s  compiled 275 tuned 262 cache 114 MB
+     loglike                        compile    5.70 s   batch of 100     0.793 ms
+     predict                        compile    3.17 s   batch of 100     0.511 ms
+     likelihood given prediction    compile    2.26 s   batch of 100     0.782 ms
+     transforms                     compile    0.61 s   batch of 100     0.315 ms
+     get_spectrum                   compile    3.93 s   batch of 100     0.267 ms
+ 4 t6a        exit 0 process   49.5 s  compiled 275 tuned 262 cache 116 MB
+     loglike                        compile    6.77 s   batch of 100     0.947 ms
+     predict                        compile    3.40 s   batch of 100     0.644 ms
+     likelihood given prediction    compile    2.41 s   batch of 100     0.742 ms
+     transforms                     compile    0.36 s   batch of 100     0.209 ms
+     get_spectrum                   compile    3.61 s   batch of 100     0.359 ms
+ 5 base       exit 0 process  181.4 s  compiled 795 tuned 870 cache 176 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   98.4 s  calls 5.521 M    56115 /s  logZ 91777.8563  cells 6.0 0.1 7.8 29.5 128.4 0.0 0.4 0.0 0.0 1.2 0.0
+ 6 t5         exit 0 process   95.0 s  compiled 485 tuned 627 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   44.7 s  calls 5.389 M   120567 /s  logZ 91777.9194  cells 5.0 0.1 7.0 12.5 62.6 0.0 0.7 0.0 0.0 1.2 0.0
+ 7 t6a        exit 0 process   98.1 s  compiled 485 tuned 627 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   47.4 s  calls 5.389 M   113666 /s  logZ 91778.1031  cells 4.8 0.1 6.9 12.4 65.2 0.0 0.6 0.0 0.0 1.3 0.0
+ 8 t6b        exit 0 process  103.5 s  compiled 485 tuned 627 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   52.4 s  calls 5.379 M   102718 /s  logZ 91778.2163  cells 4.8 0.1 6.8 12.3 69.1 0.0 0.6 0.0 0.0 1.2 0.0
+ 9 t6b        exit 0 process  103.5 s  compiled 485 tuned 627 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   52.1 s  calls 5.379 M   103188 /s  logZ 91778.2163  cells 5.0 0.1 6.9 12.7 69.6 0.0 0.7 0.0 0.0 1.2 0.0
+10 t6a        exit 0 process  100.2 s  compiled 485 tuned 627 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   47.3 s  calls 5.389 M   113993 /s  logZ 91778.1031  cells 5.0 0.1 8.3 12.7 65.0 0.0 0.6 0.0 0.0 1.3 0.0
+11 t5         exit 0 process   94.1 s  compiled 485 tuned 627 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   44.5 s  calls 5.389 M   121006 /s  logZ 91777.9194  cells 4.8 0.1 7.0 12.3 62.0 0.0 0.7 0.0 0.0 1.4 0.0
+12 base       exit 0 process  112.1 s  compiled 648 tuned 715 cache 92 MB
+     dr3_plain_w/210210-M1_210210: sampler   49.5 s  calls 4.860 M    98177 /s  logZ 91772.4911  cells 4.9 0.1 7.2 18.8 73.0 0.0 0.4 0.0 0.0 1.4 0.0
+13 t5         exit 0 process   79.8 s  compiled 470 tuned 578 cache 3 MB
+     dr3_plain_w/210210-M1_210210: sampler   34.6 s  calls 4.894 M   141602 /s  logZ 91772.3853  cells 4.8 0.1 6.9 10.0 50.0 0.0 0.4 0.0 0.0 1.4 0.0
+14 t6a        exit 0 process   87.0 s  compiled 470 tuned 578 cache 3 MB
+     dr3_plain_w/210210-M1_210210: sampler   39.2 s  calls 4.874 M   124428 /s  logZ 91772.2456  cells 4.9 0.1 7.0 10.5 56.5 0.0 0.4 0.0 0.0 1.2 0.0
+exit 0

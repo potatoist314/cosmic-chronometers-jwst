@@ -1,0 +1,212 @@
+[
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M9_227630"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M10_201233"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M9_227630"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M10_201233"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M9_227630"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M10_201233"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M9_227630"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M10_201233"
+  ],
+  "bench": true,
+  "bench_args": [
+   "--step",
+   "1"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ }
+]

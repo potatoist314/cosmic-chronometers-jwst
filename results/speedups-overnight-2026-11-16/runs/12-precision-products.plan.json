@@ -1,0 +1,112 @@
+[
+ {
+  "label": "t5",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "bench": true,
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "t6a",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "bench": true,
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "t6b",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "bench": true,
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "t5",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "bench": true,
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "t6a",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "bench": true,
+  "env": {
+   "XLA_FLAGS": "--xla_gpu_enable_triton_gemm=false"
+  }
+ },
+ {
+  "label": "base",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "t5",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "t6a",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "t6b",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "t6b",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "t6a",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "t5",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "base",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ]
+ },
+ {
+  "label": "t5",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ]
+ },
+ {
+  "label": "t6a",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ]
+ }
+]

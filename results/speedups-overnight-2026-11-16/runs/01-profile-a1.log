@@ -1,0 +1,34 @@
+gpu NVIDIA A100-SXM4-40GB, 610.57.04, 40960 MiB | cold start 14 s | container 1414 s | $0.91
+ 0 base       exit 0 process  177.5 s  compiled 795 tuned 870 cache 176 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   98.8 s  calls 5.521 M    55908 /s  logZ 91777.8563  cells 6.9 0.1 7.3 27.3 124.7 0.0 0.4 0.0 0.0 1.6 0.0
+     cell  2 /jax/core/compile/backend_compile_duration                   n    88      2.6 s
+     cell  3 /jax/core/compile/backend_compile_duration                   n   497     20.4 s
+     cell  3 /jax/core/compile/jaxpr_to_mlir_module_duration              n   497      2.8 s
+     cell  4 /jax/core/compile/backend_compile_duration                   n   198     59.0 s
+     cell  4 /jax/core/compile/jaxpr_to_mlir_module_duration              n   198      3.2 s
+     cell  4 /jax/core/compile/jaxpr_trace_duration                       n    76      3.3 s
+     cell  6 /jax/compilation_cache/compile_time_saved_sec                n     1      2.0 s
+ 1 a1         exit 0 process  164.3 s  compiled 800 tuned 880 cache 176 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   91.5 s  calls 5.530 M    60462 /s  logZ 91777.8772  cells 4.8 0.1 7.2 26.4 117.4 0.0 0.4 0.0 0.0 1.4 0.0
+ 2 base       exit 0 process  171.8 s  compiled 795 tuned 870 cache 176 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   99.5 s  calls 5.530 M    55549 /s  logZ 91777.8772  cells 4.8 0.1 7.1 26.3 125.3 0.0 0.4 0.0 0.0 1.5 0.0
+ 3 base       exit 0 process  169.7 s  compiled 795 tuned 870 cache 176 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   98.5 s  calls 5.521 M    56044 /s  logZ 91777.8563  cells 4.7 0.1 7.0 26.2 123.8 0.0 0.4 0.0 0.0 1.4 0.0
+ 4 a1         exit 0 process  161.0 s  compiled 800 tuned 880 cache 176 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   89.9 s  calls 5.521 M    61433 /s  logZ 91777.8563  cells 4.8 0.1 7.0 26.2 114.8 0.0 0.4 0.0 0.0 1.5 0.0
+ 5 base       exit 0 process  109.1 s  compiled 648 tuned 715 cache 92 MB
+     dr3_plain_w/210210-M1_210210: sampler   50.1 s  calls 4.860 M    96968 /s  logZ 91772.4911  cells 4.1 0.1 7.0 17.3 72.0 0.0 0.4 0.0 0.0 1.5 0.0
+     cell  2 /jax/core/compile/backend_compile_duration                   n    88      2.6 s
+     cell  3 /jax/core/compile/backend_compile_duration                   n   348     13.4 s
+     cell  3 /jax/core/compile/jaxpr_to_mlir_module_duration              n   348      1.7 s
+     cell  4 /jax/core/compile/backend_compile_duration                   n   200     49.0 s
+     cell  4 /jax/core/compile/jaxpr_to_mlir_module_duration              n   200      3.0 s
+     cell  4 /jax/core/compile/jaxpr_trace_duration                       n    77      2.7 s
+     cell  6 /jax/compilation_cache/compile_time_saved_sec                n     1      2.0 s
+ 6 base       exit 0 process  110.2 s  compiled 648 tuned 715 cache 92 MB
+     dr3_plain_w/210210-M1_210210: sampler   50.1 s  calls 4.860 M    97064 /s  logZ 91772.4911  cells 4.8 0.1 7.1 17.2 72.5 0.0 0.4 0.0 0.0 1.5 0.0
+ 7 base       exit 0 process  347.8 s  compiled 993 tuned 1146 cache 438 MB
+     dr3_cn_free_w/201233-M10_201233: sampler   85.0 s  calls 4.438 M    52185 /s  logZ 104125.0366  cells 0.0 0.1 1.2 6.7 105.3 0.0 0.4 0.0 0.0 1.5 0.0
+     dr3_cn_free_w/227630-M9_227630: sampler   93.7 s  calls 4.715 M    50333 /s  logZ 96413.1352  cells 4.7 0.1 6.8 25.8 118.8 0.0 0.4 0.0 0.0 1.5 0.0
+     dr3_plain_w/227630-M9_227630: sampler   45.9 s  calls 4.276 M    93068 /s  logZ 96414.2173  cells 0.0 0.1 0.1 2.6 63.2 0.0 0.4 0.0 0.0 1.4 0.0
+exit 0

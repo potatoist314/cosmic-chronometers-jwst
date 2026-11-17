@@ -1,0 +1,44 @@
+gpu NVIDIA A100-SXM4-40GB, 610.57.04, 40960 MiB | cold start 8 s | container 1249 s | $0.81
+ 0 n2         exit 0 process  142.8 s  compiled 481 tuned 633 cache 250 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   70.5 s  calls 5.432 M    77077 /s  logZ 91777.7723  cells 7.2 0.1 7.1 20.7 99.7 0.0 0.3 0.0 0.0 1.7 0.0
+ 1 f2         exit 0 process  115.3 s  compiled 481 tuned 632 cache 229 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   58.7 s  calls 5.450 M    92896 /s  logZ 91777.7383  cells 4.5 0.1 6.8 15.5 81.1 0.0 0.6 0.0 0.0 1.3 0.0
+ 2 f3         exit 0 process  108.1 s  compiled 485 tuned 629 cache 225 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   50.0 s  calls 5.450 M   109085 /s  logZ 91777.7383  cells 4.5 0.1 6.8 15.7 72.5 0.0 0.6 0.0 0.0 1.4 0.0
+ 3 n2         exit 0 process  137.2 s  compiled 481 tuned 633 cache 250 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   69.2 s  calls 5.388 M    77835 /s  logZ 91777.8151  cells 4.6 0.1 7.0 19.3 97.8 0.0 0.4 0.0 0.0 1.4 0.0
+ 4 f2         exit 0 process  117.0 s  compiled 481 tuned 632 cache 229 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   58.2 s  calls 5.399 M    92741 /s  logZ 91778.0232  cells 4.6 0.1 6.9 15.6 81.7 0.0 0.4 0.0 0.0 1.4 0.0
+ 5 f3         exit 0 process  107.8 s  compiled 485 tuned 629 cache 225 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   49.8 s  calls 5.450 M   109461 /s  logZ 91777.7383  cells 4.5 0.1 6.9 15.7 73.4 0.0 0.4 0.0 0.0 1.6 0.0
+ 6 n2         exit 0 process   98.2 s  compiled 468 tuned 590 cache 119 MB
+     dr3_plain_w/210210-M1_210210: sampler   46.9 s  calls 4.889 M   104279 /s  logZ 91772.0046  cells 4.7 0.1 6.9 11.9 67.5 0.0 0.3 0.0 0.0 1.4 0.0
+ 7 f3         exit 0 process   89.0 s  compiled 472 tuned 587 cache 115 MB
+     dr3_plain_w/210210-M1_210210: sampler   37.3 s  calls 4.905 M   131540 /s  logZ 91772.1843  cells 4.4 0.1 6.8 11.8 57.8 0.0 0.3 0.0 0.0 1.4 0.0
+ 8 n2         exit 0 process   97.3 s  compiled 468 tuned 590 cache 119 MB
+     dr3_plain_w/210210-M1_210210: sampler   46.8 s  calls 4.905 M   104771 /s  logZ 91772.1843  cells 4.4 0.1 6.7 11.6 67.2 0.0 0.3 0.0 0.0 1.4 0.0
+ 9 f3         exit 0 process   89.3 s  compiled 472 tuned 587 cache 115 MB
+     dr3_plain_w/210210-M1_210210: sampler   37.0 s  calls 4.905 M   132473 /s  logZ 91772.1843  cells 4.6 0.1 6.9 12.0 58.5 0.0 0.3 0.0 0.0 1.3 0.0
+10 f2         exit 0 process   50.3 s  compiled 287 tuned 296 cache 227 MB
+     loglike                        compile    8.64 s   batch of 100     1.703 ms
+     predict                        compile    4.96 s   batch of 100     0.798 ms
+     likelihood given prediction    compile    1.87 s   batch of 100     0.969 ms
+     transforms                     compile    0.31 s   batch of 100     0.181 ms
+     get_spectrum                   compile    2.48 s   batch of 100     0.230 ms
+     factor grid                    compile    1.88 s   batch of 100     0.278 ms
+     factor spectrum                compile    1.59 s   batch of 100     0.231 ms
+11 f3         exit 0 process   51.5 s  compiled 291 tuned 317 cache 225 MB
+     loglike                        compile    8.53 s   batch of 100     1.367 ms
+     predict                        compile    4.92 s   batch of 100     0.786 ms
+     likelihood given prediction    compile    3.09 s   batch of 100     0.982 ms
+     transforms                     compile    0.33 s   batch of 100     0.224 ms
+     get_spectrum                   compile    2.51 s   batch of 100     0.237 ms
+     factor grid                    compile    1.89 s   batch of 100     0.270 ms
+     factor spectrum                compile    1.55 s   batch of 100     0.260 ms
+12 f3         exit 0 process   41.2 s  compiled 276 tuned 280 cache 115 MB
+     loglike                        compile    6.63 s   batch of 100     1.022 ms
+     predict                        compile    3.14 s   batch of 100     0.499 ms
+     likelihood given prediction    compile    3.21 s   batch of 100     0.876 ms
+     transforms                     compile    0.31 s   batch of 100     0.164 ms
+     get_spectrum                   compile    2.53 s   batch of 100     0.229 ms
+exit 0

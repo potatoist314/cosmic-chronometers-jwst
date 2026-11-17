@@ -1570,3 +1570,8 @@
 
 - Pages: `research/questions/q-afe-age-chronometer.md`
 - Change: the \(H\) column is \(H(z_\mathrm{eff})\), \(z_\mathrm{eff}=0.775\) (`effective_redshift` in `src/chronometer.py`); one Planck18 row at \(z_\mathrm{eff}\) (−5.23, 105.4) replaces the same-line-fit and median-\(z\) rows; `age-redshift-slopes.csv` and the mock `slopes.csv` gain \(z_\mathrm{eff}\) and \(H(z_\mathrm{eff})\) columns; card t_d3278298.
+
+## [2026-11-17] analysis | Speedups overnight of 16–17 Nov
+
+- Pages: `notes/speedups-follow-ups.md`
+- Change: new section with the kept changes of the run (ceridwen branch `speedups-overnight-2026-11-16`, Astro baa81fbd), the one-container totals (`dr3_cn_free_w` 181.4 → 94.6 s, `dr3_plain_w` 112.1 → 79.8 s) and the TF32 note; Triton GEMM off adopted; cuBLASLt and windowed line Gram rows updated; full-precision products row under Policy choices; card t_2fac5263.

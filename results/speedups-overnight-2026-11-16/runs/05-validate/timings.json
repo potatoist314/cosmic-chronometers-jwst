@@ -1,0 +1,197 @@
+{
+ "called_at": 1794895707.894003,
+ "entered": 1794895715.2506027,
+ "finished": 1794896627.396749,
+ "gpu": "NVIDIA A100-SXM4-40GB, 610.57.04, 40960 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "label": "f3",
+   "cells": [
+    "dr3_cn_free_w/M9_227630"
+   ],
+   "start": 1794895716.206919,
+   "end": 1794895821.0184662,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:08:36 fitting dr3_cn_free_w/M9_227630, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 629,
+   "cache_bytes": 222383764
+  },
+  {
+   "index": 1,
+   "label": "f3",
+   "cells": [
+    "dr3_cn_free_w/M10_201233"
+   ],
+   "start": 1794895821.0841844,
+   "end": 1794895915.8524575,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:10:21 fitting dr3_cn_free_w/M10_201233, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 619,
+   "cache_bytes": 218114800
+  },
+  {
+   "index": 2,
+   "label": "f3",
+   "cells": [
+    "dr3_plain_w/M9_227630"
+   ],
+   "start": 1794895915.9190094,
+   "end": 1794896003.8022952,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:11:56 fitting dr3_plain_w/M9_227630, seed 20260832\n",
+   "compiled": 473,
+   "tuned": 587,
+   "cache_bytes": 116179623
+  },
+  {
+   "index": 3,
+   "label": "f3",
+   "cells": [
+    "dr3_plain_w/M10_201233"
+   ],
+   "start": 1794896003.872472,
+   "end": 1794896083.7189355,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:13:23 fitting dr3_plain_w/M10_201233, seed 20260832\n",
+   "compiled": 473,
+   "tuned": 579,
+   "cache_bytes": 116624883
+  },
+  {
+   "index": 4,
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794896084.7474258,
+   "end": 1794896254.721738,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:14:44 fitting dr3_cn_free_w/M1_210210, seed 20260833\n",
+   "compiled": 795,
+   "tuned": 870,
+   "cache_bytes": 175577272
+  },
+  {
+   "index": 5,
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "start": 1794896254.8236194,
+   "end": 1794896363.5695736,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:17:34 fitting dr3_plain_w/M1_210210, seed 20260833\n",
+   "compiled": 648,
+   "tuned": 715,
+   "cache_bytes": 91806001
+  },
+  {
+   "index": 6,
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M9_227630"
+   ],
+   "start": 1794896363.6518092,
+   "end": 1794896521.6403887,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:19:23 fitting dr3_cn_free_w/M9_227630, seed 20260833\n",
+   "compiled": 796,
+   "tuned": 870,
+   "cache_bytes": 175682073
+  },
+  {
+   "index": 7,
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M9_227630"
+   ],
+   "start": 1794896521.736122,
+   "end": 1794896627.3184533,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "06:22:01 fitting dr3_plain_w/M9_227630, seed 20260833\n",
+   "compiled": 649,
+   "tuned": 715,
+   "cache_bytes": 92349104
+  }
+ ],
+ "returned": 1794896630.966733,
+ "plan": [
+  {
+   "label": "f3",
+   "cells": [
+    "dr3_cn_free_w/M9_227630"
+   ]
+  },
+  {
+   "label": "f3",
+   "cells": [
+    "dr3_cn_free_w/M10_201233"
+   ]
+  },
+  {
+   "label": "f3",
+   "cells": [
+    "dr3_plain_w/M9_227630"
+   ]
+  },
+  {
+   "label": "f3",
+   "cells": [
+    "dr3_plain_w/M10_201233"
+   ]
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "seed": 20260833
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "seed": 20260833
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M9_227630"
+   ],
+   "seed": 20260833
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M9_227630"
+   ],
+   "seed": 20260833
+  }
+ ],
+ "usd": 0.5880788634408951,
+ "staged": {
+  "base": {
+   "commit": "48f8575d92656df1ce0d56e0aa06b5d1eb456be7",
+   "ceridwen": "13791e0e971aa95d4723a38941438706912ea1dc",
+   "sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+  },
+  "f3": {
+   "commit": "19e7a01273346da8ae2ddc8fe83f55bffaa6c4c3",
+   "ceridwen": "d03f336e05d3bb8437c0a301e084ae0d9378694c",
+   "sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+  }
+ }
+}

@@ -1,0 +1,38 @@
+gpu NVIDIA A100-SXM4-40GB, 620.70.06, 40960 MiB | cold start 10 s | container 319 s | $0.21
+ 0 base       exit 0 process   73.5 s  compiled 603 tuned 535 cache 173 MB
+     loglike                        compile    9.91 s   batch of 100     3.518 ms
+     predict                        compile    6.58 s   batch of 100     2.597 ms
+     likelihood given prediction    compile    2.04 s   batch of 100     0.937 ms
+     transforms                     compile    0.33 s   batch of 100     0.210 ms
+     get_spectrum                   compile    2.63 s   batch of 100     0.446 ms
+     factor grid                    compile    2.21 s   batch of 100     1.256 ms
+     factor spectrum                compile    1.57 s   batch of 100     0.814 ms
+ 1 f1         exit 0 process   83.2 s  compiled 593 tuned 530 cache 189 MB
+     loglike                        compile   14.73 s   batch of 100     2.095 ms
+     predict                        compile   10.70 s   batch of 100     1.344 ms
+     likelihood given prediction    compile    2.91 s   batch of 100     0.989 ms
+     transforms                     compile    0.34 s   batch of 100     0.228 ms
+     get_spectrum                   compile    3.25 s   batch of 100     0.217 ms
+     factor grid                    compile    3.96 s   batch of 100     0.433 ms
+     factor spectrum                compile    3.46 s   batch of 100     0.389 ms
+ 2 final      exit 0 process   62.3 s  compiled 293 tuned 323 cache 226 MB
+     loglike                        compile   10.49 s   batch of 100     1.342 ms
+     predict                        compile    6.33 s   batch of 100     0.743 ms
+     likelihood given prediction    compile    3.03 s   batch of 100     0.935 ms
+     transforms                     compile    0.32 s   batch of 100     0.195 ms
+     get_spectrum                   compile    3.06 s   batch of 100     0.221 ms
+     factor grid                    compile    2.80 s   batch of 100     0.195 ms
+     factor spectrum                compile    2.60 s   batch of 100     0.189 ms
+ 3 base       exit 0 process   50.4 s  compiled 453 tuned 388 cache 90 MB
+     loglike                        compile    7.16 s   batch of 100     1.453 ms
+     predict                        compile    3.46 s   batch of 100     0.663 ms
+     likelihood given prediction    compile    2.22 s   batch of 100     0.822 ms
+     transforms                     compile    0.34 s   batch of 100     0.224 ms
+     get_spectrum                   compile    2.74 s   batch of 100     0.399 ms
+ 4 final      exit 0 process   46.4 s  compiled 276 tuned 280 cache 115 MB
+     loglike                        compile    7.17 s   batch of 100     1.003 ms
+     predict                        compile    3.76 s   batch of 100     0.505 ms
+     likelihood given prediction    compile    3.25 s   batch of 100     0.835 ms
+     transforms                     compile    0.33 s   batch of 100     0.207 ms
+     get_spectrum                   compile    3.13 s   batch of 100     0.190 ms
+exit 0
