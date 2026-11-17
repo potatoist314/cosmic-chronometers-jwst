@@ -59,6 +59,7 @@ Toy slope bias (Gyr per unit \(z\)): late members rise from none at \(z=1.0\) to
 ## References
 
 - Chronometer result: [q-afe-age-chronometer](wiki/research/questions/q-afe-age-chronometer.md).
+- Velocity-dispersion term: [q-sigma-term](wiki/research/questions/q-sigma-term.md).
 - Passive selection: [selection-counts.csv](results/legac-dr3-2026-11-11/selection-counts.csv), rows NUVrJ quiescent, [O II] EW below 5 Å, no 3σ [O II], [O III].
 - Age half-width: [window-194-fits.csv](results/legac-dr3-2026-11-11/window-194-fits.csv), `age_gyr_q16`, `age_gyr_q84`; 0.50 Gyr for plain and C/N free.
 - 2.05 Gyr: astropy `Planck18.age`, 5.85 Gyr at \(z=1.0\), 7.90 Gyr at \(z=0.6\).

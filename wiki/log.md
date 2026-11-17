@@ -1580,3 +1580,8 @@
 
 - Pages: `research/questions/q-progenitor-bias.md`
 - Change: answer section from `results/sigma-split-2026-11-16/`: late formers (5 of 194 plain, 4 C/N free), \(H\) with and without them on the plain and \(\log\sigma_\star\) lines, toy-mock slope bias table, literature and table links; card t_499a4e26.
+
+## [2026-11-17] query | Velocity-dispersion term question page
+
+- Pages: `research/questions/q-sigma-term.md`, `research/questions/q-afe-age-chronometer.md`, `research/questions/q-progenitor-bias.md`
+- Change: new open question on the \(\log\sigma_\star\) term with Liu Hao's four messages of 2026-11-17; \(H\) for the 194 and 333 (C/N free), mock binning table, overfitting checks, from `results/sigma-split-2026-11-16/`; card t_481fc9e6.

@@ -68,6 +68,7 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 - `research/questions/q-afe-mgb-weighting.md` — abundance evidence and parked carbon-mask refits; priority 10
 - `research/questions/q-afe-age-chronometer.md` — low \([\alpha/\mathrm{Fe}]\), Mg b and the chronometer age slope: LEGA-C DR3 window slopes (plain, C/N free, carbon mask) and the mock chronometer, figures from `scripts/plot_afe_age_chronometer.py`; DR2 window results of 10–11 Nov 2026 collapsed
 - `research/questions/q-progenitor-bias.md` — progenitor bias in the chronometer slope; quenching-time cut from the fitted SFHs, tests in progress
+- `research/questions/q-sigma-term.md` — the \(\log\sigma_\star\) term in the chronometer line: what it is, why it lowers \(H\), binning comparison, overfitting checks
 - `research/questions/q-external-validation.md` — fit outputs against independent literature measurements
 - `research/questions/q-sample-selection.md` — DR2 inputs and inferred quiescence
 - `research/questions/q-population-results.md` — both DR2 runs, population relations and residuals
