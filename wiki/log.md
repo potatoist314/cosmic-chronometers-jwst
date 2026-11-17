@@ -1570,3 +1570,8 @@
 
 - Pages: `research/questions/q-afe-age-chronometer.md`
 - Change: the \(H\) column is \(H(z_\mathrm{eff})\), \(z_\mathrm{eff}=0.775\) (`effective_redshift` in `src/chronometer.py`); one Planck18 row at \(z_\mathrm{eff}\) (−5.23, 105.4) replaces the same-line-fit and median-\(z\) rows; `age-redshift-slopes.csv` and the mock `slopes.csv` gain \(z_\mathrm{eff}\) and \(H(z_\mathrm{eff})\) columns; card t_d3278298.
+
+## [2026-11-17] query | Progenitor-bias question page
+
+- Pages: `research/questions/q-progenitor-bias.md`, `research/questions/q-afe-age-chronometer.md`
+- Change: new open question on progenitor bias in the chronometer slope, with Liu Hao's two messages of 2026-11-16; chronometer page links it; card t_a10cda9b.

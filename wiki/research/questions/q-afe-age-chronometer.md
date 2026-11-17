@@ -84,3 +84,4 @@ Window extensions change from the common window. Age moves only when Fe5015 and 
 
 - Detail: [DR3 window fits](results/legac-dr3-2026-11-11/REPORT.md), [carbon mask on the window](results/carbon-mask-window-2026-11-13/age-redshift-slopes.csv), [mock chronometer](results/mock-chronometer-window-2026-11-13/mocks.py), [C/N-free mocks](results/mock-chronometer-cn-free-2026-11-16/slopes.csv) ([paired with plain](results/mock-chronometer-cn-free-2026-11-16/paired-slopes.csv)), [DR2 chronometer fits](results/chronometer-135-2026-11-10/REPORT.md), [carbon, nitrogen and mocks](results/cn-response-2026-11-10/REPORT.md), [oldest galaxies](results/oldest-envelope-2026-11-11/REPORT.md).
 - Figures and table: `scripts/plot_afe_age_chronometer.py`; \(z_\mathrm{eff}\): `effective_redshift` in `src/chronometer.py`.
+- Progenitor bias: [q-progenitor-bias](wiki/research/questions/q-progenitor-bias.md).
