@@ -1,0 +1,22 @@
+term,arm,line,galaxies_removed,reference_slope,slope_shift,slope_shift_q16,slope_shift_q84,H_reference,H_shift,H_shift_q16,H_shift_q84,H_shift_percent,source
+log sigma_star term,plain,plain line,0,-5.04328,-0.749452,-1.09816,-0.414837,109.249,-14.1344,-19.535,-8.30335,-12.9378,split-plane.csv
+galaxies that formed 90% of their mass after the cosmic age at z_top removed,plain,plain line,5,-5.04328,-0.496846,-0.723074,-0.267413,109.249,-9.79763,-13.6993,-5.5011,-8.96814,progenitor-fixed-population.csv
+galaxies that formed 90% of their mass after the cosmic age at z_top removed,plain,line + log sigma_star term,5,-5.79274,-0.321278,-0.483645,-0.155579,95.1149,-4.99807,-7.32935,-2.48774,-5.25478,progenitor-fixed-population.csv
+"galaxies that formed 90% of their mass after the cosmic age at z_top removed; cosmic-time interval from H0 60, Omega_m 0.25",plain,plain line,6,-5.04328,-0.535936,-0.764967,-0.302387,109.249,-10.4944,-14.3885,-6.17987,-9.60594,progenitor-fixed-population.csv
+"galaxies that formed 90% of their mass after the cosmic age at z_top removed; cosmic-time interval from H0 75, Omega_m 0.40",plain,plain line,2,-5.04328,-0.174806,-0.300594,-0.0606424,109.249,-3.65985,-6.14529,-1.29805,-3.35,progenitor-fixed-population.csv
+log sigma_star term,cn_free,plain line,0,-5.15361,-0.716306,-1.04696,-0.396687,106.911,-13.0463,-18.0517,-7.64105,-12.203,split-plane.csv
+galaxies that formed 90% of their mass after the cosmic age at z_top removed,cn_free,plain line,4,-5.15361,-0.413376,-0.629585,-0.195095,106.911,-7.93864,-11.6388,-3.89959,-7.42549,progenitor-fixed-population.csv
+galaxies that formed 90% of their mass after the cosmic age at z_top removed,cn_free,line + log sigma_star term,4,-5.86991,-0.284745,-0.432482,-0.134706,93.8643,-4.34263,-6.44113,-2.10572,-4.6265,progenitor-fixed-population.csv
+"galaxies that formed 90% of their mass after the cosmic age at z_top removed; cosmic-time interval from H0 60, Omega_m 0.25",cn_free,plain line,6,-5.15361,-0.525316,-0.752742,-0.288566,106.911,-9.88951,-13.6254,-5.66883,-9.25027,progenitor-fixed-population.csv
+"galaxies that formed 90% of their mass after the cosmic age at z_top removed; cosmic-time interval from H0 75, Omega_m 0.40",cn_free,plain line,2,-5.15361,-0.134484,-0.229955,-0.0506138,106.911,-2.7189,-4.56661,-1.03976,-2.54315,progenitor-fixed-population.csv
+the same cut on the mocks (one formation epoch),mock,plain line,0,-5.11603,0,0,0,107.696,0,0,0,0,progenitor-fixed-population.csv
+the same cut on the toy population without late members,toy,plain line,,-5.11936,-0.114993,,,107.626,-2.36442,,,-2.19689,progenitor-toy.csv
+"toy late members: 20% at z_min, formed 1 Gyr later (13% of them formed 90% after z_top)",toy,plain line,,-5.22569,0.510289,0.28375,0.735232,105.436,11.41,6.05378,17.2632,10.8218,progenitor-toy.csv
+"toy late members: 20% at z_min, formed 1 Gyr later (13% of them formed 90% after z_top)",toy,plain line after the cut,,-5.22569,0.335762,0.10564,0.574499,105.436,7.23966,2.17542,13.0231,6.86641,progenitor-toy.csv
+"toy late members: 20% at z_min, formed 1 Gyr later (13% of them formed 90% after z_top)",toy,line + log sigma_star term,,-5.22569,0.51199,0.275956,0.741742,105.436,11.4522,5.87824,17.4414,10.8617,progenitor-toy.csv
+"toy late members: 20% at z_min, formed 2 Gyr later (44% of them formed 90% after z_top)",toy,plain line,,-5.22569,1.02058,0.5675,1.47046,105.436,25.5892,12.8451,41.2864,24.27,progenitor-toy.csv
+"toy late members: 20% at z_min, formed 2 Gyr later (44% of them formed 90% after z_top)",toy,plain line after the cut,,-5.22569,0.328029,-0.0616938,0.716248,105.436,7.06174,-1.23024,16.7467,6.69767,progenitor-toy.csv
+"toy late members: 20% at z_min, formed 2 Gyr later (44% of them formed 90% after z_top)",toy,line + log sigma_star term,,-5.22569,1.02398,0.551913,1.48348,105.436,25.6953,12.4506,41.7969,24.3706,progenitor-toy.csv
+"toy late members: 20% at z_min, formed 3 Gyr later (81% of them formed 90% after z_top)",toy,plain line,,-5.22569,1.53087,0.85125,2.2057,105.436,43.685,20.5174,77.0066,41.4328,progenitor-toy.csv
+"toy late members: 20% at z_min, formed 3 Gyr later (81% of them formed 90% after z_top)",toy,plain line after the cut,,-5.22569,0.115181,-0.22711,0.457596,105.436,2.37633,-4.39142,10.1187,2.25382,progenitor-toy.csv
+"toy late members: 20% at z_min, formed 3 Gyr later (81% of them formed 90% after z_top)",toy,line + log sigma_star term,,-5.22569,1.53597,0.827869,2.22523,105.436,43.8913,19.8478,78.1942,41.6284,progenitor-toy.csv

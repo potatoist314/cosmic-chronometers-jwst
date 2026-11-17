@@ -141,3 +141,86 @@ def effective_redshift(
 
     spread = [solve(reference.clone(H0=h, Om0=m)) for h in H0 for m in Om0]
     return dict(z_eff=float(solve(reference)), z_eff_min=float(min(spread)), z_eff_max=float(max(spread)))
+
+
+def fit_age_plane(
+    redshift: np.ndarray,
+    age_gyr: np.ndarray,
+    covariate: np.ndarray,
+    weights: np.ndarray | None = None,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Fit age = a + b * redshift + c * covariate by least squares.
+
+    Return b (Gyr per unit redshift) and c (Gyr per unit covariate). The last
+    axis holds the galaxies; leading axes hold independent fits. Weights
+    multiply the squared residuals; a weight of zero removes a galaxy.
+    """
+    redshift, age_gyr, covariate, weights = np.broadcast_arrays(
+        np.asarray(redshift, dtype=float),
+        np.asarray(age_gyr, dtype=float),
+        np.asarray(covariate, dtype=float),
+        1.0 if weights is None else np.asarray(weights, dtype=float),
+    )
+    design = np.stack((np.ones_like(redshift), redshift, covariate), axis=-1)
+    transposed = np.swapaxes(design * weights[..., None], -1, -2)
+    coefficients = np.linalg.solve(transposed @ design, transposed @ age_gyr[..., None])
+    return coefficients[..., 1, 0], coefficients[..., 2, 0]
+
+
+def binned_difference_hubble(
+    redshift: np.ndarray,
+    age_gyr: np.ndarray,
+    groups: np.ndarray,
+    redshift_edges: np.ndarray,
+) -> dict[str, np.ndarray | float]:
+    """Return H(z) from median ages in redshift bins, one relation per group.
+
+    Each redshift bin of a group gives one point: the median redshift, the
+    median age and the error MAD / sqrt(N). Each group compares its i-th and
+    (i + N_z / 2)-th points. The H(z) values are averaged with
+    inverse-variance weights (Borghi et al. 2022b, ApJL 928, L4, Sect. 3;
+    Jiao et al. 2023, arXiv:2205.05701, Sect. 5.1 and 5.2).
+    """
+    redshift = np.asarray(redshift, dtype=float)
+    age_gyr = np.asarray(age_gyr, dtype=float)
+    groups = np.asarray(groups)
+    redshift_edges = np.asarray(redshift_edges, dtype=float)
+    n_bins = len(redshift_edges) - 1
+    step = n_bins // 2
+    bin_index = np.clip(np.searchsorted(redshift_edges, redshift, side="right") - 1, 0, n_bins - 1)
+
+    counts, pair_z, pair_hubble, pair_error = [], [], [], []
+    for group in np.unique(groups):
+        z_point, age_point, age_error = [], [], []
+        for index in range(n_bins):
+            cell = (groups == group) & (bin_index == index)
+            counts.append(int(cell.sum()))
+            median_age = np.median(age_gyr[cell])
+            z_point.append(np.median(redshift[cell]))
+            age_point.append(median_age)
+            age_error.append(np.median(np.abs(age_gyr[cell] - median_age)) / np.sqrt(cell.sum()))
+        for low in range(n_bins - step):
+            high = low + step
+            z_eff, hubble = hubble_from_age_difference(
+                z_point[low], z_point[high], age_point[low], age_point[high]
+            )
+            pair_z.append(z_eff)
+            pair_hubble.append(hubble)
+            pair_error.append(
+                hubble_uncertainty_from_age_errors(
+                    hubble, age_point[high] - age_point[low], age_error[low], age_error[high]
+                )
+            )
+
+    pair_z, pair_hubble, pair_error = (np.array(v) for v in (pair_z, pair_hubble, pair_error))
+    hubble, error = inverse_variance_combine(pair_hubble, pair_error)
+    weights = pair_error**-2
+    return {
+        "z_eff": float(np.sum(weights * pair_z) / np.sum(weights)),
+        "hubble": hubble,
+        "error": error,
+        "pair_z_eff": pair_z,
+        "pair_hubble": pair_hubble,
+        "pair_error": pair_error,
+        "counts": np.array(counts),
+    }

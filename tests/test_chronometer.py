@@ -7,6 +7,8 @@ import pytest
 
 from src.chronometer import (
     GYR_INV_TO_KM_S_MPC,
+    binned_difference_hubble,
+    fit_age_plane,
     fit_common_age_slope,
     hubble_from_age_difference,
     hubble_from_age_slope,
@@ -160,3 +162,54 @@ def test_line_slope_at_effective_redshift_returns_hubble(H0, Om0):
     slope = np.polyfit(redshift, cosmo.age(redshift).to("Gyr").value, 1)[0]
 
     assert hubble_from_age_slope(z_eff, slope) == pytest.approx(cosmo.H(z_eff).value, rel=0.005)
+
+
+def test_age_plane_recovers_coefficients_and_batches():
+    rng = np.random.default_rng(20261117)
+    redshift = rng.uniform(0.6, 1.0, 194)
+    covariate = 2.3 + 0.4 * (redshift - 0.8) + rng.normal(0.0, 0.1, 194)
+    age = 7.0 - 5.2 * redshift + 2.5 * covariate
+
+    slope, coefficient = fit_age_plane(redshift, age, covariate)
+    assert slope == pytest.approx(-5.2)
+    assert coefficient == pytest.approx(2.5)
+    # The plain line absorbs c * d(covariate)/dz.
+    assert np.polyfit(redshift, age, 1)[0] > slope + 0.5
+
+    indices = rng.integers(0, 194, size=(5, 194))
+    noisy = age + rng.normal(0.0, 0.5, 194)
+    batch_slope, batch_coefficient = fit_age_plane(redshift[indices], noisy[indices], covariate[indices])
+    for row, draw in enumerate(indices):
+        design = np.column_stack((np.ones(194), redshift[draw], covariate[draw]))
+        expected = np.linalg.lstsq(design, noisy[draw], rcond=None)[0]
+        assert batch_slope[row] == pytest.approx(expected[1])
+        assert batch_coefficient[row] == pytest.approx(expected[2])
+
+    keep = redshift > 0.7
+    weighted = fit_age_plane(redshift, noisy, covariate, keep.astype(float))
+    assert weighted == pytest.approx(fit_age_plane(redshift[keep], noisy[keep], covariate[keep]))
+
+
+def test_binned_difference_hubble_on_parallel_linear_relations():
+    rng = np.random.default_rng(20261117)
+    redshift = rng.uniform(0.6, 1.0, 400)
+    groups = rng.integers(0, 2, 400)
+    slope = -5.0
+    scatter = rng.normal(0.0, 0.01, 400)
+    age = 7.0 + slope * redshift + 0.5 * groups + scatter
+    edges = np.linspace(0.6, 1.0, 5)
+
+    result = binned_difference_hubble(redshift, age, groups, edges)
+
+    assert result["counts"].shape == (8,)
+    assert result["counts"].sum() == 400
+    assert result["pair_hubble"].shape == (4,)
+    expected = [hubble_from_age_slope(z, slope) for z in result["pair_z_eff"]]
+    assert result["pair_hubble"] == pytest.approx(expected, rel=0.02)
+    assert result["hubble"] == pytest.approx(hubble_from_age_slope(result["z_eff"], slope), rel=0.02)
+    assert np.all(result["pair_error"] > 0)
+    assert result["error"] < result["pair_error"].min()
+    # Without the group split, the 0.5 Gyr offset stays in the bin scatter, not in H.
+    merged = binned_difference_hubble(redshift, age, np.zeros(400), edges)
+    assert merged["pair_hubble"].shape == (2,)
+    assert merged["error"] > result["error"]

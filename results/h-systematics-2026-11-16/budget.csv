@@ -1,0 +1,10 @@
+term,what_varied,variants,resolved_95,dH_median,dH_min,dH_max,dH_pct_median,dH_uncertainty,how_combined
+abundance treatment,"plain grid and carbon mask against C/N free, same 194 fits",2.0,1.0,12.419050488900062,2.338738301739312,22.499362676060812,11.616297668626366,7.311205989098788,median over the variants (Jiao+2023 Eq. 11)
+wavelength window,"three wider windows against the common window, DR2 spectra, plain fit (60, 96, 46 galaxies)",3.0,0.0,12.309976454328725,6.524188945413471,31.782131697192984,11.514274051391608,23.86590401546751,median over the variants (Jiao+2023 Eq. 11)
+spectra release,DR2 against DR3 spectra of the same 73 objects,2.0,0.0,2.1814595468662095,-2.4806668322947942,6.843585926027213,2.04045256689419,19.3175083713152,median over the variants (Jiao+2023 Eq. 11)
+photometry catalogue,"per-catalogue intercepts; each catalogue's galaxies alone (99, 95)",3.0,0.0,0.8509004210038712,-4.7150183300007456,7.3415227595243095,0.7958992183480448,12.403002927463454,median over the variants (Jiao+2023 Eq. 11)
+estimator,log sigma-star term; nine binned-difference schemes; five z ranges,15.0,3.0,-11.678999453832915,-37.65086698645359,23.415365366158937,-10.924082662253813,16.361729696228693,median over the variants (Jiao+2023 Eq. 11)
+selection,"S/N, NUVrJ margin and [O II] EW cuts inside the 194",8.0,0.0,-3.9344879276100855,-18.921833994202956,7.799302130231013,-3.680167254460013,6.271600664584479,median over the variants (Jiao+2023 Eq. 11)
+SFH prior scale,StudentT scale 1.0 against 0.3 on 30 mocks,1.0,0.0,-17.78583482471673,-17.78583482471673,-17.78583482471673,-16.636179375677003,11.907914720179233,median over the variants (Jiao+2023 Eq. 11)
+method bias (mocks),"true against recovered slope: 194 plain mocks, 40 C/N-free mocks",2.0,0.0,-4.178620189445648,-6.113802499442846,-2.2434378794484506,-3.9085190939610777,7.501055155481423,median over the variants (Jiao+2023 Eq. 11)
+154 gained galaxies,not available,,,,,,,,fits.csv has 196 valid rows of 348 and no slope table
