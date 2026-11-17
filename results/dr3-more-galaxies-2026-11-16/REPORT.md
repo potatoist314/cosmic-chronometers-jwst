@@ -109,4 +109,4 @@ C/N-free −1.04 (−3.07, +1.08), plain −0.48 (−2.93, +1.99); 1.9σ and 1.8
 - 58 passive spectra (581 → 523) have no fittable photometry under the rule of `scripts/cosmos_photometry.py`.
 - The primary-sample flag and the redshift range stay in the quality cut.
 - M102_214235 has no C/N-free fit; the combined C/N-free sample is 347, the plain one 348.
-- 25 gained fits (16 plain, 9 C/N-free) have no local figures in the notebook: the galaxy has no HST F814W cutout.
+- 16 gained galaxies have no HST F814W cutout; their fit notebooks (both arms) have no local figures.
