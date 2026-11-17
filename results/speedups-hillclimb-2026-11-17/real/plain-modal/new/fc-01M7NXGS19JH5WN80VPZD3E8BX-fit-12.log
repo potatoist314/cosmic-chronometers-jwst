@@ -1,0 +1,4 @@
+23:30:23 fitting dr3_plain_w/M15_86122 (seed 20260832), dr3_plain_w/M16_37384 (seed 20260832) in one kernel
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+E1117 23:30:59.651636     386 cuda_timer.cc:88] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.
+23:31:49 fit done: dr3_plain_w/M15_86122

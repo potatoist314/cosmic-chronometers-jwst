@@ -1595,3 +1595,8 @@
 
 - Pages: none
 - Change: Ceridwen pin moved from `13791e0` to `3b5177f` (`cn-response-20261110` fast-forwarded to the kept build of the 16–17 Nov speedups run); merged into `absorption-mask` with the Astro speedup commits, so `experiment.py` fits on Colab, Modal and Vast run it; card t_80c681f5.
+
+## [2026-11-17] analysis | Speedups hill-climb of 17 Nov
+
+- Pages: `notes/speedups-follow-ups.md`
+- Change: new section for the kept change (the uncached fits of a Modal container or Colab runtime in one kernel, Astro 377bf6ab; 13 fits per container: `dr3_plain_w` 86.3 → 56.5 s, `dr3_cn_free_w` about 94 → 71 s); shared compile cache and CPU-core rows under Measured, not adopted; one \(\ln L\) program for all galaxies and compiling during sampling under Untested proposals; card t_cf15e524.
