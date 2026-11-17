@@ -1,0 +1,191 @@
+{
+ "called_at": 1794876233.4805892,
+ "entered": 1794876247.0342185,
+ "finished": 1794877661.224312,
+ "gpu": "NVIDIA A100-SXM4-40GB, 610.57.04, 40960 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794876248.0219584,
+   "end": 1794876425.493503,
+   "returncode": 0,
+   "stdout": "00:44:08 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 795,
+   "tuned": 870,
+   "cache_bytes": 175576153
+  },
+  {
+   "index": 1,
+   "label": "a1",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794876426.6032376,
+   "end": 1794876590.8639863,
+   "returncode": 0,
+   "stdout": "00:47:06 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 800,
+   "tuned": 880,
+   "cache_bytes": 175572204
+  },
+  {
+   "index": 2,
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794876590.9713838,
+   "end": 1794876762.7914834,
+   "returncode": 0,
+   "stdout": "00:49:51 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 795,
+   "tuned": 870,
+   "cache_bytes": 175584171
+  },
+  {
+   "index": 3,
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794876762.8967547,
+   "end": 1794876932.5833633,
+   "returncode": 0,
+   "stdout": "00:52:42 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 795,
+   "tuned": 870,
+   "cache_bytes": 175580006
+  },
+  {
+   "index": 4,
+   "label": "a1",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794876932.687149,
+   "end": 1794877093.715591,
+   "returncode": 0,
+   "stdout": "00:55:32 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 800,
+   "tuned": 880,
+   "cache_bytes": 175562964
+  },
+  {
+   "index": 5,
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "start": 1794877093.8158925,
+   "end": 1794877202.8991413,
+   "returncode": 0,
+   "stdout": "00:58:13 fitting dr3_plain_w/M1_210210, seed 20260832\n",
+   "compiled": 648,
+   "tuned": 715,
+   "cache_bytes": 91801225
+  },
+  {
+   "index": 6,
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "start": 1794877202.9864066,
+   "end": 1794877313.1964955,
+   "returncode": 0,
+   "stdout": "01:00:03 fitting dr3_plain_w/M1_210210, seed 20260832\n",
+   "compiled": 648,
+   "tuned": 715,
+   "cache_bytes": 91805267
+  },
+  {
+   "index": 7,
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M9_227630",
+    "dr3_cn_free_w/M10_201233",
+    "dr3_plain_w/M9_227630"
+   ],
+   "start": 1794877313.2855983,
+   "end": 1794877661.0787003,
+   "returncode": 0,
+   "stdout": "01:01:53 fitting dr3_cn_free_w/M9_227630 (seed 20260832), dr3_cn_free_w/M10_201233 (seed 20260832), dr3_plain_w/M9_227630 (seed 20260832) in one kernel\n[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.\n",
+   "compiled": 993,
+   "tuned": 1146,
+   "cache_bytes": 438382656
+  }
+ ],
+ "returned": 1794877664.7911859,
+ "plan": [
+  {
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "profile": true
+  },
+  {
+   "label": "a1",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "a1",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "profile": true
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ]
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M9_227630",
+    "dr3_cn_free_w/M10_201233",
+    "dr3_plain_w/M9_227630"
+   ]
+  }
+ ],
+ "usd": 0.9117566370924759,
+ "staged": {
+  "base": {
+   "commit": "48f8575d92656df1ce0d56e0aa06b5d1eb456be7",
+   "ceridwen": "13791e0e971aa95d4723a38941438706912ea1dc",
+   "sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+  },
+  "a1": {
+   "commit": "48f8575d92656df1ce0d56e0aa06b5d1eb456be7",
+   "ceridwen": "e7bb70e524231c84232d9c78c901b815c4719fc0",
+   "sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+  }
+ }
+}

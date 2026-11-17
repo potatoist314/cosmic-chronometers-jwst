@@ -204,6 +204,11 @@ def test_batch_worker_gets_each_fits_target_environment(tmp_path, monkeypatch):
         for i in (1, 2)]
     assert [b['notebook'] for b in seen['batch']] == [str(tmp_path / f'{i}-t{i}/t{i}_executed.ipynb') for i in (1, 2)]
     assert seen['env']['JAX_PLATFORMS'] == 'cuda' and seen['env']['CERIDWEN_TARGET_ID'] == 't1'
+    assert seen['env']['JAX_USE_SIMPLIFIED_JAXPR_CONSTANTS'] == 'True'
+    assert seen['env']['XLA_FLAGS'] == '--xla_gpu_enable_triton_gemm=false'
+    monkeypatch.setenv('XLA_FLAGS', '--xla_gpu_enable_command_buffer=')
+    assert worker._execute_targets(fits) == 0
+    assert seen['env']['XLA_FLAGS'] == '--xla_gpu_enable_command_buffer= --xla_gpu_enable_triton_gemm=false'
 
 
 def test_preflight_freezes_every_grid_and_target_before_rental(tmp_path, monkeypatch):

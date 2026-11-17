@@ -1,0 +1,103 @@
+[
+ {
+  "label": "base",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "bench": true
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "bench": true
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "bench": true,
+  "env": {
+   "JAX_DEFAULT_MATMUL_PRECISION": "highest"
+  }
+ },
+ {
+  "label": "base",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "bench": true
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "bench": true,
+  "env": {
+   "JAX_DEFAULT_MATMUL_PRECISION": "highest"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "env": {
+   "JAX_DEFAULT_MATMUL_PRECISION": "highest"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ],
+  "env": {
+   "JAX_DEFAULT_MATMUL_PRECISION": "highest"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_cn_free_w/M1_210210"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ]
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "env": {
+   "JAX_DEFAULT_MATMUL_PRECISION": "highest"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ],
+  "env": {
+   "JAX_DEFAULT_MATMUL_PRECISION": "highest"
+  }
+ },
+ {
+  "label": "final",
+  "cells": [
+   "dr3_plain_w/M1_210210"
+  ]
+ }
+]

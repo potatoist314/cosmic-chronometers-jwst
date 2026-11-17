@@ -1,0 +1,177 @@
+{
+ "called_at": 1794940159.021974,
+ "entered": 1794940168.5338469,
+ "finished": 1794940981.1654892,
+ "gpu": "NVIDIA A100-SXM4-40GB, 620.70.06, 40960 MiB",
+ "cpu_info": "model name\t: unknown\n2\n",
+ "steps": [
+  {
+   "index": 0,
+   "label": "t8",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794940169.5038471,
+   "end": 1794940278.666057,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "18:29:29 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 485,
+   "tuned": 618,
+   "cache_bytes": 2987567
+  },
+  {
+   "index": 1,
+   "label": "t9",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794940279.7204316,
+   "end": 1794940389.1220806,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "18:31:19 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 485,
+   "tuned": 620,
+   "cache_bytes": 2997362
+  },
+  {
+   "index": 2,
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794940390.1679404,
+   "end": 1794940566.5601718,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "18:33:10 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 795,
+   "tuned": 870,
+   "cache_bytes": 175573887
+  },
+  {
+   "index": 3,
+   "label": "t9",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794940566.6563199,
+   "end": 1794940675.7578022,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "18:36:06 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 485,
+   "tuned": 620,
+   "cache_bytes": 2995159
+  },
+  {
+   "index": 4,
+   "label": "t8",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794940675.8305569,
+   "end": 1794940782.7796023,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "18:37:55 fitting dr3_cn_free_w/M1_210210, seed 20260832\n",
+   "compiled": 485,
+   "tuned": 618,
+   "cache_bytes": 2986103
+  },
+  {
+   "index": 5,
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "start": 1794940782.8479686,
+   "end": 1794940895.907318,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "18:39:42 fitting dr3_plain_w/M1_210210, seed 20260832\n",
+   "compiled": 648,
+   "tuned": 715,
+   "cache_bytes": 91798854
+  },
+  {
+   "index": 6,
+   "label": "t8",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ],
+   "start": 1794940895.9903224,
+   "end": 1794940981.1038098,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "18:41:36 fitting dr3_plain_w/M1_210210, seed 20260832\n",
+   "compiled": 470,
+   "tuned": 569,
+   "cache_bytes": 2820120
+  }
+ ],
+ "returned": 1794940992.359872,
+ "plan": [
+  {
+   "label": "t8",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "t9",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "t9",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "t8",
+   "cells": [
+    "dr3_cn_free_w/M1_210210"
+   ]
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ]
+  },
+  {
+   "label": "t8",
+   "cells": [
+    "dr3_plain_w/M1_210210"
+   ]
+  }
+ ],
+ "usd": 0.5239198724504852,
+ "staged": {
+  "t8": {
+   "commit": "baa81fbd2c8ee10d16a16ddd96b07306ef8da10f",
+   "ceridwen": "4915254e86482e02a6f73de20d59852b76af1f56",
+   "sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+  },
+  "t9": {
+   "commit": "baa81fbd2c8ee10d16a16ddd96b07306ef8da10f",
+   "ceridwen": "c9741061fc08d9abe2e353569021b88dd20f0964",
+   "sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+  },
+  "base": {
+   "commit": "48f8575d92656df1ce0d56e0aa06b5d1eb456be7",
+   "ceridwen": "13791e0e971aa95d4723a38941438706912ea1dc",
+   "sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+  }
+ }
+}

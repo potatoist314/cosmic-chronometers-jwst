@@ -229,7 +229,15 @@ def _worker_environment(
         "CERIDWEN_MANIFEST_INDEX": str(target["manifest_index"]),
         "JAX_ENABLE_X64": "1",
         "JAX_PLATFORMS": "cuda",
+        # Closed-over arrays (grids, tables) become arguments of each compiled program, not
+        # literals inside it: less to compile, and a 3 MB compile cache in place of 250 MB.
+        "JAX_USE_SIMPLIFIED_JAXPR_CONSTANTS": "True",
         "LD_LIBRARY_PATH": "",
+        # Matrix products on cuBLAS, not Triton: about 6 s less compile per new galaxy on the A100,
+        # and the same ln Z from compile to compile.
+        "XLA_FLAGS": " ".join(
+            filter(None, (os.environ.get("XLA_FLAGS"), "--xla_gpu_enable_triton_gemm=false"))
+        ),
     }
 
 
