@@ -1575,3 +1575,8 @@
 
 - Pages: `notes/speedups-follow-ups.md`
 - Change: new section with the kept changes of the run (ceridwen branch `speedups-overnight-2026-11-16`, Astro baa81fbd), the one-container totals (`dr3_cn_free_w` 176.4 → 108.1 s, `dr3_plain_w` 113.1 → 85.1 s; ceridwen 3b5177f, F1 reverted, F2 products at full precision) and the TF32 note; Triton GEMM off adopted; cuBLASLt and windowed line Gram rows updated; full-precision products row under Policy choices; card t_2fac5263.
+
+## [2026-11-17] codebase | Ceridwen pin 3b5177f
+
+- Pages: none
+- Change: Ceridwen pin moved from `13791e0` to `3b5177f` (`cn-response-20261110` fast-forwarded to the kept build of the 16–17 Nov speedups run); merged into `absorption-mask` with the Astro speedup commits, so `experiment.py` fits on Colab, Modal and Vast run it; card t_80c681f5.
