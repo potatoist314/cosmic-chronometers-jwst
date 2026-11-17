@@ -1574,4 +1574,4 @@
 ## [2026-11-17] analysis | Speedups overnight of 16–17 Nov
 
 - Pages: `notes/speedups-follow-ups.md`
-- Change: new section with the kept changes of the run (ceridwen branch `speedups-overnight-2026-11-16`, Astro baa81fbd), the one-container totals (`dr3_cn_free_w` 181.4 → 94.6 s, `dr3_plain_w` 112.1 → 79.8 s) and the TF32 note; Triton GEMM off adopted; cuBLASLt and windowed line Gram rows updated; full-precision products row under Policy choices; card t_2fac5263.
+- Change: new section with the kept changes of the run (ceridwen branch `speedups-overnight-2026-11-16`, Astro baa81fbd), the one-container totals (`dr3_cn_free_w` 176.4 → 108.1 s, `dr3_plain_w` 113.1 → 85.1 s; ceridwen 3b5177f, F1 reverted, F2 products at full precision) and the TF32 note; Triton GEMM off adopted; cuBLASLt and windowed line Gram rows updated; full-precision products row under Policy choices; card t_2fac5263.

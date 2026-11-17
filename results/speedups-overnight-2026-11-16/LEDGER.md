@@ -3,7 +3,8 @@
 Card t_2fac5263. Branch `speedups-overnight-2026-11-16` in both repos (Astro worktree
 `tmp/worktrees/speedups-overnight`, ceridwen worktree inside it, from pin 13791e0).
 Keep rule (lead's correction, 2026-11-17): the ln L difference is floating-point rounding of any precision
-(float32 level included: relative 1e-7 to 1e-6, no trend), a real same-container A100 gain, and the full-fit
+(float32 level included: relative 1e-7 to 1e-6, up to about 0.1 on ln L of order 1e5, no trend), a real
+same-container A100 gain, and the full-fit
 check on 3 galaxies (medians within 0.05 sigma, widths within 5%, ln Z within its error). Dropped terms,
 truncation, coarser grids and sampler settings go to 'Needs his decision'.
 
@@ -41,16 +42,18 @@ Delta ln L: CPU, 800 dead points of M1_210210 cn_free (every 20th), after agains
 |---|---|---|---|---|---|---|---|
 | 1 | C/N `factor` gathered 9 terms and used 4; grid ratio computed on 10992 points, 7215 inside alf | ceridwen e7bb70e: one gather of the 4 used terms; tables cut to alf coverage, ratio padded with ones | 0.228 -> 0.198 s | run 1: cn_free sampler 99.0 -> 90.7 s (-8%), process 171 -> 162.7 s | 0 / 0 (0 of 800 differ) | KEPT | bit-identical on CPU and on the A100 (same ln Z and call count as the unchanged build) |
 | 2 | C/N `factor` built two gathers of (4 terms, bins, groups, wavelengths) per parameter vector | ceridwen d03884c: base and summed differential from one float64 matrix product, coefficients (2, 9 x 4 x bins) | 0.198 -> 0.057 s (factor grid 56.2 -> 10.4 ms, factor spectrum 39.0 -> 9.0 ms) | run 2: cn_free sampler 99.4 -> 71.4 s (-28%), process 177.1 -> 151.5 s (-14%) | 2.9e-11 / 4.4e-12 (60 of 800 differ; relative rms 1.9e-16) | KEPT | float64 reordering; `tests/csp/test_cn_response.py` 7 passed |
-| F1 | Main SFH basis read 4 corner gathers of (groups, bins, pixels) | ceridwen ba88af2 (branch `speedups-overnight-2026-11-16-f32`, on d03884c): one float32 matrix product, rows (afe, z, bin) | 0.057 -> 0.050 s (get_spectrum 23.8 -> 7.7 ms) | run 2, against a2: cn_free sampler 71.4 -> 68.5 s (-4%), process 151.5 -> 151.1 s; against base: plain sampler 50.4 -> 45.4 s (-10%), process 114.5 -> 108.0 s (-6%) | A100, 710 points: 0.539 / 0.063, mean +0.022 (TF32 products: "ln L on the A100"); CPU fit range 3.6e-4 / 8.7e-5 (relative 3.9e-9 / 9.5e-10, mean +1.6e-7, correlation with ln L -0.04); all 800: relative 9.2e-7 / 4.2e-8 | KEPT | float32 reordering on the CPU; on the A100 TF32 rounding, full-fit check passes (run 8); `tests/csp` 35 passed, 59 skipped |
+| F1 | Main SFH basis read 4 corner gathers of (groups, bins, pixels) | ceridwen ba88af2 (branch `speedups-overnight-2026-11-16-f32`, on d03884c): one float32 matrix product, rows (afe, z, bin) | 0.057 -> 0.050 s (get_spectrum 23.8 -> 7.7 ms) | run 2, against a2: cn_free sampler 71.4 -> 68.5 s (-4%), process 151.5 -> 151.1 s; against base: plain sampler 50.4 -> 45.4 s (-10%), process 114.5 -> 108.0 s (-6%) | A100, 710 points: 0.539 / 0.063, mean +0.022 (TF32 products: "ln L on the A100"); CPU fit range 3.6e-4 / 8.7e-5 (relative 3.9e-9 / 9.5e-10, mean +1.6e-7, correlation with ln L -0.04); all 800: relative 9.2e-7 / 4.2e-8 | NOT KEPT (reverted, ceridwen 719b1b0) | A100 max 0.539 is above the 0.1 limit (review 1); at full precision no gain (F1h, run 14) |
 | N1 | Notebook cell 3 called the un-jitted `joint_model.predict` once: 318 single-operation compiles | Astro 49de1f3f: `predict_jit` | CPU cell 3: 7.34 -> 3.89 s; compiles before the sampler 491 -> about 158 | run 3, against f1: cn_free process 147.1 -> 138.0 s (-6%), cell 3 26.6 -> 19.8 s | 0 / 0 (ln L untouched; the value only sets the initial `logmass`, printed value unchanged; same ln Z and call count on the A100) | KEPT | fewer compiles before the sampler |
 | N2 | The output-cell warm-up thread compiled beside the sampler-kernel compile on a 2-core container | Astro 19e7a012: the thread waits for `ns_progress.jsonl` | not measurable on CPU | run 3, against N1: cn_free process 138.0 -> 135.8 s (-2%); plain f1 -> N2 103.4 -> 96.8 s (-6%, N1 and N2 together) | 0 / 0 (no change to ln L) | KEPT | small, and it stacks with N1 |
-| F2 | C/N `factor` multiplied float32 tables by float64 coefficients: the 504x14430 and 504x12332 tables were promoted to float64 | ceridwen c7aba78: tables stay float32, coefficients cast to float32 | ln L 49.9 -> 43.7 ms per 100 (noisy machine); the factor times did not move on CPU | run 4, against N2: cn_free process 140.0 -> 116.2 s (-17%), sampler 69.9 -> 58.5 s (-16%), 77.5 k -> 92.8 k ln L per s; ln L batch of 100 in run 4: 1.70 ms | A100, 710 points: 0.494 / 0.021; CPU against F1, fit range: 2.2e-4 / 4.4e-5 (mean +2.0e-7, relative max 2.5e-9, correlation with ln L -0.03) | KEPT | float32 rounding (TF32 on the A100), full-fit check passes (run 8); `tests/csp/test_cn_response.py` passes |
+| F2 | C/N `factor` multiplied float32 tables by float64 coefficients: the 504x14430 and 504x12332 tables were promoted to float64 | ceridwen c7aba78: tables stay float32, coefficients cast to float32 | ln L 49.9 -> 43.7 ms per 100 (noisy machine); the factor times did not move on CPU | run 4, against N2: cn_free process 140.0 -> 116.2 s (-17%), sampler 69.9 -> 58.5 s (-16%), 77.5 k -> 92.8 k ln L per s; ln L batch of 100 in run 4: 1.70 ms | A100, 710 points: 0.494 / 0.021; CPU against F1, fit range: 2.2e-4 / 4.4e-5 (mean +2.0e-7, relative max 2.5e-9, correlation with ln L -0.03) | KEPT as F2h only | at TF32 the A100 max 0.494 is above the 0.1 limit (review 1); kept with the products at full precision (F2h) |
 | F3 | The likelihood (noise, order-10 calibration polynomial, 6 line profiles, 17x17 joint solve) ran on all 6166 native pixels; 1392 are fitted, inside pixels 1563 to 3192 | ceridwen d03f336: `run_sampler` cuts data, calibration basis and line columns to the first-to-last fitted pixel (`on_fitted_pixels`, 1630 pixels); predictions and stored outputs keep 6166 pixels | ln L 43.7 -> 39.6 ms per 100 | run 4, against F2: cn_free process 116.2 -> 108.0 s (-7%), sampler 58.5 -> 49.9 s (-15%), 109.3 k ln L per s, batch of 100 1.70 -> 1.37 ms; against N2, plain: process 97.8 -> 89.2 s (-9%), sampler 46.9 -> 37.2 s (-21%), 104.5 k -> 132.0 k ln L per s | against F2, fit range: 2.9e-11 / 1.1e-11 (269 of 710 differ, mean +3.3e-13) | KEPT | float64 reordering only: the cut pixels are masked; new test `test_loglike_on_the_fitted_pixels_equals_the_full_loglike` (rtol 1e-13, with and without line windows); 180 passed in the touched suites |
 | F4 | The C/N coefficient matrix (2, 1008) is half zeros: the base product reads only the base term (112 rows), the differential only the 8 differential terms (896 rows) | ceridwen 8ef5c8c: two tables, base (112 x W) and differential (896 x W); 1008 x W multiply-adds per product pair, was 2016 x W | ln L 39.6 -> 37.3 ms per 100 (factor grid 12.1 -> 11.2, factor spectrum 10.6 -> 9.5 ms) | run 6, against F3 with N1, N2, H1: cn_free sampler 49.75 -> 48.45 s (-2.6 %), loglike part 1.361 -> 1.306 ms; process 99.65 -> 100.2 s (inside the scatter) | against F3: 0 / 0 (0 of 800 differ), CPU and A100 | KEPT | bit-identical (the removed products were with exact zeros); `tests/csp/test_cn_response.py` 7 passed |
 | H1 | JAX wrote every closed-over array (SSP grid, C/N tables, projector tables) into each compiled program as a literal: 250 MB of programs per fit to compile, serialise and write | Astro 7ba8577d: `JAX_USE_SIMPLIFIED_JAXPR_CONSTANTS=True` in the fit kernel environment (`_worker_environment`, all backends); closed-over arrays become program arguments (JAX docs, internals/constants) | not a CPU cost | run 3, against N2: cn_free process 135.8 -> 120.6 s (-11%), plain 96.8 -> 93.8 s (-3%); compile cache 250 -> 3 MB, `save` 10.1 -> 3.0 s; sampler rate unchanged | against F4, fit range: 2.4e-4 / 4.0e-5 (mean -2.2e-5, relative max 2.6e-9) | KEPT | another compiled program, float rounding; reweighting on 6 fits passes (below); `tests/test_experiment.py` 39 passed |
 | F5 | The lowered ln L ran 2 sequential search loops in every call: C/N `searchsorted` on 4 knots, line LSF `jnp.interp` on 6166 pixels (13 steps) | ceridwen 90bb0c7, fa4a7b1: LSF at the fixed line centres as a numpy constant (as `_window`), 4-knot search by comparison; no loop left in either arm | ln L identical (0 of 800 differ) | run 10, against final: cn_free sampler 48.8 -> 43.5 s (-11 %), process 104.6 -> 97.7 s (-6.6 %); plain sampler 39.4 -> 34.6 s (-12 %), process 89.7 -> 85.2 s (-5.0 %) | A100: 1.5e-11 / 5e-13, spectra identical; CPU 0 / 0 | KEPT | bit-identical on the A100 up to 1.5e-11; one test assertion relaxed to rtol 1e-14 (run 10) |
 | T1 | XLA compiles most matrix products to Triton kernels and autotunes them for each new galaxy | Astro baa81fbd: `XLA_FLAGS` adds `--xla_gpu_enable_triton_gemm=false` in `_worker_environment` (appended to any flags already set) | not a CPU cost | runs 7, 8, against final: cn_free process 104.7 -> 98.8 s (-5.7 %, 4 of 4 pairs), sampler +1.4 s; plain 89.4 -> 87.1 s (-2.5 %, 2 of 3 pairs) | A100, every stored sample of 3 galaxies x 2 arms: max 2.1e-3, rms 1.4e-4 to 2.2e-4, relative max 2.3e-8; median shift max 9e-5 sigma, width 4e-3 % | KEPT | compile time; the same ln Z from compile to compile (the default gave two ln Z for one build and seed) |
 | P1 | TF32 rounding of float32 products on the A100 | `JAX_DEFAULT_MATMUL_PRECISION=highest` (run 11, step environment) | none | run 11: cn_free process +19.2 s (sampler +25 %), plain +6.9 s (sampler +12 %) | A100 against CPU: 2.1e-4 / 7.9e-5 (was 0.131 / 0.040) | NOT KEPT | slower; a precision choice: Needs his decision |
+| F2h | F2 on the A100: the two C/N float32 products run in TF32 | ceridwen 3b5177f: `Precision.HIGHEST` on the two C/N products (exact float32) | none (the CPU has no TF32) | run 15, against F2 off (float64 tables), 2 pairs: cn_free sampler 57.3, 57.4 -> 53.0, 52.8 s (-8 %), process 109.4, 109.1 -> 109.2, 106.9 s | CPU: as F2, 2.2e-4 / 4.4e-5; A100, kept build against production, 710 points: 4.1e-3 / 6.3e-4 | KEPT | float32 rounding; review 1 |
+| F1h | F1 with its product at `Precision.HIGHEST` | ceridwen 5f31bce (t6a), 18ff96c (t6b) | none | run 14, one pair per arm, against t8 (F1 off): process cn_free 106.7 -> 105.0 s, plain 84.9 -> 83.6 s (repeats of one build scatter by 2.3 s); sampler cn_free 53.2 -> 52.9 s, plain 37.6 -> 38.6 s; bench ln L per 100: cn_free 1.381 -> 1.373 ms, plain 0.928 -> 0.947 ms | A100: 6.6e-3 / 7.0e-4 (t6b) | NOT KEPT | no gain above the scatter; the revert message (719b1b0) gives plain as +1.3 s, the process change is -1.3 s |
 
 ## A100 run 1 (`runs/01-profile-a1/`, A100-SXM4-40GB, 2 cores, one container, $0.91)
 
@@ -408,6 +411,8 @@ posterior. Limits: 0.05 sigma, 5 %, the quoted ln Z error (0.17 to 0.24).
 - Medians, widths and ln Z pass the limits on the 3 galaxies in both arms.
 - The delta ln L is float32-product size (relative 1e-6), not float64 size, and it correlates with a
   parameter at 0.2 to 0.4. See "ln L on the A100 against the CPU" for the cause.
+- Review 1: this build (F1 and F2 in TF32) is not kept; its max (0.084 to 0.217) is above the 0.1 limit in 4 of
+  6 fits and comes from F1 and F2. The kept build is in "Review 1 correction" below.
 
 ### Triton GEMM off against the default, every stored sample
 
@@ -470,6 +475,8 @@ Points: every 20th dead point of M1 (cn_free 800, plain 700). "Top 30": ln L wit
   the SFH basis and the C/N response into float32 products, and the error grows to rms 0.040 (spectrum 2.8e-4).
 - The full-fit check on 3 galaxies with this error is in run 8: medians within 0.028 sigma, widths within
   0.75 %, ln Z within 0.029.
+- Review 1: base -> F1 (0.539) and F1 -> F2 (0.494) are above the 0.1 limit. F1 is reverted (ceridwen 719b1b0);
+  F2 is kept with its products at full precision (3b5177f). See "Review 1 correction".
 
 ## A100 run 11 (`runs/11-matmul-precision/`, A100-SXM4-80GB, driver 610.57.04, 2 cores, one container, $0.79): float32 products at full precision
 
@@ -600,11 +607,112 @@ c41bfcf, detached; `TF32_TF32_F32_X3` raises "not supported by dot_general on CP
 - Cost: cn_free +24.9 s per fit (sampler +55 %); plain +15.4 s against t5 in run 12 (79.8 s). Bench loglike
   cn_free 1.032 -> 1.751 ms. Slower than `HIGHEST` (t6a): not a cheaper fix.
 
-## State at 2026-11-17 18:20 GMT (final)
+## A100 run 14 (`runs/14-no-f1/`, A100-SXM4-40GB, driver 620.70.06, 2 cores, one container, $0.31): F1 off
 
-- Kept: ceridwen e7bb70e, d03884c, ba88af2, c7aba78, d03f336, 8ef5c8c, 90bb0c7, fa4a7b1 (branch
-  `speedups-overnight-2026-11-16`, pushed to potatoist314/ceridwen); Astro 49de1f3f, 19e7a012, 7ba8577d, baa81fbd
-  (branch `speedups-overnight-2026-11-16`, pushed to potatoist314/cosmic-chronometers-jwst). Pin not moved.
-- Variants only: ceridwen 5f31bce (t6a), 18ff96c (t6b), c41bfcf (t7); branch `speedups-overnight-2026-11-16-precision`
-  holds 18ff96c; not pushed.
-- Spend: runs 1-13 $9.68 of about $10 (profile `liuhaoo3-14`). No containers left; `modal container list` empty.
+`t8`: Astro baa81fbd with ceridwen fa4a7b1, F1 reverted, C/N products at `HIGHEST` (scratch 4915254; the same
+code as the pushed 3b5177f). Steps 0 and 1: ln L on the A100 at every 20th dead point of M1. Steps 2 to 5: full
+fits of M1 on an empty compile cache, seconds.
+
+| step | build | cell | process | sampler | ln L per s | cell 4 | ln Z | calls |
+|---|---|---|---|---|---|---|---|---|
+| 2 | t8 | cn_free | 106.7 | 53.2 | 101,490 | 71.7 | 91777.8536 | 5.400 M |
+| 3 | t6b | cn_free | 105.0 | 52.9 | 101,611 | 70.4 | 91778.2163 | 5.379 M |
+| 5 | t8 | plain | 84.9 | 37.6 | 128,552 | 53.7 | 91772.2375 | 4.832 M |
+| 4 | t6a | plain | 83.6 | 38.6 | 126,194 | 54.1 | 91772.2456 | 4.874 M |
+
+- F1 at full precision (t6a, t6b) against F1 off (t8): cn_free -1.7 s, plain -1.3 s, inside the 2.3 s scatter of
+  repeats of one build (run 15); sampler -0.3 s and +1.0 s; bench ln L per 100: 1.381 -> 1.373 ms (cn_free),
+  0.928 -> 0.947 ms (plain). No gain: F1 is reverted (ceridwen 719b1b0).
+
+## A100 run 15 (`runs/15-f2-off/`, A100-SXM4-40GB, driver 620.70.06, 2 cores, one container, $0.53): total, and F2 against float64 tables
+
+`t9`: t8 with the C/N tables in float64 (F2 off; scratch c974106). Full fits of M1 on an empty compile cache.
+A first launch without the base steps was stopped (app ap-VA5FsSgfOEG4pXicagCYYI, billed $0.024).
+
+| step | build | cell | process | sampler | ln L per s | cell 4 | ln Z | calls |
+|---|---|---|---|---|---|---|---|---|
+| 2 | base | cn_free | 176.4 | 98.5 | 56,083 | 125.8 | 91777.8563 | 5.521 M |
+| 0 | t8 | cn_free | 109.2 | 53.0 | 101,852 | 71.4 | 91777.8536 | 5.400 M |
+| 4 | t8 | cn_free | 106.9 | 52.8 | 102,359 | 71.7 | 91777.8536 | 5.400 M |
+| 1 | t9 | cn_free | 109.4 | 57.3 | 94,277 | 75.2 | 91777.8342 | 5.402 M |
+| 3 | t9 | cn_free | 109.1 | 57.4 | 94,050 | 74.3 | 91777.8342 | 5.402 M |
+| 5 | base | plain | 113.1 | 49.8 | 97,628 | 73.7 | 91772.4911 | 4.860 M |
+| 6 | t8 | plain | 85.1 | 37.0 | 130,437 | 53.9 | 91772.2375 | 4.832 M |
+
+- F2 at full precision (t8) against F2 off (t9): sampler -4.4 s (-8 %) in both pairs; process -0.2 and -2.2 s
+  (step 0, the first step of the container, has cell 0 at 7.6 s against 5.0 s in the others).
+- Total, base against the kept build, one container ($0.526 / 813 s = $0.000647 per s):
+
+| arm | base process | kept process | change | base cost | kept cost | base sampler | kept sampler |
+|---|---|---|---|---|---|---|---|
+| dr3_cn_free_w | 176.4 s | 108.1 s (mean of 2) | -39 % (1.63x) | $0.114 | $0.070 | 98.5 s | 52.9 s |
+| dr3_plain_w | 113.1 s | 85.1 s | -25 % (1.33x) | $0.073 | $0.055 | 49.8 s | 37.0 s |
+
+- These replace the run 12 totals (94.6 s and 79.8 s), which included F1 and F2 in TF32.
+
+## Review 1 correction
+
+Review 1 (2026-11-17): F1 and F2 were kept with A100 max delta ln L 0.539 and 0.494, above the 0.1 limit. F1 is
+reverted; F2 is kept with its two products at `Precision.HIGHEST`. The kept build is t8 (ceridwen 3b5177f).
+
+### ln L on the A100: kept build against production, M1, points with ln L > 9e4
+
+Base: the production build in run 9 (same driver). Changed: run 14 steps 0 and 1.
+
+| comparison | arm | points | max | rms | mean | relative max | largest correlation with a parameter |
+|---|---|---|---|---|---|---|---|
+| t8 against production | cn_free | 710 | 4.08e-3 | 6.28e-4 | +1.8e-4 | 4.5e-8 | 0.32 (`log_f_calib`) |
+| t8 against production | plain | 613 | 7.61e-3 | 8.15e-4 | +1.0e-4 | 8.4e-8 | 0.30 (`logmass`) |
+| t5 (F1, F2 in TF32) against production | cn_free | 710 | 0.525 | 0.063 | | | 0.11 (`afe`) |
+| t5 against production | plain | 613 | 0.609 | 0.068 | | | |
+| production against production, run 11 | cn_free | 710 | 5.7e-5 | | | | 0.09 |
+| production against production, run 11 | plain | 613 | 5.8e-11 | | | | 0.38 (`logzsol`) |
+| white noise of the same rms | both | | | | | | 0.056 to 0.095 |
+
+- Plain t8 has no F1 and no C/N product and still has max 7.6e-3: T1 and H1 change the kernels of the TF32
+  products that production already has. The CPU difference of the same builds: max 4.5e-4, rms 1.0e-4; its
+  correlation with the A100 difference -0.004.
+- Production against itself at 6e-11 correlates with `logzsol` at 0.38: rounding of a deterministic function
+  of the parameters correlates with them at any size.
+- Implied median shift, top 30 of ln L, max over parameters of cov(delta, theta) / sigma_theta: t8 cn_free
+  5.0e-5 sigma, plain 4.2e-5 sigma (t5: 4.6e-3 and 8.8e-3 sigma). Limit 0.05 sigma.
+
+### Reweighting, base against the kept build (ceridwen 3b5177f), CPU, every stored sample
+
+| fit | samples with weight | delta ln L max / rms / mean | correlation with ln L | largest correlation with a parameter | delta ln Z | median shift max | width change max |
+|---|---|---|---|---|---|---|---|
+| plain M1 | 9210 | 1.2e-4 / 3.4e-5 / -2.5e-5 | 0.049 | 0.086 (`diffuse_tau_noll`) | -2.5e-5 | 1.3e-6 sigma | 7.9e-5 % |
+| plain M9 | 8587 | 4.1e-5 / 1.1e-5 / -3.2e-6 | 0.046 | 0.061 (`diffuse_delta`) | -2.9e-6 | 1.6e-6 sigma | 2.6e-5 % |
+| plain M10 | 8733 | 4.4e-5 / 8.9e-6 / +4.7e-6 | 0.001 | 0.138 (`diffuse_tau_noll`) | +4.8e-6 | 2.0e-6 sigma | 8.6e-5 % |
+| cn_free M1 | 10133 | 2.1e-4 / 5.4e-5 / -2.0e-5 | 0.015 | 0.031 (`diffuse_tau_noll`) | -1.9e-5 | 1.9e-6 sigma | 2.1e-4 % |
+| cn_free M9 | 9061 | 8.3e-5 / 2.2e-5 / -3.5e-6 | 0.003 | 0.033 (`diffuse_delta`) | -3.5e-6 | 1.3e-6 sigma | 3.6e-4 % |
+| cn_free M10 | 9269 | 6.7e-5 / 1.5e-5 / +5.4e-6 | 0.014 | 0.092 (`diffuse_tau_noll`) | +5.3e-6 | 8.1e-7 sigma | 5.6e-5 % |
+
+- Relative delta ln L at most 2.3e-9. Medians, widths and ln Z pass the limits on 3 galaxies in both arms.
+- Scratch `rw/kept/c{0..5}/lnl.npz` (not kept); same command as the F4 reweighting with the ceridwen worktree at
+  3b5177f.
+
+### Kept changes and their A100 delta ln L
+
+| change | commit | delta ln L max / rms, against the step before (from the attempts table) |
+|---|---|---|
+| 1, 2 | ceridwen e7bb70e, d03884c | CPU 0 / 0; 2.9e-11 / 4.4e-12 |
+| N1, N2 | Astro 49de1f3f, 19e7a012 | 0 / 0 (ln L untouched) |
+| F2h (F2 with full-precision products) | ceridwen c7aba78, 3b5177f | CPU 2.2e-4 / 4.4e-5 |
+| F3, F4 | ceridwen d03f336, 8ef5c8c | CPU 2.9e-11 / 1.1e-11; 0 / 0 |
+| H1 | Astro 7ba8577d | CPU 2.4e-4 / 4.0e-5 |
+| F5 | ceridwen 90bb0c7, fa4a7b1 | A100 1.5e-11 |
+| T1 (Triton GEMM off) | Astro baa81fbd | A100 2.1e-3 / 1.4e-4 to 2.2e-4 (run 8, every stored sample) |
+| total, kept build against production | all of the above | A100: cn_free 4.08e-3 / 6.28e-4; plain 7.61e-3 / 8.15e-4. CPU: 2.1e-4 / 5.4e-5 |
+
+## State at 2026-11-17 (final, after review 1)
+
+- Kept: ceridwen e7bb70e, d03884c, c7aba78, d03f336, 8ef5c8c, 90bb0c7, fa4a7b1, 719b1b0 (reverts ba88af2),
+  3b5177f (branch `speedups-overnight-2026-11-16`, pushed to potatoist314/ceridwen; `git ls-remote` gives
+  3b5177f); Astro 49de1f3f, 19e7a012, 7ba8577d, baa81fbd (branch `speedups-overnight-2026-11-16`, pushed to
+  potatoist314/cosmic-chronometers-jwst). Pin not moved.
+- Tests on 3b5177f: ceridwen `tests/csp tests/likelihood tests/test_emission_line_columns.py
+  tests/test_eline_marginalisation.py tests/test_baked_runtime.py` 157 passed, 101 skipped (2026-11-17).
+- Variants only: ceridwen 5f31bce (t6a), 18ff96c (t6b), c41bfcf (t7), c974106 (t9); not pushed.
+- Spend, billed (`modal billing report`, app `speedups-overnight-ab`, profile `liuhaoo3-14`): $10.84 for runs 1-15
+  and the stopped launch, against about $10. `modal container list` empty after run 15.

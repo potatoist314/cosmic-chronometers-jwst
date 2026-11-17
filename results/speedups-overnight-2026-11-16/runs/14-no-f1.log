@@ -1,0 +1,23 @@
+gpu NVIDIA A100-SXM4-40GB, 620.70.06, 40960 MiB | cold start 9 s | container 478 s | $0.31
+ 0 t8         exit 0 process   55.2 s  compiled 292 tuned 299 cache 225 MB
+     loglike                        compile    7.66 s   batch of 100     1.381 ms
+     predict                        compile    5.20 s   batch of 100     1.065 ms
+     likelihood given prediction    compile    2.17 s   batch of 100     0.828 ms
+     transforms                     compile    0.32 s   batch of 100     0.227 ms
+     get_spectrum                   compile    2.66 s   batch of 100     0.463 ms
+     factor grid                    compile    1.52 s   batch of 100     0.263 ms
+     factor spectrum                compile    1.22 s   batch of 100     0.231 ms
+ 1 t8         exit 0 process   39.4 s  compiled 275 tuned 259 cache 114 MB
+     loglike                        compile    5.56 s   batch of 100     0.928 ms
+     predict                        compile    2.91 s   batch of 100     0.652 ms
+     likelihood given prediction    compile    2.25 s   batch of 100     0.729 ms
+     transforms                     compile    0.32 s   batch of 100     0.184 ms
+     get_spectrum                   compile    2.66 s   batch of 100     0.404 ms
+ 2 t8         exit 0 process  106.7 s  compiled 485 tuned 618 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   53.2 s  calls 5.400 M   101490 /s  logZ 91777.8536  cells 4.9 0.1 6.8 13.0 71.7 0.1 0.5 0.0 0.0 1.6 0.0
+ 3 t6b        exit 0 process  105.0 s  compiled 485 tuned 627 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   52.9 s  calls 5.379 M   101611 /s  logZ 91778.2163  cells 5.4 0.1 7.4 13.5 70.4 0.0 0.4 0.0 0.0 1.3 0.0
+ 4 t6a        exit 0 process   83.6 s  compiled 470 tuned 578 cache 3 MB
+     dr3_plain_w/210210-M1_210210: sampler   38.6 s  calls 4.874 M   126194 /s  logZ 91772.2456  cells 4.9 0.1 6.8 9.9 54.1 0.0 0.4 0.0 0.0 1.3 0.0
+ 5 t8         exit 0 process   84.9 s  compiled 470 tuned 569 cache 3 MB
+     dr3_plain_w/210210-M1_210210: sampler   37.6 s  calls 4.832 M   128552 /s  logZ 91772.2375  cells 5.0 0.1 7.8 10.2 53.7 0.0 0.4 0.0 0.0 1.4 0.0

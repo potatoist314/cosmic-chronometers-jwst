@@ -19,15 +19,14 @@ Free
 
 | Arm | Before | After | Cost per fit |
 |---|---|---|---|
-| `dr3_cn_free_w` | 181.4 s | 94.6 s (1.92×) | $0.117 → $0.061 |
-| `dr3_plain_w` | 112.1 s | 79.8 s (1.40×) | $0.073 → $0.052 |
+| `dr3_cn_free_w` | 176.4 s | 108.1 s (1.63×) | $0.114 → $0.070 |
+| `dr3_plain_w` | 113.1 s | 85.1 s (1.33×) | $0.073 → $0.055 |
 
 | Change | Commit | A100 gain | Max \(\Delta\ln L\) |
 |---|---|---|---|
 | C/N factor: one gather of the 4 used terms; tables cut to alf coverage | ceridwen e7bb70e | sampler −8 % | 0 |
 | C/N factor: one matrix product | ceridwen d03884c | sampler −28 % | \(2.9\times10^{-11}\) |
-| SFH basis: one float32 matrix product (F1) | ceridwen ba88af2 | plain sampler −10 % | 0.54 (TF32) |
-| C/N tables kept float32 (F2) | ceridwen c7aba78 | sampler −16 % | 0.49 (TF32) |
+| C/N tables kept float32, products at full precision (F2) | ceridwen c7aba78, 3b5177f | sampler −8 % | \(4.1\times10^{-3}\) |
 | Likelihood on fitted pixels 1563–3192 (F3) | ceridwen d03f336 | sampler −15 % | \(2.9\times10^{-11}\) |
 | C/N table split: base and differential (F4) | ceridwen 8ef5c8c | sampler −2.6 % | 0 |
 | No search loops in \(\ln L\) (F5) | ceridwen 90bb0c7, fa4a7b1 | sampler −11 % | \(1.5\times10^{-11}\) |
@@ -39,9 +38,10 @@ Free
 <details>
 <summary>Details</summary>
 
-Window-194 arms `dr3_cn_free_w` and `dr3_plain_w`, A100-40GB on Modal, one first-time fit of M1_210210. Keep rule: \(\Delta\ln L\) at float rounding of any precision, and on 3 galaxies medians within \(0.05\sigma\), widths within 5 %, \(\ln Z\) within its error. [REPORT](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-overnight-2026-11-16/results/speedups-overnight-2026-11-16/REPORT.md), [ledger](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-overnight-2026-11-16/results/speedups-overnight-2026-11-16/LEDGER.md). Totals: one container, one first-time fit.
+Window-194 arms `dr3_cn_free_w` and `dr3_plain_w`, A100-40GB on Modal, one first-time fit of M1_210210. Keep rule: \(\Delta\ln L\) at float rounding of any precision (up to about 0.1), and on 3 galaxies medians within \(0.05\sigma\), widths within 5 %, \(\ln Z\) within its error. [REPORT](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-overnight-2026-11-16/results/speedups-overnight-2026-11-16/REPORT.md), [ledger](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-overnight-2026-11-16/results/speedups-overnight-2026-11-16/LEDGER.md). Totals: one container, one first-time fit.
 
-- TF32: the A100 rounds float32 products to TF32; F1 and F2 raise the production error (rms 0.023 against exact float32, top 30 of \(\ln L\)) to rms 0.040. Reweighting every stored sample of 3 galaxies passes: medians \(\le 0.028\sigma\), widths \(\le 0.75\) %, \(|\Delta\ln Z| \le 0.029\).
+- Kept build against production, M1: A100 \(\Delta\ln L\) max \(7.6\times10^{-3}\), rms \(8.2\times10^{-4}\). Reweighting every stored sample of 3 galaxies (CPU) passes: medians \(\le 2\times10^{-6}\sigma\), widths \(\le 4\times10^{-4}\) %, \(|\Delta\ln Z| \le 2.5\times10^{-5}\).
+- Not kept: the SFH basis as one float32 product (F1, ceridwen ba88af2, reverted in 719b1b0) and F2 with TF32 products: A100 \(\Delta\ln L\) 0.54 and 0.49. F1 at full precision: no gain.
 
 </details>
 
@@ -94,7 +94,7 @@ Window-194 arms `dr3_cn_free_w` and `dr3_plain_w`, A100-40GB on Modal, one first
 | Grid hosted or in image | −1 to −3 min upload | REPORT, Not free table | Storage and image policy |
 | GPU type | 30 Sep survey, solo fits: 5090 fastest and cheapest to ~$0.44/h; A100 1.30×, 4090 1.62×, 5060 Ti 3.41×, 3090 3.75×, V100 3.91× slower solo | REPORT, Not free table; [survey](https://github.com/potatoist314/cosmic-chronometers-jwst/tree/4fa1b1df0249548a7da8959edd6c8009395082f8/results/speedups-swarm-throughput-2026-09-30/types) | Liu Hao's choice on that survey |
 | Rank offers by USD per fit | Record ranking paid 2.5–4× per fit vs a valid $0.153/h bid; 3 of 9 bid rentals stopped mid-job | REPORT, Not free table | Liu Hao's rental rule |
-| Float32 products at full precision on the A100 | `JAX_DEFAULT_MATMUL_PRECISION=highest`: \(\ln L\) equals the CPU to \(2.1\times10^{-4}\); cn_free fit +19.2 s (sampler +25 %), plain +6.9 s | [ledger, run 11](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-overnight-2026-11-16/results/speedups-overnight-2026-11-16/LEDGER.md) | Full precision on the SFH-basis product only: the A100 error returns to the production level (rms 0.022), +4.6 s cn_free, +7.2 s plain; six bf16 passes: same error, +24.9 s cn_free (Liu Hao's decision) |
+| Float32 products at full precision on the A100 | `JAX_DEFAULT_MATMUL_PRECISION=highest`: \(\ln L\) equals the CPU to \(2.1\times10^{-4}\); cn_free fit +19.2 s (sampler +25 %), plain +6.9 s | [ledger, run 11](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-overnight-2026-11-16/results/speedups-overnight-2026-11-16/LEDGER.md) | F1 and F2 with TF32 products: about −9 s cn_free and −7 s plain per fit, A100 \(\Delta\ln L\) 0.54 (Liu Hao's decision) |
 
 ## Evidence
 

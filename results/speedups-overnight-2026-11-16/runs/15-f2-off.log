@@ -1,0 +1,15 @@
+gpu NVIDIA A100-SXM4-40GB, 620.70.06, 40960 MiB | cold start 10 s | container 813 s | $0.52
+ 0 t8         exit 0 process  109.2 s  compiled 485 tuned 618 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   53.0 s  calls 5.400 M   101852 /s  logZ 91777.8536  cells 7.6 0.1 7.6 13.3 71.4 0.4 0.4 0.0 0.0 1.3 0.0
+ 1 t9         exit 0 process  109.4 s  compiled 485 tuned 620 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   57.3 s  calls 5.402 M    94277 /s  logZ 91777.8342  cells 5.1 0.1 7.2 12.7 75.2 0.0 0.4 0.0 0.0 1.4 0.0
+ 2 base       exit 0 process  176.4 s  compiled 795 tuned 870 cache 176 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   98.5 s  calls 5.521 M    56083 /s  logZ 91777.8563  cells 5.1 0.1 7.5 28.6 125.8 0.0 0.4 0.0 0.0 1.2 0.0
+ 3 t9         exit 0 process  109.1 s  compiled 485 tuned 620 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   57.4 s  calls 5.402 M    94050 /s  logZ 91777.8342  cells 5.3 0.2 7.5 13.1 74.3 0.0 0.4 0.0 0.0 1.4 0.0
+ 4 t8         exit 0 process  106.9 s  compiled 485 tuned 618 cache 3 MB
+     dr3_cn_free_w/210210-M1_210210: sampler   52.8 s  calls 5.400 M   102359 /s  logZ 91777.8536  cells 5.0 0.1 7.1 14.8 71.7 0.0 0.4 0.0 0.0 1.4 0.0
+ 5 base       exit 0 process  113.1 s  compiled 648 tuned 715 cache 92 MB
+     dr3_plain_w/210210-M1_210210: sampler   49.8 s  calls 4.860 M    97628 /s  logZ 91772.4911  cells 5.0 0.1 7.4 18.8 73.7 0.0 0.4 0.0 0.0 1.3 0.0
+ 6 t8         exit 0 process   85.1 s  compiled 470 tuned 569 cache 3 MB
+     dr3_plain_w/210210-M1_210210: sampler   37.0 s  calls 4.832 M   130437 /s  logZ 91772.2375  cells 4.9 0.1 7.1 10.9 53.9 0.0 0.4 0.0 0.0 1.3 0.0
