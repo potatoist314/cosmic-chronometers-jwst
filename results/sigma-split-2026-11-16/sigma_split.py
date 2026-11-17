@@ -2,6 +2,9 @@
 
 Existing fits only. Run from the repository root:
     ceridwen/.venv/bin/python results/sigma-split-2026-11-16/sigma_split.py
+    ceridwen/.venv/bin/python results/sigma-split-2026-11-16/sigma_split.py more-galaxies
+The second form runs the split estimators and the fixed-population cut on the samples of
+results/dr3-more-galaxies-2026-11-16/fits.csv (the 194, the 154 gained, combined) and writes more-galaxies-2026-11-17/.
 Inputs (read only):
     results/legac-dr3-2026-11-11/window-194-fits.csv and the fit folders it names (ages, fitted SFH, sigma_star)
     results/mock-chronometer-window-2026-11-13/per-mock.csv, mocks/*.npz, and the mock fit folders
@@ -9,6 +12,7 @@ Inputs (read only):
     data/raw/legac_dr3/legac_DR3.fits, data/raw/cosmos2020/cosmos2020_classic_legac_dr3_1arcsec.fits,
     data/raw/cosmos2015/cosmos2015_legac_dr3_photometry_1arcsec.fits
     results/oldest-envelope-2026-11-11/envelope.py (binned upper-envelope estimator)
+    more-galaxies: results/dr3-more-galaxies-2026-11-16/fits.csv and its fit folders, data/raw/hst_f814w/
 Outputs: the CSV tables beside this script.
 """
 
@@ -23,7 +27,7 @@ import pandas as pd
 from astropy.cosmology import FlatLambdaCDM, Planck18
 from astropy.table import Table
 from numpy.lib.stride_tricks import sliding_window_view
-from scipy.stats import spearmanr
+from scipy.stats import ks_2samp, spearmanr
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(__file__).resolve().parent
@@ -45,6 +49,7 @@ ARMS = ('plain', 'cn_free')
 FITS = ROOT / 'results/legac-dr3-2026-11-11/window-194-fits.csv'
 MOCKS = ROOT / 'results/mock-chronometer-window-2026-11-13'
 MOCKS_CN = ROOT / 'results/mock-chronometer-cn-free-2026-11-16'
+MORE = ROOT / 'results/dr3-more-galaxies-2026-11-16'
 # Tacchella et al. 2022 (ApJ 926, 134), Sect. 1 and Table 1: a galaxy is quiescent when sSFR < 1 / (20 t_H(z)).
 QUIESCENT_D = 1 / 20
 STAR_FORMING_D = 1 / 3  # same source: star-forming when sSFR > 1 / (3 t_H(z))
@@ -101,9 +106,12 @@ def k_limit(z):
     return k0 + (k1 - k0) * (x - x0) / (x1 - x0)
 
 
-def per_galaxy():
-    fits = pd.read_csv(FITS)
-    fits = fits[fits.release == 'dr3']
+def per_galaxy(fits=None):
+    """One row per galaxy. fits: rows with arm, target, object_id, path, z and age_gyr_q50 (default: the 194).
+    The first arm has every galaxy; a galaxy without a fit in a later arm gets NaN there."""
+    if fits is None:
+        fits = pd.read_csv(FITS)
+        fits = fits[fits.release == 'dr3']
     rows = None
     for arm in ARMS:
         f = fits[fits.arm == arm].reset_index(drop=True)  # file order: reproduces the saved bootstrap ranges
@@ -111,11 +119,9 @@ def per_galaxy():
         if rows is None:
             rows = pd.DataFrame(dict(target=f.target, object_id=f.object_id, z=f.z, sigma_star=t.sigma_star,
                                      sigma_star_err=t.sigma_star_err, sn=t.sn, universe_age=t.universe_age))
-        assert (rows.target == f.target).all()
-        rows[f'age_{arm}'] = f.age_gyr_q50
-        rows[f'logmass_{arm}'] = t.logmass
-        for name in TIMES:
-            rows[f'{name}_{arm}'] = t[name]
+        columns = {'target': f.target, f'age_{arm}': f.age_gyr_q50, f'logmass_{arm}': t.logmass}
+        columns.update({f'{name}_{arm}': t[name] for name in TIMES})
+        rows = rows.merge(pd.DataFrame(columns), on='target', how='left')
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
         c20 = Table.read(ROOT / 'data/raw/cosmos2020/cosmos2020_classic_legac_dr3_1arcsec.fits')
@@ -237,7 +243,7 @@ def split_tables(g):
         covariates = dict(log_sigma_star=g.log_sigma_star.values, logmass_cosmos2020=g.logmass_cosmos2020.values,
                           logmass_fitted=g[f'logmass_{arm}'].values)
         for name, x in covariates.items():
-            keep = np.isfinite(x)
+            keep = np.isfinite(x) & np.isfinite(g[f'age_{arm}'].values)
             z, y, x = g.z.values[keep], g[f'age_{arm}'].values[keep], x[keep]
             idx = bootstrap_indices(len(z))
             z_eff, tu = z_eff_of(z), planck_age(z)
@@ -478,13 +484,21 @@ def mock_frame(g):
     return frame.rename(columns=dict(age_q50='age'))
 
 
-def samples_of(g, mocks):
+def mock_offsets(mocks):
+    """Median (recovered - true) lookback time of the mocks, per marker [Gyr]."""
+    return {marker: float(np.median(mocks[marker] - mocks[f'{marker}_true'])) for marker, _ in MARKERS}
+
+
+def samples_of(g, mocks=None):
     """(arm, sample, frame with z, age and the lookback times). The halves split at the median sigma_star."""
     out = []
     for arm in ARMS:
         f = g.rename(columns={f'age_{arm}': 'age', **{f'{name}_{arm}': name for name in TIMES}})
+        f = f[np.isfinite(f.age)]
         high = bin_masks(f.log_sigma_star.values, 2)[1] == 1
         out += [(arm, 'all', f), (arm, 'sigma_star low half', f[~high]), (arm, 'sigma_star high half', f[high])]
+    if mocks is None:
+        return out
     high = bin_masks(mocks.log_sigma_star.values, 2)[1] == 1
     out += [('mock', 'all', mocks), ('mock', 'sigma_star low half', mocks[~high]),
             ('mock', 'sigma_star high half', mocks[high])]
@@ -496,7 +510,7 @@ COSMOLOGIES = (('Planck18', Planck18),) + tuple(
 MARKERS = (('l90', '90% of the mass formed'), ('lleave', 'sSFR t_H below 1/3'), ('lquench', 'sSFR t_H below 1/20'))
 
 
-def fixed_population_table(samples, z_top, offsets):
+def fixed_population_table(samples, z_top, offsets, markers=MARKERS):
     """Keep a galaxy when its marker time is earlier than the cosmic age at z_top by the margin:
     lookback >= t(z) - t(z_top) + margin. margin_true adds the median (recovered - true) lookback of the mocks.
     The sigma_term columns fit age = a + b z + c log sigma_star to the kept galaxies; diff is from the plain line
@@ -512,7 +526,7 @@ def fixed_population_table(samples, z_top, offsets):
             if cosmology_name != 'Planck18' and sample != 'all':
                 continue
             interval = (cosmology.age(z) - cosmology.age(z_top)).to_value('Gyr')
-            for marker, description in MARKERS:
+            for marker, description in markers:
                 for margin in MARGINS:
                     keep = f[marker].values >= interval + margin
                     if keep.sum() < 30:
@@ -673,7 +687,7 @@ def toy_tables(mocks, real_scatter, observed):
     low1 = bin_masks(x1, 2)[1] == 0
     low = np.broadcast_to(low1, shape)
     interval = planck_age(z1) - planck_age(z1.max())
-    offsets = {marker: float(np.median(mocks[marker] - mocks[f'{marker}_true'])) for marker, _ in MARKERS}
+    offsets = mock_offsets(mocks)
     delta = rng.normal(0, sigma_int, shape)
     u = rng.random(shape)
     ramp = (z1.max() - z1) / (z1.max() - z1.min())
@@ -727,10 +741,13 @@ def toy_tables(mocks, real_scatter, observed):
 
 # ---------------------------------------------------------------- summary tables
 
+HEADLINE_FIELDS = ['galaxies', 'z_eff', 'slope', 'slope_q16', 'slope_q84', 'H', 'H_q16', 'H_q84', 'H_planck18',
+                   'diff', 'diff_q16', 'diff_q84', 'diff_over_error']
+
+
 def headline_table(planes, bins):
     """Step 4: the plain line, the line with a log sigma_star term, and the cross-checks, at the full-sample z_eff."""
-    fields = ['galaxies', 'z_eff', 'slope', 'slope_q16', 'slope_q84', 'H', 'H_q16', 'H_q84', 'H_planck18',
-              'diff', 'diff_q16', 'diff_q84', 'diff_over_error']
+    fields = HEADLINE_FIELDS
     rows = []
     for arm in ARMS:
         p = planes[planes.arm == arm].set_index('covariate')
@@ -747,6 +764,13 @@ def headline_table(planes, bins):
                 ('line + COSMOS2020 log mass term', 'cross-check', p.loc['logmass_cosmos2020'])):
             rows.append(dict(arm=arm, estimator=estimator, role=role, **{name: r[name] for name in fields}))
     return pd.DataFrame(rows)
+
+
+def cut_row(f):
+    """Of the fixed-population rows of one arm, sample and marker: the Planck18 row at the margin whose
+    mock-corrected value is nearest zero."""
+    c = f[f.cosmology == 'Planck18']
+    return c.iloc[c.margin_true.abs().argmin()]
 
 
 def budget_table(planes, fixed, toy, n_mocks):
@@ -771,8 +795,7 @@ def budget_table(planes, fixed, toy, n_mocks):
         add('log sigma_star term', arm, 'plain line', 0, p.z_eff, p.plain_slope, p['diff'], p.diff_q16, p.diff_q84,
             'split-plane.csv')
         f = fixed[(fixed.arm == arm) & (fixed['sample'] == 'all') & (fixed.marker == marker)]
-        c = f[f.cosmology == 'Planck18']
-        r = c.iloc[c.margin_true.abs().argmin()]
+        r = cut_row(f)
         removed = int(p.galaxies - r.galaxies)
         add(cut, arm, 'plain line', removed, p.z_eff, p.plain_slope, r['diff'], r.diff_q16, r.diff_q84,
             'progenitor-fixed-population.csv')
@@ -807,6 +830,149 @@ def budget_table(planes, fixed, toy, n_mocks):
     return pd.DataFrame(rows)
 
 
+# ---------------------------------------------------------------- the samples of results/dr3-more-galaxies-2026-11-16
+
+def estimator_table(g, offsets):
+    """headline_table for the galaxies of g, and the fixed-population cut on the time when 90% of the mass had
+    formed: z_top is the largest z of g, the margin is the one of budget_table. Every diff is from the plain line
+    of all of g. Also returns the plane, bin and cut tables."""
+    planes, bins = split_tables(g)
+    fixed = fixed_population_table([s for s in samples_of(g) if s[1] == 'all'], g.z.max(), offsets, MARKERS[:1])
+    rows = headline_table(planes, bins).to_dict('records')
+    for arm in ARMS if len(fixed) else ():  # empty: no margin keeps 30 galaxies
+        r = cut_row(fixed[fixed.arm == arm])
+        rows.append(dict(arm=arm, estimator='fixed population, plain line', role='progenitor cut',
+                         **{name: r[name] for name in HEADLINE_FIELDS}))
+        rows.append(dict(
+            arm=arm, estimator='fixed population, line + log sigma_star term', role='progenitor cut',
+            galaxies=r.galaxies, z_eff=r.z_eff, slope=r.sigma_term_slope, slope_q16=r.sigma_term_slope_q16,
+            slope_q84=r.sigma_term_slope_q84, H=r.sigma_term_H, H_q16=r.sigma_term_H_q16, H_q84=r.sigma_term_H_q84,
+            H_planck18=r.H_planck18, diff=r.sigma_term_diff, diff_q16=r.sigma_term_diff_q16,
+            diff_q84=r.sigma_term_diff_q84,
+            diff_over_error=r.sigma_term_diff / (0.5 * (r.sigma_term_diff_q84 - r.sigma_term_diff_q16))))
+    table = pd.DataFrame(rows).sort_values('arm', key=lambda arm: arm.map(ARMS.index), kind='stable')
+    return table, planes, bins, fixed
+
+
+def pull_table(g, member):
+    """Change of a slope when the galaxies of `member` join the other galaxies of g:
+    slope(g) - slope(g without them), on the bootstrap draws of g."""
+    rows = []
+    for arm in ARMS:
+        for estimator, column in (('plain line', None), ('line + log sigma_star term', 'log_sigma_star'),
+                                  ('line + COSMOS2020 log mass term', 'logmass_cosmos2020')):
+            x = g[column].values if column else np.zeros(len(g))
+            keep = np.isfinite(x) & np.isfinite(g[f'age_{arm}'].values)
+            z, y, x, m = g.z.values[keep], g[f'age_{arm}'].values[keep], x[keep], member[keep]
+            idx = bootstrap_indices(len(z))
+            rest = (~m)[idx].astype(float)
+            if column:
+                with_them = fit_age_plane(z[idx], y[idx], x[idx])[0]
+                without = fit_age_plane(z[idx], y[idx], x[idx], rest)[0]
+            else:
+                with_them, without = line(z[idx], y[idx])[0], line(z[idx], y[idx], rest)[0]
+            a, b, d = spread(with_them), spread(without), spread(with_them - without)
+            rows.append(dict(
+                arm=arm, estimator=estimator, galaxies=len(z), members=int(m.sum()), slope=a['value'],
+                slope_q16=a['q16'], slope_q84=a['q84'], slope_without=b['value'], slope_without_q16=b['q16'],
+                slope_without_q84=b['q84'], pull=d['value'], pull_q16=d['q16'], pull_q84=d['q84'],
+                pull_over_error=d['value'] / (0.5 * (d['q84'] - d['q16'])),
+                H=float(hubble(z_eff_of(z), a['value'])), H_without=float(hubble(z_eff_of(z[~m]), b['value']))))
+    return pd.DataFrame(rows)
+
+
+def difference_table(planes, a, b):
+    """Slopes and covariate coefficient of sample a minus sample b. The samples share no galaxy, so the
+    bootstrap widths add in quadrature."""
+    p = planes.set_index(['sample', 'arm', 'covariate'])
+    rows = []
+    for arm, covariate in p.loc[a].index:
+        ra, rb = p.loc[(a, arm, covariate)], p.loc[(b, arm, covariate)]
+        for quantity, value, low, high in (
+                ('plain line slope', 'plain_slope', 'plain_q16', 'plain_q84'),
+                ('slope with the covariate term', 'slope', 'slope_q16', 'slope_q84'),
+                ('covariate coefficient', 'coefficient', 'coefficient_q16', 'coefficient_q84')):
+            width = np.hypot(0.5 * (ra[high] - ra[low]), 0.5 * (rb[high] - rb[low]))
+            rows.append({'arm': arm, 'covariate': covariate, 'quantity': quantity, a: ra[value], f'{a}_q16': ra[low],
+                         f'{a}_q84': ra[high], b: rb[value], f'{b}_q16': rb[low], f'{b}_q84': rb[high],
+                         'difference': ra[value] - rb[value], 'width': width,
+                         'difference_over_width': (ra[value] - rb[value]) / width})
+    return pd.DataFrame(rows)
+
+
+def subset_comparison(g, member, others, columns):
+    """16, 50, 84% of each column for the galaxies of `member` and for each group of `others`; two-sample KS p."""
+    rows = []
+    for column in columns:
+        a = g[column][member].dropna()
+        row = dict(quantity=column, n=len(a), **dict(zip(('q16', 'q50', 'q84'), np.quantile(a, [0.16, 0.5, 0.84]))))
+        for name, mask in others.items():
+            b = g[column][mask].dropna()
+            row.update({f'n_{name}': len(b), **dict(zip((f'q16_{name}', f'q50_{name}', f'q84_{name}'),
+                                                        np.quantile(b, [0.16, 0.5, 0.84]))),
+                        f'ks_p_{name}': ks_2samp(a, b).pvalue})
+        rows.append(row)
+    return pd.DataFrame(rows)
+
+
+def labelled(table, name):
+    table = table.drop(columns='sample', errors='ignore')
+    table.insert(0, 'sample', name)
+    return table
+
+
+def more_galaxies():
+    out = OUT / 'more-galaxies-2026-11-17'
+    out.mkdir(exist_ok=True)
+    fits = pd.read_csv(MORE / 'fits.csv')
+    fits = fits[fits.valid]
+    g = per_galaxy(fits)
+    for arm in ARMS:
+        f = fits[fits.arm == arm]
+        g[f'age_width_{arm}'] = g.target.map(dict(zip(f.target, f.age_gyr_q84 - f.age_gyr_q16)))
+    labels = fits[fits.arm == ARMS[0]].set_index('target')
+    g['origin'] = g.target.map(labels['sample'])
+    for column in ('change', 'cosmos2015', 'photometry'):
+        g[column] = g.target.map(labels[column])
+    parent = Table.read(ROOT / 'data/raw/legac_dr3/legac_DR3.fits')
+    position = pd.DataFrame(dict(target=np.char.strip(np.asarray(parent['SPECT_ID']).astype(str)),
+                                 ra=np.array(parent['RAJ2000'], dtype=float),
+                                 dec=np.array(parent['DECJ2000'], dtype=float)))
+    g = g.merge(position, on='target', how='left')
+    g['mask'] = g.target.str.extract(r'M(\d+)_')[0].astype(int)  # SPECT_ID: mask number + target ID
+    g['hst_f814w_cutout'] = [(ROOT / 'data/raw/hst_f814w' / f'{t}.fits').is_file() for t in g.target]
+
+    gained, bad = (g.origin == 'gained').values, (g.cosmos2015 == 'saturation or bad area').values
+    clean = gained & (g.cosmos2015 == 'clean').values  # the 16: NaN sigma_star error or another spectrum picked
+    samples = {'194': ~gained, 'gained': gained, 'combined': np.ones(len(g), dtype=bool),
+               'combined without saturation or bad area': ~bad,
+               'combined without saturation or bad area and gained clean COSMOS2015': ~bad & ~clean,
+               'gained: clean COSMOS2015': clean}
+    offsets = mock_offsets(mock_frame(g))
+    stores = [], [], [], []
+    for name, mask in samples.items():
+        for store, table in zip(stores, estimator_table(g[mask].reset_index(drop=True), offsets)):
+            store.append(labelled(table, name))
+    estimators, planes, bins, fixed = (pd.concat(store, ignore_index=True) for store in stores)
+    pulls = pd.concat([labelled(pull_table(g[samples[name]].reset_index(drop=True), clean[samples[name]]), name)
+                       for name in ('gained', 'combined', 'combined without saturation or bad area')])
+    group = pd.Series(np.select([clean, gained], ['gained: clean COSMOS2015', 'other gained'], '194'), name='group')
+    counts = pd.concat([pd.crosstab(g[column], group).rename_axis('value').reset_index().assign(attribute=column)
+                        for column in ('mask', 'hst_f814w_cutout', 'photometry', 'change')])
+    comparison = subset_comparison(
+        g, clean, {'194': ~gained, 'other_gained': gained & ~clean},
+        ['z', 'sigma_star', 'logmass_cosmos2020', 'logmass_plain', 'sn', 'ra', 'dec', 'age_plain', 'age_cn_free',
+         'age_width_plain', 'age_width_cn_free'])
+    tables = {
+        'per-galaxy': g, 'estimators': estimators, 'split-plane': planes, 'split-bins': bins,
+        'fixed-population': fixed, 'gained-minus-194': difference_table(planes, 'gained', '194'),
+        'clean-16-pull': pulls, 'clean-16-comparison': comparison,
+        'clean-16-counts': counts[['attribute', 'value', 'gained: clean COSMOS2015', 'other gained', '194']],
+    }
+    for name, table in tables.items():
+        table.to_csv(out / f'{name}.csv', index=False, float_format='%.6g')
+
+
 def main():
     g = per_galaxy()
     planes, bins = split_tables(g)
@@ -814,7 +980,7 @@ def main():
     selection, by_redshift = selection_tables(g)
     mocks = mock_frame(g)
     samples = samples_of(g, mocks)
-    offsets = {marker: float(np.median(mocks[marker] - mocks[f'{marker}_true'])) for marker, _ in MARKERS}
+    offsets = mock_offsets(mocks)
     fixed = fixed_population_table(samples, g.z.max(), offsets)
     observed = moments_table(samples)
     real_scatter = planes[(planes.arm == 'plain') & (planes.covariate == 'log_sigma_star')].scatter_plain.iloc[0]
@@ -834,4 +1000,4 @@ def main():
 
 if __name__ == '__main__':
     with np.errstate(invalid='ignore', divide='ignore'):  # 0 / 0 where an estimator equals its reference
-        main()
+        more_galaxies() if sys.argv[1:] == ['more-galaxies'] else main()
