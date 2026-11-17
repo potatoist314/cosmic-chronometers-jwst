@@ -1575,3 +1575,8 @@
 
 - Pages: `research/questions/q-progenitor-bias.md`, `research/questions/q-afe-age-chronometer.md`
 - Change: new open question on progenitor bias in the chronometer slope, with Liu Hao's two messages of 2026-11-16; chronometer page links it; card t_a10cda9b.
+
+## [2026-11-17] query | Progenitor-bias answer
+
+- Pages: `research/questions/q-progenitor-bias.md`
+- Change: answer section from `results/sigma-split-2026-11-16/`: late formers (5 of 194 plain, 4 C/N free), \(H\) with and without them on the plain and \(\log\sigma_\star\) lines, toy-mock slope bias table, literature and table links; card t_499a4e26.
