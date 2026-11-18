@@ -455,7 +455,7 @@ def test_constant_calibration_active_assembly_and_exports(request):
                 isinstance(t, ast.Name) and t.id in {"SETTINGS", "PRIORS"} for t in node.targets):
             exec(compile(ast.Module(body=[node], type_ignores=[]), "settings", "exec"), env)
     wave = jnp.geomspace(1000., 30000., 256)
-    # logzsol range [-1.6, 0]: holds the mass-mapped logzsol_hist at theta_init (down to -1.1).
+    # logzsol range [-1.6, 0]: holds the mass-mapped logzsol_bins at theta_init (down to -1.1).
     env["ssp"] = SSPDataAfe(jnp.array([-3.0, -1.4]), jnp.array([-3., -1., 0., 1.2]), wave,
                             jnp.ones((2, 2, 4, 256)) * 1e-15, ssp_afe=jnp.array([-.2, .6]),
                             zsun=10 ** -1.4, axis_meaning="feh")

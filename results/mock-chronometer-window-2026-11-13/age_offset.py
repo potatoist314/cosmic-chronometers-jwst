@@ -45,10 +45,11 @@ FIELDS = ("target shape z universe_age_gyr true_age_gyr age_q16 age_q50 age_q84 
 
 
 def masses(ratios, edges):
-    """Formed-mass fraction of each fit bin: the bin SFR is the mean of its two node values."""
+    """Formed-mass fraction of each fit bin. Ceridwen 2.0 fits (one ratio fewer than bins): one SFR per bin.
+    Earlier fits (one ratio per bin): the bin SFR is the mean of its two node values."""
     log_sfr = np.concatenate([np.zeros((len(ratios), 1)), -np.cumsum(ratios, axis=1)], axis=1)
     sfr = 10.0 ** (log_sfr - log_sfr.max(axis=1, keepdims=True))
-    mass = 0.5 * (sfr[:, :-1] + sfr[:, 1:]) * np.diff(edges)
+    mass = (sfr if sfr.shape[1] == len(edges) - 1 else 0.5 * (sfr[:, :-1] + sfr[:, 1:])) * np.diff(edges)
     return mass / mass.sum(axis=1, keepdims=True)
 
 
@@ -91,17 +92,19 @@ def posterior(result, mock):
                age_bias_at_zero_older_gyr=float(weights @ age - slope * (weights @ sample_older)) - true_age,
                mass_last=float(mean_mass[-1]),
                ratio13_q50=quantile(ratios[:, 12])[1],
-               **dict(zip(("ratio14_q16", "ratio14_q50", "ratio14_q84"), quantile(ratios[:, 13]))))
+               # Ceridwen 2.0 fits have 13 ratios: no ratio 14.
+               **dict(zip(("ratio14_q16", "ratio14_q50", "ratio14_q84"),
+                          quantile(ratios[:, 13]) if ratios.shape[1] > 13 else [float("nan")] * 3)))
     return row, dict(ratios=ratios, weights=weights, lnl=lnl, edges=edges, age=age, older=older, mass=mass,
                      log_weights=log_weights)
 
 
-def prior_ages(edges):
+def prior_ages(edges, n_ratios):
     """Mass-weighted age of the SFH prior alone, as prior_only() of Experiment 9, on these bin edges."""
     if not hasattr(prior_ages, "draws"):
         prior_ages.draws = np.asarray(StudentT(mean=0.0, scale=0.3, df=2.0).sample(
             jax.random.PRNGKey(PRIOR_SEED), (200000, 14)))
-    return np.quantile(masses(prior_ages.draws, edges) @ (0.5 * (edges[:-1] + edges[1:])), [0.16, 0.5, 0.84])
+    return np.quantile(masses(prior_ages.draws[:, :n_ratios], edges) @ (0.5 * (edges[:-1] + edges[1:])), [0.16, 0.5, 0.84])
 
 
 def likelihood(row, truth, mock, fit):
@@ -130,7 +133,7 @@ def likelihood(row, truth, mock, fit):
     def bin_mass(x):
         log_sfr = jnp.concatenate([jnp.zeros(1), -jnp.cumsum(unravel(x)["logsfr_ratios"])])
         sfr = 10.0 ** (log_sfr - log_sfr.max())
-        mass = 0.5 * (sfr[:-1] + sfr[1:]) * dt
+        mass = (sfr if sfr.shape[0] == dt.shape[0] else 0.5 * (sfr[:-1] + sfr[1:])) * dt
         return mass / mass.sum()
 
     age = lambda x: bin_mass(x) @ mid
@@ -190,7 +193,7 @@ def one(job):
     mock = dict(np.load(ROOT / truth["mock"]))
     stats, fit = posterior(ROOT / row_path(row) / "ceridwen_result.h5", mock)
     np.testing.assert_allclose(stats["true_age_gyr"], truth["true_age_gyr"], atol=1e-9)
-    prior = prior_ages(fit["edges"])
+    prior = prior_ages(fit["edges"], fit["ratios"].shape[1])
     out = dict(target=row["target"], shape=row["shape"], z=row["z"], universe_age_gyr=truth["universe_age_gyr"], **stats,
                prior_age_q16=prior[0], prior_age_q50=prior[1], prior_age_q84=prior[2],
                **(stored or likelihood(row, truth, mock, dict(fit, true_age=stats["true_age_gyr"], age_q50=stats["age_q50"]))))

@@ -60,7 +60,9 @@ def mass_weighted_age(logsfr_ratios, lookback_gyr):
     history = np.asarray(logsfr_ratios_to_sfh(np.asarray(logsfr_ratios),
                                               sfh_times_yr=np.asarray(lookback_gyr) * 1e9))
     durations = np.diff(lookback_gyr) * 1e9
-    masses = 0.5 * (history[:-1] + history[1:]) * durations
+    # Ceridwen 2.0 fits: one SFR per bin. Earlier fits: one per node, bin SFR the mean of two.
+    bins = history if len(history) == len(durations) else 0.5 * (history[:-1] + history[1:])
+    masses = bins * durations
     ages = 0.5 * (lookback_gyr[:-1] + lookback_gyr[1:])
     return float((masses * ages).sum() / masses.sum())
 
