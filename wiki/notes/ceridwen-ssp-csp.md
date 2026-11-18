@@ -94,13 +94,13 @@ The tuple on the right defines the axis contract. The flux cube must align exact
 A CSP construction establishes static structure:
 
 - The lookback-time nodes increase from today to the oldest time.
-- Each node or bin has one SFH value.
-- The metallicity is either constant `logzsol` or time-varying `logzsol_hist`.
+- A step SFH (`sfh_interp="step"`) has one SFR per bin, shape (n_time-1,); a linear SFH has one per node.
+- The metallicity is either constant `logzsol` or one value per bin, `logzsol_bins`.
 - The construction selects the dust, nebular, IGM, and smoothing components.
 
-`CSPBasis.initialize_model_structure` checks the contract above (`csp/csp.py:448-593`). On aMIST grids, both keys, `logzsol` and `logzsol_hist`, hold iron abundance (\([\mathrm{Fe}/\mathrm{H}]\)).
+`CSPBasis.initialize_model_structure` checks the contract above (`csp/csp.py:647-800`). On aMIST grids, both keys, `logzsol` and `logzsol_bins`, hold iron abundance (\([\mathrm{Fe}/\mathrm{H}]\)).
 
-`zmet` stores these `logzsol` nodes (`csp/csp.py:432`); keys `Z` and `zh` raise `ValueError` (`csp/csp.py:79-80`, `99-118`).
+`zmet` stores these `logzsol` nodes (`csp/csp.py:630`); keys `Z`, `zh` and the per-node `logzsol_hist` raise `ValueError` (`csp/csp.py:84-86`, `118-145`). A step SFH with one SFR per node also raises (`_sfh_per_bin`, `csp/csp.py:294-301`).
 
 </details>
 
@@ -110,9 +110,9 @@ A CSP construction establishes static structure:
 The notebooks sample consecutive SFR log-ratios. The transform uses this sequence:
 
 1. **`logsfr_ratios`**Sampled ratios
-2. **Cumulative \(\log\mathrm{SFR}\)**Anchor the first node
+2. **Cumulative \(\log\mathrm{SFR}\)**Anchor the youngest bin
 3. **Linear SFR**Apply `10 ** log_sfr`
-4. **Unit-mass SFH**Store as `theta["sfh"]`
+4. **Unit-mass SFH**\(\sum_i \mathrm{SFR}_i\,\Delta t_i=1\); store as `theta["sfh"]`
 
 </details>
 
@@ -123,39 +123,29 @@ The notebooks sample consecutive SFR log-ratios. The transform uses this sequenc
 <details>
 <summary>Details</summary>
 
-`logsfr_ratios_to_sfh` implements this sequence at `ceridwen/ceridwen/model/transforms.py:79-169`. The CSP weight kernel integrates the SFH over the SSP age cells. It also interpolates metallicity (`csp/csp.py:1817-2015`). Small wrappers select constant or time-varying metallicity. They also select linear or step SFH behavior (`lines 2017-2050`).
+`logsfr_ratios_to_sfh` implements this sequence at `ceridwen/ceridwen/model/transforms.py:16-64`. With one node more than SFR values it returns one SFR per node instead, normalised by the trapezoidal integral. The CSP weight kernel integrates the SFH over the SSP age cells. It also interpolates metallicity (`csp/csp.py:1817-2015`). Small wrappers select constant or time-varying metallicity. They also select linear or step SFH behavior (`lines 2017-2050`).
 
-`ceridwen/ceridwen/model/transforms.py:142-167`
+`ceridwen/ceridwen/model/transforms.py:34-49`
 
 </details>
 
 ```
-ratios  = jnp.asarray(logsfr_ratios, dtype=float)            # (n-1,)
-# Anchor log10(SFR[0]) = 0, then cumulate the negative ratios
-log_sfr = jnp.concatenate([jnp.zeros(1),
-                            -jnp.cumsum(ratios)])             # (n,)
-sfr     = 10.0 ** log_sfr                                     # (n,)
+    ratios  = jnp.asarray(logsfr_ratios, dtype=float)
+    log_sfr = jnp.concatenate([jnp.zeros(1),
+                                -jnp.cumsum(ratios)])
+    if log_sfr.dtype == jnp.float32:
+        # float32 mode (docs/mac_gpu.md): 10**x overflows above x ~ 38.5, which the StudentT(df=2)
+        # prior reaches in ~0.2% of draws, and inf/inf = NaN.  The normalisation below divides
+        # out any constant, so shift the peak to 0; float64 keeps the unshifted (bit-identical) path
+        log_sfr = log_sfr - jnp.max(log_sfr)
+    sfr     = 10.0 ** log_sfr
 
-if sfh_times_yr is not None:
-    times = jnp.asarray(sfh_times_yr, dtype=float)            # (n,)
-    dt    = jnp.abs(jnp.diff(times))                          # (n-1,)
-    # Standard trapezoidal quadrature weights (yr):
-    #   w[0]   = 0.5 * dt[0]
-    #   w[i]   = 0.5 * (dt[i-1] + dt[i])   for 0 < i < n-1
-    #   w[n-1] = 0.5 * dt[n-2]
-    w_lo  = jnp.concatenate([jnp.zeros(1), dt])               # (n,)
-    w_hi  = jnp.concatenate([dt, jnp.zeros(1)])               # (n,)
-    w     = 0.5 * (w_lo + w_hi)                               # (n,)
-    # Unit-mass normalisation: ∫SFR dt = sum(sfr * w) = 1 Msun.
-    # GOTCHA: normalise to total mass, NOT mean SFR — dividing by
-    # sum(w) instead would leave an implicit factor of t_universe[yr]
-    # (~1.4e10) in the spectrum and bias every logmass estimate by
-    # ~10 dex at z=0 (less at higher z).
-    total_mass = jnp.sum(sfr * w)
-    sfh   = sfr / total_mass
-else:
-    # Discrete fallback: sum(sfh) = 1.
-    sfh = sfr / jnp.sum(sfr)`
+    if sfh_times_yr is not None:
+        times = jnp.asarray(sfh_times_yr, dtype=float)
+        dt    = jnp.abs(jnp.diff(times))
+        n_sfr = ratios.shape[-1] + 1
+        if times.shape[-1] == n_sfr + 1:            # one SFR per bin: sum_i SFR_i dt_i = 1
+            return sfr / jnp.sum(sfr * dt)
 ```
 
 <details>

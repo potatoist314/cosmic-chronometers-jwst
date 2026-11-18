@@ -1,0 +1,285 @@
+\documentclass[fleqn,usenatbib]{mnras}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{url}
+
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\DeclareUrlCommand\src{\def\UrlFont{\sffamily\footnotesize}}
+\newcommand{\Hu}{\ensuremath{\mathrm{km\,s^{-1}\,Mpc^{-1}}}}
+\newcommand{\sig}{\ensuremath{\sigma_\star}}
+\newcommand{\zeff}{\ensuremath{z_\mathrm{eff}}}
+\newcommand{\afe}{\ensuremath{[\alpha/\mathrm{Fe}]}}
+
+\title[Chronometer $H(z)$ from Ceridwen fits of LEGA-C DR3]{$H(z)$ at $z_\mathrm{eff}\approx0.77$ from Ceridwen full-spectrum ages of LEGA-C DR3 passive galaxies: skeleton}
+\author[Liu Hao]{Liu Hao}
+\date{Skeleton, 2026 November 17}
+\pubyear{2026}
+
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+\begin{abstract}
+\begin{itemize}
+\item Claim: $H(\zeff)$, $\zeff\approx0.77$, from a cosmic chronometer built on mass-weighted SFH ages of Ceridwen full-spectrum fits to LEGA-C DR3 passive galaxies.
+\item \todo{abstract numbers after the headline estimator is chosen (Section~\ref{sec:results})}
+\end{itemize}
+\end{abstract}
+
+\section*{Conventions}
+\begin{itemize}
+\item Ranges: 16th--84th percentiles. $H$ in \Hu. Ages in Gyr. Age--redshift slope $b$ in Gyr per unit $z$.
+\item Arm: C/N free (\texttt{dr3\_cn\_free\_w}) unless marked; plain arm \texttt{dr3\_plain\_w}. Liu Hao, 2026-11-16: ``sure cn free seems good to carry on''. \src{wiki/research/questions/q-afe-age-chronometer.md}
+\item Reference cosmology: astropy \texttt{Planck18} \citep{Planck2020}. \src{src/chronometer.py}
+\end{itemize}
+
+\section{Introduction}
+\begin{itemize}
+\item Chronometer: $H(z) = -\dfrac{1}{1+z}\dfrac{\mathrm{d}z}{\mathrm{d}t}$, from differential ages of passive galaxies \citep[eq.~2]{JimenezLoeb2002}.
+\item Measurements: \citet{Simon2005}, \citet{Stern2010}, \citet{Moresco2012}, \citet{Moresco2015}, \citet{Moresco2016}. Review: \citet{Moresco2022}. Systematics: \citet{Moresco2018}, \citet{Moresco2020}.
+\item Hubble tension:
+  \begin{itemize}
+  \item Planck 2018, base $\Lambda$CDM: $H_0 = 67.4\pm0.5$ \citep{Planck2020}.
+  \item SH0ES Cepheid--SN baseline: $H_0 = 73.04\pm1.04$; ``5-sigma difference'' from Planck+$\Lambda$CDM \citep{Riess2022}.
+  \end{itemize}
+\item This work: Ceridwen \citep{Stoffers2026} fits of LEGA-C DR3 \citep{vanderWel2021} spectra and COSMOS photometry; mass-weighted SFH ages; $H(\zeff)$ at $\zeff\approx0.77$.
+\end{itemize}
+
+\section{Data}
+\subsection{Spectra}
+\begin{itemize}
+\item LEGA-C DR3 \citep{vanderWel2021}. Flags: \texttt{FLAG\_PRIMARY} 1, \texttt{FLAG\_SPEC} 0, \texttt{FLAG\_MORPH} 0 \citep[Sect.~4.2]{vanderWel2021}. \src{results/legac-dr3-2026-11-11/REPORT.md}
+\item Fitted 194: $z$ 0.603--0.999, median 0.728. \src{results/legac-dr3-2026-11-11/REPORT.md}
+\end{itemize}
+
+\subsection{Selection, 4057 to 194}
+\src{results/legac-dr3-2026-11-11/selection-counts.csv}
+\begin{itemize}
+\item 4057: DR3 catalogue $\times$ COSMOS2015 \citep{Laigle2016}.
+\item 2571: quality flags, $z$, S/N, rest NUV, $r$, $J$.
+\item 1222: NUV$rJ$ quiescent: $\mathrm{NUV}-r > 3(r-J)+1$ and $\mathrm{NUV}-r>3.1$ (\src{wiki/notes/model.md}). \todo{cite the origin of the NUV$rJ$ cut}
+\item 931: [O\,\textsc{ii}] EW below 5\,\AA.
+\item 581: no $3\sigma$ [O\,\textsc{ii}] or [O\,\textsc{iii}].
+\item 329: clean COSMOS2015 photometry.
+\item 302: one spectrum per object.
+\item 284: fittable photometry.
+\item 208: covers the fit window.
+\item 194: finite \sig{} error.
+\end{itemize}
+
+\subsection{Extended sample, 153 gained to 333}
+\src{results/dr3-more-galaxies-2026-11-16/REPORT.md}
+\begin{itemize}
+\item Chain: 4057 $\to$ 2571 $\to$ 1222 $\to$ 931 $\to$ 581 $\to$ 523 fittable photometry $\to$ 371 covers window $\to$ 348 one per object.
+\item Gained 154:
+  \begin{itemize}
+  \item 134: COSMOS2015 clean cut replaced by fittable photometry.
+  \item 14: NaN \sig{} error; prior width $0.0388\,\sig$, the median fractional error of the 194.
+  \item 4: both of the above.
+  \item 2: one spectrum per object picked after the window cut.
+  \end{itemize}
+\item C/N-free fits: 153 of 154. M102\_214235 has \sig{} 82.9\,km\,s$^{-1}$; the alf response needs total $\sigma \ge 100$\,km\,s$^{-1}$, this spectrum has 97.3.
+\item Combined: 348 plain, 347 C/N free. Without COSMOS2015 \texttt{FLAG\_PETER} (saturated objects and bad areas; \citealt{Laigle2016}): 334 plain, 333 C/N free.
+\item Gained minus 194 slope: C/N free $+0.39\pm0.95$ ($0.4\sigma$); plain $+0.73\pm0.97$ ($0.8\sigma$).
+\item 16 gained galaxies without a COSMOS2015 flag: C/N-free slope $-1.04$ ($-3.07$, $+1.08$), $1.9\sigma$ from the 194.
+\end{itemize}
+
+\subsection{Photometry}
+\begin{itemize}
+\item COSMOS2025 \citep{Shuntov2025} with \texttt{warn-flag} 0, else COSMOS2020 Classic \citep{Weaver2022} with \texttt{FlagCOMBINED} 0. \src{scripts/cosmos_photometry.py}
+\item 194: 99 COSMOS2025, 95 COSMOS2020 Classic. \src{results/legac-dr3-2026-11-11/REPORT.md}
+\end{itemize}
+
+\section{Model and fitting}
+\label{sec:model}
+\src{wiki/notes/model.md}
+\begin{itemize}
+\item Code: Ceridwen \citep{Stoffers2026}. Sampler: nested slice sampling \citep{Yallup2026}, 500 live points, 65 inner steps.
+\item SSPs: \afe-variable aMIST v2.5 isochrones, C3K v2.3 high-resolution library ($R\approx6000$), \citet{Kroupa2001} IMF; $\alpha$-MC grid \citep{Park2025}, 13 [Fe/H] $\times$ 5 \afe{} $\times$ 107 ages. Model detail only.
+\item Priors: $\afe\sim U(-0.2,0.6)$; $[\mathrm{Fe/H}]\sim U(-2.5,0.5)$.
+\item C/N responses: alf \citep{ConroyvanDokkum2012,Conroy2018}; $[\mathrm{C/Fe}]\sim U(-0.3,0.5)$, $[\mathrm{N/Fe}]\sim U(-0.3,1.0)$; clamped to age 1--13\,Gyr and [Fe/H] $-1.5$ to 0.
+\item SFH: 14 continuity bins \citep{Leja2019}: 0--30\,Myr, 30--100\,Myr, log-spaced to $0.85\,t_\mathrm{univ}$, last bin to $t_\mathrm{univ}$. Prior: Student-$t$(0, 0.3\,dex, $\nu=2$) on 14 log SFR ratios.
+  \todo{upstream Ceridwen 2.0 per-bin SFH (13 bin ratios, \citealt[eq.~4]{Leja2019}) merge is running; refit may change every number below}
+\item \sig: $\mathcal{N}$(catalogue value, error), clipped at $\pm3$ errors.
+\item Dust: \citet{Noll2009} law; birth-cloud dust on; $\tau\sim U(0,1)$.
+\item Calibration: Chebyshev polynomial, order 10, marginalised; $f_\mathrm{calib}$ log-uniform 1--10\,per\,cent.
+\item Fit window: rest 4074.5--4666.1\,\AA, the same for all galaxies. \src{results/dr3-more-galaxies-2026-11-16/REPORT.md}
+\item Age: $t_\mathrm{MW} = \sum_i M_i\,\bar t_i / \sum_i M_i$, with $M_i$ the mass formed in bin $i$ and $\bar t_i$ its midpoint.
+\item Estimators, least squares over galaxies:
+  \begin{itemize}
+  \item plain line: $t_\mathrm{MW} = a + b\,z$;
+  \item \sig{} term: $t_\mathrm{MW} = a + b\,z + c\log_{10}\sig$.
+  \end{itemize}
+\item $H(\zeff) = -1/[(1+\zeff)\,b]$. $\zeff$: redshift where the reference $\mathrm{d}t/\mathrm{d}z$ equals the least-squares slope of reference ages at the sample redshifts (\texttt{effective\_redshift}, \src{src/chronometer.py}). 194: $\zeff = 0.775$; 333: 0.773. Range 0.774--0.775 for $H_0$ 60--75, $\Omega_\mathrm{m}$ 0.25--0.40, against median $z=0.728$. \src{wiki/research/questions/q-afe-age-chronometer.md}
+\item Errors: galaxy bootstrap, 10000 draws, seed 20261110. \src{results/sigma-split-2026-11-16/sigma_split.py}
+\end{itemize}
+
+\section{Validation with mocks}
+\label{sec:mocks}
+\subsection{Recovery, 194 plain mocks}
+\src{results/mock-chronometer-window-2026-11-13/slopes.csv}
+\begin{itemize}
+\item True slope $-5.226$; recovered $-5.116$ ($-5.356$, $-4.875$); ratio 0.979.
+\item $H(\zeff=0.7747)$: recovered 107.7 (102.9, 113.0); true 105.4.
+\item Recovered/true slope by SFH shape: tophat 0.961, short 1.026, exponential 1.000, two bursts 0.949.
+\item Median \afe{} bias $+0.005$.
+\end{itemize}
+
+\subsection{Age offset}
+\src{results/mock-chronometer-window-2026-11-13/age-offset.csv}, \src{results/mock-chronometer-window-2026-11-13/age-bias-thirds.csv}
+\begin{itemize}
+\item Median age bias $+0.624$\,Gyr; true age inside the 68\,per\,cent interval for 59 of 194.
+\item Decomposition of $+0.628$\,Gyr: binning of the true SFH $+0.260$; remainder $+0.402$.
+\item Mass in bins older than every true star: 0.270 of the total, worth $+0.658$\,Gyr. Younger bins $-0.183$; overlap $+0.165$.
+\item Prior alone minus truth: $-1.059$\,Gyr.
+\item Flat in $z$, so it cancels in $b$: low, middle, high $z$ thirds $+0.597$, $+0.646$, $+0.620$. S/N thirds: $+0.593$, $+0.701$, $+0.651$.
+\item Prior-driven (30 mocks): SFH prior scale 0.3 gives $+0.556$ (older-bin mass 0.254); scale 1.0 gives $+0.251$ (0.169).
+\end{itemize}
+
+\subsection{C/N-free mocks}
+\src{results/mock-chronometer-cn-free-2026-11-16/slopes.csv}, \src{results/mock-chronometer-cn-free-2026-11-16/paired-slopes.csv}
+\begin{itemize}
+\item 40 mocks. True $-5.349$; C/N-free recovered $-5.043$ ($-5.471$, $-4.572$), ratio 0.943; median age bias $+0.695$.
+\item Plain on the same 40: $-5.236$ ($-5.668$, $-4.775$), ratio 0.979.
+\item C/N free minus plain: $+0.192$ ($-0.057$, $+0.464$).
+\end{itemize}
+
+\subsection{SFH parametrisation check (prior only)}
+\src{results/upstream-2-0-check-2026-11-17/prior-test.csv}
+\begin{itemize}
+\item Production: 14 node ratios set 14 bins; Jacobian $s_\mathrm{min}/s_\mathrm{max}$ up to $6.5\times10^{-17}$.
+\item Ceridwen 2.0 / \citet[eq.~4]{Leja2019}: 13 bin ratios; $s_\mathrm{min}/s_\mathrm{max}$ up to 0.074.
+\item Age minus truth: $-1.059$ (14 nodes), $-1.107$ (13 bins). Older-bin mass: 0.155, 0.151.
+\end{itemize}
+
+\section{Results}
+\label{sec:results}
+\src{results/sigma-split-2026-11-16/more-galaxies-2026-11-17/estimators.csv}
+\begin{itemize}
+\item \todo{choose the headline estimator: plain line or $\log\sig$ term. Neither is claimed here.}
+\item Table~\ref{tab:h}: both estimators, side by side, for the 194 and the 333/334.
+\item Planck18 $H(\zeff)$: 105.43 (194), 105.32 (333).
+\end{itemize}
+
+\begin{table*}
+\caption{Age--redshift slope $b$ and $H(\zeff)$ in \Hu. Ranges 16th--84th percentiles.}
+\label{tab:h}
+\begin{tabular}{llrcllll}
+\hline
+Sample & Arm & $N$ & $\zeff$ & $b$, plain line & $H$, plain line & $b$, $+\log\sig$ & $H$, $+\log\sig$ \\
+\hline
+194 & C/N free & 194 & 0.775 & $-5.154$ ($-5.782$, $-4.534$) & 106.9 (95.3, 121.5) & $-5.870$ ($-6.440$, $-5.324$) & 93.9 (85.6, 103.5) \\
+194 & plain    & 194 & 0.775 & $-5.043$ ($-5.702$, $-4.388$) & 109.2 (96.6, 125.6) & $-5.793$ ($-6.400$, $-5.203$) & 95.1 (86.1, 105.9) \\
+333 & C/N free & 333 & 0.773 & $-5.091$ ($-5.583$, $-4.608$) & 108.3 (98.8, 119.7) & $-5.808$ ($-6.263$, $-5.361$) & 95.0 (88.1, 102.9) \\
+334 & plain    & 334 & 0.773 & $-4.840$ ($-5.342$, $-4.321$) & 114.0 (103.3, 127.6) & $-5.593$ ($-6.068$, $-5.107$) & 98.6 (90.9, 108.0) \\
+\hline
+\end{tabular}
+\end{table*}
+
+\subsection{The $\log\sig$ term}
+\src{wiki/research/questions/q-sigma-term.md}
+\begin{itemize}
+\item At fixed $z$, higher \sig{} is older: $c = 3.05$ (2.56, 3.52)\,Gyr\,dex$^{-1}$, $6\sigma$ from zero; plain arm 3.19 (2.69, 3.69); 333: 3.35 (3.01, 3.73); 153 gained alone: 3.74 (3.22, 4.26), $0.98\sigma$ from the 194.
+\item Correlation of $\log\sig$ with $z$: 0.19 (194); 0.21 (2826 DR3 primary targets, $z$ 0.6--1.0); 0.09 at fixed COSMOS2020 mass. \src{results/sigma-split-2026-11-16/selection-check.csv}
+\item Scatter about the line: 0.80\,Gyr, 0.73\,Gyr with the term.
+\item Mocks with an injected 3.19\,Gyr\,dex$^{-1}$: \sig{} halves remove 58\,per\,cent, thirds 84\,per\,cent, the term 100\,per\,cent.
+\item \todo{Liu Hao: ``i don't fully understand this - put it on the wiki but i can't say much until i really understand this''}
+\end{itemize}
+
+\subsection{Cross-checks (C/N free, 194; 333 in brackets)}
+\src{results/sigma-split-2026-11-16/more-galaxies-2026-11-17/estimators.csv}
+\begin{itemize}
+\item \sig{} thirds, common slope: 95.0 (86.6, 105.1) [95.8 (88.8, 104.1)].
+\item \sig{} halves, common slope: 98.2 (89.0, 109.4) [99.5 (91.9, 108.7)].
+\item Line + COSMOS2020 $\log M$ term, 190 [327]: 93.4 (85.3, 103.2) [94.9 (88.0, 102.9)].
+\item Binned \sig{} differences: 66--117. \src{results/sigma-split-2026-11-16/binned-difference.csv}
+\end{itemize}
+
+\section{Systematics}
+\label{sec:syst}
+\subsection{Budget so far}
+\src{results/h-systematics-2026-11-16/budget-comparison.csv}, \src{results/h-systematics-2026-11-16/totals.csv}, \src{results/h-systematics-2026-11-16/budget.csv}
+\begin{itemize}
+\item Plain line, C/N free, 194: $106.91\,^{+14.61}_{-11.62}\,(\mathrm{stat})\,^{+12.75}_{-22.04}\,(\mathrm{syst})$.
+\item Systematic without the carbon-mask fit: $+12.7/-22.0$ ($+11.9/-20.6$\,per\,cent); with it $+17.6/-22.0$. Standard deviation over variations: 13.6 (12.8\,per\,cent).
+\item Status in \src{totals.csv}: ``provisional, incomplete''.
+\item Median shift by term: abundance 12.4; window 12.3; release 2.2; photometry 0.85; estimator $-11.7$; selection $-3.9$; SFH prior scale $-17.8$; method bias $-4.2$.
+\item Carbon-mask fit: $b=-4.26$, $H=129$ (112, 152). \src{wiki/research/questions/q-afe-age-chronometer.md}
+\item Jackknife over 31 masks: standard error 14.2. \src{results/h-systematics-2026-11-16/jackknife-masks.csv}
+\end{itemize}
+
+\subsection{Missing terms}
+\src{results/h-systematics-2026-11-16/missing-terms.csv}, \src{results/h-systematics-2026-11-16/literature-definitions.csv}
+\begin{itemize}
+\item \todo{missing systematic terms; values are \citet{Moresco2020} Table~4 means, not ours}
+  \begin{itemize}
+  \item SPS model / isochrones: 8.9\,per\,cent (4.5 without the most discordant model).
+  \item Stellar library: 6.6\,per\,cent.
+  \item IMF: 0.4\,per\,cent.
+  \item Metallicity: 9.0\,per\,cent for a 10\,per\,cent metallicity error; 4.2 for 5\,per\,cent.
+  \item SFH bin number (8 against 14): \citet{Borghi2022b}, \citet{Jiao2023}, \citet{Tomasetti2023} quote SFH terms.
+  \item SFH prior on the real data (Student-$t$ scale 1.0 against 0.3): 30 mocks only so far.
+  \item Dust law (birth-cloud dust on against off).
+  \end{itemize}
+\item \citet{Moresco2020} totals in quadrature: best case 5.5\,per\,cent, worst case 14.8\,per\,cent.
+\end{itemize}
+
+\subsection{Progenitor bias}
+\src{wiki/research/questions/q-progenitor-bias.md}, \src{results/sigma-split-2026-11-16/progenitor-budget.csv}
+\begin{itemize}
+\item Late formers (90\,per\,cent of their mass formed after $z=1.0$): 5 of 194 plain, 4 C/N free, all in the low-\sig{} half.
+\item C/N free with late formers removed (190): plain line 99.0 (89.4, 110.6); $\log\sig$ term 89.5 (82.1, 98.0). 333 analogue (329): 103.5 (95.0, 113.4); 92.5 (86.0, 99.9).
+\item Mocks recover the 90\,per\,cent lookback time 0.67\,Gyr short. \src{results/sigma-split-2026-11-16/mock-sfh-times.csv}
+\item Dropping the youngest 10--50\,per\,cent at each $z$: slope shifts $-0.10$ to $+0.30$. \src{results/sigma-split-2026-11-16/progenitor-youngest-cut.csv}
+\item Toy, 20\,per\,cent late members at the lowest $z$ formed 1, 2, 3\,Gyr later: slope bias $+0.51$, $+1.02$, $+1.53$; after the late-former cut $+0.34$, $+0.33$, $+0.12$; with the $\log\sig$ term $+0.51$, $+1.02$, $+1.54$. \src{results/sigma-split-2026-11-16/progenitor-toy.csv}
+\item \citet{Moresco2012}: progenitor bias bounded at 6--10\,\Hu{} for $z$ 0.6--0.9.
+\end{itemize}
+
+\section{Comparison with the literature}
+\src{~/.claude/scripts/hermes-bridge/results/t_4995a7cf-detail.md}
+\begin{itemize}
+\item \citet{Borghi2022b}: 140 LEGA-C DR2, Lick indices; $98.8\pm24.8\,(\mathrm{stat})\pm22.7\,(\mathrm{syst})$ at $z=0.75$.
+\item \citet{Jiao2023}: 335 LEGA-C DR2, full spectrum; $113.1\pm15.1\,(\mathrm{stat})\,^{+29.1}_{-11.3}\,(\mathrm{syst})$ at $z=0.80$.
+\item \citet{Jimenez2023}: COSMOS2015 photometry; $105.0\pm7.9\,(\mathrm{stat})\pm7.3\,(\mathrm{syst})$ at $z=0.75$.
+\item \citet{Loubser2025}: DESI DR1, D4000$_\mathrm{n}$; $88.48\pm0.57\pm12.32$ (0.46), $119.45\pm6.39\pm16.64$ (0.67), $108.28\pm10.07\pm15.08$ (0.83).
+\item \citet{Alvarez2026} (v2): DESI DR1 LRG stacks, Lick indices; $87.5\,^{+11.4}_{-7.2}\,(\mathrm{stat})\pm14.3\,(\mathrm{syst})$ at $z=0.64$.
+\item \citet{Wang2026}: DESI DR1, full spectrum and photometry; $71.33\pm3.45\,(\mathrm{stat})\pm1.71\,(\mathrm{binning})\pm1.67\,(\mathrm{SFH})$ at $z=0.12$.
+\item \citet{Moresco2012}: 8 points, $75\pm4$ at $z=0.18$ to $154\pm20$ at 1.04; 5--12\,per\,cent.
+\item \citet{Moresco2015}: $160\pm33.6$ (1.363), $186.5\pm50.4$ (1.965).
+\item \citet{Moresco2016}: combined $91.8\pm1\,(\mathrm{stat})\pm5.1\,(\mathrm{syst})$ at $z=0.43$.
+\item This work: Table~\ref{tab:h}, $\zeff\approx0.77$.
+\end{itemize}
+
+\section{Discussion and open items}
+\begin{itemize}
+\item \todo{headline estimator: plain line or $\log\sig$ term}
+\item \todo{refit after the upstream Ceridwen 2.0 per-bin SFH merge; Sections~\ref{sec:model}--\ref{sec:syst} may change}
+\item \todo{missing systematic terms: SPS model, stellar library, IMF, metallicity, SFH bins, SFH prior on real data, dust law}
+\item \todo{the $\log\sig$ term is not yet understood (Liu Hao)}
+\item \todo{cite the origin of the NUV$rJ$ cut}
+\end{itemize}
+
+\section*{Figures (existing files)}
+\begin{itemize}
+\item Age against $z$, DR3 194: \src{wiki/analyses/afe-age-chronometer/age-redshift-dr3.png}
+\item Mock chronometer recovery: \src{wiki/analyses/afe-age-chronometer/mock-chronometer.png}
+\item Script: \src{scripts/plot_afe_age_chronometer.py}. Any new fit figure goes to the designer agent first.
+\end{itemize}
+
+\section*{Tables (existing files)}
+\begin{itemize}
+\item Selection: \src{results/legac-dr3-2026-11-11/selection-counts.csv}
+\item Estimators, 194 and combined: \src{results/sigma-split-2026-11-16/more-galaxies-2026-11-17/estimators.csv}; 194 only: \src{results/sigma-split-2026-11-16/headline.csv}
+\item Mocks: \src{results/mock-chronometer-window-2026-11-13/slopes.csv}, \src{age-offset.csv}, \src{age-bias-thirds.csv}; \src{results/mock-chronometer-cn-free-2026-11-16/paired-slopes.csv}
+\item Systematics: \src{results/h-systematics-2026-11-16/budget.csv}, \src{totals.csv}, \src{missing-terms.csv}
+\item Progenitor bias: \src{results/sigma-split-2026-11-16/progenitor-budget.csv}
+\item SFH prior check: \src{results/upstream-2-0-check-2026-11-17/prior-test.csv}
+\end{itemize}
+
+\bibliographystyle{mnras}
+\bibliography{refs}
+
+\bsp
+\label{lastpage}
+\end{document}

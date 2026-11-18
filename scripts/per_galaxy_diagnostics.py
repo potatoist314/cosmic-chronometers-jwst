@@ -337,7 +337,7 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
         ssp,
         theta={
             "lookback_time": jnp.asarray(lookback),
-            "sfh": jnp.ones(len(lookback)),
+            "sfh": jnp.ones(len(lookback) - 1),
             "logzsol": jnp.array([-1.85 - STORED_LOG10_ZSUN]),
             "afe": jnp.array([0.2]),
             "diffuse_tau_kc": jnp.array([0.1]),
@@ -349,7 +349,9 @@ def rebuild_model(galaxy: GalaxyResult, ssp, extra_observations=()):
     )
 
     def sfh_from_ratios(free_theta):
-        return logsfr_ratios_to_sfh(free_theta["logsfr_ratios"], sfh_times_yr=np.asarray(csp.sfh_times))
+        # Stored fits: one ratio per node pair; each bin SFR is the mean of its two node SFRs.
+        nodes = logsfr_ratios_to_sfh(free_theta["logsfr_ratios"], sfh_times_yr=np.asarray(csp.sfh_times))
+        return 0.5 * (nodes[:-1] + nodes[1:])
 
     transforms = {"sfh": sfh_from_ratios}
     if "diffuse_dust_index" not in galaxy.theta_init:

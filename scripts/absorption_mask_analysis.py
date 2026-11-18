@@ -343,7 +343,7 @@ def build_notebook_model(target: dict):
     csp = CSPBasis_afe(
         ssp,
         theta={
-            "lookback_time": jnp.asarray(lookback), "sfh": jnp.ones(len(lookback)),
+            "lookback_time": jnp.asarray(lookback), "sfh": jnp.ones(len(lookback) - 1),
             "logzsol": jnp.array([-1.85 - ssp.log10_zsun]), "afe": jnp.array([0.2]),
             "diffuse_tau_kc": jnp.array([0.1]), "diffuse_dust_index": jnp.array([FIXED_DUST_INDEX]),
         },
@@ -352,8 +352,13 @@ def build_notebook_model(target: dict):
         track_zred_age=False, cosmo=Cosmology.planck18(), verbose=False,
     )
     sfh_times = np.asarray(csp.sfh_times)
+    def sfh_from_ratios(free):
+        # Stored fits: one ratio per node pair; each bin SFR is the mean of its two node SFRs.
+        nodes = logsfr_ratios_to_sfh(free["logsfr_ratios"], sfh_times_yr=sfh_times)
+        return 0.5 * (nodes[:-1] + nodes[1:])
+
     transforms = {
-        "sfh": lambda free: logsfr_ratios_to_sfh(free["logsfr_ratios"], sfh_times_yr=sfh_times),
+        "sfh": sfh_from_ratios,
         "diffuse_dust_index": lambda free: jnp.array([FIXED_DUST_INDEX]),
     }
     priors = {
