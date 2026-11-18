@@ -43,6 +43,25 @@ Notebook cells, plain step 1 (s): imports 4.6, data 7.2, model 7.8, sampler cell
 
 Effective sample counts equal.
 
+### Again on Ceridwen 2.0 (`runs/04-pin-check/`, Astro b62ee36a = absorption-mask cdd9699e merged, ceridwen 71eeff2)
+
+Colab A100-SXM4-40GB, 1.72 units. Step 0: the 6 cells in one kernel (plain M1 first); steps 1-6: each cell alone.
+
+| cell | alone process s | in the kernel, cells s | ln Z alone = kernel |
+|---|---|---|---|
+| plain M1 | 83.3 | 80.7 (1st) | 91771.609 |
+| plain M9 | 76.8 | 48.8 | 96413.845 |
+| plain M10 | 76.2 | 49.9 | 104124.552 |
+| cn_free M1 | 103.4 | 76.0 | 91778.140 |
+| cn_free M9 | 89.2 | 66.8 | 96412.934 |
+| cn_free M10 | 93.5 | 67.6 | 104124.640 |
+
+- `compare_fits.py`, alone against kernel: median shift 0.000 sigma, width change 0.0 %, delta ln Z 0.000,
+  effective samples equal, all 6.
+- 6 fits: 396.0 s in one kernel, 522.4 s alone (-24 %).
+- Tests on the merged branch against cdd9699e (detached worktree, same ceridwen): both 13 failed, 15 errors,
+  350 passed, same failing tests; fast-path assertion passed; `test_modal_gpu.py`, `test_experiment.py` 74 passed.
+
 ## Tests
 
 - Astro full selection: base 2d000184 and branch both 13 failed, 15 errors, 350 passed; same failing tests

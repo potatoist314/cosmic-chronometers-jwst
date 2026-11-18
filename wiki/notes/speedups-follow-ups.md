@@ -59,7 +59,7 @@ The uncached fits of one Modal container or Colab runtime run in one kernel (Ast
 
 A100-40GB, ceridwen 3b5177f, seed 20260832. 13 fits per container is the shape of the 16 Nov production run. [REPORT](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/REPORT.md), [ledger](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/LEDGER.md).
 
-- Alone against one kernel, same Colab runtime, 3 galaxies per arm: median shift \(0.000\sigma\), width change 0.0 %, \(\Delta\ln Z = 0.000\).
+- Alone against one kernel, same Colab runtime, 3 galaxies per arm: median shift \(0.000\sigma\), width change 0.0 %, \(\Delta\ln Z = 0.000\); the same on Ceridwen 2.0 (6 fits 396 s in one kernel, 522 s alone).
 - `experiment.py run`, 20 plain fits on Modal, 2 per container: container time 198.1 → 163.1 s, estimated $1.277 → $1.052; 19 of 20 fits identical to the base build, M13_215951 differs by host (\(0.31\sigma\)).
 
 </details>

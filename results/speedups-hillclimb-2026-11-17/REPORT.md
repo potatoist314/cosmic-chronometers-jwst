@@ -29,20 +29,21 @@ Colab kernel used 2.59 units.
 | 6 | Catalogue read cached across fits | data cell 7.0 s alone, 0.1-2.3 s in a kernel already | - | not needed |
 
 Full-fit check, final build, alone against one kernel, 3 galaxies per arm: median shift 0.000 sigma, width change
-0.0 %, delta ln Z 0.000. Real path, base against new on Modal: 19 of 20 fits identical; M13_215951 differs by host
+0.0 %, delta ln Z 0.000, on ceridwen 3b5177f and again on Ceridwen 2.0 (ceridwen 71eeff2, Astro b62ee36a): 6 fits
+396.0 s in one kernel, 522.4 s alone (-24 %). Real path, base against new on Modal: 19 of 20 fits identical; M13_215951 differs by host
 (its new fit is identical to the Colab fit).
 
 ## Needs his decision
 
 - TF32 products: SFH basis as one float32 product (F1) and C/N tables with TF32 products (F2t), measured 16-17 Nov
   on this ceridwen: about -7 s plain and -9 s cn_free per fit; A100 delta ln L 0.54 and 0.49.
-- SFH bin truncation (30 Sep patch, CPU ln L max 0.035): not measured on this build; it changes the SFH code that the
-  upstream 2.0 merge is changing.
+- SFH bin truncation (30 Sep patch, CPU ln L max 0.035): not measured on this build; it changes the SFH code that
+  Ceridwen 2.0 changed.
 
 ## Noticed, not done
 
 - One ln L program for all galaxies would save about 10 s of compile per later fit; it needs padding through the
-  ceridwen SSP, photometry and likelihood code, which the upstream 2.0 merge is changing.
+  ceridwen SSP, photometry and likelihood code, which Ceridwen 2.0 changed.
 - Compiling the next fit while the current fit samples would hide the same 10 s; XLA autotuning then shares the GPU
   with the sampler, which changed sampler paths under MPS in October.
 - FilterSet eager compiles: 1.9 s in the first fit of a container; later fits 0.1-2.3 s.

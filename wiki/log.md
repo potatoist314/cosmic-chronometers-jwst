@@ -1604,4 +1604,4 @@
 ## [2026-11-17] analysis | Speedups hill-climb of 17 Nov
 
 - Pages: `notes/speedups-follow-ups.md`
-- Change: new section for the kept change (the uncached fits of a Modal container or Colab runtime in one kernel, Astro 377bf6ab; 13 fits per container: `dr3_plain_w` 86.3 → 56.5 s, `dr3_cn_free_w` about 97 → 75 s); shared compile cache and CPU-core rows under Measured, not adopted; one \(\ln L\) program for all galaxies and compiling during sampling under Untested proposals; card t_cf15e524.
+- Change: new section for the kept change (the uncached fits of a Modal container or Colab runtime in one kernel, Astro 377bf6ab; 13 fits per container: `dr3_plain_w` 86.3 → 56.5 s, `dr3_cn_free_w` about 97 → 75 s); shared compile cache and CPU-core rows under Measured, not adopted; one \(\ln L\) program for all galaxies and compiling during sampling under Untested proposals; alone-against-kernel check repeated on Ceridwen 2.0, identical; card t_cf15e524.
