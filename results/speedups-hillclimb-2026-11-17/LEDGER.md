@@ -68,3 +68,19 @@ Modal, profile liuhaoo3-14, the first 20 targets of `results/dr3-more-galaxies-2
   -0.224 and -0.607). Positions Colab / Modal: 2nd / 1st and 3rd / 1st; M14_103557 at 4th / 1st is identical.
 - Against the production fits of 16 Nov (ceridwen 13791e0, before the 16-17 Nov speedups): max shift 0.41 sigma,
   |delta ln Z| up to 2.9 errors; ln L rounding changed with those speedups.
+
+## Real path, `dr3_cn_free_w` (`real/cn-free-colab/`, Colab A100, 377bf6ab, one kernel)
+
+| galaxy | position | fit s | sampler s | ln Z |
+|---|---|---|---|---|
+| M13_215951 | 1 | 98 | 52.6 | 92200.986 +/- 0.238 |
+| M13_216897 | 2 | 82 | 59.4 | 93529.818 +/- 0.261 |
+| M13_219726 | 3 | 69 | 47.7 | 95072.357 +/- 0.202 |
+| M14_103557 | 4 | 59 | 36.0 | 101957.748 +/- 0.172 |
+| M14_37322 | 5 | 61 | 40.5 | 105688.518 +/- 0.176 |
+| M14_40657 | 6 | 80 | 57.9 | 115718.877 +/- 0.247 |
+
+- Fit time outside the sampler: first fit 45 s, later fits 20.5-23.0 s. Units 15.62 -> 13.03 (1096 s allocated).
+- Local figure rebuilds: 4 of 6 failed at 00:08:55-00:09:24, after the shared `ceridwen/.venv` (an editable
+  install of the main checkout's ceridwen) moved to the 2.0 pin 71eeff2; rebuilt with this worktree's ceridwen
+  first on `PYTHONPATH` (00:10-00:13).

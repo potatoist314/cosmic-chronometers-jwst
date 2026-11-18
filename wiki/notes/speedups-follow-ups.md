@@ -49,10 +49,10 @@ Window-194 arms `dr3_cn_free_w` and `dr3_plain_w`, A100-40GB on Modal, one first
 
 | Arm | Per fit, 13 fits per container | Cost per fit |
 |---|---|---|
-| `dr3_cn_free_w` | about 94 → 71 s | about $0.061 → $0.046 |
+| `dr3_cn_free_w` | about 97 → 75 s | about $0.063 → $0.048 |
 | `dr3_plain_w` | 86.3 → 56.5 s | $0.056 → $0.036 |
 
-The uncached fits of one Modal container or Colab runtime run in one kernel (Astro 377bf6ab). Later fits skip the imports, the catalogue read and most compiles: plain 84.0 s alone, 81.0 s first, 51.9 s later (Modal, 20 fits); cn_free 92 s alone, 67 s later (Colab).
+The uncached fits of one Modal container or Colab runtime run in one kernel (Astro 377bf6ab). Later fits skip the imports, the catalogue read and most compiles: plain 84.0 s alone, 81.0 s first, 51.9 s later (Modal, 20 fits); cn_free 98 s first, 70.2 s later (Colab, 6 fits; M9 and M10 92 s alone, 67 s later).
 
 <details>
 <summary>Details</summary>

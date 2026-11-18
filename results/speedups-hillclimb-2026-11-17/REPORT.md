@@ -10,10 +10,12 @@ Modal cost at $0.000645 per container second (A100-40GB, 2 cores). Container sta
 | arm | fit alone | in one kernel: first / later fit | per fit, 13 fits per container | cost per fit, 13 per container |
 |---|---|---|---|---|
 | dr3_plain_w (Modal, 20 fits) | 84.0 s | 81.0 s / 51.9 s | 86.3 -> 56.5 s (-35 %) | $0.056 -> $0.036 |
-| dr3_cn_free_w (Colab A/B, 2 fits) | 91.7, 92.3 s | 67.5, 66.3 s (later) | about 94 -> 71 s (-24 %) | about $0.061 -> $0.046 |
+| dr3_cn_free_w (Colab, 6 fits) | about 95 s | 98 s / 70.2 s (59-82 s) | about 97 -> 75 s (-23 %) | about $0.063 -> $0.048 |
 
 13 fits per container is the shape of the 16 Nov production run (130 fits, 10 containers). Real-path run: 20 plain
-fits, 2 per container: container time 198.1 -> 163.1 s (-18 %), estimated $1.277 -> $1.052.
+fits, 2 per container: container time 198.1 -> 163.1 s (-18 %), estimated $1.277 -> $1.052. cn_free "alone" is the
+later-fit time plus 25 s, the saving measured for M9 and M10 (91.7 -> 67.5 s, 92.3 -> 66.3 s); 6 cn_free fits in one
+Colab kernel used 2.59 units.
 
 ## Attempts
 
