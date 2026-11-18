@@ -1,0 +1,99 @@
+{
+ "called_at": 1794956940.132894,
+ "entered": 1794956943.5965416,
+ "finished": 1794957513.5734088,
+ "gpu": "NVIDIA A100-SXM4-40GB, 580.82.07, 40960 MiB",
+ "cpu_info": "model name\t: Intel(R) Xeon(R) CPU @ 2.20GHz\n12\n",
+ "steps": [
+  {
+   "index": 0,
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210",
+    "dr3_cn_free_w/M9_227630",
+    "dr3_plain_w/M9_227630",
+    "dr3_cn_free_w/M10_201233",
+    "dr3_plain_w/M10_201233",
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "start": 1794956943.6220229,
+   "end": 1794957329.3688269,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "23:09:03 fitting dr3_plain_w/M1_210210 (seed 20260832), dr3_cn_free_w/M9_227630 (seed 20260832), dr3_plain_w/M9_227630 (seed 20260832), dr3_cn_free_w/M10_201233 (seed 20260832), dr3_plain_w/M10_201233 (seed 20260832), dr3_cn_free_w/M1_210210 (seed 20260832) in one kernel\n[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.\n",
+   "compiled": 732,
+   "tuned": 1030,
+   "cache_bytes": 9052044
+  },
+  {
+   "index": 1,
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M9_227630"
+   ],
+   "start": 1794957329.4353428,
+   "end": 1794957421.159431,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "23:15:29 fitting dr3_cn_free_w/M9_227630, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 618,
+   "cache_bytes": 2978858
+  },
+  {
+   "index": 2,
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M10_201233"
+   ],
+   "start": 1794957421.2021673,
+   "end": 1794957513.5314803,
+   "returncode": 0,
+   "persist": {},
+   "stdout": "23:17:01 fitting dr3_cn_free_w/M10_201233, seed 20260832\n",
+   "compiled": 487,
+   "tuned": 611,
+   "cache_bytes": 2891527
+  }
+ ],
+ "returned": 1794957532.451396,
+ "plan": [
+  {
+   "label": "base",
+   "cells": [
+    "dr3_plain_w/M1_210210",
+    "dr3_cn_free_w/M9_227630",
+    "dr3_plain_w/M9_227630",
+    "dr3_cn_free_w/M10_201233",
+    "dr3_plain_w/M10_201233",
+    "dr3_cn_free_w/M1_210210"
+   ],
+   "prefix": [
+    "bash",
+    "-c",
+    "(while kill -0 $$ 2>/dev/null; do echo $(date +%s) $(free -m | awk '/Mem/{print $3}') $(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits); sleep 5; done > /workspace/out/03-kernel-batch/memory-0.txt) & exec \"$@\"",
+    "_"
+   ]
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M9_227630"
+   ]
+  },
+  {
+   "label": "base",
+   "cells": [
+    "dr3_cn_free_w/M10_201233"
+   ]
+  }
+ ],
+ "cost": "1.07 Colab units",
+ "staged": {
+  "base": {
+   "commit": "2d0001844bf736587f86d33bfbdbb7b5f04fbb05",
+   "ceridwen": "3b5177fa89b033ee1f7078ca772b302d966486aa",
+   "sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+  }
+ }
+}

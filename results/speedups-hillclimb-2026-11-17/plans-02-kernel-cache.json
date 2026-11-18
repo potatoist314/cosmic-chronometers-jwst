@@ -1,0 +1,10 @@
+[
+ {"label": "base", "cells": ["dr3_plain_w/M1_210210", "dr3_plain_w/M9_227630", "dr3_plain_w/M10_201233"]},
+ {"label": "base", "cells": ["dr3_plain_w/M9_227630"]},
+ {"label": "base", "cells": ["dr3_plain_w/M10_201233"]},
+ {"label": "base", "cells": ["dr3_plain_w/M1_210210"], "cache_path": "/tmp/xla/shared"},
+ {"label": "base", "cells": ["dr3_plain_w/M9_227630"], "cache_path": "/tmp/xla/shared", "seed_cache": 3},
+ {"label": "base", "cells": ["dr3_plain_w/M10_201233"], "cache_path": "/tmp/xla/shared", "seed_cache": 4},
+ {"label": "base", "cells": ["dr3_plain_w/M1_210210"], "prefix": ["taskset", "-c", "0,1"]},
+ {"label": "base", "cells": ["dr3_plain_w/M1_210210"], "prefix": ["taskset", "-c", "0-3"]}
+]

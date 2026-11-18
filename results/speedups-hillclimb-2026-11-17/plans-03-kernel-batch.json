@@ -1,0 +1,6 @@
+[
+ {"label": "base", "cells": ["dr3_plain_w/M1_210210", "dr3_cn_free_w/M9_227630", "dr3_plain_w/M9_227630", "dr3_cn_free_w/M10_201233", "dr3_plain_w/M10_201233", "dr3_cn_free_w/M1_210210"],
+  "prefix": ["bash", "-c", "(while kill -0 $$ 2>/dev/null; do echo $(date +%s) $(free -m | awk '/Mem/{print $3}') $(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits); sleep 5; done > /workspace/out/03-kernel-batch/memory-0.txt) & exec \"$@\"", "_"]},
+ {"label": "base", "cells": ["dr3_cn_free_w/M9_227630"]},
+ {"label": "base", "cells": ["dr3_cn_free_w/M10_201233"]}
+]

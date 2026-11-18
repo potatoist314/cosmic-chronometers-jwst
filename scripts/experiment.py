@@ -293,6 +293,10 @@ def regenerate_figures(output):
                 derived.write_bytes(gpu_derived)
 
 
+# remote logs one of these lines, then the cell name, as each fit of a several-cell config ends.
+FIT_DONE, FIT_FAILED = 'fit done: ', 'fit failed: '
+
+
 def remote(config, output):
     if __package__:
         from . import run_ceridwen_vast_multi_gpu as worker
@@ -309,12 +313,22 @@ def remote(config, output):
                  'result_dir': output / cell['arm'] / '{object_id}-{spect_id}'.format(**cell['target_metadata'])}
                 for cell in cells]
         engine.log('fitting ' + ', '.join(f"{c['name']} (seed {c['seed']})" for c in cells) + ' in one kernel')
-        worker._execute_targets(fits)
-        for cell, fit in zip(cells, fits):
+        passed = []
+
+        def ended(position):
+            name = cells[position]['name']
             try:
-                validate_result(fit['result_dir'])
+                validate_result(fits[position]['result_dir'])
             except (OSError, KeyError, ValueError) as error:
-                raise RuntimeError(f"fit failed: {cell['name']}") from error
+                engine.log(f'{FIT_FAILED}{name}: {type(error).__name__}: {error}')
+                return
+            passed.append(name)
+            engine.log(f'{FIT_DONE}{name}')
+
+        worker._execute_targets(fits, ended=ended)
+        failed = [cell['name'] for cell in cells if cell['name'] not in passed]
+        if failed:
+            raise RuntimeError(f"fit failed: {', '.join(failed)}")
         return 0
     for cell in cells:
         target = cell['target_metadata']

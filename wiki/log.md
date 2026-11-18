@@ -1600,3 +1600,8 @@
 
 - Pages: `notes/model.md`, `notes/ceridwen-ssp-csp.md`
 - Change: upstream Ceridwen 2.0.0 merged into the fork; the step SFH takes one SFR per bin from 13 adjacent-bin log ratios (before: 14 node ratios, each bin the mean of two node SFRs) and the metallicity per bin is `logzsol_bins`; same Student-t(0, 0.3, df 2) prior, metallicity evolution and SFH-basis fast path; at equal per-bin SFRs the old and merged builds give \(\ln L\) within \(7\times10^{-5}\) (2 galaxies, both window arms, 8 posterior points each); refit of the 40 window mocks: fitted minus true mass-weighted age 0.67 ± 0.29 Gyr (0.70 ± 0.28 Gyr before), mass in bins older than every true star 0.30 (0.31 before); card t_1a3abd7e.
+
+## [2026-11-17] analysis | Speedups hill-climb of 17 Nov
+
+- Pages: `notes/speedups-follow-ups.md`
+- Change: new section for the kept change (the uncached fits of a Modal container or Colab runtime in one kernel, Astro 377bf6ab; 13 fits per container: `dr3_plain_w` 86.3 → 56.5 s, `dr3_cn_free_w` about 97 → 75 s); shared compile cache and CPU-core rows under Measured, not adopted; one \(\ln L\) program for all galaxies and compiling during sampling under Untested proposals; alone-against-kernel check repeated on Ceridwen 2.0, identical; card t_cf15e524.

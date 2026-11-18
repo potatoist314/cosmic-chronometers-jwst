@@ -158,7 +158,7 @@ def test_remote_passes_configuration_and_exact_seed_to_existing_worker(tmp_path,
     assert calls == [(cell['target_metadata'], tmp_path / 'arm/1-target')]
 
 
-def test_remote_fits_several_cells_in_one_kernel_and_validates_each(tmp_path, monkeypatch):
+def test_remote_fits_several_cells_in_one_kernel_and_validates_each_as_it_ends(tmp_path, monkeypatch, capsys):
     from scripts import run_ceridwen_vast_multi_gpu as worker
     cells = [{'name': f'arm/t{i}', 'arm': 'arm', 'seed': 7, 'target': f't{i}',
               'target_metadata': {'object_id': i, 'spect_id': f't{i}', 'seed': 7},
@@ -166,8 +166,14 @@ def test_remote_fits_several_cells_in_one_kernel_and_validates_each(tmp_path, mo
              for i in (1, 2)]
     config = tmp_path / 'config.json'
     config.write_text(json.dumps(cells))
-    batches, validated = [], []
-    monkeypatch.setattr(worker, '_execute_targets', lambda fits: batches.append(fits) or 0)
+    batches, validated, ends = [], [], [0, 1]
+
+    def execute(fits, ended):
+        batches.append(fits)
+        for position in ends:
+            ended(position)
+        return 0 if ends == [0, 1] else 1
+    monkeypatch.setattr(worker, '_execute_targets', execute)
     monkeypatch.setattr(worker, '_execute_target', lambda *a: pytest.fail('one kernel per cell'))
     monkeypatch.setattr(exp, 'validate_result', validated.append)
     for name in ('CERIDWEN_SAMPLER_ONLY', 'CERIDWEN_PLOTS', 'JAX_PLATFORMS'):
@@ -177,6 +183,8 @@ def test_remote_fits_several_cells_in_one_kernel_and_validates_each(tmp_path, mo
             for f in batches[0]] == [(c['target_metadata'], tmp_path / f"arm/{i}-t{i}", c['settings'], c['priors'])
                                      for i, c in zip((1, 2), cells)]
     assert validated == [tmp_path / 'arm/1-t1', tmp_path / 'arm/2-t2']
+    assert [line[9:] for line in capsys.readouterr().out.splitlines() if line[9:].startswith('fit ')] == [
+        'fit done: arm/t1', 'fit done: arm/t2']
 
     def second_fails(directory):
         if directory.name == '2-t2':
@@ -184,20 +192,26 @@ def test_remote_fits_several_cells_in_one_kernel_and_validates_each(tmp_path, mo
     monkeypatch.setattr(exp, 'validate_result', second_fails)
     with pytest.raises(RuntimeError, match='fit failed: arm/t2'):
         exp.remote(config, tmp_path)
+    assert 'fit failed: arm/t2: ValueError: incomplete derived outputs' in capsys.readouterr().out
+    ends[:] = [0]  # the kernel died in the second fit
+    with pytest.raises(RuntimeError, match='fit failed: arm/t2'):
+        exp.remote(config, tmp_path)
 
 
-def test_batch_worker_gets_each_fits_target_environment(tmp_path, monkeypatch):
+def test_batch_worker_gets_each_fits_target_environment_and_reports_each_end(tmp_path, monkeypatch, capsys):
     from scripts import run_ceridwen_vast_multi_gpu as worker
     fits = [{'target': {'spect_id': f't{i}', 'object_id': i, 'seed': 10 + i, 'manifest_index': i},
              'result_dir': tmp_path / f'{i}-t{i}', 'settings_override': '{}', 'priors_override': None}
             for i in (1, 2)]
-    seen = {}
-    def run(command, env, **kw):
+    seen, ends = {}, []
+    def popen(command, env, **kw):
         seen['batch'] = json.loads(open(command[-1]).read())
         seen['env'] = env
-        return SimpleNamespace(returncode=0)
-    monkeypatch.setattr(worker.subprocess, 'run', run)
-    assert worker._execute_targets(fits) == 0
+        lines = ['cell output\n', f'{worker.FIT_ENDED}0\n', f'{worker.FIT_ENDED}1\n']
+        return SimpleNamespace(stdout=iter(lines), wait=lambda: 0)
+    monkeypatch.setattr(worker.subprocess, 'Popen', popen)
+    assert worker._execute_targets(fits, ended=ends.append) == 0
+    assert ends == [0, 1] and capsys.readouterr().out == 'cell output\n'
     assert [b['environment'] for b in seen['batch']] == [
         {'CERIDWEN_RANDOM_SEED': str(10 + i), 'CERIDWEN_RESULT_DIR': str(tmp_path / f'{i}-t{i}'),
          'CERIDWEN_TARGET_ID': f't{i}', 'CERIDWEN_OBJECT_ID': str(i), 'CERIDWEN_MANIFEST_INDEX': str(i)}

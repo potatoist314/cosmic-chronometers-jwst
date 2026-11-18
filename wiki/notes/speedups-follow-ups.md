@@ -45,6 +45,25 @@ Window-194 arms `dr3_cn_free_w` and `dr3_plain_w`, A100-40GB on Modal, one first
 
 </details>
 
+## Hill-climb of 17 Nov 2026
+
+| Arm | Per fit, 13 fits per container | Cost per fit |
+|---|---|---|
+| `dr3_cn_free_w` | about 97 → 75 s | about $0.063 → $0.048 |
+| `dr3_plain_w` | 86.3 → 56.5 s | $0.056 → $0.036 |
+
+The uncached fits of one Modal container or Colab runtime run in one kernel (Astro 377bf6ab). Later fits skip the imports, the catalogue read and most compiles: plain 84.0 s alone, 81.0 s first, 51.9 s later (Modal, 20 fits); cn_free 98 s first, 70.2 s later (Colab, 6 fits; M9 and M10 92 s alone, 67 s later).
+
+<details>
+<summary>Details</summary>
+
+A100-40GB, ceridwen 3b5177f, seed 20260832. 13 fits per container is the shape of the 16 Nov production run. [REPORT](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/REPORT.md), [ledger](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/LEDGER.md).
+
+- Alone against one kernel, same Colab runtime, 3 galaxies per arm: median shift \(0.000\sigma\), width change 0.0 %, \(\Delta\ln Z = 0.000\); the same on Ceridwen 2.0 (6 fits 396 s in one kernel, 522 s alone).
+- `experiment.py run`, 20 plain fits on Modal, 2 per container: container time 198.1 → 163.1 s, estimated $1.277 → $1.052; 19 of 20 fits identical to the base build, M13_215951 differs by host (\(0.31\sigma\)).
+
+</details>
+
 ## Proven numerical changes
 
 | Option | Measured effect | Evidence | Open question |
@@ -73,6 +92,8 @@ Window-194 arms `dr3_cn_free_w` and `dr3_plain_w`, A100-40GB on Modal, one first
 | Catalogue YAML skip | ~1.9 s per read, but masked columns rely on the parse | REPORT, Not free table | Correctness blocker |
 | Default K fits-per-gpu | 1.38× at K=4, +1.15× at K=8, bitwise; K=4 peaks at 21.3 GB RAM (unchecked), bid stop loses K cells | REPORT, Not free table | Not defaulted |
 | Library removal | cuDNN required by the XLA compiler; cuSOLVER/cuSPARSE needed by solver create; six more libraries load in every job | REPORT, Tried section | Impossible as tried |
+| One compile cache for all galaxies of a run | A100, one process per fit: M9 74.3 → 68.2 s, M10 77.7 → 69.2 s; \(\ln Z\) equal | [ledger, entry 2](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/LEDGER.md) | One kernel per container gives more |
+| Fewer CPU cores for the start-up | A100, M1: 12 cores 79.7 s, 4 cores 81.0 s, 2 cores 90.6 s | [ledger, entry 3](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/LEDGER.md) | Slower |
 
 ## Untested proposals
 
@@ -84,6 +105,8 @@ Window-194 arms `dr3_cn_free_w` and `dr3_plain_w`, A100-40GB on Modal, one first
 | `log_evidence_err` RNG | Uses the numpy global RNG | REPORT, Not free table | Seed-handling change, not a speedup |
 | Vmapped multi-fit sampler | Would change row counts and bits; MPS already gives the batch-500 gain | REPORT, Not free table | Not proposed |
 | float32 or power-of-two FFT | Changes rounding | REPORT, Not free table | None recorded beyond rounding |
+| One \(\ln L\) program for all galaxies of a kernel | About 10 s of \(\ln L\) compile per later fit; 5 array shapes differ per galaxy (SSP wavelengths 8618 / 8693, filters 28 / 30, fitted pixels 1630 / 1705) | [ledger, entry 5](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/LEDGER.md) | Needs padding through the ceridwen SSP, photometry and likelihood code |
+| Compile the next fit during sampling | Would hide the same 10 s | [REPORT](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/REPORT.md) | XLA autotuning then shares the GPU with the sampler; under MPS in October that changed sampler paths |
 
 ## Policy choices
 

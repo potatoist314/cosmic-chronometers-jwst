@@ -6,8 +6,8 @@ The `colab` command (google-colab-cli) allocates the runtime and bridges SSH to 
 (`colab ssh --proxy-mode`). The runtime gets the files of the image pinned in vast.py (its
 /opt/ceridwen environment, uv and Python 3.11, each layer checked by digest), the pinned source,
 the selected inputs and the checked grids. It runs the unchanged Vast bootstrap and one
-`experiment.py remote` per cell, as a Modal container does; each result comes back by rsync and
-is validated as soon as its fit ends.
+`experiment.py remote` for the pending cells, in one kernel, as a Modal container does; each
+result comes back by rsync and is validated as soon as its fit ends.
 """
 from __future__ import annotations
 
@@ -17,7 +17,6 @@ import re
 import shlex
 import shutil
 import subprocess
-import sys
 import tempfile
 import time
 from pathlib import Path
@@ -39,6 +38,11 @@ HAND_OVER = 3  # execute() stopped with cells pending: no compute units or no ru
 # showed the units used some minutes late.
 RESERVE_HOURS = 0.25
 POLL_SECONDS = 10
+ENDS = '--- fit ends ---'  # wait() separates the log's last bytes from its fit-end lines
+
+
+class UnitsLow(Exception):
+    """The compute units left are below one more fit."""
 
 # The pinned image's environment, without Docker: Colab runs no containers.
 IMAGE_FILES = ('opt/ceridwen/', 'opt/ceridwen-requirements.txt', 'usr/local/bin/uv',
@@ -208,8 +212,9 @@ class ColabRun:
         self.ssh(session, f'mkdir -p {REMOTE}/.colab; test -f {prefix}.exit || '
                           f'setsid -f bash -c {shlex.quote(inner)} > /dev/null 2>&1 < /dev/null')
 
-    def wait(self, attempt, name):
-        """Poll the stage until it exits; keep its log beside the manifest."""
+    def wait(self, attempt, name, progress=None):
+        """Poll the stage until it exits; keep its log beside the manifest. At each poll, `progress` gets
+        the fit-end lines that the stage's experiment.py remote has logged so far."""
         session, prefix, failures, shown = attempt['session'], f'{REMOTE}/.colab/{name}', 0, time.monotonic()
         while True:
             time.sleep(POLL_SECONDS)
@@ -218,13 +223,17 @@ class ColabRun:
                 status, _, tail = self.ssh(session, (
                     f'if [ -f {prefix}.exit ]; then cat {prefix}.exit; elif [ ! -f {prefix}.log ]; then echo lost; '
                     f'elif flock -n {prefix}.lock true; then cat {prefix}.exit 2>/dev/null || echo lost; '
-                    f'else echo running; fi; tail -c 200 {prefix}.log 2>/dev/null')).partition('\n')
+                    f'else echo running; fi; tail -c 200 {prefix}.log 2>/dev/null; echo; echo {ENDS}; '
+                    f"grep -a -E '^[0-9:]{{8}} fit (done|failed): ' {prefix}.log 2>/dev/null || true")).partition('\n')
+                tail, _, ended = tail.partition(f'\n{ENDS}\n')
                 failures = 0
             except (vast.SweepError, subprocess.TimeoutExpired) as error:
                 failures += 1
                 if failures >= 6:
                     raise vast.SweepError(f'{name}: Colab runtime unreachable: {error}') from error
                 continue
+            if progress:
+                progress(ended.splitlines())
             if status.strip() == 'lost':
                 raise vast.SweepError(f'{name}: the Colab runtime lost the stage (runtime replaced or process killed)')
             if status.strip() != 'running':
@@ -298,42 +307,71 @@ class ColabRun:
                                           'bash scripts/bootstrap_vast_ai.sh')
         self.wait(attempt, 'bootstrap')
 
-    def fit(self, attempt, index, cell):
-        """One cell in its own kernel with the environment of a Modal fit; results return at once."""
+    def fit(self, attempt, pending):
+        """The pending cells one after another in one kernel, with the environment of a Modal batch; each
+        result returns and is validated as its fit ends. Returns the names of the failed cells; raises
+        UnitsLow when the units left fall below one more fit."""
         if __package__:
             from . import experiment
         else:
             import experiment
-        session = attempt['session']
-        key = experiment.ModalRun.cache_key(self, cell)
-        self.ssh(session, f'cat > {REMOTE}/.colab/config-{index}.json', data=json.dumps([cell]).encode())
-        # One compile cache per cell setup at Modal's path; a later fit of the setup reads it.
-        cache = f'/tmp/xla/{key}'
-        command = (f'cd {REMOTE} && unset PYTHONPATH && mkdir -p {cache} && export CERIDWEN_GRID_DIR={REMOTE}/grid '
-                   f"CERIDWEN_GRID_PATH={REMOTE}/grid/{Path(cell['settings']['ssp_grid']).name} "
+        session, cells = attempt['session'], [cell for _, cell in pending]
+        self.ssh(session, f'cat > {REMOTE}/.colab/config-batch.json', data=json.dumps(cells).encode())
+        # One compile cache for the batch, as on Modal.
+        cache = '/tmp/xla/batch'
+        command = (f'cd {REMOTE} && unset PYTHONPATH && rm -rf {cache} && mkdir -p {cache} && '
+                   f'export CERIDWEN_GRID_DIR={REMOTE}/grid '
+                   f"CERIDWEN_GRID_PATH={REMOTE}/grid/{Path(cells[0]['settings']['ssp_grid']).name} "
                    f'JAX_COMPILATION_CACHE_DIR={cache} JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS=0 '
                    f'SPS_HOME={REMOTE}/external/fsps MPLBACKEND=Agg && .venv-ceridwen-gpu/bin/python '
-                   f'scripts/experiment.py remote --config .colab/config-{index}.json --output .colab/results-{index}')
-        record = attempt['cells'][cell['name']] = {'started': time.time()}
-        self.save()
-        try:
-            self.launch(session, f'fit-{index}', command)
-            self.wait(attempt, f'fit-{index}')
-        finally:
-            # Recover partial outputs too; keep a failed fit's own error.
-            record['finished'] = time.time()
-            error = sys.exception()
+                   f'scripts/experiment.py remote --config .colab/config-batch.json --output .colab/results')
+        named, failed, clock = {cell['name']: cell for cell in cells}, [], [time.time()]
+
+        def end(cell, error):
+            record = attempt['cells'][cell['name']] = {'started': clock[0], 'finished': time.time()}
+            clock[0] = record['finished']
+            directory = f"{cell['arm']}/{cell['target_metadata']['object_id']}-{cell['target']}"
             try:
-                (self.root / 'fits').mkdir(exist_ok=True)
-                self.rsync(session, f'root@{session}:{REMOTE}/.colab/results-{index}/', f"{self.root / 'fits'}/")
+                (self.root / 'fits' / directory).mkdir(parents=True, exist_ok=True)
+                # Partial outputs too; a failed fit keeps its own error.
+                self.rsync(session, f'root@{session}:{REMOTE}/.colab/results/{directory}/',
+                           f"{self.root / 'fits' / directory}/")
             except (subprocess.SubprocessError, OSError) as caught:
                 if error is None:
                     raise vast.SweepError(f"result retrieval failed: {cell['name']}: {caught}") from caught
                 engine.log(f"partial result retrieval failed: {cell['name']}: {caught}")
-        experiment.validate_local_result(self.root / 'fits' / cell['arm']
-                                         / f"{cell['target_metadata']['object_id']}-{cell['target']}")
-        self.data.setdefault('completed_cells', []).append(cell['name'])
-        self.save()
+            if error is None:
+                try:
+                    experiment.validate_local_result(self.root / 'fits' / directory)
+                    self.data.setdefault('completed_cells', []).append(cell['name'])
+                except subprocess.SubprocessError as caught:
+                    error = caught
+            if error is not None:
+                record['error'] = f'{type(error).__name__}: {error}'
+                failed.append(cell['name'])
+                engine.log(record['error'])
+            self.save()
+
+        def progress(lines):
+            for line in lines:
+                match = experiment.modal_gpu.FIT_ENDED.match(line)
+                if match and match[2] not in attempt['cells']:
+                    end(named[match[2]], None if match[1] == 'done' else engine.StageFailed(line.strip()))
+                    left = [cell for cell in cells if cell['name'] not in attempt['cells']]
+                    units, rate = usage()
+                    attempt['units_per_hour'] = rate
+                    if left and units < rate * RESERVE_HOURS:
+                        raise UnitsLow(f'Colab compute units: {units:.2f}, below one fit at {rate:.2f}/h; '
+                                       f'{len(left)} cell(s) pending')
+
+        self.launch(session, 'fit-batch', command)
+        try:
+            self.wait(attempt, 'fit-batch', progress)
+        except engine.StageFailed as error:  # experiment.py remote exits non-zero when any fit failed
+            for cell in cells:
+                if cell['name'] not in attempt['cells']:  # the batch stopped before this fit ended
+                    end(cell, error)
+        return failed
 
     def execute(self):
         cells = self.data['source']['experiment']
@@ -374,23 +412,20 @@ class ColabRun:
                 continue
             try:
                 self.prepare(attempt)
-                for index, cell in pending:
-                    units, rate = usage()
-                    attempt['units_per_hour'] = rate
-                    if units < rate * RESERVE_HOURS:
-                        engine.log(f'Colab compute units: {units:.2f}, below one fit at {rate:.2f}/h')
-                        attempt['status'] = 'units exhausted'
-                        return HAND_OVER
-                    engine.log(f"fitting {cell['name']}, seed {cell['seed']} ({units:.2f} units left)")
-                    try:
-                        self.fit(attempt, index, cell)
-                    except (engine.StageFailed, subprocess.SubprocessError, OSError, ValueError) as error:
-                        # A fit's own failure: the next fit still runs; this cell is not refitted here.
-                        attempt['cells'][cell['name']]['error'] = f'{type(error).__name__}: {error}'
-                        failed.append(cell['name'])
-                        engine.log(attempt['cells'][cell['name']]['error'])
-                        self.save()
+                units, rate = usage()
+                attempt['units_per_hour'] = rate
+                if units < rate * RESERVE_HOURS:
+                    engine.log(f'Colab compute units: {units:.2f}, below one fit at {rate:.2f}/h')
+                    attempt['status'] = 'units exhausted'
+                    return HAND_OVER
+                engine.log(f'fitting {len(pending)} cell(s) in one kernel ({units:.2f} units left)')
+                # A fit's own failure: the next fit still runs; its cell is not refitted here.
+                failed += self.fit(attempt, pending)
                 attempt['status'] = 'failed' if failed else 'complete'
+            except UnitsLow as low:
+                engine.log(str(low))
+                attempt['status'] = 'units exhausted'
+                return HAND_OVER
             except engine.StageFailed as error:
                 # Setup failed on code or inputs: another runtime cannot fix it.
                 attempt.update(status='failed', error=str(error))

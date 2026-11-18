@@ -339,14 +339,20 @@ PER_FIT_ENVIRONMENT = (
 )
 
 
-def _execute_targets(fits: list[dict], mem_fraction: float | None = None) -> int:
-    """Fit targets one after another in one notebook kernel; stop at the first failure.
+# _worker_batch prints this line, with the fit's position in the batch, after each fit.
+FIT_ENDED = "batch fit ended: "
+
+
+def _execute_targets(fits: list[dict], mem_fraction: float | None = None, ended=None) -> int:
+    """Fit targets one after another in one notebook kernel; non-zero if any fit failed.
 
     fits: {"target", "result_dir", "settings_override", "priors_override"} each. The
     kernel keeps its imports, the read-once COSMOS catalogues and the jit cache
     between fits; each fit runs a fresh copy of the notebook with its own target
-    variables. Each fit's cell output goes to its execution.log; the kernel's own
-    stderr goes to this process's stdout.
+    variables. A failed fit leaves the kernel to the fits before it: the fits after
+    it get a new kernel. Each fit's cell output goes to its execution.log; the
+    kernel's own stderr goes to this process's stdout. `ended(position)` is called
+    as each fit ends, with its position in `fits`.
     """
     import tempfile
 
@@ -366,12 +372,20 @@ def _execute_targets(fits: list[dict], mem_fraction: float | None = None) -> int
     with tempfile.NamedTemporaryFile("w", suffix=".json") as handle:
         json.dump(batch, handle)
         handle.flush()
-        return subprocess.run(
+        process = subprocess.Popen(
             [sys.executable, str(Path(__file__).resolve()), "--worker-batch", handle.name],
             cwd=PROJECT_ROOT,
             env=_worker_environment(first["target"], Path(first["result_dir"]), mem_fraction),
+            stdout=subprocess.PIPE,
             text=True,
-        ).returncode
+        )
+        for line in process.stdout:
+            if line.startswith(FIT_ENDED):
+                if ended:
+                    ended(int(line[len(FIT_ENDED):]))
+            else:
+                print(line, end="", flush=True)
+        return process.wait()
 
 
 # The fit notebook's sampler call; a sampler-only run keeps everything up to and
@@ -447,38 +461,50 @@ def _worker(output_notebook: Path) -> int:
 
 
 def _worker_batch(batch_path: Path) -> int:
-    """Execute each fit of an _execute_targets batch in one kernel, in order."""
+    """Execute each fit of an _execute_targets batch in one kernel, in order; after a failed
+    fit, the rest in a new kernel. Prints FIT_ENDED and the fit's position after each fit."""
     import contextlib
+    import traceback
 
     import nbformat
 
-    fits = json.loads(batch_path.read_text())
-    client = _streaming_client_class()(
-        nbformat.v4.new_notebook(),
-        timeout=None,
-        kernel_name="ceridwen",
-        resources={"metadata": {"path": str(PROJECT_ROOT)}},
-    )
-    with client.setup_kernel():
-        # As NotebookClient.execute records it in each executed notebook.
-        language_info = client.wait_for_reply(client.kc.kernel_info())["content"]["language_info"]
-        for fit in fits:
-            document = _fit_notebook(fit["settings_override"], fit["priors_override"])
-            document.metadata["language_info"] = language_info
-            client.nb = document
-            client.reset_execution_trackers()
-            with open(fit["log"], "a", encoding="utf-8") as log, contextlib.redirect_stdout(log):
-                print(f"\n[{_utc_now()}] starting fixed-seed attempt", flush=True)
-                reply = client.kc.execute(
-                    f"import os; os.environ.update({fit['environment']!r})", silent=True
-                )
-                client.wait_for_reply(reply)
-                try:
-                    for index, cell in enumerate(document.cells):
-                        client.execute_cell(cell, index)
-                finally:
-                    nbformat.write(document, fit["notebook"])
-    return 0
+    pending = list(enumerate(json.loads(batch_path.read_text())))
+    failed = False
+    while pending:
+        client = _streaming_client_class()(
+            nbformat.v4.new_notebook(),
+            timeout=None,
+            kernel_name="ceridwen",
+            resources={"metadata": {"path": str(PROJECT_ROOT)}},
+        )
+        with client.setup_kernel():
+            # As NotebookClient.execute records it in each executed notebook.
+            language_info = client.wait_for_reply(client.kc.kernel_info())["content"]["language_info"]
+            while pending:
+                position, fit = pending.pop(0)
+                document = _fit_notebook(fit["settings_override"], fit["priors_override"])
+                document.metadata["language_info"] = language_info
+                client.nb = document
+                client.reset_execution_trackers()
+                with open(fit["log"], "a", encoding="utf-8") as log, contextlib.redirect_stdout(log):
+                    print(f"\n[{_utc_now()}] starting fixed-seed attempt", flush=True)
+                    try:
+                        reply = client.kc.execute(
+                            f"import os; os.environ.update({fit['environment']!r})", silent=True
+                        )
+                        client.wait_for_reply(reply)
+                        for index, cell in enumerate(document.cells):
+                            client.execute_cell(cell, index)
+                        error = False
+                    except Exception:  # a cell error or a dead kernel: this fit fails, the rest go on
+                        traceback.print_exc(file=log)
+                        error = failed = True
+                    finally:
+                        nbformat.write(document, fit["notebook"])
+                print(f"{FIT_ENDED}{position}", flush=True)
+                if error:
+                    break
+    return 1 if failed else 0
 
 
 def _monitor_endpoint(value: str) -> dict:
