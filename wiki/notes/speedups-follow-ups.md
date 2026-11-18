@@ -45,20 +45,19 @@ Window-194 arms `dr3_cn_free_w` and `dr3_plain_w`, A100-40GB on Modal, one first
 
 </details>
 
-## Hill-climb of 17 Nov 2026
+## One kernel per container (17 Nov 2026)
 
 | Arm | Per fit, 13 fits per container | Cost per fit |
 |---|---|---|
 | `dr3_cn_free_w` | about 97 → 75 s | about $0.063 → $0.048 |
 | `dr3_plain_w` | 86.3 → 56.5 s | $0.056 → $0.036 |
 
-The uncached fits of one Modal container or Colab runtime run in one kernel (Astro 377bf6ab). Later fits skip the imports, the catalogue read and most compiles: plain 84.0 s alone, 81.0 s first, 51.9 s later (Modal, 20 fits); cn_free 98 s first, 70.2 s later (Colab, 6 fits; M9 and M10 92 s alone, 67 s later).
-
 <details>
 <summary>Details</summary>
 
 A100-40GB, ceridwen 3b5177f, seed 20260832. 13 fits per container is the shape of the 16 Nov production run. [REPORT](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/REPORT.md), [ledger](https://github.com/potatoist314/cosmic-chronometers-jwst/blob/speedups-hillclimb-2026-11-17/results/speedups-hillclimb-2026-11-17/LEDGER.md).
 
+- Later fits skip the imports, the catalogue read and most compiles: plain 84.0 s alone, 81.0 s first, 51.9 s later (Modal, 20 fits); cn_free 98 s first, 70.2 s later (Colab, 6 fits; M9 and M10 92 s alone, 67 s later).
 - Alone against one kernel, same Colab runtime, 3 galaxies per arm: median shift \(0.000\sigma\), width change 0.0 %, \(\Delta\ln Z = 0.000\); the same on Ceridwen 2.0 (6 fits 396 s in one kernel, 522 s alone).
 - `experiment.py run`, 20 plain fits on Modal, 2 per container: container time 198.1 → 163.1 s, estimated $1.277 → $1.052; 19 of 20 fits identical to the base build, M13_215951 differs by host (\(0.31\sigma\)).
 
