@@ -1595,3 +1595,8 @@
 
 - Pages: none
 - Change: Ceridwen pin moved from `13791e0` to `3b5177f` (`cn-response-20261110` fast-forwarded to the kept build of the 16–17 Nov speedups run); merged into `absorption-mask` with the Astro speedup commits, so `experiment.py` fits on Colab, Modal and Vast run it; card t_80c681f5.
+
+## [2026-11-17] codebase | Ceridwen 2.0 merge: one SFR per SFH bin
+
+- Pages: `notes/model.md`, `notes/ceridwen-ssp-csp.md`
+- Change: upstream Ceridwen 2.0.0 merged into the fork; the step SFH takes one SFR per bin from 13 adjacent-bin log ratios (before: 14 node ratios, each bin the mean of two node SFRs) and the metallicity per bin is `logzsol_bins`; same Student-t(0, 0.3, df 2) prior, metallicity evolution and SFH-basis fast path; at equal per-bin SFRs the old and merged builds give \(\ln L\) within \(7\times10^{-5}\) (2 galaxies, both window arms, 8 posterior points each); refit of the 40 window mocks: fitted minus true mass-weighted age 0.67 ± 0.29 Gyr (0.70 ± 0.28 Gyr before), mass in bins older than every true star 0.30 (0.31 before); card t_1a3abd7e.
