@@ -4,8 +4,7 @@
     ceridwen/.venv/bin/python results/mock-slope-figures-2026-11-18/age_redshift.py
 
 Reads results/mock-chronometer-window-2026-11-13/per-mock.csv. Lines are least squares through all 194 mocks;
-H(z_eff) from the slope as in that experiment. Rings are medians of six equal-count redshift bins with the
-16-84% bootstrap interval of each median.
+H(z_eff) from the slope as in that experiment.
 """
 from __future__ import annotations
 
@@ -34,7 +33,6 @@ from scripts.plot_afe_age_chronometer import AGE_LABEL, ARMS, INK, INK3, PAPER, 
 from src.chronometer import effective_redshift, hubble_from_age_slope  # noqa: E402
 
 TRUE, FIT = INK3, ARMS["plain"][1]
-BINS, BIN_SEED = 6, 20261119
 DOT = {"true_age_gyr": (TRUE, 0.45), "age_q50": (FIT, 0.30)}  # colour, alpha of the per-mock dots
 LABELS = {"age_q50": (0.83, 4.86), "true_age_gyr": (0.606, 3.62)}  # lower-left corner of each line label
 LARGE = {"font.size": 12, "axes.linewidth": 0.8, "axes.labelsize": 12.5, "xtick.labelsize": 11.5,
@@ -42,21 +40,6 @@ LARGE = {"font.size": 12, "axes.linewidth": 0.8, "axes.labelsize": 12.5, "xtick.
          "ytick.major.width": 0.8,
          # the ceridwen import sets inward ticks on all four sides
          "xtick.direction": "out", "ytick.direction": "out", "xtick.top": False, "ytick.right": False}
-
-
-def binned(d):
-    """Median of each equal-count redshift bin and the 16-84% bootstrap interval of that median."""
-    d = d.sort_values("z").assign(bin=lambda g: pd.qcut(g.z.rank(method="first"), BINS, labels=False))
-    rng = np.random.default_rng(BIN_SEED)
-    rows = []
-    for _, g in d.groupby("bin"):
-        row = dict(z=g.z.median())
-        for col in DOT:
-            y = g[col].to_numpy()
-            boot = np.median(y[rng.integers(0, len(y), size=(10000, len(y)))], axis=1)
-            row |= {col: np.median(y), f"{col}_q16": np.quantile(boot, 0.16), f"{col}_q84": np.quantile(boot, 0.84)}
-        rows.append(row)
-    return pd.DataFrame(rows)
 
 
 def main():
@@ -68,7 +51,6 @@ def main():
     dH = hubble_from_age_slope(z_eff, fits["age_q50"]["q84"]) - H["age_q50"]
     words = {"true_age_gyr": "True: $H$ = %.0f km/s/Mpc" % H["true_age_gyr"],
              "age_q50": "Fitted: $H$ = %.0f ± %.0f km/s/Mpc" % (H["age_q50"], dH)}
-    bins = binned(d)
 
     with plt.rc_context(STYLE | LARGE):
         fig, ax = plt.subplots(figsize=(WIDTH, 4.7), layout="constrained")
@@ -80,8 +62,6 @@ def main():
             # true ages lie on the true line, so only the fitted line keeps the paper ring that parts the dots
             ax.plot(x, d[col].mean() + fits[col]["slope"] * (x - z.mean()), color=colour, lw=2.2, zorder=2,
                     path_effects=ring if col == "age_q50" else [])
-            ax.vlines(bins.z, bins[f"{col}_q16"], bins[f"{col}_q84"], color=colour, lw=1.4, zorder=4)
-            ax.scatter(bins.z, bins[col], s=58, facecolor=PAPER, edgecolor=colour, lw=1.8, zorder=3)
             ax.text(*LABELS[col], words[col], color=INK, fontsize=12.5, ha="left", va="bottom", zorder=5)
         ax.set(xlim=(0.585, 1.015), xticks=[0.6, 0.7, 0.8, 0.9, 1.0], ylim=(2.55, 6.25), yticks=[3, 4, 5, 6],
                xlabel=REDSHIFT, ylabel=AGE_LABEL)
@@ -92,7 +72,6 @@ def main():
     print(f"{len(d)} mocks, z_eff {z_eff:.4f}")
     for col, f in fits.items():
         print(f"{col}: slope {f['slope']:.4f} ({f['q16']:.4f} to {f['q84']:.4f}), H {H[col]:.2f}")
-    print(bins.round(3).to_string())
 
 
 if __name__ == "__main__":
