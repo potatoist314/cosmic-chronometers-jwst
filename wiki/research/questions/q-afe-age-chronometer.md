@@ -24,6 +24,11 @@ A mock is a synthetic spectrum and photometry with a known age, made at a real g
 </figure>
 
 <figure>
+<img src="wiki/analyses/afe-age-chronometer/mock-age-redshift.png" alt="True and fitted mass-weighted age against redshift for 194 mocks, with least-squares lines and H">
+<figcaption>Mocks, plain arm, \(N=194\); \(H\) at \(z_\mathrm{eff}=0.775\).</figcaption>
+</figure>
+
+<figure>
 <img src="wiki/analyses/afe-age-chronometer/mock-chronometer.png" alt="True and recovered mass-weighted age against redshift for the mocks on the common window">
 <figcaption>Mocks: plain arm; four SFH shapes, one formation epoch; \([\alpha/\mathrm{Fe}]=+0.2\), \([\mathrm{Fe}/\mathrm{H}]=-0.2\); fluxes matched to each galaxy.</figcaption>
 </figure>
@@ -83,6 +88,6 @@ Window extensions change from the common window. Age moves only when Fe5015 and 
 ## References
 
 - Detail: [DR3 window fits](results/legac-dr3-2026-11-11/REPORT.md), [carbon mask on the window](results/carbon-mask-window-2026-11-13/age-redshift-slopes.csv), [mock chronometer](results/mock-chronometer-window-2026-11-13/mocks.py), [C/N-free mocks](results/mock-chronometer-cn-free-2026-11-16/slopes.csv) ([paired with plain](results/mock-chronometer-cn-free-2026-11-16/paired-slopes.csv)), [DR2 chronometer fits](results/chronometer-135-2026-11-10/REPORT.md), [carbon, nitrogen and mocks](results/cn-response-2026-11-10/REPORT.md), [oldest galaxies](results/oldest-envelope-2026-11-11/REPORT.md).
-- Figures and table: `scripts/plot_afe_age_chronometer.py`; \(z_\mathrm{eff}\): `effective_redshift` in `src/chronometer.py`.
+- Figures and table: `scripts/plot_afe_age_chronometer.py`; mock age against redshift: `results/mock-slope-figures-2026-11-18/age_redshift.py`; \(z_\mathrm{eff}\): `effective_redshift` in `src/chronometer.py`.
 - Progenitor bias: [q-progenitor-bias](wiki/research/questions/q-progenitor-bias.md).
 - Velocity-dispersion term: [q-sigma-term](wiki/research/questions/q-sigma-term.md).

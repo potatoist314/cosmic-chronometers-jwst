@@ -23,7 +23,7 @@ from matplotlib import patheffects
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 MOCK = ROOT / "results/mock-chronometer-window-2026-11-13"
-OUT = Path(__file__).resolve().parent / "mock-age-redshift.png"
+OUT = ROOT / "wiki/analyses/afe-age-chronometer/mock-age-redshift.png"
 
 spec = importlib.util.spec_from_file_location("mocks", MOCK / "mocks.py")
 mocks = importlib.util.module_from_spec(spec)

@@ -1605,3 +1605,8 @@
 
 - Pages: `notes/speedups-follow-ups.md`
 - Change: new section for the kept change (the uncached fits of a Modal container or Colab runtime in one kernel, Astro 377bf6ab; 13 fits per container: `dr3_plain_w` 86.3 → 56.5 s, `dr3_cn_free_w` about 97 → 75 s); shared compile cache and CPU-core rows under Measured, not adopted; one \(\ln L\) program for all galaxies and compiling during sampling under Untested proposals; alone-against-kernel check repeated on Ceridwen 2.0, identical; card t_cf15e524.
+
+## [2026-11-19] analysis | Mock age against redshift figure
+
+- Pages: `research/questions/q-afe-age-chronometer.md`
+- Change: new figure `analyses/afe-age-chronometer/mock-age-redshift.png`: true and fitted mass-weighted age of the 194 window mocks, least-squares lines, true \(H\) 105 and fitted 108 ± 5 km/s/Mpc at \(z_\mathrm{eff}=0.775\); script `results/mock-slope-figures-2026-11-18/age_redshift.py`; card t_254874f5.
