@@ -330,6 +330,14 @@ def test_selected_inputs_take_only_the_processed_file_for_processed_sources(sour
     assert not any('/sp/' in p or '/hst_f814w/' in p or 'cosmos2025' in p for p in files)
 
 
+def test_selected_inputs_add_the_omegacam_curves_for_gama():
+    cells = [{'target': 'T1', 'target_metadata': {'filename': 'T1.fits'},
+              'settings': {'photometry': 'cosmos2025', 'data_source': 'gama_dr4'}}]
+    files = exp.selected_inputs(cells)
+    assert {f'data/raw/gama_dr4/filters/omegacam_{band}.par' for band in 'ugri'} <= set(files)
+    assert all((exp.ROOT / name).is_file() for name in files if '/filters/' in name)
+
+
 def test_processed_target_reads_object_id_of_each_source():
     for source, key in exp.vast.PROCESSED_SOURCES.items():
         path = sorted((exp.ROOT / 'data/processed' / source).glob('*.fits'))[0]

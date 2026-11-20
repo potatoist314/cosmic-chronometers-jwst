@@ -1,0 +1,57 @@
+
+[2026-11-20T20:18:55.121730+00:00] starting fixed-seed attempt
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+/workspace/cosmic-chronometers-jwst/.venv-ceridwen-gpu/lib/python3.11/site-packages/ceridwen/model/model.py:739: UserWarning: Spectrum 'spectrum': the SSP library resolution meets or exceeds the target resolution on 4% of pixels over [2960, 3781] AA (AA); those pixels stay at LIBRARY resolution (no deconvolution is attempted).  The model cannot be as sharp as the data there -- use a higher-resolution SSP grid.
+  obs.setup_for_model(
+MODEL PARAMETERS (generated from the SedModel object)
+Stellar population grid
+  library: C3K v2.3 high-res (c3k_hr, vt=10 km/s); isochrones: MIST v2.5 (aMIST, alpha-variable); IMF: imf_type=2 (Kroupa (2001)); schema 2.1
+  grid axes: [alpha/Fe] [-0.2, 0, 0.2, 0.4, 0.6]; [Fe/H] 13 nodes [-2.500, 0.500] (grid Z + 1.7328283); log10(age/Gyr) 107 nodes; wavelength 10992 pts [100, 99595855] A
+Star-formation history
+  form: piecewise-constant SFR ('step' interpolation) on 14 lookback bins; metallicity history: time-varying zh
+  bin edges (lookback, Gyr): [0, 0.03001, 0.1, 0.1506, 0.2268, 0.3416, 0.5145, 0.7748, 1.167, 1.757, 2.647, 3.986, 6.003, 9.041, 10.64]  (last edge = universe age at z)
+  free parameters: logsfr_ratios[14] = log10(SFR_i / SFR_i+1), transform 'sfh_from_ratios' -> unit-mass SFH (integral 1 Msun); logmass scales the total formed mass
+Free parameters and priors
+  afe: shape (1,); prior Uniform(-0.2, 0.6); init [0.2]
+  cfe: shape (1,); prior Uniform(-0.3, 0.5); init [0]
+  diffuse_Ebump: shape (1,); prior Uniform(0, 6); init [0]
+  diffuse_delta: shape (1,); prior Uniform(-1, 0.4); init [-0.7]
+  diffuse_tau_noll: shape (1,); prior Uniform(0, 1); init [0.1]
+  dust_ratio: shape (1,); prior ClippedNormal(mean=1, sigma=0.3, low=0, high=2); init [1]
+  log_f_calib: shape (1,); prior Uniform(-4.605, -2.303); init [-3.507]
+  logmass: shape (1,); prior Uniform(8, 13); init [11.16]
+  logsfr_ratios: shape (13,); prior StudentT(mean=0, scale=0.3, df=2); init [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  logzsol: shape (1,); prior Uniform(-2.5, 0.4999); init [-0.1172]
+  nfe: shape (1,); prior Uniform(-0.3, 1); init [0]
+  sigma_smooth: shape (1,); prior ClippedNormal(mean=228.4, sigma=17.8, low=175, high=281.8); init [228.4]
+  zh_beta_unit: shape (1,); prior Uniform(0, 1); init [0.5]
+Fixed and derived quantities
+  redshift: fixed at z = 0.261220 (SedModel.zred); SFH age grid tracks z: False
+  diffuse_c_r: fixed by transform '<lambda>' = [0]
+  tau_pow: fixed by transform '<lambda>' = [0.1]
+  alpha_pow: fixed by transform '<lambda>' = [-1]
+  logzsol_bins: fixed by transform 'zh_from_mass' = [0.1049, 0.1046, 0.1042, 0.1037, 0.1027, 0.1009, 0.09764, 0.09163, 0.08047, 0.05944, 0.01839, -0.06787, -0.2892, -0.8127]
+Dust, nebular emission, IGM
+  diffuse attenuation: law 'noll', parameters ['diffuse_tau_noll', 'diffuse_delta', 'diffuse_c_r', 'diffuse_Ebump']; birth-cloud (age-dependent) dust: True; dust emission: False
+  nebular emission: none (spectrum model 'get_spectrum_dattn_nodem_noneb')
+  IGM absorption: none
+  cosmology: Cosmology(H0=67.66, Om0=0.30966, Tcmb0=2.7255, Neff=3.046, m_nu_ev_sum=0.06, name='Planck18')
+Observations and calibration
+  photometry: Photometry, 13 bands, 13 fitted; filters ['galex_FUV', 'galex_NUV', 'omegacam_u', 'omegacam_g', 'omegacam_r', 'omegacam_i', 'vista_vircam_Z', 'vista_vircam_Y', 'vista_vircam_J', 'vista_vircam_H', 'vista_vircam_Ks', 'wise_w1', 'wise_w2']
+  spectrum: Spectrum, 668 of 4952 native pixels fitted, 5139-5884 A observed; instrument sigma_aa = 1.91-2.04 per pixel; projector 'chain'; stellar sigma_gal sampled as sigma_smooth; photometry broadened: False
+  likelihood[photometry]: DiagonalGaussianLikelihood with DiagonalNoiseModel: var = sigma_obs^2 (no extra terms)
+  likelihood[spectrum]: DiagonalGaussianLikelihood with DiagonalNoiseModel: var = sigma_obs^2 + model-scaled fractional floor f_calib*|mu| (log_f_calib free in [1%, 10%])
+  likelihood[spectrum] calibration polynomial: PolynomialCalibration(order=10, fit_constant=True, prior_sigma=(0.3, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1), marginalize=True, n_pix=4952)
+Sampler
+  blackjax.nss: num_live 500, num_inner_steps 65, num_delete 100, logZ_tol -5.0; random seed 20260832
+E1120 20:19:27.706320     397 cuda_timer.cc:88] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.
+E1120 20:19:27.706320     397 cuda_timer.cc:88] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.
+blackjax.nss  |  n_samples=14900  ln Z = 42160.281 ± 0.193  |  n_like = 4605159  |  wall = 40.1 s
+ln Z: 42160.281 +/- 0.193
+posterior-weight ESS: 3862.9
+likelihood calls: 4605159
+status: diagnostics passed
+photometry chi2/datum: 2.97
+spectrum chi2/bin: 0.85
+joint chi2/datum: 0.89
+sampled calibration floor: 1.21%
