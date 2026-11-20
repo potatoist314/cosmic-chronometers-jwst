@@ -1610,3 +1610,8 @@
 
 - Pages: `research/questions/q-afe-age-chronometer.md`
 - Change: new figure `analyses/afe-age-chronometer/mock-age-redshift.png`: true and fitted mass-weighted age of the 194 window mocks, least-squares lines, true \(H\) 105 and fitted 108 ± 5 km/s/Mpc at \(z_\mathrm{eff}=0.775\); script `results/mock-slope-figures-2026-11-18/age_redshift.py`; card t_254874f5.
+
+## [2026-11-20] checkin | Check-in with Sandro
+
+- Pages: `research/checkins/2026-11-20.md`
+- Change: new check-in page, seven items since 2026-09-21. New figures `analyses/dr3-trends/mass-assembly.png` (fraction of stellar mass formed against cosmic time, C/N-free fits, three COSMOS2020 mass bins; form of Kaushal et al. 2024, ApJ 961:118, Fig. 7; script `results/checkin-figures-2026-11-20/mass_assembly.py`) and `analyses/dr3-trends/afe-mass-sigma.png` (\([\alpha/\mathrm{Fe}]\) against \(M_\star\) and \(\sigma_\star\), C/N-free fits; form of Bevacqua et al. 2023, MNRAS 525:4219, Fig. 6; script `results/checkin-figures-2026-11-20/afe_relations.py`); card t_6ff7a353.

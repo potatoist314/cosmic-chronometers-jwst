@@ -42,6 +42,7 @@ Meeting: `notes/meeting-2026-09-17-student-group.md` — student group meeting: 
 Meeting: `notes/meeting-2026-09-17-jonah-powley.md` — Jonah Powley on Prospector fits of quiescent galaxies: SFH prior, abundances, dust and infrared, his setup, with the original transcription and handwriting.
 Check-ins: `checkins.py` — `research/checkins/<date>.md` → `/checkins/<date>/`; listed on Meetings and in search.
 Meeting: `research/checkins/2026-09-21.md` — Liu Hao’s Done and Questions items.
+Meeting: `research/checkins/2026-11-20.md` — check-in with Sandro: \(H(z_\mathrm{eff})\), fake galaxies, systematics, mass assembly by \(M_\star\), \([\alpha/\mathrm{Fe}]\) against \(M_\star\) and \(\sigma_\star\), progenitor bias, \(\log\sigma_\star\) term.
 Fit settings: `wiki/fit_settings.py` — build-time SETTINGS and PRIORS rendering; standard library only; used by check-in settings items.
 Research source records: `research/questions/` and `research/experiments/`.
 Priority detail pages: `/wiki/p/<id>/`, with independent resolution buttons and dated history.
