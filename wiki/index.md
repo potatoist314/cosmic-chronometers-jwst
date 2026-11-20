@@ -40,6 +40,7 @@ original transcription and PDF, linked from Home and Meetings. Transcribe and
 lightly rephrase only; never add commentary. Standing rule: `wiki/AGENTS.md`.
 Meeting: `notes/meeting-2026-09-17-student-group.md` — student group meeting: questions after the updates and points raised, with the original transcription and handwriting.
 Meeting: `notes/meeting-2026-09-17-jonah-powley.md` — Jonah Powley on Prospector fits of quiescent galaxies: SFH prior, abundances, dust and infrared, his setup, with the original transcription and handwriting.
+Meeting: `notes/meeting-2026-11-20-sandro.md` — meeting with Sandro: mergers and \(f_{\text{ex-situ}}\), velocity-dispersion cut, SDSS/GAMA/VANDELS/DJA surveys, SFH bins and SFMS prior, key paper figures, with original handwriting and clarifications.
 Check-ins: `checkins.py` — `research/checkins/<date>.md` → `/checkins/<date>/`; listed on Meetings and in search.
 Meeting: `research/checkins/2026-09-21.md` — Liu Hao’s Done and Questions items.
 Meeting: `research/checkins/2026-11-20.md` — check-in with Sandro: \(H(z_\mathrm{eff})\), fake galaxies, systematics, mass assembly by \(M_\star\), \([\alpha/\mathrm{Fe}]\) against \(M_\star\) and \(\sigma_\star\), progenitor bias, \(\log\sigma_\star\) term.

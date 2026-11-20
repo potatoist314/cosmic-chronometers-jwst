@@ -1615,3 +1615,8 @@
 
 - Pages: `research/checkins/2026-11-20.md`
 - Change: new check-in page, seven items since 2026-09-21. New figures `analyses/dr3-trends/mass-assembly.png` (fraction of stellar mass formed against cosmic time, C/N-free fits, three COSMOS2020 mass bins; form of Kaushal et al. 2024, ApJ 961:118, Fig. 7; script `results/checkin-figures-2026-11-20/mass_assembly.py`) and `analyses/dr3-trends/afe-mass-sigma.png` (\([\alpha/\mathrm{Fe}]\) against \(M_\star\) and \(\sigma_\star\), C/N-free fits; form of Bevacqua et al. 2023, MNRAS 525:4219, Fig. 6; script `results/checkin-figures-2026-11-20/afe_relations.py`); card t_6ff7a353.
+
+## [2026-11-20] ingest | Meeting with Sandro
+
+- Pages: `notes/meeting-2026-11-20-sandro.md`
+- Change: transcribed and lightly rephrased 9-page handwritten notes (`reports/meeting-2026-11-20-sandro.pdf`) with verbatim clarifications; card t_b2c873b9.
