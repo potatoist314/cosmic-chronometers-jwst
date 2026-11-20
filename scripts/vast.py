@@ -310,9 +310,14 @@ def _rsync(
         raise SweepError("rsync failed: " + ("\n".join(detail[-10:]) or "unknown"))
 
 
-def manga_cell(cell):
-    """True for a fit of a MaNGA aperture spectrum (notebook SETTINGS["data_source"])."""
-    return cell['settings'].get('data_source', 'legac_dr2') == 'manga_dr17'
+# Surveys read from data/processed/<data_source>/<target>.fits (SPECTRUM, PHOTOMETRY tables), with the
+# primary-header key of the object id: scripts/manga_aperture_spectra.py, scripts/sdss_spectra.py.
+PROCESSED_SOURCES = {'manga_dr17': 'NSAID', 'sdss_dr17': 'OBJID'}
+
+
+def processed_cell(cell):
+    """True for a fit of a processed survey spectrum (notebook SETTINGS["data_source"])."""
+    return cell['settings'].get('data_source', 'legac_dr2') in PROCESSED_SOURCES
 
 
 LEGAC_DR3_CATALOGUE = 'data/raw/legac_dr3/legac_DR3.fits'
@@ -343,8 +348,8 @@ def selected_inputs(cells):
         if response is not None:
             files.update(str(path.relative_to(PROJECT_ROOT))
                          for path in (PROJECT_ROOT / response).glob('*.abund.krpa.s100'))
-        if manga_cell(cell):
-            files.add('data/processed/manga_dr17/' + cell['target_metadata']['filename'])
+        if processed_cell(cell):
+            files.add(f"data/processed/{cell['settings']['data_source']}/{cell['target_metadata']['filename']}")
             continue
         matched = catalogs.get(cell['settings']['photometry'], [])
         if legac_dr3_cell(cell):
