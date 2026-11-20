@@ -321,6 +321,24 @@ def test_selected_inputs_take_dr3_catalogue_and_spectrum_for_dr3_cells():
     assert not any('cosmos2025_phot_legac_dr2' in p for p in files)
 
 
+@pytest.mark.parametrize('source', sorted(exp.vast.PROCESSED_SOURCES))
+def test_selected_inputs_take_only_the_processed_file_for_processed_sources(source):
+    cells = [{'target': 'T1', 'target_metadata': {'filename': 'T1.fits'},
+              'settings': {'photometry': 'cosmos2025', 'data_source': source}}]
+    files = exp.selected_inputs(cells)
+    assert f'data/processed/{source}/T1.fits' in files
+    assert not any('/sp/' in p or '/hst_f814w/' in p or 'cosmos2025' in p for p in files)
+
+
+def test_processed_target_reads_object_id_of_each_source():
+    for source, key in exp.vast.PROCESSED_SOURCES.items():
+        path = sorted((exp.ROOT / 'data/processed' / source).glob('*.fits'))[0]
+        metadata = exp.processed_target({'target': path.stem, 'settings': {'data_source': source}})
+        assert metadata == {'spect_id': path.stem, 'object_id': metadata['object_id'],
+                            'manifest_index': 0, 'filename': path.name}
+        assert metadata['object_id'] > 0
+
+
 def test_upload_selected_inputs_preserves_paths_and_checks_grid(run, monkeypatch):
     run.data['source']['input_files'] = ['data/raw/hst_f814w/M1_210210.fits']
     monkeypatch.setattr(run, 'archive', lambda *a: None)

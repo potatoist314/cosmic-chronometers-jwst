@@ -1,0 +1,1153 @@
+{
+  "backend": "modal",
+  "source": {
+    "commit": "96b77745ce2d6387758ba13e9c66405a88e60696",
+    "submodules": {
+      "ceridwen": "71eeff20dd67cda98aa10db5fbbc686d018269c3",
+      "external/sedpy_jax": "9d8aa190db869157f4a82a76a9d6717a5736871e"
+    },
+    "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+    "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+    "grids": [
+      {
+        "grid": "/Users/liuhao/.ceridwen/grids/amist_c3k_hr_krou_afe_nebular.h5",
+        "grid_sha256": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67",
+        "remote_name": "6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5"
+      }
+    ],
+    "experiment": [
+      {
+        "name": "sdss/0343-51692-0626",
+        "arm": "sdss",
+        "target": "0343-51692-0626",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "0343-51692-0626",
+          "object_id": 1237648705138786497,
+          "manifest_index": 0,
+          "filename": "0343-51692-0626.fits",
+          "seed": 20260832
+        }
+      },
+      {
+        "name": "sdss/0666-52149-0598",
+        "arm": "sdss",
+        "target": "0666-52149-0598",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "0666-52149-0598",
+          "object_id": 1237670956791038152,
+          "manifest_index": 0,
+          "filename": "0666-52149-0598.fits",
+          "seed": 20260832
+        }
+      },
+      {
+        "name": "sdss/0450-51908-0564",
+        "arm": "sdss",
+        "target": "0450-51908-0564",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "0450-51908-0564",
+          "object_id": 1237651191897260101,
+          "manifest_index": 0,
+          "filename": "0450-51908-0564.fits",
+          "seed": 20260832
+        }
+      },
+      {
+        "name": "sdss/0394-51913-0124",
+        "arm": "sdss",
+        "target": "0394-51913-0124",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "0394-51913-0124",
+          "object_id": 1237657189837111476,
+          "manifest_index": 0,
+          "filename": "0394-51913-0124.fits",
+          "seed": 20260832
+        }
+      },
+      {
+        "name": "sdss/0552-51992-0419",
+        "arm": "sdss",
+        "target": "0552-51992-0419",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "0552-51992-0419",
+          "object_id": 1237654383050948854,
+          "manifest_index": 0,
+          "filename": "0552-51992-0419.fits",
+          "seed": 20260832
+        }
+      },
+      {
+        "name": "sdss/0666-52149-0574",
+        "arm": "sdss",
+        "target": "0666-52149-0574",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "0666-52149-0574",
+          "object_id": 1237670957328105559,
+          "manifest_index": 0,
+          "filename": "0666-52149-0574.fits",
+          "seed": 20260832
+        }
+      },
+      {
+        "name": "sdss/0367-51997-0490",
+        "arm": "sdss",
+        "target": "0367-51997-0490",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "0367-51997-0490",
+          "object_id": 1237651225710297243,
+          "manifest_index": 0,
+          "filename": "0367-51997-0490.fits",
+          "seed": 20260832
+        }
+      },
+      {
+        "name": "sdss/1361-53047-0154",
+        "arm": "sdss",
+        "target": "1361-53047-0154",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "1361-53047-0154",
+          "object_id": 1237661872395911303,
+          "manifest_index": 0,
+          "filename": "1361-53047-0154.fits",
+          "seed": 20260832
+        }
+      },
+      {
+        "name": "sdss/0274-51913-0088",
+        "arm": "sdss",
+        "target": "0274-51913-0088",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "0274-51913-0088",
+          "object_id": 1237654668666339531,
+          "manifest_index": 0,
+          "filename": "0274-51913-0088.fits",
+          "seed": 20260832
+        }
+      },
+      {
+        "name": "sdss/1765-53466-0199",
+        "arm": "sdss",
+        "target": "1765-53466-0199",
+        "seed": 20260832,
+        "settings": {
+          "photometry": "cosmos2025",
+          "data_source": "sdss_dr17",
+          "mock_data": null,
+          "abundance_response": "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105",
+          "fix_afe": null,
+          "ssp_grid": "/workspace/cosmic-chronometers-jwst/grid/6fe00c55a177a93d5c74782e94d3a78418ce2ad856a4edfca8dcd8ed5e572a67.h5",
+          "photometry_floor": 0.05,
+          "emission_lines": [
+            3934.77,
+            3966.6,
+            3973.3,
+            4227.92
+          ],
+          "emission_line_marginalisation": true,
+          "telluric_air": [
+            7590.0,
+            7660.0
+          ],
+          "sky_lines_air": [],
+          "rest_range": [
+            4074.5,
+            4666.1
+          ],
+          "photometry_excluded": [],
+          "spectrum_floor_anchor": "model",
+          "masked_absorption_features": [],
+          "sfh_nbins": 14,
+          "calibration_order": 10,
+          "calibration_prior_sigma": 0.1,
+          "calibration_constant_prior_sigma": 0.3,
+          "calibration_fit_constant": true,
+          "zred_half_width": 0.1,
+          "sigma_clip": 3.0,
+          "sigma_err_fraction": 0.0388,
+          "birth_cloud_dust": true,
+          "metallicity_evolution": true,
+          "sampler": {
+            "num_live": 500,
+            "num_inner_steps": 65,
+            "num_delete": 100,
+            "logZ_tol": -5.0
+          },
+          "sampler_quick": {
+            "num_live": 16,
+            "num_inner_steps": 2,
+            "num_delete": 8,
+            "logZ_tol": 10000.0
+          }
+        },
+        "priors": {
+          "logmass": "Uniform(low=8.0, high=13.0)",
+          "logsfr_ratios": "StudentT(mean=0.0, scale=0.3, df=2.0)",
+          "logzsol": "'Uniform over the grid'",
+          "zh_beta_unit": "Uniform(low=0.0, high=1.0)",
+          "afe": "'Uniform over the grid'",
+          "cfe": "Uniform(low=-0.3, high=0.5)",
+          "nfe": "Uniform(low=-0.3, high=1.0)",
+          "diffuse_tau_noll": "Uniform(low=0.0, high=1.0)",
+          "diffuse_delta": "Uniform(low=-1.0, high=0.4)",
+          "diffuse_Ebump": "Uniform(low=0.0, high=6.0)",
+          "dust_ratio": "ClippedNormal(mean=1.0, sigma=0.3, low=0.0, high=2.0)",
+          "log_f_calib": "Uniform(low=np.log(0.01), high=np.log(0.1))",
+          "zred": "'Uniform(z_cat - zred_half_width, z_cat + zred_half_width)'",
+          "sigma_smooth": "'ClippedNormal(sigma_DR2, err_DR2, clipped at sigma_clip err)'"
+        },
+        "target_metadata": {
+          "spect_id": "1765-53466-0199",
+          "object_id": 1237661069262323885,
+          "manifest_index": 0,
+          "filename": "1765-53466-0199.fits",
+          "seed": 20260832
+        }
+      }
+    ],
+    "input_files": [
+      "data/processed/sdss_dr17/0274-51913-0088.fits",
+      "data/processed/sdss_dr17/0343-51692-0626.fits",
+      "data/processed/sdss_dr17/0367-51997-0490.fits",
+      "data/processed/sdss_dr17/0394-51913-0124.fits",
+      "data/processed/sdss_dr17/0450-51908-0564.fits",
+      "data/processed/sdss_dr17/0552-51992-0419.fits",
+      "data/processed/sdss_dr17/0666-52149-0574.fits",
+      "data/processed/sdss_dr17/0666-52149-0598.fits",
+      "data/processed/sdss_dr17/1361-53047-0154.fits",
+      "data/processed/sdss_dr17/1765-53466-0199.fits",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t01_Zp0.2.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t03_Zp0.2.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t05_Zp0.2.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t09_Zp0.2.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zm0.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zm1.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zm1.5.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zp0.0.abund.krpa.s100",
+      "data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/atlas_ssp_t13_Zp0.2.abund.krpa.s100",
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits",
+      "data/raw/cosmos2015/cosmos2015_legac_dr2_photometry_1arcsec.fits",
+      "data/raw/legac_dr2/legaCdr2.fits.gz",
+      "external/fsps/data/emlines_info.dat"
+    ],
+    "image": "ghcr.io/potatoist314/ceridwen-gpu@sha256:e1c8846c0f06db1793ad788d46fcc99493cd9d5419aca4eecacce5fc30315c34"
+  },
+  "gpus": [
+    "A100-40GB"
+  ],
+  "created": 1795201624.100526,
+  "attempts": [
+    {
+      "gpu": "A100-40GB",
+      "profile": "censusgalaxy",
+      "cells": {},
+      "started": 1795201697.378031,
+      "status": "refused",
+      "elapsed": 34.741820096969604,
+      "app_id": null
+    },
+    {
+      "gpu": "A100-40GB",
+      "profile": "liuhaoo3-14",
+      "cells": {
+        "sdss/1765-53466-0199": {
+          "call_id": "fc-01M7X5TF84KV38K3BF41X9HX91",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        },
+        "sdss/1361-53047-0154": {
+          "call_id": "fc-01M7X5TNSKD7NDY048R5N1VG4Z",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        },
+        "sdss/0274-51913-0088": {
+          "call_id": "fc-01M7X5TZD7MQ9XQG9QSJCJT5RK",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        },
+        "sdss/0666-52149-0598": {
+          "call_id": "fc-01M7X5VACF5P8TVN00D73TVYCQ",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        },
+        "sdss/0343-51692-0626": {
+          "call_id": "fc-01M7X5VK6VTD0TM1QEDAB98K54",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        },
+        "sdss/0394-51913-0124": {
+          "call_id": "fc-01M7X5VVW5W844MFZB0H9B6C3R",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        },
+        "sdss/0666-52149-0574": {
+          "call_id": "fc-01M7X5W2532AAYE5W07T33JP21",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        },
+        "sdss/0552-51992-0419": {
+          "call_id": "fc-01M7X5W89CCFZ41TQD0GFFSCQT",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        },
+        "sdss/0367-51997-0490": {
+          "call_id": "fc-01M7X5WGGH0CE7C9FNEHCRMRSJ",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        },
+        "sdss/0450-51908-0564": {
+          "call_id": "fc-01M7X5WRJVTXVF74N6WTF623K9",
+          "profile": "liuhaoo3-14",
+          "error": "SweepError: ExecutionError: Could not deserialize remote exception due to local error:\nDeserialization failed with an AttributeError, 'str' object has no attribute 'name'. This is probably because you have different versions of a library in your local and remote environments.\nThis can happen if your local environment does not have the remote exception definitions.\nHere is the remote traceback:\nTraceback (most recent call last):\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 987, in handle_input_exception\n    yield\n  File \"/pkg/modal/_container_entrypoint.py\", line 189, in run_input_sync\n    values = io_context.call_function_sync()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/pkg/modal/_runtime/container_io_manager.py\", line 266, in call_function_sync\n    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/modal_gpu.py\", line 271, in fit\n    archive.extractall(root / prefix, filter='data')\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2335, in extractall\n    tarinfo, unfiltered = self._get_extract_tarinfo(\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2425, in _get_extract_tarinfo\n    self._handle_fatal_error(e)\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 2423, in _get_extract_tarinfo\n    filtered = filter_function(unfiltered, path)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 852, in data_filter\n    new_attrs = _get_filtered_attrs(member, dest_path, True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/tarfile.py\", line 819, in _get_filtered_attrs\n    raise AbsoluteLinkError(member)\ntarfile.AbsoluteLinkError: 'data/raw/cosmos2015/cosmos2015_legac_dr2_apertures_1arcsec.fits' is a link to an absolute path\n"
+        }
+      },
+      "started": 1795201735.123531,
+      "status": "failed",
+      "elapsed": 121.0902099609375,
+      "app_id": "ap-nc3ubb8sgU8es4k5uogOls",
+      "estimated_usd": 0,
+      "billed_usd": 0.05692046
+    },
+    {
+      "gpu": "A100-40GB",
+      "profile": "censusgalaxy",
+      "cells": {},
+      "started": 1795201895.2507782,
+      "status": "refused",
+      "elapsed": 32.73955774307251,
+      "app_id": null
+    },
+    {
+      "gpu": "A100-40GB",
+      "profile": "liuhaoo3-14",
+      "cells": {
+        "sdss/1765-53466-0199": {
+          "call_id": "fc-01M7X60RQAB73C3XKGP49NDQPJ",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 114.30878567695618,
+          "container_cells": 1,
+          "estimated_usd": 0.07369716030164719,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 603,
+          "compiled": 459,
+          "error": "StageFailed: sdss/1765-53466-0199: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X60RQAB73C3XKGP49NDQPJ-*.log"
+        },
+        "sdss/1361-53047-0154": {
+          "call_id": "fc-01M7X612QZ1ADSKMTW634WQ9XY",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 121.66649222373962,
+          "container_cells": 1,
+          "estimated_usd": 0.07844082086648942,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 603,
+          "compiled": 459,
+          "error": "StageFailed: sdss/1361-53047-0154: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X612QZ1ADSKMTW634WQ9XY-*.log"
+        },
+        "sdss/0274-51913-0088": {
+          "call_id": "fc-01M7X61EWKDSKYWH1TMXTT45MZ",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 122.3628454208374,
+          "container_cells": 1,
+          "estimated_usd": 0.07888977369972229,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 607,
+          "compiled": 456,
+          "error": "StageFailed: sdss/0274-51913-0088: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X61EWKDSKYWH1TMXTT45MZ-*.log"
+        },
+        "sdss/0666-52149-0598": {
+          "call_id": "fc-01M7X624MZYPJTYGYK502YY2P4",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 120.73884963989258,
+          "container_cells": 1,
+          "estimated_usd": 0.07784275113983154,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 603,
+          "compiled": 458,
+          "error": "StageFailed: sdss/0666-52149-0598: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X624MZYPJTYGYK502YY2P4-*.log"
+        },
+        "sdss/0343-51692-0626": {
+          "call_id": "fc-01M7X62NC32VT6DPDWHQN3TE66",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 115.43477129936218,
+          "container_cells": 1,
+          "estimated_usd": 0.07442310575212478,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 603,
+          "compiled": 458,
+          "error": "StageFailed: sdss/0343-51692-0626: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X62NC32VT6DPDWHQN3TE66-*.log"
+        },
+        "sdss/0394-51913-0124": {
+          "call_id": "fc-01M7X636QS3AWFEHRGX53VN5FY",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 108.42713761329651,
+          "container_cells": 1,
+          "estimated_usd": 0.06990514416204452,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 603,
+          "compiled": 459,
+          "error": "StageFailed: sdss/0394-51913-0124: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X636QS3AWFEHRGX53VN5FY-*.log"
+        },
+        "sdss/0666-52149-0574": {
+          "call_id": "fc-01M7X63TF4G4M826TQ3BJS4QN7",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 121.9911732673645,
+          "container_cells": 1,
+          "estimated_usd": 0.07865014922893523,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 603,
+          "compiled": 459,
+          "error": "StageFailed: sdss/0666-52149-0574: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X63TF4G4M826TQ3BJS4QN7-*.log"
+        },
+        "sdss/0552-51992-0419": {
+          "call_id": "fc-01M7X649V0895JMHNH3P4XSR66",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 122.76526236534119,
+          "container_cells": 1,
+          "estimated_usd": 0.07914921995218277,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 607,
+          "compiled": 456,
+          "error": "StageFailed: sdss/0552-51992-0419: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X649V0895JMHNH3P4XSR66-*.log"
+        },
+        "sdss/0367-51997-0490": {
+          "call_id": "fc-01M7X64RGQ0GAWD9P9YZC943Q3",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 102.8382396697998,
+          "container_cells": 1,
+          "estimated_usd": 0.06630186987991334,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 604,
+          "compiled": 456,
+          "error": "StageFailed: sdss/0367-51997-0490: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X64RGQ0GAWD9P9YZC943Q3-*.log"
+        },
+        "sdss/0450-51908-0564": {
+          "call_id": "fc-01M7X64ZZ8GCK6VRY0HN04F1PT",
+          "profile": "liuhaoo3-14",
+          "gpu_name": "NVIDIA A100-SXM4-40GB",
+          "container_seconds": 117.17212057113647,
+          "container_cells": 1,
+          "estimated_usd": 0.07554320957462311,
+          "exit": {
+            "bootstrap": 0,
+            "fit": 1
+          },
+          "mode": "batch",
+          "tuned": 607,
+          "compiled": 456,
+          "error": "StageFailed: sdss/0450-51908-0564: stage exit {'bootstrap': 0, 'fit': 1}; inspect /Users/liuhao/Downloads/Astro project/tmp/worktrees/sdss-pilot/results/sdss-pilot-2026-11-20/run/fc-01M7X64ZZ8GCK6VRY0HN04F1PT-*.log"
+        }
+      },
+      "started": 1795201934.9898272,
+      "status": "failed",
+      "elapsed": 310.4581468105316,
+      "app_id": "ap-B5vMcuBlocT5SadrZ2JG43",
+      "estimated_usd": 0.7528432045575142,
+      "billed_usd": 0.09040241
+    }
+  ],
+  "colab": [
+    {
+      "gpus": [
+        "A100"
+      ],
+      "attempts": [
+        {
+          "number": 0,
+          "session": "ceridwen-880225-0",
+          "gpu": "A100",
+          "units_before": 1.54,
+          "cells": {},
+          "started": 1795201626.330663,
+          "status": "failed",
+          "error": "Colab allocation failed: https://colab.research.google.com/tun/m/assign?nbh=697c561f_a775_4dbd_b09c_973c2 9a13744........&variant=GPU&accelerator=A100: Service Unavailable"
+        },
+        {
+          "number": 1,
+          "session": "ceridwen-880225-1",
+          "gpu": "A100",
+          "units_before": 1.54,
+          "cells": {},
+          "started": 1795201659.790913,
+          "status": "failed",
+          "error": "Colab allocation failed: https://colab.research.google.com/tun/m/assign?nbh=43b7a57b_ee6b_4ff1_8488_5419d a0f66cd........&variant=GPU&accelerator=A100: Service Unavailable"
+        },
+        {
+          "number": 2,
+          "session": "ceridwen-880225-2",
+          "gpu": "A100",
+          "units_before": 1.54,
+          "cells": {},
+          "started": 1795201692.944362,
+          "status": "failed",
+          "error": "Colab allocation failed: https://colab.research.google.com/tun/m/assign?nbh=1ceda52e_1669_4bbf_a1f7_7fcaf 024be79........&variant=GPU&accelerator=A100: Service Unavailable"
+        }
+      ],
+      "ended": 1795201695.023288
+    }
+  ],
+  "kept": "7361a66f9d094e97a61876199c1cc7ba",
+  "estimated_total_usd": 0.8097636645575141
+}

@@ -142,8 +142,8 @@ print(json.dumps(manifest))
     targets = {t['spect_id']: t for t in json.loads(completed.stdout)['targets']}
     dr3_targets = legac_dr3_targets() if any(legac_dr3(cell) for cell in cells) else {}
     for cell in cells:
-        if manga(cell):
-            cell['target_metadata'] = {**manga_target(cell['target']), 'seed': cell['seed']}
+        if processed(cell):
+            cell['target_metadata'] = {**processed_target(cell), 'seed': cell['seed']}
         elif legac_dr3(cell):
             cell['target_metadata'] = {**dr3_targets[cell['target']], 'seed': cell['seed']}
         elif cell['target'] not in targets:
@@ -170,7 +170,7 @@ print(json.dumps(manifest))
 
 
 selected_inputs = vast.selected_inputs
-manga = vast.manga_cell
+processed = vast.processed_cell
 legac_dr3 = vast.legac_dr3_cell
 
 
@@ -190,15 +190,16 @@ print(json.dumps({text(row['SPECT_ID']): {'spect_id': text(row['SPECT_ID']), 'ob
                                                str(ROOT / vast.LEGAC_DR3_CATALOGUE)], text=True))
 
 
-def manga_target(plateifu):
-    """Target metadata of a MaNGA aperture spectrum from scripts/manga_aperture_spectra.py."""
-    path = ROOT / 'data/processed/manga_dr17' / f'{plateifu}.fits'
+def processed_target(cell):
+    """Target metadata of a processed survey spectrum (vast.PROCESSED_SOURCES)."""
+    source, target = cell['settings']['data_source'], cell['target']
+    path = ROOT / 'data/processed' / source / f'{target}.fits'
     if not path.is_file():
-        raise ValueError(f'missing MaNGA aperture spectrum: {path}; run scripts/manga_aperture_spectra.py')
+        raise ValueError(f'missing processed spectrum: {path}')
     header = subprocess.run([str(ROOT / 'ceridwen/.venv/bin/python'), '-c',
-                             'import sys; from astropy.io import fits; print(fits.getheader(sys.argv[1])["NSAID"])',
-                             str(path)], text=True, capture_output=True, check=True)
-    return {'spect_id': plateifu, 'object_id': int(header.stdout), 'manifest_index': 0, 'filename': path.name}
+                             'import sys; from astropy.io import fits; print(fits.getheader(sys.argv[1])[sys.argv[2]])',
+                             str(path), vast.PROCESSED_SOURCES[source]], text=True, capture_output=True, check=True)
+    return {'spect_id': target, 'object_id': int(header.stdout), 'manifest_index': 0, 'filename': path.name}
 
 
 def validate_result(directory):
