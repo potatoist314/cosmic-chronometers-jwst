@@ -312,7 +312,7 @@ def _rsync(
 
 # Surveys read from data/processed/<data_source>/<target>.fits (SPECTRUM, PHOTOMETRY tables), with the
 # primary-header key of the object id: scripts/manga_aperture_spectra.py, scripts/sdss_spectra.py.
-PROCESSED_SOURCES = {'manga_dr17': 'NSAID', 'sdss_dr17': 'OBJID'}
+PROCESSED_SOURCES = {'manga_dr17': 'NSAID', 'sdss_dr17': 'OBJID', 'jwst_ito2026': 'ITOID'}
 
 
 def processed_cell(cell):
