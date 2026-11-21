@@ -1,4 +1,17 @@
 #!/usr/bin/env sh
+# results/ is not in git (/results in .gitignore). A new linked worktree gets an APFS clone
+# of the main checkout's results/: a real folder, so paths resolve inside the worktree, and
+# it shares disk blocks with the main copy until a file changes. lead-merge copies files the
+# worktree adds or changes back into the main checkout's results/ before removing it.
+_rs_common=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
+_rs_gitdir=$(git rev-parse --path-format=absolute --git-dir 2>/dev/null)
+_rs_top=$(git rev-parse --show-toplevel 2>/dev/null)
+_rs_main=$(dirname "$_rs_common")
+if [ -n "$_rs_top" ] && [ "$_rs_common" != "$_rs_gitdir" ] \
+   && [ ! -e "$_rs_top/results" ] && [ ! -L "$_rs_top/results" ] && [ -d "$_rs_main/results" ]; then
+  /bin/cp -c -R -p "$_rs_main/results" "$_rs_top/results" \
+    || echo >&2 "post-checkout: could not clone $_rs_main/results into this worktree"
+fi
 # --- BEGIN BEADS INTEGRATION v1.3.0 ---
 # This section is managed by beads. Do not remove these markers.
 if command -v bd >/dev/null 2>&1; then

@@ -311,8 +311,10 @@ def _rsync(
 
 
 # Surveys read from data/processed/<data_source>/<target>.fits (SPECTRUM, PHOTOMETRY tables), with the
-# primary-header key of the object id: scripts/manga_aperture_spectra.py, scripts/sdss_spectra.py.
-PROCESSED_SOURCES = {'manga_dr17': 'NSAID', 'sdss_dr17': 'OBJID', 'jwst_ito2026': 'ITOID'}
+# primary-header key of the object id: scripts/manga_aperture_spectra.py, scripts/sdss_spectra.py,
+# scripts/gama_spectra.py, scripts/vandels_spectra.py, scripts/jwst_ito2026_spectra.py.
+PROCESSED_SOURCES = {'manga_dr17': 'NSAID', 'sdss_dr17': 'OBJID', 'gama_dr4': 'CATAID',
+                     'vandels_dr4': 'OBJID', 'jwst_ito2026': 'ITOID'}
 
 
 def processed_cell(cell):
@@ -350,6 +352,8 @@ def selected_inputs(cells):
                          for path in (PROJECT_ROOT / response).glob('*.abund.krpa.s100'))
         if processed_cell(cell):
             files.add(f"data/processed/{cell['settings']['data_source']}/{cell['target_metadata']['filename']}")
+            if cell['settings']['data_source'] == 'gama_dr4':  # KiDS OmegaCAM curves of the notebook's CERIDWEN_FILTER_DIR
+                files.update(f'data/raw/gama_dr4/filters/omegacam_{band}.par' for band in 'ugri')
             continue
         matched = catalogs.get(cell['settings']['photometry'], [])
         if legac_dr3_cell(cell):
