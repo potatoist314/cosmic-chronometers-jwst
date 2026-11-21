@@ -17,6 +17,10 @@ wheels/
 tmp/
 .trash/
 
+# Fit and experiment outputs: kept on disk in the main checkout, not in git. Worktrees link
+# results to it (.beads/hooks/post-checkout). Commits up to 2026-11-21 still hold the old files.
+/results
+
 # Copyrighted reference papers (kept locally, not published)
 *.pdf
 

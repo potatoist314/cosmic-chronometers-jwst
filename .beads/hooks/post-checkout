@@ -1,4 +1,15 @@
 #!/usr/bin/env sh
+# results/ is not in git (/results in .gitignore). A linked worktree gets a link to the
+# main checkout's results/ instead of its own copy, so every worktree reads and writes
+# the one shared folder. A branch that still tracks results/ checks out its own copy.
+_rs_common=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
+_rs_gitdir=$(git rev-parse --path-format=absolute --git-dir 2>/dev/null)
+_rs_top=$(git rev-parse --show-toplevel 2>/dev/null)
+if [ -n "$_rs_top" ] && [ "$_rs_common" != "$_rs_gitdir" ] \
+   && [ ! -e "$_rs_top/results" ] && [ ! -L "$_rs_top/results" ] \
+   && [ -d "$(dirname "$_rs_common")/results" ]; then
+  ln -s "$(dirname "$_rs_common")/results" "$_rs_top/results"
+fi
 # --- BEGIN BEADS INTEGRATION v1.3.0 ---
 # This section is managed by beads. Do not remove these markers.
 if command -v bd >/dev/null 2>&1; then
