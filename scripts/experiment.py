@@ -463,30 +463,41 @@ class ModalRun:
         """This month's cost in the profile after credits and allowances (network egress, free storage)."""
         return float(self.modal_json('billing', 'summary')['billed_cost'])
 
+    def threshold(self):
+        """The profile's billed-cost threshold for this GPU (modal_gpu.charge_threshold) and its rule for logs."""
+        threshold = modal_gpu.charge_threshold(self.profile, self.args.gpu)
+        limit = modal_gpu.CHARGE_LIMIT_USD.get(self.profile)
+        rule = 'credits only' if limit is None else f'${limit:.2f} limit less ${limit - threshold:.2f} margin'
+        return threshold, rule
+
     def guard(self):
-        """Launch in the first profile whose month the credits cover and that starts containers; stop
-        when none is left. Modal bills real money in a profile once billed_cost is above 0."""
+        """Launch in the first profile whose billed cost is at most its threshold and that starts containers;
+        stop when none is left."""
         reasons = []
         for profile in modal_gpu.PROFILES:
             self.profile = profile
             if profile in self.refused:
                 reasons.append(f'{profile} started no container')
-            elif (billed := self.billed()) > 0:
-                reasons.append(f'{profile} has ${billed:.2f} billed above credits')
-            else:
+                continue
+            billed, (threshold, rule) = self.billed(), self.threshold()
+            if billed <= threshold:
+                engine.log(f'Modal {profile}: ${billed:.2f} billed, threshold ${threshold:.2f} ({rule})')
                 return
+            reasons.append(f'{profile} has ${billed:.2f} billed, above ${threshold:.2f} ({rule})')
         raise vast.SweepError('no Modal profile can launch: ' + '; '.join(reasons))
 
     def watch(self, attempt, work, done):
-        """While the containers run: stop the app once Modal bills the profile above its credits."""
+        """While the containers run: stop the app once the profile's billed cost is above its threshold."""
         while not done.wait(modal_gpu.CREDIT_CHECK_SECONDS):
             try:
                 billed = self.billed()
             except (subprocess.SubprocessError, ValueError) as error:
                 engine.log(f'Modal billing summary unavailable: {error}')
                 continue
-            if billed > 0 and (work / 'calls.json').exists():
-                engine.log(f'Modal credits of {self.profile} are used up: ${billed:.2f} billed; stopping the app')
+            threshold, rule = self.threshold()
+            if billed > threshold and (work / 'calls.json').exists():
+                engine.log(f'Modal {self.profile}: ${billed:.2f} billed, above ${threshold:.2f} ({rule}); '
+                           'stopping the app')
                 attempt['credit_stop'] = time.time()
                 self.stop(json.loads((work / 'calls.json').read_text())['app_id'])
                 return
@@ -698,7 +709,7 @@ class ModalRun:
         self.save()
         engine.log(f"Modal attempt: ${attempt['estimated_usd']:.4f} estimated; failed cells: {failed or 'none'}")
         if failed and 'credit_stop' in attempt:
-            return self.execute()  # the missing fits, in the next profile that the credits cover
+            return self.execute()  # the missing fits, in the next profile below its threshold
         return 1 if failed else 0
 
 
