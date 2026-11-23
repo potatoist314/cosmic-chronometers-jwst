@@ -32,9 +32,17 @@ except ModuleNotFoundError:  # the driver's Python; CLIENT supplies the package
     modal = None
 
 # Modal CLI profiles (workspaces censusgalaxy, initialincrease, liuhaoo3-14). A launch uses the first one
-# whose month the credits still cover. Grids, compile caches and kept fits are Volumes of each workspace.
+# whose month's billed cost is below its threshold. Grids, compile caches and kept fits are Volumes of each workspace.
 PROFILES = ('censusgalaxy', 'initalincrease', 'liuhaoo3-14')
+# USD of billed cost (after credits) allowed each month. Liu Hao, 2026-11-23: "it only bills my card once 100 in
+# charges accumulates. to keep it safe keep the charges on both accounts under 70", then "initialincrease bills at
+# 100, liuhaoo bills at 20"; 14 for liuhaoo3-14 is the same 70 % share of 20 (lead). A profile not listed has no
+# payment method and runs on credits only (censusgalaxy).
+CHARGE_LIMIT_USD = {'initalincrease': 70.0, 'liuhaoo3-14': 14.0}
 CREDIT_CHECK_SECONDS = 120  # experiment.py reads the profile's billing summary this often during a run
+# Assumed delay of usage in `modal billing summary`: on 2026-11-11 a credit end showed in it within 10 minutes
+# (results/credit-robust-fits-2026-11-11/uninterrupted-m1-driver.log).
+BILLING_LAG_SECONDS = 900
 CLIENT = ['uv', 'run', '--quiet', '--no-project', '--python', '3.13', '--with', 'modal==1.6.1', 'python']
 # One image build in every workspace: initialincrease and liuhaoo3-14 use builder 2025.06. censusgalaxy's
 # default, 2026.10, is newer than modal 1.6.1 accepts (VersionError at launch, 2026-11-11).
@@ -81,6 +89,15 @@ def cost_usd(gpu, seconds):
     rate = (GPU_USD_PER_SECOND[gpu] + CPU_CORES * CPU_USD_PER_CORE_SECOND
             + MEMORY_GIB * MEMORY_USD_PER_GIB_SECOND)
     return rate * seconds
+
+
+def charge_threshold(profile, gpu):
+    """Billed USD above which a profile neither launches nor keeps running: its charge limit less what
+    MAX_CONTAINERS containers of the GPU cost over the billing lag and one check; 0 when it runs on credits only."""
+    limit = CHARGE_LIMIT_USD.get(profile)
+    if limit is None:
+        return 0.0
+    return limit - MAX_CONTAINERS * cost_usd(gpu, BILLING_LAG_SECONDS + CREDIT_CHECK_SECONDS)
 
 
 @contextlib.contextmanager

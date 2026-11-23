@@ -295,12 +295,33 @@ def test_guard_allows_launch_while_credits_and_allowances_cover_usage(modal_run)
     assert len(state['launches']) == 1
 
 
-def test_credit_guard_stops_before_launch(modal_run):
+def test_charge_guard_stops_before_launch(modal_run):
     run, state = modal_run
-    state['billing'] = {'billed_cost': '1.5', 'adjustments': {'plan_cost': '0', 'credits': '-30'}}
-    with pytest.raises(exp.vast.SweepError, match='credits'):
+    state['billing'] = {'billed_cost': '69.5', 'adjustments': {'plan_cost': '0', 'credits': '-30'}}
+    with pytest.raises(exp.vast.SweepError, match=r'credits only.*\$70\.00 limit.*\$14\.00 limit'):
         run.execute()
     assert not state['launches']
+
+
+def test_paying_profiles_launch_until_billed_cost_reaches_the_limit_less_the_margin(modal_run):
+    run, state = modal_run
+    first, second, third = modal_gpu.PROFILES
+    margin = modal_gpu.MAX_CONTAINERS * modal_gpu.cost_usd(
+        'L40S', modal_gpu.BILLING_LAG_SECONDS + modal_gpu.CREDIT_CHECK_SECONDS)
+    # `modal billing summary --json`, 2026-11-23: both paying profiles are past their credits.
+    state['billing'] = {first: {'billed_cost': '0.01'}, second: {'billed_cost': '0.83000000'},
+                        third: {'billed_cost': '0.44000000'}}
+    run.guard()
+    assert run.profile == second
+    state['billing'][second] = {'billed_cost': str(70 - margin + 0.01)}
+    run.guard()
+    assert run.profile == third
+    state['billing'][third] = {'billed_cost': str(14 - margin - 0.01)}
+    run.guard()
+    assert run.profile == third
+    state['billing'][third] = {'billed_cost': str(14 - margin + 0.01)}
+    with pytest.raises(exp.vast.SweepError, match='no Modal profile can launch'):
+        run.guard()
 
 
 def test_billed_cost_from_modal_report_raises_the_total(modal_run):
@@ -412,20 +433,25 @@ def test_resume_after_an_interrupted_driver_takes_the_kept_fits_first(modal_run)
     assert run.data['attempts'][0]['cells']['fit/M1_210210']['call_id'] == 'fc-kept'
 
 
-def test_credit_stop_during_a_run_keeps_finished_fits_and_resumes_in_the_next_profile(modal_run, monkeypatch):
+@pytest.mark.parametrize('first, second, billed', [
+    ('censusgalaxy', 'initalincrease', '0.61'),  # credits only: any billed cost stops the run
+    ('initalincrease', 'liuhaoo3-14', '69.5'),  # above the $70 limit less the margin
+])
+def test_charge_stop_during_a_run_keeps_finished_fits_and_resumes_in_the_next_profile(
+        modal_run, monkeypatch, first, second, billed):
     run, state = modal_run
-    first, second = modal_gpu.PROFILES[:2]
     cells = run.data['source']['experiment'] = arms(2)
     monkeypatch.setattr(modal_gpu, 'MAX_CONTAINERS', 1)
     monkeypatch.setattr(modal_gpu, 'CREDIT_CHECK_SECONDS', 0.01)
-    state['billing'] = {first: {'billed_cost': '0E-8'}, second: {'billed_cost': '0E-8'}}
+    state['refuses'] = set(modal_gpu.PROFILES[:modal_gpu.PROFILES.index(first)])
+    state['billing'] = {profile: {'billed_cost': '0E-8'} for profile in modal_gpu.PROFILES}
     state['running'].append('ap-1')
     stopped = threading.Event()
 
     def launched(profile):
-        """The first profile's credits end during its run; its container stops with one fit kept."""
+        """The first profile goes above its threshold during its run; its container stops with one fit kept."""
         if profile == first:
-            state['billing'][first] = {'billed_cost': '0.61'}
+            state['billing'][first] = {'billed_cost': billed}
             state['lost'], state['kept'] = {0}, {first: {0: cells[0]}}
             while 'ap-1' not in state['stopped']:
                 stopped.wait(0.01)
@@ -434,22 +460,22 @@ def test_credit_stop_during_a_run_keeps_finished_fits_and_resumes_in_the_next_pr
 
     state['launched'] = launched
     assert run.execute() == 0
-    assert state['profiles'] == [first, second]
-    first_attempt, second_attempt = run.data['attempts']
+    assert state['profiles'][-2:] == [first, second]
+    first_attempt, second_attempt = [a for a in run.data['attempts'] if a['status'] != 'refused']
     assert 'credit_stop' in first_attempt and first_attempt['status'] == 'failed'
     assert first_attempt['cells']['a0/M1_210210']['profile'] == first
     assert second_attempt['cells']['a1/M1_210210']['profile'] == second and second_attempt['status'] == 'complete'
-    assert [c['index'] for members in state['launches'][1]['containers'] for c in members] == [1]
+    assert [c['index'] for members in state['launches'][-1]['containers'] for c in members] == [1]
     assert sorted(run.data['completed_cells']) == ['a0/M1_210210', 'a1/M1_210210']
 
 
 def test_profile_that_starts_no_container_gives_the_launch_to_the_next_profile(modal_run, capsys):
     run, state = modal_run
     first, second, third = modal_gpu.PROFILES
-    # 2026-11-11: censusgalaxy has no payment method and Modal refuses its GPU functions; initalincrease
-    # is billed above its credits.
+    # 2026-11-11: censusgalaxy has no payment method and Modal refuses its GPU functions; here initalincrease
+    # is billed above its threshold.
     state['refuses'] = {first}
-    state['billing'] = {first: {'billed_cost': '0E-8'}, second: {'billed_cost': '0.61'}, third: {'billed_cost': '0E-8'}}
+    state['billing'] = {first: {'billed_cost': '0E-8'}, second: {'billed_cost': '69.5'}, third: {'billed_cost': '0E-8'}}
     assert run.execute() == 0
     assert state['profiles'] == [first, third]
     refused, attempt = run.data['attempts']

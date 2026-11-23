@@ -79,13 +79,17 @@ The user's contribution will be focused on overall research direction and method
   (Liu Hao, 2026-11-11: "try and exhaust those before using modal credits?"). Stop every Colab
   runtime you start, and only your own: check `colab --auth adc sessions`, then `colab --auth adc stop -s <session>`.
 - After Colab, `experiment.py` runs GPU fits on Modal (`scripts/modal_gpu.py`; CLI profiles `censusgalaxy`,
-  `initalincrease`, `liuhaoo3-14`: a launch uses the first one with a billed cost of $0 for the month):
+  `initalincrease`, `liuhaoo3-14`: a launch uses the first one whose billed cost for the month is below its threshold):
   the compact image pinned in `scripts/vast.py`, selected input uploads, and grids, compile caches and
   finished fits on Modal Volumes of each workspace. Preserve the image and backend recorded for resumed runs.
 - GPU type: lowest cost per fit in `results/gpu-bench-modal-2026-10-14/REPORT.md` (A100-40GB;
   `--gpu A100` names the same card on Colab and Modal).
-- No per-run spend cap. Stay within the Modal credit balance: `experiment.py` refuses a launch once the
-  month's billed cost is above $0 in each profile, and stops a run when its profile goes above $0.
+- No per-run spend cap. Monthly billed-cost limits per profile (Liu Hao, 2026-11-23: "it only bills my card
+  once 100 in charges accumulates. to keep it safe keep the charges on both accounts under 70", then
+  "initialincrease bills at 100, liuhaoo bills at 20"): under $70 in `initalincrease`, under $14 in
+  `liuhaoo3-14` (70 % of $20, set by the lead), $0 in `censusgalaxy` (credits only). `experiment.py` refuses
+  a launch, and stops a run, once a profile's billed cost is above its limit less 10 containers of the run's
+  GPU for 17 minutes (`CHARGE_LIMIT_USD`, `charge_threshold` in `scripts/modal_gpu.py`).
   Never add a payment method.
 - Stop every Modal container you start, and only your own apps: check `modal container list`, then
   `modal app stop -y <app id>`.
