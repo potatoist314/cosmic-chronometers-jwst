@@ -69,7 +69,7 @@ Full and feature modes use the same projection boundary while they select differ
 
 The order-10 calibration polynomial includes \(a_0\) for spectrum normalisation; no separate `spectrum_scaling` is sampled. Its constant multiplier has the unbounded prior \(1+a_0\sim\mathcal{N}(1,0.3^2)\). Coefficients \(a_1,\ldots,a_{10}\) retain independent \(\mathcal{N}(0,0.1^2)\) priors. Photometry anchors the total flux. The spectral likelihood still samples its fractional calibration floor.
 
-The production profile uses 500 live points, 100 deletions, 65 inner steps, and `logZ_tol=-5`.
+The production profile uses 500 live points, 100 deletions, 33 inner steps (65 before 2026-11-23), and `logZ_tol=-5`.
 
 The full-spectrum fit figure shades nine major absorption features from `ceridwen.observation.absorption_features` on both panels: Ca K, Ca H, \(\mathrm{H}\delta\), G band, \(\mathrm{H}\gamma\), Fe4383, \(\mathrm{H}\beta\), Mg b and Fe5270. Bands span their Lick bandpass and lines span \(\pm\)1000 \(\mathrm{km\,s^{-1}}\), redshifted with the catalogue redshift, so the pull near each feature can be read directly.
 

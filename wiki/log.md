@@ -1620,3 +1620,8 @@
 
 - Pages: `notes/meeting-2026-11-20-sandro.md`
 - Change: transcribed and lightly rephrased 9-page handwritten notes (`reports/meeting-2026-11-20-sandro.pdf`) with verbatim clarifications; card t_b2c873b9.
+
+## [2026-11-23] codebase | Production default: 33 inner steps
+
+- Pages: `notes/model.md`, `notes/notebook-map.md`
+- Change: `SETTINGS["sampler"]["num_inner_steps"]` in `notebooks/ceridwen_integrated_photometry_spectra.ipynb` 65 → 33 (Liu Hao: “halved default”); new `experiment.py` fits use 33, earlier runs keep the 65 of their pinned notebook; 33 against 65 on 10 galaxies: \(\ln Z\) +0.36 ± 0.12 higher at 33, sampler time ×0.53 (`results/inner-steps-10-2026-11-23/table.md`); card t_77e23924.
