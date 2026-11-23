@@ -111,7 +111,7 @@ def test_notebook_uses_production_model_and_sampler_contract():
     assert '"spectrum_scaling": jnp.array' not in source
     assert '"calibration_fit_constant": True' in source
     assert 'fit_constant=SETTINGS["calibration_fit_constant"]' in source
-    assert '"sampler": {"num_live": 500, "num_inner_steps": 65, "num_delete": 100, "logZ_tol": -5.0}' in source
+    assert '"sampler": {"num_live": 500, "num_inner_steps": 33, "num_delete": 100, "logZ_tol": -5.0}' in source
     assert '"logzsol": "log10(Z/Z_sun) = [Fe/H] on this grid"' in source
     assert 'SSPDataAfe.load(ssp_path, zsun=0.0185, axis_meaning="feh")' in source
     assert '"calibration_order": 10,' in source
