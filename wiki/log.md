@@ -1634,4 +1634,4 @@
 ## [2026-11-24] analysis | Rest-frame spectral range and age slopes
 
 - Pages: `research/questions/q-spectral-range.md`, `index.md`
-- Change: new question page recording true LEGA-C DR2/DR3 catalogue, quiescent and fitted counts, rest-frame ranges and age–redshift slopes across LEGA-C and SDSS 50 fits, and the SDSS SFH-grid cosmology test; card t_16b5dd12.
+- Change: new question page recording the current 348-galaxy LEGA-C DR3 sample (4,057 spectra to 371 covering 4074.5–4666.1 Å, 348 fitted), the 10 Nov DR2 135-galaxy window-choice run, rest-frame ranges and age–redshift slopes across LEGA-C and SDSS 50 fits, and the SDSS SFH-grid cosmology test; card t_16b5dd12.
