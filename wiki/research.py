@@ -653,9 +653,10 @@ def write_pages(records, notes, scratch, base, builder):
             if not path.is_file():
                 # Older catalog rows predate the chronometer subdirectory.
                 matches = list((project / "papers").rglob(Path(filename).name))
-                if len(matches) != 1:
+                if len(matches) > 1:
                     raise ValueError("paper catalog entry has no unique local PDF: " + filename)
-                path = matches[0]
+                # No match: asset_url names the file as missing evidence, which the publisher sends.
+                path = matches[0] if matches else path
             url = asset_url(quote(path.relative_to(project).as_posix()), base, project)
             title = Path(filename).stem
             citation = html.unescape(citation.strip())
