@@ -1630,3 +1630,8 @@
 
 - Pages: `notes/vast-ai-gpu-workflow.md`
 - Change: fits without a saved compile cache run 4 per A100 after the first fit of each arm (`scripts/modal_gpu.py` `batch`); card t_e67124c9.
+
+## [2026-11-24] analysis | Rest-frame spectral range and age slopes
+
+- Pages: `research/questions/q-spectral-range.md`, `index.md`
+- Change: new question page recording true LEGA-C DR2/DR3 catalogue, quiescent and fitted counts, rest-frame ranges and age–redshift slopes across LEGA-C and SDSS 50 fits, and the SDSS SFH-grid cosmology test; card t_16b5dd12.
