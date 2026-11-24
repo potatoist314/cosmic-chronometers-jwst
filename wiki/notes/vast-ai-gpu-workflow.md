@@ -73,6 +73,8 @@ A new run uses Colab first (`--backend colab`) while `colab --auth adc usage` sh
 
 On Modal, a launch uses the first CLI profile of `censusgalaxy`, `initalincrease`, `liuhaoo3-14` with a billed cost of $0 for the month. Each container writes each finished fit to the Volume `ceridwen-results` at once. The manifest records the profile of each fit.
 
+Fits without a saved compile cache share one empty cache in the container. On an A100 the first fit of each arm runs alone, then the rest run 4 per GPU under CUDA MPS: 12 fits took 532 s, against 751 s one after another, with bitwise-equal results (`results/hillclimb-one-program-2026-11-23/ab-02`). On other GPUs they run one after another in one kernel.
+
 A fit that shared the GPU while its cache got a new autotune entry is provisional: the container fits it again alone. A resumed run takes the other fits first, then fits the missing and provisional pairs.
 
 Downloads are attempted up to three times within the remaining budget. Local HDF5 and notebook validation must pass before completion. Persistent retrieval failures stop automatic refits.
@@ -81,7 +83,7 @@ Experiments upload selected spectra, cutouts and required catalogue tables. The 
 
 New experiments use a digest-pinned dependency image from `ghcr.io/potatoist314/ceridwen-gpu`. `--image` overrides it; the run manifest records the selection. The dependency image installs pinned Ceridwen and sedpy source at runtime without resolving dependencies again. Its build includes no private model code or research data.
 
-Source: `scripts/experiment.py` — `configuration`, `preflight`, `Run`, `ModalRun`, `remote`; `scripts/modal_gpu.py` — `keep`, `fit`; `scripts/colab.py` — `preferred`, `ColabRun`.
+Source: `scripts/experiment.py` — `configuration`, `preflight`, `Run`, `ModalRun`, `remote`; `scripts/modal_gpu.py` — `keep`, `fit`, `batch`; `scripts/colab.py` — `preferred`, `ColabRun`.
 
 </details>
 

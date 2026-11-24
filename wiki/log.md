@@ -1625,3 +1625,8 @@
 
 - Pages: `notes/model.md`, `notes/notebook-map.md`
 - Change: `SETTINGS["sampler"]["num_inner_steps"]` in `notebooks/ceridwen_integrated_photometry_spectra.ipynb` 65 → 33 (Liu Hao: “halved default”); new `experiment.py` fits use 33, earlier runs keep the 65 of their pinned notebook; 33 against 65 on 10 galaxies: \(\ln Z\) +0.36 ± 0.12 higher at 33, sampler time ×0.53 (`results/inner-steps-10-2026-11-23/table.md`); card t_77e23924.
+
+## [2026-11-24] codebase | Fresh Modal fits share the A100
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: fits without a saved compile cache run 4 per A100 after the first fit of each arm (`scripts/modal_gpu.py` `batch`); card t_e67124c9.

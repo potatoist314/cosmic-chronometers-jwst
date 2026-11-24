@@ -133,7 +133,7 @@ def test_dry_run_does_not_contact_vast_or_create_output(tmp_path, monkeypatch):
     assert not output.exists()
 
 
-def test_remote_passes_configuration_and_exact_seed_to_existing_worker(tmp_path, monkeypatch):
+def test_remote_passes_configuration_and_exact_seed_to_existing_worker(tmp_path, monkeypatch, capsys):
     from scripts import run_ceridwen_vast_multi_gpu as worker
     cell = {'name': 'arm/target', 'arm': 'arm', 'seed': 7,
             'target_metadata': {'object_id': 1, 'spect_id': 'target', 'seed': 7},
@@ -156,6 +156,8 @@ def test_remote_passes_configuration_and_exact_seed_to_existing_worker(tmp_path,
     monkeypatch.setattr(exp, 'validate_result', lambda _: None)
     assert exp.remote(config, tmp_path) == 0
     assert calls == [(cell['target_metadata'], tmp_path / 'arm/1-target')]
+    from scripts import modal_gpu  # a one-cell batch kernel of modal_gpu.batch ends its fit on this line
+    assert [match[2] for line in capsys.readouterr().out.splitlines() if (match := modal_gpu.FIT_ENDED.match(line))] == ['arm/target']
 
 
 def test_remote_fits_several_cells_in_one_kernel_and_validates_each_as_it_ends(tmp_path, monkeypatch, capsys):

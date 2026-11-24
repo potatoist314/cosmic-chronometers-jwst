@@ -343,6 +343,7 @@ def remote(config, output):
         if worker._execute_target(target, directory) != 0:
             raise RuntimeError(f"fit failed: {cell['name']}")
         validate_result(directory)
+        engine.log(f"{FIT_DONE}{cell['name']}")
     return 0
 
 
