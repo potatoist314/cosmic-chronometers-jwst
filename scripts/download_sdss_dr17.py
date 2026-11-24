@@ -21,10 +21,14 @@ Selection, DR17 CAS (column definitions from the CAS table DBColumns):
   HAS_WISE_PHOT = 1 with W1 and W2 detected at S/N > 5.
 - Per redshift bin (Z_EDGES), the --per-bin spectra with the highest median r-band
   S/N per pixel (snMedian_r).
+- --sigma250, a second selection with the same cuts and velDisp >= 250 km/s (the trial
+  widths of the velocity-dispersion fit are 100 to 850 km/s, same page), in bins of 0.05
+  from z = 0.05, without the spectra of targets.csv.
 
 Output in data/raw/sdss_dr17/: counts.csv (galaxies passing the cuts per bin),
 targets.csv (CAS rows of the selected spectra) and spectra/spec-PLATE-MJD-FIBER.fits
 (spec-lite files, https://dr17.sdss.org/sas/dr17/sdss/spectro/redux/<run2d>/spectra/lite/).
+--sigma250 writes counts_sigma250.csv and targets_sigma250.csv.
 
 Running this twice downloads nothing the second time.
 """
@@ -99,17 +103,25 @@ def write_csv(rows: list[dict], path: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--per-bin", type=int, default=2, help="spectra per redshift bin")
+    parser.add_argument("--sigma250", action="store_true",
+                        help="velDisp >= 250 km/s, z from 0.05, without the spectra of targets.csv")
     args = parser.parse_args()
 
+    edges, cut, suffix = Z_EDGES, "", ""
+    if args.sigma250:
+        with (RAW / "targets.csv").open() as first:
+            selected = ", ".join(row["specObjID"] for row in csv.DictReader(first))
+        edges, suffix = (0.05, *Z_EDGES[1:]), "_sigma250"
+        cut = f"AND s.velDisp >= 250 AND s.specObjID NOT IN ({selected}) "
     counts, targets = [], []
-    for low, high in zip(Z_EDGES[:-1], Z_EDGES[1:]):
-        z_cut = f"AND s.z >= {low} AND s.z < {high}"
+    for low, high in zip(edges[:-1], edges[1:]):
+        z_cut = f"{cut}AND s.z >= {low} AND s.z < {high}"
         counts.append({"z_low": low, "z_high": high,
                        "galaxies": int(cas(f"SELECT COUNT(*) AS n {FROM_WHERE} {z_cut}")[0]["n"])})
         targets += cas(f"SELECT TOP {args.per_bin} {COLUMNS} {FROM_WHERE} {z_cut} ORDER BY s.snMedian_r DESC")
         print(counts[-1], flush=True)
-    write_csv(counts, RAW / "counts.csv")
-    write_csv(targets, RAW / "targets.csv")
+    write_csv(counts, RAW / f"counts{suffix}.csv")
+    write_csv(targets, RAW / f"targets{suffix}.csv")
     for row in targets:
         plate, mjd, fiber = int(row["plate"]), int(row["mjd"]), int(row["fiberID"])
         name = f"spec-{plate:04d}-{mjd}-{fiber:04d}.fits"

@@ -126,9 +126,10 @@ def process(row: dict) -> dict:
 
 def main() -> None:
     records = []
-    for row in read_csv(RAW / "targets.csv", "specObjID").values():
-        records.append(process(row))
-        print({k: (round(v, 4) if isinstance(v, float) else v) for k, v in records[-1].items()}, flush=True)
+    for targets in sorted(RAW.glob("targets*.csv")):  # targets.csv, then targets_sigma250.csv
+        for row in read_csv(targets, "specObjID").values():
+            records.append(process(row))
+            print({k: (round(v, 4) if isinstance(v, float) else v) for k, v in records[-1].items()}, flush=True)
     with (PROCESSED / "summary.csv").open("w", newline="") as out:
         writer = csv.DictWriter(out, fieldnames=list(records[0]))
         writer.writeheader()
