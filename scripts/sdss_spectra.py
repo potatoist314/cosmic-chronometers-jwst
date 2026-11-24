@@ -13,7 +13,9 @@ Spectrum (spec-lite COADD table, sdss/datamodel spec-lite.md)
   the very bad conditions; BRIGHTSKY is "the most useful mask bit to look at"; bits 0-15
   flag a whole spectrograph half (https://www.sdss4.org/dr17/algorithms/bitmasks/, SPPIXMASK).
 - LSF: WDISP is the 1-sigma line width in pixels of 1E-4 in log10(lambda), so
-  sigma = WDISP x 1E-4 x ln(10) x lambda in A.
+  sigma = WDISP x 1E-4 x ln(10) x lambda in A. Pixels with WDISP = 0 (4 of the 60 spectra;
+  all have IVAR = 0) take WDISP interpolated linearly in wavelength from the other pixels:
+  the fit needs a positive width at every pixel.
 - Galactic extinction: the spectra are not corrected (https://www.sdss4.org/dr17/spectro/caveats/).
   A = 3.1 E(B-V) k(lambda), k from ceridwen's CCM89 law with the O'Donnell (1994) update, as in
   scripts/manga_aperture_spectra.py. E(B-V) is the SFD98 value, EXTINCTION_R / 2.285: the CAS
@@ -75,7 +77,8 @@ def process(row: dict) -> dict:
     valid = (ivar > 0) & ((coadd["and_mask"] & BRIGHTSKY) == 0)
     with np.errstate(divide="ignore"):
         error = np.where(ivar > 0, ivar ** -0.5, 0.0)
-    lsf_sigma = coadd["wdisp"].astype(float) * 1e-4 * np.log(10.0) * wave
+    wdisp = coadd["wdisp"].astype(float)
+    lsf_sigma = np.interp(wave, wave[wdisp > 0], wdisp[wdisp > 0]) * 1e-4 * np.log(10.0) * wave
     ebv = float(row["extinction_r"]) / SF11_R
     extinction = 10.0 ** (0.4 * 3.1 * ebv * np.asarray(cardelli(wave, tau_card=1.0, R_v_card=3.1)))
     flux, error = coadd["flux"].astype(float) * extinction, error * extinction
@@ -126,9 +129,10 @@ def process(row: dict) -> dict:
 
 def main() -> None:
     records = []
-    for row in read_csv(RAW / "targets.csv", "specObjID").values():
-        records.append(process(row))
-        print({k: (round(v, 4) if isinstance(v, float) else v) for k, v in records[-1].items()}, flush=True)
+    for targets in sorted(RAW.glob("targets*.csv")):  # targets.csv, then targets_sigma250.csv
+        for row in read_csv(targets, "specObjID").values():
+            records.append(process(row))
+            print({k: (round(v, 4) if isinstance(v, float) else v) for k, v in records[-1].items()}, flush=True)
     with (PROCESSED / "summary.csv").open("w", newline="") as out:
         writer = csv.DictWriter(out, fieldnames=list(records[0]))
         writer.writeheader()
