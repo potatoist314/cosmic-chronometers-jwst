@@ -9,30 +9,26 @@ status: open
 
 ## Context
 
-The current LEGA-C sample uses DR3 (`dr3-more-galaxies-2026-11-16/REPORT.md`): 4,057 spectra narrow to 1,222 quiescent, 581 emission-free and 523 fittable. Of those, 371 cover 4074.5–4666.1 Å and 348 enter fits (one per `OBJECT`). The 10 Nov DR2 run (`legaCdr2.fits.gz`, 1,988 spectra of 1,922 galaxies, 187 quiescent, 180 fittable, 135 fitted) only chose that window.
+DR3 is the current LEGA-C sample: 4,057 spectra narrow to 371 covering 4074.5–4666.1 Å and 348 fitted per `OBJECT`. The 10 Nov DR2 set (1,988 spectra, 187 quiescent, 135 fitted) only chose that window.
 
-Standard DR2 fits span 3011.6–4155.0 Å blue to 4206.7–5691.2 Å red (`per-fit.csv`, median 3701.3–5110.4 Å). The 50 SDSS spectra cover 4029.9–7079.4 Å in common (2923.5–8718.8 Å full range, `data/processed/sdss_dr17/`), yet inherit 4074.5–4666.1 Å.
+Standard DR2 fits span 3011.6–4155.0 to 4206.7–5691.2 Å (`per-fit.csv`, `a_baseline`). SDSS 50 fits inherit 4074.5–4666.1 Å despite wider spectra.
 
-| Fit set | \(N\) | \(z\) | Rest range (Å) | Features / coverage | Age slope (Gyr/\(z\)) | \(t_U\) slope (Gyr/\(z\)) |
-| --- | --- | --- | --- | --- | --- | --- |
-| LEGA-C DR3 current, plain | 348 | 0.603–0.999 | 4074.5–4666.1 | 371 spectra cover: \(\mathrm{H}\delta_A\), \(\mathrm{H}\gamma_A\), Ca4227, Ca4455, CN4150, G4300, Fe4383, Fe4531 | −4.77 (−5.26 to −4.28) | −5.23 |
-| LEGA-C DR3 current, C/N free | 347 | 0.603–0.999 | 4074.5–4666.1 | Same 8 features; 1 lacks C/N fit (\(\sigma<100\) km/s) | −5.01 (−5.48 to −4.53) | −5.23 |
-| LEGA-C DR2 full, plain (a) | 135 | 0.603–0.987 | 3011.6–4155.0 to 4206.7–5691.2 | Mg b in 61/135 | −1.55 (−2.23 to −0.88) | −5.17 |
-| LEGA-C DR2 full, C/N free (b) | 135 | 0.603–0.987 | 3011.6–4155.0 to 4206.7–5691.2 | Mg b in 61/135 | +0.97 (+0.20 to +1.75) | −5.17 |
-| LEGA-C DR2 strict window, plain (h) | 130 | 0.603–0.987 | 4155.0–4438.1 | 129/135 cover: \(\mathrm{H}\gamma_A\), Ca4227, G4300, Fe4383 | −3.26 (−3.91 to −2.62) | −5.19 |
-| LEGA-C DR2 strict window, C/N free, \([\alpha/\mathrm{Fe}]=+0.25\) (e) | 130 | 0.603–0.987 | 4155.0–4438.1 | 129/135 cover: same 4 features | −3.77 (−4.42 to −3.09) | −5.19 |
-| LEGA-C DR2 window, plain (i) | 110 | 0.603–0.984 | 4074.5–4666.1 | 110/135 cover: same 8 features | −4.60 (−5.56 to −3.60) | −5.31 |
-| LEGA-C DR2 window, C/N free (j) | 110 | 0.603–0.984 | 4074.5–4666.1 | 110/135 cover: same 8 features | −5.37 (−6.29 to −4.41) | −5.31 |
-| SDSS DR17, C/N free | 50 | 0.054–0.300 | 4074.5–4666.1 | Same 8 features; 539–546 of 2901–3844 valid px | −12.1 \(\pm\) 0.9 | −11.4 |
+| Set of fits | Galaxies | Rest range (Å) | Age slope (Gyr/\(z\)) |
+| --- | --- | --- | --- |
+| LEGA-C DR3 current, C/N free | 347 | 4074.5–4666.1 | −5.011 (−5.481, −4.533) |
+| LEGA-C DR3 current, plain | 348 | 4074.5–4666.1 | −4.766 (−5.258, −4.281) |
+| LEGA-C DR2 strict window (h / e) | 130 (129/135 cover) | 4155.0–4438.1 | −3.26 plain, −3.77 arm (e) |
+| LEGA-C DR2 chosen window (i / j) | 110 | 4074.5–4666.1 | −4.60 plain, −5.37 C/N free |
+| SDSS DR17, C/N free | 50 | 4074.5–4666.1 | −12.1 \(\pm\) 0.9 |
 
-Cosmology enters the SFH prior only through the 14 bin edges, ending at \(t_U\). Prior-only median age equals \(0.43\,t_U\). Per galaxy, SDSS ages shift at \(\mathrm{d}\ln\mathrm{age}/\mathrm{d}\ln t_U = 0.79\).
+Cosmology enters only through SFH bin edges to \(t_U\). Prior-only age is \(0.43\,t_U\), and SDSS follows \(\mathrm{d}\ln\mathrm{age}/\mathrm{d}\ln t_U = 0.79\).
 
 | SDSS 50 SFH-grid cosmology (4074.5–4666.1 Å) | \(t_U\) slope (Gyr/\(z\)) | Age slope (Gyr/\(z\)) | Median age/\(t_U\) |
 | --- | --- | --- | --- |
 | Planck18 (\(H_0 = 67.66\)) | −11.4 | −12.1 \(\pm\) 0.9 | 0.732 |
 | \(H_0 = 50\) | −15.4 | −15.9 \(\pm\) 1.1 | 0.695 |
 | \(H_0 = 90\) | −8.6 | −11.5 \(\pm\) 0.9 | 0.768 |
-| One common SFH grid (fixed \(t_U\)) | 0 | −6.2 \(\pm\) 1.0 | — |
+| One common SFH grid | — | −6.2 \(\pm\) 1.0 | — |
 | Prior only (Planck18) | −11.4 | −5.0 | 0.431 |
 
 ## Your words
@@ -48,7 +44,7 @@ Cosmology enters the SFH prior only through the 14 bin edges, ending at \(t_U\).
 
 ## References
 
-- [DR3 348-galaxy sample](results/dr3-more-galaxies-2026-11-16/REPORT.md), [DR2 chronometer & rest-frame windows](results/chronometer-135-2026-11-10/REPORT.md) ([per-fit ranges](results/chronometer-135-2026-11-10/per-fit.csv)), [DR2 targets](results/dr2-refit-2026-10-12/targets.json), [SDSS 50 fits](results/sdss-50-2026-11-24/t_481e53cf-detail.md), [SDSS SFH-grid cosmology](results/sdss-prior-cosmology-2026-11-24/t_ab1e0a67-detail.md).
+- [DR3 348](results/dr3-more-galaxies-2026-11-16/REPORT.md), [DR2 windows](results/chronometer-135-2026-11-10/REPORT.md) ([ranges](results/chronometer-135-2026-11-10/per-fit.csv)), [DR2 README](data/raw/legac_dr2/README.md), [targets](results/dr2-refit-2026-10-12/targets.json), [SDSS 50](results/sdss-50-2026-11-24/t_481e53cf-detail.md), [SDSS prior](results/sdss-prior-cosmology-2026-11-24/t_ab1e0a67-detail.md).
 
 ## Decisions
 
