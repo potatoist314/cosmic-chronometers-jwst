@@ -53,12 +53,16 @@ CACHE_VOLUME = 'ceridwen-xla-cache'
 CACHE = Path('/xla-cache')  # <cache key>.tar: one cell setup's JAX compile cache
 RESULT_VOLUME = 'ceridwen-results'
 KEPT = Path('/kept')  # <run>/<cell index>.tar.gz: one finished fit, until experiment.py has it
-FITS_PER_GPU = 4  # cached fits sharing one GPU (results/hillclimb-2026-10-14/LEDGER.md entries 15, 18)
+FITS_PER_GPU = 4  # fits sharing one GPU (results/hillclimb-2026-10-14/LEDGER.md entries 15, 18; SHARED_BATCH_GPUS)
 MAX_CONTAINERS = 10  # Starter plan, "10 GPU concurrency": https://modal.com/pricing (read 2026-10-15)
 MPS = {'CUDA_MPS_PIPE_DIRECTORY': '/tmp/mps-pipe', 'CUDA_MPS_LOG_DIRECTORY': '/tmp/mps-log'}
 REMOTE = '/workspace/cosmic-chronometers-jwst'  # vast.REMOTE_ROOT: the settings name grids under REMOTE/grid
 CPU_CORES = 2.0
 BATCH_CACHE = Path('/tmp/xla/batch')  # the compile cache of batch(), shared by its fits
+# GPUs on which batch() fits FITS_PER_GPU cells side by side: on an A100-SXM4-40GB the 10 fits that shared the GPU,
+# autotuning as they went, are bitwise equal to the same fits alone (results/hillclimb-one-program-2026-11-23/ab-02);
+# on an L40S, fits that autotuned on a shared GPU left the solo sampler path (hillclimb-2026-10-14 LEDGER entry 14).
+SHARED_BATCH_GPUS = ('A100',)
 # experiment.py remote logs this line as each fit of a several-cell config ends (FIT_DONE, FIT_FAILED).
 FIT_ENDED = re.compile(r'\d\d:\d\d:\d\d fit (done|failed): ([^:\s]+)')
 MEMORY_GIB = 16
@@ -115,9 +119,8 @@ def mps():
 def schedule(cells, cached, fit_one, save, fit_batch, sharing=mps):
     """Fit each cell once; returns {index: record}.
 
-    The cells without a saved compile cache fit first, alone on the GPU, one after another in one kernel
-    on one empty cache (fit_batch): XLA times its autotuning candidates, and on a shared GPU it picks
-    differently (LEDGER entry 14). Each fit after the first skips the kernel start-up and most compiles
+    The cells without a saved compile cache fit first on one empty cache (fit_batch, see batch). Each fit
+    after the first of a kernel skips the kernel start-up and most compiles
     (results/speedups-hillclimb-2026-11-17/LEDGER.md entry 1). Their cache is not saved: JAX keys each
     program by the cache directory's path, so it would serve no single cell's key. The cached cells then
     share the GPU, FITS_PER_GPU at a time, reading their caches. If a shared fit autotuned any fusion, its
@@ -161,44 +164,62 @@ def stage(root, name, command, environment, each=None):
         return process.wait()
 
 
-def batch(root, cells, environment, ended):
-    """Cells one after another in one kernel (experiment.py remote with several cells), on one empty
-    compile cache. As each fit ends, its result goes to results/<index> and its lines of the stage log to
-    fit-<index>.log, where fit_cell leaves them, and `ended(cell, record)` is called. Returns {index: record}."""
+def batch(root, cells, environment, ended, share=1):
+    """Cells on one empty compile cache. With share 1, all cells fit one after another in one kernel
+    (experiment.py remote with several cells). With more, the first cell of each arm fits so, alone on the
+    GPU; the other cells then fit in `share` kernels side by side under MPS, each reading and adding to the
+    same cache (results/hillclimb-one-program-2026-11-23/ab-02: 12 fresh fits 532 s against 751 s). As each
+    fit ends, its result goes to results/<index> and its lines of the stage log to fit-<index>.log, where
+    fit_cell leaves them, and `ended(cell, record)` is called. A record's `tuned` and `compiled` count the
+    cache entries written during the fit, by its kernel and by any kernel beside it. Returns {index: record}."""
     cache = BATCH_CACHE
     shutil.rmtree(cache, ignore_errors=True)
-    shutil.rmtree(root / 'batch', ignore_errors=True)
+    for output in ['batch', *(f'batch-{n}' for n in range(share))]:
+        shutil.rmtree(root / output, ignore_errors=True)
     cache.mkdir(parents=True)
     tuned = lambda: len(list((cache / 'xla_gpu_per_fusion_autotune_cache_dir').glob('*')))
     compiled = lambda: sum(1 for path in cache.iterdir() if path.is_file())
-    (root / 'config-batch.json').write_text(json.dumps([cell['cell'] for cell in cells]))
     named = {cell['cell']['name']: cell for cell in cells}
-    records, lines, last = {}, [], {'started': time.time(), 'tuned': 0, 'compiled': 0}
-
-    def end(cell, code):
-        index, fit = cell['index'], cell['cell']
-        directory = Path(fit['arm']) / '{object_id}-{spect_id}'.format(**fit['target_metadata'])
-        if (root / 'batch' / directory).exists():
-            shutil.copytree(root / 'batch' / directory, root / 'results' / str(index) / directory, dirs_exist_ok=True)
-        (root / f'fit-{index}.log').write_text(''.join(lines))
-        now = time.time()
-        records[index] = {'exit': code, 'mode': 'batch', 'started': last['started'], 'finished': now,
-                          'tuned': tuned() - last['tuned'], 'compiled': compiled() - last['compiled'], 'final': True}
-        last.update(started=now, tuned=tuned(), compiled=compiled())
-        ended(cell, records[index])
-
-    def each(line):
-        lines.append(line)
-        if match := FIT_ENDED.match(line):
-            end(named[match[2]], 0 if match[1] == 'done' else 1)
-            lines.clear()
-
+    records = {}
     environment = {**environment, 'JAX_COMPILATION_CACHE_DIR': str(cache), 'JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS': '0'}
-    code = stage(root, 'fit-batch', f'SPS_HOME={REMOTE}/external/fsps MPLBACKEND=Agg .venv-ceridwen-gpu/bin/python '
-                 'scripts/experiment.py remote --config config-batch.json --output batch', environment, each)
-    for cell in cells:
-        if cell['index'] not in records:  # the batch stopped before this fit ended
-            end(cell, code or 1)
+
+    def kernel(name, group, extra):
+        """`group` one after another in one kernel, with output in root/<name>."""
+        (root / f'config-{name}.json').write_text(json.dumps([cell['cell'] for cell in group]))
+        lines, last = [], {'started': time.time(), 'tuned': tuned(), 'compiled': compiled()}
+
+        def end(cell, code):
+            index, fit = cell['index'], cell['cell']
+            directory = Path(fit['arm']) / '{object_id}-{spect_id}'.format(**fit['target_metadata'])
+            if (root / name / directory).exists():
+                shutil.copytree(root / name / directory, root / 'results' / str(index) / directory, dirs_exist_ok=True)
+            (root / f'fit-{index}.log').write_text(''.join(lines))
+            now = time.time()
+            records[index] = {'exit': code, 'mode': 'batch', 'kernel': name, 'started': last['started'], 'finished': now,
+                              'tuned': tuned() - last['tuned'], 'compiled': compiled() - last['compiled'], 'final': True}
+            last.update(started=now, tuned=tuned(), compiled=compiled())
+            ended(cell, records[index])
+
+        def each(line):
+            lines.append(line)
+            if match := FIT_ENDED.match(line):
+                end(named[match[2]], 0 if match[1] == 'done' else 1)
+                lines.clear()
+
+        code = stage(root, f'fit-{name}', f'SPS_HOME={REMOTE}/external/fsps MPLBACKEND=Agg .venv-ceridwen-gpu/bin/python '
+                     f'scripts/experiment.py remote --config config-{name}.json --output {name}', {**environment, **extra}, each)
+        for cell in group:
+            if cell['index'] not in records:  # the kernel stopped before this fit ended
+                end(cell, code or 1)
+
+    first = ({cell['cell']['arm']: cell['index'] for cell in reversed(cells)}.values() if share > 1
+             else [cell['index'] for cell in cells])
+    kernel('batch', [cell for cell in cells if cell['index'] in first], {})
+    rest = [cell for cell in cells if cell['index'] not in first]
+    if rest:
+        shared = {**MPS, 'XLA_CLIENT_MEM_FRACTION': f'{0.85 / share:.2f}'}
+        with mps(), ThreadPoolExecutor(share) as pool:
+            list(pool.map(lambda n: kernel(f'batch-{n}', rest[n::share], shared), range(min(share, len(rest)))))
     return records
 
 
@@ -318,7 +339,7 @@ if modal:
 
         def fit_batch(fresh):
             return batch(root, fresh, {**environment, 'CERIDWEN_GRID_PATH': f"{REMOTE}/grid/{fresh[0]['grid']}"},
-                         ended)
+                         ended, FITS_PER_GPU if any(name in gpu for name in SHARED_BATCH_GPUS) else 1)
 
         if not status['exit']['bootstrap']:
             status['cells'] = schedule(cells, lambda key: (CACHE / f'{key}.tar').exists(), fit_one, save,

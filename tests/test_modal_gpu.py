@@ -1,4 +1,5 @@
 """Exercise the Modal backend of experiment.py without Modal calls or a GPU."""
+import contextlib
 import io
 import json
 import tarfile
@@ -267,6 +268,43 @@ def test_batch_gives_each_fit_its_results_log_and_record_as_it_ends(tmp_path, mo
     assert not (tmp_path / 'results/9').exists()
     assert (tmp_path / 'fit-4.log').read_text() == 'fitting fit/M1_1\n23:01:02 fit done: fit/M1_1\n'
     assert (tmp_path / 'fit-9.log').read_text() == 'Traceback: the kernel died\n'
+
+
+def test_shared_batch_fits_the_first_cell_of_each_arm_alone_then_the_rest_side_by_side(tmp_path, monkeypatch):
+    monkeypatch.setattr(modal_gpu, 'BATCH_CACHE', tmp_path / 'xla')
+    cells = [{'index': index, 'grid': '123.h5', 'cell': {**CELL, 'name': f'{arm}/{spect}', 'arm': arm, 'target': spect,
+                                                          'target_metadata': {'object_id': index, 'spect_id': spect}}}
+             for index, (arm, spect) in enumerate([('plain', 'M1_1'), ('cn', 'M1_1'), ('plain', 'M2_2'),
+                                                   ('cn', 'M2_2'), ('plain', 'M3_3'), ('cn', 'M3_3')])]
+    kernels, sharing = {}, []
+
+    def stage(root, name, command, environment, each):
+        group = json.loads((root / f"config-{name.removeprefix('fit-')}.json").read_text())
+        kernels[name] = ([cell['name'] for cell in group], environment.get('XLA_CLIENT_MEM_FRACTION'), bool(sharing))
+        assert environment['JAX_COMPILATION_CACHE_DIR'] == str(tmp_path / 'xla')
+        for fit in group:
+            output = root / name.removeprefix('fit-') / fit['arm'] / f"{fit['target_metadata']['object_id']}-{fit['target']}"
+            output.mkdir(parents=True)
+            (output / 'ceridwen_result.h5').write_text(name)
+            each(f"23:01:02 {exp.FIT_DONE}{fit['name']}\n")
+        return 0
+
+    @contextlib.contextmanager
+    def mps():
+        sharing.append(True)
+        yield
+        sharing.clear()
+
+    monkeypatch.setattr(modal_gpu, 'stage', stage)
+    monkeypatch.setattr(modal_gpu, 'mps', mps)
+    records = modal_gpu.batch(tmp_path, cells, {}, lambda cell, record: None, share=4)
+    assert kernels == {'fit-batch': (['plain/M1_1', 'cn/M1_1'], None, False),
+                       'fit-batch-0': (['plain/M2_2'], '0.21', True), 'fit-batch-1': (['cn/M2_2'], '0.21', True),
+                       'fit-batch-2': (['plain/M3_3'], '0.21', True), 'fit-batch-3': (['cn/M3_3'], '0.21', True)}
+    assert {index: record['kernel'] for index, record in records.items()} == {
+        0: 'batch', 1: 'batch', 2: 'batch-0', 3: 'batch-1', 4: 'batch-2', 5: 'batch-3'}
+    assert all(record['exit'] == 0 and record['final'] for record in records.values())
+    assert (tmp_path / 'results/5/cn/5-M3_3/ceridwen_result.h5').read_text() == 'fit-batch-3'
 
 
 def test_resume_does_not_launch_completed_cells(modal_run):
