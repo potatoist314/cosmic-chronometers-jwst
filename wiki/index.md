@@ -104,6 +104,7 @@ comparison issues; factual configurations and unit limitations remain in the rec
 ## Masking
 
 - `notes/jwst-image-masking.md` — handwritten JWST image-masking workflow, observing context, and seven-page transcription (2026-09-14)
+- `notes/spectral-masks.md` — table of the pixels each chronometer fit removes: flagged pixels, telluric band, Ca II K, Ca II H, Ca I 4227, Na D; range, surveys, reason, source (2026-11-24)
 - `/wiki/masking/` — dedicated image-masking category, linked from the sidebar
 
 ## Sample and data
