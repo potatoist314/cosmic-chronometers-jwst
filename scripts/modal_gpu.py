@@ -63,7 +63,7 @@ BATCH_CACHE = Path('/tmp/xla/batch')  # the compile cache of batch(), shared by 
 # autotuning as they went, are bitwise equal to the same fits alone (results/hillclimb-one-program-2026-11-23/ab-02);
 # on an L40S, fits that autotuned on a shared GPU left the solo sampler path (hillclimb-2026-10-14 LEDGER entry 14).
 SHARED_BATCH_GPUS = ('A100',)
-# experiment.py remote logs this line as each fit of a several-cell config ends (FIT_DONE, FIT_FAILED).
+# experiment.py remote logs this line as each fit ends (FIT_DONE, FIT_FAILED for a several-cell config).
 FIT_ENDED = re.compile(r'\d\d:\d\d:\d\d fit (done|failed): ([^:\s]+)')
 MEMORY_GIB = 16
 TIMEOUT_SECONDS = 6 * 3600
