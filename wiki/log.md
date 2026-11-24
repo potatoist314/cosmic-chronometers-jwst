@@ -1635,3 +1635,8 @@
 
 - Pages: `research/questions/q-spectral-range.md`, `index.md`
 - Change: new question page recording the current 348-galaxy LEGA-C DR3 sample (4,057 spectra to 371 covering 4074.5–4666.1 Å, 348 fitted), the 10 Nov DR2 135-galaxy window-choice run, rest-frame ranges and age–redshift slopes across LEGA-C and SDSS 50 fits, and the SDSS SFH-grid cosmology test; card t_16b5dd12.
+
+## [2026-11-24] reference | Spectral masks in the chronometer fits
+
+- Pages: `notes/spectral-masks.md`, `index.md`
+- Change: new Masking note with one table row per mask in use (flagged pixels, telluric band, Ca II K, Ca II H, Ca I 4227, Na D): range, surveys, reason on record, source. The same table is in `.agents/skills/chronometer-checklist/SKILL.md`.
