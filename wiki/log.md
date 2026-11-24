@@ -1620,3 +1620,8 @@
 
 - Pages: `notes/meeting-2026-11-20-sandro.md`
 - Change: transcribed and lightly rephrased 9-page handwritten notes (`reports/meeting-2026-11-20-sandro.pdf`) with verbatim clarifications; card t_b2c873b9.
+
+## [2026-11-24] codebase | Fresh Modal fits share the A100
+
+- Pages: `notes/vast-ai-gpu-workflow.md`
+- Change: fits without a saved compile cache run 4 per A100 after the first fit of each arm (`scripts/modal_gpu.py` `batch`); card t_e67124c9.
