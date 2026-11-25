@@ -72,3 +72,11 @@ host_id,outcome,gpu,date,run,reason
 467312,good,RTX 5090,2026-11-06,results/bench-5090-float32-2026-11-06/run-wavelength-support/manifest.json,instance 59484083 finished 2 fits
 105119,good,RTX 5090,2026-11-21,results/jwst-pilot-2026-11-20/run-vast/manifest.json,instance 61789149 finished 10 fits
 403004,poor,RTX 5090,2026-11-21,results/jwst-pilot-2026-11-20/run-vast/manifest.json,instance 61788412 became unavailable after the image loaded
+90277,poor,RTX 5090,2026-11-25,results/sdss-carbon-mask-15gyr-2026-11-25/part-1/run/manifest.json,bid instance 62554277 stayed stopped and did not boot in 20 min
+675778,poor,RTX 5090,2026-11-25,results/sdss-carbon-mask-15gyr-2026-11-25/part-1/run/manifest.json,instance 62556517 image pull stalled for 4.5 min
+614268,good,RTX 5090,2026-11-25,results/sdss-carbon-mask-15gyr-2026-11-25/part-1/run/manifest.json,instance 62557180 finished 10 fits
+467312,good,RTX 5090,2026-11-25,results/sdss-carbon-mask-15gyr-2026-11-25/part-2/run/manifest.json,instance 62554362 finished 10 fits
+370354,good,RTX 5090,2026-11-25,results/sdss-carbon-mask-15gyr-2026-11-25/part-3/run/manifest.json,instance 62554423 finished 10 fits
+337559,good,RTX 5090,2026-11-25,results/sdss-carbon-mask-15gyr-2026-11-25/part-4/run/manifest.json,instance 62554517 finished 10 fits
+303447,poor,RTX 5090,2026-11-25,results/sdss-carbon-mask-15gyr-2026-11-25/part-5/run/manifest.json,instance 62554585 boot stalled for 5 min after the image pull
+619223,good,RTX 5090,2026-11-25,results/sdss-carbon-mask-15gyr-2026-11-25/part-5/run/manifest.json,instance 62555379 finished 10 fits

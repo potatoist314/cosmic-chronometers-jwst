@@ -108,6 +108,7 @@ The column "Manifest folder" is the folder of `manifest.json`, below `results/`.
 | SDSS DR17 | `sdss-wide-range-2026-11-24/run` | `planck18`, `h0_50`, `h0_90` | 50 for each arm | Free |
 | SDSS DR17 | `sdss-wide-fixed-age-2026-11-24/run` | `age15` | 50 | Free |
 | SDSS DR17 | `sdss-mask-nad-2026-11-24/run` | `age15_nad` | 50 | Free |
+| SDSS DR17 | `sdss-carbon-mask-15gyr-2026-11-25/part-1/run` to `part-5/run` | `age15_nad_carbon` | 10 in each manifest, 50 in all | Free |
 | LEGA-C DR3 | `legac-dr3-2026-11-11/test-set/run` | `dr3_full`, `dr3_window` | 10 for each arm | Fixed |
 | LEGA-C DR3 | `legac-dr3-2026-11-11/window-194/run` | `dr3_plain_w` | 194 | Fixed |
 | LEGA-C DR3 | `legac-dr3-2026-11-11/window-194/run` | `dr3_cn_free_w` | 194 | Free |
