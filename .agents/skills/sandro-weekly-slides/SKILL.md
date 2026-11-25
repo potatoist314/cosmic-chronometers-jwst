@@ -27,6 +27,8 @@ All words are from 2026-11-25. "Question" shows a question that the lead asked h
 - **Laptop asleep.** Question: "The slides are made on Thursday evening on this laptop. What if the laptop is asleep or off then?" Picked: "Run when it wakes".
 - **Verdict on the first version** (8 slides, 7 open questions): "i have significant issues with this. too many open questions, not enough context (big issue!), too verbose"
 - **Detail.** "more detail to include: wavelength ranges and lines per survey, what lines are masked, redshift ranges" and "also show the exact age ranges for bins"
+- **Free parameters.** "carbon very important - this free parameter stuff is equally important to be tracked as compared to masks"
+- **C and N.** "in skill and slides you need to explain how cn free works"
 
 Facts of the run. They are not his rules. After the verdict the lead rebuilt the deck with 6 slides and 3 questions. The lead added the slide `context` ("Where we are": goal, method, problem). Each slide got one grey line (`class="ctx"`) that tells what was done and on which galaxies. Each question got one line that tells why it is important (`class="qwhy"`). The slides `problem`, `slope`, `prior-us` and `decided` were removed. His next message asked for a skill "for making these slides". The two detail slides brought the deck to 8 slides: `cover`, `context`, `data`, `bins`, `evidence`, `why`, `prior`, `questions`.
 
@@ -68,10 +70,13 @@ Slide `data`, "Data and what is fitted". One column for each survey. Wavelengths
 | Range fitted | `.agents/skills/chronometer-checklist/SKILL.md`, section "Masked pixels", line "Pixels outside the window are not fitted" |
 | Lines fitted | Same skill, "Absorption features, rest 3600 to 7100 Å". Give the features that are in the range fitted and not masked |
 | Lines masked | Same skill, table in the section "Masked pixels" (columns "Surveys" and "Physical reason") |
+| Abundances free | Same skill, section "Free and fixed parameters": the table of parameters, and the table "C and N in each run". For each run on the slide, read `settings.abundance_response` of each fit in its `manifest.json`. Do not use the `priors` block of the manifest |
 
 The memory file `~/.claude/projects/-Users-liuhao-Downloads-Astro-project/memory/current-samples-and-spectral-window.md` names the result folder of each sample. Read it first. The folders in the table are those that it names on 2026-11-25.
 
 The slide of the run gives the reason for the masks in one line below the table (`class="src"`).
+
+Slide `cnfree`, "How free C and N work". The deck holds this slide after the slide `data` in `order` of `project/deck.json`. Its file is `project/slides/cnfree.html`. The lead added it on 2026-11-25. The source of each statement on it is the section "How free C and N work" of `.agents/skills/chronometer-checklist/SKILL.md`. That section gives the lines of `ceridwen/ceridwen/ssps/abundance_response.py` and the alf files.
 
 Slide `bins`, "Age bins of the star formation history". It shows each bin edge in Gyr.
 
