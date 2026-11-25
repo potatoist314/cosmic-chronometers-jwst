@@ -71,7 +71,7 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 - `research/questions/q-afe-age-chronometer.md` — low \([\alpha/\mathrm{Fe}]\), Mg b and the chronometer age slope: LEGA-C DR3 window slopes (plain, C/N free, carbon mask) and the mock chronometer, figures from `scripts/plot_afe_age_chronometer.py`; DR2 window results of 10–11 Nov 2026 collapsed
 - `research/questions/q-progenitor-bias.md` — progenitor bias in the chronometer slope; quenching-time cut from the fitted SFHs, tests in progress
 - `research/questions/q-sigma-term.md` — the \(\log\sigma_\star\) term in the chronometer line: what it is, why it lowers \(H\), binning comparison, overfitting checks
-- `research/questions/q-spectral-range.md` — rest-frame spectral range across LEGA-C and SDSS fits, true LEGA-C counts, and SFH-grid cosmology effects on ages
+- `research/questions/q-spectral-range.md` — rest-frame spectral range and age slopes across LEGA-C and SDSS fits; links the seven 2026-11-24 experiment records
 - `research/questions/q-external-validation.md` — fit outputs against independent literature measurements
 - `research/questions/q-sample-selection.md` — DR2 inputs and inferred quiescence
 - `research/questions/q-population-results.md` — both DR2 runs, population relations and residuals
@@ -85,6 +85,13 @@ Build with `python3 wiki/build.py`. Existing reasoning is not reconstructed.
 - `research/experiments/e-quiescent-speedups.md` — Ten-galaxy production-defaults fits on the combined speedups; seed 20260832
 - `research/experiments/e-ceridwen-upstream-merge.md` — Ceridwen upstream merge: CPU equivalence, speed and ten-galaxy GPU check; ceridwen `729fba6`
 - `research/experiments/e-dr2-refit.md` — DR2 quiescent refit on October production defaults; 135 of 180 fitted
+- `research/experiments/e-sfh-grid-prior.md` — how much of the fitted age the SFH bins and prior set: SDSS and LEGA-C bin tests, age against [Fe/H]
+- `research/experiments/e-sdss-wide-range.md` — SDSS 50 on rest 3604–7079 Å and 15 Gyr SFH bins; ages above the Universe age; oldest per redshift bin
+- `research/experiments/e-sdss-nad-mask.md` — SDSS 50 with Na D masked: ages 1.09 Gyr younger, slope −10.0 ± 2.9
+- `research/experiments/e-sdss-sample-checks.md` — SDSS 50: velocity dispersion, mass, recent star formation, S/N and fibre coverage against the age slope
+- `research/experiments/e-legac-15gyr-grid.md` — LEGA-C 60 on 15 Gyr SFH bins, the 4000 Å break, sampler steps and fake galaxies
+- `research/experiments/e-legac-full-range.md` — LEGA-C 36 on the full spectrum and on 10 Gyr SFH bins
+- `research/experiments/e-park2025-model-limits.md` — Park et al. 2025 model limits: line list tuned from 4728 Å, lockstep α, no free Na
 
 The 28 existing experiment entries cover all 11 analysis notes and all current
 and archived Ceridwen result groups. `source_notes` provides backlinks;

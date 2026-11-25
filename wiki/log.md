@@ -1645,3 +1645,8 @@
 
 - Pages: `notes/spectral-masks.md`
 - Change: Ca II K and Ca I 4227 rows add the §2.4 sentence of the published Park et al. 2025 (ApJ 994:165) on Ca indices as a reason; the citation is the published paper in place of arXiv:2410.21375; card t_e21a09ea.
+
+## [2026-11-24] ingest | Spectral range, SFH bins and age slopes
+
+- Pages: `research/questions/q-spectral-range.md`, `research/experiments/e-sfh-grid-prior.md`, `research/experiments/e-sdss-wide-range.md`, `research/experiments/e-sdss-nad-mask.md`, `research/experiments/e-sdss-sample-checks.md`, `research/experiments/e-legac-15gyr-grid.md`, `research/experiments/e-legac-full-range.md`, `research/experiments/e-park2025-model-limits.md`, `index.md`
+- Change: question page rewritten with an answer, a rest-range table and an age-slope table against Planck18; seven experiment records for the 2026-11-24 findings, with Liu Hao's words and links to the SFH-prior and SFH-bin roadmap items; card t_66785537.
