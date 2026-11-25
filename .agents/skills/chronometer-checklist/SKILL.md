@@ -48,9 +48,9 @@ State on 2026-11-24. The masks are in `SETTINGS` (cell 2) and cell 6 of `noteboo
 |---|---|---|---|---|
 | Flagged pixels | LEGA-C: `QUAL` = 1 or error = 0. SDSS: `IVAR` = 0 or BRIGHTSKY set. | LEGA-C DR3, SDSS DR17 | LEGA-C: an imperfect sky subtraction at the pixel. SDSS: very bad conditions, or sky brighter than flux + 10 × error. | LEGA-C DR3 release description (ESO), data format. SDSS DR17 SPPIXMASK, https://www.sdss4.org/dr17/algorithms/bitmasks/ |
 | Telluric band | 7590 to 7660 Å observed, air (7592.09 to 7662.11 Å vacuum) | LEGA-C DR3, SDSS DR17 | O2 A band of the atmosphere of the Earth. The notebook comment gives no reason. The Model page of the wiki says "A band". | van der Wel et al. 2021, arXiv:2108.00744, §2.2.2: O2 templates use 7580 to 7710 Å. Kimeswenger et al. 2021, arXiv:2011.10845, §1: A band 7596.0 to 7713.3 Å. |
-| Ca II K | 3915.08 to 3954.46 Å rest (3934.77 Å ± 1500 km/s) | SDSS DR17. LEGA-C DR3 only in the window that starts at 3850.0 Å. | His order, 2026-09-30: "i was told to mask all Ca". Papers: the grid changes Ca with [α/Fe], and in early-type galaxies "Ca tracks Fe". | `wiki/research/experiments/e-mask-all-ca.md`. P25 §2.1. C14 §5.2. |
+| Ca II K | 3915.08 to 3954.46 Å rest (3934.77 Å ± 1500 km/s) | SDSS DR17. LEGA-C DR3 only in the window that starts at 3850.0 Å. | His order, 2026-09-30: "i was told to mask all Ca". Papers: the grid changes Ca with [α/Fe], and in early-type galaxies "Ca tracks Fe". P25 §2.4: "Since our α-enhanced models do not track individual α abundances, one should be careful in fitting spectra including Ca indices." | `wiki/research/experiments/e-mask-all-ca.md`. P25 §2.1, §2.4. C14 §5.2. |
 | Ca II H, with Hε | 3946.75 to 3993.18 Å rest (3966.6 and 3973.3 Å ± 1500 km/s) | Same as Ca II K | Ca II H: same as Ca II K. Hε (3971.20 Å) and [Ne III] 3968.65 Å are in the range. No record gives a reason to mask Hε. | Same as Ca II K. Hε: NIST ASD. [Ne III]: FSPS `emlines_info.dat`. |
-| Ca I 4227 | 4206.77 to 4249.07 Å rest (4227.92 Å ± 1500 km/s) | LEGA-C DR3, SDSS DR17 | Same order as Ca II K. Jonah Powley, meeting of 2026-09-17: "Ca I can be masked because of potential IGM contamination". Papers: Ca4227 becomes much stronger with [α/Fe] in the model. | `e-mask-all-ca.md`. P25 §3.2.3. C14 §5.2. |
+| Ca I 4227 | 4206.77 to 4249.07 Å rest (4227.92 Å ± 1500 km/s) | LEGA-C DR3, SDSS DR17 | Same order as Ca II K. Jonah Powley, meeting of 2026-09-17: "Ca I can be masked because of potential IGM contamination". Papers: Ca4227 becomes much stronger with [α/Fe] in the model. P25 §2.4: "Since our α-enhanced models do not track individual α abundances, one should be careful in fitting spectra including Ca indices." | `e-mask-all-ca.md`. P25 §2.4, §3.2.3. C14 §5.2. |
 | Na D | 5878.50 to 5911.01 Å rest (Lick band 5876.875 to 5909.375 Å air) | SDSS DR17. The LEGA-C windows end at 4666.1 Å. | His order, 2026-11-24: "okay, mask na d". The model has no free Na. [Na/Fe] is −0.16 to +0.43 in early-type galaxies. Interstellar gas absorbs at 5895 Å. With Na D fitted, the data are below the model in 49 of 49 SDSS galaxies. | C14 §5.2. Trager et al. 1998, arXiv:astro-ph/9712258, Table 2. `~/.claude/scripts/hermes-bridge/results/t_dcbba686-detail.md` |
 
 P25 and C14 are defined in the next section.
@@ -65,20 +65,53 @@ P25 and C14 are defined in the next section.
 
 Liu Hao, 2026-11-24: "we need to have a comprehensive understanding of the park alpha enhanced sps / isochrone paper and the model limitations and save it in the chronoemter skill".
 
-The full section, with each source reference, is `references/stellar-population-model.md`. Read it before you make a statement about the model. P25 is Park et al. 2025, ApJ 994:165, arXiv:2410.21375v1. D26 is Dotter et al. 2026, arXiv:2602.22012v1. C14 is Conroy, Graves & van Dokkum 2014, ApJ 780:33.
+The full section, with each source reference, is `references/stellar-population-model.md`. Read it before you make a statement about the model. P25 is Park et al. 2025, ApJ 994:165, the published paper (`papers/spectral fitting/Alpha-MC - Self-consistent Alpha-enhanced Stellar Population Models Covering a Wide Range of Age, Metallicity, and Wavelength (ApJ 994 165, published).pdf`). D26 is Dotter et al. 2026, arXiv:2602.22012v1. C14 is Conroy, Graves & van Dokkum 2014, ApJ 780:33.
 
 Summary:
 
-1. The grid is α-MC: MIST isochrones, C3K v2.3 spectra and one Kroupa IMF (P25 §2.1 to §2.3).
+1. The grid is α-MC: MIST v2.5 isochrones, C3K v2.3 spectra and one Kroupa IMF (P25 §2.1 to §2.3).
 2. One [α/Fe] sets O, Ne, Mg, Si, S, Ar, Ca and Ti together. No α element is free alone (P25 §2.1, §2.4).
 3. C and N are solar-scaled in the grid (P25 §2.4). Ceridwen adds the alf C and N response with free `cfe` and `nfe`. There is no free Na.
-4. The line list is tuned for 4728 Å to 1 µm only (P25 §2.2). The LEGA-C window 4074.5 to 4666.1 Å is fully below 4728 Å.
+4. The line list is "tuned to the observed high-resolution spectra of the Sun and Arcturus for 4728 Å–1 μm" (P25 §2.2). The paper states nothing for shorter wavelengths. The LEGA-C window 4074.5 to 4666.1 Å is fully below 4728 Å. See "Blue of 4728 Å" below.
 5. `logzsol` is [Fe/H], not total metallicity (`ceridwen/docs/afe.md:47-51`).
 6. The age axis has 107 nodes with a step of 0.05 dex (P25 §2.3). One step is 12.2 % in age. Four nodes are older than 13.8 Gyr.
 7. `SedModel` refuses an SFH node more than 0.5 % older than the Universe at the galaxy redshift (`ceridwen/ceridwen/model/model.py:232`).
-8. The model has no post-AGB stars, no white dwarfs and no full horizontal branch (P25 §3.1 and D26 §2.7, §3.4).
+8. The model has no post-AGB stars, no white dwarfs and no full horizontal branch (D26 §2.7, §3.4).
 9. The spectra are 1D, plane-parallel and LTE (P25 §2.4). Opacity tables are missing at the metal-rich corner (P25 §2.1).
 10. P25 shows no comparison with observed galaxy spectra (P25 §1). C2 4668 is much weaker than in models made from observed stars (P25 §3.3.2).
+11. P25 §2.4 names five caveats: initial versus surface abundances, one [α/Fe] for all α elements, LTE, constant microturbulence, and single-star evolution. On Ca: "Since our α-enhanced models do not track individual α abundances, one should be careful in fitting spectra including Ca indices." The isochrones "are based on the evolution of single stars".
+
+### Blue of 4728 Å
+
+Liu Hao, 2026-11-24: "okay take the published one. no tuning below 4728 is concerning"
+
+- **Tuning.** P25 §2.2: "The latest atomic and molecular line list has been provided by R. Kurucz, and it has been tuned to the observed high-resolution spectra of the Sun and Arcturus for 4728 Å–1 μm, as described in P. A. Cargile et al. (2020)." The v1 text is the same.
+- **Accuracy.** No source read gives a measured accuracy of C3K v2.3 at 3600 to 4728 Å. Cargile et al. 2020 §2.1.2 gives no wavelength range for the tuning and tests 5150 to 5350 Å.
+
+Published tests of other synthetic spectra in the blue:
+
+| Source | Spectra tested | Finding | Size |
+|---|---|---|---|
+| Knowles et al. 2019, MNRAS 486, 1814 | Conroy ATLAS12 + SYNTHE before the tuning, Coelho 2014, and ATLAS9 + ASSET, against MILES stars | "C2 4668 is systematically underestimated by the models compared to observations". | ATLAS9 + ASSET cool giants, rms about Theory = Obs (Table 7): HδA 2.86 Å, HγA 2.54 Å, C2 4668 4.03 Å. Mgb 0.77 Å, Fe5270 1.08 Å. |
+| C14 | Synthetic responses, used differentially, against SDSS early-type stacks | Systematics at 4500 and 4675 Å, "probably due to features that are not well-captured in our synthetic spectral library". | Median absolute residual 0.1 % in the red. 0.16 % at low σ to 0.25 % at high σ in the blue. |
+| Coelho 2014, arXiv:1404.3243 | ATLAS9 and MARCS + SYNTHE, against MILES fluxes | "features below 4200 Å corresponding to missing opacities". | Within ∼5 % for T_eff ≥ 4750 K. "∼ 50% at the coolest interval". |
+| Bertone et al. 2008, A&A 485, 823 | ATLAS9 + SYNTHE, against Vega, the Sun, Arcturus and ELODIE stars | "increasingly poor match performances of synthetic models when fitting the observed SEDs at shorter wavelengths". | Residual scatter 0.7 %, 4.5 % and 8.8 % for Vega, the Sun and Arcturus at R = 100 000. |
+
+Our fits, 50 SDSS galaxies (`results/sdss-mask-nad-2026-11-24`), median of fits, blue of 4728 Å against red:
+
+- χ² per pixel is 1.21 against 1.07. Blue is higher in 36 of 50 fits.
+- Scatter above the catalogue noise is 2.8 % against 1.0 % of the model flux.
+- The largest band offset is at 4600 to 4728 Å, the C2 4668 band. The mean is −0.48σ at 4600 to 4700 Å and −0.87σ at 4666.1 to 4728 Å. χ² per pixel is 1.72 and 1.82.
+- The LEGA-C window 4074.5 to 4666.1 Å is fully below 4728 Å.
+
+Source: `~/.claude/scripts/hermes-bridge/results/t_fe81f500-detail.md`, sections 4 and 5.
+
+The residual test cannot show:
+
+- **Smooth or broadband misfit.** The order-10 calibration polynomial removes it. In LEGA-C it removes a 100 Å band mean by construction.
+- **Misfit that the free parameters absorb.** A wrong line strength can move age, [Fe/H], [α/Fe], C, N, σ or dust. The residual then stays small.
+- **Absolute accuracy.** χ² per pixel grows with S/N. It also assumes that the catalogue noise is correct.
+- **Masked features.** Ca II H and K, Hε, Ca4227 and Na D have no fitted pixel.
 
 ### Absorption features, rest 3600 to 7100 Å
 
@@ -88,12 +121,12 @@ Last column: the feature has a basis for a mask if (a) it depends on an abundanc
 
 Measured in massive early-type galaxies (C14 abstract, §5.2, §8): [Fe/H] changes by < 0.1 dex over the sample. Mg and O go from ≈ 0.0 at low σ to ≈ 0.25 at high σ. Si and Ti rise less. "Ca tracks Fe rather than O". [C/Fe] and [N/Fe] are above 0.2 at high σ. [Na/Fe] goes from −0.16 to +0.43. At z ~ 0.7 the patterns are "strikingly similar to those at z ~ 0" (B23 abstract).
 
-| Feature | Model behaviour when [α/Fe] rises at fixed [Fe/H] (P25 §3.2.3, Figs. 9-11) | Depends on | Evidence for massive ellipticals | Basis for a mask |
+| Feature | Model behaviour when [α/Fe] rises at fixed [Fe/H] (P25 §3.2.3, Figs. 10-12) | Depends on | Evidence for massive ellipticals | Basis for a mask |
 |---|---|---|---|---|
 | H8 to H16, Hδ, Hγ | Produced. Hγ_A and Hδ_A get weaker. More sensitive than Hβ. | Age, [Fe/H], [α/Fe] | Not stated in the sources read. | None found |
 | Hβ | Produced. At [Fe/H] = 0: no clear change above 1 Gyr. Weaker at log age 8.5 to 9. | Age, [Fe/H] | Not stated. | None found |
 | Hα | Produced. P25 does not discuss it. | Not stated | Not stated. | None found |
-| Ca II H and K | Deeper (P25 §3.2.1, Fig. 4). | Ca, tied to [α/Fe] | Ca follows Fe, not Mg (C14). | Yes, (a) |
+| Ca II H and K | Deeper (P25 §3.2.1, Fig. 5). | Ca, tied to [α/Fe] | Ca follows Fe, not Mg (C14). | Yes, (a) |
 | 4000 Å break | Produced (D4000, Bruzual 1983). Size of change: not stated in text. | Not stated | Not stated. | None found |
 | CN1, CN2 | Weaker. | C, N, O | [C/Fe], [N/Fe] > 0.2 at high σ (C14 §5.2, Fig. 13). | Yes, (a), unless the C/N response is on |
 | G4300 | Weaker. | C | Same as CN. | Yes, (a), unless the C/N response is on |

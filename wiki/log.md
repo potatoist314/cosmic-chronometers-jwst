@@ -1640,3 +1640,8 @@
 
 - Pages: `notes/spectral-masks.md`, `index.md`
 - Change: new Masking note with one table row per mask in use (flagged pixels, telluric band, Ca II K, Ca II H, Ca I 4227, Na D): range, surveys, reason on record, source. The same table is in `.agents/skills/chronometer-checklist/SKILL.md`.
+
+## [2026-11-24] reference | Published Park et al. 2025 in the Ca mask rows
+
+- Pages: `notes/spectral-masks.md`
+- Change: Ca II K and Ca I 4227 rows add the §2.4 sentence of the published Park et al. 2025 (ApJ 994:165) on Ca indices as a reason; the citation is the published paper in place of arXiv:2410.21375; card t_e21a09ea.

@@ -1,10 +1,10 @@
-Copied without change on 2026-11-24 from Part A of `~/.claude/scripts/hermes-bridge/results/t_3de1c8a9-detail.md`. A file name such as `t_0c96cd9b-detail.md` refers to a file in `~/.claude/scripts/hermes-bridge/results/`.
+Copied on 2026-11-24 from Part A of `~/.claude/scripts/hermes-bridge/results/t_3de1c8a9-detail.md`. Corrected on 2026-11-24 to the published P25, from sections 2 and 3 of `t_fe81f500-detail.md`. A file name such as `t_0c96cd9b-detail.md` refers to a file in `~/.claude/scripts/hermes-bridge/results/`.
 
 ## Stellar population model: what it contains and its limits
 
 Sources, with the short names used below:
 
-- **P25**: Park, Conroy, Johnson, Leja, Dotter, Cargile 2025, "α-MC", ApJ 994:165. Read as arXiv:2410.21375v1, the local PDF in `papers/spectral fitting/`. Section and figure numbers are those of v1.
+- **P25**: Park, Conroy, Johnson, Leja, Dotter, Cargile 2025, "α-MC", ApJ 994:165, doi:10.3847/1538-4357/ae0cba. Read as the published PDF, `papers/spectral fitting/Alpha-MC - Self-consistent Alpha-enhanced Stellar Population Models Covering a Wide Range of Age, Metallicity, and Wavelength (ApJ 994 165, published).pdf`. Section numbers are the same as in arXiv:2410.21375v1. Figure numbers are the published ones (v1 number + 1).
 - **D26**: Dotter et al. 2026, "MIST II", arXiv:2602.22012v1. This is the isochrone paper that P25 cites as "in prep".
 - **C14**: Conroy, Graves & van Dokkum 2014, ApJ 780:33 (local PDF). Stacked SDSS early-type spectra, σ = 90 to 300 km/s.
 - **B23**: Beverage et al. 2023, arXiv:2303.03412 (local PDF). 135 LEGA-C quiescent galaxies at z ~ 0.7.
@@ -17,9 +17,9 @@ Sources, with the short names used below:
 | Item | Value | Source |
 |---|---|---|
 | Isochrones | MIST, computed with MESA. Masses 0.1 to 300 M_sun. Each track ends at the end of the AGB (M < 8 M_sun) or at the end of carbon burning (M ≥ 8 M_sun). | P25 §2.1 |
-| Isochrone version | The paper says "MIST v2.3". The grid file says "MIST v2.5 (aMIST, alpha-variable)". | P25 §2.1; grid `isoc_type` |
+| Isochrone version | The paper says "MIST v2.5". The grid file says "MIST v2.5 (aMIST, alpha-variable)". They agree. | P25 §1, §2.1; grid `isoc_type` |
 | Stellar spectra | C3K v2.3. ATLAS12 atmospheres and SYNTHE spectra. 1D, plane-parallel, LTE. Microturbulence 1 km/s for all stars. | P25 §2.2, §2.4 |
-| Line list | Tuned to the Sun and Arcturus for 4728 Å to 1 µm only. | P25 §2.2, Fig. 1 |
+| Line list | "tuned to the observed high-resolution spectra of the Sun and Arcturus for 4728 Å–1 μm, as described in P. A. Cargile et al. (2020)". The paper does not say "only". It states nothing for other wavelengths. | P25 §2.2, Fig. 2 caption |
 | Stellar grid | T_eff 2500 to 50,000 K. log g −1.0 to 5.5 in steps of 0.5. | P25 §2.2 |
 | IMF | Kroupa (2001), lower mass limit 0.1 M_sun. One IMF only. | P25 §2.3; grid `imf_name` |
 | Enhanced elements | O, Ne, Mg, Si, S, Ar, Ca, Ti. All change by the same [α/Fe] ("in lockstep"). | P25 §2.1, §2.4; D26 §2.1 |
@@ -31,21 +31,22 @@ Sources, with the short names used below:
 | [α/Fe] | −0.2, 0.0, +0.2, +0.4, +0.6. | P25 abstract; grid `ssp_afe` |
 | Age | log(age/yr) 5.0 to 10.3, step 0.05, 107 nodes. | P25 §2.3; grid `ssp_lg_age_gyr` |
 | Wavelength | 100 Å to 30 µm. High resolution only for 0.1 to 2.5 µm. | P25 §2.3, §4 |
-| Resolution, paper | R = 3000 for 0.3 to 1.0 µm. R = 500 for 0.1 to 0.3 µm and 1.0 to 2.5 µm. R = 200 below 0.1 µm. R = 50 above 2.5 µm. | P25 Fig. 1 |
+| Resolution, paper | R = 3000 for 0.3 to 1.0 µm. R = 500 for 0.1 to 0.3 µm and 1.0 to 2.5 µm. R = 200 below 0.1 µm. R = 50 above 2.5 µm. | P25 Fig. 2 |
 | Resolution, our grid | λ/Δλ = 6000 per pixel from 3001 to 9997 Å. Two-pixel limit σ_v = 42.44 km/s. | grid `ssp_resolution`; `ceridwen/docs/afe.md:48-50` |
 
 How Ceridwen reads the grid:
 
 - `logzsol` is [Fe/H], not total metallicity. The native axis is log10 Z = [Fe/H] + log10(0.0185). Source: `ceridwen/docs/afe.md:47-51`, `ceridwen/GOTCHAS.md:34-37`, grid `fsps_kwargs_json`.
 - Total metallicity: [Z/H] = [Fe/H] + log10(1 − x + x 10^[α/Fe]), x = 0.68749. This gives +0.15, +0.31 and +0.48 dex at [α/Fe] = +0.2, +0.4 and +0.6. Source: `ceridwen/ceridwen/ssps/grid_metadata.py:44-60`.
+- P25 Eq. 2: [Z/H] = [Fe/H] + A [α/Fe]. A = 0.64, 0.73, 0.77 and 0.80 at [α/Fe] = −0.2, +0.2, +0.4 and +0.6 (GS98). The Ceridwen formula gives A = 0.635, 0.734, 0.774 and 0.807. Source: P25 §3.2.4.
 - `afe` is interpolated linearly between the five planes. Source: `ceridwen/docs/afe.md:55`.
 - `CSPBasis_afe` has no nebular model. Source: `ceridwen/docs/afe.md:60`.
 
 Where each range ends:
 
 - **Metal-rich corner.** Opacity tables are missing for the most metal-rich compositions. For seven grid points the 0.1 to 0.5 M_sun part of the isochrone is a copy from the nearest metallicity. For [Fe/H] = +0.5, [α/Fe] = +0.6 the full isochrone is a copy of the [α/Fe] = +0.4 one (P25 §2.1). D26 §2.1 drops that composition. Ceridwen refuses a prior that includes both `logzsol` > +0.25 and [α/Fe] > +0.4 (`ceridwen/docs/afe.md:66-68`, `grid_metadata.py:82-88`).
-- **Blue of 4728 Å.** The paper states line-list tuning for 4728 Å to 1 µm only. It does not give the accuracy at shorter wavelengths. The window 4074.5 to 4666.1 Å is fully below 4728 Å.
-- **Outside 0.3 to 1.0 µm.** The resolution falls to R = 500 or lower (P25 Fig. 1).
+- **Blue of 4728 Å.** The paper states line-list tuning for 4728 Å–1 μm. It gives no accuracy at shorter wavelengths. Cargile et al. 2020, the paper that P25 cites for the tuning, gives no wavelength range and tests 5150 to 5350 Å. No source read gives a measured accuracy of these spectra at 3600 to 4728 Å. The window 4074.5 to 4666.1 Å is fully below 4728 Å. Sources: P25 §2.2. Cargile et al. 2020 §2.1.2. `t_fe81f500-detail.md` section 4. More in "Blue of 4728 Å" in `SKILL.md`.
+- **Outside 0.3 to 1.0 µm.** The resolution falls to R = 500 or lower (P25 Fig. 2).
 - **Stars outside the spectral grid.** Not stated.
 - **Grid edges in a fit.** The forward model clamps at the grid edge and gives no warning (`ceridwen/GOTCHAS.md:52`).
 
@@ -53,26 +54,31 @@ Where each range ends:
 
 Limits stated by the authors:
 
+P25 §2.4, "Caveats and Limitations", has five named parts: "Initial versus surface abundances", "Single value of [α/Fe] for all α elements", "Assumption of LTE", "Constant microturbulent velocity" and "Single star evolution". Limits 1 to 4 and 10 to 12 come from them.
+
 1. [Fe/H] and [α/Fe] are the initial composition. The atmospheres do not include changes of surface abundance from diffusion or dredge-up (P25 §2.4).
 2. One [α/Fe] sets all α elements (P25 §2.4).
-3. C and N do not vary (P25 §2.4, §3.2.3).
+3. C and N do not vary. They are "kept solar-scaled ([C/Fe] = +0.0 and [N/Fe] = +0.0) throughout all stellar evolutionary phases" (P25 §2.4, §3.2.3).
 4. The spectra are 1D, plane-parallel and LTE, with a constant microturbulence (P25 §2.4).
-5. Post-AGB stars and white dwarfs are not in the new isochrones. FUV − V differs from MIST v1.2 at log(age/yr) > 9.0 (P25 §3.1, Fig. 3; D26 §2.7).
-6. C2 4668 is much weaker than in models made from observed stars (P25 §3.3.2, Fig. 18). The authors give two possible causes: surface C and N evolution, or the line list.
+5. Low and intermediate mass models stop at the end of the TP-AGB. Post-AGB stars and white dwarfs are not in the isochrones (D26 §2.7). P25 has no statement on post-AGB stars, white dwarfs or FUV − V.
+6. C2 4668 is much weaker than in models made from observed stars (P25 §3.3.2, Fig. 19). The authors give two possible causes: surface C and N evolution, or the line list.
 7. Opacity tables are missing at the metal-rich end (P25 §2.1; D26 §2.1).
-8. The paper has no comparison with observed data: "Applications to observed data will be presented in a subsequent paper" (P25 §1, §4).
+8. The paper has no comparison with observed data: "Applications to observed data will be presented in a subsequent paper" (P25 §1, §4). The MIST v2.5 models "are validated and compared with observations and other α-enhanced models, which can be found in A. Dotter et al. (2025, in preparation)" (P25 §2.1).
 9. The isochrones have one value of RGB mass loss. They "will not describe a full zero-age horizontal branch sequence" (D26 §3.4).
+10. One [α/Fe] sets Ca with Mg. "In local elliptical galaxies (ETGs), Ca abundances appear close to solar abundances, i.e., [Ca/Fe] ≈ 0". "Since our α-enhanced models do not track individual α abundances, one should be careful in fitting spectra including Ca indices" (P25 §2.4).
+11. Non-LTE features of young, massive stars are not in the C3K spectra. "caution should be taken when applying the C3K models to young stellar systems less than 10 Myr old" (P25 §2.4).
+12. No binary stars. "The MIST v2.5 stellar isochrone models are based on the evolution of single stars" (P25 §2.4).
 
 Validations shown:
 
 | Test | Compared with | Size given | Source |
 |---|---|---|---|
-| SSP spectra and colours, solar-scaled | MIST v1.2 | "Good agreement". FUV − V differs at log age > 9.0. | P25 §3.1, Figs. 2-3 |
-| Continuum shape, old ages | Coelho et al. 2007; Knowles et al. 2023 (sMILES) | Agree. No number. | P25 §3.3.2, Fig. 16 |
-| g − r | same two models | Agree. α minus solar ≈ 0.1 mag at log age ≈ 9. | P25 §3.3.2, Fig. 17 |
-| V − I | same | α-enhanced ≈ 0.1 mag redder. | P25 §3.3.2, Fig. 17 |
-| Lick index trends with [α/Fe] | same | Consistent, except C2 4668. | P25 §3.3.2, Fig. 18 |
-| C2 4668 | sMILES | "Large discrepancy". No number. | P25 §3.3.2, Fig. 18 |
+| SSP spectra and colours, solar-scaled | MIST v1.2 | "good overall agreement". | P25 §3.1, Figs. 3-4 |
+| Continuum shape, old ages | Coelho et al. 2007; Knowles et al. 2023 (sMILES) | Agree. No number. | P25 §3.3.2, Fig. 17 |
+| g − r | same two models | Agree. α minus solar ≈ 0.1 mag at log age ≈ 9. | P25 §3.3.2, Fig. 18 |
+| V − I | same | α-enhanced ≈ 0.1 mag redder. | P25 §3.3.2, Fig. 18 |
+| Lick index trends with [α/Fe] | same | Consistent, except C2 4668. | P25 §3.3.2, Fig. 19 |
+| C2 4668 | sMILES | "Large discrepancy". No number. | P25 §3.3.2, Fig. 19 |
 | Isochrones | BaSTI at 0.1, 1 and 10 Gyr | "The overall agreement is reassuring". No number. | D26 §3.3, Fig. 6 |
 | Colour-magnitude diagrams | M 92, M 3, 47 Tuc, NGC 6397, NGC 6752 | Isochrones of 10 to 13 Gyr drawn on the data. No fit. No number. "Not meant to be a detailed analysis". | D26 §3.4, Figs. 7-8, Table 2 |
 | RGB bump | Nataf et al. 2013 clusters | Envelope overshoot calibrated on it. The earlier MIST was ~0.5 mag off for the most metal-poor clusters. | D26 §2.5, Fig. 1 |
@@ -80,7 +86,7 @@ Validations shown:
 
 Size of the α effect inside the model, [α/Fe] = +0.4 against solar, ages > 1 Gyr:
 
-| Quantity | Fixed [Fe/H] = 0 | Fixed [Z/H] = +0.26 | Source |
+| Quantity | Fixed [Fe/H] = 0 | Fixed [Z/H] = +0.31 | Source |
 |---|---|---|---|
 | Continuum level | ~20 % lower | ~10 % lower above 0.45 µm | P25 §3.2.1, §3.2.4, §4 |
 | G − K | ~0.2 mag redder | ~0.05 mag redder | P25 §3.2.2, §3.2.4 |
@@ -95,12 +101,12 @@ Size of the α effect inside the model, [α/Fe] = +0.4 against solar, ages > 1 G
 | C, N | Fixed at solar-scaled. | P25 §2.4. "Future work is needed" (§3.2.3). |
 | Na | Not in the list of enhanced elements. | P25 §2.1. [Na/Fe] itself: not stated. |
 | IMF | Kroupa only. | P25 §2.3. One remark that TiO at young ages depends on the IMF slope (§3.2.3, citing Vazdekis et al. 2015). |
-| Binaries | Not stated. | P25, D26 |
+| Binaries | Not included. | P25 §2.4: "based on the evolution of single stars". |
 | Blue horizontal branch | No free quantity. | P25: not stated. D26 §3.4: one RGB mass-loss value, no full horizontal branch. |
 | AGB and TP-AGB | Included to the end of the TP-AGB. No free quantity. | P25 §2.1, §3.2.2; D26 §2.7 |
-| Post-AGB, white dwarfs | Not included. | P25 §3.1; D26 §2.7 |
-| Rotation | D26 has two model sets, with and without rotation (Ω = 0.4 Ω_crit for M ≥ 1.8 M_sun). The set used for the SSPs: not stated. | D26 §2.4. P25: not stated. |
-| Mass loss | "Essentially the same" as Choi et al. 2016. One RGB value. | D26 §2, §3.4. P25: not stated. |
+| Post-AGB, white dwarfs | Not included. | D26 §2.7 |
+| Rotation | D26 has two model sets, with and without rotation (Ω = 0.4 Ω_crit for M ≥ 1.8 M_sun). The set used for the SSPs: not stated. | D26 §2.4. P25 §2.1: same physics as Choi et al. 2016, with minor changes "including atmospheric boundary conditions, rotation, and mixing". |
+| Mass loss | "Essentially the same" as Choi et al. 2016. One RGB value. | D26 §2, §3.4. P25 §2.1: "the same adopted physics, including mixing processes, rotation, and mass loss, as described in J. Choi et al. (2016)". |
 | Surface abundance changes | Not in the atmospheres. | P25 §2.4 |
 | Helium | Tied to Z. | D26 Eq. 1 |
 
@@ -112,12 +118,12 @@ Last column: the feature has a basis for a mask if (a) it depends on an abundanc
 
 Measured in massive early-type galaxies (C14 abstract, §5.2, §8): [Fe/H] changes by < 0.1 dex over the sample. Mg and O go from ≈ 0.0 at low σ to ≈ 0.25 at high σ. Si and Ti rise less. "Ca tracks Fe rather than O". [C/Fe] and [N/Fe] are above 0.2 at high σ. [Na/Fe] goes from −0.16 to +0.43. At z ~ 0.7 the patterns are "strikingly similar to those at z ~ 0" (B23 abstract).
 
-| Feature | Model behaviour when [α/Fe] rises at fixed [Fe/H] (P25 §3.2.3, Figs. 9-11) | Depends on | Evidence for massive ellipticals | Basis for a mask |
+| Feature | Model behaviour when [α/Fe] rises at fixed [Fe/H] (P25 §3.2.3, Figs. 10-12) | Depends on | Evidence for massive ellipticals | Basis for a mask |
 |---|---|---|---|---|
 | H8 to H16, Hδ, Hγ | Produced. Hγ_A and Hδ_A get weaker. More sensitive than Hβ. | Age, [Fe/H], [α/Fe] | Not stated in the sources read. | None found |
 | Hβ | Produced. At [Fe/H] = 0: no clear change above 1 Gyr. Weaker at log age 8.5 to 9. | Age, [Fe/H] | Not stated. | None found |
 | Hα | Produced. P25 does not discuss it. | Not stated | Not stated. | None found |
-| Ca II H and K | Deeper (P25 §3.2.1, Fig. 4). | Ca, tied to [α/Fe] | Ca follows Fe, not Mg (C14). | Yes, (a) |
+| Ca II H and K | Deeper (P25 §3.2.1, Fig. 5). | Ca, tied to [α/Fe] | Ca follows Fe, not Mg (C14). | Yes, (a) |
 | 4000 Å break | Produced (D4000, Bruzual 1983). Size of change: not stated in text. | Not stated | Not stated. | None found |
 | CN1, CN2 | Weaker. | C, N, O | [C/Fe], [N/Fe] > 0.2 at high σ (C14 §5.2, Fig. 13). | Yes, (a), unless the C/N response is on |
 | G4300 | Weaker. | C | Same as CN. | Yes, (a), unless the C/N response is on |
