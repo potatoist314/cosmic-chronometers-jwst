@@ -1,6 +1,6 @@
 ---
 name: chronometer-checklist
-description: Use before you plan, run, check or report a cosmic-chronometer fit, a chronometer sample or an age-redshift slope. It gives Liu Hao's decisions for chronometer work and his open items. It also gives the table of masked pixels, the reason for each mask, and the limits of the stellar population model.
+description: Use before you plan, run, check or report a cosmic-chronometer fit, a chronometer sample or an age-redshift slope. It gives Liu Hao's decisions for chronometer work and his open items. It also gives the table of masked pixels, the reason for each mask, the table of free and fixed parameters for each run, how free C and N work, and the limits of the stellar population model.
 ---
 
 # Chronometer checklist
@@ -61,6 +61,89 @@ P25 and C14 are defined in the next section.
 - **No sky-line mask.** `sky_lines_air` is an empty list.
 - **Wiki table:** `wiki/notes/spectral-masks.md`, built as the page `/n/spectral-masks/`.
 
+## Free and fixed parameters
+
+Liu Hao, 2026-11-25: "carbon very important - this free parameter stuff is equally important to be tracked as compared to masks". He said this after his question "is carbon masked or free".
+
+State on 2026-11-25. A parameter is free when the sampler draws it. `PRIORS` (cell 2) of `notebooks/ceridwen_integrated_photometry_spectra.ipynb` gives each prior. Cells 6 and 8 remove a prior when a setting makes its parameter fixed. The settings of each fit are in `source.experiment[i].settings` of the `manifest.json` of its run.
+
+These settings are the same in each fit of each run in the table "C and N in each run": `fix_afe` null, `metallicity_evolution` true, `birth_cloud_dust` true, `emission_line_marginalisation` true, `calibration_order` 10, `sfh_nbins` 14. Only `abundance_response` changes the free parameters between these runs.
+
+| Parameter | State | Prior or value | Source |
+|---|---|---|---|
+| `cfe`, [C/Fe] | Free only when `abundance_response` is set. When it is null: fixed, solar-scaled as in the grid. | Uniform −0.3 to +0.5 dex | `PRIORS`. Cell 8: `if cn_response is None: joint_priors.pop("cfe")`. P25 §2.4. |
+| `nfe`, [N/Fe] | Same as `cfe` | Uniform −0.3 to +1.0 dex | Same as `cfe` |
+| `logzsol`, [Fe/H] | Free | Uniform on the grid, −2.5 to +0.5 | Cell 8, `joint_priors["logzsol"]`. `model/metallicity_axis_logzsol` in `ceridwen_result.h5`. |
+| `zh_beta_unit` | Free | Uniform 0 to 1. It sets how [Fe/H] rises with formed mass. | `PRIORS`. Cell 8, `zh_from_mass`. |
+| `afe`, [α/Fe] | Free | Uniform on the grid, −0.2 to +0.6. One value sets all α elements. | Cell 8, `joint_priors["afe"]`. Grid `ssp_afe` in `references/stellar-population-model.md`. |
+| Na, and each α element alone | Not a parameter | Set by the grid | Summary items 2 and 3 of the next section. `PRIORS` has no entry. |
+| `logsfr_ratios`, 13 values | Free | Student-t: mean 0, scale 0.3, 2 degrees of freedom. Limits −3 to 3. | `PRIORS`. Cell 8, `N_RATIOS` and `joint_bounds`. |
+| `logmass` | Free | Uniform 8 to 13 | `PRIORS` |
+| `diffuse_tau_noll`, `diffuse_delta`, `diffuse_Ebump` | Free | Uniform 0 to 1, −1.0 to 0.4, 0 to 6 | `PRIORS` |
+| `dust_ratio` | Free | Normal: mean 1.0, sigma 0.3. Limits 0 to 2. | `PRIORS` |
+| `sigma_smooth`, σ★ | Free | Normal about the catalogue σ★. Its width is the catalogue error. Limits ± 3 errors. | Cell 8, `joint_priors["sigma_smooth"]`. `sigma_clip` in `SETTINGS`. |
+| `log_f_calib` | Free | Uniform ln 0.01 to ln 0.10 | `PRIORS` |
+| `zred` | Fixed | Catalogue redshift | Cell 6: `PRIORS.pop("zred", None)` when `emission_line_marginalisation` is true |
+| `diffuse_c_r` | Fixed | 0 | Cell 8, `joint_transforms` |
+| `alpha_pow` | Fixed | −1 | Cell 8, `joint_transforms` |
+| `tau_pow` | Tied | `dust_ratio` × `diffuse_tau_noll` | Cell 8, `joint_transforms` |
+| Calibration polynomial, 11 coefficients | Free, not sampled | Chebyshev of order 10, and a constant. The fit solves them analytically. | `SETTINGS`: `calibration_order`, `calibration_fit_constant` |
+| Emission-line fluxes | Free, not sampled | 0 or more. The calibration solve gives them. | `SETTINGS`: `emission_line_marginalisation` |
+
+- **Do not use the `priors` block of a manifest.** It lists `cfe` and `nfe` in each fit, also when they are fixed. Read `settings.abundance_response`.
+- **To check one finished fit,** read `model/param_names` in its `ceridwen_result.h5`. `cfe` and `nfe` are in the list only when they are free.
+  - C and N free, 13 names and 25 values: `results/sdss-mask-nad-2026-11-24/run/fits/age15_nad/1237648704057966805-0309-51994-0145/`.
+  - C and N fixed, 11 names and 23 values: `results/legac-break-fixed-grid-2026-11-24/run/fits/b_age15/104877-M14_104877/`.
+- **A new run.** Add its row to the table below.
+
+### C and N in each run
+
+The column "Manifest folder" is the folder of `manifest.json`, below `results/`. "Free": `abundance_response` is `data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105` in each fit of the arm. "Fixed": it is null in each fit of the arm.
+
+| Survey | Manifest folder | Arms | Fits in the manifest | C and N |
+|---|---|---|---|---|
+| SDSS DR17 | `sdss-pilot-2026-11-20/run` | `sdss` | 10 | Free |
+| SDSS DR17 | `sdss-50-2026-11-24/run` | `sdss` | 50 | Free |
+| SDSS DR17 | `sdss-prior-cosmology-2026-11-24/run` | `h0_50`, `h0_90` | 50 for each arm | Free |
+| SDSS DR17 | `sdss-wide-range-2026-11-24/run` | `planck18`, `h0_50`, `h0_90` | 50 for each arm | Free |
+| SDSS DR17 | `sdss-wide-fixed-age-2026-11-24/run` | `age15` | 50 | Free |
+| SDSS DR17 | `sdss-mask-nad-2026-11-24/run` | `age15_nad` | 50 | Free |
+| LEGA-C DR3 | `legac-dr3-2026-11-11/test-set/run` | `dr3_full`, `dr3_window` | 10 for each arm | Fixed |
+| LEGA-C DR3 | `legac-dr3-2026-11-11/window-194/run` | `dr3_plain_w` | 194 | Fixed |
+| LEGA-C DR3 | `legac-dr3-2026-11-11/window-194/run` | `dr3_cn_free_w` | 194 | Free |
+| LEGA-C DR3 | `dr3-more-galaxies-2026-11-16/plain-colab/run`, `plain-modal/run` | `dr3_plain_w` | 24 and 130 | Fixed |
+| LEGA-C DR3 | `dr3-more-galaxies-2026-11-16/first-10/run`, `rest-a/run`, `rest-b/run` | `dr3_cn_free_w` | 10, 73 and 73. They are 154 galaxies. 2 galaxies are in two manifests. | Free |
+| LEGA-C DR3 | `legac-prior-cosmology-2026-11-24/run` | `planck18`, `h0_50`, `h0_90` | 10 for each arm | Free |
+| LEGA-C DR3 | `legac-break-fixed-grid-2026-11-24/run` | `b_age15`, `c_age15_break` | 60 for each arm | Fixed |
+| LEGA-C DR3 | `legac-full-range-test-2026-11-24/run` | `d_full_age15`, `e_window_age10`, `f_full_age10` | 36 for each arm | Fixed |
+| LEGA-C DR3 | `legac-steps-control-2026-11-24/run-steps33-seed2`, `run-steps65` | `steps33_seed2`, `steps65` | 12 for each arm | Fixed |
+| Mock | `legac-full-range-test-2026-11-24/mock/run` | 18 arms | 36 | Fixed |
+| Mock | `legac-fixed-grid-mock-2026-11-24/run` | 12 arms | 24 | Fixed |
+
+- **SDSS DR17.** C and N are free in each run.
+- **LEGA-C DR3, the sample of 348 galaxies.** It has two arms. In `dr3_plain_w` C and N are fixed: 348 valid fits. In `dr3_cn_free_w` C and N are free: 347 valid fits, because M102_214235 has none. Source: `results/dr3-more-galaxies-2026-11-16/REPORT.md`.
+- **Fits on the 15 Gyr grid of 2026-11-24.** The SDSS fits have C and N free. The LEGA-C fits have C and N fixed.
+
+### How free C and N work
+
+Liu Hao, 2026-11-25: "in skill and slides you need to explain how cn free works".
+
+The code is the class `AlfCNResponse` in `ceridwen/ceridwen/ssps/abundance_response.py`. The line numbers below are for that file at Ceridwen commit `84dff70b`. The data are the alf files in `data/raw/alf/cda32111c721efe586945d7dfcb9f605a9f6a105/`. alf is a public fitting code (https://github.com/cconroy20/alf). The file cites Conroy & van Dokkum (2012) and Conroy et al. (2018) (lines 1-5).
+
+1. **Why.** C and N are solar-scaled in the grid (P25 §2.4). The grid cannot change C or N alone.
+2. **alf spectra.** Each alf file holds theoretical spectra of one single-age population. One column is the solar spectrum. Each other column has one element changed. C changes by +0.15 and −0.15 dex. N changes by +0.3 and −0.3 dex. Source: the header of each file ("+/- is 0.3 dex except for C which is 0.15 dex", columns `C+`, `C-`, `N+`, `N-`) and `load`, lines 66-69.
+3. **Files.** The code reads 20 files: 5 ages (1, 3, 5, 9, 13 Gyr) for each of 4 metallicities ([Fe/H] −1.5, −1.0, −0.5, 0.0). It does not read the 5 files at +0.2 (lines 24-26, 55-58).
+4. **Differential spectrum.** For each file, this is the changed spectrum divided by the solar spectrum, minus 1 (lines 68-69).
+5. **Interpolation.** The code interpolates linearly in log age and in [Fe/H]. Below 1 Gyr it uses the 1 Gyr spectra. Above 13 Gyr it uses the 13 Gyr spectra. Below −1.5 it uses the −1.5 spectra. Above 0.0 it uses the 0.0 spectra (lines 86-89, 184-186).
+6. **Weights.** For each draw of the sampler, the SFH and the metallicity history of that draw weight the alf spectra (lines 27-28, 176-206). The result is the alf spectrum of a population with that history.
+7. **Amplitude.** The code multiplies the differential C spectrum by \|`cfe`\| / 0.15. It multiplies the differential N spectrum by \|`nfe`\| / 0.3. The sign of `cfe` selects the `C+` or the `C-` column. The sign of `nfe` selects the `N+` or the `N-` column. One cross term, C × N, gets the product of the two factors (lines 187-199). The scaling is linear. The code sets no limit on it (line 192).
+8. **Ratio.** ratio = 1 + (sum of the scaled differential spectra) / (alf solar spectrum) (line 211). The code multiplies the Park model spectrum by the ratio: `f = f_Park × ratio`. Source: `ceridwen/ceridwen/csp/csp_afe.py:657-658` for the photometry and `:666-669` for the spectrum.
+9. **What does not change.** The isochrones do not change (line 22). Outside the alf wavelengths, 3501.0 to 24997.6 Å vacuum, the ratio is 1 (lines 35, 212). With `cfe` = 0 and `nfe` = 0 the model spectrum does not change (`csp_afe.py:656-658`).
+10. **Resolution.** The code broadens the alf spectra one time, to the catalogue velocity dispersion and the instrument resolution. The Park spectrum keeps the sampled `sigma_smooth` (lines 30-32). The photometry uses the ratio without broadening (line 34).
+11. **Conditions.** The redshift must be fixed at the catalogue value (lines 144-145). The total dispersion must be 100 km/s or more (lines 115-116). The SFH must be the fixed-grid step basis (lines 83-84).
+12. **One value for each galaxy.** One `cfe` and one `nfe` apply to all ages of the galaxy (lines 187-188).
+13. **Prior against the alf step.** The upper limit of `cfe`, +0.5, is 3.3 × the 0.15 dex step. Its lower limit, −0.3, is 2 × the step. The upper limit of `nfe`, +1.0, is 3.3 × the 0.3 dex step. Its lower limit, −0.3, is 1 × the step. Above 1 step the response is a linear extrapolation (line 192).
+
 ## Stellar population model: what it contains and its limits
 
 Liu Hao, 2026-11-24: "we need to have a comprehensive understanding of the park alpha enhanced sps / isochrone paper and the model limitations and save it in the chronoemter skill".
@@ -71,7 +154,7 @@ Summary:
 
 1. The grid is α-MC: MIST v2.5 isochrones, C3K v2.3 spectra and one Kroupa IMF (P25 §2.1 to §2.3).
 2. One [α/Fe] sets O, Ne, Mg, Si, S, Ar, Ca and Ti together. No α element is free alone (P25 §2.1, §2.4).
-3. C and N are solar-scaled in the grid (P25 §2.4). Ceridwen adds the alf C and N response with free `cfe` and `nfe`. There is no free Na.
+3. C and N are solar-scaled in the grid (P25 §2.4). Ceridwen adds the alf C and N response with free `cfe` and `nfe` only when `abundance_response` is set. See "Free and fixed parameters". There is no free Na.
 4. The line list is "tuned to the observed high-resolution spectra of the Sun and Arcturus for 4728 Å–1 μm" (P25 §2.2). The paper states nothing for shorter wavelengths. The LEGA-C window 4074.5 to 4666.1 Å is fully below 4728 Å. See "Blue of 4728 Å" below.
 5. `logzsol` is [Fe/H], not total metallicity (`ceridwen/docs/afe.md:47-51`).
 6. The age axis has 107 nodes with a step of 0.05 dex (P25 §2.3). One step is 12.2 % in age. Four nodes are older than 13.8 Gyr.
