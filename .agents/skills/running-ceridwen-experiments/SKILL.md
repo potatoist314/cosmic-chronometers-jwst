@@ -162,8 +162,10 @@ default is `Uniform(low=0.0, high=6.0)`.
    python3 scripts/experiment.py run results/<slug>/experiment.json \
      --backend vast --gpu "RTX 5090" --output results/<slug>/run
    ```
-   Use the GPU type requested by the user. Offers must have reliability above
-   99.5%, falling back to above 96% only if no offers pass all filters. Both
+   On Vast, use the RTX 5090. Liu Hao, 2026-11-25: "use the 5090 when on vast.
+   i only dont use 5090 on modal bc it doesnt offer it, but 5090 alw cheaper."
+   The A100 rule for Colab and Modal does not apply to Vast.
+   Offers must have reliability above 99.5%, falling back to above 96% only if no offers pass all filters. Both
    bandwidth rates must be below $10/TB. The total $1 cap covers all arms and
    retries; `--spend-cap` can reduce it.
    The runner ranks offers by the latest row for each host in `scripts/vast_hosts.csv`:
