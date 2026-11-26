@@ -67,6 +67,10 @@ He said the next two quotes in one message at 14:17 UTC. They are about the vers
 - **Masked and free lines** (14:24 UTC, with the slide `data` open). "add very short physical explanation for why certain lines are masked or free on the data / model slides, maybe with excerpts from the original paper"
 - **Cosmology slide, a slide to remove** (14:27 UTC, with a picture of the slide "Age offset and slope"). "for cosmology independence slide, add an excerpt from the borghi paper. show the results on age difference recovery with different age grids. show results before and after on lega c with different grids. i dont see the role of this attached slide it can go."
 - **True and fitted history** (14:35 UTC, with the slide `agediff` open). "show sfh differences for age difference recovery -> the fake galaxy sfh vs recovered sfh"
+- **Effect of the age differences** (14:39 UTC, with the slide `agediff` open and a picture of the figure of the slide `sfhrec`). "show effect of not recovering age differences super well here on this slide, the current diagram isn't so good"
+- **Age-bin figure** (14:42 UTC, with a picture of the slide `bins`). "don't need the zoom, shorten the last vs before captions"
+- **Which fit is which** (14:43 UTC, a comment on the figure of the slide `agediff`). "i don't understand which is which? which is planck and which is 15 gyr?"
+- **Names of the two fits** (14:46 UTC, with a picture of the H(z) panel of the figure of the slide `agediff`). "dont need this. i think to shorten things just call everything planck or cosmology independent consistently through slides"
 
 ## Steps
 
