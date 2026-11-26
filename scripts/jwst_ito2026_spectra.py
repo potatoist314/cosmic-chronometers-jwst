@@ -41,6 +41,7 @@ et al. 2023, ApJ 947, 20), maggies = uJy / 3631e6.
 Selection: all three Ito et al. quiescence flags (Dn4000QG, UVJQG_ez, sSFRQG_bg) set, no X-ray
 detection, valid pixels on >= 90% of the rest range of the SDSS pilot configuration
 (results/sdss-pilot-2026-11-20/experiment.json), then the highest median S/N per pixel there.
+--targets <target> ... writes the listed targets instead.
 
 Checks in summary.csv: valid fraction and median S/N in the rest range; synthetic flux of the
 dereddened spectrum over the photometry for each band inside the valid spectrum (median);
@@ -49,6 +50,7 @@ median LSF sigma in km/s; number of photometric bands kept.
 
 from __future__ import annotations
 
+import argparse
 import csv
 import sys
 from pathlib import Path
@@ -136,7 +138,7 @@ def process(sample: str, galaxy, ebv: float) -> tuple[dict, fits.HDUList]:
     return record, fits.HDUList([primary, fits.table_to_hdu(spectrum), fits.table_to_hdu(photometry)])
 
 
-def main() -> None:
+def main(targets: list[str] | None = None) -> None:
     with (RAW / "irsa_sfd_ebv.csv").open() as stream:
         ebv = {f"{row['sample']}-{row['id']}": float(row["ebv_sfd"]) for row in csv.DictReader(stream)}
     records, files = [], {}
@@ -147,7 +149,8 @@ def main() -> None:
             files[record["target"]] = hdus
     eligible = [r for r in records
                 if r["quiescent_all"] and r["xray_detection"] != 1 and r["rest_valid_fraction"] >= 0.9]
-    selected = {r["target"] for r in sorted(eligible, key=lambda r: -r["rest_median_sn"])[:N_TARGETS]}
+    selected = set(targets) if targets else {
+        r["target"] for r in sorted(eligible, key=lambda r: -r["rest_median_sn"])[:N_TARGETS]}
     PROCESSED.mkdir(parents=True, exist_ok=True)
     for record in records:
         record["selected"] = record["target"] in selected
@@ -162,4 +165,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--targets", nargs="+")
+    main(parser.parse_args().targets)
