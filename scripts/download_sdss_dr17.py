@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Download SDSS DR17 single-fibre spectra, ugriz cModel and WISE forced photometry of
-clean passive galaxies, and count the galaxies that pass the same cuts.
+"""Download SDSS DR17 single-fibre spectra, ugriz model and cModel fluxes and WISE forced
+photometry of clean passive galaxies, and count the galaxies that pass the same cuts.
 
 Selection, DR17 CAS (column definitions from the CAS table DBColumns):
 - SpecObj (science-primary spectra) with SURVEY = 'sdss': the SDSS-I/II spectrographs,
@@ -50,7 +50,8 @@ Z_EDGES = (0.02, 0.10, 0.15, 0.20, 0.25, 0.30)
 COLUMNS = ", ".join([
     "s.specObjID", "s.bestObjID", "s.plate", "s.mjd", "s.fiberID", "s.run2d", "s.ra", "s.dec",
     "s.z", "s.zErr", "s.velDisp", "s.velDispErr", "s.snMedian_r",
-    *(f"p.cModelFlux_{b}, p.cModelFluxIvar_{b}, p.extinction_{b}" for b in "ugriz"),
+    *(f"p.cModelFlux_{b}, p.cModelFluxIvar_{b}, p.modelFlux_{b}, p.modelFluxIvar_{b}, p.extinction_{b}"
+      for b in "ugriz"),
     "w.w1_nanomaggies", "w.w1_nanomaggies_ivar", "w.w2_nanomaggies", "w.w2_nanomaggies_ivar",
     "w.treated_as_pointsource",
     "l.oii_3726_eqw", "l.oii_3729_eqw", "l.oiii_5007_eqw", "l.oiii_5007_eqw_err",
