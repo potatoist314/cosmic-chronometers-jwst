@@ -1,11 +1,11 @@
 ---
 name: sandro-weekly-slides
-description: Use when you make or update the slide deck for Liu Hao's weekly meeting with Sandro, or when the message "weekly slides: summarise the past week in the Sandro deck" arrives. It gives his words about the deck, the Artifact calls in order, and the source of each fact on the two detail slides.
+description: 'Use when you make or update the slide deck for Liu Hao''s weekly meeting with Sandro, or when the message "weekly slides: summarise the past week in the Sandro deck" arrives. It gives all his slide preferences in his words, the Artifact calls in order, and the source of each fact on the detail slides.'
 ---
 
 # Weekly slides for the meeting with Sandro
 
-Written from the run of 2026-11-25 by the Astronomy lead. That run made the deck and rebuilt it one time. Its record is `~/.claude/projects/-Users-liuhao-Downloads-Astro-project/0e9cd474-3a15-4f3d-8102-ef966ca17496.jsonl`, 15:13 to 15:44 UTC. No weekly update has run yet. The first weekly message is due on 2026-11-26.
+Written from two runs by the Astronomy lead. The run of 2026-11-25 (15:13 to 15:44 UTC) made the deck and rebuilt it one time. The run of 2026-11-26 (from 13:57 UTC) removed the cover. The record of the two runs is `~/.claude/projects/-Users-liuhao-Downloads-Astro-project/0e9cd474-3a15-4f3d-8102-ef966ca17496.jsonl`. No weekly update has run yet. The first weekly message is due on 2026-11-26.
 
 The deck is "Chronometer: open questions": https://claude.ai/artifact/N1yaFvoNBaEzuEirFBFx9q. It is a claude.ai Slides artifact. It is private to Liu Hao. Sandro can open it only after Liu Hao shares it from the Share menu of the page.
 
@@ -13,24 +13,60 @@ Rules for figures, physical facts and browser pages are in `AGENTS.md` and `~/.c
 
 ## His words
 
-All words are from 2026-11-25. "Question" shows a question that the lead asked him, word for word. "Picked" shows an option that he selected from a list. All other text in quotation marks is his.
+This section holds each slide preference that he gave, in date order (UTC). The lead wrote each question and each option. "Question" shows a question that the lead asked him. "Picked" shows the label of an option that he selected. "The option said" shows text of that option. Each of these is word for word from the record. All other text in quotation marks is his.
+
+### 2026-11-19: figures
+
+He said these words about figure previews. The record is `44a318fe-f8bc-458f-a1fc-c4c5cd719664.jsonl`, in the folder of the record of the runs. `~/.claude/CLAUDE.md` holds the rule that came from the second quote.
+
+- **Simple.** "okay. that seems useful. but it should be simple and clear"
+- **No explanations in a figure.** "just dont add explanations in figures please, they should speak for themselves. axes, titles, labels. no annoying explanations" Then: "for all future figures - save preference"
+- **Fake galaxies in a figure.** "the mock truth stuff is very confusing. can you not mix it in with real data runs"
+- **Physical meaning.** "also, theres no interesting physical trend here.. can you put t80 t50 t20 against age, or whatever is appropriate to look into downsizing. like the graphs should all have some physical intuition or grounding behind them"
+
+### 2026-11-24: an explanation in the chat
+
+- **Fake galaxies in an explanation.** "I don't like the over-reference to the fake galaxies". These words start a longer message. He said them about an explanation in the chat, not about the deck.
+
+### 2026-11-25: the deck
 
 - **Purpose.** "i need you to track these discussions and open questions somewhere clear. honestly, putting them into a slide would be good. for weekly discussions w sandro"
 - **Style.** "use the write like me style for this please."
 - **Schedule.** "this slide generation should run automatically weekly to summarise the past week's discussion"
 - **Meeting day.** Question: "Which day is your weekly meeting with Sandro? The slides would be made the evening before." Answer: "friday"
-- **Sources.** Question: "What should count as the past week's discussion when the weekly slides are written?" Picked: "Chats with me", "New results", "Handwritten notes". He did not pick "Other Astro chats".
-- **Deck.** Question: "How should each week's slides be kept?" Picked: "One running deck". The option said: "Same link every week. The new week's slides go first, the open-questions slide is updated, older weeks stay further back."
-- **Review.** Question: "Should the weekly slides go live on their own, or wait for you to look first?" Picked: "Go live, tell me". The option said: "The deck updates on its own and I tell you in one line that it is ready."
-- **Length.** Question: "How much should each week's update be?" Picked: "3 to 5 slides". The option said: "What was discussed, what was decided, any new result, and the updated open questions."
-- **Figures.** Question: "When a result from that week has a figure, should the weekly slides show it?" Picked: "Yes, existing figures". The option said: "Use figures that already exist from that week's results. Nothing new is drawn or run."
-- **Laptop asleep.** Question: "The slides are made on Thursday evening on this laptop. What if the laptop is asleep or off then?" Picked: "Run when it wakes".
+- **Sources.** Question: "What should count as 'the past week's discussion' when the weekly slides are written?" Picked: "Chats with me (Recommended)", "New results", "Handwritten notes". He did not pick "Other Astro chats".
+- **Deck.** Question: "How should each week's slides be kept?" Picked: "One running deck (Recommended)". The option said: "Same link every week. The new week's slides go first, the open-questions slide is updated, older weeks stay further back."
+- **Review.** Question: "Should the weekly slides go live on their own, or wait for you to look first?" Picked: "Go live, tell me (Recommended)". The option said: "The deck updates on its own and I tell you in one line that it is ready."
+- **Length.** Question: "How much should each week's update be?" Picked: "3 to 5 slides (Recommended)". The option said: "What was discussed, what was decided, any new result, and the updated open questions."
+- **Figures.** Question: "When a result from that week has a figure, should the weekly slides show it?" Picked: "Yes, existing figures (Recommended)". The option said: "Use figures that already exist from that week's results. Nothing new is drawn or run."
+- **Laptop asleep.** Question: "The slides are made on Thursday evening on this laptop. What if the laptop is asleep or off then?" Picked: "Run when it wakes (Recommended)".
 - **Verdict on the first version** (8 slides, 7 open questions): "i have significant issues with this. too many open questions, not enough context (big issue!), too verbose"
 - **Detail.** "more detail to include: wavelength ranges and lines per survey, what lines are masked, redshift ranges" and "also show the exact age ranges for bins"
+- **Prior against posterior.** "i'd like a posterior plot showing how much exactly the sfh posterior has changed against the prior from our fits. ie plot both on same graph. maybe some stacked posterior versus original sfh prior. but explain how you stack the posterior"
+- **Version of that figure.** Question: "Three versions of the prior against posterior figure are open in Preview (60 LEGA-C galaxies stacked, prior in grey, posterior in blue). Which one should go in the deck?" Picked: "Star formation rate (Recommended)". The first sentence of the option said: "Star formation rate against lookback time, relative to each galaxy's average." He did not pick "Mass fraction per bin" or "Cumulative mass".
+- **Figure labels.** "do label the prior and posterior a bit more and add a short caption to the figure. explain age of universe is constrained by planck lambda cdm and circularity worries". He said this about the figure on the slide `stack`.
+- **Order.** "organise the slides in a sensible coherent order"
 - **Free parameters.** "carbon very important - this free parameter stuff is equally important to be tracked as compared to masks"
 - **C and N.** "in skill and slides you need to explain how cn free works"
 
 Facts of the run. They are not his rules. After the verdict the lead rebuilt the deck with 6 slides and 3 questions. The lead added the slide `context` ("Where we are": goal, method, problem). Each slide got one grey line (`class="ctx"`) that tells what was done and on which galaxies. Each question got one line that tells why it is important (`class="qwhy"`). The slides `problem`, `slope`, `prior-us` and `decided` were removed. His next message asked for a skill "for making these slides". The two detail slides brought the deck to 8 slides: `cover`, `context`, `data`, `bins`, `evidence`, `why`, `prior`, `questions`.
+
+### 2026-11-26: the deck
+
+- **Cover.** "can you remove the front slide"
+- **Text.** "can you humanise much of the text and give more context. i'm not sure how to best prompt you to accomplish this because the slides always read like slop"
+- **New slides.** "add a slide showing mock vs real galaxies that demonstrated fixed systematic offset is okay as long as slope isn't affected. add a slide showing possible surveys, wavelength range, passive galaxy count, and how age slope error scales with these. add a slide on limitations of the ssp grid and explain how Ca masking, C/N free is an attempt to work around this."
+- **Slop.** "i think a main issue i have with slop ness is that there's excessive inscrutable commentary that is only understood by the agent and not by people outside. maybe let figures speak for themselves, and give very simple context"
+- **Figures, not tables.** "i prefer figures/graphs over tables. i don't really want explanations or commentary. no need for titles, or keep titles a handful of words"
+- **This skill.** "save all slide preferences in a skill"
+
+He said the next two quotes in one message at 14:17 UTC. They are about the version of the deck with figures. The message had one picture for each quote.
+
+- **Surveys slide** (picture: the figure of the slide `surveys`). "this slide: no, i think just show expression you gave me where redshift range is linear and number of galaxies is square root and a graph showing how error changes for extra runs with these."
+- **Age-bin figure, cosmology slide** (picture: the slide `bins`). "i don't quite understand the x axis on this age bin diagram, and i don't understand the two group things. add an extra slide diagram for cosmology independence"
+- **Masked and free lines** (14:24 UTC, with the slide `data` open). "add very short physical explanation for why certain lines are masked or free on the data / model slides, maybe with excerpts from the original paper"
+- **Cosmology slide, a slide to remove** (14:27 UTC, with a picture of the slide "Age offset and slope"). "for cosmology independence slide, add an excerpt from the borghi paper. show the results on age difference recovery with different age grids. show results before and after on lega c with different grids. i dont see the role of this attached slide it can go."
+- **True and fitted history** (14:35 UTC, with the slide `agediff` open). "show sfh differences for age difference recovery -> the fake galaxy sfh vs recovered sfh"
 
 ## Steps
 
@@ -45,7 +81,7 @@ Facts of the run. They are not his rules. After the verdict the lead rebuilt the
    Artifact {"action": "read", "url": "https://claude.ai/artifact/N1yaFvoNBaEzuEirFBFx9q", "path": "project/slides/<id>.html"}
    ```
    The result gives the location of each saved file. The artifact is the master copy. The files of the run are in `/private/tmp/claude-501/-Users-liuhao-Downloads-Astro-project/0e9cd474-3a15-4f3d-8102-ef966ca17496/scratchpad/deck/project/`. A restart can clear that folder.
-4. **Write the slides of the week.** Each slide is one file `project/slides/<id>.html` with one `<section id="<id>">`. Use the classes in `project/deck.css`. Add each new id to `order` in `project/deck.json`, after `cover`. Update the slide `questions`. Update the date on `cover`. Keep each other key of `project/deck.json` as you read it.
+4. **Write the slides of the week.** Each slide is one file `project/slides/<id>.html` with one `<section id="<id>">`. Use the classes in `project/deck.css`. The deck has no cover slide (2026-11-26, **Cover**). Add each new id at the start of `order` in `project/deck.json` (2026-11-25, **Deck**). Update the slide `questions`. Keep each other key of `project/deck.json` as you read it.
 5. **Write the slide text in his style.** Start the `write-like-liu-hao` skill. Use his own phrases from the chats of the week.
 6. **Use only figures that exist.** Take a figure from the results of that week. Draw nothing. Run nothing. The run of 2026-11-25 put no figure on a slide. The file `artifact-type/reference/images.md` of the Slides type is about images.
 7. **Update the two detail slides.** See "Detail slides". Read each source again each week. Do not copy a number from this skill or from an old slide.
