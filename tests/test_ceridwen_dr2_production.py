@@ -421,7 +421,7 @@ def test_notebook_samples_redshift_and_sigma_by_default():
     assert 'Kinematics(sigma_gal="sigma_smooth"' in source
     assert "mean=sigma_star,\n        sigma=sigma_star_err," in source
 
-def test_constant_calibration_active_assembly_and_exports(request):
+def _assembled(request, **settings):
     """Execute the maintained assembly on a small in-memory SSP, without fitting."""
     import ast
     import jax
@@ -434,17 +434,19 @@ def test_constant_calibration_active_assembly_and_exports(request):
     import numpy as np
     from ceridwen import Cosmology
     from ceridwen.broadening import Instrument, Kinematics
-    from ceridwen.cosmology import age_gyr
+    from ceridwen.cosmology import age_gyr, luminosity_distance_mpc
     from ceridwen.csp import CSPBasis_afe
     from ceridwen.ssps import SSPDataAfe
     from ceridwen.model import SedModel, logsfr_ratios_to_sfh, mass_mapped_beta, mass_mapped_zh
     from ceridwen.observation import Photometry, Spectrum
     from ceridwen.likelihood import PolynomialCalibration
     from ceridwen.sampler.priors import ClippedNormal, StudentT, Uniform
+    from scipy.optimize import brentq
 
     cells = ["".join(c.get("source", [])) for c in json.loads(NOTEBOOK_PATH.read_text())["cells"]
              if c["cell_type"] == "code"]
-    env = dict(np=np, jnp=jnp, age_gyr=age_gyr, CSPBasis_afe=CSPBasis_afe,
+    env = dict(np=np, jnp=jnp, age_gyr=age_gyr, brentq=brentq, luminosity_distance_mpc=luminosity_distance_mpc,
+               CSPBasis_afe=CSPBasis_afe,
                SedModel=SedModel, logsfr_ratios_to_sfh=logsfr_ratios_to_sfh,
                mass_mapped_beta=mass_mapped_beta, mass_mapped_zh=mass_mapped_zh,
                ClippedNormal=ClippedNormal, StudentT=StudentT, Uniform=Uniform,
@@ -454,6 +456,7 @@ def test_constant_calibration_active_assembly_and_exports(request):
         if isinstance(node, ast.Assign) and any(
                 isinstance(t, ast.Name) and t.id in {"SETTINGS", "PRIORS"} for t in node.targets):
             exec(compile(ast.Module(body=[node], type_ignores=[]), "settings", "exec"), env)
+    env["SETTINGS"].update(settings)
     wave = jnp.geomspace(1000., 30000., 256)
     # logzsol range [-1.6, 0]: holds the mass-mapped logzsol_bins at theta_init (down to -1.1).
     env["ssp"] = SSPDataAfe(jnp.array([-3.0, -1.4]), jnp.array([-3., -1., 0., 1.2]), wave,
@@ -472,6 +475,35 @@ def test_constant_calibration_active_assembly_and_exports(request):
                  if isinstance(node, ast.Assign)
                  and any(isinstance(t, ast.Name) and t.id == "universe_age" for t in node.targets))
     exec(compile(ast.Module(body=assembly.body[start:], type_ignores=[]), "assembly", "exec"), env)
+    return env, cells
+
+
+def test_sfh_old_bins_replace_only_the_oldest_edges(request):
+    import numpy as np
+
+    continuity = np.array([0.0, 10.0**7.4772 / 1e9]
+                          + (10.0 ** np.linspace(8.0, np.log10(15.0 * 0.85 * 1e9), 12) / 1e9).tolist() + [15.0])
+    # Off by default: the 14 continuity bins, bit for bit.
+    np.testing.assert_array_equal(_assembled(request, sfh_grid_age=15.0)[0]["lookback_template"], continuity)
+    env = _assembled(request, sfh_grid_age=15.0, sfh_old_bins=[3, 8])[0]
+    edges = env["lookback_template"]
+    np.testing.assert_array_equal(edges[:12], continuity[:12])
+    np.testing.assert_array_equal(edges[11:], np.linspace(continuity[11], 15.0, 9))
+    np.testing.assert_allclose(np.diff(edges[11:]), (15.0 - continuity[11]) / 8, rtol=1e-12)
+    assert env["N_BINS"] == 19
+    assert env["joint_csp"].sfh_basis_fastpath
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        env["joint_model"].predict(env["joint_model"].theta_init)
+    assert not [w for w in caught if "fast path" in str(w.message)]
+
+
+def test_constant_calibration_active_assembly_and_exports(request):
+    import ast
+    import jax.numpy as jnp
+    import numpy as np
+
+    env, cells = _assembled(request)
     model = env["joint_model"]
     assert not (model.theta_init.keys() - model.priors.keys())
     assert "diffuse_c_r" not in model.theta_init

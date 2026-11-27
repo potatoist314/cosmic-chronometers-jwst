@@ -1650,3 +1650,8 @@
 
 - Pages: `research/questions/q-spectral-range.md`, `research/experiments/e-sfh-grid-prior.md`, `research/experiments/e-sdss-wide-range.md`, `research/experiments/e-sdss-nad-mask.md`, `research/experiments/e-sdss-sample-checks.md`, `research/experiments/e-legac-15gyr-grid.md`, `research/experiments/e-legac-full-range.md`, `research/experiments/e-park2025-model-limits.md`, `index.md`
 - Change: question page rewritten with an answer, a rest-range table and an age-slope table against Planck18; seven experiment records for the 2026-11-24 findings, with Liu Hao's words and links to the SFH-prior and SFH-bin roadmap items; card t_66785537.
+
+## [2026-11-27] codebase | Setting for equal-width old SFH bins
+
+- Pages: `notes/model.md`
+- Change: `SETTINGS["sfh_old_bins"] = (k, n)` in `notebooks/ceridwen_integrated_photometry_spectra.ipynb` replaces the \(k\) oldest SFH bins with \(n\) bins of equal width; the default `None` keeps the 14 continuity bins; card t_965736c6.
